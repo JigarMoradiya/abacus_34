@@ -1,0 +1,130 @@
+{
+  "project_info": {
+    "project_number": "884602254815",
+    "firebase_url": "https://abacusmaster-ce84a.firebaseio.com",
+    "project_id": "abacusmaster-ce84a",
+    "storage_bucket": "abacusmaster-ce84a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884602254815:android:4ff6e9d299018c3e",
+        "android_client_info": {
+          "package_name": "com.abacus.puzzle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "884602254815-3k35glrh6jerahn27f8p3q3ppcu538tt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.abacus.puzzle",
+            "certificate_hash": "d5e35467c893c974825f141ac9d5dc3aa566cf37"
+          }
+        },
+        {
+          "client_id": "884602254815-48dg5hhaqb5sa5130nhp0a968hdbe9it.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.abacus.puzzle",
+            "certificate_hash": "195dd8f52fa61f58c44045b46b42e3973deb824c"
+          }
+        },
+        {
+          "client_id": "884602254815-560p6akbmud3cpili6c8qrjuicpljcqr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.abacus.puzzle",
+            "certificate_hash": "de6ef7f52192239d9d5c790c64447b8af46562ce"
+          }
+        },
+        {
+          "client_id": "884602254815-fscadb7gdq4g4gfvk9cts4sh02j194hb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo7RyGXNowFsCRzfeIewbr271Et4ht19o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "884602254815-fscadb7gdq4g4gfvk9cts4sh02j194hb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884602254815:android:bc5721f7866737e9",
+        "android_client_info": {
+          "package_name": "com.abacus.puzzle.db"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "884602254815-fscadb7gdq4g4gfvk9cts4sh02j194hb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo7RyGXNowFsCRzfeIewbr271Et4ht19o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "884602254815-fscadb7gdq4g4gfvk9cts4sh02j194hb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884602254815:android:108447f5ba2342b3ce806a",
+        "android_client_info": {
+          "package_name": "com.sudoku.puzzle.maths.number"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "884602254815-vqtpe2p35d2t1f8rls2kjthcv5caksbq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sudoku.puzzle.maths.number",
+            "certificate_hash": "7e851967e23027931c7872b879c2a69afff6e0a8"
+          }
+        },
+        {
+          "client_id": "884602254815-fscadb7gdq4g4gfvk9cts4sh02j194hb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo7RyGXNowFsCRzfeIewbr271Et4ht19o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "884602254815-fscadb7gdq4g4gfvk9cts4sh02j194hb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
