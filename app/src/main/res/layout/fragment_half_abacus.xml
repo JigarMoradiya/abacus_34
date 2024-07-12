@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+
+        <import type="com.jigar.me.utils.AppConstants" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isLeftHand"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:id="@+id/scrollMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/icons_margin">
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/icons_margin"
+                    android:elevation="@dimen/card_elevation"
+                    app:cardBackgroundColor="@color/light_back"
+                    app:cardCornerRadius="@dimen/menu_icons_corner"
+                    app:cardMaxElevation="@dimen/card_elevation">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgBack"
+                        android:layout_width="@dimen/menu_icons"
+                        android:layout_height="@dimen/menu_icons"
+                        android:padding="@dimen/activity_padding8"
+                        app:srcCompat="@drawable/ic_back" />
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardResetProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/icons_margin"
+                    android:elevation="@dimen/card_elevation"
+                    app:cardBackgroundColor="@color/light_reset_abacus_progress"
+                    app:cardCornerRadius="@dimen/menu_icons_corner"
+                    app:cardMaxElevation="@dimen/card_elevation">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/menu_icons"
+                        android:layout_height="@dimen/menu_icons"
+                        android:padding="@dimen/activity_padding8"
+                        app:srcCompat="@drawable/ic_reset_abacus_progress" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardSettingTop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/icons_margin"
+                    android:elevation="@dimen/card_elevation"
+                    app:cardBackgroundColor="@color/light_setting"
+                    app:cardCornerRadius="@dimen/menu_icons_corner"
+                    app:cardMaxElevation="@dimen/card_elevation">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/menu_icons"
+                        android:layout_height="@dimen/menu_icons"
+                        android:padding="@dimen/activity_padding8"
+                        app:srcCompat="@drawable/ic_menu_setting" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardYoutube"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/icons_margin"
+                    android:elevation="@dimen/card_elevation"
+                    app:cardBackgroundColor="@color/light_youtube"
+                    app:cardCornerRadius="@dimen/menu_icons_corner"
+                    app:cardMaxElevation="@dimen/card_elevation">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/menu_icons"
+                        android:layout_height="@dimen/menu_icons"
+                        android:padding="@dimen/activity_padding8"
+                        app:srcCompat="@drawable/ic_youtube" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardSubscribe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/icons_margin"
+                    android:elevation="@dimen/card_elevation"
+                    app:cardBackgroundColor="@color/light_subscribe"
+                    app:cardCornerRadius="@dimen/menu_icons_corner"
+                    app:cardMaxElevation="@dimen/card_elevation">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/menu_icons"
+                        android:layout_height="@dimen/menu_icons"
+                        android:padding="@dimen/activity_padding6"
+                        app:srcCompat="@mipmap/ic_menu_subscribe"/>
+
+                </com.google.android.material.card.MaterialCardView>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </ScrollView>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/scrollMenu"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtTitle"
+                style="@style/mainTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_padding6"
+                android:paddingHorizontal="@dimen/icons_margin2"
+                android:visibility="gone"
+                tools:text="@string/app_name"
+                tools:visibility="visible" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtTitleHand"
+                style="@style/mainTitleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_padding6"
+                android:layout_marginBottom="@dimen/activity_padding8"
+                android:gravity="center"
+                android:text="@{isLeftHand?@string/use_left_hand_to_move_beads:@string/use_right_hand_to_move_beads}"
+                android:textColor="@color/black"
+                android:visibility="gone"
+                tools:text="Use your left hand"
+                tools:visibility="visible" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardTable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/icons_margin2"
+                android:elevation="@dimen/card_elevation"
+                android:visibility="invisible"
+                app:cardBackgroundColor="@color/light_math_table"
+                app:cardCornerRadius="@dimen/menu_icons_corner"
+                app:cardMaxElevation="@dimen/card_elevation"
+                tools:visibility="visible">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/menu_icons"
+            android:layout_height="@dimen/menu_icons"
+                    android:padding="@dimen/activity_padding8"
+                    app:srcCompat="@drawable/ic_math_table" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <RelativeLayout
+                android:id="@+id/relAbacus"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/adView"
+                android:visibility="gone"
+                tools:visibility="gone">
+
+                <FrameLayout
+                    android:id="@+id/flAbacus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearYourAbacusTools"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/activity_padding12"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgAbacusToolsTop"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        app:srcCompat="@drawable/ic_abacus_tool" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_padding10"
+                        android:gravity="center"
+                        android:id="@+id/txtUseAbacusToolsTitle"
+                        android:includeFontPadding="false"
+                        android:text="@string/use_your_abacus_tool_msg1"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/textSizeRegular"
+                        app:fontFamily="@font/font_extra_bold" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_padding2"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="@string/use_your_abacus_tool_msg2"
+                        android:textColor="@color/black"
+                        android:alpha="0.7"
+                        android:textSize="@dimen/textSizeMedium"
+                        app:fontFamily="@font/font_bold" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_padding4"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="@string/note_once_go_to_next_abacus_can_t_go_previous_abacus"
+                        android:textColor="@color/black_light"
+                        android:textSize="@dimen/textSizeSmall" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnNextAbacus"
+                        style="@style/btnExtraSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="@dimen/activity_padding8"
+                        android:text="@string/go_to_next_abacus"
+                        android:textAllCaps="false" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/adView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/transparent"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <RelativeLayout
+                android:id="@+id/linearQuestions"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/relativeQueNumber"
+                    android:layout_width="259dp"
+                    android:layout_height="243dp"
+                    android:layout_marginHorizontal="@dimen/activity_padding8"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="259dp"
+                        android:layout_height="85dp"
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/ic_number_frame_top" />
+
+                    <RelativeLayout
+                        android:layout_width="259dp"
+                        android:layout_height="122dp">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_number_frame_middle" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tvAnsNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/font_extra_bold"
+                                android:gravity="center"
+                                android:includeFontPadding="false"
+                                android:shadowColor="@color/colorPrimaryDark"
+                                android:shadowRadius="3"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="@dimen/textSizeAbacusNumber"
+                                tools:text="100" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tvAnsNumberWord"
+                                style="@style/mainTitleSmall"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-8dp"
+                                android:gravity="center"
+                                android:includeFontPadding="false"
+                                android:maxLines="2"
+                                android:textSize="@dimen/textSizeMedium"
+                                tools:text="One hundred" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </RelativeLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="259dp"
+                        android:layout_height="36dp"
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/ic_number_frame_bottom" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardHint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_padding1"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/card_corner_radius12"
+                    app:cardElevation="@dimen/card_elevation"
+                    app:cardMaxElevation="@dimen/card_elevation"
+                    app:cardUseCompatPadding="true"
+                    app:strokeColor="@color/blue_300"
+                    app:strokeWidth="@dimen/activity_padding1"
+                    tools:visibility="gone">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txt_hint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_semibold"
+                        android:gravity="center"
+                        android:lineSpacingMultiplier="1.2"
+                        android:paddingHorizontal="@dimen/activity_padding10"
+                        android:paddingVertical="@dimen/activity_padding12"
+                        android:textColor="@color/colorHeadingBlack_61"
+                        android:textSize="@dimen/textSizeRegular" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/cardAbacusQue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgLeftAbacusTools"
+                        android:layout_width="120dp"
+                        android:layout_height="200dp"
+                        android:layout_marginEnd="@dimen/activity_padding6"
+                        android:visibility="gone"
+                        app:srcCompat="@drawable/ic_kid_standup_left"
+                        tools:visibility="visible" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardQuestions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/card_corner_radius12"
+                        app:cardElevation="@dimen/card_elevation"
+                        app:cardMaxElevation="@dimen/card_elevation"
+                        app:cardUseCompatPadding="true"
+                        app:strokeColor="@color/orange_600"
+                        app:strokeWidth="@dimen/activity_padding8">
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:paddingTop="@dimen/activity_padding16"
+                            android:paddingBottom="@dimen/activity_padding16"
+                            android:visibility="visible">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerview"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:paddingStart="@dimen/activity_padding6"
+                                android:overScrollMode="never"
+                                android:scrollbars="none"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:itemCount="3"
+                                tools:listitem="@layout/row_question_layout" />
+
+                            <View
+                                android:id="@+id/ivDivider1"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/activity_padding2"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/activity_padding2"
+                                android:layout_marginBottom="@dimen/activity_padding2"
+                                android:background="@color/green_600"
+                                android:paddingStart="@dimen/activity_padding20"
+                                android:paddingEnd="@dimen/activity_padding20"
+                                android:visibility="visible" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tvAns"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/font_extra_bold"
+                                android:includeFontPadding="true"
+                                android:paddingStart="@dimen/activity_padding4"
+                                android:paddingEnd="@dimen/activity_padding4"
+                                android:textColor="@color/cyan_600"
+                                android:textSize="@dimen/textSize24" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgRightAbacusTools"
+                        android:layout_width="120dp"
+                        android:layout_height="200dp"
+                        android:layout_marginStart="@dimen/activity_padding6"
+                        android:visibility="gone"
+                        app:srcCompat="@drawable/ic_kid_standup_right"
+                        tools:visibility="visible" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/relative_table"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardHint2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/activity_padding4"
+                    app:cardElevation="@dimen/card_elevation4"
+                    app:cardMaxElevation="@dimen/card_elevation4"
+                    app:cardUseCompatPadding="true"
+                    app:strokeColor="@color/blue_300"
+                    app:strokeWidth="@dimen/activity_padding1">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txt_hint_table"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/font_semibold"
+                        android:gravity="center"
+                        android:lineSpacingMultiplier="1.2"
+                        android:paddingTop="@dimen/activity_padding12"
+                        android:paddingBottom="@dimen/activity_padding12"
+                        android:textColor="@color/black_text"
+                        android:textSize="@dimen/textSizeMedium" />
+                </com.google.android.material.card.MaterialCardView>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

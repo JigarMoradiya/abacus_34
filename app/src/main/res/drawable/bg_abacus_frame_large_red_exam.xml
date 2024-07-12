@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:endColor="#FFCDD2"
+                android:centerColor="#E57373"
+                android:startColor="#F44336" />
+            <corners android:radius="@dimen/padding_radius_abacus_frame_large_exam" />
+            <padding
+                android:bottom="@dimen/padding_radius_abacus_frame_large_exam"
+                android:left="@dimen/padding_radius_abacus_frame_large_exam"
+                android:right="@dimen/padding_radius_abacus_frame_large_exam"
+                android:top="@dimen/padding_radius_abacus_frame_large_exam" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#ffffff" />
+            <corners android:radius="@dimen/padding_radius_abacus_frame_large_inner_exam" />
+        </shape>
+    </item>
+</layer-list>

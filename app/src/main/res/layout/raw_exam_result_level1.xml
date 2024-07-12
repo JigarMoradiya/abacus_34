@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/white"
+            android:layout_margin="@dimen/activity_padding4"
+            app:cardCornerRadius="@dimen/card_corner_radius4"
+            app:cardElevation="@dimen/card_elevation2">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="@dimen/activity_padding8">
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearQuestion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/activity_padding12"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/linearAnswer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerviewObjects1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:overScrollMode="never"
+                        android:scrollbars="none"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="5"
+                        tools:itemCount="2"
+                        tools:listitem="@layout/raw_object_list_result" />
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgSign"
+                        android:layout_width="@dimen/activity_padding16"
+                        android:layout_height="@dimen/activity_padding16"
+                        android:layout_marginTop="@dimen/activity_padding8"
+                        android:layout_marginBottom="@dimen/activity_padding8"
+                        android:tint="@color/red"
+                        android:visibility="gone"
+                        app:srcCompat="@drawable/cal_plus"
+                        tools:visibility="gone" />
+
+                    <androidx.legacy.widget.Space
+                        android:id="@+id/spaceBetween"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/activity_padding16"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerviewObjects2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:overScrollMode="never"
+                        android:scrollbars="none"
+                        android:visibility="gone"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="7"
+                        tools:itemCount="7"
+                        tools:listitem="@layout/raw_object_list_result"
+                        tools:visibility="visible" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearAnswer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtAnswer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_padding6"
+                        app:fontFamily="@font/font_bold"
+                        android:gravity="center"
+                        android:text="Answer : "
+                        android:textColor="@color/colorGreen"
+                        android:textSize="@dimen/textSizeExtraSmall" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtYourAnswer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_padding4"
+                        app:fontFamily="@font/font_bold"
+                        android:gravity="center"
+                        android:text="Your Answer : "
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/textSizeExtraSmall" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

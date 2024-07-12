@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/activity_padding12"
+        app:cardElevation="@dimen/card_elevation"
+        app:cardMaxElevation="@dimen/card_elevation"
+        app:cardUseCompatPadding="true">
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtTitle"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/activity_padding12">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtTitle"
+                style="@style/mainTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingVertical="@dimen/activity_padding10"
+                android:text="@string/select_abacus_bead_theme_nbase_on_your_favourite_color" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linearAbacus"
+                android:layout_width="136dp"
+                android:layout_height="wrap_content"
+                tools:layout_height="112dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/activity_padding4"
+                android:gravity="center" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtPreview"
+                style="@style/mainTitleSmall"
+                android:layout_width="136dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_below="@+id/linearAbacus"
+                android:layout_alignParentEnd="true"
+                android:text="@string/preview_of_theme"
+                android:textSize="@dimen/textSizeExtraSmall" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerviewAbacusDefault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/activity_padding10"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="6"
+                tools:itemCount="12"
+                android:layout_toStartOf="@+id/linearAbacus"
+                tools:listitem="@layout/row_default_theme" />
+
+            </RelativeLayout>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDone"
+                style="@style/btnSmall"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/activity_padding10"
+                android:text="@string/okay_let_s_start"
+                android:textAllCaps="false" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:fontFamily="@font/font_bold"
+                android:includeFontPadding="false"
+                android:padding="@dimen/activity_padding8"
+                android:text="@string/will_select_later_from_settings"
+                android:textColor="@color/colorListingHeading"
+                android:textSize="@dimen/textSizeMedium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnYes" />
+
+
+            <androidx.legacy.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/activity_padding8" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

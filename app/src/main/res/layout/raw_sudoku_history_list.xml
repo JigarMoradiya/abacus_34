@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_padding16"
+            android:layout_marginTop="@dimen/activity_padding8"
+            app:fontFamily="@font/font_semibold"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSizeMedium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Easy Level" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_padding4"
+            android:fontFamily="@font/font_medium"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSizeSmall"
+            app:layout_constraintStart_toStartOf="@+id/txt_title"
+            app:layout_constraintTop_toBottomOf="@+id/txt_title"
+            tools:text="Start at" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/activity_padding8"
+            android:text="00:00:00"
+            android:textColor="@color/grey_600"
+            android:textSize="@dimen/textSizeSmall"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnContinue"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnContinue"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_28dp"
+            android:layout_marginEnd="@dimen/activity_padding16"
+            android:fontFamily="@font/font_semibold"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            android:paddingHorizontal="@dimen/activity_padding12"
+            android:text="@string/continue_"
+            android:textAllCaps="false"
+            android:textColor="@color/colorRedDark"
+            android:textSize="@dimen/textSizeSmall"
+            app:backgroundTint="@color/red_100"
+            app:cornerRadius="@dimen/card_corner_radius14"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnCompleted"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCompleted"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_28dp"
+            android:layout_marginEnd="@dimen/activity_padding16"
+            android:fontFamily="@font/font_semibold"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            android:paddingHorizontal="@dimen/activity_padding12"
+            android:text="@string/completed"
+            android:textAllCaps="false"
+            android:textColor="@color/colorGreenDark"
+            android:textSize="@dimen/textSizeSmall"
+            app:backgroundTint="@color/green_100"
+            app:cornerRadius="@dimen/card_corner_radius14"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/activity_padding8"
+            android:background="@color/grey_300"
+            app:layout_constraintTop_toBottomOf="@+id/txtTime" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

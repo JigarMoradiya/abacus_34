@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_top_curved_24_dp"
+    android:backgroundTint="@color/white"
+    android:overScrollMode="never"
+    android:elevation="8dp"
+    android:scrollbars="none"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/activity_padding16">
+
+
+        <View
+            android:layout_width="@dimen/handle_width"
+            android:layout_height="@dimen/handle_height"
+            android:layout_marginTop="@dimen/activity_padding12"
+            android:id="@+id/viewLine"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/bg_all_curved_3"
+            android:backgroundTint="@color/colorPrimaryDark" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgAlert"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/activity_padding16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewLine"
+            app:srcCompat="@drawable/ic_complete" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/activity_padding16"
+            style="@style/mainTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgAlert"
+            android:text="@string/congratulations" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/activity_padding8"
+            android:includeFontPadding="false"
+            android:textColor="@color/black"
+            android:fontFamily="@font/font_semibold"
+            android:lineSpacingExtra="2sp"
+            android:textSize="@dimen/textSizeRegular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            android:text="@string/you_completed_this_puzzle_in_moves" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvSubDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_padding6"
+            android:gravity="center"
+            android:text="@string/this_is_your_best_moves_in_puzzle"
+            android:textColor="@color/colorGreen"
+
+            android:fontFamily="@font/font_semibold"
+            android:lineSpacingExtra="2sp"
+            android:textSize="@dimen/textSizeRegular"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnYes"
+            android:layout_width="wrap_content"
+            style="@style/btnMedium"
+            android:textAllCaps="false"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/activity_padding16"
+            android:text="@string/continue_to_play_game"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubDescription" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:fontFamily="@font/font_bold"
+            android:includeFontPadding="false"
+            android:padding="@dimen/activity_padding8"
+            android:text="@string/no_i_want_to_close"
+
+            android:textColor="@color/colorListingHeading"
+            android:textSize="@dimen/textSizeMedium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnYes" />
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNo"
+            android:layout_height="@dimen/activity_padding8"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardToddler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_padding4"
+        app:cardCornerRadius="@dimen/card_corner_radius4"
+        app:cardBackgroundColor="@color/card_bg"
+        app:cardElevation="@dimen/card_elevation3">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/activity_padding8">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:fontFamily="@font/font_bold"
+                android:textColor="@color/colorHeadingBlack_00"
+                android:textSize="@dimen/textSizeMedium"
+                app:layout_constraintEnd_toStartOf="@+id/linearTotalQuestion"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="7 March 2022 10:20 AM" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtDesc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_medium"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/activity_padding2"
+                tools:text="02:30:40"
+                android:textColor="@color/light_bg_red"
+                android:textSize="@dimen/textSizeSmall"
+                app:layout_constraintEnd_toStartOf="@+id/linearTotalQuestion"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+            <com.willy.ratingbar.BaseRatingBar
+                android:id="@+id/simpleRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srb_numStars="5"
+                app:srb_minimumStars="1"
+                app:srb_rating="2"
+                android:layout_marginTop="@dimen/activity_padding4"
+                app:srb_starWidth="@dimen/activity_padding12"
+                app:srb_starHeight="@dimen/activity_padding12"
+                app:srb_starPadding="@dimen/activity_padding2"
+                app:srb_stepSize="0.1"
+                app:srb_isIndicator="true"
+                app:srb_clickable="false"
+                app:srb_scrollable="false"
+                app:srb_clearRatingEnabled="true"
+                app:srb_drawableEmpty="@drawable/start_empty"
+                app:srb_drawableFilled="@drawable/star_filled"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtDesc">
+            </com.willy.ratingbar.BaseRatingBar>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linearTotalQuestion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginEnd="@dimen/activity_padding12"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/linearRightAnswer"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtTotalQue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fontFamily="@font/font_bold"
+                    android:gravity="center"
+                    android:text="20"
+                    android:textColor="@color/colorBlueDark"
+                    android:textSize="@dimen/textSizeLarge" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding2"
+                    android:alpha="0.8"
+                    android:fontFamily="@font/font_semibold"
+                    android:gravity="center"
+                    android:text="@string/TotalQue"
+                    android:textColor="@color/colorBlueDark"
+                    android:textSize="@dimen/textSizeExtraSmall" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linearRightAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_marginEnd="@dimen/activity_padding12"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/txtCheckResult"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtRightQue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fontFamily="@font/font_bold"
+                    android:gravity="center"
+                    android:text="20"
+                    android:textColor="@color/colorGreenDark"
+                    android:textSize="@dimen/textSizeLarge" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding2"
+                    android:alpha="0.8"
+                    android:fontFamily="@font/font_semibold"
+                    android:gravity="center"
+                    android:text="@string/RightQue"
+                    android:textColor="@color/colorGreenDark"
+                    android:textSize="@dimen/textSizeExtraSmall" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/txtCheckResult"
+                android:layout_width="wrap_content"
+                style="@style/btnSmall"
+                android:letterSpacing="0"
+                android:elevation="@dimen/activity_padding2"
+                android:layout_margin="@dimen/activity_padding2"
+                android:text="@string/check_result"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:textAllCaps="true" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="0dp"
+        android:paddingEnd="@dimen/activity_padding4">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgObjectExtraSmall"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:srcCompat="@drawable/animal_ant" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

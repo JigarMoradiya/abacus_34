@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <View
+            android:layout_width="@dimen/handle_width"
+            android:layout_height="@dimen/handle_height"
+            android:layout_marginTop="@dimen/activity_padding12"
+            android:id="@+id/viewLine"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/bg_all_curved_3"
+            android:backgroundTint="@color/colorPrimaryDark" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtTitle"
+            style="@style/mainTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/activity_padding16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/txtClose"
+            app:layout_constraintTop_toTopOf="@+id/txtClose"
+            android:text="@string/app_name" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtClose"
+            style="@style/mainTitleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/activity_padding8"
+            android:paddingHorizontal="@dimen/activity_padding16"
+            android:paddingVertical="@dimen/activity_padding10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewLine"
+            android:text="@string/close" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilSearch"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_padding12"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:hintEnabled="false"
+            android:layout_marginHorizontal="@dimen/activity_padding16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtClose"
+            app:startIconDrawable="@drawable/ic_baseline_search_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_semibold"
+                android:hint="@string/search"
+                android:textColor="@color/colorListingHeading"
+                android:textSize="@dimen/textSizeMedium" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="@dimen/activity_padding12"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="@dimen/activity_padding16"
+            app:layout_constraintTop_toBottomOf="@+id/tilSearch"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="2"
+            tools:listitem="@layout/row_single_selection" />
+
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+            android:layout_height="@dimen/activity_padding10" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

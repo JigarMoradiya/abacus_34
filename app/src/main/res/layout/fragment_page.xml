@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+
+        <import type="com.jigar.me.utils.AppConstants" />
+
+        <variable
+            name="title"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/icons_margin2"
+            android:elevation="@dimen/card_elevation"
+            app:cardBackgroundColor="@color/light_back"
+            app:cardCornerRadius="@dimen/menu_icons_corner"
+            app:cardMaxElevation="@dimen/card_elevation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgBack"
+                android:layout_width="@dimen/menu_icons"
+                android:layout_height="@dimen/menu_icons"
+                android:padding="@dimen/menu_icons_padding"
+                app:srcCompat="@drawable/ic_back" />
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtTitle"
+            style="@style/mainTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/title_margin"
+            android:text="@{title}"
+            app:layout_constraintBottom_toBottomOf="@+id/cardBack"
+            app:layout_constraintStart_toEndOf="@+id/cardBack"
+            app:layout_constraintTop_toTopOf="@+id/cardBack"
+            tools:text="Pages of Number" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearTopEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/icons_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardTable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/icons_margin"
+                android:elevation="@dimen/card_elevation"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/light_math_table"
+                app:cardCornerRadius="@dimen/menu_icons_corner"
+                app:cardMaxElevation="@dimen/card_elevation"
+                tools:visibility="visible">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/menu_icons"
+                    android:layout_height="@dimen/menu_icons"
+                    android:padding="@dimen/activity_padding8"
+                    app:srcCompat="@drawable/ic_math_table" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardSettingTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/icons_margin"
+                android:elevation="@dimen/card_elevation"
+                app:cardBackgroundColor="@color/light_setting"
+                app:cardCornerRadius="@dimen/menu_icons_corner"
+                app:cardMaxElevation="@dimen/card_elevation">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/menu_icons"
+                    android:layout_height="@dimen/menu_icons"
+                    android:padding="@dimen/activity_padding8"
+                    app:srcCompat="@drawable/ic_menu_setting" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardYoutube"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/icons_margin"
+                android:elevation="@dimen/card_elevation"
+                app:cardBackgroundColor="@color/light_youtube"
+                app:cardCornerRadius="@dimen/menu_icons_corner"
+                app:cardMaxElevation="@dimen/card_elevation">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/menu_icons"
+                    android:layout_height="@dimen/menu_icons"
+                    android:padding="@dimen/activity_padding8"
+                    app:srcCompat="@drawable/ic_youtube" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardSubscribe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/icons_margin"
+                android:elevation="@dimen/card_elevation"
+                app:cardBackgroundColor="@color/light_subscribe"
+                app:cardCornerRadius="@dimen/menu_icons_corner"
+                app:cardMaxElevation="@dimen/card_elevation">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/menu_icons"
+                    android:layout_height="@dimen/menu_icons"
+                    android:padding="@dimen/activity_padding6"
+                    app:srcCompat="@mipmap/ic_menu_subscribe" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardBack">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/activity_padding10"
+                android:layout_marginStart="@dimen/icons_margin2"
+                android:layout_marginEnd="@dimen/icons_margin"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation3">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerviewCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:animateLayoutChanges="false"
+                    android:orientation="vertical"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/raw_category_pagelist" />
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerviewPage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="@dimen/activity_padding6"
+            android:layout_marginEnd="@dimen/icons_margin"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/adView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linearCategory"
+            app:layout_constraintTop_toBottomOf="@+id/cardBack"
+            app:spanCount="4"
+            tools:itemCount="10"
+            tools:listitem="@layout/raw_pagelist" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linearCategory" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

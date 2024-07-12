@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/activity_padding8">
+
+
+        <View
+            android:layout_width="@dimen/handle_width"
+            android:layout_height="@dimen/handle_height"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_padding12"
+            android:background="@drawable/bg_all_curved_3"
+            android:backgroundTint="@color/colorPrimaryDark" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvClose">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/mainTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/free_feature_list" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerviewFreeFeatures"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_padding8"
+                    android:layout_marginTop="@dimen/activity_padding12"
+                    android:orientation="vertical"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/raw_paid_features" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/mainTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/activity_padding12"
+                    android:gravity="center"
+                    android:text="@string/paid_feature_list" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerviewPaidFeatures"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_padding8"
+                    android:layout_marginTop="@dimen/activity_padding12"
+                    android:orientation="vertical"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/raw_paid_features" />
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/activity_padding12"
+                    app:layout_constraintTop_toBottomOf="@+id/recyclerviewPaidFeatures" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_medium"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/activity_padding8"
+            android:paddingVertical="@dimen/activity_padding12"
+            android:text="@string/close"
+            android:textColor="@color/colorSubHeading"
+            android:textSize="@dimen/textSizeRegular" />
+    </RelativeLayout>
+</layout>

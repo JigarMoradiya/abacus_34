@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/icons_margin2"
+            app:cardBackgroundColor="@color/light_back"
+            app:cardCornerRadius="@dimen/menu_icons_corner"
+            app:cardElevation="@dimen/card_elevation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/menu_icons"
+            android:layout_height="@dimen/menu_icons"
+                android:padding="@dimen/menu_icons_padding"
+                app:srcCompat="@drawable/ic_back" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardExamHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/light_exam_history"
+            app:cardCornerRadius="@dimen/card_corner_radius12"
+            app:cardElevation="@dimen/card_elevation2"
+            app:cardUseCompatPadding="true"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/cardBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/activity_padding4"
+                android:paddingEnd="@dimen/activity_padding8">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:padding="@dimen/activity_padding4"
+                    app:srcCompat="@drawable/ic_exam_history" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fontFamily="@font/font_bold"
+                    android:gravity="center"
+                    android:text="@string/exam_history"
+                    android:textColor="@color/dark_exam_history"
+                    android:textSize="@dimen/textSizeSmall" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtTitle"
+            style="@style/mainTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/let_s_start_exam"
+            app:layout_constraintBottom_toBottomOf="@+id/cardBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardBack">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgExamTime"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_exam_time" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtSelectLevel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding12"
+                    android:fontFamily="@font/font_semibold"
+                    android:gravity="center"
+                    android:text="@string/child_level"
+                    android:textColor="@color/colorBlueDark"
+                    android:textSize="@dimen/textSizeSuperExtraLarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgExamTime" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearSumType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding8"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtSelectLevel">
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/chNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorBlueDark"
+                        android:layout_marginEnd="@dimen/activity_padding6"
+                        android:fontFamily="@font/font_extra_bold"
+                        android:includeFontPadding="false"
+                        android:text="@string/Number"
+                        android:textColor="@color/colorBlueDark"
+                        android:textSize="@dimen/textSizeRegular" />
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/chAddition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorBlueDark"
+                        android:layout_marginHorizontal="@dimen/activity_padding6"
+                        android:fontFamily="@font/font_extra_bold"
+                        android:includeFontPadding="false"
+                        android:text="@string/Addition"
+                        android:textColor="@color/colorBlueDark"
+                        android:textSize="@dimen/textSizeRegular" />
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/chSubtraction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/activity_padding6"
+                        android:buttonTint="@color/colorBlueDark"
+                        android:fontFamily="@font/font_extra_bold"
+                        android:includeFontPadding="false"
+                        android:text="@string/Subtraction"
+                        android:textColor="@color/colorBlueDark"
+                        android:textSize="@dimen/textSizeRegular" />
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/chMultiplication"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorBlueDark"
+                        android:layout_marginHorizontal="@dimen/activity_padding6"
+                        android:fontFamily="@font/font_extra_bold"
+                        android:includeFontPadding="false"
+                        android:text="@string/Multiplication"
+                        android:textColor="@color/colorBlueDark"
+                        android:textSize="@dimen/textSizeRegular" />
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/chDivision"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorBlueDark"
+                        android:fontFamily="@font/font_extra_bold"
+                        android:includeFontPadding="false"
+                        android:layout_marginStart="@dimen/activity_padding6"
+                        android:text="@string/Division"
+                        android:textColor="@color/colorBlueDark"
+                        android:textSize="@dimen/textSizeRegular" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <RadioGroup
+                    android:id="@+id/rg"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding8"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearSumType">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rdchild_level_Beginner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorBlueDark"
+                        android:fontFamily="@font/font_extra_bold"
+                        android:includeFontPadding="false"
+                        android:padding="@dimen/activity_padding6"
+                        android:text="@string/beginner"
+                        android:textColor="@color/colorBlueDark"
+                        android:textSize="@dimen/textSizeRegular"
+                        tools:text="Beginner" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rdchild_level_Intermediate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/activity_padding16"
+                        android:layout_marginEnd="@dimen/activity_padding16"
+                        android:buttonTint="@color/colorBlueDark"
+                        android:fontFamily="@font/font_extra_bold"
+                        android:includeFontPadding="false"
+                        android:padding="@dimen/activity_padding6"
+                        android:text="@string/intermediate"
+                        android:textColor="@color/colorBlueDark"
+                        android:textSize="@dimen/textSizeRegular"
+                        tools:text="Intermediate" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rdchild_level_Expert"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorBlueDark"
+                        android:fontFamily="@font/font_extra_bold"
+                        android:includeFontPadding="false"
+                        android:padding="@dimen/activity_padding6"
+                        android:text="@string/expert"
+                        android:textColor="@color/colorBlueDark"
+                        android:textSize="@dimen/textSizeRegular"
+                        tools:text="Expert" />
+
+                </RadioGroup>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/txtStartExam"
+                    style="@style/btnMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding12"
+                    android:text="@string/let_s_start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rg"
+                    app:textAllCaps="true" />
+
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/activity_padding12"
+                    app:layout_constraintTop_toBottomOf="@+id/txtStartExam" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

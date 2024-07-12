@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ractagle_primary_border_10"
+        android:layout_margin="@dimen/activity_padding4"
+        android:padding="@dimen/activity_padding4">
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearQue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/img"
+            android:gravity="center">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvQuestion1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_medium"
+                android:includeFontPadding="false"
+                android:text="45678"
+                android:textColor="@color/colorHeadingBlack_00"
+                android:textSize="@dimen/textSizeRegular"
+                android:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgSymbol"
+                android:layout_width="@dimen/activity_padding10"
+                android:layout_height="@dimen/activity_padding10"
+                android:layout_marginHorizontal="@dimen/activity_padding4"
+                android:padding="@dimen/activity_padding1"
+                app:tint="@color/black"
+                tools:srcCompat="@drawable/cal_mul" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvQuestion2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_medium"
+                android:includeFontPadding="false"
+                android:text="45678"
+                android:textColor="@color/colorHeadingBlack_00"
+                android:textSize="@dimen/textSizeRegular"
+                android:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgEqual"
+                android:layout_width="@dimen/activity_padding10"
+                android:layout_height="@dimen/activity_padding10"
+                android:layout_marginHorizontal="@dimen/activity_padding4"
+                android:padding="@dimen/activity_padding1"
+                app:tint="@color/black"
+                app:srcCompat="@drawable/cal_equal" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtYourAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_extra_bold"
+                android:gravity="center"
+                android:text="2345678"
+                android:textColor="@color/redDark"
+                android:textSize="@dimen/textSizeRegular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linQue" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            tools:srcCompat="@drawable/ic_answer_wrong" />
+
+
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.jigar.me.data.local.data.ExerciseLevel" />
+
+        <variable
+            name="desc"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtTitle"
+            style="@style/mainTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.title}"
+            android:layout_marginTop="@dimen/activity_padding12"
+            app:layout_constraintBottom_toTopOf="@+id/txtSubTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="@string/AdditionSubtraction" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_padding2"
+            android:includeFontPadding="false"
+            android:text="@string/select_your_exercise"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSizeMedium"
+            app:fontFamily="@font/font_semibold"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerviewExercise"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerviewExercise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_padding8"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/simpleRatingBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtSubTitle"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:spanCount="6"
+            tools:itemCount="10"
+            tools:listitem="@layout/raw_exercise_level" />
+
+        <com.willy.ratingbar.BaseRatingBar
+            android:id="@+id/simpleRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_padding4"
+            app:layout_constraintBottom_toTopOf="@+id/txtDetail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerviewExercise"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:srb_clearRatingEnabled="true"
+            app:srb_clickable="false"
+            app:srb_drawableEmpty="@drawable/start_empty"
+            app:srb_drawableFilled="@drawable/star_filled"
+            app:srb_isIndicator="true"
+            app:srb_minimumStars="1"
+            app:srb_numStars="3"
+            app:srb_rating="2"
+            app:srb_scrollable="false"
+            app:srb_starHeight="@dimen/_18dp"
+            app:srb_starPadding="@dimen/activity_padding2"
+            app:srb_starWidth="@dimen/_18dp"
+            app:srb_stepSize="0.1" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_padding6"
+            android:includeFontPadding="false"
+            android:text="@{desc}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSizeExtraSmall"
+            app:fontFamily="@font/font_medium"
+            app:layout_constraintBottom_toTopOf="@+id/txtDetail2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/simpleRatingBar"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="2 Digits, 5 Lines x 5 Questions in 5 min" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtDetail2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_padding2"
+            android:includeFontPadding="false"
+            android:text="@string/clear_each_exercise_to_get_80_of_3_times_in_a_row"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSizeSmall"
+            app:fontFamily="@font/font_medium"
+            app:layout_constraintBottom_toTopOf="@+id/btnYes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDetail"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnYes"
+            style="@style/btnSmall"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/activity_padding12"
+            android:text="@string/start_exercise"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/spaceBottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDetail2"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <androidx.legacy.widget.Space
+            android:id="@+id/spaceBottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnYes"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_padding12"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

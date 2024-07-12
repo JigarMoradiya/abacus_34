@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="dataModel"
+            type="com.jigar.me.data.local.data.MyAccountMenu" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:background="@drawable/bg_all_curved_3"
+            app:layout_constraintBottom_toBottomOf="@+id/txtTitle"
+            app:layout_constraintEnd_toStartOf="@+id/viewBG"
+            app:layout_constraintTop_toTopOf="@+id/txtTitle" />
+
+        <View
+            android:id="@+id/viewBG"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/activity_padding10"
+            android:layout_marginEnd="@dimen/activity_padding5"
+            android:layout_marginTop="@dimen/activity_padding4"
+            android:elevation="@dimen/activity_padding1"
+            android:background="@drawable/bg_all_curved_8_transperent_border"
+            app:layout_constraintBottom_toBottomOf="@+id/rvMenu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_padding12"
+            android:layout_marginTop="@dimen/activity_padding8"
+            android:fontFamily="@font/font_semibold"
+            android:includeFontPadding="false"
+            android:text="@{dataModel.menuTitle}"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/textSizeRegular"
+            android:elevation="@dimen/activity_padding4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/viewBG"
+            app:layout_constraintTop_toTopOf="@+id/viewBG"
+            tools:text="@string/more_" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:overScrollMode="never"
+            android:paddingVertical="@dimen/activity_padding6"
+            android:scrollbars="none"
+            android:elevation="@dimen/activity_padding4"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="@+id/txtTitle"
+            app:layout_constraintStart_toStartOf="@+id/txtTitle"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+            tools:itemCount="2"
+            tools:listitem="@layout/row_my_account_child" />
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_padding4"
+            app:layout_constraintTop_toBottomOf="@+id/viewBG" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

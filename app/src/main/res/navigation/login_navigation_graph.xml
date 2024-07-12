@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/reg_navigation_graph"
+    app:startDestination="@id/splashFragment">
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.jigar.me.ui.view.login.fragments.SplashFragment">
+        <action
+            android:id="@+id/toLoginHomeFragment"
+            app:destination="@+id/loginHomeFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginHomeFragment"
+        android:name="com.jigar.me.ui.view.login.fragments.LoginHomeFragment">
+        <action
+            android:id="@+id/toLoginFragment"
+            app:destination="@+id/loginFragment" />
+        <action
+            android:id="@+id/toFAQsFragment"
+            app:destination="@+id/faqsFragment" />
+        <action
+            android:id="@+id/toLoginCompleteProfileFragment"
+            app:destination="@+id/loginCompleteProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginCompleteProfileFragment"
+        android:name="com.jigar.me.ui.view.login.fragments.LoginCompleteProfileFragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.jigar.me.ui.view.login.fragments.LoginFragment">
+        <action
+            android:id="@+id/toOTPFragment"
+            app:destination="@+id/otpFragment" />
+        <action
+            android:id="@+id/toForgotPasswordFragment"
+            app:destination="@+id/forgotPasswordFragment" />
+        <action
+            android:id="@+id/toSignupFragment"
+            app:destination="@+id/signupFragment" />
+        <action
+            android:id="@+id/toRegisterStep2Fragment"
+            app:destination="@+id/registerStep2Fragment" />
+        <action
+            android:id="@+id/toFAQsFragment"
+            app:destination="@+id/faqsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/faqsFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.faqs.FAQsFragment"/>
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.jigar.me.ui.view.login.fragments.SignupFragment">
+        <action
+            android:id="@+id/toOTPFragment"
+            app:destination="@+id/otpFragment" />
+        <action
+            android:id="@+id/toFAQsFragment"
+            app:destination="@+id/faqsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/otpFragment"
+        android:name="com.jigar.me.ui.view.login.fragments.OTPFragment">
+        <argument
+            android:name="from"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/toRegisterStep2Fragment"
+            app:destination="@+id/registerStep2Fragment"
+            app:popUpTo="@+id/registerStep1Fragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/toResetPasswordFragment"
+            app:destination="@+id/resetPasswordFragment"
+            app:popUpTo="@+id/forgotPasswordFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.jigar.me.ui.view.login.fragments.ForgotPasswordFragment">
+        <action
+            android:id="@+id/toOTPFragment"
+            app:destination="@+id/otpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resetPasswordFragment"
+        android:name="com.jigar.me.ui.view.login.fragments.ResetPasswordFragment">
+        <argument
+            android:name="otp"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <action
+            android:id="@+id/toLoginFragment"
+            app:destination="@+id/loginFragment"
+            app:popUpTo="@+id/forgotPasswordFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

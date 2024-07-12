@@ -1,0 +1,17 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval" >
+
+    <gradient
+        android:angle="45"
+        android:endColor="@color/wrong_round_bg"
+        android:startColor="@color/wrong_round_bg" />
+
+    <padding
+        android:bottom="2dp"
+        android:left="2dp"
+        android:right="2dp"
+        android:top="2dp" />
+
+    <corners android:radius="10dip" />
+
+</shape>

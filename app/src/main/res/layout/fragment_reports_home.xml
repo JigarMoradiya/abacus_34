@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+
+        <import type="com.jigar.me.utils.AppConstants" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/icons_margin2"
+            android:elevation="@dimen/card_elevation"
+            app:cardBackgroundColor="@color/light_back"
+            app:cardCornerRadius="@dimen/menu_icons_corner"
+            app:cardMaxElevation="@dimen/card_elevation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgBack"
+                android:layout_width="@dimen/menu_icons"
+            android:layout_height="@dimen/menu_icons"
+                android:padding="@dimen/menu_icons_padding"
+                app:srcCompat="@drawable/ic_back" />
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtTitle"
+            style="@style/mainTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/title_margin"
+            android:text="@string/report_card"
+            app:layout_constraintBottom_toBottomOf="@+id/cardBack"
+            app:layout_constraintStart_toEndOf="@+id/cardBack"
+            app:layout_constraintTop_toTopOf="@+id/cardBack" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearTopEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/icons_margin"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardSettingTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/icons_margin"
+                android:elevation="@dimen/card_elevation"
+                app:cardBackgroundColor="@color/light_setting"
+                app:cardCornerRadius="@dimen/menu_icons_corner"
+                app:cardMaxElevation="@dimen/card_elevation">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/menu_icons"
+            android:layout_height="@dimen/menu_icons"
+                    android:padding="@dimen/activity_padding8"
+                    app:srcCompat="@drawable/ic_menu_setting" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardYoutube"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/icons_margin"
+                android:elevation="@dimen/card_elevation"
+                app:cardBackgroundColor="@color/light_youtube"
+                app:cardCornerRadius="@dimen/menu_icons_corner"
+                app:cardMaxElevation="@dimen/card_elevation">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/menu_icons"
+            android:layout_height="@dimen/menu_icons"
+                    android:padding="@dimen/activity_padding8"
+                    app:srcCompat="@drawable/ic_youtube" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardSubscribe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/icons_margin"
+                android:elevation="@dimen/card_elevation"
+                app:cardBackgroundColor="@color/light_subscribe"
+                app:cardCornerRadius="@dimen/menu_icons_corner"
+                app:cardMaxElevation="@dimen/card_elevation">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/menu_icons"
+            android:layout_height="@dimen/menu_icons"
+                    android:padding="@dimen/activity_padding6"
+                    app:srcCompat="@mipmap/ic_menu_subscribe" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtFilter"
+            android:layout_width="180dp"
+            android:layout_height="@dimen/_28dp"
+            android:layout_marginStart="@dimen/activity_padding16"
+            android:background="@drawable/bg_all_curved_12_white_gray_border"
+            android:drawableEnd="@drawable/baseline_arrow_drop_down"
+            android:drawableTint="@color/black"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/activity_padding12"
+            android:paddingEnd="@dimen/activity_padding6"
+            android:singleLine="true"
+            android:text="@string/all_report"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSizeMedium"
+            app:fontFamily="@font/font_semibold"
+            app:layout_constraintBottom_toBottomOf="@+id/cardBack"
+            app:layout_constraintStart_toEndOf="@+id/txtTitle"
+            app:layout_constraintTop_toTopOf="@+id/cardBack"
+            tools:text="Custom Challenge Mode" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtDateRange"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:drawableStart="@mipmap/ic_calendar_date"
+            android:drawablePadding="@dimen/activity_padding8"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/activity_padding12"
+            android:singleLine="true"
+            android:text="@string/last_30_days"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSizeMedium"
+            app:fontFamily="@font/font_semibold"
+            app:layout_constraintBottom_toBottomOf="@+id/cardBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cardBack" />
+
+        <com.jigar.me.utils.widget.CustomSpinner
+            android:id="@+id/spinnerFilter"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:background="@null"
+            android:popupBackground="@drawable/bg_all_curved_12_white"
+            android:popupElevation="5dp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/txtFilter"
+            app:layout_constraintStart_toStartOf="@+id/txtFilter"
+            app:layout_constraintTop_toBottomOf="@+id/txtFilter" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/icons_margin"
+            android:layout_marginVertical="@dimen/activity_padding6"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/adView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardBack"
+            tools:itemCount="2"
+            tools:listitem="@layout/raw_reports" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/noDataView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/image_size_no_data_view"
+                android:layout_height="@dimen/image_size_no_data_view"
+                app:srcCompat="@drawable/ic_report_card" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_padding16"
+                android:fontFamily="@font/font_medium"
+                android:text="@string/no_report_available_yet"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_no_data_view" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

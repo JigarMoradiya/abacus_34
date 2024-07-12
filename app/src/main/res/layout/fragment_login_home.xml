@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/icons_margin2"
+        android:layout_marginTop="@dimen/icons_margin2"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toBottomOf="@+id/cardFAQs"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_banner" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardFAQs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/icons_margin2"
+        app:cardBackgroundColor="@color/light_faq"
+        app:cardCornerRadius="@dimen/menu_icons_corner"
+        app:cardElevation="@dimen/card_elevation"
+        app:cardMaxElevation="@dimen/card_elevation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/menu_icons"
+            android:layout_height="@dimen/menu_icons"
+            android:padding="@dimen/activity_padding8"
+            app:srcCompat="@drawable/ic_menu_faq" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/txtNotes"
+        app:layout_constraintTop_toBottomOf="@+id/cardFAQs">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/activity_padding20">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtWelcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@string/login"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize20"
+                    app:fontFamily="@font/font_extra_bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:textAllCaps="false" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding20"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="@string/welcome_to_abacus_child_leaning_app_portraint"
+                    android:textColor="@color/black_light"
+                    android:textSize="@dimen/textSizeLarge"
+                    app:fontFamily="@font/font_bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtWelcome" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtLable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding8"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@string/login_msg"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeRegular"
+                    app:fontFamily="@font/font_semibold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/btnGoogleLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding24"
+                    android:background="@drawable/bg_all_curved_border_edt"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:drawableStart="@drawable/ic_google"
+                    android:drawablePadding="@dimen/activity_padding10"
+                    android:includeFontPadding="false"
+                    android:paddingHorizontal="@dimen/activity_padding20"
+                    android:paddingVertical="@dimen/activity_padding10"
+                    android:text="@string/login_with_google"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeExtraLarge"
+                    app:fontFamily="@font/font_medium"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLable"
+                    app:textAllCaps="true" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtOR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding20"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="OR"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeRegular"
+                    app:fontFamily="@font/font_semibold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnGoogleLogin" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/btnLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding20"
+                    android:background="@drawable/bg_all_curved_border_edt"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:includeFontPadding="false"
+                    android:paddingHorizontal="@dimen/activity_padding20"
+                    android:paddingVertical="@dimen/activity_padding10"
+                    android:text="@string/login_with_credentials"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeExtraLarge"
+                    app:fontFamily="@font/font_medium"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtOR"
+                    app:textAllCaps="true" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtTermsCondition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:padding="@dimen/activity_padding16"
+                    android:text="@string/i_agree_policy_login_portrait"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/textSizeMedium"
+                    app:fontFamily="@font/font_regular"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="@dimen/activity_padding8"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTermsCondition">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtPowerBy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="@string/power_by"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/textSizeRegular"
+                        app:fontFamily="@font/font_italic" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/power_by_logo_ver"
+                        android:adjustViewBounds="true"
+                        app:srcCompat="@drawable/ic_logo_company_ver" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtNotes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:paddingHorizontal="@dimen/activity_padding20"
+        android:paddingVertical="@dimen/activity_padding16"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSizeMedium"
+        app:fontFamily="@font/font_regular"
+        app:layout_constraintBottom_toTopOf="@+id/txtBulkLogin"
+        tools:text="@string/notes_we_upgrade_our_system" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtBulkLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:paddingHorizontal="@dimen/activity_padding20"
+        android:paddingVertical="@dimen/activity_padding16"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSizeMedium"
+        app:fontFamily="@font/font_regular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="@string/notes_we_upgrade_our_system" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

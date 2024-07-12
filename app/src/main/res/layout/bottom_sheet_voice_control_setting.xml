@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_top_curved_24_dp"
+    android:backgroundTint="@color/white"
+    android:elevation="8dp"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/activity_padding16">
+
+        <View
+            android:id="@+id/viewLine"
+            android:layout_width="@dimen/handle_width"
+            android:layout_height="@dimen/handle_height"
+            android:layout_marginTop="@dimen/activity_padding12"
+            android:background="@drawable/bg_all_curved_3"
+            android:backgroundTint="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvLanguagesLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_padding12"
+            android:includeFontPadding="false"
+            android:text="@string/languages"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/textSizeRegular"
+            app:fontFamily="@font/font_medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewLine" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLanguageSelector"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_padding6"
+            android:layout_marginEnd="@dimen/activity_padding4"
+            android:background="@drawable/bg_all_curved_8"
+            app:layout_constraintEnd_toStartOf="@+id/linearVoiceSelector"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLanguagesLabel">
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/languageSelector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:prompt="@string/select_lang" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvVoicesLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:text="@string/voices"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/textSizeRegular"
+            app:fontFamily="@font/font_medium"
+            app:layout_constraintStart_toStartOf="@+id/linearVoiceSelector"
+            app:layout_constraintTop_toTopOf="@+id/tvLanguagesLabel" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearVoiceSelector"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_padding4"
+            android:background="@drawable/bg_all_curved_8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linearLanguageSelector"
+            app:layout_constraintTop_toTopOf="@+id/linearLanguageSelector">
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/voiceSelector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:prompt="@string/select_voice" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_padding12"
+            android:includeFontPadding="false"
+            android:text="@string/pitch"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/textSizeRegular"
+            app:fontFamily="@font/font_medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLanguageSelector" />
+
+        <com.mohammedalaa.seekbar.RangeSeekBarView
+            android:id="@+id/rsPitch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_padding4"
+            android:layout_marginEnd="@dimen/activity_padding4"
+            app:barHeight="10dp"
+            app:baseColor="@color/gray_light"
+            app:circleFillColor="@color/green_600"
+            app:circleRadius="10dp"
+            app:circleTextColor="@color/white"
+            app:circleTextSize="@dimen/textSizeSmall"
+            app:currentValue="10"
+            app:fillColor="@color/green_200"
+            app:layout_constraintEnd_toStartOf="@+id/rsSpeed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:maxValue="20"
+            app:minValue="0"
+            app:orientation="LEFT_TO_RIGHT"
+            app:stepValue="1" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:text="@string/voice_speed"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/textSizeRegular"
+            app:fontFamily="@font/font_medium"
+            app:layout_constraintStart_toStartOf="@+id/rsSpeed"
+            app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+        <com.mohammedalaa.seekbar.RangeSeekBarView
+            android:id="@+id/rsSpeed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_padding4"
+            android:layout_marginTop="@dimen/activity_padding4"
+            app:barHeight="10dp"
+            app:baseColor="@color/gray_light"
+            app:circleFillColor="@color/green_600"
+            app:circleRadius="10dp"
+            app:circleTextColor="@color/white"
+            app:circleTextSize="@dimen/textSizeSmall"
+            app:currentValue="9"
+            app:fillColor="@color/green_200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rsPitch"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:maxValue="20"
+            app:minValue="0"
+            app:orientation="LEFT_TO_RIGHT"
+            app:stepValue="1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCheckVoice"
+            style="@style/btnSmall"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/activity_padding12"
+            android:backgroundTint="@color/black"
+            android:text="@string/check_voice"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="@+id/rsPitch"
+            app:layout_constraintTop_toBottomOf="@+id/rsSpeed" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUpdate"
+            style="@style/btnSmall"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/activity_padding12"
+            android:text="@string/update_setting"
+            android:textAllCaps="false"
+            app:layout_constraintStart_toStartOf="@+id/rsSpeed"
+            app:layout_constraintTop_toBottomOf="@+id/rsSpeed" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:fontFamily="@font/font_bold"
+            android:includeFontPadding="false"
+            android:padding="@dimen/activity_padding8"
+            android:text="@string/txtCancel"
+            android:textColor="@color/colorListingHeading"
+            android:textSize="@dimen/textSizeMedium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCheckVoice" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

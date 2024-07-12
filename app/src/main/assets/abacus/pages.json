@@ -1,0 +1,882 @@
+[
+  {
+    "level_id": "2",
+    "category_id": "1",
+    "category_name": "Basic Addition",
+    "category_name_ar": "الجمع الأساسي للعدد",
+    "sort_order": 1,
+    "pages": [
+      {
+        "page_id": "51",
+        "page_name": "Page 1",
+        "page_name_ar": "صفحة 1",
+        "descriptions": "Starting of Addition",
+        "descriptions_ar": "بداية الإضافة"
+      },
+      {
+        "page_id": "52",
+        "page_name": "Page 2",
+        "page_name_ar": "صفحة 2",
+        "descriptions": "Addition of 2 Digits - Max 29",
+        "descriptions_ar": "إضافة رقمين - حد أقصى 29"
+      },
+      {
+        "page_id": "53",
+        "page_name": "Page 3",
+        "page_name_ar": "صفحة 3",
+        "descriptions": "Addition of 2 Digits - Max 49",
+        "descriptions_ar": "إضافة رقمين - حد أقصى 49"
+      },
+      {
+        "page_id": "54",
+        "page_name": "Page 4",
+        "page_name_ar": "صفحة 4",
+        "descriptions": "Addition of 2 Digits - 50 to 99 Answer",
+        "descriptions_ar": "إضافة رقمين - 50 إلى 99 إجابة"
+      },
+      {
+        "page_id": "55",
+        "page_name": "Page 5",
+        "page_name_ar": "صفحة 5",
+        "descriptions": "Random addition from 1 to 99",
+        "descriptions_ar": "إضافة عشوائية من 1 إلى 99"
+      }
+    ]
+  },
+  {
+    "level_id": "2",
+    "category_id": "3",
+    "sort_order": 2,
+    "category_name": "Basic Subtraction",
+    "category_name_ar": "الطرح الأساسي للعدد",
+    "pages": [
+      {
+        "page_id": "56",
+        "page_name": "Basic",
+        "page_name_ar": "أساسي",
+        "descriptions": "Starting of Subtraction",
+        "descriptions_ar": "بداية الطرح"
+      },
+      {
+        "page_id": "57",
+        "page_name": "+-5",
+        "page_name_ar": "5-+",
+        "descriptions": "Subtraction of Single Digit for +-5",
+        "descriptions_ar": "طرح رقم واحد لـ +-5"
+      },
+      {
+        "page_id": "58",
+        "page_name": "+-6",
+        "page_name_ar": "6-+",
+        "descriptions": "Subtraction of Single Digit for +-6",
+        "descriptions_ar": "طرح رقم واحد لـ +-6"
+      },
+      {
+        "page_id": "59",
+        "page_name": "+-7",
+        "page_name_ar": "7-+",
+        "descriptions": "Subtraction of Single Digit for +-7",
+        "descriptions_ar": "طرح رقم واحد لـ +-7"
+      },
+      {
+        "page_id": "60",
+        "page_name": "+-8",
+        "page_name_ar": "8-+",
+        "descriptions": "Subtraction of Single Digit for +-8",
+        "descriptions_ar": "طرح رقم واحد لـ +-8"
+      },
+      {
+        "page_id": "61",
+        "page_name": "+-9",
+        "page_name_ar": "9-+",
+        "descriptions": "Subtraction of Single Digit +-9",
+        "descriptions_ar": "طرح رقم واحد لـ +-9"
+      },
+      {
+        "page_id": "62",
+        "page_name": "Random",
+        "page_name_ar": "عشوائي",
+        "descriptions": "Random +-123456789",
+        "descriptions_ar": "عشوائي +123456789"
+      },
+      {
+        "page_id": "63",
+        "page_name": "Basic",
+        "page_name_ar": "أساسي",
+        "descriptions": "Subtraction of Two Digits",
+        "descriptions_ar": "طرح رقمين"
+      },
+      {
+        "page_id": "64",
+        "page_name": "Funny",
+        "page_name_ar": "مضحك",
+        "descriptions": "Fun with Number",
+        "descriptions_ar": "المرح مع الرقم"
+      },
+      {
+        "page_id": "72",
+        "page_name": "Random",
+        "page_name_ar": "عشوائي",
+        "descriptions": "Addition/Subtraction",
+        "descriptions_ar": "جمع وطرح"
+      },
+      {
+        "page_id": "73",
+        "page_name": "Random",
+        "page_name_ar": "عشوائي",
+        "descriptions": "Addition/Subtraction",
+        "descriptions_ar": "جمع وطرح"
+      }
+    ]
+  },
+  {
+    "level_id": "2",
+    "category_id": "2",
+    "category_name": "Addition of 3 Digits",
+    "category_name_ar": "الجمع الأساسي المكون من 3 أرقام",
+    "sort_order": 4,
+    "pages": [
+      {
+        "page_id": "65",
+        "page_name": "Page 1",
+        "page_name_ar": "صفحة 1",
+        "descriptions": "Addition of 3 Digits",
+        "descriptions_ar": "الجمع الأساسي المكون من 3 أرقام"
+      },
+      {
+        "page_id": "66",
+        "page_name": "Page 2",
+        "page_name_ar": "صفحة 2",
+        "descriptions": "Addition of 3 Digits",
+        "descriptions_ar": "الجمع الأساسي المكون من 3 أرقام"
+      },
+      {
+        "page_id": "1051",
+        "page_name": "Page 3",
+        "page_name_ar": "صفحة 1",
+        "isGenerate": true,
+        "descriptions": "Addition of 3 Digits",
+        "maxQuestionLength": 3,
+        "totalSubQuestion": 3,
+        "descriptions_ar": "الجمع الأساسي المكون من 4 أرقام"
+      },
+      {
+        "page_id": "1052",
+        "page_name": "Page 4",
+        "page_name_ar": "صفحة 1",
+        "isGenerate": true,
+        "descriptions": "Addition of 3 Digits",
+        "maxQuestionLength": 3,
+        "totalSubQuestion": 5,
+        "descriptions_ar": "الجمع الأساسي المكون من 4 أرقام"
+      }
+    ]
+  },
+  {
+    "level_id": "2",
+    "category_id": "2",
+    "category_name": "Subtraction of 3 Digits",
+    "category_name_ar": "الجمع الأساسي المكون من 3 أرقام",
+    "sort_order": 5,
+    "pages": [
+      {
+        "page_id": "5001",
+        "page_name": "Page 1",
+        "page_name_ar": "صفحة 1",
+        "descriptions": "Subtraction of 3 Digits",
+        "maxQuestionLength": 3,
+        "totalSubQuestion": 1,
+        "isGenerate": true,
+        "descriptions_ar": "الجمع الأساسي المكون من 3 أرقام"
+      },
+      {
+        "page_id": "5002",
+        "page_name": "Page 2",
+        "page_name_ar": "صفحة 2",
+        "maxQuestionLength": 3,
+        "totalSubQuestion": 2,
+        "isGenerate": true,
+        "descriptions": "Subtraction of 3 Digits",
+        "descriptions_ar": "الجمع الأساسي المكون من 3 أرقام"
+      },
+      {
+        "page_id": "5003",
+        "page_name": "Page 3",
+        "page_name_ar": "صفحة 2",
+        "maxQuestionLength": 3,
+        "totalSubQuestion": 3,
+        "isGenerate": true,
+        "descriptions": "Subtraction of 3 Digits",
+        "descriptions_ar": "الجمع الأساسي المكون من 3 أرقام"
+      },
+      {
+        "page_id": "5004",
+        "page_name": "Page 4",
+        "page_name_ar": "صفحة 2",
+        "maxQuestionLength": 3,
+        "totalSubQuestion": 4,
+        "isGenerate": true,
+        "descriptions": "Subtraction of 3 Digits",
+        "descriptions_ar": "الجمع الأساسي المكون من 3 أرقام"
+      },
+      {
+        "page_id": "5005",
+        "page_name": "Page 5",
+        "page_name_ar": "صفحة 2",
+        "maxQuestionLength": 3,
+        "totalSubQuestion": 5,
+        "isGenerate": true,
+        "descriptions": "Subtraction of 3 Digits",
+        "descriptions_ar": "الجمع الأساسي المكون من 3 أرقام"
+      }
+    ]
+  },
+  {
+    "level_id": "2",
+    "category_id": "11",
+    "category_name": "Addition of 4 Digits",
+    "category_name_ar": "الجمع الأساسي المكون من 4 أرقام",
+    "sort_order": 6,
+    "pages": [
+      {
+        "page_id": "1001",
+        "page_name": "Page 1",
+        "page_name_ar": "صفحة 1",
+        "isGenerate": true,
+        "descriptions": "Addition of 4 Digits",
+        "maxQuestionLength": 4,
+        "totalSubQuestion": 1,
+        "descriptions_ar": "الجمع الأساسي المكون من 4 أرقام"
+      },
+      {
+        "page_id": "1002",
+        "page_name": "Page 2",
+        "page_name_ar": "صفحة 1",
+        "descriptions": "Addition of 4 Digits",
+        "maxQuestionLength": 4,
+        "isGenerate": true,
+        "totalSubQuestion": 1,
+        "descriptions_ar": "الجمع الأساسي المكون من 4 أرقام"
+      },
+      {
+        "page_id": "1003",
+        "page_name": "Page 3",
+        "page_name_ar": "صفحة 1",
+        "descriptions": "Addition of 4 Digits",
+        "maxQuestionLength": 4,
+        "totalSubQuestion": 4,
+        "isGenerate": true,
+        "descriptions_ar": "الجمع الأساسي المكون من 4 أرقام"
+      }
+    ]
+  },
+  {
+    "level_id": "2",
+    "category_id": "2",
+    "category_name": "Subtraction of 4 Digits",
+    "category_name_ar": "الجمع الأساسي المكون من 3 أرقام",
+    "sort_order": 7,
+    "pages": [
+      {
+        "page_id": "6001",
+        "page_name": "Page 1",
+        "page_name_ar": "صفحة 1",
+        "descriptions": "Subtraction of 4 Digits",
+        "maxQuestionLength": 4,
+        "totalSubQuestion": 1,
+        "isGenerate": true,
+        "descriptions_ar": "الجمع الأساسي المكون من 4 أرقام"
+      },
+      {
+        "page_id": "6002",
+        "page_name": "Page 2",
+        "page_name_ar": "صفحة 2",
+        "maxQuestionLength": 4,
+        "totalSubQuestion": 2,
+        "isGenerate": true,
+        "descriptions": "Subtraction of 4 Digits",
+        "descriptions_ar": "الجمع الأساسي المكون من 4 أرقام"
+      },
+      {
+        "page_id": "6003",
+        "page_name": "Page 3",
+        "page_name_ar": "صفحة 2",
+        "maxQuestionLength": 4,
+        "totalSubQuestion": 3,
+        "isGenerate": true,
+        "descriptions": "Subtraction of 4 Digits",
+        "descriptions_ar": "الجمع الأساسي المكون من 4 أرقام"
+      },
+      {
+        "page_id": "6004",
+        "page_name": "Page 4",
+        "page_name_ar": "صفحة 2",
+        "maxQuestionLength": 4,
+        "totalSubQuestion": 4,
+        "isGenerate": true,
+        "descriptions": "Subtraction of 4 Digits",
+        "descriptions_ar": "الجمع الأساسي المكون من 4 أرقام"
+      },
+      {
+        "page_id": "6005",
+        "page_name": "Page 5",
+        "page_name_ar": "صفحة 2",
+        "maxQuestionLength": 4,
+        "totalSubQuestion": 5,
+        "isGenerate": true,
+        "descriptions": "Subtraction of 4 Digits",
+        "descriptions_ar": "الجمع الأساسي المكون من 4 أرقام"
+      }
+    ]
+  },
+  {
+    "level_id": "2",
+    "category_id": "12",
+    "category_name": "Addition of 5 Digits",
+    "category_name_ar": "الجمع الأساسي المكون من 4 أرقام",
+    "sort_order": 8,
+    "pages": [
+      {
+        "page_id": "2001",
+        "page_name": "Page 1",
+        "page_name_ar": "صفحة 1",
+        "descriptions": "Addition of 5 Digits",
+        "maxQuestionLength": 5,
+        "totalSubQuestion": 1,
+        "isGenerate": true,
+        "descriptions_ar": "الجمع الأساسي المكون من 4 أرقام"
+      },
+      {
+        "page_id": "2002",
+        "page_name": "Page 2",
+        "page_name_ar": "صفحة 1",
+        "descriptions": "Addition of 5 Digits",
+        "maxQuestionLength": 5,
+        "totalSubQuestion": 1,
+        "isGenerate": true,
+        "descriptions_ar": "الجمع الأساسي المكون من 4 أرقام"
+      },
+      {
+        "page_id": "2003",
+        "page_name": "Page 3",
+        "page_name_ar": "صفحة 1",
+        "descriptions": "Addition of 5 Digits",
+        "maxQuestionLength": 5,
+        "totalSubQuestion": 4,
+        "isGenerate": true,
+        "descriptions_ar": "الجمع الأساسي المكون من 4 أرقام"
+      }
+    ]
+  },
+  {
+    "level_id": "2",
+    "category_id": "2",
+    "category_name": "Subtraction of 5 Digits",
+    "category_name_ar": "الجمع الأساسي المكون من 5 أرقام",
+    "sort_order": 7,
+    "pages": [
+      {
+        "page_id": "7001",
+        "page_name": "Page 1",
+        "page_name_ar": "صفحة 1",
+        "descriptions": "Subtraction of 5 Digits",
+        "maxQuestionLength": 5,
+        "totalSubQuestion": 1,
+        "isGenerate": true,
+        "descriptions_ar": "الجمع الأساسي المكون من 5 أرقام"
+      },
+      {
+        "page_id": "7002",
+        "page_name": "Page 2",
+        "page_name_ar": "صفحة 2",
+        "maxQuestionLength": 5,
+        "totalSubQuestion": 2,
+        "isGenerate": true,
+        "descriptions": "Subtraction of 5 Digits",
+        "descriptions_ar": "الجمع الأساسي المكون من 5 أرقام"
+      },
+      {
+        "page_id": "7003",
+        "page_name": "Page 3",
+        "page_name_ar": "صفحة 2",
+        "maxQuestionLength": 5,
+        "totalSubQuestion": 3,
+        "isGenerate": true,
+        "descriptions": "Subtraction of 5 Digits",
+        "descriptions_ar": "الجمع الأساسي المكون من 5 أرقام"
+      },
+      {
+        "page_id": "7004",
+        "page_name": "Page 4",
+        "page_name_ar": "صفحة 2",
+        "maxQuestionLength": 5,
+        "totalSubQuestion": 4,
+        "isGenerate": true,
+        "descriptions": "Subtraction of 5 Digits",
+        "descriptions_ar": "الجمع الأساسي المكون من 5 أرقام"
+      },
+      {
+        "page_id": "7005",
+        "page_name": "Page 5",
+        "page_name_ar": "صفحة 2",
+        "maxQuestionLength": 5,
+        "totalSubQuestion": 5,
+        "isGenerate": true,
+        "descriptions": "Subtraction of 5 Digits",
+        "descriptions_ar": "الجمع الأساسي المكون من 5 أرقام"
+      }
+    ]
+  },
+  {
+    "level_id": "3",
+    "category_id": "7",
+    "category_name": "Big Friend Formula (+10)",
+    "sort_order": 103,
+    "category_name_ar": "طرح الصديق الكبير (+10)",
+    "pages": [
+      {
+        "page_id": "77",
+        "page_name": "+9=-1+10",
+        "page_name_ar": "+9=-1+10",
+        "descriptions": "Twist of +10 with -1",
+        "descriptions_ar": "+10 مع -1"
+      },
+      {
+        "page_id": "78",
+        "page_name": "+8=-2+10",
+        "page_name_ar": "+8=-2+10",
+        "descriptions": "Twist of +10 with -2",
+        "descriptions_ar": "+10 مع -2"
+      },
+      {
+        "page_id": "79",
+        "page_name": "+7=-3+10",
+        "page_name_ar": "+7=-3+10",
+        "descriptions": "Twist of +10 with -3",
+        "descriptions_ar": "+10 مع -3"
+      },
+      {
+        "page_id": "83",
+        "page_name": "+6=-4+10",
+        "page_name_ar": "+6=-4+10",
+        "descriptions": "Twist of +10 with -4",
+        "descriptions_ar": "+10 مع -4"
+      },
+      {
+        "page_id": "84",
+        "page_name": "+5=-5+10",
+        "page_name_ar": "+5=-5+10",
+        "descriptions": "Twist of +10 with -5",
+        "descriptions_ar": "+10 مع -5"
+      },
+      {
+        "page_id": "85",
+        "page_name": "+4=-6+10",
+        "page_name_ar": "+4=-6+10",
+        "descriptions": "Twist of +10 with -6",
+        "descriptions_ar": "+10 مع -6"
+      },
+      {
+        "page_id": "89",
+        "page_name": "+3=-7+10",
+        "page_name_ar": "+3=-7+10",
+        "descriptions": "Twist of +10 with -7",
+        "descriptions_ar": "+10 مع -7"
+      },
+      {
+        "page_id": "90",
+        "page_name": "+2=-8+10",
+        "page_name_ar": "+2=-8+10",
+        "descriptions": "Twist of +10 with -8",
+        "descriptions_ar": "+10 مع -8"
+      },
+      {
+        "page_id": "91",
+        "page_name": "+1=-9+10",
+        "page_name_ar": "+1=-9+10",
+        "descriptions": "Twist of +10 with -9",
+        "descriptions_ar": "+10 مع -9"
+      },
+      {
+        "page_id": "113",
+        "page_name": "Random",
+        "page_name_ar": "عشوائي",
+        "descriptions": "Random of +10",
+        "descriptions_ar": "عشوائية +10",
+        "hint": "+9 = -1+10<br/>+8 = -2+10<br/>+7 = -3+10<br/>+6 = -4+10<br/>+5 = -5+10<br/>+4 = -6+10<br/>+3 = -7+10<br/>+2 = -8+10<br/>+1 = -9+10",
+        "file": "abacus_new.json"
+      }
+    ]
+  },
+  {
+    "level_id": "3",
+    "category_id": "9",
+    "sort_order": 104,
+    "category_name": "Big Friend Formula (-10)",
+    "category_name_ar": "طرح صديق كبير لـ (-10)",
+    "pages": [
+      {
+        "page_id": "80",
+        "page_name": "-9=-10+1",
+        "page_name_ar": "-9=-10+1",
+        "descriptions": "Twist of -10 with +1",
+        "descriptions_ar": "-10 مع +1"
+      },
+      {
+        "page_id": "81",
+        "page_name": "-8=-10+2",
+        "page_name_ar": "-8=-10+2",
+        "descriptions": "Twist of -10 with +2",
+        "descriptions_ar": "-10 مع +2"
+      },
+      {
+        "page_id": "82",
+        "page_name": "-7=-10+3",
+        "page_name_ar": "-7=-10+3",
+        "descriptions": "Twist of -10 with +3",
+        "descriptions_ar": "-10 مع +3"
+      },
+      {
+        "page_id": "86",
+        "page_name": "-6=-10+4",
+        "page_name_ar": "-6=-10+4",
+        "descriptions": "Twist of -10 with +4",
+        "descriptions_ar": "-10 مع +4"
+      },
+      {
+        "page_id": "87",
+        "page_name": "-5=-10+5",
+        "page_name_ar": "-5=-10+5",
+        "descriptions": "Twist of -10 with +5",
+        "descriptions_ar": "-10 مع +5"
+      },
+      {
+        "page_id": "88",
+        "page_name": "-4=-10+6",
+        "page_name_ar": "-4=-10+6",
+        "descriptions": "Twist of -10 with +6",
+        "descriptions_ar": "-10 مع +6"
+      },
+      {
+        "page_id": "92",
+        "page_name": "-3=-10+7",
+        "page_name_ar": "-3=-10+7",
+        "descriptions": "Twist of -10 with +7",
+        "descriptions_ar": "-10 مع +7"
+      },
+      {
+        "page_id": "93",
+        "page_name": "-2=-10+8",
+        "page_name_ar": "-2=-10+8",
+        "descriptions": "Twist of -10 with +8",
+        "descriptions_ar": "-10 مع +8"
+      },
+      {
+        "page_id": "94",
+        "page_name": "-1=-10+9",
+        "page_name_ar": "-1=-10+9",
+        "descriptions": "Twist of -10 with +9",
+        "descriptions_ar": "-10 مع +9"
+      },
+      {
+        "page_id": "115",
+        "page_name": "Random",
+        "page_name_ar": "عشوائي",
+        "descriptions": "Random of -10",
+        "descriptions_ar": "عشوائي من -10",
+        "hint": "-9 = -10+1<br/>-8 = -10+2<br/>-7 = -10+3<br/>-6 = -10+4<br/>-5 = -10+5<br/>-4 = -10+6<br/>-3 = -10+7<br/>-2 = -10+8<br/>-1 = -10+9",
+        "file": "abacus_new.json"
+      }
+    ]
+  },
+  {
+    "level_id": "3",
+    "category_id": "5",
+    "sort_order": 105,
+    "category_name": "Small Friend Formula (+5)",
+    "category_name_ar": "طرح الصديق الصغير (+5)",
+    "pages": [
+      {
+        "page_id": "95",
+        "page_name": "+4=-1+5",
+        "page_name_ar": "+4=-1+5",
+        "descriptions": "Twist of +5 with -1",
+        "descriptions_ar": "+5 مع -1"
+      },
+      {
+        "page_id": "96",
+        "page_name": "+3=-2+5",
+        "page_name_ar": "+3=-2+5",
+        "descriptions": "Twist of +5 with -2",
+        "descriptions_ar": "+5 مع -2"
+      },
+      {
+        "page_id": "97",
+        "page_name": "+2=-3+5",
+        "page_name_ar": "+2=-3+5",
+        "descriptions": "Twist of +5 with -3",
+        "descriptions_ar": "+5 مع -3"
+      },
+      {
+        "page_id": "98",
+        "page_name": "+1=-4+5",
+        "page_name_ar": "+1=-4+5",
+        "descriptions": "Twist of +5 with -4",
+        "descriptions_ar": "+5 مع -4"
+      },
+      {
+        "page_id": "111",
+        "page_name": "Random",
+        "page_name_ar": "عشوائي",
+        "descriptions": "Random of +5",
+        "descriptions_ar": "عشوائية +5",
+        "hint": "+4 = -1+5<br/>+3 = -2+5<br/>+2 = -3+5<br/>+1 = -4+5",
+        "file": "abacus_new.json"
+      }
+    ]
+  },
+  {
+    "level_id": "3",
+    "category_id": "6",
+    "sort_order": 106,
+    "category_name": "Small Friend Formula (-5)",
+    "category_name_ar": "طرح الصديق الصغير (-5)",
+    "pages": [
+      {
+        "page_id": "99",
+        "page_name": "-4=-5+1",
+        "page_name_ar": "-4=-5+1",
+        "descriptions": "Twist of -5 with +1",
+        "descriptions_ar": "-5 مع +1"
+      },
+      {
+        "page_id": "100",
+        "page_name": "-3=-5+2",
+        "page_name_ar": "-3=-5+2",
+        "descriptions": "Twist of -5 with +2",
+        "descriptions_ar": "-5 مع +2"
+      },
+      {
+        "page_id": "101",
+        "page_name": "-2=-5+3",
+        "page_name_ar": "-2=-5+3",
+        "descriptions": "Twist of -5 with +3",
+        "descriptions_ar": "-5 مع +3"
+      },
+      {
+        "page_id": "102",
+        "page_name": "-1=-5+4",
+        "page_name_ar": "-1=-5+4",
+        "descriptions": "Twist of -5 with +4",
+        "descriptions_ar": "-5 مع +4"
+      },
+      {
+        "page_id": "112",
+        "page_name": "Random",
+        "page_name_ar": "عشوائي",
+        "descriptions": "Random of -5",
+        "descriptions_ar": "عشوائي من -5",
+        "hint": "-4 = -5+1<br/>-3 = -5+2<br/>-2 = -5+3<br/>-1 = -5+4",
+        "file": "abacus_new.json"
+      }
+    ]
+  },
+  {
+    "level_id": "3",
+    "category_id": "8",
+    "sort_order": 107,
+    "category_name": "Combination (Family) Formula (-5+10)",
+    "category_name_ar": "الطرح العائلي (+10-5)",
+    "pages": [
+      {
+        "page_id": "103",
+        "page_name": "+9=+4-5+10",
+        "page_name_ar": "+9=+4-5+10",
+        "descriptions": "Twist of -5 and +10 with +4",
+        "descriptions_ar": "-5 و +10 مع +4"
+      },
+      {
+        "page_id": "104",
+        "page_name": "+8=+3-5+10",
+        "page_name_ar": "+8=+3-5+10",
+        "descriptions": "Twist of -5 and +10 with +3",
+        "descriptions_ar": "-5 و +10 مع +3"
+      },
+      {
+        "page_id": "105",
+        "page_name": "+7=+2-5+10",
+        "page_name_ar": "+7=+2-5+10",
+        "descriptions": "Twist of -5 and +10 with +2",
+        "descriptions_ar": "-5 و +10 مع +2"
+      },
+      {
+        "page_id": "106",
+        "page_name": "+6=+1-5+10",
+        "page_name_ar": "+6=+1-5+10",
+        "descriptions": "Twist of -5 and +10 with +1",
+        "descriptions_ar": "-5 و +10 مع +1"
+      },
+      {
+        "page_id": "114",
+        "page_name": "Random",
+        "page_name_ar": "عشوائي",
+        "descriptions": "Random of -5+10",
+        "descriptions_ar": "عشوائي من -5+10",
+        "hint": "+9 = +4-5+10<br/>+8 = +3-5+10<br/>+7 = +2-5+10<br/>+6 = +1-5+10",
+        "file": "abacus_new.json"
+      }
+    ]
+  },
+  {
+    "level_id": "3",
+    "category_id": "10",
+    "sort_order": 108,
+    "category_name": "Combination (Family) Formula (-10+5)",
+    "category_name_ar": "الطرح العائلي (-10+5)",
+    "pages": [
+      {
+        "page_id": "107",
+        "page_name": "-9=-10+5-4",
+        "page_name_ar": "-9=-10+5-4",
+        "descriptions": "Twist of -10 and +5 with -4",
+        "descriptions_ar": "-10 و +5 مع -4"
+      },
+      {
+        "page_id": "108",
+        "page_name": "-8=-10+5-3",
+        "page_name_ar": "-8=-10+5-3",
+        "descriptions": "Twist of -10 and +5 with -3",
+        "descriptions_ar": "-10 و +5 مع -3"
+      },
+      {
+        "page_id": "109",
+        "page_name": "-7=-10+5-2",
+        "page_name_ar": "-7=-10+5-2",
+        "descriptions": "Twist of -10 and +5 with -2",
+        "descriptions_ar": "-10 و +5 مع -2"
+      },
+      {
+        "page_id": "110",
+        "page_name": "-6=-10+5-1",
+        "page_name_ar": "-6=-10+5-1",
+        "descriptions": "Twist of -10 and +5 with -1",
+        "descriptions_ar": "-10 و +5 مع -1"
+      },
+      {
+        "page_id": "116",
+        "page_name": "Random",
+        "page_name_ar": "عشوائي",
+        "descriptions": "Random of -10+5",
+        "descriptions_ar": "عشوائي من -10+5",
+        "hint": "-9=-10+5-4<br/>-8=-10+5-3<br/>-7=-10+5-2<br/>-6=-10+5-1",
+        "file": "abacus_new.json"
+      }
+    ]
+  },
+  {
+    "level_id": "3",
+    "category_id": "13",
+    "sort_order": 109,
+    "category_name": "Mix Formula",
+    "pages": [
+      {
+        "page_id": "117",
+        "page_name": "+10 and -10",
+        "descriptions": "Mix of Big Friend Formula",
+        "ref_pages": "77,79,84,85,90,81,86,87,93"
+      },
+      {
+        "page_id": "118",
+        "page_name": "+10 and -10",
+        "descriptions": "Mix of Big Friend Formula",
+        "ref_pages": "78,83,89,91,80,82,88,92,94"
+      },
+      {
+        "page_id": "119",
+        "page_name": "+10 and -10",
+        "descriptions": "Mix of Big Friend Formula",
+        "ref_pages": "78,83,89,91,80,82,88,92,94,77,79,84,85,90,81,86,87,93,113,115"
+      },
+      {
+        "page_id": "120",
+        "page_name": "+5 and -5",
+        "descriptions": "Mix of Small Friend Formula",
+        "ref_pages": "95,96,97,98,99,100,101,102,111,112"
+      },
+      {
+        "page_id": "121",
+        "page_name": "+10, -10 and +5 -5",
+        "descriptions": "Mix of Big & Small Friend Formula",
+        "ref_pages": "78,83,89,91,78,83,89,91,95,97,99,101,111"
+      },
+      {
+        "page_id": "122",
+        "page_name": "+10, -10 and +5 -5",
+        "descriptions": "Mix of Big & Small Friend Formula",
+        "ref_pages": "78,83,89,91,78,83,89,91,95,97,99,101,111,90,81,86,87,93,80,82,88,92,94,96,98,100,102,112"
+      },
+      {
+        "page_id": "123",
+        "page_name": "-5+10 and -10+5",
+        "descriptions": "Mix of Combination (Family) Formula",
+        "ref_pages": "103,104,105,106,114,107,108,109,110,116"
+      },
+      {
+        "page_id": "124",
+        "page_name": "+5, -5 and -5+10, -10+5",
+        "descriptions": "Mix of Small Friend & Combination (Family) Formula",
+        "ref_pages": "95,96,97,98,99,100,101,102,111,112,103,104,105,106,114,107,108,109,110,116"
+      },
+      {
+        "page_id": "125",
+        "page_name": "+10, -10 and -5+10, -10+5",
+        "descriptions": "Mix of Big Friend & Combination (Family) Formula",
+        "ref_pages": "78,83,89,91,80,82,88,92,94,77,79,84,85,90,81,86,87,93,113,115,103,104,105,106,114,107,108,109,110,116"
+      },
+      {
+        "page_id": "126",
+        "page_name": "All Formula",
+        "descriptions": "Mix of All Formula",
+        "ref_pages": "95,97,99,101,111,78,83,80,82,94,77,79,84,81,86,113,115,104,106,114,107,109,116"
+      },
+      {
+        "page_id": "127",
+        "page_name": "All Formula",
+        "descriptions": "Mix of All Formula",
+        "ref_pages": "96,98,100,102,112,89,91,88,92,94,77,85,90,81,86,87,93,103,105,114,108,110,116"
+      },
+      {
+        "page_id": "128",
+        "page_name": "All Formula",
+        "descriptions": "Mix of All Formula",
+        "ref_pages": "95,97,99,101,111,78,83,80,82,94,77,79,84,81,86,113,115,104,106,114,107,109,116,96,98,100,102,112,89,91,88,92,94,77,85,90,81,86,87,93,103,105,114,108,110,116"
+      }
+    ]
+  },
+  {
+    "level_id": "3",
+    "category_id": "14",
+    "sort_order": 110,
+    "category_name": "Formula with 50",
+    "pages": [
+      {
+        "page_id": "164",
+        "page_name": "+50",
+        "descriptions": "Formula with +50",
+        "file": "abacus_50.json"
+      },
+      {
+        "page_id": "165",
+        "page_name": "-50",
+        "descriptions": "Formula with -50",
+        "file": "abacus_50.json"
+      },
+      {
+        "page_id": "166",
+        "page_name": "+50 and -50",
+        "descriptions": "Formula with +50 and -50",
+        "file": "abacus_50.json"
+      }
+    ]
+  }
+]

@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.jigar.me.data.model.data.AllExamData" />
+
+        <import type="androidx.core.text.HtmlCompat" />
+
+        <import type="com.jigar.me.utils.AppConstants" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/conMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_padding6"
+        app:cardBackgroundColor="@color/card_bg"
+        app:cardCornerRadius="@dimen/activity_padding6"
+        app:cardElevation="@dimen/card_elevation2"
+        app:cardMaxElevation="@dimen/card_elevation3">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_padding8">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/txtType"
+                style="@style/btnExtraSmall"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="@dimen/activity_padding2"
+                android:elevation="@dimen/card_elevation2"
+                android:letterSpacing="0"
+                android:minWidth="0dp"
+                android:paddingStart="@dimen/activity_padding8"
+                android:paddingEnd="@dimen/activity_padding8"
+                android:text="@string/custom_challenge_mode"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:textAllCaps="false"
+                tools:text="Exam" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fontFamily="@font/font_bold"
+                android:text="@{data.dateTimeFormat()}"
+                tools:text="At 7 March, 10:20 AM"
+                android:textColor="@color/colorHeadingBlack_00"
+                android:textSize="@dimen/textSizeSmall"
+                app:layout_constraintBottom_toBottomOf="@+id/txtType"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtType" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/conExerciseExam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_padding6"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/txtType"
+                tools:visibility="visible">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/txtExerciseCheckResult"
+                    style="@style/btnExtraSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_padding2"
+                    android:elevation="@dimen/card_elevation"
+                    android:letterSpacing="0"
+                    android:minWidth="0dp"
+                    android:paddingStart="@dimen/activity_padding8"
+                    android:paddingEnd="@dimen/activity_padding8"
+                    android:text="@string/checkResult"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtExerciseLabel"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtExerciseType"
+                    app:textAllCaps="false" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtExerciseType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fontFamily="@font/font_bold"
+                    android:includeFontPadding="false"
+                    android:text="@{data.type.equalsIgnoreCase(`Exam`)?@string/level_of_exam:@string/type_of_exercise}"
+                    tools:text="@string/type_of_exercise"
+                    android:textColor="@color/colorHeadingBlack_00"
+                    android:textSize="@dimen/textSizeSmall"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtExerciseTypeValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/activity_padding4"
+                    android:includeFontPadding="false"
+                    android:text="@{data.type.equalsIgnoreCase(`Exam`)?data.level:data.category}"
+                    android:textColor="@color/colorHeadingBlack_00"
+                    android:textSize="@dimen/textSizeExtraSmall"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtExerciseType"
+                    app:layout_constraintStart_toEndOf="@+id/txtExerciseType"
+                    app:layout_constraintTop_toTopOf="@+id/txtExerciseType"
+                    tools:text="Addition \u0026 Subtraction" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtExerciseLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding2"
+                    app:fontFamily="@font/font_bold"
+                    android:includeFontPadding="false"
+                    tools:text="@string/exercise_in"
+                    android:text="@{data.type.equalsIgnoreCase(`Exam`)?@string/type_of_questions:@string/exercise_in}"
+                    android:textColor="@color/colorHeadingBlack_00"
+                    android:textSize="@dimen/textSizeSmall"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtExerciseType" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtExerciseLabelValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/activity_padding4"
+                    android:includeFontPadding="false"
+                    android:text="@{data.type.equalsIgnoreCase(`Exam`)?data.sub_type.replace(`,`,`, `):data.label}"
+                    android:textColor="@color/colorHeadingBlack_00"
+                    android:textSize="@dimen/textSizeExtraSmall"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtExerciseLabel"
+                    app:layout_constraintStart_toEndOf="@+id/txtExerciseLabel"
+                    app:layout_constraintTop_toTopOf="@+id/txtExerciseLabel"
+                    tools:text="1 Digits 5 Lines X 5 Questions" />
+
+
+
+                <RelativeLayout
+                    android:id="@+id/linearTotalQuestionEx"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding12"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/linearMaxTimeEx"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtExerciseLabel">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/report_card_list_icon"
+                        android:layout_height="@dimen/report_card_list_icon"
+                        app:srcCompat="@mipmap/ic_question_total" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtTotalQueEx"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:fontFamily="@font/font_bold"
+                        android:includeFontPadding="false"
+                        android:paddingStart="@dimen/report_card_list_icon_margin"
+                        android:text="@{data.no_of_questions+``}"
+                        android:textColor="@color/colorBlueDark"
+                        android:textSize="@dimen/textSizeLarge"
+                        tools:text="20" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtTotalQueEx"
+                        android:alpha="0.8"
+                        android:fontFamily="@font/font_semibold"
+                        android:includeFontPadding="false"
+                        android:paddingStart="@dimen/report_card_list_icon_margin"
+                        android:text="@string/TotalQue"
+                        android:textColor="@color/colorBlueDark"
+                        android:textSize="@dimen/textSizeSmall" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/linearMaxTimeEx"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:visibility="@{data.type.equalsIgnoreCase(`Exam`)?View.GONE:View.VISIBLE}"
+                    tools:visibility="visible"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/linearTotalTimeEx"
+                    app:layout_constraintStart_toEndOf="@+id/linearTotalQuestionEx"
+                    app:layout_constraintTop_toTopOf="@+id/linearTotalQuestionEx">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/report_card_list_icon"
+                        android:layout_height="@dimen/report_card_list_icon"
+                        app:srcCompat="@mipmap/ic_max_time" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtMaxTimeEx"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:fontFamily="@font/font_bold"
+                        android:includeFontPadding="false"
+                        android:paddingStart="@dimen/report_card_list_icon_margin"
+                        android:text="@{data.maxTimeFormat()}"
+                        android:textColor="@color/colorPinkDark"
+                        android:textSize="@dimen/textSizeLarge"
+                        tools:text="10m 20s" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtMaxTimeEx"
+                        android:alpha="0.8"
+                        android:fontFamily="@font/font_semibold"
+                        android:includeFontPadding="false"
+                        android:paddingStart="@dimen/report_card_list_icon_margin"
+                        android:text="@string/maximum_time"
+                        android:textColor="@color/colorPinkDark"
+                        android:textSize="@dimen/textSizeSmall" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/linearTotalTimeEx"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/linearRightAnswerEx"
+                    app:layout_constraintStart_toEndOf="@+id/linearMaxTimeEx"
+                    app:layout_constraintTop_toTopOf="@+id/linearTotalQuestionEx">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/report_card_list_icon"
+                        android:layout_height="@dimen/report_card_list_icon"
+                        app:srcCompat="@mipmap/ic_time" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtTotalTimeEx"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:fontFamily="@font/font_bold"
+                        android:includeFontPadding="false"
+                        android:paddingStart="@dimen/report_card_list_icon_margin"
+                        android:text="@{data.totalTimeFormat()}"
+                        android:textColor="@color/colorPinkDark"
+                        android:textSize="@dimen/textSizeLarge"
+                        tools:text="10m 20s" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtTotalTimeEx"
+                        android:alpha="0.8"
+                        android:fontFamily="@font/font_semibold"
+                        android:includeFontPadding="false"
+                        android:paddingStart="@dimen/report_card_list_icon_margin"
+                        android:text="@string/TotalTakeTime"
+                        android:textColor="@color/colorPinkDark"
+                        android:textSize="@dimen/textSizeSmall" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/linearRightAnswerEx"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/linearWrongAnswerEx"
+                    app:layout_constraintStart_toEndOf="@+id/linearTotalTimeEx"
+                    app:layout_constraintTop_toTopOf="@+id/linearTotalQuestionEx">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/report_card_list_icon"
+                        android:layout_height="@dimen/report_card_list_icon"
+                        app:srcCompat="@mipmap/ic_question_right" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtRightQueEx"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:fontFamily="@font/font_bold"
+                        android:includeFontPadding="false"
+                        android:paddingStart="@dimen/report_card_list_icon_margin"
+                        android:text="@{data.no_of_right_answers+``}"
+                        android:textColor="@color/colorGreenDark"
+                        android:textSize="@dimen/textSizeLarge"
+                        tools:text="20" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtRightQueEx"
+                        android:alpha="0.8"
+                        android:fontFamily="@font/font_semibold"
+                        android:includeFontPadding="false"
+                        android:paddingStart="@dimen/report_card_list_icon_margin"
+                        android:text="@string/RightQue"
+                        android:textColor="@color/colorGreenDark"
+                        android:textSize="@dimen/textSizeSmall" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/linearWrongAnswerEx"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/linearRightAnswerEx"
+                    app:layout_constraintTop_toTopOf="@+id/linearTotalTimeEx">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/report_card_list_icon"
+                        android:layout_height="@dimen/report_card_list_icon"
+                        app:srcCompat="@mipmap/ic_question_wrong" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtWrongQueEx"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:fontFamily="@font/font_bold"
+                        android:includeFontPadding="false"
+                        android:paddingStart="@dimen/report_card_list_icon_margin"
+                        android:text="@{(data.no_of_questions - data.no_of_right_answers)+``}"
+                        android:textColor="@color/colorRedDark"
+                        android:textSize="@dimen/textSizeLarge"
+                        tools:text="20" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtWrongQueEx"
+                        android:alpha="0.8"
+                        android:fontFamily="@font/font_semibold"
+                        android:includeFontPadding="false"
+                        android:paddingStart="@dimen/report_card_list_icon_margin"
+                        android:text="@string/WrongQue"
+                        android:textColor="@color/colorRedDark"
+                        android:textSize="@dimen/textSizeSmall" />
+                </RelativeLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/conCCM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_padding6"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/conExerciseExam"
+                tools:visibility="visible">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtCCMQuestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fontFamily="@font/font_bold"
+                    android:includeFontPadding="false"
+                    android:text="@string/question"
+                    android:textColor="@color/colorHeadingBlack_00"
+                    android:textSize="@dimen/textSizeSmall"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtCCMQuestionValue"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtCCMQuestionValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/activity_padding4"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingTop="@dimen/activity_padding1"
+                    android:text="@{HtmlCompat.fromHtml(data.fullQuestion()+` = &lt;b>&lt;font color='#23A100'>`+data.correctAns()+`&lt;/font>&lt;/b>`,HtmlCompat.FROM_HTML_MODE_COMPACT)}"
+                    android:textColor="@color/colorHeadingBlack_00"
+                    android:textSize="@dimen/textSizeExtraSmall"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/txtCCMQuestion"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="9030-7798+6210+5862-9747 = 1478" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtAnswerDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding2"
+                    app:fontFamily="@font/font_bold"
+                    android:includeFontPadding="false"
+                    android:text="@{data.isAnswerCorrect()?@string/great_your_answer_is_correct:@string/sorry_your_answer_is_incorrect}"
+                    android:textColor="@{data.isAnswerCorrect()?@color/colorGreen:@color/red}"
+                    android:textSize="@dimen/textSizeSmall"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCCMQuestionValue"
+                    tools:text="@string/great_your_answer_is_correct"
+                    tools:textColor="@color/colorGreen" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtUserAnswer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding2"
+                    app:fontFamily="@font/font_bold"
+                    android:includeFontPadding="false"
+                    android:text="@{`Your answer is : `+data.userAns()}"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/textSizeSmall"
+                    android:visibility="@{data.isAnswerCorrect()?View.GONE:View.VISIBLE}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCCMQuestionValue"
+                    tools:text="Your answer is : "
+                    tools:visibility="visible" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtCCMIsQueSpeak"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding4"
+                    app:fontFamily="@font/font_bold"
+                    android:includeFontPadding="false"
+                    android:text="@string/is_question_speak"
+                    android:textColor="@color/colorHeadingBlack_00"
+                    android:textSize="@dimen/textSizeSmall"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtAnswerDesc" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtCCMIsQueSpeakValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding2"
+                    android:includeFontPadding="false"
+                    android:text="@{data.is_question_speak()?@string/yes:@string/no}"
+                    android:textColor="@color/colorHeadingBlack_00"
+                    android:textSize="@dimen/textSizeSmall"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCCMIsQueSpeak"
+                    tools:text="Yes" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtCCMIsQueNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fontFamily="@font/font_bold"
+                    android:includeFontPadding="false"
+                    android:text="@string/is_question_show_in_number"
+                    android:textColor="@color/colorHeadingBlack_00"
+                    android:textSize="@dimen/textSizeSmall"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtCCMIsQueSpeak" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtCCMIsQueNumberValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding2"
+                    android:includeFontPadding="false"
+                    android:text="@{data.is_question_show_in_number()?@string/yes:@string/no}"
+                    android:textColor="@color/colorHeadingBlack_00"
+                    android:textSize="@dimen/textSizeSmall"
+                    app:layout_constraintEnd_toEndOf="@+id/txtCCMIsQueNumber"
+                    app:layout_constraintStart_toStartOf="@+id/txtCCMIsQueNumber"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCCMIsQueNumber"
+                    tools:text="Yes" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtCCMIsQueWord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fontFamily="@font/font_bold"
+                    android:includeFontPadding="false"
+                    android:text="@string/is_question_show_in_word"
+                    android:textColor="@color/colorHeadingBlack_00"
+                    android:textSize="@dimen/textSizeSmall"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtCCMIsQueSpeak" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtCCMIsQueWordValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding2"
+                    android:includeFontPadding="false"
+                    android:text="@{data.is_question_show_in_word()?@string/yes:@string/no}"
+                    android:textColor="@color/colorHeadingBlack_00"
+                    android:textSize="@dimen/textSizeSmall"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCCMIsQueWord"
+                    tools:text="Yes" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtCCMQueGap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding4"
+                    app:fontFamily="@font/font_bold"
+                    android:includeFontPadding="false"
+                    android:text="@string/gap_between_each_question_number"
+                    android:textColor="@color/colorHeadingBlack_00"
+                    android:textSize="@dimen/textSizeSmall"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCCMIsQueSpeakValue" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtCCMQueGapValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding2"
+                    android:includeFontPadding="false"
+                    android:text="@{data.gap_between_two_question+` sec`}"
+                    android:textColor="@color/colorHeadingBlack_00"
+                    android:textSize="@dimen/textSizeSmall"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCCMQueGap"
+                    tools:text="5 sec" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtCCMQueLength"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fontFamily="@font/font_bold"
+                    android:includeFontPadding="false"
+                    android:text="@string/question_min_max_length"
+                    android:textColor="@color/colorHeadingBlack_00"
+                    android:textSize="@dimen/textSizeSmall"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtCCMQueGap" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtCCMQueLengthValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding2"
+                    android:includeFontPadding="false"
+                    android:text="@{data.question_min_length+`-`+data.question_max_length}"
+                    android:textColor="@color/colorHeadingBlack_00"
+                    android:textSize="@dimen/textSizeSmall"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCCMQueGap"
+                    tools:text="1-3" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

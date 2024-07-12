@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.jigar.me.data.local.data.HomeBanner" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/activity_padding4"
+            app:cardCornerRadius="@dimen/activity_padding4"
+            app:cardElevation="@dimen/home_menu_elevation">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@{data.background}"
+                tools:background="@drawable/gradient_banner_bg_share_now"
+                android:paddingHorizontal="@dimen/activity_padding6">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical|start"
+                    android:layout_marginEnd="@dimen/activity_padding6"
+                    android:layout_toStartOf="@+id/btnRight"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="@string/we_need_your_help"
+                        android:textColor="@color/white"
+                        android:shadowColor="@color/black"
+                        android:shadowRadius="3"
+                        android:gravity="start"
+                        android:text="@{data.title}"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/textSizeExtraSmall"
+                        app:fontFamily="@font/font_extra_bold" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:shadowColor="@color/black"
+                        android:shadowRadius="3"
+                        android:id="@+id/txtText"
+                        tools:text="@string/kindly_support_us_by_sharing_an_application"
+                        android:textColor="@color/white"
+                        android:includeFontPadding="false"
+                        android:layout_marginTop="@dimen/activity_padding2"
+                        android:textSize="@dimen/textSizeVery2ExtraSmall"
+                        app:fontFamily="@font/font_semibold" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRight"
+                    android:layout_width="64dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginEnd="5dp"
+                    android:layout_centerVertical="true"
+                    android:backgroundTint="@color/white"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:letterSpacing="0"
+                    android:paddingHorizontal="0dp"
+                    android:shadowColor="@color/black"
+                    android:shadowRadius="0.05"
+                    android:text="@{data.btnText}"
+                    android:textAllCaps="false"
+                    android:textColor="#4C4A8F"
+                    android:textSize="@dimen/textSizeExtraSmall"
+                    app:cornerRadius="@dimen/card_corner_radius14"
+                    app:fontFamily="@font/font_bold"
+                    tools:text="@string/rate_now" />
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:visibility="gone" />
+
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

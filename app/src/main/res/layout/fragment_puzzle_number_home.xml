@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/light_back"
+            app:cardCornerRadius="@dimen/menu_icons_corner"
+            app:cardElevation="@dimen/card_elevation"
+            android:layout_margin="@dimen/icons_margin2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/menu_icons"
+            android:layout_height="@dimen/menu_icons"
+                android:padding="@dimen/menu_icons_padding"
+                app:srcCompat="@drawable/ic_back" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtTitle"
+            style="@style/mainTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/number_sequences_puzzle"
+            app:layout_constraintBottom_toBottomOf="@+id/cardBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cardBack" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_padding16"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layout_constraintTop_toBottomOf="@+id/cardBack">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgIcon"
+                    android:layout_width="@dimen/_56dp"
+                    android:layout_height="@dimen/_56dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_number_sequences_puzzle_logo" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtSelect"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding16"
+                    android:fontFamily="@font/font_semibold"
+                    android:gravity="center"
+                    android:text="@string/select_the_puzzle_dashboard"
+                    android:textColor="@color/colorBlueDark"
+                    android:textSize="@dimen/textSizeSuperExtraLarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgIcon" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtSubtext"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding2"
+                    app:fontFamily="@font/font_bold"
+                    android:gravity="center"
+                    android:text="@string/arrange_all_the_numbers_of_puzzle_in_ascending_order"
+                    android:textColor="@color/dark_bg_red"
+                    android:textSize="@dimen/textSizeRegular"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtSelect" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img9"
+                    android:layout_width="@dimen/_72dp"
+                    android:layout_height="@dimen/_72dp"
+                    android:layout_marginTop="@dimen/activity_padding16"
+                    app:layout_constraintEnd_toStartOf="@+id/img16"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtSubtext"
+                    app:srcCompat="@drawable/ic_number_puzzles_9" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txt9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding8"
+                    android:fontFamily="@font/font_extra_bold"
+                    android:gravity="center"
+                    android:text="@string/_3_x_3_puzzle"
+                    android:textColor="@color/pink_400"
+                    android:textSize="@dimen/textSizeMedium"
+                    app:layout_constraintEnd_toEndOf="@+id/img9"
+                    app:layout_constraintStart_toStartOf="@+id/img9"
+                    app:layout_constraintTop_toBottomOf="@+id/img9" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img16"
+                    android:layout_width="@dimen/_72dp"
+                    android:layout_height="@dimen/_72dp"
+                    android:layout_marginHorizontal="30dp"
+                    app:layout_constraintEnd_toStartOf="@+id/img25"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toEndOf="@+id/img9"
+                    app:layout_constraintTop_toTopOf="@+id/img9"
+                    app:srcCompat="@drawable/ic_number_puzzles_16" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txt16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding8"
+                    android:fontFamily="@font/font_extra_bold"
+                    android:gravity="center"
+                    android:text="@string/_4_x_4_puzzle"
+                    android:textColor="@color/orange_800"
+                    android:textSize="@dimen/textSizeMedium"
+                    app:layout_constraintEnd_toEndOf="@+id/img16"
+                    app:layout_constraintStart_toStartOf="@+id/img16"
+                    app:layout_constraintTop_toBottomOf="@+id/img16" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img25"
+                    android:layout_width="@dimen/_72dp"
+                    android:layout_height="@dimen/_72dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toEndOf="@+id/img16"
+                    app:layout_constraintTop_toTopOf="@+id/img9"
+                    app:srcCompat="@drawable/ic_number_puzzles_25" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txt25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding8"
+                    android:fontFamily="@font/font_extra_bold"
+                    android:gravity="center"
+                    android:text="@string/_5_x_5_puzzle"
+                    android:textColor="@color/indigo_500"
+                    android:textSize="@dimen/textSizeMedium"
+                    app:layout_constraintEnd_toEndOf="@+id/img25"
+                    app:layout_constraintStart_toStartOf="@+id/img25"
+                    app:layout_constraintTop_toBottomOf="@+id/img25" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

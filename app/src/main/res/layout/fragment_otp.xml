@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/icons_margin2"
+        android:elevation="@dimen/card_elevation"
+        app:cardBackgroundColor="@color/light_back"
+        app:cardCornerRadius="@dimen/menu_icons_corner"
+        app:cardMaxElevation="@dimen/card_elevation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgBack"
+            android:layout_width="@dimen/menu_icons"
+            android:layout_height="@dimen/menu_icons"
+            android:padding="@dimen/activity_padding8"
+            app:srcCompat="@drawable/ic_back" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/icons_margin2"
+        android:layout_marginTop="@dimen/icons_margin2"
+        android:adjustViewBounds="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/cardBack"
+        app:srcCompat="@drawable/logo_banner" />
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardBack">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/activity_padding20">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtWelcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@string/otp_verification"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize20"
+                    android:layout_marginTop="@dimen/activity_padding20"
+                    app:fontFamily="@font/font_extra_bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:textAllCaps="false" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtLable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@string/otp_msg"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeRegular"
+                    app:fontFamily="@font/font_semibold"
+                    android:layout_marginTop="@dimen/activity_padding20"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtWelcome" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtLableEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/activity_padding6"
+                    android:includeFontPadding="false"
+                    android:text="android_developer@gmail.com"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeLarge"
+                    app:fontFamily="@font/font_bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLable"  />
+
+                <com.mukeshsolanki.OtpView
+                    android:id="@+id/otp_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding20"
+                    app:fontFamily="@font/font_bold"
+                    android:inputType="number"
+                    android:itemBackground="@drawable/bg_otp_item"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeOTP"
+                    app:OtpHideLineWhenFilled="true"
+                    app:OtpItemCount="6"
+                    app:OtpItemSpacing="@dimen/activity_padding6"
+                    app:OtpLineColor="@color/otp_item_state"
+                    app:OtpState_filled="true"
+                    app:OtpViewType="rectangle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLableEmail" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSubmit"
+                    style="@style/btnMedium"
+                    android:layout_width="wrap_content"
+                    android:text="@string/verify"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="@dimen/activity_padding20"
+                    android:textSize="@dimen/textSizeExtraLarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/otp_view" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtResendOTP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:padding="@dimen/activity_padding12"
+                    android:text="@string/dont_receive_code"
+                    app:fontFamily="@font/font_regular"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="@dimen/activity_padding6"
+                    android:textSize="@dimen/textSizeExtraLarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnSubmit" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

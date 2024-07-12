@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="plan"
+            type="com.jigar.me.data.model.data.SubscribedList" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/activity_padding2"
+            app:cardCornerRadius="@dimen/activity_padding2"
+            app:cardElevation="@dimen/home_menu_elevation">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@{plan.is_expired?@drawable/gradient_banner_expired_plan:@drawable/gradient_banner_green}"
+                tools:background="@drawable/gradient_banner_green"
+                android:paddingHorizontal="@dimen/activity_padding6">
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/btnRight"
+                    android:layout_marginEnd="@dimen/activity_padding6"
+                    android:gravity="center_vertical|start"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:includeFontPadding="false"
+                        android:shadowColor="@color/black"
+                        android:shadowRadius="3"
+                        android:text="@{plan.master_plan.getPlanName()}"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSizeExtraSmall"
+                        app:fontFamily="@font/font_extra_bold"
+                        tools:text="Half Yearly" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_padding1"
+                        android:includeFontPadding="false"
+                        android:shadowColor="@color/black"
+                        android:shadowRadius="2"
+                        android:text="@{plan.getEndDateFormat()}"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSizeVery2ExtraSmall"
+                        app:fontFamily="@font/font_semibold"
+                        tools:text="Expiring on : 30 Nov 2024" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRight"
+                    android:layout_width="64dp"
+                    android:layout_height="@dimen/activity_padding20"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_horizontal"
+                    android:backgroundTint="@color/white"
+                    app:fontFamily="@font/font_bold"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:shadowColor="@color/black"
+                    android:shadowRadius="0.05"
+                    android:visibility="@{plan.isBtnVisible()?View.VISIBLE:View.GONE}"
+                    tools:visibility="visible"
+                    android:letterSpacing="0"
+                    android:paddingHorizontal="0dp"
+                    android:text="@{plan.getBtnTextIsRenew?@string/renew_now:@string/upgrade_plan}"
+                    tools:text="@string/renew_now"
+                    android:textAllCaps="false"
+                    android:textColor="#4C4A8F"
+                    android:textSize="@dimen/textSizeVeryExtraSmall"
+                    app:cornerRadius="@dimen/card_corner_radius12" />
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:visibility="gone" />
+
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

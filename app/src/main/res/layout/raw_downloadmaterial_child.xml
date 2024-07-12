@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="imagePath"
+            type="String" />
+        <variable
+            name="data"
+            type="com.jigar.me.data.model.ImageData" />
+    </data>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img"
+        app:loadImgInsideCache="@{imagePath+data.image}"
+        app:placeHolder="@{@drawable/place_holder_vertical}"
+        android:layout_width="100dp"
+        android:layout_height="143dp"
+        app:srcCompat="@drawable/place_holder_vertical"
+        android:adjustViewBounds="true"
+        android:layout_marginHorizontal="@dimen/activity_padding6" />
+
+</layout>

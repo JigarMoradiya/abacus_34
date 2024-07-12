@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/answerWrong">
+    <item android:width="12dp"
+        android:height="12dp">
+        <shape android:shape="rectangle"
+            >
+            <solid android:color="@color/answerWrong" />
+            <corners android:radius="@dimen/activity_padding2" />
+        </shape>
+    </item>
+</ripple>

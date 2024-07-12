@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingEnd="@dimen/activity_padding20"
+    android:paddingBottom="@dimen/activity_padding8">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_52dp"
+        android:layout_marginTop="-8dp"
+        android:layout_marginEnd="@dimen/activity_padding16"
+        android:adjustViewBounds="true"
+        android:src="@drawable/tooltip_bottom_right"
+        app:layout_constraintEnd_toEndOf="@+id/cardMain"
+        app:layout_constraintTop_toBottomOf="@+id/cardMain" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_padding10"
+        app:cardCornerRadius="@dimen/home_menu_corner"
+        app:cardElevation="@dimen/activity_padding2"
+        app:cardUseCompatPadding="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_padding12">
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/maths_with_fun"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSizeExtraLarge"
+                app:fontFamily="@font/font_extra_bold" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_padding2"
+                android:gravity="center"
+                android:lineSpacingExtra="2sp"
+                android:text="@string/help_your_child_to_keep_nactive_always"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSizeRegular"
+                app:fontFamily="@font/font_bold" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

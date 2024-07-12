@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <RelativeLayout
+        android:id="@+id/relAbacus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivReset"
+            android:layout_width="18dp"
+            android:layout_height="24dp"
+            android:layout_alignEnd="@+id/cardAbacusMain"
+            android:layout_marginEnd="@dimen/_36dp"
+            android:tint="@color/abacus_rod_red_dark"
+            app:srcCompat="@drawable/box_primory_accent" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardAbacusMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_padding8"
+            android:layout_marginTop="@dimen/padding_radius_abacus_frame_large"
+            android:layout_marginBottom="@dimen/activity_padding8"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/padding_radius_abacus_frame_large"
+            app:cardElevation="@dimen/card_elevation4"
+            app:cardMaxElevation="@dimen/card_elevation4"
+            app:cardUseCompatPadding="false">
+
+            <RelativeLayout
+                android:id="@+id/rlAbacusMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_abacus_frame_large_red">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/rlAbacus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:id="@+id/flAbacusTop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="@dimen/six"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.jigar.me.ui.view.base.abacus.AbacusMasterView
+                            android:id="@+id/abacusTop"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:beadDrawables="@array/bead_top"
+                            app:columnSpacing="@dimen/_28dp"
+                            app:isBeadStackFromBottom="false"
+                            app:noOfBead="1"
+                            app:roadDrawable="@drawable/road"
+                            app:singleBeadValue="5" />
+
+                    </FrameLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rlDivider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="@+id/flAbacusTop"
+                        app:layout_constraintStart_toStartOf="@+id/flAbacusTop"
+                        app:layout_constraintTop_toBottomOf="@+id/flAbacusTop">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivDivider"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/four"
+                            android:background="@color/black2" />
+
+                    </RelativeLayout>
+
+                    <FrameLayout
+                        android:id="@+id/flAbacusBottom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="@dimen/six"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rlDivider">
+
+                        <com.jigar.me.ui.view.base.abacus.AbacusMasterView
+                            android:id="@+id/abacusBottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:beadDrawables="@array/big_bottom"
+                            app:columnSpacing="@dimen/_28dp"
+                            app:isBeadStackFromBottom="true"
+                            app:noOfBead="4"
+                            app:roadDrawable="@drawable/road"
+                            app:singleBeadValue="1" />
+
+                    </FrameLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivRight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/sixteen"
+                        android:layout_marginEnd="-2dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/rlDivider"
+                        app:layout_constraintEnd_toEndOf="@+id/rlDivider"
+                        app:layout_constraintTop_toTopOf="@+id/rlDivider"
+                        app:srcCompat="@drawable/road_dot" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivLeft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/sixteen"
+                        android:layout_marginStart="-2dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/rlDivider"
+                        app:layout_constraintStart_toStartOf="@+id/rlDivider"
+                        app:layout_constraintTop_toTopOf="@+id/rlDivider"
+                        app:srcCompat="@drawable/road_dot" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvCurrentVal"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/padding_radius_abacus_frame_large"
+            android:layout_alignStart="@+id/cardAbacusMain"
+            android:layout_alignTop="@+id/cardAbacusMain"
+            android:layout_alignEnd="@+id/cardAbacusMain"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="0"
+            android:elevation="@dimen/card_elevation8"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSizeLarge"
+            app:fontFamily="@font/font_extra_bold" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/resettoContinue"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/padding_radius_abacus_frame_large"
+            android:layout_alignStart="@+id/cardAbacusMain"
+            android:layout_alignEnd="@+id/cardAbacusMain"
+            android:layout_alignBottom="@+id/cardAbacusMain"
+            android:fontFamily="@font/font_extra_bold"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingBottom="@dimen/activity_padding1"
+            android:singleLine="true"
+            android:elevation="@dimen/card_elevation8"
+            android:text="@string/ResettoContinue"
+            android:textColor="@color/colorHeadingBlack_00"
+            android:textSize="@dimen/textSizeSmall"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+    </RelativeLayout>
+</layout>

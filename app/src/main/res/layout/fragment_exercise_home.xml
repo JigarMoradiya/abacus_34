@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/conParent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_padding12"
+            android:layout_marginTop="@dimen/activity_padding12"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/cardMain"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/activity_padding2"
+                android:text="Time Left : "
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSizeMedium"
+                app:fontFamily="@font/font_semibold" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtTimer"
+                style="@style/mainTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearAbacus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/activity_padding16"
+            app:layout_constraintBottom_toTopOf="@+id/adView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardMain"
+            tools:visibility="visible" />
+
+        <RelativeLayout
+            android:id="@+id/cardMain"
+            android:layout_width="280dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_right_curved_30"
+            android:backgroundTint="@color/white"
+            android:elevation="@dimen/activity_padding8"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearExerciseAddSub"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/activity_padding12"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtQueLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="70dp"
+                    android:paddingEnd="0dp"
+                    android:text="Q1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeExtraLarge"
+                    app:fontFamily="@font/font_medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtMultiplication"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding12"
+                    android:text="3 X 200 = ?"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize24"
+                    android:visibility="gone"
+                    app:fontFamily="@font/font_regular"
+                    app:layout_constraintEnd_toStartOf="@+id/recyclerviewExercise"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtQueLabel"
+                    tools:visibility="visible" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerviewExercise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/activity_padding12"
+                    android:orientation="vertical"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
+                    android:visibility="gone"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/row_exercise_question_layout"
+                    tools:visibility="visible" />
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/activity_padding12"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toTopOf="@+id/txtNext"
+                    app:layout_constraintEnd_toStartOf="@+id/recyclerviewExercise"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtMultiplication">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txt1"
+                            android:layout_width="@dimen/exercise_number_dimen"
+                            android:layout_height="@dimen/exercise_number_dimen"
+                            android:background="@drawable/circle_primary_border"
+                            android:backgroundTint="@color/black"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/exercise_number_text_dimen"
+                            app:fontFamily="@font/font_bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txt2"
+                            android:layout_width="@dimen/exercise_number_dimen"
+                            android:layout_height="@dimen/exercise_number_dimen"
+                            android:layout_marginHorizontal="@dimen/activity_padding8"
+                            android:background="@drawable/circle_primary_border"
+                            android:backgroundTint="@color/black"
+                            android:gravity="center"
+                            android:text="2"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/exercise_number_text_dimen"
+                            app:fontFamily="@font/font_bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txt3"
+                            android:layout_width="@dimen/exercise_number_dimen"
+                            android:layout_height="@dimen/exercise_number_dimen"
+                            android:background="@drawable/circle_primary_border"
+                            android:backgroundTint="@color/black"
+                            android:gravity="center"
+                            android:text="3"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/exercise_number_text_dimen"
+                            app:fontFamily="@font/font_bold" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_padding8"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txt4"
+                            android:layout_width="@dimen/exercise_number_dimen"
+                            android:layout_height="@dimen/exercise_number_dimen"
+                            android:background="@drawable/circle_primary_border"
+                            android:backgroundTint="@color/black"
+                            android:gravity="center"
+                            android:text="4"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/exercise_number_text_dimen"
+                            app:fontFamily="@font/font_bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txt5"
+                            android:layout_width="@dimen/exercise_number_dimen"
+                            android:layout_height="@dimen/exercise_number_dimen"
+                            android:layout_marginHorizontal="@dimen/activity_padding8"
+                            android:background="@drawable/circle_primary_border"
+                            android:backgroundTint="@color/black"
+                            android:gravity="center"
+                            android:text="5"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/exercise_number_text_dimen"
+                            app:fontFamily="@font/font_bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txt6"
+                            android:layout_width="@dimen/exercise_number_dimen"
+                            android:layout_height="@dimen/exercise_number_dimen"
+                            android:background="@drawable/circle_primary_border"
+                            android:backgroundTint="@color/black"
+                            android:gravity="center"
+                            android:text="6"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/exercise_number_text_dimen"
+                            app:fontFamily="@font/font_bold" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_padding8"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txt7"
+                            android:layout_width="@dimen/exercise_number_dimen"
+                            android:layout_height="@dimen/exercise_number_dimen"
+                            android:background="@drawable/circle_primary_border"
+                            android:backgroundTint="@color/black"
+                            android:gravity="center"
+                            android:text="7"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/exercise_number_text_dimen"
+                            app:fontFamily="@font/font_bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txt8"
+                            android:layout_width="@dimen/exercise_number_dimen"
+                            android:layout_height="@dimen/exercise_number_dimen"
+                            android:layout_marginHorizontal="@dimen/activity_padding8"
+                            android:background="@drawable/circle_primary_border"
+                            android:backgroundTint="@color/black"
+                            android:gravity="center"
+                            android:text="8"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/exercise_number_text_dimen"
+                            app:fontFamily="@font/font_bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txt9"
+                            android:layout_width="@dimen/exercise_number_dimen"
+                            android:layout_height="@dimen/exercise_number_dimen"
+                            android:background="@drawable/circle_primary_border"
+                            android:backgroundTint="@color/black"
+                            android:gravity="center"
+                            android:text="9"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/exercise_number_text_dimen"
+                            app:fontFamily="@font/font_bold" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_padding8"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txtAllClear"
+                            android:layout_width="@dimen/exercise_number_dimen"
+                            android:layout_height="@dimen/exercise_number_dimen"
+                            android:background="@drawable/circle_primary_border"
+                            android:backgroundTint="@color/black"
+                            android:gravity="center"
+                            android:text="C"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/exercise_number_text_dimen"
+                            app:fontFamily="@font/font_bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txt0"
+                            android:layout_width="@dimen/exercise_number_dimen"
+                            android:layout_height="@dimen/exercise_number_dimen"
+                            android:layout_marginHorizontal="@dimen/activity_padding8"
+                            android:background="@drawable/circle_primary_border"
+                            android:backgroundTint="@color/black"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/exercise_number_text_dimen"
+                            app:fontFamily="@font/font_bold" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/img_earse"
+                            android:layout_width="@dimen/exercise_number_dimen"
+                            android:layout_height="@dimen/exercise_number_dimen"
+                            android:background="@drawable/circle_primary_border"
+                            android:backgroundTint="@color/black"
+                            android:gravity="center"
+                            android:padding="@dimen/activity_padding8"
+                            app:srcCompat="@drawable/ic_backspace"
+                            app:tint="@color/black" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/txtNext"
+                    style="@style/btnExtraSmall"
+                    android:layout_width="@dimen/_52dp"
+                    android:layout_marginStart="@dimen/activity_padding12"
+                    android:layout_marginBottom="@dimen/activity_padding8"
+                    android:text="@string/next"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvAnswerLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/activity_padding8"
+                    android:fontFamily="@font/font_regular"
+                    android:includeFontPadding="false"
+                    android:text="@string/answer"
+                    android:textColor="@color/green_700"
+                    android:textSize="@dimen/textSizeMedium"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvAnswer"
+                    app:layout_constraintEnd_toStartOf="@+id/tvAnswer"
+                    app:layout_constraintTop_toTopOf="@+id/tvAnswer" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvAnswer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/activity_padding16"
+                    android:fontFamily="@font/font_extra_bold"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/green_700"
+                    android:textSize="@dimen/textSizeRegular"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtNext"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtNext"
+                    tools:text="456" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linearLevel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible"
+                tools:visibility="visible">
+
+                <com.jigar.me.utils.widget.viewpager.WrappingViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
+                    android:visibility="visible" />
+
+                <ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
+                    android:id="@+id/indicatorPager"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding8"
+                    app:spi_dotSelectedColor="@color/colorPrimary"
+                    app:spi_looped="true" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </RelativeLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/icons_margin2"
+            app:cardBackgroundColor="@color/light_back"
+            app:cardCornerRadius="@dimen/menu_icons_corner"
+            app:cardElevation="@dimen/activity_padding8"
+            app:cardMaxElevation="@dimen/activity_padding8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/menu_icons"
+                android:layout_height="@dimen/menu_icons"
+                android:padding="@dimen/menu_icons_padding"
+                app:srcCompat="@drawable/ic_back" />
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

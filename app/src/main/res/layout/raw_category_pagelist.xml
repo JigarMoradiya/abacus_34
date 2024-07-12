@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="172dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtTitle"
+                android:layout_width="match_parent"
+                android:layout_toStartOf="@+id/imgArrow"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/activity_padding6"
+                android:text="@{title}"
+                android:layout_marginStart="@dimen/activity_padding10"
+                android:textColor="@color/colorListingHeading"
+                android:textSize="@dimen/textSizeMedium"
+                app:fontFamily="@font/font_bold"
+                tools:text="Lesson 1" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgArrow"
+                android:layout_width="@dimen/activity_padding8"
+                android:layout_height="@dimen/activity_padding8"
+                android:layout_alignParentEnd="true"
+                android:layout_marginHorizontal="@dimen/activity_padding6"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_right_arrow" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/viewDivider"
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:alpha="0.2"
+            android:background="@color/colorListingHeading" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

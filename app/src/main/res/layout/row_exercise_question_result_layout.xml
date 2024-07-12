@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/activity_padding1">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgSymbol"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/activity_padding2"
+            android:layout_toStartOf="@+id/linearQue"
+            android:padding="@dimen/activity_padding1"
+            app:tint="@color/black"
+            tools:srcCompat="@drawable/cal_minus" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearQue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvQuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_medium"
+                android:includeFontPadding="false"
+                android:text="456"
+                android:textColor="@color/colorHeadingBlack_00"
+                android:textSize="@dimen/textSizeSmall"
+                android:visibility="gone" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvQuestionSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_medium"
+                android:includeFontPadding="false"
+                android:text="456"
+                android:textColor="@color/colorHeadingBlack_00"
+                android:textSize="@dimen/textSizeExtraSmall"
+                android:visibility="visible" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

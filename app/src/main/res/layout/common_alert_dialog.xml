@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_all_curved_24_dp"
+    android:backgroundTint="@color/white"
+    android:elevation="8dp"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/activity_padding8">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgAlert"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/activity_padding16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_alert_thank_you" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTitle"
+            style="@style/mainTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/activity_padding16"
+            android:paddingHorizontal="@dimen/activity_padding20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgAlert"
+            android:gravity="center"
+            android:text="@string/thank_you_for_reaching_out" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvDescription"
+            style="@style/mainTitle"
+            app:fontFamily="@font/font_semibold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/activity_padding8"
+            android:paddingHorizontal="@dimen/activity_padding20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            android:gravity="center"
+            android:text="@string/thank_you_for_reaching_out1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnYes"
+            style="@style/btnMedium"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/activity_padding16"
+            android:text="@string/yes_i_want_to_close"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_padding16"
+            app:layout_constraintTop_toBottomOf="@+id/btnYes" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

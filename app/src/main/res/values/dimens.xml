@@ -1,3 +1,208 @@
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="power_by_logo_ver">48dp</dimen>
+    <dimen name="power_by_logo_hor">24dp</dimen>
+    <dimen name="padding_bottom_kids_in_abacus">30dp</dimen>
+    <dimen name="padding_radius_abacus_frame_large">18dp</dimen>
+    <dimen name="padding_radius_abacus_frame_large_inner">8dp</dimen>
+
+    <dimen name="padding_radius_abacus_frame_large_exam">10dp</dimen>
+    <dimen name="padding_radius_abacus_frame_large_inner_exam">3dp</dimen>
+    <!--9:5-->
+    <dimen name="height_extra">3dp</dimen>
+    <dimen name="poligon_width">45dp</dimen>
+    <dimen name="poligon_height">25dp</dimen>
+    <dimen name="poligon_space">4dp</dimen>
+
+    <!-- 6:5 -->
+    <dimen name="face_width">30dp</dimen>
+    <dimen name="face_height">25dp</dimen>
+    <dimen name="face_space">16dp</dimen>
+
+    <dimen name="star_width">26dp</dimen>
+    <dimen name="star_height">25dp</dimen>
+    <dimen name="star_space">14dp</dimen>
+
+    <!--7:5-->
+    <dimen name="garnet_width">35dp</dimen>
+    <dimen name="garnet_height">25dp</dimen>
+    <dimen name="garnet_space">12dp</dimen>
+
+    <!--6:5-->
+    <dimen name="diamond_width">30dp</dimen>
+    <dimen name="diamond_height">25dp</dimen>
+    <dimen name="diamond_space">13dp</dimen>
+
+    <dimen name="square_width_height">25dp</dimen>
+    <dimen name="square_space">14dp</dimen>
+
+    <dimen name="bead_column">48dp</dimen>
+    <dimen name="bead_column_paid">40dp</dimen>
+
+    <!--Text Size-->
+    <dimen name="textSizeVery3ExtraSmall">7sp</dimen>
+    <dimen name="textSizeVery2ExtraSmall">8.5sp</dimen>
+    <dimen name="textSizeVeryExtraSmall">9sp</dimen>
+    <dimen name="textSizeExtraSmall">10sp</dimen>
+    <dimen name="textSizeSmall">11sp</dimen>
+    <dimen name="textSizeMedium">12sp</dimen>
+    <dimen name="textSizeRegular">13sp</dimen>
+
+    <dimen name="textSizeLarge">14sp</dimen>
+    <dimen name="textSizeExtraLarge">15sp</dimen>
+    <dimen name="textSizeSuperExtraLarge">16sp</dimen>
+    <dimen name="textSize17">17sp</dimen>
+    <dimen name="textSize18">18sp</dimen>
+    <dimen name="textSize20">20sp</dimen>
+    <dimen name="textSize24">24sp</dimen>
+    <dimen name="textSizeOTP">26sp</dimen>
+    <dimen name="textSizeAbacusNumber">80sp</dimen>
+    <dimen name="textSizeCCMNumber">50sp</dimen>
+    <dimen name="textSizeCCMWord">24sp</dimen>
+    <dimen name="textSize36">36sp</dimen>
+
+
+    <dimen name="margin_top_challenge">4dp</dimen>
+    <dimen name="button_corner_radius">8dp</dimen>
+    <dimen name="activity_padding24">24dp</dimen>
+    <dimen name="activity_padding20">20dp</dimen>
+    <dimen name="activity_padding16">16dp</dimen>
+    <dimen name="activity_padding12">12dp</dimen>
+    <dimen name="activity_padding10">10dp</dimen>
+    <dimen name="activity_padding8">8dp</dimen>
+    <dimen name="activity_padding6">6dp</dimen>
+    <dimen name="activity_padding5">5dp</dimen>
+    <dimen name="activity_padding4">4dp</dimen>
+    <dimen name="activity_padding2">2dp</dimen>
+    <dimen name="activity_padding1">1dp</dimen>
+    <dimen name="icons_margin">4dp</dimen>
+    <dimen name="icons_margin2">8dp</dimen>
+    <dimen name="title_margin">8dp</dimen>
+
+    <dimen name="handle_width">64dp</dimen>
+    <dimen name="handle_height">3dp</dimen>
+    <dimen name="report_card_list_icon">24dp</dimen>
+    <dimen name="report_card_list_icon_margin">28dp</dimen>
+
+    <dimen name="edt_height">56dp</dimen>
+    <dimen name="edt_corner_radius">28dp</dimen>
+
+    <dimen name="home_menu">100dp</dimen>
+    <dimen name="menu_icons">42dp</dimen>
+    <dimen name="menu_icons_padding">9dp</dimen>
+    <dimen name="menu_icons_corner">21dp</dimen>
+    <dimen name="card_stork">4dp</dimen>
+
+    <dimen name="minus_two">-2.00dp</dimen>
+    <dimen name="minus_twofive">-4dp</dimen>
+    <dimen name="eight_dp">@dimen/four</dimen>
+    <dimen name="zero">0.00dp</dimen>
+    <dimen name="two">2.00dp</dimen>
+    <dimen name="three">3.00dp</dimen>
+    <dimen name="four">4.00dp</dimen>
+    <dimen name="five">5.00dp</dimen>
+    <dimen name="six">6.00dp</dimen>
+    <dimen name="six_minus">-6.00dp</dimen>
+    <dimen name="eight">8.00dp</dimen>
+    <dimen name="ten">10.00dp</dimen>
+    <dimen name="sixteen">16.00dp</dimen>
+    <dimen name="seventeen">17.00dp</dimen>
+    <dimen name="twopointfive">2.5dp</dimen>
+
+
+    <dimen name="sudoku_number_dimen">42dp</dimen>
+    <dimen name="exercise_number_dimen">32dp</dimen>
+    <dimen name="exercise_number_text_dimen">@dimen/textSize20</dimen>
+    <dimen name="ccm_number_dimen">32dp</dimen>
+    <dimen name="ccm_number_text_dimen">@dimen/textSize18</dimen>
+
+    <dimen name="home_menu_width">80dp</dimen>
+    <dimen name="home_menu_height">80dp</dimen>
+
+    <dimen name="home_menu_width600">72dp</dimen>
+    <dimen name="home_menu_height600">72dp</dimen>
+
+    <dimen name="home_menu_elevation">2dp</dimen>
+    <dimen name="home_menu_margin">8dp</dimen>
+    <dimen name="home_menu_corner">12dp</dimen>
+    <dimen name="exam_option_width">132dp</dimen>
+    <dimen name="exam_option_round">40dp</dimen>
+    <dimen name="exam_option_round_corner">20dp</dimen>
+
+    <dimen name="quiz_progress_height">10dp</dimen>
+
+    <dimen name="card_elevation">1dp</dimen>
+    <dimen name="card_elevation2">2dp</dimen>
+    <dimen name="card_elevation3">3dp</dimen>
+    <dimen name="card_elevation4">4dp</dimen>
+    <dimen name="card_elevation8">8dp</dimen>
+    <dimen name="card_corner_radius">6dp</dimen>
+    <dimen name="card_corner_radius4">4dp</dimen>
+    <dimen name="card_corner_radius12">12dp</dimen>
+    <dimen name="card_corner_radius14">14dp</dimen>
+
+
+    <!-- Profile Image Sizes   -->
+    <dimen name="box9SizeWidth">36dp</dimen>
+    <dimen name="box9SizeHeight">36dp</dimen>
+
+    <dimen name="box9SignSize">14dp</dimen>
+    <dimen name="image_size_no_data_view">80dp</dimen>
+    <dimen name="text_size_no_data_view">@dimen/textSizeRegular</dimen>
+
+    <dimen name="bGameSize9">72dp</dimen>
+    <dimen name="bGameSize15">56dp</dimen>
+    <dimen name="buttonSize24">48dp</dimen>
+    <dimen name="button_margin">4dp</dimen>
+
+    <dimen name="button_medium_text_size">@dimen/textSizeRegular</dimen>
+    <dimen name="button_medium_height">40dp</dimen>
+    <dimen name="button_medium_corner">20dp</dimen>
+    <dimen name="button_medium_padding_lr">16dp</dimen>
+
+    <dimen name="button_small_text_size">@dimen/textSizeMedium</dimen>
+    <dimen name="button_small_height">32dp</dimen>
+    <dimen name="button_small_corner">16dp</dimen>
+    <dimen name="button_small_padding_lr">12dp</dimen>
+
+    <dimen name="button_extra_small_text_size">@dimen/textSizeSmall</dimen>
+    <dimen name="button_extra_small_height">24dp</dimen>
+    <dimen name="button_extra_small_corner">12dp</dimen>
+    <dimen name="button_extra_small_padding_lr">6dp</dimen>
+
+
+    <dimen name="object_extra_small">32dp</dimen>
+    <dimen name="object_small">40dp</dimen>
+    <dimen name="object_medium">56dp</dimen>
+    <dimen name="object_large">80dp</dimen>
+
+
+    <item name="gnt_medium_template_bottom_weight" format="float" type="dimen">0.4</item>
+    <item name="gnt_text_row_weight" format="float" type="dimen">0.25</item>
+    <item name="gnt_media_view_weight" format="float" type="dimen">1.0</item>
+    <item name="gnt_medium_template_top_weight" format="float" type="dimen">0.2</item>
+    <dimen name="gnt_default_margin">10dp</dimen>
+    <dimen name="gnt_small_margin">5dp</dimen>
+    <dimen name="gnt_text_size_small">12sp</dimen>
+    <dimen name="gnt_text_size_large">15sp</dimen>
+    <dimen name="gnt_ad_indicator_width">25dp</dimen>
+    <dimen name="gnt_ad_indicator_height">20dp</dimen>
+    <dimen name="gnt_ad_indicator_bar_height">30dp</dimen>
+    <dimen name="gnt_ad_indicator_top_margin">0dp</dimen>
+    <dimen name="gnt_ad_indicator_bottom_margin">10dp</dimen>
+    <dimen name="gnt_ad_indicator_text_size">10sp</dimen>
+    <dimen name="gnt_small_cta_button_height">30dp</dimen>
+    <dimen name="gnt_medium_cta_button_height">50dp</dimen>
+    <dimen name="gnt_no_margin">0dp</dimen>
+    <dimen name="gnt_no_size">0dp</dimen>
+    <dimen name="_72dp">72dp</dimen>
+    <dimen name="_56dp">56dp</dimen>
+    <dimen name="_36dp">36dp</dimen>
+    <dimen name="_28dp">28dp</dimen>
+    <dimen name="_84dp">84dp</dimen>
+    <dimen name="_60dp">60dp</dimen>
+    <dimen name="_24dp">24dp</dimen>
+    <dimen name="_52dp">52dp</dimen>
+    <dimen name="_18dp">18dp</dimen>
+    <dimen name="_48dp">48dp</dimen>
+    <dimen name="_22dp">22dp</dimen>
 </resources>

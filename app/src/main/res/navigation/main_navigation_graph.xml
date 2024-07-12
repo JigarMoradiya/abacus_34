@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/reg_navigation_graph"
+    app:startDestination="@+id/homeFragment">
+    <fragment
+        android:id="@+id/webFragment"
+        android:name="com.jigar.me.ui.view.payments.WebFragment"/>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.home.HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_fullAbacusFragment"
+            app:destination="@+id/fullAbacusFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_youtubeVideoFragment"
+            app:destination="@+id/youtubeVideoFragment" />
+        <action
+            android:id="@+id/toSettingsFragment"
+            app:destination="@+id/settingsFragment" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_aboutFragment"
+            app:destination="@+id/aboutFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_pageFragment"
+            app:destination="@+id/pageFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_examHomeFragment"
+            app:destination="@+id/examHomeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_materialHomeFragment"
+            app:destination="@+id/materialHomeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_puzzleNumberHomeFragment"
+            app:destination="@+id/puzzleNumberHomeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_exerciseHomeFragment"
+            app:destination="@+id/exerciseHomeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_customChallengeHomeFragment"
+            app:destination="@+id/customChallengeHomeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_myProfileFragment"
+            app:destination="@+id/myProfileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/myProfileFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.profile.MyProfileFragment">
+        <action
+            android:id="@+id/action_myProfileFragment_to_reportsHomeFragment"
+            app:destination="@+id/reportsHomeFragment" />
+        <action
+            android:id="@+id/action_myProfileFragment_to_editProfileFragment"
+            app:destination="@+id/editProfileFragment" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
+        <action
+            android:id="@+id/toSettingsFragment"
+            app:destination="@+id/settingsFragment" />
+        <action
+            android:id="@+id/toFAQsFragment"
+            app:destination="@+id/faqsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.profile.EditProfileFragment">
+
+    </fragment>
+    <fragment
+        android:id="@+id/reportsHomeFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.reports.ReportsHomeFragment">
+        <action
+            android:id="@+id/toSettingsFragment"
+            app:destination="@+id/settingsFragment" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
+        <action
+            android:id="@+id/action_reportsHomeFragment_to_examResultFragment"
+            app:destination="@+id/examResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customChallengeHomeFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.custom_challenge.CustomChallengeHomeFragment">
+        <action
+            android:id="@+id/action_customChallengeHomeFragment_to_customChallengeFragment"
+            app:destination="@+id/customChallengeFragment" />
+        <action
+            android:id="@+id/toSettingsFragment"
+            app:destination="@+id/settingsFragment" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customChallengeFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.custom_challenge.CustomChallengeFragment">
+        <argument
+            android:name="totalQuestion"
+            app:argType="integer" />
+        <argument
+            android:name="minQuestion"
+            app:argType="integer" />
+        <argument
+            android:name="maxQuestion"
+            app:argType="integer" />
+        <argument
+            android:name="secGap"
+            app:argType="integer" />
+        <argument
+            android:name="isVoiceOn"
+            app:argType="boolean" />
+        <argument
+            android:name="isShowNumber"
+            app:argType="boolean" />
+        <argument
+            android:name="isShowWord"
+            app:argType="boolean" />
+
+        <action
+            app:popUpTo="@+id/customChallengeFragment"
+            app:popUpToInclusive="true"
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseHomeFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.exercise.ExerciseHomeFragment">
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fullAbacusFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.abacus.FullAbacusFragment">
+        <action
+            android:id="@+id/toSettingsFragment"
+            app:destination="@+id/settingsFragment" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/youtubeVideoFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.youtubevideo.YoutubeVideoFragment">
+        <action
+            android:id="@+id/toSettingsFragment"
+            app:destination="@+id/settingsFragment" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pageFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.page.PageFragment">
+        <argument
+            android:name="from"
+            app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_pageFragment_to_halfAbacusFragment"
+            app:destination="@+id/halfAbacusFragment" />
+        <action
+            android:id="@+id/toTempAbacusListFragment"
+            app:destination="@+id/tempAbacusListFragment" />
+        <action
+            android:id="@+id/toSettingsFragment"
+            app:destination="@+id/settingsFragment" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
+        <action
+            android:id="@+id/action_pageFragment_to_multiplicationTablesFragment"
+            app:destination="@+id/multiplicationTablesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tempAbacusListFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.page.TempAbacusListFragment"/>
+    <fragment
+        android:id="@+id/multiplicationTablesFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.tables.MultiplicationTablesFragment">
+        <action
+            android:id="@+id/toSettingsFragment"
+            app:destination="@+id/settingsFragment" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/faqsFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.faqs.FAQsFragment">
+        <action
+            android:id="@+id/toSettingsFragment"
+            app:destination="@+id/settingsFragment" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/halfAbacusFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.abacus.half.HalfAbacusFragment">
+        <action
+            android:id="@+id/toSettingsFragment"
+            app:destination="@+id/settingsFragment" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/materialHomeFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.practise_material.MaterialHomeFragment">
+        <action
+            android:id="@+id/action_materialHomeFragment_to_materialDownloadFragment"
+            app:destination="@+id/materialDownloadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/materialDownloadFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.practise_material.MaterialDownloadFragment">
+        <argument
+            android:name="downloadType"
+            app:argType="string" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/puzzleNumberHomeFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.number_puzzles.PuzzleNumberHomeFragment">
+        <action
+            android:id="@+id/action_puzzleNumberHomeFragment_to_puzzleNumberFragment"
+            app:destination="@+id/puzzleNumberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/puzzleNumberFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.number_puzzles.PuzzleNumberFragment">
+        <argument
+            android:name="type"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.AboutFragment">
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.settings.SettingsFragment">
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/purchaseFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.purchase.PurchaseFragment"/>
+
+    <!--  Exam fragments  -->
+    <fragment
+        android:id="@+id/examHomeFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.exam.home.ExamHomeFragment">
+        <action
+            android:id="@+id/action_examHomeFragment_to_examHistoryHomeFragment"
+            app:destination="@+id/examHistoryHomeFragment" />
+        <action
+            android:id="@+id/action_examHomeFragment_to_examCommonFragment"
+            app:destination="@+id/examCommonFragment" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/examCommonFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.exam.doexam.ExamCommonFragment">
+        <argument
+            android:name="examLevel"
+            app:argType="string" />
+        <argument
+            android:name="isNumberExam"
+            app:argType="boolean" />
+        <argument
+            android:name="isAdditionExam"
+            app:argType="boolean" />
+        <argument
+            android:name="isSubtractionExam"
+            app:argType="boolean" />
+        <argument
+            android:name="isMultiplicationExam"
+            app:argType="boolean" />
+        <argument
+            android:name="isDivisionExam"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_examCommonFragment_to_examResultFragment"
+            app:destination="@+id/examResultFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/examCommonFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment"
+            app:popUpTo="@+id/examCommonFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/examResultFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.exam.result.ExamResultFragment">
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="examLevelLable"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/examHistoryHomeFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.exam.history.ExamHistoryHomeFragment">
+        <action
+            android:id="@+id/action_examHistoryHomeFragment_to_examResultFragment"
+            app:destination="@+id/examResultFragment" />
+    </fragment>
+
+
+</navigation>

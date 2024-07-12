@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@android:id/background" android:height="@dimen/quiz_progress_height" android:gravity="center_vertical">
+        <shape>
+            <solid android:color="#509E9C9C"/>
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
+
+    <item android:id="@android:id/secondaryProgress" android:height="@dimen/quiz_progress_height" android:gravity="center_vertical">
+        <clip>
+            <shape>
+                <solid android:color="#509E9C9C"/>
+                <corners android:radius="10dp" />
+            </shape>
+        </clip>
+    </item>
+    <item android:id="@android:id/progress" android:height="@dimen/quiz_progress_height" android:gravity="center_vertical">
+        <clip>
+            <shape>
+                <solid android:color="@color/colorAccent"/>
+                <corners android:radius="@dimen/quiz_progress_height" />
+            </shape>
+
+        </clip>
+    </item>
+</layer-list>

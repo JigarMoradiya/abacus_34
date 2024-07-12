@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.jigar.me.utils.AppConstants" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/light_back"
+            app:cardCornerRadius="@dimen/menu_icons_corner"
+            app:cardElevation="@dimen/card_elevation"
+            android:layout_margin="@dimen/icons_margin2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/menu_icons"
+            android:layout_height="@dimen/menu_icons"
+                android:padding="@dimen/menu_icons_padding"
+                app:srcCompat="@drawable/ic_back" />
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textSizeSuperExtraLarge"
+            style="@style/mainTitle"
+            android:layout_marginHorizontal="@dimen/title_margin"
+            app:layout_constraintBottom_toBottomOf="@+id/cardBack"
+            app:layout_constraintStart_toEndOf="@+id/cardBack"
+            app:layout_constraintTop_toTopOf="@+id/cardBack" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtCurrentMoves"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_extra_bold"
+            android:includeFontPadding="false"
+            android:text="20"
+            android:textColor="@color/colorGreen"
+            android:textSize="@dimen/_36dp"
+            app:layout_constraintBottom_toTopOf="@+id/txtCurrentMovesLable"
+            app:layout_constraintEnd_toEndOf="@+id/txtCurrentMovesLable"
+            app:layout_constraintStart_toStartOf="@+id/txtCurrentMovesLable"
+            app:layout_constraintTop_toTopOf="@+id/relPuzzle"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtCurrentMovesLable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fontFamily="@font/font_bold"
+            android:includeFontPadding="false"
+            android:text="@string/current_moves"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSizeMedium"
+            app:layout_constraintEnd_toStartOf="@+id/relPuzzle"
+            app:layout_constraintBottom_toTopOf="@+id/txtBestMoves"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtCurrentMoves"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtBestMoves"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_36dp"
+            android:fontFamily="@font/font_extra_bold"
+            android:includeFontPadding="false"
+            android:text="20"
+            android:textColor="@color/colorOrange"
+            android:textSize="@dimen/textSize36"
+            app:layout_constraintBottom_toTopOf="@+id/txtBestMovesLable"
+            app:layout_constraintEnd_toEndOf="@+id/txtCurrentMovesLable"
+            app:layout_constraintStart_toStartOf="@+id/txtCurrentMovesLable"
+            app:layout_constraintTop_toBottomOf="@+id/txtCurrentMovesLable"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtBestMovesLable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fontFamily="@font/font_bold"
+            android:includeFontPadding="false"
+            android:text="@string/best_moves"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSizeMedium"
+            app:layout_constraintBottom_toBottomOf="@+id/relPuzzle"
+            app:layout_constraintEnd_toEndOf="@+id/txtCurrentMovesLable"
+            app:layout_constraintStart_toStartOf="@+id/txtCurrentMovesLable"
+            app:layout_constraintTop_toBottomOf="@+id/txtBestMoves"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <RelativeLayout
+            android:id="@+id/relPuzzle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/adView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <GridLayout
+                android:id="@+id/grid3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?android:attr/selectableItemBackground"
+                android:columnCount="3"
+                android:rowCount="3"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b900"
+                    style="@style/gridBGameStyle9"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b901"
+                    style="@style/gridBGameStyle9"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b902"
+                    style="@style/gridBGameStyle9"
+                    android:layout_row="0"
+                    android:layout_column="2"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b910"
+                    style="@style/gridBGameStyle9"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b911"
+                    style="@style/gridBGameStyle9"
+                    android:layout_row="1"
+                    android:layout_column="1"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b912"
+                    style="@style/gridBGameStyle9"
+                    android:layout_row="1"
+                    android:layout_column="2"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b920"
+                    style="@style/gridBGameStyle9"
+                    android:layout_row="2"
+                    android:layout_column="0"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b921"
+                    style="@style/gridBGameStyle9"
+                    android:layout_row="2"
+                    android:layout_column="1"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b922"
+                    style="@style/gridBGameStyle9"
+                    android:layout_row="2"
+                    android:layout_column="2"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+            </GridLayout>
+
+            <GridLayout
+                android:id="@+id/grid4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?android:attr/selectableItemBackground"
+                android:columnCount="4"
+                android:rowCount="4"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b1500"
+                    style="@style/gridBGameStyle15"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b1501"
+                    style="@style/gridBGameStyle15"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b1502"
+                    style="@style/gridBGameStyle15"
+                    android:layout_row="0"
+                    android:layout_column="2"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b1503"
+                    style="@style/gridBGameStyle15"
+                    android:layout_row="0"
+                    android:layout_column="3"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b1510"
+                    style="@style/gridBGameStyle15"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b1511"
+                    style="@style/gridBGameStyle15"
+                    android:layout_row="1"
+                    android:layout_column="1"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b1512"
+                    style="@style/gridBGameStyle15"
+                    android:layout_row="1"
+                    android:layout_column="2"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b1513"
+                    style="@style/gridBGameStyle15"
+                    android:layout_row="1"
+                    android:layout_column="3"
+                    android:layout_marginTop="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b1520"
+                    style="@style/gridBGameStyle15"
+                    android:layout_row="2"
+                    android:layout_column="0"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b1521"
+                    style="@style/gridBGameStyle15"
+                    android:layout_row="2"
+                    android:layout_column="1"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b1522"
+                    style="@style/gridBGameStyle15"
+                    android:layout_row="2"
+                    android:layout_column="2"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b1523"
+                    style="@style/gridBGameStyle15"
+                    android:layout_row="2"
+                    android:layout_column="3"
+                    android:layout_marginTop="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b1530"
+                    style="@style/gridBGameStyle15"
+                    android:layout_row="3"
+                    android:layout_column="0"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b1531"
+                    style="@style/gridBGameStyle15"
+                    android:layout_row="3"
+                    android:layout_column="1"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b1532"
+                    style="@style/gridBGameStyle15"
+                    android:layout_row="3"
+                    android:layout_column="2"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b1533"
+                    style="@style/gridBGameStyle15"
+                    android:layout_row="3"
+                    android:layout_column="3"
+                    android:layout_marginTop="@dimen/button_margin"
+                     />
+            </GridLayout>
+
+            <GridLayout
+                android:id="@+id/grid5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?android:attr/selectableItemBackground"
+                android:columnCount="5"
+                android:rowCount="5"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2400"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2401"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2402"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="0"
+                    android:layout_column="2"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2403"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="0"
+                    android:layout_column="3"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2404"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="0"
+                    android:layout_column="4"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2410"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2411"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="1"
+                    android:layout_column="1"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2412"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="1"
+                    android:layout_column="2"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2413"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="1"
+                    android:layout_column="3"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2414"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="1"
+                    android:layout_column="4"
+                    android:layout_marginTop="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2420"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="2"
+                    android:layout_column="0"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2421"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="2"
+                    android:layout_column="1"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2422"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="2"
+                    android:layout_column="2"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2423"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="2"
+                    android:layout_column="3"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2424"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="2"
+                    android:layout_column="4"
+                    android:layout_marginTop="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2430"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="3"
+                    android:layout_column="0"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2431"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="3"
+                    android:layout_column="1"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2432"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="3"
+                    android:layout_column="2"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2433"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="3"
+                    android:layout_column="3"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2434"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="3"
+                    android:layout_column="4"
+                    android:layout_marginTop="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2440"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="4"
+                    android:layout_column="0"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2441"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="4"
+                    android:layout_column="1"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2442"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="4"
+                    android:layout_column="2"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2443"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="4"
+                    android:layout_column="3"
+                    android:layout_marginTop="@dimen/button_margin"
+                    android:layout_marginRight="@dimen/button_margin"
+                     />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/b2444"
+                    style="@style/gridBGameStyle24"
+                    android:layout_row="4"
+                    android:layout_column="4"
+                    android:layout_marginTop="@dimen/button_margin"
+                     />
+            </GridLayout>
+        </RelativeLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardVolume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/light_orange"
+            app:cardCornerRadius="@dimen/card_corner_radius14"
+            app:cardElevation="@dimen/card_elevation2"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintBottom_toTopOf="@+id/cardStartNew"
+            app:layout_constraintStart_toStartOf="@+id/cardStartNew"
+            app:layout_constraintTop_toTopOf="@+id/relPuzzle">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/activity_padding4"
+                android:paddingEnd="@dimen/activity_padding8">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/_28dp"
+                    android:layout_height="@dimen/_28dp"
+                    android:padding="@dimen/activity_padding4"
+                    app:tint="@color/colorOrange"
+                    android:id="@+id/imgVolume"
+                    app:srcCompat="@drawable/ic_volume_on" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_height="wrap_content"
+                    app:fontFamily="@font/font_bold"
+                    android:text="@string/volume_on"
+                    android:id="@+id/txtVolume"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/colorOrange"
+                    android:textSize="@dimen/textSizeSmall"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardStartNew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/light_reset_abacus_progress"
+            app:cardCornerRadius="@dimen/card_corner_radius14"
+            app:cardElevation="@dimen/card_elevation2"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintBottom_toBottomOf="@+id/relPuzzle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/relPuzzle"
+            app:layout_constraintTop_toBottomOf="@+id/cardVolume">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/activity_padding4"
+                android:paddingEnd="@dimen/activity_padding8">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/_28dp"
+                    android:layout_height="@dimen/_28dp"
+                    android:padding="@dimen/activity_padding4"
+                    app:tint="@color/colorGreen"
+                    app:srcCompat="@drawable/ic_start_new_game" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fontFamily="@font/font_bold"
+                    android:text="@string/start_new"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="@dimen/textSizeSmall"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.card.MaterialCardView>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

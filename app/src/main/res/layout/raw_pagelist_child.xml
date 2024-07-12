@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="desc"
+            type="String" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardToddler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_padding4"
+        app:cardCornerRadius="@dimen/card_corner_radius4"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="@dimen/card_elevation3">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/activity_padding8">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgIcon"
+                android:layout_width="@dimen/_24dp"
+                android:layout_height="@dimen/_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_level_icon"
+                app:tint="@color/colorListingHeading" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/activity_padding8"
+                android:layout_height="@dimen/activity_padding8"
+                android:id="@+id/imgContinueIndicator"
+                android:visibility="gone"
+                android:background="@drawable/circle_continue_page"
+                app:layout_constraintTop_toTopOf="@+id/txtTitle"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:fontFamily="@font/font_bold"
+                android:gravity="center_vertical|left"
+                android:paddingHorizontal="@dimen/activity_padding8"
+                android:text="@{title}"
+                android:textColor="@color/colorHeadingBlack_00"
+                android:textSize="@dimen/textSizeMedium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgIcon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/txtDesc"
+                tools:text="Lesson 1" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_medium"
+                android:paddingHorizontal="@dimen/activity_padding8"
+                android:text="@{desc}"
+                android:layout_marginTop="@dimen/activity_padding2"
+                tools:text="Subtration of Single digit for +-7"
+                android:textColor="@color/colorListingHeading"
+                android:textSize="@dimen/textSizeSmall"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgIcon"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

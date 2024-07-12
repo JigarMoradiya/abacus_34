@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/activity_padding4"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/card_corner_radius4"
+            app:cardElevation="@dimen/card_elevation2">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingVertical="@dimen/activity_padding8">
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linQue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txt_abacus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:fontFamily="@font/font_bold"
+                        android:gravity="center_vertical|right"
+                        android:textColor="@color/colorListingHeading"
+                        android:textSize="@dimen/textSizeLarge" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivDivider1"
+                        android:layout_width="@dimen/_72dp"
+                        android:layout_height="@dimen/activity_padding2"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/activity_padding4"
+                        android:visibility="visible"
+                        app:srcCompat="@color/colorTint" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtAnswer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_padding4"
+                        app:fontFamily="@font/font_bold"
+                        android:gravity="center"
+                        android:textColor="@color/colorGreen"
+                        android:textSize="@dimen/textSizeSuperExtraLarge" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="@dimen/activity_padding4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linQue"
+                    android:layout_gravity="end" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtYourAnswer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding4"
+                    app:fontFamily="@font/font_bold"
+                    android:gravity="center"
+                    android:text="Your Answer : "
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/textSizeExtraSmall"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgKidLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:paddingBottom="@dimen/activity_padding12"
+            android:scaleType="fitEnd"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/relAbacus"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/relAbacus"
+            app:srcCompat="@drawable/ic_boy_abacus_left"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgKidRight"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="-9dp"
+            android:adjustViewBounds="true"
+            android:paddingBottom="@dimen/activity_padding12"
+            android:scaleType="fitEnd"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/relAbacus"
+            app:layout_constraintStart_toEndOf="@+id/relAbacus"
+            app:layout_constraintTop_toTopOf="@+id/relAbacus"
+            app:srcCompat="@drawable/ic_girl_abacus_right"
+            tools:visibility="visible" />
+
+        <RelativeLayout
+            android:id="@+id/relAbacus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-9dp"
+            android:paddingTop="@dimen/activity_padding10"
+            app:layout_constraintStart_toEndOf="@+id/imgKidLeft"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivReset"
+                android:layout_width="@dimen/activity_padding10"
+                android:layout_height="@dimen/activity_padding12"
+                android:layout_alignEnd="@+id/cardAbacusMain"
+                android:layout_marginEnd="@dimen/activity_padding12"
+                app:srcCompat="@drawable/box_primory_accent"
+                app:tint="@color/black" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAbacusMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_padding8"
+                android:layout_marginTop="@dimen/activity_padding8"
+                android:layout_marginBottom="@dimen/activity_padding4"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/padding_radius_abacus_frame_large_exam"
+                app:cardElevation="@dimen/activity_padding2"
+                app:cardMaxElevation="@dimen/activity_padding2"
+                app:cardUseCompatPadding="false">
+
+                <RelativeLayout
+                    android:id="@+id/rlAbacusMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_abacus_frame_large_black_exam">
+
+                    <RelativeLayout
+                        android:id="@+id/rlAbacus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical">
+
+                        <FrameLayout
+                            android:id="@+id/flAbacusTop"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="@dimen/activity_padding2">
+
+                            <com.jigar.me.ui.view.base.abacus.AbacusMasterView
+                                android:id="@+id/abacusTop"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:beadDrawables="@array/bead_top"
+                                app:columnSpacing="@dimen/_28dp"
+                                app:isBeadStackFromBottom="false"
+                                app:noOfBead="1"
+                                app:roadDrawable="@drawable/road"
+                                app:singleBeadValue="5" />
+
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:id="@+id/flAbacusBottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/rlDivider"
+                            android:paddingHorizontal="@dimen/activity_padding2">
+
+                            <com.jigar.me.ui.view.base.abacus.AbacusMasterView
+                                android:id="@+id/abacusBottom"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:beadDrawables="@array/big_bottom"
+                                app:columnSpacing="@dimen/_28dp"
+                                app:isBeadStackFromBottom="true"
+                                app:noOfBead="4"
+                                app:roadDrawable="@drawable/road"
+                                app:singleBeadValue="1" />
+
+                        </FrameLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/rlDivider"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/flAbacusTop"
+                            android:layout_alignStart="@+id/flAbacusTop"
+                            android:layout_alignEnd="@+id/flAbacusTop">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivDivider"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/two"
+                                android:background="@color/black2" />
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvCurrentVal"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/padding_radius_abacus_frame_large_exam"
+                android:layout_alignStart="@+id/cardAbacusMain"
+                android:layout_alignTop="@+id/cardAbacusMain"
+                android:layout_alignEnd="@+id/cardAbacusMain"
+                android:elevation="@dimen/card_elevation8"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSizeVery2ExtraSmall"
+                app:fontFamily="@font/font_extra_bold" />
+
+
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgKidHandLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="-2dp"
+            android:paddingBottom="@dimen/activity_padding12"
+            android:scaleType="fitStart"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/relAbacus"
+            app:layout_constraintStart_toEndOf="@+id/imgKidLeft"
+            app:layout_constraintTop_toTopOf="@+id/relAbacus"
+            app:srcCompat="@drawable/ic_boy_abacus_hand_left"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgKidHandRight"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="-2dp"
+            android:paddingBottom="@dimen/activity_padding12"
+            android:scaleType="fitEnd"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/relAbacus"
+            app:layout_constraintEnd_toStartOf="@+id/imgKidRight"
+            app:layout_constraintTop_toTopOf="@+id/relAbacus"
+            app:srcCompat="@drawable/ic_girl_abacus_hand_right"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

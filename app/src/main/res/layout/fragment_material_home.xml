@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/card_elevation"
+            app:cardBackgroundColor="@color/light_back"
+            app:cardCornerRadius="@dimen/menu_icons_corner"
+            app:cardMaxElevation="@dimen/card_elevation"
+            android:layout_margin="@dimen/icons_margin2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/menu_icons"
+            android:layout_height="@dimen/menu_icons"
+                android:padding="@dimen/menu_icons_padding"
+                app:srcCompat="@drawable/ic_back" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/downloadMaterial"
+            style="@style/mainTitle"
+            android:layout_marginHorizontal="@dimen/title_margin"
+            app:layout_constraintBottom_toBottomOf="@+id/cardBack"
+            app:layout_constraintStart_toEndOf="@+id/cardBack"
+            app:layout_constraintTop_toTopOf="@+id/cardBack" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/scrollView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtTitle"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            android:paddingHorizontal="@dimen/activity_padding8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardBack">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    app:cardBackgroundColor="@color/home_menu_icon_bg"
+                    android:layout_margin="@dimen/activity_padding8"
+                    app:cardCornerRadius="@dimen/card_corner_radius12"
+                    app:cardElevation="@dimen/activity_padding2">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/activity_padding16">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_28dp"
+                            android:text="@string/nursery_class_material"
+                            android:paddingHorizontal="@dimen/activity_padding8"
+                            android:gravity="center"
+                            android:letterSpacing="0.05"
+                            app:backgroundTint="#E7D9FF"
+                            app:cornerRadius="@dimen/activity_padding2"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:textAllCaps="false"
+                            android:textColor="#8122BC"
+                            app:fontFamily="@font/font_semibold"
+                            android:includeFontPadding="false"
+                            android:textSize="@dimen/textSizeSmall"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/colorHeadingBlack_00"
+                            android:layout_marginTop="@dimen/activity_padding8"
+                            android:text="@string/suitable_to_age_4_5"
+                            android:textSize="@dimen/textSizeRegular"
+                            app:fontFamily="@font/font_semibold"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:gravity="center"
+                            android:layout_marginTop="@dimen/activity_padding12"
+                            android:textColor="@color/colorListingHeading"
+                            android:text="@string/nursery_material_desc"
+                            android:textSize="@dimen/textSizeExtraSmall"
+                            app:fontFamily="@font/font_medium"/>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/activity_padding12"
+                            android:gravity="center"
+                            android:id="@+id/linearHelpRate"
+                            android:orientation="horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtDesc">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txtNurseryBtn1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_24dp"
+                                android:layout_marginEnd="@dimen/activity_padding4"
+                                android:background="@drawable/bg_need_help"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="@dimen/activity_padding8"
+                                android:text="@string/txt_purchase_Now"
+                                android:visibility="gone"
+                                android:textColor="@color/doneTick"
+                                android:textSize="@dimen/textSizeExtraSmall"
+                                app:fontFamily="@font/font_semibold"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/linearLogo" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txtNurseryBtn2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_24dp"
+                                android:background="@drawable/bg_rate_us_about_us"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="@dimen/activity_padding8"
+                                android:text="@string/view_material"
+                                android:textColor="@color/yellow_Rateus"
+                                android:textSize="@dimen/textSizeExtraSmall"
+                                app:fontFamily="@font/font_semibold"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/linearLogo" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/activity_padding8"
+                    app:cardBackgroundColor="@color/home_menu_icon_bg"
+                    app:cardCornerRadius="@dimen/card_corner_radius12"
+                    app:cardElevation="@dimen/activity_padding2">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/activity_padding16">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_28dp"
+                            android:text="@string/maths_material"
+                            android:paddingHorizontal="@dimen/activity_padding8"
+                            android:gravity="center"
+                            android:letterSpacing="0.05"
+                            app:backgroundTint="#CAE8FF"
+                            app:cornerRadius="@dimen/activity_padding2"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:textAllCaps="false"
+                            android:textColor="#2277BC"
+                            app:fontFamily="@font/font_semibold"
+                            android:includeFontPadding="false"
+                            android:textSize="@dimen/textSizeSmall"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/colorHeadingBlack_00"
+                            android:layout_marginTop="@dimen/activity_padding8"
+                            android:text="@string/suitable_to_age_5_and_up"
+                            android:textSize="@dimen/textSizeRegular"
+                            app:fontFamily="@font/font_semibold"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/colorListingHeading"
+                            android:gravity="center"
+                            android:layout_marginTop="@dimen/activity_padding12"
+                            android:text="@string/maths_material_desc"
+                            android:textSize="@dimen/textSizeExtraSmall"
+                            app:fontFamily="@font/font_medium"/>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/activity_padding12"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtDesc">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txtMathsBtn1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_24dp"
+                                android:visibility="gone"
+                                android:layout_marginEnd="@dimen/activity_padding4"
+                                android:background="@drawable/bg_need_help"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="@dimen/activity_padding8"
+                                android:text="@string/txt_purchase_Now"
+                                android:textColor="@color/doneTick"
+                                android:textSize="@dimen/textSizeExtraSmall"
+                                app:fontFamily="@font/font_semibold"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/linearLogo" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txtMathsBtn2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_24dp"
+                                android:background="@drawable/bg_rate_us_about_us"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="@dimen/activity_padding8"
+                                android:text="@string/view_material"
+                                android:textColor="@color/yellow_Rateus"
+                                android:textSize="@dimen/textSizeExtraSmall"
+                                app:fontFamily="@font/font_semibold"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/linearLogo" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+

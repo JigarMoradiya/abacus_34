@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgObjectExtraSmall"
+            android:layout_width="@dimen/object_extra_small"
+            android:layout_height="@dimen/object_extra_small"
+            android:visibility="gone"
+            android:layout_marginStart="@dimen/activity_padding6"
+            android:layout_marginEnd="@dimen/activity_padding6"
+            app:srcCompat="@drawable/animal_ant"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgObjectSmall"
+            android:layout_width="@dimen/object_small"
+            android:layout_height="@dimen/object_small"
+            android:visibility="visible"
+            android:layout_marginStart="@dimen/activity_padding6"
+            android:layout_marginEnd="@dimen/activity_padding6"
+            app:srcCompat="@drawable/animal_ant"
+            tools:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgObjectMedium"
+            android:layout_width="@dimen/object_medium"
+            android:layout_height="@dimen/object_medium"
+            android:visibility="gone"
+            android:layout_marginStart="@dimen/activity_padding8"
+            android:layout_marginEnd="@dimen/activity_padding8"
+            app:srcCompat="@drawable/animal_ant"
+            tools:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgObjectLarge"
+            android:layout_width="@dimen/object_large"
+            android:layout_height="@dimen/object_large"
+            android:visibility="gone"
+            android:layout_marginStart="@dimen/activity_padding10"
+            android:layout_marginEnd="@dimen/activity_padding10"
+            app:srcCompat="@drawable/animal_ant"
+            tools:visibility="gone" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

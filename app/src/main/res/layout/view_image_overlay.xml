@@ -1,0 +1,42 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:background="@drawable/box_gradient"
+            android:padding="@dimen/activity_padding4">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_semibold"
+                android:gravity="center"
+                android:text="@string/downloadMaterial"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSizeLarge" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.9"
+                android:fontFamily="@font/font_medium"
+                android:gravity="center"
+                android:text="@string/downloadMaterial"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSizeMedium" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </RelativeLayout>
+</merge>

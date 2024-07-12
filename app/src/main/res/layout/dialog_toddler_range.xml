@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardHint"
+        app:cardBackgroundColor="@color/white"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_padding2"
+        app:cardCornerRadius="@dimen/activity_padding12"
+        app:cardElevation="@dimen/card_elevation"
+        app:cardMaxElevation="@dimen/card_elevation"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/activity_padding16"
+                style="@style/mainTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@string/txt_Toddler_Range" />
+
+            <View
+                android:id="@+id/viewDivider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/gray_dark50"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_edt_from"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_padding12"
+                android:layout_marginTop="@dimen/activity_padding12"
+                android:layout_marginEnd="@dimen/activity_padding4"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:layout_constraintEnd_toStartOf="@+id/layout_edt_to"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewDivider">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_from"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/txt_From"
+                    android:inputType="number"
+                    android:maxLength="9"
+                    android:nextFocusDown="@+id/txt_to"
+                    android:textColor="@color/colorListingHeading"
+                    android:textSize="@dimen/textSizeLarge" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_edt_to"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_padding4"
+                android:layout_marginTop="@dimen/activity_padding12"
+                android:layout_marginEnd="@dimen/activity_padding12"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/layout_edt_from"
+                app:layout_constraintTop_toBottomOf="@+id/viewDivider">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_to"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/txt_To"
+                    android:inputType="number"
+                    android:maxLength="9"
+                    android:textColor="@color/colorListingHeading"
+                    android:textSize="@dimen/textSizeLarge" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnYes"
+                style="@style/btnMedium"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/activity_padding20"
+                android:text="@string/submit"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_edt_to" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/btnNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:fontFamily="@font/font_bold"
+                android:includeFontPadding="false"
+                android:padding="@dimen/activity_padding8"
+                android:text="@string/txtCancel"
+                android:textColor="@color/colorListingHeading"
+                android:textSize="@dimen/textSizeMedium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnYes" />
+
+            <androidx.legacy.widget.Space
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnNo"
+                android:layout_height="@dimen/activity_padding8"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

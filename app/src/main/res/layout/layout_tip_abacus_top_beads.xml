@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="320dp"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/activity_padding8"
+    android:layout_gravity="center">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_36dp"
+        android:adjustViewBounds="true"
+        app:tint="@color/white"
+        app:srcCompat="@drawable/ic_up_arrow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_padding8"
+        app:cardCornerRadius="@dimen/home_menu_corner"
+        app:cardElevation="@dimen/activity_padding2"
+        app:cardUseCompatPadding="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lineSpacingExtra="2sp"
+            android:paddingHorizontal="@dimen/activity_padding12"
+            android:paddingVertical="@dimen/activity_padding10"
+            android:text="@string/this_all_are_upper_bead"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSizeRegular"
+            app:fontFamily="@font/font_bold" />
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

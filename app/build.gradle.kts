@@ -1,13 +1,14 @@
-import com.android.build.api.variant.BuildConfigField
-
 plugins {
     id("kotlin-kapt")
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-parcelize")
 
     id("androidx.navigation.safeargs")
 
-    id("dagger.hilt.android.plugin")
+//    id("dagger.hilt.android.plugin")
+    id("com.google.dagger.hilt.android")
+
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
 }
@@ -44,6 +45,7 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+        dataBinding = true
     }
     flavorDimensions += listOf("variant1")
     productFlavors {
@@ -59,8 +61,8 @@ android {
 
             dimension = "variant1"
             applicationId = "com.abacus.puzzle"
-            versionCode = 2
-            versionName = "10.0.1"
+            versionCode = 105
+            versionName = "10.0.2"
         }
     }
 
@@ -79,9 +81,9 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
 
     // dagger hilt
-    implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-android-compiler:2.48")
-    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+//    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
     kapt("androidx.hilt:hilt-compiler:1.2.0")
 
     // firebase
@@ -99,7 +101,7 @@ dependencies {
     implementation("com.google.android.gms:play-services-ads:23.2.0")
 
     // push notification
-    implementation("com.onesignal:OneSignal:[5.0.0, 5.99.99]")
+    implementation("com.onesignal:OneSignal:5.1.17")
 
     // api
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -108,6 +110,7 @@ dependencies {
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+    implementation("com.jakewharton.rxbinding3:rxbinding-material:3.1.0")
 
     // Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
@@ -155,9 +158,9 @@ dependencies {
     implementation("com.github.mukeshsolanki.android-otpview-pinview:otpview:3.1.0")
 
     // Download Manger Library
-    implementation("androidx.tonyodev.fetch2:xfetch2:3.1.6")
-    implementation("androidx.tonyodev.fetch2okhttp:xfetch2okhttp:3.1.6")
-    implementation("com.squareup.okhttp3:okhttp-urlconnection:4.9.0")
+//    implementation("androidx.tonyodev.fetch2:xfetch2:3.1.6")
+//    implementation("androidx.tonyodev.fetch2okhttp:xfetch2okhttp:3.1.6")
+//    implementation("com.squareup.okhttp3:okhttp-urlconnection:4.9.0")
 
     // rating bar
     implementation("com.github.ome450901:SimpleRatingBar:1.5.0")
