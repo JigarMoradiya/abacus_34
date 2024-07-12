@@ -852,31 +852,5 @@
         "ref_pages": "95,97,99,101,111,78,83,80,82,94,77,79,84,81,86,113,115,104,106,114,107,109,116,96,98,100,102,112,89,91,88,92,94,77,85,90,81,86,87,93,103,105,114,108,110,116"
       }
     ]
-  },
-  {
-    "level_id": "3",
-    "category_id": "14",
-    "sort_order": 110,
-    "category_name": "Formula with 50",
-    "pages": [
-      {
-        "page_id": "164",
-        "page_name": "+50",
-        "descriptions": "Formula with +50",
-        "file": "abacus_50.json"
-      },
-      {
-        "page_id": "165",
-        "page_name": "-50",
-        "descriptions": "Formula with -50",
-        "file": "abacus_50.json"
-      },
-      {
-        "page_id": "166",
-        "page_name": "+50 and -50",
-        "descriptions": "Formula with +50 and -50",
-        "file": "abacus_50.json"
-      }
-    ]
   }
 ]

@@ -56,7 +56,7 @@ class MainDashboardActivity : BaseActivity() {
 
         if (BuildConfig.DEBUG) {
 ////            OneSignal.setEmail("jigar@gmail.com")
-            binding.viewBG.show()
+//            binding.viewBG.show()
         }
     }
 

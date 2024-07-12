@@ -242,8 +242,8 @@ class MaterialDownloadFragment : BaseFragment(), MaterialDownloadAdapter.OnItemC
         val url = prefManager.getCustomParam(AppConstants.AbacusProgress.iPath,"")+downloadMaterialData.pdf_path
         val currentDateFormate =  DateTimeUtils.getDateString(Date(), DateTimeUtils.yyyy_MM_dd_HH_mm)
         val name = downloadMaterialData.groupName.plus("_").plus(currentDateFormate).plus(".pdf")
-        val filePath = requireActivity().downloadFilePath().plus("/").plus(downloadMaterialData.groupName).plus("_").plus(currentDateFormate).plus(".pdf")
-        File(filePath).delete()
+//        val filePath = requireActivity().downloadFilePath().plus("/").plus(downloadMaterialData.groupName).plus("_").plus(currentDateFormate).plus(".pdf")
+//        File(filePath).delete()
         val request = DownloadManager.Request(Uri.parse(url))
             .setTitle(downloadMaterialData.groupName)
             .setDescription("Downloading...")

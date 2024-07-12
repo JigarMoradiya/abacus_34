@@ -43,8 +43,8 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
     private lateinit var themeContent : AbacusContent
     private var values: Float = 1.0F
     private var valuesFinal: Float = 1.0F
-    private var random_min: Int = 1
-    private var random_max: Int = 1000
+    private var random_min: Float = 1F
+    private var random_max: Float = 1000F
     private var total_count: Int = 1
 
     private var currentSumVal = 0L
@@ -81,8 +81,8 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
                     values
                 }
             } else if (getCustomParam(AppConstants.Settings.SW_Random,"") == "Y") {
-                random_min = getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F).toInt()
-                random_max = getCustomParamFloat(AppConstants.Settings.SW_Range_max,101F).toInt()
+                random_min = getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F)
+                random_max = getCustomParamFloat(AppConstants.Settings.SW_Range_max,101F)
                 values = genrateRandom().toFloat()
                 valuesFinal = if (prefManager.getCustomParam(AppConstants.Settings.SW_DecimalMode,"N") == "Y") {
                     values / 1000
@@ -182,8 +182,8 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
                         values
                     }
                 } else if (getCustomParam(AppConstants.Settings.SW_Random,"") == "Y") {
-                    random_min = getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F).toInt()
-                    random_max = getCustomParamFloat(AppConstants.Settings.SW_Range_max,101F).toInt()
+                    random_min = getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F)
+                    random_max = getCustomParamFloat(AppConstants.Settings.SW_Range_max,101F)
                     values = genrateRandom().toFloat()
                     valuesFinal = if (prefManager.getCustomParam(AppConstants.Settings.SW_DecimalMode,"N") == "Y") {
                         values / 1000
@@ -427,8 +427,8 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
 
                 binding.swRandom.isChecked = getCustomParam(AppConstants.Settings.SW_Random, "") == "Y"
                 binding.swReset.isChecked = getCustomParam(AppConstants.Settings.SW_Reset, "") == "Y"
-                random_min = getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F).toInt()
-                random_max = getCustomParamFloat(AppConstants.Settings.SW_Range_max,101F).toInt()
+                random_min = getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F)
+                random_max = getCustomParamFloat(AppConstants.Settings.SW_Range_max,101F)
                 try {
                     binding.txtRange.text = String.format(requireContext().getString(R.string.txt_From_to),random_min,(random_max - 1))
                 } catch (e: UnknownFormatConversionException) {
@@ -459,10 +459,10 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         }
     }
 
-    private fun genrateRandom(): Int {
+    private fun genrateRandom(): Float {
         val r = Random()
-        val i1 = r.nextInt(random_max - random_min) + random_min
-        return i1
+        val i1 = r.nextInt(random_max.toInt() - random_min.toInt()) + random_min.toInt()
+        return i1.toFloat()
     }
 
     // ToddlerRangeDialog click listener
@@ -603,8 +603,8 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
                     values
                 }
             } else if (getCustomParam(AppConstants.Settings.SW_Random,"") == "Y") {
-                random_min = getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F).toInt()
-                random_max = getCustomParamFloat(AppConstants.Settings.SW_Range_max,101F).toInt()
+                random_min = getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F)
+                random_max = getCustomParamFloat(AppConstants.Settings.SW_Range_max,101F)
                 try {
                     binding.txtRange.text = String.format(requireContext().getString(R.string.txt_From_to),random_min,(random_max - 1))
                 } catch (e: UnknownFormatConversionException) {

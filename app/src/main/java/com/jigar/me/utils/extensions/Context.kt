@@ -256,12 +256,12 @@ fun Context.shareIntent() {
 
 
 fun Context.downloadFilePath() : String?{
-    val folder = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), getString(R.string.download_folder))
-    if (!folder.exists()) {
-        folder.mkdir()
-    }
+//    val folder = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS))
+//    if (!folder.exists()) {
+//        folder.mkdir()
+//    }
 //    return getExternalFilesDir("download")?.path
-    return folder.path
+    return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).path
 }
 
  fun Context.readJsonAsset(fileName: String?): String {
