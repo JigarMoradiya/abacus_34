@@ -7,6 +7,7 @@ import android.graphics.*
 import android.graphics.drawable.Drawable
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.core.content.ContextCompat
 import com.jigar.me.data.local.data.AbacusBeadType
 import com.jigar.me.data.local.data.AbacusContent
@@ -20,6 +21,9 @@ class AbacusMasterEngine(
     private val singleBeadValue: Int,
     context: Context,
     roadDrawable: Drawable?,
+    unitRoadDrawable: Drawable?,
+    unitRodColumnPosition: Int,
+    noOfColumnUsed: Int,
     beads: Array<Drawable?>,
     isBeadStackFromBottom: Boolean,
     private val abacusContent: AbacusContent,
@@ -56,6 +60,11 @@ class AbacusMasterEngine(
             val rowPosition = Point()
             rowPosition.x = position!!.x + i * beadWidth
             rowPosition.y = position!!.y
+            val roads = if (i == unitRodColumnPosition){
+                unitRoadDrawable
+            }else{
+                roadDrawable
+            }
             rows[i] = AbacusMasterRowEngine(
                 context,
                 rowPosition,
@@ -65,11 +74,11 @@ class AbacusMasterEngine(
                 beads,
                 isBeadStackFromBottom,
                 noOfBeads,
-                roadDrawable,
+                roads,
                 numColumns,
                 extraHeight,
                 beadType,
-                abacusContent
+                abacusContent, i < noOfColumnUsed,
             )
         }
     }

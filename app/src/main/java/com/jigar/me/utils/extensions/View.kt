@@ -51,9 +51,14 @@ fun View.setExamObjectShakeAnimation(){
     startAnimation(animShake)
 }
 
-fun View.setAbacusResetShakeAnimation(){
-    val animShake: Animation = AnimationUtils.loadAnimation(context, R.anim.shake_reset_abacus_limit)
-    startAnimation(animShake)
+fun View.setAbacusResetShakeAnimation(isResetAction : Boolean = false){
+    if (isResetAction){
+        val animShake: Animation = AnimationUtils.loadAnimation(context, R.anim.shake_reset_abacus_action)
+        startAnimation(animShake)
+    }else{
+        val animShake: Animation = AnimationUtils.loadAnimation(context, R.anim.shake_reset_abacus_limit)
+        startAnimation(animShake)
+    }
 }
 
 fun TextInputLayout.markRequiredInRed() {

@@ -2,6 +2,7 @@ package com.jigar.me.ui.view.dashboard.fragments.abacus
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +26,7 @@ import com.jigar.me.ui.view.base.abacus.OnAbacusValueChangeListener
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
 import com.jigar.me.ui.view.confirm_alerts.dialogs.ToddlerRangeDialog
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.extensions.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
@@ -32,6 +34,7 @@ import kotlinx.coroutines.launch
 import me.samlss.lighter.IntroProvider
 import me.samlss.lighter.Lighter
 import me.samlss.lighter.parameter.Direction
+import java.text.DecimalFormat
 import java.util.*
 
 @AndroidEntryPoint
@@ -41,6 +44,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
     private lateinit var binding: FragmentFullAbacusBinding
     private var abacusBinding: FragmentAbacusSubKidBinding? = null
     private lateinit var themeContent : AbacusContent
+    private var abacusTotalColumns: Int = 13
     private var values: Float = 1.0F
     private var valuesFinal: Float = 1.0F
     private var random_min: Float = 1F
@@ -70,13 +74,14 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
     private fun initViews() {
 //        setAbacus()
         with(prefManager){
+            abacusTotalColumns = getCustomParamInt(AppConstants.Settings.AbacusMaxColumn,13)
             if (getCustomParam(AppConstants.Settings.SW_Random,"") != "Y") {
                 values = getCustomParamFloat(AppConstants.Settings.Toddler_No,1.0F)
                 if (values > 9999999) {
                     values = getCustomParamFloat(AppConstants.Settings.SW_Range_min,1.0F)
                 }
                 valuesFinal = if (prefManager.getCustomParam(AppConstants.Settings.SW_DecimalMode,"N") == "Y") {
-                    values / 1000
+                    values / 1000000
                 }else{
                     values
                 }
@@ -85,7 +90,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
                 random_max = getCustomParamFloat(AppConstants.Settings.SW_Range_max,101F)
                 values = genrateRandom().toFloat()
                 valuesFinal = if (prefManager.getCustomParam(AppConstants.Settings.SW_DecimalMode,"N") == "Y") {
-                    values / 1000
+                    values / 1000000
                 }else{
                     values
                 }
@@ -109,7 +114,6 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
     private fun initListener() {
         binding.cardBack.onClick { mNavController.navigateUp() }
         binding.txtShowTour.onClick { setThemeLighterTopBeads() }
-        binding.txtShowTourTop.onClick { binding.txtShowTour.performClick() }
         binding.swRandom.onClick { switchRandomClick() }
         binding.swReset.onClick { switchResetClick() }
         binding.swResetStarting.onClick { switchResetStartingClick() }
@@ -123,15 +127,17 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
     }
     private fun resetClick() {
         if (!isResetRunning) {
-            isResetRunning = true
-            abacusBinding?.ivReset?.y = 0f
-            abacusBinding?.ivReset?.animate()?.setDuration(200)
-                ?.translationYBy((abacusBinding?.ivReset?.height!! / 2).toFloat())?.withEndAction {
-                    abacusBinding?.ivReset?.animate()?.setDuration(200)
-                        ?.translationYBy((-abacusBinding?.ivReset?.height!! / 2).toFloat())!!.withEndAction {
-                            isResetRunning = false
-                        }.start()
-                }?.start()
+//            isResetRunning = true
+//            abacusBinding?.ivReset?.y = 0f
+//            abacusBinding?.ivReset?.animate()?.setDuration(200)
+//                ?.translationYBy((abacusBinding?.ivReset?.height!! / 2).toFloat())?.withEndAction {
+//                    abacusBinding?.ivReset?.animate()?.setDuration(200)
+//                        ?.translationYBy((-abacusBinding?.ivReset?.height!! / 2).toFloat())!!.withEndAction {
+//                            isResetRunning = false
+//                        }.start()
+//                }?.start()
+
+            abacusBinding?.ivReset?.setAbacusResetShakeAnimation(true)
             onAbacusValueDotReset()
         }
     }
@@ -177,7 +183,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
                         values = getCustomParamFloat(AppConstants.Settings.SW_Range_min,1.0F)
                     }
                     valuesFinal = if (prefManager.getCustomParam(AppConstants.Settings.SW_DecimalMode,"N") == "Y") {
-                        values / 1000
+                        values / 1000000
                     }else{
                         values
                     }
@@ -186,7 +192,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
                     random_max = getCustomParamFloat(AppConstants.Settings.SW_Range_max,101F)
                     values = genrateRandom().toFloat()
                     valuesFinal = if (prefManager.getCustomParam(AppConstants.Settings.SW_DecimalMode,"N") == "Y") {
-                        values / 1000
+                        values / 1000000
                     }else{
                         values
                     }
@@ -255,54 +261,11 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         binding.linearAbacus.removeAllViews()
         binding.linearAbacusFreeMode.removeAllViews()
         abacusBinding = FragmentAbacusSubKidBinding.inflate(layoutInflater, null, false)
-        if (prefManager.getCustomParam(AppConstants.Settings.SW_DecimalMode, "N") == "Y"){
-            abacusBinding?.imgDot4?.show()
-            abacusBinding?.imgDot7?.show()
-            abacusBinding?.txtRodName01Bottom?.show()
-            abacusBinding?.txtRodName02Bottom?.show()
-            abacusBinding?.txtRodName03Bottom?.show()
-            abacusBinding?.txtRodName8Bottom?.hide()
-            abacusBinding?.txtRodName7Bottom?.hide()
-            abacusBinding?.txtRodName6Bottom?.hide()
-
-            abacusBinding?.txtRodNumber01?.show()
-            abacusBinding?.txtRodNumber02?.show()
-            abacusBinding?.txtRodNumber03?.show()
-            abacusBinding?.txtRodNumber8?.hide()
-            abacusBinding?.txtRodNumber7?.hide()
-            abacusBinding?.txtRodNumber6?.hide()
-
-            abacusBinding?.txtRodNumber01Bottom?.show()
-            abacusBinding?.txtRodNumber02Bottom?.show()
-            abacusBinding?.txtRodNumber03Bottom?.show()
-            abacusBinding?.txtRodNumber8Bottom?.hide()
-            abacusBinding?.txtRodNumber7Bottom?.hide()
-            abacusBinding?.txtRodNumber6Bottom?.hide()
-        }else{
-            abacusBinding?.imgDot1?.show()
-            abacusBinding?.imgDot4?.show()
-            abacusBinding?.imgDot7?.show()
-
-            abacusBinding?.txtRodName01Bottom?.hide()
-            abacusBinding?.txtRodName02Bottom?.hide()
-            abacusBinding?.txtRodName03Bottom?.hide()
-            abacusBinding?.txtRodName8Bottom?.show()
-            abacusBinding?.txtRodName7Bottom?.show()
-            abacusBinding?.txtRodName6Bottom?.show()
-
-            abacusBinding?.txtRodNumber01?.hide()
-            abacusBinding?.txtRodNumber02?.hide()
-            abacusBinding?.txtRodNumber03?.hide()
-            abacusBinding?.txtRodNumber8?.show()
-            abacusBinding?.txtRodNumber7?.show()
-            abacusBinding?.txtRodNumber6?.show()
-            abacusBinding?.txtRodNumber01Bottom?.hide()
-            abacusBinding?.txtRodNumber02Bottom?.hide()
-            abacusBinding?.txtRodNumber03Bottom?.hide()
-            abacusBinding?.txtRodNumber8Bottom?.show()
-            abacusBinding?.txtRodNumber7Bottom?.show()
-            abacusBinding?.txtRodNumber6Bottom?.show()
-        }
+        abacusBinding?.imgDot1?.show()
+        abacusBinding?.imgDot4?.show()
+        abacusBinding?.imgDot7?.show()
+        abacusBinding?.imgDot10?.show()
+        abacusBinding?.imgDot13?.show()
 
         val abacusBeadType = if (prefManager.getCustomParam(AppConstants.Settings.SW_FreeMode, "Y") == "Y"){
             binding.linearAbacusFreeMode.addView(abacusBinding?.root)
@@ -315,19 +278,20 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             binding.linearAbacus.addView(abacusBinding?.root)
             binding.linearAbacus.show()
             binding.linearAbacusFreeMode.hide()
-            AbacusBeadType.None
+            AbacusBeadType.FullMode
         }
         themeContent  = DataProvider.findAbacusThemeType(requireContext(),theme,abacusBeadType)
 
-        if (DataProvider.generateIndex() == 0){
-            abacusBinding?.imgKidLeft?.setImageResource(R.drawable.ic_boy_abacus_left)
-            abacusBinding?.imgKidHandLeft?.setImageResource(R.drawable.ic_boy_abacus_hand_left)
-        }else{
-            abacusBinding?.imgKidLeft?.setImageResource(R.drawable.ic_girl_abacus_left)
-            abacusBinding?.imgKidHandLeft?.setImageResource(R.drawable.ic_girl_abacus_hand_left)
-        }
-        abacusBinding?.imgKidLeft?.show()
-        abacusBinding?.imgKidHandLeft?.show()
+        // TODO kids images showing
+//        if (DataProvider.generateIndex() == 0){
+//            abacusBinding?.imgKidLeft?.setImageResource(R.drawable.ic_boy_abacus_left)
+//            abacusBinding?.imgKidHandLeft?.setImageResource(R.drawable.ic_boy_abacus_hand_left)
+//        }else{
+//            abacusBinding?.imgKidLeft?.setImageResource(R.drawable.ic_girl_abacus_left)
+//            abacusBinding?.imgKidHandLeft?.setImageResource(R.drawable.ic_girl_abacus_hand_left)
+//        }
+//        abacusBinding?.imgKidLeft?.show()
+//        abacusBinding?.imgKidHandLeft?.show()
 
         abacusBinding?.ivReset?.onClick { resetClick()}
 
@@ -339,39 +303,26 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         themeContent.resetBtnColor8.let {
             abacusBinding?.imgDot1?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.imgDot4?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-            abacusBinding?.imgDot7?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+            abacusBinding?.imgDot7?.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)
+            abacusBinding?.imgDot7?.layoutParams?.width = 3.dp
+            abacusBinding?.imgDot7?.layoutParams?.height = 3.dp
+            abacusBinding?.imgDot10?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+            abacusBinding?.imgDot13?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
 
-            abacusBinding?.imgDot5?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-            abacusBinding?.imgDot8?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-
-            binding.txtShowTourTop.setTextColor(ContextCompat.getColor(requireContext(),it))
             binding.txtShowTour.setTextColor(ContextCompat.getColor(requireContext(),it))
             abacusBinding?.ivReset?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.ivRight?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.ivLeft?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
         }
-        abacusBinding?.abacusTop?.setNoOfRowAndBeads(0, 9, 1,abacusBeadType)
-        abacusBinding?.abacusBottom?.setNoOfRowAndBeads(0, 9, 4,abacusBeadType)
+        abacusBinding?.abacusTop?.setNoOfRowAndBeads(0, abacusTotalColumns, 1,abacusBeadType,6)
+        abacusBinding?.abacusBottom?.setNoOfRowAndBeads(0, abacusTotalColumns, 4,abacusBeadType,6)
 
         abacusBinding?.abacusTop?.onBeadShiftListener = this@FullAbacusFragment
         abacusBinding?.abacusBottom?.onBeadShiftListener = this@FullAbacusFragment
 
         if (!prefManager.getCustomParamBoolean(AppConstants.Settings.isFreeModeTourWatch, false)) {
             binding.txtShowTour.hide()
-            binding.txtShowTourTop.hide()
             setThemeLighterTopBeads()
-        }else{
-            setTourVisibility()
-        }
-    }
-
-    private fun setTourVisibility() {
-        if (prefManager.getCustomParam(AppConstants.Settings.SW_FreeMode, "Y") == "Y"){
-            binding.txtShowTour.show()
-            binding.txtShowTourTop.hide()
-        }else{
-            binding.txtShowTour.hide()
-            binding.txtShowTourTop.show()
         }
     }
 
@@ -430,11 +381,11 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
                 random_min = getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F)
                 random_max = getCustomParamFloat(AppConstants.Settings.SW_Range_max,101F)
                 try {
-                    binding.txtRange.text = String.format(requireContext().getString(R.string.txt_From_to),random_min,(random_max - 1))
+                    binding.txtRange.text = String.format(requireContext().getString(R.string.txt_From_to),random_min.toInt(),(random_max - 1).toInt())
                 } catch (e: UnknownFormatConversionException) {
-                    binding.txtRange.text = "${requireContext().getString(R.string.txt_From)} $random_min ${requireContext().getString(R.string.txt_To)} ${(random_max - 1)}"
+                    binding.txtRange.text = "${requireContext().getString(R.string.txt_From)} ${random_min.toInt()} ${requireContext().getString(R.string.txt_To)} ${(random_max - 1).toInt()}"
                 } catch (e: Exception) {
-                    binding.txtRange.text = "${requireContext().getString(R.string.txt_From)} $random_min ${requireContext().getString(R.string.txt_To)} ${(random_max - 1)}"
+                    binding.txtRange.text = "${requireContext().getString(R.string.txt_From)} ${random_min.toInt()} ${requireContext().getString(R.string.txt_To)} ${(random_max - 1).toInt()}"
                 }
                 if (getCustomParam(AppConstants.Settings.SW_Random, "") != "Y") {
                     values = getCustomParamFloat(AppConstants.Settings.Toddler_No, random_min.toFloat())
@@ -528,63 +479,79 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
     }
     override fun onAbacusValueChange(abacusView: View, sum1: Long) {
         // TODO
-        val sum : Float = if (prefManager.getCustomParam(AppConstants.Settings.SW_DecimalMode,"N") == "Y") {
-            val ans : Float = sum1.toFloat() / 1000
-            abacusBinding?.tvCurrentVal?.text = ans.toString()
-            ans
-        }else{
-            abacusBinding?.tvCurrentVal?.text = sum1.toString()
-            sum1.toFloat()
+        val abacusValue = sum1.toString()
+        var newValue = abacusValue
+        if (abacusValue.length != abacusTotalColumns){
+            for (i in 1..(abacusTotalColumns - abacusValue.length)) {
+                newValue = "0$newValue"
+            }
         }
-
-
-        with(prefManager){
-            if (prefManager.getCustomParam(AppConstants.Settings.SW_FreeMode,"Y") == "Y") {
-                if (!isTourPageRunning){
-                    if (!is1stTime){
-                        var count = getCustomParamInt(AppConstants.Settings.Free_Mode_Beads_Move_Count,0)
-                        if (count == AppConstants.Settings.Free_Mode_Beads_Move_Count_Limit){
-                            count = 0
-                            ads(true)
+        val sb = StringBuilder(newValue)
+        sb.insert(7, ".")
+        newValue = sb.toString()
+        val splitResult = newValue.split(".")
+        if (splitResult.size == 2){
+            val value1 = splitResult[0].toLong()
+            val value2 = splitResult[1]
+            val sum = if (value2.toLong() > 0){
+                abacusBinding?.tvCurrentVal?.text = "$value1.$value2"
+                "$value1.$value2"
+            }else{
+                abacusBinding?.tvCurrentVal?.text = "$value1"
+                "$value1"
+            }
+            with(prefManager){
+                if (prefManager.getCustomParam(AppConstants.Settings.SW_FreeMode,"Y") == "Y") {
+                    if (!isTourPageRunning){
+                        if (!is1stTime){
+                            var count = getCustomParamInt(AppConstants.Settings.Free_Mode_Beads_Move_Count,0)
+                            if (count == AppConstants.Settings.Free_Mode_Beads_Move_Count_Limit){
+                                count = 0
+                                ads(true)
+                            }
+                            count++
+                            setCustomParamInt(AppConstants.Settings.Free_Mode_Beads_Move_Count,count)
+                        }else{
+                            lifecycleScope.launch {
+                                delay(300)
+                                is1stTime = false
+                            }
                         }
-                        count++
-                        setCustomParamInt(AppConstants.Settings.Free_Mode_Beads_Move_Count,count)
-                    }else{
+                    } else {
+
+                    }
+                }else{
+                    Log.e("jigarLogs","sum = "+sum)
+                    Log.e("jigarLogs","valuesFinal = "+valuesFinal)
+                    if (sum == (valuesFinal.toInt()).toString()) {
+                        binding.swResetStarting.isChecked = false
+                        generateValue()
+                        total_count = getCustomParamInt(AppConstants.Settings.Toddler_No_Count,1)
+                        total_count++
+                        if (total_count > 9999999) {
+                            total_count = 1
+                        }
+                        setCustomParamInt(AppConstants.Settings.Toddler_No_Count,total_count)
                         lifecycleScope.launch {
                             delay(300)
+                            if (getCustomParam(AppConstants.Settings.SW_Reset,"") == "Y") {
+                                resetAbacus()
+                            }
                             is1stTime = false
+                            if (requireContext().isNetworkAvailable){
+                                goToNextValue()
+                            }else{
+                                notOfflineSupportDialog()
+                            }
                         }
-                    }
-                } else {
+                        setNumberValue()
+                    } else {
 
-                }
-            }else{
-                if (sum == valuesFinal) {
-                    binding.swResetStarting.isChecked = false
-                    generateValue()
-                    total_count = getCustomParamInt(AppConstants.Settings.Toddler_No_Count,1)
-                    total_count++
-                    if (total_count > 99999999) {
-                        total_count = 1
                     }
-                    setCustomParamInt(AppConstants.Settings.Toddler_No_Count,total_count)
-                    lifecycleScope.launch {
-                        delay(300)
-                        if (getCustomParam(AppConstants.Settings.SW_Reset,"") == "Y") {
-                            resetAbacus()
-                        }
-                        is1stTime = false
-                        if (requireContext().isNetworkAvailable){
-                            goToNextValue()
-                        }else{
-                            notOfflineSupportDialog()
-                        }
-                    }
-                    setNumberValue()
-                } else {
-
                 }
             }
+        }else{
+            mNavController.navigateUp()
         }
 
     }
@@ -598,7 +565,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
                 }
                 setCustomParamFloat(AppConstants.Settings.Toddler_No,values)
                 valuesFinal = if (prefManager.getCustomParam(AppConstants.Settings.SW_DecimalMode,"N") == "Y") {
-                    values / 1000
+                    values / 1000000
                 }else{
                     values
                 }
@@ -606,15 +573,15 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
                 random_min = getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F)
                 random_max = getCustomParamFloat(AppConstants.Settings.SW_Range_max,101F)
                 try {
-                    binding.txtRange.text = String.format(requireContext().getString(R.string.txt_From_to),random_min,(random_max - 1))
+                    binding.txtRange.text = String.format(requireContext().getString(R.string.txt_From_to),random_min.toInt(),(random_max - 1).toInt())
                 } catch (e: UnknownFormatConversionException) {
-                    binding.txtRange.text = "${requireContext().getString(R.string.txt_From)} $random_min ${requireContext().getString(R.string.txt_To)} ${(random_max - 1)}"
+                    binding.txtRange.text = "${requireContext().getString(R.string.txt_From)} ${random_min.toInt()} ${requireContext().getString(R.string.txt_To)} ${(random_max - 1).toInt()}"
                 } catch (e: Exception) {
-                    binding.txtRange.text = "${requireContext().getString(R.string.txt_From)} $random_min ${requireContext().getString(R.string.txt_To)} ${(random_max - 1)}"
+                    binding.txtRange.text = "${requireContext().getString(R.string.txt_From)} ${random_min} ${requireContext().getString(R.string.txt_To)} ${(random_max - 1).toInt()}"
                 }
                 values = genrateRandom().toFloat()
                 valuesFinal = if (prefManager.getCustomParam(AppConstants.Settings.SW_DecimalMode,"N") == "Y") {
-                    values / 1000
+                    values / 1000000
                 }else{
                     values
                 }
@@ -685,13 +652,13 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             lighter = Lighter.with(binding.root as ViewGroup)
             val paramsView1 = abacusBinding?.viewRod1?.layoutParams as RelativeLayout.LayoutParams
             paramsView1.width = themeContent.beadWidth
-            paramsView1.marginEnd = (themeContent.beadSpace / 2)
+            paramsView1.marginEnd = ((themeContent.beadWidth + themeContent.beadSpace) * 6) + (themeContent.beadSpace / 2)
             paramsView1.addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
             abacusBinding?.viewRod1?.layoutParams = paramsView1
             abacusBinding?.relHighLighter?.show()
 
             abacusBinding?.let {
-                AbacusUtils.setNumber("9",it.abacusTop,it.abacusBottom,totalLength = 9)
+                AbacusUtils.setNumber("9000000",it.abacusTop,it.abacusBottom,totalLength = abacusTotalColumns)
                 delay(300)
                 IntroProvider.abacusRodIntro(lighter, it.viewRod1, Direction.LEFT,R.layout.layout_tip_abacus_rod1,object : IntroProvider.IntroCloseClickListener {
                     override fun onIntroCloseClick() {
@@ -707,15 +674,15 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         lifecycleScope.launch {
             val paramsView1 = abacusBinding?.viewRod1?.layoutParams as RelativeLayout.LayoutParams
             paramsView1.width = themeContent.beadWidth
-            paramsView1.marginEnd = themeContent.beadWidth + themeContent.beadSpace + (themeContent.beadSpace / 2)
+            paramsView1.marginEnd = ((themeContent.beadWidth + themeContent.beadSpace) * 7) + (themeContent.beadSpace / 2)
             paramsView1.addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
             abacusBinding?.viewRod1?.layoutParams = paramsView1
 
             lighter = Lighter.with(binding.root as ViewGroup)
             abacusBinding?.let {
-                AbacusUtils.setNumber("90",it.abacusTop,it.abacusBottom,totalLength = 9)
+                AbacusUtils.setNumber("90000000",it.abacusTop,it.abacusBottom,totalLength = abacusTotalColumns)
                 delay(300)
-                IntroProvider.abacusRodIntro(lighter, it.viewRod1,Direction.LEFT,R.layout.layout_tip_abacus_rod2,object : IntroProvider.IntroCloseClickListener {
+                IntroProvider.abacusRodIntro(lighter, it.viewRod1,Direction.RIGHT,R.layout.layout_tip_abacus_rod2,object : IntroProvider.IntroCloseClickListener {
                     override fun onIntroCloseClick() {
                         setThemeLighterRod3()
                     }
@@ -727,15 +694,15 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         lifecycleScope.launch {
             val paramsView2 = abacusBinding?.viewRod1?.layoutParams as RelativeLayout.LayoutParams
             paramsView2.width = themeContent.beadWidth
-            paramsView2.marginEnd = ((themeContent.beadWidth + themeContent.beadSpace) * 2) + (themeContent.beadSpace / 2)
+            paramsView2 .marginEnd = ((themeContent.beadWidth + themeContent.beadSpace) * 8) + (themeContent.beadSpace / 2)
             paramsView2.addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
             abacusBinding?.viewRod1?.layoutParams = paramsView2
 
             lighter = Lighter.with(binding.root as ViewGroup)
             abacusBinding?.let {
-                AbacusUtils.setNumber("900",it.abacusTop,it.abacusBottom,totalLength = 9)
+                AbacusUtils.setNumber("900000000",it.abacusTop,it.abacusBottom,totalLength = abacusTotalColumns)
                 delay(300)
-                IntroProvider.abacusRodIntro(lighter, it.viewRod1,Direction.LEFT,R.layout.layout_tip_abacus_rod3,object : IntroProvider.IntroCloseClickListener {
+                IntroProvider.abacusRodIntro(lighter, it.viewRod1,Direction.RIGHT,R.layout.layout_tip_abacus_rod3,object : IntroProvider.IntroCloseClickListener {
                     override fun onIntroCloseClick() {
                         setThemeLighterOneColumn()
                     }
@@ -749,12 +716,12 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             lighter = Lighter.with(binding.root as ViewGroup)
             val paramsView1 = abacusBinding?.viewRod1?.layoutParams as RelativeLayout.LayoutParams
             paramsView1.width = themeContent.beadWidth
-            paramsView1.marginEnd = (themeContent.beadSpace / 2)
+            paramsView1.marginEnd = ((themeContent.beadWidth + themeContent.beadSpace) * 6) + (themeContent.beadSpace / 2)
             paramsView1.addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
             abacusBinding?.viewRod1?.layoutParams = paramsView1
 
             abacusBinding?.let {
-                AbacusUtils.setNumber("9",it.abacusTop,it.abacusBottom,totalLength = 9)
+                AbacusUtils.setNumber("9000000",it.abacusTop,it.abacusBottom,totalLength = abacusTotalColumns)
                 delay(300)
                 IntroProvider.abacusRodIntro(lighter, it.viewRod1, Direction.LEFT,R.layout.layout_tip_abacus_column1,object : IntroProvider.IntroCloseClickListener {
                     override fun onIntroCloseClick() {
@@ -771,13 +738,14 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             lighter = Lighter.with(binding.root as ViewGroup)
             val paramsView1 = abacusBinding?.viewRod1?.layoutParams as RelativeLayout.LayoutParams
             paramsView1.width = themeContent.beadWidth + themeContent.beadWidth + themeContent.beadSpace
+            paramsView1.marginEnd = ((themeContent.beadWidth + themeContent.beadSpace) * 6) + (themeContent.beadSpace / 2)
             paramsView1.addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
             abacusBinding?.viewRod1?.layoutParams = paramsView1
 
             abacusBinding?.let {
-                AbacusUtils.setNumber("99",it.abacusTop,it.abacusBottom,totalLength = 9)
+                AbacusUtils.setNumber("99000000",it.abacusTop,it.abacusBottom,totalLength = abacusTotalColumns)
                 delay(300)
-                IntroProvider.abacusRodIntro(lighter, it.viewRod1, Direction.LEFT,R.layout.layout_tip_abacus_column2,object : IntroProvider.IntroCloseClickListener {
+                IntroProvider.abacusRodIntro(lighter, it.viewRod1, Direction.RIGHT,R.layout.layout_tip_abacus_column2,object : IntroProvider.IntroCloseClickListener {
                     override fun onIntroCloseClick() {
                         setThemeLighterThreeColumn()
                     }
@@ -792,13 +760,14 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             lighter = Lighter.with(binding.root as ViewGroup)
             val paramsView1 = abacusBinding?.viewRod1?.layoutParams as RelativeLayout.LayoutParams
             paramsView1.width = themeContent.beadWidth + ((themeContent.beadWidth + themeContent.beadSpace) * 2)
+            paramsView1.marginEnd = ((themeContent.beadWidth + themeContent.beadSpace) * 6) + (themeContent.beadSpace / 2)
             paramsView1.addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
             abacusBinding?.viewRod1?.layoutParams = paramsView1
 
             abacusBinding?.let {
-                AbacusUtils.setNumber("999",it.abacusTop,it.abacusBottom,totalLength = 9)
+                AbacusUtils.setNumber("999000000",it.abacusTop,it.abacusBottom,totalLength = abacusTotalColumns)
                 delay(300)
-                IntroProvider.abacusRodIntro(lighter, it.viewRod1, Direction.LEFT,R.layout.layout_tip_abacus_column3,object : IntroProvider.IntroCloseClickListener {
+                IntroProvider.abacusRodIntro(lighter, it.viewRod1, Direction.RIGHT,R.layout.layout_tip_abacus_column3,object : IntroProvider.IntroCloseClickListener {
                     override fun onIntroCloseClick() {
                         abacusBinding?.relHighLighter?.hide()
                         setThemeLighterRod1BottomAdd()
@@ -814,8 +783,12 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             lighter = Lighter.with(binding.root as ViewGroup)
             val paramsView1 = abacusBinding?.viewRodBottom?.layoutParams as ConstraintLayout.LayoutParams
             paramsView1.width = themeContent.beadWidth
-            paramsView1.marginEnd = (themeContent.beadSpace / 2)
             abacusBinding?.viewRodBottom?.layoutParams = paramsView1
+
+            val paramsView2 = abacusBinding?.relHighLighterBottom?.layoutParams as ConstraintLayout.LayoutParams
+            paramsView2.marginEnd = ((themeContent.beadWidth + themeContent.beadSpace) * 6) + (themeContent.beadSpace / 2)
+            abacusBinding?.relHighLighterBottom?.layoutParams = paramsView2
+
             abacusBinding?.relHighLighterTop?.hide()
             abacusBinding?.relHighLighterBottom?.show()
             abacusBinding?.linearBottomArrows?.show()
@@ -839,8 +812,12 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             lighter = Lighter.with(binding.root as ViewGroup)
             val paramsView1 = abacusBinding?.viewRodTop?.layoutParams as ConstraintLayout.LayoutParams
             paramsView1.width = themeContent.beadWidth
-            paramsView1.marginEnd = (themeContent.beadSpace / 2)
             abacusBinding?.viewRodTop?.layoutParams = paramsView1
+
+            val paramsView2 = abacusBinding?.relHighLighterTop?.layoutParams as ConstraintLayout.LayoutParams
+            paramsView2.marginEnd = ((themeContent.beadWidth + themeContent.beadSpace) * 6) + (themeContent.beadSpace / 2)
+            abacusBinding?.relHighLighterTop?.layoutParams = paramsView2
+
             abacusBinding?.relHighLighterBottom?.hide()
             abacusBinding?.relHighLighterTop?.show()
             abacusBinding?.arrowDownRodTop?.show()
@@ -848,7 +825,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             abacusBinding?.linearTopArrows?.show()
 
             abacusBinding?.let {
-                AbacusUtils.setNumber("0",it.abacusTop,it.abacusBottom,totalLength = 9)
+                AbacusUtils.setNumber("0",it.abacusTop,it.abacusBottom,totalLength = abacusTotalColumns)
                 delay(300)
                 IntroProvider.abacusRodIntro(lighter, it.relHighLighterTop , Direction.LEFT,R.layout.layout_tip_abacus_rod1_top_add,object : IntroProvider.IntroCloseClickListener {
                     override fun onIntroCloseClick() {
@@ -863,10 +840,15 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
     private fun setThemeLighterRod1BottomSub() {
         lifecycleScope.launch {
             lighter = Lighter.with(binding.root as ViewGroup)
+
             val paramsView1 = abacusBinding?.viewRodBottom?.layoutParams as ConstraintLayout.LayoutParams
             paramsView1.width = themeContent.beadWidth
-            paramsView1.marginEnd = (themeContent.beadSpace / 2)
             abacusBinding?.viewRodBottom?.layoutParams = paramsView1
+
+            val paramsView2 = abacusBinding?.relHighLighterBottom?.layoutParams as ConstraintLayout.LayoutParams
+            paramsView2.marginEnd = ((themeContent.beadWidth + themeContent.beadSpace) * 6) + (themeContent.beadSpace / 2)
+            abacusBinding?.relHighLighterBottom?.layoutParams = paramsView2
+
             abacusBinding?.relHighLighterTop?.hide()
             abacusBinding?.relHighLighterBottom?.show()
             abacusBinding?.linearBottomArrows?.show()
@@ -874,7 +856,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             abacusBinding?.arrowUpRodBottom?.hide()
 
             abacusBinding?.let {
-                AbacusUtils.setNumber("4",it.abacusTop,it.abacusBottom,totalLength = 9)
+                AbacusUtils.setNumber("4000000",it.abacusTop,it.abacusBottom,totalLength = abacusTotalColumns)
                 delay(300)
                 IntroProvider.abacusRodIntro(lighter, it.relHighLighterBottom , Direction.LEFT,R.layout.layout_tip_abacus_rod1_bottom_sub,object : IntroProvider.IntroCloseClickListener {
                     override fun onIntroCloseClick() {
@@ -888,10 +870,15 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
     private fun setThemeLighterRod1TopSub() {
         lifecycleScope.launch {
             lighter = Lighter.with(binding.root as ViewGroup)
+
             val paramsView1 = abacusBinding?.viewRodTop?.layoutParams as ConstraintLayout.LayoutParams
             paramsView1.width = themeContent.beadWidth
-            paramsView1.marginEnd = (themeContent.beadSpace / 2)
             abacusBinding?.viewRodTop?.layoutParams = paramsView1
+
+            val paramsView2 = abacusBinding?.relHighLighterTop?.layoutParams as ConstraintLayout.LayoutParams
+            paramsView2.marginEnd = ((themeContent.beadWidth + themeContent.beadSpace) * 6) + (themeContent.beadSpace / 2)
+            abacusBinding?.relHighLighterTop?.layoutParams = paramsView2
+
             abacusBinding?.relHighLighterTop?.show()
             abacusBinding?.relHighLighterBottom?.hide()
             abacusBinding?.linearTopArrows?.show()
@@ -899,7 +886,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             abacusBinding?.arrowUpRodTop?.show()
 
             abacusBinding?.let {
-                AbacusUtils.setNumber("5",it.abacusTop,it.abacusBottom,totalLength = 9)
+                AbacusUtils.setNumber("5000000",it.abacusTop,it.abacusBottom,totalLength = abacusTotalColumns)
                 delay(300)
                 IntroProvider.abacusRodIntro(lighter, it.relHighLighterTop , Direction.LEFT,R.layout.layout_tip_abacus_rod1_top_sub,object : IntroProvider.IntroCloseClickListener {
                     override fun onIntroCloseClick() {
@@ -916,9 +903,8 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         abacusBinding?.let {
             IntroProvider.abacusRodIntro(lighter, it.ivReset,Direction.LEFT,R.layout.layout_tip_abacus_reset,object : IntroProvider.IntroCloseClickListener {
                 override fun onIntroCloseClick() {
-                    AbacusUtils.setNumber("0",it.abacusTop,it.abacusBottom,totalLength = 9)
+                    AbacusUtils.setNumber("0",it.abacusTop,it.abacusBottom,totalLength = abacusTotalColumns)
                     prefManager.setCustomParamBoolean(AppConstants.Settings.isFreeModeTourWatch, true)
-                    setTourVisibility()
                     isTourPageRunning = false
                 }
             })

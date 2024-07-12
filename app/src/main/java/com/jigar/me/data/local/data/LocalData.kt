@@ -16,7 +16,7 @@ data class MyAccountMenu(
 data class AvatarImages(val id: Int, val image: Int)
 data class FAQs(val question: String, val answer: String)
 data class AbacusContent(val type: String, val beadImage: Int, val abacusFrame135 : Int, val abacusFrameExam135 : Int, val dividerColor1 : Int, val resetBtnColor8 : Int, val beadHeight : Int, val beadWidth : Int, val beadSpace : Int,
-                         val topBeadClose : Int, val topBeadOpen : Int, var bottomBeadClose: ArrayList<Int>, var bottomBeadOpen: ArrayList<Int>,val txtColor : Int? = null)
+                         val topBeadClose : Int, val topBeadOpen : Int, var bottomBeadClose: ArrayList<Int>, var bottomBeadOpen: ArrayList<Int>,val txtColor : Int? = null, val unUsedBeads : Int)
 data class OtherApps(val type: Int, val image: Int,val name : String, val url : String)
 data class ImagesDataObjects(val type: DataObjectsType, val name: String, val image: String)
 data class BeginnerExamPaper(val type: BeginnerExamQuestionType, val value: String,val value2: String, val imageData: ImagesDataObjects? = null, var userAnswer : String? = "", var isAbacusQuestion : Boolean? = false)

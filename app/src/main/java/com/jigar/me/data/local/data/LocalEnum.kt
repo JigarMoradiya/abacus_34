@@ -14,7 +14,7 @@ enum class BeginnerExamQuestionType {
 }
 
 enum class AbacusBeadType {
-    None, Exam, ExamResult, SettingPreview, Exercise, FreeMode, CustomeChallenge
+    None, Exam, ExamResult, SettingPreview, Exercise, FreeMode,FullMode,AbacusPrecise, CustomeChallenge
 }
 
 enum class HomeMenuIntroType {

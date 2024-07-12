@@ -2,9 +2,9 @@ package com.jigar.me.ui.view.dashboard.fragments.abacus.half
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
-import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.*
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
@@ -76,14 +76,13 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
     private var speek_hint = ""
 
     private var abacus_type = 0 // 0 = sum-sub-single  1 = multiplication 2 = divide
-    private var final_column = 0
+    private var abacusTotalColumns = 0
     private var noOfDecimalPlace = 0
     private lateinit var mNavController: NavController
     private lateinit var adapterAdditionSubtraction: AbacusAdditionSubtractionTypeAdapter
     private lateinit var adapterMultiplication: AbacusMultiplicationTypeAdapter
     private lateinit var adapterDivision: AbacusDivisionTypeAdapter
 
-    private lateinit var addSubCurrentAbacus: AdditionSubtractionAbacus
     private var list_abacus: List<AdditionSubtractionAbacus> = arrayListOf()
     private var list_abacus_main = ArrayList<HashMap<String, String>>()
 
@@ -189,9 +188,6 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
             false
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            binding.txtTitle.setPadding(0,12.dp,0,0)
-        }
         startAbacus()
         lifecycleScope.launch {
             delay(400)
@@ -391,17 +387,18 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
             }
             val answer = java.lang.Double.valueOf(number.toString() + "")
             var noOfDecimalPlace = 0
-            var column = 3
+//            var column = 3
+            val column = prefManager.getCustomParamInt(AppConstants.Settings.AbacusMaxColumn,13)
 
-            if (answer == answer.toLong().toDouble()) {
-                val ans = answer.toLong().toString() + ""
-                column = if (ans.length < 3) 3 else ans.length
-                noOfDecimalPlace = 0
-            } else {
-                val ans = answer.toString()
-                noOfDecimalPlace = ans.length - ans.indexOf(".") - 1
-                column = ans.length - 1
-            }
+//            if (answer == answer.toLong().toDouble()) {
+//                val ans = answer.toLong().toString() + ""
+//                column = if (ans.length < 3) 3 else ans.length
+//                noOfDecimalPlace = 0
+//            } else {
+//                val ans = answer.toString()
+//                noOfDecimalPlace = ans.length - ans.indexOf(".") - 1
+//                column = ans.length - 1
+//            }
             binding.tvAnsNumber.text = number.toString()
             binding.tvAnsNumberWord.text = requireContext().convert(number.toInt())
 
@@ -475,7 +472,8 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                 val queLength = question.length
 
                 /*set question as selected*/
-                val totalLength = queLength + finalAnsLength - 1
+//                val totalLength = queLength + finalAnsLength - 1
+                val totalLength = 7 + queLength - 1
 //                val totalLength = 7
 
                 // totalLength == 1 ? 2 : totalLength: if question and ans length 1 then add 1 more size for 2 column display.
@@ -509,10 +507,10 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                 }
                 topPositions.addAll(subTop)
                 bottomPositions.addAll(subBottom)
-                val noOfRow = queLength + finalAnsLength - 1
-//                val noOfRow = 7
+//                val noOfRow = queLength + finalAnsLength - 1
+//                val noOfRow = 7 + queLength - 1
+                val noOfRow = prefManager.getCustomParamInt(AppConstants.Settings.AbacusMaxColumn,13)
                 column = if (noOfRow == 1) 2 else noOfRow
-                //            column = 7;
                 replaceAbacusFragment(column, 0) // divide doesn't have decimal places
                 //set table
                 setTableDataAndVisiblilty()
@@ -562,8 +560,6 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                 lifecycleScope.launch {
                     delay(500)
                     if (isPurchased && isHintSound) {
-//                        val q1 = " ${requireContext().convert((list_abacus_main[0][Constants.Que]?:"0").toInt())}"
-//                        val q2 = " ${requireContext().convert((list_abacus_main[1][Constants.Que]?:"0").toInt())}"
                         val q1 = " ${(list_abacus_main[0][Constants.Que]?:"0")}"
                         val q2 = " ${(list_abacus_main[1][Constants.Que]?:"0")}"
                         speakOut(String.format(getString(R.string.speak_multiply_by),q1,q2))
@@ -571,7 +567,8 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                 }
 //                val answer = java.lang.Double.valueOf(list_abacus_main[0][Constants.Que]) * java.lang.Double.valueOf(list_abacus_main[1][Constants.Que])
                 var noOfDecimalPlace = 0
-                var column = (list_abacus_main[0][Constants.Que]?:"").length + (list_abacus_main[1][Constants.Que]?:"").length
+//                var column = (list_abacus_main[0][Constants.Que]?:"").length + (list_abacus_main[1][Constants.Que]?:"").length
+                var column = prefManager.getCustomParamInt(AppConstants.Settings.AbacusMaxColumn,13)
 //                if (answer == answer.toLong().toDouble()) {
 //                    val ans = answer.toLong().toString() + ""
 //                    column = if (ans.length == 1) 3 else ans.length
@@ -621,13 +618,13 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
 //                        if (BuildConfig.DEBUG){
 //                            dataModel = it.shuffled().first()
 //                        }else{
-                            val previousData = prefManager.getCustomParam(AppConstants.extras_Comman.previousAbacusData+"_"+pageId,"")
-                            if (!previousData.isNullOrEmpty()){
-                                dataModel = Gson().fromJson(previousData, AdditionSubtractionAbacus::class.java)
-                            }else{
-                                dataModel = it.shuffled().first()
-                                prefManager.setCustomParam(AppConstants.extras_Comman.previousAbacusData+"_"+pageId,Gson().toJson(dataModel))
-                            }
+                        val previousData = prefManager.getCustomParam(AppConstants.extras_Comman.previousAbacusData+"_"+pageId,"")
+                        if (!previousData.isNullOrEmpty()){
+                            dataModel = Gson().fromJson(previousData, AdditionSubtractionAbacus::class.java)
+                        }else{
+                            dataModel = it.shuffled().first()
+                            prefManager.setCustomParam(AppConstants.extras_Comman.previousAbacusData+"_"+pageId,Gson().toJson(dataModel))
+                        }
 //                        }
                     }
                 }
@@ -779,56 +776,44 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
             var column = 3
             if (abacus_type == 0) {
                 binding.recyclerview.adapter = adapterAdditionSubtraction
-                if (answer == answer.toLong().toDouble()) {
-                    val ans = answer.toLong().toString() + ""
-                    column = if (ans.length == 1) 3 else ans.length
-                    noOfDecimalPlace = 0
-                } else {
-                    val ans = answer.toFloat().toString()
-                    noOfDecimalPlace = ans.length - ans.indexOf(".") - 1
-                    column = ans.length
-                }
-                val que = tempQuestion
-                var answerTemp = ""
-                val newQue = que.replace("+", "$$+").replace("-", "$$-")
-                val list = newQue.split("$$")
-                list.map {
-                    if (it.contains("+") || it.contains("-")) {
-                        answerTemp += it
-                        val resultObject = Calculator().getResult(answerTemp,answerTemp)
-                        answerTemp = CommonUtils.removeTrailingZero(resultObject)
-                        if (answerTemp.length > column){
-                            column = answerTemp.length
-                        }
-                    }else{
-                        answerTemp = it
-                    }
-                }
-            } else if (abacus_type == 1) {
-                binding.recyclerview.adapter = adapterMultiplication
-                if (answer == answer.toLong().toDouble()) {
-                    val ans = answer.toLong().toString() + ""
-                    column = if (ans.length == 1) 3 else ans.length
-                    noOfDecimalPlace = 0
-                } else {
-                    val ans = datatemp.getAnswer().toString()
-                    noOfDecimalPlace = ans.length - ans.indexOf(".") - 1
-                    column = ans.length - 1
-                }
-            } else if (abacus_type == 2) {
-                binding.recyclerview.adapter = adapterDivision
+//                if (answer == answer.toLong().toDouble()) {
+//                    val ans = answer.toLong().toString() + ""
+//                    column = if (ans.length == 1) 3 else ans.length
+//                    noOfDecimalPlace = 0
+//                } else {
+//                    val ans = answer.toFloat().toString()
+//                    noOfDecimalPlace = ans.length - ans.indexOf(".") - 1
+//                    column = ans.length
+//                }
+//                val que = tempQuestion
+//                var answerTemp = ""
+//                val newQue = que.replace("+", "$$+").replace("-", "$$-")
+//                val list = newQue.split("$$")
+//                list.map {
+//                    if (it.contains("+") || it.contains("-")) {
+//                        answerTemp += it
+//                        val resultObject = Calculator().getResult(answerTemp,answerTemp)
+//                        answerTemp = CommonUtils.removeTrailingZero(resultObject)
+//                        if (answerTemp.length > column){
+//                            column = answerTemp.length
+//                        }
+//                    }else{
+//                        answerTemp = it
+//                    }
+//                }
+                column = prefManager.getCustomParamInt(AppConstants.Settings.AbacusMaxColumn,13)
             }
             list_abacus_main.clear()
             list_abacus_main.addAll(list_abacus_main_temp)
             binding.cardAbacusQue.show()
             adapterAdditionSubtraction.setData(list_abacus_main, isStepByStep)
-            if (column > new_column) {
-                new_column = column
-            }
-            if (new_column <= 2) {
-                new_column = 3
-            }
-            replaceAbacusFragment(new_column, noOfDecimalPlace)
+//            if (column > new_column) {
+//                new_column = column
+//            }
+//            if (new_column <= 2) {
+//                new_column = 3
+//            }
+            replaceAbacusFragment(column, noOfDecimalPlace)
         }
     }
     // not purchased and page completed
@@ -885,36 +870,15 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
             if (abacus_type == 1) {
                 val spannableString = adapterMultiplication.getTable(requireContext(),themeContent)
                 if (!TextUtils.isEmpty(spannableString)) {
-                    if (final_column > 8) {
-                        binding.cardHint.hide()
-                        if (isHideTable) {
-                            binding.cardTable.hide()
-                        } else {
-                            binding.cardTable.show()
-                        }
-                        binding.relativeTable.hide()
-                    } else {
-                        if (isHideTable) {
-                            binding.cardHint.invisible()
-                        } else {
-                            binding.cardHint.show()
-                        }
-                        binding.cardTable.hide()
-                        binding.relativeTable.hide()
-                    }
-                    binding.txtHint.text = spannableString
-                    binding.txtHintTable.text = spannableString
-                }
-            } else if (abacus_type == 2) {
-                if (final_column > 8) {
-                    binding.cardHint.hide()
-                    if (isHideTable) {
-                        binding.cardTable.hide()
-                    } else {
-                        binding.cardTable.show()
-                    }
-                    binding.relativeTable.hide()
-                } else {
+//                    if (abacusTotalColumns > 8) {
+//                        binding.cardHint.hide()
+//                        if (isHideTable) {
+//                            binding.cardTable.hide()
+//                        } else {
+//                            binding.cardTable.show()
+//                        }
+//                        binding.relativeTable.hide()
+//                    } else {
                     if (isHideTable) {
                         binding.cardHint.invisible()
                     } else {
@@ -922,7 +886,28 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                     }
                     binding.cardTable.hide()
                     binding.relativeTable.hide()
+//                    }
+                    binding.txtHint.text = spannableString
+                    binding.txtHintTable.text = spannableString
                 }
+            } else if (abacus_type == 2) {
+//                if (abacusTotalColumns > 8) {
+//                    binding.cardHint.hide()
+//                    if (isHideTable) {
+//                        binding.cardTable.hide()
+//                    } else {
+//                        binding.cardTable.show()
+//                    }
+//                    binding.relativeTable.hide()
+//                } else {
+                if (isHideTable) {
+                    binding.cardHint.invisible()
+                } else {
+                    binding.cardHint.show()
+                }
+                binding.cardTable.hide()
+                binding.relativeTable.hide()
+//                }
 
                 binding.txtHint.text = ViewUtils.getTable(
                     requireContext(), list_abacus_main[1][Constants.Que]!!.toInt(),
@@ -973,28 +958,6 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
             val temp_hint = "$Sign$que = $hint"
             speek_hint = temp_hint.replace("-", " "+getString(R.string.minus)+" ").replace("+", " "+getString(R.string.plus)+" ")
                 .replace("=", " "+getString(R.string.equal_to)+" ")
-
-
-//            binding.txtHint.text = "$Sign$que = $hint"
-//            val q1 = " ${requireContext().convert((que?:"0").toInt())}"
-//            val newQue = hint.replace("+", "$$+").replace("-", "$$-")
-//            val list = newQue.split("$$")
-//            var newHintWord = ""
-//            list.map {
-//                if (!it.isNullOrEmpty()){
-//                    var word = requireContext().convert((it.replace("+", "").replace("-", "")).toInt())+" "
-//                    newHintWord += if (it.contains("+")) {
-//                        " + $word"
-//                    } else if (it.contains("-")) {
-//                        " - $word"
-//                    } else {
-//                        " " +word
-//                    }
-//                }
-//            }
-//            val temp_hint = "$Sign$q1 = $newHintWord"
-//            speek_hint = temp_hint.replace("-", " "+getString(R.string.minus)+" ").replace("+", " "+getString(R.string.plus)+" ")
-//                .replace("=", " "+getString(R.string.equal_to)+" ")
             lifecycleScope.launch {
                 delay(1500)
                 if (isPurchased && isHintSound) {
@@ -1033,9 +996,11 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                 binding.linearYourAbacusTools.show()
                 binding.relAbacus.show()
             }else{
-                this.final_column = column
+//                this.final_column = column
+                // TODO
+                this.abacusTotalColumns = column
                 this.noOfDecimalPlace = noOfDecimalPlace
-                abacusFragment = HalfAbacusSubFragment().newInstance(column, noOfDecimalPlace, abacus_type)
+                abacusFragment = HalfAbacusSubFragment().newInstance(abacusTotalColumns, noOfDecimalPlace, abacus_type)
                 binding.flAbacus.show()
                 binding.linearYourAbacusTools.hide()
                 if (abacusFragment != null){
@@ -1057,80 +1022,112 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
         }
     }
 
-    override fun onAbacusValueChange(abacusView: View, sum: Long) {
+    override fun onAbacusValueChange(abacusView: View, sum1: Long) {
+        Log.e("jigarLogs","onAbacusValueChange = "+sum1)
         if (isMoveNext) {
             goToNextAbacus()
             return
         }
-        if (abacus_type == 0) {
-            if (abacusType == AppConstants.extras_Comman.AbacusTypeNumber) {
-                val finalans = number
-                if (sum == finalans) {
-                    onAbacusValueSubmit(finalans)
-                }
-            } else if (adapterAdditionSubtraction.itemCount > 0) {
-                if (adapterAdditionSubtraction.getCurrentSumVal() != null) {
-                    val sumVal: Long = adapterAdditionSubtraction.getCurrentSumVal()!!.toLong()
-                    if (isStepByStep) {
-                        if (sum == sumVal) {
-                            adapterAdditionSubtraction.goToNextStep()
-                        }
-                        if (adapterAdditionSubtraction.getCurrentStep() == list_abacus_main.size) {
+        val abacusValue = sum1.toString()
+        var newValue = abacusValue
+        if (abacusValue.length != abacusTotalColumns){
+            for (i in 1..(abacusTotalColumns - abacusValue.length)) {
+                newValue = "0$newValue"
+            }
+        }
+        val sb = StringBuilder(newValue)
+        sb.insert(7, ".")
+        newValue = sb.toString()
+        val splitResult = newValue.split(".")
+        if (splitResult.size == 2){
+            val value1 = splitResult[0].toLong()
+            val value2 = splitResult[1]
+            val sum = if (value2.toLong() > 0){
+//                abacusBinding?.tvCurrentVal?.text = "$value1.$value2"
+                "$value1.$value2"
+            }else{
+//                abacusBinding?.tvCurrentVal?.text = "$value1"
+                "$value1"
+            }
+            if (abacus_type == 0) {
+                if (abacusType == AppConstants.extras_Comman.AbacusTypeNumber) {
+                    val finalans = number
+                    if (sum == (finalans.toInt()).toString()) {
+                        onAbacusValueSubmit(finalans)
+                    }
+                } else if (adapterAdditionSubtraction.itemCount > 0) {
+                    if (adapterAdditionSubtraction.getCurrentSumVal() != null) {
+                        val sumVal: Long = adapterAdditionSubtraction.getCurrentSumVal()!!.toLong()
+                        if (isStepByStep) {
+                            if (sum == (sumVal.toInt()).toString()) {
+                                adapterAdditionSubtraction.goToNextStep()
+                            }
+                            if (adapterAdditionSubtraction.getCurrentStep() == list_abacus_main.size) {
+                                val finalans = (adapterAdditionSubtraction.getFinalSumVal()?:0.0).toLong()
+                                onAbacusValueSubmit(finalans)
+                            }
+                        } else {
                             val finalans = (adapterAdditionSubtraction.getFinalSumVal()?:0.0).toLong()
+                            if (sum == (finalans.toInt()).toString()) {
+                                onAbacusValueSubmit(finalans)
+                            }
+                        }
+                    }
+                }
+            } else if (abacus_type == 1) {
+                Log.e("jigarLogs","adapterMultiplication sum = "+sum)
+                if (adapterMultiplication.getCurrentSumVal() != null) {
+                    val sumVal: Long = adapterMultiplication.getCurrentSumVal()!!.toLong()
+                    Log.e("jigarLogs","adapterMultiplication sumVal = "+sumVal)
+                    if (isStepByStep) {
+                        if (sum == (sumVal.toInt()).toString()) {
+                            adapterMultiplication.goToNextStep()
+                            setTableDataAndVisiblilty()
+                        }
+                        val curVal = adapterMultiplication.getCurrentStep()
+                        val finalans = (adapterMultiplication.getFinalSumVal()?:0.0).toLong()
+                        if (sum == (finalans.toInt()).toString() && curVal[0]!! >= adapterMultiplication.getItem(0)[Constants.Que]!!
+                                .length - 1 && curVal[1]!! >= adapterMultiplication.getItem(1)[Constants.Que]!!.length - 1
+                        ) {
+                            adapterMultiplication.clearHighlight()
                             onAbacusValueSubmit(finalans)
                         }
                     } else {
-                        val finalans = (adapterAdditionSubtraction.getFinalSumVal()?:0.0).toLong()
-                        if (sum == finalans) {
+                        val finalans = (adapterMultiplication.getFinalSumVal()?:0.0).toLong()
+                        if (sum == (finalans.toInt()).toString()) {
+                            onAbacusValueSubmit(finalans)
+                        }
+                    }
+                }
+            } else if (abacus_type == 2) {
+                val valueCheck = newValue.replace(".","").take(6+(list_abacus_main[0][Constants.Que]?:4).toString().length).trimStart('0')
+                Log.e("jigarLogs","onAbacusValueChange division abacusValue == "+abacusValue+" valueCheck = "+valueCheck)
+                if (adapterDivision.getCurrentSumVal() != null) {
+                    Log.e("jigarLogs","onAbacusValueChange division getCurrentSumVal == "+adapterDivision.getCurrentSumVal())
+                    val postfix = adapterDivision.getCurrentSumVal().toString() + postfixZero
+                    val sumVal = postfix.toLong() + adapterDivision.getNextDivider()
+                    Log.e("jigarLogs","onAbacusValueChange postfix == "+postfix)
+                    Log.e("jigarLogs","onAbacusValueChange sumVal == "+sumVal)
+                    if (isStepByStep) {
+                        if (valueCheck == (sumVal.toInt()).toString()) {
+                            adapterDivision.goToNextStep()
+                            setTableDataAndVisiblilty()
+                        }
+                        val finalans: Long = (adapterDivision.getFinalSumVal()!!.toLong().toString() + "" + postfixZero).toLong()
+                        if (valueCheck == (finalans.toInt()).toString() && adapterDivision.isLastStep()) {
+                            adapterDivision.clearHighlight()
+                            onAbacusValueSubmit(finalans)
+                        }
+                    } else {
+                        val finalans = (adapterDivision.getFinalSumVal()?:0.0).toLong()
+                        if (valueCheck == (finalans.toInt()).toString()) {
                             onAbacusValueSubmit(finalans)
                         }
                     }
                 }
             }
-        } else if (abacus_type == 1) {
-            if (adapterMultiplication.getCurrentSumVal() != null) {
-                val sumVal: Long = adapterMultiplication.getCurrentSumVal()!!.toLong()
-                if (isStepByStep) {
-                    if (sum == sumVal) {
-                        adapterMultiplication.goToNextStep()
-                        setTableDataAndVisiblilty()
-                    }
-                    val curVal = adapterMultiplication.getCurrentStep()
-                    val finalans = (adapterMultiplication.getFinalSumVal()?:0.0).toLong()
-                    if (sum == finalans && curVal[0]!! >= adapterMultiplication.getItem(0)[Constants.Que]!!
-                            .length - 1 && curVal[1]!! >= adapterMultiplication.getItem(1)[Constants.Que]!!.length - 1
-                    ) {
-                        adapterMultiplication.clearHighlight()
-                        onAbacusValueSubmit(finalans)
-                    }
-                } else {
-                    val finalans = (adapterMultiplication.getFinalSumVal()?:0.0).toLong()
-                    if (sum == finalans) {
-                        onAbacusValueSubmit(finalans)
-                    }
-                }
-            }
-        } else if (abacus_type == 2) {
-            if (adapterDivision.getCurrentSumVal() != null) {
-                val postfix = adapterDivision.getCurrentSumVal().toString() + postfixZero
-                val sumVal = postfix.toLong() + adapterDivision.getNextDivider()
-                if (isStepByStep) {
-                    if (sum == sumVal) {
-                        adapterDivision.goToNextStep()
-                        setTableDataAndVisiblilty()
-                    }
-                    val finalans: Long = (adapterDivision.getFinalSumVal()!!.toLong().toString() + "" + postfixZero).toLong()
-                    if (sum == finalans && adapterDivision.isLastStep()) {
-                        adapterDivision.clearHighlight()
-                        onAbacusValueSubmit(finalans)
-                    }
-                } else {
-                    val finalans = (adapterDivision.getFinalSumVal()?:0.0).toLong()
-                    if (sum == finalans) {
-                        onAbacusValueSubmit(finalans)
-                    }
-                }
-            }
+        }else{
+            mNavController.navigateUp()
         }
     }
 
@@ -1366,18 +1363,18 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
         paramscardTable.addRule(RelativeLayout.ALIGN_PARENT_TOP)
         binding.cardTable.layoutParams = paramscardTable
 
-        val paramsTitle = binding.txtTitle.layoutParams as RelativeLayout.LayoutParams
-        paramsTitle.addRule(RelativeLayout.ALIGN_PARENT_TOP)
-        if (abacusType == AppConstants.extras_Comman.AbacusTypeNumber) {
-            paramsTitle.addRule(RelativeLayout.START_OF, R.id.relAbacus)
-        }else {
-            paramsTitle.addRule(RelativeLayout.CENTER_HORIZONTAL)
-        }
-        binding.txtTitle.layoutParams = paramsTitle
-        lifecycleScope.launch {
-            delay(400)
-            binding.txtTitle.show()
-        }
+//        val paramsTitle = binding.txtTitle.layoutParams as RelativeLayout.LayoutParams
+//        paramsTitle.addRule(RelativeLayout.ALIGN_PARENT_TOP)
+//        if (abacusType == AppConstants.extras_Comman.AbacusTypeNumber) {
+//            paramsTitle.addRule(RelativeLayout.START_OF, R.id.relAbacus)
+//        }else {
+//            paramsTitle.addRule(RelativeLayout.CENTER_HORIZONTAL)
+//        }
+//        binding.txtTitle.layoutParams = paramsTitle
+//        lifecycleScope.launch {
+//            delay(400)
+//            binding.txtTitle.show()
+//        }
 
         val paramsTitleHand = binding.txtTitleHand.layoutParams as RelativeLayout.LayoutParams
         paramsTitleHand.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
@@ -1425,14 +1422,14 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
         binding.cardHint.layoutParams = paramsHint
     }
     private fun setLeftAbacusRules() {
-        val paramsTitle = binding.txtTitle.layoutParams as RelativeLayout.LayoutParams
-        paramsTitle.addRule(RelativeLayout.CENTER_HORIZONTAL)
-        paramsTitle.addRule(RelativeLayout.END_OF, R.id.relAbacus)
-        binding.txtTitle.layoutParams = paramsTitle
-        lifecycleScope.launch {
-            delay(400)
-            binding.txtTitle.show()
-        }
+//        val paramsTitle = binding.txtTitle.layoutParams as RelativeLayout.LayoutParams
+//        paramsTitle.addRule(RelativeLayout.CENTER_HORIZONTAL)
+//        paramsTitle.addRule(RelativeLayout.END_OF, R.id.relAbacus)
+//        binding.txtTitle.layoutParams = paramsTitle
+//        lifecycleScope.launch {
+//            delay(400)
+//            binding.txtTitle.show()
+//        }
 
         val paramsTitleHand = binding.txtTitleHand.layoutParams as RelativeLayout.LayoutParams
         paramsTitleHand.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)

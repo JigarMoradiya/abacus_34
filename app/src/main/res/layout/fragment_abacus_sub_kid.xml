@@ -20,7 +20,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/relAbacus"
             app:srcCompat="@drawable/ic_boy_abacus_left"
-            tools:visibility="visible" />
+            tools:visibility="gone" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgKidRight"
@@ -47,40 +47,13 @@
             app:layout_constraintEnd_toEndOf="@+id/relAbacus"
             app:layout_constraintStart_toStartOf="@+id/relAbacus"
             app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="visible">
+            tools:visibility="gone">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/activity_padding16"
-                android:layout_marginBottom="@dimen/activity_padding4"
-                android:weightSum="9">
+                android:layout_marginBottom="@dimen/activity_padding4">
 
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/txtRodNumber9"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/red_700"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:text="500000000"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/textSizeVery3ExtraSmall"
-                    app:fontFamily="@font/font_extra_bold" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/txtRodNumber8"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/purple_700"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:text="50000000"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/textSizeVery2ExtraSmall"
-                    app:fontFamily="@font/font_extra_bold" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/txtRodNumber7"
@@ -186,6 +159,24 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtRodNumber04"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtRodNumber05"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtRodNumber06"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -207,30 +198,6 @@
 
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtRodName9"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:includeFontPadding="false"
-                android:text="@string/ten_crores"
-                android:textColor="@color/red_700"
-                android:textSize="@dimen/textSizeVeryExtraSmall"
-                app:fontFamily="@font/font_extra_bold" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtRodName8"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:includeFontPadding="false"
-                android:text="@string/crores"
-                android:textColor="@color/purple_700"
-                android:textSize="@dimen/textSizeVeryExtraSmall"
-                app:fontFamily="@font/font_extra_bold" />
-
-            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txtRodName7"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -239,7 +206,7 @@
                 android:includeFontPadding="false"
                 android:text="@string/ten_lakhs"
                 android:textColor="@color/indigo_700"
-                android:textSize="@dimen/textSizeVeryExtraSmall"
+                android:textSize="@dimen/textSizeVery3ExtraSmall"
                 app:fontFamily="@font/font_extra_bold" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -251,7 +218,7 @@
                 android:includeFontPadding="false"
                 android:text="@string/lakhs"
                 android:textColor="@color/blue_700"
-                android:textSize="@dimen/textSizeVeryExtraSmall"
+                android:textSize="@dimen/textSizeVery3ExtraSmall"
                 app:fontFamily="@font/font_extra_bold" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -262,11 +229,9 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
                 android:text="@string/ten_nthousands"
                 android:textColor="@color/cyan_700"
-                android:textSize="@dimen/textSizeVeryExtraSmall"
+                android:textSize="@dimen/textSizeVery3ExtraSmall"
                 app:fontFamily="@font/font_extra_bold" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -278,7 +243,7 @@
                 android:includeFontPadding="false"
                 android:text="@string/thousands"
                 android:textColor="@color/teal_700"
-                android:textSize="@dimen/textSizeVeryExtraSmall"
+                android:textSize="@dimen/textSizeVery3ExtraSmall"
                 app:fontFamily="@font/font_extra_bold" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -290,7 +255,7 @@
                 android:includeFontPadding="false"
                 android:text="@string/hundreds"
                 android:textColor="@color/green_700"
-                android:textSize="@dimen/textSizeVeryExtraSmall"
+                android:textSize="@dimen/textSizeVery3ExtraSmall"
                 app:fontFamily="@font/font_extra_bold" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -302,7 +267,7 @@
                 android:includeFontPadding="false"
                 android:text="@string/tens"
                 android:textColor="@color/lime_800"
-                android:textSize="@dimen/textSizeVeryExtraSmall"
+                android:textSize="@dimen/textSizeVery2ExtraSmall"
                 app:fontFamily="@font/font_extra_bold" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -314,8 +279,33 @@
                 android:includeFontPadding="false"
                 android:text="@string/ones"
                 android:textColor="@color/orange_700"
-                android:textSize="@dimen/textSizeVeryExtraSmall"
+                android:textSize="@dimen/textSizeVery3ExtraSmall"
                 app:fontFamily="@font/font_extra_bold" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -336,34 +326,8 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/activity_padding16"
+                android:id="@+id/linearNumber"
                 android:orientation="horizontal">
-
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/txtRodNumber9Bottom"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/red_700"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:text="100000000"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/textSizeVery3ExtraSmall"
-                    app:fontFamily="@font/font_extra_bold" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/txtRodNumber8Bottom"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/purple_700"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:text="10000000"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/textSizeVery2ExtraSmall"
-                    app:fontFamily="@font/font_extra_bold" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/txtRodNumber7Bottom"
@@ -469,6 +433,24 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtRodNumber04Bottom"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtRodNumber05Bottom"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtRodNumber06Bottom"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -477,32 +459,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_padding2"
                 android:gravity="center"
+                android:id="@+id/linearNumberWord"
                 android:orientation="horizontal">
-
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/txtRodName9Bottom"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:text="@string/ten_crores"
-                    android:textColor="@color/red_700"
-                    android:textSize="@dimen/textSizeVery2ExtraSmall"
-                    app:fontFamily="@font/font_extra_bold" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/txtRodName8Bottom"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:text="@string/crores"
-                    android:textColor="@color/purple_700"
-                    android:textSize="@dimen/textSizeVery2ExtraSmall"
-                    app:fontFamily="@font/font_extra_bold" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/txtRodName7Bottom"
@@ -601,26 +559,64 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtRodName04Bottom"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtRodName05Bottom"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtRodName06Bottom"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <RelativeLayout
-            android:id="@+id/relAbacus"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="-5dp"
-            app:layout_constraintStart_toEndOf="@+id/imgKidLeft"
-            app:layout_constraintTop_toBottomOf="@+id/viewNumbers">
+            android:id="@+id/linear"
+            app:layout_constraintStart_toStartOf="@+id/relAbacus"
+            app:layout_constraintEnd_toEndOf="@+id/relAbacus"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:layout_marginHorizontal="@dimen/activity_padding20"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgKidsTop"
+                app:srcCompat="@drawable/ic_kids_tops"/>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivReset"
                 android:layout_width="18dp"
                 android:layout_height="24dp"
-                android:layout_alignEnd="@+id/cardAbacusMain"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="-8dp"
                 android:layout_marginEnd="@dimen/padding_bottom_kids_in_abacus"
                 android:tint="@color/abacus_rod_red_dark"
                 app:srcCompat="@drawable/box_primory_accent" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/relAbacus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/imgKidLeft"
+            app:layout_constraintTop_toBottomOf="@+id/linear">
 
 
             <com.google.android.material.card.MaterialCardView
@@ -628,7 +624,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"
-                android:layout_marginTop="@dimen/activity_padding20"
                 android:layout_marginBottom="@dimen/activity_padding6"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/padding_radius_abacus_frame_large"
@@ -693,8 +688,73 @@
                                 <androidx.appcompat.widget.LinearLayoutCompat
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/four"
-                                    android:layout_marginHorizontal="@dimen/six">
+                                    android:layout_marginHorizontal="@dimen/six"
+                                    android:gravity="center_vertical">
 
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:id="@+id/linearDot13"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:id="@+id/imgDot13"
+                                            android:layout_width="@dimen/four"
+                                            android:layout_height="@dimen/four"
+                                            android:tint="@color/white"
+                                            android:visibility="gone"
+                                            app:srcCompat="@drawable/circle_continue_page" />
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:id="@+id/linearDot12"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:id="@+id/imgDot12"
+                                            android:layout_width="@dimen/four"
+                                            android:layout_height="@dimen/four"
+                                            android:tint="@color/white"
+                                            android:visibility="gone"
+                                            app:srcCompat="@drawable/circle_continue_page" />
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:id="@+id/linearDot11"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:id="@+id/imgDot11"
+                                            android:layout_width="@dimen/four"
+                                            android:layout_height="@dimen/four"
+                                            android:tint="@color/white"
+                                            android:visibility="gone"
+                                            app:srcCompat="@drawable/circle_continue_page" />
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:id="@+id/linearDot10"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:id="@+id/imgDot10"
+                                            android:layout_width="@dimen/four"
+                                            android:layout_height="@dimen/four"
+                                            android:tint="@color/white"
+                                            android:visibility="gone"
+                                            app:srcCompat="@drawable/circle_continue_page" />
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
 
                                     <androidx.appcompat.widget.LinearLayoutCompat
                                         android:id="@+id/linearDot9"
@@ -897,7 +957,8 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="@+id/flAbacusTop"
                             app:layout_constraintStart_toStartOf="@+id/flAbacusTop"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:visibility="gone">
 
                             <View
                                 android:id="@+id/viewRod1"
@@ -913,7 +974,7 @@
                             app:layout_constraintBottom_toBottomOf="@+id/flAbacusTop"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/flAbacusTop"
-                            tools:visibility="visible">
+                            tools:visibility="gone">
 
                             <androidx.appcompat.widget.LinearLayoutCompat
                                 android:id="@+id/linearTopArrows"
@@ -967,7 +1028,7 @@
                             app:layout_constraintBottom_toBottomOf="@+id/flAbacusBottom"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/flAbacusBottom"
-                            tools:visibility="visible">
+                            tools:visibility="gone">
 
                             <androidx.appcompat.widget.LinearLayoutCompat
                                 android:id="@+id/linearBottomArrows"
@@ -1026,8 +1087,8 @@
                 android:layout_alignStart="@+id/cardAbacusMain"
                 android:layout_alignTop="@+id/cardAbacusMain"
                 android:layout_alignEnd="@+id/cardAbacusMain"
-                android:elevation="@dimen/card_elevation8"
                 android:layout_marginHorizontal="30dp"
+                android:elevation="@dimen/card_elevation8"
                 android:gravity="center"
                 android:includeFontPadding="false"
                 android:text="0"
@@ -1043,11 +1104,11 @@
                 android:layout_alignStart="@+id/cardAbacusMain"
                 android:layout_alignEnd="@+id/cardAbacusMain"
                 android:layout_alignBottom="@+id/cardAbacusMain"
+                android:layout_marginHorizontal="30dp"
                 android:elevation="@dimen/card_elevation8"
                 android:fontFamily="@font/font_extra_bold"
                 android:gravity="center"
                 android:maxLines="1"
-                android:layout_marginHorizontal="30dp"
                 android:paddingBottom="@dimen/activity_padding1"
                 android:singleLine="true"
                 android:text="@string/ResettoContinue"
@@ -1057,6 +1118,7 @@
                 tools:visibility="visible" />
 
         </RelativeLayout>
+
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgKidHandLeft"
@@ -1070,7 +1132,7 @@
             app:layout_constraintStart_toEndOf="@+id/imgKidLeft"
             app:layout_constraintTop_toTopOf="@+id/relAbacus"
             app:srcCompat="@drawable/ic_boy_abacus_hand_left"
-            tools:visibility="visible" />
+            tools:visibility="gone" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgKidHandRight"

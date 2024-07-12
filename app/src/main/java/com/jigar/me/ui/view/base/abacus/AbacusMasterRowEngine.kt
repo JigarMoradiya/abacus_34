@@ -27,7 +27,8 @@ class AbacusMasterRowEngine(
     private var numColumns: Int,
     private var extraHeight : Int,
     private val beadType : AbacusBeadType,
-    private val abacusContent: AbacusContent
+    private val abacusContent: AbacusContent,
+    private val isColumnUsed : Boolean = false
 ) {
 
     var tempBeads: IntArray? = null
@@ -71,12 +72,24 @@ class AbacusMasterRowEngine(
         for(i in 0..3){
             when {
                 theme.contains(AppConstants.Settings.theam_Poligon_default, ignoreCase = true) -> {
-                    beadDrawables_eyes.add(ContextCompat.getDrawable(context, abacusContent.topBeadClose))
-                    beadDrawables_eyes_smaile.add(ContextCompat.getDrawable(context,abacusContent.topBeadOpen))
+                    if (isColumnUsed){
+                        beadDrawables_eyes.add(ContextCompat.getDrawable(context, abacusContent.topBeadClose))
+                        beadDrawables_eyes_smaile.add(ContextCompat.getDrawable(context,abacusContent.topBeadOpen))
+                    }else{
+                        beadDrawables_eyes.add(ContextCompat.getDrawable(context, abacusContent.unUsedBeads))
+                        beadDrawables_eyes_smaile.add(ContextCompat.getDrawable(context,abacusContent.unUsedBeads))
+                    }
+
                 }
                 else -> {
-                    beadDrawables_eyes.add(ContextCompat.getDrawable(context, abacusContent.bottomBeadClose[i]))
-                    beadDrawables_eyes_smaile.add(ContextCompat.getDrawable(context,abacusContent.bottomBeadOpen[i]))
+                    if (isColumnUsed){
+                        beadDrawables_eyes.add(ContextCompat.getDrawable(context, abacusContent.bottomBeadClose[i]))
+                        beadDrawables_eyes_smaile.add(ContextCompat.getDrawable(context,abacusContent.bottomBeadOpen[i]))
+                    }else{
+                        beadDrawables_eyes.add(ContextCompat.getDrawable(context, abacusContent.unUsedBeads))
+                        beadDrawables_eyes_smaile.add(ContextCompat.getDrawable(context,abacusContent.unUsedBeads))
+                    }
+
                 }
             }
         }
@@ -225,10 +238,14 @@ class AbacusMasterRowEngine(
                     beadDrawables_eyes[drawablePos]!!
                 }
             } else {
-                if (beads[i] > 0) {
-                    ContextCompat.getDrawable(context,abacusContent.topBeadOpen)!!
+                if (isColumnUsed){
+                    if (beads[i] > 0) {
+                        ContextCompat.getDrawable(context,abacusContent.topBeadOpen)!!
+                    }else{
+                        ContextCompat.getDrawable(context,abacusContent.topBeadClose)!!
+                    }
                 }else{
-                    ContextCompat.getDrawable(context,abacusContent.topBeadClose)!!
+                    ContextCompat.getDrawable(context,abacusContent.unUsedBeads)!!
                 }
             }
 //            var isBeadSelected = false

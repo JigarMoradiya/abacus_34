@@ -9,19 +9,17 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linearMenu"
+            android:id="@+id/cardBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/icons_margin"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/icons_margin"
+                android:layout_margin="@dimen/icons_margin2"
                 android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_back"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
@@ -29,24 +27,47 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="@dimen/menu_icons"
-            android:layout_height="@dimen/menu_icons"
+                    android:layout_height="@dimen/menu_icons"
                     android:padding="@dimen/activity_padding8"
                     app:srcCompat="@drawable/ic_back" />
             </com.google.android.material.card.MaterialCardView>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtAbacus"
+            style="@style/mainTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/title_margin"
+            android:textSize="@dimen/textSize18"
+            app:layout_constraintBottom_toBottomOf="@+id/cardBack"
+            app:layout_constraintEnd_toStartOf="@+id/linearMenu"
+            app:layout_constraintStart_toEndOf="@+id/cardBack"
+            app:layout_constraintTop_toTopOf="@+id/cardBack"
+            tools:text="SET 1" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/icons_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardSettingTop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/icons_margin"
                 android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_setting"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
-                app:cardMaxElevation="@dimen/card_elevation"
-                android:layout_margin="@dimen/icons_margin">
+                app:cardMaxElevation="@dimen/card_elevation">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="@dimen/menu_icons"
-            android:layout_height="@dimen/menu_icons"
+                    android:layout_height="@dimen/menu_icons"
                     android:padding="@dimen/activity_padding8"
                     app:srcCompat="@drawable/ic_menu_setting" />
 
@@ -57,15 +78,15 @@
                 android:id="@+id/cardYoutube"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/icons_margin"
                 android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_youtube"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
-                app:cardMaxElevation="@dimen/card_elevation"
-                android:layout_margin="@dimen/icons_margin">
+                app:cardMaxElevation="@dimen/card_elevation">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="@dimen/menu_icons"
-            android:layout_height="@dimen/menu_icons"
+                    android:layout_height="@dimen/menu_icons"
                     android:padding="@dimen/activity_padding8"
                     app:srcCompat="@drawable/ic_youtube" />
 
@@ -75,21 +96,22 @@
                 android:id="@+id/cardSubscribe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/icons_margin"
                 android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_subscribe"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
-                app:cardMaxElevation="@dimen/card_elevation"
-                android:layout_margin="@dimen/icons_margin">
+                app:cardMaxElevation="@dimen/card_elevation">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="@dimen/menu_icons"
-            android:layout_height="@dimen/menu_icons"
+                    android:layout_height="@dimen/menu_icons"
                     android:padding="@dimen/activity_padding6"
                     app:srcCompat="@mipmap/ic_menu_subscribe" />
 
             </com.google.android.material.card.MaterialCardView>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtDecimalMode"
             style="@style/mainTitle"
@@ -100,9 +122,9 @@
             android:shadowRadius="0.1"
             android:text="@string/decimal_mode"
             android:visibility="gone"
-            tools:visibility="visible"
             app:layout_constraintBottom_toTopOf="@+id/swDecimalMode"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:visibility="visible" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/swDecimalMode"
@@ -111,11 +133,10 @@
             android:paddingHorizontal="@dimen/activity_padding6"
             android:theme="@style/SCBSwitch"
             android:visibility="gone"
-            tools:visibility="visible"
             app:layout_constraintBottom_toTopOf="@+id/txtFreeMode"
             app:layout_constraintEnd_toEndOf="@+id/txtFreeMode"
-            app:layout_constraintStart_toStartOf="@+id/txtFreeMode" />
-
+            app:layout_constraintStart_toStartOf="@+id/txtFreeMode"
+            tools:visibility="visible" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtFreeMode"
@@ -126,6 +147,7 @@
             android:shadowColor="@color/black"
             android:shadowRadius="0.1"
             android:text="@string/free_mode"
+            android:textSize="@dimen/textSizeLarge"
             app:layout_constraintBottom_toTopOf="@+id/swFreeMode"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -139,53 +161,22 @@
             app:layout_constraintEnd_toEndOf="@+id/txtFreeMode"
             app:layout_constraintStart_toStartOf="@+id/txtFreeMode" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txtShowTourTop"
-            style="@style/mainTitleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:paddingHorizontal="@dimen/activity_padding12"
-            android:shadowColor="@color/black"
-            android:shadowRadius="0.1"
-            android:gravity="center"
-            android:visibility="gone"
-            android:textSize="@dimen/textSizeSmall"
-            tools:visibility="visible"
-            android:text="@string/click_here_to_show_nabacus_tour"
-            app:layout_constraintBottom_toBottomOf="@+id/swResetStarting"
-            app:layout_constraintTop_toTopOf="@+id/txtStartWith1"
-            app:layout_constraintStart_toEndOf="@+id/linearMenu"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtShowTour"
             style="@style/mainTitleSmall"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:gravity="center"
             android:paddingHorizontal="@dimen/activity_padding12"
             android:shadowColor="@color/black"
             android:shadowRadius="0.1"
-            android:gravity="center"
-            android:visibility="gone"
-            android:textSize="@dimen/textSizeSmall"
-            tools:visibility="visible"
-            app:layout_constraintTop_toTopOf="@+id/txtFreeMode"
             android:text="@string/click_here_to_show_nabacus_tour"
+            android:textSize="@dimen/textSizeSmall"
             app:layout_constraintBottom_toBottomOf="@+id/swFreeMode"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtFreeMode" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txtAbacus"
-            style="@style/mainTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/title_margin"
-            app:layout_constraintBottom_toBottomOf="@+id/swResetStarting"
-            app:layout_constraintEnd_toStartOf="@+id/txtStartWith1"
-            app:layout_constraintHorizontal_bias="0.488"
-            app:layout_constraintStart_toEndOf="@+id/linearMenu"
-            app:layout_constraintTop_toTopOf="@+id/txtStartWith1"
-            app:layout_constraintVertical_bias="0.533"
-            tools:text="SET 1" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtStartWith1"
@@ -193,14 +184,14 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/activity_padding12"
             android:gravity="center"
-            app:fontFamily="@font/font_bold"
             android:paddingStart="@dimen/activity_padding8"
             android:paddingEnd="@dimen/activity_padding8"
             android:text="@string/txt_start_with_1"
             android:textColor="@color/textColor1"
             android:textSize="@dimen/textSizeExtraSmall"
-            app:layout_constraintEnd_toStartOf="@+id/swRandom"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:fontFamily="@font/font_bold"
+            app:layout_constraintBottom_toTopOf="@+id/txtRange"
+            app:layout_constraintEnd_toStartOf="@+id/swRandom" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/swResetStarting"
@@ -215,14 +206,14 @@
             android:id="@+id/txtRandom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fontFamily="@font/font_bold"
             android:gravity="center"
             android:text="@string/txt_Random"
             android:textColor="@color/textColor1"
             android:textSize="@dimen/textSizeExtraSmall"
+            app:fontFamily="@font/font_bold"
+            app:layout_constraintBottom_toTopOf="@+id/txtRange"
             app:layout_constraintEnd_toEndOf="@+id/swRandom"
-            app:layout_constraintStart_toStartOf="@+id/swRandom"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="@+id/swRandom" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/swRandom"
@@ -231,56 +222,21 @@
             android:layout_marginEnd="@dimen/activity_padding12"
             android:checked="false"
             android:theme="@style/SCBSwitch"
-            app:layout_constraintEnd_toStartOf="@+id/txtRange"
-            app:layout_constraintTop_toTopOf="@+id/swReset" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txtRangeLable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/activity_padding8"
-            app:fontFamily="@font/font_bold"
-            android:gravity="center"
-            android:text="@string/txt_Range"
-            android:textColor="@color/textColor1"
-            android:textSize="@dimen/textSizeExtraSmall"
-            app:layout_constraintEnd_toEndOf="@+id/txtRange"
-            app:layout_constraintStart_toStartOf="@+id/txtRange"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txtRange"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginEnd="12dp"
-            android:drawableEnd="@drawable/ic_edit"
-            android:drawablePadding="@dimen/activity_padding4"
-            android:drawableTint="@color/red"
-            app:fontFamily="@font/font_bold"
-            android:gravity="center"
-            android:paddingStart="@dimen/activity_padding8"
-            android:paddingEnd="@dimen/activity_padding8"
-            android:text="From 1 To 100"
-            android:textColor="@color/red"
-            android:textSize="@dimen/textSizeExtraSmall"
-            app:drawableTint="@color/red_600"
-            app:layout_constraintBottom_toBottomOf="@+id/swReset"
             app:layout_constraintEnd_toStartOf="@+id/txtResetEveryTime"
-            app:layout_constraintTop_toTopOf="@+id/swReset"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="@+id/swReset" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtResetEveryTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/activity_padding8"
-            app:fontFamily="@font/font_bold"
             android:gravity="center"
             android:text="@string/txt_Reset_when_start"
             android:textColor="@color/textColor1"
             android:textSize="@dimen/textSizeExtraSmall"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:fontFamily="@font/font_bold"
+            app:layout_constraintBottom_toTopOf="@+id/txtRange"
+            app:layout_constraintEnd_toStartOf="@+id/txtRange" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/swReset"
@@ -288,9 +244,42 @@
             android:layout_height="36dp"
             android:checked="false"
             android:theme="@style/SCBSwitch"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/txtResetEveryTime"
-            app:layout_constraintTop_toBottomOf="@+id/txtResetEveryTime" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/txtRange"
+            app:layout_constraintStart_toStartOf="@+id/txtResetEveryTime" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtRangeLable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/activity_padding8"
+            android:gravity="center"
+            android:text="@string/txt_Range"
+            android:textColor="@color/textColor1"
+            android:textSize="@dimen/textSizeExtraSmall"
+            app:fontFamily="@font/font_bold"
+            app:layout_constraintBottom_toTopOf="@+id/txtRange"
+            app:layout_constraintEnd_toEndOf="@+id/txtRange"
+            app:layout_constraintStart_toStartOf="@+id/txtRange" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtRange"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:drawableEnd="@drawable/ic_edit"
+            android:drawablePadding="@dimen/activity_padding4"
+            android:drawableTint="@color/red"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/activity_padding8"
+            android:text="From 1 To 100"
+            android:textColor="@color/red"
+            android:textSize="@dimen/textSizeExtraSmall"
+            app:drawableTint="@color/red_600"
+            app:fontFamily="@font/font_bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/txtShowTour"
+            app:layout_constraintTop_toTopOf="@+id/swReset" />
+
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/linearAbacus"
@@ -299,7 +288,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/swReset" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/linearAbacusFreeMode"
