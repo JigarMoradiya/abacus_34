@@ -119,8 +119,10 @@ class AbacusDivisionTypeAdapter(
     }
 
     fun isLastStep(): Boolean {
+        Log.e("jigarLogsDivision","highlightDetail = "+Gson().toJson(highlightDetail))
         return if (!isLastTemp) {
             if (highlightDetail.size > 0) {
+        Log.e("jigarLogsDivision","highlightDetail second = "+highlightDetail[0]!!.second)
                 highlightDetail[0]!!.second == abacusItems[0][Constants.Que]!!.length
             } else false
         } else {
@@ -220,11 +222,6 @@ class AbacusDivisionTypeAdapter(
                 //                sum completed
                 return
             }
-
-            /*Long nextSumVal = getCurrentSumVal();
-            if (nextSumVal.equals(currentSum)) {
-                goToNextStep();
-            }*/
             notifyDataSetChanged()
         } catch (e: Exception) {
             e.printStackTrace()

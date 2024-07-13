@@ -90,8 +90,6 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
     private var isMoveNext: Boolean = false
     private var shouldResetAbacus = false
 
-    // for division
-    private var postfixZero = ""
     private var abacusFragment: HalfAbacusSubFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -385,8 +383,8 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                     speakOut(String.format(resources.getString(R.string.speech_set), " ${number}"))
                 }
             }
-            val answer = java.lang.Double.valueOf(number.toString() + "")
-            var noOfDecimalPlace = 0
+//            val answer = java.lang.Double.valueOf(number.toString() + "")
+            val noOfDecimalPlace = 0
 //            var column = 3
             val column = prefManager.getCustomParamInt(AppConstants.Settings.AbacusMaxColumn,13)
 
@@ -461,23 +459,17 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                 adapterDivision.notifyDataSetChanged()
                 val topPositions = ArrayList<Int>()
                 val bottomPositions = ArrayList<Int>()
-                val question = list_abacus_main[0][Constants.Que]
-                postfixZero = ""
-                /*as first 3 position is occupied for question so do not consider its value. so calculated prefix 0s*/
-                for (i in 0 until question!!.length - 1) {
-//                for (i in 0 until question!!.length) {
-                    postfixZero += "0"
-                }
+                val question = list_abacus_main[0][Constants.Que]?:""
+
                 val finalAnsLength = finalAns.toString().length
                 val queLength = question.length
 
                 /*set question as selected*/
 //                val totalLength = queLength + finalAnsLength - 1
-                val totalLength = 7 + queLength - 1
-//                val totalLength = 7
+//                val totalLength = 7 + queLength - 1
+                val totalColumn = prefManager.getCustomParamInt(AppConstants.Settings.AbacusMaxColumn,13)
 
-                // totalLength == 1 ? 2 : totalLength: if question and ans length 1 then add 1 more size for 2 column display.
-                for (i in 0 until if (totalLength == 1) 2 else totalLength) {
+                for (i in 0 until totalColumn) {
                     if (i < question.length) {
                         val charAt = question[i] - '1' //convert char to int. minus 1 from question as in abacus 0 item have 1 value.
                         if (charAt >= 0) {
@@ -509,8 +501,7 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                 bottomPositions.addAll(subBottom)
 //                val noOfRow = queLength + finalAnsLength - 1
 //                val noOfRow = 7 + queLength - 1
-                val noOfRow = prefManager.getCustomParamInt(AppConstants.Settings.AbacusMaxColumn,13)
-                column = if (noOfRow == 1) 2 else noOfRow
+                column = if (totalColumn == 1) 2 else totalColumn
                 replaceAbacusFragment(column, 0) // divide doesn't have decimal places
                 //set table
                 setTableDataAndVisiblilty()
@@ -566,18 +557,8 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                     }
                 }
 //                val answer = java.lang.Double.valueOf(list_abacus_main[0][Constants.Que]) * java.lang.Double.valueOf(list_abacus_main[1][Constants.Que])
-                var noOfDecimalPlace = 0
-//                var column = (list_abacus_main[0][Constants.Que]?:"").length + (list_abacus_main[1][Constants.Que]?:"").length
-                var column = prefManager.getCustomParamInt(AppConstants.Settings.AbacusMaxColumn,13)
-//                if (answer == answer.toLong().toDouble()) {
-//                    val ans = answer.toLong().toString() + ""
-//                    column = if (ans.length == 1) 3 else ans.length
-//                    noOfDecimalPlace = 0
-//                } else {
-//                    val ans = answer.toString()
-//                    noOfDecimalPlace = ans.length - ans.indexOf(".") - 1
-//                    column = ans.length - 1
-//                }
+                val noOfDecimalPlace = 0
+                val column = prefManager.getCustomParamInt(AppConstants.Settings.AbacusMaxColumn,13)
                 binding.cardAbacusQue.show()
                 binding.recyclerview.adapter = adapterMultiplication
                 adapterMultiplication.setData(list_abacus_main, isStepByStep)
@@ -776,31 +757,6 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
             var column = 3
             if (abacus_type == 0) {
                 binding.recyclerview.adapter = adapterAdditionSubtraction
-//                if (answer == answer.toLong().toDouble()) {
-//                    val ans = answer.toLong().toString() + ""
-//                    column = if (ans.length == 1) 3 else ans.length
-//                    noOfDecimalPlace = 0
-//                } else {
-//                    val ans = answer.toFloat().toString()
-//                    noOfDecimalPlace = ans.length - ans.indexOf(".") - 1
-//                    column = ans.length
-//                }
-//                val que = tempQuestion
-//                var answerTemp = ""
-//                val newQue = que.replace("+", "$$+").replace("-", "$$-")
-//                val list = newQue.split("$$")
-//                list.map {
-//                    if (it.contains("+") || it.contains("-")) {
-//                        answerTemp += it
-//                        val resultObject = Calculator().getResult(answerTemp,answerTemp)
-//                        answerTemp = CommonUtils.removeTrailingZero(resultObject)
-//                        if (answerTemp.length > column){
-//                            column = answerTemp.length
-//                        }
-//                    }else{
-//                        answerTemp = it
-//                    }
-//                }
                 column = prefManager.getCustomParamInt(AppConstants.Settings.AbacusMaxColumn,13)
             }
             list_abacus_main.clear()
@@ -1100,28 +1056,34 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                     }
                 }
             } else if (abacus_type == 2) {
-                val valueCheck = newValue.replace(".","").take(6+(list_abacus_main[0][Constants.Que]?:4).toString().length).trimStart('0')
-                Log.e("jigarLogs","onAbacusValueChange division abacusValue == "+abacusValue+" valueCheck = "+valueCheck)
+//                Log.e("jigarLogsDivision","onAbacusValueChange division newValue = "+newValue)
+                var remainQuestion = newValue.replace(".","").takeLast(6).trimStart('0')
+                if (remainQuestion.isEmpty()){
+                    remainQuestion = "0"
+                }
+                val answers = newValue.replace(".","").take(7).trimStart('0')
+//                Log.e("jigarLogsDivision","onAbacusValueChange division remainQuestion = "+remainQuestion)
+//                Log.e("jigarLogsDivision","onAbacusValueChange division answers = "+answers)
                 if (adapterDivision.getCurrentSumVal() != null) {
-                    Log.e("jigarLogs","onAbacusValueChange division getCurrentSumVal == "+adapterDivision.getCurrentSumVal())
-                    val postfix = adapterDivision.getCurrentSumVal().toString() + postfixZero
-                    val sumVal = postfix.toLong() + adapterDivision.getNextDivider()
-                    Log.e("jigarLogs","onAbacusValueChange postfix == "+postfix)
-                    Log.e("jigarLogs","onAbacusValueChange sumVal == "+sumVal)
+//                    Log.e("jigarLogsDivision","onAbacusValueChange division getCurrentSumVal == "+adapterDivision.getCurrentSumVal())
+//                    Log.e("jigarLogsDivision","onAbacusValueChange division getNextDivider == "+adapterDivision.getNextDivider())
+//                    Log.e("jigarLogsDivision","onAbacusValueChange division getFinalSumVal == "+adapterDivision.getFinalSumVal()!!.toLong())
+//                    Log.e("jigarLogsDivision","onAbacusValueChange division isLastStep == "+adapterDivision.isLastStep())
                     if (isStepByStep) {
-                        if (valueCheck == (sumVal.toInt()).toString()) {
+                        if (adapterDivision.getCurrentSumVal().toString() == answers && adapterDivision.getNextDivider().toString() == remainQuestion){
+//                            Log.e("jigarLogsDivision","onAbacusValueChange goToNextStep")
                             adapterDivision.goToNextStep()
                             setTableDataAndVisiblilty()
                         }
-                        val finalans: Long = (adapterDivision.getFinalSumVal()!!.toLong().toString() + "" + postfixZero).toLong()
-                        if (valueCheck == (finalans.toInt()).toString() && adapterDivision.isLastStep()) {
+                        val finalans = adapterDivision.getFinalSumVal()!!.toLong()
+                        if (answers == finalans.toString() && adapterDivision.isLastStep() && (remainQuestion.isEmpty() || remainQuestion == "0")) {
                             adapterDivision.clearHighlight()
                             onAbacusValueSubmit(finalans)
                         }
                     } else {
-                        val finalans = (adapterDivision.getFinalSumVal()?:0.0).toLong()
-                        if (valueCheck == (finalans.toInt()).toString()) {
-                            onAbacusValueSubmit(finalans)
+                        val finalAns = (adapterDivision.getFinalSumVal()?:0.0).toLong()
+                        if (answers == (finalAns.toInt()).toString()) {
+                            onAbacusValueSubmit(finalAns)
                         }
                     }
                 }
@@ -1237,9 +1199,9 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
             2 -> {
                 prefManager.setCustomParam(AppConstants.extras_Comman.previousAbacusData+"_"+pageId,"")
                 var sumStr: String = sum.toInt().toString()
-                if (sumStr.length > postfixZero.length) {
-                    sumStr = sumStr.substring(0, sumStr.length - postfixZero.length)
-                }
+//                if (sumStr.length > postfixZero.length) {
+//                    sumStr = sumStr.substring(0, sumStr.length - postfixZero.length)
+//                }
                 binding.tvAns.text = sumStr
                 binding.tvAns.show()
                 makeAutoRefresh()

@@ -154,13 +154,14 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
 //            binding.relAbacus.layoutParams = params
 //        }
 
-        if (abacus_type == 2){
-            binding.abacusTop.setNoOfRowAndBeads(0, abacusTotalColumns, 1,AbacusBeadType.AbacusPrecise,unitRodPosition = 6,noOfColumnUsed = 6+questionLength)
-            binding.abacusBottom.setNoOfRowAndBeads(0, abacusTotalColumns, 4,AbacusBeadType.AbacusPrecise,unitRodPosition = 6,noOfColumnUsed = 6+questionLength)
-        }else{
+
+//        if (abacus_type == 2){
+//            binding.abacusTop.setNoOfRowAndBeads(0, abacusTotalColumns, 1,AbacusBeadType.AbacusPrecise,unitRodPosition = 6,noOfColumnUsed = 6+questionLength)
+//            binding.abacusBottom.setNoOfRowAndBeads(0, abacusTotalColumns, 4,AbacusBeadType.AbacusPrecise,unitRodPosition = 6,noOfColumnUsed = 6+questionLength)
+//        }else{
             binding.abacusTop.setNoOfRowAndBeads(0, abacusTotalColumns, 1,AbacusBeadType.AbacusPrecise,unitRodPosition = 6)
             binding.abacusBottom.setNoOfRowAndBeads(0, abacusTotalColumns, 4,AbacusBeadType.AbacusPrecise,unitRodPosition = 6)
-        }
+//        }
 
         binding.abacusTop.onBeadShiftListener = this
         binding.abacusBottom.onBeadShiftListener = this
@@ -404,7 +405,7 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     }
 
     private fun setCurrentValue(abacusValue: String) {
-        Log.e("jigarLogs","setCurrentValue abacusValue = "+abacusValue)
+        Log.e("jigarLogsDivision","setCurrentValue abacusValue = "+abacusValue)
         when {
             isDisplayAbacusNumber -> {
                 binding.tvCurrentVal.show()
@@ -414,11 +415,13 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
                         newValue = "0$newValue"
                     }
                 }
-                Log.e("jigarLogs","setCurrentValue newValue == "+newValue)
+                Log.e("jigarLogsDivision","setCurrentValue newValue = "+newValue)
                 if (abacus_type == 2){
-                    val answer = newValue.take(7)
-                    val reminders = newValue.takeLast(7).take(questionLength)
-                    binding.tvCurrentVal.text = (answer.toInt()).toString()+" < "+(reminders.toInt()).toString()
+                    val remainQuestion = newValue.replace(".","").takeLast(6).trimStart('0')
+                    val answers = newValue.replace(".","").take(7).trimStart('0')
+//                    val answer = newValue.take(7)
+//                    val reminders = newValue.takeLast(7).take(questionLength)
+                    binding.tvCurrentVal.text = (if (answers.isNullOrEmpty()){"0"}else{answers})+" < "+(if (remainQuestion.isNullOrEmpty()){"0"}else{remainQuestion})
                 }else{
                     val sb = StringBuilder(newValue)
                     sb.insert(7, ".")
