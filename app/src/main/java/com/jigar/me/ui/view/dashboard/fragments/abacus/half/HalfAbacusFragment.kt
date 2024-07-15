@@ -952,11 +952,12 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                 binding.linearYourAbacusTools.show()
                 binding.relAbacus.show()
             }else{
-//                this.final_column = column
                 // TODO
                 this.abacusTotalColumns = column
                 this.noOfDecimalPlace = noOfDecimalPlace
-                abacusFragment = HalfAbacusSubFragment().newInstance(abacusTotalColumns, noOfDecimalPlace, abacus_type)
+                if (abacusFragment == null){
+                    abacusFragment = HalfAbacusSubFragment().newInstance(abacusTotalColumns, noOfDecimalPlace, abacus_type)
+                }
                 binding.flAbacus.show()
                 binding.linearYourAbacusTools.hide()
                 if (abacusFragment != null){

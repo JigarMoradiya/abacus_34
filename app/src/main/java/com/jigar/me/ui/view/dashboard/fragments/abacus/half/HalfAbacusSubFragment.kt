@@ -405,7 +405,7 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     }
 
     private fun setCurrentValue(abacusValue: String) {
-        Log.e("jigarLogsDivision","setCurrentValue abacusValue = "+abacusValue)
+//        Log.e("jigarLogsDivision","setCurrentValue abacusValue = "+abacusValue)
         when {
             isDisplayAbacusNumber -> {
                 binding.tvCurrentVal.show()
@@ -415,7 +415,7 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
                         newValue = "0$newValue"
                     }
                 }
-                Log.e("jigarLogsDivision","setCurrentValue newValue = "+newValue)
+//                Log.e("jigarLogsDivision","setCurrentValue newValue = "+newValue)
                 if (abacus_type == 2){
                     val remainQuestion = newValue.replace(".","").takeLast(6).trimStart('0')
                     val answers = newValue.replace(".","").take(7).trimStart('0')
