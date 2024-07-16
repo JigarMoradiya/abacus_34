@@ -147,7 +147,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
     }
 
     private fun switchResetStartingClick() {
-        prefManager.setCustomParamInt(AppConstants.Settings.Toddler_No,prefManager.getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F).toInt())
+        prefManager.setCustomParamFloat(AppConstants.Settings.Toddler_No,prefManager.getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F))
         setSwitchs()
     }
 
@@ -470,7 +470,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         with(prefManager){
             setCustomParamFloat(AppConstants.Settings.SW_Range_min,fromValue.toFloat())
             setCustomParamFloat(AppConstants.Settings.SW_Range_max,toValue.toFloat() + 1)
-            setCustomParamInt(AppConstants.Settings.Toddler_No,getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F).toInt())
+            setCustomParamFloat(AppConstants.Settings.Toddler_No,getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F))
             setSwitchs()
         }
     }

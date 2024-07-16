@@ -96,7 +96,7 @@ object AppConstants {
             var Purchase_limit = 9999
             var Purchase_limit_free = 20
 
-            var AdsShow = "Y"
+            var AdsShow = "N"
             var AdsShowCount = "AdsShowCount"
             var AdsShowNumberPuzzleStep = 20
 
@@ -197,10 +197,10 @@ object AppConstants {
             var SW_Random = "SW_Random"
             var SW_Reset = "SW_Reset"
 
-            var Toddler_No = "Toddler_Numbers"
+            var Toddler_No = "Toddler_Numbers_new"
             var Toddler_No_Count = "Toddler_Number_Count"
-            var SW_Range_min = "SW_Range_min_values"
-            var SW_Range_max = "SW_Range_max_values"
+            var SW_Range_min = "SW_Range_min_values_new"
+            var SW_Range_max = "SW_Range_max_values_new"
         }
 
     }

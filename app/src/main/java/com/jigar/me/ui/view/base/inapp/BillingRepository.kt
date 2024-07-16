@@ -49,9 +49,13 @@ class BillingRepository @Inject constructor(
     }
 
     private fun init() {
+        val pendingPurchaseParams : PendingPurchasesParams.Builder = PendingPurchasesParams.newBuilder()
+        pendingPurchaseParams.enableOneTimeProducts()
+
         playStoreBillingClient = BillingClient.newBuilder(context)
-            .enablePendingPurchases() // required or app will crash
-            .setListener(this).build()
+            .enablePendingPurchases(pendingPurchaseParams.build()) // required or app will crash
+            .setListener(this)
+            .build()
     }
 
     private fun connectToPlayBillingService(): Boolean {
@@ -161,15 +165,17 @@ class BillingRepository @Inject constructor(
             if (productDetailsList.isNotEmpty()) {
                 productDetailsList.filter { it.productId == skuDetails.sku }.also {
                     if (it.isNotNullOrEmpty()){
-                        val productDetailsParamsList = listOf(
-                            BillingFlowParams.ProductDetailsParams.newBuilder()
-                                // retrieve a value for "productDetails" by calling queryProductDetailsAsync()
+                        val productDetailsParamsList : ArrayList<BillingFlowParams.ProductDetailsParams> = arrayListOf()
+                        if (skuDetails.type == BillingClient.ProductType.INAPP){
+                            productDetailsParamsList.add(BillingFlowParams.ProductDetailsParams.newBuilder()
                                 .setProductDetails(it.first())
-                                // to get an offer token, call ProductDetails.subscriptionOfferDetails()
-                                // for a list of offers that are available to the user
+                                .build())
+                        }else{
+                            productDetailsParamsList.add(BillingFlowParams.ProductDetailsParams.newBuilder()
+                                .setProductDetails(it.first())
                                 .setOfferToken(skuDetails.offerToken?:"")
-                                .build()
-                        )
+                                .build())
+                        }
 
                         val billingFlowParams = BillingFlowParams.newBuilder()
                             .setProductDetailsParamsList(productDetailsParamsList)
