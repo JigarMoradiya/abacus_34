@@ -161,15 +161,19 @@ class BillingRepository @Inject constructor(
             if (productDetailsList.isNotEmpty()) {
                 productDetailsList.filter { it.productId == skuDetails.sku }.also {
                     if (it.isNotNullOrEmpty()){
-                        val productDetailsParamsList = listOf(
-                            BillingFlowParams.ProductDetailsParams.newBuilder()
-                                // retrieve a value for "productDetails" by calling queryProductDetailsAsync()
-                                .setProductDetails(it.first())
-                                // to get an offer token, call ProductDetails.subscriptionOfferDetails()
-                                // for a list of offers that are available to the user
-                                .setOfferToken(skuDetails.offerToken?:"")
-                                .build()
-                        )
+                        val productDetailsParamsList =
+                            if (skuDetails.type == BillingClient.ProductType.INAPP){
+                                listOf(
+                                    BillingFlowParams.ProductDetailsParams.newBuilder()
+                                        .setProductDetails(it.first())
+                                        .build())
+                            }else{
+                                listOf(
+                                    BillingFlowParams.ProductDetailsParams.newBuilder()
+                                        .setProductDetails(it.first())
+                                        .setOfferToken(skuDetails.offerToken?:"")
+                                        .build())
+                            }
 
                         val billingFlowParams = BillingFlowParams.newBuilder()
                             .setProductDetailsParamsList(productDetailsParamsList)
