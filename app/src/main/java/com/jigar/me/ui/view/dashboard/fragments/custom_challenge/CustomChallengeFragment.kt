@@ -41,6 +41,7 @@ import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Resource
 import com.jigar.me.utils.extensions.convert
+import com.jigar.me.utils.extensions.dp
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.invisible
 import com.jigar.me.utils.extensions.isNetworkAvailable
@@ -414,6 +415,8 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
     private fun setAbacus() {
         binding.linearAbacus.removeAllViews()
         abacusBinding = FragmentAbacusExerciseBinding.inflate(layoutInflater, null, false)
+        abacusBinding?.linearDot9?.hide()
+        abacusBinding?.linearDot8?.hide()
         binding.linearAbacus.addView(abacusBinding?.root)
 
         abacusBinding?.ivReset?.onClick {
@@ -423,17 +426,20 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
         themeContent?.abacusFrame135?.let { abacusBinding?.rlAbacusMain?.setBackgroundResource(it) }
         themeContent?.dividerColor1?.let { abacusBinding?.ivDivider?.setBackgroundColor(ContextCompat.getColor(requireContext(),it)) }
         themeContent?.resetBtnColor8?.let {
-            abacusBinding?.imgDot1?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.imgDot4?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.imgDot7?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+
+            abacusBinding?.imgDot1?.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)
+            abacusBinding?.imgDot1?.layoutParams?.width = 3.dp
+            abacusBinding?.imgDot1?.layoutParams?.height = 3.dp
 
             abacusBinding?.ivReset?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.ivRight?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.ivLeft?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
         }
 
-        abacusBinding?.abacusTop?.setNoOfRowAndBeads(0, 9, 1,AbacusBeadType.CustomeChallenge)
-        abacusBinding?.abacusBottom?.setNoOfRowAndBeads(0, 9, 4,AbacusBeadType.CustomeChallenge)
+        abacusBinding?.abacusTop?.setNoOfRowAndBeads(0, 7, 1,AbacusBeadType.CustomeChallenge,6)
+        abacusBinding?.abacusBottom?.setNoOfRowAndBeads(0, 7, 4,AbacusBeadType.CustomeChallenge,6)
 
         abacusBinding?.abacusTop?.onBeadShiftListener = this
         abacusBinding?.abacusBottom?.onBeadShiftListener = this

@@ -39,6 +39,7 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
 
     // abacus move
     private var isResetRunning: Boolean = false
+    private var isResetRemain: Boolean = false
     private var currentSumVal = 0L
     private var resetX: Float = 0f
     var questionLength = 0
@@ -72,8 +73,6 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
         binding.imgDot7.show()
         binding.imgDot10.show()
         binding.imgDot13.show()
-        binding.linearRodName.show()
-
 
         val theme = prefManager.getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
         val themeContent = DataProvider.findAbacusThemeType(requireContext(),theme,AbacusBeadType.AbacusPrecise)
@@ -329,16 +328,18 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     }
     fun showResetToContinue(type: Boolean) {
         if (type) {
+            isResetRemain = true
             binding.resettoContinue.show()
             startTimerForToolTips()
         } else {
+            isResetRemain = false
             binding.resettoContinue.hide()
         }
     }
 
     private fun startTimerForToolTips() {
         Handler(Looper.getMainLooper()).postDelayed({
-            if (isAdded && isResumed){
+            if (isAdded && isResumed && isResetRemain){
                 binding.ivReset.setAbacusResetShakeAnimation()
             }
         },2500)

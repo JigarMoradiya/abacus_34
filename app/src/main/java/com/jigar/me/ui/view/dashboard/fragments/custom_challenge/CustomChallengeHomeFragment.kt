@@ -41,11 +41,14 @@ class CustomChallengeHomeFragment : BaseFragment() {
     private fun init() {
         binding.rsQuestion.currentValue = prefManager.getCustomParamInt(AppConstants.CCM.totalQuestion,10)
         binding.rsGap.currentValue = prefManager.getCustomParamInt(AppConstants.CCM.questionGap,3)
+        if (prefManager.getCustomParamInt(AppConstants.CCM.questionMaxLength,3) > 6){
+            prefManager.setCustomParamInt(AppConstants.CCM.questionMaxLength,6)
+        }
         binding.rsQuestionLength.currentMinValue = prefManager.getCustomParamInt(AppConstants.CCM.questionMinLength,1)
         binding.rsQuestionLength.currentMaxValue = prefManager.getCustomParamInt(AppConstants.CCM.questionMaxLength,3)
         binding.cbQuestionVoice.isChecked = prefManager.getCustomParamBoolean(AppConstants.CCM.isQuestionSpeak,false)
         binding.cbQuestionNumber.isChecked = prefManager.getCustomParamBoolean(AppConstants.CCM.isQuestionShowNumber,true)
-        binding.cbQuestionWord.isChecked = prefManager.getCustomParamBoolean(AppConstants.CCM.isQuestionShowWord,false)
+        binding.cbQuestionWord.isChecked = prefManager. getCustomParamBoolean(AppConstants.CCM.isQuestionShowWord,false)
     }
 
     private fun setNavigationGraph() {

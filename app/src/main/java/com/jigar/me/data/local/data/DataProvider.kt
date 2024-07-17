@@ -800,16 +800,32 @@ object DataProvider {
             }else{
                 if (minusSignCount == maxMinusSignCount){
                     val nextValues = generateSingleDigit(min, max)
-                    listQuestion.add(CustomChallengeQuestion("+",nextValues))
-                    question = "$question+$nextValues"
-                    answer += nextValues
+                    val tempAnswer = answer + nextValues
+                    if (tempAnswer > 999999){
+                        listQuestion.add(CustomChallengeQuestion("-",nextValues))
+                        question = "$question-$nextValues"
+                        answer -= nextValues
+                    }else{
+                        listQuestion.add(CustomChallengeQuestion("+",nextValues))
+                        question = "$question+$nextValues"
+                        answer += nextValues
+                    }
+
                 }else{
                     val index = generateIndex()
                     if (index == 0 || answer < min) { // 0 = add +
                         val nextValues = generateSingleDigit(min, max)
-                        listQuestion.add(CustomChallengeQuestion("+",nextValues))
-                        question = "$question+$nextValues"
-                        answer += nextValues
+                        val tempAnswer = answer + nextValues
+                        if (tempAnswer > 999999){
+                            listQuestion.add(CustomChallengeQuestion("-",nextValues))
+                            question = "$question-$nextValues"
+                            answer -= nextValues
+                        }else{
+                            listQuestion.add(CustomChallengeQuestion("+",nextValues))
+                            question = "$question+$nextValues"
+                            answer += nextValues
+                        }
+
                     }else{ // minus -
                         minusSignCount++
                         val nextValues = if ((answer + 1) > max){

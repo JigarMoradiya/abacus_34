@@ -266,18 +266,22 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         abacusBinding?.imgDot7?.show()
         abacusBinding?.imgDot10?.show()
         abacusBinding?.imgDot13?.show()
+        abacusBinding?.linearNumber?.show()
 
         val abacusBeadType = if (prefManager.getCustomParam(AppConstants.Settings.SW_FreeMode, "Y") == "Y"){
             binding.linearAbacusFreeMode.addView(abacusBinding?.root)
             binding.linearAbacusFreeMode.show()
             binding.linearAbacus.hide()
+            abacusBinding?.imgKidsTop?.invisible()
             abacusBinding?.viewNumbers?.show()
             abacusBinding?.viewNumbersBottom?.show()
             AbacusBeadType.FreeMode
         }else{
+            abacusBinding?.imgKidsTop?.show()
             binding.linearAbacus.addView(abacusBinding?.root)
             binding.linearAbacus.show()
             binding.linearAbacusFreeMode.hide()
+            abacusBinding?.viewNumbersBottom?.hide()
             AbacusBeadType.FullMode
         }
         themeContent  = DataProvider.findAbacusThemeType(requireContext(),theme,abacusBeadType)

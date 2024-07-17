@@ -511,16 +511,20 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
         themeContent?.abacusFrame135?.let { abacusBinding?.rlAbacusMain?.setBackgroundResource(it) }
         themeContent?.dividerColor1?.let { abacusBinding?.ivDivider?.setBackgroundColor(ContextCompat.getColor(requireContext(),it)) }
         themeContent?.resetBtnColor8?.let {
-            abacusBinding?.imgDot1?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.imgDot4?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.imgDot7?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+
+            abacusBinding?.imgDot1?.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)
+            abacusBinding?.imgDot1?.layoutParams?.width = 3.dp
+            abacusBinding?.imgDot1?.layoutParams?.height = 3.dp
+
             abacusBinding?.ivReset?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.ivRight?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.ivLeft?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
         }
 
-        abacusBinding?.abacusTop?.setNoOfRowAndBeads(0, 7, 1,AbacusBeadType.Exercise)
-        abacusBinding?.abacusBottom?.setNoOfRowAndBeads(0, 7, 4,AbacusBeadType.Exercise)
+        abacusBinding?.abacusTop?.setNoOfRowAndBeads(0, 7, 1,AbacusBeadType.Exercise,6)
+        abacusBinding?.abacusBottom?.setNoOfRowAndBeads(0, 7, 4,AbacusBeadType.Exercise,6)
 
         abacusBinding?.abacusTop?.onBeadShiftListener = this
         abacusBinding?.abacusBottom?.onBeadShiftListener = this

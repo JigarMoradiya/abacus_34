@@ -236,7 +236,7 @@
                     app:r2circleTextColor="@color/white"
                     app:r2circleTextSize="@dimen/textSizeSmall"
                     app:r2fillColor="@color/green_200"
-                    app:r2maxValue="7"
+                    app:r2maxValue="6"
                     app:r2maxValueStep="1"
                     app:r2minValue="1"
                     app:r2minValueStep="1" />

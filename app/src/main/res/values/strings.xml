@@ -113,7 +113,7 @@
     <string name="set_only">Set</string>
 
     <!--  Abacus  -->
-    <string name="ResettoContinue">Reset to Continue</string>
+    <string name="ResettoContinue">Click here to Reset &amp; Continue</string>
     <string name="txt_reset_now">START AGAIN</string>
     <string name="txt_purchase">Purchase</string>
     <string name="txt_purchased">Purchased</string>
@@ -360,7 +360,7 @@
     <string name="thousands">Thousands</string>
     <string name="hundreds">Hundreds</string>
     <string name="tens">Tens</string>
-    <string name="ones">Ones</string>
+    <string name="ones">Ones\n<font color='#000000'>Unit Rod</font></string>
     <string name="Hundred">Hundred</string>
     <string name="Thousand">Thousand</string>
     <string name="Lakh">Lakh</string>

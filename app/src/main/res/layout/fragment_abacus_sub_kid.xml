@@ -44,15 +44,15 @@
             android:layout_marginHorizontal="@dimen/activity_padding16"
             android:paddingHorizontal="10dp"
             android:visibility="gone"
+            android:layout_marginBottom="@dimen/activity_padding6"
             app:layout_constraintEnd_toEndOf="@+id/relAbacus"
             app:layout_constraintStart_toStartOf="@+id/relAbacus"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="gone">
+            app:layout_constraintBottom_toTopOf="@+id/relAbacus"
+            tools:visibility="visible">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/activity_padding16"
-                android:layout_marginBottom="@dimen/activity_padding4">
+                android:layout_height="@dimen/activity_padding16">
 
 
                 <com.google.android.material.textview.MaterialTextView
@@ -182,132 +182,6 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linearRodName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/activity_padding16"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingHorizontal="10dp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@+id/relAbacus"
-            app:layout_constraintStart_toStartOf="@+id/relAbacus"
-            app:layout_constraintTop_toBottomOf="@+id/relAbacus"
-            tools:visibility="visible">
-
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtRodName7"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:includeFontPadding="false"
-                android:text="@string/ten_lakhs"
-                android:textColor="@color/indigo_700"
-                android:textSize="@dimen/textSizeVery3ExtraSmall"
-                app:fontFamily="@font/font_extra_bold" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtRodName6"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:includeFontPadding="false"
-                android:text="@string/lakhs"
-                android:textColor="@color/blue_700"
-                android:textSize="@dimen/textSizeVery3ExtraSmall"
-                app:fontFamily="@font/font_extra_bold" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtRodName5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:gravity="center"
-                android:includeFontPadding="false"
-                android:text="@string/ten_nthousands"
-                android:textColor="@color/cyan_700"
-                android:textSize="@dimen/textSizeVery3ExtraSmall"
-                app:fontFamily="@font/font_extra_bold" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtRodName4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:includeFontPadding="false"
-                android:text="@string/thousands"
-                android:textColor="@color/teal_700"
-                android:textSize="@dimen/textSizeVery3ExtraSmall"
-                app:fontFamily="@font/font_extra_bold" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtRodName3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:includeFontPadding="false"
-                android:text="@string/hundreds"
-                android:textColor="@color/green_700"
-                android:textSize="@dimen/textSizeVery3ExtraSmall"
-                app:fontFamily="@font/font_extra_bold" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtRodName2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:includeFontPadding="false"
-                android:text="@string/tens"
-                android:textColor="@color/lime_800"
-                android:textSize="@dimen/textSizeVery2ExtraSmall"
-                app:fontFamily="@font/font_extra_bold" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtRodName1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:includeFontPadding="false"
-                android:text="@string/ones"
-                android:textColor="@color/orange_700"
-                android:textSize="@dimen/textSizeVery3ExtraSmall"
-                app:fontFamily="@font/font_extra_bold" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/viewNumbersBottom"
@@ -317,16 +191,16 @@
             android:layout_marginTop="@dimen/activity_padding2"
             android:orientation="vertical"
             android:paddingHorizontal="10dp"
-            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@+id/relAbacus"
             app:layout_constraintStart_toStartOf="@+id/relAbacus"
-            app:layout_constraintTop_toBottomOf="@+id/linearRodName"
-            tools:visibility="visible">
+            app:layout_constraintTop_toBottomOf="@+id/relAbacus">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/activity_padding16"
                 android:id="@+id/linearNumber"
+                android:visibility="gone"
+                tools:visibility="visible"
                 android:orientation="horizontal">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -471,7 +345,7 @@
                     android:includeFontPadding="false"
                     android:text="@string/ten_lakhs"
                     android:textColor="@color/indigo_700"
-                    android:textSize="@dimen/textSizeVery2ExtraSmall"
+                    android:textSize="@dimen/textSizeVery3ExtraSmall"
                     app:fontFamily="@font/font_extra_bold" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -483,7 +357,7 @@
                     android:includeFontPadding="false"
                     android:text="@string/lakhs"
                     android:textColor="@color/blue_700"
-                    android:textSize="@dimen/textSizeVery2ExtraSmall"
+                    android:textSize="@dimen/textSizeVery3ExtraSmall"
                     app:fontFamily="@font/font_extra_bold" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -494,7 +368,7 @@
                     android:includeFontPadding="false"
                     android:text="@string/ten_nthousands"
                     android:textColor="@color/cyan_700"
-                    android:textSize="@dimen/textSizeVery2ExtraSmall"
+                    android:textSize="@dimen/textSizeVery3ExtraSmall"
                     app:fontFamily="@font/font_extra_bold" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -505,7 +379,7 @@
                     android:includeFontPadding="false"
                     android:text="@string/thousands"
                     android:textColor="@color/teal_700"
-                    android:textSize="@dimen/textSizeVery2ExtraSmall"
+                    android:textSize="@dimen/textSizeVery3ExtraSmall"
                     app:fontFamily="@font/font_extra_bold" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -516,7 +390,7 @@
                     android:includeFontPadding="false"
                     android:text="@string/hundreds"
                     android:textColor="@color/green_700"
-                    android:textSize="@dimen/textSizeVery2ExtraSmall"
+                    android:textSize="@dimen/textSizeVery3ExtraSmall"
                     app:fontFamily="@font/font_extra_bold" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -527,7 +401,7 @@
                     android:includeFontPadding="false"
                     android:text="@string/tens"
                     android:textColor="@color/lime_800"
-                    android:textSize="@dimen/textSizeVery2ExtraSmall"
+                    android:textSize="@dimen/textSizeVery3ExtraSmall"
                     app:fontFamily="@font/font_extra_bold" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -538,7 +412,7 @@
                     android:includeFontPadding="false"
                     android:text="@string/ones"
                     android:textColor="@color/orange_700"
-                    android:textSize="@dimen/textSizeVery2ExtraSmall"
+                    android:textSize="@dimen/textSizeVery3ExtraSmall"
                     app:fontFamily="@font/font_extra_bold" />
 
                 <com.google.android.material.textview.MaterialTextView
