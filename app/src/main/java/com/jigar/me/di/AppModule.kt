@@ -12,6 +12,7 @@ import com.jigar.me.data.api.StudentApi
 import com.jigar.me.data.api.UserApi
 import com.jigar.me.data.api.connections.RemoteDataSource
 import com.jigar.me.data.local.db.AppDatabase
+import com.jigar.me.data.local.db.Migrations.MIGRATION_10_11
 import com.jigar.me.data.local.db.Migrations.MIGRATION_1_2
 import com.jigar.me.data.local.db.Migrations.MIGRATION_2_3
 import com.jigar.me.data.local.db.Migrations.MIGRATION_3_4
@@ -21,6 +22,8 @@ import com.jigar.me.data.local.db.Migrations.MIGRATION_6_7
 import com.jigar.me.data.local.db.Migrations.MIGRATION_7_8
 import com.jigar.me.data.local.db.Migrations.MIGRATION_8_9
 import com.jigar.me.data.local.db.Migrations.MIGRATION_9_10
+import com.jigar.me.data.local.db.abacus_all_data.AbacusAllDataDB
+import com.jigar.me.data.local.db.abacus_all_data.AbacusAllDataDao
 import com.jigar.me.data.local.db.exam.ExamHistoryDB
 import com.jigar.me.data.local.db.exam.ExamHistoryDao
 import com.jigar.me.data.local.db.inapp.purchase.InAppPurchaseDB
@@ -57,13 +60,17 @@ object AppModule {
     /*
    Local Room Database
    */
+//    @Provides
+//    @Singleton
+//    fun providesDatabase(@ApplicationContext context: Context): AppDatabase =
+//        Room.databaseBuilder(context, AppDatabase::class.java, AppConstants.DB_NAME)
+//            .fallbackToDestructiveMigration()
+//            .addMigrations(MIGRATION_1_2,MIGRATION_2_3,MIGRATION_3_4,MIGRATION_4_5,MIGRATION_5_6,MIGRATION_6_7,MIGRATION_7_8,MIGRATION_8_9,MIGRATION_9_10,MIGRATION_10_11)
+//            .build()
+
     @Provides
     @Singleton
-    fun providesDatabase(@ApplicationContext context: Context): AppDatabase =
-        Room.databaseBuilder(context, AppDatabase::class.java, AppConstants.DB_NAME)
-//            .fallbackToDestructiveMigration()
-            .addMigrations(MIGRATION_1_2,MIGRATION_2_3,MIGRATION_3_4,MIGRATION_4_5,MIGRATION_5_6,MIGRATION_6_7,MIGRATION_7_8,MIGRATION_8_9,MIGRATION_9_10)
-            .build()
+    fun providesDatabase(@ApplicationContext context: Context): AppDatabase = AppDatabase.getInstance(context)
 
     @Provides
     fun providesInAppSKUDao(db: AppDatabase): InAppSKUDao = db.inAppSKUDao()
@@ -79,6 +86,11 @@ object AppModule {
     fun providesExamHistoryDao(db: AppDatabase): ExamHistoryDao = db.examHistoryDao()
     @Provides
     fun providesExamHistoryDB(dao: ExamHistoryDao): ExamHistoryDB = ExamHistoryDB(dao)
+
+    @Provides
+    fun providesAbacusAllDataDao(db: AppDatabase): AbacusAllDataDao = db.abacusAllDataDao()
+    @Provides
+    fun providesAbacusAllDataDB(dao: AbacusAllDataDao): AbacusAllDataDB = AbacusAllDataDB(dao)
 
     @Singleton
     @Provides

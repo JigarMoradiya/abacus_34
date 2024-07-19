@@ -3,6 +3,7 @@ package com.jigar.me.data.api
 import com.jigar.me.data.model.MainAPIResponse
 import com.jigar.me.data.model.data.ChangePasswordRequest
 import com.jigar.me.data.model.data.ContactUsRequest
+import com.jigar.me.data.model.data.FetchAbacusDataRequest
 import com.jigar.me.data.model.data.ForgotPasswordRequest
 import com.jigar.me.data.model.data.LoginRequest
 import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
@@ -38,5 +39,7 @@ interface StudentApi {
     suspend fun handleExistingPurchase(@Body request : PurchasedPlanCheckRequest): MainAPIResponse
     @POST("change-plan")
     suspend fun changePlan(@Body request : PurchasedPlanCheckRequest): MainAPIResponse
+    @POST("get-abacus-set-pages-categories-levels-data")
+    suspend fun getAbacusData(@Body request : FetchAbacusDataRequest): MainAPIResponse
 
 }

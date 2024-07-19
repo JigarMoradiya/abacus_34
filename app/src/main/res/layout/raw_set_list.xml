@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="dataModel"
+            type="com.jigar.me.data.model.dbtable.abacus_all_data.Set" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/conMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_padding2"
+        android:background="@color/step_by_step_answer">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:padding="@dimen/activity_padding4"
+            android:singleLine="true"
+            android:text="@{dataModel.name}"
+            android:textColor="@color/colorHeadingBlack_00"
+            android:textSize="@dimen/textSizeMedium"
+            app:fontFamily="@font/font_bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Set 1" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgTimer"
+            android:layout_width="@dimen/activity_padding12"
+            android:layout_height="@dimen/activity_padding12"
+            android:layout_marginEnd="@dimen/activity_padding4"
+            android:visibility="@{dataModel.show_time_setting?View.VISIBLE:View.GONE,default=gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_timer_on"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

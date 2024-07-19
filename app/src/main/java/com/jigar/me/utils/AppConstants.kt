@@ -96,7 +96,7 @@ object AppConstants {
             var Purchase_limit = 9999
             var Purchase_limit_free = 20
 
-            var AdsShow = "Y"
+            var AdsShow = "N"
             var AdsShowCount = "AdsShowCount"
             var AdsShowNumberPuzzleStep = 20
 
@@ -208,6 +208,17 @@ object AppConstants {
 
     annotation class HomeClicks {
         companion object {
+            const val Menu_Abacus_Free_Mode = "abacus_free_mode"
+            const val Menu_Practice_Abacus = "practice_abacus"
+            const val Menu_Abacus_Exercise = "abacus_exercise"
+            const val Menu_Exam = "exam"
+            const val Menu_CCM = "ccm"
+            const val Menu_Practice_Material = "practice_material"
+            const val Menu_Number_Sequence_Puzzle = "number_sequence_puzzle"
+            const val Menu_Video_Tutorial = "video_tutorial"
+            const val Menu_Purchase_Store = "purchase_store"
+            const val Menu_Settings = "setting"
+
             const val Menu_My_Profile = 1
             const val Menu_Addition_Subtraction = 2
             const val Menu_Formulas = 3
@@ -309,6 +320,20 @@ object AppConstants {
             const val file = "file"
             const val level = "level"
             const val type = "type"
+            const val answerSettingStepByStep = "step_by_step_answer"
+            const val answerFinalAnswer = "final_answer"
+            const val answerFormalAnswer = "formal_answer"
+
+
+        }
+    }
+    interface DBParam {
+        companion object {
+            const val table_level = "level"
+            const val table_category = "category"
+            const val table_pages = "pages"
+            const val table_sets = "sets"
+            const val table_abacus = "abacus"
         }
     }
 

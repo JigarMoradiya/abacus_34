@@ -4,11 +4,11 @@
     android:id="@+id/reg_navigation_graph"
     app:startDestination="@+id/homeFragment">
     <fragment
-        android:id="@+id/webFragment"
-        android:name="com.jigar.me.ui.view.payments.WebFragment"/>
-    <fragment
         android:id="@+id/homeFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.home.HomeFragment">
+        <action
+            android:id="@+id/toHomeNewFragment"
+            app:destination="@+id/homeNewFragment" />
         <action
             android:id="@+id/action_homeFragment_to_fullAbacusFragment"
             app:destination="@+id/fullAbacusFragment" />
@@ -47,6 +47,57 @@
             app:destination="@+id/myProfileFragment" />
     </fragment>
 
+    <fragment
+        android:id="@+id/homeNewFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.home_new.HomeNewFragment">
+        <action
+            android:id="@+id/toCategoryFragment"
+            app:destination="@+id/categoryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_fullAbacusFragment"
+            app:destination="@+id/fullAbacusFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_youtubeVideoFragment"
+            app:destination="@+id/youtubeVideoFragment" />
+        <action
+            android:id="@+id/toSettingsFragment"
+            app:destination="@+id/settingsFragment" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_aboutFragment"
+            app:destination="@+id/aboutFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_pageFragment"
+            app:destination="@+id/pageFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_examHomeFragment"
+            app:destination="@+id/examHomeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_materialHomeFragment"
+            app:destination="@+id/materialHomeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_puzzleNumberHomeFragment"
+            app:destination="@+id/puzzleNumberHomeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_exerciseHomeFragment"
+            app:destination="@+id/exerciseHomeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_customChallengeHomeFragment"
+            app:destination="@+id/customChallengeHomeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_myProfileFragment"
+            app:destination="@+id/myProfileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.home_new.category.CategoryFragment">
+        <argument
+            android:name="levelId"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/myProfileFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.profile.MyProfileFragment">

@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.dashboard.fragments.home
+package com.jigar.me.ui.view.dashboard.fragments.home_new
 
 import android.content.Intent
 import android.net.Uri
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,8 +34,9 @@ import com.jigar.me.data.local.data.*
 import com.jigar.me.data.model.data.GooglePurchasedPlanRequest
 import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
+import com.jigar.me.data.model.dbtable.abacus_all_data.Level
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
-import com.jigar.me.databinding.FragmentHomeBinding
+import com.jigar.me.databinding.FragmentHomeNewBinding
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.base.inapp.BillingRepository
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
@@ -42,6 +44,8 @@ import com.jigar.me.ui.view.confirm_alerts.bottomsheets.OtherApplicationBottomSh
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.SelectAvatarProfileDialog
 import com.jigar.me.ui.view.confirm_alerts.dialogs.SelectThemeDialog
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
+import com.jigar.me.ui.view.dashboard.fragments.home.BannerPagerAdapter
+import com.jigar.me.ui.view.dashboard.fragments.home.CurrentPlanPagerAdapter
 import com.jigar.me.ui.view.other.ContactUsActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.SubscriptionsViewModel
@@ -68,10 +72,10 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
-    HomeMenuAdapter.OnItemClickListener, SelectAvatarProfileDialog.AvatarProfileDialogInterface,
+class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
+    SelectAvatarProfileDialog.AvatarProfileDialogInterface,
     CurrentPlanPagerAdapter.OnItemClickListener {
-    private lateinit var binding: FragmentHomeBinding
+    private lateinit var binding: FragmentHomeNewBinding
     private var root : View? = null
     private var mNavController: NavController? = null
 
@@ -81,8 +85,7 @@ class HomeFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     private var purchasedListReq : ArrayList<GooglePurchasedPlanRequest> = arrayListOf()
 
     private lateinit var bannerPagerAdapter: BannerPagerAdapter
-    private lateinit var currentPlanPagerAdapter: CurrentPlanPagerAdapter
-    private lateinit var homeMenuAdapter: HomeMenuAdapter
+    private lateinit var homeMenuNewAdapter: HomeMenuNewAdapter
     //handler for run auto scroll thread
     private var handler : Handler? = null
     private var runnable: Runnable? = null
@@ -101,7 +104,7 @@ class HomeFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     }
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
         if (root == null){
-            binding = FragmentHomeBinding.inflate(inflater, container, false)
+            binding = FragmentHomeNewBinding.inflate(inflater, container, false)
             root = binding.root
             setNavigationGraph()
             initViews()
@@ -113,22 +116,27 @@ class HomeFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     private fun setNavigationGraph() {
         mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
     }
-    private fun initViews() {
+    private fun initViews() = with(binding){
         getTrackData()
         setViewPager()
-        binding.linearMenu.post {
-            val list = DataProvider.getHomeMenuList(requireContext())
-            val column = (list.size / 2)
-            val height = binding.linearMenu.height / 2
-            val width = binding.linearMenu.width / column
-            homeMenuAdapter = if (width > height){
-                HomeMenuAdapter(list,prefManager,this,height)
-            }else{
-                HomeMenuAdapter(list,prefManager,this,width)
+        linearMenu.post {
+            appViewModel.getLevel().observe(viewLifecycleOwner){
+                if (it.isNotNullOrEmpty()){
+                    val column = (it.size / 2)
+                    val height = linearMenu.height / 2
+                    val width = linearMenu.width / column
+                    val dimension = if (width > height){
+                        height
+                    }else{
+                        width
+                    }
+                    homeMenuNewAdapter = HomeMenuNewAdapter(it,prefManager,dimension){ position, data->
+                        moveToClick(data)
+                    }
+                    recyclerviewMenu.layoutManager = GridLayoutManager(requireContext(),column)
+                    recyclerviewMenu.adapter = homeMenuNewAdapter
+                }
             }
-            binding.recyclerviewMenu.layoutManager = GridLayoutManager(requireContext(),column)
-            binding.recyclerviewMenu.adapter = homeMenuAdapter
-
             themePopup()
         }
     }
@@ -144,10 +152,7 @@ class HomeFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
 
     private fun initListener() {
         with(binding){
-            cardProfileImage.onClick {
-//                cardEditImage.performClick()
-                mNavController?.navigate(R.id.toHomeNewFragment)
-            }
+            cardProfileImage.onClick { cardEditImage.performClick() }
             txtWelcomeTitle.onClick { cardEditImage.performClick() }
             txtWelcomeMsg.onClick { cardEditImage.performClick() }
             txtMyAccount.onClick { cardEditImage.performClick() }
@@ -156,11 +161,11 @@ class HomeFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
             cardSubscribe.onClick { moveToClick(AppConstants.HomeClicks.Menu_Subscribe) }
             cardAboutUs.onClick { moveToClick(AppConstants.HomeClicks.Menu_AboutUs) }
             txtOtherApps.onClick { OtherApplicationBottomSheet.showPopup(requireActivity()) }
-//            txtWelcomeTitle.onClick {
-//                if (BuildConfig.DEBUG) {
-//                    showTour()
-//                }
-//            }
+            txtWelcomeTitle.onClick {
+                if (BuildConfig.DEBUG) {
+                    showTour()
+                }
+            }
         }
     }
 
@@ -263,75 +268,75 @@ class HomeFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
         goToInAppPurchase()
     }
     private fun menuTour() {
-        lifecycleScope.launch {
-            delay(1000)
-            if (!prefManager.getCustomParamBoolean(AppConstants.Settings.isHomeTourWatch, false)) {
-                showTour()
-            }else if (prefManager.getCustomParamInt(AppConstants.Settings.appOpenCount, 0) == Constants.homePageShowIntroMaxAppOpen) {
-                prefManager.setCustomParamInt(AppConstants.Settings.appOpenCount, 0)
-                val introType = DataProvider.getHomeMenuRandomIntro(prefManager)
-                lighter = Lighter.with(binding.root)
-                var view : View? = null
-                var directions : Int? = null
-                var layoutId : Int? = null
-                var type : String = "rect"
-                when (introType) {
-                    HomeMenuIntroType.freeMode -> {
-                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(0) as HomeMenuAdapter.FormViewHolder).binding.conMain
-                        directions = Direction.RIGHT
-                        layoutId = R.layout.layout_tip_free_mode
-                    }
-                    HomeMenuIntroType.videoTutorial -> {
-                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(11) as HomeMenuAdapter.FormViewHolder).binding.conMain
-                        directions = Direction.LEFT
-                        layoutId = R.layout.layout_tip_video_tutorial
-                    }
-                    HomeMenuIntroType.exercise -> {
-                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(6) as HomeMenuAdapter.FormViewHolder).binding.conMain
-                        directions = Direction.TOP
-                        layoutId = R.layout.layout_tip_exercise
-                    }
-                    HomeMenuIntroType.exam -> {
-                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(7) as HomeMenuAdapter.FormViewHolder).binding.conMain
-                        directions = Direction.RIGHT
-                        layoutId = R.layout.layout_tip_exam
-                    }
-                    HomeMenuIntroType.material -> {
-                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(8) as HomeMenuAdapter.FormViewHolder).binding.conMain
-                        directions = Direction.TOP
-                        layoutId = R.layout.layout_tip_practice_material
-                    }
-                    HomeMenuIntroType.numberPuzzle -> {
-                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(10) as HomeMenuAdapter.FormViewHolder).binding.conMain
-                        directions = Direction.TOP
-                        layoutId = R.layout.layout_tip_number_sequence
-                    }
-                    HomeMenuIntroType.purchase -> {
-                        view = binding.cardSubscribe
-                        directions = Direction.LEFT
-                        layoutId = R.layout.layout_tip_purchase
-                        type = "circle"
-                    }
-                    HomeMenuIntroType.setting -> {
-                        view = binding.cardSettingTop
-                        directions = Direction.LEFT
-                        layoutId = R.layout.layout_tip_setting
-                        type = "circle"
-                    }
-                    HomeMenuIntroType.ccm -> {
-                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(8) as HomeMenuAdapter.FormViewHolder).binding.conMain
-                        directions = Direction.TOP
-                        layoutId = R.layout.layout_tip_ccm
-                    }
-                }
-                if (view != null && directions != null && layoutId != null){
-                    IntroProvider.videoTutorialSingleIntro(lighter,view,directions,layoutId,type)
-                }
-            }
-
-            val appOpenCount = prefManager.getCustomParamInt(AppConstants.Settings.appOpenCount, 0)
-            prefManager.setCustomParamInt(AppConstants.Settings.appOpenCount, (appOpenCount+1))
-        }
+//        lifecycleScope.launch {
+//            delay(1000)
+//            if (!prefManager.getCustomParamBoolean(AppConstants.Settings.isHomeTourWatch, false)) {
+//                showTour()
+//            }else if (prefManager.getCustomParamInt(AppConstants.Settings.appOpenCount, 0) == Constants.homePageShowIntroMaxAppOpen) {
+//                prefManager.setCustomParamInt(AppConstants.Settings.appOpenCount, 0)
+//                val introType = DataProvider.getHomeMenuRandomIntro(prefManager)
+//                lighter = Lighter.with(binding.root)
+//                var view : View? = null
+//                var directions : Int? = null
+//                var layoutId : Int? = null
+//                var type : String = "rect"
+//                when (introType) {
+//                    HomeMenuIntroType.freeMode -> {
+//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(0) as HomeMenuNewAdapter.FormViewHolder).binding.conMain
+//                        directions = Direction.RIGHT
+//                        layoutId = R.layout.layout_tip_free_mode
+//                    }
+//                    HomeMenuIntroType.videoTutorial -> {
+//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(11) as HomeMenuNewAdapter.FormViewHolder).binding.conMain
+//                        directions = Direction.LEFT
+//                        layoutId = R.layout.layout_tip_video_tutorial
+//                    }
+//                    HomeMenuIntroType.exercise -> {
+//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(6) as HomeMenuNewAdapter.FormViewHolder).binding.conMain
+//                        directions = Direction.TOP
+//                        layoutId = R.layout.layout_tip_exercise
+//                    }
+//                    HomeMenuIntroType.exam -> {
+//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(7) as HomeMenuNewAdapter.FormViewHolder).binding.conMain
+//                        directions = Direction.RIGHT
+//                        layoutId = R.layout.layout_tip_exam
+//                    }
+//                    HomeMenuIntroType.material -> {
+//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(8) as HomeMenuNewAdapter.FormViewHolder).binding.conMain
+//                        directions = Direction.TOP
+//                        layoutId = R.layout.layout_tip_practice_material
+//                    }
+//                    HomeMenuIntroType.numberPuzzle -> {
+//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(10) as HomeMenuNewAdapter.FormViewHolder).binding.conMain
+//                        directions = Direction.TOP
+//                        layoutId = R.layout.layout_tip_number_sequence
+//                    }
+//                    HomeMenuIntroType.purchase -> {
+//                        view = binding.cardSubscribe
+//                        directions = Direction.LEFT
+//                        layoutId = R.layout.layout_tip_purchase
+//                        type = "circle"
+//                    }
+//                    HomeMenuIntroType.setting -> {
+//                        view = binding.cardSettingTop
+//                        directions = Direction.LEFT
+//                        layoutId = R.layout.layout_tip_setting
+//                        type = "circle"
+//                    }
+//                    HomeMenuIntroType.ccm -> {
+//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(8) as HomeMenuNewAdapter.FormViewHolder).binding.conMain
+//                        directions = Direction.TOP
+//                        layoutId = R.layout.layout_tip_ccm
+//                    }
+//                }
+//                if (view != null && directions != null && layoutId != null){
+//                    IntroProvider.videoTutorialSingleIntro(lighter,view,directions,layoutId,type)
+//                }
+//            }
+//
+//            val appOpenCount = prefManager.getCustomParamInt(AppConstants.Settings.appOpenCount, 0)
+//            prefManager.setCustomParamInt(AppConstants.Settings.appOpenCount, (appOpenCount+1))
+//        }
     }
 
     private fun themePopup() {
@@ -403,26 +408,22 @@ class HomeFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
 
     private fun showTour() {
         lighter = Lighter.with(binding.root)
-        val freeModeViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(0)
-        val exerciseViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(6)
-        val examViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(7)
-        val ccmViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(8)
-        val numberPuzzleViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(10)
-        val videoTutorialViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(11)
-        if (freeModeViewHolder != null && exerciseViewHolder != null && examViewHolder != null && videoTutorialViewHolder != null && numberPuzzleViewHolder != null && ccmViewHolder != null){
-            IntroProvider.videoTutorialIntro(prefManager,lighter, binding.cardSettingTop,
-                (freeModeViewHolder as HomeMenuAdapter.FormViewHolder).binding.conMain,
-                (videoTutorialViewHolder as HomeMenuAdapter.FormViewHolder).binding.conMain,
-                (exerciseViewHolder as HomeMenuAdapter.FormViewHolder).binding.conMain,
-                (examViewHolder as HomeMenuAdapter.FormViewHolder).binding.conMain,
-                (numberPuzzleViewHolder as HomeMenuAdapter.FormViewHolder).binding.conMain,
-                (ccmViewHolder as HomeMenuAdapter.FormViewHolder).binding.conMain
-            )
-        }
-    }
-
-    override fun onItemHomeMenuClick(data: HomeMenu) {
-        moveToClick(data.type)
+//        val freeModeViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(0)
+//        val exerciseViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(6)
+//        val examViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(7)
+//        val ccmViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(8)
+//        val numberPuzzleViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(10)
+//        val videoTutorialViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(11)
+//        if (freeModeViewHolder != null && exerciseViewHolder != null && examViewHolder != null && videoTutorialViewHolder != null && numberPuzzleViewHolder != null && ccmViewHolder != null){
+//            IntroProvider.videoTutorialIntro(prefManager,lighter, binding.cardSettingTop,
+//                (freeModeViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
+//                (videoTutorialViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
+//                (exerciseViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
+//                (examViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
+//                (numberPuzzleViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
+//                (ccmViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain
+//            )
+//        }
     }
     private fun setViewPager() {
         handler = Handler(Looper.getMainLooper())
@@ -435,7 +436,7 @@ class HomeFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 }
             })
 
-            bannerPagerAdapter = BannerPagerAdapter(DataProvider.getBannerList(requireContext()),this@HomeFragment)
+            bannerPagerAdapter = BannerPagerAdapter(DataProvider.getBannerList(requireContext()),this@HomeNewFragment)
             viewPager.adapter = bannerPagerAdapter
             viewPager.setPageTransformer( true , DepthPageTransformer() )
             indicatorPager.attachToPager(viewPager)
@@ -498,63 +499,37 @@ class HomeFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
 //            }
         }
     }
-
-    private fun moveToClick(clickType: Int) {
-        when (clickType) {
-            AppConstants.HomeClicks.Menu_My_Profile -> {
-                mNavController?.navigate(R.id.action_homeFragment_to_myProfileFragment)
+    private fun moveToClick(data: Level) {
+        when (data.name) {
+            AppConstants.HomeClicks.Menu_Practice_Abacus -> {
+                val action = HomeNewFragmentDirections.toCategoryFragment(data.id)
+                mNavController?.navigate(action)
             }
-            AppConstants.HomeClicks.Menu_Starter -> {
+            AppConstants.HomeClicks.Menu_Abacus_Free_Mode -> {
                 mNavController?.navigate(R.id.action_homeFragment_to_fullAbacusFragment)
             }
-            AppConstants.HomeClicks.Menu_Number -> {
-                val action = HomeFragmentDirections.actionHomeFragmentToPageFragment(clickType,resources.getString(R.string.page_title_Number))
-                mNavController?.navigate(action)
-            }
-            AppConstants.HomeClicks.Menu_Addition_Subtraction -> {
-                val action = HomeFragmentDirections.actionHomeFragmentToPageFragment(clickType,resources.getString(R.string.page_title_AdditionSubtraction))
-                mNavController?.navigate(action)
-            }
-            AppConstants.HomeClicks.Menu_Formulas -> {
-                val action = HomeFragmentDirections.actionHomeFragmentToPageFragment(clickType,resources.getString(R.string.page_title_Formulas))
-                mNavController?.navigate(action)
-            }
-            AppConstants.HomeClicks.Menu_Multiplication -> {
-                val action = HomeFragmentDirections.actionHomeFragmentToPageFragment(clickType,resources.getString(R.string.page_title_Multiplication))
-                mNavController?.navigate(action)
-            }
-            AppConstants.HomeClicks.Menu_Division -> {
-                val action = HomeFragmentDirections.actionHomeFragmentToPageFragment(clickType,resources.getString(R.string.page_title_Division))
-                mNavController?.navigate(action)
-            }
-            AppConstants.HomeClicks.Menu_Exercise -> {
+            AppConstants.HomeClicks.Menu_Abacus_Exercise -> {
                 mNavController?.navigate(R.id.action_homeFragment_to_exerciseHomeFragment)
             }
-            AppConstants.HomeClicks.Menu_DailyExam -> {
+            AppConstants.HomeClicks.Menu_Exam -> {
                 mNavController?.navigate(R.id.action_homeFragment_to_examHomeFragment)
             }
-            AppConstants.HomeClicks.Menu_CustomChallengeMode -> {
+            AppConstants.HomeClicks.Menu_CCM -> {
                 mNavController?.navigate(R.id.action_homeFragment_to_customChallengeHomeFragment)
             }
-            AppConstants.HomeClicks.Menu_PractiseMaterial -> {
+            AppConstants.HomeClicks.Menu_Practice_Material -> {
                 mNavController?.navigate(R.id.action_homeFragment_to_materialHomeFragment)
             }
-            AppConstants.HomeClicks.Menu_Number_Puzzle -> {
+            AppConstants.HomeClicks.Menu_Number_Sequence_Puzzle -> {
                 mNavController?.navigate(R.id.action_homeFragment_to_puzzleNumberHomeFragment)
             }
-            AppConstants.HomeClicks.Menu_Setting -> {
+            AppConstants.HomeClicks.Menu_Settings -> {
                 goToSetting()
             }
-            AppConstants.HomeClicks.Menu_Subscribe -> {
+            AppConstants.HomeClicks.Menu_Purchase_Store -> {
                 goToInAppPurchase()
             }
-            AppConstants.HomeClicks.Menu_AboutUs -> {
-                mNavController?.navigate(R.id.action_homeFragment_to_aboutFragment)
-            }
-            AppConstants.HomeClicks.Menu_Share -> {
-                requireContext().shareIntent()
-            }
-            AppConstants.HomeClicks.Menu_Click_Youtube -> {
+            AppConstants.HomeClicks.Menu_Video_Tutorial -> {
                 if (prefManager.getCustomParam(AppConstants.RemoteConfig.videoList,"").isEmpty()){
                     requireContext().openYoutube()
                 }else{
@@ -563,6 +538,29 @@ class HomeFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
             }
         }
     }
+    private fun moveToClick(clickType: Int) {
+        when (clickType) {
+            AppConstants.HomeClicks.Menu_My_Profile -> {
+                mNavController?.navigate(R.id.action_homeFragment_to_myProfileFragment)
+            }
+            AppConstants.HomeClicks.Menu_AboutUs -> {
+                mNavController?.navigate(R.id.action_homeFragment_to_aboutFragment)
+            }
+            AppConstants.HomeClicks.Menu_Share -> {
+                requireContext().shareIntent()
+            }
+        }
+    }
+
+    private fun goToPages(clickType: Int,type: String) {
+        val action =
+            HomeNewFragmentDirections.actionHomeFragmentToPageFragment(
+                clickType,
+                type
+            )
+        mNavController?.navigate(action)
+    }
+
     override fun onPause() {
         super.onPause()
         timer?.cancel()

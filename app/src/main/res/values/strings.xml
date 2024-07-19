@@ -787,6 +787,11 @@
     <string name="ok_thanks">Ok, Thank you</string>
     <string name="thank_you_for_reaching_out">Thank you for reaching out!</string>
     <string name="thank_you_for_reaching_out1">Your ticket has been received, and our team will be in touch with you as soon as possible.</string>
+    <string name="practice_of_abacus">Practice of Abacus</string>
+    <string name="step_by_step">Step By Step Answer</string>
+    <string name="final_answer">Final Answer</string>
+    <string name="formal_exam">Formal Exam</string>
+    <string name="timer_on">Timer ON</string>
 
 
 </resources>

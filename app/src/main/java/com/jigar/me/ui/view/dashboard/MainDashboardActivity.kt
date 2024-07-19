@@ -11,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.jigar.me.BuildConfig
 import com.jigar.me.R
 import com.jigar.me.databinding.ActivityMainDashboardBinding
+import com.jigar.me.internal.workmanagers.FetchAbacusDataWorkManager
 import com.jigar.me.ui.view.base.BaseActivity
 import com.jigar.me.ui.view.dashboard.fragments.abacus.half.HalfAbacusFragment
 import com.jigar.me.ui.view.dashboard.fragments.exercise.ExerciseHomeFragment
@@ -49,6 +50,7 @@ class MainDashboardActivity : BaseActivity() {
         initListener()
         initObserver()
         playBackgroundMusic()
+//        FetchAbacusDataWorkManager.fetchAbacusDetails()
     }
 
     private fun initObserver() {

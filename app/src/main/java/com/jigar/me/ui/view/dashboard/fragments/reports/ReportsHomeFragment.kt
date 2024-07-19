@@ -184,6 +184,8 @@ class ReportsHomeFragment : BaseFragment(), ReportsListAdapter.OnItemClickListen
                     }
                     onFailure(it.errorBody)
                 }
+
+                else -> {}
             }
         }
     }

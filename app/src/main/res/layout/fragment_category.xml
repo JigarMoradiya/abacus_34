@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/icons_margin2"
+        android:elevation="@dimen/card_elevation"
+        app:cardBackgroundColor="@color/light_back"
+        app:cardCornerRadius="@dimen/menu_icons_corner"
+        app:cardMaxElevation="@dimen/card_elevation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgBack"
+            android:layout_width="@dimen/menu_icons"
+            android:layout_height="@dimen/menu_icons"
+            android:padding="@dimen/menu_icons_padding"
+            app:srcCompat="@drawable/ic_back" />
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtTitle"
+        style="@style/mainTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/title_margin"
+        android:text="@string/practice_of_abacus"
+        app:layout_constraintBottom_toBottomOf="@+id/cardBack"
+        app:layout_constraintStart_toEndOf="@+id/cardBack"
+        app:layout_constraintTop_toTopOf="@+id/cardBack" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerviewCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:layout_margin="@dimen/activity_padding6"
+        app:layout_constraintTop_toBottomOf="@+id/cardBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="3"
+        tools:listitem="@layout/raw_category_new" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:id="@+id/linearTop"
+        app:layout_constraintBottom_toBottomOf="@+id/cardBack"
+        app:layout_constraintStart_toEndOf="@+id/txtTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cardBack"
+        android:background="@drawable/bg_all_curved_3"
+        android:backgroundTint="@color/white"
+        android:elevation="@dimen/card_elevation"
+        android:padding="@dimen/activity_padding4"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/step_by_step"
+            android:textColor="@color/blue_900"
+            android:textSize="@dimen/textSizeMedium"
+            android:gravity="center_vertical"
+            android:drawableTint="@color/step_by_step_answer"
+            android:drawablePadding="@dimen/activity_padding4"
+            android:drawableStart="@drawable/ic_square_answer_type"
+            app:fontFamily="@font/font_bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_padding12"
+            android:text="@string/final_answer"
+            android:textColor="@color/purple_900"
+            android:textSize="@dimen/textSizeMedium"
+            android:gravity="center_vertical"
+            android:drawableTint="@color/final_answer"
+            android:drawablePadding="@dimen/activity_padding4"
+            android:drawableStart="@drawable/ic_square_answer_type"
+            app:fontFamily="@font/font_bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/formal_exam"
+            android:textColor="@color/red_900"
+            android:textSize="@dimen/textSizeMedium"
+            android:gravity="center_vertical"
+            android:drawableTint="@color/formal_exam"
+            android:drawablePadding="@dimen/activity_padding4"
+            android:drawableStart="@drawable/ic_square_answer_type"
+            app:fontFamily="@font/font_bold" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/activity_padding12"
+            android:layout_height="@dimen/activity_padding12"
+            android:id="@+id/imgTimer"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/activity_padding12"
+            app:srcCompat="@drawable/ic_timer_on"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/timer_on"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSizeMedium"
+            android:gravity="center_vertical"
+            android:layout_marginStart="@dimen/activity_padding4"
+            app:fontFamily="@font/font_bold" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerviewPages"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:layout_margin="@dimen/activity_padding6"
+        app:layout_constraintTop_toBottomOf="@+id/cardBack"
+        app:layout_constraintStart_toEndOf="@+id/recyclerviewCategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+        tools:itemCount="4"
+        app:spanCount="2"
+        tools:listitem="@layout/raw_pagelist_new" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

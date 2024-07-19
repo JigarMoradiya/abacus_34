@@ -20,6 +20,7 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.jigar.me.BuildConfig
 import com.jigar.me.R
 import com.jigar.me.databinding.FragmentSplashBinding
+import com.jigar.me.internal.workmanagers.FetchAbacusDataWorkManager
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity

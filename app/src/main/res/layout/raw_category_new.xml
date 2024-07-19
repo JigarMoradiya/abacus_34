@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="dataModel"
+            type="com.jigar.me.data.model.dbtable.abacus_all_data.Category" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardMenu"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="@dimen/activity_padding4"
+            app:cardBackgroundColor="@color/home_menu_icon_bg"
+            app:cardCornerRadius="@dimen/card_corner_radius8"
+            app:cardElevation="@dimen/card_elevation">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgMenu"
+                imgUrl="@{dataModel.icon}"
+                placeHolder="@{@drawable/place_holder_vertical}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/place_holder_vertical" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgArrow"
+            android:layout_width="@dimen/activity_padding12"
+            android:layout_height="@dimen/activity_padding12"
+            android:src="@drawable/ic_right_arrow" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</layout>

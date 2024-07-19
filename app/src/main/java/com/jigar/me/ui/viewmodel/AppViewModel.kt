@@ -39,4 +39,12 @@ class AppViewModel @Inject constructor(private val apiRepository: ApiRepository,
     suspend fun saveExamResultDB(data: ExamHistory) = dbRepository.saveExamResultDB(data)
     fun getExamHistoryList(examType :String) = dbRepository.getExamHistoryList(examType)
 
+    // abacus all data
+    fun getLevel() = dbRepository.getLevel()
+    suspend fun getCategory(id: String) = dbRepository.getCategory(id)
+    suspend fun getPages(id: String) = dbRepository.getPages(id)
+    suspend fun getSet(id: String) = dbRepository.getSet(id)
+    suspend fun getAllSet() = dbRepository.getAllSet()
+    suspend fun getAbacus(id: String) = dbRepository.getAbacus(id)
+
 }

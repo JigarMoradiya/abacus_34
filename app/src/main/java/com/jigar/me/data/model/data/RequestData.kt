@@ -1,5 +1,13 @@
 package com.jigar.me.data.model.data
 
+data class FetchAbacusDataRequest(
+    var get_levels: Boolean = false,
+    var get_categories: Boolean = false,
+    var get_pages: Boolean = false,
+    var get_sets: Boolean = false,
+    var get_abacus: Boolean = false,
+    var last_sync_time: String? = null,
+)
 data class SignupV2Request(
     var name: String? = null,
     var email: String? = null,
