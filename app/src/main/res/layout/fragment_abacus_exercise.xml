@@ -8,30 +8,53 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgKidTop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_padding24"
+            android:layout_marginEnd="@dimen/activity_padding20"
+            android:adjustViewBounds="true"
+            app:layout_constraintEnd_toStartOf="@+id/ivReset"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_kids_top_small" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgKidTopHand"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:elevation="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/imgKidTop"
+            app:layout_constraintStart_toStartOf="@+id/imgKidTop"
+            app:layout_constraintTop_toBottomOf="@+id/imgKidTop"
+            app:srcCompat="@drawable/ic_kids_top_hand_small" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivReset"
+            android:layout_width="@dimen/_18dp"
+            android:layout_height="@dimen/_24dp"
+            android:layout_gravity="bottom"
+            android:layout_marginEnd="@dimen/padding_bottom_kids_in_abacus"
+            android:layout_marginBottom="-8dp"
+            android:tint="@color/abacus_rod_red_dark"
+            app:layout_constraintBottom_toTopOf="@+id/relAbacus"
+            app:layout_constraintEnd_toEndOf="@+id/relAbacus"
+            app:srcCompat="@drawable/box_primory_accent" />
+
         <RelativeLayout
             android:id="@+id/relAbacus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/ivReset"
-                android:layout_width="@dimen/_18dp"
-                android:layout_height="@dimen/_24dp"
-                android:layout_above="@+id/cardAbacusMain"
-                android:layout_alignEnd="@+id/cardAbacusMain"
-                android:layout_marginEnd="@dimen/_36dp"
-                android:layout_marginBottom="-10dp"
-                android:tint="@color/abacus_rod_red_dark"
-                app:srcCompat="@drawable/box_primory_accent" />
+            app:layout_constraintTop_toBottomOf="@+id/imgKidTop">
 
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardAbacusMain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/imgKidTop"
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginBottom="@dimen/activity_padding8"
                 app:cardBackgroundColor="@color/white"
@@ -281,24 +304,6 @@
                 android:textSize="@dimen/textSizeMedium"
                 android:visibility="gone"
                 tools:visibility="visible" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imgKidTop"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/cardAbacusMain"
-                android:layout_toStartOf="@+id/ivReset"
-                app:srcCompat="@drawable/ic_kids_top_small" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imgKidTopHand"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/imgKidTop"
-                android:layout_alignStart="@+id/imgKidTop"
-                android:layout_alignEnd="@+id/imgKidTop"
-                android:elevation="20dp"
-                app:srcCompat="@drawable/ic_kids_top_hand_small" />
 
         </RelativeLayout>
 

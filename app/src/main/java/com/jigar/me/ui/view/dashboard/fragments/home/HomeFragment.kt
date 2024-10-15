@@ -35,6 +35,7 @@ import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.databinding.FragmentHomeBinding
+import com.jigar.me.internal.workmanagers.FetchAbacusDataWorkManager
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.base.inapp.BillingRepository
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
@@ -152,7 +153,11 @@ class HomeFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
             txtWelcomeMsg.onClick { cardEditImage.performClick() }
             txtMyAccount.onClick { cardEditImage.performClick() }
             cardEditImage.onClick { moveToClick(AppConstants.HomeClicks.Menu_My_Profile) }
-            cardSettingTop.onClick { moveToClick(AppConstants.HomeClicks.Menu_Setting) }
+            cardSettingTop.onClick {
+                // TODO temp
+                FetchAbacusDataWorkManager.fetchAbacusDetails()
+                moveToClick(AppConstants.HomeClicks.Menu_Setting)
+            }
             cardSubscribe.onClick { moveToClick(AppConstants.HomeClicks.Menu_Subscribe) }
             cardAboutUs.onClick { moveToClick(AppConstants.HomeClicks.Menu_AboutUs) }
             txtOtherApps.onClick { OtherApplicationBottomSheet.showPopup(requireActivity()) }
@@ -579,29 +584,29 @@ class HomeFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     }
 
     private fun getTrackData() {
-        FirebaseDatabase.getInstance().reference.child(
-            AppConstants.AbacusProgress.Track + "/" + prefManager.getDeviceId()
-        ).addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(@NonNull snapshot: DataSnapshot) {
-                for (snapshotdata in snapshot.children) {
-                    val pageId = snapshotdata.key!!
-                    val mapMessage = snapshotdata.value as HashMap<*, *>
-                    val position = mapMessage[AppConstants.AbacusProgress.Position] as Long
-                    try {
-                        val pageSum: String = prefManager.getCustomParam(AppConstants.AbacusProgress.PREF_PAGE_SUM, "{}")
-                        val objJson = JSONObject(pageSum)
-                        objJson.put(pageId, (position + 1))
-                        prefManager.setCustomParam(AppConstants.AbacusProgress.PREF_PAGE_SUM,objJson.toString())
-                    } catch (e: JSONException) {
-                        e.printStackTrace()
-                    }
-                }
-                prefManager.setCustomParam(AppConstants.AbacusProgress.TrackFetch, "Y")
-            }
-
-            override fun onCancelled(@NonNull error: DatabaseError) {
-            }
-        })
+//        FirebaseDatabase.getInstance().reference.child(
+//            AppConstants.AbacusProgress.Track + "/" + prefManager.getDeviceId()
+//        ).addListenerForSingleValueEvent(object : ValueEventListener {
+//            override fun onDataChange(@NonNull snapshot: DataSnapshot) {
+//                for (snapshotdata in snapshot.children) {
+//                    val pageId = snapshotdata.key!!
+//                    val mapMessage = snapshotdata.value as HashMap<*, *>
+//                    val position = mapMessage[AppConstants.AbacusProgress.Position] as Long
+//                    try {
+//                        val pageSum: String = prefManager.getCustomParam(AppConstants.AbacusProgress.PREF_PAGE_SUM, "{}")
+//                        val objJson = JSONObject(pageSum)
+//                        objJson.put(pageId, (position + 1))
+//                        prefManager.setCustomParam(AppConstants.AbacusProgress.PREF_PAGE_SUM,objJson.toString())
+//                    } catch (e: JSONException) {
+//                        e.printStackTrace()
+//                    }
+//                }
+//                prefManager.setCustomParam(AppConstants.AbacusProgress.TrackFetch, "Y")
+//            }
+//
+//            override fun onCancelled(@NonNull error: DatabaseError) {
+//            }
+//        })
     }
     private fun createPurchasedPlanRequest(purchasedList: List<InAppSkuDetails>) {
         if (purchasedList.isNotNullOrEmpty()){

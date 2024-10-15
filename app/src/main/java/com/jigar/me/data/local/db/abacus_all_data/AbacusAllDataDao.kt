@@ -34,8 +34,8 @@ interface AbacusAllDataDao {
     suspend fun getPages(id : String): List<Pages>
     @Query("SELECT * FROM '${AppConstants.DBParam.table_sets}' WHERE page_id = :id ORDER BY sort_order ASC")
     suspend fun getSet(id : String): List<Set>
-    @Query("SELECT * FROM '${AppConstants.DBParam.table_sets}' ORDER BY sort_order ASC")
+    @Query("SELECT s.*,(select COUNT(*) from abacus where set_id = s.id) as totals_abacus FROM '${AppConstants.DBParam.table_sets}' as s WHERE s.is_active = 1 ORDER BY sort_order ASC")
     suspend fun getAllSet(): List<Set>
-    @Query("SELECT * FROM '${AppConstants.DBParam.table_abacus}' WHERE set_id = :id")
+    @Query("SELECT * FROM '${AppConstants.DBParam.table_abacus}' WHERE set_id = :id ORDER BY created_at ASC")
     suspend fun getAbacus(id : String): List<Abacus>
 }

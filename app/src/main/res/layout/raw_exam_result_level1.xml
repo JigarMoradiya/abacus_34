@@ -58,7 +58,7 @@
                         app:srcCompat="@drawable/cal_plus"
                         tools:visibility="gone" />
 
-                    <androidx.legacy.widget.Space
+                    <Space
                         android:id="@+id/spaceBetween"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/activity_padding16"

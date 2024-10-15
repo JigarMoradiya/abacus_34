@@ -135,7 +135,7 @@
         app:layout_constraintStart_toEndOf="@+id/recyclerviewCategory"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         tools:itemCount="4"
         app:spanCount="2"
         tools:listitem="@layout/raw_pagelist_new" />

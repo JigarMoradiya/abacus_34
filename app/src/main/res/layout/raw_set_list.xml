@@ -27,7 +27,7 @@
             android:maxLines="1"
             android:padding="@dimen/activity_padding4"
             android:singleLine="true"
-            android:text="@{dataModel.name}"
+            android:text="@{dataModel.getSetTitle()}"
             android:textColor="@color/colorHeadingBlack_00"
             android:textSize="@dimen/textSizeMedium"
             app:fontFamily="@font/font_bold"

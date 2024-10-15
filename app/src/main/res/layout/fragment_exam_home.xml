@@ -248,7 +248,7 @@
                     app:textAllCaps="true" />
 
 
-                <androidx.legacy.widget.Space
+                <Space
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/activity_padding12"
                     app:layout_constraintTop_toBottomOf="@+id/txtStartExam" />

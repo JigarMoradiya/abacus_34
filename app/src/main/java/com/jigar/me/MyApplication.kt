@@ -400,6 +400,7 @@ class MyApplication : Application(), Configuration.Provider {
             .createTaskStackBuilder().getPendingIntent(1,PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)!!
             .send()
     }
+
     private fun moveToDestination(id : Int) {
         NavDeepLinkBuilder(this)
             .setGraph(R.navigation.main_navigation_graph)

@@ -65,6 +65,9 @@
     <color name="step_by_step_answer">#D1E5F6</color>
     <color name="final_answer">#EDD6F1</color>
     <color name="formal_exam">#F8D9DD</color>
+    <color name="step_by_step_answer_light">#E7F4FF</color>
+    <color name="final_answer_light">#FCEAFF</color>
+    <color name="formal_exam_light">#FFEAEC</color>
 
     <!--  Home menu  -->
     <color name="doneTick">#196E02</color>

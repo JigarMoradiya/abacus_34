@@ -64,7 +64,7 @@
             tools:visibility="visible"
             app:layout_constraintTop_toBottomOf="@+id/tvQuestion" />
 
-        <androidx.legacy.widget.Space
+        <Space
             android:id="@+id/spaceBottom"
             android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@+id/ivDivider"

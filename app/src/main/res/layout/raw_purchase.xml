@@ -51,7 +51,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
 
-        <androidx.legacy.widget.Space
+        <Space
             android:id="@+id/spaceTop"
             android:layout_width="match_parent"
             android:layout_height="@dimen/activity_padding8"

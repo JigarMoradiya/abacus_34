@@ -27,7 +27,7 @@ import java.util.concurrent.Executors
 @Database(
     entities = [InAppSkuDetails::class,InAppPurchaseDetails::class, ExamHistory::class
          ,Level::class, Category::class, Pages::class, Set::class, Abacus::class],
-    version = 12,
+    version = 13,
     exportSchema = false
 )
 @TypeConverters(DataTypeConverter::class)

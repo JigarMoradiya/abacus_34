@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.jigar.me.R
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.databinding.FragmentCategoryBinding
@@ -65,8 +66,15 @@ class CategoryFragment : BaseFragment() {
 
         CoroutineScope(Dispatchers.Main).launch {
             val allSetList = appViewModel.getAllSet()
-            pagesNewAdapter = PagesNewAdapter(arrayListOf(),allSetList) { position, data ->
-
+//            recyclerviewPages.apply {
+//                layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL).apply {
+//                    gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS
+//                }
+//                setHasFixedSize(true)
+//            }
+            pagesNewAdapter = PagesNewAdapter(arrayListOf(),allSetList) { pagePosition,setPosition,setData,data ->
+                val action = CategoryFragmentDirections.toAbacusCalculationFragment(setData.id,setData.name?:"")
+                mNavController?.navigate(action)
             }
             recyclerviewPages.adapter = pagesNewAdapter
 

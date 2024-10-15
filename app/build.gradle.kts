@@ -79,13 +79,16 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
 
+    // Circular Progress Drawable
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
     // dagger hilt
     implementation("com.google.dagger:hilt-android:2.51.1")
     kapt("com.google.dagger:hilt-android-compiler:2.51.1")
     kapt("androidx.hilt:hilt-compiler:1.2.0")
 
-    // WorkManager
-    implementation("androidx.work:work-runtime-ktx:2.9.0")
+    //  Manager
+    implementation("androidx.work:work-runtime-ktx:2.9.1")
     implementation("androidx.hilt:hilt-work:1.2.0")
 
     // firebase
@@ -103,7 +106,7 @@ dependencies {
     implementation("com.google.android.gms:play-services-ads:23.2.0")
 
     // push notification
-    implementation("com.onesignal:OneSignal:5.1.17")
+    implementation("com.onesignal:OneSignal:5.1.19")
 
     // api
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -158,11 +161,6 @@ dependencies {
 
     // otp view
     implementation("com.github.mukeshsolanki.android-otpview-pinview:otpview:3.1.0")
-
-    // Download Manger Library
-//    implementation("androidx.tonyodev.fetch2:xfetch2:3.1.6")
-//    implementation("androidx.tonyodev.fetch2okhttp:xfetch2okhttp:3.1.6")
-//    implementation("com.squareup.okhttp3:okhttp-urlconnection:4.9.0")
 
     // rating bar
     implementation("com.github.ome450901:SimpleRatingBar:1.5.0")

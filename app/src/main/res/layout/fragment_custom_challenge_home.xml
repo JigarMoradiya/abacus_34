@@ -115,7 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <androidx.legacy.widget.Space
+                <Space
                     android:id="@+id/divider"
                     android:layout_width="1dp"
                     android:layout_height="wrap_content"
@@ -158,7 +158,7 @@
                     app:orientation="LEFT_TO_RIGHT"
                     app:stepValue="1" />
 
-                <androidx.legacy.widget.Space
+                <Space
                     android:id="@+id/spaceQuestion"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -324,7 +324,7 @@
                     app:textAllCaps="true" />
 
 
-                <androidx.legacy.widget.Space
+                <Space
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/activity_padding12"
                     app:layout_constraintTop_toBottomOf="@+id/txtStartExam" />

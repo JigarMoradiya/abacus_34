@@ -97,6 +97,19 @@
         <argument
             android:name="levelId"
             app:argType="string" />
+        <action
+            android:id="@+id/toAbacusCalculationFragment"
+            app:destination="@+id/abacusCalculationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/abacusCalculationFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.abacus.half.AbacusCalculationFragment">
+        <argument
+            android:name="setId"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/myProfileFragment"

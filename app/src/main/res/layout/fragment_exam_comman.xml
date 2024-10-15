@@ -159,7 +159,7 @@
                             app:srcCompat="@drawable/cal_plus"
                             tools:visibility="visible" />
 
-                        <androidx.legacy.widget.Space
+                        <Space
                             android:id="@+id/spaceBetween"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/activity_padding16"
@@ -301,7 +301,7 @@
 
                     </com.google.android.material.card.MaterialCardView>
 
-                    <androidx.legacy.widget.Space
+                    <Space
                         android:id="@+id/dividerAnswer"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/activity_padding6"
@@ -368,7 +368,7 @@
 
                     </com.google.android.material.card.MaterialCardView>
 
-                    <androidx.legacy.widget.Space
+                    <Space
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/activity_padding6"
                         app:layout_constraintTop_toBottomOf="@+id/cardAnswer33" />

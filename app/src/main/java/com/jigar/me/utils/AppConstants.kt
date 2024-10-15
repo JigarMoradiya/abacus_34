@@ -96,7 +96,7 @@ object AppConstants {
             var Purchase_limit = 9999
             var Purchase_limit_free = 20
 
-            var AdsShow = "N"
+            var AdsShow = "Y"
             var AdsShowCount = "AdsShowCount"
             var AdsShowNumberPuzzleStep = 20
 

@@ -1,10 +1,71 @@
 package com.jigar.me.data.local.data
 
 import com.jigar.me.data.model.AdditionSubtractionAbacus
+import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
 import com.jigar.me.utils.Constants
+import org.json.JSONObject
 import java.util.Random
 
 object AbacusProvider {
+    fun getHashMapList(currentAbacus: Abacus): java.util.ArrayList<java.util.HashMap<String, String>> {
+        val list_abacus = java.util.ArrayList<java.util.HashMap<String, String>>()
+        val que = currentAbacus.question
+        var data: java.util.HashMap<String, String> = java.util.HashMap()
+        if (que.contains("*", true)) {
+            val list = que.split("*")
+            data[Constants.Que] = list[0]
+            data[Constants.Sign] = ""
+            list_abacus.add(data)
+            data = java.util.HashMap()
+            data[Constants.Que] = list[1]
+            data[Constants.Sign] = "*"
+            list_abacus.add(data)
+        } else if (que.contains("/", true)) {
+            val list = que.split("/")
+            data[Constants.Que] = list[0]
+            data[Constants.Sign] = ""
+            list_abacus.add(data)
+            data = java.util.HashMap()
+            data[Constants.Que] = list[1]
+            data[Constants.Sign] = "/"
+            list_abacus.add(data)
+        } else { // +, -
+            val newQue = que.replace("+", "$$+").replace("-", "$$-")
+            val list = newQue.split("$$")
+            var position = 0
+            list.map {
+                data = java.util.HashMap()
+                data[Constants.Que] = it.replace("+", "").replace("-", "")
+                if (it.contains("+")) {
+                    data[Constants.Sign] = "+"
+                } else if (it.contains("-")) {
+                    data[Constants.Sign] = "-"
+                } else {
+                    data[Constants.Sign] = ""
+                }
+                val hint = ""
+//                val hint = if (position == 0) {
+//                    ""
+//                } else if (position == 1) {
+//                    currentAbacus.hint1
+//                } else if (position == 2) {
+//                    currentAbacus.hint2
+//                } else if (position == 3) {
+//                    currentAbacus.hint3
+//                } else if (position == 4) {
+//                    currentAbacus.hint4
+//                } else if (position == 5) {
+//                    currentAbacus.hint5
+//                } else {
+//                    ""
+//                }
+                data[Constants.Hint] = hint ?: ""
+                list_abacus.add(data)
+                position += 1
+            }
+        }
+        return list_abacus
+    }
     fun numberListForAddition(number: Int): List<String> {
         val str = when (number) {
             0 -> {

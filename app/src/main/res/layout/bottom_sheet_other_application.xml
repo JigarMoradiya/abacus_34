@@ -73,7 +73,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recyclerviewOtherApps" />
 
-        <androidx.legacy.widget.Space
+        <Space
             android:layout_width="match_parent"
             app:layout_constraintTop_toBottomOf="@+id/tvNo"
             android:layout_height="@dimen/activity_padding6"/>
