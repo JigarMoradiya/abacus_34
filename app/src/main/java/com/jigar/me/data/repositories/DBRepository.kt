@@ -31,6 +31,9 @@ class DBRepository @Inject constructor(
     suspend fun getCategory(id : String) = abacusAllDataDB.getCategory(id)
     suspend fun getPages(id : String) = abacusAllDataDB.getPages(id)
     suspend fun getSet(id : String) = abacusAllDataDB.getSet(id)
+    suspend fun getSetDetail(setId : String) = abacusAllDataDB.getSetDetail(setId)
     suspend fun getAllSet() = abacusAllDataDB.getAllSet()
     suspend fun getAbacus(id : String) = abacusAllDataDB.getAbacus(id)
+    suspend fun updateSetProgress(setId : String,currentAbacusId : String) = abacusAllDataDB.updateSetProgress(setId,currentAbacusId)
+    suspend fun updateSetTimer(setId : String,time : Long) = abacusAllDataDB.updateSetTimer(setId,time)
 }

@@ -73,7 +73,7 @@ class CategoryFragment : BaseFragment() {
 //                setHasFixedSize(true)
 //            }
             pagesNewAdapter = PagesNewAdapter(arrayListOf(),allSetList) { pagePosition,setPosition,setData,data ->
-                val action = CategoryFragmentDirections.toAbacusCalculationFragment(setData.id,setData.name?:"")
+                val action = CategoryFragmentDirections.toAbacusCalculationFragment(setData.id)
                 mNavController?.navigate(action)
             }
             recyclerviewPages.adapter = pagesNewAdapter

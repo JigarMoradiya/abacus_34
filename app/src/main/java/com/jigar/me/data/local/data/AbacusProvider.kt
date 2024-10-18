@@ -29,7 +29,7 @@ object AbacusProvider {
             data[Constants.Que] = list[1]
             data[Constants.Sign] = "/"
             list_abacus.add(data)
-        } else { // +, -
+        } else if (que.contains("+", true) || que.contains("-", true)) { // +, -
             val newQue = que.replace("+", "$$+").replace("-", "$$-")
             val list = newQue.split("$$")
             var position = 0
@@ -43,26 +43,13 @@ object AbacusProvider {
                 } else {
                     data[Constants.Sign] = ""
                 }
-                val hint = ""
-//                val hint = if (position == 0) {
-//                    ""
-//                } else if (position == 1) {
-//                    currentAbacus.hint1
-//                } else if (position == 2) {
-//                    currentAbacus.hint2
-//                } else if (position == 3) {
-//                    currentAbacus.hint3
-//                } else if (position == 4) {
-//                    currentAbacus.hint4
-//                } else if (position == 5) {
-//                    currentAbacus.hint5
-//                } else {
-//                    ""
-//                }
-                data[Constants.Hint] = hint ?: ""
                 list_abacus.add(data)
                 position += 1
             }
+        }else{
+            data[Constants.Que] = que
+            data[Constants.Sign] = ""
+            list_abacus.add(data)
         }
         return list_abacus
     }

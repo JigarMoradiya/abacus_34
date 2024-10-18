@@ -25,6 +25,8 @@ data class Set(
     val description: String? = null,
     val hint: String? = null,
     val totals_abacus: Int = 0,
+    val currentAbacusId: String? = null,
+    val totals_take_time: Int? = null,
 ){
     fun getSetTitle() = name+" ("+totals_abacus+")"
 }

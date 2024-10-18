@@ -15,16 +15,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.google.firebase.database.FirebaseDatabase
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import com.jigar.me.BuildConfig
 import com.jigar.me.R
 import com.jigar.me.data.local.data.AbacusBeadType
 import com.jigar.me.data.local.data.AbacusContent
 import com.jigar.me.data.local.data.AbacusProvider
 import com.jigar.me.data.local.data.DataProvider
-import com.jigar.me.data.model.AdditionSubtractionAbacus
 import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
 import com.jigar.me.data.model.pages.Pages
 import com.jigar.me.databinding.FragmentHalfAbacusBinding
@@ -37,17 +33,17 @@ import com.jigar.me.ui.view.dashboard.fragments.abacus.half.adapter.AbacusDivisi
 import com.jigar.me.ui.view.dashboard.fragments.abacus.half.adapter.AbacusMultiplicationTypeAdapter
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.utils.*
-import com.jigar.me.utils.CommonUtils.getCurrentSumFromPref
-import com.jigar.me.utils.CommonUtils.saveCurrentSum
 import com.jigar.me.utils.extensions.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.*
+import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAdditionSubtractionTypeAdapter.HintListener{
@@ -55,25 +51,12 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     private val appViewModel by viewModels<AppViewModel>()
     private var themeContent : AbacusContent? = null
     private var setId : String? = null
-    private var title : String? = null
     private var isPurchased = true
     private var isStepByStep = false
     private var current_pos = 0
     private var abacusColumn = 13
-
-
-    private var additionSubtraction : Pages? = null
     private var hintPage : String? = null
-    private var fileAbacus : String? = null
     private var abacusType = ""
-    private var pageId = ""
-    private var isRandomGenerate = false
-    private var Que2_str = "" // required only for Multiplication and Division
-    private var Que2_type = "" //required only for Multiplication and Division
-    private var Que1_digit_type = 0 // required only for Multiplication
-    private var From = 0 // required only for number
-    private var To = 0 // required only for number
-    private var isRandom = false // required only for number
     private var number = 0L // required only for number
     private var abacus_number = 0 // required only for number
 
@@ -103,11 +86,11 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     private var shouldResetAbacus = false
 
     private var abacusFragment: HalfAbacusSubFragment? = null
+    private var setDetail: com.jigar.me.data.model.dbtable.abacus_all_data.Set? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setId = AbacusCalculationFragmentArgs.fromBundle(requireArguments()).setId
-        title = AbacusCalculationFragmentArgs.fromBundle(requireArguments()).title
     }
 
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
@@ -225,9 +208,29 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         if(requireContext().isNetworkAvailable){
             CoroutineScope(Dispatchers.Main).launch {
                 setId?.let {
-                    list_abacus = appViewModel.getAbacus(it)
-                    if (list_abacus.isNotNullOrEmpty()){
-                        startAbacusNow()
+                    setDetail = appViewModel.getSetDetail(it)
+                    if (setDetail != null){
+                        if (!setDetail?.hint.isNullOrEmpty()){
+                            val list : ArrayList<String> = arrayListOf()
+                            val json = JSONArray(setDetail?.hint)
+                            for (i in 0 until json.length()) {
+                                list.add(json.getString(i))
+                            }
+
+                            hintPage = list.joinToString("<br/>")
+                        }
+
+                        list_abacus = appViewModel.getAbacus(it)
+                        if (list_abacus.isNotNullOrEmpty()){
+                            list_abacus.indexOfFirst { it.id == setDetail?.currentAbacusId }.also {
+                                if (it > -1){
+                                    current_pos = it
+                                }
+                            }
+                            startAbacusNow()
+                        }
+                    }else{
+                        mNavController.navigateUp()
                     }
                 }
             }
@@ -254,11 +257,13 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     }
 
     private fun startAbacusNow() {
-        // TODO current_pos logic
+        // TODO jigar current_pos logic
+
 //        val currentPosTemp = prefManager.getCurrentSumFromPref(pageId)
 //        if (currentPosTemp!= null){
 //            current_pos = currentPosTemp
 //        }
+        Log.e("jigarLogs","startAbacusNow positon current = "+current_pos)
         if (list_abacus.lastIndex < current_pos){
             current_pos = 0
         }
@@ -283,10 +288,10 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
             AppConstants.extras_Comman.AbacusTypeDivision -> {
                 setDataOfDivision()
             }
-//            AppConstants.extras_Comman.AbacusTypeNumber -> {
-//                binding.txtTitle.invisible()
-//                setDataOfNumber()
-//            }
+            AppConstants.extras_Comman.AbacusTypeNumber -> {
+                binding.txtTitle.invisible()
+                setDataOfNumber()
+            }
             else -> {
                 goBack()
             }
@@ -321,38 +326,24 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         }
     }
 
-    private fun setDataOfNumber(fromTop: Boolean) {
-        if (!isPurchased && current_pos >= AppConstants.Purchase.Purchase_limit_free) {
-            if (fromTop) {
-                freePageCompleteDialog(getString(R.string.txt_page_completed_already))
-            } else {
-                freePageCompleteDialog(getString(R.string.txt_page_completed_free))
+    private fun setDataOfNumber() {
+        binding.txtTitle.text = String.format(getString(R.string.abacus_no),(current_pos + 1))
+        binding.tvAnsNumber.text = ""
+        abacus_type = 0
+        list_abacus_main = AbacusProvider.getHashMapList(currentAbacus)
+        number = (list_abacus_main[0][Constants.Que]?:"0").toLong()
+        lifecycleScope.launch {
+            delay(500)
+            if (isPurchased && isHintSound) {
+                speakOut(String.format(resources.getString(R.string.speech_set), " ${number}"))
             }
-        } else {
-            binding.txtTitle.text = String.format(getString(R.string.abacus_no),(current_pos + 1))
-            binding.tvAnsNumber.text = ""
-            abacus_type = 0
-            number = if (isRandom) {
-                DataProvider.generateSingleDigit(From, To).toLong()
-            } else {
-                prefManager.getCustomParamInt(pageId + "value", From).toLong()
-            }
-            if (number > To) {
-                number = From.toLong()
-            }
-            lifecycleScope.launch {
-                delay(500)
-                if (isPurchased && isHintSound) {
-                    speakOut(String.format(resources.getString(R.string.speech_set), " ${number}"))
-                }
-            }
-            val noOfDecimalPlace = 0
-            binding.tvAnsNumber.text = number.toString()
-            binding.tvAnsNumberWord.text = requireContext().convert(number.toInt())
-
-            binding.relativeQueNumber.show()
-            replaceAbacusFragment(abacusColumn, noOfDecimalPlace)
         }
+        val noOfDecimalPlace = 0
+        binding.tvAnsNumber.text = number.toString()
+        binding.tvAnsNumberWord.text = requireContext().convert(number.toInt())
+
+        binding.relativeQueNumber.show()
+        replaceAbacusFragment(abacusColumn, noOfDecimalPlace)
     }
 
     private fun setDataOfDivision() {
@@ -482,17 +473,17 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         binding.tvAns.text = ""
         binding.tvAns.invisible()
 
-        // TODO set hint
-//        if (!hintPage.isNullOrEmpty() && !isAnswerWithTools) {
-//            if (isDisplayHelpMessage) {
-//                binding.cardHint.show()
-//            } else {
-//                binding.cardHint.hide()
-//            }
-//            binding.cardTable.hide()
-//            binding.relativeTable.hide()
-//            binding.txtHint.text = HtmlCompat.fromHtml(hintPage!!,HtmlCompat.FROM_HTML_MODE_LEGACY)
-//        }
+        // TODO jigar set hint
+        if (!hintPage.isNullOrEmpty() && !isAnswerWithTools) {
+            if (isDisplayHelpMessage) {
+                binding.cardHint.show()
+            } else {
+                binding.cardHint.hide()
+            }
+            binding.cardTable.hide()
+            binding.relativeTable.hide()
+            binding.txtHint.text = HtmlCompat.fromHtml(hintPage!!,HtmlCompat.FROM_HTML_MODE_LEGACY)
+        }
 
         val list_abacus_main_temp = AbacusProvider.getHashMapList(currentAbacus)
         if (!list_abacus_main_temp.isNullOrEmpty()){
@@ -581,9 +572,10 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     }
     // reset page progress and start from 1st abacus
     private fun resetProgressConfirm() {
-        updateToFirebase(0)
-        removeSum()
         current_pos = 0
+        updateToFirebase()
+        // TODO jigar
+//        removeSum()
         startAbacus()
     }
     private fun goBack() {
@@ -658,7 +650,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     }
 
 
-    override fun onCheckHint(hint: String?, que: String?, Sign: String?) {
+    override fun onCheckHint(hintOld: String?, que: String?, Sign: String?) {
         // if answer with abacus tools then return
         if (isAnswerWithTools){
             return
@@ -674,6 +666,15 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         }
 
         speek_hint = ""
+        val currentStep = adapterAdditionSubtraction.getCurrentStep()
+        var hint: String? = null
+        if (!currentAbacus.hint.isNullOrEmpty()){
+            val json = JSONObject(currentAbacus.hint)
+            if (json.has("$currentStep")){
+                hint = json.getString("$currentStep")
+            }
+        }
+        Log.e("jigarLogs","hint = "+hint)
         if (!hint.isNullOrEmpty()) {
             if (isDisplayHelpMessage) {
                 binding.cardHint.show()
@@ -682,8 +683,8 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
             }
             binding.cardTable.hide()
             binding.relativeTable.hide()
-            binding.txtHint.text = "$Sign$que = $hint"
-            val temp_hint = "$Sign$que = $hint"
+            binding.txtHint.text = hint
+            val temp_hint = hint
             speek_hint = temp_hint.replace("-", " "+getString(R.string.minus)+" ").replace("+", " "+getString(R.string.plus)+" ")
                 .replace("=", " "+getString(R.string.equal_to)+" ")
             lifecycleScope.launch {
@@ -698,23 +699,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
             binding.relativeTable.hide()
         }
 
-    }
-
-    private fun removeSum() {
-        try {
-            val pageSum: String = prefManager
-                .getCustomParam(AppConstants.AbacusProgress.PREF_PAGE_SUM, "{}")
-            val objJson = JSONObject(pageSum)
-            if (objJson.has(pageId)) {
-                objJson.remove(pageId)
-            }
-            prefManager.setCustomParam(
-                AppConstants.AbacusProgress.PREF_PAGE_SUM,
-                objJson.toString()
-            )
-        } catch (e: JSONException) {
-            e.printStackTrace()
-        }
     }
 
     private fun replaceAbacusFragment(column: Int, noOfDecimalPlace: Int) {
@@ -892,16 +876,17 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 }
             }
         }
+        Log.e("jigarLogs","current_pos = "+current_pos)
         if (current_pos == list_abacus.lastIndex){
 //            tickerChannel.cancel()
 //            isComplete = true
-            current_pos++
-            updateToFirebase(current_pos)// status = 1 means complete
+            Log.e("jigarLogs","complete")
+//            current_pos++
+//            updateToFirebase()// status = 1 means complete
         }else{
 //            isComplete = false
             current_pos++
-            prefManager.saveCurrentSum(pageId,current_pos)
-            updateToFirebase(current_pos)// status = 0 means running
+            updateToFirebase()// status = 0 means running
             startAbacusNow()
         }
 
@@ -957,12 +942,15 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     }
 
     // update progress to Firebase
-    private fun updateToFirebase(currentPos: Int) {
+    private fun updateToFirebase() {
         // set from value when reset page progress for abacus type number
-        if (abacusType == AppConstants.extras_Comman.AbacusTypeNumber && currentPos == 0){
-            prefManager.setCustomParamInt(pageId + "value", From)
+        if (current_pos < list_abacus.size){
+            CoroutineScope(Dispatchers.Main).launch {
+                setId?.let {
+                    appViewModel.updateSetProgress(it,list_abacus[current_pos].id)
+                }
+            }
         }
-        FirebaseDatabase.getInstance().reference.child(AppConstants.AbacusProgress.Track + "/" + prefManager.getDeviceId() + "/" + pageId).child(AppConstants.AbacusProgress.Position).setValue(currentPos)
     }
 
     override fun onAbacusValueSubmit(sum: Long) {
@@ -980,15 +968,10 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                         binding.tvAns.text = sum.toString()
                     }
                     binding.tvAns.show()
-                    if (additionSubtraction?.ref_pages != null || isRandomGenerate){
-                        prefManager.setCustomParam(AppConstants.extras_Comman.previousAbacusData+"_"+pageId,"")
-                    }
                     makeAutoRefresh()
                 }
-
             }
             1 -> {
-                prefManager.setCustomParam(AppConstants.extras_Comman.previousAbacusData+"_"+pageId,"")
                 val sumVal: Float = adapterMultiplication.getFinalSumVal()!!.toFloat()
                 if (sumVal == (sum.toInt().toString()).toFloat()) {
                     binding.tvAns.text = sum.toInt().toString()
@@ -999,7 +982,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 makeAutoRefresh()
             }
             2 -> {
-                prefManager.setCustomParam(AppConstants.extras_Comman.previousAbacusData+"_"+pageId,"")
                 var sumStr: String = sum.toInt().toString()
 //                if (sumStr.length > postfixZero.length) {
 //                    sumStr = sumStr.substring(0, sumStr.length - postfixZero.length)

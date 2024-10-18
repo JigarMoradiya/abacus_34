@@ -44,7 +44,10 @@ class AppViewModel @Inject constructor(private val apiRepository: ApiRepository,
     suspend fun getCategory(id: String) = dbRepository.getCategory(id)
     suspend fun getPages(id: String) = dbRepository.getPages(id)
     suspend fun getSet(id: String) = dbRepository.getSet(id)
+    suspend fun getSetDetail(setId : String) = dbRepository.getSetDetail(setId)
     suspend fun getAllSet() = dbRepository.getAllSet()
     suspend fun getAbacus(id: String) = dbRepository.getAbacus(id)
+    suspend fun updateSetProgress(setId : String,currentAbacusId : String) = dbRepository.updateSetProgress(setId,currentAbacusId)
+    suspend fun updateSetTimer(setId : String,time : Long) = dbRepository.updateSetTimer(setId,time)
 
 }
