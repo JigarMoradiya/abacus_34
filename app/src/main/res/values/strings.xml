@@ -140,7 +140,7 @@
     <string name="txt_page_completed_already_purchased">You already completed this page, if you want you can start again this page.</string>
 
     <!--  purchased and page completed  -->
-    <string name="txt_page_completed_msg">Congratulations you completed this page.\nIf you want you can start this page again.</string>
+    <string name="txt_set_completed_msg">You completed this set of Abacus!</string>
 
     <!--  not purchased and page already complete  -->
     <string name="txt_page_completed_already">You\'ve already completed this page. If you\'d like to access more abacus questions,\nconsider subscribing to our paid plan. \nThank you for your interest!</string>
@@ -335,8 +335,8 @@
 
     <string name="notification_permission_msg">Notification permission is required to get alert related to Abacus!</string>
     <string name="permission_alert">Permission Alert!</string>
-    <string name="free_abacus_theme">Free Abacus Themes</string>
-    <string name="paid_abacus_themes">Paid Abacus Themes</string>
+    <string name="free_abacus_theme">Abacus Themes</string>
+    <string name="paid_abacus_themes">Advance Abacus Themes</string>
     <string name="preview_of_theme">Preview of Theme</string>
     <string name="welcome_to_abacus_application">Welcome to the Abacus Application</string>
     <string name="please_choose_your_anonymous_name_and_avatar">Please choose child\'s anonymous\nname and avatar</string>
@@ -552,6 +552,7 @@
     <string name="nursery_class_and_maths_npractice_material"><font color='#00B64B'>Nursery Class and Maths</font>\nPractice Material</string>
     <string name="create_custom_challenge_as_per_your_kid_s_ability">Create custom challenge as per your Kid\'s Ability</string>
     <string name="custom_challenge_mode">Custom Challenge Mode</string>
+    <string name="result_of_practice_set">Result of Practice Set</string>
     <string name="number_of_questions">Number of Questions :</string>
     <string name="gap_between_two_question_sec">Gap between Two Question (In Sec) :</string>
     <string name="question_min_max_length">Question Min Max Length :</string>
@@ -668,6 +669,7 @@
     <string name="is_question_show_in_word">Is question show in word?</string>
     <string name="gap_between_each_question_number">Gap between each question number</string>
     <string name="level_of_exam">Level of Exam :</string>
+    <string name="level_of_set">Level of Set :</string>
     <string name="type_of_questions">Type of questions :</string>
     <string name="type_of_exercise">Type of Exercise :</string>
     <string name="exercise_in">Exercise in</string>

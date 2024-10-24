@@ -28,21 +28,11 @@ class ExamHistoryHomeFragment : BaseFragment() {
         setNavigationGraph()
         init()
         clickListener()
-        ads()
         return binding.root
     }
     private fun setNavigationGraph() {
         mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
     }
-    private fun ads() {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y" // local
-            && prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y" && // if yes in firebase
-            (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All,"") != "Y" // if not purchased
-                    && prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y")) {
-            showAMBannerAds(binding.adView,getString(R.string.banner_ad_unit_id_exam))
-        }
-    }
-
 
     private fun init() {
         tabsAdapter = ExamHistoryTabLayoutAdapter(childFragmentManager, lifecycle)

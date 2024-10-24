@@ -16,10 +16,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.jigar.me.R
+import com.jigar.me.data.local.data.EventBusType
+import com.jigar.me.data.local.data.MessageEvent
 import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.SocialLoginRequest
 import com.jigar.me.data.repositories.Result
 import com.jigar.me.databinding.FragmentLoginHomeBinding
+import com.jigar.me.internal.workmanagers.FetchAbacusDataWorkManager
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.ui.view.other.ContactUsActivity
@@ -33,24 +36,49 @@ import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 @AndroidEntryPoint
 class LoginHomeFragment : BaseFragment() {
     private lateinit var binding: FragmentLoginHomeBinding
     private var mNavController: NavController? = null
     private val studentViewModel by viewModels<StudentViewModel>()
-
+    private var root : View? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initObserver()
     }
-    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
-        binding = FragmentLoginHomeBinding.inflate(inflater, container, false)
-        setNavigationGraph()
-        initView()
-        initListener()
-        initGoogleLogin()
-        return binding.root
+    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
+        if (root == null){
+            binding = FragmentLoginHomeBinding.inflate(inflater, container, false)
+            root = binding.root
+            setNavigationGraph()
+            initView()
+            initListener()
+            initGoogleLogin()
+        }
+        return root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        EventBus.getDefault().unregister(this)
+        super.onStop()
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onMessageEvent(event: MessageEvent) {
+        // Do something
+        if (event.type == EventBusType.LoginSync){
+            hideLoading()
+            MainDashboardActivity.getInstance(requireContext())
+        }
     }
 
     private fun initView() {
@@ -118,13 +146,6 @@ class LoginHomeFragment : BaseFragment() {
                 val result = studentViewModel.signInWithGoogle(task)
                 if (result is Result.Success) {
                     // navigate to main page
-                    Log.e("jigarLogs","doOnSignInWithGoogle idToken := "+task.result.idToken)
-                    Log.e("jigarLogs","doOnSignInWithGoogle data := "+result.data?.displayName)
-                    Log.e("jigarLogs","doOnSignInWithGoogle email := "+result.data?.email)
-                    Log.e("jigarLogs","doOnSignInWithGoogle phoneNumber := "+result.data?.phoneNumber)
-                    Log.e("jigarLogs","doOnSignInWithGoogle photoUrl := "+result.data?.photoUrl)
-                    Log.e("jigarLogs","doOnSignInWithGoogle uid := "+result.data?.uid)
-                    Log.e("jigarLogs","doOnSignInWithGoogle isEmailVerified := "+result.data?.isEmailVerified)
                     studentViewModel.socialLogin(SocialLoginRequest(result.data?.email,task.result.idToken))
                 } else {
 
@@ -144,10 +165,10 @@ class LoginHomeFragment : BaseFragment() {
                     showLoading()
                 }
                 is Resource.Success -> {
-                    hideLoading()
                     if (it.value.status == AppConstants.APIStatus.SUCCESS)
                         onSuccess(it.value.data)
                     else{
+                        hideLoading()
                         onFailure(it.value.error?.message)
                     }
                 }
@@ -165,6 +186,7 @@ class LoginHomeFragment : BaseFragment() {
         prefManager.setAccessToken(response.token)
         prefManager.setLoginData(data.toString())
         if (response.name.isNullOrEmpty()){
+            hideLoading()
             mNavController?.navigate(R.id.toLoginCompleteProfileFragment)
         }else{
             response.country?.let {
@@ -176,7 +198,9 @@ class LoginHomeFragment : BaseFragment() {
                 }
             }
             prefManager.setUserLoggedIn(true)
-            MainDashboardActivity.getInstance(requireContext())
+
+            // fetch abacus data
+            FetchAbacusDataWorkManager.fetchAbacusDetails()
         }
     }
 

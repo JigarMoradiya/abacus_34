@@ -21,8 +21,10 @@ import com.jigar.me.data.local.data.AbacusBeadType
 import com.jigar.me.data.local.data.AbacusContent
 import com.jigar.me.data.local.data.AbacusProvider
 import com.jigar.me.data.local.data.DataProvider
+import com.jigar.me.data.model.data.QuestionDataRequest
+import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
-import com.jigar.me.data.model.pages.Pages
+import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
 import com.jigar.me.databinding.FragmentHalfAbacusBinding
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.base.abacus.AbacusMasterCompleteListener
@@ -32,23 +34,24 @@ import com.jigar.me.ui.view.dashboard.fragments.abacus.half.adapter.AbacusAdditi
 import com.jigar.me.ui.view.dashboard.fragments.abacus.half.adapter.AbacusDivisionTypeAdapter
 import com.jigar.me.ui.view.dashboard.fragments.abacus.half.adapter.AbacusMultiplicationTypeAdapter
 import com.jigar.me.ui.viewmodel.AppViewModel
+import com.jigar.me.ui.viewmodel.ExamViewModel
 import com.jigar.me.utils.*
 import com.jigar.me.utils.extensions.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.ticker
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.json.JSONArray
-import org.json.JSONException
 import org.json.JSONObject
 import java.util.*
-import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAdditionSubtractionTypeAdapter.HintListener{
     lateinit var binding: FragmentHalfAbacusBinding
     private val appViewModel by viewModels<AppViewModel>()
+    private val examViewModel by viewModels<ExamViewModel>()
     private var themeContent : AbacusContent? = null
     private var setId : String? = null
     private var isPurchased = true
@@ -59,6 +62,8 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     private var abacusType = ""
     private var number = 0L // required only for number
     private var abacus_number = 0 // required only for number
+
+    private var total_sec = 0L
 
     // Settings Constants
     private var isDisplayHelpMessage = true
@@ -87,10 +92,13 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
 
     private var abacusFragment: HalfAbacusSubFragment? = null
     private var setDetail: com.jigar.me.data.model.dbtable.abacus_all_data.Set? = null
+    private var setProgress: SetProgress? = null
 
+    private lateinit var mCalculator: Calculator
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setId = AbacusCalculationFragmentArgs.fromBundle(requireArguments()).setId
+        initObserver()
     }
 
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
@@ -104,6 +112,66 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
     }
 
+    private fun initObserver() {
+        examViewModel.submitAllExamResponse.observe(this) {
+            when (it) {
+                is Resource.Loading -> {
+                    if (examViewModel.submitAllExamDataRequest?.is_set_completed == true || setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer){
+                        showLoading()
+                    }
+                }
+                is Resource.Success -> {
+                    Log.e("jigarLogs","complete")
+                    if (examViewModel.submitAllExamDataRequest?.is_set_completed == true || setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer){
+                        Log.e("jigarLogs","complete con")
+                        hideLoading()
+
+                        if (it.value.status == AppConstants.APIStatus.SUCCESS){
+                            CoroutineScope(Dispatchers.Main).launch {
+                                if (examViewModel.submitAllExamDataRequest?.type == AppConstants.apiParams.answerFormalAnswer) {
+                                    examViewModel.submitAllExamDataRequest?.reference_id?.let { it1 ->
+                                        appViewModel.deleteSetProgress(it1)
+                                        appViewModel.removeUserAnswer(it1)
+                                    }
+                                } else {
+                                    setProgress?.let{
+                                        it.is_set_completed = true
+                                        if (setDetail?.show_time_setting == true){
+                                            it.total_time_taken = total_sec.toInt()
+                                            it.latest_abacus_id = null
+                                        }
+                                        appViewModel.insertSetProgress(listOf(it))
+                                    }
+                                }
+                            }
+                            completeSetAlert()
+                        } else{
+                            onFailure(it.value.error?.message)
+                        }
+                    }
+
+                }
+                is Resource.Failure -> {
+                    if (examViewModel.submitAllExamDataRequest?.is_set_completed == true || setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer){
+                        hideLoading()
+                        onFailure(it.errorBody)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun completeSetAlert() {
+        CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.congratulations),getString(R.string.txt_set_completed_msg)
+            ,getString(R.string.ok_thanks), icon = R.drawable.ic_alert_complete_page,isCancelable = false,
+            clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
+                override fun onConfirmationYesClick(bundle: Bundle?) {
+                    mNavController.navigateUp()
+                }
+                override fun onConfirmationNoClick(bundle: Bundle?) = Unit
+            })
+    }
+
     private fun initViews() {
         abacusColumn = prefManager.getCustomParamInt(AppConstants.Settings.AbacusMaxColumn,13)
         binding.isLeftHand = prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_left_hand, true)
@@ -111,7 +179,12 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         isDisplayHelpMessage = prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_display_help_message, true)
         isHintSound = prefManager.getCustomParamBoolean(AppConstants.Settings.Setting__hint_sound, false)
         isHideTable = prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_hide_table, false)
-        isStepByStep = prefManager.getCustomParam(AppConstants.Settings.Setting_answer,AppConstants.Settings.Setting_answer_Step) == AppConstants.Settings.Setting_answer_Step
+//        isStepByStep = prefManager.getCustomParam(AppConstants.Settings.Setting_answer,AppConstants.Settings.Setting_answer_Step) == AppConstants.Settings.Setting_answer_Step
+//        isAutoRefresh = if (isStepByStep){
+//            prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_auto_reset_abacus, false)
+//        }else{
+//            false
+//        }
         isAnswerWithTools = prefManager.getCustomParam(AppConstants.Settings.Setting_answer,AppConstants.Settings.Setting_answer_Step) == AppConstants.Settings.Setting_answer_with_tools
         if (prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_left_hand, true)){
             setLeftAbacusRules()
@@ -124,17 +197,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         binding.imgRightAbacusTools.hide()
         binding.imgLeftAbacusTools.hide()
 
-        isAutoRefresh = if (isStepByStep){
-            prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_auto_reset_abacus, false)
-        }else{
-            false
-        }
-
         startAbacus()
-        lifecycleScope.launch {
-            delay(400)
-            bannerAds()
-        }
     }
 
     private fun setThemeColor() {
@@ -161,14 +224,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 binding.cardHint2.setStrokeColor(ColorStateList.valueOf(finalColor60))
             }
 
-        }
-    }
-
-    private fun bannerAds() {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y"
-            && prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y"
-            && !isPurchased && prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y") { // if not purchased
-            showAMBannerAds(binding.adView,getString(R.string.banner_ad_unit_id_abacus))
         }
     }
     private fun initListener() {
@@ -204,12 +259,56 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         goBack()
     }
 
+    override fun onPause() {
+        super.onPause()
+        tickerChannel.cancel()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (setDetail != null){
+            if (setDetail?.show_time_setting == true){
+                Log.e("jigarLogs","show_time_setting resume")
+                startTimer()
+            }
+        }
+    }
+
+    private var tickerChannel = ticker(delayMillis = 1000, initialDelayMillis = 0)
+    private fun startTimer() {
+        tickerChannel = ticker(delayMillis = 1000, initialDelayMillis = 0)
+        launch {
+            for (event in tickerChannel) {
+                total_sec++
+
+                CoroutineScope(Dispatchers.Main).launch {
+                    setId?.let {
+                        appViewModel.updateSetTimer(it,total_sec)
+                    }
+                    val time = DateTimeUtils.displayDurationHourMinSec(total_sec)
+                    binding.txtTimer.text = time
+                    binding.txtTimer.show()
+                }
+
+            }
+            tickerChannel.cancel()
+        }
+    }
+
     private fun startAbacus() {
         if(requireContext().isNetworkAvailable){
             CoroutineScope(Dispatchers.Main).launch {
                 setId?.let {
                     setDetail = appViewModel.getSetDetail(it)
+                    setProgress = appViewModel.getSetProgress(it)
+                    Log.e("jigarLogs","setDetail = "+Gson().toJson(setDetail))
                     if (setDetail != null){
+                        isStepByStep = setDetail?.answer_setting == AppConstants.apiParams.answerSettingStepByStep
+                        if (setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer){
+                            binding.tvAns.text = "?"
+                        }else{
+                            binding.tvAns.text = ""
+                        }
                         if (!setDetail?.hint.isNullOrEmpty()){
                             val list : ArrayList<String> = arrayListOf()
                             val json = JSONArray(setDetail?.hint)
@@ -222,12 +321,25 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
 
                         list_abacus = appViewModel.getAbacus(it)
                         if (list_abacus.isNotNullOrEmpty()){
-                            list_abacus.indexOfFirst { it.id == setDetail?.currentAbacusId }.also {
-                                if (it > -1){
-                                    current_pos = it
+                            if (setProgress != null){
+                                if (setProgress?.is_set_completed == false){
+                                    list_abacus.indexOfFirst { it.id == setProgress?.latest_abacus_id }.also {
+                                        if (it > -1){
+                                            current_pos = it
+                                        }
+                                    }
                                 }
                             }
+
                             startAbacusNow()
+                            if (setDetail?.show_time_setting == true){
+                                if (setProgress != null){
+                                    if (setProgress?.is_set_completed == false){
+                                        total_sec = (setProgress?.total_time_taken?:0).toLong()
+                                    }
+                                }
+                                startTimer()
+                            }
                         }
                     }else{
                         mNavController.navigateUp()
@@ -257,13 +369,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     }
 
     private fun startAbacusNow() {
-        // TODO jigar current_pos logic
-
-//        val currentPosTemp = prefManager.getCurrentSumFromPref(pageId)
-//        if (currentPosTemp!= null){
-//            current_pos = currentPosTemp
-//        }
-        Log.e("jigarLogs","startAbacusNow positon current = "+current_pos)
         if (list_abacus.lastIndex < current_pos){
             current_pos = 0
         }
@@ -573,8 +678,8 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     // reset page progress and start from 1st abacus
     private fun resetProgressConfirm() {
         current_pos = 0
-        updateToFirebase()
         // TODO jigar
+//        updateToFirebase()
 //        removeSum()
         startAbacus()
     }
@@ -674,7 +779,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 hint = json.getString("$currentStep")
             }
         }
-        Log.e("jigarLogs","hint = "+hint)
         if (!hint.isNullOrEmpty()) {
             if (isDisplayHelpMessage) {
                 binding.cardHint.show()
@@ -712,7 +816,8 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 this.abacusTotalColumns = column
                 this.noOfDecimalPlace = noOfDecimalPlace
                 if (abacusFragment == null){
-                    abacusFragment = HalfAbacusSubFragment().newInstance(abacusTotalColumns, noOfDecimalPlace, abacus_type)
+                    Log.e("jigarLogs","answer_setting = "+setDetail?.answer_setting)
+                    abacusFragment = HalfAbacusSubFragment().newInstance(abacusTotalColumns, noOfDecimalPlace, abacus_type,setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer)
                 }
                 binding.flAbacus.show()
                 binding.linearYourAbacusTools.hide()
@@ -736,7 +841,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     }
 
     override fun onAbacusValueChange(abacusView: View, sum1: Long) {
-        Log.e("jigarLogs","onAbacusValueChange = "+sum1)
         if (isMoveNext) {
             goToNextAbacus()
             return
@@ -766,7 +870,9 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 if (abacusType == AppConstants.extras_Comman.AbacusTypeNumber) {
                     val finalans = number
                     if (sum == (finalans.toInt()).toString()) {
-                        onAbacusValueSubmit(finalans)
+                        if (setDetail?.answer_setting != AppConstants.apiParams.answerFormalAnswer){
+                            onAbacusValueSubmit(finalans)
+                        }
                     }
                 } else if (adapterAdditionSubtraction.itemCount > 0) {
                     if (adapterAdditionSubtraction.getCurrentSumVal() != null) {
@@ -777,21 +883,23 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                             }
                             if (adapterAdditionSubtraction.getCurrentStep() == list_abacus_main.size) {
                                 val finalans = (adapterAdditionSubtraction.getFinalSumVal()?:0.0).toLong()
-                                onAbacusValueSubmit(finalans)
+                                if (setDetail?.answer_setting != AppConstants.apiParams.answerFormalAnswer){
+                                    onAbacusValueSubmit(finalans)
+                                }
                             }
                         } else {
                             val finalans = (adapterAdditionSubtraction.getFinalSumVal()?:0.0).toLong()
                             if (sum == (finalans.toInt()).toString()) {
-                                onAbacusValueSubmit(finalans)
+                                if (setDetail?.answer_setting != AppConstants.apiParams.answerFormalAnswer){
+                                    onAbacusValueSubmit(finalans)
+                                }
                             }
                         }
                     }
                 }
             } else if (abacus_type == 1) {
-                Log.e("jigarLogs","adapterMultiplication sum = "+sum)
                 if (adapterMultiplication.getCurrentSumVal() != null) {
                     val sumVal: Long = adapterMultiplication.getCurrentSumVal()!!.toLong()
-                    Log.e("jigarLogs","adapterMultiplication sumVal = "+sumVal)
                     if (isStepByStep) {
                         if (sum == (sumVal.toInt()).toString()) {
                             adapterMultiplication.goToNextStep()
@@ -803,40 +911,44 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                                 .length - 1 && curVal[1]!! >= adapterMultiplication.getItem(1)[Constants.Que]!!.length - 1
                         ) {
                             adapterMultiplication.clearHighlight()
-                            onAbacusValueSubmit(finalans)
+                            if (setDetail?.answer_setting != AppConstants.apiParams.answerFormalAnswer){
+                                onAbacusValueSubmit(finalans)
+                            }
                         }
                     } else {
                         val finalans = (adapterMultiplication.getFinalSumVal()?:0.0).toLong()
                         if (sum == (finalans.toInt()).toString()) {
-                            onAbacusValueSubmit(finalans)
+                            if (setDetail?.answer_setting != AppConstants.apiParams.answerFormalAnswer){
+                                onAbacusValueSubmit(finalans)
+                            }
                         }
                     }
                 }
             } else if (abacus_type == 2) {
-//                Log.e("jigarLogsDivision","onAbacusValueChange division newValue = "+newValue)
                 var remainQuestion = newValue.replace(".","").takeLast(6).trimStart('0')
                 if (remainQuestion.isEmpty()){
                     remainQuestion = "0"
                 }
                 val answers = newValue.replace(".","").take(7).trimStart('0')
-//                Log.e("jigarLogsDivision","onAbacusValueChange division remainQuestion = "+remainQuestion)
-//                Log.e("jigarLogsDivision","onAbacusValueChange division answers = "+answers)
                 if (adapterDivision.getCurrentSumVal() != null) {
                     if (isStepByStep) {
                         if (adapterDivision.getCurrentSumVal().toString() == answers && adapterDivision.getNextDivider().toString() == remainQuestion){
-//                            Log.e("jigarLogsDivision","onAbacusValueChange goToNextStep")
                             adapterDivision.goToNextStep()
                             setTableDataAndVisiblilty()
                         }
                         val finalans = adapterDivision.getFinalSumVal()!!.toLong()
                         if (answers == finalans.toString() && adapterDivision.isLastStep() && (remainQuestion.isEmpty() || remainQuestion == "0")) {
                             adapterDivision.clearHighlight()
-                            onAbacusValueSubmit(finalans)
+                            if (setDetail?.answer_setting != AppConstants.apiParams.answerFormalAnswer){
+                                onAbacusValueSubmit(finalans)
+                            }
                         }
                     } else {
                         val finalAns = (adapterDivision.getFinalSumVal()?:0.0).toLong()
                         if (answers == (finalAns.toInt()).toString()) {
-                            onAbacusValueSubmit(finalAns)
+                            if (setDetail?.answer_setting != AppConstants.apiParams.answerFormalAnswer){
+                                onAbacusValueSubmit(finalAns)
+                            }
                         }
                     }
                 }
@@ -855,7 +967,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         }
     }
 
-    private fun moveToNext() {
+    private fun resetData() {
         if (abacusType != AppConstants.extras_Comman.AbacusTypeNumber) {
             binding.tvAns.text = ""
             binding.tvAns.invisible()
@@ -876,50 +988,103 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 }
             }
         }
+    }
+    private fun moveToNext() {
         Log.e("jigarLogs","current_pos = "+current_pos)
-        if (current_pos == list_abacus.lastIndex){
-//            tickerChannel.cancel()
-//            isComplete = true
-            Log.e("jigarLogs","complete")
-//            current_pos++
-//            updateToFirebase()// status = 1 means complete
-        }else{
-//            isComplete = false
-            current_pos++
-            updateToFirebase()// status = 0 means running
-            startAbacusNow()
+        CoroutineScope(Dispatchers.Main).launch {
+            setId?.let {
+                val submitExamRequest = SubmitAllExamDataRequest()
+                with(submitExamRequest) {
+                    type = setDetail?.answer_setting
+                    if (current_pos >= list_abacus.lastIndex){
+                        tickerChannel.cancel()
+                        if(requireContext().isNetworkAvailable) {
+                            if (setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer){
+                                reference_id = it
+                                list_abacus = appViewModel.getAbacus(it)
+                                mCalculator = Calculator()
+                                var rightAnswerCount = 0
+                                if (setDetail?.show_time_setting == true){
+                                    total_time_taken = total_sec.toInt()
+                                }
+                                no_of_questions = list_abacus.size
+                                val questionsList : ArrayList<Any> = arrayListOf()
+                                list_abacus.map {
+                                    val question = it.question
+                                    val resultObject = mCalculator.getResult(question,question)
+                                    val correctAns = CommonUtils.removeTrailingZero(resultObject)
+                                    val isRightAnswer = (correctAns == it.userAnswer)
+                                    if (isRightAnswer){
+                                        rightAnswerCount++
+                                    }
+                                    questionsList.add(QuestionDataRequest(question,it.userAnswer,isRightAnswer))
+                                }
+                                no_of_right_answers = rightAnswerCount
+                                questions = questionsList
+                                examViewModel.submitAllExam(submitExamRequest)
+                            }else{
+                                retry_count = setProgress?.retry_count?:1
+                                if (setDetail?.show_time_setting == true){
+                                    total_time_taken = total_sec.toInt()
+                                }
+                                is_set_completed = true
+                                abacus_id = null
+                                set_id = it
+                                examViewModel.submitAllExam(submitExamRequest)
+                            }
+                        }else{
+                            CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.no_internet_working),getString(R.string.no_internet)
+                                ,getString(R.string.continue_working_internet),getString(R.string.no_working_internet), icon = R.drawable.ic_alert_sad_emoji,isCancelable = false,
+                                clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
+                                    override fun onConfirmationYesClick(bundle: Bundle?) {
+                                        if (!requireContext().isNetworkAvailable) {
+                                            showToast(R.string.still_no_internet)
+                                        }
+                                        moveToNext()
+                                    }
+                                    override fun onConfirmationNoClick(bundle: Bundle?){
+                                        mNavController.navigateUp()
+                                    }
+                                })
+                        }
+                    }else{
+                        resetData()
+                        current_pos++
+                        var retryCounts = 1
+                        if (setProgress == null){
+                            retryCounts = 1
+                            setProgress = SetProgress(it,list_abacus[current_pos].id,false)
+                        }else if(setProgress?.is_set_completed == true){
+                            retryCounts =  (setProgress?.retry_count?:0)+1
+                            setProgress = SetProgress(it,list_abacus[current_pos].id,false,retry_count = retryCounts)
+                        }else{
+                            retryCounts = setProgress?.retry_count?:1
+                            setProgress?.latest_abacus_id = list_abacus[current_pos].id
+                        }
+                        if (current_pos > 0 && (current_pos % 5 == 0)){
+                            Log.e("jigarLogs","call api = "+current_pos)
+                            if (setDetail?.answer_setting != AppConstants.apiParams.answerFormalAnswer){
+                                retry_count = retryCounts
+                                if (setDetail?.show_time_setting == true){
+                                    total_time_taken = total_sec.toInt()
+                                }
+                                is_set_completed = false
+                                abacus_id = list_abacus[current_pos].id
+                                set_id = it
+                                examViewModel.submitAllExam(submitExamRequest)
+                            }
+                        }
+                        if (setDetail?.show_time_setting == true){
+                            setProgress?.total_time_taken = total_sec.toInt()
+                        }
+                        setProgress?.let{
+                            appViewModel.insertSetProgress(listOf(it))
+                        }
+                        startAbacusNow()
+                    }
+                }
+            }
         }
-
-//        updateToFirebase(current_pos)
-//
-//        if (abacusType == AppConstants.extras_Comman.AbacusTypeNumber) {
-//            current_pos++
-//            prefManager.saveCurrentSum(pageId,current_pos)
-//            prefManager.setCustomParamInt(pageId + "value", (number + 1).toInt())
-//            setDataOfNumber(false)
-//        } else {
-//            binding.tvAns.text = ""
-//            binding.tvAns.invisible()
-//            binding.cardHint.hide()
-//            current_pos++
-//            prefManager.saveCurrentSum(pageId,current_pos)
-//            when (abacus_type) {
-//                0 -> {
-//                    adapterAdditionSubtraction.reset()
-//                    setDataOfAdditionSubtraction()
-//                }
-//                1 -> {
-//                    adapterMultiplication.reset()
-//                    setDataOfMultiplication(false)
-//                }
-//                2 -> {
-//                    shouldResetAbacus = true
-//                    adapterDivision.reset()
-//                    setDataOfDivision(false)
-//                }
-//            }
-//
-//        }
     }
 
     private fun notOfflineSupportDialog() {
@@ -941,28 +1106,37 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
             })
     }
 
-    // update progress to Firebase
-    private fun updateToFirebase() {
-        // set from value when reset page progress for abacus type number
-        if (current_pos < list_abacus.size){
-            CoroutineScope(Dispatchers.Main).launch {
-                setId?.let {
-                    appViewModel.updateSetProgress(it,list_abacus[current_pos].id)
-                }
-            }
+    override fun onAbacusSubmitValue(userAnswer : String) {
+        CoroutineScope(Dispatchers.Main).launch {
+            appViewModel.updateUserAnswer(currentAbacus.id,userAnswer)
+            reset()
+            binding.btnNextAbacus.performClick()
         }
     }
 
     override fun onAbacusValueSubmit(sum: Long) {
-        when (abacus_type) {
-            0 -> {
-                val sumVal: Long
-                if (abacusType == AppConstants.extras_Comman.AbacusTypeNumber) {
-                    abacus_number = sum.toInt()
-                    makeAutoRefresh()
-                } else {
-                    sumVal = adapterAdditionSubtraction.getFinalSumVal()!!.toLong()
-                    if (sumVal == sum) {
+        if (setDetail?.answer_setting != AppConstants.apiParams.answerFormalAnswer) {
+            when (abacus_type) {
+                0 -> {
+                    val sumVal: Long
+                    if (abacusType == AppConstants.extras_Comman.AbacusTypeNumber) {
+                        abacus_number = sum.toInt()
+                        makeAutoRefresh()
+                    } else {
+                        sumVal = adapterAdditionSubtraction.getFinalSumVal()!!.toLong()
+                        if (sumVal == sum) {
+                            binding.tvAns.text = sum.toInt().toString()
+                        } else {
+                            binding.tvAns.text = sum.toString()
+                        }
+                        binding.tvAns.show()
+                        makeAutoRefresh()
+                    }
+                }
+
+                1 -> {
+                    val sumVal: Float = adapterMultiplication.getFinalSumVal()!!.toFloat()
+                    if (sumVal == (sum.toInt().toString()).toFloat()) {
                         binding.tvAns.text = sum.toInt().toString()
                     } else {
                         binding.tvAns.text = sum.toString()
@@ -970,31 +1144,18 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                     binding.tvAns.show()
                     makeAutoRefresh()
                 }
-            }
-            1 -> {
-                val sumVal: Float = adapterMultiplication.getFinalSumVal()!!.toFloat()
-                if (sumVal == (sum.toInt().toString()).toFloat()) {
-                    binding.tvAns.text = sum.toInt().toString()
-                } else {
-                    binding.tvAns.text = sum.toString()
+
+                2 -> {
+                    var sumStr: String = sum.toInt().toString()
+                    binding.tvAns.text = sumStr
+                    binding.tvAns.show()
+                    makeAutoRefresh()
                 }
-                binding.tvAns.show()
-                makeAutoRefresh()
-            }
-            2 -> {
-                var sumStr: String = sum.toInt().toString()
-//                if (sumStr.length > postfixZero.length) {
-//                    sumStr = sumStr.substring(0, sumStr.length - postfixZero.length)
-//                }
-                binding.tvAns.text = sumStr
-                binding.tvAns.show()
-                makeAutoRefresh()
             }
         }
     }
 
     private fun makeAutoRefresh() {
-        ads()
         if (isStepByStep && isAutoRefresh){
             abacusFragment?.resetButtonEnable(false)
             lifecycleScope.launch {
@@ -1008,19 +1169,11 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         }
     }
 
-    private fun ads() {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y"
-            && prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y"
-            && !isPurchased && prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y") { // if not purchased
-            showAMFullScreenAds(getString(R.string.interstitial_ad_unit_id_abacus_half_screen))
-        }
-    }
-
     override fun onAbacusValueDotReset() {
         resetOrMoveNext()
     }
 
-    private fun resetOrMoveNext() {
+    private fun  resetOrMoveNext() {
         if (abacusType == AppConstants.extras_Comman.AbacusTypeNumber) {
             if (binding.tvAnsNumber.text.toString() == abacus_number.toString()) {
                 isMoveNext = true
@@ -1037,26 +1190,20 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 if (isPurchased && isHintSound) {
                     val text = when (abacusType) {
                         AppConstants.extras_Comman.AbacusTypeDivision -> {
-//                            val q1 = " ${requireContext().convert((list_abacus_main[0][Constants.Que]?:"0").toInt())}"
-//                            val q2 = " ${requireContext().convert((list_abacus_main[1][Constants.Que]?:"0").toInt())}"
                             val q1 = " ${(list_abacus_main[0][Constants.Que]?:"0")}"
                             val q2 = " ${(list_abacus_main[1][Constants.Que]?:"0")}"
                             String.format(getString(R.string.speak_divide_by),q1,q2)
                         }
                         AppConstants.extras_Comman.AbacusTypeMultiplication -> {
-//                            val q1 = " ${requireContext().convert((list_abacus_main[0][Constants.Que]?:"0").toInt())}"
-//                            val q2 = " ${requireContext().convert((list_abacus_main[1][Constants.Que]?:"0").toInt())}"
                             val q1 = " ${(list_abacus_main[0][Constants.Que]?:"0")}"
                             val q2 = " ${(list_abacus_main[1][Constants.Que]?:"0")}"
                             String.format(getString(R.string.speak_multiply_by),q1,q2)
                         }
                         AppConstants.extras_Comman.AbacusTypeAdditionSubtraction -> {
-//                            val q1 = " ${requireContext().convert((list_abacus_main[0][Constants.Que]?:"0").toInt())}"
                             val q1 = " ${(list_abacus_main[0][Constants.Que]?:"0")}"
                             String.format(resources.getString(R.string.speech_set), q1)
                         }
                         else -> { // number
-//                            String.format(resources.getString(R.string.speech_set), " ${requireContext().convert(number)}")
                             String.format(resources.getString(R.string.speech_set), " ${number}")
                         }
                     }

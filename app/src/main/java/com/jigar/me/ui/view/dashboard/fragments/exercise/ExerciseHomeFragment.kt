@@ -14,13 +14,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.admanager.AdManagerAdRequest
-import com.google.android.gms.ads.admanager.AdManagerInterstitialAd
-import com.google.android.gms.ads.admanager.AdManagerInterstitialAdLoadCallback
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.jigar.me.R
@@ -77,19 +70,10 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
         setNavigationGraph()
         initViews()
         initListener()
-        ads()
         return binding.root
     }
     private fun setNavigationGraph() {
         mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
-    }
-    private fun ads() {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y" // local
-            && prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y" && // if yes in firebase
-            (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All,"") != "Y" // if not purchased
-                    && prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y")) {
-            showAMBannerAds(binding.adView,getString(R.string.banner_ad_unit_id_exercise))
-        }
     }
     private fun initViews() {
         if (prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_left_hand, true)){
@@ -201,7 +185,7 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
 
     private fun onSuccess() {
         PlaySound.play(requireContext(), PlaySound.number_puzzle_win)
-        newInterstitialAdCompleteExercise()
+        showCompleteDialog()
     }
 
     private fun addKeyboardValue(value : String){
@@ -594,6 +578,8 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
         resetAbacus()
     }
 
+    override fun onAbacusSubmitValue(userAnswer : String) = Unit
+
     private fun resetAbacus() {
         abacusBinding?.abacusTop?.reset()
         abacusBinding?.abacusBottom?.reset()
@@ -624,62 +610,9 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
         tickerChannel.cancel()
     }
 
-    private fun newInterstitialAdCompleteExercise() {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y" &&
-            prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y" &&
-            (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All,"") != "Y" && // purchase not
-                    prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y")
-        ){
-            showLoading()
-            val isAdmob = prefManager.getCustomParamBoolean(AppConstants.AbacusProgress.isAdmob,true)
-            val adUnit = getString(R.string.interstitial_ad_unit_id_exercise)
-            if (isAdmob){
-                val adRequest = AdRequest.Builder().build()
-                InterstitialAd.load(requireContext(), adUnit, adRequest, object : InterstitialAdLoadCallback() {
-                    override fun onAdFailedToLoad(adError: LoadAdError) {
-                        hideLoading()
-                        showCompleteDialog()
-                    }
-
-                    override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                        hideLoading()
-                        // Show the ad if it's ready. Otherwise toast and reload the ad.
-                        interstitialAd.show(requireActivity())
-                        lifecycleScope.launch {
-                            delay(400)
-                            showCompleteDialog()
-                        }
-                    }
-                })
-            }else{
-                val adRequest = AdManagerAdRequest.Builder().build()
-                AdManagerInterstitialAd.load(requireContext(),adUnit, adRequest, object : AdManagerInterstitialAdLoadCallback() {
-                    override fun onAdFailedToLoad(adError: LoadAdError) {
-                        hideLoading()
-                        showCompleteDialog()
-                    }
-
-                    override fun onAdLoaded(interstitialAd: AdManagerInterstitialAd) {
-                        hideLoading()
-                        // Show the ad if it's ready. Otherwise toast and reload the ad.
-                        interstitialAd.show(requireActivity())
-                        lifecycleScope.launch {
-                            delay(400)
-                            showCompleteDialog()
-                        }
-                    }
-                })
-            }
-
-        }else{
-            showCompleteDialog()
-        }
-
-    }
-
     private fun showCompleteDialog() {
         if (ExerciseCompleteDialog.alertdialog?.isShowing != true){
-            ExerciseCompleteDialog.showPopup(requireContext(),listExerciseAdditionSubtraction,prefManager,currentParentData,currentChildData,this@ExerciseHomeFragment)
+            ExerciseCompleteDialog.showPopup(requireContext(),null, listExerciseAdditionSubtraction,this@ExerciseHomeFragment)
         }
     }
 

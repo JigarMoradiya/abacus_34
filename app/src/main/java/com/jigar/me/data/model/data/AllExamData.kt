@@ -64,6 +64,7 @@ data class AllExamData(
     var is_question_show_in_word: Boolean? = null,
 
     var created_at: String? = null,
+    var reference_id: String? = null, // formal exam set id
 ) {
     fun dateTimeFormat() = DateTimeUtils.convertDateFormatFromUTC(created_at,DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz,DateTimeUtils.at_dd_mmm_yy_hh_mm_a)
     fun totalTimeFormat() = (total_time_taken ?: 0).secToTimeFormat()

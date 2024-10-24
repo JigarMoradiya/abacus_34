@@ -93,8 +93,6 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
 
         binding.relVoiceSettings.onClick { voiceController?.show() }
 
-        binding.cardSubscribe.onClick { goToInAppPurchase() }
-
         binding.relHintSound.onClick { onOnOffClick(AppConstants.Settings.Setting__hint_sound,binding.isHintSound) }
         binding.swHintSound.onClick { onOnOffClick(AppConstants.Settings.Setting__hint_sound,binding.isHintSound) }
 
@@ -128,7 +126,6 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
                 paidPlanDialog()
             }
         }
-
     }
     private fun paidPlanDialog() {
         CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.txt_purchase_alert), getString(R.string.need_paid_plan_msg),
@@ -259,20 +256,23 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
     private fun onThemeClick(themeType: String) {
         if (themeType != prefManager.getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default)){
 
-            when {
-                themeType.contains(AppConstants.Settings.theam_Default,true) -> {
-                    prefManager.setCustomParam(AppConstants.Settings.Theam,themeType)
-                    abacusThemePaidAdapter.selectedPos(-1)
-                }
-                isPurchased -> {
-                    prefManager.setCustomParam(AppConstants.Settings.Theam,themeType)
-                    abacusThemeFreeAdapter.selectedPos(-1)
-                }
-                else -> {
-                    abacusThemeFreeAdapter.selectedPos(-1)
-                    paidPlanDialog()
-                }
-            }
+            prefManager.setCustomParam(AppConstants.Settings.Theam,themeType)
+            abacusThemeFreeAdapter.selectedPos(-1)
+
+//            when {
+//                themeType.contains(AppConstants.Settings.theam_Default,true) -> {
+//                    prefManager.setCustomParam(AppConstants.Settings.Theam,themeType)
+//                    abacusThemePaidAdapter.selectedPos(-1)
+//                }
+//                isPurchased -> {
+//                    prefManager.setCustomParam(AppConstants.Settings.Theam,themeType)
+//                    abacusThemeFreeAdapter.selectedPos(-1)
+//                }
+//                else -> {
+//                    abacusThemeFreeAdapter.selectedPos(-1)
+//                    paidPlanDialog()
+//                }
+//            }
             setPreviewTheme(themeType)
         }
     }

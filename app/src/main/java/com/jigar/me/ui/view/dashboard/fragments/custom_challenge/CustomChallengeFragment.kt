@@ -11,13 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.admanager.AdManagerAdRequest
-import com.google.android.gms.ads.admanager.AdManagerInterstitialAd
-import com.google.android.gms.ads.admanager.AdManagerInterstitialAdLoadCallback
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.jigar.me.R
 import com.jigar.me.data.local.data.AbacusBeadType
 import com.jigar.me.data.local.data.AbacusContent
@@ -97,7 +90,6 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
         init()
         clickListener()
         setAbacus()
-        ads()
         return binding.root
     }
     private fun initObserver() {
@@ -126,19 +118,8 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
     private fun onSuccess() {
         val isAnswerTrue = binding.txtAnswer.text.equals((challengeData?.answer?:"").toString())
         CCMCompleteBottomSheet.showPopup(requireActivity(),challengeData,isAnswerTrue,this@CustomChallengeFragment)
-        newInterstitialAdCompleteCCM()
     }
 
-    private fun ads() {
-        with(prefManager){
-            if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y" &&
-                getCustomParam(AppConstants.AbacusProgress.Ads, "") == "Y" &&
-                getCustomParam(AppConstants.Purchase.Purchase_All, "") != "Y" &&
-                getCustomParam(AppConstants.Purchase.Purchase_Ads, "") != "Y") {
-                showAMBannerAds(binding.adView,getString(R.string.banner_ad_unit_id_ccm))
-            }
-        }
-    }
     private fun ttsInit() {
         textToSpeech = TextToSpeech(requireContext()) { status ->
             if (status != TextToSpeech.ERROR) {
@@ -515,6 +496,8 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
         resetAbacus()
     }
 
+    override fun onAbacusSubmitValue(userAnswer : String) = Unit
+    
     private fun resetAbacus() {
         abacusBinding?.abacusTop?.reset()
         abacusBinding?.abacusBottom?.reset()
@@ -597,41 +580,6 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
             abacusBinding?.abacusBottom?.post {
                 abacusBinding?.abacusTop?.setSelectedPositions(topSelectedPositions,setPositionCompleteListener)
                 abacusBinding?.abacusBottom?.setSelectedPositions(bottomSelectedPositions,setPositionCompleteListener)
-            }
-        }
-    }
-
-
-    private fun newInterstitialAdCompleteCCM() {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y" &&
-            prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y" &&
-            (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All,"") != "Y" && // purchase not
-                    prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y")){
-            val isAdmob = prefManager.getCustomParamBoolean(AppConstants.AbacusProgress.isAdmob,true)
-            val adUnit = getString(R.string.interstitial_ad_unit_id_ccm)
-            if (isAdmob){
-                val adRequest = AdRequest.Builder().build()
-                InterstitialAd.load(requireContext(), adUnit, adRequest, object : InterstitialAdLoadCallback() {
-                    override fun onAdFailedToLoad(adError: LoadAdError) {
-                    }
-
-                    override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                        // Show the ad if it's ready. Otherwise toast and reload the ad.
-                        interstitialAd.show(requireActivity())
-                    }
-
-                })
-            }else{
-                val adRequest = AdManagerAdRequest.Builder().build()
-                AdManagerInterstitialAd.load(requireContext(),adUnit, adRequest, object : AdManagerInterstitialAdLoadCallback() {
-                    override fun onAdFailedToLoad(adError: LoadAdError) {
-                    }
-
-                    override fun onAdLoaded(interstitialAd: AdManagerInterstitialAd) {
-                        // Show the ad if it's ready. Otherwise toast and reload the ad.
-                        interstitialAd.show(requireActivity())
-                    }
-                })
             }
         }
     }

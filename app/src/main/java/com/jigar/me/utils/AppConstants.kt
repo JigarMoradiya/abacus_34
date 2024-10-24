@@ -7,8 +7,8 @@ object AppConstants {
     internal const val TEMP_BASE_URL = "https://abacuspro.in/backend/index.php/Api/"
 //    internal const val TEMP_BASE_URL = "https://www.sdd-production.com/jigar/backend/index.php/Api/"
 
-    const val BLINK_ICON_ANIMATION_DURATION: Long = 700
-    const val BLINK_ICON_ANIMATION_ALPHA: Float = 0.2F
+    const val BLINK_ICON_ANIMATION_DURATION: Long = 600
+    const val BLINK_ICON_ANIMATION_ALPHA: Float = 0.1F
 
     const val NUMBER_PUZZLE_SAVE = "number_puzzle_save"
     const val NUMBER_PUZZLE_CURRENT_SCORE = "number_puzzle_current_score"
@@ -34,7 +34,7 @@ object AppConstants {
             val type_Exercise = "Exercise"
             val type_CCM = "CCM"
             val type_CustomChallengeMode = "Custom Challenge Mode"
-            val type_Practise = "Practise"
+            val type_Practice_Set = "Practice Set of Formal Exam" // user only display name // formal_answer
         }
     }
     annotation class LoginData {
@@ -93,19 +93,11 @@ object AppConstants {
     }
     annotation class Purchase {
         companion object {
-            var Purchase_limit = 9999
             var Purchase_limit_free = 20
-
-            var AdsShow = "Y"
-            var AdsShowCount = "AdsShowCount"
-            var AdsShowNumberPuzzleStep = 20
-
             var Purchase_All = "Purchase_All"
-            var Purchase_Ads = "Purchase_Ads"
             var Purchase_Toddler_Single_digit_level1 = "Purchase_Toddler_Single_digit_level1"
             var Purchase_Add_Sub_level2 = "Purchase_Add_Sub_level2"
             var Purchase_Mul_Div_level3 = "Purchase_Mul_Div_level3"
-
             var Purchase_Material_Maths = "Purchase_Material_Maths"
             var Purchase_Material_Nursery = "Purchase_Material_Nursery"
 
@@ -333,6 +325,7 @@ object AppConstants {
             const val table_category = "category"
             const val table_pages = "pages"
             const val table_sets = "sets"
+            const val table_set_progress = "setProgress"
             const val table_abacus = "abacus"
         }
     }

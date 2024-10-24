@@ -31,7 +31,7 @@ class PagesNewAdapter(
         dataModel = data
         val list = allSetList.filter { it.page_id == data.id }
         if (list.isNotNullOrEmpty()){
-            val spanCount = if (list.size == 1 || list.size == 2  || list.size == 3) list.size else if (list.size == 4) 2 else if (list.size == 5 || list.size == 6) 3 else if (list.size == 7 || list.size == 8) 4 else 3
+            val spanCount = if (list.size == 1 || list.size == 2  || list.size == 3) list.size else if (list.size == 4) 2 else 3
             recyclerviewSet.layoutManager = GridLayoutManager(context,spanCount)
             val setsAdapter = SetsAdapter(list) { setPosition, setData ->
                 mListener.invoke(position,setPosition,setData,data )

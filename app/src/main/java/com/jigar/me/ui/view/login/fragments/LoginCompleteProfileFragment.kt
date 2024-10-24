@@ -15,10 +15,13 @@ import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import com.jigar.me.R
+import com.jigar.me.data.local.data.EventBusType
+import com.jigar.me.data.local.data.MessageEvent
 import com.jigar.me.data.model.data.KeyValuePair
 import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.UpdateProfileRequest
 import com.jigar.me.databinding.FragmentLoginCompleteProfileBinding
+import com.jigar.me.internal.workmanagers.FetchAbacusDataWorkManager
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.confirm_alerts.adapter.SingleSelectAdapter
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.SingleSelectionCommonDialog
@@ -31,11 +34,15 @@ import com.jigar.me.utils.Resource
 import com.jigar.me.utils.extensions.markRequiredInRed
 import com.jigar.me.utils.extensions.onClick
 import dagger.hilt.android.AndroidEntryPoint
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import java.util.Objects
 
 @AndroidEntryPoint
 class LoginCompleteProfileFragment : BaseFragment() {
     private lateinit var binding: FragmentLoginCompleteProfileBinding
+    private var root : View? = null
     private var mNavController: NavController? = null
     private val studentViewModel by viewModels<StudentViewModel>()
     private val locationViewModel by viewModels<LocationViewModel>()
@@ -48,11 +55,33 @@ class LoginCompleteProfileFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         initObserver()
     }
-    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
-        binding = FragmentLoginCompleteProfileBinding.inflate(inflater, container, false)
-        setNavigationGraph()
-        initListener()
-        return binding.root
+    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
+        if (root == null){
+            binding = FragmentLoginCompleteProfileBinding.inflate(inflater, container, false)
+            root = binding.root
+            setNavigationGraph()
+            initListener()
+        }
+        return root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        EventBus.getDefault().unregister(this)
+        super.onStop()
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onMessageEvent(event: MessageEvent) {
+        // Do something
+        if (event.type == EventBusType.LoginSync){
+            hideLoading()
+            MainDashboardActivity.getInstance(requireContext())
+        }
     }
 
     private fun setNavigationGraph() {
@@ -173,10 +202,10 @@ class LoginCompleteProfileFragment : BaseFragment() {
                     showLoading()
                 }
                 is Resource.Success -> {
-                    hideLoading()
                     if (it.value.status == AppConstants.APIStatus.SUCCESS)
                         onSuccess(it.value.data)
                     else
+                        hideLoading()
                         onFailure(it.value.error?.message)
                 }
                 is Resource.Failure -> {
@@ -215,24 +244,6 @@ class LoginCompleteProfileFragment : BaseFragment() {
                 }
             }
         }
-        studentViewModel.signupResponse.observe(this) {
-            when (it) {
-                is Resource.Loading -> {
-                    showLoading()
-                }
-                is Resource.Success -> {
-                    hideLoading()
-                    if (it.value.status == AppConstants.APIStatus.SUCCESS)
-                        onSuccess(it.value.data)
-                    else
-                        onFailure(it.value.error?.message)
-                }
-                is Resource.Failure -> {
-                    hideLoading()
-                    onFailure(it.errorBody)
-                }
-            }
-        }
     }
 
     private fun onSuccess(data: JsonObject?) {
@@ -247,7 +258,9 @@ class LoginCompleteProfileFragment : BaseFragment() {
             }
         }
         prefManager.setUserLoggedIn(true)
-        MainDashboardActivity.getInstance(requireContext())
+
+        // fetch abacus data
+        FetchAbacusDataWorkManager.fetchAbacusDetails()
     }
 
     private fun stateDialog() {

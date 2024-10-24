@@ -11,13 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.google.android.gms.ads.*
-import com.google.android.gms.ads.admanager.AdManagerAdRequest
-import com.google.android.gms.ads.admanager.AdManagerAdView
-import com.google.android.gms.ads.admanager.AdManagerInterstitialAd
-import com.google.android.gms.ads.admanager.AdManagerInterstitialAdLoadCallback
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.jigar.me.R
@@ -105,7 +98,6 @@ abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSetting
             setCustomParam(AppConstants.Purchase.Purchase_Toddler_Single_digit_level1, "N")
             setCustomParam(AppConstants.Purchase.Purchase_Add_Sub_level2, "N")
             setCustomParam(AppConstants.Purchase.Purchase_Mul_Div_level3, "N")
-            setCustomParam(AppConstants.Purchase.Purchase_Ads, "N")
             setCustomParam(AppConstants.Purchase.Purchase_Material_Maths, "N")
             setCustomParam(AppConstants.Purchase.Purchase_Material_Nursery, "N")
 
@@ -119,9 +111,6 @@ abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSetting
                     }
                     BillingRepository.AbacusSku.PRODUCT_ID_material_nursery -> {
                         setCustomParam(AppConstants.Purchase.Purchase_Material_Nursery, "Y")
-                    }
-                    BillingRepository.AbacusSku.PRODUCT_ID_ads -> {
-                        setCustomParam(AppConstants.Purchase.Purchase_Ads, "Y")
                     }
                     BillingRepository.AbacusSku.PRODUCT_ID_level1_lifetime -> {
                         setCustomParam(AppConstants.Purchase.Purchase_Toddler_Single_digit_level1, "Y")
@@ -218,100 +207,6 @@ abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSetting
         if (textToSpeech != null) {
             textToSpeech?.stop()
             textToSpeech?.shutdown()
-        }
-    }
-    // load Interstitial ads
-    fun showAMFullScreenAds(adUnit: String, isShowAdsDirect : Boolean = false) {
-        val isShowAd = if (isShowAdsDirect) true else{
-            val count = prefManager.getCustomParamInt(AppConstants.Purchase.AdsShowCount, 0)
-            if (count == 7) {
-                true
-            } else {
-                val newCount = if (count > 8){
-                    1
-                }else{
-                    count + 1
-                }
-                prefManager.setCustomParamInt(AppConstants.Purchase.AdsShowCount, newCount)
-                false
-            }
-        }
-        if (isShowAd){
-            val isAdmob = prefManager.getCustomParamBoolean(AppConstants.AbacusProgress.isAdmob,true)
-            if (isAdmob){
-                newInterstitialAd(adUnit,true)
-            }else{
-                newAdxInterstitialAd(adUnit,true)
-            }
-        }
-
-    }
-
-    fun newInterstitialAd(adUnit: String,isAdsCountReset : Boolean = false) {
-        val adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(requireContext(),adUnit, adRequest, object : InterstitialAdLoadCallback() {
-            override fun onAdFailedToLoad(adError: LoadAdError) {
-            }
-
-            override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                // Show the ad if it's ready. Otherwise toast and reload the ad.
-                interstitialAd.show(requireActivity())
-                if (isAdsCountReset){
-                    prefManager.setCustomParamInt(AppConstants.Purchase.AdsShowCount, 0)
-                }
-            }
-        })
-    }
-
-    fun newAdxInterstitialAd(adUnit: String,isAdsCountReset : Boolean = false) {
-        val adRequest = AdManagerAdRequest.Builder().build()
-        AdManagerInterstitialAd.load(requireContext(),adUnit, adRequest, object : AdManagerInterstitialAdLoadCallback() {
-            override fun onAdFailedToLoad(adError: LoadAdError) {
-            }
-
-            override fun onAdLoaded(interstitialAd: AdManagerInterstitialAd) {
-                // Show the ad if it's ready. Otherwise toast and reload the ad.
-                interstitialAd.show(requireActivity())
-                if (isAdsCountReset){
-                    prefManager.setCustomParamInt(AppConstants.Purchase.AdsShowCount, 0)
-                }
-            }
-        })
-    }
-    // load banner ads
-    fun showAMBannerAds(adViewLayout: LinearLayoutCompat, adUnit : String) {
-        try {
-            adViewLayout.gravity = Gravity.CENTER or Gravity.BOTTOM
-//            adViewLayout.minimumHeight = resources.displayMetrics.heightPixels / 11
-            // Request for Ads
-            val adRequest = AdRequest.Builder().build()
-            val listener: AdListener = object : AdListener() {
-                override fun onAdLoaded() {
-                    super.onAdLoaded()
-                    adViewLayout.show()
-                }
-
-                override fun onAdFailedToLoad(p0: LoadAdError) {
-                    super.onAdFailedToLoad(p0)
-                    adViewLayout.hide()
-                }
-            }
-            val isAdmob = prefManager.getCustomParamBoolean(AppConstants.AbacusProgress.isAdmob,true)
-            val adView = if (isAdmob){
-                AdView(requireContext())
-            }else{
-                AdManagerAdView(requireContext())
-            }
-            adView.setAdSize(AdSize.BANNER)
-            adView.adUnitId = adUnit
-            if (adView.adUnitId != "NA") {
-                adViewLayout.addView(adView)
-                adView.loadAd(adRequest)
-
-                adView.adListener = listener
-            }
-        } catch (ex: Exception) {
-            ex.printStackTrace()
         }
     }
 

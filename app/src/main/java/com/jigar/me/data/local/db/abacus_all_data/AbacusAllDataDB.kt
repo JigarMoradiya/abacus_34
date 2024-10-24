@@ -1,5 +1,8 @@
 package com.jigar.me.data.local.db.abacus_all_data
 
+import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class AbacusAllDataDB @Inject constructor(private val dao: AbacusAllDataDao) {
@@ -8,9 +11,17 @@ class AbacusAllDataDB @Inject constructor(private val dao: AbacusAllDataDao) {
     suspend fun getPages(id : String) = dao.getPages(id)
     suspend fun getSet(id : String) = dao.getSet(id)
     suspend fun getSetDetail(setId : String) = dao.getSetDetail(setId)
+    suspend fun getSetProgress(setId : String) = dao.getSetProgress(setId)
     suspend fun getAllSet() = dao.getAllSet()
     suspend fun getAbacus(id : String) = dao.getAbacus(id)
-    suspend fun updateSetProgress(setId : String,currentAbacusId : String) = dao.updateSetProgress(setId,currentAbacusId)
+    suspend fun insertSetProgress(data : List<SetProgress>) = withContext(Dispatchers.IO){
+        dao.insertSetProgress(data)
+    }
+    suspend fun deleteSetProgress(setId : String) = withContext(Dispatchers.IO){
+        dao.deleteSetProgress(setId)
+    }
     suspend fun updateSetTimer(setId : String,time : Long) = dao.updateSetTimer(setId,time)
+    suspend fun updateUserAnswer(abacusId : String,userAnswer : String) = dao.updateUserAnswer(abacusId,userAnswer)
+    suspend fun removeUserAnswer(setId : String) = dao.removeUserAnswer(setId)
 
 }

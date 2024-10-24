@@ -7,12 +7,12 @@ import com.jigar.me.utils.AppConstants
 
 @Entity(
     tableName = AppConstants.DBParam.table_category,
-    foreignKeys = [ForeignKey(
-        entity = Level::class,
-        parentColumns = arrayOf("id"),
-        childColumns = arrayOf("level_id"),
-        onDelete = ForeignKey.CASCADE
-    )]
+//    foreignKeys = [ForeignKey(
+//        entity = Level::class,
+//        parentColumns = arrayOf("id"),
+//        childColumns = arrayOf("level_id"),
+//        onDelete = ForeignKey.CASCADE
+//    )]
 )
 data class Category(
     @PrimaryKey(autoGenerate = false)

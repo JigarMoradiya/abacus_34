@@ -32,7 +32,6 @@ class YoutubeVideoFragment : BaseFragment(), YoutubeVideoListAdapter.OnItemClick
             setNavigationGraph()
             initViews()
             initListener()
-            bannerAds()
         }
         return root!!
     }
@@ -54,14 +53,6 @@ class YoutubeVideoFragment : BaseFragment(), YoutubeVideoListAdapter.OnItemClick
     }
     private fun onBack() {
         mNavController.navigateUp()
-    }
-    private fun bannerAds() {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y"
-            && prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y"
-            && prefManager.getCustomParam(AppConstants.Purchase.Purchase_All, "") != "Y"
-            && prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y") { // if not purchased
-            showAMBannerAds(binding.adView,getString(R.string.banner_ad_unit_id_abacus))
-        }
     }
     override fun onVideoItemClick(data: VideoData) {
         requireContext().openYoutube("https://youtu.be/${data.id}")

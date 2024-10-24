@@ -11,8 +11,6 @@ import androidx.hilt.work.HiltWorkerFactory
 import androidx.navigation.NavDeepLinkBuilder
 import androidx.work.Configuration
 import com.facebook.drawee.backends.pipeline.Fresco
-import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.ads.RequestConfiguration
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.jigar.me.data.model.NotificationData
@@ -82,15 +80,7 @@ class MyApplication : Application(), Configuration.Provider {
 
     override fun onCreate() {
         super.onCreate()
-        MobileAds.initialize(this)
         Fresco.initialize(this)
-
-        if (BuildConfig.DEBUG){
-            val testDeviceIds = listOf("465FAD15876FE450FAC4DFB84C422B2E","382FFCBE27B5AE320FD2EECB403C0D46")
-            val configuration = RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build()
-            MobileAds.setRequestConfiguration(configuration)
-        }
-
         analytics = FirebaseAnalytics.getInstance(this@MyApplication)
 
         oneSignal()

@@ -6,12 +6,13 @@ import androidx.room.PrimaryKey
 import com.jigar.me.utils.AppConstants
 
 @Entity(tableName = AppConstants.DBParam.table_sets,
-    foreignKeys = [ForeignKey(
-        entity = Pages::class,
-        parentColumns = arrayOf("id"),
-        childColumns = arrayOf("page_id"),
-        onDelete = ForeignKey.CASCADE
-    )])
+//    foreignKeys = [ForeignKey(
+//        entity = Pages::class,
+//        parentColumns = arrayOf("id"),
+//        childColumns = arrayOf("page_id"),
+//        onDelete = ForeignKey.CASCADE
+//    )]
+)
 data class Set(
     @PrimaryKey(autoGenerate = false)
     val id: String,
@@ -24,9 +25,12 @@ data class Set(
     val is_active: Boolean = true,
     val description: String? = null,
     val hint: String? = null,
+
     val totals_abacus: Int = 0,
-    val currentAbacusId: String? = null,
-    val totals_take_time: Int? = null,
+    val latest_abacus_id: String? = null,
+    val is_running_set: Boolean = false,
+    val is_completed_set: Boolean = false,
 ){
-    fun getSetTitle() = name+" ("+totals_abacus+")"
+//    fun getSetTitle() = name+" ("+totals_abacus+")"
+    fun getSetTitle() = name
 }

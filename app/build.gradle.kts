@@ -103,10 +103,10 @@ dependencies {
 
     // google
     implementation("com.google.android.gms:play-services-auth:21.2.0")
-    implementation("com.google.android.gms:play-services-ads:23.2.0")
+//    implementation("com.google.android.gms:play-services-ads:23.2.0")
 
     // push notification
-    implementation("com.onesignal:OneSignal:5.1.19")
+    implementation("com.onesignal:OneSignal:5.1.23")
 
     // api
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -137,7 +137,7 @@ dependencies {
     implementation("android.arch.persistence.room:rxjava2:1.1.1")
 
     // In App Purchase
-    implementation("com.android.billingclient:billing-ktx:7.0.0")
+    implementation("com.android.billingclient:billing-ktx:7.1.1")
 
     // gson data
     implementation("com.google.code.gson:gson:2.10.1")
@@ -166,8 +166,11 @@ dependencies {
     implementation("com.github.ome450901:SimpleRatingBar:1.5.0")
 
     // image viewer pager
-    implementation("com.facebook.fresco:fresco:2.4.0")
+    implementation("com.facebook.fresco:fresco:3.2.0")
     implementation("com.github.stfalcon:frescoimageviewer:0.5.0")
+
+    // event bus broadcaster
+    implementation("org.greenrobot:eventbus:3.2.0")
 }
 
 // Allow references to generated code

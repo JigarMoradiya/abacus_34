@@ -87,41 +87,10 @@
                         tools:listitem="@layout/row_exercise_result" />
                 </RelativeLayout>
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvResultTitle"
-                    style="@style/mainTitleSmall"
-                    android:visibility="gone"
-                    tools:visibility="visible"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/activity_padding6"
-                    android:text="@string/better_luck_for_next_time"
-                    android:textColor="@color/colorPrimaryDark"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/relList" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvResult"
-                    style="@style/mainTitleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    tools:visibility="visible"
-                    android:layout_marginTop="@dimen/activity_padding2"
-                    android:gravity="center"
-                    android:paddingHorizontal="@dimen/activity_padding8"
-                    android:paddingBottom="@dimen/activity_padding8"
-                    android:text="@string/fail_to_got_80"
-                    app:fontFamily="@font/font_bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvResultTitle" />
-
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/activity_padding4"
-                    app:layout_constraintTop_toBottomOf="@+id/tvResult" />
+                    app:layout_constraintTop_toBottomOf="@+id/relList" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </com.google.android.material.card.MaterialCardView>

@@ -101,6 +101,13 @@ data class SubmitAllExamDataRequest(
     var is_question_speak: Boolean? = null,
     var is_question_show_in_number: Boolean? = null,
     var is_question_show_in_word: Boolean? = null,
+
+    // set
+    var set_id: String? = null,
+    var reference_id: String? = null,
+    var abacus_id: String? = null,
+    var is_set_completed : Boolean? = null,
+    var retry_count : Int? = null,
 )
 
 data class QuestionDataRequest(

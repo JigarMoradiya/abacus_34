@@ -15,6 +15,7 @@ import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.data.model.dbtable.abacus_all_data.Level
 import com.jigar.me.data.model.dbtable.abacus_all_data.Pages
 import com.jigar.me.data.model.dbtable.abacus_all_data.Set
+import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
 import com.jigar.me.data.model.dbtable.exam.ExamHistory
 import com.jigar.me.data.model.dbtable.inapp.InAppPurchaseDetails
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
@@ -26,7 +27,7 @@ import java.util.concurrent.Executors
 
 @Database(
     entities = [InAppSkuDetails::class,InAppPurchaseDetails::class, ExamHistory::class
-         ,Level::class, Category::class, Pages::class, Set::class, Abacus::class],
+         ,Level::class, Category::class, Pages::class, Set::class, SetProgress::class, Abacus::class],
     version = 14,
     exportSchema = false
 )

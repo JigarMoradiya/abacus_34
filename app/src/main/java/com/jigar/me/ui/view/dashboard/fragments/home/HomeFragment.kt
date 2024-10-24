@@ -146,16 +146,13 @@ class HomeFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     private fun initListener() {
         with(binding){
             cardProfileImage.onClick {
-//                cardEditImage.performClick()
-                mNavController?.navigate(R.id.toHomeNewFragment)
+                cardEditImage.performClick()
             }
             txtWelcomeTitle.onClick { cardEditImage.performClick() }
             txtWelcomeMsg.onClick { cardEditImage.performClick() }
             txtMyAccount.onClick { cardEditImage.performClick() }
             cardEditImage.onClick { moveToClick(AppConstants.HomeClicks.Menu_My_Profile) }
             cardSettingTop.onClick {
-                // TODO temp
-                FetchAbacusDataWorkManager.fetchAbacusDetails()
                 moveToClick(AppConstants.HomeClicks.Menu_Setting)
             }
             cardSubscribe.onClick { moveToClick(AppConstants.HomeClicks.Menu_Subscribe) }

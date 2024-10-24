@@ -21,9 +21,13 @@ fun Int.secToTimeFormat(): String {
     val minutes = this / 60
     val seconds = this % 60
     return if (hours > 0){
-        String.format("%d:%d:%02d", hours, minutes, seconds)
+        String.format("%02dh : %02dm : %02ds", hours, minutes, seconds)
+    }else if(minutes > 0 && seconds > 0 ){
+        String.format("%02d min %02d sec", minutes, seconds)
+    }else if(minutes > 0){
+        String.format("%02d min", minutes)
     }else{
-        String.format("%d:%02d", minutes, seconds)
+        String.format("%02d sec", seconds)
     }
 }
 

@@ -12,10 +12,14 @@ import androidx.work.WorkerParameters
 import com.google.gson.Gson
 import com.jigar.me.MyApplication
 import com.jigar.me.data.api.StudentApi
+import com.jigar.me.data.local.data.EventBusType
+import com.jigar.me.data.local.data.MessageEvent
 import com.jigar.me.data.local.db.AppDatabase
 import com.jigar.me.data.model.data.AbacusAllData
 import com.jigar.me.data.model.data.FetchAbacusDataRequest
+import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.Constants
 import com.jigar.me.utils.DateTimeUtils
 import com.jigar.me.utils.DateTimeUtils.formatTo
 import dagger.assisted.Assisted
@@ -23,6 +27,7 @@ import dagger.assisted.AssistedInject
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.runBlocking
+import org.greenrobot.eventbus.EventBus
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -37,6 +42,7 @@ class FetchAbacusDataWorkManager @AssistedInject constructor(
 ) : CoroutineWorker(appContext, workerParams) {
     private val context = appContext
     private val appDataBase = AppDatabase.getInstance(context)
+    private var prefManager : AppPreferencesHelper = AppPreferencesHelper(context, AppConstants.PREF_NAME)
 
     override suspend fun doWork(): Result = coroutineScope {
         val jobs = async {
@@ -51,8 +57,8 @@ class FetchAbacusDataWorkManager @AssistedInject constructor(
 
             val cal = Calendar.getInstance()
             cal.add(Calendar.YEAR,-1)
-//            val dateTime = cal.time.formatTo(DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz)
-            val dateTime = "2023-07-01T12:00:00.000Z"
+//            val dateTime = "2023-07-01T12:00:00.000Z"
+            val dateTime = prefManager.getCustomParam(Constants.last_sync_time,"2023-07-01T12:00:00.000Z")
             val request = FetchAbacusDataRequest(true,true,true,true,true,dateTime)
             Log.e("jigarWorkManager","FetchAbacusDataWorkManager request = "+Gson().toJson(request))
             val apiResponse = apiStudent.getAbacusData(request)
@@ -63,8 +69,11 @@ class FetchAbacusDataWorkManager @AssistedInject constructor(
                     response.categories?.let { appDataBase.abacusAllDataDao().insertCategory(it) }
                     response.pages?.let { appDataBase.abacusAllDataDao().insertPages(it) }
                     response.set?.let { appDataBase.abacusAllDataDao().insertSet(it) }
+                    response.setProgress?.let { appDataBase.abacusAllDataDao().insertSetProgress(it) }
                     response.abacus?.let { appDataBase.abacusAllDataDao().insertAbacus(it) }
+                    response.last_sync_time?.let { prefManager.setCustomParam(Constants.last_sync_time,it) }
                 }
+                EventBus.getDefault().post(MessageEvent(EventBusType.LoginSync))
             }
         }catch (e : IOException){
             e.printStackTrace()

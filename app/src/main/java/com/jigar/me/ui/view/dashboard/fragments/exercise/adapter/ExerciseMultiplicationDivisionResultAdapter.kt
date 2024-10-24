@@ -21,26 +21,33 @@ class ExerciseMultiplicationDivisionResultAdapter(private var questions: List<Ex
         val data = questions[position]
         with(holder.binding){
             val context = root.context
-            val questions = if (data.question.contains("x")){
-                data.question.split("x")
+            if (data.question.contains("+") || data.question.contains("-")){
+                imgSymbol.hide()
+                tvQuestion2.hide()
+                tvQuestion1.text = data.question
             }else{
-                data.question.split("/")
+                val questions = if (data.question.contains("x")){
+                    data.question.split("x")
+                }else{
+                    data.question.split("/")
+                }
+
+                if (questions.size == 2){
+                    tvQuestion1.text = questions[0]
+                    tvQuestion2.text = questions[1]
+                }
+
+                if (data.question.contains("x")){
+                    imgSymbol.setImageResource(R.drawable.cal_mul)
+                    imgSymbol.show()
+                }else if (data.question.contains("/")){
+                    imgSymbol.setImageResource(R.drawable.cal_divide)
+                    imgSymbol.show()
+                }else{
+                    imgSymbol.invisible()
+                }
             }
 
-            if (questions.size == 2){
-                tvQuestion1.text = questions[0]
-                tvQuestion2.text = questions[1]
-            }
-
-            if (data.question.contains("x")){
-                imgSymbol.setImageResource(R.drawable.cal_mul)
-                imgSymbol.show()
-            }else if (data.question.contains("/")){
-                imgSymbol.setImageResource(R.drawable.cal_divide)
-                imgSymbol.show()
-            }else{
-                imgSymbol.invisible()
-            }
 
             if (data.userAnswer == -1){
                 txtYourAnswer.text = "0"

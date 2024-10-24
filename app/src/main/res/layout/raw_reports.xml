@@ -82,9 +82,8 @@
                     android:paddingStart="@dimen/activity_padding8"
                     android:paddingEnd="@dimen/activity_padding8"
                     android:text="@string/checkResult"
-                    app:layout_constraintBottom_toBottomOf="@+id/txtExerciseLabel"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtExerciseType"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:textAllCaps="false" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -93,7 +92,6 @@
                     android:layout_height="wrap_content"
                     app:fontFamily="@font/font_bold"
                     android:includeFontPadding="false"
-                    android:text="@{data.type.equalsIgnoreCase(`Exam`)?@string/level_of_exam:@string/type_of_exercise}"
                     tools:text="@string/type_of_exercise"
                     android:textColor="@color/colorHeadingBlack_00"
                     android:textSize="@dimen/textSizeSmall"
@@ -106,7 +104,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/activity_padding4"
                     android:includeFontPadding="false"
-                    android:text="@{data.type.equalsIgnoreCase(`Exam`)?data.level:data.category}"
                     android:textColor="@color/colorHeadingBlack_00"
                     android:textSize="@dimen/textSizeExtraSmall"
                     app:layout_constraintBottom_toBottomOf="@+id/txtExerciseType"
@@ -118,11 +115,9 @@
                     android:id="@+id/txtExerciseLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/activity_padding2"
                     app:fontFamily="@font/font_bold"
                     android:includeFontPadding="false"
                     tools:text="@string/exercise_in"
-                    android:text="@{data.type.equalsIgnoreCase(`Exam`)?@string/type_of_questions:@string/exercise_in}"
                     android:textColor="@color/colorHeadingBlack_00"
                     android:textSize="@dimen/textSizeSmall"
                     app:layout_constraintStart_toStartOf="parent"
@@ -134,7 +129,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/activity_padding4"
                     android:includeFontPadding="false"
-                    android:text="@{data.type.equalsIgnoreCase(`Exam`)?data.sub_type.replace(`,`,`, `):data.label}"
                     android:textColor="@color/colorHeadingBlack_00"
                     android:textSize="@dimen/textSizeExtraSmall"
                     app:layout_constraintBottom_toBottomOf="@+id/txtExerciseLabel"
@@ -143,6 +137,12 @@
                     tools:text="1 Digits 5 Lines X 5 Questions" />
 
 
+                <androidx.constraintlayout.widget.Barrier
+                    android:layout_width="wrap_content"
+                    app:barrierAllowsGoneWidgets="true"
+                    app:barrierDirection="bottom"
+                    app:constraint_referenced_ids="txtExerciseType,txtExerciseLabel,txtExerciseCheckResult"
+                    android:layout_height="wrap_content"/>
 
                 <RelativeLayout
                     android:id="@+id/linearTotalQuestionEx"
@@ -191,7 +191,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:visibility="@{data.type.equalsIgnoreCase(`Exam`)?View.GONE:View.VISIBLE}"
+                    android:visibility="@{data.type.equalsIgnoreCase(`Exercise`)?View.VISIBLE:View.GONE}"
                     tools:visibility="visible"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toStartOf="@+id/linearTotalTimeEx"

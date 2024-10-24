@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.dashboard.fragments.home_new.category
 
+import android.util.Log
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -8,8 +9,11 @@ import com.jigar.me.data.model.dbtable.abacus_all_data.Pages
 import com.jigar.me.data.model.dbtable.abacus_all_data.Set
 import com.jigar.me.databinding.RawSetListBinding
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.CommonUtils
+import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.layoutInflater
 import com.jigar.me.utils.extensions.onClick
+import com.jigar.me.utils.extensions.show
 
 class SetsAdapter(
     private var listData: List<Set>,
@@ -41,6 +45,16 @@ class SetsAdapter(
             }
         }else{
             conMain.setBackgroundColor(ContextCompat.getColor(context, R.color.red_400))
+        }
+        if (data.is_completed_set){
+            imgCompletedIndicator.show()
+        }else{
+            imgCompletedIndicator.hide()
+        }
+        if (data.is_running_set){
+            CommonUtils.blinkView(imgRunningIndicator)
+        }else{
+            imgRunningIndicator.hide()
         }
         root.onClick {
             mListener.invoke(position,data)

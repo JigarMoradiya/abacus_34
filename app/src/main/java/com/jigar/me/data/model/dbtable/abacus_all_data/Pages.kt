@@ -6,12 +6,12 @@ import androidx.room.PrimaryKey
 import com.jigar.me.utils.AppConstants
 
 @Entity(tableName = AppConstants.DBParam.table_pages,
-    foreignKeys = [ForeignKey(
-        entity = Category::class,
-        parentColumns = arrayOf("id"),
-        childColumns = arrayOf("category_id"),
-        onDelete = ForeignKey.CASCADE
-    )]
+//    foreignKeys = [ForeignKey(
+//        entity = Category::class,
+//        parentColumns = arrayOf("id"),
+//        childColumns = arrayOf("category_id"),
+//        onDelete = ForeignKey.CASCADE
+//    )]
 )
 data class Pages(
     @PrimaryKey(autoGenerate = false)

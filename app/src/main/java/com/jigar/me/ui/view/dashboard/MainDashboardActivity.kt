@@ -73,7 +73,6 @@ class MainDashboardActivity : BaseActivity() {
     }
 
     private fun initToolBar() {
-        setSupportActionBar(binding.toolbar)
     }
 
     private fun initViews() {
@@ -86,20 +85,6 @@ class MainDashboardActivity : BaseActivity() {
     }
 
     private fun showToolbarTitle(id: Int) {
-        when (id) {
-            R.id.homeFragment -> {
-                binding.toolbar.hide()
-            }
-            else -> {
-                binding.toolbar.hide()
-            }
-        }
-    }
-
-    private fun showOnlyBackArrow() { //  Hide bottom navigation bar, Show toolbar back icon
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
     }
 
     private fun onMainActivityBack() {
@@ -108,7 +93,7 @@ class MainDashboardActivity : BaseActivity() {
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     when (selectedFragment) {
-                        R.id.homeFragment -> {
+                        R.id.homeNewFragment -> {
                             finish()
                         }
                         else -> {

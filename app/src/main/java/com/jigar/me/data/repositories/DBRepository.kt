@@ -5,6 +5,7 @@ import com.jigar.me.data.local.db.abacus_all_data.AbacusAllDataDB
 import com.jigar.me.data.local.db.exam.ExamHistoryDB
 import com.jigar.me.data.local.db.inapp.purchase.InAppPurchaseDB
 import com.jigar.me.data.local.db.inapp.sku.InAppSKUDB
+import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
 import com.jigar.me.data.model.dbtable.exam.ExamHistory
 import javax.inject.Inject
 
@@ -32,8 +33,12 @@ class DBRepository @Inject constructor(
     suspend fun getPages(id : String) = abacusAllDataDB.getPages(id)
     suspend fun getSet(id : String) = abacusAllDataDB.getSet(id)
     suspend fun getSetDetail(setId : String) = abacusAllDataDB.getSetDetail(setId)
+    suspend fun getSetProgress(setId : String) = abacusAllDataDB.getSetProgress(setId)
     suspend fun getAllSet() = abacusAllDataDB.getAllSet()
     suspend fun getAbacus(id : String) = abacusAllDataDB.getAbacus(id)
-    suspend fun updateSetProgress(setId : String,currentAbacusId : String) = abacusAllDataDB.updateSetProgress(setId,currentAbacusId)
+    suspend fun insertSetProgress(data : List<SetProgress>) = abacusAllDataDB.insertSetProgress(data)
+    suspend fun deleteSetProgress(setId : String) = abacusAllDataDB.deleteSetProgress(setId)
     suspend fun updateSetTimer(setId : String,time : Long) = abacusAllDataDB.updateSetTimer(setId,time)
+    suspend fun updateUserAnswer(abacusId : String,userAnswer : String) = abacusAllDataDB.updateUserAnswer(abacusId,userAnswer)
+    suspend fun removeUserAnswer(setId : String) = abacusAllDataDB.removeUserAnswer(setId)
 }

@@ -42,7 +42,9 @@ class HomeMenuNewAdapter(
         }else {
             txtTag.show()
             txtTag.text = data.tag
-            if (data.tag.equals(context.getString(R.string.new_),true) || data.tag.equals(context.getString(R.string.most_liked),true)){
+            if (data.tag.equals(context.getString(R.string.new_),true)){
+                txtTag.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context,R.color.green_900))
+            }else if (data.tag.equals(context.getString(R.string.new_),true) || data.tag.equals(context.getString(R.string.most_liked),true)){
                 txtTag.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context,R.color.red_900))
             }else{
                 txtTag.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context,R.color.tag_bg))

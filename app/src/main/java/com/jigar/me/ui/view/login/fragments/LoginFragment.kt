@@ -13,10 +13,13 @@ import androidx.navigation.Navigation
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.jigar.me.R
+import com.jigar.me.data.local.data.EventBusType
+import com.jigar.me.data.local.data.MessageEvent
 import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.LoginRequest
 import com.jigar.me.data.model.data.ResendOTPRequest
 import com.jigar.me.databinding.FragmentLoginBinding
+import com.jigar.me.internal.workmanagers.FetchAbacusDataWorkManager
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.ui.viewmodel.StudentViewModel
@@ -27,11 +30,15 @@ import com.jigar.me.utils.Resource
 import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.openURL
 import dagger.hilt.android.AndroidEntryPoint
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import java.util.Objects
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment() {
     private lateinit var binding: FragmentLoginBinding
+    private var root : View? = null
     private var mNavController: NavController? = null
     private val studentViewModel by viewModels<StudentViewModel>()
 
@@ -39,18 +46,38 @@ class LoginFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         initObserver()
     }
-    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
-        binding = FragmentLoginBinding.inflate(inflater, container, false)
-        setNavigationGraph()
-        initView()
-        initListener()
-        return binding.root
+    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
+        if (root == null){
+            binding = FragmentLoginBinding.inflate(inflater, container, false)
+            root = binding.root
+            setNavigationGraph()
+            initView()
+            initListener()
+        }
+        return root
     }
 
     private fun initView() {
 
     }
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
 
+    override fun onStop() {
+        EventBus.getDefault().unregister(this)
+        super.onStop()
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onMessageEvent(event: MessageEvent) {
+        // Do something
+        if (event.type == EventBusType.LoginSync){
+            hideLoading()
+            MainDashboardActivity.getInstance(requireContext())
+        }
+    }
     private fun setNavigationGraph() {
         mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
     }
@@ -117,10 +144,10 @@ class LoginFragment : BaseFragment() {
                     showLoading()
                 }
                 is Resource.Success -> {
-                    hideLoading()
                     if (it.value.status == AppConstants.APIStatus.SUCCESS)
                         onSuccess(it.value.data)
                     else{
+                        hideLoading()
                         onFailure(it.value.error?.message)
                     }
                 }
@@ -170,7 +197,9 @@ class LoginFragment : BaseFragment() {
             }
         }
         prefManager.setUserLoggedIn(true)
-        MainDashboardActivity.getInstance(requireContext())
+
+        // fetch abacus data
+        FetchAbacusDataWorkManager.fetchAbacusDetails()
 
     }
 

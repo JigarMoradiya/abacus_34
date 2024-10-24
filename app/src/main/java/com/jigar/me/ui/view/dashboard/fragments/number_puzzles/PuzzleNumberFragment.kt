@@ -8,13 +8,6 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.admanager.AdManagerAdRequest
-import com.google.android.gms.ads.admanager.AdManagerInterstitialAd
-import com.google.android.gms.ads.admanager.AdManagerInterstitialAdLoadCallback
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.jigar.me.MyApplication
 import com.jigar.me.R
 import com.jigar.me.databinding.FragmentPuzzleNumberBinding
@@ -60,85 +53,10 @@ class PuzzleNumberFragment : BaseFragment(), NumberSequenceCompleteBottomSheet.N
         setNavigationGraph()
         initViews()
         initListener()
-        ads()
         return mBinding.root
     }
     private fun setNavigationGraph() {
         mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
-    }
-
-    private fun stepAds() {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y" &&
-            prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y" &&
-            (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All,"") != "Y" && // purchase not
-                    prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y")
-        ) {
-            val isAdmob = prefManager.getCustomParamBoolean(AppConstants.AbacusProgress.isAdmob,true)
-            if (isAdmob){
-                newInterstitialAd(getString(R.string.interstitial_ad_unit_id_number_puzzle_step))
-            }else{
-                newAdxInterstitialAd(getString(R.string.interstitial_ad_unit_id_number_puzzle_step))
-            }
-
-        }
-    }
-    private fun ads() {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y" &&
-            prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y" &&
-            (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All,"") != "Y" && // purchase not
-                    prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y")
-        ){
-            showAMBannerAds(mBinding.adView,getString(R.string.banner_ad_unit_id_number_puzzle))
-        }
-    }
-    private fun newInterstitialAdCompletePuzzle() {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y" &&
-            prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y" &&
-            (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All,"") != "Y" && // purchase not
-                    prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y")
-        ){
-            val isAdmob = prefManager.getCustomParamBoolean(AppConstants.AbacusProgress.isAdmob,true)
-            val adUnit = getString(R.string.interstitial_ad_unit_id_number_puzzle_complete)
-            if (isAdmob){
-                val adRequest = AdRequest.Builder().build()
-                InterstitialAd.load(requireContext(), adUnit, adRequest, object : InterstitialAdLoadCallback() {
-                    override fun onAdFailedToLoad(adError: LoadAdError) {
-                        hideLoading()
-                        showCompleteDialog()
-                    }
-
-                    override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                        hideLoading()
-                        // Show the ad if it's ready. Otherwise toast and reload the ad.
-                        interstitialAd.show(requireActivity())
-                        lifecycleScope.launch {
-                            delay(400)
-                            showCompleteDialog()
-                        }
-                    }
-                })
-            }else{
-                val adRequest = AdManagerAdRequest.Builder().build()
-                AdManagerInterstitialAd.load(requireContext(),adUnit, adRequest, object : AdManagerInterstitialAdLoadCallback() {
-                    override fun onAdFailedToLoad(adError: LoadAdError) {
-                        hideLoading()
-                        showCompleteDialog()
-                    }
-
-                    override fun onAdLoaded(interstitialAd: AdManagerInterstitialAd) {
-                        hideLoading()
-                        // Show the ad if it's ready. Otherwise toast and reload the ad.
-                        interstitialAd.show(requireActivity())
-                        lifecycleScope.launch {
-                            delay(400)
-                            showCompleteDialog()
-                        }
-                    }
-                })
-            }
-        }else{
-            showCompleteDialog()
-        }
     }
 
     private fun showCompleteDialog() {
@@ -285,15 +203,6 @@ class PuzzleNumberFragment : BaseFragment(), NumberSequenceCompleteBottomSheet.N
     }
     private fun showGame(isShowAds : Boolean = false) {
         mBinding.txtCurrentMoves.text = numbSteps.toString()
-        if (numbSteps > 0 && isShowAds){
-            try {
-                if (numbSteps % AppConstants.Purchase.AdsShowNumberPuzzleStep == 0){
-                    stepAds()
-                }
-            } catch (e: Exception) {
-            }
-        }
-
         for (i in 0 until gridType) for (j in 0 until gridType) button[i][j]?.setImageResource(cardImages[cards?.getValueBoard(i,j)!!])
         setSoundIcon()
     }
@@ -320,7 +229,7 @@ class PuzzleNumberFragment : BaseFragment(), NumberSequenceCompleteBottomSheet.N
             }
             prefManager.setCustomParam(AppConstants.NUMBER_PUZZLE_SAVE+gridType, "")
             check = true
-            newInterstitialAdCompletePuzzle()
+            showCompleteDialog()
         }
     }
     private fun saveValueBoard() {

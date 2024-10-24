@@ -187,10 +187,6 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
         }
 
         startAbacus()
-        lifecycleScope.launch {
-            delay(400)
-            bannerAds()
-        }
     }
 
     private fun setThemeColor() {
@@ -217,14 +213,6 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                 binding.cardHint2.setStrokeColor(ColorStateList.valueOf(finalColor60))
             }
 
-        }
-    }
-
-    private fun bannerAds() {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y"
-            && prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y"
-            && !isPurchased && prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y") { // if not purchased
-            showAMBannerAds(binding.adView,getString(R.string.banner_ad_unit_id_abacus))
         }
     }
     private fun initListener() {
@@ -1211,7 +1199,6 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
     }
 
     private fun makeAutoRefresh() {
-        ads()
         if (isStepByStep && isAutoRefresh){
             abacusFragment?.resetButtonEnable(false)
             lifecycleScope.launch {
@@ -1225,17 +1212,12 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
         }
     }
 
-    private fun ads() {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y"
-            && prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y"
-            && !isPurchased && prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y") { // if not purchased
-            showAMFullScreenAds(getString(R.string.interstitial_ad_unit_id_abacus_half_screen))
-        }
-    }
 
     override fun onAbacusValueDotReset() {
         resetOrMoveNext()
     }
+
+    override fun onAbacusSubmitValue(userAnswer : String) = Unit
 
     private fun resetOrMoveNext() {
         if (abacusType == AppConstants.extras_Comman.AbacusTypeNumber) {

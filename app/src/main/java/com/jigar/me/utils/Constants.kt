@@ -60,4 +60,6 @@ object Constants {
     var Que = "Que"
     var Sign = "Sign"
     var Hint = "Hint"
+
+    var last_sync_time = "last_sync_time"
 }

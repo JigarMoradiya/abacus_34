@@ -2,6 +2,7 @@ package com.jigar.me.ui.viewmodel
 
 import androidx.lifecycle.*
 import com.jigar.me.data.model.MainAPIResponseArray
+import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
 import com.jigar.me.data.model.dbtable.exam.ExamHistory
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.data.repositories.ApiRepository
@@ -45,9 +46,13 @@ class AppViewModel @Inject constructor(private val apiRepository: ApiRepository,
     suspend fun getPages(id: String) = dbRepository.getPages(id)
     suspend fun getSet(id: String) = dbRepository.getSet(id)
     suspend fun getSetDetail(setId : String) = dbRepository.getSetDetail(setId)
+    suspend fun getSetProgress(setId : String) = dbRepository.getSetProgress(setId)
     suspend fun getAllSet() = dbRepository.getAllSet()
     suspend fun getAbacus(id: String) = dbRepository.getAbacus(id)
-    suspend fun updateSetProgress(setId : String,currentAbacusId : String) = dbRepository.updateSetProgress(setId,currentAbacusId)
+    suspend fun insertSetProgress(data : List<SetProgress>) = dbRepository.insertSetProgress(data)
+    suspend fun deleteSetProgress(setId : String) = dbRepository.deleteSetProgress(setId)
     suspend fun updateSetTimer(setId : String,time : Long) = dbRepository.updateSetTimer(setId,time)
+    suspend fun updateUserAnswer(abacusId : String,userAnswer : String) = dbRepository.updateUserAnswer(abacusId,userAnswer)
+    suspend fun removeUserAnswer(setId : String) = dbRepository.removeUserAnswer(setId)
 
 }

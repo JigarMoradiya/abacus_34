@@ -2,13 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/reg_navigation_graph"
-    app:startDestination="@+id/homeFragment">
+    app:startDestination="@+id/homeNewFragment">
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.home.HomeFragment">
-        <action
-            android:id="@+id/toHomeNewFragment"
-            app:destination="@+id/homeNewFragment" />
         <action
             android:id="@+id/action_homeFragment_to_fullAbacusFragment"
             app:destination="@+id/fullAbacusFragment" />
@@ -50,6 +47,9 @@
     <fragment
         android:id="@+id/homeNewFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.home_new.HomeNewFragment">
+        <action
+            android:id="@+id/toHomeFragment"
+            app:destination="@+id/homeFragment" />
         <action
             android:id="@+id/toCategoryFragment"
             app:destination="@+id/categoryFragment" />
@@ -312,9 +312,6 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.settings.SettingsFragment">
-        <action
-            android:id="@+id/toPurchaseFragment"
-            app:destination="@+id/purchaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/purchaseFragment"

@@ -16,7 +16,9 @@ import javax.inject.Inject
 class ExamViewModel @Inject constructor(private val apiRepository: ExamApiRepository) : ViewModel() {
     private val _submitAllExamResponse: MutableLiveData<Resource<MainAPIResponse>> = MutableLiveData()
     val submitAllExamResponse: LiveData<Resource<MainAPIResponse>> get() = _submitAllExamResponse
+    var submitAllExamDataRequest : SubmitAllExamDataRequest? = null
     fun submitAllExam(request : SubmitAllExamDataRequest) = viewModelScope.launch {
+        submitAllExamDataRequest = request
         _submitAllExamResponse.value = Resource.Loading
         _submitAllExamResponse.value = apiRepository.submitAllExam(request)
     }

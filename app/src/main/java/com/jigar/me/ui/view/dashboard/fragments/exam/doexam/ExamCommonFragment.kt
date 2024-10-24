@@ -14,15 +14,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.android.gms.ads.AdError
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.FullScreenContentCallback
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.admanager.AdManagerAdRequest
-import com.google.android.gms.ads.admanager.AdManagerInterstitialAd
-import com.google.android.gms.ads.admanager.AdManagerInterstitialAdLoadCallback
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.gson.Gson
 import com.jigar.me.MyApplication
 import com.jigar.me.R
@@ -106,7 +97,6 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
         setNavigationGraph()
         init()
         clickListener()
-        ads()
         return mBinding.root
     }
     private fun setNavigationGraph() {
@@ -258,15 +248,6 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
         mBinding.cardAnswer22.onClick { onViewClick("answer22") }
         mBinding.cardAnswer33.onClick { onViewClick("answer33") }
         mBinding.cardAnswer44.onClick { onViewClick("answer44") }
-    }
-
-    private fun ads() {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y" // local
-            && prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y" && // if yes in firebase
-            (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All,"") != "Y" // if not purchased
-                    && prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y")) {
-            showAMBannerAds(mBinding.adView,getString(R.string.banner_ad_unit_id_exam))
-        }
     }
 
     private fun setDailyExamAbacus() {
@@ -723,27 +704,12 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
         if (handler != null && runnable != null) {
             handler?.removeCallbacks(runnable!!)
         }
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y" // local
-            && prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y" && // if yes in firebase
-            (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All,"") != "Y" // if not purchased
-                    && prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y")) {
-            newInterstitialAdRequest(getString(R.string.interstitial_ad_unit_id_exam_leave))
-        }else{
-            onBack()
-        }
+        onBack()
     }
     // exam complete listner
     override fun testCompleteClose() {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y" // local
-            && prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y" && // if yes in firebase
-            (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All,"") != "Y" // if not purchased
-                    && prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y")) {
-            newInterstitialAdRequest(getString(R.string.interstitial_ad_unit_id_exam_complete_close))
-        }else{
-            onBack()
-        }
+        onBack()
     }
-
 
     override fun testCompleteGotoResult() {
         val bundle = Bundle()
@@ -755,85 +721,6 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
     }
     private fun onBack() {
         mNavController.navigateUp()
-    }
-
-    // exam complate and close, leave exam
-    private fun newInterstitialAdRequest(adUnit : String) {
-        showLoading()
-        val isAdmob = prefManager.getCustomParamBoolean(AppConstants.AbacusProgress.isAdmob,true)
-        if (isAdmob){
-            val adRequest = AdRequest.Builder().build()
-            InterstitialAd.load(requireContext(),adUnit, adRequest, object : InterstitialAdLoadCallback() {
-                override fun onAdFailedToLoad(adError: LoadAdError) {
-                    hideLoadingAndFinish()
-                }
-
-                override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                    showInterstitialRequest(interstitialAd)
-                }
-            })
-        }else{
-            val adRequest = AdManagerAdRequest.Builder().build()
-            AdManagerInterstitialAd.load(requireContext(),adUnit, adRequest, object : AdManagerInterstitialAdLoadCallback() {
-                override fun onAdFailedToLoad(adError: LoadAdError) {
-                    hideLoadingAndFinish()
-                }
-
-                override fun onAdLoaded(interstitialAd: AdManagerInterstitialAd) {
-                    showInterstitialRequest(interstitialAd)
-                }
-            })
-        }
-    }
-
-    fun showInterstitialRequest(mInterstitialAd: AdManagerInterstitialAd) {
-        // Show the ad if it's ready. Otherwise toast and reload the ad.
-        mInterstitialAd.fullScreenContentCallback = object : FullScreenContentCallback() {
-            override fun onAdDismissedFullScreenContent() {
-                Log.d("AdmobInterStitialAds", "exam Ad was dismissed.")
-                // Don't forget to set the ad reference to null so you
-                // don't show the ad a second time.
-            }
-
-            override fun onAdFailedToShowFullScreenContent(adError: AdError) {
-                Log.d("AdmobInterStitialAds", "exam Ad failed to show.")
-                // Don't forget to set the ad reference to null so you
-                // don't show the ad a second time.
-                hideLoadingAndFinish()
-            }
-
-            override fun onAdShowedFullScreenContent() {
-                Log.d("AdmobInterStitialAds", "exam Ad showed fullscreen content.")
-                // Called when ad is dismissed.
-                hideLoadingAndFinish()
-            }
-        }
-        mInterstitialAd.show(requireActivity())
-    }
-
-    fun showInterstitialRequest(mInterstitialAd: InterstitialAd) {
-        // Show the ad if it's ready. Otherwise toast and reload the ad.
-        mInterstitialAd.fullScreenContentCallback = object : FullScreenContentCallback() {
-            override fun onAdDismissedFullScreenContent() {
-                Log.d("AdmobInterStitialAds", "exam Ad was dismissed.")
-                // Don't forget to set the ad reference to null so you
-                // don't show the ad a second time.
-            }
-
-            override fun onAdFailedToShowFullScreenContent(adError: AdError) {
-                Log.d("AdmobInterStitialAds", "exam Ad failed to show.")
-                // Don't forget to set the ad reference to null so you
-                // don't show the ad a second time.
-                hideLoadingAndFinish()
-            }
-
-            override fun onAdShowedFullScreenContent() {
-                Log.d("AdmobInterStitialAds", "exam Ad showed fullscreen content.")
-                // Called when ad is dismissed.
-                hideLoadingAndFinish()
-            }
-        }
-        mInterstitialAd.show(requireActivity())
     }
 
     private fun hideLoadingAndFinish() {

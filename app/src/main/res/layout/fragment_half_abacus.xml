@@ -44,17 +44,35 @@
             </com.google.android.material.card.MaterialCardView>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txtTitle"
-            style="@style/mainTitle"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/title_margin"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="@+id/cardBack"
             app:layout_constraintEnd_toStartOf="@+id/linearMenu"
             app:layout_constraintStart_toEndOf="@+id/cardBack"
-            app:layout_constraintTop_toTopOf="@+id/cardBack"
-            tools:text="SET 1" />
+            app:layout_constraintTop_toTopOf="@+id/cardBack">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtTitle"
+                style="@style/mainTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="SET 1" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtTimer"
+                style="@style/mainTitleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginStart="@dimen/activity_padding4"
+                android:visibility="gone"
+                tools:text="SET 1"
+                tools:visibility="visible" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/linearMenu"
@@ -412,9 +430,9 @@
                                 android:id="@+id/recyclerview"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/activity_padding10"
                                 android:orientation="vertical"
                                 android:overScrollMode="never"
-                                android:layout_marginTop="@dimen/activity_padding10"
                                 android:paddingStart="@dimen/activity_padding4"
                                 android:scrollbars="none"
                                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

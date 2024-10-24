@@ -2,7 +2,12 @@ package com.jigar.me.data.local.data
 
 import android.graphics.drawable.Drawable
 
-
+enum class EventBusType {
+    LoginSync
+}
+data class MessageEvent(
+    val type: EventBusType
+)
 data class ColorData(val color: Int, val darkColor: Int, val bgColor : Int? = null)
 data class HomeBanner(val type: String,val title : String, val text : String,val btnText : String, val background : Drawable?)
 data class HomeMenu(val type: Int, val image: Int,val tag : String = "")

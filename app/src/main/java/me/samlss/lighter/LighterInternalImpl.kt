@@ -44,14 +44,13 @@ class LighterInternalImpl : LighterInternalAction {
         mLighterView = LighterView(activity)
         mRootView = activity.window.decorView as ViewGroup
         isDecorView = true
-        activity.findViewById<View>(R.id.content)
-            .addOnLayoutChangeListener(mRootViewLayoutChangeListener)
+        activity.findViewById<View>(androidx.appcompat.R.id.content).addOnLayoutChangeListener(mRootViewLayoutChangeListener)
     }
 
     constructor(rootView: ViewGroup) {
         mRootView = rootView
         mLighterView = LighterView(rootView.context)
-        mRootView!!.addOnLayoutChangeListener(mRootViewLayoutChangeListener)
+        mRootView?.addOnLayoutChangeListener(mRootViewLayoutChangeListener)
     }
 
     fun addHighlight(vararg lighterParameters: LighterParameter?) {
@@ -142,12 +141,12 @@ class LighterInternalImpl : LighterInternalAction {
         }
         isReleased = true
         if (isDecorView) {
-            mRootView!!.findViewById<View>(R.id.content)
-                .removeOnLayoutChangeListener(mRootViewLayoutChangeListener)
+            mRootView?.findViewById<View>(androidx.appcompat.R.id.content)
+                ?.removeOnLayoutChangeListener(mRootViewLayoutChangeListener)
         } else {
-            mRootView!!.removeOnLayoutChangeListener(mRootViewLayoutChangeListener)
+            mRootView?.removeOnLayoutChangeListener(mRootViewLayoutChangeListener)
         }
-        mRootView!!.removeView(mLighterView)
+        mRootView?.removeView(mLighterView)
         mLighterView!!.removeAllViews()
         mHighlightedParameterList!!.clear()
         mHighlightedParameterList = null

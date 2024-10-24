@@ -26,12 +26,16 @@ import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.setAbacusResetShakeAnimation
 import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     private lateinit var binding: FragmentAbacusSubKidBinding
     // Settings Constants
     private var isDisplayAbacusNumber = true
+    private var isShowSubmitAnswer = true
 
     private var abacus_type = 0 // 0 = sum-sub-single  1 = multiplication 2 = divide
     private var abacusTotalColumns = 0
@@ -51,11 +55,12 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
 
     private var onAbacusValueChangeListener: OnAbacusValueChangeListener? = null
 
-    fun newInstance(column: Int, noOfDecimalPlace: Int, abacus_type: Int): HalfAbacusSubFragment {
+    fun newInstance(column: Int, noOfDecimalPlace: Int, abacus_type: Int,isShowSubmitAnswer : Boolean? = false): HalfAbacusSubFragment {
         val fragment = HalfAbacusSubFragment()
         fragment.abacusTotalColumns = column
         fragment.noOfDecimalPlace = noOfDecimalPlace
         fragment.abacus_type = abacus_type
+        fragment.isShowSubmitAnswer = isShowSubmitAnswer?:false
         return fragment
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -65,38 +70,47 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
         return binding.root
     }
 
-    private fun initViews() {
+    private fun initViews() = with(binding){
         isDisplayAbacusNumber = prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_display_abacus_number, true)
 
-        binding.imgDot1.show()
-        binding.imgDot4.show()
-        binding.imgDot7.show()
-        binding.imgDot10.show()
-        binding.imgDot13.show()
+        imgDot1.show()
+        imgDot4.show()
+        imgDot7.show()
+        imgDot10.show()
+        imgDot13.show()
+
+        if (isShowSubmitAnswer){
+            ivSubmitAnswer.show()
+        }else{
+            ivSubmitAnswer.hide()
+        }
+
 
         val theme = prefManager.getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
         val themeContent = DataProvider.findAbacusThemeType(requireContext(),theme,AbacusBeadType.AbacusPrecise)
-        themeContent.abacusFrame135.let { binding.rlAbacusMain.setBackgroundResource(it) }
-        themeContent.dividerColor1.let { binding.ivDivider.setBackgroundColor(ContextCompat.getColor(requireContext(),it)) }
+        themeContent.abacusFrame135.let { rlAbacusMain.setBackgroundResource(it) }
+        themeContent.dividerColor1.let { ivDivider.setBackgroundColor(ContextCompat.getColor(requireContext(),it)) }
         themeContent.resetBtnColor8.let {
-            binding.imgDot1.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-            binding.imgDot4.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-            binding.imgDot7.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)
-            binding.imgDot7.layoutParams?.width = 3.dp
-            binding.imgDot7.layoutParams?.height = 3.dp
-            binding.imgDot10.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-            binding.imgDot13.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+            imgDot1.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+            imgDot4.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+            imgDot7.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)
+            imgDot7.layoutParams?.width = 3.dp
+            imgDot7.layoutParams?.height = 3.dp
+            imgDot10.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+            imgDot13.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
 
-            binding.ivReset.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-            binding.ivRight.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-            binding.ivLeft.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+            ivReset.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+            ivRight.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+            ivLeft.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
         }
     }
 
-    private fun initListener() {
-        binding.ivReset.onClick { onResetClick() }
-        binding.resettoContinue.onClick { onResetClick() }
+    private fun initListener() = with(binding){
+        ivReset.onClick { onResetClick() }
+        ivSubmitAnswer.onClick { onSubmitAnswerClick() }
+        resettoContinue.onClick { onResetClick() }
     }
+
     fun setOnAbacusValueChangeListener(onAbacusValueChangeListener: OnAbacusValueChangeListener?) {
         this.onAbacusValueChangeListener = onAbacusValueChangeListener
     }
@@ -119,48 +133,8 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     }
 
     private fun setBead() {
-//        val isHideTable = prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_hide_table, false)
-//        if (isHideTable || abacusTotalColumns <= 5){
-//            if (prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_left_hand, true)){
-//                binding.imgKidRight.show()
-//                binding.imgKidHandRight.show()
-//                val params = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT,ConstraintLayout.LayoutParams.WRAP_CONTENT)
-//                params.setMargins(0)
-//                binding.relAbacus.layoutParams = params
-//
-//                if (DataProvider.generateIndex() == 0){
-//                    binding.imgKidRight.setImageResource(R.drawable.ic_boy_abacus_right)
-//                    binding.imgKidHandRight.setImageResource(R.drawable.ic_boy_abacus_hand_right)
-//                }else{
-//                    binding.imgKidRight.setImageResource(R.drawable.ic_girl_abacus_right)
-//                    binding.imgKidHandRight.setImageResource(R.drawable.ic_girl_abacus_hand_right)
-//                }
-//            }else{
-//                binding.imgKidLeft.show()
-//                binding.imgKidHandLeft.show()
-//
-//                if (DataProvider.generateIndex() == 0){
-//                    binding.imgKidLeft.setImageResource(R.drawable.ic_girl_abacus_left)
-//                    binding.imgKidHandLeft.setImageResource(R.drawable.ic_girl_abacus_hand_left)
-//                }else{
-//                    binding.imgKidLeft.setImageResource(R.drawable.ic_boy_abacus_left)
-//                    binding.imgKidHandLeft.setImageResource(R.drawable.ic_boy_abacus_hand_left)
-//                }
-//            }
-//        }else{
-//            val params = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT,ConstraintLayout.LayoutParams.WRAP_CONTENT)
-//            params.setMargins(0)
-//            binding.relAbacus.layoutParams = params
-//        }
-
-
-//        if (abacus_type == 2){
-//            binding.abacusTop.setNoOfRowAndBeads(0, abacusTotalColumns, 1,AbacusBeadType.AbacusPrecise,unitRodPosition = 6,noOfColumnUsed = 6+questionLength)
-//            binding.abacusBottom.setNoOfRowAndBeads(0, abacusTotalColumns, 4,AbacusBeadType.AbacusPrecise,unitRodPosition = 6,noOfColumnUsed = 6+questionLength)
-//        }else{
-            binding.abacusTop.setNoOfRowAndBeads(0, abacusTotalColumns, 1,AbacusBeadType.AbacusPrecise,unitRodPosition = 6)
-            binding.abacusBottom.setNoOfRowAndBeads(0, abacusTotalColumns, 4,AbacusBeadType.AbacusPrecise,unitRodPosition = 6)
-//        }
+        binding.abacusTop.setNoOfRowAndBeads(0, abacusTotalColumns, 1,AbacusBeadType.AbacusPrecise,unitRodPosition = 6)
+        binding.abacusBottom.setNoOfRowAndBeads(0, abacusTotalColumns, 4,AbacusBeadType.AbacusPrecise,unitRodPosition = 6)
 
         binding.abacusTop.onBeadShiftListener = this
         binding.abacusBottom.onBeadShiftListener = this
@@ -347,20 +321,14 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
 
     private fun onResetClick() {
         if (!isResetRunning) {
-//            isResetRunning = true
-//            binding.ivReset.y = 0f
-//
-//            binding.ivReset.animate().setDuration(200)
-//                .translationYBy((binding.ivReset.height / 2).toFloat()).withEndAction {
-//                    binding.ivReset.animate().setDuration(200)
-//                        .translationYBy((-binding.ivReset.height / 2).toFloat()).withEndAction {
-//                            isResetRunning = false
-//                        }.start()
-//                }.start()
-
             binding.ivReset.setAbacusResetShakeAnimation(true)
             onAbacusValueChangeListener?.onAbacusValueDotReset()
         }
+    }
+
+    private fun onSubmitAnswerClick() {
+        binding.ivSubmitAnswer.setAbacusResetShakeAnimation(true)
+        onAbacusValueChangeListener?.onAbacusSubmitValue(binding.tvCurrentVal.text.toString())
     }
 
     // TODO for Division

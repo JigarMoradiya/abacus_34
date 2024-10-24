@@ -358,6 +358,13 @@ class BillingRepository @Inject constructor(
         const val PRODUCT_ID_Subscription_Month6 = "com.abacus.puzzle.6month"
         const val PRODUCT_ID_Subscription_Year1 = "com.abacus.puzzle.1year"
 
+        const val PRODUCT_ID_Subscription_Month3_Level1 = "com.abacus.puzzle.3month.level1"
+        const val PRODUCT_ID_Subscription_Month3_Level2 = "com.abacus.puzzle.3month.level2"
+        const val PRODUCT_ID_Subscription_Month3_Level3 = "com.abacus.puzzle.3month.level3"
+        const val PRODUCT_ID_Subscription_Month3_Level4 = "com.abacus.puzzle.3month.level4"
+        const val PRODUCT_ID_Subscription_Month3_Level5 = "com.abacus.puzzle.3month.level5"
+        const val PRODUCT_ID_Subscription_Month3_Level6 = "com.abacus.puzzle.3month.level6"
+
 
         val productList: ArrayList<QueryProductDetailsParams.Product> = arrayListOf(
             QueryProductDetailsParams.Product.newBuilder()
@@ -416,6 +423,31 @@ class BillingRepository @Inject constructor(
                     .build(),
                 QueryProductDetailsParams.Product.newBuilder()
                     .setProductId(PRODUCT_ID_Subscription_Year1)
+                    .setProductType(BillingClient.ProductType.SUBS)
+                    .build()
+                ,
+                QueryProductDetailsParams.Product.newBuilder()
+                    .setProductId(PRODUCT_ID_Subscription_Month3_Level1)
+                    .setProductType(BillingClient.ProductType.SUBS)
+                    .build(),
+                QueryProductDetailsParams.Product.newBuilder()
+                    .setProductId(PRODUCT_ID_Subscription_Month3_Level2)
+                    .setProductType(BillingClient.ProductType.SUBS)
+                    .build(),
+                QueryProductDetailsParams.Product.newBuilder()
+                    .setProductId(PRODUCT_ID_Subscription_Month3_Level3)
+                    .setProductType(BillingClient.ProductType.SUBS)
+                    .build(),
+                QueryProductDetailsParams.Product.newBuilder()
+                    .setProductId(PRODUCT_ID_Subscription_Month3_Level4)
+                    .setProductType(BillingClient.ProductType.SUBS)
+                    .build(),
+                QueryProductDetailsParams.Product.newBuilder()
+                    .setProductId(PRODUCT_ID_Subscription_Month3_Level5)
+                    .setProductType(BillingClient.ProductType.SUBS)
+                    .build(),
+                QueryProductDetailsParams.Product.newBuilder()
+                    .setProductId(PRODUCT_ID_Subscription_Month3_Level6)
                     .setProductType(BillingClient.ProductType.SUBS)
                     .build()
             )

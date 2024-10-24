@@ -62,7 +62,6 @@ class MaterialDownloadFragment : BaseFragment(), MaterialDownloadAdapter.OnItemC
         setNavigationGraph()
         initView()
         initListener()
-        ads()
         return binding.root
     }
     private fun setNavigationGraph() {
@@ -112,21 +111,6 @@ class MaterialDownloadFragment : BaseFragment(), MaterialDownloadAdapter.OnItemC
                     onBack()
                 }
                 else -> {}
-            }
-        }
-    }
-
-
-    private fun ads() {
-        with(prefManager){
-            if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y" &&
-                getCustomParam(AppConstants.AbacusProgress.Ads, "") == "Y" &&
-                getCustomParam(AppConstants.Purchase.Purchase_Material_Nursery, "") != "Y" &&
-                getCustomParam(AppConstants.Purchase.Purchase_Material_Maths, "") != "Y" &&
-                getCustomParam(AppConstants.Purchase.Purchase_All, "") != "Y" &&
-                getCustomParam(AppConstants.Purchase.Purchase_Ads, "") != "Y"
-            ) {
-                showAMBannerAds(binding.adView,getString(R.string.banner_ad_unit_id_practise_material))
             }
         }
     }

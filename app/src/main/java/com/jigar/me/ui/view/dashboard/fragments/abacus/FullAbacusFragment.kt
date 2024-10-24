@@ -506,27 +506,8 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             }
             with(prefManager){
                 if (prefManager.getCustomParam(AppConstants.Settings.SW_FreeMode,"Y") == "Y") {
-                    if (!isTourPageRunning){
-                        if (!is1stTime){
-                            var count = getCustomParamInt(AppConstants.Settings.Free_Mode_Beads_Move_Count,0)
-                            if (count == AppConstants.Settings.Free_Mode_Beads_Move_Count_Limit){
-                                count = 0
-                                ads(true)
-                            }
-                            count++
-                            setCustomParamInt(AppConstants.Settings.Free_Mode_Beads_Move_Count,count)
-                        }else{
-                            lifecycleScope.launch {
-                                delay(300)
-                                is1stTime = false
-                            }
-                        }
-                    } else {
 
-                    }
                 }else{
-                    Log.e("jigarLogs","sum = "+sum)
-                    Log.e("jigarLogs","valuesFinal = "+valuesFinal)
                     if (sum == (valuesFinal.toInt()).toString()) {
                         binding.swResetStarting.isChecked = false
                         generateValue()
@@ -612,23 +593,13 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             "${requireContext().getString(R.string.txt_set)} $setValues"
         }
         speakOut(speakText)
-        if (!is1stTime){
-            ads()
-        }
-    }
-
-    private fun ads(isShowAdDirect : Boolean = false) {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y" &&
-            prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y" &&
-            !isPurchased && prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y") { // if not purchased
-            showAMFullScreenAds(getString(R.string.interstitial_ad_unit_id_abacus_full_screen),isShowAdDirect)
-        }
     }
 
     override fun onAbacusValueSubmit(sum: Long) {
 
     }
 
+    override fun onAbacusSubmitValue(userAnswer : String) = Unit
     override fun onAbacusValueDotReset() {
         resetAbacus()
     }

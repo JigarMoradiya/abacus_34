@@ -465,6 +465,18 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivSubmitAnswer"
+                android:layout_width="18dp"
+                android:layout_height="24dp"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="-8dp"
+                android:layout_marginStart="@dimen/padding_bottom_kids_in_abacus"
+                android:tint="@color/black"
+                android:visibility="invisible"
+                tools:visibility="visible"
+                app:srcCompat="@drawable/box_primory_accent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
