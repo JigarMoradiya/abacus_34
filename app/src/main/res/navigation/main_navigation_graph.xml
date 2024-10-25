@@ -100,6 +100,9 @@
         <action
             android:id="@+id/toAbacusCalculationFragment"
             app:destination="@+id/abacusCalculationFragment" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/abacusCalculationFragment"

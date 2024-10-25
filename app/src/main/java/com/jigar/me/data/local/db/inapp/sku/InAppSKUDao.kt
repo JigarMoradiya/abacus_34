@@ -17,6 +17,9 @@ interface InAppSKUDao {
     @Query("SELECT SKU.*,CASE WHEN (P.orderId IS NULL) THEN 0 ELSE 1 END as isPurchase,CASE WHEN (P.orderId IS NULL) THEN '' ELSE P.orderId END as orderId,P.purchaseTime FROM tableInAppSKU as SKU LEFT JOIN tableInAppPurchase as P ON (SKU.sku = P.sku AND P.purchaseState = 1) WHERE P.orderId IS NOT NULL ORDER BY SKU.type DESC, SKU.price_amount_micros DESC")
     fun getInAppSKUPurchasedLive(): LiveData<List<InAppSkuDetails>>
 
+    @Query("SELECT SKU.*,CASE WHEN (P.orderId IS NULL) THEN 0 ELSE 1 END as isPurchase,CASE WHEN (P.orderId IS NULL) THEN '' ELSE P.orderId END as orderId,P.purchaseTime FROM tableInAppSKU as SKU LEFT JOIN tableInAppPurchase as P ON (SKU.sku = P.sku AND P.purchaseState = 1) WHERE P.orderId IS NOT NULL ORDER BY SKU.type DESC, SKU.price_amount_micros DESC")
+    suspend fun getInAppSKUPurchased(): List<InAppSkuDetails>
+
     @Query("SELECT SKU.*,CASE WHEN (P.orderId IS NULL) THEN 0 ELSE 1 END as isPurchase,CASE WHEN (P.orderId IS NULL) THEN '' ELSE P.orderId END as orderId,P.purchaseTime FROM tableInAppSKU as SKU LEFT JOIN tableInAppPurchase as P ON (SKU.sku = P.sku AND P.purchaseState = 1) WHERE SKU.sku != '${BillingRepository.AbacusSku.PRODUCT_ID_ads}' ORDER BY SKU.type DESC, SKU.price_amount_micros DESC")
     fun getInAppSkuNoAds(): LiveData<List<InAppSkuDetails>>
 

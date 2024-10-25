@@ -93,7 +93,7 @@ class ReportsListAdapter(
                     txtExerciseType.text = context.getString(R.string.level_of_set)
                     if (data.level.isNullOrEmpty()){
                         CoroutineScope(Dispatchers.Main).launch {
-                            data.reference_id?.let {
+                            data.set_id?.let {
                                 val levelOfSet = appDatabase?.abacusAllDataDao()?.getParentLevelOfSet(it)
                                 txtExerciseTypeValue.text = levelOfSet
                                 data.level = levelOfSet

@@ -13,11 +13,12 @@ import com.jigar.me.utils.extensions.show
 
 class PagesNewAdapter(
     private var listData: List<Pages>,
-    private var allSetList: List<Set>,
+    var allSetList: List<Set>,
     private val mListener: (Int,Int,Set,Pages) -> Unit
 ) : RecyclerView.Adapter<PagesNewAdapter.ViewHolder>() {
     fun setData(pagesList: List<Pages>) {
-        listData = pagesList
+        (listData as ArrayList<Pages>).clear()
+        (listData as ArrayList<Pages>).addAll(pagesList)
         notifyDataSetChanged()
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

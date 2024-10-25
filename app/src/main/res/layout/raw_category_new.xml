@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -9,20 +10,22 @@
             type="com.jigar.me.data.model.dbtable.abacus_all_data.Category" />
     </data>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:layout_height="wrap_content">
+
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardMenu"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_margin="@dimen/activity_padding4"
+            android:layout_marginStart="@dimen/activity_padding4"
+            android:layout_marginTop="@dimen/activity_padding8"
             app:cardBackgroundColor="@color/home_menu_icon_bg"
             app:cardCornerRadius="@dimen/card_corner_radius8"
-            app:cardElevation="@dimen/card_elevation">
+            app:cardElevation="@dimen/card_elevation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imgMenu"
@@ -38,9 +41,35 @@
             android:id="@+id/imgArrow"
             android:layout_width="@dimen/activity_padding12"
             android:layout_height="@dimen/activity_padding12"
-            android:src="@drawable/ic_right_arrow" />
+            android:layout_marginStart="@dimen/activity_padding4"
+            android:src="@drawable/ic_right_arrow"
+            app:layout_constraintBottom_toBottomOf="@+id/cardMenu"
+            app:layout_constraintStart_toEndOf="@+id/cardMenu"
+            app:layout_constraintTop_toTopOf="@+id/cardMenu" />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_padding4"
+            android:background="@drawable/bg_all_curved_3"
+            android:elevation="@dimen/activity_padding4"
+            android:gravity="center"
+            android:fontFamily="@font/font_semibold"
+            android:backgroundTint="@color/red"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="@dimen/activity_padding4"
+            android:paddingVertical="@dimen/activity_padding2"
+            android:text="@string/paid"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSizeVery2ExtraSmall"
+            android:visibility="gone"
+            android:layout_marginStart="60dp"
+            app:layout_constraintStart_toStartOf="@+id/cardMenu"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

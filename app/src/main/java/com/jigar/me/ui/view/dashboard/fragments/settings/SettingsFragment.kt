@@ -33,7 +33,6 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClickListener {
     private lateinit var binding: FragmentSettingsBinding
-    private var isPurchased = false
     private lateinit var mNavController: NavController
     private lateinit var abacusThemeFreeAdapter: AbacusThemeSelectionsAdapter
     private lateinit var abacusThemePaidAdapter: AbacusThemeSelectionsAdapter
@@ -50,14 +49,6 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
         mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
     }
     private fun initViews() {
-        with(prefManager){
-            isPurchased = (getCustomParam(AppConstants.Purchase.Purchase_All, "") == "Y"
-                    || getCustomParam(AppConstants.Purchase.Purchase_Toddler_Single_digit_level1,"") == "Y"
-                    || getCustomParam(AppConstants.Purchase.Purchase_Add_Sub_level2,"") == "Y"
-                    || getCustomParam(AppConstants.Purchase.Purchase_Mul_Div_level3,"") == "Y")
-            binding.isPurchased = isPurchased
-        }
-
         binding.recyclerviewAbacusDefault.post {
             val columnFree = CommonUtils.calculateNoOfColumns((resources.getDimension(R.dimen.bead_column).toInt().dp.toFloat()),binding.recyclerviewAbacusDefault.width.dp.toFloat())
             binding.recyclerviewAbacusDefault.layoutManager = GridLayoutManager(requireContext(),columnFree)
@@ -120,11 +111,7 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
         binding.relAnswerStep.onClick { onAbacusAnswerClick(AppConstants.Settings.Setting_answer_Step) }
         binding.relAnswerFinal.onClick { onAbacusAnswerClick(AppConstants.Settings.Setting_answer_Final) }
         binding.relAnswerPhysical.onClick {
-            if (isPurchased){
-                onAbacusAnswerClick(AppConstants.Settings.Setting_answer_with_tools)
-            }else{
-                paidPlanDialog()
-            }
+            onAbacusAnswerClick(AppConstants.Settings.Setting_answer_with_tools)
         }
     }
     private fun paidPlanDialog() {
@@ -235,12 +222,7 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
             if (isChecked == true){
                 prefManager.setCustomParamBoolean(type, false)
             }else{
-                if (isPurchased){
-                    prefManager.setCustomParamBoolean(type, true)
-                }else{
-                    prefManager.setCustomParamBoolean(type, false)
-                    paidPlanDialog()
-                }
+                prefManager.setCustomParamBoolean(type, true)
             }
         }else{
             if (isChecked == true){

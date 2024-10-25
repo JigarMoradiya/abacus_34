@@ -25,6 +25,7 @@ class AppViewModel @Inject constructor(private val apiRepository: ApiRepository,
     suspend fun getPurchasesSku() = dbRepository.getPurchasesSku()
     fun getInAppSKU(displayList : ArrayList<String>) = dbRepository.getInAppSKU(displayList)
     fun getInAppSKUPurchasedLive() = dbRepository.getInAppSKUPurchasedLive()
+    suspend fun getInAppSKUPurchased() = dbRepository.getInAppSKUPurchased()
     suspend fun deleteInAppSKU() = dbRepository.deleteInAppSKU()
     suspend fun deleteInAppPurchase() = dbRepository.deleteInAppPurchase()
 

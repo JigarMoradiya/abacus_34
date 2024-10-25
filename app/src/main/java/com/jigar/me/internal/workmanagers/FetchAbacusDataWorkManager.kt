@@ -57,9 +57,12 @@ class FetchAbacusDataWorkManager @AssistedInject constructor(
 
             val cal = Calendar.getInstance()
             cal.add(Calendar.YEAR,-1)
-//            val dateTime = "2023-07-01T12:00:00.000Z"
-            val dateTime = prefManager.getCustomParam(Constants.last_sync_time,"2023-07-01T12:00:00.000Z")
+            val defaultDateTime = "2023-07-01T12:00:00.000Z"
+            val dateTime = prefManager.getCustomParam(Constants.last_sync_time,defaultDateTime)
             val request = FetchAbacusDataRequest(true,true,true,true,true,dateTime)
+            if (dateTime == defaultDateTime){
+                request.get_set_progress_report = true
+            }
             Log.e("jigarWorkManager","FetchAbacusDataWorkManager request = "+Gson().toJson(request))
             val apiResponse = apiStudent.getAbacusData(request)
             if (apiResponse.status == AppConstants.APIStatus.SUCCESS){

@@ -128,19 +128,18 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
 
                         if (it.value.status == AppConstants.APIStatus.SUCCESS){
                             CoroutineScope(Dispatchers.Main).launch {
-                                if (examViewModel.submitAllExamDataRequest?.type == AppConstants.apiParams.answerFormalAnswer) {
-                                    examViewModel.submitAllExamDataRequest?.reference_id?.let { it1 ->
-                                        appViewModel.deleteSetProgress(it1)
-                                        appViewModel.removeUserAnswer(it1)
+                                setProgress?.let{
+                                    it.is_set_completed = true
+                                    if (setDetail?.show_time_setting == true){
+                                        it.total_time_taken = total_sec.toInt()
+                                        it.latest_abacus_id = null
                                     }
-                                } else {
-                                    setProgress?.let{
-                                        it.is_set_completed = true
-                                        if (setDetail?.show_time_setting == true){
-                                            it.total_time_taken = total_sec.toInt()
-                                            it.latest_abacus_id = null
-                                        }
-                                        appViewModel.insertSetProgress(listOf(it))
+                                    appViewModel.insertSetProgress(listOf(it))
+                                }
+                                if (examViewModel.submitAllExamDataRequest?.type == AppConstants.apiParams.answerFormalAnswer) {
+                                    examViewModel.submitAllExamDataRequest?.set_id?.let { it1 ->
+//                                        appViewModel.deleteSetProgress(it1)
+                                        appViewModel.removeUserAnswer(it1)
                                     }
                                 }
                             }
@@ -163,12 +162,14 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
 
     private fun completeSetAlert() {
         CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.congratulations),getString(R.string.txt_set_completed_msg)
-            ,getString(R.string.ok_thanks), icon = R.drawable.ic_alert_complete_page,isCancelable = false,
+            ,getString(R.string.ok_thanks),noBtn = getString(R.string.close), icon = R.drawable.ic_alert_complete_page,isCancelable = false,
             clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
                 override fun onConfirmationYesClick(bundle: Bundle?) {
                     mNavController.navigateUp()
                 }
-                override fun onConfirmationNoClick(bundle: Bundle?) = Unit
+                override fun onConfirmationNoClick(bundle: Bundle?) {
+                    mNavController.navigateUp()
+                }
             })
     }
 
@@ -1000,7 +1001,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                         tickerChannel.cancel()
                         if(requireContext().isNetworkAvailable) {
                             if (setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer){
-                                reference_id = it
+                                set_id = it
                                 list_abacus = appViewModel.getAbacus(it)
                                 mCalculator = Calculator()
                                 var rightAnswerCount = 0

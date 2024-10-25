@@ -720,6 +720,8 @@
     <string name="old_password">Old Password</string>
     <string name="your_password_has_been_updated">Your password has been updated</string>
 
+    <string name="level_subcribe_title">Go Premium for Access of this Level!</string>
+    <string name="level_subcribe_msg">Unlock this premium level by subscribing to our exclusive content.</string>
     <string name="exam_subcribe_title">Upgrade Your Learning Experience!</string>
     <string name="exam_subcribe_msg">Unlock unlimited weekly exams with our premium subscription!\n🚀 Subscribe now for limitless learning opportunities. 📚✨</string>
     <string name="exercise_subcribe_title">Unlock Infinite Math Challenges!</string>
@@ -794,6 +796,7 @@
     <string name="final_answer">Final Answer</string>
     <string name="formal_exam">Formal Exam</string>
     <string name="timer_on">Timer ON</string>
+    <string name="paid">Paid</string>
 
 
 </resources>

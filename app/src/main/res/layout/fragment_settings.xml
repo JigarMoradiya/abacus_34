@@ -305,12 +305,6 @@
 
                     </RelativeLayout>
 
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="end"
-                        app:srcCompat="@drawable/ic_new_tag" />
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
@@ -380,11 +374,6 @@
                             app:stepValue="1" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="end"
-                        app:srcCompat="@drawable/ic_new_tag" />
                 </com.google.android.material.card.MaterialCardView>
 
                 <androidx.constraintlayout.widget.Barrier
@@ -640,11 +629,12 @@
 
                             <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/txtHintSound"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="@dimen/activity_padding8"
                                 android:layout_toEndOf="@+id/img_hint_sound"
+                                android:layout_toStartOf="@+id/sw_hint_sound"
                                 app:fontFamily="@font/font_bold"
                                 android:gravity="center_vertical|left"
                                 android:text="@string/txt_setting_hintsound"
@@ -652,14 +642,6 @@
                                 android:textSize="@dimen/textSizeMedium"
                                 android:textStyle="normal" />
 
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/imgHintpaid"
-                                android:layout_width="32dp"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/activity_padding8"
-                                android:layout_toEndOf="@+id/txtHintSound"
-                                app:srcCompat="@mipmap/paid_tag" />
 
                             <androidx.appcompat.widget.SwitchCompat
                                 android:id="@+id/sw_hint_sound"
@@ -975,16 +957,6 @@
                                 android:textColor="@color/colorListingHeading"
                                 android:textSize="@dimen/textSizeMedium"
                                 android:textStyle="normal" />
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/imgPhysicalpaid"
-                                android:layout_width="32dp"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/activity_padding8"
-                                android:layout_toEndOf="@+id/txt_Physical_tick"
-                                app:srcCompat="@mipmap/paid_tag" />
-
 
                             <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/img_Physical_tick"

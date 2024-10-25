@@ -2,6 +2,7 @@ package com.jigar.me.utils
 
 import android.os.Build
 import android.text.TextUtils
+import android.util.Log
 import androidx.annotation.RequiresApi
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -9,6 +10,25 @@ import java.time.LocalDate
 import java.time.ZoneId
 import java.util.*
 
+fun String.toDate(
+    dateFormat: String = DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz,
+    timeZone: TimeZone = TimeZone.getTimeZone("UTC"),
+): Date {
+    val parser = SimpleDateFormat(dateFormat, Locale.getDefault())
+    parser.timeZone = timeZone
+    return parser.parse(this)
+}
+
+fun Date.formatTo(
+    dateFormat: String,
+    timeZone: TimeZone = TimeZone.getDefault(),
+): String {
+    val formatter = SimpleDateFormat(
+        dateFormat, Locale.getDefault()
+    )
+    formatter.timeZone = timeZone
+    return formatter.format(this)
+}
 object DateTimeUtils {
     var yyyy_MM_dd_T_HH_mm_ss_sssz: String = "yyyy-MM-dd'T'HH:mm:ss.sss'Z'"
     var ddMMMyyyyhhmma: String = "dd MMM yyyy hh:mm a"
@@ -76,23 +96,26 @@ object DateTimeUtils {
                 now.get(Calendar.MONTH) == cdate.get(Calendar.MONTH) &&
                 now.get(Calendar.DATE) == cdate.get(Calendar.DATE)
     }
+
     fun convertDateFormatFromUTC(
         date: String?,
         sourceStr: String,
         destinationStr: String, isCheckToday : Boolean = true
     ): String? {
+//        Log.e("jigarLogs","convertDateFormatFromUTC = "+date?.toDate()?.formatTo(ddMMMyyyyhhmma))
         var strNewDate = date
         val newDate: Date?
         val source = SimpleDateFormat(sourceStr, Locale.getDefault())
 
+        Log.e("jigarLogs","date = "+date)
         source.timeZone = TimeZone.getTimeZone("UTC")
-
         try {
             if (!TextUtils.isEmpty(date)) {
                 newDate = date?.let { source.parse(it) }
 
                 var prefixText = ""
                 newDate?.let {
+                    Log.e("jigarLogs","newDate = "+it.toString())
                     val destination = if (isCheckToday){
                         if (isToday(it.time)){
                             prefixText = "Today "

@@ -21,6 +21,7 @@ class DBRepository @Inject constructor(
 
     fun getInAppSKU(displayList : ArrayList<String>) = inAppSKUDB.getInAppSKU(displayList)
     fun getInAppSKUPurchasedLive() = inAppSKUDB.getInAppSKUPurchasedLive()
+    suspend fun getInAppSKUPurchased() = inAppSKUDB.getInAppSKUPurchased()
     suspend fun deleteInAppSKU() = inAppSKUDB.deleteInAppSKU()
     fun getInAppSKUDetail(sku : String) = inAppSKUDB.getInAppSKUDetail(sku)
 

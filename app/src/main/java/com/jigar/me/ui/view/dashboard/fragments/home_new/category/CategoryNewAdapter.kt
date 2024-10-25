@@ -1,9 +1,12 @@
 package com.jigar.me.ui.view.dashboard.fragments.home_new.category
 
+import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
+import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.databinding.RawCategoryNewBinding
+import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.invisible
 import com.jigar.me.utils.extensions.layoutInflater
@@ -11,8 +14,9 @@ import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.show
 
 class CategoryNewAdapter(
-    private var listData: List<Category>,
-    private val mListener: (Int,Int, Category) -> Unit
+    var listData: List<Category>,
+    var purchasedSKU: List<InAppSkuDetails>,
+    private val mListener: (Int, Int, Category) -> Unit
 ) : RecyclerView.Adapter<CategoryNewAdapter.ViewHolder>() {
     var selectedPosition = 0
 
@@ -34,6 +38,12 @@ class CategoryNewAdapter(
             imgArrow.show()
         }else{
             imgArrow.invisible()
+        }
+        val isPurchase = CommonUtils.checkLevelIsPurchase(purchasedSKU,data)
+        if (isPurchase){
+            txtTag.hide()
+        }else{
+            txtTag.show()
         }
         root.onClick {
             if (selectedPosition != position){

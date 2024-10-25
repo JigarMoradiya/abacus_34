@@ -7,6 +7,7 @@ data class FetchAbacusDataRequest(
     var get_sets: Boolean = false,
     var get_abacus: Boolean = false,
     var last_sync_time: String? = null,
+    var get_set_progress_report: Boolean = false,
 )
 data class SignupV2Request(
     var name: String? = null,
@@ -104,7 +105,6 @@ data class SubmitAllExamDataRequest(
 
     // set
     var set_id: String? = null,
-    var reference_id: String? = null,
     var abacus_id: String? = null,
     var is_set_completed : Boolean? = null,
     var retry_count : Int? = null,

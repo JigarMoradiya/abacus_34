@@ -146,9 +146,10 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
 
     private fun setPurchaseData() {
         appViewModel.getInAppSKUPurchasedLive().observe(viewLifecycleOwner){
-            Log.e("jigarLogs","getInAppSKUPurchasedLive = "+(activity as MainDashboardActivity).isPurchaseDataChecked)
-            if (!(activity as MainDashboardActivity).isPurchaseDataChecked){
-                createPurchasedPlanRequest(it)
+            if (it.isNotNullOrEmpty()){
+                if (!(activity as MainDashboardActivity).isPurchaseDataChecked){
+                    createPurchasedPlanRequest(it)
+                }
             }
         }
     }
@@ -589,6 +590,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     }
 
     private fun createPurchasedPlanRequest(purchasedList: List<InAppSkuDetails>) {
+        Log.e("jigarLogs","createPurchasedPlanRequest = "+Gson().toJson(purchasedList))
         if (purchasedList.isNotNullOrEmpty()){
             (activity as MainDashboardActivity).isPurchaseDataChecked = true
         }
@@ -655,6 +657,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 purchasedListReq.add(GooglePurchasedPlanRequest(google_plan_id,google_order_id, is_lifetime_plan, is_all_feature, start_date, end_date,purchase_price,purchase_currency, no_of_renewals))
             }
         }
+        Log.e("jigarLogs","createPurchasedPlanRequest submit = "+Gson().toJson(purchasedListReq))
         studentViewModel.handleExistingPurchase(PurchasedPlanCheckRequest(purchasedListReq))
     }
 }
