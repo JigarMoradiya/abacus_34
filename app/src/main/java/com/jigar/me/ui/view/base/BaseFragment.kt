@@ -122,11 +122,7 @@ abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSetting
                         setCustomParam(AppConstants.Purchase.Purchase_Mul_Div_level3, "Y")
                     }
 
-                    BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Weekly,
-                    BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1,
-                    BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month3,
-                    BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month6,
-                    BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1 -> {
+                    BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month3 -> {
                         setCustomParam(AppConstants.Purchase.Purchase_All, "Y")
                     }
                 }

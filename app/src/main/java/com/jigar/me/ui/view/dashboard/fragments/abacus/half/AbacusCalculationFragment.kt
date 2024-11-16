@@ -123,16 +123,15 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 is Resource.Success -> {
                     Log.e("jigarLogs","complete")
                     if (examViewModel.submitAllExamDataRequest?.is_set_completed == true || setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer){
-                        Log.e("jigarLogs","complete con")
                         hideLoading()
 
                         if (it.value.status == AppConstants.APIStatus.SUCCESS){
                             CoroutineScope(Dispatchers.Main).launch {
                                 setProgress?.let{
                                     it.is_set_completed = true
+                                    it.latest_abacus_id = null
                                     if (setDetail?.show_time_setting == true){
                                         it.total_time_taken = total_sec.toInt()
-                                        it.latest_abacus_id = null
                                     }
                                     appViewModel.insertSetProgress(listOf(it))
                                 }
@@ -283,8 +282,12 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 total_sec++
 
                 CoroutineScope(Dispatchers.Main).launch {
-                    setId?.let {
-                        appViewModel.updateSetTimer(it,total_sec)
+//                    setId?.let {
+//                        appViewModel.updateSetTimer(it,total_sec)
+//                    }
+                    setProgress?.let{
+                        it.total_time_taken = total_sec.toInt()
+                        appViewModel.insertSetProgress(listOf(it))
                     }
                     val time = DateTimeUtils.displayDurationHourMinSec(total_sec)
                     binding.txtTimer.text = time
@@ -302,7 +305,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 setId?.let {
                     setDetail = appViewModel.getSetDetail(it)
                     setProgress = appViewModel.getSetProgress(it)
-                    Log.e("jigarLogs","setDetail = "+Gson().toJson(setDetail))
                     if (setDetail != null){
                         isStepByStep = setDetail?.answer_setting == AppConstants.apiParams.answerSettingStepByStep
                         if (setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer){
@@ -1057,7 +1059,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                             setProgress = SetProgress(it,list_abacus[current_pos].id,false)
                         }else if(setProgress?.is_set_completed == true){
                             retryCounts =  (setProgress?.retry_count?:0)+1
-                            setProgress = SetProgress(it,list_abacus[current_pos].id,false,retry_count = retryCounts)
+                            setProgress = SetProgress(it,list_abacus[current_pos].id,false)
                         }else{
                             retryCounts = setProgress?.retry_count?:1
                             setProgress?.latest_abacus_id = list_abacus[current_pos].id

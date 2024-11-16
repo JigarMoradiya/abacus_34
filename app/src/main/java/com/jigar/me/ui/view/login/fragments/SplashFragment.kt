@@ -41,14 +41,14 @@ class SplashFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
         binding = FragmentSplashBinding.inflate(inflater, container, false)
         setNavigationGraph()
-        initViews()
         return binding.root
     }
     private fun setNavigationGraph() {
         mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
     }
 
-    private fun initViews() {
+    override fun onResume() {
+        super.onResume()
         firebaseConfig()
     }
     private fun goToNext() {

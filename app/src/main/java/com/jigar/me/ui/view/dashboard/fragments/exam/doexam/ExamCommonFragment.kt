@@ -673,23 +673,10 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
 
     // exam leave listener
     override fun testGiveAgain() {
-        if (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All,"").equals("Y",true)){
-            getAndStartExam()
-        }else{
-            CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.exam_subcribe_title),getString(R.string.exam_subcribe_msg)
-                ,getString(R.string.yes_i_want_to_purchase),getString(R.string.no_purchase_later), icon = R.drawable.ic_alert_sad_emoji,isCancelable = false,
-                clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
-                    override fun onConfirmationYesClick(bundle: Bundle?) {
-                        goToInAppPurchase()
-                    }
-                    override fun onConfirmationNoClick(bundle: Bundle?){
-                        testCompleteClose()
-                    }
-                })
-        }
+        getAndStartExam()
     }
 
-    fun examLeaveAlert() {
+    private fun examLeaveAlert() {
         CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.leave_exam_alert),getString(R.string.leave_exam_msg)
             ,getString(R.string.yes_i_m_sure),getString(R.string.no_please_continue), icon = R.drawable.ic_alert,
             clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{

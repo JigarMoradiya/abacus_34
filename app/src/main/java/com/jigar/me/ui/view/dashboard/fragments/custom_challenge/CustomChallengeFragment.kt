@@ -226,22 +226,8 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
     }
 
     override fun ccmCompleteContinue() {
-        if (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All,"").equals("Y",true)){
-            typeAds = "start_again"
-            startAgain()
-        }else{
-            CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.ccm_subcribe_title),getString(R.string.ccm_subcribe_msg)
-                ,getString(R.string.yes_i_want_to_purchase),getString(R.string.no_purchase_later), icon = R.drawable.ic_alert_sad_emoji,isCancelable = false,
-                clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
-                    override fun onConfirmationYesClick(bundle: Bundle?) {
-                        goToInAppPurchase()
-                    }
-                    override fun onConfirmationNoClick(bundle: Bundle?){
-                        typeAds = "close"
-                        startAgain()
-                    }
-                })
-        }
+        typeAds = "start_again"
+        startAgain()
     }
 
     private fun startAgain() {

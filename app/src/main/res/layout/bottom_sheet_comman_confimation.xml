@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/activity_padding8"
-            android:fontFamily="@font/font_semibold"
+            app:fontFamily="@font/font_semibold"
             android:gravity="center"
             android:includeFontPadding="false"
             android:lineSpacingExtra="2sp"

@@ -29,6 +29,7 @@ import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottom
 import com.jigar.me.ui.view.confirm_alerts.dialogs.ExerciseCompleteDialog
 import com.jigar.me.ui.view.dashboard.fragments.exercise.adapter.ExerciseAdditionSubtractionAdapter
 import com.jigar.me.ui.view.dashboard.fragments.exercise.adapter.ExerciseLevelPagerAdapter
+import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.ExamViewModel
 import com.jigar.me.utils.*
 import com.jigar.me.utils.extensions.*
@@ -42,13 +43,13 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
     ExerciseLevelPagerAdapter.OnItemClickListener,
     ExerciseCompleteDialog.ExerciseCompleteDialogInterface {
     private val examViewModel by viewModels<ExamViewModel>()
+    private val appViewModel by viewModels<AppViewModel>()
     private lateinit var binding: FragmentExerciseHomeBinding
     private var abacusBinding: FragmentAbacusExerciseBinding? = null
     private lateinit var mNavController: NavController
     private var valuesAnswer: Int = -1
     private var currentSumVal = 0L
     private var totalTimeLeft = 0L
-    private var isPurchased = false
     private var themeContent : AbacusContent? = null
     private var theme = AppConstants.Settings.theam_Default
     private var isResetRunning = false
@@ -83,16 +84,7 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
         }
         mCalculator = Calculator()
         with(prefManager){
-            isPurchased = getCustomParam(AppConstants.Purchase.Purchase_All,"") == "Y"
-            if (isPurchased){
-                setCustomParam(AppConstants.Settings.TheamTempView,getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default))
-            }else{
-                if (getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default).contains(AppConstants.Settings.theam_Default,true)){
-                    setCustomParam(AppConstants.Settings.TheamTempView,getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default))
-                }else{
-                    setCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
-                }
-            }
+            setCustomParam(AppConstants.Settings.TheamTempView,getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default))
             theme = getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
 
         }
@@ -282,19 +274,13 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
         binding.cardBack.show()
     }
     override fun onExerciseStartClick() {
-        if (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All,"").equals("Y",true)){
-            startInit()
-        }else {
-            getStatisticData(object : Companion.StatisticApiResponseListener{
-                override fun statisticApiData(data: JsonObject?) {
-                    val response = Gson().fromJson(data, Statistics::class.java)
-                    if (response.EXERCISE?.can_give_exam == true){
-                        startInit()
-                    }else{
-                        canNotAccess()
-                    }
-                }
-            })
+        CoroutineScope(Dispatchers.Main).launch {
+            val purchasedSKU = appViewModel.getInAppSKUPurchased()
+            if (CommonUtils.checkPurchaseForExerciseExamCCM(purchasedSKU)){
+                startInit()
+            }else{
+                canNotAccess()
+            }
         }
     }
     private fun canNotAccess() {

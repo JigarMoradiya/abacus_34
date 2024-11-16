@@ -27,7 +27,7 @@ object CommonConfirmationBottomSheet {
             }
             if (!msg.isNullOrEmpty()){
                 tvDescription.show()
-                tvDescription.text = msg
+                tvDescription.text = HtmlCompat.fromHtml(msg,HtmlCompat.FROM_HTML_MODE_LEGACY)
             }
             if (!yesBtn.isNullOrEmpty()){
                 btnYes.text = yesBtn

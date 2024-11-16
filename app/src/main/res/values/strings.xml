@@ -722,12 +722,12 @@
 
     <string name="level_subcribe_title">Go Premium for Access of this Level!</string>
     <string name="level_subcribe_msg">Unlock this premium level by subscribing to our exclusive content.</string>
-    <string name="exam_subcribe_title">Upgrade Your Learning Experience!</string>
-    <string name="exam_subcribe_msg">Unlock unlimited weekly exams with our premium subscription!\n🚀 Subscribe now for limitless learning opportunities. 📚✨</string>
-    <string name="exercise_subcribe_title">Unlock Infinite Math Challenges!</string>
-    <string name="exercise_subcribe_msg">🚀Subscribe for Unlimited Math Exercises!\nElevate your skills with endless practice opportunities. 🧮✨</string>
-    <string name="ccm_subcribe_title">Explore Limitless Challenges!</string>
-    <string name="ccm_subcribe_msg">🚀Upgrade for Unlimited Custom Challenges!\nSubscribe now to access the Custom Challenge Mode anytime, anywhere. 🎮✨</string>
+    <string name="exam_subcribe_title">Subscribe to Unlock Exam Features!</string>
+    <string name="exam_subcribe_msg"><![CDATA[To access the Exam Module, <b>you’ll need to subscribe at Level 3 or above.</b> Upgrade today and gain full access to our advanced exam preparation tools! 📚✨]]></string>
+    <string name="exercise_subcribe_title">Subscribe to Unlock Exercise Features!</string>
+    <string name="exercise_subcribe_msg"><![CDATA[To access the Exercise Module, <b>you’ll need to subscribe at Level 3 or above.</b> Upgrade today and gain full access to our advanced exam preparation tools! 📚✨]]></string>
+    <string name="ccm_subcribe_title">Subscribe to Unlock Custom Challenge Mode (CCM) Features!</string>
+    <string name="ccm_subcribe_msg"><![CDATA[To access the Custom Challenge Mode (CCM) Module, <b>you’ll need to subscribe at Level 3 or above.</b> Upgrade today and gain full access to our advanced exam preparation tools! 📚✨]]></string>
     <string name="feature_list">Feature List</string>
     <string name="paid_feature_list">Paid Feature List</string>
     <string name="free_feature_list">Free Feature List</string>

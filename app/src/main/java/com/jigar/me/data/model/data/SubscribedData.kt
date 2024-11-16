@@ -2,12 +2,6 @@ package com.jigar.me.data.model.data
 
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_old
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month3
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month6
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Weekly
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_ads
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_level1_lifetime
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_level2_lifetime
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_level3_lifetime
@@ -45,7 +39,7 @@ data class SubscribedList(
         return if (!master_plan?.google_plan_id.isNullOrBlank() &&
             (master_plan?.google_plan_id == PRODUCT_ID_All_lifetime_old || master_plan?.google_plan_id == PRODUCT_ID_All_lifetime
                     || master_plan?.google_plan_id == PRODUCT_ID_level1_lifetime || master_plan?.google_plan_id == PRODUCT_ID_level2_lifetime
-                    || master_plan?.google_plan_id == PRODUCT_ID_level3_lifetime || master_plan?.google_plan_id == PRODUCT_ID_ads
+                    || master_plan?.google_plan_id == PRODUCT_ID_level3_lifetime
                     || master_plan?.google_plan_id == PRODUCT_ID_material_maths || master_plan?.google_plan_id == PRODUCT_ID_material_nursery)) {
             "No Expiry Date"
         } else {
