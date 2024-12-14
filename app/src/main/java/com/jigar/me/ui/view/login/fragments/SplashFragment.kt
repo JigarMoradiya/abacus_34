@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -24,11 +25,15 @@ import com.jigar.me.internal.workmanagers.FetchAbacusDataWorkManager
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
+import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.Constants
 import com.jigar.me.utils.extensions.isNetworkAvailable
 import com.jigar.me.utils.extensions.openURL
 import com.jigar.me.utils.extensions.toastL
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.HashMap
@@ -38,6 +43,7 @@ class SplashFragment : BaseFragment() {
     private lateinit var binding: FragmentSplashBinding
     private var mNavController: NavController? = null
     private lateinit var mFirebaseRemoteConfig  : FirebaseRemoteConfig
+    private val appViewModel by viewModels<AppViewModel>()
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
         binding = FragmentSplashBinding.inflate(inflater, container, false)
         setNavigationGraph()
@@ -94,12 +100,20 @@ class SplashFragment : BaseFragment() {
                     val baseUrl: String = mFirebaseRemoteConfig.getString(AppConstants.AbacusProgress.baseUrl)
                     val iPath: String = mFirebaseRemoteConfig.getString(AppConstants.AbacusProgress.iPath)
                     val resetImage: Long = mFirebaseRemoteConfig.getLong(AppConstants.AbacusProgress.resetImage)
+                    val databaseVersion: Long = mFirebaseRemoteConfig.getLong(AppConstants.AbacusProgress.databaseVersion)
                     val isAdmob = if (BuildConfig.DEBUG){
                         false
                     }else{
                         mFirebaseRemoteConfig.getBoolean(AppConstants.AbacusProgress.isAdmob)
                     }
                     with(prefManager){
+                        if (databaseVersion.toInt() > getCustomParamInt(AppConstants.AbacusProgress.databaseVersion, 0)) {
+                            setCustomParamInt(AppConstants.AbacusProgress.databaseVersion, databaseVersion.toInt())
+                            prefManager.setCustomParam(Constants.last_sync_time,Constants.last_sync_default_time)
+                            CoroutineScope(Dispatchers.Main).launch {
+                                appViewModel.deleteAllData()
+                            }
+                        }
                         if (resetImage.toInt() > getCustomParamInt(AppConstants.AbacusProgress.resetImage, 0)) {
                             setCustomParamInt(AppConstants.AbacusProgress.resetImage, resetImage.toInt())
                             setCustomParam(AppConstants.extras_Comman.DownloadType+"_"+AppConstants.extras_Comman.DownloadType_Maths, "")

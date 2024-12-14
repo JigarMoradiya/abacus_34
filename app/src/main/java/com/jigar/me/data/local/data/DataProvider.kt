@@ -2,7 +2,9 @@ package com.jigar.me.data.local.data
 
 import android.content.Context
 import android.graphics.Color
+import android.util.Log
 import androidx.core.content.ContextCompat
+import com.google.gson.Gson
 import com.jigar.me.R
 import com.jigar.me.data.model.pages.*
 import com.jigar.me.data.pref.AppPreferencesHelper
@@ -656,6 +658,81 @@ object DataProvider {
 
         return listExercise
     }
+    fun generateMultiplication3_Temp(child: ExerciseLevelDetail): MutableList<ExerciseList>{
+        val listExercise: MutableList<ExerciseList> = arrayListOf()
+        (0 until 20).forEach { j ->
+//            val que1 = if (child.digits == 3){
+//                generateSingleDigit(2,99)
+//            }else if (child.digits == 4){
+//                generateSingleDigit(2,999)
+//            }else if (child.digits == 5){
+//                generateSingleDigit(2,9999)
+//            }else if (child.digits == 6){
+//                generateSingleDigit(2,99999)
+//            }else { // 7 digit
+//                generateSingleDigit(2,999999)
+//            }
+//
+//            val que22 = if (child.digits == 3){
+//                val min = 100 / que1
+//                val max : Int = 999 / que1
+//                generateSingleDigit(min,max)
+//            }else if (child.digits == 4){
+//                val min = 1000 / que1
+//                val max : Int = 9999 / que1
+//                generateSingleDigit(min,max)
+//            }else if (child.digits == 5){
+//                val min = 10000 / que1
+//                val max : Int = 99999 / que1
+//                generateSingleDigit(min,max)
+//            }else if (child.digits == 6){
+//                val min = 100000 / que1
+//                val max : Int = 999999 / que1
+//                generateSingleDigit(min,max)
+//            }else { // 7 digit
+//                val min = 1000000 / que1
+//                val max : Int = 9999999 / que1
+//                generateSingleDigit(min,max)
+//            }
+            var min = 10
+            var max = 49
+//            if (j < 4){
+//                min = 5
+//                max = 9
+//            }else{
+//                 min = 10
+//                 max = 49
+//            }
+
+            val que1 = generateSingleDigit(min,max)
+            val que22 = 8
+//            val que22 = generateSingleDigit(2,9)
+
+            val que2 : Int = que22
+//            val isInvert = generateIndex()
+            val isInvert = -1
+            var answer = 0
+            var question = ""
+            if (isInvert == 0){
+                answer = que2 * que1
+                question = "${que2}*$que1"
+            }else{
+                answer = que1 * que2
+                question = "${que1}*$que2"
+            }
+            listExercise.add(ExerciseList(question,answer))
+        }
+        val listnew = listExercise.shuffled().shuffled()
+        val listQue: MutableList<String> = arrayListOf()
+        listnew.map {
+            listQue.add(it.question)
+        }
+        Log.e("jigarLogs","listExercise = "+listQue.joinToString(","))
+        Log.e("jigarLogs","listExercise = "+Gson().toJson(listQue))
+        Log.e("jigarLogs","listExercise = "+Gson().toJson(listExercise))
+
+        return listExercise
+    }
 
     private fun generateMulDigit3Que5(child: ExerciseLevelDetail) : MutableList<ExerciseList>{
         val listExercise: MutableList<ExerciseList> = arrayListOf()
@@ -935,6 +1012,173 @@ object DataProvider {
             }
             listExercise.add(ExerciseList(question,answer))
         }
+        return listExercise
+    }
+
+    fun generateAdditionSubExerciseTemp(child: ExerciseLevelDetail) : MutableList<ExerciseList>{
+        val listExercise: MutableList<ExerciseList> = arrayListOf()
+        var min = 2
+        var max = 9
+
+        var queLines = 6
+        for (j in 0 until 20){
+            var minusSignCount = 0
+            var maxMinusSignCount = 2
+//            val index = generateIndex()
+//            if (index == 0){
+//                maxMinusSignCount = 0
+//            }else{
+//                maxMinusSignCount = 1
+//                val index2 = generateIndex()
+//                if (index2 == 0){
+//                    maxMinusSignCount = 1
+//                }else{
+//                    maxMinusSignCount = 2
+//                }
+            maxMinusSignCount = 1
+//            }
+
+            var singleDigitCount = 0
+            var maxSingleDigitCount = 2
+            var twoDigitCount = 0
+            var maxTwoDigitCount = 4
+//            queLines = generateSingleDigit(4, 6)
+//            if (queLines == 7){
+//                maxMinusSignCount = 3
+//            }
+            var answer = 0
+            var question = ""
+            for (i in 0 until queLines){
+                val index = generateIndex()
+                if (index == 0 && twoDigitCount != maxTwoDigitCount){
+                    min = 30
+                    max = 99
+                    twoDigitCount++
+                }else {
+                    if (singleDigitCount != maxSingleDigitCount){
+                        min = 5
+                        max = 9
+                        singleDigitCount++
+                    }else{
+                        min = 30
+                        max = 99
+                        twoDigitCount++
+                    }
+                }
+//                if (i == 0){
+//                    min = 14
+//                    max = 79
+//                }else if (i == 1){
+//                    val index = generateIndex()
+//                    if (index == 0 || maxSingleDigitCount == singleDigitCount){
+//                        min = 14
+//                        max = 79
+//                    }else{
+//                        singleDigitCount++
+//                        min = 1
+//                        max = 9
+//                    }
+//                }else if (i == 2){
+//                    if (singleDigitCount == 0){
+//                        min = 1
+//                        max = 9
+//                    }else{
+//                        min = 14
+//                        max = 79
+//                    }
+//                }
+
+//                if (i == 0){
+//                     min = 20
+//                     max = 99
+//                }else{
+//                    min = 3
+//                    max = 9
+//                }
+//                if (j < 10){
+//                    max = 400
+//                    min = 100
+//                    if (i == 2){
+//                        max = 300
+//                    }
+//                }else{
+//                    max = 800
+//                    min = 100
+//                }
+
+
+//                if (i == 0){
+//                    max = 500
+//                    min = 100
+//                }else if (i == 1){
+//                    max = 300
+//                    min = 100
+//                }else{
+//                    max = 99
+//                    min = 20
+//                }
+
+//                if (i == 0 || i == 1){
+//                    if (j < 5){
+//                        min = 10
+//                        max = 49
+//                    }else{
+//                        min = 10
+//                        max = 99
+//                    }
+//                }else{
+//                    if (j < 8){
+//                        min = 2
+//                    }else{
+//                        min = 4
+//                    }
+//                    max = 10
+//                }
+                if (i == 0){
+                    answer = generateSingleDigit(min, max)
+                    question = answer.toString()
+                }else{
+                    if (minusSignCount == maxMinusSignCount) {
+                        val nextValues = generateSingleDigit(min, max)
+                        question = "$question+$nextValues"
+                        answer += nextValues
+                    }else{
+                        val index = generateIndex()
+                        if (index == 0 || answer < min) { // 0 = add +
+                            val nextValues = generateSingleDigit(min, max)
+                            question = "$question+$nextValues"
+                            answer += nextValues
+                        }else{ // minus -
+                            minusSignCount++
+                            val nextValues = if ((answer + 1) > max){
+                                nextInt(min, max)
+                            }else{
+                                nextInt(min, answer + 1)
+                            }
+
+                            val temp = answer - nextValues
+                            if (i == (queLines -1) && temp == 0){
+                                val nextValuesTemp = nextValues - 1
+                                question = "$question-$nextValuesTemp"
+                                answer -= nextValuesTemp
+                            }else{
+                                question = "$question-$nextValues"
+                                answer -= nextValues
+                            }
+
+                        }
+                    }
+                }
+            }
+            listExercise.add(ExerciseList(question,answer))
+        }
+        val listQue: MutableList<String> = arrayListOf()
+        listExercise.map {
+            listQue.add(it.question)
+        }
+        Log.e("jigarLogs","listExercise = "+listQue.joinToString(","))
+        Log.e("jigarLogs","listExercise = "+Gson().toJson(listQue))
+        Log.e("jigarLogs","listExercise = "+Gson().toJson(listExercise))
         return listExercise
     }
 

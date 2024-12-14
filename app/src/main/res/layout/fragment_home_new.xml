@@ -200,7 +200,7 @@
         android:layout_marginHorizontal="@dimen/activity_padding20"
         android:gravity="center"
         android:layout_marginTop="@dimen/activity_padding8"
-        app:layout_constraintBottom_toTopOf="@+id/txtOtherApps"
+        app:layout_constraintBottom_toTopOf="@+id/linearBottomLogo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardProfileImage">
@@ -228,6 +228,7 @@
         android:fontFamily="@font/font_extra_bold"
         android:gravity="center_vertical"
         android:padding="@dimen/activity_padding6"
+        android:visibility="gone"
         android:text="@string/check_other_application_by_us"
         android:textColor="@color/orange_500"
         android:textSize="@dimen/textSizeLarge"
@@ -253,8 +254,8 @@
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txtOtherApps"
         android:layout_marginEnd="@dimen/activity_padding16"
+        android:id="@+id/linearBottomLogo"
         app:layout_constraintBottom_toBottomOf="parent"
         >
 

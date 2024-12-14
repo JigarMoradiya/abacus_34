@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.jigar.me.R
@@ -23,6 +24,7 @@ import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -69,22 +71,25 @@ class CategoryFragment : BaseFragment() {
             }
             recyclerviewCategory.adapter = categoryNewAdapter
 
-            val allSetList = appViewModel.getAllSet()
-            pagesNewAdapter = PagesNewAdapter(arrayListOf(),allSetList) { pagePosition,setPosition,setData,data ->
-                val categoryData = categoryNewAdapter.listData[categoryNewAdapter.selectedPosition]
-                val isPurchase = CommonUtils.checkLevelIsPurchase(purchasedSKU,categoryData)
-                if (isPurchase){
-                    gotoAbacus(setData)
-                }else{
-                    purchaseDialog()
-                }
-            }
-            recyclerviewPages.adapter = pagesNewAdapter
 
             val categoryList = appViewModel.getCategory(levelId)
             categoryNewAdapter.setData(categoryList)
             if (categoryList.isNotNullOrEmpty()){
-                setPages(categoryList.first().id)
+                lifecycleScope.launch {
+                    delay(200)
+                    val allSetList = appViewModel.getAllSet()
+                    pagesNewAdapter = PagesNewAdapter(arrayListOf(),allSetList) { pagePosition,setPosition,setData,data ->
+                        val categoryData = categoryNewAdapter.listData[categoryNewAdapter.selectedPosition]
+                        val isPurchase = CommonUtils.checkLevelIsPurchase(purchasedSKU,categoryData)
+                        if (isPurchase){
+                            gotoAbacus(setData)
+                        }else{
+                            purchaseDialog()
+                        }
+                    }
+                    recyclerviewPages.adapter = pagesNewAdapter
+                    setPages(categoryList.first().id)
+                }
             }
         }
     }
@@ -116,17 +121,24 @@ class CategoryFragment : BaseFragment() {
 
                     val allSetList = appViewModel.getAllSet()
                     pagesNewAdapter.allSetList = allSetList
-                    setPages(categoryNewAdapter.listData[categoryNewAdapter.selectedPosition].id)
+                    setPages(categoryNewAdapter.listData[categoryNewAdapter.selectedPosition].id,false)
                 }
             }
         }
     }
 
-    private fun setPages(categoryId: String) {
+    private fun setPages(categoryId: String,isScrollToPosition : Boolean = true) {
         CoroutineScope(Dispatchers.Main).launch {
             val pagesList = appViewModel.getPages(categoryId)
             pagesNewAdapter.setData(pagesList)
-            binding.recyclerviewPages.scrollToPosition(0)
+            if (pagesList.isEmpty()){
+                binding.imgNoData.show()
+            }else{
+                binding.imgNoData.hide()
+            }
+            if (isScrollToPosition){
+                binding.recyclerviewPages.scrollToPosition(0)
+            }
         }
     }
 

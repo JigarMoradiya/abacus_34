@@ -141,4 +141,16 @@
         tools:listitem="@layout/raw_pagelist_new" />
 
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgNoData"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/cardBack"
+        app:layout_constraintStart_toEndOf="@+id/recyclerviewCategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/ic_coming_soon" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

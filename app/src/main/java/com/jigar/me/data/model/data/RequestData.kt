@@ -8,6 +8,7 @@ data class FetchAbacusDataRequest(
     var get_abacus: Boolean = false,
     var last_sync_time: String? = null,
     var get_set_progress_report: Boolean = false,
+    var get_all_data: Boolean = false,
 )
 data class SignupV2Request(
     var name: String? = null,

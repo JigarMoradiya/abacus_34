@@ -134,6 +134,7 @@ object AppConstants {
             var Ads = "Ads"
             var isAdmob = "isAdmob"
             var resetImage = "resetImage"
+            var databaseVersion = "databaseVersion"
         }
     }
 
@@ -202,6 +203,7 @@ object AppConstants {
         companion object {
             const val Menu_Abacus_Free_Mode = "abacus_free_mode"
             const val Menu_Practice_Abacus = "practice_abacus"
+            const val Menu_My_Account = "my_account"
             const val Menu_Abacus_Exercise = "abacus_exercise"
             const val Menu_Exam = "exam"
             const val Menu_CCM = "ccm"

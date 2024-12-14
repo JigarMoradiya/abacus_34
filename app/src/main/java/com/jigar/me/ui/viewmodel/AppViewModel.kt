@@ -52,6 +52,7 @@ class AppViewModel @Inject constructor(private val apiRepository: ApiRepository,
     suspend fun getAbacus(id: String) = dbRepository.getAbacus(id)
     suspend fun insertSetProgress(data : List<SetProgress>) = dbRepository.insertSetProgress(data)
     suspend fun deleteSetProgress(setId : String) = dbRepository.deleteSetProgress(setId)
+    suspend fun deleteAllData() = dbRepository.deleteAllData()
     suspend fun updateSetTimer(setId : String,time : Long) = dbRepository.updateSetTimer(setId,time)
     suspend fun updateUserAnswer(abacusId : String,userAnswer : String) = dbRepository.updateUserAnswer(abacusId,userAnswer)
     suspend fun removeUserAnswer(setId : String) = dbRepository.removeUserAnswer(setId)

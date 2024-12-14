@@ -20,6 +20,14 @@ class AbacusAllDataDB @Inject constructor(private val dao: AbacusAllDataDao) {
     suspend fun deleteSetProgress(setId : String) = withContext(Dispatchers.IO){
         dao.deleteSetProgress(setId)
     }
+    suspend fun deleteAllData() = withContext(Dispatchers.IO){
+        dao.deleteAllLevel()
+        dao.deleteAllCategory()
+        dao.deleteAllPages()
+        dao.deleteAllSet()
+        dao.deleteAllAbacus()
+        dao.deleteAllSetProgress()
+    }
     suspend fun updateSetTimer(setId : String,time : Long) = dao.updateSetTimer(setId,time)
     suspend fun updateUserAnswer(abacusId : String,userAnswer : String) = dao.updateUserAnswer(abacusId,userAnswer)
     suspend fun removeUserAnswer(setId : String) = dao.removeUserAnswer(setId)

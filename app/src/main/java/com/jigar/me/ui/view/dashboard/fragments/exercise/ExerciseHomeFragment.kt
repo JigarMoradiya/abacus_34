@@ -314,12 +314,14 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
                         binding.recyclerviewExercise.show()
                         binding.txtMultiplication.hide()
                         listExerciseAdditionSubtraction = DataProvider.generateAdditionSubExercise(childData)
+//                        listExerciseAdditionSubtraction = DataProvider.generateAdditionSubExerciseTemp(childData)
                         setQuestions()
                     }
                     "2" -> {
                         binding.recyclerviewExercise.hide()
                         binding.txtMultiplication.show()
-                        listExerciseAdditionSubtraction = DataProvider.generateMultiplicationExercise(childData)
+//                        listExerciseAdditionSubtraction = DataProvider.generateMultiplicationExercise(childData)
+                        listExerciseAdditionSubtraction = DataProvider.generateMultiplication3_Temp(childData)
                         setQuestions()
                     }
                     "3" -> {

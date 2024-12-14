@@ -54,12 +54,9 @@ class FetchAbacusDataWorkManager @AssistedInject constructor(
 
     private fun fetchAbacusDetailApi() = runBlocking{
         try {
-
-            val cal = Calendar.getInstance()
-            cal.add(Calendar.YEAR,-1)
-            val defaultDateTime = "2023-07-01T12:00:00.000Z"
+            val defaultDateTime = Constants.last_sync_default_time
             val dateTime = prefManager.getCustomParam(Constants.last_sync_time,defaultDateTime)
-            val request = FetchAbacusDataRequest(true,true,true,true,true,dateTime)
+            val request = FetchAbacusDataRequest(true,true,true,true,true,dateTime,get_all_data = false)
             if (dateTime == defaultDateTime){
                 request.get_set_progress_report = true
             }

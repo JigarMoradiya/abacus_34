@@ -39,6 +39,7 @@ class DBRepository @Inject constructor(
     suspend fun getAbacus(id : String) = abacusAllDataDB.getAbacus(id)
     suspend fun insertSetProgress(data : List<SetProgress>) = abacusAllDataDB.insertSetProgress(data)
     suspend fun deleteSetProgress(setId : String) = abacusAllDataDB.deleteSetProgress(setId)
+    suspend fun deleteAllData() = abacusAllDataDB.deleteAllData()
     suspend fun updateSetTimer(setId : String,time : Long) = abacusAllDataDB.updateSetTimer(setId,time)
     suspend fun updateUserAnswer(abacusId : String,userAnswer : String) = abacusAllDataDB.updateUserAnswer(abacusId,userAnswer)
     suspend fun removeUserAnswer(setId : String) = abacusAllDataDB.removeUserAnswer(setId)

@@ -62,4 +62,5 @@ object Constants {
     var Hint = "Hint"
 
     var last_sync_time = "last_sync_time"
+    var last_sync_default_time = "2023-07-01T12:00:00.000Z"
 }

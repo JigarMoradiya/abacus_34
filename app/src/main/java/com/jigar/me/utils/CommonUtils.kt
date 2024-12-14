@@ -17,6 +17,7 @@ import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_old
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month3
+import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.show
 import org.json.JSONException
@@ -158,6 +159,7 @@ object CommonUtils {
         }else{
             purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime || it.sku == PRODUCT_ID_All_lifetime_old
                     || it.sku == PRODUCT_ID_Subscription_Month3
+                    || it.sku == PRODUCT_ID_Subscription_Year1
                     || (it.sku.contains(data.name)) }.also {
                 return it != null
             }
@@ -165,8 +167,10 @@ object CommonUtils {
     }
 
     fun checkPurchaseForExerciseExamCCM(purchasedSKU: List<InAppSkuDetails>): Boolean {
-        purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime || it.sku == PRODUCT_ID_All_lifetime_old
+        purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
+                || it.sku == PRODUCT_ID_All_lifetime_old
                 || it.sku == PRODUCT_ID_Subscription_Month3
+                || it.sku == PRODUCT_ID_Subscription_Year1
                 || (it.sku.contains("level3")) || (it.sku.contains("level4"))
                 || (it.sku.contains("level5")) || (it.sku.contains("level6"))
                 || (it.sku.contains("level7")) || (it.sku.contains("level8"))}.also {

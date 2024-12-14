@@ -508,6 +508,9 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     }
     private fun moveToClick(data: Level) {
         when (data.name) {
+            AppConstants.HomeClicks.Menu_My_Account -> {
+                moveToClick(AppConstants.HomeClicks.Menu_My_Profile)
+            }
             AppConstants.HomeClicks.Menu_Practice_Abacus -> {
                 val action = HomeNewFragmentDirections.toCategoryFragment(data.id)
                 mNavController?.navigate(action)
