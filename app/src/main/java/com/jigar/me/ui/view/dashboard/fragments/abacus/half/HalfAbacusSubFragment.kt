@@ -156,7 +156,6 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
                         i++
                     }
                     currentSumVal = (bottomVal + accumulator)
-                    Log.e("jigarLogs","abacusTop currentSumVal = "+currentSumVal)
                     if (abacus_type == 0 || abacus_type == 1 || abacus_type == 2) {
                         setCurrentValue(currentSumVal.toString())
                         onAbacusValueChangeListener?.onAbacusValueChange(
@@ -175,7 +174,6 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
                         i++
                     }
                     currentSumVal = (topVal + accumulator)
-                    Log.e("jigarLogs","abacusBottom currentSumVal = "+currentSumVal)
                     if (abacus_type == 0 || abacus_type == 1 || abacus_type == 2) {
                         setCurrentValue(currentSumVal.toString())
                         try {
@@ -192,7 +190,6 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
 //            if (abacus_type == 2) {
 //                /*common code to calculate sumvalue*/
 //                var currentAns: String = currentSumVal.toString()
-//                Log.e("jigarLogs","onBeadShift currentAns = "+currentAns)
 //                val iterationCount = questionLength + finalAnsLength - 1 - currentAns.length
 //                for (i in 0 until iterationCount) {
 //                    currentAns = "0$currentAns"
@@ -374,7 +371,6 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     }
 
     private fun setCurrentValue(abacusValue: String) {
-//        Log.e("jigarLogsDivision","setCurrentValue abacusValue = "+abacusValue)
         when {
             isDisplayAbacusNumber -> {
                 binding.tvCurrentVal.show()
@@ -384,9 +380,8 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
                         newValue = "0$newValue"
                     }
                 }
-//                Log.e("jigarLogsDivision","setCurrentValue newValue = "+newValue)
                 if (abacus_type == 2){
-                    val remainQuestion = newValue.replace(".","").takeLast(6).trimStart('0')
+                    val remainQuestion = newValue.replace(".","").takeLast(questionLength).trimStart('0')
                     val answers = newValue.replace(".","").take(7).trimStart('0')
 //                    val answer = newValue.take(7)
 //                    val reminders = newValue.takeLast(7).take(questionLength)

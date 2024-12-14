@@ -121,7 +121,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                     }
                 }
                 is Resource.Success -> {
-                    Log.e("jigarLogs","complete")
                     if (examViewModel.submitAllExamDataRequest?.is_set_completed == true || setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer){
                         hideLoading()
 

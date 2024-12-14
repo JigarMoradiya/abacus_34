@@ -77,7 +77,7 @@ class CategoryFragment : BaseFragment() {
             categoryNewAdapter.setData(categoryList)
             if (categoryList.isNotNullOrEmpty()){
                 lifecycleScope.launch {
-                    delay(200)
+//                    delay(200)
                     val allSetList = appViewModel.getAllSet()
                     pagesNewAdapter = PagesNewAdapter(arrayListOf(),allSetList) { pagePosition,setPosition,setData,data ->
                         val categoryData = categoryNewAdapter.listData[categoryNewAdapter.selectedPosition]

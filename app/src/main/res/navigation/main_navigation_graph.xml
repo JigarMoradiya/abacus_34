@@ -110,6 +110,12 @@
         <argument
             android:name="setId"
             app:argType="string" />
+        <action
+            android:id="@+id/toSettingsFragment"
+            app:destination="@+id/settingsFragment" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/myProfileFragment"
