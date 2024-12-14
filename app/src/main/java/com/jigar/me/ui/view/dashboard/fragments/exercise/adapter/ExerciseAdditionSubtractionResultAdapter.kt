@@ -32,7 +32,7 @@ class ExerciseAdditionSubtractionResultAdapter(
             val exerciseAdditionSubtractionAdapter = ExerciseAdditionSubtractionResultQuestionsAdapter(listExerciseAdditionSubtractionQuestion)
             recyclerview.adapter = exerciseAdditionSubtractionAdapter
 
-            if (data.userAnswer == -1){
+            if (data.userAnswer.isNullOrEmpty()){
                 txtYourAnswer.text = "0"
                 txtYourAnswer.setTextColor(ContextCompat.getColor(context,R.color.orange_800))
                 img.setBackgroundResource(R.drawable.ic_answer_skip)

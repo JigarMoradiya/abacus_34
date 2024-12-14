@@ -136,7 +136,7 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
         binding.txtNext.onClick {
             if(requireContext().isNetworkAvailable){
                 if (binding.tvAnswer.text.toString().isNotEmpty() && binding.tvAnswer.text.toString() != "0"){
-                    listExerciseAdditionSubtraction[exercisePosition].userAnswer = binding.tvAnswer.text.toString().toInt()
+                    listExerciseAdditionSubtraction[exercisePosition].userAnswer = binding.tvAnswer.text.toString()
                 }
                 abacusBinding?.ivReset?.performClick()
                 if (exercisePosition < listExerciseAdditionSubtraction.lastIndex){
@@ -320,8 +320,8 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
                     "2" -> {
                         binding.recyclerviewExercise.hide()
                         binding.txtMultiplication.show()
-//                        listExerciseAdditionSubtraction = DataProvider.generateMultiplicationExercise(childData)
-                        listExerciseAdditionSubtraction = DataProvider.generateMultiplication3_Temp(childData)
+                        listExerciseAdditionSubtraction = DataProvider.generateMultiplicationExercise(childData)
+//                        listExerciseAdditionSubtraction = DataProvider.generateMultiplication3_Temp(childData)
                         setQuestions()
                     }
                     "3" -> {
@@ -391,7 +391,7 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
                 val question = it.question
                 val resultObject = mCalculator.getResult(question,question)
                 val correctAns = CommonUtils.removeTrailingZero(resultObject)
-                if (it.userAnswer == -1){
+                if (it.userAnswer.isNullOrEmpty()){
                     questionsList.add(QuestionDataRequest(it.question,"",(correctAns == it.userAnswer.toString())))
                 }else{
                     questionsList.add(QuestionDataRequest(it.question,it.userAnswer.toString(),(correctAns == it.userAnswer.toString())))
@@ -422,7 +422,7 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
     private fun setQuestions() {
         if (listExerciseAdditionSubtraction.lastIndex >= exercisePosition){
             binding.txtNext.isEnabled = true
-            valuesAnswer = listExerciseAdditionSubtraction[exercisePosition].answer
+            valuesAnswer = listExerciseAdditionSubtraction[exercisePosition].answer.toInt()
             binding.txtQueLabel.text = "Q".plus((exercisePosition+1))
 
             if (currentParentData?.id == "1"){

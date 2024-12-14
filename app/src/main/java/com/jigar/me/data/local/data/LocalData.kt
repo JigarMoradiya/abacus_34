@@ -28,6 +28,6 @@ data class BeginnerExamPaper(val type: BeginnerExamQuestionType, val value: Stri
 
 data class ExerciseLevel(val id : String, val title: String, val list : ArrayList<ExerciseLevelDetail>,var selectedChildPos : Int = 0)
 data class ExerciseLevelDetail(val id : String,val totalQue : Int,val queLines : Int,val digits : Int, val totalTime: Int)
-data class ExerciseList(val question : String, val answer : Int, var userAnswer : Int = -1)
+data class ExerciseList(val question : String, val answer : String, var userAnswer : String? = null)
 data class CustomChallengeData(val questions : MutableList<CustomChallengeQuestion>, val fullQuestion : String,val answer : Int)
 data class CustomChallengeQuestion(val sign : String, val question : Int)

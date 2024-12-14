@@ -108,7 +108,7 @@ data class AllExamData(
                     val resultObject = Calculator().getResult(question, question)
                     val correctAns = CommonUtils.removeTrailingZero(resultObject)
                     val userAnswer = if (user_answer.isNullOrEmpty()){"0"}else{user_answer?:"0"}
-                    exerciseList.add(ExerciseList(question,correctAns.toInt(),userAnswer.toInt()))
+                    exerciseList.add(ExerciseList(question,correctAns,userAnswer))
                 }
             }
         }

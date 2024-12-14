@@ -28,6 +28,8 @@ class ExerciseMultiplicationDivisionResultAdapter(private var questions: List<Ex
             }else{
                 val questions = if (data.question.contains("x")){
                     data.question.split("x")
+                }else if (data.question.contains("*")){
+                    data.question.split("*")
                 }else{
                     data.question.split("/")
                 }
@@ -37,7 +39,7 @@ class ExerciseMultiplicationDivisionResultAdapter(private var questions: List<Ex
                     tvQuestion2.text = questions[1]
                 }
 
-                if (data.question.contains("x")){
+                if (data.question.contains("x") || data.question.contains("*")){
                     imgSymbol.setImageResource(R.drawable.cal_mul)
                     imgSymbol.show()
                 }else if (data.question.contains("/")){
@@ -49,7 +51,7 @@ class ExerciseMultiplicationDivisionResultAdapter(private var questions: List<Ex
             }
 
 
-            if (data.userAnswer == -1){
+            if (data.userAnswer.isNullOrEmpty()){
                 txtYourAnswer.text = "0"
                 txtYourAnswer.setTextColor(ContextCompat.getColor(context,R.color.orange_800))
                 img.setBackgroundResource(R.drawable.ic_answer_skip)

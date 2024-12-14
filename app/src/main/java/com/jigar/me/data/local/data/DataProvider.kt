@@ -600,7 +600,7 @@ object DataProvider {
                 answer = answerTemp / que2
             }
 
-            listExercise.add(ExerciseList(question,answer))
+            listExercise.add(ExerciseList(question,answer.toString()))
         }
         listExercise.shuffle()
         return listExercise
@@ -653,7 +653,7 @@ object DataProvider {
                 answer = que1 * que2
                 question = "${que1}x$que2"
             }
-            listExercise.add(ExerciseList(question,answer))
+            listExercise.add(ExerciseList(question,answer.toString()))
         }
 
         return listExercise
@@ -720,7 +720,7 @@ object DataProvider {
                 answer = que1 * que2
                 question = "${que1}*$que2"
             }
-            listExercise.add(ExerciseList(question,answer))
+            listExercise.add(ExerciseList(question,answer.toString()))
         }
         val listnew = listExercise.shuffled().shuffled()
         val listQue: MutableList<String> = arrayListOf()
@@ -822,7 +822,7 @@ object DataProvider {
                 answer = que1 * que2
                 question = "${que1}x$que2"
             }
-            listExercise.add(ExerciseList(question,answer))
+            listExercise.add(ExerciseList(question,answer.toString()))
         }
 
         return listExercise
@@ -1010,7 +1010,7 @@ object DataProvider {
 
                 }
             }
-            listExercise.add(ExerciseList(question,answer))
+            listExercise.add(ExerciseList(question,answer.toString()))
         }
         return listExercise
     }
@@ -1170,7 +1170,7 @@ object DataProvider {
                     }
                 }
             }
-            listExercise.add(ExerciseList(question,answer))
+            listExercise.add(ExerciseList(question,answer.toString()))
         }
         val listQue: MutableList<String> = arrayListOf()
         listExercise.map {

@@ -36,7 +36,7 @@ object ExerciseCompleteDialog {
             alertLayout.tvTitle.text = context.getString(R.string.result_of_practice_set)
         }
 
-        if (resultType == AppConstants.apiParams.answerFormalAnswer || listExercise.first().question.contains("x") || listExercise.first().question.contains("/")){
+        if (resultType == AppConstants.apiParams.answerFormalAnswer || listExercise.first().question.contains("x") || listExercise.first().question.contains("*") || listExercise.first().question.contains("/")){
             alertLayout.recyclerview.show()
             alertLayout.recyclerviewAddition.hide()
             if (listExercise.size > 5){
@@ -65,7 +65,7 @@ object ExerciseCompleteDialog {
         alertdialog = alertBuilder.show()
         val windows = alertdialog?.window
         val colorD = ColorDrawable(Color.TRANSPARENT)
-        val insetD = if (listExercise.first().question.contains("x")){
+        val insetD = if (listExercise.first().question.contains("x") || listExercise.first().question.contains("*")){
             if (listExercise.size > 5){
                 InsetDrawable(colorD, 100.dp, 0, 100.dp, 0)
             }else{
