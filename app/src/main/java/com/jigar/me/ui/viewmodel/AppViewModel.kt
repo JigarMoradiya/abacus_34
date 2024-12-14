@@ -44,7 +44,7 @@ class AppViewModel @Inject constructor(private val apiRepository: ApiRepository,
     // abacus all data
     fun getLevel() = dbRepository.getLevel()
     suspend fun getCategory(id: String) = dbRepository.getCategory(id)
-    suspend fun getPages(id: String) = dbRepository.getPages(id)
+    suspend fun getPages(id: String, isGetAllData: Boolean)= dbRepository.getPages(id,isGetAllData)
     suspend fun getSet(id: String) = dbRepository.getSet(id)
     suspend fun getSetDetail(setId : String) = dbRepository.getSetDetail(setId)
     suspend fun getSetProgress(setId : String) = dbRepository.getSetProgress(setId)

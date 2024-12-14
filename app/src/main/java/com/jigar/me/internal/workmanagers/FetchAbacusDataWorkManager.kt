@@ -56,11 +56,10 @@ class FetchAbacusDataWorkManager @AssistedInject constructor(
         try {
             val defaultDateTime = Constants.last_sync_default_time
             val dateTime = prefManager.getCustomParam(Constants.last_sync_time,defaultDateTime)
-            val request = FetchAbacusDataRequest(true,true,true,true,true,dateTime,get_all_data = false)
+            val request = FetchAbacusDataRequest(true,true,true,true,true,dateTime,get_all_data = true)
             if (dateTime == defaultDateTime){
                 request.get_set_progress_report = true
             }
-            Log.e("jigarWorkManager","FetchAbacusDataWorkManager request = "+Gson().toJson(request))
             val apiResponse = apiStudent.getAbacusData(request)
             if (apiResponse.status == AppConstants.APIStatus.SUCCESS){
                 apiResponse.data?.let {

@@ -8,7 +8,7 @@ import javax.inject.Inject
 class AbacusAllDataDB @Inject constructor(private val dao: AbacusAllDataDao) {
     fun getLevel() = dao.getLevel()
     suspend fun getCategory(id : String) = dao.getCategory(id)
-    suspend fun getPages(id : String) = dao.getPages(id)
+    suspend fun getPages(id: String, isGetAllData: Boolean) = if (isGetAllData){dao.getPages(id)}else{dao.getPagesOnlyActive(id)}
     suspend fun getSet(id : String) = dao.getSet(id)
     suspend fun getSetDetail(setId : String) = dao.getSetDetail(setId)
     suspend fun getSetProgress(setId : String) = dao.getSetProgress(setId)

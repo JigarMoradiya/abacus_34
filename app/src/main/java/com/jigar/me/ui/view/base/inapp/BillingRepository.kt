@@ -367,14 +367,14 @@ class BillingRepository @Inject constructor(
                 .setProductId(PRODUCT_ID_All_lifetime)
                 .setProductType(BillingClient.ProductType.INAPP)
                 .build(),
-            QueryProductDetailsParams.Product.newBuilder()
-                .setProductId(PRODUCT_ID_material_maths)
-                .setProductType(BillingClient.ProductType.INAPP)
-                .build(),
-            QueryProductDetailsParams.Product.newBuilder()
-                .setProductId(PRODUCT_ID_material_nursery)
-                .setProductType(BillingClient.ProductType.INAPP)
-                .build(),
+//            QueryProductDetailsParams.Product.newBuilder()
+//                .setProductId(PRODUCT_ID_material_maths)
+//                .setProductType(BillingClient.ProductType.INAPP)
+//                .build(),
+//            QueryProductDetailsParams.Product.newBuilder()
+//                .setProductId(PRODUCT_ID_material_nursery)
+//                .setProductType(BillingClient.ProductType.INAPP)
+//                .build(),
 
             QueryProductDetailsParams.Product.newBuilder()
                 .setProductId(PRODUCT_ID_All_lifetime_old)

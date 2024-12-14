@@ -37,6 +37,7 @@ class CategoryFragment : BaseFragment() {
     private lateinit var categoryNewAdapter: CategoryNewAdapter
     private lateinit var pagesNewAdapter: PagesNewAdapter
     private var levelId: String = ""
+    private var isGetAllData: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -129,7 +130,7 @@ class CategoryFragment : BaseFragment() {
 
     private fun setPages(categoryId: String,isScrollToPosition : Boolean = true) {
         CoroutineScope(Dispatchers.Main).launch {
-            val pagesList = appViewModel.getPages(categoryId)
+            val pagesList = appViewModel.getPages(categoryId,isGetAllData)
             pagesNewAdapter.setData(pagesList)
             if (pagesList.isEmpty()){
                 binding.imgNoData.show()
