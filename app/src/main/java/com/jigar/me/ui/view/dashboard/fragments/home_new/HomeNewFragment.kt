@@ -157,8 +157,8 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     private fun initListener() {
         with(binding){
             cardProfileImage.onClick {
-//                cardEditImage.performClick()
-                mNavController?.navigate(R.id.toHomeFragment)
+                cardEditImage.performClick()
+//                mNavController?.navigate(R.id.toHomeFragment)
             }
             txtWelcomeTitle.onClick { cardEditImage.performClick() }
             txtWelcomeMsg.onClick { cardEditImage.performClick() }
