@@ -2,11 +2,8 @@ package com.jigar.me.ui.view.login
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
-import android.view.WindowManager
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -15,10 +12,8 @@ import androidx.navigation.fragment.NavHostFragment
 import com.jigar.me.R
 import com.jigar.me.databinding.ActivityLoginDashboardBinding
 import com.jigar.me.ui.view.base.BaseActivity
-import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.utils.extensions.hide
-import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

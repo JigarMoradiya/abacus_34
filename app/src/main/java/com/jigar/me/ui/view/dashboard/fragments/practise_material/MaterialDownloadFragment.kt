@@ -30,8 +30,8 @@ import com.jigar.me.utils.DateTimeUtils
 import com.jigar.me.utils.DownloadManagerListener
 import com.jigar.me.utils.Resource
 import com.jigar.me.utils.extensions.*
-import com.stfalcon.frescoimageviewer.ImageViewer
-import com.stfalcon.frescoimageviewer.ImageViewer.OnImageChangeListener
+//import com.stfalcon.frescoimageviewer.ImageViewer
+//import com.stfalcon.frescoimageviewer.ImageViewer.OnImageChangeListener
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.util.Date
@@ -173,14 +173,14 @@ class MaterialDownloadFragment : BaseFragment(), MaterialDownloadAdapter.OnItemC
         listImages = listDownloadMaterial[parentPos].imagesList
         this.parentPos = parentPos
 
-        ImageViewer.Builder(requireContext(), listImages)
-            .setStartPosition(position)
-            .setFormatter(ImageViewer.Formatter { customImage: ImageData ->
-                 prefManager.getCustomParam(AppConstants.AbacusProgress.iPath,"")+listDownloadMaterial[parentPos].imagePath + customImage.image
-            })
-//            .setImageChangeListener(getImageChangeListener())
-//            .setOverlayView(overlayView)
-            .show()
+//        ImageViewer.Builder(requireContext(), listImages)
+//            .setStartPosition(position)
+//            .setFormatter(ImageViewer.Formatter { customImage: ImageData ->
+//                 prefManager.getCustomParam(AppConstants.AbacusProgress.iPath,"")+listDownloadMaterial[parentPos].imagePath + customImage.image
+//            })
+////            .setImageChangeListener(getImageChangeListener())
+////            .setOverlayView(overlayView)
+//            .show()
     }
 
     private fun fetchSKUDetail(data: InAppSkuDetails?) {
@@ -256,11 +256,11 @@ class MaterialDownloadFragment : BaseFragment(), MaterialDownloadAdapter.OnItemC
         }
     }
 
-    private fun getImageChangeListener(): OnImageChangeListener {
-        return OnImageChangeListener { position ->
-            overlayView.setTitleText(listDownloadMaterial[parentPos].groupName)
-            overlayView.setDescription(listImages[position].description)
-        }
-    }
+//    private fun getImageChangeListener(): OnImageChangeListener {
+//        return OnImageChangeListener { position ->
+//            overlayView.setTitleText(listDownloadMaterial[parentPos].groupName)
+//            overlayView.setDescription(listImages[position].description)
+//        }
+//    }
 
 }

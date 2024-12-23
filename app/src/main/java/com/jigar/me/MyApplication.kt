@@ -10,7 +10,7 @@ import androidx.annotation.NonNull
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.navigation.NavDeepLinkBuilder
 import androidx.work.Configuration
-import com.facebook.drawee.backends.pipeline.Fresco
+//import com.facebook.drawee.backends.pipeline.Fresco
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.jigar.me.data.model.NotificationData
@@ -80,7 +80,7 @@ class MyApplication : Application(), Configuration.Provider {
 
     override fun onCreate() {
         super.onCreate()
-        Fresco.initialize(this)
+//        Fresco.initialize(this)
         analytics = FirebaseAnalytics.getInstance(this@MyApplication)
 
         oneSignal()

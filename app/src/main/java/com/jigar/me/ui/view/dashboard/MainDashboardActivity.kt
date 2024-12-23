@@ -10,15 +10,17 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.jigar.me.BuildConfig
 import com.jigar.me.R
+import com.jigar.me.data.model.dbtable.abacus_all_data.Set
 import com.jigar.me.databinding.ActivityMainDashboardBinding
-import com.jigar.me.internal.workmanagers.FetchAbacusDataWorkManager
 import com.jigar.me.ui.view.base.BaseActivity
 import com.jigar.me.ui.view.dashboard.fragments.abacus.half.HalfAbacusFragment
 import com.jigar.me.ui.view.dashboard.fragments.exercise.ExerciseHomeFragment
+import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.InAppViewModel
-import com.jigar.me.utils.extensions.hide
-import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -27,9 +29,10 @@ class MainDashboardActivity : BaseActivity() {
     lateinit var navHostFragment: NavHostFragment
     private var selectedFragment: Int = -1
     private val inAppViewModel by viewModels<InAppViewModel>()
-//    private val appViewModel by viewModels<AppViewModel>()
+    private val appViewModel by viewModels<AppViewModel>()
     private lateinit var binding: ActivityMainDashboardBinding
     var isPurchaseDataChecked = false
+    var allSetList: ArrayList<Set> = arrayListOf()
     companion object {
         @JvmStatic
         fun getInstance(context: Context?) {
@@ -132,5 +135,13 @@ class MainDashboardActivity : BaseActivity() {
 
     private fun navigationUp() {
         navController.navigateUp()
+    }
+
+    fun fetchSetData() {
+        CoroutineScope(Dispatchers.Main).launch {
+            val list = appViewModel.getAllSet()
+            allSetList.clear()
+            allSetList.addAll(list)
+        }
     }
 }

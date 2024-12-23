@@ -49,7 +49,7 @@
                 android:textSize="@dimen/textSizeMedium"
                 app:fontFamily="@font/font_bold"
                 app:layout_constraintBottom_toTopOf="@+id/txtDesc"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imgActive"
                 app:layout_constraintStart_toEndOf="@+id/imgIcon"
                 app:layout_constraintTop_toTopOf="@+id/imgIcon"
                 tools:text="Lesson 1" />
@@ -71,6 +71,25 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtTitle"
                 tools:text="Subtraction of Single digit for +-7" />
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgActive"
+                android:layout_width="@dimen/activity_padding16"
+                android:layout_height="@dimen/activity_padding16"
+                android:layout_marginEnd="@dimen/activity_padding4"
+                android:visibility="@{dataModel.is_active?View.GONE:View.VISIBLE,default=gone}"
+                app:layout_constraintBottom_toBottomOf="@+id/imgIcon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgIcon"
+                app:srcCompat="@drawable/ic_disable"
+                tools:visibility="visible" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="imgIcon,txtTitle,txtDesc"
+                app:barrierDirection="bottom"
+                android:id="@+id/barrier" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerviewSet"
                 android:layout_width="0dp"
@@ -82,7 +101,7 @@
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgIcon"
+                app:layout_constraintTop_toBottomOf="@+id/barrier"
                 app:spanCount="3"
                 tools:itemCount="3"
                 tools:listitem="@layout/raw_set_list" />

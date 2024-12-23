@@ -60,8 +60,8 @@ android {
 
             dimension = "variant1"
             applicationId = "com.abacus.puzzle"
-            versionCode = 113
-            versionName = "11.0.0"
+            versionCode = 114
+            versionName = "11.0.1"
         }
     }
 
@@ -78,6 +78,9 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+
+    // install referrer
+    implementation("com.android.installreferrer:installreferrer:2.2")
 
     // Circular Progress Drawable
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
@@ -166,8 +169,8 @@ dependencies {
     implementation("com.github.ome450901:SimpleRatingBar:1.5.0")
 
     // image viewer pager
-    implementation("com.facebook.fresco:fresco:3.2.0")
-    implementation("com.github.stfalcon:frescoimageviewer:0.5.0")
+//    implementation("com.facebook.fresco:fresco:3.2.0")
+//    implementation("com.github.stfalcon:frescoimageviewer:0.5.0")
 
     // event bus broadcaster
     implementation("org.greenrobot:eventbus:3.2.0")

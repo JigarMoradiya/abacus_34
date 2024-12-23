@@ -125,6 +125,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
         linearMenu.post {
             appViewModel.getLevel().observe(viewLifecycleOwner){
                 if (it.isNotNullOrEmpty()){
+                    (activity as MainDashboardActivity).fetchSetData()
                     val column = (it.size / 2)
                     val height = linearMenu.height / 2
                     val width = linearMenu.width / column
@@ -157,13 +158,17 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     private fun initListener() {
         with(binding){
             cardProfileImage.onClick {
-                cardEditImage.performClick()
-//                mNavController?.navigate(R.id.toHomeFragment)
+                if (BuildConfig.DEBUG){
+                    mNavController?.navigate(R.id.toHomeFragment)
+                }else{
+                    txtMyAccount.performClick()
+                }
             }
-            txtWelcomeTitle.onClick { cardEditImage.performClick() }
-            txtWelcomeMsg.onClick { cardEditImage.performClick() }
-            txtMyAccount.onClick { cardEditImage.performClick() }
-            cardEditImage.onClick { moveToClick(AppConstants.HomeClicks.Menu_My_Profile) }
+            txtWelcomeTitle.onClick { txtMyAccount.performClick() }
+            txtWelcomeMsg.onClick { txtMyAccount.performClick() }
+            txtMyAccount.onClick { moveToClick(AppConstants.HomeClicks.Menu_My_Profile) }
+            cardEditImage.onClick { txtMyAccount.performClick() }
+
             cardSettingTop.onClick { moveToClick(AppConstants.HomeClicks.Menu_Setting) }
             cardSubscribe.onClick { moveToClick(AppConstants.HomeClicks.Menu_Subscribe) }
             cardAboutUs.onClick { moveToClick(AppConstants.HomeClicks.Menu_AboutUs) }

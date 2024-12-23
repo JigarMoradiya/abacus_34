@@ -19,8 +19,8 @@ import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
 import com.jigar.me.data.model.dbtable.exam.ExamHistory
 import com.jigar.me.data.model.dbtable.inapp.InAppPurchaseDetails
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
+import com.jigar.me.internal.workmanagers.FirstAppStartWorkManager
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.Constants
 import com.jigar.me.utils.DataTypeConverter
 import java.util.concurrent.Executors
 
@@ -63,10 +63,7 @@ abstract class AppDatabase : RoomDatabase() {
                 object : Callback() {
                     override fun onCreate(db: SupportSQLiteDatabase) {
                         super.onCreate(db)
-                        // insert the data on the IO Thread
-                        ioThread {
-
-                        }
+                        FirstAppStartWorkManager.startWorkManager(context)
                     }
                 }
             )

@@ -695,7 +695,7 @@ object DataProvider {
 //                generateSingleDigit(min,max)
 //            }
             var min = 10
-            var max = 49
+            var max = 99
 //            if (j < 4){
 //                min = 5
 //                max = 9
@@ -705,8 +705,12 @@ object DataProvider {
 //            }
 
             val que1 = generateSingleDigit(min,max)
-            val que22 = 8
-//            val que22 = generateSingleDigit(2,9)
+//            val que22 = 9
+            val que22 = generateSingleDigit(2,9)
+//            val index = generateSingleDigit(1,4)
+            // 2578 3469
+//            val que22 = if (index == 1){3}else if (index == 2){4}else if (index == 3){6}else if (index == 4){9}else{1}
+            // 257 468 139 25784 36915
 
             val que2 : Int = que22
 //            val isInvert = generateIndex()
@@ -1017,10 +1021,10 @@ object DataProvider {
 
     fun generateAdditionSubExerciseTemp(child: ExerciseLevelDetail) : MutableList<ExerciseList>{
         val listExercise: MutableList<ExerciseList> = arrayListOf()
-        var min = 2
-        var max = 9
+        var min = 21
+        var max = 99
 
-        var queLines = 6
+        var queLines = 3
         for (j in 0 until 20){
             var minusSignCount = 0
             var maxMinusSignCount = 2
@@ -1035,36 +1039,39 @@ object DataProvider {
 //                }else{
 //                    maxMinusSignCount = 2
 //                }
-            maxMinusSignCount = 1
+//            maxMinusSignCount = 1
 //            }
 
             var singleDigitCount = 0
-            var maxSingleDigitCount = 2
+            var maxSingleDigitCount = 0
             var twoDigitCount = 0
-            var maxTwoDigitCount = 4
-//            queLines = generateSingleDigit(4, 6)
-//            if (queLines == 7){
-//                maxMinusSignCount = 3
+            var maxTwoDigitCount = 2
+
+            queLines = generateSingleDigit(5, 6)
+//            if (queLines != 4){
+//                maxMinusSignCount = 2
 //            }
             var answer = 0
             var question = ""
             for (i in 0 until queLines){
-                val index = generateIndex()
-                if (index == 0 && twoDigitCount != maxTwoDigitCount){
-                    min = 30
-                    max = 99
-                    twoDigitCount++
-                }else {
-                    if (singleDigitCount != maxSingleDigitCount){
-                        min = 5
-                        max = 9
-                        singleDigitCount++
-                    }else{
-                        min = 30
-                        max = 99
-                        twoDigitCount++
-                    }
-                }
+//                val index = generateIndex()
+//                if (index == 0 && twoDigitCount != maxTwoDigitCount){
+//                    min = 10
+//                    max = 99
+//                    twoDigitCount++
+//                }else {
+//                    if (singleDigitCount != maxSingleDigitCount){
+//                        min = 3
+//                        max = 9
+//                        singleDigitCount++
+//                    }else{
+//                        min = 10
+//                        max = 99
+//                        twoDigitCount++
+//                    }
+//                }
+
+
 //                if (i == 0){
 //                    min = 14
 //                    max = 79

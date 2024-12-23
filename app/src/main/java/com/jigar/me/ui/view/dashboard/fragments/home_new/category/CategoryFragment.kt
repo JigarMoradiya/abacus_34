@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.jigar.me.R
@@ -14,6 +13,7 @@ import com.jigar.me.data.model.dbtable.abacus_all_data.Set
 import com.jigar.me.databinding.FragmentCategoryBinding
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
+import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.extensions.hide
@@ -24,7 +24,6 @@ import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -76,21 +75,18 @@ class CategoryFragment : BaseFragment() {
             val categoryList = appViewModel.getCategory(levelId)
             categoryNewAdapter.setData(categoryList)
             if (categoryList.isNotNullOrEmpty()){
-                lifecycleScope.launch {
-//                    delay(200)
-                    val allSetList = appViewModel.getAllSet()
-                    pagesNewAdapter = PagesNewAdapter(arrayListOf(),allSetList) { pagePosition,setPosition,setData,data ->
-                        val categoryData = categoryNewAdapter.listData[categoryNewAdapter.selectedPosition]
-                        val isPurchase = CommonUtils.checkLevelIsPurchase(purchasedSKU,categoryData)
-                        if (isPurchase){
-                            gotoAbacus(setData)
-                        }else{
-                            purchaseDialog()
-                        }
+                val allSetList = (activity as MainDashboardActivity).allSetList
+                pagesNewAdapter = PagesNewAdapter(arrayListOf(),allSetList) { pagePosition,setPosition,setData,data ->
+                    val categoryData = categoryNewAdapter.listData[categoryNewAdapter.selectedPosition]
+                    val isPurchase = CommonUtils.checkLevelIsPurchase(purchasedSKU,categoryData)
+                    if (isPurchase){
+                        gotoAbacus(setData)
+                    }else{
+                        purchaseDialog()
                     }
-                    recyclerviewPages.adapter = pagesNewAdapter
-                    setPages(categoryList.first().id)
                 }
+                recyclerviewPages.adapter = pagesNewAdapter
+                setPages(categoryList.first().id)
             }
         }
     }

@@ -79,6 +79,7 @@ object AppConstants {
         companion object {
             var MaterialDownloaded = "abacus_material_download"
 
+            var appInstallFrom = "app_install_from"
             var InAppPurchase = "abacus_purchase"
             var InAppPurchaseSKU = "abacus_sku"
             var InAppPurchaseOrderId = "abacus_order_id"
