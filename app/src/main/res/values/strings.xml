@@ -397,6 +397,7 @@
     <string name="enable_free_mode">Enable Free Mode</string>
     <string name="to_know_about_abacus">To know about Abacus</string>
     <string name="rod_s_bead_value">ROD\'s Bead Value</string>
+    <string name="learn_addition_subtraction_with_abacus">Learn <font color='#0000EE'>Addition, Subtraction, Multiplication</font>\nand <font color='#0000EE'>Division</font> with Abacus</string>
     <string name="take_exam_of_your_kid_s_to_check_ability_with_different_type">Take different type of <font color='#00BCD4'>Exam</font> to\n<font color='#00BCD4'>check your Kid\'s Ability</font></string>
     <string name="select_different_type_of_exercise_nto_improve_kid_s_performance">Select different type of\n<font color='#009688'>Exercise</font> to improve your\n<font color='#009688'>Kid\'s Performance</font></string>
     <string name="maths_with_fun">MATHS with FUN</string>
@@ -579,7 +580,7 @@
     <string name="start_new_challenge">Start new challenge</string>
     <string name="change_voice_setting">Change Voice Setting</string>
     <string name="ccm_msg">Help to increase <font color='#D81B60'>Concentration Power,\n</font> <font color='#7B1FA2'>Listening Skill,</font> <font color='#303F9F'>Calculation Speed,</font>\n<font color='#0097A7'>Visualization</font> and <font color='#388E3C'>Memory Power</font></string>
-    <string name="setting_msg"><font color='#0277BD'>Setting of</font> abacus themes, voice,\nabacus hint, answer type, help message,\nleft or right handed, etc..</string>
+    <string name="setting_msg"><font color='#0277BD'>Setting of</font> abacus themes, voice,\nabacus hint, help message,\nleft or right handed, etc..</string>
     <string name="background_music_volume">Background Music Volume</string>
     <string name="times_table">Times Table</string>
     <string name="in_your_device_voices_not_found">In your device voices not found.</string>

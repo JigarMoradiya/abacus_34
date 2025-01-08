@@ -328,6 +328,7 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
                         binding.recyclerviewExercise.hide()
                         binding.txtMultiplication.show()
                         listExerciseAdditionSubtraction = DataProvider.generateDivisionExercise(childData)
+//                        listExerciseAdditionSubtraction = DataProvider.generateDivisionTemp(childData)
 
                         setQuestions()
                     }

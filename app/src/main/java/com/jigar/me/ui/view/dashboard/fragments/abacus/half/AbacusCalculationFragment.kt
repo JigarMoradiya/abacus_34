@@ -25,6 +25,7 @@ import com.jigar.me.data.model.data.QuestionDataRequest
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
 import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
+import com.jigar.me.databinding.FragmentCalculationBinding
 import com.jigar.me.databinding.FragmentHalfAbacusBinding
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.base.abacus.AbacusMasterCompleteListener
@@ -49,7 +50,7 @@ import java.util.*
 
 @AndroidEntryPoint
 class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAdditionSubtractionTypeAdapter.HintListener{
-    lateinit var binding: FragmentHalfAbacusBinding
+    lateinit var binding: FragmentCalculationBinding
     private val appViewModel by viewModels<AppViewModel>()
     private val examViewModel by viewModels<ExamViewModel>()
     private var themeContent : AbacusContent? = null
@@ -102,7 +103,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     }
 
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
-        binding = FragmentHalfAbacusBinding.inflate(inflater, container, false)
+        binding = FragmentCalculationBinding.inflate(inflater, container, false)
         setNavigationGraph()
         initViews()
         initListener()
@@ -209,9 +210,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
             binding.txtTitleHand.setTextColor(ContextCompat.getColor(requireContext(),it))
             binding.tvAns.setTextColor(ContextCompat.getColor(requireContext(),it))
 
-            binding.txtUseAbacusToolsTitle.setTextColor(ContextCompat.getColor(requireContext(),it))
-            binding.btnNextAbacus.setBackgroundColor(ContextCompat.getColor(requireContext(),it))
-
             themeContent?.dividerColor1?.let {it2 ->
                 val finalColor40 = CommonUtils.mixTwoColors(ContextCompat.getColor(requireContext(),it2), ContextCompat.getColor(requireContext(),it), 0.40f)
                 binding.tvAnsNumber.setTextColor(finalColor40)
@@ -233,7 +231,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         binding.cardSubscribe.onClick { goToInAppPurchase()  }
         binding.cardTable.onClick { tableClick() }
         binding.relativeTable.onClick { binding.relativeTable.hide() }
-        binding.btnNextAbacus.onClick { goToNextAbacus() }
     }
 
     private fun tableClick() {
@@ -811,7 +808,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         try {
             if (isAnswerWithTools){
                 binding.flAbacus.hide()
-                binding.linearYourAbacusTools.show()
                 binding.relAbacus.show()
             }else{
                 // TODO
@@ -822,7 +818,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                     abacusFragment = HalfAbacusSubFragment().newInstance(abacusTotalColumns, noOfDecimalPlace, abacus_type,setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer)
                 }
                 binding.flAbacus.show()
-                binding.linearYourAbacusTools.hide()
                 if (abacusFragment != null){
                     abacusFragment?.setOnAbacusValueChangeListener(this)
                     val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
@@ -992,7 +987,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         }
     }
     private fun moveToNext() {
-        Log.e("jigarLogs","current_pos = "+current_pos)
         CoroutineScope(Dispatchers.Main).launch {
             setId?.let {
                 val submitExamRequest = SubmitAllExamDataRequest()
@@ -1112,7 +1106,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         CoroutineScope(Dispatchers.Main).launch {
             appViewModel.updateUserAnswer(currentAbacus.id,userAnswer)
             reset()
-            binding.btnNextAbacus.performClick()
+            goToNextAbacus()
         }
     }
 
@@ -1243,11 +1237,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     // abacus ui rules
     @SuppressLint("SuspiciousIndentation")
     private fun setRightAbacusRules() {
-        val paramsAds = binding.adView.layoutParams as RelativeLayout.LayoutParams
-        paramsAds.addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
-        paramsAds.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
-        binding.adView.layoutParams = paramsAds
-
         val paramsAbacus = binding.relAbacus.layoutParams as RelativeLayout.LayoutParams
         paramsAbacus.addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
         paramsAbacus.addRule(RelativeLayout.CENTER_VERTICAL)
@@ -1334,11 +1323,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
             delay(400)
             binding.txtTitleHand.show()
         }
-
-        val paramsAds = binding.adView.layoutParams as RelativeLayout.LayoutParams
-        paramsAds.addRule(RelativeLayout.ALIGN_PARENT_START)
-        paramsAds.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
-        binding.adView.layoutParams = paramsAds
 
         val paramsAbacus = binding.relAbacus.layoutParams as RelativeLayout.LayoutParams
         paramsAbacus.addRule(RelativeLayout.ALIGN_PARENT_START)

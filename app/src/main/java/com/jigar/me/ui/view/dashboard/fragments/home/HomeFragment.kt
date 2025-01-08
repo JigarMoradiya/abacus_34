@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.NonNull
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -20,13 +19,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.android.billingclient.api.BillingClient
 import com.eftimoff.viewpagertransformers.DepthPageTransformer
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.gson.Gson
 import com.google.gson.JsonObject
-import com.jigar.me.BuildConfig
 import com.jigar.me.MyApplication
 import com.jigar.me.R
 import com.jigar.me.data.local.data.*
@@ -35,7 +29,6 @@ import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.databinding.FragmentHomeBinding
-import com.jigar.me.internal.workmanagers.FetchAbacusDataWorkManager
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.base.inapp.BillingRepository
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
@@ -63,8 +56,6 @@ import kotlinx.coroutines.launch
 import me.samlss.lighter.IntroProvider
 import me.samlss.lighter.Lighter
 import me.samlss.lighter.parameter.Direction
-import org.json.JSONException
-import org.json.JSONObject
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -412,7 +403,7 @@ class HomeFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
         val numberPuzzleViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(10)
         val videoTutorialViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(11)
         if (freeModeViewHolder != null && exerciseViewHolder != null && examViewHolder != null && videoTutorialViewHolder != null && numberPuzzleViewHolder != null && ccmViewHolder != null){
-            IntroProvider.videoTutorialIntro(prefManager,lighter, binding.cardSettingTop,
+            IntroProvider.homeMenuIntro(prefManager,lighter, binding.cardSettingTop,
                 (freeModeViewHolder as HomeMenuAdapter.FormViewHolder).binding.conMain,
                 (videoTutorialViewHolder as HomeMenuAdapter.FormViewHolder).binding.conMain,
                 (exerciseViewHolder as HomeMenuAdapter.FormViewHolder).binding.conMain,

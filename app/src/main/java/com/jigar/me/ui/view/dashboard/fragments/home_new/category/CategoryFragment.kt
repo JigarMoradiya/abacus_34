@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.jigar.me.BuildConfig
 import com.jigar.me.R
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.data.model.dbtable.abacus_all_data.Set
@@ -36,7 +37,10 @@ class CategoryFragment : BaseFragment() {
     private lateinit var categoryNewAdapter: CategoryNewAdapter
     private lateinit var pagesNewAdapter: PagesNewAdapter
     private var levelId: String = ""
-    private var isGetAllData: Boolean = false
+    private var isGetAllData: Boolean = true
+//    private var isGetAllData: Boolean = false
+//    private var isGoToAbacusList: Boolean = true
+    private var isGoToAbacusList: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +68,10 @@ class CategoryFragment : BaseFragment() {
     }
 
     private fun initViews() = with(binding) {
+        if (!BuildConfig.DEBUG){
+            isGetAllData = false
+            isGoToAbacusList = false
+        }
         CoroutineScope(Dispatchers.Main).launch {
             val purchasedSKU = appViewModel.getInAppSKUPurchased()
             categoryNewAdapter = CategoryNewAdapter(arrayListOf(),purchasedSKU) { position, previousPos, data ->
@@ -103,8 +111,14 @@ class CategoryFragment : BaseFragment() {
     }
 
     private fun gotoAbacus(setData: Set) {
-        val action = CategoryFragmentDirections.toAbacusCalculationFragment(setData.id)
-        mNavController?.navigate(action)
+        if (isGoToAbacusList){
+            val action = CategoryFragmentDirections.toAbacusListFragment(setData.id)
+            mNavController?.navigate(action)
+        }else{
+            val action = CategoryFragmentDirections.toAbacusCalculationFragment(setData.id)
+            mNavController?.navigate(action)
+        }
+
     }
 
     override fun onResume() {
@@ -153,6 +167,7 @@ class CategoryFragment : BaseFragment() {
         val viewHolder = recyclerviewCategory.findViewHolderForAdapterPosition(previousPos) as? CategoryNewAdapter.ViewHolder
         if (viewHolder != null) {
             viewHolder.binding.imgArrow.invisible()
+            viewHolder.binding.cardMenu.strokeWidth = 0
         } else {
             categoryNewAdapter.notifyItemChanged(previousPos)
         }

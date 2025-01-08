@@ -55,8 +55,8 @@
     <dimen name="textSize20">20sp</dimen>
     <dimen name="textSize24">24sp</dimen>
     <dimen name="textSizeOTP">26sp</dimen>
-    <dimen name="textSizeAbacusNumber">80sp</dimen>
-    <dimen name="textSizeCCMNumber">50sp</dimen>
+    <dimen name="textSizeAbacusNumber">60sp</dimen>
+    <dimen name="textSizeCCMNumber">40sp</dimen>
     <dimen name="textSizeCCMWord">24sp</dimen>
     <dimen name="textSize36">36sp</dimen>
 

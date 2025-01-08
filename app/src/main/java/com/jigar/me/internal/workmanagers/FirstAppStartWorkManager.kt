@@ -46,6 +46,7 @@ class FirstAppStartWorkManager @AssistedInject constructor(
                         InstallReferrerClient.InstallReferrerResponse.OK -> {
                             // Connection established.
                             val response: ReferrerDetails = referrerClient.installReferrer
+                            // https://play.google.com/store/apps/details?id=com.abacus.puzzle&utm_source=ads_campaign&utm_content=facebook_custom_ads
                             val referrerUrl = response.installReferrer // utm_source=google-play&utm_medium=organic //it's default value only
 
 //                            val referrerClickTime: Long = response.referrerClickTimestampSeconds*1000

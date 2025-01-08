@@ -134,7 +134,10 @@ object DataProvider {
             AbacusBeadType.SettingPreview -> {
                 0.7f
             }
-            AbacusBeadType.AbacusPrecise,AbacusBeadType.Exercise,AbacusBeadType.CustomeChallenge -> {
+            AbacusBeadType.AbacusPrecise -> {
+                0.75f
+            }
+            AbacusBeadType.Exercise,AbacusBeadType.CustomeChallenge -> {
                 0.8f
             }
             AbacusBeadType.FreeMode,AbacusBeadType.FullMode -> {
@@ -536,6 +539,44 @@ object DataProvider {
         return listExercise
     }
 
+    fun generateDivisionTemp(child: ExerciseLevelDetail): MutableList<ExerciseList>{
+        val listExercise: MutableList<ExerciseList> = arrayListOf()
+        val totalQue = 20
+        (0 until totalQue).forEach { j ->
+            val que2 : Int = generateSingleDigit(2,9)
+//            val que2 : Int = 10
+            val que1 : Int = generateSingleDigit(15,60)
+//            val que1 : Int = if (j < 6){
+//                generateSingleDigit(5,10)
+//            }else{
+//                generateSingleDigit(10,35)
+//            }
+
+            var answer = 0
+            var question = ""
+//            if (que2 > que1){
+//                val answerTemp = que2 * que1
+//                question = "${answerTemp}/$que1"
+//                answer = answerTemp / que1
+//            }else{
+                val answerTemp = que1 * que2
+                question = "${answerTemp}/$que2"
+                answer = answerTemp / que2
+//            }
+
+            listExercise.add(ExerciseList(question,answer.toString()))
+        }
+        listExercise.shuffle()
+        val listnew = listExercise
+        val listQue: MutableList<String> = arrayListOf()
+        listnew.map {
+            listQue.add(it.question)
+        }
+        Log.e("jigarLogs","listExercise = "+listQue.joinToString(","))
+        Log.e("jigarLogs","listExercise = "+Gson().toJson(listQue))
+        Log.e("jigarLogs","listExercise = "+Gson().toJson(listExercise))
+        return listExercise
+    }
     private fun generateDivision(child: ExerciseLevelDetail): MutableList<ExerciseList>{
         val listExercise: MutableList<ExerciseList> = arrayListOf()
         (0 until child.totalQue).forEach { j ->
@@ -660,6 +701,13 @@ object DataProvider {
     }
     fun generateMultiplication3_Temp(child: ExerciseLevelDetail): MutableList<ExerciseList>{
         val listExercise: MutableList<ExerciseList> = arrayListOf()
+//        val list : ArrayList<Int> = arrayListOf()
+//        val endDigit = 0
+//        (1 until 6).forEach { k ->
+//            list.add(("$k"+endDigit).toInt())
+//        }
+//        Log.e("jigarLogs","listlist = "+Gson().toJson(list))
+
         (0 until 20).forEach { j ->
 //            val que1 = if (child.digits == 3){
 //                generateSingleDigit(2,99)
@@ -694,7 +742,7 @@ object DataProvider {
 //                val max : Int = 9999999 / que1
 //                generateSingleDigit(min,max)
 //            }
-            var min = 10
+            var min = 30
             var max = 99
 //            if (j < 4){
 //                min = 5
@@ -706,10 +754,14 @@ object DataProvider {
 
             val que1 = generateSingleDigit(min,max)
 //            val que22 = 9
-            val que22 = generateSingleDigit(2,9)
-//            val index = generateSingleDigit(1,4)
+            val que22 = generateSingleDigit(50,90)
+//            val index = generateSingleDigit(1,5)
+//            val index = generateSingleDigit(0,list.lastIndex)
+//            val que2 : Int = list[index]
             // 2578 3469
-//            val que22 = if (index == 1){3}else if (index == 2){4}else if (index == 3){6}else if (index == 4){9}else{1}
+            // 2489 3567
+
+//            val que22 = if (index == 1){3}else if (index == 2){5}else if (index == 3){6}else if (index == 4){7}else{9}
             // 257 468 139 25784 36915
 
             val que2 : Int = que22
@@ -1019,33 +1071,47 @@ object DataProvider {
         return listExercise
     }
 
-    fun generateAdditionSubExerciseTemp(child: ExerciseLevelDetail) : MutableList<ExerciseList>{
+    fun  generateAdditionSubExerciseTemp(child: ExerciseLevelDetail) : MutableList<ExerciseList>{
         val listExercise: MutableList<ExerciseList> = arrayListOf()
-        var min = 21
-        var max = 99
+        var min = 200
+        var max = 999
 
-        var queLines = 3
+        var queLines = 5
         for (j in 0 until 20){
+//             min = 1
+//             max = 20
+
             var minusSignCount = 0
             var maxMinusSignCount = 2
-//            val index = generateIndex()
+            val index = generateIndex()
 //            if (index == 0){
-//                maxMinusSignCount = 0
+//                maxMinusSignCount = 3
 //            }else{
-//                maxMinusSignCount = 1
-//                val index2 = generateIndex()
-//                if (index2 == 0){
-//                    maxMinusSignCount = 1
-//                }else{
-//                    maxMinusSignCount = 2
-//                }
-//            maxMinusSignCount = 1
+//                maxMinusSignCount = 2
+////                val index2 = generateIndex()
+////                if (index2 == 0){
+////                    maxMinusSignCount = 1
+////                }else{
+////                    maxMinusSignCount = 2
+////                }
 //            }
 
             var singleDigitCount = 0
             var maxSingleDigitCount = 0
+            var threeDigitCount = 0
+            var maxThreeDigitCount = 4
             var twoDigitCount = 0
-            var maxTwoDigitCount = 2
+            var maxTwoDigitCount = 1
+
+//            if (index == 0){
+//                maxTwoDigitCount = 1
+////                maxThreeDigitCount = 3
+////                maxSingleDigitCount = 1
+//            }else{
+////                maxSingleDigitCount = 0
+//                maxTwoDigitCount = 2
+////                maxThreeDigitCount = 3
+//            }
 
             queLines = generateSingleDigit(5, 6)
 //            if (queLines != 4){
@@ -1053,21 +1119,93 @@ object DataProvider {
 //            }
             var answer = 0
             var question = ""
+            var isTwoLineDone = false
+            var isThreeLineDone = false
+            var isOneLineDone = false
             for (i in 0 until queLines){
-//                val index = generateIndex()
-//                if (index == 0 && twoDigitCount != maxTwoDigitCount){
+//                if (i == 0){
+//                    min = 100
+//                    max = 299
+//                }else{
 //                    min = 10
 //                    max = 99
-//                    twoDigitCount++
-//                }else {
-//                    if (singleDigitCount != maxSingleDigitCount){
-//                        min = 3
-//                        max = 9
-//                        singleDigitCount++
-//                    }else{
+//                }
+//                val index1 = generateIndex()
+//                if (index1 == 0 && !isThreeLineDone) {
+//                    isThreeLineDone = true
+////                    min = 100
+////                    max = 399
+//                    min = 1
+//                    max = 9
+//                } else {
+////                    min = 10
+////                    max = 99
+//
+//                    val index2 = generateIndex()
+//                    if ((index2 == 0 && !isTwoLineDone) || isOneLineDone){
+//                        isTwoLineDone = true
 //                        min = 10
 //                        max = 99
+//
+////                        min = 100
+////                        max = 399
+//                    }else{
+//                        if (!isThreeLineDone) {
+//                            isThreeLineDone = true
+//                            min = 10
+//                            max = 79
+//                        }else{
+//                            isOneLineDone = true
+//                            min = 10
+//                            max = 99
+//                        }
+//                    }
+////
+////                    //                    val index = generateIndex()
+////                    //                    if (index == 0){
+////                    //                        min = 10
+////                    //                        max = 99
+////                    //                    }else{
+////                    //                        min = 1
+////                    //                        max = 9
+////                    //                    }
+//                }
+
+//                else if (i == 1){
+//                    min = 10
+//                    max = 99
+//                }
+//                else{
+//                    min = 3
+//                    max = 9
+//                }
+
+//                val index = generateIndex()
+//                if (index == 0 && threeDigitCount != maxThreeDigitCount){
+//                    min = 100
+//                    max = 499
+//                    threeDigitCount++
+//                }else {
+//                    val index1 = generateIndex()
+//                    if (index1 == 1 && twoDigitCount != maxTwoDigitCount){
+//                        min = 20
+//                        max = 99
 //                        twoDigitCount++
+//                    }else{
+//                        if (singleDigitCount != maxSingleDigitCount){
+//                            min = 3
+//                            max = 9
+//                            singleDigitCount++
+//                        }else if (threeDigitCount != maxThreeDigitCount){
+//                            min = 300
+//                            max = 999
+//                            threeDigitCount++
+//                        }else if (twoDigitCount != maxTwoDigitCount){
+//                            min = 40
+//                            max = 99
+//                            twoDigitCount++
+//                        }
+//
 //                    }
 //                }
 
@@ -1143,16 +1281,25 @@ object DataProvider {
 //                }
                 if (i == 0){
                     answer = generateSingleDigit(min, max)
+//                    if (answer > 10){
+//                        max = 9
+//                    }
                     question = answer.toString()
                 }else{
                     if (minusSignCount == maxMinusSignCount) {
                         val nextValues = generateSingleDigit(min, max)
+//                        if (nextValues > 10){
+//                            max = 9
+//                        }
                         question = "$question+$nextValues"
                         answer += nextValues
                     }else{
                         val index = generateIndex()
                         if (index == 0 || answer < min) { // 0 = add +
                             val nextValues = generateSingleDigit(min, max)
+//                            if (nextValues > 10){
+//                                max = 9
+//                            }
                             question = "$question+$nextValues"
                             answer += nextValues
                         }else{ // minus -
@@ -1162,6 +1309,9 @@ object DataProvider {
                             }else{
                                 nextInt(min, answer + 1)
                             }
+//                            if (nextValues > 10){
+//                                max = 9
+//                            }
 
                             val temp = answer - nextValues
                             if (i == (queLines -1) && temp == 0){

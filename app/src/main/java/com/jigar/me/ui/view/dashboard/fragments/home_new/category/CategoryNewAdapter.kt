@@ -2,7 +2,9 @@ package com.jigar.me.ui.view.dashboard.fragments.home_new.category
 
 import android.util.Log
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.jigar.me.R
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.databinding.RawCategoryNewBinding
@@ -34,10 +36,18 @@ class CategoryNewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = with(holder.binding){
         val data = listData[position]
         dataModel = data
+        val context = root.context
+        if (position == 0){
+            cardMenu.strokeColor = ContextCompat.getColor(context,R.color.red_900)
+        }else{
+            cardMenu.strokeColor = ContextCompat.getColor(context,R.color.brown_900)
+        }
         if (selectedPosition == position){
             imgArrow.show()
+            cardMenu.strokeWidth = context.resources.getDimension(R.dimen.card_elevation2).toInt()
         }else{
             imgArrow.invisible()
+            cardMenu.strokeWidth = 0
         }
         val isPurchase = CommonUtils.checkLevelIsPurchase(purchasedSKU,data)
         if (isPurchase){
@@ -50,6 +60,7 @@ class CategoryNewAdapter(
                 val previousPosition = selectedPosition
                 selectedPosition = position
                 imgArrow.show()
+                cardMenu.strokeWidth = root.context.resources.getDimension(R.dimen.card_elevation2).toInt()
                 mListener.invoke(position,previousPosition,listData[position])
             }
         }

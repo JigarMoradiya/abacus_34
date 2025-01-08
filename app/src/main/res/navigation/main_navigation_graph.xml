@@ -101,9 +101,20 @@
             android:id="@+id/toAbacusCalculationFragment"
             app:destination="@+id/abacusCalculationFragment" />
         <action
+            android:id="@+id/toAbacusListFragment"
+            app:destination="@+id/abacusListFragment" />
+        <action
             android:id="@+id/toPurchaseFragment"
             app:destination="@+id/purchaseFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/abacusListFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.home_new.category.abacuslist_temp.AbacusListFragment">
+        <argument
+            android:name="setId"
+            app:argType="string" />
+    </fragment>
+
     <fragment
         android:id="@+id/abacusCalculationFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.abacus.half.AbacusCalculationFragment">

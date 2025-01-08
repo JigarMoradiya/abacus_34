@@ -12,7 +12,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.NonNull
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -21,10 +20,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.android.billingclient.api.BillingClient
 import com.eftimoff.viewpagertransformers.DepthPageTransformer
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.jigar.me.BuildConfig
@@ -67,8 +62,6 @@ import kotlinx.coroutines.launch
 import me.samlss.lighter.IntroProvider
 import me.samlss.lighter.Lighter
 import me.samlss.lighter.parameter.Direction
-import org.json.JSONException
-import org.json.JSONObject
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -280,75 +273,76 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
         goToInAppPurchase()
     }
     private fun menuTour() {
-//        lifecycleScope.launch {
-//            delay(1000)
-//            if (!prefManager.getCustomParamBoolean(AppConstants.Settings.isHomeTourWatch, false)) {
-//                showTour()
-//            }else if (prefManager.getCustomParamInt(AppConstants.Settings.appOpenCount, 0) == Constants.homePageShowIntroMaxAppOpen) {
-//                prefManager.setCustomParamInt(AppConstants.Settings.appOpenCount, 0)
-//                val introType = DataProvider.getHomeMenuRandomIntro(prefManager)
-//                lighter = Lighter.with(binding.root)
-//                var view : View? = null
-//                var directions : Int? = null
-//                var layoutId : Int? = null
-//                var type : String = "rect"
-//                when (introType) {
-//                    HomeMenuIntroType.freeMode -> {
-//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(0) as HomeMenuNewAdapter.FormViewHolder).binding.conMain
-//                        directions = Direction.RIGHT
-//                        layoutId = R.layout.layout_tip_free_mode
-//                    }
-//                    HomeMenuIntroType.videoTutorial -> {
-//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(11) as HomeMenuNewAdapter.FormViewHolder).binding.conMain
-//                        directions = Direction.LEFT
-//                        layoutId = R.layout.layout_tip_video_tutorial
-//                    }
-//                    HomeMenuIntroType.exercise -> {
-//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(6) as HomeMenuNewAdapter.FormViewHolder).binding.conMain
-//                        directions = Direction.TOP
-//                        layoutId = R.layout.layout_tip_exercise
-//                    }
-//                    HomeMenuIntroType.exam -> {
-//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(7) as HomeMenuNewAdapter.FormViewHolder).binding.conMain
-//                        directions = Direction.RIGHT
-//                        layoutId = R.layout.layout_tip_exam
-//                    }
-//                    HomeMenuIntroType.material -> {
-//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(8) as HomeMenuNewAdapter.FormViewHolder).binding.conMain
-//                        directions = Direction.TOP
-//                        layoutId = R.layout.layout_tip_practice_material
-//                    }
-//                    HomeMenuIntroType.numberPuzzle -> {
-//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(10) as HomeMenuNewAdapter.FormViewHolder).binding.conMain
-//                        directions = Direction.TOP
-//                        layoutId = R.layout.layout_tip_number_sequence
-//                    }
-//                    HomeMenuIntroType.purchase -> {
-//                        view = binding.cardSubscribe
-//                        directions = Direction.LEFT
-//                        layoutId = R.layout.layout_tip_purchase
-//                        type = "circle"
-//                    }
-//                    HomeMenuIntroType.setting -> {
-//                        view = binding.cardSettingTop
-//                        directions = Direction.LEFT
-//                        layoutId = R.layout.layout_tip_setting
-//                        type = "circle"
-//                    }
-//                    HomeMenuIntroType.ccm -> {
-//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(8) as HomeMenuNewAdapter.FormViewHolder).binding.conMain
-//                        directions = Direction.TOP
-//                        layoutId = R.layout.layout_tip_ccm
-//                    }
-//                }
-//                if (view != null && directions != null && layoutId != null){
-//                    IntroProvider.videoTutorialSingleIntro(lighter,view,directions,layoutId,type)
-//                }
-//            }
-//
-//            val appOpenCount = prefManager.getCustomParamInt(AppConstants.Settings.appOpenCount, 0)
-//            prefManager.setCustomParamInt(AppConstants.Settings.appOpenCount, (appOpenCount+1))
-//        }
+        lifecycleScope.launch {
+            delay(1000)
+            if (!prefManager.getCustomParamBoolean(AppConstants.Settings.isHomeTourWatch, false)) {
+//            if (true) {
+                showTour()
+            }else if (prefManager.getCustomParamInt(AppConstants.Settings.appOpenCount, 0) == Constants.homePageShowIntroMaxAppOpen) {
+                prefManager.setCustomParamInt(AppConstants.Settings.appOpenCount, 0)
+                val introType = DataProvider.getHomeMenuRandomIntro(prefManager)
+                lighter = Lighter.with(binding.root)
+                var view : View? = null
+                var directions : Int? = null
+                var layoutId : Int? = null
+                var type : String = "rect"
+                when (introType) {
+                    HomeMenuIntroType.freeMode -> {
+                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(0) as HomeMenuNewAdapter.ViewHolder).binding.conMain
+                        directions = Direction.RIGHT
+                        layoutId = R.layout.layout_tip_free_mode
+                    }
+                    HomeMenuIntroType.videoTutorial -> {
+                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(11) as HomeMenuNewAdapter.ViewHolder).binding.conMain
+                        directions = Direction.LEFT
+                        layoutId = R.layout.layout_tip_video_tutorial
+                    }
+                    HomeMenuIntroType.exercise -> {
+                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(6) as HomeMenuNewAdapter.ViewHolder).binding.conMain
+                        directions = Direction.TOP
+                        layoutId = R.layout.layout_tip_exercise
+                    }
+                    HomeMenuIntroType.exam -> {
+                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(7) as HomeMenuNewAdapter.ViewHolder).binding.conMain
+                        directions = Direction.RIGHT
+                        layoutId = R.layout.layout_tip_exam
+                    }
+                    HomeMenuIntroType.material -> {
+                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(8) as HomeMenuNewAdapter.ViewHolder).binding.conMain
+                        directions = Direction.TOP
+                        layoutId = R.layout.layout_tip_practice_material
+                    }
+                    HomeMenuIntroType.numberPuzzle -> {
+                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(10) as HomeMenuNewAdapter.ViewHolder).binding.conMain
+                        directions = Direction.TOP
+                        layoutId = R.layout.layout_tip_number_sequence
+                    }
+                    HomeMenuIntroType.purchase -> {
+                        view = binding.cardSubscribe
+                        directions = Direction.LEFT
+                        layoutId = R.layout.layout_tip_purchase
+                        type = "circle"
+                    }
+                    HomeMenuIntroType.setting -> {
+                        view = binding.cardSettingTop
+                        directions = Direction.LEFT
+                        layoutId = R.layout.layout_tip_setting
+                        type = "circle"
+                    }
+                    HomeMenuIntroType.ccm -> {
+                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(8) as HomeMenuNewAdapter.ViewHolder).binding.conMain
+                        directions = Direction.TOP
+                        layoutId = R.layout.layout_tip_ccm
+                    }
+                }
+                if (view != null && directions != null && layoutId != null){
+                    IntroProvider.videoTutorialSingleIntro(lighter,view,directions,layoutId,type)
+                }
+            }
+
+            val appOpenCount = prefManager.getCustomParamInt(AppConstants.Settings.appOpenCount, 0)
+            prefManager.setCustomParamInt(AppConstants.Settings.appOpenCount, (appOpenCount+1))
+        }
     }
 
     private fun themePopup() {
@@ -420,22 +414,24 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
 
     private fun showTour() {
         lighter = Lighter.with(binding.root)
-//        val freeModeViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(0)
-//        val exerciseViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(6)
-//        val examViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(7)
-//        val ccmViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(8)
-//        val numberPuzzleViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(10)
-//        val videoTutorialViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(11)
-//        if (freeModeViewHolder != null && exerciseViewHolder != null && examViewHolder != null && videoTutorialViewHolder != null && numberPuzzleViewHolder != null && ccmViewHolder != null){
-//            IntroProvider.videoTutorialIntro(prefManager,lighter, binding.cardSettingTop,
-//                (freeModeViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
-//                (videoTutorialViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
-//                (exerciseViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
-//                (examViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
-//                (numberPuzzleViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
-//                (ccmViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain
-//            )
-//        }
+        val freeModeViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(0)
+        val abacusPracticeViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(1)
+        val exerciseViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(2)
+        val examViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(3)
+        val ccmViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(4)
+        val numberPuzzleViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(5)
+        val videoTutorialViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(6)
+        if (freeModeViewHolder != null && exerciseViewHolder != null && examViewHolder != null && videoTutorialViewHolder != null && numberPuzzleViewHolder != null && ccmViewHolder != null){
+            IntroProvider.newHomeMenuIntro(prefManager,lighter, binding.cardSettingTop,
+                (freeModeViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
+                (abacusPracticeViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
+                (videoTutorialViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
+                (exerciseViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
+                (examViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
+                (numberPuzzleViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
+                (ccmViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain
+            )
+        }
     }
     private fun setViewPager() {
         handler = Handler(Looper.getMainLooper())
