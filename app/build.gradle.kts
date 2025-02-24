@@ -50,7 +50,7 @@ android {
     productFlavors {
         create("dev1") {
             buildConfigField("String","USERS_MODULE", properties["users_module"].toString())
-            buildConfigField("String","STUDENT_MODULE", properties["student_module"].toString())
+            buildConfigField("String","NEW_MODULE", properties["new_module"].toString())
             buildConfigField("String","SUBSCRIPTIONS_MODULE", properties["subscriptions_module"].toString())
             buildConfigField("String","LOCATION_MODULE", properties["location_module"].toString())
             buildConfigField("String","EXAM_MODULE", properties["exam_module"].toString())
@@ -60,8 +60,8 @@ android {
 
             dimension = "variant1"
             applicationId = "com.abacus.puzzle"
-            versionCode = 115
-            versionName = "11.0.2"
+            versionCode = 116
+            versionName = "11.0.3"
         }
     }
 
@@ -174,6 +174,8 @@ dependencies {
 
     // event bus broadcaster
     implementation("org.greenrobot:eventbus:3.2.0")
+
+    implementation("com.github.dhaval2404:imagepicker:2.1")
 }
 
 // Allow references to generated code

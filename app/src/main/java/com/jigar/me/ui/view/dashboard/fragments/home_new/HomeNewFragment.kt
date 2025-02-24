@@ -43,6 +43,7 @@ import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.ui.view.dashboard.fragments.home.BannerPagerAdapter
 import com.jigar.me.ui.view.dashboard.fragments.home.CurrentPlanPagerAdapter
 import com.jigar.me.ui.view.other.ContactUsActivity
+import com.jigar.me.ui.view.other.ReviewSubmitActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.SubscriptionsViewModel
 import com.jigar.me.ui.viewmodel.StudentViewModel
@@ -156,6 +157,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 }else{
                     txtMyAccount.performClick()
                 }
+//                ReviewSubmitActivity.getInstance(requireContext())
             }
             txtWelcomeTitle.onClick { txtMyAccount.performClick() }
             txtWelcomeMsg.onClick { txtMyAccount.performClick() }
@@ -293,46 +295,54 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                         layoutId = R.layout.layout_tip_free_mode
                     }
                     HomeMenuIntroType.videoTutorial -> {
-                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(11) as HomeMenuNewAdapter.ViewHolder).binding.conMain
-                        directions = Direction.LEFT
-                        layoutId = R.layout.layout_tip_video_tutorial
+                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(6) as HomeMenuNewAdapter.ViewHolder).binding.conMain
+                        directions = Direction.RIGHT
+                        layoutId = R.layout.layout_tip_video_tutorial_new
                     }
                     HomeMenuIntroType.exercise -> {
-                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(6) as HomeMenuNewAdapter.ViewHolder).binding.conMain
-                        directions = Direction.TOP
-                        layoutId = R.layout.layout_tip_exercise
+                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(2) as HomeMenuNewAdapter.ViewHolder).binding.conMain
+                        directions = Direction.RIGHT
+                        layoutId = R.layout.layout_tip_exercise_new
                     }
                     HomeMenuIntroType.exam -> {
-                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(7) as HomeMenuNewAdapter.ViewHolder).binding.conMain
-                        directions = Direction.RIGHT
-                        layoutId = R.layout.layout_tip_exam
+                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(3) as HomeMenuNewAdapter.ViewHolder).binding.conMain
+                        directions = Direction.LEFT
+                        layoutId = R.layout.layout_tip_exam_new
                     }
                     HomeMenuIntroType.material -> {
-                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(8) as HomeMenuNewAdapter.ViewHolder).binding.conMain
-                        directions = Direction.TOP
-                        layoutId = R.layout.layout_tip_practice_material
+//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(8) as HomeMenuNewAdapter.ViewHolder).binding.conMain
+//                        directions = Direction.TOP
+//                        layoutId = R.layout.layout_tip_practice_material
                     }
                     HomeMenuIntroType.numberPuzzle -> {
-                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(10) as HomeMenuNewAdapter.ViewHolder).binding.conMain
+                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(5) as HomeMenuNewAdapter.ViewHolder).binding.conMain
                         directions = Direction.TOP
                         layoutId = R.layout.layout_tip_number_sequence
                     }
                     HomeMenuIntroType.purchase -> {
-                        view = binding.cardSubscribe
+//                        view = binding.cardSubscribe
+//                        directions = Direction.LEFT
+//                        layoutId = R.layout.layout_tip_purchase
+//                        type = "circle"
+
+                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(7) as HomeMenuNewAdapter.ViewHolder).binding.conMain
                         directions = Direction.LEFT
                         layoutId = R.layout.layout_tip_purchase
-                        type = "circle"
                     }
                     HomeMenuIntroType.setting -> {
-                        view = binding.cardSettingTop
+//                        view = binding.cardSettingTop
+//                        directions = Direction.LEFT
+//                        layoutId = R.layout.layout_tip_setting
+//                        type = "circle"
+                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(8) as HomeMenuNewAdapter.ViewHolder).binding.conMain
                         directions = Direction.LEFT
                         layoutId = R.layout.layout_tip_setting
-                        type = "circle"
+
                     }
                     HomeMenuIntroType.ccm -> {
-                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(8) as HomeMenuNewAdapter.ViewHolder).binding.conMain
-                        directions = Direction.TOP
-                        layoutId = R.layout.layout_tip_ccm
+                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(4) as HomeMenuNewAdapter.ViewHolder).binding.conMain
+                        directions = Direction.LEFT
+                        layoutId = R.layout.layout_tip_ccm_new
                     }
                 }
                 if (view != null && directions != null && layoutId != null){

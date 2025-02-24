@@ -54,6 +54,13 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeLogin.NoActionBar"/>
+        <activity
+            android:name=".ui.view.other.ReviewSubmitActivity"
+            android:exported="true"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeLogin.NoActionBar"/>
 
         <meta-data
             android:name="firebase_crashlytics_collection_enabled"

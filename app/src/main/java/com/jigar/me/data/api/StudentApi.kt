@@ -13,33 +13,41 @@ import com.jigar.me.data.model.data.SignupV2Request
 import com.jigar.me.data.model.data.SocialLoginRequest
 import com.jigar.me.data.model.data.UpdateProfileRequest
 import com.jigar.me.data.model.data.VerifyEmailRequest
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.*
 
 interface StudentApi {
-    @POST("signup")
+    @POST("student/signup")
     suspend fun signup(@Body request : SignupV2Request): MainAPIResponse
-    @POST("verification")
+    @POST("student/verification")
     suspend fun verification(@Body request : VerifyEmailRequest): MainAPIResponse
-    @POST("google-login-signup")
+    @POST("student/google-login-signup")
     suspend fun socialLogin(@Body request : SocialLoginRequest): MainAPIResponse
-    @POST("login")
+    @POST("student/login")
     suspend fun login(@Body request : LoginRequest): MainAPIResponse
-    @POST("forgot-password")
+    @POST("student/forgot-password")
     suspend fun forgotPassword(@Body request : ForgotPasswordRequest): MainAPIResponse
-    @POST("resend-otp")
+    @POST("student/resend-otp")
     suspend fun resendOTP(@Body request : ResendOTPRequest): MainAPIResponse
-    @POST("reset-password")
+    @POST("student/reset-password")
     suspend fun resetPassword(@Body request : ResetPasswordRequest): MainAPIResponse
-    @POST("change-password")
+    @POST("student/change-password")
     suspend fun changePassword(@Body request : ChangePasswordRequest): MainAPIResponse
-
-    @PUT("profile")
+    @PUT("student/profile")
     suspend fun updateProfile(@Body request : UpdateProfileRequest): MainAPIResponse
-    @POST("handle-existing-plan")
+    @POST("student/handle-existing-plan")
     suspend fun handleExistingPurchase(@Body request : PurchasedPlanCheckRequest): MainAPIResponse
-    @POST("change-plan")
+    @POST("student/change-plan")
     suspend fun changePlan(@Body request : PurchasedPlanCheckRequest): MainAPIResponse
-    @POST("get-abacus-set-pages-categories-levels-data")
+    @POST("student/get-abacus-set-pages-categories-levels-data")
     suspend fun getAbacusData(@Body request : FetchAbacusDataRequest): MainAPIResponse
+    @Multipart
+    @POST("app-reviews")
+    suspend fun submitReview(
+        @Part("plan_id") plan_id : RequestBody,
+        @Part("description") description : RequestBody,
+        @Part image_1: MultipartBody.Part?
+    ): MainAPIResponse
 
 }

@@ -32,6 +32,8 @@ import com.jigar.me.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import javax.inject.Inject
 
 @HiltViewModel
@@ -157,5 +159,12 @@ class StudentViewModel @Inject constructor(private val apiRepository: StudentApi
     fun updateProfile(request: UpdateProfileRequest) = viewModelScope.launch {
         _updateProfileResponse.value = Resource.Loading
         _updateProfileResponse.value = apiRepository.updateProfile(request)
+    }
+
+    private val _submitReviewResult: MutableLiveData<Resource<MainAPIResponse>> = MutableLiveData()
+    val submitReviewResult: LiveData<Resource<MainAPIResponse>> get() = _submitReviewResult
+    fun submitReview(plan_id: RequestBody,description: RequestBody, image_1: MultipartBody.Part?) = viewModelScope.launch {
+        _submitReviewResult.value = Resource.Loading
+        _submitReviewResult.value = apiRepository.submitReview(plan_id,description, image_1)
     }
 }

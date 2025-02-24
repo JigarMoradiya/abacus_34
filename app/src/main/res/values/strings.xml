@@ -416,7 +416,7 @@
     <string name="this_all_are_bottom_beads">This all are <font color='#E91E63'>Bottom Beads</font></string>
     <string name="click_here_to_show_nabacus_tour">Click Here to show\nAbacus Tour</string>
     <string name="click_here_to_reset_abacus">Click here to <font color='#FF0000'>Reset Abacus</font></string>
-    <string name="now_can_also_subscribe_nweekly_at_low_cost">Now, can also start \n<font color='#F9A825'>Subscription on Weekly basis</font></string>
+    <string name="now_can_also_subscribe_nweekly_at_low_cost"><font color='#E13600'>Level wise Subscription</font> available</string>
     <string name="represent_the_value_of_0_9">can represent the value of <font color='#FF0000'>0-9</font></string>
     <string name="represent_the_value_of_0_99">can represent the value of <font color='#FF0000'>0-99</font></string>
     <string name="represent_the_value_of_0_999">can represent the value of <font color='#FF0000'>0-999</font></string>
@@ -612,6 +612,8 @@
     <string name="register_msg">Enter following details to create your account.</string>
     <string name="complete_profile">Enter following details to complete profile and start journey.</string>
     <string name="contact_us_fill_detail">Enter following details to contact us.\nMake sure you entered all details is corrected.</string>
+    <string name="review_fill_detail">Give 5 Star Review to this application in Play Store and <b>Get Free Access of any selected Level.</b></string>
+    <string name="review_note"><font color="#FF0000"><b>Notes : </b></font>Upload Screenshot of Review which you give in Play Store for this application and submit. In 48 hour we review your request and give access.\n\n<b>Make sure your attached screenshot is valid.</b>\nThank you.</string>
     <string name="forgot_password_msg">Don\'t worry! It occurs.</string>
     <string name="forgot_password_msg1">Please enter the email address which linked with your account.</string>
     <string name="otp_msg">Enter the verification code we just sent on your email address.</string>
@@ -698,6 +700,7 @@
     <string name="total_custom_challenge_mode">Total Custom Challenge Mode :</string>
     <string name="all_report">All Reports</string>
     <string name="select_report_type">Select Report Type</string>
+    <string name="select_level__">-- Select Level --</string>
     <string name="last_30_days">Last 30 days</string>
     <string name="change_your_details">Change your details</string>
     <string name="update">Update</string>
@@ -797,6 +800,17 @@
     <string name="formal_exam">Formal Exam</string>
     <string name="timer_on">Timer ON</string>
     <string name="paid">Paid</string>
+    <string name="add_screenshot_of_application_review">Add Screenshot of Application Review</string>
+    <string name="review_submit">Review Submit</string>
+    <string name="level_1">Level 1</string>
+    <string name="level_2">Level 2</string>
+    <string name="level_3">Level 3</string>
+    <string name="level_4">Level 4</string>
+    <string name="level_5">Level 5</string>
+    <string name="select_level">Select Level</string>
+    <string name="please_select_level">Please select level</string>
+    <string name="please_select_screenshot_of_application_review">Please select screenshot of application review</string>
+    <string name="your_request_successfully_submitted">Your request successfully submitted.</string>
 
 
 </resources>

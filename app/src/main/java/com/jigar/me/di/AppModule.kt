@@ -92,7 +92,7 @@ object AppModule {
     @Singleton
     @Provides
     fun provideStudentApi(@ApplicationContext context: Context,remoteDataSource: RemoteDataSource): StudentApi {
-        return remoteDataSource.buildApi(StudentApi::class.java, context, BuildConfig.STUDENT_MODULE)
+        return remoteDataSource.buildApi(StudentApi::class.java, context, BuildConfig.NEW_MODULE)
     }
     @Singleton
     @Provides
