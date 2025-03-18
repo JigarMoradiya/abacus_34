@@ -61,18 +61,17 @@ object FileUtils {
 
             Log.d(TAG, "getPath: From Downloads")
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                var cursor: Cursor? = null
-                try {
-                    cursor = this.contentResolver.query(
-                        uri,
-                        arrayOf(MediaStore.MediaColumns.DISPLAY_NAME),
-                        null,
-                        null,
-                        null
-                    )
-                    if (cursor != null && cursor.moveToFirst()) {
-                        val fileName = cursor.getString(0)
+            var cursor: Cursor? = null
+            try {
+                cursor = this.contentResolver.query(
+                    uri,
+                    arrayOf(MediaStore.MediaColumns.DISPLAY_NAME),
+                    null,
+                    null,
+                    null
+                )
+                if (cursor != null && cursor.moveToFirst()) {
+                    val fileName = cursor.getString(0)
 //                            val path =
 //                                Environment.getExternalStorageDirectory().absolutePath
 //                                    .toString() + "/Download/" + fileName
@@ -82,52 +81,33 @@ object FileUtils {
 //                            if (!TextUtils.isEmpty(path)) {
 //                                return path
 //                            }
-                    }
-                } finally {
-                    cursor?.close()
                 }
-                val id: String = DocumentsContract.getDocumentId(uri)
-                Log.d(TAG, "getPath: From Download ID: $id")
-                if (!TextUtils.isEmpty(id)) {
-                    if (id.startsWith("raw:")) {
-                        return id.replaceFirst("raw:".toRegex(), "")
-                    }
-                    val contentUriPrefixesToTry =
-                        arrayOf(
-                            "content://downloads/public_downloads",
-                            "content://downloads/my_downloads"
-                        )
-                    for (contentUriPrefix in contentUriPrefixesToTry) {
-                        return try {
-                            val contentUri = ContentUris.withAppendedId(
-                                Uri.parse(contentUriPrefix),
-                                java.lang.Long.valueOf(id)
-                            )
-                            getDataColumn(this, contentUri, null, null)
-                        } catch (e: NumberFormatException) {
-                            //In Android 8 and Android P the id is not a number
-                            uri.path!!.replaceFirst("^/document/raw:".toRegex(), "")
-                                .replaceFirst("^raw:".toRegex(), "")
-                        }
-                    }
-                }
+            } finally {
+                cursor?.close()
             }
-            else {
-                val id = DocumentsContract.getDocumentId(uri)
+            val id: String = DocumentsContract.getDocumentId(uri)
+            Log.d(TAG, "getPath: From Download ID: $id")
+            if (!TextUtils.isEmpty(id)) {
                 if (id.startsWith("raw:")) {
                     return id.replaceFirst("raw:".toRegex(), "")
                 }
-                var contentUri : Uri? = null
-                try {
-                    contentUri = ContentUris.withAppendedId(
-                        Uri.parse("content://downloads/public_downloads"),
-                        java.lang.Long.valueOf(id)
+                val contentUriPrefixesToTry =
+                    arrayOf(
+                        "content://downloads/public_downloads",
+                        "content://downloads/my_downloads"
                     )
-                } catch (e: NumberFormatException) {
-                    e.printStackTrace()
-                }
-                if (contentUri != null) {
-                    return getDataColumn(this, contentUri!!, null, null)
+                for (contentUriPrefix in contentUriPrefixesToTry) {
+                    return try {
+                        val contentUri = ContentUris.withAppendedId(
+                            Uri.parse(contentUriPrefix),
+                            java.lang.Long.valueOf(id)
+                        )
+                        getDataColumn(this, contentUri, null, null)
+                    } catch (e: NumberFormatException) {
+                        //In Android 8 and Android P the id is not a number
+                        uri.path!!.replaceFirst("^/document/raw:".toRegex(), "")
+                            .replaceFirst("^raw:".toRegex(), "")
+                    }
                 }
             }
         }

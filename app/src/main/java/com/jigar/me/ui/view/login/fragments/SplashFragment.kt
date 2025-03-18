@@ -90,22 +90,18 @@ class SplashFragment : BaseFragment() {
                 if (task.isSuccessful) {
 
                     val video: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.videoList)
+                    val discountData: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.discountData)
                     val displayPlan: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.displayPlanList)
                     val privacyPolicyUrl: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.privacyPolicyUrl)
                     val supportEmail: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.supportEmail)
                     val newVersionNotes: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.newVersionNotes)
                     val bulkLogin: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.bulkLogin)
                     val versionCode: Long = mFirebaseRemoteConfig.getLong(AppConstants.RemoteConfig.versionCode)
-                    val ads: String = mFirebaseRemoteConfig.getString(AppConstants.AbacusProgress.Ads)
                     val baseUrl: String = mFirebaseRemoteConfig.getString(AppConstants.AbacusProgress.baseUrl)
                     val iPath: String = mFirebaseRemoteConfig.getString(AppConstants.AbacusProgress.iPath)
                     val resetImage: Long = mFirebaseRemoteConfig.getLong(AppConstants.AbacusProgress.resetImage)
                     val databaseVersion: Long = mFirebaseRemoteConfig.getLong(AppConstants.AbacusProgress.databaseVersion)
-                    val isAdmob = if (BuildConfig.DEBUG){
-                        false
-                    }else{
-                        mFirebaseRemoteConfig.getBoolean(AppConstants.AbacusProgress.isAdmob)
-                    }
+
                     with(prefManager){
                         if (databaseVersion.toInt() > getCustomParamInt(AppConstants.AbacusProgress.databaseVersion, 0)) {
                             setCustomParamInt(AppConstants.AbacusProgress.databaseVersion, databaseVersion.toInt())
@@ -121,13 +117,16 @@ class SplashFragment : BaseFragment() {
                         }
                         setBaseUrl(baseUrl)
                         setCustomParam(AppConstants.AbacusProgress.iPath,iPath)
-                        setCustomParamBoolean(AppConstants.AbacusProgress.isAdmob,isAdmob)
-                        setCustomParam(AppConstants.AbacusProgress.Ads,ads)
                         setCustomParam(AppConstants.RemoteConfig.privacyPolicyUrl,privacyPolicyUrl)
                         setCustomParam(AppConstants.RemoteConfig.supportEmail,supportEmail)
                         setCustomParam(AppConstants.RemoteConfig.newVersionNotes,newVersionNotes)
                         setCustomParam(AppConstants.RemoteConfig.bulkLogin,bulkLogin)
                         setCustomParamInt(AppConstants.RemoteConfig.versionCode,versionCode.toInt())
+                        if (discountData.length > 5){
+                            setCustomParam(AppConstants.RemoteConfig.discountData,discountData)
+                        }else{
+                            setCustomParam(AppConstants.RemoteConfig.discountData,"")
+                        }
                         if (video.length > 5){
                             setCustomParam(AppConstants.RemoteConfig.videoList,video)
                         }else{

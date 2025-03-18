@@ -1,7 +1,6 @@
 package com.jigar.me.ui.view.dashboard.fragments.purchase
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,14 +12,19 @@ import com.google.gson.reflect.TypeToken
 import com.jigar.me.MyApplication
 import com.jigar.me.R
 import com.jigar.me.data.model.DisplayPurchaseData
+import com.jigar.me.data.model.data.AbacusAllData
+import com.jigar.me.data.model.data.DiscountData
+import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.databinding.FragmentPurchaseBinding
 import com.jigar.me.ui.view.base.BaseFragment
+import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.PaidFeatureListDialog
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.InAppViewModel
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.Constants
 import com.jigar.me.utils.extensions.isNetworkAvailable
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.onClick
@@ -40,6 +44,8 @@ class PurchaseFragment : BaseFragment(), PurchaseAdapter.OnItemClickListener {
     private lateinit var skuListAdapter: PurchaseAdapter
     private lateinit var mNavController: NavController
     private var displayItemList: ArrayList<DisplayPurchaseData> = arrayListOf()
+    private var planListAssignFromAdmin : List<PlanAssignFromAdminData> = arrayListOf()
+    private var discountData : DiscountData? = null
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
         binding = FragmentPurchaseBinding.inflate(inflater, container, false)
         setNavigationGraph()
@@ -52,7 +58,16 @@ class PurchaseFragment : BaseFragment(), PurchaseAdapter.OnItemClickListener {
     }
 
     private fun initViews() {
-        skuListAdapter = PurchaseAdapter(listSKU,prefManager, this)
+        if (prefManager.getCustomParam(AppConstants.RemoteConfig.discountData,"").isNotEmpty()){
+            discountData = Gson().fromJson(prefManager.getCustomParam(AppConstants.RemoteConfig.discountData,""), DiscountData::class.java)
+        }
+        if (prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"").isNotEmpty()) {
+            planListAssignFromAdmin = Gson().fromJson(
+                prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
+                object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
+            )
+        }
+        skuListAdapter = PurchaseAdapter(listSKU,planListAssignFromAdmin,discountData ,this)
         binding.recyclerview.adapter = skuListAdapter
         inAppViewModel.inAppInit()
 
@@ -89,12 +104,17 @@ class PurchaseFragment : BaseFragment(), PurchaseAdapter.OnItemClickListener {
 
     private fun setSKU(listData: List<InAppSkuDetails>) {
         if (displayItemList.isNotEmpty()){
+            val discountPer = discountData?.per?:0
             listData.mapIndexed { index, mainList ->
                 displayItemList.find { it.id == mainList.sku  }.also {
-                    if (it != null){
-                        listData[index].sortOrder = it.so
+                    if (discountPer > 0 && mainList.sku == PRODUCT_ID_Subscription_Year1){
+                        listData[index].sortOrder = 0
                     }else{
-                        listData[index].sortOrder = 9999
+                        if (it != null){
+                            listData[index].sortOrder = it.so
+                        }else{
+                            listData[index].sortOrder = 9999
+                        }
                     }
                 }
             }

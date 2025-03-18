@@ -21,12 +21,6 @@ class InAppSKUDB @Inject constructor(private val dao: InAppSKUDao,private val pr
     }
     fun getInAppSKU(displayList : ArrayList<String>): LiveData<List<InAppSkuDetails>> {
         return dao.getInAppSku(displayList)
-//        return if (preferencesHelper.getCustomParam(AppConstants.AbacusProgress.Ads,"").equals("Y",true)){
-//            dao.getInAppSku()
-//        }else{
-//            dao.getInAppSkuNoAds()
-//        }
-
     }
     fun getInAppSKUDetail(sku : String): List<InAppSkuDetails> {
         return dao.getInAppSkuDetail(sku)

@@ -10,7 +10,10 @@ import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
 import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.jigar.me.R
+import com.jigar.me.data.model.data.PlanAssignFromAdminData
+import com.jigar.me.data.model.data.ReviewData
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.data.pref.AppPreferencesHelper
@@ -18,7 +21,6 @@ import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Al
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_old
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month3
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1
-import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.show
 import org.json.JSONException
 import org.json.JSONObject
@@ -153,17 +155,32 @@ object CommonUtils {
         return df.format(value)
     }
 
-    fun checkLevelIsPurchase(purchasedSKU: List<InAppSkuDetails>, data: Category): Boolean {
+    fun checkLevelIsPurchase(
+        purchasedSKU: List<InAppSkuDetails>,
+        data: Category,
+        prefManager: AppPreferencesHelper
+    ): Boolean {
+        var isPurchased = false
         if (data.name.contains("free",true)){
-            return true
+            isPurchased = true
         }else{
             purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime || it.sku == PRODUCT_ID_All_lifetime_old
                     || it.sku == PRODUCT_ID_Subscription_Month3
                     || it.sku == PRODUCT_ID_Subscription_Year1
                     || (it.sku.contains(data.name)) }.also {
-                return it != null
+                isPurchased = it != null
+            }
+            if (prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"").isNotEmpty()) {
+                val planListData : List<PlanAssignFromAdminData> = Gson().fromJson(
+                    prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
+                    object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
+                )
+                planListData.find { it.google_order_id == null && (it.google_plan_id?.contains(data.name) == true) }.also {
+                    isPurchased = it != null
+                }
             }
         }
+        return isPurchased
     }
 
     fun checkPurchaseForExerciseExamCCM(purchasedSKU: List<InAppSkuDetails>): Boolean {
@@ -174,6 +191,15 @@ object CommonUtils {
                 || (it.sku.contains("level3")) || (it.sku.contains("level4"))
                 || (it.sku.contains("level5")) || (it.sku.contains("level6"))
                 || (it.sku.contains("level7")) || (it.sku.contains("level8"))}.also {
+            return it != null
+        }
+    }
+    fun checkPurchaseForAllLevel(purchasedSKU: List<InAppSkuDetails>): Boolean {
+        purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
+                || it.sku == PRODUCT_ID_All_lifetime_old
+                || it.sku == PRODUCT_ID_Subscription_Month3
+                || it.sku == PRODUCT_ID_Subscription_Year1
+        }.also {
             return it != null
         }
     }

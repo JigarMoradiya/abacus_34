@@ -38,6 +38,8 @@ interface StudentApi {
     suspend fun updateProfile(@Body request : UpdateProfileRequest): MainAPIResponse
     @POST("student/handle-existing-plan")
     suspend fun handleExistingPurchase(@Body request : PurchasedPlanCheckRequest): MainAPIResponse
+    @GET("student/app-reviews-list")
+    suspend fun appReviewsList(): MainAPIResponse
     @POST("student/change-plan")
     suspend fun changePlan(@Body request : PurchasedPlanCheckRequest): MainAPIResponse
     @POST("student/get-abacus-set-pages-categories-levels-data")

@@ -39,8 +39,8 @@ class CategoryFragment : BaseFragment() {
     private var levelId: String = ""
     private var isGetAllData: Boolean = true
 //    private var isGetAllData: Boolean = false
-//    private var isGoToAbacusList: Boolean = true
-    private var isGoToAbacusList: Boolean = false
+    private var isGoToAbacusList: Boolean = true
+//    private var isGoToAbacusList: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,7 +74,7 @@ class CategoryFragment : BaseFragment() {
         }
         CoroutineScope(Dispatchers.Main).launch {
             val purchasedSKU = appViewModel.getInAppSKUPurchased()
-            categoryNewAdapter = CategoryNewAdapter(arrayListOf(),purchasedSKU) { position, previousPos, data ->
+            categoryNewAdapter = CategoryNewAdapter(arrayListOf(),purchasedSKU,prefManager) { position, previousPos, data ->
                 clickCategory(position, previousPos, data)
             }
             recyclerviewCategory.adapter = categoryNewAdapter
@@ -85,12 +85,16 @@ class CategoryFragment : BaseFragment() {
             if (categoryList.isNotNullOrEmpty()){
                 val allSetList = (activity as MainDashboardActivity).allSetList
                 pagesNewAdapter = PagesNewAdapter(arrayListOf(),allSetList) { pagePosition,setPosition,setData,data ->
-                    val categoryData = categoryNewAdapter.listData[categoryNewAdapter.selectedPosition]
-                    val isPurchase = CommonUtils.checkLevelIsPurchase(purchasedSKU,categoryData)
-                    if (isPurchase){
+                    if (BuildConfig.DEBUG){
                         gotoAbacus(setData)
                     }else{
-                        purchaseDialog()
+                        val categoryData = categoryNewAdapter.listData[categoryNewAdapter.selectedPosition]
+                        val isPurchase = CommonUtils.checkLevelIsPurchase(purchasedSKU,categoryData,prefManager)
+                        if (isPurchase){
+                            gotoAbacus(setData)
+                        }else{
+                            purchaseDialog()
+                        }
                     }
                 }
                 recyclerviewPages.adapter = pagesNewAdapter
@@ -118,7 +122,6 @@ class CategoryFragment : BaseFragment() {
             val action = CategoryFragmentDirections.toAbacusCalculationFragment(setData.id)
             mNavController?.navigate(action)
         }
-
     }
 
     override fun onResume() {

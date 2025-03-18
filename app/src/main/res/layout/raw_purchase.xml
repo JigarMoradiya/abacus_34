@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
-            name="cardColor"
-            type="Integer" />
+            name="isPlanAssignFromBackend"
+            type="Boolean" />
 
         <variable
             name="sku"
@@ -23,9 +22,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_padding8"
+        android:id="@+id/conMain"
+        android:background="@drawable/bg_plan_selected"
         android:paddingHorizontal="@dimen/activity_padding6"
-        android:paddingVertical="@dimen/activity_padding16"
-        android:background="@drawable/bg_plan_selected">
+        android:paddingVertical="@dimen/activity_padding16">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnRecommended"
@@ -78,8 +78,8 @@
             android:id="@+id/txtDuration"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="@dimen/activity_padding4"
+            android:gravity="center"
             android:text="@{sku.getDurationTxt()}"
             android:textColor="@color/black"
             android:textSize="@dimen/textSizeRegular"
@@ -114,7 +114,7 @@
             android:layout_marginTop="@dimen/activity_padding6"
             android:gravity="center"
             android:orientation="horizontal"
-            android:visibility="@{sku.isPurchase?View.GONE:View.VISIBLE}"
+            android:visibility="@{sku.isPurchase?View.GONE:isPlanAssignFromBackend?View.GONE:View.VISIBLE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtSubTitle">
@@ -147,72 +147,133 @@
                 android:id="@+id/txtDiscount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/box_bg_purchase_white"
+                android:background="@drawable/box_bg_purchased"
                 android:gravity="center"
                 android:includeFontPadding="false"
-                android:paddingHorizontal="@dimen/activity_padding6"
+                android:paddingHorizontal="@dimen/activity_padding8"
                 android:paddingVertical="@dimen/activity_padding2"
-                android:textColor="@color/green_900"
+                android:textColor="@color/white"
                 android:textSize="@dimen/textSizeRegular"
                 android:visibility="gone"
                 app:fontFamily="@font/font_bold"
                 tools:text="40% OFF"
                 tools:visibility="visible" />
         </androidx.appcompat.widget.LinearLayoutCompat>
-
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txtOrderId"
-            android:layout_width="0dp"
+            android:id="@+id/txtOfferDes"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_padding8"
             android:fontFamily="@font/font_regular"
             android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="@dimen/textSizeSmall"
-            android:visibility="@{sku.isPurchase?View.VISIBLE:View.GONE}"
+            android:textColor="@color/red_A700"
+            android:textSize="@dimen/textSizeExtraSmall"
+            android:text="Limited time period offer."
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearPrices"
-            app:purchaseOrderId="@{sku.orderId}"
-            tools:text="Order Id : GPA.3789-3456-9801-231093" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txtPurchaseTime"
-            android:layout_width="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/linearPrices"/>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_padding2"
-            android:fontFamily="@font/font_regular"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="@dimen/textSizeSmall"
-            android:visibility="@{sku.isPurchase?View.VISIBLE:View.GONE}"
-            app:billingPeriod="@{sku.billingPeriod}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtOrderId"
-            app:productType="@{sku.type}"
-            app:purchaseTime="@{sku.purchaseTime}"
-            tools:text="Purchased ON : 06 April 2020" />
-
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txtPurchase"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_28dp"
             android:layout_marginTop="@dimen/activity_padding8"
-            android:background="@{sku.isPurchase?@drawable/box_bg_purchased:@drawable/box_bg_non_purchase}"
             android:gravity="center"
-            android:paddingHorizontal="@dimen/activity_padding12"
-            android:text="@{sku.isSubscriptionPlan()?sku.isPurchase?@string/txt_subscribed:@string/txt_subscribe_Now:sku.isPurchase?@string/txt_purchased:@string/txt_purchase_Now}"
-            android:textColor="@color/white"
-            android:textSize="@dimen/textSizeMedium"
-            app:fontFamily="@font/font_bold"
+            android:orientation="vertical"
+            android:id="@+id/linearOther"
+            android:visibility="@{isPlanAssignFromBackend?View.VISIBLE:View.GONE,default=gone}"
+            tools:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtPurchaseTime"
-            tools:background="@drawable/box_bg_non_purchase"
-            tools:text="@string/txt_purchase_Now" />
+            app:layout_constraintTop_toBottomOf="@+id/txtOfferDes">
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtPlanAssignFromAdminTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_regular"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSizeSmall"
+                tools:text="Order Id : GPA.3789-3456-9801-231093" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtPlanAssignFromAdminMsg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_padding2"
+                android:fontFamily="@font/font_regular"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSizeSmall"
+                tools:text="Purchased ON : 06 April 2020" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_28dp"
+                android:layout_marginTop="@dimen/activity_padding8"
+                android:background="@drawable/box_bg_purchased"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/activity_padding12"
+                android:text="@string/assigned"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSizeMedium"
+                app:fontFamily="@font/font_bold" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_padding8"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:id="@+id/linearGoogle"
+            android:visibility="@{isPlanAssignFromBackend?View.GONE:View.VISIBLE,default=gone}"
+            tools:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearOther">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtOrderId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_regular"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSizeSmall"
+                android:visibility="@{sku.isPurchase?View.VISIBLE:View.GONE}"
+                app:purchaseOrderId="@{sku.orderId}"
+                tools:text="Order Id : GPA.3789-3456-9801-231093" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtPurchaseTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_padding2"
+                android:fontFamily="@font/font_regular"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSizeSmall"
+                android:visibility="@{sku.isPurchase?View.VISIBLE:View.GONE}"
+                app:billingPeriod="@{sku.billingPeriod}"
+                app:productType="@{sku.type}"
+                app:purchaseTime="@{sku.purchaseTime}"
+                tools:text="Purchased ON : 06 April 2020" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtPurchase"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_28dp"
+                android:layout_marginTop="@dimen/activity_padding8"
+                android:background="@{sku.isPurchase?@drawable/box_bg_purchased:@drawable/box_bg_non_purchase}"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/activity_padding12"
+                android:text="@{sku.isSubscriptionPlan()?sku.isPurchase?@string/txt_subscribed:@string/txt_subscribe_Now:sku.isPurchase?@string/txt_purchased:@string/txt_purchase_Now}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSizeMedium"
+                app:fontFamily="@font/font_bold"
+                tools:background="@drawable/box_bg_non_purchase"
+                tools:text="@string/txt_purchase_Now" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

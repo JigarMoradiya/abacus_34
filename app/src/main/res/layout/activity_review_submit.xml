@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -78,29 +79,72 @@
                     android:layout_marginTop="@dimen/activity_padding6"
                     android:gravity="center"
                     android:includeFontPadding="false"
+                    android:paddingBottom="@dimen/activity_padding8"
                     android:text="@string/review_fill_detail"
                     android:textColor="@color/black"
                     android:textSize="@dimen/textSizeRegular"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtWelcome" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearReviewStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_padding1"
+                    android:layout_marginTop="@dimen/activity_padding16"
+                    android:background="@drawable/bg_all_curved_12_white"
+                    android:backgroundTint="@color/blue_grey_50"
+                    android:elevation="@dimen/card_elevation2"
+                    android:orientation="vertical"
+                    android:padding="@dimen/activity_padding12"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLable"
+                    tools:layout_editor_absoluteX="22dp"
+                    tools:visibility="visible">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtReviewAdminStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textSizeRegular"
+                        app:fontFamily="@font/font_bold"
+                        tools:text="Rejected" />
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtReviewAdminMsg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_padding2"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textSizeRegular"
+                        app:fontFamily="@font/font_semibold"
+                        tools:text="Your uploaded photo is not valid." />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
                 <com.jigar.me.utils.widget.CustomSpinner
                     android:id="@+id/spinnerFilter"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding2"
                     android:background="@null"
                     android:popupBackground="@drawable/bg_all_curved_12_white"
                     android:popupElevation="5dp"
-                    android:layout_marginTop="@dimen/activity_padding2"
                     android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="@+id/txtFilter"
                     app:layout_constraintStart_toStartOf="@+id/txtFilter"
                     app:layout_constraintTop_toBottomOf="@+id/txtFilter" />
+
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/txtFilter"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
-                    android:layout_marginTop="@dimen/activity_padding24"
+                    android:layout_marginTop="@dimen/activity_padding16"
                     android:background="@drawable/bg_all_curved_4_white_gray_border"
                     android:drawableEnd="@drawable/baseline_arrow_drop_down"
                     android:drawableTint="@color/black"
@@ -114,7 +158,7 @@
                     app:fontFamily="@font/font_semibold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtLable" />
+                    app:layout_constraintTop_toBottomOf="@+id/linearReviewStatus" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txtAddReviewImage"

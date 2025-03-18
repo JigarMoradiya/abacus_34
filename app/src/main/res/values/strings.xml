@@ -612,7 +612,7 @@
     <string name="register_msg">Enter following details to create your account.</string>
     <string name="complete_profile">Enter following details to complete profile and start journey.</string>
     <string name="contact_us_fill_detail">Enter following details to contact us.\nMake sure you entered all details is corrected.</string>
-    <string name="review_fill_detail">Give 5 Star Review to this application in Play Store and <b>Get Free Access of any selected Level.</b></string>
+    <string name="review_fill_detail">Give 5 Star Review to this application in Play Store and <b>Get Free Access of <font color="#FF0000">Any Selected Level for 3 Months.</font></b></string>
     <string name="review_note"><font color="#FF0000"><b>Notes : </b></font>Upload Screenshot of Review which you give in Play Store for this application and submit. In 48 hour we review your request and give access.\n\n<b>Make sure your attached screenshot is valid.</b>\nThank you.</string>
     <string name="forgot_password_msg">Don\'t worry! It occurs.</string>
     <string name="forgot_password_msg1">Please enter the email address which linked with your account.</string>
@@ -801,6 +801,7 @@
     <string name="timer_on">Timer ON</string>
     <string name="paid">Paid</string>
     <string name="add_screenshot_of_application_review">Add Screenshot of Application Review</string>
+    <string name="change_screenshot_of_application_review">Change Screenshot of Application Review</string>
     <string name="review_submit">Review Submit</string>
     <string name="level_1">Level 1</string>
     <string name="level_2">Level 2</string>
@@ -811,6 +812,16 @@
     <string name="please_select_level">Please select level</string>
     <string name="please_select_screenshot_of_application_review">Please select screenshot of application review</string>
     <string name="your_request_successfully_submitted">Your request successfully submitted.</string>
+    <string name="yes_i_want_to_get_free_access">Yes, I Want to Get Free Access</string>
+    <string name="maybe_later">May be Later</string>
+    <string name="congratulations_your_submitted_review_is_approved">Congratulations your submitted review is approved.</string>
+    <string name="sorry_your_submitted_review_is_rejected_please_try_again">Sorry, your submitted review is rejected, please try again.</string>
+    <string name="please_wait_white_we_are_reviewing_your_request">Please wait, white we are reviewing your request.</string>
+    <string name="submit_new_request">Submit New Request</string>
+    <string name="assigned">Assigned</string>
+    <string name="plan_assign_from_admin_for_your_google_review_submitted"><![CDATA[<b>Plan assign from Admin</b> for your google review submitted.]]></string>
+    <string name="plan_assign_from_admin_on_your_request"><![CDATA[<b>Plan assign from Admin</b> on your request.]]></string>
+    <string name="plan_assign_from_admin">Plan assign from Admin.</string>
 
 
 </resources>

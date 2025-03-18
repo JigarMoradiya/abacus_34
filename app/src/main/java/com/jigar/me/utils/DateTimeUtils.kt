@@ -35,6 +35,7 @@ object DateTimeUtils {
     var yyyy_MM_dd_HH_mm: String = "yyyy_MM_dd_hh_mm"
     var MMMM_dd_yyyy: String = "MMMM dd, yyyy"
     var dd_MMM_yyyy: String = "dd, MMM yyyy"
+    var dd_MMMM_yyyy: String = "dd MMMM yyyy"
     var yyyy_MM_dd: String = "yyyy-MM-dd"
     var hh_mm_a: String = "'at' hh:mm a"
     var at_dd_mmm_yy_hh_mm_a: String = "'At' dd MMM-yy hh:mm a"

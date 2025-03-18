@@ -22,13 +22,17 @@ import com.android.billingclient.api.BillingClient
 import com.eftimoff.viewpagertransformers.DepthPageTransformer
 import com.google.gson.Gson
 import com.google.gson.JsonObject
+import com.google.gson.reflect.TypeToken
 import com.jigar.me.BuildConfig
 import com.jigar.me.MyApplication
 import com.jigar.me.R
 import com.jigar.me.data.local.data.*
+import com.jigar.me.data.model.data.DiscountData
 import com.jigar.me.data.model.data.GooglePurchasedPlanRequest
 import com.jigar.me.data.model.data.LoginData
+import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
+import com.jigar.me.data.model.data.ReviewData
 import com.jigar.me.data.model.dbtable.abacus_all_data.Level
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.databinding.FragmentHomeNewBinding
@@ -38,12 +42,13 @@ import com.jigar.me.ui.view.base.inapp.BillingRepository
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.OtherApplicationBottomSheet
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.SelectAvatarProfileDialog
+import com.jigar.me.ui.view.confirm_alerts.dialogs.OfferDialog
+import com.jigar.me.ui.view.confirm_alerts.dialogs.PurchaseByReviewDialog
 import com.jigar.me.ui.view.confirm_alerts.dialogs.SelectThemeDialog
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.ui.view.dashboard.fragments.home.BannerPagerAdapter
 import com.jigar.me.ui.view.dashboard.fragments.home.CurrentPlanPagerAdapter
 import com.jigar.me.ui.view.other.ContactUsActivity
-import com.jigar.me.ui.view.other.ReviewSubmitActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.SubscriptionsViewModel
 import com.jigar.me.ui.viewmodel.StudentViewModel
@@ -58,6 +63,8 @@ import com.jigar.me.utils.extensions.openURL
 import com.jigar.me.utils.extensions.openYoutube
 import com.jigar.me.utils.extensions.shareIntent
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import me.samlss.lighter.IntroProvider
@@ -92,7 +99,6 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     private val PERIOD_MS: Long = 5000 // time in milliseconds between successive task executions.
 
     private var lighter : Lighter? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initObserver()
@@ -114,6 +120,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     private fun initViews() = with(binding){
         // fetch abacus data
         FetchAbacusDataWorkManager.fetchAbacusDetails()
+//        studentViewModel.appReviewsList()
 
         setViewPager()
         linearMenu.post {
@@ -153,11 +160,11 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
         with(binding){
             cardProfileImage.onClick {
                 if (BuildConfig.DEBUG){
-                    mNavController?.navigate(R.id.toHomeFragment)
+//                    mNavController?.navigate(R.id.toHomeFragment)
+//                    openReviewOfferPopup()
                 }else{
                     txtMyAccount.performClick()
                 }
-//                ReviewSubmitActivity.getInstance(requireContext())
             }
             txtWelcomeTitle.onClick { txtMyAccount.performClick() }
             txtWelcomeMsg.onClick { txtMyAccount.performClick() }
@@ -174,6 +181,13 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 }
             }
         }
+    }
+
+    private fun openReviewOfferPopup() {
+        PurchaseByReviewDialog.showPopup(requireActivity(),object : PurchaseByReviewDialog.DialogCloseInterface{
+            override fun onSubmitYesClick() {
+            }
+        })
     }
 
     private fun initObserver() {
@@ -198,6 +212,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                     {
                         prefManager.setCustomParam(AppConstants.APIStatus.PURCHASE_ERROR_CODE,"")
                         setCurrentSubscription(purchasedListReq)
+                        checkPurchasedPlans(it.value.data)
                     }else{
                         onFailure(it.value.error?.message)
                     }
@@ -223,6 +238,25 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 }
             }
         }
+        studentViewModel.appReviewsListResponse.observe(this) {
+            when (it) {
+                is Resource.Loading -> {
+                }
+                is Resource.Success -> {
+                    if (it.value.status == AppConstants.APIStatus.SUCCESS)
+                    {
+                        checkAppReviews(it.value.data)
+                        checkPurchasedPlans(it.value.data)
+                    }else{
+                        onFailure(it.value.error?.message)
+                    }
+
+                }
+                is Resource.Failure -> {
+
+                }
+            }
+        }
         studentViewModel.changePlanResponse.observe(this) {
             when (it) {
                 is Resource.Loading -> {
@@ -245,6 +279,29 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
             }
         }
     }
+
+    private fun checkPurchasedPlans(data: JsonObject?) {
+        if (data?.has("purchased_plans") == true){
+            if (data.getAsJsonArray("purchased_plans")?.isEmpty == true){
+                prefManager.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"")
+            }else{
+                val list : List<PlanAssignFromAdminData> =  Gson().fromJson(data.getAsJsonArray("purchased_plans"), object : TypeToken<List<PlanAssignFromAdminData>>() {}.type)
+                prefManager.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,Gson().toJson(list))
+            }
+        }
+    }
+
+    private fun checkAppReviews(data: JsonObject?) {
+        if (data?.has("app_reviews") == true){
+            if (data.getAsJsonArray("app_reviews")?.isEmpty == true){
+                prefManager.setCustomParam(Constants.APP_REVIEW_DATA,"")
+            }else{
+                val list : List<ReviewData> =  Gson().fromJson(data.getAsJsonArray("app_reviews"), object : TypeToken<List<ReviewData>>() {}.type)
+                prefManager.setCustomParam(Constants.APP_REVIEW_DATA,Gson().toJson(list))
+            }
+        }
+    }
+
     private fun errorPurchaseDialog(title: String, msg: String, btnYes: String, btnNo: String) {
         CommonConfirmationBottomSheet.showPopup(requireActivity(),title,msg,
             btnYes, btnNo, icon = R.drawable.ic_alert_not_purchased,
@@ -604,7 +661,6 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     }
 
     private fun createPurchasedPlanRequest(purchasedList: List<InAppSkuDetails>) {
-        Log.e("jigarLogs","createPurchasedPlanRequest = "+Gson().toJson(purchasedList))
         if (purchasedList.isNotNullOrEmpty()){
             (activity as MainDashboardActivity).isPurchaseDataChecked = true
         }
@@ -671,7 +727,6 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 purchasedListReq.add(GooglePurchasedPlanRequest(google_plan_id,google_order_id, is_lifetime_plan, is_all_feature, start_date, end_date,purchase_price,purchase_currency, no_of_renewals))
             }
         }
-        Log.e("jigarLogs","createPurchasedPlanRequest submit = "+Gson().toJson(purchasedListReq))
         studentViewModel.handleExistingPurchase(PurchasedPlanCheckRequest(purchasedListReq))
     }
 }

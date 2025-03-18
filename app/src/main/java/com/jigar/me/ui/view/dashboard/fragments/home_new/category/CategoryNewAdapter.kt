@@ -1,12 +1,12 @@
 package com.jigar.me.ui.view.dashboard.fragments.home_new.category
 
-import android.util.Log
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.jigar.me.R
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
+import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.databinding.RawCategoryNewBinding
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.extensions.hide
@@ -18,6 +18,7 @@ import com.jigar.me.utils.extensions.show
 class CategoryNewAdapter(
     var listData: List<Category>,
     var purchasedSKU: List<InAppSkuDetails>,
+    var prefManager: AppPreferencesHelper,
     private val mListener: (Int, Int, Category) -> Unit
 ) : RecyclerView.Adapter<CategoryNewAdapter.ViewHolder>() {
     var selectedPosition = 0
@@ -49,7 +50,7 @@ class CategoryNewAdapter(
             imgArrow.invisible()
             cardMenu.strokeWidth = 0
         }
-        val isPurchase = CommonUtils.checkLevelIsPurchase(purchasedSKU,data)
+        val isPurchase = CommonUtils.checkLevelIsPurchase(purchasedSKU, data, prefManager)
         if (isPurchase){
             txtTag.hide()
         }else{

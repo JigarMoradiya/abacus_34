@@ -113,6 +113,13 @@ class StudentViewModel @Inject constructor(private val apiRepository: StudentApi
         _handleExistingPurchaseResponse.value = Resource.Loading
         _handleExistingPurchaseResponse.value = apiRepository.handleExistingPurchase(request)
     }
+    private val _appReviewsListResponse: MutableLiveData<Resource<MainAPIResponse>> =
+        MutableLiveData()
+    val appReviewsListResponse: LiveData<Resource<MainAPIResponse>> get() = _appReviewsListResponse
+    fun appReviewsList() = viewModelScope.launch {
+        _appReviewsListResponse.value = Resource.Loading
+        _appReviewsListResponse.value = apiRepository.appReviewsList()
+    }
 
     private val _changePlanResponse: MutableLiveData<Resource<MainAPIResponse>> = MutableLiveData()
     val changePlanResponse: LiveData<Resource<MainAPIResponse>> get() = _changePlanResponse

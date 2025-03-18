@@ -15,9 +15,9 @@ class AuthHeaderInterceptor  private constructor(
         requestBuilder.header("organizer-id",BuildConfig.ORGANIZER_ID)
         prefManager.getAccessToken()?.let {
             val token = it
-            if (BuildConfig.DEBUG){
+//            if (BuildConfig.DEBUG){
                 Log.e("jigarLogs", "AuthHeaderInterceptor accessToken = $token")
-            }
+//            }
             requestBuilder.header("access-token",token)
         }
 

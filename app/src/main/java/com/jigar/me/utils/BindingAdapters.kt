@@ -64,7 +64,7 @@ fun purchaseOrderId(view: MaterialTextView, orderId: String) {
 @BindingAdapter("productType","purchaseTime","billingPeriod")
 fun purchaseTime(view: MaterialTextView,productType : String, purchaseTime: Long,billingPeriod : String? = null) {
     if (purchaseTime > 0) {
-        val formatter = SimpleDateFormat("dd MMMM yyyy")
+        val formatter = SimpleDateFormat(DateTimeUtils.dd_MMMM_yyyy)
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = purchaseTime
         if (productType == BillingClient.ProductType.SUBS){

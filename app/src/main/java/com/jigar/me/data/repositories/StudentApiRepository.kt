@@ -37,6 +37,9 @@ class StudentApiRepository @Inject constructor(
     suspend fun handleExistingPurchase(request : PurchasedPlanCheckRequest) = safeApiCall {
         api.handleExistingPurchase(request)
     }
+    suspend fun appReviewsList() = safeApiCall {
+        api.appReviewsList()
+    }
     suspend fun changePlan(request : PurchasedPlanCheckRequest) = safeApiCall {
         api.changePlan(request)
     }

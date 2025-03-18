@@ -114,6 +114,7 @@ object AppConstants {
             var bulkLogin = "bulkLogin"
             var privacyPolicyUrl = "privacyPolicyUrl"
             var versionCode = "versionCode"
+            var discountData = "discount_data"
         }
     }
     annotation class AbacusProgress {
@@ -131,9 +132,6 @@ object AppConstants {
             var Settings = "Settings"
             var baseUrl = "baseUrl"
             var iPath = "iPath"
-
-            var Ads = "Ads"
-            var isAdmob = "isAdmob"
             var resetImage = "resetImage"
             var databaseVersion = "databaseVersion"
         }
@@ -161,6 +159,7 @@ object AppConstants {
             var isSetTheam = "isSetTheam"
             var isHomeTourWatch = "isHomeTourWatch"
             var appOpenCount = "appOpenCount"
+            var appOpenCountForOffer = "appOpenCountForOffer"
             var isFreeModeTourWatch = "isFreeModeTourWatch"
             var Theam = "Theam"
             var TheamTempView = "TheamTempView"
