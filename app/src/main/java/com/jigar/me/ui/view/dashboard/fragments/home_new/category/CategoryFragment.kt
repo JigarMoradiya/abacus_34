@@ -37,10 +37,12 @@ class CategoryFragment : BaseFragment() {
     private lateinit var categoryNewAdapter: CategoryNewAdapter
     private lateinit var pagesNewAdapter: PagesNewAdapter
     private var levelId: String = ""
-    private var isGetAllData: Boolean = true
-//    private var isGetAllData: Boolean = false
-    private var isGoToAbacusList: Boolean = true
-//    private var isGoToAbacusList: Boolean = false
+//    private var isGetAllData: Boolean = true
+//    private var isGoToAbacusList: Boolean = true
+
+    // default make this
+    private var isGetAllData: Boolean = false
+    private var isGoToAbacusList: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

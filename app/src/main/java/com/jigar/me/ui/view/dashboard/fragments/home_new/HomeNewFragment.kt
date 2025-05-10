@@ -120,7 +120,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     private fun initViews() = with(binding){
         // fetch abacus data
         FetchAbacusDataWorkManager.fetchAbacusDetails()
-//        studentViewModel.appReviewsList()
+        studentViewModel.appReviewsList()
 
         setViewPager()
         linearMenu.post {
@@ -212,7 +212,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                     {
                         prefManager.setCustomParam(AppConstants.APIStatus.PURCHASE_ERROR_CODE,"")
                         setCurrentSubscription(purchasedListReq)
-                        checkPurchasedPlans(it.value.data)
+//                        checkPurchasedPlans(it.value.data)
                     }else{
                         onFailure(it.value.error?.message)
                     }
@@ -245,7 +245,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 is Resource.Success -> {
                     if (it.value.status == AppConstants.APIStatus.SUCCESS)
                     {
-                        checkAppReviews(it.value.data)
+//                        checkAppReviews(it.value.data)
                         checkPurchasedPlans(it.value.data)
                     }else{
                         onFailure(it.value.error?.message)
@@ -281,11 +281,11 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     }
 
     private fun checkPurchasedPlans(data: JsonObject?) {
-        if (data?.has("purchased_plans") == true){
-            if (data.getAsJsonArray("purchased_plans")?.isEmpty == true){
+        if (data?.has("plans_purchased_manually") == true){
+            if (data.getAsJsonArray("plans_purchased_manually")?.isEmpty == true){
                 prefManager.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"")
             }else{
-                val list : List<PlanAssignFromAdminData> =  Gson().fromJson(data.getAsJsonArray("purchased_plans"), object : TypeToken<List<PlanAssignFromAdminData>>() {}.type)
+                val list : List<PlanAssignFromAdminData> =  Gson().fromJson(data.getAsJsonArray("plans_purchased_manually"), object : TypeToken<List<PlanAssignFromAdminData>>() {}.type)
                 prefManager.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,Gson().toJson(list))
             }
         }

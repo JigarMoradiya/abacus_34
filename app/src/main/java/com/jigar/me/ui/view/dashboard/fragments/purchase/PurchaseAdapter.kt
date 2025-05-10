@@ -59,27 +59,7 @@ class PurchaseAdapter(
             txtDiscount.hide()
             txtOriginalPrice.hide()
             txtOfferDes.hide()
-            if (data.sku == PRODUCT_ID_Subscription_Year1){
-                val discountPer = discountData?.per?:0
-                if (discountPer > 0){
-                    txtOriginalPrice.paintFlags = txtOriginalPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-                    txtDiscount.text = "$discountPer% OFF"
-                    if (!data.price.isNullOrEmpty() && data.price_amount_micros != null){
-                        try {
-                            txtOriginalPrice.text = data.price?.get(0).toString()+((data.price_amount_micros/10000) / (100-discountPer)).toString()
-                            txtOriginalPrice.show()
-                            txtDiscount.show()
-                            txtOfferDes.show()
 
-                            spaceTop.show()
-                            btnRecommended.show()
-                            btnRecommended.text = discountData?.name?:"Discount Offer"
-                        } catch (e: Exception) {
-                            e.printStackTrace()
-                        }
-                    }
-                }
-            }
             var isPlanAssignFromAdmin = false
             planListAssignFromAdmin.find { it.google_order_id == null && (it.google_plan_id?.contains(data.sku) == true) }.also {
                 isPlanAssignFromAdmin = it != null
@@ -95,6 +75,33 @@ class PurchaseAdapter(
                 }
             }
             isPlanAssignFromBackend = isPlanAssignFromAdmin
+
+            if (data.sku == PRODUCT_ID_Subscription_Year1){
+                val discountPer = discountData?.per?:0
+                if (discountPer > 0){
+                    txtOriginalPrice.paintFlags = txtOriginalPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                    txtDiscount.text = "$discountPer% OFF"
+                    if (!data.price.isNullOrEmpty() && data.price_amount_micros != null){
+                        try {
+                            txtOriginalPrice.text = data.price?.get(0).toString()+((data.price_amount_micros/10000) / (100-discountPer)).toString()
+                            txtOriginalPrice.show()
+                            txtDiscount.show()
+
+                            if (isPlanAssignFromAdmin || data.isPurchase){
+
+                            }else{
+                                txtOfferDes.show()
+                                spaceTop.show()
+                                btnRecommended.show()
+                                btnRecommended.text = discountData?.name?:"Discount Offer"
+                            }
+
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+                    }
+                }
+            }
 
             val colorList = ColorProvider.getPurchaseColorsList()
             val colorPosition = ((position + 1) % colorList.size)

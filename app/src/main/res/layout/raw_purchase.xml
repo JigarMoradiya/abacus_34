@@ -159,18 +159,21 @@
                 tools:text="40% OFF"
                 tools:visibility="visible" />
         </androidx.appcompat.widget.LinearLayoutCompat>
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtOfferDes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/font_regular"
             android:gravity="center"
+            android:text="Limited time period offer."
             android:textColor="@color/red_A700"
             android:textSize="@dimen/textSizeExtraSmall"
-            android:text="Limited time period offer."
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearPrices"/>
+            app:layout_constraintTop_toBottomOf="@+id/linearPrices" />
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -235,15 +235,15 @@ class MyApplication : Application(), Configuration.Provider {
                                 getInstance().shareIntent()
                             }
                             else -> {
-                                moveToDestination(R.id.homeFragment)
+                                moveToDestination(R.id.homeNewFragment)
                             }
                         }
                     }else{
-                        moveToDestination(R.id.homeFragment)
+                        moveToDestination(R.id.homeNewFragment)
                     }
 
                 }else{
-                    moveToDestination(R.id.homeFragment)
+                    moveToDestination(R.id.homeNewFragment)
                 }
             }
         })

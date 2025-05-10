@@ -45,7 +45,7 @@ abstract class AppDatabase : RoomDatabase() {
         }
 
         fun buildDatabase(context: Context) = Room.databaseBuilder(context, AppDatabase::class.java, AppConstants.DB_NAME)
-            // Delete Database, when something changed
+            // Delete    , when something changed
             .fallbackToDestructiveMigration()
             .addMigrations(
                 Migrations.MIGRATION_1_2,

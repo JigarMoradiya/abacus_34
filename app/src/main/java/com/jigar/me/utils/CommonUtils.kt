@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.speech.tts.TextToSpeech
 import android.speech.tts.Voice
+import android.util.Log
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
@@ -170,13 +171,15 @@ object CommonUtils {
                     || (it.sku.contains(data.name)) }.also {
                 isPurchased = it != null
             }
-            if (prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"").isNotEmpty()) {
-                val planListData : List<PlanAssignFromAdminData> = Gson().fromJson(
-                    prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
-                    object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
-                )
-                planListData.find { it.google_order_id == null && (it.google_plan_id?.contains(data.name) == true) }.also {
-                    isPurchased = it != null
+            if (!isPurchased){
+                if (prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"").isNotEmpty()) {
+                    val planListData : List<PlanAssignFromAdminData> = Gson().fromJson(
+                        prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
+                        object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
+                    )
+                    planListData.find { it.google_order_id == null && (it.google_plan_id?.contains(data.name) == true) || (it.google_plan_id?.equals(PRODUCT_ID_Subscription_Year1) == true) }.also {
+                        isPurchased = it != null
+                    }
                 }
             }
         }
