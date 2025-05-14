@@ -276,7 +276,7 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
     override fun onExerciseStartClick() {
         CoroutineScope(Dispatchers.Main).launch {
             val purchasedSKU = appViewModel.getInAppSKUPurchased()
-            if (CommonUtils.checkPurchaseForExerciseExamCCM(purchasedSKU)){
+            if (CommonUtils.checkPurchaseForExerciseExamCCM(prefManager,purchasedSKU)){
                 startInit()
             }else{
                 canNotAccess()

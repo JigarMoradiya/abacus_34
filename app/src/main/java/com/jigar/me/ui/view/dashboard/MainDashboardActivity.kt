@@ -13,6 +13,7 @@ import com.google.gson.Gson
 import com.jigar.me.BuildConfig
 import com.jigar.me.R
 import com.jigar.me.data.model.data.DiscountData
+import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.dbtable.abacus_all_data.Set
 import com.jigar.me.databinding.ActivityMainDashboardBinding
 import com.jigar.me.ui.view.base.BaseActivity
@@ -42,6 +43,7 @@ class MainDashboardActivity : BaseActivity() {
     var isPurchaseDataChecked = false
     var allSetList: ArrayList<Set> = arrayListOf()
     private var discountData : DiscountData? = null
+    private var loginData: LoginData? = null
     companion object {
         @JvmStatic
         fun getInstance(context: Context?) {
@@ -66,6 +68,7 @@ class MainDashboardActivity : BaseActivity() {
     }
 
     private fun initObserver() {
+        loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
         inAppViewModel.inAppInit()
 
         if (BuildConfig.DEBUG) {
@@ -73,27 +76,30 @@ class MainDashboardActivity : BaseActivity() {
 //            binding.viewBG.show()
         }
 
-        val appOpenCount = prefManager.getCustomParamInt(AppConstants.Settings.appOpenCountForOffer, 0)
-        if (prefManager.getCustomParam(AppConstants.RemoteConfig.discountData,"").isNotEmpty()){
-            discountData = Gson().fromJson(prefManager.getCustomParam(AppConstants.RemoteConfig.discountData,""), DiscountData::class.java)
-            if(appOpenCount == Constants.homePageShowOffer && !discountData?.image.isNullOrEmpty()) {
-                CoroutineScope(Dispatchers.Main).launch {
-                    delay(5000)
-                    val purchasedSKU = appViewModel.getInAppSKUPurchased()
-                    if (CommonUtils.checkPurchaseForAllLevel(purchasedSKU)){
-                        OfferDialog.showPopup(this@MainDashboardActivity,discountData,object : OfferDialog.DialogOfferInterface {
-                            override fun onSubmitYesClick() {
-                                navController.navigate(R.id.purchaseFragment)
-                            }
-                        })
+        if (!loginData?.email.equals("abacus@yopmail.com")){
+            val appOpenCount = prefManager.getCustomParamInt(AppConstants.Settings.appOpenCountForOffer, 0)
+            if (prefManager.getCustomParam(AppConstants.RemoteConfig.discountData,"").isNotEmpty()){
+                discountData = Gson().fromJson(prefManager.getCustomParam(AppConstants.RemoteConfig.discountData,""), DiscountData::class.java)
+                if(appOpenCount == Constants.homePageShowOffer && !discountData?.image.isNullOrEmpty()) {
+                    CoroutineScope(Dispatchers.Main).launch {
+                        delay(5000)
+                        val purchasedSKU = appViewModel.getInAppSKUPurchased()
+                        val isNotPurchase = CommonUtils.checkPurchaseForAllLevel(purchasedSKU)
+                        if (isNotPurchase){
+                            OfferDialog.showPopup(this@MainDashboardActivity,discountData,object : OfferDialog.DialogOfferInterface {
+                                override fun onSubmitYesClick() {
+                                    navController.navigate(R.id.purchaseFragment)
+                                }
+                            })
+                        }
                     }
                 }
             }
-        }
-        if (appOpenCount > Constants.homePageShowOffer){
-            prefManager.setCustomParamInt(AppConstants.Settings.appOpenCountForOffer, 0)
-        }else{
-            prefManager.setCustomParamInt(AppConstants.Settings.appOpenCountForOffer, (appOpenCount+1))
+            if (appOpenCount > Constants.homePageShowOffer){
+                prefManager.setCustomParamInt(AppConstants.Settings.appOpenCountForOffer, 0)
+            }else{
+                prefManager.setCustomParamInt(AppConstants.Settings.appOpenCountForOffer, (appOpenCount+1))
+            }
         }
     }
 

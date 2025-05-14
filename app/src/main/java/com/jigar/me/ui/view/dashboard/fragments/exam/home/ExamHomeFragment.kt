@@ -50,7 +50,7 @@ class ExamHomeFragment : BaseFragment() {
             }else{
                 CoroutineScope(Dispatchers.Main).launch {
                     val purchasedSKU = appViewModel.getInAppSKUPurchased()
-                    if (CommonUtils.checkPurchaseForExerciseExamCCM(purchasedSKU)){
+                    if (CommonUtils.checkPurchaseForExerciseExamCCM(prefManager,purchasedSKU)){
                         onExamStartClick()
                     }else{
                         canNotAccess()

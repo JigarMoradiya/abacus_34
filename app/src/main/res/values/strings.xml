@@ -759,16 +759,16 @@
     <string name="faq_ans_5">Yes, we prioritize the security of your payment information. Our payment gateway employs industry-standard encryption to ensure a secure and safe transaction process.</string>
 
     <string name="faq_que_6">Are there advertisements in the app?</string>
-    <string name="faq_ans_6">Yes, there are advertisements in the app, but they are designed to be child-friendly and age-appropriate. Subscribers to the premium plan enjoy an ad-free experience.</string>
+    <string name="faq_ans_6">No, there are no advertisements in the application.</string>
 
     <string name="faq_que_7">How do I log in to my account?</string>
-    <string name="faq_ans_7">On "Login" page, enter your credentials (username and password), and click "Submit." If you encounter any issues, you can reset your password or contact our support team for assistance.</string>
+    <string name="faq_ans_7">On "Login" page, login with your google account or if you have credentials then enter your credentials (username and password), and click "Submit."</string>
 
     <string name="faq_que_8">What benefits do subscribers enjoy?</string>
     <string name="faq_ans_8">Subscribers enjoy benefits such as unlimited access to premium content, an ad-free experience, personalized learning features, and more interactive exercises.</string>
 
     <string name="faq_que_9">Can I cancel my subscription at any time?</string>
-    <string name="faq_ans_9">Yes, you can cancel your subscription at any time. Simply go to the "https://play.google.com/store/account/subscriptions" and "Cancel Subscription." Your subscription will remain active until the end of the current billing cycle.</string>
+    <string name="faq_ans_9">Yes, you can cancel your subscription at any time if you subscribe from application only. Simply go to the "https://play.google.com/store/account/subscriptions" and "Cancel Subscription." Your subscription will remain active until the end of the current billing cycle.</string>
 
     <string name="faq_que_10">Is there a workaround if my payment method is not supported?</string>
     <string name="faq_ans_10">Unfortunately, if your payment method is not supported, we recommend using one of the available alternatives. Our support team can assist you in exploring options and addressing any concerns you may have.</string>

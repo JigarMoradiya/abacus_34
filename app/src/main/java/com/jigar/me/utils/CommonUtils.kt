@@ -186,7 +186,8 @@ object CommonUtils {
         return isPurchased
     }
 
-    fun checkPurchaseForExerciseExamCCM(purchasedSKU: List<InAppSkuDetails>): Boolean {
+    fun checkPurchaseForExerciseExamCCM(prefManager: AppPreferencesHelper,purchasedSKU: List<InAppSkuDetails>): Boolean {
+        var isPurchased = false
         purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
                 || it.sku == PRODUCT_ID_All_lifetime_old
                 || it.sku == PRODUCT_ID_Subscription_Month3
@@ -194,8 +195,27 @@ object CommonUtils {
                 || (it.sku.contains("level3")) || (it.sku.contains("level4"))
                 || (it.sku.contains("level5")) || (it.sku.contains("level6"))
                 || (it.sku.contains("level7")) || (it.sku.contains("level8"))}.also {
-            return it != null
+            isPurchased = it != null
         }
+        if (!isPurchased){
+            if (prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"").isNotEmpty()) {
+                val planListData : List<PlanAssignFromAdminData> = Gson().fromJson(
+                    prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
+                    object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
+                )
+                planListData.find { it.google_order_id == null && ((it.google_plan_id?.contains("level3") == true) ||
+                        (it.google_plan_id?.contains("level3") == true) ||
+                        (it.google_plan_id?.contains("level4") == true) ||
+                        (it.google_plan_id?.contains("level5") == true) ||
+                        (it.google_plan_id?.contains("level6") == true) ||
+                        (it.google_plan_id?.contains("level7") == true) ||
+                        (it.google_plan_id?.contains("level8") == true) ||
+                        (it.google_plan_id?.equals(PRODUCT_ID_Subscription_Year1) == true)) }.also {
+                    isPurchased = it != null
+                }
+            }
+        }
+        return isPurchased
     }
     fun checkPurchaseForAllLevel(purchasedSKU: List<InAppSkuDetails>): Boolean {
         purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
@@ -203,7 +223,8 @@ object CommonUtils {
                 || it.sku == PRODUCT_ID_Subscription_Month3
                 || it.sku == PRODUCT_ID_Subscription_Year1
         }.also {
-            return it != null
+            Log.e("jigarLogss","checkPurchaseForAllLevel = "+Gson().toJson(it))
+            return it == null
         }
     }
 }

@@ -14,10 +14,12 @@ import com.jigar.me.R
 import com.jigar.me.data.model.DisplayPurchaseData
 import com.jigar.me.data.model.data.AbacusAllData
 import com.jigar.me.data.model.data.DiscountData
+import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.databinding.FragmentPurchaseBinding
 import com.jigar.me.ui.view.base.BaseFragment
+import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.PaidFeatureListDialog
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
@@ -46,6 +48,7 @@ class PurchaseFragment : BaseFragment(), PurchaseAdapter.OnItemClickListener {
     private var displayItemList: ArrayList<DisplayPurchaseData> = arrayListOf()
     private var planListAssignFromAdmin : List<PlanAssignFromAdminData> = arrayListOf()
     private var discountData : DiscountData? = null
+    private var loginData: LoginData? = null
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
         binding = FragmentPurchaseBinding.inflate(inflater, container, false)
         setNavigationGraph()
@@ -58,6 +61,7 @@ class PurchaseFragment : BaseFragment(), PurchaseAdapter.OnItemClickListener {
     }
 
     private fun initViews() {
+        loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
         if (prefManager.getCustomParam(AppConstants.RemoteConfig.discountData,"").isNotEmpty()){
             discountData = Gson().fromJson(prefManager.getCustomParam(AppConstants.RemoteConfig.discountData,""), DiscountData::class.java)
         }
@@ -67,23 +71,29 @@ class PurchaseFragment : BaseFragment(), PurchaseAdapter.OnItemClickListener {
                 object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
             )
         }
+
         skuListAdapter = PurchaseAdapter(listSKU,planListAssignFromAdmin,discountData ,this)
         binding.recyclerview.adapter = skuListAdapter
         inAppViewModel.inAppInit()
 
         CoroutineScope(Dispatchers.Main).launch{
-            val idList: ArrayList<String> = arrayListOf()
-            if (prefManager.getCustomParam(AppConstants.RemoteConfig.displayPlanList,"").isNotEmpty()){
-                val type = object : TypeToken<ArrayList<DisplayPurchaseData>>() {}.type
-                displayItemList = Gson().fromJson(prefManager.getCustomParam(AppConstants.RemoteConfig.displayPlanList,""),type)
-                displayItemList.map {
-                    idList.add(it.id)
-                }
-            }
 
-            val list = apiViewModel.getPurchasesSku()
-            if (list.isNotNullOrEmpty()){
-                idList.addAll(list)
+            val idList: ArrayList<String> = arrayListOf()
+            if (loginData?.email.equals("abacus@yopmail.com")){
+                idList.add(PRODUCT_ID_All_lifetime)
+            }else{
+                if (prefManager.getCustomParam(AppConstants.RemoteConfig.displayPlanList,"").isNotEmpty()){
+                    val type = object : TypeToken<ArrayList<DisplayPurchaseData>>() {}.type
+                    displayItemList = Gson().fromJson(prefManager.getCustomParam(AppConstants.RemoteConfig.displayPlanList,""),type)
+                    displayItemList.map {
+                        idList.add(it.id)
+                    }
+                }
+
+                val list = apiViewModel.getPurchasesSku()
+                if (list.isNotNullOrEmpty()){
+                    idList.addAll(list)
+                }
             }
             apiViewModel.getInAppSKU(idList).observe(viewLifecycleOwner){
                 setSKU(it)

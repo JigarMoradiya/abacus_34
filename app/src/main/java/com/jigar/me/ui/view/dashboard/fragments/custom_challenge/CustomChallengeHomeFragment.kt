@@ -77,13 +77,12 @@ class CustomChallengeHomeFragment : BaseFragment() {
             prefManager.setCustomParamBoolean(AppConstants.CCM.isQuestionShowWord,binding.cbQuestionWord.isChecked)
             CoroutineScope(Dispatchers.Main).launch {
                 val purchasedSKU = appViewModel.getInAppSKUPurchased()
-                if (CommonUtils.checkPurchaseForExerciseExamCCM(purchasedSKU)){
+                if (CommonUtils.checkPurchaseForExerciseExamCCM(prefManager,purchasedSKU)){
                     gotoNext()
                 }else{
                     canNotAccess()
                 }
             }
-
         }else{
             showToast(getString(R.string.please_select_at_least_one_checkbox))
         }
