@@ -347,10 +347,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             rods = toValue.toString().length
         }
 
-        val rodMovement = ExamProvider.calculateRodMovements(from = fromValue, to = toValue, rods = rods)
-        Log.e("jigarLogs","rodMovement = "+Gson().toJson(rodMovement))
-        val clip = ClipData.newPlainText("copied json ","$fromValue - $toValue "+ Gson().toJson(rodMovement))
-        requireContext().clipboardManager.setPrimaryClip(clip)
+        val rodMovement = ExamProvider.calculateRodMovements(requireContext(),from = fromValue, to = toValue, rods = rods)
         val extraHeight = resources.getDimension(R.dimen.height_extra).toInt()
         val beamHeight = resources.getDimension(R.dimen.four).toInt()
         val topBeadsHeight = themeContent.beadHeight * 2
