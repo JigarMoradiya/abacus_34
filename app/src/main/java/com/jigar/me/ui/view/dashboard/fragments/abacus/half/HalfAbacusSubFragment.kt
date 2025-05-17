@@ -3,36 +3,31 @@ package com.jigar.me.ui.view.dashboard.fragments.abacus.half
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.setMargins
 import com.jigar.me.R
 import com.jigar.me.data.local.data.AbacusBeadType
-import com.jigar.me.data.local.data.DataProvider
+import com.jigar.me.data.local.data.AbacusContent
 import com.jigar.me.databinding.FragmentAbacusSubKidBinding
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.base.abacus.AbacusMasterBeadShiftListener
 import com.jigar.me.ui.view.base.abacus.AbacusMasterCompleteListener
 import com.jigar.me.ui.view.base.abacus.AbacusMasterView
 import com.jigar.me.ui.view.base.abacus.OnAbacusValueChangeListener
-import com.jigar.me.utils.*
+import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.dp
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.setAbacusResetShakeAnimation
 import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     private lateinit var binding: FragmentAbacusSubKidBinding
+    private lateinit var themeContent : AbacusContent
     // Settings Constants
     private var isDisplayAbacusNumber = true
     private var isShowSubmitAnswer = true
@@ -55,8 +50,9 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
 
     private var onAbacusValueChangeListener: OnAbacusValueChangeListener? = null
 
-    fun newInstance(column: Int, noOfDecimalPlace: Int, abacus_type: Int,isShowSubmitAnswer : Boolean? = false): HalfAbacusSubFragment {
+    fun newInstance(column: Int, noOfDecimalPlace: Int, abacus_type: Int, themeContent : AbacusContent, isShowSubmitAnswer : Boolean? = false): HalfAbacusSubFragment {
         val fragment = HalfAbacusSubFragment()
+        fragment.themeContent = themeContent
         fragment.abacusTotalColumns = column
         fragment.noOfDecimalPlace = noOfDecimalPlace
         fragment.abacus_type = abacus_type
@@ -85,9 +81,6 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
             ivSubmitAnswer.hide()
         }
 
-
-        val theme = prefManager.getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
-        val themeContent = DataProvider.findAbacusThemeType(requireContext(),theme,AbacusBeadType.AbacusPrecise)
         themeContent.abacusFrame135.let { rlAbacusMain.setBackgroundResource(it) }
         themeContent.dividerColor1.let { ivDivider.setBackgroundColor(ContextCompat.getColor(requireContext(),it)) }
         themeContent.resetBtnColor8.let {
@@ -138,7 +131,44 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
 
         binding.abacusTop.onBeadShiftListener = this
         binding.abacusBottom.onBeadShiftListener = this
+
+//        addDirection(fromValue,toValue)
     }
+    // for draw direction
+//    var fromValue: Int = 1
+//    var toValue: Int = 3
+//    private fun addDirection(fromValue: Int, toValue: Int) {
+//        var rods = fromValue.toString().length
+//        if (toValue.toString().length > rods){
+//            rods = toValue.toString().length
+//        }
+//
+//        val rodMovement = calculateRodMovements(from = fromValue, to = toValue, rods = rods)
+//        Log.e("jigarLogs","moves 1 = "+ Gson().toJson(rodMovement))
+//        val extraHeight = resources.getDimension(R.dimen.height_extra).toInt()
+//        val beamHeight = resources.getDimension(R.dimen.four).toInt()
+//        val topBeadsHeight = themeContent.beadHeight * 2
+//        val topTotalHeightAlways = extraHeight + beamHeight + topBeadsHeight
+//        rodMovement.map { rodData ->
+//            val directionBinding = ContentAbacusDirectionsBinding.inflate(layoutInflater, null, false)
+//            with(directionBinding){
+//                conDirection.show()
+//                val paramsView1 = directionBinding.viewDirection.layoutParams as ConstraintLayout.LayoutParams
+//                paramsView1.width = (themeContent.beadWidth * 6) + (themeContent.beadSpace * 6) + (themeContent.beadWidth * 0.75).toInt() +(themeContent.beadWidth * rodData.rodIndex) + (themeContent.beadSpace / 2)
+//                if (rodData.movement.lowerUp > 0){
+//                    linearDirectionBottom.show()
+//                    imgUpArrowBottom.show()
+//
+//                    val heightOldBeads = rodData.movement.lowerOldValue * themeContent.beadHeight
+//                    val bottomRemainBeadHeight = ((4 - rodData.movement.lowerUp) * themeContent.beadHeight)+extraHeight - heightOldBeads
+//                    linearDirectionBottom.setPadding(0,topTotalHeightAlways + heightOldBeads,0,bottomRemainBeadHeight)
+//                }
+//            }
+//            binding.relDirection.addView(directionBinding.root)
+//            binding.relDirection.show()
+//        }
+//
+//    }
 
     override fun onBeadShift(abacusView: AbacusMasterView, rowValue: IntArray) {
         val singleBeadWeight = abacusView.singleBeadValue

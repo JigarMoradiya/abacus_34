@@ -8,10 +8,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import com.jigar.me.R
@@ -22,7 +22,6 @@ import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.base.abacus.AbacusMasterSound.playClickSound
 import com.jigar.me.ui.view.base.abacus.AbacusMasterSound.playResetSound
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.CommonUtils
 
 
 /**
@@ -216,7 +215,9 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
     private fun doDraw(canvas: Canvas?) {
         try {
             canvas?.drawColor(0, PorterDuff.Mode.CLEAR)
-            if (engine != null) engine?.draw(canvas)
+            canvas?.drawColor(Color.WHITE)  // or any color you want as background
+            if (engine != null)
+                engine?.draw(canvas)
         } catch (e: Exception) {
         }
     }
@@ -255,6 +256,7 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
             }
             if (selectedPositions != null){
                 selectedPositions?.let{
+                    Log.e("jigarDirection","surfaceChanged AbacusMasterEngine")
                     engine = AbacusMasterEngine(
                         it, noOfColumn, noOfBeads, singleBeadValue,
                         context, roadDrawable,unitRoadDrawable,unitRodColumnPosition,noOfColumnUsed, beadDrawables, isBeadStackFromBottom,
@@ -541,23 +543,6 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
             beadState = defaultState
         }
     }
-
-//    fun resetAndSetNextRow() {
-//        if (defaultState != null) {
-//            if (isSoundEnabled) {
-//                playResetSound(context)
-//            }
-//            thread?.setSleep(false)
-//            engine?.setState(defaultState!!, true, object :
-//                AbacusMasterEngine.OnStateResetCompletedListener {
-//                override fun onStateResetCompleted() {
-//                    thread?.setSleep(true)
-//                    showReadout()
-//                }
-//            })
-//            beadState = defaultState
-//        }
-//    }
 
     fun quickReset() {
         if (defaultState != null) {

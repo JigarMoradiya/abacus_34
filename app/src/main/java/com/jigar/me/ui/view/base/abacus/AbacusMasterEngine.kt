@@ -3,16 +3,17 @@ package com.jigar.me.ui.view.base.abacus
 import android.animation.Animator
 import android.animation.ValueAnimator
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Point
 import android.graphics.drawable.Drawable
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import androidx.core.content.ContextCompat
 import com.jigar.me.data.local.data.AbacusBeadType
 import com.jigar.me.data.local.data.AbacusContent
 import java.io.Serializable
-import java.util.*
 
 class AbacusMasterEngine(
     private var selectedPositions: ArrayList<Int>,
@@ -25,7 +26,7 @@ class AbacusMasterEngine(
     unitRodColumnPosition: Int,
     noOfColumnUsed: Int,
     beads: Array<Drawable?>,
-    isBeadStackFromBottom: Boolean,
+    val isBeadStackFromBottom: Boolean,
     private val abacusContent: AbacusContent,
     extraHeight : Int = 0,
     beadType : AbacusBeadType
@@ -46,7 +47,7 @@ class AbacusMasterEngine(
     private var beadWidth = 0
     private var borderWidth = 0
     private var rowHeight = 0
-    private var canvas : Canvas?= null
+    var canvas : Canvas?= null
 
     init {
         beadWidth = abacusContent.beadWidth + abacusContent.beadSpace

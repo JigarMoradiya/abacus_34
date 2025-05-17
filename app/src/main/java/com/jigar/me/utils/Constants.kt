@@ -57,6 +57,8 @@ object Constants {
     const val EXAM_CLICK_ON_CORRECT_ANSWER_ANIMATION_DURATION: Long = 700
     const val EXAM_CLICK_ON_CORRECT_ANSWER_ANIMATION_ALPHA: Float = 0.2F
 
+    const val DELAY_DIRECTION = 500L
+
     var Que = "Que"
     var Sign = "Sign"
     var Hint = "Hint"

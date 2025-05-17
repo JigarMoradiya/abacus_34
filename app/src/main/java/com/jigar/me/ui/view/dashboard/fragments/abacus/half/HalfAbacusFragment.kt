@@ -50,7 +50,7 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
     private var additionSubtraction : Pages? = null
     private var hintPage : String? = null
     private var fileAbacus : String? = null
-    private var themeContent : AbacusContent? = null
+    private lateinit var themeContent : AbacusContent
     private var abacusType = ""
     private var pageId = ""
     private var isRandomGenerate = false
@@ -144,6 +144,7 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
         }else{
             setRightAbacusRules()
         }
+        setTempTheme()
 
         when (abacusType) {
             AppConstants.extras_Comman.AbacusTypeAdditionSubtraction -> {
@@ -164,7 +165,6 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
             }
         }
         // set abacus theme base on purchase or share preferences
-        setTempTheme()
 
         binding.imgRightAbacusTools.hide()
         binding.imgLeftAbacusTools.hide()
@@ -274,6 +274,7 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
     }
 
     private fun startAbacusNow() {
+        setThemeColor()
 //        updateToFirebase(0)
 //        prefManager.saveCurrentSum(pageId,0)
         val currentPosTemp = prefManager.getCurrentSumFromPref(pageId)
@@ -316,7 +317,6 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                 goBack()
             }
         }
-        setThemeColor()
     }
 
     private fun setTempTheme() {
@@ -944,7 +944,7 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                 this.abacusTotalColumns = column
                 this.noOfDecimalPlace = noOfDecimalPlace
                 if (abacusFragment == null){
-                    abacusFragment = HalfAbacusSubFragment().newInstance(abacusTotalColumns, noOfDecimalPlace, abacus_type)
+                    abacusFragment = HalfAbacusSubFragment().newInstance(abacusTotalColumns, noOfDecimalPlace, abacus_type,themeContent)
                 }
                 binding.flAbacus.show()
                 binding.linearYourAbacusTools.hide()
@@ -1004,6 +1004,7 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                     if (adapterAdditionSubtraction.getCurrentSumVal() != null) {
                         val sumVal: Long = adapterAdditionSubtraction.getCurrentSumVal()!!.toLong()
                         if (isStepByStep) {
+
                             if (sum == (sumVal.toInt()).toString()) {
                                 adapterAdditionSubtraction.goToNextStep()
                             }

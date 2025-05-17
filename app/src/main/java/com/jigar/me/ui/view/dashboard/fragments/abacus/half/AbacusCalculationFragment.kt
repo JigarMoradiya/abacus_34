@@ -53,7 +53,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     lateinit var binding: FragmentCalculationBinding
     private val appViewModel by viewModels<AppViewModel>()
     private val examViewModel by viewModels<ExamViewModel>()
-    private var themeContent : AbacusContent? = null
+    private lateinit var themeContent : AbacusContent
     private var setId : String? = null
     private var isPurchased = true
     private var isStepByStep = false
@@ -418,11 +418,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
             }
 
             val theme = prefManager.getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
-            themeContent = if (isAnswerWithTools){
-                DataProvider.findAbacusThemeType(requireContext(),theme, AbacusBeadType.None)
-            }else{
-                DataProvider.findAbacusThemeType(requireContext(),theme, AbacusBeadType.None)
-            }
+            themeContent = DataProvider.findAbacusThemeType(requireContext(),theme,AbacusBeadType.AbacusPrecise)
 
             adapterAdditionSubtraction = AbacusAdditionSubtractionTypeAdapter(arrayListOf(), this@AbacusCalculationFragment, true,themeContent)
             adapterMultiplication = AbacusMultiplicationTypeAdapter(arrayListOf(), true,themeContent)
@@ -814,8 +810,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 this.abacusTotalColumns = column
                 this.noOfDecimalPlace = noOfDecimalPlace
                 if (abacusFragment == null){
-                    Log.e("jigarLogs","answer_setting = "+setDetail?.answer_setting)
-                    abacusFragment = HalfAbacusSubFragment().newInstance(abacusTotalColumns, noOfDecimalPlace, abacus_type,setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer)
+                    abacusFragment = HalfAbacusSubFragment().newInstance(abacusTotalColumns, noOfDecimalPlace, abacus_type,themeContent,setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer)
                 }
                 binding.flAbacus.show()
                 if (abacusFragment != null){

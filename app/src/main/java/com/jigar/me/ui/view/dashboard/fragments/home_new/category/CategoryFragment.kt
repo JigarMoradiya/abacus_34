@@ -42,7 +42,7 @@ class CategoryFragment : BaseFragment() {
 
     // default make this
     private var isGetAllData: Boolean = false
-    private var isGoToAbacusList: Boolean = false
+    private var isGoToAbacusList  : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

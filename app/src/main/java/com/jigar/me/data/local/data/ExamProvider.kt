@@ -9,6 +9,33 @@ import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
 
 object ExamProvider {
+    fun calculateRodMovements(from: Int,to: Int,rods: Int): List<RodMovement> {
+        val fromDigits = from.toString().padStart(rods, '0').map { it - '0' }
+        val toDigits = to.toString().padStart(rods, '0').map { it - '0' }
+
+        val result = mutableListOf<RodMovement>()
+
+        for (i in 0 until rods) {
+            // Index from right (unit digit = rodIndex 0)
+            val rodIndex = rods - 1 - i
+
+            val fromDigit = fromDigits[rodIndex]
+            val toDigit = toDigits[rodIndex]
+
+            val movement = Movement(
+                upperDown = toDigit >= 5 && fromDigit < 5,
+                upperUp = toDigit < 5 && fromDigit >= 5,
+                lowerUp = if (toDigit % 5 > fromDigit % 5) toDigit % 5 - fromDigit % 5 else 0,
+                lowerDown = if (toDigit % 5 < fromDigit % 5) fromDigit % 5 - toDigit % 5 else 0,
+                lowerOldValue = if (fromDigit >= 5) fromDigit % 5 else fromDigit
+            )
+
+            result.add(RodMovement(rodIndex = i,movement = movement))
+        }
+
+        return result
+    }
+
     fun generateExamPaperNew(examLevel : String,list : ArrayList<String>) : List<BeginnerExamPaper>{
         var totalQuestion = 10
         val paperList : ArrayList<BeginnerExamPaper> = arrayListOf()

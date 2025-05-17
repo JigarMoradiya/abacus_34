@@ -31,3 +31,16 @@ data class ExerciseLevelDetail(val id : String,val totalQue : Int,val queLines :
 data class ExerciseList(val question : String, val answer : String, var userAnswer : String? = null)
 data class CustomChallengeData(val questions : MutableList<CustomChallengeQuestion>, val fullQuestion : String,val answer : Int)
 data class CustomChallengeQuestion(val sign : String, val question : Int)
+
+data class Movement(
+    val upperUp: Boolean = false,
+    val upperDown: Boolean = false,
+    val lowerUp: Int = 0,    // number of lower beads moved up
+    val lowerDown: Int = 0,   // number of lower beads moved down
+    val lowerOldValue: Int = 0   // number of lower beads existing value
+)
+
+data class RodMovement(
+    val rodIndex: Int,
+    val movement: Movement
+)

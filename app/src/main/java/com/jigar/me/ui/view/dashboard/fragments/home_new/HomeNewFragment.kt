@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,8 +25,9 @@ import com.google.gson.reflect.TypeToken
 import com.jigar.me.BuildConfig
 import com.jigar.me.MyApplication
 import com.jigar.me.R
-import com.jigar.me.data.local.data.*
-import com.jigar.me.data.model.data.DiscountData
+import com.jigar.me.data.local.data.DataProvider
+import com.jigar.me.data.local.data.HomeBanner
+import com.jigar.me.data.local.data.HomeMenuIntroType
 import com.jigar.me.data.model.data.GooglePurchasedPlanRequest
 import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
@@ -42,7 +42,6 @@ import com.jigar.me.ui.view.base.inapp.BillingRepository
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.OtherApplicationBottomSheet
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.SelectAvatarProfileDialog
-import com.jigar.me.ui.view.confirm_alerts.dialogs.OfferDialog
 import com.jigar.me.ui.view.confirm_alerts.dialogs.PurchaseByReviewDialog
 import com.jigar.me.ui.view.confirm_alerts.dialogs.SelectThemeDialog
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
@@ -50,8 +49,8 @@ import com.jigar.me.ui.view.dashboard.fragments.home.BannerPagerAdapter
 import com.jigar.me.ui.view.dashboard.fragments.home.CurrentPlanPagerAdapter
 import com.jigar.me.ui.view.other.ContactUsActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
-import com.jigar.me.ui.viewmodel.SubscriptionsViewModel
 import com.jigar.me.ui.viewmodel.StudentViewModel
+import com.jigar.me.ui.viewmodel.SubscriptionsViewModel
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
@@ -63,14 +62,14 @@ import com.jigar.me.utils.extensions.openURL
 import com.jigar.me.utils.extensions.openYoutube
 import com.jigar.me.utils.extensions.shareIntent
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import me.samlss.lighter.IntroProvider
 import me.samlss.lighter.Lighter
 import me.samlss.lighter.parameter.Direction
-import java.util.*
+import java.util.Calendar
+import java.util.Timer
+import java.util.TimerTask
 import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint

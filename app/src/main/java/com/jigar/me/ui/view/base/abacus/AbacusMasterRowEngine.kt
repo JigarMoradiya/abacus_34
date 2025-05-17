@@ -7,12 +7,10 @@ import android.graphics.drawable.Drawable
 import android.text.TextUtils
 import android.util.Log
 import androidx.core.content.ContextCompat
-import com.jigar.me.R
 import com.jigar.me.data.local.data.AbacusBeadType
 import com.jigar.me.data.local.data.AbacusContent
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
-import java.util.*
 
 class AbacusMasterRowEngine(
     private val context: Context,
@@ -190,7 +188,6 @@ class AbacusMasterRowEngine(
             value
         }
     }
-
     fun draw(canvas: Canvas?, abacusContent: AbacusContent) {
         val rowSpacing = abacusContent.beadSpace
         val road = roadDrawable!!
@@ -201,11 +198,12 @@ class AbacusMasterRowEngine(
         }else{
             2.5f
         }
+
         val startX = position.x + beadWidth / 2 - (rowThickness.toFloat() / divideThickness).toInt()
         val endX = position.x + beadWidth / 2 + (rowThickness.toFloat() / divideThickness).toInt()
+
         road.setBounds(startX,position.y,endX,position.y + height + extraHeight)
         road.draw(canvas!!)
-
 
         var drawablePos = 0
         val listAbacus = ArrayList<String>()

@@ -223,7 +223,6 @@ object CommonUtils {
                 || it.sku == PRODUCT_ID_Subscription_Month3
                 || it.sku == PRODUCT_ID_Subscription_Year1
         }.also {
-            Log.e("jigarLogss","checkPurchaseForAllLevel = "+Gson().toJson(it))
             return it == null
         }
     }
