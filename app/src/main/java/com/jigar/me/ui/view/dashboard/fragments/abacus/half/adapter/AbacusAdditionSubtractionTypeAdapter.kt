@@ -30,6 +30,7 @@ class AbacusAdditionSubtractionTypeAdapter(
     private var currentStep = 0
 
     fun setData(listData: List<HashMap<String, String>>,isStepByStep : Boolean) {
+        currentStep = 0
         this.abacusItems.clear()
         this.abacusItems.addAll(listData)
         this.isStepByStep = isStepByStep

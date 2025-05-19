@@ -45,7 +45,7 @@ class PageFragment : BaseFragment(), CategoryPageListAdapter.OnItemClickListener
         initObserver()
     }
 
-    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
+    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
         if (root == null){
             binding = FragmentPageBinding.inflate(inflater, container, false)
             root = binding.root
@@ -53,7 +53,7 @@ class PageFragment : BaseFragment(), CategoryPageListAdapter.OnItemClickListener
             initViews()
             initListener()
         }
-        return root!!
+        return root
     }
     private fun setNavigationGraph() {
         mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)

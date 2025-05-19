@@ -3,13 +3,18 @@ package com.jigar.me.ui.view.dashboard.fragments.abacus.half
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.jigar.me.R
 import com.jigar.me.data.local.data.AbacusBeadType
 import com.jigar.me.data.local.data.AbacusContent
+import com.jigar.me.data.local.data.ExamProvider
+import com.jigar.me.databinding.ContentAbacusDirectionsBinding
 import com.jigar.me.databinding.FragmentAbacusSubKidBinding
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.base.abacus.AbacusMasterBeadShiftListener
@@ -17,16 +22,21 @@ import com.jigar.me.ui.view.base.abacus.AbacusMasterCompleteListener
 import com.jigar.me.ui.view.base.abacus.AbacusMasterView
 import com.jigar.me.ui.view.base.abacus.OnAbacusValueChangeListener
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.Constants
 import com.jigar.me.utils.extensions.dp
 import com.jigar.me.utils.extensions.hide
+import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.setAbacusResetShakeAnimation
 import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     private lateinit var binding: FragmentAbacusSubKidBinding
+    private var root : View? = null
     private lateinit var themeContent : AbacusContent
     // Settings Constants
     private var isDisplayAbacusNumber = true
@@ -41,8 +51,10 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     private var isResetRemain: Boolean = false
     private var currentSumVal = 0L
     private var resetX: Float = 0f
+    var fromValue = 0
     var questionLength = 0
     var finalAnsLength: Int = 0
+    var firstQuestionForDirection: String = ""
 
     // for division
     private var topSelectedPositions: ArrayList<Int> = arrayListOf()
@@ -50,20 +62,26 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
 
     private var onAbacusValueChangeListener: OnAbacusValueChangeListener? = null
 
-    fun newInstance(column: Int, noOfDecimalPlace: Int, abacus_type: Int, themeContent : AbacusContent, isShowSubmitAnswer : Boolean? = false): HalfAbacusSubFragment {
+    fun newInstance(column: Int, noOfDecimalPlace: Int, abacus_type: Int, themeContent : AbacusContent, isShowSubmitAnswer : Boolean? = false, firstQuestionForDirection : String = "0", topPositions : ArrayList<Int> = arrayListOf(), bottomPositions : ArrayList<Int> = arrayListOf()): HalfAbacusSubFragment {
         val fragment = HalfAbacusSubFragment()
         fragment.themeContent = themeContent
+        fragment.firstQuestionForDirection = firstQuestionForDirection
         fragment.abacusTotalColumns = column
         fragment.noOfDecimalPlace = noOfDecimalPlace
         fragment.abacus_type = abacus_type
         fragment.isShowSubmitAnswer = isShowSubmitAnswer?:false
+        fragment.topSelectedPositions = topPositions
+        fragment.bottomSelectedPositions = bottomPositions
         return fragment
     }
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = FragmentAbacusSubKidBinding.inflate(inflater, container, false)
-        initViews()
-        initListener()
-        return binding.root
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        if (root == null){
+            binding = FragmentAbacusSubKidBinding.inflate(inflater, container, false)
+            root = binding.root
+            initViews()
+            initListener()
+        }
+        return root
     }
 
     private fun initViews() = with(binding){
@@ -96,6 +114,8 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
             ivRight.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             ivLeft.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
         }
+
+        setBead()
     }
 
     private fun initListener() = with(binding){
@@ -109,15 +129,9 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     }
 
     // TODO abacus Move logic
-    override fun onResume() {
-        if (isAdded) {
-            setBead()
-        }
-        if (abacus_type == 2) {
-            setSelectedPositions(topSelectedPositions, bottomSelectedPositions, null)
-        }
-        super.onResume()
-    }
+//    override fun onResume() {
+//        super.onResume()
+//    }
 
     override fun onStop() {
         super.onStop()
@@ -132,43 +146,22 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
         binding.abacusTop.onBeadShiftListener = this
         binding.abacusBottom.onBeadShiftListener = this
 
-//        addDirection(fromValue,toValue)
+        lifecycleScope.launch {
+            delay(Constants.DELAY_DIRECTION)
+            try {
+                fromValue = 0
+                if (firstQuestionForDirection.toInt() > 0){
+                    addDirection(firstQuestionForDirection.toInt())
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+
+        if (abacus_type == 2) { // only for division
+            setSelectedPositions(topSelectedPositions, bottomSelectedPositions)
+        }
     }
-    // for draw direction
-//    var fromValue: Int = 1
-//    var toValue: Int = 3
-//    private fun addDirection(fromValue: Int, toValue: Int) {
-//        var rods = fromValue.toString().length
-//        if (toValue.toString().length > rods){
-//            rods = toValue.toString().length
-//        }
-//
-//        val rodMovement = calculateRodMovements(from = fromValue, to = toValue, rods = rods)
-//        Log.e("jigarLogs","moves 1 = "+ Gson().toJson(rodMovement))
-//        val extraHeight = resources.getDimension(R.dimen.height_extra).toInt()
-//        val beamHeight = resources.getDimension(R.dimen.four).toInt()
-//        val topBeadsHeight = themeContent.beadHeight * 2
-//        val topTotalHeightAlways = extraHeight + beamHeight + topBeadsHeight
-//        rodMovement.map { rodData ->
-//            val directionBinding = ContentAbacusDirectionsBinding.inflate(layoutInflater, null, false)
-//            with(directionBinding){
-//                conDirection.show()
-//                val paramsView1 = directionBinding.viewDirection.layoutParams as ConstraintLayout.LayoutParams
-//                paramsView1.width = (themeContent.beadWidth * 6) + (themeContent.beadSpace * 6) + (themeContent.beadWidth * 0.75).toInt() +(themeContent.beadWidth * rodData.rodIndex) + (themeContent.beadSpace / 2)
-//                if (rodData.movement.lowerUp > 0){
-//                    linearDirectionBottom.show()
-//                    imgUpArrowBottom.show()
-//
-//                    val heightOldBeads = rodData.movement.lowerOldValue * themeContent.beadHeight
-//                    val bottomRemainBeadHeight = ((4 - rodData.movement.lowerUp) * themeContent.beadHeight)+extraHeight - heightOldBeads
-//                    linearDirectionBottom.setPadding(0,topTotalHeightAlways + heightOldBeads,0,bottomRemainBeadHeight)
-//                }
-//            }
-//            binding.relDirection.addView(directionBinding.root)
-//            binding.relDirection.show()
-//        }
-//
-//    }
 
     override fun onBeadShift(abacusView: AbacusMasterView, rowValue: IntArray) {
         val singleBeadWeight = abacusView.singleBeadValue
@@ -217,30 +210,6 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
                     }
                 }
             }
-//            if (abacus_type == 2) {
-//                /*common code to calculate sumvalue*/
-//                var currentAns: String = currentSumVal.toString()
-//                val iterationCount = questionLength + finalAnsLength - 1 - currentAns.length
-//                for (i in 0 until iterationCount) {
-//                    currentAns = "0$currentAns"
-//                }
-//                if (questionLength + finalAnsLength - 1 <= currentAns.length) {
-//                    try {
-//                        val right = Integer.valueOf(
-//                            currentAns.substring(
-//                                currentAns.length - questionLength,
-//                                currentAns.length
-//                            )
-//                        )
-//                        val left = Integer.valueOf(currentAns.substring(0, finalAnsLength))
-//                        setCurrentValue("$left < $right")
-//                    } catch (e: Exception) {
-//                    }
-//                } else {
-//                    setCurrentValue(currentSumVal.toString())
-//                }
-//                onAbacusValueChangeListener?.onAbacusValueChange(abacusView, currentSumVal)
-//            }
         } else {
             when (abacusView.id) {
                 R.id.abacusTop -> if (binding.abacusBottom.engine != null) {
@@ -321,6 +290,7 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
         binding.abacusTop.reset()
         binding.abacusBottom.reset()
         showResetToContinue(false)
+        hideDirection()
     }
 
     fun resetButtonEnable(isEnable: Boolean) {
@@ -348,6 +318,8 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
 
     private fun onResetClick() {
         if (!isResetRunning) {
+            fromValue = 0
+            binding.tvCurrentVal.text = "0"
             binding.ivReset.setAbacusResetShakeAnimation(true)
             onAbacusValueChangeListener?.onAbacusValueDotReset()
         }
@@ -362,7 +334,7 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     fun setSelectedPositions(
         topSelectedPositions: ArrayList<Int>,
         bottomSelectedPositions: ArrayList<Int>,
-        setPositionCompleteListener: AbacusMasterCompleteListener?
+        setPositionCompleteListener: AbacusMasterCompleteListener? = null
     ) {
         this.topSelectedPositions = topSelectedPositions
         this.bottomSelectedPositions = bottomSelectedPositions
@@ -370,14 +342,8 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
         if (isAdded) {
             //app was crashing if position set before update no of row count. so added this delay.
             binding.abacusBottom.post {
-                binding.abacusTop.setSelectedPositions(
-                    topSelectedPositions,
-                    setPositionCompleteListener
-                )
-                binding.abacusBottom.setSelectedPositions(
-                    bottomSelectedPositions,
-                    setPositionCompleteListener
-                )
+                binding.abacusTop.setSelectedPositions(topSelectedPositions,setPositionCompleteListener)
+                binding.abacusBottom.setSelectedPositions(bottomSelectedPositions,setPositionCompleteListener)
             }
         }
     }
@@ -415,7 +381,8 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
                     val answers = newValue.replace(".","").take(7).trimStart('0')
 //                    val answer = newValue.take(7)
 //                    val reminders = newValue.takeLast(7).take(questionLength)
-                    binding.tvCurrentVal.text = (if (answers.isNullOrEmpty()){"0"}else{answers})+" < "+(if (remainQuestion.isNullOrEmpty()){"0"}else{remainQuestion})
+                    fromValue = if (answers.isEmpty()){0}else{answers.toInt()}
+                    binding.tvCurrentVal.text = (if (answers.isEmpty()){"0"}else{answers})+" < "+(if (remainQuestion.isNullOrEmpty()){"0"}else{remainQuestion})
                 }else{
                     val sb = StringBuilder(newValue)
                     sb.insert(7, ".")
@@ -424,6 +391,7 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
                     if (splitResult.size == 2) {
                         val value1 = splitResult[0].toLong()
                         val value2 = splitResult[1]
+                        fromValue = value1.toInt()
                         if (value2.toLong() > 0) {
                             binding.tvCurrentVal.text = "$value1.$value2"
                         } else {
@@ -438,4 +406,84 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
             }
         }
     }
+
+    // for draw direction
+    fun addDirection(toValue: Int) {
+        if (::binding.isInitialized){
+
+            binding.viewDirection.removeAllViews()
+            var rods = fromValue.toString().length
+            if (toValue.toString().length > rods){
+                rods = toValue.toString().length
+            }
+
+            if (fromValue != toValue){
+                val rodMovement = ExamProvider.calculateRodMovements(requireContext(),from = fromValue, to = toValue, rods = rods)
+                if (rodMovement.isNotNullOrEmpty()){
+                    val extraHeight = resources.getDimension(R.dimen.height_extra).toInt()
+                    val beamHeight = resources.getDimension(R.dimen.four).toInt()
+                    val topBeadsHeight = themeContent.beadHeight * 2
+                    val topTotalHeightAlways = extraHeight + beamHeight + topBeadsHeight
+
+                    val bottomBeadsHeight = themeContent.beadHeight * 5
+                    val bottomTotalHeightAlways = extraHeight + beamHeight + bottomBeadsHeight
+                    val decimalBeadsWidth = (themeContent.beadWidth * 6) + (themeContent.beadSpace * 6) + (themeContent.beadWidth * 0.75).toInt()
+
+                    rodMovement.map { rodData ->
+                        if (rodData.movement.lowerUp > 0 || rodData.movement.lowerDown > 0 || rodData.movement.upperDown || rodData.movement.upperUp){
+                            val directionBinding = ContentAbacusDirectionsBinding.inflate(layoutInflater, null, false)
+                            with(directionBinding){
+                                val rightSpace = decimalBeadsWidth + (themeContent.beadWidth * rodData.rodIndex) + (themeContent.beadSpace / 2) + (rodData.rodIndex * themeContent.beadSpace)
+                                val layoutParams = FrameLayout.LayoutParams(
+                                    ViewGroup.LayoutParams.MATCH_PARENT,
+                                    ViewGroup.LayoutParams.MATCH_PARENT)
+                                layoutParams.marginEnd = rightSpace
+                                directionBinding.conDirection.layoutParams = layoutParams
+
+                                if (rodData.movement.lowerUp > 0){
+                                    linearDirectionBottom.show()
+                                    imgUpArrowBottom.show()
+                                    val heightOldBeads = rodData.movement.lowerOldValue * themeContent.beadHeight
+                                    val bottomRemainBeadHeight = ((4 - rodData.movement.lowerUp) * themeContent.beadHeight)+extraHeight - heightOldBeads
+                                    linearDirectionBottom.setPadding(0,topTotalHeightAlways + heightOldBeads,0,bottomRemainBeadHeight)
+                                }else if (rodData.movement.lowerDown > 0){
+                                    linearDirectionBottom.show()
+                                    imgDownArrowBottom.show()
+                                    val heightOldBeads = (rodData.movement.lowerOldValue - rodData.movement.lowerDown) * themeContent.beadHeight
+                                    val bottomRemainBeadHeight = if (rodData.movement.lowerOldValue == 4) { extraHeight }else{ extraHeight + ((4 - rodData.movement.lowerOldValue) * themeContent.beadHeight)}
+                                    linearDirectionBottom.setPadding(0,topTotalHeightAlways + heightOldBeads,0,bottomRemainBeadHeight)
+                                }
+                                if (rodData.movement.upperDown){
+                                    linearDirectionTop.show()
+                                    imgDownArrowTop.show()
+                                    linearDirectionTop.setPadding(0,extraHeight,0,bottomTotalHeightAlways)
+                                }else if (rodData.movement.upperUp){
+                                    linearDirectionTop.show()
+                                    imgUpArrowTop.show()
+                                    linearDirectionTop.setPadding(0,extraHeight,0,bottomTotalHeightAlways)
+                                }
+                            }
+                            binding.viewDirection.addView(directionBinding.root)
+                        }
+                    }
+                    if ((binding.viewDirection.childCount?:0) > 0){
+                        binding.viewDirection.show()
+                    }else{
+                        hideDirection()
+                    }
+                }else{
+                    hideDirection()
+                }
+            }else{
+                hideDirection()
+            }
+        }
+    }
+
+    fun hideDirection() {
+        if (::binding.isInitialized){
+            binding.viewDirection.hide()
+        }
+    }
+
 }

@@ -366,25 +366,12 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
             lifecycleScope.launch {
                 delay(500)
                 if (isPurchased && isHintSound) {
-
-//                    speakOut(String.format(resources.getString(R.string.speech_set), " ${requireContext().convert(number)}"))
                     speakOut(String.format(resources.getString(R.string.speech_set), " ${number}"))
                 }
             }
-//            val answer = java.lang.Double.valueOf(number.toString() + "")
             val noOfDecimalPlace = 0
-//            var column = 3
             val column = prefManager.getCustomParamInt(AppConstants.Settings.AbacusMaxColumn,13)
 
-//            if (answer == answer.toLong().toDouble()) {
-//                val ans = answer.toLong().toString() + ""
-//                column = if (ans.length < 3) 3 else ans.length
-//                noOfDecimalPlace = 0
-//            } else {
-//                val ans = answer.toString()
-//                noOfDecimalPlace = ans.length - ans.indexOf(".") - 1
-//                column = ans.length - 1
-//            }
             binding.tvAnsNumber.text = number.toString()
             binding.tvAnsNumberWord.text = requireContext().convert(number.toInt())
 
@@ -419,8 +406,6 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                 lifecycleScope.launch {
                     delay(500)
                     if (isPurchased && isHintSound) {
-//                        val q1 = " ${requireContext().convert((list_abacus_main[0][Constants.Que]?:"0").toInt())}"
-//                        val q2 = " ${requireContext().convert((list_abacus_main[1][Constants.Que]?:"0").toInt())}"
                         val q1 = " ${(list_abacus_main[0][Constants.Que]?:"0")}"
                         val q2 = " ${(list_abacus_main[1][Constants.Que]?:"0")}"
                         speakOut(String.format(getString(R.string.speak_divide_by),q1,q2))
@@ -544,7 +529,6 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                         speakOut(String.format(getString(R.string.speak_multiply_by),q1,q2))
                     }
                 }
-//                val answer = java.lang.Double.valueOf(list_abacus_main[0][Constants.Que]) * java.lang.Double.valueOf(list_abacus_main[1][Constants.Que])
                 val noOfDecimalPlace = 0
                 val column = prefManager.getCustomParamInt(AppConstants.Settings.AbacusMaxColumn,13)
                 binding.cardAbacusQue.show()
@@ -664,7 +648,6 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                 val finalDatatemp: AdditionSubtractionAbacus = datatemp
                 lifecycleScope.launch {
                     delay(700)
-//                    speakOut(String.format(resources.getString(R.string.speech_set), " ${requireContext().convert(finalDatatemp.q0.toInt())}"))
                     speakOut(String.format(resources.getString(R.string.speech_set), " ${finalDatatemp.q0.toInt()}"))
                 }
             }
@@ -739,9 +722,7 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                 abacus_type = 0
             }
 
-//            val answer = java.lang.Double.valueOf(datatemp.ans)
-            val answer = datatemp.getAnswer().toDouble()
-            var noOfDecimalPlace = 0
+            val noOfDecimalPlace = 0
             var column = 3
             if (abacus_type == 0) {
                 binding.recyclerview.adapter = adapterAdditionSubtraction
@@ -751,12 +732,6 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
             list_abacus_main.addAll(list_abacus_main_temp)
             binding.cardAbacusQue.show()
             adapterAdditionSubtraction.setData(list_abacus_main, isStepByStep)
-//            if (column > new_column) {
-//                new_column = column
-//            }
-//            if (new_column <= 2) {
-//                new_column = 3
-//            }
             replaceAbacusFragment(column, noOfDecimalPlace)
         }
     }
@@ -968,7 +943,6 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
     }
 
     override fun onAbacusValueChange(abacusView: View, sum1: Long) {
-        Log.e("jigarLogs","onAbacusValueChange = "+sum1)
         if (isMoveNext) {
             goToNextAbacus()
             return
@@ -1021,10 +995,8 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                     }
                 }
             } else if (abacus_type == 1) {
-                Log.e("jigarLogs","adapterMultiplication sum = "+sum)
                 if (adapterMultiplication.getCurrentSumVal() != null) {
                     val sumVal: Long = adapterMultiplication.getCurrentSumVal()!!.toLong()
-                    Log.e("jigarLogs","adapterMultiplication sumVal = "+sumVal)
                     if (isStepByStep) {
                         if (sum == (sumVal.toInt()).toString()) {
                             adapterMultiplication.goToNextStep()
@@ -1046,22 +1018,14 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                     }
                 }
             } else if (abacus_type == 2) {
-//                Log.e("jigarLogsDivision","onAbacusValueChange division newValue = "+newValue)
                 var remainQuestion = newValue.replace(".","").takeLast(6).trimStart('0')
                 if (remainQuestion.isEmpty()){
                     remainQuestion = "0"
                 }
                 val answers = newValue.replace(".","").take(7).trimStart('0')
-//                Log.e("jigarLogsDivision","onAbacusValueChange division remainQuestion = "+remainQuestion)
-//                Log.e("jigarLogsDivision","onAbacusValueChange division answers = "+answers)
                 if (adapterDivision.getCurrentSumVal() != null) {
-//                    Log.e("jigarLogsDivision","onAbacusValueChange division getCurrentSumVal == "+adapterDivision.getCurrentSumVal())
-//                    Log.e("jigarLogsDivision","onAbacusValueChange division getNextDivider == "+adapterDivision.getNextDivider())
-//                    Log.e("jigarLogsDivision","onAbacusValueChange division getFinalSumVal == "+adapterDivision.getFinalSumVal()!!.toLong())
-//                    Log.e("jigarLogsDivision","onAbacusValueChange division isLastStep == "+adapterDivision.isLastStep())
                     if (isStepByStep) {
                         if (adapterDivision.getCurrentSumVal().toString() == answers && adapterDivision.getNextDivider().toString() == remainQuestion){
-//                            Log.e("jigarLogsDivision","onAbacusValueChange goToNextStep")
                             adapterDivision.goToNextStep()
                             setTableDataAndVisiblilty()
                         }

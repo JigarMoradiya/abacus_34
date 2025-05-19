@@ -256,7 +256,6 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
             }
             if (selectedPositions != null){
                 selectedPositions?.let{
-                    Log.e("jigarDirection","surfaceChanged AbacusMasterEngine")
                     engine = AbacusMasterEngine(
                         it, noOfColumn, noOfBeads, singleBeadValue,
                         context, roadDrawable,unitRoadDrawable,unitRodColumnPosition,noOfColumnUsed, beadDrawables, isBeadStackFromBottom,
@@ -528,8 +527,9 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
     }
 
     fun reset() {
+        Log.e("jigarDivisionSound","reset reset")
         if (defaultState != null) {
-            if (isSoundEnabled) {
+            if (isSoundEnabled && isBeadStackFromBottom) {
                 playResetSound(context)
             }
             thread?.setSleep(false)
