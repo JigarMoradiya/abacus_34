@@ -43,7 +43,8 @@ interface AbacusAllDataDao {
     suspend fun getSetDetail(setId : String): Set?
     @Query("SELECT * FROM '${AppConstants.DBParam.table_set_progress}' WHERE set_id = :setId ORDER BY retry_count DESC LIMIT 1")
     suspend fun getSetProgress(setId : String): SetProgress?
-    @Query("SELECT s.*,(select exists (select is_set_completed from '${AppConstants.DBParam.table_set_progress}' where set_id = s.id AND is_set_completed = 1)) as is_completed_set,(select exists (select is_set_completed from '${AppConstants.DBParam.table_set_progress}' where set_id = s.id AND is_set_completed = 0)) as is_running_set,(select COUNT(*) from '${AppConstants.DBParam.table_abacus}' where set_id = s.id) as totals_abacus FROM '${AppConstants.DBParam.table_sets}' as s WHERE s.is_active = 1 ORDER BY sort_order ASC")
+//    @Query("SELECT s.*,(select exists (select is_set_completed from '${AppConstants.DBParam.table_set_progress}' where set_id = s.id AND is_set_completed = 1)) as is_completed_set,(select exists (select is_set_completed from '${AppConstants.DBParam.table_set_progress}' where set_id = s.id AND is_set_completed = 0)) as is_running_set,(select COUNT(*) from '${AppConstants.DBParam.table_abacus}' where set_id = s.id) as totals_abacus FROM '${AppConstants.DBParam.table_sets}' as s WHERE s.is_active = 1 ORDER BY sort_order ASC")
+    @Query("SELECT s.*,(select exists (select is_set_completed from '${AppConstants.DBParam.table_set_progress}' where set_id = s.id AND is_set_completed = 1)) as is_completed_set,(select exists (select is_set_completed from '${AppConstants.DBParam.table_set_progress}' where set_id = s.id AND is_set_completed = 0)) as is_running_set FROM '${AppConstants.DBParam.table_sets}' as s WHERE s.is_active = 1 ORDER BY sort_order ASC")
     suspend fun getAllSet(): List<Set>
     @Query("SELECT * FROM '${AppConstants.DBParam.table_abacus}' WHERE set_id = :id ORDER BY created_at ASC")
     suspend fun getAbacus(id : String): List<Abacus>

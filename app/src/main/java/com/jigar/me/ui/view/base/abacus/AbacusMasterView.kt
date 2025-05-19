@@ -91,7 +91,7 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
             while (!isStopDrawing && !isInterrupted) {
                 if (isSleep) {
                     try {
-                        sleep(50)
+                        sleep(100)
                     } catch (e: InterruptedException) {
                         e.printStackTrace()
                     }
@@ -527,7 +527,6 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
     }
 
     fun reset() {
-        Log.e("jigarDivisionSound","reset reset")
         if (defaultState != null) {
             if (isSoundEnabled && isBeadStackFromBottom) {
                 playResetSound(context)

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -200,6 +201,8 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 }
                 is Resource.Failure -> {
                 }
+
+                else -> {}
             }
         }
         studentViewModel.handleExistingPurchaseResponse.observe(this) {
@@ -235,6 +238,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                         onFailure(it.errorBody)
                     }
                 }
+                else -> {}
             }
         }
         studentViewModel.appReviewsListResponse.observe(this) {
@@ -254,6 +258,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 is Resource.Failure -> {
 
                 }
+                else -> {}
             }
         }
         studentViewModel.changePlanResponse.observe(this) {
@@ -275,6 +280,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                     hideLoading()
                     onFailure(it.errorBody)
                 }
+                else -> {}
             }
         }
     }
@@ -633,15 +639,6 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 requireContext().shareIntent()
             }
         }
-    }
-
-    private fun goToPages(clickType: Int,type: String) {
-        val action =
-            HomeNewFragmentDirections.actionHomeFragmentToPageFragment(
-                clickType,
-                type
-            )
-        mNavController?.navigate(action)
     }
 
     override fun onPause() {

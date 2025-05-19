@@ -28,29 +28,25 @@ class SetsAdapter(
         val data: Set = listData[position]
         val context = txtTitle.context
         dataModel = data
-//        if (data.totals_abacus > 0){
-            when (data.answer_setting) {
-                AppConstants.apiParams.answerSettingStepByStep -> {
-                    conMain.setBackgroundColor(ContextCompat.getColor(context, R.color.step_by_step_answer_light))
-                }
-                AppConstants.apiParams.answerFinalAnswer -> {
-                    conMain.setBackgroundColor(ContextCompat.getColor(context, R.color.final_answer_light))
-                }
-                AppConstants.apiParams.answerFormalAnswer -> {
-                    conMain.setBackgroundColor(ContextCompat.getColor(context, R.color.formal_exam_light))
-                }
-                else -> {
-                    conMain.setBackgroundColor(ContextCompat.getColor(context, R.color.grey_100))
-                }
+        when (data.answer_setting) {
+            AppConstants.apiParams.answerSettingStepByStep -> {
+                conMain.setBackgroundColor(ContextCompat.getColor(context, R.color.step_by_step_answer_light))
             }
-//        }else{
-//            conMain.setBackgroundColor(ContextCompat.getColor(context, R.color.red_400))
-//        }
-        if (data.totals_abacus > 0){
-            conMain.alpha = 1f
-        }else{
-            conMain.alpha = 0.4f
+            AppConstants.apiParams.answerFinalAnswer -> {
+                conMain.setBackgroundColor(ContextCompat.getColor(context, R.color.final_answer_light))
+            }
+            AppConstants.apiParams.answerFormalAnswer -> {
+                conMain.setBackgroundColor(ContextCompat.getColor(context, R.color.formal_exam_light))
+            }
+            else -> {
+                conMain.setBackgroundColor(ContextCompat.getColor(context, R.color.grey_100))
+            }
         }
+//        if (data.totals_abacus > 0){
+//            conMain.alpha = 1f
+//        }else{
+//            conMain.alpha = 0.4f
+//        }
         if (data.is_completed_set){
             imgCompletedIndicator.show()
         }else{

@@ -229,12 +229,22 @@ class AbacusMasterRowEngine(
             }
 
             val beadDrawable: Drawable? = if (isBeadStackFromBottom) {
-                val temp = beads[i] + 2
-                if (tempvalue > temp && tempvalue != -1) {
-                    beadDrawables_eyes_smaile[drawablePos]!!
-                } else {
-                    beadDrawables_eyes[drawablePos]!!
+                if (i ==0){
+                    val temp = beads[i]
+                    if (temp > 0) {
+                        beadDrawables_eyes[drawablePos]!!
+                    } else {
+                        beadDrawables_eyes_smaile[drawablePos]!!
+                    }
+                }else{
+                    val temp = beads[i] + 2
+                    if (tempvalue > temp && tempvalue != -1) {
+                        beadDrawables_eyes_smaile[drawablePos]!!
+                    } else {
+                        beadDrawables_eyes[drawablePos]!!
+                    }
                 }
+
             } else {
                 if (isColumnUsed){
                     if (beads[i] > 0) {
@@ -246,31 +256,11 @@ class AbacusMasterRowEngine(
                     ContextCompat.getDrawable(context,abacusContent.unUsedBeads)!!
                 }
             }
-//            var isBeadSelected = false
-//            if (tempBeads != null && tempBeads!!.size > i && tempBeads!![i] != beads[i] && selectedBeadDrawable != null) {
-//                /*bead is selected*/
-//                when {
-//                    !theme.equals(AppConstants.Settings.theam_shape, ignoreCase = true) -> {
-////                        beadDrawable = selectedBeadDrawable
-//                    }
-//                }
-//                isBeadSelected = true
-//            }
-//            if (isBeadSelected) {
-//                beadDrawable?.setBounds(
-//                    position.x + rowSpacing / 2,
-//                    position.y + beads[i] + if (!isBeadStackFromBottom) extraHeight else 0,
-//                    position.x + beadWidth - rowSpacing / 2,
-//                    position.y + beads[i] + beadHeight + if (!isBeadStackFromBottom) extraHeight else 0
-//                )
-//                canvas.let { beadDrawable?.draw(it) }
-//            }
-
             beadDrawable?.setBounds(
                 position.x + rowSpacing / 2,
                 position.y + beads[i] + if (!isBeadStackFromBottom) extraHeight else 0,
                 position.x + beadWidth - rowSpacing / 2,
-                position.y + beads[i] + beadHeight + if (!isBeadStackFromBottom) extraHeight else 0
+                position.y + beads[i] + 2 + beadHeight + if (!isBeadStackFromBottom) extraHeight else 0
             )
             canvas.let { beadDrawable?.draw(it) }
 

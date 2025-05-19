@@ -2,6 +2,7 @@ package com.jigar.me.ui.view.dashboard.fragments.abacus
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,7 +65,6 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
     private var currentSumVal = 0L
     private var isTourPageRunning = false
     private var isResetRunning = false
-    private var isPurchased = false
     private var is1stTime = false
     private var theme = AppConstants.Settings.theam_Default
     private lateinit var mNavController: NavController
@@ -214,18 +214,12 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
 
     private fun switchRandomClick() {
         with(prefManager){
-            if (isPurchased) {
-                if (getCustomParam(AppConstants.Settings.SW_Random,"") == "Y") {
-                    setCustomParam(AppConstants.Settings.SW_Random,"N")
-                } else {
-                    setCustomParam(AppConstants.Settings.SW_Random,"Y")
-                }
-                setSwitchs()
-            } else {
+            if (getCustomParam(AppConstants.Settings.SW_Random,"") == "Y") {
                 setCustomParam(AppConstants.Settings.SW_Random,"N")
-                setSwitchs()
-                notPurchaseDialog()
+            } else {
+                setCustomParam(AppConstants.Settings.SW_Random,"Y")
             }
+            setSwitchs()
         }
 
     }
@@ -242,20 +236,10 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
     }
 
     private fun setAbacus() {
+        Log.e("jigarLogs","welcome setAbacus")
         with(prefManager){
-            isPurchased = (getCustomParam(AppConstants.Purchase.Purchase_All,"") == "Y"
-                    || getCustomParam(AppConstants.Purchase.Purchase_Toddler_Single_digit_level1,"") == "Y")
-            if (isPurchased){
-                setCustomParam(AppConstants.Settings.TheamTempView,getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default))
-            }else{
-                if (getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default).contains(AppConstants.Settings.theam_Default,true)){
-                    setCustomParam(AppConstants.Settings.TheamTempView,getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default))
-                }else{
-                    setCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
-                }
-            }
+            setCustomParam(AppConstants.Settings.TheamTempView,getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default))
             theme = getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
-
         }
 
         binding.linearAbacus.removeAllViews()
