@@ -583,10 +583,13 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             }else{
                 abacusBinding?.tvCurrentVal?.text.toString()
             }
-            lifecycleScope.launch {
-                delay(Constants.DELAY_DIRECTION)
-                addDirection(if (fromValue.isEmpty()) 0 else fromValue.toInt(),setValues.toInt())
+            if (prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_direction, true)){
+                lifecycleScope.launch {
+                    delay(Constants.DELAY_DIRECTION)
+                    addDirection(if (fromValue.isEmpty()) 0 else fromValue.toInt(),setValues.toInt())
+                }
             }
+
         } catch (e: Exception) {
             e.printStackTrace()
         }

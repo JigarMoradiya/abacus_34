@@ -50,6 +50,10 @@
             type="Boolean" />
 
         <variable
+            name="isShowBeadDirection"
+            type="Boolean" />
+
+        <variable
             name="isPurchased"
             type="Boolean" />
 
@@ -77,7 +81,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imgBack"
                 android:layout_width="@dimen/menu_icons"
-            android:layout_height="@dimen/menu_icons"
+                android:layout_height="@dimen/menu_icons"
                 android:padding="@dimen/menu_icons_padding"
                 app:srcCompat="@drawable/ic_back" />
         </com.google.android.material.card.MaterialCardView>
@@ -122,12 +126,12 @@
                     app:cardElevation="@dimen/card_elevation"
                     app:cardMaxElevation="@dimen/card_elevation"
                     app:cardUseCompatPadding="true"
-                    tools:visibility="gone"
                     app:layout_constraintEnd_toStartOf="@+id/linearAbacusPreview"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:strokeColor="@color/purple_700"
-                    app:strokeWidth="1dp">
+                    app:strokeWidth="1dp"
+                    tools:visibility="gone">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
@@ -171,7 +175,6 @@
                     android:layout_margin="@dimen/activity_padding4"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="@dimen/activity_padding8"
-                    tools:visibility="gone"
                     app:cardElevation="@dimen/card_elevation"
                     app:cardMaxElevation="@dimen/card_elevation"
                     app:cardUseCompatPadding="true"
@@ -179,7 +182,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cardFreeTheme"
                     app:strokeColor="@color/indigo_700"
-                    app:strokeWidth="1dp">
+                    app:strokeWidth="1dp"
+                    tools:visibility="gone">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
@@ -219,14 +223,14 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/linearAbacusPreview"
                     android:layout_width="172dp"
-                    tools:visibility="gone"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/activity_padding6"
                     android:gravity="center"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="@+id/cardPaidTheme"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/cardFreeTheme">
+                    app:layout_constraintTop_toTopOf="@+id/cardFreeTheme"
+                    tools:visibility="gone">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/linearAbacus"
@@ -284,11 +288,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/activity_padding8"
                             android:layout_toEndOf="@+id/imgVoiceSettings"
-                            app:fontFamily="@font/font_bold"
                             android:text="@string/change_voice_setting"
                             android:textColor="@color/colorListingHeading"
                             android:textSize="@dimen/textSizeMedium"
-                            android:textStyle="normal" />
+                            android:textStyle="normal"
+                            app:fontFamily="@font/font_bold" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/txtVoiceSettingDesc"
@@ -332,8 +336,8 @@
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:layout_width="match_parent"
-                            android:gravity="center_vertical"
                             android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
                             android:orientation="horizontal">
 
                             <androidx.appcompat.widget.AppCompatImageView
@@ -346,20 +350,20 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/activity_padding8"
-                                app:fontFamily="@font/font_bold"
                                 android:text="@string/background_music_volume"
                                 android:textColor="@color/colorListingHeading"
                                 android:textSize="@dimen/textSizeMedium"
-                                android:textStyle="normal" />
+                                android:textStyle="normal"
+                                app:fontFamily="@font/font_bold" />
 
 
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
                         <com.mohammedalaa.seekbar.RangeSeekBarView
                             android:id="@+id/rsBgMusic"
-                            android:layout_marginTop="@dimen/activity_padding4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/activity_padding4"
                             app:barHeight="10dp"
                             app:baseColor="@color/gray_light"
                             app:circleFillColor="@color/green_600"
@@ -499,43 +503,46 @@
                             android:background="@color/gray_dark70" />
 
                         <RelativeLayout
-                            android:id="@+id/relHideTable"
+                            android:id="@+id/relAbacusDirection"
                             android:layout_width="match_parent"
                             android:layout_height="36dp"
                             android:paddingStart="@dimen/activity_padding8"
                             android:paddingEnd="@dimen/activity_padding8">
 
                             <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/img_hide_table"
+                                android:id="@+id/imgAbacusDirection"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentStart="true"
                                 android:layout_centerVertical="true"
-                                app:srcCompat="@drawable/ic_hide_table"
+                                app:srcCompat="@drawable/ic_bead_direction"
                                 app:tint="@color/colorListingHeading" />
 
                             <com.google.android.material.textview.MaterialTextView
-                                android:layout_width="wrap_content"
+                                android:id="@+id/txtAbacusDirection"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="@dimen/activity_padding8"
-                                android:layout_toStartOf="@+id/sw_hide_table"
-                                android:layout_toEndOf="@+id/img_hide_table"
-                                android:fontFamily="@font/font_semibold"
+                                android:layout_toStartOf="@+id/swAbacusDirection"
+                                android:layout_toEndOf="@+id/imgAbacusDirection"
                                 android:gravity="center_vertical|left"
-                                android:text="@string/txt_setting_hide_table"
+                                android:text="@string/display_bead_direction"
                                 android:textColor="@color/colorListingHeading"
                                 android:textSize="@dimen/textSizeMedium"
-                                android:textStyle="normal" />
+                                android:textStyle="normal"
+                                app:fontFamily="@font/font_bold" />
+
 
                             <androidx.appcompat.widget.SwitchCompat
-                                android:id="@+id/sw_hide_table"
+                                android:id="@+id/swAbacusDirection"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
-                                android:checked="@{isHideTable}"
-                                android:theme="@style/SCBSwitch" />
+                                android:checked="@{isShowBeadDirection}"
+                                android:theme="@style/SCBSwitch"
+                                tools:ignore="MissingPrefix" />
 
                         </RelativeLayout>
 
@@ -612,6 +619,53 @@
                         android:orientation="vertical">
 
                         <RelativeLayout
+                            android:id="@+id/relHideTable"
+                            android:layout_width="match_parent"
+                            android:layout_height="36dp"
+                            android:paddingStart="@dimen/activity_padding8"
+                            android:paddingEnd="@dimen/activity_padding8">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/img_hide_table"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:padding="2dp"
+                                app:srcCompat="@drawable/ic_hide_table"
+                                app:tint="@color/colorListingHeading" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/activity_padding8"
+                                android:layout_toStartOf="@+id/sw_hide_table"
+                                android:layout_toEndOf="@+id/img_hide_table"
+                                android:fontFamily="@font/font_semibold"
+                                android:gravity="center_vertical|left"
+                                android:text="@string/txt_setting_hide_table"
+                                android:textColor="@color/colorListingHeading"
+                                android:textSize="@dimen/textSizeMedium"
+                                android:textStyle="normal" />
+
+                            <androidx.appcompat.widget.SwitchCompat
+                                android:id="@+id/sw_hide_table"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:checked="@{isHideTable}"
+                                android:theme="@style/SCBSwitch" />
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.2dp"
+                            android:background="@color/gray_dark70" />
+
+                        <RelativeLayout
                             android:id="@+id/relHintSound"
                             android:layout_width="match_parent"
                             android:layout_height="36dp"
@@ -633,14 +687,14 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="@dimen/activity_padding8"
-                                android:layout_toEndOf="@+id/img_hint_sound"
                                 android:layout_toStartOf="@+id/sw_hint_sound"
-                                app:fontFamily="@font/font_bold"
+                                android:layout_toEndOf="@+id/img_hint_sound"
                                 android:gravity="center_vertical|left"
                                 android:text="@string/txt_setting_hintsound"
                                 android:textColor="@color/colorListingHeading"
                                 android:textSize="@dimen/textSizeMedium"
-                                android:textStyle="normal" />
+                                android:textStyle="normal"
+                                app:fontFamily="@font/font_bold" />
 
 
                             <androidx.appcompat.widget.SwitchCompat
@@ -711,9 +765,9 @@
                             android:id="@+id/relAutoReset"
                             android:layout_width="match_parent"
                             android:layout_height="36dp"
-                            android:visibility="gone"
                             android:paddingStart="@dimen/activity_padding8"
-                            android:paddingEnd="@dimen/activity_padding8">
+                            android:paddingEnd="@dimen/activity_padding8"
+                            android:visibility="gone">
 
                             <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/imgAutoReset"
@@ -753,8 +807,8 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="0.2dp"
-                            android:visibility="gone"
-                            android:background="@color/gray_dark70" />
+                            android:background="@color/gray_dark70"
+                            android:visibility="gone" />
 
 
                         <RelativeLayout
@@ -817,12 +871,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/activity_padding4"
+                    android:visibility="gone"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="@dimen/card_corner_radius"
                     app:cardElevation="@dimen/card_elevation"
                     app:cardMaxElevation="@dimen/card_elevation"
                     app:cardUseCompatPadding="true"
-                    android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@+id/barrierCard1"
                     app:strokeColor="@color/grey_700"
                     app:strokeWidth="1dp">

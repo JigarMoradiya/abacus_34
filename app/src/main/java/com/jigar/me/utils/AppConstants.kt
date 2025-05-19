@@ -139,6 +139,7 @@ object AppConstants {
 
     annotation class Settings {
         companion object {
+            const val Setting_direction = "Setting_direction"
             const val Setting_sound = "Setting_sound"
             const val Setting_NumberPuzzleVolume = "Setting_NumberPuzzleVolume"
             const val Setting__hint_sound = "Setting_hint_sound"

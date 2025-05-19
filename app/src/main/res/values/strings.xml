@@ -822,6 +822,7 @@
     <string name="plan_assign_from_admin_for_your_google_review_submitted"><![CDATA[<b>Plan assign from Admin</b> for your google review submitted.]]></string>
     <string name="plan_assign_from_admin_on_your_request"><![CDATA[<b>Plan assign from Admin</b> on your request.]]></string>
     <string name="plan_assign_from_admin">Plan assign from Admin.</string>
+    <string name="display_bead_direction">Display Bead Direction</string>
 
 
 </resources>

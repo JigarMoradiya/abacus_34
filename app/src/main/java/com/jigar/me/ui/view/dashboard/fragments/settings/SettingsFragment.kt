@@ -87,6 +87,9 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
         binding.relHintSound.onClick { onOnOffClick(AppConstants.Settings.Setting__hint_sound,binding.isHintSound) }
         binding.swHintSound.onClick { onOnOffClick(AppConstants.Settings.Setting__hint_sound,binding.isHintSound) }
 
+        binding.relAbacusDirection.onClick { onOnOffClick(AppConstants.Settings.Setting_direction,binding.isShowBeadDirection) }
+        binding.swAbacusDirection.onClick { onOnOffClick(AppConstants.Settings.Setting_direction,binding.isShowBeadDirection) }
+
         binding.relAbacusSound.onClick { onOnOffClick(AppConstants.Settings.Setting_sound,binding.isAbacusSound) }
         binding.swSound.onClick { onOnOffClick(AppConstants.Settings.Setting_sound,binding.isAbacusSound) }
 
@@ -137,6 +140,8 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
             binding.isLeftHand = getCustomParamBoolean(AppConstants.Settings.Setting_left_hand, true)
 
             binding.isHintSound = getCustomParamBoolean(AppConstants.Settings.Setting__hint_sound, false)
+
+            binding.isShowBeadDirection = getCustomParamBoolean(AppConstants.Settings.Setting_direction, true)
 
             binding.isAbacusSound = getCustomParamBoolean(AppConstants.Settings.Setting_sound, true)
 
