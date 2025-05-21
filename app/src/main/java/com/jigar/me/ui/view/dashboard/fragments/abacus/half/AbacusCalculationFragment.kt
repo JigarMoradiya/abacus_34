@@ -658,74 +658,75 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         mNavController.navigateUp()
     }
     private fun setTableDataAndVisiblilty(isSetDirectionFor1stTime : Boolean = false) {
-        // if answer with abacus tools then return
-        if (isAnswerWithTools){
-            return
-        }
-        if (list_abacus_main.size >= 2) {
-            if (abacus_type == 1) {
-                val spannableString = adapterMultiplication.getTable(requireContext(),themeContent)
+        if (isStepByStep){
+            // if answer with abacus tools then return
+            if (isAnswerWithTools){
+                return
+            }
+            if (list_abacus_main.size >= 2) {
+                if (abacus_type == 1) {
+                    val spannableString = adapterMultiplication.getTable(requireContext(),themeContent)
 
-                if (isStepByStep && !isSetDirectionFor1stTime){
-                    val toValue = (adapterMultiplication.getCurrentSumVal()?:0.0).toInt()
-                    if (toValue > 0){
-                        abacusFragment?.addDirection(toValue)
-                    }else{
-                        abacusFragment?.hideDirection()
+                    if (isStepByStep && !isSetDirectionFor1stTime){
+                        val toValue = (adapterMultiplication.getCurrentSumVal()?:0.0).toInt()
+                        if (toValue > 0){
+                            abacusFragment?.addDirection(toValue)
+                        }else{
+                            abacusFragment?.hideDirection()
+                        }
                     }
-                }
-                if (!TextUtils.isEmpty(spannableString)) {
+                    if (!TextUtils.isEmpty(spannableString)) {
+                        if (isHideTable) {
+                            binding.cardHint.hide()
+                        } else {
+                            binding.cardHint.show()
+                        }
+                        binding.cardTable.hide()
+                        binding.relativeTable.hide()
+                        binding.txtHint.text = spannableString
+                        binding.txtHintTable.text = spannableString
+                    }
+                } else if (abacus_type == 2) {
+                    if (isStepByStep && !isSetDirectionFor1stTime){
+                        val toValue = (adapterDivision.getCurrentSumVal()?:0.0).toInt()
+                        if (toValue > 0){
+                            abacusFragment?.addDirection(toValue)
+                        }else{
+                            abacusFragment?.hideDirection()
+                        }
+                    }
                     if (isHideTable) {
-                        binding.cardHint.invisible()
+                        binding.cardHint.hide()
                     } else {
                         binding.cardHint.show()
                     }
                     binding.cardTable.hide()
                     binding.relativeTable.hide()
-                    binding.txtHint.text = spannableString
-                    binding.txtHintTable.text = spannableString
-                }
-            } else if (abacus_type == 2) {
-                if (isStepByStep && !isSetDirectionFor1stTime){
-                    val toValue = (adapterDivision.getCurrentSumVal()?:0.0).toInt()
-                Log.e("jigarDivivision","getCurrentStep = "+adapterDivision.getCurrentStep())
-                Log.e("jigarDivivision","getCurrentSumVal = "+adapterDivision.getCurrentSumVal())
-                Log.e("jigarDivivision","getFinalSumVal = "+adapterDivision.getFinalSumVal())
-                    if (toValue > 0){
-                        abacusFragment?.addDirection(toValue)
-                    }else{
-                        abacusFragment?.hideDirection()
-                    }
-                }
-                if (isHideTable) {
-                    binding.cardHint.invisible()
-                } else {
-                    binding.cardHint.show()
-                }
-                binding.cardTable.hide()
-                binding.relativeTable.hide()
 
-                binding.txtHint.text = ViewUtils.getTable(
-                    requireContext(), list_abacus_main[1][Constants.Que]!!.toInt(),
-                    adapterDivision.currentTablePosition, themeContent
-                )
-                binding.txtHintTable.text = ViewUtils.getTable(
-                    requireContext(), list_abacus_main[1][Constants.Que]!! .toInt(),
-                    adapterDivision.currentTablePosition, themeContent
-                )
+                    binding.txtHint.text = ViewUtils.getTable(
+                        requireContext(), list_abacus_main[1][Constants.Que]!!.toInt(),
+                        adapterDivision.currentTablePosition, themeContent
+                    )
+                    binding.txtHintTable.text = ViewUtils.getTable(
+                        requireContext(), list_abacus_main[1][Constants.Que]!! .toInt(),
+                        adapterDivision.currentTablePosition, themeContent
+                    )
+                } else {
+                    binding.cardHint.hide()
+                    binding.cardTable.hide()
+                    binding.relativeTable.hide()
+                }
             } else {
-                binding.cardHint.invisible()
+                binding.cardHint.hide()
                 binding.cardTable.hide()
                 binding.relativeTable.hide()
             }
-        } else {
-            binding.cardHint.invisible()
+        }else{
+            binding.cardHint.hide()
             binding.cardTable.hide()
             binding.relativeTable.hide()
         }
     }
-
-
     override fun onCheckHint(hintOld: String?, que: String?, Sign: String?) {
         // if answer with abacus tools then return
         if (isAnswerWithTools){
@@ -1235,11 +1236,9 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 }
                 1 -> {
                     adapterMultiplication.reset()
-                    binding.cardHint.show()
                 }
                 2 -> {
                     adapterDivision.reset()
-                    binding.cardHint.show()
                 }
             }
         }

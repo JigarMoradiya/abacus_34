@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.google.gson.Gson
 import com.jigar.me.BuildConfig
 import com.jigar.me.R
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
@@ -38,6 +39,9 @@ class CategoryFragment : BaseFragment() {
     private lateinit var categoryNewAdapter: CategoryNewAdapter
     private lateinit var pagesNewAdapter: PagesNewAdapter
     private var levelId: String = ""
+    private var clickedPagePosition: Int = 0
+    private var clickedSetPosition: Int = 0
+    private var clickedSetData: Set? = null
 //    private var isGetAllData: Boolean = true
 //    private var isGoToAbacusList: Boolean = true
 
@@ -88,6 +92,9 @@ class CategoryFragment : BaseFragment() {
             if (categoryList.isNotNullOrEmpty()){
                 val allSetList = (activity as MainDashboardActivity).allSetList
                 pagesNewAdapter = PagesNewAdapter(arrayListOf(),allSetList) { pagePosition,setPosition,setData,data ->
+                    clickedPagePosition = pagePosition
+                    clickedSetPosition = setPosition
+                    clickedSetData = setData
                     if (BuildConfig.DEBUG){
                         gotoAbacus(setData)
                     }else{
@@ -136,9 +143,17 @@ class CategoryFragment : BaseFragment() {
                     categoryNewAdapter.purchasedSKU = purchasedSKU
                     categoryNewAdapter.setData(categoryNewAdapter.listData)
 
-                    val allSetList = appViewModel.getAllSet()
-                    pagesNewAdapter.allSetList = allSetList
-                    setPages(categoryNewAdapter.listData[categoryNewAdapter.selectedPosition].id,false)
+                     clickedSetData?.id?.let {
+                         val setDetail = appViewModel.getSetDetail(it)
+                         if (setDetail != null){
+                             (activity as MainDashboardActivity).allSetList.indexOfFirst { it.id == setDetail.id }.also {
+                                 if (it > -1){
+                                     (activity as MainDashboardActivity).allSetList[it] = setDetail
+                                 }
+                             }
+                             pagesNewAdapter.updateSetDetail(clickedPagePosition,(activity as MainDashboardActivity).allSetList)
+                         }
+                     }
                 }
             }
         }

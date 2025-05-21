@@ -1,11 +1,14 @@
 package com.jigar.me.ui.view.dashboard.fragments.home_new.category
 
+import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.jigar.me.data.model.dbtable.abacus_all_data.Pages
 import com.jigar.me.data.model.dbtable.abacus_all_data.Set
 import com.jigar.me.databinding.RawPagelistNewBinding
+import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.layoutInflater
@@ -51,5 +54,10 @@ class PagesNewAdapter(
 
     override fun getItemCount(): Int {
         return listData.size
+    }
+
+    fun updateSetDetail(clickedPagePosition: Int,setList: ArrayList<Set>) {
+        allSetList = setList
+        notifyItemChanged(clickedPagePosition)
     }
 }

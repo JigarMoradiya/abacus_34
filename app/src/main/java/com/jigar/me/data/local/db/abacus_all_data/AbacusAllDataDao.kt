@@ -39,7 +39,7 @@ interface AbacusAllDataDao {
     suspend fun getPagesOnlyActive(id : String): List<Pages>
     @Query("SELECT * FROM '${AppConstants.DBParam.table_sets}' WHERE page_id = :id ORDER BY sort_order ASC")
     suspend fun getSet(id : String): List<Set>
-    @Query("SELECT * FROM '${AppConstants.DBParam.table_sets}' WHERE id = :setId")
+    @Query("SELECT s.*,(select exists (select is_set_completed from '${AppConstants.DBParam.table_set_progress}' where set_id = s.id AND is_set_completed = 1)) as is_completed_set,(select exists (select is_set_completed from '${AppConstants.DBParam.table_set_progress}' where set_id = s.id AND is_set_completed = 0)) as is_running_set FROM '${AppConstants.DBParam.table_sets}' as s WHERE s.id = :setId")
     suspend fun getSetDetail(setId : String): Set?
     @Query("SELECT * FROM '${AppConstants.DBParam.table_set_progress}' WHERE set_id = :setId ORDER BY retry_count DESC LIMIT 1")
     suspend fun getSetProgress(setId : String): SetProgress?
