@@ -1,15 +1,10 @@
 package com.jigar.me.data.local.data
 
-import android.content.ClipData
 import android.content.Context
-import android.util.Log
-import com.google.gson.Gson
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Calculator
 import com.jigar.me.utils.CommonUtils
-import com.jigar.me.utils.Constants
-import com.jigar.me.utils.extensions.clipboardManager
 
 object ExamProvider {
     fun calculateRodMovements(context: Context,from: Int,to: Int,rods: Int): List<RodMovement> {
@@ -36,9 +31,8 @@ object ExamProvider {
             result.add(RodMovement(rodIndex = i,movement = movement))
         }
 
-        Log.e("jigarDirection","rodMovement = "+ Gson().toJson(result))
-        val clip = ClipData.newPlainText("copied json ","$from - $to "+ Gson().toJson(result))
-        context.clipboardManager.setPrimaryClip(clip)
+//        val clip = ClipData.newPlainText("copied json ","$from - $to "+ Gson().toJson(result))
+//        context.clipboardManager.setPrimaryClip(clip)
         return result
     }
 
