@@ -77,7 +77,6 @@ class PurchaseFragment : BaseFragment(), PurchaseAdapter.OnItemClickListener {
         inAppViewModel.inAppInit()
 
         CoroutineScope(Dispatchers.Main).launch{
-
             val idList: ArrayList<String> = arrayListOf()
             if (loginData?.email.equals("abacus@yopmail.com")){
                 idList.add(PRODUCT_ID_All_lifetime)
