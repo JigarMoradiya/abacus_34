@@ -31,6 +31,7 @@ object ExamProvider {
             result.add(RodMovement(rodIndex = i,movement = movement))
         }
 
+//        Log.e("jigarDirection","rodMovement = "+ Gson().toJson(result))
 //        val clip = ClipData.newPlainText("copied json ","$from - $to "+ Gson().toJson(result))
 //        context.clipboardManager.setPrimaryClip(clip)
         return result
