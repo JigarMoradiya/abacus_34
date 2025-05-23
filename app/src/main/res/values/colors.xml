@@ -63,12 +63,12 @@
     <color name="gray_f2">#f2f2f2</color>
     <color name="handle_divider">#E3E3E3</color>
 
-    <color name="step_by_step_answer">#D1E5F6</color>
-    <color name="final_answer">#EDD6F1</color>
-    <color name="formal_exam">#F8D9DD</color>
-    <color name="step_by_step_answer_light">#E7F4FF</color>
-    <color name="final_answer_light">#FCEAFF</color>
-    <color name="formal_exam_light">#FFEAEC</color>
+    <color name="step_by_step_answer">@color/blue_600</color>
+    <color name="final_answer">@color/purple_600</color>
+    <color name="formal_exam">@color/red_600</color>
+    <color name="step_by_step_answer_light">@color/blue_600</color>
+    <color name="final_answer_light">@color/purple_600</color>
+    <color name="formal_exam_light">@color/red_600</color>
 
     <!--  Home menu  -->
     <color name="doneTick">#196E02</color>

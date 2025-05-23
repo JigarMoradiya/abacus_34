@@ -69,9 +69,11 @@
     <dimen name="activity_padding12">12dp</dimen>
     <dimen name="activity_padding10">10dp</dimen>
     <dimen name="activity_padding8">8dp</dimen>
+    <dimen name="activity_padding7">7dp</dimen>
     <dimen name="activity_padding6">6dp</dimen>
     <dimen name="activity_padding5">5dp</dimen>
     <dimen name="activity_padding4">4dp</dimen>
+    <dimen name="activity_padding3">3dp</dimen>
     <dimen name="activity_padding2">2dp</dimen>
     <dimen name="activity_padding1">1dp</dimen>
     <dimen name="icons_margin">4dp</dimen>
