@@ -116,6 +116,10 @@
         <item name="colorPrimary">@color/colorSwitch</item>
         <item name="colorSurfaceVariant">@color/colorSwitch</item>
     </style>
+    <style name="MyCheckBoxStyle" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <!-- Set your custom checked color here -->
+        <item name="colorPrimary">@color/colorSwitch</item> <!-- Purple -->
+    </style>
 
     <!--  Dailog  -->
     <style name="DialogAppearFromCenter">

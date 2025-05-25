@@ -48,8 +48,6 @@ class YoutubeVideoFragment : BaseFragment(), YoutubeVideoListAdapter.OnItemClick
 
     private fun initListener() {
         binding.cardBack.onClick { onBack() }
-        binding.cardSettingTop.onClick { goToSetting() }
-        binding.cardSubscribe.onClick { goToInAppPurchase() }
     }
     private fun onBack() {
         mNavController.navigateUp()

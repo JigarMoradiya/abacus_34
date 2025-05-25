@@ -130,7 +130,9 @@
                         android:fontFamily="@font/font_bold"
                         android:includeFontPadding="false"
                         android:text="@string/Number"
-                        android:textColor="@color/colorBlueDark"
+                        tools:checked="true"
+                        android:theme="@style/MyCheckBoxStyle"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeLarge" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -141,7 +143,8 @@
                         android:fontFamily="@font/font_bold"
                         android:includeFontPadding="false"
                         android:text="@string/Addition"
-                        android:textColor="@color/colorBlueDark"
+                        android:theme="@style/MyCheckBoxStyle"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeLarge" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -152,7 +155,8 @@
                         android:fontFamily="@font/font_bold"
                         android:includeFontPadding="false"
                         android:text="@string/Subtraction"
-                        android:textColor="@color/colorBlueDark"
+                        android:theme="@style/MyCheckBoxStyle"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeLarge" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -163,7 +167,8 @@
                         android:fontFamily="@font/font_bold"
                         android:includeFontPadding="false"
                         android:text="@string/Multiplication"
-                        android:textColor="@color/colorBlueDark"
+                        android:theme="@style/MyCheckBoxStyle"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeLarge" />
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -174,7 +179,8 @@
                         android:includeFontPadding="false"
                         android:layout_marginStart="@dimen/activity_padding6"
                         android:text="@string/Division"
-                        android:textColor="@color/colorBlueDark"
+                        android:theme="@style/MyCheckBoxStyle"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeLarge" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -196,7 +202,9 @@
                         android:fontFamily="@font/font_bold"
                         android:includeFontPadding="false"
                         android:text="@string/beginner"
-                        android:textColor="@color/colorBlueDark"
+                        android:theme="@style/MyCheckBoxStyle"
+                        tools:checked="true"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeLarge"
                         tools:text="Beginner" />
 
@@ -209,7 +217,8 @@
                         android:fontFamily="@font/font_bold"
                         android:includeFontPadding="false"
                         android:text="@string/intermediate"
-                        android:textColor="@color/colorBlueDark"
+                        android:theme="@style/MyCheckBoxStyle"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeLarge"
                         tools:text="Intermediate" />
 
@@ -220,7 +229,8 @@
                         android:fontFamily="@font/font_bold"
                         android:includeFontPadding="false"
                         android:text="@string/expert"
-                        android:textColor="@color/colorBlueDark"
+                        android:theme="@style/MyCheckBoxStyle"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/textSizeLarge"
                         tools:text="Expert" />
 

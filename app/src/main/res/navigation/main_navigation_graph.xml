@@ -172,9 +172,6 @@
             android:id="@+id/action_customChallengeHomeFragment_to_customChallengeFragment"
             app:destination="@+id/customChallengeFragment" />
         <action
-            android:id="@+id/toSettingsFragment"
-            app:destination="@+id/settingsFragment" />
-        <action
             android:id="@+id/toPurchaseFragment"
             app:destination="@+id/purchaseFragment" />
     </fragment>
@@ -221,14 +218,7 @@
         android:name="com.jigar.me.ui.view.dashboard.fragments.abacus.FullAbacusFragment"/>
     <fragment
         android:id="@+id/youtubeVideoFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.youtubevideo.YoutubeVideoFragment">
-        <action
-            android:id="@+id/toSettingsFragment"
-            app:destination="@+id/settingsFragment" />
-        <action
-            android:id="@+id/toPurchaseFragment"
-            app:destination="@+id/purchaseFragment" />
-    </fragment>
+        android:name="com.jigar.me.ui.view.dashboard.fragments.youtubevideo.YoutubeVideoFragment"/>
     <fragment
         android:id="@+id/pageFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.page.PageFragment">

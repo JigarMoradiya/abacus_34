@@ -21,46 +21,16 @@
             app:cardBackgroundColor="@color/light_back"
             app:cardCornerRadius="@dimen/menu_icons_corner"
             app:cardElevation="@dimen/card_elevation"
-            app:strokeWidth="0dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="@dimen/menu_icons"
-            android:layout_height="@dimen/menu_icons"
-                android:padding="@dimen/menu_icons_padding"
-                app:srcCompat="@drawable/ic_back" />
-        </com.google.android.material.card.MaterialCardView>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linearTopEnd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/icons_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardSettingTop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/icons_margin"
-            android:elevation="@dimen/card_elevation"
-            app:strokeWidth="0dp"
-            app:cardBackgroundColor="@color/light_setting"
-            app:cardCornerRadius="@dimen/menu_icons_corner"
-            app:cardMaxElevation="@dimen/card_elevation">
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeWidth="0dp">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="@dimen/menu_icons"
                 android:layout_height="@dimen/menu_icons"
                 android:padding="@dimen/menu_icons_padding"
-                app:srcCompat="@drawable/ic_menu_setting" />
-
+                app:srcCompat="@drawable/ic_back" />
         </com.google.android.material.card.MaterialCardView>
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgLogo"
@@ -133,7 +103,7 @@
                     android:includeFontPadding="false"
                     android:text="@string/number_of_questions"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSizeRegular"
+                    android:textSize="@dimen/textSizeExtraLarge"
                     app:fontFamily="@font/font_bold"
                     app:layout_constraintBottom_toBottomOf="@+id/rsQuestion"
                     app:layout_constraintEnd_toStartOf="@+id/divider"
@@ -148,8 +118,8 @@
                     app:baseColor="@color/gray_light"
                     app:circleFillColor="@color/green_600"
                     app:circleRadius="@dimen/activity_padding10"
-                    app:circleTextSize="@dimen/textSizeSmall"
                     app:circleTextColor="@color/white"
+                    app:circleTextSize="@dimen/textSizeSmall"
                     app:currentValue="10"
                     app:fillColor="@color/green_200"
                     app:layout_constraintEnd_toStartOf="@+id/spaceQuestion"
@@ -177,7 +147,7 @@
                     android:includeFontPadding="false"
                     android:text="@string/gap_between_two_question_sec"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSizeRegular"
+                    android:textSize="@dimen/textSizeExtraLarge"
                     app:fontFamily="@font/font_bold"
                     app:layout_constraintBottom_toBottomOf="@+id/rsGap"
                     app:layout_constraintEnd_toStartOf="@+id/divider"
@@ -193,8 +163,8 @@
                     app:baseColor="@color/gray_light"
                     app:circleFillColor="@color/green_600"
                     app:circleRadius="@dimen/activity_padding10"
-                    app:circleTextSize="@dimen/textSizeSmall"
                     app:circleTextColor="@color/white"
+                    app:circleTextSize="@dimen/textSizeSmall"
                     app:currentValue="3"
                     app:fillColor="@color/green_200"
                     app:layout_constraintEnd_toStartOf="@+id/spaceQuestion"
@@ -213,7 +183,7 @@
                     android:includeFontPadding="false"
                     android:text="@string/question_min_max_length"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSizeRegular"
+                    android:textSize="@dimen/textSizeExtraLarge"
                     app:fontFamily="@font/font_bold"
                     app:layout_constraintBottom_toBottomOf="@+id/rsQuestionLength"
                     app:layout_constraintEnd_toStartOf="@+id/divider"
@@ -249,7 +219,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_top_challenge"
-                    app:buttonTint="@color/green_600"
+                    android:theme="@style/MyCheckBoxStyle"
                     app:layout_constraintEnd_toEndOf="@+id/txtQuestionVoice"
                     app:layout_constraintStart_toStartOf="@+id/txtQuestionVoice"
                     app:layout_constraintTop_toBottomOf="@+id/rsQuestionLength" />
@@ -262,7 +232,7 @@
                     android:includeFontPadding="false"
                     android:text="@string/question_speak_voice"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSizeRegular"
+                    android:textSize="@dimen/textSizeExtraLarge"
                     app:fontFamily="@font/font_bold"
                     app:layout_constraintEnd_toStartOf="@+id/txtQuestionNumber"
                     app:layout_constraintStart_toStartOf="parent"
@@ -272,7 +242,8 @@
                     android:id="@+id/cbQuestionNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:buttonTint="@color/green_600"
+                    tools:checked="true"
+                    android:theme="@style/MyCheckBoxStyle"
                     app:layout_constraintEnd_toEndOf="@+id/txtQuestionNumber"
                     app:layout_constraintStart_toStartOf="@+id/txtQuestionNumber"
                     app:layout_constraintTop_toTopOf="@+id/cbQuestionVoice" />
@@ -285,7 +256,7 @@
                     android:includeFontPadding="false"
                     android:text="@string/question_show_in_number"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSizeRegular"
+                    android:textSize="@dimen/textSizeExtraLarge"
                     app:fontFamily="@font/font_bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -295,7 +266,7 @@
                     android:id="@+id/cbQuestionWord"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:buttonTint="@color/green_600"
+                    android:theme="@style/MyCheckBoxStyle"
                     app:layout_constraintEnd_toEndOf="@+id/txtQuestionWord"
                     app:layout_constraintStart_toStartOf="@+id/txtQuestionWord"
                     app:layout_constraintTop_toTopOf="@+id/cbQuestionVoice" />
@@ -308,7 +279,7 @@
                     android:includeFontPadding="false"
                     android:text="@string/question_show_in_word"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSizeRegular"
+                    android:textSize="@dimen/textSizeExtraLarge"
                     app:fontFamily="@font/font_bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/txtQuestionNumber"

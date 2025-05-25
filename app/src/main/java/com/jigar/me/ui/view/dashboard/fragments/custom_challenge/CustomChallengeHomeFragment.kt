@@ -63,7 +63,6 @@ class CustomChallengeHomeFragment : BaseFragment() {
     private fun clickListener() {
         binding.cardBack.onClick { mNavController.navigateUp() }
         binding.txtStartExam.onClick { onStartClick() }
-        binding.cardSettingTop.onClick { goToSetting() }
     }
 
     private fun onStartClick() {
