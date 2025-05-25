@@ -20,6 +20,7 @@
             app:cardCornerRadius="@dimen/menu_icons_corner"
             app:cardElevation="@dimen/card_elevation"
             android:layout_margin="@dimen/icons_margin2"
+            app:strokeWidth="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 

@@ -16,6 +16,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardBack"
             android:layout_width="wrap_content"
+            app:strokeWidth="0dp"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/light_back"
             app:cardCornerRadius="@dimen/menu_icons_corner"

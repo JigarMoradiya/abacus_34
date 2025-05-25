@@ -22,6 +22,7 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:strokeWidth="0dp"
             android:layout_marginHorizontal="@dimen/icons_margin"
             android:layout_marginTop="@dimen/activity_padding10"
             android:layout_marginBottom="@dimen/activity_padding4"
@@ -38,6 +39,7 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardHeader"
+                    app:strokeWidth="0dp"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/activity_padding16"
                     app:cardCornerRadius="@dimen/activity_padding6"

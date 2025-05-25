@@ -7,9 +7,10 @@
     <color name="brand_secondary">#878787</color>
     <color name="brand_alert">#ff0000</color>
 
-    <color name="colorPrimary">#0C085F</color>
-    <color name="colorPrimaryDark">#09064A</color>
-    <color name="colorAccent">#FF6F00</color>
+    <color name="colorSwitch">#AB47BC</color>
+    <color name="colorPrimary">#246AF1</color>
+    <color name="colorPrimaryDark">#1656D3</color>
+    <color name="colorAccent">#F17624</color>
 
     <color name="tag_bg">#242424</color>
     <color name="white">#ffffff</color>

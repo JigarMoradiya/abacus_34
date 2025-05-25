@@ -20,6 +20,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardBack"
             android:layout_width="wrap_content"
+            app:strokeWidth="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/icons_margin2"
             android:elevation="@dimen/card_elevation"
@@ -63,6 +64,7 @@
                 android:id="@+id/cardTable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:strokeWidth="0dp"
                 android:layout_margin="@dimen/icons_margin"
                 android:elevation="@dimen/card_elevation"
                 android:visibility="gone"

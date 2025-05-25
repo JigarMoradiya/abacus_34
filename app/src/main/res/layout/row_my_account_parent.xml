@@ -17,66 +17,68 @@
         android:layout_height="wrap_content">
 
         <View
+            android:id="@+id/viewDivider"
             android:layout_width="2dp"
-            android:layout_height="0dp"
-            android:backgroundTint="@color/colorPrimaryDark"
-            android:background="@drawable/bg_all_curved_3"
-            app:layout_constraintBottom_toBottomOf="@+id/txtTitle"
-            app:layout_constraintEnd_toStartOf="@+id/viewBG"
-            app:layout_constraintTop_toTopOf="@+id/txtTitle" />
-
-        <View
-            android:id="@+id/viewBG"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="@dimen/activity_padding10"
-            android:layout_marginEnd="@dimen/activity_padding5"
-            android:layout_marginTop="@dimen/activity_padding4"
-            android:elevation="@dimen/activity_padding1"
-            android:background="@drawable/bg_all_curved_8_transperent_border"
-            app:layout_constraintBottom_toBottomOf="@+id/rvMenu"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="16dp"
+            android:layout_marginStart="@dimen/activity_padding5"
+            android:layout_marginTop="@dimen/activity_padding14"
+            android:background="@drawable/vertical_line_curved"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txtTitle"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardMenu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/activity_padding12"
-            android:layout_marginTop="@dimen/activity_padding8"
-            android:fontFamily="@font/font_semibold"
-            android:includeFontPadding="false"
-            android:text="@{dataModel.menuTitle}"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="@dimen/textSizeRegular"
-            android:elevation="@dimen/activity_padding4"
+            app:strokeWidth="0dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="@dimen/card_elevation"
+            android:layout_marginVertical="@dimen/activity_padding5"
+            android:layout_marginEnd="@dimen/activity_padding5"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/viewBG"
-            app:layout_constraintTop_toTopOf="@+id/viewBG"
-            tools:text="@string/more_" />
+            app:layout_constraintStart_toEndOf="@+id/viewDivider"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/activity_padding8">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_bold"
+                    android:includeFontPadding="false"
+                    android:text="@{dataModel.menuTitle}"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/textSizeLarge"
+                    tools:text="@string/more_" />
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvMenu"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false"
-            android:overScrollMode="never"
-            android:paddingVertical="@dimen/activity_padding6"
-            android:scrollbars="none"
-            android:elevation="@dimen/activity_padding4"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="@+id/txtTitle"
-            app:layout_constraintStart_toStartOf="@+id/txtTitle"
-            app:layout_constraintTop_toBottomOf="@+id/txtTitle"
-            tools:itemCount="2"
-            tools:listitem="@layout/row_my_account_child" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding6"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="@+id/txtTitle"
+                    app:layout_constraintStart_toStartOf="@+id/txtTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/row_my_account_child" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.card.MaterialCardView>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="@dimen/activity_padding4"
-            app:layout_constraintTop_toBottomOf="@+id/viewBG" />
+            app:layout_constraintTop_toBottomOf="@+id/cardMenu" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

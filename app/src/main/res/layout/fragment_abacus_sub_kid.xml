@@ -515,6 +515,7 @@
                 app:cardCornerRadius="@dimen/padding_radius_abacus_frame_large"
                 app:cardElevation="@dimen/card_elevation3"
                 app:cardMaxElevation="@dimen/card_elevation3"
+                app:strokeWidth="0dp"
                 app:cardUseCompatPadding="false">
 
                 <RelativeLayout

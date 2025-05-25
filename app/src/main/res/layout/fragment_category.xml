@@ -14,6 +14,7 @@
         app:cardBackgroundColor="@color/light_back"
         app:cardCornerRadius="@dimen/menu_icons_corner"
         app:cardMaxElevation="@dimen/card_elevation"
+        app:strokeWidth="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -60,66 +61,74 @@
         app:layout_constraintStart_toEndOf="@+id/txtTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cardBack"
-        android:background="@drawable/bg_all_curved_3"
-        android:backgroundTint="@color/white"
-        android:elevation="@dimen/card_elevation"
-        android:padding="@dimen/activity_padding4"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/step_by_step"
-            android:textColor="@color/black"
             android:textSize="@dimen/textSizeMedium"
             android:gravity="center_vertical"
-            android:drawableTint="@color/step_by_step_answer"
-            android:drawablePadding="@dimen/activity_padding4"
-            android:drawableStart="@drawable/ic_square_answer_type"
+            android:textColor="@color/white"
+            android:paddingHorizontal="@dimen/activity_padding6"
+            android:paddingVertical="@dimen/activity_padding2"
+            android:backgroundTint="@color/step_by_step_answer"
+            android:background="@drawable/bg_all_curved_3"
             app:fontFamily="@font/font_bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/activity_padding12"
+            android:layout_marginHorizontal="@dimen/activity_padding10"
             android:text="@string/final_answer"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="@dimen/textSizeMedium"
             android:gravity="center_vertical"
-            android:drawableTint="@color/final_answer"
-            android:drawablePadding="@dimen/activity_padding4"
-            android:drawableStart="@drawable/ic_square_answer_type"
+            android:paddingHorizontal="@dimen/activity_padding6"
+            android:paddingVertical="@dimen/activity_padding2"
+            android:backgroundTint="@color/final_answer"
+            android:background="@drawable/bg_all_curved_3"
             app:fontFamily="@font/font_bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/formal_exam"
-            android:textColor="@color/black"
             android:textSize="@dimen/textSizeMedium"
             android:gravity="center_vertical"
-            android:drawableTint="@color/formal_exam"
-            android:drawablePadding="@dimen/activity_padding4"
-            android:drawableStart="@drawable/ic_square_answer_type"
+            android:textColor="@color/white"
+            android:paddingHorizontal="@dimen/activity_padding6"
+            android:paddingVertical="@dimen/activity_padding2"
+            android:backgroundTint="@color/formal_exam"
+            android:background="@drawable/bg_all_curved_3"
             app:fontFamily="@font/font_bold" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="@dimen/activity_padding12"
-            android:layout_height="@dimen/activity_padding12"
-            android:id="@+id/imgTimer"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="@dimen/activity_padding12"
-            app:srcCompat="@drawable/ic_timer_on"/>
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:backgroundTint="@color/black"
+           android:layout_marginStart="@dimen/activity_padding12"
+           android:background="@drawable/bg_all_curved_3">
+           <androidx.appcompat.widget.AppCompatImageView
+               android:layout_width="@dimen/activity_padding16"
+               android:layout_height="@dimen/activity_padding16"
+               android:id="@+id/imgTimer"
+               android:layout_marginStart="@dimen/activity_padding4"
+               android:layout_gravity="center_vertical"
+               app:tint="@color/white"
+               app:srcCompat="@drawable/ic_timer_on_new"/>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/timer_on"
-            android:textColor="@color/black"
-            android:textSize="@dimen/textSizeMedium"
-            android:gravity="center_vertical"
-            android:layout_marginStart="@dimen/activity_padding4"
-            app:fontFamily="@font/font_bold" />
+           <com.google.android.material.textview.MaterialTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/timer_on"
+               android:textColor="@color/white"
+               android:textSize="@dimen/textSizeMedium"
+               android:paddingHorizontal="@dimen/activity_padding6"
+               android:paddingVertical="@dimen/activity_padding2"
+               android:gravity="center_vertical"
+               app:fontFamily="@font/font_bold" />
+       </LinearLayout>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

@@ -17,6 +17,7 @@
             android:id="@+id/cardBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:strokeWidth="0dp"
             android:layout_margin="@dimen/icons_margin2"
             android:elevation="@dimen/card_elevation"
             app:cardBackgroundColor="@color/light_back"
@@ -57,6 +58,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardSettingTop"
+                app:strokeWidth="0dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/icons_margin"
@@ -77,6 +79,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardYoutube"
                 android:layout_width="wrap_content"
+                app:strokeWidth="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/icons_margin"
                 android:elevation="@dimen/card_elevation"
@@ -95,6 +98,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardSubscribe"
                 android:layout_width="wrap_content"
+                app:strokeWidth="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/icons_margin"
                 android:elevation="@dimen/card_elevation"

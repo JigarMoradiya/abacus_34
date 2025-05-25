@@ -21,6 +21,7 @@
         android:id="@+id/conMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:strokeWidth="0dp"
         android:layout_margin="@dimen/activity_padding6"
         app:cardBackgroundColor="@color/card_bg"
         app:cardCornerRadius="@dimen/activity_padding6"

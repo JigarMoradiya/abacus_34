@@ -23,3 +23,14 @@ data class Pages(
     val created_at: String? = null,
     val is_active: Boolean = true,
 )
+
+data class DisplayPages(
+    val id: String,
+    val category_id: String,
+    val name: String,
+    val description: String? = null,
+    val sort_order: Int = 0,
+    val created_at: String? = null,
+    val is_active: Boolean = true,
+    var setList: String? = null,
+)

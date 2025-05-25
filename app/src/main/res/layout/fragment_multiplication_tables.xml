@@ -25,6 +25,7 @@
             app:cardBackgroundColor="@color/light_back"
             app:cardCornerRadius="@dimen/menu_icons_corner"
             app:cardMaxElevation="@dimen/card_elevation"
+            app:strokeWidth="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -65,12 +66,13 @@
                 android:layout_margin="@dimen/icons_margin"
                 android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_setting"
+                app:strokeWidth="0dp"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
                 app:cardMaxElevation="@dimen/card_elevation">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="@dimen/menu_icons"
-            android:layout_height="@dimen/menu_icons"
+                    android:layout_height="@dimen/menu_icons"
                     android:padding="@dimen/activity_padding8"
                     app:srcCompat="@drawable/ic_menu_setting" />
 
@@ -85,6 +87,7 @@
                 android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_youtube"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
+                app:strokeWidth="0dp"
                 app:cardMaxElevation="@dimen/card_elevation">
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -98,6 +101,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardSubscribe"
                 android:layout_width="wrap_content"
+                app:strokeWidth="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/icons_margin"
                 android:elevation="@dimen/card_elevation"

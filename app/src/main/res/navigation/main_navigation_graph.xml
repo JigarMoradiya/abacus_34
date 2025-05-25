@@ -218,14 +218,7 @@
     </fragment>
     <fragment
         android:id="@+id/fullAbacusFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.abacus.FullAbacusFragment">
-        <action
-            android:id="@+id/toSettingsFragment"
-            app:destination="@+id/settingsFragment" />
-        <action
-            android:id="@+id/toPurchaseFragment"
-            app:destination="@+id/purchaseFragment" />
-    </fragment>
+        android:name="com.jigar.me.ui.view.dashboard.fragments.abacus.FullAbacusFragment"/>
     <fragment
         android:id="@+id/youtubeVideoFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.youtubevideo.YoutubeVideoFragment">

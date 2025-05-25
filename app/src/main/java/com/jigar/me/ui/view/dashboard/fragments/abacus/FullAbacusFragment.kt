@@ -98,7 +98,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             } else if (getCustomParam(AppConstants.Settings.SW_Random,"") == "Y") {
                 random_min = getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F)
                 random_max = getCustomParamFloat(AppConstants.Settings.SW_Range_max,101F)
-                values = genrateRandom().toFloat()
+                values = genrateRandom()
                 valuesFinal = if (prefManager.getCustomParam(AppConstants.Settings.SW_DecimalMode,"N") == "Y") {
                     values / 1000000
                 }else{
@@ -108,32 +108,17 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         }
         setSwitchs()
         binding.swDecimalMode.isChecked = prefManager.getCustomParam(AppConstants.Settings.SW_DecimalMode, "N") == "Y"
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            try {
-                binding.txtFreeMode.setPadding(0,8.dp,0,0)
-                binding.txtResetEveryTime.setPadding(0,12.dp,12.dp,0)
-                binding.txtRangeLable.setPadding(0,12.dp,0,0)
-                binding.txtRandom.setPadding(0,12.dp,0,0)
-                binding.txtStartWith1.setPadding(0,12.dp,0,0)
-            } catch (e: Exception) {
-            }
-        }
     }
 
-    private fun initListener() {
-        binding.cardBack.onClick { mNavController.navigateUp() }
-        binding.txtShowTour.onClick { setThemeLighterTopBeads() }
-        binding.swRandom.onClick { switchRandomClick() }
-        binding.swReset.onClick { switchResetClick() }
-        binding.swResetStarting.onClick { switchResetStartingClick() }
-        binding.swFreeMode.onClick { switchFreeMode() }
-        binding.swDecimalMode.onClick { switchDecimalMode() }
-        binding.txtRange.onClick { rangeClick() }
-
-        binding.cardSettingTop.onClick { goToSetting() }
-        binding.cardYoutube.onClick { requireContext().openYoutube() }
-        binding.cardSubscribe.onClick { goToInAppPurchase()  }
+    private fun initListener() = with(binding){
+        cardBack.onClick { mNavController.navigateUp() }
+        txtShowTour.onClick { setThemeLighterTopBeads() }
+        swRandom.onClick { switchRandomClick() }
+        swReset.onClick { switchResetClick() }
+        swResetStarting.onClick { switchResetStartingClick() }
+        swFreeMode.onClick { switchFreeMode() }
+        swDecimalMode.onClick { switchDecimalMode() }
+        txtRange.onClick { rangeClick() }
     }
     private fun resetClick() {
         if (!isResetRunning) {
@@ -153,7 +138,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
     }
 
     private fun switchResetStartingClick() {
-        prefManager.setCustomParamInt(AppConstants.Settings.Toddler_No,prefManager.getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F).toInt())
+        prefManager.setCustomParamFloat(AppConstants.Settings.Toddler_No,prefManager.getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F))
         setSwitchs()
     }
 
@@ -223,20 +208,8 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         }
 
     }
-    // not purchased
-    private fun notPurchaseDialog() {
-        CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.txt_purchase_alert),getString(R.string.txt_page_full_abacus_not_purchased)
-            ,getString(R.string.yes_i_want_to_purchase),getString(R.string.no_purchase_later), icon = R.drawable.ic_alert_not_purchased,
-            clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
-                override fun onConfirmationYesClick(bundle: Bundle?) {
-                    goToInAppPurchase()
-                }
-                override fun onConfirmationNoClick(bundle: Bundle?) = Unit
-            })
-    }
 
     private fun setAbacus() {
-        Log.e("jigarLogs","welcome setAbacus")
         with(prefManager){
             setCustomParam(AppConstants.Settings.TheamTempView,getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default))
             theme = getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
@@ -297,7 +270,6 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             abacusBinding?.imgDot10?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.imgDot13?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
 
-            binding.txtShowTour.setTextColor(ContextCompat.getColor(requireContext(),it))
             abacusBinding?.ivReset?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.ivRight?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.ivLeft?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
@@ -375,7 +347,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
                     binding.txtRange.text = "${requireContext().getString(R.string.txt_From)} ${random_min.toInt()} ${requireContext().getString(R.string.txt_To)} ${(random_max - 1).toInt()}"
                 }
                 if (getCustomParam(AppConstants.Settings.SW_Random, "") != "Y") {
-                    values = getCustomParamFloat(AppConstants.Settings.Toddler_No, random_min.toFloat())
+                    values = getCustomParamFloat(AppConstants.Settings.Toddler_No, random_min)
                 } else if (getCustomParam(AppConstants.Settings.SW_Random,"") == "Y") {
                     values = genrateRandom().toFloat()
                 }
@@ -408,7 +380,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         with(prefManager){
             setCustomParamFloat(AppConstants.Settings.SW_Range_min,fromValue.toFloat())
             setCustomParamFloat(AppConstants.Settings.SW_Range_max,toValue.toFloat() + 1)
-            setCustomParamInt(AppConstants.Settings.Toddler_No,getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F).toInt())
+            setCustomParamFloat(AppConstants.Settings.Toddler_No,getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F))
             setSwitchs()
         }
     }

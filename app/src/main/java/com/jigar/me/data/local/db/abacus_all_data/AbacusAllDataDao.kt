@@ -7,11 +7,11 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
+import com.jigar.me.data.model.dbtable.abacus_all_data.DisplayPages
 import com.jigar.me.data.model.dbtable.abacus_all_data.Level
 import com.jigar.me.data.model.dbtable.abacus_all_data.Pages
 import com.jigar.me.data.model.dbtable.abacus_all_data.Set
 import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
-import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.utils.AppConstants
 
 @Dao
@@ -34,9 +34,9 @@ interface AbacusAllDataDao {
     @Query("SELECT * FROM '${AppConstants.DBParam.table_category}' WHERE level_id = :id ORDER BY sort_order ASC")
     suspend fun getCategory(id : String): List<Category>
     @Query("SELECT * FROM '${AppConstants.DBParam.table_pages}' WHERE category_id = :id ORDER BY sort_order ASC,created_at ASC")
-    suspend fun getPages(id : String): List<Pages>
+    suspend fun getPages(id : String): List<DisplayPages>
     @Query("SELECT * FROM '${AppConstants.DBParam.table_pages}' WHERE category_id = :id AND is_active = 1 ORDER BY sort_order ASC,created_at ASC")
-    suspend fun getPagesOnlyActive(id : String): List<Pages>
+    suspend fun getPagesOnlyActive(id : String): List<DisplayPages>
     @Query("SELECT * FROM '${AppConstants.DBParam.table_sets}' WHERE page_id = :id ORDER BY sort_order ASC")
     suspend fun getSet(id : String): List<Set>
     @Query("SELECT s.*,(select exists (select is_set_completed from '${AppConstants.DBParam.table_set_progress}' where set_id = s.id AND is_set_completed = 1)) as is_completed_set,(select exists (select is_set_completed from '${AppConstants.DBParam.table_set_progress}' where set_id = s.id AND is_set_completed = 0)) as is_running_set FROM '${AppConstants.DBParam.table_sets}' as s WHERE s.id = :setId")

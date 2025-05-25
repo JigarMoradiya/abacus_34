@@ -20,6 +20,7 @@
         android:id="@+id/cardFAQs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:strokeWidth="0dp"
         android:layout_margin="@dimen/icons_margin2"
         app:cardBackgroundColor="@color/light_faq"
         app:cardCornerRadius="@dimen/menu_icons_corner"

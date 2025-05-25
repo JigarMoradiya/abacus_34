@@ -66,6 +66,7 @@
     <dimen name="activity_padding24">24dp</dimen>
     <dimen name="activity_padding20">20dp</dimen>
     <dimen name="activity_padding16">16dp</dimen>
+    <dimen name="activity_padding14">14dp</dimen>
     <dimen name="activity_padding12">12dp</dimen>
     <dimen name="activity_padding10">10dp</dimen>
     <dimen name="activity_padding8">8dp</dimen>

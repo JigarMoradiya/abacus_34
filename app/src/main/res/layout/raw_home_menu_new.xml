@@ -30,6 +30,7 @@
                 android:layout_margin="@dimen/home_menu_margin"
                 app:cardBackgroundColor="@color/home_menu_icon_bg"
                 app:cardCornerRadius="@dimen/home_menu_corner"
+                app:strokeWidth="0dp"
                 app:cardElevation="@dimen/home_menu_elevation">
 
                 <androidx.appcompat.widget.AppCompatImageView

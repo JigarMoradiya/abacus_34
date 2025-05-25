@@ -34,6 +34,7 @@
                 android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_back"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
+                app:strokeWidth="0dp"
                 app:cardMaxElevation="@dimen/card_elevation">
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -93,6 +94,7 @@
                 android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_reset_abacus_progress"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
+                app:strokeWidth="0dp"
                 app:cardMaxElevation="@dimen/card_elevation">
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -111,6 +113,7 @@
                 android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_setting"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
+                app:strokeWidth="0dp"
                 app:cardMaxElevation="@dimen/card_elevation">
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -130,6 +133,7 @@
                 android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_youtube"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
+                app:strokeWidth="0dp"
                 app:cardMaxElevation="@dimen/card_elevation">
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -148,6 +152,7 @@
                 android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_subscribe"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
+                app:strokeWidth="0dp"
                 app:cardMaxElevation="@dimen/card_elevation">
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -191,6 +196,7 @@
                 app:cardBackgroundColor="@color/light_math_table"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
                 app:cardMaxElevation="@dimen/card_elevation"
+                app:strokeWidth="0dp"
                 tools:visibility="visible">
 
                 <androidx.appcompat.widget.AppCompatImageView

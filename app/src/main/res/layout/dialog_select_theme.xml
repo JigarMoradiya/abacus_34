@@ -10,6 +10,7 @@
         app:cardCornerRadius="@dimen/activity_padding12"
         app:cardElevation="@dimen/card_elevation"
         app:cardMaxElevation="@dimen/card_elevation"
+        app:strokeWidth="0dp"
         app:cardUseCompatPadding="true">
 
 

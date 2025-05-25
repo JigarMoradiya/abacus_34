@@ -191,7 +191,7 @@ object AppConstants {
             var SW_Random = "SW_Random"
             var SW_Reset = "SW_Reset"
 
-            var Toddler_No = "Toddler_Numbers_new"
+            var Toddler_No = "Toddler_Number_New"
             var Toddler_No_Count = "Toddler_Number_Count"
             var SW_Range_min = "SW_Range_min_values_new"
             var SW_Range_max = "SW_Range_max_values_new"

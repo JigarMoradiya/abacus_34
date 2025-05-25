@@ -23,6 +23,7 @@
             app:cardCornerRadius="@dimen/menu_icons_corner"
             app:cardElevation="@dimen/card_elevation"
             app:layout_constraintStart_toStartOf="parent"
+            app:strokeWidth="0dp"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView

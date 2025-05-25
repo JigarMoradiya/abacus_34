@@ -16,6 +16,7 @@
             android:elevation="@dimen/card_elevation"
             app:cardBackgroundColor="@color/light_back"
             app:cardCornerRadius="@dimen/menu_icons_corner"
+            app:strokeWidth="0dp"
             app:cardMaxElevation="@dimen/card_elevation"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -251,6 +252,7 @@
                         app:cardBackgroundColor="@color/colorGreen"
                         app:cardCornerRadius="@dimen/card_corner_radius4"
                         app:cardElevation="@dimen/card_elevation4"
+                        app:strokeWidth="0dp"
                         app:layout_constraintEnd_toStartOf="@+id/cardAnswer22"
                         app:layout_constraintHorizontal_chainStyle="packed"
                         app:layout_constraintStart_toStartOf="parent"
@@ -281,6 +283,7 @@
                         app:cardCornerRadius="@dimen/card_corner_radius4"
                         app:cardElevation="@dimen/card_elevation4"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:strokeWidth="0dp"
                         app:layout_constraintHorizontal_chainStyle="packed"
                         app:layout_constraintStart_toEndOf="@+id/cardAnswer11"
                         app:layout_constraintTop_toBottomOf="@+id/txtTapCorrectAns1">
@@ -320,6 +323,7 @@
                         app:layout_constraintEnd_toStartOf="@+id/cardAnswer44"
                         app:layout_constraintHorizontal_chainStyle="packed"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:strokeWidth="0dp"
                         app:layout_constraintTop_toBottomOf="@+id/dividerAnswer">
 
                         <com.google.android.material.textview.MaterialTextView
@@ -348,6 +352,7 @@
                         app:cardCornerRadius="@dimen/card_corner_radius4"
                         app:cardElevation="@dimen/card_elevation4"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:strokeWidth="0dp"
                         app:layout_constraintHorizontal_chainStyle="packed"
                         app:layout_constraintStart_toEndOf="@+id/cardAnswer33"
                         app:layout_constraintTop_toBottomOf="@+id/dividerAnswer">

@@ -17,6 +17,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardToddler"
         android:layout_width="match_parent"
+        app:strokeWidth="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_padding4"
         app:cardBackgroundColor="@color/white"
