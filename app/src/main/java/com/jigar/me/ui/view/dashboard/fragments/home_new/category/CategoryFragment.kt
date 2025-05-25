@@ -95,9 +95,9 @@ class CategoryFragment : BaseFragment() {
                     clickedPagePosition = pagePosition
                     clickedSetPosition = setPosition
                     clickedSetData = setData
-                    if (BuildConfig.DEBUG){
-                        gotoAbacus(setData)
-                    }else{
+//                    if (BuildConfig.DEBUG){
+//                        gotoAbacus(setData)
+//                    }else{
                         val categoryData = categoryNewAdapter.listData[categoryNewAdapter.selectedPosition]
                         val isPurchase = CommonUtils.checkLevelIsPurchase(purchasedSKU,categoryData,prefManager)
                         if (isPurchase){
@@ -105,7 +105,7 @@ class CategoryFragment : BaseFragment() {
                         }else{
                             purchaseDialog()
                         }
-                    }
+//                    }
                 }
                 recyclerviewPages.adapter = pagesNewAdapter
                 setPages(categoryList.first().id)

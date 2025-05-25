@@ -165,11 +165,11 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
                 goToSetting()
             }
             "report_history" -> {
-                if (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All, "") == "Y"){
+//                if (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All, "") == "Y"){
                     mNavController.navigate(R.id.action_myProfileFragment_to_reportsHomeFragment)
-                }else{
-                    paidPlanDialog()
-                }
+//                }else{
+//                    paidPlanDialog()
+//                }
             }
             "edit_profile" -> {
                 mNavController.navigate(R.id.action_myProfileFragment_to_editProfileFragment)
