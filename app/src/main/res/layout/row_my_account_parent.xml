@@ -32,8 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:strokeWidth="0dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardElevation="@dimen/card_elevation"
+            app:cardElevation="@dimen/card_elevation2"
             android:layout_marginVertical="@dimen/activity_padding5"
             android:layout_marginEnd="@dimen/activity_padding5"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +52,7 @@
                     android:fontFamily="@font/font_bold"
                     android:includeFontPadding="false"
                     android:text="@{dataModel.menuTitle}"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/textSizeLarge"
                     tools:text="@string/more_" />
 

@@ -205,7 +205,6 @@
                 android:id="@+id/relAbacus"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_above="@+id/adView"
                 android:visibility="gone"
                 tools:visibility="gone">
 
@@ -280,15 +279,6 @@
 
 
             </RelativeLayout>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/adView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:background="@color/transparent"
-                android:visibility="gone"
-                tools:visibility="visible" />
 
             <RelativeLayout
                 android:id="@+id/linearQuestions"

@@ -3,9 +3,9 @@
     <!--<style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">-->
     <style name="AppTheme" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
 
         <!--<item name="editTextStyle">@style/App_EditTextStyle</item>-->
         <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
@@ -27,9 +27,9 @@
     </style>
     <style name="AppThemeLogin" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/white</item>
-        <item name="colorAccent">@color/colorAccent</item>
+<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+<!--        <item name="colorPrimaryDark">@color/white</item>-->
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
 
         <!--<item name="editTextStyle">@style/App_EditTextStyle</item>-->
         <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
@@ -68,7 +68,7 @@
         <item name="android:includeFontPadding">false</item>
     </style>
     <style name="btnExtraSmall">
-        <item name="fontFamily">@font/font_semibold</item>
+        <item name="fontFamily">@font/font_bold</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:includeFontPadding">false</item>
@@ -113,12 +113,12 @@
         <item name="android:paddingEnd">@dimen/button_medium_padding_lr</item>
     </style>
     <style name="Widget.App.Switch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
-        <item name="colorPrimary">@color/colorSwitch</item>
-        <item name="colorSurfaceVariant">@color/colorSwitch</item>
+<!--        <item name="colorPrimary">@color/colorSwitch</item>-->
+<!--        <item name="colorSurfaceVariant">@color/colorSwitch</item>-->
     </style>
     <style name="MyCheckBoxStyle" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <!-- Set your custom checked color here -->
-        <item name="colorPrimary">@color/colorSwitch</item> <!-- Purple -->
+<!--        <item name="colorPrimary">@color/colorSwitch</item> -->
     </style>
 
     <!--  Dailog  -->
@@ -204,7 +204,6 @@
         <item name="errorIconDrawable">@null</item>
         <item name="errorIconTint">@color/brand_alert</item>
         <item name="boxCollapsedPaddingTop">0dp</item>
-        <item name="boxStrokeColor">@color/textinputlayout_stroke_color</item>
         <item name="boxCornerRadiusBottomStart">12dp</item>
         <item name="boxCornerRadiusTopStart">12dp</item>
         <item name="boxCornerRadiusTopEnd">12dp</item>

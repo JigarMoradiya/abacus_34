@@ -22,7 +22,7 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="@dimen/menu_icons"
-            android:layout_height="@dimen/menu_icons"
+                android:layout_height="@dimen/menu_icons"
                 android:padding="@dimen/menu_icons_padding"
                 app:srcCompat="@drawable/ic_back" />
         </com.google.android.material.card.MaterialCardView>
@@ -76,7 +76,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/cardBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/cardBack"/>
+            app:layout_constraintTop_toTopOf="@+id/cardBack" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -104,9 +104,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/activity_padding12"
-                    android:fontFamily="@font/font_bold"
                     android:gravity="center"
                     android:text="@string/child_level"
+                    android:fontFamily="@font/font_bold"
                     android:textColor="@color/colorBlueDark"
                     android:textSize="@dimen/textSize20"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -127,10 +127,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/activity_padding6"
-                        android:fontFamily="@font/font_bold"
                         android:includeFontPadding="false"
                         android:text="@string/Number"
                         tools:checked="true"
+                        android:fontFamily="@font/font_bold"
                         android:theme="@style/MyCheckBoxStyle"
                         android:textColor="@color/black"
                         android:textSize="@dimen/textSizeLarge" />
@@ -242,6 +242,7 @@
                     android:layout_width="wrap_content"
                     android:layout_marginTop="@dimen/activity_padding12"
                     android:text="@string/let_s_start"
+                    android:backgroundTint="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rg"

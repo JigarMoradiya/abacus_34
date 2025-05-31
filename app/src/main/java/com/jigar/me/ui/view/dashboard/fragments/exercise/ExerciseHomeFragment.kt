@@ -86,7 +86,6 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
         with(prefManager){
             setCustomParam(AppConstants.Settings.TheamTempView,getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default))
             theme = getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
-
         }
 
         themeContent = DataProvider.findAbacusThemeType(requireContext(),theme,AbacusBeadType.Exercise)
@@ -264,7 +263,7 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
     override fun exerciseCompleteCloseDialog() {
         val currentPos = binding.viewPager.currentItem
         val list = exerciseLevelPagerAdapter.listData
-        exerciseLevelPagerAdapter = ExerciseLevelPagerAdapter(list,prefManager,this@ExerciseHomeFragment)
+        exerciseLevelPagerAdapter = ExerciseLevelPagerAdapter(list,prefManager,this@ExerciseHomeFragment,themeContent)
         binding.viewPager.adapter = exerciseLevelPagerAdapter
         binding.viewPager.currentItem = currentPos
 

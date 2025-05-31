@@ -29,7 +29,6 @@ import com.jigar.me.utils.DateTimeUtils
 import com.jigar.me.utils.Resource
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.onClick
-import com.jigar.me.utils.extensions.openYoutube
 import com.jigar.me.utils.extensions.show
 import com.jigar.me.utils.paging.EndlessRecyclerListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -104,9 +103,6 @@ class ReportsHomeFragment : BaseFragment(), ReportsListAdapter.OnItemClickListen
         with(binding){
             cardBack.onClick { onBack() }
             txtDateRange.onClick { openDatePicker() }
-            cardSettingTop.onClick { goToSetting() }
-            cardSubscribe.onClick { goToInAppPurchase() }
-            cardYoutube.onClick { requireContext().openYoutube() }
 
             recyclerview.addOnScrollListener(object :
                 EndlessRecyclerListener(recyclerview.layoutManager as LinearLayoutManager) {

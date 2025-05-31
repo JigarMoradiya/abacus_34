@@ -54,6 +54,7 @@
     <dimen name="textSize18">18sp</dimen>
     <dimen name="textSize20">20sp</dimen>
     <dimen name="textSize24">24sp</dimen>
+    <dimen name="textSize30">30sp</dimen>
     <dimen name="textSizeOTP">26sp</dimen>
     <dimen name="textSizeAbacusNumber">60sp</dimen>
     <dimen name="textSizeCCMNumber">40sp</dimen>
@@ -116,7 +117,7 @@
     <dimen name="exercise_number_dimen">32dp</dimen>
     <dimen name="exercise_number_text_dimen">@dimen/textSize20</dimen>
     <dimen name="ccm_number_dimen">32dp</dimen>
-    <dimen name="ccm_number_text_dimen">@dimen/textSize18</dimen>
+    <dimen name="ccm_number_text_dimen">@dimen/textSize20</dimen>
 
     <dimen name="home_menu_width">80dp</dimen>
     <dimen name="home_menu_height">80dp</dimen>
@@ -127,7 +128,7 @@
     <dimen name="home_menu_elevation">2dp</dimen>
     <dimen name="home_menu_margin">8dp</dimen>
     <dimen name="home_menu_corner">12dp</dimen>
-    <dimen name="exam_option_width">132dp</dimen>
+    <dimen name="exam_option_width">150dp</dimen>
     <dimen name="exam_option_round">40dp</dimen>
     <dimen name="exam_option_round_corner">20dp</dimen>
 
@@ -151,26 +152,26 @@
 
     <dimen name="box9SignSize">14dp</dimen>
     <dimen name="image_size_no_data_view">80dp</dimen>
-    <dimen name="text_size_no_data_view">@dimen/textSizeRegular</dimen>
+    <dimen name="text_size_no_data_view">@dimen/textSizeLarge</dimen>
 
     <dimen name="bGameSize9">72dp</dimen>
     <dimen name="bGameSize15">56dp</dimen>
     <dimen name="buttonSize24">48dp</dimen>
     <dimen name="button_margin">4dp</dimen>
 
-    <dimen name="button_medium_text_size">@dimen/textSizeRegular</dimen>
+    <dimen name="button_medium_text_size">@dimen/textSizeLarge</dimen>
     <dimen name="button_medium_height">40dp</dimen>
     <dimen name="button_medium_corner">20dp</dimen>
     <dimen name="button_medium_padding_lr">16dp</dimen>
 
-    <dimen name="button_small_text_size">@dimen/textSizeMedium</dimen>
+    <dimen name="button_small_text_size">@dimen/textSizeRegular</dimen>
     <dimen name="button_small_height">32dp</dimen>
     <dimen name="button_small_corner">16dp</dimen>
     <dimen name="button_small_padding_lr">12dp</dimen>
 
-    <dimen name="button_extra_small_text_size">@dimen/textSizeSmall</dimen>
-    <dimen name="button_extra_small_height">24dp</dimen>
-    <dimen name="button_extra_small_corner">12dp</dimen>
+    <dimen name="button_extra_small_text_size">@dimen/textSizeMedium</dimen>
+    <dimen name="button_extra_small_height">30dp</dimen>
+    <dimen name="button_extra_small_corner">16dp</dimen>
     <dimen name="button_extra_small_padding_lr">6dp</dimen>
 
 

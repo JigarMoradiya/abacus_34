@@ -36,6 +36,7 @@ class ExerciseLevelPagerAdapter(var listData: ArrayList<ExerciseLevel>, val pref
         val context = binding.root.context
         themeContent?.resetBtnColor8?.let{
             binding.txtTitle.setTextColor(ContextCompat.getColor(context,it))
+            binding.btnYes.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context,it))
         }
         with(listData[position]){
             binding.data = this

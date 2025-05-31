@@ -992,7 +992,7 @@
                 android:includeFontPadding="false"
                 android:text="0"
                 android:textColor="@color/white"
-                android:textSize="@dimen/textSizeRegular"
+                android:textSize="@dimen/textSizeLarge"
                 app:fontFamily="@font/font_extra_bold" />
 
 

@@ -39,17 +39,6 @@
             app:layout_constraintStart_toEndOf="@+id/cardBack"
             app:layout_constraintTop_toTopOf="@+id/cardBack" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/adView"
-            app:layout_constraintStart_toEndOf="@+id/txtTitle"
-            app:layout_constraintEnd_toStartOf="@+id/cardDownload"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerviewMaterial"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/transparent"
-            android:visibility="gone"
-            tools:visibility="visible"/>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardDownload"

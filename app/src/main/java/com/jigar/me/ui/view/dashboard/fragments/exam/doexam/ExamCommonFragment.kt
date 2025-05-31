@@ -265,7 +265,7 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
             override fun run() {
                 //do something
                 total_sec++
-                mBinding.txtTimer.text = resources.getString(R.string.Time) + " : " + total_sec.secToTimeFormat()
+                mBinding.txtTimer.text = total_sec.secToTimeFormat()
                 handler?.postDelayed(this, delay.toLong())
             }
         }

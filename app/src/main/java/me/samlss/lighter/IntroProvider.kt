@@ -201,7 +201,7 @@ object IntroProvider {
                     LighterParameter.Builder()
                         .setHighlightedView(settingView)
                         .setTipLayoutId(R.layout.layout_tip_setting)
-                        .setLighterShape(CircleShape())
+                        .setLighterShape(RectShape(corner, corner, corner))
                         .setTipViewRelativeDirection(Direction.LEFT)
                         .setTipViewDisplayAnimation(LighterHelper.getScaleAnimation())
                         .setTipViewRelativeOffset(MarginOffset(0, 0, 0, 0))

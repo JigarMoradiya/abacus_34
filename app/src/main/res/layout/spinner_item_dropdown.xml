@@ -8,6 +8,6 @@
     android:paddingHorizontal="@dimen/activity_padding12"
     android:paddingVertical="@dimen/activity_padding4"
     android:background="?attr/selectableItemBackgroundBorderless"
-    app:fontFamily="@font/font_semibold"
-    android:textSize="@dimen/textSizeMedium"
+    app:fontFamily="@font/font_bold"
+    android:textSize="@dimen/textSizeRegular"
     android:textColor="@color/black" />

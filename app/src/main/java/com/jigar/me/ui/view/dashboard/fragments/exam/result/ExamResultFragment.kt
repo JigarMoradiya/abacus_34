@@ -69,7 +69,7 @@ class ExamResultFragment : BaseFragment() {
                 val examResultLevel1Adapter = ExamResultLevel1Adapter(listAbacusLevel1,themeContent)
                 binding.recyclerviewResult.adapter = examResultLevel1Adapter
             }else{
-                val layoutManager = GridLayoutManager(requireContext(),8)
+                val layoutManager = GridLayoutManager(requireContext(),6)
                 layoutManager.spanSizeLookup = object : SpanSizeLookup() {
                     override fun getSpanSize(position: Int): Int {
                         return if (listAbacusLevel1[position].isAbacusQuestion == true) {

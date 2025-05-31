@@ -103,8 +103,9 @@
         android:layout_height="56dp"
         android:overScrollMode="never"
         android:scrollbars="none"
+        android:layout_marginEnd="@dimen/activity_padding16"
         app:layout_constraintBottom_toTopOf="@+id/indicatorPager"
-        app:layout_constraintEnd_toStartOf="@+id/linearTopEnd"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cardProfileImage"
         app:layout_constraintVertical_chainStyle="packed" />
 
@@ -122,77 +123,6 @@
         app:spi_dotSize="@dimen/activity_padding4"
         app:spi_dotSpacing="@dimen/activity_padding4"
         app:spi_looped="true" />
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linearTopEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="@dimen/icons_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardAboutUs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/icons_margin"
-            android:visibility="gone"
-            app:strokeWidth="0dp"
-            app:cardBackgroundColor="@color/light_setting"
-            app:cardCornerRadius="@dimen/menu_icons_corner"
-            app:cardElevation="@dimen/card_elevation"
-            app:cardMaxElevation="@dimen/card_elevation">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="@dimen/menu_icons"
-                android:layout_height="@dimen/menu_icons"
-                android:padding="@dimen/menu_icons_padding"
-                app:srcCompat="@drawable/ic_about_us_new" />
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardSettingTop"
-            android:layout_width="wrap_content"
-            app:strokeWidth="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/icons_margin"
-            app:cardBackgroundColor="@color/light_setting"
-            app:cardCornerRadius="@dimen/menu_icons_corner"
-            app:cardElevation="@dimen/card_elevation"
-            app:cardMaxElevation="@dimen/card_elevation">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="@dimen/menu_icons"
-                android:layout_height="@dimen/menu_icons"
-                android:padding="@dimen/menu_icons_padding"
-                app:srcCompat="@drawable/ic_menu_setting" />
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardSubscribe"
-            android:layout_width="wrap_content"
-            app:strokeWidth="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/icons_margin"
-            android:elevation="@dimen/card_elevation"
-            app:cardBackgroundColor="@color/light_subscribe"
-            app:cardCornerRadius="@dimen/menu_icons_corner"
-            app:cardMaxElevation="@dimen/card_elevation">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="@dimen/menu_icons"
-                android:layout_height="@dimen/menu_icons"
-                android:padding="@dimen/menu_icons_padding"
-                app:srcCompat="@mipmap/ic_menu_subscribe" />
-
-        </com.google.android.material.card.MaterialCardView>
-
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linearMenu"

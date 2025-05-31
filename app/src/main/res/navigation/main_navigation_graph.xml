@@ -156,12 +156,6 @@
         android:id="@+id/reportsHomeFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.reports.ReportsHomeFragment">
         <action
-            android:id="@+id/toSettingsFragment"
-            app:destination="@+id/settingsFragment" />
-        <action
-            android:id="@+id/toPurchaseFragment"
-            app:destination="@+id/purchaseFragment" />
-        <action
             android:id="@+id/action_reportsHomeFragment_to_examResultFragment"
             app:destination="@+id/examResultFragment" />
     </fragment>
@@ -259,14 +253,7 @@
     </fragment>
     <fragment
         android:id="@+id/faqsFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.faqs.FAQsFragment">
-        <action
-            android:id="@+id/toSettingsFragment"
-            app:destination="@+id/settingsFragment" />
-        <action
-            android:id="@+id/toPurchaseFragment"
-            app:destination="@+id/purchaseFragment" />
-    </fragment>
+        android:name="com.jigar.me.ui.view.dashboard.fragments.faqs.FAQsFragment"/>
     <fragment
         android:id="@+id/halfAbacusFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.abacus.half.HalfAbacusFragment">

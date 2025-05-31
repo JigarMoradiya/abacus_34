@@ -18,12 +18,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/activity_padding12"
         app:cardCornerRadius="@dimen/home_menu_corner"
         app:cardElevation="@dimen/activity_padding2"
+        app:strokeWidth="0dp"
+        app:cardBackgroundColor="@color/white"
         app:cardUseCompatPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView">
@@ -41,21 +43,19 @@
                 android:gravity="center"
                 android:text="@string/on_1st_rod"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textSizeExtraLarge"
+                android:textSize="@dimen/textSizeSuperExtraLarge"
                 app:fontFamily="@font/font_extra_bold" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:lineSpacingExtra="2sp"
-                android:layout_marginTop="@dimen/activity_padding2"
                 android:text="@string/light_rod1_text"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textSizeRegular"
+                android:textSize="@dimen/textSizeLarge"
                 app:fontFamily="@font/font_bold" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

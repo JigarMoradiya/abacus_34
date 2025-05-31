@@ -33,11 +33,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:lineSpacingExtra="2sp"
             android:padding="@dimen/activity_padding12"
             android:text="@string/take_exam_of_your_kid_s_to_check_ability_with_different_type"
             android:textColor="@color/black"
-            android:textSize="@dimen/textSizeRegular"
+            android:textSize="@dimen/textSizeLarge"
             app:fontFamily="@font/font_bold" />
 
 

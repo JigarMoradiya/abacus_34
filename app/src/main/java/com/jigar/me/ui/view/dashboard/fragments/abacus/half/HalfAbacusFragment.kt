@@ -1258,11 +1258,6 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
     // abacus ui rules
     @SuppressLint("SuspiciousIndentation")
     private fun setRightAbacusRules() {
-        val paramsAds = binding.adView.layoutParams as RelativeLayout.LayoutParams
-        paramsAds.addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
-        paramsAds.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
-        binding.adView.layoutParams = paramsAds
-
         val paramsAbacus = binding.relAbacus.layoutParams as RelativeLayout.LayoutParams
         paramsAbacus.addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
         paramsAbacus.addRule(RelativeLayout.CENTER_VERTICAL)
@@ -1349,12 +1344,6 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
             delay(400)
             binding.txtTitleHand.show()
         }
-
-        val paramsAds = binding.adView.layoutParams as RelativeLayout.LayoutParams
-        paramsAds.addRule(RelativeLayout.ALIGN_PARENT_START)
-        paramsAds.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
-        binding.adView.layoutParams = paramsAds
-
         val paramsAbacus = binding.relAbacus.layoutParams as RelativeLayout.LayoutParams
         paramsAbacus.addRule(RelativeLayout.ALIGN_PARENT_START)
         paramsAbacus.addRule(RelativeLayout.CENTER_VERTICAL)

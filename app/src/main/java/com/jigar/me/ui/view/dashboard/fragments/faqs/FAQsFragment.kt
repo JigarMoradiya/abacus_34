@@ -11,10 +11,7 @@ import com.jigar.me.data.local.data.DataProvider
 import com.jigar.me.databinding.FragmentFaqsBinding
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.onClick
-import com.jigar.me.utils.extensions.openYoutube
-import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -48,11 +45,6 @@ class FAQsFragment : BaseFragment() {
         adapter = FaqsListAdapter(DataProvider.getFaqsList(requireContext(),emailId))
         with(binding){
             recyclerview.adapter = adapter
-            if (prefManager.isUserLoggedIn()){
-                linearTopEnd.show()
-            }else{
-                linearTopEnd.hide()
-            }
         }
     }
 
@@ -60,9 +52,6 @@ class FAQsFragment : BaseFragment() {
     private fun initListener() {
         with(binding){
             cardBack.onClick { onBack() }
-            cardSettingTop.onClick { goToSetting() }
-            cardSubscribe.onClick { goToInAppPurchase() }
-            cardYoutube.onClick { requireContext().openYoutube() }
         }
     }
 

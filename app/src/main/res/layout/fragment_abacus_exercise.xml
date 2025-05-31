@@ -61,6 +61,7 @@
                 app:cardCornerRadius="@dimen/padding_radius_abacus_frame_large"
                 app:cardElevation="@dimen/activity_padding2"
                 app:cardMaxElevation="@dimen/activity_padding2"
+                app:strokeWidth="0dp"
                 app:cardUseCompatPadding="false">
 
                 <RelativeLayout

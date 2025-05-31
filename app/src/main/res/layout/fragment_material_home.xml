@@ -39,19 +39,6 @@
             app:layout_constraintStart_toEndOf="@+id/cardBack"
             app:layout_constraintTop_toTopOf="@+id/cardBack" />
 
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/adView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/transparent"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/scrollView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/txtTitle"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="visible" />
-
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="0dp"

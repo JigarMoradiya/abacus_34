@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,9 +11,9 @@
         android:layout_marginStart="@dimen/icons_margin2"
         android:layout_marginTop="@dimen/icons_margin2"
         android:adjustViewBounds="true"
+        app:layout_constraintBottom_toBottomOf="@+id/cardFAQs"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/cardFAQs"
         app:srcCompat="@drawable/logo_banner" />
 
     <com.google.android.material.card.MaterialCardView
@@ -25,10 +24,10 @@
         app:cardBackgroundColor="@color/light_faq"
         app:cardCornerRadius="@dimen/menu_icons_corner"
         app:cardElevation="@dimen/card_elevation"
-        app:layout_constraintTop_toTopOf="parent"
+        app:cardMaxElevation="@dimen/card_elevation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:strokeWidth="0dp"
-        app:cardMaxElevation="@dimen/card_elevation">
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeWidth="0dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="@dimen/menu_icons"
@@ -41,8 +40,8 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/txtTermsCondition"
         app:layout_constraintTop_toBottomOf="@+id/cardFAQs">
 
@@ -54,7 +53,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/activity_padding20">
+                android:paddingVertical="@dimen/activity_padding20">
 
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -76,30 +75,30 @@
                     android:id="@+id/txtTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding20"
                     android:gravity="center"
                     android:includeFontPadding="false"
-                    android:layout_marginTop="@dimen/activity_padding20"
                     android:text="@string/welcome_to_abacus_child_leaning_app_portraint"
                     android:textColor="@color/black_light"
                     android:textSize="@dimen/textSizeLarge"
                     app:fontFamily="@font/font_bold"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtWelcome" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/txtLable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_marginTop="@dimen/activity_padding6"
+                    android:gravity="center"
                     android:includeFontPadding="false"
                     android:text="@string/login_msg"
                     android:textColor="@color/black"
                     android:textSize="@dimen/textSizeRegular"
                     app:fontFamily="@font/font_semibold"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -107,7 +106,9 @@
                     style="@style/Widget.MyTheme.TextInputLayoutStyleWhite"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/activity_padding24"
+                    android:layout_marginHorizontal="@dimen/activity_padding10"
+                    android:layout_marginTop="@dimen/activity_padding20"
+                    android:padding="0dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtLable"
@@ -131,7 +132,9 @@
                     style="@style/Widget.MyTheme.TextInputLayoutStyleWhite"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_padding10"
                     android:layout_marginTop="@dimen/activity_padding16"
+                    android:padding="0dp"
                     app:endIconMode="password_toggle"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -158,6 +161,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/activity_padding6"
                     android:includeFontPadding="false"
+                    android:paddingHorizontal="@dimen/activity_padding20"
                     android:paddingVertical="@dimen/activity_padding6"
                     android:text="@string/forgot_password_"
                     android:textColor="@color/black"
@@ -170,10 +174,10 @@
                     android:id="@+id/btnSubmit"
                     style="@style/btnMedium"
                     android:layout_width="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding12"
                     android:text="@string/submit"
                     android:textColor="@color/white"
                     android:textSize="@dimen/textSizeExtraLarge"
-                    android:layout_marginTop="@dimen/activity_padding12"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtForgotPassword" />
@@ -188,25 +192,25 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/textSizeLarge"
                     app:fontFamily="@font/font_semibold"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/btnSubmit" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/txtSignup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding6"
                     android:gravity="center"
                     android:includeFontPadding="false"
                     android:padding="@dimen/activity_padding12"
                     android:text="@string/don_t_have_an_account_signup"
                     android:textColor="@color/black"
-                    android:layout_marginTop="@dimen/activity_padding6"
                     android:textSize="@dimen/textSizeExtraLarge"
-                    app:fontFamily="@font/font_regular"
                     android:visibility="gone"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:fontFamily="@font/font_regular"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/btnSubmit" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

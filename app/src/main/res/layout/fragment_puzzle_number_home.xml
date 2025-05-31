@@ -35,6 +35,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtTitle"
             style="@style/mainTitle"
+            android:textSize="@dimen/textSize24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/number_sequences_puzzle"
@@ -46,9 +47,9 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_padding16"
             android:overScrollMode="never"
             android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardBack">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,8 +58,8 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imgIcon"
-                    android:layout_width="@dimen/_56dp"
-                    android:layout_height="@dimen/_56dp"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -69,11 +70,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/activity_padding16"
-                    android:fontFamily="@font/font_semibold"
                     android:gravity="center"
                     android:text="@string/select_the_puzzle_dashboard"
+                    android:fontFamily="@font/font_bold"
                     android:textColor="@color/colorBlueDark"
-                    android:textSize="@dimen/textSizeSuperExtraLarge"
+                    android:textSize="@dimen/textSize20"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imgIcon" />
@@ -87,7 +88,7 @@
                     android:gravity="center"
                     android:text="@string/arrange_all_the_numbers_of_puzzle_in_ascending_order"
                     android:textColor="@color/dark_bg_red"
-                    android:textSize="@dimen/textSizeRegular"
+                    android:textSize="@dimen/textSizeLarge"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtSelect" />
@@ -112,7 +113,7 @@
                     android:gravity="center"
                     android:text="@string/_3_x_3_puzzle"
                     android:textColor="@color/pink_400"
-                    android:textSize="@dimen/textSizeMedium"
+                    android:textSize="@dimen/textSizeRegular"
                     app:layout_constraintEnd_toEndOf="@+id/img9"
                     app:layout_constraintStart_toStartOf="@+id/img9"
                     app:layout_constraintTop_toBottomOf="@+id/img9" />
@@ -137,7 +138,7 @@
                     android:gravity="center"
                     android:text="@string/_4_x_4_puzzle"
                     android:textColor="@color/orange_800"
-                    android:textSize="@dimen/textSizeMedium"
+                    android:textSize="@dimen/textSizeRegular"
                     app:layout_constraintEnd_toEndOf="@+id/img16"
                     app:layout_constraintStart_toStartOf="@+id/img16"
                     app:layout_constraintTop_toBottomOf="@+id/img16" />
@@ -161,7 +162,7 @@
                     android:gravity="center"
                     android:text="@string/_5_x_5_puzzle"
                     android:textColor="@color/indigo_500"
-                    android:textSize="@dimen/textSizeMedium"
+                    android:textSize="@dimen/textSizeRegular"
                     app:layout_constraintEnd_toEndOf="@+id/img25"
                     app:layout_constraintStart_toStartOf="@+id/img25"
                     app:layout_constraintTop_toBottomOf="@+id/img25" />
@@ -169,15 +170,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </ScrollView>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/adView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/transparent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

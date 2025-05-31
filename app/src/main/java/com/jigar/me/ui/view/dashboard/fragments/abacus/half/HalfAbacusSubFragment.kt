@@ -326,8 +326,11 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     }
 
     private fun onSubmitAnswerClick() {
+        val userAnswer = binding.tvCurrentVal.text.toString()
+        fromValue = 0
+        binding.tvCurrentVal.text = "0"
         binding.ivSubmitAnswer.setAbacusResetShakeAnimation(true)
-        onAbacusValueChangeListener?.onAbacusSubmitValue(binding.tvCurrentVal.text.toString())
+        onAbacusValueChangeListener?.onAbacusSubmitValue(userAnswer)
     }
 
     // TODO for Division

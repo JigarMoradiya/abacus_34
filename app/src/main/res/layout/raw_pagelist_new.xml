@@ -37,12 +37,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_padding8"
             android:layout_marginVertical="@dimen/activity_padding10"
-            app:cardBackgroundColor="@color/colorAccent"
             app:cardCornerRadius="@dimen/card_corner_radius8"
-            app:cardElevation="0dp"
+            app:cardElevation="@dimen/card_elevation2"
             app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="@color/colorAccent"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="20dp"
@@ -74,7 +72,7 @@
                         android:adjustViewBounds="true"
                         android:layout_gravity="center_vertical"
                         app:srcCompat="@drawable/ic_level_icon"
-                        app:tint="@color/white" />
+                        app:tint="@color/black" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -95,7 +93,7 @@
                             android:autoSizeMaxTextSize="@dimen/textSizeSuperExtraLarge"
                             android:autoSizeStepGranularity="1sp"
                             android:text="@{dataModel.name}"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black"
                             app:fontFamily="@font/font_bold"
                             tools:text="Lesson 1" />
 
@@ -105,7 +103,7 @@
                             android:layout_height="wrap_content"
                             android:maxLines="1"
                             android:text="@{dataModel.description}"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black"
                             app:lineHeight="15sp"
                             android:autoSizeTextType="uniform"
                             android:autoSizeMinTextSize="@dimen/textSizeVeryExtraSmall"
@@ -129,11 +127,16 @@
 
                 </LinearLayout>
 
+                <View
+                    android:background="@color/black"
+                    android:alpha="0.1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerviewSet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/orange_50"
                     android:orientation="vertical"
                     android:overScrollMode="never"
                     android:padding="@dimen/activity_padding6"

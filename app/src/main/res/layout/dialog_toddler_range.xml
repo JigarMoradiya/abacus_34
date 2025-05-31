@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/activity_padding16"
                 style="@style/mainTitle"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:text="@string/txt_Toddler_Range" />

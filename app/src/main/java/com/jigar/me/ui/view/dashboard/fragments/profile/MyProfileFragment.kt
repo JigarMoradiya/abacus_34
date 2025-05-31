@@ -143,16 +143,6 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
             }
         }
     }
-    private fun paidPlanDialog() {
-        CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.txt_purchase_alert), getString(R.string.need_paid_plan_msg),
-            getString(R.string.yes_i_want_to_purchase),getString(R.string.no_purchase_later), icon = R.drawable.ic_alert_not_purchased,
-            clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
-                override fun onConfirmationYesClick(bundle: Bundle?) {
-                    goToInAppPurchase()
-                }
-                override fun onConfirmationNoClick(bundle: Bundle?) = Unit
-            })
-    }
     override fun onMenuItemClick(tag: String) {
         when (tag) {
             "faqs" -> {
@@ -165,11 +155,7 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
                 goToSetting()
             }
             "report_history" -> {
-//                if (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All, "") == "Y"){
-                    mNavController.navigate(R.id.action_myProfileFragment_to_reportsHomeFragment)
-//                }else{
-//                    paidPlanDialog()
-//                }
+                mNavController.navigate(R.id.action_myProfileFragment_to_reportsHomeFragment)
             }
             "edit_profile" -> {
                 mNavController.navigate(R.id.action_myProfileFragment_to_editProfileFragment)

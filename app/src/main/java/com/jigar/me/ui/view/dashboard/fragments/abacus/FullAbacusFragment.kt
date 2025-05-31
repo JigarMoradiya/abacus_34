@@ -117,7 +117,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         swReset.onClick { switchResetClick() }
         swResetStarting.onClick { switchResetStartingClick() }
         swFreeMode.onClick { switchFreeMode() }
-        swDecimalMode.onClick { switchDecimalMode() }
+//        swDecimalMode.onClick { switchDecimalMode() }
         txtRange.onClick { rangeClick() }
     }
     private fun resetClick() {
@@ -152,44 +152,44 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         }
         setSwitchs()
     }
-    private fun switchDecimalMode() {
-        with(prefManager){
-            if (getCustomParam(AppConstants.Settings.SW_DecimalMode,"N") == "Y") {
-                prefManager.setCustomParam(AppConstants.Settings.SW_DecimalMode, "N")
-                binding.swDecimalMode.isChecked = false
-            } else {
-                setCustomParam(AppConstants.Settings.SW_DecimalMode, "Y")
-                binding.swDecimalMode.isChecked = true
-            }
-            with(prefManager){
-                if (getCustomParam(AppConstants.Settings.SW_Random,"") != "Y") {
-                    values = getCustomParamFloat(AppConstants.Settings.Toddler_No,1.0F)
-                    if (values > 9999999) {
-                        values = getCustomParamFloat(AppConstants.Settings.SW_Range_min,1.0F)
-                    }
-                    valuesFinal = if (prefManager.getCustomParam(AppConstants.Settings.SW_DecimalMode,"N") == "Y") {
-                        values / 1000000
-                    }else{
-                        values
-                    }
-                } else if (getCustomParam(AppConstants.Settings.SW_Random,"") == "Y") {
-                    random_min = getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F)
-                    random_max = getCustomParamFloat(AppConstants.Settings.SW_Range_max,101F)
-                    values = genrateRandom().toFloat()
-                    valuesFinal = if (prefManager.getCustomParam(AppConstants.Settings.SW_DecimalMode,"N") == "Y") {
-                        values / 1000000
-                    }else{
-                        values
-                    }
-                }
-            }
-            setNumberValue()
-            if (prefManager.getCustomParam(AppConstants.Settings.SW_FreeMode,"Y") != "Y") {
-                goToNextValue()
-            }
-            setAbacus()
-        }
-    }
+//    private fun switchDecimalMode() {
+//        with(prefManager){
+//            if (getCustomParam(AppConstants.Settings.SW_DecimalMode,"N") == "Y") {
+//                prefManager.setCustomParam(AppConstants.Settings.SW_DecimalMode, "N")
+//                binding.swDecimalMode.isChecked = false
+//            } else {
+//                setCustomParam(AppConstants.Settings.SW_DecimalMode, "Y")
+//                binding.swDecimalMode.isChecked = true
+//            }
+//            with(prefManager){
+//                if (getCustomParam(AppConstants.Settings.SW_Random,"") != "Y") {
+//                    values = getCustomParamFloat(AppConstants.Settings.Toddler_No,1.0F)
+//                    if (values > 9999999) {
+//                        values = getCustomParamFloat(AppConstants.Settings.SW_Range_min,1.0F)
+//                    }
+//                    valuesFinal = if (prefManager.getCustomParam(AppConstants.Settings.SW_DecimalMode,"N") == "Y") {
+//                        values / 1000000
+//                    }else{
+//                        values
+//                    }
+//                } else if (getCustomParam(AppConstants.Settings.SW_Random,"") == "Y") {
+//                    random_min = getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F)
+//                    random_max = getCustomParamFloat(AppConstants.Settings.SW_Range_max,101F)
+//                    values = genrateRandom().toFloat()
+//                    valuesFinal = if (prefManager.getCustomParam(AppConstants.Settings.SW_DecimalMode,"N") == "Y") {
+//                        values / 1000000
+//                    }else{
+//                        values
+//                    }
+//                }
+//            }
+//            setNumberValue()
+//            if (prefManager.getCustomParam(AppConstants.Settings.SW_FreeMode,"Y") != "Y") {
+//                goToNextValue()
+//            }
+//            setAbacus()
+//        }
+//    }
 
     private fun rangeClick() {
         ToddlerRangeDialog.showPopup(requireActivity(),
@@ -254,7 +254,15 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
 //        abacusBinding?.imgKidLeft?.show()
 //        abacusBinding?.imgKidHandLeft?.show()
 
-        abacusBinding?.ivReset?.onClick { resetClick()}
+        abacusBinding?.ivReset?.onClick {
+            abacusBinding?.viewDirection?.hide()
+            resetClick()
+
+            if (prefManager.getCustomParam(AppConstants.Settings.SW_FreeMode, "Y") != "Y") {
+                abacusBinding?.tvCurrentVal?.text = "0"
+                goToNextValue()
+            }
+        }
 
         abacusBinding?.rlAbacusMain?.setBackgroundResource(themeContent.abacusFrame135)
         abacusBinding?.ivDivider?.setBackgroundColor(ContextCompat.getColor(requireContext(),themeContent.dividerColor1))
@@ -584,6 +592,8 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
 
     // TODO abacus tour
     private fun setThemeLighterTopBeads() {
+        abacusBinding?.viewDirection?.hide()
+
         isTourPageRunning = true
         lighter = Lighter.with(binding.root as ViewGroup)
         abacusBinding?.let {
@@ -854,6 +864,8 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
                     AbacusUtils.setNumber("0",it.abacusTop,it.abacusBottom,totalLength = abacusTotalColumns)
                     prefManager.setCustomParamBoolean(AppConstants.Settings.isFreeModeTourWatch, true)
                     isTourPageRunning = false
+
+                    setFreeMode()
                 }
             })
         }

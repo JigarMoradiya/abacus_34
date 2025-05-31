@@ -28,7 +28,7 @@
                 android:text="Time Left : "
                 android:textColor="@color/black"
                 android:textSize="@dimen/textSizeMedium"
-                app:fontFamily="@font/font_semibold" />
+                app:fontFamily="@font/font_bold" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txtTimer"
@@ -44,20 +44,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/activity_padding16"
-            app:layout_constraintBottom_toTopOf="@+id/adView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/adView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/transparent"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cardMain"
-            tools:visibility="visible" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <RelativeLayout
             android:id="@+id/cardMain"
@@ -88,8 +77,8 @@
                     android:paddingEnd="0dp"
                     android:text="Q1"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textSizeExtraLarge"
-                    app:fontFamily="@font/font_medium"
+                    android:textSize="@dimen/textSizeSuperExtraLarge"
+                    app:fontFamily="@font/font_bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -113,6 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/activity_padding12"
+                    android:layout_marginTop="@dimen/activity_padding12"
                     android:orientation="vertical"
                     android:overScrollMode="never"
                     android:scrollbars="none"
@@ -332,11 +322,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/activity_padding8"
-                    android:fontFamily="@font/font_regular"
+                    android:fontFamily="@font/font_medium"
                     android:includeFontPadding="false"
                     android:text="@string/answer"
                     android:textColor="@color/green_700"
-                    android:textSize="@dimen/textSizeMedium"
+                    android:textSize="@dimen/textSizeRegular"
                     app:layout_constraintBottom_toBottomOf="@+id/tvAnswer"
                     app:layout_constraintEnd_toStartOf="@+id/tvAnswer"
                     app:layout_constraintTop_toTopOf="@+id/tvAnswer" />
@@ -349,7 +339,7 @@
                     android:fontFamily="@font/font_extra_bold"
                     android:includeFontPadding="false"
                     android:textColor="@color/green_700"
-                    android:textSize="@dimen/textSizeRegular"
+                    android:textSize="@dimen/textSizeSuperExtraLarge"
                     app:layout_constraintBottom_toBottomOf="@+id/txtNext"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/txtNext"

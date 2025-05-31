@@ -65,11 +65,11 @@
     <color name="handle_divider">#E3E3E3</color>
 
     <color name="step_by_step_answer">@color/blue_600</color>
-    <color name="final_answer">@color/purple_600</color>
-    <color name="formal_exam">@color/red_600</color>
+    <color name="final_answer">@color/teal_600</color>
+    <color name="formal_exam">#C659A7</color>
     <color name="step_by_step_answer_light">@color/blue_600</color>
-    <color name="final_answer_light">@color/purple_600</color>
-    <color name="formal_exam_light">@color/red_600</color>
+    <color name="final_answer_light">@color/teal_600</color>
+    <color name="formal_exam_light">#C659A7</color>
 
     <!--  Home menu  -->
     <color name="doneTick">#196E02</color>

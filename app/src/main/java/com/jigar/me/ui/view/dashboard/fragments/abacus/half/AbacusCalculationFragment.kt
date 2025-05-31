@@ -1012,7 +1012,13 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                                 questions = questionsList
                                 examViewModel.submitAllExam(submitExamRequest)
                             }else{
-                                retry_count = setProgress?.retry_count?:1
+                                if (setProgress == null){
+                                    retry_count = 1
+                                }else if(setProgress?.is_set_completed == true){
+                                    retry_count =  (setProgress?.retry_count?:0)+1
+                                }else{
+                                    retry_count = setProgress?.retry_count?:1
+                                }
                                 if (setDetail?.show_time_setting == true){
                                     total_time_taken = total_sec.toInt()
                                 }
@@ -1050,9 +1056,10 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                             retryCounts = setProgress?.retry_count?:1
                             setProgress?.latest_abacus_id = list_abacus[current_pos].id
                         }
+                        setProgress?.retry_count = retryCounts
                         if (current_pos > 0 && (current_pos % 5 == 0)){
+                            retry_count = retryCounts
                             if (setDetail?.answer_setting != AppConstants.apiParams.answerFormalAnswer){
-                                retry_count = retryCounts
                                 if (setDetail?.show_time_setting == true){
                                     total_time_taken = total_sec.toInt()
                                 }
@@ -1097,8 +1104,8 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     override fun onAbacusSubmitValue(userAnswer : String) {
         CoroutineScope(Dispatchers.Main).launch {
             appViewModel.updateUserAnswer(currentAbacus.id,userAnswer)
-            reset()
-            goToNextAbacus()
+            isMoveNext = true
+            resetOrMoveNext()
         }
     }
 
@@ -1159,10 +1166,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     }
 
     override fun onAbacusValueDotReset() {
-        resetOrMoveNext()
-    }
-
-    private fun  resetOrMoveNext() {
         if (abacusType == AppConstants.extras_Comman.AbacusTypeNumber) {
             if (binding.tvAnsNumber.text.toString() == abacus_number.toString()) {
                 isMoveNext = true
@@ -1172,6 +1175,10 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 isMoveNext = true
             }
         }
+        resetOrMoveNext()
+    }
+
+    private fun  resetOrMoveNext() {
         // speak 1st question
         if (!isMoveNext){
             lifecycleScope.launch {

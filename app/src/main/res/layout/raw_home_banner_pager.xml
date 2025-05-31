@@ -22,20 +22,20 @@
             app:cardCornerRadius="@dimen/activity_padding4"
             app:cardElevation="@dimen/home_menu_elevation">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@{data.background}"
+                android:orientation="horizontal"
                 tools:background="@drawable/gradient_banner_bg_share_now"
                 android:paddingHorizontal="@dimen/activity_padding6">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:gravity="center_vertical|start"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginEnd="@dimen/activity_padding6"
-                    android:layout_toStartOf="@+id/btnRight"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <com.google.android.material.textview.MaterialTextView
@@ -66,28 +66,24 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <com.google.android.material.button.MaterialButton
+                    style="@style/btnExtraSmall"
                     android:id="@+id/btnRight"
-                    android:layout_width="64dp"
-                    android:layout_height="24dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginEnd="5dp"
-                    android:layout_centerVertical="true"
-                    android:backgroundTint="@color/white"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
+                    android:layout_width="wrap_content"
+                    android:elevation="@dimen/card_elevation"
                     android:letterSpacing="0"
-                    android:paddingHorizontal="0dp"
-                    android:shadowColor="@color/black"
-                    android:shadowRadius="0.05"
-                    android:text="@{data.btnText}"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="5dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="@dimen/activity_padding8"
+                    tools:text="@string/checkResult"
+                    android:paddingEnd="@dimen/activity_padding8"
                     android:textAllCaps="false"
                     android:textColor="#4C4A8F"
-                    android:textSize="@dimen/textSizeExtraSmall"
-                    app:cornerRadius="@dimen/card_corner_radius14"
-                    app:fontFamily="@font/font_bold"
-                    tools:text="@string/rate_now" />
-            </RelativeLayout>
+                    app:backgroundTint="@color/white"
+                    android:backgroundTint="@color/white"
+                    android:text="@{data.btnText}"
+                    app:textAllCaps="false" />
+            </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img"

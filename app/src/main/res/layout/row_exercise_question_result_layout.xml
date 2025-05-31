@@ -33,22 +33,22 @@
                 android:id="@+id/tvQuestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/font_medium"
+                android:fontFamily="@font/font_semibold"
                 android:includeFontPadding="false"
                 android:text="456"
                 android:textColor="@color/colorHeadingBlack_00"
-                android:textSize="@dimen/textSizeSmall"
+                android:textSize="@dimen/textSizeRegular"
                 android:visibility="gone" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvQuestionSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/font_medium"
+                android:fontFamily="@font/font_semibold"
                 android:includeFontPadding="false"
                 android:text="456"
                 android:textColor="@color/colorHeadingBlack_00"
-                android:textSize="@dimen/textSizeExtraSmall"
+                android:textSize="@dimen/textSizeMedium"
                 android:visibility="visible" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 

@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.InsetDrawable
 import android.view.Gravity
+import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
@@ -27,7 +28,6 @@ object ExerciseCompleteDialog {
     var alertdialog: AlertDialog? = null
 
     fun showPopup(context: Context,resultType : String?, listExercise : MutableList<ExerciseList>, listener: ExerciseCompleteDialogInterface) {
-
         val alertLayout = DialogExerciseCompleteBinding.inflate(context.layoutInflater,null,false)
         val alertBuilder = AlertDialog.Builder(context)
         alertBuilder.setView(alertLayout.root)
@@ -37,8 +37,6 @@ object ExerciseCompleteDialog {
         }
 
         if (resultType == AppConstants.apiParams.answerFormalAnswer || listExercise.first().question.contains("x") || listExercise.first().question.contains("*") || listExercise.first().question.contains("/")){
-            alertLayout.recyclerview.show()
-            alertLayout.recyclerviewAddition.hide()
             if (listExercise.size > 5){
                 alertLayout.recyclerview.layoutManager = GridLayoutManager(context,2)
             }else{
@@ -48,11 +46,9 @@ object ExerciseCompleteDialog {
             val adapter = ExerciseMultiplicationDivisionResultAdapter(listExercise)
             alertLayout.recyclerview.adapter = adapter
         }else{
-            alertLayout.recyclerview.hide()
-            alertLayout.recyclerviewAddition.show()
-            alertLayout.recyclerviewAddition.layoutManager = GridLayoutManager(context,listExercise.size)
+            alertLayout.recyclerview.layoutManager = GridLayoutManager(context,5)
             val adapter = ExerciseAdditionSubtractionResultAdapter(listExercise)
-            alertLayout.recyclerviewAddition.adapter = adapter
+            alertLayout.recyclerview.adapter = adapter
         }
 
         alertLayout.tvClose.onClick {
@@ -62,33 +58,40 @@ object ExerciseCompleteDialog {
 
         alertBuilder.setView(alertLayout.root)
         alertBuilder.setCancelable(false)
-        alertdialog = alertBuilder.show()
+        alertdialog = alertBuilder.create()
+
         val windows = alertdialog?.window
         val colorD = ColorDrawable(Color.TRANSPARENT)
         val insetD = if (listExercise.first().question.contains("x") || listExercise.first().question.contains("*")){
             if (listExercise.size > 5){
-                InsetDrawable(colorD, 100.dp, 0, 100.dp, 0)
+                InsetDrawable(colorD, 100.dp, 40.dp, 100.dp, 10.dp)
             }else{
-                InsetDrawable(colorD,250.dp, 0, 250.dp, 0)
+                InsetDrawable(colorD,150.dp, 40.dp, 150.dp, 10.dp)
             }
         }else{
             if (listExercise.size > 5){
-                InsetDrawable(colorD, 50.dp, 0, 50.dp, 0)
+                InsetDrawable(colorD, 50.dp, 40.dp, 50.dp, 10.dp)
             }else{
-                InsetDrawable(colorD,150.dp, 0, 150.dp, 0)
+                InsetDrawable(colorD,150.dp, 40.dp, 150.dp, 10.dp)
             }
         }
 
 
         windows?.setBackgroundDrawable(insetD)
-        // Setting Animation for Appearing from Center
+//         Setting Animation for Appearing from Center
         windows?.attributes?.windowAnimations = R.style.DialogAppearFromCenter
-        // Positioning it in Bottom Right
-        val wlp = windows?.attributes
-        wlp?.width = WindowManager.LayoutParams.MATCH_PARENT
-        wlp?.height = WindowManager.LayoutParams.WRAP_CONTENT
-        wlp?.gravity = Gravity.CENTER
-        windows?.attributes = wlp
+//         Positioning it in Bottom Right
+//        val wlp = windows?.attributes
+//        wlp?.width = WindowManager.LayoutParams.MATCH_PARENT
+//        wlp?.height = WindowManager.LayoutParams.MATCH_PARENT
+//        windows?.attributes = wlp
+        alertdialog?.setOnShowListener {
+            alertdialog?.window?.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            alertdialog?.window?.setGravity(Gravity.CENTER)
+        }
         alertdialog?.show()
     }
 

@@ -3,96 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardHint"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/activity_padding12"
-        app:cardElevation="@dimen/card_elevation"
-        app:cardMaxElevation="@dimen/card_elevation"
-        app:strokeWidth="0dp"
-        app:cardUseCompatPadding="true">
+        app:cardElevation="@dimen/card_elevation2"
+        app:cardUseCompatPadding="true"
+        app:strokeWidth="0dp">
 
-        <androidx.core.widget.NestedScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:overScrollMode="never"
-            android:scrollbars="none">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvTitle"
                     style="@style/mainTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
                     android:layout_marginTop="@dimen/activity_padding8"
-                    android:text="@string/result_of_exercise"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:text="@string/result_of_exercise" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvClose"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
                     android:drawableStart="@drawable/ic_close_small"
                     android:drawableTint="@color/colorListingHeading"
-                    app:fontFamily="@font/font_bold"
                     android:gravity="center"
                     android:includeFontPadding="false"
                     android:paddingHorizontal="@dimen/activity_padding12"
+                    android:paddingVertical="@dimen/activity_padding8"
                     android:text="@string/close"
                     android:textColor="@color/colorListingHeading"
                     android:textSize="@dimen/textSizeMedium"
-                    app:layout_constraintBottom_toTopOf="@+id/relList"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:fontFamily="@font/font_bold" />
+            </RelativeLayout>
 
-                <RelativeLayout
-                    android:id="@+id/relList"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/activity_padding8"
-                    android:layout_marginTop="@dimen/activity_padding8"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvTitle">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/activity_padding8"
+                android:layout_marginBottom="@dimen/activity_padding8"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                tools:itemCount="4"
+                tools:listitem="@layout/row_exercise_result_mul_div" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerview"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:overScrollMode="never"
-                        android:scrollbars="none"
-                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                        app:spanCount="2"
-                        tools:itemCount="4"
-                        tools:listitem="@layout/row_exercise_result_mul_div" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerviewAddition"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:overScrollMode="never"
-                        android:scrollbars="none"
-                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                        app:spanCount="10"
-                        tools:itemCount="10"
-                        tools:listitem="@layout/row_exercise_result" />
-                </RelativeLayout>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/activity_padding4"
-                    app:layout_constraintTop_toBottomOf="@+id/relList" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

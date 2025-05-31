@@ -45,7 +45,7 @@
             android:id="@+id/recyclerview"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="@dimen/activity_padding8"
+            android:layout_margin="@dimen/activity_padding5"
             android:paddingVertical="@dimen/activity_padding4"
             android:orientation="vertical"
             android:overScrollMode="never"

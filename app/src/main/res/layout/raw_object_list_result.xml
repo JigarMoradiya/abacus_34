@@ -10,8 +10,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgObjectExtraSmall"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             app:srcCompat="@drawable/animal_ant" />
 
 

@@ -170,10 +170,6 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
             txtWelcomeMsg.onClick { txtMyAccount.performClick() }
             txtMyAccount.onClick { moveToClick(AppConstants.HomeClicks.Menu_My_Profile) }
             cardEditImage.onClick { txtMyAccount.performClick() }
-
-            cardSettingTop.onClick { moveToClick(AppConstants.HomeClicks.Menu_Setting) }
-            cardSubscribe.onClick { moveToClick(AppConstants.HomeClicks.Menu_Subscribe) }
-            cardAboutUs.onClick { moveToClick(AppConstants.HomeClicks.Menu_AboutUs) }
             txtOtherApps.onClick { OtherApplicationBottomSheet.showPopup(requireActivity()) }
             txtWelcomeTitle.onClick {
                 if (BuildConfig.DEBUG) {
@@ -382,24 +378,14 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                         layoutId = R.layout.layout_tip_number_sequence
                     }
                     HomeMenuIntroType.purchase -> {
-//                        view = binding.cardSubscribe
-//                        directions = Direction.LEFT
-//                        layoutId = R.layout.layout_tip_purchase
-//                        type = "circle"
-
                         view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(7) as HomeMenuNewAdapter.ViewHolder).binding.conMain
                         directions = Direction.LEFT
                         layoutId = R.layout.layout_tip_purchase
                     }
                     HomeMenuIntroType.setting -> {
-//                        view = binding.cardSettingTop
-//                        directions = Direction.LEFT
-//                        layoutId = R.layout.layout_tip_setting
-//                        type = "circle"
                         view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(8) as HomeMenuNewAdapter.ViewHolder).binding.conMain
                         directions = Direction.LEFT
                         layoutId = R.layout.layout_tip_setting
-
                     }
                     HomeMenuIntroType.ccm -> {
                         view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(4) as HomeMenuNewAdapter.ViewHolder).binding.conMain
@@ -493,8 +479,10 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
         val ccmViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(4)
         val numberPuzzleViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(5)
         val videoTutorialViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(6)
+        val settingViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(8)
         if (freeModeViewHolder != null && exerciseViewHolder != null && examViewHolder != null && videoTutorialViewHolder != null && numberPuzzleViewHolder != null && ccmViewHolder != null){
-            IntroProvider.newHomeMenuIntro(prefManager,lighter, binding.cardSettingTop,
+            IntroProvider.newHomeMenuIntro(prefManager,lighter,
+                (settingViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
                 (freeModeViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
                 (abacusPracticeViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
                 (videoTutorialViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
