@@ -31,7 +31,9 @@ import com.jigar.me.ui.viewmodel.StudentViewModel
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Resource
+import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.markRequiredInRed
+import com.jigar.me.utils.extensions.markRequiredRemove
 import com.jigar.me.utils.extensions.onClick
 import dagger.hilt.android.AndroidEntryPoint
 import org.greenrobot.eventbus.EventBus
@@ -121,12 +123,6 @@ class LoginCompleteProfileFragment : BaseFragment() {
                 cityList.clear()
                 getStateList()
             }
-            etState.doAfterTextChanged {
-                selectedCityKey = null
-                cityList.clear()
-                etCity.setText("")
-                getCityList()
-            }
             etState.onClick {
                 stateDialog()
             }
@@ -184,13 +180,18 @@ class LoginCompleteProfileFragment : BaseFragment() {
             } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 validate = false
                 CommonUtils.setErrorToEditText(tilEmail,getString(R.string.please_enter_valid_email_id))
-            }else if (TextUtils.isEmpty(state)) {
-                validate = false
-                CommonUtils.setErrorToEditText(tilState,getString(R.string.please_select_state))
-            }else if (TextUtils.isEmpty(city)) {
-                validate = false
-                CommonUtils.setErrorToEditText(tilCity,getString(R.string.please_select_city))
+            }else{
+                if (stateList.isNotNullOrEmpty()){
+                    if (TextUtils.isEmpty(state)) {
+                        validate = false
+                        CommonUtils.setErrorToEditText(tilState,getString(R.string.please_select_state))
+                    }else if (TextUtils.isEmpty(city)) {
+                        validate = false
+                        CommonUtils.setErrorToEditText(tilCity,getString(R.string.please_select_city))
+                    }
+                }
             }
+
         }
         return validate
     }
@@ -266,9 +267,13 @@ class LoginCompleteProfileFragment : BaseFragment() {
     private fun stateDialog() {
         SingleSelectionCommonDialog.showPopup(requireActivity(),stateList,getString(R.string.select_state),selectedStateKey,object : SingleSelectAdapter.ItemSelectInterface{
             override fun onItemSelectClick(selectedData: KeyValuePair) {
+
+                selectedCityKey = null
+                cityList.clear()
+                binding.etCity.setText("")
+
                 binding.etState.setText(selectedData.name)
                 selectedStateKey = selectedData.key
-                Log.e("jigarLogs","selectedStateKey = "+selectedStateKey)
                 getCityList()
             }
         },true)
@@ -279,7 +284,6 @@ class LoginCompleteProfileFragment : BaseFragment() {
             override fun onItemSelectClick(selectedData: KeyValuePair) {
                 binding.etCity.setText(selectedData.name)
                 selectedCityKey = selectedData.name
-                Log.e("jigarLogs","selectedCityKey = "+selectedCityKey)
             }
         },true)
     }
@@ -293,12 +297,23 @@ class LoginCompleteProfileFragment : BaseFragment() {
         }
     }
 
-    private fun setState(data: JsonObject?) {
+    private fun setState(data: JsonObject?) = with(binding){
         if (data?.has("data") == true){
             stateList = Gson().fromJson(
                 data.getAsJsonArray("data"), object :
                     TypeToken<ArrayList<KeyValuePair>>() {}.type
             )
+        }
+        tilState.hint = getString(R.string.state)
+        tilCity.hint = getString(R.string.city)
+        etState.hint = getString(R.string.state)
+        etCity.hint = getString(R.string.city)
+        if (stateList.isEmpty()){
+            tilCity.markRequiredRemove()
+            tilState.markRequiredRemove()
+        }else{
+            tilCity.markRequiredInRed()
+            tilState.markRequiredInRed()
         }
     }
 

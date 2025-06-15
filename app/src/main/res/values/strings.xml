@@ -824,6 +824,7 @@
     <string name="plan_assign_from_admin">Plan assign from Admin.</string>
     <string name="display_bead_direction">Display Bead Direction</string>
     <string name="your_answer">Your Answer :</string>
+    <string name="time">Time :</string>
 
 
 </resources>

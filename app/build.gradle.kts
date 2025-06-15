@@ -14,12 +14,12 @@ plugins {
 
 android {
     namespace = "com.jigar.me"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.jigar.me"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -60,8 +60,8 @@ android {
 
             dimension = "variant1"
             applicationId = "com.abacus.puzzle"
-            versionCode = 125
-            versionName = "12.0.5"
+            versionCode = 128
+            versionName = "12.0.8"
         }
     }
 
@@ -69,12 +69,12 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.13.1")
-    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("androidx.core:core-ktx:1.16.0")
+    implementation("androidx.appcompat:appcompat:1.7.1")
     implementation("com.google.android.material:material:1.12.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.9.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.9.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
@@ -97,16 +97,15 @@ dependencies {
     // firebase
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-crashlytics-ndk")
-    implementation(platform("com.google.firebase:firebase-bom:33.1.1"))
+    implementation(platform("com.google.firebase:firebase-bom:33.15.0"))
     implementation("com.google.firebase:firebase-database-ktx:21.0.0")
-    implementation("com.google.firebase:firebase-config-ktx:22.0.0")
-    implementation("com.google.firebase:firebase-messaging-ktx:24.0.0")
-    implementation("com.google.firebase:firebase-auth-ktx:23.0.0")
+    implementation("com.google.firebase:firebase-config-ktx:22.1.2")
+    implementation("com.google.firebase:firebase-messaging-ktx:24.1.1")
+    implementation("com.google.firebase:firebase-auth-ktx:23.2.1")
     implementation("com.google.firebase:firebase-core:21.1.1")
 
     // google
-    implementation("com.google.android.gms:play-services-auth:21.2.0")
-//    implementation("com.google.android.gms:play-services-ads:23.2.0")
+    implementation("com.google.android.gms:play-services-auth:21.3.0")
 
     // push notification
     implementation("com.onesignal:OneSignal:5.1.23")
@@ -167,10 +166,6 @@ dependencies {
 
     // rating bar
     implementation("com.github.ome450901:SimpleRatingBar:1.5.0")
-
-    // image viewer pager
-//    implementation("com.facebook.fresco:fresco:3.2.0")
-//    implementation("com.github.stfalcon:frescoimageviewer:0.5.0")
 
     // event bus broadcaster
     implementation("org.greenrobot:eventbus:3.2.0")

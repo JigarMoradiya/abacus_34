@@ -21,6 +21,8 @@ import com.jigar.me.data.local.data.AbacusBeadType
 import com.jigar.me.data.local.data.AbacusContent
 import com.jigar.me.data.local.data.AbacusProvider
 import com.jigar.me.data.local.data.DataProvider
+import com.jigar.me.data.local.data.ExamProvider
+import com.jigar.me.data.local.data.ExamProvider.detectFormulaSteps
 import com.jigar.me.data.model.data.QuestionDataRequest
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
@@ -47,6 +49,7 @@ import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.*
+import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAdditionSubtractionTypeAdapter.HintListener{
@@ -590,7 +593,9 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
             var answerTemp = ""
             val newQue = que.replace("+", "$$+").replace("-", "$$-")
             val list = newQue.split("$$")
+            val listNew : ArrayList<Int> = arrayListOf()
             list.map {
+                listNew.add(it.toInt())
                 if (it.contains("+") || it.contains("-")) {
                     answerTemp += it
                     val resultObject = Calculator().getResult(answerTemp,answerTemp)
@@ -602,10 +607,32 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                     answerTemp = it
                 }
             }
+            Log.e("jigarSteps","listNew = "+Gson().toJson(listNew))
 
             list_abacus_main.clear()
             list_abacus_main.addAll(list_abacus_main_temp)
             binding.cardAbacusQue.show()
+
+            val questionFormulaStep : ArrayList<ExamProvider.QuestionFormulaStep> = arrayListOf()
+            list_abacus.map {
+//                    val ques = que
+                    val ques = it.question
+//                    val ques = "7+5-1"
+                    val newQue1 = ques.replace("+", "$$+").replace("-", "$$-")
+                    val list1 = newQue1.split("$$")
+                    val listNew1 : ArrayList<Int> = arrayListOf()
+                    list1.map {
+                        listNew1.add(it.toInt())
+    //                    result.forEach {
+    //                        Log.e("jigarSteps","steps = "+"Value: ${it.value}, Formula: ${it.formulaUsed ?: "None"}, Type: ${it.formulaType.description}")
+    //                    }
+                    }
+                    val result = detectFormulaSteps(initial = 0, steps = listNew1)
+                    questionFormulaStep.add(ExamProvider.QuestionFormulaStep(ques,result))
+            }
+                Log.e("jigarFormula","questionFormulaStep = "+Gson().toJson(questionFormulaStep).replace("\u003d","="))
+//            val result = detectFormulaSteps(initial = 0, steps = listOf(17, -9, 3))
+
 
             adapterAdditionSubtraction.setData(list_abacus_main, isStepByStep)
             replaceAbacusFragment(abacusColumn, noOfDecimalPlace,list_abacus_main_temp[0].get(Constants.Que)?:"0")
@@ -743,7 +770,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
             }
         }
         val sumVal: Long = adapterAdditionSubtraction.getCurrentSumVal()!!.toLong()
-        Log.e("jigarLogss","sumVal"+sumVal)
         if (isStepByStep){
             abacusFragment?.addDirection(sumVal.toInt())
         }

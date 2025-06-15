@@ -57,7 +57,6 @@ class LoginHomeFragment : BaseFragment() {
             setNavigationGraph()
             initView()
             initListener()
-            initGoogleLogin()
         }
         return root
     }
@@ -116,7 +115,8 @@ class LoginHomeFragment : BaseFragment() {
                 requireContext().openURL(prefManager.getCustomParam(AppConstants.RemoteConfig.privacyPolicyUrl,""))
             }
             btnGoogleLogin.onClick {
-                studentViewModel.signInWithGoogle()
+                val signInIntent = studentViewModel.googleSignInClient?.signInIntent
+                googleLoginLauncher.launch(signInIntent)
             }
             btnLogin.onClick {
                 mNavController?.navigate(R.id.toLoginFragment)
@@ -128,16 +128,6 @@ class LoginHomeFragment : BaseFragment() {
         }
     }
 
-    private fun initGoogleLogin() {
-        studentViewModel.signInWithGoogle.observe(viewLifecycleOwner) {
-            it?.let {
-                if (it) {
-                    val signInIntent = studentViewModel.googleSignInClient?.signInIntent
-                    googleLoginLauncher.launch(signInIntent)
-                }
-            }
-        }
-    }
     private var googleLoginLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         val data: Intent? = result.data
         try {

@@ -38,11 +38,11 @@ class CategoryNewAdapter(
         val data = listData[position]
         dataModel = data
         val context = root.context
-        if (position == 0){
-            cardMenu.strokeColor = ContextCompat.getColor(context,R.color.red_900)
-        }else{
-            cardMenu.strokeColor = ContextCompat.getColor(context,R.color.brown_900)
-        }
+//        if (position == 0){
+//            cardMenu.strokeColor = ContextCompat.getColor(context,R.color.red_900)
+//        }else{
+//            cardMenu.strokeColor = ContextCompat.getColor(context,R.color.brown_900)
+//        }
         if (selectedPosition == position){
             imgArrow.show()
             cardMenu.strokeWidth = context.resources.getDimension(R.dimen.card_elevation2).toInt()

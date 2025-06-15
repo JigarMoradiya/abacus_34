@@ -96,6 +96,7 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtShowTour"
             style="@style/mainTitle"
@@ -106,10 +107,10 @@
             android:text="@string/click_here_to_show_nabacus_tour"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/textSizeMedium"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/cardBack"
-            app:layout_constraintTop_toTopOf="@+id/cardBack" />
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cardBack"
+            app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtStartWith1"

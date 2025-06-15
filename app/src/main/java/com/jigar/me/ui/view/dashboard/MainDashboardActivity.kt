@@ -19,6 +19,7 @@ import com.jigar.me.databinding.ActivityMainDashboardBinding
 import com.jigar.me.ui.view.base.BaseActivity
 import com.jigar.me.ui.view.confirm_alerts.dialogs.OfferDialog
 import com.jigar.me.ui.view.dashboard.fragments.abacus.half.HalfAbacusFragment
+import com.jigar.me.ui.view.dashboard.fragments.exam.doexam.ExamCommonFragment
 import com.jigar.me.ui.view.dashboard.fragments.exercise.ExerciseHomeFragment
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.InAppViewModel
@@ -164,6 +165,9 @@ class MainDashboardActivity : BaseActivity() {
             }
             is ExerciseHomeFragment -> {
                 fragment.exerciseLeaveAlert()
+            }
+            is ExamCommonFragment -> {
+                fragment.examLeaveAlert()
             }
             else -> {
                 navigationUp()

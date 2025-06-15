@@ -56,7 +56,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_padding12"
-            app:boxStrokeColor="@color/colorPrimary"
             app:hintEnabled="false"
             android:layout_marginHorizontal="@dimen/activity_padding16"
             app:layout_constraintEnd_toEndOf="parent"

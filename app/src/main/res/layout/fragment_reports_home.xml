@@ -51,12 +51,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/activity_padding16"
-            app:strokeWidth="0dp"
-            app:cardElevation="@dimen/card_elevation3"
             app:cardCornerRadius="@dimen/card_corner_radius14"
+            app:cardElevation="@dimen/card_elevation3"
             app:layout_constraintBottom_toBottomOf="@+id/cardBack"
             app:layout_constraintStart_toEndOf="@+id/txtTitle"
-            app:layout_constraintTop_toTopOf="@+id/cardBack">
+            app:layout_constraintTop_toTopOf="@+id/cardBack"
+            app:strokeWidth="0dp">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txtFilter"
@@ -123,13 +123,15 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/noDataView"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center_horizontal"
             android:orientation="vertical"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible">
 

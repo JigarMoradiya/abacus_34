@@ -39,14 +39,6 @@ import javax.inject.Inject
 @HiltViewModel
 class StudentViewModel @Inject constructor(private val apiRepository: StudentApiRepository) :
     ViewModel() {
-    private val _signInWithGoogle = MutableLiveData<Boolean>()
-    val signInWithGoogle: LiveData<Boolean>
-        get() = _signInWithGoogle
-
-    fun signInWithGoogle() {
-        _signInWithGoogle.value = true
-    }
-
     var googleSignInClient: GoogleSignInClient? = null
 
     init {

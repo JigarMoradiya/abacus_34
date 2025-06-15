@@ -67,6 +67,11 @@ fun TextInputLayout.markRequiredInRed() {
         color(Color.RED) { append(" *") } // Mind the space prefix.
     }
 }
+fun TextInputLayout.markRequiredRemove() {
+    hint = buildSpannedString {
+        append(hint)
+    }
+}
 
 fun MaterialTextView.makeSpannable(
     text: String?,

@@ -37,7 +37,7 @@ data class Movement(
     val upperDown: Boolean = false,
     val lowerUp: Int = 0,    // number of lower beads moved up
     val lowerDown: Int = 0,   // number of lower beads moved down
-    val lowerOldValue: Int = 0   // number of lower beads existing value
+    val lowerOldValue: Int = 0,   // number of lower beads existing value
 )
 
 data class RodMovement(

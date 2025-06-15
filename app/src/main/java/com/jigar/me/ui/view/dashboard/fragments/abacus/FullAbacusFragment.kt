@@ -288,7 +288,6 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         abacusBinding?.abacusBottom?.onBeadShiftListener = this@FullAbacusFragment
 
         if (!prefManager.getCustomParamBoolean(AppConstants.Settings.isFreeModeTourWatch, false)) {
-            binding.txtShowTour.hide()
             setThemeLighterTopBeads()
         }
     }

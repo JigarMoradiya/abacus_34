@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/activity_padding2"
-                android:text="Time Left : "
+                android:text="@string/time"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textSizeMedium"
                 app:fontFamily="@font/font_bold" />

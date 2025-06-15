@@ -676,7 +676,7 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
         getAndStartExam()
     }
 
-    private fun examLeaveAlert() {
+    fun examLeaveAlert() {
         CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.leave_exam_alert),getString(R.string.leave_exam_msg)
             ,getString(R.string.yes_i_m_sure),getString(R.string.no_please_continue), icon = R.drawable.ic_alert,
             clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
@@ -709,10 +709,4 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
     private fun onBack() {
         mNavController.navigateUp()
     }
-
-    private fun hideLoadingAndFinish() {
-        hideLoading()
-        onBack()
-    }
-
 }
