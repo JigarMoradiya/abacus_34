@@ -86,12 +86,12 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     // dagger hilt
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+    implementation("com.google.dagger:hilt-android:2.56.2")
+    kapt("com.google.dagger:hilt-android-compiler:2.56.2")
     kapt("androidx.hilt:hilt-compiler:1.2.0")
 
     //  Manager
-    implementation("androidx.work:work-runtime-ktx:2.9.1")
+    implementation("androidx.work:work-runtime-ktx:2.10.1")
     implementation("androidx.hilt:hilt-work:1.2.0")
 
     // firebase
@@ -124,25 +124,25 @@ dependencies {
     annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
 
     // coroutine
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.3")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.3")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.3")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.9.1")
 
     // life components
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    kapt("androidx.lifecycle:lifecycle-compiler:2.8.3")
+    kapt("androidx.lifecycle:lifecycle-compiler:2.9.1")
 
     // database
-    implementation("androidx.room:room-ktx:2.6.1")
-    implementation("androidx.room:room-runtime:2.6.1")
-    kapt("androidx.room:room-compiler:2.6.1")
+    implementation("androidx.room:room-ktx:2.7.1")
+    implementation("androidx.room:room-runtime:2.7.1")
+    kapt("androidx.room:room-compiler:2.7.1")
     implementation("android.arch.persistence.room:rxjava2:1.1.1")
 
     // In App Purchase
     implementation("com.android.billingclient:billing-ktx:7.1.1")
 
     // gson data
-    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("com.google.code.gson:gson:2.11.0")
 
     // Calculator
     implementation("com.fathzer:javaluator:3.0.2")
@@ -168,7 +168,7 @@ dependencies {
     implementation("com.github.ome450901:SimpleRatingBar:1.5.0")
 
     // event bus broadcaster
-    implementation("org.greenrobot:eventbus:3.2.0")
+    implementation("org.greenrobot:eventbus:3.3.1")
 
     implementation("com.github.dhaval2404:imagepicker:2.1")
 }
