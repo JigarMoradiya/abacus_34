@@ -42,11 +42,11 @@ class CategoryFragment : BaseFragment() {
     private var clickedPagePosition: Int = 0
     private var clickedSetPosition: Int = 0
     private var clickedSetData: Set? = null
-    private var isGetAllData: Boolean = true
+//    private var isGetAllData: Boolean = true
 //    private var isGoToAbacusList: Boolean = true
 
     // default make this
-//    private var isGetAllData: Boolean = false
+    private var isGetAllData: Boolean = false
     private var isGoToAbacusList  : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {

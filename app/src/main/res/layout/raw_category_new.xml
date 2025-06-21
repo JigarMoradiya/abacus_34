@@ -15,28 +15,35 @@
         android:layout_height="wrap_content">
 
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardMenu"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="@dimen/activity_padding4"
-            android:layout_marginTop="@dimen/activity_padding8"
-            app:cardCornerRadius="@dimen/card_corner_radius8"
-            app:cardElevation="@dimen/card_elevation2"
-            app:strokeColor="@color/purple_700"
-            app:strokeWidth="@dimen/activity_padding2"
+        <LinearLayout
+            android:id="@+id/linMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imgMenu"
-                imgUrl="@{dataModel.icon}"
-                placeHolder="@{@drawable/place_holder_square}"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/place_holder_square" />
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMenu"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="@dimen/activity_padding4"
+                android:layout_marginTop="@dimen/activity_padding8"
+                android:layout_marginBottom="@dimen/activity_padding2"
+                app:cardCornerRadius="@dimen/card_corner_radius8"
+                app:cardElevation="@dimen/card_elevation2"
+                app:strokeColor="@color/purple_700"
+                app:strokeWidth="@dimen/activity_padding2">
 
-        </com.google.android.material.card.MaterialCardView>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgMenu"
+                    imgUrl="@{dataModel.icon}"
+                    placeHolder="@{@drawable/place_holder_square}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/place_holder_square" />
+
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgArrow"
@@ -44,21 +51,22 @@
             android:layout_height="@dimen/activity_padding16"
             android:layout_marginStart="@dimen/activity_padding2"
             android:src="@drawable/ic_right_arrow"
-            app:layout_constraintBottom_toBottomOf="@+id/cardMenu"
-            app:layout_constraintStart_toEndOf="@+id/cardMenu"
-            app:layout_constraintTop_toTopOf="@+id/cardMenu" />
+            app:layout_constraintBottom_toBottomOf="@+id/linMenu"
+            app:layout_constraintStart_toEndOf="@+id/linMenu"
+            app:layout_constraintTop_toTopOf="@+id/linMenu" />
 
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtTag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
             android:layout_marginTop="@dimen/activity_padding4"
             android:background="@drawable/bg_all_curved_3"
-            android:elevation="@dimen/activity_padding4"
-            android:gravity="center"
-            android:fontFamily="@font/font_semibold"
             android:backgroundTint="@color/red"
+            android:elevation="@dimen/activity_padding4"
+            android:fontFamily="@font/font_semibold"
+            android:gravity="center"
             android:includeFontPadding="false"
             android:paddingHorizontal="@dimen/activity_padding4"
             android:paddingVertical="@dimen/activity_padding2"
@@ -66,8 +74,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/textSizeVery2ExtraSmall"
             android:visibility="gone"
-            android:layout_marginStart="60dp"
-            app:layout_constraintStart_toStartOf="@+id/cardMenu"
+            app:layout_constraintStart_toStartOf="@+id/linMenu"
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
 

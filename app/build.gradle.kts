@@ -40,6 +40,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+//        freeCompilerArgs += listOf("-Xuse-k2")
     }
     buildFeatures {
         viewBinding = true
@@ -60,8 +61,8 @@ android {
 
             dimension = "variant1"
             applicationId = "com.abacus.puzzle"
-            versionCode = 128
-            versionName = "12.0.8"
+            versionCode = 130
+            versionName = "13.0.0"
         }
     }
 

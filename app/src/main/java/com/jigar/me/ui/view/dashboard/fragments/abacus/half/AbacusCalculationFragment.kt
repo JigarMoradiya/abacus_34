@@ -607,60 +607,34 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                     answerTemp = it
                 }
             }
-            Log.e("jigarSteps","listNew = "+Gson().toJson(listNew))
 
             list_abacus_main.clear()
             list_abacus_main.addAll(list_abacus_main_temp)
             binding.cardAbacusQue.show()
 
-            val questionFormulaStep : ArrayList<ExamProvider.QuestionFormulaStep> = arrayListOf()
-            list_abacus.map {
-//                    val ques = que
-                    val ques = it.question
-//                    val ques = "7+5-1"
-                    val newQue1 = ques.replace("+", "$$+").replace("-", "$$-")
-                    val list1 = newQue1.split("$$")
-                    val listNew1 : ArrayList<Int> = arrayListOf()
-                    list1.map {
-                        listNew1.add(it.toInt())
-    //                    result.forEach {
-    //                        Log.e("jigarSteps","steps = "+"Value: ${it.value}, Formula: ${it.formulaUsed ?: "None"}, Type: ${it.formulaType.description}")
-    //                    }
-                    }
-                    val result = detectFormulaSteps(initial = 0, steps = listNew1)
-                    questionFormulaStep.add(ExamProvider.QuestionFormulaStep(ques,result))
-            }
-                Log.e("jigarFormula","questionFormulaStep = "+Gson().toJson(questionFormulaStep).replace("\u003d","="))
-//            val result = detectFormulaSteps(initial = 0, steps = listOf(17, -9, 3))
+//            val questionFormulaStep : ArrayList<ExamProvider.QuestionFormulaStep> = arrayListOf()
+//            list_abacus.map {
+////                    val ques = que
+//                    val ques = it.question
+////                    val ques = "7+5-1"
+//                    val newQue1 = ques.replace("+", "$$+").replace("-", "$$-")
+//                    val list1 = newQue1.split("$$")
+//                    val listNew1 : ArrayList<Int> = arrayListOf()
+//                    list1.map {
+//                        listNew1.add(it.toInt())
+//    //                    result.forEach {
+//    //                        Log.e("jigarSteps","steps = "+"Value: ${it.value}, Formula: ${it.formulaUsed ?: "None"}, Type: ${it.formulaType.description}")
+//    //                    }
+//                    }
+//                    val result = detectFormulaSteps(initial = 0, steps = listNew1)
+//                    questionFormulaStep.add(ExamProvider.QuestionFormulaStep(ques,result))
+//            }
+//            Log.e("jigarFormula","questionFormulaStep = "+Gson().toJson(questionFormulaStep).replace("\u003d","="))
 
 
             adapterAdditionSubtraction.setData(list_abacus_main, isStepByStep)
             replaceAbacusFragment(abacusColumn, noOfDecimalPlace,list_abacus_main_temp[0].get(Constants.Que)?:"0")
         }
-    }
-    // not purchased and page completed
-    private fun resetPurchaseDialog() {
-        CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.txt_purchase_alert),getString(R.string.txt_page_reset_not)
-            ,getString(R.string.yes_i_want_to_purchase),getString(R.string.no_purchase_later), icon = R.drawable.ic_alert_not_purchased,
-            clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
-                override fun onConfirmationYesClick(bundle: Bundle?) {
-                    goToInAppPurchase()
-                }
-                override fun onConfirmationNoClick(bundle: Bundle?) = Unit
-            })
-    }
-    // not purchased and reset dialog click
-    private fun freePageCompleteDialog(msg : String) {
-        CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.txt_purchase_alert), msg,
-            getString(R.string.yes_i_want_to_purchase),getString(R.string.no_purchase_later), icon = R.drawable.ic_alert_not_purchased,
-            clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
-                override fun onConfirmationYesClick(bundle: Bundle?) {
-                    goToInAppPurchase()
-                }
-                override fun onConfirmationNoClick(bundle: Bundle?) {
-                    goBack()
-                }
-            })
     }
     // purchased and reset page progress
     private fun paidResetPageProgressDialog() {

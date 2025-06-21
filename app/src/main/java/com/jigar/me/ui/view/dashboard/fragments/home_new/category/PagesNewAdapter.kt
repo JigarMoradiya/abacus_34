@@ -35,8 +35,8 @@ class PagesNewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = with(holder.binding) {
         val data: DisplayPages = listData[position]
         val context = txtTitle.context
-        txtTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f) // Reset
-        txtDesc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f) // Reset
+//        txtTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f) // Reset
+//        txtDesc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f) // Reset
         dataModel = data
 
         val list = if (data.setList.isNullOrEmpty()){

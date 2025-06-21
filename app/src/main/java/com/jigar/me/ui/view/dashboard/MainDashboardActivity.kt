@@ -2,11 +2,14 @@ package com.jigar.me.ui.view.dashboard
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.gson.Gson
@@ -57,7 +60,6 @@ class MainDashboardActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initToolBar()
