@@ -24,7 +24,11 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.annotation.NonNull
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.jigar.me.R
@@ -97,6 +101,55 @@ import java.util.*
      }
      imm.hideSoftInputFromWindow(view.windowToken, 0)
  }
+
+ fun Activity.getBottomNavBarHeight(callback: (Int,Int) -> Unit) {
+     val rootView = window.decorView
+     var alreadyCalled = false
+
+     ViewCompat.setOnApplyWindowInsetsListener(rootView) { _, insets ->
+         if (!alreadyCalled) {
+             alreadyCalled = true
+             val bottomInset = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+             val topInset = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
+             callback(topInset,bottomInset)
+         }
+         insets
+     }
+
+     ViewCompat.requestApplyInsets(rootView)
+     setLightNavBarIcons(false)
+ }
+
+ fun Activity.setLightNavBarIcons(light: Boolean) {
+     val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+     if (light) {
+         // Light icons on dark background
+         windowInsetsController.isAppearanceLightNavigationBars = false
+     } else {
+         // Dark icons on light background
+         windowInsetsController.isAppearanceLightNavigationBars = true
+     }
+ }
+
+ fun Activity.hasNotch(callback: (Boolean) -> Unit) {
+     val decorView = window.decorView
+     var alreadyCalled = false
+
+     val listener = androidx.core.view.OnApplyWindowInsetsListener { view, insets ->
+         if (!alreadyCalled) {
+             val cutout = insets.displayCutout
+             val hasNotch = cutout != null && cutout.boundingRects.isNotEmpty()
+             callback(hasNotch)
+             alreadyCalled = true
+             ViewCompat.setOnApplyWindowInsetsListener(decorView, null) // remove listener
+         }
+         insets
+     }
+
+     ViewCompat.setOnApplyWindowInsetsListener(decorView, listener)
+     ViewCompat.requestApplyInsets(decorView)
+ }
+
 
 
  fun Activity.setBottomSheetDialogAttr(bottomSheetDialog: BottomSheetDialog,widthRatio : Int = Constants.bottomSheetWidthBaseOnRatio5, isDraggable : Boolean = true, isfullScreen : Boolean = false,isVertical : Boolean = false) {

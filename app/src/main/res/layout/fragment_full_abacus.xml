@@ -113,31 +113,6 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txtStartWith1"
-            style="@style/mainTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/activity_padding12"
-            android:gravity="center"
-            android:paddingStart="@dimen/activity_padding8"
-            android:paddingEnd="@dimen/activity_padding8"
-            android:text="@string/txt_start_with_1"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/textSizeMedium"
-            app:layout_constraintBottom_toTopOf="@+id/txtRange"
-            app:layout_constraintEnd_toStartOf="@+id/swRandom" />
-
-        <com.google.android.material.materialswitch.MaterialSwitch
-            android:id="@+id/swResetStarting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:theme="@style/Widget.App.Switch"
-            app:layout_constraintEnd_toEndOf="@+id/txtStartWith1"
-            app:layout_constraintStart_toStartOf="@+id/txtStartWith1"
-            app:layout_constraintTop_toTopOf="@+id/swReset"
-            tools:checked="true" />
-
-        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtRandom"
             style="@style/mainTitle"
             android:layout_width="wrap_content"

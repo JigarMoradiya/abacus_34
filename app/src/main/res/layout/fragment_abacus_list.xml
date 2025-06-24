@@ -13,6 +13,7 @@
         android:elevation="@dimen/card_elevation"
         app:cardBackgroundColor="@color/light_back"
         app:cardCornerRadius="@dimen/menu_icons_corner"
+        app:strokeWidth="0dp"
         app:cardMaxElevation="@dimen/card_elevation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

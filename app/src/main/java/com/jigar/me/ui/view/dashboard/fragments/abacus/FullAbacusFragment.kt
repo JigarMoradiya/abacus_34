@@ -34,6 +34,7 @@ import com.jigar.me.utils.extensions.dp
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.invisible
 import com.jigar.me.utils.extensions.isNetworkAvailable
+import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.openYoutube
 import com.jigar.me.utils.extensions.setAbacusResetShakeAnimation
@@ -115,7 +116,6 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         txtShowTour.onClick { setThemeLighterTopBeads() }
         swRandom.onClick { switchRandomClick() }
         swReset.onClick { switchResetClick() }
-        swResetStarting.onClick { switchResetStartingClick() }
         swFreeMode.onClick { switchFreeMode() }
 //        swDecimalMode.onClick { switchDecimalMode() }
         txtRange.onClick { rangeClick() }
@@ -135,11 +135,6 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             prefManager.setCustomParam(AppConstants.Settings.SW_Reset, "Y")
             binding.swReset.isChecked = true
         }
-    }
-
-    private fun switchResetStartingClick() {
-        prefManager.setCustomParamFloat(AppConstants.Settings.Toddler_No,prefManager.getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F))
-        setSwitchs()
     }
 
     private fun switchFreeMode() {
@@ -318,11 +313,9 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         with(prefManager){
             if (getCustomParam(AppConstants.Settings.SW_FreeMode, "Y") == "Y"){
                 binding.swRandom.hide()
-                binding.swResetStarting.hide()
                 binding.swReset.hide()
                 binding.txtRange.hide()
 
-                binding.txtStartWith1.hide()
                 binding.txtRandom.hide()
                 binding.txtRangeLable.hide()
                 binding.txtResetEveryTime.hide()
@@ -331,11 +324,9 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
                 is1stTime = true
             }else{
                 binding.swRandom.show()
-                binding.swResetStarting.show()
                 binding.swReset.show()
                 binding.txtRange.show()
 
-                binding.txtStartWith1.show()
                 binding.txtRandom.show()
                 binding.txtRangeLable.show()
                 binding.txtResetEveryTime.show()
@@ -389,6 +380,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             setCustomParamFloat(AppConstants.Settings.SW_Range_max,toValue.toFloat() + 1)
             setCustomParamFloat(AppConstants.Settings.Toddler_No,getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F))
             setSwitchs()
+            generateNewNumber()
         }
     }
 
@@ -444,7 +436,6 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             })
     }
     override fun onAbacusValueChange(abacusView: View, sum1: Long) {
-        // TODO
         val abacusValue = sum1.toString()
         var newValue = abacusValue
         if (abacusValue.length != abacusTotalColumns){
@@ -457,44 +448,29 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         newValue = sb.toString()
         val splitResult = newValue.split(".")
         if (splitResult.size == 2){
-            val value1 = splitResult[0].toLong()
-            val value2 = splitResult[1]
-            val sum = if (value2.toLong() > 0){
-                abacusBinding?.tvCurrentVal?.text = "$value1.$value2"
-                "$value1.$value2"
-            }else{
-                abacusBinding?.tvCurrentVal?.text = "$value1"
-                "$value1"
-            }
+
             with(prefManager){
-                if (prefManager.getCustomParam(AppConstants.Settings.SW_FreeMode,"Y") == "Y") {
+                if (getCustomParam(AppConstants.Settings.SW_FreeMode,"Y") == "Y") {
 
                 }else{
-                    if (sum == (valuesFinal.toInt()).toString()) {
-                        binding.swResetStarting.isChecked = false
-                        generateValue()
-                        total_count = getCustomParamInt(AppConstants.Settings.Toddler_No_Count,1)
-                        total_count++
-                        if (total_count > 9999999) {
-                            total_count = 1
-                        }
-                        setCustomParamInt(AppConstants.Settings.Toddler_No_Count,total_count)
-                        lifecycleScope.launch {
-                            delay(300)
-                            if (getCustomParam(AppConstants.Settings.SW_Reset,"") == "Y") {
-                                abacusBinding?.tvCurrentVal?.text = "0"
-                                resetAbacus()
-                            }
-                            is1stTime = false
-                            if (requireContext().isNetworkAvailable){
-                                goToNextValue()
-                            }else{
-                                notOfflineSupportDialog()
-                            }
-                        }
-                        setNumberValue()
-                    } else {
+                    val value1 = splitResult[0].toLong()
+                    val value2 = splitResult[1]
+                    val sum = if (value2.toLong() > 0){
+                        abacusBinding?.tvCurrentVal?.text = "$value1.$value2"
+                        "$value1.$value2"
+                    }else{
+                        abacusBinding?.tvCurrentVal?.text = "$value1"
+                        "$value1"
+                    }
 
+                    if (sum == (valuesFinal.toInt()).toString()) {
+                        generateNewNumber()
+                    } else {
+                        clearDirection()
+                        addDirection(value1.toInt(),valuesFinal.toInt())
+                        if (value2.toInt() > 0){
+                            addDirectionDivisor(0,value2.toInt())
+                        }
                     }
                 }
             }
@@ -502,6 +478,33 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             mNavController.navigateUp()
         }
 
+    }
+
+    private fun generateNewNumber() {
+        with(prefManager){
+
+            generateValue()
+            total_count = getCustomParamInt(AppConstants.Settings.Toddler_No_Count,1)
+            total_count++
+            if (total_count > 9999999) {
+                total_count = 1
+            }
+            setCustomParamInt(AppConstants.Settings.Toddler_No_Count,total_count)
+            lifecycleScope.launch {
+                delay(300)
+                if (getCustomParam(AppConstants.Settings.SW_Reset,"") == "Y") {
+                    abacusBinding?.tvCurrentVal?.text = "0"
+                    resetAbacus()
+                }
+                is1stTime = false
+                if (requireContext().isNetworkAvailable){
+                    goToNextValue()
+                }else{
+                    notOfflineSupportDialog()
+                }
+            }
+            setNumberValue()
+        }
     }
 
     private fun generateValue() {
@@ -549,14 +552,14 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             valuesFinal.toLong().toString()
         }
         val speakText = try {
-            String.format(requireContext().getString(R.string.txt_set_only),setValues)
+            String.format(requireContext().getString(R.string.txt_set_only_s),setValues)
         } catch (e: UnknownFormatConversionException) {
             "${requireContext().getString(R.string.txt_set)} $setValues"
         } catch (e: Exception) {
             "${requireContext().getString(R.string.txt_set)} $setValues"
         }
         try {
-            abacusBinding?.viewDirection?.removeAllViews()
+            clearDirection()
             val fromValue = if (prefManager.getCustomParam(AppConstants.Settings.SW_Reset,"") == "Y") {
                 "0"
             }else{
@@ -871,61 +874,135 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
     }
 
     // for draw direction
-    private fun addDirection(fromValue: Int, toValue: Int) {
-        var rods = fromValue.toString().length
-        if (toValue.toString().length > rods){
-            rods = toValue.toString().length
-        }
+    private fun clearDirection() {
+        abacusBinding?.viewDirection?.removeAllViews()
+    }
+    private fun addDirectionDivisor(toValue: Int, fromValue : Int) {
+        if (prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_direction, true)){
+            var rods = fromValue.toString().length
+            if (toValue.toString().length > rods){
+                rods = toValue.toString().length
+            }
 
-        val rodMovement = ExamProvider.calculateRodMovements(requireContext(),from = fromValue, to = toValue, rods = rods)
-        val extraHeight = resources.getDimension(R.dimen.height_extra).toInt()
-        val beamHeight = resources.getDimension(R.dimen.four).toInt()
-        val topBeadsHeight = themeContent.beadHeight * 2
-        val topTotalHeightAlways = extraHeight + beamHeight + topBeadsHeight
+            if (fromValue != toValue){
+                val rodMovement = ExamProvider.calculateRodMovements(requireContext(),from = fromValue, to = toValue, rods = rods)
+                if (rodMovement.isNotNullOrEmpty()){
+                    val extraHeight = resources.getDimension(R.dimen.height_extra).toInt()
+                    val beamHeight = resources.getDimension(R.dimen.four).toInt()
+                    val topBeadsHeight = themeContent.beadHeight * 2
+                    val topTotalHeightAlways = extraHeight + beamHeight + topBeadsHeight
 
-        val bottomBeadsHeight = themeContent.beadHeight * 5
-        val bottomTotalHeightAlways = extraHeight + beamHeight + bottomBeadsHeight
-        val decimalBeadsWidth = (themeContent.beadWidth * 6) + (themeContent.beadSpace * 6) + (themeContent.beadWidth * 0.75).toInt()
+                    val bottomBeadsHeight = themeContent.beadHeight * 5
+                    val bottomTotalHeightAlways = extraHeight + beamHeight + bottomBeadsHeight
+//                        val decimalBeadsWidth = (themeContent.beadWidth * 6) + (themeContent.beadSpace * 6) + (themeContent.beadWidth * 0.75).toInt()
+                    val decimalBeadsWidth = (themeContent.beadWidth * 0.75).toInt()
 
-        rodMovement.map { rodData ->
-            if (rodData.movement.lowerUp > 0 || rodData.movement.lowerDown > 0 || rodData.movement.upperDown || rodData.movement.upperUp){
-                val directionBinding = ContentAbacusDirectionsBinding.inflate(layoutInflater, null, false)
-                with(directionBinding){
-                    val rightSpace = decimalBeadsWidth + (themeContent.beadWidth * rodData.rodIndex) + (themeContent.beadSpace / 2) + (rodData.rodIndex * themeContent.beadSpace)
-                    val layoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT)
-                    layoutParams.marginEnd = rightSpace
-                    directionBinding.conDirection.layoutParams = layoutParams
+                    rodMovement.map { rodData ->
+                        if (rodData.movement.lowerUp > 0 || rodData.movement.lowerDown > 0 || rodData.movement.upperDown || rodData.movement.upperUp){
+                            val directionBinding = ContentAbacusDirectionsBinding.inflate(layoutInflater, null, false)
+                            with(directionBinding){
+                                val rightSpace = decimalBeadsWidth + (themeContent.beadWidth * rodData.rodIndex) + (themeContent.beadSpace / 2) + (rodData.rodIndex * themeContent.beadSpace)
+                                val layoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT)
+                                layoutParams.marginEnd = rightSpace
+                                directionBinding.conDirection.layoutParams = layoutParams
 
-                    if (rodData.movement.lowerUp > 0){
-                        linearDirectionBottom.show()
-                        imgUpArrowBottom.show()
-                        val heightOldBeads = rodData.movement.lowerOldValue * themeContent.beadHeight
-                        val bottomRemainBeadHeight = ((4 - rodData.movement.lowerUp) * themeContent.beadHeight)+extraHeight - heightOldBeads
-                        linearDirectionBottom.setPadding(0,topTotalHeightAlways + heightOldBeads,0,bottomRemainBeadHeight)
-                    }else if (rodData.movement.lowerDown > 0){
-                        linearDirectionBottom.show()
-                        imgDownArrowBottom.show()
-                        val heightOldBeads = (rodData.movement.lowerOldValue - rodData.movement.lowerDown) * themeContent.beadHeight
-                        val bottomRemainBeadHeight = if (rodData.movement.lowerOldValue == 4) { extraHeight }else{ extraHeight + ((4 - rodData.movement.lowerOldValue) * themeContent.beadHeight)}
-                        linearDirectionBottom.setPadding(0,topTotalHeightAlways + heightOldBeads,0,bottomRemainBeadHeight)
+                                if (rodData.movement.lowerUp > 0){
+                                    linearDirectionBottom.show()
+                                    imgUpArrowBottom.show()
+                                    val heightOldBeads = rodData.movement.lowerOldValue * themeContent.beadHeight
+                                    val bottomRemainBeadHeight = ((4 - rodData.movement.lowerUp) * themeContent.beadHeight)+extraHeight - heightOldBeads
+                                    linearDirectionBottom.setPadding(0,topTotalHeightAlways + heightOldBeads,0,bottomRemainBeadHeight)
+                                }else if (rodData.movement.lowerDown > 0){
+                                    linearDirectionBottom.show()
+                                    imgDownArrowBottom.show()
+                                    val heightOldBeads = (rodData.movement.lowerOldValue - rodData.movement.lowerDown) * themeContent.beadHeight
+                                    val bottomRemainBeadHeight = if (rodData.movement.lowerOldValue == 4) { extraHeight }else{ extraHeight + ((4 - rodData.movement.lowerOldValue) * themeContent.beadHeight)}
+                                    linearDirectionBottom.setPadding(0,topTotalHeightAlways + heightOldBeads,0,bottomRemainBeadHeight)
+                                }
+                                if (rodData.movement.upperDown){
+                                    linearDirectionTop.show()
+                                    imgDownArrowTop.show()
+                                    linearDirectionTop.setPadding(0,extraHeight,0,bottomTotalHeightAlways)
+                                }else if (rodData.movement.upperUp){
+                                    linearDirectionTop.show()
+                                    imgUpArrowTop.show()
+                                    linearDirectionTop.setPadding(0,extraHeight,0,bottomTotalHeightAlways)
+                                }
+                            }
+                            abacusBinding?.viewDirection?.addView(directionBinding.root)
+                        }
                     }
-                    if (rodData.movement.upperDown){
-                        linearDirectionTop.show()
-                        imgDownArrowTop.show()
-                        linearDirectionTop.setPadding(0,extraHeight,0,bottomTotalHeightAlways)
-                    }else if (rodData.movement.upperUp){
-                        linearDirectionTop.show()
-                        imgUpArrowTop.show()
-                        linearDirectionTop.setPadding(0,extraHeight,0,bottomTotalHeightAlways)
+                    if ((abacusBinding?.viewDirection?.childCount?:0) > 0){
+                        abacusBinding?.viewDirection?.show()
+                    }else{
+                        abacusBinding?.viewDirection?.hide()
                     }
+                }else{
+
                 }
-                abacusBinding?.viewDirection?.addView(directionBinding.root)
+            }else{
             }
         }
-        if ((abacusBinding?.viewDirection?.childCount?:0) > 0){
-            abacusBinding?.viewDirection?.show()
-        }else{
-            abacusBinding?.viewDirection?.hide()
+    }
+    private fun addDirection(fromValue: Int, toValue: Int) {
+        if (prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_direction, true)){
+
+
+            var rods = fromValue.toString().length
+            if (toValue.toString().length > rods){
+                rods = toValue.toString().length
+            }
+
+            val rodMovement = ExamProvider.calculateRodMovements(requireContext(),from = fromValue, to = toValue, rods = rods)
+            val extraHeight = resources.getDimension(R.dimen.height_extra).toInt()
+            val beamHeight = resources.getDimension(R.dimen.four).toInt()
+            val topBeadsHeight = themeContent.beadHeight * 2
+            val topTotalHeightAlways = extraHeight + beamHeight + topBeadsHeight
+
+            val bottomBeadsHeight = themeContent.beadHeight * 5
+            val bottomTotalHeightAlways = extraHeight + beamHeight + bottomBeadsHeight
+            val decimalBeadsWidth = (themeContent.beadWidth * 6) + (themeContent.beadSpace * 6) + (themeContent.beadWidth * 0.75).toInt()
+
+            rodMovement.map { rodData ->
+                if (rodData.movement.lowerUp > 0 || rodData.movement.lowerDown > 0 || rodData.movement.upperDown || rodData.movement.upperUp){
+                    val directionBinding = ContentAbacusDirectionsBinding.inflate(layoutInflater, null, false)
+                    with(directionBinding){
+                        val rightSpace = decimalBeadsWidth + (themeContent.beadWidth * rodData.rodIndex) + (themeContent.beadSpace / 2) + (rodData.rodIndex * themeContent.beadSpace)
+                        val layoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT)
+                        layoutParams.marginEnd = rightSpace
+                        directionBinding.conDirection.layoutParams = layoutParams
+
+                        if (rodData.movement.lowerUp > 0){
+                            linearDirectionBottom.show()
+                            imgUpArrowBottom.show()
+                            val heightOldBeads = rodData.movement.lowerOldValue * themeContent.beadHeight
+                            val bottomRemainBeadHeight = ((4 - rodData.movement.lowerUp) * themeContent.beadHeight)+extraHeight - heightOldBeads
+                            linearDirectionBottom.setPadding(0,topTotalHeightAlways + heightOldBeads,0,bottomRemainBeadHeight)
+                        }else if (rodData.movement.lowerDown > 0){
+                            linearDirectionBottom.show()
+                            imgDownArrowBottom.show()
+                            val heightOldBeads = (rodData.movement.lowerOldValue - rodData.movement.lowerDown) * themeContent.beadHeight
+                            val bottomRemainBeadHeight = if (rodData.movement.lowerOldValue == 4) { extraHeight }else{ extraHeight + ((4 - rodData.movement.lowerOldValue) * themeContent.beadHeight)}
+                            linearDirectionBottom.setPadding(0,topTotalHeightAlways + heightOldBeads,0,bottomRemainBeadHeight)
+                        }
+                        if (rodData.movement.upperDown){
+                            linearDirectionTop.show()
+                            imgDownArrowTop.show()
+                            linearDirectionTop.setPadding(0,extraHeight,0,bottomTotalHeightAlways)
+                        }else if (rodData.movement.upperUp){
+                            linearDirectionTop.show()
+                            imgUpArrowTop.show()
+                            linearDirectionTop.setPadding(0,extraHeight,0,bottomTotalHeightAlways)
+                        }
+                    }
+                    abacusBinding?.viewDirection?.addView(directionBinding.root)
+                }
+            }
+            if ((abacusBinding?.viewDirection?.childCount?:0) > 0){
+                abacusBinding?.viewDirection?.show()
+            }else{
+                abacusBinding?.viewDirection?.hide()
+            }
         }
     }
 

@@ -67,7 +67,7 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
     // Settings Constants
     private var isPurchased = false
     private var isDisplayHelpMessage = true
-    private var isStepByStep = false
+    private var isStepByStep = true
     private var isAnswerWithTools = false
     private var isAutoRefresh = false
     private var isHideTable = false
@@ -137,8 +137,6 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
         isDisplayHelpMessage = prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_display_help_message, true)
         isHintSound = prefManager.getCustomParamBoolean(AppConstants.Settings.Setting__hint_sound, false)
         isHideTable = prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_hide_table, false)
-        isStepByStep = prefManager.getCustomParam(AppConstants.Settings.Setting_answer,AppConstants.Settings.Setting_answer_Step) == AppConstants.Settings.Setting_answer_Step
-        isAnswerWithTools = prefManager.getCustomParam(AppConstants.Settings.Setting_answer,AppConstants.Settings.Setting_answer_Step) == AppConstants.Settings.Setting_answer_with_tools
         if (prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_left_hand, true)){
             setLeftAbacusRules()
         }else{
@@ -180,12 +178,7 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
 //            prefManager.setCustomParamBoolean(AppConstants.Settings.Setting__hint_sound, false)
         }
 
-        isAutoRefresh = if (isStepByStep){
-            prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_auto_reset_abacus, false)
-        }else{
-            false
-        }
-
+        isAutoRefresh = false
         startAbacus()
     }
 

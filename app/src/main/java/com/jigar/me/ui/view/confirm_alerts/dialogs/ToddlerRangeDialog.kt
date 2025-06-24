@@ -49,10 +49,10 @@ object ToddlerRangeDialog {
                     alertLayout.layoutEdtTo.error = activity.resources.getString(R.string.error_range_to)
                     requestFocus(alertLayout.txtTo, activity)
                 }
-//                str_to.toLong() - str_from.toLong() < 50 -> {
-//                    alertLayout.layoutEdtTo.error = activity.resources.getString(R.string.error_range)
-//                    requestFocus(alertLayout.txtTo, activity)
-//                }
+                str_to.toLong() - str_from.toLong() < 10 -> {
+                    alertLayout.layoutEdtTo.error = activity.resources.getString(R.string.error_range)
+                    requestFocus(alertLayout.txtTo, activity)
+                }
                 else -> {
                     hideDialog()
                     listener.onSubmitClickToddlerRange(alertLayout.txtFrom.text.toString(),alertLayout.txtTo.text.toString())

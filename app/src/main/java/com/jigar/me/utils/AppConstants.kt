@@ -146,16 +146,10 @@ object AppConstants {
             const val Setting_display_abacus_number = "Setting_display_abacus_number"
             const val Setting_display_help_message = "Setting_display_help_message"
             const val Setting_hide_table = "Setting_hide_table"
-            const val Setting_auto_reset_abacus = "Setting_auto_reset_abacus"
             const val Setting_left_hand = "Setting_left_hand"
             const val Setting_bg_music_volume = "Setting_bg_music_volume"
             const val Setting_bg_music_volume_default = 5
-            var Setting_answer = "Setting_answer"
-            const val Setting_answer_Step = "Step"
-            const val Setting_answer_Final = "Final"
-            const val Setting_answer_with_tools = "tools"
 
-            var abacus_colorful = "abacus_colorful"
 
             var isSetTheam = "isSetTheam"
             var isHomeTourWatch = "isHomeTourWatch"
@@ -193,8 +187,8 @@ object AppConstants {
 
             var Toddler_No = "Toddler_Number_New"
             var Toddler_No_Count = "Toddler_Number_Count"
-            var SW_Range_min = "SW_Range_min_values_new"
-            var SW_Range_max = "SW_Range_max_values_new"
+            var SW_Range_min = "Range_min_values_new"
+            var SW_Range_max = "Range_max_values_new"
             var AbacusMaxColumn = "AbacusMaxColumn"
         }
 

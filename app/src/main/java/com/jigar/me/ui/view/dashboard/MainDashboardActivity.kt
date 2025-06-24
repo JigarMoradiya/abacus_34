@@ -2,6 +2,7 @@ package com.jigar.me.ui.view.dashboard
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -9,7 +10,9 @@ import android.util.Log
 import android.view.MenuItem
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.gson.Gson
@@ -29,6 +32,8 @@ import com.jigar.me.ui.viewmodel.InAppViewModel
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
+import com.jigar.me.utils.extensions.getBottomNavBarHeight
+import com.jigar.me.utils.extensions.hasNotch
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -118,10 +123,18 @@ class MainDashboardActivity : BaseActivity() {
 
     private fun initToolBar() {
     }
-
     private fun initViews() {
         setNavigationGraph()
         onMainActivityBack()
+//        hasNotch {
+//            Log.e("jigarLogs", "Re-check hasNotch = $it")
+//        }
+
+        getBottomNavBarHeight { topInset,bottomInset ->
+//            Log.e("jigarLogs", "Bottom nav topInset = $topInset px")
+//            Log.e("jigarLogs", "Bottom nav bottomInset = $bottomInset px")
+        }
+
     }
 
     private fun initListener() {

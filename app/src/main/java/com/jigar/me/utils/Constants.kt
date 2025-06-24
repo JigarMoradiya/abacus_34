@@ -3,6 +3,8 @@ package com.jigar.me.utils
 //Application Constants Values
 object Constants {
 
+    const val CLICK_TYPE_LONG = "long"
+    const val CLICK_TYPE_DETAIL = "detail"
     const val NOTIFICATION_PERMISSION = "notification_permission"
     const val avatarId = "avatarId"
     const val childName = "childName"

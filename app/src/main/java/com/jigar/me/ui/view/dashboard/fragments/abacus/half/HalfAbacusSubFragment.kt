@@ -414,7 +414,6 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     fun addDirection(toValue: Int) {
         if (::binding.isInitialized){
             if (prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_direction, true)){
-                binding.viewDirection.removeAllViews()
                 var rods = fromValue.toString().length
                 if (toValue.toString().length > rods){
                     rods = toValue.toString().length
@@ -483,9 +482,85 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
             }
         }
     }
+    fun addDirectionDivisor(toValue: Int,fromValue : Int) {
+        if (::binding.isInitialized){
+            if (prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_direction, true)){
+                var rods = fromValue.toString().length
+                if (toValue.toString().length > rods){
+                    rods = toValue.toString().length
+                }
 
+                if (fromValue != toValue){
+                    val rodMovement = ExamProvider.calculateRodMovements(requireContext(),from = fromValue, to = toValue, rods = rods)
+                    if (rodMovement.isNotNullOrEmpty()){
+                        val extraHeight = resources.getDimension(R.dimen.height_extra).toInt()
+                        val beamHeight = resources.getDimension(R.dimen.four).toInt()
+                        val topBeadsHeight = themeContent.beadHeight * 2
+                        val topTotalHeightAlways = extraHeight + beamHeight + topBeadsHeight
+
+                        val bottomBeadsHeight = themeContent.beadHeight * 5
+                        val bottomTotalHeightAlways = extraHeight + beamHeight + bottomBeadsHeight
+//                        val decimalBeadsWidth = (themeContent.beadWidth * 6) + (themeContent.beadSpace * 6) + (themeContent.beadWidth * 0.75).toInt()
+                        val decimalBeadsWidth = (themeContent.beadWidth * 0.75).toInt()
+
+                        rodMovement.map { rodData ->
+                            if (rodData.movement.lowerUp > 0 || rodData.movement.lowerDown > 0 || rodData.movement.upperDown || rodData.movement.upperUp){
+                                val directionBinding = ContentAbacusDirectionsBinding.inflate(layoutInflater, null, false)
+                                with(directionBinding){
+                                    val rightSpace = decimalBeadsWidth + (themeContent.beadWidth * rodData.rodIndex) + (themeContent.beadSpace / 2) + (rodData.rodIndex * themeContent.beadSpace)
+                                    val layoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT)
+                                    layoutParams.marginEnd = rightSpace
+                                    directionBinding.conDirection.layoutParams = layoutParams
+
+                                    if (rodData.movement.lowerUp > 0){
+                                        linearDirectionBottom.show()
+                                        imgUpArrowBottom.show()
+                                        val heightOldBeads = rodData.movement.lowerOldValue * themeContent.beadHeight
+                                        val bottomRemainBeadHeight = ((4 - rodData.movement.lowerUp) * themeContent.beadHeight)+extraHeight - heightOldBeads
+                                        linearDirectionBottom.setPadding(0,topTotalHeightAlways + heightOldBeads,0,bottomRemainBeadHeight)
+                                    }else if (rodData.movement.lowerDown > 0){
+                                        linearDirectionBottom.show()
+                                        imgDownArrowBottom.show()
+                                        val heightOldBeads = (rodData.movement.lowerOldValue - rodData.movement.lowerDown) * themeContent.beadHeight
+                                        val bottomRemainBeadHeight = if (rodData.movement.lowerOldValue == 4) { extraHeight }else{ extraHeight + ((4 - rodData.movement.lowerOldValue) * themeContent.beadHeight)}
+                                        linearDirectionBottom.setPadding(0,topTotalHeightAlways + heightOldBeads,0,bottomRemainBeadHeight)
+                                    }
+                                    if (rodData.movement.upperDown){
+                                        linearDirectionTop.show()
+                                        imgDownArrowTop.show()
+                                        linearDirectionTop.setPadding(0,extraHeight,0,bottomTotalHeightAlways)
+                                    }else if (rodData.movement.upperUp){
+                                        linearDirectionTop.show()
+                                        imgUpArrowTop.show()
+                                        linearDirectionTop.setPadding(0,extraHeight,0,bottomTotalHeightAlways)
+                                    }
+                                }
+                                binding.viewDirection.addView(directionBinding.root)
+                            }
+                        }
+                        if ((binding.viewDirection.childCount?:0) > 0){
+                            binding.viewDirection.show()
+                        }else{
+                            hideDirection()
+                        }
+                    }else{
+                        hideDirection()
+                    }
+                }else{
+                    hideDirection()
+                }
+            }
+        }
+    }
+
+    fun clearDirection() {
+        if (::binding.isInitialized){
+            binding.viewDirection.removeAllViews()
+        }
+    }
     fun hideDirection() {
         if (::binding.isInitialized){
+            binding.viewDirection.removeAllViews()
             binding.viewDirection.hide()
         }
     }

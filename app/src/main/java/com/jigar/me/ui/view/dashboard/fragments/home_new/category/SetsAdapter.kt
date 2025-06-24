@@ -10,14 +10,16 @@ import com.jigar.me.data.model.dbtable.abacus_all_data.Set
 import com.jigar.me.databinding.RawSetListBinding
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
+import com.jigar.me.utils.Constants
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.layoutInflater
 import com.jigar.me.utils.extensions.onClick
+import com.jigar.me.utils.extensions.onLongClick
 import com.jigar.me.utils.extensions.show
 
 class SetsAdapter(
     private var listData: List<Set>,
-    private val mListener: (Int, Set) -> Unit
+    private val mListener: (String,Int, Set) -> Unit
 ) : RecyclerView.Adapter<SetsAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = RawSetListBinding.inflate(parent.context.layoutInflater, parent, false)
@@ -58,7 +60,10 @@ class SetsAdapter(
             imgRunningIndicator.hide()
         }
         root.onClick {
-            mListener.invoke(position,data)
+            mListener.invoke(Constants.CLICK_TYPE_DETAIL,position,data)
+        }
+        root.onLongClick {
+            mListener.invoke(Constants.CLICK_TYPE_LONG,position,data)
         }
     }
 

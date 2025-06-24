@@ -19,6 +19,7 @@ import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottom
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.utils.CommonUtils
+import com.jigar.me.utils.Constants
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.invisible
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
@@ -43,11 +44,9 @@ class CategoryFragment : BaseFragment() {
     private var clickedSetPosition: Int = 0
     private var clickedSetData: Set? = null
 //    private var isGetAllData: Boolean = true
-//    private var isGoToAbacusList: Boolean = true
 
     // default make this
     private var isGetAllData: Boolean = false
-    private var isGoToAbacusList  : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,7 +76,6 @@ class CategoryFragment : BaseFragment() {
     private fun initViews() = with(binding) {
         if (!BuildConfig.DEBUG){
             isGetAllData = false
-            isGoToAbacusList = false
         }
         CoroutineScope(Dispatchers.Main).launch {
             val purchasedSKU = appViewModel.getInAppSKUPurchased()
@@ -91,21 +89,28 @@ class CategoryFragment : BaseFragment() {
             categoryNewAdapter.setData(categoryList)
             if (categoryList.isNotNullOrEmpty()){
                 val allSetList = (activity as MainDashboardActivity).allSetList
-                pagesNewAdapter = PagesNewAdapter(arrayListOf(),allSetList) { pagePosition,setPosition,setData,data ->
+                pagesNewAdapter = PagesNewAdapter(arrayListOf(),allSetList) { type,pagePosition,setPosition,setData,data ->
                     clickedPagePosition = pagePosition
                     clickedSetPosition = setPosition
                     clickedSetData = setData
-//                    if (BuildConfig.DEBUG){
-//                        gotoAbacus(setData)
-//                    }else{
-                        val categoryData = categoryNewAdapter.listData[categoryNewAdapter.selectedPosition]
-                        val isPurchase = CommonUtils.checkLevelIsPurchase(purchasedSKU,categoryData,prefManager)
-                        if (isPurchase){
-                            gotoAbacus(setData)
+                    val categoryData = categoryNewAdapter.listData[categoryNewAdapter.selectedPosition]
+                    val isPurchase = CommonUtils.checkLevelIsPurchase(purchasedSKU,categoryData,prefManager)
+                    if (isPurchase){
+                        if (type == Constants.CLICK_TYPE_DETAIL){
+                            val action = CategoryFragmentDirections.toAbacusCalculationFragment(setData.id)
+                            mNavController?.navigate(action)
                         }else{
-                            purchaseDialog()
+                            if (BuildConfig.DEBUG){
+                                val action = CategoryFragmentDirections.toAbacusListFragment(setData.id)
+                                mNavController?.navigate(action)
+                            }else{
+                                val action = CategoryFragmentDirections.toAbacusCalculationFragment(setData.id)
+                                mNavController?.navigate(action)
+                            }
                         }
-//                    }
+                    }else{
+                        purchaseDialog()
+                    }
                 }
                 recyclerviewPages.adapter = pagesNewAdapter
                 setPages(categoryList.first().id)
@@ -122,16 +127,6 @@ class CategoryFragment : BaseFragment() {
                 }
                 override fun onConfirmationNoClick(bundle: Bundle?) = Unit
             })
-    }
-
-    private fun gotoAbacus(setData: Set) {
-        if (isGoToAbacusList){
-            val action = CategoryFragmentDirections.toAbacusListFragment(setData.id)
-            mNavController?.navigate(action)
-        }else{
-            val action = CategoryFragmentDirections.toAbacusCalculationFragment(setData.id)
-            mNavController?.navigate(action)
-        }
     }
 
     override fun onResume() {

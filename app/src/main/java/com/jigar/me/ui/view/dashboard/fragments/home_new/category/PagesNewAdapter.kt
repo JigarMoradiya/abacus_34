@@ -19,7 +19,7 @@ import com.jigar.me.utils.extensions.show
 class PagesNewAdapter(
     private var listData: List<DisplayPages>,
     var allSetList: List<Set>,
-    private val mListener: (Int,Int,Set,DisplayPages) -> Unit
+    private val mListener: (String,Int,Int,Set,DisplayPages) -> Unit
 ) : RecyclerView.Adapter<PagesNewAdapter.ViewHolder>() {
     fun setData(pagesList: List<DisplayPages>) {
         (listData as ArrayList<DisplayPages>).clear()
@@ -51,8 +51,8 @@ class PagesNewAdapter(
         if (list.isNotNullOrEmpty()){
             val spanCount = if (list.size == 1 || list.size == 2  || list.size == 3) list.size else if (list.size == 4) 2 else 3
             recyclerviewSet.layoutManager = GridLayoutManager(context,spanCount)
-            val setsAdapter = SetsAdapter(list) { setPosition, setData ->
-                mListener.invoke(position,setPosition,setData,data )
+            val setsAdapter = SetsAdapter(list) { type, setPosition, setData ->
+                mListener.invoke(type,holder.layoutPosition,setPosition,setData,data )
             }
             recyclerviewSet.adapter = setsAdapter
             recyclerviewSet.show()

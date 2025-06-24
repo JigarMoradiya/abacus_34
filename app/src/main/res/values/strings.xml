@@ -104,7 +104,7 @@
     <string name="txt_set">Set</string>
     <string name="error_range_from">Range from is empty</string>
     <string name="error_range_to">Range to is empty</string>
-    <string name="error_range">Minimum 50 toddler is needed</string>
+    <string name="error_range">Minimum Range 10 is needed</string>
     <string name="txt_To">To</string>
     <string name="txt_Random">Random</string>
     <string name="txt_Reset_when_start">Reset Every Time?</string>

@@ -411,8 +411,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <RelativeLayout
-                            android:id="@+id/relDisplayAbacusNumber"
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingStart="@dimen/activity_padding8"
@@ -422,43 +421,46 @@
                                 android:id="@+id/img_display_abacus_number"
                                 android:layout_width="28dp"
                                 android:layout_height="28dp"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
                                 app:srcCompat="@drawable/ic_setting_display_abacus_number"
                                 app:tint="@color/colorListingHeading" />
 
-                            <com.google.android.material.textview.MaterialTextView
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/sw_display_abacus_number"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:checked="@{isDisplayAbacusNumber}"
+                                android:theme="@style/Widget.App.Switch"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:checked="true" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/relDisplayAbacusNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
                                 android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/activity_padding8"
-                                android:layout_toStartOf="@+id/sw_display_abacus_number"
                                 android:layout_toEndOf="@+id/img_display_abacus_number"
                                 android:fontFamily="@font/font_semibold"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="36dp"
                                 android:text="@string/txt_setting_display_abacus_number"
                                 android:textColor="@color/colorListingHeading"
                                 android:textSize="@dimen/textSizeLarge"
-                                android:textStyle="normal" />
+                                android:textStyle="normal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
-                            <com.google.android.material.materialswitch.MaterialSwitch
-                                android:id="@+id/sw_display_abacus_number"
-                                android:theme="@style/Widget.App.Switch"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:checked="@{isDisplayAbacusNumber}"
-                                tools:checked="true" />
-
-                        </RelativeLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="0.2dp"
                             android:background="@color/gray_dark70" />
 
-                        <RelativeLayout
-                            android:id="@+id/relDisplayHelpMessage"
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingStart="@dimen/activity_padding8"
@@ -468,42 +470,46 @@
                                 android:id="@+id/img_display_help_message"
                                 android:layout_width="28dp"
                                 android:layout_height="28dp"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
                                 app:srcCompat="@drawable/ic_setting_display_help_message"
                                 app:tint="@color/colorListingHeading" />
 
-                            <com.google.android.material.textview.MaterialTextView
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/sw_display_help_message"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/activity_padding8"
+                                android:checked="@{isDisplayHelpMessage}"
+                                android:theme="@style/Widget.App.Switch"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/relDisplayHelpMessage"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
                                 android:layout_toStartOf="@+id/sw_display_help_message"
                                 android:layout_toEndOf="@+id/img_display_help_message"
                                 android:fontFamily="@font/font_semibold"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="36dp"
                                 android:text="@string/txt_setting_display_help_message"
                                 android:textColor="@color/colorListingHeading"
                                 android:textSize="@dimen/textSizeLarge"
-                                android:textStyle="normal" />
+                                android:textStyle="normal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
-                            <com.google.android.material.materialswitch.MaterialSwitch
-                                android:id="@+id/sw_display_help_message"
-                                android:theme="@style/Widget.App.Switch"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:checked="@{isDisplayHelpMessage}" />
 
-                        </RelativeLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="0.2dp"
                             android:background="@color/gray_dark70" />
 
-                        <RelativeLayout
-                            android:id="@+id/relAbacusDirection"
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingStart="@dimen/activity_padding8"
@@ -513,45 +519,45 @@
                                 android:id="@+id/imgAbacusDirection"
                                 android:layout_width="28dp"
                                 android:layout_height="28dp"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
                                 app:srcCompat="@drawable/ic_bead_direction"
                                 app:tint="@color/colorListingHeading" />
-
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/txtAbacusDirection"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/activity_padding8"
-                                android:layout_toStartOf="@+id/swAbacusDirection"
-                                android:layout_toEndOf="@+id/imgAbacusDirection"
-                                android:text="@string/display_bead_direction"
-                                android:textColor="@color/colorListingHeading"
-                                android:textSize="@dimen/textSizeLarge"
-                                android:textStyle="normal"
-                                app:fontFamily="@font/font_semibold" />
 
 
                             <com.google.android.material.materialswitch.MaterialSwitch
                                 android:id="@+id/swAbacusDirection"
-                                android:theme="@style/Widget.App.Switch"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
                                 android:checked="@{isShowBeadDirection}"
+                                android:theme="@style/Widget.App.Switch"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
                                 tools:ignore="MissingPrefix" />
 
-                        </RelativeLayout>
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/relAbacusDirection"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="36dp"
+                                android:text="@string/display_bead_direction"
+                                android:textColor="@color/colorListingHeading"
+                                android:textSize="@dimen/textSizeLarge"
+                                android:textStyle="normal"
+                                app:fontFamily="@font/font_semibold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="0.2dp"
                             android:background="@color/gray_dark70" />
 
-                        <RelativeLayout
-                            android:id="@+id/relLeftHand"
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingStart="@dimen/activity_padding8"
@@ -561,34 +567,36 @@
                                 android:id="@+id/img_left_hand"
                                 android:layout_width="28dp"
                                 android:layout_height="28dp"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
                                 app:srcCompat="@drawable/ic_setting_leftt_hand"
                                 app:tint="@color/colorListingHeading" />
 
-                            <com.google.android.material.textview.MaterialTextView
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/sw_left_hand"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/activity_padding8"
-                                android:layout_toStartOf="@+id/sw_left_hand"
-                                android:layout_toEndOf="@+id/img_left_hand"
+                                android:checked="@{isLeftHand}"
+                                android:theme="@style/Widget.App.Switch"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/relLeftHand"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
                                 android:fontFamily="@font/font_semibold"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="36dp"
                                 android:text="@string/txt_setting_left_hand"
                                 android:textColor="@color/colorListingHeading"
                                 android:textSize="@dimen/textSizeLarge"
-                                android:textStyle="normal" />
-
-                            <com.google.android.material.materialswitch.MaterialSwitch
-                                android:id="@+id/sw_left_hand"
-                                android:theme="@style/Widget.App.Switch"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:checked="@{isLeftHand}" />
-
-                        </RelativeLayout>
+                                android:textStyle="normal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                 </com.google.android.material.card.MaterialCardView>
@@ -616,8 +624,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <RelativeLayout
-                            android:id="@+id/relHideTable"
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingStart="@dimen/activity_padding8"
@@ -630,40 +637,44 @@
                                 android:layout_alignParentStart="true"
                                 android:layout_centerVertical="true"
                                 android:padding="2dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
                                 app:srcCompat="@drawable/ic_hide_table"
                                 app:tint="@color/colorListingHeading" />
 
-                            <com.google.android.material.textview.MaterialTextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/activity_padding8"
-                                android:layout_toStartOf="@+id/sw_hide_table"
-                                android:layout_toEndOf="@+id/img_hide_table"
-                                android:fontFamily="@font/font_semibold"
-                                android:text="@string/txt_setting_hide_table"
-                                android:textColor="@color/colorListingHeading"
-                                android:textSize="@dimen/textSizeLarge"
-                                android:textStyle="normal" />
-
                             <com.google.android.material.materialswitch.MaterialSwitch
                                 android:id="@+id/sw_hide_table"
-                                android:theme="@style/Widget.App.Switch"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
-                                android:checked="@{isHideTable}" />
+                                android:checked="@{isHideTable}"
+                                android:theme="@style/Widget.App.Switch"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
-                        </RelativeLayout>
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/relHideTable"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:fontFamily="@font/font_semibold"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="36dp"
+                                android:text="@string/txt_setting_hide_table"
+                                android:textColor="@color/colorListingHeading"
+                                android:textSize="@dimen/textSizeLarge"
+                                android:textStyle="normal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="0.2dp"
                             android:background="@color/gray_dark70" />
 
-                        <RelativeLayout
-                            android:id="@+id/relHintSound"
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingStart="@dimen/activity_padding8"
@@ -675,43 +686,46 @@
                                 android:layout_height="28dp"
                                 android:layout_alignParentStart="true"
                                 android:layout_centerVertical="true"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
                                 app:srcCompat="@drawable/ic_hint_sound"
                                 app:tint="@color/colorListingHeading" />
-
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/txtHintSound"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/activity_padding8"
-                                android:layout_toStartOf="@+id/sw_hint_sound"
-                                android:layout_toEndOf="@+id/img_hint_sound"
-                                android:fontFamily="@font/font_semibold"
-                                android:text="@string/txt_setting_hintsound"
-                                android:textColor="@color/colorListingHeading"
-                                android:textSize="@dimen/textSizeLarge"
-                                android:textStyle="normal" />
 
 
                             <com.google.android.material.materialswitch.MaterialSwitch
                                 android:id="@+id/sw_hint_sound"
-                                android:theme="@style/Widget.App.Switch"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
                                 android:checked="@{isHintSound}"
+                                android:theme="@style/Widget.App.Switch"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
                                 tools:ignore="MissingPrefix" />
 
-                        </RelativeLayout>
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/relHintSound"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:fontFamily="@font/font_semibold"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="36dp"
+                                android:text="@string/txt_setting_hintsound"
+                                android:textColor="@color/colorListingHeading"
+                                android:textSize="@dimen/textSizeLarge"
+                                android:textStyle="normal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="0.2dp"
                             android:background="@color/gray_dark70" />
 
-                        <RelativeLayout
-                            android:id="@+id/relAbacusSound"
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingStart="@dimen/activity_padding8"
@@ -723,91 +737,47 @@
                                 android:layout_height="28dp"
                                 android:layout_alignParentStart="true"
                                 android:layout_centerVertical="true"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
                                 app:srcCompat="@drawable/ic_setting_sound"
                                 app:tint="@color/colorListingHeading" />
 
-                            <com.google.android.material.textview.MaterialTextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/activity_padding8"
-                                android:layout_toStartOf="@+id/sw_sound"
-                                android:layout_toEndOf="@+id/img_sound"
-                                android:fontFamily="@font/font_semibold"
-                                android:text="@string/txt_setting_sound"
-                                android:textColor="@color/colorListingHeading"
-                                android:textSize="@dimen/textSizeLarge"
-                                android:textStyle="normal" />
-
                             <com.google.android.material.materialswitch.MaterialSwitch
                                 android:id="@+id/sw_sound"
-                                android:theme="@style/Widget.App.Switch"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
                                 android:checked="@{isAbacusSound}"
+                                android:theme="@style/Widget.App.Switch"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
                                 tools:ignore="MissingPrefix" />
 
-                        </RelativeLayout>
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/relAbacusSound"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:fontFamily="@font/font_semibold"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="36dp"
+                                android:text="@string/txt_setting_sound"
+                                android:textColor="@color/colorListingHeading"
+                                android:textSize="@dimen/textSizeLarge"
+                                android:textStyle="normal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="0.2dp"
                             android:background="@color/gray_dark70" />
 
-                        <RelativeLayout
-                            android:id="@+id/relAutoReset"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="@dimen/activity_padding8"
-                            android:paddingEnd="@dimen/activity_padding8"
-                            android:visibility="gone">
 
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/imgAutoReset"
-                                android:layout_width="28dp"
-                                android:layout_height="28dp"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
-                                app:srcCompat="@drawable/ic_setting_autoreset"
-                                app:tint="@color/colorListingHeading" />
-
-                            <com.google.android.material.textview.MaterialTextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/activity_padding8"
-                                android:layout_toStartOf="@+id/swAutoReset"
-                                android:layout_toEndOf="@+id/imgAutoReset"
-                                android:fontFamily="@font/font_semibold"
-                                android:gravity="center_vertical|left"
-                                android:text="@string/auto_reset"
-                                android:textColor="@color/colorListingHeading"
-                                android:textSize="@dimen/textSizeMedium"
-                                android:textStyle="normal" />
-
-                            <com.google.android.material.materialswitch.MaterialSwitch
-                                android:id="@+id/swAutoReset"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:checked="@{isAutoReset}"
-
-                                tools:ignore="MissingPrefix" />
-
-                        </RelativeLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.2dp"
-                            android:background="@color/gray_dark70"
-                            android:visibility="gone" />
-
-
-                        <RelativeLayout
-                            android:id="@+id/relNumberPuzzleSound"
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingStart="@dimen/activity_padding8"
@@ -819,206 +789,44 @@
                                 android:layout_height="28dp"
                                 android:layout_alignParentStart="true"
                                 android:layout_centerVertical="true"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
                                 app:srcCompat="@drawable/ic_volume_on"
                                 app:tint="@color/colorListingHeading" />
 
-                            <com.google.android.material.textview.MaterialTextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/activity_padding8"
-                                android:layout_toStartOf="@+id/sw_NumberPuzzleSound"
-                                android:layout_toEndOf="@+id/img_NumberPuzzleSound"
-                                android:fontFamily="@font/font_semibold"
-                                android:text="@string/number_sequences_puzzle_volume"
-                                android:textColor="@color/colorListingHeading"
-                                android:textSize="@dimen/textSizeLarge"
-                                android:textStyle="normal" />
-
                             <com.google.android.material.materialswitch.MaterialSwitch
                                 android:id="@+id/sw_NumberPuzzleSound"
-                                android:theme="@style/Widget.App.Switch"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
                                 android:checked="@{isNumberPuzzleSound}"
+                                android:theme="@style/Widget.App.Switch"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
                                 tools:ignore="MissingPrefix" />
 
-                        </RelativeLayout>
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/relNumberPuzzleSound"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:fontFamily="@font/font_semibold"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="36dp"
+                                android:text="@string/number_sequences_puzzle_volume"
+                                android:textColor="@color/colorListingHeading"
+                                android:textSize="@dimen/textSizeLarge"
+                                android:textStyle="normal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-                </com.google.android.material.card.MaterialCardView>
-
-                <androidx.constraintlayout.widget.Barrier
-                    android:id="@+id/barrierCard1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:barrierAllowsGoneWidgets="false"
-                    app:barrierDirection="bottom"
-                    app:constraint_referenced_ids="card2,card1" />
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/activity_padding4"
-                    android:visibility="gone"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="@dimen/card_corner_radius"
-                    app:cardElevation="@dimen/card_elevation"
-                    app:cardMaxElevation="@dimen/card_elevation"
-                    app:cardUseCompatPadding="true"
-                    app:layout_constraintTop_toBottomOf="@+id/barrierCard1"
-                    app:strokeColor="@color/grey_700"
-                    app:strokeWidth="1dp">
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <RelativeLayout
-                            android:id="@+id/relAnswerStep"
-                            android:layout_width="match_parent"
-                            android:layout_height="36dp"
-                            android:paddingStart="@dimen/activity_padding8"
-                            android:paddingEnd="@dimen/activity_padding8">
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/img_step"
-                                android:layout_width="28dp"
-                                android:layout_height="28dp"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
-                                app:srcCompat="@drawable/ic_setting_step"
-                                app:tint="@color/colorListingHeading" />
-
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/txt_step_tick"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/activity_padding8"
-                                android:layout_toStartOf="@+id/img_step_tick"
-                                android:layout_toEndOf="@+id/img_step"
-                                android:fontFamily="@font/font_semibold"
-                                android:gravity="center_vertical|left"
-                                android:text="@string/txt_setting_step_by_step"
-                                android:textColor="@color/colorListingHeading"
-                                android:textSize="@dimen/textSizeMedium"
-                                android:textStyle="normal" />
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/img_step_tick"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:visibility="@{isStepByStep?View.VISIBLE:View.INVISIBLE}"
-                                app:srcCompat="@drawable/ic_setting_done" />
-
-
-                        </RelativeLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.2dp"
-                            android:background="@color/gray_dark70" />
-
-                        <RelativeLayout
-                            android:id="@+id/relAnswerFinal"
-                            android:layout_width="match_parent"
-                            android:layout_height="36dp"
-                            android:paddingStart="@dimen/activity_padding8"
-                            android:paddingEnd="@dimen/activity_padding8">
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/img_final"
-                                android:layout_width="28dp"
-                                android:layout_height="28dp"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
-                                app:srcCompat="@drawable/ic_setting_final"
-                                app:tint="@color/colorListingHeading" />
-
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/txt_final_tick"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/activity_padding8"
-                                android:layout_toStartOf="@+id/img_final_tick"
-                                android:layout_toEndOf="@+id/img_final"
-                                android:fontFamily="@font/font_semibold"
-                                android:gravity="center_vertical|left"
-                                android:text="@string/txt_setting_final_answer"
-                                android:textColor="@color/colorListingHeading"
-                                android:textSize="@dimen/textSizeMedium"
-                                android:textStyle="normal" />
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/img_final_tick"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:visibility="@{isFinalAnswer?View.VISIBLE:View.INVISIBLE}"
-                                app:srcCompat="@drawable/ic_setting_done" />
-
-
-                        </RelativeLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.2dp"
-                            android:background="@color/gray_dark70" />
-
-                        <RelativeLayout
-                            android:id="@+id/relAnswerPhysical"
-                            android:layout_width="match_parent"
-                            android:layout_height="36dp"
-                            android:paddingStart="@dimen/activity_padding8"
-                            android:paddingEnd="@dimen/activity_padding8">
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/img_Physical"
-                                android:layout_width="28dp"
-                                android:layout_height="28dp"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
-                                app:srcCompat="@drawable/ic_setting_answer_with_tool"
-                                app:tint="@color/colorListingHeading" />
-
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/txt_Physical_tick"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/activity_padding8"
-                                android:layout_toEndOf="@+id/img_Physical"
-                                android:fontFamily="@font/font_semibold"
-                                android:gravity="center_vertical|left"
-                                android:text="@string/answer_with_your_abacus_tool"
-                                android:textColor="@color/colorListingHeading"
-                                android:textSize="@dimen/textSizeMedium"
-                                android:textStyle="normal" />
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/img_Physical_tick"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:visibility="@{isAnswerWithTool?View.VISIBLE:View.INVISIBLE}"
-                                app:srcCompat="@drawable/ic_setting_done" />
-
-
-                        </RelativeLayout>
-
-                    </androidx.appcompat.widget.LinearLayoutCompat>
                 </com.google.android.material.card.MaterialCardView>
 
 

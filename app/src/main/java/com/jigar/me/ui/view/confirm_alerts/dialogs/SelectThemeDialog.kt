@@ -44,12 +44,10 @@ object SelectThemeDialog {
                 listener.themeCloseDialogClick()
             }
 
-            var selectedFreePosition = -1
             val freeList = DataProvider.getAbacusThemeFreeTypeList(activity,AbacusBeadType.ExamResult)
             if (prefManager.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default).contains(AppConstants.Settings.theam_Default,true)){
                 val position : Int? = freeList.indexOfFirst { it.type.equals(prefManager.getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default),true) }
                 if (position != null && position != -1){
-                    selectedFreePosition = position
                     val theme = freeList[position].type
                     setAbacusBeads(theme,activity,prefManager,alertLayout)
                 }
@@ -59,7 +57,7 @@ object SelectThemeDialog {
                         prefManager.setCustomParam(AppConstants.Settings.Theam,data.type)
                         setAbacusBeads(data.type,activity,prefManager,alertLayout)
                     }
-                }, selectedFreePosition)
+                },isPaidTheme = false, selectedTheme = prefManager.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default))
                 recyclerviewAbacusDefault.adapter = abacusThemeFreeAdapter
             }
         }
