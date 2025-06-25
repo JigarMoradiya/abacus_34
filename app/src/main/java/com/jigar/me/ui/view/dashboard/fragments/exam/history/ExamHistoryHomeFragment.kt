@@ -16,6 +16,7 @@ import com.jigar.me.utils.Constants
 import com.jigar.me.utils.extensions.isNetworkAvailable
 import com.jigar.me.utils.extensions.onClick
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class ExamHistoryHomeFragment : BaseFragment() {
@@ -31,7 +32,7 @@ class ExamHistoryHomeFragment : BaseFragment() {
         return binding.root
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
 
     private fun init() {

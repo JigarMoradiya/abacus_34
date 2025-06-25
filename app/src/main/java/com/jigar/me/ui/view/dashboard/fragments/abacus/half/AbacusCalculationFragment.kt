@@ -50,6 +50,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.util.*
 import kotlin.collections.ArrayList
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAdditionSubtractionTypeAdapter.HintListener{
@@ -115,7 +116,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         return root
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
 
     private fun initObserver() {

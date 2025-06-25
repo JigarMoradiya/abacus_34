@@ -22,6 +22,7 @@ import com.jigar.me.utils.Resource
 import com.jigar.me.utils.extensions.onClick
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Objects
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class OTPFragment : BaseFragment() {
@@ -44,7 +45,7 @@ class OTPFragment : BaseFragment() {
         return binding.root
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initView() {
         with(binding){

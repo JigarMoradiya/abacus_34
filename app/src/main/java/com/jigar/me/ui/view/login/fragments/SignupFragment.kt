@@ -23,6 +23,7 @@ import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.openURL
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Objects
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class SignupFragment : BaseFragment() {
@@ -41,7 +42,7 @@ class SignupFragment : BaseFragment() {
     }
 
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
 
     private fun initListener() {

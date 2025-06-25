@@ -19,6 +19,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
@@ -102,16 +103,23 @@ import java.util.*
      imm.hideSoftInputFromWindow(view.windowToken, 0)
  }
 
- fun Activity.getBottomNavBarHeight(callback: (Int,Int) -> Unit) {
+ fun Activity.getBottomNavBarHeight(callback: (Int,Int,Boolean) -> Unit) {
      val rootView = window.decorView
      var alreadyCalled = false
 
      ViewCompat.setOnApplyWindowInsetsListener(rootView) { _, insets ->
          if (!alreadyCalled) {
              alreadyCalled = true
-             val bottomInset = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
-             val topInset = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
-             callback(topInset,bottomInset)
+             val cutout = insets.displayCutout
+             val hasNotch = cutout != null && cutout.boundingRects.isNotEmpty()
+             if(hasNotch){
+                 val bottomInset = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+                 val topInset = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
+                 callback(topInset,bottomInset,hasNotch)
+             }else{
+                 callback(0,0,hasNotch)
+             }
+
          }
          insets
      }
@@ -134,11 +142,13 @@ import java.util.*
  fun Activity.hasNotch(callback: (Boolean) -> Unit) {
      val decorView = window.decorView
      var alreadyCalled = false
-
+     Log.e("jigarLogs", "welcome hasNotch")
+     var hasNotch = false
      val listener = androidx.core.view.OnApplyWindowInsetsListener { view, insets ->
-         if (!alreadyCalled) {
+         Log.e("jigarLogs", "welcome hasNotch alreadyCalled +"+alreadyCalled)
+         if (!alreadyCalled || !hasNotch) {
              val cutout = insets.displayCutout
-             val hasNotch = cutout != null && cutout.boundingRects.isNotEmpty()
+              hasNotch = cutout != null && cutout.boundingRects.isNotEmpty()
              callback(hasNotch)
              alreadyCalled = true
              ViewCompat.setOnApplyWindowInsetsListener(decorView, null) // remove listener

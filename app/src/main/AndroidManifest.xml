@@ -33,7 +33,7 @@
             android:exported="true"
             android:configChanges="orientation|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="sensorLandscape"
+            android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ui.view.other.ContactUsActivity"

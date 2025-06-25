@@ -31,6 +31,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import java.util.*
 import kotlin.coroutines.CoroutineContext
+import androidx.navigation.findNavController
 
 abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSettingInterface {
     lateinit var prefManager : AppPreferencesHelper
@@ -64,7 +65,7 @@ abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSetting
         navigationGraph()
     }
     private fun navigationGraph() {
-        navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        navController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     fun getStatisticData(listener : StatisticApiResponseListener){
         statisticApiResponseListener = listener

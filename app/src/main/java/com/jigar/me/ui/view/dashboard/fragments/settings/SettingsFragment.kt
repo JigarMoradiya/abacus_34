@@ -29,6 +29,7 @@ import com.mohammedalaa.seekbar.OnRangeSeekBarChangeListener
 import com.mohammedalaa.seekbar.RangeSeekBarView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClickListener {
@@ -45,9 +46,10 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
         return binding.root
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() {
+        binding.spaceNotch.layoutParams.width = prefManager.getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
         selectedTheme = prefManager.getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default)
         setPreviewTheme(selectedTheme)
 

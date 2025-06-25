@@ -22,6 +22,7 @@ import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class PuzzleNumberFragment : BaseFragment(), NumberSequenceCompleteBottomSheet.NumberSequenceCompleteDialogInterface {
@@ -56,7 +57,7 @@ class PuzzleNumberFragment : BaseFragment(), NumberSequenceCompleteBottomSheet.N
         return mBinding.root
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
 
     private fun showCompleteDialog() {

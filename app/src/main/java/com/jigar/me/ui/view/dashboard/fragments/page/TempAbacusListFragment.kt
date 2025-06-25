@@ -19,6 +19,7 @@ import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.readJsonAsset
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class TempAbacusListFragment : BaseFragment(), AbacusTempListAdapter.OnItemClickListener {
@@ -93,7 +94,7 @@ class TempAbacusListFragment : BaseFragment(), AbacusTempListAdapter.OnItemClick
     }
 
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
 
     private fun initViews() {

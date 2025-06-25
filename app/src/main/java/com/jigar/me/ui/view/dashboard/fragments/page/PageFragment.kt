@@ -25,6 +25,7 @@ import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.extensions.*
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class PageFragment : BaseFragment(), CategoryPageListAdapter.OnItemClickListener, PageListAdapter.OnItemClickListener {
@@ -56,7 +57,7 @@ class PageFragment : BaseFragment(), CategoryPageListAdapter.OnItemClickListener
         return root
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() {
         from = PageFragmentArgs.fromBundle(requireArguments()).from

@@ -45,6 +45,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
@@ -158,7 +159,7 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
         }
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun init() {
         val theme = prefManager.getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)

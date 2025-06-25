@@ -1,8 +1,6 @@
 package com.jigar.me.ui.view.dashboard.fragments.abacus
 
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +10,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import com.jigar.me.R
 import com.jigar.me.data.local.data.AbacusBeadType
 import com.jigar.me.data.local.data.AbacusContent
@@ -36,7 +33,6 @@ import com.jigar.me.utils.extensions.invisible
 import com.jigar.me.utils.extensions.isNetworkAvailable
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.onClick
-import com.jigar.me.utils.extensions.openYoutube
 import com.jigar.me.utils.extensions.setAbacusResetShakeAnimation
 import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,6 +43,7 @@ import me.samlss.lighter.Lighter
 import me.samlss.lighter.parameter.Direction
 import java.util.Random
 import java.util.UnknownFormatConversionException
+import androidx.navigation.findNavController
 
 
 @AndroidEntryPoint
@@ -79,12 +76,13 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
     }
 
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
 
     private fun initViews() {
-//        setAbacus()
         with(prefManager){
+            binding.spaceNotch.layoutParams.width = getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
+
             abacusTotalColumns = getCustomParamInt(AppConstants.Settings.AbacusMaxColumn,13)
             if (getCustomParam(AppConstants.Settings.SW_Random,"") != "Y") {
                 values = getCustomParamFloat(AppConstants.Settings.Toddler_No,1.0F)
@@ -107,7 +105,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
                 }
             }
         }
-        setSwitchs()
+        setSwitches()
         binding.swDecimalMode.isChecked = prefManager.getCustomParam(AppConstants.Settings.SW_DecimalMode, "N") == "Y"
     }
 
@@ -145,7 +143,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             prefManager.setCustomParam(AppConstants.Settings.SW_FreeMode, "Y")
             binding.swFreeMode.isChecked = true
         }
-        setSwitchs()
+        setSwitches()
     }
 //    private fun switchDecimalMode() {
 //        with(prefManager){
@@ -199,7 +197,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             } else {
                 setCustomParam(AppConstants.Settings.SW_Random,"Y")
             }
-            setSwitchs()
+            setSwitches()
         }
 
     }
@@ -237,17 +235,6 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             AbacusBeadType.FullMode
         }
         themeContent  = DataProvider.findAbacusThemeType(requireContext(),theme,abacusBeadType)
-
-        // TODO kids images showing
-//        if (DataProvider.generateIndex() == 0){
-//            abacusBinding?.imgKidLeft?.setImageResource(R.drawable.ic_boy_abacus_left)
-//            abacusBinding?.imgKidHandLeft?.setImageResource(R.drawable.ic_boy_abacus_hand_left)
-//        }else{
-//            abacusBinding?.imgKidLeft?.setImageResource(R.drawable.ic_girl_abacus_left)
-//            abacusBinding?.imgKidHandLeft?.setImageResource(R.drawable.ic_girl_abacus_hand_left)
-//        }
-//        abacusBinding?.imgKidLeft?.show()
-//        abacusBinding?.imgKidHandLeft?.show()
 
         abacusBinding?.ivReset?.onClick {
             abacusBinding?.viewDirection?.hide()
@@ -287,9 +274,14 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         }
     }
 
-    private fun setSwitchs() {
+    private fun setSwitches() {
         with(prefManager){
             binding.swFreeMode.isChecked = getCustomParam(AppConstants.Settings.SW_FreeMode, "Y") == "Y"
+            if (getCustomParam(AppConstants.Settings.SW_FreeMode, "Y") == "Y"){
+                binding.txtShowTour.show()
+            }else{
+                binding.txtShowTour.hide()
+            }
             setFreeMode()
         }
     }
@@ -379,7 +371,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             setCustomParamFloat(AppConstants.Settings.SW_Range_min,fromValue.toFloat())
             setCustomParamFloat(AppConstants.Settings.SW_Range_max,toValue.toFloat() + 1)
             setCustomParamFloat(AppConstants.Settings.Toddler_No,getCustomParamFloat(AppConstants.Settings.SW_Range_min,1F))
-            setSwitchs()
+            setSwitches()
             generateNewNumber()
         }
     }

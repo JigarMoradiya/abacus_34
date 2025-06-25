@@ -33,6 +33,7 @@ import com.jigar.me.utils.extensions.show
 import com.jigar.me.utils.paging.EndlessRecyclerListener
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class ReportsHomeFragment : BaseFragment(), ReportsListAdapter.OnItemClickListener,
@@ -63,11 +64,14 @@ class ReportsHomeFragment : BaseFragment(), ReportsListAdapter.OnItemClickListen
         return root!!
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() {
         reportsAdapter = ReportsListAdapter(arrayListOf(), AppDatabase.getInstance(requireContext()),this)
         with(binding){
+            spaceNotch.layoutParams.width = prefManager.getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
+            spaceBottom.layoutParams.height = prefManager.getCustomParamInt(AppConstants.BOTTOM_NAV_HEIGHT,0)
+
             recyclerview.adapter = reportsAdapter
             val list : ArrayList<String> = arrayListOf()
             with(list) {

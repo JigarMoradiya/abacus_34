@@ -48,6 +48,7 @@ import com.jigar.me.utils.extensions.toastL
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.Random
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialogInterface{
@@ -100,7 +101,7 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
         return mBinding.root
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun init() {
         mCalculator = Calculator()

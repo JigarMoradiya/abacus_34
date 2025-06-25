@@ -18,8 +18,10 @@ import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
+import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
+import com.jigar.me.utils.extensions.getBottomNavBarHeight
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.invisible
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
@@ -29,6 +31,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class CategoryFragment : BaseFragment() {
@@ -43,10 +46,10 @@ class CategoryFragment : BaseFragment() {
     private var clickedPagePosition: Int = 0
     private var clickedSetPosition: Int = 0
     private var clickedSetData: Set? = null
-//    private var isGetAllData: Boolean = true
+    private var isGetAllData: Boolean = true
 
     // default make this
-    private var isGetAllData: Boolean = false
+//    private var isGetAllData: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,13 +73,16 @@ class CategoryFragment : BaseFragment() {
     }
 
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
 
     private fun initViews() = with(binding) {
         if (!BuildConfig.DEBUG){
             isGetAllData = false
         }
+        binding.spaceNotch.layoutParams.width = prefManager.getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
+        binding.spaceBottom.layoutParams.height = prefManager.getCustomParamInt(AppConstants.BOTTOM_NAV_HEIGHT,0)
+
         CoroutineScope(Dispatchers.Main).launch {
             val purchasedSKU = appViewModel.getInAppSKUPurchased()
             categoryNewAdapter = CategoryNewAdapter(arrayListOf(),purchasedSKU,prefManager) { position, previousPos, data ->

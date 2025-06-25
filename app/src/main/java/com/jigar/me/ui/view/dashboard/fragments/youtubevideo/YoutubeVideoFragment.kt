@@ -17,6 +17,7 @@ import com.jigar.me.utils.extensions.isNetworkAvailable
 import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.openYoutube
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class YoutubeVideoFragment : BaseFragment(), YoutubeVideoListAdapter.OnItemClickListener {
@@ -36,9 +37,12 @@ class YoutubeVideoFragment : BaseFragment(), YoutubeVideoListAdapter.OnItemClick
         return root!!
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() {
+        binding.spaceNotch.layoutParams.width = prefManager.getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
+        binding.spaceBottom.layoutParams.height = prefManager.getCustomParamInt(AppConstants.BOTTOM_NAV_HEIGHT,0)
+
         val type = object : TypeToken<ArrayList<VideoData>>() {}.type
         val videoList: List<VideoData> = Gson().fromJson(prefManager.getCustomParam(AppConstants.RemoteConfig.videoList,""),type)
         val sortedList = videoList.sortedWith { videoList1, videoList2 -> videoList1.so - videoList2.so }

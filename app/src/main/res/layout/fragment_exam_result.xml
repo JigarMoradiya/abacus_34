@@ -41,6 +41,13 @@
             app:layout_constraintStart_toEndOf="@+id/cardBack"
             app:layout_constraintTop_toTopOf="@+id/cardBack" />
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spaceNotch"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerviewResult"
             android:layout_width="0dp"
@@ -50,14 +57,21 @@
             android:padding="@dimen/activity_padding6"
             android:scrollbars="none"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/spaceNotch"
+            app:layout_constraintBottom_toTopOf="@+id/spaceBottom"
             app:layout_constraintTop_toBottomOf="@+id/cardBack"
             app:spanCount="5"
             tools:itemCount="7"
             tools:listitem="@layout/raw_exam_result" />
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spaceBottom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -38,6 +38,12 @@
         app:layout_constraintStart_toEndOf="@+id/cardBack"
         app:layout_constraintTop_toTopOf="@+id/cardBack" />
 
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spaceNotch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerviewCategory"
@@ -48,7 +54,7 @@
         android:scrollbars="none"
         android:layout_margin="@dimen/activity_padding6"
         app:layout_constraintTop_toBottomOf="@+id/cardBack"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spaceNotch"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="3"
@@ -139,11 +145,11 @@
         android:orientation="vertical"
         android:overScrollMode="never"
         android:scrollbars="none"
-        android:layout_margin="@dimen/activity_padding6"
+        android:layout_marginHorizontal="@dimen/activity_padding6"
         app:layout_constraintTop_toBottomOf="@+id/cardBack"
         app:layout_constraintStart_toEndOf="@+id/recyclerviewCategory"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/spaceBottom"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         tools:itemCount="4"
         app:spanCount="2"
@@ -162,4 +168,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@drawable/ic_coming_soon" />
 
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/activity_padding6"
+        android:id="@+id/spaceBottom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,6 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class MaterialHomeFragment : BaseFragment() {
@@ -42,7 +43,7 @@ class MaterialHomeFragment : BaseFragment() {
         return root!!
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initView() {
     }

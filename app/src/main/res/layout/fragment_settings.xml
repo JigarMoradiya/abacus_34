@@ -250,6 +250,13 @@
                         android:textSize="@dimen/textSizeMedium" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spaceNotch"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card0"
                     android:layout_width="0dp"
@@ -263,7 +270,7 @@
                     app:cardUseCompatPadding="true"
                     app:layout_constraintBottom_toBottomOf="@+id/card00"
                     app:layout_constraintEnd_toStartOf="@+id/card00"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/spaceNotch"
                     app:layout_constraintTop_toBottomOf="@+id/cardPaidTheme"
                     app:strokeColor="@color/grey_700"
                     app:strokeWidth="1dp">
@@ -401,7 +408,7 @@
                     app:cardMaxElevation="@dimen/card_elevation"
                     app:cardUseCompatPadding="true"
                     app:layout_constraintEnd_toStartOf="@+id/card2"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/spaceNotch"
                     app:layout_constraintTop_toBottomOf="@+id/barrierCard0"
                     app:strokeColor="@color/grey_700"
                     app:strokeWidth="1dp">

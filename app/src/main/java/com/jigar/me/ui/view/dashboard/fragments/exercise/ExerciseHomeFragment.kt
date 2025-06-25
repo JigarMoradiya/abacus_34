@@ -37,6 +37,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.ticker
 import java.util.concurrent.TimeUnit
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAbacusValueChangeListener,
@@ -74,14 +75,15 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
         return binding.root
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() {
-        if (prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_left_hand, true)){
-            setLeftAbacusRules()
-        }else{
-            setRightAbacusRules()
-        }
+        setLeftAbacusRules()
+//        if (prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_left_hand, true)){
+//            setLeftAbacusRules()
+//        }else{
+//            setRightAbacusRules()
+//        }
         mCalculator = Calculator()
         with(prefManager){
             setCustomParam(AppConstants.Settings.TheamTempView,getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default))

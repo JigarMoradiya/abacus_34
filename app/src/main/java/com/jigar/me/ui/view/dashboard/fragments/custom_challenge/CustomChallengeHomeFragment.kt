@@ -29,6 +29,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.Locale
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class CustomChallengeHomeFragment : BaseFragment() {
@@ -57,7 +58,7 @@ class CustomChallengeHomeFragment : BaseFragment() {
     }
 
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
 
     private fun clickListener() {

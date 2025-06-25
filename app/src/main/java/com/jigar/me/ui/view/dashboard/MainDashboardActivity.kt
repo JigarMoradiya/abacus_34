@@ -126,13 +126,10 @@ class MainDashboardActivity : BaseActivity() {
     private fun initViews() {
         setNavigationGraph()
         onMainActivityBack()
-//        hasNotch {
-//            Log.e("jigarLogs", "Re-check hasNotch = $it")
-//        }
-
-        getBottomNavBarHeight { topInset,bottomInset ->
-//            Log.e("jigarLogs", "Bottom nav topInset = $topInset px")
-//            Log.e("jigarLogs", "Bottom nav bottomInset = $bottomInset px")
+        getBottomNavBarHeight { topInset,bottomInset,hasNotch ->
+                prefManager.setCustomParamBoolean(AppConstants.HAS_NOTCH,hasNotch)
+                prefManager.setCustomParamInt(AppConstants.NOTCH_HEIGHT,topInset)
+                prefManager.setCustomParamInt(AppConstants.BOTTOM_NAV_HEIGHT,bottomInset)
         }
 
     }

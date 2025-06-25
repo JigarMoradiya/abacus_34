@@ -3,6 +3,7 @@ package com.jigar.me.ui.view.login
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
@@ -13,6 +14,9 @@ import com.jigar.me.R
 import com.jigar.me.databinding.ActivityLoginDashboardBinding
 import com.jigar.me.ui.view.base.BaseActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
+import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.extensions.getBottomNavBarHeight
+import com.jigar.me.utils.extensions.hasNotch
 import com.jigar.me.utils.extensions.hide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope

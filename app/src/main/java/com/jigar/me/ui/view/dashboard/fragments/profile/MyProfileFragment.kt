@@ -36,6 +36,7 @@ import com.jigar.me.utils.extensions.openMail
 import com.jigar.me.utils.extensions.openURL
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileDialogInterface,
@@ -64,7 +65,7 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
         return root!!
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() {
         avatarProfileCloseDialog()

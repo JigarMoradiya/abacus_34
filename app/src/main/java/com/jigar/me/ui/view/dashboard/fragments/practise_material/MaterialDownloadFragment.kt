@@ -35,6 +35,7 @@ import com.jigar.me.utils.extensions.*
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.util.Date
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class MaterialDownloadFragment : BaseFragment(), MaterialDownloadAdapter.OnItemClickListener{
@@ -65,7 +66,7 @@ class MaterialDownloadFragment : BaseFragment(), MaterialDownloadAdapter.OnItemC
         return binding.root
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     override fun onResume() {
         super.onResume()

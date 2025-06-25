@@ -18,6 +18,7 @@ import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.openMail
 import com.jigar.me.utils.extensions.openURL
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class AboutFragment : BaseFragment(), OtherAppAdapter.OnItemClickListener {
@@ -32,7 +33,7 @@ class AboutFragment : BaseFragment(), OtherAppAdapter.OnItemClickListener {
         return binding.root
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() {
         try {

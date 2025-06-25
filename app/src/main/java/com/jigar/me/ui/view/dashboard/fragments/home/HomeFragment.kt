@@ -58,6 +58,7 @@ import me.samlss.lighter.Lighter
 import me.samlss.lighter.parameter.Direction
 import java.util.*
 import java.util.concurrent.TimeUnit
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
@@ -103,7 +104,7 @@ class HomeFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
         return root!!
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() {
         getTrackData()

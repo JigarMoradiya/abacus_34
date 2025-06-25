@@ -47,6 +47,12 @@
             app:layout_constraintTop_toTopOf="@+id/cardBack"
             tools:text="SET 1" />
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spaceNotch"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
@@ -55,7 +61,7 @@
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toEndOf="@+id/spaceNotch">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txtDecimalMode"
@@ -105,7 +111,7 @@
             android:gravity="center"
             android:paddingHorizontal="@dimen/activity_padding16"
             android:text="@string/click_here_to_show_nabacus_tour"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/black"
             android:textSize="@dimen/textSizeMedium"
             app:layout_constraintBottom_toBottomOf="@+id/cardBack"
             app:layout_constraintEnd_toEndOf="parent"

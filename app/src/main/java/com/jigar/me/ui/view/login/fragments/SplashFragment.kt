@@ -37,6 +37,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.HashMap
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class SplashFragment : BaseFragment() {
@@ -50,7 +51,7 @@ class SplashFragment : BaseFragment() {
         return binding.root
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
 
     override fun onResume() {

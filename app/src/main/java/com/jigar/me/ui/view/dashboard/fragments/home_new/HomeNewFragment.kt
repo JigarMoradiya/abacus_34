@@ -57,6 +57,7 @@ import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.Resource
 import com.jigar.me.utils.checkPermissions
+import com.jigar.me.utils.extensions.getBottomNavBarHeight
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.openURL
@@ -72,6 +73,7 @@ import java.util.Calendar
 import java.util.Timer
 import java.util.TimerTask
 import java.util.concurrent.TimeUnit
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
@@ -115,7 +117,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
         return root!!
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() = with(binding){
         // fetch abacus data

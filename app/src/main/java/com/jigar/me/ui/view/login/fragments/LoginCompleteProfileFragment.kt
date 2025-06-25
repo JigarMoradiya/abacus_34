@@ -40,6 +40,7 @@ import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.Objects
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class LoginCompleteProfileFragment : BaseFragment() {
@@ -87,7 +88,7 @@ class LoginCompleteProfileFragment : BaseFragment() {
     }
 
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
 
     private fun initListener() {

@@ -36,6 +36,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.collections.ArrayList
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class PurchaseFragment : BaseFragment(), PurchaseAdapter.OnItemClickListener {
@@ -57,7 +58,7 @@ class PurchaseFragment : BaseFragment(), PurchaseAdapter.OnItemClickListener {
         return binding.root
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
 
     private fun initViews() {

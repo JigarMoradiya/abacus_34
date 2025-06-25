@@ -13,6 +13,7 @@ import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.onClick
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class FAQsFragment : BaseFragment() {
@@ -37,7 +38,7 @@ class FAQsFragment : BaseFragment() {
     }
 
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
 
     private fun initViews() {

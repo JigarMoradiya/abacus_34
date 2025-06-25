@@ -8,35 +8,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgKidLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:adjustViewBounds="true"
-            android:paddingBottom="@dimen/padding_bottom_kids_in_abacus"
-            android:scaleType="fitEnd"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/relAbacus"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/relAbacus"
-            app:srcCompat="@drawable/ic_boy_abacus_left"
-            tools:visibility="gone" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgKidRight"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginStart="-5dp"
-            android:adjustViewBounds="true"
-            android:paddingBottom="@dimen/padding_bottom_kids_in_abacus"
-            android:scaleType="fitEnd"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/relAbacus"
-            app:layout_constraintStart_toEndOf="@+id/relAbacus"
-            app:layout_constraintTop_toTopOf="@+id/relAbacus"
-            app:srcCompat="@drawable/ic_girl_abacus_right"
-            tools:visibility="visible" />
-
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/viewNumbers"
             android:layout_width="0dp"
@@ -181,7 +152,6 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
-
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/viewNumbersBottom"
@@ -501,7 +471,7 @@
             android:id="@+id/relAbacus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@+id/imgKidLeft"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linear">
 
 
@@ -1017,35 +987,6 @@
                 tools:visibility="visible" />
 
         </RelativeLayout>
-
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgKidHandLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginStart="-2dp"
-            android:paddingBottom="@dimen/padding_bottom_kids_in_abacus"
-            android:scaleType="fitStart"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/relAbacus"
-            app:layout_constraintStart_toEndOf="@+id/imgKidLeft"
-            app:layout_constraintTop_toTopOf="@+id/relAbacus"
-            app:srcCompat="@drawable/ic_boy_abacus_hand_left"
-            tools:visibility="gone" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgKidHandRight"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginEnd="-2dp"
-            android:paddingBottom="@dimen/padding_bottom_kids_in_abacus"
-            android:scaleType="fitEnd"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/relAbacus"
-            app:layout_constraintEnd_toStartOf="@+id/imgKidRight"
-            app:layout_constraintTop_toTopOf="@+id/relAbacus"
-            app:srcCompat="@drawable/ic_girl_abacus_hand_right"
-            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
