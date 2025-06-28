@@ -14,23 +14,17 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import com.google.gson.Gson
 import com.jigar.me.R
 import com.jigar.me.data.local.data.AbacusBeadType
 import com.jigar.me.data.local.data.AbacusContent
 import com.jigar.me.data.local.data.AbacusProvider
 import com.jigar.me.data.local.data.DataProvider
-import com.jigar.me.data.local.data.ExamProvider
-import com.jigar.me.data.local.data.ExamProvider.detectFormulaSteps
 import com.jigar.me.data.model.data.QuestionDataRequest
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
 import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
 import com.jigar.me.databinding.FragmentCalculationBinding
-import com.jigar.me.databinding.FragmentHalfAbacusBinding
 import com.jigar.me.ui.view.base.BaseFragment
-import com.jigar.me.ui.view.base.abacus.AbacusMasterCompleteListener
 import com.jigar.me.ui.view.base.abacus.OnAbacusValueChangeListener
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
 import com.jigar.me.ui.view.dashboard.fragments.abacus.half.adapter.AbacusAdditionSubtractionTypeAdapter
@@ -51,6 +45,9 @@ import org.json.JSONObject
 import java.util.*
 import kotlin.collections.ArrayList
 import androidx.navigation.findNavController
+import com.google.gson.Gson
+import com.jigar.me.data.local.data.ExamProvider
+import com.jigar.me.data.local.data.ExamProvider.detectFormulaSteps
 
 @AndroidEntryPoint
 class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAdditionSubtractionTypeAdapter.HintListener{
@@ -87,6 +84,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     private lateinit var adapterDivision: AbacusDivisionTypeAdapter
 
     private var list_abacus: List<Abacus> = arrayListOf()
+    private var currentSumFormulaList: ArrayList<ExamProvider.FormulaStep> = arrayListOf()
     private lateinit var currentAbacus : Abacus
     private var list_abacus_main = ArrayList<HashMap<String, String>>()
 
@@ -97,6 +95,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     private var abacusFragment: HalfAbacusSubFragment? = null
     private var setDetail: com.jigar.me.data.model.dbtable.abacus_all_data.Set? = null
     private var setProgress: SetProgress? = null
+    private var previousSum = ""
 
     private lateinit var mCalculator: Calculator
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -200,7 +199,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     }
 
     private fun setThemeColor() {
-        themeContent.resetBtnColor8?.let{
+        themeContent.resetBtnColor8.let{
             binding.tvAnsNumberWord.setTextColor(ContextCompat.getColor(requireContext(),it))
             val finalColor = CommonUtils.mixTwoColors(ContextCompat.getColor(requireContext(),R.color.white), ContextCompat.getColor(requireContext(),it), 0.75f)
             binding.ivDivider1.setBackgroundColor(finalColor)
@@ -209,15 +208,14 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
             binding.txtTitleHand.setTextColor(ContextCompat.getColor(requireContext(),it))
             binding.tvAns.setTextColor(ContextCompat.getColor(requireContext(),it))
 
-            themeContent?.dividerColor1?.let {it2 ->
+            themeContent.dividerColor1.let {it2 ->
                 val finalColor40 = CommonUtils.mixTwoColors(ContextCompat.getColor(requireContext(),it2), ContextCompat.getColor(requireContext(),it), 0.40f)
                 binding.tvAnsNumber.setTextColor(finalColor40)
             }
 
-            themeContent?.dividerColor1?.let {it2 ->
+            themeContent.dividerColor1.let {it2 ->
                 val finalColor60 = CommonUtils.mixTwoColors(ContextCompat.getColor(requireContext(),it2), ContextCompat.getColor(requireContext(),it), 0.60f)
                 binding.cardHint.setStrokeColor(ColorStateList.valueOf(finalColor60))
-                binding.cardHint2.setStrokeColor(ColorStateList.valueOf(finalColor60))
             }
 
         }
@@ -228,16 +226,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         binding.cardSettingTop.onClick { goToSetting() }
         binding.cardYoutube.onClick { requireContext().openYoutube() }
         binding.cardSubscribe.onClick { goToInAppPurchase()  }
-        binding.cardTable.onClick { tableClick() }
-        binding.relativeTable.onClick { binding.relativeTable.hide() }
-    }
-
-    private fun tableClick() {
-        if (binding.relativeTable.isVisible) {
-            binding.relativeTable.hide()
-        } else {
-            binding.relativeTable.show()
-        }
     }
 
     private fun resetProgressClick() {
@@ -425,7 +413,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         lifecycleScope.launch {
             delay(500)
             if (isHintSound) {
-                speakOut(String.format(resources.getString(R.string.speech_set), " ${number}"))
+                speakOut(number.toString())
             }
         }
         val noOfDecimalPlace = 0
@@ -508,7 +496,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
             val toValue = (adapterDivision.getCurrentSumVal()?:0.0).toInt()
             replaceAbacusFragment(abacusColumn, 0,toValue.toString(),topPositions,bottomPositions) // divide doesn't have decimal places
             //set table
-            setTableDataAndVisiblilty(true)
+            setTableDataAndVisibility()
             abacusFragment?.setQuestionAndDividerLength(queLength, finalAnsLength)
         } else {
             setDataOfDivision()
@@ -538,7 +526,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
             val toValue = (adapterMultiplication.getCurrentSumVal()?:0.0).toInt()
             replaceAbacusFragment(abacusColumn, noOfDecimalPlace,toValue.toString())
             //set table
-            setTableDataAndVisiblilty(true)
+            setTableDataAndVisibility()
         } else {
             setDataOfMultiplication()
         }
@@ -551,23 +539,22 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         binding.tvAns.invisible()
 
         // TODO jigar set hint
-        if (!hintPage.isNullOrEmpty()) {
-            if (isDisplayHelpMessage) {
-                binding.cardHint.show()
-            } else {
-                binding.cardHint.hide()
-            }
-            binding.cardTable.hide()
-            binding.relativeTable.hide()
-            binding.txtHint.text = HtmlCompat.fromHtml(hintPage!!,HtmlCompat.FROM_HTML_MODE_LEGACY)
-        }
+        Log.e("jigarFormulaFinal","hintPage = "+hintPage)
+//        if (!hintPage.isNullOrEmpty()) {
+//            if (isDisplayHelpMessage) {
+//                binding.cardHint.show()
+//            } else {
+//                binding.cardHint.hide()
+//            }
+//            binding.txtHint.text = HtmlCompat.fromHtml(hintPage!!,HtmlCompat.FROM_HTML_MODE_LEGACY)
+//        }
 
         val list_abacus_main_temp = AbacusProvider.getHashMapList(currentAbacus)
         if (!list_abacus_main_temp.isNullOrEmpty()){
             if (isHintSound && isStepByStep) {
                 lifecycleScope.launch {
                     delay(700)
-                    speakOut(String.format(resources.getString(R.string.speech_set), " ${list_abacus_main_temp[0].get(Constants.Que)?:"0".toInt()}"))
+                    speakOut(list_abacus_main_temp[0][Constants.Que] ?: "0")
                 }
             }
 
@@ -610,25 +597,31 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
             list_abacus_main.addAll(list_abacus_main_temp)
             binding.cardAbacusQue.show()
 
-//            val questionFormulaStep : ArrayList<ExamProvider.QuestionFormulaStep> = arrayListOf()
-//            list_abacus.map {
-////                    val ques = que
-//                    val ques = it.question
-////                    val ques = "7+5-1"
-//                    val newQue1 = ques.replace("+", "$$+").replace("-", "$$-")
-//                    val list1 = newQue1.split("$$")
-//                    val listNew1 : ArrayList<Int> = arrayListOf()
-//                    list1.map {
-//                        listNew1.add(it.toInt())
-//    //                    result.forEach {
-//    //                        Log.e("jigarSteps","steps = "+"Value: ${it.value}, Formula: ${it.formulaUsed ?: "None"}, Type: ${it.formulaType.description}")
-//    //                    }
-//                    }
-//                    val result = detectFormulaSteps(initial = 0, steps = listNew1)
-//                    questionFormulaStep.add(ExamProvider.QuestionFormulaStep(ques,result))
-//            }
-//            Log.e("jigarFormula","questionFormulaStep = "+Gson().toJson(questionFormulaStep).replace("\u003d","="))
+            if (isDisplayHelpMessage){
+                if (isStepByStep){
+        //            val questionFormulaStep : ArrayList<ExamProvider.QuestionFormulaStep> = arrayListOf()
+        //            list_abacus.map {
+        //                    val ques = it.question
+                            val ques = que
+//                            val ques = "88+66"
+                            val newQue1 = ques.replace("+", "$$+").replace("-", "$$-")
+                            val list1 = newQue1.split("$$")
+                            val listNew1 : ArrayList<Int> = arrayListOf()
+                            list1.map {
+                                listNew1.add(it.toInt())
+                            }
+                            val result = detectFormulaSteps(initial = 0, steps = listNew1)
+//                            Log.e("jigarFormulaFinal","result = "+ Gson().toJson(result).replace("\\u003d","="))
+                            currentSumFormulaList.clear()
+                            currentSumFormulaList.addAll(result)
+        //                    questionFormulaStep.add(ExamProvider.QuestionFormulaStep(ques,result))
+        //            }
+        //            Log.e("jigarFormula","questionFormulaStep == "+Gson().toJson(questionFormulaStep).replace("\\u003d","=") )
+                    Log.e("jigarFormulaFinal","currentSumFormulaList == "+Gson().toJson(currentSumFormulaList).replace("\\u003d","="))
+                    Log.e("jigarFormulaFinal","list_abacus_main = "+ Gson().toJson(list_abacus_main))
+                }
 
+            }
 
             adapterAdditionSubtraction.setData(list_abacus_main, isStepByStep)
             replaceAbacusFragment(abacusColumn, noOfDecimalPlace,list_abacus_main_temp[0].get(Constants.Que)?:"0")
@@ -656,73 +649,37 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     private fun goBack() {
         mNavController.navigateUp()
     }
-    private fun setTableDataAndVisiblilty(isSetDirectionFor1stTime : Boolean = false) {
+    private fun setTableDataAndVisibility() {
         if (isStepByStep){
             if (list_abacus_main.size >= 2) {
                 if (abacus_type == 1) {
                     val spannableString = adapterMultiplication.getTable(requireContext(),themeContent)
-
-//                    if (isStepByStep && !isSetDirectionFor1stTime){
-//                        val toValue = (adapterMultiplication.getCurrentSumVal()?:0.0).toInt()
-//                        Log.e("jigarLogs","toValue = "+toValue)
-//                        if (toValue > 0){
-//                            abacusFragment?.clearDirection()
-//                            abacusFragment?.addDirection(toValue)
-//                        }else{
-//                            abacusFragment?.hideDirection()
-//                        }
-//                    }
                     if (!TextUtils.isEmpty(spannableString)) {
                         if (isHideTable) {
                             binding.cardHint.hide()
                         } else {
                             binding.cardHint.show()
                         }
-                        binding.cardTable.hide()
-                        binding.relativeTable.hide()
                         binding.txtHint.text = spannableString
-                        binding.txtHintTable.text = spannableString
                     }
                 } else if (abacus_type == 2) {
-//                    if (isStepByStep && !isSetDirectionFor1stTime){
-//                        val toValue = (adapterDivision.getCurrentSumVal()?:0.0).toInt()
-//                        if (toValue > 0){
-//                            abacusFragment?.clearDirection()
-//                            abacusFragment?.addDirection(toValue)
-//                        }else{
-//                            abacusFragment?.hideDirection()
-//                        }
-//                    }
                     if (isHideTable) {
                         binding.cardHint.hide()
                     } else {
                         binding.cardHint.show()
                     }
-                    binding.cardTable.hide()
-                    binding.relativeTable.hide()
-
                     binding.txtHint.text = ViewUtils.getTable(
                         requireContext(), list_abacus_main[1][Constants.Que]!!.toInt(),
                         adapterDivision.currentTablePosition, themeContent
                     )
-                    binding.txtHintTable.text = ViewUtils.getTable(
-                        requireContext(), list_abacus_main[1][Constants.Que]!! .toInt(),
-                        adapterDivision.currentTablePosition, themeContent
-                    )
                 } else {
                     binding.cardHint.hide()
-                    binding.cardTable.hide()
-                    binding.relativeTable.hide()
                 }
             } else {
                 binding.cardHint.hide()
-                binding.cardTable.hide()
-                binding.relativeTable.hide()
             }
         }else{
             binding.cardHint.hide()
-            binding.cardTable.hide()
-            binding.relativeTable.hide()
         }
     }
     override fun onCheckHint(hintOld: String?, que: String?, Sign: String?) {
@@ -737,44 +694,48 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 speakOut(String.format(resources.getString(R.string.speech_set_plus), q1))
             }
         }
-//        val sumVal: Long = adapterAdditionSubtraction.getCurrentSumVal()!!.toLong()
-//        if (isStepByStep){
-//            abacusFragment?.clearDirection()
-//            abacusFragment?.addDirection(sumVal.toInt())
-//        }
-
         speek_hint = ""
-        val currentStep = adapterAdditionSubtraction.getCurrentStep()
-        var hint: String? = null
-        if (!currentAbacus.hint.isNullOrEmpty()){
-            val json = JSONObject(currentAbacus.hint)
-            if (json.has("$currentStep")){
-                hint = json.getString("$currentStep")
-            }
-        }
-        if (!hint.isNullOrEmpty()) {
-            if (isDisplayHelpMessage) {
-                binding.cardHint.show()
-            } else {
-                binding.cardHint.hide()
-            }
-            binding.cardTable.hide()
-            binding.relativeTable.hide()
-            binding.txtHint.text = hint
-            val temp_hint = hint
-            speek_hint = temp_hint.replace("-", " "+getString(R.string.minus)+" ").replace("+", " "+getString(R.string.plus)+" ")
-                .replace("=", " "+getString(R.string.equal_to)+" ")
-            lifecycleScope.launch {
-                delay(1500)
-                if (isHintSound) {
-                    speakOut(String.format(resources.getString(R.string.speech_formula_for), " $speek_hint"))
+        Log.e("jigarFormula","currentStep = "+adapterAdditionSubtraction.getCurrentStep())
+        binding.cardHint.hide()
+        if (isStepByStep && currentSumFormulaList.isNotNullOrEmpty()){
+            currentSumFormulaList.filter { it.index == adapterAdditionSubtraction.getCurrentStep() }.also {
+                if (it.isNotNullOrEmpty()){
+                    val list = it.map { it.formulaUsed }.distinct()
+                    if (list.isNotNullOrEmpty()){
+                        val formulaHint = list.joinToString("\n")
+                        binding.txtHint.text = formulaHint
+                        binding.cardHint.show()
+                    }
                 }
             }
-        } else if (hintPage.isNullOrEmpty()){
-            binding.cardHint.hide()
-            binding.cardTable.hide()
-            binding.relativeTable.hide()
         }
+//        val currentStep = adapterAdditionSubtraction.getCurrentStep()
+//        var hint: String? = null
+//        if (!currentAbacus.hint.isNullOrEmpty()){
+//            val json = JSONObject(currentAbacus.hint)
+//            if (json.has("$currentStep")){
+//                hint = json.getString("$currentStep")
+//            }
+//        }
+//        if (!hint.isNullOrEmpty()) {
+//            if (isDisplayHelpMessage) {
+//                binding.cardHint.show()
+//            } else {
+//                binding.cardHint.hide()
+//            }
+//            binding.txtHint.text = hint
+//            val temp_hint = hint
+//            speek_hint = temp_hint.replace("-", " "+getString(R.string.minus)+" ").replace("+", " "+getString(R.string.plus)+" ")
+//                .replace("=", " "+getString(R.string.equal_to)+" ")
+//            lifecycleScope.launch {
+//                delay(1500)
+//                if (isHintSound) {
+//                    speakOut(String.format(resources.getString(R.string.speech_formula_for), " $speek_hint"))
+//                }
+//            }
+//        } else if (hintPage.isNullOrEmpty()){
+//            binding.cardHint.hide()
+//        }
 
     }
 
@@ -789,8 +750,16 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                     "0"
                 }
                 abacusFragment = HalfAbacusSubFragment().newInstance(abacusTotalColumns, noOfDecimalPlace, abacus_type,themeContent,setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer,que,topPositions,bottomPositions)
+
+                abacusFragment?.setOnAbacusValueChangeListener(this)
+                val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+                transaction.replace(R.id.flAbacus,abacusFragment!!,abacusFragment?.javaClass?.simpleName)
+                transaction.commit()
+
             }else{
-                abacusFragment?.setSelectedPositions(topPositions,bottomPositions)
+                if (abacus_type == 2){
+                    abacusFragment?.setSelectedPositions(topPositions,bottomPositions)
+                }
 
                 if (isStepByStep){
                     abacusFragment?.hideDirection()
@@ -802,12 +771,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 }
             }
             binding.flAbacus.show()
-            if (abacusFragment != null){
-                abacusFragment?.setOnAbacusValueChangeListener(this)
-                val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-                transaction.replace(R.id.flAbacus,abacusFragment!!,abacusFragment?.javaClass?.simpleName)
-                transaction.commit()
-            }
             if (!binding.relAbacus.isVisible){
                 lifecycleScope.launch {
                     delay(200)
@@ -819,7 +782,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         }
     }
 
-    var previousSum = ""
+
     override fun onAbacusValueChange(abacusView: View, sum1: Long) {
         if (isMoveNext) {
             goToNextAbacus()
@@ -905,7 +868,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                     if (isStepByStep) {
                         if (sum == (sumVal.toInt()).toString()) {
                             adapterMultiplication.goToNextStep()
-                            setTableDataAndVisiblilty()
+                            setTableDataAndVisibility()
                         }
                         val curVal = adapterMultiplication.getCurrentStep()
                         val finalans = (adapterMultiplication.getFinalSumVal()?:0.0).toLong()
@@ -946,7 +909,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                         val nextDivider = adapterDivision.getNextDivider()
                         if (adapterDivision.getCurrentSumVal().toString() == answers && nextDivider.toString() == remainQuestion){
                             adapterDivision.goToNextStep()
-                            setTableDataAndVisiblilty()
+                            setTableDataAndVisibility()
                             val toValue = (adapterDivision.getCurrentSumVal()?:0.0).toInt()
                             if (toValue > 0){
                                 abacusFragment?.clearDirection()
@@ -1241,10 +1204,10 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                             binding.cardHint.hide()
                         }
                         val q1 = " ${(list_abacus_main[0][Constants.Que]?:"0")}"
-                        String.format(resources.getString(R.string.speech_set), q1)
+                        q1
                     }
                     else -> { // number
-                        String.format(resources.getString(R.string.speech_set), " ${number}")
+                        number.toString()
                     }
                 }
                 if (isHintSound) {
@@ -1283,11 +1246,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         paramsAbacus.addRule(RelativeLayout.CENTER_VERTICAL)
         binding.relAbacus.layoutParams = paramsAbacus
 
-        val paramscardTable = binding.cardTable.layoutParams as RelativeLayout.LayoutParams
-        paramscardTable.addRule(RelativeLayout.ALIGN_PARENT_LEFT)
-        paramscardTable.addRule(RelativeLayout.ALIGN_PARENT_TOP)
-        binding.cardTable.layoutParams = paramscardTable
-
         val paramsTitleHand = binding.txtTitleHand.layoutParams as RelativeLayout.LayoutParams
         paramsTitleHand.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
         paramsTitleHand.addRule(RelativeLayout.START_OF, R.id.relAbacus)
@@ -1296,11 +1254,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
             delay(400)
             binding.txtTitleHand.show()
         }
-
-        val paramsRelativeTable = binding.relativeTable.layoutParams as RelativeLayout.LayoutParams
-        paramsRelativeTable.addRule(RelativeLayout.BELOW, R.id.cardTable)
-        paramsRelativeTable.addRule(RelativeLayout.LEFT_OF, R.id.relAbacus)
-        binding.relativeTable.layoutParams = paramsRelativeTable
 
         val paramsQuestionsMain = binding.linearQuestions.layoutParams as RelativeLayout.LayoutParams
         paramsQuestionsMain.addRule(RelativeLayout.CENTER_VERTICAL)
@@ -1349,16 +1302,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         paramsAbacus.addRule(RelativeLayout.ALIGN_PARENT_START)
         paramsAbacus.addRule(RelativeLayout.CENTER_VERTICAL)
         binding.relAbacus.layoutParams = paramsAbacus
-
-        val paramscardTable = binding.cardTable.layoutParams as RelativeLayout.LayoutParams
-        paramscardTable.addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
-        paramscardTable.addRule(RelativeLayout.ALIGN_PARENT_TOP)
-        binding.cardTable.layoutParams = paramscardTable
-
-        val paramsRelativeTable = binding.relativeTable.layoutParams as RelativeLayout.LayoutParams
-        paramsRelativeTable.addRule(RelativeLayout.BELOW, R.id.cardTable)
-        paramsRelativeTable.addRule(RelativeLayout.END_OF, R.id.relAbacus)
-        binding.relativeTable.layoutParams = paramsRelativeTable
 
         val paramsQuestionsMain = binding.linearQuestions.layoutParams as RelativeLayout.LayoutParams
         paramsQuestionsMain.addRule(RelativeLayout.ALIGN_PARENT_END)

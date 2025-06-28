@@ -295,7 +295,7 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
                                 showReadout() //refresh abacus value
                                 thread?.setSleep(true)
                                 setPositionCompleteListener?.onSetPositionComplete()
-                            }, 10
+                            }, 100
                         )
                     }
                 })
@@ -490,7 +490,7 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
                             thread?.pauseDrawing()
                         } catch (e: InterruptedException) {
                         }
-                    }, 3)
+                    }, 100)
                     true
                 }
                 else -> super.onTouchEvent(event)

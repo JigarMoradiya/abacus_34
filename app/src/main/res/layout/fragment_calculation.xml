@@ -186,27 +186,6 @@
                 tools:text="Use your left hand"
                 tools:visibility="visible" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardTable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/icons_margin2"
-                android:elevation="@dimen/card_elevation"
-                android:visibility="invisible"
-                app:cardBackgroundColor="@color/light_math_table"
-                app:cardCornerRadius="@dimen/menu_icons_corner"
-                app:cardMaxElevation="@dimen/card_elevation"
-                app:strokeWidth="0dp"
-                tools:visibility="visible">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="@dimen/menu_icons"
-                    android:layout_height="@dimen/menu_icons"
-                    android:padding="@dimen/activity_padding8"
-                    app:srcCompat="@drawable/ic_math_table" />
-
-            </com.google.android.material.card.MaterialCardView>
-
             <RelativeLayout
                 android:id="@+id/relAbacus"
                 android:layout_width="wrap_content"
@@ -375,44 +354,6 @@
                         app:srcCompat="@drawable/ic_kid_standup_right"
                         tools:visibility="visible" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
-
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:id="@+id/relative_table"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:background="@color/transparent"
-                android:visibility="gone"
-                tools:visibility="visible">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardHint2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="@dimen/activity_padding4"
-                    app:cardElevation="@dimen/card_elevation4"
-                    app:cardMaxElevation="@dimen/card_elevation4"
-                    app:cardUseCompatPadding="true"
-                    app:strokeColor="@color/blue_300"
-                    app:strokeWidth="@dimen/activity_padding1">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/txt_hint_table"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/font_semibold"
-                        android:gravity="center"
-                        android:lineSpacingMultiplier="1.2"
-                        android:paddingTop="@dimen/activity_padding12"
-                        android:paddingBottom="@dimen/activity_padding12"
-                        android:textColor="@color/black_text"
-                        android:textSize="@dimen/textSizeMedium" />
-                </com.google.android.material.card.MaterialCardView>
 
             </RelativeLayout>
 

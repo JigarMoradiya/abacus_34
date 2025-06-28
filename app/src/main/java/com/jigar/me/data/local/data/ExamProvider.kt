@@ -8,6 +8,7 @@ import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Calculator
 import com.jigar.me.utils.CommonUtils
+import kotlin.math.absoluteValue
 
 object ExamProvider {
 
@@ -39,25 +40,6 @@ object ExamProvider {
         val question: List<FormulaStep>? = null,
     )
 
-    fun detectFormulaSteps(initial: Int, steps: List<Int>): List<FormulaStep> {
-        val result = mutableListOf<FormulaStep>()
-        var current = initial
-
-        steps.withIndex().forEach { (index, step) ->
-            val subSteps = breakIntoAbacusFriendlySteps(step)
-            for (s in subSteps) {
-                val formulaStep = getFormulaForStep(current, s)
-                if (formulaStep != null){
-                    formulaStep.index = index
-                    result.add(formulaStep)
-                }
-                current += s
-            }
-        }
-
-        return result
-    }
-
     private fun breakIntoAbacusFriendlySteps(value: Int): List<Int> {
         val result = mutableListOf<Int>()
         var remaining = value
@@ -79,12 +61,169 @@ object ExamProvider {
         return result
     }
 
-    fun getFormulaForStep(from: Int, delta: Int): FormulaStep? {
-        if (delta == 0) return null
 
+    fun detectFormulaSteps1(initial: Int, steps: List<Int>): List<FormulaStep> {
+        val result = mutableListOf<FormulaStep>()
+        var current = initial
+
+        for ((stepIndex, step) in steps.withIndex()) {
+            val stepAbs = kotlin.math.abs(step)
+            val stepSign = if (step >= 0) 1 else -1
+
+            val currentStr = current.toString().padStart(10, '0')
+            val stepStr = stepAbs.toString().padStart(10, '0')
+            val maxLength = maxOf(currentStr.length, stepStr.length)
+            val paddedCurrent = currentStr.padStart(maxLength, '0')
+            val paddedStep = stepStr.padStart(maxLength, '0')
+
+            val currentDigits = paddedCurrent.map { it - '0' }.toMutableList()
+            val stepDigits = paddedStep.map { it - '0' }
+
+            for (i in stepDigits.indices.reversed()) {
+                val delta = stepDigits[i] * stepSign
+                if (delta != 0) {
+                    val formula = getFormulaFromDigitContext(currentDigits[i], delta)
+                    if (formula!= null && formula.formulaType != AbacusFormulaType.NONE.description) {
+                        result.add(formula.copy(index = stepIndex))
+                    }
+                    currentDigits[i] = (currentDigits[i] + delta).mod(10)
+                }
+            }
+
+            // Update current using full addition after all digit-wise changes
+            current += step
+        }
+
+        return result
+    }
+
+//    fun detectFormulaSteps(initial: Int, steps: List<Int>): List<FormulaStep> {
+//        val result = mutableListOf<FormulaStep>()
+//        var current = initial
+//
+//        for ((stepIndex, step) in steps.withIndex()) {
+//            val stepSign = if (step >= 0) 1 else -1
+//
+//            val maxLength = maxOf(current.toString().length, step.absoluteValue.toString().length)
+//            val paddedCurrent = current.toString().padStart(maxLength, '0')
+//            val paddedStep = step.absoluteValue.toString().padStart(maxLength, '0')
+//
+//            val currentDigits = paddedCurrent.map { it - '0' }.toMutableList()
+//            val stepDigits = paddedStep.map { it - '0' }
+//            var carry = 0
+//
+//            if (stepIndex > 0){
+//                for (i in (currentDigits.size - 1) downTo 0) {
+//                    val fromDigit = currentDigits[i]
+//                    val stepDigit = stepDigits.getOrNull(i) ?: 0
+//
+//                    val sum = fromDigit + stepDigit * stepSign + carry
+//                    val newDigit = ((sum % 10 + 10) % 10)
+//
+//                    val newCarry = when {
+//                        sum >= 10 -> 1
+//                        sum < 0 -> -1
+//                        else -> 0
+//                    }
+//
+////                val delta = sum - fromDigit
+//                    val delta = stepDigit * stepSign
+//
+//                    if (delta != 0) {
+//                        val formula = getFormulaFromDigitContext(fromDigit, delta)
+//                        if (formula != null && formula.formulaType != AbacusFormulaType.NONE.description) {
+//                            result.add(formula.copy(index = stepIndex,value = delta))
+//                        }
+//                    }
+//
+//                    currentDigits[i] = newDigit
+//                    carry = newCarry
+//                }
+//            }
+//
+//            current += step
+//        }
+//
+//        return result
+//    }
+
+    fun detectFormulaSteps(initial: Int, steps: List<Int>): List<FormulaStep> {
+        val result = mutableListOf<FormulaStep>()
+        var current = initial
+
+        for ((stepIndex, step) in steps.withIndex()) {
+            val stepSign = if (step >= 0) 1 else -1
+
+            val maxLength = maxOf(current.toString().length, step.absoluteValue.toString().length)
+            val paddedCurrent = current.toString().padStart(maxLength, '0')
+            val paddedStep = step.absoluteValue.toString().padStart(maxLength, '0')
+
+            val currentDigits = paddedCurrent.map { it - '0' }.toMutableList()
+            val stepDigits = paddedStep.map { it - '0' }
+
+            var carry = 0
+
+            if (stepIndex > 0) {
+                for (i in (currentDigits.size - 1) downTo 0) {
+                    val fromDigit = currentDigits[i]
+                    var intermediate = fromDigit
+
+                    // 1. Apply carry and record formula if needed
+                    if (carry != 0) {
+                        val carryFormula = getFormulaFromDigitContext(intermediate, carry)
+                        if (carryFormula != null && carryFormula.formulaType != AbacusFormulaType.NONE.description) {
+                            result.add(carryFormula.copy(index = stepIndex,value = carry))
+                        }
+                        intermediate += carry
+                    }
+
+                    // 2. Apply step delta and record formula if needed
+                    val stepDigit = stepDigits.getOrNull(i) ?: 0
+                    val delta = stepDigit * stepSign
+
+                    // ⚠️ Use updated intermediate after carry to compute delta
+                    if (delta != 0) {
+                        val formula = getFormulaFromDigitContext(intermediate, delta)
+                        if (formula!= null && formula.formulaType != AbacusFormulaType.NONE.description) {
+                            result.add(
+                                formula.copy(index = stepIndex,value = delta)
+                            )
+                        }
+                        intermediate += delta
+                    }
+
+                    // 3. Update carry for next index
+                    carry = when {
+                        intermediate >= 10 -> 1
+                        intermediate < 0 -> -1
+                        else -> 0
+                    }
+
+                    // 4. Store back digit after both carry and step
+                    currentDigits[i] = ((intermediate % 10 + 10) % 10)
+                }
+            }
+
+            current += step
+        }
+
+        return result
+    }
+
+
+
+
+    fun getFormulaFromDigitContext(from: Int, delta: Int): FormulaStep? {
+        if (delta == 0) return null
         val fromDigit = from % 10
         val bottomBeads = fromDigit % 5
-        val topBead = if (fromDigit >= 5) 1 else 0
+//        val topBead = if (fromDigit >= 5) 1 else 0
+
+
+        Log.e("jigarFormulaNew","getFormulaForStep from = "+from)
+        Log.e("jigarFormulaNew","getFormulaForStep delta = "+delta)
+        Log.e("jigarFormulaNew","getFormulaForStep fromDigit = "+fromDigit)
+        Log.e("jigarFormulaNew","getFormulaForStep bottomBeads = "+bottomBeads)
 
         // --- Small Friend Addition ---
         if (delta in 1..4 && fromDigit + delta >= 5 && fromDigit < 5) {
@@ -135,11 +274,11 @@ object ExamProvider {
         // --- Big Friend Subtraction or Combination Subtraction ---
         if (delta in -9..-1 && fromDigit + delta < 0) {
             return when (delta) {
-                -1 -> if (bottomBeads <= 0 && topBead == 0) FormulaStep(delta, "-1=-10+9", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
-                -2 -> if (bottomBeads <= 1 && topBead == 0) FormulaStep(delta, "-2=-10+8", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
-                -3 -> if (bottomBeads <= 2 && topBead == 0) FormulaStep(delta, "-3=-10+7", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
-                -4 -> if (bottomBeads <= 3 && topBead == 0) FormulaStep(delta, "-4=-10+6", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
-                -5 -> if (bottomBeads <= 4 && topBead == 0) FormulaStep(delta, "-5=-10+5", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -1 -> if (bottomBeads <= 0) FormulaStep(delta, "-1=-10+9", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -2 -> if (bottomBeads <= 1) FormulaStep(delta, "-2=-10+8", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -3 -> if (bottomBeads <= 2) FormulaStep(delta, "-3=-10+7", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -4 -> if (bottomBeads <= 3) FormulaStep(delta, "-4=-10+6", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -5 -> if (bottomBeads <= 4) FormulaStep(delta, "-5=-10+5", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
                 -6 -> if (bottomBeads <= 0) FormulaStep(delta, "-6=-10+4", AbacusFormulaType.BIG_FRIEND_SUB.description)
                 else FormulaStep(delta, "-6=-10+5-1", AbacusFormulaType.COMBINATION_SUB.description)
                 -7 -> if (bottomBeads <= 1) FormulaStep(delta, "-7=-10+3", AbacusFormulaType.BIG_FRIEND_SUB.description)

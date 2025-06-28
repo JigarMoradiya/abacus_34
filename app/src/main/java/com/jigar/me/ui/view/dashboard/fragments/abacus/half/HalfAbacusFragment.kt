@@ -360,7 +360,7 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
             lifecycleScope.launch {
                 delay(500)
                 if (isPurchased && isHintSound) {
-                    speakOut(String.format(resources.getString(R.string.speech_set), " ${number}"))
+                    speakOut(number.toString())
                 }
             }
             val noOfDecimalPlace = 0
@@ -642,7 +642,7 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                 val finalDatatemp: AdditionSubtractionAbacus = datatemp
                 lifecycleScope.launch {
                     delay(700)
-                    speakOut(String.format(resources.getString(R.string.speech_set), " ${finalDatatemp.q0.toInt()}"))
+                    speakOut(finalDatatemp.q0.toString())
                 }
             }
             if (new_column < datatemp.q0.length) {
@@ -852,9 +852,9 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
             val q1 = " ${que?:"0"}"
 //            val q1 = " ${requireContext().convert((que?:"0").toInt())}"
             if (Sign == "-") {
-                speakOut(String.format(resources.getString(R.string.speech_set_minus), q1))
+                speakOut(String.format(resources.getString(R.string.minus_value), q1))
             } else {
-                speakOut(String.format(resources.getString(R.string.speech_set_plus), q1))
+                speakOut(String.format(resources.getString(R.string.plus_value), q1))
             }
         }
 
@@ -1209,13 +1209,10 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
                             String.format(getString(R.string.speak_multiply_by),q1,q2)
                         }
                         AppConstants.extras_Comman.AbacusTypeAdditionSubtraction -> {
-//                            val q1 = " ${requireContext().convert((list_abacus_main[0][Constants.Que]?:"0").toInt())}"
-                            val q1 = " ${(list_abacus_main[0][Constants.Que]?:"0")}"
-                            String.format(resources.getString(R.string.speech_set), q1)
+                            list_abacus_main[0][Constants.Que]?:"0"
                         }
                         else -> { // number
-//                            String.format(resources.getString(R.string.speech_set), " ${requireContext().convert(number)}")
-                            String.format(resources.getString(R.string.speech_set), " ${number}")
+                            number.toString()
                         }
                     }
                     speakOut(text)

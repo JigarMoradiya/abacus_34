@@ -128,11 +128,6 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
         this.onAbacusValueChangeListener = onAbacusValueChangeListener
     }
 
-    // TODO abacus Move logic
-//    override fun onResume() {
-//        super.onResume()
-//    }
-
     override fun onStop() {
         super.onStop()
         binding.abacusTop.stop()
@@ -313,7 +308,7 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
             if (isAdded && isResumed && isResetRemain){
                 binding.ivReset.setAbacusResetShakeAnimation()
             }
-        },2500)
+        },1500)
     }
 
     private fun onResetClick() {

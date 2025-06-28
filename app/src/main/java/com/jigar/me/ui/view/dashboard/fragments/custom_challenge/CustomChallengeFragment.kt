@@ -352,7 +352,7 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
                         String.format(requireContext().getString(R.string.plus_value), currentNumber)
                     }
                     else -> {
-                        String.format(requireContext().getString(R.string.txt_set_only), currentNumber)
+                        currentNumber.toString()
                     }
                 }
                 speak(word1,position.toString())

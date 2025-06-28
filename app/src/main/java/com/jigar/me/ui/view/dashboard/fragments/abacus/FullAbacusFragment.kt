@@ -293,7 +293,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             valuesFinal.toLong().toString()
         }
         try {
-            binding.txtAbacus.text = String.format(requireContext().getString(R.string.txt_set_only_s),setValues)
+            binding.txtAbacus.text = setValues
         } catch (e: UnknownFormatConversionException) {
             binding.txtAbacus.text = "${requireContext().getString(R.string.txt_set)} $setValues"
         } catch (e: Exception) {
@@ -532,7 +532,6 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
     }
 
     private fun goToNextValue() {
-//        speakOut(String.format(resources.getString(R.string.speech_set), " ${requireContext().convert(values)}"))
         // TODO
 //        values = 268.56F
         val setValues = if (prefManager.getCustomParam(AppConstants.Settings.SW_DecimalMode,"N") == "Y") {
@@ -541,7 +540,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             valuesFinal.toLong().toString()
         }
         val speakText = try {
-            String.format(requireContext().getString(R.string.txt_set_only_s),setValues)
+            setValues
         } catch (e: UnknownFormatConversionException) {
             "${requireContext().getString(R.string.txt_set)} $setValues"
         } catch (e: Exception) {
