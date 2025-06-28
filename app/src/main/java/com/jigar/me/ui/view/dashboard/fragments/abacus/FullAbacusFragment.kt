@@ -442,19 +442,16 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         if (splitResult.size == 2){
 
             with(prefManager){
-                if (getCustomParam(AppConstants.Settings.SW_FreeMode,"Y") == "Y") {
-
+                val value1 = splitResult[0].toLong()
+                val value2 = splitResult[1]
+                val sum = if (value2.toLong() > 0){
+                    abacusBinding?.tvCurrentVal?.text = "$value1.$value2"
+                    "$value1.$value2"
                 }else{
-                    val value1 = splitResult[0].toLong()
-                    val value2 = splitResult[1]
-                    val sum = if (value2.toLong() > 0){
-                        abacusBinding?.tvCurrentVal?.text = "$value1.$value2"
-                        "$value1.$value2"
-                    }else{
-                        abacusBinding?.tvCurrentVal?.text = "$value1"
-                        "$value1"
-                    }
-
+                    abacusBinding?.tvCurrentVal?.text = "$value1"
+                    "$value1"
+                }
+                if (getCustomParam(AppConstants.Settings.SW_FreeMode,"Y") != "Y") {
                     if (sum == (valuesFinal.toInt()).toString()) {
                         generateNewNumber()
                     } else {
