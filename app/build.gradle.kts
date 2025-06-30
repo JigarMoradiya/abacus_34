@@ -92,7 +92,7 @@ dependencies {
     kapt("androidx.hilt:hilt-compiler:1.2.0")
 
     //  Manager
-    implementation("androidx.work:work-runtime-ktx:2.10.1")
+    implementation("androidx.work:work-runtime-ktx:2.10.2")
     implementation("androidx.hilt:hilt-work:1.2.0")
 
     // firebase

@@ -24,7 +24,7 @@ class AbacusAdditionSubtractionTypeAdapter(
     RecyclerView.Adapter<AbacusAdditionSubtractionTypeAdapter.FormViewHolder>() {
     var maxQuestion = ""
     interface HintListener {
-        fun onCheckHint(hint: String?, que: String?, Sign: String?)
+        fun onCheckHint(hint: String?, que: String?, sign: String?)
     }
 
     private var currentStep = 0
