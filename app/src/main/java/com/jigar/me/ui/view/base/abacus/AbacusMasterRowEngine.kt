@@ -247,7 +247,8 @@ class AbacusMasterRowEngine(
 
             } else {
                 if (isColumnUsed){
-                    if (beads[i] > 0) {
+//                    if (beads[i] > 0) {
+                    if (beads[i] >= beadHeight) {
                         ContextCompat.getDrawable(context,abacusContent.topBeadOpen)!!
                     }else{
                         ContextCompat.getDrawable(context,abacusContent.topBeadClose)!!
