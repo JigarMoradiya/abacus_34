@@ -3,6 +3,7 @@ package com.jigar.me.data.local.data
 import com.jigar.me.data.model.AdditionSubtractionAbacus
 import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
 import com.jigar.me.utils.Constants
+import com.jigar.me.utils.extensions.sumToIntList
 import org.json.JSONObject
 import java.util.Random
 
@@ -30,20 +31,12 @@ object AbacusProvider {
             data[Constants.Que] = list[1]
             data[Constants.Sign] = "/"
             list_abacus.add(data)
-        } else if (que.contains("+", true) || que.contains("-", true)) { // +, -
-            val newQue = que.replace("+", "$$+").replace("-", "$$-")
-            val list = newQue.split("$$")
+        } else if (que.contains("+", true) || que.contains("-", true)) { // +, - ce("+", "$$+").replace("-", "$$-")
+            val list = que.sumToIntList()
             var position = 0
             list.map {
                 data = java.util.HashMap()
-                data[Constants.Que] = it.replace("+", "").replace("-", "")
-                if (it.contains("+")) {
-                    data[Constants.Sign] = "+"
-                } else if (it.contains("-")) {
-                    data[Constants.Sign] = "-"
-                } else {
-                    data[Constants.Sign] = ""
-                }
+                data[Constants.Que] = it.toString()
                 list_abacus.add(data)
                 position += 1
             }

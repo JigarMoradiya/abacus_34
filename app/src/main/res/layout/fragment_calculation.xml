@@ -34,8 +34,8 @@
                 android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_back"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
-                app:strokeWidth="0dp"
-                app:cardMaxElevation="@dimen/card_elevation">
+                app:cardMaxElevation="@dimen/card_elevation"
+                app:strokeWidth="0dp">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="@dimen/menu_icons"
@@ -68,8 +68,8 @@
                 style="@style/mainTitleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:layout_marginStart="@dimen/activity_padding4"
+                android:textColor="@color/black"
                 android:visibility="gone"
                 tools:text="SET 1"
                 tools:visibility="visible" />
@@ -94,8 +94,8 @@
                 android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_reset_abacus_progress"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
-                app:strokeWidth="0dp"
-                app:cardMaxElevation="@dimen/card_elevation">
+                app:cardMaxElevation="@dimen/card_elevation"
+                app:strokeWidth="0dp">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="@dimen/menu_icons"
@@ -113,8 +113,8 @@
                 android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_setting"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
-                app:strokeWidth="0dp"
-                app:cardMaxElevation="@dimen/card_elevation">
+                app:cardMaxElevation="@dimen/card_elevation"
+                app:strokeWidth="0dp">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="@dimen/menu_icons"
@@ -133,8 +133,8 @@
                 android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_youtube"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
-                app:strokeWidth="0dp"
-                app:cardMaxElevation="@dimen/card_elevation">
+                app:cardMaxElevation="@dimen/card_elevation"
+                app:strokeWidth="0dp">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="@dimen/menu_icons"
@@ -152,8 +152,8 @@
                 android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_subscribe"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
-                app:strokeWidth="0dp"
-                app:cardMaxElevation="@dimen/card_elevation">
+                app:cardMaxElevation="@dimen/card_elevation"
+                app:strokeWidth="0dp">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="@dimen/menu_icons"
@@ -225,8 +225,10 @@
                         android:fontFamily="@font/font_extra_bold"
                         android:gravity="center"
                         android:includeFontPadding="false"
-                        android:shadowColor="@color/colorPrimaryDark"
-                        android:shadowRadius="3"
+                        android:shadowColor="@color/black"
+                        android:shadowRadius="5"
+                        android:shadowDy="5"
+                        android:shadowDx="5"
                         android:textColor="@color/colorAccent"
                         android:textSize="@dimen/textSizeAbacusNumber"
                         tools:text="100" />
@@ -240,7 +242,7 @@
                         android:gravity="center"
                         android:includeFontPadding="false"
                         android:maxLines="2"
-                        android:textSize="@dimen/textSizeMedium"
+                        android:textSize="@dimen/textSizeExtraLarge"
                         tools:text="One hundred" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -252,7 +254,7 @@
                     android:layout_margin="@dimen/activity_padding1"
                     android:visibility="gone"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="@dimen/card_corner_radius8"
+                    app:cardCornerRadius="@dimen/card_corner_radius12"
                     app:cardElevation="@dimen/card_elevation"
                     app:cardMaxElevation="@dimen/card_elevation"
                     app:cardUseCompatPadding="true"
@@ -260,17 +262,17 @@
                     app:strokeWidth="@dimen/activity_padding1"
                     tools:visibility="visible">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/txt_hint"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_bold"
-                        android:gravity="center"
-                        android:lineSpacingMultiplier="1.2"
-                        android:paddingHorizontal="@dimen/activity_padding10"
-                        android:paddingVertical="@dimen/activity_padding8"
-                        android:textColor="@color/colorHeadingBlack_61"
-                        android:textSize="@dimen/textSizeMedium" />
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/txt_hint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingHorizontal="@dimen/activity_padding10"
+                            android:paddingVertical="@dimen/activity_padding8"
+                            tools:text="Big Friend (+10)"
+                            android:textColor="@color/colorEditTextBlack_33"
+                            android:textSize="@dimen/textSizeRegular" />
+
                 </com.google.android.material.card.MaterialCardView>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -304,9 +306,10 @@
                         app:strokeWidth="@dimen/activity_padding4">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
-                            android:layout_width="80dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
+                            android:minWidth="80dp"
                             android:orientation="vertical"
                             android:visibility="visible">
 
@@ -317,7 +320,6 @@
                                 android:layout_marginTop="@dimen/activity_padding10"
                                 android:orientation="vertical"
                                 android:overScrollMode="never"
-                                android:paddingStart="@dimen/activity_padding4"
                                 android:scrollbars="none"
                                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                                 tools:itemCount="3"

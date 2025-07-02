@@ -71,14 +71,10 @@ class AbacusMultiplicationTypeAdapter(
         }
     }
 
-    class FormViewHolder(
-        itemBinding: RowQuestionLayoutBinding
-    ) :
+    class FormViewHolder( itemBinding: RowQuestionLayoutBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         var binding: RowQuestionLayoutBinding = itemBinding
 
-        init {
-        }
     }
 
     override fun getItemCount(): Int {
@@ -120,21 +116,8 @@ class AbacusMultiplicationTypeAdapter(
 
     private fun span(text: String?, position: Int, context: Context): Spannable {
         val wordToSpan = SpannableString(text)
-        wordToSpan.setSpan(
-            ForegroundColorSpan(ContextCompat.getColor(context, R.color.abacus_place_holder)),
-            0,
-            text!!.length,
-            Spannable.SPAN_INCLUSIVE_EXCLUSIVE
-        )
-        val color = if (abacusType != null){
-            if (abacusType.equals(AppConstants.Settings.theam_Poligon_Silver) || abacusType.equals(AppConstants.Settings.theam_Poligon_Brown)){
-                ContextCompat.getColor(context,R.color.black)
-            }else{
-                CommonUtils.mixTwoColors(ContextCompat.getColor(context,abacusType.dividerColor1), ContextCompat.getColor(context,abacusType.resetBtnColor8), 0.40f)
-            }
-        }else{
-            ContextCompat.getColor(context, R.color.red)
-        }
+        wordToSpan.setSpan(ForegroundColorSpan(ContextCompat.getColor(context, R.color.abacus_place_holder)),0,text?.length?:0,Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+        val color = CommonUtils.getQuestionHighLighterColor(context,abacusType)
         wordToSpan.setSpan(ForegroundColorSpan(color), position, position + 1, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
         return wordToSpan
     }

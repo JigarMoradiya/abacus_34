@@ -9,8 +9,7 @@
 
     <!--  TTS  -->
     <string name="speech_formula_for">formula for %1$s</string>
-    <string name="speech_set_minus">minus %1$s</string>
-    <string name="speech_set_plus">plus %1$s</string>
+    <string name="speech_set_plus"> %1$s</string>
     <string name="random">Random</string>
     <string name="to_">to</string>
     <string name="numbers">Numbers</string>
@@ -162,12 +161,13 @@
     <string name="no_thanks_continue_later">No, thanks continue later</string>
     <!--  Settings  -->
     <string name="txt_setting_title">Application Setting</string>
-    <string name="txt_setting_display_abacus_number">Display abacus number</string>
-    <string name="txt_setting_display_help_message">Display help message</string>
+    <string name="txt_setting_display_abacus_number">Display Current Number</string>
+    <string name="txt_setting_display_help_message">Display Hint Message</string>
+    <string name="display_bead_direction">Display Bead Direction</string>
     <string name="txt_setting_hide_table">Hide table</string>
     <string name="txt_setting_left_hand">Left handed</string>
-    <string name="txt_setting_sound">Abacus sound</string>
-    <string name="txt_setting_hintsound">Abacus hint sound</string>
+    <string name="txt_setting_sound">Abacus Bead Sound</string>
+    <string name="txt_setting_hintsound">Abacus Sums Sound</string>
 
     <!--  Daily Exam  -->
     <string name="testResult">Exam\'s Result</string>
@@ -821,7 +821,6 @@
     <string name="plan_assign_from_admin_for_your_google_review_submitted"><![CDATA[<b>Plan assign from Admin</b> for your google review submitted.]]></string>
     <string name="plan_assign_from_admin_on_your_request"><![CDATA[<b>Plan assign from Admin</b> on your request.]]></string>
     <string name="plan_assign_from_admin">Plan assign from Admin.</string>
-    <string name="display_bead_direction">Display Bead Direction</string>
     <string name="your_answer">Your Answer :</string>
     <string name="time">Time :</string>
 

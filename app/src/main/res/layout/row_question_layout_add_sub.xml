@@ -24,32 +24,15 @@
 
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvSymbol"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fontFamily="@font/font_bold"
-            android:includeFontPadding="false"
-            android:text="+"
-            android:textColor="@color/colorHeadingBlack_00"
-            android:textSize="@dimen/questionSymbolSize"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="@+id/tvQuestionTemp"
-            app:layout_constraintEnd_toStartOf="@+id/tvQuestionTemp"
-            android:layout_marginEnd="@dimen/activity_padding2"
-            app:layout_constraintTop_toTopOf="@+id/tvQuestionTemp" />
-
-        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvQuestion"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/font_extra_bold"
             android:includeFontPadding="false"
             android:text="2"
-            android:gravity="end"
             android:textColor="@color/colorHeadingBlack_00"
             android:textSize="@dimen/questionSize"
             android:visibility="visible"
-            app:layout_constraintStart_toStartOf="@+id/tvQuestionTemp"
             app:layout_constraintEnd_toEndOf="@+id/tvQuestionTemp"
             app:layout_constraintTop_toTopOf="parent" />
 

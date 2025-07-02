@@ -30,19 +30,11 @@
             type="Boolean" />
 
         <variable
-            name="isHideTable"
-            type="Boolean" />
-
-        <variable
             name="isLeftHand"
             type="Boolean" />
 
         <variable
             name="isAbacusSound"
-            type="Boolean" />
-
-        <variable
-            name="isNumberPuzzleSound"
             type="Boolean" />
 
         <variable
@@ -559,10 +551,31 @@
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.2dp"
-                            android:background="@color/gray_dark70" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_padding4"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="@dimen/card_elevation"
+                    app:cardMaxElevation="@dimen/card_elevation"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/card1"
+                    app:layout_constraintTop_toBottomOf="@+id/barrierCard0"
+                    app:strokeColor="@color/grey_700"
+                    app:strokeWidth="1dp">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -598,77 +611,6 @@
                                 android:gravity="center_vertical"
                                 android:paddingHorizontal="36dp"
                                 android:text="@string/txt_setting_left_hand"
-                                android:textColor="@color/colorListingHeading"
-                                android:textSize="@dimen/textSizeLarge"
-                                android:textStyle="normal"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/activity_padding4"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="@dimen/card_corner_radius"
-                    app:cardElevation="@dimen/card_elevation"
-                    app:cardMaxElevation="@dimen/card_elevation"
-                    app:cardUseCompatPadding="true"
-                    app:layout_constraintBottom_toBottomOf="@+id/card1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/card1"
-                    app:layout_constraintTop_toBottomOf="@+id/barrierCard0"
-                    app:strokeColor="@color/grey_700"
-                    app:strokeWidth="1dp">
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="@dimen/activity_padding8"
-                            android:paddingEnd="@dimen/activity_padding8">
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/img_hide_table"
-                                android:layout_width="28dp"
-                                android:layout_height="28dp"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
-                                android:padding="2dp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/ic_hide_table"
-                                app:tint="@color/colorListingHeading" />
-
-                            <com.google.android.material.materialswitch.MaterialSwitch
-                                android:id="@+id/sw_hide_table"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:checked="@{isHideTable}"
-                                android:theme="@style/Widget.App.Switch"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/relHideTable"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:fontFamily="@font/font_semibold"
-                                android:gravity="center_vertical"
-                                android:paddingHorizontal="36dp"
-                                android:text="@string/txt_setting_hide_table"
                                 android:textColor="@color/colorListingHeading"
                                 android:textSize="@dimen/textSizeLarge"
                                 android:textStyle="normal"
@@ -777,59 +719,6 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.2dp"
-                            android:background="@color/gray_dark70" />
-
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="@dimen/activity_padding8"
-                            android:paddingEnd="@dimen/activity_padding8">
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/img_NumberPuzzleSound"
-                                android:layout_width="28dp"
-                                android:layout_height="28dp"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/ic_volume_on"
-                                app:tint="@color/colorListingHeading" />
-
-                            <com.google.android.material.materialswitch.MaterialSwitch
-                                android:id="@+id/sw_NumberPuzzleSound"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:checked="@{isNumberPuzzleSound}"
-                                android:theme="@style/Widget.App.Switch"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                tools:ignore="MissingPrefix" />
-
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/relNumberPuzzleSound"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:fontFamily="@font/font_semibold"
-                                android:gravity="center_vertical"
-                                android:paddingHorizontal="36dp"
-                                android:text="@string/number_sequences_puzzle_volume"
-                                android:textColor="@color/colorListingHeading"
-                                android:textSize="@dimen/textSizeLarge"
-                                android:textStyle="normal"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 

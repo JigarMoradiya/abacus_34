@@ -77,12 +77,7 @@ class AbacusDivisionTypeAdapter(
                 }
             }
             if (position == 1 && abacusItems.size > 2) {
-                val color = if (abacusType != null){
-                    CommonUtils.mixTwoColors(ContextCompat.getColor(context,R.color.white), ContextCompat.getColor(context,abacusType.resetBtnColor8), 0.75f)
-                }else{
-                    ContextCompat.getColor(context, R.color.red_600)
-                }
-                holder.binding.ivDivider.setBackgroundColor(color)
+                holder.binding.ivDivider.setBackgroundColor(CommonUtils.getQuestionBorderColor(context,abacusType))
                 holder.binding.ivDivider.show()
                 holder.binding.spaceBottom.hide()
             } else {
@@ -112,7 +107,6 @@ class AbacusDivisionTypeAdapter(
             // Get multiplier of current step
             val currentMultiplier = multipliers.firstOrNull() ?: 0
             currentTablePosition = currentMultiplier
-            Log.e("jigarDivision__", "Step Multiplier used: $currentMultiplier")
 
             highlightDetail[0] = Pair(0, nextHighlightedPosition)
             highlightDetail[1] = Pair(0, abacusItems[1][Constants.Que]!!.length)
@@ -175,7 +169,6 @@ class AbacusDivisionTypeAdapter(
             // Log multiplier for this step
             val currentMultiplier = multipliers.firstOrNull() ?: 0
             currentTablePosition = currentMultiplier
-            Log.e("jigarDivision__", "goTo NextSteps Step Multiplier used: $currentMultiplier")
 
         } catch (e: Exception) {
             e.printStackTrace()
@@ -233,10 +226,8 @@ class AbacusDivisionTypeAdapter(
     }
 
     fun isLastStep(): Boolean {
-        Log.e("jigarLogsDivision","highlightDetail = "+Gson().toJson(highlightDetail))
         return if (!isLastTemp) {
             if (highlightDetail.size > 0) {
-        Log.e("jigarLogsDivision","highlightDetail second = "+highlightDetail[0]!!.second)
                 highlightDetail[0]!!.second == abacusItems[0][Constants.Que]!!.length
             } else false
         } else {
@@ -253,25 +244,11 @@ class AbacusDivisionTypeAdapter(
 
     private fun span(text: String?, startPosition: Int, endPosition: Int, context: Context): Spannable {
         if (!TextUtils.isEmpty(text) && startPosition <= text!!.length && endPosition <= text.length) {
-            val wordtoSpan = SpannableString(text)
-            wordtoSpan.setSpan(
-                ForegroundColorSpan(ContextCompat.getColor(context, R.color.abacus_place_holder)),
-                0,
-                text.length,
-                Spannable.SPAN_INCLUSIVE_EXCLUSIVE
-            )
-            val color = if (abacusType != null){
-                if (abacusType.equals(AppConstants.Settings.theam_Poligon_Silver) || abacusType.equals(
-                        AppConstants.Settings.theam_Poligon_Brown)){
-                    ContextCompat.getColor(context,R.color.black)
-                }else{
-                    CommonUtils.mixTwoColors(ContextCompat.getColor(context,abacusType.dividerColor1), ContextCompat.getColor(context,abacusType.resetBtnColor8), 0.40f)
-                }
-            }else{
-                ContextCompat.getColor(context, R.color.red)
-            }
-            wordtoSpan.setSpan(ForegroundColorSpan(color), startPosition, endPosition, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
-            return wordtoSpan
+            val wordToSpan = SpannableString(text)
+            wordToSpan.setSpan(ForegroundColorSpan(ContextCompat.getColor(context, R.color.abacus_place_holder)),0,text.length,Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+            val color = CommonUtils.getQuestionHighLighterColor(context,abacusType)
+            wordToSpan.setSpan(ForegroundColorSpan(color), startPosition, endPosition, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+            return wordToSpan
         }
         return SpannableString("")
     }

@@ -1,7 +1,9 @@
 package com.jigar.me.utils
 
+import android.animation.ArgbEvaluator
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.speech.tts.TextToSpeech
 import android.speech.tts.Voice
 import android.util.Log
@@ -9,10 +11,12 @@ import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
+import androidx.core.content.ContextCompat
 import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.jigar.me.R
+import com.jigar.me.data.local.data.AbacusContent
 import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.data.model.data.ReviewData
@@ -79,7 +83,25 @@ object CommonUtils {
 //        val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
         return (parentWidth / columnWidthDp + 0.5).toInt() // +0.5 for correct rounding to int.
     }
-
+    fun getQuestionHighLighterColor(context: Context,abacusType : AbacusContent?): Int {
+        return if (abacusType != null){
+            if (abacusType.equals(AppConstants.Settings.theam_Poligon_Silver) || abacusType.equals(AppConstants.Settings.theam_Poligon_Brown)){
+                ContextCompat.getColor(context,R.color.black)
+            }else{
+//                mixTwoColors(ContextCompat.getColor(context,abacusType.dividerColor1), ContextCompat.getColor(context,abacusType.resetBtnColor8), 0.40f)
+                ContextCompat.getColor(context,abacusType.resetBtnColor8)
+            }
+        }else{
+            ContextCompat.getColor(context, R.color.red)
+        }
+    }
+    fun getQuestionBorderColor(context: Context,abacusType : AbacusContent?): Int {
+        return if (abacusType != null){
+            mixTwoColors(ContextCompat.getColor(context,R.color.white), ContextCompat.getColor(context,abacusType.resetBtnColor8), 0.75f)
+        }else{
+            ContextCompat.getColor(context, R.color.red_600)
+        }
+    }
     fun mixTwoColors(color1: Int, color2: Int, amount: Float): Int {
         val ALPHA_CHANNEL: Byte = 24
         val RED_CHANNEL: Byte = 16

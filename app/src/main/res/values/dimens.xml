@@ -47,6 +47,8 @@
     <dimen name="textSizeMedium">12sp</dimen>
     <dimen name="textSizeRegular">13sp</dimen>
 
+    <dimen name="questionSymbolSize">16sp</dimen>
+    <dimen name="questionSize">17sp</dimen>
     <dimen name="textSizeLarge">14sp</dimen>
     <dimen name="textSizeExtraLarge">15sp</dimen>
     <dimen name="textSizeSuperExtraLarge">16sp</dimen>
@@ -56,7 +58,7 @@
     <dimen name="textSize24">24sp</dimen>
     <dimen name="textSize30">30sp</dimen>
     <dimen name="textSizeOTP">26sp</dimen>
-    <dimen name="textSizeAbacusNumber">60sp</dimen>
+    <dimen name="textSizeAbacusNumber">72sp</dimen>
     <dimen name="textSizeCCMNumber">40sp</dimen>
     <dimen name="textSizeCCMWord">24sp</dimen>
     <dimen name="textSize36">36sp</dimen>

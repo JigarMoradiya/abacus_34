@@ -88,10 +88,8 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
         binding.relHintSound.onClick { onOnOffClick(AppConstants.Settings.Setting__hint_sound,binding.isHintSound) }
         binding.relAbacusDirection.onClick { onOnOffClick(AppConstants.Settings.Setting_direction,binding.isShowBeadDirection) }
         binding.relAbacusSound.onClick { onOnOffClick(AppConstants.Settings.Setting_sound,binding.isAbacusSound) }
-        binding.relNumberPuzzleSound.onClick { onOnOffClick(AppConstants.Settings.Setting_NumberPuzzleVolume,binding.isNumberPuzzleSound) }
         binding.relDisplayAbacusNumber.onClick { onOnOffClick(AppConstants.Settings.Setting_display_abacus_number,binding.isDisplayAbacusNumber) }
         binding.relDisplayHelpMessage.onClick { onOnOffClick(AppConstants.Settings.Setting_display_help_message,binding.isDisplayHelpMessage) }
-        binding.relHideTable.onClick { onOnOffClick(AppConstants.Settings.Setting_hide_table,binding.isHideTable) }
         binding.relLeftHand.onClick { onOnOffClick(AppConstants.Settings.Setting_left_hand,binding.isLeftHand) }
     }
 
@@ -102,8 +100,6 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
 
             binding.isDisplayAbacusNumber = getCustomParamBoolean(AppConstants.Settings.Setting_display_abacus_number, true)
 
-            binding.isHideTable = getCustomParamBoolean(AppConstants.Settings.Setting_hide_table, false)
-
             binding.isLeftHand = getCustomParamBoolean(AppConstants.Settings.Setting_left_hand, true)
 
             binding.isHintSound = getCustomParamBoolean(AppConstants.Settings.Setting__hint_sound, false)
@@ -111,8 +107,6 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
             binding.isShowBeadDirection = getCustomParamBoolean(AppConstants.Settings.Setting_direction, true)
 
             binding.isAbacusSound = getCustomParamBoolean(AppConstants.Settings.Setting_sound, true)
-
-            binding.isNumberPuzzleSound = getCustomParamBoolean(AppConstants.Settings.Setting_NumberPuzzleVolume, true)
         }
 
     }
