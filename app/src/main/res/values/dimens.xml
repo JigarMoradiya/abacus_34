@@ -36,6 +36,7 @@
     <dimen name="square_space">14dp</dimen>
 
     <dimen name="bead_column">48dp</dimen>
+    <dimen name="bead_rv_width">288dp</dimen>
     <dimen name="bead_column_paid">40dp</dimen>
 
     <!--Text Size-->

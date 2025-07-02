@@ -873,9 +873,11 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                     val sumVal: Long = (adapterMultiplication.getCurrentSumVal()?:0.0).toLong()
                     val finalAns = (adapterMultiplication.getFinalSumVal()?:0.0).toLong()
                     if (isStepByStep) {
-                        if (abacusCurrentValue == (sumVal.toInt()).toString() && abacusCurrentValue != finalAns.toInt().toString()) {
+                        if (abacusCurrentValue == (sumVal.toInt()).toString()) {
                             adapterMultiplication.goToNextStep()
-                            setTableDataAndVisibility()
+                            if (abacusCurrentValue != finalAns.toInt().toString()){
+                                setTableDataAndVisibility()
+                            }
                         }
                         val curVal = adapterMultiplication.getCurrentStep()
                         if (abacusCurrentValue == (finalAns.toInt()).toString() && curVal[0]!! >= adapterMultiplication.getItem(0)[Constants.Que]!!

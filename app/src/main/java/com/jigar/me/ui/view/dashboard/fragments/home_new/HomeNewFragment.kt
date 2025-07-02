@@ -51,7 +51,6 @@ import com.jigar.me.ui.view.dashboard.fragments.home.CurrentPlanPagerAdapter
 import com.jigar.me.ui.view.other.ContactUsActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.StudentViewModel
-import com.jigar.me.ui.viewmodel.SubscriptionsViewModel
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
@@ -85,7 +84,6 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
 
     private val studentViewModel by viewModels<StudentViewModel>()
     private val appViewModel by viewModels<AppViewModel>()
-    private val subscriptionsViewModel by viewModels<SubscriptionsViewModel>()
     private var purchasedListReq : ArrayList<GooglePurchasedPlanRequest> = arrayListOf()
 
     private lateinit var bannerPagerAdapter: BannerPagerAdapter
@@ -181,28 +179,14 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
         }
     }
 
-    private fun openReviewOfferPopup() {
-        PurchaseByReviewDialog.showPopup(requireActivity(),object : PurchaseByReviewDialog.DialogCloseInterface{
-            override fun onSubmitYesClick() {
-            }
-        })
-    }
+//    private fun openReviewOfferPopup() {
+//        PurchaseByReviewDialog.showPopup(requireActivity(),object : PurchaseByReviewDialog.DialogCloseInterface{
+//            override fun onSubmitYesClick() {
+//            }
+//        })
+//    }
 
     private fun initObserver() {
-        subscriptionsViewModel.accountDetailResponse.observe(this) {
-            when (it) {
-                is Resource.Loading -> {
-                }
-                is Resource.Success -> {
-                    if (it.value.status == AppConstants.APIStatus.SUCCESS)
-                        setCurrentSubscriptionList(it.value.data)
-                }
-                is Resource.Failure -> {
-                }
-
-                else -> {}
-            }
-        }
         studentViewModel.handleExistingPurchaseResponse.observe(this) {
             when (it) {
                 is Resource.Loading -> {
@@ -294,16 +278,16 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
         }
     }
 
-    private fun checkAppReviews(data: JsonObject?) {
-        if (data?.has("app_reviews") == true){
-            if (data.getAsJsonArray("app_reviews")?.isEmpty == true){
-                prefManager.setCustomParam(Constants.APP_REVIEW_DATA,"")
-            }else{
-                val list : List<ReviewData> =  Gson().fromJson(data.getAsJsonArray("app_reviews"), object : TypeToken<List<ReviewData>>() {}.type)
-                prefManager.setCustomParam(Constants.APP_REVIEW_DATA,Gson().toJson(list))
-            }
-        }
-    }
+//    private fun checkAppReviews(data: JsonObject?) {
+//        if (data?.has("app_reviews") == true){
+//            if (data.getAsJsonArray("app_reviews")?.isEmpty == true){
+//                prefManager.setCustomParam(Constants.APP_REVIEW_DATA,"")
+//            }else{
+//                val list : List<ReviewData> =  Gson().fromJson(data.getAsJsonArray("app_reviews"), object : TypeToken<List<ReviewData>>() {}.type)
+//                prefManager.setCustomParam(Constants.APP_REVIEW_DATA,Gson().toJson(list))
+//            }
+//        }
+//    }
 
     private fun errorPurchaseDialog(title: String, msg: String, btnYes: String, btnNo: String) {
         CommonConfirmationBottomSheet.showPopup(requireActivity(),title,msg,

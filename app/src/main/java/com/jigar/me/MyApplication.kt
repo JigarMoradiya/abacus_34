@@ -16,7 +16,9 @@ import com.google.gson.Gson
 import com.jigar.me.data.model.NotificationData
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
+import com.jigar.me.utils.VersionUpdation
 import com.jigar.me.utils.extensions.openURL
 import com.jigar.me.utils.extensions.openYoutube
 import com.jigar.me.utils.extensions.shareIntent
@@ -52,6 +54,7 @@ class MyApplication : Application(), Configuration.Provider {
     init {
         instance = this
         alreadyCalledversionCheck = false
+        System.loadLibrary("native-lib")
     }
 
     @Inject
@@ -80,6 +83,9 @@ class MyApplication : Application(), Configuration.Provider {
 
     override fun onCreate() {
         super.onCreate()
+        // app version update if any code logic change
+        VersionUpdation.init(this)
+
 //        Fresco.initialize(this)
         analytics = FirebaseAnalytics.getInstance(this@MyApplication)
 
@@ -138,7 +144,7 @@ class MyApplication : Application(), Configuration.Provider {
         // Enable verbose OneSignal logging to debug issues if needed.
         OneSignal.Debug.logLevel = LogLevel.VERBOSE
         // OneSignal Initialization
-        OneSignal.initWithContext(this, BuildConfig.ONE_SIGNAL)
+        OneSignal.initWithContext(this, CommonUtils.getOneSignalKey())
 
         InAppMessages.addLifecycleListener(object : IInAppMessageLifecycleListener {
             override fun onWillDisplay(@NonNull event: IInAppMessageWillDisplayEvent) {

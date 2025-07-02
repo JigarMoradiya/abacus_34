@@ -119,4 +119,7 @@ class AppPreferencesHelper @Inject constructor(
         return getCustomParamFloat(KEY_DEFAULT_TTS_SPEECH, 0.9f)
     }
 
+    fun clearPref(){
+        mPrefs.edit { clear() }
+    }
 }

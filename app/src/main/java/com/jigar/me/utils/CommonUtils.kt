@@ -1,12 +1,9 @@
 package com.jigar.me.utils
 
-import android.animation.ArgbEvaluator
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
 import android.speech.tts.TextToSpeech
 import android.speech.tts.Voice
-import android.util.Log
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
@@ -19,7 +16,6 @@ import com.jigar.me.R
 import com.jigar.me.data.local.data.AbacusContent
 import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
-import com.jigar.me.data.model.data.ReviewData
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.data.pref.AppPreferencesHelper
@@ -32,10 +28,16 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.math.RoundingMode
 import java.text.DecimalFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Locale
 
 
 object CommonUtils {
+    external fun getOneSignalKey() : String
+    external fun getOrganizerId() : String
+    external fun getDatabaseKey() : String
+    external fun getApiBaseUrl() : String
+
     fun getCurrentCurrency(isCurrencyINR: Boolean) = if (isCurrencyINR){ AppConstants.APP_PLAN_DATA.Currency_INR }else{ AppConstants.APP_PLAN_DATA.Currency_USD }
     fun getCurrentCurrencySymbol(isCurrencyINR: Boolean) = if (isCurrencyINR){ AppConstants.APP_PLAN_DATA.Symbol_INR }else{ AppConstants.APP_PLAN_DATA.Symbol_USD }
     @SuppressLint("RestrictedApi")

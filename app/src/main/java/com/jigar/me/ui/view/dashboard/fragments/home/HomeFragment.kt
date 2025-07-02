@@ -38,7 +38,6 @@ import com.jigar.me.ui.view.confirm_alerts.dialogs.SelectThemeDialog
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.ui.view.other.ContactUsActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
-import com.jigar.me.ui.viewmodel.SubscriptionsViewModel
 import com.jigar.me.ui.viewmodel.StudentViewModel
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
@@ -70,7 +69,6 @@ class HomeFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
 
     private val studentViewModel by viewModels<StudentViewModel>()
     private val appViewModel by viewModels<AppViewModel>()
-    private val subscriptionsViewModel by viewModels<SubscriptionsViewModel>()
     private var purchasedListReq : ArrayList<GooglePurchasedPlanRequest> = arrayListOf()
 
     private lateinit var bannerPagerAdapter: BannerPagerAdapter
@@ -159,18 +157,6 @@ class HomeFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     }
 
     private fun initObserver() {
-        subscriptionsViewModel.accountDetailResponse.observe(this) {
-            when (it) {
-                is Resource.Loading -> {
-                }
-                is Resource.Success -> {
-                    if (it.value.status == AppConstants.APIStatus.SUCCESS)
-                        setCurrentSubscriptionList(it.value.data)
-                }
-                is Resource.Failure -> {
-                }
-            }
-        }
         studentViewModel.handleExistingPurchaseResponse.observe(this) {
             when (it) {
                 is Resource.Loading -> {

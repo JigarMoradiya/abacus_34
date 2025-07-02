@@ -21,14 +21,17 @@ import com.jigar.me.data.model.dbtable.inapp.InAppPurchaseDetails
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.internal.workmanagers.FirstAppStartWorkManager
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.DataTypeConverter
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import java.util.concurrent.Executors
 
 
 @Database(
     entities = [InAppSkuDetails::class,InAppPurchaseDetails::class, ExamHistory::class
          ,Level::class, Category::class, Pages::class, Set::class, SetProgress::class, Abacus::class],
-    version = 14,
+    version = 1,
     exportSchema = false
 )
 @TypeConverters(DataTypeConverter::class)
@@ -44,30 +47,23 @@ abstract class AppDatabase : RoomDatabase() {
             INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
         }
 
-        fun buildDatabase(context: Context) = Room.databaseBuilder(context, AppDatabase::class.java, AppConstants.DB_NAME)
-            // Delete    , when something changed
-            .fallbackToDestructiveMigration()
-            .addMigrations(
-                Migrations.MIGRATION_1_2,
-                Migrations.MIGRATION_2_3,
-                Migrations.MIGRATION_3_4,
-                Migrations.MIGRATION_4_5,
-                Migrations.MIGRATION_5_6,
-                Migrations.MIGRATION_6_7,
-                Migrations.MIGRATION_7_8,
-                Migrations.MIGRATION_8_9,
-                Migrations.MIGRATION_9_10,
-                Migrations.MIGRATION_10_11
-            )
-            .addCallback(
-                object : Callback() {
-                    override fun onCreate(db: SupportSQLiteDatabase) {
-                        super.onCreate(db)
-                        FirstAppStartWorkManager.startWorkManager(context)
+        private fun buildDatabase(context: Context) : AppDatabase{
+            val passphrase: ByteArray = SQLiteDatabase.getBytes(CommonUtils.getDatabaseKey().toCharArray())
+            val factory = SupportFactory(passphrase)
+            val database  = Room.databaseBuilder(context, AppDatabase::class.java, AppConstants.DB_NAME_NEW)
+                .addCallback(
+                    object : Callback() {
+                        override fun onCreate(db: SupportSQLiteDatabase) {
+                            super.onCreate(db)
+                            FirstAppStartWorkManager.startWorkManager(context)
+                        }
                     }
-                }
-            )
-            .build()
+                )
+
+            database.openHelperFactory(factory)
+            val databaseBuild = database.build()
+            return databaseBuild
+        }
 
         private val IO_EXECUTOR = Executors.newSingleThreadExecutor()
 

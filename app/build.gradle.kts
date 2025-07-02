@@ -15,6 +15,7 @@ plugins {
 android {
     namespace = "com.jigar.me"
     compileSdk = 35
+    ndkVersion = "25.1.8937393"
 
     defaultConfig {
         applicationId = "com.jigar.me"
@@ -52,11 +53,8 @@ android {
         create("dev1") {
             buildConfigField("String","USERS_MODULE", properties["users_module"].toString())
             buildConfigField("String","NEW_MODULE", properties["new_module"].toString())
-            buildConfigField("String","SUBSCRIPTIONS_MODULE", properties["subscriptions_module"].toString())
             buildConfigField("String","LOCATION_MODULE", properties["location_module"].toString())
             buildConfigField("String","EXAM_MODULE", properties["exam_module"].toString())
-            buildConfigField("String","ONE_SIGNAL", properties["one_signal_id"].toString())
-            buildConfigField("String","ORGANIZER_ID", properties["organizer_id"].toString())
             resValue("string","app_name", "Abacus Child Leaning App")
 
             dimension = "variant1"
@@ -65,7 +63,12 @@ android {
             versionName = "13.0.6"
         }
     }
-
+    externalNativeBuild {
+        cmake {
+            path("cpp/CMakeLists.txt")
+            version = "4.0.2"
+        }
+    }
 }
 
 dependencies {
@@ -134,10 +137,13 @@ dependencies {
     kapt("androidx.lifecycle:lifecycle-compiler:2.9.1")
 
     // database
-    implementation("androidx.room:room-ktx:2.7.1")
-    implementation("androidx.room:room-runtime:2.7.1")
-    kapt("androidx.room:room-compiler:2.7.1")
+    implementation("androidx.room:room-ktx:2.7.2")
+    implementation("androidx.room:room-runtime:2.7.2")
+    kapt("androidx.room:room-compiler:2.7.2")
     implementation("android.arch.persistence.room:rxjava2:1.1.1")
+    implementation("net.zetetic:android-database-sqlcipher:4.5.4@aar")
+    implementation("androidx.sqlite:sqlite-ktx:2.5.2")
+    implementation("androidx.sqlite:sqlite-framework:2.5.2")
 
     // In App Purchase
     implementation("com.android.billingclient:billing-ktx:7.1.1")

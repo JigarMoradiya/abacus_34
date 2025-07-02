@@ -34,6 +34,7 @@ import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.extensions.getBottomNavBarHeight
 import com.jigar.me.utils.extensions.hasNotch
+import com.onesignal.OneSignal
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -72,17 +73,11 @@ class MainDashboardActivity : BaseActivity() {
         initListener()
         initObserver()
         playBackgroundMusic()
-//        FetchAbacusDataWorkManager.fetchAbacusDetails()
     }
 
     private fun initObserver() {
         loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
         inAppViewModel.inAppInit()
-
-        if (BuildConfig.DEBUG) {
-////            OneSignal.setEmail("jigar@gmail.com")
-//            binding.viewBG.show()
-        }
 
         if (!loginData?.email.equals("abacus@yopmail.com")){
             val appOpenCount = prefManager.getCustomParamInt(AppConstants.Settings.appOpenCountForOffer, 0)

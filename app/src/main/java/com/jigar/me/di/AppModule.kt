@@ -7,7 +7,6 @@ import com.jigar.me.BuildConfig
 import com.jigar.me.data.api.AppApi
 import com.jigar.me.data.api.ExamApi
 import com.jigar.me.data.api.LocationApi
-import com.jigar.me.data.api.SubscriptionsApi
 import com.jigar.me.data.api.StudentApi
 import com.jigar.me.data.api.UserApi
 import com.jigar.me.data.api.connections.RemoteDataSource
@@ -34,6 +33,7 @@ import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.data.pref.PreferenceInfo
 import com.jigar.me.data.pref.PreferencesHelper
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.CommonUtils
 import dagger.*
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -92,30 +92,24 @@ object AppModule {
     @Singleton
     @Provides
     fun provideStudentApi(@ApplicationContext context: Context,remoteDataSource: RemoteDataSource): StudentApi {
-        return remoteDataSource.buildApi(StudentApi::class.java, context, BuildConfig.NEW_MODULE)
+        return remoteDataSource.buildApi(StudentApi::class.java, context, CommonUtils.getApiBaseUrl()+BuildConfig.NEW_MODULE)
     }
     @Singleton
     @Provides
     fun provideUserApi(@ApplicationContext context: Context,remoteDataSource: RemoteDataSource): UserApi {
-        return remoteDataSource.buildApi(UserApi::class.java, context, BuildConfig.USERS_MODULE)
-    }
-
-    @Singleton
-    @Provides
-    fun provideSubscriptionsApi(@ApplicationContext context: Context,remoteDataSource: RemoteDataSource): SubscriptionsApi {
-        return remoteDataSource.buildApi(SubscriptionsApi::class.java, context, BuildConfig.SUBSCRIPTIONS_MODULE)
+        return remoteDataSource.buildApi(UserApi::class.java, context, CommonUtils.getApiBaseUrl()+BuildConfig.USERS_MODULE)
     }
 
     @Singleton
     @Provides
     fun provideLocationApi(@ApplicationContext context: Context,remoteDataSource: RemoteDataSource): LocationApi {
-        return remoteDataSource.buildApi(LocationApi::class.java, context, BuildConfig.LOCATION_MODULE)
+        return remoteDataSource.buildApi(LocationApi::class.java, context, CommonUtils.getApiBaseUrl()+BuildConfig.LOCATION_MODULE)
     }
 
     @Singleton
     @Provides
     fun provideExamApi(@ApplicationContext context: Context,remoteDataSource: RemoteDataSource): ExamApi {
-        return remoteDataSource.buildApi(ExamApi::class.java, context, BuildConfig.EXAM_MODULE)
+        return remoteDataSource.buildApi(ExamApi::class.java, context, CommonUtils.getApiBaseUrl()+BuildConfig.EXAM_MODULE)
     }
 
 }

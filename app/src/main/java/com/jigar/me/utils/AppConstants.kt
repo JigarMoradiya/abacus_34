@@ -2,10 +2,10 @@ package com.jigar.me.utils
 
 object AppConstants {
     internal const val DB_NAME = "kotlin_basic.db"
+    internal const val DB_NAME_NEW = "VedaaviAbacus.db"
     internal const val PREF_NAME = "kotlin_basic_pref"
     internal const val YOUTUBE_URL = "https://www.youtube.com/channel/UC9MSzIbLkuzffqepgOqBLhw"
     internal const val TEMP_BASE_URL = "https://abacuspro.in/backend/index.php/Api/"
-//    internal const val TEMP_BASE_URL = "https://www.sdd-production.com/jigar/backend/index.php/Api/"
 
     const val BLINK_ICON_ANIMATION_DURATION: Long = 600
     const val BLINK_ICON_ANIMATION_ALPHA: Float = 0.1F
@@ -18,6 +18,8 @@ object AppConstants {
     const val NUMBER_PUZZLE_CURRENT_SCORE = "number_puzzle_current_score"
     const val NUMBER_PUZZLE_BEST_SCORE = "number_puzzle_best_score"
     const val PAGINATION_RECORDS = 20
+
+    const val PREF_KEY_APP_VERSION_CODE = "pref_previous_version_code"
     annotation class ExamType {
         companion object {
             var exam_Type_Number = "Number"
