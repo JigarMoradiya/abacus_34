@@ -5,6 +5,7 @@ import com.jigar.me.data.local.db.abacus_all_data.AbacusAllDataDB
 import com.jigar.me.data.local.db.exam.ExamHistoryDB
 import com.jigar.me.data.local.db.inapp.purchase.InAppPurchaseDB
 import com.jigar.me.data.local.db.inapp.sku.InAppSKUDB
+import com.jigar.me.data.model.dbtable.abacus_all_data.Level
 import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
 import com.jigar.me.data.model.dbtable.exam.ExamHistory
 import javax.inject.Inject
@@ -29,6 +30,7 @@ class DBRepository @Inject constructor(
     fun getExamHistoryList(examType: String) = examHistoryDB.getExamHistoryList(examType)
 
     // abacus all data
+    suspend fun insertLevel(data : List<Level>) = abacusAllDataDB.insertLevel(data)
     fun getLevel() = abacusAllDataDB.getLevel()
     suspend fun getCategory(id : String) = abacusAllDataDB.getCategory(id)
     suspend fun getPages(id: String, isGetAllData: Boolean) = abacusAllDataDB.getPages(id,isGetAllData)

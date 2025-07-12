@@ -2,6 +2,7 @@ package com.jigar.me.ui.viewmodel
 
 import androidx.lifecycle.*
 import com.jigar.me.data.model.MainAPIResponseArray
+import com.jigar.me.data.model.dbtable.abacus_all_data.Level
 import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
 import com.jigar.me.data.model.dbtable.exam.ExamHistory
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
@@ -42,6 +43,7 @@ class AppViewModel @Inject constructor(private val apiRepository: ApiRepository,
     fun getExamHistoryList(examType :String) = dbRepository.getExamHistoryList(examType)
 
     // abacus all data
+    suspend fun insertLevel(data : List<Level>) = dbRepository.insertLevel(data)
     fun getLevel() = dbRepository.getLevel()
     suspend fun getCategory(id: String) = dbRepository.getCategory(id)
     suspend fun getPages(id: String, isGetAllData: Boolean)= dbRepository.getPages(id,isGetAllData)

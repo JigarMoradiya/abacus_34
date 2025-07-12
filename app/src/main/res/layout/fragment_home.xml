@@ -143,8 +143,8 @@
             android:visibility="gone"
             app:cardBackgroundColor="@color/light_setting"
             app:cardCornerRadius="@dimen/menu_icons_corner"
-            app:cardElevation="@dimen/card_elevation"
             app:strokeWidth="0dp"
+            app:cardElevation="@dimen/card_elevation"
             app:cardMaxElevation="@dimen/card_elevation">
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -163,8 +163,8 @@
             app:cardBackgroundColor="@color/light_setting"
             app:cardCornerRadius="@dimen/menu_icons_corner"
             app:cardElevation="@dimen/card_elevation"
-            app:strokeWidth="0dp"
-            app:cardMaxElevation="@dimen/card_elevation">
+            app:cardMaxElevation="@dimen/card_elevation"
+            app:strokeWidth="0dp">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="@dimen/menu_icons"
@@ -180,9 +180,9 @@
             app:strokeWidth="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/icons_margin"
-            android:elevation="@dimen/card_elevation"
             app:cardBackgroundColor="@color/light_subscribe"
             app:cardCornerRadius="@dimen/menu_icons_corner"
+            app:cardElevation="@dimen/card_elevation"
             app:cardMaxElevation="@dimen/card_elevation">
 
             <androidx.appcompat.widget.AppCompatImageView

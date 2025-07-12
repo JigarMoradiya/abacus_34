@@ -1,11 +1,15 @@
 package com.jigar.me.data.local.db.abacus_all_data
 
+import com.jigar.me.data.model.dbtable.abacus_all_data.Level
 import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class AbacusAllDataDB @Inject constructor(private val dao: AbacusAllDataDao) {
+    suspend fun insertLevel(data : List<Level>) = withContext(Dispatchers.IO){
+        dao.insertLevel(data)
+    }
     fun getLevel() = dao.getLevel()
     suspend fun getCategory(id : String) = dao.getCategory(id)
     suspend fun getPages(id: String, isGetAllData: Boolean) = if (isGetAllData){dao.getPages(id)}else{dao.getPagesOnlyActive(id)}

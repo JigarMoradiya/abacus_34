@@ -41,6 +41,13 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.Objects
 import androidx.navigation.findNavController
+import com.jigar.me.data.model.data.AbacusAllData
+import com.jigar.me.data.model.data.FetchAbacusDataRequest
+import com.jigar.me.ui.viewmodel.AppViewModel
+import com.jigar.me.utils.Constants
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LoginCompleteProfileFragment : BaseFragment() {
@@ -49,6 +56,7 @@ class LoginCompleteProfileFragment : BaseFragment() {
     private var mNavController: NavController? = null
     private val studentViewModel by viewModels<StudentViewModel>()
     private val locationViewModel by viewModels<LocationViewModel>()
+    private val appViewModel by viewModels<AppViewModel>()
     private var stateList : ArrayList<KeyValuePair> = arrayListOf()
     private var cityList : ArrayList<KeyValuePair> = arrayListOf()
     private var selectedCityKey : String? = null
@@ -198,6 +206,24 @@ class LoginCompleteProfileFragment : BaseFragment() {
     }
 
     private fun initObserver() {
+        studentViewModel.getAbacusDataResponse.observe(this) {
+            when (it) {
+                is Resource.Loading -> {
+                }
+                is Resource.Success -> {
+                    hideLoading()
+                    if (it.value.status == AppConstants.APIStatus.SUCCESS)
+                        onSuccessAbacusData(it.value.data)
+                    else{
+                        onFailure(it.value.error?.message)
+                    }
+                }
+                is Resource.Failure -> {
+                    hideLoading()
+                    onFailure(it.errorBody)
+                }
+            }
+        }
         studentViewModel.updateProfileResponse.observe(this) {
             when (it) {
                 is Resource.Loading -> {
@@ -259,10 +285,24 @@ class LoginCompleteProfileFragment : BaseFragment() {
                 prefManager.setIsCurrencyINR(false)
             }
         }
-        prefManager.setUserLoggedIn(true)
 
-        // fetch abacus data
-        FetchAbacusDataWorkManager.fetchAbacusDetails()
+        val defaultDateTime = Constants.last_sync_default_time
+        val dateTime = prefManager.getCustomParam(Constants.last_sync_time,defaultDateTime)
+        val request = FetchAbacusDataRequest(true,last_sync_time = dateTime)
+        studentViewModel.getAbacusData(request)
+
+    }
+
+    private fun onSuccessAbacusData(data: JsonObject?) {
+        val response = Gson().fromJson(data, AbacusAllData::class.java)
+        CoroutineScope(Dispatchers.Main).launch {
+            response.levels?.let {
+                appViewModel.insertLevel(it)
+                prefManager.setUserLoggedIn(true)
+
+                MainDashboardActivity.getInstance(requireContext())
+            }
+        }
     }
 
     private fun stateDialog() {

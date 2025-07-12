@@ -17,6 +17,7 @@ import com.jigar.me.MyApplication
 import com.jigar.me.R
 import com.jigar.me.data.model.MainAPIResponse
 import com.jigar.me.data.model.data.ChangePasswordRequest
+import com.jigar.me.data.model.data.FetchAbacusDataRequest
 import com.jigar.me.data.model.data.ForgotPasswordRequest
 import com.jigar.me.data.model.data.LoginRequest
 import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
@@ -98,6 +99,13 @@ class StudentViewModel @Inject constructor(private val apiRepository: StudentApi
         _loginResponse.value = apiRepository.socialLogin(request)
     }
 
+    private val _getAbacusDataResponse: MutableLiveData<Resource<MainAPIResponse>> =
+        MutableLiveData()
+    val getAbacusDataResponse: LiveData<Resource<MainAPIResponse>> get() = _getAbacusDataResponse
+    fun getAbacusData(request: FetchAbacusDataRequest) = viewModelScope.launch {
+        _getAbacusDataResponse.value = Resource.Loading
+        _getAbacusDataResponse.value = apiRepository.getAbacusData(request)
+    }
     private val _handleExistingPurchaseResponse: MutableLiveData<Resource<MainAPIResponse>> =
         MutableLiveData()
     val handleExistingPurchaseResponse: LiveData<Resource<MainAPIResponse>> get() = _handleExistingPurchaseResponse

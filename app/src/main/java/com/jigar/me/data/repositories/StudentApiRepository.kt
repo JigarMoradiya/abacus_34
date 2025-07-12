@@ -5,6 +5,7 @@ import com.jigar.me.data.api.StudentApi
 import com.jigar.me.data.api.connections.SafeApiCall
 import com.jigar.me.data.model.data.ChangePasswordRequest
 import com.jigar.me.data.model.data.ContactUsRequest
+import com.jigar.me.data.model.data.FetchAbacusDataRequest
 import com.jigar.me.data.model.data.ForgotPasswordRequest
 import com.jigar.me.data.model.data.LoginRequest
 import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
@@ -33,6 +34,9 @@ class StudentApiRepository @Inject constructor(
     }
     suspend fun socialLogin(request : SocialLoginRequest) = safeApiCall {
         api.socialLogin(request)
+    }
+    suspend fun getAbacusData(request : FetchAbacusDataRequest) = safeApiCall {
+        api.getAbacusData(request)
     }
     suspend fun handleExistingPurchase(request : PurchasedPlanCheckRequest) = safeApiCall {
         api.handleExistingPurchase(request)

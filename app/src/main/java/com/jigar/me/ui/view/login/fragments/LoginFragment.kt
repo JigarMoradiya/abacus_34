@@ -35,6 +35,13 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.Objects
 import androidx.navigation.findNavController
+import com.jigar.me.data.model.data.AbacusAllData
+import com.jigar.me.data.model.data.FetchAbacusDataRequest
+import com.jigar.me.ui.viewmodel.AppViewModel
+import com.jigar.me.utils.Constants
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment() {
@@ -42,6 +49,7 @@ class LoginFragment : BaseFragment() {
     private var root : View? = null
     private var mNavController: NavController? = null
     private val studentViewModel by viewModels<StudentViewModel>()
+    private val appViewModel by viewModels<AppViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -139,6 +147,24 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun initObserver() {
+        studentViewModel.getAbacusDataResponse.observe(this) {
+            when (it) {
+                is Resource.Loading -> {
+                }
+                is Resource.Success -> {
+                    hideLoading()
+                    if (it.value.status == AppConstants.APIStatus.SUCCESS)
+                        onSuccessAbacusData(it.value.data)
+                    else{
+                        onFailure(it.value.error?.message)
+                    }
+                }
+                is Resource.Failure -> {
+                    hideLoading()
+                    onFailure(it.errorBody)
+                }
+            }
+        }
         studentViewModel.loginResponse.observe(this) {
             when (it) {
                 is Resource.Loading -> {
@@ -184,7 +210,17 @@ class LoginFragment : BaseFragment() {
             }
         }
     }
+    private fun onSuccessAbacusData(data: JsonObject?) {
+        val response = Gson().fromJson(data, AbacusAllData::class.java)
+        CoroutineScope(Dispatchers.Main).launch {
+            response.levels?.let {
+                appViewModel.insertLevel(it)
+                prefManager.setUserLoggedIn(true)
 
+                MainDashboardActivity.getInstance(requireContext())
+            }
+        }
+    }
     private fun onSuccess(data: JsonObject?) {
         val response = Gson().fromJson(data, LoginData::class.java)
         prefManager.setAccessToken(response.token)
@@ -197,11 +233,10 @@ class LoginFragment : BaseFragment() {
                 prefManager.setIsCurrencyINR(false)
             }
         }
-        prefManager.setUserLoggedIn(true)
-
-        // fetch abacus data
-        FetchAbacusDataWorkManager.fetchAbacusDetails()
-
+        val defaultDateTime = Constants.last_sync_default_time
+        val dateTime = prefManager.getCustomParam(Constants.last_sync_time,defaultDateTime)
+        val request = FetchAbacusDataRequest(true,last_sync_time = dateTime)
+        studentViewModel.getAbacusData(request)
     }
 
 }

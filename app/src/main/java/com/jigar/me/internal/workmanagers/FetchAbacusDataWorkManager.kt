@@ -72,7 +72,7 @@ class FetchAbacusDataWorkManager @AssistedInject constructor(
                     response.abacus?.let { appDataBase.abacusAllDataDao().insertAbacus(it) }
                     response.last_sync_time?.let { prefManager.setCustomParam(Constants.last_sync_time,it) }
                 }
-                EventBus.getDefault().post(MessageEvent(EventBusType.LoginSync))
+//                EventBus.getDefault().post(MessageEvent(EventBusType.LoginSync))
             }
         }catch (e : IOException){
             e.printStackTrace()

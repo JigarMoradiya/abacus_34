@@ -31,9 +31,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/icons_margin2"
-                android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_back"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
+                app:cardElevation="@dimen/card_elevation"
                 app:cardMaxElevation="@dimen/card_elevation"
                 app:strokeWidth="0dp">
 
@@ -91,9 +91,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/icons_margin"
-                android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_reset_abacus_progress"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
+                app:cardElevation="@dimen/card_elevation"
                 app:cardMaxElevation="@dimen/card_elevation"
                 app:strokeWidth="0dp">
 
@@ -110,9 +110,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/icons_margin"
-                android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_setting"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
+                app:cardElevation="@dimen/card_elevation"
                 app:cardMaxElevation="@dimen/card_elevation"
                 app:strokeWidth="0dp">
 
@@ -130,9 +130,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/icons_margin"
-                android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_youtube"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
+                app:cardElevation="@dimen/card_elevation"
                 app:cardMaxElevation="@dimen/card_elevation"
                 app:strokeWidth="0dp">
 
@@ -149,9 +149,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/icons_margin"
-                android:elevation="@dimen/card_elevation"
                 app:cardBackgroundColor="@color/light_subscribe"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
+                app:cardElevation="@dimen/card_elevation"
                 app:cardMaxElevation="@dimen/card_elevation"
                 app:strokeWidth="0dp">
 
