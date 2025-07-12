@@ -958,11 +958,11 @@
                 android:layout_alignEnd="@+id/cardAbacusMain"
                 android:layout_marginHorizontal="30dp"
                 android:elevation="@dimen/card_elevation8"
-                android:gravity="center"
+                android:gravity="center_horizontal|top"
                 android:includeFontPadding="false"
                 android:text="0"
                 android:textColor="@color/white"
-                android:textSize="@dimen/textSizeLarge"
+                android:textSize="@dimen/textSizeExtraLarge"
                 app:fontFamily="@font/font_extra_bold" />
 
 

@@ -1,0 +1,53 @@
+<resources>
+    <dimen name="padding_radius_abacus_frame_large">20dp</dimen>
+    <dimen name="padding_radius_abacus_frame_large_inner">6dp</dimen>
+
+    <dimen name="padding_radius_abacus_frame_large_exam">12dp</dimen>
+    <dimen name="padding_radius_abacus_frame_large_inner_exam">2dp</dimen>
+
+    <!--9:5-->
+    <dimen name="poligon_width">54dp</dimen>
+    <dimen name="poligon_height">30dp</dimen>
+
+    <!-- 6:5 -->
+    <dimen name="face_width">36dp</dimen>
+    <dimen name="face_height">30dp</dimen>
+
+    <dimen name="star_width">31dp</dimen>
+    <dimen name="star_height">30dp</dimen>
+
+    <!--7:5-->
+    <dimen name="garnet_width">42dp</dimen>
+    <dimen name="garnet_height">30dp</dimen>
+
+    <!--6:5-->
+    <dimen name="diamond_width">36dp</dimen>
+    <dimen name="diamond_height">30dp</dimen>
+
+
+    <dimen name="textSizeVery3ExtraSmall">8sp</dimen>
+    <dimen name="textSizeVery2ExtraSmall">9.5sp</dimen>
+    <dimen name="textSizeVeryExtraSmall">10sp</dimen>
+    <dimen name="textSizeExtraSmall">11sp</dimen>
+    <dimen name="textSizeSmall">12sp</dimen>
+    <dimen name="textSizeMedium">13sp</dimen>
+    <dimen name="textSizeRegular">14sp</dimen>
+
+    <dimen name="questionSymbolSize">18sp</dimen>
+    <dimen name="questionSize">20sp</dimen>
+    <dimen name="textSizeLarge">15sp</dimen>
+    <dimen name="textSizeExtraLarge">16sp</dimen>
+    <dimen name="textSizeSuperExtraLarge">17sp</dimen>
+    <dimen name="textSize17">18sp</dimen>
+    <dimen name="textSize18">19sp</dimen>
+    <dimen name="textSize20">21sp</dimen>
+    <dimen name="textSize24">26sp</dimen>
+    <dimen name="textSize30">32sp</dimen>
+    <dimen name="textSizeOTP">28sp</dimen>
+    <dimen name="textSizeAbacusNumber">80sp</dimen>
+    <dimen name="textSizeCCMNumber">48sp</dimen>
+    <dimen name="textSizeCCMWord">26sp</dimen>
+    <dimen name="textSize36">38sp</dimen>
+
+    <dimen name="exercise_width">300dp</dimen>
+</resources>

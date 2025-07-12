@@ -73,6 +73,8 @@ import java.util.Timer
 import java.util.TimerTask
 import java.util.concurrent.TimeUnit
 import androidx.navigation.findNavController
+import com.jigar.me.utils.extensions.getScreenHeight
+import com.jigar.me.utils.extensions.getScreenWidth
 
 @AndroidEntryPoint
 class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
@@ -118,6 +120,9 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
         mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() = with(binding){
+        Log.e("jigarHome","getScreenWidth = "+requireActivity().getScreenWidth())
+        Log.e("jigarHome","getScreenHeight = "+requireActivity().getScreenHeight())
+
         // fetch abacus data
         FetchAbacusDataWorkManager.fetchAbacusDetails()
         studentViewModel.appReviewsList()

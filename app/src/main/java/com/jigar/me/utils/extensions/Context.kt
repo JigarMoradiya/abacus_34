@@ -139,28 +139,6 @@ import java.util.*
      }
  }
 
- fun Activity.hasNotch(callback: (Boolean) -> Unit) {
-     val decorView = window.decorView
-     var alreadyCalled = false
-     Log.e("jigarLogs", "welcome hasNotch")
-     var hasNotch = false
-     val listener = androidx.core.view.OnApplyWindowInsetsListener { view, insets ->
-         Log.e("jigarLogs", "welcome hasNotch alreadyCalled +"+alreadyCalled)
-         if (!alreadyCalled || !hasNotch) {
-             val cutout = insets.displayCutout
-              hasNotch = cutout != null && cutout.boundingRects.isNotEmpty()
-             callback(hasNotch)
-             alreadyCalled = true
-             ViewCompat.setOnApplyWindowInsetsListener(decorView, null) // remove listener
-         }
-         insets
-     }
-
-     ViewCompat.setOnApplyWindowInsetsListener(decorView, listener)
-     ViewCompat.requestApplyInsets(decorView)
- }
-
-
 
  fun Activity.setBottomSheetDialogAttr(bottomSheetDialog: BottomSheetDialog,widthRatio : Int = Constants.bottomSheetWidthBaseOnRatio5, isDraggable : Boolean = true, isfullScreen : Boolean = false,isVertical : Boolean = false) {
      bottomSheetDialog.setOnShowListener { dialog ->

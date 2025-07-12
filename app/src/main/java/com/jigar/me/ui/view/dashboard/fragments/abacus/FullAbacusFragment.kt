@@ -1,6 +1,7 @@
 package com.jigar.me.ui.view.dashboard.fragments.abacus
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -67,6 +68,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
     private var theme = AppConstants.Settings.theam_Default
     private lateinit var mNavController: NavController
     private var lighter : Lighter? = null
+    private var isFirstTime = true
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
         binding = FragmentFullAbacusBinding.inflate(inflater, container, false)
         setNavigationGraph()
@@ -453,8 +455,11 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
                 }
                 if (getCustomParam(AppConstants.Settings.SW_FreeMode,"Y") != "Y") {
                     if (sum == (valuesFinal.toInt()).toString()) {
+                        isFirstTime = false
                         generateNewNumber()
                     } else {
+                        Log.e("jigarFull","value1 = "+value1)
+                        Log.e("jigarFull","valuesFinal = "+valuesFinal)
                         clearDirection()
                         addDirection(value1.toInt(),valuesFinal.toInt())
                         if (value2.toInt() > 0){
@@ -547,17 +552,16 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             "${requireContext().getString(R.string.txt_set)} $setValues"
         }
         try {
-            clearDirection()
             val fromValue = if (prefManager.getCustomParam(AppConstants.Settings.SW_Reset,"") == "Y") {
                 "0"
             }else{
                 abacusBinding?.tvCurrentVal?.text.toString()
             }
-            if (prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_direction, true)){
-                lifecycleScope.launch {
-                    delay(Constants.DELAY_DIRECTION)
-                    addDirection(if (fromValue.isEmpty()) 0 else fromValue.toInt(),setValues.toInt())
-                }
+            if (prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_direction, true) && !isFirstTime){
+                Log.e("jigarFull","fromValue = "+fromValue)
+                Log.e("jigarFull","setValues = "+setValues)
+                clearDirection()
+                addDirection(if (fromValue.isEmpty()) 0 else fromValue.toInt(),setValues.toInt())
             }
 
         } catch (e: Exception) {
@@ -576,6 +580,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
     }
 
     private fun resetAbacus() {
+        isFirstTime = false
         abacusBinding?.abacusTop?.reset()
         abacusBinding?.abacusBottom?.reset()
     }

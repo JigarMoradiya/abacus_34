@@ -59,8 +59,8 @@ android {
 
             dimension = "variant1"
             applicationId = "com.abacus.puzzle"
-            versionCode = 136
-            versionName = "13.0.6"
+            versionCode = 137
+            versionName = "13.0.7"
         }
     }
     externalNativeBuild {

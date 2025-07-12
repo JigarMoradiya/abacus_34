@@ -3,10 +3,10 @@
     <dimen name="power_by_logo_hor">24dp</dimen>
     <dimen name="padding_bottom_kids_in_abacus">30dp</dimen>
     <dimen name="padding_radius_abacus_frame_large">18dp</dimen>
-    <dimen name="padding_radius_abacus_frame_large_inner">8dp</dimen>
+    <dimen name="padding_radius_abacus_frame_large_inner">6dp</dimen>
 
     <dimen name="padding_radius_abacus_frame_large_exam">10dp</dimen>
-    <dimen name="padding_radius_abacus_frame_large_inner_exam">3dp</dimen>
+    <dimen name="padding_radius_abacus_frame_large_inner_exam">2dp</dimen>
     <!--9:5-->
     <dimen name="height_extra">3dp</dimen>
     <dimen name="poligon_width">45dp</dimen>
@@ -213,4 +213,6 @@
     <dimen name="_18dp">18dp</dimen>
     <dimen name="_48dp">48dp</dimen>
     <dimen name="_22dp">22dp</dimen>
+
+    <dimen name="exercise_width">280dp</dimen>
 </resources>

@@ -33,7 +33,6 @@ class AbacusAdditionSubtractionTypeAdapter(
     private var currentStep = 0
 
     fun setData(listData: List<HashMap<String, String>>,isStepByStep : Boolean) {
-        Log.e("jigarAdditionSub","getCurrentSumVal listData = "+Gson().toJson(listData))
         currentStep = 0
         this.abacusItems.clear()
         this.abacusItems.addAll(listData)

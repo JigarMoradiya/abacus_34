@@ -14,9 +14,6 @@ import com.jigar.me.R
 import com.jigar.me.databinding.ActivityLoginDashboardBinding
 import com.jigar.me.ui.view.base.BaseActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
-import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.extensions.getBottomNavBarHeight
-import com.jigar.me.utils.extensions.hasNotch
 import com.jigar.me.utils.extensions.hide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope

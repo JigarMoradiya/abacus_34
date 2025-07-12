@@ -3,6 +3,7 @@ package com.jigar.me.ui.view.dashboard.fragments.custom_challenge
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,6 +47,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
 import androidx.navigation.findNavController
+import com.google.gson.Gson
 
 @AndroidEntryPoint
 class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
@@ -486,12 +488,14 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
     override fun onAbacusSubmitValue(userAnswer : String) = Unit
     
     private fun resetAbacus() {
+        listKeyboardAnswer.clear()
         abacusBinding?.abacusTop?.reset()
         abacusBinding?.abacusBottom?.reset()
+        setNumber()
     }
 
     private fun addKeyboardValue(value : String){
-        if (listKeyboardAnswer.size < 9){
+        if (listKeyboardAnswer.size < 7){
             if (value == "0"){
                 if (listKeyboardAnswer.isNotEmpty()){
                     listKeyboardAnswer.add(value)
@@ -516,14 +520,14 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
         }
         val topPositions = ArrayList<Int>()
         val bottomPositions = ArrayList<Int>()
-        val totalLength = 9
+        val totalLength = 7
         val remainLength = totalLength - questionTemp.length
         var zero = ""
         for (i in 1..remainLength){
             zero += "0"
         }
         val question = zero+questionTemp
-        for (i in 0 until if (totalLength == 1) 2 else totalLength) {
+        for (i in 0 until totalLength) {
             if (i < question.length) {
                 val charAt = question[i] - '1' //convert char to int. minus 1 from question as in abacuse 0 item have 1 value.
                 if (charAt >= 0) {

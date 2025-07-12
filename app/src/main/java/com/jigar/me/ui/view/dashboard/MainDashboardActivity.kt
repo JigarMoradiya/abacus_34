@@ -33,8 +33,8 @@ import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.extensions.getBottomNavBarHeight
-import com.jigar.me.utils.extensions.hasNotch
-import com.onesignal.OneSignal
+import com.jigar.me.utils.extensions.getScreenHeight
+import com.jigar.me.utils.extensions.getScreenWidth
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
