@@ -32,76 +32,73 @@ class RemoteDataSource @Inject constructor() {
     private var client: OkHttpClient? = null
     private var retrofit: Retrofit? = null
 
-    fun <Api> buildApi(api: Class<Api>,context: Context,base_url: String?): Api {
+    fun <Api> buildApi(api: Class<Api>,context: Context,baseUrl: String): Api {
         prefManager = AppPreferencesHelper(context, AppConstants.PREF_NAME)
-        return getClient(context, base_url)?.create(api)!!
+        return getClient(context, baseUrl)?.create(api)!!
     }
 
-    private fun getClient(context: Context,base_url: String?,): Retrofit? {
+    private fun getClient(context: Context,baseUrl: String): Retrofit? {
         client = OkHttpClient.Builder()
             .addInterceptor(Interceptor { chain ->
-                forwardNext(context, chain)!!
+                forwardNext(context, chain)
             })
             .addInterceptor(AuthHeaderInterceptor(prefManager))
             .readTimeout(1, TimeUnit.MINUTES)
             .connectTimeout(1, TimeUnit.MINUTES)
             .build()
 
-        retrofit = Retrofit.Builder()
-            .baseUrl(base_url)
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
-            .build()
+        retrofit = client?.let {
+            Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(it)
+                .build()
+        }
 
         return retrofit
     }
 
 
     @Throws(IOException::class)
-    fun forwardNext(context: Context, chain: Interceptor.Chain): Response? {
+    fun forwardNext(context: Context, chain: Interceptor.Chain): Response {
         val request: Request = chain.request()
         Log.e("post_request", request.url.toString() + "")
-//        get Response Body sent by Repositary APT calls
         val oldBody = request.body
         val buffer = Buffer()
         oldBody?.writeTo(buffer)
 
         val strNewBody = buffer.readUtf8()
         Log.e("post_request_new_body", "Without encryption enabled body $strNewBody")
-        return try {
+        try {
             val response: Response = chain.proceed(request) // get the API response
 
             Log.e("post_response_main", "Response from direct API $response")
-            val stringJson = response.body?.string()
-            val jsonObject = JSONObject(stringJson)
-            val decrypted_string = jsonObject.toString()
+            val rawResponseBody = response.body!!
+            val contentType = rawResponseBody.contentType()
+            val bodyString = rawResponseBody.string() // consumes the stream
+            val jsonObject = JSONObject(bodyString)
+            val decryptedString = jsonObject.toString()
 
             //remove null keys from the json object
             val gson = GsonBuilder().setPrettyPrinting().create()
-            val je = JsonParser.parseString(decrypted_string)
+            val je = JsonParser.parseString(decryptedString)
             val prettyJsonString = gson.toJson(je)
-            Log.e(
-                "post_response",
-                "Remove all NULL keys from JSON Object$prettyJsonString"
-            )
-            Log.e(
-                "post_response",
-                "creating the main response to send it to APIs for" + request.url
-            )
+            Log.e("post_response","Remove all NULL keys from JSON Object$prettyJsonString")
+            Log.e("post_response","creating the main response to send it to APIs for" + request.url)
             if (request.url.toString().contains("getImages")){
                 val mainAPIResponse = gson.fromJson(prettyJsonString, MainAPIResponseArray::class.java)
-                response.newBuilder().body(
+                return response.newBuilder().body(
                     Gson().toJson(mainAPIResponse).toResponseBody(response.body?.contentType())
                 ).build()
             }else{
                 val mainAPIResponse = gson.fromJson(prettyJsonString, MainAPIResponse::class.java)
                 if (mainAPIResponse.statusCode == 401){
                     handleForbiddenResponse(context)
-                    createEmptyResponse(chain,null)
+                    return createEmptyResponse(chain,null)
                 }else{
-                    response.newBuilder().body(
-                        Gson().toJson(mainAPIResponse).toResponseBody(response.body?.contentType())
+                    return response.newBuilder().body(
+                        Gson().toJson(mainAPIResponse).toResponseBody(contentType)
                     ).build()
                 }
             }
@@ -115,9 +112,7 @@ class RemoteDataSource @Inject constructor() {
     }
 
     private fun handleForbiddenResponse(context: Context) {
-        prefManager.setAccessToken("")
-        prefManager.setLoginData("")
-        prefManager.setUserLoggedIn(false)
+        prefManager.clearPref()
         LoginDashboardActivity.getInstance(context)
     }
 
@@ -125,7 +120,7 @@ class RemoteDataSource @Inject constructor() {
     private fun handleException(
         chain: Interceptor.Chain,
         e: Exception
-    ): Response? {
+    ): Response {
         Log.e("post_response_message", e.message + " " + e.javaClass.canonicalName)
         //logout user while facing error related to JWT
         return when (e) {
@@ -145,7 +140,7 @@ class RemoteDataSource @Inject constructor() {
         }
     }
 
-    private fun createEmptyResponse(chain: Interceptor.Chain, errorMessage: String?): Response? {
+    private fun createEmptyResponse(chain: Interceptor.Chain, errorMessage: String?): Response {
         val mediaType = "application/json".toMediaType()
 
         val mainAPIResponse = MainAPIResponse(errorMessage,AppConstants.APIStatus.ERROR, error = ErrorData(errorMessage))
