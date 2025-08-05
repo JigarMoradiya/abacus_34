@@ -2,7 +2,10 @@ package com.jigar.me.ui.viewmodel
 
 import androidx.lifecycle.*
 import com.jigar.me.data.model.MainAPIResponseArray
+import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
+import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.data.model.dbtable.abacus_all_data.Level
+import com.jigar.me.data.model.dbtable.abacus_all_data.Pages
 import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
 import com.jigar.me.data.model.dbtable.exam.ExamHistory
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
@@ -44,6 +47,7 @@ class AppViewModel @Inject constructor(private val apiRepository: ApiRepository,
 
     // abacus all data
     suspend fun insertLevel(data : List<Level>) = dbRepository.insertLevel(data)
+    suspend fun insertAllData(dataLevel: ArrayList<Level>, dataCategory: ArrayList<Category>, dataPages: ArrayList<Pages>, dataSet: ArrayList<com.jigar.me.data.model.dbtable.abacus_all_data.Set>, dataAbacus: ArrayList<Abacus>)  = dbRepository.insertAllData(dataLevel,dataCategory,dataPages,dataSet,dataAbacus)
     fun getLevel() = dbRepository.getLevel()
     suspend fun getCategory(id: String) = dbRepository.getCategory(id)
     suspend fun getPages(id: String, isGetAllData: Boolean)= dbRepository.getPages(id,isGetAllData)
@@ -58,5 +62,4 @@ class AppViewModel @Inject constructor(private val apiRepository: ApiRepository,
     suspend fun updateSetTimer(setId : String,time : Long) = dbRepository.updateSetTimer(setId,time)
     suspend fun updateUserAnswer(abacusId : String,userAnswer : String) = dbRepository.updateUserAnswer(abacusId,userAnswer)
     suspend fun removeUserAnswer(setId : String) = dbRepository.removeUserAnswer(setId)
-
 }

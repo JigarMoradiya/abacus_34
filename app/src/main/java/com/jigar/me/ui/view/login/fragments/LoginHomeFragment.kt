@@ -143,7 +143,9 @@ class LoginHomeFragment : BaseFragment() {
                 val result = studentViewModel.signInWithGoogle(task)
                 if (result is Result.Success) {
                     // navigate to main page
-                    studentViewModel.socialLogin(SocialLoginRequest(result.data?.email,task.result.idToken))
+                    val request = SocialLoginRequest(result.data?.email,task.result.idToken)
+                    Log.e("jigarLogin","idToken = "+Gson().toJson(request))
+                    studentViewModel.socialLogin(request)
                 } else {
 
                     // your error handling
@@ -198,11 +200,13 @@ class LoginHomeFragment : BaseFragment() {
 
     private fun onSuccessAbacusData(data: JsonObject?) {
         val response = Gson().fromJson(data, AbacusAllData::class.java)
-        CoroutineScope(Dispatchers.Main).launch {
+        lifecycleScope.launch {
             response.levels?.let {
                 appViewModel.insertLevel(it)
+                response.setProgress?.let {
+                    appViewModel.insertSetProgress(it)
+                }
                 prefManager.setUserLoggedIn(true)
-
                 MainDashboardActivity.getInstance(requireContext())
             }
         }
@@ -226,7 +230,7 @@ class LoginHomeFragment : BaseFragment() {
 
             val defaultDateTime = Constants.last_sync_default_time
             val dateTime = prefManager.getCustomParam(Constants.last_sync_time,defaultDateTime)
-            val request = FetchAbacusDataRequest(true,last_sync_time = dateTime)
+            val request = FetchAbacusDataRequest(true,true,true,true, get_set_progress_report = true,last_sync_time = dateTime)
             studentViewModel.getAbacusData(request)
         }
     }

@@ -120,18 +120,14 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
         mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() = with(binding){
-        Log.e("jigarHome","getScreenWidth = "+requireActivity().getScreenWidth())
-        Log.e("jigarHome","getScreenHeight = "+requireActivity().getScreenHeight())
-
         // fetch abacus data
-        FetchAbacusDataWorkManager.fetchAbacusDetails()
+//        FetchAbacusDataWorkManager.fetchAbacusDetails()
         studentViewModel.appReviewsList()
 
         setViewPager()
         linearMenu.post {
             appViewModel.getLevel().observe(viewLifecycleOwner){
                 if (it.isNotNullOrEmpty()){
-                    (activity as MainDashboardActivity).fetchSetData()
                     val column = (it.size / 2)
                     val height = linearMenu.height / 2
                     val width = linearMenu.width / column
@@ -272,7 +268,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
         }
     }
 
-    private fun checkPurchasedPlans(data: JsonObject?) {
+    private fun  checkPurchasedPlans(data: JsonObject?) {
         if (data?.has("plans_purchased_manually") == true){
             if (data.getAsJsonArray("plans_purchased_manually")?.isEmpty == true){
                 prefManager.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"")
@@ -644,7 +640,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
             with(it){
                 val google_plan_id = sku
                 val google_order_id = orderId
-                val is_all_feature = (sku == BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime || sku == BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_old)
+                 val is_all_feature = (sku == BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime || sku == BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_old)
                 val start_date = purchaseTime
 
                 var is_lifetime_plan = false

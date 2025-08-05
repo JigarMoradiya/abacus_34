@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.google.gson.Gson
@@ -75,7 +76,7 @@ class CustomChallengeHomeFragment : BaseFragment() {
             prefManager.setCustomParamBoolean(AppConstants.CCM.isQuestionSpeak,binding.cbQuestionVoice.isChecked)
             prefManager.setCustomParamBoolean(AppConstants.CCM.isQuestionShowNumber,binding.cbQuestionNumber.isChecked)
             prefManager.setCustomParamBoolean(AppConstants.CCM.isQuestionShowWord,binding.cbQuestionWord.isChecked)
-            CoroutineScope(Dispatchers.Main).launch {
+            lifecycleScope.launch {
                 val purchasedSKU = appViewModel.getInAppSKUPurchased()
                 if (CommonUtils.checkPurchaseForExerciseExamCCM(prefManager,purchasedSKU)){
                     gotoNext()

@@ -275,7 +275,7 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
         binding.cardBack.show()
     }
     override fun onExerciseStartClick() {
-        CoroutineScope(Dispatchers.Main).launch {
+        lifecycleScope.launch {
             val purchasedSKU = appViewModel.getInAppSKUPurchased()
             if (CommonUtils.checkPurchaseForExerciseExamCCM(prefManager,purchasedSKU)){
                 startInit()
@@ -348,13 +348,13 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
         tickerChannel = ticker(delayMillis = 1000, initialDelayMillis = 0)
         launch {
             for (event in tickerChannel) {
-                CoroutineScope(Dispatchers.Main).launch {
+                lifecycleScope.launch {
                     val time = DateTimeUtils.displayDurationHourMinSec(totalTimeLeft)
                     binding.txtTimer.text = time
                 }
                 totalTimeLeft--
                 if (totalTimeLeft == 0L){
-                    CoroutineScope(Dispatchers.Main).launch {
+                    lifecycleScope.launch {
                         openCompleteDialog()
                     }
                     break

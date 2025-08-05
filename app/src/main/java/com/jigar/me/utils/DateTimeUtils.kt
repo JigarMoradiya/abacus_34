@@ -103,12 +103,10 @@ object DateTimeUtils {
         sourceStr: String,
         destinationStr: String, isCheckToday : Boolean = true
     ): String? {
-//        Log.e("jigarLogs","convertDateFormatFromUTC = "+date?.toDate()?.formatTo(ddMMMyyyyhhmma))
         var strNewDate = date
         val newDate: Date?
         val source = SimpleDateFormat(sourceStr, Locale.getDefault())
 
-        Log.e("jigarLogs","date = "+date)
         source.timeZone = TimeZone.getTimeZone("UTC")
         try {
             if (!TextUtils.isEmpty(date)) {
@@ -116,7 +114,6 @@ object DateTimeUtils {
 
                 var prefixText = ""
                 newDate?.let {
-                    Log.e("jigarLogs","newDate = "+it.toString())
                     val destination = if (isCheckToday){
                         if (isToday(it.time)){
                             prefixText = "Today "

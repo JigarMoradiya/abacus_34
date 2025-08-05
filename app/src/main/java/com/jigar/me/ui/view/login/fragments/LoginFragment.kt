@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.google.gson.Gson
@@ -212,9 +213,12 @@ class LoginFragment : BaseFragment() {
     }
     private fun onSuccessAbacusData(data: JsonObject?) {
         val response = Gson().fromJson(data, AbacusAllData::class.java)
-        CoroutineScope(Dispatchers.Main).launch {
+        lifecycleScope.launch {
             response.levels?.let {
                 appViewModel.insertLevel(it)
+                response.setProgress?.let {
+                    appViewModel.insertSetProgress(it)
+                }
                 prefManager.setUserLoggedIn(true)
 
                 MainDashboardActivity.getInstance(requireContext())
@@ -235,7 +239,7 @@ class LoginFragment : BaseFragment() {
         }
         val defaultDateTime = Constants.last_sync_default_time
         val dateTime = prefManager.getCustomParam(Constants.last_sync_time,defaultDateTime)
-        val request = FetchAbacusDataRequest(true,last_sync_time = dateTime)
+        val request = FetchAbacusDataRequest(true, get_set_progress_report = true,last_sync_time = dateTime)
         studentViewModel.getAbacusData(request)
     }
 

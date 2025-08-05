@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.google.gson.Gson
@@ -70,7 +71,7 @@ class ExamHomeFragment : BaseFragment() {
                 && !binding.chMultiplication.isChecked && !binding.chDivision.isChecked ){
                 showToast(getString(R.string.please_select_at_least_one_checkbox))
             }else{
-                CoroutineScope(Dispatchers.Main).launch {
+                lifecycleScope.launch {
                     val purchasedSKU = appViewModel.getInAppSKUPurchased()
                     if (CommonUtils.checkPurchaseForExerciseExamCCM(prefManager,purchasedSKU)){
                         onExamStartClick()

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.google.gson.Gson
@@ -77,7 +78,7 @@ class PurchaseFragment : BaseFragment(), PurchaseAdapter.OnItemClickListener {
         binding.recyclerview.adapter = skuListAdapter
         inAppViewModel.inAppInit()
 
-        CoroutineScope(Dispatchers.Main).launch{
+        lifecycleScope.launch{
             val idList: ArrayList<String> = arrayListOf()
             if (loginData?.email.equals("abacus@yopmail.com")){
                 idList.add(PRODUCT_ID_All_lifetime)

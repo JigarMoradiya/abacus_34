@@ -211,7 +211,7 @@
                     app:fontFamily="@font/font_regular"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnSubmit" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtGoBack" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

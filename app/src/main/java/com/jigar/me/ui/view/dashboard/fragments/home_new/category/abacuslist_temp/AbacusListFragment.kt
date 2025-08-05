@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.jigar.me.R
@@ -53,7 +54,7 @@ class AbacusListFragment : BaseFragment() {
 
     private fun initViews() = with(binding) {
         cardBack.onClick { onBack() }
-        CoroutineScope(Dispatchers.Main).launch {
+        lifecycleScope.launch {
             val abacusList = appViewModel.getAbacus(setId)
             abacusListAdapter = AbacusListAdapter(abacusList)
             recyclerview.adapter = abacusListAdapter

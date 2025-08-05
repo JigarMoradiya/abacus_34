@@ -5,7 +5,10 @@ import com.jigar.me.data.local.db.abacus_all_data.AbacusAllDataDB
 import com.jigar.me.data.local.db.exam.ExamHistoryDB
 import com.jigar.me.data.local.db.inapp.purchase.InAppPurchaseDB
 import com.jigar.me.data.local.db.inapp.sku.InAppSKUDB
+import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
+import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.data.model.dbtable.abacus_all_data.Level
+import com.jigar.me.data.model.dbtable.abacus_all_data.Pages
 import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
 import com.jigar.me.data.model.dbtable.exam.ExamHistory
 import javax.inject.Inject
@@ -31,6 +34,7 @@ class DBRepository @Inject constructor(
 
     // abacus all data
     suspend fun insertLevel(data : List<Level>) = abacusAllDataDB.insertLevel(data)
+    suspend fun insertAllData(dataLevel: ArrayList<Level>, dataCategory: ArrayList<Category>, dataPages: ArrayList<Pages>, dataSet: ArrayList<com.jigar.me.data.model.dbtable.abacus_all_data.Set>, dataAbacus: ArrayList<Abacus>)  = abacusAllDataDB.insertAllData(dataLevel,dataCategory,dataPages,dataSet,dataAbacus)
     fun getLevel() = abacusAllDataDB.getLevel()
     suspend fun getCategory(id : String) = abacusAllDataDB.getCategory(id)
     suspend fun getPages(id: String, isGetAllData: Boolean) = abacusAllDataDB.getPages(id,isGetAllData)

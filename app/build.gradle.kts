@@ -101,10 +101,10 @@ dependencies {
     // firebase
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-crashlytics-ndk")
-    implementation(platform("com.google.firebase:firebase-bom:33.15.0"))
+    implementation(platform("com.google.firebase:firebase-bom:33.16.0"))
     implementation("com.google.firebase:firebase-database-ktx:21.0.0")
     implementation("com.google.firebase:firebase-config-ktx:22.1.2")
-    implementation("com.google.firebase:firebase-messaging-ktx:24.1.1")
+    implementation("com.google.firebase:firebase-messaging-ktx:24.1.2")
     implementation("com.google.firebase:firebase-auth-ktx:23.2.1")
     implementation("com.google.firebase:firebase-core:21.1.1")
 
@@ -112,15 +112,15 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:21.3.0")
 
     // push notification
-    implementation("com.onesignal:OneSignal:5.1.23")
+    implementation("com.onesignal:OneSignal:5.1.35")
 
     // api
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("io.reactivex.rxjava2:rxjava:2.2.20")
-    implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
+    implementation("com.squareup.retrofit2:retrofit:3.0.0")
+    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
+    implementation("io.reactivex.rxjava2:rxjava:2.2.21")
+    implementation("com.squareup.retrofit2:adapter-rxjava2:3.0.0")
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+    implementation("com.squareup.okhttp3:logging-interceptor:5.1.0")
     implementation("com.jakewharton.rxbinding3:rxbinding-material:3.1.0")
 
     // Glide

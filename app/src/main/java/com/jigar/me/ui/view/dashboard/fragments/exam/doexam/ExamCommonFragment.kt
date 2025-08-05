@@ -149,7 +149,7 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
 //        val minutes = total_sec / 60
 //        val seconds = total_sec % 60
 //        val totalTime = String.format("%d:%02d", minutes, seconds)
-//        CoroutineScope(Dispatchers.Main).launch{
+//        lifecycleScope.launch{
 //            apiViewModel.saveExamResultDB(ExamHistory(0,total_sec,examLevel, arrayListOf(), listExam,theme = theme, examFor = examForList))
 //        }
 //        ExamCompleteDialog.showPopup(requireActivity(),totalTime,"0",totalWrong.toString(),right.toString(),listExam.size.toString(),this,prefManager)

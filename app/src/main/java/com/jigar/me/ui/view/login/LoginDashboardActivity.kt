@@ -55,7 +55,7 @@ class LoginDashboardActivity : BaseActivity(){
     }
 
     private fun initObserver() {
-        CoroutineScope(Dispatchers.Main).launch{
+        lifecycleScope.launch{
             appViewModel.deleteInAppPurchase()
             appViewModel.deleteInAppSKU()
         }

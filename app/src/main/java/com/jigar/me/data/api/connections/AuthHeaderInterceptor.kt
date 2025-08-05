@@ -1,5 +1,6 @@
 package com.jigar.me.data.api.connections
 
+import android.util.Log
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.CommonUtils
 import okhttp3.Interceptor
@@ -13,6 +14,7 @@ class AuthHeaderInterceptor  private constructor(
         requestBuilder.header("organizer-id",CommonUtils.getOrganizerId())
         prefManager.getAccessToken()?.let {
             val token = it
+            Log.e("AuthHeaderInterceptor","access-token = "+token)
             requestBuilder.header("access-token",token)
         }
 

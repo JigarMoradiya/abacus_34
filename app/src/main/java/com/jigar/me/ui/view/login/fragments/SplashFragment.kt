@@ -107,7 +107,7 @@ class SplashFragment : BaseFragment() {
                         if (databaseVersion.toInt() > getCustomParamInt(AppConstants.AbacusProgress.databaseVersion, 0)) {
                             setCustomParamInt(AppConstants.AbacusProgress.databaseVersion, databaseVersion.toInt())
                             prefManager.setCustomParam(Constants.last_sync_time,Constants.last_sync_default_time)
-                            CoroutineScope(Dispatchers.Main).launch {
+                            lifecycleScope.launch {
                                 appViewModel.deleteAllData()
                             }
                         }

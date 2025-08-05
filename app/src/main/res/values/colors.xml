@@ -15,7 +15,7 @@
     <color name="tag_bg">#242424</color>
     <color name="white">#ffffff</color>
 
-    <color name="report_set_btn_bg">@color/red_900</color>
+    <color name="report_set_btn_bg">@color/formal_exam</color>
     <color name="report_exercise_btn_bg">#22717E</color>
     <color name="report_exam_btn_bg">#025740</color>
     <color name="report_ccm_btn_bg">#157368</color>

@@ -280,7 +280,7 @@ object AppConstants {
             var examLevel = "examLevels" // exam store
 
             var typeBulkLogin = "Need Login"
-            var typeNeedHelp = "Need Help"
+            var typeNeedHelp = " "
         }
     }
 

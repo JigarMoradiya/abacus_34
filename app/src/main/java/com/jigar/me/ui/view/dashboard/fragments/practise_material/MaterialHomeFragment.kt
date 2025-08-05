@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.jigar.me.R
@@ -109,7 +110,7 @@ class MaterialHomeFragment : BaseFragment() {
     }
 
     private fun fetchSKUDetail(data: InAppSkuDetails?) {
-        CoroutineScope(Dispatchers.Main).launch {
+        lifecycleScope.launch {
             if (data != null){
                 inAppViewModel.makePurchase(requireActivity(), data)
             }

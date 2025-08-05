@@ -142,7 +142,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                         hideLoading()
 
                         if (it.value.status == AppConstants.APIStatus.SUCCESS){
-                            CoroutineScope(Dispatchers.Main).launch {
+                            lifecycleScope.launch {
                                 setProgress?.let{
                                     it.is_set_completed = true
                                     it.latest_abacus_id = null
@@ -268,7 +268,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
             for (event in tickerChannel) {
                 total_sec++
 
-                CoroutineScope(Dispatchers.Main).launch {
+                lifecycleScope.launch {
 //                    setId?.let {
 //                        appViewModel.updateSetTimer(it,total_sec)
 //                    }
@@ -288,7 +288,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
 
     private fun startAbacus() {
         if(requireContext().isNetworkAvailable){
-            CoroutineScope(Dispatchers.Main).launch {
+            lifecycleScope.launch {
                 setId?.let {
                     setDetail = appViewModel.getSetDetail(it)
                     setProgress = appViewModel.getSetProgress(it)
@@ -634,7 +634,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
 
                             val toValue = (adapterMultiplication.getCurrentSumVal()?:0.0).toInt()
                             val ques = abacusCurrentValue+"+"+(toValue - abacusCurrentValue.toInt())
-                            val result = detectFormulaSteps(initial = 0, steps = ques.sumToIntList())
+                            val result = detectFormulaSteps (initial = 0, steps = ques.sumToIntList())
                             currentSumFormulaList.clear()
                             currentSumFormulaList.add(ExamProvider.FormulaStep(0,spannableString,AbacusFormulaType.Multiplication.description,0))
                             currentSumFormulaList.addAll(result)
@@ -680,7 +680,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                             .filter { !it.formulaUsed.isNullOrEmpty()}
                             .distinctBy { it.formulaUsed }
 
-                        displayHint(distinctList)
+                         (distinctList)
                     }
 
                 }
@@ -976,7 +976,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         }
     }
     private fun moveToNext() {
-        CoroutineScope(Dispatchers.Main).launch {
+        lifecycleScope.launch {
             setId?.let {
                 val submitExamRequest = SubmitAllExamDataRequest()
                 with(submitExamRequest) {
@@ -1098,7 +1098,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     }
 
     override fun onAbacusSubmitValue(userAnswer : String) {
-        CoroutineScope(Dispatchers.Main).launch {
+        lifecycleScope.launch {
             appViewModel.updateUserAnswer(currentAbacus.id,userAnswer)
             isMoveNext = true
             resetOrMoveNext()

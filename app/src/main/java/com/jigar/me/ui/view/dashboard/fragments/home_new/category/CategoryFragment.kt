@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.google.gson.Gson
@@ -83,7 +84,7 @@ class CategoryFragment : BaseFragment() {
         binding.spaceNotch.layoutParams.width = prefManager.getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
         binding.spaceBottom.layoutParams.height = prefManager.getCustomParamInt(AppConstants.BOTTOM_NAV_HEIGHT,0)
 
-        CoroutineScope(Dispatchers.Main).launch {
+        lifecycleScope.launch {
             val purchasedSKU = appViewModel.getInAppSKUPurchased()
             categoryNewAdapter = CategoryNewAdapter(arrayListOf(),purchasedSKU,prefManager) { position, previousPos, data ->
                 clickCategory(position, previousPos, data)
@@ -139,7 +140,7 @@ class CategoryFragment : BaseFragment() {
         super.onResume()
         if (::categoryNewAdapter.isInitialized){
             if (categoryNewAdapter.listData.isNotNullOrEmpty()){
-                CoroutineScope(Dispatchers.Main).launch {
+                lifecycleScope.launch {
                     val purchasedSKU = appViewModel.getInAppSKUPurchased()
                     categoryNewAdapter.purchasedSKU = purchasedSKU
                     categoryNewAdapter.setData(categoryNewAdapter.listData)
@@ -161,7 +162,7 @@ class CategoryFragment : BaseFragment() {
     }
 
     private fun setPages(categoryId: String,isScrollToPosition : Boolean = true) {
-        CoroutineScope(Dispatchers.Main).launch {
+        lifecycleScope.launch {
             val pagesList = appViewModel.getPages(categoryId,isGetAllData)
             pagesNewAdapter.setData(pagesList)
             if (pagesList.isEmpty()){
