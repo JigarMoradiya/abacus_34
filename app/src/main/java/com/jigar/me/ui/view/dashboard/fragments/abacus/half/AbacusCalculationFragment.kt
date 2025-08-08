@@ -2,22 +2,17 @@ package com.jigar.me.ui.view.dashboard.fragments.abacus.half
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
-import android.graphics.Color
-import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.TextUtils
 import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
-import android.text.style.StyleSpan
-import android.util.Log
 import android.view.*
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
@@ -44,17 +39,13 @@ import com.jigar.me.ui.viewmodel.ExamViewModel
 import com.jigar.me.utils.*
 import com.jigar.me.utils.extensions.*
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.ticker
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.json.JSONArray
-import org.json.JSONObject
 import java.util.*
 import kotlin.collections.ArrayList
 import androidx.navigation.findNavController
-import com.google.gson.Gson
 import com.jigar.me.data.local.data.ExamProvider
 import com.jigar.me.data.local.data.ExamProvider.AbacusFormulaType
 import com.jigar.me.data.local.data.ExamProvider.detectFormulaSteps
@@ -69,6 +60,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     private lateinit var themeContent : AbacusContent
     private var setId : String? = null
     private var isStepByStep = false
+    private var isShowSubmitAnswer = false
     private var current_pos = 0
     private var abacusColumn = 13
     private var hintPage : String? = null
@@ -133,12 +125,12 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         examViewModel.submitAllExamResponse.observe(this) {
             when (it) {
                 is Resource.Loading -> {
-                    if (examViewModel.submitAllExamDataRequest?.is_set_completed == true || setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer){
+                    if (examViewModel.submitAllExamDataRequest?.is_set_completed == true || isShowSubmitAnswer){
                         showLoading()
                     }
                 }
                 is Resource.Success -> {
-                    if (examViewModel.submitAllExamDataRequest?.is_set_completed == true || setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer){
+                    if (examViewModel.submitAllExamDataRequest?.is_set_completed == true || isShowSubmitAnswer){
                         hideLoading()
 
                         if (it.value.status == AppConstants.APIStatus.SUCCESS){
@@ -166,7 +158,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
 
                 }
                 is Resource.Failure -> {
-                    if (examViewModel.submitAllExamDataRequest?.is_set_completed == true || setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer){
+                    if (examViewModel.submitAllExamDataRequest?.is_set_completed == true || isShowSubmitAnswer){
                         hideLoading()
                         onFailure(it.errorBody)
                     }
@@ -211,17 +203,17 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     private fun setThemeColor() {
         val borderColor = CommonUtils.getQuestionBorderColor(requireContext(),themeContent)
         themeContent.resetBtnColor8.let{
-            binding.tvAnsNumberWord.setTextColor(ContextCompat.getColor(requireContext(),it))
+            binding.tvAnsNumber.setTextColor(ContextCompat.getColor(requireContext(),it))
 
             binding.cardQuestions.setStrokeColor(ColorStateList.valueOf(borderColor))
             binding.ivDivider1.setBackgroundColor(borderColor)
-            binding.txtTitle.setTextColor(ContextCompat.getColor(requireContext(),it))
+            binding.txtTimer.setTextColor(ContextCompat.getColor(requireContext(),it))
             binding.txtTitleHand.setTextColor(ContextCompat.getColor(requireContext(),it))
             binding.tvAns.setTextColor(ContextCompat.getColor(requireContext(),it))
 
             themeContent.dividerColor1.let {it2 ->
                 val finalColor40 = CommonUtils.mixTwoColors(ContextCompat.getColor(requireContext(),it2), ContextCompat.getColor(requireContext(),it), 0.40f)
-                binding.tvAnsNumber.setTextColor(finalColor40)
+                binding.tvAnsNumberWord.setTextColor(finalColor40)
 
                 val finalColor60 = CommonUtils.mixTwoColors(ContextCompat.getColor(requireContext(),it2), ContextCompat.getColor(requireContext(),it), 0.30f)
                 binding.cardHint.setStrokeColor(ColorStateList.valueOf(finalColor60))
@@ -294,7 +286,8 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                     setProgress = appViewModel.getSetProgress(it)
                     if (setDetail != null){
                         isStepByStep = setDetail?.answer_setting == AppConstants.apiParams.answerSettingStepByStep
-                        if (setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer){
+                        isShowSubmitAnswer = setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer
+                        if (isShowSubmitAnswer){
                             binding.tvAns.text = "?"
                         }else{
                             binding.tvAns.text = ""
@@ -384,7 +377,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 setDataOfDivision()
             }
             AppConstants.extras_Comman.AbacusTypeNumber -> {
-                binding.txtTitle.invisible()
                 binding.tvAns.text = ""
                 binding.tvAns.invisible()
                 setDataOfNumber()
@@ -394,7 +386,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
             }
         }
 
-
+        binding.cardQuestions.show()
         setThemeColor()
     }
 
@@ -419,10 +411,10 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         number = (list_abacus_main[0][Constants.Que]?:"0").toLong()
         val speakText = requireContext().convert(number.toInt())
         if (isHintSound && isStepByStep) {
-            lifecycleScope.launch {
-                delay(500)
+//            lifecycleScope.launch {
+//                delay(500)
                 speakOut(speakText)
-            }
+//            }
         }
         val noOfDecimalPlace = 0
         binding.tvAnsNumber.text = number.toString()
@@ -680,7 +672,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                             .filter { !it.formulaUsed.isNullOrEmpty()}
                             .distinctBy { it.formulaUsed }
 
-                         (distinctList)
+                        displayHint(distinctList)
                     }
 
                 }
@@ -703,7 +695,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 val boldTypeface = ResourcesCompat.getFont(requireContext(), R.font.font_bold)!!
                 val mediumTypeface = ResourcesCompat.getFont(requireContext(), R.font.font_semibold)!!
 
-                spannableBuilder.setSpan(RelativeSizeSpan(0.9f), // smaller size
+                spannableBuilder.setSpan(RelativeSizeSpan(0.8f), // smaller size
                     typeStart,typeStart + typeText.length,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 spannableBuilder.setSpan(CustomTypefaceSpan(boldTypeface),typeStart,typeStart + typeText.length, // safer than usedStart + formulaUsedText.length
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
@@ -743,6 +735,10 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         }
         speek_hint = ""
         binding.cardHint.hide()
+        additionSubtractionFormula()
+    }
+
+    private fun additionSubtractionFormula() {
         if (isStepByStep && currentSumFormulaList.isNotNullOrEmpty()){
             val distinctList = currentSumFormulaList
                 .filter { !it.formulaUsed.isNullOrEmpty() && it.index == adapterAdditionSubtraction.getCurrentStep() }
@@ -760,7 +756,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 }else{
                     "0"
                 }
-                abacusFragment = HalfAbacusSubFragment().newInstance(abacusColumn, noOfDecimalPlace, abacus_type,themeContent,setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer,que,topPositions,bottomPositions)
+                abacusFragment = HalfAbacusSubFragment().newInstance(abacusColumn, noOfDecimalPlace, abacus_type,themeContent,isShowSubmitAnswer,que,topPositions,bottomPositions)
 
                 abacusFragment?.setOnAbacusValueChangeListener(this)
                 val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
@@ -825,7 +821,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 if (abacusType == AppConstants.extras_Comman.AbacusTypeNumber) {
                     val sumVal = number
                     if (abacusCurrentValue == (sumVal.toInt()).toString()) {
-                        if (setDetail?.answer_setting != AppConstants.apiParams.answerFormalAnswer){
+                        if (!isShowSubmitAnswer){
                             abacusFragment?.clearDirection()
                             onAbacusValueSubmit(sumVal)
                         }
@@ -976,16 +972,17 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         }
     }
     private fun moveToNext() {
-        lifecycleScope.launch {
-            setId?.let {
-                val submitExamRequest = SubmitAllExamDataRequest()
-                with(submitExamRequest) {
-                    type = setDetail?.answer_setting
-                    if (current_pos >= list_abacus.lastIndex){
-                        tickerChannel.cancel()
-                        if(requireContext().isNetworkAvailable) {
-                            if (setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer){
-                                set_id = it
+
+        setId?.let {
+            val submitExamRequest = SubmitAllExamDataRequest()
+            with(submitExamRequest) {
+                type = setDetail?.answer_setting
+                if (current_pos >= list_abacus.lastIndex){
+                    tickerChannel.cancel()
+                    if(requireContext().isNetworkAvailable) {
+                        if (isShowSubmitAnswer){
+                            set_id = it
+                            lifecycleScope.launch {
                                 list_abacus = appViewModel.getAbacus(it)
                                 mCalculator = Calculator()
                                 var rightAnswerCount = 0
@@ -1007,72 +1004,76 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                                 no_of_right_answers = rightAnswerCount
                                 questions = questionsList
                                 examViewModel.submitAllExam(submitExamRequest)
-                            }else{
-                                if (setProgress == null){
-                                    retry_count = 1
-                                }else if(setProgress?.is_set_completed == true){
-                                    retry_count =  (setProgress?.retry_count?:0)+1
-                                }else{
-                                    retry_count = setProgress?.retry_count?:1
-                                }
-                                if (setDetail?.show_time_setting == true){
-                                    total_time_taken = total_sec.toInt()
-                                }
-                                is_set_completed = true
-                                abacus_id = null
-                                set_id = it
-                                examViewModel.submitAllExam(submitExamRequest)
                             }
+
+
                         }else{
-                            CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.no_internet_working),getString(R.string.no_internet)
-                                ,getString(R.string.continue_working_internet),getString(R.string.no_working_internet), icon = R.drawable.ic_alert_sad_emoji,isCancelable = false,
-                                clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
-                                    override fun onConfirmationYesClick(bundle: Bundle?) {
-                                        if (!requireContext().isNetworkAvailable) {
-                                            showToast(R.string.still_no_internet)
-                                        }
-                                        moveToNext()
-                                    }
-                                    override fun onConfirmationNoClick(bundle: Bundle?){
-                                        mNavController.navigateUp()
-                                    }
-                                })
+                            if (setProgress == null){
+                                retry_count = 1
+                            }else if(setProgress?.is_set_completed == true){
+                                retry_count =  (setProgress?.retry_count?:0)+1
+                            }else{
+                                retry_count = setProgress?.retry_count?:1
+                            }
+                            if (setDetail?.show_time_setting == true){
+                                total_time_taken = total_sec.toInt()
+                            }
+                            is_set_completed = true
+                            abacus_id = null
+                            set_id = it
+                            examViewModel.submitAllExam(submitExamRequest)
                         }
                     }else{
-                        resetData()
-                        current_pos++
-                        var retryCounts = 1
-                        if (setProgress == null){
-                            retryCounts = 1
-                            setProgress = SetProgress(it,list_abacus[current_pos].id,false)
-                        }else if(setProgress?.is_set_completed == true){
-                            retryCounts =  (setProgress?.retry_count?:0)+1
-                            setProgress = SetProgress(it,list_abacus[current_pos].id,false)
-                        }else{
-                            retryCounts = setProgress?.retry_count?:1
-                            setProgress?.latest_abacus_id = list_abacus[current_pos].id
-                        }
-                        setProgress?.retry_count = retryCounts
-                        if (current_pos > 0 && (current_pos % 5 == 0)){
-                            retry_count = retryCounts
-                            if (setDetail?.answer_setting != AppConstants.apiParams.answerFormalAnswer){
-                                if (setDetail?.show_time_setting == true){
-                                    total_time_taken = total_sec.toInt()
+                        CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.no_internet_working),getString(R.string.no_internet)
+                            ,getString(R.string.continue_working_internet),getString(R.string.no_working_internet), icon = R.drawable.ic_alert_sad_emoji,isCancelable = false,
+                            clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
+                                override fun onConfirmationYesClick(bundle: Bundle?) {
+                                    if (!requireContext().isNetworkAvailable) {
+                                        showToast(R.string.still_no_internet)
+                                    }
+                                    moveToNext()
                                 }
-                                is_set_completed = false
-                                abacus_id = list_abacus[current_pos].id
-                                set_id = it
-                                examViewModel.submitAllExam(submitExamRequest)
+                                override fun onConfirmationNoClick(bundle: Bundle?){
+                                    mNavController.navigateUp()
+                                }
+                            })
+                    }
+                }else{
+                    resetData()
+                    current_pos++
+                    var retryCounts = 1
+                    if (setProgress == null){
+                        retryCounts = 1
+                        setProgress = SetProgress(it,list_abacus[current_pos].id,false)
+                    }else if(setProgress?.is_set_completed == true){
+                        retryCounts =  (setProgress?.retry_count?:0)+1
+                        setProgress = SetProgress(it,list_abacus[current_pos].id,false)
+                    }else{
+                        retryCounts = setProgress?.retry_count?:1
+                        setProgress?.latest_abacus_id = list_abacus[current_pos].id
+                    }
+                    setProgress?.retry_count = retryCounts
+                    if (current_pos > 0 && (current_pos % 5 == 0)){
+                        retry_count = retryCounts
+                        if (!isShowSubmitAnswer){
+                            if (setDetail?.show_time_setting == true){
+                                total_time_taken = total_sec.toInt()
                             }
+                            is_set_completed = false
+                            abacus_id = list_abacus[current_pos].id
+                            set_id = it
+                            examViewModel.submitAllExam(submitExamRequest)
                         }
-                        if (setDetail?.show_time_setting == true){
-                            setProgress?.total_time_taken = total_sec.toInt()
-                        }
-                        setProgress?.let{
+                    }
+                    if (setDetail?.show_time_setting == true){
+                        setProgress?.total_time_taken = total_sec.toInt()
+                    }
+                    setProgress?.let{
+                        lifecycleScope.launch {
                             appViewModel.insertSetProgress(listOf(it))
                         }
-                        startAbacusNow()
                     }
+                    startAbacusNow()
                 }
             }
         }
@@ -1097,16 +1098,10 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
             })
     }
 
-    override fun onAbacusSubmitValue(userAnswer : String) {
-        lifecycleScope.launch {
-            appViewModel.updateUserAnswer(currentAbacus.id,userAnswer)
-            isMoveNext = true
-            resetOrMoveNext()
-        }
-    }
+
 
     override fun onAbacusValueSubmit(sum: Long) {
-        if (setDetail?.answer_setting != AppConstants.apiParams.answerFormalAnswer) {
+        if (!isShowSubmitAnswer) {
             when (abacus_type) {
                 0 -> {
                     val sumVal: Long
@@ -1151,31 +1146,43 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     }
 
     private fun makeAutoRefresh() {
-        if (isStepByStep && isAutoRefresh){
-            abacusFragment?.resetButtonEnable(false)
-            lifecycleScope.launch {
-                delay(1500)
-                abacusFragment?.resetButtonEnable(true)
-                onAbacusValueDotReset()
-            }
-        }else{
-            abacusFragment?.resetButtonEnable(true)
-            abacusFragment?.showResetToContinue(true)
-        }
+//        if (isStepByStep && isAutoRefresh){
+//            abacusFragment?.nextButtonEnable(false)
+//            lifecycleScope.launch {
+//                delay(1500)
+//                abacusFragment?.nextButtonEnable(true)
+//                onAbacusValueDotReset()
+//            }
+//        }else{
+//            abacusFragment?.nextButtonEnable(true)
+//        }
+
+        abacusFragment?.nextButtonEnable()
     }
 
     override fun onAbacusValueDotReset() {
         previousSum = ""
-        if (abacusType == AppConstants.extras_Comman.AbacusTypeNumber) {
-            if (binding.tvAnsNumber.text.toString() == abacus_number.toString()) {
-                isMoveNext = true
-            }
-        } else {
-            if (!TextUtils.isEmpty(binding.tvAns.text.toString())) {
-                isMoveNext = true
-            }
-        }
+//        if (abacusType == AppConstants.extras_Comman.AbacusTypeNumber) {
+//            if (binding.tvAnsNumber.text.toString() == abacus_number.toString()) {
+//                isMoveNext = true
+//            }
+//        } else {
+//            if (!TextUtils.isEmpty(binding.tvAns.text.toString())) {
+//                isMoveNext = true
+//            }
+//        }
         resetOrMoveNext()
+    }
+
+    override fun onAbacusSubmitValue(userAnswer : String) {
+        previousSum = ""
+        lifecycleScope.launch {
+            if (isShowSubmitAnswer){
+                appViewModel.updateUserAnswer(currentAbacus.id,userAnswer)
+            }
+            isMoveNext = true
+            resetOrMoveNext()
+        }
     }
 
     private fun resetOrMoveNext() {
@@ -1183,6 +1190,11 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
 
         if (isHintSound && isStepByStep) {
             if (!isMoveNext){
+                if (abacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction){
+                    binding.txtHint.setText("")
+                    binding.cardHint.hide()
+                }
+
                 lifecycleScope.launch {
                     delay(500)
                     when (abacusType) {
@@ -1198,7 +1210,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                             val text = String.format(getString(R.string.speak_multiply_by),q1,q2)
                             speakOut(text)
                         }
-                        AppConstants.extras_Comman.AbacusTypeAdditionSubtraction -> {
+                        AppConstants.extras_Comman.AbacusTypeAdditionSubtraction -> {    
                             val q1 = (list_abacus_main[0][Constants.Que]?:"0")
                             speakOut(requireContext().convert(q1.toInt()))
                         }
@@ -1207,6 +1219,10 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                         }
                     }
                 }
+            }else{
+                currentSumFormulaList.clear()
+                binding.cardHint.hide()
+                binding.cardQuestions.hide()
             }
         }
         reset()
@@ -1280,15 +1296,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         binding.cardHint.layoutParams = paramsHint
     }
     private fun setLeftAbacusRules() {
-//        val paramsTitle = binding.txtTitle.layoutParams as RelativeLayout.LayoutParams
-//        paramsTitle.addRule(RelativeLayout.CENTER_HORIZONTAL)
-//        paramsTitle.addRule(RelativeLayout.END_OF, R.id.relAbacus)
-//        binding.txtTitle.layoutParams = paramsTitle
-//        lifecycleScope.launch {
-//            delay(400)
-//            binding.txtTitle.show()
-//        }
-
         val paramsTitleHand = binding.txtTitleHand.layoutParams as RelativeLayout.LayoutParams
         paramsTitleHand.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
         paramsTitleHand.addRule(RelativeLayout.END_OF, R.id.relAbacus)

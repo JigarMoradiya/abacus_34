@@ -215,4 +215,7 @@
     <dimen name="_22dp">22dp</dimen>
 
     <dimen name="exercise_width">280dp</dimen>
+
+    <dimen name="answer_window_height">64dp</dimen>
+    <dimen name="answer_window_abacus_gap">46dp</dimen>
 </resources>

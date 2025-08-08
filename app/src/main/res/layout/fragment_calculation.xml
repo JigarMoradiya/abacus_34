@@ -45,35 +45,32 @@
             </com.google.android.material.card.MaterialCardView>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linearTitle"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtTitle"
+            style="@style/mainTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            tools:text="SET 1"
             android:layout_marginHorizontal="@dimen/title_margin"
-            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/cardBack"
+            app:layout_constraintStart_toEndOf="@+id/cardBack"
+            app:layout_constraintTop_toTopOf="@+id/cardBack"/>
+
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtTimer"
+            android:layout_marginEnd="@dimen/activity_padding24"
+            style="@style/mainTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:visibility="gone"
+            tools:text="00:00"
+            tools:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/cardBack"
             app:layout_constraintEnd_toStartOf="@+id/linearMenu"
-            app:layout_constraintStart_toEndOf="@+id/cardBack"
-            app:layout_constraintTop_toTopOf="@+id/cardBack">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtTitle"
-                style="@style/mainTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="SET 1" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtTimer"
-                style="@style/mainTitleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_padding4"
-                android:textColor="@color/black"
-                android:visibility="gone"
-                tools:text="SET 1"
-                tools:visibility="visible" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            app:layout_constraintTop_toTopOf="@+id/cardBack"/>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/linearMenu"
@@ -95,6 +92,7 @@
                 app:cardCornerRadius="@dimen/menu_icons_corner"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardMaxElevation="@dimen/card_elevation"
+                android:visibility="gone"
                 app:strokeWidth="0dp">
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -133,6 +131,7 @@
                 app:cardBackgroundColor="@color/light_youtube"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
                 app:cardElevation="@dimen/card_elevation"
+                android:visibility="gone"
                 app:cardMaxElevation="@dimen/card_elevation"
                 app:strokeWidth="0dp">
 
@@ -152,6 +151,7 @@
                 app:cardBackgroundColor="@color/light_subscribe"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
                 app:cardElevation="@dimen/card_elevation"
+                android:visibility="gone"
                 app:cardMaxElevation="@dimen/card_elevation"
                 app:strokeWidth="0dp">
 
@@ -271,7 +271,7 @@
                             android:paddingVertical="@dimen/activity_padding8"
                             tools:text="Big Friend (+10)"
                             android:textColor="@color/colorEditTextBlack_33"
-                            android:textSize="@dimen/textSizeRegular" />
+                            android:textSize="@dimen/textSizeMedium" />
 
                 </com.google.android.material.card.MaterialCardView>
 

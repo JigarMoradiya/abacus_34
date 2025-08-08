@@ -462,6 +462,9 @@
     <color name="amber_A400">#FFC400</color>
     <color name="amber_A700">#FFAB00</color>
 
+    <color name="temp_border__">#9199E2</color>
+    <color name="temp_bg_">#0D1764</color>
+
     <!--orange-->
     <color name="orange_50">#FFF3E0</color>
     <color name="orange_100">#FFE0B2</color>

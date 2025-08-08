@@ -1,9 +1,7 @@
 package com.jigar.me.ui.view.dashboard.fragments.abacus.half
 
+import android.content.res.ColorStateList
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,11 +25,12 @@ import com.jigar.me.utils.extensions.dp
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.onClick
-import com.jigar.me.utils.extensions.setAbacusResetShakeAnimation
 import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import androidx.core.graphics.toColorInt
+import com.jigar.me.utils.extensions.setIsEnabled
 
 @AndroidEntryPoint
 class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
@@ -48,9 +47,7 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
 
     // abacus move
     private var isResetRunning: Boolean = false
-    private var isResetRemain: Boolean = false
     private var currentSumVal = 0L
-    private var resetX: Float = 0f
     var fromValue = 0
     var questionLength = 0
     var finalAnsLength: Int = 0
@@ -93,15 +90,19 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
         imgDot10.show()
         imgDot13.show()
 
-        if (isShowSubmitAnswer){
-            ivSubmitAnswer.show()
-        }else{
-            ivSubmitAnswer.hide()
-        }
+        setNextBtn()
 
         themeContent.abacusFrame135.let { rlAbacusMain.setBackgroundResource(it) }
-        themeContent.dividerColor1.let { ivDivider.setBackgroundColor(ContextCompat.getColor(requireContext(),it)) }
+        themeContent.dividerColor1.let {
+            ivDivider.setBackgroundColor(ContextCompat.getColor(requireContext(),it))
+            cardAnswerWindowBg.setStrokeColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(),it)))
+        }
+        cardAnswerWindow.setCardBackgroundColor(themeContent.answerWindowBG.toColorInt())
+        cardAnswerWindow.strokeColor = themeContent.answerWindowLine.toColorInt()
+
         themeContent.resetBtnColor8.let {
+            cardAnswerWindowBg.setCardBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(),it)))
+
             imgDot1.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             imgDot4.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             imgDot7.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)
@@ -110,7 +111,6 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
             imgDot10.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             imgDot13.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
 
-            ivReset.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             ivRight.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             ivLeft.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
         }
@@ -118,10 +118,23 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
         setBead()
     }
 
+    private fun setNextBtn() = with(binding){
+        if (isShowSubmitAnswer){
+            txtNext.setIsEnabled(true,1f)
+        }else{
+            txtNext.setIsEnabled(false,0.5f)
+        }
+    }
+
     private fun initListener() = with(binding){
-        ivReset.onClick { onResetClick() }
-        ivSubmitAnswer.onClick { onSubmitAnswerClick() }
-        resettoContinue.onClick { onResetClick() }
+        txtReset.onClick {
+            setNextBtn()
+            onResetClick()
+        }
+        txtNext.onClick {
+            setNextBtn()
+            onSubmitAnswerClick()
+        }
     }
 
     fun setOnAbacusValueChangeListener(onAbacusValueChangeListener: OnAbacusValueChangeListener?) {
@@ -195,10 +208,7 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
                     if (abacus_type == 0 || abacus_type == 1 || abacus_type == 2) {
                         setCurrentValue(currentSumVal.toString())
                         try {
-                            onAbacusValueChangeListener?.onAbacusValueChange(
-                                abacusView,
-                                currentSumVal
-                            )
+                            onAbacusValueChangeListener?.onAbacusValueChange(abacusView, currentSumVal)
                         } catch (e: Exception) {
                             e.printStackTrace()
                         }
@@ -284,38 +294,17 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     fun resetAbacus() {
         binding.abacusTop.reset()
         binding.abacusBottom.reset()
-        showResetToContinue(false)
         hideDirection()
     }
 
-    fun resetButtonEnable(isEnable: Boolean) {
-        binding.ivReset.isEnabled = isEnable
-        binding.ivReset.isClickable = isEnable
+    fun nextButtonEnable() {
+        binding.txtNext.setIsEnabled(true,1f)
+        binding.txtReset.setIsEnabled(false,0.5f)
     }
-    fun showResetToContinue(type: Boolean) {
-        if (type) {
-            isResetRemain = true
-            binding.resettoContinue.show()
-            startTimerForToolTips()
-        } else {
-            isResetRemain = false
-            binding.resettoContinue.hide()
-        }
-    }
-
-    private fun startTimerForToolTips() {
-        Handler(Looper.getMainLooper()).postDelayed({
-            if (isAdded && isResumed && isResetRemain){
-                binding.ivReset.setAbacusResetShakeAnimation()
-            }
-        },1500)
-    }
-
     private fun onResetClick() {
         if (!isResetRunning) {
             fromValue = 0
             binding.tvCurrentVal.text = "0"
-            binding.ivReset.setAbacusResetShakeAnimation(true)
             onAbacusValueChangeListener?.onAbacusValueDotReset()
         }
     }
@@ -324,7 +313,6 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
         val userAnswer = binding.tvCurrentVal.text.toString()
         fromValue = 0
         binding.tvCurrentVal.text = "0"
-        binding.ivSubmitAnswer.setAbacusResetShakeAnimation(true)
         onAbacusValueChangeListener?.onAbacusSubmitValue(userAnswer)
     }
 
@@ -349,10 +337,6 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     fun setQuestionAndDividerLength(questionLength: Int, finalAnsLength: Int) {
         this.questionLength = questionLength
         this.finalAnsLength = finalAnsLength
-//        abacusTotalColumns = questionLength + finalAnsLength - 1
-//        final_column = 7
-//        abacusTotalColumns = if (abacusTotalColumns == 1) 2 else abacusTotalColumns
-
         setAbacusRowCountAndInvalidate(abacusTotalColumns)
     }
 
@@ -368,6 +352,7 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
         when {
             isDisplayAbacusNumber -> {
                 binding.tvCurrentVal.show()
+                binding.tvCurrentValHide.hide()
                 var newValue = abacusValue
                 if (abacusValue.length != abacusTotalColumns){
                     for (i in 1..(abacusTotalColumns - abacusValue.length)) {
@@ -377,8 +362,6 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
                 if (abacus_type == 2){
                     val remainQuestion = newValue.replace(".","").takeLast(questionLength).trimStart('0')
                     val answers = newValue.replace(".","").take(7).trimStart('0')
-//                    val answer = newValue.take(7)
-//                    val reminders = newValue.takeLast(7).take(questionLength)
                     fromValue = if (answers.isEmpty()){0}else{answers.toInt()}
                     binding.tvCurrentVal.text = (if (answers.isEmpty()){"0"}else{answers})+" < "+(if (remainQuestion.isNullOrEmpty()){"0"}else{remainQuestion})
                 }else{
@@ -392,15 +375,22 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
                         fromValue = value1.toInt()
                         if (value2.toLong() > 0) {
                             binding.tvCurrentVal.text = "$value1.$value2"
+                            binding.txtReset.setIsEnabled(true,1f)
                         } else {
                             binding.tvCurrentVal.text = "$value1"
+                            if(value1 == 0L){
+                                binding.txtReset.setIsEnabled(false,0.5F)
+                            }else{
+                                binding.txtReset.setIsEnabled(true,1f)
+                            }
                         }
                     }
                 }
 
             }
             else -> {
-                binding.tvCurrentVal.visibility = View.INVISIBLE
+                binding.tvCurrentVal.hide()
+                binding.tvCurrentValHide.show()
             }
         }
     }

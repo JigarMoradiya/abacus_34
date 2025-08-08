@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.dashboard.fragments.abacus
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,7 +9,9 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.RelativeLayout
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.toColorInt
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import com.jigar.me.R
@@ -45,6 +48,7 @@ import me.samlss.lighter.parameter.Direction
 import java.util.Random
 import java.util.UnknownFormatConversionException
 import androidx.navigation.findNavController
+import com.jigar.me.utils.extensions.setIsEnabled
 
 
 @AndroidEntryPoint
@@ -122,7 +126,6 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
     }
     private fun resetClick() {
         if (!isResetRunning) {
-            abacusBinding?.ivReset?.setAbacusResetShakeAnimation(true)
             onAbacusValueDotReset()
         }
     }
@@ -220,16 +223,22 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         abacusBinding?.imgDot13?.show()
         abacusBinding?.linearNumber?.show()
 
+        if (prefManager.getCustomParam(AppConstants.Settings.SW_FreeMode, "Y") == "Y"){
+            abacusBinding?.conAnswerWindow?.hide()
+            abacusBinding?.tvCurrentValFrame?.show()
+        }else{
+            abacusBinding?.conAnswerWindow?.show()
+            abacusBinding?.tvCurrentValFrame?.hide()
+        }
+
         val abacusBeadType = if (prefManager.getCustomParam(AppConstants.Settings.SW_FreeMode, "Y") == "Y"){
             binding.linearAbacusFreeMode.addView(abacusBinding?.root)
             binding.linearAbacusFreeMode.show()
             binding.linearAbacus.hide()
-            abacusBinding?.imgKidsTop?.invisible()
             abacusBinding?.viewNumbers?.show()
             abacusBinding?.viewNumbersBottom?.show()
             AbacusBeadType.FreeMode
         }else{
-            abacusBinding?.imgKidsTop?.show()
             binding.linearAbacus.addView(abacusBinding?.root)
             binding.linearAbacus.show()
             binding.linearAbacusFreeMode.hide()
@@ -238,22 +247,28 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         }
         themeContent  = DataProvider.findAbacusThemeType(requireContext(),theme,abacusBeadType)
 
-        abacusBinding?.ivReset?.onClick {
+        abacusBinding?.txtReset?.onClick {
             abacusBinding?.viewDirection?.hide()
             resetClick()
 
             if (prefManager.getCustomParam(AppConstants.Settings.SW_FreeMode, "Y") != "Y") {
                 abacusBinding?.tvCurrentVal?.text = "0"
+                abacusBinding?.tvCurrentValFrame?.text = "0"
                 goToNextValue()
             }
         }
 
         abacusBinding?.rlAbacusMain?.setBackgroundResource(themeContent.abacusFrame135)
-        abacusBinding?.ivDivider?.setBackgroundColor(ContextCompat.getColor(requireContext(),themeContent.dividerColor1))
-        themeContent.txtColor?.let {
-            abacusBinding?.tvCurrentVal?.setTextColor(ContextCompat.getColor(requireContext(),it))
+        themeContent.dividerColor1.let {
+            abacusBinding?.ivDivider?.setBackgroundColor(ContextCompat.getColor(requireContext(),it))
         }
+        abacusBinding?.cardAnswerWindow?.setCardBackgroundColor(themeContent.answerWindowBG.toColorInt())
+        abacusBinding?.cardAnswerWindow?.strokeColor = themeContent.answerWindowLine.toColorInt()
+        abacusBinding?.cardAnswerWindowBg?.strokeColor = themeContent.answerWindowBtnBgLine.toColorInt()
+//        abacusBinding?.txtNext?.hide()
+
         themeContent.resetBtnColor8.let {
+            abacusBinding?.cardAnswerWindowBg?.setCardBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(),it)))
             abacusBinding?.imgDot1?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.imgDot4?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.imgDot7?.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)
@@ -262,7 +277,6 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             abacusBinding?.imgDot10?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.imgDot13?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
 
-            abacusBinding?.ivReset?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.ivRight?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.ivLeft?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
         }
@@ -447,19 +461,38 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
                 val value1 = splitResult[0].toLong()
                 val value2 = splitResult[1]
                 val sum = if (value2.toLong() > 0){
+                    abacusBinding?.txtReset?.setIsEnabled(true,1f)
                     abacusBinding?.tvCurrentVal?.text = "$value1.$value2"
+                    abacusBinding?.tvCurrentValFrame?.text = "$value1.$value2"
                     "$value1.$value2"
                 }else{
+                    if(value1 == 0L){
+                        abacusBinding?.txtReset?.setIsEnabled(false,0.5F)
+                    }else{
+                        abacusBinding?.txtReset?.setIsEnabled(true,1f)
+                    }
                     abacusBinding?.tvCurrentVal?.text = "$value1"
+                    abacusBinding?.tvCurrentValFrame?.text = "$value1"
                     "$value1"
+                }
+                if (getCustomParamBoolean(AppConstants.Settings.Setting_display_abacus_number, true)){
+                    if (prefManager.getCustomParam(AppConstants.Settings.SW_FreeMode, "Y") == "Y"){
+                        abacusBinding?.tvCurrentValFrame?.show()
+                    }else{
+                        abacusBinding?.tvCurrentVal?.show()
+                        abacusBinding?.tvCurrentValHide?.hide()
+                    }
+
+                }else{
+                    abacusBinding?.tvCurrentValFrame?.hide()
+                    abacusBinding?.tvCurrentVal?.hide()
+                    abacusBinding?.tvCurrentValHide?.show()
                 }
                 if (getCustomParam(AppConstants.Settings.SW_FreeMode,"Y") != "Y") {
                     if (sum == (valuesFinal.toInt()).toString()) {
                         isFirstTime = false
                         generateNewNumber()
                     } else {
-                        Log.e("jigarFull","value1 = "+value1)
-                        Log.e("jigarFull","valuesFinal = "+valuesFinal)
                         clearDirection()
                         addDirection(value1.toInt(),valuesFinal.toInt())
                         if (value2.toInt() > 0){
@@ -844,27 +877,34 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
                 IntroProvider.abacusRodIntro(lighter, it.relHighLighterTop , Direction.LEFT,R.layout.layout_tip_abacus_rod1_top_sub,object : IntroProvider.IntroCloseClickListener {
                     override fun onIntroCloseClick() {
                         abacusBinding?.relHighLighterTop?.hide()
-                        resetAbacusLighter()
+//                        resetAbacusLighter()
+
+                        AbacusUtils.setNumber("0",it.abacusTop,it.abacusBottom,totalLength = abacusTotalColumns)
+                        prefManager.setCustomParamBoolean(AppConstants.Settings.isFreeModeTourWatch, true)
+                        isTourPageRunning = false
+
+                        setFreeMode()
                     }
                 })
             }
         }
     }
 
-    private fun resetAbacusLighter() {
-        lighter = Lighter.with(binding.root as ViewGroup)
-        abacusBinding?.let {
-            IntroProvider.abacusRodIntro(lighter, it.ivReset,Direction.LEFT,R.layout.layout_tip_abacus_reset,object : IntroProvider.IntroCloseClickListener {
-                override fun onIntroCloseClick() {
-                    AbacusUtils.setNumber("0",it.abacusTop,it.abacusBottom,totalLength = abacusTotalColumns)
-                    prefManager.setCustomParamBoolean(AppConstants.Settings.isFreeModeTourWatch, true)
-                    isTourPageRunning = false
-
-                    setFreeMode()
-                }
-            })
-        }
-    }
+//    private fun resetAbacusLighter() {
+//        lighter = Lighter.with(binding.root as ViewGroup)
+//        abacusBinding?.let {
+//            // TODO jigar
+//            IntroProvider.abacusRodIntro(lighter, it.txtReset,Direction.LEFT,R.layout.layout_tip_abacus_reset,object : IntroProvider.IntroCloseClickListener {
+//                override fun onIntroCloseClick() {
+//                    AbacusUtils.setNumber("0",it.abacusTop,it.abacusBottom,totalLength = abacusTotalColumns)
+//                    prefManager.setCustomParamBoolean(AppConstants.Settings.isFreeModeTourWatch, true)
+//                    isTourPageRunning = false
+//
+//                    setFreeMode()
+//                }
+//            })
+//        }
+//    }
 
     // for draw direction
     private fun clearDirection() {
@@ -930,10 +970,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
                     }else{
                         abacusBinding?.viewDirection?.hide()
                     }
-                }else{
-
                 }
-            }else{
             }
         }
     }

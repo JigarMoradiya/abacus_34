@@ -20,6 +20,7 @@ import com.jigar.me.R
 import com.jigar.me.utils.Constants
 import java.util.regex.Matcher
 import java.util.regex.Pattern
+import androidx.core.view.isVisible
 
 
 val View.res: Resources get() = resources
@@ -28,7 +29,12 @@ val View.ctx: Context get() = context
 fun View.show() { visibility = View.VISIBLE }
 fun View.hide() { visibility = View.GONE }
 fun View.invisible() { visibility = View.INVISIBLE }
-fun View.toggleVis() { if (visibility==View.VISIBLE){ visibility = View.GONE } else{ visibility = View.VISIBLE } }
+fun View.toggleVis() { if (isVisible){ visibility = View.GONE } else{ visibility = View.VISIBLE } }
+
+fun View.setIsEnabled(enable: Boolean, alpha: Float = 1f) {
+    isEnabled = enable
+    this.alpha = alpha
+}
 
 inline fun <T : View> T.onClick(crossinline func: T.() -> Unit) {
     setOnClickListener { func() }

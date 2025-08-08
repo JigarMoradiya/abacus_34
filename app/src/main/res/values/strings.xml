@@ -823,6 +823,8 @@
     <string name="plan_assign_from_admin">Plan assign from Admin.</string>
     <string name="your_answer">Your Answer :</string>
     <string name="time">Time :</string>
+    <string name="current_input">Current Input</string>
+    <string name="reset">Reset</string>
 
 
 </resources>

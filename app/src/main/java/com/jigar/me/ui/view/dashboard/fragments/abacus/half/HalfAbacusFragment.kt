@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.*
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
@@ -13,7 +12,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import com.google.firebase.database.FirebaseDatabase
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -1158,17 +1156,19 @@ class HalfAbacusFragment : BaseFragment(), OnAbacusValueChangeListener, AbacusAd
     }
 
     private fun makeAutoRefresh() {
-        if (isStepByStep && isAutoRefresh){
-            abacusFragment?.resetButtonEnable(false)
-            lifecycleScope.launch {
-                delay(1500)
-                abacusFragment?.resetButtonEnable(true)
-                onAbacusValueDotReset()
-            }
-        }else{
-            abacusFragment?.resetButtonEnable(true)
-            abacusFragment?.showResetToContinue(true)
-        }
+//        if (isStepByStep && isAutoRefresh){
+//            abacusFragment?.nextButtonEnable(false)
+//            lifecycleScope.launch {
+//                delay(1500)
+//                abacusFragment?.nextButtonEnable(true)
+//                onAbacusValueDotReset()
+//            }
+//        }else{
+//            abacusFragment?.nextButtonEnable(true)
+//            abacusFragment?.showResetToContinue(true)
+//        }
+
+        abacusFragment?.nextButtonEnable()
     }
 
 
