@@ -80,7 +80,7 @@ class PurchaseFragment : BaseFragment(), PurchaseAdapter.OnItemClickListener {
 
         lifecycleScope.launch{
             val idList: ArrayList<String> = arrayListOf()
-            if (loginData?.email.equals("abacus@yopmail.com")){
+            if (loginData?.email.equals("abacus_@yopmail.com")){
                 idList.add(PRODUCT_ID_All_lifetime)
             }else{
                 if (prefManager.getCustomParam(AppConstants.RemoteConfig.displayPlanList,"").isNotEmpty()){

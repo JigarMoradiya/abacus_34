@@ -163,8 +163,8 @@ class MainDashboardActivity : BaseActivity() {
                     lifecycleScope.launch {
                         delay(5000)
                         val purchasedSKU = appViewModel.getInAppSKUPurchased()
-                        val isNotPurchase = CommonUtils.checkPurchaseForAllLevel(purchasedSKU)
-                        if (isNotPurchase){
+                        val isPurchased = CommonUtils.checkPurchaseForAllLevel(prefManager,purchasedSKU)
+                        if (!isPurchased){
                             OfferDialog.showPopup(this@MainDashboardActivity,discountData,object : OfferDialog.DialogOfferInterface {
                                 override fun onSubmitYesClick() {
                                     navController.navigate(R.id.purchaseFragment)

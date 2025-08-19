@@ -19,6 +19,7 @@ import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.data.pref.AppPreferencesHelper
+import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_1Year
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_old
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month3
@@ -194,9 +195,10 @@ object CommonUtils {
             if (data.name.contains("free",true)){
                 isPurchased = true
             }else{
-                purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime || it.sku == PRODUCT_ID_All_lifetime_old
+                purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
+                        || it.sku == PRODUCT_ID_All_lifetime_old
                         || it.sku == PRODUCT_ID_Subscription_Month3
-                        || it.sku == PRODUCT_ID_Subscription_Year1
+                        || it.sku.contains(PRODUCT_ID_1Year)
                         || (it.sku.contains(data.name)) }.also {
                     isPurchased = it != null
                 }
@@ -206,7 +208,7 @@ object CommonUtils {
                             prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
                             object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
                         )
-                        planListData.find { it.google_order_id == null && (it.google_plan_id?.contains(data.name) == true) || (it.google_plan_id?.equals(PRODUCT_ID_Subscription_Year1) == true) }.also {
+                        planListData.find { it.google_order_id == null && (it.google_plan_id?.contains(data.name) == true) || (it.google_plan_id?.contains(PRODUCT_ID_1Year) == true) }.also {
                             isPurchased = it != null
                         }
                     }
@@ -225,7 +227,7 @@ object CommonUtils {
             purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
                     || it.sku == PRODUCT_ID_All_lifetime_old
                     || it.sku == PRODUCT_ID_Subscription_Month3
-                    || it.sku == PRODUCT_ID_Subscription_Year1
+                    || it.sku.contains(PRODUCT_ID_1Year)
                     || (it.sku.contains("level3")) || (it.sku.contains("level4"))
                     || (it.sku.contains("level5")) || (it.sku.contains("level6"))
                     || (it.sku.contains("level7")) || (it.sku.contains("level8"))}.also {
@@ -237,14 +239,14 @@ object CommonUtils {
                         prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
                         object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
                     )
-                    planListData.find { it.google_order_id == null && ((it.google_plan_id?.contains("level3") == true) ||
+                    planListData.find { it.google_order_id == null && (
                             (it.google_plan_id?.contains("level3") == true) ||
                             (it.google_plan_id?.contains("level4") == true) ||
                             (it.google_plan_id?.contains("level5") == true) ||
                             (it.google_plan_id?.contains("level6") == true) ||
                             (it.google_plan_id?.contains("level7") == true) ||
                             (it.google_plan_id?.contains("level8") == true) ||
-                            (it.google_plan_id?.equals(PRODUCT_ID_Subscription_Year1) == true)) }.also {
+                            (it.google_plan_id?.contains(PRODUCT_ID_1Year) == true)) }.also {
                         isPurchased = it != null
                     }
                 }
@@ -253,13 +255,33 @@ object CommonUtils {
 
         return isPurchased
     }
-    fun checkPurchaseForAllLevel(purchasedSKU: List<InAppSkuDetails>): Boolean {
+    fun checkPurchaseForAllLevel(prefManager: AppPreferencesHelper,purchasedSKU: List<InAppSkuDetails>): Boolean {
+        var isPurchased = false
+//        purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
+//                || it.sku == PRODUCT_ID_All_lifetime_old
+//                || it.sku == PRODUCT_ID_Subscription_Month3
+//                || it.sku == PRODUCT_ID_Subscription_Year1
+//        }.also {
+//            return it == null
+//        }
+
         purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
                 || it.sku == PRODUCT_ID_All_lifetime_old
                 || it.sku == PRODUCT_ID_Subscription_Month3
-                || it.sku == PRODUCT_ID_Subscription_Year1
-        }.also {
-            return it == null
+                || it.sku.contains(PRODUCT_ID_1Year) }.also {
+            isPurchased = it != null
         }
+        if (!isPurchased){
+            if (prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"").isNotEmpty()) {
+                val planListData : List<PlanAssignFromAdminData> = Gson().fromJson(
+                    prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
+                    object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
+                )
+                planListData.find { it.google_order_id == null && (it.google_plan_id?.contains(PRODUCT_ID_1Year) == true) }.also {
+                    isPurchased = it != null
+                }
+            }
+        }
+        return isPurchased
     }
 }

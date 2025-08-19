@@ -61,7 +61,7 @@ class PurchaseAdapter(
             txtOfferDes.hide()
 
             var isPlanAssignFromAdmin = false
-            planListAssignFromAdmin.find { it.google_order_id == null && (it.google_plan_id?.contains(data.sku) == true) }.also {
+            planListAssignFromAdmin.find { it.google_order_id == null && data.sku.contains(it.google_plan_id?:"") }.also {
                 isPlanAssignFromAdmin = it != null
                 if (isPlanAssignFromAdmin){
                     if (it?.purchased_from.equals(Constants.PLAN_ASSIGN_FROM_ADMIN_FOR_REVIEW,true)){
