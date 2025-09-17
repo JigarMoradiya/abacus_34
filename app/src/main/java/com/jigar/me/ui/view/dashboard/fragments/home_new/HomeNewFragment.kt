@@ -585,7 +585,8 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 goToSetting()
             }
             AppConstants.HomeClicks.Menu_Purchase_Store -> {
-                goToInAppPurchase()
+//                goToInAppPurchase()
+                mNavController?.navigate(R.id.toPurchasePreviewFragment)
             }
             AppConstants.HomeClicks.Menu_Video_Tutorial -> {
                 if (prefManager.getCustomParam(AppConstants.RemoteConfig.videoList,"").isEmpty()){

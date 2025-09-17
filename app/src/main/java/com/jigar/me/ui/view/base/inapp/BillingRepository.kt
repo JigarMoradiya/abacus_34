@@ -349,7 +349,7 @@ class BillingRepository @Inject constructor(
         const val PRODUCT_ID_Subscription_Month3 = "com.abacus.puzzle.3month"
 
         const val PRODUCT_ID_Subscription_Year1 = "com.abacus.puzzle.1year"
-        const val PRODUCT_ID_1Year = "1year1" // only for check condition
+        const val PRODUCT_ID_1Year = "1year" // only for check condition
         const val PRODUCT_ID_Subscription_Month3_Level1 = "com.abacus.puzzle.3month.level1"
         const val PRODUCT_ID_Subscription_Month3_Level2 = "com.abacus.puzzle.3month.level2"
         const val PRODUCT_ID_Subscription_Month3_Level3 = "com.abacus.puzzle.3month.level3"

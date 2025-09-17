@@ -59,8 +59,8 @@ android {
 
             dimension = "variant1"
             applicationId = "com.abacus.puzzle"
-            versionCode = 141
-            versionName = "14.0.1"
+            versionCode = 142
+            versionName = "14.0.2"
         }
     }
     externalNativeBuild {
@@ -142,8 +142,8 @@ dependencies {
     kapt("androidx.room:room-compiler:2.7.2")
     implementation("android.arch.persistence.room:rxjava2:1.1.1")
     implementation("net.zetetic:android-database-sqlcipher:4.5.4@aar")
-    implementation("androidx.sqlite:sqlite-ktx:2.5.2")
-    implementation("androidx.sqlite:sqlite-framework:2.5.2")
+    implementation("androidx.sqlite:sqlite-ktx:2.6.0")
+    implementation("androidx.sqlite:sqlite-framework:2.6.0")
 
     // In App Purchase
     implementation("com.android.billingclient:billing-ktx:7.1.1")

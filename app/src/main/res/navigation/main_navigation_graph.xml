@@ -66,6 +66,9 @@
             android:id="@+id/toPurchaseFragment"
             app:destination="@+id/purchaseFragment" />
         <action
+            android:id="@+id/toPurchasePreviewFragment"
+            app:destination="@+id/purchasePreviewFragment" />
+        <action
             android:id="@+id/action_homeFragment_to_aboutFragment"
             app:destination="@+id/aboutFragment" />
         <action
@@ -306,6 +309,9 @@
     <fragment
         android:id="@+id/purchaseFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.purchase.PurchaseFragment"/>
+    <fragment
+        android:id="@+id/purchasePreviewFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.purchase.PurchasePreviewFragment"/>
 
     <!--  Exam fragments  -->
     <fragment
