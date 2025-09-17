@@ -166,13 +166,13 @@ dependencies {
     implementation("com.github.MohammedAlaaMorsi:RangeSeekBar:1.0.6")
 
     // Country code picker
-    implementation("com.hbb20:ccp:2.7.0")
+    implementation("com.hbb20:ccp:2.7.3")
 
     // otp view
-    implementation("com.github.mukeshsolanki.android-otpview-pinview:otpview:3.1.0")
+    implementation("com.github.mukeshsolanki.android-otpview-pinview:otpview:3.2.0")
 
     // rating bar
-    implementation("com.github.ome450901:SimpleRatingBar:1.5.0")
+    implementation("com.github.ome450901:SimpleRatingBar:1.5.1")
 
     // event bus broadcaster
     implementation("org.greenrobot:eventbus:3.3.1")
