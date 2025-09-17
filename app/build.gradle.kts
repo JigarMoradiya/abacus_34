@@ -137,9 +137,9 @@ dependencies {
     kapt("androidx.lifecycle:lifecycle-compiler:2.9.1")
 
     // database
-    implementation("androidx.room:room-ktx:2.7.2")
-    implementation("androidx.room:room-runtime:2.7.2")
-    kapt("androidx.room:room-compiler:2.7.2")
+    implementation("androidx.room:room-ktx:2.8.0")
+    implementation("androidx.room:room-runtime:2.8.0")
+    kapt("androidx.room:room-compiler:2.8.0")
     implementation("android.arch.persistence.room:rxjava2:1.1.1")
     implementation("net.zetetic:android-database-sqlcipher:4.5.4@aar")
     implementation("androidx.sqlite:sqlite-ktx:2.6.0")
