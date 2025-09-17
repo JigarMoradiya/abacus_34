@@ -14,13 +14,13 @@ plugins {
 
 android {
     namespace = "com.jigar.me"
-    compileSdk = 35
+    compileSdk = 36
     ndkVersion = "25.1.8937393"
 
     defaultConfig {
         applicationId = "com.jigar.me"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -41,7 +41,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
-//        freeCompilerArgs += listOf("-Xuse-k2")
     }
     buildFeatures {
         viewBinding = true
@@ -72,8 +71,6 @@ android {
 }
 
 dependencies {
-
-//    implementation("androidx.core:core-ktx:1.16.0")
     implementation("androidx.appcompat:appcompat:1.7.1")
     implementation("com.google.android.material:material:1.13.0")
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
