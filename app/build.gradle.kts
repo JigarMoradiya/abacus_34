@@ -101,7 +101,7 @@ dependencies {
     // firebase
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-crashlytics-ndk")
-    implementation(platform("com.google.firebase:firebase-bom:33.16.0"))
+    implementation(platform("com.google.firebase:firebase-bom:34.2.0"))
     implementation("com.google.firebase:firebase-database-ktx:21.0.0")
     implementation("com.google.firebase:firebase-config-ktx:22.1.2")
     implementation("com.google.firebase:firebase-messaging-ktx:24.1.2")
@@ -109,10 +109,10 @@ dependencies {
     implementation("com.google.firebase:firebase-core:21.1.1")
 
     // google
-    implementation("com.google.android.gms:play-services-auth:21.3.0")
+    implementation("com.google.android.gms:play-services-auth:21.4.0")
 
     // push notification
-    implementation("com.onesignal:OneSignal:5.1.35")
+    implementation("com.onesignal:OneSignal:5.1.37")
 
     // api
     implementation("com.squareup.retrofit2:retrofit:3.0.0")
