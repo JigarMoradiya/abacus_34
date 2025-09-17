@@ -149,13 +149,13 @@ dependencies {
     implementation("com.android.billingclient:billing-ktx:7.1.1")
 
     // gson data
-    implementation("com.google.code.gson:gson:2.11.0")
+    implementation("com.google.code.gson:gson:2.13.2")
 
     // Calculator
-    implementation("com.fathzer:javaluator:3.0.2")
+    implementation("com.fathzer:javaluator:3.0.6")
 
     // Recyceler view pager indicator
-    implementation("ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:1.2.1")
+    implementation("ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:1.2.5")
 
     // view pager anim
     implementation("com.eftimoff:android-viewpager-transformers:1.0.1@aar")
