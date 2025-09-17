@@ -73,7 +73,7 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.16.0")
+//    implementation("androidx.core:core-ktx:1.16.0")
     implementation("androidx.appcompat:appcompat:1.7.1")
     implementation("com.google.android.material:material:1.13.0")
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
@@ -81,7 +81,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.9.4")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.3.0")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.7.0")
+    androidTestImplementation ("androidx.test.espresso:espresso-core:3.7.0")
 
     // install referrer
     implementation("com.android.installreferrer:installreferrer:2.2")
@@ -90,13 +90,13 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     // dagger hilt
-    implementation("com.google.dagger:hilt-android:2.56.2")
-    kapt("com.google.dagger:hilt-android-compiler:2.56.2")
-    kapt("androidx.hilt:hilt-compiler:1.2.0")
+    implementation("com.google.dagger:hilt-android:2.57.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.57.1")
+    kapt("androidx.hilt:hilt-compiler:1.3.0")
 
     //  Manager
-    implementation("androidx.work:work-runtime-ktx:2.10.2")
-    implementation("androidx.hilt:hilt-work:1.2.0")
+    implementation("androidx.work:work-runtime-ktx:2.10.4")
+    implementation("androidx.hilt:hilt-work:1.3.0")
 
     // firebase
     implementation("com.google.firebase:firebase-analytics")
@@ -124,13 +124,13 @@ dependencies {
     implementation("com.jakewharton.rxbinding3:rxbinding-material:3.1.0")
 
     // Glide
-    implementation("com.github.bumptech.glide:glide:4.16.0")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+    implementation("com.github.bumptech.glide:glide:5.0.5")
+    annotationProcessor("com.github.bumptech.glide:compiler:5.0.5")
 
     // coroutine
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.1")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.9.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.3")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.3")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.9.3")
 
     // life components
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
