@@ -134,7 +134,7 @@ dependencies {
 
     // life components
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    kapt("androidx.lifecycle:lifecycle-compiler:2.9.1")
+    kapt("androidx.lifecycle:lifecycle-compiler:2.9.3")
 
     // database
     implementation("androidx.room:room-ktx:2.8.0")
@@ -160,7 +160,7 @@ dependencies {
     // view pager anim
     implementation("com.eftimoff:android-viewpager-transformers:1.0.1@aar")
 
-    implementation("org.apache.commons:commons-text:1.9")
+    implementation("org.apache.commons:commons-text:1.14.0")
 
     // seekbar
     implementation("com.github.MohammedAlaaMorsi:RangeSeekBar:1.0.6")
