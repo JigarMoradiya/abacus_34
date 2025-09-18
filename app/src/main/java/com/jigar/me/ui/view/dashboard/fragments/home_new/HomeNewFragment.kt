@@ -547,7 +547,8 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 moveToClick(AppConstants.HomeClicks.Menu_Share)
             }
             Constants.banner_bulk_login -> {
-                ContactUsActivity.getInstance(requireContext(),AppConstants.extras_Comman.typeBulkLogin)
+                mNavController?.navigate(R.id.toPurchasePreviewFragment)
+//                ContactUsActivity.getInstance(requireContext(),AppConstants.extras_Comman.typeBulkLogin)
             }
 //            Constants.banner_purchase, Constants.banner_offer -> {
 //                moveToClick(AppConstants.HomeClicks.Menu_Purchase)
@@ -585,8 +586,8 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 goToSetting()
             }
             AppConstants.HomeClicks.Menu_Purchase_Store -> {
-//                goToInAppPurchase()
-                mNavController?.navigate(R.id.toPurchasePreviewFragment)
+                goToInAppPurchase()
+//                mNavController?.navigate(R.id.toPurchasePreviewFragment)
             }
             AppConstants.HomeClicks.Menu_Video_Tutorial -> {
                 if (prefManager.getCustomParam(AppConstants.RemoteConfig.videoList,"").isEmpty()){

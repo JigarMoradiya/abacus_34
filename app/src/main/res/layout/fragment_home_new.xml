@@ -99,7 +99,7 @@
 
     <com.jigar.me.utils.widget.viewpager.CustomViewPagerSpeed
         android:id="@+id/viewPager"
-        android:layout_width="280dp"
+        android:layout_width="320dp"
         android:layout_height="56dp"
         android:overScrollMode="never"
         android:scrollbars="none"

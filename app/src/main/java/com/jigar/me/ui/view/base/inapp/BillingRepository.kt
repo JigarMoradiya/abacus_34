@@ -48,8 +48,10 @@ class BillingRepository @Inject constructor(
 
     private fun init() {
         playStoreBillingClient = BillingClient.newBuilder(context)
-            .enablePendingPurchases() // required or app will crash
-            .setListener(this).build()
+            .setListener(this)
+//            .enablePendingPurchases() // required or app will crash
+            .enablePendingPurchases(PendingPurchasesParams.newBuilder().enableOneTimeProducts().build()) // required or app will crash
+            .build()
     }
 
     private fun connectToPlayBillingService(): Boolean {
@@ -109,23 +111,23 @@ class BillingRepository @Inject constructor(
             init()
         }
         val paramsSubscription = QueryProductDetailsParams.newBuilder().setProductList(productListSubscription)
-        playStoreBillingClient?.queryProductDetailsAsync(paramsSubscription.build()) { billingResult, productDetailsList ->
-            if (productDetailsList.isNotEmpty()) {
+        playStoreBillingClient?.queryProductDetailsAsync(paramsSubscription.build()) { param1, param2 ->
+            if (param2.productDetailsList.isNotEmpty()) {
                 CoroutineScope(Job() + Dispatchers.IO).launch {
-                    inAppSKUDB.saveInAppSKU(productDetailsList)
+                    inAppSKUDB.saveInAppSKU(param2.productDetailsList)
                 }
             }
-            // check billingResult
+            // check param1
             // process returned productDetailsList
         }
 
         val params = QueryProductDetailsParams.newBuilder().setProductList(productList)
 
-        playStoreBillingClient?.queryProductDetailsAsync(params.build()) { billingResult, productDetailsList ->
+        playStoreBillingClient?.queryProductDetailsAsync(params.build()) { param1, param2 ->
             // Process the result
-            if (productDetailsList.isNotEmpty()) {
+            if (param2.productDetailsList.isNotEmpty()) {
                 CoroutineScope(Job() + Dispatchers.IO).launch {
-                    inAppSKUDB.saveInAppSKU(productDetailsList)
+                    inAppSKUDB.saveInAppSKU(param2.productDetailsList)
                 }
             }
         }
@@ -154,10 +156,10 @@ class BillingRepository @Inject constructor(
                     .build())
         }
         val params = QueryProductDetailsParams.newBuilder().setProductList(list)
-        playStoreBillingClient?.queryProductDetailsAsync(params.build()) { billingResult, productDetailsList ->
+        playStoreBillingClient?.queryProductDetailsAsync(params.build()) { billingResult, param2 ->
             // Process the result
-            if (productDetailsList.isNotEmpty()) {
-                productDetailsList.filter { it.productId == skuDetails.sku }.also {
+            if (param2.productDetailsList.isNotEmpty()) {
+                param2.productDetailsList.filter { it.productId == skuDetails.sku }.also {
                     if (it.isNotNullOrEmpty()){
                         val productDetailsParamsList =
                             if (skuDetails.type == BillingClient.ProductType.INAPP){

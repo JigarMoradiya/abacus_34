@@ -131,7 +131,8 @@ dependencies {
 
     // life components
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    kapt("androidx.lifecycle:lifecycle-compiler:2.9.3")
+//    kapt("androidx.lifecycle:lifecycle-compiler:2.9.3")
+    implementation("androidx.lifecycle:lifecycle-common-java8:2.9.3")
 
     // database
     implementation("androidx.room:room-ktx:2.8.0")
@@ -143,7 +144,7 @@ dependencies {
     implementation("androidx.sqlite:sqlite-framework:2.6.0")
 
     // In App Purchase
-    implementation("com.android.billingclient:billing-ktx:7.1.1")
+    implementation("com.android.billingclient:billing-ktx:8.0.0")
 
     // gson data
     implementation("com.google.code.gson:gson:2.13.2")
@@ -175,6 +176,8 @@ dependencies {
     implementation("org.greenrobot:eventbus:3.3.1")
 
     implementation("com.github.dhaval2404:imagepicker:2.1")
+
+    implementation("com.google.android.exoplayer:exoplayer:2.19.1")
 }
 
 // Allow references to generated code

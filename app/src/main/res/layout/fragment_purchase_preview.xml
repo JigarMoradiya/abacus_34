@@ -49,38 +49,15 @@
             app:layout_constraintTop_toBottomOf="@+id/cardBack">
 
             <Space
+                android:id="@+id/spaceNotch"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/spaceNotch"/>
+                android:layout_height="wrap_content" />
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/icons_margin2"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/card_corner_radius12"
-                app:cardElevation="@dimen/card_elevation4"
-                app:cardMaxElevation="@dimen/card_elevation4"
-                app:strokeWidth="0dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:id="@+id/conVideo"
-                    android:layout_height="wrap_content">
-
-                    <VideoView
-                        android:id="@+id/videoView"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintDimensionRatio="1920:954"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </com.google.android.material.card.MaterialCardView>
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <LinearLayout
                 android:layout_width="0dp"
