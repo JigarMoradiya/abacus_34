@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -36,7 +37,7 @@ import kotlin.getValue
 
 @AndroidEntryPoint
 class PurchasePreviewFragment : BaseFragment(){
-    private val inAppViewModel by viewModels<InAppViewModel>()
+    private val inAppViewModel by activityViewModels<InAppViewModel>()
     private lateinit var binding: FragmentPurchasePreviewBinding
     private lateinit var mNavController: NavController
     private lateinit var purchasePreviewAdapter: PurchasePreviewAdapter
@@ -90,8 +91,7 @@ class PurchasePreviewFragment : BaseFragment(){
     }
 
     private fun initViews() = with(binding){
-        inAppViewModel.inAppInit()
-
+//        inAppViewModel.inAppInit()
 //        viewPager.adapter = VideoPagerAdapter(this@PurchasePreviewFragment, videoFiles)
         spaceNotch.layoutParams.width = prefManager.getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
 
@@ -157,7 +157,6 @@ class PurchasePreviewFragment : BaseFragment(){
                         txtDescription.hide()
                     }else{
                         inAppSkuDetailsList.remove(lifeTimePlan)
-
                         arrangeData()
                     }
                 }else{
@@ -229,14 +228,12 @@ class PurchasePreviewFragment : BaseFragment(){
                 }
             }
         }else if (discountPer > 0){
-            Log.e("jigarSubscriptionPreview","inAppSkuDetailsList size before = "+inAppSkuDetailsList.size)
             inAppSkuDetailsList.find { it.sku ==  PRODUCT_ID_Subscription_Year1}.also {
                 if (it != null){
                     original1YearData = it
                     inAppSkuDetailsList.remove(it)
                 }
             }
-            Log.e("jigarSubscriptionPreview","inAppSkuDetailsList size after = "+inAppSkuDetailsList.size)
         }else{
             inAppSkuDetailsList.find { it.sku ==  PRODUCT_ID_Subscription_Year1_Offer}.also {
                 if (it != null){

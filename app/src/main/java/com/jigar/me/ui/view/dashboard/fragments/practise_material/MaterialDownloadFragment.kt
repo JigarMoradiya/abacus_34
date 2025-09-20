@@ -184,11 +184,11 @@ class MaterialDownloadFragment : BaseFragment(), MaterialDownloadAdapter.OnItemC
 //            .show()
     }
 
-    private fun fetchSKUDetail(data: InAppSkuDetails?) {
-        if (data != null){
-            inAppViewModel.makePurchase(requireActivity(), data)
-        }
-    }
+//    private fun fetchSKUDetail(data: InAppSkuDetails?) {
+//        if (data != null){
+//            inAppViewModel.makePurchase(requireActivity(), data)
+//        }
+//    }
 
     // main download
     private fun onDownloadItemClick() {

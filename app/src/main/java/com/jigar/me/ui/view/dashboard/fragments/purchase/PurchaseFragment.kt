@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -45,7 +46,7 @@ import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Su
 class PurchaseFragment : BaseFragment(), PurchaseAdapter.OnItemClickListener {
     private lateinit var binding: FragmentPurchaseBinding
     private val apiViewModel by viewModels<AppViewModel>()
-    private val inAppViewModel by viewModels<InAppViewModel>()
+    private val inAppViewModel by activityViewModels<InAppViewModel>()
     private var listSKU: MutableList<InAppSkuDetails> = arrayListOf()
     private lateinit var skuListAdapter: PurchaseAdapter
     private lateinit var mNavController: NavController
@@ -78,7 +79,7 @@ class PurchaseFragment : BaseFragment(), PurchaseAdapter.OnItemClickListener {
 
         skuListAdapter = PurchaseAdapter(listSKU,planListAssignFromAdmin,discountData ,this)
         binding.recyclerview.adapter = skuListAdapter
-        inAppViewModel.inAppInit()
+//        inAppViewModel.inAppInit()
 
         lifecycleScope.launch{
             val idList: ArrayList<String> = arrayListOf()
@@ -92,10 +93,6 @@ class PurchaseFragment : BaseFragment(), PurchaseAdapter.OnItemClickListener {
                         idList.add(it.id)
                     }
                 }
-
-//                idList.clear()
-//                idList.add(PRODUCT_ID_Subscription_Month1)
-//                idList.add(PRODUCT_ID_Subscription_Year1)
 
                 val list = apiViewModel.getPurchasesSku()
                 if (list.isNotNullOrEmpty()){

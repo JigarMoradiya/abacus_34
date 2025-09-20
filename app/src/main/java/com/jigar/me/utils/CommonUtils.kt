@@ -19,11 +19,12 @@ import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.data.pref.AppPreferencesHelper
+import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_1Month
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_1Year
+import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_3Month
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_old
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month3
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1
 import com.jigar.me.utils.extensions.show
 import org.json.JSONException
 import org.json.JSONObject
@@ -197,8 +198,9 @@ object CommonUtils {
             }else{
                 purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
                         || it.sku == PRODUCT_ID_All_lifetime_old
-                        || it.sku == PRODUCT_ID_Subscription_Month3
                         || it.sku.contains(PRODUCT_ID_1Year)
+                        || it.sku.contains(PRODUCT_ID_1Month)
+                        || it.sku.contains(PRODUCT_ID_3Month)
                         || (it.sku.contains(data.name)) }.also {
                     isPurchased = it != null
                 }
@@ -208,7 +210,13 @@ object CommonUtils {
                             prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
                             object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
                         )
-                        planListData.find { it.google_order_id == null && (it.google_plan_id?.contains(data.name) == true) || (it.google_plan_id?.contains(PRODUCT_ID_1Year) == true) }.also {
+                        planListData.find { it.google_order_id == null &&
+                                (it.google_plan_id?.contains(data.name) == true
+                                || it.google_plan_id?.contains(PRODUCT_ID_1Year) == true
+                                || it.google_plan_id?.contains(PRODUCT_ID_1Month) == true
+                                || it.google_plan_id?.contains(PRODUCT_ID_3Month) == true
+                                        )
+                        }.also {
                             isPurchased = it != null
                         }
                     }
@@ -226,8 +234,9 @@ object CommonUtils {
         }else{
             purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
                     || it.sku == PRODUCT_ID_All_lifetime_old
-                    || it.sku == PRODUCT_ID_Subscription_Month3
                     || it.sku.contains(PRODUCT_ID_1Year)
+                    || it.sku.contains(PRODUCT_ID_1Month)
+                    || it.sku.contains(PRODUCT_ID_3Month)
                     || (it.sku.contains("level3")) || (it.sku.contains("level4"))
                     || (it.sku.contains("level5")) || (it.sku.contains("level6"))
                     || (it.sku.contains("level7")) || (it.sku.contains("level8"))}.also {
@@ -246,7 +255,10 @@ object CommonUtils {
                             (it.google_plan_id?.contains("level6") == true) ||
                             (it.google_plan_id?.contains("level7") == true) ||
                             (it.google_plan_id?.contains("level8") == true) ||
-                            (it.google_plan_id?.contains(PRODUCT_ID_1Year) == true)) }.also {
+                            (it.google_plan_id?.contains(PRODUCT_ID_1Year) == true) ||
+                            (it.google_plan_id?.contains(PRODUCT_ID_1Month) == true) ||
+                            (it.google_plan_id?.contains(PRODUCT_ID_3Month) == true)
+                            ) }.also {
                         isPurchased = it != null
                     }
                 }
@@ -257,18 +269,12 @@ object CommonUtils {
     }
     fun checkPurchaseForAllLevel(prefManager: AppPreferencesHelper,purchasedSKU: List<InAppSkuDetails>): Boolean {
         var isPurchased = false
-//        purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
-//                || it.sku == PRODUCT_ID_All_lifetime_old
-//                || it.sku == PRODUCT_ID_Subscription_Month3
-//                || it.sku == PRODUCT_ID_Subscription_Year1
-//        }.also {
-//            return it == null
-//        }
-
         purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
                 || it.sku == PRODUCT_ID_All_lifetime_old
-                || it.sku == PRODUCT_ID_Subscription_Month3
-                || it.sku.contains(PRODUCT_ID_1Year) }.also {
+                || it.sku.contains(PRODUCT_ID_1Year)
+                || it.sku.contains(PRODUCT_ID_1Month)
+                || it.sku.contains(PRODUCT_ID_3Month)
+        }.also {
             isPurchased = it != null
         }
         if (!isPurchased){
@@ -277,7 +283,11 @@ object CommonUtils {
                     prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
                     object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
                 )
-                planListData.find { it.google_order_id == null && (it.google_plan_id?.contains(PRODUCT_ID_1Year) == true) }.also {
+                planListData.find { it.google_order_id == null && (
+                        it.google_plan_id?.contains(PRODUCT_ID_1Year) == true ||
+                        it.google_plan_id?.contains(PRODUCT_ID_1Month) == true ||
+                        it.google_plan_id?.contains(PRODUCT_ID_3Month) == true
+                        ) }.also {
                     isPurchased = it != null
                 }
             }

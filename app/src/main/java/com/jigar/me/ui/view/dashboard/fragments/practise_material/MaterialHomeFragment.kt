@@ -112,7 +112,7 @@ class MaterialHomeFragment : BaseFragment() {
     private fun fetchSKUDetail(data: InAppSkuDetails?) {
         lifecycleScope.launch {
             if (data != null){
-                inAppViewModel.makePurchase(requireActivity(), data)
+//                inAppViewModel.makePurchase(requireActivity(), data)
             }
         }
 

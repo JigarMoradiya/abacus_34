@@ -2,12 +2,10 @@ package com.jigar.me.ui.view.dashboard.fragments.purchase.video_play
 
 import android.content.res.ColorStateList
 import android.graphics.Paint
-import android.util.Log
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
 import com.jigar.me.R
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
@@ -15,7 +13,6 @@ import com.jigar.me.databinding.RawPurchasePreviewBinding
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer
-import com.jigar.me.ui.view.dashboard.fragments.home.HomeMenuAdapter
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.DateTimeUtils
 import com.jigar.me.utils.extensions.dp

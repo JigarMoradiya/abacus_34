@@ -15,13 +15,18 @@ import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.productList
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.productListSubscription
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.*
 import java.util.*
 import javax.inject.Inject
+import javax.inject.Singleton
 import kotlin.collections.ArrayList
 
+@Singleton
 class BillingRepository @Inject constructor(
-    private val context: Context,private val prefManager : AppPreferencesHelper, private val inAppSKUDB: InAppSKUDB,
+    @ApplicationContext private val context: Context,
+    private val prefManager : AppPreferencesHelper,
+    private val inAppSKUDB: InAppSKUDB,
     private val inAppPurchaseDB: InAppPurchaseDB) : PurchasesUpdatedListener, BillingClientStateListener{
     var playStoreBillingClient: BillingClient? = null
 
@@ -349,6 +354,8 @@ class BillingRepository @Inject constructor(
         const val PRODUCT_ID_Subscription_Year1 = "com.abacus.puzzle.1year"
         const val PRODUCT_ID_Subscription_Year1_Offer = "com.abacus.puzzle.1year.offer"
         const val PRODUCT_ID_1Year = "1year" // only for check condition
+        const val PRODUCT_ID_1Month = "1month" // only for check condition
+        const val PRODUCT_ID_3Month = "3month" // only for check condition
         const val PRODUCT_ID_Subscription_Month3_Level1 = "com.abacus.puzzle.3month.level1"
         const val PRODUCT_ID_Subscription_Month3_Level2 = "com.abacus.puzzle.3month.level2"
         const val PRODUCT_ID_Subscription_Month3_Level3 = "com.abacus.puzzle.3month.level3"

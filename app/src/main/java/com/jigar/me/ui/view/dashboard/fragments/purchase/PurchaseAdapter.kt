@@ -2,24 +2,17 @@ package com.jigar.me.ui.view.dashboard.fragments.purchase
 
 import android.content.res.ColorStateList
 import android.graphics.Paint
-import android.util.Log
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.android.billingclient.api.BillingClient
 import com.jigar.me.R
 import com.jigar.me.data.local.data.ColorProvider
 import com.jigar.me.data.model.data.DiscountData
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
-import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.databinding.RawPurchaseBinding
-import com.jigar.me.ui.view.base.inapp.BillingRepository
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month3
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1
-import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.DateTimeUtils
 import com.jigar.me.utils.extensions.hide
