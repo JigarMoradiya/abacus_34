@@ -93,6 +93,8 @@
                     android:background="@drawable/bg_all_curved_8"
                     android:paddingHorizontal="@dimen/activity_padding10"
                     android:paddingVertical="@dimen/activity_padding4"
+                    android:visibility="gone"
+                    tools:visibility="visible"
                     android:text="@string/old_subscription"
                     android:textColor="@color/black"
                     android:textSize="@dimen/textSizeSmall"

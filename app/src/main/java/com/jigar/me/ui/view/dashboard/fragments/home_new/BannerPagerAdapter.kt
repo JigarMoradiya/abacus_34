@@ -1,17 +1,12 @@
-package com.jigar.me.ui.view.dashboard.fragments.home
+package com.jigar.me.ui.view.dashboard.fragments.home_new
 
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.text.HtmlCompat
-import androidx.databinding.DataBindingUtil
 import androidx.viewpager.widget.PagerAdapter
-import com.jigar.me.R
 import com.jigar.me.data.local.data.HomeBanner
 import com.jigar.me.databinding.RawHomeBannerPagerBinding
-import com.jigar.me.databinding.RawPurchaseBinding
-import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.Constants
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.layoutInflater
 import com.jigar.me.utils.extensions.onClick
@@ -23,7 +18,6 @@ class BannerPagerAdapter(var listData: ArrayList<HomeBanner>,
     interface OnItemClickListener {
         fun onBannerItemClick(data: HomeBanner)
     }
-
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val binding = RawHomeBannerPagerBinding.inflate(container.context.layoutInflater,container,false)

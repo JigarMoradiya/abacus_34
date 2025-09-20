@@ -116,24 +116,13 @@ class CategoryFragment : BaseFragment() {
                             }
                         }
                     }else{
-                        purchaseDialog()
+                        goToInAppPurchase()
                     }
                 }
                 recyclerviewPages.adapter = pagesNewAdapter
                 setPages(categoryList.first().id)
             }
         }
-    }
-
-    private fun purchaseDialog() {
-        CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.level_subcribe_title),getString(R.string.level_subcribe_msg)
-            ,getString(R.string.yes_i_want_to_purchase),getString(R.string.no_purchase_later), icon = R.drawable.ic_alert_sad_emoji,isCancelable = false,
-            clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
-                override fun onConfirmationYesClick(bundle: Bundle?) {
-                    goToInAppPurchase()
-                }
-                override fun onConfirmationNoClick(bundle: Bundle?) = Unit
-            })
     }
 
     override fun onResume() {

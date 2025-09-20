@@ -4,47 +4,6 @@
     android:id="@+id/reg_navigation_graph"
     app:startDestination="@+id/homeNewFragment">
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.home.HomeFragment">
-        <action
-            android:id="@+id/action_homeFragment_to_fullAbacusFragment"
-            app:destination="@+id/fullAbacusFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_youtubeVideoFragment"
-            app:destination="@+id/youtubeVideoFragment" />
-        <action
-            android:id="@+id/toSettingsFragment"
-            app:destination="@+id/settingsFragment" />
-        <action
-            android:id="@+id/toPurchaseFragment"
-            app:destination="@+id/purchaseFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_aboutFragment"
-            app:destination="@+id/aboutFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_pageFragment"
-            app:destination="@+id/pageFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_examHomeFragment"
-            app:destination="@+id/examHomeFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_materialHomeFragment"
-            app:destination="@+id/materialHomeFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_puzzleNumberHomeFragment"
-            app:destination="@+id/puzzleNumberHomeFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_exerciseHomeFragment"
-            app:destination="@+id/exerciseHomeFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_customChallengeHomeFragment"
-            app:destination="@+id/customChallengeHomeFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_myProfileFragment"
-            app:destination="@+id/myProfileFragment" />
-    </fragment>
-
-    <fragment
         android:id="@+id/homeNewFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.home_new.HomeNewFragment">
         <action
@@ -66,11 +25,8 @@
             android:id="@+id/toPurchaseFragment"
             app:destination="@+id/purchaseFragment" />
         <action
-            android:id="@+id/toPurchasePreviewFragment"
-            app:destination="@+id/purchasePreviewFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_aboutFragment"
-            app:destination="@+id/aboutFragment" />
+            android:id="@+id/toPurchaseFragmentOld"
+            app:destination="@+id/purchaseFragmentOld" />
         <action
             android:id="@+id/action_homeFragment_to_pageFragment"
             app:destination="@+id/pageFragment" />
@@ -299,18 +255,14 @@
             app:argType="integer" />
     </fragment>
     <fragment
-        android:id="@+id/aboutFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.AboutFragment">
-    </fragment>
-    <fragment
         android:id="@+id/settingsFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.settings.SettingsFragment">
     </fragment>
     <fragment
-        android:id="@+id/purchaseFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.purchase.PurchaseFragment"/>
+        android:id="@+id/purchaseFragmentOld"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.purchase.PurchaseFragmentOld"/>
     <fragment
-        android:id="@+id/purchasePreviewFragment"
+        android:id="@+id/purchaseFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.purchase.PurchasePreviewFragment"/>
 
     <!--  Exam fragments  -->

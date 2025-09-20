@@ -79,11 +79,6 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
     }
     private fun initViews() {
         setLeftAbacusRules()
-//        if (prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_left_hand, true)){
-//            setLeftAbacusRules()
-//        }else{
-//            setRightAbacusRules()
-//        }
         mCalculator = Calculator()
         with(prefManager){
             setCustomParam(AppConstants.Settings.TheamTempView,getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default))
@@ -280,19 +275,9 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
             if (CommonUtils.checkPurchaseForExerciseExamCCM(prefManager,purchasedSKU)){
                 startInit()
             }else{
-                canNotAccess()
+                goToInAppPurchase()
             }
         }
-    }
-    private fun canNotAccess() {
-        CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.exercise_subcribe_title),getString(R.string.exercise_subcribe_msg)
-            ,getString(R.string.yes_i_want_to_purchase),getString(R.string.no_purchase_later), icon = R.drawable.ic_alert_sad_emoji,isCancelable = false,
-            clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
-                override fun onConfirmationYesClick(bundle: Bundle?) {
-                    goToInAppPurchase()
-                }
-                override fun onConfirmationNoClick(bundle: Bundle?) = Unit
-            })
     }
 
     private fun startInit() {

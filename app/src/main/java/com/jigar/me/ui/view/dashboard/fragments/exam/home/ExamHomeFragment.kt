@@ -37,8 +37,6 @@ class ExamHomeFragment : BaseFragment() {
     private lateinit var binding: FragmentExamHomeBinding
     private lateinit var mNavController: NavController
     private val appViewModel by viewModels<AppViewModel>()
-//    private var themeContent : AbacusContent? = null
-//    private var theme = AppConstants.Settings.theam_Default
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentExamHomeBinding.inflate(inflater, container, false)
         setNavigationGraph()
@@ -48,15 +46,6 @@ class ExamHomeFragment : BaseFragment() {
     }
 
     private fun initView() {
-//        with(prefManager){
-//            setCustomParam(AppConstants.Settings.TheamTempView,getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default))
-//            theme = getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
-//        }
-//
-//        themeContent = DataProvider.findAbacusThemeType(requireContext(),theme,AbacusBeadType.Exercise)
-//        themeContent?.resetBtnColor8?.let{
-//            binding.txtStartExam.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),it))
-//        }
     }
 
     private fun setNavigationGraph() {
@@ -76,7 +65,7 @@ class ExamHomeFragment : BaseFragment() {
                     if (CommonUtils.checkPurchaseForExerciseExamCCM(prefManager,purchasedSKU)){
                         onExamStartClick()
                     }else{
-                        canNotAccess()
+                        goToInAppPurchase()
                     }
                 }
             }
@@ -108,16 +97,4 @@ class ExamHomeFragment : BaseFragment() {
             binding.chAddition.isChecked,binding.chSubtraction.isChecked,binding.chMultiplication.isChecked,binding.chDivision.isChecked)
         mNavController.navigate(action)
     }
-
-    private fun canNotAccess() {
-        CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.exam_subcribe_title),getString(R.string.exam_subcribe_msg)
-            ,getString(R.string.yes_i_want_to_purchase),getString(R.string.no_purchase_later), icon = R.drawable.ic_alert_sad_emoji,isCancelable = false,
-            clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
-                override fun onConfirmationYesClick(bundle: Bundle?) {
-                    goToInAppPurchase()
-                }
-                override fun onConfirmationNoClick(bundle: Bundle?) = Unit
-            })
-    }
-
 }

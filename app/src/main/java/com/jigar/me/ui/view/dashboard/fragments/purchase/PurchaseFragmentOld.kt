@@ -9,13 +9,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.jigar.me.MyApplication
 import com.jigar.me.R
 import com.jigar.me.data.model.DisplayPurchaseData
-import com.jigar.me.data.model.data.AbacusAllData
 import com.jigar.me.data.model.data.DiscountData
 import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
@@ -24,7 +23,6 @@ import com.jigar.me.databinding.FragmentPurchaseBinding
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1
-import com.jigar.me.ui.view.confirm_alerts.bottomsheets.PaidFeatureListDialog
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.InAppViewModel
@@ -35,15 +33,10 @@ import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.toastS
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlin.collections.ArrayList
-import androidx.navigation.findNavController
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1
 
 @AndroidEntryPoint
-class PurchaseFragment : BaseFragment(), PurchaseAdapter.OnItemClickListener {
+class PurchaseFragmentOld : BaseFragment(), PurchaseAdapter.OnItemClickListener {
     private lateinit var binding: FragmentPurchaseBinding
     private val apiViewModel by viewModels<AppViewModel>()
     private val inAppViewModel by activityViewModels<InAppViewModel>()
@@ -112,9 +105,6 @@ class PurchaseFragment : BaseFragment(), PurchaseAdapter.OnItemClickListener {
     private fun initListener() {
         with(binding){
             cardBack.onClick { mNavController.navigateUp() }
-            txtShowPaidFeatureList.onClick {
-                PaidFeatureListDialog.showPopup(requireActivity())
-            }
         }
     }
 

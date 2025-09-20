@@ -41,14 +41,11 @@ import com.jigar.me.internal.workmanagers.FetchAbacusDataWorkManager
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.base.inapp.BillingRepository
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
-import com.jigar.me.ui.view.confirm_alerts.bottomsheets.OtherApplicationBottomSheet
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.SelectAvatarProfileDialog
 import com.jigar.me.ui.view.confirm_alerts.dialogs.PurchaseByReviewDialog
 import com.jigar.me.ui.view.confirm_alerts.dialogs.SelectThemeDialog
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
-import com.jigar.me.ui.view.dashboard.fragments.home.BannerPagerAdapter
-import com.jigar.me.ui.view.dashboard.fragments.home.CurrentPlanPagerAdapter
-import com.jigar.me.ui.view.other.ContactUsActivity
+import com.jigar.me.ui.view.dashboard.fragments.home_new.BannerPagerAdapter
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.StudentViewModel
 import com.jigar.me.utils.AppConstants
@@ -73,13 +70,13 @@ import java.util.Timer
 import java.util.TimerTask
 import java.util.concurrent.TimeUnit
 import androidx.navigation.findNavController
+import com.jigar.me.ui.view.other.ContactUsActivity
 import com.jigar.me.utils.extensions.getScreenHeight
 import com.jigar.me.utils.extensions.getScreenWidth
 
 @AndroidEntryPoint
 class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
-    SelectAvatarProfileDialog.AvatarProfileDialogInterface,
-    CurrentPlanPagerAdapter.OnItemClickListener {
+    SelectAvatarProfileDialog.AvatarProfileDialogInterface{
     private lateinit var binding: FragmentHomeNewBinding
     private var root : View? = null
     private var mNavController: NavController? = null
@@ -171,7 +168,6 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
             txtWelcomeMsg.onClick { txtMyAccount.performClick() }
             txtMyAccount.onClick { moveToClick(AppConstants.HomeClicks.Menu_My_Profile) }
             cardEditImage.onClick { txtMyAccount.performClick() }
-            txtOtherApps.onClick { OtherApplicationBottomSheet.showPopup(requireActivity()) }
             txtWelcomeTitle.onClick {
                 if (BuildConfig.DEBUG) {
                     showTour()
@@ -301,23 +297,6 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 }
                 override fun onConfirmationNoClick(bundle: Bundle?) = Unit
             })
-    }
-    private fun setCurrentSubscriptionList(data: JsonObject?) {
-//        val response = Gson().fromJson(data, UserData::class.java)
-//        setCurrentSubscription(response)
-//        prefManager.setLoginData(data.toString())
-//        avatarProfileCloseDialog()
-//        response.account_detail?.subscribed_plans?.let{
-//            currentPlanPagerAdapter = CurrentPlanPagerAdapter(it,this)
-//            binding.viewPagerCurrentPlan.adapter = currentPlanPagerAdapter
-//            binding.viewPagerCurrentPlan.setPageTransformer( true , DepthPageTransformer() )
-//        }
-    }
-    override fun onPurchaseRenewClick() {
-        goToInAppPurchase()
-    }
-    override fun onPurchaseItemClick() {
-        goToInAppPurchase()
     }
     private fun menuTour() {
         lifecycleScope.launch {
@@ -547,8 +526,8 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 moveToClick(AppConstants.HomeClicks.Menu_Share)
             }
             Constants.banner_bulk_login -> {
-                mNavController?.navigate(R.id.toPurchasePreviewFragment)
-//                ContactUsActivity.getInstance(requireContext(),AppConstants.extras_Comman.typeBulkLogin)
+//                mNavController?.navigate(R.id.toPurchaseFragmentOld)
+                ContactUsActivity.getInstance(requireContext(),AppConstants.extras_Comman.typeBulkLogin)
             }
 //            Constants.banner_purchase, Constants.banner_offer -> {
 //                moveToClick(AppConstants.HomeClicks.Menu_Purchase)
@@ -587,7 +566,6 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
             }
             AppConstants.HomeClicks.Menu_Purchase_Store -> {
                 goToInAppPurchase()
-//                mNavController?.navigate(R.id.toPurchasePreviewFragment)
             }
             AppConstants.HomeClicks.Menu_Video_Tutorial -> {
                 if (prefManager.getCustomParam(AppConstants.RemoteConfig.videoList,"").isEmpty()){
@@ -608,9 +586,6 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
             }
             AppConstants.HomeClicks.Menu_My_Profile -> {
                 mNavController?.navigate(R.id.action_homeFragment_to_myProfileFragment)
-            }
-            AppConstants.HomeClicks.Menu_AboutUs -> {
-                mNavController?.navigate(R.id.action_homeFragment_to_aboutFragment)
             }
             AppConstants.HomeClicks.Menu_Share -> {
                 requireContext().shareIntent()

@@ -1,36 +1,22 @@
 package com.jigar.me.ui.view.dashboard.fragments.custom_challenge
 
 import android.os.Bundle
-import android.speech.tts.TextToSpeech
-import android.speech.tts.Voice
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import com.google.gson.Gson
-import com.google.gson.JsonObject
+import androidx.navigation.findNavController
 import com.jigar.me.R
-import com.jigar.me.data.model.data.Statistics
-import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.databinding.FragmentCustomChallengeHomeBinding
 import com.jigar.me.ui.view.base.BaseFragment
-import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
-import com.jigar.me.ui.view.confirm_alerts.bottomsheets.VoiceControllerSetting
-import com.jigar.me.ui.view.confirm_alerts.bottomsheets.VoiceControllerSettingInterface
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.extensions.onClick
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.Locale
-import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class CustomChallengeHomeFragment : BaseFragment() {
@@ -81,7 +67,7 @@ class CustomChallengeHomeFragment : BaseFragment() {
                 if (CommonUtils.checkPurchaseForExerciseExamCCM(prefManager,purchasedSKU)){
                     gotoNext()
                 }else{
-                    canNotAccess()
+                    goToInAppPurchase()
                 }
             }
         }else{
@@ -96,16 +82,4 @@ class CustomChallengeHomeFragment : BaseFragment() {
             binding.rsGap.currentValue,binding.cbQuestionVoice.isChecked,binding.cbQuestionNumber.isChecked,binding.cbQuestionWord.isChecked)
         mNavController.navigate(action)
     }
-
-    private fun canNotAccess() {
-        CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.ccm_subcribe_title),getString(R.string.ccm_subcribe_msg)
-            ,getString(R.string.yes_i_want_to_purchase),getString(R.string.no_purchase_later), icon = R.drawable.ic_alert_sad_emoji,isCancelable = false,
-            clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
-                override fun onConfirmationYesClick(bundle: Bundle?) {
-                    goToInAppPurchase()
-                }
-                override fun onConfirmationNoClick(bundle: Bundle?) = Unit
-            })
-    }
-
 }

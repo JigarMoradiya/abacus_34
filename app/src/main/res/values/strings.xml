@@ -724,14 +724,6 @@
     <string name="old_password">Old Password</string>
     <string name="your_password_has_been_updated">Your password has been updated</string>
 
-    <string name="level_subcribe_title">Go Premium for Access of this Level!</string>
-    <string name="level_subcribe_msg">Unlock this premium level by subscribing to our exclusive content.</string>
-    <string name="exam_subcribe_title">Subscribe to Unlock Exam Features!</string>
-    <string name="exam_subcribe_msg"><![CDATA[To access the Exam Module, <b>you’ll need to subscribe at Level 3 or above.</b> Upgrade today and gain full access to our advanced exam preparation tools! 📚✨]]></string>
-    <string name="exercise_subcribe_title">Subscribe to Unlock Exercise Features!</string>
-    <string name="exercise_subcribe_msg"><![CDATA[To access the Exercise Module, <b>you’ll need to subscribe at Level 3 or above.</b> Upgrade today and gain full access to our advanced exam preparation tools! 📚✨]]></string>
-    <string name="ccm_subcribe_title">Subscribe to Unlock Custom Challenge Mode (CCM) Features!</string>
-    <string name="ccm_subcribe_msg"><![CDATA[To access the Custom Challenge Mode (CCM) Module, <b>you’ll need to subscribe at Level 3 or above.</b> Upgrade today and gain full access to our advanced exam preparation tools! 📚✨]]></string>
     <string name="feature_list">Feature List</string>
     <string name="paid_feature_list">Paid Feature List</string>
     <string name="free_feature_list">Free Feature List</string>
