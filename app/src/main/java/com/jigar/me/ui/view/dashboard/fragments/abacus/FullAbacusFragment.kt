@@ -622,10 +622,15 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
     private fun setThemeLighterTopBeads() {
         abacusBinding?.viewDirection?.hide()
 
+
         isTourPageRunning = true
         lighter = Lighter.with(binding.root as ViewGroup)
         abacusBinding?.let {
-            IntroProvider.abacusTopBottomBeadsIntro(lighter,it.flAbacusTop,it.flAbacusBottom,object : IntroProvider.IntroCloseClickListener {
+            val paramsView1 = it.ivDividerTemp.layoutParams as RelativeLayout.LayoutParams
+            paramsView1.width = themeContent.beadWidth
+            it.ivDividerTemp.layoutParams = paramsView1
+
+            IntroProvider.abacusTopBottomBeadsIntro(lighter,it.flAbacusTop,it.flAbacusBottom,it.rlDivider,it.ivDividerTemp,object : IntroProvider.IntroCloseClickListener {
                 override fun onIntroCloseClick() {
                     setThemeLighterRod1()
                 }

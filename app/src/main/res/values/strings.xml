@@ -412,6 +412,8 @@
     <string name="light_rod2_text">each lower bead <font color='#E91E63'>value is 10</font>\nand the upper bead <font color='#2E7D32'>value is 50</font></string>
     <string name="light_rod3_text">each lower bead <font color='#E91E63'>value is 100</font>\nand the upper bead <font color='#2E7D32'>value is 500,</font>\nso on..</string>
     <string name="this_all_are_upper_bead">This all are <font color='#E91E63'>Top Beads</font></string>
+    <string name="this_is_beam">This is <font color='#0000FF'>Bar</font> or <font color='#0000FF'>Beam</font> of Abacus</string>
+    <string name="this_is_unit_place"><font color='#0000FF'>Unit"'"s Place</font> of Abacus</string>
     <string name="this_all_are_bottom_beads">This all are <font color='#E91E63'>Bottom Beads</font></string>
     <string name="click_here_to_show_nabacus_tour">Click Here to show\nAbacus Tour</string>
     <string name="click_here_to_reset_abacus">Click here to <font color='#FF0000'>Reset Abacus</font></string>
@@ -825,6 +827,10 @@
     <string name="time">Time :</string>
     <string name="current_input">Current Input</string>
     <string name="reset">Reset</string>
+    <string name="start_free_trial">Start Free Trial</string>
+    <string name="cancel_anytime_during_the_trial_without_being_charged">Cancel anytime during the trial\nwithout being charged.</string>
+    <string name="go_premium_all_levels_all_features">Go Premium - All Levels, All Features</string>
+    <string name="old_subscription">Old Purchases</string>
 
 
 </resources>

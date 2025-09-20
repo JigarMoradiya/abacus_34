@@ -121,24 +121,18 @@ object AppConstants {
             var privacyPolicyUrl = "privacyPolicyUrl"
             var versionCode = "versionCode"
             var discountData = "discount_data"
+            var discountPer = "discount_per"
         }
     }
     annotation class AbacusProgress {
         companion object {
             var PREF_PAGE_SUM = "pageSum"
-            var CompleteAbacusPos = "CompleteAbacusPos"
-
-            var TrackFetch = "TrackFetch"
-
-            // firebase database field
-//            var Track = "TrackJigar"
             var Track = "TrackNew"
             var Position = "Position"
 
             var Settings = "Settings"
             var baseUrl = "baseUrl"
             var iPath = "iPath"
-            var resetImage = "resetImage"
             var databaseVersion = "databaseVersion"
         }
     }

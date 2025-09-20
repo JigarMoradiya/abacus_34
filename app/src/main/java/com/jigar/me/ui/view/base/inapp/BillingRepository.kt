@@ -221,10 +221,6 @@ class BillingRepository @Inject constructor(
                     // handle pending purchases, e.g. confirm with users about the pending
                     // purchases, prompt them to complete it, etc.
                 }else{
-                    Log.d(LOG_TAG, "originalJson called else ="+Gson().toJson(purchase.originalJson))
-                    Log.d(LOG_TAG, "signature called else ="+Gson().toJson(purchase.signature))
-                    Log.d(LOG_TAG, "isAcknowledged called else ="+Gson().toJson(purchase.isAcknowledged))
-
                     if (isSignatureValid(purchase)) {
 
                         Log.d(LOG_TAG, "processPurchases called else success")
@@ -344,13 +340,14 @@ class BillingRepository @Inject constructor(
         const val PRODUCT_ID_All_lifetime = "com.abacus.all"
         const val PRODUCT_ID_material_maths = "kids.material.maths.abacus"
         const val PRODUCT_ID_material_nursery = "kids.material.nursery"
-
         const val PRODUCT_ID_level1_lifetime = "com.abacus.singledigit.starter"
         const val PRODUCT_ID_level2_lifetime = "com.abacus.addition.subtraction"
         const val PRODUCT_ID_level3_lifetime = "com.abacus.multiplication.division"
         const val PRODUCT_ID_Subscription_Month3 = "com.abacus.puzzle.3month"
+        const val PRODUCT_ID_Subscription_Month1 = "com.abacus.puzzle.1month"
 
         const val PRODUCT_ID_Subscription_Year1 = "com.abacus.puzzle.1year"
+        const val PRODUCT_ID_Subscription_Year1_Offer = "com.abacus.puzzle.1year.offer"
         const val PRODUCT_ID_1Year = "1year" // only for check condition
         const val PRODUCT_ID_Subscription_Month3_Level1 = "com.abacus.puzzle.3month.level1"
         const val PRODUCT_ID_Subscription_Month3_Level2 = "com.abacus.puzzle.3month.level2"
@@ -370,14 +367,6 @@ class BillingRepository @Inject constructor(
                 .setProductId(PRODUCT_ID_All_lifetime)
                 .setProductType(BillingClient.ProductType.INAPP)
                 .build(),
-//            QueryProductDetailsParams.Product.newBuilder()
-//                .setProductId(PRODUCT_ID_material_maths)
-//                .setProductType(BillingClient.ProductType.INAPP)
-//                .build(),
-//            QueryProductDetailsParams.Product.newBuilder()
-//                .setProductId(PRODUCT_ID_material_nursery)
-//                .setProductType(BillingClient.ProductType.INAPP)
-//                .build(),
 
             QueryProductDetailsParams.Product.newBuilder()
                 .setProductId(PRODUCT_ID_All_lifetime_old)
@@ -401,12 +390,20 @@ class BillingRepository @Inject constructor(
         val productListSubscription: ArrayList<QueryProductDetailsParams.Product> =
             arrayListOf(
                 QueryProductDetailsParams.Product.newBuilder()
+                    .setProductId(PRODUCT_ID_Subscription_Month1)
+                    .setProductType(BillingClient.ProductType.SUBS)
+                    .build(),
+                QueryProductDetailsParams.Product.newBuilder()
                     .setProductId(PRODUCT_ID_Subscription_Month3)
                     .setProductType(BillingClient.ProductType.SUBS)
                     .build()
                 ,
                 QueryProductDetailsParams.Product.newBuilder()
                     .setProductId(PRODUCT_ID_Subscription_Year1)
+                    .setProductType(BillingClient.ProductType.SUBS)
+                    .build(),
+                QueryProductDetailsParams.Product.newBuilder()
+                    .setProductId(PRODUCT_ID_Subscription_Year1_Offer)
                     .setProductType(BillingClient.ProductType.SUBS)
                     .build(),
                 QueryProductDetailsParams.Product.newBuilder()

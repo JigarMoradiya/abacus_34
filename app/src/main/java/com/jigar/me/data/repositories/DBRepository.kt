@@ -11,6 +11,7 @@ import com.jigar.me.data.model.dbtable.abacus_all_data.Level
 import com.jigar.me.data.model.dbtable.abacus_all_data.Pages
 import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
 import com.jigar.me.data.model.dbtable.exam.ExamHistory
+import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import javax.inject.Inject
 
 class DBRepository @Inject constructor(
@@ -26,6 +27,7 @@ class DBRepository @Inject constructor(
     fun getInAppSKU(displayList : ArrayList<String>) = inAppSKUDB.getInAppSKU(displayList)
     fun getInAppSKUPurchasedLive() = inAppSKUDB.getInAppSKUPurchasedLive()
     suspend fun getInAppSKUPurchased() = inAppSKUDB.getInAppSKUPurchased()
+    suspend fun getInAppSKUPurchasedLiveExclude(excludeIds : ArrayList<String>) = inAppSKUDB.getInAppSKUPurchasedLiveExclude(excludeIds)
     suspend fun deleteInAppSKU() = inAppSKUDB.deleteInAppSKU()
     fun getInAppSKUDetail(sku : String) = inAppSKUDB.getInAppSKUDetail(sku)
 

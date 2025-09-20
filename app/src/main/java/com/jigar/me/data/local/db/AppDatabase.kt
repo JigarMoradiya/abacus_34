@@ -1,11 +1,13 @@
 package com.jigar.me.data.local.db
 
 import android.content.Context
+import android.os.Debug
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.jigar.me.BuildConfig
 import com.jigar.me.data.local.db.abacus_all_data.AbacusAllDataDao
 import com.jigar.me.data.local.db.exam.ExamHistoryDao
 import com.jigar.me.data.local.db.inapp.purchase.InAppPurchaseDao
@@ -59,8 +61,10 @@ abstract class AppDatabase : RoomDatabase() {
                         }
                     }
                 )
+            if (!BuildConfig.DEBUG){
+                database.openHelperFactory(factory)
+            }
 
-            database.openHelperFactory(factory)
             val databaseBuild = database.build()
             return databaseBuild
         }

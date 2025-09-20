@@ -30,6 +30,7 @@ class AppViewModel @Inject constructor(private val apiRepository: ApiRepository,
     fun getInAppSKU(displayList : ArrayList<String>) = dbRepository.getInAppSKU(displayList)
     fun getInAppSKUPurchasedLive() = dbRepository.getInAppSKUPurchasedLive()
     suspend fun getInAppSKUPurchased() = dbRepository.getInAppSKUPurchased()
+    suspend fun getInAppSKUPurchasedLiveExclude(excludeIds : ArrayList<String>) = dbRepository.getInAppSKUPurchasedLiveExclude(excludeIds)
     suspend fun deleteInAppSKU() = dbRepository.deleteInAppSKU()
     suspend fun deleteInAppPurchase() = dbRepository.deleteInAppPurchase()
 

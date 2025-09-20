@@ -1,19 +1,26 @@
 package com.jigar.me.ui.view.dashboard.fragments.purchase.video_play
 
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.google.android.exoplayer2.ExoPlayer
-import com.google.android.exoplayer2.MediaItem
-import com.google.android.exoplayer2.Player
+import androidx.lifecycle.lifecycleScope
+import androidx.media3.common.MediaItem
+import androidx.media3.common.Player
+import androidx.media3.common.util.UnstableApi
+import androidx.media3.exoplayer.ExoPlayer
+import com.jigar.me.R
 import com.jigar.me.databinding.FragmentPurchasePreviewVideoBinding
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
 
@@ -34,10 +41,11 @@ class VideoFragment : Fragment() {
         return binding.root
     }
 
+    @UnstableApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Adjust aspect ratio dynamically
+        // Set dimension ratio
         val constraintSet = ConstraintSet().apply {
             clone(binding.conVideo)
             if (assetFileName == "video_free_mode.mp4") {
@@ -48,38 +56,54 @@ class VideoFragment : Fragment() {
         }
         constraintSet.applyTo(binding.conVideo)
 
-        // Copy video from assets to cache (ExoPlayer cannot play directly from assets)
+        // Copy asset to cache
         val file = File(requireContext().cacheDir, assetFileName)
         if (!file.exists()) {
-            requireContext().assets.open(assetFileName).use { input ->
-                FileOutputStream(file).use { output -> input.copyTo(output) }
+            requireContext().assets.open(assetFileName).use { inputStream ->
+                FileOutputStream(file).use { outputStream ->
+                    inputStream.copyTo(outputStream)
+                }
             }
         }
         val videoUri = Uri.fromFile(file)
+        binding.playerView.defaultArtwork = ContextCompat.getDrawable(requireContext(), R.drawable.placeholder)
+        binding.playerView.setKeepContentOnPlayerReset(true)
+        binding.playerView.useArtwork = true
 
-        // Initialize ExoPlayer
+        // Initialize Media3 ExoPlayer
         player = ExoPlayer.Builder(requireContext()).build().apply {
             setMediaItem(MediaItem.fromUri(videoUri))
-            repeatMode = Player.REPEAT_MODE_ONE
+            repeatMode = Player.REPEAT_MODE_ONE   // loop
+            playWhenReady = true                  // auto-play
 
             addListener(object : Player.Listener {
                 override fun onIsLoadingChanged(isLoading: Boolean) {
                     if (_binding == null) return
-                    if (isLoading) {
-                        binding.progressBar.show()
-                    } else {
+                    if (isLoading) binding.progressBar.show() else binding.progressBar.hide()
+                }
+
+                override fun onPlaybackStateChanged(playbackState: Int) {
+                    if (_binding == null) return
+                    if (playbackState == Player.STATE_READY) {
                         binding.progressBar.hide()
+                        binding.playerView.show()
                     }
                 }
             })
 
             prepare()
-            playWhenReady = true
         }
-
         binding.playerView.player = player
     }
+    override fun onPause() {
+        super.onPause()
+        player?.pause()   // Pause when fragment is not visible
+    }
 
+    override fun onResume() {
+        super.onResume()
+        player?.playWhenReady = true   // Resume when fragment becomes visible again
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         player?.release()

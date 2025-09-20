@@ -93,6 +93,7 @@ class SplashFragment : BaseFragment() {
 
                     val video: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.videoList)
                     val discountData: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.discountData)
+                    val discountPer: Long = mFirebaseRemoteConfig.getLong(AppConstants.RemoteConfig.discountPer)
                     val displayPlan: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.displayPlanList)
                     val privacyPolicyUrl: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.privacyPolicyUrl)
                     val supportEmail: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.supportEmail)
@@ -100,8 +101,6 @@ class SplashFragment : BaseFragment() {
                     val bulkLogin: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.bulkLogin)
                     val versionCode: Long = mFirebaseRemoteConfig.getLong(AppConstants.RemoteConfig.versionCode)
                     val baseUrl: String = mFirebaseRemoteConfig.getString(AppConstants.AbacusProgress.baseUrl)
-                    val iPath: String = mFirebaseRemoteConfig.getString(AppConstants.AbacusProgress.iPath)
-                    val resetImage: Long = mFirebaseRemoteConfig.getLong(AppConstants.AbacusProgress.resetImage)
                     val databaseVersion: Long = mFirebaseRemoteConfig.getLong(AppConstants.AbacusProgress.databaseVersion)
 
                     with(prefManager){
@@ -112,18 +111,14 @@ class SplashFragment : BaseFragment() {
                                 appViewModel.deleteAllData()
                             }
                         }
-                        if (resetImage.toInt() > getCustomParamInt(AppConstants.AbacusProgress.resetImage, 0)) {
-                            setCustomParamInt(AppConstants.AbacusProgress.resetImage, resetImage.toInt())
-                            setCustomParam(AppConstants.extras_Comman.DownloadType+"_"+AppConstants.extras_Comman.DownloadType_Maths, "")
-                            setCustomParam(AppConstants.extras_Comman.DownloadType+"_"+AppConstants.extras_Comman.DownloadType_Nursery, "")
-                        }
+
                         setBaseUrl(baseUrl)
-                        setCustomParam(AppConstants.AbacusProgress.iPath,iPath)
                         setCustomParam(AppConstants.RemoteConfig.privacyPolicyUrl,privacyPolicyUrl)
                         setCustomParam(AppConstants.RemoteConfig.supportEmail,supportEmail)
                         setCustomParam(AppConstants.RemoteConfig.newVersionNotes,newVersionNotes)
                         setCustomParam(AppConstants.RemoteConfig.bulkLogin,bulkLogin)
                         setCustomParamInt(AppConstants.RemoteConfig.versionCode,versionCode.toInt())
+                        setCustomParamInt(AppConstants.RemoteConfig.discountPer,discountPer.toInt())
                         if (discountData.length > 5){
                             setCustomParam(AppConstants.RemoteConfig.discountData,discountData)
                         }else{

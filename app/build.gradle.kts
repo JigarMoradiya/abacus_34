@@ -177,7 +177,8 @@ dependencies {
 
     implementation("com.github.dhaval2404:imagepicker:2.1")
 
-    implementation("com.google.android.exoplayer:exoplayer:2.19.1")
+    implementation("androidx.media3:media3-exoplayer:1.8.0")
+    implementation("androidx.media3:media3-ui:1.8.0")
 }
 
 // Allow references to generated code

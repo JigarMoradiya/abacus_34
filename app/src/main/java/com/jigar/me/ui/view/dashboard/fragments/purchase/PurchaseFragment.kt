@@ -1,6 +1,7 @@
 package com.jigar.me.ui.view.dashboard.fragments.purchase
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,6 +39,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.collections.ArrayList
 import androidx.navigation.findNavController
+import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1
 
 @AndroidEntryPoint
 class PurchaseFragment : BaseFragment(), PurchaseAdapter.OnItemClickListener {
@@ -91,11 +93,17 @@ class PurchaseFragment : BaseFragment(), PurchaseAdapter.OnItemClickListener {
                     }
                 }
 
+//                idList.clear()
+//                idList.add(PRODUCT_ID_Subscription_Month1)
+//                idList.add(PRODUCT_ID_Subscription_Year1)
+
                 val list = apiViewModel.getPurchasesSku()
                 if (list.isNotNullOrEmpty()){
                     idList.addAll(list)
                 }
             }
+
+
             apiViewModel.getInAppSKU(idList).observe(viewLifecycleOwner){
                 setSKU(it)
             }
@@ -148,6 +156,7 @@ class PurchaseFragment : BaseFragment(), PurchaseAdapter.OnItemClickListener {
                 (activity as MainDashboardActivity).isPurchaseDataChecked = false
                 // firebase event
                 MyApplication.logEvent("Purchase_"+listSKU[position].sku, null)
+                Log.e("jigarLogs","onPurchaseItemClick = "+ Gson().toJson(listSKU[position]))
                 inAppViewModel.makePurchase(requireActivity(), listSKU[position])
             }
         }else{
