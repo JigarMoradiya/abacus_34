@@ -1,7 +1,6 @@
-package com.jigar.me.ui.view.dashboard.fragments.purchase
+package com.jigar.me.ui.view.dashboard.fragments.purchase.newui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,12 +16,9 @@ import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.databinding.FragmentPurchasePreviewBinding
 import com.jigar.me.ui.view.base.BaseFragment
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer
+import com.jigar.me.ui.view.base.inapp.BillingRepository
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.OldPurchasesBottomSheet
-import com.jigar.me.ui.view.dashboard.fragments.purchase.video_play.PurchasePreviewAdapter
+import com.jigar.me.ui.view.dashboard.fragments.purchase.newui.PurchaseNewAdapter
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.InAppViewModel
 import com.jigar.me.utils.AppConstants
@@ -33,15 +29,14 @@ import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import kotlin.getValue
 
 @AndroidEntryPoint
-class PurchasePreviewFragment : BaseFragment(){
+class PurchaseNewFragment : BaseFragment(){
     private val inAppViewModel by activityViewModels<InAppViewModel>()
     private lateinit var binding: FragmentPurchasePreviewBinding
     private lateinit var mNavController: NavController
-    private lateinit var purchasePreviewAdapter: PurchasePreviewAdapter
-    private lateinit var purchasePreviewInfoAdapter: PurchasePreviewInfoAdapter
+    private lateinit var purchaseNewAdapter: PurchaseNewAdapter
+    private lateinit var purchaseInfoAdapter: PurchaseInfoAdapter
     private val apiViewModel by viewModels<AppViewModel>()
 
     private var isMonthlyPlanSubscribe = false
@@ -65,7 +60,7 @@ class PurchasePreviewFragment : BaseFragment(){
     private var oldPurchasedSkuList : List<InAppSkuDetails> = arrayListOf()
     private var discountPer : Int = 0
     private var original1YearData : InAppSkuDetails? = null
-    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentPurchasePreviewBinding.inflate(inflater, container, false)
         setNavigationGraph()
         initViews()
@@ -80,7 +75,7 @@ class PurchasePreviewFragment : BaseFragment(){
         with(binding){
             imgClose.onClick { mNavController.navigateUp() }
             btnSubmit.onClick {
-                val selectedPlan = purchasePreviewAdapter.getSelectedData()
+                val selectedPlan = purchaseNewAdapter.getSelectedData()
 //                MyApplication.logEvent("Purchase_"+selectedPlan.sku, null)
                 inAppViewModel.makePurchase(requireActivity(), selectedPlan)
             }
@@ -102,21 +97,26 @@ class PurchasePreviewFragment : BaseFragment(){
                 object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
             )
         }
-        purchasePreviewAdapter = PurchasePreviewAdapter(arrayListOf(),planListAssignFromAdmin,discountPer,recyclerview)
-        recyclerview.adapter = purchasePreviewAdapter
+        purchaseNewAdapter = PurchaseNewAdapter(
+            arrayListOf(),
+            planListAssignFromAdmin,
+            discountPer,
+            recyclerview
+        )
+        recyclerview.adapter = purchaseNewAdapter
 
-        purchasePreviewInfoAdapter = PurchasePreviewInfoAdapter(list)
-        recyclerviewInfo.adapter = purchasePreviewInfoAdapter
+        purchaseInfoAdapter = PurchaseInfoAdapter(list)
+        recyclerviewInfo.adapter = purchaseInfoAdapter
 
         setSubscription()
     }
 
     private fun setSubscription() = with(binding) {
         val idList: ArrayList<String> = arrayListOf()
-        idList.add(PRODUCT_ID_Subscription_Month1)
-        idList.add(PRODUCT_ID_Subscription_Year1)
-        idList.add(PRODUCT_ID_Subscription_Year1_Offer)
-        idList.add(PRODUCT_ID_All_lifetime)
+        idList.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1)
+        idList.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1)
+        idList.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer)
+        idList.add(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime)
 
         lifecycleScope.launch {
             oldPurchasedSkuList = apiViewModel.getInAppSKUPurchasedLiveExclude(idList)
@@ -134,20 +134,20 @@ class PurchasePreviewFragment : BaseFragment(){
             inAppSkuDetailsList.clear()
             inAppSkuDetailsList.addAll(it)
 
-            inAppSkuDetailsList.find { it.sku ==  PRODUCT_ID_All_lifetime}.also { lifeTimePlan ->
+            inAppSkuDetailsList.find { it.sku == BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime }.also { lifeTimePlan ->
                 if (lifeTimePlan != null){
                     if (lifeTimePlan.isPurchase){
-                        inAppSkuDetailsList.find { it.sku ==  PRODUCT_ID_Subscription_Month1}.also {
+                        inAppSkuDetailsList.find { it.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1 }.also {
                             if (it != null){
                                 inAppSkuDetailsList.remove(it)
                             }
                         }
-                        inAppSkuDetailsList.find { it.sku ==  PRODUCT_ID_Subscription_Year1}.also {
+                        inAppSkuDetailsList.find { it.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1 }.also {
                             if (it != null){
                                 inAppSkuDetailsList.remove(it)
                             }
                         }
-                        inAppSkuDetailsList.find { it.sku ==  PRODUCT_ID_Subscription_Year1_Offer}.also {
+                        inAppSkuDetailsList.find { it.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer }.also {
                             if (it != null){
                                 inAppSkuDetailsList.remove(it)
                             }
@@ -164,7 +164,7 @@ class PurchasePreviewFragment : BaseFragment(){
                 }
 
                 val sortedList = inAppSkuDetailsList.sortedWith { list1, list2 -> list1.sortOrder - list2.sortOrder }
-                purchasePreviewAdapter.setData(sortedList,original1YearData)
+                purchaseNewAdapter.setData(sortedList,original1YearData)
             }
         }
     }
@@ -175,10 +175,10 @@ class PurchasePreviewFragment : BaseFragment(){
                 val isPlanAssignFromAdmin = it != null
                 if (isPlanAssignFromAdmin){
                     when (mainList.sku) {
-                        PRODUCT_ID_Subscription_Month1 -> {
+                        BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1 -> {
                             isMonthlyPlanSubscribe = true
                         }
-                        PRODUCT_ID_Subscription_Year1 -> {
+                        BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1 -> {
                             isYearlyPlanSubscribe = true
                         }
                     }
@@ -186,19 +186,19 @@ class PurchasePreviewFragment : BaseFragment(){
             }
 
             when (mainList.sku) {
-                PRODUCT_ID_Subscription_Month1 -> {
+                BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1 -> {
                     if (mainList.isPurchase){
                         isMonthlyPlanSubscribe = true
                     }
                     inAppSkuDetailsList[index].sortOrder = 1
                 }
-                PRODUCT_ID_Subscription_Year1_Offer -> {
+                BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer -> {
                     if (mainList.isPurchase){
                         isYearlyPlanOfferSubscribe = true
                     }
                     inAppSkuDetailsList[index].sortOrder = 2
                 }
-                PRODUCT_ID_Subscription_Year1 -> {
+                BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1 -> {
                     if (mainList.isPurchase){
                         isYearlyPlanSubscribe = true
                     }
@@ -208,34 +208,34 @@ class PurchasePreviewFragment : BaseFragment(){
         }
 
         if (isYearlyPlanSubscribe || isYearlyPlanOfferSubscribe){
-            inAppSkuDetailsList.find { it.sku ==  PRODUCT_ID_Subscription_Month1}.also {
+            inAppSkuDetailsList.find { it.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1 }.also {
                 if (it != null){
                     inAppSkuDetailsList.remove(it)
                 }
             }
 
             if (isYearlyPlanSubscribe){
-                inAppSkuDetailsList.find { it.sku ==  PRODUCT_ID_Subscription_Year1_Offer}.also {
+                inAppSkuDetailsList.find { it.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer }.also {
                     if (it != null){
                         inAppSkuDetailsList.remove(it)
                     }
                 }
             }else{
-                inAppSkuDetailsList.find { it.sku ==  PRODUCT_ID_Subscription_Year1}.also {
+                inAppSkuDetailsList.find { it.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1 }.also {
                     if (it != null){
                         inAppSkuDetailsList.remove(it)
                     }
                 }
             }
         }else if (discountPer > 0){
-            inAppSkuDetailsList.find { it.sku ==  PRODUCT_ID_Subscription_Year1}.also {
+            inAppSkuDetailsList.find { it.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1 }.also {
                 if (it != null){
                     original1YearData = it
                     inAppSkuDetailsList.remove(it)
                 }
             }
         }else{
-            inAppSkuDetailsList.find { it.sku ==  PRODUCT_ID_Subscription_Year1_Offer}.also {
+            inAppSkuDetailsList.find { it.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer }.also {
                 if (it != null){
                     inAppSkuDetailsList.remove(it)
                 }

@@ -4,11 +4,9 @@ import android.app.Activity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.jigar.me.R
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
-import com.jigar.me.databinding.BottomSheetCcmCompleteBinding
 import com.jigar.me.databinding.BottomSheetOldPurchasesBinding
-import com.jigar.me.ui.view.dashboard.fragments.purchase.video_play.PurchasePreviewAdapter
+import com.jigar.me.ui.view.dashboard.fragments.purchase.newui.PurchaseNewAdapter
 import com.jigar.me.utils.Constants
-import com.jigar.me.utils.PlaySound
 import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.setBottomSheetDialogAttr
 
@@ -26,8 +24,8 @@ object OldPurchasesBottomSheet {
                 bottomSheetDialog.dismiss()
             }
 
-            val purchasePreviewAdapter = PurchasePreviewAdapter(oldPurchasedSkuList,arrayListOf(),0,recyclerview,isOnlyView = true)
-            recyclerview.adapter = purchasePreviewAdapter
+            val purchaseNewAdapter = PurchaseNewAdapter(oldPurchasedSkuList,arrayListOf(),0,recyclerview,isOnlyView = true)
+            recyclerview.adapter = purchaseNewAdapter
 
             bottomSheetDialog.setContentView(root)
         }

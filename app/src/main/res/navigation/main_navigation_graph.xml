@@ -263,7 +263,7 @@
         android:name="com.jigar.me.ui.view.dashboard.fragments.purchase.PurchaseFragmentOld"/>
     <fragment
         android:id="@+id/purchaseFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.purchase.PurchasePreviewFragment"/>
+        android:name="com.jigar.me.ui.view.dashboard.fragments.purchase.newui.PurchaseNewFragment"/>
 
     <!--  Exam fragments  -->
     <fragment

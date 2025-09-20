@@ -74,7 +74,7 @@
                                 android:scrollbars="none"
                                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                                 tools:itemCount="4"
-                                tools:listitem="@layout/raw_purchase_preview_info" />
+                                tools:listitem="@layout/raw_purchase_info" />
 
                         </com.google.android.material.card.MaterialCardView>
 
@@ -130,7 +130,7 @@
                     android:scrollbars="none"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:itemCount="1"
-                    tools:listitem="@layout/raw_purchase_preview" />
+                    tools:listitem="@layout/raw_purchase_new" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnSubmit"
