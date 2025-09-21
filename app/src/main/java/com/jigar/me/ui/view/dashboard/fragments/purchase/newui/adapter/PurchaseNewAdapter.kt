@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.dashboard.fragments.purchase.newui
+package com.jigar.me.ui.view.dashboard.fragments.purchase.newui.adapter
 
 import android.content.res.ColorStateList
 import android.graphics.Paint

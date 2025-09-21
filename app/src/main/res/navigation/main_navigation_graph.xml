@@ -7,8 +7,8 @@
         android:id="@+id/homeNewFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.home_new.HomeNewFragment">
         <action
-            android:id="@+id/toHomeFragment"
-            app:destination="@+id/homeFragment" />
+            android:id="@+id/toVideoPreviewFragment"
+            app:destination="@+id/videoPreviewFragment" />
         <action
             android:id="@+id/toCategoryFragment"
             app:destination="@+id/categoryFragment" />
@@ -50,6 +50,9 @@
             app:destination="@+id/myProfileFragment" />
     </fragment>
 
+    <fragment
+        android:id="@+id/videoPreviewFragment"
+        android:name="com.jigar.me.ui.view.dashboard.fragments.purchase.video_play.previews.VideoPreviewFragment"/>
     <fragment
         android:id="@+id/categoryFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.home_new.category.CategoryFragment">

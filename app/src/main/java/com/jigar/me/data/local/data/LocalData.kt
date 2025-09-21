@@ -21,6 +21,8 @@ data class MyAccountMenu(
 )
 data class AvatarImages(val id: Int, val image: Int)
 data class FAQs(val question: String, val answer: String)
+data class VideoTutorial(val videoName: String, val title: String,val pointsList : ArrayList<String>)
+
 data class AbacusContent(val type: String, val beadImage: Int, val abacusFrame135 : Int, val abacusFrameExam135 : Int,
                          val dividerColor1 : Int, val resetBtnColor8 : Int, val beadHeight : Int, val beadWidth : Int,
                          val beadSpace : Int, val topBeadClose : Int, val topBeadOpen : Int, var bottomBeadClose: ArrayList<Int>,

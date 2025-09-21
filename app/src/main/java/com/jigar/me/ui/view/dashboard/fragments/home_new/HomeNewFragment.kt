@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.android.billingclient.api.BillingClient
@@ -33,19 +32,16 @@ import com.jigar.me.data.model.data.GooglePurchasedPlanRequest
 import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
-import com.jigar.me.data.model.data.ReviewData
 import com.jigar.me.data.model.dbtable.abacus_all_data.Level
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.databinding.FragmentHomeNewBinding
-import com.jigar.me.internal.workmanagers.FetchAbacusDataWorkManager
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.base.inapp.BillingRepository
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.SelectAvatarProfileDialog
-import com.jigar.me.ui.view.confirm_alerts.dialogs.PurchaseByReviewDialog
 import com.jigar.me.ui.view.confirm_alerts.dialogs.SelectThemeDialog
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
-import com.jigar.me.ui.view.dashboard.fragments.home_new.BannerPagerAdapter
+import com.jigar.me.ui.view.other.ContactUsActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.StudentViewModel
 import com.jigar.me.utils.AppConstants
@@ -53,7 +49,6 @@ import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.Resource
 import com.jigar.me.utils.checkPermissions
-import com.jigar.me.utils.extensions.getBottomNavBarHeight
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.openURL
@@ -69,10 +64,6 @@ import java.util.Calendar
 import java.util.Timer
 import java.util.TimerTask
 import java.util.concurrent.TimeUnit
-import androidx.navigation.findNavController
-import com.jigar.me.ui.view.other.ContactUsActivity
-import com.jigar.me.utils.extensions.getScreenHeight
-import com.jigar.me.utils.extensions.getScreenWidth
 
 @AndroidEntryPoint
 class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
@@ -523,7 +514,8 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 requireContext().openURL("https://play.google.com/store/apps/details?id=${requireContext().packageName}")
             }
             Constants.banner_share -> {
-                moveToClick(AppConstants.HomeClicks.Menu_Share)
+//                moveToClick(AppConstants.HomeClicks.Menu_Share)
+                mNavController?.navigate(R.id.toVideoPreviewFragment)
             }
             Constants.banner_bulk_login -> {
 //                mNavController?.navigate(R.id.toPurchaseFragmentOld)

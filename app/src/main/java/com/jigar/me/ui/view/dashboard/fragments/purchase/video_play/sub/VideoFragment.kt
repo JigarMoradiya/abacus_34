@@ -1,6 +1,5 @@
-package com.jigar.me.ui.view.dashboard.fragments.purchase.video_play
+package com.jigar.me.ui.view.dashboard.fragments.purchase.video_play.sub
 
-import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +8,6 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
@@ -19,8 +17,6 @@ import com.jigar.me.databinding.FragmentPurchasePreviewVideoBinding
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
 
@@ -46,18 +42,19 @@ class VideoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Set dimension ratio
-        val constraintSet = ConstraintSet().apply {
-            clone(binding.conVideo)
-            if (assetFileName == "video_free_mode.mp4") {
-                setDimensionRatio(binding.playerView.id, "1920:882")
-            } else {
-                setDimensionRatio(binding.playerView.id, "1920:954")
-            }
-        }
-        constraintSet.applyTo(binding.conVideo)
+//        val constraintSet = ConstraintSet().apply {
+//            clone(binding.conVideo)
+//            if (assetFileName == "video_free_mode.mp4") {
+//                setDimensionRatio(binding.playerView.id, "1920:882")
+//            } else {
+//                setDimensionRatio(binding.playerView.id, "1920:954")
+//            }
+//        }
+//        constraintSet.applyTo(binding.conVideo)
 
         // Copy asset to cache
         val file = File(requireContext().cacheDir, assetFileName)
+        file.delete()
         if (!file.exists()) {
             requireContext().assets.open(assetFileName).use { inputStream ->
                 FileOutputStream(file).use { outputStream ->
@@ -68,7 +65,6 @@ class VideoFragment : Fragment() {
         val videoUri = Uri.fromFile(file)
         binding.playerView.defaultArtwork = ContextCompat.getDrawable(requireContext(), R.drawable.placeholder)
         binding.playerView.setKeepContentOnPlayerReset(true)
-        binding.playerView.useArtwork = true
 
         // Initialize Media3 ExoPlayer
         player = ExoPlayer.Builder(requireContext()).build().apply {

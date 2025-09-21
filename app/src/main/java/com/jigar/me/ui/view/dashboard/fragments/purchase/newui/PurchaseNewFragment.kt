@@ -18,7 +18,8 @@ import com.jigar.me.databinding.FragmentPurchasePreviewBinding
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.base.inapp.BillingRepository
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.OldPurchasesBottomSheet
-import com.jigar.me.ui.view.dashboard.fragments.purchase.newui.PurchaseNewAdapter
+import com.jigar.me.ui.view.dashboard.fragments.purchase.newui.adapter.PurchaseNewAdapter
+import com.jigar.me.ui.view.dashboard.fragments.purchase.newui.adapter.PurchaseInfoAdapter
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.InAppViewModel
 import com.jigar.me.utils.AppConstants

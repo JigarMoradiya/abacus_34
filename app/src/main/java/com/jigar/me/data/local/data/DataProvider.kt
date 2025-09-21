@@ -17,29 +17,24 @@ import androidx.core.graphics.toColorInt
 
 
 object DataProvider {
-    fun getAppPaidFeatureList(context: Context): List<String>{
+    fun getVideoPreviewList(context: Context): List<VideoTutorial>{
         return with(context){
             listOf(
-                getString(R.string.txt_purchase1),
-                getString(R.string.txt_purchase2),
-                getString(R.string.txt_purchase3),
-                getString(R.string.txt_purchase4),
-                getString(R.string.txt_purchase5),
-                getString(R.string.txt_purchase6),
-                getString(R.string.txt_purchase7),
-                getString(R.string.txt_purchase8),
-                getString(R.string.txt_purchase9),
-                getString(R.string.txt_purchase10),
-            )
-        }
-    }
-    fun getAppFreeFeatureList(context: Context): List<String>{
-        return with(context){
-            listOf(
-                getString(R.string.txt_free1),
-                getString(R.string.txt_free2),
-                getString(R.string.txt_free3),
-                getString(R.string.txt_free4),
+                VideoTutorial("video_free_mode.mp4","What Kid's Learn in Abacus Free Mode",
+                    arrayListOf("• Understanding the <b>structure and part<b> of the abacus",
+                        "• Easy abacus learning for <b>beginners</b>",
+                        "• Recognize <b>bead types</b> and <b>values</b>",
+                        "• <b>Finger techniques</b> for moving beads correctly",
+                         "• Learning to <b>read, represent and set numbers</b> on the abacus")),
+                VideoTutorial("video_abacus_practice.mp4","What Kids Learn in Abacus Practice Module",
+                    arrayListOf("• <b>Step-by-Step</b> Problem Solving with <b>Correct Bead Directions</b>",
+                        "• <b>Visualize Abacus Formula</b> at Every Step (including multiplication & division)",
+                        "• Learn to Enter Only <b>Final Answers</b> Support",
+                        "• <b>Practice Formal Exam Mode</b> with Correct & Incorrect Answer Tracking",
+                        "• Build Speed & Accuracy with <b>Timed Sets</b>",
+                        "• Understand <b>Wrong Bead Movement</b> with Direction Hints",
+                        "• <b>Toggle</b> Bead Direction & Formula Display from <b>Settings</b>",
+                    ))
             )
         }
     }

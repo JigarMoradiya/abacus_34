@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.dashboard.fragments.purchase.newui
+package com.jigar.me.ui.view.dashboard.fragments.purchase.newui.adapter
 
 import android.view.ViewGroup
 import androidx.core.text.HtmlCompat
@@ -12,7 +12,7 @@ class PurchaseInfoAdapter(
     RecyclerView.Adapter<PurchaseInfoAdapter.FormViewHolder>() {
     fun setData(listData: List<String>) {
         this.listData = listData
-        notifyItemRangeChanged(0, listData.size)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FormViewHolder {
