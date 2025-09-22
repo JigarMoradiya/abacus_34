@@ -27,14 +27,20 @@ object DataProvider {
                         "• <b>Finger techniques</b> for moving beads correctly",
                          "• Learning to <b>read, represent and set numbers</b> on the abacus")),
                 VideoTutorial("video_abacus_practice.mp4","What Kids Learn in Abacus Practice Module",
-                    arrayListOf("• <b>Step-by-Step</b> Problem Solving with <b>Correct Bead Directions</b>",
-                        "• <b>Visualize Abacus Formula</b> at Every Step (including multiplication & division)",
-                        "• Learn to Enter Only <b>Final Answers</b> Support",
-                        "• <b>Practice Formal Exam Mode</b> with Correct & Incorrect Answer Tracking",
-                        "• Build Speed & Accuracy with <b>Timed Sets</b>",
-                        "• Understand <b>Wrong Bead Movement</b> with Direction Hints",
-                        "• <b>Toggle</b> Bead Direction & Formula Display from <b>Settings</b>",
-                    ))
+                    arrayListOf("• <b>Step-by-Step</b> problem solving with <b>correct bead directions</b>",
+                        "• <b>Visualize abacus formula</b> at every step (including multiplication & division)",
+                        "• Learn to enter only <b>final answers</b> support",
+                        "• <b>Practice formal exam mode</b> with correct & incorrect answer tracking",
+                        "• Build speed & accuracy with <b>timed sets</b>",
+                        "• Understand <b>wrong bead movement</b> with direction hints",
+                        "• <b>Hide/Show</b> bead direction & formula display from <b>settings</b>",
+                        "• <b>Supports left & right hand use</b> - kids practice comfortably with their natural hand",
+                    )),
+                VideoTutorial("video_exercise.mp4","What Kid's do in Exercise Module",
+                    arrayListOf("• <b>Start</b> Addition, Subtraction, Multiplication, and Division challenges <b>based on their learning level</b>",
+                        "• <b>Practice</b> with different sets of exercises and <b>time limits to improve speed and focus</b>",
+                        "• <b>Build</b> exam-like stamina with structured question sets and <b>countdown timers</b>",
+                        "• <b>Improve</b> concentration, memory retention, and mental agility <b>through flow-based drills</b>")),
             )
         }
     }
