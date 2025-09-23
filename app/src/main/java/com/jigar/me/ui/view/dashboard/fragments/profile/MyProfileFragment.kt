@@ -158,6 +158,9 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
             "report_history" -> {
                 mNavController.navigate(R.id.action_myProfileFragment_to_reportsHomeFragment)
             }
+            "about_app" -> {
+                mNavController.navigate(R.id.toVideoPreviewFragment)
+            }
             "edit_profile" -> {
                 mNavController.navigate(R.id.action_myProfileFragment_to_editProfileFragment)
             }

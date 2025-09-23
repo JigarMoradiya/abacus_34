@@ -100,6 +100,9 @@
             android:id="@+id/action_myProfileFragment_to_editProfileFragment"
             app:destination="@+id/editProfileFragment" />
         <action
+            android:id="@+id/toVideoPreviewFragment"
+            app:destination="@+id/videoPreviewFragment" />
+        <action
             android:id="@+id/toPurchaseFragment"
             app:destination="@+id/purchaseFragment" />
         <action
