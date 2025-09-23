@@ -13,20 +13,14 @@ class InAppSKUDB @Inject constructor(private val dao: InAppSKUDao,private val pr
     suspend fun saveInAppSKU(data: MutableList<ProductDetails>) = withContext(Dispatchers.IO) {
         dao.insertOrUpdate(data)
     }
-    fun getInAppSKUPurchasedLive(): LiveData<List<InAppSkuDetails>> {
-        return dao.getInAppSKUPurchasedLive()
-    }
     suspend fun getInAppSKUPurchased(): List<InAppSkuDetails> {
         return dao.getInAppSKUPurchased()
     }
     suspend fun getInAppSKUPurchasedLiveExclude(excludeIds : ArrayList<String>): List<InAppSkuDetails> {
         return dao.getInAppSKUPurchasedLiveExclude(excludeIds)
     }
-    fun getInAppSKU(displayList : ArrayList<String>): LiveData<List<InAppSkuDetails>> {
+    fun getInAppSKU(displayList : ArrayList<String>): List<InAppSkuDetails> {
         return dao.getInAppSku(displayList)
-    }
-    fun getInAppSKUDetail(sku : String): List<InAppSkuDetails> {
-        return dao.getInAppSkuDetail(sku)
     }
     suspend fun deleteInAppSKU() = withContext(Dispatchers.IO) {
         dao.deleteInAppSKU()

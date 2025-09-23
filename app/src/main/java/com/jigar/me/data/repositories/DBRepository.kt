@@ -25,13 +25,9 @@ class DBRepository @Inject constructor(
     suspend fun deleteInAppPurchase() = inAppPurchaseDB.deleteInAppPurchase()
 
     fun getInAppSKU(displayList : ArrayList<String>) = inAppSKUDB.getInAppSKU(displayList)
-    fun getInAppSKUPurchasedLive() = inAppSKUDB.getInAppSKUPurchasedLive()
     suspend fun getInAppSKUPurchased() = inAppSKUDB.getInAppSKUPurchased()
     suspend fun getInAppSKUPurchasedLiveExclude(excludeIds : ArrayList<String>) = inAppSKUDB.getInAppSKUPurchasedLiveExclude(excludeIds)
     suspend fun deleteInAppSKU() = inAppSKUDB.deleteInAppSKU()
-    fun getInAppSKUDetail(sku : String) = inAppSKUDB.getInAppSKUDetail(sku)
-
-    suspend fun saveExamResultDB(data: ExamHistory) = examHistoryDB.insert(data)
     fun getExamHistoryList(examType: String) = examHistoryDB.getExamHistoryList(examType)
 
     // abacus all data

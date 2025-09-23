@@ -93,9 +93,8 @@ class PurchaseFragmentOld : BaseFragment(), PurchaseAdapter.OnItemClickListener 
                 }
             }
 
-
-            apiViewModel.getInAppSKU(idList).observe(viewLifecycleOwner){
-                setSKU(it)
+            lifecycleScope.launch {
+                setSKU(apiViewModel.getInAppSKU(idList))
             }
         }
 

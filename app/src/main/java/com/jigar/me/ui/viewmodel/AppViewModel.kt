@@ -1,42 +1,24 @@
 package com.jigar.me.ui.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.data.model.dbtable.abacus_all_data.Level
 import com.jigar.me.data.model.dbtable.abacus_all_data.Pages
 import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
-import com.jigar.me.data.model.dbtable.exam.ExamHistory
-import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.data.repositories.DBRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class AppViewModel @Inject constructor(private val dbRepository: DBRepository) : ViewModel() {
     suspend fun getPurchasesSku() = dbRepository.getPurchasesSku()
     fun getInAppSKU(displayList : ArrayList<String>) = dbRepository.getInAppSKU(displayList)
-    fun getInAppSKUPurchasedLive() = dbRepository.getInAppSKUPurchasedLive()
     suspend fun getInAppSKUPurchased() = dbRepository.getInAppSKUPurchased()
     suspend fun getInAppSKUPurchasedLiveExclude(excludeIds : ArrayList<String>) = dbRepository.getInAppSKUPurchasedLiveExclude(excludeIds)
     suspend fun deleteInAppSKU() = dbRepository.deleteInAppSKU()
     suspend fun deleteInAppPurchase() = dbRepository.deleteInAppPurchase()
 
-    fun getInAppSKUDetail(sku : String) : LiveData<List<InAppSkuDetails>>{
-        val result = MutableLiveData<List<InAppSkuDetails>>()
-        viewModelScope.launch(Dispatchers.IO) {
-            val list = dbRepository.getInAppSKUDetail(sku)
-            result.postValue(list)
-        }
-        return result
-    }
-
-    suspend fun saveExamResultDB(data: ExamHistory) = dbRepository.saveExamResultDB(data)
     fun getExamHistoryList(examType :String) = dbRepository.getExamHistoryList(examType)
 
     // abacus all data

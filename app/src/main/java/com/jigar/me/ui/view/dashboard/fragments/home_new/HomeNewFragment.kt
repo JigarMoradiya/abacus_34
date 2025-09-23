@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -136,11 +137,11 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     }
 
     private fun setPurchaseData() {
-        appViewModel.getInAppSKUPurchasedLive().observe(viewLifecycleOwner){
-            if (it.isNotNullOrEmpty()){
-                if (!(activity as MainDashboardActivity).isPurchaseDataChecked){
-                    createPurchasedPlanRequest(it)
-                }
+        lifecycleScope.launch{
+            val purchasedList = appViewModel.getInAppSKUPurchased()
+            Log.e("jigarHomeNew","purchasedList = "+ Gson().toJson(purchasedList))
+            if (purchasedList.isNotNullOrEmpty()){
+                createPurchasedPlanRequest(purchasedList)
             }
         }
     }
@@ -166,13 +167,6 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
             }
         }
     }
-
-//    private fun openReviewOfferPopup() {
-//        PurchaseByReviewDialog.showPopup(requireActivity(),object : PurchaseByReviewDialog.DialogCloseInterface{
-//            override fun onSubmitYesClick() {
-//            }
-//        })
-//    }
 
     private fun initObserver() {
         studentViewModel.handleExistingPurchaseResponse.observe(this) {
@@ -601,9 +595,6 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     }
 
     private fun createPurchasedPlanRequest(purchasedList: List<InAppSkuDetails>) {
-        if (purchasedList.isNotNullOrEmpty()){
-            (activity as MainDashboardActivity).isPurchaseDataChecked = true
-        }
         purchasedListReq.clear()
         purchasedList.map {
             with(it){
@@ -667,6 +658,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 purchasedListReq.add(GooglePurchasedPlanRequest(google_plan_id,google_order_id, is_lifetime_plan, is_all_feature, start_date, end_date,purchase_price,purchase_currency, no_of_renewals))
             }
         }
+        Log.e("jigarHomeNew","purchasedListReq = "+ Gson().toJson(purchasedListReq))
         studentViewModel.handleExistingPurchase(PurchasedPlanCheckRequest(purchasedListReq))
     }
 }
