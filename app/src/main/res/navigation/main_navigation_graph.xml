@@ -176,34 +176,6 @@
         android:id="@+id/youtubeVideoFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.youtubevideo.YoutubeVideoFragment"/>
     <fragment
-        android:id="@+id/pageFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.page.PageFragment">
-        <argument
-            android:name="from"
-            app:argType="integer" />
-        <argument
-            android:name="title"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_pageFragment_to_halfAbacusFragment"
-            app:destination="@+id/halfAbacusFragment" />
-        <action
-            android:id="@+id/toTempAbacusListFragment"
-            app:destination="@+id/tempAbacusListFragment" />
-        <action
-            android:id="@+id/toSettingsFragment"
-            app:destination="@+id/settingsFragment" />
-        <action
-            android:id="@+id/toPurchaseFragment"
-            app:destination="@+id/purchaseFragment" />
-        <action
-            android:id="@+id/action_pageFragment_to_multiplicationTablesFragment"
-            app:destination="@+id/multiplicationTablesFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/tempAbacusListFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.page.TempAbacusListFragment"/>
-    <fragment
         android:id="@+id/multiplicationTablesFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.tables.MultiplicationTablesFragment">
         <action
@@ -216,16 +188,6 @@
     <fragment
         android:id="@+id/faqsFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.faqs.FAQsFragment"/>
-    <fragment
-        android:id="@+id/halfAbacusFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.abacus.half.HalfAbacusFragment">
-        <action
-            android:id="@+id/toSettingsFragment"
-            app:destination="@+id/settingsFragment" />
-        <action
-            android:id="@+id/toPurchaseFragment"
-            app:destination="@+id/purchaseFragment" />
-    </fragment>
     <fragment
         android:id="@+id/puzzleNumberHomeFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.number_puzzles.PuzzleNumberHomeFragment">

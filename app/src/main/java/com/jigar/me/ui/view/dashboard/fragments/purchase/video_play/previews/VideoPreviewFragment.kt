@@ -14,11 +14,10 @@ import com.jigar.me.data.local.data.VideoTutorial
 import com.jigar.me.databinding.FragmentVideoPreviewBinding
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.dashboard.fragments.purchase.newui.adapter.PurchaseInfoAdapter
+import com.jigar.me.ui.view.dashboard.fragments.purchase.video_play.sub.VideoFragment
 import com.jigar.me.ui.view.dashboard.fragments.purchase.video_play.sub.VideoPagerAdapter
-import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.onClick
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class VideoPreviewFragment : BaseFragment(){
@@ -27,6 +26,7 @@ class VideoPreviewFragment : BaseFragment(){
     private lateinit var purchaseInfoAdapter: PurchaseInfoAdapter
 
     private var videoFilesList : List<VideoTutorial> = arrayListOf()
+    private var currentPosition: Int = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentVideoPreviewBinding.inflate(inflater, container, false)
@@ -35,6 +35,7 @@ class VideoPreviewFragment : BaseFragment(){
         initListener()
         return binding.root
     }
+
     private fun setNavigationGraph() {
         mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
@@ -47,9 +48,7 @@ class VideoPreviewFragment : BaseFragment(){
 
     private fun initViews() = with(binding){
         videoFilesList = DataProvider.getVideoPreviewList(requireContext())
-//        spaceNotch.layoutParams.width = prefManager.getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
         viewPager.adapter = VideoPagerAdapter(this@VideoPreviewFragment, videoFilesList)
-//        viewPager.setPageTransformer( true , DepthPageTransformer() )
         indicatorPager.attachToPager(viewPager)
 
         purchaseInfoAdapter = PurchaseInfoAdapter(arrayListOf())
@@ -60,6 +59,14 @@ class VideoPreviewFragment : BaseFragment(){
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 setData(position)
+
+                // Pause previous
+                (childFragmentManager.findFragmentByTag("f$currentPosition") as? VideoFragment)?.pauseVideo()
+
+                // Play current
+                (childFragmentManager.findFragmentByTag("f$position") as? VideoFragment)?.playVideo()
+
+                currentPosition = position
             }
         })
     }
