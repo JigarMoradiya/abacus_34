@@ -41,6 +41,15 @@ object DataProvider {
                         "• <b>Practice</b> with different sets of exercises and <b>time limits to improve speed and focus</b>",
                         "• <b>Build</b> exam-like stamina with structured question sets and <b>countdown timers</b>",
                         "• <b>Improve</b> concentration, memory retention, and mental agility <b>through flow-based drills</b>")),
+                VideoTutorial("video_exam.mp4","What Kid's do in Exam Module",
+                    arrayListOf(
+                        "• <b>Simulated Test Environment –</b> Practice under real exam-like conditions to build accuracy and confidence",
+                        "• <b>Math Types Supported –</b> Addition, Subtraction, Multiplication, and Division",
+                        "• <b>Difficulty Levels –</b> Choose from Easy, Medium, or Hard for progressive learning",
+                        "• <b>Multiple-Choice Format –</b> Each question comes with 4 options to develop decision-making skills",
+                        "• <b>Timer Display –</b> Track how long you take without strict time pressure",
+                        "• <b>Competition-Ready –</b> Perfect for UCMAS exams, school tests, math competitions, and abacus contests",
+                        "• <b>Focused Training –</b> Builds exam temperament, speed, and logical thinking")),
             )
         }
     }

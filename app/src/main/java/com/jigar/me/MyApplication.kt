@@ -55,6 +55,7 @@ class MyApplication : Application(), Configuration.Provider {
         instance = this
         alreadyCalledversionCheck = false
         System.loadLibrary("native-lib")
+        System.loadLibrary("sqlcipher")
     }
 
     @Inject
@@ -186,35 +187,11 @@ class MyApplication : Application(), Configuration.Provider {
                             Constants.notificationTypeStarter -> {
                                 moveToDestination(R.id.fullAbacusFragment)
                             }
-                            Constants.notificationTypeNumber -> {
-                                moveToPages(AppConstants.HomeClicks.Menu_Number,getString(R.string.page_title_Number))
-                            }
-                            Constants.notificationTypeAddition -> {
-                                moveToPages(AppConstants.HomeClicks.Menu_Addition_Subtraction,getString(R.string.page_title_AdditionSubtraction))
-                            }
-                            Constants.notificationTypeSubtraction -> {
-                                moveToPages(AppConstants.HomeClicks.Menu_Formulas,getString(R.string.page_title_Formulas))
-                            }
-                            Constants.notificationTypeMultiplication -> {
-                                moveToPages(AppConstants.HomeClicks.Menu_Multiplication,getString(R.string.page_title_Multiplication))
-                            }
-                            Constants.notificationTypeDivision -> {
-                                moveToPages(AppConstants.HomeClicks.Menu_Division,getString(R.string.page_title_Division))
-                            }
-                            Constants.notificationTypeMaterial -> {
-                                moveToDestination(R.id.materialHomeFragment)
-                            }
                             Constants.notificationTypeExercise -> {
                                 moveToDestination(R.id.exerciseHomeFragment)
                             }
                             Constants.notificationTypeCCM -> {
                                 moveToDestination(R.id.customChallengeHomeFragment)
-                            }
-                            Constants.notificationTypeMaterialMath -> {
-                                moveToPractiseMaterialType(AppConstants.extras_Comman.DownloadType_Maths)
-                            }
-                            Constants.notificationTypeMaterialNursery -> {
-                                moveToPractiseMaterialType(AppConstants.extras_Comman.DownloadType_Nursery)
                             }
                             Constants.notificationTypeExam -> {
                                 moveToDestination(R.id.examHomeFragment)
@@ -379,18 +356,6 @@ class MyApplication : Application(), Configuration.Provider {
         NavDeepLinkBuilder(this)
             .setGraph(R.navigation.main_navigation_graph)
             .setDestination(R.id.pageFragment)
-            .setArguments(args)
-            .setComponentName(MainDashboardActivity::class.java)
-            .createTaskStackBuilder().getPendingIntent(1,PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)!!
-            .send()
-    }
-    private fun moveToPractiseMaterialType(downloadType : String) {
-        val args = Bundle()
-        args.putString("downloadType", downloadType)
-
-        NavDeepLinkBuilder(this)
-            .setGraph(R.navigation.main_navigation_graph)
-            .setDestination(R.id.materialDownloadFragment)
             .setArguments(args)
             .setComponentName(MainDashboardActivity::class.java)
             .createTaskStackBuilder().getPendingIntent(1,PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)!!

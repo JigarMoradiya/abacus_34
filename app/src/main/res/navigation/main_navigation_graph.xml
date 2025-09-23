@@ -227,23 +227,6 @@
             app:destination="@+id/purchaseFragment" />
     </fragment>
     <fragment
-        android:id="@+id/materialHomeFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.practise_material.MaterialHomeFragment">
-        <action
-            android:id="@+id/action_materialHomeFragment_to_materialDownloadFragment"
-            app:destination="@+id/materialDownloadFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/materialDownloadFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.practise_material.MaterialDownloadFragment">
-        <argument
-            android:name="downloadType"
-            app:argType="string" />
-        <action
-            android:id="@+id/toPurchaseFragment"
-            app:destination="@+id/purchaseFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/puzzleNumberHomeFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.number_puzzles.PuzzleNumberHomeFragment">
         <action

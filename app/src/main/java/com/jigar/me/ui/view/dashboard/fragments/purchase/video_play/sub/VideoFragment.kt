@@ -2,6 +2,7 @@ package com.jigar.me.ui.view.dashboard.fragments.purchase.video_play.sub
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,8 @@ import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
+import com.google.android.play.core.assetpacks.AssetPackManager
+import com.google.android.play.core.assetpacks.AssetPackManagerFactory
 import com.jigar.me.R
 import com.jigar.me.databinding.FragmentPurchasePreviewVideoBinding
 import com.jigar.me.utils.extensions.hide
@@ -19,6 +22,8 @@ import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.io.FileOutputStream
+import androidx.core.net.toUri
+import com.google.android.play.core.assetpacks.AssetPackStateUpdateListener
 
 @AndroidEntryPoint
 class VideoFragment : Fragment() {
@@ -28,7 +33,7 @@ class VideoFragment : Fragment() {
     private val binding get() = _binding!!
 
     private var player: ExoPlayer? = null
-
+    private var assetPackManager: AssetPackManager? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,29 +45,25 @@ class VideoFragment : Fragment() {
     @UnstableApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupAssetPack()
+        setupInstallTime()
+    }
 
-        // Set dimension ratio
-//        val constraintSet = ConstraintSet().apply {
-//            clone(binding.conVideo)
-//            if (assetFileName == "video_free_mode.mp4") {
-//                setDimensionRatio(binding.playerView.id, "1920:882")
-//            } else {
-//                setDimensionRatio(binding.playerView.id, "1920:954")
+    @UnstableApi
+    private fun setupInstallTime() {
+        // Copy asset to cache
+//        val file = File(requireContext().cacheDir, assetFileName)
+//        file.delete()
+//        if (!file.exists()) {
+//            requireContext().assets.open(assetFileName).use { inputStream ->
+//                FileOutputStream(file).use { outputStream ->
+//                    inputStream.copyTo(outputStream)
+//                }
 //            }
 //        }
-//        constraintSet.applyTo(binding.conVideo)
+//        val videoUri = Uri.fromFile(file)
 
-        // Copy asset to cache
-        val file = File(requireContext().cacheDir, assetFileName)
-        file.delete()
-        if (!file.exists()) {
-            requireContext().assets.open(assetFileName).use { inputStream ->
-                FileOutputStream(file).use { outputStream ->
-                    inputStream.copyTo(outputStream)
-                }
-            }
-        }
-        val videoUri = Uri.fromFile(file)
+        val videoUri = "asset:///$assetFileName".toUri()
         binding.playerView.defaultArtwork = ContextCompat.getDrawable(requireContext(), R.drawable.placeholder)
         binding.playerView.setKeepContentOnPlayerReset(true)
 
@@ -91,6 +92,7 @@ class VideoFragment : Fragment() {
         }
         binding.playerView.player = player
     }
+
     override fun onPause() {
         super.onPause()
         player?.pause()   // Pause when fragment is not visible
@@ -106,6 +108,20 @@ class VideoFragment : Fragment() {
         player = null
         _binding = null
     }
+
+    private fun setupAssetPack() {
+        if (assetPackManager == null) {
+            assetPackManager = AssetPackManagerFactory.getInstance(this.requireContext())
+        }
+        assetPackManager?.registerListener(packStateListener)
+    }
+
+    private val packStateListener = AssetPackStateUpdateListener { assetPackState ->
+        val text = "\n" + "${assetPackState.name()}"
+        Log.e("jigarLogsss","text = "+text)
+
+    }
+
 
     companion object {
         fun newInstance(fileName: String): VideoFragment {

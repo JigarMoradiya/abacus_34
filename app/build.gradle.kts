@@ -15,7 +15,7 @@ plugins {
 android {
     namespace = "com.jigar.me"
     compileSdk = 36
-    ndkVersion = "25.1.8937393"
+    ndkVersion = "29.0.13599879"
 
     defaultConfig {
         applicationId = "com.jigar.me"
@@ -33,6 +33,9 @@ android {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
+
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
     compileOptions {
@@ -58,8 +61,8 @@ android {
 
             dimension = "variant1"
             applicationId = "com.abacus.puzzle"
-            versionCode = 142
-            versionName = "14.0.2"
+            versionCode = 144
+            versionName = "14.0.3"
         }
     }
     externalNativeBuild {
@@ -68,6 +71,8 @@ android {
             version = "4.0.2"
         }
     }
+
+    assetPacks += listOf(":asset_install_time")
 }
 
 dependencies {
@@ -76,6 +81,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
     implementation("androidx.navigation:navigation-fragment-ktx:2.9.4")
     implementation("androidx.navigation:navigation-ui-ktx:2.9.4")
+    implementation("com.google.android.play:asset-delivery-ktx:2.3.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.3.0")
     androidTestImplementation ("androidx.test.espresso:espresso-core:3.7.0")
@@ -139,8 +145,12 @@ dependencies {
     implementation("androidx.room:room-runtime:2.8.0")
     kapt("androidx.room:room-compiler:2.8.0")
     implementation("android.arch.persistence.room:rxjava2:1.1.1")
-    implementation("net.zetetic:android-database-sqlcipher:4.5.4@aar")
-    implementation("androidx.sqlite:sqlite-ktx:2.6.0")
+
+    implementation("net.zetetic:sqlcipher-android:4.10.0@aar")
+    implementation("androidx.sqlite:sqlite:2.6.0")
+
+//    implementation("net.zetetic:android-database-sqlcipher:4.5.4@aar")
+//    implementation("androidx.sqlite:sqlite-ktx:2.6.0")
     implementation("androidx.sqlite:sqlite-framework:2.6.0")
 
     // In App Purchase

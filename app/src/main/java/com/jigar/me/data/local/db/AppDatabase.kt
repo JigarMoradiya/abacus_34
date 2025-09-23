@@ -1,7 +1,6 @@
 package com.jigar.me.data.local.db
 
 import android.content.Context
-import android.os.Debug
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -25,8 +24,8 @@ import com.jigar.me.internal.workmanagers.FirstAppStartWorkManager
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.DataTypeConverter
-import net.sqlcipher.database.SQLiteDatabase
-import net.sqlcipher.database.SupportFactory
+import net.zetetic.database.sqlcipher.SupportOpenHelperFactory
+import java.nio.charset.StandardCharsets
 import java.util.concurrent.Executors
 
 
@@ -50,8 +49,9 @@ abstract class AppDatabase : RoomDatabase() {
         }
 
         private fun buildDatabase(context: Context) : AppDatabase{
-            val passphrase: ByteArray = SQLiteDatabase.getBytes(CommonUtils.getDatabaseKey().toCharArray())
-            val factory = SupportFactory(passphrase)
+            val passphrase: ByteArray = CommonUtils.getDatabaseKey().toByteArray(StandardCharsets.UTF_8)
+            val factory = SupportOpenHelperFactory(passphrase)
+
             val database  = Room.databaseBuilder(context, AppDatabase::class.java, AppConstants.DB_NAME_NEW)
                 .addCallback(
                     object : Callback() {
@@ -61,8 +61,8 @@ abstract class AppDatabase : RoomDatabase() {
                         }
                     }
                 )
-            if (!BuildConfig.DEBUG){
                 database.openHelperFactory(factory)
+            if (!BuildConfig.DEBUG){
             }
 
             val databaseBuild = database.build()

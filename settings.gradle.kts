@@ -17,4 +17,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Abacus Main"
 include(":app")
- 
+include(":asset_install_time")
