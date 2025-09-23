@@ -43,12 +43,6 @@ class PurchaseNewFragment : BaseFragment(){
     private var isMonthlyPlanSubscribe = false
     private var isYearlyPlanSubscribe = false
     private var isYearlyPlanOfferSubscribe = false
-
-    private val videoFiles = listOf(
-        "video_free_mode.mp4",
-        "video_free_mode_number.mp4"
-    )
-
     private val list: ArrayList<String> = arrayListOf(
         "⭐ <strong>Get unlimited access</strong> to all Abacus Levels, Exercises, Exams and Custom Challenge Modes Module.",
         "🧮 Practice Addition, Subtraction, Multiplication, Division, with <strong>smart bead directions</strong> and <strong>formula on every steps.</strong>",
@@ -87,8 +81,6 @@ class PurchaseNewFragment : BaseFragment(){
     }
 
     private fun initViews() = with(binding){
-//        inAppViewModel.inAppInit()
-//        viewPager.adapter = VideoPagerAdapter(this@PurchasePreviewFragment, videoFiles)
         spaceNotch.layoutParams.width = prefManager.getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
 
         discountPer = prefManager.getCustomParamInt(AppConstants.RemoteConfig.discountPer,0)
@@ -98,12 +90,7 @@ class PurchaseNewFragment : BaseFragment(){
                 object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
             )
         }
-        purchaseNewAdapter = PurchaseNewAdapter(
-            arrayListOf(),
-            planListAssignFromAdmin,
-            discountPer,
-            recyclerview
-        )
+        purchaseNewAdapter = PurchaseNewAdapter(arrayListOf(), planListAssignFromAdmin, discountPer, recyclerview)
         recyclerview.adapter = purchaseNewAdapter
 
         purchaseInfoAdapter = PurchaseInfoAdapter(list)
@@ -117,7 +104,7 @@ class PurchaseNewFragment : BaseFragment(){
         idList.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1)
         idList.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1)
         idList.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer)
-        idList.add(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime)
+//        idList.add(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime)
 
         lifecycleScope.launch {
             oldPurchasedSkuList = apiViewModel.getInAppSKUPurchasedLiveExclude(idList)

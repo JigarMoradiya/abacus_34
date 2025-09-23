@@ -2,25 +2,13 @@ package com.jigar.me.di
 
 import android.app.Application
 import android.content.Context
-import androidx.room.Room
 import com.jigar.me.BuildConfig
-import com.jigar.me.data.api.AppApi
 import com.jigar.me.data.api.ExamApi
 import com.jigar.me.data.api.LocationApi
 import com.jigar.me.data.api.StudentApi
 import com.jigar.me.data.api.UserApi
 import com.jigar.me.data.api.connections.RemoteDataSource
 import com.jigar.me.data.local.db.AppDatabase
-import com.jigar.me.data.local.db.Migrations.MIGRATION_10_11
-import com.jigar.me.data.local.db.Migrations.MIGRATION_1_2
-import com.jigar.me.data.local.db.Migrations.MIGRATION_2_3
-import com.jigar.me.data.local.db.Migrations.MIGRATION_3_4
-import com.jigar.me.data.local.db.Migrations.MIGRATION_4_5
-import com.jigar.me.data.local.db.Migrations.MIGRATION_5_6
-import com.jigar.me.data.local.db.Migrations.MIGRATION_6_7
-import com.jigar.me.data.local.db.Migrations.MIGRATION_7_8
-import com.jigar.me.data.local.db.Migrations.MIGRATION_8_9
-import com.jigar.me.data.local.db.Migrations.MIGRATION_9_10
 import com.jigar.me.data.local.db.abacus_all_data.AbacusAllDataDB
 import com.jigar.me.data.local.db.abacus_all_data.AbacusAllDataDao
 import com.jigar.me.data.local.db.exam.ExamHistoryDB
@@ -34,7 +22,8 @@ import com.jigar.me.data.pref.PreferenceInfo
 import com.jigar.me.data.pref.PreferencesHelper
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
-import dagger.*
+import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
@@ -80,14 +69,6 @@ object AppModule {
     fun providesAbacusAllDataDao(db: AppDatabase): AbacusAllDataDao = db.abacusAllDataDao()
     @Provides
     fun providesAbacusAllDataDB(dao: AbacusAllDataDao): AbacusAllDataDB = AbacusAllDataDB(dao)
-
-    @Singleton
-    @Provides
-    fun provideAppApi(@ApplicationContext context: Context,remoteDataSource: RemoteDataSource): AppApi {
-        val prefManager = AppPreferencesHelper(context, AppConstants.PREF_NAME)
-        return remoteDataSource.buildApi(AppApi::class.java, context, prefManager.getBaseUrl())
-//        return remoteDataSource.buildApi(AppApi::class.java, context, BuildConfig.API_MODULE)
-    }
 
     @Singleton
     @Provides

@@ -58,7 +58,7 @@ class MainDashboardActivity : BaseActivity() {
     lateinit var navHostFragment: NavHostFragment
     private var selectedFragment: Int = -1
     private val studentViewModel by viewModels<StudentViewModel>()
-    private val inAppViewModel by viewModels<InAppViewModel>()
+//    private val inAppViewModel by viewModels<InAppViewModel>()
     private val appViewModel by viewModels<AppViewModel>()
     private lateinit var binding: ActivityMainDashboardBinding
     var isPurchaseDataChecked = false
@@ -105,7 +105,7 @@ class MainDashboardActivity : BaseActivity() {
         }
 
         loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
-        inAppViewModel.inAppInit()
+//        inAppViewModel.inAppInit()
     }
 
     private fun onSuccessAbacusData(data: JsonObject?) {
