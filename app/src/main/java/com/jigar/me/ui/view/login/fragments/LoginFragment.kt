@@ -36,8 +36,10 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.Objects
 import androidx.navigation.findNavController
+import com.google.gson.reflect.TypeToken
 import com.jigar.me.data.model.data.AbacusAllData
 import com.jigar.me.data.model.data.FetchAbacusDataRequest
+import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.utils.Constants
 import kotlinx.coroutines.CoroutineScope
@@ -109,12 +111,6 @@ class LoginFragment : BaseFragment() {
             txtGoBack?.onClick {
                 mNavController?.navigateUp()
             }
-            txtSignup.onClick {
-                mNavController?.navigate(R.id.toSignupFragment)
-            }
-            txtForgotPassword.onClick {
-                mNavController?.navigate(R.id.toForgotPasswordFragment)
-            }
             cardFAQs.onClick {
                 mNavController?.navigate(R.id.toFAQsFragment)
             }
@@ -153,10 +149,11 @@ class LoginFragment : BaseFragment() {
                 is Resource.Loading -> {
                 }
                 is Resource.Success -> {
-                    hideLoading()
+
                     if (it.value.status == AppConstants.APIStatus.SUCCESS)
                         onSuccessAbacusData(it.value.data)
                     else{
+                        hideLoading()
                         onFailure(it.value.error?.message)
                     }
                 }
@@ -190,24 +187,25 @@ class LoginFragment : BaseFragment() {
                 }
             }
         }
-        studentViewModel.resendOTPResponse.observe(this) {
+        studentViewModel.appReviewsListResponse.observe(this) {
             when (it) {
                 is Resource.Loading -> {
-                    showLoading()
+
                 }
                 is Resource.Success -> {
                     hideLoading()
-                    if (it.value.status == AppConstants.APIStatus.SUCCESS){
-                        val action = LoginFragmentDirections.toOTPFragment(AppConstants.OTPScreen.signupStep,binding.etEmail.text.toString())
-                        mNavController?.navigate(action)
-                    }
-                    else
+                    if (it.value.status == AppConstants.APIStatus.SUCCESS)
+                    {
+                        checkPurchasedPlans(it.value.data)
+                    }else{
                         onFailure(it.value.error?.message)
+                    }
                 }
                 is Resource.Failure -> {
                     hideLoading()
                     onFailure(it.errorBody)
                 }
+                else -> {}
             }
         }
     }
@@ -219,9 +217,7 @@ class LoginFragment : BaseFragment() {
                 response.setProgress?.let {
                     appViewModel.insertSetProgress(it)
                 }
-                prefManager.setUserLoggedIn(true)
-
-                MainDashboardActivity.getInstance(requireContext())
+                studentViewModel.appReviewsList()
             }
         }
     }
@@ -229,18 +225,30 @@ class LoginFragment : BaseFragment() {
         val response = Gson().fromJson(data, LoginData::class.java)
         prefManager.setAccessToken(response.token)
         prefManager.setLoginData(Gson().toJson(data))
-        response.country?.let {
-            prefManager.setCountryCode(it)
-            if (it.equals(AppConstants.LoginData.LoginCountry_IN,true)){
-                prefManager.setIsCurrencyINR(true)
-            }else{
-                prefManager.setIsCurrencyINR(false)
-            }
-        }
+
         val defaultDateTime = Constants.last_sync_default_time
         val dateTime = prefManager.getCustomParam(Constants.last_sync_time,defaultDateTime)
         val request = FetchAbacusDataRequest(true, get_set_progress_report = true,last_sync_time = dateTime)
         studentViewModel.getAbacusData(request)
     }
 
+    private fun checkPurchasedPlans(data: JsonObject?) {
+        if (data?.has("plans_purchased_manually") == true){
+            if (data.getAsJsonArray("plans_purchased_manually")?.isEmpty == true){
+                prefManager.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"")
+            }else{
+                val list : List<PlanAssignFromAdminData> =  Gson().fromJson(data.getAsJsonArray("plans_purchased_manually"), object : TypeToken<List<PlanAssignFromAdminData>>() {}.type)
+                prefManager.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,Gson().toJson(list))
+            }
+        }
+
+        // trial_ends_at : "2025-10-11T14:00:00.000Z", free_trial_remaining_days, trial_period_offered
+        if (data?.has("free_trial_remaining_days") == true){
+            val free_trial_remaining_days = data.get("free_trial_remaining_days").asInt
+            prefManager.setCustomParamInt(Constants.free_trial_remaining_days,free_trial_remaining_days)
+        }
+
+        prefManager.setUserLoggedIn(true)
+        MainDashboardActivity.getInstance(requireContext())
+    }
 }

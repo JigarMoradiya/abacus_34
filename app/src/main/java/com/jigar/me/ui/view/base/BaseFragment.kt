@@ -32,6 +32,7 @@ import kotlinx.coroutines.Job
 import java.util.*
 import kotlin.coroutines.CoroutineContext
 import androidx.navigation.findNavController
+import com.jigar.me.ui.view.confirm_alerts.dialogs.FreeTrialLeftDialog
 
 abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSettingInterface {
     lateinit var prefManager : AppPreferencesHelper
@@ -107,6 +108,8 @@ abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSetting
             }
 //            setCustomParam(AppConstants.Purchase.Purchase_All, "N")
 //            Log.e("jigarLogs","Purchase_All New = "+getCustomParam(AppConstants.Purchase.Purchase_All,""))
+
+
         }
     }
 

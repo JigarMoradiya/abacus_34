@@ -58,7 +58,6 @@ class MainDashboardActivity : BaseActivity() {
     lateinit var navHostFragment: NavHostFragment
     private var selectedFragment: Int = -1
     private val studentViewModel by viewModels<StudentViewModel>()
-//    private val inAppViewModel by viewModels<InAppViewModel>()
     private val appViewModel by viewModels<AppViewModel>()
     private lateinit var binding: ActivityMainDashboardBinding
     var isPurchaseDataChecked = false
@@ -149,9 +148,9 @@ class MainDashboardActivity : BaseActivity() {
         setNavigationGraph()
         onMainActivityBack()
         getBottomNavBarHeight { topInset,bottomInset,hasNotch ->
-                prefManager.setCustomParamBoolean(AppConstants.HAS_NOTCH,hasNotch)
-                prefManager.setCustomParamInt(AppConstants.NOTCH_HEIGHT,topInset)
-                prefManager.setCustomParamInt(AppConstants.BOTTOM_NAV_HEIGHT,bottomInset)
+            prefManager.setCustomParamBoolean(AppConstants.HAS_NOTCH,hasNotch)
+            prefManager.setCustomParamInt(AppConstants.NOTCH_HEIGHT,topInset)
+            prefManager.setCustomParamInt(AppConstants.BOTTOM_NAV_HEIGHT,bottomInset)
         }
 
         if (!loginData?.email.equals("abacus@yopmail.com")){

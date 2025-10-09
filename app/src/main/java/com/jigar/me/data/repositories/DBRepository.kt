@@ -22,12 +22,10 @@ class DBRepository @Inject constructor(
 ) : SafeApiCall {
 
     suspend fun getPurchasesSku() = inAppPurchaseDB.getPurchasesSku()
-    suspend fun deleteInAppPurchase() = inAppPurchaseDB.deleteInAppPurchase()
 
     fun getInAppSKU(displayList : ArrayList<String>) = inAppSKUDB.getInAppSKU(displayList)
     suspend fun getInAppSKUPurchased() = inAppSKUDB.getInAppSKUPurchased()
     suspend fun getInAppSKUPurchasedLiveExclude(excludeIds : ArrayList<String>) = inAppSKUDB.getInAppSKUPurchasedLiveExclude(excludeIds)
-    suspend fun deleteInAppSKU() = inAppSKUDB.deleteInAppSKU()
     fun getExamHistoryList(examType: String) = examHistoryDB.getExamHistoryList(examType)
 
     // abacus all data
@@ -36,15 +34,11 @@ class DBRepository @Inject constructor(
     fun getLevel() = abacusAllDataDB.getLevel()
     suspend fun getCategory(id : String) = abacusAllDataDB.getCategory(id)
     suspend fun getPages(id: String, isGetAllData: Boolean) = abacusAllDataDB.getPages(id,isGetAllData)
-    suspend fun getSet(id : String) = abacusAllDataDB.getSet(id)
     suspend fun getSetDetail(setId : String) = abacusAllDataDB.getSetDetail(setId)
     suspend fun getSetProgress(setId : String) = abacusAllDataDB.getSetProgress(setId)
     suspend fun getAllSet() = abacusAllDataDB.getAllSet()
     suspend fun getAbacus(id : String) = abacusAllDataDB.getAbacus(id)
     suspend fun insertSetProgress(data : List<SetProgress>) = abacusAllDataDB.insertSetProgress(data)
-    suspend fun deleteSetProgress(setId : String) = abacusAllDataDB.deleteSetProgress(setId)
-    suspend fun deleteAllData() = abacusAllDataDB.deleteAllData()
-    suspend fun updateSetTimer(setId : String,time : Long) = abacusAllDataDB.updateSetTimer(setId,time)
     suspend fun updateUserAnswer(abacusId : String,userAnswer : String) = abacusAllDataDB.updateUserAnswer(abacusId,userAnswer)
     suspend fun removeUserAnswer(setId : String) = abacusAllDataDB.removeUserAnswer(setId)
 }

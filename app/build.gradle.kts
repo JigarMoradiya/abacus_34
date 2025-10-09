@@ -138,7 +138,7 @@ dependencies {
     // life components
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 //    kapt("androidx.lifecycle:lifecycle-compiler:2.9.3")
-    implementation("androidx.lifecycle:lifecycle-common-java8:2.9.3")
+    implementation("androidx.lifecycle:lifecycle-common-java8:2.9.4")
 
     // database
     implementation("androidx.room:room-ktx:2.8.0")

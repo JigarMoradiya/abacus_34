@@ -50,7 +50,7 @@ abstract class AppDatabase : RoomDatabase() {
 
         private fun buildDatabase(context: Context) : AppDatabase{
             val passphrase: ByteArray = CommonUtils.getDatabaseKey().toByteArray(StandardCharsets.UTF_8)
-            val factory = SupportOpenHelperFactory(passphrase)
+              val factory = SupportOpenHelperFactory(passphrase)
 
             val database  = Room.databaseBuilder(context, AppDatabase::class.java, AppConstants.DB_NAME_NEW)
                 .addCallback(
@@ -61,8 +61,8 @@ abstract class AppDatabase : RoomDatabase() {
                         }
                     }
                 )
-                database.openHelperFactory(factory)
             if (!BuildConfig.DEBUG){
+                database.openHelperFactory(factory)
             }
 
             val databaseBuild = database.build()

@@ -145,9 +145,9 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
         }
     }
     override fun onMenuItemClick(tag: String) {
-        when (tag) {
+        when (tag) {    
             "faqs" -> {
-                mNavController.navigate(R.id.toFAQsFragment)
+                mNavController.navigate(R.id.toFAQsFragment)      
             }
             "subscription" -> {
                 goToInAppPurchase()

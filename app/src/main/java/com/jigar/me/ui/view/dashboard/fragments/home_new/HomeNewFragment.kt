@@ -38,8 +38,11 @@ import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.databinding.FragmentHomeNewBinding
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.base.inapp.BillingRepository
+import com.jigar.me.ui.view.base.inapp.BillingRepository.Companion.LOG_TAG
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.SelectAvatarProfileDialog
+import com.jigar.me.ui.view.confirm_alerts.dialogs.FreeTrialLeftDialog
+import com.jigar.me.ui.view.confirm_alerts.dialogs.FreeTrialLeftDialog.DialogFreeTrialInterface
 import com.jigar.me.ui.view.confirm_alerts.dialogs.SelectThemeDialog
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.ui.view.other.ContactUsActivity
@@ -101,8 +104,8 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
             setNavigationGraph()
             initViews()
             initListener()
+            setPurchaseData()
         }
-        setPurchaseData()
         return root!!
     }
     private fun setNavigationGraph() {
@@ -111,7 +114,6 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     private fun initViews() = with(binding){
         // fetch abacus data
 //        FetchAbacusDataWorkManager.fetchAbacusDetails()
-        studentViewModel.appReviewsList()
 
         setViewPager()
         linearMenu.post {
@@ -132,14 +134,14 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                     recyclerviewMenu.adapter = homeMenuNewAdapter
                 }
             }
-            themePopup()
         }
     }
 
     private fun setPurchaseData() {
+        Log.d(LOG_TAG, "setPurchaseData")
         lifecycleScope.launch{
             val purchasedList = appViewModel.getInAppSKUPurchased()
-            Log.e("jigarHomeNew","purchasedList = "+ Gson().toJson(purchasedList))
+            Log.d(LOG_TAG, "purchasedList = "+purchasedList.size)
             if (purchasedList.isNotNullOrEmpty()){
                 createPurchasedPlanRequest(purchasedList)
             }
@@ -178,7 +180,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                     {
                         prefManager.setCustomParam(AppConstants.APIStatus.PURCHASE_ERROR_CODE,"")
                         setCurrentSubscription(purchasedListReq)
-//                        checkPurchasedPlans(it.value.data)
+                        checkFreeTrial()
                     }else{
                         onFailure(it.value.error?.message)
                     }
@@ -205,26 +207,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 else -> {}
             }
         }
-        studentViewModel.appReviewsListResponse.observe(this) {
-            when (it) {
-                is Resource.Loading -> {
-                }
-                is Resource.Success -> {
-                    if (it.value.status == AppConstants.APIStatus.SUCCESS)
-                    {
-//                        checkAppReviews(it.value.data)
-                        checkPurchasedPlans(it.value.data)
-                    }else{
-                        onFailure(it.value.error?.message)
-                    }
 
-                }
-                is Resource.Failure -> {
-
-                }
-                else -> {}
-            }
-        }
         studentViewModel.changePlanResponse.observe(this) {
             when (it) {
                 is Resource.Loading -> {
@@ -236,6 +219,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                     {
                         prefManager.setCustomParam(AppConstants.APIStatus.PURCHASE_ERROR_CODE,"")
                         setCurrentSubscription(purchasedListReq)
+                        checkFreeTrial()
                     }else{
                         onFailure(it.value.error?.message)
                     }
@@ -249,16 +233,14 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
         }
     }
 
-    private fun  checkPurchasedPlans(data: JsonObject?) {
-        if (data?.has("plans_purchased_manually") == true){
-            if (data.getAsJsonArray("plans_purchased_manually")?.isEmpty == true){
-                prefManager.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"")
-            }else{
-                val list : List<PlanAssignFromAdminData> =  Gson().fromJson(data.getAsJsonArray("plans_purchased_manually"), object : TypeToken<List<PlanAssignFromAdminData>>() {}.type)
-                prefManager.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,Gson().toJson(list))
+    private fun checkFreeTrial() {
+        FreeTrialLeftDialog.showPopup(requireActivity(),prefManager.getCustomParamInt(Constants.free_trial_remaining_days,0),object : DialogFreeTrialInterface{
+            override fun onSubmitYesClick() {
+                themePopup()
             }
-        }
+        })
     }
+
 
 //    private fun checkAppReviews(data: JsonObject?) {
 //        if (data?.has("app_reviews") == true){
@@ -297,6 +279,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 var directions : Int? = null
                 var layoutId : Int? = null
                 var type : String = "rect"
+
                 when (introType) {
                     HomeMenuIntroType.freeMode -> {
                         view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(0) as HomeMenuNewAdapter.ViewHolder).binding.conMain
@@ -658,7 +641,6 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 purchasedListReq.add(GooglePurchasedPlanRequest(google_plan_id,google_order_id, is_lifetime_plan, is_all_feature, start_date, end_date,purchase_price,purchase_currency, no_of_renewals))
             }
         }
-        Log.e("jigarHomeNew","purchasedListReq = "+ Gson().toJson(purchasedListReq))
         studentViewModel.handleExistingPurchase(PurchasedPlanCheckRequest(purchasedListReq))
     }
 }

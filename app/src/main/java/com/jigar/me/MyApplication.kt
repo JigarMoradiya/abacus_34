@@ -14,6 +14,7 @@ import androidx.work.Configuration
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.jigar.me.data.model.NotificationData
+import com.jigar.me.ui.view.base.inapp.BillingRepository
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
@@ -59,6 +60,9 @@ class MyApplication : Application(), Configuration.Provider {
     }
 
     @Inject
+    lateinit var billingRepository: BillingRepository
+
+    @Inject
     lateinit var workerFactory: HiltWorkerFactory
 
     override val workManagerConfiguration: Configuration
@@ -81,64 +85,22 @@ class MyApplication : Application(), Configuration.Provider {
         }
     }
 
+    override fun onTerminate() {
+        super.onTerminate()
+        billingRepository.endDataSourceConnections()
+    }
 
     override fun onCreate() {
         super.onCreate()
+        // Initialize billing once at app start
+        billingRepository.startDataSourceConnections()
+
         // app version update if any code logic change
         VersionUpdation.init(this)
 
 //        Fresco.initialize(this)
         analytics = FirebaseAnalytics.getInstance(this@MyApplication)
-
         oneSignal()
-
-        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
-            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-//                if (activity is PaymentActivity){
-//                    activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-//                }else{
-//                    activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
-//                }
-            }
-
-            override fun onActivityStarted(activity: Activity) {}
-            override fun onActivityResumed(activity: Activity) {}
-            override fun onActivityPaused(activity: Activity) {}
-            override fun onActivityStopped(activity: Activity) {}
-            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
-            override fun onActivityDestroyed(activity: Activity) {}
-        })
-
-
-        RxJavaPlugins.setErrorHandler { e: Throwable ->
-            if (e is UndeliverableException) {
-                // fine, irrelevant network problem or API that throws on cancellation
-                return@setErrorHandler
-            }
-            if (e is IOException || e is SocketException) {
-                // fine, irrelevant network problem or API that throws on cancellation
-                return@setErrorHandler
-            }
-            if (e is InterruptedException) {
-                // fine, some blocking code was interrupted by a dispose call
-                return@setErrorHandler
-            }
-            if (e is NullPointerException || e is IllegalArgumentException) {
-                // that's likely a bug in the application
-                Thread.currentThread().uncaughtExceptionHandler
-                    ?.uncaughtException(Thread.currentThread(), e)
-                return@setErrorHandler
-            }
-            if (e is IllegalStateException) {
-                // that's a bug in RxJava or in a custom operator
-                Thread.currentThread().uncaughtExceptionHandler
-                    ?.uncaughtException(Thread.currentThread(), e)
-                return@setErrorHandler
-            }
-            Log.e("Undeliverable exception", e.toString())
-        }
-
-
     }
 
     private fun oneSignal() {

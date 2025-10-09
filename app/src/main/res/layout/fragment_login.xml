@@ -154,33 +154,17 @@
                         android:textSize="@dimen/textSizeExtraLarge" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/txtForgotPassword"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/activity_padding6"
-                    android:includeFontPadding="false"
-                    android:paddingHorizontal="@dimen/activity_padding20"
-                    android:paddingVertical="@dimen/activity_padding6"
-                    android:text="@string/forgot_password_"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/textSizeLarge"
-                    app:fontFamily="@font/font_semibold"
-                    app:layout_constraintEnd_toEndOf="@+id/tilPassword"
-                    app:layout_constraintTop_toBottomOf="@+id/tilPassword" />
-
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnSubmit"
                     style="@style/btnMedium"
                     android:layout_width="wrap_content"
-                    android:layout_marginTop="@dimen/activity_padding12"
+                    android:layout_marginTop="@dimen/activity_padding16"
                     android:text="@string/submit"
                     android:textColor="@color/white"
                     android:textSize="@dimen/textSizeExtraLarge"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtForgotPassword" />
+                    app:layout_constraintTop_toBottomOf="@+id/tilPassword" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/txtGoBack"
@@ -195,23 +179,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/btnSubmit" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/txtSignup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/activity_padding6"
-                    android:gravity="center"
-                    android:includeFontPadding="false"
-                    android:padding="@dimen/activity_padding12"
-                    android:text="@string/don_t_have_an_account_signup"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/textSizeExtraLarge"
-                    android:visibility="gone"
-                    app:fontFamily="@font/font_regular"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtGoBack" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

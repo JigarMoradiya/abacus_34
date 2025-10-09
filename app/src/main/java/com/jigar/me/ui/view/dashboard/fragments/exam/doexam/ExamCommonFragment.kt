@@ -272,12 +272,6 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
         }
         handler?.postDelayed(runnable!!, delay.toLong())
         setExamPaper()
-
-        // event log
-        MyApplication.logEvent(AppConstants.FirebaseEvents.DailyExam, Bundle().apply {
-            putString(AppConstants.FirebaseEvents.deviceId, prefManager.getDeviceId())
-            putString(AppConstants.FirebaseEvents.DailyExamLevel, examLevel)
-        })
     }
 
     private fun setExamPaper() {

@@ -153,7 +153,8 @@
     <string name="give_later">Give next time</string>
     <string name="continue_working_internet">Internet working, please continue</string>
     <string name="no_working_internet">Okay, I will check, please close</string>
-    <string name="yes_i_want_to_purchase">Yes, I want to Subscribe</string>
+    <string name="yes_i_want_to_purchase">Yes, I want to Subscribe Now</string>
+    <string name="maybe_later">May be Subscribe Later</string>
     <string name="yes_i_want_to_update">Yes, I want to Update</string>
     <string name="no_purchase_later">No, I will Subscribe later</string>
     <string name="no_thanks">No, thanks</string>
@@ -592,7 +593,6 @@
     <string name="login_to_your_account">Login to your account</string>
     <string name="email_id">Email ID</string>
     <string name="password">Password</string>
-    <string name="forgot_password_">Forgot Password?</string>
     <string name="don_t_have_an_account_signup">Don\'t have an account? <font color='#0000ff'><b><u>Register</u></b></font></string>
     <string name="already_have_an_account_login">Already have an account? <font color='#0000ff'><b><u>Login</u></b></font></string>
     <string name="dont_receive_code">Don\'t receive code? <font color='#0000ff'><b><u>Resend</u></b></font></string>
@@ -807,7 +807,6 @@
     <string name="please_select_screenshot_of_application_review">Please select screenshot of application review</string>
     <string name="your_request_successfully_submitted">Your request successfully submitted.</string>
     <string name="yes_i_want_to_get_free_access">Yes, I Want to Get Free Access</string>
-    <string name="maybe_later">May be Later</string>
     <string name="congratulations_your_submitted_review_is_approved">Congratulations your submitted review is approved.</string>
     <string name="sorry_your_submitted_review_is_rejected_please_try_again">Sorry, your submitted review is rejected, please try again.</string>
     <string name="please_wait_white_we_are_reviewing_your_request">Please wait, white we are reviewing your request.</string>

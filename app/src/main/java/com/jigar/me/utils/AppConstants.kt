@@ -5,7 +5,6 @@ object AppConstants {
     internal const val DB_NAME_NEW = "VedaaviAbacus.db"
     internal const val PREF_NAME = "kotlin_basic_pref"
     internal const val YOUTUBE_URL = "https://www.youtube.com/channel/UC9MSzIbLkuzffqepgOqBLhw"
-    internal const val TEMP_BASE_URL = "https://abacuspro.in/backend/index.php/Api/"
 
     const val BLINK_ICON_ANIMATION_DURATION: Long = 600
     const val BLINK_ICON_ANIMATION_ALPHA: Float = 0.1F
@@ -128,12 +127,7 @@ object AppConstants {
         companion object {
             var PREF_PAGE_SUM = "pageSum"
             var Track = "TrackNew"
-            var Position = "Position"
-
             var Settings = "Settings"
-            var baseUrl = "baseUrl"
-            var iPath = "iPath"
-            var databaseVersion = "databaseVersion"
         }
     }
 

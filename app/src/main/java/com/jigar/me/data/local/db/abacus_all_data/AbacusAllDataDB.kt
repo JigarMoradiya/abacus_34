@@ -23,7 +23,6 @@ class AbacusAllDataDB @Inject constructor(private val dao: AbacusAllDataDao) {
     fun getLevel() = dao.getLevel()
     suspend fun getCategory(id : String) = dao.getCategory(id)
     suspend fun getPages(id: String, isGetAllData: Boolean) = if (isGetAllData){dao.getPages(id)}else{dao.getPagesOnlyActive(id)}
-    suspend fun getSet(id : String) = dao.getSet(id)
     suspend fun getSetDetail(setId : String) = dao.getSetDetail(setId)
     suspend fun getSetProgress(setId : String) = dao.getSetProgress(setId)
     suspend fun getAllSet() = dao.getAllSet()
@@ -31,18 +30,6 @@ class AbacusAllDataDB @Inject constructor(private val dao: AbacusAllDataDao) {
     suspend fun insertSetProgress(data : List<SetProgress>) = withContext(Dispatchers.IO){
         dao.insertSetProgress(data)
     }
-    suspend fun deleteSetProgress(setId : String) = withContext(Dispatchers.IO){
-        dao.deleteSetProgress(setId)
-    }
-    suspend fun deleteAllData() = withContext(Dispatchers.IO){
-        dao.deleteAllLevel()
-        dao.deleteAllCategory()
-        dao.deleteAllPages()
-        dao.deleteAllSet()
-        dao.deleteAllAbacus()
-        dao.deleteAllSetProgress()
-    }
-    suspend fun updateSetTimer(setId : String,time : Long) = dao.updateSetTimer(setId,time)
     suspend fun updateUserAnswer(abacusId : String,userAnswer : String) = dao.updateUserAnswer(abacusId,userAnswer)
     suspend fun removeUserAnswer(setId : String) = dao.removeUserAnswer(setId)
 

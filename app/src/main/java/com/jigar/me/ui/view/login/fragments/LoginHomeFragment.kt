@@ -40,8 +40,10 @@ import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import androidx.navigation.findNavController
+import com.google.gson.reflect.TypeToken
 import com.jigar.me.data.model.data.AbacusAllData
 import com.jigar.me.data.model.data.FetchAbacusDataRequest
+import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.utils.Constants
 import kotlinx.coroutines.CoroutineScope
@@ -144,7 +146,6 @@ class LoginHomeFragment : BaseFragment() {
                 if (result is Result.Success) {
                     // navigate to main page
                     val request = SocialLoginRequest(result.data?.email,task.result.idToken)
-                    Log.e("jigarLogin","idToken = "+Gson().toJson(request))
                     studentViewModel.socialLogin(request)
                 } else {
 
@@ -182,10 +183,10 @@ class LoginHomeFragment : BaseFragment() {
                 is Resource.Loading -> {
                 }
                 is Resource.Success -> {
-                    hideLoading()
                     if (it.value.status == AppConstants.APIStatus.SUCCESS)
                         onSuccessAbacusData(it.value.data)
                     else{
+                        hideLoading()
                         onFailure(it.value.error?.message)
                     }
                 }
@@ -196,6 +197,27 @@ class LoginHomeFragment : BaseFragment() {
             }
         }
 
+        studentViewModel.appReviewsListResponse.observe(this) {
+            when (it) {
+                is Resource.Loading -> {
+
+                }
+                is Resource.Success -> {
+                    hideLoading()
+                    if (it.value.status == AppConstants.APIStatus.SUCCESS)
+                    {
+                        checkPurchasedPlans(it.value.data)
+                    }else{
+                        onFailure(it.value.error?.message)
+                    }
+                }
+                is Resource.Failure -> {
+                    hideLoading()
+                    onFailure(it.errorBody)
+                }
+                else -> {}
+            }
+        }
     }
 
     private fun onSuccessAbacusData(data: JsonObject?) {
@@ -206,8 +228,7 @@ class LoginHomeFragment : BaseFragment() {
                 response.setProgress?.let {
                     appViewModel.insertSetProgress(it)
                 }
-                prefManager.setUserLoggedIn(true)
-                MainDashboardActivity.getInstance(requireContext())
+                studentViewModel.appReviewsList()
             }
         }
     }
@@ -215,24 +236,29 @@ class LoginHomeFragment : BaseFragment() {
         val response = Gson().fromJson(data, LoginData::class.java)
         prefManager.setAccessToken(response.token)
         prefManager.setLoginData(data.toString())
-        if (response.name.isNullOrEmpty()){
-            hideLoading()
-            mNavController?.navigate(R.id.toLoginCompleteProfileFragment)
-        }else{
-            response.country?.let {
-                prefManager.setCountryCode(it)
-                if (it.equals(AppConstants.LoginData.LoginCountry_IN,true)){
-                    prefManager.setIsCurrencyINR(true)
-                }else{
-                    prefManager.setIsCurrencyINR(false)
-                }
-            }
+        val defaultDateTime = Constants.last_sync_default_time
+        val dateTime = prefManager.getCustomParam(Constants.last_sync_time,defaultDateTime)
+        val request = FetchAbacusDataRequest(true, get_set_progress_report = true,last_sync_time = dateTime)
+        studentViewModel.getAbacusData(request)
+    }
 
-            val defaultDateTime = Constants.last_sync_default_time
-            val dateTime = prefManager.getCustomParam(Constants.last_sync_time,defaultDateTime)
-            val request = FetchAbacusDataRequest(true,true,true,true, get_set_progress_report = true,last_sync_time = dateTime)
-            studentViewModel.getAbacusData(request)
+    private fun checkPurchasedPlans(data: JsonObject?) {
+        if (data?.has("plans_purchased_manually") == true){
+            if (data.getAsJsonArray("plans_purchased_manually")?.isEmpty == true){
+                prefManager.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"")
+            }else{
+                val list : List<PlanAssignFromAdminData> =  Gson().fromJson(data.getAsJsonArray("plans_purchased_manually"), object : TypeToken<List<PlanAssignFromAdminData>>() {}.type)
+                prefManager.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,Gson().toJson(list))
+            }
         }
+
+        // trial_ends_at : "2025-10-11T14:00:00.000Z", free_trial_remaining_days, trial_period_offered
+        if (data?.has("free_trial_remaining_days") == true){
+            val free_trial_remaining_days = data.get("free_trial_remaining_days").asInt
+            prefManager.setCustomParamInt(Constants.free_trial_remaining_days,free_trial_remaining_days)
+        }
+        prefManager.setUserLoggedIn(true)
+        MainDashboardActivity.getInstance(requireContext())
     }
 
 }

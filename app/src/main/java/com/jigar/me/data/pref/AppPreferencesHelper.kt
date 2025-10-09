@@ -12,14 +12,9 @@ class AppPreferencesHelper @Inject constructor(
     @PreferenceInfo private val prefFileName: String
 ) : PreferencesHelper {
     companion object {
-        private const val PREF_KEY_FCMID = "PREF_KEY_FCMID"
-        private const val PREF_KEY_DEVICE_ID = "PREF_KEY_DEVICE_ID"
         private const val PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN"
-        private const val PREF_KEY_COUNTRY_CODE = "PREF_KEY_COUNTRY_CODE"
         private const val PREF_KEY_IS_USER_LOGGED_IN = "PREF_KEY_IS_USER_LOGGED_IN"
-        private const val PREF_KEY_IS_CURRENCY_INR = "PREF_KEY_IS_CURRENCY_INR"
         private const val PREF_KEY_LOGIN_DATA = "PREF_KEY_LoginData"
-        private const val PREF_KEY_BASE_URL = "PREF_KEY_BASEURL"
 
         const val KEY_DEFAULT_TTS_VOICE = "KEY_DEFAULT_TTS_VOICE"
         const val DEFAULT_TTS_VOICE_VALUE = "en-in-x-end-network"
@@ -64,29 +59,10 @@ class AppPreferencesHelper @Inject constructor(
         putFloat(paramName, paramValue)
     }
 
-    override fun getBaseUrl(): String =
-        mPrefs.getString(PREF_KEY_BASE_URL, AppConstants.TEMP_BASE_URL).toString()
-
-    override fun setBaseUrl(baseUrl: String) = mPrefs.edit {
-        putString(PREF_KEY_BASE_URL, baseUrl)
-    }
-
-    override fun getFCMID(): String = mPrefs.getString(PREF_KEY_FCMID, "").toString()
-
-    override fun setFCMID(value: String) = mPrefs.edit {
-        putString(PREF_KEY_FCMID, value)
-    }
-
     override fun isUserLoggedIn(): Boolean = mPrefs.getBoolean(PREF_KEY_IS_USER_LOGGED_IN, false)
 
     override fun setUserLoggedIn(value: Boolean) = mPrefs.edit {
         putBoolean(PREF_KEY_IS_USER_LOGGED_IN, value)
-    }
-
-    override fun isCurrencyINR(): Boolean = mPrefs.getBoolean(PREF_KEY_IS_CURRENCY_INR, false)
-
-    override fun setIsCurrencyINR(value: Boolean) = mPrefs.edit {
-        putBoolean(PREF_KEY_IS_CURRENCY_INR, value)
     }
 
     override fun getAccessToken(): String? = mPrefs.getString(PREF_KEY_ACCESS_TOKEN, null)
@@ -94,21 +70,10 @@ class AppPreferencesHelper @Inject constructor(
     override fun setAccessToken(accessToken: String?) = mPrefs.edit {
         putString(PREF_KEY_ACCESS_TOKEN, accessToken)
     }
-    override fun getCountryCode(): String = mPrefs.getString(PREF_KEY_COUNTRY_CODE, "US")?:"US"
-
-    override fun setCountryCode(value: String) = mPrefs.edit {
-        putString(PREF_KEY_COUNTRY_CODE, value)
-    }
     override fun getLoginData(): String? = mPrefs.getString(PREF_KEY_LOGIN_DATA, null)
 
     override fun setLoginData(data: String?) = mPrefs.edit {
         putString(PREF_KEY_LOGIN_DATA, data)
-    }
-
-    override fun getDeviceId(): String = mPrefs.getString(PREF_KEY_DEVICE_ID, "").toString()
-
-    override fun setDeviceId(id: String) = mPrefs.edit {
-        putString(PREF_KEY_DEVICE_ID, id)
     }
 
     fun getDefaultTTSPitch(): Float {

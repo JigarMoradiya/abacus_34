@@ -13,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.jigar.me.R
 import com.jigar.me.databinding.ActivityLoginDashboardBinding
 import com.jigar.me.ui.view.base.BaseActivity
+import com.jigar.me.ui.view.base.inapp.BillingRepository.Companion.LOG_TAG
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.InAppViewModel
 import com.jigar.me.utils.extensions.hide
@@ -57,11 +58,11 @@ class LoginDashboardActivity : BaseActivity(){
     }
 
     private fun initObserver() {
-        lifecycleScope.launch{
-            appViewModel.deleteInAppPurchase()
-            appViewModel.deleteInAppSKU()
-            inAppViewModel.inAppInit()
-        }
+//        lifecycleScope.launch{
+//            appViewModel.deleteInAppPurchase()
+//            appViewModel.deleteInAppSKU()
+//            inAppViewModel.inAppInit()
+//        }
     }
 
     private fun setNavigationGraph() {
@@ -78,6 +79,7 @@ class LoginDashboardActivity : BaseActivity(){
     }
 
     private fun initViews() {
+        Log.d(LOG_TAG, "LoginDashboardActivity")
         setNavigationGraph()
         onMainActivityBack()
     }

@@ -36,15 +36,11 @@ object Constants {
     const val notificationTypeRate = "rate"
     const val notificationTypeShare = "share"
 
-    const val bottomSheetWidthBaseOnRatio10 = 10
-    const val bottomSheetWidthBaseOnRatio8 = 8
     const val bottomSheetWidthBaseOnRatio7 = 7
-    const val bottomSheetWidthBaseOnRatio6 = 6
     const val bottomSheetWidthBaseOnRatio5 = 5
     const val bottomSheetWidthBaseOnRatio4 = 4
 
     const val examLevelMaxRecordHistory = 50
-    const val sudokuMaxRecordHistory = 25
     const val homePageShowIntroMaxAppOpen = 25
     const val homePageShowOffer = 6
 
@@ -57,6 +53,7 @@ object Constants {
     var Sign = "Sign"
     var Hint = "Hint"
 
-    var last_sync_time = "last_sync_time"
+    var free_trial_remaining_days = "free_trial_remaining_days"
+    var last_sync_time = "last_sync_time_new"
     var last_sync_default_time = "2023-07-01T12:00:00.000Z"
 }

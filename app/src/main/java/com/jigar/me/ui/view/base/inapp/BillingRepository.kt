@@ -31,13 +31,25 @@ class BillingRepository @Inject constructor(
     var playStoreBillingClient: BillingClient? = null
 
     companion object {
-        private const val LOG_TAG = "BillingRepository"
+         const val LOG_TAG = "BillingRepository"
     }
 
     fun startDataSourceConnections() {
         Log.d(LOG_TAG, "startDataSourceConnections")
-        instantiateAndConnectToPlayBillingService()
+        CoroutineScope(Job() + Dispatchers.IO).launch {
+            // 🔹 Clear old data first
+            inAppPurchaseDB.deleteInAppPurchase()
+            inAppSKUDB.deleteInAppSKU()
+
+            Log.d(LOG_TAG, "deleted old data")
+
+            // 🔹 Then reconnect and fetch new data
+            withContext(Dispatchers.Main) {
+                instantiateAndConnectToPlayBillingService()
+            }
+        }
     }
+
 
     fun endDataSourceConnections() {
         playStoreBillingClient?.endConnection()
@@ -47,6 +59,7 @@ class BillingRepository @Inject constructor(
     }
 
     private fun instantiateAndConnectToPlayBillingService() {
+        Log.d(LOG_TAG, "instantiateAndConnectToPlayBillingService")
         init()
         connectToPlayBillingService()
     }
@@ -230,13 +243,6 @@ class BillingRepository @Inject constructor(
 
                         Log.d(LOG_TAG, "processPurchases called else success")
                         validPurchases.add(purchase)
-
-                        // event log
-                        MyApplication.logEvent(AppConstants.FirebaseEvents.InAppPurchase, Bundle().apply {
-                            putString(AppConstants.FirebaseEvents.deviceId, prefManager.getDeviceId())
-//                            putString(AppConstants.FirebaseEvents.InAppPurchaseSKU, purchase.sku)
-                            putString(AppConstants.FirebaseEvents.InAppPurchaseOrderId, purchase.orderId)
-                        })
                     }
 
                     if (!purchase.isAcknowledged) {
@@ -291,13 +297,6 @@ class BillingRepository @Inject constructor(
 
                         Log.d(LOG_TAG, "processPurchases called else success")
                         validPurchases.add(purchase)
-
-                        // event log
-                        MyApplication.logEvent(AppConstants.FirebaseEvents.InAppPurchase, Bundle().apply {
-                            putString(AppConstants.FirebaseEvents.deviceId, prefManager.getDeviceId())
-//                            putString(AppConstants.FirebaseEvents.InAppPurchaseSKU, purchase.sku)
-                            putString(AppConstants.FirebaseEvents.InAppPurchaseOrderId, purchase.orderId)
-                        })
                     }
 
                     if (!purchase.isAcknowledged) {
