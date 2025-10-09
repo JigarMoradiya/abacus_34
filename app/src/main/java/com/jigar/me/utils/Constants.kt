@@ -54,6 +54,7 @@ object Constants {
     var Hint = "Hint"
 
     var free_trial_remaining_days = "free_trial_remaining_days"
+    var free_trial_remaining_days_last_checked = "free_trial_remaining_days_last_checked"
     var last_sync_time = "last_sync_time_new"
     var last_sync_default_time = "2023-07-01T12:00:00.000Z"
 }

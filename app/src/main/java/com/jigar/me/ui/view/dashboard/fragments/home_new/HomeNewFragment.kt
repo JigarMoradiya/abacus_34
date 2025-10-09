@@ -112,9 +112,6 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
         mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() = with(binding){
-        // fetch abacus data
-//        FetchAbacusDataWorkManager.fetchAbacusDetails()
-
         setViewPager()
         linearMenu.post {
             appViewModel.getLevel().observe(viewLifecycleOwner){
@@ -234,11 +231,32 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     }
 
     private fun checkFreeTrial() {
-        FreeTrialLeftDialog.showPopup(requireActivity(),prefManager.getCustomParamInt(Constants.free_trial_remaining_days,0),object : DialogFreeTrialInterface{
-            override fun onSubmitYesClick() {
-                themePopup()
-            }
-        })
+        val free_trial_remaining_days = prefManager.getCustomParamInt(Constants.free_trial_remaining_days,0)
+//        val free_trial_remaining_days_last_checked = prefManager.getCustomParamInt(Constants.free_trial_remaining_days_last_checked,-1)
+        val free_trial_remaining_days_last_checked = -1
+        Log.e("jigarHome","free_trial_remaining_days = "+free_trial_remaining_days)
+        Log.e("jigarHome","free_trial_remaining_days_last_checked = "+free_trial_remaining_days_last_checked)
+        if (free_trial_remaining_days > 0){
+            prefManager.setUserInFreeTrial(true)
+        }else{
+            prefManager.setUserInFreeTrial(false)
+        }
+        Log.e("jigarHome","isUserInFreeTrial = "+prefManager.isUserInFreeTrial())
+        if (free_trial_remaining_days_last_checked != free_trial_remaining_days){
+            FreeTrialLeftDialog.showPopup(requireActivity(),prefManager.getCustomParamInt(Constants.free_trial_remaining_days,0),object : DialogFreeTrialInterface{
+                override fun onSubmitYesClick() {
+                    prefManager.setCustomParamInt(Constants.free_trial_remaining_days_last_checked,free_trial_remaining_days)
+                    if (free_trial_remaining_days >= 7){
+                        mNavController?.navigate(R.id.toVideoPreviewFragment)
+                    }else{
+                        goToInAppPurchase()
+                    }
+
+                }
+            })
+        }else{
+            themePopup()
+        }
     }
 
 
@@ -491,8 +509,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 requireContext().openURL("https://play.google.com/store/apps/details?id=${requireContext().packageName}")
             }
             Constants.banner_share -> {
-//                moveToClick(AppConstants.HomeClicks.Menu_Share)
-                mNavController?.navigate(R.id.toVideoPreviewFragment)
+                moveToClick(AppConstants.HomeClicks.Menu_Share)
             }
             Constants.banner_bulk_login -> {
 //                mNavController?.navigate(R.id.toPurchaseFragmentOld)
@@ -523,9 +540,6 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
             }
             AppConstants.HomeClicks.Menu_CCM -> {
                 mNavController?.navigate(R.id.action_homeFragment_to_customChallengeHomeFragment)
-            }
-            AppConstants.HomeClicks.Menu_Practice_Material -> {
-                mNavController?.navigate(R.id.action_homeFragment_to_materialHomeFragment)
             }
             AppConstants.HomeClicks.Menu_Number_Sequence_Puzzle -> {
                 mNavController?.navigate(R.id.action_homeFragment_to_puzzleNumberHomeFragment)

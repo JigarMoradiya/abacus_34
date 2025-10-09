@@ -14,6 +14,7 @@ class AppPreferencesHelper @Inject constructor(
     companion object {
         private const val PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN"
         private const val PREF_KEY_IS_USER_LOGGED_IN = "PREF_KEY_IS_USER_LOGGED_IN"
+        private const val PREF_KEY_IS_USER_IN_FREE_TRIAL = "PREF_KEY_IS_USER_IN_FREE_TRIAL"
         private const val PREF_KEY_LOGIN_DATA = "PREF_KEY_LoginData"
 
         const val KEY_DEFAULT_TTS_VOICE = "KEY_DEFAULT_TTS_VOICE"
@@ -63,6 +64,11 @@ class AppPreferencesHelper @Inject constructor(
 
     override fun setUserLoggedIn(value: Boolean) = mPrefs.edit {
         putBoolean(PREF_KEY_IS_USER_LOGGED_IN, value)
+    }
+    override fun isUserInFreeTrial(): Boolean = mPrefs.getBoolean(PREF_KEY_IS_USER_IN_FREE_TRIAL, false)
+
+    override fun setUserInFreeTrial(value: Boolean) = mPrefs.edit {
+        putBoolean(PREF_KEY_IS_USER_IN_FREE_TRIAL, value)
     }
 
     override fun getAccessToken(): String? = mPrefs.getString(PREF_KEY_ACCESS_TOKEN, null)

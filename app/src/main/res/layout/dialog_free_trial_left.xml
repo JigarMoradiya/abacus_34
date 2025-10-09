@@ -28,7 +28,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imgOffer"
                     android:layout_width="0dp"
-                    android:layout_height="260dp"
+                    android:layout_height="270dp"
                     android:scaleType="centerCrop"
                     app:layout_constraintDimensionRatio="V,256:113"
                     app:layout_constraintEnd_toEndOf="parent"

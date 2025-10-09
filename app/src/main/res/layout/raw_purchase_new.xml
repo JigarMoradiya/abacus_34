@@ -166,7 +166,7 @@
                    tools:text=" + 10% OFF" />
            </LinearLayout>
 
-            <com.google.android.material.textview.MaterialTextView
+          <!--  <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txtDescription"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -180,7 +180,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linSave"
                 tools:text="after 7-day free trial"
-                tools:visibility="visible" />
+                tools:visibility="visible" />-->
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/linearOther"
@@ -191,7 +191,7 @@
                 android:visibility="@{isPlanAssignFromBackend?View.VISIBLE:View.GONE,default=gone}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtDescription"
+                app:layout_constraintTop_toBottomOf="@+id/linSave"
                 tools:visibility="visible">
 
                 <com.google.android.material.textview.MaterialTextView

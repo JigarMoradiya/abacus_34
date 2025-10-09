@@ -137,7 +137,7 @@
                     style="@style/btnMedium"
                     android:layout_width="wrap_content"
                     android:layout_marginTop="@dimen/activity_padding12"
-                    android:text="@string/start_free_trial"
+                    android:text="@string/subscription"
                     android:textColor="@color/white"
                     android:textSize="@dimen/textSizeRegular" />
 

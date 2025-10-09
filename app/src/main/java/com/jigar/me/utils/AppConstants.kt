@@ -196,7 +196,6 @@ object AppConstants {
             const val Menu_Abacus_Exercise = "abacus_exercise"
             const val Menu_Exam = "exam"
             const val Menu_CCM = "ccm"
-            const val Menu_Practice_Material = "practice_material"
             const val Menu_Number_Sequence_Puzzle = "number_sequence_puzzle"
             const val Menu_Video_Tutorial = "video_tutorial"
             const val Menu_Purchase_Store = "purchase_store"

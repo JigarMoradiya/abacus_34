@@ -70,7 +70,7 @@ object FreeTrialLeftDialog {
                     4 -> {
                         imgNumber.setImageResource(R.drawable.ic_number_4)
                         txtTitle.text = "Only 4 days left!"
-                        txtDesc.text = "Don’t stop now — you’re doing great."
+                        txtDesc.text = "You're on the right track - don't stop now, success is just ahead!"
                         btnYes.text = "Subscribe Now"
                         btnNo.text = "Continue"
                     }
@@ -83,15 +83,15 @@ object FreeTrialLeftDialog {
                     }
                     2 -> {
                         imgNumber.setImageResource(R.drawable.ic_number_2)
-                        txtTitle.text = "Your free trial ends soon — only 2 days left!"
-                        txtDesc.text = "Continue your learning adventure by subscribing today — get full access to all lessons and interactive modules."
+                        txtTitle.text = "Your free trial ends soon - only 2 days left!"
+                        txtDesc.text = "Continue your learning adventure by subscribing today & get full access to all lessons and interactive modules."
                         btnYes.text = "Subscribe Now"
                         btnNo.text = "Remind Me Later"
                     }
                     1 -> {
                         imgNumber.setImageResource(R.drawable.ic_number_1)
                         txtTitle.text = "Last day of your free trial!"
-                        txtDesc.text = "Stay on track with your learning — subscribe today to keep full access to all lessons and modules."
+                        txtDesc.text = "Stay on track with your learning - subscribe today to keep full access to all lessons and modules."
                         btnYes.text = "Subscribe Now"
                         btnNo.text = "Maybe Later"
                     }
