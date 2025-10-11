@@ -33,6 +33,7 @@ object FreeTrialLeftDialog {
             alertBuilder.setView(root)
             btnNo.onClick {
                 hideDialog()
+                listener.onCloseClick()
             }
             btnYes.onClick {
                 hideDialog()
@@ -123,6 +124,7 @@ object FreeTrialLeftDialog {
 
     interface DialogFreeTrialInterface {
         fun onSubmitYesClick()
+        fun onCloseClick()
     }
 
 }

@@ -21,6 +21,7 @@ class AbacusAllDataDB @Inject constructor(private val dao: AbacusAllDataDao) {
         dao.insertAbacus(dataAbacus)
     }
     fun getLevel() = dao.getLevel()
+    fun getLevel(list : List<String>) = dao.getLevel(list)
     suspend fun getCategory(id : String) = dao.getCategory(id)
     suspend fun getPages(id: String, isGetAllData: Boolean) = if (isGetAllData){dao.getPages(id)}else{dao.getPagesOnlyActive(id)}
     suspend fun getSetDetail(setId : String) = dao.getSetDetail(setId)

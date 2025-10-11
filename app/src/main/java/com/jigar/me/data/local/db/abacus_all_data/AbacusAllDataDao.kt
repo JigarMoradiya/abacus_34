@@ -31,6 +31,8 @@ interface AbacusAllDataDao {
 
     @Query("SELECT * FROM '${AppConstants.DBParam.table_level}' ORDER BY sort_order ASC")
     fun getLevel(): LiveData<List<Level>>
+    @Query("SELECT * FROM '${AppConstants.DBParam.table_level}' WHERE name IN (:list) ORDER BY sort_order ASC")
+    fun getLevel(list : List<String>): LiveData<List<Level>>
     @Query("SELECT * FROM '${AppConstants.DBParam.table_category}' WHERE level_id = :id ORDER BY sort_order ASC")
     suspend fun getCategory(id : String): List<Category>
     @Query("SELECT * FROM '${AppConstants.DBParam.table_pages}' WHERE category_id = :id ORDER BY sort_order ASC,created_at ASC")

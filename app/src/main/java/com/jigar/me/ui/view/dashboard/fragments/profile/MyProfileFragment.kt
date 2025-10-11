@@ -37,6 +37,7 @@ import com.jigar.me.utils.extensions.openURL
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
 import androidx.navigation.findNavController
+import com.jigar.me.utils.VersionUpdation
 
 @AndroidEntryPoint
 class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileDialogInterface,
@@ -199,9 +200,10 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
             icon = R.drawable.ic_alert,
             clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener {
                 override fun onConfirmationYesClick(bundle: Bundle?) {
-                    prefManager.setAccessToken("")
-                    prefManager.setLoginData("")
-                    prefManager.setUserLoggedIn(false)
+//                    prefManager.setAccessToken("")
+//                    prefManager.setLoginData("")
+//                    prefManager.setUserLoggedIn(false)
+                    prefManager.clearPref()
                     LoginDashboardActivity.getInstance(requireContext())
                 }
 
@@ -216,7 +218,8 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
     override fun onResume() {
         super.onResume()
         loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
-        binding.txtWelcomeTitle.text = CommonUtils.getCurrentTimeMessage(requireContext()).plus(" "+loginData?.name+"!")
+        binding.txtWelcomeTitle.text = CommonUtils.getCurrentTimeMessage(requireContext())
+//            .plus(" "+loginData?.name+"!")
     }
     override fun avatarProfileCloseDialog() {
         val id = prefManager.getCustomParamInt(Constants.avatarId,1)

@@ -114,6 +114,13 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     private fun initViews() = with(binding){
         setViewPager()
         linearMenu.post {
+            val list : List<String> = arrayListOf(AppConstants.HomeClicks.Menu_Abacus_Free_Mode,
+                AppConstants.HomeClicks.Menu_Practice_Abacus,
+                AppConstants.HomeClicks.Menu_Abacus_Exercise,
+                AppConstants.HomeClicks.Menu_Exam,
+                AppConstants.HomeClicks.Menu_CCM,
+                AppConstants.HomeClicks.Menu_Number_Sequence_Puzzle)
+
             appViewModel.getLevel().observe(viewLifecycleOwner){
                 if (it.isNotNullOrEmpty()){
                     val column = (it.size / 2)
@@ -141,6 +148,8 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
             Log.d(LOG_TAG, "purchasedList = "+purchasedList.size)
             if (purchasedList.isNotNullOrEmpty()){
                 createPurchasedPlanRequest(purchasedList)
+            }else{
+                checkFreeTrial()
             }
         }
     }
@@ -231,32 +240,45 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     }
 
     private fun checkFreeTrial() {
-        val free_trial_remaining_days = prefManager.getCustomParamInt(Constants.free_trial_remaining_days,0)
-//        val free_trial_remaining_days_last_checked = prefManager.getCustomParamInt(Constants.free_trial_remaining_days_last_checked,-1)
-        val free_trial_remaining_days_last_checked = -1
-        Log.e("jigarHome","free_trial_remaining_days = "+free_trial_remaining_days)
-        Log.e("jigarHome","free_trial_remaining_days_last_checked = "+free_trial_remaining_days_last_checked)
-        if (free_trial_remaining_days > 0){
-            prefManager.setUserInFreeTrial(true)
-        }else{
-            prefManager.setUserInFreeTrial(false)
-        }
-        Log.e("jigarHome","isUserInFreeTrial = "+prefManager.isUserInFreeTrial())
-        if (free_trial_remaining_days_last_checked != free_trial_remaining_days){
-            FreeTrialLeftDialog.showPopup(requireActivity(),prefManager.getCustomParamInt(Constants.free_trial_remaining_days,0),object : DialogFreeTrialInterface{
-                override fun onSubmitYesClick() {
-                    prefManager.setCustomParamInt(Constants.free_trial_remaining_days_last_checked,free_trial_remaining_days)
-                    if (free_trial_remaining_days >= 7){
-                        mNavController?.navigate(R.id.toVideoPreviewFragment)
-                    }else{
-                        goToInAppPurchase()
-                    }
-
+        prefManager.setUserInFreeTrial(false)
+        lifecycleScope.launch {
+            val purchasedSKU = appViewModel.getInAppSKUPurchased()
+            val isPurchased = CommonUtils.checkPurchaseForExerciseExamCCM(prefManager,purchasedSKU)
+            Log.e("jigarHome","isPurchased = "+isPurchased)
+            if (isPurchased){
+                themePopup()
+            }else{
+                val free_trial_remaining_days =  prefManager.getCustomParamInt(Constants.free_trial_remaining_days,0)
+                val free_trial_remaining_days_last_checked = prefManager.getCustomParamInt(Constants.free_trial_remaining_days_last_checked,-1)
+//        val free_trial_remaining_days_last_checked = -1
+                Log.e("jigarHome","free_trial_remaining_days = "+free_trial_remaining_days)
+                Log.e("jigarHome","free_trial_remaining_days_last_checked = "+free_trial_remaining_days_last_checked)
+                if (free_trial_remaining_days > 0){
+                    prefManager.setUserInFreeTrial(true)
+                }else{
+                    prefManager.setUserInFreeTrial(false)
                 }
-            })
-        }else{
-            themePopup()
+                Log.e("jigarHome","isUserInFreeTrial = "+prefManager.isUserInFreeTrial())
+                if (free_trial_remaining_days_last_checked != free_trial_remaining_days || free_trial_remaining_days == 0){
+                    FreeTrialLeftDialog.showPopup(requireActivity(),prefManager.getCustomParamInt(Constants.free_trial_remaining_days,0),object : DialogFreeTrialInterface{
+                        override fun onCloseClick() {
+                            prefManager.setCustomParamInt(Constants.free_trial_remaining_days_last_checked,free_trial_remaining_days)
+                        }
+                        override fun onSubmitYesClick() {
+                            prefManager.setCustomParamInt(Constants.free_trial_remaining_days_last_checked,free_trial_remaining_days)
+                            if (free_trial_remaining_days >= 7){
+                                mNavController?.navigate(R.id.toVideoPreviewFragment)
+                            }else{
+                                goToInAppPurchase()
+                            }
+                        }
+                    })
+                }else{
+                    themePopup()
+                }
+            }
         }
+
     }
 
 
@@ -420,8 +442,6 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
             })
     }
 
-
-
     private fun showTour() {
         lighter = Lighter.with(binding.root)
         val freeModeViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(0)
@@ -468,7 +488,8 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
         if (loginData == null){
             binding.txtWelcomeTitle.text = CommonUtils.getCurrentTimeMessage(requireContext())
         }else{
-            binding.txtWelcomeTitle.text = CommonUtils.getCurrentTimeMessage(requireContext()).plus(" "+loginData?.name+"!")
+            binding.txtWelcomeTitle.text = CommonUtils.getCurrentTimeMessage(requireContext())
+//                .plus(" "+loginData?.name+"!")
         }
 
         val id = prefManager.getCustomParamInt(Constants.avatarId,1)

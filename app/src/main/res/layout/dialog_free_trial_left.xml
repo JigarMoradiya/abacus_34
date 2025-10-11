@@ -79,7 +79,7 @@
                         android:id="@+id/linearDayLefts"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1.5"
+                        android:layout_weight="1.6"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:paddingBottom="@dimen/activity_padding16"
@@ -97,7 +97,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="72dp"
                             android:adjustViewBounds="true"
-                            app:srcCompat="@drawable/free_trial_day_left" />
+                            app:srcCompat="@drawable/free_trial_day_left_1" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <androidx.appcompat.widget.LinearLayoutCompat

@@ -32,6 +32,7 @@ class DBRepository @Inject constructor(
     suspend fun insertLevel(data : List<Level>) = abacusAllDataDB.insertLevel(data)
     suspend fun insertAllData(dataLevel: ArrayList<Level>, dataCategory: ArrayList<Category>, dataPages: ArrayList<Pages>, dataSet: ArrayList<com.jigar.me.data.model.dbtable.abacus_all_data.Set>, dataAbacus: ArrayList<Abacus>)  = abacusAllDataDB.insertAllData(dataLevel,dataCategory,dataPages,dataSet,dataAbacus)
     fun getLevel() = abacusAllDataDB.getLevel()
+    fun getLevel(list : List<String>) = abacusAllDataDB.getLevel(list)
     suspend fun getCategory(id : String) = abacusAllDataDB.getCategory(id)
     suspend fun getPages(id: String, isGetAllData: Boolean) = abacusAllDataDB.getPages(id,isGetAllData)
     suspend fun getSetDetail(setId : String) = abacusAllDataDB.getSetDetail(setId)

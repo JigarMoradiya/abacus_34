@@ -190,7 +190,7 @@ object CommonUtils {
     ): Boolean {
         val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
         var isPurchased = false
-        if (loginData?.email.equals("abacus@yopmail.com")){
+        if (loginData?.email.equals("abacus@yopmail.com") || prefManager.isUserInFreeTrial()){
             isPurchased = true
         }else{
             if (data.name.contains("free",true)){
@@ -229,7 +229,7 @@ object CommonUtils {
     fun checkPurchaseForExerciseExamCCM(prefManager: AppPreferencesHelper,purchasedSKU: List<InAppSkuDetails>): Boolean {
         val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
         var isPurchased = false
-        if (loginData?.email.equals("abacus@yopmail.com")){
+        if (loginData?.email.equals("abacus@yopmail.com") || prefManager.isUserInFreeTrial()){
             isPurchased = true
         }else{
             purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
