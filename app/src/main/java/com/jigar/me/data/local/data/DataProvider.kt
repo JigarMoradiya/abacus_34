@@ -13,7 +13,6 @@ import com.jigar.me.utils.Constants
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.random.Random.Default.nextInt
-import androidx.core.graphics.toColorInt
 
 
 object DataProvider {

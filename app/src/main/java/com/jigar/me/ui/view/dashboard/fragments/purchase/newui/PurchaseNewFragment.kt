@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.jigar.me.R
+import com.jigar.me.data.model.DisplayPurchaseData
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.databinding.FragmentPurchasePreviewBinding
@@ -41,8 +42,10 @@ class PurchaseNewFragment : BaseFragment(){
     private val apiViewModel by viewModels<AppViewModel>()
 
     private var isMonthlyPlanSubscribe = false
+    private var isWeekPlanSubscribe = false
     private var isYearlyPlanSubscribe = false
     private var isYearlyPlanOfferSubscribe = false
+    private var displayItemList: ArrayList<DisplayPurchaseData> = arrayListOf()
     private val list: ArrayList<String> = arrayListOf(
         "⭐ <strong>Get unlimited access</strong> to all Abacus Levels, Exercises, Exams and Custom Challenge Modes Module.",
         "🧮 Practice Addition, Subtraction, Multiplication, Division, with <strong>smart bead directions</strong> and <strong>formula on every steps.</strong>",
@@ -101,10 +104,17 @@ class PurchaseNewFragment : BaseFragment(){
 
     private fun setSubscription() = with(binding) {
         val idList: ArrayList<String> = arrayListOf()
-        idList.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1)
-        idList.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1)
-        idList.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer)
+        val type = object : TypeToken<ArrayList<DisplayPurchaseData>>() {}.type
+         displayItemList = Gson().fromJson(prefManager.getCustomParam(AppConstants.RemoteConfig.displayPlanList,""),type)
+//        idList.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1)
+//        idList.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1)
+//        idList.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer)
+//        idList.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Week1)
 //        idList.add(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime)
+
+        displayItemList.map {
+            idList.add(it.id)
+        }
 
         lifecycleScope.launch {
             oldPurchasedSkuList = apiViewModel.getInAppSKUPurchasedLiveExclude(idList)
@@ -125,6 +135,11 @@ class PurchaseNewFragment : BaseFragment(){
             inAppSkuDetailsList.find { it.sku == BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime }.also { lifeTimePlan ->
                 if (lifeTimePlan != null){
                     if (lifeTimePlan.isPurchase){
+                        inAppSkuDetailsList.find { it.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Week1 }.also {
+                            if (it != null){
+                                inAppSkuDetailsList.remove(it)
+                            }
+                        }
                         inAppSkuDetailsList.find { it.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1 }.also {
                             if (it != null){
                                 inAppSkuDetailsList.remove(it)
@@ -174,29 +189,41 @@ class PurchaseNewFragment : BaseFragment(){
             }
 
             when (mainList.sku) {
+                BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Week1 -> {
+                    if (mainList.isPurchase){
+                        isWeekPlanSubscribe = true
+                    }
+                    inAppSkuDetailsList[index].sortOrder = 1
+                }
                 BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1 -> {
                     if (mainList.isPurchase){
                         isMonthlyPlanSubscribe = true
                     }
-                    inAppSkuDetailsList[index].sortOrder = 1
+                    inAppSkuDetailsList[index].sortOrder = 2
                 }
                 BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer -> {
                     if (mainList.isPurchase){
                         isYearlyPlanOfferSubscribe = true
                     }
-                    inAppSkuDetailsList[index].sortOrder = 2
+                    inAppSkuDetailsList[index].sortOrder = 3
                 }
                 BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1 -> {
                     if (mainList.isPurchase){
                         isYearlyPlanSubscribe = true
                     }
-                    inAppSkuDetailsList[index].sortOrder = 2
+                    inAppSkuDetailsList[index].sortOrder = 3
                 }
             }
         }
 
         if (isYearlyPlanSubscribe || isYearlyPlanOfferSubscribe){
             inAppSkuDetailsList.find { it.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1 }.also {
+                if (it != null){
+                    inAppSkuDetailsList.remove(it)
+                }
+            }
+
+            inAppSkuDetailsList.find { it.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Week1 }.also {
                 if (it != null){
                     inAppSkuDetailsList.remove(it)
                 }

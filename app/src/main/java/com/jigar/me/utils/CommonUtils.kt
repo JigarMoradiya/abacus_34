@@ -24,7 +24,7 @@ import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_1Y
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_3Month
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_old
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month3
+import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Week
 import com.jigar.me.utils.extensions.show
 import org.json.JSONException
 import org.json.JSONObject
@@ -199,6 +199,7 @@ object CommonUtils {
                 purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
                         || it.sku == PRODUCT_ID_All_lifetime_old
                         || it.sku.contains(PRODUCT_ID_1Year)
+                        || it.sku.contains(PRODUCT_ID_Week)
                         || it.sku.contains(PRODUCT_ID_1Month)
                         || it.sku.contains(PRODUCT_ID_3Month)
                         || (it.sku.contains(data.name)) }.also {
@@ -213,6 +214,7 @@ object CommonUtils {
                         planListData.find { it.google_order_id == null &&
                                 (it.google_plan_id?.contains(data.name) == true
                                 || it.google_plan_id?.contains(PRODUCT_ID_1Year) == true
+                                || it.google_plan_id?.contains(PRODUCT_ID_Week) == true
                                 || it.google_plan_id?.contains(PRODUCT_ID_1Month) == true
                                 || it.google_plan_id?.contains(PRODUCT_ID_3Month) == true
                                         )
@@ -235,6 +237,7 @@ object CommonUtils {
             purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
                     || it.sku == PRODUCT_ID_All_lifetime_old
                     || it.sku.contains(PRODUCT_ID_1Year)
+                    || it.sku.contains(PRODUCT_ID_Week)
                     || it.sku.contains(PRODUCT_ID_1Month)
                     || it.sku.contains(PRODUCT_ID_3Month)
                     || (it.sku.contains("level3")) || (it.sku.contains("level4"))
@@ -256,6 +259,7 @@ object CommonUtils {
                             (it.google_plan_id?.contains("level7") == true) ||
                             (it.google_plan_id?.contains("level8") == true) ||
                             (it.google_plan_id?.contains(PRODUCT_ID_1Year) == true) ||
+                            (it.google_plan_id?.contains(PRODUCT_ID_Week) == true) ||
                             (it.google_plan_id?.contains(PRODUCT_ID_1Month) == true) ||
                             (it.google_plan_id?.contains(PRODUCT_ID_3Month) == true)
                             ) }.also {
@@ -272,6 +276,7 @@ object CommonUtils {
         purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
                 || it.sku == PRODUCT_ID_All_lifetime_old
                 || it.sku.contains(PRODUCT_ID_1Year)
+                || it.sku.contains(PRODUCT_ID_Week)
                 || it.sku.contains(PRODUCT_ID_1Month)
                 || it.sku.contains(PRODUCT_ID_3Month)
         }.also {
@@ -284,6 +289,7 @@ object CommonUtils {
                     object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
                 )
                 planListData.find { it.google_order_id == null && (
+                        it.google_plan_id?.contains(PRODUCT_ID_Week) == true ||
                         it.google_plan_id?.contains(PRODUCT_ID_1Year) == true ||
                         it.google_plan_id?.contains(PRODUCT_ID_1Month) == true ||
                         it.google_plan_id?.contains(PRODUCT_ID_3Month) == true

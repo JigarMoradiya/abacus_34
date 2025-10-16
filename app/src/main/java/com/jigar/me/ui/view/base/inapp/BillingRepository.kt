@@ -349,9 +349,11 @@ class BillingRepository @Inject constructor(
         const val PRODUCT_ID_level3_lifetime = "com.abacus.multiplication.division"
         const val PRODUCT_ID_Subscription_Month3 = "com.abacus.puzzle.3month"
         const val PRODUCT_ID_Subscription_Month1 = "com.abacus.puzzle.1month"
+        const val PRODUCT_ID_Subscription_Week1 = "com.abacus.puzzle.week"
 
         const val PRODUCT_ID_Subscription_Year1 = "com.abacus.puzzle.1year"
         const val PRODUCT_ID_Subscription_Year1_Offer = "com.abacus.puzzle.1year.offer"
+        const val PRODUCT_ID_Week = "week" // only for check condition
         const val PRODUCT_ID_1Year = "1year" // only for check condition
         const val PRODUCT_ID_1Month = "1month" // only for check condition
         const val PRODUCT_ID_3Month = "3month" // only for check condition
@@ -365,8 +367,6 @@ class BillingRepository @Inject constructor(
         const val PRODUCT_ID_Subscription_Month3_Level8 = "com.abacus.puzzle.3month.level8"
         const val PRODUCT_ID_Subscription_Month6_Level12 = "com.abacus.puzzle.6month.level1.level2"
         const val PRODUCT_ID_Subscription_Month6_Level34 = "com.abacus.puzzle.6month.level3.level4"
-        const val PRODUCT_ID_Subscription_Month6_Level56 = "com.abacus.puzzle.6month.level5.level6"
-        const val PRODUCT_ID_Subscription_Month6_Level78 = "com.abacus.puzzle.6month.level7.level8"
 
         val productList: ArrayList<QueryProductDetailsParams.Product> = arrayListOf(
             QueryProductDetailsParams.Product.newBuilder()
@@ -397,6 +397,10 @@ class BillingRepository @Inject constructor(
             arrayListOf(
                 QueryProductDetailsParams.Product.newBuilder()
                     .setProductId(PRODUCT_ID_Subscription_Month1)
+                    .setProductType(BillingClient.ProductType.SUBS)
+                    .build(),
+                QueryProductDetailsParams.Product.newBuilder()
+                    .setProductId(PRODUCT_ID_Subscription_Week1)
                     .setProductType(BillingClient.ProductType.SUBS)
                     .build(),
                 QueryProductDetailsParams.Product.newBuilder()
@@ -451,15 +455,7 @@ class BillingRepository @Inject constructor(
                 QueryProductDetailsParams.Product.newBuilder()
                     .setProductId(PRODUCT_ID_Subscription_Month6_Level34)
                     .setProductType(BillingClient.ProductType.SUBS)
-                    .build(),
-                QueryProductDetailsParams.Product.newBuilder()
-                    .setProductId(PRODUCT_ID_Subscription_Month6_Level56)
-                    .setProductType(BillingClient.ProductType.SUBS)
-                    .build(),
-                QueryProductDetailsParams.Product.newBuilder()
-                    .setProductId(PRODUCT_ID_Subscription_Month6_Level78)
-                    .setProductType(BillingClient.ProductType.SUBS)
-                    .build(),
+                    .build()
             )
 
     }

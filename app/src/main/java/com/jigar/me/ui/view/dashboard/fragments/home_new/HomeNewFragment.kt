@@ -244,28 +244,24 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
         lifecycleScope.launch {
             val purchasedSKU = appViewModel.getInAppSKUPurchased()
             val isPurchased = CommonUtils.checkPurchaseForExerciseExamCCM(prefManager,purchasedSKU)
-            Log.e("jigarHome","isPurchased = "+isPurchased)
             if (isPurchased){
                 themePopup()
             }else{
                 val free_trial_remaining_days =  prefManager.getCustomParamInt(Constants.free_trial_remaining_days,0)
-                val free_trial_remaining_days_last_checked = prefManager.getCustomParamInt(Constants.free_trial_remaining_days_last_checked,-1)
-//        val free_trial_remaining_days_last_checked = -1
-                Log.e("jigarHome","free_trial_remaining_days = "+free_trial_remaining_days)
-                Log.e("jigarHome","free_trial_remaining_days_last_checked = "+free_trial_remaining_days_last_checked)
+//                val free_trial_remaining_days_last_checked = prefManager.getCustomParamInt(Constants.free_trial_remaining_days_last_checked,-1)
+        val free_trial_remaining_days_last_checked = -1
                 if (free_trial_remaining_days > 0){
                     prefManager.setUserInFreeTrial(true)
                 }else{
                     prefManager.setUserInFreeTrial(false)
                 }
-                Log.e("jigarHome","isUserInFreeTrial = "+prefManager.isUserInFreeTrial())
                 if (free_trial_remaining_days_last_checked != free_trial_remaining_days || free_trial_remaining_days == 0){
                     FreeTrialLeftDialog.showPopup(requireActivity(),prefManager.getCustomParamInt(Constants.free_trial_remaining_days,0),object : DialogFreeTrialInterface{
                         override fun onCloseClick() {
                             prefManager.setCustomParamInt(Constants.free_trial_remaining_days_last_checked,free_trial_remaining_days)
                         }
                         override fun onSubmitYesClick() {
-                            prefManager.setCustomParamInt(Constants.free_trial_remaining_days_last_checked,free_trial_remaining_days)
+                            prefManager.setCustomParamInt(Constants.free_trial_remaining_days_last_checked, free_trial_remaining_days)
                             if (free_trial_remaining_days >= 7){
                                 mNavController?.navigate(R.id.toVideoPreviewFragment)
                             }else{

@@ -25,8 +25,8 @@ interface InAppPurchaseDao {
                     it.products.first()
                 }
                 it.orderId?.let { orderId ->
-//                    insertData(InAppPurchaseDetails(orderId,sku,it.developerPayload,it.purchaseToken,
-//                        it.purchaseTime,it.purchaseState,it.isAcknowledged,it.signature,it.originalJson,it.isAutoRenewing))
+                    insertData(InAppPurchaseDetails(orderId,sku,it.developerPayload,it.purchaseToken,
+                        it.purchaseTime,it.purchaseState,it.isAcknowledged,it.signature,it.originalJson,it.isAutoRenewing))
                 }
             }
         }

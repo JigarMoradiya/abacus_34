@@ -22,7 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class VideoFragment : Fragment() {
 
-    private var assetFileName: String = "video_free_mode.mp4"
+    private var assetFileName: String = "src/main/assets/video_free_mode.mp4"
     private var _binding: FragmentPurchasePreviewVideoBinding? = null
     private val binding get() = _binding!!
 

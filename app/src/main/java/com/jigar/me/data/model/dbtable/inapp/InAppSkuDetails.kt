@@ -38,6 +38,8 @@ data class InAppSkuDetails(
                 "For 6 Month"
             }else if (billingPeriod.equals("p1y",true)){
                 "Yearly Plan"
+            }else if (billingPeriod.equals("p1w",true)){
+                "Weekly Plan"
             }else{
                 "-"
             }
@@ -84,6 +86,8 @@ data class InAppSkuDetails(
                 "$price / 6 month"
             }else if (billingPeriod.equals("p1y",true)){
                 "$price / year"
+            }else if (billingPeriod.equals("p1w",true)){
+                "$price / week"
             }else{
                 "-"
             }
