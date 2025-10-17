@@ -32,7 +32,7 @@
         app:cardElevation="@dimen/card_elevation2"
         app:cardBackgroundColor="@color/purple_50"
         android:id="@+id/cardMain"
-        app:strokeColor="@color/black"
+        app:strokeColor="@color/purple_700"
         app:strokeWidth="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -62,7 +62,7 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/textSizeLarge"
                     app:fontFamily="@font/font_extra_bold"
-                    tools:text="Monthly Plan" />
+                    tools:text="Yearly Plan" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
@@ -84,7 +84,7 @@
                     android:includeFontPadding="false"
                     android:textColor="@color/purple_500"
                     android:textSize="@dimen/textSizeLarge"
-                    android:visibility="@{sku.isPurchase?View.GONE:isPlanAssignFromBackend?View.GONE:View.VISIBLE,default=gone}"
+                    android:visibility="gone"
                     app:fontFamily="@font/font_semibold"
                     tools:text="₹800.00"
                     tools:visibility="visible" />

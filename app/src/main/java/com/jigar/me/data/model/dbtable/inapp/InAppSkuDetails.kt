@@ -92,7 +92,7 @@ data class InAppSkuDetails(
                 "-"
             }
         } else {
-            "$price / one-time purchase"
+            "$price"
         }
     }
     fun isSubscriptionPlan() = type == BillingClient.ProductType.SUBS

@@ -355,6 +355,8 @@ class BillingRepository @Inject constructor(
         const val PRODUCT_ID_Subscription_Year1_Offer = "com.abacus.puzzle.1year.offer"
         const val PRODUCT_ID_Week = "week" // only for check condition
         const val PRODUCT_ID_1Year = "1year" // only for check condition
+        const val PRODUCT_ID_All = "all" // only for check condition
+        const val PRODUCT_ID_1Year_Offer = "1year.offer" // only for check condition
         const val PRODUCT_ID_1Month = "1month" // only for check condition
         const val PRODUCT_ID_3Month = "3month" // only for check condition
         const val PRODUCT_ID_Subscription_Month3_Level1 = "com.abacus.puzzle.3month.level1"

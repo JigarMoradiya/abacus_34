@@ -19,6 +19,9 @@ class InAppSKUDB @Inject constructor(private val dao: InAppSKUDao,private val pr
     suspend fun getInAppSKUPurchasedLiveExclude(excludeIds : ArrayList<String>): List<InAppSkuDetails> {
         return dao.getInAppSKUPurchasedLiveExclude(excludeIds)
     }
+    suspend fun getInAppSKUPurchased(ids : ArrayList<String>): List<InAppSkuDetails> {
+        return dao.getInAppSKUPurchased(ids)
+    }
     fun getInAppSKU(displayList : ArrayList<String>): LiveData<List<InAppSkuDetails>> {
         return dao.getInAppSku(displayList)
     }

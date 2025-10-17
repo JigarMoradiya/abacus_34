@@ -16,6 +16,7 @@ class AppViewModel @Inject constructor(private val dbRepository: DBRepository) :
     fun getInAppSKU(displayList : ArrayList<String>) = dbRepository.getInAppSKU(displayList)
     suspend fun getInAppSKUPurchased() = dbRepository.getInAppSKUPurchased()
     suspend fun getInAppSKUPurchasedLiveExclude(excludeIds : ArrayList<String>) = dbRepository.getInAppSKUPurchasedLiveExclude(excludeIds)
+    suspend fun getInAppSKUPurchased(ids : ArrayList<String>) = dbRepository.getInAppSKUPurchased(ids)
 
     fun getExamHistoryList(examType :String) = dbRepository.getExamHistoryList(examType)
 

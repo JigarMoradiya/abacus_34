@@ -9,18 +9,18 @@
     <dimen name="padding_radius_abacus_frame_large_inner_exam">2dp</dimen>
     <!--9:5-->
     <dimen name="height_extra">3dp</dimen>
-    <dimen name="poligon_width">45dp</dimen>
-    <dimen name="poligon_height">25dp</dimen>
+    <dimen name="poligon_width">40.5dp</dimen>
+    <dimen name="poligon_height">22.5dp</dimen>
     <dimen name="poligon_space">4dp</dimen>
 
     <!-- 6:5 -->
     <dimen name="face_width">30dp</dimen>
     <dimen name="face_height">25dp</dimen>
-    <dimen name="face_space">16dp</dimen>
+    <dimen name="face_space">12dp</dimen>
 
     <dimen name="star_width">26dp</dimen>
     <dimen name="star_height">25dp</dimen>
-    <dimen name="star_space">14dp</dimen>
+    <dimen name="star_space">12dp</dimen>
 
     <!--7:5-->
     <dimen name="garnet_width">35dp</dimen>
@@ -30,10 +30,10 @@
     <!--6:5-->
     <dimen name="diamond_width">30dp</dimen>
     <dimen name="diamond_height">25dp</dimen>
-    <dimen name="diamond_space">13dp</dimen>
+    <dimen name="diamond_space">12dp</dimen>
 
     <dimen name="square_width_height">25dp</dimen>
-    <dimen name="square_space">14dp</dimen>
+    <dimen name="square_space">12dp</dimen>
 
     <dimen name="bead_column">48dp</dimen>
     <dimen name="bead_rv_width">288dp</dimen>

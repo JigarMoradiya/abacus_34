@@ -46,21 +46,6 @@ class PurchaseNewAdapter(
         val data: InAppSkuDetails = listData[position]
         with(holder.binding) {
             val context = root.context
-            if(data.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1 || data.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer){
-                cardMain.setCardBackgroundColor(
-                    ColorStateList.valueOf(
-                        ContextCompat.getColor(context, R.color.purple_50)))
-                cardMain.setStrokeColor(
-                    ColorStateList.valueOf(
-                        ContextCompat.getColor(context, R.color.purple_700)))
-            }else{
-                cardMain.setCardBackgroundColor(
-                    ColorStateList.valueOf(
-                        ContextCompat.getColor(context, R.color.grey_100)))
-                cardMain.setStrokeColor(
-                    ColorStateList.valueOf(
-                        ContextCompat.getColor(context, R.color.grey_700)))
-            }
             sku = data
             cardMain.onClick {
                 if (selectedPosition != position){

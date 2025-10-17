@@ -26,6 +26,7 @@ class DBRepository @Inject constructor(
     fun getInAppSKU(displayList : ArrayList<String>) = inAppSKUDB.getInAppSKU(displayList)
     suspend fun getInAppSKUPurchased() = inAppSKUDB.getInAppSKUPurchased()
     suspend fun getInAppSKUPurchasedLiveExclude(excludeIds : ArrayList<String>) = inAppSKUDB.getInAppSKUPurchasedLiveExclude(excludeIds)
+    suspend fun getInAppSKUPurchased(ids : ArrayList<String>) = inAppSKUDB.getInAppSKUPurchased(ids)
     fun getExamHistoryList(examType: String) = examHistoryDB.getExamHistoryList(examType)
 
     // abacus all data

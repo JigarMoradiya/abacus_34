@@ -248,8 +248,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                 themePopup()
             }else{
                 val free_trial_remaining_days =  prefManager.getCustomParamInt(Constants.free_trial_remaining_days,0)
-//                val free_trial_remaining_days_last_checked = prefManager.getCustomParamInt(Constants.free_trial_remaining_days_last_checked,-1)
-        val free_trial_remaining_days_last_checked = -1
+                val free_trial_remaining_days_last_checked = prefManager.getCustomParamInt(Constants.free_trial_remaining_days_last_checked,-1)
                 if (free_trial_remaining_days > 0){
                     prefManager.setUserInFreeTrial(true)
                 }else{
