@@ -1,6 +1,8 @@
 package com.jigar.me.ui.view.dashboard.fragments.abacus
 
+import android.content.Context
 import android.content.res.ColorStateList
+import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -247,6 +249,16 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
         }
         themeContent  = DataProvider.findAbacusThemeType(requireContext(),theme,abacusBeadType)
 
+//        val config = Resources.getSystem().configuration
+//        val screenWidthDp = config.smallestScreenWidthDp
+//        val screenHeightDp = config.screenHeightDp
+//        val densityDpi = Resources.getSystem().displayMetrics.densityDpi
+//
+//        Log.d("DeviceConfig", "smallestWidthDp = $screenWidthDp")
+//        Log.d("DeviceConfig", "screenHeightDp = $screenHeightDp")
+//        Log.d("DeviceConfig", "densityDpi = $densityDpi")
+//        logDeviceQualifiers(requireContext())
+
         abacusBinding?.txtReset?.onClick {
             abacusBinding?.viewDirection?.hide()
             resetClick()
@@ -289,6 +301,45 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             setThemeLighterTopBeads()
         }
     }
+
+//    fun logDeviceQualifiers(context: Context) {
+//        val metrics = context.resources.displayMetrics
+//        val config = context.resources.configuration
+//
+//        val screenWidthDp = config.screenWidthDp
+//        val screenHeightDp = config.screenHeightDp
+//        val smallestWidthDp = config.smallestScreenWidthDp
+//        val densityDpi = metrics.densityDpi
+//
+//        Log.d("Qualifiers", "screenWidthDp = $screenWidthDp")
+//        Log.d("Qualifiers", "screenHeightDp = $screenHeightDp")
+//        Log.d("Qualifiers", "smallestWidthDp = $smallestWidthDp")
+//        Log.d("Qualifiers", "densityDpi = $densityDpi")
+//
+//        // Now determine possible folders
+//        val wFolder = when {
+//            screenWidthDp >= 1024 -> "values-w1024dp"
+//            screenWidthDp >= 960 -> "values-w960dp"
+//            screenWidthDp >= 800 -> "values-w800dp"
+//            screenWidthDp >= 720 -> "values-w720dp"
+//            screenWidthDp >= 600 -> "values-w600dp"
+//            screenWidthDp >= 480 -> "values-w480dp"
+//            else -> "values/"
+//        }
+//
+//        val swFolder = when {
+//            smallestWidthDp >= 1024 -> "values-sw1024dp"
+//            smallestWidthDp >= 960 -> "values-sw960dp"
+//            smallestWidthDp >= 800 -> "values-sw800dp"
+//            smallestWidthDp >= 720 -> "values-sw720dp"
+//            smallestWidthDp >= 600 -> "values-sw600dp"
+//            smallestWidthDp >= 480 -> "values-sw480dp"
+//            else -> "values/"
+//        }
+//
+//        Log.d("Qualifiers", "→ likely values-w folder: $wFolder")
+////        Log.d("Qualifiers", "→ likely values-sw folder: $swFolder")
+//    }
 
     private fun setSwitches() {
         with(prefManager){

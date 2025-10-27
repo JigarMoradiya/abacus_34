@@ -6,8 +6,11 @@
     <dimen name="padding_radius_abacus_frame_large_inner_exam">2dp</dimen>
 
     <!--9:5-->
-    <dimen name="poligon_width">54dp</dimen>
-    <dimen name="poligon_height">30dp</dimen>
+<!--    <dimen name="poligon_width">54dp</dimen>-->
+<!--    <dimen name="poligon_height">30dp</dimen>-->
+
+    <dimen name="poligon_width">49.5dp</dimen>
+    <dimen name="poligon_height">27.5dp</dimen>
 
     <!-- 6:5 -->
     <dimen name="face_width">36dp</dimen>
