@@ -23,6 +23,7 @@ class PurchaseNewAdapter(
     private var listData: List<InAppSkuDetails>,
     private val planListAssignFromAdmin: List<PlanAssignFromAdminData>,
     private val discountPer: Int = 0,
+    private val discountPerLifetime: Int = 0,
     private val rv : RecyclerView,
     private val isOnlyView: Boolean = false,
 ) :
@@ -30,9 +31,11 @@ class PurchaseNewAdapter(
     var selectedPosition = 0
     fun getSelectedData() = listData[selectedPosition]
     private var original1YearData : InAppSkuDetails? = null
-    fun setData(listData: List<InAppSkuDetails>, original1YearData : InAppSkuDetails? = null) {
+    private var originalLifetimeData : InAppSkuDetails? = null
+    fun setData(listData: List<InAppSkuDetails>, original1YearData : InAppSkuDetails? = null, originalLifetimeData : InAppSkuDetails? = null) {
         this.listData = listData
         this.original1YearData = original1YearData
+        this.originalLifetimeData = originalLifetimeData
         notifyItemRangeChanged(0, listData.size)
     }
 
@@ -101,28 +104,33 @@ class PurchaseNewAdapter(
                 cardMain.isEnabled = false
             }
 
-            if (discountPer > 0){
-                if(data.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer){
-                    if (original1YearData != null){
-                        if ((original1YearData?.price_amount_micros ?: 0) > (data.price_amount_micros?:0)){
-                            txtPriceOld.text = original1YearData?.price
-                            txtPriceOld.paintFlags = txtPriceOld.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-                            txtPriceOld.show()
-                        }
-                    }
+            txtPriceOld.hide()
+            if (discountPer > 0 && data.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer && original1YearData != null){
+                if ((original1YearData?.price_amount_micros ?: 0) > (data.price_amount_micros?:0)){
+                    txtPriceOld.text = original1YearData?.price
+                    txtPriceOld.paintFlags = txtPriceOld.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                    txtPriceOld.show()
+                }
+            }else if (discountPerLifetime > 0 && data.sku == BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_offer && originalLifetimeData != null){
+                if ((originalLifetimeData?.price_amount_micros ?: 0) > (data.price_amount_micros?:0)){
+                    txtPriceOld.text = originalLifetimeData?.price
+                    txtPriceOld.paintFlags = txtPriceOld.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                    txtPriceOld.show()
                 }
             }
 
+            txtSave.hide()
             if(data.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1 || data.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer){
                 listData.find { it.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1 }.also {
                     if (it != null){
                         val yearlyMicros = if (original1YearData != null ){ original1YearData?.price_amount_micros }else { data.price_amount_micros }
                         val savingPercent = data.calculateSavings(it.price_amount_micros?:0, yearlyMicros?:0)
-                        txtSave.text = HtmlCompat.fromHtml("save <b>${savingPercent}%</b> vs monthly", HtmlCompat.FROM_HTML_MODE_LEGACY)
+                        txtSave.text = HtmlCompat.fromHtml("save ~<b>${savingPercent}%</b> vs monthly", HtmlCompat.FROM_HTML_MODE_LEGACY)
+                        txtSave.show()
                         isSaveAmountShow = true
                         if (discountPer > 0){
                             txtDiscount.show()
-                            txtDiscount.text = " + ${discountPer}% OFF"
+                            txtDiscount.text = " (extra ~${discountPer}% OFF)"
                         }else{
                             txtDiscount.hide()
                         }
@@ -131,10 +139,16 @@ class PurchaseNewAdapter(
                         txtDiscount.hide()
                     }
                 }
+            }else if(data.sku == BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_offer && discountPerLifetime > 0){
+                isSaveAmountShow = false
+                txtDiscount.show()
+                txtDiscount.text = "~ ${discountPerLifetime}% OFF"
             }else{
                 isSaveAmountShow = false
                 txtDiscount.hide()
             }
+
+
         }
     }
 

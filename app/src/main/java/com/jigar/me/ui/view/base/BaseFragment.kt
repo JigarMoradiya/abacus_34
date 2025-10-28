@@ -97,11 +97,6 @@ abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSetting
         // TODO
         with(prefManager) {
             setCustomParam(AppConstants.Purchase.Purchase_All, "N")
-            setCustomParam(AppConstants.Purchase.Purchase_Toddler_Single_digit_level1, "N")
-            setCustomParam(AppConstants.Purchase.Purchase_Add_Sub_level2, "N")
-            setCustomParam(AppConstants.Purchase.Purchase_Mul_Div_level3, "N")
-            setCustomParam(AppConstants.Purchase.Purchase_Material_Maths, "N")
-            setCustomParam(AppConstants.Purchase.Purchase_Material_Nursery, "N")
 
             data.map {
                 checkPlanAndUpdate(it.google_plan_id)
@@ -119,22 +114,6 @@ abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSetting
                 BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime, BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_old -> {
                     setCustomParam(AppConstants.Purchase.Purchase_All, "Y")
                 }
-                BillingRepository.AbacusSku.PRODUCT_ID_material_maths -> {
-                    setCustomParam(AppConstants.Purchase.Purchase_Material_Maths, "Y")
-                }
-                BillingRepository.AbacusSku.PRODUCT_ID_material_nursery -> {
-                    setCustomParam(AppConstants.Purchase.Purchase_Material_Nursery, "Y")
-                }
-                BillingRepository.AbacusSku.PRODUCT_ID_level1_lifetime -> {
-                    setCustomParam(AppConstants.Purchase.Purchase_Toddler_Single_digit_level1, "Y")
-                }
-                BillingRepository.AbacusSku.PRODUCT_ID_level2_lifetime -> {
-                    setCustomParam(AppConstants.Purchase.Purchase_Add_Sub_level2, "Y")
-                }
-                BillingRepository.AbacusSku.PRODUCT_ID_level3_lifetime -> {
-                    setCustomParam(AppConstants.Purchase.Purchase_Mul_Div_level3, "Y")
-                }
-
                 BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month3 -> {
                     setCustomParam(AppConstants.Purchase.Purchase_All, "Y")
                 }

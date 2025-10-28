@@ -104,6 +104,7 @@
 
     <color name="light_about_us">#F0F6FF</color>
     <color name="light_subscribe">#FBEAEA</color>
+    <color name="light_my_account">#FFEFEE</color>
     <color name="light_setting">#F2F1FF</color>
     <color name="light_faq">#FAFFF1</color>
     <color name="light_logout">#E1EBF3</color>

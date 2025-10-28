@@ -28,29 +28,15 @@ class HomeMenuNewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = with(holder.binding){
         val context = conMain.context
-        if (dimension < 150){
-            dimension = context.resources.getDimension(R.dimen.home_menu).toInt()
-        }
-        conMain.layoutParams.width = dimension
-        conMain.layoutParams.height = dimension
+//        if (dimension < 150){
+//            dimension = context.resources.getDimension(R.dimen.home_menu).toInt()
+//        }
+//        conMain.layoutParams.width = dimension
+//        conMain.layoutParams.height = dimension
 
         val data = listData[position]
         dataModel = data
 
-        if (data.tag.isEmpty() || data.tag == "-"){
-            txtTag.hide()
-        }else {
-            txtTag.show()
-            txtTag.text = data.tag
-            if (data.tag.equals(context.getString(R.string.new_),true)){
-                txtTag.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context,R.color.green_900))
-            }else if (data.tag.equals(context.getString(R.string.new_),true) || data.tag.equals(context.getString(R.string.most_liked),true)){
-                txtTag.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context,R.color.red_900))
-            }else{
-                txtTag.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context,R.color.tag_bg))
-            }
-
-        }
         conMain.onClick {
             mListener.invoke(position,listData[position])
         }

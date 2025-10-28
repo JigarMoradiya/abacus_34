@@ -59,7 +59,9 @@ class PurchaseNewFragment : BaseFragment(){
     private var inAppSkuDetailsList : ArrayList<InAppSkuDetails> = arrayListOf()
     private var oldPurchasedSkuList : List<InAppSkuDetails> = arrayListOf()
     private var discountPer : Int = 0
+    private var discountPerLifetime : Int = 0
     private var original1YearData : InAppSkuDetails? = null
+    private var originalLifetimeData : InAppSkuDetails? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentPurchasePreviewBinding.inflate(inflater, container, false)
         setNavigationGraph()
@@ -89,14 +91,16 @@ class PurchaseNewFragment : BaseFragment(){
         spaceNotch.layoutParams.width = prefManager.getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
 
         discountPer = prefManager.getCustomParamInt(AppConstants.RemoteConfig.discountPer,0)
-//        discountPer = 17
+        discountPerLifetime = prefManager.getCustomParamInt(AppConstants.RemoteConfig.discountPerLifeTime,0)
+//        discountPer = 0
+//        discountPerLifetime = 0
         if (prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"").isNotEmpty()) {
             planListAssignFromAdmin = Gson().fromJson(
-                prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
+                prefManager.getCustomParam( Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
                 object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
             )
         }
-        purchaseNewAdapter = PurchaseNewAdapter(arrayListOf(), planListAssignFromAdmin, discountPer, recyclerview)
+        purchaseNewAdapter = PurchaseNewAdapter(arrayListOf(), planListAssignFromAdmin, discountPer, discountPerLifetime,recyclerview)
         recyclerview.adapter = purchaseNewAdapter
 
         purchaseInfoAdapter = PurchaseInfoAdapter(list)
@@ -115,7 +119,8 @@ class PurchaseNewFragment : BaseFragment(){
 //            idList.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1)
 //            idList.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1)
 //            idList.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer)
-//            idList.add(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime)
+            idList.add(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime)
+            idList.add(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_offer)
 
             displayItemList.map {
                 idList.add(it.id)
@@ -136,6 +141,7 @@ class PurchaseNewFragment : BaseFragment(){
             idListNew.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1)
             idListNew.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer)
             idListNew.add(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime)
+            idListNew.add(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_offer)
             oldPurchasedSkuList = apiViewModel.getInAppSKUPurchasedLiveExclude(idListNew)
             if (oldPurchasedSkuList.isNotNullOrEmpty()){
                 btnOldSubscription.show()
@@ -162,7 +168,7 @@ class PurchaseNewFragment : BaseFragment(){
 
             arrangeData(it)
             val sortedList = inAppSkuDetailsList.sortedWith { list1, list2 -> ((list1.price_amount_micros?:0) / 1000 - (list2.price_amount_micros?:0) / 1000).toInt() }
-            purchaseNewAdapter.setData(sortedList,original1YearData)
+            purchaseNewAdapter.setData(sortedList,original1YearData,originalLifetimeData)
         }
     }
 
@@ -192,16 +198,28 @@ class PurchaseNewFragment : BaseFragment(){
                     }
                 }
             }
-            details.map {
-                if (it.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_1Month) && it.isPurchase){
-                    removePlan(BillingRepository.AbacusSku.PRODUCT_ID_Week)
-                }
-                if (it.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_All) && it.isPurchase){
+            details.find { it.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_All) && it.isPurchase }.also {
+                if (it != null){
+                    if (it.sku == BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime){
+                        removePlan(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_offer)
+                    }else{
+                        removePlan(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime)
+                    }
                     removePlan(BillingRepository.AbacusSku.PRODUCT_ID_Week)
                     removePlan(BillingRepository.AbacusSku.PRODUCT_ID_1Month)
                     removePlan(BillingRepository.AbacusSku.PRODUCT_ID_1Year)
-                    removePlan(BillingRepository.AbacusSku.PRODUCT_ID_1Year_Offer)
-                    btnSubmit.hide()
+                }else{
+                    if (discountPerLifetime > 0){
+                        originalLifetimeData = details.find { it.sku == BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime }
+                        removePlan(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime)
+                    }else{
+                        removePlan(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_offer)
+                    }
+                }
+            }
+            details.map {
+                if (it.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_1Month) && it.isPurchase){
+                    removePlan(BillingRepository.AbacusSku.PRODUCT_ID_Week)
                 }
             }
         }

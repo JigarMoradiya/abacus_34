@@ -119,15 +119,8 @@ object AppConstants {
             var bulkLogin = "bulkLogin"
             var privacyPolicyUrl = "privacyPolicyUrl"
             var versionCode = "versionCode"
-            var discountData = "discount_data"
             var discountPer = "discount_per"
-        }
-    }
-    annotation class AbacusProgress {
-        companion object {
-            var PREF_PAGE_SUM = "pageSum"
-            var Track = "TrackNew"
-            var Settings = "Settings"
+            var discountPerLifeTime = "discount_per_lifetime"
         }
     }
 
@@ -148,7 +141,6 @@ object AppConstants {
             var isSetTheam = "isSetTheam"
             var isHomeTourWatch = "isHomeTourWatch"
             var appOpenCount = "appOpenCount"
-            var appOpenCountForOffer = "appOpenCountForOffer"
             var isFreeModeTourWatch = "isFreeModeTourWatch"
             var Theam = "Theam"
             var TheamTempView = "TheamTempView"

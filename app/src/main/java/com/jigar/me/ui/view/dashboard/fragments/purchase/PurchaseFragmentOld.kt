@@ -45,7 +45,6 @@ class PurchaseFragmentOld : BaseFragment(), PurchaseAdapter.OnItemClickListener 
     private lateinit var mNavController: NavController
     private var displayItemList: ArrayList<DisplayPurchaseData> = arrayListOf()
     private var planListAssignFromAdmin : List<PlanAssignFromAdminData> = arrayListOf()
-    private var discountData : DiscountData? = null
     private var loginData: LoginData? = null
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
         binding = FragmentPurchaseBinding.inflate(inflater, container, false)
@@ -60,9 +59,6 @@ class PurchaseFragmentOld : BaseFragment(), PurchaseAdapter.OnItemClickListener 
 
     private fun initViews() {
         loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
-        if (prefManager.getCustomParam(AppConstants.RemoteConfig.discountData,"").isNotEmpty()){
-            discountData = Gson().fromJson(prefManager.getCustomParam(AppConstants.RemoteConfig.discountData,""), DiscountData::class.java)
-        }
         if (prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"").isNotEmpty()) {
             planListAssignFromAdmin = Gson().fromJson(
                 prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
@@ -70,7 +66,7 @@ class PurchaseFragmentOld : BaseFragment(), PurchaseAdapter.OnItemClickListener 
             )
         }
 
-        skuListAdapter = PurchaseAdapter(listSKU,planListAssignFromAdmin,discountData ,this)
+        skuListAdapter = PurchaseAdapter(listSKU,planListAssignFromAdmin ,null,this)
         binding.recyclerview.adapter = skuListAdapter
 //        inAppViewModel.inAppInit()
 
@@ -109,10 +105,9 @@ class PurchaseFragmentOld : BaseFragment(), PurchaseAdapter.OnItemClickListener 
 
     private fun setSKU(listData: List<InAppSkuDetails>) {
         if (displayItemList.isNotEmpty()){
-            val discountPer = discountData?.per?:0
             listData.mapIndexed { index, mainList ->
                 displayItemList.find { it.id == mainList.sku  }.also {
-                    if (discountPer > 0 && mainList.sku == PRODUCT_ID_Subscription_Year1){
+                    if (mainList.sku == PRODUCT_ID_Subscription_Year1){
                         listData[index].sortOrder = 0
                     }else{
                         if (it != null){

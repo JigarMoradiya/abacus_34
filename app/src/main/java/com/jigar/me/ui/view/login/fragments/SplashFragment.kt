@@ -136,8 +136,8 @@ class SplashFragment : BaseFragment() {
                     })
             }else{
                 val video: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.videoList)
-                val discountData: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.discountData)
                 val discountPer: Long = mFirebaseRemoteConfig.getLong(AppConstants.RemoteConfig.discountPer)
+                val discountPerLifeTime: Long = mFirebaseRemoteConfig.getLong(AppConstants.RemoteConfig.discountPerLifeTime)
                 val displayPlan: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.displayPlanList)
                 val privacyPolicyUrl: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.privacyPolicyUrl)
                 val supportEmail: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.supportEmail)
@@ -151,11 +151,8 @@ class SplashFragment : BaseFragment() {
                     setCustomParam(AppConstants.RemoteConfig.bulkLogin,bulkLogin)
                     setCustomParamInt(AppConstants.RemoteConfig.versionCode,versionCode.toInt())
                     setCustomParamInt(AppConstants.RemoteConfig.discountPer,discountPer.toInt())
-                    if (discountData.length > 5){
-                        setCustomParam(AppConstants.RemoteConfig.discountData,discountData)
-                    }else{
-                        setCustomParam(AppConstants.RemoteConfig.discountData,"")
-                    }
+                    setCustomParamInt(AppConstants.RemoteConfig.discountPerLifeTime,discountPerLifeTime.toInt())
+
                     if (video.length > 5){
                         setCustomParam(AppConstants.RemoteConfig.videoList,video)
                     }else{

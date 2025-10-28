@@ -30,8 +30,6 @@ import com.jigar.me.data.local.data.DataProvider
 import com.jigar.me.data.local.data.HomeBanner
 import com.jigar.me.data.local.data.HomeMenuIntroType
 import com.jigar.me.data.model.data.GooglePurchasedPlanRequest
-import com.jigar.me.data.model.data.LoginData
-import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
 import com.jigar.me.data.model.dbtable.abacus_all_data.Level
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
@@ -70,8 +68,7 @@ import java.util.TimerTask
 import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
-class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
-    SelectAvatarProfileDialog.AvatarProfileDialogInterface{
+class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileDialogInterface{
     private lateinit var binding: FragmentHomeNewBinding
     private var root : View? = null
     private var mNavController: NavController? = null
@@ -79,19 +76,7 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
     private val studentViewModel by viewModels<StudentViewModel>()
     private val appViewModel by viewModels<AppViewModel>()
     private var purchasedListReq : ArrayList<GooglePurchasedPlanRequest> = arrayListOf()
-
-    private lateinit var bannerPagerAdapter: BannerPagerAdapter
     private lateinit var homeMenuNewAdapter: HomeMenuNewAdapter
-    //handler for run auto scroll thread
-    private var handler : Handler? = null
-    private var runnable: Runnable? = null
-    private var loginData: LoginData? = null
-
-    private var currentPage = 0
-    private var timer: Timer? = null
-    private val DELAY_MS: Long = 5000 //delay in milliseconds before task is to be executed
-    private val PERIOD_MS: Long = 5000 // time in milliseconds between successive task executions.
-
     private var lighter : Lighter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -106,46 +91,35 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
             initListener()
             setPurchaseData()
         }
+        avatarProfileCloseDialog()
         return root!!
     }
     private fun setNavigationGraph() {
         mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() = with(binding){
-        setViewPager()
-        linearMenu.post {
-            val list : List<String> = arrayListOf(AppConstants.HomeClicks.Menu_Abacus_Free_Mode,
-                AppConstants.HomeClicks.Menu_Practice_Abacus,
-                AppConstants.HomeClicks.Menu_Abacus_Exercise,
-                AppConstants.HomeClicks.Menu_Exam,
-                AppConstants.HomeClicks.Menu_CCM,
-                AppConstants.HomeClicks.Menu_Number_Sequence_Puzzle)
+        val list : List<String> = arrayListOf(AppConstants.HomeClicks.Menu_Abacus_Free_Mode,
+            AppConstants.HomeClicks.Menu_Practice_Abacus,
+            AppConstants.HomeClicks.Menu_Abacus_Exercise,
+            AppConstants.HomeClicks.Menu_Exam,
+            AppConstants.HomeClicks.Menu_CCM,
+            AppConstants.HomeClicks.Menu_Number_Sequence_Puzzle,
+            AppConstants.HomeClicks.Menu_Purchase_Store
+        )
 
-            appViewModel.getLevel().observe(viewLifecycleOwner){
-                if (it.isNotNullOrEmpty()){
-                    val column = (it.size / 2)
-                    val height = linearMenu.height / 2
-                    val width = linearMenu.width / column
-                    val dimension = if (width > height){
-                        height
-                    }else{
-                        width
-                    }
-                    homeMenuNewAdapter = HomeMenuNewAdapter(it,prefManager,dimension){ position, data->
-                        moveToClick(data)
-                    }
-                    recyclerviewMenu.layoutManager = GridLayoutManager(requireContext(),column)
-                    recyclerviewMenu.adapter = homeMenuNewAdapter
+        appViewModel.getLevel(list).observe(viewLifecycleOwner){
+            if (it.isNotNullOrEmpty()){
+                homeMenuNewAdapter = HomeMenuNewAdapter(it,prefManager,0){ position, data->
+                    moveToClick(data)
                 }
+                recyclerviewMenu.adapter = homeMenuNewAdapter
             }
         }
     }
 
     private fun setPurchaseData() {
-        Log.d(LOG_TAG, "setPurchaseData")
         lifecycleScope.launch{
             val purchasedList = appViewModel.getInAppSKUPurchased()
-            Log.d(LOG_TAG, "purchasedList = "+purchasedList.size)
             if (purchasedList.isNotNullOrEmpty()){
                 createPurchasedPlanRequest(purchasedList)
             }else{
@@ -166,7 +140,11 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
             }
             txtWelcomeTitle.onClick { txtMyAccount.performClick() }
             txtWelcomeMsg.onClick { txtMyAccount.performClick() }
-            txtMyAccount.onClick { moveToClick(AppConstants.HomeClicks.Menu_My_Profile) }
+            txtMyAccount.onClick { mNavController?.navigate(R.id.action_homeFragment_to_myProfileFragment) }
+            cardMyAccountTop.onClick { txtMyAccount.performClick() }
+            cardSettingTop.onClick { goToSetting() }
+            cardSubscribe.onClick { goToInAppPurchase() }
+            cardYoutube.onClick { requireContext().openYoutube() }
             cardEditImage.onClick { txtMyAccount.performClick() }
             txtWelcomeTitle.onClick {
                 if (BuildConfig.DEBUG) {
@@ -276,17 +254,6 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
 
     }
 
-
-//    private fun checkAppReviews(data: JsonObject?) {
-//        if (data?.has("app_reviews") == true){
-//            if (data.getAsJsonArray("app_reviews")?.isEmpty == true){
-//                prefManager.setCustomParam(Constants.APP_REVIEW_DATA,"")
-//            }else{
-//                val list : List<ReviewData> =  Gson().fromJson(data.getAsJsonArray("app_reviews"), object : TypeToken<List<ReviewData>>() {}.type)
-//                prefManager.setCustomParam(Constants.APP_REVIEW_DATA,Gson().toJson(list))
-//            }
-//        }
-//    }
 
     private fun errorPurchaseDialog(title: String, msg: String, btnYes: String, btnNo: String) {
         CommonConfirmationBottomSheet.showPopup(requireActivity(),title,msg,
@@ -460,86 +427,20 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
             )
         }
     }
-    private fun setViewPager() {
-        handler = Handler(Looper.getMainLooper())
-        with(binding){
-            viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-                override fun onPageScrollStateChanged(state: Int) {}
-                override fun onPageScrolled(position: Int,positionOffset: Float,positionOffsetPixels: Int) {}
-                override fun onPageSelected(position: Int) {
-                    currentPage = position
-                }
-            })
 
-            bannerPagerAdapter = BannerPagerAdapter(DataProvider.getBannerList(requireContext()),this@HomeNewFragment)
-            viewPager.adapter = bannerPagerAdapter
-            viewPager.setPageTransformer( true , DepthPageTransformer() )
-            indicatorPager.attachToPager(viewPager)
-        }
-    }
 
     override fun avatarProfileCloseDialog() {
-        loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
-        if (loginData == null){
-            binding.txtWelcomeTitle.text = CommonUtils.getCurrentTimeMessage(requireContext())
-        }else{
-            binding.txtWelcomeTitle.text = CommonUtils.getCurrentTimeMessage(requireContext())
-//                .plus(" "+loginData?.name+"!")
-        }
-
+        binding.txtWelcomeTitle.text = CommonUtils.getCurrentTimeMessage(requireContext())
         val id = prefManager.getCustomParamInt(Constants.avatarId,1)
         val avatarList = DataProvider.getAvatarList()
         avatarList.find { it.id == id }?.also {
             binding.imgUserProfile.setImageResource(it.image)
         }
     }
-    private fun autoScrollBanner() {
-        /*After setting the adapter use the timer */
-        runnable?.let { handler?.removeCallbacks(it) }
-        runnable = Runnable {
-            currentPage++
-            if (currentPage == (bannerPagerAdapter.listData.size)) {
-                currentPage = 0
-            }
-            if (currentPage == 0){
-                binding.viewPager.setCurrentItem(currentPage, false)
-            }else{
-                binding.viewPager.setCurrentItem(currentPage, true)
-            }
-        }
-
-        timer = Timer() // This will create a new Thread
-        timer?.schedule(object : TimerTask() {
-            // task to be scheduled
-            override fun run() {
-                runnable?.let { handler?.post(it) }
-            }
-        }, DELAY_MS, PERIOD_MS)
-    }
-
-    override fun onBannerItemClick(data: HomeBanner) {
-        // firebase event
-        MyApplication.logEvent(data.type, null)
-        when (data.type) {
-            Constants.banner_rate_us -> {
-                requireContext().openURL("https://play.google.com/store/apps/details?id=${requireContext().packageName}")
-            }
-            Constants.banner_share -> {
-                moveToClick(AppConstants.HomeClicks.Menu_Share)
-            }
-            Constants.banner_bulk_login -> {
-//                mNavController?.navigate(R.id.toPurchaseFragmentOld)
-                ContactUsActivity.getInstance(requireContext(),AppConstants.extras_Comman.typeBulkLogin)
-            }
-//            Constants.banner_purchase, Constants.banner_offer -> {
-//                moveToClick(AppConstants.HomeClicks.Menu_Purchase)
-//            }
-        }
-    }
     private fun moveToClick(data: Level) {
         when (data.name) {
             AppConstants.HomeClicks.Menu_My_Account -> {
-                moveToClick(AppConstants.HomeClicks.Menu_My_Profile)
+                mNavController?.navigate(R.id.action_homeFragment_to_myProfileFragment)
             }
             AppConstants.HomeClicks.Menu_Practice_Abacus -> {
                 val action = HomeNewFragmentDirections.toCategoryFragment(data.id)
@@ -573,37 +474,6 @@ class HomeNewFragment : BaseFragment(), BannerPagerAdapter.OnItemClickListener,
                     mNavController?.navigate(R.id.action_homeFragment_to_youtubeVideoFragment)
                 }
             }
-        }
-    }
-    private fun moveToClick(clickType: Int) {
-        when (clickType) {
-            AppConstants.HomeClicks.Menu_Setting -> {
-                mNavController?.navigate(R.id.toSettingsFragment)
-            }
-            AppConstants.HomeClicks.Menu_Subscribe -> {
-                mNavController?.navigate(R.id.toPurchaseFragment)
-            }
-            AppConstants.HomeClicks.Menu_My_Profile -> {
-                mNavController?.navigate(R.id.action_homeFragment_to_myProfileFragment)
-            }
-            AppConstants.HomeClicks.Menu_Share -> {
-                requireContext().shareIntent()
-            }
-        }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        timer?.cancel()
-        runnable?.let{ handler?.removeCallbacks(it) }
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        avatarProfileCloseDialog()
-        if (::bannerPagerAdapter.isInitialized){
-            autoScrollBanner()
         }
     }
 

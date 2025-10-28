@@ -24,7 +24,7 @@ object OldPurchasesBottomSheet {
                 bottomSheetDialog.dismiss()
             }
 
-            val purchaseNewAdapter = PurchaseNewAdapter(oldPurchasedSkuList,arrayListOf(),0,recyclerview,isOnlyView = true)
+            val purchaseNewAdapter = PurchaseNewAdapter(oldPurchasedSkuList,arrayListOf(),0,0,recyclerview,isOnlyView = true)
             recyclerview.adapter = purchaseNewAdapter
 
             bottomSheetDialog.setContentView(root)

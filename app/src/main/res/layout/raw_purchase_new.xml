@@ -140,7 +140,6 @@
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintStart_toStartOf="parent"
                tools:visibility="visible"
-               android:visibility="@{sku.isPurchase?View.GONE:isPlanAssignFromBackend?View.GONE:isSaveAmountShow?View.VISIBLE:View.GONE,default=gone}"
                 app:layout_constraintTop_toBottomOf="@+id/linTitle">
 
                <com.google.android.material.textview.MaterialTextView

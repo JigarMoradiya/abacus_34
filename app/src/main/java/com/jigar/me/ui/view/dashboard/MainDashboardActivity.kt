@@ -62,7 +62,6 @@ class MainDashboardActivity : BaseActivity() {
     private lateinit var binding: ActivityMainDashboardBinding
     var isPurchaseDataChecked = false
     var allSetList: ArrayList<Set> = arrayListOf()
-    private var discountData : DiscountData? = null
     private var loginData: LoginData? = null
     companion object {
         @JvmStatic
@@ -151,32 +150,6 @@ class MainDashboardActivity : BaseActivity() {
             prefManager.setCustomParamBoolean(AppConstants.HAS_NOTCH,hasNotch)
             prefManager.setCustomParamInt(AppConstants.NOTCH_HEIGHT,topInset)
             prefManager.setCustomParamInt(AppConstants.BOTTOM_NAV_HEIGHT,bottomInset)
-        }
-
-        if (!loginData?.email.equals("abacus@yopmail.com")){
-            val appOpenCount = prefManager.getCustomParamInt(AppConstants.Settings.appOpenCountForOffer, 0)
-            if (prefManager.getCustomParam(AppConstants.RemoteConfig.discountData,"").isNotEmpty()){
-                discountData = Gson().fromJson(prefManager.getCustomParam(AppConstants.RemoteConfig.discountData,""), DiscountData::class.java)
-                if(appOpenCount == Constants.homePageShowOffer && !discountData?.image.isNullOrEmpty()) {
-                    lifecycleScope.launch {
-                        delay(5000)
-                        val purchasedSKU = appViewModel.getInAppSKUPurchased()
-                        val isPurchased = CommonUtils.checkPurchaseForAllLevel(prefManager,purchasedSKU)
-                        if (!isPurchased){
-                            OfferDialog.showPopup(this@MainDashboardActivity,discountData,object : OfferDialog.DialogOfferInterface {
-                                override fun onSubmitYesClick() {
-                                    navController.navigate(R.id.purchaseFragment)
-                                }
-                            })
-                        }
-                    }
-                }
-            }
-            if (appOpenCount > Constants.homePageShowOffer){
-                prefManager.setCustomParamInt(AppConstants.Settings.appOpenCountForOffer, 0)
-            }else{
-                prefManager.setCustomParamInt(AppConstants.Settings.appOpenCountForOffer, (appOpenCount+1))
-            }
         }
     }
 
