@@ -124,7 +124,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:strokeColor="@color/purple_700"
                     app:strokeWidth="1dp"
-                    tools:visibility="gone">
+                    tools:visibility="visible">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"

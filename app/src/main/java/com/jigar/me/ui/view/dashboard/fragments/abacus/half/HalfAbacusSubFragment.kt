@@ -148,8 +148,8 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     }
 
     private fun setBead() {
-        binding.abacusTop.setNoOfRowAndBeads(0, abacusTotalColumns, 1,AbacusBeadType.AbacusPrecise,unitRodPosition = 6)
-        binding.abacusBottom.setNoOfRowAndBeads(0, abacusTotalColumns, 4,AbacusBeadType.AbacusPrecise,unitRodPosition = 6)
+        binding.abacusTop.setNoOfRowAndBeads(0, abacusTotalColumns, 1,AbacusBeadType.AbacusPreciseStepByStep,unitRodPosition = 6)
+        binding.abacusBottom.setNoOfRowAndBeads(0, abacusTotalColumns, 4,AbacusBeadType.AbacusPreciseStepByStep,unitRodPosition = 6)
 
         binding.abacusTop.onBeadShiftListener = this
         binding.abacusBottom.onBeadShiftListener = this

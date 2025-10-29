@@ -286,6 +286,11 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                     setProgress = appViewModel.getSetProgress(it)
                     if (setDetail != null){
                         isStepByStep = setDetail?.answer_setting == AppConstants.apiParams.answerSettingStepByStep
+//                        if (isStepByStep){
+//                            val theme = prefManager.getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
+//                            themeContent = DataProvider.findAbacusThemeType(requireContext(),theme,AbacusBeadType.AbacusPreciseStepByStep)
+//                        }
+
                         isShowSubmitAnswer = setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer
                         if (isShowSubmitAnswer){
                             binding.tvAns.text = "?"
@@ -395,7 +400,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
             setCustomParam(AppConstants.Settings.TheamTempView,getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default))
 
             val theme = prefManager.getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
-            themeContent = DataProvider.findAbacusThemeType(requireContext(),theme,AbacusBeadType.AbacusPrecise)
+            themeContent = DataProvider.findAbacusThemeType(requireContext(),theme,AbacusBeadType.AbacusPreciseStepByStep)
 
             adapterAdditionSubtraction = AbacusAdditionSubtractionTypeAdapter(arrayListOf(), this@AbacusCalculationFragment, true,themeContent)
             adapterMultiplication = AbacusMultiplicationTypeAdapter(arrayListOf(), true,themeContent)

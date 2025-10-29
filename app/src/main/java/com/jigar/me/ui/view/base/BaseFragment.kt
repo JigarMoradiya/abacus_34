@@ -165,7 +165,9 @@ abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSetting
                     speak = true
                     textToSpeech?.let {
                         CommonUtils.applySpeechSettings(prefManager, it)
-                        voiceController = VoiceControllerSetting(requireActivity(), this, prefManager, it)
+                        if (isAdded){
+                            voiceController = VoiceControllerSetting(requireActivity(), this, prefManager, it)
+                        }
                     }
 
                 }

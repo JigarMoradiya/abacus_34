@@ -176,9 +176,6 @@ dependencies {
     // Country code picker
     implementation("com.hbb20:ccp:2.7.3")
 
-    // otp view
-    implementation("com.github.mukeshsolanki.android-otpview-pinview:otpview:3.2.0")
-
     // rating bar
     implementation("com.github.ome450901:SimpleRatingBar:1.5.1")
 

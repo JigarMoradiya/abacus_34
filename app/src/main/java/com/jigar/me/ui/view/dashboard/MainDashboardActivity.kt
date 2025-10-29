@@ -8,11 +8,13 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.WindowManager
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -138,6 +140,37 @@ class MainDashboardActivity : BaseActivity() {
     private fun initToolBar() {
     }
     private fun initViews() {
+//        WindowCompat.setDecorFitsSystemWindows(window, false)
+//        ViewCompat.setOnApplyWindowInsetsListener(binding.relMain) { view, insets ->
+//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+//            view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+//            insets
+//        }
+
+
+        // Allow drawing behind system bars
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
+        // Allow using short edges in landscape (needed for notch handling)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            window.attributes.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
+        }
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.viewMain) { view, insets ->
+            val sysBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val cutout = insets.displayCutout
+
+            val leftInset = cutout?.safeInsetLeft ?: sysBars.left
+            val rightInset = sysBars.right
+//            val topInset = sysBars.top // no top padding in landscape
+//            val bottomInset = sysBars.bottom // no bottom padding in landscape
+
+            val topInset = 0 // no top padding in landscape
+            val bottomInset = 0 // no bottom padding in landscape
+            view.setPadding(leftInset, topInset, rightInset, bottomInset)
+            insets
+        }
+
         fetchSetData()
         val defaultDateTime = Constants.last_sync_default_time
         val dateTime = prefManager.getCustomParam(Constants.last_sync_time,defaultDateTime)
@@ -146,11 +179,12 @@ class MainDashboardActivity : BaseActivity() {
 
         setNavigationGraph()
         onMainActivityBack()
-        getBottomNavBarHeight { topInset,bottomInset,hasNotch ->
-            prefManager.setCustomParamBoolean(AppConstants.HAS_NOTCH,hasNotch)
-            prefManager.setCustomParamInt(AppConstants.NOTCH_HEIGHT,topInset)
-            prefManager.setCustomParamInt(AppConstants.BOTTOM_NAV_HEIGHT,bottomInset)
-        }
+//        getBottomNavBarHeight { topInset,bottomInset,hasNotch ->
+//            prefManager.setCustomParamBoolean(AppConstants.HAS_NOTCH,hasNotch)
+//            prefManager.setCustomParamInt(AppConstants.NOTCH_HEIGHT,topInset)
+//            prefManager.setCustomParamInt(AppConstants.BOTTOM_NAV_HEIGHT,bottomInset)
+//        }
+            prefManager.setCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
     }
 
     private fun initListener() {

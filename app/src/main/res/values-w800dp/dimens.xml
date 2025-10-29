@@ -1,16 +1,11 @@
 <resources>
-    <dimen name="padding_radius_abacus_frame_large">20dp</dimen>
-    <dimen name="padding_radius_abacus_frame_large_inner">6dp</dimen>
-
-    <dimen name="padding_radius_abacus_frame_large_exam">12dp</dimen>
-    <dimen name="padding_radius_abacus_frame_large_inner_exam">2dp</dimen>
-
     <!--9:5-->
 <!--    <dimen name="poligon_width">54dp</dimen>-->
 <!--    <dimen name="poligon_height">30dp</dimen>-->
 
     <dimen name="poligon_width">49.5dp</dimen>
     <dimen name="poligon_height">27.5dp</dimen>
+    <dimen name="poligon_space">2dp</dimen>
 
     <!-- 6:5 -->
     <dimen name="face_width">36dp</dimen>

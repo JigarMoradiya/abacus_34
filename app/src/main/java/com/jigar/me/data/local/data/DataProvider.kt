@@ -133,6 +133,7 @@ object DataProvider {
 //        return HomeMenuIntroType.purchase
     }
     private fun getMultipleDimensions(abacusBeadType: AbacusBeadType = AbacusBeadType.None) : Float{
+        Log.e("jigarAbacus","abacusBeadType = "+abacusBeadType)
         return when (abacusBeadType) {
             AbacusBeadType.ExamResult -> {
                 0.35f
@@ -142,6 +143,9 @@ object DataProvider {
             }
             AbacusBeadType.SettingPreview -> {
                 0.7f
+            }
+            AbacusBeadType.AbacusPreciseStepByStep -> {
+                0.65f
             }
             AbacusBeadType.AbacusPrecise -> {
                 0.75f

@@ -34,6 +34,7 @@
             android:configChanges="orientation|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"
+            android:resizeableActivity="false"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ui.view.other.ContactUsActivity"

@@ -41,10 +41,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/title_margin"
             android:textSize="@dimen/textSize24"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/swRandom"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/cardBack"
-            app:layout_constraintTop_toTopOf="@+id/cardBack"
+            app:layout_constraintBottom_toBottomOf="@+id/swRandom"
+            app:layout_constraintTop_toTopOf="@+id/txtRandom"
             tools:text="SET 1" />
 
         <Space
@@ -57,12 +57,10 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/activity_padding20"
             android:gravity="center"
             android:orientation="vertical"
-            android:layout_margin="@dimen/activity_padding8"
             app:layout_constraintTop_toTopOf="parent"
-            android:paddingHorizontal="@dimen/activity_padding8"
+            android:padding="@dimen/activity_padding8"
             app:layout_constraintEnd_toEndOf="parent">
 
             <com.google.android.material.textview.MaterialTextView
@@ -89,6 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/free_mode"
+                android:textSize="@dimen/textSizeMedium"
                 android:textColor="@color/black" />
 
             <com.google.android.material.materialswitch.MaterialSwitch
@@ -200,7 +199,7 @@
             android:id="@+id/linearAbacus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/txtRandom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
