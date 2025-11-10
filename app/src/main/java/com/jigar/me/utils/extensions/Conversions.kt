@@ -1,6 +1,8 @@
 package com.jigar.me.utils.extensions
 
+import android.content.Context
 import android.content.res.Resources
+import android.util.TypedValue
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -8,6 +10,10 @@ import java.util.Locale
 val Int.dp: Int get() = (this * Resources.getSystem().displayMetrics.density + 0.5f).toInt()
 
 val Int.sp: Float get() =  ( this.dp / Resources.getSystem().displayMetrics.scaledDensity)
+
+fun Context.dpToPx(dp: Float): Float {
+    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, this.resources.displayMetrics)
+}
 
 fun Double.format(isGrouping: Boolean = true): String {
     val formatter = NumberFormat.getInstance(Locale.getDefault())

@@ -163,7 +163,9 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        setNoOfRowAndBeads(noOfRows_used, noOfColumn, noOfBeads,beadType,unitRodColumnPosition,noOfColumnUsed)
+        if (::abacusContent.isInitialized){
+            setNoOfRowAndBeadsNew(theme,abacusContent,noOfRows_used, noOfColumn, noOfBeads,beadType,unitRodColumnPosition,noOfColumnUsed)
+        }
     }
     private fun setBeads(noOfBeads: Int) {
         this.noOfBeads = noOfBeads
@@ -184,6 +186,7 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
     }
 
     fun setNoOfRowAndBeads(noOfRows_used: Int, noOfRows: Int, noOfBeads: Int, beadType : AbacusBeadType = AbacusBeadType.None,unitRodPosition : Int = -1,noOfColumnUsed : Int = 13) {
+        Log.e("jigarBeadDimensions","setNoOfRowAndBeads old welcome")
         this.beadType = beadType
         this.noOfRows_used = noOfRows_used
         this.unitRodColumnPosition = unitRodPosition
@@ -191,6 +194,22 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
 
         theme = AppPreferencesHelper(context,AppConstants.PREF_NAME).getCustomParam(AppConstants.Settings.TheamTempView, AppConstants.Settings.theam_Default)
         abacusContent = DataProvider.findAbacusThemeType(context,theme,beadType)
+        setThemeContent()
+        colSpacing = abacusContent.beadSpace
+
+        setRow(noOfRows,unitRodPosition,noOfColumnUsed)
+        setBeads(noOfBeads)
+        postInvalidate() // TODO
+    }
+
+    fun setNoOfRowAndBeadsNew(themes : String,abacus_content: AbacusContent,noOfRows_used: Int, noOfRows: Int, noOfBeads: Int, beadType : AbacusBeadType = AbacusBeadType.None,unitRodPosition : Int = -1,noOfColumnUsed : Int = 13) {
+        this.beadType = beadType
+        this.noOfRows_used = noOfRows_used
+        this.unitRodColumnPosition = unitRodPosition
+        this.noOfColumnUsed = noOfColumnUsed
+
+        theme = themes
+        abacusContent = abacus_content
         setThemeContent()
         colSpacing = abacusContent.beadSpace
 

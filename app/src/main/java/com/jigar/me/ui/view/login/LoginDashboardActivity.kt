@@ -29,8 +29,6 @@ class LoginDashboardActivity : BaseActivity(){
     lateinit var navHostFragment: NavHostFragment
     var selectedFragment: Int = -1
     lateinit var binding: ActivityLoginDashboardBinding
-    private val appViewModel by viewModels<AppViewModel>()
-    private val inAppViewModel by viewModels<InAppViewModel>()
     companion object {
         fun getInstance(context: Context?) {
             Intent(context, LoginDashboardActivity::class.java).apply {

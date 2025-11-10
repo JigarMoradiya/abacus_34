@@ -12,6 +12,9 @@ import com.jigar.me.databinding.DialogFreeTrialLeftBinding
 import com.jigar.me.databinding.DialogOfferBinding
 import com.jigar.me.utils.extensions.onClick
 import androidx.core.graphics.drawable.toDrawable
+import com.jigar.me.data.pref.AppPreferencesHelper
+import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.Constants
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.show
 
@@ -24,13 +27,21 @@ object FreeTrialLeftDialog {
     }
 
     fun showPopup(
-        activity: Activity, free_trial_remaining_days : Int, listener: DialogFreeTrialInterface
+        activity: Activity, prefManager : AppPreferencesHelper, listener: DialogFreeTrialInterface
     ) {
         val alertLayout = DialogFreeTrialLeftBinding.inflate(activity.layoutInflater,null,false)
         val alertBuilder = AlertDialog.Builder(activity)
+        val free_trial_remaining_days = prefManager.getCustomParamInt(Constants.free_trial_remaining_days,0)
+        val discountPer = prefManager.getCustomParamInt(AppConstants.RemoteConfig.discountPer,0)
+        val discountPerLifetime = prefManager.getCustomParamInt(AppConstants.RemoteConfig.discountPerLifeTime,0)
 
         with(alertLayout){
             alertBuilder.setView(root)
+            if (discountPer > 0 || discountPerLifetime > 0){
+                txtDiscount.show()
+            }else{
+                txtDiscount.hide()
+            }
             btnNo.onClick {
                 hideDialog()
                 listener.onCloseClick()

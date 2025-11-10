@@ -482,8 +482,10 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
             abacusBinding?.ivLeft?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
         }
 
-        abacusBinding?.abacusTop?.setNoOfRowAndBeads(0, 7, 1,AbacusBeadType.Exercise,6)
-        abacusBinding?.abacusBottom?.setNoOfRowAndBeads(0, 7, 4,AbacusBeadType.Exercise,6)
+        themeContent?.let{
+            abacusBinding?.abacusTop?.setNoOfRowAndBeadsNew(theme,it,0, 7, 1,AbacusBeadType.Exercise,6)
+            abacusBinding?.abacusBottom?.setNoOfRowAndBeadsNew(theme,it,0, 7, 4,AbacusBeadType.Exercise,6)
+        }
 
         abacusBinding?.abacusTop?.onBeadShiftListener = this
         abacusBinding?.abacusBottom?.onBeadShiftListener = this

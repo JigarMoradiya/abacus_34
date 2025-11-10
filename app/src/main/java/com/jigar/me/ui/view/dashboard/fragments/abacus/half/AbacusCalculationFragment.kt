@@ -58,6 +58,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     private val appViewModel by viewModels<AppViewModel>()
     private val examViewModel by viewModels<ExamViewModel>()
     private lateinit var themeContent : AbacusContent
+    private var beadType : AbacusBeadType = AbacusBeadType.AbacusPrecise
     private var setId : String? = null
     private var isStepByStep = false
     private var isShowSubmitAnswer = false
@@ -196,8 +197,38 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
 
         binding.imgRightAbacusTools.hide()
         binding.imgLeftAbacusTools.hide()
+    }
 
-        startAbacus()
+    private fun setTempTheme() {
+        with(prefManager){
+            setCustomParam(AppConstants.Settings.TheamTempView,getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default))
+            lifecycleScope.launch {
+                setId?.let {
+                    setDetail = appViewModel.getSetDetail(it)
+                    setProgress = appViewModel.getSetProgress(it)
+                    if (setDetail != null) {
+                        isStepByStep = setDetail?.answer_setting == AppConstants.apiParams.answerSettingStepByStep
+                        val theme = prefManager.getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
+                        beadType = if (isStepByStep){
+                            AbacusBeadType.AbacusPreciseStepByStep
+                        }else{
+                            AbacusBeadType.AbacusPrecise
+                        }
+                        themeContent = DataProvider.findAbacusThemeType(requireContext(),theme,beadType)
+
+                        isShowSubmitAnswer = setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer
+
+                        adapterAdditionSubtraction = AbacusAdditionSubtractionTypeAdapter(arrayListOf(), this@AbacusCalculationFragment, true,themeContent)
+                        adapterMultiplication = AbacusMultiplicationTypeAdapter(arrayListOf(), true,themeContent)
+//            adapterDivision = AbacusDivisionTypeAdapter(arrayListOf(), true,themeContent)
+
+                        startAbacus()
+                    }else{
+                        mNavController.navigateUp()
+                    }
+                }
+            }
+        }
     }
 
     private fun setThemeColor() {
@@ -225,20 +256,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     }
     private fun initListener() {
         binding.cardBack.onClick { goBack() }
-        binding.cardResetProgress.onClick { resetProgressClick() }
-        binding.cardSettingTop.onClick { goToSetting() }
-        binding.cardYoutube.onClick { requireContext().openYoutube() }
-        binding.cardSubscribe.onClick { goToInAppPurchase()  }
-    }
-
-    private fun resetProgressClick() {
-        paidResetPageProgressDialog()
-    }
-
-    fun onBackClick(){
-        binding.flAbacus.removeAllViews()
-        binding.relAbacus.hide()
-        goBack()
     }
 
     override fun onPause() {
@@ -249,7 +266,9 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     override fun onResume() {
         super.onResume()
         if (setDetail != null){
-            startAbacus()
+            lifecycleScope.launch {
+                startAbacus()
+            }
         }
     }
 
@@ -278,60 +297,51 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         }
     }
 
-    private fun startAbacus() {
+    private suspend fun startAbacus() {
         if(requireContext().isNetworkAvailable){
-            lifecycleScope.launch {
-                setId?.let {
-                    setDetail = appViewModel.getSetDetail(it)
-                    setProgress = appViewModel.getSetProgress(it)
-                    if (setDetail != null){
-                        isStepByStep = setDetail?.answer_setting == AppConstants.apiParams.answerSettingStepByStep
-//                        if (isStepByStep){
-//                            val theme = prefManager.getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
-//                            themeContent = DataProvider.findAbacusThemeType(requireContext(),theme,AbacusBeadType.AbacusPreciseStepByStep)
-//                        }
+            setId?.let {
 
-                        isShowSubmitAnswer = setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer
-                        if (isShowSubmitAnswer){
-                            binding.tvAns.text = "?"
-                        }else{
-                            binding.tvAns.text = ""
+                if (setDetail != null){
+
+                    if (isShowSubmitAnswer){
+                        binding.tvAns.text = "?"
+                    }else{
+                        binding.tvAns.text = ""
+                    }
+                    if (!setDetail?.hint.isNullOrEmpty()){
+                        val list : ArrayList<String> = arrayListOf()
+                        val json = JSONArray(setDetail?.hint)
+                        for (i in 0 until json.length()) {
+                            list.add(json.getString(i))
                         }
-                        if (!setDetail?.hint.isNullOrEmpty()){
-                            val list : ArrayList<String> = arrayListOf()
-                            val json = JSONArray(setDetail?.hint)
-                            for (i in 0 until json.length()) {
-                                list.add(json.getString(i))
+
+                        hintPage = list.joinToString("<br/>")
+                    }
+
+                    list_abacus = appViewModel.getAbacus(it)
+                    if (list_abacus.isNotNullOrEmpty()){
+                        if (setProgress != null){
+                            if (setProgress?.is_set_completed == false){
+                                list_abacus.indexOfFirst { it.id == setProgress?.latest_abacus_id }.also {
+                                    if (it > -1){
+                                        current_pos = it
+                                    }
+                                }
                             }
-
-                            hintPage = list.joinToString("<br/>")
                         }
 
-                        list_abacus = appViewModel.getAbacus(it)
-                        if (list_abacus.isNotNullOrEmpty()){
+                        startAbacusNow()
+                        if (setDetail?.show_time_setting == true){
                             if (setProgress != null){
                                 if (setProgress?.is_set_completed == false){
-                                    list_abacus.indexOfFirst { it.id == setProgress?.latest_abacus_id }.also {
-                                        if (it > -1){
-                                            current_pos = it
-                                        }
-                                    }
+                                    total_sec = (setProgress?.total_time_taken?:0).toLong()
                                 }
                             }
-
-                            startAbacusNow()
-                            if (setDetail?.show_time_setting == true){
-                                if (setProgress != null){
-                                    if (setProgress?.is_set_completed == false){
-                                        total_sec = (setProgress?.total_time_taken?:0).toLong()
-                                    }
-                                }
-                                startTimer()
-                            }
+                            startTimer()
                         }
-                    }else{
-                        mNavController.navigateUp()
                     }
+                }else{
+                    mNavController.navigateUp()
                 }
             }
         }else{
@@ -395,19 +405,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         setThemeColor()
     }
 
-    private fun setTempTheme() {
-        with(prefManager){
-            setCustomParam(AppConstants.Settings.TheamTempView,getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default))
-
-            val theme = prefManager.getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
-            themeContent = DataProvider.findAbacusThemeType(requireContext(),theme,AbacusBeadType.AbacusPreciseStepByStep)
-
-            adapterAdditionSubtraction = AbacusAdditionSubtractionTypeAdapter(arrayListOf(), this@AbacusCalculationFragment, true,themeContent)
-            adapterMultiplication = AbacusMultiplicationTypeAdapter(arrayListOf(), true,themeContent)
-//            adapterDivision = AbacusDivisionTypeAdapter(arrayListOf(), true,themeContent)
-        }
-    }
-
     private fun setDataOfNumber() {
         binding.txtTitle.text = String.format(getString(R.string.abacus_no),(current_pos + 1))
         binding.tvAnsNumber.text = ""
@@ -416,10 +413,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         number = (list_abacus_main[0][Constants.Que]?:"0").toLong()
         val speakText = requireContext().convert(number.toInt())
         if (isHintSound && isStepByStep) {
-//            lifecycleScope.launch {
-//                delay(500)
-                speakOut(speakText)
-//            }
+            speakOut(speakText)
         }
         val noOfDecimalPlace = 0
         binding.tvAnsNumber.text = number.toString()
@@ -602,21 +596,6 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         }
     }
     // purchased and reset page progress
-    private fun paidResetPageProgressDialog() {
-        CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.txt_reset_page),getString(R.string.txt_reset_page_alert)
-            ,getString(R.string.yes_i_m_sure),getString(R.string.no_please_continue), icon = R.drawable.ic_alert,
-            clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
-                override fun onConfirmationYesClick(bundle: Bundle?) {
-                    resetProgressConfirm()
-                }
-                override fun onConfirmationNoClick(bundle: Bundle?) = Unit
-            })
-    }
-    // reset page progress and start from 1st abacus
-    private fun resetProgressConfirm() {
-        current_pos = 0
-        startAbacus()
-    }
     private fun goBack() {
         mNavController.navigateUp()
     }
@@ -761,7 +740,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 }else{
                     "0"
                 }
-                abacusFragment = HalfAbacusSubFragment().newInstance(abacusColumn, noOfDecimalPlace, abacus_type,themeContent,isShowSubmitAnswer,que,topPositions,bottomPositions)
+                abacusFragment = HalfAbacusSubFragment().newInstance(abacusColumn, noOfDecimalPlace, abacus_type,themeContent,beadType,isShowSubmitAnswer,que,topPositions,bottomPositions)
 
                 abacusFragment?.setOnAbacusValueChangeListener(this)
                 val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()

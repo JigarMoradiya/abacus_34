@@ -37,6 +37,7 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     private lateinit var binding: FragmentAbacusSubKidBinding
     private var root : View? = null
     private lateinit var themeContent : AbacusContent
+    private var beadType : AbacusBeadType = AbacusBeadType.AbacusPrecise
     // Settings Constants
     private var isDisplayAbacusNumber = true
     private var isShowSubmitAnswer = true
@@ -59,9 +60,10 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
 
     private var onAbacusValueChangeListener: OnAbacusValueChangeListener? = null
 
-    fun newInstance(column: Int, noOfDecimalPlace: Int, abacus_type: Int, themeContent : AbacusContent, isShowSubmitAnswer : Boolean? = false, firstQuestionForDirection : String = "0", topPositions : ArrayList<Int> = arrayListOf(), bottomPositions : ArrayList<Int> = arrayListOf()): HalfAbacusSubFragment {
+    fun newInstance(column: Int, noOfDecimalPlace: Int, abacus_type: Int, themeContent : AbacusContent, beadType : AbacusBeadType,isShowSubmitAnswer : Boolean? = false, firstQuestionForDirection : String = "0", topPositions : ArrayList<Int> = arrayListOf(), bottomPositions : ArrayList<Int> = arrayListOf()): HalfAbacusSubFragment {
         val fragment = HalfAbacusSubFragment()
         fragment.themeContent = themeContent
+        fragment.beadType = beadType
         fragment.firstQuestionForDirection = firstQuestionForDirection
         fragment.abacusTotalColumns = column
         fragment.noOfDecimalPlace = noOfDecimalPlace
@@ -148,8 +150,9 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     }
 
     private fun setBead() {
-        binding.abacusTop.setNoOfRowAndBeads(0, abacusTotalColumns, 1,AbacusBeadType.AbacusPreciseStepByStep,unitRodPosition = 6)
-        binding.abacusBottom.setNoOfRowAndBeads(0, abacusTotalColumns, 4,AbacusBeadType.AbacusPreciseStepByStep,unitRodPosition = 6)
+        val theme = prefManager.getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
+        binding.abacusTop.setNoOfRowAndBeadsNew(theme, themeContent,0, abacusTotalColumns, 1,beadType,unitRodPosition = 6)
+        binding.abacusBottom.setNoOfRowAndBeadsNew(theme, themeContent, 0,abacusTotalColumns, 4,beadType,unitRodPosition = 6)
 
         binding.abacusTop.onBeadShiftListener = this
         binding.abacusBottom.onBeadShiftListener = this

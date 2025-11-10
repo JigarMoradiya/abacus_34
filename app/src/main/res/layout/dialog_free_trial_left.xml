@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <data></data>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -153,6 +152,19 @@
                             android:textSize="@dimen/textSizeVeryExtraSmall"
                             app:fontFamily="@font/font_medium" />
 
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/txtDiscount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:text="@string/limited_time_discount"
+                            android:textColor="@color/red_700"
+                            android:textSize="@dimen/textSizeSmall"
+                            android:visibility="gone"
+                            app:fontFamily="@font/font_regular"
+                            tools:visibility="visible" />
+
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnYes"
@@ -160,6 +172,7 @@
                             android:layout_width="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="@dimen/activity_padding16"
+                            android:backgroundTint="@color/colorPrimary"
                             android:text="Start Learning"
                             android:textAllCaps="false" />
 

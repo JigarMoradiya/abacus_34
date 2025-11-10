@@ -42,17 +42,13 @@ class PurchaseNewFragment : BaseFragment(){
     private lateinit var purchaseInfoAdapter: PurchaseInfoAdapter
     private val apiViewModel by viewModels<AppViewModel>()
 
-    private var isMonthlyPlanSubscribe = false
-    private var isWeekPlanSubscribe = false
-    private var isYearlyPlanSubscribe = false
-    private var isYearlyPlanOfferSubscribe = false
     private var isYearPlanAssignFromAdmin = false
     private var displayItemList: ArrayList<DisplayPurchaseData> = arrayListOf()
     private val list: ArrayList<String> = arrayListOf(
         "⭐ <strong>Get unlimited access</strong> to all Abacus Levels, Exercises, Exams and Custom Challenge Modes Module.",
         "🧮 Practice Addition, Subtraction, Multiplication, Division, with <strong>smart bead directions</strong> and <strong>formula on every steps.</strong>",
         "🎯 Prepare for math competitions, UCMAS and abacus exams with <strong>real exam-style practice.</strong>",
-        "📊 <strong>Track your child’s</strong> progress, speed and accuracy with detailed reports."
+        "📊 <strong>Track your child’s</strong> progress, speed and accuracy with detailed reports.",
     )
 
     private var planListAssignFromAdmin : List<PlanAssignFromAdminData> = arrayListOf()
@@ -88,7 +84,6 @@ class PurchaseNewFragment : BaseFragment(){
     }
 
     private fun initViews() = with(binding){
-        spaceNotch.layoutParams.width = prefManager.getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
 
         discountPer = prefManager.getCustomParamInt(AppConstants.RemoteConfig.discountPer,0)
         discountPerLifetime = prefManager.getCustomParamInt(AppConstants.RemoteConfig.discountPerLifeTime,0)
@@ -119,8 +114,8 @@ class PurchaseNewFragment : BaseFragment(){
 //            idList.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1)
 //            idList.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1)
 //            idList.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer)
-            idList.add(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime)
-            idList.add(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_offer)
+//            idList.add(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime)
+//            idList.add(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_offer)
 
             displayItemList.map {
                 idList.add(it.id)
@@ -134,7 +129,6 @@ class PurchaseNewFragment : BaseFragment(){
                     }
                 }
             }
-
             val idListNew: ArrayList<String> = arrayListOf()
             idListNew.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Week1)
             idListNew.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1)
@@ -178,6 +172,7 @@ class PurchaseNewFragment : BaseFragment(){
             removePlan(BillingRepository.AbacusSku.PRODUCT_ID_1Month)
             removePlan(BillingRepository.AbacusSku.PRODUCT_ID_1Year_Offer)
             removePlan(BillingRepository.AbacusSku.PRODUCT_ID_All)
+            removePlan(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_offer)
             btnSubmit.hide()
         }else{
             details.find { it.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_1Year) && it.isPurchase }.also {
@@ -208,6 +203,7 @@ class PurchaseNewFragment : BaseFragment(){
                     removePlan(BillingRepository.AbacusSku.PRODUCT_ID_Week)
                     removePlan(BillingRepository.AbacusSku.PRODUCT_ID_1Month)
                     removePlan(BillingRepository.AbacusSku.PRODUCT_ID_1Year)
+                    btnSubmit.hide()
                 }else{
                     if (discountPerLifetime > 0){
                         originalLifetimeData = details.find { it.sku == BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime }

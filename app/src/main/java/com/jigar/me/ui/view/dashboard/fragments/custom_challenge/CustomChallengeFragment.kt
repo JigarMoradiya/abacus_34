@@ -165,7 +165,7 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
     }
     private fun init() {
         val theme = prefManager.getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
-        themeContent = DataProvider.findAbacusThemeType(requireContext(),theme, AbacusBeadType.None)
+        themeContent = DataProvider.findAbacusThemeType(requireContext(),theme, AbacusBeadType.CustomeChallenge)
         themeContent?.resetBtnColor8?.let {
             binding.tvNumber.setTextColor(ContextCompat.getColor(requireContext(), it))
             binding.txtAnswer.setTextColor(ContextCompat.getColor(requireContext(),it))
@@ -408,8 +408,11 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
             abacusBinding?.ivLeft?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
         }
 
-        abacusBinding?.abacusTop?.setNoOfRowAndBeads(0, 7, 1,AbacusBeadType.CustomeChallenge,6)
-        abacusBinding?.abacusBottom?.setNoOfRowAndBeads(0, 7, 4,AbacusBeadType.CustomeChallenge,6)
+        themeContent?.let{
+            val theme = prefManager.getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
+            abacusBinding?.abacusTop?.setNoOfRowAndBeadsNew(theme,it,0, 7, 1,AbacusBeadType.CustomeChallenge,6)
+            abacusBinding?.abacusBottom?.setNoOfRowAndBeadsNew(theme,it,0, 7, 4,AbacusBeadType.CustomeChallenge,6)
+        }
 
         abacusBinding?.abacusTop?.onBeadShiftListener = this
         abacusBinding?.abacusBottom?.onBeadShiftListener = this

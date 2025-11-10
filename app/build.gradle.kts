@@ -61,12 +61,12 @@ android {
 
             dimension = "variant1"
             applicationId = "com.abacus.puzzle"
-            versionCode = 148
-            versionName = "14.0.5"
+            versionCode = 151
+            versionName = "15.0.0"
         }
     }
     externalNativeBuild {
-        cmake {
+        cmake { 
             path("cpp/CMakeLists.txt")
             version = "4.0.2"
         }

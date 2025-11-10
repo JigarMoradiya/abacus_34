@@ -823,6 +823,7 @@
     <string name="cancel_anytime_during_the_trial_without_being_charged">Cancel anytime during the trial\nwithout being charged.</string>
     <string name="go_premium_all_levels_all_features">Go Premium - All Levels, All Features</string>
     <string name="old_subscription">Old Purchases</string>
+    <string name="limited_time_discount"><b>Limited-time deal -</b> unlock premium at a discounted price!</string>
 
 
 </resources>

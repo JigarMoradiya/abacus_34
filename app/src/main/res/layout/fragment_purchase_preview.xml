@@ -54,7 +54,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/activity_padding16"
-                            android:layout_marginTop="@dimen/activity_padding16"
+                            android:layout_marginTop="@dimen/activity_padding12"
                             android:layout_marginEnd="@dimen/activity_padding8"
                             app:cardBackgroundColor="@color/deep_orange_20"
                             app:cardCornerRadius="@dimen/card_corner_radius12"
@@ -111,8 +111,8 @@
 
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_marginStart="@dimen/activity_padding4"
                     android:layout_marginEnd="@dimen/activity_padding12"
                     android:elevation="@dimen/card_elevation4"

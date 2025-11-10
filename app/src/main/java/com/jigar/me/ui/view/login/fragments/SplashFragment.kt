@@ -101,7 +101,6 @@ class SplashFragment : BaseFragment() {
         mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings)
         mFirebaseRemoteConfig.fetchAndActivate()
             .addOnCompleteListener(requireActivity()) { task ->
-                Log.e("jigarSplash","tries = "+tries)
                 tries++
                 if (tries>3){
                     mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings.toBuilder().setFetchTimeoutInSeconds(20).build())

@@ -13,7 +13,6 @@
 
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/white</item>
-        <item name="android:navigationIcon">@android:color/black</item>
 
         <!-- Add these -->
         <item name="materialCalendarStyle">@style/Widget.MaterialComponents.MaterialCalendar</item>

@@ -29,7 +29,7 @@
             android:includeFontPadding="false"
             android:text="Get unlimited access to all 8 Abacus Levels, exercises, exams, and custom challenge modes."
             android:textColor="@color/black"
-            android:textSize="@dimen/textSizeLarge"
+            android:textSize="@dimen/textSizeRegular"
             android:fontFamily="@font/font_regular" />
 
     </LinearLayout>

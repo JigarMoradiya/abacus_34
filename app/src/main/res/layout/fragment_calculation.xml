@@ -50,119 +50,26 @@
             style="@style/mainTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="SET 1"
             android:layout_marginHorizontal="@dimen/title_margin"
             app:layout_constraintBottom_toBottomOf="@+id/cardBack"
             app:layout_constraintStart_toEndOf="@+id/cardBack"
-            app:layout_constraintTop_toTopOf="@+id/cardBack"/>
-
+            app:layout_constraintTop_toTopOf="@+id/cardBack"
+            tools:text="SET 1" />
 
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtTimer"
-            android:layout_marginEnd="@dimen/activity_padding24"
             style="@style/mainTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/activity_padding24"
             android:textColor="@color/black"
             android:visibility="gone"
-            tools:text="00:00"
-            tools:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/cardBack"
-            app:layout_constraintEnd_toStartOf="@+id/linearMenu"
-            app:layout_constraintTop_toTopOf="@+id/cardBack"/>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linearMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/icons_margin"
-            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardResetProgress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/icons_margin"
-                app:cardBackgroundColor="@color/light_reset_abacus_progress"
-                app:cardCornerRadius="@dimen/menu_icons_corner"
-                app:cardElevation="@dimen/card_elevation"
-                app:cardMaxElevation="@dimen/card_elevation"
-                android:visibility="gone"
-                app:strokeWidth="0dp">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="@dimen/menu_icons"
-                    android:layout_height="@dimen/menu_icons"
-                    android:padding="@dimen/activity_padding8"
-                    app:srcCompat="@drawable/ic_reset_abacus_progress" />
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardSettingTop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/icons_margin"
-                app:cardBackgroundColor="@color/light_setting"
-                app:cardCornerRadius="@dimen/menu_icons_corner"
-                app:cardElevation="@dimen/card_elevation"
-                app:cardMaxElevation="@dimen/card_elevation"
-                app:strokeWidth="0dp">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="@dimen/menu_icons"
-                    android:layout_height="@dimen/menu_icons"
-                    android:padding="@dimen/activity_padding8"
-                    app:srcCompat="@drawable/ic_menu_setting" />
-
-            </com.google.android.material.card.MaterialCardView>
-
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardYoutube"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/icons_margin"
-                app:cardBackgroundColor="@color/light_youtube"
-                app:cardCornerRadius="@dimen/menu_icons_corner"
-                app:cardElevation="@dimen/card_elevation"
-                android:visibility="gone"
-                app:cardMaxElevation="@dimen/card_elevation"
-                app:strokeWidth="0dp">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="@dimen/menu_icons"
-                    android:layout_height="@dimen/menu_icons"
-                    android:padding="@dimen/activity_padding8"
-                    app:srcCompat="@drawable/ic_youtube" />
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardSubscribe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/icons_margin"
-                app:cardBackgroundColor="@color/light_subscribe"
-                app:cardCornerRadius="@dimen/menu_icons_corner"
-                app:cardElevation="@dimen/card_elevation"
-                android:visibility="gone"
-                app:cardMaxElevation="@dimen/card_elevation"
-                app:strokeWidth="0dp">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="@dimen/menu_icons"
-                    android:layout_height="@dimen/menu_icons"
-                    android:padding="@dimen/activity_padding6"
-                    app:srcCompat="@mipmap/ic_menu_subscribe" />
-
-            </com.google.android.material.card.MaterialCardView>
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            app:layout_constraintTop_toTopOf="@+id/cardBack"
+            tools:text="00:00"
+            tools:visibility="visible" />
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -226,9 +133,9 @@
                         android:gravity="center"
                         android:includeFontPadding="false"
                         android:shadowColor="@color/black"
-                        android:shadowRadius="5"
-                        android:shadowDy="5"
                         android:shadowDx="5"
+                        android:shadowDy="5"
+                        android:shadowRadius="5"
                         android:textColor="@color/colorAccent"
                         android:textSize="@dimen/textSizeAbacusNumber"
                         tools:text="100" />
@@ -257,21 +164,19 @@
                     app:cardCornerRadius="@dimen/card_corner_radius12"
                     app:cardElevation="@dimen/card_elevation"
                     app:cardMaxElevation="@dimen/card_elevation"
-                    app:cardUseCompatPadding="true"
                     app:strokeColor="@color/blue_300"
                     app:strokeWidth="@dimen/activity_padding1"
                     tools:visibility="visible">
 
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/txt_hint"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:paddingHorizontal="@dimen/activity_padding10"
-                            android:paddingVertical="@dimen/activity_padding8"
-                            tools:text="Big Friend (+10)"
-                            android:textColor="@color/colorEditTextBlack_33"
-                            android:textSize="@dimen/textSizeMedium" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txt_hint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="@dimen/activity_padding8"
+                        android:textColor="@color/colorEditTextBlack_33"
+                        android:textSize="@dimen/textSizeMedium"
+                        tools:text="Big Friend (+10)" />
 
                 </com.google.android.material.card.MaterialCardView>
 

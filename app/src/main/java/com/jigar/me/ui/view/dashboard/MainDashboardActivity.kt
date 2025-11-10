@@ -188,7 +188,47 @@ class MainDashboardActivity : BaseActivity() {
     }
 
     private fun initListener() {
+        logDeviceQualifiers(this)
+    }
 
+    fun logDeviceQualifiers(context: Context) {
+//        val metrics = context.resources.displayMetrics
+        val config = context.resources.configuration
+        val screenWidthDp = config.screenWidthDp
+        prefManager.setCustomParamInt(AppConstants.screenWidthDp,screenWidthDp)
+
+//        val screenHeightDp = config.screenHeightDp
+//        val smallestWidthDp = config.smallestScreenWidthDp
+//        val densityDpi = metrics.densityDpi
+//
+//        Log.d("Qualifiers", "screenWidthDp = $screenWidthDp")
+//        Log.d("Qualifiers", "screenHeightDp = $screenHeightDp")
+//        Log.d("Qualifiers", "smallestWidthDp = $smallestWidthDp")
+//        Log.d("Qualifiers", "densityDpi = $densityDpi")
+//
+//        // Now determine possible folders
+//        val wFolder = when {
+//            screenWidthDp >= 1024 -> "values-w1024dp"
+//            screenWidthDp >= 960 -> "values-w960dp"
+//            screenWidthDp >= 800 -> "values-w800dp"
+//            screenWidthDp >= 720 -> "values-w720dp"
+//            screenWidthDp >= 600 -> "values-w600dp"
+//            screenWidthDp >= 480 -> "values-w480dp"
+//            else -> "values/"
+//        }
+//
+//        val swFolder = when {
+//            smallestWidthDp >= 1024 -> "values-sw1024dp"
+//            smallestWidthDp >= 960 -> "values-sw960dp"
+//            smallestWidthDp >= 800 -> "values-sw800dp"
+//            smallestWidthDp >= 720 -> "values-sw720dp"
+//            smallestWidthDp >= 600 -> "values-sw600dp"
+//            smallestWidthDp >= 480 -> "values-sw480dp"
+//            else -> "values/"
+//        }
+//
+//        Log.d("Qualifiers", "→ likely values-w folder: $wFolder")
+//        Log.d("Qualifiers", "→ likely values-sw folder: $swFolder")
     }
 
     private fun showToolbarTitle(id: Int) {

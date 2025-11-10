@@ -9,6 +9,7 @@ object AppConstants {
     const val BLINK_ICON_ANIMATION_DURATION: Long = 600
     const val BLINK_ICON_ANIMATION_ALPHA: Float = 0.1F
 
+    const val screenWidthDp = "screenWidthDp"
     const val HAS_NOTCH = "has_notch"
     const val NOTCH_HEIGHT = "notch_height"
     const val BOTTOM_NAV_HEIGHT = "bottom_nav_height"
