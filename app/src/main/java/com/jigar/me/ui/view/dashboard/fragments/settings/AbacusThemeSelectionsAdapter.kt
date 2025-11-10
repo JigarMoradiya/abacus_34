@@ -9,19 +9,13 @@ import com.jigar.me.databinding.RowDefaultThemeBinding
 import com.jigar.me.utils.extensions.*
 
 class AbacusThemeSelectionsAdapter(
-    private var questions: List<AbacusContent>, private val mListener: OnItemClickListener, private var currentPos : Int = 0,
-    private val isPaidTheme : Boolean = false
+    private var questions: List<AbacusContent>, private val mListener: OnItemClickListener,
+    private val isPaidTheme : Boolean = false,var selectedTheme : String
 ) : RecyclerView.Adapter<AbacusThemeSelectionsAdapter.FormViewHolder>() {
     interface OnItemClickListener {
         fun onThemePoligonItemClick(data: AbacusContent)
     }
 
-    fun selectedPos(newPos : Int){
-        val previousPos = currentPos
-        currentPos = newPos
-        notifyItemChanged(previousPos)
-        notifyItemChanged(currentPos)
-    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
@@ -40,15 +34,12 @@ class AbacusThemeSelectionsAdapter(
                 imgAbacus.layoutParams = RelativeLayout.LayoutParams((context.resources.getDimension(R.dimen.bead_column).toInt()), RelativeLayout.LayoutParams.WRAP_CONTENT)
             }
             imgAbacus.setImageResource(data.beadImage)
-            if (currentPos == position){
+            if (selectedTheme == data.type){
                 imgTick.show()
             }else{
                 imgTick.invisible()
             }
             root.onClick {
-                val previousPos = currentPos
-                currentPos = position
-                notifyItemChanged(previousPos)
                 imgTick.show()
                 mListener.onThemePoligonItemClick(data)
             }
@@ -65,5 +56,14 @@ class AbacusThemeSelectionsAdapter(
 
     override fun getItemCount(): Int {
         return questions.size
+    }
+
+    fun updateSelection(selectedThemeOld : String, selectedThemeNew : String) {
+        selectedTheme = selectedThemeNew
+        questions.indexOfFirst { it.type == selectedThemeOld }.also {
+            if (it != -1){
+                notifyItemChanged(it)
+            }
+        }
     }
 }

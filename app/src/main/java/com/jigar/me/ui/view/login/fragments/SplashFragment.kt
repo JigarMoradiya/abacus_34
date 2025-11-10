@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -20,53 +21,77 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.jigar.me.BuildConfig
 import com.jigar.me.R
 import com.jigar.me.databinding.FragmentSplashBinding
+import com.jigar.me.internal.workmanagers.FetchAbacusDataWorkManager
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
+import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.Constants
 import com.jigar.me.utils.extensions.isNetworkAvailable
 import com.jigar.me.utils.extensions.openURL
 import com.jigar.me.utils.extensions.toastL
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.HashMap
+import androidx.navigation.findNavController
+import com.google.gson.Gson
+import com.google.gson.JsonObject
+import com.google.gson.reflect.TypeToken
+import com.jigar.me.data.model.data.PlanAssignFromAdminData
+import com.jigar.me.ui.view.confirm_alerts.dialogs.FreeTrialLeftDialog
+import com.jigar.me.ui.viewmodel.StudentViewModel
+import com.jigar.me.utils.Resource
 
 @AndroidEntryPoint
 class SplashFragment : BaseFragment() {
     private lateinit var binding: FragmentSplashBinding
     private var mNavController: NavController? = null
     private lateinit var mFirebaseRemoteConfig  : FirebaseRemoteConfig
+    private val studentViewModel by viewModels<StudentViewModel>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initObserver()
+    }
+
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
         binding = FragmentSplashBinding.inflate(inflater, container, false)
         setNavigationGraph()
-        initViews()
         return binding.root
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
 
-    private fun initViews() {
+    override fun onResume() {
+        super.onResume()
         firebaseConfig()
     }
-    private fun goToNext() {
-        val androidId = Settings.Secure.getString(requireContext().contentResolver, Settings.Secure.ANDROID_ID)
-        prefManager.setDeviceId(androidId)
-        if (requireContext().isNetworkAvailable){
-            lifecycleScope.launch {
-                delay(3000)
-                if (!prefManager.getAccessToken().isNullOrEmpty() && prefManager.isUserLoggedIn()){
-                    MainDashboardActivity.getInstance(requireContext())
-                }else{
-                    mNavController?.navigate(R.id.toLoginHomeFragment)
+    private fun initObserver(){
+        studentViewModel.appReviewsListResponse.observe(this) {
+            when (it) {
+                is Resource.Loading -> {
                 }
+                is Resource.Success -> {
+                    if (it.value.status == AppConstants.APIStatus.SUCCESS)
+                    {
+                        checkPurchasedPlans(it.value.data)
+                    }else{
+                        onFailure(it.value.error?.message)
+                    }
+                }
+                is Resource.Failure -> {
+
+                }
+                else -> {}
             }
-        }else{
-            requireContext().toastL(resources.getString(R.string.no_internet))
-            requireActivity().finish()
         }
     }
+
     private fun firebaseConfig() {
         var tries = 0
         mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance()
@@ -81,45 +106,7 @@ class SplashFragment : BaseFragment() {
                     mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings.toBuilder().setFetchTimeoutInSeconds(20).build())
                 }
                 if (task.isSuccessful) {
-
-                    val video: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.videoList)
-                    val displayPlan: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.displayPlanList)
-                    val privacyPolicyUrl: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.privacyPolicyUrl)
-                    val supportEmail: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.supportEmail)
-                    val newVersionNotes: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.newVersionNotes)
-                    val bulkLogin: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.bulkLogin)
                     val versionCode: Long = mFirebaseRemoteConfig.getLong(AppConstants.RemoteConfig.versionCode)
-                    val ads: String = mFirebaseRemoteConfig.getString(AppConstants.AbacusProgress.Ads)
-                    val baseUrl: String = mFirebaseRemoteConfig.getString(AppConstants.AbacusProgress.baseUrl)
-                    val iPath: String = mFirebaseRemoteConfig.getString(AppConstants.AbacusProgress.iPath)
-                    val resetImage: Long = mFirebaseRemoteConfig.getLong(AppConstants.AbacusProgress.resetImage)
-                    val isAdmob = if (BuildConfig.DEBUG){
-                        false
-                    }else{
-                        mFirebaseRemoteConfig.getBoolean(AppConstants.AbacusProgress.isAdmob)
-                    }
-                    with(prefManager){
-                        if (resetImage.toInt() > getCustomParamInt(AppConstants.AbacusProgress.resetImage, 0)) {
-                            setCustomParamInt(AppConstants.AbacusProgress.resetImage, resetImage.toInt())
-                            setCustomParam(AppConstants.extras_Comman.DownloadType+"_"+AppConstants.extras_Comman.DownloadType_Maths, "")
-                            setCustomParam(AppConstants.extras_Comman.DownloadType+"_"+AppConstants.extras_Comman.DownloadType_Nursery, "")
-                        }
-                        setBaseUrl(baseUrl)
-                        setCustomParam(AppConstants.AbacusProgress.iPath,iPath)
-                        setCustomParamBoolean(AppConstants.AbacusProgress.isAdmob,isAdmob)
-                        setCustomParam(AppConstants.AbacusProgress.Ads,ads)
-                        setCustomParam(AppConstants.RemoteConfig.privacyPolicyUrl,privacyPolicyUrl)
-                        setCustomParam(AppConstants.RemoteConfig.supportEmail,supportEmail)
-                        setCustomParam(AppConstants.RemoteConfig.newVersionNotes,newVersionNotes)
-                        setCustomParam(AppConstants.RemoteConfig.bulkLogin,bulkLogin)
-                        setCustomParamInt(AppConstants.RemoteConfig.versionCode,versionCode.toInt())
-                        if (video.length > 5){
-                            setCustomParam(AppConstants.RemoteConfig.videoList,video)
-                        }else{
-                            setCustomParam(AppConstants.RemoteConfig.videoList,"")
-                        }
-                        setCustomParam(AppConstants.RemoteConfig.displayPlanList,displayPlan)
-                    }
                     checkVersion(versionCode)
                 }
             }
@@ -147,11 +134,65 @@ class SplashFragment : BaseFragment() {
                         }
                     })
             }else{
-                goToNext()
+                val video: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.videoList)
+                val discountPer: Long = mFirebaseRemoteConfig.getLong(AppConstants.RemoteConfig.discountPer)
+                val discountPerLifeTime: Long = mFirebaseRemoteConfig.getLong(AppConstants.RemoteConfig.discountPerLifeTime)
+                val displayPlan: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.displayPlanList)
+                val privacyPolicyUrl: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.privacyPolicyUrl)
+                val supportEmail: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.supportEmail)
+                val newVersionNotes: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.newVersionNotes)
+                val bulkLogin: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.bulkLogin)
+
+                with(prefManager){
+                    setCustomParam(AppConstants.RemoteConfig.privacyPolicyUrl,privacyPolicyUrl)
+                    setCustomParam(AppConstants.RemoteConfig.supportEmail,supportEmail)
+                    setCustomParam(AppConstants.RemoteConfig.newVersionNotes,newVersionNotes)
+                    setCustomParam(AppConstants.RemoteConfig.bulkLogin,bulkLogin)
+                    setCustomParamInt(AppConstants.RemoteConfig.versionCode,versionCode.toInt())
+                    setCustomParamInt(AppConstants.RemoteConfig.discountPer,discountPer.toInt())
+                    setCustomParamInt(AppConstants.RemoteConfig.discountPerLifeTime,discountPerLifeTime.toInt())
+
+                    if (video.length > 5){
+                        setCustomParam(AppConstants.RemoteConfig.videoList,video)
+                    }else{
+                        setCustomParam(AppConstants.RemoteConfig.videoList,"")
+                    }
+                    setCustomParam(AppConstants.RemoteConfig.displayPlanList,displayPlan)
+                }
+                if (requireContext().isNetworkAvailable){
+                    if (!prefManager.getAccessToken().isNullOrEmpty() && prefManager.isUserLoggedIn()){
+                        studentViewModel.appReviewsList()
+                    }else{
+                        mNavController?.navigate(R.id.toLoginHomeFragment)
+                    }
+                }else{
+                    requireContext().toastL(resources.getString(R.string.no_internet))
+                    requireActivity().finish()
+                }
+
             }
         } catch (e: PackageManager.NameNotFoundException) {
             e.printStackTrace()
         }
 
+    }
+
+    private fun checkPurchasedPlans(data: JsonObject?) {
+        if (data?.has("plans_purchased_manually") == true){
+            if (data.getAsJsonArray("plans_purchased_manually")?.isEmpty == true){
+                prefManager.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"")
+            }else{
+                val list : List<PlanAssignFromAdminData> =  Gson().fromJson(data.getAsJsonArray("plans_purchased_manually"), object : TypeToken<List<PlanAssignFromAdminData>>() {}.type)
+                prefManager.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,Gson().toJson(list))
+            }
+        }
+
+        // trial_ends_at : "2025-10-11T14:00:00.000Z", free_trial_remaining_days, trial_period_offered
+        if (data?.has("free_trial_remaining_days") == true){
+            val free_trial_remaining_days = data.get("free_trial_remaining_days").asInt
+            prefManager.setCustomParamInt(Constants.free_trial_remaining_days,free_trial_remaining_days)
+        }
+
+        MainDashboardActivity.getInstance(requireContext())
     }
 }

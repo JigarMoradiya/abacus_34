@@ -8,19 +8,38 @@ import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
+import androidx.core.content.ContextCompat
 import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.jigar.me.R
+import com.jigar.me.data.local.data.AbacusContent
+import com.jigar.me.data.model.data.LoginData
+import com.jigar.me.data.model.data.PlanAssignFromAdminData
+import com.jigar.me.data.model.dbtable.abacus_all_data.Category
+import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.data.pref.AppPreferencesHelper
+import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_1Month
+import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_1Year
+import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_3Month
+import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime
+import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_old
+import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Week
 import com.jigar.me.utils.extensions.show
 import org.json.JSONException
 import org.json.JSONObject
 import java.math.RoundingMode
 import java.text.DecimalFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Locale
 
 
 object CommonUtils {
+    external fun getOneSignalKey() : String
+    external fun getOrganizerId() : String
+    external fun getDatabaseKey() : String
+    external fun getApiBaseUrl() : String
+
     fun getCurrentCurrency(isCurrencyINR: Boolean) = if (isCurrencyINR){ AppConstants.APP_PLAN_DATA.Currency_INR }else{ AppConstants.APP_PLAN_DATA.Currency_USD }
     fun getCurrentCurrencySymbol(isCurrencyINR: Boolean) = if (isCurrencyINR){ AppConstants.APP_PLAN_DATA.Symbol_INR }else{ AppConstants.APP_PLAN_DATA.Symbol_USD }
     @SuppressLint("RestrictedApi")
@@ -68,7 +87,25 @@ object CommonUtils {
 //        val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
         return (parentWidth / columnWidthDp + 0.5).toInt() // +0.5 for correct rounding to int.
     }
-
+    fun getQuestionHighLighterColor(context: Context,abacusType : AbacusContent?): Int {
+        return if (abacusType != null){
+            if (abacusType.equals(AppConstants.Settings.theam_Poligon_Silver) || abacusType.equals(AppConstants.Settings.theam_Poligon_Brown)){
+                ContextCompat.getColor(context,R.color.black)
+            }else{
+//                mixTwoColors(ContextCompat.getColor(context,abacusType.dividerColor1), ContextCompat.getColor(context,abacusType.resetBtnColor8), 0.40f)
+                ContextCompat.getColor(context,abacusType.resetBtnColor8)
+            }
+        }else{
+            ContextCompat.getColor(context, R.color.red)
+        }
+    }
+    fun getQuestionBorderColor(context: Context,abacusType : AbacusContent?): Int {
+        return if (abacusType != null){
+            mixTwoColors(ContextCompat.getColor(context,R.color.white), ContextCompat.getColor(context,abacusType.resetBtnColor8), 0.75f)
+        }else{
+            ContextCompat.getColor(context, R.color.red_600)
+        }
+    }
     fun mixTwoColors(color1: Int, color2: Int, amount: Float): Int {
         val ALPHA_CHANNEL: Byte = 24
         val RED_CHANNEL: Byte = 16
@@ -103,46 +140,123 @@ object CommonUtils {
         animation.repeatMode = Animation.REVERSE //animation will start from end point once ended.
         view.startAnimation(animation) //to start animation
     }
-    fun AppPreferencesHelper.getCurrentSumFromPref(pageId : String) : Int? {
-        var currentPos : Int? = null
-        try {
-            val pageSum: String = getCustomParam(AppConstants.AbacusProgress.PREF_PAGE_SUM, "{}")
-            val objJson = JSONObject(pageSum)
-            if (objJson.has(pageId)) {
-                currentPos = objJson.getInt(pageId)
+
+
+    fun checkLevelIsPurchase(
+        purchasedSKU: List<InAppSkuDetails>,
+        data: Category,
+        prefManager: AppPreferencesHelper
+    ): Boolean {
+        val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
+        var isPurchased = false
+        if (loginData?.email.equals("abacus@yopmail.com") || prefManager.isUserInFreeTrial()){
+            isPurchased = true
+        }else{
+            if (data.name.contains("free",true)){
+                isPurchased = true
+            }else{
+                purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
+                        || it.sku == PRODUCT_ID_All_lifetime_old
+                        || it.sku.contains(PRODUCT_ID_1Year)
+                        || it.sku.contains(PRODUCT_ID_Week)
+                        || it.sku.contains(PRODUCT_ID_1Month)
+                        || it.sku.contains(PRODUCT_ID_3Month)
+                        || (it.sku.contains(data.name)) }.also {
+                    isPurchased = it != null
+                }
+                if (!isPurchased){
+                    if (prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"").isNotEmpty()) {
+                        val planListData : List<PlanAssignFromAdminData> = Gson().fromJson(
+                            prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
+                            object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
+                        )
+                        planListData.find { it.google_order_id == null &&
+                                (it.google_plan_id?.contains(data.name) == true
+                                || it.google_plan_id?.contains(PRODUCT_ID_1Year) == true
+                                || it.google_plan_id?.contains(PRODUCT_ID_Week) == true
+                                || it.google_plan_id?.contains(PRODUCT_ID_1Month) == true
+                                || it.google_plan_id?.contains(PRODUCT_ID_3Month) == true
+                                        )
+                        }.also {
+                            isPurchased = it != null
+                        }
+                    }
+                }
             }
-        } catch (e: JSONException) {
-            e.printStackTrace()
         }
-        return currentPos
+        return isPurchased
     }
-    fun Context.getCurrentSumFromPref(pageId : String) : Int? {
-        var currentPos : Int? = null
-        try {
-            val pageSum: String = AppPreferencesHelper(this, AppConstants.PREF_NAME)
-                .getCustomParam(AppConstants.AbacusProgress.PREF_PAGE_SUM, "{}")
-            val objJson = JSONObject(pageSum)
-            if (objJson.has(pageId)) {
-                currentPos = objJson.getInt(pageId)
+
+    fun checkPurchaseForExerciseExamCCM(prefManager: AppPreferencesHelper,purchasedSKU: List<InAppSkuDetails>): Boolean {
+        val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
+        var isPurchased = false
+        if (loginData?.email.equals("abacus@yopmail.com") || prefManager.isUserInFreeTrial()){
+            isPurchased = true
+        }else{
+            purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
+                    || it.sku == PRODUCT_ID_All_lifetime_old
+                    || it.sku.contains(PRODUCT_ID_1Year)
+                    || it.sku.contains(PRODUCT_ID_Week)
+                    || it.sku.contains(PRODUCT_ID_1Month)
+                    || it.sku.contains(PRODUCT_ID_3Month)
+                    || (it.sku.contains("level3")) || (it.sku.contains("level4"))
+                    || (it.sku.contains("level5")) || (it.sku.contains("level6"))
+                    || (it.sku.contains("level7")) || (it.sku.contains("level8"))}.also {
+                isPurchased = it != null
             }
-        } catch (e: JSONException) {
-            e.printStackTrace()
+            if (!isPurchased){
+                if (prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"").isNotEmpty()) {
+                    val planListData : List<PlanAssignFromAdminData> = Gson().fromJson(
+                        prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
+                        object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
+                    )
+                    planListData.find { it.google_order_id == null && (
+                            (it.google_plan_id?.contains("level3") == true) ||
+                            (it.google_plan_id?.contains("level4") == true) ||
+                            (it.google_plan_id?.contains("level5") == true) ||
+                            (it.google_plan_id?.contains("level6") == true) ||
+                            (it.google_plan_id?.contains("level7") == true) ||
+                            (it.google_plan_id?.contains("level8") == true) ||
+                            (it.google_plan_id?.contains(PRODUCT_ID_1Year) == true) ||
+                            (it.google_plan_id?.contains(PRODUCT_ID_Week) == true) ||
+                            (it.google_plan_id?.contains(PRODUCT_ID_1Month) == true) ||
+                            (it.google_plan_id?.contains(PRODUCT_ID_3Month) == true)
+                            ) }.also {
+                        isPurchased = it != null
+                    }
+                }
+            }
         }
-        return currentPos
+
+        return isPurchased
     }
-    fun AppPreferencesHelper.saveCurrentSum(pageId : String, current_pos : Int) {
-        try {
-            val pageSum: String = getCustomParam(AppConstants.AbacusProgress.PREF_PAGE_SUM, "{}")
-            val objJson = JSONObject(pageSum)
-            objJson.put(pageId, current_pos)
-            setCustomParam(AppConstants.AbacusProgress.PREF_PAGE_SUM,objJson.toString())
-        } catch (e: JSONException) {
-            e.printStackTrace()
+    fun checkPurchaseForAllLevel(prefManager: AppPreferencesHelper,purchasedSKU: List<InAppSkuDetails>): Boolean {
+        var isPurchased = false
+        purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
+                || it.sku == PRODUCT_ID_All_lifetime_old
+                || it.sku.contains(PRODUCT_ID_1Year)
+                || it.sku.contains(PRODUCT_ID_Week)
+                || it.sku.contains(PRODUCT_ID_1Month)
+                || it.sku.contains(PRODUCT_ID_3Month)
+        }.also {
+            isPurchased = it != null
         }
-    }
-    private fun get2Decimal(value: Double): String {
-        val df = DecimalFormat("#.##")
-        df.roundingMode = RoundingMode.DOWN
-        return df.format(value)
+        if (!isPurchased){
+            if (prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"").isNotEmpty()) {
+                val planListData : List<PlanAssignFromAdminData> = Gson().fromJson(
+                    prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
+                    object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
+                )
+                planListData.find { it.google_order_id == null && (
+                        it.google_plan_id?.contains(PRODUCT_ID_Week) == true ||
+                        it.google_plan_id?.contains(PRODUCT_ID_1Year) == true ||
+                        it.google_plan_id?.contains(PRODUCT_ID_1Month) == true ||
+                        it.google_plan_id?.contains(PRODUCT_ID_3Month) == true
+                        ) }.also {
+                    isPurchased = it != null
+                }
+            }
+        }
+        return isPurchased
     }
 }

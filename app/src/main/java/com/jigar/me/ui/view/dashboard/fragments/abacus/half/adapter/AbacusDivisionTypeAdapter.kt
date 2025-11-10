@@ -29,7 +29,7 @@ class AbacusDivisionTypeAdapter(
     private var abacusItems: ArrayList<HashMap<String, String>>, private var isStepByStep: Boolean, private val abacusType : AbacusContent?
 ) : RecyclerView.Adapter<AbacusDivisionTypeAdapter.FormViewHolder>() {
 
-    private val highlightDetail = HashMap<Int, Pair<Int, Int>>()
+    val highlightDetail = HashMap<Int, Pair<Int, Int>>()
     private var isClear = false
     private var isLastTemp = false
     private var nextDivider: Long = 0
@@ -39,6 +39,7 @@ class AbacusDivisionTypeAdapter(
     private var nextDivider1: Long = 0
     var nextHighlightedPosition = 0
     var currentTablePosition = 0
+    val multipliers = mutableListOf<Int>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
@@ -76,12 +77,7 @@ class AbacusDivisionTypeAdapter(
                 }
             }
             if (position == 1 && abacusItems.size > 2) {
-                val color = if (abacusType != null){
-                    CommonUtils.mixTwoColors(ContextCompat.getColor(context,R.color.white), ContextCompat.getColor(context,abacusType.resetBtnColor8), 0.75f)
-                }else{
-                    ContextCompat.getColor(context, R.color.red_600)
-                }
-                holder.binding.ivDivider.setBackgroundColor(color)
+                holder.binding.ivDivider.setBackgroundColor(CommonUtils.getQuestionBorderColor(context,abacusType))
                 holder.binding.ivDivider.show()
                 holder.binding.spaceBottom.hide()
             } else {
@@ -106,16 +102,127 @@ class AbacusDivisionTypeAdapter(
         if (abacusItems.size >= 2) {
             val first = abacusItems[0][Constants.Que]
             val second = java.lang.Float.valueOf(abacusItems[1][Constants.Que])
-            calculateHiglightCount(first, second.toInt(), 1, 1, 0)
+            calculateHighlightCount(first, second.toInt(), 1, 1, 0, stepMultipliers = multipliers)
 
-            val pair = Pair<Int, Int>(0, nextHighlightedPosition)
-            highlightDetail[0] = pair
-            val pair1 = Pair(0, abacusItems[1][Constants.Que]!!.length)
-            highlightDetail[1] = pair1
+            // Get multiplier of current step
+            val currentMultiplier = multipliers.firstOrNull() ?: 0
+            currentTablePosition = currentMultiplier
+
+            highlightDetail[0] = Pair(0, nextHighlightedPosition)
+            highlightDetail[1] = Pair(0, abacusItems[1][Constants.Que]!!.length)
             highlightDetail[2] = Pair(0, 0)
             highlightDetail[3] = Pair(0, 0)
-
         }
+    }
+
+    fun goToNextStep() {
+        try {
+            val data = abacusItems[0]
+            val firstEndPosition = highlightDetail[0]?.second ?: 0
+
+            if (firstEndPosition >= data[Constants.Que]!!.length) {
+                // Division finished
+                highlightDetail[initialDividerPosition - 1] = Pair(0, 0)
+                return
+            }
+
+            // ✅ Only one call to calculateHighlightCount
+            calculateHighlightCount(abacusItems[0][Constants.Que],abacusItems[1][Constants.Que]!!.toInt(),1,1,firstEndPosition,stepMultipliers = multipliers)
+
+            // Case: current digit is zero, skip to next
+            if (firstEndPosition == nextHighlightedPosition) {
+                highlightDetail[0] = Pair(firstEndPosition, nextHighlightedPosition + 1)
+                goToNextStep()
+                return
+            }
+
+            // Case: ends with zero (last part)
+            if (firstEndPosition > nextHighlightedPosition && data[Constants.Que]!!.endsWith("0")) {
+                isLastTemp = true
+                return
+            }
+
+            // ✅ Update main dividend highlight
+            highlightDetail[0] = Pair(firstEndPosition, nextHighlightedPosition)
+
+            if (abacusItems.size > initialDividerPosition) {
+                if (initialDividerPosition > 2) {
+                    highlightDetail[initialDividerPosition - 1] = Pair(0, 0)
+                }
+
+                val abacusItem = abacusItems[initialDividerPosition]
+                val nextDividend = nextDivider.toString()
+                abacusItem[Constants.Que] = nextDividend
+
+                // ✅ Use trimmed version to calculate how many digits to highlight (only once)
+                calculateHighlightCount(nextDividend,abacusItems[1][Constants.Que]!!.toInt(),1,1,0,stepMultipliers = multipliers)
+
+                highlightDetail[initialDividerPosition] = Pair(0, nextHighlightedPosition)
+                initialDividerPosition++
+            } else {
+                // Unhighlight last divider if no more
+                highlightDetail[initialDividerPosition - 1] = Pair(0, 0)
+            }
+
+            notifyDataSetChanged()
+
+            // Log multiplier for this step
+            val currentMultiplier = multipliers.firstOrNull() ?: 0
+            currentTablePosition = currentMultiplier
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun calculateHighlightCount(
+        fullQuestion: String?,
+        divideBy: Int,
+        position: Int?,
+        currentRecursionCount: Int,
+        startLength: Int,
+        stepMultipliers: MutableList<Int>
+    )
+    {
+        multipliers.clear()
+        if (currentRecursionCount == 1) {
+            nextHighlightedPosition = 0
+        }
+        var currentsumval = 0L
+        nextHighlightedPosition++
+        val que = fullQuestion!!.substring(0, position!!)
+        if (!TextUtils.isEmpty(que)) {
+            val queInt = Integer.valueOf(que)
+            if (queInt >= divideBy) {
+                var j = 1
+                while (true) {
+                    if (queInt - divideBy * j < divideBy) {
+                        break
+                    }
+                    j++
+                }
+                stepMultipliers.add(j)
+
+                var curSum = j.toString() + ""
+                for (k in position until fullQuestion.length) {
+                    curSum += "0"
+                }
+                currentsumval = java.lang.Long.valueOf(curSum)
+                nextDivider1 = java.lang.Long.valueOf(fullQuestion) - currentsumval * divideBy
+                if (nextDivider1 != 0L && position <= startLength) {
+                    curSum = ""
+                    var nextQue = nextDivider1.toString()
+                    for (k in 0 until fullQuestion.length - nextQue.length) {
+                        curSum += "0"
+                    }
+                    nextQue = curSum + nextQue // to maintain lenth = full question length we added 0
+                    calculateHighlightCount(nextQue,divideBy,position + 1,currentRecursionCount + 1,startLength, stepMultipliers = multipliers)
+                }
+            } else {
+                calculateHighlightCount(fullQuestion,divideBy,position + 1,currentRecursionCount + 1,startLength, stepMultipliers = multipliers)
+            }
+        }
+
     }
 
     fun isLastStep(): Boolean {
@@ -128,7 +235,6 @@ class AbacusDivisionTypeAdapter(
         }
     }
 
-
     fun getCurrentStep(): Int? {
         return highlightDetail[0]!!.second
     }
@@ -138,25 +244,11 @@ class AbacusDivisionTypeAdapter(
 
     private fun span(text: String?, startPosition: Int, endPosition: Int, context: Context): Spannable {
         if (!TextUtils.isEmpty(text) && startPosition <= text!!.length && endPosition <= text.length) {
-            val wordtoSpan = SpannableString(text)
-            wordtoSpan.setSpan(
-                ForegroundColorSpan(ContextCompat.getColor(context, R.color.abacus_place_holder)),
-                0,
-                text.length,
-                Spannable.SPAN_INCLUSIVE_EXCLUSIVE
-            )
-            val color = if (abacusType != null){
-                if (abacusType.equals(AppConstants.Settings.theam_Poligon_Silver) || abacusType.equals(
-                        AppConstants.Settings.theam_Poligon_Brown)){
-                    ContextCompat.getColor(context,R.color.black)
-                }else{
-                    CommonUtils.mixTwoColors(ContextCompat.getColor(context,abacusType.dividerColor1), ContextCompat.getColor(context,abacusType.resetBtnColor8), 0.40f)
-                }
-            }else{
-                ContextCompat.getColor(context, R.color.red)
-            }
-            wordtoSpan.setSpan(ForegroundColorSpan(color), startPosition, endPosition, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
-            return wordtoSpan
+            val wordToSpan = SpannableString(text)
+            wordToSpan.setSpan(ForegroundColorSpan(ContextCompat.getColor(context, R.color.abacus_place_holder)),0,text.length,Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+            val color = CommonUtils.getQuestionHighLighterColor(context,abacusType)
+            wordToSpan.setSpan(ForegroundColorSpan(color), startPosition, endPosition, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+            return wordToSpan
         }
         return SpannableString("")
     }
@@ -172,64 +264,6 @@ class AbacusDivisionTypeAdapter(
         notifyDataSetChanged()
     }
 
-    fun goToNextStep() {
-        try {
-            val data = abacusItems[0]
-            /*Long currentSum = getCurrentSumVal();*/
-            /*shift 0 position*/
-            val firstEndPostion = highlightDetail[0]!!.second!!
-            if (firstEndPostion < data[Constants.Que]!!.length) {
-                calculateHiglightCount(
-                    abacusItems[0][Constants.Que], abacusItems[1][Constants.Que]!!
-                        .toInt(),
-                    1, 1, firstEndPostion
-                )
-                if (firstEndPostion == nextHighlightedPosition) {
-//                    current value is 0 so add +1 to position highlight and move next
-                    val pair = Pair<Int, Int>(firstEndPostion, nextHighlightedPosition + 1)
-                    highlightDetail[0] = pair
-                    goToNextStep()
-                    return
-                }
-                if (firstEndPostion > nextHighlightedPosition && data[Constants.Que]!!.endsWith("0")){
-                    isLastTemp = true
-                    return
-                }
-
-                val pair = Pair<Int, Int>(firstEndPostion, nextHighlightedPosition)
-                highlightDetail[0] = pair
-                if (abacusItems.size > initialDividerPosition) {
-                    if (initialDividerPosition > 2) {
-                        /*unhighlight previous divider*/
-                        val pairInternal = Pair(0, 0)
-                        highlightDetail[initialDividerPosition - 1] = pairInternal
-                    }
-                    val abecuseItem = abacusItems[initialDividerPosition]
-                    abecuseItem[Constants.Que] = nextDivider.toString()
-                    val pairInternal = Pair(0, abecuseItem[Constants.Que]!!.length)
-                    highlightDetail[initialDividerPosition] = pairInternal
-                    initialDividerPosition++
-                } else {
-                    /*unhighlight previous divider*/
-                    val pairInternal = Pair(0, 0)
-                    highlightDetail[initialDividerPosition - 1] = pairInternal
-                }
-            } else {
-                val pairInternal = Pair(0, 0)
-                highlightDetail[initialDividerPosition - 1] = pairInternal
-                //                sum completed
-                return
-            }
-
-            /*Long nextSumVal = getCurrentSumVal();
-            if (nextSumVal.equals(currentSum)) {
-                goToNextStep();
-            }*/
-            notifyDataSetChanged()
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
     fun getCurrentSumVal(): Long? {
         if (abacusItems.size >= 2 && highlightDetail.size > 0) {
             val firstItem = abacusItems[0]
@@ -238,7 +272,6 @@ class AbacusDivisionTypeAdapter(
             /*first step*/
             val divideBy = Integer.valueOf(secondItem[Constants.Que])
             val fullQuestion = firstItem[Constants.Que]
-            currentTablePosition = 0
 
             /*first step completed
          * now need to take highlight end position from question 1 and need perform same step as above */
@@ -251,16 +284,13 @@ class AbacusDivisionTypeAdapter(
         }
         return null
     }
-    fun calculateCurrentSumVal(
+    private fun calculateCurrentSumVal(
         fullQuestion: String?,
         divideBy: Int,
         length: Int?,
         currentRecursionCount: Int
     ): Long? {
         var currentsumval = 0L
-        //        if (currentRecursionCount >= length) {
-//            return currentsumval;
-//        }
         for (i in 0..length!!) {
             if (i > fullQuestion!!.length) {
                 break
@@ -308,76 +338,6 @@ class AbacusDivisionTypeAdapter(
         return 0L
     }
 
-    fun calculateHiglightCount(
-        fullQuestion: String?,
-        divideBy: Int,
-        position: Int?,
-        currentRecursionCount: Int,
-        startLength: Int
-    )
-    {
-        if (currentRecursionCount == 1) {
-            nextHighlightedPosition = 0
-        }
-        var currentsumval = 0L
-
-//        if (currentRecursionCount >= fullQuestion!!.length) {
-//            return currentsumval;
-//        }
-//        for (int i = 0; i <= length; i++) {
-//        if (position > fullQuestion.length()) {
-//            return;
-//        }
-        nextHighlightedPosition++
-        val que = fullQuestion!!.substring(0, position!!)
-        if (!TextUtils.isEmpty(que)) {
-            val queInt = Integer.valueOf(que)
-            if (queInt >= divideBy) {
-//                if (((position) <= fullQuestion.length) && fullQuestion.substring(0, position).endsWith("0")) {
-//                    return
-//                }
-                var j = 1
-                while (true) {
-                    if (queInt - divideBy * j < divideBy) {
-                        break
-                    }
-                    j++
-                }
-                currentTablePosition = j
-                var curSum = j.toString() + ""
-                for (k in position until fullQuestion.length) {
-                    curSum += "0"
-                }
-                currentsumval = java.lang.Long.valueOf(curSum)
-                nextDivider1 = java.lang.Long.valueOf(fullQuestion) - currentsumval * divideBy
-                if (nextDivider1 != 0L && position <= startLength) {
-                    curSum = ""
-                    var nextQue = nextDivider1.toString()
-                    for (k in 0 until fullQuestion.length - nextQue.length) {
-                        curSum += "0"
-                    }
-                    nextQue =
-                        curSum + nextQue // to maintain lenth = full question length we added 0
-                    calculateHiglightCount(
-                        nextQue,
-                        divideBy,
-                        position + 1,
-                        currentRecursionCount + 1,
-                        startLength
-                    )
-                }
-            } else {
-                calculateHiglightCount(
-                    fullQuestion,
-                    divideBy,
-                    position + 1,
-                    currentRecursionCount + 1,
-                    startLength
-                )
-            }
-        }
-
-    }
     fun getDivideIterationCount(fullQuestion: String, divideBy: Int): Long {
         var currentsumval = 0L
         for (i in 0..fullQuestion.length) {
@@ -385,9 +345,6 @@ class AbacusDivisionTypeAdapter(
             if (!TextUtils.isEmpty(que)) {
                 val queInt = Integer.valueOf(que)
                 if (queInt >= divideBy) {
-//                    if (((i + 1) <= fullQuestion.length()) && fullQuestion.substring(0, i + 1).endsWith("0")) {
-//                        continue;
-//                    }
                     var j = 1
                     while (true) {
                         if (queInt - divideBy * j < divideBy) {

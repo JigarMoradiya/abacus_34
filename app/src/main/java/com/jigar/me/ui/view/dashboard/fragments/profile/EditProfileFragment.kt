@@ -24,6 +24,7 @@ import com.jigar.me.utils.extensions.markRequiredInRed
 import com.jigar.me.utils.extensions.onClick
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Objects
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class EditProfileFragment : BaseFragment() {
@@ -44,7 +45,7 @@ class EditProfileFragment : BaseFragment() {
     }
 
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initView() {
         loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)

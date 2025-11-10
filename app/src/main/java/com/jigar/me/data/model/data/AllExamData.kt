@@ -64,6 +64,7 @@ data class AllExamData(
     var is_question_show_in_word: Boolean? = null,
 
     var created_at: String? = null,
+    var set_id: String? = null, // formal exam set id
 ) {
     fun dateTimeFormat() = DateTimeUtils.convertDateFormatFromUTC(created_at,DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz,DateTimeUtils.at_dd_mmm_yy_hh_mm_a)
     fun totalTimeFormat() = (total_time_taken ?: 0).secToTimeFormat()
@@ -107,7 +108,7 @@ data class AllExamData(
                     val resultObject = Calculator().getResult(question, question)
                     val correctAns = CommonUtils.removeTrailingZero(resultObject)
                     val userAnswer = if (user_answer.isNullOrEmpty()){"0"}else{user_answer?:"0"}
-                    exerciseList.add(ExerciseList(question,correctAns.toInt(),userAnswer.toInt()))
+                    exerciseList.add(ExerciseList(question,correctAns,userAnswer))
                 }
             }
         }

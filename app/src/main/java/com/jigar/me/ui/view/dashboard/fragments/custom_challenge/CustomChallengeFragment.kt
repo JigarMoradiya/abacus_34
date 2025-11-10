@@ -3,6 +3,7 @@ package com.jigar.me.ui.view.dashboard.fragments.custom_challenge
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +12,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.admanager.AdManagerAdRequest
-import com.google.android.gms.ads.admanager.AdManagerInterstitialAd
-import com.google.android.gms.ads.admanager.AdManagerInterstitialAdLoadCallback
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.jigar.me.R
 import com.jigar.me.data.local.data.AbacusBeadType
 import com.jigar.me.data.local.data.AbacusContent
@@ -41,6 +35,7 @@ import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Resource
 import com.jigar.me.utils.extensions.convert
+import com.jigar.me.utils.extensions.dp
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.invisible
 import com.jigar.me.utils.extensions.isNetworkAvailable
@@ -51,6 +46,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
+import androidx.navigation.findNavController
+import com.google.gson.Gson
 
 @AndroidEntryPoint
 class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
@@ -96,7 +93,6 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
         init()
         clickListener()
         setAbacus()
-        ads()
         return binding.root
     }
     private fun initObserver() {
@@ -125,19 +121,8 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
     private fun onSuccess() {
         val isAnswerTrue = binding.txtAnswer.text.equals((challengeData?.answer?:"").toString())
         CCMCompleteBottomSheet.showPopup(requireActivity(),challengeData,isAnswerTrue,this@CustomChallengeFragment)
-        newInterstitialAdCompleteCCM()
     }
 
-    private fun ads() {
-        with(prefManager){
-            if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y" &&
-                getCustomParam(AppConstants.AbacusProgress.Ads, "") == "Y" &&
-                getCustomParam(AppConstants.Purchase.Purchase_All, "") != "Y" &&
-                getCustomParam(AppConstants.Purchase.Purchase_Ads, "") != "Y") {
-                showAMBannerAds(binding.adView,getString(R.string.banner_ad_unit_id_ccm))
-            }
-        }
-    }
     private fun ttsInit() {
         textToSpeech = TextToSpeech(requireContext()) { status ->
             if (status != TextToSpeech.ERROR) {
@@ -176,11 +161,11 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
         }
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun init() {
         val theme = prefManager.getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
-        themeContent = DataProvider.findAbacusThemeType(requireContext(),theme, AbacusBeadType.None)
+        themeContent = DataProvider.findAbacusThemeType(requireContext(),theme, AbacusBeadType.CustomeChallenge)
         themeContent?.resetBtnColor8?.let {
             binding.tvNumber.setTextColor(ContextCompat.getColor(requireContext(), it))
             binding.txtAnswer.setTextColor(ContextCompat.getColor(requireContext(),it))
@@ -244,22 +229,8 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
     }
 
     override fun ccmCompleteContinue() {
-        if (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All,"").equals("Y",true)){
-            typeAds = "start_again"
-            startAgain()
-        }else{
-            CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.ccm_subcribe_title),getString(R.string.ccm_subcribe_msg)
-                ,getString(R.string.yes_i_want_to_purchase),getString(R.string.no_purchase_later), icon = R.drawable.ic_alert_sad_emoji,isCancelable = false,
-                clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
-                    override fun onConfirmationYesClick(bundle: Bundle?) {
-                        goToInAppPurchase()
-                    }
-                    override fun onConfirmationNoClick(bundle: Bundle?){
-                        typeAds = "close"
-                        startAgain()
-                    }
-                })
-        }
+        typeAds = "start_again"
+        startAgain()
     }
 
     private fun startAgain() {
@@ -383,7 +354,7 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
                         String.format(requireContext().getString(R.string.plus_value), currentNumber)
                     }
                     else -> {
-                        String.format(requireContext().getString(R.string.txt_set_only), currentNumber)
+                        currentNumber.toString()
                     }
                 }
                 speak(word1,position.toString())
@@ -414,6 +385,8 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
     private fun setAbacus() {
         binding.linearAbacus.removeAllViews()
         abacusBinding = FragmentAbacusExerciseBinding.inflate(layoutInflater, null, false)
+        abacusBinding?.linearDot9?.hide()
+        abacusBinding?.linearDot8?.hide()
         binding.linearAbacus.addView(abacusBinding?.root)
 
         abacusBinding?.ivReset?.onClick {
@@ -423,17 +396,23 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
         themeContent?.abacusFrame135?.let { abacusBinding?.rlAbacusMain?.setBackgroundResource(it) }
         themeContent?.dividerColor1?.let { abacusBinding?.ivDivider?.setBackgroundColor(ContextCompat.getColor(requireContext(),it)) }
         themeContent?.resetBtnColor8?.let {
-            abacusBinding?.imgDot1?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.imgDot4?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.imgDot7?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+
+            abacusBinding?.imgDot1?.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)
+            abacusBinding?.imgDot1?.layoutParams?.width = 3.dp
+            abacusBinding?.imgDot1?.layoutParams?.height = 3.dp
 
             abacusBinding?.ivReset?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.ivRight?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.ivLeft?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
         }
 
-        abacusBinding?.abacusTop?.setNoOfRowAndBeads(0, 9, 1,AbacusBeadType.CustomeChallenge)
-        abacusBinding?.abacusBottom?.setNoOfRowAndBeads(0, 9, 4,AbacusBeadType.CustomeChallenge)
+        themeContent?.let{
+            val theme = prefManager.getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
+            abacusBinding?.abacusTop?.setNoOfRowAndBeadsNew(theme,it,0, 7, 1,AbacusBeadType.CustomeChallenge,6)
+            abacusBinding?.abacusBottom?.setNoOfRowAndBeadsNew(theme,it,0, 7, 4,AbacusBeadType.CustomeChallenge,6)
+        }
 
         abacusBinding?.abacusTop?.onBeadShiftListener = this
         abacusBinding?.abacusBottom?.onBeadShiftListener = this
@@ -509,13 +488,17 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
         resetAbacus()
     }
 
+    override fun onAbacusSubmitValue(userAnswer : String) = Unit
+    
     private fun resetAbacus() {
+        listKeyboardAnswer.clear()
         abacusBinding?.abacusTop?.reset()
         abacusBinding?.abacusBottom?.reset()
+        setNumber()
     }
 
     private fun addKeyboardValue(value : String){
-        if (listKeyboardAnswer.size < 9){
+        if (listKeyboardAnswer.size < 7){
             if (value == "0"){
                 if (listKeyboardAnswer.isNotEmpty()){
                     listKeyboardAnswer.add(value)
@@ -540,14 +523,14 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
         }
         val topPositions = ArrayList<Int>()
         val bottomPositions = ArrayList<Int>()
-        val totalLength = 9
+        val totalLength = 7
         val remainLength = totalLength - questionTemp.length
         var zero = ""
         for (i in 1..remainLength){
             zero += "0"
         }
         val question = zero+questionTemp
-        for (i in 0 until if (totalLength == 1) 2 else totalLength) {
+        for (i in 0 until totalLength) {
             if (i < question.length) {
                 val charAt = question[i] - '1' //convert char to int. minus 1 from question as in abacuse 0 item have 1 value.
                 if (charAt >= 0) {
@@ -591,41 +574,6 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
             abacusBinding?.abacusBottom?.post {
                 abacusBinding?.abacusTop?.setSelectedPositions(topSelectedPositions,setPositionCompleteListener)
                 abacusBinding?.abacusBottom?.setSelectedPositions(bottomSelectedPositions,setPositionCompleteListener)
-            }
-        }
-    }
-
-
-    private fun newInterstitialAdCompleteCCM() {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y" &&
-            prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y" &&
-            (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All,"") != "Y" && // purchase not
-                    prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y")){
-            val isAdmob = prefManager.getCustomParamBoolean(AppConstants.AbacusProgress.isAdmob,true)
-            val adUnit = getString(R.string.interstitial_ad_unit_id_ccm)
-            if (isAdmob){
-                val adRequest = AdRequest.Builder().build()
-                InterstitialAd.load(requireContext(), adUnit, adRequest, object : InterstitialAdLoadCallback() {
-                    override fun onAdFailedToLoad(adError: LoadAdError) {
-                    }
-
-                    override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                        // Show the ad if it's ready. Otherwise toast and reload the ad.
-                        interstitialAd.show(requireActivity())
-                    }
-
-                })
-            }else{
-                val adRequest = AdManagerAdRequest.Builder().build()
-                AdManagerInterstitialAd.load(requireContext(),adUnit, adRequest, object : AdManagerInterstitialAdLoadCallback() {
-                    override fun onAdFailedToLoad(adError: LoadAdError) {
-                    }
-
-                    override fun onAdLoaded(interstitialAd: AdManagerInterstitialAd) {
-                        // Show the ad if it's ready. Otherwise toast and reload the ad.
-                        interstitialAd.show(requireActivity())
-                    }
-                })
             }
         }
     }

@@ -21,12 +21,14 @@
         app:srcCompat="@drawable/ic_up_arrow"
         app:tint="@color/white" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/home_menu_corner"
         app:cardElevation="@dimen/activity_padding2"
+        app:strokeWidth="0dp"
+        app:cardBackgroundColor="@color/white"
         app:cardUseCompatPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,8 +42,8 @@
             android:paddingVertical="@dimen/activity_padding10"
             android:text="@string/this_all_are_bottom_beads"
             android:textColor="@color/black"
-            android:textSize="@dimen/textSizeRegular"
+            android:textSize="@dimen/textSizeLarge"
             app:fontFamily="@font/font_bold" />
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

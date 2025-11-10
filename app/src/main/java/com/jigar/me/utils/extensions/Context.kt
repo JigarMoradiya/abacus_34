@@ -19,12 +19,17 @@ import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.annotation.NonNull
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.jigar.me.R
@@ -96,6 +101,42 @@ import java.util.*
          view = View(this)
      }
      imm.hideSoftInputFromWindow(view.windowToken, 0)
+ }
+
+ fun Activity.getBottomNavBarHeight(callback: (Int,Int,Boolean) -> Unit) {
+     val rootView = window.decorView
+     var alreadyCalled = false
+
+     ViewCompat.setOnApplyWindowInsetsListener(rootView) { _, insets ->
+         if (!alreadyCalled) {
+             alreadyCalled = true
+             val cutout = insets.displayCutout
+             val hasNotch = cutout != null && cutout.boundingRects.isNotEmpty()
+             if(hasNotch){
+                 val bottomInset = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+                 val topInset = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
+                 callback(topInset,bottomInset,hasNotch)
+             }else{
+                 callback(0,0,hasNotch)
+             }
+
+         }
+         insets
+     }
+
+     ViewCompat.requestApplyInsets(rootView)
+     setLightNavBarIcons(false)
+ }
+
+ fun Activity.setLightNavBarIcons(light: Boolean) {
+     val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+     if (light) {
+         // Light icons on dark background
+         windowInsetsController.isAppearanceLightNavigationBars = false
+     } else {
+         // Dark icons on light background
+         windowInsetsController.isAppearanceLightNavigationBars = true
+     }
  }
 
 

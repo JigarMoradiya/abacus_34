@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.jigar.me.R
+import com.jigar.me.data.local.db.AppDatabase
 import com.jigar.me.data.model.data.AllExamData
 import com.jigar.me.data.model.data.QuestionDataRequest
 import com.jigar.me.databinding.RawReportsBinding
@@ -19,10 +20,14 @@ import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.layoutInflater
 import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.show
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class ReportsListAdapter(
     private var listData: List<AllExamData>,
+    private var appDatabase : AppDatabase? = null,
     private val mListener: OnItemClickListener,
 ) : RecyclerView.Adapter<ReportsListAdapter.FormViewHolder>() {
     interface OnItemClickListener {
@@ -48,9 +53,12 @@ class ReportsListAdapter(
         val data = listData[position]
         with(holder.binding){
             this.data = data
-            txtType.text = if (data.type == AppConstants.ExamType.type_CCM){context.getString(R.string.custom_challenge_mode)}else{data.type}
+            txtType.text = if (data.type == AppConstants.apiParams.answerFormalAnswer){AppConstants.ExamType.type_Practice_Set}else if (data.type == AppConstants.ExamType.type_CCM){context.getString(R.string.custom_challenge_mode)}else{data.type}
             conCCM.hide()
             conExerciseExam.hide()
+            if (data.type == AppConstants.apiParams.answerFormalAnswer){
+
+            }
             when (data.type) {
                 AppConstants.ExamType.type_CCM -> {
                     conCCM.show()
@@ -58,11 +66,44 @@ class ReportsListAdapter(
                 }
                 AppConstants.ExamType.type_Exam -> {
                     conExerciseExam.show()
+                    txtExerciseType.text = context.getString(R.string.level_of_exam)
+                    txtExerciseTypeValue.text = data.level
+
+                    txtExerciseLabel.text = context.getString(R.string.type_of_questions)
+                    txtExerciseLabelValue.text = data.sub_type?.replace(",", ", ")
+                    txtExerciseLabel.show()
+                    txtExerciseLabelValue.show()
                     txtType.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context,R.color.report_exam_btn_bg))
                 }
                 AppConstants.ExamType.type_Exercise -> {
                     conExerciseExam.show()
+                    txtExerciseType.text = context.getString(R.string.type_of_exercise)
+                    txtExerciseTypeValue.text = data.category
+
+                    txtExerciseLabel.text = context.getString(R.string.exercise_in)
+                    txtExerciseLabelValue.text = data.label
+                    txtExerciseLabel.show()
+                    txtExerciseLabelValue.show()
                     txtType.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context,R.color.report_exercise_btn_bg))
+                }
+                AppConstants.apiParams.answerFormalAnswer -> {
+                    conExerciseExam.show()
+                    txtExerciseLabel.hide()
+                    txtExerciseLabelValue.hide()
+                    txtExerciseType.text = context.getString(R.string.level_of_set)
+                    if (data.level.isNullOrEmpty()){
+                        CoroutineScope(Dispatchers.Main).launch {
+                            data.set_id?.let {
+                                val levelOfSet = appDatabase?.abacusAllDataDao()?.getParentLevelOfSet(it)
+                                txtExerciseTypeValue.text = levelOfSet
+                                data.level = levelOfSet
+                            }
+                        }
+                    }else{
+                        txtExerciseTypeValue.text = data.level
+                    }
+
+                    txtType.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context,R.color.report_set_btn_bg))
                 }
                 else -> {
                     txtType.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context,R.color.report_other_btn_bg))

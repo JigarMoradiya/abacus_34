@@ -4,13 +4,16 @@ import android.util.Log
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.jigar.me.R
 import com.jigar.me.data.local.data.AbacusContent
+import com.jigar.me.databinding.RowQuestionLayoutAddSubBinding
 import com.jigar.me.databinding.RowQuestionLayoutBinding
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.ViewUtils
+import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.invisible
 import com.jigar.me.utils.extensions.layoutInflater
 import com.jigar.me.utils.extensions.show
@@ -24,12 +27,13 @@ class AbacusAdditionSubtractionTypeAdapter(
     RecyclerView.Adapter<AbacusAdditionSubtractionTypeAdapter.FormViewHolder>() {
     var maxQuestion = ""
     interface HintListener {
-        fun onCheckHint(hint: String?, que: String?, Sign: String?)
+        fun onCheckHint(hint: String?, que: String?, sign: String?)
     }
 
     private var currentStep = 0
 
     fun setData(listData: List<HashMap<String, String>>,isStepByStep : Boolean) {
+        currentStep = 0
         this.abacusItems.clear()
         this.abacusItems.addAll(listData)
         this.isStepByStep = isStepByStep
@@ -45,53 +49,33 @@ class AbacusAdditionSubtractionTypeAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
     ): FormViewHolder {
-        val binding = RowQuestionLayoutBinding.inflate(parent.context.layoutInflater,parent,false)
+        val binding = RowQuestionLayoutAddSubBinding.inflate(parent.context.layoutInflater,parent,false)
         return FormViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: FormViewHolder, position: Int) {
         val data = abacusItems[position]
-        val context = holder.binding.tvQuestion.context
+        with(holder.binding){
+            val context = root.context
+            tvQuestion.text = data[Constants.Que]
+            tvQuestionTemp.text = maxQuestion
 
-        holder.binding.tvSymbol.text = data[Constants.Sign]
-        holder.binding.tvQuestion.text = data[Constants.Que]
-        holder.binding.tvQuestionTemp.text = maxQuestion
-
-        if (holder.binding.tvSymbol.text.toString().isEmpty()) {
-            holder.binding.tvSymbol.invisible()
-        } else {
-            holder.binding.tvSymbol.show()
-        }
-        if (isStepByStep) {
-            if (currentStep == position) {
-                val color = if (abacusType != null){
-                    if (abacusType.equals(AppConstants.Settings.theam_Poligon_Silver) || abacusType.equals(AppConstants.Settings.theam_Poligon_Brown)){
-                        ContextCompat.getColor(context,R.color.black)
-                    }else{
-                        CommonUtils.mixTwoColors(ContextCompat.getColor(context,abacusType.dividerColor1), ContextCompat.getColor(context,abacusType.resetBtnColor8), 0.40f)
-                    }
-                }else{
-                    ContextCompat.getColor(context, R.color.red)
+            if (isStepByStep) {
+                if (currentStep == position) {
+                    val color = CommonUtils.getQuestionHighLighterColor(context,abacusType)
+                    tvQuestion.setTextColor(color)
+                } else {
+                    tvQuestion.setTextColor(ContextCompat.getColor(context, R.color.abacus_place_holder))
                 }
-                holder.binding.tvSymbol.setTextColor(color)
-                holder.binding.tvQuestion.setTextColor(color)
-
-            } else {
-                holder.binding.tvSymbol.setTextColor(
-                    ContextCompat.getColor(context, R.color.abacus_place_holder)
-                )
-                holder.binding.tvQuestion.setTextColor(
-                    ContextCompat.getColor(context, R.color.abacus_place_holder)
-                )
             }
         }
     }
 
     class FormViewHolder(
-        itemBinding: RowQuestionLayoutBinding
+        itemBinding: RowQuestionLayoutAddSubBinding
     ) :
         RecyclerView.ViewHolder(itemBinding.root) {
-        var binding: RowQuestionLayoutBinding = itemBinding
+        var binding: RowQuestionLayoutAddSubBinding = itemBinding
     }
 
     override fun getItemCount(): Int {
@@ -116,7 +100,8 @@ class AbacusAdditionSubtractionTypeAdapter(
             } else {
                 mListener.onCheckHint(
                     data[Constants.Hint],
-                    data[Constants.Que], data[Constants.Sign]
+                    data[Constants.Que],
+                    data[Constants.Sign]
                 )
             }
         }
@@ -128,7 +113,12 @@ class AbacusAdditionSubtractionTypeAdapter(
             var expression = ""
             for (i in 0..currentStep) {
                 val data = abacusItems[i]
-                expression += data[Constants.Sign]!!.trim { it <= ' ' } + data[Constants.Que]!!.trim { it <= ' ' }
+                val question = (data[Constants.Que]?:"0").toInt()
+                expression += if (question > 0){
+                    "+${question}"
+                }else{
+                    "$question"
+                }
             }
             return ViewUtils.calculateStringExpression(expression)
         }
@@ -140,7 +130,12 @@ class AbacusAdditionSubtractionTypeAdapter(
             var expression = ""
             for (i in abacusItems.indices) {
                 val data = abacusItems[i]
-                expression += data[Constants.Sign]!!.trim { it <= ' ' } + data[Constants.Que]!!.trim { it <= ' ' }
+                val question = (data[Constants.Que]?:"0").toInt()
+                expression += if (question > 0){
+                    "+${question}"
+                }else{
+                    "$question"
+                }
             }
             return ViewUtils.calculateStringExpression(expression)
         }

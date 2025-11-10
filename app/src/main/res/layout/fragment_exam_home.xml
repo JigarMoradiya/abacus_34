@@ -16,12 +16,14 @@
             app:cardBackgroundColor="@color/light_back"
             app:cardCornerRadius="@dimen/menu_icons_corner"
             app:cardElevation="@dimen/card_elevation"
+            app:cardMaxElevation="@dimen/card_elevation"
+            app:strokeWidth="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="@dimen/menu_icons"
-            android:layout_height="@dimen/menu_icons"
+                android:layout_height="@dimen/menu_icons"
                 android:padding="@dimen/menu_icons_padding"
                 app:srcCompat="@drawable/ic_back" />
         </com.google.android.material.card.MaterialCardView>
@@ -35,6 +37,7 @@
             app:cardElevation="@dimen/card_elevation2"
             app:cardUseCompatPadding="true"
             android:visibility="gone"
+            app:strokeWidth="0dp"
             app:layout_constraintBottom_toBottomOf="@+id/cardBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -67,13 +70,14 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtTitle"
             style="@style/mainTitle"
+            android:textSize="@dimen/textSize24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/let_s_start_exam"
             app:layout_constraintBottom_toBottomOf="@+id/cardBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/cardBack" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -101,11 +105,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/activity_padding12"
-                    android:fontFamily="@font/font_semibold"
                     android:gravity="center"
                     android:text="@string/child_level"
+                    android:fontFamily="@font/font_bold"
                     android:textColor="@color/colorBlueDark"
-                    android:textSize="@dimen/textSizeSuperExtraLarge"
+                    android:textSize="@dimen/textSize20"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imgExamTime" />
@@ -114,71 +118,71 @@
                     android:id="@+id/linearSumType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/activity_padding8"
                     android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtSelectLevel">
 
-                    <androidx.appcompat.widget.AppCompatCheckBox
+                    <com.google.android.material.checkbox.MaterialCheckBox
                         android:id="@+id/chNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:buttonTint="@color/colorBlueDark"
                         android:layout_marginEnd="@dimen/activity_padding6"
-                        android:fontFamily="@font/font_extra_bold"
                         android:includeFontPadding="false"
                         android:text="@string/Number"
-                        android:textColor="@color/colorBlueDark"
-                        android:textSize="@dimen/textSizeRegular" />
+                        tools:checked="true"
+                        android:fontFamily="@font/font_bold"
+                        android:theme="@style/MyCheckBoxStyle"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textSizeLarge" />
 
-                    <androidx.appcompat.widget.AppCompatCheckBox
+                    <com.google.android.material.checkbox.MaterialCheckBox
                         android:id="@+id/chAddition"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:buttonTint="@color/colorBlueDark"
                         android:layout_marginHorizontal="@dimen/activity_padding6"
-                        android:fontFamily="@font/font_extra_bold"
+                        android:fontFamily="@font/font_bold"
                         android:includeFontPadding="false"
                         android:text="@string/Addition"
-                        android:textColor="@color/colorBlueDark"
-                        android:textSize="@dimen/textSizeRegular" />
+                        android:theme="@style/MyCheckBoxStyle"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textSizeLarge" />
 
-                    <androidx.appcompat.widget.AppCompatCheckBox
+                    <com.google.android.material.checkbox.MaterialCheckBox
                         android:id="@+id/chSubtraction"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/activity_padding6"
-                        android:buttonTint="@color/colorBlueDark"
-                        android:fontFamily="@font/font_extra_bold"
+                        android:fontFamily="@font/font_bold"
                         android:includeFontPadding="false"
                         android:text="@string/Subtraction"
-                        android:textColor="@color/colorBlueDark"
-                        android:textSize="@dimen/textSizeRegular" />
+                        android:theme="@style/MyCheckBoxStyle"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textSizeLarge" />
 
-                    <androidx.appcompat.widget.AppCompatCheckBox
+                    <com.google.android.material.checkbox.MaterialCheckBox
                         android:id="@+id/chMultiplication"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:buttonTint="@color/colorBlueDark"
                         android:layout_marginHorizontal="@dimen/activity_padding6"
-                        android:fontFamily="@font/font_extra_bold"
+                        android:fontFamily="@font/font_bold"
                         android:includeFontPadding="false"
                         android:text="@string/Multiplication"
-                        android:textColor="@color/colorBlueDark"
-                        android:textSize="@dimen/textSizeRegular" />
+                        android:theme="@style/MyCheckBoxStyle"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textSizeLarge" />
 
-                    <androidx.appcompat.widget.AppCompatCheckBox
+                    <com.google.android.material.checkbox.MaterialCheckBox
                         android:id="@+id/chDivision"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:buttonTint="@color/colorBlueDark"
-                        android:fontFamily="@font/font_extra_bold"
+                        android:fontFamily="@font/font_bold"
                         android:includeFontPadding="false"
                         android:layout_marginStart="@dimen/activity_padding6"
                         android:text="@string/Division"
-                        android:textColor="@color/colorBlueDark"
-                        android:textSize="@dimen/textSizeRegular" />
+                        android:theme="@style/MyCheckBoxStyle"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textSizeLarge" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -186,7 +190,6 @@
                     android:id="@+id/rg"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/activity_padding8"
                     android:gravity="center"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -197,13 +200,13 @@
                         android:id="@+id/rdchild_level_Beginner"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:buttonTint="@color/colorBlueDark"
-                        android:fontFamily="@font/font_extra_bold"
+                        android:fontFamily="@font/font_bold"
                         android:includeFontPadding="false"
-                        android:padding="@dimen/activity_padding6"
                         android:text="@string/beginner"
-                        android:textColor="@color/colorBlueDark"
-                        android:textSize="@dimen/textSizeRegular"
+                        android:theme="@style/MyCheckBoxStyle"
+                        tools:checked="true"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textSizeLarge"
                         tools:text="Beginner" />
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
@@ -212,26 +215,24 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/activity_padding16"
                         android:layout_marginEnd="@dimen/activity_padding16"
-                        android:buttonTint="@color/colorBlueDark"
-                        android:fontFamily="@font/font_extra_bold"
+                        android:fontFamily="@font/font_bold"
                         android:includeFontPadding="false"
-                        android:padding="@dimen/activity_padding6"
                         android:text="@string/intermediate"
-                        android:textColor="@color/colorBlueDark"
-                        android:textSize="@dimen/textSizeRegular"
+                        android:theme="@style/MyCheckBoxStyle"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textSizeLarge"
                         tools:text="Intermediate" />
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
                         android:id="@+id/rdchild_level_Expert"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:buttonTint="@color/colorBlueDark"
-                        android:fontFamily="@font/font_extra_bold"
+                        android:fontFamily="@font/font_bold"
                         android:includeFontPadding="false"
-                        android:padding="@dimen/activity_padding6"
                         android:text="@string/expert"
-                        android:textColor="@color/colorBlueDark"
-                        android:textSize="@dimen/textSizeRegular"
+                        android:theme="@style/MyCheckBoxStyle"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textSizeLarge"
                         tools:text="Expert" />
 
                 </RadioGroup>
@@ -242,13 +243,14 @@
                     android:layout_width="wrap_content"
                     android:layout_marginTop="@dimen/activity_padding12"
                     android:text="@string/let_s_start"
+                    android:backgroundTint="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rg"
                     app:textAllCaps="true" />
 
 
-                <androidx.legacy.widget.Space
+                <Space
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/activity_padding12"
                     app:layout_constraintTop_toBottomOf="@+id/txtStartExam" />

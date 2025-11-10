@@ -27,7 +27,7 @@ object IntroProvider {
             lighter?.setOnLighterListener(object : OnLighterListener {
                 override fun onDismiss() = Unit
                 override fun onShow(index: Int) = Unit
-            })?.setBackgroundColor(0xB3000000.toInt())
+            })?.setBackgroundColor(0xD9000000.toInt())
                 ?.addHighlight(
                     LighterParameter.Builder()
                         .setHighlightedView(view)
@@ -43,7 +43,7 @@ object IntroProvider {
             e.printStackTrace()
         }
     }
-    fun videoTutorialIntro(prefManager : AppPreferencesHelper, lighter: Lighter?,settingView : View, freeModeView: View, videoTutorialView: View, exerciseView: View, examView: View, numberPuzzleView: View, ccmView: View){
+    fun homeMenuIntro(prefManager : AppPreferencesHelper, lighter: Lighter?, settingView : View, freeModeView: View, videoTutorialView: View, exerciseView: View, examView: View, numberPuzzleView: View, ccmView: View){
         try {
             val corner = freeModeView.context.resources.getDimension(R.dimen.home_menu_corner)
             lighter?.setOnLighterListener(object : OnLighterListener {
@@ -51,7 +51,7 @@ object IntroProvider {
                         prefManager.setCustomParamBoolean(AppConstants.Settings.isHomeTourWatch, true)
                     }
                     override fun onShow(index: Int) = Unit
-                })?.setBackgroundColor(0xB3000000.toInt())
+                })?.setBackgroundColor(0xD9000000.toInt())
                 ?.addHighlight(
                     LighterParameter.Builder()
                         .setHighlightedView(freeModeView)
@@ -128,7 +128,102 @@ object IntroProvider {
         }
     }
 
-    fun abacusTopBottomBeadsIntro(lighter: Lighter?, viewTop: View, viewBottom : View,listener : IntroCloseClickListener? = null){
+    fun newHomeMenuIntro(prefManager : AppPreferencesHelper, lighter: Lighter?, settingView : View, freeModeView: View,  practiseAbacus: View, videoTutorialView: View, exerciseView: View, examView: View, numberPuzzleView: View, ccmView: View){
+        try {
+            val corner = freeModeView.context.resources.getDimension(R.dimen.home_menu_corner)
+            lighter?.setOnLighterListener(object : OnLighterListener {
+                override fun onDismiss() {
+                    prefManager.setCustomParamBoolean(AppConstants.Settings.isHomeTourWatch, true)
+                }
+                override fun onShow(index: Int) = Unit
+            })?.setBackgroundColor(0xD9000000.toInt())
+                ?.addHighlight(
+                    LighterParameter.Builder()
+                        .setHighlightedView(freeModeView)
+                        .setTipLayoutId(R.layout.layout_tip_free_mode)
+                        .setLighterShape(RectShape(corner, corner, corner))
+                        .setTipViewRelativeDirection(Direction.RIGHT)
+                        .setTipViewDisplayAnimation(LighterHelper.getScaleAnimation())
+                        .setTipViewRelativeOffset(MarginOffset(0, 0, 0, 0))
+                        .build()
+                )
+                ?.addHighlight(
+                    LighterParameter.Builder()
+                        .setHighlightedView(practiseAbacus)
+                        .setTipLayoutId(R.layout.layout_tip_abacus_practice)
+                        .setLighterShape(RectShape(corner, corner, corner))
+                        .setTipViewRelativeDirection(Direction.RIGHT)
+                        .setTipViewDisplayAnimation(LighterHelper.getScaleAnimation())
+                        .setTipViewRelativeOffset(MarginOffset(0, 0, 0, 0))
+                        .build()
+                )
+                ?.addHighlight(
+                    LighterParameter.Builder()
+                        .setHighlightedView(exerciseView)
+                        .setTipLayoutId(R.layout.layout_tip_exercise_new)
+                        .setLighterShape(RectShape(corner, corner, corner))
+                        .setTipViewRelativeDirection(Direction.RIGHT)
+                        .setTipViewDisplayAnimation(LighterHelper.getScaleAnimation())
+                        .setTipViewRelativeOffset(MarginOffset(0, 0, 0, 0))
+                        .build()
+                )
+                ?.addHighlight(
+                    LighterParameter.Builder()
+                        .setHighlightedView(examView)
+                        .setTipLayoutId(R.layout.layout_tip_exam_new)
+                        .setLighterShape(RectShape(corner, corner, corner))
+                        .setTipViewRelativeDirection(Direction.LEFT)
+                        .setTipViewDisplayAnimation(LighterHelper.getScaleAnimation())
+                        .setTipViewRelativeOffset(MarginOffset(0, 0, 0, 0))
+                        .build()
+                )
+                ?.addHighlight(
+                    LighterParameter.Builder()
+                        .setHighlightedView(ccmView)
+                        .setTipLayoutId(R.layout.layout_tip_ccm_new)
+                        .setLighterShape(RectShape(corner, corner, corner))
+                        .setTipViewRelativeDirection(Direction.LEFT)
+                        .setTipViewDisplayAnimation(LighterHelper.getScaleAnimation())
+                        .setTipViewRelativeOffset(MarginOffset(0, 0, 0, 0))
+                        .build()
+                )
+                ?.addHighlight(
+                    LighterParameter.Builder()
+                        .setHighlightedView(numberPuzzleView)
+                        .setTipLayoutId(R.layout.layout_tip_number_sequence)
+                        .setLighterShape(RectShape(corner, corner, corner))
+                        .setTipViewRelativeDirection(Direction.TOP)
+                        .setTipViewDisplayAnimation(LighterHelper.getScaleAnimation())
+                        .setTipViewRelativeOffset(MarginOffset(0, 0, 0, 0))
+                        .build()
+                )
+                ?.addHighlight(
+                    LighterParameter.Builder()
+                        .setHighlightedView(settingView)
+                        .setTipLayoutId(R.layout.layout_tip_setting)
+                        .setLighterShape(RectShape(corner, corner, corner))
+                        .setTipViewRelativeDirection(Direction.LEFT)
+                        .setTipViewDisplayAnimation(LighterHelper.getScaleAnimation())
+                        .setTipViewRelativeOffset(MarginOffset(0, 0, 0, 0))
+                        .build()
+                )
+                ?.addHighlight(
+                    LighterParameter.Builder()
+                        .setHighlightedView(videoTutorialView)
+                        .setTipLayoutId(R.layout.layout_tip_video_tutorial_new)
+                        .setLighterShape(RectShape(corner, corner, corner))
+                        .setTipViewRelativeDirection(Direction.RIGHT)
+                        .setTipViewDisplayAnimation(LighterHelper.getScaleAnimation())
+                        .setTipViewRelativeOffset(MarginOffset(0, 0, 0, 0))
+                        .build()
+                )
+                ?.show()
+        }catch (e: Exception){
+            e.printStackTrace()
+        }
+    }
+
+    fun abacusTopBottomBeadsIntro(lighter: Lighter?, viewTop: View, viewBottom : View,viewBeam : View,viewUnitPlace : View?,listener : IntroCloseClickListener? = null){
         try {
             val corner = viewTop.context.resources.getDimension(R.dimen.home_menu_elevation)
             lighter?.setOnLighterListener(object : OnLighterListener {
@@ -136,7 +231,7 @@ object IntroProvider {
                     listener?.onIntroCloseClick()
                 }
                 override fun onShow(index: Int) = Unit
-            })?.setBackgroundColor(0xB3000000.toInt())
+            })?.setBackgroundColor(0xD9000000.toInt())
                 ?.addHighlight(
                     LighterParameter.Builder()
                         .setHighlightedView(viewTop)
@@ -155,6 +250,24 @@ object IntroProvider {
                         .setTipViewDisplayAnimation(LighterHelper.getScaleAnimation())
                         .setTipViewRelativeOffset(MarginOffset(0, 0, 0, 0))
                         .build()
+                )?.addHighlight(
+                    LighterParameter.Builder()
+                        .setHighlightedView(viewBeam)
+                        .setTipLayoutId(R.layout.layout_tip_abacus_beam)
+                        .setLighterShape(RectShape(corner, corner, corner))
+                        .setTipViewRelativeDirection(Direction.BOTTOM)
+                        .setTipViewDisplayAnimation(LighterHelper.getScaleAnimation())
+                        .setTipViewRelativeOffset(MarginOffset(0, 0, 0, 0))
+                        .build()
+                )?.addHighlight(
+                    LighterParameter.Builder()
+                        .setHighlightedView(viewUnitPlace)
+                        .setTipLayoutId(R.layout.layout_tip_abacus_unit_place)
+                        .setLighterShape(RectShape(corner, corner, corner))
+                        .setTipViewRelativeDirection(Direction.RIGHT)
+                        .setTipViewDisplayAnimation(LighterHelper.getScaleAnimation())
+                        .setTipViewRelativeOffset(MarginOffset(0, 0, 0, 0))
+                        .build()
                 )
                 ?.show()
         }catch (e: Exception){
@@ -170,7 +283,7 @@ object IntroProvider {
                     listener?.onIntroCloseClick()
                 }
                 override fun onShow(index: Int) = Unit
-            })?.setBackgroundColor(0xB3000000.toInt())
+            })?.setBackgroundColor(0xD9000000.toInt())
                 ?.addHighlight(
                     LighterParameter.Builder()
                         .setHighlightedView(view)

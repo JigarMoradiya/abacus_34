@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="dataModel"
+            type="com.jigar.me.data.model.dbtable.abacus_all_data.Category" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/linMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardMenu"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="@dimen/activity_padding4"
+            app:cardCornerRadius="@dimen/card_corner_radius8"
+            app:cardElevation="@dimen/card_elevation2"
+            app:strokeColor="@color/purple_700"
+            app:strokeWidth="@dimen/activity_padding2">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgMenu"
+                imgUrl="@{dataModel.icon}"
+                placeHolder="@{@drawable/place_holder_square}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/place_holder_square" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgArrow"
+            android:layout_width="@dimen/activity_padding16"
+            android:layout_height="@dimen/activity_padding16"
+            android:src="@drawable/ic_right_arrow"
+            app:layout_constraintBottom_toBottomOf="@+id/linMenu"
+            app:layout_constraintStart_toEndOf="@+id/linMenu"
+            app:layout_constraintTop_toTopOf="@+id/linMenu" />
+    </LinearLayout>
+
+</layout>

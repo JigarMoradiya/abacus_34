@@ -6,4 +6,5 @@ interface OnAbacusValueChangeListener {
     fun onAbacusValueChange(abacusView: View, sum: Long)
     fun onAbacusValueSubmit(sum: Long)
     fun onAbacusValueDotReset()
+    fun onAbacusSubmitValue(userAnswer : String)
 }

@@ -8,15 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.jigar.me.R
+import com.jigar.me.data.local.data.EventBusType
+import com.jigar.me.data.local.data.MessageEvent
 import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.LoginRequest
 import com.jigar.me.data.model.data.ResendOTPRequest
 import com.jigar.me.databinding.FragmentLoginBinding
+import com.jigar.me.internal.workmanagers.FetchAbacusDataWorkManager
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.ui.viewmodel.StudentViewModel
@@ -27,32 +31,67 @@ import com.jigar.me.utils.Resource
 import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.openURL
 import dagger.hilt.android.AndroidEntryPoint
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import java.util.Objects
+import androidx.navigation.findNavController
+import com.google.gson.reflect.TypeToken
+import com.jigar.me.data.model.data.AbacusAllData
+import com.jigar.me.data.model.data.FetchAbacusDataRequest
+import com.jigar.me.data.model.data.PlanAssignFromAdminData
+import com.jigar.me.ui.viewmodel.AppViewModel
+import com.jigar.me.utils.Constants
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment() {
     private lateinit var binding: FragmentLoginBinding
+    private var root : View? = null
     private var mNavController: NavController? = null
     private val studentViewModel by viewModels<StudentViewModel>()
+    private val appViewModel by viewModels<AppViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initObserver()
     }
-    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
-        binding = FragmentLoginBinding.inflate(inflater, container, false)
-        setNavigationGraph()
-        initView()
-        initListener()
-        return binding.root
+    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
+        if (root == null){
+            binding = FragmentLoginBinding.inflate(inflater, container, false)
+            root = binding.root
+            setNavigationGraph()
+            initView()
+            initListener()
+        }
+        return root
     }
 
     private fun initView() {
 
     }
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
 
+    override fun onStop() {
+        EventBus.getDefault().unregister(this)
+        super.onStop()
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onMessageEvent(event: MessageEvent) {
+        // Do something
+        if (event.type == EventBusType.LoginSync){
+            hideLoading()
+            MainDashboardActivity.getInstance(requireContext())
+        }
+    }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
 
     private fun initListener() {
@@ -71,12 +110,6 @@ class LoginFragment : BaseFragment() {
             }
             txtGoBack?.onClick {
                 mNavController?.navigateUp()
-            }
-            txtSignup.onClick {
-                mNavController?.navigate(R.id.toSignupFragment)
-            }
-            txtForgotPassword.onClick {
-                mNavController?.navigate(R.id.toForgotPasswordFragment)
             }
             cardFAQs.onClick {
                 mNavController?.navigate(R.id.toFAQsFragment)
@@ -111,16 +144,35 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun initObserver() {
+        studentViewModel.getAbacusDataResponse.observe(this) {
+            when (it) {
+                is Resource.Loading -> {
+                }
+                is Resource.Success -> {
+
+                    if (it.value.status == AppConstants.APIStatus.SUCCESS)
+                        onSuccessAbacusData(it.value.data)
+                    else{
+                        hideLoading()
+                        onFailure(it.value.error?.message)
+                    }
+                }
+                is Resource.Failure -> {
+                    hideLoading()
+                    onFailure(it.errorBody)
+                }
+            }
+        }
         studentViewModel.loginResponse.observe(this) {
             when (it) {
                 is Resource.Loading -> {
                     showLoading()
                 }
                 is Resource.Success -> {
-                    hideLoading()
                     if (it.value.status == AppConstants.APIStatus.SUCCESS)
                         onSuccess(it.value.data)
                     else{
+                        hideLoading()
                         onFailure(it.value.error?.message)
                     }
                 }
@@ -135,43 +187,68 @@ class LoginFragment : BaseFragment() {
                 }
             }
         }
-        studentViewModel.resendOTPResponse.observe(this) {
+        studentViewModel.appReviewsListResponse.observe(this) {
             when (it) {
                 is Resource.Loading -> {
-                    showLoading()
+
                 }
                 is Resource.Success -> {
                     hideLoading()
-                    if (it.value.status == AppConstants.APIStatus.SUCCESS){
-                        val action = LoginFragmentDirections.toOTPFragment(AppConstants.OTPScreen.signupStep,binding.etEmail.text.toString())
-                        mNavController?.navigate(action)
-                    }
-                    else
+                    if (it.value.status == AppConstants.APIStatus.SUCCESS)
+                    {
+                        checkPurchasedPlans(it.value.data)
+                    }else{
                         onFailure(it.value.error?.message)
+                    }
                 }
                 is Resource.Failure -> {
                     hideLoading()
                     onFailure(it.errorBody)
                 }
+                else -> {}
             }
         }
     }
-
+    private fun onSuccessAbacusData(data: JsonObject?) {
+        val response = Gson().fromJson(data, AbacusAllData::class.java)
+        lifecycleScope.launch {
+            response.levels?.let {
+                appViewModel.insertLevel(it)
+                response.setProgress?.let {
+                    appViewModel.insertSetProgress(it)
+                }
+                studentViewModel.appReviewsList()
+            }
+        }
+    }
     private fun onSuccess(data: JsonObject?) {
         val response = Gson().fromJson(data, LoginData::class.java)
         prefManager.setAccessToken(response.token)
         prefManager.setLoginData(Gson().toJson(data))
-        response.country?.let {
-            prefManager.setCountryCode(it)
-            if (it.equals(AppConstants.LoginData.LoginCountry_IN,true)){
-                prefManager.setIsCurrencyINR(true)
-            }else{
-                prefManager.setIsCurrencyINR(false)
-            }
-        }
-        prefManager.setUserLoggedIn(true)
-        MainDashboardActivity.getInstance(requireContext())
 
+        val defaultDateTime = Constants.last_sync_default_time
+        val dateTime = prefManager.getCustomParam(Constants.last_sync_time,defaultDateTime)
+        val request = FetchAbacusDataRequest(true, get_set_progress_report = true,last_sync_time = dateTime)
+        studentViewModel.getAbacusData(request)
     }
 
+    private fun checkPurchasedPlans(data: JsonObject?) {
+        if (data?.has("plans_purchased_manually") == true){
+            if (data.getAsJsonArray("plans_purchased_manually")?.isEmpty == true){
+                prefManager.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"")
+            }else{
+                val list : List<PlanAssignFromAdminData> =  Gson().fromJson(data.getAsJsonArray("plans_purchased_manually"), object : TypeToken<List<PlanAssignFromAdminData>>() {}.type)
+                prefManager.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,Gson().toJson(list))
+            }
+        }
+
+        // trial_ends_at : "2025-10-11T14:00:00.000Z", free_trial_remaining_days, trial_period_offered
+        if (data?.has("free_trial_remaining_days") == true){
+            val free_trial_remaining_days = data.get("free_trial_remaining_days").asInt
+            prefManager.setCustomParamInt(Constants.free_trial_remaining_days,free_trial_remaining_days)
+        }
+
+        prefManager.setUserLoggedIn(true)
+        MainDashboardActivity.getInstance(requireContext())
+    }
 }

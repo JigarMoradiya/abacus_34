@@ -2,11 +2,9 @@ package com.jigar.me.ui.view.login
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
-import android.view.View
-import android.view.WindowManager
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -15,10 +13,10 @@ import androidx.navigation.fragment.NavHostFragment
 import com.jigar.me.R
 import com.jigar.me.databinding.ActivityLoginDashboardBinding
 import com.jigar.me.ui.view.base.BaseActivity
-import com.jigar.me.ui.view.dashboard.MainDashboardActivity
+import com.jigar.me.ui.view.base.inapp.BillingRepository.Companion.LOG_TAG
 import com.jigar.me.ui.viewmodel.AppViewModel
+import com.jigar.me.ui.viewmodel.InAppViewModel
 import com.jigar.me.utils.extensions.hide
-import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -31,7 +29,6 @@ class LoginDashboardActivity : BaseActivity(){
     lateinit var navHostFragment: NavHostFragment
     var selectedFragment: Int = -1
     lateinit var binding: ActivityLoginDashboardBinding
-    private val appViewModel by viewModels<AppViewModel>()
     companion object {
         fun getInstance(context: Context?) {
             Intent(context, LoginDashboardActivity::class.java).apply {
@@ -59,10 +56,11 @@ class LoginDashboardActivity : BaseActivity(){
     }
 
     private fun initObserver() {
-        CoroutineScope(Dispatchers.Main).launch{
-            appViewModel.deleteInAppPurchase()
-            appViewModel.deleteInAppSKU()
-        }
+//        lifecycleScope.launch{
+//            appViewModel.deleteInAppPurchase()
+//            appViewModel.deleteInAppSKU()
+//            inAppViewModel.inAppInit()
+//        }
     }
 
     private fun setNavigationGraph() {
@@ -79,6 +77,7 @@ class LoginDashboardActivity : BaseActivity(){
     }
 
     private fun initViews() {
+        Log.d(LOG_TAG, "LoginDashboardActivity")
         setNavigationGraph()
         onMainActivityBack()
     }

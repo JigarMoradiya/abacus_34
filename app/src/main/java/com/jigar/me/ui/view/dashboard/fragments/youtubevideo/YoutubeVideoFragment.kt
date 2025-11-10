@@ -17,6 +17,7 @@ import com.jigar.me.utils.extensions.isNetworkAvailable
 import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.openYoutube
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class YoutubeVideoFragment : BaseFragment(), YoutubeVideoListAdapter.OnItemClickListener {
@@ -32,14 +33,16 @@ class YoutubeVideoFragment : BaseFragment(), YoutubeVideoListAdapter.OnItemClick
             setNavigationGraph()
             initViews()
             initListener()
-            bannerAds()
         }
         return root!!
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() {
+        binding.spaceNotch.layoutParams.width = prefManager.getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
+        binding.spaceBottom.layoutParams.height = prefManager.getCustomParamInt(AppConstants.BOTTOM_NAV_HEIGHT,0)
+
         val type = object : TypeToken<ArrayList<VideoData>>() {}.type
         val videoList: List<VideoData> = Gson().fromJson(prefManager.getCustomParam(AppConstants.RemoteConfig.videoList,""),type)
         val sortedList = videoList.sortedWith { videoList1, videoList2 -> videoList1.so - videoList2.so }
@@ -49,19 +52,9 @@ class YoutubeVideoFragment : BaseFragment(), YoutubeVideoListAdapter.OnItemClick
 
     private fun initListener() {
         binding.cardBack.onClick { onBack() }
-        binding.cardSettingTop.onClick { goToSetting() }
-        binding.cardSubscribe.onClick { goToInAppPurchase() }
     }
     private fun onBack() {
         mNavController.navigateUp()
-    }
-    private fun bannerAds() {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y"
-            && prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y"
-            && prefManager.getCustomParam(AppConstants.Purchase.Purchase_All, "") != "Y"
-            && prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y") { // if not purchased
-            showAMBannerAds(binding.adView,getString(R.string.banner_ad_unit_id_abacus))
-        }
     }
     override fun onVideoItemClick(data: VideoData) {
         requireContext().openYoutube("https://youtu.be/${data.id}")

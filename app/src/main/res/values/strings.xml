@@ -9,9 +9,7 @@
 
     <!--  TTS  -->
     <string name="speech_formula_for">formula for %1$s</string>
-    <string name="speech_set_minus">minus %1$s</string>
-    <string name="speech_set_plus">plus %1$s</string>
-    <string name="speech_set">Set %1$s</string>
+    <string name="speech_set_plus"> %1$s</string>
     <string name="random">Random</string>
     <string name="to_">to</string>
     <string name="numbers">Numbers</string>
@@ -104,7 +102,7 @@
     <string name="txt_set">Set</string>
     <string name="error_range_from">Range from is empty</string>
     <string name="error_range_to">Range to is empty</string>
-    <string name="error_range">Minimum 50 toddler is needed</string>
+    <string name="error_range">Minimum Range 10 is needed</string>
     <string name="txt_To">To</string>
     <string name="txt_Random">Random</string>
     <string name="txt_Reset_when_start">Reset Every Time?</string>
@@ -113,7 +111,7 @@
     <string name="set_only">Set</string>
 
     <!--  Abacus  -->
-    <string name="ResettoContinue">Reset to Continue</string>
+    <string name="ResettoContinue">Click here to Reset &amp; Continue</string>
     <string name="txt_reset_now">START AGAIN</string>
     <string name="txt_purchase">Purchase</string>
     <string name="txt_purchased">Purchased</string>
@@ -140,7 +138,7 @@
     <string name="txt_page_completed_already_purchased">You already completed this page, if you want you can start again this page.</string>
 
     <!--  purchased and page completed  -->
-    <string name="txt_page_completed_msg">Congratulations you completed this page.\nIf you want you can start this page again.</string>
+    <string name="txt_set_completed_msg">You completed this set of Abacus!</string>
 
     <!--  not purchased and page already complete  -->
     <string name="txt_page_completed_already">You\'ve already completed this page. If you\'d like to access more abacus questions,\nconsider subscribing to our paid plan. \nThank you for your interest!</string>
@@ -155,7 +153,8 @@
     <string name="give_later">Give next time</string>
     <string name="continue_working_internet">Internet working, please continue</string>
     <string name="no_working_internet">Okay, I will check, please close</string>
-    <string name="yes_i_want_to_purchase">Yes, I want to Subscribe</string>
+    <string name="yes_i_want_to_purchase">Yes, I want to Subscribe Now</string>
+    <string name="maybe_later">May be Subscribe Later</string>
     <string name="yes_i_want_to_update">Yes, I want to Update</string>
     <string name="no_purchase_later">No, I will Subscribe later</string>
     <string name="no_thanks">No, thanks</string>
@@ -163,12 +162,13 @@
     <string name="no_thanks_continue_later">No, thanks continue later</string>
     <!--  Settings  -->
     <string name="txt_setting_title">Application Setting</string>
-    <string name="txt_setting_display_abacus_number">Display abacus number</string>
-    <string name="txt_setting_display_help_message">Display help message</string>
+    <string name="txt_setting_display_abacus_number">Display Current Number</string>
+    <string name="txt_setting_display_help_message">Display Hint Message</string>
+    <string name="display_bead_direction">Display Bead Direction</string>
     <string name="txt_setting_hide_table">Hide table</string>
     <string name="txt_setting_left_hand">Left handed</string>
-    <string name="txt_setting_sound">Abacus sound</string>
-    <string name="txt_setting_hintsound">Abacus hint sound</string>
+    <string name="txt_setting_sound">Abacus Bead Sound</string>
+    <string name="txt_setting_hintsound">Abacus Sums Sound</string>
 
     <!--  Daily Exam  -->
     <string name="testResult">Exam\'s Result</string>
@@ -335,8 +335,8 @@
 
     <string name="notification_permission_msg">Notification permission is required to get alert related to Abacus!</string>
     <string name="permission_alert">Permission Alert!</string>
-    <string name="free_abacus_theme">Free Abacus Themes</string>
-    <string name="paid_abacus_themes">Paid Abacus Themes</string>
+    <string name="free_abacus_theme">Abacus Themes</string>
+    <string name="paid_abacus_themes">Advance Abacus Themes</string>
     <string name="preview_of_theme">Preview of Theme</string>
     <string name="welcome_to_abacus_application">Welcome to the Abacus Application</string>
     <string name="please_choose_your_anonymous_name_and_avatar">Please choose child\'s anonymous\nname and avatar</string>
@@ -344,7 +344,7 @@
     <string name="please_select_avatar">Please select avatar</string>
     <string name="please_enter_anonymously_name">Please enter anonymous name</string>
     <string name="enter_child_s_name">Enter child\'s name</string>
-    <string name="select_abacus_bead_theme_nbase_on_your_favourite_color">Select Abacus theme base on kid\'s favourite color</string>
+    <string name="select_abacus_bead_theme_nbase_on_your_favourite_color">Select Abacus theme base on Kid\'s Favourite Color</string>
     <string name="okay_let_s_start">Okay, let\'s start</string>
     <string name="will_select_later_from_settings">Will change later from settings</string>
     <string name="free_mode">Free Mode?</string>
@@ -360,7 +360,7 @@
     <string name="thousands">Thousands</string>
     <string name="hundreds">Hundreds</string>
     <string name="tens">Tens</string>
-    <string name="ones">Ones</string>
+    <string name="ones">Ones\n<font color='#000000'>Unit Rod</font></string>
     <string name="Hundred">Hundred</string>
     <string name="Thousand">Thousand</string>
     <string name="Lakh">Lakh</string>
@@ -397,6 +397,7 @@
     <string name="enable_free_mode">Enable Free Mode</string>
     <string name="to_know_about_abacus">To know about Abacus</string>
     <string name="rod_s_bead_value">ROD\'s Bead Value</string>
+    <string name="learn_addition_subtraction_with_abacus">Learn <font color='#0000EE'>Addition, Subtraction, Multiplication</font>\nand <font color='#0000EE'>Division</font> with Abacus</string>
     <string name="take_exam_of_your_kid_s_to_check_ability_with_different_type">Take different type of <font color='#00BCD4'>Exam</font> to\n<font color='#00BCD4'>check your Kid\'s Ability</font></string>
     <string name="select_different_type_of_exercise_nto_improve_kid_s_performance">Select different type of\n<font color='#009688'>Exercise</font> to improve your\n<font color='#009688'>Kid\'s Performance</font></string>
     <string name="maths_with_fun">MATHS with FUN</string>
@@ -412,10 +413,12 @@
     <string name="light_rod2_text">each lower bead <font color='#E91E63'>value is 10</font>\nand the upper bead <font color='#2E7D32'>value is 50</font></string>
     <string name="light_rod3_text">each lower bead <font color='#E91E63'>value is 100</font>\nand the upper bead <font color='#2E7D32'>value is 500,</font>\nso on..</string>
     <string name="this_all_are_upper_bead">This all are <font color='#E91E63'>Top Beads</font></string>
+    <string name="this_is_beam">This is <font color='#0000FF'>Bar</font> or <font color='#0000FF'>Beam</font> of Abacus</string>
+    <string name="this_is_unit_place"><font color='#0000FF'>Unit"'"s Place</font> of Abacus</string>
     <string name="this_all_are_bottom_beads">This all are <font color='#E91E63'>Bottom Beads</font></string>
     <string name="click_here_to_show_nabacus_tour">Click Here to show\nAbacus Tour</string>
     <string name="click_here_to_reset_abacus">Click here to <font color='#FF0000'>Reset Abacus</font></string>
-    <string name="now_can_also_subscribe_nweekly_at_low_cost">Now, can also start \n<font color='#F9A825'>Subscription on Weekly basis</font></string>
+    <string name="now_can_also_subscribe_nweekly_at_low_cost"><font color='#E13600'>Level wise Subscription</font> available</string>
     <string name="represent_the_value_of_0_9">can represent the value of <font color='#FF0000'>0-9</font></string>
     <string name="represent_the_value_of_0_99">can represent the value of <font color='#FF0000'>0-99</font></string>
     <string name="represent_the_value_of_0_999">can represent the value of <font color='#FF0000'>0-999</font></string>
@@ -552,6 +555,7 @@
     <string name="nursery_class_and_maths_npractice_material"><font color='#00B64B'>Nursery Class and Maths</font>\nPractice Material</string>
     <string name="create_custom_challenge_as_per_your_kid_s_ability">Create custom challenge as per your Kid\'s Ability</string>
     <string name="custom_challenge_mode">Custom Challenge Mode</string>
+    <string name="result_of_practice_set">Result of Practice Set</string>
     <string name="number_of_questions">Number of Questions :</string>
     <string name="gap_between_two_question_sec">Gap between Two Question (In Sec) :</string>
     <string name="question_min_max_length">Question Min Max Length :</string>
@@ -578,7 +582,7 @@
     <string name="start_new_challenge">Start new challenge</string>
     <string name="change_voice_setting">Change Voice Setting</string>
     <string name="ccm_msg">Help to increase <font color='#D81B60'>Concentration Power,\n</font> <font color='#7B1FA2'>Listening Skill,</font> <font color='#303F9F'>Calculation Speed,</font>\n<font color='#0097A7'>Visualization</font> and <font color='#388E3C'>Memory Power</font></string>
-    <string name="setting_msg"><font color='#0277BD'>Setting of</font> abacus themes, voice,\nabacus hint, answer type, help message,\nleft or right handed, etc..</string>
+    <string name="setting_msg"><font color='#0277BD'>Setting of</font> abacus themes, voice,\nabacus hint, help message,\nleft or right handed, etc..</string>
     <string name="background_music_volume">Background Music Volume</string>
     <string name="times_table">Times Table</string>
     <string name="in_your_device_voices_not_found">In your device voices not found.</string>
@@ -589,7 +593,6 @@
     <string name="login_to_your_account">Login to your account</string>
     <string name="email_id">Email ID</string>
     <string name="password">Password</string>
-    <string name="forgot_password_">Forgot Password?</string>
     <string name="don_t_have_an_account_signup">Don\'t have an account? <font color='#0000ff'><b><u>Register</u></b></font></string>
     <string name="already_have_an_account_login">Already have an account? <font color='#0000ff'><b><u>Login</u></b></font></string>
     <string name="dont_receive_code">Don\'t receive code? <font color='#0000ff'><b><u>Resend</u></b></font></string>
@@ -610,6 +613,8 @@
     <string name="register_msg">Enter following details to create your account.</string>
     <string name="complete_profile">Enter following details to complete profile and start journey.</string>
     <string name="contact_us_fill_detail">Enter following details to contact us.\nMake sure you entered all details is corrected.</string>
+    <string name="review_fill_detail">Give 5 Star Review to this application in Play Store and <b>Get Free Access of <font color="#FF0000">Any Selected Level for 3 Months.</font></b></string>
+    <string name="review_note"><font color="#FF0000"><b>Notes : </b></font>Upload Screenshot of Review which you give in Play Store for this application and submit. In 48 hour we review your request and give access.\n\n<b>Make sure your attached screenshot is valid.</b>\nThank you.</string>
     <string name="forgot_password_msg">Don\'t worry! It occurs.</string>
     <string name="forgot_password_msg1">Please enter the email address which linked with your account.</string>
     <string name="otp_msg">Enter the verification code we just sent on your email address.</string>
@@ -652,12 +657,12 @@
     <string name="pay">Pay</string>
     <string name="save">Save</string>
     <string name="please_select_plan">Please select plan</string>
-    <string name="my_profile">My Profile</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="change_password">Change Password</string>
     <string name="expert">Expert</string>
     <string name="intermediate">Intermediate</string>
     <string name="report_card">Report History Cards</string>
+    <string name="about_app_label">What"'"s Learn in Application</string>
     <string name="subscription">Subscription</string>
     <string name="no_report_available_yet">No Report Available Yet</string>
     <string name="question">Question :</string>
@@ -668,6 +673,7 @@
     <string name="is_question_show_in_word">Is question show in word?</string>
     <string name="gap_between_each_question_number">Gap between each question number</string>
     <string name="level_of_exam">Level of Exam :</string>
+    <string name="level_of_set">Level of Set :</string>
     <string name="type_of_questions">Type of questions :</string>
     <string name="type_of_exercise">Type of Exercise :</string>
     <string name="exercise_in">Exercise in</string>
@@ -696,6 +702,7 @@
     <string name="total_custom_challenge_mode">Total Custom Challenge Mode :</string>
     <string name="all_report">All Reports</string>
     <string name="select_report_type">Select Report Type</string>
+    <string name="select_level__">-- Select Level --</string>
     <string name="last_30_days">Last 30 days</string>
     <string name="change_your_details">Change your details</string>
     <string name="update">Update</string>
@@ -718,12 +725,6 @@
     <string name="old_password">Old Password</string>
     <string name="your_password_has_been_updated">Your password has been updated</string>
 
-    <string name="exam_subcribe_title">Upgrade Your Learning Experience!</string>
-    <string name="exam_subcribe_msg">Unlock unlimited weekly exams with our premium subscription!\n🚀 Subscribe now for limitless learning opportunities. 📚✨</string>
-    <string name="exercise_subcribe_title">Unlock Infinite Math Challenges!</string>
-    <string name="exercise_subcribe_msg">🚀Subscribe for Unlimited Math Exercises!\nElevate your skills with endless practice opportunities. 🧮✨</string>
-    <string name="ccm_subcribe_title">Explore Limitless Challenges!</string>
-    <string name="ccm_subcribe_msg">🚀Upgrade for Unlimited Custom Challenges!\nSubscribe now to access the Custom Challenge Mode anytime, anywhere. 🎮✨</string>
     <string name="feature_list">Feature List</string>
     <string name="paid_feature_list">Paid Feature List</string>
     <string name="free_feature_list">Free Feature List</string>
@@ -752,16 +753,16 @@
     <string name="faq_ans_5">Yes, we prioritize the security of your payment information. Our payment gateway employs industry-standard encryption to ensure a secure and safe transaction process.</string>
 
     <string name="faq_que_6">Are there advertisements in the app?</string>
-    <string name="faq_ans_6">Yes, there are advertisements in the app, but they are designed to be child-friendly and age-appropriate. Subscribers to the premium plan enjoy an ad-free experience.</string>
+    <string name="faq_ans_6">No, there are no advertisements in the application.</string>
 
     <string name="faq_que_7">How do I log in to my account?</string>
-    <string name="faq_ans_7">On "Login" page, enter your credentials (username and password), and click "Submit." If you encounter any issues, you can reset your password or contact our support team for assistance.</string>
+    <string name="faq_ans_7">On "Login" page, login with your google account or if you have credentials then enter your credentials (username and password), and click "Submit."</string>
 
     <string name="faq_que_8">What benefits do subscribers enjoy?</string>
     <string name="faq_ans_8">Subscribers enjoy benefits such as unlimited access to premium content, an ad-free experience, personalized learning features, and more interactive exercises.</string>
 
     <string name="faq_que_9">Can I cancel my subscription at any time?</string>
-    <string name="faq_ans_9">Yes, you can cancel your subscription at any time. Simply go to the "https://play.google.com/store/account/subscriptions" and "Cancel Subscription." Your subscription will remain active until the end of the current billing cycle.</string>
+    <string name="faq_ans_9">Yes, you can cancel your subscription at any time if you subscribe from application only. Simply go to the "https://play.google.com/store/account/subscriptions" and "Cancel Subscription." Your subscription will remain active until the end of the current billing cycle.</string>
 
     <string name="faq_que_10">Is there a workaround if my payment method is not supported?</string>
     <string name="faq_ans_10">Unfortunately, if your payment method is not supported, we recommend using one of the available alternatives. Our support team can assist you in exploring options and addressing any concerns you may have.</string>
@@ -787,6 +788,42 @@
     <string name="ok_thanks">Ok, Thank you</string>
     <string name="thank_you_for_reaching_out">Thank you for reaching out!</string>
     <string name="thank_you_for_reaching_out1">Your ticket has been received, and our team will be in touch with you as soon as possible.</string>
+    <string name="practice_of_abacus">Practice of Abacus</string>
+    <string name="step_by_step">Step By Step Answer</string>
+    <string name="final_answer">Final Answer</string>
+    <string name="formal_exam">Formal Exam</string>
+    <string name="timer_on">Timer ON</string>
+    <string name="paid">Paid</string>
+    <string name="add_screenshot_of_application_review">Add Screenshot of Application Review</string>
+    <string name="change_screenshot_of_application_review">Change Screenshot of Application Review</string>
+    <string name="review_submit">Review Submit</string>
+    <string name="level_1">Level 1</string>
+    <string name="level_2">Level 2</string>
+    <string name="level_3">Level 3</string>
+    <string name="level_4">Level 4</string>
+    <string name="level_5">Level 5</string>
+    <string name="select_level">Select Level</string>
+    <string name="please_select_level">Please select level</string>
+    <string name="please_select_screenshot_of_application_review">Please select screenshot of application review</string>
+    <string name="your_request_successfully_submitted">Your request successfully submitted.</string>
+    <string name="yes_i_want_to_get_free_access">Yes, I Want to Get Free Access</string>
+    <string name="congratulations_your_submitted_review_is_approved">Congratulations your submitted review is approved.</string>
+    <string name="sorry_your_submitted_review_is_rejected_please_try_again">Sorry, your submitted review is rejected, please try again.</string>
+    <string name="please_wait_white_we_are_reviewing_your_request">Please wait, white we are reviewing your request.</string>
+    <string name="submit_new_request">Submit New Request</string>
+    <string name="assigned">Assigned</string>
+    <string name="plan_assign_from_admin_for_your_google_review_submitted"><![CDATA[<b>Plan assign from Admin</b> for your google review submitted.]]></string>
+    <string name="plan_assign_from_admin_on_your_request"><![CDATA[<b>Plan assign from Admin</b> on your request.]]></string>
+    <string name="plan_assign_from_admin">Plan assign from Admin.</string>
+    <string name="your_answer">Your Answer :</string>
+    <string name="time">Time :</string>
+    <string name="current_input">Current Input</string>
+    <string name="reset">Reset</string>
+    <string name="start_free_trial">Start Free Trial</string>
+    <string name="cancel_anytime_during_the_trial_without_being_charged">Cancel anytime during the trial\nwithout being charged.</string>
+    <string name="go_premium_all_levels_all_features">Go Premium - All Levels, All Features</string>
+    <string name="old_subscription">Old Purchases</string>
+    <string name="limited_time_discount"><b>Limited-time deal -</b> unlock premium at a discounted price!</string>
 
 
 </resources>

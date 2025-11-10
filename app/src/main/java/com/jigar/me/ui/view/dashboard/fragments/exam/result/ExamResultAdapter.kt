@@ -1,6 +1,7 @@
 package com.jigar.me.ui.view.dashboard.fragments.exam.result
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jigar.me.R
@@ -34,29 +35,27 @@ class ExamResultAdapter(
         if (data.userAnswer.isEmpty()) {
             holder.binding.img.hide()
             holder.binding.txtYourAnswer.show()
-            holder.binding.txtYourAnswer.text =
-                holder.binding.txtYourAnswer.context.getText(R.string.SKipped)
+            holder.binding.txtYourAnswerLabel.hide()
+            holder.binding.txtYourAnswer.text = holder.binding.txtYourAnswer.context.getText(R.string.SKipped)
         } else {
             holder.binding.img.show()
             if (correctAns.equals(data.userAnswer, ignoreCase = true)) {
                 holder.binding.img.setBackgroundResource(R.drawable.ic_answer_right)
                 holder.binding.txtYourAnswer.hide()
+                holder.binding.txtYourAnswerLabel.hide()
             } else {
                 holder.binding.img.setBackgroundResource(R.drawable.ic_answer_wrong)
                 holder.binding.txtYourAnswer.show()
-                holder.binding.txtYourAnswer.text =
-                    holder.binding.txtYourAnswer.context.getText(R.string.YourAnswer)
-                        .toString() + " : " + data.userAnswer
+                holder.binding.txtYourAnswerLabel.show()
+                holder.binding.txtYourAnswer.text = data.userAnswer
             }
         }
 
-        holder.binding.txtAbacus.setText(
-            data.questions
-                .replace("+", "\n+")
-                .replace("-", "\n-")
-                .replace("x", "\nx ")
-                .replace("/", "\n÷ ")
-        )
+        holder.binding.txtAbacus.text = data.questions
+            .replace("+", "\n+")
+            .replace("-", "\n-")
+            .replace("x", "\nx ")
+            .replace("/", "\n÷ ")
 
     }
 

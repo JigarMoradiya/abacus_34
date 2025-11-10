@@ -4,6 +4,7 @@ import android.app.Activity
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.InsetDrawable
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
@@ -48,13 +49,23 @@ object ToddlerRangeDialog {
                     alertLayout.layoutEdtTo.error = activity.resources.getString(R.string.error_range_to)
                     requestFocus(alertLayout.txtTo, activity)
                 }
-                str_to.toLong() - str_from.toLong() < 50 -> {
+                str_to.toLong() - str_from.toLong() < 10 -> {
                     alertLayout.layoutEdtTo.error = activity.resources.getString(R.string.error_range)
                     requestFocus(alertLayout.txtTo, activity)
                 }
                 else -> {
                     hideDialog()
                     listener.onSubmitClickToddlerRange(alertLayout.txtFrom.text.toString(),alertLayout.txtTo.text.toString())
+//                    val from = alertLayout.txtFrom.text.toString().toInt()
+//                    val to = alertLayout.txtTo.text.toString().toInt()
+//                    val list : ArrayList<String> = arrayListOf()
+//                    Log.e("jigarLogs","from = "+from+" to = "+to)
+//                    for (i in from..to) {
+//                        list.add(i.toString())
+//                    }
+//                    Log.e("jigarLogs","joinToString = "+list.joinToString(","))
+//                    Log.e("jigarLogs","joinToString reversed = "+list.reversed().joinToString(","))
+//                    Log.e("jigarLogs","joinToString random = "+list.shuffled().shuffled().take(20).joinToString(","))
                 }
             }
 

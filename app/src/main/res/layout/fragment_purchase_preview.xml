@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.25"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Space
+                        android:id="@+id/spaceNotch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/txtTitle"
+                            style="@style/mainTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/title_margin"
+                            android:gravity="center"
+                            android:text="@string/go_premium_all_levels_all_features"
+                            app:layout_constraintBottom_toTopOf="@+id/cardMain"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cardMain"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/activity_padding16"
+                            android:layout_marginTop="@dimen/activity_padding12"
+                            android:layout_marginEnd="@dimen/activity_padding8"
+                            app:cardBackgroundColor="@color/deep_orange_20"
+                            app:cardCornerRadius="@dimen/card_corner_radius12"
+                            app:cardElevation="@dimen/card_elevation4"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+                            app:strokeWidth="0dp">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerviewInfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/activity_padding12"
+                                android:layout_marginVertical="@dimen/activity_padding8"
+                                android:orientation="vertical"
+                                android:overScrollMode="never"
+                                android:scrollbars="none"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:itemCount="4"
+                                tools:listitem="@layout/raw_purchase_info" />
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/btnOldSubscription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/activity_padding12"
+                    android:background="@drawable/bg_all_curved_8"
+                    android:paddingHorizontal="@dimen/activity_padding10"
+                    android:paddingVertical="@dimen/activity_padding4"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:text="@string/old_subscription"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeSmall"
+                    app:fontFamily="@font/font_semibold" />
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="@dimen/activity_padding4"
+                    android:layout_marginEnd="@dimen/activity_padding12"
+                    android:elevation="@dimen/card_elevation4"
+                    app:srcCompat="@drawable/crown" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/activity_padding4"
+                    android:layout_marginEnd="@dimen/activity_padding8"
+                    android:layout_marginTop="@dimen/activity_padding12"
+                    android:orientation="vertical"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/raw_purchase_new" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSubmit"
+                    style="@style/btnMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding12"
+                    android:layout_marginStart="@dimen/activity_padding4"
+                    android:layout_marginEnd="@dimen/activity_padding12"
+                    android:text="@string/txt_subscribe_Now"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textSizeRegular" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/card_elevation4"
+            android:padding="@dimen/activity_padding16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close"
+            app:tint="@color/black" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -25,7 +25,7 @@ class AbacusMultiplicationTypeAdapter(
 ) :
     RecyclerView.Adapter<AbacusMultiplicationTypeAdapter.FormViewHolder>() {
 
-    private val highlightDetail = HashMap<Int, Int>()
+    val highlightDetail = HashMap<Int, Int>()
     private var isClear = false
     fun setData(listData: List<HashMap<String, String>>, isStepByStep: Boolean) {
         highlightDetail[0] = 0
@@ -71,30 +71,43 @@ class AbacusMultiplicationTypeAdapter(
         }
     }
 
-    class FormViewHolder(
-        itemBinding: RowQuestionLayoutBinding
-    ) :
+    class FormViewHolder( itemBinding: RowQuestionLayoutBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         var binding: RowQuestionLayoutBinding = itemBinding
 
-        init {
-        }
     }
 
     override fun getItemCount(): Int {
         return abacusItems.size
     }
 
+    fun getTableNew() : String{ // return only current multiplication
+        var sum = ""
+        if (highlightDetail.size > 1) {
+            val position = highlightDetail[1]!!
+            val position0 = highlightDetail[0]!!
+            val abacusItem = abacusItems[1]
+            val abacusItem0 = abacusItems[0]
+            val tableOf = Integer.valueOf(abacusItem[Constants.Que]!!.substring(position, position + 1))
+            val highlightedPosition = Integer.valueOf(abacusItem0[Constants.Que]!!.substring(position0, position0 + 1))
+            var answer = (highlightedPosition * tableOf).toString()
+            if (answer.length == 1) {
+                answer = "0$answer"
+            }
+            sum = "$highlightedPosition x $tableOf = $answer"
+        }
+        return sum
+    }
     fun getTable(context: Context,themeContent : AbacusContent? = null): SpannableString? {
         if (highlightDetail.size > 1) {
             val position = highlightDetail[1]!!
             val position0 = highlightDetail[0]!!
-            val abecuseItem = abacusItems[1]
-            val abecuseItem0 = abacusItems[0]
+            val abacusItem = abacusItems[1]
+            val abacusItem0 = abacusItems[0]
             return ViewUtils.getTable(
                 context,
-                Integer.valueOf(abecuseItem[Constants.Que]!!.substring(position, position + 1)),
-                Integer.valueOf(abecuseItem0[Constants.Que]!!.substring(position0, position0 + 1)),
+                Integer.valueOf(abacusItem[Constants.Que]!!.substring(position, position + 1)),
+                Integer.valueOf(abacusItem0[Constants.Que]!!.substring(position0, position0 + 1)),
                 themeContent
             )
         }
@@ -102,24 +115,11 @@ class AbacusMultiplicationTypeAdapter(
     }
 
     private fun span(text: String?, position: Int, context: Context): Spannable {
-        val wordtoSpan = SpannableString(text)
-        wordtoSpan.setSpan(
-            ForegroundColorSpan(ContextCompat.getColor(context, R.color.abacus_place_holder)),
-            0,
-            text!!.length,
-            Spannable.SPAN_INCLUSIVE_EXCLUSIVE
-        )
-        val color = if (abacusType != null){
-            if (abacusType.equals(AppConstants.Settings.theam_Poligon_Silver) || abacusType.equals(AppConstants.Settings.theam_Poligon_Brown)){
-                ContextCompat.getColor(context,R.color.black)
-            }else{
-                CommonUtils.mixTwoColors(ContextCompat.getColor(context,abacusType.dividerColor1), ContextCompat.getColor(context,abacusType.resetBtnColor8), 0.40f)
-            }
-        }else{
-            ContextCompat.getColor(context, R.color.red)
-        }
-        wordtoSpan.setSpan(ForegroundColorSpan(color), position, position + 1, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
-        return wordtoSpan
+        val wordToSpan = SpannableString(text)
+        wordToSpan.setSpan(ForegroundColorSpan(ContextCompat.getColor(context, R.color.abacus_place_holder)),0,text?.length?:0,Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+        val color = CommonUtils.getQuestionHighLighterColor(context,abacusType)
+        wordToSpan.setSpan(ForegroundColorSpan(color), position, position + 1, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+        return wordToSpan
     }
 
     fun getCurrentStep(): HashMap<Int, Int> {

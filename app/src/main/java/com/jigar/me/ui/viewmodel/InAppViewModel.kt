@@ -13,10 +13,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class InAppViewModel @Inject constructor(private val billingRepository: BillingRepository) : ViewModel() {
-
-    fun inAppInit() {
-        billingRepository.startDataSourceConnections()
-    }
     fun makePurchase(context: Activity, augmentedSkuDetails: InAppSkuDetails) {
         billingRepository.launchBillingFlow(context, augmentedSkuDetails)
     }

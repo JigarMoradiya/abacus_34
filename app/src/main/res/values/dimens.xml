@@ -2,25 +2,25 @@
     <dimen name="power_by_logo_ver">48dp</dimen>
     <dimen name="power_by_logo_hor">24dp</dimen>
     <dimen name="padding_bottom_kids_in_abacus">30dp</dimen>
-    <dimen name="padding_radius_abacus_frame_large">18dp</dimen>
-    <dimen name="padding_radius_abacus_frame_large_inner">8dp</dimen>
+    <dimen name="padding_radius_abacus_frame_large">16dp</dimen>
+    <dimen name="padding_radius_abacus_frame_large_inner">6dp</dimen>
 
     <dimen name="padding_radius_abacus_frame_large_exam">10dp</dimen>
-    <dimen name="padding_radius_abacus_frame_large_inner_exam">3dp</dimen>
+    <dimen name="padding_radius_abacus_frame_large_inner_exam">2dp</dimen>
     <!--9:5-->
     <dimen name="height_extra">3dp</dimen>
-    <dimen name="poligon_width">45dp</dimen>
-    <dimen name="poligon_height">25dp</dimen>
+    <dimen name="poligon_width">40.5dp</dimen>
+    <dimen name="poligon_height">22.5dp</dimen>
     <dimen name="poligon_space">4dp</dimen>
 
     <!-- 6:5 -->
     <dimen name="face_width">30dp</dimen>
     <dimen name="face_height">25dp</dimen>
-    <dimen name="face_space">16dp</dimen>
+    <dimen name="face_space">12dp</dimen>
 
     <dimen name="star_width">26dp</dimen>
     <dimen name="star_height">25dp</dimen>
-    <dimen name="star_space">14dp</dimen>
+    <dimen name="star_space">12dp</dimen>
 
     <!--7:5-->
     <dimen name="garnet_width">35dp</dimen>
@@ -30,12 +30,13 @@
     <!--6:5-->
     <dimen name="diamond_width">30dp</dimen>
     <dimen name="diamond_height">25dp</dimen>
-    <dimen name="diamond_space">13dp</dimen>
+    <dimen name="diamond_space">12dp</dimen>
 
     <dimen name="square_width_height">25dp</dimen>
-    <dimen name="square_space">14dp</dimen>
+    <dimen name="square_space">12dp</dimen>
 
     <dimen name="bead_column">48dp</dimen>
+    <dimen name="bead_rv_width">288dp</dimen>
     <dimen name="bead_column_paid">40dp</dimen>
 
     <!--Text Size-->
@@ -47,6 +48,8 @@
     <dimen name="textSizeMedium">12sp</dimen>
     <dimen name="textSizeRegular">13sp</dimen>
 
+    <dimen name="questionSymbolSize">16sp</dimen>
+    <dimen name="questionSize">17sp</dimen>
     <dimen name="textSizeLarge">14sp</dimen>
     <dimen name="textSizeExtraLarge">15sp</dimen>
     <dimen name="textSizeSuperExtraLarge">16sp</dimen>
@@ -54,9 +57,10 @@
     <dimen name="textSize18">18sp</dimen>
     <dimen name="textSize20">20sp</dimen>
     <dimen name="textSize24">24sp</dimen>
+    <dimen name="textSize30">30sp</dimen>
     <dimen name="textSizeOTP">26sp</dimen>
-    <dimen name="textSizeAbacusNumber">80sp</dimen>
-    <dimen name="textSizeCCMNumber">50sp</dimen>
+    <dimen name="textSizeAbacusNumber">72sp</dimen>
+    <dimen name="textSizeCCMNumber">40sp</dimen>
     <dimen name="textSizeCCMWord">24sp</dimen>
     <dimen name="textSize36">36sp</dimen>
 
@@ -66,12 +70,15 @@
     <dimen name="activity_padding24">24dp</dimen>
     <dimen name="activity_padding20">20dp</dimen>
     <dimen name="activity_padding16">16dp</dimen>
+    <dimen name="activity_padding14">14dp</dimen>
     <dimen name="activity_padding12">12dp</dimen>
     <dimen name="activity_padding10">10dp</dimen>
     <dimen name="activity_padding8">8dp</dimen>
+    <dimen name="activity_padding7">7dp</dimen>
     <dimen name="activity_padding6">6dp</dimen>
     <dimen name="activity_padding5">5dp</dimen>
     <dimen name="activity_padding4">4dp</dimen>
+    <dimen name="activity_padding3">3dp</dimen>
     <dimen name="activity_padding2">2dp</dimen>
     <dimen name="activity_padding1">1dp</dimen>
     <dimen name="icons_margin">4dp</dimen>
@@ -113,7 +120,7 @@
     <dimen name="exercise_number_dimen">32dp</dimen>
     <dimen name="exercise_number_text_dimen">@dimen/textSize20</dimen>
     <dimen name="ccm_number_dimen">32dp</dimen>
-    <dimen name="ccm_number_text_dimen">@dimen/textSize18</dimen>
+    <dimen name="ccm_number_text_dimen">@dimen/textSize20</dimen>
 
     <dimen name="home_menu_width">80dp</dimen>
     <dimen name="home_menu_height">80dp</dimen>
@@ -124,7 +131,7 @@
     <dimen name="home_menu_elevation">2dp</dimen>
     <dimen name="home_menu_margin">8dp</dimen>
     <dimen name="home_menu_corner">12dp</dimen>
-    <dimen name="exam_option_width">132dp</dimen>
+    <dimen name="exam_option_width">150dp</dimen>
     <dimen name="exam_option_round">40dp</dimen>
     <dimen name="exam_option_round_corner">20dp</dimen>
 
@@ -137,6 +144,7 @@
     <dimen name="card_elevation8">8dp</dimen>
     <dimen name="card_corner_radius">6dp</dimen>
     <dimen name="card_corner_radius4">4dp</dimen>
+    <dimen name="card_corner_radius8">8dp</dimen>
     <dimen name="card_corner_radius12">12dp</dimen>
     <dimen name="card_corner_radius14">14dp</dimen>
 
@@ -147,26 +155,26 @@
 
     <dimen name="box9SignSize">14dp</dimen>
     <dimen name="image_size_no_data_view">80dp</dimen>
-    <dimen name="text_size_no_data_view">@dimen/textSizeRegular</dimen>
+    <dimen name="text_size_no_data_view">@dimen/textSizeLarge</dimen>
 
     <dimen name="bGameSize9">72dp</dimen>
     <dimen name="bGameSize15">56dp</dimen>
     <dimen name="buttonSize24">48dp</dimen>
     <dimen name="button_margin">4dp</dimen>
 
-    <dimen name="button_medium_text_size">@dimen/textSizeRegular</dimen>
+    <dimen name="button_medium_text_size">@dimen/textSizeLarge</dimen>
     <dimen name="button_medium_height">40dp</dimen>
     <dimen name="button_medium_corner">20dp</dimen>
     <dimen name="button_medium_padding_lr">16dp</dimen>
 
-    <dimen name="button_small_text_size">@dimen/textSizeMedium</dimen>
+    <dimen name="button_small_text_size">@dimen/textSizeRegular</dimen>
     <dimen name="button_small_height">32dp</dimen>
     <dimen name="button_small_corner">16dp</dimen>
     <dimen name="button_small_padding_lr">12dp</dimen>
 
-    <dimen name="button_extra_small_text_size">@dimen/textSizeSmall</dimen>
-    <dimen name="button_extra_small_height">24dp</dimen>
-    <dimen name="button_extra_small_corner">12dp</dimen>
+    <dimen name="button_extra_small_text_size">@dimen/textSizeMedium</dimen>
+    <dimen name="button_extra_small_height">30dp</dimen>
+    <dimen name="button_extra_small_corner">16dp</dimen>
     <dimen name="button_extra_small_padding_lr">6dp</dimen>
 
 
@@ -205,4 +213,9 @@
     <dimen name="_18dp">18dp</dimen>
     <dimen name="_48dp">48dp</dimen>
     <dimen name="_22dp">22dp</dimen>
+
+    <dimen name="exercise_width">280dp</dimen>
+
+    <dimen name="answer_window_height">64dp</dimen>
+    <dimen name="answer_window_abacus_gap">46dp</dimen>
 </resources>

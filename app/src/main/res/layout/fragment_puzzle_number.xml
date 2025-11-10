@@ -19,9 +19,11 @@
             android:id="@+id/cardBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:strokeWidth="0dp"
             app:cardBackgroundColor="@color/light_back"
             app:cardCornerRadius="@dimen/menu_icons_corner"
             app:cardElevation="@dimen/card_elevation"
+            app:cardMaxElevation="@dimen/card_elevation"
             android:layout_margin="@dimen/icons_margin2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -37,6 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/textSizeSuperExtraLarge"
+            tools:text="@string/_3_x_3_puzzle"
             style="@style/mainTitle"
             android:layout_marginHorizontal="@dimen/title_margin"
             app:layout_constraintBottom_toBottomOf="@+id/cardBack"
@@ -66,7 +69,7 @@
             android:includeFontPadding="false"
             android:text="@string/current_moves"
             android:textColor="@color/black"
-            android:textSize="@dimen/textSizeMedium"
+            android:textSize="@dimen/textSizeRegular"
             app:layout_constraintEnd_toStartOf="@+id/relPuzzle"
             app:layout_constraintBottom_toTopOf="@+id/txtBestMoves"
             app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +100,7 @@
             android:includeFontPadding="false"
             android:text="@string/best_moves"
             android:textColor="@color/black"
-            android:textSize="@dimen/textSizeMedium"
+            android:textSize="@dimen/textSizeRegular"
             app:layout_constraintBottom_toBottomOf="@+id/relPuzzle"
             app:layout_constraintEnd_toEndOf="@+id/txtCurrentMovesLable"
             app:layout_constraintStart_toStartOf="@+id/txtCurrentMovesLable"
@@ -108,7 +111,7 @@
             android:id="@+id/relPuzzle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/adView"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -585,6 +588,7 @@
             app:cardCornerRadius="@dimen/card_corner_radius14"
             app:cardElevation="@dimen/card_elevation2"
             app:cardUseCompatPadding="true"
+            app:strokeWidth="0dp"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintBottom_toTopOf="@+id/cardStartNew"
             app:layout_constraintStart_toStartOf="@+id/cardStartNew"
@@ -613,12 +617,13 @@
                     android:id="@+id/txtVolume"
                     android:layout_width="wrap_content"
                     android:textColor="@color/colorOrange"
-                    android:textSize="@dimen/textSizeSmall"/>
+                    android:textSize="@dimen/textSizeRegular"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardStartNew"
             android:layout_width="wrap_content"
+            app:strokeWidth="0dp"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/light_reset_abacus_progress"
             app:cardCornerRadius="@dimen/card_corner_radius14"
@@ -651,17 +656,10 @@
                     app:fontFamily="@font/font_bold"
                     android:text="@string/start_new"
                     android:textColor="@color/colorGreen"
-                    android:textSize="@dimen/textSizeSmall"/>
+                    android:textSize="@dimen/textSizeRegular"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
         </com.google.android.material.card.MaterialCardView>
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/adView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/transparent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -3,15 +3,17 @@ package com.jigar.me.ui.view.base.abacus
 import android.animation.Animator
 import android.animation.ValueAnimator
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Point
 import android.graphics.drawable.Drawable
 import android.os.Handler
 import android.os.Looper
-import androidx.core.content.ContextCompat
+import android.util.Log
 import com.jigar.me.data.local.data.AbacusBeadType
 import com.jigar.me.data.local.data.AbacusContent
 import java.io.Serializable
-import java.util.*
 
 class AbacusMasterEngine(
     private var selectedPositions: ArrayList<Int>,
@@ -20,8 +22,11 @@ class AbacusMasterEngine(
     private val singleBeadValue: Int,
     context: Context,
     roadDrawable: Drawable?,
+    unitRoadDrawable: Drawable?,
+    unitRodColumnPosition: Int,
+    noOfColumnUsed: Int,
     beads: Array<Drawable?>,
-    isBeadStackFromBottom: Boolean,
+    val isBeadStackFromBottom: Boolean,
     private val abacusContent: AbacusContent,
     extraHeight : Int = 0,
     beadType : AbacusBeadType
@@ -42,7 +47,7 @@ class AbacusMasterEngine(
     private var beadWidth = 0
     private var borderWidth = 0
     private var rowHeight = 0
-    private var canvas : Canvas?= null
+    var canvas : Canvas?= null
 
     init {
         beadWidth = abacusContent.beadWidth + abacusContent.beadSpace
@@ -56,6 +61,11 @@ class AbacusMasterEngine(
             val rowPosition = Point()
             rowPosition.x = position!!.x + i * beadWidth
             rowPosition.y = position!!.y
+            val roads = if (i == unitRodColumnPosition){
+                unitRoadDrawable
+            }else{
+                roadDrawable
+            }
             rows[i] = AbacusMasterRowEngine(
                 context,
                 rowPosition,
@@ -65,11 +75,11 @@ class AbacusMasterEngine(
                 beads,
                 isBeadStackFromBottom,
                 noOfBeads,
-                roadDrawable,
+                roads,
                 numColumns,
                 extraHeight,
                 beadType,
-                abacusContent
+                abacusContent, i < noOfColumnUsed,
             )
         }
     }

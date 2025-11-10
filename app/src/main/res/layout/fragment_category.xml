@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/icons_margin2"
+        app:cardBackgroundColor="@color/light_back"
+        app:cardCornerRadius="@dimen/menu_icons_corner"
+        app:cardElevation="@dimen/card_elevation"
+        app:cardMaxElevation="@dimen/card_elevation"
+        app:strokeWidth="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgBack"
+            android:layout_width="@dimen/menu_icons"
+            android:layout_height="@dimen/menu_icons"
+            android:padding="@dimen/menu_icons_padding"
+            app:srcCompat="@drawable/ic_back" />
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtTitle"
+        style="@style/mainTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/title_margin"
+        android:text="@string/practice_of_abacus"
+        app:layout_constraintBottom_toBottomOf="@+id/cardBack"
+        app:layout_constraintStart_toEndOf="@+id/cardBack"
+        app:layout_constraintTop_toTopOf="@+id/cardBack" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spaceNotch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerviewCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:layout_margin="@dimen/activity_padding6"
+        app:layout_constraintTop_toBottomOf="@+id/cardBack"
+        app:layout_constraintStart_toEndOf="@+id/spaceNotch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="3"
+        tools:listitem="@layout/raw_category_new" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:id="@+id/linearTop"
+        app:layout_constraintBottom_toBottomOf="@+id/cardBack"
+        app:layout_constraintStart_toEndOf="@+id/txtTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cardBack"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/step_by_step"
+            android:textSize="@dimen/textSizeMedium"
+            android:gravity="center_vertical"
+            android:textColor="@color/white"
+            android:paddingHorizontal="@dimen/activity_padding6"
+            android:paddingVertical="@dimen/activity_padding2"
+            android:backgroundTint="@color/step_by_step_answer"
+            android:background="@drawable/bg_all_curved_3"
+            app:fontFamily="@font/font_bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_padding10"
+            android:text="@string/final_answer"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSizeMedium"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/activity_padding6"
+            android:paddingVertical="@dimen/activity_padding2"
+            android:backgroundTint="@color/final_answer"
+            android:background="@drawable/bg_all_curved_3"
+            app:fontFamily="@font/font_bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/formal_exam"
+            android:textSize="@dimen/textSizeMedium"
+            android:gravity="center_vertical"
+            android:textColor="@color/white"
+            android:paddingHorizontal="@dimen/activity_padding6"
+            android:paddingVertical="@dimen/activity_padding2"
+            android:backgroundTint="@color/formal_exam"
+            android:background="@drawable/bg_all_curved_3"
+            app:fontFamily="@font/font_bold" />
+
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:backgroundTint="@color/black"
+           android:layout_marginStart="@dimen/activity_padding12"
+           android:background="@drawable/bg_all_curved_3">
+           <androidx.appcompat.widget.AppCompatImageView
+               android:layout_width="@dimen/activity_padding16"
+               android:layout_height="@dimen/activity_padding16"
+               android:id="@+id/imgTimer"
+               android:layout_marginStart="@dimen/activity_padding4"
+               android:layout_gravity="center_vertical"
+               app:tint="@color/white"
+               app:srcCompat="@drawable/ic_timer_on_new"/>
+
+           <com.google.android.material.textview.MaterialTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/timer_on"
+               android:textColor="@color/white"
+               android:textSize="@dimen/textSizeMedium"
+               android:paddingHorizontal="@dimen/activity_padding6"
+               android:paddingVertical="@dimen/activity_padding2"
+               android:gravity="center_vertical"
+               app:fontFamily="@font/font_bold" />
+       </LinearLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerviewPages"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:layout_marginHorizontal="@dimen/activity_padding6"
+        app:layout_constraintTop_toBottomOf="@+id/cardBack"
+        app:layout_constraintStart_toEndOf="@+id/recyclerviewCategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/spaceBottom"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:itemCount="4"
+        app:spanCount="2"
+        tools:listitem="@layout/raw_pagelist_new" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgNoData"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/cardBack"
+        app:layout_constraintStart_toEndOf="@+id/recyclerviewCategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/ic_coming_soon" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/activity_padding6"
+        android:id="@+id/spaceBottom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

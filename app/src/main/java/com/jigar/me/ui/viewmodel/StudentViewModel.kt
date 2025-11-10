@@ -17,6 +17,7 @@ import com.jigar.me.MyApplication
 import com.jigar.me.R
 import com.jigar.me.data.model.MainAPIResponse
 import com.jigar.me.data.model.data.ChangePasswordRequest
+import com.jigar.me.data.model.data.FetchAbacusDataRequest
 import com.jigar.me.data.model.data.ForgotPasswordRequest
 import com.jigar.me.data.model.data.LoginRequest
 import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
@@ -32,19 +33,13 @@ import com.jigar.me.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import javax.inject.Inject
 
 @HiltViewModel
 class StudentViewModel @Inject constructor(private val apiRepository: StudentApiRepository) :
     ViewModel() {
-    private val _signInWithGoogle = MutableLiveData<Boolean>()
-    val signInWithGoogle: LiveData<Boolean>
-        get() = _signInWithGoogle
-
-    fun signInWithGoogle() {
-        _signInWithGoogle.value = true
-    }
-
     var googleSignInClient: GoogleSignInClient? = null
 
     init {
@@ -104,12 +99,26 @@ class StudentViewModel @Inject constructor(private val apiRepository: StudentApi
         _loginResponse.value = apiRepository.socialLogin(request)
     }
 
+    private val _getAbacusDataResponse: MutableLiveData<Resource<MainAPIResponse>> =
+        MutableLiveData()
+    val getAbacusDataResponse: LiveData<Resource<MainAPIResponse>> get() = _getAbacusDataResponse
+    fun getAbacusData(request: FetchAbacusDataRequest) = viewModelScope.launch {
+        _getAbacusDataResponse.value = Resource.Loading
+        _getAbacusDataResponse.value = apiRepository.getAbacusData(request)
+    }
     private val _handleExistingPurchaseResponse: MutableLiveData<Resource<MainAPIResponse>> =
         MutableLiveData()
     val handleExistingPurchaseResponse: LiveData<Resource<MainAPIResponse>> get() = _handleExistingPurchaseResponse
     fun handleExistingPurchase(request: PurchasedPlanCheckRequest) = viewModelScope.launch {
         _handleExistingPurchaseResponse.value = Resource.Loading
         _handleExistingPurchaseResponse.value = apiRepository.handleExistingPurchase(request)
+    }
+    private val _appReviewsListResponse: MutableLiveData<Resource<MainAPIResponse>> =
+        MutableLiveData()
+    val appReviewsListResponse: LiveData<Resource<MainAPIResponse>> get() = _appReviewsListResponse
+    fun appReviewsList() = viewModelScope.launch {
+        _appReviewsListResponse.value = Resource.Loading
+        _appReviewsListResponse.value = apiRepository.appReviewsList()
     }
 
     private val _changePlanResponse: MutableLiveData<Resource<MainAPIResponse>> = MutableLiveData()
@@ -157,5 +166,12 @@ class StudentViewModel @Inject constructor(private val apiRepository: StudentApi
     fun updateProfile(request: UpdateProfileRequest) = viewModelScope.launch {
         _updateProfileResponse.value = Resource.Loading
         _updateProfileResponse.value = apiRepository.updateProfile(request)
+    }
+
+    private val _submitReviewResult: MutableLiveData<Resource<MainAPIResponse>> = MutableLiveData()
+    val submitReviewResult: LiveData<Resource<MainAPIResponse>> get() = _submitReviewResult
+    fun submitReview(plan_id: RequestBody,description: RequestBody, image_1: MultipartBody.Part?) = viewModelScope.launch {
+        _submitReviewResult.value = Resource.Loading
+        _submitReviewResult.value = apiRepository.submitReview(plan_id,description, image_1)
     }
 }

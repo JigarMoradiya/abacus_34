@@ -17,6 +17,7 @@ import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import com.jigar.me.R
+import com.jigar.me.data.local.db.AppDatabase
 import com.jigar.me.data.model.data.AllExamData
 import com.jigar.me.databinding.FragmentReportsHomeBinding
 import com.jigar.me.ui.view.base.BaseFragment
@@ -28,11 +29,11 @@ import com.jigar.me.utils.DateTimeUtils
 import com.jigar.me.utils.Resource
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.onClick
-import com.jigar.me.utils.extensions.openYoutube
 import com.jigar.me.utils.extensions.show
 import com.jigar.me.utils.paging.EndlessRecyclerListener
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class ReportsHomeFragment : BaseFragment(), ReportsListAdapter.OnItemClickListener,
@@ -63,11 +64,14 @@ class ReportsHomeFragment : BaseFragment(), ReportsListAdapter.OnItemClickListen
         return root!!
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() {
-        reportsAdapter = ReportsListAdapter(arrayListOf(),this)
+        reportsAdapter = ReportsListAdapter(arrayListOf(), AppDatabase.getInstance(requireContext()),this)
         with(binding){
+            spaceNotch.layoutParams.width = prefManager.getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
+            spaceBottom.layoutParams.height = prefManager.getCustomParamInt(AppConstants.BOTTOM_NAV_HEIGHT,0)
+
             recyclerview.adapter = reportsAdapter
             val list : ArrayList<String> = arrayListOf()
             with(list) {
@@ -76,6 +80,7 @@ class ReportsHomeFragment : BaseFragment(), ReportsListAdapter.OnItemClickListen
                 add(AppConstants.ExamType.type_Exam)
                 add(AppConstants.ExamType.type_Exercise)
                 add(AppConstants.ExamType.type_CustomChallengeMode)
+                add(AppConstants.ExamType.type_Practice_Set)
             }
 
             val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, list)
@@ -102,9 +107,6 @@ class ReportsHomeFragment : BaseFragment(), ReportsListAdapter.OnItemClickListen
         with(binding){
             cardBack.onClick { onBack() }
             txtDateRange.onClick { openDatePicker() }
-            cardSettingTop.onClick { goToSetting() }
-            cardSubscribe.onClick { goToInAppPurchase() }
-            cardYoutube.onClick { requireContext().openYoutube() }
 
             recyclerview.addOnScrollListener(object :
                 EndlessRecyclerListener(recyclerview.layoutManager as LinearLayoutManager) {
@@ -152,6 +154,8 @@ class ReportsHomeFragment : BaseFragment(), ReportsListAdapter.OnItemClickListen
             examViewModel.getAllExam(from_date = fromDate, to_date = toDate, from = from)
         }else if (type.equals(AppConstants.ExamType.type_CustomChallengeMode,true)){
             examViewModel.getAllExam(AppConstants.ExamType.type_CCM,from_date = fromDate, to_date = toDate,from = from)
+        }else if (type.equals(AppConstants.ExamType.type_Practice_Set,true)){
+            examViewModel.getAllExam(AppConstants.apiParams.answerFormalAnswer,from_date = fromDate, to_date = toDate,from = from)
         }else{
             examViewModel.getAllExam(type,from_date = fromDate, to_date = toDate,from = from)
         }
@@ -184,6 +188,8 @@ class ReportsHomeFragment : BaseFragment(), ReportsListAdapter.OnItemClickListen
                     }
                     onFailure(it.errorBody)
                 }
+
+                else -> {}
             }
         }
     }
@@ -218,8 +224,8 @@ class ReportsHomeFragment : BaseFragment(), ReportsListAdapter.OnItemClickListen
                 bundle.putString(AppConstants.extras_Comman.From, "report")
                 mNavController.navigate(R.id.action_reportsHomeFragment_to_examResultFragment, bundle)
             }
-            AppConstants.ExamType.type_Exercise -> {
-                ExerciseCompleteDialog.showPopup(requireContext(),data.toExerciseResult(),prefManager,null,null,this@ReportsHomeFragment)
+            AppConstants.ExamType.type_Exercise,AppConstants.apiParams.answerFormalAnswer -> {
+                ExerciseCompleteDialog.showPopup(requireContext(),data.type,data.toExerciseResult(),this@ReportsHomeFragment)
             }
         }
     }

@@ -2,18 +2,24 @@ package com.jigar.me.utils
 
 object AppConstants {
     internal const val DB_NAME = "kotlin_basic.db"
+    internal const val DB_NAME_NEW = "VedaaviAbacus.db"
     internal const val PREF_NAME = "kotlin_basic_pref"
     internal const val YOUTUBE_URL = "https://www.youtube.com/channel/UC9MSzIbLkuzffqepgOqBLhw"
-    internal const val TEMP_BASE_URL = "https://abacuspro.in/backend/index.php/Api/"
-//    internal const val TEMP_BASE_URL = "https://www.sdd-production.com/jigar/backend/index.php/Api/"
 
-    const val BLINK_ICON_ANIMATION_DURATION: Long = 700
-    const val BLINK_ICON_ANIMATION_ALPHA: Float = 0.2F
+    const val BLINK_ICON_ANIMATION_DURATION: Long = 600
+    const val BLINK_ICON_ANIMATION_ALPHA: Float = 0.1F
+
+    const val screenWidthDp = "screenWidthDp"
+    const val HAS_NOTCH = "has_notch"
+    const val NOTCH_HEIGHT = "notch_height"
+    const val BOTTOM_NAV_HEIGHT = "bottom_nav_height"
 
     const val NUMBER_PUZZLE_SAVE = "number_puzzle_save"
     const val NUMBER_PUZZLE_CURRENT_SCORE = "number_puzzle_current_score"
     const val NUMBER_PUZZLE_BEST_SCORE = "number_puzzle_best_score"
     const val PAGINATION_RECORDS = 20
+
+    const val PREF_KEY_APP_VERSION_CODE = "pref_previous_version_code"
     annotation class ExamType {
         companion object {
             var exam_Type_Number = "Number"
@@ -34,7 +40,7 @@ object AppConstants {
             val type_Exercise = "Exercise"
             val type_CCM = "CCM"
             val type_CustomChallengeMode = "Custom Challenge Mode"
-            val type_Practise = "Practise"
+            val type_Practice_Set = "Practice Set of Formal Exam" // user only display name // formal_answer
         }
     }
     annotation class LoginData {
@@ -79,6 +85,7 @@ object AppConstants {
         companion object {
             var MaterialDownloaded = "abacus_material_download"
 
+            var appInstallFrom = "app_install_from"
             var InAppPurchase = "abacus_purchase"
             var InAppPurchaseSKU = "abacus_sku"
             var InAppPurchaseOrderId = "abacus_order_id"
@@ -93,19 +100,11 @@ object AppConstants {
     }
     annotation class Purchase {
         companion object {
-            var Purchase_limit = 9999
             var Purchase_limit_free = 20
-
-            var AdsShow = "N"
-            var AdsShowCount = "AdsShowCount"
-            var AdsShowNumberPuzzleStep = 20
-
             var Purchase_All = "Purchase_All"
-            var Purchase_Ads = "Purchase_Ads"
             var Purchase_Toddler_Single_digit_level1 = "Purchase_Toddler_Single_digit_level1"
             var Purchase_Add_Sub_level2 = "Purchase_Add_Sub_level2"
             var Purchase_Mul_Div_level3 = "Purchase_Mul_Div_level3"
-
             var Purchase_Material_Maths = "Purchase_Material_Maths"
             var Purchase_Material_Nursery = "Purchase_Material_Nursery"
 
@@ -121,48 +120,24 @@ object AppConstants {
             var bulkLogin = "bulkLogin"
             var privacyPolicyUrl = "privacyPolicyUrl"
             var versionCode = "versionCode"
-        }
-    }
-    annotation class AbacusProgress {
-        companion object {
-            var PREF_PAGE_SUM = "pageSum"
-            var CompleteAbacusPos = "CompleteAbacusPos"
-
-            var TrackFetch = "TrackFetch"
-
-            // firebase database field
-//            var Track = "TrackJigar"
-            var Track = "TrackNew"
-            var Position = "Position"
-
-            var Settings = "Settings"
-            var baseUrl = "baseUrl"
-            var iPath = "iPath"
-
-            var Ads = "Ads"
-            var isAdmob = "isAdmob"
-            var resetImage = "resetImage"
+            var discountPer = "discount_per"
+            var discountPerLifeTime = "discount_per_lifetime"
         }
     }
 
     annotation class Settings {
         companion object {
+            const val Setting_direction = "Setting_direction"
             const val Setting_sound = "Setting_sound"
             const val Setting_NumberPuzzleVolume = "Setting_NumberPuzzleVolume"
             const val Setting__hint_sound = "Setting_hint_sound"
             const val Setting_display_abacus_number = "Setting_display_abacus_number"
             const val Setting_display_help_message = "Setting_display_help_message"
             const val Setting_hide_table = "Setting_hide_table"
-            const val Setting_auto_reset_abacus = "Setting_auto_reset_abacus"
             const val Setting_left_hand = "Setting_left_hand"
             const val Setting_bg_music_volume = "Setting_bg_music_volume"
             const val Setting_bg_music_volume_default = 5
-            var Setting_answer = "Setting_answer"
-            const val Setting_answer_Step = "Step"
-            const val Setting_answer_Final = "Final"
-            const val Setting_answer_with_tools = "tools"
 
-            var abacus_colorful = "abacus_colorful"
 
             var isSetTheam = "isSetTheam"
             var isHomeTourWatch = "isHomeTourWatch"
@@ -197,16 +172,28 @@ object AppConstants {
             var SW_Random = "SW_Random"
             var SW_Reset = "SW_Reset"
 
-            var Toddler_No = "Toddler_Numbers_new"
+            var Toddler_No = "Toddler_Number_New"
             var Toddler_No_Count = "Toddler_Number_Count"
-            var SW_Range_min = "SW_Range_min_values_new"
-            var SW_Range_max = "SW_Range_max_values_new"
+            var SW_Range_min = "Range_min_values_new"
+            var SW_Range_max = "Range_max_values_new"
+            var AbacusMaxColumn = "AbacusMaxColumn"
         }
 
     }
 
     annotation class HomeClicks {
         companion object {
+            const val Menu_Abacus_Free_Mode = "abacus_free_mode"
+            const val Menu_Practice_Abacus = "practice_abacus"
+            const val Menu_My_Account = "my_account"
+            const val Menu_Abacus_Exercise = "abacus_exercise"
+            const val Menu_Exam = "exam"
+            const val Menu_CCM = "ccm"
+            const val Menu_Number_Sequence_Puzzle = "number_sequence_puzzle"
+            const val Menu_Video_Tutorial = "video_tutorial"
+            const val Menu_Purchase_Store = "purchase_store"
+            const val Menu_Settings = "setting"
+
             const val Menu_My_Profile = 1
             const val Menu_Addition_Subtraction = 2
             const val Menu_Formulas = 3
@@ -273,7 +260,7 @@ object AppConstants {
             var examLevel = "examLevels" // exam store
 
             var typeBulkLogin = "Need Login"
-            var typeNeedHelp = "Need Help"
+            var typeNeedHelp = " "
         }
     }
 
@@ -308,6 +295,21 @@ object AppConstants {
             const val file = "file"
             const val level = "level"
             const val type = "type"
+            const val answerSettingStepByStep = "step_by_step_answer"
+            const val answerFinalAnswer = "final_answer"
+            const val answerFormalAnswer = "formal_answer"
+
+
+        }
+    }
+    interface DBParam {
+        companion object {
+            const val table_level = "level"
+            const val table_category = "category"
+            const val table_pages = "pages"
+            const val table_sets = "sets"
+            const val table_set_progress = "setProgress"
+            const val table_abacus = "abacus"
         }
     }
 

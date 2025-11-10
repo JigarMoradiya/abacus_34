@@ -7,12 +7,10 @@ import android.graphics.drawable.Drawable
 import android.text.TextUtils
 import android.util.Log
 import androidx.core.content.ContextCompat
-import com.jigar.me.R
 import com.jigar.me.data.local.data.AbacusBeadType
 import com.jigar.me.data.local.data.AbacusContent
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
-import java.util.*
 
 class AbacusMasterRowEngine(
     private val context: Context,
@@ -27,7 +25,8 @@ class AbacusMasterRowEngine(
     private var numColumns: Int,
     private var extraHeight : Int,
     private val beadType : AbacusBeadType,
-    private val abacusContent: AbacusContent
+    private val abacusContent: AbacusContent,
+    private val isColumnUsed : Boolean = false
 ) {
 
     var tempBeads: IntArray? = null
@@ -71,12 +70,24 @@ class AbacusMasterRowEngine(
         for(i in 0..3){
             when {
                 theme.contains(AppConstants.Settings.theam_Poligon_default, ignoreCase = true) -> {
-                    beadDrawables_eyes.add(ContextCompat.getDrawable(context, abacusContent.topBeadClose))
-                    beadDrawables_eyes_smaile.add(ContextCompat.getDrawable(context,abacusContent.topBeadOpen))
+                    if (isColumnUsed){
+                        beadDrawables_eyes.add(ContextCompat.getDrawable(context, abacusContent.topBeadClose))
+                        beadDrawables_eyes_smaile.add(ContextCompat.getDrawable(context,abacusContent.topBeadOpen))
+                    }else{
+                        beadDrawables_eyes.add(ContextCompat.getDrawable(context, abacusContent.unUsedBeads))
+                        beadDrawables_eyes_smaile.add(ContextCompat.getDrawable(context,abacusContent.unUsedBeads))
+                    }
+
                 }
                 else -> {
-                    beadDrawables_eyes.add(ContextCompat.getDrawable(context, abacusContent.bottomBeadClose[i]))
-                    beadDrawables_eyes_smaile.add(ContextCompat.getDrawable(context,abacusContent.bottomBeadOpen[i]))
+                    if (isColumnUsed){
+                        beadDrawables_eyes.add(ContextCompat.getDrawable(context, abacusContent.bottomBeadClose[i]))
+                        beadDrawables_eyes_smaile.add(ContextCompat.getDrawable(context,abacusContent.bottomBeadOpen[i]))
+                    }else{
+                        beadDrawables_eyes.add(ContextCompat.getDrawable(context, abacusContent.unUsedBeads))
+                        beadDrawables_eyes_smaile.add(ContextCompat.getDrawable(context,abacusContent.unUsedBeads))
+                    }
+
                 }
             }
         }
@@ -177,7 +188,6 @@ class AbacusMasterRowEngine(
             value
         }
     }
-
     fun draw(canvas: Canvas?, abacusContent: AbacusContent) {
         val rowSpacing = abacusContent.beadSpace
         val road = roadDrawable!!
@@ -188,11 +198,12 @@ class AbacusMasterRowEngine(
         }else{
             2.5f
         }
+
         val startX = position.x + beadWidth / 2 - (rowThickness.toFloat() / divideThickness).toInt()
         val endX = position.x + beadWidth / 2 + (rowThickness.toFloat() / divideThickness).toInt()
+
         road.setBounds(startX,position.y,endX,position.y + height + extraHeight)
         road.draw(canvas!!)
-
 
         var drawablePos = 0
         val listAbacus = ArrayList<String>()
@@ -218,44 +229,39 @@ class AbacusMasterRowEngine(
             }
 
             val beadDrawable: Drawable? = if (isBeadStackFromBottom) {
-                val temp = beads[i] + 2
-                if (tempvalue > temp && tempvalue != -1) {
-                    beadDrawables_eyes_smaile[drawablePos]!!
-                } else {
-                    beadDrawables_eyes[drawablePos]!!
-                }
-            } else {
-                if (beads[i] > 0) {
-                    ContextCompat.getDrawable(context,abacusContent.topBeadOpen)!!
+                if (i ==0){
+                    val temp = beads[i]
+                    if (temp > 0) {
+                        beadDrawables_eyes[drawablePos]!!
+                    } else {
+                        beadDrawables_eyes_smaile[drawablePos]!!
+                    }
                 }else{
-                    ContextCompat.getDrawable(context,abacusContent.topBeadClose)!!
+                    val temp = beads[i] + 2
+                    if (tempvalue > temp && tempvalue != -1) {
+                        beadDrawables_eyes_smaile[drawablePos]!!
+                    } else {
+                        beadDrawables_eyes[drawablePos]!!
+                    }
+                }
+
+            } else {
+                if (isColumnUsed){
+//                    if (beads[i] > 0) {
+                    if (beads[i] >= beadHeight) {
+                        ContextCompat.getDrawable(context,abacusContent.topBeadOpen)!!
+                    }else{
+                        ContextCompat.getDrawable(context,abacusContent.topBeadClose)!!
+                    }
+                }else{
+                    ContextCompat.getDrawable(context,abacusContent.unUsedBeads)!!
                 }
             }
-//            var isBeadSelected = false
-//            if (tempBeads != null && tempBeads!!.size > i && tempBeads!![i] != beads[i] && selectedBeadDrawable != null) {
-//                /*bead is selected*/
-//                when {
-//                    !theme.equals(AppConstants.Settings.theam_shape, ignoreCase = true) -> {
-////                        beadDrawable = selectedBeadDrawable
-//                    }
-//                }
-//                isBeadSelected = true
-//            }
-//            if (isBeadSelected) {
-//                beadDrawable?.setBounds(
-//                    position.x + rowSpacing / 2,
-//                    position.y + beads[i] + if (!isBeadStackFromBottom) extraHeight else 0,
-//                    position.x + beadWidth - rowSpacing / 2,
-//                    position.y + beads[i] + beadHeight + if (!isBeadStackFromBottom) extraHeight else 0
-//                )
-//                canvas.let { beadDrawable?.draw(it) }
-//            }
-
             beadDrawable?.setBounds(
                 position.x + rowSpacing / 2,
                 position.y + beads[i] + if (!isBeadStackFromBottom) extraHeight else 0,
                 position.x + beadWidth - rowSpacing / 2,
-                position.y + beads[i] + beadHeight + if (!isBeadStackFromBottom) extraHeight else 0
+                position.y + beads[i] + 2 + beadHeight + if (!isBeadStackFromBottom) extraHeight else 0
             )
             canvas.let { beadDrawable?.draw(it) }
 

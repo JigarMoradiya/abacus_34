@@ -5,6 +5,7 @@ import com.jigar.me.data.api.StudentApi
 import com.jigar.me.data.api.connections.SafeApiCall
 import com.jigar.me.data.model.data.ChangePasswordRequest
 import com.jigar.me.data.model.data.ContactUsRequest
+import com.jigar.me.data.model.data.FetchAbacusDataRequest
 import com.jigar.me.data.model.data.ForgotPasswordRequest
 import com.jigar.me.data.model.data.LoginRequest
 import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
@@ -14,6 +15,8 @@ import com.jigar.me.data.model.data.SignupV2Request
 import com.jigar.me.data.model.data.SocialLoginRequest
 import com.jigar.me.data.model.data.UpdateProfileRequest
 import com.jigar.me.data.model.data.VerifyEmailRequest
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import javax.inject.Inject
 
 class StudentApiRepository @Inject constructor(
@@ -32,8 +35,14 @@ class StudentApiRepository @Inject constructor(
     suspend fun socialLogin(request : SocialLoginRequest) = safeApiCall {
         api.socialLogin(request)
     }
+    suspend fun getAbacusData(request : FetchAbacusDataRequest) = safeApiCall {
+        api.getAbacusData(request)
+    }
     suspend fun handleExistingPurchase(request : PurchasedPlanCheckRequest) = safeApiCall {
         api.handleExistingPurchase(request)
+    }
+    suspend fun appReviewsList() = safeApiCall {
+        api.appReviewsList()
     }
     suspend fun changePlan(request : PurchasedPlanCheckRequest) = safeApiCall {
         api.changePlan(request)
@@ -53,6 +62,9 @@ class StudentApiRepository @Inject constructor(
     }
     suspend fun updateProfile(request : UpdateProfileRequest) = safeApiCall {
         api.updateProfile(request)
+    }
+    suspend fun submitReview(plan_id: RequestBody,description: RequestBody, image_1: MultipartBody.Part?) = safeApiCall {
+        api.submitReview(plan_id,description,image_1)
     }
 }
 

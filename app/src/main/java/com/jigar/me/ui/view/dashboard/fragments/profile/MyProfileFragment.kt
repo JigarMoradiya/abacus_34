@@ -36,6 +36,8 @@ import com.jigar.me.utils.extensions.openMail
 import com.jigar.me.utils.extensions.openURL
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
+import androidx.navigation.findNavController
+import com.jigar.me.utils.VersionUpdation
 
 @AndroidEntryPoint
 class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileDialogInterface,
@@ -64,7 +66,7 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
         return root!!
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() {
         avatarProfileCloseDialog()
@@ -143,20 +145,10 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
             }
         }
     }
-    private fun paidPlanDialog() {
-        CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.txt_purchase_alert), getString(R.string.need_paid_plan_msg),
-            getString(R.string.yes_i_want_to_purchase),getString(R.string.no_purchase_later), icon = R.drawable.ic_alert_not_purchased,
-            clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
-                override fun onConfirmationYesClick(bundle: Bundle?) {
-                    goToInAppPurchase()
-                }
-                override fun onConfirmationNoClick(bundle: Bundle?) = Unit
-            })
-    }
     override fun onMenuItemClick(tag: String) {
-        when (tag) {
+        when (tag) {    
             "faqs" -> {
-                mNavController.navigate(R.id.toFAQsFragment)
+                mNavController.navigate(R.id.toFAQsFragment)      
             }
             "subscription" -> {
                 goToInAppPurchase()
@@ -165,11 +157,10 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
                 goToSetting()
             }
             "report_history" -> {
-                if (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All, "") == "Y"){
-                    mNavController.navigate(R.id.action_myProfileFragment_to_reportsHomeFragment)
-                }else{
-                    paidPlanDialog()
-                }
+                mNavController.navigate(R.id.action_myProfileFragment_to_reportsHomeFragment)
+            }
+            "about_app" -> {
+                mNavController.navigate(R.id.toVideoPreviewFragment)
             }
             "edit_profile" -> {
                 mNavController.navigate(R.id.action_myProfileFragment_to_editProfileFragment)
@@ -209,9 +200,10 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
             icon = R.drawable.ic_alert,
             clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener {
                 override fun onConfirmationYesClick(bundle: Bundle?) {
-                    prefManager.setAccessToken("")
-                    prefManager.setLoginData("")
-                    prefManager.setUserLoggedIn(false)
+//                    prefManager.setAccessToken("")
+//                    prefManager.setLoginData("")
+//                    prefManager.setUserLoggedIn(false)
+                    prefManager.clearPref()
                     LoginDashboardActivity.getInstance(requireContext())
                 }
 
@@ -226,7 +218,8 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
     override fun onResume() {
         super.onResume()
         loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
-        binding.txtWelcomeTitle.text = CommonUtils.getCurrentTimeMessage(requireContext()).plus(" "+loginData?.name+"!")
+        binding.txtWelcomeTitle.text = CommonUtils.getCurrentTimeMessage(requireContext())
+//            .plus(" "+loginData?.name+"!")
     }
     override fun avatarProfileCloseDialog() {
         val id = prefManager.getCustomParamInt(Constants.avatarId,1)

@@ -29,16 +29,15 @@ import com.mohammedalaa.seekbar.OnRangeSeekBarChangeListener
 import com.mohammedalaa.seekbar.RangeSeekBarView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClickListener {
     private lateinit var binding: FragmentSettingsBinding
-    private var isPurchased = false
     private lateinit var mNavController: NavController
     private lateinit var abacusThemeFreeAdapter: AbacusThemeSelectionsAdapter
     private lateinit var abacusThemePaidAdapter: AbacusThemeSelectionsAdapter
-    private var selectedFreePosition : Int = -1
-    private var selectedPaidPosition : Int = -1
+    private var selectedTheme: String = AppConstants.Settings.theam_Default
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
         binding = FragmentSettingsBinding.inflate(inflater, container, false)
         setNavigationGraph()
@@ -47,32 +46,25 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
         return binding.root
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() {
-        with(prefManager){
-            isPurchased = (getCustomParam(AppConstants.Purchase.Purchase_All, "") == "Y"
-                    || getCustomParam(AppConstants.Purchase.Purchase_Toddler_Single_digit_level1,"") == "Y"
-                    || getCustomParam(AppConstants.Purchase.Purchase_Add_Sub_level2,"") == "Y"
-                    || getCustomParam(AppConstants.Purchase.Purchase_Mul_Div_level3,"") == "Y")
-            binding.isPurchased = isPurchased
-        }
+        binding.spaceNotch.layoutParams.width = prefManager.getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
+        selectedTheme = prefManager.getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default)
+        setPreviewTheme(selectedTheme)
 
         binding.recyclerviewAbacusDefault.post {
             val columnFree = CommonUtils.calculateNoOfColumns((resources.getDimension(R.dimen.bead_column).toInt().dp.toFloat()),binding.recyclerviewAbacusDefault.width.dp.toFloat())
             binding.recyclerviewAbacusDefault.layoutManager = GridLayoutManager(requireContext(),columnFree)
-            abacusThemeFreeAdapter = AbacusThemeSelectionsAdapter(DataProvider.getAbacusThemeFreeTypeList(requireContext(),AbacusBeadType.SettingPreview),this@SettingsFragment, selectedFreePosition)
+            abacusThemeFreeAdapter = AbacusThemeSelectionsAdapter(DataProvider.getAbacusThemeFreeTypeList(requireContext(),AbacusBeadType.SettingPreview),this@SettingsFragment, selectedTheme = selectedTheme)
             binding.recyclerviewAbacusDefault.adapter = abacusThemeFreeAdapter
 
             val columnPaid = CommonUtils.calculateNoOfColumns((resources.getDimension(R.dimen.bead_column_paid).toInt().dp.toFloat()),binding.recyclerviewAbacusDefault.width.dp.toFloat())
             binding.recyclerviewAbacusPaid.layoutManager = GridLayoutManager(requireContext(),columnPaid)
-            abacusThemePaidAdapter = AbacusThemeSelectionsAdapter(DataProvider.getAbacusThemePaidTypeList(requireContext(),AbacusBeadType.SettingPreview),this@SettingsFragment, selectedPaidPosition, true)
+            abacusThemePaidAdapter = AbacusThemeSelectionsAdapter(DataProvider.getAbacusThemePaidTypeList(requireContext(),AbacusBeadType.SettingPreview),this@SettingsFragment, isPaidTheme = true, selectedTheme = selectedTheme)
             binding.recyclerviewAbacusPaid.adapter = abacusThemePaidAdapter
-
-            setTheme()
         }
         setSettings()
-        setAbacusAnswer()
     }
 
     private fun initListener() {
@@ -93,52 +85,12 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
 
         binding.relVoiceSettings.onClick { voiceController?.show() }
 
-        binding.cardSubscribe.onClick { goToInAppPurchase() }
-
         binding.relHintSound.onClick { onOnOffClick(AppConstants.Settings.Setting__hint_sound,binding.isHintSound) }
-        binding.swHintSound.onClick { onOnOffClick(AppConstants.Settings.Setting__hint_sound,binding.isHintSound) }
-
+        binding.relAbacusDirection.onClick { onOnOffClick(AppConstants.Settings.Setting_direction,binding.isShowBeadDirection) }
         binding.relAbacusSound.onClick { onOnOffClick(AppConstants.Settings.Setting_sound,binding.isAbacusSound) }
-        binding.swSound.onClick { onOnOffClick(AppConstants.Settings.Setting_sound,binding.isAbacusSound) }
-
-        binding.relAutoReset.onClick { onOnOffClick(AppConstants.Settings.Setting_auto_reset_abacus,binding.isAutoReset) }
-        binding.swAutoReset.onClick { onOnOffClick(AppConstants.Settings.Setting_auto_reset_abacus,binding.isAutoReset) }
-
-        binding.relNumberPuzzleSound.onClick { onOnOffClick(AppConstants.Settings.Setting_NumberPuzzleVolume,binding.isNumberPuzzleSound) }
-        binding.swNumberPuzzleSound.onClick { onOnOffClick(AppConstants.Settings.Setting_NumberPuzzleVolume,binding.isNumberPuzzleSound) }
-
         binding.relDisplayAbacusNumber.onClick { onOnOffClick(AppConstants.Settings.Setting_display_abacus_number,binding.isDisplayAbacusNumber) }
-        binding.swDisplayAbacusNumber.onClick { onOnOffClick(AppConstants.Settings.Setting_display_abacus_number,binding.isDisplayAbacusNumber) }
-
         binding.relDisplayHelpMessage.onClick { onOnOffClick(AppConstants.Settings.Setting_display_help_message,binding.isDisplayHelpMessage) }
-        binding.swDisplayHelpMessage.onClick { onOnOffClick(AppConstants.Settings.Setting_display_help_message,binding.isDisplayHelpMessage) }
-
-        binding.relHideTable.onClick { onOnOffClick(AppConstants.Settings.Setting_hide_table,binding.isHideTable) }
-        binding.swHideTable.onClick { onOnOffClick(AppConstants.Settings.Setting_hide_table,binding.isHideTable) }
-
         binding.relLeftHand.onClick { onOnOffClick(AppConstants.Settings.Setting_left_hand,binding.isLeftHand) }
-        binding.swLeftHand.onClick { onOnOffClick(AppConstants.Settings.Setting_left_hand,binding.isLeftHand) }
-
-        binding.relAnswerStep.onClick { onAbacusAnswerClick(AppConstants.Settings.Setting_answer_Step) }
-        binding.relAnswerFinal.onClick { onAbacusAnswerClick(AppConstants.Settings.Setting_answer_Final) }
-        binding.relAnswerPhysical.onClick {
-            if (isPurchased){
-                onAbacusAnswerClick(AppConstants.Settings.Setting_answer_with_tools)
-            }else{
-                paidPlanDialog()
-            }
-        }
-
-    }
-    private fun paidPlanDialog() {
-        CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.txt_purchase_alert), getString(R.string.need_paid_plan_msg),
-            getString(R.string.yes_i_want_to_purchase),getString(R.string.no_purchase_later), icon = R.drawable.ic_alert_not_purchased,
-            clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
-                override fun onConfirmationYesClick(bundle: Bundle?) {
-                    goToInAppPurchase()
-                }
-                override fun onConfirmationNoClick(bundle: Bundle?) = Unit
-            })
     }
 
     private fun setSettings() {
@@ -148,42 +100,16 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
 
             binding.isDisplayAbacusNumber = getCustomParamBoolean(AppConstants.Settings.Setting_display_abacus_number, true)
 
-            binding.isHideTable = getCustomParamBoolean(AppConstants.Settings.Setting_hide_table, false)
-
             binding.isLeftHand = getCustomParamBoolean(AppConstants.Settings.Setting_left_hand, true)
 
             binding.isHintSound = getCustomParamBoolean(AppConstants.Settings.Setting__hint_sound, false)
 
+            binding.isShowBeadDirection = getCustomParamBoolean(AppConstants.Settings.Setting_direction, true)
+
             binding.isAbacusSound = getCustomParamBoolean(AppConstants.Settings.Setting_sound, true)
-
-            binding.isAutoReset = getCustomParamBoolean(AppConstants.Settings.Setting_auto_reset_abacus, false)
-
-            binding.isNumberPuzzleSound = getCustomParamBoolean(AppConstants.Settings.Setting_NumberPuzzleVolume, true)
         }
 
     }
-    private fun setTheme() {
-        selectedFreePosition = -1
-        selectedPaidPosition = -1
-        val freeList = DataProvider.getAbacusThemeFreeTypeList(requireContext(),AbacusBeadType.SettingPreview)
-        if (prefManager.getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default).contains(AppConstants.Settings.theam_Default,true)){
-            val position : Int? = freeList.indexOfFirst { it.type.equals(prefManager.getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default),true) }
-            if (position != null && position != -1){
-                selectedFreePosition = position
-                setPreviewTheme(freeList[position].type)
-            }
-        }else{
-            val paidList = DataProvider.getAbacusThemePaidTypeList(requireContext(),AbacusBeadType.SettingPreview)
-            val position : Int? = paidList.indexOfFirst { it.type.equals(prefManager.getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default),true) }
-            if (position != null && position != -1){
-                selectedPaidPosition = position
-                setPreviewTheme(paidList[position].type)
-            }
-        }
-        abacusThemeFreeAdapter.selectedPos(selectedFreePosition)
-        abacusThemePaidAdapter.selectedPos(selectedPaidPosition)
-    }
-
     private fun setPreviewTheme(theme : String) {
         prefManager.setCustomParam(AppConstants.Settings.TheamTempView,theme)
         binding.linearAbacus.removeAllViews()
@@ -219,18 +145,17 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
     }
 
     override fun onThemePoligonItemClick(data: AbacusContent) {
-        onThemeClick(data.type)
-    }
+        val themeType = data.type
+        if (themeType != prefManager.getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default)){
 
-    private fun setAbacusAnswer() {
-        binding.isStepByStep = prefManager.getCustomParam(AppConstants.Settings.Setting_answer,AppConstants.Settings.Setting_answer_Step) == AppConstants.Settings.Setting_answer_Step
-        binding.isFinalAnswer = prefManager.getCustomParam(AppConstants.Settings.Setting_answer,AppConstants.Settings.Setting_answer_Step) == AppConstants.Settings.Setting_answer_Final
-        binding.isAnswerWithTool = prefManager.getCustomParam(AppConstants.Settings.Setting_answer,AppConstants.Settings.Setting_answer_Step) == AppConstants.Settings.Setting_answer_with_tools
-    }
+            abacusThemeFreeAdapter.updateSelection(selectedTheme,themeType)
+            abacusThemePaidAdapter.updateSelection(selectedTheme,themeType)
 
-    private fun onAbacusAnswerClick(answerType: String) {
-        prefManager.setCustomParam(AppConstants.Settings.Setting_answer,answerType)
-        setAbacusAnswer()
+            prefManager.setCustomParam(AppConstants.Settings.Theam,themeType)
+            selectedTheme = themeType
+
+            setPreviewTheme(themeType)
+        }
     }
 
     private fun onOnOffClick(type: String, isChecked: Boolean?) {
@@ -238,12 +163,7 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
             if (isChecked == true){
                 prefManager.setCustomParamBoolean(type, false)
             }else{
-                if (isPurchased){
-                    prefManager.setCustomParamBoolean(type, true)
-                }else{
-                    prefManager.setCustomParamBoolean(type, false)
-                    paidPlanDialog()
-                }
+                prefManager.setCustomParamBoolean(type, true)
             }
         }else{
             if (isChecked == true){
@@ -255,28 +175,4 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
         }
         setSettings()
     }
-
-    private fun onThemeClick(themeType: String) {
-        if (themeType != prefManager.getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default)){
-
-            when {
-                themeType.contains(AppConstants.Settings.theam_Default,true) -> {
-                    prefManager.setCustomParam(AppConstants.Settings.Theam,themeType)
-                    abacusThemePaidAdapter.selectedPos(-1)
-                }
-                isPurchased -> {
-                    prefManager.setCustomParam(AppConstants.Settings.Theam,themeType)
-                    abacusThemeFreeAdapter.selectedPos(-1)
-                }
-                else -> {
-                    abacusThemeFreeAdapter.selectedPos(-1)
-                    paidPlanDialog()
-                }
-            }
-            setPreviewTheme(themeType)
-        }
-    }
-
-
-
 }

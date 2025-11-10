@@ -14,13 +14,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.admanager.AdManagerAdRequest
-import com.google.android.gms.ads.admanager.AdManagerInterstitialAd
-import com.google.android.gms.ads.admanager.AdManagerInterstitialAdLoadCallback
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.jigar.me.R
@@ -36,6 +29,7 @@ import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottom
 import com.jigar.me.ui.view.confirm_alerts.dialogs.ExerciseCompleteDialog
 import com.jigar.me.ui.view.dashboard.fragments.exercise.adapter.ExerciseAdditionSubtractionAdapter
 import com.jigar.me.ui.view.dashboard.fragments.exercise.adapter.ExerciseLevelPagerAdapter
+import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.ExamViewModel
 import com.jigar.me.utils.*
 import com.jigar.me.utils.extensions.*
@@ -43,19 +37,20 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.ticker
 import java.util.concurrent.TimeUnit
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAbacusValueChangeListener,
     ExerciseLevelPagerAdapter.OnItemClickListener,
     ExerciseCompleteDialog.ExerciseCompleteDialogInterface {
     private val examViewModel by viewModels<ExamViewModel>()
+    private val appViewModel by viewModels<AppViewModel>()
     private lateinit var binding: FragmentExerciseHomeBinding
     private var abacusBinding: FragmentAbacusExerciseBinding? = null
     private lateinit var mNavController: NavController
     private var valuesAnswer: Int = -1
     private var currentSumVal = 0L
     private var totalTimeLeft = 0L
-    private var isPurchased = false
     private var themeContent : AbacusContent? = null
     private var theme = AppConstants.Settings.theam_Default
     private var isResetRunning = false
@@ -77,40 +72,17 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
         setNavigationGraph()
         initViews()
         initListener()
-        ads()
         return binding.root
     }
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
-    }
-    private fun ads() {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y" // local
-            && prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y" && // if yes in firebase
-            (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All,"") != "Y" // if not purchased
-                    && prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y")) {
-            showAMBannerAds(binding.adView,getString(R.string.banner_ad_unit_id_exercise))
-        }
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() {
-        if (prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_left_hand, true)){
-            setLeftAbacusRules()
-        }else{
-            setRightAbacusRules()
-        }
+        setLeftAbacusRules()
         mCalculator = Calculator()
         with(prefManager){
-            isPurchased = getCustomParam(AppConstants.Purchase.Purchase_All,"") == "Y"
-            if (isPurchased){
-                setCustomParam(AppConstants.Settings.TheamTempView,getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default))
-            }else{
-                if (getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default).contains(AppConstants.Settings.theam_Default,true)){
-                    setCustomParam(AppConstants.Settings.TheamTempView,getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default))
-                }else{
-                    setCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
-                }
-            }
+            setCustomParam(AppConstants.Settings.TheamTempView,getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default))
             theme = getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
-
         }
 
         themeContent = DataProvider.findAbacusThemeType(requireContext(),theme,AbacusBeadType.Exercise)
@@ -160,7 +132,7 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
         binding.txtNext.onClick {
             if(requireContext().isNetworkAvailable){
                 if (binding.tvAnswer.text.toString().isNotEmpty() && binding.tvAnswer.text.toString() != "0"){
-                    listExerciseAdditionSubtraction[exercisePosition].userAnswer = binding.tvAnswer.text.toString().toInt()
+                    listExerciseAdditionSubtraction[exercisePosition].userAnswer = binding.tvAnswer.text.toString()
                 }
                 abacusBinding?.ivReset?.performClick()
                 if (exercisePosition < listExerciseAdditionSubtraction.lastIndex){
@@ -201,7 +173,7 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
 
     private fun onSuccess() {
         PlaySound.play(requireContext(), PlaySound.number_puzzle_win)
-        newInterstitialAdCompleteExercise()
+        showCompleteDialog()
     }
 
     private fun addKeyboardValue(value : String){
@@ -288,7 +260,7 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
     override fun exerciseCompleteCloseDialog() {
         val currentPos = binding.viewPager.currentItem
         val list = exerciseLevelPagerAdapter.listData
-        exerciseLevelPagerAdapter = ExerciseLevelPagerAdapter(list,prefManager,this@ExerciseHomeFragment)
+        exerciseLevelPagerAdapter = ExerciseLevelPagerAdapter(list,prefManager,this@ExerciseHomeFragment,themeContent)
         binding.viewPager.adapter = exerciseLevelPagerAdapter
         binding.viewPager.currentItem = currentPos
 
@@ -298,30 +270,14 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
         binding.cardBack.show()
     }
     override fun onExerciseStartClick() {
-        if (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All,"").equals("Y",true)){
-            startInit()
-        }else {
-            getStatisticData(object : Companion.StatisticApiResponseListener{
-                override fun statisticApiData(data: JsonObject?) {
-                    val response = Gson().fromJson(data, Statistics::class.java)
-                    if (response.EXERCISE?.can_give_exam == true){
-                        startInit()
-                    }else{
-                        canNotAccess()
-                    }
-                }
-            })
+        lifecycleScope.launch {
+            val purchasedSKU = appViewModel.getInAppSKUPurchased()
+            if (CommonUtils.checkPurchaseForExerciseExamCCM(prefManager,purchasedSKU)){
+                startInit()
+            }else{
+                goToInAppPurchase()
+            }
         }
-    }
-    private fun canNotAccess() {
-        CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.exercise_subcribe_title),getString(R.string.exercise_subcribe_msg)
-            ,getString(R.string.yes_i_want_to_purchase),getString(R.string.no_purchase_later), icon = R.drawable.ic_alert_sad_emoji,isCancelable = false,
-            clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
-                override fun onConfirmationYesClick(bundle: Bundle?) {
-                    goToInAppPurchase()
-                }
-                override fun onConfirmationNoClick(bundle: Bundle?) = Unit
-            })
     }
 
     private fun startInit() {
@@ -344,18 +300,21 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
                         binding.recyclerviewExercise.show()
                         binding.txtMultiplication.hide()
                         listExerciseAdditionSubtraction = DataProvider.generateAdditionSubExercise(childData)
+//                        listExerciseAdditionSubtraction = DataProvider.generateAdditionSubExerciseTemp(childData)
                         setQuestions()
                     }
                     "2" -> {
                         binding.recyclerviewExercise.hide()
                         binding.txtMultiplication.show()
                         listExerciseAdditionSubtraction = DataProvider.generateMultiplicationExercise(childData)
+//                        listExerciseAdditionSubtraction = DataProvider.generateMultiplication3_Temp(childData)
                         setQuestions()
                     }
                     "3" -> {
                         binding.recyclerviewExercise.hide()
                         binding.txtMultiplication.show()
                         listExerciseAdditionSubtraction = DataProvider.generateDivisionExercise(childData)
+//                        listExerciseAdditionSubtraction = DataProvider.generateDivisionTemp(childData)
 
                         setQuestions()
                     }
@@ -374,13 +333,13 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
         tickerChannel = ticker(delayMillis = 1000, initialDelayMillis = 0)
         launch {
             for (event in tickerChannel) {
-                CoroutineScope(Dispatchers.Main).launch {
+                lifecycleScope.launch {
                     val time = DateTimeUtils.displayDurationHourMinSec(totalTimeLeft)
                     binding.txtTimer.text = time
                 }
                 totalTimeLeft--
                 if (totalTimeLeft == 0L){
-                    CoroutineScope(Dispatchers.Main).launch {
+                    lifecycleScope.launch {
                         openCompleteDialog()
                     }
                     break
@@ -419,7 +378,7 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
                 val question = it.question
                 val resultObject = mCalculator.getResult(question,question)
                 val correctAns = CommonUtils.removeTrailingZero(resultObject)
-                if (it.userAnswer == -1){
+                if (it.userAnswer.isNullOrEmpty()){
                     questionsList.add(QuestionDataRequest(it.question,"",(correctAns == it.userAnswer.toString())))
                 }else{
                     questionsList.add(QuestionDataRequest(it.question,it.userAnswer.toString(),(correctAns == it.userAnswer.toString())))
@@ -450,7 +409,7 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
     private fun setQuestions() {
         if (listExerciseAdditionSubtraction.lastIndex >= exercisePosition){
             binding.txtNext.isEnabled = true
-            valuesAnswer = listExerciseAdditionSubtraction[exercisePosition].answer
+            valuesAnswer = listExerciseAdditionSubtraction[exercisePosition].answer.toInt()
             binding.txtQueLabel.text = "Q".plus((exercisePosition+1))
 
             if (currentParentData?.id == "1"){
@@ -511,16 +470,22 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
         themeContent?.abacusFrame135?.let { abacusBinding?.rlAbacusMain?.setBackgroundResource(it) }
         themeContent?.dividerColor1?.let { abacusBinding?.ivDivider?.setBackgroundColor(ContextCompat.getColor(requireContext(),it)) }
         themeContent?.resetBtnColor8?.let {
-            abacusBinding?.imgDot1?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.imgDot4?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.imgDot7?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+
+            abacusBinding?.imgDot1?.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)
+            abacusBinding?.imgDot1?.layoutParams?.width = 3.dp
+            abacusBinding?.imgDot1?.layoutParams?.height = 3.dp
+
             abacusBinding?.ivReset?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.ivRight?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
             abacusBinding?.ivLeft?.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
         }
 
-        abacusBinding?.abacusTop?.setNoOfRowAndBeads(0, 7, 1,AbacusBeadType.Exercise)
-        abacusBinding?.abacusBottom?.setNoOfRowAndBeads(0, 7, 4,AbacusBeadType.Exercise)
+        themeContent?.let{
+            abacusBinding?.abacusTop?.setNoOfRowAndBeadsNew(theme,it,0, 7, 1,AbacusBeadType.Exercise,6)
+            abacusBinding?.abacusBottom?.setNoOfRowAndBeadsNew(theme,it,0, 7, 4,AbacusBeadType.Exercise,6)
+        }
 
         abacusBinding?.abacusTop?.onBeadShiftListener = this
         abacusBinding?.abacusBottom?.onBeadShiftListener = this
@@ -590,6 +555,8 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
         resetAbacus()
     }
 
+    override fun onAbacusSubmitValue(userAnswer : String) = Unit
+
     private fun resetAbacus() {
         abacusBinding?.abacusTop?.reset()
         abacusBinding?.abacusBottom?.reset()
@@ -620,62 +587,9 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
         tickerChannel.cancel()
     }
 
-    private fun newInterstitialAdCompleteExercise() {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y" &&
-            prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y" &&
-            (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All,"") != "Y" && // purchase not
-                    prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y")
-        ){
-            showLoading()
-            val isAdmob = prefManager.getCustomParamBoolean(AppConstants.AbacusProgress.isAdmob,true)
-            val adUnit = getString(R.string.interstitial_ad_unit_id_exercise)
-            if (isAdmob){
-                val adRequest = AdRequest.Builder().build()
-                InterstitialAd.load(requireContext(), adUnit, adRequest, object : InterstitialAdLoadCallback() {
-                    override fun onAdFailedToLoad(adError: LoadAdError) {
-                        hideLoading()
-                        showCompleteDialog()
-                    }
-
-                    override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                        hideLoading()
-                        // Show the ad if it's ready. Otherwise toast and reload the ad.
-                        interstitialAd.show(requireActivity())
-                        lifecycleScope.launch {
-                            delay(400)
-                            showCompleteDialog()
-                        }
-                    }
-                })
-            }else{
-                val adRequest = AdManagerAdRequest.Builder().build()
-                AdManagerInterstitialAd.load(requireContext(),adUnit, adRequest, object : AdManagerInterstitialAdLoadCallback() {
-                    override fun onAdFailedToLoad(adError: LoadAdError) {
-                        hideLoading()
-                        showCompleteDialog()
-                    }
-
-                    override fun onAdLoaded(interstitialAd: AdManagerInterstitialAd) {
-                        hideLoading()
-                        // Show the ad if it's ready. Otherwise toast and reload the ad.
-                        interstitialAd.show(requireActivity())
-                        lifecycleScope.launch {
-                            delay(400)
-                            showCompleteDialog()
-                        }
-                    }
-                })
-            }
-
-        }else{
-            showCompleteDialog()
-        }
-
-    }
-
     private fun showCompleteDialog() {
         if (ExerciseCompleteDialog.alertdialog?.isShowing != true){
-            ExerciseCompleteDialog.showPopup(requireContext(),listExerciseAdditionSubtraction,prefManager,currentParentData,currentChildData,this@ExerciseHomeFragment)
+            ExerciseCompleteDialog.showPopup(requireContext(),null, listExerciseAdditionSubtraction,this@ExerciseHomeFragment)
         }
     }
 

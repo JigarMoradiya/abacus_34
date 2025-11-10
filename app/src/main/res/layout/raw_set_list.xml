@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="dataModel"
+            type="com.jigar.me.data.model.dbtable.abacus_all_data.Set" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardMain"
+            android:layout_marginHorizontal="@dimen/activity_padding2"
+            android:layout_marginTop="@dimen/activity_padding3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardCornerRadius="@dimen/card_corner_radius8"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/step_by_step_answer"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/conMain"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgTimer"
+                    android:layout_width="@dimen/activity_padding16"
+                    android:layout_height="@dimen/activity_padding16"
+                    android:visibility="@{dataModel.show_time_setting?View.VISIBLE:View.GONE,default=gone}"
+                    app:srcCompat="@drawable/ic_timer_on_new"
+                    app:tint="@color/white"
+                    android:layout_gravity="center"
+                    tools:visibility="visible" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtTitle"
+                    android:paddingVertical="@dimen/activity_padding4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:layout_marginStart="@dimen/activity_padding4"
+                    android:singleLine="true"
+                    android:text="@{dataModel.getSetTitle()}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textSizeLarge"
+                    app:fontFamily="@font/font_bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Set 1" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           app:layout_constraintEnd_toEndOf="@+id/cardMain"
+           app:layout_constraintTop_toTopOf="parent"
+           android:orientation="horizontal">
+           <androidx.appcompat.widget.AppCompatImageView
+               android:id="@+id/imgCompletedIndicator"
+               android:layout_width="@dimen/activity_padding8"
+               android:layout_height="@dimen/activity_padding8"
+               android:background="@drawable/circle_continue_page"
+               android:backgroundTint="@color/green_A400"
+               android:visibility="gone"
+               tools:visibility="visible" />
+
+           <androidx.appcompat.widget.AppCompatImageView
+               android:id="@+id/imgRunningIndicator"
+               android:layout_marginStart="@dimen/activity_padding2"
+               android:layout_width="@dimen/activity_padding8"
+               android:layout_height="@dimen/activity_padding8"
+               android:background="@drawable/circle_continue_page"
+               android:backgroundTint="@color/red_A400"
+               android:visibility="gone"
+               tools:visibility="visible" />
+
+       </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

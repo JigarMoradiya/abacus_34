@@ -2,6 +2,7 @@ package com.jigar.me.utils
 
 import android.os.Build
 import android.text.TextUtils
+import android.util.Log
 import androidx.annotation.RequiresApi
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -9,12 +10,32 @@ import java.time.LocalDate
 import java.time.ZoneId
 import java.util.*
 
+fun String.toDate(
+    dateFormat: String = DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz,
+    timeZone: TimeZone = TimeZone.getTimeZone("UTC"),
+): Date {
+    val parser = SimpleDateFormat(dateFormat, Locale.getDefault())
+    parser.timeZone = timeZone
+    return parser.parse(this)
+}
+
+fun Date.formatTo(
+    dateFormat: String,
+    timeZone: TimeZone = TimeZone.getDefault(),
+): String {
+    val formatter = SimpleDateFormat(
+        dateFormat, Locale.getDefault()
+    )
+    formatter.timeZone = timeZone
+    return formatter.format(this)
+}
 object DateTimeUtils {
     var yyyy_MM_dd_T_HH_mm_ss_sssz: String = "yyyy-MM-dd'T'HH:mm:ss.sss'Z'"
     var ddMMMyyyyhhmma: String = "dd MMM yyyy hh:mm a"
     var yyyy_MM_dd_HH_mm: String = "yyyy_MM_dd_hh_mm"
     var MMMM_dd_yyyy: String = "MMMM dd, yyyy"
     var dd_MMM_yyyy: String = "dd, MMM yyyy"
+    var dd_MMMM_yyyy: String = "dd MMMM yyyy"
     var yyyy_MM_dd: String = "yyyy-MM-dd"
     var hh_mm_a: String = "'at' hh:mm a"
     var at_dd_mmm_yy_hh_mm_a: String = "'At' dd MMM-yy hh:mm a"
@@ -76,6 +97,7 @@ object DateTimeUtils {
                 now.get(Calendar.MONTH) == cdate.get(Calendar.MONTH) &&
                 now.get(Calendar.DATE) == cdate.get(Calendar.DATE)
     }
+
     fun convertDateFormatFromUTC(
         date: String?,
         sourceStr: String,
@@ -86,7 +108,6 @@ object DateTimeUtils {
         val source = SimpleDateFormat(sourceStr, Locale.getDefault())
 
         source.timeZone = TimeZone.getTimeZone("UTC")
-
         try {
             if (!TextUtils.isEmpty(date)) {
                 newDate = date?.let { source.parse(it) }

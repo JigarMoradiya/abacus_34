@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.google.gson.Gson
 import com.jigar.me.R
 import com.jigar.me.data.model.dbtable.exam.ExamHistory
@@ -56,7 +57,7 @@ class ExamHistoryTabFragment : BaseFragment(), ExamHistoryListAdapter.OnItemClic
         }
     }
     private fun fetchExamHistoryList(data: List<ExamHistory>) {
-        CoroutineScope(Dispatchers.Main).launch{
+        lifecycleScope.launch{
             if (data.isNullOrEmpty()){
                 binding.recyclerview.hide()
                 binding.noDataView.show()

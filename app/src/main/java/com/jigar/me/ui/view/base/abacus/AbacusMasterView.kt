@@ -8,10 +8,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import com.jigar.me.R
@@ -91,7 +91,7 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
             while (!isStopDrawing && !isInterrupted) {
                 if (isSleep) {
                     try {
-                        sleep(50)
+                        sleep(100)
                     } catch (e: InterruptedException) {
                         e.printStackTrace()
                     }
@@ -145,11 +145,14 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
     private var beadState: AbacusMasterEngine.BeadState? = null
     private var defaultState: AbacusMasterEngine.BeadState? = null
     internal var noOfColumn = 1
+    internal var noOfColumnUsed = 7
+    internal var unitRodColumnPosition = -1
     private var beadType = AbacusBeadType.Exam
     private var noOfRows_used = 9
     private val isBeadStackFromBottom: Boolean
     private val beadDrawables: Array<Drawable?>
     private var roadDrawable: Drawable?
+    private var unitRoadDrawable: Drawable?
     private var selectedBeadDrawable: Drawable?
     private var noOfBeads: Int
     val singleBeadValue: Int
@@ -160,7 +163,9 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        setNoOfRowAndBeads(noOfRows_used, noOfColumn, noOfBeads,beadType)
+        if (::abacusContent.isInitialized){
+            setNoOfRowAndBeadsNew(theme,abacusContent,noOfRows_used, noOfColumn, noOfBeads,beadType,unitRodColumnPosition,noOfColumnUsed)
+        }
     }
     private fun setBeads(noOfBeads: Int) {
         this.noOfBeads = noOfBeads
@@ -170,24 +175,45 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
             layoutParams = layoutParams
         }
     }
-    private fun setRow(noOfRows: Int) {
-        noOfColumn = noOfRows 
+    private fun setRow(noOfRows: Int,unitRodColumnPosition : Int, noOfColumnUsed : Int) {
+        noOfColumn = noOfRows
+        this.unitRodColumnPosition = unitRodColumnPosition
+        this.noOfColumnUsed = noOfColumnUsed
         if (beadDrawables.isNotEmpty()) {
             layoutParams.width = (abacusContent.beadWidth + colSpacing) * noOfRows
             layoutParams = layoutParams
         }
     }
 
-    fun setNoOfRowAndBeads(noOfRows_used: Int, noOfRows: Int, noOfBeads: Int, beadType : AbacusBeadType = AbacusBeadType.None) {
+    fun setNoOfRowAndBeads(noOfRows_used: Int, noOfRows: Int, noOfBeads: Int, beadType : AbacusBeadType = AbacusBeadType.None,unitRodPosition : Int = -1,noOfColumnUsed : Int = 13) {
+        Log.e("jigarBeadDimensions","setNoOfRowAndBeads old welcome")
         this.beadType = beadType
         this.noOfRows_used = noOfRows_used
+        this.unitRodColumnPosition = unitRodPosition
+        this.noOfColumnUsed = noOfColumnUsed
 
         theme = AppPreferencesHelper(context,AppConstants.PREF_NAME).getCustomParam(AppConstants.Settings.TheamTempView, AppConstants.Settings.theam_Default)
         abacusContent = DataProvider.findAbacusThemeType(context,theme,beadType)
         setThemeContent()
         colSpacing = abacusContent.beadSpace
 
-        setRow(noOfRows)
+        setRow(noOfRows,unitRodPosition,noOfColumnUsed)
+        setBeads(noOfBeads)
+        postInvalidate() // TODO
+    }
+
+    fun setNoOfRowAndBeadsNew(themes : String,abacus_content: AbacusContent,noOfRows_used: Int, noOfRows: Int, noOfBeads: Int, beadType : AbacusBeadType = AbacusBeadType.None,unitRodPosition : Int = -1,noOfColumnUsed : Int = 13) {
+        this.beadType = beadType
+        this.noOfRows_used = noOfRows_used
+        this.unitRodColumnPosition = unitRodPosition
+        this.noOfColumnUsed = noOfColumnUsed
+
+        theme = themes
+        abacusContent = abacus_content
+        setThemeContent()
+        colSpacing = abacusContent.beadSpace
+
+        setRow(noOfRows,unitRodPosition,noOfColumnUsed)
         setBeads(noOfBeads)
         postInvalidate() // TODO
     }
@@ -196,6 +222,11 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
         roadDrawable?.let {
             DrawableCompat.setTint(DrawableCompat.wrap(it), ContextCompat.getColor(context, abacusContent.dividerColor1))
         }
+        unitRoadDrawable?.let {
+//            val newColor = CommonUtils.mixTwoColors(ContextCompat.getColor(context, abacusContent.resetBtnColor8),ContextCompat.getColor(context, R.color.white),0.65F)
+            val newColor = ContextCompat.getColor(context, abacusContent.resetBtnColor8)
+            DrawableCompat.setTint(DrawableCompat.wrap(it), newColor)
+        }
 //        roadDrawable?.setTint(ContextCompat.getColor(context, abacusContent.dividerColor1))
 //        selectedBeadDrawable = ContextCompat.getDrawable(context, abacusContent.selectedBeadDrawable)
     }
@@ -203,7 +234,9 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
     private fun doDraw(canvas: Canvas?) {
         try {
             canvas?.drawColor(0, PorterDuff.Mode.CLEAR)
-            if (engine != null) engine?.draw(canvas)
+            canvas?.drawColor(Color.WHITE)  // or any color you want as background
+            if (engine != null)
+                engine?.draw(canvas)
         } catch (e: Exception) {
         }
     }
@@ -244,7 +277,7 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
                 selectedPositions?.let{
                     engine = AbacusMasterEngine(
                         it, noOfColumn, noOfBeads, singleBeadValue,
-                        context, roadDrawable, beadDrawables, isBeadStackFromBottom,
+                        context, roadDrawable,unitRoadDrawable,unitRodColumnPosition,noOfColumnUsed, beadDrawables, isBeadStackFromBottom,
                         abacusContent, extraHeight,beadType
                     )
                 }
@@ -281,7 +314,7 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
                                 showReadout() //refresh abacus value
                                 thread?.setSleep(true)
                                 setPositionCompleteListener?.onSetPositionComplete()
-                            }, 10
+                            }, 100
                         )
                     }
                 })
@@ -476,7 +509,7 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
                             thread?.pauseDrawing()
                         } catch (e: InterruptedException) {
                         }
-                    }, 3)
+                    }, 100)
                     true
                 }
                 else -> super.onTouchEvent(event)
@@ -514,7 +547,7 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
 
     fun reset() {
         if (defaultState != null) {
-            if (isSoundEnabled) {
+            if (isSoundEnabled && isBeadStackFromBottom) {
                 playResetSound(context)
             }
             thread?.setSleep(false)
@@ -528,23 +561,6 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
             beadState = defaultState
         }
     }
-
-//    fun resetAndSetNextRow() {
-//        if (defaultState != null) {
-//            if (isSoundEnabled) {
-//                playResetSound(context)
-//            }
-//            thread?.setSleep(false)
-//            engine?.setState(defaultState!!, true, object :
-//                AbacusMasterEngine.OnStateResetCompletedListener {
-//                override fun onStateResetCompleted() {
-//                    thread?.setSleep(true)
-//                    showReadout()
-//                }
-//            })
-//            beadState = defaultState
-//        }
-//    }
 
     fun quickReset() {
         if (defaultState != null) {
@@ -576,6 +592,7 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
         val array = context.obtainStyledAttributes(attrs, R.styleable.AbacusView)
         val id = array.getResourceId(R.styleable.AbacusView_beadDrawables, 0)
         roadDrawable = array.getDrawable(R.styleable.AbacusView_roadDrawable)
+        unitRoadDrawable = array.getDrawable(R.styleable.AbacusView_roadDrawable)
         selectedBeadDrawable = array.getDrawable(R.styleable.AbacusView_selectedBeadDrawable)
 
         noOfColumn = array.getInt(R.styleable.AbacusView_noOfRows, 1)

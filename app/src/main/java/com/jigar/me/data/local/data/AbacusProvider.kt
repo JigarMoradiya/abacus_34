@@ -1,10 +1,52 @@
 package com.jigar.me.data.local.data
 
 import com.jigar.me.data.model.AdditionSubtractionAbacus
+import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
 import com.jigar.me.utils.Constants
+import com.jigar.me.utils.extensions.sumToIntList
+import org.json.JSONObject
 import java.util.Random
 
 object AbacusProvider {
+    fun getHashMapList(currentAbacus: Abacus): java.util.ArrayList<java.util.HashMap<String, String>> {
+        val list_abacus = java.util.ArrayList<java.util.HashMap<String, String>>()
+        val que = currentAbacus.question
+//        val que = "999998/2"
+        var data: java.util.HashMap<String, String> = java.util.HashMap()
+        if (que.contains("*", true)) {
+            val list = que.split("*")
+            data[Constants.Que] = list[0]
+            data[Constants.Sign] = ""
+            list_abacus.add(data)
+            data = java.util.HashMap()
+            data[Constants.Que] = list[1]
+            data[Constants.Sign] = "*"
+            list_abacus.add(data)
+        } else if (que.contains("/", true)) {
+            val list = que.split("/")
+            data[Constants.Que] = list[0]
+            data[Constants.Sign] = ""
+            list_abacus.add(data)
+            data = java.util.HashMap()
+            data[Constants.Que] = list[1]
+            data[Constants.Sign] = "/"
+            list_abacus.add(data)
+        } else if (que.contains("+", true) || que.contains("-", true)) { // +, - ce("+", "$$+").replace("-", "$$-")
+            val list = que.sumToIntList()
+            var position = 0
+            list.map {
+                data = java.util.HashMap()
+                data[Constants.Que] = it.toString()
+                list_abacus.add(data)
+                position += 1
+            }
+        }else{
+            data[Constants.Que] = que
+            data[Constants.Sign] = ""
+            list_abacus.add(data)
+        }
+        return list_abacus
+    }
     fun numberListForAddition(number: Int): List<String> {
         val str = when (number) {
             0 -> {

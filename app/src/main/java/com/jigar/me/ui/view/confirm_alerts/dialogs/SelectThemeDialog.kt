@@ -44,24 +44,26 @@ object SelectThemeDialog {
                 listener.themeCloseDialogClick()
             }
 
-            var selectedFreePosition = -1
-            val freeList = DataProvider.getAbacusThemeFreeTypeList(activity,AbacusBeadType.ExamResult)
-            if (prefManager.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default).contains(AppConstants.Settings.theam_Default,true)){
-                val position : Int? = freeList.indexOfFirst { it.type.equals(prefManager.getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default),true) }
-                if (position != null && position != -1){
-                    selectedFreePosition = position
-                    val theme = freeList[position].type
-                    setAbacusBeads(theme,activity,prefManager,alertLayout)
-                }
-
-                val abacusThemeFreeAdapter = AbacusThemeSelectionsAdapter(DataProvider.getAbacusThemeFreeTypeList(activity,AbacusBeadType.Exam),object : AbacusThemeSelectionsAdapter.OnItemClickListener{
-                    override fun onThemePoligonItemClick(data: AbacusContent) {
-                        prefManager.setCustomParam(AppConstants.Settings.Theam,data.type)
-                        setAbacusBeads(data.type,activity,prefManager,alertLayout)
-                    }
-                }, selectedFreePosition)
-                recyclerviewAbacusDefault.adapter = abacusThemeFreeAdapter
+            val freeList = DataProvider.getAbacusThemeFreeTypeList(activity,AbacusBeadType.SettingPreview)
+            val position : Int = freeList.indexOfFirst { it.type.equals(prefManager.getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default),true) }
+            if (position != -1){
+                val theme = freeList[position].type
+                setAbacusBeads(theme,activity,prefManager,alertLayout)
             }
+
+            Log.e("jigarDialog","freeList = "+freeList.size)
+            val abacusThemeFreeAdapter = AbacusThemeSelectionsAdapter(freeList,object : AbacusThemeSelectionsAdapter.OnItemClickListener{
+                override fun onThemePoligonItemClick(data: AbacusContent) {
+                    val themeType = data.type
+                    if (themeType != prefManager.getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default)){
+                        val selectedTheme = prefManager.getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default)
+                        (recyclerviewAbacusDefault.adapter as AbacusThemeSelectionsAdapter).updateSelection(selectedTheme,themeType)
+                        prefManager.setCustomParam(AppConstants.Settings.Theam,themeType)
+                        setAbacusBeads(themeType,activity,prefManager,alertLayout)
+                    }
+                }
+            }, selectedTheme = prefManager.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default))
+            recyclerviewAbacusDefault.adapter = abacusThemeFreeAdapter
         }
 
         val windows = alertdialog?.window
@@ -103,7 +105,7 @@ object SelectThemeDialog {
                 abacusBinding.ivReset.setColorFilter(ContextCompat.getColor(activity,it), android.graphics.PorterDuff.Mode.SRC_IN)
                 txtPreview.setTextColor(ContextCompat.getColor(activity,it))
             }
-            AbacusUtils.setAbacusColumnTheme(AbacusBeadType.ExamResult,abacusBinding.abacusTop,abacusBinding.abacusBottom, column = 3)
+            AbacusUtils.setAbacusColumnTheme(AbacusBeadType.Exam,abacusBinding.abacusTop,abacusBinding.abacusBottom, column = 3)
             val number = DataProvider.generateSingleDigit(1, 998).toString()
             abacusBinding.tvCurrentVal.text = number
             AbacusUtils.setNumber(number,abacusBinding.abacusTop,abacusBinding.abacusBottom)

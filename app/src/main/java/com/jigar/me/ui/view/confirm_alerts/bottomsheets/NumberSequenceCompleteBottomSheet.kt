@@ -16,7 +16,7 @@ object NumberSequenceCompleteBottomSheet {
         bottomSheetDialog.setCancelable(true)
         bottomSheetDialog.setCanceledOnTouchOutside(true)
         with(sheetBinding){
-            tvDescription.text = String.format(activity.getString(R.string.you_completed_this_puzzle_in_moves,totalMoves.toString()))
+            tvDescription.text = String.format(activity.getString(R.string.you_completed_this_puzzle_in_moves),totalMoves.toString())
             val puzzleType = when (type) {
                 4 -> {
                     activity.getString(R.string._4_x_4_puzzle)
@@ -29,9 +29,9 @@ object NumberSequenceCompleteBottomSheet {
                 }
             }
             if (totalMoves <= bestMoves){
-                tvSubDescription.text = String.format(activity.getString(R.string.this_is_your_best_moves_in_puzzle, puzzleType))
+                tvSubDescription.text = String.format(activity.getString(R.string.this_is_your_best_moves_in_puzzle),puzzleType)
             }else{
-                tvSubDescription.text = String.format(activity.getString(R.string.but_your_best_moves_in_puzzle_is,puzzleType,"$bestMoves"))
+                tvSubDescription.text = String.format(activity.getString(R.string.but_your_best_moves_in_puzzle_is),puzzleType,"$bestMoves")
                 tvSubDescription.setTextColor(ContextCompat.getColor(activity,R.color.red))
             }
             btnYes.onClick {

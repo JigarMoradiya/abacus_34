@@ -11,6 +11,7 @@
         app:cardCornerRadius="@dimen/activity_padding12"
         app:cardElevation="@dimen/card_elevation"
         app:cardMaxElevation="@dimen/card_elevation"
+        app:strokeWidth="0dp"
         app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/activity_padding16"
                 style="@style/mainTitle"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:text="@string/txt_Toddler_Range" />
@@ -45,7 +47,6 @@
                 android:layout_marginStart="@dimen/activity_padding12"
                 android:layout_marginTop="@dimen/activity_padding12"
                 android:layout_marginEnd="@dimen/activity_padding4"
-                app:boxStrokeColor="@color/colorPrimary"
                 app:layout_constraintEnd_toStartOf="@+id/layout_edt_to"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/viewDivider">
@@ -71,7 +72,6 @@
                 android:layout_marginStart="@dimen/activity_padding4"
                 android:layout_marginTop="@dimen/activity_padding12"
                 android:layout_marginEnd="@dimen/activity_padding12"
-                app:boxStrokeColor="@color/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/layout_edt_from"
                 app:layout_constraintTop_toBottomOf="@+id/viewDivider">
@@ -116,7 +116,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnYes" />
 
-            <androidx.legacy.widget.Space
+            <Space
                 android:layout_width="match_parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnNo"
                 android:layout_height="@dimen/activity_padding8"/>

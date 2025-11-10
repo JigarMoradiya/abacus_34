@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.jigar.me.data.model.data.LoginData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/icons_margin2"
+            app:cardBackgroundColor="@color/light_back"
+            app:cardCornerRadius="@dimen/menu_icons_corner"
+            app:cardElevation="@dimen/card_elevation"
+            app:cardMaxElevation="@dimen/card_elevation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeWidth="0dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/menu_icons"
+                android:layout_height="@dimen/menu_icons"
+                android:padding="@dimen/menu_icons_padding"
+                app:srcCompat="@drawable/ic_back" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/icons_margin2"
+            android:layout_marginEnd="@dimen/icons_margin2"
+            android:adjustViewBounds="true"
+            app:layout_constraintBottom_toBottomOf="@+id/cardBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo_banner" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/txtNotes"
+            app:layout_constraintTop_toBottomOf="@+id/cardBack">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/activity_padding20">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtWelcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@string/review_submit"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize20"
+                    app:fontFamily="@font/font_extra_bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:textAllCaps="false" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtLable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding6"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:paddingBottom="@dimen/activity_padding8"
+                    android:text="@string/review_fill_detail"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeRegular"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtWelcome" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearReviewStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_padding1"
+                    android:layout_marginTop="@dimen/activity_padding16"
+                    android:background="@drawable/bg_all_curved_12_white"
+                    android:backgroundTint="@color/blue_grey_50"
+                    android:elevation="@dimen/card_elevation2"
+                    android:orientation="vertical"
+                    android:padding="@dimen/activity_padding12"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLable"
+                    tools:layout_editor_absoluteX="22dp"
+                    tools:visibility="visible">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtReviewAdminStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textSizeRegular"
+                        app:fontFamily="@font/font_bold"
+                        tools:text="Rejected" />
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtReviewAdminMsg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_padding2"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textSizeRegular"
+                        app:fontFamily="@font/font_semibold"
+                        tools:text="Your uploaded photo is not valid." />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.jigar.me.utils.widget.CustomSpinner
+                    android:id="@+id/spinnerFilter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding2"
+                    android:background="@null"
+                    android:popupBackground="@drawable/bg_all_curved_12_white"
+                    android:popupElevation="5dp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@+id/txtFilter"
+                    app:layout_constraintStart_toStartOf="@+id/txtFilter"
+                    app:layout_constraintTop_toBottomOf="@+id/txtFilter" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtFilter"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="@dimen/activity_padding16"
+                    android:background="@drawable/bg_all_curved_4_white_gray_border"
+                    android:drawableEnd="@drawable/baseline_arrow_drop_down"
+                    android:drawableTint="@color/black"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/activity_padding12"
+                    android:paddingEnd="@dimen/activity_padding6"
+                    android:singleLine="true"
+                    android:text="@string/select_level"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeMedium"
+                    app:fontFamily="@font/font_semibold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearReviewStatus" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtAddReviewImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding10"
+                    android:background="@drawable/bg_all_curved_4_gray_gray_border"
+                    android:paddingHorizontal="@dimen/activity_padding8"
+                    android:paddingVertical="@dimen/activity_padding4"
+                    android:text="@string/add_screenshot_of_application_review"
+                    android:textColor="@color/black"
+                    app:fontFamily="@font/font_medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtFilter" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgReview"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="@dimen/activity_padding10"
+                    android:scaleType="fitStart"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/txtAddReviewImage" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilDescription"
+                    style="@style/Widget.MyTheme.TextInputLayoutStyleWhite"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding8"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgReview">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:hint="@string/description"
+                        android:maxLines="5"
+                        android:minHeight="100dp"
+                        android:textSize="@dimen/textSizeLarge" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSubmit"
+                    style="@style/btnMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="@dimen/activity_padding20"
+                    android:text="@string/submit"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textSizeExtraLarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tilDescription" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/activity_padding12"
+                    app:layout_constraintTop_toBottomOf="@+id/btnSubmit" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtNotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="@dimen/activity_padding20"
+            android:paddingVertical="@dimen/activity_padding10"
+            android:text="@string/review_note"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSizeRegular"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

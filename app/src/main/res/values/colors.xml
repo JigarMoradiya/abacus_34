@@ -3,17 +3,22 @@
     <color name="white70">#70FFFFFF</color>
     <color name="gray_de">#DEDEDE</color>
     <color name="gray_c7">#C7C7C7</color>
+    <color name="free_trial_box">#22324E</color>
 
     <color name="brand_secondary">#878787</color>
     <color name="brand_alert">#ff0000</color>
+    <color name="brand_alert11">#D9000000</color>
 
-    <color name="colorPrimary">#0C085F</color>
-    <color name="colorPrimaryDark">#09064A</color>
-    <color name="colorAccent">#FF6F00</color>
+    <color name="colorSwitch1">#AB47BC</color>
+    <color name="colorPurpleDark">#6C197A</color>
+    <color name="colorPrimary">#246AF1</color>
+    <color name="colorPrimaryDark">#1656D3</color>
+    <color name="colorAccent">#F17624</color>
 
     <color name="tag_bg">#242424</color>
     <color name="white">#ffffff</color>
 
+    <color name="report_set_btn_bg">@color/formal_exam</color>
     <color name="report_exercise_btn_bg">#22717E</color>
     <color name="report_exam_btn_bg">#025740</color>
     <color name="report_ccm_btn_bg">#157368</color>
@@ -62,6 +67,13 @@
     <color name="gray_f2">#f2f2f2</color>
     <color name="handle_divider">#E3E3E3</color>
 
+    <color name="step_by_step_answer">@color/blue_600</color>
+    <color name="final_answer">@color/teal_600</color>
+    <color name="formal_exam">#C659A7</color>
+    <color name="step_by_step_answer_light">@color/blue_600</color>
+    <color name="final_answer_light">@color/teal_600</color>
+    <color name="formal_exam_light">#C659A7</color>
+
     <!--  Home menu  -->
     <color name="doneTick">#196E02</color>
     <color name="yellow_Rateus">#F4AB26</color>
@@ -92,6 +104,7 @@
 
     <color name="light_about_us">#F0F6FF</color>
     <color name="light_subscribe">#FBEAEA</color>
+    <color name="light_my_account">#FFEFEE</color>
     <color name="light_setting">#F2F1FF</color>
     <color name="light_faq">#FAFFF1</color>
     <color name="light_logout">#E1EBF3</color>
@@ -453,6 +466,9 @@
     <color name="amber_A400">#FFC400</color>
     <color name="amber_A700">#FFAB00</color>
 
+    <color name="temp_border__">#9199E2</color>
+    <color name="temp_bg_">#0D1764</color>
+
     <!--orange-->
     <color name="orange_50">#FFF3E0</color>
     <color name="orange_100">#FFE0B2</color>
@@ -469,6 +485,7 @@
     <color name="orange_A700">#FF6D00</color>
 
     <!--deep orange-->
+    <color name="deep_orange_20">#FFECE7</color>
     <color name="deep_orange_50">#FFE6DD</color>
     <color name="deep_orange_100">#FFCCBC</color>
     <color name="deep_orange_200">#FFAB91</color>

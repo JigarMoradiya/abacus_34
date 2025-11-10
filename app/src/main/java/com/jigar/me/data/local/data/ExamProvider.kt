@@ -2,13 +2,204 @@ package com.jigar.me.data.local.data
 
 import android.content.Context
 import android.util.Log
+import com.google.gson.Gson
+import com.google.gson.annotations.SerializedName
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Calculator
 import com.jigar.me.utils.CommonUtils
-import com.jigar.me.utils.Constants
+import kotlin.math.absoluteValue
 
 object ExamProvider {
+
+    // Enum to represent types of formulas
+    enum class AbacusFormulaType(val description: String) {
+        SMALL_FRIEND("Small Friend (+5)"),
+        SMALL_FRIEND_SUB("Small Friend (-5)"),
+        BIG_FRIEND("Big Friend (+10)"),
+        BIG_FRIEND_SUB("Big Friend (-10)"),
+        COMBINATION("Combination | Family (+)"),
+        COMBINATION_SUB("Combination | Family (-)"),
+        NONE(""),
+        Multiplication("Multiplication")
+    }
+
+    data class FormulaStep(
+        @SerializedName("v")
+        val value: Int,
+        @SerializedName("f")
+        val formulaUsed: String? = null,
+        @SerializedName("t")
+        val formulaType: String = AbacusFormulaType.NONE.description,
+        @SerializedName("i")
+        var index: Int = -1,
+        @SerializedName("c")
+        var isCarryFormula: Boolean = false,
+    )
+
+    fun detectFormulaSteps(initial: Int, steps: List<Int>): List<FormulaStep> {
+        val result = mutableListOf<FormulaStep>()
+        var current = initial
+
+        for ((stepIndex, step) in steps.withIndex()) {
+            val stepSign = if (step >= 0) 1 else -1
+
+            val maxLength = maxOf(current.toString().length, step.absoluteValue.toString().length)
+            val paddedCurrent = current.toString().padStart(maxLength, '0')
+            val paddedStep = step.absoluteValue.toString().padStart(maxLength, '0')
+
+            val currentDigits = paddedCurrent.map { it - '0' }.toMutableList()
+            val stepDigits = paddedStep.map { it - '0' }
+
+            var carry = 0
+
+            if (stepIndex > 0) {
+                for (i in (currentDigits.size - 1) downTo 0) {
+                    val fromDigit = currentDigits[i]
+                    var intermediate = fromDigit
+
+                    // 1. Apply carry and record formula if needed
+                    if (carry != 0) {
+                        val carryFormula = getFormulaFromDigitContext(intermediate, carry)
+                        if (carryFormula != null && carryFormula.formulaType != AbacusFormulaType.NONE.description) {
+                            result.add(carryFormula.copy(index = stepIndex,value = carry, isCarryFormula = true))
+                        }
+                        intermediate += carry
+                    }
+
+                    // 2. Apply step delta and record formula if needed
+                    val stepDigit = stepDigits.getOrNull(i) ?: 0
+                    val delta = stepDigit * stepSign
+
+                    // ⚠️ Use updated intermediate after carry to compute delta
+                    if (delta != 0) {
+                        val formula = getFormulaFromDigitContext(intermediate, delta)
+                        if (formula!= null && formula.formulaType != AbacusFormulaType.NONE.description) {
+                            result.add(formula.copy(index = stepIndex,value = delta))
+                        }
+                        intermediate += delta
+                    }
+
+                    // 3. Update carry for next index
+                    carry = when {
+                        intermediate >= 10 -> 1
+                        intermediate < 0 -> -1
+                        else -> 0
+                    }
+
+                    // 4. Store back digit after both carry and step
+                    currentDigits[i] = ((intermediate % 10 + 10) % 10)
+                }
+            }
+
+            current += step
+        }
+
+        return result
+    }
+
+
+    private fun getFormulaFromDigitContext(from: Int, delta: Int): FormulaStep? {
+        if (delta == 0) return null
+        val fromDigit = from % 10
+        val bottomBeads = fromDigit % 5
+//        val topBead = if (fromDigit >= 5) 1 else 0
+
+        // --- Small Friend Addition ---
+        if (delta in 1..4 && fromDigit + delta >= 5 && fromDigit < 5) {
+            val friend = 5 - delta
+            return FormulaStep(delta, "+$delta=-$friend+5", AbacusFormulaType.SMALL_FRIEND.description)
+        }
+
+        // --- Small Friend Subtraction ---
+        if ((delta in (-4..-1)) && ((fromDigit-5) < -delta) && (fromDigit >= 5) && (from >= 5)) {
+            val friend = 5+delta
+            return FormulaStep(delta, "$delta=-5+$friend", AbacusFormulaType.SMALL_FRIEND_SUB.description)
+        }
+
+
+        // --- Big Friend Addition ---
+        if (delta in 1..5 && fromDigit + delta >= 10) {
+            return when (delta) {
+                1 -> FormulaStep(delta, "+1=-9+10", AbacusFormulaType.BIG_FRIEND.description)
+                2 -> FormulaStep(delta, "+2=-8+10", AbacusFormulaType.BIG_FRIEND.description)
+                3 -> FormulaStep(delta, "+3=-7+10", AbacusFormulaType.BIG_FRIEND.description)
+                4 -> FormulaStep(delta, "+4=-6+10", AbacusFormulaType.BIG_FRIEND.description)
+                5 -> FormulaStep(delta, "+5=-5+10", AbacusFormulaType.BIG_FRIEND.description)
+                else -> FormulaStep(delta)
+            }
+        }
+
+        // --- Big Friend Addition or Combination ---
+        if (delta in 6..9 && fromDigit + delta >= 10) {
+
+            return when (delta) {
+                6 -> if (bottomBeads >= 4) FormulaStep(delta, "+6=-4+10", AbacusFormulaType.BIG_FRIEND.description)
+                else FormulaStep(delta, "+6=-5+1+10", AbacusFormulaType.COMBINATION.description)
+
+                7 -> if (bottomBeads >= 3) FormulaStep(delta, "+7=-3+10", AbacusFormulaType.BIG_FRIEND.description)
+                else FormulaStep(delta, "+7=-5+2+10", AbacusFormulaType.COMBINATION.description)
+
+                8 -> if (bottomBeads >= 2) FormulaStep(delta, "+8=-2+10", AbacusFormulaType.BIG_FRIEND.description)
+                else FormulaStep(delta, "+8=-5+3+10", AbacusFormulaType.COMBINATION.description)
+
+                9 -> if (bottomBeads >= 1) FormulaStep(delta, "+9=-1+10", AbacusFormulaType.BIG_FRIEND.description)
+                else FormulaStep(delta, "+9=-5+4+10", AbacusFormulaType.COMBINATION.description)
+
+                else -> null
+            }
+        }
+
+
+        // --- Big Friend Subtraction or Combination Subtraction ---
+        if (delta in -9..-1 && fromDigit + delta < 0) {
+            return when (delta) {
+                -1 -> if (bottomBeads <= 0) FormulaStep(delta, "-1=-10+9", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -2 -> if (bottomBeads <= 1) FormulaStep(delta, "-2=-10+8", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -3 -> if (bottomBeads <= 2) FormulaStep(delta, "-3=-10+7", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -4 -> if (bottomBeads <= 3) FormulaStep(delta, "-4=-10+6", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -5 -> if (bottomBeads <= 4) FormulaStep(delta, "-5=-10+5", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -6 -> if (bottomBeads <= 0) FormulaStep(delta, "-6=-10+4", AbacusFormulaType.BIG_FRIEND_SUB.description)
+                else FormulaStep(delta, "-6=-10+5-1", AbacusFormulaType.COMBINATION_SUB.description)
+                -7 -> if (bottomBeads <= 1) FormulaStep(delta, "-7=-10+3", AbacusFormulaType.BIG_FRIEND_SUB.description)
+                else FormulaStep(delta, "-7=-10+5-2", AbacusFormulaType.COMBINATION_SUB.description)
+                -8 -> if (bottomBeads <= 2) FormulaStep(delta, "-8=-10+2", AbacusFormulaType.BIG_FRIEND_SUB.description)
+                else FormulaStep(delta, "-8=-10+5-3", AbacusFormulaType.COMBINATION_SUB.description)
+                -9 -> if (bottomBeads <= 3) FormulaStep(delta, "-9=-10+1", AbacusFormulaType.BIG_FRIEND_SUB.description)
+                else FormulaStep(delta, "-9=-10+5-4", AbacusFormulaType.COMBINATION_SUB.description)
+                else -> null
+            }
+        }
+
+        return null
+    }
+
+    fun calculateRodMovements(context: Context,from: Int,to: Int,rods: Int): List<RodMovement> {
+        val fromDigits = from.toString().padStart(rods, '0').map { it - '0' }
+        val toDigits = to.toString().padStart(rods, '0').map { it - '0' }
+
+        val result = mutableListOf<RodMovement>()
+
+        for (i in 0 until rods) {
+            // Index from right (unit digit = rodIndex 0)
+            val rodIndex = rods - 1 - i
+
+            val fromDigit = fromDigits[rodIndex]
+            val toDigit = toDigits[rodIndex]
+
+            val movement = Movement(
+                upperDown = toDigit >= 5 && fromDigit < 5,
+                upperUp = toDigit < 5 && fromDigit >= 5,
+                lowerUp = if (toDigit % 5 > fromDigit % 5) toDigit % 5 - fromDigit % 5 else 0,
+                lowerDown = if (toDigit % 5 < fromDigit % 5) fromDigit % 5 - toDigit % 5 else 0,
+                lowerOldValue = if (fromDigit >= 5) fromDigit % 5 else fromDigit,
+            )
+
+            result.add(RodMovement(rodIndex = i,movement = movement))
+        }
+        return result
+    }
+
     fun generateExamPaperNew(examLevel : String,list : ArrayList<String>) : List<BeginnerExamPaper>{
         var totalQuestion = 10
         val paperList : ArrayList<BeginnerExamPaper> = arrayListOf()

@@ -16,10 +16,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.jigar.me.R
+import com.jigar.me.data.local.data.EventBusType
+import com.jigar.me.data.local.data.MessageEvent
 import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.SocialLoginRequest
 import com.jigar.me.data.repositories.Result
 import com.jigar.me.databinding.FragmentLoginHomeBinding
+import com.jigar.me.internal.workmanagers.FetchAbacusDataWorkManager
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.ui.view.other.ContactUsActivity
@@ -33,24 +36,57 @@ import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
+import androidx.navigation.findNavController
+import com.google.gson.reflect.TypeToken
+import com.jigar.me.data.model.data.AbacusAllData
+import com.jigar.me.data.model.data.FetchAbacusDataRequest
+import com.jigar.me.data.model.data.PlanAssignFromAdminData
+import com.jigar.me.ui.viewmodel.AppViewModel
+import com.jigar.me.utils.Constants
+import kotlinx.coroutines.CoroutineScope
 
 @AndroidEntryPoint
 class LoginHomeFragment : BaseFragment() {
     private lateinit var binding: FragmentLoginHomeBinding
     private var mNavController: NavController? = null
     private val studentViewModel by viewModels<StudentViewModel>()
-
+    private val appViewModel by viewModels<AppViewModel>()
+    private var root : View? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initObserver()
     }
-    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
-        binding = FragmentLoginHomeBinding.inflate(inflater, container, false)
-        setNavigationGraph()
-        initView()
-        initListener()
-        initGoogleLogin()
-        return binding.root
+    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
+        if (root == null){
+            binding = FragmentLoginHomeBinding.inflate(inflater, container, false)
+            root = binding.root
+            setNavigationGraph()
+            initView()
+            initListener()
+        }
+        return root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        EventBus.getDefault().unregister(this)
+        super.onStop()
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onMessageEvent(event: MessageEvent) {
+        // Do something
+        if (event.type == EventBusType.LoginSync){
+            hideLoading()
+            MainDashboardActivity.getInstance(requireContext())
+        }
     }
 
     private fun initView() {
@@ -60,7 +96,7 @@ class LoginHomeFragment : BaseFragment() {
     }
 
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
 
     private fun initListener() {
@@ -88,7 +124,8 @@ class LoginHomeFragment : BaseFragment() {
                 requireContext().openURL(prefManager.getCustomParam(AppConstants.RemoteConfig.privacyPolicyUrl,""))
             }
             btnGoogleLogin.onClick {
-                studentViewModel.signInWithGoogle()
+                val signInIntent = studentViewModel.googleSignInClient?.signInIntent
+                googleLoginLauncher.launch(signInIntent)
             }
             btnLogin.onClick {
                 mNavController?.navigate(R.id.toLoginFragment)
@@ -100,16 +137,6 @@ class LoginHomeFragment : BaseFragment() {
         }
     }
 
-    private fun initGoogleLogin() {
-        studentViewModel.signInWithGoogle.observe(viewLifecycleOwner) {
-            it?.let {
-                if (it) {
-                    val signInIntent = studentViewModel.googleSignInClient?.signInIntent
-                    googleLoginLauncher.launch(signInIntent)
-                }
-            }
-        }
-    }
     private var googleLoginLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         val data: Intent? = result.data
         try {
@@ -118,14 +145,8 @@ class LoginHomeFragment : BaseFragment() {
                 val result = studentViewModel.signInWithGoogle(task)
                 if (result is Result.Success) {
                     // navigate to main page
-                    Log.e("jigarLogs","doOnSignInWithGoogle idToken := "+task.result.idToken)
-                    Log.e("jigarLogs","doOnSignInWithGoogle data := "+result.data?.displayName)
-                    Log.e("jigarLogs","doOnSignInWithGoogle email := "+result.data?.email)
-                    Log.e("jigarLogs","doOnSignInWithGoogle phoneNumber := "+result.data?.phoneNumber)
-                    Log.e("jigarLogs","doOnSignInWithGoogle photoUrl := "+result.data?.photoUrl)
-                    Log.e("jigarLogs","doOnSignInWithGoogle uid := "+result.data?.uid)
-                    Log.e("jigarLogs","doOnSignInWithGoogle isEmailVerified := "+result.data?.isEmailVerified)
-                    studentViewModel.socialLogin(SocialLoginRequest(result.data?.email,task.result.idToken))
+                    val request = SocialLoginRequest(result.data?.email,task.result.idToken)
+                    studentViewModel.socialLogin(request)
                 } else {
 
                     // your error handling
@@ -144,10 +165,28 @@ class LoginHomeFragment : BaseFragment() {
                     showLoading()
                 }
                 is Resource.Success -> {
-                    hideLoading()
                     if (it.value.status == AppConstants.APIStatus.SUCCESS)
                         onSuccess(it.value.data)
                     else{
+                        hideLoading()
+                        onFailure(it.value.error?.message)
+                    }
+                }
+                is Resource.Failure -> {
+                    hideLoading()
+                    onFailure(it.errorBody)
+                }
+            }
+        }
+        studentViewModel.getAbacusDataResponse.observe(this) {
+            when (it) {
+                is Resource.Loading -> {
+                }
+                is Resource.Success -> {
+                    if (it.value.status == AppConstants.APIStatus.SUCCESS)
+                        onSuccessAbacusData(it.value.data)
+                    else{
+                        hideLoading()
                         onFailure(it.value.error?.message)
                     }
                 }
@@ -158,26 +197,68 @@ class LoginHomeFragment : BaseFragment() {
             }
         }
 
+        studentViewModel.appReviewsListResponse.observe(this) {
+            when (it) {
+                is Resource.Loading -> {
+
+                }
+                is Resource.Success -> {
+                    hideLoading()
+                    if (it.value.status == AppConstants.APIStatus.SUCCESS)
+                    {
+                        checkPurchasedPlans(it.value.data)
+                    }else{
+                        onFailure(it.value.error?.message)
+                    }
+                }
+                is Resource.Failure -> {
+                    hideLoading()
+                    onFailure(it.errorBody)
+                }
+                else -> {}
+            }
+        }
     }
 
+    private fun onSuccessAbacusData(data: JsonObject?) {
+        val response = Gson().fromJson(data, AbacusAllData::class.java)
+        lifecycleScope.launch {
+            response.levels?.let {
+                appViewModel.insertLevel(it)
+                response.setProgress?.let {
+                    appViewModel.insertSetProgress(it)
+                }
+                studentViewModel.appReviewsList()
+            }
+        }
+    }
     private fun onSuccess(data: JsonObject?) {
         val response = Gson().fromJson(data, LoginData::class.java)
         prefManager.setAccessToken(response.token)
         prefManager.setLoginData(data.toString())
-        if (response.name.isNullOrEmpty()){
-            mNavController?.navigate(R.id.toLoginCompleteProfileFragment)
-        }else{
-            response.country?.let {
-                prefManager.setCountryCode(it)
-                if (it.equals(AppConstants.LoginData.LoginCountry_IN,true)){
-                    prefManager.setIsCurrencyINR(true)
-                }else{
-                    prefManager.setIsCurrencyINR(false)
-                }
+        val defaultDateTime = Constants.last_sync_default_time
+        val dateTime = prefManager.getCustomParam(Constants.last_sync_time,defaultDateTime)
+        val request = FetchAbacusDataRequest(true, get_set_progress_report = true,last_sync_time = dateTime)
+        studentViewModel.getAbacusData(request)
+    }
+
+    private fun checkPurchasedPlans(data: JsonObject?) {
+        if (data?.has("plans_purchased_manually") == true){
+            if (data.getAsJsonArray("plans_purchased_manually")?.isEmpty == true){
+                prefManager.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"")
+            }else{
+                val list : List<PlanAssignFromAdminData> =  Gson().fromJson(data.getAsJsonArray("plans_purchased_manually"), object : TypeToken<List<PlanAssignFromAdminData>>() {}.type)
+                prefManager.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,Gson().toJson(list))
             }
-            prefManager.setUserLoggedIn(true)
-            MainDashboardActivity.getInstance(requireContext())
         }
+
+        // trial_ends_at : "2025-10-11T14:00:00.000Z", free_trial_remaining_days, trial_period_offered
+        if (data?.has("free_trial_remaining_days") == true){
+            val free_trial_remaining_days = data.get("free_trial_remaining_days").asInt
+            prefManager.setCustomParamInt(Constants.free_trial_remaining_days,free_trial_remaining_days)
+        }
+        prefManager.setUserLoggedIn(true)
+        MainDashboardActivity.getInstance(requireContext())
     }
 
 }

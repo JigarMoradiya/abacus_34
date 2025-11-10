@@ -1,8 +1,8 @@
 package com.jigar.me.data.api.connections
 
 import android.util.Log
-import com.jigar.me.BuildConfig
 import com.jigar.me.data.pref.AppPreferencesHelper
+import com.jigar.me.utils.CommonUtils
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -11,13 +11,10 @@ class AuthHeaderInterceptor  private constructor(
 ) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val requestBuilder = chain.request().newBuilder()
-//        requestBuilder.header("application-package-id",BuildConfig.APPLICATION_ID)
-        requestBuilder.header("organizer-id",BuildConfig.ORGANIZER_ID)
+        requestBuilder.header("organizer-id",CommonUtils.getOrganizerId())
         prefManager.getAccessToken()?.let {
             val token = it
-            if (BuildConfig.DEBUG){
-                Log.e("jigarLogs", "AuthHeaderInterceptor accessToken = $token")
-            }
+            Log.e("AuthHeaderInterceptor","access-token = "+token)
             requestBuilder.header("access-token",token)
         }
 

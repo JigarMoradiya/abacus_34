@@ -9,13 +9,6 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.admanager.AdManagerAdRequest
-import com.google.android.gms.ads.admanager.AdManagerInterstitialAd
-import com.google.android.gms.ads.admanager.AdManagerInterstitialAdLoadCallback
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.jigar.me.R
@@ -29,6 +22,7 @@ import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.*
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.navigation.findNavController
 
 @AndroidEntryPoint
 class ExamResultFragment : BaseFragment() {
@@ -56,10 +50,13 @@ class ExamResultFragment : BaseFragment() {
     }
 
     private fun setNavigationGraph() {
-        mNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+        mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
 
     private fun init() {
+        binding.spaceNotch.layoutParams.width = prefManager.getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
+        binding.spaceBottom.layoutParams.height = prefManager.getCustomParamInt(AppConstants.BOTTOM_NAV_HEIGHT,0)
+
         if (examType == "object" || examType == "new"){
             examAbacusTheme = requireArguments().getString(AppConstants.extras_Comman.examAbacusType, AppConstants.Settings.theam_Default)
             prefManager.setCustomParam(AppConstants.Settings.TheamTempView, examAbacusTheme)
@@ -76,7 +73,7 @@ class ExamResultFragment : BaseFragment() {
                 val examResultLevel1Adapter = ExamResultLevel1Adapter(listAbacusLevel1,themeContent)
                 binding.recyclerviewResult.adapter = examResultLevel1Adapter
             }else{
-                val layoutManager = GridLayoutManager(requireContext(),8)
+                val layoutManager = GridLayoutManager(requireContext(),6)
                 layoutManager.spanSizeLookup = object : SpanSizeLookup() {
                     override fun getSpanSize(position: Int): Int {
                         return if (listAbacusLevel1[position].isAbacusQuestion == true) {
@@ -104,58 +101,9 @@ class ExamResultFragment : BaseFragment() {
             val dailyExamResultAdapter = ExamResultAdapter(listAbacus)
             binding.recyclerviewResult.adapter = dailyExamResultAdapter
         }
-
-        ads()
     }
 
     private fun clickListener() {
         binding.cardBack.onClick { mNavController.navigateUp() }
     }
-    private fun ads() {
-        if (requireContext().isNetworkAvailable && AppConstants.Purchase.AdsShow == "Y" // local
-            && prefManager.getCustomParam(AppConstants.AbacusProgress.Ads,"") == "Y" && // if yes in firebase
-            (prefManager.getCustomParam(AppConstants.Purchase.Purchase_All,"") != "Y" // if not purchased
-                    && prefManager.getCustomParam(AppConstants.Purchase.Purchase_Ads,"") != "Y")) {
-            showAMBannerAds(binding.adView,getString(R.string.banner_ad_unit_id_exam_result))
-            if (requireArguments().getString(AppConstants.extras_Comman.From, "").equals("exam")){
-                newInterstitialAdRequest()
-            }
-        }
-    }
-
-    // show leave ads
-    private fun newInterstitialAdRequest() {
-        showLoading()
-        val isAdmob = prefManager.getCustomParamBoolean(AppConstants.AbacusProgress.isAdmob,true)
-        val adUnit = getString(R.string.interstitial_ad_unit_id_exam_complete_show_result)
-        if (isAdmob){
-            val adRequest = AdRequest.Builder().build()
-            InterstitialAd.load(requireContext(),adUnit, adRequest, object : InterstitialAdLoadCallback() {
-                override fun onAdFailedToLoad(adError: LoadAdError) {
-                    hideLoading()
-                }
-
-                override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                    hideLoading()
-                    interstitialAd.show(requireActivity())
-                }
-            })
-        }else{
-            val adRequest = AdManagerAdRequest.Builder().build()
-            AdManagerInterstitialAd.load(requireContext(),adUnit, adRequest, object : AdManagerInterstitialAdLoadCallback() {
-                override fun onAdFailedToLoad(adError: LoadAdError) {
-                    hideLoading()
-                }
-
-                override fun onAdLoaded(interstitialAd: AdManagerInterstitialAd) {
-                    hideLoading()
-                    interstitialAd.show(requireActivity())
-                }
-            })
-        }
-
-    }
-
-
-
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/conMain">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvQuestionTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_extra_bold"
+            android:includeFontPadding="false"
+            android:text="200"
+            android:visibility="invisible"
+            android:textSize="@dimen/questionSize"
+            android:gravity="end|center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_extra_bold"
+            android:includeFontPadding="false"
+            android:text="2"
+            android:textColor="@color/colorHeadingBlack_00"
+            android:textSize="@dimen/questionSize"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/tvQuestionTemp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/ivDivider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_padding2"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/activity_padding8"
+            android:background="@color/red_600"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@+id/tvQuestion" />
+
+        <Space
+            android:id="@+id/spaceBottom"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/ivDivider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_padding8"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

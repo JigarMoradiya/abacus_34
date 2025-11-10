@@ -13,10 +13,11 @@
             android:id="@+id/cardBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:strokeWidth="0dp"
             android:layout_margin="@dimen/icons_margin2"
-            android:elevation="@dimen/card_elevation"
             app:cardBackgroundColor="@color/light_back"
             app:cardCornerRadius="@dimen/menu_icons_corner"
+            app:cardElevation="@dimen/card_elevation"
             app:cardMaxElevation="@dimen/card_elevation"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -44,37 +45,19 @@
             android:id="@+id/recyclerview"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="@dimen/activity_padding8"
-            android:layout_marginVertical="@dimen/activity_padding4"
+            android:layout_margin="@dimen/activity_padding5"
+            android:paddingVertical="@dimen/activity_padding4"
             android:orientation="vertical"
             android:overScrollMode="never"
             android:scrollbars="none"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toTopOf="@+id/txtShowPaidFeatureList"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardBack"
             app:spanCount="3"
             tools:itemCount="3"
             tools:listitem="@layout/raw_purchase" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txtShowPaidFeatureList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:drawableTop="@drawable/ic_keyboard_arrow_up"
-            android:includeFontPadding="false"
-            android:text="@string/show_paid_feature_list"
-            android:textColor="@color/black"
-            android:drawableTint="@color/colorAccent"
-            android:paddingBottom="@dimen/activity_padding8"
-            android:textSize="@dimen/textSizeMedium"
-            app:fontFamily="@font/font_bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:textAllCaps="false" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

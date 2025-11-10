@@ -87,6 +87,7 @@ class ExamResultCommonAdapter(
 
                     if (data.userAnswer.isNullOrEmpty()) {
                         mBinding.img.hide()
+                        mBinding.txtYourAnswerLabel.hide()
                         mBinding.txtYourAnswer.show()
                         mBinding.txtYourAnswer.text = mBinding.txtYourAnswer.context.getText(R.string.SKipped)
                     } else {
@@ -94,12 +95,13 @@ class ExamResultCommonAdapter(
                         if (correctAns.equals(data.userAnswer, ignoreCase = true)) {
                             mBinding.img.setBackgroundResource(R.drawable.ic_answer_right)
                             mBinding.txtYourAnswer.hide()
+                            mBinding.txtYourAnswerLabel.hide()
                         } else {
                             mBinding.img.setBackgroundResource(R.drawable.ic_answer_wrong)
+
                             mBinding.txtYourAnswer.show()
-                            mBinding.txtYourAnswer.text =
-                                mBinding.txtYourAnswer.context.getText(R.string.YourAnswer)
-                                    .toString() + " : " + data.userAnswer
+                            mBinding.txtYourAnswerLabel.show()
+                            mBinding.txtYourAnswer.text = data.userAnswer
                         }
                     }
 

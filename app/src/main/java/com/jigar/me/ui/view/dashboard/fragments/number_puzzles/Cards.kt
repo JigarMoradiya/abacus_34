@@ -47,30 +47,6 @@ class Cards(private val n: Int, private val m: Int) {
             }
         }
 
-    val newCardsLevel3: Unit
-        get() {
-            board = Array(n) { IntArray(m) }
-            for (i in 0 until n) {
-                for (j in 0 until m) {
-                    board[i][j] = -1
-                }
-            }
-            val dataList = ArrayList<String?>()
-            for (i in 0..15) {
-                dataList.add(i.toString() + "")
-            }
-            for (i in 0 until n) {
-                for (j in 0 until m) {
-                    if ((i != 0 || j != 2) && (i != 0 || j != 3) && (i != 4 || j != 0) && (i != 4 || j != 1)) {
-                        Collections.shuffle(dataList)
-                        board[i][j] = dataList[0]!!.toInt()
-                        dataList.removeAt(0)
-                    }
-                }
-            }
-
-//            Log.e("jigar_getNewCards", "+++" + Gson().toJson(board))
-        }
     private var result = false
     fun moveCards(boardX: Int, boardY: Int) {
         var X0 = -1
@@ -111,7 +87,6 @@ class Cards(private val n: Int, private val m: Int) {
     }
 
     fun getValueBoard(i: Int, j: Int): Int {
-//        Log.e("jigar_getValueBoard", "::" + Gson().toJson(board))
         return board[i][j]
     }
 

@@ -31,7 +31,6 @@ object CCMCompleteBottomSheet {
                 list.add(activity.getString(R.string.you_are_glorious))
                 list.add(activity.getString(R.string.you_are_brilliant))
                 list.add(activity.getString(R.string.you_are_so_genius))
-                list.add(activity.getString(R.string.you_are_so_genius))
                 list.add(activity.getString(R.string.you_are_so_intelligent))
                 list.shuffle()
                 tvSubDescription.text = list.first()

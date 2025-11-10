@@ -1,5 +1,15 @@
 package com.jigar.me.data.model.data
 
+data class FetchAbacusDataRequest(
+    var get_levels: Boolean = false,
+    var get_categories: Boolean = false,
+    var get_pages: Boolean = false,
+    var get_sets: Boolean = false,
+    var get_abacus: Boolean = false,
+    var last_sync_time: String? = null,
+    var get_set_progress_report: Boolean = false,
+    var get_all_data: Boolean = false,
+)
 data class SignupV2Request(
     var name: String? = null,
     var email: String? = null,
@@ -93,6 +103,12 @@ data class SubmitAllExamDataRequest(
     var is_question_speak: Boolean? = null,
     var is_question_show_in_number: Boolean? = null,
     var is_question_show_in_word: Boolean? = null,
+
+    // set
+    var set_id: String? = null,
+    var abacus_id: String? = null,
+    var is_set_completed : Boolean? = null,
+    var retry_count : Int? = null,
 )
 
 data class QuestionDataRequest(

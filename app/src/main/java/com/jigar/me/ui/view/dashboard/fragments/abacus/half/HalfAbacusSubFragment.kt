@@ -1,48 +1,58 @@
 package com.jigar.me.ui.view.dashboard.fragments.abacus.half
 
+import android.content.res.ColorStateList
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
-import androidx.core.view.setMargins
+import androidx.lifecycle.lifecycleScope
 import com.jigar.me.R
 import com.jigar.me.data.local.data.AbacusBeadType
-import com.jigar.me.data.local.data.DataProvider
+import com.jigar.me.data.local.data.AbacusContent
+import com.jigar.me.data.local.data.ExamProvider
+import com.jigar.me.databinding.ContentAbacusDirectionsBinding
 import com.jigar.me.databinding.FragmentAbacusSubKidBinding
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.base.abacus.AbacusMasterBeadShiftListener
 import com.jigar.me.ui.view.base.abacus.AbacusMasterCompleteListener
 import com.jigar.me.ui.view.base.abacus.AbacusMasterView
 import com.jigar.me.ui.view.base.abacus.OnAbacusValueChangeListener
-import com.jigar.me.utils.*
+import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.Constants
+import com.jigar.me.utils.extensions.dp
 import com.jigar.me.utils.extensions.hide
+import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.onClick
-import com.jigar.me.utils.extensions.setAbacusResetShakeAnimation
 import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import androidx.core.graphics.toColorInt
+import com.jigar.me.utils.extensions.setIsEnabled
 
 @AndroidEntryPoint
 class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     private lateinit var binding: FragmentAbacusSubKidBinding
+    private var root : View? = null
+    private lateinit var themeContent : AbacusContent
+    private var beadType : AbacusBeadType = AbacusBeadType.AbacusPrecise
     // Settings Constants
     private var isDisplayAbacusNumber = true
+    private var isShowSubmitAnswer = true
 
     private var abacus_type = 0 // 0 = sum-sub-single  1 = multiplication 2 = divide
-    private var final_column = 0
+    private var abacusTotalColumns = 0
     private var noOfDecimalPlace = 0
 
     // abacus move
     private var isResetRunning: Boolean = false
     private var currentSumVal = 0L
-    private var resetX: Float = 0f
+    var fromValue = 0
     var questionLength = 0
     var finalAnsLength: Int = 0
+    var firstQuestionForDirection: String = ""
 
     // for division
     private var topSelectedPositions: ArrayList<Int> = arrayListOf()
@@ -50,177 +60,87 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
 
     private var onAbacusValueChangeListener: OnAbacusValueChangeListener? = null
 
-    fun newInstance(column: Int, noOfDecimalPlace: Int, abacus_type: Int): HalfAbacusSubFragment {
+    fun newInstance(column: Int, noOfDecimalPlace: Int, abacus_type: Int, themeContent : AbacusContent, beadType : AbacusBeadType,isShowSubmitAnswer : Boolean? = false, firstQuestionForDirection : String = "0", topPositions : ArrayList<Int> = arrayListOf(), bottomPositions : ArrayList<Int> = arrayListOf()): HalfAbacusSubFragment {
         val fragment = HalfAbacusSubFragment()
-        fragment.final_column = column
+        fragment.themeContent = themeContent
+        fragment.beadType = beadType
+        fragment.firstQuestionForDirection = firstQuestionForDirection
+        fragment.abacusTotalColumns = column
         fragment.noOfDecimalPlace = noOfDecimalPlace
         fragment.abacus_type = abacus_type
+        fragment.isShowSubmitAnswer = isShowSubmitAnswer?:false
+        fragment.topSelectedPositions = topPositions
+        fragment.bottomSelectedPositions = bottomPositions
         return fragment
     }
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = FragmentAbacusSubKidBinding.inflate(inflater, container, false)
-        initViews()
-        initListener()
-        return binding.root
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        if (root == null){
+            binding = FragmentAbacusSubKidBinding.inflate(inflater, container, false)
+            root = binding.root
+            initViews()
+            initListener()
+        }
+        return root
     }
 
-    private fun initViews() {
+    private fun initViews() = with(binding){
         isDisplayAbacusNumber = prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_display_abacus_number, true)
-        when (final_column) {
-            8 -> {
-                binding.linearDot9.hide()
-            }
-            7 -> {
-                binding.linearDot9.hide()
-                binding.linearDot8.hide()
-            }
-            6 -> {
-                binding.linearDot9.hide()
-                binding.linearDot8.hide()
-                binding.linearDot7.hide()
-            }
-            5 -> {
-                binding.linearDot9.hide()
-                binding.linearDot8.hide()
-                binding.linearDot7.hide()
-                binding.linearDot6.hide()
-            }
-            4 -> {
-                binding.linearDot9.hide()
-                binding.linearDot8.hide()
-                binding.linearDot7.hide()
-                binding.linearDot6.hide()
-                binding.linearDot5.hide()
-            }
-            3 -> {
-                binding.linearDot9.hide()
-                binding.linearDot8.hide()
-                binding.linearDot7.hide()
-                binding.linearDot6.hide()
-                binding.linearDot5.hide()
-                binding.linearDot4.hide()
-            }
-            2 -> {
-                binding.linearDot9.hide()
-                binding.linearDot8.hide()
-                binding.linearDot7.hide()
-                binding.linearDot6.hide()
-                binding.linearDot5.hide()
-                binding.linearDot4.hide()
-                binding.linearDot3.hide()
-            }
-            1 -> {
-                binding.linearDot9.hide()
-                binding.linearDot8.hide()
-                binding.linearDot7.hide()
-                binding.linearDot6.hide()
-                binding.linearDot5.hide()
-                binding.linearDot4.hide()
-                binding.linearDot3.hide()
-                binding.linearDot2.hide()
-            }
-        }
-        binding.linearRodName.show()
-        when (final_column) {
-            8 -> {
-                binding.txtRodName9.hide()
-            }
-            7 -> {
-                binding.txtRodName9.hide()
-                binding.txtRodName8.hide()
-            }
-            6 -> {
-                binding.txtRodName9.hide()
-                binding.txtRodName8.hide()
-                binding.txtRodName7.hide()
-            }
-            5 -> {
-                binding.txtRodName9.hide()
-                binding.txtRodName8.hide()
-                binding.txtRodName7.hide()
-                binding.txtRodName6.hide()
-            }
-            4 -> {
-                binding.txtRodName9.hide()
-                binding.txtRodName8.hide()
-                binding.txtRodName7.hide()
-                binding.txtRodName6.hide()
-                binding.txtRodName5.hide()
-            }
-            3 -> {
-                binding.txtRodName9.hide()
-                binding.txtRodName8.hide()
-                binding.txtRodName7.hide()
-                binding.txtRodName6.hide()
-                binding.txtRodName5.hide()
-                binding.txtRodName4.hide()
-            }
-            2 -> {
-                binding.txtRodName9.hide()
-                binding.txtRodName8.hide()
-                binding.txtRodName7.hide()
-                binding.txtRodName6.hide()
-                binding.txtRodName5.hide()
-                binding.txtRodName4.hide()
-                binding.txtRodName3.hide()
-            }
-            1 -> {
-                binding.txtRodName9.hide()
-                binding.txtRodName8.hide()
-                binding.txtRodName7.hide()
-                binding.txtRodName6.hide()
-                binding.txtRodName5.hide()
-                binding.txtRodName4.hide()
-                binding.txtRodName3.hide()
-                binding.txtRodName2.hide()
-            }
-        }
-        if (abacus_type != 2){
-            binding.imgDot1.show()
-            binding.imgDot4.show()
-            binding.imgDot7.show()
-        }
 
+        imgDot1.show()
+        imgDot4.show()
+        imgDot7.show()
+        imgDot10.show()
+        imgDot13.show()
 
-        val theme = prefManager.getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
-        val themeContent = DataProvider.findAbacusThemeType(requireContext(),theme,AbacusBeadType.None)
-        themeContent.abacusFrame135.let { binding.rlAbacusMain.setBackgroundResource(it) }
-        themeContent.dividerColor1.let { binding.ivDivider.setBackgroundColor(ContextCompat.getColor(requireContext(),it)) }
+        setNextBtn()
+
+        themeContent.abacusFrame135.let { rlAbacusMain.setBackgroundResource(it) }
+        themeContent.dividerColor1.let {
+            ivDivider.setBackgroundColor(ContextCompat.getColor(requireContext(),it))
+            cardAnswerWindowBg.setStrokeColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(),it)))
+        }
+        cardAnswerWindow.setCardBackgroundColor(themeContent.answerWindowBG.toColorInt())
+        cardAnswerWindow.strokeColor = themeContent.answerWindowLine.toColorInt()
+
         themeContent.resetBtnColor8.let {
-            binding.imgDot1.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-            binding.imgDot4.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-            binding.imgDot7.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+            cardAnswerWindowBg.setCardBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(requireContext(),it)))
 
-            binding.imgDot2.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-            binding.imgDot3.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-            binding.imgDot5.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-            binding.imgDot6.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-            binding.imgDot8.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-            binding.imgDot9.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+            imgDot1.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+            imgDot4.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+            imgDot7.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)
+            imgDot7.layoutParams?.width = 3.dp
+            imgDot7.layoutParams?.height = 3.dp
+            imgDot10.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+            imgDot13.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
 
-            binding.ivReset.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-            binding.ivRight.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-            binding.ivLeft.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+            ivRight.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+            ivLeft.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+        }
+
+        setBead()
+    }
+
+    private fun setNextBtn() = with(binding){
+        if (isShowSubmitAnswer){
+            txtNext.setIsEnabled(true,1f)
+        }else{
+            txtNext.setIsEnabled(false,0.5f)
         }
     }
 
-    private fun initListener() {
-        binding.ivReset.onClick { onResetClick() }
-        binding.resettoContinue.onClick { onResetClick() }
+    private fun initListener() = with(binding){
+        txtReset.onClick {
+            setNextBtn()
+            onResetClick()
+        }
+        txtNext.onClick {
+            setNextBtn()
+            onSubmitAnswerClick()
+        }
     }
+
     fun setOnAbacusValueChangeListener(onAbacusValueChangeListener: OnAbacusValueChangeListener?) {
         this.onAbacusValueChangeListener = onAbacusValueChangeListener
-    }
-
-    // TODO abacus Move logic
-    override fun onResume() {
-        if (isAdded) {
-            setBead()
-        }
-        if (abacus_type == 2) {
-            setSelectedPositions(topSelectedPositions, bottomSelectedPositions, null)
-        }
-        super.onResume()
     }
 
     override fun onStop() {
@@ -230,45 +150,28 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     }
 
     private fun setBead() {
-        val isHideTable = prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_hide_table, false)
-        if (isHideTable || final_column <= 5){
-            if (prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_left_hand, true)){
-                binding.imgKidRight.show()
-                binding.imgKidHandRight.show()
-                val params = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT,ConstraintLayout.LayoutParams.WRAP_CONTENT)
-                params.setMargins(0)
-                binding.relAbacus.layoutParams = params
-
-                if (DataProvider.generateIndex() == 0){
-                    binding.imgKidRight.setImageResource(R.drawable.ic_boy_abacus_right)
-                    binding.imgKidHandRight.setImageResource(R.drawable.ic_boy_abacus_hand_right)
-                }else{
-                    binding.imgKidRight.setImageResource(R.drawable.ic_girl_abacus_right)
-                    binding.imgKidHandRight.setImageResource(R.drawable.ic_girl_abacus_hand_right)
-                }
-            }else{
-                binding.imgKidLeft.show()
-                binding.imgKidHandLeft.show()
-
-                if (DataProvider.generateIndex() == 0){
-                    binding.imgKidLeft.setImageResource(R.drawable.ic_girl_abacus_left)
-                    binding.imgKidHandLeft.setImageResource(R.drawable.ic_girl_abacus_hand_left)
-                }else{
-                    binding.imgKidLeft.setImageResource(R.drawable.ic_boy_abacus_left)
-                    binding.imgKidHandLeft.setImageResource(R.drawable.ic_boy_abacus_hand_left)
-                }
-            }
-        }else{
-            val params = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT,ConstraintLayout.LayoutParams.WRAP_CONTENT)
-            params.setMargins(0)
-            binding.relAbacus.layoutParams = params
-        }
-
-        binding.abacusTop.setNoOfRowAndBeads(0, final_column, 1)
-        binding.abacusBottom.setNoOfRowAndBeads(0, final_column, 4)
+        val theme = prefManager.getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
+        binding.abacusTop.setNoOfRowAndBeadsNew(theme, themeContent,0, abacusTotalColumns, 1,beadType,unitRodPosition = 6)
+        binding.abacusBottom.setNoOfRowAndBeadsNew(theme, themeContent, 0,abacusTotalColumns, 4,beadType,unitRodPosition = 6)
 
         binding.abacusTop.onBeadShiftListener = this
         binding.abacusBottom.onBeadShiftListener = this
+
+        lifecycleScope.launch {
+            delay(Constants.DELAY_DIRECTION)
+            try {
+                fromValue = 0
+                if (firstQuestionForDirection.toInt() > 0){
+                    addDirection(firstQuestionForDirection.toInt())
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+
+        if (abacus_type == 2) { // only for division
+            setSelectedPositions(topSelectedPositions, bottomSelectedPositions)
+        }
     }
 
     override fun onBeadShift(abacusView: AbacusMasterView, rowValue: IntArray) {
@@ -287,8 +190,8 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
                         i++
                     }
                     currentSumVal = (bottomVal + accumulator)
-                    if (abacus_type == 0 || abacus_type == 1) {
-                        setCurrentValue(currentSumVal.toInt().toString())
+                    if (abacus_type == 0 || abacus_type == 1 || abacus_type == 2) {
+                        setCurrentValue(currentSumVal.toString())
                         onAbacusValueChangeListener?.onAbacusValueChange(
                             abacusView,
                             currentSumVal
@@ -305,42 +208,15 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
                         i++
                     }
                     currentSumVal = (topVal + accumulator)
-                    if (abacus_type == 0 || abacus_type == 1) {
-                        setCurrentValue(currentSumVal.toInt().toString())
+                    if (abacus_type == 0 || abacus_type == 1 || abacus_type == 2) {
+                        setCurrentValue(currentSumVal.toString())
                         try {
-                            onAbacusValueChangeListener?.onAbacusValueChange(
-                                abacusView,
-                                currentSumVal
-                            )
+                            onAbacusValueChangeListener?.onAbacusValueChange(abacusView, currentSumVal)
                         } catch (e: Exception) {
                             e.printStackTrace()
                         }
                     }
                 }
-            }
-            if (abacus_type == 2) {
-                /*common code to calculate sumvalue*/
-                var currentAns: String = currentSumVal.toInt().toString()
-                val iterationCount = questionLength + finalAnsLength - 1 - currentAns.length
-                for (i in 0 until iterationCount) {
-                    currentAns = "0$currentAns"
-                }
-                if (questionLength + finalAnsLength - 1 <= currentAns.length) {
-                    try {
-                        val right = Integer.valueOf(
-                            currentAns.substring(
-                                currentAns.length - questionLength,
-                                currentAns.length
-                            )
-                        )
-                        val left = Integer.valueOf(currentAns.substring(0, finalAnsLength))
-                        setCurrentValue("$left < $right")
-                    } catch (e: Exception) {
-                    }
-                } else {
-                    setCurrentValue(currentSumVal.toInt().toString())
-                }
-                onAbacusValueChangeListener?.onAbacusValueChange(abacusView, currentSumVal)
             }
         } else {
             when (abacusView.id) {
@@ -421,51 +297,33 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     fun resetAbacus() {
         binding.abacusTop.reset()
         binding.abacusBottom.reset()
-        showResetToContinue(false)
+        hideDirection()
     }
 
-    fun resetButtonEnable(isEnable: Boolean) {
-        binding.ivReset.isEnabled = isEnable
-        binding.ivReset.isClickable = isEnable
+    fun nextButtonEnable() {
+        binding.txtNext.setIsEnabled(true,1f)
+        binding.txtReset.setIsEnabled(false,0.5f)
     }
-    fun showResetToContinue(type: Boolean) {
-        if (type) {
-            binding.resettoContinue.show()
-            startTimerForToolTips()
-        } else {
-            binding.resettoContinue.hide()
-        }
-    }
-
-    private fun startTimerForToolTips() {
-        Handler(Looper.getMainLooper()).postDelayed({
-            if (isAdded && isResumed){
-                binding.ivReset.setAbacusResetShakeAnimation()
-            }
-        },2500)
-    }
-
     private fun onResetClick() {
         if (!isResetRunning) {
-            isResetRunning = true
-            binding.ivReset.y = 0f
-
-            binding.ivReset.animate().setDuration(200)
-                .translationYBy((binding.ivReset.height / 2).toFloat()).withEndAction {
-                    binding.ivReset.animate().setDuration(200)
-                        .translationYBy((-binding.ivReset.height / 2).toFloat()).withEndAction {
-                            isResetRunning = false
-                        }.start()
-                }.start()
+            fromValue = 0
+            binding.tvCurrentVal.text = "0"
             onAbacusValueChangeListener?.onAbacusValueDotReset()
         }
+    }
+
+    private fun onSubmitAnswerClick() {
+        val userAnswer = binding.tvCurrentVal.text.toString()
+        fromValue = 0
+        binding.tvCurrentVal.text = "0"
+        onAbacusValueChangeListener?.onAbacusSubmitValue(userAnswer)
     }
 
     // TODO for Division
     fun setSelectedPositions(
         topSelectedPositions: ArrayList<Int>,
         bottomSelectedPositions: ArrayList<Int>,
-        setPositionCompleteListener: AbacusMasterCompleteListener?
+        setPositionCompleteListener: AbacusMasterCompleteListener? = null
     ) {
         this.topSelectedPositions = topSelectedPositions
         this.bottomSelectedPositions = bottomSelectedPositions
@@ -473,16 +331,8 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
         if (isAdded) {
             //app was crashing if position set before update no of row count. so added this delay.
             binding.abacusBottom.post {
-                binding.abacusTop.setSelectedPositions(
-                    topSelectedPositions,
-                    setPositionCompleteListener
-                )
-                binding.abacusBottom.setSelectedPositions(
-                    bottomSelectedPositions,
-                    setPositionCompleteListener
-                )
-
-                setDotForDivision()
+                binding.abacusTop.setSelectedPositions(topSelectedPositions,setPositionCompleteListener)
+                binding.abacusBottom.setSelectedPositions(bottomSelectedPositions,setPositionCompleteListener)
             }
         }
     }
@@ -490,148 +340,217 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
     fun setQuestionAndDividerLength(questionLength: Int, finalAnsLength: Int) {
         this.questionLength = questionLength
         this.finalAnsLength = finalAnsLength
-        final_column = questionLength + finalAnsLength - 1
-//        final_column = 7
-        final_column = if (final_column == 1) 2 else final_column
-
-        setAbacusRowCountAndInvalidate(final_column)
-    }
-
-    private fun setDotForDivision() {
-        with(binding){
-            when (questionLength) {
-                1 -> {
-                    imgDot1.show()
-                    imgDot4.show()
-                    imgDot7.show()
-                }
-                2 -> {
-                    imgDot2.show()
-                    imgDot5.show()
-                    imgDot8.show()
-                    txtRodName1.text = ""
-                    txtRodName2.text = getString(R.string.ones)
-                    txtRodName3.text = getString(R.string.tens)
-                    txtRodName4.text = getString(R.string.hundreds)
-                    txtRodName5.text = getString(R.string.thousands)
-                    txtRodName6.text = getString(R.string.ten_nthousands)
-                    txtRodName7.text = getString(R.string.lakhs)
-                    txtRodName8.text = getString(R.string.ten_lakhs)
-                    txtRodName9.text = getString(R.string.crores)
-                }
-                3 -> {
-                    imgDot3.show()
-                    imgDot6.show()
-                    imgDot9.show()
-                    txtRodName1.text = ""
-                    txtRodName2.text = ""
-                    txtRodName3.text = getString(R.string.ones)
-                    txtRodName4.text = getString(R.string.tens)
-                    txtRodName5.text = getString(R.string.hundreds)
-                    txtRodName6.text = getString(R.string.thousands)
-                    txtRodName7.text = getString(R.string.ten_nthousands)
-                    txtRodName8.text = getString(R.string.lakhs)
-                    txtRodName9.text = getString(R.string.ten_lakhs)
-                }
-                4 -> {
-                    imgDot4.show()
-                    imgDot7.show()
-                    txtRodName1.text = ""
-                    txtRodName2.text = ""
-                    txtRodName3.text = ""
-                    txtRodName4.text = getString(R.string.ones)
-                    txtRodName5.text = getString(R.string.tens)
-                    txtRodName6.text = getString(R.string.hundreds)
-                    txtRodName7.text = getString(R.string.thousands)
-                    txtRodName8.text = getString(R.string.ten_nthousands)
-                    txtRodName9.text = getString(R.string.lakhs)
-                }
-                5 -> {
-                    imgDot5.show()
-                    imgDot8.show()
-                    txtRodName1.text = ""
-                    txtRodName2.text = ""
-                    txtRodName3.text = ""
-                    txtRodName4.text = ""
-                    txtRodName5.text = getString(R.string.ones)
-                    txtRodName6.text = getString(R.string.tens)
-                    txtRodName7.text = getString(R.string.hundreds)
-                    txtRodName8.text = getString(R.string.thousands)
-                    txtRodName9.text = getString(R.string.ten_nthousands)
-                }
-                6 -> {
-                    imgDot6.show()
-                    imgDot9.show()
-                    txtRodName1.text = ""
-                    txtRodName2.text = ""
-                    txtRodName3.text = ""
-                    txtRodName4.text = ""
-                    txtRodName5.text = ""
-                    txtRodName6.text = getString(R.string.ones)
-                    txtRodName7.text = getString(R.string.tens)
-                    txtRodName8.text = getString(R.string.hundreds)
-                    txtRodName9.text = getString(R.string.thousands)
-                }
-                7 -> {
-                    imgDot7.show()
-                    txtRodName1.text = ""
-                    txtRodName2.text = ""
-                    txtRodName3.text = ""
-                    txtRodName4.text = ""
-                    txtRodName5.text = ""
-                    txtRodName6.text = ""
-                    txtRodName7.text = getString(R.string.ones)
-                    txtRodName8.text = getString(R.string.tens)
-                    txtRodName9.text = getString(R.string.hundreds)
-                }
-                8 -> {
-                    imgDot8.show()
-                    txtRodName1.text = ""
-                    txtRodName2.text = ""
-                    txtRodName3.text = ""
-                    txtRodName4.text = ""
-                    txtRodName5.text = ""
-                    txtRodName6.text = ""
-                    txtRodName7.text = ""
-                    txtRodName8.text = getString(R.string.ones)
-                    txtRodName9.text = getString(R.string.tens)
-                }
-                9 -> {
-                    imgDot9.show()
-                    txtRodName1.text = ""
-                    txtRodName2.text = ""
-                    txtRodName3.text = ""
-                    txtRodName4.text = ""
-                    txtRodName5.text = ""
-                    txtRodName6.text = ""
-                    txtRodName7.text = ""
-                    txtRodName8.text = ""
-                    txtRodName9.text = getString(R.string.ones)
-                }
-            }
-        }
+        setAbacusRowCountAndInvalidate(abacusTotalColumns)
     }
 
     private fun setAbacusRowCountAndInvalidate(column: Int) {
-        final_column = column
+        abacusTotalColumns = column
         if (isAdded) {
             binding.abacusTop.noOfColumn = column
-            //            binding.abacusTop.setSelectedPositions(topSelectedPositions, null);
             binding.abacusBottom.noOfColumn = column
-            //            binding.abacusBottom.setSelectedPositions(bottomSelectedPositions, null);
-
         }
     }
 
-    private fun setCurrentValue(strCurVal: String) {
+    private fun setCurrentValue(abacusValue: String) {
         when {
             isDisplayAbacusNumber -> {
                 binding.tvCurrentVal.show()
-                binding.tvCurrentVal.text = strCurVal
+                binding.tvCurrentValHide.hide()
+                var newValue = abacusValue
+                if (abacusValue.length != abacusTotalColumns){
+                    for (i in 1..(abacusTotalColumns - abacusValue.length)) {
+                        newValue = "0$newValue"
+                    }
+                }
+                if (abacus_type == 2){
+                    val remainQuestion = newValue.replace(".","").takeLast(questionLength).trimStart('0')
+                    val answers = newValue.replace(".","").take(7).trimStart('0')
+                    fromValue = if (answers.isEmpty()){0}else{answers.toInt()}
+                    binding.tvCurrentVal.text = (if (answers.isEmpty()){"0"}else{answers})+" < "+(if (remainQuestion.isNullOrEmpty()){"0"}else{remainQuestion})
+                }else{
+                    val sb = StringBuilder(newValue)
+                    sb.insert(7, ".")
+                    newValue = sb.toString()
+                    val splitResult = newValue.split(".")
+                    if (splitResult.size == 2) {
+                        val value1 = splitResult[0].toLong()
+                        val value2 = splitResult[1]
+                        fromValue = value1.toInt()
+                        if (value2.toLong() > 0) {
+                            binding.tvCurrentVal.text = "$value1.$value2"
+                            binding.txtReset.setIsEnabled(true,1f)
+                        } else {
+                            binding.tvCurrentVal.text = "$value1"
+                            if(value1 == 0L){
+                                binding.txtReset.setIsEnabled(false,0.5F)
+                            }else{
+                                binding.txtReset.setIsEnabled(true,1f)
+                            }
+                        }
+                    }
+                }
+
             }
             else -> {
-                binding.tvCurrentVal.visibility = View.INVISIBLE
+                binding.tvCurrentVal.hide()
+                binding.tvCurrentValHide.show()
             }
         }
     }
+
+    // for draw direction
+    fun addDirection(toValue: Int) {
+        if (::binding.isInitialized){
+            if (prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_direction, true)){
+                var rods = fromValue.toString().length
+                if (toValue.toString().length > rods){
+                    rods = toValue.toString().length
+                }
+
+                if (fromValue != toValue){
+                    val rodMovement = ExamProvider.calculateRodMovements(requireContext(),from = fromValue, to = toValue, rods = rods)
+                    if (rodMovement.isNotNullOrEmpty()){
+                        val extraHeight = resources.getDimension(R.dimen.height_extra).toInt()
+                        val beamHeight = resources.getDimension(R.dimen.four).toInt()
+                        val topBeadsHeight = themeContent.beadHeight * 2
+                        val topTotalHeightAlways = extraHeight + beamHeight + topBeadsHeight
+
+                        val bottomBeadsHeight = themeContent.beadHeight * 5
+                        val bottomTotalHeightAlways = extraHeight + beamHeight + bottomBeadsHeight
+                        val decimalBeadsWidth = (themeContent.beadWidth * 6) + (themeContent.beadSpace * 6) + (themeContent.beadWidth * 0.75).toInt()
+
+                        rodMovement.map { rodData ->
+                            if (rodData.movement.lowerUp > 0 || rodData.movement.lowerDown > 0 || rodData.movement.upperDown || rodData.movement.upperUp){
+                                val directionBinding = ContentAbacusDirectionsBinding.inflate(layoutInflater, null, false)
+                                with(directionBinding){
+                                    val rightSpace = decimalBeadsWidth + (themeContent.beadWidth * rodData.rodIndex) + (themeContent.beadSpace / 2) + (rodData.rodIndex * themeContent.beadSpace)
+                                    val layoutParams = FrameLayout.LayoutParams(
+                                        ViewGroup.LayoutParams.MATCH_PARENT,
+                                        ViewGroup.LayoutParams.MATCH_PARENT)
+                                    layoutParams.marginEnd = rightSpace
+                                    directionBinding.conDirection.layoutParams = layoutParams
+
+                                    if (rodData.movement.lowerUp > 0){
+                                        linearDirectionBottom.show()
+                                        imgUpArrowBottom.show()
+                                        val heightOldBeads = rodData.movement.lowerOldValue * themeContent.beadHeight
+                                        val bottomRemainBeadHeight = ((4 - rodData.movement.lowerUp) * themeContent.beadHeight)+extraHeight - heightOldBeads
+                                        linearDirectionBottom.setPadding(0,topTotalHeightAlways + heightOldBeads,0,bottomRemainBeadHeight)
+                                    }else if (rodData.movement.lowerDown > 0){
+                                        linearDirectionBottom.show()
+                                        imgDownArrowBottom.show()
+                                        val heightOldBeads = (rodData.movement.lowerOldValue - rodData.movement.lowerDown) * themeContent.beadHeight
+                                        val bottomRemainBeadHeight = if (rodData.movement.lowerOldValue == 4) { extraHeight }else{ extraHeight + ((4 - rodData.movement.lowerOldValue) * themeContent.beadHeight)}
+                                        linearDirectionBottom.setPadding(0,topTotalHeightAlways + heightOldBeads,0,bottomRemainBeadHeight)
+                                    }
+                                    if (rodData.movement.upperDown){
+                                        linearDirectionTop.show()
+                                        imgDownArrowTop.show()
+                                        linearDirectionTop.setPadding(0,extraHeight,0,bottomTotalHeightAlways)
+                                    }else if (rodData.movement.upperUp){
+                                        linearDirectionTop.show()
+                                        imgUpArrowTop.show()
+                                        linearDirectionTop.setPadding(0,extraHeight,0,bottomTotalHeightAlways)
+                                    }
+                                }
+                                binding.viewDirection.addView(directionBinding.root)
+                            }
+                        }
+                        if ((binding.viewDirection.childCount?:0) > 0){
+                            binding.viewDirection.show()
+                        }else{
+                            hideDirection()
+                        }
+                    }else{
+                        hideDirection()
+                    }
+                }else{
+                    hideDirection()
+                }
+            }
+        }
+    }
+    fun addDirectionDivisor(toValue: Int,fromValue : Int) {
+        if (::binding.isInitialized){
+            if (prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_direction, true)){
+                var rods = fromValue.toString().length
+                if (toValue.toString().length > rods){
+                    rods = toValue.toString().length
+                }
+
+                if (fromValue != toValue){
+                    val rodMovement = ExamProvider.calculateRodMovements(requireContext(),from = fromValue, to = toValue, rods = rods)
+                    if (rodMovement.isNotNullOrEmpty()){
+                        val extraHeight = resources.getDimension(R.dimen.height_extra).toInt()
+                        val beamHeight = resources.getDimension(R.dimen.four).toInt()
+                        val topBeadsHeight = themeContent.beadHeight * 2
+                        val topTotalHeightAlways = extraHeight + beamHeight + topBeadsHeight
+
+                        val bottomBeadsHeight = themeContent.beadHeight * 5
+                        val bottomTotalHeightAlways = extraHeight + beamHeight + bottomBeadsHeight
+//                        val decimalBeadsWidth = (themeContent.beadWidth * 6) + (themeContent.beadSpace * 6) + (themeContent.beadWidth * 0.75).toInt()
+                        val decimalBeadsWidth = (themeContent.beadWidth * 0.75).toInt()
+
+                        rodMovement.map { rodData ->
+                            if (rodData.movement.lowerUp > 0 || rodData.movement.lowerDown > 0 || rodData.movement.upperDown || rodData.movement.upperUp){
+                                val directionBinding = ContentAbacusDirectionsBinding.inflate(layoutInflater, null, false)
+                                with(directionBinding){
+                                    val rightSpace = decimalBeadsWidth + (themeContent.beadWidth * rodData.rodIndex) + (themeContent.beadSpace / 2) + (rodData.rodIndex * themeContent.beadSpace)
+                                    val layoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT)
+                                    layoutParams.marginEnd = rightSpace
+                                    directionBinding.conDirection.layoutParams = layoutParams
+
+                                    if (rodData.movement.lowerUp > 0){
+                                        linearDirectionBottom.show()
+                                        imgUpArrowBottom.show()
+                                        val heightOldBeads = rodData.movement.lowerOldValue * themeContent.beadHeight
+                                        val bottomRemainBeadHeight = ((4 - rodData.movement.lowerUp) * themeContent.beadHeight)+extraHeight - heightOldBeads
+                                        linearDirectionBottom.setPadding(0,topTotalHeightAlways + heightOldBeads,0,bottomRemainBeadHeight)
+                                    }else if (rodData.movement.lowerDown > 0){
+                                        linearDirectionBottom.show()
+                                        imgDownArrowBottom.show()
+                                        val heightOldBeads = (rodData.movement.lowerOldValue - rodData.movement.lowerDown) * themeContent.beadHeight
+                                        val bottomRemainBeadHeight = if (rodData.movement.lowerOldValue == 4) { extraHeight }else{ extraHeight + ((4 - rodData.movement.lowerOldValue) * themeContent.beadHeight)}
+                                        linearDirectionBottom.setPadding(0,topTotalHeightAlways + heightOldBeads,0,bottomRemainBeadHeight)
+                                    }
+                                    if (rodData.movement.upperDown){
+                                        linearDirectionTop.show()
+                                        imgDownArrowTop.show()
+                                        linearDirectionTop.setPadding(0,extraHeight,0,bottomTotalHeightAlways)
+                                    }else if (rodData.movement.upperUp){
+                                        linearDirectionTop.show()
+                                        imgUpArrowTop.show()
+                                        linearDirectionTop.setPadding(0,extraHeight,0,bottomTotalHeightAlways)
+                                    }
+                                }
+                                binding.viewDirection.addView(directionBinding.root)
+                            }
+                        }
+                        if ((binding.viewDirection.childCount?:0) > 0){
+                            binding.viewDirection.show()
+                        }else{
+                            hideDirection()
+                        }
+                    }else{
+                        hideDirection()
+                    }
+                }else{
+                    hideDirection()
+                }
+            }
+        }
+    }
+
+    fun clearDirection() {
+        if (::binding.isInitialized){
+            binding.viewDirection.removeAllViews()
+        }
+    }
+    fun hideDirection() {
+        if (::binding.isInitialized){
+            binding.viewDirection.removeAllViews()
+            binding.viewDirection.hide()
+        }
+    }
+
 }

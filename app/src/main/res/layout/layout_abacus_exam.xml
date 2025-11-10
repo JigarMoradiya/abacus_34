@@ -58,6 +58,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardAbacusMain"
                 android:layout_width="wrap_content"
+                app:strokeWidth="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/activity_padding8"
                 android:layout_marginTop="@dimen/activity_padding8"

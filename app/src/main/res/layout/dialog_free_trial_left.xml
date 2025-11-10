@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_padding2"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/activity_padding12"
+            app:cardElevation="@dimen/card_elevation"
+            app:cardMaxElevation="@dimen/card_elevation"
+            app:cardUseCompatPadding="true"
+            app:strokeWidth="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgOffer"
+                    android:layout_width="0dp"
+                    android:layout_height="270dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintDimensionRatio="V,256:113"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/bg_free_trial" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgNow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="@dimen/activity_padding8"
+                    android:layout_marginTop="@dimen/activity_padding8"
+                    android:adjustViewBounds="true"
+                    android:rotation="-10"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_now" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearDayLeft"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgOffer"
+                    app:layout_constraintEnd_toEndOf="@+id/imgOffer"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/imgOffer"
+                    app:layout_constraintTop_toTopOf="@+id/imgOffer"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/linearTrialStart"
+                        android:layout_width="260dp"
+                        android:layout_height="260dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="@dimen/activity_padding16"
+                            app:srcCompat="@drawable/ic_free_trial" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/linearDayLefts"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.6"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/activity_padding16"
+                        android:visibility="visible">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="120dp"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/ic_number_3" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgDays"
+                            android:layout_width="wrap_content"
+                            android:layout_height="72dp"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/free_trial_day_left" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="@dimen/activity_padding8">
+
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgLogo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="56dp"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/logo_banner" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/txtTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/activity_padding8"
+                            android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:text="Welcome to your 7-day free trial!"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/textSizeLarge"
+                            app:fontFamily="@font/font_extra_bold" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/txtDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:text="You now have full access — explore, learn, and enjoy your journey."
+                            android:textColor="@color/colorSwitch1"
+                            android:textSize="@dimen/textSizeMedium"
+                            app:fontFamily="@font/font_bold" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:alpha="0.9"
+                            android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:text="No payment or subscription setup needed during your free trial."
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/textSizeVeryExtraSmall"
+                            app:fontFamily="@font/font_medium" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/txtDiscount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:text="@string/limited_time_discount"
+                            android:textColor="@color/red_700"
+                            android:textSize="@dimen/textSizeSmall"
+                            android:visibility="gone"
+                            app:fontFamily="@font/font_regular"
+                            tools:visibility="visible" />
+
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnYes"
+                            style="@style/btnMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/activity_padding16"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:text="Start Learning"
+                            android:textAllCaps="false" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/btnNo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:includeFontPadding="false"
+                            android:paddingHorizontal="@dimen/activity_padding16"
+                            android:paddingVertical="@dimen/activity_padding8"
+                            android:text="Keep Going"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/textSizeMedium"
+                            android:visibility="gone"
+                            app:fontFamily="@font/font_bold" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_padding16"
+                    android:layout_marginBottom="@dimen/activity_padding4"
+                    android:alpha="0.9"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="No payment or subscription setup needed during your free trial."
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeExtraSmall"
+                    android:visibility="gone"
+                    app:fontFamily="@font/font_semibold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</layout>
