@@ -3,13 +3,13 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-parcelize")
-
     id("androidx.navigation.safeargs")
-
     id("com.google.dagger.hilt.android")
-
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
+
+    // jetpack
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {
@@ -49,6 +49,7 @@ android {
         viewBinding = true
         buildConfig = true
         dataBinding = true
+        compose = true
     }
     flavorDimensions += listOf("variant1")
     productFlavors {
@@ -142,15 +143,13 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.9.4")
 
     // life components
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-//    kapt("androidx.lifecycle:lifecycle-compiler:2.9.3")
+//    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("androidx.lifecycle:lifecycle-common-java8:2.9.4")
 
     // database
     implementation("androidx.room:room-ktx:2.8.3")
     implementation("androidx.room:room-runtime:2.8.3")
     kapt("androidx.room:room-compiler:2.8.3")
-    implementation("android.arch.persistence.room:rxjava2:1.1.1")
 
     implementation("net.zetetic:sqlcipher-android:4.11.0@aar")
     implementation("androidx.sqlite:sqlite:2.6.1")
@@ -190,6 +189,36 @@ dependencies {
 
     implementation("androidx.media3:media3-exoplayer:1.8.0")
     implementation("androidx.media3:media3-ui:1.8.0")
+
+    // jetpack compose
+    // Compose BOM ensures all versions stay in sync
+    implementation(platform("androidx.compose:compose-bom:2025.11.00"))
+
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.animation:animation")
+    implementation("androidx.compose.foundation:foundation")
+    implementation("io.coil-kt:coil-compose:2.7.0")
+
+    implementation("androidx.activity:activity-compose:1.8.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
+
+// Icons
+    implementation("androidx.compose.material:material-icons-core")
+    implementation("androidx.compose.material:material-icons-extended")
+
+// Debug tooling
+    debugImplementation("androidx.compose.ui:ui-tooling")
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    // Ensure new parcelize runtime is used
+    implementation("org.jetbrains.kotlin:kotlin-parcelize-runtime:2.2.21")
+
+    // Globally remove old runtime causing duplicate classes
+    configurations.all {
+        exclude(group = "org.jetbrains.kotlin", module = "kotlin-android-extensions-runtime")
+    }
+
 }
 
 // Allow references to generated code
