@@ -40,6 +40,9 @@
             android:id="@+id/action_homeFragment_to_puzzleNumberHomeFragment"
             app:destination="@+id/puzzleNumberHomeFragment" />
         <action
+            android:id="@+id/toNumberSequencePuzzleHomeJetpackFragment"
+            app:destination="@+id/numberSequencePuzzleHomeJetpackFragment" />
+        <action
             android:id="@+id/action_homeFragment_to_exerciseHomeFragment"
             app:destination="@+id/exerciseHomeFragment" />
         <action
@@ -197,6 +200,20 @@
         <action
             android:id="@+id/action_puzzleNumberHomeFragment_to_puzzleNumberFragment"
             app:destination="@+id/puzzleNumberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/numberSequencePuzzleHomeJetpackFragment"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.NumberSequencePuzzleHomeJetpackFragment">
+        <action
+            android:id="@+id/toNumberSequencePuzzleJetpackFragment"
+            app:destination="@+id/numberSequencePuzzleJetpackFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/numberSequencePuzzleJetpackFragment"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.NumberSequencePuzzleJetpackFragment">
+        <argument
+            android:name="type"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/puzzleNumberFragment"

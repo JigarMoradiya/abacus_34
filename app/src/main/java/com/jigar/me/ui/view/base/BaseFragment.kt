@@ -2,37 +2,26 @@ package com.jigar.me.ui.view.base
 
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
-import android.util.Log
-import android.view.Gravity
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.google.gson.Gson
-import com.google.gson.JsonObject
 import com.jigar.me.R
 import com.jigar.me.data.model.data.GooglePurchasedPlanRequest
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.base.inapp.BillingRepository
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.VoiceControllerSetting
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.VoiceControllerSettingInterface
-import com.jigar.me.ui.viewmodel.ExamViewModel
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
-import com.jigar.me.utils.Resource
-import com.jigar.me.utils.extensions.hide
-import com.jigar.me.utils.extensions.show
 import com.jigar.me.utils.extensions.toastS
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import java.util.*
+import java.util.Locale
 import kotlin.coroutines.CoroutineContext
-import androidx.navigation.findNavController
-import com.jigar.me.ui.view.confirm_alerts.dialogs.FreeTrialLeftDialog
 
 abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSettingInterface {
     lateinit var prefManager : AppPreferencesHelper
@@ -40,25 +29,17 @@ abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSetting
     private lateinit var job: Job
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Default
-    private val examViewModel by viewModels<ExamViewModel>()
 
     //   TTS
     private var textToSpeech: TextToSpeech? = null
     private var speak = false
     var voiceController: VoiceControllerSetting? = null
-    var statisticApiResponseListener: StatisticApiResponseListener? = null
     private lateinit var navController: NavController
-    companion object{
-        interface StatisticApiResponseListener {
-            fun statisticApiData(data: JsonObject?)
-        }
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         prefManager = AppPreferencesHelper(requireContext(), AppConstants.PREF_NAME)
 //        requireContext().setLocale(prefManager.getCustomParam(Constants.appLanguage,"en"))
         super.onCreate(savedInstanceState)
         job = Job()
-        initCommonObserver()
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -67,30 +48,6 @@ abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSetting
     }
     private fun navigationGraph() {
         navController = requireActivity().findNavController(R.id.nav_host_fragment)
-    }
-    fun getStatisticData(listener : StatisticApiResponseListener){
-        statisticApiResponseListener = listener
-        examViewModel.getStatistics()
-    }
-    private fun initCommonObserver() {
-        examViewModel.getStatisticsResponse.observe(this) {
-            when (it) {
-                is Resource.Loading -> {
-                    showLoading()
-                }
-                is Resource.Success -> {
-                    hideLoading()
-                    if (it.value.status == AppConstants.APIStatus.SUCCESS)
-                        statisticApiResponseListener?.statisticApiData(it.value.data)
-                    else
-                        onFailure(it.value.error?.message)
-                }
-                is Resource.Failure -> {
-                    hideLoading()
-                    onFailure(it.errorBody)
-                }
-            }
-        }
     }
 
     fun setCurrentSubscription(data: ArrayList<GooglePurchasedPlanRequest>) {

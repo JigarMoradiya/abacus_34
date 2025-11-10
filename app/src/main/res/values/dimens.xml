@@ -64,6 +64,8 @@
     <dimen name="textSizeCCMWord">24sp</dimen>
     <dimen name="textSize36">36sp</dimen>
 
+    <dimen name="popup_icon_height">72dp</dimen>
+
 
     <dimen name="margin_top_challenge">4dp</dimen>
     <dimen name="button_corner_radius">8dp</dimen>

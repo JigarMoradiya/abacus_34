@@ -461,7 +461,8 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
                 mNavController?.navigate(R.id.action_homeFragment_to_customChallengeHomeFragment)
             }
             AppConstants.HomeClicks.Menu_Number_Sequence_Puzzle -> {
-                mNavController?.navigate(R.id.action_homeFragment_to_puzzleNumberHomeFragment)
+//                mNavController?.navigate(R.id.action_homeFragment_to_puzzleNumberHomeFragment)
+                mNavController?.navigate(R.id.toNumberSequencePuzzleHomeJetpackFragment)
             }
             AppConstants.HomeClicks.Menu_Settings -> {
                 goToSetting()
