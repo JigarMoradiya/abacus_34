@@ -79,8 +79,8 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.7.1")
     implementation("com.google.android.material:material:1.13.0")
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.9.4")
-    implementation("androidx.navigation:navigation-ui-ktx:2.9.4")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.9.6")
+    implementation("androidx.navigation:navigation-ui-ktx:2.9.6")
     implementation("com.google.android.play:asset-delivery-ktx:2.3.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.3.0")
@@ -104,7 +104,7 @@ dependencies {
     // firebase
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-crashlytics-ndk")
-    implementation(platform("com.google.firebase:firebase-bom:34.2.0"))
+    implementation(platform("com.google.firebase:firebase-bom:34.5.0"))
     implementation("com.google.firebase:firebase-database-ktx:21.0.0")
     implementation("com.google.firebase:firebase-config-ktx:22.1.2")
     implementation("com.google.firebase:firebase-messaging-ktx:24.1.2")
@@ -115,7 +115,7 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:21.4.0")
 
     // push notification
-    implementation("com.onesignal:OneSignal:5.1.37")
+    implementation("com.onesignal:OneSignal:5.4.0")
 
     // api
     implementation("com.squareup.retrofit2:retrofit:3.0.0")
@@ -141,20 +141,18 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-common-java8:2.9.4")
 
     // database
-    implementation("androidx.room:room-ktx:2.8.0")
-    implementation("androidx.room:room-runtime:2.8.0")
-    kapt("androidx.room:room-compiler:2.8.0")
+    implementation("androidx.room:room-ktx:2.8.3")
+    implementation("androidx.room:room-runtime:2.8.3")
+    kapt("androidx.room:room-compiler:2.8.3")
     implementation("android.arch.persistence.room:rxjava2:1.1.1")
 
-    implementation("net.zetetic:sqlcipher-android:4.10.0@aar")
-    implementation("androidx.sqlite:sqlite:2.6.0")
+    implementation("net.zetetic:sqlcipher-android:4.11.0@aar")
+    implementation("androidx.sqlite:sqlite:2.6.1")
 
-//    implementation("net.zetetic:android-database-sqlcipher:4.5.4@aar")
-//    implementation("androidx.sqlite:sqlite-ktx:2.6.0")
-    implementation("androidx.sqlite:sqlite-framework:2.6.0")
+    implementation("androidx.sqlite:sqlite-framework:2.6.1")
 
     // In App Purchase
-    implementation("com.android.billingclient:billing-ktx:8.0.0")
+    implementation("com.android.billingclient:billing-ktx:8.1.0")
 
     // gson data
     implementation("com.google.code.gson:gson:2.13.2")
