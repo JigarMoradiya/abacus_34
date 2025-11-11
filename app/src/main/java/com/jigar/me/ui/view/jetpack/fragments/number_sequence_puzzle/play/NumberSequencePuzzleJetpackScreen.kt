@@ -26,19 +26,14 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
@@ -46,34 +41,27 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.jigar.me.R
-import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
-import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.PlaySound
+import com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.viewmodels.NumberSequencePuzzleViewModel
 
 
 @Composable
 fun NumberSequencePuzzleJetpackScreen(
-    navController: NavController,prefManager : AppPreferencesHelper,
-    gridSize: Int
+    navController: NavController,
+    gridSize: Int,
+    viewModel: NumberSequencePuzzleViewModel
 ) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val spacing = 12.dp
     val opacity = 0.4f
-    val context = LocalContext.current
-    var tiles by remember { mutableStateOf(generateSolvableGrid(gridSize)) }
-    var moveCount by remember { mutableIntStateOf(0) }
-    var isSolved by remember { mutableStateOf(false) }
-    var soundOn by remember { mutableStateOf(prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_NumberPuzzleVolume,true)) }
 
     Box(modifier = Modifier.fillMaxSize()) {
-        // 🔹 Header
         HeaderToolbar(
             title = when (gridSize) {
                 3 -> "3×3 Puzzle"
@@ -82,92 +70,62 @@ fun NumberSequencePuzzleJetpackScreen(
             },
             onBackClick = { navController.popBackStack() }
         )
-        Column(modifier = Modifier.fillMaxSize()) {
 
-            // 🔹 Main content area
-            BoxWithConstraints(
-                modifier = Modifier.fillMaxSize()
-            ) {
+        Column(modifier = Modifier.fillMaxSize()) {
+            BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
                 val maxWidth = maxWidth
 
-                // Divide layout like SwiftUI: left (moves), center (puzzle), right (buttons)
                 Row(
                     modifier = Modifier.fillMaxSize(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    // LEFT SIDE – Move Count
-                    LeftPanel(moveCount = moveCount, modifier = Modifier.width(maxWidth * 0.25f))
-
-                    // CENTER – Puzzle
-                    PuzzleBoard(
-                        gridSize = gridSize,
-                        tiles = tiles,
-                        spacing = spacing,
-                        opacity = opacity,
-                        onTileMove = { row, col ->
-                            val (newTiles, moved) = moveTile(tiles, row, col)
-                            if (moved) {
-                                tiles = newTiles
-                                moveCount++
-                                val isSolve = checkSolved(newTiles)
-                                if (isSolve) {
-                                    if (soundOn){
-                                        PlaySound.play(context,PlaySound.number_puzzle_win)
-                                    }
-                                    isSolved = true
-                                }else{
-                                    if (soundOn){
-                                        PlaySound.play(context,PlaySound.swap_sound)
-                                    }
-                                }
-                            }
-                        },
-                        modifier = Modifier
-                            .width(maxWidth * 0.5f)
+                    LeftPanel(
+                        moveCount = uiState.moveCount,
+                        modifier = Modifier.width(maxWidth * 0.25f)
                     )
 
-                    // RIGHT SIDE – Controls
+                    PuzzleBoard(
+                        gridSize = gridSize,
+                        tiles = uiState.tiles,
+                        spacing = spacing,
+                        opacity = opacity,
+                        onTileMove = { row, col -> viewModel.onTileMove(row, col) },
+                        modifier = Modifier.width(maxWidth * 0.5f)
+                    )
+
                     RightPanel(
-                        soundOn = soundOn,
-                        onSoundToggle = {
-                            soundOn = !soundOn
-                            prefManager.setCustomParamBoolean(AppConstants.Settings.Setting_NumberPuzzleVolume,soundOn)
-                                        },
-                        onRestart = {
-                            tiles = generateSolvableGrid(gridSize)
-                            moveCount = 0
-                            isSolved = false
-                        },
+                        soundOn = uiState.soundOn,
+                        onSoundToggle = { viewModel.toggleSound() },
+                        onRestart = { viewModel.restartGame() },
                         modifier = Modifier.width(maxWidth * 0.25f)
                     )
                 }
             }
         }
 
-        // 🔹 Solved Popup Overlay
         AnimatedVisibility(
-            visible = isSolved,
+            visible = uiState.isSolved,
             enter = fadeIn(),
             exit = fadeOut()
         ) {
             CustomPopupView(
                 title = "🎉 You Did It! 🎉",
-                description = "Completed in <b>$moveCount moves!</b>",
+                description = "Completed in <b>${uiState.moveCount} moves!</b>",
                 positiveButtonText = "Continue to Play",
                 negativeButtonText = "No, I want to close",
                 icon = R.drawable.ic_complete,
                 widthMultiplier = 0.5f,
-                onPositiveTapped = {
-                    isSolved = false
-                    tiles = generateSolvableGrid(gridSize)
-                    moveCount = 0
-                },
+                onPositiveTapped = { viewModel.playAgain() },
                 onNegativeTapped = {
-                    isSolved = false
+                    viewModel.closePopup()
                     navController.popBackStack()
                 }
             )
         }
+    }
+
+    LaunchedEffect(gridSize) {
+        viewModel.initialize(gridSize)
     }
 }
 
@@ -389,88 +347,6 @@ private fun TileView(number: Int?, size: Dp, color: Color, onClick: () -> Unit) 
                         shape = RoundedCornerShape(12.dp)
                     )
             )
-
-
         }
     }
-}
-
-
-private fun generateSolvableGrid(gridSize: Int, scrambleMoves: Int = 200): List<List<Int?>> {
-    val grid = goalGrid(gridSize).map { it.toMutableList() }
-    var empty = gridSize - 1 to gridSize - 1
-
-    repeat(scrambleMoves) {
-        val neighbors = listOfNotNull(
-            (empty.first - 1).takeIf { it >= 0 }?.let { it to empty.second },
-            (empty.first + 1).takeIf { it < gridSize }?.let { it to empty.second },
-            (empty.second - 1).takeIf { it >= 0 }?.let { empty.first to it },
-            (empty.second + 1).takeIf { it < gridSize }?.let { empty.first to it }
-        )
-        val pick = neighbors.random()
-        grid[empty.first][empty.second] = grid[pick.first][pick.second]
-        grid[pick.first][pick.second] = null
-        empty = pick
-    }
-
-    return grid
-}
-
-private fun goalGrid(gridSize: Int): List<List<Int?>> {
-    var num = 1
-    return List(gridSize) { r ->
-        List(gridSize) { c ->
-            if (r == gridSize - 1 && c == gridSize - 1) null else num++
-        }
-    }
-}
-
-private fun moveTile(
-    tiles: List<List<Int?>>,
-    row: Int,
-    col: Int
-): Pair<List<List<Int?>>, Boolean> {
-    val grid = tiles.map { it.toMutableList() }
-    val emptyPos = findEmpty(grid) ?: return tiles to false
-    val (er, ec) = emptyPos
-    var moved = false
-
-    if (row == er) {
-        val dir = if (col < ec) 1 else -1
-        var current = ec
-        while (current != col) {
-            val next = current - dir
-            grid[er][current] = grid[er][next]
-            current = next
-            moved = true
-        }
-        grid[row][col] = null
-    } else if (col == ec) {
-        val dir = if (row < er) 1 else -1
-        var current = er
-        while (current != row) {
-            val next = current - dir
-            grid[current][ec] = grid[next][ec]
-            current = next
-            moved = true
-        }
-        grid[row][col] = null
-    }
-
-    return grid to moved
-}
-
-private fun findEmpty(grid: List<List<Int?>>): Pair<Int, Int>? {
-    for (r in grid.indices) {
-        for (c in grid[r].indices) {
-            if (grid[r][c] == null) return r to c
-        }
-    }
-    return null
-}
-
-private fun checkSolved(grid: List<List<Int?>>): Boolean {
-    val flat = grid.flatten()
-    val correct = (1 until grid.size * grid.size).map { it } + listOf(null)
-    return flat == correct
 }
