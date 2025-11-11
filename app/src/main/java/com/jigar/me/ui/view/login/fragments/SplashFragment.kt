@@ -69,6 +69,15 @@ class SplashFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
+//        if (BuildConfig.DEBUG){
+//            if (!prefManager.getAccessToken().isNullOrEmpty() && prefManager.isUserLoggedIn()){
+//                MainDashboardActivity.getInstance(requireContext())
+//            }else{
+//                mNavController?.navigate(R.id.toLoginHomeFragment)
+//            }
+//        }else{
+//            firebaseConfig()
+//        }
         firebaseConfig()
     }
     private fun initObserver(){
