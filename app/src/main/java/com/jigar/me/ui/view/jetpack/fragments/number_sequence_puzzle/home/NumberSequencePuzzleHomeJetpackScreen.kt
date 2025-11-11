@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.components
+package com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.home
 
 
 import androidx.compose.foundation.Canvas
@@ -34,11 +34,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.NumberSequencePuzzleHomeJetpackFragmentDirections
 
 
 @Composable
@@ -79,7 +79,7 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                     fontFamily = FontFamily(Font(R.font.font_bold)),
                     fontSize = dimensionResource(id = R.dimen.textSize20).value.sp,
                     color = colorResource(id = R.color.colorBlueDark),
-                    textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                    textAlign = TextAlign.Center,
                     modifier = Modifier.padding(top = dimensionResource(R.dimen.activity_padding16))
                 )
 
@@ -89,7 +89,7 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                     fontFamily = FontFamily(Font(R.font.font_bold)),
                     fontSize = dimensionResource(id = R.dimen.textSizeLarge).value.sp,
                     color = Color(0xFFC06A6A),
-                    textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                    textAlign = TextAlign.Center
                 )
 
                 // Puzzle Options

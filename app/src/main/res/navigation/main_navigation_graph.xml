@@ -203,14 +203,14 @@
     </fragment>
     <fragment
         android:id="@+id/numberSequencePuzzleHomeJetpackFragment"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.NumberSequencePuzzleHomeJetpackFragment">
+        android:name="com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.home.NumberSequencePuzzleHomeJetpackFragment">
         <action
             android:id="@+id/toNumberSequencePuzzleJetpackFragment"
             app:destination="@+id/numberSequencePuzzleJetpackFragment" />
     </fragment>
     <fragment
         android:id="@+id/numberSequencePuzzleJetpackFragment"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.NumberSequencePuzzleJetpackFragment">
+        android:name="com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.play.NumberSequencePuzzleJetpackFragment">
         <argument
             android:name="type"
             app:argType="integer" />

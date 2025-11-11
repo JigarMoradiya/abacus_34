@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.components
+package com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.play
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -473,25 +473,4 @@ private fun checkSolved(grid: List<List<Int?>>): Boolean {
     val flat = grid.flatten()
     val correct = (1 until grid.size * grid.size).map { it } + listOf(null)
     return flat == correct
-}
-
-
-@Preview(
-    name = "Number Puzzle Home - Light",
-    showBackground = true,
-    backgroundColor = 0xFFFFFFFF,
-    widthDp = 800,
-    heightDp = 400
-)
-@Composable
-fun NumberSequencePuzzleScreenPreview() {
-    // Use a fake NavController for preview
-    val fakeNavController = rememberNavController()
-
-    MaterialTheme {
-        NumberSequencePuzzleJetpackScreen(
-            navController = fakeNavController,
-            gridSize = 5,prefManager = AppPreferencesHelper(LocalContext.current, AppConstants.PREF_NAME)
-        )
-    }
 }
