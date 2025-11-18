@@ -825,5 +825,9 @@
     <string name="old_subscription">Old Purchases</string>
     <string name="limited_time_discount"><b>Limited-time deal -</b> unlock premium at a discounted price!</string>
 
+    <string name="number_sequence_puzzle">Number Sequences Puzzle</string>
+    <string name="math_pyramid">Math Pyramid</string>
+    <string name="start_game">Start Game</string>
+
 
 </resources>

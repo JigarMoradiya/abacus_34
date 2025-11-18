@@ -7,6 +7,9 @@
         android:id="@+id/homeNewFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.home_new.HomeNewFragment">
         <action
+            android:id="@+id/toMathPyramidHomeFragment"
+            app:destination="@+id/mathPyramidHomeFragment" />
+        <action
             android:id="@+id/toVideoPreviewFragment"
             app:destination="@+id/videoPreviewFragment" />
         <action
@@ -195,34 +198,6 @@
         android:id="@+id/faqsFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.faqs.FAQsFragment"/>
     <fragment
-        android:id="@+id/puzzleNumberHomeFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.number_puzzles.PuzzleNumberHomeFragment">
-        <action
-            android:id="@+id/action_puzzleNumberHomeFragment_to_puzzleNumberFragment"
-            app:destination="@+id/puzzleNumberFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/numberSequencePuzzleHomeJetpackFragment"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.home.NumberSequencePuzzleHomeJetpackFragment">
-        <action
-            android:id="@+id/toNumberSequencePuzzleJetpackFragment"
-            app:destination="@+id/numberSequencePuzzleJetpackFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/numberSequencePuzzleJetpackFragment"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.play.NumberSequencePuzzleJetpackFragment">
-        <argument
-            android:name="type"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/puzzleNumberFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.number_puzzles.PuzzleNumberFragment">
-        <argument
-            android:name="type"
-            app:argType="integer" />
-    </fragment>
-    <fragment
         android:id="@+id/settingsFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.settings.SettingsFragment">
     </fragment>
@@ -299,5 +274,33 @@
             app:destination="@+id/examResultFragment" />
     </fragment>
 
+
+    <!-- Jetpack Compose -->
+    <fragment
+        android:id="@+id/numberSequencePuzzleHomeJetpackFragment"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.home.NumberSequencePuzzleHomeJetpackFragment">
+        <action
+            android:id="@+id/toNumberSequencePuzzleJetpackFragment"
+            app:destination="@+id/numberSequencePuzzleJetpackFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/numberSequencePuzzleJetpackFragment"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.play.NumberSequencePuzzleJetpackFragment">
+        <argument
+            android:name="type"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/mathPyramidHomeFragment"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.math_pyramid.home.MathPyramidHomeFragment">
+        <action
+            android:id="@+id/toMathPyramidPlayFragment"
+            app:destination="@+id/mathPyramidPlayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mathPyramidPlayFragment"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.math_pyramid.play.MathPyramidPlayFragment">
+    </fragment>
 
 </navigation>

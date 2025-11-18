@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.fragments.common.HeaderBar
 
 
 @Composable
@@ -54,7 +55,7 @@ fun NumberSequencePuzzleHomeJetpackScreen(
         ) {
 
             // 🔹 Header Bar
-            HeaderBar(onBackClick = onBackClick)
+            HeaderBar(title = stringResource(R.string.number_sequence_puzzle), onBackClick = onBackClick)
 
             Spacer(Modifier.weight(1f))
 
@@ -126,58 +127,6 @@ fun NumberSequencePuzzleHomeJetpackScreen(
     }
 }
 
-@Composable
-fun HeaderBar(
-    title: String = "Number Sequences Puzzle", onBackClick: () -> Unit
-) {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-    ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()
-        ) {
-            Card(
-                onClick = { onBackClick() },
-                colors = CardDefaults.cardColors(
-                    containerColor = colorResource(id = R.color.light_back)
-                ),
-                shape = RoundedCornerShape(dimensionResource(id = R.dimen.menu_icons_corner)),
-                elevation = CardDefaults.cardElevation(
-                    defaultElevation = dimensionResource(id = R.dimen.card_elevation)
-                ),
-                modifier = Modifier
-                    .padding(dimensionResource(id = R.dimen.icons_margin2))
-                    .size(dimensionResource(id = R.dimen.menu_icons))
-            ) {
-                Box(
-                    contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_back),
-                        contentDescription = "Back",
-                        modifier = Modifier
-                            .size(dimensionResource(id = R.dimen.menu_icons))
-                            .padding(dimensionResource(id = R.dimen.menu_icons_padding))
-                    )
-                }
-            }
-
-            // 🔹 Center Title (same as MaterialTextView in XML)
-            Text(
-                text = title,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                fontSize = dimensionResource(id = R.dimen.textSize24).value.sp,
-                color = colorResource(id = R.color.colorPrimaryDark),
-                modifier = Modifier
-                    .weight(1f)
-                    .wrapContentWidth(Alignment.CenterHorizontally),
-            )
-
-        }
-    }
-}
 
 @Composable
 fun PuzzleOptionView(

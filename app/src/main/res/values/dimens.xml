@@ -63,6 +63,7 @@
     <dimen name="textSizeCCMNumber">40sp</dimen>
     <dimen name="textSizeCCMWord">24sp</dimen>
     <dimen name="textSize36">36sp</dimen>
+    <dimen name="textSizeTitle">18sp</dimen>
 
     <dimen name="popup_icon_height">72dp</dimen>
 

@@ -146,7 +146,10 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
             cardMyAccountTop.onClick { txtMyAccount.performClick() }
             cardSettingTop.onClick { goToSetting() }
             cardSubscribe.onClick { goToInAppPurchase() }
-            cardYoutube.onClick { requireContext().openYoutube() }
+            cardYoutube.onClick {
+                mNavController?.navigate(R.id.mathPyramidHomeFragment)
+//                requireContext().openYoutube()
+            }
             cardEditImage.onClick { txtMyAccount.performClick() }
             txtWelcomeTitle.onClick {
                 if (BuildConfig.DEBUG) {
