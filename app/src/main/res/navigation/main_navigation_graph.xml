@@ -7,12 +7,8 @@
         android:id="@+id/homeNewFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.home_new.HomeNewFragment">
         <action
-            android:id="@+id/toMathPyramidHomeFragment"
-            app:destination="@+id/mathPyramidHomeFragment" />
-        <action
-            android:id="@+id/toNumberSequencePuzzleHomeFragment"
-            app:destination="@+id/numberSequencePuzzleHomeFragment" />
-
+            android:id="@+id/toMathGameZoneFragment"
+            app:destination="@+id/mathGameZoneFragment" />
         <action
             android:id="@+id/toVideoPreviewFragment"
             app:destination="@+id/videoPreviewFragment" />
@@ -274,6 +270,16 @@
 
 
     <!-- Jetpack Compose -->
+    <fragment
+        android:id="@+id/mathGameZoneFragment"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.game_zone.MathGameZoneFragment">
+        <action
+            android:id="@+id/toNumberSequencePuzzleHomeFragment"
+            app:destination="@+id/numberSequencePuzzleHomeFragment" />
+        <action
+            android:id="@+id/toMathPyramidHomeFragment"
+            app:destination="@+id/mathPyramidHomeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/numberSequencePuzzleHomeFragment"
         android:name="com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.home.NumberSequencePuzzleHomeFragment">

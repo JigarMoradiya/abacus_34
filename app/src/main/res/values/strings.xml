@@ -831,6 +831,12 @@
     <string name="continue_to_play">Continue to Play</string>
     <string name="completed_in_b_moves_b"><![CDATA[Completed in <b>%1$d moves!</b>]]></string>
     <string name="you_did_it">🎉 You Did It! 🎉</string>
+    <string name="target_the_number">Target the Number</string>
+    <string name="sudoku">Sudoku</string>
+    <string name="math_game_zone">Math Game Zone</string>
+    <string name="_3_3_puzzle">3×3 Puzzle</string>
+    <string name="_4_4_puzzle">4×4 Puzzle</string>
+    <string name="_5_5_puzzle">5×5 Puzzle</string>
 
 
 </resources>

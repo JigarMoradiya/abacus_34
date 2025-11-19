@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.fragments.common.HeaderBar
+import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 
 
 @Composable
@@ -44,16 +44,13 @@ fun NumberSequencePuzzleHomeJetpackScreen(
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
+        // 🔹 Header Bar
+        BackButtonWithText(title = stringResource(R.string.number_sequence_puzzle), onBackClick = onBackClick)
 
         Column(
             modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
-            // 🔹 Header Bar
-            HeaderBar(title = stringResource(R.string.number_sequence_puzzle), onBackClick = onBackClick)
-
             Spacer(Modifier.weight(1f))
-
             // 🔹 Logo + Title + Subtitle + Puzzle Options
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,

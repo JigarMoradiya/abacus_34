@@ -388,8 +388,7 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
                 mNavController?.navigate(R.id.action_homeFragment_to_customChallengeHomeFragment)
             }
             AppConstants.HomeClicks.Menu_Math_Game -> {
-//                mNavController?.navigate(R.id.toNumberSequencePuzzleHomeFragment)
-                mNavController?.navigate(R.id.toMathPyramidHomeFragment)
+                mNavController?.navigate(R.id.toMathGameZoneFragment)
             }
             AppConstants.HomeClicks.Menu_Settings -> {
                 goToSetting()

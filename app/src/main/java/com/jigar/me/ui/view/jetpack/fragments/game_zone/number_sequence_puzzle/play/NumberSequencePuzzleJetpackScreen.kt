@@ -48,6 +48,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.viewmodels.NumberSequencePuzzleViewModel
 
@@ -63,15 +64,14 @@ fun NumberSequencePuzzleJetpackScreen(
     val opacity = 0.4f
 
     Box(modifier = Modifier.fillMaxSize()) {
-        HeaderToolbar(
-            title = when (gridSize) {
-                3 -> "3×3 Puzzle"
-                4 -> "4×4 Puzzle"
-                else -> "5×5 Puzzle"
-            },
-            onBackClick = { navController.popBackStack() }
-        )
-
+        val title = when (gridSize) {
+            3 -> stringResource(R.string._3_3_puzzle)
+            4 -> stringResource(R.string._4_4_puzzle)
+            else -> stringResource(R.string._5_5_puzzle)
+        }
+        BackButtonWithText(title = title, onBackClick = {
+            navController.popBackStack()
+        })
         Column(modifier = Modifier.fillMaxSize()) {
             BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
                 val maxWidth = maxWidth

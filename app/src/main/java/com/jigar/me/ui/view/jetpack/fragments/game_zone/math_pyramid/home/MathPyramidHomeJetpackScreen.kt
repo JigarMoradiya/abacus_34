@@ -108,7 +108,7 @@ fun MathPyramidHomeJetpackScreen(
                                 color = if (state.selectedLevel == level) colorResource(R.color.black) else colorResource(R.color.black_text),
                                 fontFamily = FontFamily(Font(if (state.selectedLevel == level) R.font.font_bold else R.font.font_regular)),
                                 fontSize = dimensionResource(
-                                    id = if (state.selectedLevel == level) R.dimen.textSize24 else R.dimen.questionSize).value.sp
+                                    id = if (state.selectedLevel == level) R.dimen.textSize24 else R.dimen.textSize17).value.sp
                             )
                         }
                     }
