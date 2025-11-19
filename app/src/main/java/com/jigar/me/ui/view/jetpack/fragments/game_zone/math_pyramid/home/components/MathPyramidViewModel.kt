@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.math_pyramid.home.components
+package com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.home.components
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel

@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.math_pyramid.play.components
+package com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.play.components
 
 import com.jigar.me.ui.view.jetpack.fragments.common.enums.CommonDifficulty4
 import kotlin.random.Random

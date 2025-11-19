@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.viewmodels
+package com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.viewmodels
 
 
 fun generateSolvableGrid(gridSize: Int, scrambleMoves: Int = 200): List<List<Int?>> {

@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.math_pyramid.home
+package com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.home
 
 
 import androidx.compose.foundation.BorderStroke
@@ -48,7 +48,7 @@ import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.enums.CommonDifficulty4
-import com.jigar.me.ui.view.jetpack.fragments.math_pyramid.home.components.MathPyramidViewModel
+import com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.home.components.MathPyramidViewModel
 
 @Composable
 fun MathPyramidHomeJetpackScreen(

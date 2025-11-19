@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.play
+package com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.play
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -49,7 +49,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
-import com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.viewmodels.NumberSequencePuzzleViewModel
+import com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.viewmodels.NumberSequencePuzzleViewModel
 
 
 @Composable

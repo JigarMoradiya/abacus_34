@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.home
+package com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.home
 
 
 import androidx.compose.foundation.Canvas

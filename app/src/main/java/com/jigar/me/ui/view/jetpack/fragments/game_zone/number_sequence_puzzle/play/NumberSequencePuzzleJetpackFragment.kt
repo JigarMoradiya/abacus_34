@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.play
+package com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.play
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.jigar.me.ui.view.base.BaseFragment
-import com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.viewmodels.NumberSequencePuzzleViewModel
+import com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.viewmodels.NumberSequencePuzzleViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

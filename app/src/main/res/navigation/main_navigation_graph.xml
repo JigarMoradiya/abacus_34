@@ -276,14 +276,14 @@
     <!-- Jetpack Compose -->
     <fragment
         android:id="@+id/numberSequencePuzzleHomeFragment"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.home.NumberSequencePuzzleHomeFragment">
+        android:name="com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.home.NumberSequencePuzzleHomeFragment">
         <action
             android:id="@+id/toNumberSequencePuzzlePlayFragment"
             app:destination="@+id/numberSequencePuzzlePlayFragment" />
     </fragment>
     <fragment
         android:id="@+id/numberSequencePuzzlePlayFragment"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.play.NumberSequencePuzzleJetpackFragment">
+        android:name="com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.play.NumberSequencePuzzleJetpackFragment">
         <argument
             android:name="type"
             app:argType="integer" />
@@ -291,14 +291,14 @@
 
     <fragment
         android:id="@+id/mathPyramidHomeFragment"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.math_pyramid.home.MathPyramidHomeFragment">
+        android:name="com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.home.MathPyramidHomeFragment">
         <action
             android:id="@+id/toMathPyramidPlayFragment"
             app:destination="@+id/mathPyramidPlayFragment" />
     </fragment>
     <fragment
         android:id="@+id/mathPyramidPlayFragment"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.math_pyramid.play.MathPyramidPlayFragment">
+        android:name="com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.play.MathPyramidPlayFragment">
     </fragment>
 
 </navigation>

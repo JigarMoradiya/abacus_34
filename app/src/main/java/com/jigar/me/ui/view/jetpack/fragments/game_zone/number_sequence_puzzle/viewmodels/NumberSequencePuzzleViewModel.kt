@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.viewmodels
+package com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.viewmodels
 
 import android.content.Context
 import androidx.lifecycle.ViewModel

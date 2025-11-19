@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.math_pyramid.play
+package com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.play
 
 import android.os.Bundle
 import android.view.LayoutInflater

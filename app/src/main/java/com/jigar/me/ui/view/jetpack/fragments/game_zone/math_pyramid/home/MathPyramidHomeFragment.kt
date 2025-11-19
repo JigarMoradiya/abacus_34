@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.math_pyramid.home
+package com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.fragments.math_pyramid.home.components.MathPyramidViewModel
+import com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.home.components.MathPyramidViewModel
 import kotlin.getValue
 
 class MathPyramidHomeFragment : Fragment() {

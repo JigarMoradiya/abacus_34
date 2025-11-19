@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.math_pyramid.play
+package com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.play
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -54,7 +54,7 @@ import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
 import com.jigar.me.ui.view.jetpack.fragments.common.enums.CommonDifficulty4
-import com.jigar.me.ui.view.jetpack.fragments.math_pyramid.play.components.NumberPyramidGenerator
+import com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.play.components.NumberPyramidGenerator
 
 @Composable
 fun MathPyramidPlayJetpackScreen(
