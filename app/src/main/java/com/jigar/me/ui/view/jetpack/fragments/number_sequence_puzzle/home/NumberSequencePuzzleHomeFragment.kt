@@ -9,7 +9,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.navigation.findNavController
 import com.jigar.me.ui.view.base.BaseFragment
 
-class NumberSequencePuzzleHomeJetpackFragment : BaseFragment() {
+class NumberSequencePuzzleHomeFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {

@@ -291,7 +291,7 @@
     <string name="arrange_all_the_numbers_of_puzzle_in_ascending_order">Arrange all the numbers of puzzle in ascending order</string>
     <string name="current_moves">Current Moves</string>
     <string name="best_moves">Best Moves</string>
-    <string name="start_new">Start New Game</string>
+    <string name="start_new">Start New</string>
     <string name="volume_on">Volume ON</string>
     <string name="volume_off">Volume OFF</string>
     <string name="number_sequences_puzzle_volume">Number sequence puzzle volume</string>
@@ -828,6 +828,9 @@
     <string name="number_sequence_puzzle">Number Sequences Puzzle</string>
     <string name="math_pyramid">Math Pyramid</string>
     <string name="start_game">Start Game</string>
+    <string name="continue_to_play">Continue to Play</string>
+    <string name="completed_in_b_moves_b"><![CDATA[Completed in <b>%1$d moves!</b>]]></string>
+    <string name="you_did_it">🎉 You Did It! 🎉</string>
 
 
 </resources>

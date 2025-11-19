@@ -98,12 +98,13 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
         mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() = with(binding){
-        val list : List<String> = arrayListOf(AppConstants.HomeClicks.Menu_Abacus_Free_Mode,
+        val list : List<String> = arrayListOf(
+            AppConstants.HomeClicks.Menu_Abacus_Free_Mode,
             AppConstants.HomeClicks.Menu_Practice_Abacus,
             AppConstants.HomeClicks.Menu_Abacus_Exercise,
             AppConstants.HomeClicks.Menu_Exam,
             AppConstants.HomeClicks.Menu_CCM,
-            AppConstants.HomeClicks.Menu_Number_Sequence_Puzzle,
+            AppConstants.HomeClicks.Menu_Math_Game,
             AppConstants.HomeClicks.Menu_Purchase_Store,
             AppConstants.HomeClicks.Menu_Settings,
             AppConstants.HomeClicks.Menu_My_Account
@@ -147,8 +148,7 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
             cardSettingTop.onClick { goToSetting() }
             cardSubscribe.onClick { goToInAppPurchase() }
             cardYoutube.onClick {
-                mNavController?.navigate(R.id.mathPyramidHomeFragment)
-//                requireContext().openYoutube()
+                requireContext().openYoutube()
             }
             cardEditImage.onClick { txtMyAccount.performClick() }
             txtWelcomeTitle.onClick {
@@ -272,77 +272,6 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
                 override fun onConfirmationNoClick(bundle: Bundle?) = Unit
             })
     }
-//    private fun menuTour() {
-//        lifecycleScope.launch {
-//            delay(1000)
-//            if (!prefManager.getCustomParamBoolean(AppConstants.Settings.isHomeTourWatch, false)) {
-////            if (true) {
-//                showTour()
-//            }else if (prefManager.getCustomParamInt(AppConstants.Settings.appOpenCount, 0) == Constants.homePageShowIntroMaxAppOpen) {
-//                prefManager.setCustomParamInt(AppConstants.Settings.appOpenCount, 0)
-//                val introType = DataProvider.getHomeMenuRandomIntro(prefManager)
-//                lighter = Lighter.with(binding.root)
-//                var view : View? = null
-//                var directions : Int? = null
-//                var layoutId : Int? = null
-//                var type : String = "rect"
-//
-//                when (introType) {
-//                    HomeMenuIntroType.freeMode -> {
-//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(0) as HomeMenuNewAdapter.ViewHolder).binding.conMain
-//                        directions = Direction.RIGHT
-//                        layoutId = R.layout.layout_tip_free_mode
-//                    }
-//                    HomeMenuIntroType.videoTutorial -> {
-//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(6) as HomeMenuNewAdapter.ViewHolder).binding.conMain
-//                        directions = Direction.RIGHT
-//                        layoutId = R.layout.layout_tip_video_tutorial_new
-//                    }
-//                    HomeMenuIntroType.exercise -> {
-//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(2) as HomeMenuNewAdapter.ViewHolder).binding.conMain
-//                        directions = Direction.RIGHT
-//                        layoutId = R.layout.layout_tip_exercise_new
-//                    }
-//                    HomeMenuIntroType.exam -> {
-//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(3) as HomeMenuNewAdapter.ViewHolder).binding.conMain
-//                        directions = Direction.LEFT
-//                        layoutId = R.layout.layout_tip_exam_new
-//                    }
-//                    HomeMenuIntroType.material -> {
-////                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(8) as HomeMenuNewAdapter.ViewHolder).binding.conMain
-////                        directions = Direction.TOP
-////                        layoutId = R.layout.layout_tip_practice_material
-//                    }
-//                    HomeMenuIntroType.numberPuzzle -> {
-//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(5) as HomeMenuNewAdapter.ViewHolder).binding.conMain
-//                        directions = Direction.TOP
-//                        layoutId = R.layout.layout_tip_number_sequence
-//                    }
-//                    HomeMenuIntroType.purchase -> {
-//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(7) as HomeMenuNewAdapter.ViewHolder).binding.conMain
-//                        directions = Direction.LEFT
-//                        layoutId = R.layout.layout_tip_purchase
-//                    }
-//                    HomeMenuIntroType.setting -> {
-//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(8) as HomeMenuNewAdapter.ViewHolder).binding.conMain
-//                        directions = Direction.LEFT
-//                        layoutId = R.layout.layout_tip_setting
-//                    }
-//                    HomeMenuIntroType.ccm -> {
-//                        view = (binding.recyclerviewMenu.findViewHolderForAdapterPosition(4) as HomeMenuNewAdapter.ViewHolder).binding.conMain
-//                        directions = Direction.LEFT
-//                        layoutId = R.layout.layout_tip_ccm_new
-//                    }
-//                }
-//                if (view != null && directions != null && layoutId != null){
-//                    IntroProvider.videoTutorialSingleIntro(lighter,view,directions,layoutId,type)
-//                }
-//            }
-//
-//            val appOpenCount = prefManager.getCustomParamInt(AppConstants.Settings.appOpenCount, 0)
-//            prefManager.setCustomParamInt(AppConstants.Settings.appOpenCount, (appOpenCount+1))
-//        }
-//    }
 
     private fun themePopup() {
         if (isAdded){
@@ -362,9 +291,7 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
 
     private fun checkNotificationPermission() {
         if (isAdded){
-            if (requireActivity().checkPermissions(Constants.NOTIFICATION_PERMISSION, requestMultiplePermissions)){
-//                menuTour()
-            }
+            requireActivity().checkPermissions(Constants.NOTIFICATION_PERMISSION, requestMultiplePermissions)
         }
     }
 
@@ -374,8 +301,6 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
             permissions.entries.filter { !it.value }.also {
                 if (it.isNotEmpty()) {
                     notificationPermissionPopup()
-                }else{
-//                    menuTour()
                 }
             }
         }
@@ -385,7 +310,6 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
      */
     private var resumeActivityResultLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { activityResult ->
-//            menuTour()
         }
 
     private fun notificationPermissionPopup() {
@@ -463,9 +387,9 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
             AppConstants.HomeClicks.Menu_CCM -> {
                 mNavController?.navigate(R.id.action_homeFragment_to_customChallengeHomeFragment)
             }
-            AppConstants.HomeClicks.Menu_Number_Sequence_Puzzle -> {
-//                mNavController?.navigate(R.id.action_homeFragment_to_puzzleNumberHomeFragment)
-                mNavController?.navigate(R.id.toNumberSequencePuzzleHomeJetpackFragment)
+            AppConstants.HomeClicks.Menu_Math_Game -> {
+//                mNavController?.navigate(R.id.toNumberSequencePuzzleHomeFragment)
+                mNavController?.navigate(R.id.toMathPyramidHomeFragment)
             }
             AppConstants.HomeClicks.Menu_Settings -> {
                 goToSetting()

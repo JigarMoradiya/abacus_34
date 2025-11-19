@@ -87,6 +87,7 @@
     <dimen name="icons_margin">4dp</dimen>
     <dimen name="icons_margin2">8dp</dimen>
     <dimen name="title_margin">8dp</dimen>
+    <dimen name="btn_shadow">1dp</dimen>
 
     <dimen name="handle_width">64dp</dimen>
     <dimen name="handle_height">3dp</dimen>

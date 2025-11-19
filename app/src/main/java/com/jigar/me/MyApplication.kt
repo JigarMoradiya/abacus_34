@@ -159,7 +159,7 @@ class MyApplication : Application(), Configuration.Provider {
                                 moveToDestination(R.id.examHomeFragment)
                             }
                             Constants.notificationTypeNumberSequence -> {
-                                moveToDestination(R.id.puzzleNumberHomeFragment)
+                                moveToDestination(R.id.numberSequencePuzzleHomeFragment)
                             }
                             Constants.notificationTypeSetting -> {
                                 moveToDestination(R.id.settingsFragment)

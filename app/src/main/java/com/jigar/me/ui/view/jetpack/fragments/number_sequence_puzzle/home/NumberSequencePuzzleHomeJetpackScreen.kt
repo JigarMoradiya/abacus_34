@@ -15,11 +15,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -102,21 +97,21 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                         gridSize = 3,
                         color = Color(0xFF9C27B0),
                         onClick = {
-                            val action = NumberSequencePuzzleHomeJetpackFragmentDirections.toNumberSequencePuzzleJetpackFragment(3)
+                            val action = NumberSequencePuzzleHomeFragmentDirections.toNumberSequencePuzzlePlayFragment(3)
                             navController.navigate(action)
                         })
                     PuzzleOptionView(
                         gridSize = 4,
                         color = Color(0xFFFF9800),
                         onClick = {
-                            val action = NumberSequencePuzzleHomeJetpackFragmentDirections.toNumberSequencePuzzleJetpackFragment(4)
+                            val action = NumberSequencePuzzleHomeFragmentDirections.toNumberSequencePuzzlePlayFragment(4)
                             navController.navigate(action)
                         })
                     PuzzleOptionView(
                         gridSize = 5,
                         color = Color(0xFF2196F3),
                         onClick = {
-                            val action = NumberSequencePuzzleHomeJetpackFragmentDirections.toNumberSequencePuzzleJetpackFragment(5)
+                            val action = NumberSequencePuzzleHomeFragmentDirections.toNumberSequencePuzzlePlayFragment(5)
                             navController.navigate(action)
                         })
                 }

@@ -38,6 +38,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -109,10 +110,10 @@ fun NumberSequencePuzzleJetpackScreen(
             exit = fadeOut()
         ) {
             CustomPopupView(
-                title = "🎉 You Did It! 🎉",
-                description = "Completed in <b>${uiState.moveCount} moves!</b>",
-                positiveButtonText = "Continue to Play",
-                negativeButtonText = "No, I want to close",
+                title = stringResource(R.string.you_did_it),
+                description = stringResource(R.string.completed_in_b_moves_b, uiState.moveCount),
+                positiveButtonText = stringResource(R.string.continue_to_play),
+                negativeButtonText = stringResource(R.string.no_i_want_to_close),
                 icon = R.drawable.ic_complete,
                 widthMultiplier = 0.5f,
                 onPositiveTapped = { viewModel.playAgain() },

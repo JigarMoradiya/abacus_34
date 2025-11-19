@@ -183,6 +183,7 @@ object AppConstants {
 
     annotation class HomeClicks {
         companion object {
+            const val Menu_Math_Game = "math_game"
             const val Menu_Abacus_Free_Mode = "abacus_free_mode"
             const val Menu_Practice_Abacus = "practice_abacus"
             const val Menu_My_Account = "my_account"

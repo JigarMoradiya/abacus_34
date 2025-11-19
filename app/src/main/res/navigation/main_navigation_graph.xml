@@ -10,6 +10,10 @@
             android:id="@+id/toMathPyramidHomeFragment"
             app:destination="@+id/mathPyramidHomeFragment" />
         <action
+            android:id="@+id/toNumberSequencePuzzleHomeFragment"
+            app:destination="@+id/numberSequencePuzzleHomeFragment" />
+
+        <action
             android:id="@+id/toVideoPreviewFragment"
             app:destination="@+id/videoPreviewFragment" />
         <action
@@ -39,12 +43,6 @@
         <action
             android:id="@+id/action_homeFragment_to_materialHomeFragment"
             app:destination="@+id/materialHomeFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_puzzleNumberHomeFragment"
-            app:destination="@+id/puzzleNumberHomeFragment" />
-        <action
-            android:id="@+id/toNumberSequencePuzzleHomeJetpackFragment"
-            app:destination="@+id/numberSequencePuzzleHomeJetpackFragment" />
         <action
             android:id="@+id/action_homeFragment_to_exerciseHomeFragment"
             app:destination="@+id/exerciseHomeFragment" />
@@ -277,14 +275,14 @@
 
     <!-- Jetpack Compose -->
     <fragment
-        android:id="@+id/numberSequencePuzzleHomeJetpackFragment"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.home.NumberSequencePuzzleHomeJetpackFragment">
+        android:id="@+id/numberSequencePuzzleHomeFragment"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.home.NumberSequencePuzzleHomeFragment">
         <action
-            android:id="@+id/toNumberSequencePuzzleJetpackFragment"
-            app:destination="@+id/numberSequencePuzzleJetpackFragment" />
+            android:id="@+id/toNumberSequencePuzzlePlayFragment"
+            app:destination="@+id/numberSequencePuzzlePlayFragment" />
     </fragment>
     <fragment
-        android:id="@+id/numberSequencePuzzleJetpackFragment"
+        android:id="@+id/numberSequencePuzzlePlayFragment"
         android:name="com.jigar.me.ui.view.jetpack.fragments.number_sequence_puzzle.play.NumberSequencePuzzleJetpackFragment">
         <argument
             android:name="type"

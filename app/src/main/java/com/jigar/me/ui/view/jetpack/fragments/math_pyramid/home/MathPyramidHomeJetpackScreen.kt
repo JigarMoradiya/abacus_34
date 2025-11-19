@@ -10,6 +10,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,6 +23,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -32,6 +34,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
@@ -102,7 +105,7 @@ fun MathPyramidHomeJetpackScreen(
                         ) {
                             Text(
                                 text = "Level $level",
-                                color = if (state.selectedLevel == level) colorResource(R.color.colorPrimaryDark) else colorResource(R.color.black_text),
+                                color = if (state.selectedLevel == level) colorResource(R.color.black) else colorResource(R.color.black_text),
                                 fontFamily = FontFamily(Font(if (state.selectedLevel == level) R.font.font_bold else R.font.font_regular)),
                                 fontSize = dimensionResource(
                                     id = if (state.selectedLevel == level) R.dimen.textSize24 else R.dimen.questionSize).value.sp
@@ -128,20 +131,28 @@ fun MathPyramidHomeJetpackScreen(
 
                 Spacer(Modifier.weight(1f))
 
-                Button(
-                    onClick = { onStartGame(state.selectedLevel, state.selectedDifficulty) },
-                    shape = RoundedCornerShape(50),
-                    modifier = Modifier.wrapContentWidth()
-                ) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text(text = stringResource(R.string.start_game), fontSize = 18.sp)
-                        Spacer(Modifier.width(8.dp))
-                        Icon(
-                            imageVector = Icons.Filled.PlayArrow,
-                            contentDescription = null
+                val shape = RoundedCornerShape(50)
+                Box(modifier = Modifier.shadow(elevation = 8.dp,shape = shape, clip = false)) {
+                    Button(
+                        onClick = { onStartGame(state.selectedLevel, state.selectedDifficulty) },
+                        shape = shape,
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = colorResource(R.color.colorPrimary),
+                            contentColor = Color.White
+                        ),
+                        contentPadding = PaddingValues(
+                            horizontal = dimensionResource(R.dimen.activity_padding16)
                         )
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text(text = stringResource(R.string.start_game), fontSize = dimensionResource(R.dimen.textSizeSuperExtraLarge).value.sp,
+                                fontFamily = FontFamily(Font(R.font.font_bold)))
+                            Spacer(modifier = Modifier.width(dimensionResource(R.dimen.activity_padding6)))
+                            Icon(imageVector = Icons.Filled.PlayArrow, contentDescription = null)
+                        }
                     }
                 }
+
             }
         }
     }
@@ -213,9 +224,6 @@ fun DifficultySelectorCompose(
         }
     }
 }
-
-
-
 
 //@Preview(
 //    name = "Math Pyramid Home - Light",

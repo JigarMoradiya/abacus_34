@@ -5,9 +5,11 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.snapping.SnapPosition
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,9 +19,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Shuffle
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
@@ -32,15 +38,21 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
+import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
 import com.jigar.me.ui.view.jetpack.fragments.common.enums.CommonDifficulty4
 import com.jigar.me.ui.view.jetpack.fragments.math_pyramid.play.components.NumberPyramidGenerator
 
@@ -122,8 +134,24 @@ fun MathPyramidPlayJetpackScreen(
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    Button(onClick = { generateNewPuzzle() }) {
-                        Text("Start New")
+                    val shape = RoundedCornerShape(50)
+                    Box(modifier = Modifier.shadow(elevation = 8.dp,shape = shape, clip = false)) {
+                        Button(
+                            onClick = { generateNewPuzzle() },
+                            colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.colorPrimary),
+                                contentColor = colorResource(R.color.white)),
+                            contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.activity_padding16))
+                        ) {
+                            // --- 1. Shuffle Icon (Left side) ---
+                            Icon(imageVector = Icons.Filled.Shuffle, contentDescription = null,)
+
+                            // Add a small spacer between the icon and the text
+                            Spacer(modifier = Modifier.width(dimensionResource(R.dimen.activity_padding6))) // Adjust spacing as needed
+
+                            // --- 2. Text (Right side) ---
+                            Text(text = stringResource(R.string.start_new), fontSize = dimensionResource(R.dimen.textSizeSuperExtraLarge).value.sp,
+                                fontFamily = FontFamily(Font(R.font.font_bold)))
+                        }
                     }
                 }
             }
@@ -131,28 +159,27 @@ fun MathPyramidPlayJetpackScreen(
             Spacer(Modifier.weight(1f))
         }
 
-        // Solved popup
-        if (isSolved) {
-            Surface(
-                modifier = Modifier.fillMaxSize(),
-                color = androidx.compose.ui.graphics.Color.Black.copy(alpha = 0.4f)
-            ) {
-                Box(contentAlignment = Alignment.Center) {
-                    Card(modifier = Modifier.width(300.dp), shape = RoundedCornerShape(8.dp)) {
-                        Column(modifier = Modifier.padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text(text = "You did it!", style = MaterialTheme.typography.titleLarge)
-                            Spacer(modifier = Modifier.height(8.dp))
-                            Text(text = "You built the pyramid")
-                            Spacer(modifier = Modifier.height(16.dp))
-                            Row {
-                                Button(onClick = { isSolved = false; generateNewPuzzle() }) { Text("Play again") }
-                                Spacer(modifier = Modifier.width(8.dp))
-                                OutlinedButton(onClick = { isSolved = false; onBackClick() }) { Text("Close") }
-                            }
-                        }
-                    }
+        AnimatedVisibility(
+            visible = isSolved,
+            enter = fadeIn(),
+            exit = fadeOut()
+        ) {
+            CustomPopupView(
+                title = stringResource(R.string.you_did_it),
+                description = "You built the pyramid",
+                positiveButtonText = stringResource(R.string.continue_to_play),
+                negativeButtonText = stringResource(R.string.no_i_want_to_close),
+                icon = R.drawable.ic_complete,
+                widthMultiplier = 0.5f,
+                onPositiveTapped = {
+                    isSolved = false
+                    generateNewPuzzle()
+                },
+                onNegativeTapped = {
+                    isSolved = false
+                    onBackClick()
                 }
-            }
+            )
         }
     }
 }
@@ -256,10 +283,38 @@ fun KeypadCompose(onKey: (String) -> Unit) {
         buttons.forEach { row ->
             Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 row.forEach { label ->
-                    Surface(shape = RoundedCornerShape(8.dp)) {
-                        Button(onClick = { onKey(label) }, modifier = Modifier.size(width = 88.dp, height = 56.dp)) {
-                            Text(text = label)
+                    val bgColor = when (label) {
+                        "Erase", "Clear" -> colorResource(R.color.red_400)
+                        else -> colorResource(R.color.colorPrimary)
+                    }
+                    Box(modifier = Modifier.size(width = 48.dp, height = 36.dp).background(bgColor
+                        , shape = RoundedCornerShape(8.dp)
+                    ).clickable{
+                        onKey(label)
+                    },contentAlignment = Alignment.Center){
+                        when (label){
+                            "Erase" ->{
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_backspace), // Replace with your Backspace/Erase Icon
+                                    contentDescription = "Erase",
+                                    tint = colorResource(R.color.white),
+                                    modifier = Modifier.size(24.dp)
+                                )
+                            }
+                            "Clear" ->{
+                                Text(text = "C",
+                                    color = colorResource(R.color.white),
+                                    fontSize = dimensionResource(id = R.dimen.textSize24).value.sp,
+                                    fontFamily = FontFamily(Font(R.font.font_bold)))
+                            }
+                            else ->{
+                                Text(text = label,
+                                    color = colorResource(R.color.white),
+                                    fontSize = dimensionResource(id = R.dimen.textSize24).value.sp,
+                                    fontFamily = FontFamily(Font(R.font.font_bold)))
+                            }
                         }
+
                     }
                 }
             }
@@ -298,7 +353,7 @@ private fun checkIfSolved(pyramid: List<List<Int?>>): Boolean {
 fun NumberPuzzleHomeScreenPreview() {
     MaterialTheme {
         MathPyramidPlayJetpackScreen(
-            levels = 2,
+            levels = 6,
             difficulty= CommonDifficulty4.easy,
             onBackClick = {}
         )
