@@ -32,5 +32,4 @@ data class TargetUiState(
     val hintUsed: Int = 0,
     val hintLimit: Int = 0,
     var selectedNumberIndex: Int? = null
-
 )

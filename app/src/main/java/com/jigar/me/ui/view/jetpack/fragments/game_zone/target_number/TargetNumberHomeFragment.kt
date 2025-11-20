@@ -72,8 +72,8 @@ class TargetNumberHomeFragment : Fragment() {
                     TargetNumberHomeScreen(
                         viewModel = viewModel,
                         onStartGame = { levels, difficulty ->
-                            val args = bundleOf("levels" to levels, "difficulty" to difficulty.name)
-                            findNavController().navigate(R.id.toTargetNumberPlayFragment, args)
+                            val action = TargetNumberHomeFragmentDirections.toTargetNumberPlayFragment(levels,difficulty.name)
+                            findNavController().navigate(action)
                         },
                         onBackClick = { findNavController().popBackStack() }
                     )

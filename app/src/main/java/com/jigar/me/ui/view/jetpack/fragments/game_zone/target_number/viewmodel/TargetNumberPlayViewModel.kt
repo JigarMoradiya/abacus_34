@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,7 +11,6 @@ import com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.components
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -26,17 +26,26 @@ class TargetNumberPlayViewModel @Inject constructor(
 
     private val gson = Gson()
 
-    // keep level/difficulty in savedStateHandle (defaults)
-    val level: Int = savedStateHandle.get<Int>(KEY_LEVEL) ?: 1
-    val difficulty: CommonDifficulty4 = savedStateHandle.get<String>(KEY_DIFF)
-        ?.let { CommonDifficulty4.valueOf(it) } ?: CommonDifficulty4.medium
+    // LEVEL + DIFFICULTY (if passed via navigation stored in SavedStateHandle)
+    val level: Int = savedStateHandle.get(KEY_LEVEL) ?: 1
+    val difficulty: CommonDifficulty4 =
+        savedStateHandle.get<String>(KEY_DIFF)?.let { CommonDifficulty4.valueOf(it) }
+            ?: CommonDifficulty4.medium
 
     private val _uiState = MutableStateFlow(TargetUiState())
     val uiState: StateFlow<TargetUiState> = _uiState
 
-    init {
-        val json = savedStateHandle.get<String>(KEY_UI_STATE)
+    // Temporary working values (not part of UI State)
+    private var firstOperand: Int? = null
+    private var selectedIndex: Int? = null
+    private var selectedOp: TargetOperation? = null
 
+    init {
+        startGenerating()
+    }
+
+    private fun startGenerating() {
+        val json = savedStateHandle.get<String>(KEY_UI_STATE)
         if (!json.isNullOrBlank()) {
             val restored = try {
                 gson.fromJson(json, TargetUiState::class.java)
@@ -46,19 +55,21 @@ class TargetNumberPlayViewModel @Inject constructor(
 
             if (restored != null) {
                 _uiState.value = restored
-            } else {
-                generateNewPuzzle(level, difficulty)
+                return
             }
-        } else {
-            generateNewPuzzle(level, difficulty)
         }
+        generateNewPuzzle()
     }
 
+    // ---------------------------------------------------------
+    // GENERATE NEW PUZZLE
+    // ---------------------------------------------------------
 
-    fun generateNewPuzzle(level: Int, difficulty: CommonDifficulty4) {
+    fun generateNewPuzzle() {
         viewModelScope.launch {
             val puzzle = repo.generatePuzzle(level, difficulty)
-            val newState = TargetUiState(
+
+            val state = TargetUiState(
                 target = puzzle.target,
                 numbers = puzzle.numbers,
                 originalNumbers = puzzle.numbers,
@@ -71,17 +82,35 @@ class TargetNumberPlayViewModel @Inject constructor(
                 solutionSteps = puzzle.steps,
                 shownHintIndex = 0,
                 hintUsed = 0,
-                hintLimit = if (level == 1) 1 else if (difficulty == CommonDifficulty4.hard || difficulty == CommonDifficulty4.veryHard) 2 else 1
+                hintLimit = 10,
+//                hintLimit = when {
+//                    level == 1 -> 1
+//                    difficulty == CommonDifficulty4.hard || difficulty == CommonDifficulty4.veryHard -> 2
+//                    else -> 1
+//                },
+                selectedNumberIndex = null
             )
-            updateState(newState)
+
+            firstOperand = null
+            selectedIndex = null
+            selectedOp = null
+
+            updateState(state)
         }
     }
 
+    // ---------------------------------------------------------
+    // UPDATE STATE + PERSIST
+    // ---------------------------------------------------------
 
-    // To implement the same behavior as Swift version we need ephemeral selection/operation fields:
-    private var firstOperand: Int? = null
-    private var selectedIndex: Int? = null
-    private var selectedOp: TargetOperation? = null
+    private fun updateState(newState: TargetUiState) {
+        _uiState.value = newState
+        savedStateHandle[KEY_UI_STATE] = gson.toJson(newState)
+    }
+
+    // ---------------------------------------------------------
+    // TAP NUMBER
+    // ---------------------------------------------------------
 
     fun tapNumber(index: Int) {
         val s = uiState.value
@@ -89,7 +118,7 @@ class TargetNumberPlayViewModel @Inject constructor(
 
         val num = s.numbers.getOrNull(index) ?: return
 
-        // 1) First selection
+        // FIRST SELECTION
         if (selectedIndex == null) {
             selectedIndex = index
             firstOperand = num
@@ -98,32 +127,29 @@ class TargetNumberPlayViewModel @Inject constructor(
                 s.copy(
                     currentExpression = "$num",
                     message = null,
-                    selectedNumberIndex = index  // highlight
+                    selectedNumberIndex = index
                 )
             )
             return
         }
 
-        // 2) Same number tapped again
+        // SAME NUMBER PRESSED AGAIN
         if (selectedIndex == index) {
-            updateState(
-                s.copy(message = "You already selected this number. Choose another.")
-            )
+            updateState(s.copy(message = "You already selected this number. Choose another."))
             return
         }
 
-        // 3) Need operation first
+        // REQUIRE OPERATION BEFORE SECOND NUMBER
         val op = selectedOp
         val a = firstOperand
         if (op == null || a == null) {
-            updateState(
-                s.copy(message = "Select an operation first!")
-            )
+            updateState(s.copy(message = "Select an operation first!"))
             return
         }
 
         val b = num
         val result = perform(op, a, b)
+
         val step = "($a ${op.symbol} $b) = $result"
 
         val newNumbers = s.numbers.toMutableList().also {
@@ -134,41 +160,42 @@ class TargetNumberPlayViewModel @Inject constructor(
             it.add(result)
         }
 
+        // RESET OPERANDS
         selectedIndex = null
         firstOperand = null
         selectedOp = null
 
-        updateState(
-            s.copy(
-                numbers = newNumbers,
-                steps = s.steps + step,
-                currentExpression = step,
-                message = null,
-                selectedNumberIndex = null  // remove highlight
-            )
+        val newState = s.copy(
+            numbers = newNumbers,
+            steps = s.steps + step,
+            currentExpression = step,
+            message = null,
+            selectedNumberIndex = null
         )
 
-        checkSolved(uiState.value)
+        updateState(newState)
+        checkSolved(newState)
     }
 
-
-    private fun updateState(newState: TargetUiState) {
-        _uiState.value = newState
-        savedStateHandle["target_ui_state"] = gson.toJson(newState)
-    }
-
+    // ---------------------------------------------------------
+    // TAP OPERATION
+    // ---------------------------------------------------------
 
     fun tapOperation(op: TargetOperation) {
         val s = uiState.value
+
         if (firstOperand == null) {
-            _uiState.value = s.copy(message = "Select a number first!")
-            savedStateHandle[KEY_UI_STATE] = gson.toJson(_uiState.value)
+            updateState(s.copy(message = "Select a number first!"))
             return
         }
+
         selectedOp = op
-        _uiState.value = s.copy(currentExpression = "${firstOperand!!} ${op.symbol}", message = null)
-        savedStateHandle[KEY_UI_STATE] = gson.toJson(_uiState.value)
+        updateState(s.copy(currentExpression = "${firstOperand!!} ${op.symbol}", message = null))
     }
+
+    // ---------------------------------------------------------
+    // OPERATION PERFORM
+    // ---------------------------------------------------------
 
     private fun perform(op: TargetOperation, a: Int, b: Int): Int {
         return when (op) {
@@ -179,62 +206,185 @@ class TargetNumberPlayViewModel @Inject constructor(
         }
     }
 
+    // ---------------------------------------------------------
+    // RESET
+    // ---------------------------------------------------------
+
     fun resetPuzzle() {
         val s = uiState.value
-        firstOperand = null; selectedIndex = null; selectedOp = null
-        val newState = s.copy(
-            numbers = s.originalNumbers,
-            steps = emptyList(),
-            currentExpression = "",
-            isSolved = false,
-            isSolvedCorrect = null,
-            message = null,
-            shownHintIndex = 0,
-            hintUsed = 0
+
+        firstOperand = null
+        selectedIndex = null
+        selectedOp = null
+
+        updateState(
+            s.copy(
+                numbers = s.originalNumbers,
+                steps = emptyList(),
+                currentExpression = "",
+                isSolved = false,
+                isSolvedCorrect = null,
+                message = null,
+                shownHintIndex = 0,
+                hintUsed = 0,
+                selectedNumberIndex = null
+            )
         )
-        updateState(newState)
     }
+
+    // ---------------------------------------------------------
+    // HINT LOGIC (SMART + CANONICAL FALLBACK)
+    // ---------------------------------------------------------
 
     fun showHint() {
         val s = uiState.value
+
+        // Limit
         if (s.hintUsed >= s.hintLimit) {
-            _uiState.value = s.copy(message = "No more hints available.")
-            savedStateHandle[KEY_UI_STATE] = gson.toJson(_uiState.value)
+            updateState(s.copy(message = "No more hints available."))
             return
         }
-        val idx = s.shownHintIndex
-        if (idx < s.solutionSteps.size) {
-            val hint = s.solutionSteps[idx]
-            val newState = s.copy(
-                shownHintIndex = idx + 1,
-                hintUsed = s.hintUsed + 1,
-                message = "Hint: $hint"
+
+        // Dynamic Hint from current numbers
+        val dynamicHint = findDynamicHint(s.numbers, s.target, s.allowedOps)
+        Log.e("jigarTargetNumber","dynamicHint = "+ Gson().toJson(dynamicHint))
+        Log.e("jigarTargetNumber","solutionSteps = "+ Gson().toJson(s.solutionSteps))
+
+        if (dynamicHint != null) {
+            updateState(
+                s.copy(
+                    hintUsed = s.hintUsed + 1,
+                    message = "Hint: $dynamicHint"
+                )
             )
-            updateState(newState)
-        } else {
-            _uiState.value = s.copy(message = "All hints already shown")
-            savedStateHandle[KEY_UI_STATE] = gson.toJson(_uiState.value)
+            return
+        }
+
+        // Fallback → Use canonical solution steps
+        val next = s.steps.size
+
+        if (next >= s.solutionSteps.size) {
+            updateState(s.copy(message = "All hints already shown"))
+            return
+        }
+
+        val fallbackHint = s.solutionSteps[next]
+
+        updateState(
+            s.copy(
+                hintUsed = s.hintUsed + 1,
+                shownHintIndex = next + 1,
+                message = "Hint: $fallbackHint"
+            )
+        )
+    }
+
+    // ---------------------------------------------------------
+    // SMART HINT ENGINE
+    // ---------------------------------------------------------
+
+    private fun applyOperation(op: TargetOperation, a: Int, b: Int): Int? {
+        return when (op) {
+            TargetOperation.ADD -> a + b
+            TargetOperation.SUBTRACT -> (a - b).takeIf { it > 0 }
+            TargetOperation.MULTIPLY -> a * b
+            TargetOperation.DIVIDE ->
+                if (b != 0 && a % b == 0 && a / b > 0) a / b else null
         }
     }
 
-    private fun checkSolved(s: TargetUiState) {
-        if (s.numbers.size == 1) {
-            val result = s.numbers[0]
-            if (result == s.target) {
-                val next = s.copy(isSolved = true, isSolvedCorrect = true, message = "✅ Perfect! You reached ${s.target}")
-                updateState(next)
-            } else {
-                val next = s.copy(isSolved = true, isSolvedCorrect = false, message = "❌ Final result $result, target was ${s.target}")
-                updateState(next)
+    // try both orders when applying op
+    private fun tryBothOrders(op: TargetOperation, a: Int, b: Int): Sequence<Int> = sequence {
+        applyOperation(op, a, b)?.let { yield(it) }
+        applyOperation(op, b, a)?.let { yield(it) }
+    }
+
+    // recursive solver (tries both orders for non-commutative ops)
+    private fun canSolve(nums: List<Int>, target: Int, ops: List<TargetOperation>): Boolean {
+        if (nums.size == 1) return nums[0] == target
+
+        for (i in nums.indices) {
+            for (j in i + 1 until nums.size) {
+                val a = nums[i]
+                val b = nums[j]
+
+                val rest = nums.toMutableList()
+                // remove larger index first
+                rest.removeAt(j)
+                rest.removeAt(i)
+
+                for (op in ops) {
+                    // try a op b and b op a (applyOperation already enforces validity)
+                    for (r in tryBothOrders(op, a, b)) {
+                        val next = rest + r
+                        if (canSolve(next, target, ops)) return true
+                    }
+                }
             }
         }
+        return false
     }
 
-    // optional: expose a method to clear persisted UI state
-    fun clearPersistedState() {
-        savedStateHandle.remove<String>(KEY_UI_STATE)
+    private fun findDynamicHint(numbers: List<Int>, target: Int, ops: List<TargetOperation>): String? {
+        for (i in numbers.indices) {
+            for (j in i + 1 until numbers.size) {
+                val a = numbers[i]
+                val b = numbers[j]
+
+                val rest = numbers.toMutableList()
+                rest.removeAt(j)
+                rest.removeAt(i)
+
+                for (op in ops) {
+                    // try both orders: (a op b) and (b op a)
+                    for (r in tryBothOrders(op, a, b)) {
+                        val next = rest + r
+                        if (canSolve(next, target, ops)) {
+                            // Prefer returning the form that produced `r`
+                            // determine which order produced r (try to match visually)
+                            val text1 = "($a ${op.symbol} $b) = $r"
+                            val text2 = "($b ${op.symbol} $a) = $r"
+                            // if applyOperation(a,b) yields r then return text1, else text2
+                            val producedByAB = applyOperation(op, a, b) == r
+                            return if (producedByAB) text1 else text2
+                        }
+                    }
+                }
+            }
+        }
+        return null
+    }
+
+
+    // ---------------------------------------------------------
+    // CHECK SOLVED
+    // ---------------------------------------------------------
+
+    private fun checkSolved(s: TargetUiState) {
+        if (s.numbers.size != 1) return
+
+        val result = s.numbers[0]
+
+        if (result == s.target) {
+            updateState(
+                s.copy(
+                    isSolved = true,
+                    isSolvedCorrect = true,
+                    message = "🎉 Perfect! You reached ${s.target}"
+                )
+            )
+        } else {
+            updateState(
+                s.copy(
+                    isSolved = true,
+                    isSolvedCorrect = false,
+                    message = "❌ $result ≠ ${s.target}"
+                )
+            )
+        }
     }
 }
+
 
 class TargetNumberPlayViewModelFake : ViewModel() {
 

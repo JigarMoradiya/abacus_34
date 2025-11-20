@@ -344,6 +344,12 @@
     <fragment
         android:id="@+id/targetNumberPlayFragment"
         android:name="com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.TargetNumberPlayFragment">
+        <argument
+            android:name="target_level"
+            app:argType="integer" />
+        <argument
+            android:name="target_diff"
+            app:argType="string" />
     </fragment>
 
 </navigation>

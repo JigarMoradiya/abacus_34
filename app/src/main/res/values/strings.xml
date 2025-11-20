@@ -818,7 +818,6 @@
     <string name="your_answer">Your Answer :</string>
     <string name="time">Time :</string>
     <string name="current_input">Current Input</string>
-    <string name="reset">Reset</string>
     <string name="start_free_trial">Start Free Trial</string>
     <string name="cancel_anytime_during_the_trial_without_being_charged">Cancel anytime during the trial\nwithout being charged.</string>
     <string name="go_premium_all_levels_all_features">Go Premium - All Levels, All Features</string>
@@ -840,8 +839,9 @@
     <string name="_5_5_puzzle">5×5 Puzzle</string>
     <string name="hide_options">Hide options</string>
     <string name="restart">Restart</string>
+    <string name="reset">Reset</string>
     <string name="show_options">Show options</string>
-    <string name="hints">Hints</string>
+    <string name="hints">Hint</string>
     <string name="you_completed_this_sudoku">🎉 You completed this sudoku. 🎉</string>
     <string name="you_are_a_genius">You are a genius!</string>
     <string name="play_again">Play Again</string>
@@ -854,6 +854,8 @@
     <string name="please_wait">Please wait…</string>
     <string name="target_number_game">Target Number Game</string>
     <string name="complete_the_target">Complete the Target</string>
+    <string name="new_target">New Target</string>
+    <string name="all_steps">All Steps</string>
 
 
 </resources>

@@ -20,7 +20,8 @@ class TargetRepository @Inject constructor() {
                 val nums = List(settings.count) {
                     Random.nextInt(settings.range.first, settings.range.last + 1)
                 }
-
+//                val nums = listOf(14,9,3,2,1)
+                // 9 + 3, 14 + 2
                 val solution = TargetSolver.findSolution(nums, settings.ops)
 
                 if (solution != null) {
@@ -109,6 +110,7 @@ object TargetSolver {
         if (valid.isEmpty()) return null
         val chosen = valid.random()
         return Solution(chosen.numbers[0], chosen.steps)
+//        return Solution(5, listOf("(3 − 2) = 1","(9 − 1) = 8","(1 + 8) = 9","(14 − 9) = 5"))
     }
 
     private fun dfs(nums: List<Int>, ops: List<TargetOperation>): List<Node> {
