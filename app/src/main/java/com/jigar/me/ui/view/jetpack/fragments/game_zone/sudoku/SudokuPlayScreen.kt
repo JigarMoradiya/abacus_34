@@ -32,6 +32,7 @@ import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
@@ -45,7 +46,6 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -53,30 +53,27 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.min
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuBoxRules
-import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuDifficulty4
-import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuGenerator
-import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuSize
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuPlayViewModel
+import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuSize
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.ceil
+
 @AndroidEntryPoint
 class SudokuPlayFragment : Fragment() {
 
-    private val args: SudokuPlayFragmentArgs by navArgs()
+    private val viewModel: SudokuPlayViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -84,18 +81,13 @@ class SudokuPlayFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        val size = SudokuSize.valueOf(args.size)
-        val difficulty = SudokuDifficulty4.valueOf(args.difficulty)
-        val isNew = args.isNew
         val navController = findNavController()
         return ComposeView(requireContext()).apply {
             setContent {
                 MaterialTheme {
                     SudokuPlayScreen(
                         navController = navController,
-                        size = size,
-                        difficulty = difficulty,
-                        isNewPuzzle = isNew
+                        vm = viewModel,
                     )
                 }
             }
@@ -103,34 +95,21 @@ class SudokuPlayFragment : Fragment() {
     }
 }
 
-@Preview(showBackground = true, widthDp = 800, heightDp = 400)
-@Composable
-fun PreviewSudokuPlayScreen() {
-    MaterialTheme {
-        val navController = rememberNavController()
-        SudokuPlayScreen(
-            navController = navController,
-            size = SudokuSize.FOUR,
-            difficulty = SudokuDifficulty4.EASY,
-            isNewPuzzle = true
-        )
-    }
-}
 
 @Composable
 fun SudokuPlayScreen(
     navController: NavController,
-    size: SudokuSize,
-    difficulty: SudokuDifficulty4,
-    isNewPuzzle: Boolean,
+    vm: SudokuPlayViewModel,
     modifier: Modifier = Modifier
 ) {
-    val context = LocalContext.current
-    // Simple factory for ViewModel (replace with hiltViewModel in your app)
-    val vm = remember {
-        SudokuPlayViewModel(if (isNewPuzzle) SudokuGenerator.generatePuzzle(size, difficulty) else null, context)
+    if (vm.isLoading) {
+        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            CircularProgressIndicator()
+        }
+        return
     }
-
+    val size = vm.size
+    val difficulty = vm.difficulty
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = modifier.fillMaxSize()) {
             Row(
@@ -277,7 +256,7 @@ fun SudokuPlayScreen(
                 widthMultiplier = 0.5f,
                 onPositiveTapped = {
                     vm.isSolved = false
-                    vm.newPuzzle(size, difficulty)
+                    vm.loadNewPuzzle(size, difficulty)
                 },
                 onNegativeTapped = {
                     vm.isSolved = false

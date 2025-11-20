@@ -20,6 +20,7 @@ import com.jigar.me.data.local.db.inapp.sku.InAppSKUDao
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.data.pref.PreferenceInfo
 import com.jigar.me.data.pref.PreferencesHelper
+import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.viewmodel.SudokuRepository
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import dagger.Module
@@ -93,4 +94,8 @@ object AppModule {
         return remoteDataSource.buildApi(ExamApi::class.java, context, CommonUtils.getApiBaseUrl()+BuildConfig.EXAM_MODULE)
     }
 
+
+    @Singleton
+    @Provides
+    fun provideSudokuRepository(): SudokuRepository = SudokuRepository()
 }

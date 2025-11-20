@@ -1,129 +1,186 @@
 package com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components
 
+import android.app.Application
 import android.content.Context
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.viewmodel.SudokuRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class SudokuPlayViewModel(initialPuzzle: SudokuPuzzle? = null, private val context: Context? = null) : ViewModel() {
-    var puzzle by mutableStateOf(initialPuzzle ?: SudokuGenerator.generatePuzzle(SudokuSize.SIX, SudokuDifficulty4.EASY))
+@HiltViewModel
+class SudokuPlayViewModel @Inject constructor(
+    private val app: Application,
+    private val repository: SudokuRepository,
+    savedStateHandle: SavedStateHandle
+) : ViewModel() {
+
+    // Read args via SavedStateHandle
+    val size: SudokuSize =
+        SudokuSize.valueOf(savedStateHandle["size"] ?: SudokuSize.SIX.name)
+
+    val difficulty: SudokuDifficulty4 =
+        SudokuDifficulty4.valueOf(savedStateHandle["difficulty"] ?: SudokuDifficulty4.EASY.name)
+
+    private val isNewPuzzle: Boolean =
+        savedStateHandle["isNewPuzzle"] ?: true
+
+    // Loading state (very important!)
+    var isLoading by mutableStateOf(false)
         private set
 
-    var board by mutableStateOf(puzzle.startBoard.map { it.toMutableList() }.toMutableList())
+    // Puzzle state
+    var puzzle by mutableStateOf(SudokuPuzzle(size, emptyList(), emptyList(), difficulty))
         private set
+
+    // Safe empty board (prevents crash)
+    var board by mutableStateOf(
+        MutableList(size.grid) { MutableList(size.grid) { 0 } }
+    )
 
     var selected: Pair<Int, Int>? by mutableStateOf(null)
-    var message by mutableStateOf<String?>(null)
+    var message: String? by mutableStateOf(null)
     var isSolved by mutableStateOf(false)
+
     var hintUsed by mutableIntStateOf(0)
-    var hintLimit by mutableIntStateOf( defaultHintLimit(puzzle.size,puzzle.difficulty) )
+    var hintLimit by mutableIntStateOf(1)
     var showCandidates by mutableStateOf(false)
 
     init {
-        // If a saved game exists and no initialPuzzle provided, load it
-        if (initialPuzzle == null && context != null) {
-            val saved = SudokuStorage.load(context)
-            if (saved != null) {
-                puzzle = saved.puzzle
-                board = saved.board.map { it.toMutableList() }.toMutableList()
-                hintUsed = saved.hintUsed
-                hintLimit = saved.hintLimit
-                isSolved = saved.isSolved
-                if (saved.selectedR != null && saved.selectedC != null) selected = saved.selectedR to saved.selectedC
+        Log.e("","")
+        loadGame()
+    }
+
+    private fun loadGame() {
+        // Try load saved game
+        val saved = if (!isNewPuzzle) SudokuStorage.load(app) else null
+
+        if (saved != null) {
+            applySavedGame(saved)
+            return
+        }
+
+        // Else generate new puzzle
+        loadNewPuzzle(size, difficulty)
+    }
+
+    fun loadNewPuzzle(size: SudokuSize, diff: SudokuDifficulty4) {
+
+        isLoading = true
+
+        viewModelScope.launch(Dispatchers.Default) {
+
+            // Repository handles puzzle generation
+            val newPuzzle = repository.generatePuzzle(size, diff)
+
+            withContext(Dispatchers.Main) {
+                puzzle = newPuzzle
+                board = newPuzzle.startBoard.map { it.toMutableList() }.toMutableList()
+                selected = null
+                message = null
+                isSolved = false
+                hintUsed = 0
+                hintLimit = defaultHintLimit(size, diff)
+                showCandidates = false
+                isLoading = false
+
+                saveProgress()
             }
         }
     }
 
-    companion object Companion {
-        private fun defaultHintLimit(size: SudokuSize, diff: SudokuDifficulty4): Int {
-            return when (size) {
 
-                SudokuSize.FOUR -> 1
+    private fun applySavedGame(saved: SavedSudokuGame) {
+        puzzle = saved.puzzle
+        board = saved.board.map { it.toMutableList() }.toMutableList()
+        hintUsed = saved.hintUsed
+        hintLimit = saved.hintLimit
+        isSolved = saved.isSolved
 
-                SudokuSize.SIX -> when (diff) {
-                    SudokuDifficulty4.EASY      -> 1
-                    SudokuDifficulty4.MEDIUM    -> 1
-                    SudokuDifficulty4.HARD      -> 2
-                    SudokuDifficulty4.VERY_HARD -> 2
-                }
-
-                SudokuSize.NINE -> when (diff) {
-                    SudokuDifficulty4.EASY      -> 1
-                    SudokuDifficulty4.MEDIUM    -> 2
-                    SudokuDifficulty4.HARD      -> 3
-                    SudokuDifficulty4.VERY_HARD -> 4
-                }
-            }
+        selected = saved.selectedR?.let { r ->
+            saved.selectedC?.let { c -> r to c }
         }
-
     }
 
+    private fun defaultHintLimit(size: SudokuSize, diff: SudokuDifficulty4) = when (size) {
+        SudokuSize.FOUR -> 1
+        SudokuSize.SIX -> when (diff) {
+            SudokuDifficulty4.EASY -> 1
+            SudokuDifficulty4.MEDIUM -> 1
+            SudokuDifficulty4.HARD -> 2
+            SudokuDifficulty4.VERY_HARD -> 2
+        }
+        SudokuSize.NINE -> when (diff) {
+            SudokuDifficulty4.EASY -> 1
+            SudokuDifficulty4.MEDIUM -> 2
+            SudokuDifficulty4.HARD -> 3
+            SudokuDifficulty4.VERY_HARD -> 4
+        }
+    }
+
+    // GAME LOGIC (unchanged)
     fun selectCell(r: Int, c: Int) {
         if (isSolved) return
-        if (puzzle.startBoard[r][c] != 0) {
-            selected = null
-        } else {
-            selected = if (selected == r to c) null else r to c
-            message = null
-        }
+        selected = if (puzzle.startBoard[r][c] == 0) {
+            if (selected == r to c) null else r to c
+        } else null
+        message = null
     }
 
     fun enter(number: Int) {
         val sel = selected ?: return
         if (isSolved) return
+
         val (r, c) = sel
         if (puzzle.startBoard[r][c] != 0) return
 
-        if (SudokuSolver.isValid(board.map { it.toList() }, puzzle.size, r, c, number)) {
-            val newBoard = board.map { it.toMutableList() }.toMutableList()
-            newBoard[r][c] = number
-            board = newBoard
-            saveProgress()
-            message = null
-            checkSolved()
-        } else {
-            val newBoard = board.map { it.toMutableList() }.toMutableList()
-            newBoard[r][c] = number
-            board = newBoard
-            saveProgress()
-            message = null // keep silent like Swift version; UI shows conflicts
-        }
+        val valid = SudokuSolver.isValid(board, puzzle.size, r, c, number)
+        board = board.map { it.toMutableList() }.toMutableList().also { it[r][c] = number }
+
+        saveProgress()
+        if (valid) checkSolved()
     }
 
     fun eraseSelected() {
         val sel = selected ?: return
         val (r, c) = sel
         if (puzzle.startBoard[r][c] == 0) {
-            val newBoard = board.map { it.toMutableList() }.toMutableList()
-            newBoard[r][c] = 0
-            board = newBoard
+            board = board.map { it.toMutableList() }.toMutableList().also { it[r][c] = 0 }
             saveProgress()
         }
     }
 
     fun toggleCandidates() {
-        if (selected == null) { message = "Select a cell first"; return }
+        if (selected == null) {
+            message = "Select a cell first"
+            return
+        }
         showCandidates = !showCandidates
     }
 
     fun candidatesForSelected(): List<Int> {
         val s = selected ?: return emptyList()
-        return SudokuSolver.candidatesFor(board.map { it.toList() }, puzzle.size, s.first, s.second)
+        return SudokuSolver.candidatesFor(board, puzzle.size, s.first, s.second)
     }
 
     fun revealOneNumber() {
         val s = selected ?: run { message = "Select a cell first"; return }
-        if (hintUsed >= hintLimit) { message = "No more hints available"; return }
+        if (hintUsed >= hintLimit) {
+            message = "No more hints available"
+            return
+        }
         if (board[s.first][s.second] == 0) {
-            val newBoard = board.map { it.toMutableList() }.toMutableList()
-            newBoard[s.first][s.second] = puzzle.solution[s.first][s.second]
-            board = newBoard
-
+            board = board.map { it.toMutableList() }.toMutableList()
+                .also { it[s.first][s.second] = puzzle.solution[s.first][s.second] }
             hintUsed++
             saveProgress()
             checkSolved()
@@ -139,50 +196,28 @@ class SudokuPlayViewModel(initialPuzzle: SudokuPuzzle? = null, private val conte
         saveProgress()
     }
 
-    fun newPuzzle(size: SudokuSize, diff: SudokuDifficulty4) {
-        viewModelScope.launch(Dispatchers.Default) {
-            val newP = SudokuGenerator.generatePuzzle(size, diff)
-            launch(Dispatchers.Main) {
-                puzzle = newP
-                board = newP.startBoard.map { it.toMutableList() }.toMutableList()
-                selected = null
-                message = null
-                isSolved = false
-                hintUsed = 0
-                hintLimit = defaultHintLimit(size,diff)
-                showCandidates = false
-                saveProgress()
-            }
-        }
-    }
-
     private fun checkSolved() {
-        val flat = board.flatten()
-        if (!flat.contains(0)) {
+        if (board.flatten().none { it == 0 }) {
             if (board.map { it.toList() } == puzzle.solution) {
                 isSolved = true
-                context?.let { SudokuStorage.clear(it) }
-                message = "Solved"
+                SudokuStorage.clear(app)
             } else {
-                isSolved = false
                 message = "Some numbers are placed incorrectly."
             }
         }
     }
 
     fun saveProgress() {
-        context?.let {
-            val save = SavedSudokuGame(
-                puzzle = puzzle,
-                board = board.map { it.toList() },
-                hintUsed = hintUsed,
-                hintLimit = hintLimit,
-                isSolved = isSolved,
-                selectedR = selected?.first,
-                selectedC = selected?.second,
-                savedAt = System.currentTimeMillis()
-            )
-            SudokuStorage.save(it, save)
-        }
+        val save = SavedSudokuGame(
+            puzzle = puzzle,
+            board = board.map { it.toList() },
+            hintUsed = hintUsed,
+            hintLimit = hintLimit,
+            isSolved = isSolved,
+            selectedR = selected?.first,
+            selectedC = selected?.second,
+            savedAt = System.currentTimeMillis()
+        )
+        SudokuStorage.save(app, save)
     }
 }

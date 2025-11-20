@@ -316,7 +316,7 @@
             app:argType="string" />
 
         <argument
-            android:name="isNew"
+            android:name="isNewPuzzle"
             app:argType="boolean" />
     </fragment>
 
