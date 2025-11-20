@@ -21,8 +21,10 @@ import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.data.pref.PreferenceInfo
 import com.jigar.me.data.pref.PreferencesHelper
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.viewmodel.SudokuRepository
+import com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.viewmodel.TargetRepository
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -98,4 +100,9 @@ object AppModule {
     @Singleton
     @Provides
     fun provideSudokuRepository(): SudokuRepository = SudokuRepository()
+
+    @Provides
+    @Singleton
+    fun provideTargetRepository(): TargetRepository = TargetRepository()
+
 }

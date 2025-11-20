@@ -298,7 +298,7 @@ fun DifficultySelectorCompose(
                 modifier = Modifier
                     .padding(horizontal = 4.dp),
                 shape = shape,
-                color = if (isSelected) colorResource(R.color.colorPrimaryDark) else Color.White,
+                color = if (isSelected) colorResource(R.color.colorEditTextBlack_33) else Color.White,
                 shadowElevation = if (isSelected) 8.dp else 0.dp, // elevation visible because Surface is not clipped
                 tonalElevation = if (isSelected) 4.dp else 0.dp,
                 border = if (!isSelected) BorderStroke(1.dp, Color.LightGray) else null

@@ -23,12 +23,19 @@ class MathGameZoneFragment : Fragment() {
                 MaterialTheme {
                     MathGameZoneScreen(
                         gameType = { type ->
-                            if (type == GameCategoryType.NUMBER_SEQUENCE_PUZZLE){
-                                findNavController().navigate(R.id.toNumberSequencePuzzleHomeFragment)
-                            }else if (type == GameCategoryType.SUDOKU){
-                                findNavController().navigate(R.id.toSudokuHomeFragment)
-                            }else if (type == GameCategoryType.MATH_PYRAMID){
-                                findNavController().navigate(R.id.toMathPyramidHomeFragment)
+                            when (type) {
+                                GameCategoryType.NUMBER_SEQUENCE_PUZZLE -> {
+                                    findNavController().navigate(R.id.toNumberSequencePuzzleHomeFragment)
+                                }
+                                GameCategoryType.SUDOKU -> {
+                                    findNavController().navigate(R.id.toSudokuHomeFragment)
+                                }
+                                GameCategoryType.MATH_PYRAMID -> {
+                                    findNavController().navigate(R.id.toMathPyramidHomeFragment)
+                                }
+                                GameCategoryType.TARGET_NUMBER -> {
+                                    findNavController().navigate(R.id.toTargetNumberHomeFragment)
+                                }
                             }
                         },
                         onBackClick = { findNavController().popBackStack() }

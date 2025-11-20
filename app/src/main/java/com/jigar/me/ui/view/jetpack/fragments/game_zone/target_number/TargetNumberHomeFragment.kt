@@ -1,9 +1,12 @@
-package com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.home
+package com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
@@ -36,6 +39,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.colorResource
@@ -54,21 +58,22 @@ import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.CommonDifficultySelectorCompose
 import com.jigar.me.ui.view.jetpack.fragments.common.enums.CommonDifficulty4
-import com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.home.components.MathPyramidViewModel
+import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuSize
+import com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.components.TargetNumberViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.getValue
 @AndroidEntryPoint
-class MathPyramidHomeFragment : Fragment() {
-    private val viewModel : MathPyramidViewModel by viewModels()
+class TargetNumberHomeFragment : Fragment() {
+    private val viewModel : TargetNumberViewModel by viewModels()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return ComposeView(requireContext()).apply {
             setContent {
                 MaterialTheme {
-                    MathPyramidHomeJetpackScreen(
+                    TargetNumberHomeScreen(
                         viewModel = viewModel,
                         onStartGame = { levels, difficulty ->
                             val args = bundleOf("levels" to levels, "difficulty" to difficulty.name)
-                            findNavController().navigate(R.id.toMathPyramidPlayFragment, args)
+                            findNavController().navigate(R.id.toTargetNumberPlayFragment, args)
                         },
                         onBackClick = { findNavController().popBackStack() }
                     )
@@ -80,19 +85,19 @@ class MathPyramidHomeFragment : Fragment() {
 
 
 @Composable
-fun MathPyramidHomeJetpackScreen(
-    viewModel: MathPyramidViewModel,
+fun TargetNumberHomeScreen(
+    viewModel: TargetNumberViewModel,
     onStartGame: (Int, CommonDifficulty4) -> Unit,
     onBackClick: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsState()
 
-    val levelRange = 2..6
+    val levelRange = 1..3
 
     Column(modifier = Modifier.fillMaxSize()) {
 
         BackButtonWithText(
-            title = stringResource(R.string.math_pyramid),
+            title = stringResource(R.string.target_number_game),
             onBackClick = onBackClick
         )
 
@@ -104,41 +109,51 @@ fun MathPyramidHomeJetpackScreen(
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             levelRange.forEach { level ->
+                val isSelected = state.selectedLevel == level
+                val shape = RoundedCornerShape(200.dp)
 
-                val shape = RoundedCornerShape(12.dp)
+                // 🎯 Animated padding
+                val animatedPadding by animateDpAsState(
+                    targetValue = if (isSelected)
+                        dimensionResource(R.dimen.activity_padding4)
+                    else
+                        dimensionResource(R.dimen.activity_padding24),
+                    animationSpec = spring(dampingRatio = 0.6f, stiffness = 300f),
+                    label = ""
+                )
 
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
+                // 🎯 Optional: animated zoom (like SwiftUI scaleEffect)
+                val animatedScale by animateFloatAsState(
+                    targetValue = if (isSelected) 1f else 1f,
+                    animationSpec = spring(dampingRatio = 0.6f, stiffness = 250f),
+                    label = ""
+                )
+
+                Box(
                     modifier = Modifier
                         .weight(1f)
+                        .padding(animatedPadding)
                         .clip(shape)
+                        .graphicsLayer {
+                            scaleX = animatedScale
+                            scaleY = animatedScale
+                        }
                         .clickable(
                             interactionSource = remember { MutableInteractionSource() },
                             indication = LocalIndication.current
                         ) {
                             viewModel.selectLevel(level)
-                        }
-                        .padding(8.dp)
+                        },
+                    contentAlignment = Alignment.Center
                 ) {
-                    Image(
-                        painter = painterResource(id = getDrawableForPyramid(level)),
-                        contentDescription = "pyramid_$level",
-                        contentScale = ContentScale.Fit
-                    )
 
-                    Box(
-                        modifier = Modifier.height(32.dp),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = "Level $level",
-                            color = if (state.selectedLevel == level) colorResource(R.color.black) else colorResource(R.color.black_text),
-                            fontFamily = FontFamily(Font(if (state.selectedLevel == level) R.font.font_bold else R.font.font_regular)),
-                            fontSize = dimensionResource(
-                                id = if (state.selectedLevel == level) R.dimen.textSize24 else R.dimen.textSize17).value.sp
-                        )
-                    }
+                    Image(
+                        painter = painterResource(id = getDrawableForTargetNumber(level)),
+                        contentScale = ContentScale.Fit,
+                        contentDescription = null
+                    )
                 }
+
             }
         }
 
@@ -185,14 +200,11 @@ fun MathPyramidHomeJetpackScreen(
 }
 
 @Composable
-fun getDrawableForPyramid(level: Int): Int {
+fun getDrawableForTargetNumber(level: Int): Int {
     return when (level) {
-        2 -> R.drawable.pyramid_2
-        3 -> R.drawable.pyramid_3
-        4 -> R.drawable.pyramid_4
-        5 -> R.drawable.pyramid_5
-        6 -> R.drawable.pyramid_6
-        else -> R.drawable.pyramid_4
+        1 -> R.drawable.target_number_level1
+        2 -> R.drawable.target_number_level2
+        3 -> R.drawable.target_number_level3
+        else -> R.drawable.target_number_level1
     }
 }
-

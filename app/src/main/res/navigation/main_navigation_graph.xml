@@ -282,6 +282,9 @@
         <action
             android:id="@+id/toMathPyramidHomeFragment"
             app:destination="@+id/mathPyramidHomeFragment" />
+        <action
+            android:id="@+id/toTargetNumberHomeFragment"
+            app:destination="@+id/targetNumberHomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/numberSequencePuzzleHomeFragment"
@@ -330,6 +333,17 @@
     <fragment
         android:id="@+id/mathPyramidPlayFragment"
         android:name="com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.play.MathPyramidPlayFragment">
+    </fragment>
+    <fragment
+        android:id="@+id/targetNumberHomeFragment"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.TargetNumberHomeFragment">
+        <action
+            android:id="@+id/toTargetNumberPlayFragment"
+            app:destination="@+id/targetNumberPlayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/targetNumberPlayFragment"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.TargetNumberPlayFragment">
     </fragment>
 
 </navigation>

@@ -827,7 +827,7 @@
 
     <string name="number_sequence_puzzle">Number Sequences Puzzle</string>
     <string name="math_pyramid">Math Pyramid</string>
-    <string name="start_game">Start Game</string>
+    <string name="lets_start">Let\'s Start</string>
     <string name="lets_play">Let\'s Play</string>
     <string name="continue_to_play">Continue to Play</string>
     <string name="completed_in_b_moves_b"><![CDATA[Completed in <b>%1$d moves!</b>]]></string>
@@ -852,6 +852,8 @@
     <string name="start_this_new_sudoku">Start this new Sudoku</string>
     <string name="making_your_sudoku_ready">Making your Sudoku ready!</string>
     <string name="please_wait">Please wait…</string>
+    <string name="target_number_game">Target Number Game</string>
+    <string name="complete_the_target">Complete the Target</string>
 
 
 </resources>

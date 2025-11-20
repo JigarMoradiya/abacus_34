@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.home.components
+package com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.components
 
 import android.os.Parcelable
 import androidx.lifecycle.SavedStateHandle
@@ -11,13 +11,13 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class MathPyramidUiState(
+data class TargetNumberUiState(
     val selectedLevel: Int = 2,
     val selectedDifficulty: CommonDifficulty4 = CommonDifficulty4.easy
 ) : Parcelable
 
 @HiltViewModel
-class MathPyramidViewModel @Inject constructor(
+class TargetNumberViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -26,12 +26,12 @@ class MathPyramidViewModel @Inject constructor(
     }
 
     private val _uiState = MutableStateFlow(
-        savedStateHandle.get<MathPyramidUiState>(KEY_UI_STATE) ?: MathPyramidUiState()
+        savedStateHandle.get<TargetNumberUiState>(KEY_UI_STATE) ?: TargetNumberUiState()
     )
 
-    val uiState: StateFlow<MathPyramidUiState> = _uiState
+    val uiState: StateFlow<TargetNumberUiState> = _uiState
 
-    private fun updateState(reducer: MathPyramidUiState.() -> MathPyramidUiState) {
+    private fun updateState(reducer: TargetNumberUiState.() -> TargetNumberUiState) {
         val newState = _uiState.value.reducer()
         _uiState.value = newState
         savedStateHandle[KEY_UI_STATE] = newState // persist on config change & process death
