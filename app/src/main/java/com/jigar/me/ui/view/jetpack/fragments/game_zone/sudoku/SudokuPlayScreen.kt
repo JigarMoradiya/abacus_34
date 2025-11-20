@@ -63,6 +63,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
+import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CommonLoadingView
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuBoxRules
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuPlayViewModel
@@ -103,11 +104,13 @@ fun SudokuPlayScreen(
     modifier: Modifier = Modifier
 ) {
     if (vm.isLoading) {
-        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            CircularProgressIndicator()
-        }
+        CommonLoadingView(
+            title = stringResource(R.string.please_wait),
+            text = stringResource(R.string.making_your_sudoku_ready)
+        )
         return
     }
+
     val size = vm.size
     val difficulty = vm.difficulty
     Box(modifier = Modifier.fillMaxSize()) {
@@ -270,7 +273,7 @@ fun SudokuPlayScreen(
 @Composable
 fun SudokuBoard(vm: SudokuPlayViewModel, modifier: Modifier = Modifier) {
     BoxWithConstraints(
-        modifier = modifier.padding(8.dp),
+        modifier = modifier.padding(12.dp),
         contentAlignment = Alignment.Center
     ) {
         val n = vm.puzzle.size.grid
