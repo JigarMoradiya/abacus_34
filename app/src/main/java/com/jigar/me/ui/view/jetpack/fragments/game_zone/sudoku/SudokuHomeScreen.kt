@@ -115,8 +115,6 @@ fun SudokuHomeScreen(
     val context = LocalContext.current
 
     val sizes = listOf(SudokuSize.FOUR, SudokuSize.SIX, SudokuSize.NINE)
-    var selectedSize by remember { mutableStateOf(SudokuSize.FOUR) }
-    var selectedDiff by remember { mutableStateOf(SudokuDifficulty4.EASY) }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
@@ -136,7 +134,7 @@ fun SudokuHomeScreen(
                 verticalAlignment = Alignment.CenterVertically
             )  {
                 sizes.forEach { s ->
-                    val isSelected = selectedSize == s
+                    val isSelected = state.selectedSize == s
                     val shape = RoundedCornerShape(200.dp)
 
                     // 🎯 Animated padding
@@ -181,7 +179,7 @@ fun SudokuHomeScreen(
                                 interactionSource = remember { MutableInteractionSource() },
                                 indication = LocalIndication.current
                             ) {
-                                selectedSize = s
+                                viewModel.selectSize(s)
                             },
                         contentAlignment = Alignment.Center
                     ) {
@@ -213,8 +211,8 @@ fun SudokuHomeScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 DifficultySelectorCompose(
-                    selected = selectedDiff,
-                    onSelect = { selectedDiff = it }
+                    selected = state.selectedDifficulty,
+                    onSelect = { viewModel.selectDifficulty(it) }
                 )
 
                 Spacer(Modifier.weight(1f))
@@ -226,7 +224,7 @@ fun SudokuHomeScreen(
                             if (SudokuStorage.hasSavedGame(context)) {
                                 viewModel.openResumePopup()
                             } else {
-                                onStart(selectedSize, selectedDiff, true)
+                                onStart(state.selectedSize, state.selectedDifficulty, true)
                             }
                         },
                         shape = shape,
@@ -268,12 +266,12 @@ fun SudokuHomeScreen(
                         onStart(saved.puzzle.size, saved.puzzle.difficulty, false)
                     } else {
                         // fallback, if decoding failed
-                        onStart(selectedSize, selectedDiff, true)
+                        onStart(state.selectedSize, state.selectedDifficulty, true)
                     }
                 },
                 onNegativeTapped = {
                     viewModel.closeResumePopup()
-                    onStart(selectedSize, selectedDiff, true)
+                    onStart(state.selectedSize, state.selectedDifficulty, true)
                 }
             )
         }

@@ -1,25 +1,47 @@
 package com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components
 
-import android.content.Context
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 @HiltViewModel
 class SudokuHomeViewModel @Inject constructor(
-    context: Context
+    private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
-    private val _uiState = MutableStateFlow(SudokuHomeUiState())
-    val uiState = _uiState.asStateFlow()
+
+    companion object {
+        private const val KEY_UI_STATE = "sudoku_ui_state"
+    }
+
+    private val _uiState = MutableStateFlow(
+        savedStateHandle.get<SudokuHomeUiState>(KEY_UI_STATE) ?: SudokuHomeUiState()
+    )
+
+    val uiState: StateFlow<SudokuHomeUiState> = _uiState
+
+    private fun updateState(reducer: SudokuHomeUiState.() -> SudokuHomeUiState) {
+        val newState = _uiState.value.reducer()
+        _uiState.value = newState
+        savedStateHandle[KEY_UI_STATE] = newState // persist on config change & process death
+    }
+
+    fun selectSize(size: SudokuSize) {
+        updateState { copy(selectedSize = size) }
+    }
+
+    fun selectDifficulty(diff: SudokuDifficulty4) {
+        updateState { copy(selectedDifficulty = diff) }
+    }
 
     fun openResumePopup() {
-        _uiState.update { it.copy(showResumePopup = true) }
+        updateState {copy(showResumePopup = true) }
     }
 
     fun closeResumePopup() {
-        _uiState.update { it.copy(showResumePopup = false) }
+        updateState { copy(showResumePopup = false) }
     }
 }
