@@ -828,6 +828,7 @@
     <string name="number_sequence_puzzle">Number Sequences Puzzle</string>
     <string name="math_pyramid">Math Pyramid</string>
     <string name="start_game">Start Game</string>
+    <string name="lets_play">Let\'s Play</string>
     <string name="continue_to_play">Continue to Play</string>
     <string name="completed_in_b_moves_b"><![CDATA[Completed in <b>%1$d moves!</b>]]></string>
     <string name="you_did_it">🎉 You Did It! 🎉</string>
@@ -837,6 +838,14 @@
     <string name="_3_3_puzzle">3×3 Puzzle</string>
     <string name="_4_4_puzzle">4×4 Puzzle</string>
     <string name="_5_5_puzzle">5×5 Puzzle</string>
+    <string name="hide_options">Hide options</string>
+    <string name="restart">Restart</string>
+    <string name="show_options">Show options</string>
+    <string name="hints">Hints</string>
+    <string name="you_completed_this_sudoku">🎉 You completed this sudoku. 🎉</string>
+    <string name="you_are_a_genius">You are a genius!</string>
+    <string name="play_again">Play Again</string>
+    <string name="no_i_will_play_letter">No, I will play letter</string>
 
 
 </resources>

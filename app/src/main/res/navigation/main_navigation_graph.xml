@@ -277,6 +277,9 @@
             android:id="@+id/toNumberSequencePuzzleHomeFragment"
             app:destination="@+id/numberSequencePuzzleHomeFragment" />
         <action
+            android:id="@+id/toSudokuHomeFragment"
+            app:destination="@+id/sudokuHomeFragment"/>
+        <action
             android:id="@+id/toMathPyramidHomeFragment"
             app:destination="@+id/mathPyramidHomeFragment" />
     </fragment>
@@ -293,6 +296,28 @@
         <argument
             android:name="type"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/sudokuHomeFragment"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.SudokuHomeFragment">
+        <action
+            android:id="@+id/toSudokuPlayFragment"
+            app:destination="@+id/sudokuPlayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sudokuPlayFragment"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.SudokuPlayFragment">
+        <argument
+            android:name="size"
+            app:argType="string" />
+
+        <argument
+            android:name="difficulty"
+            app:argType="string" />
+
+        <argument
+            android:name="isNew"
+            app:argType="boolean" />
     </fragment>
 
     <fragment

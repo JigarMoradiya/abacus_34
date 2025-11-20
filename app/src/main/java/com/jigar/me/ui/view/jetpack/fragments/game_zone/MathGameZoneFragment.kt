@@ -24,6 +24,8 @@ class MathGameZoneFragment : Fragment() {
                         gameType = { type ->
                             if (type == GameCategoryType.NUMBER_SEQUENCE_PUZZLE){
                                 findNavController().navigate(R.id.toNumberSequencePuzzleHomeFragment)
+                            }else if (type == GameCategoryType.SUDOKU){
+                                findNavController().navigate(R.id.toSudokuHomeFragment)
                             }else if (type == GameCategoryType.MATH_PYRAMID){
                                 findNavController().navigate(R.id.toMathPyramidHomeFragment)
                             }
