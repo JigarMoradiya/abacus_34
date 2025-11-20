@@ -1,5 +1,9 @@
 package com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components
 
+data class SudokuHomeUiState(
+    var showResumePopup: Boolean = false
+)
+
 // ---------- Models & Enums ----------
 enum class SudokuDifficulty4(val displayName: String) {
     EASY("Easy"),

@@ -1,7 +1,6 @@
 package com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components
 
 import android.content.Context
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -11,7 +10,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class SudokuViewModel(initialPuzzle: SudokuPuzzle? = null, private val context: Context? = null) : ViewModel() {
+class SudokuPlayViewModel(initialPuzzle: SudokuPuzzle? = null, private val context: Context? = null) : ViewModel() {
     var puzzle by mutableStateOf(initialPuzzle ?: SudokuGenerator.generatePuzzle(SudokuSize.SIX, SudokuDifficulty4.EASY))
         private set
 
@@ -22,7 +21,7 @@ class SudokuViewModel(initialPuzzle: SudokuPuzzle? = null, private val context: 
     var message by mutableStateOf<String?>(null)
     var isSolved by mutableStateOf(false)
     var hintUsed by mutableIntStateOf(0)
-    var hintLimit by mutableIntStateOf( defaultHintLimit(puzzle.difficulty) )
+    var hintLimit by mutableIntStateOf( defaultHintLimit(puzzle.size,puzzle.difficulty) )
     var showCandidates by mutableStateOf(false)
 
     init {
@@ -40,13 +39,28 @@ class SudokuViewModel(initialPuzzle: SudokuPuzzle? = null, private val context: 
         }
     }
 
-    companion object {
-        private fun defaultHintLimit(diff: SudokuDifficulty4) = when (diff) {
-            SudokuDifficulty4.EASY -> 1
-            SudokuDifficulty4.MEDIUM -> 2
-            SudokuDifficulty4.HARD -> 3
-            SudokuDifficulty4.VERY_HARD -> 4
+    companion object Companion {
+        private fun defaultHintLimit(size: SudokuSize, diff: SudokuDifficulty4): Int {
+            return when (size) {
+
+                SudokuSize.FOUR -> 1
+
+                SudokuSize.SIX -> when (diff) {
+                    SudokuDifficulty4.EASY      -> 1
+                    SudokuDifficulty4.MEDIUM    -> 1
+                    SudokuDifficulty4.HARD      -> 2
+                    SudokuDifficulty4.VERY_HARD -> 2
+                }
+
+                SudokuSize.NINE -> when (diff) {
+                    SudokuDifficulty4.EASY      -> 1
+                    SudokuDifficulty4.MEDIUM    -> 2
+                    SudokuDifficulty4.HARD      -> 3
+                    SudokuDifficulty4.VERY_HARD -> 4
+                }
+            }
         }
+
     }
 
     fun selectCell(r: Int, c: Int) {
@@ -135,7 +149,7 @@ class SudokuViewModel(initialPuzzle: SudokuPuzzle? = null, private val context: 
                 message = null
                 isSolved = false
                 hintUsed = 0
-                hintLimit = defaultHintLimit(diff)
+                hintLimit = defaultHintLimit(size,diff)
                 showCandidates = false
                 saveProgress()
             }

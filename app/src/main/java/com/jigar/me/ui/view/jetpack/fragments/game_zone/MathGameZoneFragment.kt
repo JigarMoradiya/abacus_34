@@ -13,8 +13,9 @@ import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.home.MathPyramidHomeJetpackScreen
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.home.components.MathPyramidViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.getValue
-
+@AndroidEntryPoint
 class MathGameZoneFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return ComposeView(requireContext()).apply {

@@ -70,9 +70,10 @@ import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.Sudoku
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuDifficulty4
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuGenerator
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuSize
-import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuViewModel
+import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuPlayViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.ceil
-
+@AndroidEntryPoint
 class SudokuPlayFragment : Fragment() {
 
     private val args: SudokuPlayFragmentArgs by navArgs()
@@ -127,7 +128,7 @@ fun SudokuPlayScreen(
     val context = LocalContext.current
     // Simple factory for ViewModel (replace with hiltViewModel in your app)
     val vm = remember {
-        SudokuViewModel(if (isNewPuzzle) SudokuGenerator.generatePuzzle(size, difficulty) else null, context)
+        SudokuPlayViewModel(if (isNewPuzzle) SudokuGenerator.generatePuzzle(size, difficulty) else null, context)
     }
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -288,7 +289,7 @@ fun SudokuPlayScreen(
 }
 
 @Composable
-fun SudokuBoard(vm: SudokuViewModel, modifier: Modifier = Modifier) {
+fun SudokuBoard(vm: SudokuPlayViewModel, modifier: Modifier = Modifier) {
     BoxWithConstraints(
         modifier = modifier.padding(8.dp),
         contentAlignment = Alignment.Center
@@ -348,7 +349,7 @@ fun SudokuBoard(vm: SudokuViewModel, modifier: Modifier = Modifier) {
 
 
 @Composable
-fun SudokuCell(vm: SudokuViewModel, row: Int, col: Int, sizeDp: Dp) {
+fun SudokuCell(vm: SudokuPlayViewModel, row: Int, col: Int, sizeDp: Dp) {
     val puzzleGiven = vm.puzzle.startBoard[row][col] != 0
     val isSelected = vm.selected == row to col
     val value = vm.board[row][col]
@@ -430,7 +431,7 @@ fun SudokuCell(vm: SudokuViewModel, row: Int, col: Int, sizeDp: Dp) {
 }
 
 @Composable
-fun NumberPad(vm: SudokuViewModel) {
+fun NumberPad(vm: SudokuPlayViewModel) {
     val max = vm.puzzle.size.grid
     val numbers = (1..max).toList()
     val mid = ceil(numbers.size / 2.0).toInt()

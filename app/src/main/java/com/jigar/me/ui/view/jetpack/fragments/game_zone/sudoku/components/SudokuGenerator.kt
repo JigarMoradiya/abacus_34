@@ -132,7 +132,7 @@ object SudokuGenerator {
         val cellIndices = (0 until size.grid * size.grid).shuffled().toMutableList()
         var removed = 0
         var attempts = 0
-        val maxAttempts = if (size == SudokuSize.NINE) 5000 else 2000
+        val maxAttempts = if (size == SudokuSize.NINE) 1000 else 500
         while (removed < removalsTarget && cellIndices.isNotEmpty() && attempts < maxAttempts) {
             attempts++
             val idx = cellIndices.removeAt(0)

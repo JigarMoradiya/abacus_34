@@ -846,6 +846,10 @@
     <string name="you_are_a_genius">You are a genius!</string>
     <string name="play_again">Play Again</string>
     <string name="no_i_will_play_letter">No, I will play letter</string>
+    <string name="continue_previous_game">Continue Previous Game?</string>
+    <string name="you_have_an_unfinished_sudoku">You have an unfinished Sudoku.</string>
+    <string name="yes_please_continue">Yes, please continue</string>
+    <string name="start_this_new_sudoku">Start this new Sudoku</string>
 
 
 </resources>

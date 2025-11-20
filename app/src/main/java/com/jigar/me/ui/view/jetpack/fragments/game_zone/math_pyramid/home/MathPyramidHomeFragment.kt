@@ -12,8 +12,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.home.components.MathPyramidViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.getValue
-
+@AndroidEntryPoint
 class MathPyramidHomeFragment : Fragment() {
     private val viewModel : MathPyramidViewModel by viewModels()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
