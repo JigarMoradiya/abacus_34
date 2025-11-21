@@ -82,12 +82,12 @@ class TargetNumberPlayViewModel @Inject constructor(
                 solutionSteps = puzzle.steps,
                 shownHintIndex = 0,
                 hintUsed = 0,
-                hintLimit = 10,
-//                hintLimit = when {
-//                    level == 1 -> 1
-//                    difficulty == CommonDifficulty4.hard || difficulty == CommonDifficulty4.veryHard -> 2
-//                    else -> 1
-//                },
+//                hintLimit = 10,
+                hintLimit = when {
+                    level == 1 -> 1
+                    difficulty == CommonDifficulty4.hard || difficulty == CommonDifficulty4.veryHard -> 2
+                    else -> 1
+                },
                 selectedNumberIndex = null
             )
 
@@ -247,8 +247,8 @@ class TargetNumberPlayViewModel @Inject constructor(
 
         // Dynamic Hint from current numbers
         val dynamicHint = findDynamicHint(s.numbers, s.target, s.allowedOps)
-        Log.e("jigarTargetNumber","dynamicHint = "+ Gson().toJson(dynamicHint))
-        Log.e("jigarTargetNumber","solutionSteps = "+ Gson().toJson(s.solutionSteps))
+//        Log.e("TargetNumberPlayViewModel","dynamicHint = "+ Gson().toJson(dynamicHint))
+//        Log.e("TargetNumberPlayViewModel","solutionSteps = "+ Gson().toJson(s.solutionSteps))
 
         if (dynamicHint != null) {
             updateState(
