@@ -106,8 +106,8 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
             AppConstants.HomeClicks.Menu_CCM,
             AppConstants.HomeClicks.Menu_Math_Game,
             AppConstants.HomeClicks.Menu_Purchase_Store,
-            AppConstants.HomeClicks.Menu_Settings,
-            AppConstants.HomeClicks.Menu_My_Account
+//            AppConstants.HomeClicks.Menu_Settings,
+//            AppConstants.HomeClicks.Menu_My_Account
         )
 
         appViewModel.getLevel(list).observe(viewLifecycleOwner){
