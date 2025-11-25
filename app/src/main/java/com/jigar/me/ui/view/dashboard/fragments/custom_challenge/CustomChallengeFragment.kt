@@ -48,6 +48,7 @@ import kotlinx.coroutines.launch
 import java.util.*
 import androidx.navigation.findNavController
 import com.google.gson.Gson
+import com.jigar.me.utils.PlaySound
 
 @AndroidEntryPoint
 class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
@@ -511,7 +512,7 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
     }
 
     private fun setKeyboardAnswer() {
-        AbacusMasterSound.playTap(requireContext())
+        PlaySound.playTap(requireContext())
         setNumber()
     }
 

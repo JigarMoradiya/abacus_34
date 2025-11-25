@@ -23,7 +23,7 @@ object ExamCompleteDialog {
     fun showPopup(activity: Activity, totalTime: String, totalSkip: String, totalWrong: String,
                   totalRight: String, totalQuestion: String, listener: TestCompleteDialogInterface,prefManager : AppPreferencesHelper) {
 
-        PlaySound.play(activity, PlaySound.number_puzzle_win)
+        PlaySound.playWin(activity)
 
         val alertLayout = DialogExamCompleteBinding.inflate(activity.layoutInflater,null,false)
         val alertBuilder = AlertDialog.Builder(activity)

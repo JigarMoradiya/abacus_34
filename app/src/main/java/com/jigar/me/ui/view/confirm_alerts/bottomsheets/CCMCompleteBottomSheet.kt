@@ -16,7 +16,7 @@ import com.jigar.me.utils.extensions.setBottomSheetDialogAttr
 
 object CCMCompleteBottomSheet {
     fun showPopup(activity: Activity, challengeData : CustomChallengeData? = null, isAnswerTrue: Boolean, clickListener: CCMCompleteDialogInterface) {
-        PlaySound.play(activity, PlaySound.number_puzzle_win)
+        PlaySound.playWin(activity)
         val bottomSheetDialog = BottomSheetDialog(activity, R.style.BottomSheetDialog)
         val sheetBinding: BottomSheetCcmCompleteBinding = BottomSheetCcmCompleteBinding.inflate(activity.layoutInflater)
         bottomSheetDialog.setCancelable(true)

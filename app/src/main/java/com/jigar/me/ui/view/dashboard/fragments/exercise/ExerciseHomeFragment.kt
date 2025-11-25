@@ -172,7 +172,7 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
     }
 
     private fun onSuccess() {
-        PlaySound.play(requireContext(), PlaySound.number_puzzle_win)
+        PlaySound.playWin(requireContext())
         showCompleteDialog()
     }
 
@@ -190,7 +190,7 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
     }
 
     private fun setKeyboardAnswer() {
-        AbacusMasterSound.playTap(requireContext())
+        PlaySound.playTap(requireContext())
         setNumber()
     }
 

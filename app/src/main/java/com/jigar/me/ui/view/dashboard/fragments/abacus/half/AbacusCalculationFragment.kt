@@ -169,6 +169,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
     }
 
     private fun completeSetAlert() {
+        PlaySound.playClap(requireContext())
         CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.congratulations),getString(R.string.txt_set_completed_msg)
             ,getString(R.string.ok_thanks),noBtn = getString(R.string.close), icon = R.drawable.ic_alert_complete_page,isCancelable = false,
             clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{

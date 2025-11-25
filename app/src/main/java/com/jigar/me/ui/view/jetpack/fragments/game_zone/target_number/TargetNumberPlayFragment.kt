@@ -38,6 +38,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -58,6 +59,7 @@ import com.jigar.me.ui.view.jetpack.fragments.common.enums.CommonDifficulty4
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.components.TargetUiState
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.viewmodel.TargetNumberPlayViewModel
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.viewmodel.TargetNumberPlayViewModelFake
+import com.jigar.me.utils.PlaySound
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -97,7 +99,7 @@ fun TargetNumberPlayScreen(
     onBackClick: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsState()
-
+    val context = LocalContext.current
     Row {
         Box(modifier = Modifier.weight(0.6f),
             contentAlignment = Alignment.Center) {
@@ -200,7 +202,10 @@ fun TargetNumberPlayScreen(
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     if (state.isSolvedCorrect == true){
                         Button(
-                            onClick = { viewModel.generateNewPuzzle() },
+                            onClick = {
+                                PlaySound.playHint(context)
+                                viewModel.generateNewPuzzle()
+                                      },
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = colorResource(R.color.colorPrimary),   // Red
                                 contentColor = Color.White

@@ -40,6 +40,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -55,6 +56,7 @@ import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
 import com.jigar.me.ui.view.jetpack.fragments.common.enums.CommonDifficulty4
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.play.components.NumberPyramidGenerator
+import com.jigar.me.utils.PlaySound
 
 @Composable
 fun MathPyramidPlayJetpackScreen(
@@ -63,10 +65,10 @@ fun MathPyramidPlayJetpackScreen(
     onBackClick: () -> Unit
 ) {
     var pyramid by remember { mutableStateOf<List<List<Int?>>>(emptyList()) }
-//    var solution by remember { mutableStateOf<List<List<Int>>>(emptyList()) }
     var editableMask by remember { mutableStateOf<List<List<Boolean>>>(emptyList()) }
     var selectedCell by remember { mutableStateOf<Pair<Int, Int>?>(null) }
     var isSolved by remember { mutableStateOf(false) }
+    val context = LocalContext.current
 
     fun generateNewPuzzle() {
         val range = when (difficulty) {
@@ -77,7 +79,6 @@ fun MathPyramidPlayJetpackScreen(
         }
         val res = NumberPyramidGenerator.generate(levels = levels, difficulty = difficulty, numberRange = range)
         pyramid = res.puzzle
-//        solution = res.full
         editableMask = pyramid.map { row -> row.map { it == null } }
         selectedCell = null
         isSolved = false
@@ -98,6 +99,7 @@ fun MathPyramidPlayJetpackScreen(
                     PyramidGrid(levels,pyramid, editableMask, selectedCell) { r, c ->
                         if (editableMask.getOrNull(r)?.getOrNull(c) == true) {
                             selectedCell = Pair(r, c)
+                            PlaySound.playTap(context)
                         }
                     }
                 }
@@ -110,12 +112,17 @@ fun MathPyramidPlayJetpackScreen(
                                 val current = pyramid[r][c] ?: 0
                                 val newPyramid = pyramid.map { it.toMutableList() }.toMutableList()
                                 when (label) {
-                                    "Clear" -> newPyramid[r][c] = null
+                                    "Clear" -> {
+                                        PlaySound.playClear(context)
+                                        newPyramid[r][c] = null
+                                    }
                                     "Erase" -> {
+                                        PlaySound.playClear(context)
                                         val next = current / 10
                                         newPyramid[r][c] = if (next == 0) null else next
                                     }
                                     else -> {
+                                        PlaySound.playClick(context)
                                         val digit = label.toIntOrNull()
                                         if (digit != null) {
                                             val next = current * 10 + digit
@@ -125,6 +132,7 @@ fun MathPyramidPlayJetpackScreen(
                                 }
                                 pyramid = newPyramid
                                 if (checkIfSolved(pyramid)) {
+                                    PlaySound.playWin(context)
                                     isSolved = true
                                     selectedCell = null
                                 }

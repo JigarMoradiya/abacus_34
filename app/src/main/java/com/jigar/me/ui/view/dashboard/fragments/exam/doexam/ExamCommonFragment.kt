@@ -49,6 +49,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.Random
 import androidx.navigation.findNavController
+import com.jigar.me.utils.PlaySound
 
 @AndroidEntryPoint
 class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialogInterface{
@@ -589,7 +590,7 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
     private fun onViewClick(clickType: String) {
         this.clickType = clickType
         if(requireContext().isNetworkAvailable){
-            AbacusMasterSound.playTap(requireContext())
+            PlaySound.playTap(requireContext())
             clickOtions()
         }else{
             notOfflineSupportDialog2()

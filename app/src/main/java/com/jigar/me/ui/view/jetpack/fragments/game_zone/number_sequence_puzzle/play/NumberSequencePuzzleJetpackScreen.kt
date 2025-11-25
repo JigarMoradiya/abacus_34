@@ -3,7 +3,6 @@ package com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -23,8 +22,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,7 +32,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -127,47 +123,6 @@ fun NumberSequencePuzzleJetpackScreen(
 
     LaunchedEffect(gridSize) {
         viewModel.initialize(gridSize)
-    }
-}
-
-@Composable
-fun HeaderToolbar(
-    title: String = "Number Sequences Puzzle", onBackClick: () -> Unit
-) {
-    Box {
-        Row(
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Card(
-                onClick = { onBackClick() },
-                colors = CardDefaults.cardColors(
-                    containerColor = colorResource(id = R.color.light_back)
-                ),
-                shape = RoundedCornerShape(dimensionResource(id = R.dimen.menu_icons_corner)),
-                elevation = CardDefaults.cardElevation(
-                    defaultElevation = dimensionResource(id = R.dimen.card_elevation)
-                ),
-                modifier = Modifier
-                    .padding(dimensionResource(id = R.dimen.icons_margin2))
-                    .size(dimensionResource(id = R.dimen.menu_icons))
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.ic_back),
-                    contentDescription = "Back",
-                    modifier = Modifier
-                        .size(dimensionResource(id = R.dimen.menu_icons))
-                        .padding(dimensionResource(id = R.dimen.menu_icons_padding))
-                )
-            }
-
-            Text(
-                text = title,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                fontSize = dimensionResource(id = R.dimen.textSizeSuperExtraLarge).value.sp,
-                color = colorResource(id = R.color.colorPrimaryDark),
-            )
-
-        }
     }
 }
 

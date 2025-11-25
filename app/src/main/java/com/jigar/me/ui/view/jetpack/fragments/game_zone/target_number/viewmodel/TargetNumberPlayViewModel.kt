@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.viewmodel
 
+import android.app.Application
 import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -8,6 +9,7 @@ import com.google.gson.Gson
 import com.jigar.me.ui.view.jetpack.fragments.common.enums.CommonDifficulty4
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.components.TargetOperation
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.components.TargetUiState
+import com.jigar.me.utils.PlaySound
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -21,7 +23,8 @@ private const val KEY_DIFF = "target_diff"
 @HiltViewModel
 class TargetNumberPlayViewModel @Inject constructor(
     private val repo: TargetRepository,
-    private val savedStateHandle: SavedStateHandle
+    private val savedStateHandle: SavedStateHandle,
+    private val app : Application
 ) : ViewModel() {
 
     private val gson = Gson()
@@ -122,7 +125,7 @@ class TargetNumberPlayViewModel @Inject constructor(
         if (selectedIndex == null) {
             selectedIndex = index
             firstOperand = num
-
+            PlaySound.playClick(app)
             updateState(
                 s.copy(
                     currentExpression = "$num",
@@ -135,6 +138,7 @@ class TargetNumberPlayViewModel @Inject constructor(
 
         // SAME NUMBER PRESSED AGAIN
         if (selectedIndex == index) {
+            PlaySound.playWrong(app)
             updateState(s.copy(message = "You already selected this number. Choose another."))
             return
         }
@@ -143,6 +147,7 @@ class TargetNumberPlayViewModel @Inject constructor(
         val op = selectedOp
         val a = firstOperand
         if (op == null || a == null) {
+            PlaySound.playWrong(app)
             updateState(s.copy(message = "Select an operation first!"))
             return
         }
@@ -165,6 +170,7 @@ class TargetNumberPlayViewModel @Inject constructor(
         firstOperand = null
         selectedOp = null
 
+        PlaySound.playClick(app)
         val newState = s.copy(
             numbers = newNumbers,
             steps = s.steps + step,
@@ -185,11 +191,13 @@ class TargetNumberPlayViewModel @Inject constructor(
         val s = uiState.value
 
         if (firstOperand == null) {
+            PlaySound.playWrong(app)
             updateState(s.copy(message = "Select a number first!"))
             return
         }
 
         selectedOp = op
+        PlaySound.playClick(app)
         updateState(s.copy(currentExpression = "${firstOperand!!} ${op.symbol}", message = null))
     }
 
@@ -216,7 +224,7 @@ class TargetNumberPlayViewModel @Inject constructor(
         firstOperand = null
         selectedIndex = null
         selectedOp = null
-
+        PlaySound.playHint(app)
         updateState(
             s.copy(
                 numbers = s.originalNumbers,
@@ -241,6 +249,7 @@ class TargetNumberPlayViewModel @Inject constructor(
 
         // Limit
         if (s.hintUsed >= s.hintLimit) {
+            PlaySound.playWrong(app)
             updateState(s.copy(message = "No more hints available."))
             return
         }
@@ -251,6 +260,7 @@ class TargetNumberPlayViewModel @Inject constructor(
 //        Log.e("TargetNumberPlayViewModel","solutionSteps = "+ Gson().toJson(s.solutionSteps))
 
         if (dynamicHint != null) {
+            PlaySound.playHint(app)
             updateState(
                 s.copy(
                     hintUsed = s.hintUsed + 1,
@@ -264,12 +274,14 @@ class TargetNumberPlayViewModel @Inject constructor(
         val next = s.steps.size
 
         if (next >= s.solutionSteps.size) {
+            PlaySound.playWrong(app)
             updateState(s.copy(message = "All hints already shown"))
             return
         }
 
         val fallbackHint = s.solutionSteps[next]
 
+        PlaySound.playHint(app)
         updateState(
             s.copy(
                 hintUsed = s.hintUsed + 1,
@@ -366,6 +378,7 @@ class TargetNumberPlayViewModel @Inject constructor(
         val result = s.numbers[0]
 
         if (result == s.target) {
+            PlaySound.playWin(app)
             updateState(
                 s.copy(
                     isSolved = true,
@@ -374,11 +387,13 @@ class TargetNumberPlayViewModel @Inject constructor(
                 )
             )
         } else {
+            PlaySound.playWrong(app)
             updateState(
                 s.copy(
                     isSolved = true,
                     isSolvedCorrect = false,
-                    message = "❌ $result ≠ ${s.target}"
+//                    message = "❌ $result ≠ ${s.target}"
+                    message = "❌ Final result $result, target was ${s.target}"
                 )
             )
         }

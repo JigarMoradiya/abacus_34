@@ -58,8 +58,8 @@ class NumberSequencePuzzleViewModel @Inject constructor(
             val playWin = isSolve && _uiState.value.soundOn
             val playSwap = !isSolve && _uiState.value.soundOn
 
-            if (playSwap) PlaySound.play(context, PlaySound.swap_sound)
-            if (playWin) PlaySound.play(context, PlaySound.number_puzzle_win)
+            if (playSwap) PlaySound.playSwip(context)
+            if (playWin) PlaySound.playWin(context)
 
             _uiState.update {
                 it.copy(
