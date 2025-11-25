@@ -27,13 +27,6 @@ class HomeMenuNewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = with(holder.binding){
-        val context = conMain.context
-//        if (dimension < 150){
-//            dimension = context.resources.getDimension(R.dimen.home_menu).toInt()
-//        }
-//        conMain.layoutParams.width = dimension
-//        conMain.layoutParams.height = dimension
-
         val data = listData[position]
         dataModel = data
 
