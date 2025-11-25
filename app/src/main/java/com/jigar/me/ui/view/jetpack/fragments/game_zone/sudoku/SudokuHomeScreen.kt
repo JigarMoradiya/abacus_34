@@ -57,17 +57,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
+import com.jigar.me.ui.view.jetpack.fragments.common.HowToPlayButton
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
+import com.jigar.me.ui.view.jetpack.fragments.common.how_to_play.HowToPlayMathPyramidView
+import com.jigar.me.ui.view.jetpack.fragments.common.how_to_play.HowToPlaySudokuView
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuDifficulty4
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuHomeViewModel
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuSize
@@ -115,14 +116,19 @@ fun SudokuHomeScreen(
     val context = LocalContext.current
 
     val sizes = listOf(SudokuSize.FOUR, SudokuSize.SIX, SudokuSize.NINE)
+    var showHelp by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
 
-            BackButtonWithText(
-                title = stringResource(R.string.sudoku),
-                onBackClick = { navController.popBackStack() }
-            )
+            // 🔹 Header Bar
+            Row {
+                BackButtonWithText(title = stringResource(R.string.sudoku), onBackClick = { navController.popBackStack() })
+                Spacer(Modifier.weight(1f))
+                HowToPlayButton{
+                    showHelp = true
+                }
+            }
 
             Spacer(Modifier.weight(1f))
 
@@ -245,6 +251,16 @@ fun SudokuHomeScreen(
                     }
                 }
 
+            }
+        }
+
+        AnimatedVisibility(
+            visible = showHelp,
+            enter = fadeIn(),
+            exit = fadeOut()
+        ) {
+            HowToPlaySudokuView {
+                showHelp = false
             }
         }
 

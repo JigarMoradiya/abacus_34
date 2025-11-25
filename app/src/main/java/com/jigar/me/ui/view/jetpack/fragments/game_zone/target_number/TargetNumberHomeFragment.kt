@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
@@ -33,7 +36,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -57,7 +62,10 @@ import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.CommonDifficultySelectorCompose
+import com.jigar.me.ui.view.jetpack.fragments.common.HowToPlayButton
 import com.jigar.me.ui.view.jetpack.fragments.common.enums.CommonDifficulty4
+import com.jigar.me.ui.view.jetpack.fragments.common.how_to_play.HowToPlayMathPyramidView
+import com.jigar.me.ui.view.jetpack.fragments.common.how_to_play.HowToPlayTargetNumberView
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuSize
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.components.TargetNumberViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -91,112 +99,128 @@ fun TargetNumberHomeScreen(
     onBackClick: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsState()
-
+    var showHelp by remember { mutableStateOf(false) }
     val levelRange = 1..3
 
-    Column(modifier = Modifier.fillMaxSize()) {
-
-        BackButtonWithText(
-            title = stringResource(R.string.target_number_game),
-            onBackClick = onBackClick
-        )
-
-        Spacer(Modifier.weight(1f))
-
-        // LEVEL SELECTOR ------------------------------------------
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            levelRange.forEach { level ->
-                val isSelected = state.selectedLevel == level
-                val shape = RoundedCornerShape(200.dp)
-
-                // 🎯 Animated padding
-                val animatedPadding by animateDpAsState(
-                    targetValue = if (isSelected)
-                        dimensionResource(R.dimen.activity_padding4)
-                    else
-                        dimensionResource(R.dimen.activity_padding24),
-                    animationSpec = spring(dampingRatio = 0.6f, stiffness = 300f),
-                    label = ""
-                )
-
-                // 🎯 Optional: animated zoom (like SwiftUI scaleEffect)
-                val animatedScale by animateFloatAsState(
-                    targetValue = if (isSelected) 1f else 1f,
-                    animationSpec = spring(dampingRatio = 0.6f, stiffness = 250f),
-                    label = ""
-                )
-
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                        .padding(animatedPadding)
-                        .clip(shape)
-                        .graphicsLayer {
-                            scaleX = animatedScale
-                            scaleY = animatedScale
-                        }
-                        .clickable(
-                            interactionSource = remember { MutableInteractionSource() },
-                            indication = LocalIndication.current
-                        ) {
-                            viewModel.selectLevel(level)
-                        },
-                    contentAlignment = Alignment.Center
-                ) {
-
-                    Image(
-                        painter = painterResource(id = getDrawableForTargetNumber(level)),
-                        contentScale = ContentScale.Fit,
-                        contentDescription = null
-                    )
+    Box(modifier = Modifier.fillMaxSize()){
+        Column(modifier = Modifier.fillMaxSize()) {
+            // 🔹 Header Bar
+            Row {
+                BackButtonWithText(title = stringResource(R.string.target_number_game), onBackClick = onBackClick)
+                Spacer(Modifier.weight(1f))
+                HowToPlayButton{
+                    showHelp = true
                 }
-
             }
-        }
-
-        Spacer(Modifier.weight(1f))
-
-        // DIFFICULTY + START BUTTON --------------------------------------
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            CommonDifficultySelectorCompose(
-                selected = state.selectedDifficulty,
-                onSelect = { viewModel.selectDifficulty(it) }
-            )
 
             Spacer(Modifier.weight(1f))
 
-            val shape = RoundedCornerShape(50)
-            Box(modifier = Modifier.shadow(elevation = 8.dp,shape = shape, clip = false)) {
-                Button(
-                    onClick = { onStartGame(state.selectedLevel, state.selectedDifficulty) },
-                    shape = shape,
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = colorResource(R.color.colorPrimary),
-                        contentColor = Color.White
-                    ),
-                    contentPadding = PaddingValues(
-                        horizontal = dimensionResource(R.dimen.activity_padding16)
+            // LEVEL SELECTOR ------------------------------------------
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                levelRange.forEach { level ->
+                    val isSelected = state.selectedLevel == level
+                    val shape = RoundedCornerShape(200.dp)
+
+                    // 🎯 Animated padding
+                    val animatedPadding by animateDpAsState(
+                        targetValue = if (isSelected)
+                            dimensionResource(R.dimen.activity_padding4)
+                        else
+                            dimensionResource(R.dimen.activity_padding24),
+                        animationSpec = spring(dampingRatio = 0.6f, stiffness = 300f),
+                        label = ""
                     )
-                ) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text(text = stringResource(R.string.lets_start), fontSize = dimensionResource(R.dimen.textSizeSuperExtraLarge).value.sp,
-                            fontFamily = FontFamily(Font(R.font.font_bold)))
-                        Spacer(modifier = Modifier.width(dimensionResource(R.dimen.activity_padding6)))
-                        Icon(imageVector = Icons.Filled.PlayArrow, contentDescription = null)
+
+                    // 🎯 Optional: animated zoom (like SwiftUI scaleEffect)
+                    val animatedScale by animateFloatAsState(
+                        targetValue = if (isSelected) 1f else 1f,
+                        animationSpec = spring(dampingRatio = 0.6f, stiffness = 250f),
+                        label = ""
+                    )
+
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(animatedPadding)
+                            .clip(shape)
+                            .graphicsLayer {
+                                scaleX = animatedScale
+                                scaleY = animatedScale
+                            }
+                            .clickable(
+                                interactionSource = remember { MutableInteractionSource() },
+                                indication = LocalIndication.current
+                            ) {
+                                viewModel.selectLevel(level)
+                            },
+                        contentAlignment = Alignment.Center
+                    ) {
+
+                        Image(
+                            painter = painterResource(id = getDrawableForTargetNumber(level)),
+                            contentScale = ContentScale.Fit,
+                            contentDescription = null
+                        )
                     }
+
                 }
             }
 
+            Spacer(Modifier.weight(1f))
+
+            // DIFFICULTY + START BUTTON --------------------------------------
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                CommonDifficultySelectorCompose(
+                    selected = state.selectedDifficulty,
+                    onSelect = { viewModel.selectDifficulty(it) }
+                )
+
+                Spacer(Modifier.weight(1f))
+
+                val shape = RoundedCornerShape(50)
+                Box(modifier = Modifier.shadow(elevation = 8.dp,shape = shape, clip = false)) {
+                    Button(
+                        onClick = { onStartGame(state.selectedLevel, state.selectedDifficulty) },
+                        shape = shape,
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = colorResource(R.color.colorPrimary),
+                            contentColor = Color.White
+                        ),
+                        contentPadding = PaddingValues(
+                            horizontal = dimensionResource(R.dimen.activity_padding16)
+                        )
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text(text = stringResource(R.string.lets_start), fontSize = dimensionResource(R.dimen.textSizeSuperExtraLarge).value.sp,
+                                fontFamily = FontFamily(Font(R.font.font_bold)))
+                            Spacer(modifier = Modifier.width(dimensionResource(R.dimen.activity_padding6)))
+                            Icon(imageVector = Icons.Filled.PlayArrow, contentDescription = null)
+                        }
+                    }
+                }
+
+            }
+        }
+
+        AnimatedVisibility(
+            visible = showHelp,
+            enter = fadeIn(),
+            exit = fadeOut()
+        ) {
+            HowToPlayTargetNumberView {
+                showHelp = false
+            }
         }
     }
+
 }
 
 @Composable
