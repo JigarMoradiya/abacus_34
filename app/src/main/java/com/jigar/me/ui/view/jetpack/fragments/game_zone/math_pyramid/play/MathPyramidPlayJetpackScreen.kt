@@ -262,20 +262,20 @@ private fun PyramidCell(levels : Int,value: Int?, isEditable: Boolean, isSelecte
         Box(modifier = Modifier.fillMaxSize()
             .background(
                 when {
-                    isEditable -> color.copy(alpha = if (isSelected) 0.5f else 0.1F)                 // empty editable
+                    isEditable -> color.copy(alpha = if (isSelected) 0.3f else 0.1F)                 // empty editable
                     value != null -> Color.White                     // fixed number
-                    else -> color.copy(alpha = if (isSelected) 0.5f else 0.1F)      // optional style
+                    else -> color.copy(alpha = if (isSelected) 0.3f else 0.1F)      // optional style
                 }
             ),contentAlignment = Alignment.Center) {
             when {
                 value != null -> Text(text = value.toString(), fontSize = fonts.sp,
                     fontFamily = FontFamily(Font(R.font.font_bold)))
-                isEditable -> Text(text = "?", fontSize = fonts.sp, color = Color.Gray,fontFamily = FontFamily(Font(R.font.font_bold)))
+                isEditable -> Text(text = "?", fontSize = fonts.sp, color = Color.Black.copy(alpha = 0.5f),fontFamily = FontFamily(Font(R.font.font_bold)))
                 else -> Text("", fontSize = fonts.sp,fontFamily = FontFamily(Font(R.font.font_bold)))
             }
             if (isSelected) {
                 // simple selected overlay
-                Box(modifier = Modifier.matchParentSize().background(color.copy(alpha = 0.5f)))
+                Box(modifier = Modifier.matchParentSize().background(color.copy(alpha = 0.3f)))
             }
         }
     }
