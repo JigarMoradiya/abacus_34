@@ -115,6 +115,7 @@ object AppConstants {
         companion object {
             var videoList = "video"
             var displayPlanList = "display_plan"
+            var displayMenuList = "display_menu"
             var supportEmail = "supportEmail"
             var newVersionNotes = "newVersionNotes"
             var bulkLogin = "bulkLogin"

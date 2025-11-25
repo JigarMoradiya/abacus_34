@@ -29,6 +29,7 @@ import com.jigar.me.R
 import com.jigar.me.data.local.data.DataProvider
 import com.jigar.me.data.local.data.HomeBanner
 import com.jigar.me.data.local.data.HomeMenuIntroType
+import com.jigar.me.data.model.DisplayPurchaseData
 import com.jigar.me.data.model.data.GooglePurchasedPlanRequest
 import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
 import com.jigar.me.data.model.dbtable.abacus_all_data.Level
@@ -98,19 +99,25 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
         mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() = with(binding){
-        val list : List<String> = arrayListOf(
-            AppConstants.HomeClicks.Menu_Abacus_Free_Mode,
-            AppConstants.HomeClicks.Menu_Practice_Abacus,
-            AppConstants.HomeClicks.Menu_Abacus_Exercise,
-            AppConstants.HomeClicks.Menu_Exam,
-            AppConstants.HomeClicks.Menu_CCM,
-            AppConstants.HomeClicks.Menu_Math_Game,
-            AppConstants.HomeClicks.Menu_Purchase_Store,
-//            AppConstants.HomeClicks.Menu_Settings,
-//            AppConstants.HomeClicks.Menu_My_Account
-        )
-
-        appViewModel.getLevel(list).observe(viewLifecycleOwner){
+        val menuListStr = prefManager.getCustomParam(AppConstants.RemoteConfig.displayMenuList,"")
+        val displayMenuList :List<String> = if (menuListStr.isNotEmpty() && menuListStr.length > 5){
+            val type = object : TypeToken<ArrayList<String>>() {}.type
+            Gson().fromJson(prefManager.getCustomParam(AppConstants.RemoteConfig.displayMenuList,""),type)
+        }else{
+            arrayListOf(
+                AppConstants.HomeClicks.Menu_Abacus_Free_Mode,
+                AppConstants.HomeClicks.Menu_Practice_Abacus,
+                AppConstants.HomeClicks.Menu_Abacus_Exercise,
+                AppConstants.HomeClicks.Menu_Exam,
+                AppConstants.HomeClicks.Menu_CCM,
+                AppConstants.HomeClicks.Menu_Math_Game,
+                AppConstants.HomeClicks.Menu_Purchase_Store,
+                AppConstants.HomeClicks.Menu_Settings,
+                AppConstants.HomeClicks.Menu_My_Account,
+                AppConstants.HomeClicks.Menu_Video_Tutorial
+            )
+        }
+        appViewModel.getLevel(displayMenuList).observe(viewLifecycleOwner){
             if (it.isNotNullOrEmpty()){
                 homeMenuNewAdapter = HomeMenuNewAdapter(it,prefManager,0){ position, data->
                     moveToClick(data)

@@ -147,6 +147,7 @@ class SplashFragment : BaseFragment() {
                 val discountPer: Long = mFirebaseRemoteConfig.getLong(AppConstants.RemoteConfig.discountPer)
                 val discountPerLifeTime: Long = mFirebaseRemoteConfig.getLong(AppConstants.RemoteConfig.discountPerLifeTime)
                 val displayPlan: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.displayPlanList)
+                val displayMenu: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.displayMenuList)
                 val privacyPolicyUrl: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.privacyPolicyUrl)
                 val supportEmail: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.supportEmail)
                 val newVersionNotes: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.newVersionNotes)
@@ -167,6 +168,7 @@ class SplashFragment : BaseFragment() {
                         setCustomParam(AppConstants.RemoteConfig.videoList,"")
                     }
                     setCustomParam(AppConstants.RemoteConfig.displayPlanList,displayPlan)
+                    setCustomParam(AppConstants.RemoteConfig.displayMenuList,displayMenu)
                 }
                 if (requireContext().isNetworkAvailable){
                     if (!prefManager.getAccessToken().isNullOrEmpty() && prefManager.isUserLoggedIn()){

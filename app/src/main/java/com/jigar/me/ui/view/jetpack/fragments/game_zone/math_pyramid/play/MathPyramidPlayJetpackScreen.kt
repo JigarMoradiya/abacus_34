@@ -145,7 +145,9 @@ fun MathPyramidPlayJetpackScreen(
                     val shape = RoundedCornerShape(50)
                     Box(modifier = Modifier.shadow(elevation = 8.dp,shape = shape, clip = false)) {
                         Button(
-                            onClick = { generateNewPuzzle() },
+                            onClick = {
+                                PlaySound.playHint(context)
+                                generateNewPuzzle() },
                             colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.colorPrimary),
                                 contentColor = colorResource(R.color.white)),
                             contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.activity_padding16))
