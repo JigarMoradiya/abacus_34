@@ -120,10 +120,10 @@ fun NumberSequencePuzzleHomeJetpackScreen(
             ) {
                 // Logo
                 Image(
-                    painter = painterResource(id = R.drawable.ic_number_sequences_puzzle_logo),
+                    painter = painterResource(id = R.drawable.number_sequence_puzzle),
                     contentDescription = "Number Puzzle Logo",
                     modifier = Modifier
-                        .height(dimensionResource(R.dimen._72dp))
+                        .height(dimensionResource(R.dimen._120dp))
                         .fillMaxWidth(),
                     contentScale = ContentScale.Fit
                 )
@@ -137,16 +137,6 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(top = dimensionResource(R.dimen.activity_padding16))
                 )
-
-                // Subtitle
-                Text(
-                    text = stringResource(R.string.arrange_all_the_numbers_of_puzzle_in_ascending_order),
-                    fontFamily = FontFamily(Font(R.font.font_bold)),
-                    fontSize = dimensionResource(id = R.dimen.textSizeLarge).value.sp,
-                    color = Color(0xFFC06A6A),
-                    textAlign = TextAlign.Center
-                )
-
                 // Puzzle Options
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(24.dp),
