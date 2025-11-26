@@ -74,16 +74,12 @@ class CategoryFragment : BaseFragment() {
         if (!BuildConfig.DEBUG){
             isGetAllData = false
         }
-//        binding.spaceNotch.layoutParams.width = prefManager.getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
-//        binding.spaceBottom.layoutParams.height = prefManager.getCustomParamInt(AppConstants.BOTTOM_NAV_HEIGHT,0)
-
         lifecycleScope.launch {
             val purchasedSKU = appViewModel.getInAppSKUPurchased()
             categoryNewAdapter = CategoryNewAdapter(arrayListOf(),purchasedSKU,prefManager) { position, previousPos, data ->
                 clickCategory(position, previousPos, data)
             }
             recyclerviewCategory.adapter = categoryNewAdapter
-
 
             val categoryList = appViewModel.getCategory(levelId)
             categoryNewAdapter.setData(categoryList)

@@ -31,8 +31,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -56,26 +58,46 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
+import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.CommonDifficultySelectorCompose
 import com.jigar.me.ui.view.jetpack.fragments.common.HowToPlayButton
 import com.jigar.me.ui.view.jetpack.fragments.common.enums.CommonDifficulty4
 import com.jigar.me.ui.view.jetpack.fragments.common.how_to_play.HowToPlayMathPyramidView
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.home.components.MathPyramidViewModel
+import com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.home.NumberSequencePuzzleHomeFragmentDirections
+import com.jigar.me.ui.viewmodel.AppViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.getValue
 @AndroidEntryPoint
-class MathPyramidHomeFragment : Fragment() {
+class MathPyramidHomeFragment : BaseFragment() {
     private val viewModel : MathPyramidViewModel by viewModels()
+    private val appViewModel : AppViewModel by viewModels()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return ComposeView(requireContext()).apply {
             setContent {
                 MaterialTheme {
+
+                    val permissionResult by appViewModel.permissionResult.observeAsState()
+
+                    LaunchedEffect(permissionResult) {
+                        when (permissionResult) {
+                            true -> {
+                                val args = bundleOf("levels" to viewModel.uiState.value.selectedLevel, "difficulty" to viewModel.uiState.value.selectedDifficulty.name)
+                                findNavController().navigate(R.id.toMathPyramidPlayFragment, args)
+                            }
+                            false -> {
+                                goToInAppPurchase()
+                            }
+                            else -> Unit
+                        }
+                        appViewModel.resetNavigation()
+                    }
+
                     MathPyramidHomeJetpackScreen(
                         viewModel = viewModel,
-                        onStartGame = { levels, difficulty ->
-                            val args = bundleOf("levels" to levels, "difficulty" to difficulty.name)
-                            findNavController().navigate(R.id.toMathPyramidPlayFragment, args)
+                        onStartGame = {
+                            appViewModel.checkAllowPermission()
                         },
                         onBackClick = { findNavController().popBackStack() }
                     )
@@ -89,7 +111,7 @@ class MathPyramidHomeFragment : Fragment() {
 @Composable
 fun MathPyramidHomeJetpackScreen(
     viewModel: MathPyramidViewModel,
-    onStartGame: (Int, CommonDifficulty4) -> Unit,
+    onStartGame: () -> Unit,
     onBackClick: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsState()
@@ -173,7 +195,7 @@ fun MathPyramidHomeJetpackScreen(
                 val shape = RoundedCornerShape(50)
                 Box(modifier = Modifier.shadow(elevation = 8.dp,shape = shape, clip = false)) {
                     Button(
-                        onClick = { onStartGame(state.selectedLevel, state.selectedDifficulty) },
+                        onClick = { onStartGame() },
                         shape = shape,
                         colors = ButtonDefaults.buttonColors(
                             containerColor = colorResource(R.color.colorPrimary),

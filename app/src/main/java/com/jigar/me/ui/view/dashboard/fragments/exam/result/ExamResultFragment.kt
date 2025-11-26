@@ -54,9 +54,6 @@ class ExamResultFragment : BaseFragment() {
     }
 
     private fun init() {
-        binding.spaceNotch.layoutParams.width = prefManager.getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
-        binding.spaceBottom.layoutParams.height = prefManager.getCustomParamInt(AppConstants.BOTTOM_NAV_HEIGHT,0)
-
         if (examType == "object" || examType == "new"){
             examAbacusTheme = requireArguments().getString(AppConstants.extras_Comman.examAbacusType, AppConstants.Settings.theam_Default)
             prefManager.setCustomParam(AppConstants.Settings.TheamTempView, examAbacusTheme)

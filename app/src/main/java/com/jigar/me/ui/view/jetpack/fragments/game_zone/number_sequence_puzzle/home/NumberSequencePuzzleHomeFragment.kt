@@ -24,7 +24,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -44,6 +46,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.jigar.me.R
@@ -51,10 +54,13 @@ import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.HowToPlayButton
 import com.jigar.me.ui.view.jetpack.fragments.common.how_to_play.HowToPlayNumberSequenceView
+import com.jigar.me.ui.viewmodel.AppViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.getValue
 
 @AndroidEntryPoint
 class NumberSequencePuzzleHomeFragment : BaseFragment() {
+    private val appViewModel : AppViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -62,8 +68,27 @@ class NumberSequencePuzzleHomeFragment : BaseFragment() {
             setContent {
                 MaterialTheme {
                     val navController = findNavController()
+                    val permissionResult by appViewModel.permissionResult.observeAsState()
+
+                    LaunchedEffect(permissionResult) {
+                        when (permissionResult) {
+                            true -> {
+                                val action = NumberSequencePuzzleHomeFragmentDirections.toNumberSequencePuzzlePlayFragment(appViewModel.tempPuzzleSize)
+                                navController.navigate(action)
+                            }
+                            false -> {
+                                goToInAppPurchase()
+                            }
+                            else -> Unit
+                        }
+                        appViewModel.resetNavigation()
+                    }
                     NumberSequencePuzzleHomeJetpackScreen(
                         navController = navController,
+                        onPuzzleSelect = {
+                            appViewModel.tempPuzzleSize = it
+                            appViewModel.checkAllowPermission()
+                        },
                         onBackClick = { navController.popBackStack() })
                 }
             }
@@ -71,32 +96,12 @@ class NumberSequencePuzzleHomeFragment : BaseFragment() {
     }
 }
 
-/*@Preview(
-    name = "Number Puzzle Home - Light",
-    showBackground = true,
-    backgroundColor = 0xFFFFFFFF,
-    widthDp = 800,
-    heightDp = 400
-)
-@Composable
-fun NumberPuzzleHomeScreenPreview() {
-    // Use a fake NavController for preview
-    val fakeNavController = rememberNavController()
-
-    MaterialTheme {
-        NumberSequencePuzzleHomeJetpackScreen(
-            navController = fakeNavController,
-            onBackClick = {}
-        )
-    }
-}*/
-
-
 @Composable
 fun NumberSequencePuzzleHomeJetpackScreen(
-    navController: NavController, onBackClick: () -> Unit = {}
+    navController: NavController, onPuzzleSelect: (Int) -> Unit,onBackClick: () -> Unit = {}
 ) {
     var showHelp by remember { mutableStateOf(false) }
+
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -146,22 +151,19 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                         gridSize = 3,
                         color = Color(0xFF9C27B0),
                         onClick = {
-                            val action = NumberSequencePuzzleHomeFragmentDirections.toNumberSequencePuzzlePlayFragment(3)
-                            navController.navigate(action)
+                            onPuzzleSelect(3)
                         })
                     PuzzleOptionView(
                         gridSize = 4,
                         color = Color(0xFFFF9800),
                         onClick = {
-                            val action = NumberSequencePuzzleHomeFragmentDirections.toNumberSequencePuzzlePlayFragment(4)
-                            navController.navigate(action)
+                            onPuzzleSelect(4)
                         })
                     PuzzleOptionView(
                         gridSize = 5,
                         color = Color(0xFF2196F3),
                         onClick = {
-                            val action = NumberSequencePuzzleHomeFragmentDirections.toNumberSequencePuzzlePlayFragment(5)
-                            navController.navigate(action)
+                            onPuzzleSelect(5)
                         })
                 }
             }
@@ -180,7 +182,6 @@ fun NumberSequencePuzzleHomeJetpackScreen(
         }
     }
 }
-
 
 @Composable
 fun PuzzleOptionView(

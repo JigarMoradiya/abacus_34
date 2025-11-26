@@ -37,8 +37,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -64,21 +66,23 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
+import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.HowToPlayButton
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
-import com.jigar.me.ui.view.jetpack.fragments.common.how_to_play.HowToPlayMathPyramidView
 import com.jigar.me.ui.view.jetpack.fragments.common.how_to_play.HowToPlaySudokuView
+import com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.home.NumberSequencePuzzleHomeFragmentDirections
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuDifficulty4
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuHomeViewModel
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuSize
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuStorage
+import com.jigar.me.ui.viewmodel.AppViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SudokuHomeFragment : Fragment() {
+class SudokuHomeFragment : BaseFragment() {
     private val viewModel: SudokuHomeViewModel by viewModels()
-
+    private val appViewModel : AppViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -90,12 +94,27 @@ class SudokuHomeFragment : Fragment() {
         return ComposeView(requireContext()).apply {
             setContent {
                 MaterialTheme {
-                    SudokuHomeScreen(viewModel,navController,
-                        onStart = { size, difficulty, isNew ->
+                    val permissionResult by appViewModel.permissionResult.observeAsState()
 
-                            // Navigate using directions
-                            val action = SudokuHomeFragmentDirections.toSudokuPlayFragment(size.name, difficulty.name,isNew)
-                            navController.navigate(action)
+                    LaunchedEffect(permissionResult) {
+                        when (permissionResult) {
+                            true -> {
+                                // Navigate using directions
+                                val value = viewModel.uiState.value
+                                val action = SudokuHomeFragmentDirections.toSudokuPlayFragment(value.selectedSizeFinal.name, value.selectedDifficultyFinal.name,value.isNewGame)
+                                navController.navigate(action)
+                            }
+                            false -> {
+                                goToInAppPurchase()
+                            }
+                            else -> Unit
+                        }
+                        appViewModel.resetNavigation()
+                    }
+
+                    SudokuHomeScreen(viewModel,navController,
+                        onStart = {
+                            appViewModel.checkAllowPermission()
                         }
                     )
                 }
@@ -110,7 +129,7 @@ class SudokuHomeFragment : Fragment() {
 fun SudokuHomeScreen(
     viewModel: SudokuHomeViewModel,
     navController: NavController,
-    onStart: (SudokuSize, SudokuDifficulty4, Boolean) -> Unit
+    onStart: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsState()
     val context = LocalContext.current
@@ -230,7 +249,8 @@ fun SudokuHomeScreen(
                             if (SudokuStorage.hasSavedGame(context)) {
                                 viewModel.openResumePopup()
                             } else {
-                                onStart(state.selectedSize, state.selectedDifficulty, true)
+                                viewModel.setDataGameStart(state.selectedSize, state.selectedDifficulty, true)
+                                onStart()
                             }
                         },
                         shape = shape,
@@ -279,15 +299,18 @@ fun SudokuHomeScreen(
                     viewModel.closeResumePopup()
                     val saved = SudokuStorage.load(context)
                     if (saved != null) {
-                        onStart(saved.puzzle.size, saved.puzzle.difficulty, false)
+                        viewModel.setDataGameStart(saved.puzzle.size, saved.puzzle.difficulty, false)
+                        onStart()
                     } else {
                         // fallback, if decoding failed
-                        onStart(state.selectedSize, state.selectedDifficulty, true)
+                        viewModel.setDataGameStart(state.selectedSize, state.selectedDifficulty, true)
+                        onStart()
                     }
                 },
                 onNegativeTapped = {
                     viewModel.closeResumePopup()
-                    onStart(state.selectedSize, state.selectedDifficulty, true)
+                    viewModel.setDataGameStart(state.selectedSize, state.selectedDifficulty, true)
+                    onStart()
                 }
             )
         }

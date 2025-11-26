@@ -37,6 +37,10 @@ class SudokuHomeViewModel @Inject constructor(
         updateState { copy(selectedDifficulty = diff) }
     }
 
+    fun setDataGameStart(size: SudokuSize,diff: SudokuDifficulty4,isNew: Boolean) {
+        updateState { copy(selectedSizeFinal = size, selectedDifficultyFinal = diff,isNewGame = isNew) }
+    }
+
     fun openResumePopup() {
         updateState {copy(showResumePopup = true) }
     }

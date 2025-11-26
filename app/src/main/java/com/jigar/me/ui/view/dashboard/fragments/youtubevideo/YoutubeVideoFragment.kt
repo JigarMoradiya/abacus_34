@@ -40,8 +40,6 @@ class YoutubeVideoFragment : BaseFragment(), YoutubeVideoListAdapter.OnItemClick
         mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() {
-        binding.spaceNotch.layoutParams.width = prefManager.getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
-        binding.spaceBottom.layoutParams.height = prefManager.getCustomParamInt(AppConstants.BOTTOM_NAV_HEIGHT,0)
 
         val type = object : TypeToken<ArrayList<VideoData>>() {}.type
         val videoList: List<VideoData> = Gson().fromJson(prefManager.getCustomParam(AppConstants.RemoteConfig.videoList,""),type)

@@ -8,7 +8,11 @@ import kotlinx.parcelize.Parcelize
 data class SudokuHomeUiState(
     val selectedSize: SudokuSize = SudokuSize.FOUR,
     val selectedDifficulty: SudokuDifficulty4 = SudokuDifficulty4.EASY,
-    var showResumePopup: Boolean = false
+    var showResumePopup: Boolean = false,
+
+    val selectedSizeFinal: SudokuSize = SudokuSize.FOUR,
+    val selectedDifficultyFinal: SudokuDifficulty4 = SudokuDifficulty4.EASY,
+    var isNewGame: Boolean = true
 ) : Parcelable
 
 // ---------- Models & Enums ----------

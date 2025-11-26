@@ -89,8 +89,6 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
 
     private fun initViews() {
         with(prefManager){
-            binding.spaceNotch.layoutParams.width = getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
-
             abacusTotalColumns = getCustomParamInt(AppConstants.Settings.AbacusMaxColumn,13)
             if (getCustomParam(AppConstants.Settings.SW_Random,"") != "Y") {
                 values = getCustomParamFloat(AppConstants.Settings.Toddler_No,1.0F)

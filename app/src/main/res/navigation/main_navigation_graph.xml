@@ -289,6 +289,9 @@
         <action
             android:id="@+id/toNumberSequencePuzzlePlayFragment"
             app:destination="@+id/numberSequencePuzzlePlayFragment" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/numberSequencePuzzlePlayFragment"
@@ -303,6 +306,9 @@
         <action
             android:id="@+id/toSudokuPlayFragment"
             app:destination="@+id/sudokuPlayFragment" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/sudokuPlayFragment"
@@ -326,6 +332,9 @@
         <action
             android:id="@+id/toMathPyramidPlayFragment"
             app:destination="@+id/mathPyramidPlayFragment" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/mathPyramidPlayFragment"
@@ -337,6 +346,9 @@
         <action
             android:id="@+id/toTargetNumberPlayFragment"
             app:destination="@+id/targetNumberPlayFragment" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/targetNumberPlayFragment"

@@ -89,7 +89,6 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.9.6")
     implementation("androidx.navigation:navigation-ui-ktx:2.9.6")
     implementation("com.google.android.play:asset-delivery-ktx:2.3.0")
-    implementation("androidx.navigation:navigation-compose:2.9.6")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.3.0")
     androidTestImplementation ("androidx.test.espresso:espresso-core:3.7.0")
@@ -194,7 +193,9 @@ dependencies {
     // jetpack compose
     // Compose BOM ensures all versions stay in sync
     implementation(platform("androidx.compose:compose-bom:2025.11.00"))
+    implementation("androidx.compose.runtime:runtime-livedata")
 
+    implementation("androidx.navigation:navigation-compose:2.9.6")
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.animation:animation")

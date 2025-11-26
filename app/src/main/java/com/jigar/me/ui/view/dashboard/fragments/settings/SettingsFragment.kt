@@ -49,7 +49,6 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
         mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() {
-        binding.spaceNotch.layoutParams.width = prefManager.getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
         selectedTheme = prefManager.getCustomParam(AppConstants.Settings.Theam,AppConstants.Settings.theam_Default)
         setPreviewTheme(selectedTheme)
 

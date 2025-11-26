@@ -69,8 +69,6 @@ class ReportsHomeFragment : BaseFragment(), ReportsListAdapter.OnItemClickListen
     private fun initViews() {
         reportsAdapter = ReportsListAdapter(arrayListOf(), AppDatabase.getInstance(requireContext()),this)
         with(binding){
-            spaceNotch.layoutParams.width = prefManager.getCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
-            spaceBottom.layoutParams.height = prefManager.getCustomParamInt(AppConstants.BOTTOM_NAV_HEIGHT,0)
 
             recyclerview.adapter = reportsAdapter
             val list : ArrayList<String> = arrayListOf()

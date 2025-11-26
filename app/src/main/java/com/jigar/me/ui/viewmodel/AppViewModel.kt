@@ -1,17 +1,41 @@
 package com.jigar.me.ui.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.data.model.dbtable.abacus_all_data.Level
 import com.jigar.me.data.model.dbtable.abacus_all_data.Pages
 import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
+import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.data.repositories.DBRepository
+import com.jigar.me.utils.CommonUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AppViewModel @Inject constructor(private val dbRepository: DBRepository) : ViewModel() {
+class AppViewModel @Inject constructor(private val dbRepository: DBRepository,private val prefManager : AppPreferencesHelper) : ViewModel() {
+
+    var tempPuzzleSize: Int = 0
+    private val _permissionResult = MutableLiveData<Boolean?>()
+    val permissionResult: LiveData<Boolean?> = _permissionResult
+
+    fun checkAllowPermission() {
+        viewModelScope.launch {
+            val purchasedSKU = dbRepository.getInAppSKUPurchased()
+            val isPurchased = CommonUtils.checkPurchaseForExerciseExamCCM(prefManager, purchasedSKU)
+            _permissionResult.postValue(isPurchased)
+//            _permissionResult.postValue(false)
+        }
+    }
+    fun resetNavigation() {
+        _permissionResult.value = null
+    }
+
+
     suspend fun getPurchasesSku() = dbRepository.getPurchasesSku()
     fun getInAppSKU(displayList : ArrayList<String>) = dbRepository.getInAppSKU(displayList)
     suspend fun getInAppSKUPurchased() = dbRepository.getInAppSKUPurchased()
