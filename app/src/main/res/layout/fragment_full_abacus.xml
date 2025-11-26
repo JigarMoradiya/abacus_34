@@ -17,21 +17,23 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/menu_icons_bg"
+                android:layout_height="@dimen/menu_icons_bg"
                 android:layout_margin="@dimen/icons_margin2"
-                app:cardBackgroundColor="@color/light_back"
+                app:cardBackgroundColor="@color/back_icon_bg"
                 app:cardCornerRadius="@dimen/menu_icons_corner"
                 app:cardElevation="@dimen/card_elevation"
                 app:cardMaxElevation="@dimen/card_elevation"
                 app:strokeWidth="0dp">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgBack"
                     android:layout_width="@dimen/menu_icons"
                     android:layout_height="@dimen/menu_icons"
-                    android:padding="@dimen/activity_padding8"
+                    android:layout_gravity="center"
                     app:srcCompat="@drawable/ic_back" />
             </com.google.android.material.card.MaterialCardView>
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <com.google.android.material.textview.MaterialTextView
@@ -41,27 +43,27 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/title_margin"
             android:textSize="@dimen/textSize24"
+            app:layout_constraintBottom_toBottomOf="@+id/swRandom"
             app:layout_constraintEnd_toStartOf="@+id/swRandom"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/swRandom"
             app:layout_constraintTop_toTopOf="@+id/txtRandom"
             tools:text="SET 1" />
 
         <Space
+            android:id="@+id/spaceNotch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/spaceNotch"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent"
             android:padding="@dimen/activity_padding8"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txtDecimalMode"
@@ -87,8 +89,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/free_mode"
-                android:textSize="@dimen/textSizeMedium"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSizeMedium" />
 
             <com.google.android.material.materialswitch.MaterialSwitch
                 android:id="@+id/swFreeMode"
@@ -180,11 +182,11 @@
             android:id="@+id/txtRange"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/activity_padding8"
             android:drawableEnd="@drawable/ic_edit"
             android:drawablePadding="@dimen/activity_padding4"
             android:gravity="center"
             android:paddingHorizontal="@dimen/activity_padding8"
-            android:layout_marginEnd="@dimen/activity_padding8"
             android:text="From 1 To 100"
             android:textColor="@color/black"
             android:textSize="@dimen/textSizeMedium"

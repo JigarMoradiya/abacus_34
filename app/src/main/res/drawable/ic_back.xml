@@ -13,10 +13,10 @@
                 android:startY="481.016"
                 android:type="linear">
                 <item
-                    android:color="@color/colorPrimary"
+                    android:color="@color/white"
                     android:offset="0" />
                 <item
-                    android:color="@color/colorPrimaryDark"
+                    android:color="@color/white"
                     android:offset="1" />
             </gradient>
         </aapt:attr>

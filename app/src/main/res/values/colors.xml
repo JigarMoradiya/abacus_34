@@ -9,6 +9,9 @@
     <color name="brand_alert">#ff0000</color>
     <color name="brand_alert11">#D9000000</color>
 
+    <color name="back_icon_text_bg">#F3DFF8</color>
+    <color name="back_icon_bg">#9C27B0</color>
+
     <color name="colorSwitch1">#AB47BC</color>
     <color name="colorPurpleDark">#6C197A</color>
     <color name="colorPrimary">#246AF1</color>

@@ -16,23 +16,25 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/menu_icons_bg"
+            android:layout_height="@dimen/menu_icons_bg"
             android:layout_margin="@dimen/icons_margin2"
-            app:cardBackgroundColor="@color/light_back"
+            app:cardBackgroundColor="@color/back_icon_bg"
             app:cardCornerRadius="@dimen/menu_icons_corner"
             app:cardElevation="@dimen/card_elevation"
             app:cardMaxElevation="@dimen/card_elevation"
             app:layout_constraintStart_toStartOf="parent"
-            app:strokeWidth="0dp"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeWidth="0dp">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgBack"
                 android:layout_width="@dimen/menu_icons"
                 android:layout_height="@dimen/menu_icons"
-                android:padding="@dimen/menu_icons_padding"
+                android:layout_gravity="center"
                 app:srcCompat="@drawable/ic_back" />
         </com.google.android.material.card.MaterialCardView>
+
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgLogo"

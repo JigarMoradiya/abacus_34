@@ -54,7 +54,6 @@ class ExamHomeFragment : BaseFragment() {
 
     private fun clickListener() {
         binding.cardBack.onClick { mNavController.navigateUp() }
-        binding.cardExamHistory.onClick { mNavController.navigate(R.id.action_examHomeFragment_to_examHistoryHomeFragment) }
         binding.txtStartExam.onClick {
             if (!binding.chNumber.isChecked && !binding.chAddition.isChecked && !binding.chSubtraction.isChecked
                 && !binding.chMultiplication.isChecked && !binding.chDivision.isChecked ){

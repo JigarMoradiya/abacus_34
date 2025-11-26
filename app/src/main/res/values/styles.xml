@@ -39,9 +39,9 @@
     </style>-->
 
     <style name="mainTitle" parent="">
-        <item name="android:fontFamily">@font/font_extra_bold</item>
-        <item name="fontFamily">@font/font_extra_bold</item>
-        <item name="android:textSize">@dimen/textSizeSuperExtraLarge</item>
+        <item name="android:fontFamily">@font/font_bold</item>
+        <item name="fontFamily">@font/font_bold</item>
+        <item name="android:textSize">@dimen/textSizeTitle</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:includeFontPadding">false</item>
     </style>

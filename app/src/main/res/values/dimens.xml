@@ -99,7 +99,10 @@
     <dimen name="edt_corner_radius">28dp</dimen>
 
     <dimen name="home_menu">100dp</dimen>
-    <dimen name="menu_icons">42dp</dimen>
+    <dimen name="menu_icons_bg">42dp</dimen>
+    <dimen name="menu_icons_bg_padding">52dp</dimen>
+    <dimen name="menu_icons">20dp</dimen>
+    <dimen name="menu_icons_text">34dp</dimen>
     <dimen name="menu_icons_padding">9dp</dimen>
     <dimen name="menu_icons_corner">21dp</dimen>
     <dimen name="card_stork">4dp</dimen>

@@ -15,37 +15,41 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/menu_icons_bg"
+            android:layout_height="@dimen/menu_icons_bg"
             android:layout_margin="@dimen/icons_margin2"
-            app:cardBackgroundColor="@color/light_back"
+            app:cardBackgroundColor="@color/back_icon_bg"
             app:cardCornerRadius="@dimen/menu_icons_corner"
             app:cardElevation="@dimen/card_elevation"
             app:cardMaxElevation="@dimen/card_elevation"
-            app:strokeWidth="0dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeWidth="0dp">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgBack"
                 android:layout_width="@dimen/menu_icons"
                 android:layout_height="@dimen/menu_icons"
-                android:padding="@dimen/menu_icons_padding"
+                android:layout_gravity="center"
                 app:srcCompat="@drawable/ic_back" />
         </com.google.android.material.card.MaterialCardView>
 
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:includeFontPadding="false"
-            android:text="@string/custom_challenge_mode"
             style="@style/mainTitle"
-            android:textSize="@dimen/textSize24"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/menu_icons_text"
+            android:background="@drawable/bg_all_curved_24_dp"
+            android:backgroundTint="@color/back_icon_text_bg"
+            android:gravity="center"
+            android:paddingStart="@dimen/menu_icons_bg_padding"
+            android:paddingEnd="@dimen/activity_padding16"
+            android:text="@string/custom_challenge_mode"
+            android:textColor="@color/back_icon_bg"
             app:layout_constraintBottom_toBottomOf="@+id/cardBack"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/cardBack"/>
+            app:layout_constraintStart_toStartOf="@+id/cardBack"
+            app:layout_constraintTop_toTopOf="@+id/cardBack" />
 
 
         <!-- questions -->

@@ -23,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
@@ -36,12 +37,12 @@ import com.jigar.me.R
 @Composable
 fun BackButtonWithText(
     title: String,
-    color: Color = Color(0xFF9C27B0),
+    color: Color = colorResource(R.color.back_icon_bg),
     onBackClick: () -> Unit
 ) {
-    val capsuleHeight = 34.dp
-    val circleSize = 42.dp
-    val iconSize = 20.dp
+    val capsuleHeight = dimensionResource(R.dimen.menu_icons_text)
+    val circleSize = dimensionResource(R.dimen.menu_icons_bg)
+    val iconSize = dimensionResource(R.dimen.menu_icons)
     val overlapOffset = (circleSize - capsuleHeight) / 2f // how much the circle should overlap
     val shape = RoundedCornerShape(100.dp)
     Box(
@@ -61,7 +62,7 @@ fun BackButtonWithText(
                         bottomEnd = 100.dp
                     )
                 )
-                .background(color.copy(alpha = 0.15f))
+                .background(colorResource(R.color.back_icon_text_bg))
                 .clip(shape)                                   // 🔥 makes ripple rounded
                 .clickable(
                     interactionSource = remember { MutableInteractionSource() },

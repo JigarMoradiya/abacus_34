@@ -10,74 +10,42 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/menu_icons_bg"
+            android:layout_height="@dimen/menu_icons_bg"
             android:layout_margin="@dimen/icons_margin2"
-            app:cardBackgroundColor="@color/light_back"
+            app:cardBackgroundColor="@color/back_icon_bg"
             app:cardCornerRadius="@dimen/menu_icons_corner"
             app:cardElevation="@dimen/card_elevation"
             app:cardMaxElevation="@dimen/card_elevation"
-            app:strokeWidth="0dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeWidth="0dp">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgBack"
                 android:layout_width="@dimen/menu_icons"
                 android:layout_height="@dimen/menu_icons"
-                android:padding="@dimen/menu_icons_padding"
+                android:layout_gravity="center"
                 app:srcCompat="@drawable/ic_back" />
         </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardExamHistory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/light_exam_history"
-            app:cardCornerRadius="@dimen/card_corner_radius12"
-            app:cardElevation="@dimen/card_elevation2"
-            app:cardUseCompatPadding="true"
-            android:visibility="gone"
-            app:strokeWidth="0dp"
-            app:layout_constraintBottom_toBottomOf="@+id/cardBack"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/activity_padding4"
-                android:paddingEnd="@dimen/activity_padding8">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:padding="@dimen/activity_padding4"
-                    app:srcCompat="@drawable/ic_exam_history" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:fontFamily="@font/font_bold"
-                    android:gravity="center"
-                    android:text="@string/exam_history"
-                    android:textColor="@color/dark_exam_history"
-                    android:textSize="@dimen/textSizeSmall" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
-        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtTitle"
             style="@style/mainTitle"
-            android:textSize="@dimen/textSize24"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/menu_icons_text"
+            android:background="@drawable/bg_all_curved_24_dp"
+            android:backgroundTint="@color/back_icon_text_bg"
+            android:gravity="center"
+            android:paddingStart="@dimen/menu_icons_bg_padding"
+            android:paddingEnd="@dimen/activity_padding16"
             android:text="@string/let_s_start_exam"
+            android:textColor="@color/back_icon_bg"
             app:layout_constraintBottom_toBottomOf="@+id/cardBack"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/cardBack"
             app:layout_constraintTop_toTopOf="@+id/cardBack" />
+
 
         <ScrollView
             android:layout_width="match_parent"

@@ -207,9 +207,6 @@
         android:id="@+id/examHomeFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.exam.home.ExamHomeFragment">
         <action
-            android:id="@+id/action_examHomeFragment_to_examHistoryHomeFragment"
-            app:destination="@+id/examHistoryHomeFragment" />
-        <action
             android:id="@+id/action_examHomeFragment_to_examCommonFragment"
             app:destination="@+id/examCommonFragment" />
         <action
