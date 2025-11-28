@@ -1,6 +1,5 @@
 package com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -18,7 +17,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -45,9 +43,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
@@ -55,10 +51,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
-import com.jigar.me.ui.view.jetpack.fragments.common.enums.CommonDifficulty4
-import com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.components.TargetUiState
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.viewmodel.TargetNumberPlayViewModel
-import com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.viewmodel.TargetNumberPlayViewModelFake
 import com.jigar.me.utils.PlaySound
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import dagger.hilt.android.AndroidEntryPoint
@@ -79,18 +72,6 @@ class TargetNumberPlayFragment : Fragment() {
                 }
             }
         }
-}
-
-@SuppressLint("ViewModelConstructorInComposable")
-@Preview(showBackground = true, widthDp = 900, heightDp = 500)
-@Composable
-fun PreviewTargetNumberPlayScreen() {
-    MaterialTheme {
-//        TargetNumberPlayScreen(
-//            viewModel = TargetNumberPlayViewModelFake(),
-//            onBackClick = {}
-//        )
-    }
 }
 
 @Composable

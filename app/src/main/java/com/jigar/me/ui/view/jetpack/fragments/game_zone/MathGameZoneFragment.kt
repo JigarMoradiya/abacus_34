@@ -4,13 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.ui.platform.ComposeView
-import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.jigar.me.R
-import dagger.hilt.android.AndroidEntryPoint
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
@@ -28,6 +21,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -35,16 +29,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
+import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MathGameZoneFragment : Fragment() {
@@ -172,23 +170,6 @@ fun GameCategoryType.toDrawable(): Int {
         GameCategoryType.SUDOKU -> R.drawable.sudoku
         GameCategoryType.MATH_PYRAMID -> R.drawable.math_pyramid
         GameCategoryType.TARGET_NUMBER -> R.drawable.target_number
-    }
-}
-
-
-@Preview(
-    name = "Math Game Zone - Landscape",
-    showBackground = true,
-    widthDp = 800,
-    heightDp = 400
-)
-@Composable
-fun PreviewMathGameZoneScreenLandscape() {
-    MaterialTheme {
-        MathGameZoneScreen(
-            gameType = { },
-            onBackClick = { }
-        )
     }
 }
 

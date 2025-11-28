@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -28,7 +27,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
@@ -114,18 +112,6 @@ fun BackButtonWithText(
     }
 }
 
-
-@Preview(showBackground = true)
-@Composable
-fun BackButtonWithTextPreview() {
-    MaterialTheme {
-        BackButtonWithText(
-            title = "Abacus Child Learning App",
-            onBackClick = {}
-        )
-    }
-}
-
 @Composable
 fun HowToPlayButton(
     color: Color = Color(0xFF24A229),
@@ -173,15 +159,5 @@ fun HowToPlayButton(
                 )
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun HowToPlayButtonPreview() {
-    MaterialTheme {
-        HowToPlayButton(
-            onClick = {}
-        )
     }
 }
