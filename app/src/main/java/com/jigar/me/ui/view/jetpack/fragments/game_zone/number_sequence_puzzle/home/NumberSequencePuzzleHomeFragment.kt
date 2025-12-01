@@ -149,7 +149,7 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                 ) {
                     PuzzleOptionView(
                         gridSize = 3,
-                        color = Color(0xFF9C27B0),
+                        color = Color(0xFFF33173),
                         onClick = {
                             onPuzzleSelect(3)
                         })

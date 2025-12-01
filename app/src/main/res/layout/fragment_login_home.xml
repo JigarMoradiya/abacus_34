@@ -19,8 +19,8 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardFAQs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/menu_icons_bg"
+        android:layout_height="@dimen/menu_icons_bg"
         android:layout_margin="@dimen/icons_margin2"
         app:cardBackgroundColor="@color/light_faq"
         app:cardCornerRadius="@dimen/menu_icons_corner"
@@ -33,7 +33,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="@dimen/menu_icons"
             android:layout_height="@dimen/menu_icons"
-            android:padding="@dimen/activity_padding8"
+            android:layout_gravity="center"
             app:srcCompat="@drawable/ic_menu_faq" />
 
     </com.google.android.material.card.MaterialCardView>
