@@ -172,8 +172,6 @@ object DataProvider {
         val beadWidth = remainSpace / 13
         val beadHeight : Double = ((5 * beadWidth) / 9).toDouble()  // 9 : 5
 
-        val height1 = (context.resources.getDimension(R.dimen.poligon_height) * multiply).toInt()
-        val width1 = (context.resources.getDimension(R.dimen.poligon_width) * multiply).toInt()
         val height = context.dpToPx((beadHeight * multiply).toFloat()).toInt()
         val width = context.dpToPx((beadWidth * multiply)).toInt()
 
@@ -196,37 +194,6 @@ object DataProvider {
         return list
     }
 
-//    fun getAbacusThemePaidTypeList(context: Context,abacusBeadType: AbacusBeadType,isAddSelected : Boolean = false) : ArrayList<AbacusContent>{
-//        val list = ArrayList<AbacusContent>()
-//        val multiply = getMultipleDimensions(abacusBeadType)
-//        val starCloseList = arrayListOf(R.drawable.star_gray_close,R.drawable.star_gray_close,R.drawable.star_gray_close,R.drawable.star_gray_close)
-//        val starOpenList = arrayListOf(R.drawable.star_yellow_open,R.drawable.star_blue_open,R.drawable.star_orange_open,R.drawable.star_green_open)
-//        val diamondCloseList = arrayListOf(R.drawable.diamond_gray,R.drawable.diamond_gray,R.drawable.diamond_gray,R.drawable.diamond_gray)
-//        val diamondOpenList = arrayListOf(R.drawable.diamond_purple,R.drawable.diamond_yellow,R.drawable.diamond_blue,R.drawable.diamond_green)
-//        val garnetCloseList = arrayListOf(R.drawable.garnet_gray,R.drawable.garnet_gray,R.drawable.garnet_gray,R.drawable.garnet_gray)
-//        val garnetOpenList = arrayListOf(R.drawable.garnet_purple,R.drawable.garnet_orange,R.drawable.garnet_blue,R.drawable.garnet_green)
-//        val shapeCloseList = arrayListOf(R.drawable.shape_stone_gray,R.drawable.shape_triangle_gray,R.drawable.shape_circle_gray,R.drawable.shape_hexagon_gray)
-//        val shapeOpenList = arrayListOf(R.drawable.shape_stone,R.drawable.shape_triangle,R.drawable.shape_circle,R.drawable.shape_hexagon)
-//        val eggCloseList = arrayListOf(R.drawable.egg,R.drawable.egg,R.drawable.egg,R.drawable.egg)
-//        val eggOpenList = arrayListOf(R.drawable.egg1,R.drawable.egg4,R.drawable.egg2,R.drawable.egg3)
-//        with(list){
-//            add(getAbacusThemeFace(context,abacusBeadType))
-//            add(AbacusContent(AppConstants.Settings.theam_Star,R.drawable.star_red_open,R.drawable.bg_abacus_frame_large_gray,R.drawable.bg_abacus_frame_large_gray_exam,R.color.abacus_rod_gray,R.color.abacus_rod_gray_dark
-//                ,(context.resources.getDimension(R.dimen.star_height) * multiply).toInt(),(context.resources.getDimension(R.dimen.star_width) * multiply).toInt(),(context.resources.getDimension(R.dimen.star_space) * multiply).toInt(),R.drawable.star_gray_close,R.drawable.star_red_open,starCloseList,starOpenList, unUsedBeads = R.drawable.star_gray_close,answerWindowBG = "#216869", answerWindowLine = "#49a078", answerWindowBtnBgLine = "#f06292"))
-//            if (!isAddSelected){
-//                add(AbacusContent(AppConstants.Settings.theam_diamond,R.drawable.diamond_red,R.drawable.bg_abacus_frame_large_silver,R.drawable.bg_abacus_frame_large_silver_exam,R.color.abacus_rod_silver,R.color.abacus_rod_silver_dark
-//                    ,(context.resources.getDimension(R.dimen.diamond_height) * multiply).toInt(),(context.resources.getDimension(R.dimen.diamond_width) * multiply).toInt(),(context.resources.getDimension(R.dimen.diamond_space) * multiply).toInt(),R.drawable.diamond_gray,R.drawable.diamond_red,diamondCloseList,diamondOpenList, unUsedBeads = R.drawable.diamond_gray,answerWindowBG = "#a23a06", answerWindowLine = "#f6ae29", answerWindowBtnBgLine = "#ba68cb"))
-//                add(AbacusContent(AppConstants.Settings.theam_garnet,R.drawable.garnet_red,R.drawable.bg_abacus_frame_large_gray,R.drawable.bg_abacus_frame_large_gray_exam,R.color.abacus_rod_gray,R.color.abacus_rod_gray_dark
-//                    ,(context.resources.getDimension(R.dimen.garnet_height) * multiply).toInt(),(context.resources.getDimension(R.dimen.garnet_width) * multiply).toInt(),(context.resources.getDimension(R.dimen.garnet_space) * multiply).toInt(),R.drawable.garnet_gray,R.drawable.garnet_red,garnetCloseList,garnetOpenList, unUsedBeads = R.drawable.garnet_gray,answerWindowBG = "#235789", answerWindowLine = "#e1bc29", answerWindowBtnBgLine = "#90a4ae"))
-//                add(AbacusContent(AppConstants.Settings.theam_shape,R.drawable.shape_stone,R.drawable.bg_abacus_frame_large_gray,R.drawable.bg_abacus_frame_large_gray_exam,R.color.abacus_rod_gray,R.color.abacus_rod_gray_dark
-//                    ,(context.resources.getDimension(R.dimen.square_width_height) * multiply).toInt(),(context.resources.getDimension(R.dimen.square_width_height) * multiply).toInt(),(context.resources.getDimension(R.dimen.square_space) * multiply).toInt(),R.drawable.shape_square_gray,R.drawable.shape_square,shapeCloseList,shapeOpenList, unUsedBeads = R.drawable.poligon_gray_light,answerWindowBG = "#932826", answerWindowLine = "#fb9648", answerWindowBtnBgLine = "#81c784"))
-//                add(AbacusContent(AppConstants.Settings.theam_Egg,R.drawable.egg0,R.drawable.bg_abacus_frame_large_gray,R.drawable.bg_abacus_frame_large_gray_exam,R.color.abacus_rod_gray,R.color.abacus_rod_gray_dark
-//                    ,(context.resources.getDimension(R.dimen.square_width_height) * multiply).toInt(),(context.resources.getDimension(R.dimen.square_width_height) * multiply).toInt(),(context.resources.getDimension(R.dimen.square_space) * multiply).toInt(),R.drawable.egg,R.drawable.egg0,eggCloseList,eggOpenList, unUsedBeads = R.drawable.egg,answerWindowBG = "#932826", answerWindowLine = "#ff8841", answerWindowBtnBgLine = "#a1887f"))
-//            }
-//
-//        }
-//        return list
-//    }
 fun getAbacusThemePaidTypeList(context: Context,abacusBeadType: AbacusBeadType,isAddSelected : Boolean = false) : ArrayList<AbacusContent>{
     val list = ArrayList<AbacusContent>()
     val multiply = getMultipleDimensions(abacusBeadType)
@@ -271,45 +238,6 @@ fun getAbacusThemePaidTypeList(context: Context,abacusBeadType: AbacusBeadType,i
     }
     return list
 }
-
-    fun getAbacusThemeFace(context: Context,abacusBeadType: AbacusBeadType) : AbacusContent{
-        val faceCloseList = if (abacusBeadType == AbacusBeadType.Exam || abacusBeadType == AbacusBeadType.ExamResult){
-            arrayListOf(R.drawable.face_gray_close,R.drawable.face_gray_close,R.drawable.face_gray_close,R.drawable.face_gray_close)
-        }else{
-            arrayListOf(R.drawable.face_pink_close,R.drawable.face_orange_close,R.drawable.face_blue_close,R.drawable.face_green_close)
-        }
-        val faceCloseTop = if (abacusBeadType == AbacusBeadType.Exam || abacusBeadType == AbacusBeadType.ExamResult){
-            R.drawable.face_gray_close
-        }else{
-            R.drawable.face_red_close
-        }
-        val faceOpenList = arrayListOf(R.drawable.face_pink_open,R.drawable.face_orange_open,R.drawable.face_blue_open,R.drawable.face_green_open)
-
-        val multiply = getMultipleDimensions(abacusBeadType)
-        val prefManager = AppPreferencesHelper(context, AppConstants.PREF_NAME)
-        val screenWidthDp = prefManager.getCustomParamInt(AppConstants.screenWidthDp,0)
-        val rectWidth = context.resources.getDimension(R.dimen.padding_radius_abacus_frame_large) * 2
-        val colSpace = context.resources.getDimension(R.dimen.face_space) * 14
-        val extraPadding = context.resources.getDimension(R.dimen.activity_padding10) * 2
-        val remainSpace = screenWidthDp - colSpace - rectWidth
-        val beadWidth = remainSpace / 13
-        val beadHeight : Double = ((5 * beadWidth) / 6).toDouble()  // 6 : 5
-        Log.e("jigarBeadDimensionsFace","screenWidthDp = "+remainSpace+" beadWidth = "+beadWidth +" beadHeight = "+beadHeight)
-
-        val height1 = (context.resources.getDimension(R.dimen.face_height) * multiply).toInt()
-        val width1 = (context.resources.getDimension(R.dimen.face_width) * multiply).toInt()
-        val height = context.dpToPx((beadHeight * multiply).toFloat()).toInt()
-        val width = context.dpToPx((beadWidth * multiply)).toInt()
-
-        Log.e("jigarBeadDimensionsFace","height = "+height+" width = "+width)
-        Log.e("jigarBeadDimensionsFace","height1 = "+height1+" width1 = "+width1)
-
-        val space = (context.resources.getDimension(R.dimen.face_space) * multiply).toInt()
-
-        return AbacusContent(AppConstants.Settings.theam_face,R.drawable.face_red_open,R.drawable.bg_abacus_frame_large_red_eye,R.drawable.bg_abacus_frame_large_red_eye_exam,R.color.abacus_rod_red,R.color.abacus_rod_red_dark
-            ,height,width, space,
-            faceCloseTop,R.drawable.face_red_open,faceCloseList,faceOpenList, unUsedBeads = R.drawable.face_gray_close,answerWindowBG = "#0D1764", answerWindowLine = "#9199E2", answerWindowBtnBgLine = "#e57373")
-    }
 
     private val abacusThemeList = ArrayList<AbacusContent>()
     fun getAllAbacusThemeTypeList(context: Context, isPaidThemeAdd : Boolean = true,abacusBeadType: AbacusBeadType,isAddSelected : Boolean = false) : ArrayList<AbacusContent>{

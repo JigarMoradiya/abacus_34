@@ -40,8 +40,6 @@ object CommonUtils {
     external fun getDatabaseKey() : String
     external fun getApiBaseUrl() : String
 
-    fun getCurrentCurrency(isCurrencyINR: Boolean) = if (isCurrencyINR){ AppConstants.APP_PLAN_DATA.Currency_INR }else{ AppConstants.APP_PLAN_DATA.Currency_USD }
-    fun getCurrentCurrencySymbol(isCurrencyINR: Boolean) = if (isCurrencyINR){ AppConstants.APP_PLAN_DATA.Symbol_INR }else{ AppConstants.APP_PLAN_DATA.Symbol_USD }
     @SuppressLint("RestrictedApi")
     fun setErrorToEditText(textInputLayout: TextInputLayout, validation_message: String?) {
         textInputLayout.error = validation_message

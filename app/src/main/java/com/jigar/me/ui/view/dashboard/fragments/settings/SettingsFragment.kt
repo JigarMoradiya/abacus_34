@@ -114,33 +114,28 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
         binding.linearAbacus.removeAllViews()
         binding.linearAbacusPreview.invisible()
 
-        lifecycleScope.launch {
-            val abacusBinding : LayoutAbacusExamBinding = LayoutAbacusExamBinding.inflate(layoutInflater, null, false)
-//        val abacusBinding : FragmentAbacusSubBinding = FragmentAbacusSubBinding.inflate(layoutInflater, null, false)
+        val abacusBinding : LayoutAbacusExamBinding = LayoutAbacusExamBinding.inflate(layoutInflater, null, false)
+        val params = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT,ConstraintLayout.LayoutParams.WRAP_CONTENT)
+        params.setMargins(0)
+        abacusBinding.relAbacus.layoutParams = params
 
-            val params = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT,ConstraintLayout.LayoutParams.WRAP_CONTENT)
-            params.setMargins(0)
-            abacusBinding.relAbacus.layoutParams = params
-
-            binding.linearAbacus.addView(abacusBinding.root)
-            val themeContent = DataProvider.findAbacusThemeType(requireContext(),theme, AbacusBeadType.SettingPreview)
-            themeContent.abacusFrameExam135.let {
-                abacusBinding.rlAbacusMain.setBackgroundResource(it)
-            }
-            themeContent.dividerColor1.let {
-                abacusBinding.ivDivider.setBackgroundColor(ContextCompat.getColor(requireContext(),it))
-            }
-            themeContent.resetBtnColor8.let {
-                abacusBinding.ivReset.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-                binding.txtPreview.setTextColor(ContextCompat.getColor(requireContext(),it))
-            }
-            AbacusUtils.setAbacusColumnTheme(AbacusBeadType.SettingPreview,abacusBinding.abacusTop,abacusBinding.abacusBottom, column = 3)
-            binding.linearAbacusPreview.show()
-            val number = DataProvider.generateSingleDigit(1, 998).toString()
-            abacusBinding.tvCurrentVal.text = number
-            AbacusUtils.setNumber(number,abacusBinding.abacusTop,abacusBinding.abacusBottom)
-
+        binding.linearAbacus.addView(abacusBinding.root)
+        val themeContent = DataProvider.findAbacusThemeType(requireContext(),theme, AbacusBeadType.SettingPreview)
+        themeContent.abacusFrameExam135.let {
+            abacusBinding.rlAbacusMain.setBackgroundResource(it)
         }
+        themeContent.dividerColor1.let {
+            abacusBinding.ivDivider.setBackgroundColor(ContextCompat.getColor(requireContext(),it))
+        }
+        themeContent.resetBtnColor8.let {
+            abacusBinding.ivReset.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
+            binding.txtPreview.setTextColor(ContextCompat.getColor(requireContext(),it))
+        }
+        AbacusUtils.setAbacusColumnTheme(AbacusBeadType.SettingPreview,abacusBinding.abacusTop,abacusBinding.abacusBottom, column = 3)
+        binding.linearAbacusPreview.show()
+        val number = DataProvider.generateSingleDigit(1, 998).toString()
+        abacusBinding.tvCurrentVal.text = number
+        AbacusUtils.setNumber(number,abacusBinding.abacusTop,abacusBinding.abacusBottom)
     }
 
     override fun onThemePoligonItemClick(data: AbacusContent) {

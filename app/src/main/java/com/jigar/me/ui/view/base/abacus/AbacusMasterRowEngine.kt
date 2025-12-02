@@ -6,11 +6,14 @@ import android.graphics.Point
 import android.graphics.drawable.Drawable
 import android.text.TextUtils
 import android.util.Log
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
+import com.jigar.me.R
 import com.jigar.me.data.local.data.AbacusBeadType
 import com.jigar.me.data.local.data.AbacusContent
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.ImageUtils.drawGradientDrawableOnCanvas
 
 class AbacusMasterRowEngine(
     private val context: Context,
@@ -77,7 +80,6 @@ class AbacusMasterRowEngine(
                         beadDrawables_eyes.add(ContextCompat.getDrawable(context, abacusContent.unUsedBeads))
                         beadDrawables_eyes_smaile.add(ContextCompat.getDrawable(context,abacusContent.unUsedBeads))
                     }
-
                 }
                 else -> {
                     if (isColumnUsed){
@@ -247,7 +249,6 @@ class AbacusMasterRowEngine(
 
             } else {
                 if (isColumnUsed){
-//                    if (beads[i] > 0) {
                     if (beads[i] >= beadHeight) {
                         ContextCompat.getDrawable(context,abacusContent.topBeadOpen)!!
                     }else{
@@ -264,6 +265,15 @@ class AbacusMasterRowEngine(
                 position.y + beads[i] + 2 + beadHeight + if (!isBeadStackFromBottom) extraHeight else 0
             )
             canvas.let { beadDrawable?.draw(it) }
+
+//            drawGradientDrawableOnCanvas(
+//                context = context,data = abacusContent,
+//                canvas = canvas,
+//                left = position.x + rowSpacing / 2,
+//                top = position.y + beads[i] + if (!isBeadStackFromBottom) extraHeight else 0,
+//                right = position.x + beadWidth - rowSpacing / 2,
+//                bottom = position.y + beads[i] + 2 + beadHeight + if (!isBeadStackFromBottom) extraHeight else 0,
+//            )
 
             // TODO Draw direction
             drawablePos++

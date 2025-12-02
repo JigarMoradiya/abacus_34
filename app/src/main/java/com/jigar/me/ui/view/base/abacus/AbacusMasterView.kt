@@ -186,7 +186,6 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
     }
 
     fun setNoOfRowAndBeads(noOfRows_used: Int, noOfRows: Int, noOfBeads: Int, beadType : AbacusBeadType = AbacusBeadType.None,unitRodPosition : Int = -1,noOfColumnUsed : Int = 13) {
-        Log.e("jigarBeadDimensions","setNoOfRowAndBeads old welcome")
         this.beadType = beadType
         this.noOfRows_used = noOfRows_used
         this.unitRodColumnPosition = unitRodPosition
