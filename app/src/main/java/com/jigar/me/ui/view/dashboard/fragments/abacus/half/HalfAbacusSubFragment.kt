@@ -408,7 +408,7 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
                 }
 
                 if (fromValue != toValue){
-                    val rodMovement = ExamProvider.calculateRodMovements(requireContext(),from = fromValue, to = toValue, rods = rods)
+                    val rodMovement = ExamProvider.calculateRodMovements(from = fromValue, to = toValue, rods = rods)
                     if (rodMovement.isNotNullOrEmpty()){
                         val extraHeight = resources.getDimension(R.dimen.height_extra).toInt()
                         val beamHeight = resources.getDimension(R.dimen.four).toInt()
@@ -479,7 +479,7 @@ class HalfAbacusSubFragment : BaseFragment(), AbacusMasterBeadShiftListener {
                 }
 
                 if (fromValue != toValue){
-                    val rodMovement = ExamProvider.calculateRodMovements(requireContext(),from = fromValue, to = toValue, rods = rods)
+                    val rodMovement = ExamProvider.calculateRodMovements(from = fromValue, to = toValue, rods = rods)
                     if (rodMovement.isNotNullOrEmpty()){
                         val extraHeight = resources.getDimension(R.dimen.height_extra).toInt()
                         val beamHeight = resources.getDimension(R.dimen.four).toInt()

@@ -174,7 +174,7 @@ object ExamProvider {
         return null
     }
 
-    fun calculateRodMovements(context: Context,from: Int,to: Int,rods: Int): List<RodMovement> {
+    fun calculateRodMovements(from: Int,to: Int,rods: Int): List<RodMovement> {
         val fromDigits = from.toString().padStart(rods, '0').map { it - '0' }
         val toDigits = to.toString().padStart(rods, '0').map { it - '0' }
 

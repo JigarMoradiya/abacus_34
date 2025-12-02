@@ -924,7 +924,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             }
 
             if (fromValue != toValue){
-                val rodMovement = ExamProvider.calculateRodMovements(requireContext(),from = fromValue, to = toValue, rods = rods)
+                val rodMovement = ExamProvider.calculateRodMovements(from = fromValue, to = toValue, rods = rods)
                 if (rodMovement.isNotNullOrEmpty()){
                     val extraHeight = resources.getDimension(R.dimen.height_extra).toInt()
                     val beamHeight = resources.getDimension(R.dimen.four).toInt()
@@ -989,7 +989,7 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
                 rods = toValue.toString().length
             }
 
-            val rodMovement = ExamProvider.calculateRodMovements(requireContext(),from = fromValue, to = toValue, rods = rods)
+            val rodMovement = ExamProvider.calculateRodMovements(from = fromValue, to = toValue, rods = rods)
             val extraHeight = resources.getDimension(R.dimen.height_extra).toInt()
             val beamHeight = resources.getDimension(R.dimen.four).toInt()
             val topBeadsHeight = themeContent.beadHeight * 2
