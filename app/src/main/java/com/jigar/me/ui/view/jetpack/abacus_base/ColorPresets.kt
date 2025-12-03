@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.abacus_base.components
+package com.jigar.me.ui.view.jetpack.abacus_base
 
 import androidx.compose.ui.graphics.Color
 import androidx.core.graphics.toColorInt
