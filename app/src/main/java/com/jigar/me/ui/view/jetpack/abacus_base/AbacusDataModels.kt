@@ -2,6 +2,7 @@ package com.jigar.me.ui.view.jetpack.abacus_base
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 
 // ColorPresetModel.kt
@@ -24,9 +25,10 @@ data class AbacusDimensionModel(
     val beadHeight: Dp = 25.dp,
     val beamHeight: Dp = 4.dp,
     val extraSpace: Dp = 4.dp,
-    val rectLineWidth: Dp = 20.dp,
+    val rectLineWidth: Dp = 16.dp,
     val rectLineCorner: Dp = 20.dp,
-    val textSizeSp: Int = 16,
+    val textSizeSp: Int = 13,
+    val stripHeight: Dp = 16.dp,
     val columnSpaces: Dp = 1.dp
 )
 
@@ -41,4 +43,11 @@ data class AbacusPreferences(
     val isDisplayBeadDirection: Boolean = true,
     val isDisplayAbacusNumber: Boolean = true,
     val isAbacusSumSound: Boolean = false  // sound not implemented here
+)
+
+data class AbacusBottomLabel(
+    val textKey: String,
+    val colorHex: String,
+    val fontSize: TextUnit,
+    val heightMultiplier: Int
 )

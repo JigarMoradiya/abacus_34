@@ -38,7 +38,7 @@ object ColorPresets {
     }
 
     // helper: convert hex string to Color
-    private fun hex(hex: String): Color {
+    fun hex(hex: String): Color {
         return Color("#$hex".toColorInt())
     }
 }

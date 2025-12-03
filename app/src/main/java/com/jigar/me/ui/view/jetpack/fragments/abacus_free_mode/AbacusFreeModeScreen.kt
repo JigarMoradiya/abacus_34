@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -25,6 +26,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -42,25 +44,37 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
 import com.jigar.me.data.local.data.RodMovement
+import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
-import com.jigar.me.ui.view.jetpack.abacus_base.components.AbacusWithDecimalFreeMode
+import com.jigar.me.ui.view.jetpack.abacus_base.components.AbacusWithDecimal
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
+import com.jigar.me.ui.view.jetpack.fragments.common.LocalPreferencesHelper
+import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.MathUtils
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AbacusFreeModeFragment : Fragment() {
+    @Inject
+    lateinit var preferences: AppPreferencesHelper
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val navController = findNavController()
         return ComposeView(requireContext()).apply {
             setContent {
                 MaterialTheme {
-                    AbacusFreeModeScreen(
-                        onBackClick = { findNavController().popBackStack() },
-                        onSettingsClick = {  },
-                        onVideoClick = {  }
-                    )
+                    CompositionLocalProvider(
+                        LocalPreferencesHelper provides preferences
+                    ) {
+                        AbacusFreeModeScreen(
+                            onBackClick = { findNavController().popBackStack() },
+                            onSettingsClick = {  },
+                            onVideoClick = {  }
+                        )
+                    }
+
                 }
             }
         }
@@ -72,10 +86,20 @@ fun AbacusFreeModeScreen(
     onSettingsClick: () -> Unit = {},
     onVideoClick: () -> Unit = {}
 ) {
+    val prefs = LocalPreferencesHelper.current
+
+    // Load value from prefs ONCE
+    var isFreeModeOn by remember {
+        mutableStateOf(prefs.getCustomParamBoolean(AppConstants.AbacusScreen.isFreeMode,true))
+    }
+    // Whenever isFreeModeOn changes → save to prefs
+    LaunchedEffect(isFreeModeOn) {
+        prefs.setCustomParamBoolean(AppConstants.AbacusScreen.isFreeMode,isFreeModeOn)
+    }
+
     // Abacus state
     val abacusCalc = remember { AbacusCalculations(numberOfColumns = 13) }
     var numberToMatch by remember { mutableIntStateOf(0) }
-    var isFreeModeOn by remember { mutableStateOf(true) }
     var resetEveryTime by remember { mutableStateOf(false) }
     var randomToggle by remember { mutableStateOf(false) }
     var randomRangeLow by remember { mutableIntStateOf(1) }
@@ -85,11 +109,6 @@ fun AbacusFreeModeScreen(
     var showHighlighter by remember { mutableStateOf(false) }
 
     val selectedTheme = "poligon_rainbow"
-
-    // formatted value string like your decimalAdjustedString()
-    val formattedValue by remember(abacusCalc.displayValue) {
-        mutableStateOf(abacusCalc.displayValue)
-    }
 
     fun refreshBeadMovement() {
         if (!isFreeModeOn) {
@@ -213,25 +232,6 @@ fun AbacusFreeModeScreen(
 
             Spacer(modifier = Modifier.weight(1f))
 
-            // Abacus center
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                contentAlignment = Alignment.Center
-            ) {
-                AbacusWithDecimalFreeMode(
-                    numberOfColumns = 13,
-                    abacusData = abacusCalc,
-                    rodMovements = rodMovements,
-                    showDirectionHints = showDirectionHints,
-                    showHighlighter = showHighlighter,
-                    selectedTheme = selectedTheme,
-                    modifier = Modifier.fillMaxWidth(0.9f)
-                )
-            }
-
-            Spacer(modifier = Modifier.weight(1f))
-
             // Footer
             Row(
                 modifier = Modifier
@@ -244,8 +244,8 @@ fun AbacusFreeModeScreen(
                     Text("Free Mode", style = MaterialTheme.typography.labelSmall)
                     Switch(
                         checked = isFreeModeOn,
-                        onCheckedChange = {
-                            isFreeModeOn = it
+                        onCheckedChange = { checked ->
+                            isFreeModeOn = checked
                             refreshBeadMovement()
                         }
                     )
@@ -283,11 +283,30 @@ fun AbacusFreeModeScreen(
 
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text("Range", style = MaterialTheme.typography.labelSmall)
-                            Text("${randomRangeLow} to ${randomRangeHigh}", color = Color.Red)
+                            Text("$randomRangeLow to $randomRangeHigh", color = Color.Red)
                         }
                     }
                 }
             }
+        }
+
+        // Abacus center
+        Box(
+            modifier = Modifier
+                .fillMaxWidth().fillMaxHeight(),
+            contentAlignment = Alignment.Center
+        ) {
+            AbacusWithDecimal(
+                numberOfColumns = 13,
+                abacusData = abacusCalc,
+                rodMovements = rodMovements,
+                showDirectionHints = showDirectionHints,
+                showHighlighter = showHighlighter,
+                selectedTheme = selectedTheme,
+                modifier = Modifier,
+                screenType = AppConstants.AbacusScreen.screenTypeFreeMode,
+                isFreeModeOn = isFreeModeOn
+            )
         }
     }
 }

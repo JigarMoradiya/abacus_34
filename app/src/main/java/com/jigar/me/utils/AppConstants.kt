@@ -126,6 +126,12 @@ object AppConstants {
         }
     }
 
+    annotation class AbacusScreen {
+        companion object {
+            const val screenTypeFreeMode = "FreeMode"
+            const val isFreeMode = "isFreeMode"
+        }
+    }
     annotation class Settings {
         companion object {
             const val Setting_direction = "Setting_direction"
@@ -169,6 +175,7 @@ object AppConstants {
             var Free_Mode_Beads_Move_Count = "free_mode_beads_move_count"
             var Free_Mode_Beads_Move_Count_Limit = 70
             var SW_FreeMode = "SW_FreeMode"
+            var isFreeMode = "isFreeMode"
             var SW_DecimalMode = "SW_DecimalMode"
             var SW_Random = "SW_Random"
             var SW_Reset = "SW_Reset"

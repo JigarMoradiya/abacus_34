@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.jetpack.abacus_base.components
 
+import android.util.Log
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -24,16 +25,18 @@ import com.jigar.me.ui.view.jetpack.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
 
 @Composable
-fun AbacusWithDecimalFreeMode(
+fun AbacusWithDecimal(
     numberOfColumns: Int,
     abacusData: AbacusCalculations,
     rodMovements: List<RodMovement>,
     showDirectionHints: Boolean,
     showHighlighter: Boolean,
     selectedTheme: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    screenType: String,
+    isFreeModeOn: Boolean = false, // default
 ) {
-    val dim = AbacusTheme.dimensionPreset(screenType = "free_mode", abacusType = null)
+    val dim = AbacusTheme.dimensionPreset(screenType = screenType,isFreeModeOn)
     val totalWidth = (dim.beadWidth * numberOfColumns) + (dim.rectLineWidth * 2) + (dim.columnSpaces * (numberOfColumns) * 2)
     val totalHeight = (dim.beadHeight * 7) + (dim.rectLineWidth * 2) + (dim.extraSpace * 2) + dim.beamHeight
 
@@ -127,12 +130,20 @@ fun AbacusWithDecimalFreeMode(
                 text = abacusData.displayValue,
                 color = textColor,
                 fontSize = dim.textSizeSp.sp,
+                lineHeight = dim.textSizeSp.sp,
                 fontFamily = FontFamily(Font(R.font.font_extra_bold))
             )
         }
-
-
     }
 
+    // 🔢 NUMBER STRIP BAR (outside box, below)
+    Log.e("jigarLogs","isFreeModeOn = "+isFreeModeOn)
+    if (isFreeModeOn){
+        NumberStripBar(
+            dim = dim,
+            totalWidth = totalWidth,
+            totalHeight = totalHeight
+        )
+    }
 }
 

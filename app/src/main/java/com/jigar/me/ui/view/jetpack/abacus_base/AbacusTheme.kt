@@ -3,6 +3,7 @@ package com.jigar.me.ui.view.jetpack.abacus_base
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.toColorInt
+import com.jigar.me.utils.AppConstants
 
 // AppThemeAbacus.kt
 object AbacusTheme {
@@ -68,8 +69,8 @@ object AbacusTheme {
     }
 
     fun dimensionPreset(
-        screenType: String = "free_mode",
-        abacusType: String? = null
+        screenType: String = AppConstants.AbacusScreen.screenTypeFreeMode,
+        isFreeModeOn : Boolean = false
     ): AbacusDimensionModel {
         // This is a simplified mapping of your AbacusDimension logic.
         // You can tweak multipliers same as Swift.
@@ -78,7 +79,11 @@ object AbacusTheme {
         val multiplier = when (screenType) {
             "exam", "settings" -> 0.5f
             "abacus_practice" -> 0.9f
-            "free_mode" -> 0.9f
+            AppConstants.AbacusScreen.screenTypeFreeMode -> if (isFreeModeOn){
+                1f
+            }else{
+                0.9f
+            }
             else -> 0.9f
         }
 
