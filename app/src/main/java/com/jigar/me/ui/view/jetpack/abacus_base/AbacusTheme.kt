@@ -82,7 +82,7 @@ object AbacusTheme {
             AppConstants.AbacusScreen.screenTypeFreeMode -> if (isFreeModeOn){
                 1f
             }else{
-                0.9f
+                1f
             }
             else -> 0.9f
         }

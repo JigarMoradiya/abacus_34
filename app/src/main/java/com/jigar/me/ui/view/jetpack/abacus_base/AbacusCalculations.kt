@@ -25,6 +25,7 @@ class AbacusCalculations(numberOfColumns: Int) {
             mutableListOf(true, false, false, true, true, true, true)
         }
         displayValue = "0"
+        totalValuePair = "0" to "0"
     }
 
     // -------------------------------------------------------

@@ -182,16 +182,3 @@ fun NumberStripBar(
         }
     }
 }
-
-@Preview(
-    showBackground = true,
-    backgroundColor = 0xFFFFFFFF,
-    widthDp = 1024,
-    heightDp = 480
-)
-@Composable
-fun PreviewAbacusFreeModeScreen1() {
-    MaterialTheme {
-        AbacusFreeModeScreen()
-    }
-}

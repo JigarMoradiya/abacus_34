@@ -1,14 +1,16 @@
 package com.jigar.me.ui.view.jetpack.abacus_base.components
 
-import android.util.Log
+import android.annotation.SuppressLint
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -17,12 +19,15 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 import com.jigar.me.data.local.data.RodMovement
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
+import com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.AbacusFreeModeScreen
+import com.jigar.me.utils.AppConstants
 
 @Composable
 fun AbacusWithDecimal(
@@ -32,9 +37,11 @@ fun AbacusWithDecimal(
     showDirectionHints: Boolean,
     showHighlighter: Boolean,
     selectedTheme: String,
-    modifier: Modifier = Modifier,
     screenType: String,
-    isFreeModeOn: Boolean = false, // default
+    isFreeModeOn: Boolean = false,
+    @SuppressLint("ModifierParameter") modifier: Modifier = Modifier,
+    onReset: () -> Unit,
+    onNext: () -> Unit,
 ) {
     val dim = AbacusTheme.dimensionPreset(screenType = screenType,isFreeModeOn)
     val totalWidth = (dim.beadWidth * numberOfColumns) + (dim.rectLineWidth * 2) + (dim.columnSpaces * (numberOfColumns) * 2)
@@ -67,9 +74,28 @@ fun AbacusWithDecimal(
 
     Box(
         modifier = modifier,
-        contentAlignment = Alignment.Center   // whole abacus centered
+        contentAlignment = Alignment.TopCenter   // whole abacus centered
     ) {
 
+        // ⬆️ Answer Bar ONLY when free mode is OFF
+        if (!isFreeModeOn) {
+            val offsetY = (-48).dp
+
+            AbacusAnswerBarCompose(
+                answer = abacusData.displayValue,
+                screenType = screenType,
+                abacusType = null,
+                isDisplayAbacusNumber = true,
+                onReset = {
+                    abacusData.resetAbacusData()
+                },
+                onNext = { /* next logic */ },
+                modifier = Modifier
+                    .align(Alignment.TopCenter)
+                    .offset(y = offsetY)
+            )
+
+        }
 
         // 2️⃣ RODS INSIDE FRAME (CENTERED)
         Row(
@@ -121,24 +147,25 @@ fun AbacusWithDecimal(
                 )
         )
 
-        // 2️⃣ Text perfectly centered INSIDE frame width
-        Box(
-            modifier = Modifier.height(totalHeight)
-                .align(Alignment.TopCenter)
-        ) {
-            Text(modifier = Modifier.height(dim.rectLineWidth),
-                text = abacusData.displayValue,
-                color = textColor,
-                fontSize = dim.textSizeSp.sp,
-                lineHeight = dim.textSizeSp.sp,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold))
-            )
+        if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn){
+            // 2️⃣ Text perfectly centered INSIDE frame width
+            Box(
+                modifier = Modifier.height(totalHeight)
+                    .align(Alignment.TopCenter)
+            ) {
+                Text(modifier = Modifier.height(dim.rectLineWidth),
+                    text = abacusData.displayValue,
+                    color = textColor,
+                    fontSize = dim.textSizeSp.sp,
+                    lineHeight = dim.textSizeSp.sp,
+                    fontFamily = FontFamily(Font(R.font.font_extra_bold))
+                )
+            }
         }
     }
 
     // 🔢 NUMBER STRIP BAR (outside box, below)
-    Log.e("jigarLogs","isFreeModeOn = "+isFreeModeOn)
-    if (isFreeModeOn){
+    if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn){
         NumberStripBar(
             dim = dim,
             totalWidth = totalWidth,
@@ -147,3 +174,16 @@ fun AbacusWithDecimal(
     }
 }
 
+
+@Preview(
+    showBackground = true,
+    backgroundColor = 0xFFFFFFFF,
+    widthDp = 780,
+    heightDp = 400
+)
+@Composable
+fun PreviewAbacusFreeModeScreen1() {
+    MaterialTheme {
+        AbacusFreeModeScreen()
+    }
+}

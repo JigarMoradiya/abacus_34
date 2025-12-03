@@ -86,9 +86,10 @@ fun AbacusFreeModeScreen(
     onSettingsClick: () -> Unit = {},
     onVideoClick: () -> Unit = {}
 ) {
-    val prefs = LocalPreferencesHelper.current
 
+//    var isFreeModeOn = false
     // Load value from prefs ONCE
+    val prefs = LocalPreferencesHelper.current
     var isFreeModeOn by remember {
         mutableStateOf(prefs.getCustomParamBoolean(AppConstants.AbacusScreen.isFreeMode,true))
     }
@@ -303,9 +304,14 @@ fun AbacusFreeModeScreen(
                 showDirectionHints = showDirectionHints,
                 showHighlighter = showHighlighter,
                 selectedTheme = selectedTheme,
-                modifier = Modifier,
                 screenType = AppConstants.AbacusScreen.screenTypeFreeMode,
-                isFreeModeOn = isFreeModeOn
+                isFreeModeOn = isFreeModeOn,
+                modifier = Modifier,
+                onReset = {
+
+                },onNext = {
+
+                }
             )
         }
     }
@@ -314,8 +320,8 @@ fun AbacusFreeModeScreen(
 @Preview(
     showBackground = true,
     backgroundColor = 0xFFFFFFFF,
-    widthDp = 1024,
-    heightDp = 600
+    widthDp = 780,
+    heightDp = 400
 )
 @Composable
 fun PreviewAbacusFreeModeScreen() {
