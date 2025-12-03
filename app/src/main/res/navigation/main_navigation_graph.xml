@@ -19,6 +19,9 @@
             android:id="@+id/action_homeFragment_to_fullAbacusFragment"
             app:destination="@+id/fullAbacusFragment" />
         <action
+            android:id="@+id/toAbacusFreeModeFragment"
+            app:destination="@+id/abacusFreeModeFragment" />
+        <action
             android:id="@+id/action_homeFragment_to_youtubeVideoFragment"
             app:destination="@+id/youtubeVideoFragment" />
         <action
@@ -175,6 +178,9 @@
     <fragment
         android:id="@+id/fullAbacusFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.abacus.FullAbacusFragment"/>
+    <fragment
+        android:id="@+id/abacusFreeModeFragment"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.AbacusFreeModeFragment"/>
     <fragment
         android:id="@+id/youtubeVideoFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.youtubevideo.YoutubeVideoFragment"/>

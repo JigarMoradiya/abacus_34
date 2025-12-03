@@ -1,19 +1,21 @@
 package com.jigar.me.utils.extensions
 
-import android.os.Bundle
 import android.util.Log
-import com.google.gson.Gson
+import androidx.compose.ui.graphics.Color
 import com.jigar.me.BuildConfig
-import org.apache.commons.text.StringEscapeUtils
 
 val TAG = "jigarLog"
 fun String?.isStringNotBlank() = this!=null && this.isNotBlank()
 fun Collection<Any?>?.isNotNullOrEmpty() = this!=null && this.isNotEmpty()
 fun Collection<Any?>?.isEmpty() = this!=null && this.isEmpty()
 
-fun String?.removeQuotesAndUnescape(): String? {
-    val noQuotes = this?.replace("^\"|\"$".toRegex(), "")
-    return StringEscapeUtils.unescapeJava(noQuotes)
+fun Color.mixWith(other: Color, fraction: Float): Color {
+    val r = (this.red * (1f - fraction)) + (other.red * fraction)
+    val g = (this.green * (1f - fraction)) + (other.green * fraction)
+    val b = (this.blue * (1f - fraction)) + (other.blue * fraction)
+    val a = (this.alpha * (1f - fraction)) + (other.alpha * fraction)
+
+    return Color(r, g, b, a)
 }
 
 fun Int.secToTimeFormat(): String {
