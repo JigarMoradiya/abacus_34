@@ -9,7 +9,7 @@ object ColorPresets {
         fun hex(h: String) = Color("#$h".toColorInt())
         return listOf(
             hex("9C27B0"),
-            hex("5F00A2"),
+            hex("6334B4"),
             hex("2196F3"),
             hex("03AC13"),
             hex("FFC107"),
@@ -19,7 +19,7 @@ object ColorPresets {
             hex("FFC107"),
             hex("03AC13"),
             hex("2196F3"),
-            hex("5F00A2"),
+            hex("6334B4"),
             hex("9C27B0")
         )
     }
@@ -28,7 +28,7 @@ object ColorPresets {
     fun getMixColorListOfPoligonUnique(): List<Color> {
         return listOf(
             hex("9C27B0"),
-            hex("4B0082").copy(alpha = 0.4f),
+            hex("501EA8"),
             hex("2196F3"),
             hex("03AC13"),
             hex("FFC107"),

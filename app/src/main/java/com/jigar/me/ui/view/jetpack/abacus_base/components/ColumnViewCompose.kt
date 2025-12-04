@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.jetpack.abacus_base.components
 
+import android.util.Log
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -17,6 +18,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDownward
+import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Icon
@@ -38,6 +41,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.google.gson.Gson
 import com.jigar.me.R
 import com.jigar.me.data.local.data.Movement
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusCalculations
@@ -293,11 +297,12 @@ private fun BeadWithArrow(
 
         // Arrows (simplified – you can expand same as your Swift logic)
         if (showDirection && movement != null) {
-            ArrowForBead(
+            ArrowForBeadFull(
                 index = index,
                 movement = movement,
                 beadWidth = beadWidth,
                 beadHeight = beadHeight,
+                beamHeight = beamHeight,
                 imageName = imageName
             )
         }
@@ -319,40 +324,109 @@ private fun faceCloseRes(@Suppress("UNUSED_PARAMETER") index: Int): Int =
     R.drawable.face_gray_close
 
 @Composable
-private fun ArrowForBead(
+fun ArrowForBeadFull(
     index: Int,
     movement: Movement,
     beadWidth: Dp,
     beadHeight: Dp,
+    beamHeight: Dp,
     imageName: String
 ) {
-    val arrowColor = AbacusTheme.colorPreset(imageName).arrowColor
 
-    fun showUp(): Boolean {
-        if (index == 1 && movement.upperUp) return true
-        if (movement.lowerUp > 0) return true
-        return false
+    @Composable
+    fun Arrow(dir: String, isIndex2: Boolean = false) {
+        val arrowColor = AbacusTheme.colorPreset(imageName).arrowColor
+        Box(
+            modifier = Modifier
+                .width(beadWidth)
+                .height(beadHeight + if (isIndex2) beamHeight else 0.dp),
+            contentAlignment = if (imageName.contains("poligon")) Alignment.Center else Alignment.TopStart
+        ) {
+            Icon(
+                imageVector = if (dir == "up") Icons.Default.ArrowUpward else Icons.Default.ArrowDownward,
+                tint = arrowColor,
+                contentDescription = null,
+                modifier = Modifier
+                    .padding(top = if (isIndex2) beamHeight else 0.dp)
+            )
+        }
     }
 
-    fun showDown(): Boolean {
-        if (index == 0 && movement.upperDown) return true
-        if (movement.lowerDown > 0) return true
-        return false
+    val moves = movement
+
+    // -------------------------
+    // UPPER BEAD LOGIC
+    // -------------------------
+    if (index == 0 && moves.upperDown) {
+        Arrow("down")
+        return
+    }
+    if (index == 1 && moves.upperUp) {
+        Arrow("up")
+        return
     }
 
-    if (!showUp() && !showDown()) return
+    // -------------------------
+    // LOWER BEADS - DOWN
+    // -------------------------
+    if (moves.lowerDown > 0) {
+        if (moves.lowerOldValue >= moves.lowerDown) {
 
-    Box(
-        modifier = Modifier
-            .width(beadWidth)
-            .height(beadHeight),
-        contentAlignment = Alignment.TopCenter
-    ) {
-        Icon(
-            imageVector = if (showUp()) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-            contentDescription = null,
-            tint = arrowColor,
-            modifier = Modifier.size(beadHeight / 1.2f)
-        )
+            when (moves.lowerDown) {
+
+                1 -> when (moves.lowerOldValue) {
+                    1 -> if (index == 2) Arrow("down", isIndex2 = true)
+                    2 -> if (index == 3) Arrow("down")
+                    3 -> if (index == 4) Arrow("down")
+                    4 -> if (index == 5) Arrow("down")
+                }
+
+                2 -> when (moves.lowerOldValue) {
+                    2 -> if (index == 2 || index == 3) Arrow("down", isIndex2 = (index == 2))
+                    3 -> if (index == 3 || index == 4) Arrow("down")
+                    4 -> if (index == 4 || index == 5) Arrow("down")
+                }
+
+                3 -> when (moves.lowerOldValue) {
+                    3 -> if (index in listOf(2,3,4)) Arrow("down", isIndex2 = (index==2))
+                    4 -> if (index in listOf(3,4,5)) Arrow("down")
+                }
+
+                4 -> when (moves.lowerOldValue) {
+                    4 -> if (index in listOf(2,3,4,5)) Arrow("down", isIndex2 = (index==2))
+                }
+            }
+        }
+    }
+
+    // -------------------------
+    // LOWER BEADS - UP
+    // -------------------------
+    else if (moves.lowerUp > 0) {
+
+        when (moves.lowerOldValue) {
+
+            0 -> when (moves.lowerUp) {
+                1 -> if (index == 3) Arrow("up")
+                2 -> if (index == 3 || index == 4) Arrow("up")
+                3 -> if (index == 3 || index == 4 || index == 5) Arrow("up")
+                4 -> if (index == 3 || index == 4 || index == 5 || index == 6) Arrow("up")
+            }
+
+            1 -> when (moves.lowerUp) {
+                1 -> if (index == 4) Arrow("up")
+                2 -> if (index == 4 || index == 5) Arrow("up")
+                3 -> if (index == 4 || index == 5 || index == 6) Arrow("up")
+            }
+
+            2 -> when (moves.lowerUp) {
+                1 -> if (index == 5) Arrow("up")
+                2 -> if (index == 5 || index == 6) Arrow("up")
+            }
+
+            3 -> when (moves.lowerUp) {
+                1 -> if (index == 6) Arrow("up")
+            }
+        }
     }
 }

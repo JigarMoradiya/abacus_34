@@ -1,6 +1,7 @@
 package com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,6 +43,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.gson.Gson
 import com.jigar.me.R
 import com.jigar.me.data.local.data.RodMovement
 import com.jigar.me.data.pref.AppPreferencesHelper
@@ -160,6 +162,8 @@ fun AbacusFreeModeScreen(
                         if (next > randomRangeHigh) next = randomRangeLow
                         next
                     }
+
+                refreshBeadMovement()
             } else {
                 refreshBeadMovement()
             }
