@@ -1,6 +1,5 @@
 package com.jigar.me.ui.view.jetpack.abacus_base.components
 
-import android.util.Log
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -20,8 +19,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDownward
 import androidx.compose.material.icons.filled.ArrowUpward
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -41,7 +38,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.google.gson.Gson
 import com.jigar.me.R
 import com.jigar.me.data.local.data.Movement
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusCalculations
@@ -73,6 +69,14 @@ fun ColumnViewCompose(
         ColorPresets.getMixColorListOfPoligon()[columnNumber].copy(alpha = 0.6f)
     } else {
         AbacusTheme.colorPreset(imageName).abacusCenterGradient
+    }
+
+    // 🔥 Compute active beads only ONCE per column
+    val columnSize = abacusData.abacusState[columnNumber]
+    val arr = MutableList(columnSize.size) { false }
+    if (columnSize[1]) arr[1] = true
+    for (i in 2 until columnSize.size) {
+        if (columnSize[i]) arr[i] = true else break
     }
 
     Box(
@@ -114,7 +118,8 @@ fun ColumnViewCompose(
                     beamHeight = beamHeight,
                     columnSpaces = columnSpaces,
                     movement = movement,
-                    showDirection = showDirection
+                    showDirection = showDirection,
+                    beadIsActive = arr[index]
                 )
             }
         }
@@ -134,44 +139,32 @@ private fun BeadWithArrow(
     beamHeight: Dp,
     columnSpaces: Dp,
     movement: Movement?,
-    showDirection: Boolean
+    showDirection: Boolean,
+    beadIsActive: Boolean
 ) {
     val columnState = abacusData.abacusState[columnNumber]
+    val isPolygonTheme = remember(imageName) { imageName.contains("poligon") }
 
-    val columnSize = abacusData.abacusState[columnNumber]
-    val arr = MutableList(columnSize.size) { false }
-    if (columnSize[1]) arr[1] = true
-    for (i in 2 until columnSize.size) {
-        if (columnSize[i]) arr[i] = true else break
+    // 🔥 Preload resources
+    val imgRes = remember(beadIsActive, index, isPolygonTheme) {
+        if (isPolygonTheme) R.drawable.poligon_gray
+        else if (beadIsActive) faceOpenRes(index) else faceCloseRes(index)
     }
-    val beadIsActive = arr[index]
 
-    val isPolygonTheme = imageName.contains("poligon")
+    // 🔥 Tint colors remembered
+    val tintColors = remember(imageName, beadIsActive, columnNumber) {
+        if (!isPolygonTheme) emptyList()
+        else {
+            val topColor =
+                if (imageName == "poligon_rainbow")
+                    ColorPresets.getMixColorListOfPoligon()[columnNumber]
+                else
+                    AbacusTheme.colorPreset(imageName).abacusTopGradient
 
-    val imgRes: Int =
-        if (isPolygonTheme) {
-            R.drawable.poligon_gray   // polygon base
-        } else {
-            if (beadIsActive) faceOpenRes(index) else faceCloseRes(index)
-        }
-
-    val tintColors: List<Color> = if (isPolygonTheme) {
-        if (imageName == "poligon_rainbow") {
-            val topColor = ColorPresets.getMixColorListOfPoligon()[columnNumber]
-            if (beadIsActive)  listOf(
-                topColor.mixWith(Color.White, 0.30f),
-                topColor.mixWith(Color.White, 0.1f)
-            ) else listOf(
-                topColor.mixWith(Color.White, 0.75f),
-                topColor.mixWith(Color.White, 0.65f)
-            )
-        } else {
-            val preset = AbacusTheme.colorPreset(imageName)
-            val topColor = preset.abacusTopGradient
             if (beadIsActive) {
                 listOf(
                     topColor.mixWith(Color.White, 0.30f),
-                    topColor.mixWith(Color.White, 0.1f)
+                    topColor.mixWith(Color.White, 0.10f)
                 )
             } else {
                 listOf(
@@ -180,13 +173,10 @@ private fun BeadWithArrow(
                 )
             }
         }
-    } else {
-        emptyList()
     }
 
     val swipeThreshold = 8.dp
     var dy by remember { mutableFloatStateOf(0f) }
-
     val widthNew = beadWidth+(columnSpaces  * 2)
     Box(
         modifier = Modifier

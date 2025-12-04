@@ -28,6 +28,7 @@ import com.jigar.me.R
 import com.jigar.me.data.local.data.RodMovement
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
+import com.jigar.me.ui.view.jetpack.abacus_base.ColorPresets
 import com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.AbacusFreeModeScreen
 import com.jigar.me.utils.AppConstants
 
@@ -103,7 +104,6 @@ fun AbacusWithDecimal(
 
         }
 
-        // 2️⃣ RODS INSIDE FRAME (CENTERED)
         Row(
             modifier = Modifier
                 .height(totalHeight)
