@@ -1,6 +1,5 @@
 package com.jigar.me.ui.view.jetpack.abacus_base.components
 
-import android.util.Log
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,10 +21,8 @@ import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -67,21 +64,6 @@ fun ColumnViewCompose(
     currentSpot: Int?
 ) {
     val columnState = abacusData.abacusState[columnNumber]
-    var isActive by remember { mutableStateOf(List(7) { false }) }
-
-    fun updateIsActive() {
-        val columnSize = abacusData.abacusState[columnNumber]
-        val arr = MutableList(columnSize.size) { false }
-        if (columnSize[1]) arr[1] = true
-        for (i in 2 until columnSize.size) {
-            if (columnSize[i]) arr[i] = true else break
-        }
-        isActive = arr
-    }
-
-    LaunchedEffect(abacusData.abacusState[columnNumber]) {
-        updateIsActive()
-    }
 
     val columnColor = if (imageName.contains("poligon_rainbow")) {
         ColorPresets.getMixColorListOfPoligon()[columnNumber].copy(alpha = 0.6f)
@@ -127,7 +109,6 @@ fun ColumnViewCompose(
                     beadHeight = beadHeight,
                     beamHeight = beamHeight,
                     columnSpaces = columnSpaces,
-                    beadIsActive = isActive[index],
                     movement = movement,
                     showDirection = showDirection
                 )
@@ -148,12 +129,10 @@ private fun BeadWithArrow(
     beadHeight: Dp,
     beamHeight: Dp,
     columnSpaces: Dp,
-    beadIsActive: Boolean,
     movement: Movement?,
     showDirection: Boolean
 ) {
     val columnState = abacusData.abacusState[columnNumber]
-    // ✅ Compute isActive fresh on every recomposition (no remember, no LaunchedEffect)
 
     val columnSize = abacusData.abacusState[columnNumber]
     val arr = MutableList(columnSize.size) { false }
@@ -263,7 +242,7 @@ private fun BeadWithArrow(
                         .height(beadHeight)
                         .padding(horizontal = columnSpaces)
                         .let { mod ->
-                            if (isPolygonTheme && tintColors.isNotEmpty()) {
+                            if (isPolygonTheme) {
                                 mod
                                     .graphicsLayer(alpha = 0.99f)
                                     .drawWithCache {
@@ -280,7 +259,8 @@ private fun BeadWithArrow(
                             } else {
                                 mod
                             }
-                        }.pointerInput(columnNumber, index) {
+                        }
+                        .pointerInput(columnNumber, index) {
                             detectDragGestures(
                                 onDrag = { change, dragAmount ->
                                     change.consume()

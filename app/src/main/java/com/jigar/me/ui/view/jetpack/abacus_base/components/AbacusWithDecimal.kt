@@ -13,6 +13,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.key
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -43,27 +45,31 @@ fun AbacusWithDecimal(
     onReset: () -> Unit,
     onNext: () -> Unit,
 ) {
-    val dim = AbacusTheme.dimensionPreset(screenType = screenType,isFreeModeOn)
+    val dim = remember(screenType, isFreeModeOn) {
+        AbacusTheme.dimensionPreset(screenType = screenType, isFreeModeOn)
+    }
     val totalWidth = (dim.beadWidth * numberOfColumns) + (dim.rectLineWidth * 2) + (dim.columnSpaces * (numberOfColumns) * 2)
     val totalHeight = (dim.beadHeight * 7) + (dim.rectLineWidth * 2) + (dim.extraSpace * 2) + dim.beamHeight
 
-    val strokeBrush = if (selectedTheme == "poligon_rainbow") {
-        Brush.verticalGradient(
-            listOf(
-                Color(0xFFD7CCC8),
-                Color(0xFFE0E0E0),
-                Color(0xFFCFD8DC)
+    val strokeBrush = remember(selectedTheme) {
+        if (selectedTheme == "poligon_rainbow") {
+            Brush.verticalGradient(
+                listOf(
+                    Color(0xFFD7CCC8),
+                    Color(0xFFE0E0E0),
+                    Color(0xFFCFD8DC)
+                )
             )
-        )
-    } else {
-        val preset = AbacusTheme.colorPreset(selectedTheme)
-        Brush.verticalGradient(
-            listOf(
-                preset.abacusTopGradient,
-                preset.abacusCenterGradient,
-                preset.abacusBottomGradient
+        } else {
+            val preset = AbacusTheme.colorPreset(selectedTheme)
+            Brush.verticalGradient(
+                listOf(
+                    preset.abacusTopGradient,
+                    preset.abacusCenterGradient,
+                    preset.abacusBottomGradient
+                )
             )
-        )
+        }
     }
 
     val textColor = if (selectedTheme == "poligon_rainbow") {
@@ -110,29 +116,31 @@ fun AbacusWithDecimal(
 
         ) {
             for (col in 0 until numberOfColumns) {
-                val movement = rodMovements.firstOrNull { it.rodIndex == col }?.movement
-                ColumnViewCompose(
-                    imageName = selectedTheme,
-                    columnNumber = col,
-                    isRedDotPresent = col == numberOfColumns - 1 ||
-                            col == numberOfColumns - 4 ||
-                            col == numberOfColumns - 7 ||
-                            col == numberOfColumns - 10 ||
-                            col == numberOfColumns - 13,
-                    isCentralColumn = (col == 6),
-                    abacusData = abacusData,
-                    movement = movement,
-                    showDirection = showDirectionHints,
-                    beadWidth = dim.beadWidth,
-                    beadHeight = dim.beadHeight,
-                    totalHeight = totalHeight,
-                    beamHeight = dim.beamHeight,
-                    extraSpace = dim.extraSpace,
-                    columnSpaces = dim.columnSpaces,
-                    showHighlighter = showHighlighter,
-                    currentSpot = null
-                )
+                key(col) {
+                    ColumnViewCompose(
+                        columnNumber = col,
+                        imageName = selectedTheme,
+                        isRedDotPresent = col == numberOfColumns - 1 ||
+                                col == numberOfColumns - 4 ||
+                                col == numberOfColumns - 7 ||
+                                col == numberOfColumns - 10 ||
+                                col == numberOfColumns - 13,
+                        isCentralColumn = (col == 6),
+                        abacusData = abacusData,
+                        movement = rodMovements.firstOrNull { it.rodIndex == col }?.movement,
+                        showDirection = showDirectionHints,
+                        beadWidth = dim.beadWidth,
+                        beadHeight = dim.beadHeight,
+                        totalHeight = totalHeight,
+                        beamHeight = dim.beamHeight,
+                        extraSpace = dim.extraSpace,
+                        columnSpaces = dim.columnSpaces,
+                        showHighlighter = showHighlighter,
+                        currentSpot = null
+                    )
+                }
             }
+
         }
 
         // 1️⃣ Frame
