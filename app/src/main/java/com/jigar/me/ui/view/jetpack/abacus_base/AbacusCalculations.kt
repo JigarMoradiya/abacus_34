@@ -4,6 +4,10 @@ import androidx.compose.runtime.*
 
 class AbacusCalculations(numberOfColumns: Int) {
 
+    // ⭐ Fires whenever any bead changes
+    var stateVersion by mutableStateOf(0)
+        private set
+
     // ⭐ MAIN STATE (reactive like SwiftUI @State)
     var abacusState by mutableStateOf(
         MutableList(numberOfColumns) {
@@ -14,6 +18,7 @@ class AbacusCalculations(numberOfColumns: Int) {
 
     var displayValue by mutableStateOf("0")
         private set
+
     var totalValuePair by mutableStateOf("0" to "0")
         private set
 
@@ -24,8 +29,11 @@ class AbacusCalculations(numberOfColumns: Int) {
         abacusState = MutableList(abacusState.size) {
             mutableListOf(true, false, false, true, true, true, true)
         }
+
         displayValue = "0"
         totalValuePair = "0" to "0"
+
+        stateVersion++   // ⭐ trigger recomposition
     }
 
     // -------------------------------------------------------
@@ -48,22 +56,23 @@ class AbacusCalculations(numberOfColumns: Int) {
         }
 
         abacusState = newState
+
+        recalcTotal()
+        stateVersion++    // ⭐ trigger recomposition
     }
 
-    private fun digitToColumn(d: Int): MutableList<Boolean> {
-        return when (d) {
-            0 -> mutableListOf(true, false, false, true, true, true, true)
-            1 -> mutableListOf(true, false, true, false, true, true, true)
-            2 -> mutableListOf(true, false, true, true, false, true, true)
-            3 -> mutableListOf(true, false, true, true, true, false, true)
-            4 -> mutableListOf(true, false, true, true, true, true, false)
-            5 -> mutableListOf(false, true, false, true, true, true, true)
-            6 -> mutableListOf(false, true, true, false, true, true, true)
-            7 -> mutableListOf(false, true, true, true, false, true, true)
-            8 -> mutableListOf(false, true, true, true, true, false, true)
-            9 -> mutableListOf(false, true, true, true, true, true, false)
-            else -> mutableListOf(true, false, false, true, true, true, true)
-        }
+    private fun digitToColumn(d: Int): MutableList<Boolean> = when (d) {
+        0 -> mutableListOf(true, false, false, true, true, true, true)
+        1 -> mutableListOf(true, false, true, false, true, true, true)
+        2 -> mutableListOf(true, false, true, true, false, true, true)
+        3 -> mutableListOf(true, false, true, true, true, false, true)
+        4 -> mutableListOf(true, false, true, true, true, true, false)
+        5 -> mutableListOf(false, true, false, true, true, true, true)
+        6 -> mutableListOf(false, true, true, false, true, true, true)
+        7 -> mutableListOf(false, true, true, true, false, true, true)
+        8 -> mutableListOf(false, true, true, true, true, false, true)
+        9 -> mutableListOf(false, true, true, true, true, true, false)
+        else -> mutableListOf(true, false, false, true, true, true, true)
     }
 
     // -------------------------------------------------------
@@ -83,8 +92,8 @@ class AbacusCalculations(numberOfColumns: Int) {
     fun canMoveDown(index: Int, columnIndex: Int): Boolean {
         val col = abacusState[columnIndex]
 
-        if (index == 0) return col[0]     // only if 0 is true
-        if (index == 1) return false      // 1 never moves down
+        if (index == 0) return col[0]
+        if (index == 1) return false
 
         val fi = lowerFalseIndex(columnIndex) ?: return false
         return index < fi
@@ -97,14 +106,14 @@ class AbacusCalculations(numberOfColumns: Int) {
         val col = abacusState[columnIndex]
 
         if (index == 0) return false
-        if (index == 1) return col[1]     // bead 1 moves up only if true
+        if (index == 1) return col[1]
 
         val fi = lowerFalseIndex(columnIndex) ?: return false
         return index > fi
     }
 
     // -------------------------------------------------------
-    // MOVE DOWN (Swift identical)
+    // MOVE DOWN
     // -------------------------------------------------------
     fun moveBeadDown(index: Int, columnIndex: Int) {
         val col = abacusState[columnIndex].toMutableList()
@@ -122,13 +131,14 @@ class AbacusCalculations(numberOfColumns: Int) {
             }
         }
 
-        // ⭐ Replace whole column to trigger recomposition
         abacusState = abacusState.toMutableList().also { it[columnIndex] = col }
+
         recalcTotal()
+        stateVersion++   // ⭐ ALWAYS bump version
     }
 
     // -------------------------------------------------------
-    // MOVE UP (Swift identical)
+    // MOVE UP
     // -------------------------------------------------------
     fun moveBeadUp(index: Int, columnIndex: Int) {
         val col = abacusState[columnIndex].toMutableList()
@@ -146,26 +156,26 @@ class AbacusCalculations(numberOfColumns: Int) {
             }
         }
 
-        // ⭐ Replace whole column
         abacusState = abacusState.toMutableList().also { it[columnIndex] = col }
+
         recalcTotal()
+        stateVersion++   // ⭐ ALWAYS bump version
     }
 
     // -------------------------------------------------------
     // TOTAL VALUE (iOS matched)
     // -------------------------------------------------------
     private fun recalcTotal() {
-        displayValue = "0"
         val raw = calculateAbacusString()
-        val padded = raw.padStart(13, '0')             // safety
-        val firstPart = padded.substring(0, 7)         // first 7 chars
-        val secondPart = padded.substring(7, 13)       // last 6 chars
+        val padded = raw.padStart(13, '0')
+
+        val firstPart = padded.substring(0, 7)
+        val secondPart = padded.substring(7, 13)
 
         totalValuePair = firstPart to secondPart
 
-        // ---- Format for display, same as iOS ----
         val intPartTrimmed = firstPart.trimStart('0').ifEmpty { "0" }
-        val fractionalTrimmed = secondPart.trimEnd('0')  // remove trailing zeros
+        val fractionalTrimmed = secondPart.trimEnd('0')
 
         displayValue =
             if (fractionalTrimmed.isNotEmpty())
@@ -175,7 +185,7 @@ class AbacusCalculations(numberOfColumns: Int) {
     }
 
     // -------------------------------------------------------
-    // BUILD STRING LIKE iOS calculateAbacusString()
+    // BUILD STRING LIKE iOS
     // -------------------------------------------------------
     fun calculateAbacusString(): String {
         val builder = StringBuilder()
@@ -183,14 +193,8 @@ class AbacusCalculations(numberOfColumns: Int) {
         for (column in abacusState) {
             var digit = 0
 
-            // 1️⃣ Heaven bead – same as Swift:
-            // if column[1] == true → heaven is down → add 5
-            if (column[1]) {
-                digit += 5
-            }
+            if (column[1]) digit += 5
 
-            // 2️⃣ Lower beads – COUNT TRUE beads from index 2 upwards,
-            // stopping when first false is found (exactly like the while loop in Swift)
             var lower = 0
             var i = 2
             while (i <= 6 && column[i]) {
@@ -204,5 +208,4 @@ class AbacusCalculations(numberOfColumns: Int) {
 
         return builder.toString()
     }
-
 }

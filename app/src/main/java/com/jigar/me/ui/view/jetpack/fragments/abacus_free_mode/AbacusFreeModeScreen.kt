@@ -88,48 +88,73 @@ fun AbacusFreeModeScreen(
     onSettingsClick: () -> Unit = {},
     onVideoClick: () -> Unit = {}
 ) {
-
-//    var isFreeModeOn = false
-    // Load value from prefs ONCE
+    // ----- PREFS -----
     val prefs = LocalPreferencesHelper.current
+
     var isFreeModeOn by remember {
-        mutableStateOf(prefs.getCustomParamBoolean(AppConstants.AbacusScreen.isFreeMode,true))
-    }
-    // Whenever isFreeModeOn changes → save to prefs
-    LaunchedEffect(isFreeModeOn) {
-        prefs.setCustomParamBoolean(AppConstants.AbacusScreen.isFreeMode,isFreeModeOn)
+        mutableStateOf(
+            prefs.getCustomParamBoolean(
+                AppConstants.AbacusScreen.isFreeMode,
+                true
+            )
+        )
     }
 
-    // Abacus state
+    // Persist whenever toggled
+    LaunchedEffect(isFreeModeOn) {
+        prefs.setCustomParamBoolean(AppConstants.AbacusScreen.isFreeMode, isFreeModeOn)
+    }
+
+    // ----- ABACUS STATE -----
     val abacusCalc = remember { AbacusCalculations(numberOfColumns = 13) }
+
     var numberToMatch by remember { mutableIntStateOf(0) }
     var resetEveryTime by remember { mutableStateOf(false) }
     var randomToggle by remember { mutableStateOf(false) }
     var randomRangeLow by remember { mutableIntStateOf(1) }
     var randomRangeHigh by remember { mutableIntStateOf(100) }
+
     var rodMovements by remember { mutableStateOf(listOf<RodMovement>()) }
     var showDirectionHints by remember { mutableStateOf(false) }
     var showHighlighter by remember { mutableStateOf(false) }
 
     val selectedTheme = "poligon_rainbow"
 
-    fun refreshBeadMovement() {
-        if (!isFreeModeOn) {
-            rodMovements = emptyList()
-            // Left side (integer)
-            val oldValue = abacusCalc.totalValuePair.first.toInt()
-            val newValue = numberToMatch
-            var rods = oldValue.toString().length
-            if (newValue.toString().length > rods) {
-                rods = newValue.toString().length
+    // ----- HELPER: pick new target number -----
+    fun generateNextTarget(prev: Int? = null): Int {
+        return if (randomToggle) {
+            (randomRangeLow..randomRangeHigh).random()
+        } else {
+            if (prev == null) randomRangeLow
+            else {
+                var next = prev + 1
+                if (next > randomRangeHigh) next = randomRangeLow
+                next
             }
+        }
+    }
+
+    // ----- HELPER: recompute rod movements -----
+    fun refreshBeadMovement(currentTarget: Int = numberToMatch) {
+        if (!isFreeModeOn) {
+            // Abacus "from" value = left part of pair (integer side)
+            val currentIntValue = abacusCalc.totalValuePair.first.toIntOrNull() ?: 0
+            val newValue = currentTarget
+
+            // rods = max of digits between current and target
+            val rods = maxOf(
+                currentIntValue.toString().length,
+                newValue.toString().length
+            )
+
             val left = MathUtils().calculateRodMovements(
-                from = oldValue,
+                from = currentIntValue,
                 to = newValue,
                 rods = rods,
                 isForRightRods = false
             )
-            rodMovements = rodMovements + left
+
+            rodMovements = left
             showDirectionHints = true
         } else {
             showDirectionHints = false
@@ -137,56 +162,56 @@ fun AbacusFreeModeScreen(
         }
     }
 
+    // ----- INITIAL TARGET + ARROWS -----
     LaunchedEffect(Unit) {
-        numberToMatch = if (randomToggle) {
-            (randomRangeLow..randomRangeHigh).random()
-        } else {
-            randomRangeLow
-        }
-        refreshBeadMovement()
+        numberToMatch = generateNextTarget(null)
+        refreshBeadMovement(numberToMatch)
     }
 
-    // When total value changes, check match & move
-    LaunchedEffect(abacusCalc.totalValuePair) {
+    // ----- REACT ON BEAD MOVEMENT (stateVersion) -----
+    LaunchedEffect(abacusCalc.stateVersion, isFreeModeOn, randomToggle, randomRangeLow, randomRangeHigh) {
         if (!isFreeModeOn) {
-            val newVal = abacusCalc.totalValuePair
-            if (newVal.first.toInt() == numberToMatch && newVal.second.toInt() == 0) {
-                // matched -> reset & next number
+            val pair = abacusCalc.totalValuePair
+            val leftInt = pair.first.toIntOrNull() ?: 0
+            val rightInt = pair.second.toIntOrNull() ?: 0
+
+            if (rightInt == 0 && leftInt == numberToMatch) {
+                // ✅ matched exactly
                 if (resetEveryTime) {
                     abacusCalc.resetAbacusData()
                 }
-                numberToMatch =
-                    if (randomToggle) (randomRangeLow..randomRangeHigh).random()
-                    else {
-                        var next = numberToMatch + 1
-                        if (next > randomRangeHigh) next = randomRangeLow
-                        next
-                    }
-
-                refreshBeadMovement()
+                val nextTarget = generateNextTarget(numberToMatch)
+                numberToMatch = nextTarget
+                refreshBeadMovement(nextTarget)
             } else {
-                refreshBeadMovement()
+                // just update arrows for current configuration
+                refreshBeadMovement(numberToMatch)
             }
+        } else {
+            // free mode → no hints
+            showDirectionHints = false
+            rodMovements = emptyList()
         }
     }
 
-    // UI layout
+    // =====================================
+    // UI LAYOUT
+    // =====================================
     Box(
-        modifier = Modifier
-            .fillMaxSize()
+        modifier = Modifier.fillMaxSize()
     ) {
         Column(
-            modifier = Modifier
-                .fillMaxSize()
+            modifier = Modifier.fillMaxSize()
         ) {
-            // Header
+            // ---------- HEADER ----------
             Row(
-                modifier = Modifier
-                    .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // Back button
-                BackButtonWithText(title = stringResource(R.string.abacus_free_mode), onBackClick = onBackClick)
+                BackButtonWithText(
+                    title = stringResource(R.string.abacus_free_mode),
+                    onBackClick = onBackClick
+                )
 
                 Spacer(modifier = Modifier.weight(1f))
 
@@ -235,9 +260,10 @@ fun AbacusFreeModeScreen(
                 }
             }
 
+            // ---------- SPACE (abacus sits in center Box below) ----------
             Spacer(modifier = Modifier.weight(1f))
 
-            // Footer
+            // ---------- FOOTER ----------
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -251,13 +277,20 @@ fun AbacusFreeModeScreen(
                         checked = isFreeModeOn,
                         onCheckedChange = { checked ->
                             isFreeModeOn = checked
-                            refreshBeadMovement()
+                            // When switching back to guided mode, re-sync target + arrows
+                            if (!checked) {
+                                numberToMatch = generateNextTarget(numberToMatch)
+                                refreshBeadMovement(numberToMatch)
+                            } else {
+                                refreshBeadMovement()
+                            }
                         }
                     )
                 }
 
                 Spacer(modifier = Modifier.weight(1f))
 
+                // Current target number (guided mode only)
                 if (!isFreeModeOn) {
                     Text(
                         text = numberToMatch.toString(),
@@ -268,6 +301,7 @@ fun AbacusFreeModeScreen(
 
                 Spacer(modifier = Modifier.weight(1f))
 
+                // Right side toggles only when guided mode
                 if (!isFreeModeOn) {
                     Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -282,23 +316,30 @@ fun AbacusFreeModeScreen(
                             Text("Random", style = MaterialTheme.typography.labelSmall)
                             Switch(
                                 checked = randomToggle,
-                                onCheckedChange = { randomToggle = it }
+                                onCheckedChange = {
+                                    randomToggle = it
+                                    // new mode → new target
+                                    numberToMatch = generateNextTarget(null)
+                                    refreshBeadMovement(numberToMatch)
+                                }
                             )
                         }
 
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text("Range", style = MaterialTheme.typography.labelSmall)
                             Text("$randomRangeLow to $randomRangeHigh", color = Color.Red)
+                            // (you can plug a range picker here later)
                         }
                     }
                 }
             }
         }
 
-        // Abacus center
+        // ---------- ABACUS CENTER ----------
         Box(
             modifier = Modifier
-                .fillMaxWidth().fillMaxHeight(),
+                .fillMaxWidth()
+                .fillMaxHeight(),
             contentAlignment = Alignment.Center
         ) {
             AbacusWithDecimal(
@@ -312,9 +353,17 @@ fun AbacusFreeModeScreen(
                 isFreeModeOn = isFreeModeOn,
                 modifier = Modifier,
                 onReset = {
-
-                },onNext = {
-
+                    abacusCalc.resetAbacusData()
+                    if (!isFreeModeOn) {
+                        refreshBeadMovement(numberToMatch)
+                    }
+                },
+                onNext = {
+                    if (!isFreeModeOn) {
+                        val next = generateNextTarget(numberToMatch)
+                        numberToMatch = next
+                        refreshBeadMovement(next)
+                    }
                 }
             )
         }

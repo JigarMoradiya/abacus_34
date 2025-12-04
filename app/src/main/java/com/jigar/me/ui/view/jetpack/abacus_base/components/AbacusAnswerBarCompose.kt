@@ -180,11 +180,11 @@ fun CenterBox(
                 shape = RoundedCornerShape(100.dp),  // ⭐ Rounded shadow
                 clip = false                          // (same as Swift no clipping)
             )
-            .background(theme.displayBGColor, RoundedCornerShape(16.dp))
+            .background(theme.displayBGColor, RoundedCornerShape(8.dp))
             .border(
-                width = 4.dp,
+                width = 3.dp,
                 color = theme.displayBorderColor,
-                shape = RoundedCornerShape(16.dp)
+                shape = RoundedCornerShape(8.dp)
             )
             .padding(horizontal = horizontalPadding),
         horizontalAlignment = Alignment.CenterHorizontally,
