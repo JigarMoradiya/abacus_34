@@ -45,7 +45,7 @@ fun BackButtonWithText(
     val shape = RoundedCornerShape(100.dp)
     Box(
         modifier = Modifier
-            .padding(start = 16.dp, top = 12.dp, end = 16.dp)
+            .padding(top = 12.dp)
             .wrapContentHeight()
     ) {
         // 1) Capsule background (full width as needed)
