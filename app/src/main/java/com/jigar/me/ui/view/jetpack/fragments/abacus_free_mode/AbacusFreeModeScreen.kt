@@ -51,6 +51,7 @@ import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.jetpack.abacus_base.components.AbacusWithDecimal
+import com.jigar.me.ui.view.jetpack.abacus_base.components.SpotlightOverlay
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.LocalPreferencesHelper
 import com.jigar.me.utils.AppConstants
@@ -118,8 +119,9 @@ fun AbacusFreeModeScreen(
     var showFooterPopup by remember { mutableStateOf(false) }
     var numberToMatch by remember { mutableIntStateOf(0) }
     var rodMovements by remember { mutableStateOf(listOf<RodMovement>()) }
-    var showHighlighter by remember { mutableStateOf(false) }
     val selectedTheme = "poligon_rainbow"
+
+    var showHighlighter by remember { mutableStateOf(false) }
 
     // ----- HELPER: pick new target number -----
     fun generateNextTarget(prev: Int? = null): Int {

@@ -102,7 +102,8 @@ fun ColumnViewCompose(
         Column(
             modifier = Modifier
                 .padding(vertical = extraSpace)
-                .fillMaxHeight(),
+                .fillMaxHeight()
+                .alpha(if (showHighlighter && currentSpot == 1) 0f else 1f), // rods highlight, then hide beam, beads and dots,
             verticalArrangement = Arrangement.Top
         ) {
             repeat(columnState.size) { index ->

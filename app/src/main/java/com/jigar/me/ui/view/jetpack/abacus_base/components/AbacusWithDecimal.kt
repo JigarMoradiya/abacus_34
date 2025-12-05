@@ -1,10 +1,13 @@
 package com.jigar.me.ui.view.jetpack.abacus_base.components
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -13,10 +16,16 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.Font
@@ -28,6 +37,7 @@ import com.jigar.me.R
 import com.jigar.me.data.local.data.RodMovement
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
+import com.jigar.me.ui.view.jetpack.abacus_base.freeModeHighlightSteps
 import com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.AbacusFreeModeScreen
 import com.jigar.me.utils.AppConstants
 
@@ -48,6 +58,15 @@ fun AbacusWithDecimal(
     }
     val totalWidth = (dim.beadWidth * numberOfColumns) + (dim.rectLineWidth * 2) + (dim.columnSpaces * (numberOfColumns) * 2)
     val totalHeight = (dim.beadHeight * 7) + (dim.rectLineWidth * 2) + (dim.extraSpace * 2) + dim.beamHeight
+    var currentSpot by remember { mutableStateOf<Int?>(-1) }
+    val highlightSteps = freeModeHighlightSteps   // your array of 16 messages
+    LaunchedEffect(showHighlighter) {
+        currentSpot = if (showHighlighter) {
+            4       // start tutorial
+        } else {
+            null    // stop tutorial
+        }
+    }
 
     val strokeBrush = remember(selectedTheme) {
         if (selectedTheme == "poligon_rainbow") {
@@ -104,13 +123,14 @@ fun AbacusWithDecimal(
         Row(
             modifier = Modifier
                 .height(totalHeight)
-                .width(totalWidth) // inner width (same as Swift)
-                .padding(vertical = dim.rectLineWidth)     // equal top/bottom padding
-                .padding(horizontal = dim.rectLineWidth)     // equal top/bottom padding
-                .align(Alignment.Center),
+                .width(totalWidth)
+                .alpha(if (currentSpot == 0) 0f else 1f) // frame highlight, hide all internal
+                .padding(vertical = dim.rectLineWidth)
+                .padding(horizontal = dim.rectLineWidth)
+                .align(Alignment.Center)
+                .spotlightTag(1, highlightSteps[1].message), // rod highlight
             horizontalArrangement = Arrangement.spacedBy(0.dp),
             verticalAlignment = Alignment.CenterVertically
-
         ) {
             for (col in 0 until numberOfColumns) {
                 key(col) {
@@ -133,7 +153,7 @@ fun AbacusWithDecimal(
                         extraSpace = dim.extraSpace,
                         columnSpaces = dim.columnSpaces,
                         showHighlighter = showHighlighter,
-                        currentSpot = null
+                        currentSpot = currentSpot
                     )
                 }
             }
@@ -149,7 +169,7 @@ fun AbacusWithDecimal(
                     width = dim.rectLineWidth,
                     brush = strokeBrush,
                     shape = RoundedCornerShape(dim.rectLineCorner)
-                )
+                ).spotlightTag(0, highlightSteps[0].message)
         )
 
         if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn){
@@ -177,6 +197,283 @@ fun AbacusWithDecimal(
             totalHeight = totalHeight
         )
     }
+
+    if (currentSpot != null && currentSpot!! >= 0) {
+        SpotlightOverlay(
+            currentSpot = currentSpot,
+            totalCount = highlightSteps.size,  // number of highlight steps
+            onNext = {
+                Log.e("jigarHighlighter","currentSpot = "+currentSpot)
+                if (currentSpot == highlightSteps.lastIndex){
+                    currentSpot = null
+                }else{
+                    currentSpot = currentSpot!! + 1
+                }
+
+            }
+        )
+    }
+
+    if (showHighlighter) {
+        val totalBeadsHeight = totalHeight - (dim.rectLineWidth * 2)
+
+        // -----------------------------
+        // 2️⃣ Beam (bar)
+        // -----------------------------
+        Column(modifier = Modifier.height(totalHeight).padding(dim.rectLineWidth)) {
+            Spacer(modifier = Modifier.height((dim.beadHeight * 2) + dim.extraSpace))
+            Box(
+                modifier = Modifier
+                    .width(totalWidth - (dim.rectLineWidth * 2))
+                    .height(dim.beamHeight)
+                    .spotlightTag(2, highlightSteps[2].message)
+            )
+            Spacer(modifier = Modifier.weight(1f))
+        }
+
+        // -----------------------------
+        // 3️⃣ Upper beads area
+        // -----------------------------
+        Column(modifier = Modifier.height(totalHeight).padding(dim.rectLineWidth)) {
+            Box(
+                modifier = Modifier
+                    .width(totalWidth - (dim.rectLineWidth * 2))
+                    .height(dim.beadHeight + (dim.extraSpace * 2))
+                    .spotlightTag(3, highlightSteps[3].message)
+            )
+            Spacer(modifier = Modifier.weight(1f))
+        }
+
+        // -----------------------------
+        // 4️⃣ Lower beads area
+        // -----------------------------
+        Column(modifier = Modifier.height(totalHeight).padding(dim.rectLineWidth)) {
+            Spacer(modifier = Modifier.weight(1f))
+            Box(
+                modifier = Modifier
+                    .width(totalWidth - (dim.rectLineWidth * 2))
+                    .height((dim.beadHeight * 4) + (dim.extraSpace * 2))
+                    .spotlightTag(4, highlightSteps[4].message)
+            )
+        }
+
+        // -----------------------------
+        // 5️⃣ Unit place
+        // -----------------------------
+        Column(modifier = Modifier.height(totalHeight).padding(dim.rectLineWidth)) {
+            Row(modifier = Modifier
+                .padding(top = (dim.beadHeight * 2) + dim.extraSpace)
+            ) {
+                Spacer(modifier = Modifier.weight(1f))
+                Box(
+                    modifier = Modifier
+                        .width(dim.beadWidth)
+                        .height(dim.beamHeight)
+                        .spotlightTag(5, highlightSteps[5].message)
+                )
+                Spacer(modifier = Modifier.weight(1f))
+            }
+            Spacer(modifier = Modifier.weight(1f))
+        }
+
+        // -----------------------------
+        // 6️⃣ First rods
+        // -----------------------------
+        Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+            Spacer(modifier = Modifier.weight(1f))
+            Box(
+                modifier = Modifier
+                    .width(dim.beadWidth)
+                    .height(totalBeadsHeight)
+                    .spotlightTag(6, highlightSteps[6].message)
+            )
+            Spacer(modifier = Modifier.weight(1f))
+        }
+
+        // -----------------------------
+        // 7️⃣ Second rods
+        // -----------------------------
+        Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+            Box(
+                modifier = Modifier
+                    .width((dim.beadWidth + (dim.columnSpaces * 2)) * 5)
+                    .height(totalBeadsHeight)
+            )
+            Box(
+                modifier = Modifier
+                    .width(dim.beadWidth)
+                    .height(totalHeight - dim.rectLineWidth - (dim.beamHeight * 2))
+                    .spotlightTag(7, highlightSteps[7].message)
+            )
+            Box(
+                modifier = Modifier
+                    .width((dim.beadWidth + (dim.columnSpaces * 2)) * 7)
+                    .height(totalBeadsHeight)
+            )
+        }
+
+        // -----------------------------
+        // 8️⃣ Third rods
+        // -----------------------------
+        Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+            Box(
+                modifier = Modifier
+                    .width((dim.beadWidth + (dim.columnSpaces * 2)) * 4)
+                    .height(totalBeadsHeight)
+            )
+            Box(
+                modifier = Modifier
+                    .width(dim.beadWidth)
+                    .height(totalBeadsHeight)
+                    .spotlightTag(8, highlightSteps[8].message)
+            )
+            Box(
+                modifier = Modifier
+                    .width((dim.beadWidth + (dim.columnSpaces * 2)) * 8)
+                    .height(totalBeadsHeight)
+            )
+        }
+
+        // -----------------------------
+        // 9️⃣ 1 rod = 0–9
+        // -----------------------------
+        Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+            Spacer(modifier = Modifier.weight(1f))
+            Box(
+                modifier = Modifier
+                    .width(dim.beadWidth)
+                    .height(totalBeadsHeight)
+                    .spotlightTag(9, highlightSteps[9].message)
+            )
+            Spacer(modifier = Modifier.weight(1f))
+        }
+
+        // -----------------------------
+        // 1️⃣0️⃣ rods 0–99
+        // -----------------------------
+        Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+            Box(
+                modifier = Modifier
+                    .width((dim.beadWidth + (dim.columnSpaces * 2)) * 5)
+                    .height(totalBeadsHeight)
+            )
+            Box(
+                modifier = Modifier
+                    .width((dim.beadWidth + (dim.columnSpaces * 2)) * 2)
+                    .height(totalBeadsHeight)
+                    .spotlightTag(10, highlightSteps[10].message)
+            )
+            Box(
+                modifier = Modifier
+                    .width((dim.beadWidth + (dim.columnSpaces * 2)) * 6)
+                    .height(totalBeadsHeight)
+            )
+        }
+
+        // -----------------------------
+        // 1️⃣1️⃣ rods 0–999
+        // -----------------------------
+        Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+            Box(
+                modifier = Modifier
+                    .width((dim.beadWidth + (dim.columnSpaces * 2)) * 4)
+                    .height(totalBeadsHeight)
+            )
+            Box(
+                modifier = Modifier
+                    .width((dim.beadWidth + (dim.columnSpaces * 2)) * 3)
+                    .height(totalBeadsHeight)
+                    .spotlightTag(11, highlightSteps[11].message)
+            )
+            Box(
+                modifier = Modifier
+                    .width((dim.beadWidth + (dim.columnSpaces * 2)) * 6)
+                    .height(totalBeadsHeight)
+            )
+        }
+
+        // -----------------------------
+        // 1️⃣2️⃣ Addition bottom bead
+        // -----------------------------
+        Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+            Spacer(modifier = Modifier.weight(1f))
+            Column {
+                Box(
+                    modifier = Modifier
+                        .width(dim.beadWidth)
+                        .height((dim.beadHeight * 2) + dim.beamHeight + dim.extraSpace)
+                )
+                Box(
+                    modifier = Modifier
+                        .width(dim.beadWidth)
+                        .height((dim.beadHeight * 5) + dim.extraSpace)
+                        .spotlightTag(12, highlightSteps[12].message)
+                )
+            }
+            Spacer(modifier = Modifier.weight(1f))
+        }
+
+        // -----------------------------
+        // 1️⃣3️⃣ Addition top bead
+        // -----------------------------
+        Column(modifier = Modifier.height(totalHeight).padding(dim.rectLineWidth)) {
+            Spacer(modifier = Modifier.weight(1f))
+            Column {
+                Box(
+                    modifier = Modifier
+                        .width(dim.beadWidth)
+                        .height((dim.beadHeight * 2) + dim.extraSpace)
+                        .spotlightTag(13, highlightSteps[13].message)
+                )
+                Spacer(modifier = Modifier.weight(1f))
+            }
+            Spacer(modifier = Modifier.weight(1f))
+        }
+
+        // -----------------------------
+        // 1️⃣4️⃣ Subtraction bottom bead
+        // -----------------------------
+        Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+            Spacer(modifier = Modifier.weight(1f))
+            Column(
+                modifier = Modifier.height(totalHeight - (dim.rectLineWidth * 2))
+            ) {
+                Box(
+                    modifier = Modifier
+                        .width(dim.beadWidth)
+                        .height((dim.beadHeight * 2) + dim.beamHeight + dim.extraSpace)
+                )
+                Box(
+                    modifier = Modifier
+                        .width(dim.beadWidth)
+                        .height((dim.beadHeight * 5) + dim.extraSpace)
+                        .spotlightTag(14, highlightSteps[14].message)
+                )
+            }
+            Spacer(modifier = Modifier.weight(1f))
+        }
+
+        // -----------------------------
+        // 1️⃣5️⃣ Subtraction top bead
+        // -----------------------------
+        Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+            Spacer(modifier = Modifier.weight(1f))
+            Column(
+                modifier = Modifier.height(totalHeight - (dim.rectLineWidth * 2))
+            ) {
+                Box(
+                    modifier = Modifier
+                        .width(dim.beadWidth)
+                        .height((dim.beadHeight * 2) + dim.extraSpace)
+                        .spotlightTag(15, highlightSteps[15].message)
+                )
+                Spacer(modifier = Modifier.weight(1f))
+            }
+            Spacer(modifier = Modifier.weight(1f))
+        }
+    }
+
+
 }
 
 
