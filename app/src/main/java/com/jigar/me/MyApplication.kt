@@ -111,35 +111,25 @@ class MyApplication : Application(), Configuration.Provider {
 
         InAppMessages.addLifecycleListener(object : IInAppMessageLifecycleListener {
             override fun onWillDisplay(@NonNull event: IInAppMessageWillDisplayEvent) {
-                Log.e("jigarOneSignal", "onWillDisplayInAppMessage")
             }
 
             override fun onDidDisplay(@NonNull event: IInAppMessageDidDisplayEvent) {
-                Log.e("jigarOneSignal", "onDidDisplayInAppMessage")
             }
 
             override fun onWillDismiss(@NonNull event: IInAppMessageWillDismissEvent) {
-                Log.e("jigarOneSignal", "onWillDismissInAppMessage")
             }
 
             override fun onDidDismiss(@NonNull event: IInAppMessageDidDismissEvent) {
-                Log.e("jigarOneSignal", "onDidDismissInAppMessage")
             }
         })
 
         InAppMessages.addClickListener(object : IInAppMessageClickListener {
             override fun onClick(event: IInAppMessageClickEvent) {
-                Log.e("jigarOneSignal", "INotificationClickListener.inAppMessageClicked")
             }
         })
 
         Notifications.addClickListener(object : INotificationClickListener {
             override fun onClick(event: INotificationClickEvent) {
-                Log.e(
-                    "jigarOneSignal", "INotificationClickListener.onClick fired" +
-                            " with event: " + event.notification.additionalData
-                )
-
                 val additional_data = event.notification.additionalData.toString()
                 if (additional_data.isNotEmpty()) {
                     val notification = Gson().fromJson(additional_data, NotificationData::class.java)
@@ -195,9 +185,6 @@ class MyApplication : Application(), Configuration.Provider {
 
         Notifications.addForegroundLifecycleListener(object : INotificationLifecycleListener {
             override fun onWillDisplay(@NonNull event: INotificationWillDisplayEvent) {
-                Log.e("jigarOneSignal", "INotificationLifecycleListener.onWillDisplay fired" +
-                            " with event: " + event
-                )
                 val notification = event.notification
                 val data = notification.additionalData
 
@@ -220,7 +207,6 @@ class MyApplication : Application(), Configuration.Provider {
         User.addObserver(object : IUserStateObserver {
             override fun onUserStateChange(@NonNull state: UserChangedState) {
                 val currentUserState = state.current
-                Log.e("jigarOneSignal", "onUserStateChange fired " + currentUserState.toJSONObject())
             }
         })
 

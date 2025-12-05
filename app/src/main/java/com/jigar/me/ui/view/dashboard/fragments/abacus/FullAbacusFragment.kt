@@ -245,7 +245,6 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
             abacusBinding?.viewNumbersBottom?.hide()
             AbacusBeadType.FullMode
         }
-        Log.e("jigarBeadDimensions","Full Abacus Fragment welcome")
         themeContent  = DataProvider.findAbacusThemeType(requireContext(),theme,abacusBeadType)
 
         abacusBinding?.txtReset?.onClick {
@@ -592,8 +591,6 @@ class FullAbacusFragment : BaseFragment(), ToddlerRangeDialog.ToddlerRangeDialog
                 abacusBinding?.tvCurrentVal?.text.toString()
             }
             if (prefManager.getCustomParamBoolean(AppConstants.Settings.Setting_direction, true) && !isFirstTime){
-                Log.e("jigarFull","fromValue = "+fromValue)
-                Log.e("jigarFull","setValues = "+setValues)
                 clearDirection()
                 addDirection(if (fromValue.isEmpty()) 0 else fromValue.toInt(),setValues.toInt())
             }

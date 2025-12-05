@@ -51,7 +51,6 @@ object SelectThemeDialog {
                 setAbacusBeads(theme,activity,prefManager,alertLayout)
             }
 
-            Log.e("jigarDialog","freeList = "+freeList.size)
             val abacusThemeFreeAdapter = AbacusThemeSelectionsAdapter(freeList,object : AbacusThemeSelectionsAdapter.OnItemClickListener{
                 override fun onThemePoligonItemClick(data: AbacusContent) {
                     val themeType = data.type
