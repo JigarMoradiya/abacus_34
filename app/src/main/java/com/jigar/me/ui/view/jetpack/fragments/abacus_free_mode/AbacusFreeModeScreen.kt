@@ -345,20 +345,7 @@ fun AbacusFreeModeScreen(
                 selectedTheme = selectedTheme,
                 screenType = AppConstants.AbacusScreen.screenTypeFreeMode,
                 isFreeModeOn = isFreeModeOn,
-                modifier = Modifier,
-                onReset = {
-                    abacusCalc.resetAbacusData()
-                    if (!isFreeModeOn) {
-                        refreshBeadMovement(numberToMatch)
-                    }
-                },
-                onNext = {
-                    if (!isFreeModeOn) {
-                        val next = generateNextTarget(numberToMatch)
-                        numberToMatch = next
-                        refreshBeadMovement(next)
-                    }
-                })
+                modifier = Modifier)
         }
     }
 }

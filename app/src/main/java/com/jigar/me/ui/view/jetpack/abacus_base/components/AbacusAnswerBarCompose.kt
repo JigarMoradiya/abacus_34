@@ -26,12 +26,15 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.SubcomposeLayout
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.jetpack.abacus_base.ColorPresetModel
 
@@ -174,7 +177,7 @@ fun CenterBox(
     Column(
         modifier = Modifier
             .height(centerBoxHeight)
-            .requiredWidthIn(min = 136.dp)
+            .requiredWidthIn(min = 140.dp)
             .shadow(
                 elevation = 4.dp,
                 shape = RoundedCornerShape(100.dp),  // ⭐ Rounded shadow
@@ -204,6 +207,7 @@ fun CenterBox(
                 text = answer,
                 color = Color.White,
                 fontWeight = FontWeight.ExtraBold,
+                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
                 fontSize = centerBoxValueTextSize,
                 lineHeight = centerBoxValueTextSize
             )
