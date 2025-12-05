@@ -37,29 +37,26 @@ class AbacusCalculations(numberOfColumns: Int) {
     }
 
     // -------------------------------------------------------
-    // SET FROM VALUE (iOS equivalent)
+    // SET FROM VALUE
     // -------------------------------------------------------
-    fun setAbacusValue(totalValueInput: Int) {
-        displayValue = totalValueInput.toString()
-        var temp = totalValueInput
-        var idx = abacusState.size - 1
+    fun setAbacusValueFromString(value: String) {
+        val padded = value.padStart(abacusState.size, '0')  // 🔥 ensure full length
 
         val newState = MutableList(abacusState.size) {
             mutableListOf(true, false, false, true, true, true, true)
         }
 
-        while (temp != 0 && idx >= 0) {
-            val digit = temp % 10
-            newState[idx] = digitToColumn(digit)
-            temp /= 10
-            idx--
+        for (i in padded.indices) {
+            val digitChar = padded[i]
+            val digit = digitChar - '0'
+            newState[i] = digitToColumn(digit)
         }
 
         abacusState = newState
-
         recalcTotal()
-        stateVersion++    // ⭐ trigger recomposition
+        stateVersion++
     }
+
 
     private fun digitToColumn(d: Int): MutableList<Boolean> = when (d) {
         0 -> mutableListOf(true, false, false, true, true, true, true)

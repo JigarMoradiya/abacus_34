@@ -170,27 +170,29 @@ fun AbacusFreeModeScreen(
     LaunchedEffect(
         abacusCalc.stateVersion, isFreeModeOn, isRandomNumber, fromNumber, toNumber
     ) {
-        if (!isFreeModeOn) {
-            val pair = abacusCalc.totalValuePair
-            val leftInt = pair.first.toIntOrNull() ?: 0
-            val rightInt = pair.second.toIntOrNull() ?: 0
+        if (!showHighlighter){
+            if (!isFreeModeOn) {
+                val pair = abacusCalc.totalValuePair
+                val leftInt = pair.first.toIntOrNull() ?: 0
+                val rightInt = pair.second.toIntOrNull() ?: 0
 
-            if (rightInt == 0 && leftInt == numberToMatch) {
-                // ✅ matched exactly
-                if (isResetEveryTime) {
-                    abacusCalc.resetAbacusData()
+                if (rightInt == 0 && leftInt == numberToMatch) {
+                    // ✅ matched exactly
+                    if (isResetEveryTime) {
+                        abacusCalc.resetAbacusData()
+                    }
+                    val nextTarget = generateNextTarget(numberToMatch)
+                    numberToMatch = nextTarget
+                    refreshBeadMovement(nextTarget)
+                } else {
+                    // just update arrows for current configuration
+                    refreshBeadMovement(numberToMatch)
                 }
-                val nextTarget = generateNextTarget(numberToMatch)
-                numberToMatch = nextTarget
-                refreshBeadMovement(nextTarget)
             } else {
-                // just update arrows for current configuration
-                refreshBeadMovement(numberToMatch)
+                // free mode → no hints
+                isShowDirection = false
+                rodMovements = emptyList()
             }
-        } else {
-            // free mode → no hints
-            isShowDirection = false
-            rodMovements = emptyList()
         }
     }
 
@@ -342,8 +344,11 @@ fun AbacusFreeModeScreen(
                 numberOfColumns = 13,
                 abacusData = abacusCalc,
                 rodMovements = rodMovements,
+                onRodMovementChange = { rodMovements = it },
                 showDirectionHints = isShowDirection,
+                onShowDirectionHintsChange = { isShowDirection = it },
                 showHighlighter = showHighlighter,
+                onShowHighlighterChange = { showHighlighter = it },
                 selectedTheme = selectedTheme,
                 screenType = AppConstants.AbacusScreen.screenTypeFreeMode,
                 isFreeModeOn = isFreeModeOn,
