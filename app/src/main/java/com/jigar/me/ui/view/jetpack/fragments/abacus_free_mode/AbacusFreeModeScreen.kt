@@ -51,7 +51,6 @@ import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.jetpack.abacus_base.components.AbacusWithDecimal
-import com.jigar.me.ui.view.jetpack.abacus_base.components.SpotlightOverlay
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.LocalPreferencesHelper
 import com.jigar.me.utils.AppConstants

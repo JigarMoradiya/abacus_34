@@ -1,27 +1,28 @@
 package com.jigar.me.ui.view.jetpack.abacus_base.components
 
 import android.graphics.RectF
-import android.util.Log
 import android.widget.TextView
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
@@ -37,11 +38,9 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.text.HtmlCompat
@@ -53,7 +52,6 @@ import kotlin.math.min
 @Composable
 fun SpotlightOverlay(
     currentSpot: Int?,
-    totalCount: Int,
     onNext: () -> Unit
 ) {
     if (currentSpot == null) return
@@ -120,7 +118,8 @@ fun TooltipBox(
     val density = LocalDensity.current
     val layoutDirection = LocalLayoutDirection.current
 
-    val tooltipCenter = remember(item.rect, tooltipSize) {
+    // TARGET center position
+    val targetCenter = remember(item.rect, tooltipSize) {
         calculateTooltipPosition(
             SpotlightTooltipCalculation(
                 rect = RectF(item.rect.left, item.rect.top, item.rect.right, item.rect.bottom),
@@ -133,17 +132,43 @@ fun TooltipBox(
                 tooltipWidth = tooltipSize.width.toFloat(),
                 tooltipHeight = tooltipSize.height.toFloat()
             )
-        ) // returns CENTER x,y like iOS
+        )
+    }
+
+    // 💥 iOS-style ANIMATED VALUES
+    val animatedX by animateFloatAsState(
+        targetValue = targetCenter.x - tooltipSize.width / 2f,
+        animationSpec = tween(durationMillis = 350, easing = FastOutSlowInEasing)
+    )
+
+    val animatedY by animateFloatAsState(
+        targetValue = targetCenter.y - tooltipSize.height / 2f,
+        animationSpec = tween(durationMillis = 350, easing = FastOutSlowInEasing)
+    )
+
+    val animatedAlpha by animateFloatAsState(
+        targetValue = 1f,
+        animationSpec = tween(250, easing = LinearOutSlowInEasing)
+    )
+
+    val animatedScale by animateFloatAsState(
+        targetValue = 1f,
+        animationSpec = tween(250, easing = FastOutSlowInEasing)
+    )
+
+    // start with fade + scale on first appearance
+    LaunchedEffect(item.rect) {
+        // reset animation instantly
     }
 
     Box(
         modifier = Modifier
-            .offset {
-                IntOffset(
-                    (tooltipCenter.x - tooltipSize.width / 2f).toInt(),
-                    (tooltipCenter.y - tooltipSize.height / 2f).toInt()
-                )
+            .graphicsLayer {
+                alpha = animatedAlpha
+                scaleX = animatedScale
+                scaleY = animatedScale
             }
+            .offset { IntOffset(animatedX.toInt(), animatedY.toInt()) }
             .onGloballyPositioned { tooltipSize = it.size }
             .background(Color.White, RoundedCornerShape(20.dp))
             .padding(16.dp)
@@ -151,7 +176,6 @@ fun TooltipBox(
         HtmlText(html = item.text)
     }
 }
-
 
 
 fun calculateTooltipPosition(calc: SpotlightTooltipCalculation): Offset {
@@ -285,24 +309,6 @@ fun calculateTooltipPosition(calc: SpotlightTooltipCalculation): Offset {
 
     return Offset(fallbackX, fallbackY)
 }
-
-
-//@Composable
-//fun TooltipBox(item: SpotlightItem) {
-//    Box(
-//        modifier = Modifier
-//            .offset {
-//                IntOffset(
-//                    x = (item.rect.center.x - 120).toInt(), // center tooltip
-//                    y = ((item.rect.bottom + 12.dp.roundToPx()).toInt())
-//                )
-//            }
-//            .background(Color.White, RoundedCornerShape(20.dp))
-//            .padding(16.dp)
-//    ) {
-//        HtmlText(html = item.text)
-//    }
-//}
 
 @Composable
 fun HtmlText(

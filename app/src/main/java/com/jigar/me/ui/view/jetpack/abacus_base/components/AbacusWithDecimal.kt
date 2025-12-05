@@ -195,7 +195,6 @@ fun AbacusWithDecimal(
     if (currentSpot != null && currentSpot!! >= 0) {
         SpotlightOverlay(
             currentSpot = currentSpot,
-            totalCount = highlightSteps.size,
             onNext = {
                 val next = if (currentSpot == highlightSteps.lastIndex) null else currentSpot!! + 1
                 currentSpot = next
