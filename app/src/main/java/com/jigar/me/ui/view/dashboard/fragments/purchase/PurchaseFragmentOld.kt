@@ -137,7 +137,6 @@ class PurchaseFragmentOld : BaseFragment(), PurchaseAdapter.OnItemClickListener 
                 (activity as MainDashboardActivity).isPurchaseDataChecked = false
                 // firebase event
                 MyApplication.logEvent("Purchase_"+listSKU[position].sku, null)
-                Log.e("jigarLogs","onPurchaseItemClick = "+ Gson().toJson(listSKU[position]))
                 inAppViewModel.makePurchase(requireActivity(), listSKU[position])
             }
         }else{

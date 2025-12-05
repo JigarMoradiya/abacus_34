@@ -1,5 +1,6 @@
 package com.jigar.me.utils
 
+import android.util.Log
 import com.jigar.me.data.local.data.Movement
 import com.jigar.me.data.local.data.RodMovement
 

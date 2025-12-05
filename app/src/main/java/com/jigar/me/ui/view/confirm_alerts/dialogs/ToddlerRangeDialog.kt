@@ -59,13 +59,9 @@ object ToddlerRangeDialog {
 //                    val from = alertLayout.txtFrom.text.toString().toInt()
 //                    val to = alertLayout.txtTo.text.toString().toInt()
 //                    val list : ArrayList<String> = arrayListOf()
-//                    Log.e("jigarLogs","from = "+from+" to = "+to)
 //                    for (i in from..to) {
 //                        list.add(i.toString())
 //                    }
-//                    Log.e("jigarLogs","joinToString = "+list.joinToString(","))
-//                    Log.e("jigarLogs","joinToString reversed = "+list.reversed().joinToString(","))
-//                    Log.e("jigarLogs","joinToString random = "+list.shuffled().shuffled().take(20).joinToString(","))
                 }
             }
 

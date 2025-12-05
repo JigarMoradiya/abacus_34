@@ -16,8 +16,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material3.ExtendedFloatingActionButton
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -45,6 +43,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.gson.Gson
 import com.jigar.me.R
 import com.jigar.me.data.local.data.RodMovement
 import com.jigar.me.data.pref.AppPreferencesHelper
@@ -142,17 +141,14 @@ fun AbacusFreeModeScreen(
             // Abacus "from" value = left part of pair (integer side)
             val currentIntValue = abacusCalc.totalValuePair.first.toIntOrNull() ?: 0
             val newValue = currentTarget
-
             // rods = max of digits between current and target
-            val rods = maxOf(
-                currentIntValue.toString().length, newValue.toString().length
-            )
+            val rods = maxOf(currentIntValue.toString().length, newValue.toString().length)
+            val left = MathUtils().calculateRodMovements(from = currentIntValue, to = newValue, rods = rods, isForRightRods = false)
 
-            val left = MathUtils().calculateRodMovements(
-                from = currentIntValue, to = newValue, rods = rods, isForRightRods = false
-            )
+            val rightIntValue = abacusCalc.totalValuePair.second.toIntOrNull() ?: 0
+            val right = MathUtils().calculateRodMovements(from = rightIntValue, to = 0, rods = 6, isForRightRods = true)
 
-            rodMovements = left
+            rodMovements = left + right
         } else {
             isShowDirection = false
             rodMovements = emptyList()

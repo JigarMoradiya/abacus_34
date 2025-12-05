@@ -150,7 +150,6 @@ class LoginHomeFragment : BaseFragment() {
                 } else {
 
                     // your error handling
-                    Log.e("jigarLogs","doOnSignInWithGoogle error = "+(result as Result.Error).exception)
                 }
             }
         } catch (e: Exception) {

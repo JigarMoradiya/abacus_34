@@ -581,9 +581,6 @@ fun getAbacusThemePaidTypeList(context: Context,abacusBeadType: AbacusBeadType,i
         listnew.map {
             listQue.add(it.question)
         }
-        Log.e("jigarLogs","listExercise = "+listQue.joinToString(","))
-        Log.e("jigarLogs","listExercise = "+Gson().toJson(listQue))
-        Log.e("jigarLogs","listExercise = "+Gson().toJson(listExercise))
         return listExercise
     }
     private fun generateDivision(child: ExerciseLevelDetail): MutableList<ExerciseList>{
@@ -715,8 +712,6 @@ fun getAbacusThemePaidTypeList(context: Context,abacusBeadType: AbacusBeadType,i
 //        (1 until 6).forEach { k ->
 //            list.add(("$k"+endDigit).toInt())
 //        }
-//        Log.e("jigarLogs","listlist = "+Gson().toJson(list))
-
 //        (10 until 100).forEach { k ->
 //            if (k%2 == 0){
 //                list.add(k)
@@ -810,9 +805,6 @@ fun getAbacusThemePaidTypeList(context: Context,abacusBeadType: AbacusBeadType,i
         listnew.map {
             listQue.add(it.question)
         }
-        Log.e("jigarLogs","listExercise = "+listQue.joinToString(","))
-        Log.e("jigarLogs","listExercise = "+Gson().toJson(listQue))
-        Log.e("jigarLogs","listExercise = "+Gson().toJson(listExercise))
 
         return listExercise
     }
@@ -1391,9 +1383,6 @@ fun getAbacusThemePaidTypeList(context: Context,abacusBeadType: AbacusBeadType,i
         listnew.map {
             listQue.add(it.question)
         }
-        Log.e("jigarLogs","listExercise = "+listQue.joinToString(","))
-        Log.e("jigarLogs","listExercise = "+Gson().toJson(listQue))
-        Log.e("jigarLogs","listExercise = "+Gson().toJson(listExercise))
         return listExercise
     }
 

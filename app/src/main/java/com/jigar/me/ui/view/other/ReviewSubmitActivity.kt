@@ -228,7 +228,6 @@ class ReviewSubmitActivity : BaseActivity() {
 //                    binding.imgReview.setImageURI(fileUri)
 
                     val mimeType = file.let { getMimeType(it) }
-                    Log.e("jigarLogs","path = "+path+" mimeType = "+mimeType+" file length = "+file.length())
                     val fileRequestBody = file.asRequestBody(mimeType?.toMediaType())
                     multiPart = MultipartBody.Part.createFormData("image_1",
                         file.name, fileRequestBody)

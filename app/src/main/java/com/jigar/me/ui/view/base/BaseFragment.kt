@@ -59,8 +59,6 @@ abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSetting
                 checkPlanAndUpdate(it.google_plan_id)
             }
 //            setCustomParam(AppConstants.Purchase.Purchase_All, "N")
-//            Log.e("jigarLogs","Purchase_All New = "+getCustomParam(AppConstants.Purchase.Purchase_All,""))
-
 
         }
     }
