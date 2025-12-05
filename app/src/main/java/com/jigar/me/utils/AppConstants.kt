@@ -130,6 +130,10 @@ object AppConstants {
         companion object {
             const val screenTypeFreeMode = "FreeMode"
             const val isFreeMode = "isFreeMode"
+            const val isResetEveryTime = "isResetEveryTime"
+            const val isRandomNumber = "isRandomNumber"
+            const val fromNumber = "fromNumber"
+            const val toNumber = "toNumber"
         }
     }
     annotation class Settings {

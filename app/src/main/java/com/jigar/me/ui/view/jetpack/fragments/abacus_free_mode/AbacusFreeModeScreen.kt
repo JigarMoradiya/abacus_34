@@ -1,44 +1,27 @@
 package com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.foundation.LocalIndication
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.snapping.SnapPosition
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.material3.Button
+import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -51,27 +34,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.gson.Gson
 import com.jigar.me.R
 import com.jigar.me.data.local.data.RodMovement
 import com.jigar.me.data.pref.AppPreferencesHelper
@@ -100,9 +73,7 @@ class AbacusFreeModeFragment : Fragment() {
                         LocalPreferencesHelper provides preferences
                     ) {
                         AbacusFreeModeScreen(
-                            onBackClick = { findNavController().popBackStack() },
-                            onSettingsClick = { },
-                            onVideoClick = { })
+                            onBackClick = { findNavController().popBackStack() })
                     }
 
                 }
@@ -113,49 +84,52 @@ class AbacusFreeModeFragment : Fragment() {
 
 @Composable
 fun AbacusFreeModeScreen(
-    onBackClick: () -> Unit = {}, onSettingsClick: () -> Unit = {}, onVideoClick: () -> Unit = {}
+    onBackClick: () -> Unit = {}
 ) {
     // ----- PREFS -----
     val prefs = LocalPreferencesHelper.current
 
-    var isFreeModeOn by remember {
-        mutableStateOf(
-            prefs.getCustomParamBoolean(
-                AppConstants.AbacusScreen.isFreeMode, true
-            )
-        )
-    }
+    var isFreeModeOn by remember { mutableStateOf(prefs.getCustomParamBoolean(AppConstants.AbacusScreen.isFreeMode, true)) }
+    var isResetEveryTime by remember { mutableStateOf(prefs.getCustomParamBoolean(AppConstants.AbacusScreen.isResetEveryTime, false)) }
+    var isRandomNumber by remember { mutableStateOf(prefs.getCustomParamBoolean(AppConstants.AbacusScreen.isRandomNumber, false)) }
+    var fromNumber by remember { mutableIntStateOf(prefs.getCustomParamInt(AppConstants.AbacusScreen.fromNumber, 1)) }
+    var toNumber by remember { mutableIntStateOf(prefs.getCustomParamInt(AppConstants.AbacusScreen.toNumber, 100)) }
+    var isShowDirection by remember { mutableStateOf(prefs.getCustomParamBoolean(AppConstants.Settings.Setting_direction, true)) }
 
     // Persist whenever toggled
     LaunchedEffect(isFreeModeOn) {
         prefs.setCustomParamBoolean(AppConstants.AbacusScreen.isFreeMode, isFreeModeOn)
     }
+    LaunchedEffect(isResetEveryTime) {
+        prefs.setCustomParamBoolean(AppConstants.AbacusScreen.isResetEveryTime, isResetEveryTime)
+    }
+    LaunchedEffect(isRandomNumber) {
+        prefs.setCustomParamBoolean(AppConstants.AbacusScreen.isRandomNumber, isRandomNumber)
+    }
+    LaunchedEffect(fromNumber) {
+        prefs.setCustomParamInt(AppConstants.AbacusScreen.fromNumber, fromNumber)
+    }
+    LaunchedEffect(toNumber) {
+        prefs.setCustomParamInt(AppConstants.AbacusScreen.toNumber, toNumber)
+    }
 
     // ----- ABACUS STATE -----
     val abacusCalc = remember { AbacusCalculations(numberOfColumns = 13) }
     var showFooterPopup by remember { mutableStateOf(false) }
-
     var numberToMatch by remember { mutableIntStateOf(0) }
-    var resetEveryTime by remember { mutableStateOf(false) }
-    var randomToggle by remember { mutableStateOf(false) }
-    var randomRangeLow by remember { mutableIntStateOf(1) }
-    var randomRangeHigh by remember { mutableIntStateOf(100) }
-
     var rodMovements by remember { mutableStateOf(listOf<RodMovement>()) }
-    var showDirectionHints by remember { mutableStateOf(false) }
     var showHighlighter by remember { mutableStateOf(false) }
-
     val selectedTheme = "poligon_rainbow"
 
     // ----- HELPER: pick new target number -----
     fun generateNextTarget(prev: Int? = null): Int {
-        return if (randomToggle) {
-            (randomRangeLow..randomRangeHigh).random()
+        return if (isRandomNumber) {
+            (fromNumber..toNumber).random()
         } else {
-            if (prev == null) randomRangeLow
+            if (prev == null) fromNumber
             else {
                 var next = prev + 1
-                if (next > randomRangeHigh) next = randomRangeLow
+                if (next > toNumber) next = fromNumber
                 next
             }
         }
@@ -178,9 +152,8 @@ fun AbacusFreeModeScreen(
             )
 
             rodMovements = left
-            showDirectionHints = true
         } else {
-            showDirectionHints = false
+            isShowDirection = false
             rodMovements = emptyList()
         }
     }
@@ -193,7 +166,7 @@ fun AbacusFreeModeScreen(
 
     // ----- REACT ON BEAD MOVEMENT (stateVersion) -----
     LaunchedEffect(
-        abacusCalc.stateVersion, isFreeModeOn, randomToggle, randomRangeLow, randomRangeHigh
+        abacusCalc.stateVersion, isFreeModeOn, isRandomNumber, fromNumber, toNumber
     ) {
         if (!isFreeModeOn) {
             val pair = abacusCalc.totalValuePair
@@ -202,7 +175,7 @@ fun AbacusFreeModeScreen(
 
             if (rightInt == 0 && leftInt == numberToMatch) {
                 // ✅ matched exactly
-                if (resetEveryTime) {
+                if (isResetEveryTime) {
                     abacusCalc.resetAbacusData()
                 }
                 val nextTarget = generateNextTarget(numberToMatch)
@@ -214,7 +187,7 @@ fun AbacusFreeModeScreen(
             }
         } else {
             // free mode → no hints
-            showDirectionHints = false
+            isShowDirection = false
             rodMovements = emptyList()
         }
     }
@@ -226,26 +199,51 @@ fun AbacusFreeModeScreen(
         modifier = Modifier.fillMaxSize()
     ) {
         // pop-up button
-        FloatingActionButton(
+        Surface(
             onClick = { showFooterPopup = true },
+            shape = FloatingActionButtonDefaults.extendedFabShape,
+            color = FloatingActionButtonDefaults.containerColor,
+            shadowElevation = 4.dp,         // 👈 correct elevation
             modifier = Modifier
                 .align(Alignment.BottomEnd)
-                .padding(24.dp),
+                .padding(12.dp)
         ) {
-            Icon(Icons.Default.Settings, contentDescription = "Settings")
+
+            Row(
+                modifier = Modifier
+                    .padding(horizontal = 8.dp, vertical = 6.dp), // 👈 custom inner padding
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+
+                Icon(
+                    imageVector = Icons.Default.Settings,
+                    contentDescription = null
+                )
+
+                Spacer(modifier = Modifier.width(6.dp))
+
+                Text(
+                    text = stringResource(R.string.free_mode_settings),
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = FontFamily(Font(R.font.font_bold)),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
         }
+
+
 
         // popup content
         if (showFooterPopup) {
             SettingsDialog(
                 isFreeModeOn = isFreeModeOn,
                 setFreeMode = { isFreeModeOn = it },
-                resetEveryTime = resetEveryTime,
-                setResetEveryTime = { resetEveryTime = it },
-                randomToggle = randomToggle,
-                setRandomToggle = { randomToggle = it },
-                randomRangeLow = randomRangeLow,
-                randomRangeHigh = randomRangeHigh,
+                resetEveryTime = isResetEveryTime,
+                setResetEveryTime = { isResetEveryTime = it },
+                randomToggle = isRandomNumber,
+                setRandomToggle = { isRandomNumber = it },
+                randomRangeLow = fromNumber,
+                randomRangeHigh = toNumber,
                 numberToMatch = numberToMatch,
                 refreshBeadMovement = { value ->
                     refreshBeadMovement(value ?: 0)
@@ -253,8 +251,8 @@ fun AbacusFreeModeScreen(
                 generateNextTarget = ::generateNextTarget,
 
                 onUpdateRange = { low, high ->
-                    randomRangeLow = low
-                    randomRangeHigh = high
+                    fromNumber = low
+                    toNumber = high
                 },
                 dismiss = { showFooterPopup = false })
         }
@@ -276,8 +274,7 @@ fun AbacusFreeModeScreen(
                 if (isFreeModeOn) {
                     TextButton(onClick = { showHighlighter = true }) {
                         Text(
-                            text = "Click here to show Abacus Tour",
-                            color = Color.Black,
+                            text = "Click here to show Abacus Tour", color = Color.Black,
                             fontWeight = FontWeight.ExtraBold,
                             fontFamily = FontFamily(Font(R.font.font_extra_bold)),
                             style = MaterialTheme.typography.bodyMedium
@@ -292,46 +289,43 @@ fun AbacusFreeModeScreen(
             // Current target number (guided mode only)
             if (!isFreeModeOn) {
                 Box(
-                    modifier = Modifier.padding(bottom = 8.dp)
-                        .fillMaxWidth(),
-                    contentAlignment = Alignment.Center       // vertical center for all children
+                    modifier = Modifier
+                        .padding(bottom = 8.dp)
+                        .fillMaxWidth(), contentAlignment = Alignment.Center       // vertical center for all children
                 ) {
 
                     // 1️⃣ Left aligned text
-                    Box (modifier = Modifier.align(Alignment.CenterStart)) {
+                    Box(modifier = Modifier.align(Alignment.CenterStart)) {
                         Column(
-                            modifier = Modifier
-                                .align(Alignment.Center), // Center the column vertically & horizontally inside parent
+                            modifier = Modifier.align(Alignment.Center), // Center the column vertically & horizontally inside parent
                             horizontalAlignment = Alignment.CenterHorizontally // Center text inside column
                         ) {
                             Text(
-                                text = "$randomRangeLow to $randomRangeHigh",
-                                color = Color.Red,
-                                fontWeight = FontWeight.ExtraBold,
-                                style = MaterialTheme.typography.titleSmall,
-                                fontFamily = FontFamily(Font(R.font.font_bold))
+                                text = "$fromNumber to $toNumber", color = Color.Red, fontWeight = FontWeight.ExtraBold, style = MaterialTheme.typography.titleSmall, fontFamily = FontFamily(Font(R.font.font_bold))
                             )
 
                             Text(
-                                text = "Numbers generate between",
-                                color = Color.Black,
-                                fontWeight = FontWeight.SemiBold,
-                                style = MaterialTheme.typography.bodySmall,
-                                fontFamily = FontFamily(Font(R.font.font_semibold))
+                                text = "Numbers generate between", color = Color.Black, fontWeight = FontWeight.SemiBold, style = MaterialTheme.typography.bodySmall, fontFamily = FontFamily(Font(R.font.font_semibold))
                             )
                         }
                     }
 
                     // 2️⃣ Center aligned text
-                    Text(
-                        text = numberToMatch.toString(),
-                        modifier = Modifier.align(Alignment.Center),
-                        style = MaterialTheme.typography.headlineLarge,
-                        fontWeight = FontWeight.ExtraBold,
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                        color = AbacusTheme.colorPreset(selectedTheme).buttonColor,
-                        textAlign = TextAlign.Center
-                    )
+                    Row(
+                        modifier = Modifier.align(Alignment.Center), // Center the column vertically & horizontally inside parent
+                        verticalAlignment = Alignment.CenterVertically // Center text inside column
+                    ) {
+
+                        Text(
+                            text = "Set :", style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold)), color = AbacusTheme.colorPreset(selectedTheme).buttonColor, textAlign = TextAlign.Center
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = numberToMatch.toString(), style = MaterialTheme.typography.headlineLarge, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold)), color = AbacusTheme.colorPreset(selectedTheme).buttonColor, textAlign = TextAlign.Center
+                        )
+                    }
+
+
                 }
             }
         }
@@ -346,7 +340,7 @@ fun AbacusFreeModeScreen(
                 numberOfColumns = 13,
                 abacusData = abacusCalc,
                 rodMovements = rodMovements,
-                showDirectionHints = showDirectionHints,
+                showDirectionHints = isShowDirection,
                 showHighlighter = showHighlighter,
                 selectedTheme = selectedTheme,
                 screenType = AppConstants.AbacusScreen.screenTypeFreeMode,

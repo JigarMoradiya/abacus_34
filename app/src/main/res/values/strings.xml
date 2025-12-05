@@ -861,6 +861,7 @@
     <string name="math_pyramid_desc">Add numbers to build the pyramid!</string>
     <string name="sudoku_desc">Fill the grid with logic!</string>
     <string name="number_sequence_desc"><![CDATA[Slide & order the numbers!]]></string>
+    <string name="free_mode_settings">Free Mode Settings</string>
 
 
 </resources>

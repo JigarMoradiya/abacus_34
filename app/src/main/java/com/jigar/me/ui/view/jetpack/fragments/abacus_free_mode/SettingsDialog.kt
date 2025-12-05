@@ -32,6 +32,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -68,7 +69,7 @@ fun SettingsDialog(
     val screenWidth = configuration.screenWidthDp.dp
     val dialogWidth = remember(screenWidth) {
         // 80% of screen, max 600, min 320
-        val target = screenWidth * 0.6f
+        val target = screenWidth * 0.7f
         target.coerceIn(320.dp, 600.dp)
     }
 
@@ -99,7 +100,7 @@ fun SettingsDialog(
                     Row {
 
                         Text(
-                            "Settings",
+                            stringResource(R.string.free_mode_settings),
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
@@ -114,7 +115,7 @@ fun SettingsDialog(
                         ) {
 
                             Text(
-                                text = "Update",
+                                text = stringResource(R.string.update),
                                 style = MaterialTheme.typography.titleSmall,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily(Font(R.font.font_bold)),
@@ -196,7 +197,7 @@ fun SettingsDialog(
                             .padding(start = 16.dp, end = 16.dp)
                     ) {
                         Text(
-                            "Want to learn the abacus parts and how it works?\uD83E\uDDE0\uD83E\uDDEE",
+                            "Want to learn the abacus parts and how it works? \uD83E\uDDE0",
                             modifier = Modifier.weight(1f),
                             fontWeight = FontWeight.SemiBold,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
@@ -231,7 +232,7 @@ fun SettingsDialog(
                             modifier = Modifier.fillMaxWidth()
                         ) {
                             Text(
-                                "Should I clear the abacus after you finish a number?\uD83E\uDDF9\uD83E\uDDEE",
+                                "Should I clear the abacus after you finish a number? \uD83E\uDDF9",
                                 modifier = Modifier.weight(1f),
                                 fontWeight = FontWeight.SemiBold,
                                 fontFamily = FontFamily(Font(R.font.font_semibold)),
@@ -251,7 +252,7 @@ fun SettingsDialog(
                             modifier = Modifier.fillMaxWidth()
                         ) {
                             Text(
-                                "Should I show numbers in a fun random order?\uD83C\uDFB2✨",
+                                "Should I show numbers in a fun random order? \uD83C\uDFB2",
                                 modifier = Modifier.weight(1f),
                                 fontWeight = FontWeight.SemiBold,
                                 fontFamily = FontFamily(Font(R.font.font_semibold)),
@@ -273,7 +274,7 @@ fun SettingsDialog(
                             modifier = Modifier.fillMaxWidth().padding(top = 4.dp)
                         ) {
                             Text(
-                                "Choose the numbers you want to play with! \uD83D\uDD22\uD83C\uDFAF",
+                                "Choose the numbers range you want to play with! \uD83D\uDD22",
                                 modifier = Modifier.weight(1f),
                                 fontWeight = FontWeight.SemiBold,
                                 fontFamily = FontFamily(Font(R.font.font_semibold)),
