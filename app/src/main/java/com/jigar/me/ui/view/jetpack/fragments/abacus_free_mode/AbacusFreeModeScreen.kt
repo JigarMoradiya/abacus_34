@@ -53,7 +53,7 @@ import com.jigar.me.ui.view.jetpack.abacus_base.components.AbacusWithDecimal
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.LocalPreferencesHelper
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.MathUtils
+import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

@@ -38,7 +38,7 @@ import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.jetpack.abacus_base.freeModeHighlightSteps
 import com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.AbacusFreeModeScreen
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.MathUtils
+import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
 
 @Composable
 fun AbacusWithDecimal(

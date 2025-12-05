@@ -1,17 +1,10 @@
-package com.jigar.me.utils
+package com.jigar.me.ui.view.jetpack.abacus_base.utils
 
-import android.util.Log
 import com.jigar.me.data.local.data.Movement
 import com.jigar.me.data.local.data.RodMovement
 
 class MathUtils {
-    // Same logic as your Swift calculateRodMovements(from:to:rods:isForRightRods:)
-    fun calculateRodMovements(
-        from: Int,
-        to: Int,
-        rods: Int,
-        isForRightRods: Boolean = false
-    ): List<RodMovement> {
+    fun calculateRodMovements(from: Int, to: Int, rods: Int, isForRightRods: Boolean = false): List<RodMovement> {
 
         val fromStr = from.toString().padStart(rods, '0')
         val toStr = to.toString().padStart(rods, '0')
@@ -21,7 +14,7 @@ class MathUtils {
 
         val result = mutableListOf<RodMovement>()
 
-        for (i in 0 until rods) {
+        (0 until rods).forEach { i ->
             val rodIndex = rods - 1 - i   // rightmost is least significant
             val realIndex = if (isForRightRods) 12 - i else 6 - i
 

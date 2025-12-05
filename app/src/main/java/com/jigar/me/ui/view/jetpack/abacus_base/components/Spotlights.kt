@@ -79,7 +79,7 @@ fun SpotlightOverlay(
                 topLeft = Offset(item.rect.left, item.rect.top),
                 size = Size(item.rect.width, item.rect.height),
                 blendMode = BlendMode.Clear,      // THIS NOW WORKS!
-                cornerRadius = CornerRadius(20f)
+                cornerRadius = CornerRadius(16f)
             )
         }
 
@@ -170,8 +170,8 @@ fun TooltipBox(
             }
             .offset { IntOffset(animatedX.toInt(), animatedY.toInt()) }
             .onGloballyPositioned { tooltipSize = it.size }
-            .background(Color.White, RoundedCornerShape(20.dp))
-            .padding(16.dp)
+            .background(Color.White, RoundedCornerShape(16.dp))
+            .padding(horizontal = 16.dp, vertical = 12.dp)
     ) {
         HtmlText(html = item.text)
     }
