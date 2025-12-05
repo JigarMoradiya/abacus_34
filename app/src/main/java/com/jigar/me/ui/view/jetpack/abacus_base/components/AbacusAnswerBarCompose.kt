@@ -41,6 +41,7 @@ import com.jigar.me.ui.view.jetpack.abacus_base.ColorPresetModel
 @Composable
 fun AbacusAnswerBarCompose(
     answer: String,
+    theme: String,
     screenType: String,
     abacusType: String?,
     isDisplayAbacusNumber: Boolean,
@@ -56,7 +57,7 @@ fun AbacusAnswerBarCompose(
     val centerBoxValueTextSize = ((if (screenType == "ccm") 18 else 24) * scale).sp
     val centerBoxHeight = ((if (screenType == "ccm") 48 else 60) * scale).dp
 
-    val theme = AbacusTheme.colorPreset("poligon_rainbow")
+    val theme = AbacusTheme.colorPreset(theme)
 
     val nextOpacity = when {
         screenType == "free_mode" -> 0.2f

@@ -152,11 +152,11 @@ object AppConstants {
 
             var isSetTheam = "isSetTheam"
             var isHomeTourWatch = "isHomeTourWatch"
-            var appOpenCount = "appOpenCount"
             var isFreeModeTourWatch = "isFreeModeTourWatch"
             var Theam = "Theam"
             var TheamTempView = "TheamTempView"
             const val theam_Poligon_default = "Poligon" // black
+            const val theam_Poligon_Rainbow = "poligon_rainbow"
             const val theam_Poligon_Blue = "poligon_blue"
             const val theam_Poligon_Blue_Sky = "poligon_blue_sky"
             const val theam_Poligon_Orange = "poligon_orange"

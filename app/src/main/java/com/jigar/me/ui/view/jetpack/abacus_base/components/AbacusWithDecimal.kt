@@ -58,6 +58,7 @@ fun AbacusWithDecimal(
     isFreeModeOn: Boolean = false,
     @SuppressLint("ModifierParameter") modifier: Modifier = Modifier,
 ) {
+    Log.e("jigarAbacusFreeMode","selectedTheme = "+selectedTheme)
     val dim = remember(screenType, isFreeModeOn) {
         AbacusTheme.dimensionPreset(screenType = screenType, isFreeModeOn)
     }
@@ -81,6 +82,7 @@ fun AbacusWithDecimal(
             Brush.verticalGradient(listOf(preset.abacusTopGradient, preset.abacusCenterGradient, preset.abacusBottomGradient))
         }
     }
+    Log.e("jigarAbacusFreeMode","strokeBrush = "+ Gson().toJson(strokeBrush))
 
     val textColor = if (selectedTheme == "poligon_rainbow") {
         Color(0xFF5D4037)
@@ -99,6 +101,7 @@ fun AbacusWithDecimal(
 
             AbacusAnswerBarCompose(
                 answer = abacusData.displayValue,
+                theme = selectedTheme,
                 screenType = screenType,
                 abacusType = null,
                 isDisplayAbacusNumber = true,

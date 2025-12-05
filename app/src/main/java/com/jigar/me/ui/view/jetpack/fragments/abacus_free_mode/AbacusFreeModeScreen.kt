@@ -117,8 +117,7 @@ fun AbacusFreeModeScreen(
     var showFooterPopup by remember { mutableStateOf(false) }
     var numberToMatch by remember { mutableIntStateOf(0) }
     var rodMovements by remember { mutableStateOf(listOf<RodMovement>()) }
-    val selectedTheme = "poligon_rainbow"
-
+    val selectedTheme = prefs.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default)
     var showHighlighter by remember { mutableStateOf(false) }
 
     // ----- HELPER: pick new target number -----

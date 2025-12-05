@@ -68,12 +68,12 @@ fun ColumnViewCompose(
     val columnState = abacusData.abacusState[columnNumber]
 
     val columnColor = if (imageName.contains("poligon_rainbow")) {
-        ColorPresets.getMixColorListOfPoligon()[columnNumber].copy(alpha = 0.6f)
+        ColorPresets.getMixColorListOfPoligon()[columnNumber].copy(alpha = 0.6f).copy(alpha = 0.2f)
     } else {
-        AbacusTheme.colorPreset(imageName).abacusCenterGradient
+        AbacusTheme.colorPreset(imageName).columnColors.copy(alpha = 0.3f)
     }
 
-    // 🔥 Compute active beads only ONCE per column
+    // Compute active beads only ONCE per column
     val columnSize = abacusData.abacusState[columnNumber]
     val arr = MutableList(columnSize.size) { false }
     if (columnSize[1]) arr[1] = true
@@ -91,7 +91,7 @@ fun ColumnViewCompose(
                 .padding(horizontal = columnSpaces)
                 .width(beamHeight / 2)
                 .height(totalHeight)
-                .background(columnColor.copy(alpha = 0.2f))
+                .background(columnColor)
                 .alpha(
                     when {
                         showHighlighter && currentSpot == 1 -> 1f
@@ -146,7 +146,7 @@ private fun BeadWithArrow(
     beadIsActive: Boolean
 ) {
     val columnState = abacusData.abacusState[columnNumber]
-    val isPolygonTheme = remember(imageName) { imageName.contains("poligon") }
+    val isPolygonTheme = remember(imageName) { imageName.contains("poligon",true) }
 
     // 🔥 Preload resources
     val imgRes = remember(beadIsActive, index, isPolygonTheme) {
@@ -304,17 +304,23 @@ private fun BeadWithArrow(
 
 @DrawableRes
 private fun faceOpenRes(index: Int): Int = when (index) {
-    0 -> R.drawable.face_red_open
-    1 -> R.drawable.face_pink_open
-    2 -> R.drawable.face_orange_open
-    3 -> R.drawable.face_blue_open
-    4 -> R.drawable.face_green_open
+    1 -> R.drawable.face_red_open
+    2 -> R.drawable.face_pink_open
+    3 -> R.drawable.face_orange_open
+    4 -> R.drawable.face_blue_open
+    5 -> R.drawable.face_green_open
     else -> R.drawable.face_gray_close
 }
 
 @DrawableRes
-private fun faceCloseRes(@Suppress("UNUSED_PARAMETER") index: Int): Int =
-    R.drawable.face_gray_close
+private fun faceCloseRes(index: Int): Int = when (index) {
+    0 -> R.drawable.face_red_close
+    3 -> R.drawable.face_pink_close
+    4 -> R.drawable.face_orange_close
+    5 -> R.drawable.face_blue_close
+    6 -> R.drawable.face_green_close
+    else -> R.drawable.face_gray_close
+}
 
 @Composable
 fun ArrowForBeadFull(
@@ -333,7 +339,7 @@ fun ArrowForBeadFull(
             modifier = Modifier
                 .width(beadWidth)
                 .height(beadHeight + if (isIndex2) beamHeight else 0.dp),
-            contentAlignment = if (imageName.contains("poligon")) Alignment.Center else Alignment.TopStart
+            contentAlignment = if (imageName.contains("poligon",true)) Alignment.Center else Alignment.TopStart
         ) {
             Icon(
                 imageVector = if (dir == "up") Icons.Default.ArrowUpward else Icons.Default.ArrowDownward,
