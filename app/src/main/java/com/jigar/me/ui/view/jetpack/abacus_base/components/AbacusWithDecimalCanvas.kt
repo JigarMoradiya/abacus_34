@@ -1,6 +1,9 @@
 package com.jigar.me.ui.view.jetpack.abacus_base.components
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.graphics.Bitmap
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
@@ -30,6 +33,17 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.foundation.Canvas
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.nativeCanvas
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.unit.Density
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.IntSize
 import com.jigar.me.R
 import com.jigar.me.data.local.data.Movement
 import com.jigar.me.data.local.data.RodMovement
@@ -39,6 +53,8 @@ import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.jetpack.abacus_base.ColorPresets
 import com.jigar.me.ui.view.jetpack.abacus_base.freeModeHighlightSteps
 import com.jigar.me.utils.AppConstants
+import kotlin.math.abs
+import androidx.core.graphics.createBitmap
 
 // ─────────────────────────────────────────────────────────────
 // Canvas-based AbacusWithDecimal
@@ -48,6 +64,7 @@ import com.jigar.me.utils.AppConstants
 //  - Keeps answer bar, frame, number strip, and spotlight logic
 // ─────────────────────────────────────────────────────────────
 
+@SuppressLint("LocalContextResourcesRead")
 @Composable
 fun AbacusWithDecimalCanvas(
     selectedTheme: String,
@@ -65,6 +82,17 @@ fun AbacusWithDecimalCanvas(
     onSpotChange: (Int?) -> Unit,
     @SuppressLint("ModifierParameter") modifier: Modifier = Modifier,
 ) {
+
+    val context = LocalContext.current
+
+    val arrowUp = remember {
+        drawableToImageBitmap(context, R.drawable.ic_abacus_arrow_up)
+    }
+    val arrowDown = remember {
+        drawableToImageBitmap(context, R.drawable.ic_abacus_arrow_down)
+    }
+
+
     val dim = AbacusTheme.dimensionPreset(
         screenType = screenType,
         isFreeModeOn = isFreeModeOn
@@ -151,6 +179,35 @@ fun AbacusWithDecimalCanvas(
             )
         }
 
+        val context = LocalContext.current
+
+        // Preload polygon bead image
+        val beadPolygonGray = remember {
+            ImageBitmap.imageResource(context.resources, R.drawable.poligon_gray)
+        }
+
+        // Preload face-open beads
+        val faceOpen = remember {
+            mapOf(
+                1 to ImageBitmap.imageResource(context.resources, R.drawable.face_red_open),
+                2 to ImageBitmap.imageResource(context.resources, R.drawable.face_pink_open),
+                3 to ImageBitmap.imageResource(context.resources, R.drawable.face_orange_open),
+                4 to ImageBitmap.imageResource(context.resources, R.drawable.face_blue_open),
+                5 to ImageBitmap.imageResource(context.resources, R.drawable.face_green_open)
+            )
+        }
+
+        // Preload face-close beads
+        val faceClose = remember {
+            mapOf(
+                0 to ImageBitmap.imageResource(context.resources, R.drawable.face_red_close),
+                3 to ImageBitmap.imageResource(context.resources, R.drawable.face_pink_close),
+                4 to ImageBitmap.imageResource(context.resources, R.drawable.face_orange_close),
+                5 to ImageBitmap.imageResource(context.resources, R.drawable.face_blue_close),
+                6 to ImageBitmap.imageResource(context.resources, R.drawable.face_green_close)
+            )
+        }
+
         // --- Inner rods & beads on Canvas ---
         Canvas(
             modifier = Modifier
@@ -184,7 +241,7 @@ fun AbacusWithDecimalCanvas(
                         onDragEnd = {
                             val col = startCol
                             val idx = startIndex
-                            if (col != null && idx != null && kotlin.math.abs(totalDy) > thresholdPx) {
+                            if (col != null && idx != null && abs(totalDy) > thresholdPx) {
                                 if (totalDy < 0) {
                                     if (abacusData.canMoveUp(idx, col)) {
                                         abacusData.moveBeadUp(idx, col)
@@ -213,7 +270,12 @@ fun AbacusWithDecimalCanvas(
                 showHighlighter = showHighlighter,
                 currentSpot = currentSpot,
                 rodMovementByRod = rodMovementByRod,
-                showDirectionHint = showDirectionHint
+                showDirectionHint = showDirectionHint,
+                beadPolygonGray = beadPolygonGray,
+                faceOpen = faceOpen,
+                faceClose = faceClose,
+                arrowUPBitmap = arrowUp,
+                arrowDownBitmap = arrowDown
             )
         }
 
@@ -554,57 +616,69 @@ data class AbacusCanvasGeometry(
     }
 
     companion object {
-        fun build(dim: AbacusDimensionModel, numberOfColumns: Int, density: androidx.compose.ui.unit.Density): AbacusCanvasGeometry {
-            return with(density) {
-                val beadWidthPx = dim.beadWidth.toPx()
-                val beadHeightPx = dim.beadHeight.toPx()
-                val beamHeightPx = dim.beamHeight.toPx()
-                val columnSpacesPx = dim.columnSpaces.toPx()
-                val extraSpacePx = dim.extraSpace.toPx()
+        fun build(dim: AbacusDimensionModel, numberOfColumns: Int, density: Density): AbacusCanvasGeometry = with(density) {
 
-                val colWidth = beadWidthPx + columnSpacesPx * 2f
-                val centers = List(numberOfColumns) { index ->
-                    columnSpacesPx + beadWidthPx / 2f + index * colWidth
-                }
+            val beadW = dim.beadWidth.toPx()
+            val beadH = dim.beadHeight.toPx()
+            val beamH = dim.beamHeight.toPx()
+            val spacing = dim.columnSpaces.toPx()
+            val extra = dim.extraSpace.toPx()
 
-                val rowTop = FloatArray(7)
-                val rowBottom = FloatArray(7)
-
-                var y = extraSpacePx
-                // index 0
-                rowTop[0] = y
-                rowBottom[0] = y + beadHeightPx
-                y = rowBottom[0]
-
-                // index 1
-                rowTop[1] = y
-                rowBottom[1] = y + beadHeightPx
-                y = rowBottom[1]
-
-                // index 2: beam + bead
-                rowTop[2] = y + beamHeightPx       // bead starts after beam
-                rowBottom[2] = rowTop[2] + beadHeightPx
-                y = rowBottom[2]
-
-                for (i in 3..6) {
-                    rowTop[i] = y
-                    rowBottom[i] = y + beadHeightPx
-                    y = rowBottom[i]
-                }
-
-                AbacusCanvasGeometry(
-                    columnCentersX = centers,
-                    rowTop = rowTop.toList(),
-                    rowBottom = rowBottom.toList(),
-                    beadWidthPx = beadWidthPx,
-                    beadHeightPx = beadHeightPx,
-                    beamHeightPx = beamHeightPx,
-                    columnSpacesPx = columnSpacesPx,
-                    extraSpacePx = extraSpacePx
-                )
+            // Column centers
+            val colWidth = beadW + spacing * 2
+            val centers = List(numberOfColumns) { i ->
+                spacing + beadW / 2 + i * colWidth
             }
+
+            // -------------------------
+            // VERTICAL ROW POSITIONS
+            // -------------------------
+
+            val rowTop = FloatArray(7)
+            val rowBottom = FloatArray(7)
+
+            var y = extra
+
+            // Row 0 (upper bead 1)
+            rowTop[0] = y
+            rowBottom[0] = y + beadH
+            y = rowBottom[0]
+
+            // Row 1 (upper bead 2)
+            rowTop[1] = y
+            rowBottom[1] = y + beadH
+            y = rowBottom[1]
+
+            // Beam before row 2 — Center the beam
+            val beamTop = y
+            val bead2Top = beamTop + beamH
+
+            // Row 2 (first lower bead)
+            rowTop[2] = bead2Top
+            rowBottom[2] = bead2Top + beadH
+
+            y = rowBottom[2]
+
+            // Row 3–6 (remaining lower beads)
+            for (i in 3..6) {
+                rowTop[i] = y
+                rowBottom[i] = y + beadH
+                y = rowBottom[i]
+            }
+
+            return AbacusCanvasGeometry(
+                columnCentersX = centers,
+                rowTop = rowTop.toList(),
+                rowBottom = rowBottom.toList(),
+                beadWidthPx = beadW,
+                beadHeightPx = beadH,
+                beamHeightPx = beamH,
+                columnSpacesPx = spacing,
+                extraSpacePx = extra
+            )
         }
     }
+
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -620,9 +694,29 @@ private fun DrawScope.drawAbacusColumns(
     showHighlighter: Boolean,
     currentSpot: Int?,
     rodMovementByRod: Map<Int, RodMovement>,
-    showDirectionHint: Boolean
+    showDirectionHint: Boolean,
+    beadPolygonGray: ImageBitmap,
+    faceOpen: Map<Int, ImageBitmap>,
+    faceClose: Map<Int, ImageBitmap>,
+    arrowUPBitmap : ImageBitmap,
+    arrowDownBitmap : ImageBitmap,
 ) {
     val preset = AbacusTheme.colorPreset(selectedTheme)
+    val isPolygonTheme = selectedTheme.contains("poligon", ignoreCase = true)
+    val isRainbow = selectedTheme.equals("poligon_rainbow", ignoreCase = true)
+
+    val beadH = geometry.beadHeightPx
+    val beamH = geometry.beamHeightPx
+    val extra = geometry.extraSpacePx
+
+    // Helper: Y of bead *top* for a given index (0..6)
+    fun beadTopForIndex(idx: Int): Float {
+        return 0.5F + extra + beadH * idx + if (idx >= 2) beamH else 0f
+    }
+
+    // Beam band is between row 1 and row 2
+    val beamBandTop = extra + beadH * 2        // bottom of row 1
+    val beamBandBottom = beamBandTop + beamH
 
     for (col in 0 until numberOfColumns) {
         val columnState = abacusData.abacusState[col]
@@ -633,16 +727,16 @@ private fun DrawScope.drawAbacusColumns(
                 col == numberOfColumns - 10 ||
                 col == numberOfColumns - 13
 
-        val columnColor = if (selectedTheme.contains("poligon_rainbow")) {
-            ColorPresets.getMixColorListOfPoligon()[col].copy(alpha = 0.2f)
-        } else {
-            preset.columnColors.copy(alpha = 0.3f)
+        val columnColor = when {
+            isRainbow -> ColorPresets.getMixColorListOfPoligon()[col].copy(alpha = 0.2f)
+            isPolygonTheme -> preset.columnColors.copy(alpha = 0.3f)
+            else -> preset.columnColors.copy(alpha = 0.3f)
         }
 
         val xCenter = geometry.columnCentersX[col]
-        val stickWidth = geometry.beamHeightPx / 2f
+        val stickWidth = beamH / 2f
 
-        // Stick
+        // ───────── Stick (rod) ─────────
         drawRoundRect(
             color = columnColor,
             topLeft = Offset(
@@ -661,250 +755,194 @@ private fun DrawScope.drawAbacusColumns(
             }
         )
 
-        // Compute "active" mask: same logic as ColumnViewCompose
-        val arr = MutableList(columnState.size) { false }
-        if (columnState[1]) arr[1] = true
-        for (i in 2 until columnState.size) {
-            if (columnState[i]) arr[i] = true else break
+        // Compute "active" mask (same as ColumnViewCompose)
+        val arr = MutableList(columnState.size) { false }.also { mask ->
+            if (columnState[1]) mask[1] = true
+            for (i in 2 until columnState.size) {
+                if (columnState[i]) mask[i] = true else break
+            }
         }
 
-        // Draw per row
-        for (idx in columnState.indices) {
-            val top = geometry.rowTop[idx]
-            val bottom = geometry.rowBottom[idx]
-            val centerY = (top + bottom) / 2f
+        // ───────── Beam band + red dot (shared for the column) ─────────
+        run {
+            val beamWidth = geometry.beadWidthPx + geometry.columnSpacesPx * 2f
 
-            // Beam row (index 2) has separate bar & red dot
-            if (idx == 2) {
-                // Beam background
-                val beamWidth = geometry.beadWidthPx + geometry.columnSpacesPx * 2f
-                val beamHeightHalf = geometry.beamHeightPx / 2f
-                val beamTop = top - geometry.beamHeightPx   // center beam between 1 and 2
+            drawRoundRect(
+                color = preset.abacusCenterGradient.copy(alpha = 0.3f),
+                topLeft = Offset(
+                    x = xCenter - beamWidth / 2f,
+                    y = beamBandTop + (beamH / 4f)
+                ),
+                size = Size(
+                    width = beamWidth,
+                    height = beamH / 2f
+                ),
+                cornerRadius = CornerRadius(8f, 8f)
+            )
 
-                drawRoundRect(
-                    color = preset.abacusCenterGradient.copy(alpha = 0.3f),
-                    topLeft = Offset(
-                        x = xCenter - beamWidth / 2f,
-                        y = beamTop + beamHeightHalf / 2f
-                    ),
-                    size = Size(
-                        width = beamWidth,
-                        height = beamHeightHalf
-                    ),
-                    cornerRadius = CornerRadius(beamHeightHalf / 2f, beamHeightHalf / 2f)
-                )
+            if (isRedDotColumn) {
+                val dotRadius =
+                    if (isCentralColumn) beamH / 2f else beamH * 0.25f
 
-                if (isRedDotColumn) {
-                    val dotRadius = if (isCentralColumn) geometry.beamHeightPx / 2f else geometry.beamHeightPx * 0.25f
-                    drawCircle(
-                        color = if (isCentralColumn) Color.White else preset.buttonColor,
-                        radius = dotRadius,
-                        center = Offset(
-                            x = xCenter,
-                            y = beamTop + geometry.beamHeightPx / 2f
-                        )
+                drawCircle(
+                    color = if (isCentralColumn) Color.White else preset.buttonColor,
+                    radius = dotRadius,
+                    center = Offset(
+                        x = xCenter,
+                        y = beamBandTop + (beamH / 2f)
                     )
-                }
+                )
             }
+        }
 
-            // If bead is "down" (visible slot) draw it
+        // ───────── Per bead index (0..6) ─────────
+        columnState.indices.forEach { idx ->
+            val beadTop = beadTopForIndex(idx)
+
+            // ---------- Bead image ----------
             if (columnState[idx]) {
-                val beadColor =
-                    if (selectedTheme.contains("poligon", ignoreCase = true)) {
-                        // approximate polygon tint: lighter when active
-                        val base = if (selectedTheme == "poligon_rainbow") {
-                            ColorPresets.getMixColorListOfPoligon()[col]
-                        } else {
-                            preset.abacusTopGradient
-                        }
-                        if (arr[idx]) base else base.copy(alpha = 0.6f)
+                val beadIsActive = arr[idx]
+
+                val imageToDraw: ImageBitmap =
+                    if (isPolygonTheme) {
+                        beadPolygonGray
+                    } else if (beadIsActive) {
+                        faceOpen[idx] ?: faceClose[0]!!
                     } else {
-                        // non polygon themes: simple solid (faces would need images)
-                        if (arr[idx]) preset.buttonColor else preset.buttonColor.copy(alpha = 0.5f)
+                        faceClose[idx] ?: faceClose[0]!!
                     }
 
-                drawRoundRect(
-                    color = beadColor,
-                    topLeft = Offset(
-                        x = xCenter - geometry.beadWidthPx / 2f,
-                        y = centerY - geometry.beadHeightPx / 2f
+                val baseColor =
+                    if (isRainbow) ColorPresets.getMixColorListOfPoligon()[col]
+                    else preset.abacusTopGradient
+
+                val tintColor =
+                    if (!isPolygonTheme) Color.White
+                    else if (beadIsActive)
+                        baseColor.copy(alpha = 0.9f)   // active, brighter
+                    else
+                        baseColor.copy(alpha = 0.6f)   // inactive, dimmer
+
+                drawImage(
+                    image = imageToDraw,
+                    srcOffset = IntOffset.Zero,
+                    srcSize = IntSize(imageToDraw.width, imageToDraw.height),
+                    dstOffset = IntOffset(
+                        (xCenter - geometry.beadWidthPx / 2f).toInt(),
+                        beadTop.toInt()
                     ),
-                    size = Size(geometry.beadWidthPx, geometry.beadHeightPx),
-                    cornerRadius = CornerRadius(geometry.beadHeightPx / 2f, geometry.beadHeightPx / 2f)
+                    dstSize = IntSize(
+                        geometry.beadWidthPx.toInt(),
+                        geometry.beadHeightPx.toInt()
+                    ),
+                    colorFilter = if (isPolygonTheme)
+                        ColorFilter.tint(tintColor, BlendMode.SrcIn)
+                    else null
                 )
             }
 
-            // ============== DRAW ARROWS (Canvas Version) ==============
+            // ───────── Arrows (direction hints) ─────────
             if (showDirectionHint) {
                 val movement = rodMovementByRod[col]?.movement
                 if (movement != null) {
+                    val arrowColor = AbacusTheme.colorPreset(selectedTheme).arrowColor
                     drawArrowForBeadCanvas(
                         colCenterX = xCenter,
                         rowIndex = idx,
                         movement = movement,
                         geometry = geometry,
-                        isPolygon = selectedTheme.contains("poligon", ignoreCase = true)
+                        isPolygon = isPolygonTheme,
+                        arrowColor = arrowColor,
+                        arrowUp = arrowUPBitmap,
+                        arrowDown = arrowDownBitmap,
                     )
                 }
             }
         }
-
-
-
     }
 }
 
-private fun DrawScope.drawArrowForBeadCanvas(
+fun drawableToImageBitmap(context: Context, resId: Int): ImageBitmap {
+    val drawable = AppCompatResources.getDrawable(context, resId)!!
+
+    val bmp = createBitmap(drawable.intrinsicWidth.takeIf { it > 0 } ?: 64, drawable.intrinsicHeight.takeIf { it > 0 } ?: 64)
+
+    val canvas = android.graphics.Canvas(bmp)
+    drawable.setBounds(0, 0, canvas.width, canvas.height)
+    drawable.draw(canvas)
+
+    return bmp.asImageBitmap()
+}
+
+
+// ----------------------------------------------------------------------
+// Draw arrows on Canvas (equivalent of ArrowForBeadFull, but for Canvas)
+// ----------------------------------------------------------------------
+fun DrawScope.drawArrowForBeadCanvas(
     colCenterX: Float,
     rowIndex: Int,
     movement: Movement,
     geometry: AbacusCanvasGeometry,
-    isPolygon: Boolean
+    isPolygon: Boolean,
+    arrowColor: Color,
+    arrowUp: ImageBitmap,
+    arrowDown: ImageBitmap
 ) {
-//    val arrowColor = preset.arrowColor
-    val arrowColor = Color.Black
-    val beadW = geometry.beadWidthPx
-    val beadH = geometry.beadHeightPx
-    val beamH = geometry.beamHeightPx
+    val arrowSize = (geometry.beadHeightPx * 0.70f).toInt()
 
-    // ---- Compute base Y using row geometry ----
-    val top = geometry.rowTop[rowIndex]
-    val bottom = geometry.rowBottom[rowIndex]
-    val centerY = (top + bottom) / 2f
+    fun drawArrow(isUp: Boolean) {
+        val img = if (isUp) arrowUp else arrowDown
+        val centerY = geometry.rowTop[rowIndex] + geometry.beadHeightPx / 2f
 
-    // ---- Arrow size ----
-    val arrowLength = beadH * 0.55f
-    val arrowWidth = beadW * 0.25f
-
-    // ---- Draw helper ----
-    fun drawArrowUp() {
-        val start = Offset(colCenterX, centerY + arrowLength * 0.35f)
-        val end = Offset(colCenterX, centerY - arrowLength * 0.35f)
-
-        drawLine(
-            color = arrowColor,
-            start = start,
-            end = end,
-            strokeWidth = arrowWidth / 3f,
-            cap = StrokeCap.Round
-        )
-
-        // arrow head
-        drawLine(
-            color = arrowColor,
-            start = end,
-            end = end + Offset(-arrowWidth / 2f, arrowWidth / 1.5f),
-            strokeWidth = arrowWidth / 3f,
-            cap = StrokeCap.Round
-        )
-        drawLine(
-            color = arrowColor,
-            start = end,
-            end = end + Offset(arrowWidth / 2f, arrowWidth / 1.5f),
-            strokeWidth = arrowWidth / 3f,
-            cap = StrokeCap.Round
+        drawImage(
+            image = img,
+            dstOffset = IntOffset(
+                (colCenterX - arrowSize / 2f).toInt(),
+                (centerY - arrowSize / 2f).toInt()
+            ),
+            dstSize = IntSize(arrowSize, arrowSize),
+            colorFilter = ColorFilter.tint(arrowColor)
         )
     }
 
-    fun drawArrowDown() {
-        val start = Offset(colCenterX, centerY - arrowLength * 0.35f)
-        val end = Offset(colCenterX, centerY + arrowLength * 0.35f)
-
-        drawLine(
-            color = arrowColor,
-            start = start,
-            end = end,
-            strokeWidth = arrowWidth / 3f,
-            cap = StrokeCap.Round
-        )
-
-        drawLine(
-            color = arrowColor,
-            start = end,
-            end = end + Offset(-arrowWidth / 2f, -arrowWidth / 1.5f),
-            strokeWidth = arrowWidth / 3f,
-            cap = StrokeCap.Round
-        )
-        drawLine(
-            color = arrowColor,
-            start = end,
-            end = end + Offset(arrowWidth / 2f, -arrowWidth / 1.5f),
-            strokeWidth = arrowWidth / 3f,
-            cap = StrokeCap.Round
-        )
-    }
-
-    // ======================================================
-    // 1️⃣ UPPER BEADS
-    // ======================================================
+    // -------------------- UPPER BEADS --------------------
     if (rowIndex == 0 && movement.upperDown) {
-        drawArrowDown()
-        return
+        drawArrow(false); return
     }
     if (rowIndex == 1 && movement.upperUp) {
-        drawArrowUp()
-        return
+        drawArrow(true); return
     }
 
-    // ======================================================
-    // 2️⃣ LOWER BEADS — DOWN
-    // ======================================================
+    // -------------------- LOWER BEADS DOWN --------------------
     if (movement.lowerDown > 0) {
-        val down = movement.lowerDown
+        val d = movement.lowerDown
         val old = movement.lowerOldValue
+        val idx = rowIndex
 
-        if (old >= down) {
-            // ↓ your exact if-logic from BeadWithArrow ↓
-            when (down) {
-                1 -> when (old) {
-                    1 -> if (rowIndex == 2) drawArrowDown()
-                    2 -> if (rowIndex == 3) drawArrowDown()
-                    3 -> if (rowIndex == 4) drawArrowDown()
-                    4 -> if (rowIndex == 5) drawArrowDown()
-                }
-                2 -> when (old) {
-                    2 -> if (rowIndex == 2 || rowIndex == 3) drawArrowDown()
-                    3 -> if (rowIndex == 3 || rowIndex == 4) drawArrowDown()
-                    4 -> if (rowIndex == 4 || rowIndex == 5) drawArrowDown()
-                }
-                3 -> when (old) {
-                    3 -> if (rowIndex in listOf(2,3,4)) drawArrowDown()
-                    4 -> if (rowIndex in listOf(3,4,5)) drawArrowDown()
-                }
-                4 -> when (old) {
-                    4 -> if (rowIndex in listOf(2,3,4,5)) drawArrowDown()
-                }
+        if (old >= d) {
+            when (d) {
+                1 -> if (idx == old + 1) drawArrow(false)
+                2 -> if (idx in listOf(old, old + 1)) drawArrow(false)
+                3 -> if (idx in listOf(old - 1, old, old + 1)) drawArrow(false)
+                4 -> if (idx in 2..5) drawArrow(false)
             }
         }
         return
     }
 
-    // ======================================================
-    // 3️⃣ LOWER BEADS — UP
-    // ======================================================
+    // -------------------- LOWER BEADS UP --------------------
     if (movement.lowerUp > 0) {
         val up = movement.lowerUp
         val old = movement.lowerOldValue
+        val idx = rowIndex
 
         when (old) {
-            0 -> when (up) {
-                1 -> if (rowIndex == 3) drawArrowUp()
-                2 -> if (rowIndex == 3 || rowIndex == 4) drawArrowUp()
-                3 -> if (rowIndex == 3 || rowIndex == 4 || rowIndex == 5) drawArrowUp()
-                4 -> if (rowIndex == 3 || rowIndex == 4 || rowIndex == 5 || rowIndex == 6) drawArrowUp()
-            }
-            1 -> when (up) {
-                1 -> if (rowIndex == 4) drawArrowUp()
-                2 -> if (rowIndex == 4 || rowIndex == 5) drawArrowUp()
-                3 -> if (rowIndex == 4 || rowIndex == 5 || rowIndex == 6) drawArrowUp()
-            }
-            2 -> when (up) {
-                1 -> if (rowIndex == 5) drawArrowUp()
-                2 -> if (rowIndex == 5 || rowIndex == 6) drawArrowUp()
-            }
-            3 -> when (up) {
-                1 -> if (rowIndex == 6) drawArrowUp()
-            }
+            0 -> if (idx in 3 until 3 + up) drawArrow(true)
+            1 -> if (idx in 4 until 4 + up) drawArrow(true)
+            2 -> if (idx in 5 until 5 + up) drawArrow(true)
+            3 -> if (idx == 6) drawArrow(true)
         }
     }
 }
+
+
