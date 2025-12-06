@@ -20,6 +20,9 @@ import com.jigar.me.data.local.db.inapp.sku.InAppSKUDao
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.data.pref.PreferenceInfo
 import com.jigar.me.data.pref.PreferencesHelper
+import com.jigar.me.ui.view.jetpack.abacus_base.ColorPresets
+import com.jigar.me.ui.view.jetpack.abacus_base.components.SpotlightRegistry
+import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.viewmodel.SudokuRepository
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.viewmodel.TargetRepository
 import com.jigar.me.utils.AppConstants
@@ -104,5 +107,10 @@ object AppModule {
     @Provides
     @Singleton
     fun provideTargetRepository(): TargetRepository = TargetRepository()
+
+
+    @Provides @Singleton fun provideMathUtils() = MathUtils
+    @Provides @Singleton fun provideSpotlightRegistry() = SpotlightRegistry
+    @Provides @Singleton fun provideColorPresets() = ColorPresets
 
 }

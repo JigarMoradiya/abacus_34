@@ -3,7 +3,7 @@ package com.jigar.me.ui.view.jetpack.abacus_base.utils
 import com.jigar.me.data.local.data.Movement
 import com.jigar.me.data.local.data.RodMovement
 
-class MathUtils {
+object MathUtils{
     fun calculateRodMovements(from: Int, to: Int, rods: Int, isForRightRods: Boolean = false): List<RodMovement> {
 
         val fromStr = from.toString().padStart(rods, '0')

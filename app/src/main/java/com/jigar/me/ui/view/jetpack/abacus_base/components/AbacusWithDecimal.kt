@@ -241,47 +241,27 @@ fun AbacusWithDecimal(
                     11 -> abacusData.setAbacusValueFromString("999000000")
 
                     12 -> {
-                        val list = MathUtils().calculateRodMovements(
-                            from = 0,
-                            to = 4,
-                            rods = 1,
-                            isForRightRods = false
-                        )
+                        val list = MathUtils.calculateRodMovements(from = 0, to = 4, rods = 1, isForRightRods = false)
                         onRodMovementChange(list)
                         onShowDirectionHintsChange(true)
                     }
 
                     13 -> {
-                        val list = MathUtils().calculateRodMovements(
-                            from = 0,
-                            to = 5,
-                            rods = 1,
-                            isForRightRods = false
-                        )
+                        val list = MathUtils.calculateRodMovements(from = 0, to = 5, rods = 1, isForRightRods = false)
                         onRodMovementChange(list)
                         onShowDirectionHintsChange(true)
                     }
 
                     14 -> {
                         abacusData.setAbacusValueFromString("4000000")
-                        val list = MathUtils().calculateRodMovements(
-                            from = 4,
-                            to = 0,
-                            rods = 1,
-                            isForRightRods = false
-                        )
+                        val list = MathUtils.calculateRodMovements(from = 4, to = 0, rods = 1, isForRightRods = false)
                         onRodMovementChange(list)
                         onShowDirectionHintsChange(true)
                     }
 
                     15 -> {
                         abacusData.setAbacusValueFromString("5000000")
-                        val list = MathUtils().calculateRodMovements(
-                            from = 5,
-                            to = 0,
-                            rods = 1,
-                            isForRightRods = false
-                        )
+                        val list = MathUtils.calculateRodMovements(from = 5, to = 0, rods = 1, isForRightRods = false)
                         onRodMovementChange(list)
                         onShowDirectionHintsChange(true)
                     }

@@ -131,8 +131,8 @@ class AbacusFreeModeViewModel @Inject constructor(
             val rightInt = abacusCalc.totalValuePair.second.toIntOrNull() ?: 0
 
             val rods = max(leftInt.toString().length, target.toString().length)
-            val left = MathUtils().calculateRodMovements(from = leftInt, to = target, rods = rods, isForRightRods = false)
-            val right = MathUtils().calculateRodMovements(from = rightInt, to = 0, rods = 6, isForRightRods = true)
+            val left = MathUtils.calculateRodMovements(from = leftInt, to = target, rods = rods, isForRightRods = false)
+            val right = MathUtils.calculateRodMovements(from = rightInt, to = 0, rods = 6, isForRightRods = true)
             updateRodMovements(left + right)
         } else {
             // Free mode → no arrows / hints
