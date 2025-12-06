@@ -11,10 +11,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -49,41 +51,20 @@ fun AbacusWithDecimal(
     onSpotChange: (Int?) -> Unit,
     @SuppressLint("ModifierParameter") modifier: Modifier = Modifier,
 ) {
-    val dim = AbacusTheme.dimensionPreset(
-        screenType = screenType,
-        isFreeModeOn = isFreeModeOn
-    )
+    val rodMovementByRod = remember(rodMovement) {
+        rodMovement.associateBy { it.rodIndex }
+    }
 
-    val totalWidth =
-        (dim.beadWidth * numberOfColumns) +
-                (dim.rectLineWidth * 2) +
-                (dim.columnSpaces * (numberOfColumns) * 2)
-
-    val totalHeight =
-        (dim.beadHeight * 7) +
-                (dim.rectLineWidth * 2) +
-                (dim.extraSpace * 2) +
-                dim.beamHeight
-
+    val dim = AbacusTheme.dimensionPreset(screenType = screenType, isFreeModeOn = isFreeModeOn)
+    val totalWidth = (dim.beadWidth * numberOfColumns) + (dim.rectLineWidth * 2) + (dim.columnSpaces * (numberOfColumns) * 2)
+    val totalHeight = (dim.beadHeight * 7) + (dim.rectLineWidth * 2) + (dim.extraSpace * 2) + dim.beamHeight
     val highlightSteps = freeModeHighlightSteps
 
     val strokeBrush = if (selectedTheme == "poligon_rainbow") {
-        Brush.verticalGradient(
-            listOf(
-                Color(0xFFD7CCC8),
-                Color(0xFFE0E0E0),
-                Color(0xFFCFD8DC)
-            )
-        )
+        Brush.verticalGradient(listOf(Color(0xFFD7CCC8), Color(0xFFE0E0E0), Color(0xFFCFD8DC)))
     } else {
         val preset = AbacusTheme.colorPreset(selectedTheme)
-        Brush.verticalGradient(
-            listOf(
-                preset.abacusTopGradient,
-                preset.abacusCenterGradient,
-                preset.abacusBottomGradient
-            )
-        )
+        Brush.verticalGradient(listOf(preset.abacusTopGradient, preset.abacusCenterGradient, preset.abacusBottomGradient))
     }
 
     val textColor = if (selectedTheme == "poligon_rainbow") {
@@ -123,7 +104,7 @@ fun AbacusWithDecimal(
         }
 
         // --- Inner rods (columns) ---
-        Row(
+        LazyRow(
             modifier = Modifier
                 .height(totalHeight)
                 .width(totalWidth)
@@ -135,30 +116,28 @@ fun AbacusWithDecimal(
             horizontalArrangement = Arrangement.spacedBy(0.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            for (col in 0 until numberOfColumns) {
-                key(col) {
-                    ColumnViewCompose(
-                        columnNumber = col,
-                        imageName = selectedTheme,
-                        isRedDotPresent = col == numberOfColumns - 1 ||
-                                col == numberOfColumns - 4 ||
-                                col == numberOfColumns - 7 ||
-                                col == numberOfColumns - 10 ||
-                                col == numberOfColumns - 13,
-                        isCentralColumn = (col == 6),
-                        abacusData = abacusData,
-                        movement = rodMovement.firstOrNull { it.rodIndex == col }?.movement,
-                        showDirection = showDirectionHint,
-                        beadWidth = dim.beadWidth,
-                        beadHeight = dim.beadHeight,
-                        totalHeight = totalHeight,
-                        beamHeight = dim.beamHeight,
-                        extraSpace = dim.extraSpace,
-                        columnSpaces = dim.columnSpaces,
-                        showHighlighter = showHighlighter,
-                        currentSpot = currentSpot
-                    )
-                }
+            items(numberOfColumns, key = { it }) { col ->
+                ColumnViewCompose(
+                    columnNumber = col,
+                    imageName = selectedTheme,
+                    isRedDotPresent = col == numberOfColumns - 1 ||
+                            col == numberOfColumns - 4 ||
+                            col == numberOfColumns - 7 ||
+                            col == numberOfColumns - 10 ||
+                            col == numberOfColumns - 13,
+                    isCentralColumn = (col == 6),
+                    abacusData = abacusData,
+                    movement = rodMovementByRod[col]?.movement,
+                    showDirection = showDirectionHint,
+                    beadWidth = dim.beadWidth,
+                    beadHeight = dim.beadHeight,
+                    totalHeight = totalHeight,
+                    beamHeight = dim.beamHeight,
+                    extraSpace = dim.extraSpace,
+                    columnSpaces = dim.columnSpaces,
+                    showHighlighter = showHighlighter,
+                    currentSpot = currentSpot
+                )
             }
         }
 
@@ -215,7 +194,7 @@ fun AbacusWithDecimal(
                 val next = if (currentSpot == highlightSteps.lastIndex) {
                     null
                 } else {
-                    (currentSpot ?: -1) + 1
+                    currentSpot + 1
                 }
 
                 // update current spot in VM

@@ -1,6 +1,5 @@
 package com.jigar.me.ui.view.jetpack.abacus_base.components
 
-import android.util.Log
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -39,7 +38,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.google.gson.Gson
 import com.jigar.me.R
 import com.jigar.me.data.local.data.Movement
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusCalculations
@@ -75,10 +73,14 @@ fun ColumnViewCompose(
 
     // Compute active beads only ONCE per column
     val columnSize = abacusData.abacusState[columnNumber]
-    val arr = MutableList(columnSize.size) { false }
-    if (columnSize[1]) arr[1] = true
-    for (i in 2 until columnSize.size) {
-        if (columnSize[i]) arr[i] = true else break
+    // Compute active beads only when this column's state actually changes
+    val arr = remember(columnSize) {
+        MutableList(columnSize.size) { false }.also { mask ->
+            if (columnSize[1]) mask[1] = true
+            for (i in 2 until columnSize.size) {
+                if (columnSize[i]) mask[i] = true else break
+            }
+        }
     }
 
     Box(
@@ -289,8 +291,6 @@ private fun BeadWithArrow(
         }
 
         // Arrows (simplified – you can expand same as your Swift logic)
-        Log.e("jigarFreeMode","showDirection = "+showDirection)
-        Log.e("jigarFreeMode","movement = "+ Gson().toJson(movement))
         if (showDirection && movement != null) {
             ArrowForBeadFull(
                 index = index,

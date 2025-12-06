@@ -379,12 +379,13 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
                 mNavController?.navigate(R.id.action_homeFragment_to_myProfileFragment)
             }
             AppConstants.HomeClicks.Menu_Practice_Abacus -> {
-                val action = HomeNewFragmentDirections.toCategoryFragment(data.id)
-                mNavController?.navigate(action)
+//                val action = HomeNewFragmentDirections.toCategoryFragment(data.id)
+//                mNavController?.navigate(action)
+                mNavController?.navigate(R.id.toAbacusFreeModeFragment)
             }
             AppConstants.HomeClicks.Menu_Abacus_Free_Mode -> {
-//                mNavController?.navigate(R.id.action_homeFragment_to_fullAbacusFragment)
-                mNavController?.navigate(R.id.toAbacusFreeModeFragment)
+                mNavController?.navigate(R.id.action_homeFragment_to_fullAbacusFragment)
+//                mNavController?.navigate(R.id.toAbacusFreeModeFragment)
             }
             AppConstants.HomeClicks.Menu_Abacus_Exercise -> {
                 mNavController?.navigate(R.id.action_homeFragment_to_exerciseHomeFragment)

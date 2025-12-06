@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.jetpack.abacus_base.components.AbacusWithDecimal
+import com.jigar.me.ui.view.jetpack.abacus_base.components.AbacusWithDecimalCanvas
 import com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.viewmodel.AbacusFreeModeViewModel
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.LocalPreferencesHelper
@@ -52,14 +53,12 @@ fun AbacusFreeModeScreen(
 
     // -------- INIT TARGET --------
     LaunchedEffect(Unit) {
-        Log.e("jigarFreeMode","LaunchedEffect Unit generateNextTarget")
         viewModel.numberToMatch = viewModel.generateNextTarget(null)
         viewModel.refreshBeads(viewModel.numberToMatch)
     }
 
     // HANDLE ABACUS MOVEMENT
     LaunchedEffect(viewModel.abacusCalc.stateVersion) {
-        Log.e("jigarFreeMode","LaunchedEffect Unit handleMatch")
         viewModel.handleMatch()
     }
 
@@ -100,7 +99,6 @@ fun AbacusFreeModeScreen(
                 randomRangeHigh = viewModel.toNumber,
                 numberToMatch = viewModel.numberToMatch,
                 refreshBeadMovement = { value ->
-                    Log.e("jigarFreeMode","SettingsDialog = "+value)
                     viewModel.refreshBeads(value ?: viewModel.numberToMatch)
                 },
                 generateNextTarget = { prev ->
@@ -200,7 +198,7 @@ fun AbacusFreeModeScreen(
                 .fillMaxHeight(),
             contentAlignment = Alignment.Center
         ) {
-            AbacusWithDecimal(
+            AbacusWithDecimalCanvas(
                 selectedTheme = selectedTheme,
                 screenType = AppConstants.AbacusScreen.screenTypeFreeMode,
                 isFreeModeOn = viewModel.isFreeModeOn,

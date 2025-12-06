@@ -122,8 +122,6 @@ class AbacusFreeModeViewModel @Inject constructor(
     // --------- Rod movement (for arrows) ----------
 
     fun refreshBeads(target: Int = numberToMatch) {
-        Log.e("jigarFreeMode","refreshBeads = "+numberToMatch)
-        Log.e("jigarFreeMode","target = "+target)
         if (showHighlighter) return  // During tour, we control movements from spotlight logic
 
         if (!isFreeModeOn) {
