@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode
+package com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.components
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.LocalIndication
@@ -208,8 +208,12 @@ fun SettingsDialog(
                             checked = isFreeModeOn, onCheckedChange = {
                                 setFreeMode(it)
                                 if (!it) {
-                                    val newTarget = generateNextTarget(numberToMatch)
-                                    refreshBeadMovement(newTarget)
+                                    if (numberToMatch == null){
+                                        val newTarget = generateNextTarget(numberToMatch)
+                                        refreshBeadMovement(newTarget)
+                                    }else{
+                                        refreshBeadMovement(numberToMatch)
+                                    }
                                 } else {
                                     refreshBeadMovement(null)
                                 }

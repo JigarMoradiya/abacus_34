@@ -12,15 +12,9 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -28,7 +22,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
@@ -36,47 +29,61 @@ import com.jigar.me.data.local.data.RodMovement
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.jetpack.abacus_base.freeModeHighlightSteps
-import com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.AbacusFreeModeScreen
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
 
 @Composable
 fun AbacusWithDecimal(
-    numberOfColumns: Int,
-    abacusData: AbacusCalculations,
-    rodMovements: List<RodMovement>,
-    onRodMovementChange: (List<RodMovement>) -> Unit,
-    showDirectionHints: Boolean,
-    onShowDirectionHintsChange: (Boolean) -> Unit,
-    showHighlighter: Boolean,
-    onShowHighlighterChange: (Boolean) -> Unit,
     selectedTheme: String,
     screenType: String,
-    isFreeModeOn: Boolean = false,
+    isFreeModeOn: Boolean,
+    abacusData: AbacusCalculations,
+    numberOfColumns: Int,
+    rodMovement: List<RodMovement>,
+    showDirectionHint: Boolean,
+    showHighlighter: Boolean,
+    onRodMovementChange: (List<RodMovement>) -> Unit,
+    onShowDirectionHintsChange: (Boolean) -> Unit,
+    onShowHighlighterChange: (Boolean) -> Unit,
+    currentSpot: Int?,
+    onSpotChange: (Int?) -> Unit,
     @SuppressLint("ModifierParameter") modifier: Modifier = Modifier,
 ) {
-    val dim = remember(screenType, isFreeModeOn) {
-        AbacusTheme.dimensionPreset(screenType = screenType, isFreeModeOn)
-    }
-    val totalWidth = (dim.beadWidth * numberOfColumns) + (dim.rectLineWidth * 2) + (dim.columnSpaces * (numberOfColumns) * 2)
-    val totalHeight = (dim.beadHeight * 7) + (dim.rectLineWidth * 2) + (dim.extraSpace * 2) + dim.beamHeight
-    var currentSpot by remember { mutableStateOf<Int?>(-1) }
-    val highlightSteps = freeModeHighlightSteps   // your array of 16 messages
-    LaunchedEffect(showHighlighter) {
-        currentSpot = if (showHighlighter) {
-            0       // start tutorial
-        } else {
-            null    // stop tutorial
-        }
-    }
+    val dim = AbacusTheme.dimensionPreset(
+        screenType = screenType,
+        isFreeModeOn = isFreeModeOn
+    )
 
-    val strokeBrush = remember(selectedTheme) {
-        if (selectedTheme == "poligon_rainbow") {
-            Brush.verticalGradient(listOf(Color(0xFFD7CCC8), Color(0xFFE0E0E0), Color(0xFFCFD8DC)))
-        } else {
-            val preset = AbacusTheme.colorPreset(selectedTheme)
-            Brush.verticalGradient(listOf(preset.abacusTopGradient, preset.abacusCenterGradient, preset.abacusBottomGradient))
-        }
+    val totalWidth =
+        (dim.beadWidth * numberOfColumns) +
+                (dim.rectLineWidth * 2) +
+                (dim.columnSpaces * (numberOfColumns) * 2)
+
+    val totalHeight =
+        (dim.beadHeight * 7) +
+                (dim.rectLineWidth * 2) +
+                (dim.extraSpace * 2) +
+                dim.beamHeight
+
+    val highlightSteps = freeModeHighlightSteps
+
+    val strokeBrush = if (selectedTheme == "poligon_rainbow") {
+        Brush.verticalGradient(
+            listOf(
+                Color(0xFFD7CCC8),
+                Color(0xFFE0E0E0),
+                Color(0xFFCFD8DC)
+            )
+        )
+    } else {
+        val preset = AbacusTheme.colorPreset(selectedTheme)
+        Brush.verticalGradient(
+            listOf(
+                preset.abacusTopGradient,
+                preset.abacusCenterGradient,
+                preset.abacusBottomGradient
+            )
+        )
     }
 
     val textColor = if (selectedTheme == "poligon_rainbow") {
@@ -85,12 +92,15 @@ fun AbacusWithDecimal(
         Color.White
     }
 
+    // ==========================
+    //  Main Abacus Box
+    // ==========================
     Box(
         modifier = modifier,
-        contentAlignment = Alignment.TopCenter   // whole abacus centered
+        contentAlignment = Alignment.TopCenter
     ) {
 
-        // ⬆️ Answer Bar ONLY when free mode is OFF
+        // Top Answer Bar (hidden in free mode, same as your old logic)
         if (!isFreeModeOn) {
             val offsetY = (-48).dp
 
@@ -103,23 +113,25 @@ fun AbacusWithDecimal(
                 onReset = {
                     abacusData.resetAbacusData()
                 },
-                onNext = { /* next logic */ },
+                onNext = {
+                    // Hook for "next" – screen can handle if needed
+                },
                 modifier = Modifier
                     .align(Alignment.TopCenter)
                     .offset(y = offsetY)
             )
-
         }
 
+        // --- Inner rods (columns) ---
         Row(
             modifier = Modifier
                 .height(totalHeight)
                 .width(totalWidth)
-                .alpha(if (currentSpot == 0) 0f else 1f) // frame highlight, hide all internal
+                .alpha(if (currentSpot == 0) 0f else 1f) // step 0 = frame only
                 .padding(vertical = dim.rectLineWidth)
                 .padding(horizontal = dim.rectLineWidth)
                 .align(Alignment.Center)
-                .spotlightTag(1, highlightSteps[1].message), // rod highlight
+                .spotlightTag(1, highlightSteps[1].message), // all rods
             horizontalArrangement = Arrangement.spacedBy(0.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -135,8 +147,8 @@ fun AbacusWithDecimal(
                                 col == numberOfColumns - 13,
                         isCentralColumn = (col == 6),
                         abacusData = abacusData,
-                        movement = rodMovements.firstOrNull { it.rodIndex == col }?.movement,
-                        showDirection = showDirectionHints,
+                        movement = rodMovement.firstOrNull { it.rodIndex == col }?.movement,
+                        showDirection = showDirectionHint,
                         beadWidth = dim.beadWidth,
                         beadHeight = dim.beadHeight,
                         totalHeight = totalHeight,
@@ -148,28 +160,30 @@ fun AbacusWithDecimal(
                     )
                 }
             }
-
         }
 
-        // 1️⃣ Frame
+        // --- Outer frame ---
         Box(
             modifier = Modifier
                 .width(totalWidth - (dim.columnSpaces * 2))
                 .height(totalHeight)
                 .border(
-                    width = dim.rectLineWidth, brush = strokeBrush, shape = RoundedCornerShape(dim.rectLineCorner)
+                    width = dim.rectLineWidth,
+                    brush = strokeBrush,
+                    shape = RoundedCornerShape(dim.rectLineCorner)
                 )
-                .spotlightTag(0, highlightSteps[0].message)
+                .spotlightTag(0, highlightSteps[0].message) // frame
         )
 
-        if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn){
-            // 2️⃣ Text perfectly centered INSIDE frame width
+        // Display number at top inside the frame (free-mode only)
+        if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn) {
             Box(
                 modifier = Modifier
                     .height(totalHeight)
                     .align(Alignment.TopCenter)
             ) {
-                Text(modifier = Modifier.height(dim.rectLineWidth),
+                Text(
+                    modifier = Modifier.height(dim.rectLineWidth),
                     text = abacusData.displayValue,
                     color = textColor,
                     fontSize = dim.textSizeSp.sp,
@@ -180,8 +194,8 @@ fun AbacusWithDecimal(
         }
     }
 
-    // 🔢 NUMBER STRIP BAR (outside box, below)
-    if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn){
+    // Number strip below abacus (same as before)
+    if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn) {
         NumberStripBar(
             dim = dim,
             totalWidth = totalWidth,
@@ -189,20 +203,32 @@ fun AbacusWithDecimal(
         )
     }
 
+    // ==========================
+    //  Spotlight Overlay & Steps
+    // ==========================
+    if (currentSpot != null && currentSpot >= 0) {
 
-    if (currentSpot != null && currentSpot!! >= 0) {
+        // Overlay with blur + clear hole + tooltip
         SpotlightOverlay(
             currentSpot = currentSpot,
             onNext = {
-                val next = if (currentSpot == highlightSteps.lastIndex) null else currentSpot!! + 1
-                currentSpot = next
+                val next = if (currentSpot == highlightSteps.lastIndex) {
+                    null
+                } else {
+                    (currentSpot ?: -1) + 1
+                }
 
+                // update current spot in VM
+                onSpotChange(next)
+
+                // reset abacus + remove arrows first
                 abacusData.resetAbacusData()
                 onRodMovementChange(emptyList())
+                onShowDirectionHintsChange(false)
 
                 if (next == null) {
+                    // tour finished
                     abacusData.setAbacusValueFromString("0")
-                    onShowDirectionHintsChange(false)
                     onShowHighlighterChange(false)
                     return@SpotlightOverlay
                 }
@@ -215,27 +241,47 @@ fun AbacusWithDecimal(
                     11 -> abacusData.setAbacusValueFromString("999000000")
 
                     12 -> {
-                        val list = MathUtils().calculateRodMovements(from = 0, to = 4, rods = 1, isForRightRods = false)
+                        val list = MathUtils().calculateRodMovements(
+                            from = 0,
+                            to = 4,
+                            rods = 1,
+                            isForRightRods = false
+                        )
                         onRodMovementChange(list)
                         onShowDirectionHintsChange(true)
                     }
 
                     13 -> {
-                        val list = MathUtils().calculateRodMovements(from = 0, to = 5, rods = 1, isForRightRods = false)
+                        val list = MathUtils().calculateRodMovements(
+                            from = 0,
+                            to = 5,
+                            rods = 1,
+                            isForRightRods = false
+                        )
                         onRodMovementChange(list)
                         onShowDirectionHintsChange(true)
                     }
 
                     14 -> {
                         abacusData.setAbacusValueFromString("4000000")
-                        val list = MathUtils().calculateRodMovements(from = 4, to = 0, rods = 1, isForRightRods = false)
+                        val list = MathUtils().calculateRodMovements(
+                            from = 4,
+                            to = 0,
+                            rods = 1,
+                            isForRightRods = false
+                        )
                         onRodMovementChange(list)
                         onShowDirectionHintsChange(true)
                     }
 
                     15 -> {
                         abacusData.setAbacusValueFromString("5000000")
-                        val list = MathUtils().calculateRodMovements(from = 5, to = 0, rods = 1, isForRightRods = false)
+                        val list = MathUtils().calculateRodMovements(
+                            from = 5,
+                            to = 0,
+                            rods = 1,
+                            isForRightRods = false
+                        )
                         onRodMovementChange(list)
                         onShowDirectionHintsChange(true)
                     }
@@ -247,16 +293,17 @@ fun AbacusWithDecimal(
             }
         )
 
+        // If highlighter is off, we don't draw the step rectangles
         if (!showHighlighter) return
 
         val totalBeadsHeight = totalHeight - (dim.rectLineWidth * 2)
 
-        // -----------------------------
         // 2️⃣ Beam (bar)
-        // -----------------------------
-        Column(modifier = Modifier
-            .height(totalHeight)
-            .padding(dim.rectLineWidth)) {
+        Column(
+            modifier = Modifier
+                .height(totalHeight)
+                .padding(dim.rectLineWidth)
+        ) {
             Spacer(modifier = Modifier.height((dim.beadHeight * 2) + dim.extraSpace))
             Box(
                 modifier = Modifier
@@ -267,12 +314,12 @@ fun AbacusWithDecimal(
             Spacer(modifier = Modifier.weight(1f))
         }
 
-        // -----------------------------
         // 3️⃣ Upper beads area
-        // -----------------------------
-        Column(modifier = Modifier
-            .height(totalHeight)
-            .padding(dim.rectLineWidth)) {
+        Column(
+            modifier = Modifier
+                .height(totalHeight)
+                .padding(dim.rectLineWidth)
+        ) {
             Box(
                 modifier = Modifier
                     .width(totalWidth - (dim.rectLineWidth * 2))
@@ -282,12 +329,12 @@ fun AbacusWithDecimal(
             Spacer(modifier = Modifier.weight(1f))
         }
 
-        // -----------------------------
         // 4️⃣ Lower beads area
-        // -----------------------------
-        Column(modifier = Modifier
-            .height(totalHeight)
-            .padding(dim.rectLineWidth)) {
+        Column(
+            modifier = Modifier
+                .height(totalHeight)
+                .padding(dim.rectLineWidth)
+        ) {
             Spacer(modifier = Modifier.weight(1f))
             Box(
                 modifier = Modifier
@@ -297,14 +344,15 @@ fun AbacusWithDecimal(
             )
         }
 
-        // -----------------------------
         // 5️⃣ Unit place
-        // -----------------------------
-        Column(modifier = Modifier
-            .height(totalHeight)
-            .padding(dim.rectLineWidth)) {
-            Row(modifier = Modifier
-                .padding(top = (dim.beadHeight * 2) + dim.extraSpace)
+        Column(
+            modifier = Modifier
+                .height(totalHeight)
+                .padding(dim.rectLineWidth)
+        ) {
+            Row(
+                modifier = Modifier
+                    .padding(top = (dim.beadHeight * 2) + dim.extraSpace)
             ) {
                 Spacer(modifier = Modifier.weight(1f))
                 Box(
@@ -318,9 +366,7 @@ fun AbacusWithDecimal(
             Spacer(modifier = Modifier.weight(1f))
         }
 
-        // -----------------------------
         // 6️⃣ First rods
-        // -----------------------------
         Row(modifier = Modifier.padding(dim.rectLineWidth)) {
             Spacer(modifier = Modifier.weight(1f))
             Box(
@@ -332,9 +378,7 @@ fun AbacusWithDecimal(
             Spacer(modifier = Modifier.weight(1f))
         }
 
-        // -----------------------------
         // 7️⃣ Second rods
-        // -----------------------------
         Row(modifier = Modifier.padding(dim.rectLineWidth)) {
             Box(
                 modifier = Modifier
@@ -354,9 +398,7 @@ fun AbacusWithDecimal(
             )
         }
 
-        // -----------------------------
         // 8️⃣ Third rods
-        // -----------------------------
         Row(modifier = Modifier.padding(dim.rectLineWidth)) {
             Box(
                 modifier = Modifier
@@ -376,9 +418,7 @@ fun AbacusWithDecimal(
             )
         }
 
-        // -----------------------------
         // 9️⃣ 1 rod = 0–9
-        // -----------------------------
         Row(modifier = Modifier.padding(dim.rectLineWidth)) {
             Spacer(modifier = Modifier.weight(1f))
             Box(
@@ -390,9 +430,7 @@ fun AbacusWithDecimal(
             Spacer(modifier = Modifier.weight(1f))
         }
 
-        // -----------------------------
-        // 1️⃣0️⃣ rods 0–99
-        // -----------------------------
+        // 🔟 2 rods = 0–99
         Row(modifier = Modifier.padding(dim.rectLineWidth)) {
             Box(
                 modifier = Modifier
@@ -412,9 +450,7 @@ fun AbacusWithDecimal(
             )
         }
 
-        // -----------------------------
-        // 1️⃣1️⃣ rods 0–999
-        // -----------------------------
+        // 1️⃣1️⃣ 3 rods = 0–999
         Row(modifier = Modifier.padding(dim.rectLineWidth)) {
             Box(
                 modifier = Modifier
@@ -434,9 +470,7 @@ fun AbacusWithDecimal(
             )
         }
 
-        // -----------------------------
         // 1️⃣2️⃣ Addition bottom bead
-        // -----------------------------
         Row(modifier = Modifier.padding(dim.rectLineWidth)) {
             Spacer(modifier = Modifier.weight(1f))
             Column {
@@ -455,12 +489,12 @@ fun AbacusWithDecimal(
             Spacer(modifier = Modifier.weight(1f))
         }
 
-        // -----------------------------
         // 1️⃣3️⃣ Addition top bead
-        // -----------------------------
-        Column(modifier = Modifier
-            .height(totalHeight)
-            .padding(dim.rectLineWidth)) {
+        Column(
+            modifier = Modifier
+                .height(totalHeight)
+                .padding(dim.rectLineWidth)
+        ) {
             Spacer(modifier = Modifier.weight(1f))
             Column {
                 Box(
@@ -474,9 +508,7 @@ fun AbacusWithDecimal(
             Spacer(modifier = Modifier.weight(1f))
         }
 
-        // -----------------------------
         // 1️⃣4️⃣ Subtraction bottom bead
-        // -----------------------------
         Row(modifier = Modifier.padding(dim.rectLineWidth)) {
             Spacer(modifier = Modifier.weight(1f))
             Column(
@@ -497,9 +529,7 @@ fun AbacusWithDecimal(
             Spacer(modifier = Modifier.weight(1f))
         }
 
-        // -----------------------------
         // 1️⃣5️⃣ Subtraction top bead
-        // -----------------------------
         Row(modifier = Modifier.padding(dim.rectLineWidth)) {
             Spacer(modifier = Modifier.weight(1f))
             Column(
@@ -515,19 +545,5 @@ fun AbacusWithDecimal(
             }
             Spacer(modifier = Modifier.weight(1f))
         }
-    }
-}
-
-
-@Preview(
-    showBackground = true,
-    backgroundColor = 0xFFFFFFFF,
-    widthDp = 780,
-    heightDp = 400
-)
-@Composable
-fun PreviewAbacusFreeModeScreen1() {
-    MaterialTheme {
-        AbacusFreeModeScreen()
     }
 }
