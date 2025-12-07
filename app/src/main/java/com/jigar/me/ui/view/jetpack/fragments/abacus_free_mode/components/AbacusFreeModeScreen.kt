@@ -26,6 +26,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
@@ -79,7 +81,9 @@ fun AbacusFreeModeScreen(
                 Spacer(Modifier.width(6.dp))
                 Text(
                     text = stringResource(R.string.free_mode_settings),
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = FontFamily(Font(R.font.font_bold)),
+                    style = MaterialTheme.typography.titleSmall,
                 )
             }
         }
@@ -127,8 +131,10 @@ fun AbacusFreeModeScreen(
                 if (viewModel.isFreeModeOn) {
                     TextButton(onClick = { viewModel.startHighlighter() }) {
                         Text(
-                            text = "Click here to show Abacus Tour",
-                            style = MaterialTheme.typography.bodyMedium
+                            text = stringResource(R.string.click_here_to_show_abacus_tour),
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            fontWeight = FontWeight.Bold
                         )
                     }
                 }
@@ -158,7 +164,7 @@ fun AbacusFreeModeScreen(
                                 style = MaterialTheme.typography.titleSmall
                             )
                             Text(
-                                text = "Numbers generate between",
+                                text = stringResource(R.string.numbers_generate_between),
                                 color = MaterialTheme.colorScheme.onBackground,
                                 fontWeight = FontWeight.SemiBold,
                                 style = MaterialTheme.typography.bodySmall
@@ -175,6 +181,7 @@ fun AbacusFreeModeScreen(
                             text = "Set :",
                             style = MaterialTheme.typography.bodyLarge,
                             fontWeight = FontWeight.ExtraBold,
+                            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
                             color = AbacusTheme.colorPreset(selectedTheme).buttonColor
                         )
                         Spacer(modifier = Modifier.width(8.dp))
@@ -182,6 +189,7 @@ fun AbacusFreeModeScreen(
                             text = viewModel.numberToMatch.toString(),
                             style = MaterialTheme.typography.headlineLarge,
                             fontWeight = FontWeight.ExtraBold,
+                            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
                             color = AbacusTheme.colorPreset(selectedTheme).buttonColor
                         )
                     }

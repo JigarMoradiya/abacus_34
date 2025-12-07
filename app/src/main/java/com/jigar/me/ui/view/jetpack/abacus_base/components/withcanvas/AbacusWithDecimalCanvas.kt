@@ -1,14 +1,6 @@
 package com.jigar.me.ui.view.jetpack.abacus_base.components.withcanvas
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.graphics.LinearGradient
-import android.graphics.Paint
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffXfermode
-import android.graphics.RectF
-import android.graphics.Shader
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectDragGestures
@@ -30,40 +22,21 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-
-import androidx.compose.ui.geometry.CornerRadius
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.asAndroidBitmap
-import androidx.compose.ui.graphics.asImageBitmap
-import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
-import androidx.compose.ui.graphics.nativeCanvas
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.unit.Density
-import androidx.compose.ui.unit.IntOffset
-import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.graphics.createBitmap
 import com.jigar.me.R
-import com.jigar.me.data.local.data.Movement
 import com.jigar.me.data.local.data.RodMovement
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusCalculations
-import com.jigar.me.ui.view.jetpack.abacus_base.AbacusDimensionModel
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
-import com.jigar.me.ui.view.jetpack.abacus_base.ColorPresets
 import com.jigar.me.ui.view.jetpack.abacus_base.components.AbacusAnswerBarCompose
 import com.jigar.me.ui.view.jetpack.abacus_base.components.NumberStripBar
 import com.jigar.me.ui.view.jetpack.abacus_base.components.SpotlightOverlay
@@ -71,7 +44,6 @@ import com.jigar.me.ui.view.jetpack.abacus_base.components.spotlightTag
 import com.jigar.me.ui.view.jetpack.abacus_base.freeModeHighlightSteps
 import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.extensions.mixWith
 import kotlin.math.abs
 
 // ─────────────────────────────────────────────────────────────
