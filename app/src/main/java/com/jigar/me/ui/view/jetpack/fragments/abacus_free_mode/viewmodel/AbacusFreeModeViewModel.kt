@@ -164,6 +164,7 @@ class AbacusFreeModeViewModel @Inject constructor(
     // --------- Highlighter / Tour ----------
 
     fun startHighlighter() {
+//        SpotlightRegistry.clear()
         showHighlighter = true
         currentSpot = 0
         // Reset abacus display when tour starts

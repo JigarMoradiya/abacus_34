@@ -37,6 +37,7 @@ import androidx.compose.ui.zIndex
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.jetpack.abacus_base.ColorPresetModel
+import com.jigar.me.utils.AppConstants
 
 @Composable
 fun AbacusAnswerBarCompose(
@@ -60,7 +61,7 @@ fun AbacusAnswerBarCompose(
     val theme = AbacusTheme.colorPreset(theme)
 
     val nextOpacity = when {
-        screenType == "free_mode" -> 0.2f
+        screenType == AppConstants.AbacusScreen.screenTypeFreeMode -> 0.2f
         abacusType == "formal_answer" || screenType == "ccm"  -> 1f
         else -> 0.5f
     }

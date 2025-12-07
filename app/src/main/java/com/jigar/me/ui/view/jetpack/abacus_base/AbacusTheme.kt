@@ -231,7 +231,7 @@ object AbacusTheme {
         return base.copy(
             beadWidth = base.beadWidth * multiplier,
             beadHeight = base.beadHeight * multiplier,
-            columnSpaces = if (screenType == "free_mode") base.columnSpaces * 2 else base.columnSpaces,
+            columnSpaces = if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode) base.columnSpaces * 2 else base.columnSpaces,
             beamHeight = if (screenType == "exam" || screenType == "settings") base.beamHeight
             else base.beamHeight * 2,
             rectLineWidth = if (screenType == "exam" || screenType == "settings")

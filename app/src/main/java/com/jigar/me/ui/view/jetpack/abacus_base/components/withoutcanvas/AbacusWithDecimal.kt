@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.abacus_base.components
+package com.jigar.me.ui.view.jetpack.abacus_base.components.withoutcanvas
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.border
@@ -15,8 +15,11 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.key
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -30,6 +33,10 @@ import com.jigar.me.R
 import com.jigar.me.data.local.data.RodMovement
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
+import com.jigar.me.ui.view.jetpack.abacus_base.components.AbacusAnswerBarCompose
+import com.jigar.me.ui.view.jetpack.abacus_base.components.NumberStripBar
+import com.jigar.me.ui.view.jetpack.abacus_base.components.SpotlightOverlay
+import com.jigar.me.ui.view.jetpack.abacus_base.components.spotlightTag
 import com.jigar.me.ui.view.jetpack.abacus_base.freeModeHighlightSteps
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
@@ -47,12 +54,14 @@ fun AbacusWithDecimal(
     onRodMovementChange: (List<RodMovement>) -> Unit,
     onShowDirectionHintsChange: (Boolean) -> Unit,
     onShowHighlighterChange: (Boolean) -> Unit,
-    currentSpot: Int?,
-    onSpotChange: (Int?) -> Unit,
     @SuppressLint("ModifierParameter") modifier: Modifier = Modifier,
 ) {
     val rodMovementByRod = remember(rodMovement) {
         rodMovement.associateBy { it.rodIndex }
+    }
+    var currentSpot by remember { mutableStateOf<Int?>(null) }
+    LaunchedEffect(showHighlighter) {
+        currentSpot = if (showHighlighter) 0 else null
     }
 
     val dim = AbacusTheme.dimensionPreset(screenType = screenType, isFreeModeOn = isFreeModeOn)
@@ -185,7 +194,7 @@ fun AbacusWithDecimal(
     // ==========================
     //  Spotlight Overlay & Steps
     // ==========================
-    if (currentSpot != null && currentSpot >= 0) {
+    if (currentSpot != null && currentSpot!! >= 0) {
 
         // Overlay with blur + clear hole + tooltip
         SpotlightOverlay(
@@ -194,11 +203,12 @@ fun AbacusWithDecimal(
                 val next = if (currentSpot == highlightSteps.lastIndex) {
                     null
                 } else {
-                    currentSpot + 1
+                    currentSpot!! + 1
                 }
+                currentSpot = next
 
                 // update current spot in VM
-                onSpotChange(next)
+//                onSpotChange(next)
 
                 // reset abacus + remove arrows first
                 abacusData.resetAbacusData()

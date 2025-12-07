@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.abacus_base.components
+package com.jigar.me.ui.view.jetpack.abacus_base.components.withoutcanvas
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image

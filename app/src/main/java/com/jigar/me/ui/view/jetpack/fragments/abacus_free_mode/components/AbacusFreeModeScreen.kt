@@ -1,6 +1,5 @@
 package com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.components
 
-import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -31,8 +30,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
-import com.jigar.me.ui.view.jetpack.abacus_base.components.AbacusWithDecimal
-import com.jigar.me.ui.view.jetpack.abacus_base.components.AbacusWithDecimalCanvas
+import com.jigar.me.ui.view.jetpack.abacus_base.components.withcanvas.AbacusWithDecimalCanvas
 import com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.viewmodel.AbacusFreeModeViewModel
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.LocalPreferencesHelper
@@ -212,9 +210,7 @@ fun AbacusFreeModeScreen(
                 onShowHighlighterChange = { enabled ->
                     if (enabled) viewModel.startHighlighter()
                     else viewModel.stopHighlighter()
-                },
-                currentSpot = viewModel.currentSpot,
-                onSpotChange = { next -> viewModel.onSpotlightChange(next) }
+                }
             )
         }
     }

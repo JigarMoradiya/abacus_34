@@ -109,8 +109,8 @@ object AppModule {
     fun provideTargetRepository(): TargetRepository = TargetRepository()
 
 
-    @Provides @Singleton fun provideMathUtils() = MathUtils
-    @Provides @Singleton fun provideSpotlightRegistry() = SpotlightRegistry
-    @Provides @Singleton fun provideColorPresets() = ColorPresets
+//    @Provides @Singleton fun provideMathUtils() = MathUtils
+//    @Provides @Singleton fun provideSpotlightRegistry() = SpotlightRegistry
+//    @Provides @Singleton fun provideColorPresets() = ColorPresets
 
 }

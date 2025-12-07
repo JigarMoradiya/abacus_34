@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.jetpack.abacus_base.components
 
+import android.annotation.SuppressLint
 import android.graphics.RectF
 import android.widget.TextView
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -49,11 +50,9 @@ import com.jigar.me.ui.view.jetpack.abacus_base.SpotlightTooltipCalculation
 import kotlin.math.max
 import kotlin.math.min
 
+@SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
-fun SpotlightOverlay(
-    currentSpot: Int?,
-    onNext: () -> Unit
-) {
+fun SpotlightOverlay(currentSpot: Int?, onNext: () -> Unit) {
     if (currentSpot == null) return
 
     val item = SpotlightRegistry.get(currentSpot) ?: return
