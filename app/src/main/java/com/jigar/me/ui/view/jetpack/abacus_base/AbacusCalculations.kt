@@ -5,7 +5,7 @@ import androidx.compose.runtime.*
 class AbacusCalculations(numberOfColumns: Int) {
 
     // ⭐ Fires whenever any bead changes
-    var stateVersion by mutableStateOf(0)
+    var stateVersion by mutableIntStateOf(0)
         private set
 
     // ⭐ MAIN STATE (reactive like SwiftUI @State)

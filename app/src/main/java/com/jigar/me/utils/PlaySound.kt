@@ -5,6 +5,8 @@ import android.media.MediaPlayer
 import java.io.IOException
 
 object PlaySound {
+    const val abacus_bead_click = "click.wav"
+    const val abacus_bead_reset = "reset.wav"
     const val play_win = "play_win.wav"
     const val play_swap = "play_swip.wav"
     const val background_music = "bg_music_sand_castle.mp3"
@@ -15,6 +17,12 @@ object PlaySound {
     const val btn_hint = "btn_hint.mp3"
     const val btn_wrong = "btn_wrong.mp3"
 
+    fun playBeadClick(context: Context) {
+        play(context, abacus_bead_click)
+    }
+    fun playBeadReset(context: Context) {
+        play(context, abacus_bead_reset)
+    }
     fun playClear(context: Context) {
         play(context, btn_clear)
     }

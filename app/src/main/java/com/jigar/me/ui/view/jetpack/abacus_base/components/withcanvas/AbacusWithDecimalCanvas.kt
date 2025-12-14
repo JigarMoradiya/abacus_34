@@ -3,7 +3,8 @@ package com.jigar.me.ui.view.jetpack.abacus_base.components.withcanvas
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.border
-import androidx.compose.foundation.gestures.detectDragGestures
+import androidx.compose.foundation.gestures.awaitFirstDown
+import androidx.compose.foundation.gestures.drag
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -44,6 +45,7 @@ import com.jigar.me.ui.view.jetpack.abacus_base.components.spotlightTag
 import com.jigar.me.ui.view.jetpack.abacus_base.freeModeHighlightSteps
 import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.PlaySound
 import kotlin.math.abs
 
 // ─────────────────────────────────────────────────────────────
@@ -60,6 +62,8 @@ fun AbacusWithDecimalCanvas(
     selectedTheme: String,
     screenType: String,
     isFreeModeOn: Boolean,
+    isBeadSoundOn: Boolean,
+    isDisplayCurrentAbacusInput: Boolean,
     abacusData: AbacusCalculations,
     numberOfColumns: Int,
     rodMovement: List<RodMovement>,      // kept for future arrow-on-canvas if needed
@@ -131,9 +135,13 @@ fun AbacusWithDecimalCanvas(
                 theme = selectedTheme,
                 screenType = screenType,
                 abacusType = null,
-                isDisplayAbacusNumber = true,
+                isDisplayAbacusNumber = isDisplayCurrentAbacusInput,
                 onReset = {
                     abacusData.resetAbacusData()
+                    // reset abacus sound
+                    if (isBeadSoundOn){
+                        PlaySound.playBeadReset(context)
+                    }
                 },
                 onNext = {
                     // Hook for "next" – screen can handle if needed
@@ -182,47 +190,46 @@ fun AbacusWithDecimalCanvas(
                     .padding(vertical = dim.rectLineWidth, horizontal = dim.rectLineWidth)
                     .align(Alignment.Center)
                     .pointerInput(Unit) {
-                        // DRAG HANDLING: map drag to column + bead index
-                        val thresholdPx = with(density) { 4.dp.toPx() }
-                        var startCol: Int? = null
-                        var startIndex: Int? = null
-                        var totalDy = 0f
+                        val thresholdPx = with(density) { 2.dp.toPx() }
 
-                        detectDragGestures(
-                            onDragStart = { offset ->
-                                startCol = geometry.findColumn(offset.x)
-                                startIndex = geometry.findRow(offset.y)
-                                totalDy = 0f
-                            },
-                            onDrag = { change, dragAmount ->
-                                change.consume()
-                                totalDy += dragAmount.y
-                            },
-                            onDragCancel = {
-                                startCol = null
-                                startIndex = null
-                                totalDy = 0f
-                            },
-                            onDragEnd = {
-                                val col = startCol
-                                val idx = startIndex
-                                if (col != null && idx != null && abs(totalDy) > thresholdPx) {
+                        awaitPointerEventScope {
+                            while (true) {
+                                // 1️⃣ Wait for first finger down
+                                val down = awaitFirstDown(requireUnconsumed = false)
+                                val pointerId = down.id
+
+                                val startCol = geometry.findColumn(down.position.x)
+                                val startIndex = geometry.findRow(down.position.y)
+
+                                var totalDy = 0f
+
+                                // 2️⃣ Smooth drag
+                                drag(pointerId) { change ->
+                                    val deltaY = change.position.y - change.previousPosition.y
+                                    totalDy += deltaY
+                                    change.consume()
+                                }
+
+                                // 3️⃣ Move bead if drag is enough
+                                if (startCol != null && startIndex != null &&
+                                    abs(totalDy) > thresholdPx
+                                ) {
                                     if (totalDy < 0) {
-                                        if (abacusData.canMoveUp(idx, col)) {
-                                            abacusData.moveBeadUp(idx, col)
+                                        if (abacusData.canMoveUp(startIndex, startCol)) {
+                                            abacusData.moveBeadUp(startIndex, startCol)
+                                            if (isBeadSoundOn) PlaySound.playBeadClick(context)
                                         }
                                     } else {
-                                        if (abacusData.canMoveDown(idx, col)) {
-                                            abacusData.moveBeadDown(idx, col)
+                                        if (abacusData.canMoveDown(startIndex, startCol)) {
+                                            abacusData.moveBeadDown(startIndex, startCol)
+                                            if (isBeadSoundOn) PlaySound.playBeadClick(context)
                                         }
                                     }
                                 }
-                                startCol = null
-                                startIndex = null
-                                totalDy = 0f
                             }
-                        )
+                        }
                     }
+
                     .spotlightTag(1, highlightSteps[1].message) // rods highlight
             ) {
                 // Draw all columns inside Canvas

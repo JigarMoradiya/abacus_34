@@ -57,7 +57,6 @@ class SudokuPlayViewModel @Inject constructor(
     var showCandidates by mutableStateOf(false)
 
     init {
-        Log.e("","")
         loadGame()
     }
 

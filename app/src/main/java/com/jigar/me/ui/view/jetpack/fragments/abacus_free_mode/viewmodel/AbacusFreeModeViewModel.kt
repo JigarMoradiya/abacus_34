@@ -18,7 +18,7 @@ import kotlin.ranges.random
 @HiltViewModel
 class AbacusFreeModeViewModel @Inject constructor(
     private val prefs: PreferencesHelper
-) : BaseAbacusViewModel(numberOfColumns = COLUMNS) {
+) : BaseAbacusViewModel(numberOfColumns = COLUMNS, prefs = prefs) {
 
     companion object {
         const val COLUMNS = 13
@@ -181,11 +181,4 @@ class AbacusFreeModeViewModel @Inject constructor(
         updateShowDirectionHints(false)
     }
 
-    fun onSpotlightChange(next: Int?) {
-        currentSpot = next
-    }
-
-    fun clearMovements() {
-        updateRodMovements(emptyList<RodMovement>())
-    }
 }

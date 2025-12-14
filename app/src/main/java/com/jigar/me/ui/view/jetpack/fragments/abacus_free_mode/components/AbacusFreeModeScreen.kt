@@ -208,6 +208,8 @@ fun AbacusFreeModeScreen(
                 selectedTheme = selectedTheme,
                 screenType = AppConstants.AbacusScreen.screenTypeFreeMode,
                 isFreeModeOn = viewModel.isFreeModeOn,
+                isBeadSoundOn = viewModel.isBeadSoundEnabled,
+                isDisplayCurrentAbacusInput = viewModel.isDisplayCurrentAbacusInput,
                 abacusData = viewModel.abacusCalc,
                 numberOfColumns = AbacusFreeModeViewModel.Companion.COLUMNS,
                 rodMovement = viewModel.rodMovements,

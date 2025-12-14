@@ -214,8 +214,8 @@ fun CenterBox(
                 lineHeight = centerBoxValueTextSize
             )
         } else {
-            Text("-", color = Color.White)
-            Text("Hidden", color = Color.White, fontSize = 10.sp)
+            Text("-", color = Color.White, fontSize = 10.sp,lineHeight = 11.sp)
+            Text("Hide From Setting", color = Color.White, fontSize = 9.sp, lineHeight = 10.sp)
         }
     }
 }
