@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -25,8 +26,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
@@ -45,7 +48,7 @@ fun BackButtonWithText(
     val shape = RoundedCornerShape(100.dp)
     Box(
         modifier = Modifier
-            .padding(top = 12.dp)
+            .padding(top = dimensionResource(R.dimen.activity_padding12))
             .wrapContentHeight()
     ) {
         // 1) Capsule background (full width as needed)
@@ -61,14 +64,14 @@ fun BackButtonWithText(
                     )
                 )
                 .background(colorResource(R.color.back_icon_text_bg))
-                .clip(shape)                                   // 🔥 makes ripple rounded
+                .clip(shape)
                 .clickable(
                     interactionSource = remember { MutableInteractionSource() },
-                    indication = LocalIndication.current,      // 🔥 Material3 ripple
+                    indication = LocalIndication.current,
                 ) {
                     onBackClick()
                 }
-                .padding(start = circleSize / 2 + 12.dp, end = 16.dp) // leave space for circle overlap
+                .padding(start = circleSize / 2 + dimensionResource(R.dimen.activity_padding12), end = dimensionResource(R.dimen.activity_padding16)) // leave space for circle overlap
         ) {
             // Title centered vertically inside capsule
             Row(
@@ -77,10 +80,8 @@ fun BackButtonWithText(
             ) {
                 Text(
                     text = title,
-                    fontFamily = FontFamily(Font(R.font.font_bold)),
-                    fontSize = dimensionResource(id = R.dimen.textSizeTitle).value.sp,
-                    color = color,
-                    modifier = Modifier.padding(start = 16.dp)
+                    style = MaterialTheme.typography.bodyLarge.copy(color = color,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
+                    modifier = Modifier.padding(start = dimensionResource(R.dimen.activity_padding16))
                 )
             }
         }
@@ -121,7 +122,7 @@ fun HowToPlayButton(
     val shape = RoundedCornerShape(100.dp)
     Box(
         modifier = Modifier
-            .padding(start = 16.dp, top = 12.dp, end = 16.dp)
+            .padding(start = dimensionResource(R.dimen.activity_padding16), top = dimensionResource(R.dimen.activity_padding12), end = dimensionResource(R.dimen.activity_padding16))
             .wrapContentHeight()
     ) {
         // 1) Capsule background (full width as needed)
@@ -137,14 +138,14 @@ fun HowToPlayButton(
                     )
                 )
                 .background(color.copy(alpha = 0.15f))
-                .clip(shape)                                   // 🔥 makes ripple rounded
+                .clip(shape)
                 .clickable(
                     interactionSource = remember { MutableInteractionSource() },
-                    indication = LocalIndication.current,      // 🔥 Material3 ripple
+                    indication = LocalIndication.current,
                 ) {
                     onClick()
                 }
-                .padding(horizontal = 16.dp) // leave space for circle overlap
+                .padding(horizontal = dimensionResource(R.dimen.activity_padding16)) // leave space for circle overlap
         ) {
             // Title centered vertically inside capsule
             Row(
@@ -152,10 +153,8 @@ fun HowToPlayButton(
                 modifier = Modifier.fillMaxHeight()
             ) {
                 Text(
-                    text = "How to Play?",
-                    fontFamily = FontFamily(Font(R.font.font_bold)),
-                    fontSize = dimensionResource(id = R.dimen.textSizeExtraLarge).value.sp,
-                    color = color
+                    text = stringResource(R.string.how_to_play),
+                    style = MaterialTheme.typography.labelLarge.copy(color = color,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold)))
                 )
             }
         }

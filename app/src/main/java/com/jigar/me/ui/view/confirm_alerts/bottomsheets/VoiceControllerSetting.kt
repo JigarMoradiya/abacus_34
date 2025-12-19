@@ -123,7 +123,6 @@ class VoiceControllerSetting(
             }
 
             tts.voice = Voice(currentVoiceName, currentLang, Voice.QUALITY_VERY_HIGH, Voice.LATENCY_VERY_HIGH, false, setOf(""))
-//        tts.language = localLanguage
             tts.setPitch(pitch)
             tts.setSpeechRate(speed)
             readAgain()
@@ -141,8 +140,6 @@ class VoiceControllerSetting(
             }
 
             listener.updateVoiceSettings(pitch,speed,currentVoiceName,currentLang)
-//            TODO Temp
-//            saveAudio()
         }
 
         val currentSpeed = prefManager.getDefaultTTSSpeed()
@@ -174,26 +171,6 @@ class VoiceControllerSetting(
 //        val textToRead = "Welcome to the Abacus Child Learning Application, where mastering math becomes an exciting journey for your child! Application is designed to teach math using the Abacus."
         if (tts.isSpeaking) tts.stop()
         tts.speak(textToRead,TextToSpeech.QUEUE_ADD,null,"id")
-    }
-    private fun saveAudio(){
-
-//        val textToRead = activity.getString(R.string.speak_test)
-        val textToRead = "Welcome to the Abacus Child Learning Application, where mastering math becomes an exciting journey for your child! Application is designed to teach math using the Abacus."
-        if (tts.isSpeaking) tts.stop()
-        tts.speak(textToRead,TextToSpeech.QUEUE_ADD,null,"id")
-
-        val map = HashMap<String, String>()
-        map[TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID] = textToRead
-        val bundle = Bundle()
-        bundle.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID,"speak")
-        val myDir = File(Environment.getExternalStorageDirectory().absolutePath + "/Download/AbacusAudio")
-        if (!myDir.exists()){
-            myDir.mkdir()
-        }
-        val fileName = currentLang.displayName+"_"+currentVoiceName+".wav"
-        val path = "${myDir.path}/${fileName}"
-//        val sr = tts.synthesizeToFile(textToRead,bundle,File(path),"id")
-        val sr = tts.synthesizeToFile(textToRead,map,path)
     }
 
     fun dismiss(){

@@ -52,9 +52,11 @@ fun AbacusFreeModeScreen(
     var showFooterPopup by remember { mutableStateOf(false) }
 
     // -------- INIT TARGET --------
-    LaunchedEffect(Unit) {
-        viewModel.numberToMatch = viewModel.generateNextTarget(null)
-        viewModel.refreshBeads(viewModel.numberToMatch)
+    if (!viewModel.isFreeModeOn){
+        LaunchedEffect(Unit) {
+            viewModel.numberToMatch = viewModel.generateNextTarget(null)
+            viewModel.refreshBeads(viewModel.numberToMatch)
+        }
     }
 
     // HANDLE ABACUS MOVEMENT
@@ -81,9 +83,7 @@ fun AbacusFreeModeScreen(
                 Spacer(Modifier.width(6.dp))
                 Text(
                     text = stringResource(R.string.free_mode_settings),
-                    fontWeight = FontWeight.Bold,
-                    fontFamily = FontFamily(Font(R.font.font_bold)),
-                    style = MaterialTheme.typography.titleSmall,
+                    style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
                 )
             }
         }
@@ -132,9 +132,7 @@ fun AbacusFreeModeScreen(
                     TextButton(onClick = { viewModel.startHighlighter() }) {
                         Text(
                             text = stringResource(R.string.click_here_to_show_abacus_tour),
-                            style = MaterialTheme.typography.bodyMedium,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
-                            fontWeight = FontWeight.Bold
+                            style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold)))
                         )
                     }
                 }
@@ -159,15 +157,11 @@ fun AbacusFreeModeScreen(
                         ) {
                             Text(
                                 text = "${viewModel.fromNumber} to ${viewModel.toNumber}",
-                                color = MaterialTheme.colorScheme.error,
-                                fontWeight = FontWeight.ExtraBold,
-                                style = MaterialTheme.typography.titleSmall
+                                style = MaterialTheme.typography.titleSmall.copy(color = MaterialTheme.colorScheme.error,fontWeight = FontWeight.ExtraBold,fontFamily = FontFamily(Font(R.font.font_bold))),
                             )
                             Text(
                                 text = stringResource(R.string.numbers_generate_between),
-                                color = MaterialTheme.colorScheme.onBackground,
-                                fontWeight = FontWeight.SemiBold,
-                                style = MaterialTheme.typography.bodySmall
+                                style = MaterialTheme.typography.bodySmall.copy(color = MaterialTheme.colorScheme.onBackground,fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))),
                             )
                         }
                     }
@@ -179,18 +173,14 @@ fun AbacusFreeModeScreen(
                     ) {
                         Text(
                             text = "Set :",
-                            style = MaterialTheme.typography.bodyLarge,
+                            style = MaterialTheme.typography.bodyLarge.copy(color = AbacusTheme.colorPreset(selectedTheme).buttonColor,fontWeight = FontWeight.ExtraBold,fontFamily = FontFamily(Font(R.font.font_extra_bold))),
                             fontWeight = FontWeight.ExtraBold,
                             fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                            color = AbacusTheme.colorPreset(selectedTheme).buttonColor
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
                             text = viewModel.numberToMatch.toString(),
-                            style = MaterialTheme.typography.headlineLarge,
-                            fontWeight = FontWeight.ExtraBold,
-                            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                            color = AbacusTheme.colorPreset(selectedTheme).buttonColor
+                            style = MaterialTheme.typography.headlineLarge.copy(color = AbacusTheme.colorPreset(selectedTheme).buttonColor,fontWeight = FontWeight.ExtraBold,fontFamily = FontFamily(Font(R.font.font_extra_bold))),
                         )
                     }
                 }

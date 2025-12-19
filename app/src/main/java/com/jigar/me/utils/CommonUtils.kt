@@ -53,7 +53,7 @@ object CommonUtils {
         // Update the Setting to latest.
         val currentLanguage = prefManager.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_LANGUAGE, "")
         val localLanguage = if (currentLanguage.isEmpty()){
-            Locale(AppPreferencesHelper.DEFAULT_TTS_LANGUAGE_VALUE)
+            Locale.forLanguageTag(AppPreferencesHelper.DEFAULT_TTS_LANGUAGE_VALUE)
         }else{
             Gson().fromJson(currentLanguage, Locale::class.java)
         }
@@ -61,7 +61,6 @@ object CommonUtils {
         val currentSpeed = prefManager.getDefaultTTSSpeed()
         val currentPitch = prefManager.getDefaultTTSPitch()
         tts.voice = Voice(currentVoice, localLanguage, Voice.QUALITY_VERY_HIGH, Voice.LATENCY_VERY_HIGH, false, setOf(""))
-//        tts.language = localLanguage
         tts.setPitch(currentPitch)
         tts.setSpeechRate(currentSpeed)
     }

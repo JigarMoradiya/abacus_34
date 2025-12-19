@@ -1,24 +1,24 @@
 package com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.viewmodel
 
-import android.util.Log
+import android.content.Context
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import com.jigar.me.data.local.data.RodMovement
-import com.jigar.me.data.pref.PreferencesHelper
+import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
 import com.jigar.me.ui.view.jetpack.abacus_base.viewmodel.BaseAbacusViewModel
 import com.jigar.me.utils.AppConstants
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlin.math.max
-import kotlin.ranges.random
 
 @HiltViewModel
 class AbacusFreeModeViewModel @Inject constructor(
-    private val prefs: PreferencesHelper
-) : BaseAbacusViewModel(numberOfColumns = COLUMNS, prefs = prefs) {
+    private val prefs: AppPreferencesHelper,
+    @ApplicationContext context: Context
+) : BaseAbacusViewModel(numberOfColumns = COLUMNS, context = context, prefs = prefs) {
 
     companion object {
         const val COLUMNS = 13
@@ -80,10 +80,7 @@ class AbacusFreeModeViewModel @Inject constructor(
             rodMovements = emptyList()
         } else {
             // 👉 Entering GUIDED MODE
-            // restore user setting for arrows
             showDirectionHints = prefs.getCustomParamBoolean(AppConstants.Settings.Setting_direction, true)
-            // recompute arrows for current target
-//            refreshBeads(numberToMatch)
         }
     }
 
@@ -107,7 +104,7 @@ class AbacusFreeModeViewModel @Inject constructor(
     // --------- Target generation ----------
 
     fun generateNextTarget(prev: Int? = null): Int {
-        return if (isRandomNumber) {
+        val number = if (isRandomNumber) {
             (fromNumber..toNumber).random()
         } else {
             if (prev == null) fromNumber
@@ -117,6 +114,8 @@ class AbacusFreeModeViewModel @Inject constructor(
                 next
             }
         }
+        speakOut(number.toString())
+        return number
     }
 
     // --------- Rod movement (for arrows) ----------
@@ -162,9 +161,7 @@ class AbacusFreeModeViewModel @Inject constructor(
     }
 
     // --------- Highlighter / Tour ----------
-
     fun startHighlighter() {
-//        SpotlightRegistry.clear()
         showHighlighter = true
         currentSpot = 0
         // Reset abacus display when tour starts
@@ -180,5 +177,4 @@ class AbacusFreeModeViewModel @Inject constructor(
         updateRodMovements(emptyList())
         updateShowDirectionHints(false)
     }
-
 }
