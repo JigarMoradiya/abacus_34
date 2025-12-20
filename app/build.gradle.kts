@@ -221,6 +221,9 @@ dependencies {
         exclude(group = "org.jetbrains.kotlin", module = "kotlin-android-extensions-runtime")
     }
 
+    implementation("com.google.accompanist:accompanist-flowlayout:0.34.0")
+
+
 }
 
 // Allow references to generated code

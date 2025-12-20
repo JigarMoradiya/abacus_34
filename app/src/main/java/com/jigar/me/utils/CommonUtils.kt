@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.speech.tts.TextToSpeech
 import android.speech.tts.Voice
+import android.util.Log
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
@@ -39,6 +40,23 @@ object CommonUtils {
     external fun getOrganizerId() : String
     external fun getDatabaseKey() : String
     external fun getApiBaseUrl() : String
+
+    fun logMultilineString(tag: String, data: String) {
+        for (line in data.split("\n".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()) {
+            logLargeString(tag, line)
+        }
+    }
+
+    fun logLargeString(tag: String, data: String) {
+        val CHUNK_SIZE = 4076 // Typical max logcat payload.
+        var offset = 0
+        while (offset + CHUNK_SIZE <= data.length) {
+            Log.e(tag, data.substring(offset, CHUNK_SIZE.let { offset += it; offset }))
+        }
+        if (offset < data.length) {
+            Log.e(tag, data.substring(offset))
+        }
+    }
 
     @SuppressLint("RestrictedApi")
     fun setErrorToEditText(textInputLayout: TextInputLayout, validation_message: String?) {

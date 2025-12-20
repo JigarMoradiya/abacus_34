@@ -13,6 +13,7 @@ import com.jigar.me.data.model.dbtable.abacus_all_data.Pages
 import com.jigar.me.data.model.dbtable.abacus_all_data.Set
 import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
 import com.jigar.me.utils.AppConstants
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AbacusAllDataDao {
@@ -52,6 +53,18 @@ interface AbacusAllDataDao {
             "(select exists (select is_set_completed from '${AppConstants.DBParam.table_set_progress}' where set_id = s.id AND is_set_completed = 1)) as is_completed_set," +
             "(select exists (select is_set_completed from '${AppConstants.DBParam.table_set_progress}' where set_id = s.id AND is_set_completed = 0)) as is_running_set FROM '${AppConstants.DBParam.table_sets}' as s WHERE s.is_active = 1 ORDER BY sort_order ASC")
     suspend fun getAllSet(): List<Set>
+
+    @Query("""
+    SELECT s.id,s.page_id,s.name,s.answer_setting,s.show_time_setting,
+           s.sort_order,s.created_at,s.is_active,s.description,s.hint,
+           s.latest_abacus_id,s.totals_abacus,
+           (SELECT EXISTS (SELECT 1 FROM setProgress WHERE set_id = s.id AND is_set_completed = 1)) AS is_completed_set,
+           (SELECT EXISTS (SELECT 1 FROM setProgress WHERE set_id = s.id AND is_set_completed = 0)) AS is_running_set
+    FROM sets AS s
+    WHERE s.is_active = 1
+    ORDER BY sort_order ASC """)
+    fun observeAllSets(): Flow<List<Set>>
+
     @Query("SELECT * FROM '${AppConstants.DBParam.table_abacus}' WHERE set_id = :id ORDER BY created_at ASC")
     suspend fun getAbacus(id : String): List<Abacus>
     @Query("SELECT c.name || ' > ' || p.name || ' > ' || s.name FROM '${AppConstants.DBParam.table_sets}' as s LEFT JOIN '${AppConstants.DBParam.table_pages}' as p on (p.id = s.page_id) LEFT JOIN '${AppConstants.DBParam.table_category}' as c on (c.id = p.category_id)  WHERE s.id = :setId")

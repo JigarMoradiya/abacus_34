@@ -44,11 +44,6 @@ class SetsAdapter(
                 cardMain.setCardBackgroundColor(ContextCompat.getColor(context, R.color.grey_100))
             }
         }
-//        if (data.totals_abacus > 0){
-//            conMain.alpha = 1f
-//        }else{
-//            conMain.alpha = 0.4f
-//        }
         if (data.is_completed_set){
             imgCompletedIndicator.show()
         }else{

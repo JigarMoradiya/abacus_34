@@ -32,7 +32,6 @@ class CategoryFragment : BaseFragment() {
     private lateinit var binding: FragmentCategoryBinding
     private var root: View? = null
     private var mNavController: NavController? = null
-
     private val appViewModel by viewModels<AppViewModel>()
     private lateinit var categoryNewAdapter: CategoryNewAdapter
     private lateinit var pagesNewAdapter: PagesNewAdapter
@@ -40,7 +39,6 @@ class CategoryFragment : BaseFragment() {
     private var clickedPagePosition: Int = 0
     private var clickedSetPosition: Int = 0
     private var clickedSetData: Set? = null
-//    private var isGetAllData: Boolean = true
 
     // default make this
     private var isGetAllData: Boolean = false
@@ -48,7 +46,6 @@ class CategoryFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         levelId = CategoryFragmentArgs.fromBundle(requireArguments()).levelId
-        initObserver()
     }
 
     override fun onCreateView(
@@ -160,9 +157,6 @@ class CategoryFragment : BaseFragment() {
         }
     }
 
-    private fun initObserver() {
-
-    }
     private fun clickCategory(position: Int, previousPos: Int, data: Category) = with(binding){
         setPages(data.id)
         val viewHolder = recyclerviewCategory.findViewHolderForAdapterPosition(previousPos) as? CategoryNewAdapter.ViewHolder

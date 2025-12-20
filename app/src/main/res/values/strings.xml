@@ -866,5 +866,8 @@
     <string name="numbers_generate_between">Numbers generate between</string>
     <string name="how_to_play">How to Play?</string>
 
+    <string name="network_unreachable">This page isn\'t available without internet</string>
+    <string name="unexpected_error">Something went wrong, please try again later.</string>
+    <string name="no_logged_in_user">Error fetching current user data</string>
 
 </resources>

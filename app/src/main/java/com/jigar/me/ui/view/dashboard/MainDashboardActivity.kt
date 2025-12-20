@@ -37,6 +37,7 @@ import com.jigar.me.ui.view.base.BaseActivity
 import com.jigar.me.ui.view.confirm_alerts.dialogs.OfferDialog
 import com.jigar.me.ui.view.dashboard.fragments.exam.doexam.ExamCommonFragment
 import com.jigar.me.ui.view.dashboard.fragments.exercise.ExerciseHomeFragment
+import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.InAppViewModel
 import com.jigar.me.ui.viewmodel.StudentViewModel
@@ -65,6 +66,8 @@ class MainDashboardActivity : BaseActivity() {
     var isPurchaseDataChecked = false
     var allSetList: ArrayList<Set> = arrayListOf()
     private var loginData: LoginData? = null
+
+    val dashboardViewModel: HomeActivityViewModel by viewModels()
     companion object {
         @JvmStatic
         fun getInstance(context: Context?) {
