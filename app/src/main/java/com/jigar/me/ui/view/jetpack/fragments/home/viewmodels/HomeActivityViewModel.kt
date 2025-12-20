@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.jigar.me.data.model.data.FetchAbacusDataRequest
 import com.jigar.me.data.model.dbtable.abacus_all_data.Set
 import com.jigar.me.data.pref.AppPreferencesHelper
-import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.CategoryRepository
+import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.CategoryRepository
 import com.jigar.me.ui.view.jetpack.fragments.home.interator.GetAbacusDataUseCase
 import com.jigar.me.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -371,7 +371,7 @@
         android:name="com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.AbacusFreeModeFragment"/>
     <fragment
         android:id="@+id/categoryFragmentNew"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.abacus_practice.CategoryFragmentNew">
+        android:name="com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.CategoryFragmentNew">
         <argument
             android:name="levelId"
             app:argType="string" />

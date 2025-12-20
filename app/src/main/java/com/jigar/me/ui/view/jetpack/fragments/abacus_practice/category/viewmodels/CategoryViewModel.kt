@@ -1,10 +1,10 @@
-package com.jigar.me.ui.view.jetpack.fragments.abacus_practice.viewmodels
+package com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.viewmodels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.jigar.me.ui.view.jetpack.core.StatefulViewModel
-import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.CategoryRepository
-import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.model.CategoryUiState
+import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.CategoryRepository
+import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.model.CategoryUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
