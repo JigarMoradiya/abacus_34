@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.model
+package com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.viewmodels
 
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.data.model.dbtable.abacus_all_data.DisplayPages
