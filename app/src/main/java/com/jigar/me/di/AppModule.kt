@@ -25,6 +25,8 @@ import com.jigar.me.ui.view.jetpack.abacus_base.components.SpotlightRegistry
 import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.viewmodel.SudokuRepository
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.viewmodel.TargetRepository
+import com.jigar.me.ui.view.jetpack.fragments.home.repository.AbacusRepository
+import com.jigar.me.ui.view.jetpack.fragments.home.repository.DefaultAbacusRepository
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import dagger.Binds
@@ -32,6 +34,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -44,13 +47,10 @@ object AppModule {
     internal fun provideContext(application: Application): Context = application
 
     // Preferences
-    @Provides
-    @PreferenceInfo
-    internal fun providePreferenceName(): String = AppConstants.PREF_NAME
 
-    @Provides
     @Singleton
-    internal fun providePreferencesHelper(appPreferencesHelper: AppPreferencesHelper): PreferencesHelper = appPreferencesHelper
+    @Provides
+    fun providePreferencesHelper(@ApplicationContext context: Context) = AppPreferencesHelper(context, AppConstants.PREF_NAME)
 
     @Provides
     @Singleton
@@ -107,10 +107,4 @@ object AppModule {
     @Provides
     @Singleton
     fun provideTargetRepository(): TargetRepository = TargetRepository()
-
-
-//    @Provides @Singleton fun provideMathUtils() = MathUtils
-//    @Provides @Singleton fun provideSpotlightRegistry() = SpotlightRegistry
-//    @Provides @Singleton fun provideColorPresets() = ColorPresets
-
 }

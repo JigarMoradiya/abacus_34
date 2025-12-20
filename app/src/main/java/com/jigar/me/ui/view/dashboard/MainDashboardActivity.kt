@@ -37,7 +37,7 @@ import com.jigar.me.ui.view.base.BaseActivity
 import com.jigar.me.ui.view.confirm_alerts.dialogs.OfferDialog
 import com.jigar.me.ui.view.dashboard.fragments.exam.doexam.ExamCommonFragment
 import com.jigar.me.ui.view.dashboard.fragments.exercise.ExerciseHomeFragment
-import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.viewmodels.HomeActivityViewModel
+import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.InAppViewModel
 import com.jigar.me.ui.viewmodel.StudentViewModel
@@ -60,14 +60,12 @@ class MainDashboardActivity : BaseActivity() {
     lateinit var navController: NavController
     lateinit var navHostFragment: NavHostFragment
     private var selectedFragment: Int = -1
-    private val studentViewModel by viewModels<StudentViewModel>()
-    private val appViewModel by viewModels<AppViewModel>()
     private lateinit var binding: ActivityMainDashboardBinding
     var isPurchaseDataChecked = false
     var allSetList: ArrayList<Set> = arrayListOf()
     private var loginData: LoginData? = null
 
-    val dashboardViewModel: HomeActivityViewModel by viewModels()
+    val dashboardViewModel: HomeActivityViewModel by viewModels() // dont remove this line
     companion object {
         @JvmStatic
         fun getInstance(context: Context?) {
@@ -90,44 +88,8 @@ class MainDashboardActivity : BaseActivity() {
     }
 
     private fun initObserver() {
-        studentViewModel.getAbacusDataResponse.observe(this) {
-            when (it) {
-                is Resource.Loading -> {
-                }
-                is Resource.Success -> {
-                    if (it.value.status == AppConstants.APIStatus.SUCCESS)
-                        onSuccessAbacusData(it.value.data)
-                    else{
-                        onFailure(it.value.error?.message)
-                    }
-                }
-                is Resource.Failure -> {
-                    onFailure(it.errorBody)
-                }
-            }
-        }
-
         loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
 //        inAppViewModel.inAppInit()
-    }
-
-    private fun onSuccessAbacusData(data: JsonObject?) {
-        val response = Gson().fromJson(data, AbacusAllData::class.java)
-        lifecycleScope.launch {
-            val dataLevel : ArrayList<Level> = arrayListOf()
-            val dataPages : ArrayList<Pages> = arrayListOf()
-            val dataCategory : ArrayList<Category> = arrayListOf()
-            val dataSet : ArrayList<Set> = arrayListOf()
-            val dataAbacus : ArrayList<Abacus> = arrayListOf()
-            response.levels?.let { dataLevel.addAll(it) }
-            response.categories?.let { dataCategory.addAll(it) }
-            response.pages?.let { dataPages.addAll(it) }
-            response.set?.let { dataSet.addAll(it) }
-            response.abacus?.let { dataAbacus.addAll(it) }
-            appViewModel.insertAllData(dataLevel,dataCategory,dataPages,dataSet,dataAbacus)
-            response.last_sync_time?.let { prefManager.setCustomParam(Constants.last_sync_time,it) }
-            fetchSetData()
-        }
     }
 
     private fun setNavigationGraph() {
@@ -136,20 +98,12 @@ class MainDashboardActivity : BaseActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             selectedFragment = destination.id
-            showToolbarTitle(destination.id)
         }
     }
 
     private fun initToolBar() {
     }
     private fun initViews() {
-//        WindowCompat.setDecorFitsSystemWindows(window, false)
-//        ViewCompat.setOnApplyWindowInsetsListener(binding.relMain) { view, insets ->
-//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-//            view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-//            insets
-//        }
-
 
         // Allow drawing behind system bars
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -165,29 +119,17 @@ class MainDashboardActivity : BaseActivity() {
 
             val leftInset = cutout?.safeInsetLeft ?: sysBars.left
             val rightInset = sysBars.right
-//            val topInset = sysBars.top // no top padding in landscape
-//            val bottomInset = sysBars.bottom // no bottom padding in landscape
 
             val topInset = 0 // no top padding in landscape
             val bottomInset = 0 // no bottom padding in landscape
             view.setPadding(leftInset, topInset, rightInset, bottomInset)
             insets
         }
-
-        fetchSetData()
-        val defaultDateTime = Constants.last_sync_default_time
-        val dateTime = prefManager.getCustomParam(Constants.last_sync_time,defaultDateTime)
-        val request = FetchAbacusDataRequest(true,true,true,true,true,last_sync_time = dateTime)
-        studentViewModel.getAbacusData(request)
+        dashboardViewModel.fetchAbacusData()
 
         setNavigationGraph()
         onMainActivityBack()
-//        getBottomNavBarHeight { topInset,bottomInset,hasNotch ->
-//            prefManager.setCustomParamBoolean(AppConstants.HAS_NOTCH,hasNotch)
-//            prefManager.setCustomParamInt(AppConstants.NOTCH_HEIGHT,topInset)
-//            prefManager.setCustomParamInt(AppConstants.BOTTOM_NAV_HEIGHT,bottomInset)
-//        }
-            prefManager.setCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
+        prefManager.setCustomParamInt(AppConstants.NOTCH_HEIGHT,0)
     }
 
     private fun initListener() {
@@ -232,9 +174,6 @@ class MainDashboardActivity : BaseActivity() {
 //
 //        Log.d("Qualifiers", "→ likely values-w folder: $wFolder")
 //        Log.d("Qualifiers", "→ likely values-sw folder: $swFolder")
-    }
-
-    private fun showToolbarTitle(id: Int) {
     }
 
     private fun onMainActivityBack() {
@@ -282,13 +221,5 @@ class MainDashboardActivity : BaseActivity() {
 
     private fun navigationUp() {
         navController.navigateUp()
-    }
-
-    private fun fetchSetData() {
-        lifecycleScope.launch {
-            val list = appViewModel.getAllSet()
-            allSetList.clear()
-            allSetList.addAll(list)
-        }
     }
 }

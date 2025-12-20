@@ -62,7 +62,7 @@ import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.components.Categor
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.components.PageItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.components.TopRightChips
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.viewmodels.CategoryViewModel
-import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.viewmodels.HomeActivityViewModel
+import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import dagger.hilt.android.AndroidEntryPoint
