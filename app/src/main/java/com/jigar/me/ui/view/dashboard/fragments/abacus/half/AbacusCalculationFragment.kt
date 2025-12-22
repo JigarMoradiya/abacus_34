@@ -412,7 +412,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         abacus_type = 0
         list_abacus_main = AbacusProvider.getHashMapList(currentAbacus)
         number = (list_abacus_main[0][Constants.Que]?:"0").toLong()
-        val speakText = requireContext().convert(number.toInt())
+        val speakText = requireContext().convertNumberToWords(number.toInt())
         if (isHintSound && isStepByStep) {
             speakOut(speakText)
         }
@@ -563,7 +563,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                 lifecycleScope.launch {
                     delay(500)
                     val q1 = (list_abacus_main[0][Constants.Que]?:"0")
-                    speakOut(requireContext().convert(q1.toInt()))
+                    speakOut(requireContext().convertNumberToWords(q1.toInt()))
                 }
             }
 
@@ -716,7 +716,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
         // if answer with abacus tools then return
         if (isHintSound && isStepByStep) {
             val q1 = que?:"0"
-            speakOut(requireContext().convert(q1.toInt()))
+            speakOut(requireContext().convertNumberToWords(q1.toInt()))
         }
         speek_hint = ""
         binding.cardHint.hide()
@@ -1197,10 +1197,10 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                         }
                         AppConstants.extras_Comman.AbacusTypeAdditionSubtraction -> {    
                             val q1 = (list_abacus_main[0][Constants.Que]?:"0")
-                            speakOut(requireContext().convert(q1.toInt()))
+                            speakOut(requireContext().convertNumberToWords(q1.toInt()))
                         }
                         else -> { // number
-                            speakOut(requireContext().convert(number.toInt()))
+                            speakOut(requireContext().convertNumberToWords(number.toInt()))
                         }
                     }
                 }

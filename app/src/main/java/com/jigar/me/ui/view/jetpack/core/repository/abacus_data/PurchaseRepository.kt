@@ -1,0 +1,15 @@
+package com.jigar.me.ui.view.jetpack.core.repository.abacus_data
+
+import com.jigar.me.data.local.db.inapp.sku.InAppSKUDao
+import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
+
+class PurchaseRepository @Inject constructor(
+     private val dao: InAppSKUDao,
+) {
+    fun getPurchasedSku(): Flow<List<InAppSkuDetails>> = flow {
+        emit(dao.getInAppSKUPurchased())
+    }
+}

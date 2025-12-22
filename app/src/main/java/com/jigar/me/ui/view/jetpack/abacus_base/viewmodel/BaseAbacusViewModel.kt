@@ -63,6 +63,10 @@ open class BaseAbacusViewModel(
         // Shared abacus core state
     val abacusCalc: AbacusCalculations = AbacusCalculations(numberOfColumns = numberOfColumns)
 
+    // get selected theme
+    val selectedTheme : String
+        get() = prefs.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default)
+
     // sound setting
     val isBeadSoundEnabled: Boolean
         get() = prefs.getCustomParamBoolean(AppConstants.Settings.Setting_sound, true)

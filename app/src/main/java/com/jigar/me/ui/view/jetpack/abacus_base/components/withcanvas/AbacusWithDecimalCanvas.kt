@@ -61,18 +61,21 @@ import kotlin.math.abs
 fun AbacusWithDecimalCanvas(
     selectedTheme: String,
     screenType: String,
-    isFreeModeOn: Boolean,
+    isFreeModeOn: Boolean = false,
     isBeadSoundOn: Boolean,
     isDisplayCurrentAbacusInput: Boolean,
     abacusData: AbacusCalculations,
     numberOfColumns: Int,
     rodMovement: List<RodMovement>,      // kept for future arrow-on-canvas if needed
     showDirectionHint: Boolean,
-    showHighlighter: Boolean,
+    showHighlighter: Boolean = false,
+    abacusType: String? = null,
+    isNextButtonEnable: Boolean = false,
     onRodMovementChange: (List<RodMovement>) -> Unit,
     onShowDirectionHintsChange: (Boolean) -> Unit,
     onShowHighlighterChange: (Boolean) -> Unit,
-    @SuppressLint("ModifierParameter") modifier: Modifier = Modifier
+    @SuppressLint("ModifierParameter") modifier: Modifier = Modifier,
+    onNext: () -> Unit,
 ) {
 
     val context = LocalContext.current
@@ -134,7 +137,8 @@ fun AbacusWithDecimalCanvas(
                 answer = abacusData.displayValue,
                 theme = selectedTheme,
                 screenType = screenType,
-                abacusType = null,
+                abacusType = abacusType,
+                isNextButtonEnable = isNextButtonEnable,
                 isDisplayAbacusNumber = isDisplayCurrentAbacusInput,
                 onReset = {
                     abacusData.resetAbacusData()
@@ -144,7 +148,7 @@ fun AbacusWithDecimalCanvas(
                     }
                 },
                 onNext = {
-                    // Hook for "next" – screen can handle if needed
+                    onNext()
                 },
                 modifier = Modifier
                     .align(Alignment.TopCenter)

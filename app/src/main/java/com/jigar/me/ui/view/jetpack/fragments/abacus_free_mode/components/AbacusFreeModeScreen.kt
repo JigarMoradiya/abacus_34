@@ -44,10 +44,6 @@ fun AbacusFreeModeScreen(
     viewModel: AbacusFreeModeViewModel,
     onBackClick: () -> Unit = {}
 ) {
-    val prefs = LocalPreferencesHelper.current
-
-    val selectedTheme =
-        prefs.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default)
 
     var showFooterPopup by remember { mutableStateOf(false) }
 
@@ -173,14 +169,14 @@ fun AbacusFreeModeScreen(
                     ) {
                         Text(
                             text = "Set :",
-                            style = MaterialTheme.typography.bodyLarge.copy(color = AbacusTheme.colorPreset(selectedTheme).buttonColor,fontWeight = FontWeight.ExtraBold,fontFamily = FontFamily(Font(R.font.font_extra_bold))),
+                            style = MaterialTheme.typography.bodyLarge.copy(color = AbacusTheme.colorPreset(viewModel.selectedTheme).buttonColor,fontWeight = FontWeight.ExtraBold,fontFamily = FontFamily(Font(R.font.font_extra_bold))),
                             fontWeight = FontWeight.ExtraBold,
                             fontFamily = FontFamily(Font(R.font.font_extra_bold)),
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
                             text = viewModel.numberToMatch.toString(),
-                            style = MaterialTheme.typography.headlineLarge.copy(color = AbacusTheme.colorPreset(selectedTheme).buttonColor,fontWeight = FontWeight.ExtraBold,fontFamily = FontFamily(Font(R.font.font_extra_bold))),
+                            style = MaterialTheme.typography.headlineLarge.copy(color = AbacusTheme.colorPreset(viewModel.selectedTheme).buttonColor,fontWeight = FontWeight.ExtraBold,fontFamily = FontFamily(Font(R.font.font_extra_bold))),
                         )
                     }
                 }
@@ -195,7 +191,7 @@ fun AbacusFreeModeScreen(
             contentAlignment = Alignment.Center
         ) {
             AbacusWithDecimalCanvas(
-                selectedTheme = selectedTheme,
+                selectedTheme = viewModel.selectedTheme,
                 screenType = AppConstants.AbacusScreen.screenTypeFreeMode,
                 isFreeModeOn = viewModel.isFreeModeOn,
                 isBeadSoundOn = viewModel.isBeadSoundEnabled,
@@ -210,7 +206,8 @@ fun AbacusFreeModeScreen(
                 onShowHighlighterChange = { enabled ->
                     if (enabled) viewModel.startHighlighter()
                     else viewModel.stopHighlighter()
-                }
+                },
+                onNext = {}
             )
         }
     }

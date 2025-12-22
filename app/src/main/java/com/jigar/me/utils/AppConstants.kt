@@ -129,6 +129,7 @@ object AppConstants {
     annotation class AbacusScreen {
         companion object {
             const val screenTypeFreeMode = "FreeMode"
+            const val screenTypeAbacusPractice = "AbacusPractice"
             const val isFreeMode = "isFreeMode"
             const val isResetEveryTime = "isResetEveryTime"
             const val isRandomNumber = "isRandomNumber"

@@ -3,7 +3,6 @@ package com.jigar.me.ui.view.dashboard.fragments.custom_challenge
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import com.jigar.me.R
 import com.jigar.me.data.local.data.AbacusBeadType
 import com.jigar.me.data.local.data.AbacusContent
@@ -34,7 +32,7 @@ import com.jigar.me.ui.viewmodel.ExamViewModel
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Resource
-import com.jigar.me.utils.extensions.convert
+import com.jigar.me.utils.extensions.convertNumberToWords
 import com.jigar.me.utils.extensions.dp
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.invisible
@@ -47,7 +45,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
 import androidx.navigation.findNavController
-import com.google.gson.Gson
 import com.jigar.me.utils.PlaySound
 
 @AndroidEntryPoint
@@ -342,7 +339,7 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
                     ""
                 }
             }
-            val word = text+requireContext().convert(currentNumber)
+            val word = text+requireContext().convertNumberToWords(currentNumber)
             if (isShowWord){
                 binding.tvNumberWord.text = word
             }

@@ -51,6 +51,7 @@ fun AbacusWithDecimal(
     rodMovement: List<RodMovement>,
     showDirectionHint: Boolean,
     showHighlighter: Boolean,
+    isNextButtonEnable: Boolean = false,
     onRodMovementChange: (List<RodMovement>) -> Unit,
     onShowDirectionHintsChange: (Boolean) -> Unit,
     onShowHighlighterChange: (Boolean) -> Unit,
@@ -98,7 +99,7 @@ fun AbacusWithDecimal(
                 answer = abacusData.displayValue,
                 theme = selectedTheme,
                 screenType = screenType,
-                abacusType = null,
+                isNextButtonEnable = isNextButtonEnable,
                 isDisplayAbacusNumber = true,
                 onReset = {
                     abacusData.resetAbacusData()

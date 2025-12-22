@@ -53,8 +53,7 @@ class AbacusFreeModeViewModel @Inject constructor(
 
     // Direction hint default from prefs
     init {
-        showDirectionHints =
-            prefs.getCustomParamBoolean(AppConstants.Settings.Setting_direction, true)
+        showDirectionHints = prefs.getCustomParamBoolean(AppConstants.Settings.Setting_direction, true)
     }
 
     // --------- Free Mode / Guided Mode state ----------

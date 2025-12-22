@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.jigar.me.data.model.data.FetchAbacusDataRequest
 import com.jigar.me.data.model.dbtable.abacus_all_data.Set
 import com.jigar.me.data.pref.AppPreferencesHelper
-import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.CategoryRepository
+import com.jigar.me.ui.view.jetpack.core.repository.abacus_data.AbacusDataRepository
 import com.jigar.me.ui.view.jetpack.fragments.home.interator.GetAbacusDataUseCase
 import com.jigar.me.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeActivityViewModel @Inject constructor(
-    repository: CategoryRepository,
+    repository: AbacusDataRepository,
     private val prefManager: AppPreferencesHelper,
     private val getAbacusDataUseCase : GetAbacusDataUseCase
 ) : ViewModel() {

@@ -44,8 +44,9 @@ fun AbacusAnswerBarCompose(
     answer: String,
     theme: String,
     screenType: String,
-    abacusType: String?,
     isDisplayAbacusNumber: Boolean,
+    abacusType: String? = null,
+    isNextButtonEnable: Boolean,
     onReset: () -> Unit,
     onNext: () -> Unit,
     modifier: Modifier = Modifier
@@ -62,13 +63,13 @@ fun AbacusAnswerBarCompose(
 
     val nextOpacity = when {
         screenType == AppConstants.AbacusScreen.screenTypeFreeMode -> 0.2f
-        abacusType == "formal_answer" || screenType == "ccm"  -> 1f
+        abacusType == AppConstants.apiParams.answerFormalAnswer || screenType == "ccm" || isNextButtonEnable -> 1f
         else -> 0.5f
     }
 
     val resetOpacity = when {
         answer == "0" -> 0.5f
-        abacusType == "formal_answer" || screenType == "exercise" -> 1f
+        screenType == "exercise" || isNextButtonEnable -> 1f
         else -> 1f
     }
     val density = LocalDensity.current
@@ -236,7 +237,7 @@ fun NextButton(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        if (screenType != "ccm" && abacusType != "formal_answer") {
+        if (screenType != "ccm" && abacusType != AppConstants.apiParams.answerFormalAnswer) {
             Icon(
                 Icons.Default.PlayArrow,
                 contentDescription = null,
@@ -247,7 +248,7 @@ fun NextButton(
 
         Text(
             text = when {
-                abacusType == "formal_answer" -> "Submit"
+                abacusType == AppConstants.apiParams.answerFormalAnswer -> "Submit"
                 screenType == "ccm" -> "Check"
                 else -> "Next"
             },

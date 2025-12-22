@@ -376,11 +376,21 @@
             android:name="levelId"
             app:argType="string" />
         <action
+            android:id="@+id/toAbacusDoPracticeFragment"
+            app:destination="@+id/abacusDoPracticeFragment" />
+        <action
             android:id="@+id/toAbacusCalculationFragment"
             app:destination="@+id/abacusCalculationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/abacusDoPracticeFragment"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.AbacusDoPracticeFragment">
+        <argument
+            android:name="setId"
+            app:argType="string" />
         <action
-            android:id="@+id/toAbacusListFragment"
-            app:destination="@+id/abacusListFragment" />
+            android:id="@+id/toSettingsFragment"
+            app:destination="@+id/settingsFragment" />
         <action
             android:id="@+id/toPurchaseFragment"
             app:destination="@+id/purchaseFragment" />

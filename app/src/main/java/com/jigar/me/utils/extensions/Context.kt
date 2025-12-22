@@ -19,13 +19,11 @@ import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.annotation.NonNull
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
@@ -37,7 +35,6 @@ import com.jigar.me.data.local.data.DataProvider
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Constants
-import java.io.File
 import java.io.IOException
 import java.util.*
 
@@ -321,32 +318,105 @@ fun Context.downloadFilePath() : String?{
     }else{""}
 }
 
- fun Context.convert(n: Int): String {
-     val tens = DataProvider.getTensList(this)
+// fun Context.convertNumberToWords(n: Int): String {
+//     val tens = DataProvider.getTensList(this)
+//     val units = DataProvider.getUnitsList(this)
+//     if (n < 0) {
+//         return resources.getString(R.string.Minus) + " " + convertNumberToWords(-n)
+//     }
+//     if (n < 20) {
+//         return units[n]
+//     }
+//     if (n < 100) {
+//         return tens[n / 10] + (if (n % 10 != 0) " " else "") + units[n % 10]
+//     }
+//     if (n < 1000) {
+//         return units[n / 100] + " " + resources
+//             .getString(R.string.Hundred) + (if (n % 100 != 0) " " else "") + convertNumberToWords(n % 100)
+//     }
+//     if (n < 100000) {
+//         return convertNumberToWords(n / 1000) + " " + resources
+//             .getString(R.string.Thousand) + (if (n % 10000 != 0) " " else "") + convertNumberToWords(n % 1000)
+//     }
+//     return if (n < 10000000) {
+//         convertNumberToWords(n / 100000) + " " + resources
+//             .getString(R.string.Lakh) + (if (n % 100000 != 0) " " else "") + convertNumberToWords(n % 100000)
+//     } else convertNumberToWords(n / 10000000) + " " + resources
+//         .getString(R.string.Crore) + (if (n % 10000000 != 0) " " else "") + convertNumberToWords(n % 10000000)
+// }
+
+ fun Context.convertNumberToWords(n: Int): String {
+     if (n == 0) return DataProvider.getUnitsList(this)[0]
+
      val units = DataProvider.getUnitsList(this)
-     if (n < 0) {
-         return resources.getString(R.string.Minus) + " " + convert(-n)
+     val tens = DataProvider.getTensList(this)
+
+     fun words(num: Int): String {
+         return when {
+             num < 0 ->
+                 "${getString(R.string.Minus)} ${words(-num)}"
+
+             num < 20 ->
+                 units[num]
+
+             num < 100 ->
+                 buildString {
+                     append(tens[num / 10])
+                     if (num % 10 != 0) {
+                         append(" ")
+                         append(units[num % 10])
+                     }
+                 }
+
+             num < 1_000 ->
+                 buildString {
+                     append(units[num / 100])
+                     append(" ")
+                     append(getString(R.string.Hundred))
+                     if (num % 100 != 0) {
+                         append(" ")
+                         append(words(num % 100))
+                     }
+                 }
+
+             num < 100_000 ->
+                 buildString {
+                     append(words(num / 1_000))
+                     append(" ")
+                     append(getString(R.string.Thousand))
+                     if (num % 1_000 != 0) {
+                         append(" ")
+                         append(words(num % 1_000))
+                     }
+                 }
+
+             num < 10_000_000 ->
+                 buildString {
+                     append(words(num / 100_000))
+                     append(" ")
+                     append(getString(R.string.Lakh))
+                     if (num % 100_000 != 0) {
+                         append(" ")
+                         append(words(num % 100_000))
+                     }
+                 }
+
+             else ->
+                 buildString {
+                     append(words(num / 10_000_000))
+                     append(" ")
+                     append(getString(R.string.Crore))
+                     if (num % 10_000_000 != 0) {
+                         append(" ")
+                         append(words(num % 10_000_000))
+                     }
+                 }
+         }
      }
-     if (n < 20) {
-         return units[n]
-     }
-     if (n < 100) {
-         return tens[n / 10] + (if (n % 10 != 0) " " else "") + units[n % 10]
-     }
-     if (n < 1000) {
-         return units[n / 100] + " " + resources
-             .getString(R.string.Hundred) + (if (n % 100 != 0) " " else "") + convert(n % 100)
-     }
-     if (n < 100000) {
-         return convert(n / 1000) + " " + resources
-             .getString(R.string.Thousand) + (if (n % 10000 != 0) " " else "") + convert(n % 1000)
-     }
-     return if (n < 10000000) {
-         convert(n / 100000) + " " + resources
-             .getString(R.string.Lakh) + (if (n % 100000 != 0) " " else "") + convert(n % 100000)
-     } else convert(n / 10000000) + " " + resources
-         .getString(R.string.Crore) + (if (n % 10000000 != 0) " " else "") + convert(n % 10000000)
+
+     return words(n).trim()
  }
+
 
  fun Activity.setDialogAttr(dialog: AlertDialog, gravity : Int = Gravity.CENTER, dimClear : Boolean = false) {
 //     this.window?.statusBarColor = statusBar

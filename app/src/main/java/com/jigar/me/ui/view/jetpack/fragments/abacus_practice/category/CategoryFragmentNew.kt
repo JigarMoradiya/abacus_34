@@ -38,14 +38,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
-import com.jigar.me.ui.view.dashboard.fragments.home_new.category.CategoryFragmentDirections
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.components.CategoryItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.components.PageItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.components.TopRightChips
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.viewmodels.CategoryViewModel
-import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
-import com.jigar.me.utils.extensions.isNotNullOrEmpty
+import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -66,7 +64,6 @@ class CategoryFragmentNew : Fragment() {
                 val allSets by dashboardViewModel.allSets.collectAsStateWithLifecycle()
 
                 MaterialTheme {
-                    uiState.categories.isNotNullOrEmpty()
                     Column(modifier = Modifier.fillMaxSize()) {
                         Row(
                             modifier = Modifier.fillMaxWidth(),
@@ -128,7 +125,8 @@ class CategoryFragmentNew : Fragment() {
                                             page = page,
                                             allSets = allSets,
                                             onSetClick = { set ->
-                                                findNavController().navigate(CategoryFragmentDirections.toAbacusCalculationFragment(set.id))
+                                                findNavController().navigate(CategoryFragmentNewDirections.toAbacusDoPracticeFragment(set.id))
+//                                                findNavController().navigate(CategoryFragmentNewDirections.toAbacusCalculationFragment(set.id))
                                             },
                                             onSetLongClick = {}
                                         )

@@ -219,7 +219,7 @@ object AbacusTheme {
 
         val multiplier = when (screenType) {
             "exam", "settings" -> 0.5f
-            "abacus_practice" -> 0.9f
+            AppConstants.AbacusScreen.screenTypeAbacusPractice -> 0.9f
             AppConstants.AbacusScreen.screenTypeFreeMode -> if (isFreeModeOn){
                 1f
             }else{
