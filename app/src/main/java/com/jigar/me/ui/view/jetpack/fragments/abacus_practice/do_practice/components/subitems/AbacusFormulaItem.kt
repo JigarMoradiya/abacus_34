@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components
+package com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.subitems
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
