@@ -103,7 +103,6 @@ object ExamProvider {
         if (delta == 0) return null
         val fromDigit = from % 10
         val bottomBeads = fromDigit % 5
-//        val topBead = if (fromDigit >= 5) 1 else 0
 
         // --- Small Friend Addition ---
         if (delta in 1..4 && fromDigit + delta >= 5 && fromDigit < 5) {

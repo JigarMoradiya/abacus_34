@@ -207,6 +207,7 @@ fun AbacusFreeModeScreen(
                     if (enabled) viewModel.startHighlighter()
                     else viewModel.stopHighlighter()
                 },
+                onReset = {},
                 onNext = {}
             )
         }

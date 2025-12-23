@@ -75,6 +75,9 @@ open class BaseAbacusViewModel(
     val isDisplayCurrentAbacusInput: Boolean
         get() = prefs.getCustomParamBoolean(AppConstants.Settings.Setting_display_abacus_number, true)
 
+    val isDisplayHelpMessage: Boolean
+        get() = prefs.getCustomParamBoolean(AppConstants.Settings.Setting_display_help_message, true)
+
     var rodMovements by mutableStateOf(listOf<RodMovement>())
         protected set
 

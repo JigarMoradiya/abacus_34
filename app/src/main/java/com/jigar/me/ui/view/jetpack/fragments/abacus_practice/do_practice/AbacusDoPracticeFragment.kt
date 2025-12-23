@@ -37,7 +37,10 @@ import com.jigar.me.ui.view.jetpack.abacus_base.components.withcanvas.AbacusWith
 import com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.viewmodel.AbacusFreeModeViewModel
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.components.TopRightChips
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.viewmodels.CategoryViewModel
+import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.AbacusFormulaItem
+import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.AddSubAbacusItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.NumberAbacusItem
+import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.SetTimer
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.viewmodels.AbacusDoPracticeViewModel
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.Loader
@@ -71,8 +74,9 @@ class AbacusDoPracticeFragment : Fragment() {
                             modifier = Modifier.Companion.fillMaxWidth(),
                             verticalAlignment = Alignment.Companion.CenterVertically
                         ) {
-                            BackButtonWithText(title = "Abacus No : ${(uiState.currentIndexOfAbacus + 1)}", onBackClick = { findNavController().popBackStack() })
+                            BackButtonWithText(title = "Abacus No : ${(uiState.currentIndexOfAbacus + 1)}", onBackClick = { onBack() })
                             Spacer(modifier = Modifier.Companion.weight(1f))
+                            SetTimer(uiState)
                         }
 
                         Spacer(Modifier.Companion.weight(1f))
@@ -92,7 +96,9 @@ class AbacusDoPracticeFragment : Fragment() {
                                 onRodMovementChange = { viewModel.updateRodMovements(it) },
                                 onShowDirectionHintsChange = { viewModel.updateShowDirectionHints(it) },
                                 onShowHighlighterChange = {},
-                                onNext = {
+                                onReset = {
+                                    viewModel.resetAbacus()
+                                },onNext = {
                                     viewModel.goToNextAbacus()
                                 }
                             )
@@ -100,6 +106,10 @@ class AbacusDoPracticeFragment : Fragment() {
                             uiState.currentAbacus?.let {
                                 if (uiState.currentAbacusType == AppConstants.extras_Comman.AbacusTypeNumber) {
                                     NumberAbacusItem(it,modifier = Modifier.weight(1f))
+                                }else if (uiState.currentAbacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction) {
+                                    Spacer(Modifier.Companion.weight(1f))
+                                    AbacusFormulaItem(uiState)
+                                    AddSubAbacusItem(uiState)
                                 }
                             }
                         }
@@ -125,10 +135,10 @@ class AbacusDoPracticeFragment : Fragment() {
                         icon = R.drawable.ic_alert_complete_page,
                         widthMultiplier = 0.5f,
                         onPositiveTapped = {
-                            findNavController().popBackStack()
+                            onBack()
                         },
                         onNegativeTapped = {
-                            findNavController().popBackStack()
+                            onBack()
                         }
                     )
                 }
@@ -136,4 +146,12 @@ class AbacusDoPracticeFragment : Fragment() {
         }
     }
 
+    private fun onBack() {
+        findNavController().popBackStack()
+    }
+    override fun onStop() {
+        super.onStop()
+        viewModel.pauseSetTimer()
+        viewModel.persistSetTime()
+    }
 }

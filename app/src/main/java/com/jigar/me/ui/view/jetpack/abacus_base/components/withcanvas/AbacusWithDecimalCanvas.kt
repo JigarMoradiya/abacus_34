@@ -75,6 +75,7 @@ fun AbacusWithDecimalCanvas(
     onShowDirectionHintsChange: (Boolean) -> Unit,
     onShowHighlighterChange: (Boolean) -> Unit,
     @SuppressLint("ModifierParameter") modifier: Modifier = Modifier,
+    onReset: () -> Unit,
     onNext: () -> Unit,
 ) {
 
@@ -142,6 +143,7 @@ fun AbacusWithDecimalCanvas(
                 isDisplayAbacusNumber = isDisplayCurrentAbacusInput,
                 onReset = {
                     abacusData.resetAbacusData()
+                    onReset()
                     // reset abacus sound
                     if (isBeadSoundOn){
                         PlaySound.playBeadReset(context)

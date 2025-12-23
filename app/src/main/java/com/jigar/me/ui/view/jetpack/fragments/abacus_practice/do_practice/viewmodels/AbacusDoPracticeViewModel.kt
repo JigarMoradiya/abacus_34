@@ -1,23 +1,31 @@
 package com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.viewmodels
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.google.gson.Gson
+import com.jigar.me.data.local.data.ExamProvider.detectFormulaSteps
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
 import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
 import com.jigar.me.data.pref.AppPreferencesHelper
+import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
 import com.jigar.me.ui.view.jetpack.core.StatefulViewModelAbacus
 import com.jigar.me.ui.view.jetpack.core.repository.abacus_data.AbacusDataRepository
 import com.jigar.me.ui.view.jetpack.exam_base.SubmitAllExamUseCase
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
+import com.jigar.me.utils.extensions.sumToIntList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.math.max
@@ -35,10 +43,16 @@ class AbacusDoPracticeViewModel @Inject constructor(
 
     override fun getInitialState() = AbacusDoPracticeUiState()
     val setId: String? = savedStateHandle["setId"]
+    private var timerJob: Job? = null // for timer of set
 
     init {
         // Direction hint default from prefs
         showDirectionHints = prefs.getCustomParamBoolean(AppConstants.Settings.Setting_direction, true)
+        // current abacus theme color model
+        updateState_ {
+            copy(currentColorPresetModel = AbacusTheme.colorPreset(selectedTheme))
+        }
+
         loadAbacus()
     }
 
@@ -59,22 +73,23 @@ class AbacusDoPracticeViewModel @Inject constructor(
                         }
                         ?.takeIf { it >= 0 }
 
-                    val restoredTime = if (
-                        setDetail?.show_time_setting == true &&
-                        setProgress?.is_set_completed == false
-                    ) {
-                        setProgress.total_time_taken.toLong()
-                    } else {
-                        null
-                    }
+                    // old time restore if there
+                    val restoredTime: Long? =
+                        setDetail
+                            ?.takeIf { it.show_time_setting }
+                            ?.let {
+                                if (setProgress?.is_set_completed == false)
+                                    setProgress.total_time_taken.toLong()
+                                else
+                                    0L
+                            }
 
                     // current abacus all data
                     val currentIndex = restoredIndex ?: state().currentIndexOfAbacus
                     val currentAbacus = abacusList.getOrNull(currentIndex)
                         ?: abacusList.first()
 
-
-
+                    val isStepByStep =  setDetail?.answer_setting == AppConstants.apiParams.answerSettingStepByStep
                     updateState_ {
                         copy(
                             setDetail = setDetail,
@@ -82,59 +97,129 @@ class AbacusDoPracticeViewModel @Inject constructor(
                             abacus = abacusList,
                             currentIndexOfAbacus = currentIndex,
                             currentAbacus = currentAbacus,
+                            currentAbacusFormula = if (isDisplayHelpMessage && isStepByStep) detectFormulaSteps(initial = 0, steps = currentAbacus.question.sumToIntList()) else emptyList(),
                             currentAbacusType = findCurrentAbacusType(currentAbacus),
                             currentSetTime = restoredTime,
-                            isStepByStep = setDetail?.answer_setting == AppConstants.apiParams.answerSettingStepByStep,
+                            isStepByStep = isStepByStep,
                             isShowSubmitAnswer = setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer,
                             isNextButtonEnable = setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer,
                             isLoading = false
                         )
                     }
+
+                    // start timer if set has timer on
+                    if (state().currentSetTime != null) {
+                        startSetTimer()
+                    }
+
                     handleMatch()
                 }else{
-                    // TODO
+                    // TODO navigation up or empty ui
                 }
             }.catch { onFailure(it) }.collect()
         }
     }
 
+    // start timer for set
+    fun startSetTimer() {
+        state().currentSetTime ?: return
+        if (timerJob != null) return
+
+        timerJob = viewModelScope.launch {
+            while (isActive) {
+                delay(1_000)
+                updateState_ {
+                    copy(currentSetTime = (currentSetTime ?: 0L) + 1)
+                }
+            }
+        }
+    }
+    fun pauseSetTimer() {
+        timerJob?.cancel()
+        timerJob = null
+    }
+    fun stopSetTimer() {
+        timerJob?.cancel()
+        timerJob = null
+    }
+    fun persistSetTime() {
+        val time = state().currentSetTime ?: return
+        val progress = state().setProgress ?: return
+
+        // update progress on database
+        progress.total_time_taken = time.toInt()
+        updateProgress(progress)
+    }
+
+
+
     // --------- Matching logic (guided mode) ----------
     fun handleMatch() {
         val leftInt = abacusCalc.totalValuePair.first.toIntOrNull() ?: 0
         val rightInt = abacusCalc.totalValuePair.second.toIntOrNull() ?: 0
+        var currentOperationIndex = state().currentIndexOfOperation
+        if (currentOperationIndex > -1){
+            state().currentAbacus?.let{ currentAbacus ->
+                // check answer is match
+                var isAbacusDone = false
+                if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeNumber){
+                    if (rightInt == 0 && currentAbacus.question == leftInt.toString()){
+                        isAbacusDone = true
+                    }
+                }else if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction){
+                    val isLastStep = currentOperationIndex == currentAbacus.operationStepsStringsArray.lastIndex
+                    if (isLastStep){
+                        if (rightInt == 0 && currentAbacus.finalAnswer.toString() == leftInt.toString()){
+                            isAbacusDone = true
+                        }
+                    }
+                }
+                if (isAbacusDone) {
+                    // remove direction if abacus is done
+                    updateRodMovements(arrayListOf())
+                    updateState_ {
+                        copy(isNextButtonEnable = true,isSumComplete = true, currentIndexOfOperation = -1)
+                    }
+                } else {
+                    // check next direction if abacus is not done
+                    updateState_ {
+                        copy(isNextButtonEnable = false)
+                    }
+                    // show direction if enable setting and step by step mode
+                    if (showDirectionHints && state().isStepByStep){
+                        if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeDivision){
 
-        state().currentAbacus?.let{ currentAbacus ->
-            // check answer is match
-            var isAbacusDone = false
-            if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeNumber){
-                if (rightInt == 0 && currentAbacus.question == leftInt.toString()){
-                    isAbacusDone = true
-                }
-            }
-            if (isAbacusDone) {
-                // remove direction if abacus is done
-                updateRodMovements(arrayListOf())
-                updateState_ {
-                    copy(isNextButtonEnable = true)
-                }
-            } else {
-                // check next direction if abacus is not done
-                updateState_ {
-                    copy(isNextButtonEnable = false)
-                }
-                // show direction if enable setting and step by step mode
-                if (showDirectionHints && state().isStepByStep == true){
-                    if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeNumber){
-                        val rods = max(leftInt.toString().length, currentAbacus.question.length)
-                        val left = MathUtils.calculateRodMovements(from = leftInt, to = currentAbacus.question.toInt(), rods = rods, isForRightRods = false)
-                        val right = MathUtils.calculateRodMovements(from = rightInt, to = 0, rods = 6, isForRightRods = true)
-                        updateRodMovements(left + right)
+                        }else{
+                            val right = MathUtils.calculateRodMovements(from = rightInt, to = 0, rods = 6, isForRightRods = true)
+                            if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeNumber){
+                                val rods = max(leftInt.toString().length, currentAbacus.question.length)
+                                val left = MathUtils.calculateRodMovements(from = leftInt, to = currentAbacus.question.toInt(), rods = rods, isForRightRods = false)
+                                updateRodMovements(left + right)
+                            }else if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction){
+                                if (leftInt.toString() == currentAbacus.operationNumbersArray[currentOperationIndex].toString()){
+                                    currentOperationIndex = currentOperationIndex + 1 // current step completed
+                                    updateState_ {
+                                        copy(currentIndexOfOperation = currentOperationIndex)
+                                    }
+                                }
+                                val newValue = currentAbacus.operationNumbersArray[currentOperationIndex]
+                                val rods = max(leftInt.toString().length, newValue.toString().length)
+                                val left = MathUtils.calculateRodMovements(from = leftInt, to = newValue, rods = rods, isForRightRods = false)
+                                updateRodMovements(left + right)
+                            }
+                        }
                     }
                 }
             }
         }
     }
 
+    // reset abacus click
+    fun resetAbacus() {
+        updateState_ {
+            copy(isNextButtonEnable = false, isSumComplete = false, currentIndexOfOperation = 0)
+        }
+    }
     // next abacus click
     fun goToNextAbacus() {
         val abacusList = state().abacus
@@ -145,6 +230,7 @@ class AbacusDoPracticeViewModel @Inject constructor(
                 var setProgress = state().setProgress
                 if (state().currentIndexOfAbacus == abacusList.lastIndex){
                     // complete set TODO
+                    stopSetTimer() // stop timer once set complete
                     if (state().isShowSubmitAnswer == true){
 
                     }else{
@@ -191,10 +277,9 @@ class AbacusDoPracticeViewModel @Inject constructor(
                     // update ui state
                     updateState_ {
                         val nextAbacus = abacusList.getOrNull(nextIndex)
-                        copy(setProgress = setProgress,isNextButtonEnable = false, currentIndexOfAbacus = nextIndex, currentAbacus = nextAbacus, currentAbacusType = findCurrentAbacusType(nextAbacus))
+                        copy(setProgress = setProgress,isNextButtonEnable = false, currentIndexOfAbacus = nextIndex, currentAbacus = nextAbacus,
+                            currentAbacusType = findCurrentAbacusType(nextAbacus), isSumComplete = false, currentIndexOfOperation = 0)
                     }
-                    // find direction for new question
-                    handleMatch()
 
                     // submit progress on server on every 5th abacus
                     if (nextIndex > 0 && (nextIndex % 5 == 0)){
@@ -230,9 +315,7 @@ class AbacusDoPracticeViewModel @Inject constructor(
                     }
                 }
             },
-            onEachEmit = {
-
-            },
+            onEachEmit = {},
             onCompletion = {
                 if (submitExamRequest.is_set_completed == true || state().isShowSubmitAnswer == true){
                     val setProgress = state().setProgress

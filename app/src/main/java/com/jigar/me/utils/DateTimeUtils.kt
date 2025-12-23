@@ -50,7 +50,7 @@ object DateTimeUtils {
         formatter.timeZone = timeZone
         return formatter.format(this).replace("am","AM").replace("pm","PM")
     }
-    fun displayDurationHourMinSec(totalSecs: Long): String? {
+    fun displayDurationHourMinSec(totalSecs: Long): String {
         val hours = totalSecs / 3600
         val minutes = (totalSecs % 3600) / 60
         val seconds = totalSecs % 60
