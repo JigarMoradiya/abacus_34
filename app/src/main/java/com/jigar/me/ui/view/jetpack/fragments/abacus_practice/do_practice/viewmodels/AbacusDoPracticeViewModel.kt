@@ -90,7 +90,8 @@ class AbacusDoPracticeViewModel @Inject constructor(
                     val currentAbacus = abacusList.getOrNull(currentIndex)
                         ?: abacusList.first()
 
-                    val isStepByStep =  setDetail?.answer_setting == AppConstants.apiParams.answerSettingStepByStep
+                    val isStepByStep =  setDetail?.answer_setting == AppConstants.apiParams.answerStepByStep
+                    val isFinalAnswer =  setDetail?.answer_setting == AppConstants.apiParams.answerFinalAnswer
                     updateState_ {
                         copy(
                             setDetail = setDetail,
@@ -102,8 +103,9 @@ class AbacusDoPracticeViewModel @Inject constructor(
                             currentAbacusType = findCurrentAbacusType(currentAbacus),
                             currentSetTime = restoredTime,
                             isStepByStep = isStepByStep,
-                            isShowSubmitAnswer = setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer,
-                            isNextButtonEnable = setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer,
+                            isFinalAnswer = isFinalAnswer,
+                            isShowSubmitAnswer = setDetail?.answer_setting == AppConstants.apiParams.answerFormalExam,
+                            isNextButtonEnable = setDetail?.answer_setting == AppConstants.apiParams.answerFormalExam,
                             isLoading = false
                         )
                     }
@@ -183,12 +185,27 @@ class AbacusDoPracticeViewModel @Inject constructor(
                     if (rightInt == 0 && currentAbacus.question == leftInt.toString()){
                         isAbacusDone = true
                     }
-                }else if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction){
-                    val isLastStep = currentOperationIndex == currentAbacus.operationStepsStringsArray.lastIndex
-                    if (isLastStep){
-                        if (rightInt == 0 && currentAbacus.finalAnswer.toString() == leftInt.toString()){
-                            isAbacusDone = true
+                }else if (state().isStepByStep){
+                    if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction){
+                        val isLastStep = currentOperationIndex == currentAbacus.operationStepsStringsArray.lastIndex
+                        if (isLastStep){
+                            if (rightInt == 0 && currentAbacus.finalAnswer.toString() == leftInt.toString()){
+                                isAbacusDone = true
+                            }
                         }
+                    }
+                }else if (state().isStepByStep){
+                    if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction){
+                        val isLastStep = currentOperationIndex == currentAbacus.operationStepsStringsArray.lastIndex
+                        if (isLastStep){
+                            if (rightInt == 0 && currentAbacus.finalAnswer.toString() == leftInt.toString()){
+                                isAbacusDone = true
+                            }
+                        }
+                    }
+                }else if (state().isFinalAnswer){
+                    if (rightInt == 0 && currentAbacus.finalAnswer.toString() == leftInt.toString()){
+                        isAbacusDone = true
                     }
                 }
                 if (isAbacusDone) {

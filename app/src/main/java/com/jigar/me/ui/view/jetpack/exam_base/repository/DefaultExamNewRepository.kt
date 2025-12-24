@@ -45,7 +45,7 @@ class DefaultExamNewRepository @Inject constructor(private val remote: ExamApi,p
 
     private suspend fun submitExamDataSuccess(response: MainAPIResponse, request: SubmitAllExamDataRequest) {
         if (response.status == AppConstants.APIStatus.SUCCESS){
-            if (request.type == AppConstants.apiParams.answerFormalAnswer){
+            if (request.type == AppConstants.apiParams.answerFormalExam){
                 request.set_id?.let{
                     abacusAllDataDB.removeUserAnswer(it)
                 }

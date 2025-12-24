@@ -63,7 +63,7 @@ fun AbacusAnswerBarCompose(
 
     val nextOpacity = when {
         screenType == AppConstants.AbacusScreen.screenTypeFreeMode -> 0.2f
-        abacusType == AppConstants.apiParams.answerFormalAnswer || screenType == "ccm" || isNextButtonEnable -> 1f
+        abacusType == AppConstants.apiParams.answerFormalExam || screenType == "ccm" || isNextButtonEnable -> 1f
         else -> 0.5f
     }
 
@@ -237,7 +237,7 @@ fun NextButton(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        if (screenType != "ccm" && abacusType != AppConstants.apiParams.answerFormalAnswer) {
+        if (screenType != "ccm" && abacusType != AppConstants.apiParams.answerFormalExam) {
             Icon(
                 Icons.Default.PlayArrow,
                 contentDescription = null,
@@ -248,7 +248,7 @@ fun NextButton(
 
         Text(
             text = when {
-                abacusType == AppConstants.apiParams.answerFormalAnswer -> "Submit"
+                abacusType == AppConstants.apiParams.answerFormalExam -> "Submit"
                 screenType == "ccm" -> "Check"
                 else -> "Next"
             },

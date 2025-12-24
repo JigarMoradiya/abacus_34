@@ -1,11 +1,9 @@
 package com.jigar.me.ui.view.dashboard.fragments.home_new.category
 
-import android.util.Log
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.jigar.me.R
-import com.jigar.me.data.model.dbtable.abacus_all_data.Pages
 import com.jigar.me.data.model.dbtable.abacus_all_data.Set
 import com.jigar.me.databinding.RawSetListBinding
 import com.jigar.me.utils.AppConstants
@@ -31,13 +29,13 @@ class SetsAdapter(
         val context = txtTitle.context
         dataModel = data
         when (data.answer_setting) {
-            AppConstants.apiParams.answerSettingStepByStep -> {
+            AppConstants.apiParams.answerStepByStep -> {
                 cardMain.setCardBackgroundColor(ContextCompat.getColor(context, R.color.step_by_step_answer_light))
             }
             AppConstants.apiParams.answerFinalAnswer -> {
                 cardMain.setCardBackgroundColor(ContextCompat.getColor(context, R.color.final_answer_light))
             }
-            AppConstants.apiParams.answerFormalAnswer -> {
+            AppConstants.apiParams.answerFormalExam -> {
                 cardMain.setCardBackgroundColor(ContextCompat.getColor(context, R.color.formal_exam_light))
             }
             else -> {

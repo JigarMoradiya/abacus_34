@@ -8,7 +8,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.datepicker.CalendarConstraints
@@ -153,7 +152,7 @@ class ReportsHomeFragment : BaseFragment(), ReportsListAdapter.OnItemClickListen
         }else if (type.equals(AppConstants.ExamType.type_CustomChallengeMode,true)){
             examViewModel.getAllExam(AppConstants.ExamType.type_CCM,from_date = fromDate, to_date = toDate,from = from)
         }else if (type.equals(AppConstants.ExamType.type_Practice_Set,true)){
-            examViewModel.getAllExam(AppConstants.apiParams.answerFormalAnswer,from_date = fromDate, to_date = toDate,from = from)
+            examViewModel.getAllExam(AppConstants.apiParams.answerFormalExam,from_date = fromDate, to_date = toDate,from = from)
         }else{
             examViewModel.getAllExam(type,from_date = fromDate, to_date = toDate,from = from)
         }
@@ -222,7 +221,7 @@ class ReportsHomeFragment : BaseFragment(), ReportsListAdapter.OnItemClickListen
                 bundle.putString(AppConstants.extras_Comman.From, "report")
                 mNavController.navigate(R.id.action_reportsHomeFragment_to_examResultFragment, bundle)
             }
-            AppConstants.ExamType.type_Exercise,AppConstants.apiParams.answerFormalAnswer -> {
+            AppConstants.ExamType.type_Exercise,AppConstants.apiParams.answerFormalExam -> {
                 ExerciseCompleteDialog.showPopup(requireContext(),data.type,data.toExerciseResult(),this@ReportsHomeFragment)
             }
         }

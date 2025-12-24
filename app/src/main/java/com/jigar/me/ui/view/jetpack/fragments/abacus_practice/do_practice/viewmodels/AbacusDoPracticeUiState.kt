@@ -26,6 +26,7 @@ data class AbacusDoPracticeUiState(
     val isSumComplete: Boolean = false,
 
     val isStepByStep: Boolean = false ,
+    val isFinalAnswer: Boolean = false ,
     val isShowSubmitAnswer: Boolean? = null,
     val isNextButtonEnable: Boolean = false,
 

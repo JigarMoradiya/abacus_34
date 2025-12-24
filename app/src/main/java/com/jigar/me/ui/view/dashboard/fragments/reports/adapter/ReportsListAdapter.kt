@@ -3,20 +3,13 @@ package com.jigar.me.ui.view.dashboard.fragments.reports.adapter
 import android.content.res.ColorStateList
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.jigar.me.R
 import com.jigar.me.data.local.db.AppDatabase
 import com.jigar.me.data.model.data.AllExamData
-import com.jigar.me.data.model.data.QuestionDataRequest
 import com.jigar.me.databinding.RawReportsBinding
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.Calculator
-import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.extensions.hide
-import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.layoutInflater
 import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.show
@@ -53,10 +46,10 @@ class ReportsListAdapter(
         val data = listData[position]
         with(holder.binding){
             this.data = data
-            txtType.text = if (data.type == AppConstants.apiParams.answerFormalAnswer){AppConstants.ExamType.type_Practice_Set}else if (data.type == AppConstants.ExamType.type_CCM){context.getString(R.string.custom_challenge_mode)}else{data.type}
+            txtType.text = if (data.type == AppConstants.apiParams.answerFormalExam){AppConstants.ExamType.type_Practice_Set}else if (data.type == AppConstants.ExamType.type_CCM){context.getString(R.string.custom_challenge_mode)}else{data.type}
             conCCM.hide()
             conExerciseExam.hide()
-            if (data.type == AppConstants.apiParams.answerFormalAnswer){
+            if (data.type == AppConstants.apiParams.answerFormalExam){
 
             }
             when (data.type) {
@@ -86,7 +79,7 @@ class ReportsListAdapter(
                     txtExerciseLabelValue.show()
                     txtType.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context,R.color.report_exercise_btn_bg))
                 }
-                AppConstants.apiParams.answerFormalAnswer -> {
+                AppConstants.apiParams.answerFormalExam -> {
                     conExerciseExam.show()
                     txtExerciseLabel.hide()
                     txtExerciseLabelValue.hide()

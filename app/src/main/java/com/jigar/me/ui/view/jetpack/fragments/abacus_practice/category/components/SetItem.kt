@@ -122,13 +122,13 @@ fun SetItem(
 @Composable
 private fun setCardColor(answerSetting: String): Color {
     return when (answerSetting) {
-        AppConstants.apiParams.answerSettingStepByStep ->
+        AppConstants.apiParams.answerStepByStep ->
             colorResource(R.color.step_by_step_answer_light)
 
         AppConstants.apiParams.answerFinalAnswer ->
             colorResource(R.color.final_answer_light)
 
-        AppConstants.apiParams.answerFormalAnswer ->
+        AppConstants.apiParams.answerFormalExam ->
             colorResource(R.color.formal_exam_light)
 
         else ->

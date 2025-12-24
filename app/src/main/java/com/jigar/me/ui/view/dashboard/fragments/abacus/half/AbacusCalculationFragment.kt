@@ -144,7 +144,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                                     }
                                     appViewModel.insertSetProgress(listOf(it))
                                 }
-                                if (examViewModel.submitAllExamDataRequest?.type == AppConstants.apiParams.answerFormalAnswer) {
+                                if (examViewModel.submitAllExamDataRequest?.type == AppConstants.apiParams.answerFormalExam) {
                                     examViewModel.submitAllExamDataRequest?.set_id?.let { it1 ->
 //                                        appViewModel.deleteSetProgress(it1)
                                         appViewModel.removeUserAnswer(it1)
@@ -208,7 +208,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                     setDetail = appViewModel.getSetDetail(it)
                     setProgress = appViewModel.getSetProgress(it)
                     if (setDetail != null) {
-                        isStepByStep = setDetail?.answer_setting == AppConstants.apiParams.answerSettingStepByStep
+                        isStepByStep = setDetail?.answer_setting == AppConstants.apiParams.answerStepByStep
                         val theme = prefManager.getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
                         beadType = if (isStepByStep){
                             AbacusBeadType.AbacusPreciseStepByStep
@@ -217,7 +217,7 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                         }
                         themeContent = DataProvider.findAbacusThemeType(requireContext(),theme,beadType)
 
-                        isShowSubmitAnswer = setDetail?.answer_setting == AppConstants.apiParams.answerFormalAnswer
+                        isShowSubmitAnswer = setDetail?.answer_setting == AppConstants.apiParams.answerFormalExam
 
                         adapterAdditionSubtraction = AbacusAdditionSubtractionTypeAdapter(arrayListOf(), this@AbacusCalculationFragment, true,themeContent)
                         adapterMultiplication = AbacusMultiplicationTypeAdapter(arrayListOf(), true,themeContent)

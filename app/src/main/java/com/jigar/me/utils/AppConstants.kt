@@ -309,9 +309,9 @@ object AppConstants {
             const val file = "file"
             const val level = "level"
             const val type = "type"
-            const val answerSettingStepByStep = "step_by_step_answer"
+            const val answerStepByStep = "step_by_step_answer"
             const val answerFinalAnswer = "final_answer"
-            const val answerFormalAnswer = "formal_answer"
+            const val answerFormalExam = "formal_answer"
 
 
         }

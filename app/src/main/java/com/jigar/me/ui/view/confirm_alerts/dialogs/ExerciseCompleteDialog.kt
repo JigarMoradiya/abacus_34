@@ -6,21 +6,14 @@ import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.InsetDrawable
 import android.view.Gravity
 import android.view.ViewGroup
-import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jigar.me.R
-import com.jigar.me.data.local.data.DataProvider
-import com.jigar.me.data.local.data.ExerciseLevel
-import com.jigar.me.data.local.data.ExerciseLevelDetail
 import com.jigar.me.data.local.data.ExerciseList
-import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.databinding.DialogExerciseCompleteBinding
 import com.jigar.me.ui.view.dashboard.fragments.exercise.adapter.ExerciseAdditionSubtractionResultAdapter
 import com.jigar.me.ui.view.dashboard.fragments.exercise.adapter.ExerciseMultiplicationDivisionResultAdapter
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.Constants
 import com.jigar.me.utils.extensions.*
 
 object ExerciseCompleteDialog {
@@ -32,11 +25,11 @@ object ExerciseCompleteDialog {
         val alertBuilder = AlertDialog.Builder(context)
         alertBuilder.setView(alertLayout.root)
 
-        if (resultType == AppConstants.apiParams.answerFormalAnswer){
+        if (resultType == AppConstants.apiParams.answerFormalExam){
             alertLayout.tvTitle.text = context.getString(R.string.result_of_practice_set)
         }
 
-        if (resultType == AppConstants.apiParams.answerFormalAnswer || listExercise.first().question.contains("x") || listExercise.first().question.contains("*") || listExercise.first().question.contains("/")){
+        if (resultType == AppConstants.apiParams.answerFormalExam || listExercise.first().question.contains("x") || listExercise.first().question.contains("*") || listExercise.first().question.contains("/")){
             if (listExercise.size > 5){
                 alertLayout.recyclerview.layoutManager = GridLayoutManager(context,2)
             }else{
