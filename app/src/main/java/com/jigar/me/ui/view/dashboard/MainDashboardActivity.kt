@@ -38,6 +38,7 @@ import com.jigar.me.ui.view.confirm_alerts.dialogs.OfferDialog
 import com.jigar.me.ui.view.dashboard.fragments.exam.doexam.ExamCommonFragment
 import com.jigar.me.ui.view.dashboard.fragments.exercise.ExerciseHomeFragment
 import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
+import com.jigar.me.ui.view.jetpack.utils.TextToSpeechManager
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.InAppViewModel
 import com.jigar.me.ui.viewmodel.StudentViewModel
@@ -53,6 +54,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -66,6 +68,16 @@ class MainDashboardActivity : BaseActivity() {
     private var loginData: LoginData? = null
 
     val dashboardViewModel: HomeActivityViewModel by viewModels() // dont remove this line
+
+    // text to speech common for whole app (for activity)
+    @Inject
+    lateinit var ttsManager: TextToSpeechManager
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ttsManager.shutdown()
+    }
+
     companion object {
         @JvmStatic
         fun getInstance(context: Context?) {

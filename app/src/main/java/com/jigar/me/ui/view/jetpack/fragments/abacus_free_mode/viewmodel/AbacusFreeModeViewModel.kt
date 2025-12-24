@@ -1,6 +1,5 @@
 package com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.viewmodel
 
-import android.content.Context
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -8,17 +7,17 @@ import androidx.compose.runtime.setValue
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
 import com.jigar.me.ui.view.jetpack.abacus_base.viewmodel.BaseAbacusViewModel
+import com.jigar.me.ui.view.jetpack.utils.TextToSpeechManager
 import com.jigar.me.utils.AppConstants
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlin.math.max
 
 @HiltViewModel
 class AbacusFreeModeViewModel @Inject constructor(
     private val prefs: AppPreferencesHelper,
-    @ApplicationContext context: Context
-) : BaseAbacusViewModel(numberOfColumns = COLUMNS, context = context, prefs = prefs) {
+    ttsManager: TextToSpeechManager,
+) : BaseAbacusViewModel(numberOfColumns = COLUMNS, ttsManager = ttsManager, prefs = prefs) {
 
     companion object {
         const val COLUMNS = 13
@@ -113,7 +112,9 @@ class AbacusFreeModeViewModel @Inject constructor(
                 next
             }
         }
-        speakOut(number.toString())
+        if (isAbacusQuestionSpeak){
+            speakOut(number.toString())
+        }
         return number
     }
 

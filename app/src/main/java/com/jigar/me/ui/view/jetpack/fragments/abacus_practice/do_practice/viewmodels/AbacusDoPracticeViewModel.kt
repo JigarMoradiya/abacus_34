@@ -1,10 +1,8 @@
 package com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.viewmodels
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import com.google.gson.Gson
 import com.jigar.me.data.local.data.ExamProvider.detectFormulaSteps
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
@@ -15,7 +13,9 @@ import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
 import com.jigar.me.ui.view.jetpack.core.StatefulViewModelAbacus
 import com.jigar.me.ui.view.jetpack.core.repository.abacus_data.AbacusDataRepository
 import com.jigar.me.ui.view.jetpack.exam_base.SubmitAllExamUseCase
+import com.jigar.me.ui.view.jetpack.utils.TextToSpeechManager
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.extensions.convertNumberToWords
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.sumToIntList
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -32,12 +32,13 @@ import kotlin.math.max
 
 @HiltViewModel
 class AbacusDoPracticeViewModel @Inject constructor(
-    @ApplicationContext context: Context,
+    @ApplicationContext private val context: Context,
+    ttsManager: TextToSpeechManager,
     prefs: AppPreferencesHelper,
     private val abacusDataRepository: AbacusDataRepository,
     private val submitAllExamUseCase: SubmitAllExamUseCase,
     savedStateHandle: SavedStateHandle
-) : StatefulViewModelAbacus<AbacusDoPracticeUiState>(context = context, prefs = prefs) {
+) : StatefulViewModelAbacus<AbacusDoPracticeUiState>(ttsManager = ttsManager, prefs = prefs) {
 
     override val TAG = "AbacusDoPracticeViewModel"
 
@@ -112,6 +113,7 @@ class AbacusDoPracticeViewModel @Inject constructor(
                         startSetTimer()
                     }
 
+                    speakQue()
                     handleMatch()
                 }else{
                     // TODO navigation up or empty ui
@@ -153,7 +155,22 @@ class AbacusDoPracticeViewModel @Inject constructor(
 
 
 
-    // --------- Matching logic (guided mode) ----------
+    // speak question
+    fun speakQue() = with(state()){
+        if (isStepByStep && isAbacusQuestionSpeak){
+            currentAbacus?.let{ currentAbacus ->
+                if (currentAbacusType == AppConstants.extras_Comman.AbacusTypeNumber){
+                    val questionWord = context.convertNumberToWords(currentAbacus.question.toInt())
+                    speakOut(questionWord)
+                }else if (currentAbacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction){
+                    val questionWord = context.convertNumberToWords(currentAbacus.operationStepsStringsArray[currentIndexOfOperation].toInt())
+                    speakOut(questionWord)
+                }
+            }
+        }
+    }
+
+    // bead value matching logic
     fun handleMatch() {
         val leftInt = abacusCalc.totalValuePair.first.toIntOrNull() ?: 0
         val rightInt = abacusCalc.totalValuePair.second.toIntOrNull() ?: 0
@@ -201,6 +218,8 @@ class AbacusDoPracticeViewModel @Inject constructor(
                                     updateState_ {
                                         copy(currentIndexOfOperation = currentOperationIndex)
                                     }
+                                    // speak question when go to next step
+                                    speakQue()
                                 }
                                 val newValue = currentAbacus.operationNumbersArray[currentOperationIndex]
                                 val rods = max(leftInt.toString().length, newValue.toString().length)
@@ -219,6 +238,8 @@ class AbacusDoPracticeViewModel @Inject constructor(
         updateState_ {
             copy(isNextButtonEnable = false, isSumComplete = false, currentIndexOfOperation = 0)
         }
+        // speak question again when reset abacus
+        speakQue()
     }
     // next abacus click
     fun goToNextAbacus() {

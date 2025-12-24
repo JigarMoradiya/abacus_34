@@ -18,23 +18,14 @@ import com.jigar.me.data.local.db.inapp.purchase.InAppPurchaseDao
 import com.jigar.me.data.local.db.inapp.sku.InAppSKUDB
 import com.jigar.me.data.local.db.inapp.sku.InAppSKUDao
 import com.jigar.me.data.pref.AppPreferencesHelper
-import com.jigar.me.data.pref.PreferenceInfo
-import com.jigar.me.data.pref.PreferencesHelper
-import com.jigar.me.ui.view.jetpack.abacus_base.ColorPresets
-import com.jigar.me.ui.view.jetpack.abacus_base.components.SpotlightRegistry
-import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.viewmodel.SudokuRepository
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.viewmodel.TargetRepository
-import com.jigar.me.ui.view.jetpack.fragments.home.repository.AbacusRepository
-import com.jigar.me.ui.view.jetpack.fragments.home.repository.DefaultAbacusRepository
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 

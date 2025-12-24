@@ -1,9 +1,7 @@
 package com.jigar.me.ui.view.jetpack.core
 
-import android.content.Context
 import android.util.Log
 import androidx.annotation.StringRes
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jigar.me.BuildConfig
 import com.jigar.me.R
@@ -11,8 +9,8 @@ import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.abacus_base.viewmodel.BaseAbacusViewModel
 import com.jigar.me.ui.view.jetpack.core.domain.NoLoggedInUser
 import com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.viewmodel.AbacusFreeModeViewModel.Companion.COLUMNS
+import com.jigar.me.ui.view.jetpack.utils.TextToSpeechManager
 import com.jigar.me.utils.CommonUtils
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -23,11 +21,9 @@ import kotlinx.coroutines.flow.updateAndGet
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.yield
 import java.io.IOException
-import kotlin.also
 
-abstract class StatefulViewModelAbacus<State>(protected open val allowLogging: Boolean = BuildConfig.DEBUG, prefs: AppPreferencesHelper,
-                                              @ApplicationContext context: Context) :
-    BaseAbacusViewModel(numberOfColumns = COLUMNS, context = context, prefs = prefs) {
+abstract class StatefulViewModelAbacus<State>(protected open val allowLogging: Boolean = BuildConfig.DEBUG, ttsManager: TextToSpeechManager,
+                                              prefs: AppPreferencesHelper) : BaseAbacusViewModel(numberOfColumns = COLUMNS, ttsManager = ttsManager, prefs = prefs) {
 
     private val _uiState by lazy { MutableStateFlow(StateWrapper(getInitialState())) }
 
