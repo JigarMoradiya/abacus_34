@@ -27,9 +27,6 @@ import com.jigar.me.utils.extensions.mixWith
 @Composable
 fun AddSubAbacusItem(uiState: AbacusDoPracticeUiState) {
 
-//    LaunchedEffect(current) {
-//        speakCurrentAddSubQuestion()
-//    }
     val colorPreset = uiState.currentColorPresetModel
     val currentAbacus = uiState.currentAbacus
     currentAbacus?.let { abacus->

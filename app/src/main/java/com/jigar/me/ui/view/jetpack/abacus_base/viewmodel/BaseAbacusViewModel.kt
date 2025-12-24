@@ -53,6 +53,9 @@ open class BaseAbacusViewModel(
     val isAbacusQuestionSpeak: Boolean
         get() = prefs.getCustomParamBoolean(AppConstants.Settings.Setting__hint_sound, true)
 
+    val isAbacusOnLeftHand: Boolean
+        get() = prefs.getCustomParamBoolean(AppConstants.Settings.Setting_left_hand, true)
+
     var rodMovements by mutableStateOf(listOf<RodMovement>())
         protected set
 

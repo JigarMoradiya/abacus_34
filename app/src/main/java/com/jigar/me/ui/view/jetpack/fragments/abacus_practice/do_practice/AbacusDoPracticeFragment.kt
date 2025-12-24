@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -19,7 +20,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -27,6 +30,7 @@ import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.abacus_base.components.withcanvas.AbacusWithDecimalCanvas
 import com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.viewmodel.AbacusFreeModeViewModel
+import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.AbacusViewItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.subitems.AbacusFormulaItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.AddSubAbacusItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.NumberAbacusItem
@@ -57,52 +61,46 @@ class AbacusDoPracticeFragment : Fragment() {
                 }
 
                 MaterialTheme {
-                    Column(modifier = Modifier.Companion.fillMaxSize()) {
+                    Column(modifier = Modifier.fillMaxSize()) {
                         Row(
-                            modifier = Modifier.Companion.fillMaxWidth(),
-                            verticalAlignment = Alignment.Companion.CenterVertically
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically
                         ) {
                             BackButtonWithText(title = "Abacus No : ${(uiState.currentIndexOfAbacus + 1)}", onBackClick = { onBack() })
-                            Spacer(modifier = Modifier.Companion.weight(1f))
+                            Spacer(modifier = Modifier.weight(1f))
                             SetTimer(uiState)
                         }
 
-                        Spacer(Modifier.Companion.weight(1f))
+                        Spacer(Modifier.weight(1f))
 
                         Row(verticalAlignment = Alignment.CenterVertically){
-                            AbacusWithDecimalCanvas(
-                                selectedTheme = viewModel.selectedTheme,
-                                screenType = AppConstants.AbacusScreen.screenTypeAbacusPractice,
-                                isBeadSoundOn = viewModel.isBeadSoundEnabled,
-                                isDisplayCurrentAbacusInput = viewModel.isDisplayCurrentAbacusInput,
-                                abacusData = viewModel.abacusCalc,
-                                numberOfColumns = AbacusFreeModeViewModel.Companion.COLUMNS,
-                                rodMovement = viewModel.rodMovements,
-                                showDirectionHint = viewModel.showDirectionHints,
-                                abacusType = uiState.setDetail?.answer_setting,
-                                isNextButtonEnable = uiState.isNextButtonEnable,
-                                onRodMovementChange = { viewModel.updateRodMovements(it) },
-                                onShowDirectionHintsChange = { viewModel.updateShowDirectionHints(it) },
-                                onShowHighlighterChange = {},
-                                onReset = {
-                                    viewModel.resetAbacus()
-                                },onNext = {
-                                    viewModel.goToNextAbacus()
+                            if (viewModel.isAbacusOnLeftHand){
+                                AbacusViewItem(viewModel,uiState)
+                                uiState.currentAbacus?.let {
+                                    if (uiState.currentAbacusType == AppConstants.extras_Comman.AbacusTypeNumber) {
+                                        NumberAbacusItem(it,modifier = Modifier.weight(1f))
+                                    }else if (uiState.currentAbacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction) {
+                                        Spacer(Modifier.weight(1f))
+                                        AbacusFormulaItem(uiState)
+                                        AddSubAbacusItem(uiState)
+                                    }
                                 }
-                            )
-
-                            uiState.currentAbacus?.let {
-                                if (uiState.currentAbacusType == AppConstants.extras_Comman.AbacusTypeNumber) {
-                                    NumberAbacusItem(it,modifier = Modifier.weight(1f))
-                                }else if (uiState.currentAbacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction) {
-                                    Spacer(Modifier.Companion.weight(1f))
-                                    AbacusFormulaItem(uiState)
-                                    AddSubAbacusItem(uiState)
+                            }else{
+                                uiState.currentAbacus?.let {
+                                    if (uiState.currentAbacusType == AppConstants.extras_Comman.AbacusTypeNumber) {
+                                        NumberAbacusItem(it,modifier = Modifier.weight(1f))
+                                    }else if (uiState.currentAbacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction) {
+                                        AddSubAbacusItem(uiState)
+                                        AbacusFormulaItem(uiState)
+                                        Spacer(Modifier.weight(1f))
+                                    }
                                 }
+                                AbacusViewItem(viewModel,uiState)
+                                Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding4)))
                             }
                         }
 
-                        Spacer(Modifier.Companion.weight(1f))
+                        Spacer(Modifier.weight(1f))
                     }
                 }
 
