@@ -970,12 +970,12 @@ class AbacusCalculationFragment : BaseFragment(), OnAbacusValueChangeListener, A
                             lifecycleScope.launch {
                                 list_abacus = appViewModel.getAbacus(it)
                                 mCalculator = Calculator()
-                                var rightAnswerCount = 0
                                 if (setDetail?.show_time_setting == true){
                                     total_time_taken = total_sec.toInt()
                                 }
                                 no_of_questions = list_abacus.size
                                 val questionsList : ArrayList<Any> = arrayListOf()
+                                var rightAnswerCount = 0
                                 list_abacus.map {
                                     val question = it.question
                                     val resultObject = mCalculator.getResult(question,question)

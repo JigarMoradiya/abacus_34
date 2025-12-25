@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.jigar.me.data.local.data.ExamProvider.detectFormulaSteps
+import com.jigar.me.data.model.data.QuestionDataRequest
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
 import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
@@ -16,7 +17,6 @@ import com.jigar.me.ui.view.jetpack.exam_base.SubmitAllExamUseCase
 import com.jigar.me.ui.view.jetpack.utils.TextToSpeechManager
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.convertNumberToWords
-import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.sumToIntList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -24,7 +24,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -45,7 +45,6 @@ class AbacusDoPracticeViewModel @Inject constructor(
     override fun getInitialState() = AbacusDoPracticeUiState()
     val setId: String? = savedStateHandle["setId"]
     private var timerJob: Job? = null // for timer of set
-
     init {
         // Direction hint default from prefs
         showDirectionHints = prefs.getCustomParamBoolean(AppConstants.Settings.Setting_direction, true)
@@ -54,80 +53,72 @@ class AbacusDoPracticeViewModel @Inject constructor(
             copy(currentColorPresetModel = AbacusTheme.colorPreset(selectedTheme))
         }
 
-        loadAbacus()
+        initialLoad()
     }
 
-    private fun loadAbacus() = viewModelScope.launch {
+    private fun initialLoad() = viewModelScope.launch {
         setId?.let {
-            combine(
-                abacusDataRepository.getAbacus(it),
-                abacusDataRepository.getSetDetail(it),
-                abacusDataRepository.getSetProgress(it)
-            ){ abacusList, setDetail, setProgress ->
-                if (abacusList.isNotNullOrEmpty()){
-                    // find current abacus all data
-                    val restoredIndex = setProgress
-                        ?.takeIf { !it.is_set_completed }
-                        ?.latest_abacus_id
-                        ?.let { latestId ->
-                            abacusList.indexOfFirst { it.id == latestId }
-                        }
-                        ?.takeIf { it >= 0 }
+            val abacusList = abacusDataRepository.getAbacus(setId).first()
+            val setDetail = abacusDataRepository.getSetDetail(setId).first()
+            val setProgress = abacusDataRepository.getSetProgress(setId).first()
 
-                    // old time restore if there
-                    val restoredTime: Long? =
-                        setDetail
-                            ?.takeIf { it.show_time_setting }
-                            ?.let {
-                                if (setProgress?.is_set_completed == false)
-                                    setProgress.total_time_taken.toLong()
-                                else
-                                    0L
-                            }
+            if (abacusList.isEmpty()) return@launch
 
-                    // current abacus all data
-                    val currentIndex = restoredIndex ?: state().currentIndexOfAbacus
-                    val currentAbacus = abacusList.getOrNull(currentIndex)
-                        ?: abacusList.first()
+            val restoredIndex =
+                setProgress
+                    ?.takeIf { !it.is_set_completed }
+                    ?.latest_abacus_id
+                    ?.let { id -> abacusList.indexOfFirst { it.id == id } }
+                    ?.takeIf { it >= 0 }
+                    ?: 0
 
-                    val isStepByStep =  setDetail?.answer_setting == AppConstants.apiParams.answerStepByStep
-                    val isFinalAnswer =  setDetail?.answer_setting == AppConstants.apiParams.answerFinalAnswer
-                    updateState_ {
-                        copy(
-                            setDetail = setDetail,
-                            setProgress = setProgress,
-                            abacus = abacusList,
-                            currentIndexOfAbacus = currentIndex,
-                            currentAbacus = currentAbacus,
-                            currentAbacusFormula = if (isDisplayHelpMessage && isStepByStep) detectFormulaSteps(initial = 0, steps = currentAbacus.question.sumToIntList()) else emptyList(),
-                            currentAbacusType = findCurrentAbacusType(currentAbacus),
-                            currentSetTime = restoredTime,
-                            isStepByStep = isStepByStep,
-                            isFinalAnswer = isFinalAnswer,
-                            isShowSubmitAnswer = setDetail?.answer_setting == AppConstants.apiParams.answerFormalExam,
-                            isNextButtonEnable = setDetail?.answer_setting == AppConstants.apiParams.answerFormalExam,
-                            isLoading = false
-                        )
+            val restoredTime =
+                setDetail
+                    ?.takeIf { it.show_time_setting }
+                    ?.let {
+                        if (setProgress?.is_set_completed == false)
+                            setProgress.total_time_taken.toLong()
+                        else 0L
                     }
 
-                    // start timer if set has timer on
-                    if (state().currentSetTime != null) {
-                        startSetTimer()
-                    }
+            val currentAbacus = abacusList[restoredIndex]
+            val isStepByStep = setDetail?.answer_setting == AppConstants.apiParams.answerStepByStep
+            val isFinalAnswer = setDetail?.answer_setting == AppConstants.apiParams.answerFinalAnswer
 
-                    speakQue()
-                    handleMatch()
-                }else{
-                    // TODO navigation up or empty ui
-                }
-            }.catch { onFailure(it) }.collect()
+            updateState_ {
+                copy(
+                    setDetail = setDetail,
+                    setProgress = setProgress,
+                    abacus = abacusList,
+                    currentIndexOfAbacus = restoredIndex,
+                    currentAbacus = currentAbacus,
+                    currentAbacusType = findCurrentAbacusType(currentAbacus),
+                    currentAbacusFormula =
+                        if (isDisplayHelpMessage && isStepByStep)
+                            detectFormulaSteps(initial = 0, steps = currentAbacus.question.sumToIntList())
+                        else emptyList(),
+                    currentSetTime = restoredTime,
+                    isStepByStep = isStepByStep,
+                    isFinalAnswer = isFinalAnswer,
+                    isShowSubmitAnswer =
+                        setDetail?.answer_setting == AppConstants.apiParams.answerFormalExam,
+                    isNextButtonEnable =
+                        setDetail?.answer_setting == AppConstants.apiParams.answerFormalExam,
+                    isLoading = false
+                )
+            }
+
+            if (restoredTime != null) startSetTimer()
+
+            speakQue()
+            handleMatch()
         }
     }
 
     // start timer for set
     fun startSetTimer() {
-        state().currentSetTime ?: return
         if (timerJob != null) return
+        state().currentSetTime ?: return
 
         timerJob = viewModelScope.launch {
             while (isActive) {
@@ -154,8 +145,6 @@ class AbacusDoPracticeViewModel @Inject constructor(
         progress.total_time_taken = time.toInt()
         updateProgress(progress)
     }
-
-
 
     // speak question
     fun speakQue() = with(state()){
@@ -255,34 +244,60 @@ class AbacusDoPracticeViewModel @Inject constructor(
         setId?.let { setId ->
             val setDetail = state().setDetail
             if (state().isShowSubmitAnswer == true){ // formal exam
-                if (state().currentIndexOfAbacus == abacusList.lastIndex){ // submit all data on server on last record
-                    stopSetTimer() // stop timer once set complete
-                }else{ // update user answer only and go next abacus
-                    val currentIndex = state().currentIndexOfAbacus
-                    viewModelScope.launch {
-                        state().currentAbacus?.let {
-                            val leftInt = abacusCalc.totalValuePair.first.toIntOrNull() ?: 0
-                            val rightInt = abacusCalc.totalValuePair.second.toIntOrNull() ?: 0
-                            val userAnswer = if (rightInt == 0){
-                                "$leftInt"
-                            }else{
-                                val toStr = rightInt.toString().padStart(6, '0')
-                                val fractionalTrimmed = toStr.trimEnd('0')
-                                "$leftInt.$fractionalTrimmed"
+                // current abacus's answer update
+                val currentIndex = state().currentIndexOfAbacus
+                state().currentAbacus?.let {
+                    val leftInt = abacusCalc.totalValuePair.first.toIntOrNull() ?: 0
+                    val rightInt = abacusCalc.totalValuePair.second.toIntOrNull() ?: 0
+                    val userAnswer = if (rightInt == 0){
+                        "$leftInt"
+                    }else{
+                        val toStr = rightInt.toString().padStart(6, '0')
+                        val fractionalTrimmed = toStr.trimEnd('0')
+                        "$leftInt.$fractionalTrimmed"
+                    }
+                    // update user answer in current list
+                    updateState_ {
+                        copy(
+                            abacus = abacus.mapIndexed { i, item ->
+                                if (i == currentIndex) item.copy(userAnswer = userAnswer)
+                                else item
                             }
+                        )
+                    }
+                    // update answer in database
+                    if (state().currentIndexOfAbacus != abacusList.lastIndex){
+                        viewModelScope.launch {
                             abacusDataRepository.updateUserAnswer(it.id,userAnswer)
-                            // update user answer in current list
-                            updateState_ {
-                                copy(
-                                    abacus = abacus.mapIndexed { i, item ->
-                                        if (i == currentIndex) item.copy(userAnswer = userAnswer)
-                                        else item
-                                    }
-                                )
-                            }
-                            changeAbacus()
                         }
                     }
+                }
+                if (state().currentIndexOfAbacus == abacusList.lastIndex){ // submit all data on server on last record
+                    stopSetTimer() // stop timer once set complete
+                    val submitExamRequest = SubmitAllExamDataRequest()
+                    submitExamRequest.apply {
+                        set_id = setId
+                        type = setDetail?.answer_setting
+                        if (setDetail?.show_time_setting == true){
+                            total_time_taken = (state().currentSetTime?:0L).toInt()
+                        }
+                        no_of_questions = abacusList.size
+                        val questionsList : ArrayList<Any> = arrayListOf()
+                        var rightAnswerCount = 0
+                        state().abacus.map {
+                            val question = it.question
+                            val isRightAnswer = (it.finalAnswer.toString() == it.userAnswer)
+                            if (isRightAnswer){
+                                rightAnswerCount++
+                            }
+                            questionsList.add(QuestionDataRequest(question,it.userAnswer,isRightAnswer))
+                        }
+                        no_of_right_answers = rightAnswerCount
+                        questions = questionsList
+                        submitExamApi(submitExamRequest)
+                    }
+                }else{ // update user answer only and go next abacus
+                    changeAbacus()
                 }
             }else{
                 if (state().currentIndexOfAbacus == abacusList.lastIndex){ // set complete send on server on last record

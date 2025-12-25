@@ -26,7 +26,7 @@ class SubmitAllExamUseCase @Inject constructor(
     ): Flow<Unit> = flow {
         try {
             onStart?.invoke()
-            repository.submitExamData(params, ).collect()
+            repository.submitExamData(params).collect()
             emit(Unit)
             onEachEmit?.invoke(Unit)
             onCompletion?.invoke()
