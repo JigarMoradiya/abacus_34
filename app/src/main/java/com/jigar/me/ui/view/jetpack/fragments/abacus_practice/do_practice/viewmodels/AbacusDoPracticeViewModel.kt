@@ -194,15 +194,6 @@ class AbacusDoPracticeViewModel @Inject constructor(
                             }
                         }
                     }
-                }else if (state().isStepByStep){
-                    if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction){
-                        val isLastStep = currentOperationIndex == currentAbacus.operationStepsStringsArray.lastIndex
-                        if (isLastStep){
-                            if (rightInt == 0 && currentAbacus.finalAnswer.toString() == leftInt.toString()){
-                                isAbacusDone = true
-                            }
-                        }
-                    }
                 }else if (state().isFinalAnswer){
                     if (rightInt == 0 && currentAbacus.finalAnswer.toString() == leftInt.toString()){
                         isAbacusDone = true
@@ -262,16 +253,43 @@ class AbacusDoPracticeViewModel @Inject constructor(
     fun goToNextAbacus() {
         val abacusList = state().abacus
         setId?.let { setId ->
-            val submitExamRequest = SubmitAllExamDataRequest()
-            with(submitExamRequest) {
-                val setDetail = state().setDetail
-                var setProgress = state().setProgress
-                if (state().currentIndexOfAbacus == abacusList.lastIndex){
-                    // complete set TODO
+            val setDetail = state().setDetail
+            if (state().isShowSubmitAnswer == true){ // formal exam
+                if (state().currentIndexOfAbacus == abacusList.lastIndex){ // submit all data on server on last record
                     stopSetTimer() // stop timer once set complete
-                    if (state().isShowSubmitAnswer == true){
-
-                    }else{
+                }else{ // update user answer only and go next abacus
+                    val currentIndex = state().currentIndexOfAbacus
+                    viewModelScope.launch {
+                        state().currentAbacus?.let {
+                            val leftInt = abacusCalc.totalValuePair.first.toIntOrNull() ?: 0
+                            val rightInt = abacusCalc.totalValuePair.second.toIntOrNull() ?: 0
+                            val userAnswer = if (rightInt == 0){
+                                "$leftInt"
+                            }else{
+                                val toStr = rightInt.toString().padStart(6, '0')
+                                val fractionalTrimmed = toStr.trimEnd('0')
+                                "$leftInt.$fractionalTrimmed"
+                            }
+                            abacusDataRepository.updateUserAnswer(it.id,userAnswer)
+                            // update user answer in current list
+                            updateState_ {
+                                copy(
+                                    abacus = abacus.mapIndexed { i, item ->
+                                        if (i == currentIndex) item.copy(userAnswer = userAnswer)
+                                        else item
+                                    }
+                                )
+                            }
+                            changeAbacus()
+                        }
+                    }
+                }
+            }else{
+                if (state().currentIndexOfAbacus == abacusList.lastIndex){ // set complete send on server on last record
+                    val submitExamRequest = SubmitAllExamDataRequest()
+                    submitExamRequest.apply {
+                        val setProgress = state().setProgress
+                        stopSetTimer() // stop timer once set complete
                         val retryCounts: Int = if (setProgress == null){
                             1
                         }else if(setProgress.is_set_completed){
@@ -289,54 +307,65 @@ class AbacusDoPracticeViewModel @Inject constructor(
                         type = setDetail?.answer_setting
                         submitExamApi(submitExamRequest)
                     }
-                }else{
-                    abacusCalc.resetAbacusData() // reset abacus
-
-                    // go next abacus
-                    val nextIndex = state().currentIndexOfAbacus + 1
-
-                    // update progress in database and every 5th abacus send progress on server
-                    var retryCounts: Int
-                    if (setProgress == null){
-                        retryCounts = 1
-                        setProgress = SetProgress(setId,abacusList[nextIndex].id,false)
-                    }else if(setProgress.is_set_completed){
-                        retryCounts =  setProgress.retry_count +1
-                        setProgress = SetProgress(setId,abacusList[nextIndex].id,false)
-                    }else{
-                        retryCounts = setProgress.retry_count
-                        setProgress.latest_abacus_id = abacusList[nextIndex].id
-                    }
-                    setProgress.retry_count = retryCounts
-                    if (setDetail?.show_time_setting == true){
-                        setProgress.total_time_taken = (state().currentSetTime?:0L).toInt()
-                    }
-
-                    // update ui state
-                    updateState_ {
-                        val nextAbacus = abacusList.getOrNull(nextIndex)
-                        copy(setProgress = setProgress,isNextButtonEnable = false, currentIndexOfAbacus = nextIndex, currentAbacus = nextAbacus,
-                            currentAbacusType = findCurrentAbacusType(nextAbacus), isSumComplete = false, currentIndexOfOperation = 0)
-                    }
-
-                    // submit progress on server on every 5th abacus
-                    if (nextIndex > 0 && (nextIndex % 5 == 0)){
-                        retry_count = retryCounts
-                        if (state().isShowSubmitAnswer == false){
-                            if (setDetail?.show_time_setting == true){
-                                total_time_taken = (state().currentSetTime?:0L).toInt()
-                            }
-                            is_set_completed = false
-                            abacus_id = abacusList[nextIndex].id
-                            set_id = setId
-                            type = setDetail?.answer_setting
-                            submitExamApi(submitExamRequest)
-                        }
-                    }
-                    // update progress on database
-                    updateProgress(setProgress)
+                }else{ // update abacus index on database
+                    changeAbacus()
                 }
             }
+        }
+    }
+    fun changeAbacus()  {
+        setId?.let { setId ->
+
+            val abacusList = state().abacus
+            val setDetail = state().setDetail
+            var setProgress = state().setProgress
+            abacusCalc.resetAbacusData() // reset abacus
+            // go next abacus
+            val nextIndex = state().currentIndexOfAbacus + 1
+
+            // update progress in database and every 5th abacus send progress on server
+            var retryCounts: Int
+            if (setProgress == null){
+                retryCounts = 1
+                setProgress = SetProgress(setId,abacusList[nextIndex].id,false)
+            }else if(setProgress.is_set_completed){
+                retryCounts =  setProgress.retry_count +1
+                setProgress = SetProgress(setId,abacusList[nextIndex].id,false)
+            }else{
+                retryCounts = setProgress.retry_count
+                setProgress.latest_abacus_id = abacusList[nextIndex].id
+            }
+            setProgress.retry_count = retryCounts
+            if (setDetail?.show_time_setting == true){
+                setProgress.total_time_taken = (state().currentSetTime?:0L).toInt()
+            }
+
+            // update ui state
+            updateState_ {
+                val nextAbacus = abacusList.getOrNull(nextIndex)
+                copy(setProgress = setProgress,isNextButtonEnable = false, currentIndexOfAbacus = nextIndex, currentAbacus = nextAbacus,
+                    currentAbacusType = findCurrentAbacusType(nextAbacus), isSumComplete = false, currentIndexOfOperation = 0)
+            }
+
+            // submit progress on server on every 5th abacus
+            if (nextIndex > 0 && (nextIndex % 5 == 0)){
+                val submitExamRequest = SubmitAllExamDataRequest()
+                submitExamRequest.apply {
+                    retry_count = retryCounts
+                    if (state().isShowSubmitAnswer == false){
+                        if (setDetail?.show_time_setting == true){
+                            total_time_taken = (state().currentSetTime?:0L).toInt()
+                        }
+                        is_set_completed = false
+                        abacus_id = abacusList[nextIndex].id
+                        set_id = setId
+                        type = setDetail?.answer_setting
+                        submitExamApi(submitExamRequest)
+                    }
+                }
+            }
+            // update progress on database
+            updateProgress(setProgress)
         }
     }
     fun updateProgress(progress: SetProgress) = viewModelScope.launch {

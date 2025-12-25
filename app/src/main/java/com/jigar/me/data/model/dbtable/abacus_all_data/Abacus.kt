@@ -14,7 +14,7 @@ data class Abacus(
     val question: String,
     val hint: String? = null,
     val created_at: String? = null,
-    val userAnswer: String? = null
+    var userAnswer: String? = null
 ){
     val operationStepsStringsArray: List<String>
         get() = MathUtils.extractNumbersAndSigns(question)

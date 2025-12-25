@@ -27,4 +27,5 @@ class AbacusDataRepository @Inject constructor(
     fun getSetProgress(setId: String): Flow<SetProgress?> = dao.getSetProgressFLow(setId)
 
     suspend fun insertSetProgress(data : List<SetProgress>) = dao.insertSetProgress(data)
+    suspend fun updateUserAnswer(abacusId : String, userAnswer : String) = dao.updateUserAnswer(abacusId, userAnswer)
 }
