@@ -1,22 +1,19 @@
 package com.jigar.me
 
-import android.app.Activity
+//import com.facebook.drawee.backends.pipeline.Fresco
 import android.app.Application
 import android.app.PendingIntent
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.annotation.NonNull
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.navigation.NavDeepLinkBuilder
 import androidx.work.Configuration
-//import com.facebook.drawee.backends.pipeline.Fresco
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.jigar.me.data.model.NotificationData
 import com.jigar.me.ui.view.base.inapp.BillingRepository
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
-import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.VersionUpdation
@@ -43,10 +40,6 @@ import com.onesignal.notifications.INotificationWillDisplayEvent
 import com.onesignal.user.state.IUserStateObserver
 import com.onesignal.user.state.UserChangedState
 import dagger.hilt.android.HiltAndroidApp
-import io.reactivex.exceptions.UndeliverableException
-import io.reactivex.plugins.RxJavaPlugins
-import java.io.IOException
-import java.net.SocketException
 import javax.inject.Inject
 
 
@@ -137,7 +130,7 @@ class MyApplication : Application(), Configuration.Provider {
                     if (notification != null) {
                         when (notification.type) {
                             Constants.notificationTypeStarter -> {
-                                moveToDestination(R.id.fullAbacusFragment)
+                                moveToDestination(R.id.abacusFreeModeFragment)
                             }
                             Constants.notificationTypeExercise -> {
                                 moveToDestination(R.id.exerciseHomeFragment)

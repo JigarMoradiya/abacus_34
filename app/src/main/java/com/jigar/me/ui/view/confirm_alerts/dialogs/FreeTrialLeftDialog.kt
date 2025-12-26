@@ -2,20 +2,17 @@ package com.jigar.me.ui.view.confirm_alerts.dialogs
 
 import android.app.Activity
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.InsetDrawable
 import android.view.Gravity
 import androidx.appcompat.app.AlertDialog
-import com.jigar.me.R
-import com.jigar.me.data.model.data.DiscountData
-import com.jigar.me.databinding.DialogFreeTrialLeftBinding
-import com.jigar.me.databinding.DialogOfferBinding
-import com.jigar.me.utils.extensions.onClick
 import androidx.core.graphics.drawable.toDrawable
+import com.jigar.me.R
 import com.jigar.me.data.pref.AppPreferencesHelper
+import com.jigar.me.databinding.DialogFreeTrialLeftBinding
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.extensions.hide
+import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.show
 
 object FreeTrialLeftDialog {
