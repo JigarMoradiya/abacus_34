@@ -431,10 +431,10 @@ class AbacusDoPracticeViewModel @Inject constructor(
 
             // update ui state
             val nextAbacus = abacusList.getOrNull(nextIndex)
-                nextAbacus?.let {
-                    updateState_ {
-                        copy(setProgress = setProgress,isNextButtonEnable = false, currentIndexOfAbacus = nextIndex, currentAbacus = it,
-                            currentAbacusType = it.findCurrentAbacusType(), isSumComplete = false, currentIndexOfOperation = 0, currentIndexNum1 = 0, currentIndexNum2 = 0)
+            nextAbacus?.let {
+                updateState_ {
+                    copy(setProgress = setProgress,isNextButtonEnable = false, currentIndexOfAbacus = nextIndex, currentAbacus = it,
+                        currentAbacusType = it.findCurrentAbacusType(), isSumComplete = false, currentIndexOfOperation = 0, currentIndexNum1 = 0, currentIndexNum2 = 0)
                 }
             }
 
