@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.subitems.AbacusAnswerUI
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.viewmodels.AbacusDoPracticeUiState
 import com.jigar.me.utils.extensions.mixWith
 
@@ -59,20 +60,8 @@ fun AddSubAbacusItem(uiState: AbacusDoPracticeUiState) {
                     fontFamily = FontFamily(Font(R.font.font_bold)))
             }
 
-            HorizontalDivider(
-                modifier = Modifier.padding(top = dimensionResource(R.dimen.activity_padding4)),
-                thickness = 2.dp, color = colorPreset.columnColors.mixWith(Color.White,0.7f)
-            )
+            AbacusAnswerUI(uiState)
 
-            Text(
-                text = abacus.finalAnswer.toString(),
-                style = MaterialTheme.typography.titleLarge.copy(color = colorPreset.buttonColor,
-                    fontWeight = FontWeight.ExtraBold,
-                    fontFamily = FontFamily(Font(R.font.font_extra_bold))),
-                modifier = Modifier
-                    .padding(bottom = dimensionResource(R.dimen.activity_padding4))
-                    .alpha(if (uiState.isSumComplete) 1f else 0f)
-            )
         }
     }
 }

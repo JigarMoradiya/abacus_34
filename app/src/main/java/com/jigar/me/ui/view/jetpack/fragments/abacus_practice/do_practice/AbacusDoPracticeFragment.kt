@@ -22,19 +22,17 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.abacus_base.components.withcanvas.AbacusWithDecimalCanvas
-import com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.viewmodel.AbacusFreeModeViewModel
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.AbacusViewItem
-import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.subitems.AbacusFormulaItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.AddSubAbacusItem
+import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.DivisionAbacusItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.MultiplicationAbacusItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.NumberAbacusItem
+import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.subitems.AbacusFormulaItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.subitems.SetTimer
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.viewmodels.AbacusDoPracticeViewModel
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
@@ -92,6 +90,11 @@ class AbacusDoPracticeFragment : Fragment() {
                                             AbacusFormulaItem(uiState)
                                             MultiplicationAbacusItem(uiState)
                                         }
+                                        AppConstants.extras_Comman.AbacusTypeDivision -> {
+                                            Spacer(Modifier.weight(1f))
+                                            AbacusFormulaItem(uiState)
+                                            DivisionAbacusItem(uiState)
+                                        }
                                     }
                                 }
                             }else{
@@ -107,6 +110,11 @@ class AbacusDoPracticeFragment : Fragment() {
                                         }
                                         AppConstants.extras_Comman.AbacusTypeMultiplication -> {
                                             MultiplicationAbacusItem(uiState)
+                                            AbacusFormulaItem(uiState)
+                                            Spacer(Modifier.weight(1f))
+                                        }
+                                        AppConstants.extras_Comman.AbacusTypeDivision -> {
+                                            DivisionAbacusItem(uiState)
                                             AbacusFormulaItem(uiState)
                                             Spacer(Modifier.weight(1f))
                                         }

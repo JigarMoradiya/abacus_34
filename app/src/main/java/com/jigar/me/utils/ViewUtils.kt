@@ -9,11 +9,12 @@ import android.util.DisplayMetrics
 import androidx.core.content.ContextCompat
 import com.jigar.me.R
 import com.jigar.me.data.local.data.AbacusContent
+import kotlin.math.cos
+import kotlin.math.pow
+import kotlin.math.sin
+import kotlin.math.tan
 
 object ViewUtils {
-    fun convertDpToPixel(dp: Float, context: Context): Int {
-        return (dp * (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)).toInt()
-    }
     fun calculateStringExpression(str: String): Double {
         return object : Any() {
             var pos = -1
@@ -72,19 +73,19 @@ object ViewUtils {
                     val func = str.substring(startPos, pos)
                     x = parseFactor()
                     x =
-                        if (func == "sqrt") Math.sqrt(x) else if (func == "sin") Math.sin(
+                        if (func == "sqrt") Math.sqrt(x) else if (func == "sin") sin(
                             Math.toRadians(
                                 x
                             )
-                        ) else if (func == "cos") Math.cos(
+                        ) else if (func == "cos") cos(
                             Math.toRadians(x)
-                        ) else if (func == "tan") Math.tan(Math.toRadians(x)) else throw RuntimeException(
+                        ) else if (func == "tan") tan(Math.toRadians(x)) else throw RuntimeException(
                             "Unknown function: $func"
                         )
                 } else {
                     throw RuntimeException("Unexpected: " + ch.toChar())
                 }
-                if (eat('^'.code)) x = Math.pow(x, parseFactor()) // exponentiation
+                if (eat('^'.code)) x = x.pow(parseFactor()) // exponentiation
                 return x
             }
         }.parse()

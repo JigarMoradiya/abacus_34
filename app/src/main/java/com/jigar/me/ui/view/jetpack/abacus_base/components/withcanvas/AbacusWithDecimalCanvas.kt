@@ -49,14 +49,6 @@ import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.PlaySound
 import kotlin.math.abs
 
-// ─────────────────────────────────────────────────────────────
-// Canvas-based AbacusWithDecimal
-//  - Beads + sticks + beam drawn on Canvas
-//  - Uses AbacusCalculations for state
-//  - Drag up/down on beads to move them
-//  - Keeps answer bar, frame, number strip, and spotlight logic
-// ─────────────────────────────────────────────────────────────
-
 @SuppressLint("LocalContextResourcesRead")
 @Composable
 fun AbacusWithDecimalCanvas(
@@ -94,7 +86,7 @@ fun AbacusWithDecimalCanvas(
     }
 
 
-    val dim = AbacusTheme.dimensionPreset(screenType = screenType, isFreeModeOn = isFreeModeOn)
+    val dim = AbacusTheme.dimensionPreset(screenType = screenType,abacusType = abacusType, isFreeModeOn = isFreeModeOn)
     val totalWidth = (dim.beadWidth * numberOfColumns) + (dim.rectLineWidth * 2) + (dim.columnSpaces * (numberOfColumns) * 2)
     val totalHeight = (dim.beadHeight * 7) + (dim.rectLineWidth * 2) + (dim.extraSpace * 2) + dim.beamHeight
 

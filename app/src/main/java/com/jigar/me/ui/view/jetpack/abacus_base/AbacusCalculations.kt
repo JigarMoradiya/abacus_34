@@ -19,6 +19,9 @@ class AbacusCalculations(numberOfColumns: Int) {
     var displayValue by mutableStateOf("0")
         private set
 
+    var isDivisionQuestion by mutableStateOf(false)
+        private set
+
     var totalValuePair by mutableStateOf("0" to "0")
         private set
 
@@ -39,7 +42,8 @@ class AbacusCalculations(numberOfColumns: Int) {
     // -------------------------------------------------------
     // SET FROM VALUE
     // -------------------------------------------------------
-    fun setAbacusValueFromString(value: String) {
+    fun setAbacusValueFromString(value: String,isQuestionForDivision : Boolean = false) {
+        isDivisionQuestion = isQuestionForDivision
         val padded = value.padStart(abacusState.size, '0')  // 🔥 ensure full length
 
         val newState = MutableList(abacusState.size) {
@@ -176,7 +180,11 @@ class AbacusCalculations(numberOfColumns: Int) {
 
         displayValue =
             if (fractionalTrimmed.isNotEmpty())
-                "$intPartTrimmed.$fractionalTrimmed"
+                if (isDivisionQuestion){
+                    "$intPartTrimmed < ${secondPart.trimStart('0')}"
+                }else{
+                    "$intPartTrimmed.$fractionalTrimmed"
+                }
             else
                 intPartTrimmed
     }

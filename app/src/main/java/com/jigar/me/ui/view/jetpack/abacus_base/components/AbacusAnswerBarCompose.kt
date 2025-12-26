@@ -17,6 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -69,7 +70,8 @@ fun AbacusAnswerBarCompose(
 
     val resetOpacity = when {
         answer == "0" -> 0.5f
-        screenType == "exercise" || isNextButtonEnable -> 1f
+        screenType == "exercise" || abacusType == AppConstants.apiParams.answerFormalExam -> 1f
+        isNextButtonEnable -> 0.5f
         else -> 1f
     }
     val density = LocalDensity.current
@@ -162,8 +164,9 @@ fun ResetButton(
             text = "Reset",
             color = Color.White,
             fontWeight = FontWeight.Bold,
-            fontSize = 10.sp,
-            lineHeight = 10.sp,
+            fontFamily = FontFamily(Font(R.font.font_bold)),
+            style = MaterialTheme.typography.labelSmall,
+            lineHeight = 12.sp,
         )
     }
 }
@@ -201,6 +204,7 @@ fun CenterBox(
             text = "Current Input",
             color = Color.White,
             fontWeight = FontWeight.Bold,
+            fontFamily = FontFamily(Font(R.font.font_bold)),
             fontSize = 10.sp,
             lineHeight = 10.sp
         )
@@ -248,14 +252,15 @@ fun NextButton(
 
         Text(
             text = when {
-                abacusType == AppConstants.apiParams.answerFormalExam -> "Submit"
+                abacusType == AppConstants.apiParams.answerFormalExam -> "Submit\nAnswer"
                 screenType == "ccm" -> "Check"
                 else -> "Next"
             },
             color = Color.White,
             fontWeight = FontWeight.Bold,
-            fontSize = 10.sp,
-            lineHeight = 10.sp,
+            fontFamily = FontFamily(Font(R.font.font_bold)),
+            style = MaterialTheme.typography.labelSmall,
+            lineHeight = 12.sp,
         )
     }
 }

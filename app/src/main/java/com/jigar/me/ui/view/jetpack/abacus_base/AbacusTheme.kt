@@ -211,6 +211,7 @@ object AbacusTheme {
 
     fun dimensionPreset(
         screenType: String = AppConstants.AbacusScreen.screenTypeFreeMode,
+        abacusType: String? = null,
         isFreeModeOn : Boolean = false
     ): AbacusDimensionModel {
         // This is a simplified mapping of your AbacusDimension logic.
@@ -219,7 +220,7 @@ object AbacusTheme {
 
         val multiplier = when (screenType) {
             "exam", "settings" -> 0.5f
-            AppConstants.AbacusScreen.screenTypeAbacusPractice -> 0.9f
+            AppConstants.AbacusScreen.screenTypeAbacusPractice -> if (abacusType == AppConstants.apiParams.answerStepByStep) 0.9f else {1f}
             AppConstants.AbacusScreen.screenTypeFreeMode -> if (isFreeModeOn){
                 1f
             }else{

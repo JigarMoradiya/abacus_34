@@ -30,7 +30,7 @@ fun AbacusFormulaItem(uiState: AbacusDoPracticeUiState) {
         uiState.currentAbacusFormula
             .filter { !it.formulaUsed.isNullOrEmpty() && it.index == uiState.currentIndexOfOperation }
             .distinctBy { it.formulaUsed }
-    }else if (uiState.currentAbacusType == AppConstants.extras_Comman.AbacusTypeMultiplication){
+    }else if (uiState.currentAbacusType == AppConstants.extras_Comman.AbacusTypeMultiplication || uiState.currentAbacusType == AppConstants.extras_Comman.AbacusTypeDivision){
         uiState.currentAbacusFormula
             .filter { !it.formulaUsed.isNullOrEmpty()}
             .distinctBy { it.formulaUsed }

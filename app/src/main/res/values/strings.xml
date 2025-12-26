@@ -541,7 +541,7 @@
     <string name="kindly_support_us_by_sharing_an_application"><![CDATA[Kindly support us by <font color="#62C8FF">sharing an application</font> with your Friends and Family.]]></string>
 
     <string name="speak_divide_by">%1$s divide by %2$s</string>
-    <string name="speak_multiply_by">%1$s multiply %2$s</string>
+    <string name="speak_multiply_by">%1$s multiplied by %2$s</string>
 
     <string name="need_paid_plan_msg">Sorry, to access this feature, a paid plan is required.\nUpgrade your plan today to enjoy the full benefits and unlock this premium feature.\nThank you for your understanding!</string>
     <string name="txt_setting_step_by_step">Give answer <font color='#0000ff'>Step by Step</font></string>

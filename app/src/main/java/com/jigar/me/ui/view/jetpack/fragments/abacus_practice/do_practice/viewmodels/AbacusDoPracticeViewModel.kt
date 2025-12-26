@@ -4,12 +4,13 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.jigar.me.R
 import com.jigar.me.data.local.data.ExamProvider.AbacusFormulaType
 import com.jigar.me.data.local.data.ExamProvider.FormulaStep
 import com.jigar.me.data.local.data.ExamProvider.detectFormulaSteps
+import com.jigar.me.data.local.data.RodMovement
 import com.jigar.me.data.model.data.QuestionDataRequest
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
-import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
 import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
@@ -71,22 +72,20 @@ class AbacusDoPracticeViewModel @Inject constructor(
 
             if (abacusList.isEmpty()) return@launch
 
-            val restoredIndex =
-                setProgress
-                    ?.takeIf { !it.is_set_completed }
-                    ?.latest_abacus_id
-                    ?.let { id -> abacusList.indexOfFirst { it.id == id } }
-                    ?.takeIf { it >= 0 }
-                    ?: 0
+            val restoredIndex = setProgress
+                ?.takeIf { !it.is_set_completed }
+                ?.latest_abacus_id
+                ?.let { id -> abacusList.indexOfFirst { it.id == id } }
+                ?.takeIf { it >= 0 }
+                ?: 0
 
-            val restoredTime =
-                setDetail
-                    ?.takeIf { it.show_time_setting }
-                    ?.let {
-                        if (setProgress?.is_set_completed == false)
-                            setProgress.total_time_taken.toLong()
-                        else 0L
-                    }
+            val restoredTime = setDetail
+                ?.takeIf { it.show_time_setting }
+                ?.let {
+                    if (setProgress?.is_set_completed == false)
+                        setProgress.total_time_taken.toLong()
+                    else 0L
+                }
 
             val currentAbacus = abacusList[restoredIndex]
             val isStepByStep = setDetail?.answer_setting == AppConstants.apiParams.answerStepByStep
@@ -100,7 +99,7 @@ class AbacusDoPracticeViewModel @Inject constructor(
                     abacus = abacusList,
                     currentIndexOfAbacus = restoredIndex,
                     currentAbacus = currentAbacus,
-                    currentAbacusType = currentAbacus.findCurrentAbacusType(),
+                    currentAbacusType = abacusType,
                     currentAbacusFormula =
                         if (isDisplayHelpMessage && isStepByStep && abacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction)
                             detectFormulaSteps(initial = 0, steps = currentAbacus.question.sumToIntList())
@@ -110,29 +109,38 @@ class AbacusDoPracticeViewModel @Inject constructor(
                     isFinalAnswer = isFinalAnswer,
                     isShowSubmitAnswer = isFormalExam,
                     isNextButtonEnable = isFormalExam,
-                    isLoading = false
+                    isLoading = false,
                 )
             }
 
+
             if (restoredTime != null) startSetTimer()
 
-            speakQue()
-            handleMatch()
-            observeOperationIndex()
+            preSetAbacus() // pre set data for division
+            speakQue() // speak question
+            handleMatch() // find direction and check abacus is completed or not
+            observeOperationIndex() // observer for currentIndexOfOperation
         }
     }
+    private fun preSetAbacus() {
+        // set dividend on abacus
+        if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeDivision){
+            abacusCalc.setAbacusValueFromString((state().currentAbacus?.dividend?:"0").toString(), true)
+        }
+    }
+
+    // observer of currentIndexOfOperation for formula find of Multiplication and Division
     private fun observeOperationIndex() {
         viewModelScope.launch {
-            uiState
-                .map { it.currentIndexOfOperation }
+            uiState.map { it.currentIndexOfOperation }
                 .distinctUntilChanged()
                 .collect { newIndex ->
                     if (isDisplayHelpMessage && state().isStepByStep){
-                        if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeMultiplication){
+                        state().currentAbacus?.let{ currentAbacus ->
                             val currentOperationIndex = state().currentIndexOfOperation
                             if (currentOperationIndex > -1){
-                                val leftInt = abacusCalc.totalValuePair.first.toIntOrNull() ?: 0
-                                state().currentAbacus?.let{ currentAbacus ->
+                                if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeMultiplication){
+                                    val leftInt = abacusCalc.totalValuePair.first.toIntOrNull() ?: 0
                                     val newValue = currentAbacus.eachStepProduct[currentOperationIndex]
                                     val ques = leftInt.toString()+"+"+(newValue - leftInt)
                                     val formulaList = detectFormulaSteps(initial = 0, steps = ques.sumToIntList())
@@ -145,6 +153,26 @@ class AbacusDoPracticeViewModel @Inject constructor(
                                         updateState_ {
                                             copy(currentAbacusFormula = listOf(multiplicationFormula) + formulaList)
                                         }
+                                    }
+                                }else if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeDivision){
+                                    val leftInt = abacusCalc.totalValuePair.first.toIntOrNull() ?: 0
+                                    val toValue = currentAbacus.eachStepQuotient[currentOperationIndex] - leftInt
+                                    val que1 = "$leftInt+$toValue"
+                                    val formulaList1 = detectFormulaSteps(initial = 0, steps= que1.sumToIntList())
+
+                                    val newDividend = currentAbacus.dividend
+                                    val toValue2 = currentAbacus.eachStepRemainder[currentOperationIndex] - newDividend
+                                    val que2 = "$newDividend+$toValue2"
+                                    val formulaList2 = detectFormulaSteps(initial = 0, steps= que2.sumToIntList())
+
+                                    val tableOf = currentAbacus.divisor
+                                    val index = currentAbacus.eachStepQuotientDigitsForMultiplicationTable[currentOperationIndex]
+                                    val formattedResult = String.format(Locale.US, "%02d", tableOf * index)
+                                    val mulTable = "$index x $tableOf = $formattedResult"
+                                    val multiplicationFormula = FormulaStep(0, mulTable, AbacusFormulaType.Multiplication.description)
+
+                                    updateState_ {
+                                        copy(currentAbacusFormula = listOf(multiplicationFormula) + formulaList1 + formulaList2)
                                     }
                                 }
                             }else{
@@ -192,12 +220,29 @@ class AbacusDoPracticeViewModel @Inject constructor(
     fun speakQue() = with(state()){
         if (isStepByStep && isAbacusQuestionSpeak){
             currentAbacus?.let{ currentAbacus ->
-                if (currentAbacusType == AppConstants.extras_Comman.AbacusTypeNumber){
-                    val questionWord = context.convertNumberToWords(currentAbacus.question.toInt())
-                    speakOut(questionWord)
-                }else if (currentAbacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction){
-                    val questionWord = context.convertNumberToWords(currentAbacus.operationStepsStringsArray[currentIndexOfOperation].toInt())
-                    speakOut(questionWord)
+                when (currentAbacusType) {
+                    AppConstants.extras_Comman.AbacusTypeNumber -> {
+                        val questionWord = context.convertNumberToWords(currentAbacus.question.toInt())
+                        speakOut(questionWord)
+                    }
+                    AppConstants.extras_Comman.AbacusTypeAdditionSubtraction -> {
+                        val questionWord = context.convertNumberToWords(currentAbacus.operationStepsStringsArray[currentIndexOfOperation].toInt())
+                        speakOut(questionWord)
+                    }
+                    AppConstants.extras_Comman.AbacusTypeMultiplication -> {
+                        val num1Int = currentAbacus.num1.joinToString("").toIntOrNull() ?: 0
+                        val num2Int = currentAbacus.num2.joinToString("").toIntOrNull() ?: 0
+                        val num1Str = context.convertNumberToWords(num1Int)
+                        val num2Str = context.convertNumberToWords(num2Int)
+                        val questionWord = String.format(context.getString(R.string.speak_multiply_by),num1Str,num2Str)
+                        speakOut(questionWord)
+                    }
+                    AppConstants.extras_Comman.AbacusTypeDivision -> {
+                        val dividend = context.convertNumberToWords(currentAbacus.dividend)
+                        val divisor = context.convertNumberToWords(currentAbacus.divisor)
+                        val questionWord = String.format(context.getString(R.string.speak_divide_by),dividend,divisor)
+                        speakOut(questionWord)
+                    }
                 }
             }
         }
@@ -228,6 +273,16 @@ class AbacusDoPracticeViewModel @Inject constructor(
                         if (leftInt == currentAbacus.eachStepProduct[currentOperationIndex] && rightInt == 0 && currentAbacus.finalAnswer.toString() == leftInt.toString()){
                             isAbacusDone = true
                         }
+                    }else if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeDivision){
+                        if (currentOperationIndex < currentAbacus.eachStepQuotient.size &&
+                            currentOperationIndex < currentAbacus.eachStepRemainder.size &&
+                            leftInt == currentAbacus.eachStepQuotient[currentOperationIndex] &&
+                            rightInt == currentAbacus.eachStepRemainder[currentOperationIndex]
+                        ){
+                            if (leftInt == currentAbacus.quotient && rightInt == currentAbacus.remainder) {
+                                isAbacusDone = true
+                            }
+                        }
                     }
                 }else if (state().isFinalAnswer){
                     if (rightInt == 0 && currentAbacus.finalAnswer.toString() == leftInt.toString()){
@@ -248,7 +303,45 @@ class AbacusDoPracticeViewModel @Inject constructor(
                     // show direction if enable setting and step by step mode
                     if (showDirectionHints && state().isStepByStep){
                         if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeDivision){
+                            if (currentOperationIndex < currentAbacus.eachStepQuotient.size &&
+                                currentOperationIndex < currentAbacus.eachStepRemainder.size &&
+                                leftInt == currentAbacus.eachStepQuotient[currentOperationIndex] &&
+                                rightInt == currentAbacus.eachStepRemainder[currentOperationIndex]
+                            ) {
+                                currentOperationIndex += 1
+                                if (currentOperationIndex < currentAbacus.displayDividendArray.size) {
+                                    // Skip zero values
+                                    while (
+                                        currentOperationIndex < currentAbacus.displayDividendArray.size - 1 &&
+                                        currentAbacus.displayDividendArray[currentOperationIndex] == 0
+                                    ) {
+                                        currentOperationIndex++
+                                    }
+                                }
 
+                                updateState_ {
+                                    copy(currentIndexOfOperation = currentOperationIndex)
+                                }
+                            }
+
+                            val newValue = currentAbacus.eachStepQuotient[currentOperationIndex]
+                            val rods = max(leftInt.toString().length, newValue.toString().length)
+                            val left = MathUtils.calculateRodMovements(from = leftInt, to = newValue, rods = rods, isForRightRods = false)
+                            var rightList : List<RodMovement> = arrayListOf()
+                            if (rightInt > 0) {
+                                val newValueRemainder = currentAbacus.eachStepRemainder.getOrNull(currentOperationIndex)
+                                if (newValueRemainder != null) {
+                                    rightList = MathUtils.calculateRodMovements(from = rightInt, to = newValueRemainder, rods = 6, isForRightRods = true)
+                                }
+                            } else {
+                                if (!state().isSumComplete) {
+                                    val newValueRemainder = currentAbacus.eachStepRemainder.getOrNull(currentOperationIndex)
+                                    if (newValueRemainder != null) {
+                                        rightList = MathUtils.calculateRodMovements(from = 0, to = newValueRemainder, rods = 6, isForRightRods = true)
+                                    }
+                                }
+                            }
+                            updateRodMovements(left + rightList)
                         }else{
                             val right = MathUtils.calculateRodMovements(from = rightInt, to = 0, rods = 6, isForRightRods = true)
                             if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeNumber){
@@ -257,7 +350,7 @@ class AbacusDoPracticeViewModel @Inject constructor(
                                 updateRodMovements(left + right)
                             }else if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction){
                                 if (leftInt.toString() == currentAbacus.operationNumbersArray[currentOperationIndex].toString()){
-                                    currentOperationIndex = currentOperationIndex + 1 // current step completed
+                                    currentOperationIndex += 1 // current step completed
                                     updateState_ {
                                         copy(currentIndexOfOperation = currentOperationIndex)
                                     }
@@ -306,6 +399,7 @@ class AbacusDoPracticeViewModel @Inject constructor(
 
     // reset abacus click
     fun resetAbacus() {
+        preSetAbacus() // reset pre set abacus data for division
         updateState_ {
             copy(isNextButtonEnable = false, isSumComplete = false, currentIndexOfOperation = 0, currentIndexNum1 = 0, currentIndexNum2 = 0)
         }
@@ -323,7 +417,7 @@ class AbacusDoPracticeViewModel @Inject constructor(
                 state().currentAbacus?.let {
                     val leftInt = abacusCalc.totalValuePair.first.toIntOrNull() ?: 0
                     val rightInt = abacusCalc.totalValuePair.second.toIntOrNull() ?: 0
-                    val userAnswer = if (rightInt == 0){
+                    val userAnswer = if (rightInt == 0 || state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeDivision){
                         "$leftInt"
                     }else{
                         val toStr = rightInt.toString().padStart(6, '0')
@@ -437,6 +531,9 @@ class AbacusDoPracticeViewModel @Inject constructor(
                         currentAbacusType = it.findCurrentAbacusType(), isSumComplete = false, currentIndexOfOperation = 0, currentIndexNum1 = 0, currentIndexNum2 = 0)
                 }
             }
+
+            speakQue() // speak question when change
+            preSetAbacus() // pre set abacus data for next division question
 
             // submit progress on server on every 5th abacus
             if (nextIndex > 0 && (nextIndex % 5 == 0)){
