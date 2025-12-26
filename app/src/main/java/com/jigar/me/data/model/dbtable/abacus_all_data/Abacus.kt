@@ -16,6 +16,17 @@ data class Abacus(
     val created_at: String? = null,
     var userAnswer: String? = null
 ){
+    // find abacus type from current abacus question
+    fun findCurrentAbacusType() : String {
+        return when {
+            question.contains("+") || question.contains("-") -> AppConstants.extras_Comman.AbacusTypeAdditionSubtraction
+            question.contains("*", true) -> AppConstants.extras_Comman.AbacusTypeMultiplication
+            question.contains("/", true) -> AppConstants.extras_Comman.AbacusTypeDivision
+            else -> AppConstants.extras_Comman.AbacusTypeNumber
+        }
+    }
+
+    // user for addition and subtraction
     val operationStepsStringsArray: List<String>
         get() = MathUtils.extractNumbersAndSigns(question)
 
@@ -48,6 +59,7 @@ data class Abacus(
         get() = MathUtils.calculateEachStepProduct(exponentNum1, exponentNum2)
 
 
+    // user for multiplication
     val num1: List<Int>
         get() = MathUtils.convertStringToArrayOfArrays(question).getOrNull(0).orEmpty()
 

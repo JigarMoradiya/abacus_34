@@ -1,0 +1,112 @@
+package com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components
+
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.viewmodels.AbacusDoPracticeUiState
+import com.jigar.me.utils.extensions.mixWith
+
+
+@Composable
+fun MultiplicationAbacusItem(uiState: AbacusDoPracticeUiState) {
+
+    val colorPreset = uiState.currentColorPresetModel
+    val currentAbacus = uiState.currentAbacus
+    currentAbacus?.let { abacus->
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(0.dp),
+            modifier = Modifier
+                .width(80.dp)
+                .padding(end = dimensionResource(R.dimen.activity_padding4))
+                .border(
+                    width = 4.dp,
+                    color = colorPreset.columnColors.mixWith(Color.White,0.7f),
+                    shape = RoundedCornerShape(10.dp)
+                ).padding(top = dimensionResource(R.dimen.activity_padding8))
+        ) {
+            Row(
+                horizontalArrangement = Arrangement.Center) {
+                abacus.num1.forEachIndexed { index, digit ->
+                    Text(
+                        text = digit.toString(),
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily(Font(R.font.font_bold)),
+                        color = if (!uiState.isStepByStep)
+                            Color.Black
+                        else  if (index == uiState.currentIndexNum1)
+                            colorPreset.buttonColor
+                        else
+                            Color.Gray.mixWith(Color.White,0.2f)
+                    )
+                }
+            }
+
+            Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = "x",
+                    modifier = Modifier.padding(end = dimensionResource(R.dimen.activity_padding4)),
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = FontFamily(Font(R.font.font_bold)),
+                    color = if (!uiState.isStepByStep)
+                        Color.Black
+                    else if (uiState.isSumComplete)
+                        Color.Gray.mixWith(Color.White,0.2f)
+                    else
+                        colorPreset.buttonColor
+                )
+
+                abacus.num2.forEachIndexed { index, digit ->
+                    Text(
+                        text = digit.toString(),
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily(Font(R.font.font_bold)),
+                        color = if (!uiState.isStepByStep)
+                            Color.Black
+                        else if (index == uiState.currentIndexNum2)
+                            colorPreset.buttonColor
+                        else
+                            Color.Gray.mixWith(Color.White,0.2f)
+                    )
+                }
+            }
+
+            HorizontalDivider(
+                modifier = Modifier.padding(top = dimensionResource(R.dimen.activity_padding4)),
+                thickness = 2.dp, color = colorPreset.columnColors.mixWith(Color.White,0.7f)
+            )
+
+            Text(
+                text = abacus.finalAnswer.toString(),
+                style = MaterialTheme.typography.titleLarge.copy(color = colorPreset.buttonColor,
+                    fontWeight = FontWeight.ExtraBold,
+                    fontFamily = FontFamily(Font(R.font.font_extra_bold))),
+                modifier = Modifier
+                    .padding(bottom = dimensionResource(R.dimen.activity_padding4))
+                    .alpha(if (uiState.isSumComplete) 1f else 0f)
+            )
+        }
+    }
+}
+

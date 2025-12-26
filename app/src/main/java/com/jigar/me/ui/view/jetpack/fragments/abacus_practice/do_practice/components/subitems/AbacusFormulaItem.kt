@@ -19,15 +19,24 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.viewmodels.AbacusDoPracticeUiState
+import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
 
 
 @Composable
 fun AbacusFormulaItem(uiState: AbacusDoPracticeUiState) {
     val colorPreset = uiState.currentColorPresetModel
-    val distinctList = uiState.currentAbacusFormula
-        .filter { !it.formulaUsed.isNullOrEmpty() && it.index == uiState.currentIndexOfOperation }
-        .distinctBy { it.formulaUsed }
+    val distinctList = if (uiState.currentAbacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction){
+        uiState.currentAbacusFormula
+            .filter { !it.formulaUsed.isNullOrEmpty() && it.index == uiState.currentIndexOfOperation }
+            .distinctBy { it.formulaUsed }
+    }else if (uiState.currentAbacusType == AppConstants.extras_Comman.AbacusTypeMultiplication){
+        uiState.currentAbacusFormula
+            .filter { !it.formulaUsed.isNullOrEmpty()}
+            .distinctBy { it.formulaUsed }
+    }else{
+        emptyList()
+    }
     if (distinctList.isNotNullOrEmpty()){
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

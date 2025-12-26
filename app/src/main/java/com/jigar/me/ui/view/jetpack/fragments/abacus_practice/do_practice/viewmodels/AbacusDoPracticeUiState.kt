@@ -17,7 +17,9 @@ data class AbacusDoPracticeUiState(
     val abacus: List<Abacus> = emptyList(),
 
     val currentIndexOfAbacus: Int = 0, // index of question list
-    val currentIndexOfOperation: Int = 0, // index of question operation
+    val currentIndexOfOperation: Int = 0, // index of question operation for addition and subtraction
+    val currentIndexNum1: Int = 0, // index of 1st question operation for multiplication
+    val currentIndexNum2: Int = 0, // index of 2nd question operation for multiplication
     val currentAbacusType: String = AppConstants.extras_Comman.AbacusTypeNumber,
     val currentAbacus: Abacus? = null,
     val currentAbacusFormula: List<ExamProvider.FormulaStep> = emptyList(),

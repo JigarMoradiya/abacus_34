@@ -24,105 +24,21 @@ import com.jigar.me.ui.view.jetpack.abacus_base.AbacusDimensionModel
 import com.jigar.me.ui.view.jetpack.abacus_base.ColorPresets.hex
 
 @Composable
-fun NumberStripBar(
+fun OnlyWordStripBar(
     dim: AbacusDimensionModel,
     totalWidth: Dp,
     totalHeight: Dp
 ) {
     val beadWidth = dim.beadWidth + (dim.columnSpaces * 2)
-    val stripHeight = dim.stripHeight     // same as iOS UIConstants.abacusNumberStripTextSize
 
-    Column(
-        modifier = Modifier
-            .width(totalWidth) // inner width (same as Swift)
-            .padding(horizontal = dim.rectLineWidth)     // equal top/bottom padding
-    ) {
-
-        // 🔵 TOP BAR (5000000..5)
-        Row(
-            modifier = Modifier
-                .width(totalWidth),
-            horizontalArrangement = Arrangement.Start
-        ) {
-            val items = listOf(
-                Triple("5000000", "303F9F", 7.sp),
-                Triple("500000", "1976D2", 8.sp),
-                Triple("50000", "0097A7", 9.sp),
-                Triple("5000", "00796B", 10.sp),
-                Triple("500", "388E3C", 12.sp),
-                Triple("50", "A4B42B", 12.sp),
-                Triple("5", "F57C00", 12.sp)
-            )
-
-            items.forEachIndexed { index, item ->
-                Box(
-                    modifier = Modifier
-                        .width(beadWidth)
-                        .height(stripHeight)
-                        .background(hex(item.second)),
-                    contentAlignment = Alignment.Center    // ⭐ THIS CENTERS TEXT VERTICALLY + HORIZONTALLY
-                ) {
-                    Text(
-                        text = item.first,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.White,
-                        fontSize = item.third,
-                        lineHeight = item.third,  // match line height to font
-                        textAlign = TextAlign.Center
-                    )
-                }
-            }
-        }
-
-        Spacer(modifier = Modifier.height(totalHeight + stripHeight + 8.dp))
-
-    }
-
-    //         🔵 MIDDLE BAR (1000000..1)
     Column(
         modifier = Modifier
             .width(totalWidth) // inner width (same as Swift)
             .padding(horizontal = dim.rectLineWidth),   // equal top/bottom padding
     ) {
 
-        Spacer(modifier = Modifier.height(totalHeight + (stripHeight * 2) + 20.dp))
+        Spacer(modifier = Modifier.height(totalHeight + 4.dp))
 
-        Row(
-            modifier = Modifier
-                .width(totalWidth),
-            horizontalArrangement = Arrangement.Start
-        ) {
-            val items = listOf(
-                Triple("1000000", "303F9F", 7.sp),
-                Triple("100000", "1976D2", 8.sp),
-                Triple("10000", "0097A7", 9.sp),
-                Triple("1000", "00796B", 10.sp),
-                Triple("100", "388E3C", 12.sp),
-                Triple("10", "A4B42B", 12.sp),
-                Triple("1", "F57C00", 12.sp)
-            )
-
-            items.forEachIndexed { index, item ->
-                Box(
-                    modifier = Modifier
-                        .width(beadWidth)
-                        .height(stripHeight)
-                        .background(hex(item.second)),
-                    contentAlignment = Alignment.Center    // ⭐ THIS CENTERS TEXT VERTICALLY + HORIZONTALLY
-                ) {
-                    Text(
-                        text = item.first,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.White,
-                        fontSize = item.third,
-                        lineHeight = item.third,  // match line height to font
-                        textAlign = TextAlign.Center
-                    )
-                }
-            }
-        }
-
-        Spacer(modifier = Modifier.height(4.dp))
         // 🔵 BOTTOM LABEL BAR
         Row(
             modifier = Modifier.width(totalWidth),

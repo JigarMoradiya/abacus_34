@@ -33,6 +33,7 @@ import com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.viewmodel.AbacusF
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.AbacusViewItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.subitems.AbacusFormulaItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.AddSubAbacusItem
+import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.MultiplicationAbacusItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.NumberAbacusItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.subitems.SetTimer
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.viewmodels.AbacusDoPracticeViewModel
@@ -77,22 +78,38 @@ class AbacusDoPracticeFragment : Fragment() {
                             if (viewModel.isAbacusOnLeftHand){
                                 AbacusViewItem(viewModel,uiState)
                                 uiState.currentAbacus?.let {
-                                    if (uiState.currentAbacusType == AppConstants.extras_Comman.AbacusTypeNumber) {
-                                        NumberAbacusItem(it,modifier = Modifier.weight(1f))
-                                    }else if (uiState.currentAbacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction) {
-                                        Spacer(Modifier.weight(1f))
-                                        AbacusFormulaItem(uiState)
-                                        AddSubAbacusItem(uiState)
+                                    when (uiState.currentAbacusType) {
+                                        AppConstants.extras_Comman.AbacusTypeNumber -> {
+                                            NumberAbacusItem(it,modifier = Modifier.weight(1f))
+                                        }
+                                        AppConstants.extras_Comman.AbacusTypeAdditionSubtraction -> {
+                                            Spacer(Modifier.weight(1f))
+                                            AbacusFormulaItem(uiState)
+                                            AddSubAbacusItem(uiState)
+                                        }
+                                        AppConstants.extras_Comman.AbacusTypeMultiplication -> {
+                                            Spacer(Modifier.weight(1f))
+                                            AbacusFormulaItem(uiState)
+                                            MultiplicationAbacusItem(uiState)
+                                        }
                                     }
                                 }
                             }else{
                                 uiState.currentAbacus?.let {
-                                    if (uiState.currentAbacusType == AppConstants.extras_Comman.AbacusTypeNumber) {
-                                        NumberAbacusItem(it,modifier = Modifier.weight(1f))
-                                    }else if (uiState.currentAbacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction) {
-                                        AddSubAbacusItem(uiState)
-                                        AbacusFormulaItem(uiState)
-                                        Spacer(Modifier.weight(1f))
+                                    when (uiState.currentAbacusType) {
+                                        AppConstants.extras_Comman.AbacusTypeNumber -> {
+                                            NumberAbacusItem(it,modifier = Modifier.weight(1f))
+                                        }
+                                        AppConstants.extras_Comman.AbacusTypeAdditionSubtraction -> {
+                                            AddSubAbacusItem(uiState)
+                                            AbacusFormulaItem(uiState)
+                                            Spacer(Modifier.weight(1f))
+                                        }
+                                        AppConstants.extras_Comman.AbacusTypeMultiplication -> {
+                                            MultiplicationAbacusItem(uiState)
+                                            AbacusFormulaItem(uiState)
+                                            Spacer(Modifier.weight(1f))
+                                        }
                                     }
                                 }
                                 AbacusViewItem(viewModel,uiState)

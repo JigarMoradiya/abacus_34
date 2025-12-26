@@ -39,10 +39,12 @@ class CategoryViewModel @Inject constructor(
                     copy(
                         purchasedSku = sku,
                         categories = categories,
-                        selectedCategoryIndex = 0
+                        selectedCategoryIndex = categories.lastIndex
+//                        selectedCategoryIndex = 0
                     )
                 }
-                loadPages(categories.first().id)
+//                loadPages(categories.first().id)
+                loadPages(categories.last().id)
             }
         }.catch { onFailure(it) }.collect()
     }

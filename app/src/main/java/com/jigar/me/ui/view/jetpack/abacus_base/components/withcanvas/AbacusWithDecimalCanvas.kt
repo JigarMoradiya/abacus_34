@@ -40,6 +40,7 @@ import com.jigar.me.ui.view.jetpack.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.jetpack.abacus_base.components.AbacusAnswerBarCompose
 import com.jigar.me.ui.view.jetpack.abacus_base.components.NumberStripBar
+import com.jigar.me.ui.view.jetpack.abacus_base.components.OnlyWordStripBar
 import com.jigar.me.ui.view.jetpack.abacus_base.components.SpotlightOverlay
 import com.jigar.me.ui.view.jetpack.abacus_base.components.spotlightTag
 import com.jigar.me.ui.view.jetpack.abacus_base.freeModeHighlightSteps
@@ -151,6 +152,10 @@ fun AbacusWithDecimalCanvas(
                 },
                 onNext = {
                     onNext()
+                    // abacus change sound same as reset
+                    if (isBeadSoundOn){
+                        PlaySound.playBeadReset(context)
+                    }
                 },
                 modifier = Modifier
                     .align(Alignment.TopCenter)
@@ -291,12 +296,12 @@ fun AbacusWithDecimalCanvas(
     }
 
     // Number strip below abacus (same as before)
-    if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn) {
-        NumberStripBar(
-            dim = dim,
-            totalWidth = totalWidth,
-            totalHeight = totalHeight
-        )
+    if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode) {
+        if (isFreeModeOn){
+            NumberStripBar(dim = dim, totalWidth = totalWidth, totalHeight = totalHeight)
+        }
+    }else{
+        OnlyWordStripBar(dim = dim, totalWidth = totalWidth, totalHeight = totalHeight)
     }
 
     // If highlighter is off, skip step rectangles
