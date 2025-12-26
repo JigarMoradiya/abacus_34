@@ -379,9 +379,6 @@
             android:id="@+id/toAbacusDoPracticeFragment"
             app:destination="@+id/abacusDoPracticeFragment" />
         <action
-            android:id="@+id/toAbacusCalculationFragment"
-            app:destination="@+id/abacusCalculationFragment" />
-        <action
             android:id="@+id/toPurchaseFragment"
             app:destination="@+id/purchaseFragment" />
     </fragment>

@@ -4,9 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -46,17 +43,13 @@ import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.component
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.components.TopRightChips
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.viewmodels.CategoryViewModel
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
-import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
 import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
-import com.jigar.me.utils.CommonUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CategoryFragmentNew : Fragment() {
     private val viewModel: CategoryViewModel by viewModels()
     private val dashboardViewModel: HomeActivityViewModel by activityViewModels()
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -132,7 +125,6 @@ class CategoryFragmentNew : Fragment() {
                                             onSetClick = { set ->
                                                 if (uiState.selectedCategoryIsPurchase){
                                                     findNavController().navigate(CategoryFragmentNewDirections.toAbacusDoPracticeFragment(set.id))
-//                                                findNavController().navigate(CategoryFragmentNewDirections.toAbacusCalculationFragment(set.id))
                                                 }else{
                                                     // redirect to purchase fragment
                                                     findNavController().navigate(CategoryFragmentNewDirections.toPurchaseFragment())
