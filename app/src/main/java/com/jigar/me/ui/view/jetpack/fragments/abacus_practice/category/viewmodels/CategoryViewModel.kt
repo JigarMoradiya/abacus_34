@@ -2,9 +2,11 @@ package com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.viewmode
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.core.StatefulViewModel
 import com.jigar.me.ui.view.jetpack.core.repository.abacus_data.AbacusDataRepository
 import com.jigar.me.ui.view.jetpack.core.repository.abacus_data.PurchaseRepository
+import com.jigar.me.utils.CommonUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -16,6 +18,7 @@ import javax.inject.Inject
 class CategoryViewModel @Inject constructor(
     private val abacusDataRepository: AbacusDataRepository,
     private val purchaseRepository: PurchaseRepository,
+    private val prefs: AppPreferencesHelper,
     savedStateHandle: SavedStateHandle
 ) : StatefulViewModel<CategoryUiState>() {
 
@@ -35,16 +38,17 @@ class CategoryViewModel @Inject constructor(
             abacusDataRepository.getCategories(levelId)
         ) { sku, categories ->
             if (categories.isNotEmpty()) {
+                val isPurchase = CommonUtils.checkLevelIsPurchase(sku,categories.first(),prefs)
                 updateState_ {
                     copy(
                         purchasedSku = sku,
                         categories = categories,
-                        selectedCategoryIndex = categories.lastIndex
-//                        selectedCategoryIndex = 0
+                        selectedCategoryIndex = 0,
+                        selectedCategoryIsPurchase = isPurchase
                     )
                 }
-//                loadPages(categories.first().id)
-                loadPages(categories.last().id)
+                loadPages(categories.first().id)
+
             }
         }.catch { onFailure(it) }.collect()
     }
@@ -55,6 +59,7 @@ class CategoryViewModel @Inject constructor(
     }
 
     private fun loadPages(categoryId: String) = viewModelScope.launch {
+        val isPurchase = CommonUtils.checkLevelIsPurchase(state().purchasedSku,state().categories[state().selectedCategoryIndex],prefs)
         abacusDataRepository.getPages(categoryId)
             .catch { onFailure(it) }
             .collect { pages ->
@@ -62,7 +67,8 @@ class CategoryViewModel @Inject constructor(
                     copy(
                         pages = pages,
                         showNoData = pages.isEmpty(),
-                        isLoading = false
+                        isLoading = false,
+                        selectedCategoryIsPurchase = isPurchase
                     )
                 }
             }

@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -43,7 +46,9 @@ import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.component
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.components.TopRightChips
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.viewmodels.CategoryViewModel
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
+import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
 import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
+import com.jigar.me.utils.CommonUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -125,8 +130,13 @@ class CategoryFragmentNew : Fragment() {
                                             page = page,
                                             allSets = allSets,
                                             onSetClick = { set ->
-                                                findNavController().navigate(CategoryFragmentNewDirections.toAbacusDoPracticeFragment(set.id))
+                                                if (uiState.selectedCategoryIsPurchase){
+                                                    findNavController().navigate(CategoryFragmentNewDirections.toAbacusDoPracticeFragment(set.id))
 //                                                findNavController().navigate(CategoryFragmentNewDirections.toAbacusCalculationFragment(set.id))
+                                                }else{
+                                                    // redirect to purchase fragment
+                                                    findNavController().navigate(CategoryFragmentNewDirections.toPurchaseFragment())
+                                                }
                                             },
                                             onSetLongClick = {}
                                         )
@@ -136,6 +146,7 @@ class CategoryFragmentNew : Fragment() {
                         }
                     }
                 }
+
             }
         }
     }

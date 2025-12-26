@@ -350,8 +350,8 @@
     <string name="will_select_later_from_settings">Will change later from settings</string>
     <string name="free_mode">Free Mode?</string>
     <string name="video_tutorials">Video Tutorials</string>
-    <string name="use_left_hand_to_move_beads">Use your <b><font color='#00FF00'>Left Hand</font></b> to move beads</string>
-    <string name="use_right_hand_to_move_beads">Use your <b><font color='#00FF00'>Right Hand</font></b> to move beads</string>
+    <string name="use_left_hand_to_move_beads">Use your <b>Left Hand</b> to move beads</string>
+    <string name="use_right_hand_to_move_beads">Use your <b>Right Hand</b> to move beads</string>
 
     <string name="ten_crores">Ten Crores</string>
     <string name="crores">Crores</string>

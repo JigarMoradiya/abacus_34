@@ -34,6 +34,7 @@ import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.compon
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.NumberAbacusItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.subitems.AbacusFormulaItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.subitems.SetTimer
+import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.subitems.UseWhichHandTextUi
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.viewmodels.AbacusDoPracticeViewModel
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.Loader
@@ -128,11 +129,14 @@ class AbacusDoPracticeFragment : Fragment() {
                         Spacer(Modifier.weight(1f))
                     }
                 }
+                // use left or right hand text
+                UseWhichHandTextUi(uiState,viewModel)
 
                 // loader
                 if (uiState.isLoading) {
                     Loader()
                 }
+                // set complete popup
                 AnimatedVisibility(
                     visible = uiState.isShowCompletePopup,
                     enter = fadeIn(),

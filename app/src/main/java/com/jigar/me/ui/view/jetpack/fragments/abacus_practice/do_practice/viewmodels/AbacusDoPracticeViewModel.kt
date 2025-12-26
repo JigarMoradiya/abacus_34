@@ -1,7 +1,6 @@
 package com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.viewmodels
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.jigar.me.R
