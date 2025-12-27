@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.abacus_base.components.withcanvas
+package com.jigar.me.ui.view.jetpack.abacus_base.components.abacus_canvas
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Canvas
@@ -73,6 +73,14 @@ fun AbacusWithDecimalCanvas(
 ) {
 
     val context = LocalContext.current
+
+    LaunchedEffect(screenType,selectedTheme) {
+        if (screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) {
+            val randomNumber = (101..999).random()
+            abacusData.setAbacusValueFromString(randomNumber.toString())
+        }
+    }
+
     var currentSpot by remember { mutableStateOf<Int?>(null) }
     LaunchedEffect(showHighlighter) {
         currentSpot = if (showHighlighter) 0 else null
@@ -124,7 +132,7 @@ fun AbacusWithDecimalCanvas(
     Box(modifier = modifier, contentAlignment = Alignment.TopCenter) {
 
         // Top Answer Bar (hidden in free mode, same as your old logic)
-        if (!isFreeModeOn) {
+        if (!(screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn) && screenType != AppConstants.AbacusScreen.screenTypeSettingPreview) {
             val offsetY = (-48).dp
 
             AbacusAnswerBarCompose(
@@ -269,7 +277,7 @@ fun AbacusWithDecimalCanvas(
         )
 
         // Display number at top inside the frame (free-mode only)
-        if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn) {
+        if ((screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn) || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) {
             Box(
                 modifier = Modifier
                     .height(totalHeight)
@@ -292,7 +300,7 @@ fun AbacusWithDecimalCanvas(
         if (isFreeModeOn){
             NumberStripBar(dim = dim, totalWidth = totalWidth, totalHeight = totalHeight)
         }
-    }else{
+    }else if (screenType == AppConstants.AbacusScreen.screenTypeAbacusPractice) {
         OnlyWordStripBar(dim = dim, totalWidth = totalWidth, totalHeight = totalHeight)
     }
 

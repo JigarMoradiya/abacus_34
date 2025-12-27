@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.abacus_base.components.withcanvas
+package com.jigar.me.ui.view.jetpack.abacus_base.components.abacus_canvas
 
 import android.content.Context
 import android.graphics.LinearGradient

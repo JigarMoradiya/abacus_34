@@ -1,14 +1,17 @@
 package com.jigar.me.ui.view.jetpack.fragments.home.viewmodels
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jigar.me.data.model.data.FetchAbacusDataRequest
 import com.jigar.me.data.model.dbtable.abacus_all_data.Set
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.core.repository.abacus_data.AbacusDataRepository
+import com.jigar.me.ui.view.jetpack.fragments.home.interator.BackgroundMusicController
 import com.jigar.me.ui.view.jetpack.fragments.home.interator.GetAbacusDataUseCase
 import com.jigar.me.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
@@ -20,7 +23,8 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeActivityViewModel @Inject constructor(
     repository: AbacusDataRepository,
-    private val prefManager: AppPreferencesHelper,
+    @ApplicationContext private val context: Context,
+    private val prefs: AppPreferencesHelper,
     private val getAbacusDataUseCase : GetAbacusDataUseCase
 ) : ViewModel() {
 
@@ -35,7 +39,7 @@ class HomeActivityViewModel @Inject constructor(
 
     fun fetchAbacusData() = viewModelScope.launch{
         val defaultDateTime = Constants.last_sync_default_time
-        val dateTime = prefManager.getCustomParam(Constants.last_sync_time,defaultDateTime)
+        val dateTime = prefs.getCustomParam(Constants.last_sync_time,defaultDateTime)
         val request = FetchAbacusDataRequest(true,true,true,true,true,last_sync_time = dateTime)
         getAbacusDataUseCase(
             params = request,
@@ -44,5 +48,23 @@ class HomeActivityViewModel @Inject constructor(
             onCompletion = {},
             onError = {}
         ).catch {}.collect()
+    }
+
+    private val bgController = BackgroundMusicController(context, prefs)
+
+    fun updateMusicVolume(volume: Int) {
+        bgController.updateVolume(volume)
+    }
+
+    fun onResume() {
+        bgController.playIfNeeded()
+    }
+
+    fun onPause() {
+        bgController.pause()
+    }
+
+    override fun onCleared() {
+        bgController.release()
     }
 }

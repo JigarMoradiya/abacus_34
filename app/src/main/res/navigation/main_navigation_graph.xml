@@ -25,6 +25,9 @@
             android:id="@+id/toSettingsFragment"
             app:destination="@+id/settingsFragment" />
         <action
+            android:id="@+id/toSettingsFragmentNew"
+            app:destination="@+id/settingFragmentNew" />
+        <action
             android:id="@+id/toPurchaseFragment"
             app:destination="@+id/purchaseFragment" />
         <action
@@ -349,5 +352,9 @@
         <action
             android:id="@+id/toPurchaseFragment"
             app:destination="@+id/purchaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragmentNew"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.setting.SettingFragmentNew">
     </fragment>
 </navigation>

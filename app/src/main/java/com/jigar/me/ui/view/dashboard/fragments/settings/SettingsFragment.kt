@@ -72,7 +72,7 @@ class SettingsFragment : BaseFragment(), AbacusThemeSelectionsAdapter.OnItemClic
         binding.rsBgMusic.setOnRangeSeekBarViewChangeListener(object : OnRangeSeekBarChangeListener{
             override fun onProgressChanged(seekBar: RangeSeekBarView?,progress: Int,fromUser: Boolean) {
                 prefManager.setCustomParamInt(AppConstants.Settings.Setting_bg_music_volume, progress)
-                (activity as MainDashboardActivity).setMusicVolume(progress)
+//                (activity as MainDashboardActivity).setMusicVolume(progress)
             }
             override fun onStartTrackingTouch(seekBar: RangeSeekBarView?, progress: Int) {
                 binding.nsv.requestDisallowInterceptTouchEvent(true)

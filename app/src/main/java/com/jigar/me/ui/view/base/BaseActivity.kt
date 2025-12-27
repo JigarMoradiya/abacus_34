@@ -18,65 +18,9 @@ import java.io.IOException
  */
 abstract class BaseActivity : AppCompatActivity() {
     lateinit var prefManager : AppPreferencesHelper
-    var bgPlayer : MediaPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         prefManager = AppPreferencesHelper(this, AppConstants.PREF_NAME)
-//        this.setLocale(prefManager.getCustomParam(Constants.appLanguage,"en"))
         super.onCreate(savedInstanceState)
-    }
-
-    fun playBackgroundMusic() {
-        val volume = prefManager.getCustomParamInt(AppConstants.Settings.Setting_bg_music_volume, AppConstants.Settings.Setting_bg_music_volume_default)
-        if (volume > 0){
-            bgPlayer = MediaPlayer()
-            try {
-                val afd = assets.openFd(PlaySound.background_music)
-                if (bgPlayer?.isPlaying == true) {
-                    bgPlayer?.stop()
-                }
-                bgPlayer?.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
-                bgPlayer?.isLooping = true
-                bgPlayer?.prepare()
-                setVolumeAnsStart(volume)
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-        }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        if (bgPlayer?.isPlaying == true){
-            bgPlayer?.pause()
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        if (bgPlayer?.isPlaying != true){
-            bgPlayer?.start()
-        }
-    }
-
-    fun setMusicVolume(progress: Int) {
-        if (progress == 0){
-            bgPlayer?.pause()
-        }else{
-            if (bgPlayer == null){
-                playBackgroundMusic()
-            }else{
-                setVolumeAnsStart(progress)
-            }
-
-        }
-    }
-
-    private fun setVolumeAnsStart(progress: Int) {
-        val volume = (progress.toFloat() / 100f)
-        bgPlayer?.setVolume(volume,volume)
-        if (bgPlayer?.isPlaying != true){
-            bgPlayer?.start()
-        }
     }
 
     fun showLoading() {

@@ -17,11 +17,7 @@ import kotlin.math.max
 class AbacusFreeModeViewModel @Inject constructor(
     private val prefs: AppPreferencesHelper,
     ttsManager: TextToSpeechManager,
-) : BaseAbacusViewModel(numberOfColumns = COLUMNS, ttsManager = ttsManager, prefs = prefs) {
-
-    companion object {
-        const val COLUMNS = 13
-    }
+) : BaseAbacusViewModel(numberOfColumns = 13, ttsManager = ttsManager, prefs = prefs) {
 
     // --------- UI / Settings state (persisted in prefs) ----------
 

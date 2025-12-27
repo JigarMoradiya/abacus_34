@@ -2,8 +2,7 @@ package com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.compo
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
-import com.jigar.me.ui.view.jetpack.abacus_base.components.withcanvas.AbacusWithDecimalCanvas
-import com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.viewmodel.AbacusFreeModeViewModel
+import com.jigar.me.ui.view.jetpack.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.viewmodels.AbacusDoPracticeUiState
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.viewmodels.AbacusDoPracticeViewModel
 import com.jigar.me.utils.AppConstants
@@ -18,7 +17,7 @@ fun AbacusViewItem(viewModel : AbacusDoPracticeViewModel, uiState: AbacusDoPract
             isBeadSoundOn = viewModel.isBeadSoundEnabled,
             isDisplayCurrentAbacusInput = viewModel.isDisplayCurrentAbacusInput,
             abacusData = viewModel.abacusCalc,
-            numberOfColumns = AbacusFreeModeViewModel.Companion.COLUMNS,
+            numberOfColumns = 13,
             rodMovement = viewModel.rodMovements,
             showDirectionHint = viewModel.showDirectionHints,
             abacusType = uiState.setDetail?.answer_setting,

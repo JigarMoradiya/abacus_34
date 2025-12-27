@@ -130,6 +130,7 @@ object AppConstants {
         companion object {
             const val screenTypeFreeMode = "FreeMode"
             const val screenTypeAbacusPractice = "AbacusPractice"
+            const val screenTypeSettingPreview = "SettingPreview"
             const val isFreeMode = "isFreeMode"
             const val isResetEveryTime = "isResetEveryTime"
             const val isRandomNumber = "isRandomNumber"

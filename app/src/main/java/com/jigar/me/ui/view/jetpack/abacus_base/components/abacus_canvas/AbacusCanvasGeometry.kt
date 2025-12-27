@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.abacus_base.components.withcanvas
+package com.jigar.me.ui.view.jetpack.abacus_base.components.abacus_canvas
 
 import androidx.compose.ui.unit.Density
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusDimensionModel

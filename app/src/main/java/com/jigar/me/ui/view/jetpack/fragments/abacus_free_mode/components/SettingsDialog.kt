@@ -30,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
@@ -205,6 +206,7 @@ fun SettingsDialog(
                         )
 
                         Switch(
+                            modifier = Modifier.scale(0.9f),
                             checked = isFreeModeOn, onCheckedChange = {
                                 setFreeMode(it)
                                 if (!it) {
@@ -244,6 +246,7 @@ fun SettingsDialog(
                             )
 
                             Switch(
+                                modifier = Modifier.scale(0.9f),
                                 checked = resetEveryTime,
                                 onCheckedChange = setResetEveryTime,
                                 enabled = !isFreeModeOn
@@ -264,6 +267,7 @@ fun SettingsDialog(
                             )
 
                             Switch(
+                                modifier = Modifier.scale(0.9f),
                                 checked = randomToggle, onCheckedChange = {
                                     setRandomToggle(it)
                                     val newTarget = generateNextTarget(null)

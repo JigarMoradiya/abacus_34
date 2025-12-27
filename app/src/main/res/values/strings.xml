@@ -163,12 +163,12 @@
     <!--  Settings  -->
     <string name="txt_setting_title">Application Setting</string>
     <string name="txt_setting_display_abacus_number">Display Current Number</string>
-    <string name="txt_setting_display_help_message">Display Hint Message</string>
+    <string name="txt_setting_display_help_message">Display Help Hint</string>
     <string name="display_bead_direction">Display Bead Direction</string>
     <string name="txt_setting_hide_table">Hide table</string>
-    <string name="txt_setting_left_hand">Left handed</string>
-    <string name="txt_setting_sound">Abacus Bead Sound</string>
-    <string name="txt_setting_hintsound">Abacus Sums Sound</string>
+    <string name="txt_setting_left_hand">Abacus for Left Handed</string>
+    <string name="txt_setting_sound">Bead Move Sound</string>
+    <string name="txt_setting_hintsound">Sums Speak Sound</string>
 
     <!--  Daily Exam  -->
     <string name="testResult">Exam\'s Result</string>
@@ -869,5 +869,6 @@
     <string name="network_unreachable">This page isn\'t available without internet</string>
     <string name="unexpected_error">Something went wrong, please try again later.</string>
     <string name="no_logged_in_user">Error fetching current user data</string>
+    <string name="customize_pronunciation_voice">Customize Pronunciation (Voice)</string>
 
 </resources>

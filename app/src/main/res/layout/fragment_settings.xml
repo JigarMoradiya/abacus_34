@@ -308,7 +308,7 @@
                             android:layout_marginStart="@dimen/activity_padding8"
                             android:layout_toEndOf="@+id/imgVoiceSettings"
                             android:fontFamily="@font/font_semibold"
-                            android:text="Customize pronunciation (voice) throught the app."
+                            android:text="@string/customize_pronunciation_voice"
                             android:textColor="@color/colorListingHeading"
                             android:textSize="@dimen/textSizeSmall"
                             android:textStyle="normal" />

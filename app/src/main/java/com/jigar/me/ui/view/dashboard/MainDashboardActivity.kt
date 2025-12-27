@@ -2,11 +2,8 @@ package com.jigar.me.ui.view.dashboard
 
 import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.WindowManager
 import androidx.activity.OnBackPressedCallback
@@ -14,45 +11,19 @@ import androidx.activity.viewModels
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.gson.Gson
-import com.google.gson.JsonObject
-import com.jigar.me.BuildConfig
 import com.jigar.me.R
-import com.jigar.me.data.model.data.AbacusAllData
-import com.jigar.me.data.model.data.DiscountData
-import com.jigar.me.data.model.data.FetchAbacusDataRequest
 import com.jigar.me.data.model.data.LoginData
-import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
-import com.jigar.me.data.model.dbtable.abacus_all_data.Category
-import com.jigar.me.data.model.dbtable.abacus_all_data.Level
-import com.jigar.me.data.model.dbtable.abacus_all_data.Pages
-import com.jigar.me.data.model.dbtable.abacus_all_data.Set
 import com.jigar.me.databinding.ActivityMainDashboardBinding
 import com.jigar.me.ui.view.base.BaseActivity
 import com.jigar.me.ui.view.dashboard.fragments.exam.doexam.ExamCommonFragment
 import com.jigar.me.ui.view.dashboard.fragments.exercise.ExerciseHomeFragment
 import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.jetpack.utils.TextToSpeechManager
-import com.jigar.me.ui.viewmodel.AppViewModel
-import com.jigar.me.ui.viewmodel.InAppViewModel
-import com.jigar.me.ui.viewmodel.StudentViewModel
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.CommonUtils
-import com.jigar.me.utils.Constants
-import com.jigar.me.utils.Resource
-import com.jigar.me.utils.extensions.getBottomNavBarHeight
-import com.jigar.me.utils.extensions.getScreenHeight
-import com.jigar.me.utils.extensions.getScreenWidth
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
@@ -63,7 +34,6 @@ class MainDashboardActivity : BaseActivity() {
     private var selectedFragment: Int = -1
     private lateinit var binding: ActivityMainDashboardBinding
     var isPurchaseDataChecked = false
-    var allSetList: ArrayList<Set> = arrayListOf()
     private var loginData: LoginData? = null
 
     val dashboardViewModel: HomeActivityViewModel by viewModels() // dont remove this line
@@ -75,6 +45,16 @@ class MainDashboardActivity : BaseActivity() {
     override fun onDestroy() {
         super.onDestroy()
         ttsManager.shutdown()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        dashboardViewModel.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        dashboardViewModel.onPause()
     }
 
     companion object {
@@ -93,7 +73,6 @@ class MainDashboardActivity : BaseActivity() {
         setContentView(binding.root)
         initObserver()
         initListener()
-        playBackgroundMusic()
         initToolBar()
         initViews()
     }

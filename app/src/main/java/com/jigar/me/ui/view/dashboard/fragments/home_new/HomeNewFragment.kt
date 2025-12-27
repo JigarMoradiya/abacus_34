@@ -129,12 +129,13 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
 
     private fun setPurchaseData() {
         lifecycleScope.launch{
-            val purchasedList = appViewModel.getInAppSKUPurchased()
-            if (purchasedList.isNotNullOrEmpty()){
-                createPurchasedPlanRequest(purchasedList)
-            }else{
-                checkFreeTrial()
-            }
+            // TODO its for temp
+//            val purchasedList = appViewModel.getInAppSKUPurchased()
+//            if (purchasedList.isNotNullOrEmpty()){
+//                createPurchasedPlanRequest(purchasedList)
+//            }else{
+//                checkFreeTrial()
+//            }
         }
     }
 
@@ -152,7 +153,10 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
             txtWelcomeMsg.onClick { txtMyAccount.performClick() }
             txtMyAccount.onClick { mNavController?.navigate(R.id.action_homeFragment_to_myProfileFragment) }
             cardMyAccountTop.onClick { txtMyAccount.performClick() }
-            cardSettingTop.onClick { goToSetting() }
+            cardSettingTop.onClick {
+//                goToSetting()
+                mNavController?.navigate(R.id.toSettingsFragmentNew)
+            }
             cardSubscribe.onClick { goToInAppPurchase() }
             cardYoutube.onClick {
                 requireContext().openYoutube()
@@ -375,15 +379,23 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
     }
     private fun moveToClick(data: Level) {
         when (data.name) {
-            AppConstants.HomeClicks.Menu_My_Account -> {
-                mNavController?.navigate(R.id.action_homeFragment_to_myProfileFragment)
-            }
             AppConstants.HomeClicks.Menu_Practice_Abacus -> {
                 val action = HomeNewFragmentDirections.toCategoryFragmentNew(data.id)
                 mNavController?.navigate(action)
             }
             AppConstants.HomeClicks.Menu_Abacus_Free_Mode -> {
                 mNavController?.navigate(R.id.toAbacusFreeModeFragment)
+            }
+            AppConstants.HomeClicks.Menu_Math_Game -> {
+                mNavController?.navigate(R.id.toMathGameZoneFragment)
+            }
+            AppConstants.HomeClicks.Menu_Settings -> {
+                mNavController?.navigate(R.id.toSettingsFragmentNew)
+//                goToSetting()
+            }
+
+            AppConstants.HomeClicks.Menu_My_Account -> {
+                mNavController?.navigate(R.id.action_homeFragment_to_myProfileFragment)
             }
             AppConstants.HomeClicks.Menu_Abacus_Exercise -> {
                 mNavController?.navigate(R.id.action_homeFragment_to_exerciseHomeFragment)
@@ -393,12 +405,6 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
             }
             AppConstants.HomeClicks.Menu_CCM -> {
                 mNavController?.navigate(R.id.action_homeFragment_to_customChallengeHomeFragment)
-            }
-            AppConstants.HomeClicks.Menu_Math_Game -> {
-                mNavController?.navigate(R.id.toMathGameZoneFragment)
-            }
-            AppConstants.HomeClicks.Menu_Settings -> {
-                goToSetting()
             }
             AppConstants.HomeClicks.Menu_Purchase_Store -> {
                 goToInAppPurchase()

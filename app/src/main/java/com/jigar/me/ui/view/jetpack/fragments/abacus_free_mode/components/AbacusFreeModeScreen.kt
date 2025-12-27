@@ -32,10 +32,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
-import com.jigar.me.ui.view.jetpack.abacus_base.components.withcanvas.AbacusWithDecimalCanvas
+import com.jigar.me.ui.view.jetpack.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
 import com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.viewmodel.AbacusFreeModeViewModel
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
-import com.jigar.me.ui.view.jetpack.fragments.common.LocalPreferencesHelper
 import com.jigar.me.utils.AppConstants
 
 
@@ -197,7 +196,7 @@ fun AbacusFreeModeScreen(
                 isBeadSoundOn = viewModel.isBeadSoundEnabled,
                 isDisplayCurrentAbacusInput = viewModel.isDisplayCurrentAbacusInput,
                 abacusData = viewModel.abacusCalc,
-                numberOfColumns = AbacusFreeModeViewModel.Companion.COLUMNS,
+                numberOfColumns = 13,
                 rodMovement = viewModel.rodMovements,
                 showDirectionHint = viewModel.showDirectionHints,
                 showHighlighter = viewModel.showHighlighter,

@@ -2,7 +2,7 @@ package com.jigar.me.ui.view.jetpack.abacus_base
 
 import androidx.compose.runtime.*
 
-class AbacusCalculations(numberOfColumns: Int) {
+class AbacusCalculations(private val numberOfColumns: Int) {
 
     // ⭐ Fires whenever any bead changes
     var stateVersion by mutableIntStateOf(0)
@@ -168,25 +168,27 @@ class AbacusCalculations(numberOfColumns: Int) {
     // -------------------------------------------------------
     private fun recalcTotal() {
         val raw = calculateAbacusString()
-        val padded = raw.padStart(13, '0')
+        if (numberOfColumns == 13){
+            val padded = raw.padStart(13, '0')
 
-        val firstPart = padded.substring(0, 7)
-        val secondPart = padded.substring(7, 13)
+            val firstPart = padded.substring(0, 7)
+            val secondPart = padded.substring(7, 13)
 
-        totalValuePair = firstPart to secondPart
+            totalValuePair = firstPart to secondPart
 
-        val intPartTrimmed = firstPart.trimStart('0').ifEmpty { "0" }
-        val fractionalTrimmed = secondPart.trimEnd('0')
+            val intPartTrimmed = firstPart.trimStart('0').ifEmpty { "0" }
+            val fractionalTrimmed = secondPart.trimEnd('0')
 
-        displayValue =
-            if (fractionalTrimmed.isNotEmpty())
+            displayValue = if (fractionalTrimmed.isNotEmpty())
                 if (isDivisionQuestion){
                     "$intPartTrimmed < ${secondPart.trimStart('0')}"
                 }else{
                     "$intPartTrimmed.$fractionalTrimmed"
                 }
-            else
-                intPartTrimmed
+            else intPartTrimmed
+        }else{
+            displayValue = raw
+        }
     }
 
     // -------------------------------------------------------

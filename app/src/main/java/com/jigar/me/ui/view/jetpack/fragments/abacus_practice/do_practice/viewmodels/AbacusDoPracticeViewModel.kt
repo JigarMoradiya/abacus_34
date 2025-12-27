@@ -45,7 +45,7 @@ class AbacusDoPracticeViewModel @Inject constructor(
     private val abacusDataRepository: AbacusDataRepository,
     private val submitAllExamUseCase: SubmitAllExamUseCase,
     savedStateHandle: SavedStateHandle
-) : StatefulViewModelAbacus<AbacusDoPracticeUiState>(ttsManager = ttsManager, prefs = prefs) {
+) : StatefulViewModelAbacus<AbacusDoPracticeUiState>(ttsManager = ttsManager, prefs = prefs,numberOfColumns = 13) {
 
     override val TAG = "AbacusDoPracticeViewModel"
 

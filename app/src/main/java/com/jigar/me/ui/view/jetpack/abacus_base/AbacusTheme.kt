@@ -219,7 +219,7 @@ object AbacusTheme {
         val base = AbacusDimensionModel()
 
         val multiplier = when (screenType) {
-            "exam", "settings" -> 0.5f
+            "exam", AppConstants.AbacusScreen.screenTypeSettingPreview -> 0.5f
             AppConstants.AbacusScreen.screenTypeAbacusPractice -> if (abacusType == AppConstants.apiParams.answerStepByStep) 0.9f else {1f}
             AppConstants.AbacusScreen.screenTypeFreeMode -> if (isFreeModeOn){
                 1f
@@ -233,12 +233,13 @@ object AbacusTheme {
             beadWidth = base.beadWidth * multiplier,
             beadHeight = base.beadHeight * multiplier,
             columnSpaces = if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode) base.columnSpaces * 2 else base.columnSpaces,
-            beamHeight = if (screenType == "exam" || screenType == "settings") base.beamHeight
+            beamHeight = if (screenType == "exam" || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) base.beamHeight
             else base.beamHeight * 2,
-            rectLineWidth = if (screenType == "exam" || screenType == "settings")
+            rectLineWidth = if (screenType == "exam" || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview)
                 base.rectLineWidth / 2 else base.rectLineWidth,
-            rectLineCorner = if (screenType == "exam" || screenType == "settings")
-                base.rectLineCorner / 2 else base.rectLineCorner
+            rectLineCorner = if (screenType == "exam" || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview)
+                base.rectLineCorner / 2 else base.rectLineCorner,
+            textSizeSp =  if (screenType == "exam" || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) 7 else 13
         )
     }
 }
