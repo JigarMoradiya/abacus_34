@@ -1,5 +1,8 @@
 package com.jigar.me.ui.view.jetpack.fragments.setting.viewmodels
 
+import android.speech.tts.Voice
+import java.util.Locale
+
 data class SettingUiState(
     val error: Int? = null,
     val previewKey: Int = 0,
@@ -11,5 +14,13 @@ data class SettingUiState(
     val sumSound: Boolean = true,
     val beadSound: Boolean = true,
 
-    val musicVolume: Int = 10
+    val musicVolume: Int = 10,
+
+    // Voice setting
+    val languages: List<Locale> = emptyList(),
+    val voices: List<Voice> = emptyList(),
+    val selectedLanguage: Locale? = null,
+    val selectedVoice: Voice? = null,
+    val pitch: Int = 10,   // 0–20 (same as XML)
+    val speed: Int = 9     // 0–20
 )

@@ -123,7 +123,7 @@ abstract class StatefulViewModelAbacus<State>(protected open val allowLogging: B
      *
      * @param transform A function that takes the current state and returns a new state.
      */
-    protected fun updateState_(transform: State.() -> State) {
+    fun updateState_(transform: State.() -> State) {
         updateState(transform = transform)
     }
 

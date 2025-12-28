@@ -24,9 +24,9 @@ import java.util.Locale
 
 class VoiceControllerSetting(
     val activity: Activity,
-    listener:VoiceControllerSettingInterface,
     prefManager : AppPreferencesHelper,
-    val tts:TextToSpeech
+    val tts:TextToSpeech,
+    listener:VoiceControllerSettingInterface
 ) {
 
     var dialog: BottomSheetDialog = BottomSheetDialog(activity,R.style.BottomSheetDialog)

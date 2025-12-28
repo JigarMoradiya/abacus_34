@@ -13,7 +13,7 @@ import com.jigar.me.utils.AppConstants
 
 open class BaseAbacusViewModel(
     numberOfColumns: Int,
-    private val ttsManager: TextToSpeechManager,
+    val ttsManager: TextToSpeechManager,
     private val prefs: AppPreferencesHelper
 ) : ViewModel() {
 

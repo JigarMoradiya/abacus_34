@@ -14,19 +14,19 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.stringResource
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.jetpack.fragments.setting.components.SettingsScreen
+import com.jigar.me.ui.view.jetpack.fragments.setting.components.voice.VoiceSettingBottomSheetFragment
 import com.jigar.me.ui.view.jetpack.fragments.setting.viewmodels.SettingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SettingFragmentNew : Fragment() {
-    private val viewModel: SettingViewModel by viewModels()
+    private val viewModel: SettingViewModel by activityViewModels()
     private val homeViewModel: HomeActivityViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -47,7 +47,9 @@ class SettingFragmentNew : Fragment() {
                             uiState = uiState,
                             onMusicVolumeChange = homeViewModel::updateMusicVolume,
                             onVoiceClick = {
-
+                                VoiceSettingBottomSheetFragment
+                                    .newInstance()
+                                    .show(childFragmentManager, "VoiceSettingBottomSheet")
                             }
                         )
                     }
