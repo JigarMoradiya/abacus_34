@@ -170,6 +170,6 @@ abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSetting
         navController.navigate(R.id.toPurchaseFragment)
     }
     fun goToSetting() {
-        navController.navigate(R.id.toSettingsFragment)
+        navController.navigate(R.id.toSettingsFragmentNew)
     }
 }

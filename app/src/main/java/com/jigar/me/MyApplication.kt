@@ -145,7 +145,7 @@ class MyApplication : Application(), Configuration.Provider {
                                 moveToDestination(R.id.numberSequencePuzzleHomeFragment)
                             }
                             Constants.notificationTypeSetting -> {
-                                moveToDestination(R.id.settingsFragment)
+                                moveToDestination(R.id.settingFragmentNew)
                             }
                             Constants.notificationTypePurchase -> {
                                 moveToDestination(R.id.purchaseFragment)

@@ -3,10 +3,7 @@ package com.jigar.me.ui.view.dashboard.fragments.home_new
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.provider.Settings
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,20 +13,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.viewpager.widget.ViewPager
 import com.android.billingclient.api.BillingClient
-import com.eftimoff.viewpagertransformers.DepthPageTransformer
 import com.google.gson.Gson
-import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import com.jigar.me.BuildConfig
-import com.jigar.me.MyApplication
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DataProvider
-import com.jigar.me.data.local.data.HomeBanner
-import com.jigar.me.data.local.data.HomeMenuIntroType
-import com.jigar.me.data.model.DisplayPurchaseData
 import com.jigar.me.data.model.data.GooglePurchasedPlanRequest
 import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
 import com.jigar.me.data.model.dbtable.abacus_all_data.Level
@@ -37,14 +26,12 @@ import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.databinding.FragmentHomeNewBinding
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.base.inapp.BillingRepository
-import com.jigar.me.ui.view.base.inapp.BillingRepository.Companion.LOG_TAG
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.SelectAvatarProfileDialog
 import com.jigar.me.ui.view.confirm_alerts.dialogs.FreeTrialLeftDialog
 import com.jigar.me.ui.view.confirm_alerts.dialogs.FreeTrialLeftDialog.DialogFreeTrialInterface
 import com.jigar.me.ui.view.confirm_alerts.dialogs.SelectThemeDialog
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
-import com.jigar.me.ui.view.other.ContactUsActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.StudentViewModel
 import com.jigar.me.utils.AppConstants
@@ -54,18 +41,10 @@ import com.jigar.me.utils.Resource
 import com.jigar.me.utils.checkPermissions
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.onClick
-import com.jigar.me.utils.extensions.openURL
 import com.jigar.me.utils.extensions.openYoutube
-import com.jigar.me.utils.extensions.shareIntent
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import me.samlss.lighter.IntroProvider
-import me.samlss.lighter.Lighter
-import me.samlss.lighter.parameter.Direction
 import java.util.Calendar
-import java.util.Timer
-import java.util.TimerTask
 import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
@@ -78,7 +57,6 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
     private val appViewModel by viewModels<AppViewModel>()
     private var purchasedListReq : ArrayList<GooglePurchasedPlanRequest> = arrayListOf()
     private lateinit var homeMenuNewAdapter: HomeMenuNewAdapter
-    private var lighter : Lighter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initObserver()
@@ -154,19 +132,14 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
             txtMyAccount.onClick { mNavController?.navigate(R.id.action_homeFragment_to_myProfileFragment) }
             cardMyAccountTop.onClick { txtMyAccount.performClick() }
             cardSettingTop.onClick {
-//                goToSetting()
-                mNavController?.navigate(R.id.toSettingsFragmentNew)
+                goToSetting()
             }
             cardSubscribe.onClick { goToInAppPurchase() }
             cardYoutube.onClick {
                 requireContext().openYoutube()
             }
             cardEditImage.onClick { txtMyAccount.performClick() }
-            txtWelcomeTitle.onClick {
-                if (BuildConfig.DEBUG) {
-                    showTour()
-                }
-            }
+
         }
     }
 
@@ -344,31 +317,6 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
             })
     }
 
-    private fun showTour() {
-        lighter = Lighter.with(binding.root)
-        val freeModeViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(0)
-        val abacusPracticeViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(1)
-        val exerciseViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(2)
-        val examViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(3)
-        val ccmViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(4)
-        val numberPuzzleViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(5)
-        val videoTutorialViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(6)
-        val settingViewHolder = binding.recyclerviewMenu.findViewHolderForAdapterPosition(8)
-        if (freeModeViewHolder != null && exerciseViewHolder != null && examViewHolder != null && videoTutorialViewHolder != null && numberPuzzleViewHolder != null && ccmViewHolder != null){
-            IntroProvider.newHomeMenuIntro(prefManager,lighter,
-                (settingViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
-                (freeModeViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
-                (abacusPracticeViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
-                (videoTutorialViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
-                (exerciseViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
-                (examViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
-                (numberPuzzleViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain,
-                (ccmViewHolder as HomeMenuNewAdapter.ViewHolder).binding.conMain
-            )
-        }
-    }
-
-
     override fun avatarProfileCloseDialog() {
         binding.txtWelcomeTitle.text = CommonUtils.getCurrentTimeMessage(requireContext())
         val id = prefManager.getCustomParamInt(Constants.avatarId,1)
@@ -390,8 +338,7 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
                 mNavController?.navigate(R.id.toMathGameZoneFragment)
             }
             AppConstants.HomeClicks.Menu_Settings -> {
-                mNavController?.navigate(R.id.toSettingsFragmentNew)
-//                goToSetting()
+                goToSetting()
             }
 
             AppConstants.HomeClicks.Menu_My_Account -> {
