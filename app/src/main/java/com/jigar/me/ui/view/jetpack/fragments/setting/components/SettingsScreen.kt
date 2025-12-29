@@ -37,7 +37,8 @@ fun SettingsScreen(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(vertical = dimensionResource(R.dimen.activity_padding16), horizontal = dimensionResource(R.dimen.activity_padding2))
+            .padding(vertical = dimensionResource(R.dimen.activity_padding16))
+            .padding(start = dimensionResource(R.dimen.activity_padding16), end = dimensionResource(R.dimen.activity_padding16))
     ) {
 
         ThemeSection(

@@ -10,20 +10,20 @@
             android:id="@+id/toMathGameZoneFragment"
             app:destination="@+id/mathGameZoneFragment" />
         <action
-            android:id="@+id/toVideoPreviewFragment"
-            app:destination="@+id/videoPreviewFragment" />
-        <action
             android:id="@+id/toAbacusFreeModeFragment"
             app:destination="@+id/abacusFreeModeFragment" />
         <action
             android:id="@+id/toCategoryFragmentNew"
             app:destination="@+id/categoryFragmentNew" />
         <action
-            android:id="@+id/action_homeFragment_to_youtubeVideoFragment"
-            app:destination="@+id/youtubeVideoFragment" />
+            android:id="@+id/toYoutubeVideoFragmentNew"
+            app:destination="@+id/youtubeVideoFragmentNew" />
         <action
             android:id="@+id/toSettingsFragmentNew"
             app:destination="@+id/settingFragmentNew" />
+        <action
+            android:id="@+id/toVideoPreviewFragment"
+            app:destination="@+id/videoPreviewFragment" />
         <action
             android:id="@+id/toPurchaseFragment"
             app:destination="@+id/purchaseFragment" />
@@ -139,9 +139,6 @@
             android:id="@+id/toPurchaseFragment"
             app:destination="@+id/purchaseFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/youtubeVideoFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.youtubevideo.YoutubeVideoFragment"/>
     <fragment
         android:id="@+id/multiplicationTablesFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.tables.MultiplicationTablesFragment">
@@ -345,6 +342,8 @@
     </fragment>
     <fragment
         android:id="@+id/settingFragmentNew"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.setting.SettingFragmentNew">
-    </fragment>
+        android:name="com.jigar.me.ui.view.jetpack.fragments.setting.SettingFragmentNew"/>
+    <fragment
+        android:id="@+id/youtubeVideoFragmentNew"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.youtube_video.YoutubeVideoFragmentNew"/>
 </navigation>

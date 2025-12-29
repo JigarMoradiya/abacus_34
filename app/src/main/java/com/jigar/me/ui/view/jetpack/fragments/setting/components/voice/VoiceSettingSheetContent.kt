@@ -53,7 +53,7 @@ fun VoiceSettingSheetContent(
     ) {
 
         // ─────────────────── Handle Bar ───────────────────
-        Spacer(Modifier.height(12.dp))
+        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding12)))
         Box(
             modifier = Modifier
                 .width(40.dp)
@@ -62,7 +62,7 @@ fun VoiceSettingSheetContent(
                 .align(Alignment.CenterHorizontally)
         )
 
-        Spacer(Modifier.height(16.dp))
+        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding16)))
 
         Row(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding12))) {
             Column(Modifier.weight(1f)) {
@@ -72,7 +72,7 @@ fun VoiceSettingSheetContent(
                     style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),
                 )
 
-                Spacer(Modifier.height(6.dp))
+                Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding6)))
                 SimpleDropdownField(
                     text = uiState.selectedLanguage?.displayName ?: "",
                     items = uiState.languages,
@@ -88,7 +88,7 @@ fun VoiceSettingSheetContent(
                     style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),
                 )
 
-                Spacer(Modifier.height(6.dp))
+                Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding6)))
                 SimpleDropdownField(
                     text = uiState.selectedVoice?.name ?: "",
                     items = uiState.voices,
@@ -98,19 +98,19 @@ fun VoiceSettingSheetContent(
             }
         }
 
-        Spacer(Modifier.height(16.dp))
+        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding16)))
 
         Row(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding12))) {
             // ─────────────────── Pitch ───────────────────
             Column(Modifier.weight(1f)) {
-                Text(text = "Pitch",style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),)
+                Text(text = stringResource(R.string.pitch),style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),)
                 SingleSlider(
                     isShowText = true, value = uiState.pitch, range = 0f..20f, onValueChange = onPitchChange, modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.activity_padding8))
                 )
             }
             // ─────────────────── Speed ───────────────────
             Column(Modifier.weight(1f)) {
-                Text(text = "Voice Speed",style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),)
+                Text(text = stringResource(R.string.voice_speed),style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),)
                 SingleSlider(
                     isShowText = true, value = uiState.speed, range = 0f..20f, onValueChange = onSpeedChange, modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.activity_padding8))
                 )
@@ -118,7 +118,7 @@ fun VoiceSettingSheetContent(
         }
 
         // ─────────────────── Buttons ───────────────────
-        Spacer(Modifier.height(24.dp))
+        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding16)))
 
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -134,17 +134,17 @@ fun VoiceSettingSheetContent(
                     onClick = onTest,
                     colors = ButtonDefaults.buttonColors(containerColor = Color.Black)
                 ) {
-                    Text("Check Voice")
+                    Text(stringResource(R.string.check_voice))
                 }
 
-                Spacer(Modifier.width(12.dp))
+                Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding12)))
 
                 Button(onClick = onSave) {
-                    Text("Update")
+                    Text(stringResource(R.string.update))
                 }
             }
         }
 
-        Spacer(Modifier.height(24.dp))
+        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding16)))
     }
 }

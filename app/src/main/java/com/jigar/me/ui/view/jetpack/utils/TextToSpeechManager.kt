@@ -33,10 +33,12 @@ class TextToSpeechManager @Inject constructor(
     }
 
     fun speak(text: String) {
+        Log.e("jigarTTS","text = "+text)
         if (!ready) {
             pendingText = text
             return
         }
+        Log.e("jigarTTS","text text = "+text)
         tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
     }
 
@@ -53,9 +55,8 @@ class TextToSpeechManager @Inject constructor(
         } else {
             Gson().fromJson(currentLanguageJson, Locale::class.java)
         }
-
-        val speed = prefs.getDefaultTTSSpeed().coerceIn(0.5f, 2f)
-        val pitch = prefs.getDefaultTTSPitch().coerceIn(0.5f, 2f)
+        val speed = prefs.getDefaultTTSSpeed()
+        val pitch = prefs.getDefaultTTSPitch()
 
         // Set language
         val langResult = tts?.setLanguage(locale)
@@ -64,18 +65,13 @@ class TextToSpeechManager @Inject constructor(
             langResult == TextToSpeech.LANG_NOT_SUPPORTED
         ) {
             Log.e("TTS", "Language not supported: $locale")
+            tts?.language = Locale.forLanguageTag(AppPreferencesHelper.DEFAULT_TTS_LANGUAGE_VALUE)
             return
         }
 
         // set voice
-        val requestedVoiceName =
-            prefs.getCustomParam(
-                AppPreferencesHelper.KEY_DEFAULT_TTS_VOICE,
-                AppPreferencesHelper.DEFAULT_TTS_VOICE_VALUE
-            )
-
-        val matchingVoice = tts?.voices
-            ?.firstOrNull { it.name == requestedVoiceName }
+        val requestedVoiceName = prefs.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_VOICE, AppPreferencesHelper.DEFAULT_TTS_VOICE_VALUE)
+        val matchingVoice = tts?.voices?.firstOrNull { it.name == requestedVoiceName }
 
         if (matchingVoice != null) {
             tts?.voice = matchingVoice
@@ -83,8 +79,8 @@ class TextToSpeechManager @Inject constructor(
             Log.w("TTS", "Requested voice not found, using default")
         }
 
-        tts?.setSpeechRate(speed)
-        tts?.setPitch(pitch)
+        tts?.setSpeechRate(speed/10f)
+        tts?.setPitch(pitch/10f)
     }
 
     fun shutdown() {

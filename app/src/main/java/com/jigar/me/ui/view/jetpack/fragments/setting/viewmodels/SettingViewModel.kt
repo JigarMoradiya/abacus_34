@@ -1,10 +1,9 @@
 package com.jigar.me.ui.view.jetpack.fragments.setting.viewmodels
 
 import android.speech.tts.TextToSpeech
-import androidx.fragment.app.FragmentActivity
+import android.speech.tts.Voice
+import android.util.Log
 import com.jigar.me.data.pref.AppPreferencesHelper
-import com.jigar.me.ui.view.confirm_alerts.bottomsheets.VoiceControllerSetting
-import com.jigar.me.ui.view.confirm_alerts.bottomsheets.VoiceControllerSettingInterface
 import com.jigar.me.ui.view.jetpack.core.StatefulViewModelAbacus
 import com.jigar.me.ui.view.jetpack.utils.TextToSpeechManager
 import com.jigar.me.utils.AppConstants
@@ -75,8 +74,8 @@ class SettingViewModel @Inject constructor(
                 voices = voices,
                 selectedLanguage = selectedLang,
                 selectedVoice = selectedVoice,
-                pitch = (prefs.getDefaultTTSPitch() * 10).toInt(),
-                speed = (prefs.getDefaultTTSSpeed() * 10).toInt()
+                pitch = (prefs.getDefaultTTSPitch()).toInt(),
+                speed = (prefs.getDefaultTTSSpeed()).toInt()
             )
         }
     }
@@ -96,26 +95,34 @@ class SettingViewModel @Inject constructor(
         }
     }
 
+    fun onVoiceSelected(voice: Voice) {
+        updateState_ {
+            copy(
+                selectedVoice = voice
+            )
+        }
+    }
+
     fun testVoice(tts: TextToSpeech) {
         val state = state()
+        Log.e("jigarTTS","testVoice")
+        val langResult = tts.setLanguage(state.selectedLanguage)
+        if (langResult == TextToSpeech.LANG_MISSING_DATA ||
+            langResult == TextToSpeech.LANG_NOT_SUPPORTED
+        ) {
+            tts.language = Locale.forLanguageTag(AppPreferencesHelper.DEFAULT_TTS_LANGUAGE_VALUE)
+        }
         tts.voice = state.selectedVoice
         tts.setPitch(state.pitch / 10f)
         tts.setSpeechRate(state.speed / 10f)
-        tts.speak("Welcome to Abacus Child", TextToSpeech.QUEUE_FLUSH, null, "test")
+        tts.speak("Welcome to the world of Abacus.", TextToSpeech.QUEUE_FLUSH, null, null)
+        Log.e("jigarTTS","testVoice done")
     }
 
     fun saveVoiceSettings() {
         val state = state()
-
-        prefs.setCustomParam(
-            AppPreferencesHelper.KEY_DEFAULT_TTS_LANGUAGE,
-            state.selectedLanguage?.toLanguageTag() ?: ""
-        )
-
-        prefs.setCustomParam(
-            AppPreferencesHelper.KEY_DEFAULT_TTS_VOICE,
-            state.selectedVoice?.name ?: ""
-        )
+        prefs.setCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_LANGUAGE, state.selectedLanguage?.toLanguageTag() ?: "")
+        prefs.setCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_VOICE, state.selectedVoice?.name ?: "")
         prefs.setCustomParamFloat(AppPreferencesHelper.KEY_DEFAULT_TTS_PITCH, state.pitch.toFloat())
         prefs.setCustomParamFloat(AppPreferencesHelper.KEY_DEFAULT_TTS_SPEECH, state.speed.toFloat())
         updateSpeechSettings()

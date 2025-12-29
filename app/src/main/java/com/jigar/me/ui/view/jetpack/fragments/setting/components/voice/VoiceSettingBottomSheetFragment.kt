@@ -72,7 +72,9 @@ class VoiceSettingBottomSheetFragment : BottomSheetDialogFragment() {
                         dismiss()
                     },
                     onCancel = { dismiss() },
-                    onVoiceSelect = {}
+                    onVoiceSelect = {
+                        viewModel.onVoiceSelected(it)
+                    }
                 )
             }
         }

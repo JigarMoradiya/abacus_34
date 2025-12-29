@@ -131,13 +131,9 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
             txtWelcomeMsg.onClick { txtMyAccount.performClick() }
             txtMyAccount.onClick { mNavController?.navigate(R.id.action_homeFragment_to_myProfileFragment) }
             cardMyAccountTop.onClick { txtMyAccount.performClick() }
-            cardSettingTop.onClick {
-                goToSetting()
-            }
+            cardSettingTop.onClick { goToSetting() }
             cardSubscribe.onClick { goToInAppPurchase() }
-            cardYoutube.onClick {
-                requireContext().openYoutube()
-            }
+            cardYoutube.onClick { gotoVideo() }
             cardEditImage.onClick { txtMyAccount.performClick() }
 
         }
@@ -357,12 +353,16 @@ class HomeNewFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileD
                 goToInAppPurchase()
             }
             AppConstants.HomeClicks.Menu_Video_Tutorial -> {
-                if (prefManager.getCustomParam(AppConstants.RemoteConfig.videoList,"").isEmpty()){
-                    requireContext().openYoutube()
-                }else{
-                    mNavController?.navigate(R.id.action_homeFragment_to_youtubeVideoFragment)
-                }
+                gotoVideo()
             }
+        }
+    }
+
+    private fun gotoVideo() {
+        if (prefManager.getCustomParam(AppConstants.RemoteConfig.videoList,"").isEmpty()){
+            requireContext().openYoutube()
+        }else{
+            mNavController?.navigate(R.id.toYoutubeVideoFragmentNew)
         }
     }
 
