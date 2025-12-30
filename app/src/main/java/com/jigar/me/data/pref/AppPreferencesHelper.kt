@@ -83,11 +83,11 @@ class AppPreferencesHelper @Inject constructor(
     }
 
     fun getDefaultTTSPitch(): Float {
-        return getCustomParamFloat(KEY_DEFAULT_TTS_PITCH, 1.0f)
+        return getCustomParamFloat(KEY_DEFAULT_TTS_PITCH, 10f)
     }
 
     fun getDefaultTTSSpeed(): Float {
-        return getCustomParamFloat(KEY_DEFAULT_TTS_SPEECH, 0.9f)
+        return getCustomParamFloat(KEY_DEFAULT_TTS_SPEECH, 9f)
     }
 
     fun clearPref(){

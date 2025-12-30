@@ -105,7 +105,6 @@ class SettingViewModel @Inject constructor(
 
     fun testVoice(tts: TextToSpeech) {
         val state = state()
-        Log.e("jigarTTS","testVoice")
         val langResult = tts.setLanguage(state.selectedLanguage)
         if (langResult == TextToSpeech.LANG_MISSING_DATA ||
             langResult == TextToSpeech.LANG_NOT_SUPPORTED
@@ -116,7 +115,6 @@ class SettingViewModel @Inject constructor(
         tts.setPitch(state.pitch / 10f)
         tts.setSpeechRate(state.speed / 10f)
         tts.speak("Welcome to the world of Abacus.", TextToSpeech.QUEUE_FLUSH, null, null)
-        Log.e("jigarTTS","testVoice done")
     }
 
     fun saveVoiceSettings() {
