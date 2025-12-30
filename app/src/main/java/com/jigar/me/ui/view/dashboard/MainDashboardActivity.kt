@@ -138,7 +138,7 @@ class MainDashboardActivity : BaseActivity() {
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     when (selectedFragment) {
-                        R.id.homeNewFragment,R.id.homeFragmentNew -> {
+                        R.id.homeFragmentNew -> {
                             finish()
                         }
                         else -> {

@@ -43,53 +43,8 @@
     </fragment>
 
     <fragment
-        android:id="@+id/homeNewFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.home_new.HomeNewFragment">
-        <action
-            android:id="@+id/toMathGameZoneFragment"
-            app:destination="@+id/mathGameZoneFragment" />
-        <action
-            android:id="@+id/toAbacusFreeModeFragment"
-            app:destination="@+id/abacusFreeModeFragment" />
-        <action
-            android:id="@+id/toCategoryFragmentNew"
-            app:destination="@+id/categoryFragmentNew" />
-        <action
-            android:id="@+id/toYoutubeVideoFragmentNew"
-            app:destination="@+id/youtubeVideoFragmentNew" />
-        <action
-            android:id="@+id/toSettingsFragmentNew"
-            app:destination="@+id/settingFragmentNew" />
-        <action
-            android:id="@+id/toVideoPreviewFragment"
-            app:destination="@+id/videoPreviewFragment" />
-        <action
-            android:id="@+id/toPurchaseFragment"
-            app:destination="@+id/purchaseFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_examHomeFragment"
-            app:destination="@+id/examHomeFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_exerciseHomeFragment"
-            app:destination="@+id/exerciseHomeFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_customChallengeHomeFragment"
-            app:destination="@+id/customChallengeHomeFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_myProfileFragment"
-            app:destination="@+id/myProfileFragment" />
-    </fragment>
-
-    <fragment
         android:id="@+id/videoPreviewFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.purchase.video_play.previews.VideoPreviewFragment"/>
-    <fragment
-        android:id="@+id/abacusListFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.home_new.category.abacuslist_temp.AbacusListFragment">
-        <argument
-            android:name="setId"
-            app:argType="string" />
-    </fragment>
     <fragment
         android:id="@+id/myProfileFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.profile.MyProfileFragment">
@@ -350,6 +305,9 @@
             android:id="@+id/toAbacusDoPracticeFragment"
             app:destination="@+id/abacusDoPracticeFragment" />
         <action
+            android:id="@+id/toAbacusListFragmentNew"
+            app:destination="@+id/abacusListFragmentNew" />
+        <action
             android:id="@+id/toPurchaseFragment"
             app:destination="@+id/purchaseFragment" />
     </fragment>
@@ -362,6 +320,13 @@
         <action
             android:id="@+id/toPurchaseFragment"
             app:destination="@+id/purchaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/abacusListFragmentNew"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.abacus_practice.temp_abacus_list.AbacusListFragmentNew">
+        <argument
+            android:name="setId"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/settingFragmentNew"

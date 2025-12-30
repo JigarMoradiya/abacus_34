@@ -27,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
@@ -45,25 +46,26 @@ fun SetItem(
     onClick: () -> Unit,
     onLongClick: () -> Unit
 ) {
-    Box(
-        modifier = Modifier
-            .padding(4.dp)
-            .combinedClickable(
-                onClick = onClick,
-                onLongClick = onLongClick
-            )
-    ) {
+    Box(modifier = Modifier.padding(4.dp)) {
 
         // 🔹 CARD
         Card(
-            modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(8.dp),
             elevation = CardDefaults.cardElevation(0.dp),
             colors = CardDefaults.cardColors(
                 containerColor = setCardColor(set.answer_setting)
-            )
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(4.dp)
+                .clip(RoundedCornerShape(8.dp))
+                .combinedClickable(
+                    onClick = onClick,
+                    onLongClick = onLongClick
+                )
         ) {
-            Row(
+
+        Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.activity_padding8), vertical = dimensionResource(R.dimen.activity_padding2))
             ) {
@@ -91,7 +93,7 @@ fun SetItem(
         Row(
             modifier = Modifier
                 .align(Alignment.TopEnd)
-                .offset(x = 0.dp, y = (-2).dp), // 👈 key part
+                .offset(x = (-2).dp, y = (2).dp), // 👈 key part
             horizontalArrangement = Arrangement.spacedBy(2.dp)
         ) {
 

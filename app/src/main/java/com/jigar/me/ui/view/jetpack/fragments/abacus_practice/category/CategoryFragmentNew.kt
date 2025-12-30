@@ -37,6 +37,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
+import com.jigar.me.BuildConfig
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.components.CategoryItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.components.PageItem
@@ -130,7 +131,11 @@ class CategoryFragmentNew : Fragment() {
                                                     findNavController().navigate(CategoryFragmentNewDirections.toPurchaseFragment())
                                                 }
                                             },
-                                            onSetLongClick = {}
+                                            onSetLongClick = { set ->
+                                                if (BuildConfig.DEBUG){
+                                                    findNavController().navigate(CategoryFragmentNewDirections.toAbacusListFragmentNew(set.id))
+                                                }
+                                            }
                                         )
                                     }
                                 }
