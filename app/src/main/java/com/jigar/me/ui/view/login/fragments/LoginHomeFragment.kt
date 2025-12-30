@@ -131,7 +131,7 @@ class LoginHomeFragment : BaseFragment() {
                 mNavController?.navigate(R.id.toLoginFragment)
             }
             cardFAQs.onClick {
-                mNavController?.navigate(R.id.toFAQsFragment)
+                mNavController?.navigate(R.id.toFAQsFragmentNew)
             }
 
         }

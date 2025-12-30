@@ -112,7 +112,7 @@ class LoginFragment : BaseFragment() {
                 mNavController?.navigateUp()
             }
             cardFAQs.onClick {
-                mNavController?.navigate(R.id.toFAQsFragment)
+                mNavController?.navigate(R.id.toFAQsFragmentNew)
             }
             etEmail.doAfterTextChanged {
                 removeError(tilEmail)

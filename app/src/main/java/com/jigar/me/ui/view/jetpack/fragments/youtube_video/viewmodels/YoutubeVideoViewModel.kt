@@ -14,7 +14,7 @@ class YoutubeVideoViewModel @Inject constructor(
     prefs: AppPreferencesHelper,
 ) : StatefulViewModel<YoutubeVideoUiState>() {
 
-    override val TAG = "SettingViewModel"
+    override val TAG = "YoutubeVideoViewModel"
 
     override fun getInitialState() = YoutubeVideoUiState()
 

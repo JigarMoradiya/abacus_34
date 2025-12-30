@@ -64,8 +64,8 @@
             android:id="@+id/toSettingsFragmentNew"
             app:destination="@+id/settingFragmentNew" />
         <action
-            android:id="@+id/toFAQsFragment"
-            app:destination="@+id/faqsFragment" />
+            android:id="@+id/toFAQsFragmentNew"
+            app:destination="@+id/faqsFragmentNew" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
@@ -127,9 +127,6 @@
             android:id="@+id/toPurchaseFragment"
             app:destination="@+id/purchaseFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/faqsFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.faqs.FAQsFragment"/>
     <fragment
         android:id="@+id/purchaseFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.purchase.newui.PurchaseNewFragment"/>
@@ -334,4 +331,7 @@
     <fragment
         android:id="@+id/youtubeVideoFragmentNew"
         android:name="com.jigar.me.ui.view.jetpack.fragments.youtube_video.YoutubeVideoFragmentNew"/>
+    <fragment
+        android:id="@+id/faqsFragmentNew"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.faqs.FAQsFragmentNew"/>
 </navigation>

@@ -19,18 +19,18 @@
             android:id="@+id/toLoginFragment"
             app:destination="@+id/loginFragment" />
         <action
-            android:id="@+id/toFAQsFragment"
-            app:destination="@+id/faqsFragment" />
+            android:id="@+id/toFAQsFragmentNew"
+            app:destination="@+id/faqsFragmentNew" />
     </fragment>
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.jigar.me.ui.view.login.fragments.LoginFragment">
         <action
-            android:id="@+id/toFAQsFragment"
-            app:destination="@+id/faqsFragment" />
+            android:id="@+id/toFAQsFragmentNew"
+            app:destination="@+id/faqsFragmentNew" />
     </fragment>
     <fragment
-        android:id="@+id/faqsFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.faqs.FAQsFragment"/>
+        android:id="@+id/faqsFragmentNew"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.faqs.FAQsFragmentNew"/>
 </navigation>
