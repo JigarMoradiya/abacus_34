@@ -83,31 +83,7 @@ object AppConstants {
 
     annotation class FirebaseEvents {
         companion object {
-            var MaterialDownloaded = "abacus_material_download"
-
             var appInstallFrom = "app_install_from"
-            var InAppPurchase = "abacus_purchase"
-            var InAppPurchaseSKU = "abacus_sku"
-            var InAppPurchaseOrderId = "abacus_order_id"
-
-            var DailyExam = "abacus_daily_exam"
-            var DailyExamLevel = "exam_level"
-
-            var NumberPuzzleSequence = "number_puzzle_squence"
-
-            var deviceId = "deviceId"
-        }
-    }
-    annotation class Purchase {
-        companion object {
-            var Purchase_limit_free = 20
-            var Purchase_All = "Purchase_All"
-            var Purchase_Toddler_Single_digit_level1 = "Purchase_Toddler_Single_digit_level1"
-            var Purchase_Add_Sub_level2 = "Purchase_Add_Sub_level2"
-            var Purchase_Mul_Div_level3 = "Purchase_Mul_Div_level3"
-            var Purchase_Material_Maths = "Purchase_Material_Maths"
-            var Purchase_Material_Nursery = "Purchase_Material_Nursery"
-
         }
     }
 
@@ -286,7 +262,6 @@ object AppConstants {
             var ERROR_CODE_USER_NOT_VERIFIED = "USER_NOT_VERIFIED"
             var ERROR_CODE_OTHER_STUDENT_IS_ASSOCIATED_WITH_THIS_ORDER = "OTHER_STUDENT_IS_ASSOCIATED_WITH_THIS_ORDER"
             var ERROR_CODE_THIS_STUDENT_IS_ASSOCIATED_WITH_OTHER_ORDER = "THIS_STUDENT_IS_ASSOCIATED_WITH_OTHER_ORDER"
-            var PURCHASE_ERROR_CODE = "PURCHASE_ERROR_CODE"
         }
     }
 

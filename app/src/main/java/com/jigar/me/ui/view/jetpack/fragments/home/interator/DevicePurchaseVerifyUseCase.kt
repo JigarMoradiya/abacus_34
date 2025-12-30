@@ -1,6 +1,6 @@
 package com.jigar.me.ui.view.jetpack.fragments.home.interator
 
-import com.jigar.me.data.model.data.FetchAbacusDataRequest
+import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
 import com.jigar.me.ui.view.jetpack.core.di.Dispatcher
 import com.jigar.me.ui.view.jetpack.core.di.DispatcherKey
 import com.jigar.me.ui.view.jetpack.core.domain.CallbackParameterizedUseCase
@@ -11,22 +11,22 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class GetAbacusDataUseCase @Inject constructor(
+class DevicePurchaseVerifyUseCase @Inject constructor(
     private val repository: AbacusRepository,
     @Dispatcher(DispatcherKey.IO) private val dispatcher: CoroutineDispatcher
-) : CallbackParameterizedUseCase<FetchAbacusDataRequest, Unit>() {
+) : CallbackParameterizedUseCase<PurchasedPlanCheckRequest, String>() {
 
     override fun buildFlow(
-        params: FetchAbacusDataRequest,
+        params: PurchasedPlanCheckRequest,
         onStart: (() -> Unit)?,
-        onEachEmit: ((Unit) -> Unit)?,
+        onEachEmit: ((String) -> Unit)?,
         onCompletion: (() -> Unit)?,
         onError: ((Throwable) -> Unit)?
-    ): Flow<Unit> = flow {
+    ): Flow<String> = flow {
         try {
             onStart?.invoke()
 
-            repository.getAbacusData(params).collect{
+            repository.devicePurchaseVerify(params).collect{
                 onEachEmit?.invoke(it) // notify UI
                 emit(it)
             }

@@ -142,59 +142,37 @@ object CommonUtils {
             formattingInput.substring(0, dotPosition)
         } else formattingInput
     }
-    fun blinkView(view: View, repeatCount : Int? = null){
-        view.show()
-        val animation: Animation = AlphaAnimation(1F, AppConstants.BLINK_ICON_ANIMATION_ALPHA) //to change visibility from visible to invisible
-        animation.duration = AppConstants.BLINK_ICON_ANIMATION_DURATION //duration for each animation cycle
-        animation.interpolator = LinearInterpolator()
-        if (repeatCount == null){
-            animation.repeatCount = Animation.INFINITE //repeating indefinitely
-        }else{
-            animation.repeatCount = repeatCount
-        }
-        animation.repeatMode = Animation.REVERSE //animation will start from end point once ended.
-        view.startAnimation(animation) //to start animation
-    }
 
-
-    fun checkLevelIsPurchase(
-        purchasedSKU: List<InAppSkuDetails>,
-        data: Category,
-        prefManager: AppPreferencesHelper
-    ): Boolean {
+    fun checkLevelIsPurchase(purchasedSKU: List<InAppSkuDetails>, data: Category, prefManager: AppPreferencesHelper): Boolean {
         val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
         var isPurchased = false
         if (loginData?.email.equals("abacus@yopmail.com") || prefManager.isUserInFreeTrial()){
             isPurchased = true
         }else{
-            if (data.name.contains("free",true)){
-                isPurchased = true
-            }else{
-                purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
-                        || it.sku == PRODUCT_ID_All_lifetime_old
-                        || it.sku.contains(PRODUCT_ID_1Year)
-                        || it.sku.contains(PRODUCT_ID_Week)
-                        || it.sku.contains(PRODUCT_ID_1Month)
-                        || it.sku.contains(PRODUCT_ID_3Month)
-                        || (it.sku.contains(data.name)) }.also {
-                    isPurchased = it != null
-                }
-                if (!isPurchased){
-                    if (prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"").isNotEmpty()) {
-                        val planListData : List<PlanAssignFromAdminData> = Gson().fromJson(
-                            prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
-                            object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
-                        )
-                        planListData.find { it.google_order_id == null &&
-                                (it.google_plan_id?.contains(data.name) == true
-                                || it.google_plan_id?.contains(PRODUCT_ID_1Year) == true
-                                || it.google_plan_id?.contains(PRODUCT_ID_Week) == true
-                                || it.google_plan_id?.contains(PRODUCT_ID_1Month) == true
-                                || it.google_plan_id?.contains(PRODUCT_ID_3Month) == true
-                                        )
-                        }.also {
-                            isPurchased = it != null
-                        }
+            purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
+                    || it.sku == PRODUCT_ID_All_lifetime_old
+                    || it.sku.contains(PRODUCT_ID_1Year)
+                    || it.sku.contains(PRODUCT_ID_Week)
+                    || it.sku.contains(PRODUCT_ID_1Month)
+                    || it.sku.contains(PRODUCT_ID_3Month)
+                    || (it.sku.contains(data.name)) }.also {
+                isPurchased = it != null
+            }
+            if (!isPurchased){
+                if (prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"").isNotEmpty()) {
+                    val planListData : List<PlanAssignFromAdminData> = Gson().fromJson(
+                        prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
+                        object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
+                    )
+                    planListData.find { it.google_order_id == null &&
+                            (it.google_plan_id?.contains(data.name) == true
+                                    || it.google_plan_id?.contains(PRODUCT_ID_1Year) == true
+                                    || it.google_plan_id?.contains(PRODUCT_ID_Week) == true
+                                    || it.google_plan_id?.contains(PRODUCT_ID_1Month) == true
+                                    || it.google_plan_id?.contains(PRODUCT_ID_3Month) == true
+                                    )
+                    }.also {
+                        isPurchased = it != null
                     }
                 }
             }
@@ -243,35 +221,6 @@ object CommonUtils {
             }
         }
 
-        return isPurchased
-    }
-    fun checkPurchaseForAllLevel(prefManager: AppPreferencesHelper,purchasedSKU: List<InAppSkuDetails>): Boolean {
-        var isPurchased = false
-        purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
-                || it.sku == PRODUCT_ID_All_lifetime_old
-                || it.sku.contains(PRODUCT_ID_1Year)
-                || it.sku.contains(PRODUCT_ID_Week)
-                || it.sku.contains(PRODUCT_ID_1Month)
-                || it.sku.contains(PRODUCT_ID_3Month)
-        }.also {
-            isPurchased = it != null
-        }
-        if (!isPurchased){
-            if (prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"").isNotEmpty()) {
-                val planListData : List<PlanAssignFromAdminData> = Gson().fromJson(
-                    prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
-                    object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
-                )
-                planListData.find { it.google_order_id == null && (
-                        it.google_plan_id?.contains(PRODUCT_ID_Week) == true ||
-                        it.google_plan_id?.contains(PRODUCT_ID_1Year) == true ||
-                        it.google_plan_id?.contains(PRODUCT_ID_1Month) == true ||
-                        it.google_plan_id?.contains(PRODUCT_ID_3Month) == true
-                        ) }.also {
-                    isPurchased = it != null
-                }
-            }
-        }
         return isPurchased
     }
 }

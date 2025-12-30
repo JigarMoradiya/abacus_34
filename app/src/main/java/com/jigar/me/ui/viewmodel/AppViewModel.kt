@@ -48,7 +48,7 @@ class AppViewModel @Inject constructor(private val dbRepository: DBRepository,pr
     suspend fun insertLevel(data : List<Level>) = dbRepository.insertLevel(data)
     suspend fun insertAllData(dataLevel: ArrayList<Level>, dataCategory: ArrayList<Category>, dataPages: ArrayList<Pages>, dataSet: ArrayList<com.jigar.me.data.model.dbtable.abacus_all_data.Set>, dataAbacus: ArrayList<Abacus>)  = dbRepository.insertAllData(dataLevel,dataCategory,dataPages,dataSet,dataAbacus)
     fun getLevel() = dbRepository.getLevel()
-    fun getLevel(list : List<String>) = dbRepository.getLevel(list)
+    suspend fun getLevel(list : List<String>) = dbRepository.getLevel(list)
     suspend fun getCategory(id: String) = dbRepository.getCategory(id)
     suspend fun getPages(id: String, isGetAllData: Boolean)= dbRepository.getPages(id,isGetAllData)
     suspend fun getSetDetail(setId : String) = dbRepository.getSetDetail(setId)

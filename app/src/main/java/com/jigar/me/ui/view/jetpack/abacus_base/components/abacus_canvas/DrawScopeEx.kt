@@ -48,8 +48,8 @@ fun DrawScope.drawAbacusColumns(
     rodMovementByRod: Map<Int, RodMovement>,
     showDirectionHint: Boolean,
     beadPolygonGray: ImageBitmap,
-    faceOpen: Map<Int, ImageBitmap>,
-    faceClose: Map<Int, ImageBitmap>,
+//    faceOpen: Map<Int, ImageBitmap>,
+//    faceClose: Map<Int, ImageBitmap>,
     arrowUPBitmap : ImageBitmap,
     arrowDownBitmap : ImageBitmap,
 ) {
@@ -140,15 +140,16 @@ fun DrawScope.drawAbacusColumns(
                 // ---------- Bead image ----------
                 if (columnState[idx]) {
                     val beadIsActive = arr[idx]
+                    val imageToDraw: ImageBitmap = beadPolygonGray
 
-                    val imageToDraw: ImageBitmap =
-                        if (isPolygonTheme) {
-                            beadPolygonGray
-                        } else if (beadIsActive) {
-                            faceOpen[idx] ?: faceClose[0]!!
-                        } else {
-                            faceClose[idx] ?: faceClose[0]!!
-                        }
+//                    val imageToDraw: ImageBitmap =
+//                        if (isPolygonTheme) {
+//                            beadPolygonGray
+//                        } else if (beadIsActive) {
+//                            faceOpen[idx] ?: faceClose[0]!!
+//                        } else {
+//                            faceClose[idx] ?: faceClose[0]!!
+//                        }
 
                     val tintColor =
                         if (!isPolygonTheme) Color.White

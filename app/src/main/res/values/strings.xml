@@ -46,14 +46,14 @@
     <string name="interstitial_ad_unit_id_exercise">ca-app-pub-5759468493922763/3939794135</string>
 
     <integer-array name="bead_top">
-        <item>@drawable/egg0</item>
+        <item>@drawable/poligon_gray</item>
 
     </integer-array>
     <integer-array name="big_bottom">
-        <item>@drawable/egg1</item>
-        <item>@drawable/egg4</item>
-        <item>@drawable/egg2</item>
-        <item>@drawable/egg3</item>
+        <item>@drawable/poligon_gray</item>
+        <item>@drawable/poligon_gray</item>
+        <item>@drawable/poligon_gray</item>
+        <item>@drawable/poligon_gray</item>
     </integer-array>
 
     <!--Error messages-->
@@ -339,7 +339,7 @@
     <string name="free_abacus_theme">Abacus Themes</string>
     <string name="paid_abacus_themes">Advance Abacus Themes</string>
     <string name="preview_of_theme">Preview of Theme</string>
-    <string name="welcome_to_abacus_application">Welcome to the Abacus Application</string>
+    <string name="welcome_to_abacus_application">Welcome to the Vedaavi Abacus</string>
     <string name="please_choose_your_anonymous_name_and_avatar">Please choose child\'s anonymous\nname and avatar</string>
     <string name="choose_child_avatar">Choose child\'s avatar</string>
     <string name="please_select_avatar">Please select avatar</string>

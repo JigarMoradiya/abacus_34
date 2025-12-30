@@ -608,21 +608,7 @@ class AbacusMasterView(context: Context, attrs: AttributeSet?) :
             imgs.recycle()
         } else {
             beadDrawables = arrayOfNulls(1)
-            if (theme.equals(AppConstants.Settings.theam_face, ignoreCase = true)) {
-                beadDrawables[0] = ContextCompat.getDrawable(context, R.drawable.star_red_close)
-            } else if (theme.contains(AppConstants.Settings.theam_Poligon_default, ignoreCase = true)) {
-                beadDrawables[0] = ContextCompat.getDrawable(context, R.drawable.poligon_gray)
-            } else if (theme.equals(AppConstants.Settings.theam_face, ignoreCase = true)) {
-                beadDrawables[0] = ContextCompat.getDrawable(context, R.drawable.face_red_close)
-            } else if (theme.equals(AppConstants.Settings.theam_shape, ignoreCase = true)) {
-                beadDrawables[0] = ContextCompat.getDrawable(context, R.drawable.shape_square_gray)
-            } else if (theme.equals(AppConstants.Settings.theam_Egg, ignoreCase = true)) {
-                beadDrawables[0] = ContextCompat.getDrawable(context, R.drawable.egg0)
-            } else if (theme.equals(AppConstants.Settings.theam_diamond, ignoreCase = true)) {
-                beadDrawables[0] = ContextCompat.getDrawable(context, R.drawable.diamond_gray)
-            } else if (theme.equals(AppConstants.Settings.theam_garnet, ignoreCase = true)) {
-                beadDrawables[0] = ContextCompat.getDrawable(context, R.drawable.garnet_gray)
-            }
+            beadDrawables[0] = ContextCompat.getDrawable(context, R.drawable.poligon_gray)
         }
         array.recycle()
 

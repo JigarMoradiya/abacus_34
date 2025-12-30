@@ -7,6 +7,7 @@ import com.jigar.me.data.api.connections.SafeApiCall
 import com.jigar.me.data.local.db.abacus_all_data.AbacusAllDataDB
 import com.jigar.me.data.model.data.AbacusAllData
 import com.jigar.me.data.model.data.FetchAbacusDataRequest
+import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
 import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.data.model.dbtable.abacus_all_data.Level
@@ -28,6 +29,58 @@ class DefaultAbacusRepository @Inject constructor(
     ) : AbacusRepository, SafeApiCall {
 
     // network directory
+    override fun changePlan(params: PurchasedPlanCheckRequest): Flow<Unit> = emitFlow {
+        val result = changePlanApi(params)
+        when (result) {
+            is Resource.Success -> {
+                val response = result.value
+                if (response.status == AppConstants.APIStatus.SUCCESS){
+                    return@emitFlow
+                } else {
+                    val errorMsg = response.error?.message
+                        ?: response.message
+                        ?: "Unknown server response"
+                    throw Exception(errorMsg)
+                }
+            }
+
+            is Resource.Failure -> throw when {
+                result.isNetworkError -> IOException("Network error occurred")
+                else -> Exception("API error: ${result.errorBody ?: "Unknown error"}, code: ${result.errorCode}")
+            }
+
+            else -> throw Exception("Unexpected response type")
+        }
+    }
+    private suspend fun changePlanApi(request: PurchasedPlanCheckRequest) = safeApiCall {
+        remote.changePlan(request)
+    }
+    override fun devicePurchaseVerify(params: PurchasedPlanCheckRequest): Flow<String> = emitFlow {
+        val result = devicePurchaseVerifyApi(params)
+        when (result) {
+            is Resource.Success -> {
+                val response = result.value
+                if (response.status == AppConstants.APIStatus.SUCCESS){
+                    return@emitFlow AppConstants.APIStatus.SUCCESS
+                } else {
+                    val errorMsg = response.error?.message
+                        ?: response.message
+                        ?: "Unknown server response"
+                    throw Exception(errorMsg)
+                }
+            }
+
+            is Resource.Failure -> throw when {
+                result.isNetworkError -> IOException("Network error occurred")
+                else -> Exception("API error: ${result.errorBody ?: "Unknown error"}, code: ${result.errorCode}")
+            }
+
+            else -> throw Exception("Unexpected response type")
+        }
+    }
+    private suspend fun devicePurchaseVerifyApi(request: PurchasedPlanCheckRequest) = safeApiCall {
+        remote.handleExistingPurchase(request)
+    }
     override fun getAbacusData(params: FetchAbacusDataRequest): Flow<Unit> = emitFlow {
         val result = getAbacusDataApi(params)
         when (result) {

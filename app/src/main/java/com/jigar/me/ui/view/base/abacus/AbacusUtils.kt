@@ -13,8 +13,7 @@ object AbacusUtils {
     fun setAbacusTempThemeExam(context: Context,prefManager : AppPreferencesHelper,abacusType : AbacusBeadType) : String{
         var theam : String
         with(prefManager){
-            val isPurchased = (getCustomParam(AppConstants.Purchase.Purchase_All,"") == "Y")
-            setCustomParam(AppConstants.Settings.TheamTempView,DataProvider.getAllAbacusThemeTypeList(context,isPurchased,abacusType,true).first().type)
+            setCustomParam(AppConstants.Settings.TheamTempView,DataProvider.getAllAbacusThemeTypeList(context,abacusType).first().type)
             theam = getCustomParam(AppConstants.Settings.TheamTempView,AppConstants.Settings.theam_Default)
         }
         return theam

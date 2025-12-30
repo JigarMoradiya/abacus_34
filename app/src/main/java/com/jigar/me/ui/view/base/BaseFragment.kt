@@ -50,32 +50,6 @@ abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSetting
         navController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
 
-    fun setCurrentSubscription(data: ArrayList<GooglePurchasedPlanRequest>) {
-        // TODO
-        with(prefManager) {
-            setCustomParam(AppConstants.Purchase.Purchase_All, "N")
-
-            data.map {
-                checkPlanAndUpdate(it.google_plan_id)
-            }
-//            setCustomParam(AppConstants.Purchase.Purchase_All, "N")
-
-        }
-    }
-
-    fun checkPlanAndUpdate(google_plan_id: String) {
-        with(prefManager) {
-            when (google_plan_id) {
-                BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime, BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_old -> {
-                    setCustomParam(AppConstants.Purchase.Purchase_All, "Y")
-                }
-                BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month3 -> {
-                    setCustomParam(AppConstants.Purchase.Purchase_All, "Y")
-                }
-            }
-        }
-    }
-
     fun showToast(id : Int){
         requireContext().toastS(getString(id))
     }

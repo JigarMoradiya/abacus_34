@@ -7,10 +7,8 @@ import android.view.Gravity
 import androidx.appcompat.app.AlertDialog
 import androidx.core.graphics.drawable.toDrawable
 import com.jigar.me.R
-import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.databinding.DialogFreeTrialLeftBinding
-import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.Constants
+import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.FreeTrialParam
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.show
@@ -24,13 +22,13 @@ object FreeTrialLeftDialog {
     }
 
     fun showPopup(
-        activity: Activity, prefManager : AppPreferencesHelper, listener: DialogFreeTrialInterface
+        activity: Activity, freeTrialParam : FreeTrialParam, listener: DialogFreeTrialInterface
     ) {
         val alertLayout = DialogFreeTrialLeftBinding.inflate(activity.layoutInflater,null,false)
         val alertBuilder = AlertDialog.Builder(activity)
-        val free_trial_remaining_days = prefManager.getCustomParamInt(Constants.free_trial_remaining_days,0)
-        val discountPer = prefManager.getCustomParamInt(AppConstants.RemoteConfig.discountPer,0)
-        val discountPerLifetime = prefManager.getCustomParamInt(AppConstants.RemoteConfig.discountPerLifeTime,0)
+        val free_trial_remaining_days = freeTrialParam.remainingDays
+        val discountPer = freeTrialParam.discountPer
+        val discountPerLifetime = freeTrialParam.discountPerLifeTime
 
         with(alertLayout){
             alertBuilder.setView(root)

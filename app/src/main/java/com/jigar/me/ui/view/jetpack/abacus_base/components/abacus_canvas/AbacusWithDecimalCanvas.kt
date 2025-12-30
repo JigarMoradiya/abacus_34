@@ -170,27 +170,27 @@ fun AbacusWithDecimalCanvas(
             ImageBitmap.imageResource(context.resources, R.drawable.poligon_gray_light)
         }
 
-        // Preload face-open beads
-        val faceOpen = remember {
-            mapOf(
-                1 to ImageBitmap.imageResource(context.resources, R.drawable.face_red_open),
-                2 to ImageBitmap.imageResource(context.resources, R.drawable.face_pink_open),
-                3 to ImageBitmap.imageResource(context.resources, R.drawable.face_orange_open),
-                4 to ImageBitmap.imageResource(context.resources, R.drawable.face_blue_open),
-                5 to ImageBitmap.imageResource(context.resources, R.drawable.face_green_open)
-            )
-        }
-
-        // Preload face-close beads
-        val faceClose = remember {
-            mapOf(
-                0 to ImageBitmap.imageResource(context.resources, R.drawable.face_red_close),
-                3 to ImageBitmap.imageResource(context.resources, R.drawable.face_pink_close),
-                4 to ImageBitmap.imageResource(context.resources, R.drawable.face_orange_close),
-                5 to ImageBitmap.imageResource(context.resources, R.drawable.face_blue_close),
-                6 to ImageBitmap.imageResource(context.resources, R.drawable.face_green_close)
-            )
-        }
+//        // Preload face-open beads
+//        val faceOpen = remember {
+//            mapOf(
+//                1 to ImageBitmap.imageResource(context.resources, R.drawable.face_red_open),
+//                2 to ImageBitmap.imageResource(context.resources, R.drawable.face_pink_open),
+//                3 to ImageBitmap.imageResource(context.resources, R.drawable.face_orange_open),
+//                4 to ImageBitmap.imageResource(context.resources, R.drawable.face_blue_open),
+//                5 to ImageBitmap.imageResource(context.resources, R.drawable.face_green_open)
+//            )
+//        }
+//
+//        // Preload face-close beads
+//        val faceClose = remember {
+//            mapOf(
+//                0 to ImageBitmap.imageResource(context.resources, R.drawable.face_red_close),
+//                3 to ImageBitmap.imageResource(context.resources, R.drawable.face_pink_close),
+//                4 to ImageBitmap.imageResource(context.resources, R.drawable.face_orange_close),
+//                5 to ImageBitmap.imageResource(context.resources, R.drawable.face_blue_close),
+//                6 to ImageBitmap.imageResource(context.resources, R.drawable.face_green_close)
+//            )
+//        }
 
         // --- Inner rods & beads on Canvas ---
         if (!showHighlighter || currentSpot != 0) { // hide all things when frame highlighter show
@@ -255,8 +255,8 @@ fun AbacusWithDecimalCanvas(
                     rodMovementByRod = rodMovementByRod,
                     showDirectionHint = showDirectionHint,
                     beadPolygonGray = beadPolygonGray,
-                    faceOpen = faceOpen,
-                    faceClose = faceClose,
+//                    faceOpen = faceOpen,
+//                    faceClose = faceClose,
                     arrowUPBitmap = arrowUp,
                     arrowDownBitmap = arrowDown
                 )
