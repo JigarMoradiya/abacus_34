@@ -17,20 +17,7 @@ open class BaseAbacusViewModel(
     private val prefs: AppPreferencesHelper
 ) : ViewModel() {
 
-    // ---------- TTS ----------
-    fun speakOut(text: String,id:String? = null) {
-        ttsManager.speak(text,id)
-    }
-
-    fun stopSpeech() {
-        ttsManager.stop()
-    }
-
-    fun updateSpeechSettings() {
-        ttsManager.applySettings()
-    }
-
-        // Shared abacus core state
+    // Shared abacus core state
     val abacusCalc: AbacusCalculations = AbacusCalculations(numberOfColumns = numberOfColumns)
 
     // get selected theme

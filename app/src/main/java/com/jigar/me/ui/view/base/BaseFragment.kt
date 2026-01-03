@@ -1,39 +1,27 @@
 package com.jigar.me.ui.view.base
 
 import android.os.Bundle
-import android.speech.tts.TextToSpeech
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import com.google.gson.Gson
 import com.jigar.me.R
-import com.jigar.me.data.model.data.GooglePurchasedPlanRequest
 import com.jigar.me.data.pref.AppPreferencesHelper
-import com.jigar.me.ui.view.base.inapp.BillingRepository
-import com.jigar.me.ui.view.confirm_alerts.bottomsheets.VoiceControllerSetting
-import com.jigar.me.ui.view.confirm_alerts.bottomsheets.VoiceControllerSettingInterface
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.extensions.toastS
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import java.util.Locale
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSettingInterface {
+abstract class BaseFragment : Fragment(), CoroutineScope {
     lateinit var prefManager : AppPreferencesHelper
 
     private lateinit var job: Job
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Default
 
-    //   TTS
-    private var textToSpeech: TextToSpeech? = null
-    private var speak = false
-    var voiceController: VoiceControllerSetting? = null
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         prefManager = AppPreferencesHelper(requireContext(), AppConstants.PREF_NAME)
@@ -43,7 +31,6 @@ abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSetting
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        txtToSpeechInit()
         navigationGraph()
     }
     private fun navigationGraph() {
@@ -86,55 +73,12 @@ abstract class BaseFragment : Fragment(), CoroutineScope, VoiceControllerSetting
         progressDialog?.window?.setBackgroundDrawableResource(R.color.transparent)
     }
 
-    // TODO Speech
-    open fun txtToSpeechInit() {
-        if (isAdded){
-            textToSpeech = TextToSpeech(requireActivity()) { status ->
-                if (status == TextToSpeech.SUCCESS) {
-                    speak = true
-                    textToSpeech?.let {
-                        CommonUtils.applySpeechSettings(prefManager, it)
-                        if (isAdded){
-                            voiceController = VoiceControllerSetting(requireActivity(),  prefManager, it,this)
-                        }
-                    }
-
-                }
-            }
-        }
-    }
-
-
-    open fun speakOut(txt: String) {
-        if (speak) {
-            requireActivity().runOnUiThread {
-                if (textToSpeech != null){
-                    textToSpeech?.speak(txt, TextToSpeech.QUEUE_FLUSH, null, null)
-                }else{
-                    txtToSpeechInit()
-                }
-            }
-        }
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         job.cancel()
-        if (textToSpeech != null) {
-            textToSpeech?.stop()
-            textToSpeech?.shutdown()
-        }
+
     }
 
-    override fun updateVoiceSettings(pitch: Float, speed: Float, voice: String, language: Locale) {
-        // Update TTS
-        prefManager.setCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_VOICE, voice)
-        prefManager.setCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_LANGUAGE, Gson().toJson(language))
-        prefManager.setCustomParamFloat(AppPreferencesHelper.KEY_DEFAULT_TTS_PITCH,pitch)
-        prefManager.setCustomParamFloat(AppPreferencesHelper.KEY_DEFAULT_TTS_SPEECH,speed)
-        // Dismiss the Dialog.
-        voiceController?.dismiss()
-    }
 
     // api failure
     fun onFailure(error: String?) {

@@ -47,33 +47,25 @@ class SettingViewModel @Inject constructor(
 
         val languages = tts.availableLanguages?.toList()?.sortedBy { it.displayName } ?: emptyList()
 
-        val savedLangTag = prefs.getCustomParam(
-            AppPreferencesHelper.KEY_DEFAULT_TTS_LANGUAGE,
-            AppPreferencesHelper.DEFAULT_TTS_LANGUAGE_VALUE
-        )
+        val savedLangTag = prefs.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_LANGUAGE, AppPreferencesHelper.DEFAULT_TTS_LANGUAGE_VALUE)
 
         val selectedLang = languages.firstOrNull {
             it.toLanguageTag().equals(savedLangTag, true)
         } ?: languages.firstOrNull()
 
-        val voices = tts.voices
-            ?.filter { it.locale == selectedLang }
-            ?.toList()
-            ?: emptyList()
-
-        val savedVoiceName = prefs.getCustomParam(
-            AppPreferencesHelper.KEY_DEFAULT_TTS_VOICE,
-            AppPreferencesHelper.DEFAULT_TTS_VOICE_VALUE
-        )
-
-        val selectedVoice = voices.firstOrNull { it.name == savedVoiceName } ?: voices.firstOrNull()
+//        val voices = tts.voices
+//            ?.filter { it.locale == selectedLang }
+//            ?.toList()
+//            ?: emptyList()
+//        val savedVoiceName = prefs.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_VOICE, AppPreferencesHelper.DEFAULT_TTS_VOICE_VALUE)
+//        val selectedVoice = voices.firstOrNull { it.name == savedVoiceName } ?: voices.firstOrNull()
 
         updateState_ {
             copy(
                 languages = languages,
-                voices = voices,
                 selectedLanguage = selectedLang,
-                selectedVoice = selectedVoice,
+//                voices = voices,
+//                selectedVoice = selectedVoice,
                 pitch = (prefs.getDefaultTTSPitch()).toInt(),
                 speed = (prefs.getDefaultTTSSpeed()).toInt()
             )
@@ -81,26 +73,26 @@ class SettingViewModel @Inject constructor(
     }
 
     fun onLanguageSelected(tts: TextToSpeech, locale: Locale) {
-        val voices = tts.voices
-            ?.filter { it.locale == locale }
-            ?.toList()
-            ?: emptyList()
+//        val voices = tts.voices
+//            ?.filter { it.locale == locale }
+//            ?.toList()
+//            ?: emptyList()
 
         updateState_ {
             copy(
                 selectedLanguage = locale,
-                voices = voices,
-                selectedVoice = voices.firstOrNull()
+//                voices = voices,
+//                selectedVoice = voices.firstOrNull()
             )
         }
     }
 
     fun onVoiceSelected(voice: Voice) {
-        updateState_ {
-            copy(
-                selectedVoice = voice
-            )
-        }
+//        updateState_ {
+//            copy(
+//                selectedVoice = voice
+//            )
+//        }
     }
 
     fun testVoice(tts: TextToSpeech) {
@@ -111,7 +103,7 @@ class SettingViewModel @Inject constructor(
         ) {
             tts.language = Locale.forLanguageTag(AppPreferencesHelper.DEFAULT_TTS_LANGUAGE_VALUE)
         }
-        tts.voice = state.selectedVoice
+//        tts.voice = state.selectedVoice
         tts.setPitch(state.pitch / 10f)
         tts.setSpeechRate(state.speed / 10f)
         tts.speak("Welcome to the world of Abacus.", TextToSpeech.QUEUE_FLUSH, null, null)
@@ -120,10 +112,10 @@ class SettingViewModel @Inject constructor(
     fun saveVoiceSettings() {
         val state = state()
         prefs.setCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_LANGUAGE, state.selectedLanguage?.toLanguageTag() ?: "")
-        prefs.setCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_VOICE, state.selectedVoice?.name ?: "")
+//        prefs.setCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_VOICE, state.selectedVoice?.name ?: "")
         prefs.setCustomParamFloat(AppPreferencesHelper.KEY_DEFAULT_TTS_PITCH, state.pitch.toFloat())
         prefs.setCustomParamFloat(AppPreferencesHelper.KEY_DEFAULT_TTS_SPEECH, state.speed.toFloat())
-        updateSpeechSettings()
+        ttsManager.applySettings()
     }
 
     /* -------------------------

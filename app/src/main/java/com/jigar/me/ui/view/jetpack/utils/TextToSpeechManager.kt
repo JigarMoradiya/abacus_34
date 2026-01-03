@@ -23,8 +23,6 @@ class TextToSpeechManager @Inject constructor(
     private val utteranceCallbacks =
         mutableMapOf<String, (String?) -> Unit>()
 
-
-
     init {
         tts = TextToSpeech(context) { status ->
             if (status == TextToSpeech.SUCCESS) {
@@ -38,19 +36,15 @@ class TextToSpeechManager @Inject constructor(
             }
         }
     }
-
     private fun setupListener() {
         tts?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
-
             override fun onStart(utteranceId: String?) = Unit
-
             override fun onDone(utteranceId: String?) {
                 utteranceId?.let { id ->
                     utteranceCallbacks[id]?.invoke(id)
                     utteranceCallbacks.remove(id)
                 }
             }
-
             override fun onError(utteranceId: String?) = Unit
         })
     }
@@ -72,10 +66,6 @@ class TextToSpeechManager @Inject constructor(
         tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId)
     }
 
-
-    fun stop() {
-        tts?.stop()
-    }
 
     fun applySettings() {
         val currentLanguageJson = prefs.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_LANGUAGE, "")
@@ -100,14 +90,10 @@ class TextToSpeechManager @Inject constructor(
         }
 
         // set voice
-        val requestedVoiceName = prefs.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_VOICE, AppPreferencesHelper.DEFAULT_TTS_VOICE_VALUE)
-        val matchingVoice = tts?.voices?.firstOrNull { it.name == requestedVoiceName }
-
-        if (matchingVoice != null) {
-            tts?.voice = matchingVoice
-        } else {
-            Log.w("TTS", "Requested voice not found, using default")
-        }
+//        val requestedVoiceName = prefs.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_VOICE, AppPreferencesHelper.DEFAULT_TTS_VOICE_VALUE)
+//        tts?.voices
+//            ?.firstOrNull { it.name == requestedVoiceName }
+//            ?.let { tts?.voice = it }
 
         tts?.setSpeechRate(speed/10f)
         tts?.setPitch(pitch/10f)

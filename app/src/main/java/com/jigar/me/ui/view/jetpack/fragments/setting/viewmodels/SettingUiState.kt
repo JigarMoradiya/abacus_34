@@ -18,9 +18,9 @@ data class SettingUiState(
 
     // Voice setting
     val languages: List<Locale> = emptyList(),
-    val voices: List<Voice> = emptyList(),
+//    val voices: List<Voice> = emptyList(),
     val selectedLanguage: Locale? = null,
-    val selectedVoice: Voice? = null,
+//    val selectedVoice: Voice? = null,
     val pitch: Int = 10,   // 0–20 (same as XML)
     val speed: Int = 9     // 0–20
 )

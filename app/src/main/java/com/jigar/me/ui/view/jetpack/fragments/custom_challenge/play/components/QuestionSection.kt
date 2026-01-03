@@ -63,7 +63,7 @@ fun QuestionSection(
                 textAlign = TextAlign.Center,
                 fontFamily = FontFamily(Font(R.font.font_extra_bold)),
                 fontSize = if (showListenImage) dimensionResource(R.dimen.textSizeCCMNumber).value.sp else dimensionResource(R.dimen.textSizeCCMNumber).value.sp * 2,
-                color = colorResource(R.color.colorAccent),
+                color = Color.Black,
                 style = MaterialTheme.typography.headlineLarge.copy(
                     shadow = Shadow(
                         color = Color.Black,
@@ -84,7 +84,7 @@ fun QuestionSection(
                 textAlign = TextAlign.Center,
                 fontSize = dimensionResource(R.dimen.textSizeCCMWord).value.sp,
                 fontFamily = FontFamily(Font(R.font.font_bold)),
-                color = Color.Black
+                color = Color.DarkGray
             )
         }
     }

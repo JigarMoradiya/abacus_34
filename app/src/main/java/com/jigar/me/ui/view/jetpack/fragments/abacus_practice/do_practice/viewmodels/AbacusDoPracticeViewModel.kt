@@ -222,11 +222,11 @@ class AbacusDoPracticeViewModel @Inject constructor(
                 when (currentAbacusType) {
                     AppConstants.extras_Comman.AbacusTypeNumber -> {
                         val questionWord = context.convertNumberToWords(currentAbacus.question.toInt())
-                        speakOut(questionWord)
+                        ttsManager.speak(questionWord)
                     }
                     AppConstants.extras_Comman.AbacusTypeAdditionSubtraction -> {
                         val questionWord = context.convertNumberToWords(currentAbacus.operationStepsStringsArray[currentIndexOfOperation].toInt())
-                        speakOut(questionWord)
+                        ttsManager.speak(questionWord)
                     }
                     AppConstants.extras_Comman.AbacusTypeMultiplication -> {
                         val num1Int = currentAbacus.num1.joinToString("").toIntOrNull() ?: 0
@@ -234,13 +234,13 @@ class AbacusDoPracticeViewModel @Inject constructor(
                         val num1Str = context.convertNumberToWords(num1Int)
                         val num2Str = context.convertNumberToWords(num2Int)
                         val questionWord = String.format(context.getString(R.string.speak_multiply_by),num1Str,num2Str)
-                        speakOut(questionWord)
+                        ttsManager.speak(questionWord)
                     }
                     AppConstants.extras_Comman.AbacusTypeDivision -> {
                         val dividend = context.convertNumberToWords(currentAbacus.dividend)
                         val divisor = context.convertNumberToWords(currentAbacus.divisor)
                         val questionWord = String.format(context.getString(R.string.speak_divide_by),dividend,divisor)
-                        speakOut(questionWord)
+                        ttsManager.speak(questionWord)
                     }
                 }
             }

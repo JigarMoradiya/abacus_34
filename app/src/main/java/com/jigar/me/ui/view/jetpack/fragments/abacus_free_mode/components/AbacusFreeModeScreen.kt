@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.components
 
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -45,14 +46,6 @@ fun AbacusFreeModeScreen(
 ) {
 
     var showFooterPopup by remember { mutableStateOf(false) }
-
-    // -------- INIT TARGET --------
-    if (!viewModel.isFreeModeOn){
-        LaunchedEffect(Unit) {
-            viewModel.numberToMatch = viewModel.generateNextTarget(null)
-            viewModel.refreshBeads(viewModel.numberToMatch)
-        }
-    }
 
     // HANDLE ABACUS MOVEMENT
     LaunchedEffect(viewModel.abacusCalc.stateVersion) {
@@ -102,6 +95,7 @@ fun AbacusFreeModeScreen(
                     viewModel.generateNextTarget(prev)
                 },
                 onUpdateRange = { low, high ->
+                    viewModel.abacusCalc.resetAbacusData()
                     viewModel.updateRange(low, high)
                 },
                 dismiss = { showFooterPopup = false }

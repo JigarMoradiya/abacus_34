@@ -67,21 +67,6 @@ object CommonUtils {
         textInputLayout.error = null
         textInputLayout.isErrorEnabled = false
     }
-    fun applySpeechSettings(prefManager : AppPreferencesHelper,tts: TextToSpeech){
-        // Update the Setting to latest.
-        val currentLanguage = prefManager.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_LANGUAGE, "")
-        val localLanguage = if (currentLanguage.isEmpty()){
-            Locale.forLanguageTag(AppPreferencesHelper.DEFAULT_TTS_LANGUAGE_VALUE)
-        }else{
-            Gson().fromJson(currentLanguage, Locale::class.java)
-        }
-        val currentVoice = prefManager.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_VOICE, AppPreferencesHelper.DEFAULT_TTS_VOICE_VALUE)
-        val currentSpeed = prefManager.getDefaultTTSSpeed()
-        val currentPitch = prefManager.getDefaultTTSPitch()
-        tts.voice = Voice(currentVoice, localLanguage, Voice.QUALITY_VERY_HIGH, Voice.LATENCY_VERY_HIGH, false, setOf(""))
-        tts.setPitch(currentPitch)
-        tts.setSpeechRate(currentSpeed)
-    }
     fun getCurrentTimeMessage(context: Context):String{
         val calendar = Calendar.getInstance()
         val timeOfDay = calendar.get(Calendar.HOUR_OF_DAY)
@@ -96,31 +81,7 @@ object CommonUtils {
             else -> context.getString(R.string.good_evening)
         }
     }
-    fun calculateNoOfColumns(columnWidthDp: Float, parentWidth : Float): Int {
-        // For example columnWidthdp=180
-//        val displayMetrics = context.resources.displayMetrics
-//        val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
-        return (parentWidth / columnWidthDp + 0.5).toInt() // +0.5 for correct rounding to int.
-    }
-    fun getQuestionHighLighterColor(context: Context,abacusType : AbacusContent?): Int {
-        return if (abacusType != null){
-            if (abacusType.equals(AppConstants.Settings.theam_Poligon_Silver) || abacusType.equals(AppConstants.Settings.theam_Poligon_Brown)){
-                ContextCompat.getColor(context,R.color.black)
-            }else{
-//                mixTwoColors(ContextCompat.getColor(context,abacusType.dividerColor1), ContextCompat.getColor(context,abacusType.resetBtnColor8), 0.40f)
-                ContextCompat.getColor(context,abacusType.resetBtnColor8)
-            }
-        }else{
-            ContextCompat.getColor(context, R.color.red)
-        }
-    }
-    fun getQuestionBorderColor(context: Context,abacusType : AbacusContent?): Int {
-        return if (abacusType != null){
-            mixTwoColors(ContextCompat.getColor(context,R.color.white), ContextCompat.getColor(context,abacusType.resetBtnColor8), 0.75f)
-        }else{
-            ContextCompat.getColor(context, R.color.red_600)
-        }
-    }
+
     fun mixTwoColors(color1: Int, color2: Int, amount: Float): Int {
         val ALPHA_CHANNEL: Byte = 24
         val RED_CHANNEL: Byte = 16

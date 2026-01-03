@@ -1,5 +1,11 @@
 package com.jigar.me.ui.view.jetpack.abacus_base.components
 
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -25,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.SubcomposeLayout
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
@@ -76,7 +83,6 @@ fun AbacusAnswerBarCompose(
     val resetOpacity = when {
         answer == "0" -> 0.5f
         screenType == "exercise" || abacusType == AppConstants.apiParams.answerFormalExam -> 1f
-//        isNextButtonEnable -> 0.5f
         else -> 1f
     }
     val density = LocalDensity.current
@@ -241,11 +247,17 @@ fun NextButton(
     onNext: () -> Unit,
     backgroundBoxPadding: Dp
 ) {
+    val (pulseScale, pulseAlpha) = rememberPulseEffect(nextOpacity == 1f)
     Column(
         modifier = Modifier
             .padding(end = backgroundBoxPadding)
             .alpha(nextOpacity)
-            .clickable(enabled = nextOpacity > 0.2f) { onNext() },
+            .graphicsLayer {
+                scaleX = pulseScale
+                scaleY = pulseScale
+                alpha = pulseAlpha
+            }
+            .clickable(enabled = nextOpacity == 1f) { onNext() },
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
@@ -270,3 +282,35 @@ fun NextButton(
         )
     }
 }
+
+@Composable
+fun rememberPulseEffect(isEnabled: Boolean): Pair<Float, Float> {
+    if (!isEnabled) {
+        return 1f to 1f
+    }
+
+    val infiniteTransition = rememberInfiniteTransition(label = "pulse")
+
+    val scale = infiniteTransition.animateFloat(
+        initialValue = 1f,
+        targetValue = 1.08f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(600, easing = FastOutSlowInEasing),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "pulseScale"
+    ).value
+
+    val alpha = infiniteTransition.animateFloat(
+        initialValue = 0.40f,
+        targetValue = 1f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(600, easing = FastOutSlowInEasing),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "pulseAlpha"
+    ).value
+
+    return scale to alpha
+}
+

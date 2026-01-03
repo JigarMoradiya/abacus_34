@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.viewmodel
 
+import android.content.Context
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -9,12 +10,15 @@ import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
 import com.jigar.me.ui.view.jetpack.abacus_base.viewmodel.BaseAbacusViewModel
 import com.jigar.me.ui.view.jetpack.utils.TextToSpeechManager
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.extensions.convertNumberToWords
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlin.math.max
 
 @HiltViewModel
 class AbacusFreeModeViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val prefs: AppPreferencesHelper,
     ttsManager: TextToSpeechManager,
 ) : BaseAbacusViewModel(numberOfColumns = 13, ttsManager = ttsManager, prefs = prefs) {
@@ -46,23 +50,30 @@ class AbacusFreeModeViewModel @Inject constructor(
     )
         private set
 
-    // Direction hint default from prefs
-    init {
-        showDirectionHints = prefs.getCustomParamBoolean(AppConstants.Settings.Setting_direction, true)
-    }
-
-    // --------- Free Mode / Guided Mode state ----------
-
     var numberToMatch by mutableIntStateOf(0)
 
-    // Highlighter (tour) – ONLY used in Free Mode
+
     var showHighlighter by mutableStateOf(false)
         private set
 
     var currentSpot by mutableStateOf<Int?>(null)
         private set
 
-    // --------- Pref update helpers ----------
+    // Direction hint default from prefs
+    init {
+        showDirectionHints = prefs.getCustomParamBoolean(AppConstants.Settings.Setting_direction, true)
+        if (!isFreeModeOn){
+            numberToMatch = if (isRandomNumber){
+                (fromNumber..toNumber).random()
+            }else{
+                var next = prefs.getCustomParamInt(AppConstants.AbacusScreen.currentReachNumber,fromNumber)
+                if (next > toNumber) next = fromNumber
+                next
+            }
+            speakCurrentNumber(numberToMatch)
+        }
+    }
+
 
     fun toggleFreeMode(enabled: Boolean) {
         isFreeModeOn = enabled
@@ -93,6 +104,9 @@ class AbacusFreeModeViewModel @Inject constructor(
         toNumber = high
         prefs.setCustomParamInt(AppConstants.AbacusScreen.fromNumber, low)
         prefs.setCustomParamInt(AppConstants.AbacusScreen.toNumber, high)
+
+        numberToMatch = generateNextTarget()
+        refreshBeads(numberToMatch)
     }
 
     // --------- Target generation ----------
@@ -108,10 +122,19 @@ class AbacusFreeModeViewModel @Inject constructor(
                 next
             }
         }
-        if (isAbacusQuestionSpeak){
-            speakOut(number.toString())
+        if (!isRandomNumber){
+            prefs.setCustomParamInt(AppConstants.AbacusScreen.currentReachNumber, number)
         }
+
+        speakCurrentNumber(number)
         return number
+    }
+
+    private fun speakCurrentNumber(number: Int) {
+        if (isAbacusQuestionSpeak){
+            val questionWord = context.convertNumberToWords(number)
+            ttsManager.speak(questionWord,AppConstants.AbacusScreen.screenTypeFreeMode)
+        }
     }
 
     // --------- Rod movement (for arrows) ----------

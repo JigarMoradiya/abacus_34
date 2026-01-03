@@ -80,22 +80,22 @@ fun VoiceSettingSheetContent(
                     onSelect = onLanguageSelect
                 )
             }
-            Column(Modifier.weight(1f)) {
-                // ─────────────────── Voices ───────────────────
-
-                Text(
-                    text = "Voices (${uiState.voices.size})",
-                    style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),
-                )
-
-                Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding6)))
-                SimpleDropdownField(
-                    text = uiState.selectedVoice?.name ?: "",
-                    items = uiState.voices,
-                    itemLabel = { "${it.name} (${it.locale.country})" },
-                    onSelect = onVoiceSelect
-                )
-            }
+//            Column(Modifier.weight(1f)) {
+//                // ─────────────────── Voices ───────────────────
+//
+//                Text(
+//                    text = "Voices (${uiState.voices.size})",
+//                    style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),
+//                )
+//
+//                Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding6)))
+//                SimpleDropdownField(
+//                    text = uiState.selectedVoice?.name ?: "",
+//                    items = uiState.voices,
+//                    itemLabel = { "${it.name} (${it.locale.country})" },
+//                    onSelect = onVoiceSelect
+//                )
+//            }
         }
 
         Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding16)))

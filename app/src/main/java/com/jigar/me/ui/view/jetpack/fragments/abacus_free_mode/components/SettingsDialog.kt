@@ -129,58 +129,61 @@ fun SettingsDialog(
                                         interactionSource = remember { MutableInteractionSource() },
                                         indication = LocalIndication.current    // ⭐ Material3 ripple, no deprecation
                                     ) {
-                                        val from = tempLow.toIntOrNull()
-                                        val to = tempHigh.toIntOrNull()
 
-                                        // Reset errors
-                                        fromError = null
-                                        toError = null
-                                        generalError = null
+                                        if (!isFreeModeOn){
+                                            val from = tempLow.toIntOrNull()
+                                            val to = tempHigh.toIntOrNull()
 
-                                        // 1) Empty validation
-                                        if (tempLow.isBlank()) {
-                                            fromError = "From number cannot be empty"
-                                            return@clickable
-                                        }
-                                        if (tempHigh.isBlank()) {
-                                            toError = "To number cannot be empty"
-                                            return@clickable
-                                        }
+                                            // Reset errors
+                                            fromError = null
+                                            toError = null
+                                            generalError = null
 
-                                        // 2) Parse fail
-                                        if (from == null) {
-                                            fromError = "Invalid number"
-                                            return@clickable
-                                        }
-                                        if (to == null) {
-                                            toError = "Invalid number"
-                                            return@clickable
-                                        }
+                                            // 1) Empty validation
+                                            if (tempLow.isBlank()) {
+                                                fromError = "From number cannot be empty"
+                                                return@clickable
+                                            }
+                                            if (tempHigh.isBlank()) {
+                                                toError = "To number cannot be empty"
+                                                return@clickable
+                                            }
 
-                                        // 3) Max number validation
-                                        if (from > 9_999_999) {
-                                            fromError = "Maximum allowed number is 9,999,999"
-                                            return@clickable
-                                        }
-                                        if (to > 9_999_999) {
-                                            toError = "Maximum allowed number is 9,999,999"
-                                            return@clickable
-                                        }
+                                            // 2) Parse fail
+                                            if (from == null) {
+                                                fromError = "Invalid number"
+                                                return@clickable
+                                            }
+                                            if (to == null) {
+                                                toError = "Invalid number"
+                                                return@clickable
+                                            }
 
-                                        // 4) To >= From
-                                        if (to <= from) {
-                                            generalError = "To number must be greater than From number"
-                                            return@clickable
-                                        }
+                                            // 3) Max number validation
+                                            if (from > 9_999_999) {
+                                                fromError = "Maximum allowed number is 9,999,999"
+                                                return@clickable
+                                            }
+                                            if (to > 9_999_999) {
+                                                toError = "Maximum allowed number is 9,999,999"
+                                                return@clickable
+                                            }
 
-                                        // 5) Gap must be at least 20
-                                        if ((to - from) < 20) {
-                                            generalError = "Difference must be at least 20"
-                                            return@clickable
-                                        }
+                                            // 4) To >= From
+                                            if (to <= from) {
+                                                generalError = "To number must be greater than From number"
+                                                return@clickable
+                                            }
 
-                                        // ✔ All good — Apply changes
-                                        onUpdateRange(from, to)
+                                            // 5) Gap must be at least 20
+                                            if ((to - from) < 20) {
+                                                generalError = "Difference must be at least 20"
+                                                return@clickable
+                                            }
+
+                                            // ✔ All good — Apply changes
+                                            onUpdateRange(from, to)
+                                        }
                                         dismiss()
                                     })
                         }
@@ -210,12 +213,12 @@ fun SettingsDialog(
                             checked = isFreeModeOn, onCheckedChange = {
                                 setFreeMode(it)
                                 if (!it) {
-                                    if (numberToMatch == null){
-                                        val newTarget = generateNextTarget(numberToMatch)
-                                        refreshBeadMovement(newTarget)
-                                    }else{
-                                        refreshBeadMovement(numberToMatch)
-                                    }
+//                                    if (numberToMatch == null){
+//                                        val newTarget = generateNextTarget(numberToMatch)
+//                                        refreshBeadMovement(newTarget)
+//                                    }else{
+//                                        refreshBeadMovement(numberToMatch)
+//                                    }
                                 } else {
                                     refreshBeadMovement(null)
                                 }
@@ -270,8 +273,8 @@ fun SettingsDialog(
                                 modifier = Modifier.scale(0.9f),
                                 checked = randomToggle, onCheckedChange = {
                                     setRandomToggle(it)
-                                    val newTarget = generateNextTarget(null)
-                                    refreshBeadMovement(newTarget)
+//                                    val newTarget = generateNextTarget(null)
+//                                    refreshBeadMovement(newTarget)
                                 }, enabled = !isFreeModeOn
                             )
                         }

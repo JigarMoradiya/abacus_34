@@ -116,6 +116,7 @@ object AppConstants {
             const val isRandomNumber = "isRandomNumber"
             const val fromNumber = "fromNumber"
             const val toNumber = "toNumber"
+            const val currentReachNumber = "currentReachNumber"
         }
     }
     annotation class Settings {
@@ -145,7 +146,7 @@ object AppConstants {
             const val theam_Poligon_Tint = "poligon_tint"
             const val theam_Poligon_Silver = "poligon_silver"
             const val theam_Poligon_Brown = "poligon_brown"
-            const val theam_Default = theam_Poligon_default
+            const val theam_Default = theam_Poligon_Rainbow
         }
 
     }

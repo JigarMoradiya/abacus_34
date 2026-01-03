@@ -96,7 +96,7 @@ class CCMPlayViewModel @Inject constructor(
 
             // 🔊 Speak or auto-move
             if (state.isQuestionSpeak) {
-                speakText(wordText, "ccm")
+                speakText(wordText, AppConstants.AbacusScreen.screenTypeCCM)
             } else {
                 scheduleNext()
             }
@@ -125,7 +125,7 @@ class CCMPlayViewModel @Inject constructor(
 
     private fun speakText(text : String,utteranceId : String) {
         ttsManager.speak(text = text, utteranceId = utteranceId) { utteranceId ->
-            if (utteranceId == "ccm") {
+            if (utteranceId == AppConstants.AbacusScreen.screenTypeCCM) {
                 scheduleNext()
             }
         }
