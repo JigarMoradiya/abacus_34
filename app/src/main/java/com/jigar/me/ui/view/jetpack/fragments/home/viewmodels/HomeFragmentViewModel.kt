@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.android.billingclient.api.BillingClient
 import com.google.common.reflect.TypeToken
 import com.google.gson.Gson
+import com.jigar.me.BuildConfig
 import com.jigar.me.data.model.data.GooglePurchasedPlanRequest
 import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
@@ -43,7 +44,9 @@ class HomeFragmentViewModel @Inject constructor(
     init {
         viewModelScope.launch{
             loadHomeMenu()
-            setPurchaseData()
+            if (!BuildConfig.DEBUG){
+                setPurchaseData()
+            }
         }
     }
     private suspend fun loadHomeMenu() {

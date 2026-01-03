@@ -33,7 +33,6 @@ class MainDashboardActivity : BaseActivity() {
     lateinit var navHostFragment: NavHostFragment
     private var selectedFragment: Int = -1
     private lateinit var binding: ActivityMainDashboardBinding
-    var isPurchaseDataChecked = false
     private var loginData: LoginData? = null
 
     val homeActivityViewModel: HomeActivityViewModel by viewModels() // dont remove this line
@@ -79,7 +78,6 @@ class MainDashboardActivity : BaseActivity() {
 
     private fun initObserver() {
         loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
-//        inAppViewModel.inAppInit()
     }
 
     private fun setNavigationGraph() {

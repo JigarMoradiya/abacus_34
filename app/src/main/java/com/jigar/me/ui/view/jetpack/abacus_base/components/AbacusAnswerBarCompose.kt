@@ -6,6 +6,7 @@ import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredWidthIn
 import androidx.compose.foundation.layout.size
@@ -26,14 +28,17 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.SubcomposeLayout
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -101,7 +106,19 @@ fun AbacusAnswerBarCompose(
                     centerBoxHeight, theme, horizontalPadding,
                     isDisplayAbacusNumber, answer, centerBoxValueTextSize
                 )
-                NextButton(nextOpacity, iconDimensions, screenType, abacusType, onNext,backgroundBoxPadding)
+                Box(
+                    contentAlignment = Alignment.Center
+                ) {
+
+                    NextButton(nextOpacity, iconDimensions, screenType, abacusType, onNext,backgroundBoxPadding)
+
+                    HandLeftRightIndicator(
+                        isVisible = isNextButtonEnable,
+                        modifier = Modifier.offset(x = 28.dp)
+                    )
+                }
+
+
             }
         }
 
@@ -313,4 +330,3 @@ fun rememberPulseEffect(isEnabled: Boolean): Pair<Float, Float> {
 
     return scale to alpha
 }
-
