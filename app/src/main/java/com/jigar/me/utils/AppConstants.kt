@@ -107,6 +107,10 @@ object AppConstants {
             const val screenTypeFreeMode = "FreeMode"
             const val screenTypeAbacusPractice = "AbacusPractice"
             const val screenTypeSettingPreview = "SettingPreview"
+            const val screenTypeCCM = "CCM"
+
+
+
             const val isFreeMode = "isFreeMode"
             const val isResetEveryTime = "isResetEveryTime"
             const val isRandomNumber = "isRandomNumber"
@@ -122,15 +126,10 @@ object AppConstants {
             const val Setting__hint_sound = "Setting_hint_sound"
             const val Setting_display_abacus_number = "Setting_display_abacus_number"
             const val Setting_display_help_message = "Setting_display_help_message"
-            const val Setting_hide_table = "Setting_hide_table"
             const val Setting_left_hand = "Setting_left_hand"
             const val Setting_bg_music_volume = "Setting_bg_music_volume"
             const val Setting_bg_music_volume_default = 5
 
-
-            var isSetTheam = "isSetTheam"
-            var isHomeTourWatch = "isHomeTourWatch"
-            var isFreeModeTourWatch = "isFreeModeTourWatch"
             var Theam = "Theam"
             var TheamTempView = "TheamTempView"
             const val theam_Poligon_default = "Poligon" // black
@@ -147,26 +146,6 @@ object AppConstants {
             const val theam_Poligon_Silver = "poligon_silver"
             const val theam_Poligon_Brown = "poligon_brown"
             const val theam_Default = theam_Poligon_default
-            const val theam_face = "Eyes"
-            const val theam_diamond = "diamond"
-            const val theam_garnet = "garnet"
-            const val theam_Egg = "Egg"
-            const val theam_shape = "Shape"
-            const val theam_Star = "Star"
-
-            var Free_Mode_Beads_Move_Count = "free_mode_beads_move_count"
-            var Free_Mode_Beads_Move_Count_Limit = 70
-            var SW_FreeMode = "SW_FreeMode"
-            var isFreeMode = "isFreeMode"
-            var SW_DecimalMode = "SW_DecimalMode"
-            var SW_Random = "SW_Random"
-            var SW_Reset = "SW_Reset"
-
-            var Toddler_No = "Toddler_Number_New"
-            var Toddler_No_Count = "Toddler_Number_Count"
-            var SW_Range_min = "Range_min_values_new"
-            var SW_Range_max = "Range_max_values_new"
-            var AbacusMaxColumn = "AbacusMaxColumn"
         }
 
     }
@@ -180,35 +159,9 @@ object AppConstants {
             const val Menu_Abacus_Exercise = "abacus_exercise"
             const val Menu_Exam = "exam"
             const val Menu_CCM = "ccm"
-            const val Menu_Number_Sequence_Puzzle = "number_sequence_puzzle"
             const val Menu_Video_Tutorial = "video_tutorial"
             const val Menu_Purchase_Store = "purchase_store"
             const val Menu_Settings = "setting"
-
-            const val Menu_My_Profile = 1
-            const val Menu_Addition_Subtraction = 2
-            const val Menu_Formulas = 3
-            const val Menu_Starter = 4
-            const val Menu_Number = 5
-            const val Menu_AboutUs = 6
-            const val Menu_Multiplication = 7
-            const val Menu_Division = 8
-            const val Menu_Exercise = 9
-            const val Menu_Subscribe = 10
-            const val Menu_DailyExam = 11
-            const val Menu_CustomChallengeMode = 12
-            const val Menu_PractiseMaterial = 13
-            const val Menu_Setting = 14
-
-            const val Menu_Click_Youtube = 16
-            const val Menu_Share = 18
-
-            const val Menu_Number_Puzzle = 20
-
-            const val OtherApp_Abacus = 101
-            const val OtherApp_Number = 102
-            const val OtherApp_Sudoku = 103
-
         }
     }
 
@@ -216,31 +169,18 @@ object AppConstants {
         companion object {
             var FROM = "from"
             var Title = "Title"
-            var AbacusType = "AbacusType"
             val data = "data"
-            val previousAbacusData = "previousAbacusData"
             var AbacusTypeNumber = "Number"
             var AbacusTypeAdditionSubtraction = "AdditionSubtraction"
             var AbacusTypeMultiplication = "Multiplication"
             var AbacusTypeDivision = "Division"
 
-            var Que2_str = "Que2_str"
-            var Que2_type = "Que2_type"
-            var Que1_digit_type = "Que1_digit_type"
-
             var From = "From"
-            var To = "To"
-            var isType_random = "isType_random"
 
             var examGivenCount = "examGivenCount"
 
-            var examLevelLable = "examLevelLable"
             var examResult = "ExamResult"
             var examAbacusType = "ExamAbacusType"
-
-            var DownloadType_Maths = "maths"
-            var DownloadType_Nursery = "nursery"
-            var DownloadType = "downloadType"
 
             var type = "type"
             var order = "order"
@@ -267,20 +207,10 @@ object AppConstants {
 
 
     // TODO api param
-    interface apiHeader {
-        companion object {
-            const val consumer_key = "consumer-key"
-            const val consumer_secret = "consumer-secret"
-            const val consumer_nonce = "consumer-nonce"
-        }
-    }
+
 
     interface apiParams {
         companion object {
-            const val levelId = "level_id"
-            const val pageId = "page_id"
-            const val limit = "limit"
-            const val total = "total"
             const val hint = "hint"
             const val file = "file"
             const val level = "level"

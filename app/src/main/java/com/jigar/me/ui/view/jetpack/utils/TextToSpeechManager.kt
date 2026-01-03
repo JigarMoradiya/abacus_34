@@ -2,6 +2,7 @@ package com.jigar.me.ui.view.jetpack.utils
 
 import android.content.Context
 import android.speech.tts.TextToSpeech
+import android.speech.tts.UtteranceProgressListener
 import android.util.Log
 import com.google.gson.Gson
 import com.jigar.me.data.pref.AppPreferencesHelper
@@ -16,39 +17,68 @@ class TextToSpeechManager @Inject constructor(
 
     private var tts: TextToSpeech? = null
     private var ready = false
-    private var pendingText: String? = null
+    private var pending: Pair<String, String?>? = null
+
+    // 🔹 Optional callback (NOT always used)
+    private val utteranceCallbacks =
+        mutableMapOf<String, (String?) -> Unit>()
+
+
 
     init {
         tts = TextToSpeech(context) { status ->
             if (status == TextToSpeech.SUCCESS) {
                 ready = true
                 applySettings()
-
-                pendingText?.let {
-                    speak(it)
-                    pendingText = null
+                setupListener()
+                pending?.let { (text, id) ->
+                    speak(text, id)
+                    pending = null
                 }
             }
         }
     }
 
-    fun speak(text: String) {
-        Log.e("jigarTTS","text = "+text)
+    private fun setupListener() {
+        tts?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
+
+            override fun onStart(utteranceId: String?) = Unit
+
+            override fun onDone(utteranceId: String?) {
+                utteranceId?.let { id ->
+                    utteranceCallbacks[id]?.invoke(id)
+                    utteranceCallbacks.remove(id)
+                }
+            }
+
+            override fun onError(utteranceId: String?) = Unit
+        })
+    }
+
+
+    fun speak(text: String, utteranceId: String? = null, onDone: ((String?) -> Unit)? = null) {
         if (!ready) {
-            pendingText = text
+            pending = text to utteranceId
+            utteranceId?.let { id ->
+                onDone?.let { utteranceCallbacks[id] = it }
+            }
             return
         }
-        Log.e("jigarTTS","text text = "+text)
-        tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
+
+        utteranceId?.let { id ->
+            onDone?.let { utteranceCallbacks[id] = it }
+        }
+
+        tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId)
     }
+
 
     fun stop() {
         tts?.stop()
     }
 
     fun applySettings() {
-        val currentLanguageJson =
-            prefs.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_LANGUAGE, "")
+        val currentLanguageJson = prefs.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_LANGUAGE, "")
 
         val locale = if (currentLanguageJson.isEmpty()) {
             Locale.forLanguageTag(AppPreferencesHelper.DEFAULT_TTS_LANGUAGE_VALUE)

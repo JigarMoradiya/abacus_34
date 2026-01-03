@@ -2,6 +2,7 @@ package com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.viewmode
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.core.StatefulViewModel
 import com.jigar.me.ui.view.jetpack.core.repository.abacus_data.AbacusDataRepository
@@ -38,13 +39,11 @@ class CategoryViewModel @Inject constructor(
             abacusDataRepository.getCategories(levelId)
         ) { sku, categories ->
             if (categories.isNotEmpty()) {
-                val isPurchase = CommonUtils.checkLevelIsPurchase(sku,categories.first(),prefs)
                 updateState_ {
                     copy(
                         purchasedSku = sku,
                         categories = categories,
-                        selectedCategoryIndex = 0,
-                        selectedCategoryIsPurchase = isPurchase
+                        selectedCategoryIndex = 0
                     )
                 }
                 loadPages(categories.first().id)
@@ -59,7 +58,6 @@ class CategoryViewModel @Inject constructor(
     }
 
     private fun loadPages(categoryId: String) = viewModelScope.launch {
-        val isPurchase = CommonUtils.checkLevelIsPurchase(state().purchasedSku,state().categories[state().selectedCategoryIndex],prefs)
         abacusDataRepository.getPages(categoryId)
             .catch { onFailure(it) }
             .collect { pages ->
@@ -67,8 +65,7 @@ class CategoryViewModel @Inject constructor(
                     copy(
                         pages = pages,
                         showNoData = pages.isEmpty(),
-                        isLoading = false,
-                        selectedCategoryIsPurchase = isPurchase
+                        isLoading = false
                     )
                 }
             }

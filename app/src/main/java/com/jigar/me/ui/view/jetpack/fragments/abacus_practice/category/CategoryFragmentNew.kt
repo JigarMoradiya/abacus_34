@@ -45,12 +45,13 @@ import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.component
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.viewmodels.CategoryViewModel
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
+import com.jigar.me.utils.CommonUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CategoryFragmentNew : Fragment() {
     private val viewModel: CategoryViewModel by viewModels()
-    private val dashboardViewModel: HomeActivityViewModel by activityViewModels()
+    private val homeActivityViewModel: HomeActivityViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -60,7 +61,8 @@ class CategoryFragmentNew : Fragment() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-                val allSets by dashboardViewModel.allSets.collectAsStateWithLifecycle()
+                val allSets by homeActivityViewModel.allSets.collectAsStateWithLifecycle()
+                val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
 
                 MaterialTheme {
                     Column(modifier = Modifier.fillMaxSize()) {
@@ -124,7 +126,8 @@ class CategoryFragmentNew : Fragment() {
                                             page = page,
                                             allSets = allSets,
                                             onSetClick = { set ->
-                                                if (uiState.selectedCategoryIsPurchase){
+                                                val isPurchase = homeActivityViewModel.isPurchasedSelectedLevel(purchasedSKU,uiState.categories[uiState.selectedCategoryIndex])
+                                                if (isPurchase){
                                                     findNavController().navigate(CategoryFragmentNewDirections.toAbacusDoPracticeFragment(set.id))
                                                 }else{
                                                     // redirect to purchase fragment

@@ -22,7 +22,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -34,10 +33,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -57,51 +54,40 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.CommonDifficultySelectorCompose
 import com.jigar.me.ui.view.jetpack.fragments.common.HowToPlayButton
-import com.jigar.me.ui.view.jetpack.fragments.common.enums.CommonDifficulty4
-import com.jigar.me.ui.view.jetpack.fragments.common.how_to_play.HowToPlayMathPyramidView
 import com.jigar.me.ui.view.jetpack.fragments.common.how_to_play.HowToPlayTargetNumberView
-import com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.home.NumberSequencePuzzleHomeFragmentDirections
-import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuSize
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.components.TargetNumberViewModel
-import com.jigar.me.ui.viewmodel.AppViewModel
+import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.getValue
+
 @AndroidEntryPoint
 class TargetNumberHomeFragment : BaseFragment() {
     private val viewModel : TargetNumberViewModel by viewModels()
-    private val appViewModel : AppViewModel by viewModels()
+    private val homeActivityViewModel: HomeActivityViewModel by activityViewModels()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return ComposeView(requireContext()).apply {
             setContent {
                 MaterialTheme {
-                    val permissionResult by appViewModel.permissionResult.observeAsState()
-
-                    LaunchedEffect(permissionResult) {
-                        when (permissionResult) {
-                            true -> {
-                                val action = TargetNumberHomeFragmentDirections.toTargetNumberPlayFragment(viewModel.uiState.value.selectedLevel,viewModel.uiState.value.selectedDifficulty.name)
-                                findNavController().navigate(action)
-                            }
-                            false -> {
-                                goToInAppPurchase()
-                            }
-                            else -> Unit
-                        }
-                        appViewModel.resetNavigation()
-                    }
+                    val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
                     TargetNumberHomeScreen(
                         viewModel = viewModel,
                         onStartGame = {
-                            appViewModel.checkAllowPermission()
+                            val isPurchase = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
+                            if (isPurchase){
+                                val action = TargetNumberHomeFragmentDirections.toTargetNumberPlayFragment(viewModel.uiState.value.selectedLevel,viewModel.uiState.value.selectedDifficulty.name)
+                                findNavController().navigate(action)
+                            }else{
+                                // redirect to purchase fragment
+                                findNavController().navigate(TargetNumberHomeFragmentDirections.toPurchaseFragment())
+                            }
                         },
                         onBackClick = { findNavController().popBackStack() }
                     )

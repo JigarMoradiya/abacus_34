@@ -622,35 +622,51 @@ object DataProvider {
 
     fun generateChallengeModeQuestion(totalQuestion : Int, minNumber: Int, maxNumber : Int) : CustomChallengeData{
         val listQuestion: MutableList<CustomChallengeQuestion> = arrayListOf()
-        val max = if (maxNumber == 2){
-            99
-        }else if (maxNumber == 3){
-            999
-        }else if (maxNumber == 4){
-            9999
-        }else if (maxNumber == 5){
-            99999
-        }else if (maxNumber == 6){
-            999999
-        }else if (maxNumber == 7){
-            9999999
-        }else{
-            9
+        val max = when (maxNumber) {
+            2 -> {
+                99
+            }
+            3 -> {
+                999
+            }
+            4 -> {
+                9999
+            }
+            5 -> {
+                99999
+            }
+            6 -> {
+                999999
+            }
+            7 -> {
+                9999999
+            }
+            else -> {
+                9
+            }
         }
-        val min = if (minNumber == 2){
-            10
-        }else if (minNumber == 3){
-            100
-        }else if (minNumber == 4){
-            1000
-        }else if (minNumber == 5){
-            10000
-        }else if (minNumber == 6){
-            100000
-        }else if (minNumber == 7){
-            1000000
-        }else{
-            1
+        val min = when (minNumber) {
+            2 -> {
+                10
+            }
+            3 -> {
+                100
+            }
+            4 -> {
+                1000
+            }
+            5 -> {
+                10000
+            }
+            6 -> {
+                100000
+            }
+            7 -> {
+                1000000
+            }
+            else -> {
+                1
+            }
         }
 
         var maxMinusSignCount = 2

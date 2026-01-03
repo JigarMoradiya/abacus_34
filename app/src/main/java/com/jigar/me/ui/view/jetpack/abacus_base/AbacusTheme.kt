@@ -220,6 +220,7 @@ object AbacusTheme {
 
         val multiplier = when (screenType) {
             "exam", AppConstants.AbacusScreen.screenTypeSettingPreview -> 0.5f
+            AppConstants.AbacusScreen.screenTypeCCM -> 0.85f
             AppConstants.AbacusScreen.screenTypeAbacusPractice -> if (abacusType == AppConstants.apiParams.answerStepByStep) 0.9f else {1f}
             AppConstants.AbacusScreen.screenTypeFreeMode -> if (isFreeModeOn){
                 1f
@@ -232,7 +233,7 @@ object AbacusTheme {
         return base.copy(
             beadWidth = base.beadWidth * multiplier,
             beadHeight = base.beadHeight * multiplier,
-            columnSpaces = if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode) base.columnSpaces * 2 else base.columnSpaces,
+            columnSpaces = if (screenType == AppConstants.AbacusScreen.screenTypeCCM) base.columnSpaces * 4 else if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode) base.columnSpaces * 2 else base.columnSpaces,
             beamHeight = if (screenType == "exam" || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) base.beamHeight
             else base.beamHeight * 2,
             rectLineWidth = if (screenType == "exam" || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview)

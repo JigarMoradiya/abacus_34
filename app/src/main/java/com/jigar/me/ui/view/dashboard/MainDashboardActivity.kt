@@ -36,7 +36,7 @@ class MainDashboardActivity : BaseActivity() {
     var isPurchaseDataChecked = false
     private var loginData: LoginData? = null
 
-    val dashboardViewModel: HomeActivityViewModel by viewModels() // dont remove this line
+    val homeActivityViewModel: HomeActivityViewModel by viewModels() // dont remove this line
 
     // text to speech common for whole app (for activity)
     @Inject
@@ -49,12 +49,12 @@ class MainDashboardActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        dashboardViewModel.onResume()
+        homeActivityViewModel.onResume()
     }
 
     override fun onPause() {
         super.onPause()
-        dashboardViewModel.onPause()
+        homeActivityViewModel.onPause()
     }
 
     companion object {
@@ -115,7 +115,7 @@ class MainDashboardActivity : BaseActivity() {
             view.setPadding(leftInset, topInset, rightInset, bottomInset)
             insets
         }
-        dashboardViewModel.fetchAbacusData()
+        homeActivityViewModel.fetchAbacusData()
 
         setNavigationGraph()
         onMainActivityBack()

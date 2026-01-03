@@ -115,9 +115,11 @@ class HomeFragmentNew : Fragment() {
             }
             AppConstants.HomeClicks.Menu_Exam -> {
                 findNavController().navigate(R.id.action_homeFragment_to_examHomeFragment)
+//                findNavController().navigate(R.id.action_homeFragment_to_customChallengeHomeFragment)
             }
             AppConstants.HomeClicks.Menu_CCM -> {
-                findNavController().navigate(R.id.action_homeFragment_to_customChallengeHomeFragment)
+//                findNavController().navigate(R.id.action_homeFragment_to_customChallengeHomeFragment)
+                findNavController().navigate(R.id.toCCMHomeFragment)
             }
             AppConstants.HomeClicks.Menu_Purchase_Store -> {
                 findNavController().navigate(R.id.toPurchaseFragment)

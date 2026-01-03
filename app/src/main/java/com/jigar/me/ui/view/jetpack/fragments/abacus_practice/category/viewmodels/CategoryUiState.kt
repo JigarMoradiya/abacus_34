@@ -8,7 +8,6 @@ data class CategoryUiState(
     val isLoading: Boolean = true,
     val categories: List<Category> = emptyList(),
     val selectedCategoryIndex: Int = 0,
-    val selectedCategoryIsPurchase: Boolean = false,
     val pages: List<DisplayPages> = emptyList(),
     val purchasedSku: List<InAppSkuDetails> = emptyList(),
     val showNoData: Boolean = false,

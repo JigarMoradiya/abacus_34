@@ -37,10 +37,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -62,27 +60,27 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
-import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.HowToPlayButton
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
 import com.jigar.me.ui.view.jetpack.fragments.common.how_to_play.HowToPlaySudokuView
-import com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.home.NumberSequencePuzzleHomeFragmentDirections
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuDifficulty4
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuHomeViewModel
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuSize
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuStorage
-import com.jigar.me.ui.viewmodel.AppViewModel
+import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SudokuHomeFragment : BaseFragment() {
+class SudokuHomeFragment : Fragment() {
     private val viewModel: SudokuHomeViewModel by viewModels()
-    private val appViewModel : AppViewModel by viewModels()
+    private val homeActivityViewModel: HomeActivityViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -94,27 +92,18 @@ class SudokuHomeFragment : BaseFragment() {
         return ComposeView(requireContext()).apply {
             setContent {
                 MaterialTheme {
-                    val permissionResult by appViewModel.permissionResult.observeAsState()
-
-                    LaunchedEffect(permissionResult) {
-                        when (permissionResult) {
-                            true -> {
-                                // Navigate using directions
+                    val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
+                    SudokuHomeScreen(viewModel,navController,
+                        onStart = {
+                            val isPurchase = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
+                            if (isPurchase){
                                 val value = viewModel.uiState.value
                                 val action = SudokuHomeFragmentDirections.toSudokuPlayFragment(value.selectedSizeFinal.name, value.selectedDifficultyFinal.name,value.isNewGame)
                                 navController.navigate(action)
+                            }else{
+                                // redirect to purchase fragment
+                                findNavController().navigate(SudokuHomeFragmentDirections.toPurchaseFragment())
                             }
-                            false -> {
-                                goToInAppPurchase()
-                            }
-                            else -> Unit
-                        }
-                        appViewModel.resetNavigation()
-                    }
-
-                    SudokuHomeScreen(viewModel,navController,
-                        onStart = {
-                            appViewModel.checkAllowPermission()
                         }
                     )
                 }

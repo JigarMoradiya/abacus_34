@@ -27,7 +27,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SettingFragmentNew : Fragment() {
     private val viewModel: SettingViewModel by activityViewModels()
-    private val homeViewModel: HomeActivityViewModel by activityViewModels()
+    private val homeActivityViewModel: HomeActivityViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +45,7 @@ class SettingFragmentNew : Fragment() {
                         SettingsScreen(
                             viewModel = viewModel,
                             uiState = uiState,
-                            onMusicVolumeChange = homeViewModel::updateMusicVolume,
+                            onMusicVolumeChange = homeActivityViewModel::updateMusicVolume,
                             onVoiceClick = {
                                 VoiceSettingBottomSheetFragment
                                     .newInstance()

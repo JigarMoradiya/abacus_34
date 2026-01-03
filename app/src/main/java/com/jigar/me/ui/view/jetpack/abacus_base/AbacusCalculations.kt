@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.jetpack.abacus_base
 
+import android.util.Log
 import androidx.compose.runtime.*
 
 class AbacusCalculations(private val numberOfColumns: Int) {
@@ -187,7 +188,10 @@ class AbacusCalculations(private val numberOfColumns: Int) {
                 }
             else intPartTrimmed
         }else{
-            displayValue = raw
+            raw.trimStart('0').ifEmpty { "0" }
+            val intPartTrimmed = raw.trimStart('0').ifEmpty { "0" }
+            displayValue = intPartTrimmed
+            totalValuePair = intPartTrimmed to "0"
         }
     }
 

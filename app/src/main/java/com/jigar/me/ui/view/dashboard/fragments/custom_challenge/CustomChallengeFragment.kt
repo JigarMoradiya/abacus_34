@@ -356,10 +356,10 @@ class CustomChallengeFragment : BaseFragment(), AbacusMasterBeadShiftListener,
                     }
                 }
                 speak(word1,position.toString())
-            }
-            if (!isVoiceOn) {
+            }else{
                 goToNextNumber()
             }
+
 
         }else{
             speak(getString(R.string.set_your_answer),"complete")

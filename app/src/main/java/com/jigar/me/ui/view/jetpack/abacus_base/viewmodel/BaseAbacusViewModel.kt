@@ -18,8 +18,8 @@ open class BaseAbacusViewModel(
 ) : ViewModel() {
 
     // ---------- TTS ----------
-    fun speakOut(text: String) {
-        ttsManager.speak(text)
+    fun speakOut(text: String,id:String? = null) {
+        ttsManager.speak(text,id)
     }
 
     fun stopSpeech() {

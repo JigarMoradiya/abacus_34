@@ -578,8 +578,10 @@
     <string name="check_voice">Check Voice</string>
     <string name="speak_test">Welcome to Abacus Child Learning Application. Abacus is help your children to learn about number, addition, subtraction, multiplication and division.</string>
     <string name="check_answer">Check Answer</string>
-    <string name="set_your_answer">Set your answer</string>
+    <string name="check_answer_">Check\nAnswer</string>
+    <string name="set_your_answer">Set Your Answer</string>
     <string name="sorry">Sorry!</string>
+    <string name="or">OR</string>
     <string name="start_new_challenge">Start new challenge</string>
     <string name="change_voice_setting">Change Voice Setting</string>
     <string name="ccm_msg">Help to increase <font color='#D81B60'>Concentration Power,\n</font> <font color='#7B1FA2'>Listening Skill,</font> <font color='#303F9F'>Calculation Speed,</font>\n<font color='#0097A7'>Visualization</font> and <font color='#388E3C'>Memory Power</font></string>
@@ -871,5 +873,7 @@
     <string name="unexpected_error">Something went wrong, please try again later.</string>
     <string name="no_logged_in_user">Error fetching current user data</string>
     <string name="customize_pronunciation_voice">Customize Pronunciation (Voice)</string>
+    <string name="submit_answer">Submit\nAnswer</string>
+    <string name="hide_from_setting">Hide From Setting</string>
 
 </resources>

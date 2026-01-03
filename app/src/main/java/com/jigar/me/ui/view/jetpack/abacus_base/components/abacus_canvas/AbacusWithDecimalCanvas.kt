@@ -133,7 +133,7 @@ fun AbacusWithDecimalCanvas(
 
         // Top Answer Bar (hidden in free mode, same as your old logic)
         if (!(screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn) && screenType != AppConstants.AbacusScreen.screenTypeSettingPreview) {
-            val offsetY = (-48).dp
+            val offsetY = if(screenType == AppConstants.AbacusScreen.screenTypeCCM) (-36).dp else (-48).dp
 
             AbacusAnswerBarCompose(
                 answer = abacusData.displayValue,
@@ -153,7 +153,7 @@ fun AbacusWithDecimalCanvas(
                 onNext = {
                     onNext()
                     // abacus change sound same as reset
-                    if (isBeadSoundOn){
+                    if (isBeadSoundOn && screenType != AppConstants.AbacusScreen.screenTypeCCM){
                         PlaySound.playBeadReset(context)
                     }
                 },
@@ -169,28 +169,6 @@ fun AbacusWithDecimalCanvas(
         val beadPolygonGray = remember {
             ImageBitmap.imageResource(context.resources, R.drawable.poligon_gray_light)
         }
-
-//        // Preload face-open beads
-//        val faceOpen = remember {
-//            mapOf(
-//                1 to ImageBitmap.imageResource(context.resources, R.drawable.face_red_open),
-//                2 to ImageBitmap.imageResource(context.resources, R.drawable.face_pink_open),
-//                3 to ImageBitmap.imageResource(context.resources, R.drawable.face_orange_open),
-//                4 to ImageBitmap.imageResource(context.resources, R.drawable.face_blue_open),
-//                5 to ImageBitmap.imageResource(context.resources, R.drawable.face_green_open)
-//            )
-//        }
-//
-//        // Preload face-close beads
-//        val faceClose = remember {
-//            mapOf(
-//                0 to ImageBitmap.imageResource(context.resources, R.drawable.face_red_close),
-//                3 to ImageBitmap.imageResource(context.resources, R.drawable.face_pink_close),
-//                4 to ImageBitmap.imageResource(context.resources, R.drawable.face_orange_close),
-//                5 to ImageBitmap.imageResource(context.resources, R.drawable.face_blue_close),
-//                6 to ImageBitmap.imageResource(context.resources, R.drawable.face_green_close)
-//            )
-//        }
 
         // --- Inner rods & beads on Canvas ---
         if (!showHighlighter || currentSpot != 0) { // hide all things when frame highlighter show
@@ -255,8 +233,6 @@ fun AbacusWithDecimalCanvas(
                     rodMovementByRod = rodMovementByRod,
                     showDirectionHint = showDirectionHint,
                     beadPolygonGray = beadPolygonGray,
-//                    faceOpen = faceOpen,
-//                    faceClose = faceClose,
                     arrowUPBitmap = arrowUp,
                     arrowDownBitmap = arrowDown
                 )
@@ -300,7 +276,7 @@ fun AbacusWithDecimalCanvas(
         if (isFreeModeOn){
             NumberStripBar(dim = dim, totalWidth = totalWidth, totalHeight = totalHeight)
         }
-    }else if (screenType == AppConstants.AbacusScreen.screenTypeAbacusPractice) {
+    }else if (screenType == AppConstants.AbacusScreen.screenTypeAbacusPractice || screenType == AppConstants.AbacusScreen.screenTypeCCM) {
         OnlyWordStripBar(dim = dim, totalWidth = totalWidth, totalHeight = totalHeight)
     }
 

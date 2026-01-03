@@ -27,9 +27,11 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.SubcomposeLayout
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -54,24 +56,27 @@ fun AbacusAnswerBarCompose(
 ) {
     val scale = 1.0
 
-    val horizontalPadding = ((if (screenType == "ccm") 8 else 16) * scale).dp
-    val outFrameHeight = ((if (screenType == "ccm") 36 else 48) * scale).dp
-    val iconDimensions = ((if (screenType == "ccm") 14 else 18) * scale).dp
-    val centerBoxValueTextSize = ((if (screenType == "ccm") 18 else 24) * scale).sp
-    val centerBoxHeight = ((if (screenType == "ccm") 48 else 60) * scale).dp
+    val horizontalPadding = ((if (screenType == AppConstants.AbacusScreen.screenTypeCCM) 8 else 16) * scale).dp
+    val outFrameHeight = ((if (screenType == AppConstants.AbacusScreen.screenTypeCCM) 36 else 48) * scale).dp
+    val iconDimensions = ((if (screenType == AppConstants.AbacusScreen.screenTypeCCM) 12 else 18) * scale).dp
+    val centerBoxValueTextSize = ((if (screenType == AppConstants.AbacusScreen.screenTypeCCM) 18 else 24) * scale).sp
+    val centerBoxHeight = ((if (screenType == AppConstants.AbacusScreen.screenTypeCCM) 48 else 60) * scale).dp
+    val centerBoxMinWidth = ((if (screenType == AppConstants.AbacusScreen.screenTypeCCM) 100 else 140) * scale).dp
+    val backgroundBoxBorder = ((if (screenType == AppConstants.AbacusScreen.screenTypeCCM) 2 else 4) * scale).dp
+    val backgroundBoxPadding = ((if (screenType == AppConstants.AbacusScreen.screenTypeCCM) 16 else 24) * scale).dp
 
     val theme = AbacusTheme.colorPreset(theme)
 
     val nextOpacity = when {
         screenType == AppConstants.AbacusScreen.screenTypeFreeMode -> 0.2f
-        abacusType == AppConstants.apiParams.answerFormalExam || screenType == "ccm" || isNextButtonEnable -> 1f
+        abacusType == AppConstants.apiParams.answerFormalExam || screenType == AppConstants.AbacusScreen.screenTypeCCM || isNextButtonEnable -> 1f
         else -> 0.5f
     }
 
     val resetOpacity = when {
         answer == "0" -> 0.5f
         screenType == "exercise" || abacusType == AppConstants.apiParams.answerFormalExam -> 1f
-        isNextButtonEnable -> 0.5f
+//        isNextButtonEnable -> 0.5f
         else -> 1f
     }
     val density = LocalDensity.current
@@ -85,12 +90,12 @@ fun AbacusAnswerBarCompose(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(horizontalPadding / 2)
             ) {
-                ResetButton(resetOpacity, iconDimensions, onReset)
-                CenterBox(
+                ResetButton(resetOpacity, iconDimensions, onReset,backgroundBoxPadding)
+                CenterBox(centerBoxMinWidth,
                     centerBoxHeight, theme, horizontalPadding,
                     isDisplayAbacusNumber, answer, centerBoxValueTextSize
                 )
-                NextButton(nextOpacity, iconDimensions, screenType, abacusType, onNext)
+                NextButton(nextOpacity, iconDimensions, screenType, abacusType, onNext,backgroundBoxPadding)
             }
         }
 
@@ -113,7 +118,7 @@ fun AbacusAnswerBarCompose(
                         clip = false
                     )
                     .background(theme.buttonColor, RoundedCornerShape(100.dp))
-                    .border(4.dp, theme.abacusCenterGradient, RoundedCornerShape(100.dp))
+                    .border(backgroundBoxBorder, theme.abacusCenterGradient, RoundedCornerShape(100.dp))
             )
         }.first()
 
@@ -145,11 +150,12 @@ fun AbacusAnswerBarCompose(
 fun ResetButton(
     resetOpacity: Float,
     iconDimensions: Dp,
-    onReset: () -> Unit
+    onReset: () -> Unit,
+    backgroundBoxPadding: Dp
 ) {
     Column(
         modifier = Modifier
-            .padding(start = 24.dp)
+            .padding(start = backgroundBoxPadding)
             .clickable(enabled = resetOpacity > 0.5f) { onReset() }
             .alpha(resetOpacity),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -161,7 +167,7 @@ fun ResetButton(
             modifier = Modifier.size(iconDimensions)
         )
         Text(
-            text = "Reset",
+            text = stringResource(R.string.reset),
             color = Color.White,
             fontWeight = FontWeight.Bold,
             fontFamily = FontFamily(Font(R.font.font_bold)),
@@ -173,6 +179,7 @@ fun ResetButton(
 
 @Composable
 fun CenterBox(
+    centerBoxMinWidth: Dp,
     centerBoxHeight: Dp,
     theme: ColorPresetModel,
     horizontalPadding: Dp,
@@ -183,7 +190,7 @@ fun CenterBox(
     Column(
         modifier = Modifier
             .height(centerBoxHeight)
-            .requiredWidthIn(min = 140.dp)
+            .requiredWidthIn(min = centerBoxMinWidth)
             .shadow(
                 elevation = 4.dp,
                 shape = RoundedCornerShape(100.dp),  // ⭐ Rounded shadow
@@ -201,7 +208,7 @@ fun CenterBox(
     ) {
 
         Text(
-            text = "Current Input",
+            text = stringResource(R.string.current_input),
             color = Color.White,
             fontWeight = FontWeight.Bold,
             fontFamily = FontFamily(Font(R.font.font_bold)),
@@ -220,7 +227,7 @@ fun CenterBox(
             )
         } else {
             Text("-", color = Color.White, fontSize = 10.sp,lineHeight = 11.sp)
-            Text("Hide From Setting", color = Color.White, fontSize = 9.sp, lineHeight = 10.sp)
+            Text(stringResource(R.string.hide_from_setting), color = Color.White, fontSize = 9.sp, lineHeight = 10.sp)
         }
     }
 }
@@ -231,17 +238,18 @@ fun NextButton(
     iconDimensions: Dp,
     screenType: String,
     abacusType: String?,
-    onNext: () -> Unit
+    onNext: () -> Unit,
+    backgroundBoxPadding: Dp
 ) {
     Column(
         modifier = Modifier
-            .padding(end = 24.dp)
+            .padding(end = backgroundBoxPadding)
             .alpha(nextOpacity)
             .clickable(enabled = nextOpacity > 0.2f) { onNext() },
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        if (screenType != "ccm" && abacusType != AppConstants.apiParams.answerFormalExam) {
+        if (screenType != AppConstants.AbacusScreen.screenTypeCCM && abacusType != AppConstants.apiParams.answerFormalExam) {
             Icon(
                 Icons.Default.PlayArrow,
                 contentDescription = null,
@@ -252,14 +260,12 @@ fun NextButton(
 
         Text(
             text = when {
-                abacusType == AppConstants.apiParams.answerFormalExam -> "Submit\nAnswer"
-                screenType == "ccm" -> "Check"
-                else -> "Next"
+                abacusType == AppConstants.apiParams.answerFormalExam -> stringResource(R.string.submit_answer)
+                screenType == AppConstants.AbacusScreen.screenTypeCCM -> stringResource(R.string.check_answer_)
+                else -> stringResource(R.string.next)
             },
-            color = Color.White,
-            fontWeight = FontWeight.Bold,
-            fontFamily = FontFamily(Font(R.font.font_bold)),
-            style = MaterialTheme.typography.labelSmall,
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.labelSmall.copy(color = Color.White,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
             lineHeight = 12.sp,
         )
     }

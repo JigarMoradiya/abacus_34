@@ -12,6 +12,7 @@ import com.google.gson.Gson
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.data.model.dbtable.inapp.PricingPhasesCustom
 import com.jigar.me.data.model.dbtable.inapp.SubscriptionOfferDetailsCustom
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface InAppSKUDao {
@@ -26,6 +27,9 @@ interface InAppSKUDao {
 
     @Query("SELECT SKU.sku,SKU.type,SKU.price,SKU.price_amount_micros,SKU.price_currency_code,SKU.title,SKU.originalJson,SKU.description,SKU.offerToken,SKU.billingPeriod,SKU.originalPrice,SKU.discountPer,SKU.sortOrder,CASE WHEN (P.orderId IS NULL) THEN 0 ELSE 1 END as isPurchase,CASE WHEN (P.orderId IS NULL) THEN '' ELSE P.orderId END as orderId,P.purchaseTime FROM tableInAppSKU as SKU LEFT JOIN tableInAppPurchase as P ON (SKU.sku = P.sku AND P.purchaseState = 1) WHERE P.orderId IS NOT NULL ORDER BY SKU.type DESC, SKU.price_amount_micros DESC")
     suspend fun getInAppSKUPurchased(): List<InAppSkuDetails>
+
+    @Query("SELECT SKU.sku,SKU.type,SKU.price,SKU.price_amount_micros,SKU.price_currency_code,SKU.title,SKU.originalJson,SKU.description,SKU.offerToken,SKU.billingPeriod,SKU.originalPrice,SKU.discountPer,SKU.sortOrder,CASE WHEN (P.orderId IS NULL) THEN 0 ELSE 1 END as isPurchase,CASE WHEN (P.orderId IS NULL) THEN '' ELSE P.orderId END as orderId,P.purchaseTime FROM tableInAppSKU as SKU LEFT JOIN tableInAppPurchase as P ON (SKU.sku = P.sku AND P.purchaseState = 1) WHERE P.orderId IS NOT NULL ORDER BY SKU.type DESC, SKU.price_amount_micros DESC")
+    fun getInAppSKUPurchasedFLow(): Flow<List<InAppSkuDetails>>
 
     @Transaction
     fun insertOrUpdate(skuDetails: MutableList<ProductDetails>) = skuDetails.apply {
