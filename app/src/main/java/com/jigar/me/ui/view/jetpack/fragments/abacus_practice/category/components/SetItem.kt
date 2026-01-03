@@ -46,7 +46,7 @@ fun SetItem(
     onClick: () -> Unit,
     onLongClick: () -> Unit
 ) {
-    Box(modifier = Modifier.padding(4.dp)) {
+    Box(modifier = Modifier.padding(0.dp)) {
 
         // 🔹 CARD
         Card(

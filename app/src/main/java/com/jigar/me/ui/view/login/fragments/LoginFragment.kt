@@ -20,7 +20,6 @@ import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.LoginRequest
 import com.jigar.me.data.model.data.ResendOTPRequest
 import com.jigar.me.databinding.FragmentLoginBinding
-import com.jigar.me.internal.workmanagers.FetchAbacusDataWorkManager
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.ui.viewmodel.StudentViewModel
@@ -72,24 +71,7 @@ class LoginFragment : BaseFragment() {
     private fun initView() {
 
     }
-    override fun onStart() {
-        super.onStart()
-        EventBus.getDefault().register(this)
-    }
 
-    override fun onStop() {
-        EventBus.getDefault().unregister(this)
-        super.onStop()
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onMessageEvent(event: MessageEvent) {
-        // Do something
-        if (event.type == EventBusType.LoginSync){
-            hideLoading()
-            MainDashboardActivity.getInstance(requireContext())
-        }
-    }
     private fun setNavigationGraph() {
         mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }

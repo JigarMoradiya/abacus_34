@@ -60,19 +60,31 @@ class DefaultAbacusRepository @Inject constructor(
         when (result) {
             is Resource.Success -> {
                 val response = result.value
-                if (response.status == AppConstants.APIStatus.SUCCESS){
-                    return@emitFlow AppConstants.APIStatus.SUCCESS
-                } else {
-                    val errorMsg = response.error?.message
-                        ?: response.message
-                        ?: "Unknown server response"
-                    throw Exception(errorMsg)
+                when {
+                    response.status == AppConstants.APIStatus.SUCCESS -> {
+                        return@emitFlow AppConstants.APIStatus.SUCCESS
+                    }
+                    response.status == AppConstants.APIStatus.ERROR || response.error?.error_code != null -> {
+                        return@emitFlow response.error?.error_code?:""
+                    }
+                    else -> {
+                        val errorMsg = response.error?.message
+                            ?: response.message
+                            ?: "Unknown server response"
+                        throw Exception(errorMsg)
+                    }
                 }
             }
 
-            is Resource.Failure -> throw when {
-                result.isNetworkError -> IOException("Network error occurred")
-                else -> Exception("API error: ${result.errorBody ?: "Unknown error"}, code: ${result.errorCode}")
+            is Resource.Failure -> {
+                if (result.errorType != null){
+                    return@emitFlow result.errorType?:""
+                }else{
+                    throw when {
+                        result.isNetworkError -> IOException("Network error occurred")
+                        else -> Exception("API error: ${result.errorBody ?: "Unknown error"}, code: ${result.errorCode}")
+                    }
+                }
             }
 
             else -> throw Exception("Unexpected response type")

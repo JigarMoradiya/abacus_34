@@ -136,7 +136,7 @@ class MyApplication : Application(), Configuration.Provider {
                                 moveToDestination(R.id.exerciseHomeFragment)
                             }
                             Constants.notificationTypeCCM -> {
-                                moveToDestination(R.id.customChallengeHomeFragment)
+                                moveToDestination(R.id.ccmHomeFragment)
                             }
                             Constants.notificationTypeExam -> {
                                 moveToDestination(R.id.examHomeFragment)

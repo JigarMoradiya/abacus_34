@@ -14,16 +14,17 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
-import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
 import com.jigar.me.ui.view.confirm_alerts.dialogs.FreeTrialLeftDialog
 import com.jigar.me.ui.view.confirm_alerts.dialogs.FreeTrialLeftDialog.DialogFreeTrialInterface
@@ -32,12 +33,13 @@ import com.jigar.me.ui.view.jetpack.fragments.home.components.HomeHeaderLeft
 import com.jigar.me.ui.view.jetpack.fragments.home.components.HomeHeaderRight
 import com.jigar.me.ui.view.jetpack.fragments.home.components.HomeMenuScreen
 import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.FreeTrialParam
+import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeFragmentViewModel
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.checkPermissions
-import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.getValue
 
 @AndroidEntryPoint
 class HomeFragmentNew : Fragment() {
@@ -51,6 +53,7 @@ class HomeFragmentNew : Fragment() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
                 MaterialTheme {
                     Column(modifier = Modifier.fillMaxSize()) {
                         Row{

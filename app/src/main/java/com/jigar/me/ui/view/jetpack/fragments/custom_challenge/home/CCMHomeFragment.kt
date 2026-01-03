@@ -18,11 +18,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.CategoryFragmentNewDirections
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.custom_challenge.home.components.CCMHomeScreen
 import com.jigar.me.ui.view.jetpack.fragments.custom_challenge.home.viewmodels.CCMHomeViewModel
 import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
+import com.jigar.me.utils.extensions.toastS
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.getValue
 
@@ -46,7 +46,11 @@ class CCMHomeFragment : Fragment() {
                         CCMHomeScreen(uiState,viewModel){
                             val isPurchase = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
                             if (isPurchase){
-                                findNavController().navigate(CCMHomeFragmentDirections.toCCMPlayFragment())
+                                if (!uiState.isQuestionSpeak && !uiState.isQuestionShowWord && !uiState.isQuestionShowNumber){
+                                    requireContext().toastS(getString(R.string.please_select_at_least_one_checkbox))
+                                }else{
+                                    findNavController().navigate(CCMHomeFragmentDirections.toCCMPlayFragment())
+                                }
                             }else{
                                 // redirect to purchase fragment
                                 findNavController().navigate(CCMHomeFragmentDirections.toPurchaseFragment())

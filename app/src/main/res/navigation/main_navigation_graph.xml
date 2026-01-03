@@ -21,6 +21,9 @@
         <action
             android:id="@+id/toSettingsFragmentNew"
             app:destination="@+id/settingFragmentNew" />
+        <action
+            android:id="@+id/toCCMHomeFragment"
+            app:destination="@+id/ccmHomeFragment" />
 
         <action
             android:id="@+id/action_homeFragment_to_examHomeFragment"
@@ -28,12 +31,6 @@
         <action
             android:id="@+id/action_homeFragment_to_exerciseHomeFragment"
             app:destination="@+id/exerciseHomeFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_customChallengeHomeFragment"
-            app:destination="@+id/customChallengeHomeFragment" />
-        <action
-            android:id="@+id/toCCMHomeFragment"
-            app:destination="@+id/ccmHomeFragment" />
         <action
             android:id="@+id/toVideoPreviewFragment"
             app:destination="@+id/videoPreviewFragment" />
@@ -81,47 +78,6 @@
         <action
             android:id="@+id/action_reportsHomeFragment_to_examResultFragment"
             app:destination="@+id/examResultFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/customChallengeHomeFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.custom_challenge.CustomChallengeHomeFragment">
-        <action
-            android:id="@+id/action_customChallengeHomeFragment_to_customChallengeFragment"
-            app:destination="@+id/customChallengeFragment" />
-        <action
-            android:id="@+id/toPurchaseFragment"
-            app:destination="@+id/purchaseFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/customChallengeFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.custom_challenge.CustomChallengeFragment">
-        <argument
-            android:name="totalQuestion"
-            app:argType="integer" />
-        <argument
-            android:name="minQuestion"
-            app:argType="integer" />
-        <argument
-            android:name="maxQuestion"
-            app:argType="integer" />
-        <argument
-            android:name="secGap"
-            app:argType="integer" />
-        <argument
-            android:name="isVoiceOn"
-            app:argType="boolean" />
-        <argument
-            android:name="isShowNumber"
-            app:argType="boolean" />
-        <argument
-            android:name="isShowWord"
-            app:argType="boolean" />
-
-        <action
-            app:popUpTo="@+id/customChallengeFragment"
-            app:popUpToInclusive="true"
-            android:id="@+id/toPurchaseFragment"
-            app:destination="@+id/purchaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/exerciseHomeFragment"

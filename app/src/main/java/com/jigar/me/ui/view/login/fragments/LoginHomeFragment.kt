@@ -22,7 +22,6 @@ import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.SocialLoginRequest
 import com.jigar.me.data.repositories.Result
 import com.jigar.me.databinding.FragmentLoginHomeBinding
-import com.jigar.me.internal.workmanagers.FetchAbacusDataWorkManager
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.ui.view.other.ContactUsActivity
@@ -68,25 +67,6 @@ class LoginHomeFragment : BaseFragment() {
             initListener()
         }
         return root
-    }
-
-    override fun onStart() {
-        super.onStart()
-        EventBus.getDefault().register(this)
-    }
-
-    override fun onStop() {
-        EventBus.getDefault().unregister(this)
-        super.onStop()
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onMessageEvent(event: MessageEvent) {
-        // Do something
-        if (event.type == EventBusType.LoginSync){
-            hideLoading()
-            MainDashboardActivity.getInstance(requireContext())
-        }
     }
 
     private fun initView() {

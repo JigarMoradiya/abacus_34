@@ -4,7 +4,6 @@ import androidx.lifecycle.viewModelScope
 import com.android.billingclient.api.BillingClient
 import com.google.common.reflect.TypeToken
 import com.google.gson.Gson
-import com.jigar.me.BuildConfig
 import com.jigar.me.data.model.data.GooglePurchasedPlanRequest
 import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
@@ -32,9 +31,9 @@ import javax.inject.Inject
 class HomeFragmentViewModel @Inject constructor(
     private val prefs: AppPreferencesHelper,
     private val abacusDataRepository: AbacusDataRepository,
-    private val purchaseRepository: PurchaseRepository,
     private val devicePurchaseVerifyUseCase: DevicePurchaseVerifyUseCase,
-    private val changePurchaseUseCase: ChangePurchaseUseCase
+    private val changePurchaseUseCase: ChangePurchaseUseCase,
+    private val purchaseRepository: PurchaseRepository,
 ) : StatefulViewModel<HomeUiState>() {
 
     override val TAG = "HomeFragmentViewModel"
@@ -44,9 +43,7 @@ class HomeFragmentViewModel @Inject constructor(
     init {
         viewModelScope.launch{
             loadHomeMenu()
-            if (!BuildConfig.DEBUG){
-                setPurchaseData()
-            }
+            setPurchaseData()
         }
     }
     private suspend fun loadHomeMenu() {
@@ -71,7 +68,7 @@ class HomeFragmentViewModel @Inject constructor(
                 val list = createPurchasedPlanRequest(purchasedList)
                 if (list.isNotEmpty()){
                     updateState_ {
-                        copy(purchasedRequest = purchasedRequest)
+                        copy(purchasedRequest = list)
                     }
                     devicePurchaseVerifyUseCase(
                         params = PurchasedPlanCheckRequest(ArrayList(list)),
@@ -97,7 +94,7 @@ class HomeFragmentViewModel @Inject constructor(
     }
     fun changePurchase() = viewModelScope.launch{
         if (state().purchasedRequest.isNotNullOrEmpty()){
-            devicePurchaseVerifyUseCase(
+            changePurchaseUseCase(
                 params = PurchasedPlanCheckRequest(ArrayList(state().purchasedRequest)),
                 onStart = { updateState_ { copy(isLoading = true) } },
                 onEachEmit = { },
