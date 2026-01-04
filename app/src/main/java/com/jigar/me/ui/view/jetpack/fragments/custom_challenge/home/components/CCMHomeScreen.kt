@@ -8,16 +8,24 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DisplaySettings
+import androidx.compose.material.icons.filled.Store
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.draw.drawWithCache
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
@@ -27,7 +35,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.core.components.VerticalCheckbox
+import com.jigar.me.ui.view.jetpack.core.components.HorizontalCheckbox
 import com.jigar.me.ui.view.jetpack.fragments.custom_challenge.home.viewmodels.CCMHomeUiState
 import com.jigar.me.ui.view.jetpack.fragments.custom_challenge.home.viewmodels.CCMHomeViewModel
 import com.jigar.me.ui.view.jetpack.utils.ui.slider.RangeSlider
@@ -40,6 +48,26 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
     Column(
         modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
     ) {
+        val gradientBrush = Brush.linearGradient(colors = listOf(Color(0xFF9C27B0), Color(0xFFE991FF)))
+
+        Icon(
+            imageVector = Icons.Default.DisplaySettings,
+            contentDescription = AppConstants.HomeClicks.Menu_CCM,
+            modifier = Modifier
+                .size(48.dp)
+                .graphicsLayer(alpha = 0.99f)
+                .drawWithCache {
+                    onDrawWithContent {
+                        drawContent()
+                        drawRect(
+                            brush = gradientBrush,
+                            size = size,
+                            blendMode = BlendMode.SrcAtop
+                        )
+                    }
+                }
+        )
+
         Text(
             text = stringResource(R.string.create_custom_challenge_as_per_your_kid_s_ability),
             modifier = Modifier,
@@ -119,13 +147,13 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
         Row(
             modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding16), Alignment.CenterHorizontally), verticalAlignment = Alignment.CenterVertically
         ) {
-            VerticalCheckbox(
+            HorizontalCheckbox(
                 text = stringResource(R.string.question_speak_voice), checked = uiState.isQuestionSpeak, type = AppConstants.CCM.isQuestionSpeak, onCheckedChange = viewModel::updateValues
             )
-            VerticalCheckbox(
+            HorizontalCheckbox(
                 text = stringResource(R.string.question_show_in_number), checked = uiState.isQuestionShowNumber, type = AppConstants.CCM.isQuestionShowNumber, onCheckedChange = viewModel::updateValues
             )
-            VerticalCheckbox(
+            HorizontalCheckbox(
                 text = stringResource(R.string.question_show_in_word), checked = uiState.isQuestionShowWord, type = AppConstants.CCM.isQuestionShowWord, onCheckedChange = viewModel::updateValues
             )
         }
