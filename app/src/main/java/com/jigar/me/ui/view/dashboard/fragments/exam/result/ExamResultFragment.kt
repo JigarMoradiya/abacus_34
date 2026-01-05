@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +12,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.jigar.me.R
 import com.jigar.me.data.local.data.AbacusBeadType
-import com.jigar.me.data.local.data.BeginnerExamPaper
+import com.jigar.me.data.local.data.ExamPaper
 import com.jigar.me.data.local.data.BeginnerExamQuestionType
 import com.jigar.me.data.local.data.DataProvider
 import com.jigar.me.data.model.dbtable.exam.DailyExamData
@@ -32,7 +31,7 @@ class ExamResultFragment : BaseFragment() {
     private var examResult = ""
     private var examAbacusTheme = AppConstants.Settings.theam_Default
     private var listAbacus: List<DailyExamData> = ArrayList()
-    private var listAbacusLevel1: List<BeginnerExamPaper> = ArrayList()
+    private var listAbacusLevel1: List<ExamPaper> = ArrayList()
     private var examType = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +56,7 @@ class ExamResultFragment : BaseFragment() {
         if (examType == "object" || examType == "new"){
             examAbacusTheme = requireArguments().getString(AppConstants.extras_Comman.examAbacusType, AppConstants.Settings.theam_Default)
             prefManager.setCustomParam(AppConstants.Settings.TheamTempView, examAbacusTheme)
-            val type = object : TypeToken<List<BeginnerExamPaper>>() {}.type
+            val type = object : TypeToken<List<ExamPaper>>() {}.type
             listAbacusLevel1 = Gson().fromJson(examResult, type)
 
             binding.recyclerviewResult.setHasFixedSize(true)

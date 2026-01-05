@@ -3,7 +3,6 @@ package com.jigar.me.ui.view.dashboard.fragments.exam.doexam
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,24 +11,20 @@ import androidx.core.text.HtmlCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.gson.Gson
-import com.jigar.me.MyApplication
 import com.jigar.me.R
 import com.jigar.me.data.local.data.AbacusBeadType
-import com.jigar.me.data.local.data.BeginnerExamPaper
+import com.jigar.me.data.local.data.ExamPaper
 import com.jigar.me.data.local.data.BeginnerExamQuestionType
 import com.jigar.me.data.local.data.DataObjectsSize
 import com.jigar.me.data.local.data.DataProvider
 import com.jigar.me.data.local.data.ExamProvider
 import com.jigar.me.data.model.data.QuestionDataRequest
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
-import com.jigar.me.data.model.dbtable.exam.ExamHistory
 import com.jigar.me.databinding.FragmentExamCommanBinding
 import com.jigar.me.databinding.LayoutAbacusExamBinding
 import com.jigar.me.ui.view.base.BaseFragment
-import com.jigar.me.ui.view.base.abacus.AbacusMasterSound
 import com.jigar.me.ui.view.base.abacus.AbacusUtils
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
 import com.jigar.me.ui.view.confirm_alerts.dialogs.ExamCompleteDialog
@@ -58,12 +53,12 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
     private val examViewModel by viewModels<ExamViewModel>()
     private lateinit var mNavController: NavController
 
-    private var listExam: List<BeginnerExamPaper> = ArrayList()
+    private var listExam: List<ExamPaper> = ArrayList()
     private var currentQuestionPos = 0
     private var totalWrong = 0
     private var correctAns = ""
     private var theme = ""
-    private var examLevel = AppConstants.ExamType.exam_Level_Beginner
+    private var examLevel = AppConstants.EXAM.examDifficultyBeginner
     private lateinit var mCalculator: Calculator
     private var total_sec = 0
     private var handler: Handler? = null
@@ -86,11 +81,11 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
         isSubtractionExam = ExamCommonFragmentArgs.fromBundle(requireArguments()).isSubtractionExam
         isMultiplicationExam = ExamCommonFragmentArgs.fromBundle(requireArguments()).isMultiplicationExam
         isDivisionExam = ExamCommonFragmentArgs.fromBundle(requireArguments()).isDivisionExam
-        if (isNumberExam){examForList.add(AppConstants.ExamType.exam_Type_Number)}
-        if (isAdditionExam){examForList.add(AppConstants.ExamType.exam_Type_Addition)}
-        if (isSubtractionExam){examForList.add(AppConstants.ExamType.exam_Type_Subtraction)}
-        if (isMultiplicationExam){examForList.add(AppConstants.ExamType.exam_Type_Multiplication)}
-        if (isDivisionExam){examForList.add(AppConstants.ExamType.exam_Type_Division)}
+        if (isNumberExam){examForList.add(AppConstants.EXAM.isNumberSelected)}
+        if (isAdditionExam){examForList.add(AppConstants.EXAM.isAdditionSelected)}
+        if (isSubtractionExam){examForList.add(AppConstants.EXAM.isSubtractionSelected)}
+        if (isMultiplicationExam){examForList.add(AppConstants.EXAM.isMultiplicationSelected)}
+        if (isDivisionExam){examForList.add(AppConstants.EXAM.isDivisionSelected)}
 
         initObserver()
     }
@@ -156,7 +151,7 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
 //        ExamCompleteDialog.showPopup(requireActivity(),totalTime,"0",totalWrong.toString(),right.toString(),listExam.size.toString(),this,prefManager)
         val submitExamRequest = SubmitAllExamDataRequest()
         with(submitExamRequest){
-            type = AppConstants.ExamType.type_Exam
+            type = AppConstants.EXAM.type_Exam
             level = examLevel
             theme = theme
             sub_type = examForList.joinToString(separator = ",")
@@ -170,9 +165,9 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
                 val queType = if (it.imageData != null || it.isAbacusQuestion == true){
                     if (it.type == BeginnerExamQuestionType.Count){
                         if (it.isAbacusQuestion == true){
-                            AppConstants.ExamType.exam_Que_type_abacus
+                            AppConstants.EXAM.exam_Que_type_abacus
                         }else{
-                            AppConstants.ExamType.exam_Que_type_object
+                            AppConstants.EXAM.exam_Que_type_object
                         }
                     }else if (it.type == BeginnerExamQuestionType.Additions || it.type == BeginnerExamQuestionType.Subtractions){
                         when (it.type) {
@@ -187,15 +182,15 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
                             else -> {}
                         }
                         if (it.isAbacusQuestion == true){
-                            AppConstants.ExamType.exam_Que_type_abacus
+                            AppConstants.EXAM.exam_Que_type_abacus
                         }else{
-                            AppConstants.ExamType.exam_Que_type_object
+                            AppConstants.EXAM.exam_Que_type_object
                         }
                     }else{
                         ""
                     }
                 }else{
-                    AppConstants.ExamType.exam_Que_type_question
+                    AppConstants.EXAM.exam_Que_type_question
                 }
 
                 val resultObject = mCalculator.getResult(question,question)
@@ -279,18 +274,10 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
         if (currentQuestionPos >= listExam.size) {
             completePopup()
         } else {
-            if (listExam[currentQuestionPos].imageData != null || listExam[currentQuestionPos].isAbacusQuestion == true){
-                mBinding.txtHeaderTitle.show()
-                mBinding.conObject.show()
-                mBinding.conTxt.hide()
-                setQuestionObjectOrAbacus()
-            }else{
-                mBinding.txtHeaderTitle.hide()
-                mBinding.conObject.hide()
-                mBinding.conTxt.show()
-                setQuestionTxt()
-            }
-
+            mBinding.txtHeaderTitle.hide()
+            mBinding.conObject.hide()
+            mBinding.conTxt.show()
+            setQuestionTxt()
         }
     }
 
@@ -345,241 +332,6 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
         }
     }
 
-    private fun setQuestionObjectOrAbacus() {
-        mBinding.recyclerviewObjects2.hide()
-        mBinding.spaceBetween.hide()
-        mBinding.imgSign.hide()
-
-        if (listExam[currentQuestionPos].type == BeginnerExamQuestionType.Count){
-            val str = getString(R.string.count_the)+" <b><font color='#E14A4D'>Abacus Beads</font></b>"
-            mBinding.txtHeaderTitle.text = HtmlCompat.fromHtml(str,HtmlCompat.FROM_HTML_MODE_COMPACT)
-
-            if (listExam[currentQuestionPos].isAbacusQuestion == true){
-                mBinding.linearQuestion.hide()
-                mBinding.relAbacus.show()
-
-                mBinding.layoutAbacus1.removeAllViews()
-                mBinding.layoutAbacus2.removeAllViews()
-                val abacusBinding1 = LayoutAbacusExamBinding.inflate(layoutInflater, null, false)
-                mBinding.layoutAbacus1.addView(abacusBinding1.root)
-                abacusBinding1.tvCurrentVal.hide()
-                if (DataProvider.generateIndex() == 0){
-                    abacusBinding1.imgKidLeft.setImageResource(R.drawable.ic_boy_abacus_left)
-                    abacusBinding1.imgKidHandLeft.setImageResource(R.drawable.ic_boy_abacus_hand_left)
-                }else{
-                    abacusBinding1.imgKidLeft.setImageResource(R.drawable.ic_girl_abacus_left)
-                    abacusBinding1.imgKidHandLeft.setImageResource(R.drawable.ic_girl_abacus_hand_left)
-                }
-                abacusBinding1.imgKidLeft.show()
-                abacusBinding1.imgKidHandLeft.show()
-
-                abacusBinding1.imgKidRight.hide()
-                abacusBinding1.imgKidHandRight.hide()
-
-                mBinding.layoutAbacus1.show()
-                mBinding.layoutAbacus2.hide()
-                mBinding.imgSign1.hide()
-                lifecycleScope.launch {
-                    val themeContent = DataProvider.findAbacusThemeType(requireContext(),theme,AbacusBeadType.Exam)
-                    themeContent.abacusFrameExam135.let {
-                        abacusBinding1.rlAbacusMain.setBackgroundResource(it)
-                    }
-                    themeContent.dividerColor1.let {
-                        abacusBinding1.ivDivider.setBackgroundColor(ContextCompat.getColor(requireContext(),it))
-                    }
-                    themeContent.resetBtnColor8.let {
-                        abacusBinding1.ivReset.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-                    }
-                    AbacusUtils.setAbacusColumnTheme(AbacusBeadType.ExamResult,abacusBinding1.abacusTop,abacusBinding1.abacusBottom, column = listExam[currentQuestionPos].value.length)
-                    AbacusUtils.setNumber(listExam[currentQuestionPos].value,abacusBinding1.abacusTop,abacusBinding1.abacusBottom, totalLength = listExam[currentQuestionPos].value.length)
-                }
-            }else{
-                mBinding.relAbacus.hide()
-                mBinding.linearQuestion.show()
-                val str = getString(R.string.count_the)+" <b><font color='#E14A4D'>"+listExam[currentQuestionPos].imageData?.name+"</font></b>"
-                mBinding.txtHeaderTitle.text = HtmlCompat.fromHtml(str,HtmlCompat.FROM_HTML_MODE_COMPACT)
-
-                var list1ImageCount = 0
-                var list2ImageCount = 0
-                val totalCount = listExam[currentQuestionPos].value.toInt()
-                if (totalCount > 10){
-                    list1ImageCount = totalCount/2
-                    list2ImageCount = totalCount - list1ImageCount
-                }else if (totalCount < 6){
-                    list1ImageCount = totalCount
-                }else{
-                    list1ImageCount = 5
-                    list2ImageCount = totalCount - 5
-                }
-                val size = if (list1ImageCount < 5 && list2ImageCount == 0){
-                    DataObjectsSize.Large
-                }else if (list1ImageCount == 5 && list2ImageCount == 0){
-                    DataObjectsSize.Medium
-                }else{
-                    DataObjectsSize.Small
-                }
-
-                if (list1ImageCount > 0){
-                    objectListAdapter1= ObjectListAdapter(list1ImageCount, listExam[currentQuestionPos].imageData,size)
-                    mBinding.recyclerviewObjects1.layoutManager = GridLayoutManager(requireContext(),list1ImageCount)
-                    mBinding.recyclerviewObjects1.adapter = objectListAdapter1
-                }
-                if (list2ImageCount > 0){
-                    objectListAdapter2= ObjectListAdapter(list2ImageCount, listExam[currentQuestionPos].imageData,size)
-                    mBinding.recyclerviewObjects2.layoutManager = GridLayoutManager(requireContext(),list2ImageCount)
-                    mBinding.recyclerviewObjects2.adapter = objectListAdapter2
-                    mBinding.recyclerviewObjects2.show()
-                    mBinding.spaceBetween.show()
-                }
-            }
-        }else if (listExam[currentQuestionPos].type == BeginnerExamQuestionType.Additions || listExam[currentQuestionPos].type == BeginnerExamQuestionType.Subtractions){
-
-            val list1ImageCount = listExam[currentQuestionPos].value.toInt()
-            val list2ImageCount = listExam[currentQuestionPos].value2.toInt()
-
-            if (listExam[currentQuestionPos].isAbacusQuestion == true){
-                mBinding.relAbacus.show()
-                mBinding.linearQuestion.hide()
-
-                mBinding.layoutAbacus1.removeAllViews()
-                mBinding.layoutAbacus2.removeAllViews()
-                val abacusBinding1 = LayoutAbacusExamBinding.inflate(layoutInflater, null, false)
-                mBinding.layoutAbacus1.addView(abacusBinding1.root)
-
-                val abacusBinding2 = LayoutAbacusExamBinding.inflate(layoutInflater, null, false)
-                mBinding.layoutAbacus2.addView(abacusBinding2.root)
-
-                abacusBinding1.tvCurrentVal.hide()
-                abacusBinding2.tvCurrentVal.hide()
-
-                abacusBinding1.imgKidLeft.show()
-                abacusBinding1.imgKidHandLeft.show()
-                abacusBinding1.imgKidRight.hide()
-                abacusBinding1.imgKidHandRight.hide()
-
-                abacusBinding2.imgKidLeft.hide()
-                abacusBinding2.imgKidHandLeft.hide()
-                abacusBinding2.imgKidRight.show()
-                abacusBinding2.imgKidHandRight.show()
-
-                if (DataProvider.generateIndex() == 0){
-                    abacusBinding1.imgKidLeft.setImageResource(R.drawable.ic_boy_abacus_left)
-                    abacusBinding1.imgKidHandLeft.setImageResource(R.drawable.ic_boy_abacus_hand_left)
-                    abacusBinding2.imgKidRight.setImageResource(R.drawable.ic_girl_abacus_right)
-                    abacusBinding2.imgKidHandRight.setImageResource(R.drawable.ic_girl_abacus_hand_right)
-                }else{
-                    abacusBinding1.imgKidLeft.setImageResource(R.drawable.ic_girl_abacus_left)
-                    abacusBinding1.imgKidHandLeft.setImageResource(R.drawable.ic_girl_abacus_hand_left)
-                    abacusBinding2.imgKidRight.setImageResource(R.drawable.ic_boy_abacus_right)
-                    abacusBinding2.imgKidHandRight.setImageResource(R.drawable.ic_boy_abacus_hand_right)
-                }
-
-
-                mBinding.imgSign1.show()
-                mBinding.layoutAbacus1.show()
-                mBinding.layoutAbacus2.show()
-
-                lifecycleScope.launch {
-                    val themeContent = DataProvider.findAbacusThemeType(requireContext(),theme,AbacusBeadType.Exam)
-                    themeContent.abacusFrameExam135.let {
-                        abacusBinding1.rlAbacusMain.setBackgroundResource(it)
-                        abacusBinding2.rlAbacusMain.setBackgroundResource(it)
-                    }
-                    themeContent.dividerColor1.let {
-                        abacusBinding1.ivDivider.setBackgroundColor(ContextCompat.getColor(requireContext(),it))
-                        abacusBinding2.ivDivider.setBackgroundColor(ContextCompat.getColor(requireContext(),it))
-                    }
-                    themeContent.resetBtnColor8.let {
-                        abacusBinding1.ivReset.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-                        abacusBinding2.ivReset.setColorFilter(ContextCompat.getColor(requireContext(),it), android.graphics.PorterDuff.Mode.SRC_IN)
-                    }
-                    AbacusUtils.setAbacusColumnTheme(AbacusBeadType.ExamResult,abacusBinding1.abacusTop,abacusBinding1.abacusBottom,abacusBinding2.abacusTop,abacusBinding2.abacusBottom,column = list1ImageCount.toString().length,column2 = list2ImageCount.toString().length)
-                    AbacusUtils.setNumber(list1ImageCount.toString(),abacusBinding1.abacusTop,abacusBinding1.abacusBottom,list2ImageCount.toString(),abacusBinding2.abacusTop,abacusBinding2.abacusBottom, totalLength = list1ImageCount.toString().length, totalLength1 = list2ImageCount.toString().length)
-                }
-
-                if (listExam[currentQuestionPos].type == BeginnerExamQuestionType.Additions){
-                    val str = getString(R.string.additions_of)+" <b><font color='#E14A4D'>Abacus Beads</font></b>"
-                    mBinding.txtHeaderTitle.text = HtmlCompat.fromHtml(str,HtmlCompat.FROM_HTML_MODE_COMPACT)
-                    mBinding.imgSign1.setImageResource(R.drawable.cal_plus)
-                }else if (listExam[currentQuestionPos].type == BeginnerExamQuestionType.Subtractions){
-                    val str = getString(R.string.subtraction_of)+" <b><font color='#E14A4D'>Abacus Beads</font></b>"
-                    mBinding.txtHeaderTitle.text = HtmlCompat.fromHtml(str,HtmlCompat.FROM_HTML_MODE_COMPACT)
-                    mBinding.imgSign1.setImageResource(R.drawable.cal_minus)
-                }
-            }else{
-                mBinding.relAbacus.hide()
-                mBinding.linearQuestion.show()
-                if (listExam[currentQuestionPos].type == BeginnerExamQuestionType.Additions){
-                    val str = getString(R.string.additions_of)+" <b><font color='#E14A4D'>"+listExam[currentQuestionPos].imageData?.name+"</font></b>"
-                    mBinding.txtHeaderTitle.text = HtmlCompat.fromHtml(str,HtmlCompat.FROM_HTML_MODE_COMPACT)
-                    mBinding.imgSign.setImageResource(R.drawable.cal_plus)
-                }else if (listExam[currentQuestionPos].type == BeginnerExamQuestionType.Subtractions){
-                    val str = getString(R.string.subtraction_of)+" <b><font color='#E14A4D'>"+listExam[currentQuestionPos].imageData?.name+"</font></b>"
-                    mBinding.txtHeaderTitle.text = HtmlCompat.fromHtml(str,HtmlCompat.FROM_HTML_MODE_COMPACT)
-                    mBinding.imgSign.setImageResource(R.drawable.cal_minus)
-                }
-
-                objectListAdapter1= ObjectListAdapter(list1ImageCount, listExam[currentQuestionPos].imageData,DataObjectsSize.ExtraSmall)
-                mBinding.recyclerviewObjects1.layoutManager = GridLayoutManager(requireContext(),list1ImageCount)
-                mBinding.recyclerviewObjects1.adapter = objectListAdapter1
-
-                objectListAdapter2= ObjectListAdapter(list2ImageCount, listExam[currentQuestionPos].imageData,DataObjectsSize.ExtraSmall)
-                mBinding.recyclerviewObjects2.layoutManager = GridLayoutManager(requireContext(),list2ImageCount)
-                mBinding.recyclerviewObjects2.adapter = objectListAdapter2
-
-                mBinding.recyclerviewObjects2.show()
-                mBinding.imgSign.show()
-            }
-
-        }
-        mBinding.progressHorizontal.progress = (currentQuestionPos + 1)
-
-        val tempAns = when (listExam[currentQuestionPos].type) {
-            BeginnerExamQuestionType.Additions -> {
-                listExam[currentQuestionPos].value+"+"+listExam[currentQuestionPos].value2
-            }
-            BeginnerExamQuestionType.Subtractions -> {
-                listExam[currentQuestionPos].value+"-"+listExam[currentQuestionPos].value2
-            }
-            else -> {
-                listExam[currentQuestionPos].value
-            }
-        }
-        val resultObject = mCalculator.getResult(tempAns,tempAns)
-        correctAns = CommonUtils.removeTrailingZero(resultObject)
-        val listAnswerTemp: MutableList<Int> = ArrayList()
-        val listAnswer: MutableList<Int?> = ArrayList()
-        if (correctAns.toInt() - 1 > 0) {
-            listAnswerTemp.add(correctAns.toInt() - 1)
-        }
-        if (correctAns.toInt() - 2 > 0) {
-            listAnswerTemp.add(correctAns.toInt() - 2)
-        }
-        if (correctAns.toInt() - 3 > 0) {
-            listAnswerTemp.add(correctAns.toInt() - 3)
-        }
-        listAnswerTemp.add(correctAns.toInt() + 1)
-        listAnswerTemp.add(correctAns.toInt() + 2)
-        listAnswerTemp.add(correctAns.toInt() + 3)
-        for (i in 0..2) {
-            val pos = Random().nextInt(listAnswerTemp.size)
-            listAnswer.add(listAnswerTemp[pos])
-            listAnswerTemp.removeAt(pos)
-        }
-        listAnswer.add(correctAns.toInt())
-        listAnswer.shuffle()
-        try {
-            mBinding.txtAnswer11.text = listAnswer[0].toString()
-            mBinding.txtAnswer22.text = listAnswer[1].toString()
-            mBinding.txtAnswer33.text = listAnswer[2].toString()
-            mBinding.txtAnswer44.text = listAnswer[3].toString()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            requireContext().getString(R.string.some_thing_wrong)
-            onBack()
-        }
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         if (runnable != null){
@@ -589,30 +341,11 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
 
     private fun onViewClick(clickType: String) {
         this.clickType = clickType
-        if(requireContext().isNetworkAvailable){
-            PlaySound.playTap(requireContext())
-            clickOtions()
-        }else{
-            notOfflineSupportDialog2()
-        }
+        PlaySound.playTap(requireContext())
+        clickOtions()
+
     }
-    private fun notOfflineSupportDialog2() {
-        CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.no_internet_working),getString(R.string.no_internet)
-            ,getString(R.string.continue_working_internet),getString(R.string.no_working_internet), icon = R.drawable.ic_alert_sad_emoji,isCancelable = false,
-            clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
-                override fun onConfirmationYesClick(bundle: Bundle?) {
-                    if (requireContext().isNetworkAvailable){
-                        clickOtions()
-                    } else{
-                        showToast(R.string.still_no_internet)
-                        notOfflineSupportDialog2()
-                    }
-                }
-                override fun onConfirmationNoClick(bundle: Bundle?){
-                    mNavController.navigateUp()
-                }
-            })
-    }
+
     private fun clickOtions() {
         when (clickType) {
             "answer11" -> {
@@ -704,5 +437,23 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
     }
     private fun onBack() {
         mNavController.navigateUp()
+    }
+
+    private fun notOfflineSupportDialog2() {
+        CommonConfirmationBottomSheet.showPopup(requireActivity(),getString(R.string.no_internet_working),getString(R.string.no_internet)
+            ,getString(R.string.continue_working_internet),getString(R.string.no_working_internet), icon = R.drawable.ic_alert_sad_emoji,isCancelable = false,
+            clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
+                override fun onConfirmationYesClick(bundle: Bundle?) {
+                    if (requireContext().isNetworkAvailable){
+                        clickOtions()
+                    } else{
+                        showToast(R.string.still_no_internet)
+                        notOfflineSupportDialog2()
+                    }
+                }
+                override fun onConfirmationNoClick(bundle: Bundle?){
+                    mNavController.navigateUp()
+                }
+            })
     }
 }

@@ -74,10 +74,10 @@ class ReportsHomeFragment : BaseFragment(), ReportsListAdapter.OnItemClickListen
             with(list) {
                 add(getString(R.string.select_report_type))
                 add(getString(R.string.all_report))
-                add(AppConstants.ExamType.type_Exam)
-                add(AppConstants.ExamType.type_Exercise)
-                add(AppConstants.ExamType.type_CustomChallengeMode)
-                add(AppConstants.ExamType.type_Practice_Set)
+                add(AppConstants.EXAM.type_Exam)
+                add(AppConstants.EXAM.type_Exercise)
+                add(AppConstants.EXAM.type_CustomChallengeMode)
+                add(AppConstants.EXAM.type_Practice_Set)
             }
 
             val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, list)
@@ -149,9 +149,9 @@ class ReportsHomeFragment : BaseFragment(), ReportsListAdapter.OnItemClickListen
         val type = binding.txtFilter.text.toString()
         if (type.equals(getString(R.string.all_report),true)){
             examViewModel.getAllExam(from_date = fromDate, to_date = toDate, from = from)
-        }else if (type.equals(AppConstants.ExamType.type_CustomChallengeMode,true)){
-            examViewModel.getAllExam(AppConstants.ExamType.type_CCM,from_date = fromDate, to_date = toDate,from = from)
-        }else if (type.equals(AppConstants.ExamType.type_Practice_Set,true)){
+        }else if (type.equals(AppConstants.EXAM.type_CustomChallengeMode,true)){
+            examViewModel.getAllExam(AppConstants.EXAM.type_CCM,from_date = fromDate, to_date = toDate,from = from)
+        }else if (type.equals(AppConstants.EXAM.type_Practice_Set,true)){
             examViewModel.getAllExam(AppConstants.apiParams.answerFormalExam,from_date = fromDate, to_date = toDate,from = from)
         }else{
             examViewModel.getAllExam(type,from_date = fromDate, to_date = toDate,from = from)
@@ -213,15 +213,15 @@ class ReportsHomeFragment : BaseFragment(), ReportsListAdapter.OnItemClickListen
     override fun onItemClick(data: AllExamData) {
         val bundle = Bundle()
         when (data.type) {
-            AppConstants.ExamType.type_CCM -> { }
-            AppConstants.ExamType.type_Exam -> {
+            AppConstants.EXAM.type_CCM -> { }
+            AppConstants.EXAM.type_Exam -> {
                 bundle.putString(AppConstants.extras_Comman.type, "new")
                 bundle.putString(AppConstants.extras_Comman.examResult, Gson().toJson(data.toExamResult()))
                 bundle.putString(AppConstants.extras_Comman.examAbacusType, data.theme?:AppConstants.Settings.theam_Default)
                 bundle.putString(AppConstants.extras_Comman.From, "report")
                 mNavController.navigate(R.id.action_reportsHomeFragment_to_examResultFragment, bundle)
             }
-            AppConstants.ExamType.type_Exercise,AppConstants.apiParams.answerFormalExam -> {
+            AppConstants.EXAM.type_Exercise,AppConstants.apiParams.answerFormalExam -> {
                 ExerciseCompleteDialog.showPopup(requireContext(),data.type,data.toExerciseResult(),this@ReportsHomeFragment)
             }
         }

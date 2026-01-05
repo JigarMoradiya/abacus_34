@@ -142,7 +142,7 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
             }
         }
 
-        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.activity_padding8)))
+        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.activity_padding6)))
 
         Row(
             modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding16), Alignment.CenterHorizontally), verticalAlignment = Alignment.CenterVertically

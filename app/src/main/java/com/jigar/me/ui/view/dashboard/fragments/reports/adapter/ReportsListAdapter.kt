@@ -46,18 +46,18 @@ class ReportsListAdapter(
         val data = listData[position]
         with(holder.binding){
             this.data = data
-            txtType.text = if (data.type == AppConstants.apiParams.answerFormalExam){AppConstants.ExamType.type_Practice_Set}else if (data.type == AppConstants.ExamType.type_CCM){context.getString(R.string.custom_challenge_mode)}else{data.type}
+            txtType.text = if (data.type == AppConstants.apiParams.answerFormalExam){AppConstants.EXAM.type_Practice_Set}else if (data.type == AppConstants.EXAM.type_CCM){context.getString(R.string.custom_challenge_mode)}else{data.type}
             conCCM.hide()
             conExerciseExam.hide()
             if (data.type == AppConstants.apiParams.answerFormalExam){
 
             }
             when (data.type) {
-                AppConstants.ExamType.type_CCM -> {
+                AppConstants.EXAM.type_CCM -> {
                     conCCM.show()
                     txtType.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context,R.color.report_ccm_btn_bg))
                 }
-                AppConstants.ExamType.type_Exam -> {
+                AppConstants.EXAM.type_Exam -> {
                     conExerciseExam.show()
                     txtExerciseType.text = context.getString(R.string.level_of_exam)
                     txtExerciseTypeValue.text = data.level
@@ -68,7 +68,7 @@ class ReportsListAdapter(
                     txtExerciseLabelValue.show()
                     txtType.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context,R.color.report_exam_btn_bg))
                 }
-                AppConstants.ExamType.type_Exercise -> {
+                AppConstants.EXAM.type_Exercise -> {
                     conExerciseExam.show()
                     txtExerciseType.text = context.getString(R.string.type_of_exercise)
                     txtExerciseTypeValue.text = data.category

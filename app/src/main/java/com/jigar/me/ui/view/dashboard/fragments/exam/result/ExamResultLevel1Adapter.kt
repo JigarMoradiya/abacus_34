@@ -1,19 +1,14 @@
 package com.jigar.me.ui.view.dashboard.fragments.exam.result
 
 import android.annotation.SuppressLint
-import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.core.text.HtmlCompat
 import androidx.core.view.setMargins
-import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jigar.me.R
 import com.jigar.me.data.local.data.*
-import com.jigar.me.data.pref.AppPreferencesHelper
-import com.jigar.me.databinding.FragmentAbacusSubBinding
 import com.jigar.me.databinding.LayoutAbacusExamBinding
 import com.jigar.me.databinding.RawExamResultLevel1AbacusBinding
 import com.jigar.me.databinding.RawExamResultLevel1Binding
@@ -29,7 +24,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class ExamResultLevel1Adapter(
-    private var listData: List<BeginnerExamPaper>,
+    private var listData: List<ExamPaper>,
     private val themeContent: AbacusContent
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {

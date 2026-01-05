@@ -8,6 +8,6 @@ data class CCMHomeUiState(
     val questionMinLength: Int = 1,
     val questionMaxLength: Int = 3,
     val isQuestionSpeak: Boolean = false,
-    val isQuestionShowNumber: Boolean = true,
+    val isQuestionShowNumber: Boolean = false,
     val isQuestionShowWord: Boolean = false,
 )

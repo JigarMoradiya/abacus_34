@@ -40,7 +40,7 @@
             android:gravity="center"
             android:paddingStart="@dimen/menu_icons_bg_padding"
             android:paddingEnd="@dimen/activity_padding16"
-            android:text="@string/let_s_start_exam"
+            android:text="@string/math_exam"
             android:textColor="@color/back_icon_bg"
             app:layout_constraintBottom_toBottomOf="@+id/cardBack"
             app:layout_constraintStart_toStartOf="@+id/cardBack"

@@ -1,33 +1,21 @@
 package com.jigar.me.ui.view.dashboard.fragments.exam.home
 
-import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import com.google.gson.Gson
-import com.google.gson.JsonObject
 import com.jigar.me.R
-import com.jigar.me.data.local.data.AbacusBeadType
-import com.jigar.me.data.local.data.AbacusContent
-import com.jigar.me.data.local.data.DataProvider
-import com.jigar.me.data.model.data.Statistics
 import com.jigar.me.databinding.FragmentExamHomeBinding
 import com.jigar.me.ui.view.base.BaseFragment
-import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.extensions.onClick
 import com.jigar.me.utils.extensions.toastL
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import androidx.navigation.findNavController
 
@@ -75,13 +63,13 @@ class ExamHomeFragment : BaseFragment() {
         var level = ""
         when {
             binding.rdchildLevelBeginner.isChecked -> {
-                level = AppConstants.ExamType.exam_Level_Beginner
+                level = AppConstants.EXAM.examDifficultyBeginner
             }
             binding.rdchildLevelIntermediate.isChecked -> {
-                level = AppConstants.ExamType.exam_Level_Intermediate
+                level = AppConstants.EXAM.examDifficultyIntermediate
             }
             binding.rdchildLevelExpert.isChecked -> {
-                level = AppConstants.ExamType.exam_Level_Expert
+                level = AppConstants.EXAM.examDifficultyExpert
             }
         }
         if (level.isEmpty()){

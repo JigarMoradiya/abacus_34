@@ -20,17 +20,19 @@ object AppConstants {
     const val PAGINATION_RECORDS = 20
 
     const val PREF_KEY_APP_VERSION_CODE = "pref_previous_version_code"
-    annotation class ExamType {
-        companion object {
-            var exam_Type_Number = "Number"
-            var exam_Type_Addition = "Addition"
-            var exam_Type_Subtraction = "Subtraction"
-            var exam_Type_Multiplication = "Multiplication"
-            var exam_Type_Division = "Division"
 
-            val exam_Level_Beginner = "Beginner"
-            val exam_Level_Intermediate = "Intermediate"
-            val exam_Level_Expert = "Expert"
+    annotation class EXAM {
+        companion object Companion {
+            var isNumberSelected = "Number"
+            var isAdditionSelected = "Addition"
+            var isSubtractionSelected = "Subtraction"
+            var isMultiplicationSelected = "Multiplication"
+            var isDivisionSelected = "Division"
+
+            val examDifficulty = "examDifficulty"
+            val examDifficultyBeginner = "Beginner"
+            val examDifficultyIntermediate = "Intermediate"
+            val examDifficultyExpert = "Expert"
 
             val exam_Que_type_question = "question"
             val exam_Que_type_object = "object"
@@ -43,30 +45,10 @@ object AppConstants {
             val type_Practice_Set = "Practice Set of Formal Exam" // user only display name // formal_answer
         }
     }
-    annotation class LoginData {
-        companion object {
-            var LoginTypesStudent = "student"
-            var LoginCompleteStep2 = "STEP_2"
-            var LoginCompleteStep1 = "STEP_1"
-            var LoginCountry_IN = "IN"
-        }
-    }
-    annotation class OTPScreen {
-        companion object {
-            var forgotPassword = "FORGOT_PASSWORD"
-            var signupStep = "SIGN_UP"
-        }
-    }
     annotation class APP_PLAN_DATA {
         companion object {
-            var Currency_INR = "INR"
-            var Currency_USD = "USD"
             var Symbol_INR = "₹"
             var Symbol_USD = "$"
-            var PLAN_TERM_MONTH_1 = "1_month"
-            var PLAN_TERM_MONTH_3 = "3_month"
-            var PLAN_TERM_MONTH_6 = "6_month"
-            var PLAN_TERM_MONTH_12 = "12_month"
         }
     }
     annotation class CCM {

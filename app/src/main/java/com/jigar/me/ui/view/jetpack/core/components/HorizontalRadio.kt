@@ -2,12 +2,11 @@ package com.jigar.me.ui.view.jetpack.core.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Checkbox
-import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,27 +19,30 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import com.jigar.me.R
 
-
 @Composable
-fun HorizontalCheckbox(
+fun HorizontalRadio(
     text: String,
-    checked: Boolean,
+    selected: Boolean,
     type: String,
-    onCheckedChange: (String,Boolean) -> Unit,
+    onSelected: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
         modifier = modifier
-            .clickable { onCheckedChange(type, !checked) }
+            .clickable { onSelected(type) }
             .padding(dimensionResource(R.dimen.activity_padding4)),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding4))
+        horizontalArrangement = Arrangement.spacedBy(
+            dimensionResource(R.dimen.activity_padding4)
+        )
     ) {
-        Checkbox(
-            checked = checked,
-            onCheckedChange = null,
-            colors = CheckboxDefaults.colors(
-                checkedColor = Color(0xFF9C27B0), uncheckedColor = Color(0xFF000000), checkmarkColor = Color.White)
+        RadioButton(
+            selected = selected,
+            onClick = null, // handled by Row
+            colors = RadioButtonDefaults.colors(
+                selectedColor = Color(0xFF9C27B0),
+                unselectedColor = Color.Black
+            )
         )
 
         Text(
@@ -53,5 +55,4 @@ fun HorizontalCheckbox(
             textAlign = TextAlign.Start
         )
     }
-
 }

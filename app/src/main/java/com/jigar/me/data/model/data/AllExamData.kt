@@ -2,7 +2,7 @@ package com.jigar.me.data.model.data
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.jigar.me.data.local.data.BeginnerExamPaper
+import com.jigar.me.data.local.data.ExamPaper
 import com.jigar.me.data.local.data.BeginnerExamQuestionType
 import com.jigar.me.data.local.data.ExamProvider
 import com.jigar.me.data.local.data.ExerciseList
@@ -115,8 +115,8 @@ data class AllExamData(
         return exerciseList
     }
 
-    fun toExamResult(): ArrayList<BeginnerExamPaper> {
-        val examBeginners: ArrayList<BeginnerExamPaper> = arrayListOf()
+    fun toExamResult(): ArrayList<ExamPaper> {
+        val examBeginners: ArrayList<ExamPaper> = arrayListOf()
         val listType = object : TypeToken<List<QuestionDataRequest>?>() {}.type
         val list: List<QuestionDataRequest> = Gson().fromJson(questions, listType)
         if (list.isNotNullOrEmpty()) {
@@ -137,7 +137,7 @@ data class AllExamData(
                     var value2 = ""
                     var imageData: ImagesDataObjects? = null
                     val isAbacusQuestion =
-                        if (que_type == AppConstants.ExamType.exam_Que_type_abacus) {
+                        if (que_type == AppConstants.EXAM.exam_Que_type_abacus) {
                             que?.let {
                                 if (it.contains("-")) {
                                     val queList = it.split("-")
@@ -152,7 +152,7 @@ data class AllExamData(
                                 }
                             }
                             true
-                        } else if (que_type == AppConstants.ExamType.exam_Que_type_object) {
+                        } else if (que_type == AppConstants.EXAM.exam_Que_type_object) {
                             imageData = ExamProvider.findDataObjects(image)
                             que?.let {
                                 if (it.contains("-")) {
@@ -173,7 +173,7 @@ data class AllExamData(
                             false
                         }
                     examBeginners.add(
-                        BeginnerExamPaper(
+                        ExamPaper(
                             questionType,
                             value = value,
                             value2 = value2,

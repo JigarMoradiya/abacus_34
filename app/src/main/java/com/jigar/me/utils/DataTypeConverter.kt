@@ -3,7 +3,7 @@ package com.jigar.me.utils
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.jigar.me.data.local.data.BeginnerExamPaper
+import com.jigar.me.data.local.data.ExamPaper
 import com.jigar.me.data.model.dbtable.exam.DailyExamData
 import com.jigar.me.data.model.dbtable.exam.ExamHistory
 import com.jigar.me.data.model.dbtable.inapp.InAppPurchaseDetails
@@ -34,13 +34,13 @@ class DataTypeConverter {
         return gson.toJson(someObjects)
     }
     @TypeConverter
-    fun beginnerExamDetailToList(data: String): List<BeginnerExamPaper> {
-        val listType = object : TypeToken<List<BeginnerExamPaper>>() {}.type
+    fun beginnerExamDetailToList(data: String): List<ExamPaper> {
+        val listType = object : TypeToken<List<ExamPaper>>() {}.type
         return gson.fromJson(data, listType)
     }
 
     @TypeConverter
-    fun listToBeginnerExamDetail(someObjects: List<BeginnerExamPaper>): String {
+    fun listToBeginnerExamDetail(someObjects: List<ExamPaper>): String {
         return gson.toJson(someObjects)
     }
 

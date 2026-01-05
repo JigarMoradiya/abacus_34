@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.getValue
@@ -18,6 +20,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
+import com.jigar.me.ui.view.jetpack.fragments.exam.play.components.ExamHeader
+import com.jigar.me.ui.view.jetpack.fragments.exam.play.components.ExamPlayScreen
 import com.jigar.me.ui.view.jetpack.fragments.exam.play.viewmodels.ExamPlayViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,8 +39,27 @@ class ExamPlayFragment : Fragment() {
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
                 MaterialTheme {
                     Column(modifier = Modifier.fillMaxSize()) {
-                        BackButtonWithText(title = stringResource(R.string.custom_challenge_mode), onBackClick = {findNavController().popBackStack()})
+                        Row {
+                            BackButtonWithText(title = stringResource(R.string.custom_challenge_mode), onBackClick = {
+                                viewModel::onLeaveExam
+                            })
+                            Spacer(Modifier.weight(1f))
+                            // ---------- HEADER ----------
+                            ExamHeader(
+                                progress = uiState.currentIndex + 1,
+                                total = uiState.examPaper.size,
+                                elapsedSeconds = uiState.elapsedSeconds,
+                            )
+                        }
+                        ExamPlayScreen(viewModel,uiState)
                     }
+                }
+
+                // ---------- COMPLETE ----------
+                if (uiState.isShowCompletePopup) {
+
+                }else if (uiState.isLeaveExam) {
+
                 }
 
             }

@@ -5,21 +5,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import com.google.gson.Gson
-import com.google.gson.JsonObject
 import com.jigar.me.R
 import com.jigar.me.data.local.data.*
 import com.jigar.me.data.model.data.QuestionDataRequest
-import com.jigar.me.data.model.data.Statistics
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.databinding.FragmentAbacusExerciseBinding
 import com.jigar.me.databinding.FragmentExerciseHomeBinding
@@ -355,7 +349,7 @@ class ExerciseHomeFragment : BaseFragment(), AbacusMasterBeadShiftListener, OnAb
 
         val submitExamRequest = SubmitAllExamDataRequest()
         with(submitExamRequest){
-            type = AppConstants.ExamType.type_Exercise
+            type = AppConstants.EXAM.type_Exercise
             category = currentParentData?.title
             when (currentParentData?.id) {
                 "1" -> {

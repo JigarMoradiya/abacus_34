@@ -193,7 +193,7 @@ class CCMPlayViewModel @Inject constructor(
 
         val submitExamRequest = SubmitAllExamDataRequest()
         submitExamRequest.apply {
-            type = AppConstants.ExamType.type_CCM
+            type = AppConstants.EXAM.type_CCM
             total_set_of_question = 1
             total_numbers_in_set = questionList.size
             gap_between_two_question = questionGap

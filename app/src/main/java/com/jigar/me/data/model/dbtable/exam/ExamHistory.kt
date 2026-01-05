@@ -3,12 +3,11 @@ package com.jigar.me.data.model.dbtable.exam
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import com.jigar.me.data.local.data.BeginnerExamPaper
+import com.jigar.me.data.local.data.ExamPaper
 import com.jigar.me.data.local.data.BeginnerExamQuestionType
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Calculator
 import com.jigar.me.utils.CommonUtils
-import com.jigar.me.utils.Constants
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import org.jetbrains.annotations.NotNull
 import java.util.*
@@ -21,7 +20,7 @@ data class ExamHistory(
     val examTotalTime: Int, // in second
     val examType: String,
     val examDetails: List<DailyExamData> = arrayListOf(),
-    val examBeginners: List<BeginnerExamPaper> = arrayListOf(),
+    val examBeginners: List<ExamPaper> = arrayListOf(),
     val addedOn: Date = Date(),
     val theme: String? = null,
     val examFor: List<String>? = null
@@ -30,7 +29,7 @@ data class ExamHistory(
         var totalCorrectAns = 0
         val mCalculator = Calculator()
 
-        if (examFor.isNotNullOrEmpty() || examType == AppConstants.ExamType.exam_Level_Beginner){
+        if (examFor.isNotNullOrEmpty() || examType == AppConstants.EXAM.examDifficultyBeginner){
             examBeginners.forEach {
                 val tempAns = when (it.type) {
                     BeginnerExamQuestionType.Additions -> {

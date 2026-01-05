@@ -242,7 +242,7 @@
     <string name="wrong_answer">Wrong Answer</string>
     <string name="start_again">Start Again</string>
     <string name="result">Results of Exam</string>
-    <string name="let_s_start_exam">It"'"s Exam Time</string>
+    <string name="math_exam">Math Exam</string>
     <string name="let_s_start">Let\'s Start</string>
     <string name="let_s_play">Let\'s Play</string>
     <string name="exam_history">Exam History</string>
@@ -875,5 +875,7 @@
     <string name="customize_pronunciation_voice">Customize Pronunciation (Voice)</string>
     <string name="submit_answer">Submit\nAnswer</string>
     <string name="hide_from_setting">Hide From Setting</string>
+    <string name="select_exam_difficulty">Select Exam Difficulty :</string>
+    <string name="select_exam_types">Select Exam Types :</string>
 
 </resources>

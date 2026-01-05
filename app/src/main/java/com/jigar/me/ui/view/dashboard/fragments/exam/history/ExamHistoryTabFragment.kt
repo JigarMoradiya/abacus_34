@@ -13,13 +13,10 @@ import com.jigar.me.databinding.FragmentExamHistoryTabBinding
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.Constants
 import com.jigar.me.utils.extensions.hide
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class ExamHistoryTabFragment : BaseFragment(), ExamHistoryListAdapter.OnItemClickListener {
@@ -47,12 +44,12 @@ class ExamHistoryTabFragment : BaseFragment(), ExamHistoryListAdapter.OnItemClic
 
     private fun init() {
         binding.recyclerview.adapter = examHistoryListAdapter
-        val examType = when (arguments?.getInt(ARG_POSITION)) {
-            0 -> { AppConstants.ExamType.exam_Level_Beginner }
-            1 -> { AppConstants.ExamType.exam_Level_Intermediate }
-            else -> { AppConstants.ExamType.exam_Level_Expert }
+        val EXAM = when (arguments?.getInt(ARG_POSITION)) {
+            0 -> { AppConstants.EXAM.examDifficultyBeginner }
+            1 -> { AppConstants.EXAM.examDifficultyIntermediate }
+            else -> { AppConstants.EXAM.examDifficultyExpert }
         }
-        apiViewModel.getExamHistoryList(examType).observe(viewLifecycleOwner){
+        apiViewModel.getExamHistoryList(EXAM).observe(viewLifecycleOwner){
             fetchExamHistoryList(it)
         }
     }
@@ -77,7 +74,7 @@ class ExamHistoryTabFragment : BaseFragment(), ExamHistoryListAdapter.OnItemClic
             bundle.putString(AppConstants.extras_Comman.examResult, Gson().toJson(data.examBeginners))
             bundle.putString(AppConstants.extras_Comman.examAbacusType, data.theme?:AppConstants.Settings.theam_Default)
         }else{
-            if (data.examType == AppConstants.ExamType.exam_Level_Beginner){
+            if (data.examType == AppConstants.EXAM.examDifficultyBeginner){
                 bundle.putString(AppConstants.extras_Comman.type, "object")
                 bundle.putString(AppConstants.extras_Comman.examResult, Gson().toJson(data.examBeginners))
                 bundle.putString(AppConstants.extras_Comman.examAbacusType, data.theme?:AppConstants.Settings.theam_Default)

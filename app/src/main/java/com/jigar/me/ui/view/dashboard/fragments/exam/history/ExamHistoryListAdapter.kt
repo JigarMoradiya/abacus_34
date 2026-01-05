@@ -1,16 +1,12 @@
 package com.jigar.me.ui.view.dashboard.fragments.exam.history
 
-import android.util.Log
 import android.view.ViewGroup
 import androidx.core.text.HtmlCompat
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.jigar.me.R
 import com.jigar.me.data.model.dbtable.exam.ExamHistory
 import com.jigar.me.databinding.RawExamHistoryListBinding
-import com.jigar.me.databinding.RawObjectListBinding
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.Constants
 import com.jigar.me.utils.DateTimeUtils
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.layoutInflater
@@ -52,7 +48,7 @@ class ExamHistoryListAdapter(
         holder.binding.txtDesc.text = HtmlCompat.fromHtml(context.resources.getString(R.string.TotalTakeTime) + " : <b>" +time+"</b>",HtmlCompat.FROM_HTML_MODE_COMPACT)
         val totalQuestion = if (data.examFor.isNotNullOrEmpty()){
             data.examBeginners.size
-        }else if (data.examType == AppConstants.ExamType.exam_Level_Beginner){
+        }else if (data.examType == AppConstants.EXAM.examDifficultyBeginner){
             data.examBeginners.size
         }else{
             data.examDetails.size
