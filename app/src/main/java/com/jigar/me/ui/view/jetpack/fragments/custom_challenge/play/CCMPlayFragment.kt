@@ -24,6 +24,7 @@ import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.Loader
+import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
 import com.jigar.me.ui.view.jetpack.fragments.custom_challenge.play.components.AnswerSection
 import com.jigar.me.ui.view.jetpack.fragments.custom_challenge.play.components.CCMCompleteBottomSheetCompose
 import com.jigar.me.ui.view.jetpack.fragments.custom_challenge.play.components.QuestionSection
@@ -48,7 +49,7 @@ class CCMPlayFragment : Fragment() {
                 }
                 MaterialTheme {
                     Column(modifier = Modifier.fillMaxSize()) {
-                        BackButtonWithText(title = stringResource(R.string.custom_challenge_mode), onBackClick = {findNavController().popBackStack()})
+                        BackButtonWithText(title = stringResource(R.string.custom_challenge_mode), onBackClick = { onBack() })
                         if (uiState.isQuestionPhase) {
                             QuestionSection(uiState = uiState)
                         } else {
@@ -82,8 +83,34 @@ class CCMPlayFragment : Fragment() {
                     )
                 }
 
+                // no internet popup
+                AnimatedVisibility(
+                    visible = uiState.isShowNoInternet,
+                    enter = fadeIn(),
+                    exit = fadeOut()
+                ) {
+                    CustomPopupView(
+                        title = stringResource(R.string.no_internet_working),
+                        description = uiState.noInternetMessage,
+                        notes = stringResource(R.string.no_internet_close_notes),
+                        positiveButtonText = stringResource(R.string.continue_working_internet),
+                        negativeButtonText = stringResource(R.string.no_working_internet),
+                        icon = R.drawable.ic_alert_sad_emoji,
+                        widthMultiplier = 0.7f,
+                        onPositiveTapped = {
+                            viewModel.submitAnswer(false)
+                        },
+                        onNegativeTapped = {
+                            onBack()
+                        }
+                    )
+                }
+
             }
         }
     }
 
+    fun onBack(){
+        findNavController().popBackStack()
+    }
 }

@@ -114,12 +114,12 @@ class HomeFragmentNew : Fragment() {
                 findNavController().navigate(R.id.action_homeFragment_to_myProfileFragment)
             }
             AppConstants.HomeClicks.Menu_Abacus_Exercise -> {
-                findNavController().navigate(R.id.action_homeFragment_to_exerciseHomeFragment)
-//                findNavController().navigate(R.id.action_homeFragment_to_examHomeFragment)
+//                findNavController().navigate(R.id.action_homeFragment_to_exerciseHomeFragment)
+                findNavController().navigate(R.id.action_homeFragment_to_examHomeFragment)
             }
             AppConstants.HomeClicks.Menu_Exam -> {
-                findNavController().navigate(R.id.action_homeFragment_to_examHomeFragment)
-//                findNavController().navigate(R.id.toExamHomeFragmentNew)
+//                findNavController().navigate(R.id.action_homeFragment_to_examHomeFragment)
+                findNavController().navigate(R.id.toExamHomeFragmentNew)
             }
             AppConstants.HomeClicks.Menu_CCM -> {
                 findNavController().navigate(R.id.toCCMHomeFragment)

@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.jigar.me.BuildConfig
 import com.jigar.me.R
 import com.jigar.me.data.local.data.AbacusContent
 import com.jigar.me.data.model.data.LoginData
@@ -142,6 +143,9 @@ object CommonUtils {
     }
 
     fun checkPurchaseForExerciseExamCCM(prefManager: AppPreferencesHelper,purchasedSKU: List<InAppSkuDetails>): Boolean {
+        if (BuildConfig.DEBUG){
+            return true
+        }
         val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
         var isPurchased = false
         if (loginData?.email.equals("abacus@yopmail.com") || prefManager.isUserInFreeTrial()){

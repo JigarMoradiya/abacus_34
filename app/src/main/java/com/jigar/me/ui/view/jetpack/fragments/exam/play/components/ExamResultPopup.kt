@@ -1,0 +1,148 @@
+package com.jigar.me.ui.view.jetpack.fragments.exam.play.components
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
+import androidx.compose.foundation.lazy.staggeredgrid.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimaryLight
+import com.jigar.me.ui.view.jetpack.fragments.exam.play.exam_generator.QuestionResult
+
+
+@Composable
+fun ExamResultPopup(
+    items: List<QuestionResult>, numberOfColumns: Int = 6, onDismiss: () -> Unit
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black.copy(alpha = 0.4f))
+            .clickable(
+                indication = null, interactionSource = remember { MutableInteractionSource() }) { onDismiss() }) {
+
+        Card(
+            modifier = Modifier
+                .align(Alignment.Center)
+                .fillMaxWidth()
+                .fillMaxHeight(0.9f)
+                .padding(dimensionResource(R.dimen.activity_padding16)), shape = RoundedCornerShape(20.dp), colors = CardDefaults.cardColors(containerColor = Color.White), elevation = CardDefaults.cardElevation(6.dp)
+        ) {
+
+            Column(
+                modifier = Modifier.fillMaxSize()
+            ) {
+
+                // Header
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        text = stringResource(R.string.result_of_exam),
+                        style = MaterialTheme.typography.titleLarge.copy(color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))), modifier = Modifier.align(Alignment.Center)
+                    )
+
+                    TextButton(
+                        onClick = onDismiss, modifier = Modifier.align(Alignment.CenterEnd)
+                    ) {
+                        Icon(Icons.Default.Close, contentDescription = null,tint = Color.DarkGray)
+                        Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding4)))
+                        Text(
+                            stringResource(R.string.close), style = MaterialTheme.typography.bodyMedium.copy(color = Color.DarkGray, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold)))
+                        )
+                    }
+                }
+
+                HorizontalDivider(
+                    Modifier.padding(bottom = dimensionResource(R.dimen.activity_padding8)), color = Color.Black.copy(alpha = 0.1f), thickness = 1.dp
+                )
+
+                // ✅ CORRECT GRID
+                LazyVerticalStaggeredGrid(
+                    columns = StaggeredGridCells.Fixed(numberOfColumns), modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth(),
+                    verticalItemSpacing = dimensionResource(R.dimen.activity_padding12),
+                    horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding12)),
+                    contentPadding = PaddingValues(bottom = dimensionResource(R.dimen.activity_padding12), start = dimensionResource(R.dimen.activity_padding12), end = dimensionResource(R.dimen.activity_padding12))
+                ) {
+                    items(
+                        items = items, key = { item -> "${item.que}_${item.hashCode()}" }) { item ->
+                        QuestionExamColumnItem(item)
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+
+@Composable
+fun QuestionExamColumnItem(item: QuestionResult) {
+
+    Card(
+        modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(12.dp), colors = CardDefaults.cardColors(containerColor = ColorPrimaryLight), elevation = CardDefaults.cardElevation(2.dp)
+    ) {
+
+        Column(
+            modifier = Modifier.padding(vertical = dimensionResource(R.dimen.activity_padding6)), horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
+            val lines = remember(item.que) {
+                MathUtils.splitQuestionIntoLines(item.que)
+            }
+
+            lines.forEach { part ->
+                Text(
+                    text = part.replace("x", " x ").replace("×", " x ").replace("/", " ÷ ").replace("÷", " ÷ "),
+                    style = MaterialTheme.typography.titleSmall.copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))), textAlign = TextAlign.Center
+                )
+            }
+
+            HorizontalDivider(Modifier.padding(vertical = dimensionResource(R.dimen.activity_padding4)), color = Color.Black.copy(alpha = 0.1f), thickness = 1.dp)
+
+            Text(
+                text = item.userAnswer.toString(), style = MaterialTheme.typography.bodyLarge.copy(color = item.statusQue.color, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_bold)))
+            )
+
+            Icon(
+                modifier = Modifier.size(16.dp),
+                imageVector = item.statusQue.symbol, contentDescription = null, tint = item.statusQue.color
+            )
+        }
+    }
+}

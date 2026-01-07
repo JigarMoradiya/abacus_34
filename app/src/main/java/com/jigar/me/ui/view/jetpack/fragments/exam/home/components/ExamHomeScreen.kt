@@ -32,8 +32,9 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.core.components.HorizontalCheckbox
-import com.jigar.me.ui.view.jetpack.core.components.HorizontalRadio
+import com.jigar.me.ui.view.jetpack.core.presentation.components.HorizontalCheckbox
+import com.jigar.me.ui.view.jetpack.core.presentation.components.HorizontalRadio
+import com.jigar.me.ui.view.jetpack.core.presentation.components.PrimaryButton
 import com.jigar.me.ui.view.jetpack.fragments.exam.home.viewmodels.ExamHomeUiState
 import com.jigar.me.ui.view.jetpack.fragments.exam.home.viewmodels.ExamHomeViewModel
 import com.jigar.me.utils.AppConstants
@@ -132,18 +133,7 @@ fun ExamHomeScreen(uiState: ExamHomeUiState, viewModel: ExamHomeViewModel, onSta
 
         Spacer(modifier = Modifier.height(dimensionResource(R.dimen.activity_padding12)))
 
-        Surface(
-            onClick = { onStartClick() },
-            shape = RoundedCornerShape(50.dp),
-            color = colorResource(R.color.colorPrimary),
-            tonalElevation = 0.dp,
-            shadowElevation = dimensionResource(R.dimen.activity_padding8)
-        ) {
-            Text(
-                text = stringResource(R.string.let_s_start).uppercase(Locale.getDefault()), style = MaterialTheme.typography.titleMedium.copy(color = Color.White, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))), modifier = Modifier.padding(
-                    horizontal = dimensionResource(R.dimen.activity_padding16), vertical = dimensionResource(R.dimen.activity_padding10)
-                )
-            )
-        }
+        PrimaryButton(text = stringResource(R.string.let_s_start), onClick = onStartClick)
+
     }
 }

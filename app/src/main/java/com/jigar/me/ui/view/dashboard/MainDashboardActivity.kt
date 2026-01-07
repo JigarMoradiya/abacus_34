@@ -20,6 +20,7 @@ import com.jigar.me.databinding.ActivityMainDashboardBinding
 import com.jigar.me.ui.view.base.BaseActivity
 import com.jigar.me.ui.view.dashboard.fragments.exam.doexam.ExamCommonFragment
 import com.jigar.me.ui.view.dashboard.fragments.exercise.ExerciseHomeFragment
+import com.jigar.me.ui.view.jetpack.fragments.exam.play.ExamPlayFragment
 import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.jetpack.utils.TextToSpeechManager
 import com.jigar.me.utils.AppConstants
@@ -163,6 +164,9 @@ class MainDashboardActivity : BaseActivity() {
         when (fragment) {
             is ExerciseHomeFragment -> {
                 fragment.exerciseLeaveAlert()
+            }
+            is ExamPlayFragment -> {
+                fragment.onBackClick()
             }
             is ExamCommonFragment -> {
                 fragment.examLeaveAlert()

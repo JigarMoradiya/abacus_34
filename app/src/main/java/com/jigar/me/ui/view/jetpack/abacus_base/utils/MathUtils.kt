@@ -208,4 +208,33 @@ object MathUtils{
             }
         }.parse()
     }
+
+    fun splitQuestionIntoLines(question: String): List<String> {
+        val result = mutableListOf<String>()
+        var temp = ""
+
+        for (char in question) {
+            if (
+                char == '+' ||
+                char == '-' ||
+                char == 'x' ||
+                char == '×' ||
+                char == '÷' ||
+                char == '/'
+            ) {
+                if (temp.isNotEmpty()) {
+                    result.add(temp)
+                }
+                temp = char.toString()
+            } else {
+                temp += char
+            }
+        }
+
+        if (temp.isNotEmpty()) {
+            result.add(temp)
+        }
+
+        return result
+    }
 }

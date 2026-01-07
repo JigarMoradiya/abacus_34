@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DisplaySettings
-import androidx.compose.material.icons.filled.Store
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -35,7 +34,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.core.components.HorizontalCheckbox
+import com.jigar.me.ui.view.jetpack.core.presentation.components.HorizontalCheckbox
+import com.jigar.me.ui.view.jetpack.core.presentation.components.PrimaryButton
 import com.jigar.me.ui.view.jetpack.fragments.custom_challenge.home.viewmodels.CCMHomeUiState
 import com.jigar.me.ui.view.jetpack.fragments.custom_challenge.home.viewmodels.CCMHomeViewModel
 import com.jigar.me.ui.view.jetpack.utils.ui.slider.RangeSlider
@@ -160,18 +160,6 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
 
         Spacer(modifier = Modifier.height(dimensionResource(R.dimen.activity_padding12)))
 
-        Surface(
-            onClick = { onStartClick() },
-            shape = RoundedCornerShape(50.dp),
-            color = colorResource(R.color.colorPrimary),
-            tonalElevation = 0.dp,
-            shadowElevation = dimensionResource(R.dimen.activity_padding8)
-        ) {
-            Text(
-                text = stringResource(R.string.let_s_start).uppercase(Locale.getDefault()), style = MaterialTheme.typography.titleMedium.copy(color = Color.White, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))), modifier = Modifier.padding(
-                    horizontal = dimensionResource(R.dimen.activity_padding16), vertical = dimensionResource(R.dimen.activity_padding10)
-                )
-            )
-        }
+        PrimaryButton(text = stringResource(R.string.let_s_start), onClick = onStartClick)
     }
 }

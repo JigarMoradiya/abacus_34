@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -24,6 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -31,13 +33,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.core.content.res.ResourcesCompat
 import com.jigar.me.R
 import androidx.core.graphics.toColorInt
+import com.jigar.me.ui.view.jetpack.core.presentation.components.PositiveButton
+import com.jigar.me.ui.view.jetpack.core.presentation.components.PrimaryButton
 
 @Composable
 fun CustomPopupView(
     title: String? = null,
     description: String? = null,
+    notes: String? = null,
     position: Alignment = Alignment.Center,
     positiveButtonText: String? = null,
     negativeButtonText: String? = null,
@@ -92,9 +98,11 @@ fun CustomPopupView(
                 AndroidView(
                     factory = { context ->
                         TextView(context).apply {
-                            textSize = 13f
+                            textSize = 15f
                             setTextColor("#000000".toColorInt())
                             textAlignment = TextView.TEXT_ALIGNMENT_CENTER
+
+                            typeface = ResourcesCompat.getFont(context, R.font.font_medium)
                         }
                     },
                     update = { textView ->
@@ -104,26 +112,21 @@ fun CustomPopupView(
                 )
             }
 
+            if (!notes.isNullOrEmpty()) {
+                Text(
+                    text = notes,
+                    style = MaterialTheme.typography.bodyMedium.copy(color = Color.DarkGray, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(top = dimensionResource(id = R.dimen.activity_padding16))
+                )
+            }
+
             // 🔹 Buttons
             Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(top = dimensionResource(id = R.dimen.activity_padding8))) {
 
                 // ✅ Positive Button
                 if (!positiveButtonText.isNullOrEmpty() && onPositiveTapped != null) {
-                    Button(
-                        onClick = onPositiveTapped,
-                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50)), // green
-                        shape = RoundedCornerShape(10.dp),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                    ) {
-                        Text(
-                            text = positiveButtonText,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
-                            color = Color.White,
-                            fontSize = dimensionResource(id = R.dimen.button_medium_text_size).value.sp,
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
+                    PositiveButton(text = positiveButtonText, onClick = onPositiveTapped, modifier = Modifier.fillMaxWidth())
                 }
 
                 // ✅ Negative Button

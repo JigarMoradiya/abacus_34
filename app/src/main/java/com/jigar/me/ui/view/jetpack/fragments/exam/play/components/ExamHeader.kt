@@ -6,24 +6,24 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.LinearProgressIndicator
-import androidx.compose.material3.ProgressIndicatorDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.fragments.exam.play.viewmodels.ExamPlayUiState
 import com.jigar.me.utils.extensions.secToTimeFormat
 
 @Composable
 fun ExamHeader(
-    progress: Int,
-    total: Int,
+    uiState: ExamPlayUiState,
     elapsedSeconds: Int
 ) {
     Row(
@@ -33,19 +33,22 @@ fun ExamHeader(
         verticalAlignment = Alignment.CenterVertically
     ) {
 
+        Spacer(Modifier.weight(1f))
+
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            LinearProgressIndicator(
-            progress = { progress / total.toFloat() },
-            modifier = Modifier.width(200.dp),
-            color = ProgressIndicatorDefaults.linearColor,
-            trackColor = ProgressIndicatorDefaults.linearTrackColor,
-            strokeCap = ProgressIndicatorDefaults.LinearStrokeCap,
+            ExamProgressBar(
+                progress = uiState.currentIndex + 1,
+                max = uiState.examPaper.size,
+                modifier = Modifier
+                    .width(240.dp)
+                    .padding(horizontal = dimensionResource(R.dimen.activity_padding16))
             )
-            Text("$progress / $total")
         }
 
         Spacer(Modifier.weight(1f))
 
-        Text(elapsedSeconds.secToTimeFormat())
+        Text("Time : "+elapsedSeconds.secToTimeFormat(),
+            style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold)))
+        )
     }
 }

@@ -18,6 +18,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.exam.home.components.ExamHomeScreen
 import com.jigar.me.ui.view.jetpack.fragments.exam.home.viewmodels.ExamHomeViewModel
@@ -39,7 +40,7 @@ class ExamHomeFragmentNew : Fragment() {
             setContent {
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
                 val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
-                MaterialTheme {
+                AbacusTheme {
                     Column(modifier = Modifier.fillMaxSize()) {
                         BackButtonWithText(title = stringResource(R.string.math_exam), onBackClick = {findNavController().popBackStack()})
                         ExamHomeScreen(uiState,viewModel){

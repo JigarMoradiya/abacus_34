@@ -130,17 +130,3 @@ data class GooglePurchasedPlanRequest(
     var purchase_currency: String? = null,
     var no_of_renewals: Int = 0
 )
-
-data class PurchasePlanCreateRequest(
-    var plan_id: String? = null,
-    var currency: String? = null
-)
-data class PurchaseSuccessRequest(
-    var payment_intent_id: String? = null,
-)
-
-data class CancelReactivePlanRequest(
-    var is_cancelled : Boolean? = null,
-    var cancellation_reason : String? = null,
-    var cancellation_description : String? = null,
-)

@@ -57,9 +57,10 @@
     </integer-array>
 
     <!--Error messages-->
-    <string name="no_internet">Please check your network connection.</string>
+    <string name="no_internet_close_notes">If you close this screen now, your result will not be saved and you won’t be able to see it later in history.</string>
+    <string name="no_internet">Please check your Wi-Fi or mobile data connection.</string>
     <string name="still_no_internet">Still your internet is not working.</string>
-    <string name="no_internet_working">Your internet is not working</string>
+    <string name="no_internet_working">No Internet Connection</string>
     <string name="some_thing_wrong">Some thing went wrong, Please try again after sometime.</string>
 
     <!--  Tour page  -->
@@ -314,6 +315,7 @@
     <string name="next">Next</string>
     <string name="answer">Answer :</string>
     <string name="result_of_exercise">Result of Exercise</string>
+    <string name="result_of_exam">Result of Exam</string>
     <string name="fail_to_got_80">Fail to got 80% for clear this exercise.</string>
     <string name="better_luck_for_next_time">Better luck for next time..</string>
     <string name="congratulations">Congratulations…</string>

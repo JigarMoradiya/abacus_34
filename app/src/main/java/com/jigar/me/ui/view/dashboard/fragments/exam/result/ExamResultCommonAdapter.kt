@@ -68,14 +68,15 @@ class ExamResultCommonAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder.setIsRecyclable(false)
         val data = listData[position]
+        val question = data.value.replace(" ","")
         when(holder.itemViewType){
             2->{ // txt
                 with(holder as ViewHolderTxt) {
-                    val correctAns: String = if (data.value.contains("x")){
-                        val list = data.value.split("x")
+                    val correctAns: String = if (question.contains("x")){
+                        val list = question.split("x")
                         (list[0].toLong()*list[1].toLong()).toString()
                     }else{
-                        val resultObject: String = mCalculator.getResult(data.value,data.value)
+                        val resultObject: String = mCalculator.getResult(question,question)
                         CommonUtils.removeTrailingZero(resultObject)
                     }
                     mBinding.txtAnswer.text = correctAns
@@ -101,7 +102,7 @@ class ExamResultCommonAdapter(
                     }
 
                     mBinding.txtAbacus.text =
-                        data.value.replace("+", "\n+").replace("-", "\n-").replace("x", "\nx ").replace("/", "\n÷ ")
+                        question.replace("+", "\n+").replace("-", "\n-").replace("x", "\nx ").replace("/", "\n÷ ").replace("÷", "\n÷ ")
                 }
 
             }
@@ -118,13 +119,13 @@ class ExamResultCommonAdapter(
                         mBinding.img.show()
                         val tempAns = when (data.type) {
                             BeginnerExamQuestionType.Additions -> {
-                                data.value+"+"+data.value2
+                                question+"+"+data.value2
                             }
                             BeginnerExamQuestionType.Subtractions -> {
-                                data.value+"-"+data.value2
+                                question+"-"+data.value2
                             }
                             else -> {
-                                data.value
+                                question
                             }
                         }
                         val resultObject = mCalculator.getResult(tempAns,tempAns)
@@ -171,15 +172,15 @@ class ExamResultCommonAdapter(
                             themeContent.resetBtnColor8.let {
                                 abacusBinding1.ivReset.setColorFilter(ContextCompat.getColor(context,it), android.graphics.PorterDuff.Mode.SRC_IN)
                             }
-                            AbacusUtils.setAbacusColumnTheme(AbacusBeadType.ExamResult,abacusBinding1.abacusTop,abacusBinding1.abacusBottom, column = data.value.length)
+                            AbacusUtils.setAbacusColumnTheme(AbacusBeadType.ExamResult,abacusBinding1.abacusTop,abacusBinding1.abacusBottom, column = question.length)
                         }
 
                         CoroutineScope(Dispatchers.IO).launch {
                             delay(500)
-                            AbacusUtils.setNumber(data.value,abacusBinding1.abacusTop,abacusBinding1.abacusBottom, totalLength = data.value.length)
+                            AbacusUtils.setNumber(question,abacusBinding1.abacusTop,abacusBinding1.abacusBottom, totalLength = question.length)
                         }
                     }else{
-                        val list1ImageCount = data.value.toInt()
+                        val list1ImageCount = question.toInt()
                         val list2ImageCount = data.value2.toInt()
                         mBinding.layoutAbacus1.removeAllViews()
                         mBinding.layoutAbacus2.removeAllViews()
@@ -245,13 +246,13 @@ class ExamResultCommonAdapter(
                         mBinding.img.show()
                         val tempAns = when (data.type) {
                             BeginnerExamQuestionType.Additions -> {
-                                data.value+"+"+data.value2
+                                question+"+"+data.value2
                             }
                             BeginnerExamQuestionType.Subtractions -> {
-                                data.value+"-"+data.value2
+                                question+"-"+data.value2
                             }
                             else -> {
-                                data.value
+                                question
                             }
                         }
                         val resultObject = mCalculator.getResult(tempAns,tempAns)
@@ -279,7 +280,7 @@ class ExamResultCommonAdapter(
 
                         var list1ImageCount = 0
                         var list2ImageCount = 0
-                        val totalCount = data.value.toInt()
+                        val totalCount = question.toInt()
                         if (totalCount > 10){
                             list1ImageCount = totalCount/2
                             list2ImageCount = totalCount - list1ImageCount
@@ -302,7 +303,7 @@ class ExamResultCommonAdapter(
                             mBinding.spaceBetween.show()
                         }
                     }else{
-                        val list1ImageCount = data.value.toInt()
+                        val list1ImageCount = question.toInt()
                         val list2ImageCount = data.value2.toInt()
 
                         if (data.type == BeginnerExamQuestionType.Additions){

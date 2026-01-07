@@ -7,8 +7,11 @@ import com.jigar.me.data.local.data.CustomChallengeQuestion
 data class CCMPlayUiState(
     val error: Int? = null,
     val isLoading: Boolean = false,
-    val isAnswerTrue: Boolean = false,
     val isShowCompletePopup: Boolean = false,
+    val isShowNoInternet: Boolean = false,
+    val noInternetMessage : String = "",
+
+    val isAnswerTrue: Boolean = false,
     val isAbacusOnLeftHand: Boolean = false,
 
     val totalQuestion: Int = 10,

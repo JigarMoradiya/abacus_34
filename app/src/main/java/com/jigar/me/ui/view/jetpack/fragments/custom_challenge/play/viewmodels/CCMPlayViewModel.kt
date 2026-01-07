@@ -11,6 +11,7 @@ import com.jigar.me.ui.view.jetpack.exam_base.SubmitAllExamUseCase
 import com.jigar.me.ui.view.jetpack.utils.TextToSpeechManager
 import com.jigar.me.utils.*
 import com.jigar.me.utils.extensions.convertNumberToWords
+import com.jigar.me.utils.extensions.isNetworkAvailable
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.*
@@ -184,13 +185,22 @@ class CCMPlayViewModel @Inject constructor(
         }
     }
 
-    fun submitAnswer() = with(state()){
+    fun submitAnswer(isFirstAttempt : Boolean = true) {
+        if (context.isNetworkAvailable){
+            generateRequest()
+        }else{
+            updateState_ {
+                copy(isShowNoInternet = true, noInternetMessage = if (isFirstAttempt) context.getString(R.string.no_internet) else context.getString(R.string.still_no_internet))
+            }
+        }
+    }
+
+    fun generateRequest() = with(state()){
         val userAnswer = abacusCalc.totalValuePair.first
         val isAnswerTrue = userAnswer == (customChallengeData?.answer?:"").toString()
         updateState_ {
             copy(isAnswerTrue = isAnswerTrue)
         }
-
         val submitExamRequest = SubmitAllExamDataRequest()
         submitExamRequest.apply {
             type = AppConstants.EXAM.type_CCM
@@ -223,7 +233,7 @@ class CCMPlayViewModel @Inject constructor(
             params = submitExamRequest,
             onStart = {
                 updateState_ {
-                    copy(isLoading = true)
+                    copy(isLoading = true, isShowNoInternet = false)
                 }
             },
             onEachEmit = {},

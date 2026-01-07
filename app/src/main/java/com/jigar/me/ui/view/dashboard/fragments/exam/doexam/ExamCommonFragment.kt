@@ -3,6 +3,7 @@ package com.jigar.me.ui.view.dashboard.fragments.exam.doexam
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -142,13 +143,6 @@ class ExamCommonFragment : BaseFragment(), ExamCompleteDialog.TestCompleteDialog
             handler?.removeCallbacks(runnable!!)
         }
         val right = listExam.size - totalWrong
-//        val minutes = total_sec / 60
-//        val seconds = total_sec % 60
-//        val totalTime = String.format("%d:%02d", minutes, seconds)
-//        lifecycleScope.launch{
-//            apiViewModel.saveExamResultDB(ExamHistory(0,total_sec,examLevel, arrayListOf(), listExam,theme = theme, examFor = examForList))
-//        }
-//        ExamCompleteDialog.showPopup(requireActivity(),totalTime,"0",totalWrong.toString(),right.toString(),listExam.size.toString(),this,prefManager)
         val submitExamRequest = SubmitAllExamDataRequest()
         with(submitExamRequest){
             type = AppConstants.EXAM.type_Exam

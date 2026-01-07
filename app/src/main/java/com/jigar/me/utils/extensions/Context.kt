@@ -215,17 +215,15 @@ import java.util.*
      }
  }
 
-val Context.isNetworkAvailable: Boolean
-    get() {
-        val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val n = cm.activeNetwork
-        if (n != null) {
-            val nc = cm.getNetworkCapabilities(n)
-            return nc?.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) == true ||
-                    nc?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) == true
-        }
-        return false
-    }
+ val Context.isNetworkAvailable: Boolean
+     get() {
+         val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+         val network = cm.activeNetwork ?: return false
+         val nc = cm.getNetworkCapabilities(network) ?: return false
+
+         return nc.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) &&
+                 nc.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)
+     }
 
 fun Context.openMail(prefManager: AppPreferencesHelper) {
     val emailId = prefManager.getCustomParam(AppConstants.RemoteConfig.supportEmail,"")
