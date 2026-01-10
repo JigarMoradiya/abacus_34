@@ -1,10 +1,8 @@
 package com.jigar.me.ui.view.jetpack.fragments.exam.play.viewmodels
 
 import android.content.Context
-import android.util.Log
-import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewModelScope
-import com.google.gson.Gson
+import com.jigar.me.BuildConfig
 import com.jigar.me.R
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.data.pref.AppPreferencesHelper
@@ -128,7 +126,13 @@ class ExamPlayViewModel @Inject constructor(
             }
             questions = questionsList
         }
-        submitExamApi(submitExamRequest)
+        if (BuildConfig.DEBUG){
+            updateState_ {
+                copy(submitExamRequest = submitExamRequest,isShowCompletePopup = true)
+            }
+        }else{
+            submitExamApi(submitExamRequest)
+        }
     }
 
     fun submitExamApi(submitExamRequest : SubmitAllExamDataRequest) = viewModelScope.launch {
@@ -136,7 +140,7 @@ class ExamPlayViewModel @Inject constructor(
             params = submitExamRequest,
             onStart = {
                 updateState_ {
-                    copy(isLoading = true,isShowNoInternet = false)
+                    copy(isLoading = true,isShowNoInternet = false,submitExamRequest = submitExamRequest)
                 }
             },
             onEachEmit = {},
@@ -157,11 +161,11 @@ class ExamPlayViewModel @Inject constructor(
     fun onLeaveExam() {
         if (!state().isShowCompletePopup){
             timerJob?.cancel()
-            updateState_ { copy(isLeaveExam = true) }
+            updateState_ { copy(isLeavePage = true) }
         }
     }
     fun resumeExam() {
-        updateState_ { copy(isLeaveExam = false) }
+        updateState_ { copy(isLeavePage = false) }
         startTimer()
     }
     override fun onFailure(throwable: Throwable) {

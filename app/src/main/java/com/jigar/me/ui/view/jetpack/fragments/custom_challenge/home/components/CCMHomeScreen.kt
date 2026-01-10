@@ -10,12 +10,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DisplaySettings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,7 +23,6 @@ import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
@@ -41,7 +38,6 @@ import com.jigar.me.ui.view.jetpack.fragments.custom_challenge.home.viewmodels.C
 import com.jigar.me.ui.view.jetpack.utils.ui.slider.RangeSlider
 import com.jigar.me.ui.view.jetpack.utils.ui.slider.SingleSlider
 import com.jigar.me.utils.AppConstants
-import java.util.Locale
 
 @Composable
 fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartClick: () -> Unit) {
@@ -160,6 +156,6 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
 
         Spacer(modifier = Modifier.height(dimensionResource(R.dimen.activity_padding12)))
 
-        PrimaryButton(text = stringResource(R.string.let_s_start), onClick = onStartClick)
+        PrimaryButton(text = stringResource(R.string.let_s_start), onClick = onStartClick,)
     }
 }

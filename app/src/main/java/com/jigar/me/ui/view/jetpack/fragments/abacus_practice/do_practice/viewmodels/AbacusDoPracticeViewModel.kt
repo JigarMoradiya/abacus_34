@@ -40,12 +40,12 @@ import kotlin.math.max
 @HiltViewModel
 class AbacusDoPracticeViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
-    ttsManager: TextToSpeechManager,
+    private val ttsManager: TextToSpeechManager,
     prefs: AppPreferencesHelper,
     private val abacusDataRepository: AbacusDataRepository,
     private val submitAllExamUseCase: SubmitAllExamUseCase,
     savedStateHandle: SavedStateHandle
-) : StatefulViewModelAbacus<AbacusDoPracticeUiState>(ttsManager = ttsManager, prefs = prefs,numberOfColumns = 13) {
+) : StatefulViewModelAbacus<AbacusDoPracticeUiState>(prefs = prefs,numberOfColumns = 13) {
 
     override val TAG = "AbacusDoPracticeViewModel"
 

@@ -4,10 +4,12 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.InsetDrawable
+import android.util.Log
 import android.view.Gravity
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.gson.Gson
 import com.jigar.me.R
 import com.jigar.me.data.local.data.ExerciseList
 import com.jigar.me.databinding.DialogExerciseCompleteBinding

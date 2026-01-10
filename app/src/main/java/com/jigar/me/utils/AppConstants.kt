@@ -90,6 +90,7 @@ object AppConstants {
             const val screenTypeAbacusPractice = "AbacusPractice"
             const val screenTypeSettingPreview = "SettingPreview"
             const val screenTypeCCM = "CCM"
+            const val screenTypeExercise = "Exercise"
 
 
 

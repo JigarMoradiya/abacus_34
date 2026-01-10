@@ -20,8 +20,8 @@ import kotlin.math.max
 class AbacusFreeModeViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val prefs: AppPreferencesHelper,
-    ttsManager: TextToSpeechManager,
-) : BaseAbacusViewModel(numberOfColumns = 13, ttsManager = ttsManager, prefs = prefs) {
+    private val ttsManager: TextToSpeechManager,
+) : BaseAbacusViewModel(numberOfColumns = 13, prefs = prefs) {
 
     // --------- UI / Settings state (persisted in prefs) ----------
 

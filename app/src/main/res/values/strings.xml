@@ -180,6 +180,7 @@
     <string name="TotalTakeTime">Total Take Time</string>
     <string name="checkResult">Check Result</string>
     <string name="give_exam_again">Give Exam Again</string>
+    <string name="do_exercise_again">Do Exercise Again</string>
     <string name="YourAnswer">Your Answer</string>
     <string name="correctAnswer">Correct Answer</string>
     <string name="SKipped">Skipped</string>
@@ -312,6 +313,7 @@
     <string name="select_your_exercise">Select your Exercise</string>
     <string name="clear_each_exercise_to_get_80_of_3_times_in_a_row">To clear each exercise, get 80% of 3 times in a row.</string>
     <string name="start_exercise">Start Exercise</string>
+    <string name="title_exercises">Exercises</string>
     <string name="next">Next</string>
     <string name="answer">Answer :</string>
     <string name="result_of_exercise">Result of Exercise</string>
@@ -328,7 +330,7 @@
     <string name="you_are_clever">You are clever</string>
     <string name="you_are_on_the_right_track">You are on the right track</string>
     <string name="good_job">Good job</string>
-    <string name="not_bad">Not bad, you can do batter from this</string>
+    <string name="not_bad">Not bad, you can do batter then this</string>
 
     <string name="other_app_s_by_brainapptech_team">Other App\'s by BrainAppTech Team</string>
     <string name="offline_not_supported">Offline is not supported</string>

@@ -27,7 +27,7 @@ import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.Loader
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
-import com.jigar.me.ui.view.jetpack.fragments.exam.play.components.ExamCompleteResultDialog
+import com.jigar.me.ui.view.jetpack.fragments.results.components.ExamCompleteResultDialog
 import com.jigar.me.ui.view.jetpack.fragments.exam.play.components.ExamHeader
 import com.jigar.me.ui.view.jetpack.fragments.exam.play.components.ExamQuestionSection
 import com.jigar.me.ui.view.jetpack.fragments.exam.play.viewmodels.ExamPlayViewModel
@@ -74,16 +74,18 @@ class ExamPlayFragment : Fragment() {
                         enter = fadeIn(),
                         exit = fadeOut()
                     ) {
-                        ExamCompleteResultDialog(uiState,onClose = {
-                            onBack()
-                        },onGiveAgain = {
-                            viewModel.reGenerateExam()
-                        })
+                        uiState.submitExamRequest?.let{
+                            ExamCompleteResultDialog(it, onClose = {
+                                onBack()
+                            }, onGiveAgain = {
+                                viewModel.reGenerateExam()
+                            })
+                        }
                     }
 
                     // leave exam popup
                     AnimatedVisibility(
-                        visible = uiState.isLeaveExam,
+                        visible = uiState.isLeavePage,
                         enter = fadeIn(),
                         exit = fadeOut()
                     ) {

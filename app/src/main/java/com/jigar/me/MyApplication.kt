@@ -133,13 +133,13 @@ class MyApplication : Application(), Configuration.Provider {
                                 moveToDestination(R.id.abacusFreeModeFragment)
                             }
                             Constants.notificationTypeExercise -> {
-                                moveToDestination(R.id.exerciseHomeFragment)
+                                moveToDestination(R.id.exerciseFragment)
                             }
                             Constants.notificationTypeCCM -> {
                                 moveToDestination(R.id.ccmHomeFragment)
                             }
                             Constants.notificationTypeExam -> {
-                                moveToDestination(R.id.examHomeFragment)
+                                moveToDestination(R.id.examHomeFragmentNew)
                             }
                             Constants.notificationTypeNumberSequence -> {
                                 moveToDestination(R.id.numberSequencePuzzleHomeFragment)

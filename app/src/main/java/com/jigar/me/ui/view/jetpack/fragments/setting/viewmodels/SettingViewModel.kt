@@ -13,9 +13,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SettingViewModel @Inject constructor(
-    ttsManager: TextToSpeechManager,
+    private val ttsManager: TextToSpeechManager,
     private val prefs: AppPreferencesHelper,
-) : StatefulViewModelAbacus<SettingUiState>(ttsManager = ttsManager, prefs = prefs,numberOfColumns = 3) {
+) : StatefulViewModelAbacus<SettingUiState>(prefs = prefs,numberOfColumns = 3) {
 
     override val TAG = "SettingViewModel"
 

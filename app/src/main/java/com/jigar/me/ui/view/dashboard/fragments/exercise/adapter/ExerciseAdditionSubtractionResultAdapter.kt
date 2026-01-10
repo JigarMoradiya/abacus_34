@@ -1,8 +1,10 @@
 package com.jigar.me.ui.view.dashboard.fragments.exercise.adapter
 
+import android.util.Log
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.jigar.me.R
 import com.jigar.me.data.local.data.ExerciseList
 import com.jigar.me.databinding.RowExerciseQuestionResultLayoutBinding

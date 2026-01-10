@@ -68,14 +68,15 @@ fun AbacusAnswerBarCompose(
 ) {
     val scale = 1.0
 
-    val horizontalPadding = ((if (screenType == AppConstants.AbacusScreen.screenTypeCCM) 8 else 16) * scale).dp
-    val outFrameHeight = ((if (screenType == AppConstants.AbacusScreen.screenTypeCCM) 36 else 48) * scale).dp
-    val iconDimensions = ((if (screenType == AppConstants.AbacusScreen.screenTypeCCM) 12 else 18) * scale).dp
-    val centerBoxValueTextSize = ((if (screenType == AppConstants.AbacusScreen.screenTypeCCM) 18 else 24) * scale).sp
-    val centerBoxHeight = ((if (screenType == AppConstants.AbacusScreen.screenTypeCCM) 48 else 60) * scale).dp
-    val centerBoxMinWidth = ((if (screenType == AppConstants.AbacusScreen.screenTypeCCM) 100 else 140) * scale).dp
-    val backgroundBoxBorder = ((if (screenType == AppConstants.AbacusScreen.screenTypeCCM) 2 else 4) * scale).dp
-    val backgroundBoxPadding = ((if (screenType == AppConstants.AbacusScreen.screenTypeCCM) 16 else 24) * scale).dp
+    val isSmall = screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise
+    val horizontalPadding = ((if (isSmall) 8 else 16) * scale).dp
+    val outFrameHeight = ((if (isSmall) 36 else 48) * scale).dp
+    val iconDimensions = ((if (isSmall) 14 else 18) * scale).dp
+    val centerBoxValueTextSize = ((if (isSmall) 18 else 24) * scale).sp
+    val centerBoxHeight = ((if (isSmall) 48 else 60) * scale).dp
+    val centerBoxMinWidth = ((if (isSmall) 100 else 140) * scale).dp
+    val backgroundBoxBorder = ((if (isSmall) 2 else 4) * scale).dp
+    val backgroundBoxPadding = ((if (isSmall) 16 else 24) * scale).dp
 
     val theme = AbacusTheme.colorPreset(theme)
 
@@ -112,13 +113,13 @@ fun AbacusAnswerBarCompose(
 
                     NextButton(nextOpacity, iconDimensions, screenType, abacusType, onNext,backgroundBoxPadding)
 
-                    HandLeftRightIndicator(
-                        isVisible = isNextButtonEnable,
-                        modifier = Modifier.offset(x = 28.dp)
-                    )
+                    if (screenType == AppConstants.AbacusScreen.screenTypeAbacusPractice){
+                        HandLeftRightIndicator(
+                            isVisible = isNextButtonEnable,
+                            modifier = Modifier.offset(x = 28.dp)
+                        )
+                    }
                 }
-
-
             }
         }
 
@@ -264,7 +265,11 @@ fun NextButton(
     onNext: () -> Unit,
     backgroundBoxPadding: Dp
 ) {
-    val (pulseScale, pulseAlpha) = rememberPulseEffect(nextOpacity == 1f)
+    val (pulseScale, pulseAlpha) = if (screenType == AppConstants.AbacusScreen.screenTypeAbacusPractice){
+        rememberPulseEffect(nextOpacity == 1f)
+    }else{
+        1f to 1f
+    }
     Column(
         modifier = Modifier
             .padding(end = backgroundBoxPadding)

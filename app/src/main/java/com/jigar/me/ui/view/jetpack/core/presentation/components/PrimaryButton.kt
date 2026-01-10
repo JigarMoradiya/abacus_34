@@ -1,10 +1,12 @@
 package com.jigar.me.ui.view.jetpack.core.presentation.components
 
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,14 +17,14 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorGreen
 
 @Composable
 fun PrimaryButton(
     text: String,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    onClick: () -> Unit
+    color: Color = MaterialTheme.colorScheme.primary,
+    onClick: () -> Unit,
 ) {
     Button(
         onClick = onClick,
@@ -33,6 +35,7 @@ fun PrimaryButton(
             defaultElevation = dimensionResource(R.dimen.activity_padding8),
             pressedElevation = dimensionResource(R.dimen.activity_padding4)
         ),
+        colors = ButtonDefaults.buttonColors(containerColor = color),
         contentPadding = PaddingValues(
             horizontal = dimensionResource(R.dimen.activity_padding16),
             vertical = dimensionResource(R.dimen.activity_padding8)
@@ -49,33 +52,33 @@ fun PrimaryButton(
 }
 
 @Composable
-fun PositiveButton(
+fun SecondaryButton(
     text: String,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    onClick: () -> Unit
+    color: Color = MaterialTheme.colorScheme.primary,
+    onClick: () -> Unit,
 ) {
-    Button(
-        onClick = onClick,
-        enabled = enabled,
+    Surface(
         modifier = modifier,
         shape = RoundedCornerShape(50.dp),
-        elevation = ButtonDefaults.buttonElevation(
-            defaultElevation = dimensionResource(R.dimen.activity_padding8),
-            pressedElevation = dimensionResource(R.dimen.activity_padding4)
-        ),
-        colors = ButtonDefaults.buttonColors(containerColor = ColorGreen),
-        contentPadding = PaddingValues(
-            horizontal = dimensionResource(R.dimen.activity_padding16),
-            vertical = dimensionResource(R.dimen.activity_padding8)
-        )
+        color = if (enabled) color else color.copy(alpha = 0.4f),
+        shadowElevation = dimensionResource(R.dimen.activity_padding8),
+        onClick = onClick,
+        enabled = enabled
     ) {
         Text(
             text = text,
-            style = MaterialTheme.typography.titleMedium.copy(
+            modifier = Modifier.padding(
+                horizontal = dimensionResource(R.dimen.activity_padding12),
+                vertical = dimensionResource(R.dimen.activity_padding6)
+            ),
+            style = MaterialTheme.typography.bodyMedium.copy(
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily(Font(R.font.font_bold))
-            )
+            ),
+            color = Color.White
         )
     }
 }
+

@@ -34,11 +34,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.viewmodels.CategoryViewModel
 
 @Composable
 fun BackButtonWithText(
     title: String,
     color: Color = colorResource(R.color.back_icon_bg),
+    modifier: Modifier = Modifier,
     onBackClick: () -> Unit
 ) {
     val capsuleHeight = dimensionResource(R.dimen.menu_icons_text)
@@ -47,7 +49,7 @@ fun BackButtonWithText(
     val overlapOffset = (circleSize - capsuleHeight) / 2f // how much the circle should overlap
     val shape = RoundedCornerShape(100.dp)
     Box(
-        modifier = Modifier
+        modifier = modifier
             .padding(top = dimensionResource(R.dimen.activity_padding12))
             .wrapContentHeight()
     ) {

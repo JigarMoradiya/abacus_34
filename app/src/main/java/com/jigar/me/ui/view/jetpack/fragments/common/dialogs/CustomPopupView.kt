@@ -13,8 +13,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -25,7 +23,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -34,10 +31,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.res.ResourcesCompat
-import com.jigar.me.R
 import androidx.core.graphics.toColorInt
-import com.jigar.me.ui.view.jetpack.core.presentation.components.PositiveButton
+import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.core.presentation.components.PrimaryButton
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorGreen
 
 @Composable
 fun CustomPopupView(
@@ -126,7 +123,7 @@ fun CustomPopupView(
 
                 // ✅ Positive Button
                 if (!positiveButtonText.isNullOrEmpty() && onPositiveTapped != null) {
-                    PositiveButton(text = positiveButtonText, onClick = onPositiveTapped, modifier = Modifier.fillMaxWidth())
+                    PrimaryButton(text = positiveButtonText, modifier = Modifier.fillMaxWidth(), color = ColorGreen, onClick = onPositiveTapped)
                 }
 
                 // ✅ Negative Button

@@ -23,9 +23,9 @@ import javax.inject.Inject
 class CCMPlayViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val prefs: AppPreferencesHelper,
-    ttsManager: TextToSpeechManager,
+    private val ttsManager: TextToSpeechManager,
     private val submitAllExamUseCase: SubmitAllExamUseCase,
-) : StatefulViewModelAbacus<CCMPlayUiState>(ttsManager = ttsManager, prefs = prefs,numberOfColumns = 7) {
+) : StatefulViewModelAbacus<CCMPlayUiState>(prefs = prefs,numberOfColumns = 7) {
 
     override val TAG = "CCMPlayViewModel"
     private var questionJob: Job? = null

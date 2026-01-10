@@ -133,7 +133,7 @@ fun AbacusWithDecimalCanvas(
 
         // Top Answer Bar (hidden in free mode, same as your old logic)
         if (!(screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn) && screenType != AppConstants.AbacusScreen.screenTypeSettingPreview) {
-            val offsetY = if(screenType == AppConstants.AbacusScreen.screenTypeCCM) (-36).dp else (-48).dp
+            val offsetY = if(screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise) (-36).dp else (-48).dp
 
             AbacusAnswerBarCompose(
                 answer = abacusData.displayValue,
@@ -153,7 +153,7 @@ fun AbacusWithDecimalCanvas(
                 onNext = {
                     onNext()
                     // abacus change sound same as reset
-                    if (isBeadSoundOn && screenType != AppConstants.AbacusScreen.screenTypeCCM){
+                    if (isBeadSoundOn && screenType != AppConstants.AbacusScreen.screenTypeCCM && screenType != AppConstants.AbacusScreen.screenTypeExercise){
                         PlaySound.playBeadReset(context)
                     }
                 },
@@ -276,7 +276,7 @@ fun AbacusWithDecimalCanvas(
         if (isFreeModeOn){
             NumberStripBar(dim = dim, totalWidth = totalWidth, totalHeight = totalHeight)
         }
-    }else if (screenType == AppConstants.AbacusScreen.screenTypeAbacusPractice || screenType == AppConstants.AbacusScreen.screenTypeCCM) {
+    }else if (screenType == AppConstants.AbacusScreen.screenTypeAbacusPractice || screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise) {
         OnlyWordStripBar(dim = dim, totalWidth = totalWidth, totalHeight = totalHeight)
     }
 

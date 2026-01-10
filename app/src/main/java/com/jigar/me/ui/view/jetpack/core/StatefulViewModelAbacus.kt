@@ -21,8 +21,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.yield
 import java.io.IOException
 
-abstract class StatefulViewModelAbacus<State>(protected open val allowLogging: Boolean = BuildConfig.DEBUG, ttsManager: TextToSpeechManager,
-                                              prefs: AppPreferencesHelper, numberOfColumns : Int) : BaseAbacusViewModel(numberOfColumns = numberOfColumns, ttsManager = ttsManager, prefs = prefs) {
+abstract class StatefulViewModelAbacus<State>(protected open val allowLogging: Boolean = BuildConfig.DEBUG, prefs: AppPreferencesHelper,
+                                              numberOfColumns : Int) : BaseAbacusViewModel(numberOfColumns = numberOfColumns, prefs = prefs) {
 
     private val _uiState by lazy { MutableStateFlow(StateWrapper(getInitialState())) }
 

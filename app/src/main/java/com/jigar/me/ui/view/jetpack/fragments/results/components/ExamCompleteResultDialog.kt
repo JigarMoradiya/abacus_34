@@ -1,7 +1,5 @@
-package com.jigar.me.ui.view.jetpack.fragments.exam.play.components
+package com.jigar.me.ui.view.jetpack.fragments.results.components
 
-import android.content.Context
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -37,34 +35,38 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.data.model.data.QuestionDataRequest
+import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.ui.view.jetpack.core.presentation.components.PrimaryButton
-import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimaryLight
-import com.jigar.me.ui.view.jetpack.fragments.exam.play.exam_generator.ExamResultUi
 import com.jigar.me.ui.view.jetpack.fragments.exam.play.exam_generator.QuestionResult
 import com.jigar.me.ui.view.jetpack.fragments.exam.play.exam_generator.toQuestionResultList
-import com.jigar.me.ui.view.jetpack.fragments.exam.play.viewmodels.ExamPlayUiState
+import com.jigar.me.ui.view.jetpack.fragments.results.components.common.QuestionExamColumnItemHorizontal
+import com.jigar.me.ui.view.jetpack.fragments.results.components.common.StatItem
+import com.jigar.me.ui.view.jetpack.fragments.results.components.common.buildExamResult
 import com.jigar.me.utils.extensions.secToTimeFormat
 
 @Composable
 fun ExamCompleteResultDialog(
-    uiState: ExamPlayUiState,
+    request: SubmitAllExamDataRequest,
     onClose: () -> Unit,
     onGiveAgain: () -> Unit,
 ) {
+
     val context = LocalContext.current
-    val questionResults: List<QuestionResult> = uiState.examPaper.toQuestionResultList()
+    val questionList: List<QuestionDataRequest> =
+        request.questions
+            ?.mapNotNull { it as? QuestionDataRequest }
+            ?.toCollection(ArrayList())
+            ?: arrayListOf()
+
+    val questionResults: List<QuestionResult> = questionList.toQuestionResultList()
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -115,13 +117,13 @@ fun ExamCompleteResultDialog(
                         ) {
                             StatItem(
                                 icon = R.mipmap.ic_time,
-                                value = uiState.elapsedSeconds.secToTimeFormat(),
+                                value = (request.total_time_taken?:0).secToTimeFormat(),
                                 label = R.string.TotalTime,
                                 color = Color(0xFFD81B60)
                             )
                             StatItem(
                                 icon = R.mipmap.ic_question_right,
-                                value = uiState.totalCorrect.toString()+" / "+uiState.examPaper.size.toString(),
+                                value = request.no_of_right_answers.toString()+" / "+questionList.size.toString(),
                                 label = R.string.RightQue,
                                 color = Color(0xFF2E7D32)
                             )
@@ -129,8 +131,8 @@ fun ExamCompleteResultDialog(
                         Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding16)))
                         val result = buildExamResult(
                             context = context,
-                            totalRight = uiState.examPaper.count { it.userAnswer == it.answer },
-                            totalQuestion = uiState.examPaper.size
+                            totalRight = request.no_of_right_answers?:0,
+                            totalQuestion = questionList.size
                         )
                         Text(
                             text = result.title,
@@ -139,7 +141,7 @@ fun ExamCompleteResultDialog(
 
                         Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding12)))
 
-                        PrimaryButton(text = stringResource(R.string.give_exam_again), onClick = onGiveAgain)
+                        PrimaryButton(text = stringResource(R.string.give_exam_again), onClick = onGiveAgain,)
                     }
 
                     LazyColumn(
@@ -162,114 +164,3 @@ fun ExamCompleteResultDialog(
     }
 }
 
-@Composable
-fun QuestionExamColumnItemHorizontal(item: QuestionResult) {
-
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(10.dp),
-        colors = CardDefaults.cardColors(containerColor = ColorPrimaryLight),
-        elevation = CardDefaults.cardElevation(2.dp)
-    ) {
-
-        Row(
-            modifier = Modifier.fillMaxWidth()
-                .padding(
-                    horizontal = dimensionResource(R.dimen.activity_padding8),
-                    vertical = dimensionResource(R.dimen.activity_padding4)
-                ),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-
-            Text(
-                modifier = Modifier.weight(1f),   // 👈 takes remaining space
-                text = buildAnnotatedString {
-                    // Question part
-                    withStyle(
-                        style = SpanStyle(
-                            color = Color.Black,
-                            fontWeight = FontWeight.SemiBold,
-                            fontFamily = FontFamily(Font(R.font.font_semibold))
-                        )
-                    ) {
-                        append(
-                            item.que
-                                .replace("x", " x ")
-                                .replace("×", " x ")
-                                .replace("/", " ÷ ")
-                                .replace("÷", " ÷ ")
-                        )
-                        append(" = ")
-                    }
-
-                    // Answer part
-                    withStyle(
-                        style = SpanStyle(
-                            color = item.statusQue.color,
-                            fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold))
-                        )
-                    ) {
-                        append(item.userAnswer.toString())
-                    }
-                },
-                style = MaterialTheme.typography.bodyMedium,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis
-            )
-
-            // 🔹 Correct / Wrong icon
-            Icon(
-                imageVector = item.statusQue.symbol,
-                contentDescription = null,
-                tint = item.statusQue.color,
-                modifier = Modifier.size(16.dp)
-            )
-        }
-    }
-}
-
-fun buildExamResult(
-    context: Context,
-    totalRight: Int,
-    totalQuestion: Int
-): ExamResultUi {
-
-    val percentage = (totalRight * 100f) / totalQuestion
-
-    val (text, color) = when {
-        percentage == 100f -> context.getString(R.string.unstoppable_great_job) to Color(0xFF2E7D32)
-        percentage >= 90f -> context.getString(R.string.you_are_brilliant) to Color(0xFF1565C0)
-        percentage >= 80f -> context.getString(R.string.you_are_on_the_right_track) to Color(0xFF6A1B9A)
-        percentage >= 70f -> context.getString(R.string.good_job) to Color(0xFF827717)
-        percentage >= 60f -> context.getString(R.string.not_bad) to Color(0xFFEF6C00)
-        else -> context.getString(R.string.better_luck_for_next_time) to Color(0xFFC62828)
-    }
-
-    return ExamResultUi(
-        title = text,
-        titleColor = color,
-        rating = (totalRight * 5f) / totalQuestion
-    )
-}
-
-@Composable
-fun StatItem(
-    icon: Int,
-    value: String,
-    label: Int,
-    color: Color
-) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Image(
-            painter = painterResource(icon),
-            contentDescription = null,
-            modifier = Modifier.size(28.dp)
-        )
-        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding4)))
-        Text(value,
-            style = MaterialTheme.typography.titleLarge.copy(color = color, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))))
-        Text(stringResource(label),
-            style = MaterialTheme.typography.titleSmall.copy(color = color.copy(alpha = 0.8f), fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))))
-    }
-}

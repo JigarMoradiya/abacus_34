@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.jetpack.fragments.exam.play.viewmodels
 
+import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.ui.view.jetpack.fragments.exam.play.exam_generator.ExamMathQuestion
 import com.jigar.me.utils.AppConstants
 
@@ -17,7 +18,8 @@ data class ExamPlayUiState(
     val elapsedSeconds: Int = 0,
 
     val isShowCompletePopup: Boolean = false,
-    val isLeaveExam: Boolean = false,
+    val isLeavePage: Boolean = false,
     val isShowNoInternet: Boolean = false,
     val noInternetMessage : String = "",
+    val submitExamRequest : SubmitAllExamDataRequest? = null,
 )

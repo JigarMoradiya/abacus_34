@@ -180,7 +180,7 @@ object DataProvider {
         val list = ArrayList<ExerciseLevel>()
         val listAddition = ArrayList<ExerciseLevelDetail>()
         with(listAddition){
-            add(ExerciseLevelDetail("1",5,5,1,3))
+            add(ExerciseLevelDetail("1",5,5,1,1))
             add(ExerciseLevelDetail("2",10,10,1,5))
             add(ExerciseLevelDetail("3",5,5,2,4))
             add(ExerciseLevelDetail("4",10,10,2,8))

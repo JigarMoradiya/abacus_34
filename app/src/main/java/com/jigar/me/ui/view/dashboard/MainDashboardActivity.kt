@@ -18,8 +18,8 @@ import com.jigar.me.R
 import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.databinding.ActivityMainDashboardBinding
 import com.jigar.me.ui.view.base.BaseActivity
-import com.jigar.me.ui.view.dashboard.fragments.exercise.ExerciseHomeFragment
 import com.jigar.me.ui.view.jetpack.fragments.exam.play.ExamPlayFragment
+import com.jigar.me.ui.view.jetpack.fragments.exercise.ExerciseFragment
 import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.jetpack.utils.TextToSpeechManager
 import com.jigar.me.utils.AppConstants
@@ -161,8 +161,8 @@ class MainDashboardActivity : BaseActivity() {
     private fun onBackOfHalfAbacusFragment() {
         val fragment = navHostFragment.childFragmentManager.fragments[0]
         when (fragment) {
-            is ExerciseHomeFragment -> {
-                fragment.exerciseLeaveAlert()
+            is ExerciseFragment -> {
+                fragment.onBackClick()
             }
             is ExamPlayFragment -> {
                 fragment.onBackClick()

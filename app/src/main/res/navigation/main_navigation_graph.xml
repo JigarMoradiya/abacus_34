@@ -27,13 +27,9 @@
         <action
             android:id="@+id/toExamHomeFragmentNew"
             app:destination="@+id/examHomeFragmentNew" />
-
         <action
-            android:id="@+id/action_homeFragment_to_examHomeFragment"
-            app:destination="@+id/examHomeFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_exerciseHomeFragment"
-            app:destination="@+id/exerciseHomeFragment" />
+            android:id="@+id/toExerciseFragment"
+            app:destination="@+id/exerciseFragment" />
         <action
             android:id="@+id/toVideoPreviewFragment"
             app:destination="@+id/videoPreviewFragment" />
@@ -81,13 +77,6 @@
         <action
             android:id="@+id/action_reportsHomeFragment_to_examResultFragment"
             app:destination="@+id/examResultFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/exerciseHomeFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.exercise.ExerciseHomeFragment">
-        <action
-            android:id="@+id/toPurchaseFragment"
-            app:destination="@+id/purchaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/purchaseFragment"

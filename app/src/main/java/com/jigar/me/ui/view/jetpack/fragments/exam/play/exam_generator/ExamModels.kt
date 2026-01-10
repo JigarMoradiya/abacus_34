@@ -3,10 +3,12 @@ package com.jigar.me.ui.view.jetpack.fragments.exam.play.exam_generator
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.RemoveCircle
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.jigar.me.data.model.data.QuestionDataRequest
 import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorGreen
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorOrange
 import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorRed
 
 enum class ExamQuestionType {
@@ -49,18 +51,25 @@ fun ExamMathQuestion.toQuestionDataRequest(): QuestionDataRequest {
     )
 }
 
-fun List<ExamMathQuestion>.toQuestionResultList(): List<QuestionResult> {
+fun List<QuestionDataRequest>.toQuestionResultList(): List<QuestionResult> {
     return map { it.toQuestionResult() }
 }
 
-fun ExamMathQuestion.toQuestionResult(): QuestionResult {
-    return QuestionResult(que = que,userAnswer = userAnswer ?: 0, statusQue = toQuestionStatus())
+fun QuestionDataRequest.toQuestionResult(): QuestionResult {
+    return QuestionResult(que = que?:"", userAnswer = (user_answer?:"0").toInt(), statusQue = toQuestionStatus())
 }
-
-fun ExamMathQuestion.toQuestionStatus(): QuestionStatus {
-    return if (isCorrect == true) {
-        QuestionStatus(color = ColorGreen, symbol = Icons.Default.CheckCircle)
-    } else {
-        QuestionStatus(color = ColorRed, symbol = Icons.Default.Cancel)
+fun QuestionDataRequest.toQuestionStatus(): QuestionStatus {
+    return when (is_correct) {
+        null -> {
+            QuestionStatus(color = ColorOrange, symbol = Icons.Default.RemoveCircle)
+        }
+        true -> {
+            QuestionStatus(color = ColorGreen, symbol = Icons.Default.CheckCircle)
+        }
+        else -> {
+            QuestionStatus(color = ColorRed, symbol = Icons.Default.Cancel)
+        }
     }
 }
+
+

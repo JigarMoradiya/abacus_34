@@ -19,7 +19,6 @@ import javax.inject.Inject
 class CategoryViewModel @Inject constructor(
     private val abacusDataRepository: AbacusDataRepository,
     private val purchaseRepository: PurchaseRepository,
-    private val prefs: AppPreferencesHelper,
     savedStateHandle: SavedStateHandle
 ) : StatefulViewModel<CategoryUiState>() {
 
