@@ -17,9 +17,7 @@ import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.Statistics
 import com.jigar.me.databinding.FragmentMyProfileBinding
 import com.jigar.me.ui.view.base.BaseFragment
-import com.jigar.me.ui.view.confirm_alerts.bottomsheets.ChangePasswordDialog
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
-import com.jigar.me.ui.view.confirm_alerts.bottomsheets.SelectAvatarProfileDialog
 import com.jigar.me.ui.view.login.LoginDashboardActivity
 import com.jigar.me.ui.view.other.ContactUsActivity
 import com.jigar.me.ui.viewmodel.ExamViewModel
@@ -40,14 +38,13 @@ import androidx.navigation.findNavController
 import com.jigar.me.utils.VersionUpdation
 
 @AndroidEntryPoint
-class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfileDialogInterface,
-    MyAccountListAdapter.OnItemClickListener, ChangePasswordDialog.DialogChangePasswordInterface {
+class MyProfileFragment : BaseFragment(),
+    MyAccountListAdapter.OnItemClickListener {
     private lateinit var binding: FragmentMyProfileBinding
     private lateinit var mNavController: NavController
     private var loginData: LoginData? = null
     private lateinit var adapter: MyAccountListAdapter
     private val viewModel by viewModels<ExamViewModel>()
-    private val studentViewModel by viewModels<StudentViewModel>()
     private var root : View? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +66,6 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
         mNavController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
     private fun initViews() {
-        avatarProfileCloseDialog()
         adapter = MyAccountListAdapter(MyAccountProvider.getMenuList(requireContext()),this)
         with(binding){
             recyclerview.adapter = adapter
@@ -80,9 +76,6 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
     private fun initListener() {
         with(binding){
             cardBack.onClick { onBack() }
-            cardEditImage.onClick {
-                SelectAvatarProfileDialog.showPopup(requireActivity(),prefManager,this@MyProfileFragment,isChooseProfileDirect = true)
-            }
         }
     }
 
@@ -96,24 +89,6 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
                         onSuccess(it.value.data)
                 }
                 is Resource.Failure -> {
-                }
-            }
-        }
-        studentViewModel.changePasswordResponse.observe(this) {
-            when (it) {
-                is Resource.Loading -> {
-                    showLoading()
-                }
-                is Resource.Success -> {
-                    hideLoading()
-                    if (it.value.status == AppConstants.APIStatus.SUCCESS){
-                        onFailure(getString(R.string.your_password_has_been_updated))
-                        ChangePasswordDialog.bottomSheetDialog?.dismiss()
-                    }
-                }
-                is Resource.Failure -> {
-                    hideLoading()
-                    onFailure(it.errorBody)
                 }
             }
         }
@@ -165,12 +140,6 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
             "edit_profile" -> {
                 mNavController.navigate(R.id.action_myProfileFragment_to_editProfileFragment)
             }
-            "change_password" -> {
-                ChangePasswordDialog.showPopup(requireActivity(),this)
-            }
-            "about_us" -> {
-
-            }
             "rate_us_on_the_play_store" -> {
                 requireContext().openURL("https://play.google.com/store/apps/details?id=${requireContext().packageName}")
             }
@@ -184,10 +153,6 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
                 logout()
             }
         }
-    }
-
-    override fun changePassword(oldPassword: String, newPassword: String) {
-        studentViewModel.changePassword(ChangePasswordRequest(oldPassword,newPassword))
     }
 
     private fun logout() {
@@ -215,13 +180,5 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
         super.onResume()
         loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
         binding.txtWelcomeTitle.text = CommonUtils.getCurrentTimeMessage(requireContext())
-//            .plus(" "+loginData?.name+"!")
-    }
-    override fun avatarProfileCloseDialog() {
-        val id = prefManager.getCustomParamInt(Constants.avatarId,1)
-        val avatarList = DataProvider.getAvatarList()
-        avatarList.find { it.id == id }?.also {
-            binding.imgUserProfile.setImageResource(it.image)
-        }
     }
 }
