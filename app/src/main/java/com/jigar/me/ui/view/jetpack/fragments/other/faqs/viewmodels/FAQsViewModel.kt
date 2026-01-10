@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.faqs.viewmodels
+package com.jigar.me.ui.view.jetpack.fragments.other.faqs.viewmodels
 
 import android.content.Context
 import com.jigar.me.data.local.data.DataProvider

@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.setting.components.voice
+package com.jigar.me.ui.view.jetpack.fragments.other.setting.components.voice
 
 import android.app.Dialog
 import android.os.Bundle
@@ -14,7 +14,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.jigar.me.ui.view.jetpack.fragments.setting.viewmodels.SettingViewModel
+import com.jigar.me.ui.view.jetpack.fragments.other.setting.viewmodels.SettingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

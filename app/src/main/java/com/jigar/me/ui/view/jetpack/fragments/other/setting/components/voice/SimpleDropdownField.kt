@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.setting.components.voice
+package com.jigar.me.ui.view.jetpack.fragments.other.setting.components.voice
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource

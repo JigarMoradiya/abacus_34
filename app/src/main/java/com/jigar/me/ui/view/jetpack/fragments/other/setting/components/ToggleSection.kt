@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.setting.components
+package com.jigar.me.ui.view.jetpack.fragments.other.setting.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
@@ -27,7 +27,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.fragments.setting.viewmodels.ToggleItem
+import com.jigar.me.ui.view.jetpack.fragments.other.setting.viewmodels.ToggleItem
+import kotlin.collections.forEachIndexed
 
 @Composable
 fun ToggleSection(

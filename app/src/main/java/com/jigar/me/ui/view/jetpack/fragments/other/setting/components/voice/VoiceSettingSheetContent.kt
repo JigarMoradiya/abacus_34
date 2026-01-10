@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.setting.components.voice
+package com.jigar.me.ui.view.jetpack.fragments.other.setting.components.voice
 
 import android.speech.tts.Voice
 import androidx.compose.foundation.background
@@ -30,7 +30,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.fragments.setting.viewmodels.SettingUiState
+import com.jigar.me.ui.view.jetpack.fragments.other.setting.viewmodels.SettingUiState
 import com.jigar.me.ui.view.jetpack.utils.ui.slider.SingleSlider
 import java.util.Locale
 

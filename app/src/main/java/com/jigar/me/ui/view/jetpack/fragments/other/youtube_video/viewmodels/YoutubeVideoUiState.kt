@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.youtube_video.viewmodels
+package com.jigar.me.ui.view.jetpack.fragments.other.youtube_video.viewmodels
 
 import com.jigar.me.data.model.VideoData
 

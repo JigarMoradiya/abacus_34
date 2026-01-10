@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.setting.viewmodels
+package com.jigar.me.ui.view.jetpack.fragments.other.setting.viewmodels
 
 import android.speech.tts.Voice
 import java.util.Locale

@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.setting
+package com.jigar.me.ui.view.jetpack.fragments.other.faqs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,22 +13,18 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.stringResource
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
-import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
-import com.jigar.me.ui.view.jetpack.fragments.setting.components.SettingsScreen
-import com.jigar.me.ui.view.jetpack.fragments.setting.components.voice.VoiceSettingBottomSheetFragment
-import com.jigar.me.ui.view.jetpack.fragments.setting.viewmodels.SettingViewModel
+import com.jigar.me.ui.view.jetpack.fragments.other.faqs.components.FAQsListItem
+import com.jigar.me.ui.view.jetpack.fragments.other.faqs.viewmodels.FAQsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SettingFragmentNew : Fragment() {
-    private val viewModel: SettingViewModel by activityViewModels()
-    private val homeActivityViewModel: HomeActivityViewModel by activityViewModels()
-
+class FAQsFragmentNew : Fragment() {
+    private val viewModel: FAQsViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,18 +36,8 @@ class SettingFragmentNew : Fragment() {
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
                 MaterialTheme {
                     Column(modifier = Modifier.fillMaxSize()) {
-                        BackButtonWithText(title = stringResource(R.string.txt_setting_title), onBackClick = {findNavController().popBackStack()})
-
-                        SettingsScreen(
-                            viewModel = viewModel,
-                            uiState = uiState,
-                            onMusicVolumeChange = homeActivityViewModel::updateMusicVolume,
-                            onVoiceClick = {
-                                VoiceSettingBottomSheetFragment
-                                    .newInstance()
-                                    .show(childFragmentManager, "VoiceSettingBottomSheet")
-                            }
-                        )
+                        BackButtonWithText(title = stringResource(R.string.faqs), onBackClick = {findNavController().popBackStack()})
+                        FAQsListItem(uiState.faqsList)
                     }
                 }
 

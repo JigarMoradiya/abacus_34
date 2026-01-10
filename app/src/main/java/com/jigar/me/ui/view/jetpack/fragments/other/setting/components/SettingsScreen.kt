@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.setting.components
+package com.jigar.me.ui.view.jetpack.fragments.other.setting.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -22,9 +22,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.fragments.setting.viewmodels.SettingUiState
-import com.jigar.me.ui.view.jetpack.fragments.setting.viewmodels.SettingViewModel
-import com.jigar.me.ui.view.jetpack.fragments.setting.viewmodels.ToggleItem
+import com.jigar.me.ui.view.jetpack.fragments.other.setting.viewmodels.SettingUiState
+import com.jigar.me.ui.view.jetpack.fragments.other.setting.viewmodels.SettingViewModel
+import com.jigar.me.ui.view.jetpack.fragments.other.setting.viewmodels.ToggleItem
 
 @Composable
 fun SettingsScreen(
@@ -83,7 +83,8 @@ fun SettingsScreen(
                         uiState.displayHint,
                         viewModel::toggleHintMessage
                     ),
-                    ToggleItem(Icons.Outlined.Swipe,
+                    ToggleItem(
+                        Icons.Outlined.Swipe,
                         stringResource(R.string.display_bead_direction),
                         uiState.displayDirection,
                         viewModel::toggleDirection

@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.faqs.components
+package com.jigar.me.ui.view.jetpack.fragments.other.faqs.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

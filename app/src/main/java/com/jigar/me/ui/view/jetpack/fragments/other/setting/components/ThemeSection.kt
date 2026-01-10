@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.setting.components
+package com.jigar.me.ui.view.jetpack.fragments.other.setting.components
 
 import android.graphics.LinearGradient
 import android.graphics.PorterDuff
@@ -57,7 +57,7 @@ import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.jetpack.abacus_base.ColorPresets.getMixColorListOfPoligonUnique
 import com.jigar.me.ui.view.jetpack.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
 import com.jigar.me.ui.view.jetpack.abacus_base.components.abacus_canvas.drawableToImageBitmap
-import com.jigar.me.ui.view.jetpack.fragments.setting.viewmodels.SettingViewModel
+import com.jigar.me.ui.view.jetpack.fragments.other.setting.viewmodels.SettingViewModel
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.mixWith
 

@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.faqs
+package com.jigar.me.ui.view.jetpack.fragments.other.youtube_video
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,15 +18,13 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
-import com.jigar.me.ui.view.jetpack.fragments.faqs.components.FAQsListItem
-import com.jigar.me.ui.view.jetpack.fragments.faqs.viewmodels.FAQsViewModel
-import com.jigar.me.ui.view.jetpack.fragments.youtube_video.components.YoutubeVideoGrid
-import com.jigar.me.ui.view.jetpack.fragments.youtube_video.viewmodels.YoutubeVideoViewModel
+import com.jigar.me.ui.view.jetpack.fragments.other.youtube_video.components.YoutubeVideoGrid
+import com.jigar.me.ui.view.jetpack.fragments.other.youtube_video.viewmodels.YoutubeVideoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FAQsFragmentNew : Fragment() {
-    private val viewModel: FAQsViewModel by viewModels()
+class YoutubeVideoFragmentNew : Fragment() {
+    private val viewModel: YoutubeVideoViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,8 +36,8 @@ class FAQsFragmentNew : Fragment() {
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
                 MaterialTheme {
                     Column(modifier = Modifier.fillMaxSize()) {
-                        BackButtonWithText(title = stringResource(R.string.faqs), onBackClick = {findNavController().popBackStack()})
-                        FAQsListItem(uiState.faqsList)
+                        BackButtonWithText(title = stringResource(R.string.video_tutorials), onBackClick = {findNavController().popBackStack()})
+                        YoutubeVideoGrid(uiState.videoList)
                     }
                 }
 

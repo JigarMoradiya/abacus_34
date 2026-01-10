@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.youtube_video
+package com.jigar.me.ui.view.jetpack.fragments.other.setting
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,18 +13,22 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.stringResource
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
-import com.jigar.me.ui.view.jetpack.fragments.youtube_video.components.YoutubeVideoGrid
-import com.jigar.me.ui.view.jetpack.fragments.youtube_video.viewmodels.YoutubeVideoViewModel
+import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
+import com.jigar.me.ui.view.jetpack.fragments.other.setting.components.SettingsScreen
+import com.jigar.me.ui.view.jetpack.fragments.other.setting.components.voice.VoiceSettingBottomSheetFragment
+import com.jigar.me.ui.view.jetpack.fragments.other.setting.viewmodels.SettingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class YoutubeVideoFragmentNew : Fragment() {
-    private val viewModel: YoutubeVideoViewModel by viewModels()
+class SettingFragmentNew : Fragment() {
+    private val viewModel: SettingViewModel by activityViewModels()
+    private val homeActivityViewModel: HomeActivityViewModel by activityViewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,8 +40,18 @@ class YoutubeVideoFragmentNew : Fragment() {
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
                 MaterialTheme {
                     Column(modifier = Modifier.fillMaxSize()) {
-                        BackButtonWithText(title = stringResource(R.string.video_tutorials), onBackClick = {findNavController().popBackStack()})
-                        YoutubeVideoGrid(uiState.videoList)
+                        BackButtonWithText(title = stringResource(R.string.txt_setting_title), onBackClick = {findNavController().popBackStack()})
+
+                        SettingsScreen(
+                            viewModel = viewModel,
+                            uiState = uiState,
+                            onMusicVolumeChange = homeActivityViewModel::updateMusicVolume,
+                            onVoiceClick = {
+                                VoiceSettingBottomSheetFragment
+                                    .newInstance()
+                                    .show(childFragmentManager, "VoiceSettingBottomSheet")
+                            }
+                        )
                     }
                 }
 

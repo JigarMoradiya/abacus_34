@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.youtube_video.viewmodels
+package com.jigar.me.ui.view.jetpack.fragments.other.youtube_video.viewmodels
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
