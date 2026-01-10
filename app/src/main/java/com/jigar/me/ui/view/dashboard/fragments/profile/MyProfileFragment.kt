@@ -175,7 +175,6 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
                 requireContext().openURL("https://play.google.com/store/apps/details?id=${requireContext().packageName}")
             }
             "need_help" -> {
-//                requireContext().openMail(prefManager)
                 ContactUsActivity.getInstance(requireContext(),AppConstants.extras_Comman.typeNeedHelp)
             }
             "privacy_policy" -> {
@@ -200,9 +199,6 @@ class MyProfileFragment : BaseFragment(), SelectAvatarProfileDialog.AvatarProfil
             icon = R.drawable.ic_alert,
             clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener {
                 override fun onConfirmationYesClick(bundle: Bundle?) {
-//                    prefManager.setAccessToken("")
-//                    prefManager.setLoginData("")
-//                    prefManager.setUserLoggedIn(false)
                     prefManager.clearPref()
                     LoginDashboardActivity.getInstance(requireContext())
                 }
