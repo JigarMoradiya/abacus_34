@@ -5,7 +5,6 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.jigar.me.BuildConfig
 import com.jigar.me.data.local.db.abacus_all_data.AbacusAllDataDao
 import com.jigar.me.data.local.db.exam.ExamHistoryDao
@@ -20,7 +19,6 @@ import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
 import com.jigar.me.data.model.dbtable.exam.ExamHistory
 import com.jigar.me.data.model.dbtable.inapp.InAppPurchaseDetails
 import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
-import com.jigar.me.internal.workmanagers.FirstAppStartWorkManager
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.DataTypeConverter
@@ -53,14 +51,6 @@ abstract class AppDatabase : RoomDatabase() {
               val factory = SupportOpenHelperFactory(passphrase)
 
             val database  = Room.databaseBuilder(context, AppDatabase::class.java, AppConstants.DB_NAME_NEW)
-                .addCallback(
-                    object : Callback() {
-                        override fun onCreate(db: SupportSQLiteDatabase) {
-                            super.onCreate(db)
-                            FirstAppStartWorkManager.startWorkManager(context)
-                        }
-                    }
-                )
             if (!BuildConfig.DEBUG){
                 database.openHelperFactory(factory)
             }
