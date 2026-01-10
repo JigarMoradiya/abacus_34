@@ -37,32 +37,13 @@
             android:id="@+id/toPurchaseFragment"
             app:destination="@+id/purchaseFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_myProfileFragment"
-            app:destination="@+id/myProfileFragment" />
+            android:id="@+id/toMyAccountFragment"
+            app:destination="@+id/myAccountFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/videoPreviewFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.purchase.video_play.previews.VideoPreviewFragment"/>
-    <fragment
-        android:id="@+id/myProfileFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.profile.MyProfileFragment">
-        <action
-            android:id="@+id/action_myProfileFragment_to_reportsHomeFragment"
-            app:destination="@+id/reportsHomeFragment" />
-        <action
-            android:id="@+id/toVideoPreviewFragment"
-            app:destination="@+id/videoPreviewFragment" />
-        <action
-            android:id="@+id/toPurchaseFragment"
-            app:destination="@+id/purchaseFragment" />
-        <action
-            android:id="@+id/toSettingsFragmentNew"
-            app:destination="@+id/settingFragmentNew" />
-        <action
-            android:id="@+id/toFAQsFragmentNew"
-            app:destination="@+id/faqsFragmentNew" />
-    </fragment>
     <fragment
         android:id="@+id/reportsHomeFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.reports.ReportsHomeFragment">
@@ -252,4 +233,23 @@
     <fragment
         android:id="@+id/exerciseFragment"
         android:name="com.jigar.me.ui.view.jetpack.fragments.activities.exercise.ExerciseFragment"/>
+    <fragment
+        android:id="@+id/myAccountFragment"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.my_account.MyAccountFragment">
+        <action
+            android:id="@+id/action_myProfileFragment_to_reportsHomeFragment"
+            app:destination="@+id/reportsHomeFragment" />
+        <action
+            android:id="@+id/toVideoPreviewFragment"
+            app:destination="@+id/videoPreviewFragment" />
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
+        <action
+            android:id="@+id/toSettingsFragmentNew"
+            app:destination="@+id/settingFragmentNew" />
+        <action
+            android:id="@+id/toFAQsFragmentNew"
+            app:destination="@+id/faqsFragmentNew" />
+    </fragment>
 </navigation>

@@ -111,7 +111,7 @@ class HomeFragmentNew : Fragment() {
                 findNavController().navigate(R.id.toSettingsFragmentNew)
             }
             AppConstants.HomeClicks.Menu_My_Account -> {
-                findNavController().navigate(R.id.action_homeFragment_to_myProfileFragment)
+                findNavController().navigate(R.id.toMyAccountFragment)
             }
             AppConstants.HomeClicks.Menu_Abacus_Exercise -> {
                 findNavController().navigate(R.id.toExerciseFragment)

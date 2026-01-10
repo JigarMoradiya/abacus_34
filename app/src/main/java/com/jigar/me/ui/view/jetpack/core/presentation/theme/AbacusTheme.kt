@@ -21,7 +21,10 @@ fun AbacusTheme(
         onBackground = Black,
 
         surface = White,
-        onSurface = Black
+        onSurface = Black,
+
+        surfaceVariant = White,
+        onSurfaceVariant = Black
     )
 
     MaterialTheme(colorScheme = colorScheme, content = content)

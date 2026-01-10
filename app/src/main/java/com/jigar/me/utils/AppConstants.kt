@@ -6,17 +6,10 @@ object AppConstants {
     internal const val PREF_NAME = "kotlin_basic_pref"
     internal const val YOUTUBE_URL = "https://www.youtube.com/channel/UC9MSzIbLkuzffqepgOqBLhw"
 
-    const val BLINK_ICON_ANIMATION_DURATION: Long = 600
-    const val BLINK_ICON_ANIMATION_ALPHA: Float = 0.1F
-
     const val screenWidthDp = "screenWidthDp"
-    const val HAS_NOTCH = "has_notch"
     const val NOTCH_HEIGHT = "notch_height"
-    const val BOTTOM_NAV_HEIGHT = "bottom_nav_height"
+    const val STATISTICS_DATA = "statisticsData"
 
-    const val NUMBER_PUZZLE_SAVE = "number_puzzle_save"
-    const val NUMBER_PUZZLE_CURRENT_SCORE = "number_puzzle_current_score"
-    const val NUMBER_PUZZLE_BEST_SCORE = "number_puzzle_best_score"
     const val PAGINATION_RECORDS = 20
 
     const val PREF_KEY_APP_VERSION_CODE = "pref_previous_version_code"
