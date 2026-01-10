@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.exam_base.repository
+package com.jigar.me.ui.view.jetpack.api.repository
 
 import com.jigar.me.data.api.ExamApi
 import com.jigar.me.data.api.connections.SafeApiCall

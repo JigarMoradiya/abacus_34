@@ -7,7 +7,7 @@ import com.jigar.me.R
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.core.StatefulViewModel
-import com.jigar.me.ui.view.jetpack.exam_base.SubmitAllExamUseCase
+import com.jigar.me.ui.view.jetpack.api.SubmitAllExamUseCase
 import com.jigar.me.ui.view.jetpack.fragments.exam.play.exam_generator.ExamGenerator
 import com.jigar.me.ui.view.jetpack.fragments.exam.play.exam_generator.toQuestionDataRequest
 import com.jigar.me.utils.AppConstants

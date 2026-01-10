@@ -1,10 +1,10 @@
-package com.jigar.me.ui.view.jetpack.exam_base
+package com.jigar.me.ui.view.jetpack.api
 
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.ui.view.jetpack.core.di.Dispatcher
 import com.jigar.me.ui.view.jetpack.core.di.DispatcherKey
 import com.jigar.me.ui.view.jetpack.core.domain.CallbackParameterizedUseCase
-import com.jigar.me.ui.view.jetpack.exam_base.repository.ExamNewRepository
+import com.jigar.me.ui.view.jetpack.api.repository.ExamNewRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect

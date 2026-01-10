@@ -1,9 +1,7 @@
 package com.jigar.me.ui.view.jetpack.fragments.exercise.viewmodels
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.viewModelScope
-import com.google.gson.Gson
 import com.jigar.me.BuildConfig
 import com.jigar.me.R
 import com.jigar.me.data.model.data.QuestionDataRequest
@@ -11,11 +9,10 @@ import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.jetpack.core.StatefulViewModelAbacus
-import com.jigar.me.ui.view.jetpack.exam_base.SubmitAllExamUseCase
+import com.jigar.me.ui.view.jetpack.api.SubmitAllExamUseCase
 import com.jigar.me.ui.view.jetpack.fragments.exercise.exercise_generator.ExerciseGenerator
 import com.jigar.me.ui.view.jetpack.fragments.exercise.exercise_generator.GridItemModel
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.PlaySound
 import com.jigar.me.utils.extensions.isNetworkAvailable
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -26,7 +23,6 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @HiltViewModel

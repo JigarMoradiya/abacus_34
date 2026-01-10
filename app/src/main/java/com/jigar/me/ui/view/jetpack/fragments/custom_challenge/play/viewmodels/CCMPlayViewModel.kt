@@ -7,7 +7,7 @@ import com.jigar.me.data.local.data.DataProvider
 import com.jigar.me.data.model.data.*
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.core.StatefulViewModelAbacus
-import com.jigar.me.ui.view.jetpack.exam_base.SubmitAllExamUseCase
+import com.jigar.me.ui.view.jetpack.api.SubmitAllExamUseCase
 import com.jigar.me.ui.view.jetpack.utils.TextToSpeechManager
 import com.jigar.me.utils.*
 import com.jigar.me.utils.extensions.convertNumberToWords
