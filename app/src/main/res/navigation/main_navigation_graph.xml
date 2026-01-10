@@ -51,9 +51,6 @@
             android:id="@+id/action_myProfileFragment_to_reportsHomeFragment"
             app:destination="@+id/reportsHomeFragment" />
         <action
-            android:id="@+id/action_myProfileFragment_to_editProfileFragment"
-            app:destination="@+id/editProfileFragment" />
-        <action
             android:id="@+id/toVideoPreviewFragment"
             app:destination="@+id/videoPreviewFragment" />
         <action
@@ -65,11 +62,6 @@
         <action
             android:id="@+id/toFAQsFragmentNew"
             app:destination="@+id/faqsFragmentNew" />
-    </fragment>
-    <fragment
-        android:id="@+id/editProfileFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.profile.EditProfileFragment">
-
     </fragment>
     <fragment
         android:id="@+id/reportsHomeFragment"
@@ -224,16 +216,16 @@
     </fragment>
     <fragment
         android:id="@+id/settingFragmentNew"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.setting.SettingFragmentNew"/>
+        android:name="com.jigar.me.ui.view.jetpack.fragments.other.setting.SettingFragmentNew"/>
     <fragment
         android:id="@+id/youtubeVideoFragmentNew"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.youtube_video.YoutubeVideoFragmentNew"/>
+        android:name="com.jigar.me.ui.view.jetpack.fragments.other.youtube_video.YoutubeVideoFragmentNew"/>
     <fragment
         android:id="@+id/faqsFragmentNew"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.faqs.FAQsFragmentNew"/>
+        android:name="com.jigar.me.ui.view.jetpack.fragments.other.faqs.FAQsFragmentNew"/>
     <fragment
         android:id="@+id/ccmHomeFragment"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.custom_challenge.home.CCMHomeFragment">
+        android:name="com.jigar.me.ui.view.jetpack.fragments.activities.custom_challenge.home.CCMHomeFragment">
         <action
             android:id="@+id/toCCMPlayFragment"
             app:destination="@+id/ccmPlayFragment" />
@@ -243,10 +235,10 @@
     </fragment>
     <fragment
         android:id="@+id/ccmPlayFragment"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.custom_challenge.play.CCMPlayFragment"/>
+        android:name="com.jigar.me.ui.view.jetpack.fragments.activities.custom_challenge.play.CCMPlayFragment"/>
     <fragment
         android:id="@+id/examHomeFragmentNew"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.exam.home.ExamHomeFragmentNew">
+        android:name="com.jigar.me.ui.view.jetpack.fragments.activities.exam.home.ExamHomeFragmentNew">
         <action
             android:id="@+id/toExamPlayFragment"
             app:destination="@+id/examPlayFragment" />
@@ -256,8 +248,8 @@
     </fragment>
     <fragment
         android:id="@+id/examPlayFragment"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.exam.play.ExamPlayFragment"/>
+        android:name="com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.ExamPlayFragment"/>
     <fragment
         android:id="@+id/exerciseFragment"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.exercise.ExerciseFragment"/>
+        android:name="com.jigar.me.ui.view.jetpack.fragments.activities.exercise.ExerciseFragment"/>
 </navigation>

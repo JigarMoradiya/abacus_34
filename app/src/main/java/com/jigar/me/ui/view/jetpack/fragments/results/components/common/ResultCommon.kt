@@ -33,8 +33,8 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimaryLight
-import com.jigar.me.ui.view.jetpack.fragments.exam.play.exam_generator.ExamResultUi
-import com.jigar.me.ui.view.jetpack.fragments.exam.play.exam_generator.QuestionResult
+import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.exam_generator.ExamResultUi
+import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.exam_generator.QuestionResult
 
 
 @Composable

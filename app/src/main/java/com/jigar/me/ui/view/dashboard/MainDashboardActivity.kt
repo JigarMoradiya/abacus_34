@@ -18,8 +18,8 @@ import com.jigar.me.R
 import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.databinding.ActivityMainDashboardBinding
 import com.jigar.me.ui.view.base.BaseActivity
-import com.jigar.me.ui.view.jetpack.fragments.exam.play.ExamPlayFragment
-import com.jigar.me.ui.view.jetpack.fragments.exercise.ExerciseFragment
+import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.ExamPlayFragment
+import com.jigar.me.ui.view.jetpack.fragments.activities.exercise.ExerciseFragment
 import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.jetpack.utils.TextToSpeechManager
 import com.jigar.me.utils.AppConstants

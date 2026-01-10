@@ -137,9 +137,6 @@ class MyProfileFragment : BaseFragment(),
             "about_app" -> {
                 mNavController.navigate(R.id.toVideoPreviewFragment)
             }
-            "edit_profile" -> {
-                mNavController.navigate(R.id.action_myProfileFragment_to_editProfileFragment)
-            }
             "rate_us_on_the_play_store" -> {
                 requireContext().openURL("https://play.google.com/store/apps/details?id=${requireContext().packageName}")
             }

@@ -45,8 +45,8 @@ import com.jigar.me.R
 import com.jigar.me.data.model.data.QuestionDataRequest
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.ui.view.jetpack.core.presentation.components.PrimaryButton
-import com.jigar.me.ui.view.jetpack.fragments.exam.play.exam_generator.QuestionResult
-import com.jigar.me.ui.view.jetpack.fragments.exam.play.exam_generator.toQuestionResultList
+import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.exam_generator.QuestionResult
+import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.exam_generator.toQuestionResultList
 import com.jigar.me.ui.view.jetpack.fragments.results.components.common.QuestionExamColumnItemHorizontal
 import com.jigar.me.ui.view.jetpack.fragments.results.components.common.StatItem
 import com.jigar.me.ui.view.jetpack.fragments.results.components.common.buildExamResult
