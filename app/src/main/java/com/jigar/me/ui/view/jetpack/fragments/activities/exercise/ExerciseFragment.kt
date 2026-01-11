@@ -38,7 +38,7 @@ import com.jigar.me.ui.view.jetpack.fragments.activities.exercise.components.Exe
 import com.jigar.me.ui.view.jetpack.fragments.activities.exercise.viewmodels.ExerciseViewModel
 import com.jigar.me.ui.view.jetpack.fragments.common.Loader
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
-import com.jigar.me.ui.view.jetpack.fragments.results.components.ExerciseCompleteResultDialog
+import com.jigar.me.ui.view.jetpack.fragments.reports.dialogs.ExerciseExamCompleteResultDialog
 import com.jigar.me.utils.extensions.secToCountDown
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -109,12 +109,12 @@ class ExerciseFragment : Fragment() {
                         Loader()
                     }
 
-                    // exam complete popup
+                    // exercise complete popup
                     AnimatedVisibility(
                         visible = uiState.isShowCompletePopup, enter = fadeIn(), exit = fadeOut()
                     ) {
-                        uiState.submitExamRequest?.let {
-                            ExerciseCompleteResultDialog(it, onClose = {
+                        uiState.submitExerciseRequest?.let {
+                            ExerciseExamCompleteResultDialog(it, onClose = {
                                 viewModel.closeExercise()
                             }, onGiveAgain = {
                                 viewModel.generateExercise()

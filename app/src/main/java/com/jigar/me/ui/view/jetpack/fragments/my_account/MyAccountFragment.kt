@@ -55,10 +55,11 @@ class MyAccountFragment : Fragment() {
                                     findNavController().navigate(R.id.toPurchaseFragment)
                                 }
                                 "setting" -> {
-                                    findNavController().navigate(R.id.toSettingsFragmentNew)
+//                                    findNavController().navigate(R.id.toSettingsFragmentNew)
+                                    findNavController().navigate(R.id.action_myProfileFragment_to_reportsHomeFragment)
                                 }
                                 "report_history" -> {
-                                    findNavController().navigate(R.id.action_myProfileFragment_to_reportsHomeFragment)
+                                    findNavController().navigate(R.id.toReportHistoryFragment)
                                 }
                                 "about_app" -> {
                                     findNavController().navigate(R.id.toVideoPreviewFragment)

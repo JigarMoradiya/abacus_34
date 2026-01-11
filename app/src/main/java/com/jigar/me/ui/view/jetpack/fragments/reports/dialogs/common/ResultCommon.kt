@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.results.components.common
+package com.jigar.me.ui.view.jetpack.fragments.reports.dialogs.common
 
 import android.content.Context
 import androidx.compose.foundation.Image

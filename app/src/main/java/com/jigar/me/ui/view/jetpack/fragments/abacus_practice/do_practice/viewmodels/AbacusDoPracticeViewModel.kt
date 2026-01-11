@@ -449,7 +449,7 @@ class AbacusDoPracticeViewModel @Inject constructor(
                             total_time_taken = (state().currentSetTime?:0L).toInt()
                         }
                         no_of_questions = abacusList.size
-                        val questionsList : ArrayList<Any> = arrayListOf()
+                        val questionsList : ArrayList<QuestionDataRequest> = arrayListOf()
                         var rightAnswerCount = 0
                         state().abacus.map {
                             val question = it.question

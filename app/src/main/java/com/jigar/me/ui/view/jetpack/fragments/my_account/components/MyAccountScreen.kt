@@ -11,8 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.unit.dp
+
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.fragments.my_account.viewmodels.MyAccountUiState
 import com.jigar.me.ui.view.jetpack.fragments.my_account.viewmodels.getMenuList
@@ -21,7 +22,8 @@ import com.jigar.me.ui.view.jetpack.fragments.my_account.viewmodels.getMenuList
 fun MyAccountScreen(
     uiState: MyAccountUiState, onMenuClick: (String) -> Unit
 ) {
-    val menuList = remember { getMenuList() }
+    val context = LocalContext.current
+    val menuList = remember { getMenuList(context) }
 
     LazyColumn(
         modifier = Modifier

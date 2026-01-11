@@ -1,10 +1,15 @@
 package com.jigar.me.ui.view.jetpack.api.repository
 
 import com.google.gson.Gson
+import com.google.gson.JsonObject
+import com.google.gson.reflect.TypeToken
 import com.jigar.me.data.api.ExamApi
 import com.jigar.me.data.api.connections.SafeApiCall
 import com.jigar.me.data.local.db.abacus_all_data.AbacusAllDataDB
 import com.jigar.me.data.model.MainAPIResponse
+import com.jigar.me.data.model.data.AllExamData
+import com.jigar.me.data.model.data.FetchReportHistoryRequest
+import com.jigar.me.data.model.data.FetchReportHistoryResponse
 import com.jigar.me.data.model.data.Statistics
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.ui.view.jetpack.core.miscs.emitFlow
@@ -82,5 +87,56 @@ class DefaultExamNewRepository @Inject constructor(private val remote: ExamApi,p
 
     private suspend fun getStatisticsApi() = safeApiCall {
         remote.getStatistics()
+    }
+
+
+    override fun getReportHistory(params : FetchReportHistoryRequest): Flow<FetchReportHistoryResponse> = emitFlow {
+        val result = getReportHistoryApi(params)
+        when (result) {
+            is Resource.Success -> {
+                val response = result.value
+                if (response.status == AppConstants.APIStatus.SUCCESS){
+                    return@emitFlow manageRepostHistoryResponse(response.data)
+                } else {
+                    val errorMsg = response.error?.message
+                        ?: response.message
+                        ?: "Unknown server response"
+                    throw Exception(errorMsg)
+                }
+            }
+
+            is Resource.Failure -> throw when {
+                result.isNetworkError -> IOException("Network error occurred")
+                else -> Exception("API error: ${result.errorBody ?: "Unknown error"}, code: ${result.errorCode}")
+            }
+
+            else -> throw Exception("Unexpected response type")
+        }
+    }
+
+    private suspend fun manageRepostHistoryResponse(data: JsonObject?): FetchReportHistoryResponse {
+
+        var totalRecord = 0
+        val list : ArrayList<AllExamData> = if (data?.has("data") == true){
+            if (data.has("total_records")){
+                totalRecord = data.get("total_records").asString.toInt()
+            }
+            Gson().fromJson(data.getAsJsonArray("data"), object : TypeToken<ArrayList<AllExamData>>() {}.type)
+        }else{
+            arrayListOf()
+        }
+        list.map{ item ->
+            if (item.type == AppConstants.apiParams.answerFormalExam){
+                item.set_id?.let {
+                    val levelOfSet = abacusAllDataDB.getParentLevelOfSet(it)
+                    item.level = levelOfSet
+                }
+            }
+        }
+        return FetchReportHistoryResponse(totalRecord,list)
+    }
+
+    private suspend fun getReportHistoryApi(params : FetchReportHistoryRequest) = safeApiCall {
+        remote.getAllExam(params.type,params.from_date,params.to_date,params.from,params.rows)
     }
 }

@@ -81,7 +81,7 @@ data class SubmitAllExamDataRequest(
     var no_of_questions: Int? = null,
     var no_of_right_answers: Int? = null,
     var theme: String? = null,
-    var questions: ArrayList<Any>? = null,
+    var questions: ArrayList<QuestionDataRequest>? = null,
 
     // Exercise
     var category: String? = null,

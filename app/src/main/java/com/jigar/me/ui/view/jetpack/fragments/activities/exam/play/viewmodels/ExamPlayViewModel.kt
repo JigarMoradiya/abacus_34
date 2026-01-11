@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.viewModelScope
 import com.jigar.me.BuildConfig
 import com.jigar.me.R
+import com.jigar.me.data.model.data.QuestionDataRequest
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.core.StatefulViewModel
@@ -120,7 +121,7 @@ class ExamPlayViewModel @Inject constructor(
             total_time_taken = state().elapsedSeconds
             no_of_questions = state().examPaper.size
             no_of_right_answers = state().totalCorrect
-            val questionsList : ArrayList<Any> = arrayListOf()
+            val questionsList : ArrayList<QuestionDataRequest> = arrayListOf()
             state().examPaper.map {
                 questionsList.add(it.toQuestionDataRequest())
             }

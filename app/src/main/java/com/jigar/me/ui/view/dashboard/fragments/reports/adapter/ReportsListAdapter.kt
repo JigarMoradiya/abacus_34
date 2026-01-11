@@ -49,9 +49,7 @@ class ReportsListAdapter(
             txtType.text = if (data.type == AppConstants.apiParams.answerFormalExam){AppConstants.EXAM.type_Practice_Set}else if (data.type == AppConstants.EXAM.type_CCM){context.getString(R.string.custom_challenge_mode)}else{data.type}
             conCCM.hide()
             conExerciseExam.hide()
-            if (data.type == AppConstants.apiParams.answerFormalExam){
 
-            }
             when (data.type) {
                 AppConstants.EXAM.type_CCM -> {
                     conCCM.show()

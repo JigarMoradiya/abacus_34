@@ -35,5 +35,5 @@ data class ExerciseUiState(
     val isShowNoInternet: Boolean = false,
     val noInternetMessage : String = "",
 
-    val submitExamRequest : SubmitAllExamDataRequest? = null,
+    val submitExerciseRequest : SubmitAllExamDataRequest? = null,
 )

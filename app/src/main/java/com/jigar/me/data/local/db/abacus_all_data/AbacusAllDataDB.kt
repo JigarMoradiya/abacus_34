@@ -34,4 +34,6 @@ class AbacusAllDataDB @Inject constructor(private val dao: AbacusAllDataDao) {
     suspend fun updateUserAnswer(abacusId : String,userAnswer : String) = dao.updateUserAnswer(abacusId,userAnswer)
     suspend fun removeUserAnswer(setId : String) = dao.removeUserAnswer(setId)
 
+    suspend fun getParentLevelOfSet(setId: String): String = dao.getParentLevelOfSet(setId)
+
 }

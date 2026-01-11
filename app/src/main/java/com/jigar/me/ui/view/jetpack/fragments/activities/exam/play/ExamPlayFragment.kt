@@ -30,7 +30,7 @@ import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.viewmodels.Ex
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.Loader
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
-import com.jigar.me.ui.view.jetpack.fragments.results.components.ExamCompleteResultDialog
+import com.jigar.me.ui.view.jetpack.fragments.reports.dialogs.ExerciseExamCompleteResultDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -75,7 +75,7 @@ class ExamPlayFragment : Fragment() {
                         exit = fadeOut()
                     ) {
                         uiState.submitExamRequest?.let{
-                            ExamCompleteResultDialog(it, onClose = {
+                            ExerciseExamCompleteResultDialog(it, onClose = {
                                 onBack()
                             }, onGiveAgain = {
                                 viewModel.reGenerateExam()

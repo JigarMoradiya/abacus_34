@@ -218,7 +218,7 @@ class ExerciseViewModel @Inject constructor(
             total_time_taken = maxTime - state().elapsedSeconds
             no_of_questions = questionList.size
             no_of_right_answers = state().totalCorrect
-            val questionsList : ArrayList<Any> = arrayListOf()
+            val questionsList : ArrayList<QuestionDataRequest> = arrayListOf()
             questionList.map {
                 questionsList.add(QuestionDataRequest(it.que,if (it.userAnswer == null){null}else{it.userAnswer.toString()},it.isCorrect))
             }
@@ -226,7 +226,7 @@ class ExerciseViewModel @Inject constructor(
         }
         if (BuildConfig.DEBUG){
             updateState_ {
-                copy(submitExamRequest = submitExamRequest,isShowCompletePopup = true)
+                copy(submitExerciseRequest = submitExamRequest,isShowCompletePopup = true)
             }
         }else{
             submitExamApi(submitExamRequest)
@@ -238,7 +238,7 @@ class ExerciseViewModel @Inject constructor(
             params = submitExamRequest,
             onStart = {
                 updateState_ {
-                    copy(isLoading = true,isShowNoInternet = false,submitExamRequest = submitExamRequest)
+                    copy(isLoading = true,isShowNoInternet = false,submitExerciseRequest = submitExamRequest)
                 }
             },
             onEachEmit = {},

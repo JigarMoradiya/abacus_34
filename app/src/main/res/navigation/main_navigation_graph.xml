@@ -234,11 +234,17 @@
         android:id="@+id/exerciseFragment"
         android:name="com.jigar.me.ui.view.jetpack.fragments.activities.exercise.ExerciseFragment"/>
     <fragment
+        android:id="@+id/reportHistoryFragment"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.reports.ReportHistoryFragment"/>
+    <fragment
         android:id="@+id/myAccountFragment"
         android:name="com.jigar.me.ui.view.jetpack.fragments.my_account.MyAccountFragment">
         <action
             android:id="@+id/action_myProfileFragment_to_reportsHomeFragment"
             app:destination="@+id/reportsHomeFragment" />
+        <action
+            android:id="@+id/toReportHistoryFragment"
+            app:destination="@+id/reportHistoryFragment" />
         <action
             android:id="@+id/toVideoPreviewFragment"
             app:destination="@+id/videoPreviewFragment" />

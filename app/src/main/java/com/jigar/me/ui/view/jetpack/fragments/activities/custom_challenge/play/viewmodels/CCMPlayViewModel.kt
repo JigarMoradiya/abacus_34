@@ -214,7 +214,7 @@ class CCMPlayViewModel @Inject constructor(
             is_question_show_in_word = isQuestionShowWord
             no_of_right_answers = if (isAnswerTrue){1}else{0}
 
-            val questionsList : ArrayList<Any> = arrayListOf()
+            val questionsList : ArrayList<QuestionDataRequest> = arrayListOf()
             questionsList.add(QuestionDataRequest(customChallengeData?.fullQuestion,userAnswer,isAnswerTrue))
             questions = questionsList
             submitExamApi(submitExamRequest)

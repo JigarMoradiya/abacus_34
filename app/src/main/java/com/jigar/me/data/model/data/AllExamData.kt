@@ -28,6 +28,19 @@ data class StatisticsData(
     var can_give_exam: Boolean = true,
 )
 
+data class FetchReportHistoryRequest(
+    var type: String? = null,
+    var from_date: String? = null,
+    var to_date: String? = null,
+    var from: Int = 0,
+    var rows: Int = AppConstants.PAGINATION_RECORDS,
+)
+
+data class FetchReportHistoryResponse(
+    var totalRecord: Int = 0,
+    var list: List<AllExamData> = arrayListOf(),
+)
+
 data class AllExamData(
     var id: String? = null,
     var user_id: String? = null,
@@ -187,4 +200,51 @@ data class AllExamData(
         }
         return examBeginners
     }
+}
+
+fun AllExamData.toSubmitRequest(): SubmitAllExamDataRequest {
+    return SubmitAllExamDataRequest(
+        // Exam
+        type = type,
+        level = level,
+        sub_type = sub_type,
+        total_time_taken = total_time_taken,
+        no_of_questions = no_of_questions,
+        no_of_right_answers = no_of_right_answers,
+        theme = theme,
+
+        // Convert JSON → List<QuestionDataRequest>
+        questions = questions?.let { json ->
+            try {
+                val listType = object : TypeToken<ArrayList<QuestionDataRequest>>() {}.type
+                Gson().fromJson(json, listType)
+            } catch (e: Exception) {
+                arrayListOf()
+            }
+        },
+
+        // Exercise
+        category = category,
+        label = label,
+        allowed_max_time = allowed_max_time?.toIntOrNull(),
+
+        // Practise
+        answer_type = answer_type,
+        is_left_end = is_left_end,
+        is_display_abacus_number = is_display_abacus_number,
+        is_abacus_hint_sount_enable = is_abacus_hint_sount_enable,
+
+        // CCM
+        total_set_of_question = total_set_of_question,
+        total_numbers_in_set = total_numbers_in_set,
+        gap_between_two_question = gap_between_two_question,
+        question_min_length = question_min_length,
+        question_max_length = question_max_length,
+        is_question_speak = is_question_speak,
+        is_question_show_in_number = is_question_show_in_number,
+        is_question_show_in_word = is_question_show_in_word,
+
+        // Set
+        set_id = set_id
+    )
 }

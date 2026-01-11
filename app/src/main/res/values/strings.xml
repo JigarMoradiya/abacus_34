@@ -318,6 +318,7 @@
     <string name="answer">Answer :</string>
     <string name="result_of_exercise">Result of Exercise</string>
     <string name="result_of_exam">Result of Exam</string>
+    <string name="result_of_formal_exam_set">Result of Formal Exam Practice Set</string>
     <string name="fail_to_got_80">Fail to got 80% for clear this exercise.</string>
     <string name="better_luck_for_next_time">Better luck for next time..</string>
     <string name="congratulations">Congratulations…</string>
@@ -563,7 +564,7 @@
     <string name="result_of_practice_set">Result of Practice Set</string>
     <string name="number_of_questions">Number of Questions :</string>
     <string name="gap_between_two_question_sec">Gap between Two Question (In Sec) :</string>
-    <string name="question_min_max_length">Question Min Max Length :</string>
+    <string name="question_min_max_length">Question Min Max Length</string>
     <string name="question_speak_voice">Question Speak Voice</string>
     <string name="question_show_in_number">Question show in Number</string>
     <string name="question_show_in_word">Question show in Word</string>
@@ -881,5 +882,9 @@
     <string name="hide_from_setting">Hide From Setting</string>
     <string name="select_exam_difficulty">Select Exam Difficulty :</string>
     <string name="select_exam_types">Select Exam Types :</string>
+    <string name="what_s_learn_in_application">What\'s Learn in Application</string>
+    <string name="report_history_cards">Report History Cards</string>
+    <string name="settings">Settings</string>
+    <string name="more">More</string>
 
 </resources>

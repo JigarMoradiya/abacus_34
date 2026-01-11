@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.jetpack.fragments.results.components
+package com.jigar.me.ui.view.jetpack.fragments.reports.dialogs
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -47,25 +47,23 @@ import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.ui.view.jetpack.core.presentation.components.PrimaryButton
 import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.exam_generator.QuestionResult
 import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.exam_generator.toQuestionResultList
-import com.jigar.me.ui.view.jetpack.fragments.results.components.common.QuestionExamColumnItemHorizontal
-import com.jigar.me.ui.view.jetpack.fragments.results.components.common.StatItem
-import com.jigar.me.ui.view.jetpack.fragments.results.components.common.buildExamResult
+import com.jigar.me.ui.view.jetpack.fragments.reports.dialogs.common.QuestionExamColumnItemHorizontal
+import com.jigar.me.ui.view.jetpack.fragments.reports.dialogs.common.StatItem
+import com.jigar.me.ui.view.jetpack.fragments.reports.dialogs.common.buildExamResult
+import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.secToCountDown
+import com.jigar.me.utils.extensions.secToTimeFormat
 
 @Composable
-fun ExerciseCompleteResultDialog(
+fun ExerciseExamCompleteResultDialog(
     request: SubmitAllExamDataRequest,
+    isFromHistory: Boolean = false,
     onClose: () -> Unit,
     onGiveAgain: () -> Unit,
 ) {
 
     val context = LocalContext.current
-    val questionList: List<QuestionDataRequest> =
-        request.questions
-            ?.mapNotNull { it as? QuestionDataRequest }
-            ?.toCollection(ArrayList())
-            ?: arrayListOf()
-
+    val questionList: List<QuestionDataRequest> = request.questions?:arrayListOf()
     val questionResults: List<QuestionResult> = questionList.toQuestionResultList()
     Box(
         modifier = Modifier
@@ -89,8 +87,22 @@ fun ExerciseCompleteResultDialog(
                 Row(modifier = Modifier.fillMaxWidth()
                     .padding(start = dimensionResource(R.dimen.activity_padding16)).padding(end = dimensionResource(R.dimen.activity_padding12)),
                     verticalAlignment = Alignment.CenterVertically) {
+                    val title = when (request.type) {
+                        AppConstants.EXAM.type_Exercise -> {
+                            stringResource(R.string.result_of_exercise)
+                        }
+                        AppConstants.EXAM.type_Exam -> {
+                            stringResource(R.string.result_of_exam)
+                        }
+                        AppConstants.apiParams.answerFormalExam -> {
+                            stringResource(R.string.result_of_formal_exam_set)
+                        }
+                        else -> {
+                            ""
+                        }
+                    }
                     Text(
-                        text = stringResource(R.string.result_of_exercise),
+                        text = title,
                         style = MaterialTheme.typography.titleMedium.copy(color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))),
                     )
                     Spacer(modifier = Modifier.weight(1f))
@@ -115,10 +127,25 @@ fun ExerciseCompleteResultDialog(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceEvenly
                         ) {
+                            var timeLabel = R.string.TotalTakeTime
+                            var timeValue = ""
+                            when (request.type) {
+                                AppConstants.EXAM.type_Exercise -> {
+                                    timeLabel = R.string.TotalTakeTime
+                                    timeValue = (request.total_time_taken?:0).secToCountDown()+" / "+(request.allowed_max_time?:0).secToCountDown()
+                                }
+                                AppConstants.EXAM.type_Exam, AppConstants.apiParams.answerFormalExam -> {
+                                    timeLabel = R.string.TotalTime
+                                    timeValue = (request.total_time_taken?:0).secToTimeFormat()
+                                }
+                                else -> {
+                                    ""
+                                }
+                            }
                             StatItem(
                                 icon = R.mipmap.ic_time,
-                                value = (request.total_time_taken?:0).secToCountDown()+" / "+(request.allowed_max_time?:0).secToCountDown(),
-                                label = R.string.TotalTakeTime,
+                                value = timeValue,
+                                label = timeLabel,
                                 color = Color(0xFFD81B60)
                             )
                             StatItem(
@@ -128,20 +155,33 @@ fun ExerciseCompleteResultDialog(
                                 color = Color(0xFF2E7D32)
                             )
                         }
-                        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding16)))
-                        val result = buildExamResult(
-                            context = context,
-                            totalRight = request.no_of_right_answers?:0,
-                            totalQuestion = questionList.size
-                        )
-                        Text(
-                            text = result.title,
-                            textAlign = TextAlign.Center,
-                            style = MaterialTheme.typography.titleSmall.copy(color = result.titleColor, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_medium))))
+                        if (!isFromHistory){
+                            Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding16)))
+                            val result = buildExamResult(
+                                context = context,
+                                totalRight = request.no_of_right_answers?:0,
+                                totalQuestion = questionList.size
+                            )
+                            Text(
+                                text = result.title,
+                                textAlign = TextAlign.Center,
+                                style = MaterialTheme.typography.titleSmall.copy(color = result.titleColor, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_medium))))
 
-                        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding12)))
+                            Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding12)))
 
-                        PrimaryButton(text = stringResource(R.string.do_exercise_again), onClick = onGiveAgain,)
+                            val btnLabel = when (request.type) {
+                                AppConstants.EXAM.type_Exercise -> {
+                                    stringResource(R.string.do_exercise_again)
+                                }
+                                AppConstants.EXAM.type_Exam -> {
+                                    stringResource(R.string.give_exam_again)
+                                }
+                                else -> {
+                                    ""
+                                }
+                            }
+                            PrimaryButton(text = btnLabel, onClick = onGiveAgain)
+                        }
                     }
 
                     LazyColumn(
