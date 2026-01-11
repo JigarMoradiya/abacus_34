@@ -8,6 +8,10 @@ data class ReportHistoryUiState(
     val error: Int? = null,
     val isLoading: Boolean = false,
 
+    val filterList: List<ReportFilterItem> = emptyList(),
+    val isDropdownExpanded: Boolean = false,
+    val selectedFilter: ReportFilterItem? = null,
+
     val from: Int = 0,
     val type: String? = null,
     val from_date: String? = null,
@@ -20,3 +24,7 @@ data class ReportHistoryUiState(
     val isShowExerciseExamPopup: Boolean = false,
 )
 
+data class ReportFilterItem(
+    val label: String,   // UI text
+    val apiValue: String? // API value (null for default)
+)

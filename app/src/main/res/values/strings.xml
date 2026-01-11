@@ -672,7 +672,7 @@
     <string name="report_card">Report History Cards</string>
     <string name="about_app_label">What"'"s Learn in Application</string>
     <string name="subscription">Subscription</string>
-    <string name="no_report_available_yet">No Report Available Yet</string>
+    <string name="no_report_available_yet">No Report Found</string>
     <string name="question">Question :</string>
     <string name="great_your_answer_is_correct">Great, your answer is correct.</string>
     <string name="sorry_your_answer_is_incorrect">Sorry, your answer is incorrect.</string>
@@ -886,5 +886,8 @@
     <string name="report_history_cards">Report History Cards</string>
     <string name="settings">Settings</string>
     <string name="more">More</string>
+    <string name="exam">Exam</string>
+    <string name="exercise">Exercise</string>
+    <string name="practice_set">Practice set of Formal Exam</string>
 
 </resources>
