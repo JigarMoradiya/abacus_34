@@ -25,7 +25,7 @@ data class Statistics(
 data class StatisticsData(
     var count: Any? = null,
     var last_exam_given_time: String? = null,
-    var can_give_exam: Boolean = true,
+    var can_give_exam: Boolean = true
 )
 
 data class FetchReportHistoryRequest(
@@ -33,12 +33,12 @@ data class FetchReportHistoryRequest(
     var from_date: String? = null,
     var to_date: String? = null,
     var from: Int = 0,
-    var rows: Int = AppConstants.PAGINATION_RECORDS,
+    var rows: Int = AppConstants.PAGINATION_RECORDS
 )
 
 data class FetchReportHistoryResponse(
     var totalRecord: Int = 0,
-    var list: List<AllExamData> = arrayListOf(),
+    var list: List<AllExamData> = arrayListOf()
 )
 
 data class AllExamData(

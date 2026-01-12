@@ -28,6 +28,7 @@ import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.Loader
 import com.jigar.me.ui.view.jetpack.fragments.reports.components.NoReportAvailableView
+import com.jigar.me.ui.view.jetpack.fragments.reports.components.ReportDateFilterCard
 import com.jigar.me.ui.view.jetpack.fragments.reports.components.ReportFilterCard
 import com.jigar.me.ui.view.jetpack.fragments.reports.components.ReportsScreen
 import com.jigar.me.ui.view.jetpack.fragments.reports.dialogs.ExerciseExamCompleteResultDialog
@@ -54,6 +55,7 @@ class ReportHistoryFragment : Fragment() {
                             Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding16)))
                             ReportFilterCard(uiState,viewModel)
                             Spacer(Modifier.weight(1f))
+                            ReportDateFilterCard(uiState, viewModel)
                         }
                         if (uiState.list.isEmpty() && !uiState.isLoading) {
                             NoReportAvailableView()

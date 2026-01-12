@@ -9,6 +9,7 @@ import com.jigar.me.data.model.data.toSubmitRequest
 import com.jigar.me.ui.view.jetpack.api.GetReportHistoryUseCase
 import com.jigar.me.ui.view.jetpack.core.StatefulViewModel
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.DateTimeUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.catch
@@ -33,11 +34,11 @@ class ReportHistoryViewModel @Inject constructor(
         add(ReportFilterItem(label = context.getString(R.string.practice_set), apiValue = AppConstants.apiParams.answerFormalExam))
     }
 
-
-    override fun getInitialState() = ReportHistoryUiState(filterList = list, selectedFilter = list[1])
+    val dateFilterList = buildDateFilterList(context)
+    override fun getInitialState() = ReportHistoryUiState(filterList = list, selectedFilter = list[1], dateFilterList = dateFilterList, selectedDateFilter = dateFilterList.first())
 
     init {
-        getReportHistory()
+        callApi()
     }
 
     fun onFilterClick() {
@@ -48,17 +49,49 @@ class ReportHistoryViewModel @Inject constructor(
         updateState_ { copy(isDropdownExpanded = false) }
     }
 
+    // report type filter change
     fun onFilterSelected(item: ReportFilterItem) {
         // same logic as XML
         if (item.label != context.getString(R.string.select_report_type)) {
             updateState_ {
-                copy(selectedFilter = item, isDropdownExpanded = false, from = 0)
+                copy(selectedFilter = item, isDropdownExpanded = false, from = 0, list = emptyList())
             }
-            getReportHistory()
+            callApi()
         }
     }
 
-    private fun getReportHistory() = viewModelScope.launch {
+    fun onDateFilterClick() {
+        updateState_ { copy(isDateDropdownExpanded = true) }
+    }
+
+    fun onDateFilterDismiss() {
+        updateState_ { copy(isDateDropdownExpanded = false) }
+    }
+
+    fun onDateFilterSelected(item: ReportDateFilterItem) {
+        val (fromDate, toDate) = DateTimeUtils.getDateRange(item.type)
+
+        updateState_ {
+            copy(selectedDateFilter = item, from_date = fromDate, to_date = toDate,
+                from = 0, isDateDropdownExpanded = false, list = emptyList())
+        }
+
+        callApi()
+    }
+
+    fun loadNextPage() {
+        if (state().isPagingLoader) return
+        if (state().list.size >= state().totalRecord) return
+
+        updateState_ {
+            copy(isPagingLoader = true, from = list.size)
+        }
+
+        callApi()
+    }
+
+
+    private fun callApi() = viewModelScope.launch {
         val from = state().from
         val type = state().selectedFilter?.apiValue
         val fromDate = state().from_date
@@ -79,7 +112,11 @@ class ReportHistoryViewModel @Inject constructor(
                     }
                 }
                 updateState_ {
-                    copy(totalRecord = data.totalRecord,list = data.list)
+                    copy(
+                        totalRecord = data.totalRecord,
+                        list = list + data.list,
+                        isPagingLoader = false
+                    )
                 }
             },
             onError = {

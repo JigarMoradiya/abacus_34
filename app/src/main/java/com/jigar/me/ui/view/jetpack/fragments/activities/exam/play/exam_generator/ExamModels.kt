@@ -1,11 +1,13 @@
 package com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.exam_generator
 
+import android.util.Log
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.RemoveCircle
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.google.gson.Gson
 import com.jigar.me.data.model.data.QuestionDataRequest
 import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorGreen
 import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorOrange
@@ -56,14 +58,15 @@ fun List<QuestionDataRequest>.toQuestionResultList(): List<QuestionResult> {
 }
 
 fun QuestionDataRequest.toQuestionResult(): QuestionResult {
-    return QuestionResult(que = que?:"", userAnswer = (user_answer?:"0").toInt(), statusQue = toQuestionStatus())
+    val userAns = if (user_answer.isNullOrEmpty()){"0"}else{ user_answer }
+    return QuestionResult(que = que?:"", userAnswer = (userAns?:"0").toInt(), statusQue = toQuestionStatus())
 }
 fun QuestionDataRequest.toQuestionStatus(): QuestionStatus {
-    return when (is_correct) {
-        null -> {
+    return when {
+        is_correct == null && user_answer.isNullOrEmpty() -> {
             QuestionStatus(color = ColorOrange, symbol = Icons.Default.RemoveCircle)
         }
-        true -> {
+        is_correct == true -> {
             QuestionStatus(color = ColorGreen, symbol = Icons.Default.CheckCircle)
         }
         else -> {

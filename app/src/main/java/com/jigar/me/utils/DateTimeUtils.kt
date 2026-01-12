@@ -4,6 +4,7 @@ import android.os.Build
 import android.text.TextUtils
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.jigar.me.ui.view.jetpack.fragments.reports.viewmodels.DateFilterType
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -39,6 +40,69 @@ object DateTimeUtils {
     var yyyy_MM_dd: String = "yyyy-MM-dd"
     var hh_mm_a: String = "'at' hh:mm a"
     var at_dd_mmm_yy_hh_mm_a: String = "'At' dd MMM-yy hh:mm a"
+
+    fun getDateRange(type: DateFilterType): Pair<String, String> {
+        val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val cal = Calendar.getInstance()
+
+        return when (type) {
+
+            DateFilterType.LAST_30_DAYS -> {
+                val end = formatter.format(cal.time)
+                cal.add(Calendar.DAY_OF_YEAR, -30)
+                val start = formatter.format(cal.time)
+                start to end
+            }
+
+            DateFilterType.THIS_MONTH -> {
+                // Start = 1st day of current month
+                cal.set(Calendar.DAY_OF_MONTH, 1)
+                val start = formatter.format(cal.time)
+
+                // End = today
+                val end = formatter.format(Calendar.getInstance().time)
+                start to end
+            }
+
+            DateFilterType.LAST_MONTH -> {
+                // Move to previous month
+                cal.add(Calendar.MONTH, -1)
+
+                // Start = 1st day of last month
+                cal.set(Calendar.DAY_OF_MONTH, 1)
+                val start = formatter.format(cal.time)
+
+                // End = last day of last month
+                cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH))
+                val end = formatter.format(cal.time)
+
+                start to end
+            }
+
+            DateFilterType.LAST_3_MONTH -> {
+                val end = formatter.format(cal.time)
+                cal.add(Calendar.MONTH, -3)
+                val start = formatter.format(cal.time)
+                start to end
+            }
+
+            DateFilterType.LAST_6_MONTH -> {
+                val end = formatter.format(cal.time)
+                cal.add(Calendar.MONTH, -6)
+                val start = formatter.format(cal.time)
+                start to end
+            }
+
+            DateFilterType.LAST_1_YEAR -> {
+                val end = formatter.format(cal.time)
+                cal.add(Calendar.YEAR, -1)
+                val start = formatter.format(cal.time)
+                start to end
+            }
+        }
+    }
+
+
     fun String.toDate(dateFormat: String = yyyy_MM_dd_T_HH_mm_ss_sssz, timeZone: TimeZone = TimeZone.getTimeZone("UTC")): Date {
         val parser = SimpleDateFormat(dateFormat, Locale.getDefault())
         parser.timeZone = timeZone
