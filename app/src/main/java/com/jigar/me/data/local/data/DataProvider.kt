@@ -80,26 +80,6 @@ object DataProvider {
         }
     }
 
-    fun getAvatarList() : ArrayList<AvatarImages>{
-        val list = ArrayList<AvatarImages>()
-        with(list){
-            add(AvatarImages(1,R.drawable.ic_avatar_man_01))
-            add(AvatarImages(2,R.drawable.ic_avatar_girl_02))
-            add(AvatarImages(3,R.drawable.ic_avatar_girl_03))
-            add(AvatarImages(4,R.drawable.ic_avatar_girl_04))
-            add(AvatarImages(5,R.drawable.ic_avatar_girl_05))
-            add(AvatarImages(6,R.drawable.ic_avatar_girl_06))
-            add(AvatarImages(1001,R.drawable.ic_avatar_girl_01))
-            add(AvatarImages(1002,R.drawable.ic_avatar_man_02))
-            add(AvatarImages(1003,R.drawable.ic_avatar_man_03))
-            add(AvatarImages(1004,R.drawable.ic_avatar_man_04))
-            add(AvatarImages(1005,R.drawable.ic_avatar_man_05))
-            add(AvatarImages(1006,R.drawable.ic_avatar_man_06))
-            add(AvatarImages(1007,R.drawable.ic_avatar_man_07))
-            add(AvatarImages(1008,R.drawable.ic_avatar_man_08))
-        }
-        return list
-    }
     private fun getMultipleDimensions(abacusBeadType: AbacusBeadType = AbacusBeadType.None) : Float{
         return when (abacusBeadType) {
             AbacusBeadType.ExamResult -> {
@@ -141,92 +121,7 @@ object DataProvider {
         val height = context.dpToPx((beadHeight * multiply).toFloat()).toInt()
         val width = context.dpToPx((beadWidth * multiply)).toInt()
 
-        val space = (context.resources.getDimension(R.dimen.poligon_space) * multiply).toInt()
-        with(list){
-            add(AbacusContent(AppConstants.Settings.theam_Poligon_Rainbow,R.drawable.poligon_pink,R.drawable.bg_abacus_frame_large_pink,R.drawable.bg_abacus_frame_large_pink_exam,R.color.abacus_rod_pink,R.color.abacus_rod_pink_dark,height,width,space,R.drawable.poligon_gray,R.drawable.poligon_pink,arrayListOf(),arrayListOf(), unUsedBeads = R.drawable.poligon_gray_light,answerWindowBG = "#216869", answerWindowLine = "#49a078", answerWindowBtnBgLine = "#f06292"))
-            add(AbacusContent(AppConstants.Settings.theam_Poligon_default,R.drawable.poligon_black,R.drawable.bg_abacus_frame_large_black,R.drawable.bg_abacus_frame_large_black_exam,R.color.abacus_rod_black,R.color.abacus_rod_black_dark,height,width,space,R.drawable.poligon_gray,R.drawable.poligon_black,arrayListOf(),arrayListOf(), unUsedBeads = R.drawable.poligon_gray_light,answerWindowBG = "#bb4430", answerWindowLine = "#f6ae29", answerWindowBtnBgLine = "#bdbdbd"))
-            add(AbacusContent(AppConstants.Settings.theam_Poligon_Blue,R.drawable.poligon_blue,R.drawable.bg_abacus_frame_large_blue,R.drawable.bg_abacus_frame_large_blue_exam,R.color.abacus_rod_blue,R.color.abacus_rod_blue_dark,height,width,space,R.drawable.poligon_gray,R.drawable.poligon_blue,arrayListOf(),arrayListOf(), unUsedBeads = R.drawable.poligon_gray_light,answerWindowBG = "#7f2ccb", answerWindowLine = "#ffa9e7", answerWindowBtnBgLine = "#7986cb"))
-            add(AbacusContent(AppConstants.Settings.theam_Poligon_Purple,R.drawable.poligon_purple,R.drawable.bg_abacus_frame_large_purple,R.drawable.bg_abacus_frame_large_purple_exam,R.color.abacus_rod_purple,R.color.abacus_rod_purple_dark,height,width,space,R.drawable.poligon_gray,R.drawable.poligon_purple,arrayListOf(),arrayListOf(), unUsedBeads = R.drawable.poligon_gray_light,answerWindowBG = "#a23a06", answerWindowLine = "#f6ae29", answerWindowBtnBgLine = "#ba68cb"))
-            add(AbacusContent(AppConstants.Settings.theam_Poligon_Blue_Sky,R.drawable.poligon_blue_sky,R.drawable.bg_abacus_frame_large_blue_sky,R.drawable.bg_abacus_frame_large_blue_sky_exam,R.color.abacus_rod_blue_sky,R.color.abacus_rod_blue_sky_dark,height,width,space,R.drawable.poligon_gray,R.drawable.poligon_blue_sky,arrayListOf(),arrayListOf(), unUsedBeads = R.drawable.poligon_gray_light,answerWindowBG = "#401e5b", answerWindowLine = "#ff8552", answerWindowBtnBgLine = "#64b5f6"))
-            add(AbacusContent(AppConstants.Settings.theam_Poligon_Orange,R.drawable.poligon_orange,R.drawable.bg_abacus_frame_large_orange,R.drawable.bg_abacus_frame_large_orange_exam,R.color.abacus_rod_orange,R.color.abacus_rod_orange_dark,height,width,space,R.drawable.poligon_gray,R.drawable.poligon_orange,arrayListOf(),arrayListOf(), unUsedBeads = R.drawable.poligon_gray_light,answerWindowBG = "#731500", answerWindowLine = "#fcdc4d", answerWindowBtnBgLine = "#ffb74d"))
-            add(AbacusContent(AppConstants.Settings.theam_Poligon_Green,R.drawable.poligon_green,R.drawable.bg_abacus_frame_large_green,R.drawable.bg_abacus_frame_large_green_exam,R.color.abacus_rod_green,R.color.abacus_rod_green_dark,height,width,space,R.drawable.poligon_gray,R.drawable.poligon_green,arrayListOf(),arrayListOf(),R.color.abacus_rod_green_txt, unUsedBeads = R.drawable.poligon_gray_light,answerWindowBG = "#932826", answerWindowLine = "#fb9648", answerWindowBtnBgLine = "#81c784"))
-            add(AbacusContent(AppConstants.Settings.theam_Poligon_Red,R.drawable.poligon_red,R.drawable.bg_abacus_frame_large_red,R.drawable.bg_abacus_frame_large_red_exam,R.color.abacus_rod_red,R.color.abacus_rod_red_dark,height,width,space,R.drawable.poligon_gray,R.drawable.poligon_red,arrayListOf(),arrayListOf(), unUsedBeads = R.drawable.poligon_gray_light,answerWindowBG = "#0D1764", answerWindowLine = "#9199E2", answerWindowBtnBgLine = "#e57373"))
-            add(AbacusContent(AppConstants.Settings.theam_Poligon_Tint,R.drawable.poligon_tint,R.drawable.bg_abacus_frame_large_tint,R.drawable.bg_abacus_frame_large_tint_exam,R.color.abacus_rod_tint,R.color.abacus_rod_tint_dark,height,width,space,R.drawable.poligon_gray,R.drawable.poligon_tint,arrayListOf(),arrayListOf(), unUsedBeads = R.drawable.poligon_gray_light,answerWindowBG = "#5f0f40", answerWindowLine = "#da7422", answerWindowBtnBgLine = "#4dd0e1"))
-            add(AbacusContent(AppConstants.Settings.theam_Poligon_Pink,R.drawable.poligon_pink,R.drawable.bg_abacus_frame_large_pink,R.drawable.bg_abacus_frame_large_pink_exam,R.color.abacus_rod_pink,R.color.abacus_rod_pink_dark,height,width,space,R.drawable.poligon_gray,R.drawable.poligon_pink,arrayListOf(),arrayListOf(), unUsedBeads = R.drawable.poligon_gray_light,answerWindowBG = "#216869", answerWindowLine = "#49a078", answerWindowBtnBgLine = "#f06292"))
-            add(AbacusContent(AppConstants.Settings.theam_Poligon_Yellow,R.drawable.poligon_yellow,R.drawable.bg_abacus_frame_large_yellow,R.drawable.bg_abacus_frame_large_yellow_exam,R.color.abacus_rod_yellow,R.color.abacus_rod_yellow_dark,height,width,space,R.drawable.poligon_gray,R.drawable.poligon_yellow,arrayListOf(),arrayListOf(), unUsedBeads = R.drawable.poligon_gray_light,answerWindowBG = "#388659", answerWindowLine = "#33ca7f", answerWindowBtnBgLine = "#ffd54f"))
-            add(AbacusContent(AppConstants.Settings.theam_Poligon_Silver,R.drawable.poligon_silver,R.drawable.bg_abacus_frame_large_silver,R.drawable.bg_abacus_frame_large_silver_exam,R.color.abacus_rod_silver,R.color.abacus_rod_silver_dark,height,width,space,R.drawable.poligon_gray,R.drawable.poligon_silver,arrayListOf(),arrayListOf(), unUsedBeads = R.drawable.poligon_gray_light,answerWindowBG = "#235789", answerWindowLine = "#e1bc29", answerWindowBtnBgLine = "#90a4ae"))
-            add(AbacusContent(AppConstants.Settings.theam_Poligon_Brown,R.drawable.poligon_brown,R.drawable.bg_abacus_frame_large_brown,R.drawable.bg_abacus_frame_large_brown_dark,R.color.abacus_rod_brown,R.color.abacus_rod_brown_dark,height,width,space,R.drawable.poligon_gray,R.drawable.poligon_brown,arrayListOf(),arrayListOf(), unUsedBeads = R.drawable.poligon_gray_light,answerWindowBG = "#932826", answerWindowLine = "#ff8841", answerWindowBtnBgLine = "#a1887f"))
-        }
-        return list
-    }
 
-    private val abacusThemeList = ArrayList<AbacusContent>()
-    fun getAllAbacusThemeTypeList(context: Context, abacusBeadType: AbacusBeadType) : ArrayList<AbacusContent>{
-        val list = ArrayList<AbacusContent>()
-        list.addAll(getAbacusThemeFreeTypeList(context,abacusBeadType))
-        abacusThemeList.clear()
-        abacusThemeList.addAll(list)
-        list.shuffle()
-        return list
-    }
-    fun findAbacusThemeType(context: Context, theme : String, abacusBeadType: AbacusBeadType) : AbacusContent{
-        getAllAbacusThemeTypeList(context,abacusBeadType = abacusBeadType)
-        val content : AbacusContent? = abacusThemeList.find { it.type == theme }
-        return content ?: abacusThemeList.first()
-    }
-
-    /* exercise */
-    fun getExerciseList(context: Context) : ArrayList<ExerciseLevel>{
-        val list = ArrayList<ExerciseLevel>()
-        val listAddition = ArrayList<ExerciseLevelDetail>()
-        with(listAddition){
-            add(ExerciseLevelDetail("1",5,5,1,1))
-            add(ExerciseLevelDetail("2",10,10,1,5))
-            add(ExerciseLevelDetail("3",5,5,2,4))
-            add(ExerciseLevelDetail("4",10,10,2,8))
-            add(ExerciseLevelDetail("5",5,5,3,4))
-            add(ExerciseLevelDetail("6",10,10,3,8))
-            add(ExerciseLevelDetail("7",5,5,4,5))
-            add(ExerciseLevelDetail("8",10,10,4,10))
-            add(ExerciseLevelDetail("9",5,5,5,5))
-            add(ExerciseLevelDetail("10",10,10,5,10))
-            add(ExerciseLevelDetail("11",5,5,6,5))
-            add(ExerciseLevelDetail("12",10,10,6,10))
-        }
-        val listMultiplication = ArrayList<ExerciseLevelDetail>()
-        with(listMultiplication){
-            add(ExerciseLevelDetail("13",5,0,3,3))
-            add(ExerciseLevelDetail("14",10,0,3,5))
-            add(ExerciseLevelDetail("15",5,0,4,3))
-            add(ExerciseLevelDetail("16",10,0,4,5))
-            add(ExerciseLevelDetail("17",5,0,5,3))
-            add(ExerciseLevelDetail("18",10,0,5,5))
-            add(ExerciseLevelDetail("19",5,0,6,3))
-            add(ExerciseLevelDetail("20",10,0,6,5))
-            add(ExerciseLevelDetail("21",5,0,7,3))
-            add(ExerciseLevelDetail("22",10,0,7,5))
-        }
-        val listDivision = ArrayList<ExerciseLevelDetail>()
-        with(listDivision){
-            add(ExerciseLevelDetail("33",5,0,3,3))
-            add(ExerciseLevelDetail("34",5,0,3,2))
-
-            add(ExerciseLevelDetail("23",5,0,4,3))
-            add(ExerciseLevelDetail("24",5,0,4,2))
-            add(ExerciseLevelDetail("25",10,0,4,6))
-            add(ExerciseLevelDetail("26",10,0,4,4))
-            add(ExerciseLevelDetail("27",5,0,5,3))
-            add(ExerciseLevelDetail("28",5,0,5,2))
-            add(ExerciseLevelDetail("29",10,0,5,6))
-            add(ExerciseLevelDetail("30",10,0,5,4))
-            add(ExerciseLevelDetail("31",10,0,6,6))
-            add(ExerciseLevelDetail("32",10,0,6,4))
-        }
-        with(list) {
-            add(ExerciseLevel("1",context.getString(R.string.AdditionSubtraction),listAddition))
-            add(ExerciseLevel("2",context.getString(R.string.Multiplication),listMultiplication))
-            add(ExerciseLevel("3",context.getString(R.string.Division),listDivision))
-        }
         return list
     }
 
@@ -823,7 +718,7 @@ object DataProvider {
         return listExercise
     }
 
-    fun  generateAdditionSubExerciseTemp(child: ExerciseLevelDetail) : MutableList<ExerciseList>{
+    fun generateAdditionSubExerciseTemp(child: ExerciseLevelDetail) : MutableList<ExerciseList>{
         val listExercise: MutableList<ExerciseList> = arrayListOf()
         var min = 1000
         var max = 9999

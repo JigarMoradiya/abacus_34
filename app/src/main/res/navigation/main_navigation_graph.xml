@@ -44,13 +44,7 @@
     <fragment
         android:id="@+id/videoPreviewFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.purchase.video_play.previews.VideoPreviewFragment"/>
-    <fragment
-        android:id="@+id/reportsHomeFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.reports.ReportsHomeFragment">
-        <action
-            android:id="@+id/action_reportsHomeFragment_to_examResultFragment"
-            app:destination="@+id/examResultFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/purchaseFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.purchase.newui.PurchaseNewFragment"/>

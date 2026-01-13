@@ -112,7 +112,7 @@ fun ThemeSection(
 
                         val context = LocalContext.current
                         val beadImage = remember {
-                            drawableToImageBitmap(context, R.drawable.poligon_gray)
+                            drawableToImageBitmap(context, R.drawable.poligon_gray_light)
                         }
                         BeadThemeItemCanvas(
                             beadImage = beadImage,

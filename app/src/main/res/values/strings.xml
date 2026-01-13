@@ -45,17 +45,6 @@
     <string name="interstitial_ad_unit_id_number_puzzle_complete">ca-app-pub-5759468493922763/8865980504</string>
     <string name="interstitial_ad_unit_id_exercise">ca-app-pub-5759468493922763/3939794135</string>
 
-    <integer-array name="bead_top">
-        <item>@drawable/poligon_gray</item>
-
-    </integer-array>
-    <integer-array name="big_bottom">
-        <item>@drawable/poligon_gray</item>
-        <item>@drawable/poligon_gray</item>
-        <item>@drawable/poligon_gray</item>
-        <item>@drawable/poligon_gray</item>
-    </integer-array>
-
     <!--Error messages-->
     <string name="no_internet_close_notes">If you close this screen now, your result will not be saved and you won’t be able to see it later in history.</string>
     <string name="no_internet">Please check your Wi-Fi or mobile data connection.</string>
