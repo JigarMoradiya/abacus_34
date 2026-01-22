@@ -39,13 +39,13 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.BuildConfig
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.components.CategoryItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.components.PageItem
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.components.TopRightChips
 import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.viewmodels.CategoryViewModel
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
-import com.jigar.me.utils.CommonUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -64,7 +64,7 @@ class CategoryFragmentNew : Fragment() {
                 val allSets by homeActivityViewModel.allSets.collectAsStateWithLifecycle()
                 val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
 
-                MaterialTheme {
+                AbacusTheme {
                     Column(modifier = Modifier.fillMaxSize()) {
                         Row(
                             modifier = Modifier.fillMaxWidth(),

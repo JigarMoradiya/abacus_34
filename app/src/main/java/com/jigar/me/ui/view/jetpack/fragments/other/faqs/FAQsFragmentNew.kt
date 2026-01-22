@@ -17,6 +17,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.other.faqs.components.FAQsListItem
 import com.jigar.me.ui.view.jetpack.fragments.other.faqs.viewmodels.FAQsViewModel
@@ -34,7 +35,7 @@ class FAQsFragmentNew : Fragment() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-                MaterialTheme {
+                AbacusTheme {
                     Column(modifier = Modifier.fillMaxSize()) {
                         BackButtonWithText(title = stringResource(R.string.faqs), onBackClick = {findNavController().popBackStack()})
                         FAQsListItem(uiState.faqsList)

@@ -61,6 +61,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CommonLoadingView
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
@@ -84,7 +85,7 @@ class SudokuPlayFragment : Fragment() {
         val navController = findNavController()
         return ComposeView(requireContext()).apply {
             setContent {
-                MaterialTheme {
+                AbacusTheme {
                     SudokuPlayScreen(
                         navController = navController,
                         vm = viewModel,

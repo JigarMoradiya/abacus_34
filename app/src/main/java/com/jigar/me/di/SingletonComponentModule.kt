@@ -50,7 +50,7 @@ object AppModule {
     @Provides
     fun providesInAppSKUDao(db: AppDatabase): InAppSKUDao = db.inAppSKUDao()
     @Provides
-    fun providesInAppSKUDB(dao: InAppSKUDao,preferencesHelper: AppPreferencesHelper): InAppSKUDB = InAppSKUDB(dao,preferencesHelper)
+    fun providesInAppSKUDB(dao: InAppSKUDao): InAppSKUDB = InAppSKUDB(dao)
 
     @Provides
     fun providesInAppPurchaseDao(db: AppDatabase): InAppPurchaseDao = db.inAppPurchaseDao()

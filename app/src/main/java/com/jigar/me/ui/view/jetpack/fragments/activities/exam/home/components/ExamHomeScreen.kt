@@ -128,7 +128,7 @@ fun ExamHomeScreen(uiState: ExamHomeUiState, viewModel: ExamHomeViewModel, onSta
 
         Spacer(modifier = Modifier.height(dimensionResource(R.dimen.activity_padding12)))
 
-        PrimaryButton(text = stringResource(R.string.let_s_start), onClick = onStartClick,)
+        PrimaryButton(text = stringResource(R.string.let_s_start), onClick = onStartClick)
 
     }
 }

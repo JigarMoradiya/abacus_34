@@ -28,6 +28,7 @@ import com.jigar.me.R
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
 import com.jigar.me.ui.view.confirm_alerts.dialogs.FreeTrialLeftDialog
 import com.jigar.me.ui.view.confirm_alerts.dialogs.FreeTrialLeftDialog.DialogFreeTrialInterface
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.Loader
 import com.jigar.me.ui.view.jetpack.fragments.home.components.HomeHeaderLeft
 import com.jigar.me.ui.view.jetpack.fragments.home.components.HomeHeaderRight
@@ -54,7 +55,7 @@ class HomeFragmentNew : Fragment() {
             setContent {
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-                MaterialTheme {
+                AbacusTheme {
                     Column(modifier = Modifier.fillMaxSize()) {
                         Row{
                             HomeHeaderLeft{

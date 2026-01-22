@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -49,7 +50,7 @@ class MathGameZoneFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return ComposeView(requireContext()).apply {
             setContent {
-                MaterialTheme {
+                AbacusTheme {
                     MathGameZoneScreen(
                         gameType = { type ->
                             when (type) {

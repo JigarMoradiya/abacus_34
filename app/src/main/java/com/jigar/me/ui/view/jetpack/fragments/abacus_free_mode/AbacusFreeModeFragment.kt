@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.data.pref.AppPreferencesHelper
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.components.AbacusFreeModeScreen
 import com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.viewmodel.AbacusFreeModeViewModel
 import com.jigar.me.ui.view.jetpack.fragments.common.LocalPreferencesHelper
@@ -27,7 +28,7 @@ class AbacusFreeModeFragment : Fragment() {
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
-                MaterialTheme {
+                AbacusTheme {
                     CompositionLocalProvider(
                         LocalPreferencesHelper provides preferences
                     ) {

@@ -28,6 +28,7 @@ data class InAppSkuDetails(
     val discountPer: String? = null,
     var sortOrder: Int = 0
 ){
+
     fun getDurationTxt() : String{
         return if (isSubscriptionPlan()) {
             if (billingPeriod.equals("p1m",true)){
@@ -97,6 +98,13 @@ data class InAppSkuDetails(
     }
     fun isSubscriptionPlan() = type == BillingClient.ProductType.SUBS
     fun getDesc() = "$description"
+}
+
+fun InAppSkuDetails.isYearly(): Boolean {
+    return sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_1Year)
+}
+fun InAppSkuDetails.isLifeTimeOffer(): Boolean {
+    return sku == BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_offer
 }
 
 data class SubscriptionOfferDetailsCustom(

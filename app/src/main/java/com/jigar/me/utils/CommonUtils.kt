@@ -2,15 +2,25 @@ package com.jigar.me.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Typeface
 import android.speech.tts.TextToSpeech
 import android.speech.tts.Voice
+import android.text.Html
 import android.util.Log
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.core.content.ContextCompat
+import androidx.core.text.HtmlCompat
+import com.android.billingclient.api.BillingClient
 import com.google.android.material.textfield.TextInputLayout
+import com.google.android.material.textview.MaterialTextView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.jigar.me.BuildConfig
@@ -32,8 +42,10 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.math.RoundingMode
 import java.text.DecimalFormat
+import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import java.util.concurrent.TimeUnit
 
 
 object CommonUtils {
@@ -57,6 +69,89 @@ object CommonUtils {
         if (offset < data.length) {
             Log.e(tag, data.substring(offset))
         }
+    }
+    fun htmlToAnnotatedString(html: String): AnnotatedString {
+        val spanned = Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY)
+
+        return buildAnnotatedString {
+            var start = 0
+
+            spanned.getSpans(0, spanned.length, Any::class.java).forEach { span ->
+                val spanStart = spanned.getSpanStart(span)
+                val spanEnd = spanned.getSpanEnd(span)
+
+                if (start < spanStart) {
+                    append(spanned.substring(start, spanStart))
+                }
+
+                when (span) {
+                    is android.text.style.StyleSpan -> {
+                        withStyle(
+                            SpanStyle(
+                                fontWeight =
+                                    if (span.style == Typeface.BOLD)
+                                        FontWeight.Bold
+                                    else FontWeight.Normal
+                            )
+                        ) {
+                            append(spanned.substring(spanStart, spanEnd))
+                        }
+                    }
+
+                    else -> append(spanned.substring(spanStart, spanEnd))
+                }
+
+                start = spanEnd
+            }
+
+            if (start < spanned.length) {
+                append(spanned.substring(start))
+            }
+        }
+    }
+    fun getPurchaseTime(productType : String?, purchaseTime: Long,billingPeriod : String? = null) : String?{
+        if (purchaseTime > 0) {
+            val formatter = SimpleDateFormat(DateTimeUtils.dd_MMMM_yyyy)
+            val calendar = Calendar.getInstance()
+            calendar.timeInMillis = purchaseTime
+            return if (productType == BillingClient.ProductType.SUBS){
+                val calendarEnd = Calendar.getInstance()
+                calendarEnd.timeInMillis = purchaseTime
+
+                val dateDiff = System.currentTimeMillis() - calendar.timeInMillis
+                val day: Long = TimeUnit.MILLISECONDS.toDays(dateDiff)
+
+                if (billingPeriod.equals("p1w",true)){
+                    var weeks = day/7
+                    weeks += 1
+                    calendarEnd.add(Calendar.WEEK_OF_MONTH,weeks.toInt())
+                }else if (billingPeriod.equals("p1y",true)){
+                    var year = day/365
+                    year += 1
+                    calendarEnd.add(Calendar.YEAR,year.toInt())
+                }else{
+                    val months = if (billingPeriod.equals("p1m",true)){
+                        var months = day/30
+                        months += 1
+                        months
+                    }else if (billingPeriod.equals("p3m",true)){
+                        var months = day/90
+                        months += 3
+                        months
+                    }else{ // if (billingPeriod.equals("p6m",true))
+                        var months = day/180
+                        months += 6
+                        months
+                    }
+
+                    calendarEnd.add(Calendar.MONTH,months.toInt())
+                }
+                "<b>Subscribed ON : </b>${formatter.format(calendar.time)}<br/><b>Expire ON : </b>${formatter.format(calendarEnd.time)}"
+            }else{
+                "<b>Purchased ON : </b>${formatter.format(calendar.time)}"
+            }
+        }
+        return null
     }
 
     @SuppressLint("RestrictedApi")

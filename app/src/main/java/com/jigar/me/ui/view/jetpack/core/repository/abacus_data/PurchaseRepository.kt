@@ -9,4 +9,5 @@ class PurchaseRepository @Inject constructor(
      private val dao: InAppSKUDao,
 ) {
     fun getPurchasedSku(): Flow<List<InAppSkuDetails>> = dao.getInAppSKUPurchasedFLow()
+    fun getInAppSku(idList: List<String>): Flow<List<InAppSkuDetails>> = dao.getInAppSkuFlow(idList)
 }

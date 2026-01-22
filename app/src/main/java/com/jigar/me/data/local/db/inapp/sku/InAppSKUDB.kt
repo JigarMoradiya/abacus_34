@@ -9,12 +9,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class InAppSKUDB @Inject constructor(private val dao: InAppSKUDao,private val preferencesHelper: AppPreferencesHelper) {
+class InAppSKUDB @Inject constructor(private val dao: InAppSKUDao) {
     suspend fun saveInAppSKU(data: MutableList<ProductDetails>) = withContext(Dispatchers.IO) {
         dao.insertOrUpdate(data)
-    }
-    suspend fun getInAppSKUPurchased(): List<InAppSkuDetails> {
-        return dao.getInAppSKUPurchased()
     }
     suspend fun getInAppSKUPurchasedLiveExclude(excludeIds : ArrayList<String>): List<InAppSkuDetails> {
         return dao.getInAppSKUPurchasedLiveExclude(excludeIds)

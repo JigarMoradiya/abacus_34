@@ -12,7 +12,6 @@ import com.jigar.me.data.local.data.DataProvider
 import com.jigar.me.data.local.data.VideoTutorial
 import com.jigar.me.databinding.FragmentVideoPreviewBinding
 import com.jigar.me.ui.view.base.BaseFragment
-import com.jigar.me.ui.view.dashboard.fragments.purchase.newui.adapter.PurchaseInfoAdapter
 import com.jigar.me.ui.view.dashboard.fragments.purchase.video_play.sub.VideoFragment
 import com.jigar.me.ui.view.dashboard.fragments.purchase.video_play.sub.VideoPagerAdapter
 import com.jigar.me.utils.extensions.onClick
@@ -22,7 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class VideoPreviewFragment : BaseFragment(){
     private lateinit var binding: FragmentVideoPreviewBinding
     private lateinit var mNavController: NavController
-    private lateinit var purchaseInfoAdapter: PurchaseInfoAdapter
+//    private lateinit var purchaseInfoAdapter: PurchaseInfoAdapter
 
     private var videoFilesList : List<VideoTutorial> = arrayListOf()
     private var currentPosition: Int = 0
@@ -50,8 +49,8 @@ class VideoPreviewFragment : BaseFragment(){
         viewPager.adapter = VideoPagerAdapter(this@VideoPreviewFragment, videoFilesList)
         indicatorPager.attachToPager(viewPager)
 
-        purchaseInfoAdapter = PurchaseInfoAdapter(arrayListOf())
-        recyclerviewInfo.adapter = purchaseInfoAdapter
+//        purchaseInfoAdapter = PurchaseInfoAdapter(arrayListOf())
+//        recyclerviewInfo.adapter = purchaseInfoAdapter
         setData(0)
 
         viewPager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
@@ -72,6 +71,6 @@ class VideoPreviewFragment : BaseFragment(){
 
     private fun setData(position: Int) = with(binding){
         txtTitle.text = videoFilesList[position].title
-        purchaseInfoAdapter.setData(videoFilesList[position].pointsList)
+//        purchaseInfoAdapter.setData(videoFilesList[position].pointsList)
     }
 }

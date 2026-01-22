@@ -50,6 +50,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.base.BaseFragment
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.HowToPlayButton
 import com.jigar.me.ui.view.jetpack.fragments.common.how_to_play.HowToPlayNumberSequenceView
@@ -65,7 +66,7 @@ class NumberSequencePuzzleHomeFragment : BaseFragment() {
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
-                MaterialTheme {
+                AbacusTheme {
                     val navController = findNavController()
                     val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
                     NumberSequencePuzzleHomeJetpackScreen(

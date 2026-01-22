@@ -56,6 +56,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.base.BaseFragment
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.viewmodels.NumberSequencePuzzleViewModel
@@ -74,7 +75,7 @@ class NumberSequencePuzzleJetpackFragment : BaseFragment() {
         val gridSize = NumberSequencePuzzleJetpackFragmentArgs.fromBundle(requireArguments()).type
         return ComposeView(requireContext()).apply {
             setContent {
-                MaterialTheme {
+                AbacusTheme {
                     val navController = findNavController()
                     NumberSequencePuzzleJetpackScreen(
                         navController = navController,

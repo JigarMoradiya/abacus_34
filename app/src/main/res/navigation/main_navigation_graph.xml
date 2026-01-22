@@ -44,20 +44,9 @@
     <fragment
         android:id="@+id/videoPreviewFragment"
         android:name="com.jigar.me.ui.view.dashboard.fragments.purchase.video_play.previews.VideoPreviewFragment"/>
-
     <fragment
         android:id="@+id/purchaseFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.purchase.newui.PurchaseNewFragment"/>
-    <fragment
-        android:id="@+id/examResultFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.exam.result.ExamResultFragment">
-        <argument
-            android:name="type"
-            app:argType="string" />
-        <argument
-            android:name="examLevelLable"
-            app:argType="string" />
-    </fragment>
+        android:name="com.jigar.me.ui.view.jetpack.fragments.purchase.PurchaseFragment"/>
 
     <!-- Jetpack Compose -->
     <fragment

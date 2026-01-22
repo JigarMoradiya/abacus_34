@@ -15,32 +15,15 @@ import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import javax.inject.Inject
 
 class DBRepository @Inject constructor(
-    private val inAppPurchaseDB: InAppPurchaseDB,
     private val inAppSKUDB: InAppSKUDB,
-    private val examHistoryDB: ExamHistoryDB,
     private val abacusAllDataDB: AbacusAllDataDB,
 ) : SafeApiCall {
 
-    suspend fun getPurchasesSku() = inAppPurchaseDB.getPurchasesSku()
-
     fun getInAppSKU(displayList : ArrayList<String>) = inAppSKUDB.getInAppSKU(displayList)
-    suspend fun getInAppSKUPurchased() = inAppSKUDB.getInAppSKUPurchased()
     suspend fun getInAppSKUPurchasedLiveExclude(excludeIds : ArrayList<String>) = inAppSKUDB.getInAppSKUPurchasedLiveExclude(excludeIds)
     suspend fun getInAppSKUPurchased(ids : ArrayList<String>) = inAppSKUDB.getInAppSKUPurchased(ids)
-    fun getExamHistoryList(examType: String) = examHistoryDB.getExamHistoryList(examType)
 
     // abacus all data
     suspend fun insertLevel(data : List<Level>) = abacusAllDataDB.insertLevel(data)
-    suspend fun insertAllData(dataLevel: ArrayList<Level>, dataCategory: ArrayList<Category>, dataPages: ArrayList<Pages>, dataSet: ArrayList<com.jigar.me.data.model.dbtable.abacus_all_data.Set>, dataAbacus: ArrayList<Abacus>)  = abacusAllDataDB.insertAllData(dataLevel,dataCategory,dataPages,dataSet,dataAbacus)
-    fun getLevel() = abacusAllDataDB.getLevel()
-    suspend fun getLevel(list : List<String>) = abacusAllDataDB.getLevel(list)
-    suspend fun getCategory(id : String) = abacusAllDataDB.getCategory(id)
-    suspend fun getPages(id: String, isGetAllData: Boolean) = abacusAllDataDB.getPages(id,isGetAllData)
-    suspend fun getSetDetail(setId : String) = abacusAllDataDB.getSetDetail(setId)
-    suspend fun getSetProgress(setId : String) = abacusAllDataDB.getSetProgress(setId)
-    suspend fun getAllSet() = abacusAllDataDB.getAllSet()
-    suspend fun getAbacus(id : String) = abacusAllDataDB.getAbacus(id)
     suspend fun insertSetProgress(data : List<SetProgress>) = abacusAllDataDB.insertSetProgress(data)
-    suspend fun updateUserAnswer(abacusId : String,userAnswer : String) = abacusAllDataDB.updateUserAnswer(abacusId,userAnswer)
-    suspend fun removeUserAnswer(setId : String) = abacusAllDataDB.removeUserAnswer(setId)
 }

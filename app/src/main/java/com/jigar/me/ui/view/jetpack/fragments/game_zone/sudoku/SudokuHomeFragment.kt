@@ -66,6 +66,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.HowToPlayButton
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
@@ -91,7 +92,7 @@ class SudokuHomeFragment : Fragment() {
 
         return ComposeView(requireContext()).apply {
             setContent {
-                MaterialTheme {
+                AbacusTheme {
                     val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
                     SudokuHomeScreen(viewModel,navController,
                         onStart = {

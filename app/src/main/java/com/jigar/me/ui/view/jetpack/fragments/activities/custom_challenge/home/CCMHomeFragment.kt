@@ -18,6 +18,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.activities.custom_challenge.home.components.CCMHomeScreen
 import com.jigar.me.ui.view.jetpack.fragments.activities.custom_challenge.home.viewmodels.CCMHomeViewModel
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
@@ -40,7 +41,7 @@ class CCMHomeFragment : Fragment() {
             setContent {
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
                 val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
-                MaterialTheme {
+                AbacusTheme {
                     Column(modifier = Modifier.fillMaxSize()) {
                         BackButtonWithText(title = stringResource(R.string.custom_challenge_mode), onBackClick = {findNavController().popBackStack()})
                         CCMHomeScreen(uiState,viewModel){

@@ -22,6 +22,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.activities.custom_challenge.play.components.AnswerSection
 import com.jigar.me.ui.view.jetpack.fragments.activities.custom_challenge.play.components.CCMCompleteBottomSheetCompose
 import com.jigar.me.ui.view.jetpack.fragments.activities.custom_challenge.play.components.QuestionSection
@@ -47,7 +48,7 @@ class CCMPlayFragment : Fragment() {
                 LaunchedEffect(viewModel.abacusCalc.stateVersion) {
                     viewModel.handleMatch()
                 }
-                MaterialTheme {
+                AbacusTheme {
                     Column(modifier = Modifier.fillMaxSize()) {
                         BackButtonWithText(title = stringResource(R.string.custom_challenge_mode), onBackClick = { onBack() })
                         if (uiState.isQuestionPhase) {
