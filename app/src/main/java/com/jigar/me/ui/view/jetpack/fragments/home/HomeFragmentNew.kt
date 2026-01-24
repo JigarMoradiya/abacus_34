@@ -156,7 +156,7 @@ class HomeFragmentNew : Fragment() {
             override fun onCloseClick() = Unit
             override fun onSubmitYesClick() {
                 if (freeTrialParam.remainingDays >= 7){
-                    findNavController().navigate(R.id.toVideoPreviewFragment)
+                    findNavController().navigate(R.id.toWhatsLearningNewFragment)
                 }else{
                     findNavController().navigate(R.id.toPurchaseFragment)
                 }

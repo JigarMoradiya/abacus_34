@@ -1,0 +1,50 @@
+package com.jigar.me.ui.view.jetpack.fragments.other.whats_learn
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.media3.common.util.UnstableApi
+import androidx.navigation.fragment.findNavController
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
+import com.jigar.me.ui.view.jetpack.fragments.other.whats_learn.components.WhatsLearnNewScreen
+import com.jigar.me.ui.view.jetpack.fragments.other.whats_learn.viewmodels.WhatsLearnNewViewModel
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
+class WhatsLearningNewFragment : Fragment() {
+    private val viewModel: WhatsLearnNewViewModel by viewModels()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return ComposeView(requireContext()).apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            setContent {
+                val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+                AbacusTheme {
+                    Column(modifier = Modifier.fillMaxSize()) {
+                        @UnstableApi
+                        WhatsLearnNewScreen(uiState,onPageChanged = {
+                            viewModel.changePager(it)
+                        },onClose = {
+                            findNavController().popBackStack()
+                        })
+                    }
+                }
+
+            }
+        }
+    }
+
+}

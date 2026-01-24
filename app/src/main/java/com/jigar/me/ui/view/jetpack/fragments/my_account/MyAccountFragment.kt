@@ -55,14 +55,13 @@ class MyAccountFragment : Fragment() {
                                     findNavController().navigate(R.id.toPurchaseFragment)
                                 }
                                 "setting" -> {
-//                                    findNavController().navigate(R.id.toSettingsFragmentNew)
-                                    findNavController().navigate(R.id.action_myProfileFragment_to_reportsHomeFragment)
+                                    findNavController().navigate(R.id.toSettingsFragmentNew)
                                 }
                                 "report_history" -> {
                                     findNavController().navigate(R.id.toReportHistoryFragment)
                                 }
                                 "about_app" -> {
-                                    findNavController().navigate(R.id.toVideoPreviewFragment)
+                                    findNavController().navigate(R.id.toWhatsLearningNewFragment)
                                 }
                                 "rate_us_on_the_play_store" -> {
                                     requireContext().openURL("https://play.google.com/store/apps/details?id=${requireContext().packageName}")

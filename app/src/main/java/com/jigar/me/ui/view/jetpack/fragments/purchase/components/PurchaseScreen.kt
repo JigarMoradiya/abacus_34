@@ -44,9 +44,9 @@ fun PurchaseScreen(
         Row(modifier = Modifier.fillMaxSize()) {
 
             // LEFT SIDE (info)
-            PurchaseInfoSection(
+            InfoSection(
                 modifier = Modifier.weight(1.25f),
-                infoList = uiState.benefitList,
+                infoList = uiState.benefitList,stringResource(R.string.go_premium_all_levels_all_features)
             )
 
             // RIGHT SIDE (plans)

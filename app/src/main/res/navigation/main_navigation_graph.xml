@@ -31,8 +31,8 @@
             android:id="@+id/toExerciseFragment"
             app:destination="@+id/exerciseFragment" />
         <action
-            android:id="@+id/toVideoPreviewFragment"
-            app:destination="@+id/videoPreviewFragment" />
+            android:id="@+id/toWhatsLearningNewFragment"
+            app:destination="@+id/whatsLearningNewFragment" />
         <action
             android:id="@+id/toPurchaseFragment"
             app:destination="@+id/purchaseFragment" />
@@ -41,9 +41,6 @@
             app:destination="@+id/myAccountFragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/videoPreviewFragment"
-        android:name="com.jigar.me.ui.view.dashboard.fragments.purchase.video_play.previews.VideoPreviewFragment"/>
     <fragment
         android:id="@+id/purchaseFragment"
         android:name="com.jigar.me.ui.view.jetpack.fragments.purchase.PurchaseFragment"/>
@@ -220,17 +217,17 @@
         android:id="@+id/reportHistoryFragment"
         android:name="com.jigar.me.ui.view.jetpack.fragments.reports.ReportHistoryFragment"/>
     <fragment
+        android:id="@+id/whatsLearningNewFragment"
+        android:name="com.jigar.me.ui.view.jetpack.fragments.other.whats_learn.WhatsLearningNewFragment"/>
+    <fragment
         android:id="@+id/myAccountFragment"
         android:name="com.jigar.me.ui.view.jetpack.fragments.my_account.MyAccountFragment">
-        <action
-            android:id="@+id/action_myProfileFragment_to_reportsHomeFragment"
-            app:destination="@+id/reportsHomeFragment" />
         <action
             android:id="@+id/toReportHistoryFragment"
             app:destination="@+id/reportHistoryFragment" />
         <action
-            android:id="@+id/toVideoPreviewFragment"
-            app:destination="@+id/videoPreviewFragment" />
+            android:id="@+id/toWhatsLearningNewFragment"
+            app:destination="@+id/whatsLearningNewFragment" />
         <action
             android:id="@+id/toPurchaseFragment"
             app:destination="@+id/purchaseFragment" />
