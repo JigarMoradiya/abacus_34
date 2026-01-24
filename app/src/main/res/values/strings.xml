@@ -778,7 +778,8 @@
     <string name="your_login_is_associated_with_other_purchases">This login is already associated with other purchases!</string>
     <string name="want_to_move_purchase_with_this_login">Want to move purchase with this login?</string>
     <string name="yes_i_want_to_move">Yes, I want to move</string>
-    <string name="no_move_later"><![CDATA[No, move later<br/><font color="#EF9A9A">Notes : Can\'t access purchase features in this login</font>]]></string>
+    <string name="no_move_later">No, move later</string>
+    <string name="no_move_later_msg">Can\'t access purchase features in this login.</string>
     <string name="login_with_google">Login with Google</string>
     <string name="to_start_your_journey">to start your journey</string>
     <string name="one_step_away">One step away!</string>
@@ -826,7 +827,7 @@
     <string name="cancel_anytime_during_the_trial_without_being_charged">Cancel anytime during the trial\nwithout being charged.</string>
     <string name="go_premium_all_levels_all_features">Go Premium - All Levels, All Features</string>
     <string name="old_purchases">Old Purchases</string>
-    <string name="limited_time_discount"><b>Limited-time deal -</b> unlock premium at a discounted price!</string>
+    <string name="limited_time_discount">Limited time deal - unlock premium at a discounted price!</string>
 
     <string name="number_sequence_puzzle">Number Sequences Puzzle</string>
     <string name="math_pyramid">Math Pyramid</string>

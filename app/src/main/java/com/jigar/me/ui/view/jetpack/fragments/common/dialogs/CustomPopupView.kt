@@ -35,6 +35,7 @@ import androidx.core.graphics.toColorInt
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.core.presentation.components.PrimaryButton
 import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorGreen
+import com.jigar.me.ui.view.jetpack.utils.ui.extensions.htmlToAnnotatedString
 
 @Composable
 fun CustomPopupView(
@@ -111,10 +112,10 @@ fun CustomPopupView(
 
             if (!notes.isNullOrEmpty()) {
                 Text(
-                    text = notes,
-                    style = MaterialTheme.typography.bodyMedium.copy(color = Color.DarkGray, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
+                    text = notes.htmlToAnnotatedString(),
+                    style = MaterialTheme.typography.bodyMedium.copy(color = Color.Red, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
                     textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(top = dimensionResource(id = R.dimen.activity_padding16))
+                    modifier = Modifier.padding(top = dimensionResource(R.dimen.activity_padding8))
                 )
             }
 

@@ -38,33 +38,8 @@ class StudentApiRepository @Inject constructor(
     suspend fun getAbacusData(request : FetchAbacusDataRequest) = safeApiCall {
         api.getAbacusData(request)
     }
-    suspend fun handleExistingPurchase(request : PurchasedPlanCheckRequest) = safeApiCall {
-        api.handleExistingPurchase(request)
-    }
     suspend fun appReviewsList() = safeApiCall {
         api.appReviewsList()
-    }
-    suspend fun changePlan(request : PurchasedPlanCheckRequest) = safeApiCall {
-        api.changePlan(request)
-    }
-    suspend fun forgotPassword(request : ForgotPasswordRequest) = safeApiCall {
-        api.forgotPassword(request)
-    }
-    suspend fun resendOTP(request : ResendOTPRequest) = safeApiCall {
-        api.resendOTP(request)
-    }
-    
-    suspend fun resetPassword(request : ResetPasswordRequest) = safeApiCall {
-        api.resetPassword(request)
-    }
-    suspend fun changePassword(request : ChangePasswordRequest) = safeApiCall {
-        api.changePassword(request)
-    }
-    suspend fun updateProfile(request : UpdateProfileRequest) = safeApiCall {
-        api.updateProfile(request)
-    }
-    suspend fun submitReview(plan_id: RequestBody,description: RequestBody, image_1: MultipartBody.Part?) = safeApiCall {
-        api.submitReview(plan_id,description,image_1)
     }
 }
 

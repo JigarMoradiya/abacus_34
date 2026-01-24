@@ -41,7 +41,6 @@ import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
-import com.jigar.me.ui.view.confirm_alerts.dialogs.FreeTrialLeftDialog
 import com.jigar.me.ui.viewmodel.StudentViewModel
 import com.jigar.me.utils.Resource
 
@@ -169,6 +168,8 @@ class SplashFragment : BaseFragment() {
                     setCustomParam(AppConstants.RemoteConfig.displayPlanList,displayPlan)
                     setCustomParam(AppConstants.RemoteConfig.displayMenuList,displayMenu)
                 }
+                Log.e("jigarSplash","getAccessToken = "+prefManager.getAccessToken())
+                Log.e("jigarSplash","isUserLoggedIn = "+prefManager.isUserLoggedIn())
                 if (requireContext().isNetworkAvailable){
                     if (!prefManager.getAccessToken().isNullOrEmpty() && prefManager.isUserLoggedIn()){
                         studentViewModel.appReviewsList()

@@ -9,38 +9,35 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
-import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
-import com.jigar.me.ui.view.confirm_alerts.dialogs.FreeTrialLeftDialog
-import com.jigar.me.ui.view.confirm_alerts.dialogs.FreeTrialLeftDialog.DialogFreeTrialInterface
 import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.Loader
+import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
+import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.FreeTrialDialog
 import com.jigar.me.ui.view.jetpack.fragments.home.components.HomeHeaderLeft
 import com.jigar.me.ui.view.jetpack.fragments.home.components.HomeHeaderRight
 import com.jigar.me.ui.view.jetpack.fragments.home.components.HomeMenuScreen
 import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.FreeTrialParam
-import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeFragmentViewModel
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.checkPermissions
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.getValue
 
 @AndroidEntryPoint
 class HomeFragmentNew : Fragment() {
@@ -73,23 +70,97 @@ class HomeFragmentNew : Fragment() {
                             }
                         )
                     }
+                    // loader
+                    if (uiState.isLoading == true) {
+                        Loader()
+                    }
+
+                    // purchased device or user conflict
+                    AnimatedVisibility(
+                        visible = uiState.isShowPurchasedConflictPopup,
+                        enter = fadeIn(),
+                        exit = fadeOut()
+                    ) {
+                        var title = getString(R.string.your_device_purchases_is_associated_with_other_login)
+                        if (uiState.purchasedConflictPopupType == AppConstants.APIStatus.ERROR_CODE_THIS_STUDENT_IS_ASSOCIATED_WITH_OTHER_ORDER){
+                            title = getString(R.string.your_login_is_associated_with_other_purchases)
+                        }
+                        CustomPopupView(
+                            title = title,
+                            description = getString(R.string.want_to_move_purchase_with_this_login),
+                            positiveButtonText = getString(R.string.yes_i_want_to_move),
+                            negativeButtonText = getString(R.string.no_move_later),
+                            notes = getString(R.string.no_move_later_msg),
+                            widthMultiplier = 0.8f,
+                            onPositiveTapped = {
+                                viewModel.changePurchase()
+                            },
+                            onNegativeTapped = {
+                                viewModel.closeConflictPopup()
+                            }
+                        )
+                    }
+
+                    // notification popup
+                    uiState.checkNotificationPermission?.consume {
+                        checkNotificationPermission()
+                    }
+                    AnimatedVisibility(
+                        visible = uiState.isShowNotificationSettingPopup,
+                        enter = fadeIn(),
+                        exit = fadeOut()
+                    ) {
+                        CustomPopupView(
+                            title = getString(R.string.permission_alert),
+                            description = getString(R.string.notification_permission_msg),
+                            positiveButtonText = getString(R.string.okay),
+                            negativeButtonText = getString(R.string.give_later),
+                            widthMultiplier = 0.7f,
+                            onPositiveTapped = {
+                                viewModel.showHideNotificationSettingPopup(false)
+                                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                                val uri: Uri = Uri.fromParts("package", requireContext().packageName, null)
+                                intent.data = uri
+                                resumeActivityResultLauncher.launch(intent)
+                            },
+                            onNegativeTapped = {
+                                viewModel.showHideNotificationSettingPopup(false)
+                            }
+                        )
+                    }
+
+                    // show free trial popup
+                    AnimatedVisibility(
+                        visible = uiState.isShowFreeTrialPopup,
+                        enter = fadeIn(),
+                        exit = fadeOut()
+                    ) {
+                        val freeTrialParam = uiState.freeTrialParam
+                        freeTrialParam?.let {
+
+                            FreeTrialDialog(
+                                remainingDays = freeTrialParam.remainingDays,
+                                discountPer = freeTrialParam.discountPer,
+                                discountPerLifetime = freeTrialParam.discountPerLifeTime,
+                                onYes = {
+                                    viewModel.hideFreeTrialPopup()
+                                    if (freeTrialParam.remainingDays >= 7){
+                                        findNavController().navigate(R.id.toWhatsLearningNewFragment)
+                                    }else{
+                                        findNavController().navigate(R.id.toPurchaseFragment)
+                                    }
+                                },
+                                onNo = {
+                                    viewModel.hideFreeTrialPopup()
+                                },
+                                onDismiss = {
+                                    viewModel.hideFreeTrialPopup()
+                                }
+                            )
+                        }
+                    }
                 }
-                // check notification permission
-                uiState.checkNotificationPermission?.consume {
-                    checkNotificationPermission()
-                }
-                // free trial popup
-                uiState.showFreeTrialPopup?.consume {
-                    freeTrialPopup(it)
-                }
-                // purchased device or user conflict
-                uiState.purchasedConflictPopup?.consume {
-                    purchasedConflictPopup(it)
-                }
-                // loader
-                if (uiState.isLoading == true) {
-                    Loader()
-                }
+
             }
         }
     }
@@ -132,37 +203,6 @@ class HomeFragmentNew : Fragment() {
         }
     }
 
-    // purchased device or user conflict
-    private fun purchasedConflictPopup(type: String) {
-        var title = getString(R.string.your_device_purchases_is_associated_with_other_login)
-        val msg = getString(R.string.want_to_move_purchase_with_this_login)
-        val btnYes = getString(R.string.yes_i_want_to_move)
-        val btnNo = getString(R.string.no_move_later)
-        if (type == AppConstants.APIStatus.ERROR_CODE_THIS_STUDENT_IS_ASSOCIATED_WITH_OTHER_ORDER){
-            title = getString(R.string.your_login_is_associated_with_other_purchases)
-        }
-        CommonConfirmationBottomSheet.showPopup(requireActivity(),title,msg,
-            btnYes, btnNo, icon = R.drawable.ic_alert_not_purchased,
-            clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener{
-                override fun onConfirmationYesClick(bundle: Bundle?) {
-                    viewModel.changePurchase()
-                }
-                override fun onConfirmationNoClick(bundle: Bundle?) = Unit
-            })
-    }
-    // free Trial Popup
-    private fun freeTrialPopup(freeTrialParam: FreeTrialParam) {
-        FreeTrialLeftDialog.showPopup(requireActivity(),freeTrialParam,object : DialogFreeTrialInterface{
-            override fun onCloseClick() = Unit
-            override fun onSubmitYesClick() {
-                if (freeTrialParam.remainingDays >= 7){
-                    findNavController().navigate(R.id.toWhatsLearningNewFragment)
-                }else{
-                    findNavController().navigate(R.id.toPurchaseFragment)
-                }
-            }
-        })
-    }
     // notification permission
     private fun checkNotificationPermission() {
         requireActivity().checkPermissions(Constants.NOTIFICATION_PERMISSION, requestMultiplePermissions)
@@ -173,7 +213,7 @@ class HomeFragmentNew : Fragment() {
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
             permissions.entries.filter { !it.value }.also {
                 if (it.isNotEmpty()) {
-                    notificationPermissionPopup()
+                    viewModel.showHideNotificationSettingPopup(true)
                 }
             }
         }
@@ -184,23 +224,4 @@ class HomeFragmentNew : Fragment() {
     private var resumeActivityResultLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { activityResult -> }
 
-    private fun notificationPermissionPopup() {
-        CommonConfirmationBottomSheet.showPopup(requireActivity(),
-            getString(R.string.permission_alert),
-            getString(R.string.notification_permission_msg),
-            getString(R.string.okay),
-            getString(R.string.give_later),
-            icon = R.drawable.ic_alert,
-            clickListener = object : CommonConfirmationBottomSheet.OnItemClickListener {
-                override fun onConfirmationYesClick(bundle: Bundle?) {
-                    val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                    val uri: Uri = Uri.fromParts("package", requireContext().packageName, null)
-                    intent.data = uri
-                    resumeActivityResultLauncher.launch(intent)
-                }
-
-                override fun onConfirmationNoClick(bundle: Bundle?) {
-                }
-            })
-    }
 }

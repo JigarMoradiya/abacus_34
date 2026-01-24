@@ -160,12 +160,7 @@ class LoginFragment : BaseFragment() {
                 }
                 is Resource.Failure -> {
                     hideLoading()
-                    if (it.errorType == AppConstants.APIStatus.ERROR_CODE_USER_NOT_VERIFIED){
-                        val email = Objects.requireNonNull(binding.etEmail.text).toString().trim { it <= ' ' }
-                        studentViewModel.resendOTP(ResendOTPRequest(email))
-                    }else{
-                        onFailure(it.errorBody)
-                    }
+                    onFailure(it.errorBody)
                 }
             }
         }

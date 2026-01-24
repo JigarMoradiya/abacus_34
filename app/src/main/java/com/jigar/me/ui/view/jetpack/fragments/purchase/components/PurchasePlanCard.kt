@@ -151,7 +151,7 @@ fun PurchasePlanCard(
             if (plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_1Year) && uiState.yearPlanAssignFromAdmin != null){
                 Spacer(Modifier.height(4.dp))
                 Text(
-                    text = CommonUtils.htmlToAnnotatedString("Plan assigned from Admin."),
+                    text = "Plan assigned from Admin.",
                     style = MaterialTheme.typography.labelMedium.copy(
                         color = Color.Black,fontWeight = FontWeight.Normal,fontFamily = FontFamily(Font(R.font.font_regular))
                     )

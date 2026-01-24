@@ -26,16 +26,6 @@ interface StudentApi {
     suspend fun socialLogin(@Body request : SocialLoginRequest): MainAPIResponse
     @POST("student/login")
     suspend fun login(@Body request : LoginRequest): MainAPIResponse
-    @POST("student/forgot-password")
-    suspend fun forgotPassword(@Body request : ForgotPasswordRequest): MainAPIResponse
-    @POST("student/resend-otp")
-    suspend fun resendOTP(@Body request : ResendOTPRequest): MainAPIResponse
-    @POST("student/reset-password")
-    suspend fun resetPassword(@Body request : ResetPasswordRequest): MainAPIResponse
-    @POST("student/change-password")
-    suspend fun changePassword(@Body request : ChangePasswordRequest): MainAPIResponse
-    @PUT("student/profile")
-    suspend fun updateProfile(@Body request : UpdateProfileRequest): MainAPIResponse
     @POST("student/handle-existing-plan")
     suspend fun handleExistingPurchase(@Body request : PurchasedPlanCheckRequest): MainAPIResponse
     @GET("student/app-reviews-list")

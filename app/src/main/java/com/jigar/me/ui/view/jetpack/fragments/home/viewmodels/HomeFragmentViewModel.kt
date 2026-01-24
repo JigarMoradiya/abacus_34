@@ -44,11 +44,28 @@ class HomeFragmentViewModel @Inject constructor(
     init {
         viewModelScope.launch{
             loadHomeMenu()
-            if (!BuildConfig.DEBUG){
+//            if (!BuildConfig.DEBUG){
                 setPurchaseData()
-            }
+//            }
         }
     }
+    fun closeConflictPopup() {
+        updateState_ {
+            copy(isShowPurchasedConflictPopup = false)
+        }
+    }
+    fun showHideNotificationSettingPopup(isShowNotificationPopup: Boolean) {
+        updateState_ {
+            copy(isShowNotificationSettingPopup = isShowNotificationPopup)
+        }
+    }
+
+    fun hideFreeTrialPopup() {
+        updateState_ {
+            copy(isShowFreeTrialPopup = false)
+        }
+    }
+
     private suspend fun loadHomeMenu() {
         try {
             val displayMenuList = getDisplayMenuList()
@@ -82,7 +99,7 @@ class HomeFragmentViewModel @Inject constructor(
                                     checkFreeTrial()
                                 }
                                 AppConstants.APIStatus.ERROR_CODE_OTHER_STUDENT_IS_ASSOCIATED_WITH_THIS_ORDER,AppConstants.APIStatus.ERROR_CODE_THIS_STUDENT_IS_ASSOCIATED_WITH_OTHER_ORDER -> {
-                                    updateState_ { copy(purchasedConflictPopup = ConsumableCommand(it)) }
+                                    updateState_ { copy(isShowPurchasedConflictPopup = true, purchasedConflictPopupType = it) }
                                 }
                             }
                         },
@@ -96,6 +113,7 @@ class HomeFragmentViewModel @Inject constructor(
         }
     }
     fun changePurchase() = viewModelScope.launch{
+        closeConflictPopup()
         if (state().purchasedRequest.isNotNullOrEmpty()){
             changePurchaseUseCase(
                 params = PurchasedPlanCheckRequest(ArrayList(state().purchasedRequest)),
@@ -129,7 +147,7 @@ class HomeFragmentViewModel @Inject constructor(
             prefs.setCustomParamInt(Constants.free_trial_remaining_days_last_checked,remainingDays)
             val discountPer = prefs.getCustomParamInt(AppConstants.RemoteConfig.discountPer,0)
             val discountPerLifetime = prefs.getCustomParamInt(AppConstants.RemoteConfig.discountPerLifeTime,0)
-            updateState_ { copy(showFreeTrialPopup = ConsumableCommand(FreeTrialParam(remainingDays,discountPer,discountPerLifetime))) }
+            updateState_ { copy(isShowFreeTrialPopup = true, freeTrialParam = FreeTrialParam(remainingDays,discountPer,discountPerLifetime)) }
         } else {
             updateState_ { copy(checkNotificationPermission = ConsumableCommand(Unit)) }
         }

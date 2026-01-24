@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.jetpack.fragments.home.interator
 
+import android.util.Log
+import com.google.gson.Gson
 import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
 import com.jigar.me.ui.view.jetpack.core.di.Dispatcher
 import com.jigar.me.ui.view.jetpack.core.di.DispatcherKey
@@ -25,8 +27,9 @@ class DevicePurchaseVerifyUseCase @Inject constructor(
     ): Flow<String> = flow {
         try {
             onStart?.invoke()
-
+            Log.e("jigarHomeApi","DevicePurchaseVerifyUseCase params = "+ Gson().toJson(params))
             repository.devicePurchaseVerify(params).collect{
+                Log.e("jigarHomeApi","DevicePurchaseVerifyUseCase response = "+ Gson().toJson(it))
                 onEachEmit?.invoke(it) // notify UI
                 emit(it)
             }

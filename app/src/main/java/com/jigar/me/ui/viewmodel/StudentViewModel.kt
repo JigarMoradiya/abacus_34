@@ -106,13 +106,6 @@ class StudentViewModel @Inject constructor(private val apiRepository: StudentApi
         _getAbacusDataResponse.value = Resource.Loading
         _getAbacusDataResponse.value = apiRepository.getAbacusData(request)
     }
-    private val _handleExistingPurchaseResponse: MutableLiveData<Resource<MainAPIResponse>> =
-        MutableLiveData()
-    val handleExistingPurchaseResponse: LiveData<Resource<MainAPIResponse>> get() = _handleExistingPurchaseResponse
-    fun handleExistingPurchase(request: PurchasedPlanCheckRequest) = viewModelScope.launch {
-        _handleExistingPurchaseResponse.value = Resource.Loading
-        _handleExistingPurchaseResponse.value = apiRepository.handleExistingPurchase(request)
-    }
     private val _appReviewsListResponse: MutableLiveData<Resource<MainAPIResponse>> =
         MutableLiveData()
     val appReviewsListResponse: LiveData<Resource<MainAPIResponse>> get() = _appReviewsListResponse
@@ -121,57 +114,11 @@ class StudentViewModel @Inject constructor(private val apiRepository: StudentApi
         _appReviewsListResponse.value = apiRepository.appReviewsList()
     }
 
-    private val _changePlanResponse: MutableLiveData<Resource<MainAPIResponse>> = MutableLiveData()
-    val changePlanResponse: LiveData<Resource<MainAPIResponse>> get() = _changePlanResponse
-    fun changePlan(request: PurchasedPlanCheckRequest) = viewModelScope.launch {
-        _changePlanResponse.value = Resource.Loading
-        _changePlanResponse.value = apiRepository.changePlan(request)
-    }
-
-    private val _resendOTPResponse: MutableLiveData<Resource<MainAPIResponse>> = MutableLiveData()
-    val resendOTPResponse: LiveData<Resource<MainAPIResponse>> get() = _resendOTPResponse
-    fun resendOTP(request: ResendOTPRequest) = viewModelScope.launch {
-        _resendOTPResponse.value = Resource.Loading
-        _resendOTPResponse.value = apiRepository.resendOTP(request)
-    }
-
-
-    private val _forgotPasswordResponse: MutableLiveData<Resource<MainAPIResponse>> =
-        MutableLiveData()
-    val forgotPasswordResponse: LiveData<Resource<MainAPIResponse>> get() = _forgotPasswordResponse
-    fun forgotPassword(request: ForgotPasswordRequest) = viewModelScope.launch {
-        _forgotPasswordResponse.value = Resource.Loading
-        _forgotPasswordResponse.value = apiRepository.forgotPassword(request)
-    }
-
-    private val _resetPasswordResponse: MutableLiveData<Resource<MainAPIResponse>> =
-        MutableLiveData()
-    val resetPasswordResponse: LiveData<Resource<MainAPIResponse>> get() = _resetPasswordResponse
-    fun resetPassword(request: ResetPasswordRequest) = viewModelScope.launch {
-        _resetPasswordResponse.value = Resource.Loading
-        _resetPasswordResponse.value = apiRepository.resetPassword(request)
-    }
-
-    private val _changePasswordResponse: MutableLiveData<Resource<MainAPIResponse>> =
-        MutableLiveData()
-    val changePasswordResponse: LiveData<Resource<MainAPIResponse>> get() = _changePasswordResponse
-    fun changePassword(request: ChangePasswordRequest) = viewModelScope.launch {
-        _changePasswordResponse.value = Resource.Loading
-        _changePasswordResponse.value = apiRepository.changePassword(request)
-    }
-
-    private val _updateProfileResponse: MutableLiveData<Resource<MainAPIResponse>> =
-        MutableLiveData()
-    val updateProfileResponse: LiveData<Resource<MainAPIResponse>> get() = _updateProfileResponse
-    fun updateProfile(request: UpdateProfileRequest) = viewModelScope.launch {
-        _updateProfileResponse.value = Resource.Loading
-        _updateProfileResponse.value = apiRepository.updateProfile(request)
-    }
 
     private val _submitReviewResult: MutableLiveData<Resource<MainAPIResponse>> = MutableLiveData()
     val submitReviewResult: LiveData<Resource<MainAPIResponse>> get() = _submitReviewResult
     fun submitReview(plan_id: RequestBody,description: RequestBody, image_1: MultipartBody.Part?) = viewModelScope.launch {
         _submitReviewResult.value = Resource.Loading
-        _submitReviewResult.value = apiRepository.submitReview(plan_id,description, image_1)
+//        _submitReviewResult.value = apiRepository.submitReview(plan_id,description, image_1)
     }
 }

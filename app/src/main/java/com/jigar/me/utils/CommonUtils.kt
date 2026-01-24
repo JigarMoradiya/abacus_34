@@ -14,6 +14,8 @@ import android.view.animation.LinearInterpolator
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.core.content.ContextCompat
@@ -88,10 +90,8 @@ object CommonUtils {
                     is android.text.style.StyleSpan -> {
                         withStyle(
                             SpanStyle(
-                                fontWeight =
-                                    if (span.style == Typeface.BOLD)
-                                        FontWeight.Bold
-                                    else FontWeight.Normal
+                                fontWeight = if (span.style == Typeface.BOLD) FontWeight.Bold else FontWeight.Normal,
+                                fontFamily =  if (span.style == Typeface.BOLD) FontFamily(Font(R.font.font_bold)) else FontFamily(Font(R.font.font_regular))
                             )
                         ) {
                             append(spanned.substring(spanStart, spanEnd))
@@ -201,9 +201,9 @@ object CommonUtils {
     }
 
     fun checkLevelIsPurchase(purchasedSKU: List<InAppSkuDetails>, data: Category, prefManager: AppPreferencesHelper): Boolean {
-        if (BuildConfig.DEBUG){
-            return true
-        }
+//        if (BuildConfig.DEBUG){
+//            return true
+//        }
         var isPurchased = false
         val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
         if (loginData?.email.equals("abacus@yopmail.com") || prefManager.isUserInFreeTrial()){
@@ -241,9 +241,9 @@ object CommonUtils {
     }
 
     fun checkPurchaseForExerciseExamCCM(prefManager: AppPreferencesHelper,purchasedSKU: List<InAppSkuDetails>): Boolean {
-        if (BuildConfig.DEBUG){
-            return true
-        }
+//        if (BuildConfig.DEBUG){
+//            return true
+//        }
         val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
         var isPurchased = false
         if (loginData?.email.equals("abacus@yopmail.com") || prefManager.isUserInFreeTrial()){
