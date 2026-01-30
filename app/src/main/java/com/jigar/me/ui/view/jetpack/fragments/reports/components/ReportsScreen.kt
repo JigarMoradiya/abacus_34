@@ -32,21 +32,6 @@ fun ReportsScreen(
         contentPadding = PaddingValues(vertical = dimensionResource(R.dimen.activity_padding12))
     ) {
 
-//        items(
-//            items = uiState.list,
-//            key = {  item ->
-//                item.id ?: "${item.created_at}_${item.hashCode()}"
-//            }
-//        ) { item ->
-//
-//            ReportCard(
-//                item = item,
-//                onCheckResultTapped = {
-//                    onCheckResult(it)
-//                }
-//            )
-//        }
-
         items(
             items = uiState.list,
             key = { item ->

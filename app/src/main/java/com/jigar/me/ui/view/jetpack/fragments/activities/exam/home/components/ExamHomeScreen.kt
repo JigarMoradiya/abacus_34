@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
@@ -31,6 +32,8 @@ import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.core.presentation.components.HorizontalCheckbox
 import com.jigar.me.ui.view.jetpack.core.presentation.components.HorizontalRadio
 import com.jigar.me.ui.view.jetpack.core.presentation.components.PrimaryButton
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimaryDark
 import com.jigar.me.ui.view.jetpack.fragments.activities.exam.home.viewmodels.ExamHomeUiState
 import com.jigar.me.ui.view.jetpack.fragments.activities.exam.home.viewmodels.ExamHomeViewModel
 import com.jigar.me.utils.AppConstants
@@ -40,7 +43,7 @@ fun ExamHomeScreen(uiState: ExamHomeUiState, viewModel: ExamHomeViewModel, onSta
     Column(
         modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
     ) {
-        val gradientBrush = Brush.linearGradient(colors = listOf(Color(0xFF9C27B0), Color(0xFFE991FF)))
+        val gradientBrush = Brush.linearGradient(colors = listOf(ColorPrimaryDark, ColorPrimary))
 
         Icon(
             imageVector = Icons.Default.AccessTimeFilled,

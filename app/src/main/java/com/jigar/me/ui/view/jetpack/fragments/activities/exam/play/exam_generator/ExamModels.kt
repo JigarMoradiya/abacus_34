@@ -30,7 +30,7 @@ data class ExamMathQuestion(
 )
 
 data class QuestionResult(
-    val que: String, val userAnswer: Int, val statusQue: QuestionStatus
+    val que: String, val userAnswer: String, val statusQue: QuestionStatus
 )
 
 data class QuestionStatus(
@@ -59,7 +59,7 @@ fun List<QuestionDataRequest>.toQuestionResultList(): List<QuestionResult> {
 
 fun QuestionDataRequest.toQuestionResult(): QuestionResult {
     val userAns = if (user_answer.isNullOrEmpty()){"0"}else{ user_answer }
-    return QuestionResult(que = que?:"", userAnswer = (userAns?:"0").toInt(), statusQue = toQuestionStatus())
+    return QuestionResult(que = que?:"", userAnswer = (userAns?:"0"), statusQue = toQuestionStatus())
 }
 fun QuestionDataRequest.toQuestionStatus(): QuestionStatus {
     return when {

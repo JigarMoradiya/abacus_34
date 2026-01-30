@@ -40,6 +40,7 @@ import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.viewmo
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.Loader
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
+import com.jigar.me.ui.view.jetpack.fragments.reports.dialogs.ExerciseExamCompleteResultDialog
 import com.jigar.me.utils.AppConstants
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -143,20 +144,30 @@ class AbacusDoPracticeFragment : Fragment() {
                     enter = fadeIn(),
                     exit = fadeOut()
                 ) {
-                    CustomPopupView(
-                        title = stringResource(R.string.congratulations),
-                        description = stringResource(R.string.txt_set_completed_msg),
-                        positiveButtonText = stringResource(R.string.ok_thanks),
-                        negativeButtonText = stringResource(R.string.close),
-                        icon = R.drawable.ic_alert_complete_page,
-                        widthMultiplier = 0.5f,
-                        onPositiveTapped = {
-                            onBack()
-                        },
-                        onNegativeTapped = {
-                            onBack()
+                    if (uiState.isShowSubmitAnswer == true){
+                        uiState.submitExerciseRequest?.let {
+                            ExerciseExamCompleteResultDialog(it, onClose = {
+                                onBack()
+                            }, onGiveAgain = {
+                                onBack()
+                            })
                         }
-                    )
+                    }else{
+                        CustomPopupView(
+                            title = stringResource(R.string.congratulations),
+                            description = stringResource(R.string.txt_set_completed_msg),
+                            positiveButtonText = stringResource(R.string.ok_thanks),
+                            negativeButtonText = stringResource(R.string.close),
+                            icon = R.drawable.ic_alert_complete_page,
+                            widthMultiplier = 0.5f,
+                            onPositiveTapped = {
+                                onBack()
+                            },
+                            onNegativeTapped = {
+                                onBack()
+                            }
+                        )
+                    }
                 }
             }
         }

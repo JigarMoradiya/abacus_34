@@ -163,20 +163,6 @@ object CommonUtils {
         textInputLayout.error = null
         textInputLayout.isErrorEnabled = false
     }
-    fun getCurrentTimeMessage(context: Context):String{
-        val calendar = Calendar.getInstance()
-        val timeOfDay = calendar.get(Calendar.HOUR_OF_DAY)
-        //        6 AM - 12 PM Morning slots
-//        12 PM - 5 PM Afternoon slots
-//        5 PM - 9 PM Evening Slots
-//        9 PM - 6 AM Night Slots
-        return when (timeOfDay) {
-            in 6..11 -> context.getString(R.string.good_morning)
-            in 12..16 -> context.getString(R.string.good_afternoon)
-//                in 17..20 -> "Good Evening"
-            else -> context.getString(R.string.good_evening)
-        }
-    }
 
     fun mixTwoColors(color1: Int, color2: Int, amount: Float): Int {
         val ALPHA_CHANNEL: Byte = 24

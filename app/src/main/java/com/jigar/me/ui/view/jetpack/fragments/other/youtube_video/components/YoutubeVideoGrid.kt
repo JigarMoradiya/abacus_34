@@ -34,6 +34,7 @@ import coil.compose.AsyncImage
 import com.jigar.me.data.model.VideoData
 import androidx.core.net.toUri
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimaryLight
 
 @Composable
 fun YoutubeVideoGrid(
@@ -80,7 +81,7 @@ fun VideoGridItem(
         modifier = Modifier.fillMaxWidth().padding(dimensionResource(R.dimen.activity_padding2)),
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFFF3EFFF)
+            containerColor = ColorPrimaryLight
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {

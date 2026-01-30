@@ -24,6 +24,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimary
 import kotlin.math.roundToInt
 
 @Composable
@@ -104,7 +105,7 @@ fun SingleSlider(
 
             // Track fill
             drawRoundRect(
-                color = Color(0xFF9C27B0),
+                color = ColorPrimary,
                 topLeft = Offset(0f, centerY - sliderHeightPx / 2),
                 size = Size(valueToX(rawValue), sliderHeightPx),
                 cornerRadius = CornerRadius(sliderHeightPx)
@@ -112,7 +113,7 @@ fun SingleSlider(
 
             // Thumb
             drawCircle(
-                color = Color(0xFF9C27B0),
+                color = ColorPrimary,
                 radius = thumbRadiusPx,
                 center = Offset(valueToX(rawValue), centerY)
             )

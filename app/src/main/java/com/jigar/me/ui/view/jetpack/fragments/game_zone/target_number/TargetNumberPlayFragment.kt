@@ -51,6 +51,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimaryDark
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.viewmodel.TargetNumberPlayViewModel
 import com.jigar.me.utils.PlaySound
@@ -144,7 +145,7 @@ fun TargetNumberPlayScreen(
                             Box(contentAlignment = Alignment.Center,modifier = Modifier
                                 .size(48.dp)
                                 .clip(RoundedCornerShape(12.dp))
-                                .background(colorResource(R.color.colorAccent))
+                                .background(ColorPrimaryDark)
                                 .clickable {
                                     viewModel.tapOperation(op)
                                 }){

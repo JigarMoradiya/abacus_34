@@ -31,6 +31,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.core.presentation.components.PrimaryButton
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.view.jetpack.fragments.activities.exercise.exercise_generator.GridItemModel
 import com.jigar.me.ui.view.jetpack.fragments.activities.exercise.viewmodels.ExerciseUiState
 import com.jigar.me.ui.view.jetpack.fragments.activities.exercise.viewmodels.ExerciseViewModel
@@ -137,7 +138,7 @@ fun ExercisePagerScreen(
                         .clip(CircleShape)
                         .background(
                             if (idx == pagerState.currentPage)
-                                MaterialTheme.colorScheme.primary
+                                ColorPrimary
                             else
                                 Color.Gray.copy(alpha = 0.4f)
                         )

@@ -45,6 +45,7 @@ import com.jigar.me.R
 import com.jigar.me.data.model.data.QuestionDataRequest
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.ui.view.jetpack.core.presentation.components.PrimaryButton
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.exam_generator.QuestionResult
 import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.exam_generator.toQuestionResultList
 import com.jigar.me.ui.view.jetpack.fragments.reports.dialogs.common.QuestionExamColumnItemHorizontal
@@ -76,7 +77,8 @@ fun ExerciseExamCompleteResultDialog(
                 .align(Alignment.Center)
                 .fillMaxWidth()
                 .fillMaxHeight(0.9f)
-                .padding(dimensionResource(R.dimen.activity_padding16)), shape = RoundedCornerShape(20.dp), colors = CardDefaults.cardColors(containerColor = Color.White), elevation = CardDefaults.cardElevation(6.dp)
+                .padding(dimensionResource(R.dimen.activity_padding16)), shape = RoundedCornerShape(20.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.White), elevation = CardDefaults.cardElevation(6.dp)
         ) {
 
             Column(
@@ -103,7 +105,8 @@ fun ExerciseExamCompleteResultDialog(
                     }
                     Text(
                         text = title,
-                        style = MaterialTheme.typography.titleMedium.copy(color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))),
+                        style = MaterialTheme.typography.titleMedium.copy(color = ColorPrimary,
+                            fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))),
                     )
                     Spacer(modifier = Modifier.weight(1f))
                     TextButton(
@@ -175,6 +178,9 @@ fun ExerciseExamCompleteResultDialog(
                                 }
                                 AppConstants.EXAM.type_Exam -> {
                                     stringResource(R.string.give_exam_again)
+                                }
+                                AppConstants.apiParams.answerFormalExam -> {
+                                    stringResource(R.string.ok_please_close)
                                 }
                                 else -> {
                                     ""

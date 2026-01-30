@@ -38,12 +38,13 @@ class MyAccountViewModel @Inject constructor(
         }
         getStatistics()
     }
-    fun logoutOpen() {
+    fun logoutOpenClose(isShow : Boolean) {
         updateState_ {
-            copy(isShowLogoutPopup = true)
+            copy(isShowLogoutPopup = isShow)
         }
     }
     fun makeLogout() {
+        logoutOpenClose(false)
         pref.clearPref()
     }
     private fun getStatistics() = viewModelScope.launch {

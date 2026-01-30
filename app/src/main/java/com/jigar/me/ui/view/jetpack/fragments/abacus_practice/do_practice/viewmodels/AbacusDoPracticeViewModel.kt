@@ -560,12 +560,13 @@ class AbacusDoPracticeViewModel @Inject constructor(
         abacusDataRepository.insertSetProgress(listOf(progress))
     }
     fun submitExamApi(submitExamRequest : SubmitAllExamDataRequest) = viewModelScope.launch {
+
         submitAllExamUseCase(
             params = submitExamRequest,
             onStart = {
                 if (submitExamRequest.is_set_completed == true || state().isShowSubmitAnswer == true){
                     updateState_ {
-                        copy(isLoading = true)
+                        copy(isLoading = true,submitExerciseRequest = submitExamRequest)
                     }
                 }
             },

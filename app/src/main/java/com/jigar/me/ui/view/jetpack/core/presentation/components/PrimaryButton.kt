@@ -17,13 +17,14 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimary
 
 @Composable
 fun PrimaryButton(
     text: String,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    color: Color = MaterialTheme.colorScheme.primary,
+    color: Color = ColorPrimary,
     onClick: () -> Unit,
 ) {
     Button(
@@ -56,7 +57,7 @@ fun SecondaryButton(
     text: String,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    color: Color = MaterialTheme.colorScheme.primary,
+    color: Color = ColorPrimary,
     onClick: () -> Unit,
 ) {
     Surface(

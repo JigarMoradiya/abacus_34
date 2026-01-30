@@ -26,7 +26,6 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -100,7 +99,7 @@ fun FreeTrialDialog(
                         Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.weight(0.65f).padding(end = 16.dp)) {
 
                             Image(
-                                painter = painterResource(R.drawable.logo_banner), contentDescription = null, modifier = Modifier.height(64.dp)
+                                painter = painterResource(R.drawable.logo), contentDescription = null, modifier = Modifier.height(64.dp)
                             )
 
                             Spacer(Modifier.height(8.dp))

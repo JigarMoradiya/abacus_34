@@ -790,6 +790,7 @@
     <string name="description">Description</string>
     <string name="mobile_number">Mobile Number</string>
     <string name="ok_thanks">Ok, Thank you</string>
+    <string name="ok_please_close">Ok, Please Close</string>
     <string name="thank_you_for_reaching_out">Thank you for reaching out!</string>
     <string name="thank_you_for_reaching_out1">Your ticket has been received, and our team will be in touch with you as soon as possible.</string>
     <string name="practice_of_abacus">Practice of Abacus</string>

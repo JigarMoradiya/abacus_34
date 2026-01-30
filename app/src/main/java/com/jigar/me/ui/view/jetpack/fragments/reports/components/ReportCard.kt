@@ -54,7 +54,7 @@ fun ReportCard(
         shape = RoundedCornerShape(dimensionResource(R.dimen.card_corner_radius12)),
         elevation = CardDefaults.cardElevation(
             defaultElevation = dimensionResource(R.dimen.card_elevation2)
-        )
+        ), colors = CardDefaults.cardColors(containerColor = Color.White)
     ) {
         Column(
             modifier = Modifier

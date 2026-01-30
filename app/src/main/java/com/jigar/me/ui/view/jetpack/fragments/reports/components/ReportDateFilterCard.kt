@@ -1,6 +1,7 @@
 package com.jigar.me.ui.view.jetpack.fragments.reports.components
 
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
@@ -17,6 +18,7 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,6 +31,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimaryLight
 import com.jigar.me.ui.view.jetpack.fragments.reports.viewmodels.ReportHistoryUiState
 import com.jigar.me.ui.view.jetpack.fragments.reports.viewmodels.ReportHistoryViewModel
 
@@ -42,6 +45,7 @@ fun ReportDateFilterCard(
 
         Card(
             onClick = { viewModel.onDateFilterClick() },
+            colors = CardDefaults.cardColors(containerColor = ColorPrimaryLight),
             shape = RoundedCornerShape(30.dp),
             elevation = CardDefaults.cardElevation(
                 dimensionResource(R.dimen.card_elevation3)
@@ -82,7 +86,8 @@ fun ReportDateFilterCard(
 
         DropdownMenu(
             expanded = uiState.isDateDropdownExpanded,
-            onDismissRequest = { viewModel.onDateFilterDismiss() }
+            onDismissRequest = { viewModel.onDateFilterDismiss() },
+            containerColor = ColorPrimaryLight
         ) {
             uiState.dateFilterList.forEach { item ->
                 DropdownMenuItem(

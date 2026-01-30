@@ -24,6 +24,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimary
 import kotlin.math.abs
 import kotlin.math.roundToInt
 
@@ -105,17 +106,17 @@ fun RangeSlider(
             val endX = valueToX(rawEnd)
 
             drawRoundRect(
-                color = Color(0xFF9C27B0), topLeft = Offset(startX, centerY - sliderHeightPx / 2), size = Size(endX - startX, sliderHeightPx), cornerRadius = CornerRadius(sliderHeightPx)
+                color = ColorPrimary, topLeft = Offset(startX, centerY - sliderHeightPx / 2), size = Size(endX - startX, sliderHeightPx), cornerRadius = CornerRadius(sliderHeightPx)
             )
 
             // ───────── Left Thumb ─────────
             drawCircle(
-                color = Color(0xFF9C27B0), radius = thumbRadiusPx, center = Offset(startX, centerY)
+                color = ColorPrimary, radius = thumbRadiusPx, center = Offset(startX, centerY)
             )
 
             // ───────── Right Thumb ─────────
             drawCircle(
-                color = Color(0xFF9C27B0), radius = thumbRadiusPx, center = Offset(endX, centerY)
+                color = ColorPrimary, radius = thumbRadiusPx, center = Offset(endX, centerY)
             )
             val paint = Paint().apply {
                 color = Color.White.toArgb()

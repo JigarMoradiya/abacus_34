@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.media3.common.util.UnstableApi
 import com.jigar.me.R
 import com.jigar.me.data.local.data.VideoTutorial
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimary
 
 @UnstableApi
 @OptIn(ExperimentalFoundationApi::class)
@@ -83,7 +84,7 @@ fun VideoPager(
                         .clip(CircleShape)
                         .background(
                             if (index == pagerState.currentPage)
-                                MaterialTheme.colorScheme.primary
+                                ColorPrimary
                             else
                                 Color.Gray.copy(alpha = 0.4f)
                         )

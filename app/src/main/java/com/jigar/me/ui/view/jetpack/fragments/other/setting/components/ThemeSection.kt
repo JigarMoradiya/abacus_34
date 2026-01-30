@@ -57,6 +57,8 @@ import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.jetpack.abacus_base.ColorPresets.getMixColorListOfPoligonUnique
 import com.jigar.me.ui.view.jetpack.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
 import com.jigar.me.ui.view.jetpack.abacus_base.components.abacus_canvas.drawableToImageBitmap
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimaryLight
 import com.jigar.me.ui.view.jetpack.fragments.other.setting.viewmodels.SettingViewModel
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.mixWith
@@ -71,9 +73,9 @@ fun ThemeSection(
         Card(
             shape = RoundedCornerShape(20.dp),
             colors = CardDefaults.cardColors(
-                containerColor = Color(0xFFF3EFFF)
+                containerColor = Color.White
             ),
-            border = BorderStroke(1.dp, Color(0xFF9C27B0)), // purple stroke
+            border = BorderStroke(1.dp, ColorPrimary), // purple stroke
             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
             modifier = Modifier.fillMaxWidth().weight(1f)
         ) {

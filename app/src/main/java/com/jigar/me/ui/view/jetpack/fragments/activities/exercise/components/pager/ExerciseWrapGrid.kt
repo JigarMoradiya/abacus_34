@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.view.jetpack.fragments.activities.exercise.exercise_generator.GridItemModel
 import kotlin.math.ceil
 
@@ -54,16 +55,16 @@ fun ExerciseWrapGrid(
                                 .size(28.dp)
                                 .clip(CircleShape)
                                 .background(
-                                    if (isSelected) MaterialTheme.colorScheme.primary else Color.Transparent
+                                    if (isSelected) ColorPrimary else Color.Transparent
                                 )
                                 .border(
-                                    width = 1.dp, color = MaterialTheme.colorScheme.primary, shape = CircleShape
+                                    width = 1.dp, color = ColorPrimary, shape = CircleShape
                                 )
                                 .clickable { onItemSelected(item) }, contentAlignment = Alignment.Center
                         ) {
                             Text(
                                 text = "${index + 1}", style = MaterialTheme.typography.bodyMedium.copy(
-                                    color = if (isSelected) Color.White else MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))
+                                    color = if (isSelected) Color.White else ColorPrimary, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))
                                 )
                             )
                         }

@@ -44,6 +44,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimary
 
 @SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
@@ -120,7 +121,7 @@ fun SettingsDialog(
                                 style = MaterialTheme.typography.titleSmall,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily(Font(R.font.font_bold)),
-                                color = MaterialTheme.colorScheme.primary,
+                                color = ColorPrimary,
                                 modifier = Modifier
                                     .clip(RoundedCornerShape(6.dp))
                                     .padding(horizontal = 16.dp)

@@ -75,7 +75,7 @@ class MyAccountFragment : Fragment() {
                                     }
                                 }
                                 "logout" -> {
-                                    viewModel.logoutOpen()
+                                    viewModel.logoutOpenClose(true)
                                 }
                             }
                         }
@@ -99,7 +99,9 @@ class MyAccountFragment : Fragment() {
                                 viewModel.makeLogout()
                                 LoginDashboardActivity.getInstance(requireContext())
                             },
-                            onNegativeTapped = {}
+                            onNegativeTapped = {
+                                viewModel.logoutOpenClose(false)
+                            }
                         )
                     }
                 }

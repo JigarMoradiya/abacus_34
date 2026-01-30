@@ -1,6 +1,7 @@
 package com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.viewmodels
 
 import com.jigar.me.data.local.data.ExamProvider
+import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
 import com.jigar.me.data.model.dbtable.abacus_all_data.Set
 import com.jigar.me.data.model.dbtable.abacus_all_data.SetProgress
@@ -31,6 +32,7 @@ data class AbacusDoPracticeUiState(
     val isFinalAnswer: Boolean = false ,
     val isShowSubmitAnswer: Boolean? = null,
     val isNextButtonEnable: Boolean = false,
+    val submitExerciseRequest : SubmitAllExamDataRequest? = null,
 
     val error: Int? = null
 )

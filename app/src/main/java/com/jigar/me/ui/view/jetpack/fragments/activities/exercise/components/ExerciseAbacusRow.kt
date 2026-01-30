@@ -50,7 +50,7 @@ fun ExerciseAbacusRow(uiState: ExerciseUiState, viewModel: ExerciseViewModel, mo
                 highlightColor = uiState.currentColorPresetModel.buttonColor,
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
-                    .padding(bottom = dimensionResource(R.dimen.activity_padding8))
+                    .padding(bottom = dimensionResource(R.dimen.activity_padding16))
             )
         }
     }

@@ -41,6 +41,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimaryLight
 import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.exam_generator.QuestionResult
 
@@ -72,7 +73,7 @@ fun ExamResultPopup(
                 Box(modifier = Modifier.fillMaxWidth()) {
                     Text(
                         text = stringResource(R.string.result_of_exam),
-                        style = MaterialTheme.typography.titleLarge.copy(color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))), modifier = Modifier.align(Alignment.Center)
+                        style = MaterialTheme.typography.titleLarge.copy(color = ColorPrimary, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))), modifier = Modifier.align(Alignment.Center)
                     )
 
                     TextButton(

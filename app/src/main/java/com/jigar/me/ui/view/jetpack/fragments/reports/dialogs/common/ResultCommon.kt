@@ -85,7 +85,7 @@ fun QuestionExamColumnItemHorizontal(item: QuestionResult) {
                             fontFamily = FontFamily(Font(R.font.font_bold))
                         )
                     ) {
-                        append(item.userAnswer.toString())
+                        append(item.userAnswer)
                     }
                 },
                 style = MaterialTheme.typography.bodyMedium,

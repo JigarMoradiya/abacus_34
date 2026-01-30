@@ -33,6 +33,8 @@ import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.view.jetpack.core.presentation.components.HorizontalCheckbox
 import com.jigar.me.ui.view.jetpack.core.presentation.components.PrimaryButton
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimaryDark
 import com.jigar.me.ui.view.jetpack.fragments.activities.custom_challenge.home.viewmodels.CCMHomeUiState
 import com.jigar.me.ui.view.jetpack.fragments.activities.custom_challenge.home.viewmodels.CCMHomeViewModel
 import com.jigar.me.ui.view.jetpack.utils.ui.slider.RangeSlider
@@ -44,7 +46,7 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
     Column(
         modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
     ) {
-        val gradientBrush = Brush.linearGradient(colors = listOf(Color(0xFF9C27B0), Color(0xFFE991FF)))
+        val gradientBrush = Brush.linearGradient(colors = listOf(ColorPrimaryDark, ColorPrimary))
 
         Icon(
             imageVector = Icons.Default.DisplaySettings,

@@ -13,18 +13,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimaryLight
 
 @Composable
 fun MenuIconCard(
     type: String,
     icon: ImageVector,
     modifier: Modifier = Modifier,
-    backgroundColor: Color = colorResource(R.color.back_icon_text_bg),
-    iconTint: Color = colorResource(R.color.back_icon_bg),
+    backgroundColor: Color = ColorPrimaryLight,
+    iconTint: Color = ColorPrimary,
     onClick: (String) -> Unit
 ) {
     Card(

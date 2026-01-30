@@ -35,7 +35,8 @@ fun MyAccountParentCard(
             modifier = Modifier
                 .fillMaxWidth(),
             elevation = CardDefaults.cardElevation(2.dp),
-            shape = RoundedCornerShape(8.dp)
+            shape = RoundedCornerShape(8.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.White)
         ) {
             Column {
 

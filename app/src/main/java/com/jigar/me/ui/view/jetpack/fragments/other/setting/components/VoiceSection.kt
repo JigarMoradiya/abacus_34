@@ -24,6 +24,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimaryLight
 
 @Composable
 fun VoiceSection(
@@ -33,8 +35,8 @@ fun VoiceSection(
     Card(
         onClick = { onVoiceChange() },
         shape = RoundedCornerShape(20.dp), colors = CardDefaults.cardColors(
-            containerColor = Color(0xFFF3EFFF)
-        ), border = BorderStroke(1.dp, Color(0xFF9C27B0)), // purple stroke
+            containerColor = Color.White
+        ), border = BorderStroke(1.dp, ColorPrimary),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp), modifier = modifier
     ) {
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier

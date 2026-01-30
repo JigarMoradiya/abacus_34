@@ -29,6 +29,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimary
 
 @Composable
 fun HowToPlayTargetNumberView(
@@ -68,7 +69,7 @@ fun HowToPlayTargetNumberView(
                         text = stringResource(R.string.target_the_number),
                         fontFamily = FontFamily(Font(R.font.font_extra_bold)),
                         fontSize = dimensionResource(R.dimen.textSize18).value.sp,
-                        color = Color(0xFF9C27B0) // Purple
+                        color = ColorPrimary
                     )
 
                     Spacer(modifier = Modifier.weight(1f))

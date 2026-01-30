@@ -26,6 +26,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimaryLight
 import com.jigar.me.ui.view.jetpack.fragments.reports.viewmodels.ReportHistoryUiState
 import com.jigar.me.ui.view.jetpack.fragments.reports.viewmodels.ReportHistoryViewModel
 
@@ -42,6 +43,7 @@ fun ReportFilterCard(
             elevation = CardDefaults.cardElevation(
                 dimensionResource(R.dimen.card_elevation3)
             ),
+            colors = CardDefaults.cardColors(containerColor = ColorPrimaryLight),
             modifier = Modifier
                 .wrapContentWidth()
                 .padding(top = dimensionResource(R.dimen.activity_padding6))
@@ -76,7 +78,8 @@ fun ReportFilterCard(
         // 🔽 Dropdown (Spinner replacement)
         DropdownMenu(
             expanded = uiState.isDropdownExpanded,
-            onDismissRequest = { viewModel.onFilterDismiss() }
+            onDismissRequest = { viewModel.onFilterDismiss() },
+            containerColor = ColorPrimaryLight
         ) {
             uiState.filterList.forEachIndexed { index, item ->
                 DropdownMenuItem(

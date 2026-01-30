@@ -14,6 +14,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.Dp
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimaryDark
 
 @Composable
 fun ExamProgressBar(
@@ -22,7 +23,7 @@ fun ExamProgressBar(
     modifier: Modifier = Modifier,
     height: Dp = dimensionResource(R.dimen.quiz_progress_height),
     backgroundColor: Color = Color.LightGray,
-    progressColor: Color = colorResource(R.color.colorAccent),
+    progressColor: Color = ColorPrimaryDark,
     cornerRadius: Dp = height
 ) {
     val progressFraction = (progress.toFloat() / max.coerceAtLeast(1))
