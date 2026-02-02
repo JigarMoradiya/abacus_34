@@ -35,30 +35,6 @@ data class PurchasedPlanCheckRequest(
     var purchased_plan: ArrayList<GooglePurchasedPlanRequest>? = null
 )
 
-data class ForgotPasswordRequest(
-    var email: String? = null
-)
-
-data class ResetPasswordRequest(
-    var email: String? = null,
-    var otp: String? = null,
-    var password: String? = null
-)
-
-data class ChangePasswordRequest(
-    var current_password: String? = null,
-    var new_password: String? = null
-)
-
-data class UpdateProfileRequest(
-    var name: String? = null,
-    var email: String? = null,
-    var country_code: String? = null,
-    var phone: String? = null,
-    var city: String? = null,
-    var state: String? = null,
-    var country: String? = null
-)
 data class ContactUsRequest(
     var type: String? = null,
     var name: String? = null,
@@ -69,9 +45,6 @@ data class ContactUsRequest(
     var city: String? = null,
 )
 
-data class ResendOTPRequest(
-    var email: String? = null,
-)
 data class SubmitAllExamDataRequest(
     // Exam submit
     var type: String? = null,

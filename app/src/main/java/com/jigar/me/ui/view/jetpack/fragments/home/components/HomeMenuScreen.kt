@@ -34,12 +34,12 @@ import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeUiState
 @Composable
 fun HomeMenuScreen(
     uiState: HomeUiState,
-    onMenuClick: (Level) -> Unit
+    onMenuClick: (Level) -> Unit,
+    modifier: Modifier
 ) {
     LazyRow(
-        modifier = Modifier.padding(vertical = dimensionResource(R.dimen.activity_padding16)),
-        contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.activity_padding12)),
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding8))
+        modifier = modifier.padding(vertical = dimensionResource(R.dimen.activity_padding16)),
+        contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.activity_padding12))
     ) {
         items(uiState.menuLevels) { level ->
             HomeMenuItem(
