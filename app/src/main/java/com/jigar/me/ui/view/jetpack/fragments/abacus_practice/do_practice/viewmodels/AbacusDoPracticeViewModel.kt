@@ -1,8 +1,10 @@
 package com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.viewmodels
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.google.gson.Gson
 import com.jigar.me.R
 import com.jigar.me.data.local.data.ExamProvider.AbacusFormulaType
 import com.jigar.me.data.local.data.ExamProvider.FormulaStep
@@ -64,11 +66,12 @@ class AbacusDoPracticeViewModel @Inject constructor(
     }
 
     private fun initialLoad() = viewModelScope.launch {
+        Log.e("jigarLogs","setId = "+setId)
         setId?.let {
             val abacusList = abacusDataRepository.getAbacus(setId).first()
             val setDetail = abacusDataRepository.getSetDetail(setId).first()
             val setProgress = abacusDataRepository.getSetProgress(setId).first()
-
+            Log.e("jigarLogs","setProgress = "+ Gson().toJson(setProgress))
             if (abacusList.isEmpty()) return@launch
 
             val restoredIndex = setProgress
@@ -461,6 +464,18 @@ class AbacusDoPracticeViewModel @Inject constructor(
                         }
                         no_of_right_answers = rightAnswerCount
                         questions = questionsList
+
+                        val setProgress = state().setProgress
+                        val retryCounts: Int = if (setProgress == null){
+                            1
+                        }else if(setProgress.is_set_completed){
+                            setProgress.retry_count + 1
+                        }else{
+                            setProgress.retry_count
+                        }
+                        retry_count = retryCounts
+
+                        is_set_completed = true
                         submitExamApi(submitExamRequest)
                     }
                 }else{ // update user answer only and go next abacus
@@ -470,20 +485,20 @@ class AbacusDoPracticeViewModel @Inject constructor(
                 if (state().currentIndexOfAbacus == abacusList.lastIndex){ // set complete send on server on last record
                     val submitExamRequest = SubmitAllExamDataRequest()
                     submitExamRequest.apply {
-                        val setProgress = state().setProgress
                         stopSetTimer() // stop timer once set complete
+                        val setProgress = state().setProgress
                         val retryCounts: Int = if (setProgress == null){
                             1
                         }else if(setProgress.is_set_completed){
-                            setProgress.retry_count +1
+                            setProgress.retry_count + 1
                         }else{
                             setProgress.retry_count
                         }
+                        retry_count = retryCounts
+                        is_set_completed = true
                         if (setDetail?.show_time_setting == true){
                             total_time_taken = (state().currentSetTime?:0L).toInt()
                         }
-                        retry_count = retryCounts
-                        is_set_completed = true
                         abacus_id = null
                         set_id = setId
                         type = setDetail?.answer_setting
@@ -556,7 +571,6 @@ class AbacusDoPracticeViewModel @Inject constructor(
         }
     }
     fun updateProgress(progress: SetProgress) = viewModelScope.launch {
-        // update progress in database
         abacusDataRepository.insertSetProgress(listOf(progress))
     }
     fun submitExamApi(submitExamRequest : SubmitAllExamDataRequest) = viewModelScope.launch {

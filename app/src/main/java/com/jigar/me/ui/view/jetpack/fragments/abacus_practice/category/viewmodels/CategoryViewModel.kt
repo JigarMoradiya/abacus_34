@@ -2,12 +2,9 @@ package com.jigar.me.ui.view.jetpack.fragments.abacus_practice.category.viewmode
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
-import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.core.StatefulViewModel
 import com.jigar.me.ui.view.jetpack.core.repository.abacus_data.AbacusDataRepository
 import com.jigar.me.ui.view.jetpack.core.repository.abacus_data.PurchaseRepository
-import com.jigar.me.utils.CommonUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect

@@ -65,7 +65,7 @@ interface AbacusAllDataDao {
     SELECT s.id,s.page_id,s.name,s.answer_setting,s.show_time_setting,
            s.sort_order,s.created_at,s.is_active,s.description,s.hint,
            s.latest_abacus_id,s.totals_abacus,
-           (SELECT EXISTS (SELECT 1 FROM setProgress WHERE set_id = s.id AND is_set_completed = 1)) AS is_completed_set,
+           (SELECT EXISTS (SELECT 1 FROM setProgress WHERE set_id = s.id AND  (retry_count > 1 OR is_set_completed = 1))) AS is_completed_set,
            (SELECT EXISTS (SELECT 1 FROM setProgress WHERE set_id = s.id AND is_set_completed = 0)) AS is_running_set
     FROM sets AS s
     WHERE s.is_active = 1

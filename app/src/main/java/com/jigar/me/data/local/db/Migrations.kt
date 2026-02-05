@@ -2,64 +2,56 @@ package com.jigar.me.data.local.db
 
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.jigar.me.utils.AppConstants
 
 object Migrations {
     val MIGRATION_1_2 = object : Migration(1, 2) {
-        override fun migrate(db: SupportSQLiteDatabase) {
-            db.execSQL("CREATE TABLE `ExamHistory` (`id` INTEGER NOT NULL, `examTotalTime` INTEGER NOT NULL, `examType` TEXT NOT NULL, `examDetails` TEXT NOT NULL,`examBeginners` TEXT NOT NULL, `addedOn` INTEGER NOT NULL, PRIMARY KEY(`id`))")
-        }
-    }
-    val MIGRATION_2_3 = object : Migration(2, 3) {
-        override fun migrate(db: SupportSQLiteDatabase) {
-            db.execSQL("CREATE TABLE `Suduko` (`id` INTEGER NOT NULL, `cellPosition` TEXT NOT NULL, `cellValue` TEXT NOT NULL, `roomID` TEXT NOT NULL,`notes` TEXT NOT NULL, `addedOn` INTEGER NOT NULL, PRIMARY KEY(`id`))")
-            db.execSQL("CREATE TABLE `Suduko_Play` (`id` INTEGER NOT NULL, `cellPosition` TEXT NOT NULL, `cellValue` TEXT NOT NULL, `roomID` TEXT NOT NULL,`notes` TEXT NOT NULL, `level` TEXT NOT NULL, `defaultSet` TEXT NOT NULL, `valueStatus` TEXT NOT NULL, `addedOn` INTEGER NOT NULL, PRIMARY KEY(`id`))")
-            db.execSQL("CREATE TABLE `Suduko_AnswerStatus` (`id` INTEGER NOT NULL, `cellPosition` TEXT NOT NULL, `cellValue` TEXT NOT NULL, `roomID` TEXT NOT NULL,`otherCellPosition` TEXT NOT NULL, `addedOn` INTEGER NOT NULL, PRIMARY KEY(`id`))")
-            db.execSQL("CREATE TABLE `Suduko_Level` (`id` INTEGER NOT NULL, `level` TEXT NOT NULL, `status` TEXT NOT NULL, `roomID` TEXT NOT NULL,`playTime` TEXT NOT NULL, `addedOn` INTEGER NOT NULL, PRIMARY KEY(`id`))")
+        override fun migrate(database: SupportSQLiteDatabase) {
+
+            database.execSQL("""
+            CREATE TABLE set_progress_new (
+                set_id TEXT NOT NULL,
+                latest_abacus_id TEXT,
+                is_set_completed INTEGER NOT NULL,
+                total_time_taken INTEGER NOT NULL,
+                retry_count INTEGER NOT NULL,
+                PRIMARY KEY(set_id)
+            )
+        """)
+
+            database.execSQL("""
+            INSERT INTO set_progress_new (
+                set_id,
+                latest_abacus_id,
+                is_set_completed,
+                total_time_taken,
+                retry_count
+            )
+            SELECT
+                sp.set_id,
+                sp.latest_abacus_id,
+                sp.is_set_completed,
+                sp.total_time_taken,
+                sp.retry_count
+            FROM ${AppConstants.DBParam.table_set_progress} sp
+            INNER JOIN (
+                SELECT
+                    set_id,
+                    MAX(retry_count) AS max_retry
+                FROM ${AppConstants.DBParam.table_set_progress}
+                GROUP BY set_id
+            ) grouped
+            ON sp.set_id = grouped.set_id
+            AND sp.retry_count = grouped.max_retry
+        """)
+
+            database.execSQL("DROP TABLE ${AppConstants.DBParam.table_set_progress}")
+
+            database.execSQL("""
+            ALTER TABLE set_progress_new
+            RENAME TO ${AppConstants.DBParam.table_set_progress}
+        """)
         }
     }
 
-    val MIGRATION_3_4 = object : Migration(3, 4) {
-        override fun migrate(db: SupportSQLiteDatabase) {
-            db.execSQL("ALTER TABLE tableInAppSKU ADD COLUMN offerToken TEXT;")
-        }
-    }
-    val MIGRATION_4_5 = object : Migration(4, 5) {
-        override fun migrate(db: SupportSQLiteDatabase) {
-            db.execSQL("ALTER TABLE tableInAppPurchase ADD COLUMN isAutoRenewing INTEGER not null default 0;")
-        }
-    }
-    val MIGRATION_5_6 = object : Migration(5, 6) {
-        override fun migrate(db: SupportSQLiteDatabase) {
-            db.execSQL("ALTER TABLE tableInAppSKU ADD COLUMN billingPeriod TEXT;")
-        }
-    }
-    val MIGRATION_6_7 = object : Migration(6, 7) {
-        override fun migrate(db: SupportSQLiteDatabase) {
-            db.execSQL("ALTER TABLE tableInAppSKU ADD COLUMN originalPrice TEXT;")
-            db.execSQL("ALTER TABLE tableInAppSKU ADD COLUMN discountPer TEXT;")
-        }
-    }
-    val MIGRATION_7_8 = object : Migration(7, 8) {
-        override fun migrate(db: SupportSQLiteDatabase) {
-            db.execSQL("ALTER TABLE ExamHistory ADD COLUMN theme TEXT;")
-        }
-    }
-    val MIGRATION_8_9 = object : Migration(8, 9) {
-        override fun migrate(db: SupportSQLiteDatabase) {
-            db.execSQL("ALTER TABLE ExamHistory ADD COLUMN examFor TEXT;")
-        }
-    }
-    val MIGRATION_9_10 = object : Migration(9, 10) {
-        override fun migrate(db: SupportSQLiteDatabase) {
-            db.execSQL("ALTER TABLE tableInAppSKU ADD COLUMN sortOrder INTEGER not null default 0;")
-        }
-    }
-    val MIGRATION_10_11 = object : Migration(10, 11) {
-        override fun migrate(db: SupportSQLiteDatabase) {
-            db.execSQL("DROP TABLE `Suduko`")
-            db.execSQL("DROP TABLE `Suduko_Play`")
-            db.execSQL("DROP TABLE `Suduko_AnswerStatus`")
-            db.execSQL("DROP TABLE `Suduko_Level`")
-        }
-    }
 }

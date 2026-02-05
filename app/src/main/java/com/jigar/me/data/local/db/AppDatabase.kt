@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.jigar.me.BuildConfig
+import com.jigar.me.data.local.db.Migrations.MIGRATION_1_2
 import com.jigar.me.data.local.db.abacus_all_data.AbacusAllDataDao
 import com.jigar.me.data.local.db.exam.ExamHistoryDao
 import com.jigar.me.data.local.db.inapp.purchase.InAppPurchaseDao
@@ -30,7 +31,7 @@ import java.util.concurrent.Executors
 @Database(
     entities = [InAppSkuDetails::class,InAppPurchaseDetails::class, ExamHistory::class
          ,Level::class, Category::class, Pages::class, Set::class, SetProgress::class, Abacus::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 @TypeConverters(DataTypeConverter::class)
@@ -51,6 +52,7 @@ abstract class AppDatabase : RoomDatabase() {
               val factory = SupportOpenHelperFactory(passphrase)
 
             val database  = Room.databaseBuilder(context, AppDatabase::class.java, AppConstants.DB_NAME_NEW)
+                .addMigrations(MIGRATION_1_2)
             if (!BuildConfig.DEBUG){
                 database.openHelperFactory(factory)
             }
