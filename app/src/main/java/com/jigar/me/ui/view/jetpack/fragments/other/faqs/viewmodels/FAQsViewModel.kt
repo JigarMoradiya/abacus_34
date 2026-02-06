@@ -12,12 +12,12 @@ import javax.inject.Inject
 @HiltViewModel
 class FAQsViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
-    prefs: AppPreferencesHelper,
+    private val prefs: AppPreferencesHelper,
 ) : StatefulViewModel<FAQUiState>() {
 
     override val TAG = "FAQsViewModel"
 
-    override fun getInitialState() = FAQUiState()
+    override fun getInitialState() = FAQUiState(isUserLoggedIn = prefs.isUserLoggedIn())
 
     init {
         val emailId = prefs.getCustomParam(AppConstants.RemoteConfig.supportEmail,"")

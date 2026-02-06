@@ -32,5 +32,5 @@
     </fragment>
     <fragment
         android:id="@+id/faqsFragmentNew"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.faqs.FAQsFragmentNew"/>
+        android:name="com.jigar.me.ui.view.jetpack.fragments.other.faqs.FAQsFragmentNew"/>
 </navigation>

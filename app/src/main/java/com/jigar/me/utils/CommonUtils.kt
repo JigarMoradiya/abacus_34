@@ -1,16 +1,9 @@
 package com.jigar.me.utils
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.graphics.Typeface
-import android.speech.tts.TextToSpeech
-import android.speech.tts.Voice
 import android.text.Html
 import android.util.Log
-import android.view.View
-import android.view.animation.AlphaAnimation
-import android.view.animation.Animation
-import android.view.animation.LinearInterpolator
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -18,16 +11,11 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
-import androidx.core.content.ContextCompat
-import androidx.core.text.HtmlCompat
 import com.android.billingclient.api.BillingClient
 import com.google.android.material.textfield.TextInputLayout
-import com.google.android.material.textview.MaterialTextView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.jigar.me.BuildConfig
 import com.jigar.me.R
-import com.jigar.me.data.local.data.AbacusContent
 import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
@@ -36,17 +24,11 @@ import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_1Month
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_1Year
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_3Month
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime
+import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_old
 import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Week
-import com.jigar.me.utils.extensions.show
-import org.json.JSONException
-import org.json.JSONObject
-import java.math.RoundingMode
-import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Locale
 import java.util.concurrent.TimeUnit
 
 
@@ -187,16 +169,13 @@ object CommonUtils {
     }
 
     fun checkLevelIsPurchase(purchasedSKU: List<InAppSkuDetails>, data: Category, prefManager: AppPreferencesHelper): Boolean {
-//        if (BuildConfig.DEBUG){
-//            return true
-//        }
         var isPurchased = false
         val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
         if (loginData?.email.equals("abacus@yopmail.com") || prefManager.isUserInFreeTrial()){
             isPurchased = true
         }else{
-            purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
-                    || it.sku == PRODUCT_ID_All_lifetime_old
+            purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime_old
+                    || it.sku.contains(PRODUCT_ID_All)
                     || it.sku.contains(PRODUCT_ID_1Year)
                     || it.sku.contains(PRODUCT_ID_Week)
                     || it.sku.contains(PRODUCT_ID_1Month)
@@ -212,6 +191,7 @@ object CommonUtils {
                     )
                     planListData.find { it.google_order_id == null &&
                             (it.google_plan_id?.contains(data.name) == true
+                                    || it.google_plan_id?.contains(PRODUCT_ID_All) == true
                                     || it.google_plan_id?.contains(PRODUCT_ID_1Year) == true
                                     || it.google_plan_id?.contains(PRODUCT_ID_Week) == true
                                     || it.google_plan_id?.contains(PRODUCT_ID_1Month) == true
@@ -227,16 +207,14 @@ object CommonUtils {
     }
 
     fun checkPurchaseForExerciseExamCCM(prefManager: AppPreferencesHelper,purchasedSKU: List<InAppSkuDetails>): Boolean {
-//        if (BuildConfig.DEBUG){
-//            return true
-//        }
         val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
         var isPurchased = false
         if (loginData?.email.equals("abacus@yopmail.com") || prefManager.isUserInFreeTrial()){
             isPurchased = true
         }else{
-            purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
-                    || it.sku == PRODUCT_ID_All_lifetime_old
+            purchasedSKU.find {
+                it.sku == PRODUCT_ID_All_lifetime_old
+                    || it.sku.contains(PRODUCT_ID_All)
                     || it.sku.contains(PRODUCT_ID_1Year)
                     || it.sku.contains(PRODUCT_ID_Week)
                     || it.sku.contains(PRODUCT_ID_1Month)
@@ -260,6 +238,7 @@ object CommonUtils {
                             (it.google_plan_id?.contains("level7") == true) ||
                             (it.google_plan_id?.contains("level8") == true) ||
                             (it.google_plan_id?.contains(PRODUCT_ID_1Year) == true) ||
+                            (it.google_plan_id?.contains(PRODUCT_ID_All) == true) ||
                             (it.google_plan_id?.contains(PRODUCT_ID_Week) == true) ||
                             (it.google_plan_id?.contains(PRODUCT_ID_1Month) == true) ||
                             (it.google_plan_id?.contains(PRODUCT_ID_3Month) == true)

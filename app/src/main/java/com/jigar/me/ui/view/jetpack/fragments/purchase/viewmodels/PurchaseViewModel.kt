@@ -162,9 +162,9 @@ class PurchaseViewModel @Inject constructor(
 
             if (yearPurchased != null) {
                 if (yearPurchased.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1) {
-                    remove(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer)
+                    removeExact(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer)
                 } else {
-                    remove(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1)
+                    removeExact(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1)
                 }
                 remove(BillingRepository.AbacusSku.PRODUCT_ID_Week)
                 remove(BillingRepository.AbacusSku.PRODUCT_ID_1Month)
@@ -173,7 +173,7 @@ class PurchaseViewModel @Inject constructor(
                 if (state().discountPer > 0) {
                     removeExact(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1)
                 } else {
-                    remove(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer)
+                    removeExact(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer)
                 }
             }
 
@@ -182,16 +182,20 @@ class PurchaseViewModel @Inject constructor(
             }
 
             if (lifetimePurchased != null) {
-                remove(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_offer)
+                if (lifetimePurchased.sku == BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime) {
+                    removeExact(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_offer)
+                } else {
+                    removeExact(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime)
+                }
                 remove(BillingRepository.AbacusSku.PRODUCT_ID_Week)
                 remove(BillingRepository.AbacusSku.PRODUCT_ID_1Month)
                 remove(BillingRepository.AbacusSku.PRODUCT_ID_1Year)
                 showSubmit = false
             } else {
                 if (state().discountPerLifetime > 0) {
-                    remove(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime)
+                    removeExact(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime)
                 } else {
-                    remove(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_offer)
+                    removeExact(BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_offer)
                 }
             }
         }

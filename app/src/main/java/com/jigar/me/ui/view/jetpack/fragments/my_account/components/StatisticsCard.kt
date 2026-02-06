@@ -56,7 +56,12 @@ fun StatisticsCard(
                     )
                 )
             }
-            Text(time.toDate().formatTo(at_dd_mmm_yy_hh_mm_a).lowercase(Locale.getDefault()),
+            val timeFormat = if (time.isEmpty()){
+                "-"
+            }else{
+                time.toDate().formatTo(at_dd_mmm_yy_hh_mm_a).lowercase(Locale.getDefault())
+            }
+            Text(timeFormat,
                 style = MaterialTheme.typography.labelMedium,
                 fontFamily = FontFamily(Font(R.font.font_semibold))
             )

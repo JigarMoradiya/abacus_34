@@ -1,21 +1,14 @@
 package com.jigar.me.data.local.data
 
 import android.content.Context
-import android.graphics.Color
 import android.util.Log
-import androidx.core.content.ContextCompat
 import com.google.gson.Gson
 import com.jigar.me.R
-import com.jigar.me.data.model.pages.*
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.Constants
-import com.jigar.me.utils.extensions.dp
 import com.jigar.me.utils.extensions.dpToPx
-import java.util.*
-import kotlin.collections.ArrayList
+import java.util.Random
 import kotlin.random.Random.Default.nextInt
-
 
 object DataProvider {
     fun getVideoPreviewList(context: Context): List<VideoTutorial>{
@@ -718,7 +711,7 @@ object DataProvider {
         return listExercise
     }
 
-    fun generateAdditionSubExerciseTemp(child: ExerciseLevelDetail) : MutableList<ExerciseList>{
+    fun generateAdditionSubExerciseTemp() : MutableList<ExerciseList>{
         val listExercise: MutableList<ExerciseList> = arrayListOf()
         var min = 1000
         var max = 9999
@@ -1005,12 +998,14 @@ object DataProvider {
             }
             listExercise.add(ExerciseList(question,answer.toString()))
         }
-//        val listnew = listExercise.shuffled().shuffled()
-        val listnew = listExercise
+        val listnew = listExercise.shuffled().shuffled()
         val listQue: MutableList<String> = arrayListOf()
         listnew.map {
             listQue.add(it.question)
         }
+        Log.e("jigarGenerateSet","listExercise = "+ Gson().toJson(listnew))
+        Log.e("jigarGenerateSet","listQue = "+ Gson().toJson(listQue))
+        Log.e("jigarGenerateSet","joinToString = "+ listQue.joinToString(","))
         return listExercise
     }
 

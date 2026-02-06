@@ -15,7 +15,6 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.getValue
@@ -28,6 +27,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DataProvider.generateAdditionSubExerciseTemp
 import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.Loader
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
@@ -35,7 +35,6 @@ import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.FreeTrialDialog
 import com.jigar.me.ui.view.jetpack.fragments.home.components.HomeHeaderLeft
 import com.jigar.me.ui.view.jetpack.fragments.home.components.HomeHeaderRight
 import com.jigar.me.ui.view.jetpack.fragments.home.components.HomeMenuScreen
-import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.FreeTrialParam
 import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeFragmentViewModel
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Constants
@@ -54,7 +53,7 @@ class HomeFragmentNew : Fragment() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
+//                generateAdditionSubExerciseTemp()
                 AbacusTheme {
                     Column(modifier = Modifier.fillMaxSize()) {
                         Row{

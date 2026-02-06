@@ -5,12 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -37,7 +40,13 @@ class FAQsFragmentNew : Fragment() {
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
                 AbacusTheme {
                     Column(modifier = Modifier.fillMaxSize()) {
-                        BackButtonWithText(title = stringResource(R.string.faqs), onBackClick = {findNavController().popBackStack()})
+                        Row {
+                            if (!uiState.isUserLoggedIn){
+                                Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding12)))
+                            }
+                            BackButtonWithText(title = stringResource(R.string.faqs), onBackClick = {findNavController().popBackStack()})
+                        }
+
                         FAQsListItem(uiState.faqsList)
                     }
                 }
