@@ -85,8 +85,8 @@ fun PurchaseScreen(
             imageVector = Icons.Default.Close,
             contentDescription = null,
             modifier = Modifier
-                .align(Alignment.TopEnd)
-                .padding(16.dp)
+                .align(Alignment.TopStart)
+                .padding(dimensionResource(R.dimen.activity_padding16))
                 .clickable { onClose() }
         )
     }

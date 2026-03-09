@@ -48,23 +48,27 @@ data class InAppSkuDetails(
             "Lifetime Plan"
         }
     }
-    fun getTrialTxt() : String{
+    fun getFreeTrialDays() : Int{
         return if (isSubscriptionPlan()) {
-            var text = ""
+            var text = 0
             val offerDetail = Gson().fromJson(originalJson, SubscriptionOfferDetailsCustom::class.java)
             val pricingPhaseList = offerDetail?.pricingPhases
             pricingPhaseList?.find { it.priceAmountMicros == 0L }.also { findData ->
                 if (findData != null){
                     if (findData.billingPeriod.equals("p1w",true)){
-                        text = "charged after 7-day free trial"
-                    }else if (findData.billingPeriod.equals("p3d",true)){
-                        text = "charged after 3-day free trial"
+                        text = 7
+                    }else if (findData.billingPeriod.endsWith("d",true)){
+                        text = findData.billingPeriod
+                            .removePrefix("P")
+                            .removeSuffix("D")
+                            .toIntOrNull() ?: 0
+
                     }
                 }
             }
             text
         } else {
-            ""
+            0
         }
     }
     fun calculateSavings(monthlyMicros: Long, yearlyMicros: Long): Int {

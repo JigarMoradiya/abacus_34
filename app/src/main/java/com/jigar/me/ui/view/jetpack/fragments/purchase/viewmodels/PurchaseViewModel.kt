@@ -43,6 +43,7 @@ class PurchaseViewModel @Inject constructor(
 
     fun loadInitialData(purchasedSKU: List<InAppSkuDetails>) {
         val discountPer = prefManager.getCustomParamInt(AppConstants.RemoteConfig.discountPer, 0)
+//        val discountPer = 0
         val discountLifetime = prefManager.getCustomParamInt(AppConstants.RemoteConfig.discountPerLifeTime, 0)
 
         // admin assigned plan list
@@ -68,6 +69,9 @@ class PurchaseViewModel @Inject constructor(
                 ?: emptyList()
 
             val skuIds = displayList.map { it.id }.toMutableList()
+            skuIds.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1_FreeTrial)
+//            skuIds.remove(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1)
+            skuIds.remove("com.abacus.puzzle.1month")
 
             // admin assigned
             val yearPlanAssignFromAdmin = state().planListAssignFromAdmin.find {
@@ -88,6 +92,7 @@ class PurchaseViewModel @Inject constructor(
             val allSkuIds = arrayListOf(
                 BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Week1,
                 BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1,
+                BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1_FreeTrial,
                 BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1,
                 BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer,
                 BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime,

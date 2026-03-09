@@ -886,5 +886,7 @@
     <string name="exam">Exam</string>
     <string name="exercise">Exercise</string>
     <string name="practice_set">Practice set of Formal Exam</string>
+    <string name="subscription_free_trial_msg">Payment will be charged after the free trial.\nCancel anytime before trial ends.</string>
+    <string name="cancel_subscription_anytime">Cancel subscription anytime.</string>
 
 </resources>

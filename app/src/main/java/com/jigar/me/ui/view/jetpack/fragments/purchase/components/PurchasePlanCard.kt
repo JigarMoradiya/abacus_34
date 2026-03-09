@@ -67,7 +67,7 @@ fun PurchasePlanCard(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     text = plan.getDurationTxt(),
-                    style = MaterialTheme.typography.bodyLarge.copy(color = Black,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold)))
+                    style = MaterialTheme.typography.labelLarge.copy(color = Color.DarkGray,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold)))
                 )
 
                 if ((plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_1Year) && uiState.yearPlanAssignFromAdmin != null) || plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_All) && uiState.allPlanAssignFromAdmin != null){
@@ -114,37 +114,26 @@ fun PurchasePlanCard(
                         style = MaterialTheme.typography.bodyLarge.copy(color = Black,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold)))
                     )
 
-                    // price in strike
-                    if (discountPer > 0 && plan.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer && originalYearly != null){
-                        if ((originalYearly.price_amount_micros ?: 0) > (plan.price_amount_micros?:0)){
-                            Text(
-                                text = originalYearly.price?:"",
-                                style = MaterialTheme.typography.bodySmall.copy(
-                                    textDecoration = TextDecoration.LineThrough,
-                                    color = ColorAccent,fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))
-                                )
-                            )
-                        }
-                    }else if (discountPerLifetime > 0 && plan.sku == BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_offer && originalLifetime != null){
-                        if ((originalLifetime.price_amount_micros ?: 0) > (plan.price_amount_micros?:0)){
-                            Text(
-                                text = originalLifetime.price?:"",
-                                style = MaterialTheme.typography.bodySmall.copy(
-                                    textDecoration = TextDecoration.LineThrough,
-                                    color = ColorAccent,fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))
-                                )
-                            )
-                        }
+                    if(plan.getFreeTrialDays() > 0){
+                        Text(
+                            text = "${plan.getFreeTrialDays()} Days FREE",
+                            style = MaterialTheme.typography.bodyLarge.copy(color = Black,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold)))
+                        )
+                    }else{
+                        PriceUi(discountPer,plan,originalYearly,discountPerLifetime,originalLifetime)
                     }
 
-                    Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding4)))
+                }
+            }
 
+            if(plan.getFreeTrialDays() > 0){
+                Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        text = plan.getDisplayPrice(),
-                        style = MaterialTheme.typography.bodyLarge.copy(
-                            color = ColorAccent,fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))
-                        )
+                        text = "then",
+                        style = MaterialTheme.typography.labelLarge.copy(color = Black,fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold)))
                     )
+
+                    PriceUi(discountPer,plan,originalYearly,discountPerLifetime,originalLifetime)
                 }
             }
 
@@ -230,4 +219,39 @@ fun PurchasePlanCard(
 
         }
     }
+}
+
+@Composable
+fun PriceUi(discountPer: Int, plan: InAppSkuDetails, originalYearly: InAppSkuDetails?, discountPerLifetime: Int, originalLifetime: InAppSkuDetails?) {
+    // price in strike
+    if (discountPer > 0 && plan.sku == BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer && originalYearly != null){
+        if ((originalYearly.price_amount_micros ?: 0) > (plan.price_amount_micros?:0)){
+            Text(
+                text = originalYearly.price?:"",
+                style = MaterialTheme.typography.bodySmall.copy(
+                    textDecoration = TextDecoration.LineThrough,
+                    color = ColorAccent,fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))
+                )
+            )
+        }
+    }else if (discountPerLifetime > 0 && plan.sku == BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_offer && originalLifetime != null){
+        if ((originalLifetime.price_amount_micros ?: 0) > (plan.price_amount_micros?:0)){
+            Text(
+                text = originalLifetime.price?:"",
+                style = MaterialTheme.typography.bodySmall.copy(
+                    textDecoration = TextDecoration.LineThrough,
+                    color = ColorAccent,fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))
+                )
+            )
+        }
+    }
+
+    Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding4)))
+
+    Text(
+        text = plan.getDisplayPrice(),
+        style = MaterialTheme.typography.bodyLarge.copy(
+            color = ColorAccent,fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))
+        )
+    )
 }
