@@ -27,7 +27,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
-import com.jigar.me.data.local.data.DataProvider.generateAdditionSubExerciseTemp
+import com.jigar.me.data.local.data.DataProvider.generateMixQuestions
 import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.Loader
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
@@ -54,6 +54,9 @@ class HomeFragmentNew : Fragment() {
             setContent {
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 //                generateAdditionSubExerciseTemp()
+//                generateMultiplication3_Temp()
+//                generateDivisionQuestions()
+//                generateMixQuestions()
                 AbacusTheme {
                     Column(modifier = Modifier.fillMaxSize()) {
                         Row{

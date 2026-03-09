@@ -44,9 +44,9 @@ class HomeFragmentViewModel @Inject constructor(
     init {
         viewModelScope.launch{
             loadHomeMenu()
-//            if (!BuildConfig.DEBUG){
+            if (!BuildConfig.DEBUG){
                 setPurchaseData()
-//            }
+            }
         }
     }
     fun closeConflictPopup() {

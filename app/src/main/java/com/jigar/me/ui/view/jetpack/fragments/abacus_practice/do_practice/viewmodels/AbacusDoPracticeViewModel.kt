@@ -66,12 +66,10 @@ class AbacusDoPracticeViewModel @Inject constructor(
     }
 
     private fun initialLoad() = viewModelScope.launch {
-        Log.e("jigarLogs","setId = "+setId)
         setId?.let {
             val abacusList = abacusDataRepository.getAbacus(setId).first()
             val setDetail = abacusDataRepository.getSetDetail(setId).first()
             val setProgress = abacusDataRepository.getSetProgress(setId).first()
-            Log.e("jigarLogs","setProgress = "+ Gson().toJson(setProgress))
             if (abacusList.isEmpty()) return@launch
 
             val restoredIndex = setProgress

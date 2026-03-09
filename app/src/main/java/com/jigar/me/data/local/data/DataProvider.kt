@@ -4,11 +4,14 @@ import android.content.Context
 import android.util.Log
 import com.google.gson.Gson
 import com.jigar.me.R
-import com.jigar.me.data.pref.AppPreferencesHelper
-import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.extensions.dpToPx
 import java.util.Random
 import kotlin.random.Random.Default.nextInt
+
+data class DivisionQuestion(
+    val dividend: Int,
+    val divisor: Int,
+    val quotient: Int
+)
 
 object DataProvider {
     fun getVideoPreviewList(context: Context): List<VideoTutorial>{
@@ -19,7 +22,7 @@ object DataProvider {
                         "• Easy abacus learning for <b>beginners</b>.",
                         "• Recognize <b>bead types</b> and <b>values</b>.",
                         "• <b>Finger techniques</b> for moving beads correctly.",
-                         "• Learning to <b>read, represent and set numbers</b> on the abacus.")),
+                        "• Learning to <b>read, represent and set numbers</b> on the abacus.")),
                 VideoTutorial("video_abacus_practice.mp4","What Kids Learn in Abacus Practice Module",
                     arrayListOf("• <b>Step-by-Step</b> problem solving with <b>correct bead directions</b>.",
                         "• <b>Visualize abacus formula</b> at every step (including multiplication & division).",
@@ -59,17 +62,17 @@ object DataProvider {
         return with(context){
             listOf(FAQs(getString(R.string.faq_que_1), getString(R.string.faq_ans_1)),
                 FAQs(getString(R.string.faq_que_2), getString(R.string.faq_ans_2)),
-            FAQs(getString(R.string.faq_que_3), getString(R.string.faq_ans_3)),
-            FAQs(getString(R.string.faq_que_4), getString(R.string.faq_ans_4)),
-            FAQs(getString(R.string.faq_que_41), getString(R.string.faq_ans_41)),
-            FAQs(getString(R.string.faq_que_42), String.format(getString(R.string.faq_ans_42), emailId)),
-            FAQs(getString(R.string.faq_que_5), getString(R.string.faq_ans_5)),
-            FAQs(getString(R.string.faq_que_6), getString(R.string.faq_ans_6)),
-            FAQs(getString(R.string.faq_que_7), getString(R.string.faq_ans_7)),
-            FAQs(getString(R.string.faq_que_8), getString(R.string.faq_ans_8)),
-            FAQs(getString(R.string.faq_que_9), getString(R.string.faq_ans_9)),
-            FAQs(getString(R.string.faq_que_10), getString(R.string.faq_ans_10)),
-            FAQs(String.format(getString(R.string.faq_que_support), emailId),""))
+                FAQs(getString(R.string.faq_que_3), getString(R.string.faq_ans_3)),
+                FAQs(getString(R.string.faq_que_4), getString(R.string.faq_ans_4)),
+                FAQs(getString(R.string.faq_que_41), getString(R.string.faq_ans_41)),
+                FAQs(getString(R.string.faq_que_42), String.format(getString(R.string.faq_ans_42), emailId)),
+                FAQs(getString(R.string.faq_que_5), getString(R.string.faq_ans_5)),
+                FAQs(getString(R.string.faq_que_6), getString(R.string.faq_ans_6)),
+                FAQs(getString(R.string.faq_que_7), getString(R.string.faq_ans_7)),
+                FAQs(getString(R.string.faq_que_8), getString(R.string.faq_ans_8)),
+                FAQs(getString(R.string.faq_que_9), getString(R.string.faq_ans_9)),
+                FAQs(getString(R.string.faq_que_10), getString(R.string.faq_ans_10)),
+                FAQs(String.format(getString(R.string.faq_que_support), emailId),""))
         }
     }
 
@@ -98,25 +101,6 @@ object DataProvider {
             }
         }
     }
-    fun getAbacusThemeFreeTypeList(context: Context,abacusBeadType: AbacusBeadType) : ArrayList<AbacusContent>{
-        val list = ArrayList<AbacusContent>()
-        val multiply = getMultipleDimensions(abacusBeadType)
-
-        val prefManager = AppPreferencesHelper(context, AppConstants.PREF_NAME)
-        val screenWidthDp = prefManager.getCustomParamInt(AppConstants.screenWidthDp,0)
-        val rectWidth = context.resources.getDimension(R.dimen.padding_radius_abacus_frame_large) * 2
-        val colSpace = context.resources.getDimension(R.dimen.poligon_space) * 14
-        val extraPadding = context.resources.getDimension(R.dimen.activity_padding10) * 2
-        val remainSpace = screenWidthDp - colSpace - rectWidth - extraPadding
-        val beadWidth = remainSpace / 13
-        val beadHeight : Double = ((5 * beadWidth) / 9).toDouble()  // 9 : 5
-
-        val height = context.dpToPx((beadHeight * multiply).toFloat()).toInt()
-        val width = context.dpToPx((beadWidth * multiply)).toInt()
-
-
-        return list
-    }
 
     fun generateSingleDigit(min: Int, max: Int): Int {// min = to
         return  Random().nextInt(max - min + 1) + min
@@ -129,26 +113,96 @@ object DataProvider {
     private fun generateTotalMinusSign(max : Int = 5): Int {
         return nextInt(1, max)
     }
-    fun generateDivisionExercise(child: ExerciseLevelDetail) : MutableList<ExerciseList>{
-        return generateDivision(child)
-    }
-    fun generateMultiplicationExercise(child: ExerciseLevelDetail) : MutableList<ExerciseList>{
-        var listExercise: MutableList<ExerciseList> = arrayListOf()
-        if (child.digits == 3 && child.totalQue == 5){
-            listExercise.addAll(generateMulDigit3Que5(child))
-        }else{
-            listExercise = generateMultiplication3(child)
+
+    fun generateMixQuestions() {
+        val listMain : ArrayList<String> = arrayListOf()
+        (0 until 20).forEach { j ->
+            val type : Int = generateSingleDigit(0,1)
+            val list : List<String> = when (type) {
+                0 -> {
+                    generateDivisionQuestions(1)
+                }
+                1 -> {
+                    generateMultiplication3_Temp(1)
+                }
+                else -> {
+                    generateAdditionSubExerciseTemp(1)
+                }
+            }
+            listMain.addAll(list)
         }
-        return listExercise
+        listMain.shuffle()
+        Log.e("jigarGenerateSetDiv","listQue = "+ Gson().toJson(listMain))
+        Log.e("jigarGenerateSetDiv","joinToString = "+ listMain.joinToString(","))
+    }
+    fun generateDivisionQuestions(count : Int = 20): List<String> {
+        val set = mutableSetOf<String>()
+        val result = mutableListOf<DivisionQuestion>()
+        val stringList = mutableListOf<String>()
+
+        while (result.size < count) {
+            val q = generateDivisionQuestion()
+            val key = "${q.dividend}-${q.divisor}"
+
+            if (set.add(key)) {
+                result.add(q)
+                stringList.add("${q.dividend}/${q.divisor}")
+            }
+        }
+        Log.e("jigarGenerateSetDiv","listQue = "+ Gson().toJson(stringList))
+        Log.e("jigarGenerateSetDiv","joinToString = "+ stringList.joinToString(","))
+        return stringList
     }
 
-    fun generateDivisionTemp(child: ExerciseLevelDetail): MutableList<ExerciseList>{
+
+    fun generateDivisionQuestion(): DivisionQuestion {
+//        val divisor = (11..50).random()
+        val divisor = (51..99) // odd / even numbers
+//            .filter { it % 2 == 0 }
+            .random()
+
+//        val index = generateIndex()
+//        val divisor = if (index == 0){
+//            (21..30) // odd / even numbers
+//                .filter { it % 2 == 0 }
+//                .random()
+//        }else{
+//            (11..20).random()
+//        }
+
+        // Find valid quotient range so dividend stays between range
+        val minQuotient = kotlin.math.ceil(9000.0 / divisor).toInt()
+        val value = 99999
+//        val value = if (divisor > 30){
+//            6999
+//        }else{
+//            4999
+//        }
+        val maxQuotient = value / divisor
+
+        val quotient = (minQuotient..maxQuotient).random()
+        val dividend = divisor * quotient
+
+        return DivisionQuestion(
+            dividend = dividend,
+            divisor = divisor,
+            quotient = quotient
+        )
+    }
+
+
+    fun generateDivisionTemp(): MutableList<ExerciseList>{
         val listExercise: MutableList<ExerciseList> = arrayListOf()
         val totalQue = 20
         (0 until totalQue).forEach { j ->
 //            val que2 : Int = 10
-            val que2 : Int = generateSingleDigit(4,9)
-            val que1 : Int = generateSingleDigit(100,600)
+            val que2 : Int = generateSingleDigit(2,7)
+            val que1 : Int = if (que2 == 5 || que2 == 6 || que2 == 7){
+                generateSingleDigit(100,299)
+            }else{
+                generateSingleDigit(100,499)
+            }
+//            val que1 : Int = generateSingleDigit(100,499)
 
 //            val que2 : Int = if (j < 10){
 //                generateSingleDigit(2,9)
@@ -173,9 +227,9 @@ object DataProvider {
 //                question = "${answerTemp}/$que1"
 //                answer = answerTemp / que1
 //            }else{
-                val answerTemp =  que1 * que2
-                question = "${answerTemp}/$que2"
-                answer = answerTemp / que2
+            val answerTemp =  que1 * que2
+            question = "${answerTemp}/$que2"
+            answer = answerTemp / que2
 //            }
 
             listExercise.add(ExerciseList(question,answer.toString()))
@@ -186,6 +240,9 @@ object DataProvider {
         listnew.map {
             listQue.add(it.question)
         }
+        Log.e("jigarGenerateSetDiv","listExercise = "+ Gson().toJson(listnew))
+        Log.e("jigarGenerateSetDiv","listQue = "+ Gson().toJson(listQue))
+        Log.e("jigarGenerateSetDiv","joinToString = "+ listQue.joinToString(","))
         return listExercise
     }
     private fun generateDivision(child: ExerciseLevelDetail): MutableList<ExerciseList>{
@@ -310,77 +367,39 @@ object DataProvider {
 
         return listExercise
     }
-    fun generateMultiplication3_Temp(child: ExerciseLevelDetail): MutableList<ExerciseList>{
+    fun generateMultiplication3_Temp(count : Int = 20): MutableList<String>{
         val listExercise: MutableList<ExerciseList> = arrayListOf()
-//        val list : ArrayList<Int> = arrayListOf()
-//        val endDigit = 0
-//        (1 until 6).forEach { k ->
-//            list.add(("$k"+endDigit).toInt())
-//        }
-//        (10 until 100).forEach { k ->
-//            if (k%2 == 0){
-//                list.add(k)
-//            }else{
-//                list.add(k)
-//            }
-//        }
-//        val list2 : ArrayList<Int> = arrayListOf()
-//        (50 until 90).forEach { k ->
-//            if (k%2 == 0){
-//                list2.add(k)
-//            }else{
-//                list2.add(k)
-//            }
-//        }
-        (0 until 20).forEach { j ->
-//            val que1 = if (child.digits == 3){
-//                generateSingleDigit(2,99)
-//            }else if (child.digits == 4){
-//                generateSingleDigit(2,999)
-//            }else if (child.digits == 5){
-//                generateSingleDigit(2,9999)
-//            }else if (child.digits == 6){
-//                generateSingleDigit(2,99999)
-//            }else { // 7 digit
-//                generateSingleDigit(2,999999)
-//            }
-//
-//            val que22 = if (child.digits == 3){
-//                val min = 100 / que1
-//                val max : Int = 999 / que1
-//                generateSingleDigit(min,max)
-//            }else if (child.digits == 4){
-//                val min = 1000 / que1
-//                val max : Int = 9999 / que1
-//                generateSingleDigit(min,max)
-//            }else if (child.digits == 5){
-//                val min = 10000 / que1
-//                val max : Int = 99999 / que1
-//                generateSingleDigit(min,max)
-//            }else if (child.digits == 6){
-//                val min = 100000 / que1
-//                val max : Int = 999999 / que1
-//                generateSingleDigit(min,max)
-//            }else { // 7 digit
-//                val min = 1000000 / que1
-//                val max : Int = 9999999 / que1
-//                generateSingleDigit(min,max)
-//            }
-            var min = 300
-            var max = 999
-//            if (j < 4){
-//                min = 5
-//                max = 9
-//            }else{
-//                 min = 10
-//                 max = 49
-//            }
-
+        (0 until count).forEach { j ->
 //            val index = generateSingleDigit(0,list.lastIndex)
 //            val que1 : Int = list[index]
-            val que1 = generateSingleDigit(min,max)
-//            val que22 = 9
-            val que22 = generateSingleDigit(50,99)
+            val index = generateIndex()
+//            val que1 = if (index == 0){
+//                (101..999) // odd / even numbers
+////                    .filter { it % 2 == 0 }
+//                    .random()
+//            }else{
+////                generateSingleDigit(51,99)
+//                (49..99) // odd / even numbers
+////                    .filter { it % 2 == 0 }
+//                    .random()
+////                (11..99) // odd / even numbers
+////                .filter { it % 2 != 0 }
+////                .random()
+//            }
+            val que1 = generateSingleDigit(301,999)
+//            val que22 = generateSingleDigit(11,49)
+//            val que22 =  if (que1 < 50){
+//                generateSingleDigit(25,69)
+//            }else{
+//                generateSingleDigit(11,79)
+//            }
+//            val que1 = (101..999) // odd / even numbers
+//                .filter { it % 2 == 0 }
+//                .random()
+            val que22 = (51..99) // odd / even numbers
+//                .filter { it % 2 == 0 }
+                .random()
+
 //            val index = generateSingleDigit(1,4)
 
 //            val index2 = generateSingleDigit(0,list2.lastIndex)
@@ -410,8 +429,10 @@ object DataProvider {
         listnew.map {
             listQue.add(it.question)
         }
-
-        return listExercise
+        Log.e("jigarGenerateSetMul","listExercise = "+ Gson().toJson(listnew))
+        Log.e("jigarGenerateSetMul","listQue = "+ Gson().toJson(listQue))
+        Log.e("jigarGenerateSetMul","joinToString = "+ listQue.joinToString(","))
+        return listQue
     }
 
     private fun generateMulDigit3Que5(child: ExerciseLevelDetail) : MutableList<ExerciseList>{
@@ -626,138 +647,39 @@ object DataProvider {
         }
         return CustomChallengeData(listQuestion,question,answer)
     }
-    fun generateAdditionSubExercise(child: ExerciseLevelDetail) : MutableList<ExerciseList>{
+
+    fun generateAdditionSubExerciseTemp(count : Int = 20) : MutableList<String>{
         val listExercise: MutableList<ExerciseList> = arrayListOf()
-        val max = if (child.digits == 2){
-            99
-        }else if (child.digits == 3){
-            999
-        }else if (child.digits == 4){
-            9999
-        }else if (child.digits == 5){
-            99999
-        }else if (child.digits == 6){
-            999999
-        }else{
-            9
-        }
-        val min = if (child.digits == 2){
-            10
-        }else if (child.digits == 3){
-            100
-        }else if (child.digits == 4){
-            1000
-        }else if (child.digits == 5){
-            10000
-        }else if (child.digits == 6){
-            100000
-        }else{
-            1
-        }
-
-        for (j in 0 until child.totalQue){
-            var maxMinusSignCount = 2
-            if (child.queLines > 5){
-                maxMinusSignCount = generateTotalMinusSign()
-            }else{
-                val index = generateIndex()
-                if (index == 0){
-                    maxMinusSignCount = 1
-                }
-            }
-            var answer = 0
-            var minusSignCount = 0
-            var question = ""
-            for (i in 0 until child.queLines){
-                if (i == 0){
-                    answer = generateSingleDigit(min, max)
-                    question = answer.toString()
-                }else{
-                    if (minusSignCount == maxMinusSignCount){
-                        val nextValues = generateSingleDigit(min, max)
-                        question = "$question+$nextValues"
-                        answer += nextValues
-                    }else{
-                        val index = generateIndex()
-                        if (index == 0 || answer < min) { // 0 = add +
-                            val nextValues = generateSingleDigit(min, max)
-                            question = "$question+$nextValues"
-                            answer += nextValues
-                        }else{ // minus -
-                            minusSignCount++
-                            val nextValues = if ((answer + 1) > max){
-                                nextInt(min, max)
-                            }else{
-                                nextInt(min, answer + 1)
-                            }
-
-                            val temp = answer - nextValues
-                            if (i == (child.queLines -1) && temp == 0){
-                                val nextValuesTemp = nextValues - 1
-                                question = "$question-$nextValuesTemp"
-                                answer -= nextValuesTemp
-                            }else{
-                                question = "$question-$nextValues"
-                                answer -= nextValues
-                            }
-
-                        }
-                    }
-
-                }
-            }
-            listExercise.add(ExerciseList(question,answer.toString()))
-        }
-        return listExercise
-    }
-
-    fun generateAdditionSubExerciseTemp() : MutableList<ExerciseList>{
-        val listExercise: MutableList<ExerciseList> = arrayListOf()
-        var min = 1000
-        var max = 9999
+        var min = 100
+        var max = 999
 
         var queLines = 5
-        for (j in 0 until 20){
+        for (j in 0 until count){
 //             min = 1
 //             max = 20
 
             var minusSignCount = 0
-            var maxMinusSignCount = 1
-            val index1 = generateIndex()
-            if (index1 == 0){
-                maxMinusSignCount = 1
-            }else{
-//                maxMinusSignCount = 2
-                val index2 = generateIndex()
-                if (index2 == 0){
-                    maxMinusSignCount = 2
-                }else{
-                    maxMinusSignCount = 0
-                }
+            var maxMinusSignCount = 10
+            val indexLines = generateSingleDigit(0,2)
+            if (indexLines == 0){
+                queLines = 3
+            }else if (indexLines == 1){
+                queLines = 4
+            }else if (indexLines == 2){
+                queLines = 5
             }
-
-            var singleDigitCount = 0
-            var maxSingleDigitCount = 0
-            var threeDigitCount = 0
-            var maxThreeDigitCount = 6
-            var twoDigitCount = 0
-            var maxTwoDigitCount = 2
-
-            val index = generateIndex()
-//            if (index == 0){
-////                maxSingleDigitCount = 1
-//                maxTwoDigitCount = 1
-//                maxThreeDigitCount = 4
+            val index1 = generateIndex()
+//            maxMinusSignCount = if (index1 == 0){
+//                1
 //            }else{
-////                maxSingleDigitCount = 0
-//                maxTwoDigitCount = 0
-//                maxThreeDigitCount = 5
+//                val index2 = generateIndex()
+//                if (index2 == 0){
+//                    0
+//                }else{
+//                    2
+//                }
 //            }
 
-//            queLines = generateSingleDigit(5, 6)
-//            if (queLines != 4){
-//                maxMinusSignCount = 2
-//            }
             var answer = 0
             var question = ""
             var isTwoLineDone = false
@@ -765,210 +687,58 @@ object DataProvider {
             var isOneLineDone = false
 //            var isOtherQueDone = false
             for (i in 0 until queLines){
-//                if (i == 0){
-//                    min = 1000
-//                    max = 9999
-//                }else{
-                    val index1 = generateIndex()
-                    val index2 = generateIndex()
-//                    if (!isTwoLineDone && index1 == 0){
-//                        isTwoLineDone = true
-//                        min = 39
-//                        max = 99
-//                    }else
-                    if (!isThreeLineDone && index2 == 1){
-                        isThreeLineDone = true
-                        min = 500
+
+                val index : Int = generateSingleDigit(0,3)
+                when (index) {
+                    0 -> {
+                        min = 49
                         max = 999
-                    }else{
-                        min = 2000
+                    }
+                    1 -> {
+                        min = 999
+                        max = 2999
+                    }
+                    2 -> {
+                        min = 2999
+                        max = 7999
+                    }
+                    3 -> {
+                        min = 4999
                         max = 9999
                     }
-//                }
+                }
 
-//                if (i == 0){
-//                    min = 10
-//                    max = 29
-//                }else if (i == 1){
-//                    min = 15
-//                    max = 59
-//                }else if (i == 2){
-//                    min = 45
-//                    max = 79
-//                }else{
-//                    min = 70
+
+
+//                val index1 = generateIndex()
+//                val index2 = generateIndex()
+//                if (!isTwoLineDone && index1 == 0){
+//                    isTwoLineDone = true
+//                    min = 31
 //                    max = 99
 //                }
-//                val index1 = generateIndex()
-//                if (index1 == 0 && !isThreeLineDone) {
-//                    isThreeLineDone = true
-////                    min = 100
-////                    max = 399
-//                    min = 1
-//                    max = 9
-//                } else {
-////                    min = 10
-////                    max = 99
-//
-//                    val index2 = generateIndex()
-//                    if ((index2 == 0 && !isTwoLineDone) || isOneLineDone){
-//                        isTwoLineDone = true
-//                        min = 10
-//                        max = 99
-//
-////                        min = 100
-////                        max = 399
-//                    }else{
-//                        if (!isThreeLineDone) {
-//                            isThreeLineDone = true
-//                            min = 10
-//                            max = 79
-//                        }else{
-//                            isOneLineDone = true
-//                            min = 10
-//                            max = 99
-//                        }
-//                    }
-////
-////                    //                    val index = generateIndex()
-////                    //                    if (index == 0){
-////                    //                        min = 10
-////                    //                        max = 99
-////                    //                    }else{
-////                    //                        min = 1
-////                    //                        max = 9
-////                    //                    }
-//                }
-
-//                else if (i == 1){
-//                    min = 10
+//                else if (!isOneLineDone && index2 == 1){
+//                    isOneLineDone = true
+//                    min = 41
 //                    max = 99
 //                }
 //                else{
-//                    min = 3
-//                    max = 9
-//                }
-
-//                val index4 = generateIndex()
-//                if (index4 == 0 && threeDigitCount != maxThreeDigitCount){
-//                    min = 100
-//                    max = 499
-//                    threeDigitCount++
-//                }else {
-//                    val index5 = generateIndex()
-//                    if (index5 == 1 && twoDigitCount != maxTwoDigitCount){
-//                        min = 50
-//                        max = 99
-//                        twoDigitCount++
-//                    }else{
-//                        if (singleDigitCount != maxSingleDigitCount){
-//                            min = 4
-//                            max = 9
-//                            singleDigitCount++
-//                        }else if (threeDigitCount != maxThreeDigitCount){
-//                            min = 300
-//                            max = 999
-//                            threeDigitCount++
-//                        }else if (twoDigitCount != maxTwoDigitCount){
-//                            min = 50
-//                            max = 99
-//                            twoDigitCount++
-//                        }
-//
-//                    }
-//                }
-
-
-//                if (i == 0){
-//                    min = 14
-//                    max = 79
-//                }else if (i == 1){
-//                    val index = generateIndex()
-//                    if (index == 0 || maxSingleDigitCount == singleDigitCount){
-//                        min = 14
-//                        max = 79
-//                    }else{
-//                        singleDigitCount++
-//                        min = 1
-//                        max = 9
-//                    }
-//                }else if (i == 2){
-//                    if (singleDigitCount == 0){
-//                        min = 1
-//                        max = 9
-//                    }else{
-//                        min = 14
-//                        max = 79
-//                    }
-//                }
-
-//                if (i == 0){
-//                     min = 20
-//                     max = 99
-//                }else{
-//                    min = 3
-//                    max = 9
-//                }
-//                if (j < 10){
-//                    max = 400
-//                    min = 100
-//                    if (i == 2){
-//                        max = 300
-//                    }
-//                }else{
-//                    max = 800
-//                    min = 100
-//                }
-
-
-//                if (i == 0){
-//                    max = 500
-//                    min = 100
-//                }else if (i == 1){
-//                    max = 300
-//                    min = 100
-//                }else{
-//                    max = 99
-//                    min = 20
-//                }
-
-//                if (i == 0 || i == 1){
-//                    if (j < 5){
-//                        min = 10
-//                        max = 49
-//                    }else{
-//                        min = 10
-//                        max = 99
-//                    }
-//                }else{
-//                    if (j < 8){
-//                        min = 2
-//                    }else{
-//                        min = 4
-//                    }
-//                    max = 10
+////                    isThreeLineDone = true
+//                    min = 111
+//                    max = 999
 //                }
                 if (i == 0){
                     answer = generateSingleDigit(min, max)
-//                    if (answer > 10){
-//                        max = 9
-//                    }
                     question = answer.toString()
                 }else{
                     if (minusSignCount == maxMinusSignCount) {
                         val nextValues = generateSingleDigit(min, max)
-//                        if (nextValues > 10){
-//                            max = 9
-//                        }
                         question = "$question+$nextValues"
                         answer += nextValues
                     }else{
                         val index = generateIndex()
                         if (index == 0 || answer < min) { // 0 = add +
                             val nextValues = generateSingleDigit(min, max)
-//                            if (nextValues > 10){
-//                                max = 9
-//                            }
                             question = "$question+$nextValues"
                             answer += nextValues
                         }else{ // minus -
@@ -978,9 +748,6 @@ object DataProvider {
                             }else{
                                 nextInt(min, answer + 1)
                             }
-//                            if (nextValues > 10){
-//                                max = 9
-//                            }
 
                             val temp = answer - nextValues
                             if (i == (queLines -1) && temp == 0){
@@ -1003,10 +770,10 @@ object DataProvider {
         listnew.map {
             listQue.add(it.question)
         }
-        Log.e("jigarGenerateSet","listExercise = "+ Gson().toJson(listnew))
-        Log.e("jigarGenerateSet","listQue = "+ Gson().toJson(listQue))
-        Log.e("jigarGenerateSet","joinToString = "+ listQue.joinToString(","))
-        return listExercise
+        Log.e("jigarGenerateSetAddSub","listExercise = "+ Gson().toJson(listnew))
+        Log.e("jigarGenerateSetAddSub","listQue = "+ Gson().toJson(listQue))
+        Log.e("jigarGenerateSetAddSub","joinToString = "+ listQue.joinToString(","))
+        return listQue
     }
 
     fun getTensList(context: Context) : java.util.ArrayList<String> {

@@ -50,7 +50,6 @@ class PurchaseViewModel @Inject constructor(
             .takeIf { it.isNotEmpty() }
             ?.let { Gson().fromJson<List<PlanAssignFromAdminData>>(it, object : TypeToken<List<PlanAssignFromAdminData>>() {}.type) }
             ?: emptyList()
-        Log.e("jigarAdminPurchase","adminPlanList = "+ Gson().toJson(adminPlanList))
 
         updateState_ {
             copy(

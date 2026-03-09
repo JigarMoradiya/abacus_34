@@ -15,6 +15,7 @@ import com.android.billingclient.api.BillingClient
 import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.jigar.me.BuildConfig
 import com.jigar.me.R
 import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
@@ -169,6 +170,9 @@ object CommonUtils {
     }
 
     fun checkLevelIsPurchase(purchasedSKU: List<InAppSkuDetails>, data: Category, prefManager: AppPreferencesHelper): Boolean {
+        if (BuildConfig.DEBUG){
+            return true
+        }
         var isPurchased = false
         val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
         if (loginData?.email.equals("abacus@yopmail.com") || prefManager.isUserInFreeTrial()){
