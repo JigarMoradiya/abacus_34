@@ -69,9 +69,9 @@ class PurchaseViewModel @Inject constructor(
                 ?: emptyList()
 
             val skuIds = displayList.map { it.id }.toMutableList()
-            skuIds.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1_FreeTrial)
+//            skuIds.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1_FreeTrial)
 //            skuIds.remove(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1)
-            skuIds.remove("com.abacus.puzzle.1month")
+//            skuIds.remove("com.abacus.puzzle.1month")
 
             // admin assigned
             val yearPlanAssignFromAdmin = state().planListAssignFromAdmin.find {

@@ -126,21 +126,24 @@ fun PurchasePlanCard(
                 }
             }
 
-            if(plan.getFreeTrialDays() > 0){
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(
-                        text = "then",
-                        style = MaterialTheme.typography.labelLarge.copy(color = Black,fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold)))
-                    )
+            if (!(plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_1Year) && uiState.yearPlanAssignFromAdmin != null || plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_All) && uiState.allPlanAssignFromAdmin != null) && !plan.isPurchase) {
+                if (plan.getFreeTrialDays() > 0) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(
+                            text = "then",
+                            style = MaterialTheme.typography.labelLarge.copy(color = Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold)))
+                        )
 
-                    PriceUi(discountPer,plan,originalYearly,discountPerLifetime,originalLifetime)
+                        PriceUi(discountPer, plan, originalYearly, discountPerLifetime, originalLifetime)
+                    }
                 }
             }
+
 
             if (plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_1Year) && uiState.yearPlanAssignFromAdmin != null){
                 Spacer(Modifier.height(4.dp))
                 Text(
-                    text = "Plan assigned from Admin.",
+                    text = stringResource(R.string.plan_assigned_from_admin),
                     style = MaterialTheme.typography.labelMedium.copy(
                         color = Color.Black,fontWeight = FontWeight.Normal,fontFamily = FontFamily(Font(R.font.font_regular))
                     )
@@ -157,7 +160,7 @@ fun PurchasePlanCard(
             }else if (plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_All) && uiState.allPlanAssignFromAdmin != null){
                 Spacer(Modifier.height(4.dp))
                 Text(
-                    text = CommonUtils.htmlToAnnotatedString("Plan assigned from Admin."),
+                    text = CommonUtils.htmlToAnnotatedString(stringResource(R.string.plan_assigned_from_admin)),
                     style = MaterialTheme.typography.labelMedium.copy(
                         color = Color.Black,fontWeight = FontWeight.Normal,fontFamily = FontFamily(Font(R.font.font_regular))
                     )

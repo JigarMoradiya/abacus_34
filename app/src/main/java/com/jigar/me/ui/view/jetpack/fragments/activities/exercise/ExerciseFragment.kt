@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.fragment.findNavController
@@ -38,13 +39,16 @@ import com.jigar.me.ui.view.jetpack.fragments.activities.exercise.components.Exe
 import com.jigar.me.ui.view.jetpack.fragments.activities.exercise.viewmodels.ExerciseViewModel
 import com.jigar.me.ui.view.jetpack.fragments.common.Loader
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
+import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.jetpack.fragments.reports.dialogs.ExerciseExamCompleteResultDialog
 import com.jigar.me.utils.extensions.secToCountDown
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.getValue
 
 @AndroidEntryPoint
 class ExerciseFragment : Fragment() {
     private val viewModel: ExerciseViewModel by viewModels()
+    private val homeActivityViewModel: HomeActivityViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -52,6 +56,9 @@ class ExerciseFragment : Fragment() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+                val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
+                val isPurchase = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
+                viewModel.setIsPurchased(isPurchase)
                 // HANDLE ABACUS MOVEMENT
                 LaunchedEffect(viewModel.abacusCalc.stateVersion) {
                     viewModel.handleMatch()
@@ -107,6 +114,11 @@ class ExerciseFragment : Fragment() {
                     // loader
                     if (uiState.isLoading) {
                         Loader()
+                    }
+
+                    // chat navigation
+                    uiState.navigateToPurchase?.consume {
+                        findNavController().navigate(ExerciseFragmentDirections.toPurchaseFragment())
                     }
 
                     // exercise complete popup

@@ -10,6 +10,7 @@ import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.jetpack.core.StatefulViewModelAbacus
 import com.jigar.me.ui.view.jetpack.api.SubmitAllExamUseCase
+import com.jigar.me.ui.view.jetpack.core.domain.ConsumableCommand
 import com.jigar.me.ui.view.jetpack.fragments.activities.exercise.exercise_generator.ExerciseGenerator
 import com.jigar.me.ui.view.jetpack.fragments.activities.exercise.exercise_generator.GridItemModel
 import com.jigar.me.utils.AppConstants
@@ -37,7 +38,14 @@ class ExerciseViewModel @Inject constructor(
     override fun getInitialState() = ExerciseUiState(isAbacusOnLeftHand = isAbacusOnLeftHand,currentColorPresetModel = AbacusTheme.colorPreset(selectedTheme))
     private var timerJob: Job? = null
 
+    fun setIsPurchased(isPurchase : Boolean){
+        updateState_ { copy(isPurchased = isPurchase) }
+    }
     fun generateExercise() {
+        if (!state().isPurchased){
+            updateState_ { copy(navigateToPurchase = ConsumableCommand(Unit)) }
+            return
+        }
         val item = state().selectedItems[state().currentPage]
         item?.let{
             val exerciseList = when (state().currentPage) {

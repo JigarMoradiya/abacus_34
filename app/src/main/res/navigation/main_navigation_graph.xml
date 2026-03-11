@@ -212,7 +212,11 @@
         android:name="com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.ExamPlayFragment"/>
     <fragment
         android:id="@+id/exerciseFragment"
-        android:name="com.jigar.me.ui.view.jetpack.fragments.activities.exercise.ExerciseFragment"/>
+        android:name="com.jigar.me.ui.view.jetpack.fragments.activities.exercise.ExerciseFragment">
+        <action
+            android:id="@+id/toPurchaseFragment"
+            app:destination="@+id/purchaseFragment" />
+    </fragment>
     <fragment
         android:id="@+id/reportHistoryFragment"
         android:name="com.jigar.me.ui.view.jetpack.fragments.reports.ReportHistoryFragment"/>

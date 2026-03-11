@@ -2,6 +2,7 @@ package com.jigar.me.ui.view.jetpack.fragments.activities.exercise.viewmodels
 
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.ui.view.jetpack.abacus_base.ColorPresetModel
+import com.jigar.me.ui.view.jetpack.core.domain.ConsumableCommand
 import com.jigar.me.ui.view.jetpack.fragments.activities.exercise.exercise_generator.Exercise
 import com.jigar.me.ui.view.jetpack.fragments.activities.exercise.exercise_generator.ExerciseQuestionList
 import com.jigar.me.ui.view.jetpack.fragments.activities.exercise.exercise_generator.GridItemModel
@@ -14,9 +15,9 @@ data class ExerciseUiState(
     val currentColorPresetModel: ColorPresetModel = ColorPresetModel(),
     val isAbacusOnLeftHand: Boolean = false,
 
+    val isPurchased: Boolean = false,
     val isLoading: Boolean = false,
     val isExerciseStarted: Boolean = false,
-
 
     val exercises: List<Exercise> = exercisesViewPageData,
     val exerciseQuestionList: List<ExerciseQuestionList> = emptyList(),
@@ -36,4 +37,5 @@ data class ExerciseUiState(
     val noInternetMessage : String = "",
 
     val submitExerciseRequest : SubmitAllExamDataRequest? = null,
+    val navigateToPurchase: ConsumableCommand<Unit>? = null,
 )
