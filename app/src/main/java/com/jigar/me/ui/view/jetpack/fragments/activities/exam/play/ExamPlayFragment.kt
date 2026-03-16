@@ -75,7 +75,7 @@ class ExamPlayFragment : Fragment() {
                         exit = fadeOut()
                     ) {
                         uiState.submitExamRequest?.let{
-                            ExerciseExamCompleteResultDialog(it, onClose = {
+                            ExerciseExamCompleteResultDialog(selectedTheme = viewModel.selectedTheme,it, onClose = {
                                 onBack()
                             }, onGiveAgain = {
                                 viewModel.reGenerateExam()

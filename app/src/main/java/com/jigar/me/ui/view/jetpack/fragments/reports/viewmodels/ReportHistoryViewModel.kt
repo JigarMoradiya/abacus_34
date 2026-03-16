@@ -6,6 +6,7 @@ import com.jigar.me.R
 import com.jigar.me.data.model.data.AllExamData
 import com.jigar.me.data.model.data.FetchReportHistoryRequest
 import com.jigar.me.data.model.data.toSubmitRequest
+import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.api.GetReportHistoryUseCase
 import com.jigar.me.ui.view.jetpack.core.StatefulViewModel
 import com.jigar.me.utils.AppConstants
@@ -20,6 +21,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ReportHistoryViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
+    private val prefs: AppPreferencesHelper,
     private val getReportHistory: GetReportHistoryUseCase,
 ) : StatefulViewModel<ReportHistoryUiState>() {
 
@@ -34,8 +36,9 @@ class ReportHistoryViewModel @Inject constructor(
         add(ReportFilterItem(label = context.getString(R.string.practice_set), apiValue = AppConstants.apiParams.answerFormalExam))
     }
 
+    // get selected theme
     val dateFilterList = buildDateFilterList(context)
-    override fun getInitialState() = ReportHistoryUiState(filterList = list, selectedFilter = list[1], dateFilterList = dateFilterList, selectedDateFilter = dateFilterList.first())
+    override fun getInitialState() = ReportHistoryUiState(selectedTheme = prefs.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default),filterList = list, selectedFilter = list[1], dateFilterList = dateFilterList, selectedDateFilter = dateFilterList.first())
 
     init {
         callApi()

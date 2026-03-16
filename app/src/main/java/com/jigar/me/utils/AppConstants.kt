@@ -82,6 +82,8 @@ object AppConstants {
             const val screenTypeFreeMode = "FreeMode"
             const val screenTypeAbacusPractice = "AbacusPractice"
             const val screenTypeSettingPreview = "SettingPreview"
+            const val screenTypeExam = "exam"
+            const val screenTypeExamResult = "examResult"
             const val screenTypeCCM = "CCM"
             const val screenTypeExercise = "Exercise"
 

@@ -89,7 +89,8 @@ data class QuestionDataRequest(
     var user_answer: String? = null,
     var is_correct: Boolean? = null,
     var que_type: String? = null,
-    var image: String? = null
+    var image: String? = null,
+    var index: Int? = null
 )
 
 data class GooglePurchasedPlanRequest(

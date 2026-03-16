@@ -1,7 +1,9 @@
 package com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.viewmodels
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.viewModelScope
+import com.google.gson.Gson
 import com.jigar.me.BuildConfig
 import com.jigar.me.R
 import com.jigar.me.data.model.data.QuestionDataRequest
@@ -9,6 +11,7 @@ import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.core.StatefulViewModel
 import com.jigar.me.ui.view.jetpack.api.SubmitAllExamUseCase
+import com.jigar.me.ui.view.jetpack.core.StatefulViewModelAbacus
 import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.exam_generator.ExamGenerator
 import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.exam_generator.toQuestionDataRequest
 import com.jigar.me.utils.AppConstants
@@ -27,8 +30,7 @@ import javax.inject.Inject
 class ExamPlayViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val prefs: AppPreferencesHelper,
-    private val submitAllExamUseCase: SubmitAllExamUseCase,
-) : StatefulViewModel<ExamPlayUiState>() {
+    private val submitAllExamUseCase: SubmitAllExamUseCase) : StatefulViewModelAbacus<ExamPlayUiState>(prefs = prefs,numberOfColumns = 3) {
 
     override val TAG = "ExamPlayViewModel"
     private var timerJob: Job? = null
@@ -122,18 +124,19 @@ class ExamPlayViewModel @Inject constructor(
             no_of_questions = state().examPaper.size
             no_of_right_answers = state().totalCorrect
             val questionsList : ArrayList<QuestionDataRequest> = arrayListOf()
-            state().examPaper.map {
+            state().examPaper.forEach {
                 questionsList.add(it.toQuestionDataRequest())
             }
             questions = questionsList
         }
-        if (BuildConfig.DEBUG){
-            updateState_ {
-                copy(submitExamRequest = submitExamRequest,isShowCompletePopup = true)
-            }
-        }else{
+//        if (BuildConfig.DEBUG){
+//            Log.e("jigarExamPlay","submitExamRequest = "+ Gson().toJson(submitExamRequest))
+//            updateState_ {
+//                copy(submitExamRequest = submitExamRequest,isShowCompletePopup = true)
+//            }
+//        }else{
             submitExamApi(submitExamRequest)
-        }
+//        }
     }
 
     fun submitExamApi(submitExamRequest : SubmitAllExamDataRequest) = viewModelScope.launch {

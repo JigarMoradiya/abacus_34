@@ -39,29 +39,6 @@ data class Abacus(
         return MathUtils.calculateStringExpression(question).toInt()
     }
 
-//    val finalAnswer: Int
-//        get() {
-//            return when {
-//                question.contains("+") || question.contains("-") -> {
-//                    MathUtils.evaluateExpression(question)
-//                }
-//
-//                question.contains("×") || question.contains("*") || question.contains("x", ignoreCase = true) -> {
-//                    eachStepProduct.lastOrNull() ?: 0
-//                }
-//
-//                question.contains("/") || question.contains("÷") -> {
-//                    0
-//                }
-//
-//                else -> { // number
-//                    MathUtils.evaluateExpression(question)
-//                }
-//            }
-//        }
-
-
-
     val eachStepProduct: List<Int>
         get() = MathUtils.calculateEachStepProduct(exponentNum1, exponentNum2)
 

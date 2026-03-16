@@ -147,17 +147,6 @@ object CommonUtils {
         textInputLayout.isErrorEnabled = false
     }
 
-    fun mixTwoColors(color1: Int, color2: Int, amount: Float): Int {
-        val ALPHA_CHANNEL: Byte = 24
-        val RED_CHANNEL: Byte = 16
-        val GREEN_CHANNEL: Byte = 8
-        //final byte BLUE_CHANNEL = 0;
-        val inverseAmount = 1.0f - amount
-        val r = ((color1 shr RED_CHANNEL.toInt() and 0xff).toFloat() * amount + (color2 shr RED_CHANNEL.toInt() and 0xff).toFloat() * inverseAmount).toInt() and 0xff
-        val g = ((color1 shr GREEN_CHANNEL.toInt() and 0xff).toFloat() * amount + (color2 shr GREEN_CHANNEL.toInt() and 0xff).toFloat() * inverseAmount).toInt() and 0xff
-        val b = ((color1 and 0xff).toFloat() * amount + (color2 and 0xff).toFloat() * inverseAmount).toInt() and 0xff
-        return 0xff shl ALPHA_CHANNEL.toInt() or (r shl RED_CHANNEL.toInt()) or (g shl GREEN_CHANNEL.toInt()) or b
-    }
     fun removeTrailingZero(formattingInput: String): String {
         if (!formattingInput.contains(".")) {
             return formattingInput
@@ -211,6 +200,9 @@ object CommonUtils {
     }
 
     fun checkPurchaseForExerciseExamCCM(prefManager: AppPreferencesHelper,purchasedSKU: List<InAppSkuDetails>): Boolean {
+//        if (BuildConfig.DEBUG){
+//            return true
+//        }
         val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
         var isPurchased = false
         if (loginData?.email.equals("abacus@yopmail.com") || prefManager.isUserInFreeTrial()){

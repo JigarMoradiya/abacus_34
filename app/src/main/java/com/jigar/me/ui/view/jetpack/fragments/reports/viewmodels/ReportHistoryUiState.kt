@@ -10,6 +10,7 @@ data class ReportHistoryUiState(
     val error: Int? = null,
     val isLoading: Boolean = false,
     val isPagingLoader: Boolean = false,
+    val selectedTheme: String = "",
 
     // Report filter
     val filterList: List<ReportFilterItem> = emptyList(),

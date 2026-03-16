@@ -17,6 +17,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,18 +29,41 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.view.jetpack.abacus_base.AbacusCalculations
+import com.jigar.me.ui.view.jetpack.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
+import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
 import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimaryLight
+import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.exam_generator.ExamGenerator
 import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.exam_generator.ExamResultUi
+import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.exam_generator.MainQuestionType
 import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.exam_generator.QuestionResult
+import com.jigar.me.utils.AppConstants
 
 
 @Composable
-fun QuestionExamColumnItemHorizontal(item: QuestionResult) {
+fun QuestionExamColumnItemHorizontal(item: QuestionResult, selectedTheme: String) {
+    val parts = remember(item.que, item.index, item.que_type) {
+        when (item.que_type) {
+            MainQuestionType.abacus.name,
+            MainQuestionType.missingNumber.name ->
+                ExamGenerator.questionPartsFromSign(item.que, item.index ?: 0)
 
+            else -> null
+        }
+    }
+    val abacusCalc = remember(parts?.number) {
+        if (parts?.number != null) {
+            val numberOfColumns = parts.number.toString().length
+            AbacusCalculations(numberOfColumns).apply {
+                setAbacusValueFromString(parts.number.toString())
+            }
+        } else null
+    }
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(10.dp),
@@ -56,42 +80,174 @@ fun QuestionExamColumnItemHorizontal(item: QuestionResult) {
             verticalAlignment = Alignment.CenterVertically
         ) {
 
-            Text(
-                modifier = Modifier.weight(1f),   // 👈 takes remaining space
-                text = buildAnnotatedString {
-                    // Question part
-                    withStyle(
-                        style = SpanStyle(
-                            color = Color.DarkGray,
-                            fontWeight = FontWeight.SemiBold,
-                            fontFamily = FontFamily(Font(R.font.font_semibold))
-                        )
-                    ) {
-                        append(
-                            item.que
-                                .replace("x", " x ")
-                                .replace("×", " x ")
-                                .replace("/", " ÷ ")
-                                .replace("÷", " ÷ ")
-                        )
-                        append(" = ")
-                    }
+            when (item.que_type) {
+                MainQuestionType.abacus.name -> {
+                    parts?.let {
+                        if (abacusCalc != null){
+                            Row(
+                                modifier = Modifier.weight(1f),
+                                verticalAlignment = Alignment.CenterVertically
+                            ){
+                                Text(
+                                    text = buildAnnotatedString {
+                                        // Question left part
+                                        withStyle(
+                                            style = SpanStyle(
+                                                color = Color.DarkGray,
+                                                fontWeight = FontWeight.SemiBold,
+                                                fontFamily = FontFamily(Font(R.font.font_semibold))
+                                            )
+                                        ) {
+                                            append(MathUtils.formatQuestionSpace(parts.left))
+                                        }
+                                    },
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    maxLines = 3,
+                                    overflow = TextOverflow.Ellipsis
+                                )
 
-                    // Answer part
-                    withStyle(
-                        style = SpanStyle(
-                            color = item.statusQue.color,
-                            fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold))
-                        )
-                    ) {
-                        append(item.userAnswer)
+                                val numberOfColumns = parts.number.toString().length
+                                AbacusWithDecimalCanvas(
+                                    selectedTheme = selectedTheme,
+                                    screenType = AppConstants.AbacusScreen.screenTypeExam,
+                                    abacusData = abacusCalc,
+                                    numberOfColumns = numberOfColumns,
+                                    rodMovement = emptyList(),
+                                    showDirectionHint = false,
+                                    isBeadSoundOn = false,
+                                    isDisplayCurrentAbacusInput = false,
+                                    onRodMovementChange = { },
+                                    onShowDirectionHintsChange = { },
+                                    onShowHighlighterChange = { },
+                                    onReset = {},
+                                    onNext = {},
+                                )
+
+                                Text(
+                                    text = buildAnnotatedString {
+                                        // Question right part
+                                        withStyle(
+                                            style = SpanStyle(
+                                                color = Color.DarkGray,
+                                                fontWeight = FontWeight.SemiBold,
+                                                fontFamily = FontFamily(Font(R.font.font_semibold))
+                                            )
+                                        ) {
+                                            append(MathUtils.formatQuestionSpace(parts.right))
+                                            append(" = ")
+                                        }
+
+                                        // Answer
+                                        withStyle(
+                                            style = SpanStyle(
+                                                color = item.statusQue.color,
+                                                fontWeight = FontWeight.ExtraBold,
+                                                fontFamily = FontFamily(Font(R.font.font_bold))
+                                            )
+                                        ) {
+                                            append(item.userAnswer)
+                                        }
+                                    },
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    maxLines = 3,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            }
+                        }
                     }
-                },
-                style = MaterialTheme.typography.bodyMedium,
-                maxLines = 3,
-                overflow = TextOverflow.Ellipsis
-            )
+                }
+                MainQuestionType.missingNumber.name -> {
+                    parts?.let {
+                        val newQue = MathUtils.formatQuestion(item.que)
+                        val correctAnswer = MathUtils.calculateStringExpression(newQue).toInt()
+                        Text(
+                            modifier = Modifier.weight(1f),
+                            text = buildAnnotatedString {
+                                // Question left part
+                                withStyle(
+                                    style = SpanStyle(
+                                        color = Color.DarkGray,
+                                        fontWeight = FontWeight.SemiBold,
+                                        fontFamily = FontFamily(Font(R.font.font_semibold))
+                                    )
+                                ) {
+                                    append(MathUtils.formatQuestionSpace(parts.left))
+                                }
+
+                                // Answer part
+                                withStyle(
+                                    style = SpanStyle(
+                                        color = item.statusQue.color,
+                                        fontWeight = FontWeight.ExtraBold,
+                                        fontFamily = FontFamily(Font(R.font.font_bold)),
+                                        textDecoration = TextDecoration.Underline
+                                    )
+                                ) {
+                                    append(item.userAnswer)
+                                }
+
+                                // Question right part
+                                withStyle(
+                                    style = SpanStyle(
+                                        color = Color.DarkGray,
+                                        fontWeight = FontWeight.SemiBold,
+                                        fontFamily = FontFamily(Font(R.font.font_semibold))
+                                    )
+                                ) {
+                                    append(MathUtils.formatQuestionSpace(parts.right))
+                                    append(" = ")
+                                }
+
+                                // Answer
+                                withStyle(
+                                    style = SpanStyle(
+                                        color = Color.DarkGray,
+                                        fontWeight = FontWeight.SemiBold,
+                                        fontFamily = FontFamily(Font(R.font.font_semibold))
+                                    )
+                                ) {
+                                    append(correctAnswer.toString())
+                                }
+                            },
+                            style = MaterialTheme.typography.bodyMedium,
+                            maxLines = 3,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                    }
+                }
+                else -> { // MainQuestionType.question.name
+                    Text(
+                        modifier = Modifier.weight(1f),   // 👈 takes remaining space
+                        text = buildAnnotatedString {
+                            // Question part
+                            withStyle(
+                                style = SpanStyle(
+                                    color = Color.DarkGray,
+                                    fontWeight = FontWeight.SemiBold,
+                                    fontFamily = FontFamily(Font(R.font.font_semibold))
+                                )
+                            ) {
+                                append(MathUtils.formatQuestionSpace(item.que))
+                                append(" = ")
+                            }
+
+                            // Answer part
+                            withStyle(
+                                style = SpanStyle(
+                                    color = item.statusQue.color,
+                                    fontWeight = FontWeight.ExtraBold,
+                                    fontFamily = FontFamily(Font(R.font.font_bold))
+                                )
+                            ) {
+                                append(item.userAnswer)
+                            }
+                        },
+                        style = MaterialTheme.typography.bodyMedium,
+                        maxLines = 3,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+            }
 
             Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding6)))
 

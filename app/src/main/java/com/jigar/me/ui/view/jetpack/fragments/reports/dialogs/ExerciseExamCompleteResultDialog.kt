@@ -45,6 +45,8 @@ import com.jigar.me.R
 import com.jigar.me.data.model.data.QuestionDataRequest
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.ui.view.jetpack.core.presentation.components.PrimaryButton
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorDARKGreen
+import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorGreen
 import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.exam_generator.QuestionResult
 import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.exam_generator.toQuestionResultList
@@ -57,6 +59,7 @@ import com.jigar.me.utils.extensions.secToTimeFormat
 
 @Composable
 fun ExerciseExamCompleteResultDialog(
+    selectedTheme: String,
     request: SubmitAllExamDataRequest,
     isFromHistory: Boolean = false,
     onClose: () -> Unit,
@@ -155,7 +158,7 @@ fun ExerciseExamCompleteResultDialog(
                                 icon = R.mipmap.ic_question_right,
                                 value = request.no_of_right_answers.toString()+" / "+questionList.size.toString(),
                                 label = R.string.RightQue,
-                                color = Color(0xFF2E7D32)
+                                color = ColorDARKGreen
                             )
                         }
                         if (!isFromHistory){
@@ -201,7 +204,7 @@ fun ExerciseExamCompleteResultDialog(
                             items = questionResults,
                             key = { item -> "${item.que}_${item.hashCode()}" }
                         ) { item ->
-                            QuestionExamColumnItemHorizontal(item)
+                            QuestionExamColumnItemHorizontal(item,selectedTheme)
                         }
                     }
                 }

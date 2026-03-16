@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.exam_generator
 
+import android.util.Log
+import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
 import com.jigar.me.utils.AppConstants
 
 object ExamGenerator {
@@ -38,7 +40,7 @@ object ExamGenerator {
             else -> (1..20).random()
         }
 
-        return createQuestion(ExamQuestionType.Number.name,number.toString(), number)
+        return createQuestion(level,ExamQuestionType.Number.name,number.toString(), number)
     }
 
     // ---------------- Addition ----------------
@@ -73,7 +75,7 @@ object ExamGenerator {
                     2 -> listOf((500..999).random(), (199..499).random(), (99..799).random(), (700..1999).random())
                     3 -> listOf((25..5999).random(), (1999..7999).random(), (2999..9999).random())
                     4 -> List(4) { (25..9999).random() }
-                    5 -> List(4) { (25..99999).random() }
+                    5 -> List(5) { (25..99999).random() }
                     else -> List(2) { (1000..99999).random() }
                 }
 
@@ -83,7 +85,7 @@ object ExamGenerator {
             answer = numbers.sum()
         } while (answer == 0)
 
-        return createQuestion(ExamQuestionType.Addition.name, numbers.joinToString(" + "), answer)
+        return createQuestion(level,ExamQuestionType.Addition.name, numbers.joinToString(" + "), answer)
     }
 
     // ---------------- Add / Sub ----------------
@@ -149,8 +151,7 @@ object ExamGenerator {
                 append(" ${ops[i]} ${numbers[i + 1]}")
             }
         }
-
-        return createQuestion(ExamQuestionType.Subtraction.name, questionText, answer)
+        return createQuestion(level,ExamQuestionType.Subtraction.name, questionText, answer)
     }
 
     // ---------------- Multiplication ----------------
@@ -172,7 +173,7 @@ object ExamGenerator {
         }
 
         return createQuestion(
-            ExamQuestionType.Multiplication.name, "$a x $b", a * b)
+            level,ExamQuestionType.Multiplication.name, "$a x $b", a * b)
     }
 
     // ---------------- Division ----------------
@@ -199,43 +200,92 @@ object ExamGenerator {
             ans = a / b
         } while (a % b != 0 || ans == 1)
 
-        return createQuestion(ExamQuestionType.Division.name, "$a ÷ $b", ans)
+        return createQuestion(level,ExamQuestionType.Division.name, "$a ÷ $b", ans)
     }
 
     // ---------------- Options ----------------
 
     private fun createQuestion(
+        level: String,
         questionType: String,
         questionText: String,
         answer: Int
     ): ExamMathQuestion {
 
-        val options = mutableSetOf(answer)
+        var correctAnswer = answer
+        var queType = MainQuestionType.question
+        var index: Int? = null
+
+        if (questionType == ExamQuestionType.Addition.name || questionType == ExamQuestionType.Subtraction.name) {
+
+            val currentQuestionParts = MathUtils.splitQuestionIntoLines(questionText)
+
+            if ((level == AppConstants.EXAM.examDifficultyExpert && currentQuestionParts.size == 2) || currentQuestionParts.size < 5) {
+
+                val choiceType = (0..2).random()
+//                val choiceType = 1
+
+                if (choiceType == 0) {
+
+                    queType = MainQuestionType.missingNumber
+
+                    index = (0 until currentQuestionParts.size).random()
+
+                    val parts = questionPartsFromSpace(questionText, index)
+
+                    correctAnswer = parts.number ?: 0
+
+                } else if (choiceType == 1) {
+
+                    queType = MainQuestionType.abacus
+
+                    index = (0 until currentQuestionParts.size).random()
+                }
+            }
+
+        } else {
+
+            val choiceType = (0..1).random()
+
+            if (choiceType == 0) {
+
+                queType = MainQuestionType.missingNumber
+
+                index = (0 until 2).random()
+
+                val parts = questionPartsFromSpace(questionText, index)
+
+                correctAnswer = parts.number ?: 0
+            }
+        }
+
+        val options = mutableSetOf(correctAnswer)
 
         while (options.size < 4) {
-            val wrong = when ((0..2).random()) {
 
-                // smaller than answer
+            val factorChoice = (0..2).random()
+            val wrong: Int = when (factorChoice) {
+
                 0 -> {
-                    val start = maxOf(1, answer / 2)
-                    val end = maxOf(1, answer - 1)
+                    val start = maxOf(1, correctAnswer / 2)
+                    val end = maxOf(1, correctAnswer - 1)
                     (start..end).random()
                 }
 
-                // slightly smaller or bigger (±30%)
                 1 -> {
-                    val offsetRangeStart = (-answer * 0.3).toInt()
-                    val offsetRangeEnd = (answer * 0.3).toInt()
+                    val offsetRangeStart = (-correctAnswer * 0.3).toInt()
+                    val offsetRangeEnd = (correctAnswer * 0.3).toInt()
                     val offset = (offsetRangeStart..offsetRangeEnd).random()
-                    maxOf(1, answer + offset)
+                    maxOf(1, correctAnswer + offset)
                 }
 
-                // bigger than answer
-                else -> {
-                    val start = answer + 1
-                    val end = maxOf(answer * 2, answer + 10)
+                2 -> {
+                    val start = correctAnswer + 1
+                    val end = maxOf(correctAnswer * 2, correctAnswer + 10)
                     (start..end).random()
                 }
+
+                else -> correctAnswer + (1..50).random()
             }
 
             options.add(wrong)
@@ -244,14 +294,68 @@ object ExamGenerator {
         val shuffled = options.shuffled()
 
         return ExamMathQuestion(
-            questionType,
-            questionText,
-            answer,
-            shuffled[0],
-            shuffled[1],
-            shuffled[2],
-            shuffled[3]
+            questionType = questionType,
+            que = questionText,
+            answer = correctAnswer,
+            option1 = shuffled[0],
+            option2 = shuffled[1],
+            option3 = shuffled[2],
+            option4 = shuffled[3],
+            queType = queType.name,
+            index = index
         )
     }
 
+    fun questionPartsFromSpace(question: String, index: Int): QuestionParts {
+
+        val parts = question.split(" ")
+
+        val numbers = parts.mapNotNull { it.toIntOrNull() }
+
+        if (index >= numbers.size) {
+            return QuestionParts("", null, "")
+        }
+
+        val numberPosition = index * 2
+
+        val left = parts.take(numberPosition).joinToString(" ")
+        val right = parts.drop(numberPosition + 1).joinToString(" ")
+
+        return QuestionParts(left, numbers[index], right)
+    }
+
+    fun questionPartsFromSign(question: String, index: Int): QuestionParts {
+
+        // Split numbers and operators
+        val parts = Regex("""\d+|[+\-×x*/÷]""")
+            .findAll(question)
+            .map { it.value }
+            .toList()
+
+        // Extract numbers only
+        val numbers = parts.mapNotNull { it.toIntOrNull() }
+
+        if (index >= numbers.size) {
+            return QuestionParts("", null, "")
+        }
+
+        // Find the actual index of the number inside parts
+        var numberIndex = 0
+        var position = 0
+
+        for ((i, part) in parts.withIndex()) {
+            if (part.toIntOrNull() != null) {
+                if (numberIndex == index) {
+                    position = i
+                    break
+                }
+                numberIndex++
+            }
+        }
+
+        val left = parts.take(position).joinToString("")
+        val right = parts.drop(position + 1).joinToString("")
+
+        return QuestionParts(left, numbers[index], right)
+    }
 }

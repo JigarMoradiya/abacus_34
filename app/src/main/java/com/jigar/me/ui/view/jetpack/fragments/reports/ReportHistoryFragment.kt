@@ -33,7 +33,6 @@ import com.jigar.me.ui.view.jetpack.fragments.reports.components.ReportFilterCar
 import com.jigar.me.ui.view.jetpack.fragments.reports.components.ReportsScreen
 import com.jigar.me.ui.view.jetpack.fragments.reports.dialogs.ExerciseExamCompleteResultDialog
 import com.jigar.me.ui.view.jetpack.fragments.reports.viewmodels.ReportHistoryViewModel
-import com.jigar.me.utils.AppConstants
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -77,9 +76,13 @@ class ReportHistoryFragment : Fragment() {
                         visible = uiState.isShowExerciseExamPopup, enter = fadeIn(), exit = fadeOut()
                     ) {
                         uiState.exerciseExamRequest?.let {
-                            ExerciseExamCompleteResultDialog(it, isFromHistory = true,onClose = {
-                                viewModel.closeExercise()
-                            }, onGiveAgain = {})
+                            ExerciseExamCompleteResultDialog(selectedTheme = uiState.selectedTheme,
+                                it, isFromHistory = true,
+                                onClose = {
+                                    viewModel.closeExercise()
+                                },
+                                onGiveAgain = {},
+                            )
                         }
                     }
                 }

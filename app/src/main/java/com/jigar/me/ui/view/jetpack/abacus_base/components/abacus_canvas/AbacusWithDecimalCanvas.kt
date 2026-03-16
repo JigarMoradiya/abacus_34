@@ -132,7 +132,7 @@ fun AbacusWithDecimalCanvas(
     Box(modifier = modifier, contentAlignment = Alignment.TopCenter) {
 
         // Top Answer Bar (hidden in free mode, same as your old logic)
-        if (!(screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn) && screenType != AppConstants.AbacusScreen.screenTypeSettingPreview) {
+        if (!(screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn) && screenType != AppConstants.AbacusScreen.screenTypeSettingPreview && screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult) {
             val offsetY = if(screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise) (-36).dp else (-48).dp
 
             AbacusAnswerBarCompose(
@@ -240,17 +240,19 @@ fun AbacusWithDecimalCanvas(
         }
 
         // --- Outer frame ---
-        Box(
-            modifier = Modifier
-                .width(totalWidth - (dim.columnSpaces * 2))
-                .height(totalHeight)
-                .border(
-                    width = dim.rectLineWidth,
-                    brush = strokeBrush,
-                    shape = RoundedCornerShape(dim.rectLineCorner)
-                )
-                .spotlightTag(0, highlightSteps[0].message) // frame highlight
-        )
+        if (screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult){
+            Box(
+                modifier = Modifier
+                    .width(totalWidth - (dim.columnSpaces * 2))
+                    .height(totalHeight)
+                    .border(
+                        width = dim.rectLineWidth,
+                        brush = strokeBrush,
+                        shape = RoundedCornerShape(dim.rectLineCorner)
+                    )
+                    .spotlightTag(0, highlightSteps[0].message) // frame highlight
+            )
+        }
 
         // Display number at top inside the frame (free-mode only)
         if ((screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn) || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) {

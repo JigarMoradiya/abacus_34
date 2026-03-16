@@ -8,6 +8,21 @@ import kotlin.math.sin
 import kotlin.math.tan
 
 object MathUtils{
+    fun formatQuestionSpace(question: String): String {
+        return question
+            .replace("x", " x ")
+            .replace("×", " x ")
+            .replace("/", " ÷ ")
+            .replace("÷", " ÷ ")
+            .replace("+", " + ")
+            .replace("-", " - ")
+    }
+    fun formatQuestion(question: String): String {
+        return question
+            .replace("x", "*")
+            .replace("×", "*")
+            .replace("÷", "/")
+    }
     // question string convert into list
     fun extractNumbersAndSigns(expression: String): List<String> {
         val result = mutableListOf<String>()
@@ -42,10 +57,6 @@ object MathUtils{
         return result
     }
 
-    fun evaluateExpression(expression: String): Int {
-        val parts = extractNumbersAndSigns(expression)
-        return parts.sumOf { it.toInt() }
-    }
 
     fun calculateEachStepProduct(n1: List<Int>, n2: List<Int>): List<Int> {
         val result = mutableListOf<Int>()

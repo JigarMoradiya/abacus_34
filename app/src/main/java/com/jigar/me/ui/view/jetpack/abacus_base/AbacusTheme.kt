@@ -219,7 +219,8 @@ object AbacusTheme {
         val base = AbacusDimensionModel()
 
         val multiplier = when (screenType) {
-            "exam", AppConstants.AbacusScreen.screenTypeSettingPreview -> 0.5f
+            AppConstants.AbacusScreen.screenTypeExam, AppConstants.AbacusScreen.screenTypeSettingPreview -> 0.5f
+            AppConstants.AbacusScreen.screenTypeExamResult -> 0.25f
             AppConstants.AbacusScreen.screenTypeCCM -> 0.85f
             AppConstants.AbacusScreen.screenTypeExercise -> 0.95f
             AppConstants.AbacusScreen.screenTypeAbacusPractice -> if (abacusType == AppConstants.apiParams.answerStepByStep) 0.9f else {1f}
@@ -235,13 +236,19 @@ object AbacusTheme {
             beadWidth = base.beadWidth * multiplier,
             beadHeight = base.beadHeight * multiplier,
             columnSpaces = if (screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise) base.columnSpaces * 4 else if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode) base.columnSpaces * 2 else base.columnSpaces,
-            beamHeight = if (screenType == "exam" || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) base.beamHeight
+            beamHeight = if (screenType == AppConstants.AbacusScreen.screenTypeExam || screenType == AppConstants.AbacusScreen.screenTypeExamResult || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) base.beamHeight
             else base.beamHeight * 2,
-            rectLineWidth = if (screenType == "exam" || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview)
-                base.rectLineWidth / 2 else base.rectLineWidth,
-            rectLineCorner = if (screenType == "exam" || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview)
-                base.rectLineCorner / 2 else base.rectLineCorner,
-            textSizeSp =  if (screenType == "exam" || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) 7 else 13
+            rectLineWidth = when (screenType) {
+                AppConstants.AbacusScreen.screenTypeExam, AppConstants.AbacusScreen.screenTypeExamResult -> { 0.dp }
+                AppConstants.AbacusScreen.screenTypeSettingPreview -> base.rectLineWidth / 2
+                else -> base.rectLineWidth
+            },
+            rectLineCorner = when (screenType) {
+                AppConstants.AbacusScreen.screenTypeExam, AppConstants.AbacusScreen.screenTypeExamResult -> { 0.dp }
+                AppConstants.AbacusScreen.screenTypeSettingPreview -> base.rectLineCorner / 2
+                else -> base.rectLineCorner
+            },
+            textSizeSp =  if (screenType == AppConstants.AbacusScreen.screenTypeExam || screenType == AppConstants.AbacusScreen.screenTypeExamResult) {0} else if (screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) 7 else 13
         )
     }
 }

@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -146,11 +145,13 @@ class AbacusDoPracticeFragment : Fragment() {
                 ) {
                     if (uiState.isShowSubmitAnswer == true){
                         uiState.submitExerciseRequest?.let {
-                            ExerciseExamCompleteResultDialog(it, onClose = {
-                                onBack()
-                            }, onGiveAgain = {
-                                onBack()
-                            })
+                            ExerciseExamCompleteResultDialog(selectedTheme = viewModel.selectedTheme,
+                                it, onClose = {
+                                    onBack()
+                                }, onGiveAgain = {
+                                    onBack()
+                                },
+                            )
                         }
                     }else{
                         CustomPopupView(

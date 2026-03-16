@@ -126,11 +126,13 @@ class ExerciseFragment : Fragment() {
                         visible = uiState.isShowCompletePopup, enter = fadeIn(), exit = fadeOut()
                     ) {
                         uiState.submitExerciseRequest?.let {
-                            ExerciseExamCompleteResultDialog(it, onClose = {
-                                viewModel.closeExercise()
-                            }, onGiveAgain = {
-                                viewModel.generateExercise()
-                            })
+                            ExerciseExamCompleteResultDialog(selectedTheme = viewModel.selectedTheme,
+                                it, onClose = {
+                                    viewModel.closeExercise()
+                                }, onGiveAgain = {
+                                    viewModel.generateExercise()
+                                },
+                            )
                         }
                     }
 

@@ -132,6 +132,8 @@ class HomeFragmentViewModel @Inject constructor(
 
     private fun checkFreeTrial() {
         prefs.setUserInFreeTrial(false)
+        updateState_ { copy(checkNotificationPermission = ConsumableCommand(Unit)) }
+
 //        val purchasedSKU = state().purchasedList
 //        val isPurchased = CommonUtils.checkPurchaseForExerciseExamCCM(prefs, purchasedSKU)
 //

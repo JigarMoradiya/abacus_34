@@ -43,16 +43,16 @@ class AbacusCalculations(private val numberOfColumns: Int) {
     // -------------------------------------------------------
     // SET FROM VALUE
     // -------------------------------------------------------
-    fun setAbacusValueFromString(value: String,isQuestionForDivision : Boolean = false) {
-        isDivisionQuestion = isQuestionForDivision
-        val padded = value.padStart(abacusState.size, '0')  // 🔥 ensure full length
+    fun setAbacusValueFromString(value: String, isQuestionForDivision: Boolean = false) {
 
+        isDivisionQuestion = isQuestionForDivision
+        val padded = value.padStart(abacusState.size, '0')
         val newState = MutableList(abacusState.size) {
             mutableListOf(true, false, false, true, true, true, true)
         }
 
-        for (i in padded.indices) {
-            val digitChar = padded[i]
+        for (i in 0 until abacusState.size) {
+            val digitChar = padded.getOrNull(i) ?: '0'
             val digit = digitChar - '0'
             newState[i] = digitToColumn(digit)
         }
