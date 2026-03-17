@@ -538,9 +538,14 @@ class AbacusDoPracticeViewModel @Inject constructor(
             // update ui state
             val nextAbacus = abacusList.getOrNull(nextIndex)
             nextAbacus?.let {
+                val abacusType = it.findCurrentAbacusType()
                 updateState_ {
                     copy(setProgress = setProgress,isNextButtonEnable = false, currentIndexOfAbacus = nextIndex, currentAbacus = it,
-                        currentAbacusType = it.findCurrentAbacusType(), isSumComplete = false, currentIndexOfOperation = 0, currentIndexNum1 = 0, currentIndexNum2 = 0)
+                        currentAbacusType = abacusType, isSumComplete = false, currentIndexOfOperation = 0,
+                        currentIndexNum1 = 0, currentIndexNum2 = 0,
+                        currentAbacusFormula = if (isDisplayHelpMessage && isStepByStep && abacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction)
+                            detectFormulaSteps(initial = 0, steps = it.question.sumToIntList()) else emptyList()
+                    )
                 }
             }
 

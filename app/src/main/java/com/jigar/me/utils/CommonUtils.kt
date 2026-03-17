@@ -159,9 +159,9 @@ object CommonUtils {
     }
 
     fun checkLevelIsPurchase(purchasedSKU: List<InAppSkuDetails>, data: Category, prefManager: AppPreferencesHelper): Boolean {
-//        if (BuildConfig.DEBUG){
-//            return true
-//        }
+        if (BuildConfig.DEBUG){
+            return true
+        }
         var isPurchased = false
         val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
         if (loginData?.email.equals("abacus@yopmail.com") || prefManager.isUserInFreeTrial()){
@@ -200,9 +200,9 @@ object CommonUtils {
     }
 
     fun checkPurchaseForExerciseExamCCM(prefManager: AppPreferencesHelper,purchasedSKU: List<InAppSkuDetails>): Boolean {
-//        if (BuildConfig.DEBUG){
-//            return true
-//        }
+        if (BuildConfig.DEBUG){
+            return true
+        }
         val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
         var isPurchased = false
         if (loginData?.email.equals("abacus@yopmail.com") || prefManager.isUserInFreeTrial()){

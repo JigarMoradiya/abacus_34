@@ -58,12 +58,12 @@ android {
             buildConfigField("String","NEW_MODULE", properties["new_module"].toString())
             buildConfigField("String","LOCATION_MODULE", properties["location_module"].toString())
             buildConfigField("String","EXAM_MODULE", properties["exam_module"].toString())
-            resValue("string","app_name", "Abacus Child Leaning App")
+            resValue("string","app_name", "Abacus")
 
             dimension = "variant1"
             applicationId = "com.abacus.puzzle"
-            versionCode = 157
-            versionName = "15.0.6"
+            versionCode = 159
+            versionName = "15.0.7"
         }
     }
     externalNativeBuild {
