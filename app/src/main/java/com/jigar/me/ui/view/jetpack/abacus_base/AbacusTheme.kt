@@ -1,9 +1,12 @@
 package com.jigar.me.ui.view.jetpack.abacus_base
 
+import android.content.Context
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.toColorInt
+import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.extensions.dpToPx
 
 // AppThemeAbacus.kt
 object AbacusTheme {
@@ -210,20 +213,21 @@ object AbacusTheme {
     }
 
     fun dimensionPreset(
+        context: Context,
         screenType: String = AppConstants.AbacusScreen.screenTypeFreeMode,
         abacusType: String? = null,
-        isFreeModeOn : Boolean = false
+        isFreeModeOn: Boolean = false
     ): AbacusDimensionModel {
         // This is a simplified mapping of your AbacusDimension logic.
         // You can tweak multipliers same as Swift.
         val base = AbacusDimensionModel()
-
-        val multiplier = when (screenType) {
-            AppConstants.AbacusScreen.screenTypeExam, AppConstants.AbacusScreen.screenTypeSettingPreview -> 0.5f
+        val freeModeBase = 0.87f
+        val multiplierTemp = when (screenType) {
+            AppConstants.AbacusScreen.screenTypeExam, AppConstants.AbacusScreen.screenTypeSettingPreview -> 0.45f
             AppConstants.AbacusScreen.screenTypeExamResult -> 0.25f
             AppConstants.AbacusScreen.screenTypeCCM -> 0.85f
-            AppConstants.AbacusScreen.screenTypeExercise -> 0.95f
-            AppConstants.AbacusScreen.screenTypeAbacusPractice -> if (abacusType == AppConstants.apiParams.answerStepByStep) 0.9f else {1f}
+            AppConstants.AbacusScreen.screenTypeExercise -> 0.90f
+            AppConstants.AbacusScreen.screenTypeAbacusPractice -> if (abacusType == AppConstants.apiParams.answerStepByStep) 0.75f else {0.9f}
             AppConstants.AbacusScreen.screenTypeFreeMode -> if (isFreeModeOn){
                 1f
             }else{
@@ -231,10 +235,24 @@ object AbacusTheme {
             }
             else -> 0.9f
         }
+        val multiplier = multiplierTemp * freeModeBase
+        val pref = AppPreferencesHelper(context, AppConstants.PREF_NAME)
+        val screenWidthDp = pref.getCustomParamInt(AppConstants.screenWidthDp,0)
+//        val rectWidth = base.rectLineWidth * 2
+//        val colSpace = base.columnSpaces * 14
+//        val extraPadding = base.extraSpace * 2
+
+        val rectWidth = 16 * 2
+        val colSpace = 1 * 14
+        val extraPadding = 4 * 2
+
+        val remainSpace = screenWidthDp - colSpace - rectWidth - extraPadding
+        val beadWidth = remainSpace / 13
+        val beadHeight : Double = ((5 * beadWidth) / 9).toDouble()  // 9 : 5
 
         return base.copy(
-            beadWidth = base.beadWidth * multiplier,
-            beadHeight = base.beadHeight * multiplier,
+            beadWidth = beadWidth.dp * multiplier,
+            beadHeight = beadHeight.dp * multiplier,
             columnSpaces = if (screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise) base.columnSpaces * 4 else if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode) base.columnSpaces * 2 else base.columnSpaces,
             beamHeight = if (screenType == AppConstants.AbacusScreen.screenTypeExam || screenType == AppConstants.AbacusScreen.screenTypeExamResult || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) base.beamHeight
             else base.beamHeight * 2,

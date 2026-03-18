@@ -1,10 +1,8 @@
 package com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.viewmodels
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import com.google.gson.Gson
 import com.jigar.me.R
 import com.jigar.me.data.local.data.ExamProvider.AbacusFormulaType
 import com.jigar.me.data.local.data.ExamProvider.FormulaStep
@@ -301,55 +299,32 @@ class AbacusDoPracticeViewModel @Inject constructor(
                         copy(isNextButtonEnable = false)
                     }
                     // show direction if enable setting and step by step mode
-                    if (showDirectionHints && state().isStepByStep){
-                        if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeDivision){
-                            if (currentOperationIndex < currentAbacus.eachStepQuotient.size &&
-                                currentOperationIndex < currentAbacus.eachStepRemainder.size &&
-                                leftInt == currentAbacus.eachStepQuotient[currentOperationIndex] &&
-                                rightInt == currentAbacus.eachStepRemainder[currentOperationIndex]
-                            ) {
-                                currentOperationIndex += 1
-                                if (currentOperationIndex < currentAbacus.displayDividendArray.size) {
-                                    // Skip zero values
+                    if (state().isStepByStep){
+                        when (state().currentAbacusType) {
+                            AppConstants.extras_Comman.AbacusTypeDivision -> {
+                                if (currentOperationIndex < currentAbacus.eachStepQuotient.size &&
+                                    currentOperationIndex < currentAbacus.eachStepRemainder.size &&
+                                    leftInt == currentAbacus.eachStepQuotient[currentOperationIndex] &&
+                                    rightInt == currentAbacus.eachStepRemainder[currentOperationIndex]
+                                ) {
+                                    currentOperationIndex += 1
+                                    // Skip duplicate steps (like 300 → 300)
                                     while (
-                                        currentOperationIndex < currentAbacus.displayDividendArray.size - 1 &&
-                                        currentAbacus.displayDividendArray[currentOperationIndex] == 0
+                                        currentOperationIndex < currentAbacus.eachStepQuotient.size - 1 &&
+                                        currentOperationIndex > 0 &&
+                                        currentAbacus.eachStepQuotient[currentOperationIndex] ==
+                                        currentAbacus.eachStepQuotient[currentOperationIndex - 1]
                                     ) {
                                         currentOperationIndex++
                                     }
-                                }
 
-                                updateState_ {
-                                    copy(currentIndexOfOperation = currentOperationIndex)
-                                }
-                            }
-
-                            val newValue = currentAbacus.eachStepQuotient[currentOperationIndex]
-                            val rods = max(leftInt.toString().length, newValue.toString().length)
-                            val left = MathUtils.calculateRodMovements(from = leftInt, to = newValue, rods = rods, isForRightRods = false)
-                            var rightList : List<RodMovement> = arrayListOf()
-                            if (rightInt > 0) {
-                                val newValueRemainder = currentAbacus.eachStepRemainder.getOrNull(currentOperationIndex)
-                                if (newValueRemainder != null) {
-                                    rightList = MathUtils.calculateRodMovements(from = rightInt, to = newValueRemainder, rods = 6, isForRightRods = true)
-                                }
-                            } else {
-                                if (!state().isSumComplete) {
-                                    val newValueRemainder = currentAbacus.eachStepRemainder.getOrNull(currentOperationIndex)
-                                    if (newValueRemainder != null) {
-                                        rightList = MathUtils.calculateRodMovements(from = 0, to = newValueRemainder, rods = 6, isForRightRods = true)
+                                    updateState_ {
+                                        copy(currentIndexOfOperation = currentOperationIndex)
                                     }
                                 }
                             }
-                            updateRodMovements(left + rightList)
-                        }else{
-                            val right = MathUtils.calculateRodMovements(from = rightInt, to = 0, rods = 6, isForRightRods = true)
-                            if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeNumber){
-                                val rods = max(leftInt.toString().length, currentAbacus.question.length)
-                                val left = MathUtils.calculateRodMovements(from = leftInt, to = currentAbacus.question.toInt(), rods = rods, isForRightRods = false)
-                                updateRodMovements(left + right)
-                            }else if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction){
-                                if (leftInt.toString() == currentAbacus.operationNumbersArray[currentOperationIndex].toString()){
+                            AppConstants.extras_Comman.AbacusTypeAdditionSubtraction -> {
+                                if (leftInt.toString() == currentAbacus.operationNumbersArray[currentOperationIndex].toString()) {
                                     currentOperationIndex += 1 // current step completed
                                     updateState_ {
                                         copy(currentIndexOfOperation = currentOperationIndex)
@@ -357,13 +332,10 @@ class AbacusDoPracticeViewModel @Inject constructor(
                                     // speak question when go to next step
                                     speakQue()
                                 }
-                                val newValue = currentAbacus.operationNumbersArray[currentOperationIndex]
-                                val rods = max(leftInt.toString().length, newValue.toString().length)
-                                val left = MathUtils.calculateRodMovements(from = leftInt, to = newValue, rods = rods, isForRightRods = false)
-                                updateRodMovements(left + right)
-                            }else if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeMultiplication){
+                            }
+                            AppConstants.extras_Comman.AbacusTypeMultiplication -> {
                                 val requiredValue = currentAbacus.eachStepProduct[currentOperationIndex]
-                                if (leftInt == requiredValue && rightInt == 0){
+                                if (leftInt == requiredValue && rightInt == 0) {
                                     currentOperationIndex += 1
                                     var currentIndexNum1 = state().currentIndexNum1
                                     var currentIndexNum2 = state().currentIndexNum2
@@ -382,13 +354,52 @@ class AbacusDoPracticeViewModel @Inject constructor(
                                         currentOperationIndex < currentAbacus.eachStepProduct.size && (currentAbacus.num1[currentIndexNum1] == 0 || currentAbacus.num2[currentIndexNum2] == 0)
                                     )
                                     updateState_ {
-                                        copy(currentIndexNum1 = currentIndexNum1, currentIndexNum2 = currentIndexNum2,currentIndexOfOperation = currentOperationIndex)
+                                        copy(currentIndexNum1 = currentIndexNum1, currentIndexNum2 = currentIndexNum2, currentIndexOfOperation = currentOperationIndex)
                                     }
                                 }
-                                val newValue = currentAbacus.eachStepProduct[currentOperationIndex]
+                            }
+                        }
+                        if (showDirectionHints){
+                            if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeDivision){
+                                val newValue = currentAbacus.eachStepQuotient[currentOperationIndex]
                                 val rods = max(leftInt.toString().length, newValue.toString().length)
                                 val left = MathUtils.calculateRodMovements(from = leftInt, to = newValue, rods = rods, isForRightRods = false)
-                                updateRodMovements(left + right)
+                                var rightList : List<RodMovement> = arrayListOf()
+                                if (rightInt > 0) {
+                                    val newValueRemainder = currentAbacus.eachStepRemainder.getOrNull(currentOperationIndex)
+                                    if (newValueRemainder != null) {
+                                        rightList = MathUtils.calculateRodMovements(from = rightInt, to = newValueRemainder, rods = 6, isForRightRods = true)
+                                    }
+                                } else {
+                                    if (!state().isSumComplete) {
+                                        val newValueRemainder = currentAbacus.eachStepRemainder.getOrNull(currentOperationIndex)
+                                        if (newValueRemainder != null) {
+                                            rightList = MathUtils.calculateRodMovements(from = 0, to = newValueRemainder, rods = 6, isForRightRods = true)
+                                        }
+                                    }
+                                }
+                                updateRodMovements(left + rightList)
+                            }else{
+                                val right = MathUtils.calculateRodMovements(from = rightInt, to = 0, rods = 6, isForRightRods = true)
+                                when (state().currentAbacusType) {
+                                    AppConstants.extras_Comman.AbacusTypeNumber -> {
+                                        val rods = max(leftInt.toString().length, currentAbacus.question.length)
+                                        val left = MathUtils.calculateRodMovements(from = leftInt, to = currentAbacus.question.toInt(), rods = rods, isForRightRods = false)
+                                        updateRodMovements(left + right)
+                                    }
+                                    AppConstants.extras_Comman.AbacusTypeAdditionSubtraction -> {
+                                        val newValue = currentAbacus.operationNumbersArray[currentOperationIndex]
+                                        val rods = max(leftInt.toString().length, newValue.toString().length)
+                                        val left = MathUtils.calculateRodMovements(from = leftInt, to = newValue, rods = rods, isForRightRods = false)
+                                        updateRodMovements(left + right)
+                                    }
+                                    AppConstants.extras_Comman.AbacusTypeMultiplication -> {
+                                        val newValue = currentAbacus.eachStepProduct[currentOperationIndex]
+                                        val rods = max(leftInt.toString().length, newValue.toString().length)
+                                        val left = MathUtils.calculateRodMovements(from = leftInt, to = newValue, rods = rods, isForRightRods = false)
+                                        updateRodMovements(left + right)
+                                    }
+                                }
                             }
                         }
                     }

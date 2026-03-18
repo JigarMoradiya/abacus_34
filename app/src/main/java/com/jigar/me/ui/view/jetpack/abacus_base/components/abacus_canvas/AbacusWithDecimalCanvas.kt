@@ -94,7 +94,7 @@ fun AbacusWithDecimalCanvas(
     }
 
 
-    val dim = AbacusTheme.dimensionPreset(screenType = screenType,abacusType = abacusType, isFreeModeOn = isFreeModeOn)
+    val dim = AbacusTheme.dimensionPreset(context,screenType = screenType,abacusType = abacusType, isFreeModeOn = isFreeModeOn)
     val totalWidth = (dim.beadWidth * numberOfColumns) + (dim.rectLineWidth * 2) + (dim.columnSpaces * (numberOfColumns) * 2)
     val totalHeight = (dim.beadHeight * 7) + (dim.rectLineWidth * 2) + (dim.extraSpace * 2) + dim.beamHeight
 
@@ -171,54 +171,57 @@ fun AbacusWithDecimalCanvas(
         }
 
         // --- Inner rods & beads on Canvas ---
+
         if (!showHighlighter || currentSpot != 0) { // hide all things when frame highlighter show
+            val isTouchEnabled = screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult && screenType != AppConstants.AbacusScreen.screenTypeSettingPreview
+            val gestureModifier = if (isTouchEnabled) {
+                Modifier.pointerInput(Unit) {
+                    val thresholdPx = with(density) { 2.dp.toPx() }
+
+                    awaitPointerEventScope {
+                        while (true) {
+                            val down = awaitFirstDown(requireUnconsumed = false)
+                            val pointerId = down.id
+
+                            val startCol = geometry.findColumn(down.position.x)
+                            val startIndex = geometry.findRow(down.position.y)
+
+                            var totalDy = 0f
+
+                            drag(pointerId) { change ->
+                                val deltaY = change.position.y - change.previousPosition.y
+                                totalDy += deltaY
+                                change.consume()
+                            }
+
+                            if (startCol != null && startIndex != null &&
+                                abs(totalDy) > thresholdPx
+                            ) {
+                                if (totalDy < 0) {
+                                    if (abacusData.canMoveUp(startIndex, startCol)) {
+                                        abacusData.moveBeadUp(startIndex, startCol)
+                                        if (isBeadSoundOn) PlaySound.playBeadClick(context)
+                                    }
+                                } else {
+                                    if (abacusData.canMoveDown(startIndex, startCol)) {
+                                        abacusData.moveBeadDown(startIndex, startCol)
+                                        if (isBeadSoundOn) PlaySound.playBeadClick(context)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                Modifier // 🚫 no touch
+            }
             Canvas(
                 modifier = Modifier
                     .height(totalHeight)
                     .width(totalWidth)
                     .padding(vertical = dim.rectLineWidth, horizontal = dim.rectLineWidth)
                     .align(Alignment.Center)
-                    .pointerInput(Unit) {
-                        val thresholdPx = with(density) { 2.dp.toPx() }
-
-                        awaitPointerEventScope {
-                            while (true) {
-                                // 1️⃣ Wait for first finger down
-                                val down = awaitFirstDown(requireUnconsumed = false)
-                                val pointerId = down.id
-
-                                val startCol = geometry.findColumn(down.position.x)
-                                val startIndex = geometry.findRow(down.position.y)
-
-                                var totalDy = 0f
-
-                                // 2️⃣ Smooth drag
-                                drag(pointerId) { change ->
-                                    val deltaY = change.position.y - change.previousPosition.y
-                                    totalDy += deltaY
-                                    change.consume()
-                                }
-
-                                // 3️⃣ Move bead if drag is enough
-                                if (startCol != null && startIndex != null &&
-                                    abs(totalDy) > thresholdPx
-                                ) {
-                                    if (totalDy < 0) {
-                                        if (abacusData.canMoveUp(startIndex, startCol)) {
-                                            abacusData.moveBeadUp(startIndex, startCol)
-                                            if (isBeadSoundOn) PlaySound.playBeadClick(context)
-                                        }
-                                    } else {
-                                        if (abacusData.canMoveDown(startIndex, startCol)) {
-                                            abacusData.moveBeadDown(startIndex, startCol)
-                                            if (isBeadSoundOn) PlaySound.playBeadClick(context)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-
+                    .then(gestureModifier)
                     .spotlightTag(1, highlightSteps[1].message) // rods highlight
             ) {
                 // Draw all columns inside Canvas

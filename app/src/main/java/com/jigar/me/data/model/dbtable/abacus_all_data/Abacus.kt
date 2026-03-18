@@ -98,7 +98,7 @@ data class Abacus(
     val remainder: Int
         get() = if (divisor != 0) dividend % divisor else 0
 
-    val eachStepQuotient: List<Int>
+    val eachStepQuotientFiltered: List<Int>
         get() {
             val tempArray = raiseToExponents(
                 MathUtils.convertStringToArrayOfArrays(quotient.toString())[0]
@@ -109,11 +109,11 @@ data class Abacus(
             }
             return tempArray
         }
-
-    val eachStepQuotientDigitsForMultiplicationTable: List<Int>
-        get() = MathUtils.convertStringToArrayOfArrays(quotient.toString())[0]
-
-    val eachStepRemainder: List<Int>
+    val eachStepQuotient: List<Int>
+        get() = eachStepQuotientFiltered.filterIndexed { index, value ->
+            index == 0 || value != eachStepQuotientFiltered[index - 1]
+        }
+    val eachStepRemainderFiltered: List<Int>
         get() {
             val tempArray = mutableListOf<Int>()
             eachStepQuotient.forEach {
@@ -121,18 +121,14 @@ data class Abacus(
             }
             return tempArray
         }
-
-    fun removeAdjacentDuplicates(input: List<Int>): List<Int> {
-        if (input.isEmpty()) return emptyList()
-
-        val result = mutableListOf(input[0])
-        for (i in 1 until input.size) {
-            if (input[i] != input[i - 1]) {
-                result.add(input[i])
-            }
+    val eachStepRemainder: List<Int>
+        get() = eachStepRemainderFiltered.filterIndexed { index, value ->
+            index == 0 || value != eachStepRemainderFiltered[index - 1]
         }
-        return result
-    }
+
+    val eachStepQuotientDigitsForMultiplicationTable: List<Int>
+        get() = MathUtils.convertStringToArrayOfArrays(quotient.toString())[0]
+            .filter { it != 0 }
 
     fun convertToDisplayDividendArray(originalDividendArray: List<Int>, divisor: Int): List<Int> {
 

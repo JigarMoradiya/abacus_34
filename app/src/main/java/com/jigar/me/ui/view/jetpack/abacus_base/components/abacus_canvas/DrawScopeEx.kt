@@ -142,15 +142,6 @@ fun DrawScope.drawAbacusColumns(
                     val beadIsActive = arr[idx]
                     val imageToDraw: ImageBitmap = beadPolygonGray
 
-//                    val imageToDraw: ImageBitmap =
-//                        if (isPolygonTheme) {
-//                            beadPolygonGray
-//                        } else if (beadIsActive) {
-//                            faceOpen[idx] ?: faceClose[0]!!
-//                        } else {
-//                            faceClose[idx] ?: faceClose[0]!!
-//                        }
-
                     val tintColor =
                         if (!isPolygonTheme) Color.White
                         else if (beadIsActive)
