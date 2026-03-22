@@ -56,8 +56,7 @@ class DefaultAbacusRepository @Inject constructor(
         remote.changePlan(request)
     }
     override fun devicePurchaseVerify(params: PurchasedPlanCheckRequest): Flow<String> = emitFlow {
-        val result = devicePurchaseVerifyApi(params)
-        when (result) {
+        when (val result = devicePurchaseVerifyApi(params)) {
             is Resource.Success -> {
                 val response = result.value
                 when {

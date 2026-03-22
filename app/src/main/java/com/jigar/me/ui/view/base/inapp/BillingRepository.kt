@@ -345,7 +345,6 @@ class BillingRepository @Inject constructor(
         const val PRODUCT_ID_All_lifetime_offer = "com.abacus.all.offer"
         const val PRODUCT_ID_Subscription_Month3 = "com.abacus.puzzle.3month"
         const val PRODUCT_ID_Subscription_Month1 = "com.abacus.puzzle.1month"
-//        const val PRODUCT_ID_Subscription_Month1 = "com.abacus.puzzle.1month.3daytrial"
         const val PRODUCT_ID_Subscription_Month1_FreeTrial = "com.abacus.puzzle.1month.3daytrial"
         const val PRODUCT_ID_Subscription_Week1 = "com.abacus.puzzle.week"
 

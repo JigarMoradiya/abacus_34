@@ -147,6 +147,7 @@ class HomeFragmentNew : Fragment() {
                                 remainingDays = freeTrialParam.remainingDays,
                                 discountPer = freeTrialParam.discountPer,
                                 discountPerLifetime = freeTrialParam.discountPerLifeTime,
+                                manualFreeTrialDays = freeTrialParam.manualFreeTrialDays,
                                 onYes = {
                                     viewModel.hideFreeTrialPopup()
                                     if (freeTrialParam.remainingDays >= 7){

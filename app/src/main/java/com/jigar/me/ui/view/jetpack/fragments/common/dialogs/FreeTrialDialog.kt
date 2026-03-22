@@ -40,9 +40,9 @@ import com.jigar.me.utils.CommonUtils
 
 @Composable
 fun FreeTrialDialog(
-    remainingDays: Int, discountPer: Int, discountPerLifetime: Int, onYes: () -> Unit, onNo: () -> Unit, onDismiss: () -> Unit
+    remainingDays: Int, discountPer: Int, discountPerLifetime: Int,manualFreeTrialDays: Int, onYes: () -> Unit, onNo: () -> Unit, onDismiss: () -> Unit
 ) {
-    val ui = remember { getFreeTrialUi(remainingDays) }
+    val ui = remember { getFreeTrialUi(remainingDays,manualFreeTrialDays) }
 
     Dialog(
         onDismissRequest = onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false)
@@ -72,7 +72,7 @@ fun FreeTrialDialog(
 
                             if (ui.showTrialStart) {
                                 Image(
-                                    painter = painterResource(R.drawable.ic_free_trial), contentDescription = null, modifier = Modifier
+                                    painter = if (manualFreeTrialDays == 3) painterResource(R.drawable.ic_free_trial_3) else painterResource(R.drawable.ic_free_trial_7), contentDescription = null, modifier = Modifier
                                         .size(260.dp)
                                         .align(Alignment.Center)
                                         .padding(16.dp)

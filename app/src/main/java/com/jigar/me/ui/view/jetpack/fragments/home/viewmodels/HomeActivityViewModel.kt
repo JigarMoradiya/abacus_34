@@ -53,7 +53,7 @@ class HomeActivityViewModel @Inject constructor(
         repository.getAllSets()
             .stateIn(
                 viewModelScope,
-                SharingStarted.Companion.WhileSubscribed(5_000),
+                SharingStarted.WhileSubscribed(5_000),
                 emptyList()
             )
 

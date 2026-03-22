@@ -150,6 +150,7 @@ class SplashFragment : BaseFragment() {
                 val supportEmail: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.supportEmail)
                 val newVersionNotes: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.newVersionNotes)
                 val bulkLogin: String = mFirebaseRemoteConfig.getString(AppConstants.RemoteConfig.bulkLogin)
+                val manualFreeTrialDays: Long = mFirebaseRemoteConfig.getLong(AppConstants.RemoteConfig.manualFreeTrialDays)
 
                 with(prefManager){
                     setCustomParam(AppConstants.RemoteConfig.privacyPolicyUrl,privacyPolicyUrl)
@@ -159,6 +160,7 @@ class SplashFragment : BaseFragment() {
                     setCustomParamInt(AppConstants.RemoteConfig.versionCode,versionCode.toInt())
                     setCustomParamInt(AppConstants.RemoteConfig.discountPer,discountPer.toInt())
                     setCustomParamInt(AppConstants.RemoteConfig.discountPerLifeTime,discountPerLifeTime.toInt())
+                    setCustomParamInt(AppConstants.RemoteConfig.manualFreeTrialDays,manualFreeTrialDays.toInt())
 
                     if (video.length > 5){
                         setCustomParam(AppConstants.RemoteConfig.videoList,video)
@@ -168,8 +170,6 @@ class SplashFragment : BaseFragment() {
                     setCustomParam(AppConstants.RemoteConfig.displayPlanList,displayPlan)
                     setCustomParam(AppConstants.RemoteConfig.displayMenuList,displayMenu)
                 }
-                Log.e("jigarSplash","getAccessToken = "+prefManager.getAccessToken())
-                Log.e("jigarSplash","isUserLoggedIn = "+prefManager.isUserLoggedIn())
                 if (requireContext().isNetworkAvailable){
                     if (!prefManager.getAccessToken().isNullOrEmpty() && prefManager.isUserLoggedIn()){
                         studentViewModel.appReviewsList()

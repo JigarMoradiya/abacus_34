@@ -27,6 +27,7 @@ data class FreeTrialParam(
     val remainingDays: Int = 0,
     val discountPer: Int = 0,
     val discountPerLifeTime: Int = 0,
+    val manualFreeTrialDays: Int = 0,
 )
 
 data class FreeTrialUiConfig(
@@ -42,18 +43,63 @@ data class FreeTrialUiConfig(
 )
 
 fun getFreeTrialUi(
-    daysLeft: Int
+    daysLeft: Int,
+    manualFreeTrialDays: Int,
 ): FreeTrialUiConfig {
-    return if (daysLeft >= 7) {
-        FreeTrialUiConfig(
-            title = "Welcome to your 7 days free trial!",
-            desc = "You now have full access - explore, learn & enjoy your journey.",
-            yesText = "Start Learning",
-            showTrialStart = true
-        )
-    } else {
-        when (daysLeft) {
-            6 -> FreeTrialUiConfig(
+    if (manualFreeTrialDays == 3){
+        return when {
+            daysLeft >= 3 -> {
+                FreeTrialUiConfig(
+                    title = "Welcome to your 3 days free trial!",
+                    desc = "You now have full access - explore, learn & enjoy your journey.",
+                    yesText = "Start Learning",
+                    showTrialStart = true,
+                    numberRes = R.drawable.ic_number_3
+                )
+            }
+            daysLeft == 2 -> {
+                FreeTrialUiConfig(
+                    title = "2 days remaining in your free trial.",
+                    desc = "Keep your learning data and achievements safe by unlocking full access before your trial ends.",
+                    yesText = "Subscribe Now",
+                    noText = "Maybe Later",
+                    showDayLeft = true,
+                    showNoButton = true,
+                    numberRes = R.drawable.ic_number_2
+                )
+            }
+            daysLeft == 1 -> {
+                FreeTrialUiConfig(
+                    title = "Last day of your free trial!",
+                    desc = "Stay on track with your learning - subscribe today.",
+                    yesText = "Subscribe Now",
+                    noText = "Maybe Later",
+                    showDayLeft = true,
+                    showNoButton = true,
+                    numberRes = R.drawable.ic_number_1
+                )
+            }
+            else -> {
+                FreeTrialUiConfig(
+                    title = "Your free trial has ended.",
+                    desc = "Subscribe now to continue your learning journey.",
+                    yesText = "View Plans",
+                    showDayLeft = true,
+                    numberRes = R.drawable.ic_number_0
+                )
+            }
+        }
+    }else{
+        return when {
+            daysLeft >= 7 -> {
+                FreeTrialUiConfig(
+                    title = "Welcome to your 7 days free trial!",
+                    desc = "You now have full access - explore, learn & enjoy your journey.",
+                    yesText = "Start Learning",
+                    showTrialStart = true
+                )
+            }
+            daysLeft == 6 -> FreeTrialUiConfig(
                 title = "6 days left in your free trial.",
                 desc = "Keep exploring and see all the features waiting for you!",
                 yesText = "Subscribe Now",
@@ -63,7 +109,7 @@ fun getFreeTrialUi(
                 showNoButton = true,
                 numberRes = R.drawable.ic_number_6
             )
-            5 -> FreeTrialUiConfig(
+            daysLeft == 5 -> FreeTrialUiConfig(
                 title = "Your free trial ends in 5 days.",
                 desc = "Enjoy full access to all lessons during your trial!",
                 yesText = "Subscribe Now",
@@ -72,7 +118,7 @@ fun getFreeTrialUi(
                 showNoButton = true,
                 numberRes = R.drawable.ic_number_5
             )
-            4 -> FreeTrialUiConfig(
+            daysLeft == 4 -> FreeTrialUiConfig(
                 title = "Only 4 days left!",
                 desc = "You're on the right track - don't stop now, success is just ahead!",
                 yesText = "Subscribe Now",
@@ -81,7 +127,7 @@ fun getFreeTrialUi(
                 showNoButton = true,
                 numberRes = R.drawable.ic_number_4
             )
-            3 -> FreeTrialUiConfig(
+            daysLeft == 3 -> FreeTrialUiConfig(
                 title = "3 days remaining in your free trial.",
                 desc = "Keep your learning data and achievements safe by unlocking full access before your trial ends.",
                 yesText = "Subscribe Now",
@@ -90,7 +136,7 @@ fun getFreeTrialUi(
                 showNoButton = true,
                 numberRes = R.drawable.ic_number_3
             )
-            2 -> FreeTrialUiConfig(
+            daysLeft == 2 -> FreeTrialUiConfig(
                 title = "Your free trial ends soon - only 2 days left!",
                 desc = "Continue your learning adventure by subscribing today.",
                 yesText = "Subscribe Now",
@@ -99,7 +145,7 @@ fun getFreeTrialUi(
                 showNoButton = true,
                 numberRes = R.drawable.ic_number_2
             )
-            1 -> FreeTrialUiConfig(
+            daysLeft == 1 -> FreeTrialUiConfig(
                 title = "Last day of your free trial!",
                 desc = "Stay on track with your learning - subscribe today.",
                 yesText = "Subscribe Now",
@@ -117,4 +163,5 @@ fun getFreeTrialUi(
             )
         }
     }
+
 }

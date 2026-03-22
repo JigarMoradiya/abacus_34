@@ -69,6 +69,7 @@ class PurchaseViewModel @Inject constructor(
                 ?: emptyList()
 
             val skuIds = displayList.map { it.id }.toMutableList()
+//            skuIds.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Year1_Offer)
 //            skuIds.add(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1_FreeTrial)
 //            skuIds.remove(BillingRepository.AbacusSku.PRODUCT_ID_Subscription_Month1)
 //            skuIds.remove("com.abacus.puzzle.1month")

@@ -27,9 +27,7 @@ class DevicePurchaseVerifyUseCase @Inject constructor(
     ): Flow<String> = flow {
         try {
             onStart?.invoke()
-            Log.e("jigarHomeApi","DevicePurchaseVerifyUseCase params = "+ Gson().toJson(params))
             repository.devicePurchaseVerify(params).collect{
-                Log.e("jigarHomeApi","DevicePurchaseVerifyUseCase response = "+ Gson().toJson(it))
                 onEachEmit?.invoke(it) // notify UI
                 emit(it)
             }
