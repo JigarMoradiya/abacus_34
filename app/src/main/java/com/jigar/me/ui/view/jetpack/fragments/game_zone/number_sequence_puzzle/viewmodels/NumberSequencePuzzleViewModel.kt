@@ -1,10 +1,6 @@
 package com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.viewmodels
 
 import android.content.Context
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import com.jigar.me.data.pref.AppPreferencesHelper
@@ -24,13 +20,13 @@ class NumberSequencePuzzleViewModel @Inject constructor(
     private val prefManager: AppPreferencesHelper
 ) : ViewModel() {
 
-    val _uiState = MutableStateFlow(NumberSequencePuzzleUiState())
+    private val _uiState = MutableStateFlow(NumberSequencePuzzleUiState())
     val uiState: StateFlow<NumberSequencePuzzleUiState> = _uiState.asStateFlow()
 
 
     private var gridSize = 3
 
-    val yellowShades = listOf(
+    private val yellowShades = listOf(
         Color(0xFFF8C8DC),
         Color(0xFFF8BBD0),
         Color(0xFFF48FB1),
@@ -45,7 +41,7 @@ class NumberSequencePuzzleViewModel @Inject constructor(
         Color(0xFFE91E63).copy(alpha = 0.20f),
     )
 
-    val orangeShades = listOf(
+    private val orangeShades = listOf(
         Color(0xFFFFBF00),
         Color(0xFFFBCEB1),
         Color(0xFFFFAC1C),
@@ -67,7 +63,7 @@ class NumberSequencePuzzleViewModel @Inject constructor(
         Color(0xFFFF9F85),
     )
 
-    val blueShades = listOf(
+    private val blueShades = listOf(
         Color(0xFFBBDEFB),
         Color(0xFF90CAF9),
         Color(0xFFB3E5FC),
@@ -106,11 +102,20 @@ class NumberSequencePuzzleViewModel @Inject constructor(
         gridSize = size
         _uiState.value = NumberSequencePuzzleUiState(
             tiles = generateSolvableGrid(gridSize),
+            tileColors = generateTileColors(gridSize),
             soundOn = prefManager.getCustomParamBoolean(
                 AppConstants.Settings.Setting_NumberPuzzleVolume,
                 true
             )
         )
+    }
+
+    private fun generateTileColors(size: Int): List<List<Color>> {
+        return List(size) {
+            List(size) {
+                randomTileColor(size)
+            }
+        }
     }
 
     fun toggleSound() {
@@ -123,6 +128,7 @@ class NumberSequencePuzzleViewModel @Inject constructor(
         _uiState.update {
             it.copy(
                 tiles = generateSolvableGrid(gridSize),
+                tileColors = generateTileColors(gridSize),
                 moveCount = 0,
                 isSolved = false
             )
@@ -157,7 +163,7 @@ class NumberSequencePuzzleViewModel @Inject constructor(
         restartGame()
     }
 
-    fun randomTileColor(gridSize: Int): Color {
+    private fun randomTileColor(gridSize: Int): Color {
         return when (gridSize) {
             3 -> yellowShades.random()
             4 -> orangeShades.random()

@@ -41,6 +41,7 @@ import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
+import com.jigar.me.ui.view.home.HomeActivity
 import com.jigar.me.ui.viewmodel.StudentViewModel
 import com.jigar.me.utils.Resource
 
@@ -204,6 +205,6 @@ class SplashFragment : BaseFragment() {
             prefManager.setCustomParamInt(Constants.free_trial_remaining_days,free_trial_remaining_days)
         }
 
-        MainDashboardActivity.getInstance(requireContext())
+        HomeActivity.getInstance(requireContext())
     }
 }

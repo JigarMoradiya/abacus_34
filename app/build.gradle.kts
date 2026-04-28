@@ -204,6 +204,7 @@ dependencies {
 
     implementation("androidx.activity:activity-compose:1.8.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
+    implementation("androidx.hilt:hilt-navigation-compose:1.3.0")
 
 // Icons
     implementation("androidx.compose.material:material-icons-core")

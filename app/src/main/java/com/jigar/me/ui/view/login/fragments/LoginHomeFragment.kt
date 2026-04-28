@@ -42,6 +42,7 @@ import com.google.gson.reflect.TypeToken
 import com.jigar.me.data.model.data.AbacusAllData
 import com.jigar.me.data.model.data.FetchAbacusDataRequest
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
+import com.jigar.me.ui.view.home.HomeActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.utils.Constants
 import kotlinx.coroutines.CoroutineScope
@@ -236,7 +237,7 @@ class LoginHomeFragment : BaseFragment() {
             prefManager.setCustomParamInt(Constants.free_trial_remaining_days,free_trial_remaining_days)
         }
         prefManager.setUserLoggedIn(true)
-        MainDashboardActivity.getInstance(requireContext())
+        HomeActivity.getInstance(requireContext())
     }
 
 }
