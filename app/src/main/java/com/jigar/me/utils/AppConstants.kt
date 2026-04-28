@@ -56,12 +56,6 @@ object AppConstants {
         }
     }
 
-    annotation class FirebaseEvents {
-        companion object {
-            var appInstallFrom = "app_install_from"
-        }
-    }
-
     annotation class RemoteConfig {
         companion object {
             var videoList = "video"

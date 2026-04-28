@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.viewModelScope
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
 import com.jigar.me.ui.view.jetpack.abacus_base.viewmodel.BaseAbacusViewModel
@@ -13,6 +14,8 @@ import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.convertNumberToWords
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.math.max
 
@@ -142,7 +145,11 @@ class AbacusFreeModeViewModel @Inject constructor(
     fun refreshBeads(target: Int = numberToMatch) {
         if (showHighlighter) return  // During tour, we control movements from spotlight logic
 
-        if (!isFreeModeOn) {
+        if (isFreeModeOn) {
+            // Free mode → no arrows / hints
+            updateShowDirectionHints(false)
+            updateRodMovements(emptyList())
+        } else {
             val leftInt = abacusCalc.totalValuePair.first.toIntOrNull() ?: 0
             val rightInt = abacusCalc.totalValuePair.second.toIntOrNull() ?: 0
 
@@ -150,10 +157,6 @@ class AbacusFreeModeViewModel @Inject constructor(
             val left = MathUtils.calculateRodMovements(from = leftInt, to = target, rods = rods, isForRightRods = false)
             val right = MathUtils.calculateRodMovements(from = rightInt, to = 0, rods = 6, isForRightRods = true)
             updateRodMovements(left + right)
-        } else {
-            // Free mode → no arrows / hints
-            updateShowDirectionHints(false)
-            updateRodMovements(emptyList())
         }
     }
 
@@ -171,12 +174,18 @@ class AbacusFreeModeViewModel @Inject constructor(
         if (rightInt == 0 && leftInt == numberToMatch) {
             // ✅ matched
             if (isResetEveryTime) {
-                abacusCalc.resetAbacusData()
+                viewModelScope.launch {
+                    delay(500)
+                    abacusCalc.resetAbacusData()
+                    numberToMatch = generateNextTarget(numberToMatch)
+                }
+            }else{
+                numberToMatch = generateNextTarget(numberToMatch)
             }
-            numberToMatch = generateNextTarget(numberToMatch)
         }
-
         refreshBeads(numberToMatch)
+
+
     }
 
     // --------- Highlighter / Tour ----------
