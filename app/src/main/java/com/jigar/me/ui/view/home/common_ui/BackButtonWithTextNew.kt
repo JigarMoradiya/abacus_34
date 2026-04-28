@@ -45,7 +45,7 @@ import com.jigar.me.ui.view.jetpack.utils.ui.extensions.scaled
 
 
 @Composable
-fun BackButtonWithText(
+fun BackButtonWithTextNew(
     title: String,
     modifier: Modifier = Modifier,
     size: Dp = ToolbarIconSize,
@@ -97,7 +97,7 @@ fun BackButtonWithText(
                     Text(
                         text = title,
                         color = Color.White,
-                        style = MaterialTheme.typography.titleSmall.scaled(),
+                        style = MaterialTheme.typography.bodyLarge.scaled(),
                         fontWeight = FontWeight.Black
                     )
                 }

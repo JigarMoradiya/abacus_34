@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.base.BaseActivity
+import com.jigar.me.ui.view.home.common_ui.BackgroundUI
 import com.jigar.me.ui.view.home.navigation.HomeNavGraph
 import com.jigar.me.ui.view.home.theme.MyApplicationTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.LocalPreferencesHelper
@@ -69,6 +70,7 @@ class HomeActivity : BaseActivity() {
             DeviceInfo.isTablet = resources.configuration.smallestScreenWidthDp >= 600 && resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
             setContent {
+                BackgroundUI()
                 MyApplicationTheme {
                     CompositionLocalProvider(LocalPreferencesHelper provides preferences) {
                         HomeNavGraph(homeActivityViewModel = homeActivityViewModel)

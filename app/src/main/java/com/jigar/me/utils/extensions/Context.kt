@@ -6,6 +6,7 @@ import android.app.NotificationManager
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
+import android.content.ContextWrapper
 import android.content.Intent
 import android.content.res.Configuration
 import android.content.res.Resources
@@ -60,6 +61,12 @@ import java.util.*
 
  fun Context.toastL(message: String) {
      Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+ }
+
+ fun Context.findActivity(): Activity? = when (this) {
+     is Activity -> this
+     is ContextWrapper -> baseContext.findActivity()
+     else -> null
  }
 
  fun Context.setLocale(lan: String) {

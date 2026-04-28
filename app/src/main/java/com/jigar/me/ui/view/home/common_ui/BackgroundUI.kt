@@ -30,9 +30,9 @@ fun BackgroundUI(
                 .background(
                     Brush.verticalGradient(
                         colors = listOf(
-                            Color(0x0FFFB300),
-                            Color(0x19FB8C00),
-                            Color(0x20F4511E),
+                            Color(0x0A707070),
+                            Color(0x14505050),
+                            Color(0x20606060),
                         )
                     )
                 )

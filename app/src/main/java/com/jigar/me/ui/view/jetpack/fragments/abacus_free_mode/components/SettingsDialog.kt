@@ -16,6 +16,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Done
+import androidx.compose.material.icons.filled.DoneOutline
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
@@ -33,18 +37,24 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextRange
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.jigar.me.R
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens6
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
+import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.view.jetpack.utils.ui.extensions.scaled
 
 @SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
@@ -61,8 +71,6 @@ fun SettingsDialog(
     randomRangeLow: Int,
     randomRangeHigh: Int,
 
-    numberToMatch: Int?,
-    generateNextTarget: (Int?) -> Int?,
     refreshBeadMovement: (Int?) -> Unit,
     onUpdateRange: (Int, Int) -> Unit,
     dismiss: () -> Unit
@@ -81,7 +89,6 @@ fun SettingsDialog(
     var toError by remember { mutableStateOf<String?>(null) }
     var generalError by remember { mutableStateOf<String?>(null) }
 
-
     Dialog(
         onDismissRequest = dismiss, properties = DialogProperties(usePlatformDefaultWidth = false)
     ) {
@@ -91,7 +98,7 @@ fun SettingsDialog(
         ) {
             Surface(
                 modifier = Modifier.width(dialogWidth),     // but never more than 600dp
-                shape = RoundedCornerShape(16.dp), color = Color.White, tonalElevation = 8.dp
+                shape = RoundedCornerShape(Dimens16), color = Color.White, tonalElevation = Dimens8
             ) {
 
                 Column(
@@ -103,12 +110,10 @@ fun SettingsDialog(
 
                         Text(
                             stringResource(R.string.free_mode_settings),
-                            style = MaterialTheme.typography.titleLarge,
-                            fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            style = MaterialTheme.typography.titleLarge.scaled(),
                             modifier = Modifier
-                                .padding(horizontal = 16.dp)
-                                .padding(top = 16.dp, bottom = 4.dp)
+                                .padding(horizontal = Dimens16)
+                                .padding(top = Dimens16, bottom = Dimens4)
                                 .weight(1f)
                         )
 
@@ -116,77 +121,72 @@ fun SettingsDialog(
                             modifier = Modifier, contentAlignment = Alignment.CenterEnd
                         ) {
 
-                            Text(
-                                text = stringResource(R.string.update),
-                                style = MaterialTheme.typography.titleSmall,
-                                fontWeight = FontWeight.Bold,
-                                fontFamily = FontFamily(Font(R.font.font_bold)),
-                                color = ColorPrimary,
+                            KidsActionButton(
                                 modifier = Modifier
-                                    .clip(RoundedCornerShape(6.dp))
-                                    .padding(horizontal = 16.dp)
-                                    .padding(top = 16.dp, bottom = 4.dp)
-                                    .clickable(
-                                        interactionSource = remember { MutableInteractionSource() },
-                                        indication = LocalIndication.current    // ⭐ Material3 ripple, no deprecation
-                                    ) {
+                                    .padding(horizontal = Dimens16)
+                                    .padding(top = Dimens16, bottom = Dimens4),
+                                text = stringResource(R.string.update),
+                                icon = Icons.Default.Done,
+                                type = ButtonType.GREEN,
+                                isSmall = true,
+                                onClick = {
+                                    if (!isFreeModeOn){
+                                        val from = tempLow.toIntOrNull()
+                                        val to = tempHigh.toIntOrNull()
 
-                                        if (!isFreeModeOn){
-                                            val from = tempLow.toIntOrNull()
-                                            val to = tempHigh.toIntOrNull()
+                                        // Reset errors
+                                        fromError = null
+                                        toError = null
+                                        generalError = null
 
-                                            // Reset errors
-                                            fromError = null
-                                            toError = null
-                                            generalError = null
-
-                                            // 1) Empty validation
-                                            if (tempLow.isBlank()) {
-                                                fromError = "From number cannot be empty"
-                                                return@clickable
-                                            }
-                                            if (tempHigh.isBlank()) {
-                                                toError = "To number cannot be empty"
-                                                return@clickable
-                                            }
-
-                                            // 2) Parse fail
-                                            if (from == null) {
-                                                fromError = "Invalid number"
-                                                return@clickable
-                                            }
-                                            if (to == null) {
-                                                toError = "Invalid number"
-                                                return@clickable
-                                            }
-
-                                            // 3) Max number validation
-                                            if (from > 9_999_999) {
-                                                fromError = "Maximum allowed number is 9,999,999"
-                                                return@clickable
-                                            }
-                                            if (to > 9_999_999) {
-                                                toError = "Maximum allowed number is 9,999,999"
-                                                return@clickable
-                                            }
-
-                                            // 4) To >= From
-                                            if (to <= from) {
-                                                generalError = "To number must be greater than From number"
-                                                return@clickable
-                                            }
-
-                                            // 5) Gap must be at least 20
-                                            if ((to - from) < 20) {
-                                                generalError = "Difference must be at least 20"
-                                                return@clickable
-                                            }
-
-                                            // ✔ All good — Apply changes
-                                            onUpdateRange(from, to)
+                                        // 1) Empty validation
+                                        if (tempLow.isBlank()) {
+                                            fromError = "From number cannot be empty"
+                                            return@KidsActionButton
                                         }
-                                        dismiss()
-                                    })
+                                        if (tempHigh.isBlank()) {
+                                            toError = "To number cannot be empty"
+                                            return@KidsActionButton
+                                        }
+
+                                        // 2) Parse fail
+                                        if (from == null) {
+                                            fromError = "Invalid number"
+                                            return@KidsActionButton
+                                        }
+                                        if (to == null) {
+                                            toError = "Invalid number"
+                                            return@KidsActionButton
+                                        }
+
+                                        // 3) Max number validation
+                                        if (from > 9_999_999) {
+                                            fromError = "Maximum allowed number is 9,999,999"
+                                            return@KidsActionButton
+                                        }
+                                        if (to > 9_999_999) {
+                                            toError = "Maximum allowed number is 9,999,999"
+                                            return@KidsActionButton
+                                        }
+
+                                        // 4) To >= From
+                                        if (to <= from) {
+                                            generalError = "To number must be greater than From number"
+                                            return@KidsActionButton
+                                        }
+
+                                        // 5) Gap must be at least 20
+                                        if ((to - from) < 5) {
+                                            generalError = "Difference must be at least 5"
+                                            return@KidsActionButton
+                                        }
+
+                                        // ✔ All good — Apply changes
+                                        onUpdateRange(from, to)
+                                    }
+                                    dismiss()
+                                },
+                            )
                         }
 
 
@@ -199,28 +199,19 @@ fun SettingsDialog(
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(start = 16.dp, end = 16.dp)
+                            .padding(start = Dimens16, end = Dimens16)
                     ) {
                         Text(
                             "Want to learn the abacus parts and how it works? \uD83E\uDDE0",
                             modifier = Modifier.weight(1f),
-                            fontWeight = FontWeight.SemiBold,
-                            fontFamily = FontFamily(Font(R.font.font_semibold)),
-                            style = MaterialTheme.typography.bodyMedium
+                            style = MaterialTheme.typography.labelLarge.scaled()
                         )
 
                         Switch(
                             modifier = Modifier.scale(0.9f),
                             checked = isFreeModeOn, onCheckedChange = {
                                 setFreeMode(it)
-                                if (!it) {
-//                                    if (numberToMatch == null){
-//                                        val newTarget = generateNextTarget(numberToMatch)
-//                                        refreshBeadMovement(newTarget)
-//                                    }else{
-//                                        refreshBeadMovement(numberToMatch)
-//                                    }
-                                } else {
+                                if (it) {
                                     refreshBeadMovement(null)
                                 }
                             })
@@ -233,7 +224,7 @@ fun SettingsDialog(
                         verticalArrangement = Arrangement.spacedBy(0.dp),
                         modifier = Modifier
                             .alpha(if (isFreeModeOn) 0.4f else 1f)
-                            .padding(horizontal = 16.dp)
+                            .padding(horizontal = Dimens16)
                     ) {
 
                         // Reset every time
@@ -244,9 +235,7 @@ fun SettingsDialog(
                             Text(
                                 "Should I clear the abacus after you finish a number? \uD83E\uDDF9",
                                 modifier = Modifier.weight(1f),
-                                fontWeight = FontWeight.SemiBold,
-                                fontFamily = FontFamily(Font(R.font.font_semibold)),
-                                style = MaterialTheme.typography.bodyMedium
+                                style = MaterialTheme.typography.labelLarge.scaled()
                             )
 
                             Switch(
@@ -265,17 +254,13 @@ fun SettingsDialog(
                             Text(
                                 "Should I show numbers in a fun random order? \uD83C\uDFB2",
                                 modifier = Modifier.weight(1f),
-                                fontWeight = FontWeight.SemiBold,
-                                fontFamily = FontFamily(Font(R.font.font_semibold)),
-                                style = MaterialTheme.typography.bodyMedium
+                                style = MaterialTheme.typography.labelLarge.scaled()
                             )
 
                             Switch(
                                 modifier = Modifier.scale(0.9f),
                                 checked = randomToggle, onCheckedChange = {
                                     setRandomToggle(it)
-//                                    val newTarget = generateNextTarget(null)
-//                                    refreshBeadMovement(newTarget)
                                 }, enabled = !isFreeModeOn
                             )
                         }
@@ -283,25 +268,23 @@ fun SettingsDialog(
                         // Range display
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.fillMaxWidth().padding(top = 4.dp)
+                            modifier = Modifier.fillMaxWidth().padding(top = Dimens4)
                         ) {
                             Text(
                                 "Choose the numbers range you want to play with! \uD83D\uDD22",
                                 modifier = Modifier.weight(1f),
-                                fontWeight = FontWeight.SemiBold,
-                                fontFamily = FontFamily(Font(R.font.font_semibold)),
-                                style = MaterialTheme.typography.labelLarge
+                                style = MaterialTheme.typography.labelLarge.scaled()
                             )
                         }
 
                         // Input row (NEW)
-                        Spacer(Modifier.height(12.dp))
+                        Spacer(Modifier.height(Dimens12))
 
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(bottom = 12.dp),
-                            horizontalArrangement = Arrangement.spacedBy(12.dp)
+                                .padding(bottom = Dimens12),
+                            horizontalArrangement = Arrangement.spacedBy(Dimens12)
                         ) {
                             var tempLowState by remember {
                                 mutableStateOf(TextFieldValue(text = tempLow))
@@ -381,8 +364,8 @@ fun SettingsDialog(
                             Text(
                                 text = fromError ?: toError ?: generalError!!,
                                 color = Color.Red,
-                                style = MaterialTheme.typography.labelMedium,
-                                modifier = Modifier.padding(bottom = 8.dp)
+                                style = MaterialTheme.typography.labelMedium.scaled(),
+                                modifier = Modifier.padding(bottom = Dimens8)
                             )
                         }
 

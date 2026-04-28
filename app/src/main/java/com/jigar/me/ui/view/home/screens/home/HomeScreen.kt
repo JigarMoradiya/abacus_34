@@ -88,8 +88,6 @@ fun HomeScreen(
         }
     }
 
-    BackgroundUI()
-
     Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             HomeHeaderLeft {

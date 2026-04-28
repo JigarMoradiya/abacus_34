@@ -30,6 +30,7 @@ val customFonts = FontFamily(
     Font(R.font.font_medium, FontWeight.Medium),
     Font(R.font.font_semibold, FontWeight.SemiBold),
     Font(R.font.font_bold, FontWeight.Bold),
+    Font(R.font.font_extra_bold, FontWeight.ExtraBold),
 )
 
 val AppTypography = Typography(
