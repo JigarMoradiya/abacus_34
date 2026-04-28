@@ -28,7 +28,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens2
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import com.jigar.me.ui.view.jetpack.fragments.purchase.viewmodels.PurchaseUiState
+import com.jigar.me.ui.view.jetpack.utils.ui.extensions.scaled
 
 @Composable
 fun PurchaseScreen(
@@ -61,21 +67,20 @@ fun PurchaseScreen(
         if (uiState.isOldSubscriptionThere){
             Surface(
                 onClick = {onShowOldSubClick()},
-                shape = RoundedCornerShape(4.dp),
+                shape = RoundedCornerShape(Dimens4),
                 color = colorResource(R.color.green_500),
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
-                    .padding(bottom = 12.dp),
+                    .padding(bottom = Dimens12),
                 tonalElevation = 0.dp,
                 shadowElevation = 0.dp
             ) {
                 Text(
-                    lineHeight = 10.sp,
                     text = stringResource(R.string.old_purchases),
-                    style = MaterialTheme.typography.labelMedium.copy(color = Color.White, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
+                    style = MaterialTheme.typography.labelMedium.scaled().copy(color = Color.White, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
                     modifier = Modifier.padding(
-                        horizontal = dimensionResource(R.dimen.activity_padding8),
-                        vertical = dimensionResource(R.dimen.activity_padding2)
+                        horizontal = Dimens8,
+                        vertical = Dimens2
                     )
                 )
             }
@@ -86,7 +91,7 @@ fun PurchaseScreen(
             contentDescription = null,
             modifier = Modifier
                 .align(Alignment.TopStart)
-                .padding(dimensionResource(R.dimen.activity_padding16))
+                .padding(Dimens16)
                 .clickable { onClose() }
         )
     }

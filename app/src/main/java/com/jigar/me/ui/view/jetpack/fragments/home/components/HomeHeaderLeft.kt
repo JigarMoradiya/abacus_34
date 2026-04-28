@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.Undo
 import androidx.compose.material3.LocalMinimumInteractiveComponentSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -28,47 +30,40 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
+import com.jigar.me.ui.view.home.theme.AppDimens.HomePageLogo
+import com.jigar.me.ui.view.home.theme.ButtonType
+import com.jigar.me.ui.view.home.theme.PrimaryBlue
+import com.jigar.me.ui.view.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.utils.CommonUtils
 
 @Composable
 fun HomeHeaderLeft(
     onMyAccountClick: () -> Unit
 ) {
-    val context = LocalContext.current
-    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(start = dimensionResource(R.dimen.activity_padding12),top = dimensionResource(R.dimen.activity_padding12))) {
+    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = DeviceInfo.screenTopPadding(), bottom = Dimens8, start = DeviceInfo.screenHorizontalPadding(), end = Dimens16)) {
         Image(
             painter = painterResource(id = R.drawable.logo),
             contentDescription = "Abacus",
-            modifier = Modifier.size(56.dp)
+            modifier = Modifier.size(HomePageLogo)
         )
 
-        Column(modifier = Modifier.padding(start = dimensionResource(R.dimen.activity_padding10))) {
+        Column(modifier = Modifier.padding(start = Dimens12)) {
             Text(
                 text = stringResource(R.string.welcome_to_abacus_application),
-                style = MaterialTheme.typography.bodyMedium.copy(color = Color.DarkGray, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
+                style = MaterialTheme.typography.bodyMedium.scaled().copy(color = PrimaryBlue, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
             )
-            CompositionLocalProvider(
-                LocalMinimumInteractiveComponentSize provides Dp.Unspecified
-            ) {
-                Surface(
-                    onClick = onMyAccountClick,
-                    shape = RoundedCornerShape(3.dp),
-                    color = colorResource(R.color.colorPrimary),
-                    modifier = Modifier.padding(top = dimensionResource(R.dimen.activity_padding2)),
-                    tonalElevation = 0.dp,
-                    shadowElevation = 0.dp
-                ) {
-                    Text(
-                        lineHeight = 10.sp,
-                        text = stringResource(R.string.my_account),
-                        style = MaterialTheme.typography.labelSmall.copy(color = Color.White, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
-                        modifier = Modifier.padding(
-                            horizontal = dimensionResource(R.dimen.activity_padding4),
-                            vertical = dimensionResource(R.dimen.activity_padding2)
-                        )
-                    )
-                }
-            }
+
+            KidsActionButton(
+                text = stringResource(R.string.my_account),
+                type = ButtonType.BLUE,
+                onClick = onMyAccountClick,
+                isSmall = true
+            )
 
         }
     }

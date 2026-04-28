@@ -12,7 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 
-val PrimaryBlue = Color(0xFF303F9F)
+val PrimaryBlue = Color(0xFF283593)
 
 private val LightColors = lightColorScheme(
     primary = PrimaryBlue,
