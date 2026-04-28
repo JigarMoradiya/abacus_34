@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.home.screens.activities
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,7 +33,7 @@ fun CCMHomeRoute(
     val context = LocalContext.current
     val pleaseSelectMsg = stringResource(R.string.please_select_at_least_one_checkbox)
 
-    Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+    Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         BackButtonWithText(
             title = stringResource(R.string.custom_challenge_mode),
             onBackClick = onBackClick

@@ -29,10 +29,10 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 
 
 @Composable
-fun KidsLabel(txt: String,type: ButtonType = ButtonType.PURPLE) {
+fun KidsLabel(text: String,type: ButtonType = ButtonType.PURPLE,modifier: Modifier = Modifier) {
     val colors = getButtonColors(type)
     Box(
-        modifier = Modifier
+        modifier = modifier
             .padding(end = Dimens16)
     ) {
 
@@ -75,7 +75,7 @@ fun KidsLabel(txt: String,type: ButtonType = ButtonType.PURPLE) {
             }
 
             Text(
-                text = txt,
+                text = text,
                 color = Color.White,
                 style = MaterialTheme.typography.bodyMedium.scaled(),
                 fontWeight = FontWeight.SemiBold,

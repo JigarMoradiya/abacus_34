@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.activities
 
+import android.text.Layout
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -7,6 +9,7 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -32,7 +35,7 @@ fun ExamHomeRoute(
     val context = LocalContext.current
     val pleaseSelectMsg = stringResource(R.string.please_select_at_least_one_checkbox)
 
-    Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+    Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         BackButtonWithText(
             title = stringResource(R.string.math_exam),
             onBackClick = onBackClick

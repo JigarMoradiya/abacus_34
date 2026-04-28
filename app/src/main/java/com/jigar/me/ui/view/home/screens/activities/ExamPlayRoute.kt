@@ -7,10 +7,11 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -20,13 +21,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.view.home.screens.activities.exam.play.components.ExamHeader
-import com.jigar.me.ui.view.home.screens.activities.exam.play.components.ExamQuestionSection
-import com.jigar.me.ui.view.home.screens.activities.exam.play.viewmodels.ExamPlayViewModel
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.Loader
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsLabel
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.screens.activities.exam.play.components.ExamProgressBar
+import com.jigar.me.ui.view.home.screens.activities.exam.play.components.ExamQuestionSection
+import com.jigar.me.ui.view.home.screens.activities.exam.play.viewmodels.ExamPlayViewModel
 import com.jigar.me.ui.view.home.screens.reports.dialogs.ExerciseExamCompleteResultDialog
+import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.utils.extensions.secToTimeFormat
 
 @Composable
 fun ExamPlayRoute(
@@ -46,7 +50,21 @@ fun ExamPlayRoute(
                     modifier = Modifier.weight(1f)
                 )
             }
-            ExamHeader(uiState, elapsedSeconds = uiState.elapsedSeconds)
+//            ExamHeader(uiState, elapsedSeconds = uiState.elapsedSeconds)
+
+            ExamProgressBar(
+                progress = uiState.currentIndex + 1,
+                max = uiState.examPaper.size,
+                modifier = Modifier
+                    .width(AppDimens.Dimens240)
+                    .padding(horizontal = AppDimens.Dimens16)
+                    .align(alignment = Alignment.Center)
+            )
+
+
+            KidsLabel(
+                text = "Time : "+uiState.elapsedSeconds.secToTimeFormat(),modifier = Modifier.align(alignment = Alignment.CenterEnd)
+            )
         }
         Box(modifier = Modifier.fillMaxSize()) {
             ExamQuestionSection(

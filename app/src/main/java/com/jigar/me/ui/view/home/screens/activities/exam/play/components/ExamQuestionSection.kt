@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -32,6 +33,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.base.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
 import com.jigar.me.ui.view.base.abacus_base.utils.MathUtils
@@ -77,7 +79,7 @@ fun ExamQuestionSection(
         if (question.queType == MainQuestionType.question.name){
             Text(
                 text = "${question.que} = ?",
-                fontSize = 36.sp,
+                fontSize = 36.sp.scaled(),
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
                 color = Color.Black
@@ -94,7 +96,7 @@ fun ExamQuestionSection(
                 if (!left.isNullOrEmpty()) {
                     Text(
                         text = left,
-                        fontSize = 36.sp,
+                        fontSize = 36.sp.scaled(),
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.padding(horizontal = AppDimens.Dimens12)
@@ -128,7 +130,7 @@ fun ExamQuestionSection(
 
                         Text(
                             text = "?",
-                            fontSize = 36.sp,
+                            fontSize = 36.sp.scaled(),
                             fontWeight = FontWeight.Bold,
                             color = Color.Red
                         )
@@ -146,7 +148,7 @@ fun ExamQuestionSection(
                 if (!right.isNullOrEmpty()) {
                     Text(
                         text = right,
-                        fontSize = 36.sp,
+                        fontSize = 36.sp.scaled(),
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.padding(horizontal = AppDimens.Dimens12)
@@ -160,7 +162,7 @@ fun ExamQuestionSection(
 
                     Text(
                         text = "= $correctAnswer",
-                        fontSize = 36.sp,
+                        fontSize = 36.sp.scaled(),
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.padding(horizontal = AppDimens.Dimens12)
@@ -170,7 +172,7 @@ fun ExamQuestionSection(
 
                     Text(
                         text = "= ?",
-                        fontSize = 36.sp,
+                        fontSize = 36.sp.scaled(),
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.padding(horizontal = AppDimens.Dimens12)
@@ -183,11 +185,11 @@ fun ExamQuestionSection(
         // ---------- Blink text ----------
         Text(
             text = stringResource(R.string.TapCorrectAns),
-            fontSize = 16.sp,
+            style = MaterialTheme.typography.bodyMedium.scaled(),
             fontWeight = FontWeight.ExtraBold,
-            color = colorResource(R.color.back_icon_bg),
+            color = Color(0xFF0B5960),
             modifier = Modifier
-                .padding(top = AppDimens.Dimens8)
+                .padding(top = AppDimens.Dimens16)
                 .alpha(blinkAlpha)
         )
 
@@ -202,7 +204,7 @@ fun ExamQuestionSection(
             Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)) {
                 KidsOptionButton(
                     text = question.option1.toString(),
-                    type = ButtonType.OPTIONS,
+                    type = ButtonType.TEAL,
                     fontSize = examOptionHeight.value.sp * 0.6,
                     onClick = {
                         viewModel.onOptionSelected(question.option1, question.answer)
@@ -211,7 +213,7 @@ fun ExamQuestionSection(
                 )
                 KidsOptionButton(
                     text = question.option2.toString(),
-                    type = ButtonType.OPTIONS,
+                    type = ButtonType.TEAL,
                     fontSize = examOptionHeight.value.sp * 0.6,
                     onClick = {
                         viewModel.onOptionSelected(question.option2, question.answer)
@@ -223,7 +225,7 @@ fun ExamQuestionSection(
             Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)) {
                 KidsOptionButton(
                     text = question.option3.toString(),
-                    type = ButtonType.OPTIONS,
+                    type = ButtonType.TEAL,
                     fontSize = examOptionHeight.value.sp * 0.6,
                     onClick = {
                         viewModel.onOptionSelected(question.option3, question.answer)
@@ -232,7 +234,7 @@ fun ExamQuestionSection(
                 )
                 KidsOptionButton(
                     text = question.option4.toString(),
-                    type = ButtonType.OPTIONS,
+                    type = ButtonType.TEAL,
                     fontSize = examOptionHeight.value.sp * 0.6,
                     onClick = {
                         viewModel.onOptionSelected(question.option4, question.answer)
