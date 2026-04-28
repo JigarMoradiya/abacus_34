@@ -64,7 +64,7 @@ fun KidsIconButton(
 
                 // Bottom shadow (depth)
                 drawCircle(
-                    color = colors.base.copy(alpha = 0.5f),
+                    color = colors.base,
                     radius = size.toPx() / 2,
                     center = Offset(
                         size.toPx() / 2,

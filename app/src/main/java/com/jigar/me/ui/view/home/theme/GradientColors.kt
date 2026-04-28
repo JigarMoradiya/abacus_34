@@ -85,7 +85,7 @@ fun getButtonColors(type: ButtonType): ButtonColors {
         )
 
         ButtonType.PINK -> ButtonColors(
-            base = Color(0xFFD5084E),
+            base = Color(0xFFB4043F),
             gradient = Brush.horizontalGradient(
                 listOf(
                     Color(0xFFF5538A),
