@@ -9,9 +9,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.temp_abacus_list.components.AbacusListItem
-import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.temp_abacus_list.viewmodels.AbacusListViewModel
-import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
+import com.jigar.me.ui.view.home.screens.category.abacus_list.components.AbacusListItem
+import com.jigar.me.ui.view.home.screens.category.abacus_list.viewmodels.AbacusListViewModel
+import com.jigar.me.ui.view.home.common.BackButtonWithText
 
 @Composable
 fun AbacusListRoute(

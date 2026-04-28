@@ -23,19 +23,19 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.AbacusViewItem
-import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.AddSubAbacusItem
-import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.DivisionAbacusItem
-import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.MultiplicationAbacusItem
-import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.NumberAbacusItem
-import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.subitems.AbacusFormulaItem
-import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.subitems.SetTimer
-import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.components.subitems.UseWhichHandTextUi
-import com.jigar.me.ui.view.jetpack.fragments.abacus_practice.do_practice.viewmodels.AbacusDoPracticeViewModel
-import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
-import com.jigar.me.ui.view.jetpack.fragments.common.Loader
-import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
-import com.jigar.me.ui.view.jetpack.fragments.reports.dialogs.ExerciseExamCompleteResultDialog
+import com.jigar.me.ui.view.home.screens.category.do_practice.components.AbacusViewItem
+import com.jigar.me.ui.view.home.screens.category.do_practice.components.AddSubAbacusItem
+import com.jigar.me.ui.view.home.screens.category.do_practice.components.DivisionAbacusItem
+import com.jigar.me.ui.view.home.screens.category.do_practice.components.MultiplicationAbacusItem
+import com.jigar.me.ui.view.home.screens.category.do_practice.components.NumberAbacusItem
+import com.jigar.me.ui.view.home.screens.category.do_practice.components.subitems.AbacusFormulaItem
+import com.jigar.me.ui.view.home.screens.category.do_practice.components.subitems.SetTimer
+import com.jigar.me.ui.view.home.screens.category.do_practice.components.subitems.UseWhichHandTextUi
+import com.jigar.me.ui.view.home.screens.category.do_practice.viewmodels.AbacusDoPracticeViewModel
+import com.jigar.me.ui.view.home.common.BackButtonWithText
+import com.jigar.me.ui.view.home.common.Loader
+import com.jigar.me.ui.view.home.common.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.screens.reports.dialogs.ExerciseExamCompleteResultDialog
 import com.jigar.me.utils.AppConstants
 
 @Composable

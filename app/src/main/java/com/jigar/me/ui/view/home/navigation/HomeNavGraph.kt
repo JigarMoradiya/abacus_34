@@ -34,9 +34,9 @@ import com.jigar.me.ui.view.home.screens.purchase.PurchaseScreenRoute
 import com.jigar.me.ui.view.home.screens.settings.SettingsScreenRoute
 import com.jigar.me.ui.view.home.screens.whats_learning.WhatsLearningScreenRoute
 import com.jigar.me.ui.view.home.screens.youtube.YoutubeVideoScreenRoute
-import com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.components.AbacusFreeModeScreen
-import com.jigar.me.ui.view.jetpack.fragments.abacus_free_mode.viewmodel.AbacusFreeModeViewModel
-import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
+import com.jigar.me.ui.view.home.screens.abacus_free_mode.components.AbacusFreeModeScreen
+import com.jigar.me.ui.view.home.screens.abacus_free_mode.viewmodel.AbacusFreeModeViewModel
+import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 
 @Composable
 fun HomeNavGraph(

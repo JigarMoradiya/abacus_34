@@ -14,13 +14,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.fragments.activities.custom_challenge.play.components.AnswerSection
-import com.jigar.me.ui.view.jetpack.fragments.activities.custom_challenge.play.components.CCMCompleteBottomSheetCompose
-import com.jigar.me.ui.view.jetpack.fragments.activities.custom_challenge.play.components.QuestionSection
-import com.jigar.me.ui.view.jetpack.fragments.activities.custom_challenge.play.viewmodels.CCMPlayViewModel
-import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
-import com.jigar.me.ui.view.jetpack.fragments.common.Loader
-import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.screens.activities.ccm.play.components.AnswerSection
+import com.jigar.me.ui.view.home.screens.activities.ccm.play.components.CCMCompleteBottomSheetCompose
+import com.jigar.me.ui.view.home.screens.activities.ccm.play.components.QuestionSection
+import com.jigar.me.ui.view.home.screens.activities.ccm.play.viewmodels.CCMPlayViewModel
+import com.jigar.me.ui.view.home.common.BackButtonWithText
+import com.jigar.me.ui.view.home.common.Loader
+import com.jigar.me.ui.view.home.common.dialogs.CustomPopupView
 
 @Composable
 fun CCMPlayRoute(

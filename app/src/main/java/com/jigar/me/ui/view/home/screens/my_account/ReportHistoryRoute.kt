@@ -17,14 +17,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
-import com.jigar.me.ui.view.jetpack.fragments.common.Loader
-import com.jigar.me.ui.view.jetpack.fragments.reports.components.NoReportAvailableView
-import com.jigar.me.ui.view.jetpack.fragments.reports.components.ReportDateFilterCard
-import com.jigar.me.ui.view.jetpack.fragments.reports.components.ReportFilterCard
-import com.jigar.me.ui.view.jetpack.fragments.reports.components.ReportsScreen
-import com.jigar.me.ui.view.jetpack.fragments.reports.dialogs.ExerciseExamCompleteResultDialog
-import com.jigar.me.ui.view.jetpack.fragments.reports.viewmodels.ReportHistoryViewModel
+import com.jigar.me.ui.view.home.common.BackButtonWithText
+import com.jigar.me.ui.view.home.common.Loader
+import com.jigar.me.ui.view.home.screens.reports.components.NoReportAvailableView
+import com.jigar.me.ui.view.home.screens.reports.components.ReportDateFilterCard
+import com.jigar.me.ui.view.home.screens.reports.components.ReportFilterCard
+import com.jigar.me.ui.view.home.screens.reports.components.ReportsScreen
+import com.jigar.me.ui.view.home.screens.reports.dialogs.ExerciseExamCompleteResultDialog
+import com.jigar.me.ui.view.home.screens.reports.viewmodels.ReportHistoryViewModel
 
 @Composable
 fun ReportHistoryRoute(

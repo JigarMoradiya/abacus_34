@@ -9,9 +9,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
-import com.jigar.me.ui.view.jetpack.fragments.other.youtube_video.components.YoutubeVideoGrid
-import com.jigar.me.ui.view.jetpack.fragments.other.youtube_video.viewmodels.YoutubeVideoViewModel
+import com.jigar.me.ui.view.home.common.BackButtonWithText
+import com.jigar.me.ui.view.home.screens.youtube.components.YoutubeVideoGrid
+import com.jigar.me.ui.view.home.screens.youtube.viewmodels.YoutubeVideoViewModel
 
 @Composable
 fun YoutubeVideoScreenRoute(

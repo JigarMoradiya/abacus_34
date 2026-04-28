@@ -13,10 +13,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
-import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
-import com.jigar.me.ui.view.jetpack.fragments.my_account.components.MyAccountScreen
-import com.jigar.me.ui.view.jetpack.fragments.my_account.viewmodels.MyAccountViewModel
+import com.jigar.me.ui.view.home.common.BackButtonWithText
+import com.jigar.me.ui.view.home.common.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.screens.my_account.components.MyAccountScreen
+import com.jigar.me.ui.view.home.screens.my_account.viewmodels.MyAccountViewModel
 import com.jigar.me.ui.view.login.LoginDashboardActivity
 import com.jigar.me.ui.view.other.ContactUsActivity
 import com.jigar.me.utils.AppConstants

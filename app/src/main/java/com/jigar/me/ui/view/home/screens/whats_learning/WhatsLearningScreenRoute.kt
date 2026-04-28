@@ -9,8 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.media3.common.util.UnstableApi
-import com.jigar.me.ui.view.jetpack.fragments.other.whats_learn.components.WhatsLearnNewScreen
-import com.jigar.me.ui.view.jetpack.fragments.other.whats_learn.viewmodels.WhatsLearnNewViewModel
+import com.jigar.me.ui.view.home.screens.whats_learning.components.WhatsLearnNewScreen
+import com.jigar.me.ui.view.home.screens.whats_learning.viewmodels.WhatsLearnNewViewModel
 
 @OptIn(UnstableApi::class)
 @Composable

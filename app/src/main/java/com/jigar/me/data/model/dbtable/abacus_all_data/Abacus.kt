@@ -1,9 +1,8 @@
 package com.jigar.me.data.model.dbtable.abacus_all_data
 
-import android.util.Log
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.jigar.me.ui.view.jetpack.abacus_base.utils.MathUtils
+import com.jigar.me.ui.view.base.abacus_base.utils.MathUtils
 import com.jigar.me.utils.AppConstants
 import kotlin.math.pow
 

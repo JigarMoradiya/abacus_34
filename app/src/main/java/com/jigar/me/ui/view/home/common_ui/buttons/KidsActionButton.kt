@@ -32,6 +32,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens2
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens20
@@ -43,8 +44,7 @@ import com.jigar.me.ui.view.home.theme.AppDimens.ShadowOffset
 import com.jigar.me.ui.view.home.theme.AppDimens.ShadowOffsetText
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.theme.getButtonColors
-import com.jigar.me.ui.view.jetpack.utils.AudioPlayerManager
-import com.jigar.me.ui.view.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 
 @Composable
 fun KidsActionButton(

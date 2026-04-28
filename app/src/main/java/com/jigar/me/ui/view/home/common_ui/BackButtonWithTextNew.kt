@@ -32,6 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.jigar.me.data.local.data.DeviceInfo
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
@@ -40,8 +41,7 @@ import com.jigar.me.ui.view.home.theme.AppDimens.ShadowOffset
 import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.theme.getButtonColors
-import com.jigar.me.ui.view.jetpack.utils.AudioPlayerManager
-import com.jigar.me.ui.view.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 
 
 @Composable

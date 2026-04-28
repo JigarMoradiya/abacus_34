@@ -17,17 +17,16 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.data.pref.AppPreferencesHelper
+import com.jigar.me.ui.jetpack.utils.TextToSpeechManager
 import com.jigar.me.ui.view.base.BaseActivity
 import com.jigar.me.ui.view.home.common_ui.BackgroundUI
 import com.jigar.me.ui.view.home.navigation.HomeNavGraph
 import com.jigar.me.ui.view.home.theme.MyApplicationTheme
-import com.jigar.me.ui.view.jetpack.fragments.common.LocalPreferencesHelper
-import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
-import com.jigar.me.ui.view.jetpack.utils.TextToSpeechManager
+import com.jigar.me.ui.view.home.common.LocalPreferencesHelper
+import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.utils.AppConstants
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import kotlin.compareTo
 
 @AndroidEntryPoint
 class HomeActivity : BaseActivity() {

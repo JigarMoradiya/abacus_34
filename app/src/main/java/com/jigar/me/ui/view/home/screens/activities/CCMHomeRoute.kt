@@ -10,10 +10,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.fragments.activities.custom_challenge.home.components.CCMHomeScreen
-import com.jigar.me.ui.view.jetpack.fragments.activities.custom_challenge.home.viewmodels.CCMHomeViewModel
-import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
-import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
+import com.jigar.me.ui.view.home.screens.activities.ccm.home.components.CCMHomeScreen
+import com.jigar.me.ui.view.home.screens.activities.ccm.home.viewmodels.CCMHomeViewModel
+import com.jigar.me.ui.view.home.common.BackButtonWithText
+import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.utils.extensions.toastS
 
 @Composable

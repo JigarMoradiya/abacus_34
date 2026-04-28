@@ -17,13 +17,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.components.ExamHeader
-import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.components.ExamQuestionSection
-import com.jigar.me.ui.view.jetpack.fragments.activities.exam.play.viewmodels.ExamPlayViewModel
-import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
-import com.jigar.me.ui.view.jetpack.fragments.common.Loader
-import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
-import com.jigar.me.ui.view.jetpack.fragments.reports.dialogs.ExerciseExamCompleteResultDialog
+import com.jigar.me.ui.view.home.screens.activities.exam.play.components.ExamHeader
+import com.jigar.me.ui.view.home.screens.activities.exam.play.components.ExamQuestionSection
+import com.jigar.me.ui.view.home.screens.activities.exam.play.viewmodels.ExamPlayViewModel
+import com.jigar.me.ui.view.home.common.BackButtonWithText
+import com.jigar.me.ui.view.home.common.Loader
+import com.jigar.me.ui.view.home.common.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.screens.reports.dialogs.ExerciseExamCompleteResultDialog
 
 @Composable
 fun ExamPlayRoute(

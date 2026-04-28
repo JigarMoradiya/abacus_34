@@ -23,7 +23,7 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens6
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.theme.getButtonColors
-import com.jigar.me.ui.view.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 
 
 @Composable
