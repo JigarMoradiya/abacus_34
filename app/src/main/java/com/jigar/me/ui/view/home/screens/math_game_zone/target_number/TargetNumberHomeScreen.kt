@@ -57,6 +57,7 @@ import com.jigar.me.ui.view.home.common_ui.CommonDifficultySelectorCompose
 import com.jigar.me.ui.view.home.common_ui.HowToPlayButton
 import com.jigar.me.ui.view.home.common_ui.how_to_play.HowToPlayTargetNumberView
 import com.jigar.me.ui.view.home.screens.math_game_zone.target_number.components.TargetNumberViewModel
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
 fun TargetNumberHomeScreen(
@@ -135,7 +136,7 @@ fun TargetNumberHomeScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
+                    .padding(AppDimens.Dimens16),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 CommonDifficultySelectorCompose(

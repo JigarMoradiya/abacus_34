@@ -5,6 +5,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 // ColorPresetModel.kt
 data class ColorPresetModel(
@@ -23,10 +24,10 @@ data class AbacusDimensionModel(
     val beadHeight: Dp = 25.dp,
     val beamHeight: Dp = 4.dp,
     val extraSpace: Dp = 4.dp,
-    val rectLineWidth: Dp = 16.dp,
-    val rectLineCorner: Dp = 20.dp,
+    val rectLineWidth: Dp = AppDimens.Dimens16,
+    val rectLineCorner: Dp = AppDimens.Dimens20,
     val textSizeSp: Int = 13,
-    val stripHeight: Dp = 16.dp,
+    val stripHeight: Dp = AppDimens.Dimens16,
     val columnSpaces: Dp = 1.dp
 )
 

@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
 fun CommonLoadingView(
@@ -64,7 +65,7 @@ fun CommonLoadingView(
                 Dot(dot3.value, dotStyle,Color(0xFFBD4811))
             }
 
-            Spacer(Modifier.height(16.dp))
+            Spacer(Modifier.height(AppDimens.Dimens16))
 
             if (!title.isNullOrEmpty()){
                 Text(
@@ -95,7 +96,7 @@ private fun Dot(scale: Float, style: String,color : Color) {
         // ● Circle Dots
         "circle" -> Box(
             Modifier
-                .size(16.dp)
+                .size(AppDimens.Dimens16)
                 .graphicsLayer {
                     scaleX = 0.5f + scale * 0.5f
                     scaleY = 0.5f + scale * 0.5f
@@ -106,7 +107,7 @@ private fun Dot(scale: Float, style: String,color : Color) {
         // ■ Square Blocks
         "square" -> Box(
             Modifier
-                .size(16.dp)
+                .size(AppDimens.Dimens16)
                 .graphicsLayer {
                     scaleX = 0.4f + scale * 0.6f
                     scaleY = 0.4f + scale * 0.6f
@@ -117,7 +118,7 @@ private fun Dot(scale: Float, style: String,color : Color) {
         // ✨ Glowing Dots
         "glow" -> Box(
             Modifier
-                .size(16.dp)
+                .size(AppDimens.Dimens16)
                 .graphicsLayer {
                     scaleX = 0.6f + scale * 0.8f
                     scaleY = 0.6f + scale * 0.8f

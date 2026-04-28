@@ -34,6 +34,7 @@ import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryLight
 import com.jigar.me.ui.view.home.screens.reports.viewmodels.ReportHistoryUiState
 import com.jigar.me.ui.view.home.screens.reports.viewmodels.ReportHistoryViewModel
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 
 @Composable
@@ -76,7 +77,7 @@ fun ReportDateFilterCard(
                 )
 
                 Icon(
-                    modifier = Modifier.size(16.dp),
+                    modifier = Modifier.size(AppDimens.Dimens16),
                     imageVector = Icons.Default.ArrowDropDown,
                     contentDescription = null,
                     tint = Color.Black

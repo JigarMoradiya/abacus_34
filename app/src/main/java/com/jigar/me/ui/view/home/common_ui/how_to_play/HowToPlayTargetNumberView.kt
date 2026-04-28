@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
 fun HowToPlayTargetNumberView(
@@ -45,7 +46,7 @@ fun HowToPlayTargetNumberView(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Black.copy(alpha = 0.5f))
-            .padding(16.dp),
+            .padding(AppDimens.Dimens16),
         contentAlignment = Alignment.Center
     ) {
 
@@ -55,7 +56,7 @@ fun HowToPlayTargetNumberView(
                 .width(screenWidth * widthMultiplier)
                 .height(screenHeight * heightMultiplier)
                 .background(Color.White, RoundedCornerShape(20.dp))
-                .padding(16.dp)
+                .padding(AppDimens.Dimens16)
         ) {
 
             Column(modifier = Modifier.fillMaxSize()) {
@@ -91,7 +92,7 @@ fun HowToPlayTargetNumberView(
                 // ---------- CONTENT ----------
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
-                    contentPadding = PaddingValues(bottom = 16.dp)
+                    contentPadding = PaddingValues(bottom = AppDimens.Dimens16)
                 ) {
 
                     // Intro text
@@ -147,7 +148,7 @@ fun HowToPlayTargetNumberView(
 
                     item {
                         Column(
-                            modifier = Modifier.padding(start = 16.dp),
+                            modifier = Modifier.padding(start = AppDimens.Dimens16),
                             verticalArrangement = Arrangement.spacedBy(4.dp)
                         ) {
                             Text("Target: 26", fontFamily = FontFamily(Font(R.font.font_regular)))

@@ -15,12 +15,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.jigar.me.R
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
 fun CategoryItem(
@@ -31,11 +31,11 @@ fun CategoryItem(
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
-            .padding(dimensionResource(R.dimen.activity_padding6))
+            .padding(AppDimens.Dimens6)
     ) {
 
         Card(
-            shape = RoundedCornerShape(8.dp),
+            shape = RoundedCornerShape(AppDimens.Dimens8),
             border = if (isSelected)
                 BorderStroke(2.dp, colorResource(R.color.purple_700))
             else null,
@@ -54,8 +54,8 @@ fun CategoryItem(
                 painter = painterResource(R.drawable.ic_right_arrow),
                 contentDescription = null,
                 modifier = Modifier
-                    .padding(start = dimensionResource(R.dimen.activity_padding6))
-                    .size(16.dp),
+                    .padding(start = AppDimens.Dimens6)
+                    .size(AppDimens.Dimens16),
                 tint = Color.Unspecified
             )
         }

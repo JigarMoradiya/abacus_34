@@ -40,6 +40,7 @@ import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.Mai
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.QuestionParts
 import com.jigar.me.ui.view.home.screens.activities.exam.play.viewmodels.ExamPlayUiState
 import com.jigar.me.ui.view.home.screens.activities.exam.play.viewmodels.ExamPlayViewModel
+import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
 
 @Composable
@@ -186,7 +187,7 @@ fun ExamQuestionSection(
                 .alpha(blinkAlpha)
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(AppDimens.Dimens16))
 
         // ---------- Options ----------
         Column(

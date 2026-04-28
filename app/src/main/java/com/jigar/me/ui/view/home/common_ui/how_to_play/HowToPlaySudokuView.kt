@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
 fun HowToPlaySudokuView(
@@ -44,7 +45,7 @@ fun HowToPlaySudokuView(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Black.copy(alpha = 0.5f))
-            .padding(16.dp),
+            .padding(AppDimens.Dimens16),
         contentAlignment = Alignment.Center
     ) {
 
@@ -53,8 +54,8 @@ fun HowToPlaySudokuView(
             modifier = Modifier
                 .width(screenWidth * widthMultiplier)
                 .height(screenHeight * heightMultiplier)
-                .background(Color.White, RoundedCornerShape(20.dp))
-                .padding(16.dp)
+                .background(Color.White, RoundedCornerShape(AppDimens.Dimens20))
+                .padding(AppDimens.Dimens16)
         ) {
 
             Column(modifier = Modifier.fillMaxSize()) {
@@ -80,17 +81,17 @@ fun HowToPlaySudokuView(
                         fontWeight = FontWeight.Medium,
                         color = Color.Black,
                         modifier = Modifier
-                            .padding(horizontal = 12.dp, vertical = 8.dp)
+                            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8)
                             .clickable { onClose() }
                     )
                 }
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(AppDimens.Dimens8))
 
                 // ---------- SCROLL CONTENT ----------
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
-                    contentPadding = PaddingValues(bottom = 16.dp)
+                    contentPadding = PaddingValues(bottom = AppDimens.Dimens16)
                 ) {
 
                     // Intro
@@ -105,7 +106,7 @@ fun HowToPlaySudokuView(
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
-                            modifier = Modifier.padding(top = 8.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens8)
                         )
                     }
 
@@ -120,7 +121,7 @@ fun HowToPlaySudokuView(
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
-                            modifier = Modifier.padding(top = 8.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens8)
                         )
                     }
 
@@ -134,7 +135,7 @@ fun HowToPlaySudokuView(
                         Text(
                             text = "Sudoku is like a secret number pattern game where you become a little detective 🕵️‍♂️.",
                             fontSize = 16.sp,
-                            modifier = Modifier.padding(top = 4.dp),
+                            modifier = Modifier.padding(top = AppDimens.Dimens4),
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
                             fontWeight = FontWeight.SemiBold
                         )
@@ -147,7 +148,7 @@ fun HowToPlaySudokuView(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
-                            modifier = Modifier.padding(top = 12.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens12)
                         )
                     }
 
@@ -171,7 +172,7 @@ fun HowToPlaySudokuView(
                             text = "Sudoku teaches how to think, not just how to calculate.",
                             fontSize = 18.sp,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
-                            modifier = Modifier.padding(top = 4.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens4)
                         )
                     }
 
@@ -182,7 +183,7 @@ fun HowToPlaySudokuView(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
-                            modifier = Modifier.padding(top = 12.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens12)
                         )
                     }
 
@@ -196,7 +197,7 @@ fun HowToPlaySudokuView(
                             text = "It supports higher-level math learning because it trains the brain to organize information, spot patterns, and solve problems logically.",
                             fontSize = 16.sp,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
-                            modifier = Modifier.padding(top = 4.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens4)
                         )
                     }
 
@@ -205,7 +206,7 @@ fun HowToPlaySudokuView(
                             text = "Sudoku is not about speed — it's about smart thinking. It turns kids into little mathematicians!",
                             fontSize = 16.sp,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
-                            modifier = Modifier.padding(top = 4.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens4)
                         )
                     }
                 }

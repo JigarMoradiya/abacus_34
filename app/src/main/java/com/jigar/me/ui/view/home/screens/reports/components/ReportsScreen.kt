@@ -19,6 +19,7 @@ import com.jigar.me.R
 import com.jigar.me.data.model.data.AllExamData
 import com.jigar.me.ui.view.home.screens.reports.viewmodels.ReportHistoryUiState
 import com.jigar.me.ui.view.home.screens.reports.viewmodels.ReportHistoryViewModel
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
 fun ReportsScreen(
@@ -66,7 +67,7 @@ fun ReportsScreen(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(16.dp),
+                        .padding(AppDimens.Dimens16),
                     contentAlignment = Alignment.Center
                 ) {
                     CircularProgressIndicator()

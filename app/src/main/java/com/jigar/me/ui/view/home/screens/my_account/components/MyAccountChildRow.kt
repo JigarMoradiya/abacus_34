@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.view.home.screens.my_account.viewmodels.MyAccountMenu
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 
 @Composable
@@ -56,7 +57,7 @@ fun MyAccountChildRow(
         // Arrow
         Icon(
             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null,
-            modifier = Modifier.size(16.dp), tint = Color.Gray
+            modifier = Modifier.size(AppDimens.Dimens16), tint = Color.Gray
         )
     }
 }

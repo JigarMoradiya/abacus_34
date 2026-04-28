@@ -35,6 +35,7 @@ import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.view.home.screens.activities.exercise.exercise_generator.GridItemModel
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseUiState
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseViewModel
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -146,7 +147,7 @@ fun ExercisePagerScreen(
             }
         }
 
-        Spacer(Modifier.height(16.dp))
+        Spacer(Modifier.height(AppDimens.Dimens16))
     }
 }
 

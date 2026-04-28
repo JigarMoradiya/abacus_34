@@ -47,6 +47,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.text.HtmlCompat
 import com.jigar.me.R
 import com.jigar.me.ui.view.base.abacus_base.SpotlightTooltipCalculation
+import com.jigar.me.ui.view.home.theme.AppDimens
 import kotlin.math.max
 import kotlin.math.min
 
@@ -169,8 +170,8 @@ fun TooltipBox(
             }
             .offset { IntOffset(animatedX.toInt(), animatedY.toInt()) }
             .onGloballyPositioned { tooltipSize = it.size }
-            .background(Color.White, RoundedCornerShape(16.dp))
-            .padding(horizontal = 16.dp, vertical = 12.dp)
+            .background(Color.White, RoundedCornerShape(AppDimens.Dimens16))
+            .padding(horizontal = AppDimens.Dimens16, vertical = 12.dp)
     ) {
         HtmlText(html = item.text)
     }

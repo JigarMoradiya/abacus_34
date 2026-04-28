@@ -19,6 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.view.home.screens.activities.exam.play.viewmodels.ExamPlayUiState
+import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.extensions.secToTimeFormat
 
 @Composable
@@ -29,7 +30,7 @@ fun ExamHeader(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(AppDimens.Dimens16),
         verticalAlignment = Alignment.CenterVertically
     ) {
 

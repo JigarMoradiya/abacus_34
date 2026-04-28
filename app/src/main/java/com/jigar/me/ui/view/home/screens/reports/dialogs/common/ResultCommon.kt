@@ -42,6 +42,7 @@ import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.Exa
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.ExamResultUi
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.MainQuestionType
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.QuestionResult
+import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
 
 
@@ -256,7 +257,7 @@ fun QuestionExamColumnItemHorizontal(item: QuestionResult, selectedTheme: String
                 imageVector = item.statusQue.symbol,
                 contentDescription = null,
                 tint = item.statusQue.color,
-                modifier = Modifier.size(16.dp)
+                modifier = Modifier.size(AppDimens.Dimens16)
             )
         }
     }

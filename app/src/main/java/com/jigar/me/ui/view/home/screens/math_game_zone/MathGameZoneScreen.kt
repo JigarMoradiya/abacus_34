@@ -37,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
 fun MathGameZoneScreen(
@@ -93,7 +94,7 @@ fun MathGameZoneScreen(
                             ) {
                                 gameType.invoke(category.type)
                             }
-                            .padding(horizontal = 16.dp)
+                            .padding(horizontal = AppDimens.Dimens16)
                     ) {
                         Image(
                             painter = painterResource(id = category.type.toDrawable()),

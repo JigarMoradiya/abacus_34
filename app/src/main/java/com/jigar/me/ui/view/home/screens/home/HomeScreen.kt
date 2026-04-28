@@ -33,6 +33,7 @@ import com.jigar.me.ui.view.home.screens.home.components.HomeHeaderLeft
 import com.jigar.me.ui.view.home.screens.home.components.HomeHeaderRight
 import com.jigar.me.ui.view.home.screens.home.components.HomeMenuScreen
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeFragmentViewModel
+import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.checkPermissions
@@ -101,7 +102,7 @@ fun HomeScreen(
             onMenuClick = {
                 onMenuClick(it.name, it.id)
             },
-            modifier = Modifier.padding(vertical = 16.dp)
+            modifier = Modifier.padding(vertical = AppDimens.Dimens16)
         )
     }
 

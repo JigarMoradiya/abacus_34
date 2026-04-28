@@ -52,6 +52,7 @@ import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.play.components.NumberPyramidGenerator
+import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.PlaySound
 
 @Composable
@@ -136,7 +137,7 @@ fun MathPyramidPlayJetpackScreen(
                         })
                     }
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(AppDimens.Dimens16))
 
                     val shape = RoundedCornerShape(50)
                     Box(modifier = Modifier.shadow(elevation = 8.dp,shape = shape, clip = false)) {

@@ -33,6 +33,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
@@ -40,6 +41,7 @@ import com.jigar.me.R
 import com.jigar.me.data.model.data.AllExamData
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorGreen
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
 
 @Composable
@@ -50,16 +52,16 @@ fun ReportCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = dimensionResource(R.dimen.activity_padding16), vertical = dimensionResource(R.dimen.activity_padding2)),
-        shape = RoundedCornerShape(dimensionResource(R.dimen.card_corner_radius12)),
+            .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens2),
+        shape = RoundedCornerShape(AppDimens.Dimens12),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = dimensionResource(R.dimen.card_elevation2)
+            defaultElevation = AppDimens.Dimens2
         ), colors = CardDefaults.cardColors(containerColor = Color.White)
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(dimensionResource(R.dimen.activity_padding12))
+                .padding(AppDimens.Dimens12)
         ) {
             ReportHeaderRow(item, onCheckResultTapped)
 
@@ -109,8 +111,8 @@ private fun ReportHeaderRow(
                 fontFamily = FontFamily(Font(R.font.font_bold))
             ),
             modifier = Modifier
-                .background(badgeColor, RoundedCornerShape(20.dp))
-                .padding(horizontal = dimensionResource(R.dimen.activity_padding12), vertical = dimensionResource(R.dimen.activity_padding6))
+                .background(badgeColor, RoundedCornerShape(AppDimens.Dimens20))
+                .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)
         )
 
         Spacer(Modifier.weight(1f))
@@ -131,7 +133,7 @@ private fun ReportExerciseExamSection(
     item: AllExamData,
     onCheckResultTapped: (AllExamData) -> Unit
 ) {
-    Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding6)))
+    Spacer(Modifier.height(AppDimens.Dimens6))
 
     // Check Result button row
     Row(
@@ -232,15 +234,15 @@ private fun ReportExerciseExamSection(
                 color = Color.White,fontFamily = FontFamily(Font(R.font.font_bold))
             ),
             modifier = Modifier
-                .background(ColorPrimary, RoundedCornerShape(20.dp))
-                .padding(horizontal = 12.dp, vertical = 6.dp)
+                .background(ColorPrimary, RoundedCornerShape(AppDimens.Dimens20))
+                .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)
                 .clickable{
                     onCheckResultTapped(item)
                 }
         )
     }
 
-    Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding12)))
+    Spacer(Modifier.height(AppDimens.Dimens12))
 
     // Stats Row (exact replacement of RelativeLayouts)
     Row(
@@ -288,7 +290,7 @@ private fun ReportExerciseExamSection(
 
 @Composable
 private fun ReportCCMSection(item: AllExamData) {
-    Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding6)))
+    Spacer(Modifier.height(AppDimens.Dimens6))
 
     Row {
         Text(
@@ -342,7 +344,7 @@ private fun ReportCCMSection(item: AllExamData) {
             )
         }
     }
-    Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding4)))
+    Spacer(Modifier.height(AppDimens.Dimens4))
     Row {
         Text(
             modifier = Modifier
@@ -404,7 +406,7 @@ private fun ReportCCMSection(item: AllExamData) {
             ),
         )
     }
-    Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding4)))
+    Spacer(Modifier.height(AppDimens.Dimens4))
     Row {
         Text(
             text = stringResource(R.string.gap_between_each_question_number),
@@ -455,9 +457,9 @@ fun StatItemSmall(
         Image(
             painter = painterResource(icon),
             contentDescription = null,
-            modifier = Modifier.size(24.dp).padding(top = dimensionResource(R.dimen.activity_padding2))
+            modifier = Modifier.size(AppDimens.Dimens24).padding(top = AppDimens.Dimens2)
         )
-        Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding4)))
+        Spacer(Modifier.width(AppDimens.Dimens4))
         Column {
             Text(value,
                 style = MaterialTheme.typography.titleSmall.copy(color = color, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))))

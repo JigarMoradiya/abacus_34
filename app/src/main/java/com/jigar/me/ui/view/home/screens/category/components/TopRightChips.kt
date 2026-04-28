@@ -26,13 +26,14 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 
 @Composable
 fun TopRightChips() {
     Row(Modifier
-        .padding(top = dimensionResource(R.dimen.activity_padding12))
-        .padding(end = dimensionResource(R.dimen.activity_padding16)),
+        .padding(top = AppDimens.Dimens12)
+        .padding(end = AppDimens.Dimens16),
         verticalAlignment = Alignment.CenterVertically
     ) {
 
@@ -41,21 +42,21 @@ fun TopRightChips() {
             backgroundColor = colorResource(R.color.step_by_step_answer)
         )
 
-        Spacer(modifier = Modifier.width(dimensionResource(R.dimen.activity_padding10)))
+        Spacer(modifier = Modifier.width(AppDimens.Dimens10))
 
         ChipLabel(
             text = stringResource(R.string.final_answer),
             backgroundColor = colorResource(R.color.final_answer)
         )
 
-        Spacer(modifier = Modifier.width(dimensionResource(R.dimen.activity_padding10)))
+        Spacer(modifier = Modifier.width(AppDimens.Dimens10))
 
         ChipLabel(
             text = stringResource(R.string.formal_exam),
             backgroundColor = colorResource(R.color.formal_exam)
         )
 
-        Spacer(modifier = Modifier.width(dimensionResource(R.dimen.activity_padding12)))
+        Spacer(modifier = Modifier.width(AppDimens.Dimens12))
 
         TimerChip()
     }
@@ -70,11 +71,11 @@ fun ChipLabel(
         modifier = Modifier
             .background(
                 color = backgroundColor,
-                shape = RoundedCornerShape(6.dp)
+                shape = RoundedCornerShape(AppDimens.Dimens6)
             )
             .padding(
-                horizontal = dimensionResource(R.dimen.activity_padding6),
-                vertical = dimensionResource(R.dimen.activity_padding2)
+                horizontal = AppDimens.Dimens6,
+                vertical = AppDimens.Dimens2
             )
     ) {
         Text(
@@ -96,26 +97,26 @@ fun TimerChip() {
         modifier = Modifier
             .background(
                 color = Color.Black,
-                shape = RoundedCornerShape(6.dp)
+                shape = RoundedCornerShape(AppDimens.Dimens6)
             )
-            .padding(vertical = dimensionResource(R.dimen.activity_padding2))
+            .padding(vertical = AppDimens.Dimens2)
             .padding(
-                start = dimensionResource(R.dimen.activity_padding4),
-                end = dimensionResource(R.dimen.activity_padding6),
+                start = AppDimens.Dimens4,
+                end = AppDimens.Dimens6,
             )
     ) {
 
         Icon(
             imageVector = Icons.Outlined.Timer,
             contentDescription = null,
-            modifier = Modifier.size(dimensionResource(R.dimen.activity_padding16)),
+            modifier = Modifier.size(AppDimens.Dimens16),
             tint = Color.White
         )
 
         Text(
             text = stringResource(R.string.timer_on),
             color = Color.White,
-            modifier = Modifier.padding(start = dimensionResource(R.dimen.activity_padding4)),
+            modifier = Modifier.padding(start = AppDimens.Dimens4),
             style = MaterialTheme.typography.bodySmall.copy(
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily(Font(R.font.font_bold)),

@@ -29,6 +29,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.utils.ui.extensions.htmlToAnnotatedString
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 
 @Composable
@@ -49,26 +50,26 @@ fun InfoSection(
             tint = Color.Unspecified
         )
 
-        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding8)))
+        Spacer(Modifier.height(AppDimens.Dimens8))
 
         title?.let{
             Text(
                 text = title,
                 style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
                 textAlign = TextAlign.Center,
-                modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.activity_padding16))
+                modifier = Modifier.padding(horizontal = AppDimens.Dimens16)
             )
         }
 
         Card(
-            colors = CardDefaults.cardColors(containerColor = Color(0xFFFFECE7)), shape = RoundedCornerShape(12.dp), modifier = Modifier
-                .padding(dimensionResource(R.dimen.activity_padding12))
+            colors = CardDefaults.cardColors(containerColor = Color(0xFFFFECE7)), shape = RoundedCornerShape(AppDimens.Dimens12), modifier = Modifier
+                .padding(AppDimens.Dimens12)
                 .heightIn(max = 320.dp)
         ) {
             Column(
                 modifier = Modifier
-                    .padding(dimensionResource(R.dimen.activity_padding12))
-                    .verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding4))
+                    .padding(AppDimens.Dimens12)
+                    .verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
             ) {
                 infoList.forEach {
                     Text(

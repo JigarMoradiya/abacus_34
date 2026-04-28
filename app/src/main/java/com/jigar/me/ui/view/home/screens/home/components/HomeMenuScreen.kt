@@ -1,6 +1,5 @@
 package com.jigar.me.ui.view.home.screens.home.components
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
@@ -21,7 +20,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -30,6 +28,7 @@ import coil.compose.AsyncImage
 import com.jigar.me.R
 import com.jigar.me.data.model.dbtable.abacus_all_data.Level
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeUiState
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
 fun HomeMenuScreen(
@@ -38,8 +37,8 @@ fun HomeMenuScreen(
     modifier: Modifier
 ) {
     LazyRow(
-        modifier = modifier.padding(vertical = dimensionResource(R.dimen.activity_padding16)),
-        contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.activity_padding12))
+        modifier = modifier.padding(vertical = AppDimens.Dimens16),
+        contentPadding = PaddingValues(horizontal = AppDimens.Dimens12)
     ) {
         items(uiState.menuLevels) { level ->
             HomeMenuItem(
@@ -59,13 +58,13 @@ fun HomeMenuItem(
         Card(
             onClick= { onClick() },
             shape = CircleShape,
-            elevation = CardDefaults.cardElevation(4.dp),
+            elevation = CardDefaults.cardElevation(AppDimens.Dimens4),
             colors = CardDefaults.cardColors(
                 containerColor = colorResource(R.color.home_menu_icon_bg)
             ),
             modifier = Modifier
                 .fillMaxSize()
-                .padding(dimensionResource(R.dimen.activity_padding8))
+                .padding(AppDimens.Dimens8)
         ) {
             AsyncImage(
                 model = level.icon,
@@ -78,9 +77,9 @@ fun HomeMenuItem(
         if (level.tag.length > 2) {
             Surface(
                 color = colorResource(R.color.yellow_300),
-                shape = RoundedCornerShape(20.dp),
-                tonalElevation = dimensionResource(R.dimen.activity_padding8),
-                shadowElevation = dimensionResource(R.dimen.activity_padding8),
+                shape = RoundedCornerShape(AppDimens.Dimens20),
+                tonalElevation = AppDimens.Dimens8,
+                shadowElevation = AppDimens.Dimens8,
                 modifier = Modifier.align(Alignment.TopCenter)
             ) {
                 Text(
@@ -91,8 +90,8 @@ fun HomeMenuItem(
                         color = Color.Black
                     ),
                     modifier = Modifier.padding(
-                        horizontal = dimensionResource(R.dimen.activity_padding10),
-                        vertical = dimensionResource(R.dimen.activity_padding4)
+                        horizontal = AppDimens.Dimens10,
+                        vertical = AppDimens.Dimens4
                     )
                 )
             }

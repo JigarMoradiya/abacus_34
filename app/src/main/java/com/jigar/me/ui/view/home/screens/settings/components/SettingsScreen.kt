@@ -25,6 +25,7 @@ import com.jigar.me.R
 import com.jigar.me.ui.view.home.screens.settings.viewmodels.SettingUiState
 import com.jigar.me.ui.view.home.screens.settings.viewmodels.SettingViewModel
 import com.jigar.me.ui.view.home.screens.settings.viewmodels.ToggleItem
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
 fun SettingsScreen(
@@ -37,8 +38,8 @@ fun SettingsScreen(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(vertical = dimensionResource(R.dimen.activity_padding16))
-            .padding(start = dimensionResource(R.dimen.activity_padding16), end = dimensionResource(R.dimen.activity_padding16))
+            .padding(vertical = AppDimens.Dimens16)
+            .padding(start = AppDimens.Dimens16, end = AppDimens.Dimens16)
     ) {
 
         ThemeSection(
@@ -47,9 +48,9 @@ fun SettingsScreen(
             onThemeSelected = viewModel::selectTheme
         )
 
-        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding12)))
+        Spacer(Modifier.height(AppDimens.Dimens12))
 
-        Row(verticalAlignment = Alignment.CenterVertically,horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding12))) {
+        Row(verticalAlignment = Alignment.CenterVertically,horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
             VoiceSection(
                 modifier = Modifier.weight(1f),
                 onVoiceChange = {
@@ -66,9 +67,9 @@ fun SettingsScreen(
             )
         }
 
-        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding12)))
+        Spacer(Modifier.height(AppDimens.Dimens12))
 
-        Row(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding12))) {
+        Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
             ToggleSection(
                 modifier = Modifier.weight(1f),
                 title = "Display",
@@ -116,4 +117,3 @@ fun SettingsScreen(
         }
     }
 }
-

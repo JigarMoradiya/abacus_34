@@ -17,13 +17,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.view.home.screens.category.do_practice.viewmodels.AbacusDoPracticeUiState
+import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.DateTimeUtils
 
 @Composable
@@ -32,15 +32,15 @@ fun SetTimer(uiState: AbacusDoPracticeUiState) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
-                .padding(end = dimensionResource(R.dimen.activity_padding16))
-                .background(colorResource(R.color.back_icon_bg), RoundedCornerShape(6.dp))
-                .padding(horizontal = dimensionResource(R.dimen.activity_padding8), vertical = dimensionResource(R.dimen.activity_padding4))
+                .padding(end = AppDimens.Dimens16)
+                .background(colorResource(R.color.back_icon_bg), RoundedCornerShape(AppDimens.Dimens6))
+                .padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens4)
         ) {
             Icon(
-                imageVector = Icons.Outlined.Timer, contentDescription = null, tint = Color.White, modifier = Modifier.size(16.dp)
+                imageVector = Icons.Outlined.Timer, contentDescription = null, tint = Color.White, modifier = Modifier.size(AppDimens.Dimens16)
             )
 
-            Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding6)))
+            Spacer(Modifier.width(AppDimens.Dimens6))
 
             Text(
                 text = DateTimeUtils.displayDurationHourMinSec(seconds), color = Color.White,

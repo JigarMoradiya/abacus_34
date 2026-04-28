@@ -44,6 +44,7 @@ import com.jigar.me.ui.view.base.abacus_base.utils.MathUtils
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryLight
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.QuestionResult
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 
 @Composable
@@ -141,7 +142,7 @@ fun QuestionExamColumnItem(item: QuestionResult) {
             )
 
             Icon(
-                modifier = Modifier.size(16.dp),
+                modifier = Modifier.size(AppDimens.Dimens16),
                 imageVector = item.statusQue.symbol, contentDescription = null, tint = item.statusQue.color
             )
         }

@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.data.model.dbtable.abacus_all_data.Set
+import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
 
 @Composable
@@ -74,7 +75,7 @@ fun SetItem(
                     Icon(
                         imageVector = Icons.Outlined.Timer,
                         contentDescription = "Timer",
-                        modifier = Modifier.size(16.dp),
+                        modifier = Modifier.size(AppDimens.Dimens16),
                         tint = Color.White
                     )
 

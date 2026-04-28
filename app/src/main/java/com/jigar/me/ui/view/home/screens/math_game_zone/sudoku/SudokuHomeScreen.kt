@@ -24,6 +24,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -66,6 +67,7 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.Sudoku
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuHomeViewModel
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuSize
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuStorage
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
 fun SudokuHomeScreen(
@@ -94,7 +96,7 @@ fun SudokuHomeScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = dimensionResource(R.dimen.activity_padding16)),
+                    .padding(horizontal = AppDimens.Dimens16),
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -104,15 +106,15 @@ fun SudokuHomeScreen(
 
                     val animatedPadding by animateDpAsState(
                         targetValue = if (isSelected)
-                            dimensionResource(R.dimen.activity_padding4)
+                            AppDimens.Dimens4
                         else
-                            dimensionResource(R.dimen.activity_padding24),
+                            AppDimens.Dimens24,
                         animationSpec = spring(dampingRatio = 0.6f, stiffness = 300f),
                         label = ""
                     )
 
                     val animatedShadow by animateDpAsState(
-                        targetValue = if (isSelected) 16.dp else 4.dp,
+                        targetValue = if (isSelected) AppDimens.Dimens16 else AppDimens.Dimens4,
                         animationSpec = spring(dampingRatio = 0.7f, stiffness = 300f),
                         label = ""
                     )
@@ -168,7 +170,7 @@ fun SudokuHomeScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
+                    .padding(AppDimens.Dimens16),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 DifficultySelectorCompose(
@@ -179,7 +181,7 @@ fun SudokuHomeScreen(
                 Spacer(Modifier.weight(1f))
 
                 val shape = RoundedCornerShape(50)
-                Box(modifier = Modifier.shadow(elevation = 8.dp, shape = shape, clip = false)) {
+                Box(modifier = Modifier.shadow(elevation = AppDimens.Dimens8, shape = shape, clip = false)) {
                     Button(
                         onClick = {
                             if (SudokuStorage.hasSavedGame(context)) {
@@ -195,7 +197,7 @@ fun SudokuHomeScreen(
                             contentColor = Color.White
                         ),
                         contentPadding = PaddingValues(
-                            horizontal = dimensionResource(R.dimen.activity_padding16)
+                            horizontal = AppDimens.Dimens16
                         )
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -204,7 +206,7 @@ fun SudokuHomeScreen(
                                 fontSize = dimensionResource(R.dimen.textSizeSuperExtraLarge).value.sp,
                                 fontFamily = FontFamily(Font(R.font.font_bold))
                             )
-                            Spacer(modifier = Modifier.width(dimensionResource(R.dimen.activity_padding6)))
+                            Spacer(modifier = Modifier.width(AppDimens.Dimens6))
                             Icon(imageVector = Icons.Filled.PlayArrow, contentDescription = null)
                         }
                     }
@@ -261,20 +263,20 @@ fun DifficultySelectorCompose(
     onSelect: (SudokuDifficulty4) -> Unit
 ) {
     Row(
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4),
         verticalAlignment = Alignment.CenterVertically
     ) {
         SudokuDifficulty4.entries.forEach { d ->
             val isSelected = d == selected
-            val shape = RoundedCornerShape(20.dp)
+            val shape = RoundedCornerShape(AppDimens.Dimens20)
             Surface(
                 modifier = Modifier
-                    .padding(horizontal = 4.dp),
+                    .padding(horizontal = AppDimens.Dimens4),
                 shape = shape,
                 color = if (isSelected) colorResource(R.color.colorEditTextBlack_33) else Color.White,
-                shadowElevation = if (isSelected) 8.dp else 0.dp,
-                tonalElevation = if (isSelected) 4.dp else 0.dp,
-                border = if (!isSelected) BorderStroke(1.dp, Color.LightGray) else null
+                shadowElevation = if (isSelected) AppDimens.Dimens8 else 0.dp,
+                tonalElevation = if (isSelected) AppDimens.Dimens4 else 0.dp,
+                border = if (!isSelected) BorderStroke(AppDimens.Dimens1, Color.LightGray) else null
             ) {
                 Box(
                     modifier = Modifier
@@ -285,7 +287,7 @@ fun DifficultySelectorCompose(
                         ) {
                             onSelect(d)
                         }
-                        .padding(horizontal = 12.dp, vertical = 6.dp),
+                        .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(

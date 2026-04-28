@@ -37,6 +37,7 @@ import com.jigar.me.R
 import com.jigar.me.ui.view.home.screens.home.viewmodels.getFreeTrialUi
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.ui.jetpack.core.presentation.components.PrimaryButton
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
 fun FreeTrialDialog(
@@ -75,7 +76,7 @@ fun FreeTrialDialog(
                                     painter = if (manualFreeTrialDays == 3) painterResource(R.drawable.ic_free_trial_3) else painterResource(R.drawable.ic_free_trial_7), contentDescription = null, modifier = Modifier
                                         .size(260.dp)
                                         .align(Alignment.Center)
-                                        .padding(16.dp)
+                                        .padding(AppDimens.Dimens16)
                                 )
                             }
 
@@ -96,7 +97,7 @@ fun FreeTrialDialog(
 
                         Spacer(Modifier.width(12.dp))
 
-                        Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.weight(0.65f).padding(end = 16.dp)) {
+                        Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.weight(0.65f).padding(end = AppDimens.Dimens16)) {
 
                             Image(
                                 painter = painterResource(R.drawable.logo), contentDescription = null, modifier = Modifier.height(64.dp)

@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.PopupProperties
 import com.jigar.me.R
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
 fun <T> SimpleDropdownField(
@@ -95,7 +96,7 @@ fun <T> SimpleDropdownField(
                     },
                     modifier = Modifier.heightIn(max = 32.dp),
                     contentPadding = PaddingValues(
-                        horizontal = 16.dp,
+                        horizontal = AppDimens.Dimens16,
                     )
                 )
             }

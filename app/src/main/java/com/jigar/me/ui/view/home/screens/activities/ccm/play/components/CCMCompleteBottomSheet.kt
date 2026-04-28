@@ -32,7 +32,9 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.text.HtmlCompat
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.appScale
 import com.jigar.me.ui.view.home.screens.activities.ccm.play.viewmodels.CCMPlayUiState
+import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.PlaySound
 
 @SuppressLint("ConfigurationScreenWidthHeight")
@@ -79,13 +81,13 @@ fun CCMCompleteBottomSheetCompose(
                 modifier = Modifier
                     .width(popupWidth)
                     .background(Color.White, shape = RoundedCornerShape(
-                        topStart = 24.dp,
-                        topEnd = 24.dp,
+                        topStart = AppDimens.Dimens24,
+                        topEnd = AppDimens.Dimens24,
                         bottomStart = 0.dp,
                         bottomEnd = 0.dp
                     ))
-                    .padding(horizontal = 16.dp)
-                    .padding(top = 16.dp),
+                    .padding(horizontal = AppDimens.Dimens16)
+                    .padding(top = AppDimens.Dimens16),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 // HANDLE (visual only)
@@ -93,14 +95,14 @@ fun CCMCompleteBottomSheetCompose(
                 Box(
                     modifier = Modifier
                         .width(40.dp)
-                        .height(4.dp)
+                        .height(AppDimens.Dimens4)
                         .background(
                             color = Color.LightGray,
-                            shape = RoundedCornerShape(2.dp)
+                            shape = RoundedCornerShape(AppDimens.Dimens2)
                         )
                 )
 
-                Spacer(Modifier.height(12.dp))
+                Spacer(Modifier.height(AppDimens.Dimens12))
 
                 Image(
                     painter = painterResource(
@@ -113,7 +115,7 @@ fun CCMCompleteBottomSheetCompose(
                     modifier = Modifier.height(60.dp)
                 )
 
-                Spacer(Modifier.height(12.dp))
+                Spacer(Modifier.height(AppDimens.Dimens12))
 
                 Text(
                     text = if (isAnswerTrue)
@@ -127,7 +129,7 @@ fun CCMCompleteBottomSheetCompose(
                         Color.Black
                 )
 
-                Spacer(Modifier.height(4.dp))
+                Spacer(Modifier.height(AppDimens.Dimens4))
 
                 Text(
                     text = if (isAnswerTrue) {
@@ -150,7 +152,7 @@ fun CCMCompleteBottomSheetCompose(
                         colorResource(R.color.red)
                 )
 
-                Spacer(Modifier.height(8.dp))
+                Spacer(Modifier.height(AppDimens.Dimens8))
 
                 // Answer (HTML)
                 AndroidView(
@@ -158,7 +160,7 @@ fun CCMCompleteBottomSheetCompose(
                         TextView(context).apply {
                             textAlignment = TextView.TEXT_ALIGNMENT_CENTER
                             setTextColor(ContextCompat.getColor(context, R.color.black))
-                            textSize = 14f
+                            textSize = 14f * appScale()
                             typeface = ResourcesCompat.getFont(context, R.font.font_regular)
                         }
                     },
@@ -172,7 +174,7 @@ fun CCMCompleteBottomSheetCompose(
                     }
                 )
 
-                Spacer(Modifier.height(16.dp))
+                Spacer(Modifier.height(AppDimens.Dimens16))
 
                 Button(
                     onClick = onContinue,

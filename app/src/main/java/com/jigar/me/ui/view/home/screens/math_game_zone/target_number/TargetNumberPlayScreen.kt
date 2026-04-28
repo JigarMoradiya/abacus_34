@@ -45,6 +45,7 @@ import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryDark
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.screens.math_game_zone.target_number.viewmodel.TargetNumberPlayViewModel
+import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.PlaySound
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
 
@@ -67,7 +68,7 @@ fun TargetNumberPlayScreen(
 
                 Column(
                     modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(
-                        8.dp,
+                        AppDimens.Dimens8,
                         Alignment.CenterVertically
                     ), horizontalAlignment = Alignment.CenterHorizontally
                 ) {
@@ -87,7 +88,7 @@ fun TargetNumberPlayScreen(
 
                     Row(
                         modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
+                        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12, Alignment.CenterHorizontally),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         state.numbers.forEachIndexed { idx, num ->
@@ -97,7 +98,7 @@ fun TargetNumberPlayScreen(
                             Box(
                                 modifier = Modifier
                                     .defaultMinSize(minWidth = 56.dp, minHeight = 56.dp)
-                                    .clip(RoundedCornerShape(12.dp))
+                                    .clip(RoundedCornerShape(AppDimens.Dimens12))
                                     .background(
                                         if (isSelected)
                                             Color(0xFF43A047)
@@ -118,12 +119,12 @@ fun TargetNumberPlayScreen(
                     }
 
 
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
                         state.allowedOps.forEach { op ->
                             Box(
                                 contentAlignment = Alignment.Center, modifier = Modifier
                                     .size(48.dp)
-                                    .clip(RoundedCornerShape(12.dp))
+                                    .clip(RoundedCornerShape(AppDimens.Dimens12))
                                     .background(ColorPrimaryDark)
                                     .clickable {
                                         viewModel.tapOperation(op)
@@ -147,7 +148,7 @@ fun TargetNumberPlayScreen(
             contentAlignment = Alignment.Center
         ) {
 
-            Column(modifier = Modifier.padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+            Column(modifier = Modifier.padding(AppDimens.Dimens16), horizontalAlignment = Alignment.CenterHorizontally) {
                 if (state.steps.isNotNullOrEmpty()) {
                     StepsLogSection(
                         steps = state.steps,
@@ -161,11 +162,11 @@ fun TargetNumberPlayScreen(
                         fontSize = dimensionResource(R.dimen.textSizeExtraLarge).value.sp,
                         fontFamily = FontFamily(Font(R.font.font_bold)),
                         color = if (state.isSolvedCorrect == true) colorResource(R.color.green_600) else colorResource(R.color.red_600),
-                        modifier = Modifier.padding(8.dp)
+                        modifier = Modifier.padding(AppDimens.Dimens8)
                     )
                 }
 
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
                     if (state.isSolvedCorrect == true) {
                         Button(
                             onClick = {
@@ -176,19 +177,19 @@ fun TargetNumberPlayScreen(
                                 containerColor = colorResource(R.color.colorPrimary),
                                 contentColor = Color.White
                             ),
-                            shape = RoundedCornerShape(8.dp),
+                            shape = RoundedCornerShape(AppDimens.Dimens8),
                             contentPadding = PaddingValues(
-                                horizontal = 16.dp, vertical = 8.dp
+                                horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8
                             )
                         ) {
                             Row(
-                                horizontalArrangement = Arrangement.spacedBy(6.dp),
+                                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Icon(
                                     imageVector = Icons.Default.AutoMode,
                                     contentDescription = null,
-                                    modifier = Modifier.size(24.dp)
+                                    modifier = Modifier.size(AppDimens.Dimens24)
                                 )
 
                                 Text(
@@ -206,9 +207,9 @@ fun TargetNumberPlayScreen(
                                 containerColor = Color(0xFF4CAF50),
                                 contentColor = Color.White
                             ),
-                            shape = RoundedCornerShape(8.dp),
+                            shape = RoundedCornerShape(AppDimens.Dimens8),
                             contentPadding = PaddingValues(
-                                horizontal = 16.dp, vertical = 8.dp
+                                horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8
                             )
                         ) {
                             Column(
@@ -218,7 +219,7 @@ fun TargetNumberPlayScreen(
                                     text = "${state.hintUsed}/${state.hintLimit}",
                                     fontSize = dimensionResource(R.dimen.textSize18).value.sp,
                                     fontFamily = FontFamily(Font(R.font.font_bold)),
-                                    modifier = Modifier.height(24.dp)
+                                    modifier = Modifier.height(AppDimens.Dimens24)
                                 )
 
                                 Text(
@@ -236,9 +237,9 @@ fun TargetNumberPlayScreen(
                                 containerColor = Color(0xFFE53935),
                                 contentColor = Color.White
                             ),
-                            shape = RoundedCornerShape(8.dp),
+                            shape = RoundedCornerShape(AppDimens.Dimens8),
                             contentPadding = PaddingValues(
-                                horizontal = 16.dp, vertical = 8.dp
+                                horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8
                             )
                         ) {
                             Column(
@@ -247,7 +248,7 @@ fun TargetNumberPlayScreen(
                                 Icon(
                                     imageVector = Icons.Default.Refresh,
                                     contentDescription = null,
-                                    modifier = Modifier.size(24.dp)
+                                    modifier = Modifier.size(AppDimens.Dimens24)
                                 )
 
                                 Text(
@@ -283,7 +284,7 @@ fun StepsLogSection(
             color = Color.Red
         )
 
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.height(AppDimens.Dimens8))
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -302,7 +303,7 @@ fun StepsLogSection(
                     painter = painterResource(R.drawable.ic_arrow_down),
                     contentDescription = null,
                     tint = Color.Red.copy(alpha = 0.8f),
-                    modifier = Modifier.size(16.dp)
+                    modifier = Modifier.size(AppDimens.Dimens16)
                 )
             }
         }
@@ -331,7 +332,7 @@ fun StepsLogSection(
                             painter = painterResource(R.drawable.ic_arrow_down),
                             contentDescription = null,
                             tint = Color.Red.copy(alpha = 0.8f),
-                            modifier = Modifier.size(16.dp)
+                            modifier = Modifier.size(AppDimens.Dimens16)
                         )
                     }
                 }

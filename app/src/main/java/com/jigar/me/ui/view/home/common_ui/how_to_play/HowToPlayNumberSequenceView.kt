@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
 fun HowToPlayNumberSequenceView(
@@ -43,7 +44,7 @@ fun HowToPlayNumberSequenceView(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Black.copy(alpha = 0.5f))
-            .padding(16.dp),
+            .padding(AppDimens.Dimens16),
         contentAlignment = Alignment.Center
     ) {
 
@@ -52,7 +53,7 @@ fun HowToPlayNumberSequenceView(
                 .width(screenWidth * widthMultiplier)
                 .height(screenHeight * heightMultiplier)
                 .background(Color.White, RoundedCornerShape(20.dp))
-                .padding(16.dp),
+                .padding(AppDimens.Dimens16),
             contentAlignment = Alignment.Center
         ){
             Column(modifier = Modifier.fillMaxSize()) {
@@ -88,7 +89,7 @@ fun HowToPlayNumberSequenceView(
                 // ---------- SCROLL CONTENT ----------
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
-                    contentPadding = PaddingValues(bottom = 16.dp)
+                    contentPadding = PaddingValues(bottom = AppDimens.Dimens16)
                 ) {
 
                     item {
