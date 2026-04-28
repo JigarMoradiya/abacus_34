@@ -1,7 +1,8 @@
-package com.jigar.me.ui.view.home.common.how_to_play
+package com.jigar.me.ui.view.home.common_ui.how_to_play
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -31,7 +32,7 @@ import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 
 @Composable
-fun HowToPlayNumberSequenceView(
+fun HowToPlayMathPyramidView(
     widthMultiplier: Float = 0.8f,
     heightMultiplier: Float = 0.9f,
     onClose: () -> Unit
@@ -39,6 +40,7 @@ fun HowToPlayNumberSequenceView(
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     val screenHeight = LocalConfiguration.current.screenHeightDp.dp
 
+    // Dim background
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -47,14 +49,15 @@ fun HowToPlayNumberSequenceView(
         contentAlignment = Alignment.Center
     ) {
 
+        // Content box
         Box(
             modifier = Modifier
                 .width(screenWidth * widthMultiplier)
                 .height(screenHeight * heightMultiplier)
                 .background(Color.White, RoundedCornerShape(20.dp))
-                .padding(16.dp),
-            contentAlignment = Alignment.Center
-        ){
+                .padding(16.dp)
+        ) {
+
             Column(modifier = Modifier.fillMaxSize()) {
 
                 // ---------- HEADER ----------
@@ -63,9 +66,9 @@ fun HowToPlayNumberSequenceView(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = stringResource(R.string.number_sequence_puzzle),
+                        text = stringResource(R.string.math_pyramid),
                         fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                        fontSize = dimensionResource(id = R.dimen.textSize18).value.sp,
+                        fontSize = dimensionResource(R.dimen.textSize18).value.sp,
                         color = ColorPrimary
                     )
 
@@ -85,19 +88,21 @@ fun HowToPlayNumberSequenceView(
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-                // ---------- SCROLL CONTENT ----------
+                // ---------- SCROLL AREA ----------
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
                     contentPadding = PaddingValues(bottom = 16.dp)
                 ) {
 
-                    item {
-                        Bullet("You get a puzzle grid with one empty box and lots of number tiles.")
-                    }
+                    // FIRST BULLETS
+                    item { Bullet("Math Pyramid is a fun number-building game where every number helps create the number above it!") }
 
+                    item { Bullet("You will see a pyramid made of rows of boxes. Depending on the level, the pyramid can have 2 to 6 layers.") }
+
+                    // SECTION TITLE
                     item {
                         Text(
-                            text = "Depending on the level, the grid size can be:",
+                            text = "👉 How it works:",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
@@ -105,13 +110,38 @@ fun HowToPlayNumberSequenceView(
                         )
                     }
 
-                    item { SubBullet("3×3 → numbers 1 to 8") }
-                    item { SubBullet("4×4 → numbers 1 to 15") }
-                    item { SubBullet("5×5 → numbers 1 to 24") }
+                    item { Bullet("Look at the two numbers at the bottom.") }
+                    item { Bullet("Add them together.") }
+                    item { Bullet("Their sum goes in the box above.") }
 
+                    // Example Title
                     item {
                         Text(
-                            text = "👉 How you play:",
+                            text = "Example:",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold,
+                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            color = Color.Red,
+                            modifier = Modifier.padding(top = 8.dp)
+                        )
+                    }
+
+                    // Example Pyramid
+                    item {
+                        Column(
+                            modifier = Modifier.padding(start = 16.dp),
+                            verticalArrangement = Arrangement.spacedBy(4.dp)
+                        ) {
+                            Text("    [ ? ]", fontFamily = FontFamily(Font(R.font.font_regular)))
+                            Text("[ 4 ] [ 6 ]", fontFamily = FontFamily(Font(R.font.font_regular)))
+                            Text("Because 4 + 6 = 10, the top box should be 10.", fontFamily = FontFamily(Font(R.font.font_regular)))
+                        }
+                    }
+
+                    // Your Job
+                    item {
+                        Text(
+                            text = "👉 Your job:",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
@@ -119,21 +149,20 @@ fun HowToPlayNumberSequenceView(
                         )
                     }
 
-                    item { Bullet("Tap a number only if it is next to the empty box (up, down, left, or right).") }
-                    item { Bullet("That number will slide into the empty space.") }
-                    item { Bullet("Keep sliding numbers until they are in order from 1 upwards.") }
+                    item { Bullet("Fill in all the empty boxes by adding the numbers below.") }
+                    item { Bullet("Complete the puzzle when all boxes are filled correctly from bottom to top.") }
 
                     item {
                         Text(
-                            text = "It’s like a fun sliding puzzle where every move brings you closer to the correct sequence!",
+                            text = "It’s like building a number tower — each block supports the block above!",
                             fontSize = 16.sp,
                             modifier = Modifier.padding(top = 4.dp),
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
-                            fontWeight = FontWeight.SemiBold
+                            fontWeight = FontWeight.SemiBold,
                         )
                     }
 
-                    // ----------- Parent Friendly -----------
+                    // PARENT-FRIENDLY SECTION
                     item {
                         Text(
                             text = "👨‍👩‍👧 How It Helps:",
@@ -144,22 +173,22 @@ fun HowToPlayNumberSequenceView(
                         )
                     }
 
-                    item { Check("Builds strong number sense") }
-                    item { Detail("Kids naturally understand before/after in number order.") }
+                    item { Check("Strengthens mental addition") }
+                    item { Detail("Kids repeatedly add small and medium numbers — building fluency.") }
 
-                    item { Check("Develops logical and step-by-step thinking") }
-                    item { Detail("Each move must be planned — early coding mindset.") }
+                    item { Check("Develops step-by-step reasoning") }
+                    item { Detail("Kids see how lower numbers create upper numbers.") }
 
-                    item { Check("Improves focus and memory") }
-                    item { Detail("Kids track sliding tiles and recall positions.") }
+                    item { Check("Builds problem-solving confidence") }
+                    item { Detail("Each correct box gives instant feedback — encouraging independence.") }
 
-                    item { Check("Enhances problem-solving") }
-                    item { Detail("Requires strategy, not guessing.") }
+                    item { Check("Enhances concentration") }
+                    item { Detail("Kids stay focused to complete all layers accurately.") }
 
-                    item { Check("Boosts spatial awareness") }
-                    item { Detail("Kids visualize movement on a grid.") }
+                    item { Check("Supports number relationships") }
+                    item { Detail("Children understand how numbers combine and grow — essential for algebra.") }
 
-                    // ----------- Math Explanation -----------
+                    // MATH-FRIENDLY SECTION
                     item {
                         Text(
                             text = "❤️ Why This Game Matters:",
@@ -170,16 +199,24 @@ fun HowToPlayNumberSequenceView(
                         )
                     }
 
-                    item { Bullet("Numbers follow a sequence") }
-                    item { Bullet("Patterns help solve problems") }
-                    item { Bullet("Good solutions come from planning") }
-                    item { Bullet("Mistakes are part of the fun learning journey") }
+                    item { Bullet("Children see how two values combine to create a new value") }
+                    item { Bullet("They practice addition & subtraction patterns, not random sums") }
+                    item { Bullet("They understand hierarchy — base numbers build higher numbers") }
+                    item { Bullet("The pyramid format helps visualize how parts create a whole") }
 
                     item {
                         Text(
-                            text = "It is one of the best early-math brain games for developing strong thinking skills without feeling like homework.",
+                            text = "This prepares them for concepts like Pascal’s Triangle, number bonds, and arithmetic patterns.",
                             fontSize = 16.sp,
-                            fontWeight = FontWeight.SemiBold,
+                            fontFamily = FontFamily(Font(R.font.font_semibold)),
+                            modifier = Modifier.padding(top = 4.dp)
+                        )
+                    }
+
+                    item {
+                        Text(
+                            text = "It’s a great way to build strong early math skills while solving a fun and satisfying pyramid puzzle.",
+                            fontSize = 16.sp,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
                             modifier = Modifier.padding(top = 4.dp)
                         )
@@ -188,39 +225,4 @@ fun HowToPlayNumberSequenceView(
             }
         }
     }
-}
-
-@Composable
-fun Bullet(text: String) {
-    Row(modifier = Modifier.padding(top = 4.dp)) {
-        Text("•  ", fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_regular)))
-        Text(text, fontSize = 16.sp,fontFamily = FontFamily(Font(R.font.font_regular)))
-    }
-}
-
-@Composable
-fun SubBullet(text: String) {
-    Row(modifier = Modifier.padding(start = 12.dp, top = 2.dp)) {
-        Text("•  ",fontFamily = FontFamily(Font(R.font.font_regular)))
-        Text(text, fontSize = 16.sp,fontFamily = FontFamily(Font(R.font.font_regular)))
-    }
-}
-
-@Composable
-fun Check(text: String) {
-    Row(modifier = Modifier.padding(top = 6.dp)) {
-        Text("✔ ", color = Color(0xFF4CAF50), fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold)))
-        Text(text, fontWeight = FontWeight.Bold, fontSize = 16.sp,fontFamily = FontFamily(Font(R.font.font_bold)))
-    }
-}
-
-@Composable
-fun Detail(text: String) {
-    Text(
-        text = "   $text",
-        color = Color.DarkGray,
-        fontSize = 15.sp,
-        modifier = Modifier.padding(top = 2.dp),
-        fontFamily = FontFamily(Font(R.font.font_regular))
-    )
 }

@@ -18,9 +18,9 @@ import com.jigar.me.ui.view.home.screens.activities.ccm.play.components.AnswerSe
 import com.jigar.me.ui.view.home.screens.activities.ccm.play.components.CCMCompleteBottomSheetCompose
 import com.jigar.me.ui.view.home.screens.activities.ccm.play.components.QuestionSection
 import com.jigar.me.ui.view.home.screens.activities.ccm.play.viewmodels.CCMPlayViewModel
-import com.jigar.me.ui.view.home.common.BackButtonWithText
-import com.jigar.me.ui.view.home.common.Loader
-import com.jigar.me.ui.view.home.common.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.common_ui.Loader
+import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 
 @Composable
 fun CCMPlayRoute(

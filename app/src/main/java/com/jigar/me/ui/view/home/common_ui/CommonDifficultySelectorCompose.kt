@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.common
+package com.jigar.me.ui.view.home.common_ui
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.LocalIndication
@@ -25,7 +25,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
-import com.jigar.me.ui.view.home.common.enums.CommonDifficulty4
+import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
 
 
 @Composable

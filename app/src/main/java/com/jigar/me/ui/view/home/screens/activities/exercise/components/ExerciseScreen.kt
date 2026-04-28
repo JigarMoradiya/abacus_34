@@ -25,7 +25,7 @@ import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.view.home.screens.activities.exercise.components.pager.ExercisePagerScreen
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseUiState
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseViewModel
-import com.jigar.me.ui.view.home.common.BackButtonWithText
+import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 
 @Composable
 fun ExerciseScreen(
@@ -41,13 +41,12 @@ fun ExerciseScreen(
 
             Row(verticalAlignment = Alignment.CenterVertically) {
                 val alpha = if (uiState.isAbacusOnLeftHand){ 0f } else { 1f }
-                BackButtonWithText(title = stringResource(R.string.title_exercises),  modifier = Modifier.alpha(alpha),onBackClick = {
+                BackButtonWithText(title = stringResource(R.string.title_exercises),  modifier = Modifier.alpha(alpha).weight(1f),onBackClick = {
                     onBackClick()
                 })
 
                 // show que no when exercise start
                 if (uiState.isExerciseStarted) {
-                    Spacer(Modifier.weight(1f))
                     Text(
                         text = "Q${uiState.currentQueIndex + 1}", style = MaterialTheme.typography.titleMedium.copy(
                             color = ColorPrimary, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))

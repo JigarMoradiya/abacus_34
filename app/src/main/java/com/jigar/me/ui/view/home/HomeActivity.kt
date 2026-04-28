@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.runtime.CompositionLocalProvider
@@ -22,7 +21,7 @@ import com.jigar.me.ui.view.base.BaseActivity
 import com.jigar.me.ui.view.home.common_ui.BackgroundUI
 import com.jigar.me.ui.view.home.navigation.HomeNavGraph
 import com.jigar.me.ui.view.home.theme.MyApplicationTheme
-import com.jigar.me.ui.view.home.common.LocalPreferencesHelper
+import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.utils.AppConstants
 import dagger.hilt.android.AndroidEntryPoint

@@ -13,7 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.view.home.common.BackButtonWithText
+import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.screens.faqs.components.FAQsListItem
 import com.jigar.me.ui.view.home.screens.faqs.viewmodels.FAQsViewModel
 

@@ -13,11 +13,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
@@ -44,16 +47,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.sp
-import coil.size.Dimension
 import com.jigar.me.R
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens32
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
-import com.jigar.me.ui.view.home.common.BackButtonWithText
-import com.jigar.me.ui.view.home.common.CommonDifficultySelectorCompose
-import com.jigar.me.ui.view.home.common.HowToPlayButton
-import com.jigar.me.ui.view.home.common.how_to_play.HowToPlayMathPyramidView
+import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.common_ui.CommonDifficultySelectorCompose
+import com.jigar.me.ui.view.home.common_ui.HowToPlayButton
+import com.jigar.me.ui.view.home.common_ui.how_to_play.HowToPlayMathPyramidView
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.home.components.MathPyramidViewModel
 
 @Composable
@@ -66,12 +68,11 @@ fun MathPyramidHomeJetpackScreen(
     var showHelp by remember { mutableStateOf(false) }
     val levelRange = 2..6
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         Column(modifier = Modifier.fillMaxSize()) {
 
             Row {
-                BackButtonWithText(title = stringResource(R.string.math_pyramid), onBackClick = onBackClick)
-                Spacer(Modifier.weight(1f))
+                BackButtonWithText(title = stringResource(R.string.math_pyramid), modifier = Modifier.weight(1f),onBackClick = onBackClick)
                 HowToPlayButton {
                     showHelp = true
                 }

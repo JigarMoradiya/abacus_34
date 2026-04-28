@@ -19,10 +19,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
@@ -55,10 +58,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.jigar.me.R
-import com.jigar.me.ui.view.home.common.BackButtonWithText
-import com.jigar.me.ui.view.home.common.HowToPlayButton
-import com.jigar.me.ui.view.home.common.dialogs.CustomPopupView
-import com.jigar.me.ui.view.home.common.how_to_play.HowToPlaySudokuView
+import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.common_ui.HowToPlayButton
+import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.how_to_play.HowToPlaySudokuView
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuDifficulty4
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuHomeViewModel
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuSize
@@ -76,12 +79,11 @@ fun SudokuHomeScreen(
     val sizes = listOf(SudokuSize.FOUR, SudokuSize.SIX, SudokuSize.NINE)
     var showHelp by remember { mutableStateOf(false) }
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         Column(modifier = Modifier.fillMaxSize()) {
 
             Row {
-                BackButtonWithText(title = stringResource(R.string.sudoku), onBackClick = { navController.popBackStack() })
-                Spacer(Modifier.weight(1f))
+                BackButtonWithText(title = stringResource(R.string.sudoku), modifier = Modifier.weight(1f),onBackClick = { navController.popBackStack() })
                 HowToPlayButton {
                     showHelp = true
                 }

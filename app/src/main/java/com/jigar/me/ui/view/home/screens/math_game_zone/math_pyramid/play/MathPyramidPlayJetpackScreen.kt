@@ -11,10 +11,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -45,9 +48,9 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
-import com.jigar.me.ui.view.home.common.BackButtonWithText
-import com.jigar.me.ui.view.home.common.dialogs.CustomPopupView
-import com.jigar.me.ui.view.home.common.enums.CommonDifficulty4
+import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.play.components.NumberPyramidGenerator
 import com.jigar.me.utils.PlaySound
 
@@ -79,7 +82,7 @@ fun MathPyramidPlayJetpackScreen(
 
     LaunchedEffect(Unit) { generateNewPuzzle() }
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         Column(modifier = Modifier.fillMaxSize()) {
             // 🔹 Header Bar
             BackButtonWithText(title = "Level $levels • ${difficulty.displayName}", onBackClick = onBackClick)

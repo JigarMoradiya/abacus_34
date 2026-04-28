@@ -26,11 +26,9 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.view.home.common_ui.BackgroundUI
-import com.jigar.me.ui.view.home.common_ui.permission.NotificationPermissionHandler
-import com.jigar.me.ui.view.home.common.Loader
-import com.jigar.me.ui.view.home.common.dialogs.CustomPopupView
-import com.jigar.me.ui.view.home.common.dialogs.FreeTrialDialog
+import com.jigar.me.ui.view.home.common_ui.Loader
+import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.dialogs.FreeTrialDialog
 import com.jigar.me.ui.view.home.screens.home.components.HomeHeaderLeft
 import com.jigar.me.ui.view.home.screens.home.components.HomeHeaderRight
 import com.jigar.me.ui.view.home.screens.home.components.HomeMenuScreen

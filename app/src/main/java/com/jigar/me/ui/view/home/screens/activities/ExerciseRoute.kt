@@ -29,8 +29,8 @@ import com.jigar.me.R
 import com.jigar.me.ui.view.home.screens.activities.exercise.components.ExerciseAbacusRow
 import com.jigar.me.ui.view.home.screens.activities.exercise.components.ExerciseScreen
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseViewModel
-import com.jigar.me.ui.view.home.common.Loader
-import com.jigar.me.ui.view.home.common.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.Loader
+import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.home.screens.reports.dialogs.ExerciseExamCompleteResultDialog
 import com.jigar.me.utils.extensions.secToCountDown

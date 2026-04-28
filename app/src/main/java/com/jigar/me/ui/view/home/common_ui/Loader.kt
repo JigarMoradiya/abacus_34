@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.common
+package com.jigar.me.ui.view.home.common_ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box

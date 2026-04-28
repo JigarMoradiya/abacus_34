@@ -49,10 +49,10 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
-import com.jigar.me.ui.view.home.common.BackButtonWithText
-import com.jigar.me.ui.view.home.common.CommonDifficultySelectorCompose
-import com.jigar.me.ui.view.home.common.HowToPlayButton
-import com.jigar.me.ui.view.home.common.how_to_play.HowToPlayTargetNumberView
+import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.common_ui.CommonDifficultySelectorCompose
+import com.jigar.me.ui.view.home.common_ui.HowToPlayButton
+import com.jigar.me.ui.view.home.common_ui.how_to_play.HowToPlayTargetNumberView
 import com.jigar.me.ui.view.home.screens.math_game_zone.target_number.components.TargetNumberViewModel
 
 @Composable
@@ -68,8 +68,7 @@ fun TargetNumberHomeScreen(
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
             Row {
-                BackButtonWithText(title = stringResource(R.string.target_number_game), onBackClick = onBackClick)
-                Spacer(Modifier.weight(1f))
+                BackButtonWithText(title = stringResource(R.string.target_number_game),modifier = Modifier.weight(1f), onBackClick = onBackClick)
                 HowToPlayButton {
                     showHelp = true
                 }

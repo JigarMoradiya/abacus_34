@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.common.dialogs
+package com.jigar.me.ui.view.home.common_ui.dialogs
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

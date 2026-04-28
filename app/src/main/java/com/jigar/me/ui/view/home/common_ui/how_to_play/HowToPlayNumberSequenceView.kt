@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.common.how_to_play
+package com.jigar.me.ui.view.home.common_ui.how_to_play
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -31,7 +31,7 @@ import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 
 @Composable
-fun HowToPlaySudokuView(
+fun HowToPlayNumberSequenceView(
     widthMultiplier: Float = 0.8f,
     heightMultiplier: Float = 0.9f,
     onClose: () -> Unit
@@ -39,7 +39,6 @@ fun HowToPlaySudokuView(
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     val screenHeight = LocalConfiguration.current.screenHeightDp.dp
 
-    // Dimmed background
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -48,15 +47,14 @@ fun HowToPlaySudokuView(
         contentAlignment = Alignment.Center
     ) {
 
-        // Content box
         Box(
             modifier = Modifier
                 .width(screenWidth * widthMultiplier)
                 .height(screenHeight * heightMultiplier)
                 .background(Color.White, RoundedCornerShape(20.dp))
-                .padding(16.dp)
-        ) {
-
+                .padding(16.dp),
+            contentAlignment = Alignment.Center
+        ){
             Column(modifier = Modifier.fillMaxSize()) {
 
                 // ---------- HEADER ----------
@@ -65,9 +63,9 @@ fun HowToPlaySudokuView(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = stringResource(R.string.sudoku),
+                        text = stringResource(R.string.number_sequence_puzzle),
                         fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                        fontSize = dimensionResource(R.dimen.textSize18).value.sp,
+                        fontSize = dimensionResource(id = R.dimen.textSize18).value.sp,
                         color = ColorPrimary
                     )
 
@@ -93,15 +91,13 @@ fun HowToPlaySudokuView(
                     contentPadding = PaddingValues(bottom = 16.dp)
                 ) {
 
-                    // Intro
                     item {
-                        Bullet("Sudoku is a fun number puzzle where you fill in the empty boxes using your thinking skills!")
+                        Bullet("You get a puzzle grid with one empty box and lots of number tiles.")
                     }
 
-                    // Grid sizes
                     item {
                         Text(
-                            text = "We have different grid sizes:",
+                            text = "Depending on the level, the grid size can be:",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
@@ -109,11 +105,10 @@ fun HowToPlaySudokuView(
                         )
                     }
 
-                    item { SubBullet("4×4 (Beginner)") }
-                    item { SubBullet("6×6 (Intermediate)") }
-                    item { SubBullet("9×9 (Expert)") }
+                    item { SubBullet("3×3 → numbers 1 to 8") }
+                    item { SubBullet("4×4 → numbers 1 to 15") }
+                    item { SubBullet("5×5 → numbers 1 to 24") }
 
-                    // How to play
                     item {
                         Text(
                             text = "👉 How you play:",
@@ -124,15 +119,13 @@ fun HowToPlaySudokuView(
                         )
                     }
 
-                    item { Bullet("Each row must have all different numbers.") }
-                    item { Bullet("Each column must have all different numbers.") }
-                    item { Bullet("Each small block must also have all different numbers.") }
-                    item { Bullet("Tap an empty box and choose a number that does not repeat.") }
-                    item { Bullet("You win when the entire grid follows Sudoku rules!") }
+                    item { Bullet("Tap a number only if it is next to the empty box (up, down, left, or right).") }
+                    item { Bullet("That number will slide into the empty space.") }
+                    item { Bullet("Keep sliding numbers until they are in order from 1 upwards.") }
 
                     item {
                         Text(
-                            text = "Sudoku is like a secret number pattern game where you become a little detective 🕵️‍♂️.",
+                            text = "It’s like a fun sliding puzzle where every move brings you closer to the correct sequence!",
                             fontSize = 16.sp,
                             modifier = Modifier.padding(top = 4.dp),
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
@@ -140,7 +133,7 @@ fun HowToPlaySudokuView(
                         )
                     }
 
-                    // Parent friendly
+                    // ----------- Parent Friendly -----------
                     item {
                         Text(
                             text = "👨‍👩‍👧 How It Helps:",
@@ -151,31 +144,22 @@ fun HowToPlaySudokuView(
                         )
                     }
 
-                    item { Check("Logical reasoning") }
-                    item { Detail("Kids analyze clues and figure out where numbers can or cannot go.") }
+                    item { Check("Builds strong number sense") }
+                    item { Detail("Kids naturally understand before/after in number order.") }
 
-                    item { Check("Decision-making skills") }
-                    item { Detail("They test possibilities and choose the correct one based on rules.") }
+                    item { Check("Develops logical and step-by-step thinking") }
+                    item { Detail("Each move must be planned — early coding mindset.") }
 
-                    item { Check("Patience and focus") }
-                    item { Detail("Completing a Sudoku needs calm thinking — great for attention span development.") }
+                    item { Check("Improves focus and memory") }
+                    item { Detail("Kids track sliding tiles and recall positions.") }
 
-                    item { Check("Visual and pattern recognition") }
-                    item { Detail("Children begin to notice patterns across rows and grids.") }
+                    item { Check("Enhances problem-solving") }
+                    item { Detail("Requires strategy, not guessing.") }
 
-                    item { Check("Confidence building") }
-                    item { Detail("Solving tough puzzles builds confidence and perseverance.") }
+                    item { Check("Boosts spatial awareness") }
+                    item { Detail("Kids visualize movement on a grid.") }
 
-                    item {
-                        Text(
-                            text = "Sudoku teaches how to think, not just how to calculate.",
-                            fontSize = 18.sp,
-                            fontFamily = FontFamily(Font(R.font.font_semibold)),
-                            modifier = Modifier.padding(top = 4.dp)
-                        )
-                    }
-
-                    // Math friendly
+                    // ----------- Math Explanation -----------
                     item {
                         Text(
                             text = "❤️ Why This Game Matters:",
@@ -186,24 +170,16 @@ fun HowToPlaySudokuView(
                         )
                     }
 
-                    item { Bullet("Learn structured thinking") }
-                    item { Bullet("Understand rules and constraints") }
-                    item { Bullet("Strengthen working memory") }
-                    item { Bullet("Develop deductive reasoning (If this number cannot go here, it must go there!)") }
+                    item { Bullet("Numbers follow a sequence") }
+                    item { Bullet("Patterns help solve problems") }
+                    item { Bullet("Good solutions come from planning") }
+                    item { Bullet("Mistakes are part of the fun learning journey") }
 
                     item {
                         Text(
-                            text = "It supports higher-level math learning because it trains the brain to organize information, spot patterns, and solve problems logically.",
+                            text = "It is one of the best early-math brain games for developing strong thinking skills without feeling like homework.",
                             fontSize = 16.sp,
-                            fontFamily = FontFamily(Font(R.font.font_semibold)),
-                            modifier = Modifier.padding(top = 4.dp)
-                        )
-                    }
-
-                    item {
-                        Text(
-                            text = "Sudoku is not about speed — it's about smart thinking. It turns kids into little mathematicians!",
-                            fontSize = 16.sp,
+                            fontWeight = FontWeight.SemiBold,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
                             modifier = Modifier.padding(top = 4.dp)
                         )
@@ -212,4 +188,39 @@ fun HowToPlaySudokuView(
             }
         }
     }
+}
+
+@Composable
+fun Bullet(text: String) {
+    Row(modifier = Modifier.padding(top = 4.dp)) {
+        Text("•  ", fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_regular)))
+        Text(text, fontSize = 16.sp,fontFamily = FontFamily(Font(R.font.font_regular)))
+    }
+}
+
+@Composable
+fun SubBullet(text: String) {
+    Row(modifier = Modifier.padding(start = 12.dp, top = 2.dp)) {
+        Text("•  ",fontFamily = FontFamily(Font(R.font.font_regular)))
+        Text(text, fontSize = 16.sp,fontFamily = FontFamily(Font(R.font.font_regular)))
+    }
+}
+
+@Composable
+fun Check(text: String) {
+    Row(modifier = Modifier.padding(top = 6.dp)) {
+        Text("✔ ", color = Color(0xFF4CAF50), fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold)))
+        Text(text, fontWeight = FontWeight.Bold, fontSize = 16.sp,fontFamily = FontFamily(Font(R.font.font_bold)))
+    }
+}
+
+@Composable
+fun Detail(text: String) {
+    Text(
+        text = "   $text",
+        color = Color.DarkGray,
+        fontSize = 15.sp,
+        modifier = Modifier.padding(top = 2.dp),
+        fontFamily = FontFamily(Font(R.font.font_regular))
+    )
 }

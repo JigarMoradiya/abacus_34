@@ -6,9 +6,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -34,7 +37,7 @@ import com.jigar.me.ui.view.home.screens.category.components.CategoryItem
 import com.jigar.me.ui.view.home.screens.category.components.PageItem
 import com.jigar.me.ui.view.home.screens.category.components.TopRightChips
 import com.jigar.me.ui.view.home.screens.category.viewmodels.CategoryViewModel
-import com.jigar.me.ui.view.home.common.BackButtonWithText
+import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 
 @Composable
@@ -50,16 +53,16 @@ fun CategoryScreen(
     val allSets by homeActivityViewModel.allSets.collectAsStateWithLifecycle()
     val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
             BackButtonWithText(
                 title = stringResource(R.string.practice_of_abacus),
-                onBackClick = onBackClick
+                onBackClick = onBackClick,
+                modifier = Modifier.weight(1f)
             )
-            Spacer(modifier = Modifier.weight(1f))
             TopRightChips()
         }
         Spacer(Modifier.weight(1f))

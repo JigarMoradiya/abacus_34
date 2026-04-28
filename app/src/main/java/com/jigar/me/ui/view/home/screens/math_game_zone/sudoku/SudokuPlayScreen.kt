@@ -14,13 +14,16 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
@@ -52,9 +55,9 @@ import androidx.compose.ui.unit.min
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.jigar.me.R
-import com.jigar.me.ui.view.home.common.BackButtonWithText
-import com.jigar.me.ui.view.home.common.dialogs.CommonLoadingView
-import com.jigar.me.ui.view.home.common.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.common_ui.dialogs.CommonLoadingView
+import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuBoxRules
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuPlayViewModel
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuSize
@@ -76,7 +79,7 @@ fun SudokuPlayScreen(
 
     val size = vm.size
     val difficulty = vm.difficulty
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         Column(modifier = modifier.fillMaxSize()) {
             Row(
                 modifier = Modifier.fillMaxWidth(),

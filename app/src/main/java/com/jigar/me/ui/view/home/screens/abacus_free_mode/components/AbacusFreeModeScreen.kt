@@ -30,7 +30,6 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import com.jigar.me.R
-import com.jigar.me.ui.view.home.common_ui.BackButtonWithTextNew
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
@@ -38,6 +37,7 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
+import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.screens.abacus_free_mode.viewmodel.AbacusFreeModeViewModel
 import com.jigar.me.utils.AppConstants
 
@@ -77,7 +77,7 @@ fun AbacusFreeModeScreen(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                BackButtonWithTextNew(
+                BackButtonWithText(
                     title = stringResource(R.string.abacus_free_mode),
                     onBackClick = onBackClick,
                     modifier = Modifier.weight(1f)

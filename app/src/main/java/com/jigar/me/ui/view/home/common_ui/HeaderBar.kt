@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -28,11 +29,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.jigar.me.R
 import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
@@ -41,11 +48,9 @@ import com.jigar.me.ui.view.home.theme.AppDimens.ShadowOffset
 import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.theme.getButtonColors
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
-
 
 @Composable
-fun BackButtonWithTextNew(
+fun BackButtonWithText(
     title: String,
     modifier: Modifier = Modifier,
     size: Dp = ToolbarIconSize,
@@ -141,5 +146,53 @@ fun BackButtonWithTextNew(
         }
 
         Spacer(modifier = Modifier.weight(1f))
+    }
+}
+
+@Composable
+fun HowToPlayButton(
+    color: Color = Color(0xFF24A229),
+    onClick: () -> Unit
+) {
+    val capsuleHeight = 30.dp
+    val shape = RoundedCornerShape(100.dp)
+    Box(
+        modifier = Modifier
+            .padding(start = dimensionResource(R.dimen.activity_padding16), top = dimensionResource(R.dimen.activity_padding12), end = dimensionResource(R.dimen.activity_padding16))
+            .wrapContentHeight()
+    ) {
+        // 1) Capsule background (full width as needed)
+        Box(
+            modifier = Modifier
+                .height(capsuleHeight)
+                .clip(
+                    RoundedCornerShape(
+                        topStart = 100.dp,
+                        bottomStart = 100.dp,
+                        topEnd = 100.dp,
+                        bottomEnd = 100.dp
+                    )
+                )
+                .background(color.copy(alpha = 0.15f))
+                .clip(shape)
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = LocalIndication.current,
+                ) {
+                    onClick()
+                }
+                .padding(horizontal = dimensionResource(R.dimen.activity_padding16)) // leave space for circle overlap
+        ) {
+            // Title centered vertically inside capsule
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxHeight()
+            ) {
+                Text(
+                    text = stringResource(R.string.how_to_play),
+                    style = MaterialTheme.typography.labelLarge.copy(color = color,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold)))
+                )
+            }
+        }
     }
 }

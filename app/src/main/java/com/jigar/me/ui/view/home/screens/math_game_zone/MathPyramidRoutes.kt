@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.jigar.me.ui.view.home.common.enums.CommonDifficulty4
+import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.home.MathPyramidHomeJetpackScreen
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.home.components.MathPyramidViewModel
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.play.MathPyramidPlayJetpackScreen

@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.common.enums
+package com.jigar.me.ui.view.home.common_ui.enums
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

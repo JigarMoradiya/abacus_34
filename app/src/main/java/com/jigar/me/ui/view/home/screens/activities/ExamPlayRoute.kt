@@ -20,9 +20,9 @@ import com.jigar.me.R
 import com.jigar.me.ui.view.home.screens.activities.exam.play.components.ExamHeader
 import com.jigar.me.ui.view.home.screens.activities.exam.play.components.ExamQuestionSection
 import com.jigar.me.ui.view.home.screens.activities.exam.play.viewmodels.ExamPlayViewModel
-import com.jigar.me.ui.view.home.common.BackButtonWithText
-import com.jigar.me.ui.view.home.common.Loader
-import com.jigar.me.ui.view.home.common.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.common_ui.Loader
+import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.screens.reports.dialogs.ExerciseExamCompleteResultDialog
 
 @Composable
@@ -38,9 +38,9 @@ fun ExamPlayRoute(
         Row {
             BackButtonWithText(
                 title = stringResource(R.string.math_exam),
-                onBackClick = { viewModel.onLeaveExam() }
+                onBackClick = { viewModel.onLeaveExam() },
+                modifier = Modifier.weight(1f)
             )
-            Spacer(Modifier.weight(1f))
             ExamHeader(uiState, elapsedSeconds = uiState.elapsedSeconds)
         }
         Box(modifier = Modifier.fillMaxSize()) {

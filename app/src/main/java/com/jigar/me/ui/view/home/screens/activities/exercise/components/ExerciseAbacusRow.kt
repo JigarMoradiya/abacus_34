@@ -16,7 +16,7 @@ import com.jigar.me.R
 import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseUiState
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseViewModel
-import com.jigar.me.ui.view.home.common.BackButtonWithText
+import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.utils.AppConstants
 
 @Composable

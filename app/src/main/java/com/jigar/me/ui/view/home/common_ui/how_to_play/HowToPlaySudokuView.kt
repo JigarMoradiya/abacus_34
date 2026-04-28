@@ -1,8 +1,7 @@
-package com.jigar.me.ui.view.home.common.how_to_play
+package com.jigar.me.ui.view.home.common_ui.how_to_play
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -32,7 +31,7 @@ import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 
 @Composable
-fun HowToPlayMathPyramidView(
+fun HowToPlaySudokuView(
     widthMultiplier: Float = 0.8f,
     heightMultiplier: Float = 0.9f,
     onClose: () -> Unit
@@ -40,7 +39,7 @@ fun HowToPlayMathPyramidView(
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     val screenHeight = LocalConfiguration.current.screenHeightDp.dp
 
-    // Dim background
+    // Dimmed background
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -66,7 +65,7 @@ fun HowToPlayMathPyramidView(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = stringResource(R.string.math_pyramid),
+                        text = stringResource(R.string.sudoku),
                         fontFamily = FontFamily(Font(R.font.font_extra_bold)),
                         fontSize = dimensionResource(R.dimen.textSize18).value.sp,
                         color = ColorPrimary
@@ -88,21 +87,21 @@ fun HowToPlayMathPyramidView(
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-                // ---------- SCROLL AREA ----------
+                // ---------- SCROLL CONTENT ----------
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
                     contentPadding = PaddingValues(bottom = 16.dp)
                 ) {
 
-                    // FIRST BULLETS
-                    item { Bullet("Math Pyramid is a fun number-building game where every number helps create the number above it!") }
+                    // Intro
+                    item {
+                        Bullet("Sudoku is a fun number puzzle where you fill in the empty boxes using your thinking skills!")
+                    }
 
-                    item { Bullet("You will see a pyramid made of rows of boxes. Depending on the level, the pyramid can have 2 to 6 layers.") }
-
-                    // SECTION TITLE
+                    // Grid sizes
                     item {
                         Text(
-                            text = "👉 How it works:",
+                            text = "We have different grid sizes:",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
@@ -110,38 +109,14 @@ fun HowToPlayMathPyramidView(
                         )
                     }
 
-                    item { Bullet("Look at the two numbers at the bottom.") }
-                    item { Bullet("Add them together.") }
-                    item { Bullet("Their sum goes in the box above.") }
+                    item { SubBullet("4×4 (Beginner)") }
+                    item { SubBullet("6×6 (Intermediate)") }
+                    item { SubBullet("9×9 (Expert)") }
 
-                    // Example Title
+                    // How to play
                     item {
                         Text(
-                            text = "Example:",
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
-                            color = Color.Red,
-                            modifier = Modifier.padding(top = 8.dp)
-                        )
-                    }
-
-                    // Example Pyramid
-                    item {
-                        Column(
-                            modifier = Modifier.padding(start = 16.dp),
-                            verticalArrangement = Arrangement.spacedBy(4.dp)
-                        ) {
-                            Text("    [ ? ]", fontFamily = FontFamily(Font(R.font.font_regular)))
-                            Text("[ 4 ] [ 6 ]", fontFamily = FontFamily(Font(R.font.font_regular)))
-                            Text("Because 4 + 6 = 10, the top box should be 10.", fontFamily = FontFamily(Font(R.font.font_regular)))
-                        }
-                    }
-
-                    // Your Job
-                    item {
-                        Text(
-                            text = "👉 Your job:",
+                            text = "👉 How you play:",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
@@ -149,20 +124,23 @@ fun HowToPlayMathPyramidView(
                         )
                     }
 
-                    item { Bullet("Fill in all the empty boxes by adding the numbers below.") }
-                    item { Bullet("Complete the puzzle when all boxes are filled correctly from bottom to top.") }
+                    item { Bullet("Each row must have all different numbers.") }
+                    item { Bullet("Each column must have all different numbers.") }
+                    item { Bullet("Each small block must also have all different numbers.") }
+                    item { Bullet("Tap an empty box and choose a number that does not repeat.") }
+                    item { Bullet("You win when the entire grid follows Sudoku rules!") }
 
                     item {
                         Text(
-                            text = "It’s like building a number tower — each block supports the block above!",
+                            text = "Sudoku is like a secret number pattern game where you become a little detective 🕵️‍♂️.",
                             fontSize = 16.sp,
                             modifier = Modifier.padding(top = 4.dp),
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
-                            fontWeight = FontWeight.SemiBold,
+                            fontWeight = FontWeight.SemiBold
                         )
                     }
 
-                    // PARENT-FRIENDLY SECTION
+                    // Parent friendly
                     item {
                         Text(
                             text = "👨‍👩‍👧 How It Helps:",
@@ -173,22 +151,31 @@ fun HowToPlayMathPyramidView(
                         )
                     }
 
-                    item { Check("Strengthens mental addition") }
-                    item { Detail("Kids repeatedly add small and medium numbers — building fluency.") }
+                    item { Check("Logical reasoning") }
+                    item { Detail("Kids analyze clues and figure out where numbers can or cannot go.") }
 
-                    item { Check("Develops step-by-step reasoning") }
-                    item { Detail("Kids see how lower numbers create upper numbers.") }
+                    item { Check("Decision-making skills") }
+                    item { Detail("They test possibilities and choose the correct one based on rules.") }
 
-                    item { Check("Builds problem-solving confidence") }
-                    item { Detail("Each correct box gives instant feedback — encouraging independence.") }
+                    item { Check("Patience and focus") }
+                    item { Detail("Completing a Sudoku needs calm thinking — great for attention span development.") }
 
-                    item { Check("Enhances concentration") }
-                    item { Detail("Kids stay focused to complete all layers accurately.") }
+                    item { Check("Visual and pattern recognition") }
+                    item { Detail("Children begin to notice patterns across rows and grids.") }
 
-                    item { Check("Supports number relationships") }
-                    item { Detail("Children understand how numbers combine and grow — essential for algebra.") }
+                    item { Check("Confidence building") }
+                    item { Detail("Solving tough puzzles builds confidence and perseverance.") }
 
-                    // MATH-FRIENDLY SECTION
+                    item {
+                        Text(
+                            text = "Sudoku teaches how to think, not just how to calculate.",
+                            fontSize = 18.sp,
+                            fontFamily = FontFamily(Font(R.font.font_semibold)),
+                            modifier = Modifier.padding(top = 4.dp)
+                        )
+                    }
+
+                    // Math friendly
                     item {
                         Text(
                             text = "❤️ Why This Game Matters:",
@@ -199,14 +186,14 @@ fun HowToPlayMathPyramidView(
                         )
                     }
 
-                    item { Bullet("Children see how two values combine to create a new value") }
-                    item { Bullet("They practice addition & subtraction patterns, not random sums") }
-                    item { Bullet("They understand hierarchy — base numbers build higher numbers") }
-                    item { Bullet("The pyramid format helps visualize how parts create a whole") }
+                    item { Bullet("Learn structured thinking") }
+                    item { Bullet("Understand rules and constraints") }
+                    item { Bullet("Strengthen working memory") }
+                    item { Bullet("Develop deductive reasoning (If this number cannot go here, it must go there!)") }
 
                     item {
                         Text(
-                            text = "This prepares them for concepts like Pascal’s Triangle, number bonds, and arithmetic patterns.",
+                            text = "It supports higher-level math learning because it trains the brain to organize information, spot patterns, and solve problems logically.",
                             fontSize = 16.sp,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
                             modifier = Modifier.padding(top = 4.dp)
@@ -215,7 +202,7 @@ fun HowToPlayMathPyramidView(
 
                     item {
                         Text(
-                            text = "It’s a great way to build strong early math skills while solving a fun and satisfying pyramid puzzle.",
+                            text = "Sudoku is not about speed — it's about smart thinking. It turns kids into little mathematicians!",
                             fontSize = 16.sp,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
                             modifier = Modifier.padding(top = 4.dp)

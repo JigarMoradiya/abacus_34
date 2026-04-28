@@ -6,9 +6,12 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -32,9 +35,9 @@ import com.jigar.me.ui.view.home.screens.category.do_practice.components.subitem
 import com.jigar.me.ui.view.home.screens.category.do_practice.components.subitems.SetTimer
 import com.jigar.me.ui.view.home.screens.category.do_practice.components.subitems.UseWhichHandTextUi
 import com.jigar.me.ui.view.home.screens.category.do_practice.viewmodels.AbacusDoPracticeViewModel
-import com.jigar.me.ui.view.home.common.BackButtonWithText
-import com.jigar.me.ui.view.home.common.Loader
-import com.jigar.me.ui.view.home.common.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.common_ui.Loader
+import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.screens.reports.dialogs.ExerciseExamCompleteResultDialog
 import com.jigar.me.utils.AppConstants
 
@@ -61,16 +64,15 @@ fun AbacusDoPracticeRoute(
         viewModel.handleMatch()
     }
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
             BackButtonWithText(
                 title = "Abacus No : ${(uiState.currentIndexOfAbacus + 1)}",
-                onBackClick = onBackClick
-            )
-            Spacer(modifier = Modifier.weight(1f))
+                onBackClick = onBackClick,
+                modifier = Modifier.weight(1f))
             SetTimer(uiState)
         }
 

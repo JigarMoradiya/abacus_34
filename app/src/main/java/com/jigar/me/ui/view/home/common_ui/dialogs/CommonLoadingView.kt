@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.common.dialogs
+package com.jigar.me.ui.view.home.common_ui.dialogs
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween

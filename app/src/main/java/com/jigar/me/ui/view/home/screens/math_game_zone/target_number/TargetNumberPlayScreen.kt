@@ -43,7 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryDark
-import com.jigar.me.ui.view.home.common.BackButtonWithText
+import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.screens.math_game_zone.target_number.viewmodel.TargetNumberPlayViewModel
 import com.jigar.me.utils.PlaySound
 import com.jigar.me.utils.extensions.isNotNullOrEmpty

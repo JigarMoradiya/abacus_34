@@ -1,6 +1,6 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.play.components
 
-import com.jigar.me.ui.view.home.common.enums.CommonDifficulty4
+import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
 import kotlin.random.Random
 
 object NumberPyramidGenerator {

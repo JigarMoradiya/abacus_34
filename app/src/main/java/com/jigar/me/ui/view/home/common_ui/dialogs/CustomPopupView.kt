@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.common.dialogs
+package com.jigar.me.ui.view.home.common_ui.dialogs
 
 import android.text.Html
 import android.widget.TextView

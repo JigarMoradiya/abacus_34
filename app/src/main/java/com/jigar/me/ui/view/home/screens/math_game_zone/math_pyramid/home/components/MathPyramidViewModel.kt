@@ -3,7 +3,7 @@ package com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.home.compo
 import android.os.Parcelable
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.jigar.me.ui.view.home.common.enums.CommonDifficulty4
+import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

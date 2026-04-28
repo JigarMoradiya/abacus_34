@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.common.how_to_play
+package com.jigar.me.ui.view.home.common_ui.how_to_play
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

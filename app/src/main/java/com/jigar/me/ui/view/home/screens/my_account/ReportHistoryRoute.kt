@@ -17,8 +17,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.view.home.common.BackButtonWithText
-import com.jigar.me.ui.view.home.common.Loader
+import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.common_ui.Loader
 import com.jigar.me.ui.view.home.screens.reports.components.NoReportAvailableView
 import com.jigar.me.ui.view.home.screens.reports.components.ReportDateFilterCard
 import com.jigar.me.ui.view.home.screens.reports.components.ReportFilterCard
@@ -37,7 +37,7 @@ fun ReportHistoryRoute(
         Row(verticalAlignment = Alignment.CenterVertically) {
             BackButtonWithText(
                 title = stringResource(R.string.report_history_cards),
-                onBackClick = onBackClick
+                onBackClick = onBackClick,
             )
             Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding16)))
             ReportFilterCard(uiState, viewModel)
