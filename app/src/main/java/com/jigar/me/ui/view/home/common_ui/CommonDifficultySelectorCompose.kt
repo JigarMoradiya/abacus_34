@@ -34,9 +34,6 @@ fun CommonDifficultySelectorCompose(
     onSelect: (CommonDifficulty4) -> Unit
 ) {
     Row(
-        modifier = Modifier
-            .background(Color.White.copy(alpha = 0.75f), shape = RoundedCornerShape(12.dp))
-            .padding(horizontal = 4.dp),
         horizontalArrangement = Arrangement.spacedBy(4.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {

@@ -88,15 +88,19 @@ fun NumberSequencePuzzleJetpackScreen(
                         modifier = Modifier.width(maxWidth * 0.25f)
                     )
 
-                    PuzzleBoard(
-                        gridSize = gridSize,
-                        tiles = uiState.tiles,
-                        spacing = spacing,
-                        opacity = opacity,
-                        tileColors = tileColors,
-                        onTileMove = { row, col -> viewModel.onTileMove(row, col) },
-                        modifier = Modifier.width(maxWidth * 0.5f)
-                    )
+                    if (uiState.tiles.size == gridSize && tileColors.size == gridSize) {
+                        PuzzleBoard(
+                            gridSize = gridSize,
+                            tiles = uiState.tiles,
+                            spacing = spacing,
+                            opacity = opacity,
+                            tileColors = tileColors,
+                            onTileMove = { row, col -> viewModel.onTileMove(row, col) },
+                            modifier = Modifier.width(maxWidth * 0.5f)
+                        )
+                    } else {
+                        Spacer(modifier = Modifier.width(maxWidth * 0.5f))
+                    }
 
                     RightPanel(
                         soundOn = uiState.soundOn,
@@ -143,8 +147,8 @@ fun NumberSequencePuzzleJetpackScreen(
 private fun LeftPanel(moveCount: Int, modifier: Modifier = Modifier) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier.fillMaxHeight(),
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
+        modifier = modifier.fillMaxHeight()
     ) {
         Text(
             text = moveCount.toString(),
@@ -259,11 +263,11 @@ private fun PuzzleBoard(
                 for (row in 0 until gridSize) {
                     Row(horizontalArrangement = Arrangement.spacedBy(spacing)) {
                         for (col in 0 until gridSize) {
-                            val num = tiles[row][col]
+                            val num = tiles.getOrNull(row)?.getOrNull(col)
                             TileView(
                                 number = num,
                                 size = tileSize,
-                                color = tileColors[row][col],
+                                color = tileColors.getOrNull(row)?.getOrNull(col) ?: Color.Transparent,
                                 onClick = { onTileMove(row, col) }
                             )
                         }
