@@ -2,8 +2,6 @@ package com.jigar.me.ui.view.home.screens.reports.components
 
 import android.widget.TextView
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,6 +12,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ChecklistRtl
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -25,23 +25,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import com.jigar.me.R
 import com.jigar.me.data.model.data.AllExamData
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorGreen
-import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsLabel
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.utils.AppConstants
 
 @Composable
@@ -83,19 +82,17 @@ private fun ReportHeaderRow(
     item: AllExamData,
     onCheckResultTapped: (AllExamData) -> Unit
 ) {
-    val context = LocalContext.current
-
-    val (title, badgeColor) = remember(item.type) {
+    val title = remember(item.type) {
         when (item.type) {
             AppConstants.apiParams.answerFormalExam ->
-                "Practice set of Formal Exam" to Color(ContextCompat.getColor(context, R.color.report_set_btn_bg))
+                "Practice set of Formal Exam"
             AppConstants.EXAM.type_CCM ->
-                "Custom Challenge Mode" to Color(ContextCompat.getColor(context, R.color.report_ccm_btn_bg))
+                "Custom Challenge Mode"
             AppConstants.EXAM.type_Exercise ->
-                "Exercise" to Color(ContextCompat.getColor(context, R.color.report_exercise_btn_bg))
+                "Exercise"
             AppConstants.EXAM.type_Exam ->
-                "Exam" to Color(ContextCompat.getColor(context, R.color.report_exam_btn_bg))
-            else -> "" to Color.Black
+                "Exam"
+            else -> ""
         }
     }
 
@@ -103,17 +100,7 @@ private fun ReportHeaderRow(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.fillMaxWidth()
     ) {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.labelMedium.copy(
-                fontWeight = FontWeight.Bold,
-                color = Color.White,
-                fontFamily = FontFamily(Font(R.font.font_bold))
-            ),
-            modifier = Modifier
-                .background(badgeColor, RoundedCornerShape(AppDimens.Dimens20))
-                .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)
-        )
+        KidsLabel(title)
 
         Spacer(Modifier.weight(1f))
 
@@ -227,18 +214,12 @@ private fun ReportExerciseExamSection(
 
         Spacer(Modifier.weight(1f))
 
-        Text(
+        KidsActionButton(
             text = stringResource(R.string.checkResult),
-            style = MaterialTheme.typography.labelMedium.copy(
-                fontWeight = FontWeight.Bold,
-                color = Color.White,fontFamily = FontFamily(Font(R.font.font_bold))
-            ),
-            modifier = Modifier
-                .background(ColorPrimary, RoundedCornerShape(AppDimens.Dimens20))
-                .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)
-                .clickable{
-                    onCheckResultTapped(item)
-                }
+            icon = Icons.Default.ChecklistRtl,
+            type = ButtonType.GREEN,
+            onClick = { onCheckResultTapped(item) },
+            isSmall = true
         )
     }
 

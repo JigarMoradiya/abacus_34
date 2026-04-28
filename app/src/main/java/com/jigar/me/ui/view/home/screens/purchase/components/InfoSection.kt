@@ -62,9 +62,13 @@ fun InfoSection(
         }
 
         Card(
-            colors = CardDefaults.cardColors(containerColor = Color(0xFFFFECE7)), shape = RoundedCornerShape(AppDimens.Dimens12), modifier = Modifier
+            colors = CardDefaults.cardColors(containerColor = Color(0xFFFFECE7)),
+            shape = RoundedCornerShape(AppDimens.Dimens12),
+            modifier = Modifier
                 .padding(AppDimens.Dimens12)
-                .heightIn(max = AppDimens.Dimens320)
+                .heightIn(max = AppDimens.Dimens320),
+            elevation = CardDefaults.cardElevation(AppDimens.Dimens2)
+
         ) {
             Column(
                 modifier = Modifier

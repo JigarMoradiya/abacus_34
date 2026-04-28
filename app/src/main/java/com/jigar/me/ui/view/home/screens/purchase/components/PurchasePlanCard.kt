@@ -57,12 +57,17 @@ fun PurchasePlanCard(
     val isAssignedPlan = (plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_1Year) && uiState.yearPlanAssignFromAdmin != null) || plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_All) && uiState.allPlanAssignFromAdmin != null
 
     Card(
-        onClick = {onClick()},
-        enabled = !plan.isPurchase && !isAssignedPlan,
+        onClick = {
+            if (!plan.isPurchase && !isAssignedPlan){
+                onClick()
+            }
+        },
+//        enabled = !plan.isPurchase && !isAssignedPlan,
         shape = RoundedCornerShape(AppDimens.Dimens12),
         border = if (isSelected && !plan.isPurchase && !isAssignedPlan) BorderStroke(AppDimens.Dimens1, ColorAccent) else null,
         colors = CardDefaults.cardColors(containerColor = ColorAccentLight),
-        modifier = Modifier.fillMaxWidth()
+        elevation = CardDefaults.cardElevation(AppDimens.Dimens2),
+        modifier = Modifier.fillMaxWidth().padding(AppDimens.Dimens2),
     ) {
         Column(modifier = Modifier.padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8)) {
 
