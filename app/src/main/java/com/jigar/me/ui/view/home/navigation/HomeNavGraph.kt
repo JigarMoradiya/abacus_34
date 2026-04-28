@@ -20,7 +20,7 @@ import com.jigar.me.ui.view.home.screens.category.CategoryScreen
 import com.jigar.me.ui.view.home.screens.home.HomeScreen
 import com.jigar.me.ui.view.home.screens.my_account.FAQsRoute
 import com.jigar.me.ui.view.home.screens.my_account.MyAccountRoute
-import com.jigar.me.ui.view.home.screens.my_account.ReportHistoryRoute
+import com.jigar.me.ui.view.home.screens.reports.ReportHistoryRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.MathGameZoneScreenRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.MathPyramidHomeRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.MathPyramidPlayRoute

@@ -8,6 +8,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.LocalIndication
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -17,6 +18,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -25,7 +27,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.HelpOutline
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -54,10 +58,14 @@ import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.CommonDifficultySelectorCompose
-import com.jigar.me.ui.view.home.common_ui.HowToPlayButton
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.how_to_play.HowToPlayTargetNumberView
 import com.jigar.me.ui.view.home.screens.math_game_zone.target_number.components.TargetNumberViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens24
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
+import com.jigar.me.ui.view.home.theme.ButtonType
 
 @Composable
 fun TargetNumberHomeScreen(
@@ -71,17 +79,22 @@ fun TargetNumberHomeScreen(
 
     Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         Column(modifier = Modifier.fillMaxSize()) {
-            Row {
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 BackButtonWithText(title = stringResource(R.string.target_number_game),modifier = Modifier.weight(1f), onBackClick = onBackClick)
-                HowToPlayButton {
-                    showHelp = true
-                }
+                KidsActionButton(
+                    modifier = Modifier.padding(end = Dimens16),
+                    text = stringResource(R.string.how_to_play),
+                    icon = Icons.AutoMirrored.Filled.HelpOutline,
+                    type = ButtonType.PINK,
+                    isSmall = true,
+                    onClick = {
+                        showHelp = true
+                    }
+                )
             }
 
-            Spacer(Modifier.weight(1f))
-
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.weight(1f),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 levelRange.forEach { level ->
@@ -89,10 +102,7 @@ fun TargetNumberHomeScreen(
                     val shape = RoundedCornerShape(200.dp)
 
                     val animatedPadding by animateDpAsState(
-                        targetValue = if (isSelected)
-                            dimensionResource(R.dimen.activity_padding4)
-                        else
-                            dimensionResource(R.dimen.activity_padding24),
+                        targetValue = if (isSelected) Dimens4 else Dimens24,
                         animationSpec = spring(dampingRatio = 0.6f, stiffness = 300f),
                         label = ""
                     )
@@ -106,12 +116,14 @@ fun TargetNumberHomeScreen(
                     Box(
                         modifier = Modifier
                             .weight(1f)
+                            .aspectRatio(1f)
                             .padding(animatedPadding)
-                            .clip(shape)
                             .graphicsLayer {
                                 scaleX = animatedScale
                                 scaleY = animatedScale
                             }
+                            .clip(shape)
+                            .background(Color.Transparent)
                             .clickable(
                                 interactionSource = remember { MutableInteractionSource() },
                                 indication = LocalIndication.current
@@ -130,9 +142,6 @@ fun TargetNumberHomeScreen(
 
                 }
             }
-
-            Spacer(Modifier.weight(1f))
-
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -146,42 +155,26 @@ fun TargetNumberHomeScreen(
 
                 Spacer(Modifier.weight(1f))
 
-                val shape = RoundedCornerShape(50)
-                Box(modifier = Modifier.shadow(elevation = 8.dp, shape = shape, clip = false)) {
-                    Button(
-                        onClick = { onStartGame() },
-                        shape = shape,
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = colorResource(R.color.colorPrimary),
-                            contentColor = Color.White
-                        ),
-                        contentPadding = PaddingValues(
-                            horizontal = dimensionResource(R.dimen.activity_padding16)
-                        )
-                    ) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(
-                                text = stringResource(R.string.lets_start),
-                                fontSize = dimensionResource(R.dimen.textSizeSuperExtraLarge).value.sp,
-                                fontFamily = FontFamily(Font(R.font.font_bold))
-                            )
-                            Spacer(modifier = Modifier.width(dimensionResource(R.dimen.activity_padding6)))
-                            Icon(imageVector = Icons.Filled.PlayArrow, contentDescription = null)
-                        }
+                KidsActionButton(
+                    text = stringResource(R.string.lets_play),
+                    icon = Icons.Rounded.PlayArrow,
+                    type = ButtonType.ORANGE,
+                    isIconStart = false,
+                    onClick = {
+                        onStartGame()
                     }
-                }
-
+                )
             }
         }
 
-        AnimatedVisibility(
-            visible = showHelp,
-            enter = fadeIn(),
-            exit = fadeOut()
-        ) {
-            HowToPlayTargetNumberView {
-                showHelp = false
-            }
+    }
+    AnimatedVisibility(
+        visible = showHelp,
+        enter = fadeIn(),
+        exit = fadeOut()
+    ) {
+        HowToPlayTargetNumberView {
+            showHelp = false
         }
     }
 

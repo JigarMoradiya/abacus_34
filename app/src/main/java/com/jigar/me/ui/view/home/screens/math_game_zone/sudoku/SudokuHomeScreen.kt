@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -29,7 +30,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.HelpOutline
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -60,7 +63,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.HowToPlayButton
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.common_ui.how_to_play.HowToPlaySudokuView
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuDifficulty4
@@ -68,6 +71,8 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.Sudoku
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuSize
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuStorage
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.ButtonType
 
 @Composable
 fun SudokuHomeScreen(
@@ -84,70 +89,72 @@ fun SudokuHomeScreen(
     Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         Column(modifier = Modifier.fillMaxSize()) {
 
-            Row {
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 BackButtonWithText(title = stringResource(R.string.sudoku), modifier = Modifier.weight(1f),onBackClick = { navController.popBackStack() })
-                HowToPlayButton {
-                    showHelp = true
-                }
+                KidsActionButton(
+                    modifier = Modifier.padding(end = Dimens16),
+                    text = stringResource(R.string.how_to_play),
+                    icon = Icons.AutoMirrored.Filled.HelpOutline,
+                    type = ButtonType.PINK,
+                    isSmall = true,
+                    onClick = {
+                        showHelp = true
+                    }
+                )
             }
-
-            Spacer(Modifier.weight(1f))
 
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .weight(1f)
                     .padding(horizontal = AppDimens.Dimens16),
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 sizes.forEach { s ->
                     val isSelected = state.selectedSize == s
-                    val shape = RoundedCornerShape(200.dp)
-
-                    val animatedPadding by animateDpAsState(
-                        targetValue = if (isSelected)
-                            AppDimens.Dimens4
-                        else
-                            AppDimens.Dimens24,
-                        animationSpec = spring(dampingRatio = 0.6f, stiffness = 300f),
+                    val animatedScale by animateFloatAsState(
+                        targetValue = if (isSelected) 1.1f else 0.9f, // 👈 bigger
+                        animationSpec = spring(
+                            dampingRatio = 0.6f,
+                            stiffness = 300f
+                        ),
                         label = ""
                     )
 
                     val animatedShadow by animateDpAsState(
                         targetValue = if (isSelected) AppDimens.Dimens16 else AppDimens.Dimens4,
-                        animationSpec = spring(dampingRatio = 0.7f, stiffness = 300f),
+                        animationSpec = spring(),
                         label = ""
                     )
 
-                    val animatedScale by animateFloatAsState(
-                        targetValue = if (isSelected) 1.05f else 1f,
-                        animationSpec = spring(dampingRatio = 0.6f, stiffness = 250f),
-                        label = ""
-                    )
+                    val shape = RoundedCornerShape(200.dp)
+                    val interactionSource = remember { MutableInteractionSource() }
 
                     Box(
                         modifier = Modifier
                             .weight(1f)
-                            .padding(animatedPadding)
+                            .aspectRatio(1f)
+                            .padding(AppDimens.Dimens12)
+                            .graphicsLayer {
+                                scaleX = animatedScale
+                                scaleY = animatedScale
+                            }
                             .shadow(
                                 elevation = animatedShadow,
                                 shape = shape,
                                 clip = false
                             )
                             .clip(shape)
-                            .graphicsLayer {
-                                scaleX = animatedScale
-                                scaleY = animatedScale
-                            }
+                            .background(Color.Transparent)
                             .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
+                                interactionSource = interactionSource,
                                 indication = LocalIndication.current
                             ) {
                                 viewModel.selectSize(s)
                             },
+
                         contentAlignment = Alignment.Center
                     ) {
-
                         Image(
                             painter = painterResource(
                                 id = when (s) {
@@ -164,13 +171,10 @@ fun SudokuHomeScreen(
                 }
             }
 
-
-            Spacer(Modifier.weight(1f))
-
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(AppDimens.Dimens16),
+                    .padding(Dimens16),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 DifficultySelectorCompose(
@@ -180,80 +184,64 @@ fun SudokuHomeScreen(
 
                 Spacer(Modifier.weight(1f))
 
-                val shape = RoundedCornerShape(50)
-                Box(modifier = Modifier.shadow(elevation = AppDimens.Dimens8, shape = shape, clip = false)) {
-                    Button(
-                        onClick = {
-                            if (SudokuStorage.hasSavedGame(context)) {
-                                viewModel.openResumePopup()
-                            } else {
-                                viewModel.setDataGameStart(state.selectedSize, state.selectedDifficulty, true)
-                                onStart()
-                            }
-                        },
-                        shape = shape,
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = colorResource(R.color.colorPrimary),
-                            contentColor = Color.White
-                        ),
-                        contentPadding = PaddingValues(
-                            horizontal = AppDimens.Dimens16
-                        )
-                    ) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(
-                                text = stringResource(R.string.lets_play),
-                                fontSize = dimensionResource(R.dimen.textSizeSuperExtraLarge).value.sp,
-                                fontFamily = FontFamily(Font(R.font.font_bold))
-                            )
-                            Spacer(modifier = Modifier.width(AppDimens.Dimens6))
-                            Icon(imageVector = Icons.Filled.PlayArrow, contentDescription = null)
+                KidsActionButton(
+                    text = stringResource(R.string.lets_play),
+                    icon = Icons.Rounded.PlayArrow,
+                    type = ButtonType.ORANGE,
+                    isIconStart = false,
+                    onClick = {
+                        if (SudokuStorage.hasSavedGame(context)) {
+                            viewModel.openResumePopup()
+                        } else {
+                            viewModel.setDataGameStart(state.selectedSize, state.selectedDifficulty, true)
+                            onStart()
                         }
                     }
-                }
+                )
 
             }
         }
 
-        AnimatedVisibility(
-            visible = showHelp,
-            enter = fadeIn(),
-            exit = fadeOut()
-        ) {
-            HowToPlaySudokuView {
-                showHelp = false
-            }
-        }
+    }
 
-        AnimatedVisibility(
-            visible = state.showResumePopup,
-            enter = fadeIn(),
-            exit = fadeOut()
-        ) {
-            CustomPopupView(
-                title = stringResource(R.string.continue_previous_game),
-                description = stringResource(R.string.you_have_an_unfinished_sudoku),
-                positiveButtonText = stringResource(R.string.yes_please_continue),
-                negativeButtonText = stringResource(R.string.start_this_new_sudoku),
-                widthMultiplier = 0.5f,
-                onPositiveTapped = {
-                    viewModel.closeResumePopup()
-                    val saved = SudokuStorage.load(context)
-                    if (saved != null) {
-                        viewModel.setDataGameStart(saved.puzzle.size, saved.puzzle.difficulty, false)
-                        onStart()
-                    } else {
-                        viewModel.setDataGameStart(state.selectedSize, state.selectedDifficulty, true)
-                        onStart()
-                    }
-                },
-                onNegativeTapped = {
-                    viewModel.closeResumePopup()
+    AnimatedVisibility(
+        visible = showHelp,
+        enter = fadeIn(),
+        exit = fadeOut()
+    ) {
+        HowToPlaySudokuView {
+            showHelp = false
+        }
+    }
+
+    AnimatedVisibility(
+        visible = state.showResumePopup,
+        enter = fadeIn(),
+        exit = fadeOut()
+    ) {
+        CustomPopupView(
+            title = stringResource(R.string.continue_previous_game),
+            description = stringResource(R.string.you_have_an_unfinished_sudoku),
+            positiveButtonText = stringResource(R.string.yes_please_continue),
+            negativeButtonText = stringResource(R.string.start_this_new_sudoku),
+            widthMultiplier = 0.5f,
+            onPositiveTapped = {
+                viewModel.closeResumePopup()
+                val saved = SudokuStorage.load(context)
+                if (saved != null) {
+                    viewModel.setDataGameStart(saved.puzzle.size, saved.puzzle.difficulty, false)
+                    onStart()
+                } else {
                     viewModel.setDataGameStart(state.selectedSize, state.selectedDifficulty, true)
                     onStart()
                 }
-            )
-        }
+            },
+            onNegativeTapped = {
+                viewModel.closeResumePopup()
+                viewModel.setDataGameStart(state.selectedSize, state.selectedDifficulty, true)
+                onStart()
+            }
+        )
     }
 }
 

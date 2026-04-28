@@ -26,16 +26,18 @@ import com.jigar.me.ui.view.home.screens.activities.exercise.components.pager.Ex
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseUiState
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseViewModel
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 
 @Composable
 fun ExerciseScreen(
     uiState: ExerciseUiState, viewModel: ExerciseViewModel, onBackClick: () -> Unit) {
     val curve = if (uiState.isAbacusOnLeftHand) 0.dp else 32.dp
     val nonCurve = if (uiState.isAbacusOnLeftHand) 32.dp else 0.dp
+    val shadowElevation = if (uiState.isAbacusOnLeftHand) 4.dp else 0.dp
     Surface(
         modifier = Modifier.width(dimensionResource(R.dimen.exercise_width)), shape = RoundedCornerShape(
             topStart = nonCurve, bottomStart = nonCurve, topEnd = curve, bottomEnd = curve
-        ), color = Color.White, tonalElevation = 0.dp, shadowElevation = 4.dp
+        ), color = Color.White, tonalElevation = 0.dp, shadowElevation = shadowElevation
     ) {
         Column(modifier = Modifier.fillMaxSize()) {
 
@@ -52,7 +54,7 @@ fun ExerciseScreen(
                             color = ColorPrimary, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))
                         )
                     )
-                    Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding16)))
+                    Spacer(Modifier.width(Dimens16))
                 }
             }
             if (uiState.isExerciseStarted) {

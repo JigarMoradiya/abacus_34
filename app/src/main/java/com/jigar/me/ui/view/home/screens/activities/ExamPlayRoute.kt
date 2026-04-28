@@ -8,7 +8,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -34,13 +37,15 @@ fun ExamPlayRoute(
 
     BackHandler { viewModel.onLeaveExam() }
 
-    Column(modifier = Modifier.fillMaxSize()) {
-        Row {
-            BackButtonWithText(
-                title = stringResource(R.string.math_exam),
-                onBackClick = { viewModel.onLeaveExam() },
-                modifier = Modifier.weight(1f)
-            )
+    Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+        Box {
+            Row {
+                BackButtonWithText(
+                    title = stringResource(R.string.math_exam),
+                    onBackClick = { viewModel.onLeaveExam() },
+                    modifier = Modifier.weight(1f)
+                )
+            }
             ExamHeader(uiState, elapsedSeconds = uiState.elapsedSeconds)
         }
         Box(modifier = Modifier.fillMaxSize()) {

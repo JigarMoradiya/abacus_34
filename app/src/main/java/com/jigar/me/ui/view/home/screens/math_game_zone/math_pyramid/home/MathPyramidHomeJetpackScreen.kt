@@ -23,7 +23,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.HelpOutline
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -54,9 +56,11 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens32
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.CommonDifficultySelectorCompose
-import com.jigar.me.ui.view.home.common_ui.HowToPlayButton
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.how_to_play.HowToPlayMathPyramidView
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.home.components.MathPyramidViewModel
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuStorage
+import com.jigar.me.ui.view.home.theme.ButtonType
 
 @Composable
 fun MathPyramidHomeJetpackScreen(
@@ -71,11 +75,18 @@ fun MathPyramidHomeJetpackScreen(
     Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         Column(modifier = Modifier.fillMaxSize()) {
 
-            Row {
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 BackButtonWithText(title = stringResource(R.string.math_pyramid), modifier = Modifier.weight(1f),onBackClick = onBackClick)
-                HowToPlayButton {
-                    showHelp = true
-                }
+                KidsActionButton(
+                    modifier = Modifier.padding(end = Dimens16),
+                    text = stringResource(R.string.how_to_play),
+                    icon = Icons.AutoMirrored.Filled.HelpOutline,
+                    type = ButtonType.PINK,
+                    isSmall = true,
+                    onClick = {
+                        showHelp = true
+                    }
+                )
             }
 
             Spacer(Modifier.weight(1f))
@@ -139,41 +150,27 @@ fun MathPyramidHomeJetpackScreen(
 
                 Spacer(Modifier.weight(1f))
 
-                val shape = RoundedCornerShape(50)
-                Box(modifier = Modifier.shadow(elevation = Dimens8, shape = shape, clip = false)) {
-                    Button(
-                        onClick = { onStartGame() },
-                        shape = shape,
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = colorResource(R.color.colorPrimary),
-                            contentColor = Color.White
-                        ),
-                        contentPadding = PaddingValues(
-                            horizontal = dimensionResource(R.dimen.activity_padding16)
-                        )
-                    ) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(
-                                text = stringResource(R.string.lets_start),
-                                fontSize = dimensionResource(R.dimen.textSizeSuperExtraLarge).value.sp,
-                                fontFamily = FontFamily(Font(R.font.font_bold))
-                            )
-                            Spacer(modifier = Modifier.width(dimensionResource(R.dimen.activity_padding6)))
-                            Icon(imageVector = Icons.Filled.PlayArrow, contentDescription = null)
-                        }
+                KidsActionButton(
+                    text = stringResource(R.string.lets_play),
+                    icon = Icons.Rounded.PlayArrow,
+                    type = ButtonType.ORANGE,
+                    isIconStart = false,
+                    onClick = {
+                        onStartGame()
                     }
-                }
-
+                )
             }
         }
-        AnimatedVisibility(
-            visible = showHelp,
-            enter = fadeIn(),
-            exit = fadeOut()
-        ) {
-            HowToPlayMathPyramidView {
-                showHelp = false
-            }
+
+    }
+
+    AnimatedVisibility(
+        visible = showHelp,
+        enter = fadeIn(),
+        exit = fadeOut()
+    ) {
+        HowToPlayMathPyramidView {
+            showHelp = false
         }
     }
 }

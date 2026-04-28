@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.my_account
+package com.jigar.me.ui.view.home.screens.reports
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -6,8 +6,11 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -33,15 +36,16 @@ fun ReportHistoryRoute(
     val viewModel: ReportHistoryViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             BackButtonWithText(
                 title = stringResource(R.string.report_history_cards),
                 onBackClick = onBackClick,
+                modifier = Modifier.weight(1f)
             )
-            Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding16)))
+
             ReportFilterCard(uiState, viewModel)
-            Spacer(Modifier.weight(1f))
+            Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding16)))
             ReportDateFilterCard(uiState, viewModel)
         }
         if (uiState.list.isEmpty() && !uiState.isLoading) {

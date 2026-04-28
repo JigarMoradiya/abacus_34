@@ -211,29 +211,29 @@ fun SudokuPlayScreen(
                 }
             }
         }
+    }
 
-        AnimatedVisibility(
-            visible = vm.isSolved,
-            enter = fadeIn(),
-            exit = fadeOut()
-        ) {
-            CustomPopupView(
-                title = stringResource(R.string.you_are_a_genius),
-                description = stringResource(R.string.you_completed_this_sudoku),
-                positiveButtonText = stringResource(R.string.play_again),
-                negativeButtonText = stringResource(R.string.no_i_will_play_letter),
-                icon = R.drawable.ic_complete,
-                widthMultiplier = 0.5f,
-                onPositiveTapped = {
-                    vm.isSolved = false
-                    vm.loadNewPuzzle(size, difficulty)
-                },
-                onNegativeTapped = {
-                    vm.isSolved = false
-                    navController.popBackStack()
-                }
-            )
-        }
+    AnimatedVisibility(
+        visible = vm.isSolved,
+        enter = fadeIn(),
+        exit = fadeOut()
+    ) {
+        CustomPopupView(
+            title = stringResource(R.string.you_are_a_genius),
+            description = stringResource(R.string.you_completed_this_sudoku),
+            positiveButtonText = stringResource(R.string.play_again),
+            negativeButtonText = stringResource(R.string.no_i_will_play_letter),
+            icon = R.drawable.ic_complete,
+            widthMultiplier = 0.5f,
+            onPositiveTapped = {
+                vm.isSolved = false
+                vm.loadNewPuzzle(size, difficulty)
+            },
+            onNegativeTapped = {
+                vm.isSolved = false
+                navController.popBackStack()
+            }
+        )
     }
 }
 

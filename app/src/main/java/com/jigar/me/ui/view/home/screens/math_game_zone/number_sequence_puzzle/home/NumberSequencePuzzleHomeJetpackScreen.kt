@@ -20,6 +20,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.HelpOutline
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.HelpOutline
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -41,11 +45,14 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.HowToPlayButton
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.how_to_play.HowToPlayNumberSequenceView
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.ButtonType
 
 @Composable
 fun NumberSequencePuzzleHomeJetpackScreen(
@@ -58,11 +65,18 @@ fun NumberSequencePuzzleHomeJetpackScreen(
     Box(
         modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)
     ) {
-        Row {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             BackButtonWithText(title = stringResource(R.string.number_sequence_puzzle), modifier = Modifier.weight(1f),onBackClick = onBackClick)
-            HowToPlayButton {
-                showHelp = true
-            }
+            KidsActionButton(
+                modifier = Modifier.padding(end = Dimens16),
+                text = stringResource(R.string.how_to_play),
+                icon = Icons.AutoMirrored.Filled.HelpOutline,
+                type = ButtonType.PINK,
+                isSmall = true,
+                onClick = {
+                    showHelp = true
+                }
+            )
         }
 
         Column(
@@ -115,14 +129,14 @@ fun NumberSequencePuzzleHomeJetpackScreen(
             Spacer(Modifier.weight(1f))
         }
 
-        AnimatedVisibility(
-            visible = showHelp,
-            enter = fadeIn(),
-            exit = fadeOut()
-        ) {
-            HowToPlayNumberSequenceView {
-                showHelp = false
-            }
+    }
+    AnimatedVisibility(
+        visible = showHelp,
+        enter = fadeIn(),
+        exit = fadeOut()
+    ) {
+        HowToPlayNumberSequenceView {
+            showHelp = false
         }
     }
 }

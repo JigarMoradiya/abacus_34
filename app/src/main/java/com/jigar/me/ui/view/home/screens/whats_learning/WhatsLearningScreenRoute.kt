@@ -2,7 +2,10 @@ package com.jigar.me.ui.view.home.screens.whats_learning
 
 import androidx.annotation.OptIn
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -20,7 +23,7 @@ fun WhatsLearningScreenRoute(
     val viewModel: WhatsLearnNewViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         WhatsLearnNewScreen(
             uiState = uiState,
             onPageChanged = { viewModel.changePager(it) },
