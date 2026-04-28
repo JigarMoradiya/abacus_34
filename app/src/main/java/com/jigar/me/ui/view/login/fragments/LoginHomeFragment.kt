@@ -22,7 +22,6 @@ import com.jigar.me.data.model.data.SocialLoginRequest
 import com.jigar.me.data.repositories.Result
 import com.jigar.me.databinding.FragmentLoginHomeBinding
 import com.jigar.me.ui.view.base.BaseFragment
-import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.ui.view.other.ContactUsActivity
 import com.jigar.me.ui.viewmodel.StudentViewModel
 import com.jigar.me.utils.AppConstants
@@ -45,7 +44,6 @@ import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.ui.view.home.HomeActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.utils.Constants
-import kotlinx.coroutines.CoroutineScope
 
 @AndroidEntryPoint
 class LoginHomeFragment : BaseFragment() {

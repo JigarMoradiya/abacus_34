@@ -1,9 +1,5 @@
 package com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.home
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -21,7 +17,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -33,7 +28,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
@@ -44,64 +38,27 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import com.jigar.me.R
-import com.jigar.me.ui.view.base.BaseFragment
-import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.HowToPlayButton
 import com.jigar.me.ui.view.jetpack.fragments.common.how_to_play.HowToPlayNumberSequenceView
-import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
-import dagger.hilt.android.AndroidEntryPoint
-
-@AndroidEntryPoint
-class NumberSequencePuzzleHomeFragment : BaseFragment() {
-    private val homeActivityViewModel: HomeActivityViewModel by activityViewModels()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
-        return ComposeView(requireContext()).apply {
-            setContent {
-                AbacusTheme {
-                    val navController = findNavController()
-                    val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
-                    NumberSequencePuzzleHomeJetpackScreen(
-                        navController = navController,
-                        onPuzzleSelect = {
-                            val isPurchase = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
-                            if (isPurchase){
-                                val action = NumberSequencePuzzleHomeFragmentDirections.toNumberSequencePuzzlePlayFragment(it)
-                                navController.navigate(action)
-                            }else{
-                                // redirect to purchase fragment
-                                navController.navigate(NumberSequencePuzzleHomeFragmentDirections.toPurchaseFragment())
-                            }
-                        },
-                        onBackClick = { navController.popBackStack() })
-                }
-            }
-        }
-    }
-}
 
 @Composable
 fun NumberSequencePuzzleHomeJetpackScreen(
-    navController: NavController, onPuzzleSelect: (Int) -> Unit,onBackClick: () -> Unit = {}
+    navController: NavController,
+    onPuzzleSelect: (Int) -> Unit,
+    onBackClick: () -> Unit = {}
 ) {
     var showHelp by remember { mutableStateOf(false) }
 
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
-        // 🔹 Header Bar
         Row {
             BackButtonWithText(title = stringResource(R.string.number_sequence_puzzle), onBackClick = onBackClick)
             Spacer(Modifier.weight(1f))
-            HowToPlayButton{
+            HowToPlayButton {
                 showHelp = true
             }
         }
@@ -110,12 +67,10 @@ fun NumberSequencePuzzleHomeJetpackScreen(
             modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(Modifier.weight(1f))
-            // 🔹 Logo + Title + Subtitle + Puzzle Options
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                // Logo
                 Image(
                     painter = painterResource(id = R.drawable.number_sequence_puzzle),
                     contentDescription = "Number Puzzle Logo",
@@ -125,7 +80,6 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                     contentScale = ContentScale.Fit
                 )
 
-                // Title
                 Text(
                     text = stringResource(R.string.select_the_puzzle_dashboard),
                     fontFamily = FontFamily(Font(R.font.font_bold)),
@@ -134,7 +88,6 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(top = dimensionResource(R.dimen.activity_padding16))
                 )
-                // Puzzle Options
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(24.dp),
                     modifier = Modifier.padding(top = dimensionResource(R.dimen.activity_padding16))
@@ -142,21 +95,18 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                     PuzzleOptionView(
                         gridSize = 3,
                         color = Color(0xFFF33173),
-                        onClick = {
-                            onPuzzleSelect(3)
-                        })
+                        onClick = { onPuzzleSelect(3) }
+                    )
                     PuzzleOptionView(
                         gridSize = 4,
                         color = Color(0xFFFF9800),
-                        onClick = {
-                            onPuzzleSelect(4)
-                        })
+                        onClick = { onPuzzleSelect(4) }
+                    )
                     PuzzleOptionView(
                         gridSize = 5,
                         color = Color(0xFF2196F3),
-                        onClick = {
-                            onPuzzleSelect(5)
-                        })
+                        onClick = { onPuzzleSelect(5) }
+                    )
                 }
             }
 
@@ -190,7 +140,6 @@ fun PuzzleOptionView(
         Box(
             modifier = Modifier.size(boxSize)
         ) {
-            // Outer border rectangle
             Canvas(modifier = Modifier.matchParentSize()) {
                 drawRoundRect(
                     color = color,
@@ -199,12 +148,10 @@ fun PuzzleOptionView(
                 )
             }
 
-            // Calculate cell size in dp (minus border lines)
             val cellSize = with(LocalDensity.current) {
                 (boxSize.toPx() / gridSize).toDp()
             }
 
-            // Fixed-size grid
             Column(
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally,

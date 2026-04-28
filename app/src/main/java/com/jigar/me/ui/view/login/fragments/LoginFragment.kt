@@ -22,7 +22,6 @@ import com.jigar.me.data.model.data.LoginRequest
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.databinding.FragmentLoginBinding
 import com.jigar.me.ui.view.base.BaseFragment
-import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.ui.view.home.HomeActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.ui.viewmodel.StudentViewModel

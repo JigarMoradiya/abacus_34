@@ -23,7 +23,6 @@ import com.jigar.me.R
 import com.jigar.me.databinding.FragmentSplashBinding
 import com.jigar.me.ui.view.base.BaseFragment
 import com.jigar.me.ui.view.confirm_alerts.bottomsheets.CommonConfirmationBottomSheet
-import com.jigar.me.ui.view.dashboard.MainDashboardActivity
 import com.jigar.me.ui.viewmodel.AppViewModel
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Constants
@@ -70,7 +69,7 @@ class SplashFragment : BaseFragment() {
         super.onResume()
 //        if (BuildConfig.DEBUG){
 //            if (!prefManager.getAccessToken().isNullOrEmpty() && prefManager.isUserLoggedIn()){
-//                MainDashboardActivity.getInstance(requireContext())
+//                HomeActivity.getInstance(requireContext())
 //            }else{
 //                mNavController?.navigate(R.id.toLoginHomeFragment)
 //            }

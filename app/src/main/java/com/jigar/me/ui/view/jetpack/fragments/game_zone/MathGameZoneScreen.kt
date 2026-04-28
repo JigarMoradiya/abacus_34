@@ -1,9 +1,5 @@
 package com.jigar.me.ui.view.jetpack.fragments.game_zone
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
@@ -21,7 +17,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -29,7 +24,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -38,44 +32,8 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
-import dagger.hilt.android.AndroidEntryPoint
-
-@AndroidEntryPoint
-class MathGameZoneFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        return ComposeView(requireContext()).apply {
-            setContent {
-                AbacusTheme {
-                    MathGameZoneScreen(
-                        gameType = { type ->
-                            when (type) {
-                                GameCategoryType.NUMBER_SEQUENCE_PUZZLE -> {
-                                    findNavController().navigate(R.id.toNumberSequencePuzzleHomeFragment)
-                                }
-                                GameCategoryType.SUDOKU -> {
-                                    findNavController().navigate(R.id.toSudokuHomeFragment)
-                                }
-                                GameCategoryType.MATH_PYRAMID -> {
-                                    findNavController().navigate(R.id.toMathPyramidHomeFragment)
-                                }
-                                GameCategoryType.TARGET_NUMBER -> {
-                                    findNavController().navigate(R.id.toTargetNumberHomeFragment)
-                                }
-                            }
-                        },
-                        onBackClick = { findNavController().popBackStack() }
-                    )
-                }
-            }
-        }
-    }
-}
-
 
 @Composable
 fun MathGameZoneScreen(
@@ -144,14 +102,14 @@ fun MathGameZoneScreen(
                         Text(
                             text = category.title,
                             color = colorResource(R.color.black),
-                            fontFamily = FontFamily(Font( R.font.font_extra_bold)),
+                            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
                             fontSize = dimensionResource(id = R.dimen.textSize17).value.sp,
                             lineHeight = 18.sp
                         )
                         Text(
                             text = category.desc,
                             color = colorResource(R.color.black).copy(alpha = 0.8f),
-                            fontFamily = FontFamily(Font( R.font.font_bold)),
+                            fontFamily = FontFamily(Font(R.font.font_bold)),
                             fontSize = dimensionResource(id = R.dimen.textSizeMedium).value.sp,
                             lineHeight = 18.sp
                         )
@@ -173,4 +131,3 @@ fun GameCategoryType.toDrawable(): Int {
         GameCategoryType.TARGET_NUMBER -> R.drawable.target_number
     }
 }
-

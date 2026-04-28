@@ -2,18 +2,17 @@ package com.jigar.me
 
 //import com.facebook.drawee.backends.pipeline.Fresco
 import android.app.Application
-import android.app.PendingIntent
 import android.content.Context
 import android.os.Bundle
 import androidx.annotation.NonNull
 import androidx.hilt.work.HiltWorkerFactory
-import androidx.navigation.NavDeepLinkBuilder
 import androidx.work.Configuration
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.jigar.me.data.model.NotificationData
 import com.jigar.me.ui.view.base.inapp.BillingRepository
-import com.jigar.me.ui.view.dashboard.MainDashboardActivity
+import com.jigar.me.ui.view.home.HomeActivity
+import com.jigar.me.ui.view.home.navigation.RouteNavigation
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.VersionUpdation
@@ -130,25 +129,25 @@ class MyApplication : Application(), Configuration.Provider {
                     if (notification != null) {
                         when (notification.type) {
                             Constants.notificationTypeStarter -> {
-                                moveToDestination(R.id.abacusFreeModeFragment)
+                                moveToDestination(RouteNavigation.AbacusFreeMode.route)
                             }
                             Constants.notificationTypeExercise -> {
-                                moveToDestination(R.id.exerciseFragment)
+                                moveToDestination(RouteNavigation.Exercise.route)
                             }
                             Constants.notificationTypeCCM -> {
-                                moveToDestination(R.id.ccmHomeFragment)
+                                moveToDestination(RouteNavigation.CCMHome.route)
                             }
                             Constants.notificationTypeExam -> {
-                                moveToDestination(R.id.examHomeFragmentNew)
+                                moveToDestination(RouteNavigation.ExamHome.route)
                             }
                             Constants.notificationTypeNumberSequence -> {
-                                moveToDestination(R.id.numberSequencePuzzleHomeFragment)
+                                moveToDestination(RouteNavigation.NumberSequencePuzzleHome.route)
                             }
                             Constants.notificationTypeSetting -> {
-                                moveToDestination(R.id.settingFragmentNew)
+                                moveToDestination(RouteNavigation.Settings.route)
                             }
                             Constants.notificationTypePurchase -> {
-                                moveToDestination(R.id.purchaseFragment)
+                                moveToDestination(RouteNavigation.Purchase.route)
                             }
                             Constants.notificationTypeYoutubeHome -> {
                                 getInstance().openYoutube()
@@ -163,15 +162,15 @@ class MyApplication : Application(), Configuration.Provider {
                                 getInstance().shareIntent()
                             }
                             else -> {
-                                moveToDestination(R.id.homeFragmentNew)
+                                moveToDestination(RouteNavigation.Home.route)
                             }
                         }
                     }else{
-                        moveToDestination(R.id.homeFragmentNew)
+                        moveToDestination(RouteNavigation.Home.route)
                     }
 
                 }else{
-                    moveToDestination(R.id.homeFragmentNew)
+                    moveToDestination(RouteNavigation.Home.route)
                 }
             }
         })
@@ -208,13 +207,8 @@ class MyApplication : Application(), Configuration.Provider {
 
     }
 
-    private fun moveToDestination(id : Int) {
-        NavDeepLinkBuilder(this)
-            .setGraph(R.navigation.main_navigation_graph)
-            .setDestination(id)
-            .setComponentName(MainDashboardActivity::class.java)
-            .createTaskStackBuilder().getPendingIntent(1,PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)!!
-            .send()
+    private fun moveToDestination(route: String) {
+        HomeActivity.getInstance(this, route)
     }
 
 }

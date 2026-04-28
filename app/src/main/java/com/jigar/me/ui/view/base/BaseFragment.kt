@@ -84,10 +84,4 @@ abstract class BaseFragment : Fragment(), CoroutineScope {
     fun onFailure(error: String?) {
         error?.let { showToast(it) }
     }
-    fun goToInAppPurchase() {
-        navController.navigate(R.id.toPurchaseFragment)
-    }
-    fun goToSetting() {
-        navController.navigate(R.id.toSettingsFragmentNew)
-    }
 }

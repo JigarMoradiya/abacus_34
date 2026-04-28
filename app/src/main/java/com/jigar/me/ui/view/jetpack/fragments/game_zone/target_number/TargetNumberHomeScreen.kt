@@ -1,9 +1,5 @@
 package com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
@@ -30,7 +26,6 @@ import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -45,7 +40,6 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -54,50 +48,12 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
-import com.jigar.me.ui.view.base.BaseFragment
-import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.CommonDifficultySelectorCompose
 import com.jigar.me.ui.view.jetpack.fragments.common.HowToPlayButton
 import com.jigar.me.ui.view.jetpack.fragments.common.how_to_play.HowToPlayTargetNumberView
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.target_number.components.TargetNumberViewModel
-import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
-import dagger.hilt.android.AndroidEntryPoint
-
-@AndroidEntryPoint
-class TargetNumberHomeFragment : BaseFragment() {
-    private val viewModel : TargetNumberViewModel by viewModels()
-    private val homeActivityViewModel: HomeActivityViewModel by activityViewModels()
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        return ComposeView(requireContext()).apply {
-            setContent {
-                AbacusTheme {
-                    val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
-                    TargetNumberHomeScreen(
-                        viewModel = viewModel,
-                        onStartGame = {
-                            val isPurchase = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
-                            if (isPurchase){
-                                val action = TargetNumberHomeFragmentDirections.toTargetNumberPlayFragment(viewModel.uiState.value.selectedLevel,viewModel.uiState.value.selectedDifficulty.name)
-                                findNavController().navigate(action)
-                            }else{
-                                // redirect to purchase fragment
-                                findNavController().navigate(TargetNumberHomeFragmentDirections.toPurchaseFragment())
-                            }
-                        },
-                        onBackClick = { findNavController().popBackStack() }
-                    )
-                }
-            }
-        }
-    }
-}
-
 
 @Composable
 fun TargetNumberHomeScreen(
@@ -109,20 +65,18 @@ fun TargetNumberHomeScreen(
     var showHelp by remember { mutableStateOf(false) }
     val levelRange = 1..3
 
-    Box(modifier = Modifier.fillMaxSize()){
+    Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
-            // 🔹 Header Bar
             Row {
                 BackButtonWithText(title = stringResource(R.string.target_number_game), onBackClick = onBackClick)
                 Spacer(Modifier.weight(1f))
-                HowToPlayButton{
+                HowToPlayButton {
                     showHelp = true
                 }
             }
 
             Spacer(Modifier.weight(1f))
 
-            // LEVEL SELECTOR ------------------------------------------
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
@@ -131,7 +85,6 @@ fun TargetNumberHomeScreen(
                     val isSelected = state.selectedLevel == level
                     val shape = RoundedCornerShape(200.dp)
 
-                    // 🎯 Animated padding
                     val animatedPadding by animateDpAsState(
                         targetValue = if (isSelected)
                             dimensionResource(R.dimen.activity_padding4)
@@ -141,7 +94,6 @@ fun TargetNumberHomeScreen(
                         label = ""
                     )
 
-                    // 🎯 Optional: animated zoom (like SwiftUI scaleEffect)
                     val animatedScale by animateFloatAsState(
                         targetValue = if (isSelected) 1f else 1f,
                         animationSpec = spring(dampingRatio = 0.6f, stiffness = 250f),
@@ -178,7 +130,6 @@ fun TargetNumberHomeScreen(
 
             Spacer(Modifier.weight(1f))
 
-            // DIFFICULTY + START BUTTON --------------------------------------
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -193,7 +144,7 @@ fun TargetNumberHomeScreen(
                 Spacer(Modifier.weight(1f))
 
                 val shape = RoundedCornerShape(50)
-                Box(modifier = Modifier.shadow(elevation = 8.dp,shape = shape, clip = false)) {
+                Box(modifier = Modifier.shadow(elevation = 8.dp, shape = shape, clip = false)) {
                     Button(
                         onClick = { onStartGame() },
                         shape = shape,
@@ -206,8 +157,11 @@ fun TargetNumberHomeScreen(
                         )
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(text = stringResource(R.string.lets_start), fontSize = dimensionResource(R.dimen.textSizeSuperExtraLarge).value.sp,
-                                fontFamily = FontFamily(Font(R.font.font_bold)))
+                            Text(
+                                text = stringResource(R.string.lets_start),
+                                fontSize = dimensionResource(R.dimen.textSizeSuperExtraLarge).value.sp,
+                                fontFamily = FontFamily(Font(R.font.font_bold))
+                            )
                             Spacer(modifier = Modifier.width(dimensionResource(R.dimen.activity_padding6)))
                             Icon(imageVector = Icons.Filled.PlayArrow, contentDescription = null)
                         }

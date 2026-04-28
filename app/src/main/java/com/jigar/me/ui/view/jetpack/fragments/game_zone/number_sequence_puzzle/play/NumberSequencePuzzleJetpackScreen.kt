@@ -1,13 +1,10 @@
 package com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.play
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,66 +14,42 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.number_sequence_puzzle.viewmodels.NumberSequencePuzzleViewModel
-import dagger.hilt.android.AndroidEntryPoint
-
-@AndroidEntryPoint
-class NumberSequencePuzzleJetpackFragment : Fragment() {
-
-    private val viewModel by viewModels<NumberSequencePuzzleViewModel>()
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val gridSize = NumberSequencePuzzleJetpackFragmentArgs.fromBundle(requireArguments()).type
-        return ComposeView(requireContext()).apply {
-            setContent {
-                AbacusTheme {
-                    val navController = findNavController()
-                    NumberSequencePuzzleJetpackScreen(
-                        navController = navController,
-                        gridSize = gridSize,viewModel = viewModel
-                    )
-                }
-            }
-        }
-    }
-}
-
 
 @Composable
 fun NumberSequencePuzzleJetpackScreen(
@@ -85,8 +58,9 @@ fun NumberSequencePuzzleJetpackScreen(
     viewModel: NumberSequencePuzzleViewModel
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    var tileColors by remember { mutableStateOf(listOf<List<Color>>()) }
 
-    val spacing = if (gridSize == 5) {8.dp}else if (gridSize == 4) {10.dp} else {12.dp}
+    val spacing = if (gridSize == 5) { 8.dp } else if (gridSize == 4) { 10.dp } else { 12.dp }
     val opacity = 0.4f
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -111,19 +85,15 @@ fun NumberSequencePuzzleJetpackScreen(
                         modifier = Modifier.width(maxWidth * 0.25f)
                     )
 
-                    if (uiState.tiles.size == gridSize && uiState.tileColors.size == gridSize) {
-                        PuzzleBoard(
-                            gridSize = gridSize,
-                            tiles = uiState.tiles,
-                            spacing = spacing,
-                            opacity = opacity,
-                            tileColors = uiState.tileColors,
-                            onTileMove = { row, col -> viewModel.onTileMove(row, col) },
-                            modifier = Modifier.width(maxWidth * 0.5f)
-                        )
-                    } else {
-                        Box(modifier = Modifier.width(maxWidth * 0.5f).fillMaxHeight())
-                    }
+                    PuzzleBoard(
+                        gridSize = gridSize,
+                        tiles = uiState.tiles,
+                        spacing = spacing,
+                        opacity = opacity,
+                        tileColors = tileColors,
+                        onTileMove = { row, col -> viewModel.onTileMove(row, col) },
+                        modifier = Modifier.width(maxWidth * 0.5f)
+                    )
 
                     RightPanel(
                         soundOn = uiState.soundOn,
@@ -158,6 +128,11 @@ fun NumberSequencePuzzleJetpackScreen(
 
     LaunchedEffect(gridSize) {
         viewModel.initialize(gridSize)
+        tileColors = List(gridSize) {
+            List(gridSize) {
+                viewModel.randomTileColor(gridSize)
+            }
+        }
     }
 }
 
@@ -183,7 +158,6 @@ private fun LeftPanel(moveCount: Int, modifier: Modifier = Modifier) {
     }
 }
 
-
 @Composable
 private fun RightPanel(
     soundOn: Boolean,
@@ -193,37 +167,34 @@ private fun RightPanel(
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier.fillMaxHeight(),
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
+        modifier = modifier.fillMaxHeight()
     ) {
-        Column(
-            modifier = Modifier
-                .clip(RoundedCornerShape(10.dp))
-                .clickable { onSoundToggle() }
-                .padding(10.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+        Button(
+            onClick = onSoundToggle,
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Red.copy(alpha = 0.1f)),
+            shape = CircleShape
         ) {
-            Icon(
-                painter = painterResource(id = if (soundOn) R.drawable.ic_volume_on else R.drawable.ic_volume_off),
-                contentDescription = null,
-                tint = Color.Unspecified,
-                modifier = Modifier.size(35.dp)
-            )
-            Spacer(Modifier.width(6.dp))
-            Text(if (soundOn) "Sound On" else "Sound Off", color = Color.Black.copy(alpha = 0.7f),
-                fontSize = dimensionResource(id = R.dimen.textSizeSmall).value.sp,
-                fontWeight = FontWeight.SemiBold)
+            val icon = if (soundOn) R.drawable.ic_volume_on else R.drawable.ic_volume_off
+            val label = if (soundOn) "Volume On" else "Volume Off"
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    painter = painterResource(id = icon),
+                    contentDescription = label,
+                    tint = Color.Red,
+                    modifier = Modifier.size(20.dp)
+                )
+                Spacer(Modifier.width(6.dp))
+                Text(label, color = Color.Red, fontSize = dimensionResource(id = R.dimen.textSizeLarge).value.sp, fontWeight = FontWeight.SemiBold)
+            }
         }
 
-        Spacer(modifier = Modifier.size(20.dp))
+        Spacer(Modifier.height(12.dp))
 
-        Column(
-            modifier = Modifier
-                .clip(RoundedCornerShape(10.dp))
-                .clickable { onRestart() }
-                .background(Color(0xFF90EE90).copy(alpha = 0.3f))
-                .padding(10.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+        Button(
+            onClick = onRestart,
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Green.copy(alpha = 0.1f)),
+            shape = CircleShape
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_start_new_game),
@@ -232,9 +203,11 @@ private fun RightPanel(
                 modifier = Modifier.size(20.dp)
             )
             Spacer(Modifier.width(6.dp))
-            Text("Start New Game", color = Color(0xFF006400),
+            Text(
+                "Start New Game", color = Color(0xFF006400),
                 fontSize = dimensionResource(id = R.dimen.textSizeLarge).value.sp,
-                fontWeight = FontWeight.SemiBold)
+                fontWeight = FontWeight.SemiBold
+            )
         }
     }
 }
@@ -255,7 +228,6 @@ private fun PuzzleBoard(
         else -> Color(0xFF2196F3).copy(alpha = opacity)
     }.copy(alpha = 0.15f)
 
-    // ✅ Equivalent to SwiftUI's GeometryReader
     BoxWithConstraints(
         modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -264,17 +236,14 @@ private fun PuzzleBoard(
         val availableWidth = constraints.maxWidth.toFloat()
         val availableHeight = constraints.maxHeight.toFloat() * 0.8f
 
-        // Same math as your SwiftUI code:
         val horizontalTileSizePx =
             (availableWidth - ((gridSize - 1) * spacingPx)) / gridSize
         val verticalTileSizePx =
             (availableHeight - ((gridSize - 1) * spacingPx)) / gridSize
         val tileSizePx = minOf(horizontalTileSizePx, verticalTileSizePx)
 
-        // Convert back to Dp for Compose UI
         val tileSize = with(LocalDensity.current) { tileSizePx.toDp() }
 
-        // ✅ Now draw the board centered with dynamic tile size
         Box(
             modifier = Modifier
                 .background(backgroundColor, RoundedCornerShape(20.dp))
@@ -302,48 +271,40 @@ private fun PuzzleBoard(
     }
 }
 
-
-
 @Composable
 private fun TileView(number: Int?, size: Dp, color: Color, onClick: () -> Unit) {
     Box(
         modifier = Modifier
             .size(size)
-            .clip(RoundedCornerShape(size * 0.15f))
-            .background(
-                if (number != null) color else Color.Transparent
-            )
             .clickable(enabled = number != null) { onClick() },
         contentAlignment = Alignment.Center
     ) {
         if (number != null) {
-            val fontSize = when (size) {
-                in 0.dp..60.dp -> 20.sp
-                in 60.dp..80.dp -> 24.sp
-                else -> 30.sp
-            }
-
             Box(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .background(
-                        Brush.verticalGradient(
-                            colors = listOf(
-                                Color.White.copy(alpha = 0.3f),
-                                Color.Transparent,
-                                Color.Black.copy(alpha = 0.1f)
-                            )
-                        )
-                    ),
+                    .size(size)
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(color),
                 contentAlignment = Alignment.Center
             ) {
                 Text(
                     text = number.toString(),
-                    fontSize = fontSize,
+                    fontSize = (size.value * 0.6f).sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White
+                    color = Color.Black,
+                    fontFamily = FontFamily(Font(R.font.font_extra_bold))
                 )
             }
+        } else {
+            Box(
+                modifier = Modifier
+                    .size(size)
+                    .border(
+                        width = 1.dp,
+                        color = Color.Black.copy(alpha = 0.6f),
+                        shape = RoundedCornerShape(12.dp)
+                    )
+            )
         }
     }
 }

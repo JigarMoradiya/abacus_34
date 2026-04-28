@@ -163,7 +163,7 @@ class NumberSequencePuzzleViewModel @Inject constructor(
         restartGame()
     }
 
-    private fun randomTileColor(gridSize: Int): Color {
+    fun randomTileColor(gridSize: Int): Color {
         return when (gridSize) {
             3 -> yellowShades.random()
             4 -> orangeShades.random()

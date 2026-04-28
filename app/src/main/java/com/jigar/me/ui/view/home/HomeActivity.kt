@@ -9,6 +9,9 @@ import android.view.WindowManager
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -37,11 +40,24 @@ class HomeActivity : BaseActivity() {
 
     private val homeActivityViewModel: HomeActivityViewModel by viewModels()
 
+    private var deepLinkRoute by mutableStateOf<String?>(null)
+
     companion object {
+        const val EXTRA_DEEP_LINK_ROUTE = "deep_link_route"
+
         @JvmStatic
         fun getInstance(context: Context?) {
             Intent(context, HomeActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                context?.startActivity(this)
+            }
+        }
+
+        @JvmStatic
+        fun getInstance(context: Context?, route: String) {
+            Intent(context, HomeActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                putExtra(EXTRA_DEEP_LINK_ROUTE, route)
                 context?.startActivity(this)
             }
         }
@@ -50,6 +66,7 @@ class HomeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        deepLinkRoute = intent.getStringExtra(EXTRA_DEEP_LINK_ROUTE)
         homeActivityViewModel.fetchAbacusData()
         logDeviceQualifiers(this)
 
@@ -73,11 +90,21 @@ class HomeActivity : BaseActivity() {
                 BackgroundUI()
                 MyApplicationTheme {
                     CompositionLocalProvider(LocalPreferencesHelper provides preferences) {
-                        HomeNavGraph(homeActivityViewModel = homeActivityViewModel)
+                        HomeNavGraph(
+                            homeActivityViewModel = homeActivityViewModel,
+                            initialRoute = deepLinkRoute,
+                            onInitialRouteHandled = { deepLinkRoute = null }
+                        )
                     }
                 }
             }
         }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        deepLinkRoute = intent.getStringExtra(EXTRA_DEEP_LINK_ROUTE)
     }
 
     override fun onResume() {

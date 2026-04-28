@@ -1,9 +1,5 @@
 package com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -34,7 +30,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalTextStyle
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -44,7 +39,6 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -56,46 +50,15 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.min
 import androidx.compose.ui.unit.sp
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CommonLoadingView
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuBoxRules
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuPlayViewModel
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuSize
-import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.ceil
-
-@AndroidEntryPoint
-class SudokuPlayFragment : Fragment() {
-
-    private val viewModel: SudokuPlayViewModel by viewModels()
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-
-        val navController = findNavController()
-        return ComposeView(requireContext()).apply {
-            setContent {
-                AbacusTheme {
-                    SudokuPlayScreen(
-                        navController = navController,
-                        vm = viewModel,
-                    )
-                }
-            }
-        }
-    }
-}
-
 
 @Composable
 fun SudokuPlayScreen(
@@ -126,35 +89,38 @@ fun SudokuPlayScreen(
                 )
             }
 
-            // Board + Right column controls (responsive)
             Row(modifier = Modifier.fillMaxSize()) {
-                // Board (left)
-                Box(modifier = Modifier.weight(1f),
-                    contentAlignment = Alignment.Center) {
+                Box(
+                    modifier = Modifier.weight(1f),
+                    contentAlignment = Alignment.Center
+                ) {
                     SudokuBoard(vm = vm)
                 }
 
-                // Number pad + actions (right)
-                Column(modifier = Modifier
-                    .fillMaxHeight()
-                    .weight(1f),
-                    verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding12),
-                        Alignment.CenterVertically),
-                    horizontalAlignment = Alignment.CenterHorizontally) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(
+                        dimensionResource(R.dimen.activity_padding12),
+                        Alignment.CenterVertically
+                    ),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
 
-                    // message
-                    if (vm.message.isNullOrEmpty()){
+                    if (vm.message.isNullOrEmpty()) {
                         Text("", color = Color.Red, modifier = Modifier.padding(8.dp))
-                    }else{
-                        Text(vm.message?:"", color = Color.Red, modifier = Modifier.padding(8.dp))
+                    } else {
+                        Text(vm.message ?: "", color = Color.Red, modifier = Modifier.padding(8.dp))
                     }
 
                     Row {
                         Button(
                             onClick = { vm.toggleCandidates() },
                             colors = ButtonDefaults.buttonColors(
-                                containerColor = Color(0xFF4CAF50),   // Green
-                                contentColor = Color.White),
+                                containerColor = Color(0xFF4CAF50),
+                                contentColor = Color.White
+                            ),
                             shape = RoundedCornerShape(8.dp),
                             contentPadding = PaddingValues(
                                 horizontal = 16.dp, vertical = 8.dp
@@ -180,7 +146,7 @@ fun SudokuPlayScreen(
                         Button(
                             onClick = { vm.revealOneNumber() },
                             colors = ButtonDefaults.buttonColors(
-                                containerColor = Color(0xFFFF9800),   // Orange
+                                containerColor = Color(0xFFFF9800),
                                 contentColor = Color.White
                             ),
                             shape = RoundedCornerShape(8.dp),
@@ -191,8 +157,6 @@ fun SudokuPlayScreen(
                             Column(
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
-
-                                // 🔢 Top: used/limit
                                 Text(
                                     text = "${vm.hintUsed}/${vm.hintLimit}",
                                     fontSize = dimensionResource(R.dimen.textSize18).value.sp,
@@ -200,7 +164,6 @@ fun SudokuPlayScreen(
                                     modifier = Modifier.height(24.dp)
                                 )
 
-                                // 🧩 Bottom: word "Hints"
                                 Text(
                                     text = stringResource(R.string.hints),
                                     fontSize = dimensionResource(R.dimen.textSizeLarge).value.sp,
@@ -213,7 +176,7 @@ fun SudokuPlayScreen(
                         Button(
                             onClick = { vm.resetPuzzle() },
                             colors = ButtonDefaults.buttonColors(
-                                containerColor = Color(0xFFE53935),   // Red
+                                containerColor = Color(0xFFE53935),
                                 contentColor = Color.White
                             ),
                             shape = RoundedCornerShape(8.dp),
@@ -279,7 +242,6 @@ fun SudokuBoard(vm: SudokuPlayViewModel, modifier: Modifier = Modifier) {
         val n = vm.puzzle.size.grid
         val (boxRows, boxCols) = SudokuBoxRules.boxSize(vm.puzzle.size)
 
-        // board dimensions
         val side = min(maxWidth, maxHeight)
         val cellSize = side / n
 
@@ -287,7 +249,6 @@ fun SudokuBoard(vm: SudokuPlayViewModel, modifier: Modifier = Modifier) {
             modifier = Modifier.size(side),
             contentAlignment = Alignment.TopStart
         ) {
-            // 1) DRAW CELLS ---------------------------------------------
             Column {
                 for (r in 0 until n) {
                     Row {
@@ -303,7 +264,6 @@ fun SudokuBoard(vm: SudokuPlayViewModel, modifier: Modifier = Modifier) {
                 }
             }
 
-            // 2) DRAW BOX STROKES (BIG SQUARES) -------------------------
             Canvas(modifier = Modifier.matchParentSize()) {
                 val cell = size.width / n
 
@@ -329,7 +289,6 @@ fun SudokuBoard(vm: SudokuPlayViewModel, modifier: Modifier = Modifier) {
 }
 
 
-
 @Composable
 fun SudokuCell(vm: SudokuPlayViewModel, row: Int, col: Int, sizeDp: Dp) {
     val puzzleGiven = vm.puzzle.startBoard[row][col] != 0
@@ -338,7 +297,6 @@ fun SudokuCell(vm: SudokuPlayViewModel, row: Int, col: Int, sizeDp: Dp) {
     val isConflict = remember(vm.board) {
         if (value == 0) false
         else {
-            // check row & col & box
             val n = vm.puzzle.size.grid
             for (i in 0 until n) {
                 if (i != col && vm.board[row][i] == value) return@remember true
@@ -369,11 +327,12 @@ fun SudokuCell(vm: SudokuPlayViewModel, row: Int, col: Int, sizeDp: Dp) {
         else -> colorResource(R.color.grey_200)
     }
 
-    Box(modifier = Modifier
-        .size(sizeDp)
-        .background(bgColor)
-        .border(0.5.dp, colorResource(R.color.grey_300))
-        .clickable(enabled = !puzzleGiven) { vm.selectCell(row, col) },
+    Box(
+        modifier = Modifier
+            .size(sizeDp)
+            .background(bgColor)
+            .border(0.5.dp, colorResource(R.color.grey_300))
+            .clickable(enabled = !puzzleGiven) { vm.selectCell(row, col) },
         contentAlignment = Alignment.Center
     ) {
         if (value != 0) {
@@ -399,8 +358,8 @@ fun SudokuCell(vm: SudokuPlayViewModel, row: Int, col: Int, sizeDp: Dp) {
                     color = Color(0xFF2E7D32),
                     textAlign = TextAlign.Center,
                     style = LocalTextStyle.current.copy(
-                        lineHeight = 11.sp,       // smaller line spacing
-                        letterSpacing = 1.sp   // optional: tighten spacing between digits
+                        lineHeight = 11.sp,
+                        letterSpacing = 1.sp
                     ),
                     fontFamily = FontFamily(Font(R.font.font_bold)),
                     maxLines = 3,
@@ -426,13 +385,13 @@ fun NumberPad(vm: SudokuPlayViewModel) {
                 NumberKey(n) { vm.enter(n) }
             }
             if (row2.isEmpty()) {
-                EraseKey{ vm.eraseSelected() }
+                EraseKey { vm.eraseSelected() }
             }
         }
         if (row2.isNotEmpty()) {
             Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 row2.forEach { n -> NumberKey(n) { vm.enter(n) } }
-                EraseKey{ vm.eraseSelected() }
+                EraseKey { vm.eraseSelected() }
             }
         }
     }
@@ -440,16 +399,18 @@ fun NumberPad(vm: SudokuPlayViewModel) {
 
 @Composable
 fun EraseKey(onClick: () -> Unit) {
-    Box(modifier = Modifier
-        .size(width = 48.dp, height = 36.dp)
-        .background(
-            colorResource(R.color.red_400), shape = RoundedCornerShape(8.dp)
-        )
-        .clickable {
-            onClick()
-        },contentAlignment = Alignment.Center){
+    Box(
+        modifier = Modifier
+            .size(width = 48.dp, height = 36.dp)
+            .background(
+                colorResource(R.color.red_400), shape = RoundedCornerShape(8.dp)
+            )
+            .clickable {
+                onClick()
+            }, contentAlignment = Alignment.Center
+    ) {
         Icon(
-            painter = painterResource(R.drawable.ic_backspace), // Replace with your Backspace/Erase Icon
+            painter = painterResource(R.drawable.ic_backspace),
             contentDescription = "Erase",
             tint = colorResource(R.color.white),
             modifier = Modifier.size(24.dp)
@@ -459,15 +420,19 @@ fun EraseKey(onClick: () -> Unit) {
 
 @Composable
 fun NumberKey(n: Int, onClick: () -> Unit) {
-    Box(modifier = Modifier
-        .size(width = 48.dp, height = 36.dp)
-        .background(colorResource(R.color.colorPrimary), shape = RoundedCornerShape(8.dp))
-        .clickable {
-            onClick()
-        },contentAlignment = Alignment.Center){
-        Text(text = "$n",
+    Box(
+        modifier = Modifier
+            .size(width = 48.dp, height = 36.dp)
+            .background(colorResource(R.color.colorPrimary), shape = RoundedCornerShape(8.dp))
+            .clickable {
+                onClick()
+            }, contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = "$n",
             color = colorResource(R.color.white),
             fontSize = dimensionResource(id = R.dimen.textSize24).value.sp,
-            fontFamily = FontFamily(Font(R.font.font_bold)))
+            fontFamily = FontFamily(Font(R.font.font_bold))
+        )
     }
 }

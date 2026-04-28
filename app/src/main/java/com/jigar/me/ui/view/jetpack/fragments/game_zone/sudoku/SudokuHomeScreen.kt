@@ -1,10 +1,6 @@
 package com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku
 
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
@@ -33,7 +29,6 @@ import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -49,7 +44,6 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
@@ -59,14 +53,8 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import com.jigar.me.R
-import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.HowToPlayButton
 import com.jigar.me.ui.view.jetpack.fragments.common.dialogs.CustomPopupView
@@ -75,46 +63,7 @@ import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.Sudoku
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuHomeViewModel
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuSize
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.sudoku.components.SudokuStorage
-import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
-class SudokuHomeFragment : Fragment() {
-    private val viewModel: SudokuHomeViewModel by viewModels()
-    private val homeActivityViewModel: HomeActivityViewModel by activityViewModels()
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-
-        val navController = findNavController()
-
-        return ComposeView(requireContext()).apply {
-            setContent {
-                AbacusTheme {
-                    val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
-                    SudokuHomeScreen(viewModel,navController,
-                        onStart = {
-                            val isPurchase = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
-                            if (isPurchase){
-                                val value = viewModel.uiState.value
-                                val action = SudokuHomeFragmentDirections.toSudokuPlayFragment(value.selectedSizeFinal.name, value.selectedDifficultyFinal.name,value.isNewGame)
-                                navController.navigate(action)
-                            }else{
-                                // redirect to purchase fragment
-                                findNavController().navigate(SudokuHomeFragmentDirections.toPurchaseFragment())
-                            }
-                        }
-                    )
-                }
-            }
-        }
-    }
-}
-
-
-// ---------- Compose UI ----------
 @Composable
 fun SudokuHomeScreen(
     viewModel: SudokuHomeViewModel,
@@ -130,11 +79,10 @@ fun SudokuHomeScreen(
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
 
-            // 🔹 Header Bar
             Row {
                 BackButtonWithText(title = stringResource(R.string.sudoku), onBackClick = { navController.popBackStack() })
                 Spacer(Modifier.weight(1f))
-                HowToPlayButton{
+                HowToPlayButton {
                     showHelp = true
                 }
             }
@@ -147,12 +95,11 @@ fun SudokuHomeScreen(
                     .padding(horizontal = dimensionResource(R.dimen.activity_padding16)),
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
-            )  {
+            ) {
                 sizes.forEach { s ->
                     val isSelected = state.selectedSize == s
                     val shape = RoundedCornerShape(200.dp)
 
-                    // 🎯 Animated padding
                     val animatedPadding by animateDpAsState(
                         targetValue = if (isSelected)
                             dimensionResource(R.dimen.activity_padding4)
@@ -162,14 +109,12 @@ fun SudokuHomeScreen(
                         label = ""
                     )
 
-                    // 🎯 Animated shadow
                     val animatedShadow by animateDpAsState(
                         targetValue = if (isSelected) 16.dp else 4.dp,
                         animationSpec = spring(dampingRatio = 0.7f, stiffness = 300f),
                         label = ""
                     )
 
-                    // 🎯 Optional: animated zoom (like SwiftUI scaleEffect)
                     val animatedScale by animateFloatAsState(
                         targetValue = if (isSelected) 1.05f else 1f,
                         animationSpec = spring(dampingRatio = 0.6f, stiffness = 250f),
@@ -218,7 +163,6 @@ fun SudokuHomeScreen(
 
             Spacer(Modifier.weight(1f))
 
-            // DIFFICULTY + START BUTTON --------------------------------------
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -233,7 +177,7 @@ fun SudokuHomeScreen(
                 Spacer(Modifier.weight(1f))
 
                 val shape = RoundedCornerShape(50)
-                Box(modifier = Modifier.shadow(elevation = 8.dp,shape = shape, clip = false)) {
+                Box(modifier = Modifier.shadow(elevation = 8.dp, shape = shape, clip = false)) {
                     Button(
                         onClick = {
                             if (SudokuStorage.hasSavedGame(context)) {
@@ -253,8 +197,11 @@ fun SudokuHomeScreen(
                         )
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(text = stringResource(R.string.lets_play), fontSize = dimensionResource(R.dimen.textSizeSuperExtraLarge).value.sp,
-                                fontFamily = FontFamily(Font(R.font.font_bold)))
+                            Text(
+                                text = stringResource(R.string.lets_play),
+                                fontSize = dimensionResource(R.dimen.textSizeSuperExtraLarge).value.sp,
+                                fontFamily = FontFamily(Font(R.font.font_bold))
+                            )
                             Spacer(modifier = Modifier.width(dimensionResource(R.dimen.activity_padding6)))
                             Icon(imageVector = Icons.Filled.PlayArrow, contentDescription = null)
                         }
@@ -292,7 +239,6 @@ fun SudokuHomeScreen(
                         viewModel.setDataGameStart(saved.puzzle.size, saved.puzzle.difficulty, false)
                         onStart()
                     } else {
-                        // fallback, if decoding failed
                         viewModel.setDataGameStart(state.selectedSize, state.selectedDifficulty, true)
                         onStart()
                     }
@@ -322,21 +268,18 @@ fun DifficultySelectorCompose(
         SudokuDifficulty4.entries.forEach { d ->
             val isSelected = d == selected
             val shape = RoundedCornerShape(20.dp)
-            // Surface renders the elevation (shadow). Do NOT clip the Surface itself.
             Surface(
                 modifier = Modifier
                     .padding(horizontal = 4.dp),
                 shape = shape,
                 color = if (isSelected) colorResource(R.color.colorEditTextBlack_33) else Color.White,
-                shadowElevation = if (isSelected) 8.dp else 0.dp, // elevation visible because Surface is not clipped
+                shadowElevation = if (isSelected) 8.dp else 0.dp,
                 tonalElevation = if (isSelected) 4.dp else 0.dp,
                 border = if (!isSelected) BorderStroke(1.dp, Color.LightGray) else null
             ) {
-                // Clip and clickable are applied INSIDE Surface so ripple is rounded,
-                // but Surface remains unclipped so shadow renders.
                 Box(
                     modifier = Modifier
-                        .clip(shape) // <-- clipped here so ripple gets rounded bounds
+                        .clip(shape)
                         .clickable(
                             interactionSource = remember { MutableInteractionSource() },
                             indication = LocalIndication.current

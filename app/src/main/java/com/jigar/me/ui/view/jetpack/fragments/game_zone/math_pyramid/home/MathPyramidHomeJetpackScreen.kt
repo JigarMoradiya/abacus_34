@@ -1,9 +1,5 @@
 package com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.home
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -28,7 +24,6 @@ import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -42,60 +37,24 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.os.bundleOf
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.fragment.findNavController
+import coil.size.Dimension
 import com.jigar.me.R
-import com.jigar.me.ui.view.base.BaseFragment
-import com.jigar.me.ui.view.jetpack.core.presentation.theme.AbacusTheme
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens32
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import com.jigar.me.ui.view.jetpack.fragments.common.BackButtonWithText
 import com.jigar.me.ui.view.jetpack.fragments.common.CommonDifficultySelectorCompose
 import com.jigar.me.ui.view.jetpack.fragments.common.HowToPlayButton
 import com.jigar.me.ui.view.jetpack.fragments.common.how_to_play.HowToPlayMathPyramidView
 import com.jigar.me.ui.view.jetpack.fragments.game_zone.math_pyramid.home.components.MathPyramidViewModel
-import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewModel
-import dagger.hilt.android.AndroidEntryPoint
-
-@AndroidEntryPoint
-class MathPyramidHomeFragment : BaseFragment() {
-    private val viewModel : MathPyramidViewModel by viewModels()
-    private val homeActivityViewModel: HomeActivityViewModel by activityViewModels()
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        return ComposeView(requireContext()).apply {
-            setContent {
-                AbacusTheme {
-                    val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
-                    MathPyramidHomeJetpackScreen(
-                        viewModel = viewModel,
-                        onStartGame = {
-                            val isPurchase = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
-                            if (isPurchase){
-                                val args = bundleOf("levels" to viewModel.uiState.value.selectedLevel, "difficulty" to viewModel.uiState.value.selectedDifficulty.name)
-                                findNavController().navigate(R.id.toMathPyramidPlayFragment, args)
-                            }else{
-                                // redirect to purchase fragment
-                                findNavController().navigate(MathPyramidHomeFragmentDirections.toPurchaseFragment())
-                            }
-                        },
-                        onBackClick = { findNavController().popBackStack() }
-                    )
-                }
-            }
-        }
-    }
-}
-
 
 @Composable
 fun MathPyramidHomeJetpackScreen(
@@ -107,28 +66,26 @@ fun MathPyramidHomeJetpackScreen(
     var showHelp by remember { mutableStateOf(false) }
     val levelRange = 2..6
 
-    Box(modifier = Modifier.fillMaxSize()){
+    Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
 
-            // 🔹 Header Bar
             Row {
                 BackButtonWithText(title = stringResource(R.string.math_pyramid), onBackClick = onBackClick)
                 Spacer(Modifier.weight(1f))
-                HowToPlayButton{
+                HowToPlayButton {
                     showHelp = true
                 }
             }
 
             Spacer(Modifier.weight(1f))
 
-            // LEVEL SELECTOR ------------------------------------------
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 levelRange.forEach { level ->
 
-                    val shape = RoundedCornerShape(12.dp)
+                    val shape = RoundedCornerShape(Dimens12)
 
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
@@ -141,7 +98,7 @@ fun MathPyramidHomeJetpackScreen(
                             ) {
                                 viewModel.selectLevel(level)
                             }
-                            .padding(8.dp)
+                            .padding(Dimens8)
                     ) {
                         Image(
                             painter = painterResource(id = getDrawableForPyramid(level)),
@@ -150,7 +107,7 @@ fun MathPyramidHomeJetpackScreen(
                         )
 
                         Box(
-                            modifier = Modifier.height(32.dp),
+                            modifier = Modifier.height(Dimens32),
                             contentAlignment = Alignment.Center
                         ) {
                             Text(
@@ -158,7 +115,8 @@ fun MathPyramidHomeJetpackScreen(
                                 color = if (state.selectedLevel == level) colorResource(R.color.black) else colorResource(R.color.black_text),
                                 fontFamily = FontFamily(Font(if (state.selectedLevel == level) R.font.font_bold else R.font.font_regular)),
                                 fontSize = dimensionResource(
-                                    id = if (state.selectedLevel == level) R.dimen.textSize24 else R.dimen.textSize17).value.sp
+                                    id = if (state.selectedLevel == level) R.dimen.textSize24 else R.dimen.textSize17
+                                ).value.sp
                             )
                         }
                     }
@@ -167,11 +125,10 @@ fun MathPyramidHomeJetpackScreen(
 
             Spacer(Modifier.weight(1f))
 
-            // DIFFICULTY + START BUTTON --------------------------------------
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
+                    .padding(Dimens16),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 CommonDifficultySelectorCompose(
@@ -182,7 +139,7 @@ fun MathPyramidHomeJetpackScreen(
                 Spacer(Modifier.weight(1f))
 
                 val shape = RoundedCornerShape(50)
-                Box(modifier = Modifier.shadow(elevation = 8.dp,shape = shape, clip = false)) {
+                Box(modifier = Modifier.shadow(elevation = Dimens8, shape = shape, clip = false)) {
                     Button(
                         onClick = { onStartGame() },
                         shape = shape,
@@ -195,8 +152,11 @@ fun MathPyramidHomeJetpackScreen(
                         )
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(text = stringResource(R.string.lets_start), fontSize = dimensionResource(R.dimen.textSizeSuperExtraLarge).value.sp,
-                                fontFamily = FontFamily(Font(R.font.font_bold)))
+                            Text(
+                                text = stringResource(R.string.lets_start),
+                                fontSize = dimensionResource(R.dimen.textSizeSuperExtraLarge).value.sp,
+                                fontFamily = FontFamily(Font(R.font.font_bold))
+                            )
                             Spacer(modifier = Modifier.width(dimensionResource(R.dimen.activity_padding6)))
                             Icon(imageVector = Icons.Filled.PlayArrow, contentDescription = null)
                         }
@@ -228,4 +188,3 @@ fun getDrawableForPyramid(level: Int): Int {
         else -> R.drawable.pyramid_4
     }
 }
-

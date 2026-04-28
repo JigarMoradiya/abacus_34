@@ -1,6 +1,7 @@
 package com.jigar.me.ui.view.home.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -41,7 +42,16 @@ import com.jigar.me.ui.view.jetpack.fragments.home.viewmodels.HomeActivityViewMo
 fun HomeNavGraph(
     homeActivityViewModel: HomeActivityViewModel,
     navController: NavHostController = rememberNavController(),
+    initialRoute: String? = null,
+    onInitialRouteHandled: () -> Unit = {},
 ) {
+    LaunchedEffect(initialRoute) {
+        if (!initialRoute.isNullOrEmpty() && initialRoute != RouteNavigation.Home.route) {
+            navController.navigate(initialRoute)
+            onInitialRouteHandled()
+        }
+    }
+
     NavHost(
         navController = navController,
         startDestination = RouteNavigation.Home.route
