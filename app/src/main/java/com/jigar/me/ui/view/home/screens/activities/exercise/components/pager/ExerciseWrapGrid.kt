@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.activities.exercise.components.pager
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -37,11 +39,11 @@ fun ExerciseWrapGrid(
     Column(
         modifier = Modifier.wrapContentWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding6))
+        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)
     ) {
         for (row in 0 until rows) {
             Row(
-                horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding6)),
+                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
                 modifier = Modifier.wrapContentWidth(), verticalAlignment = Alignment.CenterVertically
             ) {
                 for (col in 0 until columns) {
@@ -52,13 +54,13 @@ fun ExerciseWrapGrid(
 
                         Box(
                             modifier = Modifier
-                                .size(28.dp)
+                                .size(AppDimens.Dimens28)
                                 .clip(CircleShape)
                                 .background(
                                     if (isSelected) ColorPrimary else Color.Transparent
                                 )
                                 .border(
-                                    width = 1.dp, color = ColorPrimary, shape = CircleShape
+                                    width = AppDimens.Dimens1, color = ColorPrimary, shape = CircleShape
                                 )
                                 .clickable { onItemSelected(item) }, contentAlignment = Alignment.Center
                         ) {

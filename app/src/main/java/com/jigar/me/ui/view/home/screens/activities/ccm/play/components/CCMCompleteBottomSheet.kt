@@ -94,7 +94,7 @@ fun CCMCompleteBottomSheetCompose(
 
                 Box(
                     modifier = Modifier
-                        .width(40.dp)
+                        .width(AppDimens.Dimens40)
                         .height(AppDimens.Dimens4)
                         .background(
                             color = Color.LightGray,
@@ -112,7 +112,7 @@ fun CCMCompleteBottomSheetCompose(
                             R.drawable.ic_not_complete_smiley
                     ),
                     contentDescription = null,
-                    modifier = Modifier.height(60.dp)
+                    modifier = Modifier.height(AppDimens.Dimens60)
                 )
 
                 Spacer(Modifier.height(AppDimens.Dimens12))

@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.number_sequence_puzzle.play
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -63,7 +65,7 @@ fun NumberSequencePuzzleJetpackScreen(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     var tileColors by remember { mutableStateOf(listOf<List<Color>>()) }
 
-    val spacing = if (gridSize == 5) { 8.dp } else if (gridSize == 4) { 10.dp } else { 12.dp }
+    val spacing = if (gridSize == 5) { AppDimens.Dimens8 } else if (gridSize == 4) { AppDimens.Dimens10 } else { AppDimens.Dimens12 }
     val opacity = 0.4f
 
     Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
@@ -189,14 +191,14 @@ private fun RightPanel(
                     painter = painterResource(id = icon),
                     contentDescription = label,
                     tint = Color.Red,
-                    modifier = Modifier.size(20.dp)
+                    modifier = Modifier.size(AppDimens.Dimens20)
                 )
-                Spacer(Modifier.width(6.dp))
+                Spacer(Modifier.width(AppDimens.Dimens6))
                 Text(label, color = Color.Red, fontSize = dimensionResource(id = R.dimen.textSizeLarge).value.sp, fontWeight = FontWeight.SemiBold)
             }
         }
 
-        Spacer(Modifier.height(12.dp))
+        Spacer(Modifier.height(AppDimens.Dimens12))
 
         Button(
             onClick = onRestart,
@@ -207,9 +209,9 @@ private fun RightPanel(
                 painter = painterResource(id = R.drawable.ic_start_new_game),
                 contentDescription = null,
                 tint = Color(0xFF006400),
-                modifier = Modifier.size(20.dp)
+                modifier = Modifier.size(AppDimens.Dimens20)
             )
-            Spacer(Modifier.width(6.dp))
+            Spacer(Modifier.width(AppDimens.Dimens6))
             Text(
                 "Start New Game", color = Color(0xFF006400),
                 fontSize = dimensionResource(id = R.dimen.textSizeLarge).value.sp,
@@ -253,7 +255,7 @@ private fun PuzzleBoard(
 
         Box(
             modifier = Modifier
-                .background(backgroundColor, RoundedCornerShape(20.dp))
+                .background(backgroundColor, RoundedCornerShape(AppDimens.Dimens20))
                 .padding(spacing)
         ) {
             Column(
@@ -290,7 +292,7 @@ private fun TileView(number: Int?, size: Dp, color: Color, onClick: () -> Unit) 
             Box(
                 modifier = Modifier
                     .size(size)
-                    .clip(RoundedCornerShape(10.dp))
+                    .clip(RoundedCornerShape(AppDimens.Dimens10))
                     .background(color),
                 contentAlignment = Alignment.Center
             ) {
@@ -307,9 +309,9 @@ private fun TileView(number: Int?, size: Dp, color: Color, onClick: () -> Unit) 
                 modifier = Modifier
                     .size(size)
                     .border(
-                        width = 1.dp,
+                        width = AppDimens.Dimens1,
                         color = Color.Black.copy(alpha = 0.6f),
-                        shape = RoundedCornerShape(12.dp)
+                        shape = RoundedCornerShape(AppDimens.Dimens12)
                     )
             )
         }

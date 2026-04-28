@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.my_account.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -27,14 +29,14 @@ fun MyAccountScreen(
 
     LazyColumn(
         modifier = Modifier
-            .fillMaxSize(), contentPadding = PaddingValues(dimensionResource(R.dimen.activity_padding12))
+            .fillMaxSize(), contentPadding = PaddingValues(AppDimens.Dimens12)
     ) {
 
         // 🔹 STATISTICS
         uiState.statistics?.let { statistics ->
             item {
                 Row(
-                    modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding10))
+                    modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
                 ) {
                     StatisticsCard(
                         title = "Total Exam : ", count = statistics.EXAM?.count?.toString() ?: "-", time = statistics.EXAM?.last_exam_given_time ?: "", backgroundColor = Color(0xFFFFEBEE), countColor = Color(0xFFC62828), modifier = Modifier.weight(1f)
@@ -55,7 +57,7 @@ fun MyAccountScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = dimensionResource(R.dimen.activity_padding12)), horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding10))
+                    .padding(top = AppDimens.Dimens12), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
             ) {
 
                 // Column 1 → My Account

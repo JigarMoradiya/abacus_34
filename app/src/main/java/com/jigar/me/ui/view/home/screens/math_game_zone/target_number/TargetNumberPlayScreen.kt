@@ -100,7 +100,7 @@ fun TargetNumberPlayScreen(
 
                             Box(
                                 modifier = Modifier
-                                    .defaultMinSize(minWidth = 56.dp, minHeight = 56.dp)
+                                    .defaultMinSize(minWidth = AppDimens.Dimens56, minHeight = AppDimens.Dimens56)
                                     .clip(RoundedCornerShape(AppDimens.Dimens12))
                                     .background(
                                         if (isSelected)
@@ -126,7 +126,7 @@ fun TargetNumberPlayScreen(
                         state.allowedOps.forEach { op ->
                             Box(
                                 contentAlignment = Alignment.Center, modifier = Modifier
-                                    .size(48.dp)
+                                    .size(AppDimens.Dimens48)
                                     .clip(RoundedCornerShape(AppDimens.Dimens12))
                                     .background(ColorPrimaryDark)
                                     .clickable {
@@ -291,7 +291,7 @@ fun StepsLogSection(
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(bottom = 1.dp)
+            modifier = Modifier.padding(bottom = AppDimens.Dimens1)
         ) {
 
             Text(
@@ -320,7 +320,7 @@ fun StepsLogSection(
 
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.padding(vertical = 1.dp)
+                    modifier = Modifier.padding(vertical = AppDimens.Dimens1)
                 ) {
 
                     Text(

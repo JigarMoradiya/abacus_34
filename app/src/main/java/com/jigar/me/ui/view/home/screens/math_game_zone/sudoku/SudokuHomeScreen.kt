@@ -127,7 +127,7 @@ fun SudokuHomeScreen(
                         label = ""
                     )
 
-                    val shape = RoundedCornerShape(200.dp)
+                    val shape = RoundedCornerShape(AppDimens.Dimens200)
                     val interactionSource = remember { MutableInteractionSource() }
 
                     Box(

@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.category.abacus_list.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -30,19 +32,19 @@ fun AbacusListItem(abacusList: List<Abacus>) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(12.dp),
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
-        verticalArrangement = Arrangement.spacedBy(4.dp)
+        contentPadding = PaddingValues(AppDimens.Dimens12),
+        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4),
+        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
     ) {
         items(abacusList) { abacus ->
             Card(
-                shape = RoundedCornerShape(12.dp),
-                elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+                shape = RoundedCornerShape(AppDimens.Dimens12),
+                elevation = CardDefaults.cardElevation(defaultElevation = AppDimens.Dimens2),
                 colors = CardDefaults.cardColors(containerColor = Color.White),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(
-                    modifier = Modifier.padding(2.dp).fillMaxWidth(),
+                    modifier = Modifier.padding(AppDimens.Dimens2).fillMaxWidth(),
                     verticalArrangement = Arrangement.Center
                 ) {
                     Text(

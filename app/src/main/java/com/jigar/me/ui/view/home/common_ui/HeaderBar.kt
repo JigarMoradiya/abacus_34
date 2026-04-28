@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.common_ui
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -76,8 +78,8 @@ fun BackButtonWithText(
                         shape = RoundedCornerShape(
                             topStart = 0.dp,
                             bottomStart = 0.dp,
-                            topEnd = 100.dp,
-                            bottomEnd = 100.dp
+                            topEnd = AppDimens.Dimens100,
+                            bottomEnd = AppDimens.Dimens100
                         ),
                         clip = false
                     )
@@ -86,8 +88,8 @@ fun BackButtonWithText(
                         shape = RoundedCornerShape(
                             topStart = 0.dp,
                             bottomStart = 0.dp,
-                            topEnd = 100.dp,
-                            bottomEnd = 100.dp
+                            topEnd = AppDimens.Dimens100,
+                            bottomEnd = AppDimens.Dimens100
                         )
                     )
                     .padding(start = size / 2, end = Dimens16) // ⭐ space for circle
@@ -131,7 +133,7 @@ fun BackButtonWithText(
                         imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
                         contentDescription = null,
                         tint = Color.Black.copy(alpha = 0.35f),
-                        modifier = Modifier.size(24.dp.scaled())
+                        modifier = Modifier.size(AppDimens.Dimens24.scaled())
                             .offset(ShadowOffset, ShadowOffset), // shadow layer
                     )
 
@@ -139,7 +141,7 @@ fun BackButtonWithText(
                         imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
                         contentDescription = null,
                         tint = Color.White,
-                        modifier = Modifier.size(24.dp.scaled())
+                        modifier = Modifier.size(AppDimens.Dimens24.scaled())
                     )
                 }
             }

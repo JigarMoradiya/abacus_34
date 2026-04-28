@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.purchase.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -57,12 +59,12 @@ fun PurchasePlanCard(
     Card(
         onClick = {onClick()},
         enabled = !plan.isPurchase && !isAssignedPlan,
-        shape = RoundedCornerShape(12.dp),
-        border = if (isSelected && !plan.isPurchase && !isAssignedPlan) BorderStroke(1.dp, ColorAccent) else null,
+        shape = RoundedCornerShape(AppDimens.Dimens12),
+        border = if (isSelected && !plan.isPurchase && !isAssignedPlan) BorderStroke(AppDimens.Dimens1, ColorAccent) else null,
         colors = CardDefaults.cardColors(containerColor = ColorAccentLight),
         modifier = Modifier.fillMaxWidth()
     ) {
-        Column(modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.activity_padding12), vertical = dimensionResource(R.dimen.activity_padding8))) {
+        Column(modifier = Modifier.padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8)) {
 
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
@@ -71,11 +73,11 @@ fun PurchasePlanCard(
                 )
 
                 if ((plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_1Year) && uiState.yearPlanAssignFromAdmin != null) || plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_All) && uiState.allPlanAssignFromAdmin != null){
-                    Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding8)))
+                    Spacer(Modifier.width(AppDimens.Dimens8))
                     Surface(
-                        shape = RoundedCornerShape(4.dp),
+                        shape = RoundedCornerShape(AppDimens.Dimens4),
                         color = colorResource(R.color.green_500),
-                        modifier = Modifier.padding(top = dimensionResource(R.dimen.activity_padding2)),
+                        modifier = Modifier.padding(top = AppDimens.Dimens2),
                         tonalElevation = 0.dp,
                         shadowElevation = 0.dp
                     ) {
@@ -84,17 +86,17 @@ fun PurchasePlanCard(
                             text = stringResource(R.string.assigned),
                             style = MaterialTheme.typography.labelSmall.copy(color = Color.White, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
                             modifier = Modifier.padding(
-                                horizontal = dimensionResource(R.dimen.activity_padding8),
-                                vertical = dimensionResource(R.dimen.activity_padding2)
+                                horizontal = AppDimens.Dimens8,
+                                vertical = AppDimens.Dimens2
                             )
                         )
                     }
                 }else if (plan.isPurchase){
-                    Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding8)))
+                    Spacer(Modifier.width(AppDimens.Dimens8))
                     Surface(
-                        shape = RoundedCornerShape(4.dp),
+                        shape = RoundedCornerShape(AppDimens.Dimens4),
                         color = colorResource(R.color.green_500),
-                        modifier = Modifier.padding(top = dimensionResource(R.dimen.activity_padding2)),
+                        modifier = Modifier.padding(top = AppDimens.Dimens2),
                         tonalElevation = 0.dp,
                         shadowElevation = 0.dp
                     ) {
@@ -103,8 +105,8 @@ fun PurchasePlanCard(
                             text = stringResource(R.string.txt_purchased),
                             style = MaterialTheme.typography.labelSmall.copy(color = Color.White, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
                             modifier = Modifier.padding(
-                                horizontal = dimensionResource(R.dimen.activity_padding8),
-                                vertical = dimensionResource(R.dimen.activity_padding2)
+                                horizontal = AppDimens.Dimens8,
+                                vertical = AppDimens.Dimens2
                             )
                         )
                     }
@@ -141,7 +143,7 @@ fun PurchasePlanCard(
 
 
             if (plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_1Year) && uiState.yearPlanAssignFromAdmin != null){
-                Spacer(Modifier.height(4.dp))
+                Spacer(Modifier.height(AppDimens.Dimens4))
                 Text(
                     text = stringResource(R.string.plan_assigned_from_admin),
                     style = MaterialTheme.typography.labelMedium.copy(
@@ -158,7 +160,7 @@ fun PurchasePlanCard(
                     )
                 )
             }else if (plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_All) && uiState.allPlanAssignFromAdmin != null){
-                Spacer(Modifier.height(4.dp))
+                Spacer(Modifier.height(AppDimens.Dimens4))
                 Text(
                     text = CommonUtils.htmlToAnnotatedString(stringResource(R.string.plan_assigned_from_admin)),
                     style = MaterialTheme.typography.labelMedium.copy(
@@ -175,7 +177,7 @@ fun PurchasePlanCard(
                     )
                 )
             }else if (plan.isPurchase){
-                Spacer(Modifier.height(4.dp))
+                Spacer(Modifier.height(AppDimens.Dimens4))
                 Text(
                     text = CommonUtils.htmlToAnnotatedString("<strong>Order Id : </strong>${plan.orderId}"),
                     style = MaterialTheme.typography.labelMedium.copy(
@@ -249,7 +251,7 @@ fun PriceUi(discountPer: Int, plan: InAppSkuDetails, originalYearly: InAppSkuDet
         }
     }
 
-    Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding4)))
+    Spacer(Modifier.width(AppDimens.Dimens4))
 
     Text(
         text = plan.getDisplayPrice(),

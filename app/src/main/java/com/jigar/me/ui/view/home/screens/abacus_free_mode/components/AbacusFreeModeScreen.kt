@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.abacus_free_mode.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

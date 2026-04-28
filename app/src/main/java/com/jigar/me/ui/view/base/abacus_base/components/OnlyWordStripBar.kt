@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.base.abacus_base.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -35,7 +37,7 @@ fun OnlyWordStripBar(
             .padding(horizontal = dim.rectLineWidth),   // equal top/bottom padding
     ) {
 
-        Spacer(modifier = Modifier.height(totalHeight + 4.dp))
+        Spacer(modifier = Modifier.height(totalHeight + AppDimens.Dimens4))
 
         // 🔵 BOTTOM LABEL BAR
         Row(

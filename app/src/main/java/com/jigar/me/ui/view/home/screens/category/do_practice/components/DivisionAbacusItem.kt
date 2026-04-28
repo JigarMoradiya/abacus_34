@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.category.do_practice.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -36,14 +38,14 @@ fun DivisionAbacusItem(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(0.dp),
         modifier = Modifier
-            .width(80.dp)
-            .padding(end = dimensionResource(R.dimen.activity_padding4))
+            .width(AppDimens.Dimens80)
+            .padding(end = AppDimens.Dimens4)
             .border(
-                width = 4.dp,
+                width = AppDimens.Dimens4,
                 color = colorPreset.columnColors.mixWith(Color.White, 0.7f),
-                shape = RoundedCornerShape(10.dp)
+                shape = RoundedCornerShape(AppDimens.Dimens10)
             )
-            .padding(top = dimensionResource(R.dimen.activity_padding8))
+            .padding(top = AppDimens.Dimens8)
     ) {
 
         /* ───────────────────────
@@ -76,7 +78,7 @@ fun DivisionAbacusItem(
         ) {
             Text(
                 text = "÷",
-                modifier = Modifier.padding(end = dimensionResource(R.dimen.activity_padding4)),
+                modifier = Modifier.padding(end = AppDimens.Dimens4),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily(Font(R.font.font_bold)),
@@ -121,15 +123,15 @@ fun DivisionAbacusItem(
                     if (abacus.eachStepRemainder[index] != abacus.eachStepRemainder[index + 1]) {
 
                         HorizontalDivider(
-                            modifier = Modifier.padding(top = dimensionResource(R.dimen.activity_padding4)),
-                            thickness = 2.dp,
+                            modifier = Modifier.padding(top = AppDimens.Dimens4),
+                            thickness = AppDimens.Dimens2,
                             color = colorPreset.columnColors.mixWith(Color.White, 0.5f)
                         )
 
                         Text(
                             text = abacus.eachStepRemainder[index].toString(),
                             modifier = Modifier
-                                .padding(top = dimensionResource(R.dimen.activity_padding4))
+                                .padding(top = AppDimens.Dimens4)
                                 .alpha(
                                     if (uiState.isSumComplete)
                                         1f

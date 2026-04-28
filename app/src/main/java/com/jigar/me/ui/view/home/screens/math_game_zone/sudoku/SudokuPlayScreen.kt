@@ -405,7 +405,7 @@ fun NumberPad(vm: SudokuPlayViewModel) {
 fun EraseKey(onClick: () -> Unit) {
     Box(
         modifier = Modifier
-            .size(width = 48.dp, height = 36.dp)
+            .size(width = AppDimens.Dimens48, height = AppDimens.Dimens36)
             .background(
                 colorResource(R.color.red_400), shape = RoundedCornerShape(AppDimens.Dimens8)
             )
@@ -426,7 +426,7 @@ fun EraseKey(onClick: () -> Unit) {
 fun NumberKey(n: Int, onClick: () -> Unit) {
     Box(
         modifier = Modifier
-            .size(width = 48.dp, height = 36.dp)
+            .size(width = AppDimens.Dimens48, height = AppDimens.Dimens36)
             .background(colorResource(R.color.colorPrimary), shape = RoundedCornerShape(AppDimens.Dimens8))
             .clickable {
                 onClick()

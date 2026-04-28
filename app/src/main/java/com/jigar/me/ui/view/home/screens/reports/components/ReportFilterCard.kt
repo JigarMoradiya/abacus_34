@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.reports.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
@@ -39,22 +41,22 @@ fun ReportFilterCard(
 
         Card(
             onClick = { viewModel.onFilterClick() },
-            shape = RoundedCornerShape(30.dp),
+            shape = RoundedCornerShape(AppDimens.Dimens30),
             elevation = CardDefaults.cardElevation(
                 dimensionResource(R.dimen.card_elevation3)
             ),
             colors = CardDefaults.cardColors(containerColor = ColorPrimaryLight),
             modifier = Modifier
                 .wrapContentWidth()
-                .padding(top = dimensionResource(R.dimen.activity_padding6))
+                .padding(top = AppDimens.Dimens6)
         ) {
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.padding(
-                    start = dimensionResource(R.dimen.activity_padding12),
-                    end = dimensionResource(R.dimen.activity_padding6),
-                ).padding(vertical = dimensionResource(R.dimen.activity_padding2))
+                    start = AppDimens.Dimens12,
+                    end = AppDimens.Dimens6,
+                ).padding(vertical = AppDimens.Dimens2)
             ) {
 
                 Text(
@@ -63,7 +65,7 @@ fun ReportFilterCard(
                         fontFamily = FontFamily(Font(R.font.font_bold)),
                         color = Color.Black
                     ),
-                    modifier = Modifier.width(200.dp),
+                    modifier = Modifier.width(AppDimens.Dimens200),
                     maxLines = 1
                 )
 
@@ -83,7 +85,7 @@ fun ReportFilterCard(
         ) {
             uiState.filterList.forEachIndexed { index, item ->
                 DropdownMenuItem(
-                    modifier = Modifier.height(36.dp),
+                    modifier = Modifier.height(AppDimens.Dimens36),
                     text = {
                         Text(
                             text = item.label,

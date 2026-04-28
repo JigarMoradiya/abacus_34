@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.category.do_practice.components.subitems
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -40,19 +42,19 @@ fun AbacusFormulaItem(uiState: AbacusDoPracticeUiState) {
     if (distinctList.isNotNullOrEmpty()){
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding12)),
+            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
             modifier = Modifier
-                .padding(end = dimensionResource(R.dimen.activity_padding4))
+                .padding(end = AppDimens.Dimens4)
                 .border(
-                    width = 1.dp,
+                    width = AppDimens.Dimens1,
                     color = colorPreset.buttonColor.copy(alpha = 0.6f),
-                    shape = RoundedCornerShape(8.dp)
+                    shape = RoundedCornerShape(AppDimens.Dimens8)
                 )
                 .background(
                     color = colorPreset.columnColors.copy(alpha = 0.2f),
-                    shape = RoundedCornerShape(8.dp)
+                    shape = RoundedCornerShape(AppDimens.Dimens8)
                 )
-                .padding(dimensionResource(R.dimen.activity_padding8))
+                .padding(AppDimens.Dimens8)
         ) {
             distinctList.forEach { item ->
                 item.formulaUsed?.let { formulaHint ->

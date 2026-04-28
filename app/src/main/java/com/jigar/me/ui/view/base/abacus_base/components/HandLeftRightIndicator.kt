@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.base.abacus_base.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -24,7 +26,7 @@ import com.jigar.me.R
 fun HandLeftRightIndicator(
     isVisible: Boolean,
     modifier: Modifier = Modifier,
-    travelDp: Dp = 12.dp
+    travelDp: Dp = AppDimens.Dimens12
 ) {
     if (!isVisible) return
 
@@ -56,6 +58,6 @@ fun HandLeftRightIndicator(
         modifier = modifier
             .offset(x = offsetX.dp)
             .scale(scale)
-            .size(46.dp)
+            .size(AppDimens.Dimens46)
     )
 }

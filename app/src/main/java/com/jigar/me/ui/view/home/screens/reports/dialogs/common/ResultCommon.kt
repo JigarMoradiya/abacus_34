@@ -67,16 +67,16 @@ fun QuestionExamColumnItemHorizontal(item: QuestionResult, selectedTheme: String
     }
     Card(
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(10.dp),
+        shape = RoundedCornerShape(AppDimens.Dimens10),
         colors = CardDefaults.cardColors(containerColor = ColorPrimaryLight),
-        elevation = CardDefaults.cardElevation(2.dp)
+        elevation = CardDefaults.cardElevation(AppDimens.Dimens2)
     ) {
 
         Row(
             modifier = Modifier.fillMaxWidth()
                 .padding(
-                    horizontal = dimensionResource(R.dimen.activity_padding8),
-                    vertical = dimensionResource(R.dimen.activity_padding4)
+                    horizontal = AppDimens.Dimens8,
+                    vertical = AppDimens.Dimens4
                 ),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -250,7 +250,7 @@ fun QuestionExamColumnItemHorizontal(item: QuestionResult, selectedTheme: String
                 }
             }
 
-            Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding6)))
+            Spacer(Modifier.width(AppDimens.Dimens6))
 
             // 🔹 Correct / Wrong icon
             Icon(
@@ -298,9 +298,9 @@ fun StatItem(
         Image(
             painter = painterResource(icon),
             contentDescription = null,
-            modifier = Modifier.size(32.dp)
+            modifier = Modifier.size(AppDimens.Dimens32)
         )
-        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding4)))
+        Spacer(Modifier.height(AppDimens.Dimens4))
         Text(value,
             style = MaterialTheme.typography.titleLarge.copy(color = color, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))))
         Text(stringResource(label),

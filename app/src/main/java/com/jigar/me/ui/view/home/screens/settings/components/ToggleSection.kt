@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.settings.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -39,10 +41,10 @@ fun ToggleSection(
     items: List<ToggleItem>
 ) {
     Card(
-        shape = RoundedCornerShape(20.dp),
+        shape = RoundedCornerShape(AppDimens.Dimens20),
         colors = CardDefaults.cardColors(containerColor = Color.White),
-        border = BorderStroke(1.dp, ColorPrimary),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        border = BorderStroke(AppDimens.Dimens1, ColorPrimary),
+        elevation = CardDefaults.cardElevation(defaultElevation = AppDimens.Dimens2),
         modifier = modifier
     ) {
         Column {
@@ -72,7 +74,7 @@ fun SettingsSwitchRow(
         modifier = Modifier
             .fillMaxWidth()
             .padding(
-                horizontal = dimensionResource(R.dimen.activity_padding16),
+                horizontal = AppDimens.Dimens16,
                 vertical = 0.dp
             ),
         verticalAlignment = Alignment.CenterVertically
@@ -84,7 +86,7 @@ fun SettingsSwitchRow(
             tint = Color.Black,
         )
 
-        Spacer(modifier = Modifier.width(12.dp))
+        Spacer(modifier = Modifier.width(AppDimens.Dimens12))
 
         Text(
             text = label,

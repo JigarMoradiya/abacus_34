@@ -33,18 +33,18 @@ fun MyAccountChildRow(
     Row(modifier = Modifier
         .fillMaxWidth()
         .clickable { onClick(item.tag) }
-        .padding(horizontal = dimensionResource(R.dimen.activity_padding12), vertical = dimensionResource(R.dimen.activity_padding2)), verticalAlignment = Alignment.CenterVertically) {
+        .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens2), verticalAlignment = Alignment.CenterVertically) {
 
         // Icon (20dp x 32dp with vertical padding)
         item.menuIcon?.let {
             Icon(
                 imageVector = it, contentDescription = null, modifier = Modifier
-                    .size(width = 20.dp, height = 32.dp)
-                    .padding(vertical = dimensionResource(R.dimen.activity_padding6))
+                    .size(width = AppDimens.Dimens20, height = AppDimens.Dimens32)
+                    .padding(vertical = AppDimens.Dimens6)
             )
         }
 
-        Spacer(modifier = Modifier.width(dimensionResource(R.dimen.activity_padding10)))
+        Spacer(modifier = Modifier.width(AppDimens.Dimens10))
 
         // Title
         Text(

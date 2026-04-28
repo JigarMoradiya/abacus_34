@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.settings.components.voice
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import android.speech.tts.Voice
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -49,22 +51,22 @@ fun VoiceSettingSheetContent(
         modifier = Modifier
             .fillMaxWidth()
             .verticalScroll(rememberScrollState())
-            .padding(horizontal = dimensionResource(R.dimen.activity_padding16))
+            .padding(horizontal = AppDimens.Dimens16)
     ) {
 
         // ─────────────────── Handle Bar ───────────────────
-        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding12)))
+        Spacer(Modifier.height(AppDimens.Dimens12))
         Box(
             modifier = Modifier
-                .width(40.dp)
-                .height(4.dp)
-                .background(Color.DarkGray, RoundedCornerShape(2.dp))
+                .width(AppDimens.Dimens40)
+                .height(AppDimens.Dimens4)
+                .background(Color.DarkGray, RoundedCornerShape(AppDimens.Dimens2))
                 .align(Alignment.CenterHorizontally)
         )
 
-        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding16)))
+        Spacer(Modifier.height(AppDimens.Dimens16))
 
-        Row(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding12))) {
+        Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
             Column(Modifier.weight(1f)) {
                 // ─────────────────── Languages ───────────────────
                 Text(
@@ -72,7 +74,7 @@ fun VoiceSettingSheetContent(
                     style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),
                 )
 
-                Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding6)))
+                Spacer(Modifier.height(AppDimens.Dimens6))
                 SimpleDropdownField(
                     text = uiState.selectedLanguage?.displayName ?: "",
                     items = uiState.languages,
@@ -88,7 +90,7 @@ fun VoiceSettingSheetContent(
 //                    style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),
 //                )
 //
-//                Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding6)))
+//                Spacer(Modifier.height(AppDimens.Dimens6))
 //                SimpleDropdownField(
 //                    text = uiState.selectedVoice?.name ?: "",
 //                    items = uiState.voices,
@@ -98,27 +100,27 @@ fun VoiceSettingSheetContent(
 //            }
         }
 
-        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding16)))
+        Spacer(Modifier.height(AppDimens.Dimens16))
 
-        Row(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding12))) {
+        Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
             // ─────────────────── Pitch ───────────────────
             Column(Modifier.weight(1f)) {
                 Text(text = stringResource(R.string.pitch),style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),)
                 SingleSlider(
-                    isShowText = true, value = uiState.pitch, range = 0f..20f, onValueChange = onPitchChange, modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.activity_padding8))
+                    isShowText = true, value = uiState.pitch, range = 0f..20f, onValueChange = onPitchChange, modifier = Modifier.padding(horizontal = AppDimens.Dimens8)
                 )
             }
             // ─────────────────── Speed ───────────────────
             Column(Modifier.weight(1f)) {
                 Text(text = stringResource(R.string.voice_speed),style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),)
                 SingleSlider(
-                    isShowText = true, value = uiState.speed, range = 0f..20f, onValueChange = onSpeedChange, modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.activity_padding8))
+                    isShowText = true, value = uiState.speed, range = 0f..20f, onValueChange = onSpeedChange, modifier = Modifier.padding(horizontal = AppDimens.Dimens8)
                 )
             }
         }
 
         // ─────────────────── Buttons ───────────────────
-        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding16)))
+        Spacer(Modifier.height(AppDimens.Dimens16))
 
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -137,7 +139,7 @@ fun VoiceSettingSheetContent(
                     Text(stringResource(R.string.check_voice))
                 }
 
-                Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding12)))
+                Spacer(Modifier.width(AppDimens.Dimens12))
 
                 Button(onClick = onSave) {
                     Text(stringResource(R.string.update))
@@ -145,6 +147,6 @@ fun VoiceSettingSheetContent(
             }
         }
 
-        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding16)))
+        Spacer(Modifier.height(AppDimens.Dimens16))
     }
 }

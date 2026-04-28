@@ -83,7 +83,7 @@ fun MathGameZoneScreen(
             ) {
                 categories.forEach { category ->
 
-                    val shape = RoundedCornerShape(12.dp)
+                    val shape = RoundedCornerShape(AppDimens.Dimens12)
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         modifier = Modifier
@@ -102,7 +102,7 @@ fun MathGameZoneScreen(
                             contentScale = ContentScale.Fit,
                             modifier = Modifier.fillMaxHeight(0.7f)
                         )
-                        Spacer(modifier = Modifier.height(8.dp))
+                        Spacer(modifier = Modifier.height(AppDimens.Dimens8))
                         Text(
                             text = category.title,
                             color = colorResource(R.color.black),

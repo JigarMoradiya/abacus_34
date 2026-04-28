@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.my_account.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -36,17 +38,17 @@ fun StatisticsCard(
 ) {
     Card(
         modifier = modifier,
-        shape = RoundedCornerShape(8.dp),
+        shape = RoundedCornerShape(AppDimens.Dimens8),
         colors = CardDefaults.cardColors(containerColor = backgroundColor),
-        elevation = CardDefaults.cardElevation(2.dp)
+        elevation = CardDefaults.cardElevation(AppDimens.Dimens2)
     ) {
-        Column(modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.activity_padding12), vertical = dimensionResource(R.dimen.activity_padding6))) {
+        Column(modifier = Modifier.padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     title,
                     style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
                 )
-                Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding4)))
+                Spacer(Modifier.width(AppDimens.Dimens4))
                 Text(
                     count,
                     style = MaterialTheme.typography.titleLarge.copy(

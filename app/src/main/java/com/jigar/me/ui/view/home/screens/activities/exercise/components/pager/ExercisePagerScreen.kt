@@ -16,6 +16,7 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.RocketLaunch
 import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.MaterialTheme
@@ -129,7 +130,7 @@ fun ExercisePagerScreen(
                     modifier = Modifier
                         .padding(vertical = Dimens12, horizontal = Dimens16),
                     text = stringResource(R.string.start_exercise),
-                    icon = Icons.Default.School,
+                    icon = Icons.Default.RocketLaunch,
                     type = ButtonType.ORANGE,
                     onClick = {
                         selectedItem?.let { onStart(it, page) }
@@ -139,13 +140,13 @@ fun ExercisePagerScreen(
         }
 
         Row(
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
             modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
             repeat(uiState.exercises.size) { idx ->
                 Box(
                     modifier = Modifier
-                        .size(8.dp)
+                        .size(AppDimens.Dimens8)
                         .clip(CircleShape)
                         .background(
                             if (idx == pagerState.currentPage)

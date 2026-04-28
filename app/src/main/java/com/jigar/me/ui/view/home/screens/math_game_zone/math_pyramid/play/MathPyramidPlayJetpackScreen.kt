@@ -140,20 +140,20 @@ fun MathPyramidPlayJetpackScreen(
                     Spacer(modifier = Modifier.height(AppDimens.Dimens16))
 
                     val shape = RoundedCornerShape(50)
-                    Box(modifier = Modifier.shadow(elevation = 8.dp,shape = shape, clip = false)) {
+                    Box(modifier = Modifier.shadow(elevation = AppDimens.Dimens8,shape = shape, clip = false)) {
                         Button(
                             onClick = {
                                 PlaySound.playHint(context)
                                 generateNewPuzzle() },
                             colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.colorPrimary),
                                 contentColor = colorResource(R.color.white)),
-                            contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.activity_padding16))
+                            contentPadding = PaddingValues(horizontal = AppDimens.Dimens16)
                         ) {
                             // --- 1. Shuffle Icon (Left side) ---
                             Icon(imageVector = Icons.Filled.Shuffle, contentDescription = null,)
 
                             // Add a small spacer between the icon and the text
-                            Spacer(modifier = Modifier.width(dimensionResource(R.dimen.activity_padding6))) // Adjust spacing as needed
+                            Spacer(modifier = Modifier.width(AppDimens.Dimens6)) // Adjust spacing as needed
 
                             // --- 2. Text (Right side) ---
                             Text(text = stringResource(R.string.start_new), fontSize = dimensionResource(R.dimen.textSizeSuperExtraLarge).value.sp,
@@ -199,10 +199,10 @@ private fun PyramidGrid(
     selectedCell: Pair<Int, Int>?,
     onCellTap: (Int, Int) -> Unit
 ) {
-    Column(verticalArrangement = Arrangement.spacedBy(8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8), horizontalAlignment = Alignment.CenterHorizontally) {
         val rows = pyramid.size
         for (r in 0 until rows) {
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
                 // add spacer left to center the row like pyramid
 //                val leftPadding = (rows - r - 1) * 8
                 val leftPadding = 0
@@ -251,9 +251,9 @@ private fun PyramidCell(levels : Int,value: Int?, isEditable: Boolean, isSelecte
         modifier = Modifier
             .size(width = width.dp, height = height.dp)
             .clickable { if (isEditable) onTap() },
-        shape = RoundedCornerShape(8.dp),
+        shape = RoundedCornerShape(AppDimens.Dimens8),
         elevation = CardDefaults.cardElevation(  // Material3 syntax
-            defaultElevation = if (isEditable) 6.dp else 2.dp
+            defaultElevation = if (isEditable) AppDimens.Dimens6 else AppDimens.Dimens2
         ))
     {
         Box(modifier = Modifier.fillMaxSize()
@@ -286,16 +286,16 @@ fun KeypadCompose(onKey: (String) -> Unit) {
         listOf("Erase", "0", "Clear")
     )
 
-    Column(modifier = Modifier.wrapContentWidth(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+    Column(modifier = Modifier.wrapContentWidth(), verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)) {
         buttons.forEach { row ->
-            Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)) {
                 row.forEach { label ->
                     val bgColor = when (label) {
                         "Erase", "Clear" -> colorResource(R.color.red_400)
                         else -> colorResource(R.color.colorPrimary)
                     }
-                    Box(modifier = Modifier.size(width = 48.dp, height = 36.dp).background(bgColor
-                        , shape = RoundedCornerShape(8.dp)
+                    Box(modifier = Modifier.size(width = AppDimens.Dimens48, height = AppDimens.Dimens36).background(bgColor
+                        , shape = RoundedCornerShape(AppDimens.Dimens8)
                     ).clickable{
                         onKey(label)
                     },contentAlignment = Alignment.Center){
@@ -305,7 +305,7 @@ fun KeypadCompose(onKey: (String) -> Unit) {
                                     painter = painterResource(R.drawable.ic_backspace), // Replace with your Backspace/Erase Icon
                                     contentDescription = "Erase",
                                     tint = colorResource(R.color.white),
-                                    modifier = Modifier.size(24.dp)
+                                    modifier = Modifier.size(AppDimens.Dimens24)
                                 )
                             }
                             "Clear" ->{

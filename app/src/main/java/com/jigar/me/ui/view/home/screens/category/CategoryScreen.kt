@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.category
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -70,7 +72,7 @@ fun CategoryScreen(
         Row(modifier = Modifier.fillMaxSize()) {
 
             LazyColumn(
-                modifier = Modifier.width(110.dp)
+                modifier = Modifier.width(AppDimens.Dimens110)
             ) {
                 itemsIndexed(uiState.categories) { index, category ->
                     CategoryItem(
@@ -107,7 +109,7 @@ fun CategoryScreen(
                     state = pageGridState,
                     columns = GridCells.Fixed(2),
                     modifier = Modifier.fillMaxSize(),
-                    contentPadding = PaddingValues(8.dp)
+                    contentPadding = PaddingValues(AppDimens.Dimens8)
                 ) {
                     items(uiState.pages) { page ->
                         PageItem(

@@ -37,10 +37,10 @@ fun CategoryItem(
         Card(
             shape = RoundedCornerShape(AppDimens.Dimens8),
             border = if (isSelected)
-                BorderStroke(2.dp, colorResource(R.color.purple_700))
+                BorderStroke(AppDimens.Dimens2, colorResource(R.color.purple_700))
             else null,
-            elevation = CardDefaults.cardElevation(2.dp),
-            modifier = Modifier.size(80.dp).clickable { onClick() }
+            elevation = CardDefaults.cardElevation(AppDimens.Dimens2),
+            modifier = Modifier.size(AppDimens.Dimens80).clickable { onClick() }
         ) {
             AsyncImage(
                 model = category.icon,

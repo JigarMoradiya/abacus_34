@@ -19,15 +19,27 @@ data class ColorPresetModel(
     val arrowColor: Color = Color.Black
 )
 
+/*data class AbacusDimensionModel(
+    val beadWidth: Dp = AppDimens.Dimens45,
+    val beadHeight: Dp = AppDimens.Dimens25,
+    val beamHeight: Dp = AppDimens.Dimens4,
+    val extraSpace: Dp = AppDimens.Dimens4,
+    val rectLineWidth: Dp = AppDimens.Dimens16,
+    val rectLineCorner: Dp = AppDimens.Dimens20,
+    val textSizeSp: Int = 13,
+    val stripHeight: Dp = AppDimens.Dimens16,
+    val columnSpaces: Dp = AppDimens.Dimens1
+)*/
+
 data class AbacusDimensionModel(
     val beadWidth: Dp = 45.dp,
     val beadHeight: Dp = 25.dp,
     val beamHeight: Dp = 4.dp,
     val extraSpace: Dp = 4.dp,
-    val rectLineWidth: Dp = AppDimens.Dimens16,
-    val rectLineCorner: Dp = AppDimens.Dimens20,
+    val rectLineWidth: Dp = 16.dp,
+    val rectLineCorner: Dp = 20.dp,
     val textSizeSp: Int = 13,
-    val stripHeight: Dp = AppDimens.Dimens16,
+    val stripHeight: Dp = 16.dp,
     val columnSpaces: Dp = 1.dp
 )
 

@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.youtube.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
@@ -45,12 +47,12 @@ fun YoutubeVideoGrid(
 
     LazyVerticalGrid(
         columns = GridCells.Fixed(columns),
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding8)),
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding8)),
+        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
+        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
         modifier = Modifier.
-        padding(vertical = dimensionResource(R.dimen.activity_padding8))
-            .padding(start = dimensionResource(R.dimen.activity_padding4))
-            .padding(end = dimensionResource(R.dimen.activity_padding16))
+        padding(vertical = AppDimens.Dimens8)
+            .padding(start = AppDimens.Dimens4)
+            .padding(end = AppDimens.Dimens16)
     ) {
         items(
             items = videos.sortedBy { it.so },
@@ -78,16 +80,16 @@ fun VideoGridItem(
 ) {
     Card(
         onClick = { onClick() },
-        modifier = Modifier.fillMaxWidth().padding(dimensionResource(R.dimen.activity_padding2)),
-        shape = RoundedCornerShape(12.dp),
+        modifier = Modifier.fillMaxWidth().padding(AppDimens.Dimens2),
+        shape = RoundedCornerShape(AppDimens.Dimens12),
         colors = CardDefaults.cardColors(
             containerColor = ColorPrimaryLight
         ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = AppDimens.Dimens2)
     ) {
         Column(
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding8)),
-            modifier = Modifier.padding(bottom = dimensionResource(R.dimen.activity_padding8))
+            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
+            modifier = Modifier.padding(bottom = AppDimens.Dimens8)
         ) {
 
             // Thumbnail (16:9)
@@ -107,7 +109,7 @@ fun VideoGridItem(
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.labelMedium.copy(color = Color.Black, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
                 modifier = Modifier
-                    .padding(horizontal = dimensionResource(R.dimen.activity_padding4))
+                    .padding(horizontal = AppDimens.Dimens4)
                     .align(Alignment.CenterHorizontally)
             )
         }

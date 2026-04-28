@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.whats_learning.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import android.net.Uri
 import android.util.Log
 import androidx.compose.foundation.layout.Box
@@ -92,8 +94,8 @@ fun AssetVideoPlayer(
 
     Card(
         modifier = modifier,
-        shape = RoundedCornerShape(12.dp),
-        elevation = CardDefaults.cardElevation(4.dp)
+        shape = RoundedCornerShape(AppDimens.Dimens12),
+        elevation = CardDefaults.cardElevation(AppDimens.Dimens4)
     ) {
         Box {
             AndroidView(

@@ -1,4 +1,6 @@
 package com.jigar.me.ui.view.home.screens.category.components
+
+import com.jigar.me.ui.view.home.theme.AppDimens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -56,10 +58,10 @@ fun PageItem(
 
     Card(
         modifier = Modifier
-            .padding(dimensionResource(R.dimen.activity_padding6))
+            .padding(AppDimens.Dimens6)
             .fillMaxWidth(),
-        shape = RoundedCornerShape(8.dp),
-        elevation = CardDefaults.cardElevation(2.dp),
+        shape = RoundedCornerShape(AppDimens.Dimens8),
+        elevation = CardDefaults.cardElevation(AppDimens.Dimens2),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
         )
@@ -71,12 +73,12 @@ fun PageItem(
 
             HorizontalDivider(
                 color = Color.Black.copy(alpha = 0.1f),
-                thickness = 1.dp
+                thickness = AppDimens.Dimens1
             )
 
             // ✅ REAL GRID
             Column(
-                modifier = Modifier.padding(dimensionResource(R.dimen.activity_padding6)),
+                modifier = Modifier.padding(AppDimens.Dimens6),
                 verticalArrangement = Arrangement.spacedBy(0.dp)
             ) {
                 rows.forEach { row ->
@@ -113,7 +115,7 @@ fun PageHeader(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(dimensionResource(R.dimen.activity_padding8)),
+            .padding(AppDimens.Dimens8),
         verticalAlignment = Alignment.CenterVertically
     ) {
 
@@ -129,7 +131,7 @@ fun PageHeader(
         Column(
             modifier = Modifier
                 .weight(1f)
-                .padding(start = dimensionResource(R.dimen.activity_padding8))
+                .padding(start = AppDimens.Dimens8)
         ) {
 
             // Title
@@ -155,8 +157,8 @@ fun PageHeader(
                 painter = painterResource(R.drawable.ic_disable),
                 contentDescription = null,
                 modifier = Modifier
-                    .size(dimensionResource(R.dimen.activity_padding12))
-                    .padding(start = dimensionResource(R.dimen.activity_padding4))
+                    .size(AppDimens.Dimens12)
+                    .padding(start = AppDimens.Dimens4)
             )
         }
     }

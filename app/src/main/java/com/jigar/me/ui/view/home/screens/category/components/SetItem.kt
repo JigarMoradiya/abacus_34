@@ -51,15 +51,15 @@ fun SetItem(
 
         // 🔹 CARD
         Card(
-            shape = RoundedCornerShape(8.dp),
+            shape = RoundedCornerShape(AppDimens.Dimens8),
             elevation = CardDefaults.cardElevation(0.dp),
             colors = CardDefaults.cardColors(
                 containerColor = setCardColor(set.answer_setting)
             ),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(4.dp)
-                .clip(RoundedCornerShape(8.dp))
+                .padding(AppDimens.Dimens4)
+                .clip(RoundedCornerShape(AppDimens.Dimens8))
                 .combinedClickable(
                     onClick = onClick,
                     onLongClick = onLongClick
@@ -68,7 +68,7 @@ fun SetItem(
 
         Row(
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.activity_padding8), vertical = dimensionResource(R.dimen.activity_padding2))
+                modifier = Modifier.padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens2)
             ) {
 
                 if (set.show_time_setting) {
@@ -84,7 +84,7 @@ fun SetItem(
                 Text(
                     text = set.getSetTitle(),
                     modifier = Modifier.padding(
-                        start = if (set.show_time_setting) dimensionResource(R.dimen.activity_padding6) else 0.dp
+                        start = if (set.show_time_setting) AppDimens.Dimens6 else 0.dp
                     ),
                     style = MaterialTheme.typography.titleMedium.copy(color = Color.White, fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
                 )
@@ -95,13 +95,13 @@ fun SetItem(
             modifier = Modifier
                 .align(Alignment.TopEnd)
                 .offset(x = (-2).dp, y = (2).dp), // 👈 key part
-            horizontalArrangement = Arrangement.spacedBy(2.dp)
+            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens2)
         ) {
 
             if (set.is_completed_set) {
                 Box(
                     modifier = Modifier
-                        .size(8.dp)
+                        .size(AppDimens.Dimens8)
                         .background(
                             colorResource(R.color.green_A400),
                             CircleShape
@@ -112,7 +112,7 @@ fun SetItem(
             if (set.is_running_set) {
                 BlinkingDot(
                     color = colorResource(R.color.red_A400),
-                    size = 8.dp
+                    size = AppDimens.Dimens8
                 )
             }
         }
@@ -143,7 +143,7 @@ private fun setCardColor(answerSetting: String): Color {
 @Composable
 fun BlinkingDot(
     color: Color,
-    size: Dp = 8.dp
+    size: Dp = AppDimens.Dimens8
 ) {
     val infiniteTransition = rememberInfiniteTransition(label = "blink")
     val alpha by infiniteTransition.animateFloat(

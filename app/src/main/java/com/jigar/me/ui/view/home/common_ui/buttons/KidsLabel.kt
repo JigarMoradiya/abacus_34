@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.common_ui.buttons
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.offset
@@ -36,7 +38,7 @@ fun KidsLabel(txt: String,type: ButtonType = ButtonType.PURPLE) {
 
         Box(
             modifier = Modifier
-                .clip(RoundedCornerShape(100.dp))
+                .clip(RoundedCornerShape(AppDimens.Dimens100))
                 .background(colors.gradient)
                 .padding(horizontal = Dimens12, vertical = Dimens6)
         ) {

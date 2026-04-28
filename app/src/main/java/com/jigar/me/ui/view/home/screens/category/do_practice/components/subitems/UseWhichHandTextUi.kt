@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.category.do_practice.components.subitems
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -47,8 +49,8 @@ fun UseWhichHandTextUi(uiState: AbacusDoPracticeUiState,viewModel : AbacusDoPrac
             append(" to move beads")
         }
         Row(modifier = Modifier
-            .padding(horizontal = dimensionResource(R.dimen.activity_padding24))
-            .padding(vertical = dimensionResource(R.dimen.activity_padding12))) {
+            .padding(horizontal = AppDimens.Dimens24)
+            .padding(vertical = AppDimens.Dimens12)) {
             if (viewModel.isAbacusOnLeftHand) {
                 Spacer(Modifier.weight(1f))
             }

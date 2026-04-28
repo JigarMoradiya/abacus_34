@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.my_account.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -34,15 +36,15 @@ fun MyAccountParentCard(
         Card(
             modifier = Modifier
                 .fillMaxWidth(),
-            elevation = CardDefaults.cardElevation(2.dp),
-            shape = RoundedCornerShape(8.dp),
+            elevation = CardDefaults.cardElevation(AppDimens.Dimens2),
+            shape = RoundedCornerShape(AppDimens.Dimens8),
             colors = CardDefaults.cardColors(containerColor = Color.White)
         ) {
             Column {
 
                 // Title
                 Text(
-                    modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.activity_padding12)).padding(top = dimensionResource(R.dimen.activity_padding8)), text = menu.menuTitle,
+                    modifier = Modifier.padding(horizontal = AppDimens.Dimens12).padding(top = AppDimens.Dimens8), text = menu.menuTitle,
                     style = MaterialTheme.typography.titleMedium.copy(
                         fontWeight = FontWeight.Bold,
                         color = Black,
@@ -50,7 +52,7 @@ fun MyAccountParentCard(
                     )
                 )
 
-                Spacer(modifier = Modifier.height(dimensionResource(R.dimen.activity_padding8)))
+                Spacer(modifier = Modifier.height(AppDimens.Dimens8))
 
                 menu.subMenu.forEach { child ->
                     MyAccountChildRow(

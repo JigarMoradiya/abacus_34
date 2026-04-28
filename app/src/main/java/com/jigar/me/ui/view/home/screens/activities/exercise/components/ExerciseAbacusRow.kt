@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.activities.exercise.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -31,9 +33,9 @@ fun ExerciseAbacusRow(uiState: ExerciseUiState, viewModel: ExerciseViewModel, mo
             }
             Spacer(Modifier.weight(1f))
             if (uiState.isAbacusOnLeftHand){
-                Spacer(Modifier.height(4.dp))
+                Spacer(Modifier.height(AppDimens.Dimens4))
             }else{
-                Spacer(Modifier.height(32.dp))
+                Spacer(Modifier.height(AppDimens.Dimens32))
             }
             Row {
                 if (!uiState.isAbacusOnLeftHand){
@@ -49,7 +51,7 @@ fun ExerciseAbacusRow(uiState: ExerciseUiState, viewModel: ExerciseViewModel, mo
                 highlightColor = uiState.currentColorPresetModel.buttonColor,
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
-                    .padding(bottom = dimensionResource(R.dimen.activity_padding16))
+                    .padding(bottom = AppDimens.Dimens16)
             )
         }
     }

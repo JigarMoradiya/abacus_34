@@ -99,7 +99,7 @@ fun TargetNumberHomeScreen(
             ) {
                 levelRange.forEach { level ->
                     val isSelected = state.selectedLevel == level
-                    val shape = RoundedCornerShape(200.dp)
+                    val shape = RoundedCornerShape(AppDimens.Dimens200)
 
                     val animatedPadding by animateDpAsState(
                         targetValue = if (isSelected) Dimens4 else Dimens24,

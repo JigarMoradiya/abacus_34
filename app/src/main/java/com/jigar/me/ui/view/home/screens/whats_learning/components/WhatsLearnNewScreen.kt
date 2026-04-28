@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.whats_learning.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -51,7 +53,7 @@ fun WhatsLearnNewScreen(
             contentDescription = null,
             modifier = Modifier
                 .align(Alignment.TopStart)
-                .padding(dimensionResource(R.dimen.activity_padding16))
+                .padding(AppDimens.Dimens16)
                 .clickable { onClose() }
         )
     }

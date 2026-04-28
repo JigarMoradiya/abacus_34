@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.number_sequence_puzzle.home
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -102,11 +104,11 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                     fontSize = dimensionResource(id = R.dimen.textSize20).value.sp,
                     color = colorResource(id = R.color.colorBlueDark),
                     textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(top = dimensionResource(R.dimen.activity_padding16))
+                    modifier = Modifier.padding(top = AppDimens.Dimens16)
                 )
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(24.dp),
-                    modifier = Modifier.padding(top = dimensionResource(R.dimen.activity_padding16))
+                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens24),
+                    modifier = Modifier.padding(top = AppDimens.Dimens16)
                 ) {
                     PuzzleOptionView(
                         gridSize = 3,
@@ -199,7 +201,7 @@ fun PuzzleOptionView(
             fontFamily = FontFamily(Font(R.font.font_extra_bold)),
             fontSize = dimensionResource(id = R.dimen.textSizeRegular).value.sp,
             color = color,
-            modifier = Modifier.padding(top = dimensionResource(R.dimen.activity_padding8))
+            modifier = Modifier.padding(top = AppDimens.Dimens8)
         )
     }
 }

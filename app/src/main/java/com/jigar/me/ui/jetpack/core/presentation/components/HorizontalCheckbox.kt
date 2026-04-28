@@ -1,5 +1,7 @@
 package com.jigar.me.ui.jetpack.core.presentation.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -32,9 +34,9 @@ fun HorizontalCheckbox(
     Row(
         modifier = modifier
             .clickable { onCheckedChange(type, !checked) }
-            .padding(dimensionResource(R.dimen.activity_padding4)),
+            .padding(AppDimens.Dimens4),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding4))
+        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
     ) {
         Checkbox(checked = checked, onCheckedChange = null)
 

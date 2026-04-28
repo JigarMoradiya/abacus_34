@@ -47,23 +47,23 @@ fun ReportDateFilterCard(
         Card(
             onClick = { viewModel.onDateFilterClick() },
             colors = CardDefaults.cardColors(containerColor = ColorPrimaryLight),
-            shape = RoundedCornerShape(30.dp),
+            shape = RoundedCornerShape(AppDimens.Dimens30),
             elevation = CardDefaults.cardElevation(
                 dimensionResource(R.dimen.card_elevation3)
             ),
             modifier = Modifier
                 .wrapContentWidth()
-                .padding(top = dimensionResource(R.dimen.activity_padding6))
-                .padding(end = dimensionResource(R.dimen.activity_padding16))
+                .padding(top = AppDimens.Dimens6)
+                .padding(end = AppDimens.Dimens16)
         ) {
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
                     .padding(
-                        start = dimensionResource(R.dimen.activity_padding12),
-                        end = dimensionResource(R.dimen.activity_padding6)
-                    ).padding(vertical = dimensionResource(R.dimen.activity_padding4))
+                        start = AppDimens.Dimens12,
+                        end = AppDimens.Dimens6
+                    ).padding(vertical = AppDimens.Dimens4)
             ) {
 
                 Text(
@@ -72,7 +72,7 @@ fun ReportDateFilterCard(
                         fontFamily = FontFamily(Font(R.font.font_bold)),
                         color = Color.Black
                     ),
-                    modifier = Modifier.width(90.dp),
+                    modifier = Modifier.width(AppDimens.Dimens90),
                     maxLines = 1
                 )
 
@@ -92,7 +92,7 @@ fun ReportDateFilterCard(
         ) {
             uiState.dateFilterList.forEach { item ->
                 DropdownMenuItem(
-                    modifier = Modifier.height(36.dp),
+                    modifier = Modifier.height(AppDimens.Dimens36),
                     text = {
                         Text(
                             text = item.label,

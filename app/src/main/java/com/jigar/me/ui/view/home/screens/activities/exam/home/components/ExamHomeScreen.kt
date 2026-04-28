@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.activities.exam.home.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -7,9 +9,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessTimeFilled
+import androidx.compose.material.icons.filled.RocketLaunch
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -34,8 +38,12 @@ import com.jigar.me.ui.jetpack.core.presentation.components.HorizontalRadio
 import com.jigar.me.ui.jetpack.core.presentation.components.PrimaryButton
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryDark
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.activities.exam.home.viewmodels.ExamHomeUiState
 import com.jigar.me.ui.view.home.screens.activities.exam.home.viewmodels.ExamHomeViewModel
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.utils.AppConstants
 
 @Composable
@@ -49,7 +57,7 @@ fun ExamHomeScreen(uiState: ExamHomeUiState, viewModel: ExamHomeViewModel, onSta
             imageVector = Icons.Default.AccessTimeFilled,
             contentDescription = AppConstants.HomeClicks.Menu_CCM,
             modifier = Modifier
-                .size(48.dp)
+                .size(AppDimens.Dimens48)
                 .graphicsLayer(alpha = 0.99f)
                 .drawWithCache {
                     onDrawWithContent {
@@ -62,14 +70,14 @@ fun ExamHomeScreen(uiState: ExamHomeUiState, viewModel: ExamHomeViewModel, onSta
                     }
                 }
         )
-        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.activity_padding4)))
+        Spacer(modifier = Modifier.height(AppDimens.Dimens4))
 
         Text(
             text = stringResource(R.string.child_level),
             modifier = Modifier,
             style = MaterialTheme.typography.titleLarge.copy(color = Color.Black, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))),
         )
-        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.activity_padding16)))
+        Spacer(modifier = Modifier.height(AppDimens.Dimens16))
 
         Text(
             text = stringResource(R.string.select_exam_types),
@@ -77,7 +85,7 @@ fun ExamHomeScreen(uiState: ExamHomeUiState, viewModel: ExamHomeViewModel, onSta
             style = MaterialTheme.typography.bodyMedium.copy(color = Color.DarkGray, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
         )
         Row(
-            modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding16), Alignment.CenterHorizontally), verticalAlignment = Alignment.CenterVertically
+            modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16, Alignment.CenterHorizontally), verticalAlignment = Alignment.CenterVertically
         ) {
             HorizontalCheckbox(
                 text = stringResource(R.string.Addition), checked = uiState.isAdditionSelected, type = AppConstants.EXAM.isAdditionSelected, onCheckedChange = viewModel::updateValues
@@ -92,7 +100,7 @@ fun ExamHomeScreen(uiState: ExamHomeUiState, viewModel: ExamHomeViewModel, onSta
                 text = stringResource(R.string.Division), checked = uiState.isDivisionSelected, type = AppConstants.EXAM.isDivisionSelected, onCheckedChange = viewModel::updateValues
             )
         }
-        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.activity_padding16)))
+        Spacer(modifier = Modifier.height(AppDimens.Dimens16))
 
         Text(
             text = stringResource(R.string.select_exam_difficulty),
@@ -102,7 +110,7 @@ fun ExamHomeScreen(uiState: ExamHomeUiState, viewModel: ExamHomeViewModel, onSta
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(
-                dimensionResource(R.dimen.activity_padding16),
+                AppDimens.Dimens16,
                 Alignment.CenterHorizontally
             ),
             verticalAlignment = Alignment.CenterVertically
@@ -129,9 +137,13 @@ fun ExamHomeScreen(uiState: ExamHomeUiState, viewModel: ExamHomeViewModel, onSta
             )
         }
 
-        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.activity_padding12)))
+        Spacer(modifier = Modifier.height(AppDimens.Dimens12))
 
-        PrimaryButton(text = stringResource(R.string.let_s_start), onClick = onStartClick)
-
+        KidsActionButton(
+            text = stringResource(R.string.let_s_start),
+            icon = Icons.Default.RocketLaunch,
+            type = ButtonType.ORANGE,
+            onClick = onStartClick
+        )
     }
 }

@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.activities.ccm.home.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,6 +14,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DisplaySettings
+import androidx.compose.material.icons.filled.RocketLaunch
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -37,8 +40,10 @@ import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryDark
 import com.jigar.me.ui.jetpack.utils.ui.slider.RangeSlider
 import com.jigar.me.ui.jetpack.utils.ui.slider.SingleSlider
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.activities.ccm.home.viewmodels.CCMHomeUiState
 import com.jigar.me.ui.view.home.screens.activities.ccm.home.viewmodels.CCMHomeViewModel
+import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.utils.AppConstants
 
 @Composable
@@ -52,7 +57,7 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
             imageVector = Icons.Default.DisplaySettings,
             contentDescription = AppConstants.HomeClicks.Menu_CCM,
             modifier = Modifier
-                .size(48.dp)
+                .size(AppDimens.Dimens48)
                 .graphicsLayer(alpha = 0.99f)
                 .drawWithCache {
                     onDrawWithContent {
@@ -71,7 +76,7 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
             modifier = Modifier,
             style = MaterialTheme.typography.titleLarge.copy(color = Color.Black, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))),
         )
-        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.activity_padding8)))
+        Spacer(modifier = Modifier.height(AppDimens.Dimens8))
         Row(
             modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically
         ) {
@@ -81,14 +86,14 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
                 textAlign = TextAlign.End,
                 style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
             )
-            Spacer(modifier = Modifier.width(dimensionResource(R.dimen.activity_padding8)))
+            Spacer(modifier = Modifier.width(AppDimens.Dimens8))
             Row(modifier = Modifier.weight(1f)) {
                 SingleSlider(
                     isShowText = true, value = uiState.totalQuestion, range = 5f..20f, step = 5, onValueChange = {
                         viewModel.updateValues(AppConstants.CCM.totalQuestion, it)
                     }, modifier = Modifier
                         .weight(1f)
-                        .padding(horizontal = dimensionResource(R.dimen.activity_padding8))
+                        .padding(horizontal = AppDimens.Dimens8)
                 )
                 Spacer(Modifier.weight(1f))
             }
@@ -103,14 +108,14 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
                 textAlign = TextAlign.End,
                 style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
             )
-            Spacer(modifier = Modifier.width(dimensionResource(R.dimen.activity_padding8)))
+            Spacer(modifier = Modifier.width(AppDimens.Dimens8))
             Row(modifier = Modifier.weight(1f)) {
                 SingleSlider(
                     isShowText = true, value = uiState.questionGap, range = 1f..10f, onValueChange = {
                         viewModel.updateValues(AppConstants.CCM.questionGap, it)
                     }, modifier = Modifier
                         .weight(1f)
-                        .padding(horizontal = dimensionResource(R.dimen.activity_padding8))
+                        .padding(horizontal = AppDimens.Dimens8)
                 )
                 Spacer(Modifier.weight(1f))
             }
@@ -125,7 +130,7 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
                 textAlign = TextAlign.End,
                 style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
             )
-            Spacer(modifier = Modifier.width(dimensionResource(R.dimen.activity_padding8)))
+            Spacer(modifier = Modifier.width(AppDimens.Dimens8))
             Row(modifier = Modifier.weight(1f)) {
                 RangeSlider(
                     startValue = uiState.questionMinLength, endValue = uiState.questionMaxLength, range = 1f..6f, step = 1, onValueChange = { start, end ->
@@ -133,17 +138,17 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
                         viewModel.updateValues(AppConstants.CCM.questionMaxLength, end)
                     }, modifier = Modifier
                         .weight(1f)
-                        .padding(horizontal = dimensionResource(R.dimen.activity_padding8))
+                        .padding(horizontal = AppDimens.Dimens8)
                 )
 
                 Spacer(Modifier.weight(1f))
             }
         }
 
-        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.activity_padding6)))
+        Spacer(modifier = Modifier.height(AppDimens.Dimens6))
 
         Row(
-            modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding16), Alignment.CenterHorizontally), verticalAlignment = Alignment.CenterVertically
+            modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16, Alignment.CenterHorizontally), verticalAlignment = Alignment.CenterVertically
         ) {
             HorizontalCheckbox(
                 text = stringResource(R.string.question_speak_voice), checked = uiState.isQuestionSpeak, type = AppConstants.CCM.isQuestionSpeak, onCheckedChange = viewModel::updateValues
@@ -156,8 +161,13 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
             )
         }
 
-        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.activity_padding12)))
+        Spacer(modifier = Modifier.height(AppDimens.Dimens12))
 
-        PrimaryButton(text = stringResource(R.string.let_s_start), onClick = onStartClick,)
+        KidsActionButton(
+            text = stringResource(R.string.let_s_start),
+            icon = Icons.Default.RocketLaunch,
+            type = ButtonType.ORANGE,
+            onClick = onStartClick
+        )
     }
 }

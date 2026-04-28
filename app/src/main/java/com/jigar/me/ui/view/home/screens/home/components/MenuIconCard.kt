@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.home.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -32,7 +34,7 @@ fun MenuIconCard(
         onClick = { onClick(type) },
         shape = RoundedCornerShape(dimensionResource(R.dimen.menu_icons_corner)),
         colors = CardDefaults.cardColors(containerColor = backgroundColor),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = AppDimens.Dimens2),
         modifier = modifier.size(dimensionResource(R.dimen.menu_icons_bg))
     ) {
         Box(

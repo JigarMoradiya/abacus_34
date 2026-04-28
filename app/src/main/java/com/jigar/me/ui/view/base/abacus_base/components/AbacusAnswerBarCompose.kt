@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.base.abacus_base.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -112,7 +114,7 @@ fun AbacusAnswerBarCompose(
                     if (screenType == AppConstants.AbacusScreen.screenTypeAbacusPractice){
                         HandLeftRightIndicator(
                             isVisible = isNextButtonEnable,
-                            modifier = Modifier.offset(x = 28.dp)
+                            modifier = Modifier.offset(x = AppDimens.Dimens28)
                         )
                     }
                 }
@@ -133,12 +135,12 @@ fun AbacusAnswerBarCompose(
                     .width(animatedWidthDp)
                     .height(outFrameHeight)
                     .shadow(
-                        elevation = 8.dp,
-                        shape = RoundedCornerShape(100.dp),
+                        elevation = AppDimens.Dimens8,
+                        shape = RoundedCornerShape(AppDimens.Dimens100),
                         clip = false
                     )
-                    .background(theme.buttonColor, RoundedCornerShape(100.dp))
-                    .border(backgroundBoxBorder, theme.abacusCenterGradient, RoundedCornerShape(100.dp))
+                    .background(theme.buttonColor, RoundedCornerShape(AppDimens.Dimens100))
+                    .border(backgroundBoxBorder, theme.abacusCenterGradient, RoundedCornerShape(AppDimens.Dimens100))
             )
         }.first()
 
@@ -212,15 +214,15 @@ fun CenterBox(
             .height(centerBoxHeight)
             .requiredWidthIn(min = centerBoxMinWidth)
             .shadow(
-                elevation = 4.dp,
-                shape = RoundedCornerShape(100.dp),  // ⭐ Rounded shadow
+                elevation = AppDimens.Dimens4,
+                shape = RoundedCornerShape(AppDimens.Dimens100),  // ⭐ Rounded shadow
                 clip = false                          // (same as Swift no clipping)
             )
-            .background(theme.displayBGColor, RoundedCornerShape(8.dp))
+            .background(theme.displayBGColor, RoundedCornerShape(AppDimens.Dimens8))
             .border(
-                width = 3.dp,
+                width = AppDimens.Dimens3,
                 color = theme.displayBorderColor,
-                shape = RoundedCornerShape(8.dp)
+                shape = RoundedCornerShape(AppDimens.Dimens8)
             )
             .padding(horizontal = horizontalPadding),
         horizontalAlignment = Alignment.CenterHorizontally,

@@ -55,7 +55,7 @@ fun HowToPlayMathPyramidView(
             modifier = Modifier
                 .width(screenWidth * widthMultiplier)
                 .height(screenHeight * heightMultiplier)
-                .background(Color.White, RoundedCornerShape(20.dp))
+                .background(Color.White, RoundedCornerShape(AppDimens.Dimens20))
                 .padding(AppDimens.Dimens16)
         ) {
 
@@ -82,12 +82,12 @@ fun HowToPlayMathPyramidView(
                         fontWeight = FontWeight.Medium,
                         color = Color.Black,
                         modifier = Modifier
-                            .padding(horizontal = 12.dp, vertical = 8.dp)
+                            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8)
                             .clickable { onClose() }
                     )
                 }
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(AppDimens.Dimens8))
 
                 // ---------- SCROLL AREA ----------
                 LazyColumn(
@@ -107,7 +107,7 @@ fun HowToPlayMathPyramidView(
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
-                            modifier = Modifier.padding(top = 8.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens8)
                         )
                     }
 
@@ -123,7 +123,7 @@ fun HowToPlayMathPyramidView(
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
                             color = Color.Red,
-                            modifier = Modifier.padding(top = 8.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens8)
                         )
                     }
 
@@ -131,7 +131,7 @@ fun HowToPlayMathPyramidView(
                     item {
                         Column(
                             modifier = Modifier.padding(start = AppDimens.Dimens16),
-                            verticalArrangement = Arrangement.spacedBy(4.dp)
+                            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
                         ) {
                             Text("    [ ? ]", fontFamily = FontFamily(Font(R.font.font_regular)))
                             Text("[ 4 ] [ 6 ]", fontFamily = FontFamily(Font(R.font.font_regular)))
@@ -146,7 +146,7 @@ fun HowToPlayMathPyramidView(
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
-                            modifier = Modifier.padding(top = 8.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens8)
                         )
                     }
 
@@ -157,7 +157,7 @@ fun HowToPlayMathPyramidView(
                         Text(
                             text = "It’s like building a number tower — each block supports the block above!",
                             fontSize = 16.sp,
-                            modifier = Modifier.padding(top = 4.dp),
+                            modifier = Modifier.padding(top = AppDimens.Dimens4),
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
                             fontWeight = FontWeight.SemiBold,
                         )
@@ -170,7 +170,7 @@ fun HowToPlayMathPyramidView(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
-                            modifier = Modifier.padding(top = 12.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens12)
                         )
                     }
 
@@ -196,7 +196,7 @@ fun HowToPlayMathPyramidView(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
-                            modifier = Modifier.padding(top = 12.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens12)
                         )
                     }
 
@@ -210,7 +210,7 @@ fun HowToPlayMathPyramidView(
                             text = "This prepares them for concepts like Pascal’s Triangle, number bonds, and arithmetic patterns.",
                             fontSize = 16.sp,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
-                            modifier = Modifier.padding(top = 4.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens4)
                         )
                     }
 
@@ -219,7 +219,7 @@ fun HowToPlayMathPyramidView(
                             text = "It’s a great way to build strong early math skills while solving a fun and satisfying pyramid puzzle.",
                             fontSize = 16.sp,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
-                            modifier = Modifier.padding(top = 4.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens4)
                         )
                     }
                 }

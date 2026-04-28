@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.common_ui.animations
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.animation.core.LinearEasing
@@ -115,7 +117,7 @@ fun ConfettiRainEffect() {
                     .graphicsLayer {
                         rotationZ = progress * 360f
                     }
-                    .background(item.color, RoundedCornerShape(2.dp))
+                    .background(item.color, RoundedCornerShape(AppDimens.Dimens2))
             )
         }
 

@@ -1,5 +1,7 @@
 package com.jigar.me.ui.jetpack.core.presentation.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -31,15 +33,15 @@ fun PrimaryButton(
         onClick = onClick,
         enabled = enabled,
         modifier = modifier,
-        shape = RoundedCornerShape(50.dp),
+        shape = RoundedCornerShape(AppDimens.Dimens50),
         elevation = ButtonDefaults.buttonElevation(
-            defaultElevation = dimensionResource(R.dimen.activity_padding8),
-            pressedElevation = dimensionResource(R.dimen.activity_padding4)
+            defaultElevation = AppDimens.Dimens8,
+            pressedElevation = AppDimens.Dimens4
         ),
         colors = ButtonDefaults.buttonColors(containerColor = color),
         contentPadding = PaddingValues(
-            horizontal = dimensionResource(R.dimen.activity_padding16),
-            vertical = dimensionResource(R.dimen.activity_padding8)
+            horizontal = AppDimens.Dimens16,
+            vertical = AppDimens.Dimens8
         )
     ) {
         Text(
@@ -62,17 +64,17 @@ fun SecondaryButton(
 ) {
     Surface(
         modifier = modifier,
-        shape = RoundedCornerShape(50.dp),
+        shape = RoundedCornerShape(AppDimens.Dimens50),
         color = if (enabled) color else color.copy(alpha = 0.4f),
-        shadowElevation = dimensionResource(R.dimen.activity_padding8),
+        shadowElevation = AppDimens.Dimens8,
         onClick = onClick,
         enabled = enabled
     ) {
         Text(
             text = text,
             modifier = Modifier.padding(
-                horizontal = dimensionResource(R.dimen.activity_padding12),
-                vertical = dimensionResource(R.dimen.activity_padding6)
+                horizontal = AppDimens.Dimens12,
+                vertical = AppDimens.Dimens6
             ),
             style = MaterialTheme.typography.bodyMedium.copy(
                 fontWeight = FontWeight.Bold,

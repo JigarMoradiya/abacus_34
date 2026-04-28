@@ -53,7 +53,7 @@ fun FreeTrialDialog(
             contentAlignment = Alignment.Center
         ) {
             Card(
-                shape = RoundedCornerShape(12.dp), elevation = CardDefaults.cardElevation(8.dp), modifier = Modifier
+                shape = RoundedCornerShape(AppDimens.Dimens12), elevation = CardDefaults.cardElevation(AppDimens.Dimens8), modifier = Modifier
                     .fillMaxSize(0.8f)
             ) {
                 Box {
@@ -65,8 +65,8 @@ fun FreeTrialDialog(
                             if (ui.showNow) {
                                 Image(
                                     painter = painterResource(R.drawable.ic_now), contentDescription = null, modifier = Modifier
-                                        .padding(8.dp)
-                                        .size(40.dp)
+                                        .padding(AppDimens.Dimens8)
+                                        .size(AppDimens.Dimens40)
                                         .align(Alignment.TopStart)
                                         .graphicsLayer { rotationZ = -10f })
                             }
@@ -74,7 +74,7 @@ fun FreeTrialDialog(
                             if (ui.showTrialStart) {
                                 Image(
                                     painter = if (manualFreeTrialDays == 3) painterResource(R.drawable.ic_free_trial_3) else painterResource(R.drawable.ic_free_trial_7), contentDescription = null, modifier = Modifier
-                                        .size(260.dp)
+                                        .size(AppDimens.Dimens260)
                                         .align(Alignment.Center)
                                         .padding(AppDimens.Dimens16)
                                 )
@@ -85,25 +85,25 @@ fun FreeTrialDialog(
                                     modifier = Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally
                                 ) {
                                     Image(
-                                        painter = painterResource(ui.numberRes), contentDescription = null, modifier = Modifier.height(120.dp)
+                                        painter = painterResource(ui.numberRes), contentDescription = null, modifier = Modifier.height(AppDimens.Dimens120)
                                     )
-                                    Spacer(Modifier.height(8.dp))
+                                    Spacer(Modifier.height(AppDimens.Dimens8))
                                     Image(
-                                        painter = painterResource(R.drawable.free_trial_day_left), contentDescription = null, modifier = Modifier.height(72.dp)
+                                        painter = painterResource(R.drawable.free_trial_day_left), contentDescription = null, modifier = Modifier.height(AppDimens.Dimens72)
                                     )
                                 }
                             }
                         }
 
-                        Spacer(Modifier.width(12.dp))
+                        Spacer(Modifier.width(AppDimens.Dimens12))
 
                         Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.weight(0.65f).padding(end = AppDimens.Dimens16)) {
 
                             Image(
-                                painter = painterResource(R.drawable.logo), contentDescription = null, modifier = Modifier.height(64.dp)
+                                painter = painterResource(R.drawable.logo), contentDescription = null, modifier = Modifier.height(AppDimens.Dimens64)
                             )
 
-                            Spacer(Modifier.height(8.dp))
+                            Spacer(Modifier.height(AppDimens.Dimens8))
 
                             Text(
                                 text = ui.title, textAlign = TextAlign.Center,
@@ -117,7 +117,7 @@ fun FreeTrialDialog(
                                     fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
                             )
 
-                            Spacer(Modifier.height(4.dp))
+                            Spacer(Modifier.height(AppDimens.Dimens4))
 
                             Text(
                                 text = "No payment or subscription setup needed during your free trial.",
@@ -135,14 +135,14 @@ fun FreeTrialDialog(
                                 )
                             }
 
-                            Spacer(Modifier.height(8.dp))
+                            Spacer(Modifier.height(AppDimens.Dimens8))
 
                             PrimaryButton(text = ui.yesText, onClick = onYes)
 
                             if (ui.showNoButton && ui.noText != null) {
                                 Text(
                                     text = ui.noText, modifier = Modifier
-                                        .padding(8.dp)
+                                        .padding(AppDimens.Dimens8)
                                         .clickable { onNo() },
                                     style = MaterialTheme.typography.bodySmall.copy(
                                         fontWeight = FontWeight.SemiBold,
@@ -151,7 +151,7 @@ fun FreeTrialDialog(
                                 )
                             }
 
-                            Spacer(Modifier.height(8.dp))
+                            Spacer(Modifier.height(AppDimens.Dimens8))
                         }
                     }
                 }

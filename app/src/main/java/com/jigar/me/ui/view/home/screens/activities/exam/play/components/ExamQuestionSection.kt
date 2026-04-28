@@ -35,12 +35,16 @@ import com.jigar.me.R
 import com.jigar.me.ui.view.base.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
 import com.jigar.me.ui.view.base.abacus_base.utils.MathUtils
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsOptionButton
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.ExamGenerator
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.MainQuestionType
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.QuestionParts
 import com.jigar.me.ui.view.home.screens.activities.exam.play.viewmodels.ExamPlayUiState
 import com.jigar.me.ui.view.home.screens.activities.exam.play.viewmodels.ExamPlayViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.AppDimens.examOptionHeight
+import com.jigar.me.ui.view.home.theme.AppDimens.examOptionWidth
+import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.utils.AppConstants
 
 @Composable
@@ -65,7 +69,7 @@ fun ExamQuestionSection(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 12.dp),
+            .padding(horizontal = AppDimens.Dimens12),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
@@ -93,7 +97,7 @@ fun ExamQuestionSection(
                         fontSize = 36.sp,
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center,
-                        modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.activity_padding12))
+                        modifier = Modifier.padding(horizontal = AppDimens.Dimens12)
                     )
                 }
 
@@ -131,8 +135,8 @@ fun ExamQuestionSection(
 
                         Box(
                             modifier = Modifier
-                                .width(60.dp)
-                                .height(dimensionResource(R.dimen.activity_padding4))
+                                .width(AppDimens.Dimens60)
+                                .height(AppDimens.Dimens4)
                                 .background(Color.Red)
                         )
                     }
@@ -145,7 +149,7 @@ fun ExamQuestionSection(
                         fontSize = 36.sp,
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center,
-                        modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.activity_padding12))
+                        modifier = Modifier.padding(horizontal = AppDimens.Dimens12)
                     )
                 }
 
@@ -159,7 +163,7 @@ fun ExamQuestionSection(
                         fontSize = 36.sp,
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center,
-                        modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.activity_padding12))
+                        modifier = Modifier.padding(horizontal = AppDimens.Dimens12)
                     )
 
                 } else {
@@ -169,7 +173,7 @@ fun ExamQuestionSection(
                         fontSize = 36.sp,
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center,
-                        modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.activity_padding12))
+                        modifier = Modifier.padding(horizontal = AppDimens.Dimens12)
                     )
                 }
             }
@@ -183,7 +187,7 @@ fun ExamQuestionSection(
             fontWeight = FontWeight.ExtraBold,
             color = colorResource(R.color.back_icon_bg),
             modifier = Modifier
-                .padding(top = 8.dp)
+                .padding(top = AppDimens.Dimens8)
                 .alpha(blinkAlpha)
         )
 
@@ -191,40 +195,50 @@ fun ExamQuestionSection(
 
         // ---------- Options ----------
         Column(
-            verticalArrangement = Arrangement.spacedBy(10.dp),
+            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens10),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                ExamOptionButton(
-                    value = question.option1,
-                    bgColor = Color(0xFF4CAF50),
-                ) {
-                    viewModel.onOptionSelected(it, question.answer)
-                }
-
-                ExamOptionButton(
-                    value = question.option2,
-                    bgColor = Color(0xFFF44336),
-                ) {
-                    viewModel.onOptionSelected(it, question.answer)
-                }
+            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)) {
+                KidsOptionButton(
+                    text = question.option1.toString(),
+                    type = ButtonType.OPTIONS,
+                    fontSize = examOptionHeight.value.sp * 0.6,
+                    onClick = {
+                        viewModel.onOptionSelected(question.option1, question.answer)
+                    },
+                    modifier = Modifier.width(examOptionWidth).height(examOptionHeight)
+                )
+                KidsOptionButton(
+                    text = question.option2.toString(),
+                    type = ButtonType.OPTIONS,
+                    fontSize = examOptionHeight.value.sp * 0.6,
+                    onClick = {
+                        viewModel.onOptionSelected(question.option2, question.answer)
+                    },
+                    modifier = Modifier.width(examOptionWidth).height(examOptionHeight)
+                )
             }
 
-            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                ExamOptionButton(
-                    value = question.option3,
-                    bgColor = Color(0xFFFF9800),
-                ) {
-                    viewModel.onOptionSelected(it, question.answer)
-                }
-
-                ExamOptionButton(
-                    value = question.option4,
-                    bgColor = Color(0xFF2196F3),
-                ) {
-                    viewModel.onOptionSelected(it, question.answer)
-                }
+            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)) {
+                KidsOptionButton(
+                    text = question.option3.toString(),
+                    type = ButtonType.OPTIONS,
+                    fontSize = examOptionHeight.value.sp * 0.6,
+                    onClick = {
+                        viewModel.onOptionSelected(question.option3, question.answer)
+                    },
+                    modifier = Modifier.width(examOptionWidth).height(examOptionHeight)
+                )
+                KidsOptionButton(
+                    text = question.option4.toString(),
+                    type = ButtonType.OPTIONS,
+                    fontSize = examOptionHeight.value.sp * 0.6,
+                    onClick = {
+                        viewModel.onOptionSelected(question.option4, question.answer)
+                    },
+                    modifier = Modifier.width(examOptionWidth).height(examOptionHeight)
+                )
             }
         }
     }

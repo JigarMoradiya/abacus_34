@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.home.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

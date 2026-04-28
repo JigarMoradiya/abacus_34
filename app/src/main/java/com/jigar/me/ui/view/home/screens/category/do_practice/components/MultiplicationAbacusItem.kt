@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.category.do_practice.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -34,13 +36,13 @@ fun MultiplicationAbacusItem(uiState: AbacusDoPracticeUiState) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(0.dp),
             modifier = Modifier
-                .width(80.dp)
-                .padding(end = dimensionResource(R.dimen.activity_padding4))
+                .width(AppDimens.Dimens80)
+                .padding(end = AppDimens.Dimens4)
                 .border(
-                    width = 4.dp,
+                    width = AppDimens.Dimens4,
                     color = colorPreset.columnColors.mixWith(Color.White,0.7f),
-                    shape = RoundedCornerShape(10.dp)
-                ).padding(top = dimensionResource(R.dimen.activity_padding8))
+                    shape = RoundedCornerShape(AppDimens.Dimens10)
+                ).padding(top = AppDimens.Dimens8)
         ) {
             Row(
                 horizontalArrangement = Arrangement.Center) {
@@ -63,7 +65,7 @@ fun MultiplicationAbacusItem(uiState: AbacusDoPracticeUiState) {
             Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     text = "x",
-                    modifier = Modifier.padding(end = dimensionResource(R.dimen.activity_padding4)),
+                    modifier = Modifier.padding(end = AppDimens.Dimens4),
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold,
                     fontFamily = FontFamily(Font(R.font.font_bold)),

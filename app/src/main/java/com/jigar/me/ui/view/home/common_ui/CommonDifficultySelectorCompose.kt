@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.common_ui
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
@@ -34,21 +36,21 @@ fun CommonDifficultySelectorCompose(
     onSelect: (CommonDifficulty4) -> Unit
 ) {
     Row(
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4),
         verticalAlignment = Alignment.CenterVertically
     ) {
         CommonDifficulty4.entries.forEach { d ->
             val isSelected = d == selected
-            val shape = RoundedCornerShape(20.dp)
+            val shape = RoundedCornerShape(AppDimens.Dimens20)
             // Surface renders the elevation (shadow). Do NOT clip the Surface itself.
             Surface(
                 modifier = Modifier
-                    .padding(horizontal = 4.dp),
+                    .padding(horizontal = AppDimens.Dimens4),
                 shape = shape,
                 color = if (isSelected) colorResource(R.color.colorEditTextBlack_33) else Color.White,
-                shadowElevation = if (isSelected) 8.dp else 0.dp, // elevation visible because Surface is not clipped
-                tonalElevation = if (isSelected) 4.dp else 0.dp,
-                border = if (!isSelected) BorderStroke(1.dp, Color.LightGray) else null
+                shadowElevation = if (isSelected) AppDimens.Dimens8 else 0.dp, // elevation visible because Surface is not clipped
+                tonalElevation = if (isSelected) AppDimens.Dimens4 else 0.dp,
+                border = if (!isSelected) BorderStroke(AppDimens.Dimens1, Color.LightGray) else null
             ) {
                 // Clip and clickable are applied INSIDE Surface so ripple is rounded,
                 // but Surface remains unclipped so shadow renders.
@@ -61,7 +63,7 @@ fun CommonDifficultySelectorCompose(
                         ) {
                             onSelect(d)
                         }
-                        .padding(horizontal = 12.dp, vertical = 6.dp),
+                        .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(

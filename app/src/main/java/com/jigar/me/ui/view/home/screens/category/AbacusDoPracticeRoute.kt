@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.category
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -127,7 +129,7 @@ fun AbacusDoPracticeRoute(
                     }
                 }
                 AbacusViewItem(viewModel, uiState)
-                Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding4)))
+                Spacer(Modifier.width(AppDimens.Dimens4))
             }
         }
 

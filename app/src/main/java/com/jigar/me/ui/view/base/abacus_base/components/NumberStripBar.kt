@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.base.abacus_base.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -74,7 +76,7 @@ fun NumberStripBar(
             }
         }
 
-        Spacer(modifier = Modifier.height(totalHeight + stripHeight + 8.dp))
+        Spacer(modifier = Modifier.height(totalHeight + stripHeight + AppDimens.Dimens8))
 
     }
 
@@ -85,7 +87,7 @@ fun NumberStripBar(
             .padding(horizontal = dim.rectLineWidth),   // equal top/bottom padding
     ) {
 
-        Spacer(modifier = Modifier.height(totalHeight + (stripHeight * 2) + 20.dp))
+        Spacer(modifier = Modifier.height(totalHeight + (stripHeight * 2) + AppDimens.Dimens20))
 
         Row(
             modifier = Modifier
@@ -122,7 +124,7 @@ fun NumberStripBar(
             }
         }
 
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(AppDimens.Dimens4))
         // 🔵 BOTTOM LABEL BAR
         Row(
             modifier = Modifier.width(totalWidth),

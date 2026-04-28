@@ -171,7 +171,7 @@ fun TooltipBox(
             .offset { IntOffset(animatedX.toInt(), animatedY.toInt()) }
             .onGloballyPositioned { tooltipSize = it.size }
             .background(Color.White, RoundedCornerShape(AppDimens.Dimens16))
-            .padding(horizontal = AppDimens.Dimens16, vertical = 12.dp)
+            .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens12)
     ) {
         HtmlText(html = item.text)
     }

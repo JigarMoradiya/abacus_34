@@ -59,7 +59,7 @@ fun CommonLoadingView(
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
                 Dot(dot1.value, dotStyle,Color(0xFF3F51B5))
                 Dot(dot2.value, dotStyle,Color(0xFF009688))
                 Dot(dot3.value, dotStyle,Color(0xFFBD4811))
@@ -112,7 +112,7 @@ private fun Dot(scale: Float, style: String,color : Color) {
                     scaleX = 0.4f + scale * 0.6f
                     scaleY = 0.4f + scale * 0.6f
                 }
-                .background(color, RoundedCornerShape(4.dp))
+                .background(color, RoundedCornerShape(AppDimens.Dimens4))
         )
 
         // ✨ Glowing Dots
@@ -124,7 +124,7 @@ private fun Dot(scale: Float, style: String,color : Color) {
                     scaleY = 0.6f + scale * 0.8f
                     alpha = 0.7f + scale * 0.3f
                 }
-                .shadow(12.dp, CircleShape)
+                .shadow(AppDimens.Dimens12, CircleShape)
                 .background(Color(0xFFFFC107), CircleShape)
         )
 

@@ -46,7 +46,7 @@ fun InfoSection(
         Icon(
             painterResource(R.drawable.crown),
             contentDescription = null,
-            modifier = Modifier.size(40.dp),
+            modifier = Modifier.size(AppDimens.Dimens40),
             tint = Color.Unspecified
         )
 
@@ -64,7 +64,7 @@ fun InfoSection(
         Card(
             colors = CardDefaults.cardColors(containerColor = Color(0xFFFFECE7)), shape = RoundedCornerShape(AppDimens.Dimens12), modifier = Modifier
                 .padding(AppDimens.Dimens12)
-                .heightIn(max = 320.dp)
+                .heightIn(max = AppDimens.Dimens320)
         ) {
             Column(
                 modifier = Modifier

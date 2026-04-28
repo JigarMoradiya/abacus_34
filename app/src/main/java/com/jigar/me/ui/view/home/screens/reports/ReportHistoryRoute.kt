@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.reports
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -45,7 +47,7 @@ fun ReportHistoryRoute(
             )
 
             ReportFilterCard(uiState, viewModel)
-            Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding16)))
+            Spacer(Modifier.width(AppDimens.Dimens16))
             ReportDateFilterCard(uiState, viewModel)
         }
         if (uiState.list.isEmpty() && !uiState.isLoading) {

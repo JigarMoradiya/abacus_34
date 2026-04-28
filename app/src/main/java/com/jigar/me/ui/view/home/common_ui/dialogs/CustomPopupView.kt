@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.common_ui.dialogs
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import android.text.Html
 import android.widget.TextView
 import androidx.compose.foundation.Image
@@ -64,7 +66,7 @@ fun CustomPopupView(
             verticalArrangement = Arrangement.Center,
             modifier = Modifier
                 .width(popupWidth.dp)
-                .background(Color.White, RoundedCornerShape(20.dp))
+                .background(Color.White, RoundedCornerShape(AppDimens.Dimens20))
                 .padding(horizontal = dimensionResource(id = R.dimen.activity_padding20), vertical = dimensionResource(id = R.dimen.activity_padding4))
         ) {
             // 🔹 Optional Icon
@@ -115,7 +117,7 @@ fun CustomPopupView(
                     text = notes.htmlToAnnotatedString(),
                     style = MaterialTheme.typography.bodyMedium.copy(color = Color.Red, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
                     textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(top = dimensionResource(R.dimen.activity_padding8))
+                    modifier = Modifier.padding(top = AppDimens.Dimens8)
                 )
             }
 

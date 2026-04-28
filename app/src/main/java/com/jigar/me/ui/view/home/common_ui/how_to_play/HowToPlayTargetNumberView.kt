@@ -55,7 +55,7 @@ fun HowToPlayTargetNumberView(
             modifier = Modifier
                 .width(screenWidth * widthMultiplier)
                 .height(screenHeight * heightMultiplier)
-                .background(Color.White, RoundedCornerShape(20.dp))
+                .background(Color.White, RoundedCornerShape(AppDimens.Dimens20))
                 .padding(AppDimens.Dimens16)
         ) {
 
@@ -82,12 +82,12 @@ fun HowToPlayTargetNumberView(
                         fontFamily = FontFamily(Font(R.font.font_medium)),
                         color = Color.Black,
                         modifier = Modifier
-                            .padding(horizontal = 12.dp, vertical = 8.dp)
+                            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8)
                             .clickable { onClose() }
                     )
                 }
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(AppDimens.Dimens8))
 
                 // ---------- CONTENT ----------
                 LazyColumn(
@@ -107,7 +107,7 @@ fun HowToPlayTargetNumberView(
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
-                            modifier = Modifier.padding(top = 8.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens8)
                         )
                     }
 
@@ -128,7 +128,7 @@ fun HowToPlayTargetNumberView(
                         Text(
                             text = "Combine the given numbers using these operations to make the exact target.",
                             fontSize = 16.sp,
-                            modifier = Modifier.padding(top = 4.dp),
+                            modifier = Modifier.padding(top = AppDimens.Dimens4),
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
                             fontWeight = FontWeight.SemiBold,
                         )
@@ -142,14 +142,14 @@ fun HowToPlayTargetNumberView(
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
                             color = Color.Red,
-                            modifier = Modifier.padding(top = 8.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens8)
                         )
                     }
 
                     item {
                         Column(
                             modifier = Modifier.padding(start = AppDimens.Dimens16),
-                            verticalArrangement = Arrangement.spacedBy(4.dp)
+                            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
                         ) {
                             Text("Target: 26", fontFamily = FontFamily(Font(R.font.font_regular)))
                             Text("Numbers: 4, 2 and 6", fontFamily = FontFamily(Font(R.font.font_regular)))
@@ -179,7 +179,7 @@ fun HowToPlayTargetNumberView(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
-                            modifier = Modifier.padding(top = 12.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens12)
                         )
                     }
 
@@ -203,7 +203,7 @@ fun HowToPlayTargetNumberView(
                             text = "This game makes math operations meaningful, not just memorized.",
                             fontSize = 18.sp,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
-                            modifier = Modifier.padding(top = 4.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens4)
                         )
                     }
 
@@ -214,7 +214,7 @@ fun HowToPlayTargetNumberView(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
-                            modifier = Modifier.padding(top = 12.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens12)
                         )
                     }
 
@@ -229,7 +229,7 @@ fun HowToPlayTargetNumberView(
                             text = "It trains the brain to think:",
                             fontSize = 18.sp,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
-                            modifier = Modifier.padding(top = 4.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens4)
                         )
                     }
 
@@ -242,7 +242,7 @@ fun HowToPlayTargetNumberView(
                             text = "This is an essential early path toward algebra and problem-solving mastery.",
                             fontSize = 16.sp,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
-                            modifier = Modifier.padding(top = 4.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens4)
                         )
                     }
                 }

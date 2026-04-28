@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.category.do_practice.components.subitems
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -33,8 +35,8 @@ fun AbacusAnswerUI(
     ) {
 
         HorizontalDivider(
-            modifier = Modifier.padding(top = dimensionResource(R.dimen.activity_padding4)),
-            thickness = 2.dp,
+            modifier = Modifier.padding(top = AppDimens.Dimens4),
+            thickness = AppDimens.Dimens2,
             color = colorPreset.columnColors.mixWith(Color.White, 0.7f)
         )
 
@@ -59,7 +61,7 @@ fun AbacusAnswerUI(
                 fontFamily = FontFamily(Font(R.font.font_extra_bold))
             ),
             modifier = Modifier
-                .padding(bottom = dimensionResource(R.dimen.activity_padding4))
+                .padding(bottom = AppDimens.Dimens4)
                 .alpha(alphaValue)
         )
     }

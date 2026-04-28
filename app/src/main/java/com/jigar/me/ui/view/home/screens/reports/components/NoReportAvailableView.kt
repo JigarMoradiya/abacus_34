@@ -1,4 +1,6 @@
 package com.jigar.me.ui.view.home.screens.reports.components
+
+import com.jigar.me.ui.view.home.theme.AppDimens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -42,7 +44,7 @@ fun NoReportAvailableView(
                 )
             )
 
-            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.activity_padding16)))
+            Spacer(modifier = Modifier.height(AppDimens.Dimens16))
 
             Text(
                 text = stringResource(R.string.no_report_available_yet),

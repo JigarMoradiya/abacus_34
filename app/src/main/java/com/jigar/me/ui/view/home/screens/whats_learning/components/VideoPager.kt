@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.whats_learning.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -59,7 +61,7 @@ fun VideoPager(
             text = videoList[currentPosition].title,
             style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
             textAlign = TextAlign.Center,
-            modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.activity_padding16))
+            modifier = Modifier.padding(horizontal = AppDimens.Dimens16)
         )
 
         HorizontalPager(
@@ -69,18 +71,18 @@ fun VideoPager(
             AssetVideoPlayer(
                 assetFileName = videoList[page].videoName,
                 isPlaying = pagerState.currentPage == page,
-                modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.activity_padding4), vertical = dimensionResource(R.dimen.activity_padding12))
+                modifier = Modifier.padding(horizontal = AppDimens.Dimens4, vertical = AppDimens.Dimens12)
             )
         }
 
-        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding8)))
+        Spacer(Modifier.height(AppDimens.Dimens8))
 
         // 🔘 Indicator (Compose replacement of ScrollingPagerIndicator)
-        Row(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding6))) {
+        Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)) {
             repeat(videoList.size) { index ->
                 Box(
                     modifier = Modifier
-                        .size(if (index == pagerState.currentPage) 8.dp else 6.dp)
+                        .size(if (index == pagerState.currentPage) AppDimens.Dimens8 else AppDimens.Dimens6)
                         .clip(CircleShape)
                         .background(
                             if (index == pagerState.currentPage)

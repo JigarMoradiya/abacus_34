@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.settings.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import android.graphics.LinearGradient
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
@@ -68,28 +70,28 @@ fun ThemeSection(
     selectedTheme: String,
     onThemeSelected: (String) -> Unit
 ) {
-    Row(verticalAlignment = Alignment.CenterVertically,horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+    Row(verticalAlignment = Alignment.CenterVertically,horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
         Card(
-            shape = RoundedCornerShape(20.dp),
+            shape = RoundedCornerShape(AppDimens.Dimens20),
             colors = CardDefaults.cardColors(
                 containerColor = Color.White
             ),
-            border = BorderStroke(1.dp, ColorPrimary), // purple stroke
-            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+            border = BorderStroke(AppDimens.Dimens1, ColorPrimary), // purple stroke
+            elevation = CardDefaults.cardElevation(defaultElevation = AppDimens.Dimens2),
             modifier = Modifier.fillMaxWidth().weight(1f)
         ) {
             Column {
                 Text(
                     text = stringResource(R.string.free_abacus_theme),
-                    modifier = Modifier.padding(vertical = dimensionResource(R.dimen.activity_padding8),horizontal = dimensionResource(R.dimen.activity_padding16)),
+                    modifier = Modifier.padding(vertical = AppDimens.Dimens8,horizontal = AppDimens.Dimens16),
                     style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Medium,fontFamily = FontFamily(Font(R.font.font_medium))),
                 )
 
                 HorizontalDivider(Modifier, DividerDefaults.Thickness, DividerDefaults.color)
 
-                LazyRow( modifier = Modifier.padding(vertical = dimensionResource(R.dimen.activity_padding8)),
-                    horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding8)),
-                    contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.activity_padding16))) {
+                LazyRow( modifier = Modifier.padding(vertical = AppDimens.Dimens8),
+                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
+                    contentPadding = PaddingValues(horizontal = AppDimens.Dimens16)) {
                     this.items(
                         listOf(
                             "poligon_rainbow",
@@ -156,9 +158,9 @@ fun BeadThemeItemCanvas(
 ) {
     Box(
         modifier = modifier
-            .height(40.dp)
+            .height(AppDimens.Dimens40)
             .aspectRatio(1.15f)
-            .clip(RoundedCornerShape(8.dp))
+            .clip(RoundedCornerShape(AppDimens.Dimens8))
             .clickable(onClick = onClick),
         contentAlignment = Alignment.Center
     ) {
@@ -218,7 +220,7 @@ fun BeadThemeItemCanvas(
                 contentDescription = null,
                 tint = Color.Green,
                 modifier = Modifier
-                    .size(12.dp)
+                    .size(AppDimens.Dimens12)
                     .align(Alignment.BottomCenter)
                     .offset(y = (-2).dp)
                     .background(Color.White, CircleShape)

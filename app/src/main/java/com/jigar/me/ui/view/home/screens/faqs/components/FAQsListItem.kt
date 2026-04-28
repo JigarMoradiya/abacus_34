@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.faqs.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.layout.Column
@@ -65,22 +67,22 @@ fun FaqItem(
                 expanded = !expanded
             }
         },
-        shape = RoundedCornerShape(12.dp),
+        shape = RoundedCornerShape(AppDimens.Dimens12),
         color = colorResource(R.color.card_bg),
         tonalElevation = 0.dp,
         shadowElevation = 0.dp,
         modifier = Modifier
             .fillMaxWidth()
             .padding(
-                horizontal = dimensionResource(R.dimen.activity_padding12),
+                horizontal = AppDimens.Dimens12,
                 vertical = 0.dp
             )
     ) {
 
         Column(
             modifier = Modifier.padding(
-                horizontal = dimensionResource(R.dimen.activity_padding12),
-                vertical = dimensionResource(R.dimen.activity_padding10)
+                horizontal = AppDimens.Dimens12,
+                vertical = AppDimens.Dimens10
             )
         ) {
 
@@ -110,7 +112,7 @@ fun FaqItem(
 
             // ───────── Answer ─────────
             if (expanded && faq.answer.isNotEmpty()) {
-                Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding4)))
+                Spacer(Modifier.height(AppDimens.Dimens4))
 
                 AutoLinkText(
                     text = faq.answer,

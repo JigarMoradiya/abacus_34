@@ -41,8 +41,8 @@ fun ExamHeader(
                 progress = uiState.currentIndex + 1,
                 max = uiState.examPaper.size,
                 modifier = Modifier
-                    .width(240.dp)
-                    .padding(horizontal = dimensionResource(R.dimen.activity_padding16))
+                    .width(AppDimens.Dimens240)
+                    .padding(horizontal = AppDimens.Dimens16)
             )
         }
 

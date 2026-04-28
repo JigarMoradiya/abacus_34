@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.reports.dialogs
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -79,8 +81,8 @@ fun ExerciseExamCompleteResultDialog(
                 .align(Alignment.Center)
                 .fillMaxWidth()
                 .fillMaxHeight(0.9f)
-                .padding(dimensionResource(R.dimen.activity_padding16)), shape = RoundedCornerShape(20.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.White), elevation = CardDefaults.cardElevation(6.dp)
+                .padding(AppDimens.Dimens16), shape = RoundedCornerShape(AppDimens.Dimens20),
+            colors = CardDefaults.cardColors(containerColor = Color.White), elevation = CardDefaults.cardElevation(AppDimens.Dimens6)
         ) {
 
             Column(
@@ -89,7 +91,7 @@ fun ExerciseExamCompleteResultDialog(
 
                 // Header
                 Row(modifier = Modifier.fillMaxWidth()
-                    .padding(start = dimensionResource(R.dimen.activity_padding16)).padding(end = dimensionResource(R.dimen.activity_padding12)),
+                    .padding(start = AppDimens.Dimens16).padding(end = AppDimens.Dimens12),
                     verticalAlignment = Alignment.CenterVertically) {
                     val title = when (request.type) {
                         AppConstants.EXAM.type_Exercise -> {
@@ -114,8 +116,8 @@ fun ExerciseExamCompleteResultDialog(
                     TextButton(
                         onClick = onClose,
                     ) {
-                        Icon(Icons.Default.Close, contentDescription = null, tint = Color.DarkGray,modifier = Modifier.size(20.dp))
-                        Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding4)))
+                        Icon(Icons.Default.Close, contentDescription = null, tint = Color.DarkGray,modifier = Modifier.size(AppDimens.Dimens20))
+                        Spacer(Modifier.width(AppDimens.Dimens4))
                         Text(
                             stringResource(R.string.close), style = MaterialTheme.typography.bodyMedium.copy(color = Color.DarkGray, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold)))
                         )
@@ -123,7 +125,7 @@ fun ExerciseExamCompleteResultDialog(
                 }
 
                 HorizontalDivider(
-                    Modifier, color = Color.Black.copy(alpha = 0.1f), thickness = 1.dp
+                    Modifier, color = Color.Black.copy(alpha = 0.1f), thickness = AppDimens.Dimens1
                 )
 
                 Row{
@@ -161,7 +163,7 @@ fun ExerciseExamCompleteResultDialog(
                             )
                         }
                         if (!isFromHistory){
-                            Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding16)))
+                            Spacer(Modifier.height(AppDimens.Dimens16))
                             val result = buildExamResult(
                                 context = context,
                                 totalRight = request.no_of_right_answers?:0,
@@ -172,7 +174,7 @@ fun ExerciseExamCompleteResultDialog(
                                 textAlign = TextAlign.Center,
                                 style = MaterialTheme.typography.titleSmall.copy(color = result.titleColor, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_medium))))
 
-                            Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding12)))
+                            Spacer(Modifier.height(AppDimens.Dimens12))
 
                             val btnLabel = when (request.type) {
                                 AppConstants.EXAM.type_Exercise -> {
@@ -196,8 +198,8 @@ fun ExerciseExamCompleteResultDialog(
                         modifier = Modifier
                             .weight(1f)
                             .fillMaxWidth(),
-                        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding8)),
-                        contentPadding = PaddingValues(dimensionResource(R.dimen.activity_padding12))
+                        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
+                        contentPadding = PaddingValues(AppDimens.Dimens12)
                     ) {
                         items(
                             items = questionResults,

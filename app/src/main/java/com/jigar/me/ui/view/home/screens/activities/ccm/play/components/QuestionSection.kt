@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.activities.ccm.play.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -48,9 +50,9 @@ fun QuestionSection(
                 painter = painterResource(R.drawable.ic_kid_listen),
                 contentDescription = null,
                 modifier = Modifier
-                    .height(150.dp)
+                    .height(AppDimens.Dimens150)
                     .wrapContentWidth()
-                    .padding(bottom = dimensionResource(R.dimen.activity_padding16))
+                    .padding(bottom = AppDimens.Dimens16)
             )
         }
 
@@ -79,7 +81,7 @@ fun QuestionSection(
                 text = wordText,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = dimensionResource(R.dimen.activity_padding20)),
+                    .padding(horizontal = AppDimens.Dimens20),
                 textAlign = TextAlign.Center,
                 fontSize = dimensionResource(R.dimen.textSizeCCMWord).value.sp,
                 fontFamily = FontFamily(Font(R.font.font_bold)),

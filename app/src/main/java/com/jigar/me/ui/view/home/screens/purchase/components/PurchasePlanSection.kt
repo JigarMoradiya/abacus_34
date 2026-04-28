@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.purchase.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -40,8 +42,8 @@ fun PurchasePlanSection(
 
         LazyColumn(
             modifier = Modifier.fillMaxWidth(),
-            contentPadding = PaddingValues(end = dimensionResource(R.dimen.activity_padding12)),
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding4)),
+            contentPadding = PaddingValues(end = AppDimens.Dimens12),
+            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens4),
         ) {
             itemsIndexed(uiState.sortedSkuList) { index, plan ->
                 PurchasePlanCard(
@@ -56,7 +58,7 @@ fun PurchasePlanSection(
         }
 
         if (uiState.showSubmitButton && uiState.sortedSkuList.isNotEmpty()){
-            Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding8)))
+            Spacer(Modifier.height(AppDimens.Dimens8))
             val selected = uiState.sortedSkuList[uiState.selectedIndex]
 
             val isSubs = selected.type == BillingClient.ProductType.SUBS

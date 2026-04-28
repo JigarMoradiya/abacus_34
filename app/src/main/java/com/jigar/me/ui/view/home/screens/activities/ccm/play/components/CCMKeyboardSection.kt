@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.activities.ccm.play.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -41,36 +43,36 @@ fun CCMKeyboardSection(
             style = MaterialTheme.typography.titleLarge.copy(color = Color.DarkGray, fontWeight = FontWeight.Medium,fontFamily = FontFamily(Font(R.font.font_medium))),
         )
 
-        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding4)))
+        Spacer(Modifier.height(AppDimens.Dimens4))
 
         Text(
             text = uiState.answerText,
             style = MaterialTheme.typography.displaySmall.copy(color = theme.buttonColor, fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
         )
 
-        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding8)))
+        Spacer(Modifier.height(AppDimens.Dimens8))
 
         KeypadRow(listOf("1","2","3","4","5")) { viewModel.addKeyboardValue(it) }
-        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding6)))
+        Spacer(Modifier.height(AppDimens.Dimens6))
         KeypadRow(listOf("6","7","8","9","0")) { viewModel.addKeyboardValue(it) }
-        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding6)))
-        Row(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding4))) {
+        Spacer(Modifier.height(AppDimens.Dimens6))
+        Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)) {
             KeyButton("C") { viewModel.clearKeyboard() }
             IconKeyButton(Icons.AutoMirrored.Filled.Backspace) { viewModel.eraseKeyboardValue() }
         }
 
-        Spacer(Modifier.height(dimensionResource(R.dimen.activity_padding16)))
+        Spacer(Modifier.height(AppDimens.Dimens16))
 
         Surface(
             onClick = { viewModel.submitAnswer() },
-            shape = RoundedCornerShape(50.dp),
+            shape = RoundedCornerShape(AppDimens.Dimens50),
             color = colorResource(R.color.colorPrimary),
             tonalElevation = 0.dp,
-            shadowElevation = dimensionResource(R.dimen.activity_padding8)
+            shadowElevation = AppDimens.Dimens8
         ) {
             Text(
                 text = stringResource(R.string.check_answer).uppercase(Locale.getDefault()), style = MaterialTheme.typography.bodySmall.copy(color = Color.White, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))), modifier = Modifier.padding(
-                    horizontal = dimensionResource(R.dimen.activity_padding12), vertical = dimensionResource(R.dimen.activity_padding10)
+                    horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens10
                 )
             )
         }
@@ -83,7 +85,7 @@ fun KeypadRow(
     onClick: (String) -> Unit
 ) {
     Row(
-        horizontalArrangement = Arrangement.spacedBy(4.dp)
+        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
     ) {
         keys.forEach {
             KeyButton(text = it) { onClick(it) }
@@ -100,8 +102,8 @@ fun KeyButton(
         onClick = onClick,
         shape = CircleShape,
         color = Color.Transparent,
-        border = BorderStroke(1.dp, Color.DarkGray),
-        modifier = Modifier.size(40.dp)
+        border = BorderStroke(AppDimens.Dimens1, Color.DarkGray),
+        modifier = Modifier.size(AppDimens.Dimens40)
     ) {
         Box(contentAlignment = Alignment.Center) {
             Text(
@@ -120,8 +122,8 @@ fun IconKeyButton(
     Surface(
         onClick = onClick,
         shape = CircleShape,
-        border = BorderStroke(1.dp, Color.DarkGray),
-        modifier = Modifier.size(40.dp)
+        border = BorderStroke(AppDimens.Dimens1, Color.DarkGray),
+        modifier = Modifier.size(AppDimens.Dimens40)
     ) {
         Box(contentAlignment = Alignment.Center) {
             Icon(icon, contentDescription = null,tint = Color.DarkGray)

@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.my_account
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -30,7 +32,7 @@ fun FAQsRoute(
     Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         Row {
             if (!uiState.isUserLoggedIn) {
-                Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding12)))
+                Spacer(Modifier.width(AppDimens.Dimens12))
             }
             BackButtonWithText(
                 title = stringResource(R.string.faqs),

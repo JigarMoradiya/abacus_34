@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.activities
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -87,12 +89,12 @@ fun ExerciseRoute(
                     .padding(
                         start = paddingStart,
                         end = paddingEnd,
-                        top = dimensionResource(R.dimen.activity_padding12)
+                        top = AppDimens.Dimens12
                     ),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                val innerPaddingStart = if (uiState.isAbacusOnLeftHand) 0.dp else dimensionResource(R.dimen.activity_padding24)
-                val innerPaddingEnd = if (uiState.isAbacusOnLeftHand) dimensionResource(R.dimen.activity_padding24) else 0.dp
+                val innerPaddingStart = if (uiState.isAbacusOnLeftHand) 0.dp else AppDimens.Dimens24
+                val innerPaddingEnd = if (uiState.isAbacusOnLeftHand) AppDimens.Dimens24 else 0.dp
                 Text(
                     modifier = Modifier.padding(start = innerPaddingStart, end = innerPaddingEnd),
                     text = "Time : ${uiState.elapsedSeconds.secToCountDown()}",

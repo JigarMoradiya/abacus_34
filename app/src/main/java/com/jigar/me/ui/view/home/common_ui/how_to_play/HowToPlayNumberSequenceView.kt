@@ -52,7 +52,7 @@ fun HowToPlayNumberSequenceView(
             modifier = Modifier
                 .width(screenWidth * widthMultiplier)
                 .height(screenHeight * heightMultiplier)
-                .background(Color.White, RoundedCornerShape(20.dp))
+                .background(Color.White, RoundedCornerShape(AppDimens.Dimens20))
                 .padding(AppDimens.Dimens16),
             contentAlignment = Alignment.Center
         ){
@@ -79,12 +79,12 @@ fun HowToPlayNumberSequenceView(
                         fontWeight = FontWeight.Medium,
                         color = Color.Black,
                         modifier = Modifier
-                            .padding(horizontal = 12.dp, vertical = 8.dp)
+                            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8)
                             .clickable { onClose() }
                     )
                 }
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(AppDimens.Dimens8))
 
                 // ---------- SCROLL CONTENT ----------
                 LazyColumn(
@@ -102,7 +102,7 @@ fun HowToPlayNumberSequenceView(
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
-                            modifier = Modifier.padding(top = 8.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens8)
                         )
                     }
 
@@ -116,7 +116,7 @@ fun HowToPlayNumberSequenceView(
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
-                            modifier = Modifier.padding(top = 8.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens8)
                         )
                     }
 
@@ -128,7 +128,7 @@ fun HowToPlayNumberSequenceView(
                         Text(
                             text = "It’s like a fun sliding puzzle where every move brings you closer to the correct sequence!",
                             fontSize = 16.sp,
-                            modifier = Modifier.padding(top = 4.dp),
+                            modifier = Modifier.padding(top = AppDimens.Dimens4),
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
                             fontWeight = FontWeight.SemiBold
                         )
@@ -141,7 +141,7 @@ fun HowToPlayNumberSequenceView(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
-                            modifier = Modifier.padding(top = 12.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens12)
                         )
                     }
 
@@ -167,7 +167,7 @@ fun HowToPlayNumberSequenceView(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
-                            modifier = Modifier.padding(top = 12.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens12)
                         )
                     }
 
@@ -182,7 +182,7 @@ fun HowToPlayNumberSequenceView(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.SemiBold,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
-                            modifier = Modifier.padding(top = 4.dp)
+                            modifier = Modifier.padding(top = AppDimens.Dimens4)
                         )
                     }
                 }
@@ -193,7 +193,7 @@ fun HowToPlayNumberSequenceView(
 
 @Composable
 fun Bullet(text: String) {
-    Row(modifier = Modifier.padding(top = 4.dp)) {
+    Row(modifier = Modifier.padding(top = AppDimens.Dimens4)) {
         Text("•  ", fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_regular)))
         Text(text, fontSize = 16.sp,fontFamily = FontFamily(Font(R.font.font_regular)))
     }
@@ -201,7 +201,7 @@ fun Bullet(text: String) {
 
 @Composable
 fun SubBullet(text: String) {
-    Row(modifier = Modifier.padding(start = 12.dp, top = 2.dp)) {
+    Row(modifier = Modifier.padding(start = AppDimens.Dimens12, top = AppDimens.Dimens2)) {
         Text("•  ",fontFamily = FontFamily(Font(R.font.font_regular)))
         Text(text, fontSize = 16.sp,fontFamily = FontFamily(Font(R.font.font_regular)))
     }
@@ -209,7 +209,7 @@ fun SubBullet(text: String) {
 
 @Composable
 fun Check(text: String) {
-    Row(modifier = Modifier.padding(top = 6.dp)) {
+    Row(modifier = Modifier.padding(top = AppDimens.Dimens6)) {
         Text("✔ ", color = Color(0xFF4CAF50), fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold)))
         Text(text, fontWeight = FontWeight.Bold, fontSize = 16.sp,fontFamily = FontFamily(Font(R.font.font_bold)))
     }
@@ -221,7 +221,7 @@ fun Detail(text: String) {
         text = "   $text",
         color = Color.DarkGray,
         fontSize = 15.sp,
-        modifier = Modifier.padding(top = 2.dp),
+        modifier = Modifier.padding(top = AppDimens.Dimens2),
         fontFamily = FontFamily(Font(R.font.font_regular))
     )
 }

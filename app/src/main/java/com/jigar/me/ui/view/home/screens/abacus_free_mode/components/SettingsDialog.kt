@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.abacus_free_mode.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import android.annotation.SuppressLint
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
@@ -80,7 +82,7 @@ fun SettingsDialog(
     val dialogWidth = remember(screenWidth) {
         // 80% of screen, max 600, min 320
         val target = screenWidth * 0.7f
-        target.coerceIn(320.dp, 600.dp)
+        target.coerceIn(AppDimens.Dimens320, AppDimens.Dimens600)
     }
 
     var tempLow by remember { mutableStateOf(randomRangeLow.toString()) }

@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.border
@@ -176,7 +178,7 @@ fun AbacusWithDecimalCanvas(
             val isTouchEnabled = screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult && screenType != AppConstants.AbacusScreen.screenTypeSettingPreview
             val gestureModifier = if (isTouchEnabled) {
                 Modifier.pointerInput(Unit) {
-                    val thresholdPx = with(density) { 2.dp.toPx() }
+                    val thresholdPx = with(density) { AppDimens.Dimens2.toPx() }
 
                     awaitPointerEventScope {
                         while (true) {

@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.activities.exam.play.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -26,9 +28,9 @@ fun ExamOptionButton(
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
-            .width(180.dp)
-            .height(40.dp)
-            .clip(RoundedCornerShape(8.dp))
+            .width(AppDimens.Dimens180)
+            .height(AppDimens.Dimens40)
+            .clip(RoundedCornerShape(AppDimens.Dimens8))
             .background(bgColor)
             .clickable { onClick(value) }
     ) {

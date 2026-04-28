@@ -1,5 +1,7 @@
 package com.jigar.me.ui.jetpack.utils.ui.slider
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 
 import android.graphics.Paint
 import androidx.compose.foundation.Canvas
@@ -32,13 +34,13 @@ import kotlin.math.roundToInt
 fun RangeSlider(
     startValue: Int, endValue: Int, range: ClosedFloatingPointRange<Float>, step: Int = 1, onValueChange: (Int, Int) -> Unit, modifier: Modifier = Modifier
 ) {
-    BoxWithConstraints(modifier = modifier.height(36.dp)) {
+    BoxWithConstraints(modifier = modifier.height(AppDimens.Dimens36)) {
 
         val density = LocalDensity.current
         val widthPx = constraints.maxWidth.toFloat()
 
-        val sliderHeightPx = with(density) { 4.dp.toPx() }
-        val thumbRadiusPx = with(density) { 12.dp.toPx() }
+        val sliderHeightPx = with(density) { AppDimens.Dimens4.toPx() }
+        val thumbRadiusPx = with(density) { AppDimens.Dimens12.toPx() }
         val textSizePx = with(density) { 12.sp.toPx() }
 
         var rawStart by remember { mutableFloatStateOf(startValue.toFloat()) }

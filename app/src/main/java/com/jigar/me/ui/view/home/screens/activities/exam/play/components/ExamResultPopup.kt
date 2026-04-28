@@ -63,7 +63,7 @@ fun ExamResultPopup(
                 .align(Alignment.Center)
                 .fillMaxWidth()
                 .fillMaxHeight(0.9f)
-                .padding(dimensionResource(R.dimen.activity_padding16)), shape = RoundedCornerShape(20.dp), colors = CardDefaults.cardColors(containerColor = Color.White), elevation = CardDefaults.cardElevation(6.dp)
+                .padding(AppDimens.Dimens16), shape = RoundedCornerShape(AppDimens.Dimens20), colors = CardDefaults.cardColors(containerColor = Color.White), elevation = CardDefaults.cardElevation(AppDimens.Dimens6)
         ) {
 
             Column(
@@ -81,7 +81,7 @@ fun ExamResultPopup(
                         onClick = onDismiss, modifier = Modifier.align(Alignment.CenterEnd)
                     ) {
                         Icon(Icons.Default.Close, contentDescription = null,tint = Color.DarkGray)
-                        Spacer(Modifier.width(dimensionResource(R.dimen.activity_padding4)))
+                        Spacer(Modifier.width(AppDimens.Dimens4))
                         Text(
                             stringResource(R.string.close), style = MaterialTheme.typography.bodyMedium.copy(color = Color.DarkGray, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold)))
                         )
@@ -89,7 +89,7 @@ fun ExamResultPopup(
                 }
 
                 HorizontalDivider(
-                    Modifier.padding(bottom = dimensionResource(R.dimen.activity_padding8)), color = Color.Black.copy(alpha = 0.1f), thickness = 1.dp
+                    Modifier.padding(bottom = AppDimens.Dimens8), color = Color.Black.copy(alpha = 0.1f), thickness = AppDimens.Dimens1
                 )
 
                 // ✅ CORRECT GRID
@@ -97,9 +97,9 @@ fun ExamResultPopup(
                     columns = StaggeredGridCells.Fixed(numberOfColumns), modifier = Modifier
                         .weight(1f)
                         .fillMaxWidth(),
-                    verticalItemSpacing = dimensionResource(R.dimen.activity_padding12),
-                    horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.activity_padding12)),
-                    contentPadding = PaddingValues(bottom = dimensionResource(R.dimen.activity_padding12), start = dimensionResource(R.dimen.activity_padding12), end = dimensionResource(R.dimen.activity_padding12))
+                    verticalItemSpacing = AppDimens.Dimens12,
+                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
+                    contentPadding = PaddingValues(bottom = AppDimens.Dimens12, start = AppDimens.Dimens12, end = AppDimens.Dimens12)
                 ) {
                     items(
                         items = items, key = { item -> "${item.que}_${item.hashCode()}" }) { item ->
@@ -117,11 +117,11 @@ fun ExamResultPopup(
 fun QuestionExamColumnItem(item: QuestionResult) {
 
     Card(
-        modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(12.dp), colors = CardDefaults.cardColors(containerColor = ColorPrimaryLight), elevation = CardDefaults.cardElevation(2.dp)
+        modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(AppDimens.Dimens12), colors = CardDefaults.cardColors(containerColor = ColorPrimaryLight), elevation = CardDefaults.cardElevation(AppDimens.Dimens2)
     ) {
 
         Column(
-            modifier = Modifier.padding(vertical = dimensionResource(R.dimen.activity_padding6)), horizontalAlignment = Alignment.CenterHorizontally
+            modifier = Modifier.padding(vertical = AppDimens.Dimens6), horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
             val lines = remember(item.que) {
@@ -135,7 +135,7 @@ fun QuestionExamColumnItem(item: QuestionResult) {
                 )
             }
 
-            HorizontalDivider(Modifier.padding(vertical = dimensionResource(R.dimen.activity_padding4)), color = Color.Black.copy(alpha = 0.1f), thickness = 1.dp)
+            HorizontalDivider(Modifier.padding(vertical = AppDimens.Dimens4), color = Color.Black.copy(alpha = 0.1f), thickness = AppDimens.Dimens1)
 
             Text(
                 text = item.userAnswer.toString(), style = MaterialTheme.typography.bodyLarge.copy(color = item.statusQue.color, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_bold)))

@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.settings.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -35,17 +37,17 @@ fun MusicVolumeSection(
     onVolumeChange: (Int) -> Unit
 ) {
     Card(
-        shape = RoundedCornerShape(20.dp), colors = CardDefaults.cardColors(
+        shape = RoundedCornerShape(AppDimens.Dimens20), colors = CardDefaults.cardColors(
             containerColor = Color.White
-        ), border = BorderStroke(1.dp, ColorPrimary),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp), modifier = modifier
+        ), border = BorderStroke(AppDimens.Dimens1, ColorPrimary),
+        elevation = CardDefaults.cardElevation(defaultElevation = AppDimens.Dimens2), modifier = modifier
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = dimensionResource(R.dimen.activity_padding16))
-                .padding(top = dimensionResource(R.dimen.activity_padding16))
-                .padding(bottom = dimensionResource(R.dimen.activity_padding8))
+                .padding(horizontal = AppDimens.Dimens16)
+                .padding(top = AppDimens.Dimens16)
+                .padding(bottom = AppDimens.Dimens8)
         ) {
 
             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -55,13 +57,13 @@ fun MusicVolumeSection(
 
                 Text(
                     text = stringResource(R.string.background_music_volume),
-                    modifier = Modifier.padding(start = dimensionResource(R.dimen.activity_padding8)),
+                    modifier = Modifier.padding(start = AppDimens.Dimens8),
                     style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),
                 )
             }
 
             SingleSlider(
-                isShowText = false, value = volume, range = 0f..100f, onValueChange = onVolumeChange, modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.activity_padding8))
+                isShowText = false, value = volume, range = 0f..100f, onValueChange = onVolumeChange, modifier = Modifier.padding(horizontal = AppDimens.Dimens8)
             )
         }
     }

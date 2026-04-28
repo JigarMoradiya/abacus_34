@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.activities.exercise.components
 
+import com.jigar.me.ui.view.home.theme.AppDimens
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -31,9 +33,9 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 @Composable
 fun ExerciseScreen(
     uiState: ExerciseUiState, viewModel: ExerciseViewModel, onBackClick: () -> Unit) {
-    val curve = if (uiState.isAbacusOnLeftHand) 0.dp else 32.dp
-    val nonCurve = if (uiState.isAbacusOnLeftHand) 32.dp else 0.dp
-    val shadowElevation = if (uiState.isAbacusOnLeftHand) 4.dp else 0.dp
+    val curve = if (uiState.isAbacusOnLeftHand) 0.dp else AppDimens.Dimens32
+    val nonCurve = if (uiState.isAbacusOnLeftHand) AppDimens.Dimens32 else 0.dp
+    val shadowElevation = if (uiState.isAbacusOnLeftHand) AppDimens.Dimens4 else 0.dp
     Surface(
         modifier = Modifier.width(dimensionResource(R.dimen.exercise_width)), shape = RoundedCornerShape(
             topStart = nonCurve, bottomStart = nonCurve, topEnd = curve, bottomEnd = curve

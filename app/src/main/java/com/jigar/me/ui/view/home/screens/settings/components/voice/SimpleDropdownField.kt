@@ -79,7 +79,7 @@ fun <T> SimpleDropdownField(
             properties = PopupProperties(focusable = true),
             modifier = Modifier
                 .width(with(LocalDensity.current) { fieldWidth.toDp() }) // ✅ SAME WIDTH
-                .heightIn(max = 300.dp)
+                .heightIn(max = AppDimens.Dimens300)
         ) {
             items.forEach { item ->
                 DropdownMenuItem(
@@ -94,7 +94,7 @@ fun <T> SimpleDropdownField(
                         onSelect(item)
                         expanded = false
                     },
-                    modifier = Modifier.heightIn(max = 32.dp),
+                    modifier = Modifier.heightIn(max = AppDimens.Dimens32),
                     contentPadding = PaddingValues(
                         horizontal = AppDimens.Dimens16,
                     )
