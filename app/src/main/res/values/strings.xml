@@ -285,6 +285,7 @@
     <string name="start_new">Start New</string>
     <string name="volume_on">Volume ON</string>
     <string name="volume_off">Volume OFF</string>
+    <string name="start_new_game">Start New Game</string>
     <string name="number_sequences_puzzle_volume">Number sequence puzzle volume</string>
 
     <string name="continue_to_play_game">Continue to Play</string>

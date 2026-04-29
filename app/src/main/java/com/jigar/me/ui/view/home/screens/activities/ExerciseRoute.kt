@@ -35,10 +35,14 @@ import com.jigar.me.ui.view.home.screens.activities.exercise.components.Exercise
 import com.jigar.me.ui.view.home.screens.activities.exercise.components.ExerciseScreen
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseViewModel
 import com.jigar.me.ui.view.home.common_ui.Loader
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsLabel
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.home.screens.reports.dialogs.ExerciseExamCompleteResultDialog
+import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
+import com.jigar.me.ui.view.home.theme.AppDimens.exerciseWidth
 import com.jigar.me.utils.extensions.secToCountDown
+import com.jigar.me.utils.extensions.secToTimeFormat
 
 @Composable
 fun ExerciseRoute(
@@ -80,11 +84,11 @@ fun ExerciseRoute(
         }
         if (uiState.isExerciseStarted) {
             val alignment = if (uiState.isAbacusOnLeftHand) Alignment.TopEnd else Alignment.TopStart
-            val paddingStart = if (uiState.isAbacusOnLeftHand) 0.dp else dimensionResource(R.dimen.exercise_width)
-            val paddingEnd = if (uiState.isAbacusOnLeftHand) dimensionResource(R.dimen.exercise_width) else 0.dp
+            val paddingStart = if (uiState.isAbacusOnLeftHand) 0.dp else exerciseWidth
+            val paddingEnd = if (uiState.isAbacusOnLeftHand) exerciseWidth else 0.dp
             Row(
                 modifier = Modifier
-                    .height(dimensionResource(R.dimen.menu_icons_bg))
+                    .height(ToolbarIconSize)
                     .align(alignment)
                     .padding(
                         start = paddingStart,
@@ -95,14 +99,9 @@ fun ExerciseRoute(
             ) {
                 val innerPaddingStart = if (uiState.isAbacusOnLeftHand) 0.dp else AppDimens.Dimens24
                 val innerPaddingEnd = if (uiState.isAbacusOnLeftHand) AppDimens.Dimens24 else 0.dp
-                Text(
-                    modifier = Modifier.padding(start = innerPaddingStart, end = innerPaddingEnd),
-                    text = "Time : ${uiState.elapsedSeconds.secToCountDown()}",
-                    style = MaterialTheme.typography.bodyLarge.copy(
-                        color = Color.Black,
-                        fontWeight = FontWeight.Bold,
-                        fontFamily = FontFamily(Font(R.font.font_bold))
-                    )
+
+                KidsLabel(
+                    text = "Time : "+uiState.elapsedSeconds.secToCountDown(),modifier = Modifier.padding(start = innerPaddingStart, end = innerPaddingEnd)
                 )
             }
         }

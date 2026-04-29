@@ -21,6 +21,7 @@ fun AbacusViewItem(viewModel : AbacusDoPracticeViewModel, uiState: AbacusDoPract
             rodMovement = viewModel.rodMovements,
             showDirectionHint = viewModel.showDirectionHints,
             abacusType = uiState.setDetail?.answer_setting,
+            questionType = uiState.currentAbacusType,
             isNextButtonEnable = uiState.isNextButtonEnable,
             onRodMovementChange = { viewModel.updateRodMovements(it) },
             onShowDirectionHintsChange = { viewModel.updateShowDirectionHints(it) },

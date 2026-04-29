@@ -25,6 +25,13 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.VolumeOff
+import androidx.compose.material.icons.automirrored.filled.VolumeUp
+import androidx.compose.material.icons.filled.RemoveRedEye
+import androidx.compose.material.icons.filled.SportsEsports
+import androidx.compose.material.icons.filled.VolumeOff
+import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -53,8 +60,11 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.screens.math_game_zone.number_sequence_puzzle.viewmodels.NumberSequencePuzzleViewModel
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.ButtonType
 
 @Composable
 fun NumberSequencePuzzleJetpackScreen(
@@ -179,45 +189,23 @@ private fun RightPanel(
         verticalArrangement = Arrangement.Center,
         modifier = modifier.fillMaxHeight()
     ) {
-        Button(
+        KidsActionButton(
+            text = if (soundOn) stringResource(R.string.volume_on) else stringResource(R.string.volume_off),
+            icon = if (soundOn) Icons.AutoMirrored.Filled.VolumeUp else Icons.AutoMirrored.Filled.VolumeOff,
+            type = ButtonType.ORANGE,
+            isSmall = true,
             onClick = onSoundToggle,
-            colors = ButtonDefaults.buttonColors(containerColor = Color.Red.copy(alpha = 0.1f)),
-            shape = CircleShape
-        ) {
-            val icon = if (soundOn) R.drawable.ic_volume_on else R.drawable.ic_volume_off
-            val label = if (soundOn) "Volume On" else "Volume Off"
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    painter = painterResource(id = icon),
-                    contentDescription = label,
-                    tint = Color.Red,
-                    modifier = Modifier.size(AppDimens.Dimens20)
-                )
-                Spacer(Modifier.width(AppDimens.Dimens6))
-                Text(label, color = Color.Red, fontSize = dimensionResource(id = R.dimen.textSizeLarge).value.sp, fontWeight = FontWeight.SemiBold)
-            }
-        }
+        )
 
         Spacer(Modifier.height(AppDimens.Dimens12))
 
-        Button(
+        KidsActionButton(
+            text = stringResource(R.string.start_new_game),
+            icon = Icons.Filled.SportsEsports,
+            type = ButtonType.GREEN,
+            isSmall = true,
             onClick = onRestart,
-            colors = ButtonDefaults.buttonColors(containerColor = Color.Green.copy(alpha = 0.1f)),
-            shape = CircleShape
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_start_new_game),
-                contentDescription = null,
-                tint = Color(0xFF006400),
-                modifier = Modifier.size(AppDimens.Dimens20)
-            )
-            Spacer(Modifier.width(AppDimens.Dimens6))
-            Text(
-                "Start New Game", color = Color(0xFF006400),
-                fontSize = dimensionResource(id = R.dimen.textSizeLarge).value.sp,
-                fontWeight = FontWeight.SemiBold
-            )
-        }
+        )
     }
 }
 

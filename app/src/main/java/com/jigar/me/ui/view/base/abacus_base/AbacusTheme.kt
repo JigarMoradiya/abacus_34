@@ -1,11 +1,15 @@
 package com.jigar.me.ui.view.base.abacus_base
 
 import android.content.Context
+import androidx.annotation.OptIn
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.toColorInt
+import androidx.media3.common.util.Log
+import androidx.media3.common.util.UnstableApi
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
+import kotlin.math.min
 
 // AppThemeAbacus.kt
 object AbacusTheme {
@@ -211,22 +215,24 @@ object AbacusTheme {
         }
     }
 
+    @OptIn(UnstableApi::class)
     fun dimensionPreset(
         context: Context,
         screenType: String = AppConstants.AbacusScreen.screenTypeFreeMode,
         abacusType: String? = null,
+        questionType: String? = null,
         isFreeModeOn: Boolean = false
     ): AbacusDimensionModel {
         // This is a simplified mapping of your AbacusDimension logic.
         // You can tweak multipliers same as Swift.
         val base = AbacusDimensionModel()
-        val freeModeBase = 0.87f
+        val freeModeBase = 0.9f
         val multiplierTemp = when (screenType) {
             AppConstants.AbacusScreen.screenTypeExam, AppConstants.AbacusScreen.screenTypeSettingPreview -> 0.45f
             AppConstants.AbacusScreen.screenTypeExamResult -> 0.25f
             AppConstants.AbacusScreen.screenTypeCCM -> 0.85f
             AppConstants.AbacusScreen.screenTypeExercise -> 0.90f
-            AppConstants.AbacusScreen.screenTypeAbacusPractice -> if (abacusType == AppConstants.apiParams.answerStepByStep) 0.75f else {0.9f}
+            AppConstants.AbacusScreen.screenTypeAbacusPractice -> if (questionType == AppConstants.extras_Comman.AbacusTypeNumber) { 0.9f } else if (abacusType == AppConstants.apiParams.answerStepByStep) 0.85f else {0.9f}
             AppConstants.AbacusScreen.screenTypeFreeMode -> if (isFreeModeOn){
                 1f
             }else{
@@ -237,15 +243,33 @@ object AbacusTheme {
         val multiplier = multiplierTemp * freeModeBase
         val pref = AppPreferencesHelper(context, AppConstants.PREF_NAME)
         val screenWidthDp = pref.getCustomParamInt(AppConstants.screenWidthDp,0)
-//        val rectWidth = base.rectLineWidth * 2
-//        val colSpace = base.columnSpaces * 14
-//        val extraPadding = base.extraSpace * 2
+        val rectWidth = (base.rectLineWidth * 2).value
+        val colSpace = (base.columnSpaces * 14).value
+        val extraPadding = (base.extraSpace * 2).value
 
-        val rectWidth = 16 * 2
-        val colSpace = 1 * 14
-        val extraPadding = 4 * 2
+        // OPTION 1
+//        val remainSpace = screenWidthDp - colSpace - rectWidth - extraPadding
+//        val beadWidth = remainSpace / 13
+//        val beadHeight : Double = ((5 * beadWidth) / 9).toDouble()  // 9 : 5
 
-        val remainSpace = screenWidthDp - colSpace - rectWidth - extraPadding
+        // OPTION 2
+//        val maxAbacusWidth = 820 // dp (tweak this)
+//        val usableWidth = min(screenWidthDp, maxAbacusWidth)
+//        val remainSpace = usableWidth - colSpace - rectWidth - extraPadding
+//        val beadWidth = remainSpace / 13
+//        val beadHeight : Double = ((5 * beadWidth) / 9).toDouble()  // 9 : 5
+
+        // OPTION 3
+//        val horizontalMargin = screenWidthDp * 0.05f // 5% margin
+//        val remainSpace = screenWidthDp - (horizontalMargin * 2) - colSpace - rectWidth - extraPadding
+//        val beadWidth = remainSpace / 13
+//        val beadHeight : Double = ((5 * beadWidth) / 9).toDouble()  // 9 : 5
+
+        // OPTION 4 (option 2 and option 3 combo)
+        val maxAbacusWidth = 820
+        val horizontalMargin = 24
+        val usableWidth = min(screenWidthDp, maxAbacusWidth)
+        val remainSpace = usableWidth - (horizontalMargin * 2) - colSpace - rectWidth - extraPadding
         val beadWidth = remainSpace / 13
         val beadHeight : Double = ((5 * beadWidth) / 9).toDouble()  // 9 : 5
 

@@ -29,6 +29,7 @@ import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.Exercise
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseViewModel
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.AppDimens.exerciseWidth
 
 @Composable
 fun ExerciseScreen(
@@ -37,7 +38,7 @@ fun ExerciseScreen(
     val nonCurve = if (uiState.isAbacusOnLeftHand) AppDimens.Dimens32 else 0.dp
     val shadowElevation = if (uiState.isAbacusOnLeftHand) AppDimens.Dimens4 else 0.dp
     Surface(
-        modifier = Modifier.width(dimensionResource(R.dimen.exercise_width)), shape = RoundedCornerShape(
+        modifier = Modifier.width(exerciseWidth), shape = RoundedCornerShape(
             topStart = nonCurve, bottomStart = nonCurve, topEnd = curve, bottomEnd = curve
         ), color = Color.White, tonalElevation = 0.dp, shadowElevation = shadowElevation
     ) {

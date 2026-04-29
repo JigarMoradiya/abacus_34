@@ -1,6 +1,7 @@
 package com.jigar.me.ui.view.home.theme
 
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.jigar.me.data.local.data.DeviceInfo
 
 object AppDimens {
@@ -51,10 +52,10 @@ object AppDimens {
     val Dimens300 = if(isLargeTablet) 600.dp else if (isTablet) 420.dp else 300.dp
     val Dimens320 = if(isLargeTablet) 640.dp else if (isTablet) 448.dp else 320.dp
     val Dimens600 = if(isLargeTablet) 1200.dp else if (isTablet) 840.dp else 600.dp
-    val DimensColorCircles = if(isLargeTablet) 56.dp else if (isTablet) 48.dp else 36.dp
-    val CommonPopupImageSize = if(isLargeTablet) 120.dp else if (isTablet) 96.dp else 72.dp
     val examOptionWidth = if(isLargeTablet) 360.dp else if (isTablet) 330.dp else 240.dp
     val examOptionHeight = if(isLargeTablet) 84.dp else if (isTablet) 60.dp else 42.dp
 
     val HomePageLogo = if(isLargeTablet) 90.dp else if (isTablet) 72.dp else 56.dp
+    val exerciseWidth = if(isLargeTablet) 420.dp else if (isTablet) 360.dp else 300.dp
+    val doPracticeNumberFonts = if(isLargeTablet) 140.sp else if (isTablet) 110.sp else 78.sp
 }

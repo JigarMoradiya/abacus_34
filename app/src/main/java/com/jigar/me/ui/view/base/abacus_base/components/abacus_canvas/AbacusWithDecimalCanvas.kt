@@ -71,6 +71,7 @@ fun AbacusWithDecimalCanvas(
     showDirectionHint: Boolean,
     showHighlighter: Boolean = false,
     abacusType: String? = null,
+    questionType: String? = null,
     isNextButtonEnable: Boolean = false,
     onRodMovementChange: (List<RodMovement>) -> Unit,
     onShowDirectionHintsChange: (Boolean) -> Unit,
@@ -102,7 +103,7 @@ fun AbacusWithDecimalCanvas(
     }
 
 
-    val dim = AbacusTheme.dimensionPreset(context,screenType = screenType,abacusType = abacusType, isFreeModeOn = isFreeModeOn)
+    val dim = AbacusTheme.dimensionPreset(context,screenType = screenType,abacusType = abacusType,questionType = questionType, isFreeModeOn = isFreeModeOn)
     val totalWidth = (dim.beadWidth * numberOfColumns) + (dim.rectLineWidth * 2) + (dim.columnSpaces * (numberOfColumns) * 2)
     val totalHeight = (dim.beadHeight * 7) + (dim.rectLineWidth * 2) + (dim.extraSpace * 2) + dim.beamHeight
 
