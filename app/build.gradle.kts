@@ -121,6 +121,11 @@ dependencies {
     // google
     implementation("com.google.android.gms:play-services-auth:21.4.0")
 
+    // Credential Manager (Jetpack) — modern Sign-In with Google replacement
+    implementation("androidx.credentials:credentials:1.5.0")
+    implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
+    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
+
     // push notification
     implementation("com.onesignal:OneSignal:5.4.0")
 

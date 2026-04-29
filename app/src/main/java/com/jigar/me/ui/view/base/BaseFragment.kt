@@ -1,11 +1,9 @@
 package com.jigar.me.ui.view.base
 
-import android.os.Bundle
 import android.view.View
+import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import com.jigar.me.R
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
@@ -22,19 +20,10 @@ abstract class BaseFragment : Fragment(), CoroutineScope {
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Default
 
-    private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         prefManager = AppPreferencesHelper(requireContext(), AppConstants.PREF_NAME)
-//        requireContext().setLocale(prefManager.getCustomParam(Constants.appLanguage,"en"))
         super.onCreate(savedInstanceState)
         job = Job()
-    }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        navigationGraph()
-    }
-    private fun navigationGraph() {
-        navController = requireActivity().findNavController(R.id.nav_host_fragment)
     }
 
     fun showToast(id : Int){

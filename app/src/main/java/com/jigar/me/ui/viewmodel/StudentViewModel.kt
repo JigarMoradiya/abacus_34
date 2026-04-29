@@ -4,29 +4,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.GoogleAuthProvider
-import com.jigar.me.MyApplication
-import com.jigar.me.R
 import com.jigar.me.data.model.MainAPIResponse
 import com.jigar.me.data.model.data.FetchAbacusDataRequest
 import com.jigar.me.data.model.data.LoginRequest
 import com.jigar.me.data.model.data.SignupV2Request
 import com.jigar.me.data.model.data.SocialLoginRequest
 import com.jigar.me.data.model.data.VerifyEmailRequest
-import com.jigar.me.data.repositories.Result
 import com.jigar.me.data.repositories.StudentApiRepository
 import com.jigar.me.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import javax.inject.Inject
@@ -34,37 +21,6 @@ import javax.inject.Inject
 @HiltViewModel
 class StudentViewModel @Inject constructor(private val apiRepository: StudentApiRepository) :
     ViewModel() {
-    var googleSignInClient: GoogleSignInClient? = null
-
-    init {
-        initGoogleAuthentication()
-    }
-
-    fun initGoogleAuthentication() {
-        val idToken = MyApplication.instance?.getString(R.string.web_client_id)
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .requestProfile()
-            .requestIdToken(idToken ?: "")
-            .build()
-        googleSignInClient = MyApplication.instance?.let { GoogleSignIn.getClient(it, gso) }
-        googleSignInClient?.signOut()
-    }
-
-    suspend fun signInWithGoogle(task: Task<GoogleSignInAccount>): Result<FirebaseUser?> {
-        return try {
-            val account: GoogleSignInAccount =
-                task.getResult(ApiException::class.java)
-            val credential =
-                GoogleAuthProvider.getCredential(account.idToken, null)
-            val result =
-                FirebaseAuth.getInstance().signInWithCredential(credential).await()
-            Result.Success(result.user)
-        } catch (e: Exception) {
-            Result.Error(e)
-        }
-    }
-
 
     private val _signupResponse: MutableLiveData<Resource<MainAPIResponse>> = MutableLiveData()
     val signupResponse: LiveData<Resource<MainAPIResponse>> get() = _signupResponse
