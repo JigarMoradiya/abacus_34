@@ -8,6 +8,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.generator.SudokuBoxRules
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.generator.SudokuSolver
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.generator.SudokuStorage
 import com.jigar.me.utils.PlaySound
@@ -136,22 +137,30 @@ class SudokuPlayViewModel @Inject constructor(
     }
 
     fun enter(number: Int) {
+
         val sel = selected ?: return
         if (isSolved) return
 
         val (r, c) = sel
         if (puzzle.startBoard[r][c] != 0) return
 
+        // ✅ ALWAYS SET VALUE
+        board = board.map { it.toMutableList() }
+            .toMutableList()
+            .also { it[r][c] = number }
+
         val valid = SudokuSolver.isValid(board, puzzle.size, r, c, number)
-        board = board.map { it.toMutableList() }.toMutableList().also { it[r][c] = number }
+
+        if (valid) {
+            PlaySound.playClick(app)
+            message = null
+        } else {
+            PlaySound.playWrong(app)
+            message = null // 👈 don't show error text, UI will show red
+        }
 
         saveProgress()
-        if (valid){
-            PlaySound.playClick(app)
-            checkSolved()
-        }else{
-            PlaySound.playWrong(app)
-        }
+        checkSolved()
     }
 
     fun eraseSelected() {
@@ -208,15 +217,50 @@ class SudokuPlayViewModel @Inject constructor(
     }
 
     private fun checkSolved() {
-        if (board.flatten().none { it == 0 }) {
-            if (board.map { it.toList() } == puzzle.solution) {
-                isSolved = true
-                SudokuStorage.clear(app)
-                PlaySound.playWin(app)
-            } else {
-                message = "Some numbers are placed incorrectly."
+
+        val n = puzzle.size.grid
+
+        if (board.any { row -> row.any { it == 0 } }) return
+
+        for (r in 0 until n) {
+            for (c in 0 until n) {
+
+                val value = board[r][c]
+
+                if (!isValidIgnoringSelf(r, c, value)) {
+                    message = "Please check all numbers, something is wrong 🤔"
+                    return
+                }
             }
         }
+
+        isSolved = true
+        SudokuStorage.clear(app)
+        PlaySound.playWin(app)
+    }
+
+    private fun isValidIgnoringSelf(row: Int, col: Int, num: Int): Boolean {
+
+        val n = puzzle.size.grid
+
+        for (i in 0 until n) {
+            if (i != col && board[row][i] == num) return false
+            if (i != row && board[i][col] == num) return false
+        }
+
+        val (br, bc) = SudokuBoxRules.boxSize(puzzle.size)
+        val sr = (row / br) * br
+        val sc = (col / bc) * bc
+
+        for (r in 0 until br) {
+            for (c in 0 until bc) {
+                val rr = sr + r
+                val cc = sc + c
+                if (!(rr == row && cc == col) && board[rr][cc] == num) return false
+            }
+        }
+
+        return true
     }
 
     fun saveProgress() {
