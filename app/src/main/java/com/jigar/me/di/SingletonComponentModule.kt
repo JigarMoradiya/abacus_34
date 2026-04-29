@@ -18,7 +18,7 @@ import com.jigar.me.data.local.db.inapp.purchase.InAppPurchaseDao
 import com.jigar.me.data.local.db.inapp.sku.InAppSKUDB
 import com.jigar.me.data.local.db.inapp.sku.InAppSKUDao
 import com.jigar.me.data.pref.AppPreferencesHelper
-import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.viewmodel.SudokuRepository
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuRepository
 import com.jigar.me.ui.view.home.screens.math_game_zone.target_number.viewmodel.TargetRepository
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils

@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components
+package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

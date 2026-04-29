@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku
+package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.home
 
 
 import androidx.compose.animation.AnimatedVisibility
@@ -16,7 +16,6 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -25,17 +24,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.HelpOutline
-import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.rounded.PlayArrow
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -66,10 +59,9 @@ import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.common_ui.how_to_play.HowToPlaySudokuView
-import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuDifficulty4
-import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuHomeViewModel
-import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuSize
-import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuStorage
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuDifficulty4
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuSize
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.generator.SudokuStorage
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.ButtonType
@@ -106,7 +98,7 @@ fun SudokuHomeScreen(
             Row(
                 modifier = Modifier
                     .weight(1f)
-                    .padding(horizontal = AppDimens.Dimens16),
+                    .padding(horizontal = Dimens16),
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -122,7 +114,7 @@ fun SudokuHomeScreen(
                     )
 
                     val animatedShadow by animateDpAsState(
-                        targetValue = if (isSelected) AppDimens.Dimens16 else AppDimens.Dimens4,
+                        targetValue = if (isSelected) Dimens16 else AppDimens.Dimens4,
                         animationSpec = spring(),
                         label = ""
                     )

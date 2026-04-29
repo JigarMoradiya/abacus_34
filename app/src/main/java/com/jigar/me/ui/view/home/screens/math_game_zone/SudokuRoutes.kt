@@ -5,10 +5,10 @@ import androidx.compose.runtime.getValue
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
-import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.SudokuHomeScreen
-import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.SudokuPlayScreen
-import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuHomeViewModel
-import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuPlayViewModel
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.home.SudokuHomeScreen
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.SudokuPlayScreen
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.home.SudokuHomeViewModel
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuPlayViewModel
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 
 @Composable

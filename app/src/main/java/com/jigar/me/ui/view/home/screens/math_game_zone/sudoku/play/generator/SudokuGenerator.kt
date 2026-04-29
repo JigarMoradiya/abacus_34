@@ -1,5 +1,8 @@
-package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components
+package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.generator
 
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuDifficulty4
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuPuzzle
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuSize
 import kotlin.random.Random
 
 // ---------- Solver & Generator ----------

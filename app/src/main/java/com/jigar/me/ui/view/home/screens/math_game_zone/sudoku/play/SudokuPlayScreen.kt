@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku
+package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -32,7 +32,6 @@ import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -64,14 +63,13 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.appScale
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.dialogs.CommonLoadingView
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
-import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuBoxRules
-import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuPlayViewModel
-import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuSize
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.generator.SudokuBoxRules
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuPlayViewModel
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuSize
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens2
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens20
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens3
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
@@ -127,9 +125,9 @@ fun SudokuPlayScreen(
                 ) {
 
                     if (vm.message.isNullOrEmpty()) {
-                        Text("", color = Color.Red, modifier = Modifier.padding(AppDimens.Dimens8))
+                        Text("", color = Color.Red, modifier = Modifier.padding(Dimens8))
                     } else {
-                        Text(vm.message ?: "", color = Color.Red, modifier = Modifier.padding(AppDimens.Dimens8))
+                        Text(vm.message ?: "", color = Color.Red, modifier = Modifier.padding(Dimens8))
                     }
 
                     Row {
@@ -139,9 +137,9 @@ fun SudokuPlayScreen(
                                 containerColor = Color(0xFF4CAF50),
                                 contentColor = Color.White
                             ),
-                            shape = RoundedCornerShape(AppDimens.Dimens8),
+                            shape = RoundedCornerShape(Dimens8),
                             contentPadding = PaddingValues(
-                                horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8
+                                horizontal = Dimens16, vertical = Dimens8
                             )
                         ) {
                             Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -160,16 +158,16 @@ fun SudokuPlayScreen(
                             }
                         }
 
-                        Spacer(Modifier.width(AppDimens.Dimens8))
+                        Spacer(Modifier.width(Dimens8))
                         Button(
                             onClick = { vm.revealOneNumber() },
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = Color(0xFFFF9800),
                                 contentColor = Color.White
                             ),
-                            shape = RoundedCornerShape(AppDimens.Dimens8),
+                            shape = RoundedCornerShape(Dimens8),
                             contentPadding = PaddingValues(
-                                horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8
+                                horizontal = Dimens16, vertical = Dimens8
                             )
                         ) {
                             Column(
@@ -190,16 +188,16 @@ fun SudokuPlayScreen(
                             }
                         }
 
-                        Spacer(Modifier.width(AppDimens.Dimens8))
+                        Spacer(Modifier.width(Dimens8))
                         Button(
                             onClick = { vm.resetPuzzle() },
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = Color(0xFFE53935),
                                 contentColor = Color.White
                             ),
-                            shape = RoundedCornerShape(AppDimens.Dimens8),
+                            shape = RoundedCornerShape(Dimens8),
                             contentPadding = PaddingValues(
-                                horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8
+                                horizontal = Dimens16, vertical = Dimens8
                             )
                         ) {
                             Column(
@@ -476,7 +474,7 @@ fun EraseKey(onClick: () -> Unit) {
         modifier = Modifier
             .size(width = AppDimens.Dimens48, height = AppDimens.Dimens36)
             .background(
-                colorResource(R.color.red_400), shape = RoundedCornerShape(AppDimens.Dimens8)
+                colorResource(R.color.red_400), shape = RoundedCornerShape(Dimens8)
             )
             .clickable {
                 onClick()
@@ -496,7 +494,7 @@ fun NumberKey(n: Int, onClick: () -> Unit) {
     Box(
         modifier = Modifier
             .size(width = AppDimens.Dimens48, height = AppDimens.Dimens36)
-            .background(colorResource(R.color.colorPrimary), shape = RoundedCornerShape(AppDimens.Dimens8))
+            .background(colorResource(R.color.colorPrimary), shape = RoundedCornerShape(Dimens8))
             .clickable {
                 onClick()
             }, contentAlignment = Alignment.Center

@@ -1,8 +1,6 @@
-package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components
+package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel
 
 import android.app.Application
-import android.content.Context
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -10,7 +8,8 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.viewmodel.SudokuRepository
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.generator.SudokuSolver
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.generator.SudokuStorage
 import com.jigar.me.utils.PlaySound
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

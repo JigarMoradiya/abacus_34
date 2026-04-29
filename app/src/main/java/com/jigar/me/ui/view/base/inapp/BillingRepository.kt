@@ -229,9 +229,9 @@ class BillingRepository @Inject constructor(
 
     private fun processPurchasesNew(purchasesResult: List<Purchase>) {
         CoroutineScope(Job() + Dispatchers.IO).launch {
-            Log.d(LOG_TAG, "processPurchases called")
+            Log.d(LOG_TAG, "processPurchasesNew called")
             val validPurchases = HashSet<Purchase>(purchasesResult.size)
-            Log.d(LOG_TAG, "processPurchases newBatch content $purchasesResult")
+            Log.d(LOG_TAG, "processPurchasesNew newBatch content $purchasesResult")
             purchasesResult.forEach { purchase ->
 //                if (purchase.purchaseState == Purchase.PurchaseState.PURCHASED) {
                 if (purchase.purchaseState == Purchase.PurchaseState.PENDING) {

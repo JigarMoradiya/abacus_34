@@ -1,11 +1,13 @@
-package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components
+package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.home
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuDifficulty4
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuHomeUiState
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuSize
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 @HiltViewModel
@@ -37,7 +39,7 @@ class SudokuHomeViewModel @Inject constructor(
         updateState { copy(selectedDifficulty = diff) }
     }
 
-    fun setDataGameStart(size: SudokuSize,diff: SudokuDifficulty4,isNew: Boolean) {
+    fun setDataGameStart(size: SudokuSize, diff: SudokuDifficulty4, isNew: Boolean) {
         updateState { copy(selectedSizeFinal = size, selectedDifficultyFinal = diff,isNewGame = isNew) }
     }
 
