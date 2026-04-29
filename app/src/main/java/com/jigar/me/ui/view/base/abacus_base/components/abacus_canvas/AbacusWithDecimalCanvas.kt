@@ -25,9 +25,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -36,6 +39,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.size.Dimension
 import com.jigar.me.R
 import com.jigar.me.data.local.data.RodMovement
 import com.jigar.me.ui.view.base.abacus_base.AbacusCalculations
@@ -47,6 +51,8 @@ import com.jigar.me.ui.view.base.abacus_base.components.SpotlightOverlay
 import com.jigar.me.ui.view.base.abacus_base.components.spotlightTag
 import com.jigar.me.ui.view.base.abacus_base.freeModeHighlightSteps
 import com.jigar.me.ui.view.base.abacus_base.utils.MathUtils
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens2
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.PlaySound
 import kotlin.math.abs
@@ -246,16 +252,34 @@ fun AbacusWithDecimalCanvas(
 
         // --- Outer frame ---
         if (screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult){
+            val shape = RoundedCornerShape(dim.rectLineCorner)
+
             Box(
                 modifier = Modifier
                     .width(totalWidth - (dim.columnSpaces * 2))
                     .height(totalHeight)
+
+                    .drawBehind {
+                        // 🔥 Shadow / glow (draw bigger + transparent)
+                        drawRoundRect(
+                            color = Color.Black.copy(alpha = 0.20f), // shadow color
+                            size = size,
+                            cornerRadius = CornerRadius(
+                                dim.rectLineCorner.toPx(),
+                                dim.rectLineCorner.toPx()
+                            ),
+                            style = Stroke(width = Dimens2.toPx()) // 👈 bigger than border
+                        )
+                    }
+
+                    // ✅ Actual border on top
                     .border(
                         width = dim.rectLineWidth,
                         brush = strokeBrush,
-                        shape = RoundedCornerShape(dim.rectLineCorner)
+                        shape = shape
                     )
-                    .spotlightTag(0, highlightSteps[0].message) // frame highlight
+
+                    .spotlightTag(0, highlightSteps[0].message)
             )
         }
 

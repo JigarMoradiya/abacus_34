@@ -34,14 +34,15 @@ fun BackgroundUI(
             modifier = Modifier
                 .fillMaxSize()
                 .background(
+                    Color(0xFFFFFFFF)
 //                    Color(0xFFEFEFEF)
-                    Brush.verticalGradient(
-                        colors = listOf(
-                            Color(0xFFFCF7F7),
-                            Color(0xFFEFEEEE),
-                            Color(0xFFEFEFEF),
-                        )
-                    )
+//                    Brush.verticalGradient(
+//                        colors = listOf(
+//                            Color(0xFFFCF7F7),
+//                            Color(0xFFEFEEEE),
+//                            Color(0xFFEFEFEF),
+//                        )
+//                    )
                 )
         )
 
@@ -50,7 +51,7 @@ fun BackgroundUI(
             painter = painterResource(id = R.drawable.background_new),
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            alpha = 0.07f
+            alpha = 0.05f
         )
 
 

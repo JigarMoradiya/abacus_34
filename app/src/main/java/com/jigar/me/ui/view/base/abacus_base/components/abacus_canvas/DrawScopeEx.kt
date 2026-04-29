@@ -11,11 +11,14 @@ import android.graphics.Shader
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.RoundRect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.DrawScope
@@ -31,6 +34,8 @@ import com.jigar.me.ui.view.base.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.base.abacus_base.AbacusDimensionModel
 import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.base.abacus_base.ColorPresets
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens1
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens2
 import com.jigar.me.utils.extensions.mixWith
 
 
@@ -49,8 +54,6 @@ fun DrawScope.drawAbacusColumns(
     rodMovementByRod: Map<Int, RodMovement>,
     showDirectionHint: Boolean,
     beadPolygonGray: ImageBitmap,
-//    faceOpen: Map<Int, ImageBitmap>,
-//    faceClose: Map<Int, ImageBitmap>,
     arrowUPBitmap : ImageBitmap,
     arrowDownBitmap : ImageBitmap,
 ) {
@@ -92,16 +95,31 @@ fun DrawScope.drawAbacusColumns(
         val stickWidth = beamH / 2f
 
         // ───────── Stick (rod) ─────────
+        val rectLeft = xCenter - stickWidth / 2f
+        val rectTop = 0f
+        val rectSize = Size(width = stickWidth, height = size.height)
+
+        val alphaValue = when {
+            showHighlighter && currentSpot == 1 -> Dimens1.value
+            isCentralColumn -> Dimens1.value
+            else -> 0.4f
+        }
+
+        // Shadow (draw first)
+        drawRoundRect(
+            color = Color.Black.copy(alpha = 0.20f),
+            topLeft = Offset(rectLeft + Dimens1.value, rectTop + Dimens1.value), // slight offset
+            size = rectSize,
+            cornerRadius = CornerRadius(0f, 0f)
+        )
+
+        // Main rect
         drawRoundRect(
             color = columnColor,
-            topLeft = Offset(x = xCenter - stickWidth / 2f, y = 0f),
-            size = Size(width = stickWidth, height = size.height),
+            topLeft = Offset(rectLeft, rectTop),
+            size = rectSize,
             cornerRadius = CornerRadius(0f, 0f),
-            alpha = when {
-                showHighlighter && currentSpot == 1 -> 1f
-                isCentralColumn -> 1f
-                else -> 0.4f
-            }
+            alpha = alphaValue
         )
 
         // Compute "active" mask (same as ColumnViewCompose)
@@ -115,11 +133,23 @@ fun DrawScope.drawAbacusColumns(
         // ───────── Beam band + red dot (shared for the column) ─────────
         run {
             val beamWidth = geometry.beadWidthPx + (geometry.columnSpacesPx * 2f)
+            val beamLeft = xCenter - beamWidth / 2f
+            val beamTop = beamBandTop + (beamH / 4f)
+            val beamSize = Size(width = beamWidth, height = beamH / 2f)
+
+            // Shadow (draw first)
+            drawRoundRect(
+                color = Color.Black.copy(alpha = 0.20f),
+                topLeft = Offset(x = beamLeft + Dimens1.value, y = beamTop + Dimens1.value),
+                size = beamSize, cornerRadius = CornerRadius(0f, 0f))
+
+            // Main beam
             drawRoundRect(
                 color = beamColor,
-                topLeft = Offset(x = xCenter - beamWidth / 2f, y = beamBandTop + (beamH / 4f)),
-                size = Size(width = beamWidth, height = beamH / 2f),
-            )
+                topLeft = Offset(x = beamLeft, y = beamTop),
+                size = beamSize, cornerRadius = CornerRadius(0f, 0f))
+
+
             if (!showHighlighter || currentSpot != 1) { // hide dots when rods highlighter show
                 if (isRedDotColumn) {
                     val dotRadius = if (isCentralColumn) beamH * 0.40f else beamH * 0.25f
@@ -131,6 +161,74 @@ fun DrawScope.drawAbacusColumns(
                     )
                 }
             }
+        }
+        val isFirstColumn = col == 0
+        val isLastColumn = col == numberOfColumns - 1
+
+        val firstCenter = geometry.columnCentersX.first()
+        val lastCenter = geometry.columnCentersX.last()
+
+        val beamWidthPerColumn = geometry.beadWidthPx + (geometry.columnSpacesPx * 2f)
+
+        // Full beam boundaries
+        val fullBeamLeft = firstCenter - beamWidthPerColumn / 2f
+        val fullBeamRight = lastCenter + beamWidthPerColumn / 2f
+
+        val capWidth = beamH * 0.6f
+        val capHeight = beamH * 1.1f
+        val radius = capHeight / 2f
+        if (isFirstColumn) {
+            // 🔥 LEFT DOT
+            val leftCapRect = Rect(
+                left = fullBeamLeft,
+                top = beamBandTop,
+                right = fullBeamLeft + capWidth,
+                bottom = beamBandTop + capHeight
+            )
+
+            val leftPath = Path().apply {
+                addRoundRect(
+                    RoundRect(
+                        rect = leftCapRect,
+                        topLeft = CornerRadius(0f, 0f),
+                        bottomLeft = CornerRadius(0f, 0f),
+                        topRight = CornerRadius(radius, radius),
+                        bottomRight = CornerRadius(radius, radius)
+                    )
+                )
+            }
+
+            drawPath(
+                path = leftPath,
+                color = preset.buttonColor
+            )
+        }
+
+        // ✅ RIGHT MOST (only once)
+        if (isLastColumn) {
+            val rightCapRect = Rect(
+                left = fullBeamRight - capWidth,
+                top = beamBandTop,
+                right = fullBeamRight,
+                bottom = beamBandTop + capHeight
+            )
+
+            val rightPath = Path().apply {
+                addRoundRect(
+                    RoundRect(
+                        rect = rightCapRect,
+                        topLeft = CornerRadius(radius, radius),
+                        bottomLeft = CornerRadius(radius, radius),
+                        topRight = CornerRadius(0f, 0f),
+                        bottomRight = CornerRadius(0f, 0f)
+                    )
+                )
+            }
+
+            drawPath(
+                path = rightPath,
+                color = preset.buttonColor
+            )
         }
 
         // ───────── Per bead index (0..6) ─────────
@@ -225,11 +323,17 @@ private fun DrawScope.drawBeadWithGradientMask(
 ) {
     val beadWidth = geometry.beadWidthPx
     val beadHeight = geometry.beadHeightPx
-
+    val shadowPaint = Paint().apply {
+        isAntiAlias = true
+        alpha = (0.25f * 255).toInt() // same as 20% opacity
+        colorFilter = android.graphics.PorterDuffColorFilter(
+            android.graphics.Color.BLACK,
+            PorterDuff.Mode.SRC_IN
+        )
+    }
     drawIntoCanvas { canvas ->
         val native = canvas.nativeCanvas
 
-        // The rect where this bead lives
         val dstRectF = RectF(
             xCenter - beadWidth / 2f,
             beadTop,
@@ -237,23 +341,42 @@ private fun DrawScope.drawBeadWithGradientMask(
             beadTop + beadHeight
         )
 
-        // 1️⃣ Create an offscreen layer JUST for this bead
-        val layerId = native.saveLayer(dstRectF, null)
-
-        // 2️⃣ Draw the bead image into that layer
+        // =========================
+        // 1. FAKE SHADOW (FAST)
+        // =========================
         native.drawBitmap(
             image.asAndroidBitmap(),
-            null,              // full source
-            dstRectF,          // destination rect
+            null,
+            RectF(
+                dstRectF.left + Dimens2.value,   // X offset
+                dstRectF.top + Dimens2.value,    // Y offset
+                dstRectF.right + Dimens2.value,
+                dstRectF.bottom + Dimens2.value
+            ),
+            shadowPaint
+        )
+
+        // =========================
+        // 🎯 2. MAIN LAYER
+        // =========================
+        val layerId = native.saveLayer(dstRectF, null)
+
+        // 2️⃣ Draw main bead image
+        native.drawBitmap(
+            image.asAndroidBitmap(),
+            null,
+            dstRectF,
             null
         )
 
-        // 3️⃣ Now draw the gradient with SRC_IN (masking into bead)
+        // =========================
+        // 🎨 3. GRADIENT MASK
+        // =========================
         val shader = LinearGradient(
-            /* x0 = */ 0f,
-            /* y0 = */ dstRectF.top,
-            /* x1 = */ 0f,
-            /* y1 = */ dstRectF.bottom,
+            0f,
+            dstRectF.top,
+            0f,
+            dstRectF.bottom,
             topColor.toArgb(),
             bottomColor.toArgb(),
             Shader.TileMode.CLAMP
@@ -264,9 +387,12 @@ private fun DrawScope.drawBeadWithGradientMask(
             this.shader = shader
             xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
         }
+
         native.drawRect(dstRectF, paint)
 
-        // 4️⃣ Restore layer (merges masked result back to main canvas)
+        // =========================
+        // ✅ 4. RESTORE
+        // =========================
         native.restoreToCount(layerId)
     }
 }
