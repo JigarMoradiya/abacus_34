@@ -11,12 +11,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.RemoveRedEye
+import androidx.compose.material.icons.filled.Subscriptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -24,9 +26,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import com.android.billingclient.api.BillingClient
 import com.jigar.me.R
-import com.jigar.me.ui.jetpack.core.presentation.components.PrimaryButton
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorRed
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
+import com.jigar.me.ui.view.home.theme.ButtonType
 
 @Composable
 fun PurchasePlanSection(
@@ -76,8 +79,17 @@ fun PurchasePlanSection(
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth()
                 )
+
+                Spacer(Modifier.height(AppDimens.Dimens8))
             }
-            PrimaryButton(text = if (isSubs)stringResource(R.string.txt_subscribe_Now) else stringResource(R.string.txt_purchase_Now), onClick = onSubscribe)
+
+            KidsActionButton(
+                text = if (isSubs)stringResource(R.string.txt_subscribe_Now) else stringResource(R.string.txt_purchase_Now),
+                icon = Icons.Default.Subscriptions,
+                type = ButtonType.BLUE,
+                onClick = onSubscribe,
+                isSmall = true
+            )
         }
     }
 }

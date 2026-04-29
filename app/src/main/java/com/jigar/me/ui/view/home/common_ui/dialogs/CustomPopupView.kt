@@ -1,7 +1,5 @@
 package com.jigar.me.ui.view.home.common_ui.dialogs
 
-import com.jigar.me.ui.view.home.theme.AppDimens
-
 import android.text.Html
 import android.widget.TextView
 import androidx.compose.foundation.Image
@@ -10,11 +8,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -35,9 +34,10 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.toColorInt
 import com.jigar.me.R
-import com.jigar.me.ui.jetpack.core.presentation.components.PrimaryButton
-import com.jigar.me.ui.jetpack.core.presentation.theme.ColorGreen
 import com.jigar.me.ui.jetpack.utils.ui.extensions.htmlToAnnotatedString
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
+import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.ButtonType
 
 @Composable
 fun CustomPopupView(
@@ -126,7 +126,13 @@ fun CustomPopupView(
 
                 // ✅ Positive Button
                 if (!positiveButtonText.isNullOrEmpty() && onPositiveTapped != null) {
-                    PrimaryButton(text = positiveButtonText, modifier = Modifier.fillMaxWidth(), color = ColorGreen, onClick = onPositiveTapped)
+                    KidsActionButton(
+                        text = positiveButtonText,
+                        icon = Icons.Default.Refresh,
+                        type = ButtonType.POSITIVE,
+                        onClick = onPositiveTapped,
+                        isSmall = true
+                    )
                 }
 
                 // ✅ Negative Button

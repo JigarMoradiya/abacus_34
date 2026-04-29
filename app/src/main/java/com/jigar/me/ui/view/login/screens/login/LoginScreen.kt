@@ -122,7 +122,7 @@ fun LoginScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = AppDimens.Dimens56, bottom = AppDimens.Dimens56)
+                .padding(top = AppDimens.Dimens56, bottom = Dimens16)
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top
@@ -135,7 +135,7 @@ fun LoginScreen(
                 color = Color.Black,
                 textAlign = TextAlign.Center
             )
-            Spacer(modifier = Modifier.height(AppDimens.Dimens20))
+            Spacer(modifier = Modifier.height(Dimens16))
             Text(
                 text = stringResource(R.string.welcome_to_abacus_child_leaning_app_portraint),
                 style = MaterialTheme.typography.bodyMedium.scaled(),
@@ -210,8 +210,6 @@ fun LoginScreen(
                     .fillMaxWidth()
                     .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens8)
             )
-
-            Spacer(modifier = Modifier.height(Dimens16))
 
             KidsActionButton(
                 text = stringResource(R.string.submit),

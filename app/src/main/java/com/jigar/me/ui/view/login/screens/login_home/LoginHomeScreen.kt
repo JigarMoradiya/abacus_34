@@ -53,7 +53,6 @@ import com.jigar.me.ui.view.home.theme.AppDimens.KidIconMedium
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.login.components.HtmlText
 import com.jigar.me.ui.view.login.screens.login_home.viewmodels.LoginHomeViewModel
-import com.jigar.me.ui.view.other.ContactUsActivity
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.openURL
 import com.jigar.me.utils.extensions.toastL
@@ -62,6 +61,7 @@ import com.jigar.me.utils.extensions.toastL
 fun LoginHomeScreen(
     onNavigateToLogin: () -> Unit,
     onNavigateToFAQs: () -> Unit,
+    onNavigateToContactUs: (type: String) -> Unit,
     onNavigateToHome: () -> Unit,
 ) {
     val viewModel: LoginHomeViewModel = hiltViewModel()
@@ -114,7 +114,7 @@ fun LoginHomeScreen(
                     color = Color.Black,
                     textAlign = TextAlign.Center
                 )
-                Spacer(modifier = Modifier.height(AppDimens.Dimens20))
+                Spacer(modifier = Modifier.height(AppDimens.Dimens16))
                 Text(
                     text = stringResource(R.string.welcome_to_abacus_child_leaning_app_portraint),
                     style = MaterialTheme.typography.bodyMedium.scaled(),
@@ -185,7 +185,7 @@ fun LoginHomeScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .clickable {
-                            ContactUsActivity.getInstance(context, AppConstants.extras_Comman.typeBulkLogin)
+                            onNavigateToContactUs(AppConstants.extras_Comman.typeBulkLogin)
                         }
                         .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens16)
                 )

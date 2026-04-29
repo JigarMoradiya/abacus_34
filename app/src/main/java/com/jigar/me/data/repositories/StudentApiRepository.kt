@@ -34,6 +34,13 @@ class StudentApiRepository @Inject constructor(
     suspend fun appReviewsList() = safeApiCall {
         api.appReviewsList()
     }
+    suspend fun submitReview(
+        planId: RequestBody,
+        description: RequestBody,
+        image1: MultipartBody.Part?,
+    ) = safeApiCall {
+        api.submitReview(planId, description, image1)
+    }
 }
 
 sealed class Result<out R> {

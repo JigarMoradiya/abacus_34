@@ -1,7 +1,5 @@
 package com.jigar.me.ui.view.home.screens.activities.exam.home.components
 
-import com.jigar.me.ui.view.home.theme.AppDimens
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,7 +7,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessTimeFilled
@@ -25,24 +22,19 @@ import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.components.HorizontalCheckbox
 import com.jigar.me.ui.jetpack.core.presentation.components.HorizontalRadio
-import com.jigar.me.ui.jetpack.core.presentation.components.PrimaryButton
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryDark
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.activities.exam.home.viewmodels.ExamHomeUiState
 import com.jigar.me.ui.view.home.screens.activities.exam.home.viewmodels.ExamHomeViewModel
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.utils.AppConstants
 

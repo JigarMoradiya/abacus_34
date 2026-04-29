@@ -1,7 +1,5 @@
 package com.jigar.me.ui.view.home.screens.reports.dialogs
 
-import com.jigar.me.ui.view.home.theme.AppDimens
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -23,6 +21,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -36,24 +35,24 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.data.model.data.QuestionDataRequest
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
-import com.jigar.me.ui.jetpack.core.presentation.components.PrimaryButton
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorDARKGreen
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.QuestionResult
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.toQuestionResultList
 import com.jigar.me.ui.view.home.screens.reports.dialogs.common.QuestionExamColumnItemHorizontal
 import com.jigar.me.ui.view.home.screens.reports.dialogs.common.StatItem
 import com.jigar.me.ui.view.home.screens.reports.dialogs.common.buildExamResult
+import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.secToCountDown
 import com.jigar.me.utils.extensions.secToTimeFormat
@@ -190,7 +189,13 @@ fun ExerciseExamCompleteResultDialog(
                                     ""
                                 }
                             }
-                            PrimaryButton(text = btnLabel, onClick = onGiveAgain)
+                            KidsActionButton(
+                                text = btnLabel,
+                                icon = Icons.Default.Refresh,
+                                type = ButtonType.BLUE,
+                                onClick = onGiveAgain,
+                                isSmall = true
+                            )
                         }
                     }
 
