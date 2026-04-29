@@ -128,7 +128,6 @@ fun CustomPopupView(
                 if (!positiveButtonText.isNullOrEmpty() && onPositiveTapped != null) {
                     KidsActionButton(
                         text = positiveButtonText,
-                        icon = Icons.Default.Refresh,
                         type = ButtonType.POSITIVE,
                         onClick = onPositiveTapped,
                         isSmall = true

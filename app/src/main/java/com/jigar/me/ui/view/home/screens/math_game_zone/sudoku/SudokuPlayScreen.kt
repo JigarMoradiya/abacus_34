@@ -38,9 +38,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.RoundRect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
@@ -55,6 +60,7 @@ import androidx.compose.ui.unit.min
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.appScale
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.dialogs.CommonLoadingView
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
@@ -62,6 +68,14 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.Sudoku
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuPlayViewModel
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.components.SudokuSize
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens2
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens20
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens3
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
+import com.jigar.me.ui.view.home.theme.PrimaryBlue
 import kotlin.math.ceil
 
 @Composable
@@ -239,10 +253,12 @@ fun SudokuPlayScreen(
 
 @Composable
 fun SudokuBoard(vm: SudokuPlayViewModel, modifier: Modifier = Modifier) {
+
     BoxWithConstraints(
         modifier = modifier.padding(AppDimens.Dimens12),
         contentAlignment = Alignment.Center
     ) {
+
         val n = vm.puzzle.size.grid
         val (boxRows, boxCols) = SudokuBoxRules.boxSize(vm.puzzle.size)
 
@@ -250,9 +266,13 @@ fun SudokuBoard(vm: SudokuPlayViewModel, modifier: Modifier = Modifier) {
         val cellSize = side / n
 
         Box(
-            modifier = Modifier.size(side),
-            contentAlignment = Alignment.TopStart
+            modifier = Modifier
+                .size(side)
+                .clip(RoundedCornerShape(Dimens16)) // outer board shape
+                .background(Color(0xFFFFF8E1))   // soft kids bg
         ) {
+
+            // 🔹 GRID CELLS (no spacing!)
             Column {
                 for (r in 0 until n) {
                     Row {
@@ -268,7 +288,9 @@ fun SudokuBoard(vm: SudokuPlayViewModel, modifier: Modifier = Modifier) {
                 }
             }
 
+            // 🔹 BOX BORDERS (draw on top)
             Canvas(modifier = Modifier.matchParentSize()) {
+
                 val cell = size.width / n
 
                 val boxW = cell * boxCols
@@ -277,13 +299,31 @@ fun SudokuBoard(vm: SudokuPlayViewModel, modifier: Modifier = Modifier) {
                 val rows = n / boxRows
                 val cols = n / boxCols
 
+                val radius = Dimens16.toPx()
+
                 for (br in 0 until rows) {
                     for (bc in 0 until cols) {
-                        drawRect(
-                            color = Color.Black,
-                            topLeft = Offset(bc * boxW, br * boxH),
-                            size = Size(boxW, boxH),
-                            style = Stroke(width = AppDimens.Dimens1.toPx())
+
+                        val isTop = br == 0
+                        val isBottom = br == rows - 1
+                        val isLeft = bc == 0
+                        val isRight = bc == cols - 1
+
+                        val roundRect = RoundRect(
+                            rect = Rect(
+                                offset = Offset(bc * boxW, br * boxH),
+                                size = Size(boxW, boxH)
+                            ),
+                            topLeft = if (isTop && isLeft) CornerRadius(radius) else CornerRadius.Zero,
+                            topRight = if (isTop && isRight) CornerRadius(radius) else CornerRadius.Zero,
+                            bottomLeft = if (isBottom && isLeft) CornerRadius(radius) else CornerRadius.Zero,
+                            bottomRight = if (isBottom && isRight) CornerRadius(radius) else CornerRadius.Zero
+                        )
+
+                        drawPath(
+                            path = Path().apply { addRoundRect(roundRect) },
+                            color = Color(0xFF6D4C41),
+                            style = Stroke(width = Dimens2.toPx())
                         )
                     }
                 }
@@ -292,15 +332,15 @@ fun SudokuBoard(vm: SudokuPlayViewModel, modifier: Modifier = Modifier) {
     }
 }
 
-
 @Composable
 fun SudokuCell(vm: SudokuPlayViewModel, row: Int, col: Int, sizeDp: Dp) {
+
     val puzzleGiven = vm.puzzle.startBoard[row][col] != 0
     val isSelected = vm.selected == row to col
     val value = vm.board[row][col]
+
     val isConflict = remember(vm.board) {
-        if (value == 0) false
-        else {
+        if (value == 0) false else {
             val n = vm.puzzle.size.grid
             for (i in 0 until n) {
                 if (i != col && vm.board[row][i] == value) return@remember true
@@ -320,56 +360,85 @@ fun SudokuCell(vm: SudokuPlayViewModel, row: Int, col: Int, sizeDp: Dp) {
     val inSameRow = vm.selected?.first == row
     val inSameCol = vm.selected?.second == col
     val brc = SudokuBoxRules.boxSize(vm.puzzle.size)
+
     val inSameBox = vm.selected?.let { (sr, sc) ->
-        (sr / brc.first) == (row / brc.first) && (sc / brc.second) == (col / brc.second)
+        (sr / brc.first) == (row / brc.first) &&
+                (sc / brc.second) == (col / brc.second)
     } ?: false
 
     val bgColor = when {
-        isSelected -> Color(0xFFBBDEFB)
-        inSameRow || inSameCol || inSameBox -> Color(0xFFFFF9C4)
+        isSelected -> Color(0xFF90CAF9)
+        inSameRow || inSameCol || inSameBox -> Color(0xFFFFF59D)
         puzzleGiven -> Color.White
-        else -> colorResource(R.color.grey_200)
+        else -> Color(0xFFE3F2FD)
     }
 
     Box(
         modifier = Modifier
-            .size(sizeDp)
-            .background(bgColor)
-            .border(0.5.dp, colorResource(R.color.grey_300))
-            .clickable(enabled = !puzzleGiven) { vm.selectCell(row, col) },
+            .size(sizeDp) // ✅ DO NOT TOUCH THIS
+            .border(0.5.dp, Color(0x596D4C41))
+            .clickable(enabled = !puzzleGiven) {
+                vm.selectCell(row, col)
+            },
         contentAlignment = Alignment.Center
     ) {
-        if (value != 0) {
-            Text(
-                text = value.toString(),
-                fontSize = when (vm.puzzle.size) {
-                    SudokuSize.FOUR -> 28.sp
-                    SudokuSize.SIX -> 20.sp
-                    SudokuSize.NINE -> 16.sp
-                },
-                fontFamily = FontFamily(Font(if (puzzleGiven) R.font.font_semibold else R.font.font_bold)),
-                color = if (puzzleGiven) Color.Black else if (isConflict) Color.Red else Color.Blue
-            )
-        } else {
-            if (vm.showCandidates && vm.selected?.first == row && vm.selected?.second == col) {
-                val cands = vm.candidatesForSelected()
-                Text(
-                    modifier = Modifier
-                        .padding(AppDimens.Dimens2)
-                        .fillMaxWidth(),
-                    text = cands.joinToString(" "),
-                    fontSize = 10.sp,
-                    color = Color(0xFF2E7D32),
-                    textAlign = TextAlign.Center,
-                    style = LocalTextStyle.current.copy(
-                        lineHeight = 11.sp,
-                        letterSpacing = 1.sp
-                    ),
-                    fontFamily = FontFamily(Font(R.font.font_bold)),
-                    maxLines = 3,
-                    softWrap = true
-                )
 
+        // 🔥 Inner styling (safe)
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(Dimens3) // 👈 inside only
+                .clip(RoundedCornerShape(when (vm.puzzle.size) {
+                    SudokuSize.FOUR -> Dimens10
+                    SudokuSize.SIX -> Dimens8
+                    SudokuSize.NINE -> Dimens4
+                }))
+                .background(bgColor),
+            contentAlignment = Alignment.Center
+        ) {
+
+            if (value != 0) {
+                Text(
+                    text = value.toString(),
+                    fontSize = when (vm.puzzle.size) {
+                        SudokuSize.FOUR -> 40.sp * appScale()
+                        SudokuSize.SIX -> 28.sp * appScale()
+                        SudokuSize.NINE -> 18.sp * appScale()
+                    },
+                    fontFamily = FontFamily(
+                        Font(if (puzzleGiven) R.font.font_semibold else R.font.font_extra_bold)
+                    ),
+                    color = when {
+                        puzzleGiven -> Color.Black
+                        isConflict -> Color.Red
+                        else -> PrimaryBlue
+                    }
+                )
+            } else {
+                if (vm.showCandidates &&
+                    vm.selected?.first == row &&
+                    vm.selected?.second == col
+                ) {
+                    val cands = vm.candidatesForSelected()
+                    Text(
+                        text = cands.joinToString(" "),
+                        fontSize = when (vm.puzzle.size) {
+                            SudokuSize.FOUR -> 24.sp * appScale()
+                            SudokuSize.SIX -> 14.sp * appScale()
+                            SudokuSize.NINE -> 10.sp * appScale()
+                        },
+                        fontFamily = FontFamily(
+                            Font( R.font.font_medium)
+                        ),
+                        color = Color(0xFF2E7D32),
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(Dimens2),
+                        maxLines = 3,
+                        softWrap = true
+                    )
+                }
             }
         }
     }
