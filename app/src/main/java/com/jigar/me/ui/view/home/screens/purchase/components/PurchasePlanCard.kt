@@ -56,6 +56,8 @@ fun PurchasePlanCard(
     val discountPerLifetime = uiState.discountPerLifetime
     val isAssignedPlan = (plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_1Year) && uiState.yearPlanAssignFromAdmin != null) || plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_All) && uiState.allPlanAssignFromAdmin != null
 
+    val cardShape = RoundedCornerShape(AppDimens.Dimens12)
+    val selectedBorder = isSelected && !plan.isPurchase && !isAssignedPlan
     Card(
         onClick = {
             if (!plan.isPurchase && !isAssignedPlan){
@@ -63,11 +65,14 @@ fun PurchasePlanCard(
             }
         },
 //        enabled = !plan.isPurchase && !isAssignedPlan,
-        shape = RoundedCornerShape(AppDimens.Dimens12),
-        border = if (isSelected && !plan.isPurchase && !isAssignedPlan) BorderStroke(AppDimens.Dimens1, ColorAccent) else null,
+        shape = cardShape,
+        border = if (selectedBorder)
+            BorderStroke(AppDimens.Dimens1, ColorAccent)
+        else
+            BorderStroke(0.5.dp, Color.Black.copy(alpha = 0.06f)),
         colors = CardDefaults.cardColors(containerColor = ColorAccentLight),
-        elevation = CardDefaults.cardElevation(AppDimens.Dimens2),
-        modifier = Modifier.fillMaxWidth().padding(AppDimens.Dimens2),
+        elevation = CardDefaults.cardElevation(0.dp),
+        modifier = Modifier.fillMaxWidth(),
     ) {
         Column(modifier = Modifier.padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8)) {
 

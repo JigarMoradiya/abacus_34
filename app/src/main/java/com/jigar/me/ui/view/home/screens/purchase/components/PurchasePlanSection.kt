@@ -4,13 +4,13 @@ import com.jigar.me.ui.view.home.theme.AppDimens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.RemoveRedEye
 import androidx.compose.material.icons.filled.Subscriptions
@@ -43,12 +43,14 @@ fun PurchasePlanSection(
         horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
     ) {
 
-        LazyColumn(
-            modifier = Modifier.fillMaxWidth(),
-            contentPadding = PaddingValues(end = AppDimens.Dimens12),
-            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens4),
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .verticalScroll(rememberScrollState())
+                .padding(end = AppDimens.Dimens12, top = AppDimens.Dimens2, bottom = AppDimens.Dimens2),
         ) {
-            itemsIndexed(uiState.sortedSkuList) { index, plan ->
+            uiState.sortedSkuList.forEachIndexed { index, plan ->
+                if (index > 0) Spacer(Modifier.height(AppDimens.Dimens8))
                 PurchasePlanCard(
                     uiState = uiState,
                     plan = plan,
