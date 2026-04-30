@@ -235,6 +235,7 @@ fun AbacusWithDecimalCanvas(
             ) {
                 // Draw all columns inside Canvas
                 drawAbacusColumns(
+                    screenType = screenType,
                     selectedTheme = selectedTheme,
                     abacusData = abacusData,
                     numberOfColumns = numberOfColumns,

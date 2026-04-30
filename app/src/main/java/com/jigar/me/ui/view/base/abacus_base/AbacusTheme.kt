@@ -276,9 +276,9 @@ object AbacusTheme {
         return base.copy(
             beadWidth = beadWidth.dp * multiplier,
             beadHeight = beadHeight.dp * multiplier,
-            columnSpaces = if (screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise) base.columnSpaces * 4 else if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode) base.columnSpaces * 2 else base.columnSpaces,
-            beamHeight = if (screenType == AppConstants.AbacusScreen.screenTypeExam || screenType == AppConstants.AbacusScreen.screenTypeExamResult || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) base.beamHeight
-            else base.beamHeight * 2,
+//            columnSpaces = base.columnSpaces,
+            columnSpaces = if (screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise) base.columnSpaces * 2 else if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode) base.columnSpaces * 2 else base.columnSpaces,
+            beamHeight = if (screenType == AppConstants.AbacusScreen.screenTypeExam || screenType == AppConstants.AbacusScreen.screenTypeExamResult || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) base.beamHeight else base.beamHeight * 2,
             rectLineWidth = when (screenType) {
                 AppConstants.AbacusScreen.screenTypeExam, AppConstants.AbacusScreen.screenTypeExamResult -> { 0.dp }
                 AppConstants.AbacusScreen.screenTypeSettingPreview -> base.rectLineWidth / 2

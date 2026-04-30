@@ -50,7 +50,6 @@ fun ExamPlayRoute(
                     modifier = Modifier.weight(1f)
                 )
             }
-//            ExamHeader(uiState, elapsedSeconds = uiState.elapsedSeconds)
 
             ExamProgressBar(
                 progress = uiState.currentIndex + 1,

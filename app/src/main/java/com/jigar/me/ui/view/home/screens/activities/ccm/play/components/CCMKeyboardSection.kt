@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.RemoveRedEye
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -29,10 +31,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsKeyPad
 import com.jigar.me.ui.view.home.screens.activities.ccm.play.viewmodels.CCMPlayUiState
 import com.jigar.me.ui.view.home.screens.activities.ccm.play.viewmodels.CCMPlayViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens6
 import com.jigar.me.ui.view.home.theme.AppDimens.keyPadHeight
@@ -92,21 +96,14 @@ fun CCMKeyboardSection(
                 onClick = { viewModel.eraseKeyboardValue() }
             )
         }
-        Spacer(Modifier.height(AppDimens.Dimens16))
+        Spacer(Modifier.height(AppDimens.Dimens8))
 
-        Surface(
+        KidsActionButton(
+            text = stringResource(R.string.check_answer),
+            type = ButtonType.ORANGE,
             onClick = { viewModel.submitAnswer() },
-            shape = RoundedCornerShape(AppDimens.Dimens50),
-            color = colorResource(R.color.colorPrimary),
-            tonalElevation = 0.dp,
-            shadowElevation = AppDimens.Dimens8
-        ) {
-            Text(
-                text = stringResource(R.string.check_answer).uppercase(), style = MaterialTheme.typography.bodySmall.copy(color = Color.White, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))), modifier = Modifier.padding(
-                    horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens10
-                )
-            )
-        }
+            isSmall = true
+        )
     }
 }
 

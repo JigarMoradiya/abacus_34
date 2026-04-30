@@ -36,6 +36,9 @@ import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.base.abacus_base.ColorPresets
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens1
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens2
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens6
+import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.mixWith
 
 
@@ -44,6 +47,7 @@ import com.jigar.me.utils.extensions.mixWith
 // ─────────────────────────────────────────────────────────────
 
 fun DrawScope.drawAbacusColumns(
+    screenType: String,
     selectedTheme: String,
     abacusData: AbacusCalculations,
     numberOfColumns: Int,
@@ -54,8 +58,8 @@ fun DrawScope.drawAbacusColumns(
     rodMovementByRod: Map<Int, RodMovement>,
     showDirectionHint: Boolean,
     beadPolygonGray: ImageBitmap,
-    arrowUPBitmap : ImageBitmap,
-    arrowDownBitmap : ImageBitmap,
+    arrowUPBitmap: ImageBitmap,
+    arrowDownBitmap: ImageBitmap
 ) {
     val preset = AbacusTheme.colorPreset(selectedTheme)
     val isPolygonTheme = selectedTheme.contains("poligon", ignoreCase = true)
@@ -162,73 +166,76 @@ fun DrawScope.drawAbacusColumns(
                 }
             }
         }
-        val isFirstColumn = col == 0
-        val isLastColumn = col == numberOfColumns - 1
 
-        val firstCenter = geometry.columnCentersX.first()
-        val lastCenter = geometry.columnCentersX.last()
+        if (screenType != AppConstants.AbacusScreen.screenTypeExam){
+            val isFirstColumn = col == 0
+            val isLastColumn = col == numberOfColumns - 1
 
-        val beamWidthPerColumn = geometry.beadWidthPx + (geometry.columnSpacesPx * 2f)
+            val firstCenter = geometry.columnCentersX.first()
+            val lastCenter = geometry.columnCentersX.last()
 
-        // Full beam boundaries
-        val fullBeamLeft = firstCenter - beamWidthPerColumn / 2f
-        val fullBeamRight = lastCenter + beamWidthPerColumn / 2f
+            val beamWidthPerColumn = geometry.beadWidthPx + (geometry.columnSpacesPx * 2f)
 
-        val capWidth = beamH * 0.6f
-        val capHeight = beamH * 1.1f
-        val radius = capHeight / 2f
-        if (isFirstColumn) {
-            // 🔥 LEFT DOT
-            val leftCapRect = Rect(
-                left = fullBeamLeft,
-                top = beamBandTop,
-                right = fullBeamLeft + capWidth,
-                bottom = beamBandTop + capHeight
-            )
+            // Full beam boundaries
+            val fullBeamLeft = firstCenter - beamWidthPerColumn / 2f
+            val fullBeamRight = lastCenter + beamWidthPerColumn / 2f
 
-            val leftPath = Path().apply {
-                addRoundRect(
-                    RoundRect(
-                        rect = leftCapRect,
-                        topLeft = CornerRadius(0f, 0f),
-                        bottomLeft = CornerRadius(0f, 0f),
-                        topRight = CornerRadius(radius, radius),
-                        bottomRight = CornerRadius(radius, radius)
+            val capWidth = beamH * 0.6f
+            val capHeight = beamH * 1.1f
+            val radius = capHeight / 2f
+            if (isFirstColumn) {
+                // LEFT DOT
+                val leftCapRect = Rect(
+                    left = fullBeamLeft,
+                    top = beamBandTop,
+                    right = fullBeamLeft + capWidth,
+                    bottom = beamBandTop + capHeight
+                )
+
+                val leftPath = Path().apply {
+                    addRoundRect(
+                        RoundRect(
+                            rect = leftCapRect,
+                            topLeft = CornerRadius(0f, 0f),
+                            bottomLeft = CornerRadius(0f, 0f),
+                            topRight = CornerRadius(radius, radius),
+                            bottomRight = CornerRadius(radius, radius)
+                        )
                     )
+                }
+
+                drawPath(
+                    path = leftPath,
+                    color = preset.buttonColor
                 )
             }
 
-            drawPath(
-                path = leftPath,
-                color = preset.buttonColor
-            )
-        }
+            // ✅ RIGHT MOST (only once)
+            if (isLastColumn) {
+                val rightCapRect = Rect(
+                    left = fullBeamRight - capWidth,
+                    top = beamBandTop,
+                    right = fullBeamRight,
+                    bottom = beamBandTop + capHeight
+                )
 
-        // ✅ RIGHT MOST (only once)
-        if (isLastColumn) {
-            val rightCapRect = Rect(
-                left = fullBeamRight - capWidth,
-                top = beamBandTop,
-                right = fullBeamRight,
-                bottom = beamBandTop + capHeight
-            )
-
-            val rightPath = Path().apply {
-                addRoundRect(
-                    RoundRect(
-                        rect = rightCapRect,
-                        topLeft = CornerRadius(radius, radius),
-                        bottomLeft = CornerRadius(radius, radius),
-                        topRight = CornerRadius(0f, 0f),
-                        bottomRight = CornerRadius(0f, 0f)
+                val rightPath = Path().apply {
+                    addRoundRect(
+                        RoundRect(
+                            rect = rightCapRect,
+                            topLeft = CornerRadius(radius, radius),
+                            bottomLeft = CornerRadius(radius, radius),
+                            topRight = CornerRadius(0f, 0f),
+                            bottomRight = CornerRadius(0f, 0f)
+                        )
                     )
+                }
+
+                drawPath(
+                    path = rightPath,
+                    color = preset.buttonColor
                 )
             }
-
-            drawPath(
-                path = rightPath,
-                color = preset.buttonColor
-            )
         }
 
         // ───────── Per bead index (0..6) ─────────
