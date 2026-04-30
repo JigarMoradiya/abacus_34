@@ -22,8 +22,7 @@ private const val KEY_DIFF = "target_diff"
 @HiltViewModel
 class TargetNumberPlayViewModel @Inject constructor(
     private val repo: TargetRepository,
-    private val savedStateHandle: SavedStateHandle,
-    private val app : Application
+    private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     private val gson = Gson()
@@ -84,7 +83,6 @@ class TargetNumberPlayViewModel @Inject constructor(
                 solutionSteps = puzzle.steps,
                 shownHintIndex = 0,
                 hintUsed = 0,
-//                hintLimit = 10,
                 hintLimit = when {
                     level == 1 -> 1
                     difficulty == CommonDifficulty4.hard || difficulty == CommonDifficulty4.veryHard -> 2
@@ -223,7 +221,6 @@ class TargetNumberPlayViewModel @Inject constructor(
         firstOperand = null
         selectedIndex = null
         selectedOp = null
-        AudioPlayerManager.playSoundHintClick()
         updateState(
             s.copy(
                 numbers = s.originalNumbers,
@@ -233,7 +230,6 @@ class TargetNumberPlayViewModel @Inject constructor(
                 isSolvedCorrect = null,
                 message = null,
                 shownHintIndex = 0,
-                hintUsed = 0,
                 selectedNumberIndex = null
             )
         )
@@ -255,8 +251,6 @@ class TargetNumberPlayViewModel @Inject constructor(
 
         // Dynamic Hint from current numbers
         val dynamicHint = findDynamicHint(s.numbers, s.target, s.allowedOps)
-//        Log.e("TargetNumberPlayViewModel","dynamicHint = "+ Gson().toJson(dynamicHint))
-//        Log.e("TargetNumberPlayViewModel","solutionSteps = "+ Gson().toJson(s.solutionSteps))
 
         if (dynamicHint != null) {
             AudioPlayerManager.playSoundHintClick()
@@ -391,42 +385,9 @@ class TargetNumberPlayViewModel @Inject constructor(
                 s.copy(
                     isSolved = true,
                     isSolvedCorrect = false,
-//                    message = "❌ $result ≠ ${s.target}"
                     message = "❌ Final result $result, target was ${s.target}"
                 )
             )
         }
     }
-}
-
-
-class TargetNumberPlayViewModelFake : ViewModel() {
-
-    // Fake MutableStateFlow
-    private val _uiState = MutableStateFlow(
-        TargetUiState(
-            target = 42,
-            numbers = listOf(8, 4, 6),
-            allowedOps = listOf(
-                TargetOperation.ADD,
-                TargetOperation.SUBTRACT,
-                TargetOperation.MULTIPLY
-            ),
-            currentExpression = "(8 + 4)",
-            steps = listOf("8 + 4 = 12"),
-            message = "Try next step",
-            isSolved = false,
-            isSolvedCorrect = null,
-            hintUsed = 0,
-            hintLimit = 2
-        )
-    )
-    val uiState: StateFlow<TargetUiState> = _uiState
-
-    // no-op calls for preview
-    fun tapNumber(i: Int) {}
-    fun tapOperation(op: TargetOperation) {}
-    fun showHint() {}
-    fun resetPuzzle() {}
-    fun generateNewPuzzle(level: Int, diff: CommonDifficulty4) {}
 }

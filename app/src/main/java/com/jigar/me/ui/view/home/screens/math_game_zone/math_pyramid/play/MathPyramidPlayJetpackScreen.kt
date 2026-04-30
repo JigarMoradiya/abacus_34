@@ -1,10 +1,14 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.play
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,6 +25,7 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.RocketLaunch
 import androidx.compose.material.icons.filled.Shuffle
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -38,6 +43,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
@@ -45,6 +51,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
@@ -54,6 +61,11 @@ import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.play.components.NumberPyramidGenerator
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
+import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsKeyPad
+import com.jigar.me.ui.view.home.theme.AppDimens.keyPadHeight
+import com.jigar.me.ui.view.home.theme.ButtonType
 
 @Composable
 fun MathPyramidPlayJetpackScreen(
@@ -65,7 +77,6 @@ fun MathPyramidPlayJetpackScreen(
     var editableMask by remember { mutableStateOf<List<List<Boolean>>>(emptyList()) }
     var selectedCell by remember { mutableStateOf<Pair<Int, Int>?>(null) }
     var isSolved by remember { mutableStateOf(false) }
-    val context = LocalContext.current
 
     fun generateNewPuzzle() {
         val range = when (difficulty) {
@@ -139,56 +150,47 @@ fun MathPyramidPlayJetpackScreen(
 
                     Spacer(modifier = Modifier.height(AppDimens.Dimens16))
 
-                    val shape = RoundedCornerShape(50)
-                    Box(modifier = Modifier.shadow(elevation = AppDimens.Dimens8,shape = shape, clip = false)) {
-                        Button(
-                            onClick = {
-                                AudioPlayerManager.playSoundHintClick()
-                                generateNewPuzzle() 
-                            },
-                            colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.colorPrimary),
-                                contentColor = colorResource(R.color.white)),
-                            contentPadding = PaddingValues(horizontal = AppDimens.Dimens16)
-                        ) {
-                            // --- 1. Shuffle Icon (Left side) ---
-                            Icon(imageVector = Icons.Filled.Shuffle, contentDescription = null,)
-
-                            // Add a small spacer between the icon and the text
-                            Spacer(modifier = Modifier.width(AppDimens.Dimens6)) // Adjust spacing as needed
-
-                            // --- 2. Text (Right side) ---
-                            Text(text = stringResource(R.string.start_new), fontSize = dimensionResource(R.dimen.textSizeSuperExtraLarge).value.sp,
-                                fontFamily = FontFamily(Font(R.font.font_bold)))
+                    KidsActionButton(
+                        text = stringResource(R.string.start_new),
+                        icon = Icons.Filled.Shuffle,
+                        type = ButtonType.ORANGE,
+                        isSmall = true,
+                        onClick = {
+                            generateNewPuzzle()
                         }
-                    }
+                    )
                 }
             }
 
             Spacer(Modifier.weight(1f))
         }
+    }
 
-        AnimatedVisibility(
-            visible = isSolved,
-            enter = fadeIn(),
-            exit = fadeOut()
-        ) {
-            CustomPopupView(
-                title = stringResource(R.string.you_did_it),
-                description = "You built the pyramid",
-                positiveButtonText = stringResource(R.string.continue_to_play),
-                negativeButtonText = stringResource(R.string.no_i_want_to_close),
-                icon = R.drawable.ic_complete,
-                widthMultiplier = 0.5f,
-                onPositiveTapped = {
-                    isSolved = false
-                    generateNewPuzzle()
-                },
-                onNegativeTapped = {
-                    isSolved = false
-                    onBackClick()
-                }
-            )
-        }
+    AnimatedVisibility(
+        visible = isSolved,
+        enter = fadeIn(),
+        exit = fadeOut()
+    ) {
+        CustomPopupView(
+            title = stringResource(R.string.you_did_it),
+            description = "You built the pyramid",
+            positiveButtonText = stringResource(R.string.continue_to_play),
+            negativeButtonText = stringResource(R.string.no_i_want_to_close),
+            icon = R.drawable.ic_complete,
+            widthMultiplier = 0.5f,
+            onPositiveTapped = {
+                isSolved = false
+                generateNewPuzzle()
+            },
+            onNegativeTapped = {
+                isSolved = false
+                onBackClick()
+            }
+        )
+    }
+
+    if (isSolved) {
+        ConfettiRainEffect()
     }
 }
 
@@ -205,7 +207,6 @@ private fun PyramidGrid(
         for (r in 0 until rows) {
             Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
                 // add spacer left to center the row like pyramid
-//                val leftPadding = (rows - r - 1) * 8
                 val leftPadding = 0
                 Spacer(modifier = Modifier.width(leftPadding.dp))
                 for (c in 0 until pyramid[r].size) {
@@ -221,59 +222,179 @@ private fun PyramidGrid(
     }
 }
 
+//@Composable
+//private fun PyramidCell(levels : Int,value: Int?, isEditable: Boolean, isSelected: Boolean, onTap: () -> Unit) {
+//    val originalWidth = 72
+//    var width : Double = originalWidth.toDouble()
+//    var height : Double = originalWidth.toDouble()
+//    var color = Color.Cyan
+//    when (levels) {
+//        2 -> {
+//            width = (originalWidth * 1.9)
+//            height = (originalWidth * 1.2)
+//            color = Color.Cyan
+//        }
+//        3 -> {
+//            width = (originalWidth * 1.3)
+//            height = (originalWidth * 0.9)
+//            color = Color.Magenta
+//        }
+//        4 -> {
+//            width = (originalWidth * 1.1)
+//            height = (originalWidth * 0.7)
+//            color = Color.Yellow
+//        }
+//        5 -> {
+//            height = (originalWidth * 0.6)
+//            color = Color.Green
+//        }
+//        6 -> {
+//            width = (originalWidth * 0.95)
+//            height = (originalWidth * 0.56)
+//            color = Color.Red
+//        }
+//    }
+//    val fonts = height * 0.6
+//    Card(
+//        modifier = Modifier
+//            .size(width = width.dp, height = height.dp)
+//            .clickable { if (isEditable) onTap() },
+//        shape = RoundedCornerShape(AppDimens.Dimens8),
+//        elevation = CardDefaults.cardElevation(  // Material3 syntax
+//            defaultElevation = if (isEditable) AppDimens.Dimens6 else AppDimens.Dimens2
+//        ))
+//    {
+//        Box(modifier = Modifier.fillMaxSize()
+//            .background(
+//                when {
+//                    isEditable -> color.copy(alpha = if (isSelected) 0.3f else 0.1F)                 // empty editable
+//                    value != null -> Color.White                     // fixed number
+//                    else -> color.copy(alpha = if (isSelected) 0.3f else 0.1F)      // optional style
+//                }
+//            ),contentAlignment = Alignment.Center) {
+//            when {
+//                value != null -> Text(text = value.toString(), fontSize = fonts.sp,
+//                    fontFamily = FontFamily(Font(R.font.font_bold)))
+//                isEditable -> Text(text = "?", fontSize = fonts.sp, color = Color.Black.copy(alpha = 0.5f),fontFamily = FontFamily(Font(R.font.font_bold)))
+//                else -> Text("", fontSize = fonts.sp,fontFamily = FontFamily(Font(R.font.font_bold)))
+//            }
+//            if (isSelected) {
+//                // simple selected overlay
+//                Box(modifier = Modifier.matchParentSize().background(color.copy(alpha = 0.3f)))
+//            }
+//        }
+//    }
+//}
+
 @Composable
-private fun PyramidCell(levels : Int,value: Int?, isEditable: Boolean, isSelected: Boolean, onTap: () -> Unit) {
+private fun PyramidCell(
+    levels: Int,
+    value: Int?,
+    isEditable: Boolean,
+    isSelected: Boolean,
+    onTap: () -> Unit
+) {
+
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
+
+    val scale by animateFloatAsState(
+        targetValue = if (pressed) 0.9f else 1f,
+        label = ""
+    )
+
     val originalWidth = 72
-    var width : Double = originalWidth.toDouble()
-    var height : Double = originalWidth.toDouble()
-    var color = Color.Cyan
-    if (levels == 2){
-        width = (originalWidth * 1.9)
-        height = (originalWidth * 1.2)
-        color = Color.Cyan
-    }else if (levels == 3){
-        width = (originalWidth * 1.3)
-        height = (originalWidth * 0.9)
-        color = Color.Magenta
-    }else if (levels == 4){
-        width = (originalWidth * 1.1)
-        height = (originalWidth * 0.7)
-        color = Color.Yellow
-    }else if (levels == 5){
-        height = (originalWidth * 0.6)
-        color = Color.Green
-    }else if (levels == 6){
-        width = (originalWidth * 0.95)
-        height = (originalWidth * 0.56)
-        color = Color.Red
+    var width: Double = originalWidth.toDouble()
+    var height: Double = originalWidth.toDouble()
+    var baseColor = Color(0xFFE3F2FD)
+
+    when (levels) {
+        2 -> {
+            width = (originalWidth * 1.9)
+            height = (originalWidth * 1.2)
+            baseColor = Color(0xFFE1F5FE)
+        }
+        3 -> {
+            width = (originalWidth * 1.3)
+            height = (originalWidth * 0.9)
+            baseColor = Color(0xFFF3E5F5)
+        }
+        4 -> {
+            width = (originalWidth * 1.1)
+            height = (originalWidth * 0.7)
+            baseColor = Color(0xFFFFF8E1)
+        }
+        5 -> {
+            height = (originalWidth * 0.6)
+            baseColor = Color(0xFFE8F5E9)
+        }
+        6 -> {
+            width = (originalWidth * 0.95)
+            height = (originalWidth * 0.56)
+            baseColor = Color(0xFFFFEBEE)
+        }
     }
-    val fonts = height * 0.6
+
+    val fontSize = height * 0.6
+
     Card(
         modifier = Modifier
-            .size(width = width.dp, height = height.dp)
-            .clickable { if (isEditable) onTap() },
-        shape = RoundedCornerShape(AppDimens.Dimens8),
-        elevation = CardDefaults.cardElevation(  // Material3 syntax
-            defaultElevation = if (isEditable) AppDimens.Dimens6 else AppDimens.Dimens2
-        ))
-    {
-        Box(modifier = Modifier.fillMaxSize()
-            .background(
-                when {
-                    isEditable -> color.copy(alpha = if (isSelected) 0.3f else 0.1F)                 // empty editable
-                    value != null -> Color.White                     // fixed number
-                    else -> color.copy(alpha = if (isSelected) 0.3f else 0.1F)      // optional style
-                }
-            ),contentAlignment = Alignment.Center) {
-            when {
-                value != null -> Text(text = value.toString(), fontSize = fonts.sp,
-                    fontFamily = FontFamily(Font(R.font.font_bold)))
-                isEditable -> Text(text = "?", fontSize = fonts.sp, color = Color.Black.copy(alpha = 0.5f),fontFamily = FontFamily(Font(R.font.font_bold)))
-                else -> Text("", fontSize = fonts.sp,fontFamily = FontFamily(Font(R.font.font_bold)))
+            .size(width.dp, height.dp)
+            .graphicsLayer {
+                scaleX = scale
+                scaleY = scale
             }
+            .clickable(
+                interactionSource = interaction,
+                indication = null
+            ) {
+                if (isEditable) onTap()
+            },
+        shape = RoundedCornerShape(AppDimens.Dimens10),
+        colors = CardDefaults.cardColors(
+            containerColor = when {
+                isSelected -> baseColor.copy(alpha = 0.9f)
+                isEditable -> baseColor
+                else -> Color.White
+            }
+        ),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = if (isSelected) 8.dp else if (isEditable) 5.dp else 2.dp
+        )
+    ) {
+
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+
+            Text(
+                text = when {
+                    value != null -> value.toString()
+                    isEditable -> "?"
+                    else -> ""
+                },
+                fontSize = fontSize.sp,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily(Font(R.font.font_bold)),
+                color = when {
+                    value != null -> Color(0xFF3E2723)
+                    isEditable -> Color.Gray
+                    else -> Color.Transparent
+                }
+            )
+
+            // ✅ Simple selected border (clean!)
             if (isSelected) {
-                // simple selected overlay
-                Box(modifier = Modifier.matchParentSize().background(color.copy(alpha = 0.3f)))
+                Box(
+                    modifier = Modifier
+                        .matchParentSize()
+                        .border(
+                            2.dp,
+                            Color(0xFF000000),
+                            RoundedCornerShape(AppDimens.Dimens10)
+                        )
+                )
             }
         }
     }
@@ -284,45 +405,41 @@ fun KeypadCompose(onKey: (String) -> Unit) {
         listOf("1", "2", "3"),
         listOf("4", "5", "6"),
         listOf("7", "8", "9"),
-        listOf("Erase", "0", "Clear")
+        listOf("Clear", "0", "Erase")
     )
 
     Column(modifier = Modifier.wrapContentWidth(), verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)) {
         buttons.forEach { row ->
             Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)) {
                 row.forEach { label ->
-                    val bgColor = when (label) {
-                        "Erase", "Clear" -> colorResource(R.color.red_400)
-                        else -> colorResource(R.color.colorPrimary)
-                    }
-                    Box(modifier = Modifier.size(width = AppDimens.Dimens48, height = AppDimens.Dimens36).background(bgColor
-                        , shape = RoundedCornerShape(AppDimens.Dimens8)
-                    ).clickable{
-                        onKey(label)
-                    },contentAlignment = Alignment.Center){
-                        when (label){
-                            "Erase" ->{
-                                Icon(
-                                    painter = painterResource(R.drawable.ic_backspace), // Replace with your Backspace/Erase Icon
-                                    contentDescription = "Erase",
-                                    tint = colorResource(R.color.white),
-                                    modifier = Modifier.size(AppDimens.Dimens24)
-                                )
-                            }
-                            "Clear" ->{
-                                Text(text = "C",
-                                    color = colorResource(R.color.white),
-                                    fontSize = dimensionResource(id = R.dimen.textSize24).value.sp,
-                                    fontFamily = FontFamily(Font(R.font.font_bold)))
-                            }
-                            else ->{
-                                Text(text = label,
-                                    color = colorResource(R.color.white),
-                                    fontSize = dimensionResource(id = R.dimen.textSize24).value.sp,
-                                    fontFamily = FontFamily(Font(R.font.font_bold)))
-                            }
+                    when (label){
+                        "Erase" ->{
+                            KidsKeyPad(
+                                icon = painterResource(R.drawable.ic_backspace),
+                                type = ButtonType.RED,
+                                width = keyPadHeight,
+                                height = keyPadHeight,
+                                onClick = { onKey("Erase") }
+                            )
                         }
-
+                        "Clear" ->{
+                            KidsKeyPad(
+                                text = "C",
+                                type = ButtonType.RED,
+                                width = keyPadHeight,
+                                height = keyPadHeight,
+                                onClick = { onKey("Clear") }
+                            )
+                        }
+                        else ->{
+                            KidsKeyPad(
+                                text = label,
+                                type = ButtonType.GREEN,
+                                width = keyPadHeight,
+                                height = keyPadHeight,
+                                onClick = { onKey(label) }
+                            )
+                        }
                     }
                 }
             }

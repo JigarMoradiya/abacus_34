@@ -3,6 +3,7 @@ package com.jigar.me.ui.view.home.screens.math_game_zone.target_number.component
 import android.os.Parcelable
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -38,10 +39,16 @@ class TargetNumberViewModel @Inject constructor(
     }
 
     fun selectLevel(level: Int) {
-        updateState { copy(selectedLevel = level) }
+        if (uiState.value.selectedLevel != level){
+            AudioPlayerManager.playSoundBtnClick()
+            updateState { copy(selectedLevel = level) }
+        }
     }
 
     fun selectDifficulty(diff: CommonDifficulty4) {
-        updateState { copy(selectedDifficulty = diff) }
+        if (uiState.value.selectedDifficulty != diff){
+            AudioPlayerManager.playSoundBtnClick()
+            updateState { copy(selectedDifficulty = diff) }
+        }
     }
 }

@@ -33,13 +33,17 @@ class SudokuHomeViewModel @Inject constructor(
     }
 
     fun selectSize(size: SudokuSize) {
-        AudioPlayerManager.playSoundBtnClick()
-        updateState { copy(selectedSize = size) }
+        if (_uiState.value.selectedSize != size){
+            AudioPlayerManager.playSoundBtnClick()
+            updateState { copy(selectedSize = size) }
+        }
     }
 
     fun selectDifficulty(diff: SudokuDifficulty4) {
-        AudioPlayerManager.playSoundBtnClick()
-        updateState { copy(selectedDifficulty = diff) }
+        if (_uiState.value.selectedDifficulty != diff){
+            AudioPlayerManager.playSoundBtnClick()
+            updateState { copy(selectedDifficulty = diff) }
+        }
     }
 
     fun setDataGameStart(size: SudokuSize, diff: SudokuDifficulty4, isNew: Boolean) {

@@ -34,6 +34,7 @@ import androidx.navigation.NavController
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.dialogs.CommonLoadingView
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
@@ -166,5 +167,9 @@ fun SudokuPlayScreen(
                 navController.popBackStack()
             }
         )
+    }
+
+    if (vm.isSolved){
+        ConfettiRainEffect()
     }
 }

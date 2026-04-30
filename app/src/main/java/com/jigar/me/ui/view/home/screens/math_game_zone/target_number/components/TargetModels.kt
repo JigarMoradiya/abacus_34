@@ -21,7 +21,7 @@ data class TargetUiState(
     val target: Int = 0,
     val numbers: List<Int> = emptyList(),
     val originalNumbers: List<Int> = emptyList(),
-    val allowedOps: List<TargetOperation> = TargetOperation.values().toList(),
+    val allowedOps: List<TargetOperation> = TargetOperation.entries,
     val currentExpression: String = "",
     val steps: List<String> = emptyList(),
     val isSolved: Boolean = false,

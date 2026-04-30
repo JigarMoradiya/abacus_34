@@ -58,6 +58,7 @@ import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.CommonDifficultySelectorCompose
+import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.how_to_play.HowToPlayTargetNumberView
 import com.jigar.me.ui.view.home.screens.math_game_zone.target_number.components.TargetNumberViewModel
@@ -177,7 +178,6 @@ fun TargetNumberHomeScreen(
             showHelp = false
         }
     }
-
 }
 
 @Composable

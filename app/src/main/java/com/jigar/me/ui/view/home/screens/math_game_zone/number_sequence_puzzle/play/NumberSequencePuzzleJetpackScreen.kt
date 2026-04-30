@@ -60,6 +60,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.jigar.me.R
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.screens.math_game_zone.number_sequence_puzzle.viewmodels.NumberSequencePuzzleViewModel
@@ -124,25 +125,30 @@ fun NumberSequencePuzzleJetpackScreen(
             }
         }
 
-        AnimatedVisibility(
-            visible = uiState.isSolved,
-            enter = fadeIn(),
-            exit = fadeOut()
-        ) {
-            CustomPopupView(
-                title = stringResource(R.string.you_did_it),
-                description = stringResource(R.string.completed_in_b_moves_b, uiState.moveCount),
-                positiveButtonText = stringResource(R.string.continue_to_play),
-                negativeButtonText = stringResource(R.string.no_i_want_to_close),
-                icon = R.drawable.ic_complete,
-                widthMultiplier = 0.5f,
-                onPositiveTapped = { viewModel.playAgain() },
-                onNegativeTapped = {
-                    viewModel.closePopup()
-                    navController.popBackStack()
-                }
-            )
-        }
+    }
+
+    AnimatedVisibility(
+        visible = uiState.isSolved,
+        enter = fadeIn(),
+        exit = fadeOut()
+    ) {
+        CustomPopupView(
+            title = stringResource(R.string.you_did_it),
+            description = stringResource(R.string.completed_in_b_moves_b, uiState.moveCount),
+            positiveButtonText = stringResource(R.string.continue_to_play),
+            negativeButtonText = stringResource(R.string.no_i_want_to_close),
+            icon = R.drawable.ic_complete,
+            widthMultiplier = 0.5f,
+            onPositiveTapped = { viewModel.playAgain() },
+            onNegativeTapped = {
+                viewModel.closePopup()
+                navController.popBackStack()
+            }
+        )
+    }
+
+    if (uiState.isSolved){
+        ConfettiRainEffect()
     }
 
     LaunchedEffect(gridSize) {
