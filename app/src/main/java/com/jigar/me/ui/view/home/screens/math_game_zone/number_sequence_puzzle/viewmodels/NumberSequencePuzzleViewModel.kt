@@ -5,7 +5,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.PlaySound
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -142,8 +142,8 @@ class NumberSequencePuzzleViewModel @Inject constructor(
             val playWin = isSolve && _uiState.value.soundOn
             val playSwap = !isSolve && _uiState.value.soundOn
 
-            if (playSwap) PlaySound.playSwip(context)
-            if (playWin) PlaySound.playWin(context)
+            if (playSwap) AudioPlayerManager.playSoundSwip()
+            if (playWin) AudioPlayerManager.playSoundWin()
 
             _uiState.update {
                 it.copy(

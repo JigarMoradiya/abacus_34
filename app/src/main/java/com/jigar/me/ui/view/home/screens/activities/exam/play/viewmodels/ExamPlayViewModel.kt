@@ -14,7 +14,7 @@ import com.jigar.me.ui.jetpack.core.StatefulViewModelAbacus
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.ExamGenerator
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.toQuestionDataRequest
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.PlaySound
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.utils.extensions.isNetworkAvailable
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -81,7 +81,7 @@ class ExamPlayViewModel @Inject constructor(
 
     // option click
     fun onOptionSelected(selectedAnswer: Int, correctAnswer: Int) {
-        PlaySound.playTap(context)
+        AudioPlayerManager.playSoundBtnClick()
         val isCorrectAnswer = selectedAnswer == correctAnswer
         val updatedExamPaper = state().examPaper.toMutableList().apply {
             val current = this[state().currentIndex]

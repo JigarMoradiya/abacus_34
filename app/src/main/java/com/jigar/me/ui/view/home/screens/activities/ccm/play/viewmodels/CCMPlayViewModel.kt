@@ -8,6 +8,7 @@ import com.jigar.me.data.model.data.*
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.jetpack.api.SubmitAllExamUseCase
 import com.jigar.me.ui.jetpack.core.StatefulViewModelAbacus
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.TextToSpeechManager
 import com.jigar.me.utils.*
 import com.jigar.me.utils.extensions.convertNumberToWords
@@ -142,7 +143,7 @@ class CCMPlayViewModel @Inject constructor(
             } else {
                 newList.add(value)
             }
-            PlaySound.playClick(context)
+            AudioPlayerManager.playSoundBtnClick()
             copy(answerDigits = newList)
         }
         updateAbacusFromKeyboard()
@@ -151,7 +152,7 @@ class CCMPlayViewModel @Inject constructor(
     fun eraseKeyboardValue() {
         updateState_ {
             if (answerDigits.isEmpty()) return@updateState_ this
-            PlaySound.playClear(context)
+            AudioPlayerManager.playSoundBtnClick()
             copy(answerDigits = answerDigits.dropLast(1))
         }
 
@@ -160,7 +161,7 @@ class CCMPlayViewModel @Inject constructor(
 
     fun clearKeyboard() {
         updateState_ {
-            PlaySound.playBeadReset(context)
+            AudioPlayerManager.playAbacusReset()
             copy(answerDigits = emptyList())
         }
         updateAbacusFromKeyboard()

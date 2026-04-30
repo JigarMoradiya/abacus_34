@@ -14,7 +14,7 @@ import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.home.screens.activities.exercise.exercise_generator.ExerciseGenerator
 import com.jigar.me.ui.view.home.screens.activities.exercise.exercise_generator.GridItemModel
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.PlaySound
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.utils.extensions.isNetworkAvailable
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -137,7 +137,7 @@ class ExerciseViewModel @Inject constructor(
             } else {
                 newList.add(value)
             }
-            PlaySound.playClick(context)
+            AudioPlayerManager.playSoundBtnClick()
             copy(answerDigits = newList)
         }
         updateAbacusFromKeyboard()
@@ -146,7 +146,7 @@ class ExerciseViewModel @Inject constructor(
     fun eraseKeyboardValue() {
         updateState_ {
             if (answerDigits.isEmpty()) return@updateState_ this
-            PlaySound.playClear(context)
+            AudioPlayerManager.playSoundBtnBack()
             copy(answerDigits = answerDigits.dropLast(1))
         }
         updateAbacusFromKeyboard()
@@ -154,7 +154,7 @@ class ExerciseViewModel @Inject constructor(
 
     fun clearKeyboard() {
         updateState_ {
-            PlaySound.playBeadReset(context)
+            AudioPlayerManager.playAbacusReset()
             copy(answerDigits = emptyList())
         }
         updateAbacusFromKeyboard()

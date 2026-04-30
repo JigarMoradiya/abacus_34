@@ -54,6 +54,8 @@ object AppDimens {
     val Dimens600 = if(isLargeTablet) 1200.dp else if (isTablet) 840.dp else 600.dp
     val examOptionWidth = if(isLargeTablet) 360.dp else if (isTablet) 330.dp else 240.dp
     val examOptionHeight = if(isLargeTablet) 84.dp else if (isTablet) 60.dp else 42.dp
+    val keyPadHeight = if(isLargeTablet) 80.dp else if (isTablet) 60.dp else 40.dp
+    val keyPadWidth = if(isLargeTablet) 100.dp else if (isTablet) 80.dp else 56.dp
 
     val HomePageLogo = if(isLargeTablet) 90.dp else if (isTablet) 72.dp else 56.dp
     val exerciseWidth = if(isLargeTablet) 420.dp else if (isTablet) 360.dp else 300.dp

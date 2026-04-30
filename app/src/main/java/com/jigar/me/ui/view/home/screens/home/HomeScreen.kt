@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.common_ui.Loader
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreeTrialDialog
@@ -71,6 +72,7 @@ fun HomeScreen(
     }
 
     fun onMenuClick(level: String, id: String? = null) {
+        AudioPlayerManager.playSoundBtnBack()
         when (level) {
             AppConstants.HomeClicks.Menu_Practice_Abacus -> {
                 id?.let { levelId -> onNavigateToCategory(levelId) }

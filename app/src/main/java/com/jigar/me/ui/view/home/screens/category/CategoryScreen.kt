@@ -35,6 +35,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.BuildConfig
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.screens.category.components.CategoryItem
 import com.jigar.me.ui.view.home.screens.category.components.PageItem
 import com.jigar.me.ui.view.home.screens.category.components.TopRightChips
@@ -120,6 +121,7 @@ fun CategoryScreen(
                                     purchasedSKU,
                                     uiState.categories[uiState.selectedCategoryIndex]
                                 )
+                                AudioPlayerManager.playSoundBtnBack()
                                 if (isPurchase) {
                                     onNavigateToDoPractice(set.id)
                                 } else {

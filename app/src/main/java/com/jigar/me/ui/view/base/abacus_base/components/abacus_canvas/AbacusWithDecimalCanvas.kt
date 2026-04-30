@@ -39,9 +39,9 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.size.Dimension
 import com.jigar.me.R
 import com.jigar.me.data.local.data.RodMovement
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.base.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.base.abacus_base.components.AbacusAnswerBarCompose
@@ -52,9 +52,7 @@ import com.jigar.me.ui.view.base.abacus_base.components.spotlightTag
 import com.jigar.me.ui.view.base.abacus_base.freeModeHighlightSteps
 import com.jigar.me.ui.view.base.abacus_base.utils.MathUtils
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens2
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.PlaySound
 import kotlin.math.abs
 
 @SuppressLint("LocalContextResourcesRead")
@@ -156,14 +154,14 @@ fun AbacusWithDecimalCanvas(
                     onReset()
                     // reset abacus sound
                     if (isBeadSoundOn){
-                        PlaySound.playBeadReset(context)
+                        AudioPlayerManager.playAbacusReset()
                     }
                 },
                 onNext = {
                     onNext()
                     // abacus change sound same as reset
                     if (isBeadSoundOn && screenType != AppConstants.AbacusScreen.screenTypeCCM && screenType != AppConstants.AbacusScreen.screenTypeExercise){
-                        PlaySound.playBeadReset(context)
+                        AudioPlayerManager.playAbacusReset()
                     }
                 },
                 modifier = Modifier
@@ -209,12 +207,12 @@ fun AbacusWithDecimalCanvas(
                                 if (totalDy < 0) {
                                     if (abacusData.canMoveUp(startIndex, startCol)) {
                                         abacusData.moveBeadUp(startIndex, startCol)
-                                        if (isBeadSoundOn) PlaySound.playBeadClick(context)
+                                        if (isBeadSoundOn) AudioPlayerManager.playAbacusMove()
                                     }
                                 } else {
                                     if (abacusData.canMoveDown(startIndex, startCol)) {
                                         abacusData.moveBeadDown(startIndex, startCol)
-                                        if (isBeadSoundOn) PlaySound.playBeadClick(context)
+                                        if (isBeadSoundOn) AudioPlayerManager.playAbacusMove()
                                     }
                                 }
                             }

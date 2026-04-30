@@ -35,7 +35,7 @@ import com.jigar.me.R
 import com.jigar.me.ui.jetpack.utils.ui.extensions.appScale
 import com.jigar.me.ui.view.home.screens.activities.ccm.play.viewmodels.CCMPlayUiState
 import com.jigar.me.ui.view.home.theme.AppDimens
-import com.jigar.me.utils.PlaySound
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 
 @SuppressLint("ConfigurationScreenWidthHeight")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -58,7 +58,7 @@ fun CCMCompleteBottomSheetCompose(
 
     val activity = LocalContext.current
     LaunchedEffect(Unit) {
-        PlaySound.playWin(activity)
+        AudioPlayerManager.playSoundWin()
     }
 
     ModalBottomSheet(

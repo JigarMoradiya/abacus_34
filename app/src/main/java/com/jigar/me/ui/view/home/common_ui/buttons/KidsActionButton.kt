@@ -1,7 +1,5 @@
 package com.jigar.me.ui.view.home.common_ui.buttons
 
-import com.jigar.me.ui.view.home.theme.AppDimens
-
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
@@ -91,7 +89,7 @@ fun KidsActionButton(
                 interactionSource = interactionSource,
                 indication = null
             ) {
-                AudioPlayerManager.playSoundMenuClick()
+                AudioPlayerManager.playSoundBtnClick()
                 onClick()
             }
             .padding(horizontal = if (isSmall) Dimens8 else Dimens10, vertical = if (isSmall) Dimens4 else Dimens6)

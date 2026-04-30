@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.data.pref.AppPreferencesHelper
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.TextToSpeechManager
 import com.jigar.me.ui.view.base.BaseActivity
 import com.jigar.me.ui.view.home.common_ui.BackgroundUI
@@ -83,6 +84,9 @@ class HomeActivity : BaseActivity() {
             // Detect tablet
             DeviceInfo.isLargeTablet = resources.configuration.smallestScreenWidthDp >= 840 && resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
             DeviceInfo.isTablet = resources.configuration.smallestScreenWidthDp >= 600 && resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+
+            // initialize audio player
+            AudioPlayerManager.init(this)
 
             setContent {
                 BackgroundUI()

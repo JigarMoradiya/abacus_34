@@ -1,6 +1,5 @@
 package com.jigar.me.ui.view.base
 
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
@@ -8,9 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.jigar.me.R
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.PlaySound
 import com.jigar.me.utils.extensions.toastS
-import java.io.IOException
 
 
 /**

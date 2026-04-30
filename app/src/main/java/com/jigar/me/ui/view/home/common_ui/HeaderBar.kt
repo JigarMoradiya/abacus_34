@@ -60,7 +60,7 @@ fun BackButtonWithText(
 ) {
     val headerColors = getButtonColors(ButtonType.BLUE)
     Row(
-        modifier = modifier.fillMaxWidth().padding(top = DeviceInfo.screenTopPadding(), bottom = Dimens8, start = DeviceInfo.screenHorizontalPadding(), end = Dimens16),
+        modifier = modifier.padding(top = DeviceInfo.screenTopPadding(), bottom = Dimens8, start = DeviceInfo.screenHorizontalPadding(), end = Dimens16),
         verticalAlignment = Alignment.CenterVertically
     ) {
 
@@ -147,6 +147,5 @@ fun BackButtonWithText(
             }
         }
 
-        Spacer(modifier = Modifier.weight(1f))
     }
 }

@@ -11,7 +11,7 @@ import androidx.lifecycle.viewModelScope
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.generator.SudokuBoxRules
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.generator.SudokuSolver
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.generator.SudokuStorage
-import com.jigar.me.utils.PlaySound
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -152,10 +152,10 @@ class SudokuPlayViewModel @Inject constructor(
         val valid = SudokuSolver.isValid(board, puzzle.size, r, c, number)
 
         if (valid) {
-            PlaySound.playClick(app)
+            AudioPlayerManager.playSoundBtnClick()
             message = null
         } else {
-            PlaySound.playWrong(app)
+            AudioPlayerManager.playSoundAnsWrong()
             message = null // 👈 don't show error text, UI will show red
         }
 
@@ -168,14 +168,14 @@ class SudokuPlayViewModel @Inject constructor(
         val (r, c) = sel
         if (puzzle.startBoard[r][c] == 0) {
             board = board.map { it.toMutableList() }.toMutableList().also { it[r][c] = 0 }
-            PlaySound.playClear(app)
+            AudioPlayerManager.playSoundBtnBack()
             saveProgress()
         }
     }
 
     fun toggleCandidates() {
         if (selected == null) {
-            PlaySound.playWrong(app)
+            AudioPlayerManager.playSoundAnsWrong()
             message = "Select a cell first"
             return
         }
@@ -189,12 +189,12 @@ class SudokuPlayViewModel @Inject constructor(
 
     fun revealOneNumber() {
         val s = selected ?: run {
-            PlaySound.playWrong(app)
+            AudioPlayerManager.playSoundAnsWrong()
             message = "Select a cell first"
             return
         }
         if (hintUsed >= hintLimit) {
-            PlaySound.playWrong(app)
+            AudioPlayerManager.playSoundAnsWrong()
             message = "No more hints available"
             return
         }
@@ -236,7 +236,7 @@ class SudokuPlayViewModel @Inject constructor(
 
         isSolved = true
         SudokuStorage.clear(app)
-        PlaySound.playWin(app)
+        AudioPlayerManager.playSoundWin()
     }
 
     private fun isValidIgnoringSelf(row: Int, col: Int, num: Int): Boolean {

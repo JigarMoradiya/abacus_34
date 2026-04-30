@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.jigar.me.ui.jetpack.core.StatefulViewModel
 import com.jigar.me.ui.jetpack.core.repository.abacus_data.AbacusDataRepository
 import com.jigar.me.ui.jetpack.core.repository.abacus_data.PurchaseRepository
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -49,6 +50,7 @@ class CategoryViewModel @Inject constructor(
     }
 
     fun selectCategory(index: Int) {
+        AudioPlayerManager.playSoundBtnBack()
         updateState_ { copy(selectedCategoryIndex = index) }
         loadPages(state().categories[index].id)
     }

@@ -4,7 +4,7 @@ import android.content.Context
 import android.media.MediaPlayer
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.PlaySound
+import com.jigar.me.ui.jetpack.utils.PlayBGMusic
 
 class BackgroundMusicController(
     private val context: Context,
@@ -23,7 +23,7 @@ class BackgroundMusicController(
 
         if (mediaPlayer == null) {
             mediaPlayer = MediaPlayer().apply {
-                val afd = context.assets.openFd(PlaySound.background_music)
+                val afd = context.assets.openFd(PlayBGMusic.background_music)
                 setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
                 isLooping = true
                 prepare()

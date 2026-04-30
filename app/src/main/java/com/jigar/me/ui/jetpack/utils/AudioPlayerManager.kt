@@ -15,11 +15,16 @@ object AudioPlayerManager {
             .setMaxStreams(5)
             .build()
 
-        soundMap["wrong_ans"] = load(context, "btn_wrong.mp3")
-        soundMap["menu_click"] = load(context, "click.mp3")
+        soundMap["abacus_move"] = load(context, "abacus_move.mp3")
+        soundMap["abacus_reset"] = load(context, "abacus_reset.mp3")
+        soundMap["ans_correct"] = load(context, "ans_correct.mp3")
+        soundMap["ans_wrong"] = load(context, "ans_wrong.mp3")
         soundMap["back_click"] = load(context, "back_click.mp3")
-        soundMap["game_complete"] = load(context, "play_win.wav")
-        soundMap["clap"] = load(context, "clap.wav")
+        soundMap["btn_click"] = load(context, "btn_click.mp3")
+        soundMap["btn_hint"] = load(context, "btn_hint.mp3")
+        soundMap["clap"] = load(context, "clap.mp3")
+        soundMap["play_swip"] = load(context, "play_swip.mp3")
+        soundMap["play_win"] = load(context, "play_win.mp3")
     }
 
     private fun load(context: Context, fileName: String): Int {
@@ -28,24 +33,35 @@ object AudioPlayerManager {
     }
 
 
-    fun playSoundWrongAnswer() {
-        play("wrong_ans")
+    fun playAbacusMove() {
+        play("abacus_move")
     }
-
-    fun playSoundMenuClick() {
-        play("menu_click")
+    fun playAbacusReset() {
+        play("abacus_reset")
     }
-
+    fun playSoundAnsCorrect() {
+        play("ans_correct")
+    }
+    fun playSoundAnsWrong() {
+        play("ans_wrong")
+    }
     fun playSoundBtnBack() {
         play("back_click")
     }
-
-    fun playSoundGameComplete() {
-        play("game_complete")
+    fun playSoundBtnClick() {
+        play("btn_click")
     }
-
+    fun playSoundHintClick() {
+        play("btn_hint")
+    }
     fun playSoundClap() {
         play("clap")
+    }
+    fun playSoundSwip() {
+        play("play_swip")
+    }
+    fun playSoundWin() {
+        play("play_win")
     }
 
     private fun play(key: String) {

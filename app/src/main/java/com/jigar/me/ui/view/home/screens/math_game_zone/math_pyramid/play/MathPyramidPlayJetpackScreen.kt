@@ -53,7 +53,7 @@ import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.play.components.NumberPyramidGenerator
 import com.jigar.me.ui.view.home.theme.AppDimens
-import com.jigar.me.utils.PlaySound
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 
 @Composable
 fun MathPyramidPlayJetpackScreen(
@@ -96,7 +96,7 @@ fun MathPyramidPlayJetpackScreen(
                     PyramidGrid(levels,pyramid, editableMask, selectedCell) { r, c ->
                         if (editableMask.getOrNull(r)?.getOrNull(c) == true) {
                             selectedCell = Pair(r, c)
-                            PlaySound.playTap(context)
+                            AudioPlayerManager.playSoundBtnClick()
                         }
                     }
                 }
@@ -110,16 +110,16 @@ fun MathPyramidPlayJetpackScreen(
                                 val newPyramid = pyramid.map { it.toMutableList() }.toMutableList()
                                 when (label) {
                                     "Clear" -> {
-                                        PlaySound.playClear(context)
+                                        AudioPlayerManager.playSoundBtnBack()
                                         newPyramid[r][c] = null
                                     }
                                     "Erase" -> {
-                                        PlaySound.playClear(context)
+                                        AudioPlayerManager.playSoundBtnBack()
                                         val next = current / 10
                                         newPyramid[r][c] = if (next == 0) null else next
                                     }
                                     else -> {
-                                        PlaySound.playClick(context)
+                                        AudioPlayerManager.playSoundBtnClick()
                                         val digit = label.toIntOrNull()
                                         if (digit != null) {
                                             val next = current * 10 + digit
@@ -129,7 +129,7 @@ fun MathPyramidPlayJetpackScreen(
                                 }
                                 pyramid = newPyramid
                                 if (checkIfSolved(pyramid)) {
-                                    PlaySound.playWin(context)
+                                    AudioPlayerManager.playSoundWin()
                                     isSolved = true
                                     selectedCell = null
                                 }
@@ -143,8 +143,9 @@ fun MathPyramidPlayJetpackScreen(
                     Box(modifier = Modifier.shadow(elevation = AppDimens.Dimens8,shape = shape, clip = false)) {
                         Button(
                             onClick = {
-                                PlaySound.playHint(context)
-                                generateNewPuzzle() },
+                                AudioPlayerManager.playSoundHintClick()
+                                generateNewPuzzle() 
+                            },
                             colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.colorPrimary),
                                 contentColor = colorResource(R.color.white)),
                             contentPadding = PaddingValues(horizontal = AppDimens.Dimens16)
