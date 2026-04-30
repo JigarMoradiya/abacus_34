@@ -149,16 +149,9 @@ class SudokuPlayViewModel @Inject constructor(
             .toMutableList()
             .also { it[r][c] = number }
 
-        val valid = SudokuSolver.isValid(board, puzzle.size, r, c, number)
+//        val valid = SudokuSolver.isValid(board, puzzle.size, r, c, number)
 
-        if (valid) {
-            AudioPlayerManager.playSoundBtnClick()
-            message = null
-        } else {
-            AudioPlayerManager.playSoundAnsWrong()
-            message = null // 👈 don't show error text, UI will show red
-        }
-
+        AudioPlayerManager.playSoundBtnClick()
         saveProgress()
         checkSolved()
     }

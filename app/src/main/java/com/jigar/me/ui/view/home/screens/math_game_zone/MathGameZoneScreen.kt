@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -36,6 +37,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.theme.AppDimens
 
@@ -107,15 +109,13 @@ fun MathGameZoneScreen(
                             text = category.title,
                             color = colorResource(R.color.black),
                             fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                            fontSize = dimensionResource(id = R.dimen.textSize17).value.sp,
-                            lineHeight = 18.sp
+                            style = MaterialTheme.typography.titleSmall.scaled(),
                         )
                         Text(
                             text = category.desc,
                             color = colorResource(R.color.black).copy(alpha = 0.8f),
                             fontFamily = FontFamily(Font(R.font.font_bold)),
-                            fontSize = dimensionResource(id = R.dimen.textSizeMedium).value.sp,
-                            lineHeight = 18.sp
+                            style = MaterialTheme.typography.labelMedium.scaled(),
                         )
                     }
                 }

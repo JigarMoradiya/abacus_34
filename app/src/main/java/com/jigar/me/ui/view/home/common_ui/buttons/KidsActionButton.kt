@@ -45,6 +45,7 @@ import com.jigar.me.ui.view.home.theme.AppDimens.ShadowOffsetText
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.theme.getButtonColors
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens3
 
 @Composable
 fun KidsActionButton(
@@ -92,7 +93,7 @@ fun KidsActionButton(
                 AudioPlayerManager.playSoundBtnClick()
                 onClick()
             }
-            .padding(horizontal = if (isSmall) Dimens8 else Dimens10, vertical = if (isSmall) Dimens4 else Dimens6)
+            .padding(horizontal = if (isSmall) Dimens8 else Dimens10, vertical = if (isSmall) Dimens2 else Dimens4)
     ) {
 
         Row(
@@ -122,14 +123,14 @@ fun KidsActionButton(
                 Spacer(Modifier.width(if (isSmall) Dimens4 else Dimens6))
             }
 
-            Box(Modifier.padding(start = if (!isIconStart) Dimens4 else 0.dp, end = if (isIconStart) Dimens4 else 0.dp)) {
+            Box(Modifier.padding(start = if (!isIconStart && icon != null) Dimens4 else 0.dp, end = if (isIconStart && icon != null) Dimens4 else 0.dp)) {
                 // Shadow layer
                 if (type != ButtonType.DISABLE){
                     Text(
                         text = text,
                         color = Color.Black.copy(alpha = 0.35f),
                         style = if (isSmall) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodyLarge.scaled(),
-                        fontWeight = if (isSmall) FontWeight.Bold else FontWeight.Bold,
+                        fontWeight = FontWeight.Bold,
                         modifier = Modifier.offset(ShadowOffsetText, ShadowOffsetText)
                     )
                 }
@@ -140,7 +141,7 @@ fun KidsActionButton(
                     text = text,
                     color = if (type == ButtonType.DISABLE) colors.base else Color.White,
                     style = if (isSmall) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodyLarge.scaled(),
-                    fontWeight = if (isSmall) FontWeight.Bold else FontWeight.Bold
+                    fontWeight = FontWeight.Bold
                 )
             }
 

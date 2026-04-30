@@ -1,7 +1,5 @@
 package com.jigar.me.ui.view.home.screens.activities.exercise.components
 
-import com.jigar.me.ui.view.home.theme.AppDimens
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,7 +10,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.Backspace
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -20,15 +17,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import com.jigar.me.R
-import com.jigar.me.ui.jetpack.core.presentation.theme.ColorGreen
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorDARKGreen
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
-import com.jigar.me.ui.view.home.screens.activities.ccm.play.components.IconKeyButton
-import com.jigar.me.ui.view.home.screens.activities.ccm.play.components.KeyButton
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsKeyPad
 import com.jigar.me.ui.view.home.screens.activities.ccm.play.components.KeypadRow
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseUiState
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseViewModel
@@ -37,6 +34,7 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens6
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
+import com.jigar.me.ui.view.home.theme.AppDimens.keyPadHeight
 import com.jigar.me.ui.view.home.theme.ButtonType
 
 @Composable
@@ -69,11 +67,27 @@ fun ExerciseQuestions(
                 Spacer(Modifier.height(Dimens6))
 
                 Row(horizontalArrangement = Arrangement.spacedBy(Dimens4)) {
-                    KeyButton("C") { viewModel.clearKeyboard() }
-                    KeypadRow(listOf("0")) { viewModel.addKeyboardValue(it) }
-                    IconKeyButton(Icons.AutoMirrored.Filled.Backspace) {
-                        viewModel.eraseKeyboardValue()
-                    }
+                    KidsKeyPad(
+                        text = "C",
+                        type = ButtonType.RED,
+                        width = keyPadHeight,
+                        height = keyPadHeight,
+                        onClick = { viewModel.clearKeyboard() }
+                    )
+                    KidsKeyPad(
+                        text = "0",
+                        type = ButtonType.GREEN,
+                        width = keyPadHeight,
+                        height = keyPadHeight,
+                        onClick = { viewModel.addKeyboardValue("0") }
+                    )
+                    KidsKeyPad(
+                        icon = painterResource(R.drawable.ic_backspace),
+                        type = ButtonType.RED,
+                        width = keyPadHeight,
+                        height = keyPadHeight,
+                        onClick = { viewModel.eraseKeyboardValue() }
+                    )
                 }
             }
             // show question for addition - subtraction
@@ -103,7 +117,7 @@ fun ExerciseQuestions(
 
             Text(
                 text = uiState.answerText,
-                style = MaterialTheme.typography.bodyLarge.copy(color = ColorGreen, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
+                style = MaterialTheme.typography.bodyLarge.copy(color = ColorDARKGreen, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
             )
 
             Spacer(Modifier.weight(1f))
@@ -111,7 +125,7 @@ fun ExerciseQuestions(
             KidsActionButton(
                 text = stringResource(R.string.next),
                 icon = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                type = ButtonType.GREEN,
+                type = ButtonType.ORANGE,
                 isSmall = true,
                 isIconStart = false,
                 onClick = {

@@ -1,8 +1,7 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone
 
 import androidx.compose.runtime.Composable
-import com.jigar.me.ui.view.home.screens.math_game_zone.GameCategoryType
-import com.jigar.me.ui.view.home.screens.math_game_zone.MathGameZoneScreen
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 
 @Composable
 fun MathGameZoneScreenRoute(
@@ -14,6 +13,7 @@ fun MathGameZoneScreenRoute(
 ) {
     MathGameZoneScreen(
         gameType = { type ->
+            AudioPlayerManager.playSoundBtnClick()
             when (type) {
                 GameCategoryType.NUMBER_SEQUENCE_PUZZLE -> onNavigateToNumberSequencePuzzle()
                 GameCategoryType.SUDOKU -> onNavigateToSudoku()

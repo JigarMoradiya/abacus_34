@@ -162,6 +162,8 @@ fun AbacusWithDecimalCanvas(
                     // abacus change sound same as reset
                     if (isBeadSoundOn && screenType != AppConstants.AbacusScreen.screenTypeCCM && screenType != AppConstants.AbacusScreen.screenTypeExercise){
                         AudioPlayerManager.playAbacusReset()
+                    }else{
+                        AudioPlayerManager.playSoundBtnClick()
                     }
                 },
                 modifier = Modifier

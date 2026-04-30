@@ -1,7 +1,6 @@
-package com.jigar.me.ui.view.home.screens.activities
+package com.jigar.me.ui.view.home.screens.activities.ccm.home
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeDrawing

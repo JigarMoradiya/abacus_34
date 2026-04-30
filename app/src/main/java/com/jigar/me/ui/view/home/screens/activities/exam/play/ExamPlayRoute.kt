@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.activities
+package com.jigar.me.ui.view.home.screens.activities.exam.play
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility

@@ -72,7 +72,6 @@ fun HomeScreen(
     }
 
     fun onMenuClick(level: String, id: String? = null) {
-        AudioPlayerManager.playSoundBtnBack()
         when (level) {
             AppConstants.HomeClicks.Menu_Practice_Abacus -> {
                 id?.let { levelId -> onNavigateToCategory(levelId) }
@@ -102,6 +101,7 @@ fun HomeScreen(
         HomeMenuScreen(
             uiState = uiState,
             onMenuClick = {
+                AudioPlayerManager.playSoundBtnClick()
                 onMenuClick(it.name, it.id)
             },
             modifier = Modifier.padding(vertical = AppDimens.Dimens16)

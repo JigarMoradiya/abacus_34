@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.activities
+package com.jigar.me.ui.view.home.screens.activities.ccm.play
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn

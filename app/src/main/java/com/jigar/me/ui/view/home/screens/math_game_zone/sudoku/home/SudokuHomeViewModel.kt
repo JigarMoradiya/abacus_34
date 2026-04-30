@@ -2,6 +2,7 @@ package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.home
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuDifficulty4
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuHomeUiState
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuSize
@@ -32,10 +33,12 @@ class SudokuHomeViewModel @Inject constructor(
     }
 
     fun selectSize(size: SudokuSize) {
+        AudioPlayerManager.playSoundBtnClick()
         updateState { copy(selectedSize = size) }
     }
 
     fun selectDifficulty(diff: SudokuDifficulty4) {
+        AudioPlayerManager.playSoundBtnClick()
         updateState { copy(selectedDifficulty = diff) }
     }
 

@@ -30,6 +30,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens2
@@ -94,7 +95,10 @@ fun PurchaseScreen(
             modifier = Modifier
                 .align(Alignment.TopStart)
                 .padding(Dimens16)
-                .clickable { onClose() }
+                .clickable {
+                    AudioPlayerManager.playSoundBtnBack()
+                    onClose()
+                }
         )
     }
 

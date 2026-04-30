@@ -1,15 +1,11 @@
-package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.components
+package com.jigar.me.ui.view.home.common_ui.buttons
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -29,17 +25,12 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.jigar.me.R
-import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
-import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuPlayViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens2
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens6
@@ -51,65 +42,8 @@ import com.jigar.me.ui.view.home.theme.AppDimens.keyPadWidth
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.theme.getButtonColors
 
-
-sealed class KeyItem {
-    data class Number(val value: Int) : KeyItem()
-    object Erase : KeyItem()
-}
-
-
 @Composable
-fun NumberPad(vm: SudokuPlayViewModel) {
-
-    val max = vm.puzzle.size.grid
-    val columns = if (max == 4) 2 else 3
-    val numbers = (1..max).toList()
-
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(Dimens8)
-    ) {
-
-        // ✅ Numbers grid
-        numbers.chunked(columns).forEach { rowItems ->
-
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(Dimens8),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                rowItems.forEach { n ->
-                    if (max != 9){
-                        KidsPadKey(
-                            text = "$n",
-                            type = ButtonType.POSITIVE,
-                            width = keyPadHeight + Dimens16,
-                            height = keyPadHeight + Dimens4,
-                            onClick = { vm.enter(n) }
-                        )
-                    }else{
-                        KidsPadKey(
-                            text = "$n",
-                            type = ButtonType.POSITIVE,
-                            onClick = { vm.enter(n) }
-                        )
-                    }
-
-                }
-            }
-        }
-
-        // ✅ Erase button (centered, separate row)
-        KidsPadKey(
-            icon = painterResource(R.drawable.ic_backspace),
-            type = ButtonType.RED,
-            onClick = { vm.eraseSelected() }
-        )
-    }
-}
-
-@Composable
-fun KidsPadKey(
+fun KidsKeyPad(
     text: String? = null,
     icon: Painter? = null,
     type: ButtonType,
@@ -152,7 +86,6 @@ fun KidsPadKey(
                 interactionSource = interaction,
                 indication = null
             ) {
-                AudioPlayerManager.playSoundBtnClick()
                 onClick()
             }
             .padding(

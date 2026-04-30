@@ -1,8 +1,5 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone
 
-import androidx.compose.ui.res.stringResource
-import com.jigar.me.R
-
 
 enum class GameCategoryType {
     NUMBER_SEQUENCE_PUZZLE,

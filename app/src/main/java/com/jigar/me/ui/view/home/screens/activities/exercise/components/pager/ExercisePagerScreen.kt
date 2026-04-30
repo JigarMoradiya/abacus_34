@@ -26,7 +26,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -34,7 +36,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorAccent
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorOrange
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.activities.exercise.exercise_generator.GridItemModel
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseUiState
@@ -42,6 +48,7 @@ import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.Exercise
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
 import com.jigar.me.ui.view.home.theme.ButtonType
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -78,27 +85,38 @@ fun ExercisePagerScreen(
                 modifier = Modifier.fillMaxSize()
             ) {
 
+                // TITLE
                 Text(
                     text = exercise.title,
-                    style = MaterialTheme.typography.bodyLarge.copy(
-                        color = Color.Black,
+                    style = MaterialTheme.typography.titleLarge.scaled().copy(
                         fontWeight = FontWeight.ExtraBold,
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold))
+                        fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                        color = Color(0xFF4E342E),
+                        shadow = Shadow(
+                            color = Color.Black.copy(alpha = 0.2f),
+                            offset = Offset(1f, 1f),
+                            blurRadius = 0f
+                        )
                     ),
                     textAlign = TextAlign.Center
                 )
 
+                Spacer(Modifier.height(Dimens4))
+
+                // SUBTITLE
                 Text(
                     text = stringResource(R.string.select_your_exercise),
-                    style = MaterialTheme.typography.bodyMedium.copy(
-                        color = Color.DarkGray,
-                        fontWeight = FontWeight.Normal,
-                        fontFamily = FontFamily(Font(R.font.font_regular))
-                    )
+                    style = MaterialTheme.typography.bodyMedium.scaled().copy(
+                        fontWeight = FontWeight.SemiBold,
+                        fontFamily = FontFamily(Font(R.font.font_medium)),
+                        color = Color(0xFF8D6E63)
+                    ),
+                    textAlign = TextAlign.Center
                 )
 
                 Spacer(Modifier.height(Dimens16))
 
+                // GRID
                 Box(
                     modifier = Modifier.fillMaxWidth(),
                     contentAlignment = Alignment.Center
@@ -107,6 +125,7 @@ fun ExercisePagerScreen(
                         items = exercise.gridItems,
                         selectedItem = selectedItem,
                         onItemSelected = {
+                            AudioPlayerManager.playSoundBtnClick()
                             viewModel.onGridItemSelected(page, it)
                         }
                     )
@@ -114,18 +133,26 @@ fun ExercisePagerScreen(
 
                 Spacer(Modifier.height(Dimens16))
 
+                // DESCRIPTION
                 Text(
                     text = selectedItem?.selectedItemDescription(page) ?: "",
-                    style = MaterialTheme.typography.bodyMedium.copy(
-                        color = Color.DarkGray,
+                    style = MaterialTheme.typography.bodyMedium.scaled().copy(
                         fontWeight = FontWeight.Medium,
-                        fontFamily = FontFamily(Font(R.font.font_medium))
+                        fontFamily = FontFamily(Font(R.font.font_medium)),
+                        color = Color(0xFF5D4037),
+                        shadow = Shadow(
+                            color = Color.Black.copy(alpha = 0.1f),
+                            offset = Offset(0.5f, 0.5f),
+                            blurRadius = 0f
+                        )
                     ),
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(horizontal = Dimens16)
                 )
 
                 Spacer(Modifier.height(Dimens12))
 
+                // BUTTON
                 KidsActionButton(
                     modifier = Modifier
                         .padding(vertical = Dimens12, horizontal = Dimens16),
@@ -150,7 +177,7 @@ fun ExercisePagerScreen(
                         .clip(CircleShape)
                         .background(
                             if (idx == pagerState.currentPage)
-                                ColorPrimary
+                                ColorOrange
                             else
                                 Color.Gray.copy(alpha = 0.4f)
                         )

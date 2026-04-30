@@ -55,6 +55,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
@@ -273,9 +274,9 @@ fun DifficultySelectorCompose(
                     Text(
                         text = d.displayName,
                         fontSize = if (isSelected)
-                            dimensionResource(id = R.dimen.textSizeSuperExtraLarge).value.sp
+                            dimensionResource(id = R.dimen.textSizeSuperExtraLarge).value.sp.scaled()
                         else
-                            dimensionResource(id = R.dimen.textSizeRegular).value.sp,
+                            dimensionResource(id = R.dimen.textSizeRegular).value.sp.scaled(),
                         color = if (isSelected) Color.White else colorResource(R.color.black_text),
                         fontFamily = FontFamily(Font(if (isSelected) R.font.font_bold else R.font.font_regular))
                     )

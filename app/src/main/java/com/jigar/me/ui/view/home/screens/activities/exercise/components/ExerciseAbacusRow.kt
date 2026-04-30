@@ -41,7 +41,7 @@ fun ExerciseAbacusRow(uiState: ExerciseUiState, viewModel: ExerciseViewModel, mo
                 if (!uiState.isAbacusOnLeftHand){
                     Spacer(Modifier.weight(1f))
                 }
-                ExerciseAbacus(viewModel)
+                ExerciseAbacus(viewModel,uiState)
             }
             Spacer(Modifier.weight(1f))
         }
@@ -58,7 +58,7 @@ fun ExerciseAbacusRow(uiState: ExerciseUiState, viewModel: ExerciseViewModel, mo
 }
 
 @Composable
-fun ExerciseAbacus(viewModel: ExerciseViewModel) {
+fun ExerciseAbacus(viewModel: ExerciseViewModel,uiState: ExerciseUiState) {
     Box {
         AbacusWithDecimalCanvas(
             selectedTheme = viewModel.selectedTheme,
@@ -69,7 +69,7 @@ fun ExerciseAbacus(viewModel: ExerciseViewModel) {
             numberOfColumns = 7,
             rodMovement = viewModel.rodMovements,
             showDirectionHint = viewModel.showDirectionHints,
-            isNextButtonEnable = true,
+            isNextButtonEnable = uiState.isExerciseStarted,
             onRodMovementChange = { viewModel.updateRodMovements(it) },
             onShowDirectionHintsChange = { viewModel.updateShowDirectionHints(it) },
             onShowHighlighterChange = {},

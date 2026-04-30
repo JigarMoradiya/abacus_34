@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.width
@@ -21,22 +22,27 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.dialogs.CommonLoadingView
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
-import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.components.NumberPad
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.components.SudokuNumberPad
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.components.SudokuBoard
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuPlayViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import com.jigar.me.ui.view.home.theme.ButtonType
 
@@ -80,18 +86,31 @@ fun SudokuPlayScreen(
                 modifier = Modifier
                     .fillMaxHeight()
                     .weight(1f),
-                verticalArrangement = Arrangement.spacedBy(
-                    AppDimens.Dimens12,
-                    Alignment.CenterVertically
-                ),
+                verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
+                SudokuNumberPad(vm = vm)
+
+                Spacer(Modifier.height(Dimens12))
+
                 if (vm.message.isNullOrEmpty()) {
-                    Text("", color = Color.Red, modifier = Modifier.padding(Dimens8))
+                    Text(
+                        "",
+                        color = Color.Red,
+                        style = MaterialTheme.typography.labelSmall.scaled(),
+                        fontWeight = FontWeight.Bold
+                    )
                 } else {
-                    Text(vm.message ?: "", color = Color.Red, modifier = Modifier.padding(Dimens8))
+                    Text(
+                        vm.message ?: "",
+                        color = Color.Red,
+                        style = MaterialTheme.typography.labelSmall.scaled(),
+                        fontWeight = FontWeight.Bold
+                    )
                 }
+
+                Spacer(Modifier.height(Dimens4))
 
                 Row {
                     KidsActionButton(
@@ -122,8 +141,6 @@ fun SudokuPlayScreen(
                     )
 
                 }
-
-                NumberPad(vm = vm)
             }
         }
     }

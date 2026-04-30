@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.math_game_zone
+package com.jigar.me.ui.view.home.screens.math_game_zone.number_sequence_puzzle
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue

@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.activities
+package com.jigar.me.ui.view.home.screens.activities.exercise
 
 import com.jigar.me.ui.view.home.theme.AppDimens
 
@@ -14,19 +14,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -42,7 +35,6 @@ import com.jigar.me.ui.view.home.screens.reports.dialogs.ExerciseExamCompleteRes
 import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
 import com.jigar.me.ui.view.home.theme.AppDimens.exerciseWidth
 import com.jigar.me.utils.extensions.secToCountDown
-import com.jigar.me.utils.extensions.secToTimeFormat
 
 @Composable
 fun ExerciseRoute(

@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.math_game_zone
+package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
