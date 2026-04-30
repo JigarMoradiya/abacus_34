@@ -37,6 +37,7 @@ import com.jigar.me.data.model.VideoData
 import androidx.core.net.toUri
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryLight
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 
 @Composable
 fun YoutubeVideoGrid(
@@ -107,7 +108,7 @@ fun VideoGridItem(
             Text(
                 text = video.txt,
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.labelMedium.copy(color = Color.Black, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
+                style = MaterialTheme.typography.labelMedium.scaled().copy(color = Color.Black, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
                 modifier = Modifier
                     .padding(horizontal = AppDimens.Dimens4)
                     .align(Alignment.CenterHorizontally)

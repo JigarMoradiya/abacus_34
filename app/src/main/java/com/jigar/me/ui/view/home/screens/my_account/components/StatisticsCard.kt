@@ -40,7 +40,7 @@ fun StatisticsCard(
         modifier = modifier,
         shape = RoundedCornerShape(AppDimens.Dimens8),
         colors = CardDefaults.cardColors(containerColor = backgroundColor),
-        elevation = CardDefaults.cardElevation(AppDimens.Dimens2)
+        elevation = CardDefaults.cardElevation(AppDimens.Dimens4)
     ) {
         Column(modifier = Modifier.padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -61,7 +61,7 @@ fun StatisticsCard(
             val timeFormat = if (time.isEmpty()){
                 "-"
             }else{
-                time.toDate().formatTo(at_dd_mmm_yy_hh_mm_a).lowercase(Locale.getDefault())
+                time.toDate().formatTo(at_dd_mmm_yy_hh_mm_a).lowercase()
             }
             Text(timeFormat,
                 style = MaterialTheme.typography.labelMedium,

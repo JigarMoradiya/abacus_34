@@ -1,7 +1,5 @@
 package com.jigar.me.ui.view.home.screens.my_account.components
 
-import com.jigar.me.ui.view.home.theme.AppDimens
-
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,52 +13,54 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import com.jigar.me.R
-import com.jigar.me.ui.jetpack.core.presentation.theme.Black
 import com.jigar.me.ui.view.home.screens.my_account.viewmodels.MyAccountMenu
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 
 
 @Composable
 fun MyAccountParentCard(
-    menu: MyAccountMenu, onItemClick: (String) -> Unit, modifier: Modifier
+    menu: MyAccountMenu,
+    onItemClick: (String) -> Unit,
+    modifier: Modifier
 ) {
-    Column(
-        modifier = modifier
-    ) {
+    Column(modifier = modifier) {
 
         Card(
-            modifier = Modifier
-                .fillMaxWidth(),
-            elevation = CardDefaults.cardElevation(AppDimens.Dimens2),
-            shape = RoundedCornerShape(AppDimens.Dimens8),
-            colors = CardDefaults.cardColors(containerColor = Color.White)
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(Dimens16), // ↓ reduced
+            elevation = CardDefaults.cardElevation(Dimens4), // ↓ reduced
+            colors = CardDefaults.cardColors(
+                containerColor = Color(0xFFFFF8E1)
+            )
         ) {
-            Column {
+            Column(modifier = Modifier.padding(vertical = Dimens8)) { // ↓ reduced
 
-                // Title
                 Text(
-                    modifier = Modifier.padding(horizontal = AppDimens.Dimens12).padding(top = AppDimens.Dimens8), text = menu.menuTitle,
-                    style = MaterialTheme.typography.titleMedium.copy(
-                        fontWeight = FontWeight.Bold,
-                        color = Black,
-                        fontFamily = FontFamily(Font(R.font.font_bold))
+                    text = menu.menuTitle,
+                    modifier = Modifier.padding(horizontal = Dimens12),
+                    style = MaterialTheme.typography.titleSmall.copy( // ↓ slightly smaller
+                        fontWeight = FontWeight.ExtraBold,
+                        fontFamily = FontFamily(Font(R.font.font_bold)),
+                        color = Color(0xFF5D4037)
                     )
                 )
 
-                Spacer(modifier = Modifier.height(AppDimens.Dimens8))
+                Spacer(modifier = Modifier.height(Dimens4)) // ↓ reduced
 
                 menu.subMenu.forEach { child ->
                     MyAccountChildRow(
-                        item = child, onClick = onItemClick
+                        item = child,
+                        onClick = onItemClick
                     )
                 }
             }
         }
-
     }
 }

@@ -60,6 +60,7 @@ import com.jigar.me.ui.view.base.abacus_base.ColorPresets.getMixColorListOfPolig
 import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
 import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.drawableToImageBitmap
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.settings.viewmodels.SettingViewModel
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.mixWith
@@ -71,27 +72,27 @@ fun ThemeSection(
     onThemeSelected: (String) -> Unit
 ) {
     Row(verticalAlignment = Alignment.CenterVertically,horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
-        Card(
-            shape = RoundedCornerShape(AppDimens.Dimens20),
+        Card(shape = RoundedCornerShape(AppDimens.Dimens16),
             colors = CardDefaults.cardColors(
-                containerColor = Color.White
-            ),
-            border = BorderStroke(AppDimens.Dimens1, ColorPrimary), // purple stroke
-            elevation = CardDefaults.cardElevation(defaultElevation = AppDimens.Dimens2),
-            modifier = Modifier.fillMaxWidth().weight(1f)
+                containerColor = Color(0xFFFFF8E1) // ✅ same as ToggleSection
+            ), elevation = CardDefaults.cardElevation(defaultElevation = AppDimens.Dimens3), modifier = Modifier.fillMaxWidth().weight(1f)
         ) {
-            Column {
+            Column(modifier = Modifier.padding(vertical = AppDimens.Dimens6)) {
                 Text(
                     text = stringResource(R.string.free_abacus_theme),
-                    modifier = Modifier.padding(vertical = AppDimens.Dimens8,horizontal = AppDimens.Dimens16),
-                    style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Medium,fontFamily = FontFamily(Font(R.font.font_medium))),
+                    modifier = Modifier.padding(horizontal = AppDimens.Dimens12),
+                    style = MaterialTheme.typography.bodyLarge.scaled().copy(
+                        fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium)), color = Color(0xFF5D4037)
+                    )
                 )
 
-                HorizontalDivider(Modifier, DividerDefaults.Thickness, DividerDefaults.color)
-
-                LazyRow( modifier = Modifier.padding(vertical = AppDimens.Dimens8),
+                LazyRow(
+                    modifier = Modifier.padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
+                        .clip(RoundedCornerShape(AppDimens.Dimens12))
+                        .background(Color(0xFFE8F5E9)),
                     horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
-                    contentPadding = PaddingValues(horizontal = AppDimens.Dimens16)) {
+                    contentPadding = PaddingValues(horizontal = AppDimens.Dimens12)
+                ) {
                     this.items(
                         listOf(
                             "poligon_rainbow",

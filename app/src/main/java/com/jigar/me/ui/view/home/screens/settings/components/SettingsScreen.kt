@@ -38,7 +38,7 @@ fun SettingsScreen(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(vertical = AppDimens.Dimens16)
+            .padding(bottom = AppDimens.Dimens16)
             .padding(start = AppDimens.Dimens16, end = AppDimens.Dimens16)
     ) {
 
@@ -72,7 +72,6 @@ fun SettingsScreen(
         Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
             ToggleSection(
                 modifier = Modifier.weight(1f),
-                title = "Display",
                 items = listOf(
                     ToggleItem(Icons.Outlined.Visibility,
                         stringResource(R.string.txt_setting_display_abacus_number),
@@ -95,7 +94,6 @@ fun SettingsScreen(
 
             ToggleSection(
                 modifier = Modifier.weight(1f),
-                title = "Sound & Control",
                 items = listOf(
                     ToggleItem(Icons.Outlined.PanToolAlt,
                         stringResource(R.string.txt_setting_left_hand),

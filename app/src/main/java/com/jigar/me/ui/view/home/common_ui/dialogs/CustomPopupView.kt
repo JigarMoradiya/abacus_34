@@ -34,6 +34,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.toColorInt
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.htmlToAnnotatedString
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.theme.AppDimens
@@ -137,7 +138,10 @@ fun CustomPopupView(
                 // ✅ Negative Button
                 if (!negativeButtonText.isNullOrEmpty() && onNegativeTapped != null) {
                     TextButton(
-                        onClick = onNegativeTapped,
+                        onClick = {
+                            AudioPlayerManager.playSoundBtnClick()
+                            onNegativeTapped()
+                        },
                     ) {
                         Text(
                             text = negativeButtonText,

@@ -18,6 +18,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.util.UnstableApi
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.screens.whats_learning.viewmodels.WhatsLearnNewUiState
 import com.jigar.me.ui.view.home.screens.purchase.components.InfoSection
 
@@ -54,7 +55,10 @@ fun WhatsLearnNewScreen(
             modifier = Modifier
                 .align(Alignment.TopStart)
                 .padding(AppDimens.Dimens16)
-                .clickable { onClose() }
+                .clickable {
+                    AudioPlayerManager.playSoundBtnClick()
+                    onClose()
+                }
         )
     }
 }
