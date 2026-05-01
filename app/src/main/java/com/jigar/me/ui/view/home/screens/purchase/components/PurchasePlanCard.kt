@@ -38,6 +38,7 @@ import com.jigar.me.ui.jetpack.core.presentation.theme.Black
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorAccent
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorAccentLight
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorGreen
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.DateTimeUtils
@@ -79,7 +80,7 @@ fun PurchasePlanCard(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     text = plan.getDurationTxt(),
-                    style = MaterialTheme.typography.labelLarge.copy(color = Color.DarkGray,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold)))
+                    style = MaterialTheme.typography.labelLarge.scaled().copy(color = Color.DarkGray,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold)))
                 )
 
                 if ((plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_1Year) && uiState.yearPlanAssignFromAdmin != null) || plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_All) && uiState.allPlanAssignFromAdmin != null){
@@ -94,7 +95,7 @@ fun PurchasePlanCard(
                         Text(
                             lineHeight = 10.sp,
                             text = stringResource(R.string.assigned),
-                            style = MaterialTheme.typography.labelSmall.copy(color = Color.White, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
+                            style = MaterialTheme.typography.labelSmall.scaled().copy(color = Color.White, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
                             modifier = Modifier.padding(
                                 horizontal = AppDimens.Dimens8,
                                 vertical = AppDimens.Dimens2
@@ -113,7 +114,7 @@ fun PurchasePlanCard(
                         Text(
                             lineHeight = 10.sp,
                             text = stringResource(R.string.txt_purchased),
-                            style = MaterialTheme.typography.labelSmall.copy(color = Color.White, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
+                            style = MaterialTheme.typography.labelSmall.scaled().copy(color = Color.White, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
                             modifier = Modifier.padding(
                                 horizontal = AppDimens.Dimens8,
                                 vertical = AppDimens.Dimens2
@@ -123,13 +124,13 @@ fun PurchasePlanCard(
                 }else{
                     Text(
                         text = " : ",
-                        style = MaterialTheme.typography.bodyLarge.copy(color = Black,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold)))
+                        style = MaterialTheme.typography.bodyLarge.scaled().copy(color = Black,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold)))
                     )
 
                     if(plan.getFreeTrialDays() > 0){
                         Text(
                             text = "${plan.getFreeTrialDays()} Days FREE",
-                            style = MaterialTheme.typography.bodyLarge.copy(color = Black,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold)))
+                            style = MaterialTheme.typography.bodyLarge.scaled().copy(color = Black,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold)))
                         )
                     }else{
                         PriceUi(discountPer,plan,originalYearly,discountPerLifetime,originalLifetime)
@@ -143,7 +144,7 @@ fun PurchasePlanCard(
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
                             text = "then",
-                            style = MaterialTheme.typography.labelLarge.copy(color = Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold)))
+                            style = MaterialTheme.typography.labelLarge.scaled().copy(color = Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold)))
                         )
 
                         PriceUi(discountPer, plan, originalYearly, discountPerLifetime, originalLifetime)
@@ -156,7 +157,7 @@ fun PurchasePlanCard(
                 Spacer(Modifier.height(AppDimens.Dimens4))
                 Text(
                     text = stringResource(R.string.plan_assigned_from_admin),
-                    style = MaterialTheme.typography.labelMedium.copy(
+                    style = MaterialTheme.typography.labelMedium.scaled().copy(
                         color = Color.Black,fontWeight = FontWeight.Normal,fontFamily = FontFamily(Font(R.font.font_regular))
                     )
                 )
@@ -165,7 +166,7 @@ fun PurchasePlanCard(
                         DateTimeUtils.convertDateFormat(uiState.yearPlanAssignFromAdmin.start_date?:"",
                             DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz,
                             DateTimeUtils.dd_MMMM_yyyy)}"),
-                    style = MaterialTheme.typography.labelMedium.copy(
+                    style = MaterialTheme.typography.labelMedium.scaled().copy(
                         color = Color.Black,fontWeight = FontWeight.Normal,fontFamily = FontFamily(Font(R.font.font_regular))
                     )
                 )
@@ -173,7 +174,7 @@ fun PurchasePlanCard(
                 Spacer(Modifier.height(AppDimens.Dimens4))
                 Text(
                     text = CommonUtils.htmlToAnnotatedString(stringResource(R.string.plan_assigned_from_admin)),
-                    style = MaterialTheme.typography.labelMedium.copy(
+                    style = MaterialTheme.typography.labelMedium.scaled().copy(
                         color = Color.Black,fontWeight = FontWeight.Normal,fontFamily = FontFamily(Font(R.font.font_regular))
                     )
                 )
@@ -182,7 +183,7 @@ fun PurchasePlanCard(
                         DateTimeUtils.convertDateFormat(uiState.allPlanAssignFromAdmin.start_date?:"",
                             DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz,
                             DateTimeUtils.dd_MMMM_yyyy)}"),
-                    style = MaterialTheme.typography.labelMedium.copy(
+                    style = MaterialTheme.typography.labelMedium.scaled().copy(
                         color = Color.Black,fontWeight = FontWeight.Normal,fontFamily = FontFamily(Font(R.font.font_regular))
                     )
                 )
@@ -190,13 +191,13 @@ fun PurchasePlanCard(
                 Spacer(Modifier.height(AppDimens.Dimens4))
                 Text(
                     text = CommonUtils.htmlToAnnotatedString("<strong>Order Id : </strong>${plan.orderId}"),
-                    style = MaterialTheme.typography.labelMedium.copy(
+                    style = MaterialTheme.typography.labelMedium.scaled().copy(
                         color = Color.Black,fontWeight = FontWeight.Normal,fontFamily = FontFamily(Font(R.font.font_regular))
                     )
                 )
                 Text(
                     text = CommonUtils.htmlToAnnotatedString(CommonUtils.getPurchaseTime(plan.type,plan.purchaseTime,plan.billingPeriod,)?:""),
-                    style = MaterialTheme.typography.labelMedium.copy(
+                    style = MaterialTheme.typography.labelMedium.scaled().copy(
                         color = Color.Black,fontWeight = FontWeight.Normal,fontFamily = FontFamily(Font(R.font.font_regular))
                     )
                 )
@@ -208,14 +209,14 @@ fun PurchasePlanCard(
 
                             Text(
                                 text = "save ~${plan.calculateSavings(original1MonthData.price_amount_micros?:0L, yearlyMicros?:0)}% vs monthly",
-                                style = MaterialTheme.typography.labelSmall.copy(
+                                style = MaterialTheme.typography.labelSmall.scaled().copy(
                                     color = Black,fontWeight = FontWeight.Medium,fontFamily = FontFamily(Font(R.font.font_medium))
                                 )
                             )
                             if (discountPer > 0) {
                                 Text(
                                     text = "(extra ~$discountPer% OFF)",
-                                    style = MaterialTheme.typography.labelSmall.copy(
+                                    style = MaterialTheme.typography.labelSmall.scaled().copy(
                                         color = ColorGreen,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))
                                     )
                                 )
@@ -224,7 +225,7 @@ fun PurchasePlanCard(
                     }else if (plan.isLifeTimeOffer() && discountPerLifetime > 0){
                         Text(
                             text = "~ ${discountPerLifetime}% OFF",
-                            style = MaterialTheme.typography.labelSmall.copy(
+                            style = MaterialTheme.typography.labelSmall.scaled().copy(
                                 color = ColorGreen,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))
                             )
                         )
@@ -243,7 +244,7 @@ fun PriceUi(discountPer: Int, plan: InAppSkuDetails, originalYearly: InAppSkuDet
         if ((originalYearly.price_amount_micros ?: 0) > (plan.price_amount_micros?:0)){
             Text(
                 text = originalYearly.price?:"",
-                style = MaterialTheme.typography.bodySmall.copy(
+                style = MaterialTheme.typography.bodySmall.scaled().copy(
                     textDecoration = TextDecoration.LineThrough,
                     color = ColorAccent,fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))
                 )
@@ -253,7 +254,7 @@ fun PriceUi(discountPer: Int, plan: InAppSkuDetails, originalYearly: InAppSkuDet
         if ((originalLifetime.price_amount_micros ?: 0) > (plan.price_amount_micros?:0)){
             Text(
                 text = originalLifetime.price?:"",
-                style = MaterialTheme.typography.bodySmall.copy(
+                style = MaterialTheme.typography.bodySmall.scaled().copy(
                     textDecoration = TextDecoration.LineThrough,
                     color = ColorAccent,fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))
                 )
@@ -265,7 +266,7 @@ fun PriceUi(discountPer: Int, plan: InAppSkuDetails, originalYearly: InAppSkuDet
 
     Text(
         text = plan.getDisplayPrice(),
-        style = MaterialTheme.typography.bodyLarge.copy(
+        style = MaterialTheme.typography.bodyLarge.scaled().copy(
             color = ColorAccent,fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))
         )
     )

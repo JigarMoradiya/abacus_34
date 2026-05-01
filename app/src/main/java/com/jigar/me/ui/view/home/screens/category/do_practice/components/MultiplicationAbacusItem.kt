@@ -21,6 +21,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.category.do_practice.components.subitems.AbacusAnswerUI
 import com.jigar.me.ui.view.home.screens.category.do_practice.viewmodels.AbacusDoPracticeUiState
 import com.jigar.me.utils.extensions.mixWith
@@ -49,7 +50,7 @@ fun MultiplicationAbacusItem(uiState: AbacusDoPracticeUiState) {
                 abacus.num1.forEachIndexed { index, digit ->
                     Text(
                         text = digit.toString(),
-                        style = MaterialTheme.typography.titleLarge,
+                        style = MaterialTheme.typography.titleLarge.scaled(),
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily(Font(R.font.font_bold)),
                         color = if (!uiState.isStepByStep)
@@ -66,7 +67,7 @@ fun MultiplicationAbacusItem(uiState: AbacusDoPracticeUiState) {
                 Text(
                     text = "x",
                     modifier = Modifier.padding(end = AppDimens.Dimens4),
-                    style = MaterialTheme.typography.titleLarge,
+                    style = MaterialTheme.typography.titleLarge.scaled(),
                     fontWeight = FontWeight.Bold,
                     fontFamily = FontFamily(Font(R.font.font_bold)),
                     color = if (!uiState.isStepByStep)
@@ -80,7 +81,7 @@ fun MultiplicationAbacusItem(uiState: AbacusDoPracticeUiState) {
                 abacus.num2.forEachIndexed { index, digit ->
                     Text(
                         text = digit.toString(),
-                        style = MaterialTheme.typography.titleLarge,
+                        style = MaterialTheme.typography.titleLarge.scaled(),
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily(Font(R.font.font_bold)),
                         color = if (!uiState.isStepByStep)

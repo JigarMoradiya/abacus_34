@@ -19,6 +19,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.category.do_practice.viewmodels.AbacusDoPracticeUiState
 import com.jigar.me.utils.extensions.mixWith
 
@@ -55,7 +56,7 @@ fun AbacusAnswerUI(
 
         Text(
             text = displayText,
-            style = style.copy(
+            style = style.scaled().copy(
                 color = colorPreset.buttonColor,
                 fontWeight = FontWeight.ExtraBold,
                 fontFamily = FontFamily(Font(R.font.font_extra_bold))

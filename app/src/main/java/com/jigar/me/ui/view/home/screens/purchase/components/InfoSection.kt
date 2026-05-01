@@ -29,6 +29,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.utils.ui.extensions.htmlToAnnotatedString
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.theme.AppDimens
 
 
@@ -55,7 +56,7 @@ fun InfoSection(
         title?.let{
             Text(
                 text = title,
-                style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
+                style = MaterialTheme.typography.bodyLarge.scaled().copy(fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(horizontal = AppDimens.Dimens16)
             )
@@ -77,7 +78,7 @@ fun InfoSection(
             ) {
                 infoList.forEach {
                     Text(
-                        text = it.htmlToAnnotatedString(), style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Normal, fontFamily = FontFamily(Font(R.font.font_regular)))
+                        text = it.htmlToAnnotatedString(), style = MaterialTheme.typography.labelLarge.scaled().copy(fontWeight = FontWeight.Normal, fontFamily = FontFamily(Font(R.font.font_regular)))
                     )
                 }
             }

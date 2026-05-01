@@ -24,6 +24,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorDARKGreen
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsKeyPad
 import com.jigar.me.ui.view.home.screens.activities.ccm.play.components.KeypadRow
@@ -52,7 +53,7 @@ fun ExerciseQuestions(
                     val que = uiState.exerciseQuestionList[uiState.currentQueIndex].que+" = ?"
                     Text(
                         que,
-                        style = MaterialTheme.typography.headlineSmall.copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
+                        style = MaterialTheme.typography.headlineLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
                     )
                     Spacer(Modifier.height(Dimens16))
                 }
@@ -98,7 +99,7 @@ fun ExerciseQuestions(
                     uiState.exerciseQuestionList[uiState.currentQueIndex].que.split(Regex("(?=[+-])")).forEach {
                         Text(
                             it,
-                            style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
+                            style = MaterialTheme.typography.bodyLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
                         )
                     }
                 }
@@ -111,13 +112,13 @@ fun ExerciseQuestions(
         ) {
 
             Text("Answer:",
-                style = MaterialTheme.typography.bodyMedium.copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))))
+                style = MaterialTheme.typography.bodyMedium.scaled().copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))))
 
             Spacer(Modifier.width(Dimens8))
 
             Text(
                 text = uiState.answerText,
-                style = MaterialTheme.typography.bodyLarge.copy(color = ColorDARKGreen, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
+                style = MaterialTheme.typography.bodyLarge.scaled().copy(color = ColorDARKGreen, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
             )
 
             Spacer(Modifier.weight(1f))

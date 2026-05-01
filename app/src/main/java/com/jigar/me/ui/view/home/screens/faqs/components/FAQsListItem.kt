@@ -42,6 +42,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.data.local.data.FAQs
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 
 
 @Composable
@@ -94,7 +95,7 @@ fun FaqItem(
                 AutoLinkText(
                     text = faq.question,
                     modifier = Modifier.weight(1f),
-                    style = MaterialTheme.typography.bodyMedium.copy(
+                    style = MaterialTheme.typography.bodyMedium.scaled().copy(
                         fontFamily = FontFamily(Font(R.font.font_bold)),
                         color = Color.Black
                     )
@@ -116,7 +117,7 @@ fun FaqItem(
 
                 AutoLinkText(
                     text = faq.answer,
-                    style = MaterialTheme.typography.bodySmall.copy(
+                    style = MaterialTheme.typography.bodySmall.scaled().copy(
                         fontFamily = FontFamily(Font(R.font.font_medium)),
                         color = colorResource(R.color.colorEditTextBlack_33)
                     )

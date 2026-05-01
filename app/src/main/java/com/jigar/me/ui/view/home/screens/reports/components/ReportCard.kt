@@ -37,6 +37,7 @@ import androidx.core.text.HtmlCompat
 import com.jigar.me.R
 import com.jigar.me.data.model.data.AllExamData
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorGreen
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsLabel
 import com.jigar.me.ui.view.home.theme.AppDimens
@@ -106,7 +107,7 @@ private fun ReportHeaderRow(
 
         Text(
             text = item.dateTimeFormat()?:"",
-            style = MaterialTheme.typography.bodySmall.copy(
+            style = MaterialTheme.typography.bodySmall.scaled().copy(
                 fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_semibold))
             ),
             color = Color.Black
@@ -160,14 +161,14 @@ private fun ReportExerciseExamSection(
                 Text(
                     text = title,
                     fontWeight = FontWeight.Bold,
-                    style = MaterialTheme.typography.labelMedium.copy(
+                    style = MaterialTheme.typography.labelMedium.scaled().copy(
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily(Font(R.font.font_bold))
                     ),
                 )
                 Text(
                     " $titleValue",
-                    style = MaterialTheme.typography.labelMedium,
+                    style = MaterialTheme.typography.labelMedium.scaled(),
                     fontFamily = FontFamily(Font(R.font.font_medium))
                 )
             }
@@ -199,13 +200,13 @@ private fun ReportExerciseExamSection(
                     Text(
                         text = title2,
                         fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.labelMedium.copy(
+                        style = MaterialTheme.typography.labelMedium.scaled().copy(
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold))
                         ),
                     )
                     Text(" $titleValue2",
-                        style = MaterialTheme.typography.labelMedium,
+                        style = MaterialTheme.typography.labelMedium.scaled(),
                         fontFamily = FontFamily(Font(R.font.font_medium))
                     )
                 }
@@ -277,7 +278,7 @@ private fun ReportCCMSection(item: AllExamData) {
         Text(
             text = stringResource(R.string.question)+" ",
             fontWeight = FontWeight.Bold,
-            style = MaterialTheme.typography.labelMedium.copy(
+            style = MaterialTheme.typography.labelMedium.scaled().copy(
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily(Font(R.font.font_bold))
             ),
@@ -305,7 +306,7 @@ private fun ReportCCMSection(item: AllExamData) {
                 stringResource(R.string.great_your_answer_is_correct)
             else
                 stringResource(R.string.sorry_your_answer_is_incorrect),
-            style = MaterialTheme.typography.labelMedium.copy(
+            style = MaterialTheme.typography.labelMedium.scaled().copy(
                 fontWeight = FontWeight.Bold,
                 color = if (item.isAnswerCorrect()) ColorGreen else Color.Red,
                 fontFamily = FontFamily(Font(R.font.font_bold))
@@ -317,7 +318,7 @@ private fun ReportCCMSection(item: AllExamData) {
         if (!item.isAnswerCorrect()){
             Text(
                 text = "Your answer is : ${item.userAns()}",
-                style = MaterialTheme.typography.labelMedium.copy(
+                style = MaterialTheme.typography.labelMedium.scaled().copy(
                     fontWeight = FontWeight.Bold,
                     color = Color.Red,
                     fontFamily = FontFamily(Font(R.font.font_bold))
@@ -333,7 +334,7 @@ private fun ReportCCMSection(item: AllExamData) {
                 .fillMaxWidth(),
             textAlign = TextAlign.Start,
             text = stringResource(R.string.is_question_speak),
-            style = MaterialTheme.typography.labelMedium.copy(
+            style = MaterialTheme.typography.labelMedium.scaled().copy(
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily(Font(R.font.font_bold))
             ),
@@ -344,7 +345,7 @@ private fun ReportCCMSection(item: AllExamData) {
                 .fillMaxWidth(),
             textAlign = TextAlign.Center,
             text = stringResource(R.string.is_question_show_in_number),
-            style = MaterialTheme.typography.labelMedium.copy(
+            style = MaterialTheme.typography.labelMedium.scaled().copy(
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily(Font(R.font.font_bold))
             ),
@@ -355,7 +356,7 @@ private fun ReportCCMSection(item: AllExamData) {
                 .fillMaxWidth(),
             textAlign = TextAlign.End,
             text = stringResource(R.string.is_question_show_in_word),
-            style = MaterialTheme.typography.labelMedium.copy(
+            style = MaterialTheme.typography.labelMedium.scaled().copy(
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily(Font(R.font.font_bold))
             ),
@@ -365,7 +366,7 @@ private fun ReportCCMSection(item: AllExamData) {
     Row {
         Text(
             text = if (item.is_question_speak == true) stringResource(R.string.yes) else stringResource(R.string.no),
-            style = MaterialTheme.typography.labelMedium.copy(
+            style = MaterialTheme.typography.labelMedium.scaled().copy(
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily(Font(R.font.font_medium))
             ),
@@ -373,7 +374,7 @@ private fun ReportCCMSection(item: AllExamData) {
         Spacer(Modifier.weight(1f))
         Text(
             text = if (item.is_question_show_in_number == true) stringResource(R.string.yes) else stringResource(R.string.no),
-            style = MaterialTheme.typography.labelMedium.copy(
+            style = MaterialTheme.typography.labelMedium.scaled().copy(
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily(Font(R.font.font_medium))
             ),
@@ -381,7 +382,7 @@ private fun ReportCCMSection(item: AllExamData) {
         Spacer(Modifier.weight(1f))
         Text(
             text = if (item.is_question_show_in_word == true) stringResource(R.string.yes) else stringResource(R.string.no),
-            style = MaterialTheme.typography.labelMedium.copy(
+            style = MaterialTheme.typography.labelMedium.scaled().copy(
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily(Font(R.font.font_medium))
             ),
@@ -391,7 +392,7 @@ private fun ReportCCMSection(item: AllExamData) {
     Row {
         Text(
             text = stringResource(R.string.gap_between_each_question_number),
-            style = MaterialTheme.typography.labelMedium.copy(
+            style = MaterialTheme.typography.labelMedium.scaled().copy(
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily(Font(R.font.font_bold))
             ),
@@ -399,7 +400,7 @@ private fun ReportCCMSection(item: AllExamData) {
         Spacer(Modifier.weight(1f))
         Text(
             text = stringResource(R.string.question_min_max_length),
-            style = MaterialTheme.typography.labelMedium.copy(
+            style = MaterialTheme.typography.labelMedium.scaled().copy(
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily(Font(R.font.font_bold))
             ),
@@ -409,7 +410,7 @@ private fun ReportCCMSection(item: AllExamData) {
     Row {
         Text(
             text = (item.gap_between_two_question?:0).toString()+" sec",
-            style = MaterialTheme.typography.labelMedium.copy(
+            style = MaterialTheme.typography.labelMedium.scaled().copy(
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily(Font(R.font.font_medium))
             ),
@@ -417,7 +418,7 @@ private fun ReportCCMSection(item: AllExamData) {
         Spacer(Modifier.weight(1f))
         Text(
             text = (item.question_min_length?:0).toString()+" - "+(item.question_max_length?:0),
-            style = MaterialTheme.typography.labelMedium.copy(
+            style = MaterialTheme.typography.labelMedium.scaled().copy(
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily(Font(R.font.font_medium))
             ),
@@ -443,9 +444,9 @@ fun StatItemSmall(
         Spacer(Modifier.width(AppDimens.Dimens4))
         Column {
             Text(value,
-                style = MaterialTheme.typography.titleSmall.copy(color = color, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))))
+                style = MaterialTheme.typography.titleSmall.scaled().copy(color = color, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))))
             Text(stringResource(label),
-                style = MaterialTheme.typography.bodySmall.copy(color = color.copy(alpha = 0.8f), fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))))
+                style = MaterialTheme.typography.bodySmall.scaled().copy(color = color.copy(alpha = 0.8f), fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))))
         }
     }
 

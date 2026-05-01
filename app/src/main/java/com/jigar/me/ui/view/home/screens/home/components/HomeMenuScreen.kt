@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.jigar.me.R
 import com.jigar.me.data.model.dbtable.abacus_all_data.Level
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeUiState
 import com.jigar.me.ui.view.home.theme.AppDimens
 
@@ -84,7 +85,7 @@ fun HomeMenuItem(
             ) {
                 Text(
                     text = level.tag,
-                    style = MaterialTheme.typography.bodyMedium.copy(
+                    style = MaterialTheme.typography.bodyMedium.scaled().copy(
                         fontWeight = FontWeight.ExtraBold,
                         fontFamily = FontFamily(Font(R.font.font_extra_bold)),
                         color = Color.Black

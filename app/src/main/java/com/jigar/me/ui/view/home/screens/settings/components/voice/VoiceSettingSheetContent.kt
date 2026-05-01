@@ -32,6 +32,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.jetpack.utils.ui.slider.SingleSlider
 import com.jigar.me.ui.view.home.screens.settings.viewmodels.SettingUiState
 import java.util.Locale
@@ -71,7 +72,7 @@ fun VoiceSettingSheetContent(
                 // ─────────────────── Languages ───────────────────
                 Text(
                     text = "Languages (${uiState.languages.size})",
-                    style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),
+                    style = MaterialTheme.typography.bodyLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),
                 )
 
                 Spacer(Modifier.height(AppDimens.Dimens6))
@@ -87,7 +88,7 @@ fun VoiceSettingSheetContent(
 //
 //                Text(
 //                    text = "Voices (${uiState.voices.size})",
-//                    style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),
+//                    style = MaterialTheme.typography.bodyLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),
 //                )
 //
 //                Spacer(Modifier.height(AppDimens.Dimens6))
@@ -105,14 +106,14 @@ fun VoiceSettingSheetContent(
         Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
             // ─────────────────── Pitch ───────────────────
             Column(Modifier.weight(1f)) {
-                Text(text = stringResource(R.string.pitch),style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),)
+                Text(text = stringResource(R.string.pitch),style = MaterialTheme.typography.bodyLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),)
                 SingleSlider(
                     isShowText = true, value = uiState.pitch, range = 0f..20f, onValueChange = onPitchChange, modifier = Modifier.padding(horizontal = AppDimens.Dimens8)
                 )
             }
             // ─────────────────── Speed ───────────────────
             Column(Modifier.weight(1f)) {
-                Text(text = stringResource(R.string.voice_speed),style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),)
+                Text(text = stringResource(R.string.voice_speed),style = MaterialTheme.typography.bodyLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))),)
                 SingleSlider(
                     isShowText = true, value = uiState.speed, range = 0f..20f, onValueChange = onSpeedChange, modifier = Modifier.padding(horizontal = AppDimens.Dimens8)
                 )

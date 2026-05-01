@@ -32,6 +32,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
@@ -115,11 +116,11 @@ fun AbacusFreeModeScreen(
                         ) {
                             Text(
                                 text = "${viewModel.fromNumber} to ${viewModel.toNumber}",
-                                style = MaterialTheme.typography.titleSmall.copy(color = MaterialTheme.colorScheme.error,fontWeight = FontWeight.ExtraBold,fontFamily = FontFamily(Font(R.font.font_bold))),
+                                style = MaterialTheme.typography.titleSmall.scaled().copy(color = MaterialTheme.colorScheme.error,fontWeight = FontWeight.ExtraBold,fontFamily = FontFamily(Font(R.font.font_bold))),
                             )
                             Text(
                                 text = stringResource(R.string.numbers_generate_between),
-                                style = MaterialTheme.typography.bodySmall.copy(color = MaterialTheme.colorScheme.onBackground,fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))),
+                                style = MaterialTheme.typography.bodySmall.scaled().copy(color = MaterialTheme.colorScheme.onBackground,fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))),
                             )
                         }
                     }
@@ -131,14 +132,14 @@ fun AbacusFreeModeScreen(
                     ) {
                         Text(
                             text = "Set :",
-                            style = MaterialTheme.typography.bodyLarge.copy(color = AbacusTheme.colorPreset(viewModel.selectedTheme).buttonColor,fontWeight = FontWeight.ExtraBold,fontFamily = FontFamily(Font(R.font.font_extra_bold))),
+                            style = MaterialTheme.typography.bodyLarge.scaled().copy(color = AbacusTheme.colorPreset(viewModel.selectedTheme).buttonColor,fontWeight = FontWeight.ExtraBold,fontFamily = FontFamily(Font(R.font.font_extra_bold))),
                             fontWeight = FontWeight.ExtraBold,
                             fontFamily = FontFamily(Font(R.font.font_extra_bold)),
                         )
                         Spacer(modifier = Modifier.width(Dimens8))
                         Text(
                             text = viewModel.numberToMatch.toString(),
-                            style = MaterialTheme.typography.headlineLarge.copy(color = AbacusTheme.colorPreset(viewModel.selectedTheme).buttonColor,fontWeight = FontWeight.ExtraBold,fontFamily = FontFamily(Font(R.font.font_extra_bold))),
+                            style = MaterialTheme.typography.headlineLarge.scaled().copy(color = AbacusTheme.colorPreset(viewModel.selectedTheme).buttonColor,fontWeight = FontWeight.ExtraBold,fontFamily = FontFamily(Font(R.font.font_extra_bold))),
                         )
                     }
                 }

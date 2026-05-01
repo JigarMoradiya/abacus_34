@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.utils.DateTimeUtils.at_dd_mmm_yy_hh_mm_a
 import com.jigar.me.utils.DateTimeUtils.formatTo
 import com.jigar.me.utils.DateTimeUtils.toDate
@@ -46,12 +47,12 @@ fun StatisticsCard(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     title,
-                    style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
+                    style = MaterialTheme.typography.bodyMedium.scaled().copy(fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
                 )
                 Spacer(Modifier.width(AppDimens.Dimens4))
                 Text(
                     count,
-                    style = MaterialTheme.typography.titleLarge.copy(
+                    style = MaterialTheme.typography.titleLarge.scaled().copy(
                         fontWeight = FontWeight.Bold,
                         color = countColor,
                         fontFamily = FontFamily(Font(R.font.font_bold))
@@ -64,7 +65,7 @@ fun StatisticsCard(
                 time.toDate().formatTo(at_dd_mmm_yy_hh_mm_a).lowercase()
             }
             Text(timeFormat,
-                style = MaterialTheme.typography.labelMedium,
+                style = MaterialTheme.typography.labelMedium.scaled(),
                 fontFamily = FontFamily(Font(R.font.font_semibold))
             )
         }

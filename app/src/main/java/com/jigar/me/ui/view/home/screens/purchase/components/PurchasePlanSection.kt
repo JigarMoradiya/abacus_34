@@ -27,6 +27,7 @@ import androidx.compose.ui.text.style.TextAlign
 import com.android.billingclient.api.BillingClient
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorRed
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
 import com.jigar.me.ui.view.home.theme.ButtonType
@@ -75,7 +76,7 @@ fun PurchasePlanSection(
                 }
                 Text(
                     text = text,
-                    style = MaterialTheme.typography.labelSmall.copy(
+                    style = MaterialTheme.typography.labelSmall.scaled().copy(
                         color = ColorRed,fontWeight = FontWeight.Normal,fontFamily = FontFamily(Font(R.font.font_regular))
                     ),
                     textAlign = TextAlign.Center,

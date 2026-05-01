@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.data.model.dbtable.abacus_all_data.Set
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
 
@@ -86,7 +87,7 @@ fun SetItem(
                     modifier = Modifier.padding(
                         start = if (set.show_time_setting) AppDimens.Dimens6 else 0.dp
                     ),
-                    style = MaterialTheme.typography.titleMedium.copy(color = Color.White, fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
+                    style = MaterialTheme.typography.titleMedium.scaled().copy(color = Color.White, fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
                 )
             }
         }

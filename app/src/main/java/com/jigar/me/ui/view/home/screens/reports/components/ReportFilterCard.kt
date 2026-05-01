@@ -29,6 +29,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryLight
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.reports.viewmodels.ReportHistoryUiState
 import com.jigar.me.ui.view.home.screens.reports.viewmodels.ReportHistoryViewModel
 
@@ -61,7 +62,7 @@ fun ReportFilterCard(
 
                 Text(
                     text = uiState.selectedFilter?.label?:"",
-                    style = MaterialTheme.typography.bodyMedium.copy(
+                    style = MaterialTheme.typography.bodyMedium.scaled().copy(
                         fontFamily = FontFamily(Font(R.font.font_bold)),
                         color = Color.Black
                     ),
@@ -89,7 +90,7 @@ fun ReportFilterCard(
                     text = {
                         Text(
                             text = item.label,
-                            style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))),
+                            style = MaterialTheme.typography.bodyMedium.scaled().copy(fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))),
                         )
                     },
                     onClick = {

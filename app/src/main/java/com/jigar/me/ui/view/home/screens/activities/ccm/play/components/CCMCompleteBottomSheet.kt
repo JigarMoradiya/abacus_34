@@ -36,6 +36,7 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.appScale
 import com.jigar.me.ui.view.home.screens.activities.ccm.play.viewmodels.CCMPlayUiState
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 
 @SuppressLint("ConfigurationScreenWidthHeight")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -122,7 +123,7 @@ fun CCMCompleteBottomSheetCompose(
                         stringResource(R.string.congratulations)
                     else
                         stringResource(R.string.sorry),
-                    style = MaterialTheme.typography.titleLarge,
+                    style = MaterialTheme.typography.titleLarge.scaled(),
                     color = if (isAnswerTrue)
                         Color.Black
                     else

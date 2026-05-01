@@ -26,6 +26,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 
 @Composable
 fun AbacusListItem(abacusList: List<Abacus>) {
@@ -49,7 +50,7 @@ fun AbacusListItem(abacusList: List<Abacus>) {
                 ) {
                     Text(
                         text = abacus.question,
-                        style = MaterialTheme.typography.bodyMedium.copy(color = Color.Black,fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))),
+                        style = MaterialTheme.typography.bodyMedium.scaled().copy(color = Color.Black,fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))),
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth()
                     )

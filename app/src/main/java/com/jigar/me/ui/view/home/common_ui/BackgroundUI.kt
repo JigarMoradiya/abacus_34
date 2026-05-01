@@ -51,7 +51,7 @@ fun BackgroundUI(
             painter = painterResource(id = R.drawable.background_new),
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            alpha = 0.05f
+            alpha = 0.07f
         )
 
 

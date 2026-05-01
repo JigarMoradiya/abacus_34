@@ -26,6 +26,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.activities.ccm.play.viewmodels.CCMPlayUiState
 
 @Composable
@@ -65,7 +66,7 @@ fun QuestionSection(
                 fontFamily = FontFamily(Font(R.font.font_extra_bold)),
                 fontSize = if (showListenImage) dimensionResource(R.dimen.textSizeCCMNumber).value.sp else dimensionResource(R.dimen.textSizeCCMNumber).value.sp * 2,
                 color = Color.Black,
-                style = MaterialTheme.typography.headlineLarge.copy(
+                style = MaterialTheme.typography.headlineLarge.scaled().copy(
                     shadow = Shadow(
                         color = Color.Black,
                         offset = Offset(1f, 1f),

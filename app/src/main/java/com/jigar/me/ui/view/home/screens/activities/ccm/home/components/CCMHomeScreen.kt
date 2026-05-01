@@ -33,6 +33,7 @@ import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.components.HorizontalCheckbox
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryDark
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.jetpack.utils.ui.slider.RangeSlider
 import com.jigar.me.ui.jetpack.utils.ui.slider.SingleSlider
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
@@ -70,7 +71,7 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
         Text(
             text = stringResource(R.string.create_custom_challenge_as_per_your_kid_s_ability),
             modifier = Modifier,
-            style = MaterialTheme.typography.titleLarge.copy(color = Color.Black, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))),
+            style = MaterialTheme.typography.titleLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))),
         )
         Spacer(modifier = Modifier.height(AppDimens.Dimens8))
         Row(
@@ -80,7 +81,7 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
                 text = stringResource(R.string.number_of_questions),
                 modifier = Modifier.weight(1f),
                 textAlign = TextAlign.End,
-                style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
+                style = MaterialTheme.typography.bodyLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
             )
             Spacer(modifier = Modifier.width(AppDimens.Dimens8))
             Row(modifier = Modifier.weight(1f)) {
@@ -102,7 +103,7 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
                 text = stringResource(R.string.gap_between_two_question_sec),
                 modifier = Modifier.weight(1f),
                 textAlign = TextAlign.End,
-                style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
+                style = MaterialTheme.typography.bodyLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
             )
             Spacer(modifier = Modifier.width(AppDimens.Dimens8))
             Row(modifier = Modifier.weight(1f)) {
@@ -124,7 +125,7 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
                 text = stringResource(R.string.question_min_max_length),
                 modifier = Modifier.weight(1f),
                 textAlign = TextAlign.End,
-                style = MaterialTheme.typography.bodyLarge.copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
+                style = MaterialTheme.typography.bodyLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
             )
             Spacer(modifier = Modifier.width(AppDimens.Dimens8))
             Row(modifier = Modifier.weight(1f)) {

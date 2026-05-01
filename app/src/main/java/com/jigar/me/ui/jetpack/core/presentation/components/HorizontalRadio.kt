@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 
 @Composable
 fun HorizontalRadio(
@@ -42,7 +43,7 @@ fun HorizontalRadio(
 
         Text(
             text = text,
-            style = MaterialTheme.typography.bodyLarge.copy(
+            style = MaterialTheme.typography.bodyLarge.scaled().copy(
                 color = Color.Black,
                 fontWeight = FontWeight.SemiBold,
                 fontFamily = FontFamily(Font(R.font.font_semibold))

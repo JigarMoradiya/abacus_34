@@ -8,6 +8,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.*
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
 import com.jigar.me.ui.view.home.screens.activities.ccm.play.viewmodels.CCMPlayUiState
 import com.jigar.me.ui.view.home.screens.activities.ccm.play.viewmodels.CCMPlayViewModel
@@ -23,7 +24,7 @@ fun AnswerSection(
             Spacer(Modifier.weight(1f))
             Text(
                 text = stringResource(R.string.or),
-                style = MaterialTheme.typography.titleSmall.copy(color = Color.Black, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
+                style = MaterialTheme.typography.titleSmall.scaled().copy(color = Color.Black, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
             )
             Spacer(Modifier.weight(1f))
             CCMKeyboardSection(uiState = uiState, viewModel = viewModel)
@@ -34,7 +35,7 @@ fun AnswerSection(
             Spacer(Modifier.weight(1f))
             Text(
                 text = stringResource(R.string.or),
-                style = MaterialTheme.typography.titleSmall.copy(color = Color.Black, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
+                style = MaterialTheme.typography.titleSmall.scaled().copy(color = Color.Black, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
             )
             Spacer(Modifier.weight(1f))
             CCMAbacusRow(viewModel)

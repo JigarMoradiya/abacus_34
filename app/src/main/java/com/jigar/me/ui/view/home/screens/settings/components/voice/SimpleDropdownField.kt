@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.PopupProperties
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
@@ -86,7 +87,7 @@ fun <T> SimpleDropdownField(
                     text = {
                         Text(
                             text = itemLabel(item),
-                            style = MaterialTheme.typography.bodyMedium.copy(color = Color.Black,
+                            style = MaterialTheme.typography.bodyMedium.scaled().copy(color = Color.Black,
                                 fontWeight = FontWeight.Normal, fontFamily = FontFamily(Font(R.font.font_regular))),
                         )
                     },

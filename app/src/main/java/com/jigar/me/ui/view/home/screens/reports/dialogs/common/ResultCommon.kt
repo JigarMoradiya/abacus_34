@@ -38,6 +38,7 @@ import com.jigar.me.ui.view.base.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
 import com.jigar.me.ui.view.base.abacus_base.utils.MathUtils
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryLight
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.ExamGenerator
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.ExamResultUi
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.MainQuestionType
@@ -102,7 +103,7 @@ fun QuestionExamColumnItemHorizontal(item: QuestionResult, selectedTheme: String
                                             append(MathUtils.formatQuestionSpace(parts.left))
                                         }
                                     },
-                                    style = MaterialTheme.typography.bodyMedium,
+                                    style = MaterialTheme.typography.bodyMedium.scaled(),
                                     maxLines = 3,
                                     overflow = TextOverflow.Ellipsis
                                 )
@@ -149,7 +150,7 @@ fun QuestionExamColumnItemHorizontal(item: QuestionResult, selectedTheme: String
                                             append(item.userAnswer)
                                         }
                                     },
-                                    style = MaterialTheme.typography.bodyMedium,
+                                    style = MaterialTheme.typography.bodyMedium.scaled(),
                                     maxLines = 3,
                                     overflow = TextOverflow.Ellipsis
                                 )
@@ -210,7 +211,7 @@ fun QuestionExamColumnItemHorizontal(item: QuestionResult, selectedTheme: String
                                     append(correctAnswer.toString())
                                 }
                             },
-                            style = MaterialTheme.typography.bodyMedium,
+                            style = MaterialTheme.typography.bodyMedium.scaled(),
                             maxLines = 3,
                             overflow = TextOverflow.Ellipsis
                         )
@@ -243,7 +244,7 @@ fun QuestionExamColumnItemHorizontal(item: QuestionResult, selectedTheme: String
                                 append(item.userAnswer)
                             }
                         },
-                        style = MaterialTheme.typography.bodyMedium,
+                        style = MaterialTheme.typography.bodyMedium.scaled(),
                         maxLines = 3,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -302,8 +303,8 @@ fun StatItem(
         )
         Spacer(Modifier.height(AppDimens.Dimens4))
         Text(value,
-            style = MaterialTheme.typography.titleLarge.copy(color = color, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))))
+            style = MaterialTheme.typography.titleLarge.scaled().copy(color = color, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))))
         Text(stringResource(label),
-            style = MaterialTheme.typography.titleSmall.copy(color = color.copy(alpha = 0.8f), fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))))
+            style = MaterialTheme.typography.titleSmall.scaled().copy(color = color.copy(alpha = 0.8f), fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))))
     }
 }

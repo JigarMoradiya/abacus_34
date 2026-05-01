@@ -31,6 +31,7 @@ import com.jigar.me.ui.jetpack.core.presentation.components.HorizontalCheckbox
 import com.jigar.me.ui.jetpack.core.presentation.components.HorizontalRadio
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryDark
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.activities.exam.home.viewmodels.ExamHomeUiState
 import com.jigar.me.ui.view.home.screens.activities.exam.home.viewmodels.ExamHomeViewModel
@@ -67,14 +68,14 @@ fun ExamHomeScreen(uiState: ExamHomeUiState, viewModel: ExamHomeViewModel, onSta
         Text(
             text = stringResource(R.string.child_level),
             modifier = Modifier,
-            style = MaterialTheme.typography.titleLarge.copy(color = Color.Black, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))),
+            style = MaterialTheme.typography.titleLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))),
         )
         Spacer(modifier = Modifier.height(AppDimens.Dimens16))
 
         Text(
             text = stringResource(R.string.select_exam_types),
             modifier = Modifier,
-            style = MaterialTheme.typography.bodyMedium.copy(color = Color.DarkGray, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
+            style = MaterialTheme.typography.bodyMedium.scaled().copy(color = Color.DarkGray, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
         )
         Row(
             modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16, Alignment.CenterHorizontally), verticalAlignment = Alignment.CenterVertically
@@ -97,7 +98,7 @@ fun ExamHomeScreen(uiState: ExamHomeUiState, viewModel: ExamHomeViewModel, onSta
         Text(
             text = stringResource(R.string.select_exam_difficulty),
             modifier = Modifier,
-            style = MaterialTheme.typography.bodyMedium.copy(color = Color.DarkGray, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
+            style = MaterialTheme.typography.bodyMedium.scaled().copy(color = Color.DarkGray, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
         )
         Row(
             modifier = Modifier.fillMaxWidth(),

@@ -36,7 +36,7 @@ fun HomeHeaderRight(
             onClick = {
                 onMenuClick(AppConstants.HomeClicks.Menu_My_Account)
             },
-            type = ButtonType.PINK,
+            type = ButtonType.BLUE,
             size = KidIconMedium
         )
         KidsIconButton(
@@ -44,7 +44,7 @@ fun HomeHeaderRight(
             onClick = {
                 onMenuClick(AppConstants.HomeClicks.Menu_Settings)
             },
-            type = ButtonType.PINK,
+            type = ButtonType.BLUE,
             size = KidIconMedium
         )
         KidsIconButton(
@@ -52,7 +52,7 @@ fun HomeHeaderRight(
             onClick = {
                 onMenuClick(AppConstants.HomeClicks.Menu_Purchase_Store)
             },
-            type = ButtonType.PINK,
+            type = ButtonType.BLUE,
             size = KidIconMedium
         )
         KidsIconButton(
@@ -60,7 +60,7 @@ fun HomeHeaderRight(
             onClick = {
                 onMenuClick(AppConstants.HomeClicks.Menu_Video_Tutorial)
             },
-            type = ButtonType.PINK,
+            type = ButtonType.BLUE,
             size = KidIconMedium
         )
     }

@@ -32,6 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryLight
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.reports.viewmodels.ReportHistoryUiState
 import com.jigar.me.ui.view.home.screens.reports.viewmodels.ReportHistoryViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
@@ -68,7 +69,7 @@ fun ReportDateFilterCard(
 
                 Text(
                     text = uiState.selectedDateFilter?.label ?: stringResource(R.string.select_date),
-                    style = MaterialTheme.typography.bodySmall.copy(
+                    style = MaterialTheme.typography.bodySmall.scaled().copy(
                         fontFamily = FontFamily(Font(R.font.font_bold)),
                         color = Color.Black
                     ),
@@ -96,7 +97,7 @@ fun ReportDateFilterCard(
                     text = {
                         Text(
                             text = item.label,
-                            style = MaterialTheme.typography.bodyMedium.copy(
+                            style = MaterialTheme.typography.bodyMedium.scaled().copy(
                                 fontWeight = FontWeight.SemiBold,
                                 fontFamily = FontFamily(Font(R.font.font_semibold))
                             )

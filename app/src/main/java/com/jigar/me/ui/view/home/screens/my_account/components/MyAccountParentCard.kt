@@ -17,6 +17,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.my_account.viewmodels.MyAccountMenu
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
@@ -45,7 +46,7 @@ fun MyAccountParentCard(
                 Text(
                     text = menu.menuTitle,
                     modifier = Modifier.padding(horizontal = Dimens12),
-                    style = MaterialTheme.typography.titleSmall.copy( // ↓ slightly smaller
+                    style = MaterialTheme.typography.titleSmall.scaled().copy( // ↓ slightly smaller
                         fontWeight = FontWeight.ExtraBold,
                         fontFamily = FontFamily(Font(R.font.font_bold)),
                         color = Color(0xFF5D4037)

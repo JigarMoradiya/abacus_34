@@ -35,6 +35,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.home.viewmodels.getFreeTrialUi
 import com.jigar.me.ui.view.home.theme.AppDimens
@@ -109,13 +110,13 @@ fun FreeTrialDialog(
 
                             Text(
                                 text = ui.title, textAlign = TextAlign.Center,
-                                style = MaterialTheme.typography.titleMedium.copy(color = Color.Black,
+                                style = MaterialTheme.typography.titleMedium.scaled().copy(color = Color.Black,
                                     fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_extra_bold))),
                             )
 
                             Text(
                                 text = ui.desc, textAlign = TextAlign.Center,
-                                style = MaterialTheme.typography.bodyMedium.copy(color = Color.DarkGray,
+                                style = MaterialTheme.typography.bodyMedium.scaled().copy(color = Color.DarkGray,
                                     fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
                             )
 
@@ -124,7 +125,7 @@ fun FreeTrialDialog(
                             Text(
                                 text = "No payment or subscription setup needed during your free trial.",
                                 textAlign = TextAlign.Center,
-                                style = MaterialTheme.typography.labelMedium.copy(color = Color.DarkGray,
+                                style = MaterialTheme.typography.labelMedium.scaled().copy(color = Color.DarkGray,
                                     fontWeight = FontWeight.Medium,fontFamily = FontFamily(Font(R.font.font_medium))),
                             )
 
@@ -132,7 +133,7 @@ fun FreeTrialDialog(
                                 Text(
                                     text = CommonUtils.htmlToAnnotatedString("<strong>Limited time deal - </strong> unlock premium at a discounted price!"),
                                     textAlign = TextAlign.Center,
-                                    style = MaterialTheme.typography.bodySmall.copy(color = colorResource(R.color.red_700),
+                                    style = MaterialTheme.typography.bodySmall.scaled().copy(color = colorResource(R.color.red_700),
                                         fontWeight = FontWeight.Medium,fontFamily = FontFamily(Font(R.font.font_medium))),
                                 )
                             }
@@ -152,7 +153,7 @@ fun FreeTrialDialog(
                                     text = ui.noText, modifier = Modifier
                                         .padding(AppDimens.Dimens8)
                                         .clickable { onNo() },
-                                    style = MaterialTheme.typography.bodySmall.copy(
+                                    style = MaterialTheme.typography.bodySmall.scaled().copy(
                                         fontWeight = FontWeight.SemiBold,
                                         fontFamily = FontFamily(Font(R.font.font_bold))
                                     )

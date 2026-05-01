@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.category.do_practice.viewmodels.AbacusDoPracticeUiState
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.DateTimeUtils
@@ -44,7 +45,7 @@ fun SetTimer(uiState: AbacusDoPracticeUiState) {
 
             Text(
                 text = DateTimeUtils.displayDurationHourMinSec(seconds), color = Color.White,
-                fontWeight = FontWeight.Bold, style = MaterialTheme.typography.bodyMedium,
+                fontWeight = FontWeight.Bold, style = MaterialTheme.typography.bodyMedium.scaled(),
                 fontFamily = FontFamily(Font(R.font.font_bold))
             )
         }

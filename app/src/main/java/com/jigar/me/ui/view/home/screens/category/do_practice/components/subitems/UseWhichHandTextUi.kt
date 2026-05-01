@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.category.do_practice.viewmodels.AbacusDoPracticeUiState
 import com.jigar.me.ui.view.home.screens.category.do_practice.viewmodels.AbacusDoPracticeViewModel
 
@@ -56,7 +57,7 @@ fun UseWhichHandTextUi(uiState: AbacusDoPracticeUiState,viewModel : AbacusDoPrac
             }
             Text(
                 text = annotatedText,
-                style = MaterialTheme.typography.titleSmall,
+                style = MaterialTheme.typography.titleSmall.scaled(),
                 color = normalColor, // default color for non-highlighted text
                 fontFamily = FontFamily(Font(R.font.font_medium))
             )

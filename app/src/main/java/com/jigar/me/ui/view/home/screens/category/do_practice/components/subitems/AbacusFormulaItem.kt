@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.category.do_practice.viewmodels.AbacusDoPracticeUiState
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
@@ -65,7 +66,7 @@ fun AbacusFormulaItem(uiState: AbacusDoPracticeUiState) {
                         // Formula Type
                         Text(
                             text = item.formulaType,
-                            style = MaterialTheme.typography.bodySmall,
+                            style = MaterialTheme.typography.bodySmall.scaled(),
                             fontWeight = FontWeight.SemiBold,
                             color = colorPreset.buttonColor,
                             fontFamily = FontFamily(Font(R.font.font_semibold))
@@ -77,7 +78,7 @@ fun AbacusFormulaItem(uiState: AbacusDoPracticeUiState) {
                                 if (item.isCarryFormula) append("Carry: ")
                                 append(formulaHint)
                             },
-                            style = MaterialTheme.typography.bodyMedium,
+                            style = MaterialTheme.typography.bodyMedium.scaled(),
                             fontWeight = FontWeight.Bold,
                             color = Color.Black,
                             fontFamily = FontFamily(Font(R.font.font_bold))

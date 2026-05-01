@@ -36,6 +36,7 @@ import androidx.core.graphics.toColorInt
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.htmlToAnnotatedString
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
@@ -116,7 +117,7 @@ fun CustomPopupView(
             if (!notes.isNullOrEmpty()) {
                 Text(
                     text = notes.htmlToAnnotatedString(),
-                    style = MaterialTheme.typography.bodyMedium.copy(color = Color.Red, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
+                    style = MaterialTheme.typography.bodyMedium.scaled().copy(color = Color.Red, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(top = AppDimens.Dimens8)
                 )

@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 import com.jigar.me.data.model.dbtable.abacus_all_data.DisplayPages
 import com.jigar.me.data.model.dbtable.abacus_all_data.Set
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 
 @Composable
 fun PageItem(
@@ -137,7 +138,7 @@ fun PageHeader(
             // Title
             Text(
                 text = page.name,
-                style = MaterialTheme.typography.bodyLarge.copy(lineHeight = 18.sp,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
+                style = MaterialTheme.typography.bodyLarge.scaled().copy(lineHeight = 18.sp,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
                 maxLines = 2
             )
 
@@ -145,7 +146,7 @@ fun PageHeader(
             if (!page.description.isNullOrEmpty()) {
                 Text(
                     text = page.description,
-                    style = MaterialTheme.typography.bodyMedium.copy(lineHeight = 16.sp,fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))),
+                    style = MaterialTheme.typography.bodyMedium.scaled().copy(lineHeight = 16.sp,fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))),
                     maxLines = 2
                 )
             }

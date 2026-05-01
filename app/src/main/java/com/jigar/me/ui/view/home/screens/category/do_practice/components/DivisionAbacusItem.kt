@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.category.do_practice.components.subitems.AbacusAnswerUI
 import com.jigar.me.ui.view.home.screens.category.do_practice.viewmodels.AbacusDoPracticeUiState
 import com.jigar.me.utils.extensions.mixWith
@@ -55,7 +56,7 @@ fun DivisionAbacusItem(
             abacus.displayDividendArray.forEachIndexed { index, value ->
                 Text(
                     text = value.toString(),
-                    style = MaterialTheme.typography.titleLarge,
+                    style = MaterialTheme.typography.titleLarge.scaled(),
                     fontWeight = FontWeight.Bold,
                     fontFamily = FontFamily(Font(R.font.font_bold)),
                     color =
@@ -79,7 +80,7 @@ fun DivisionAbacusItem(
             Text(
                 text = "÷",
                 modifier = Modifier.padding(end = AppDimens.Dimens4),
-                style = MaterialTheme.typography.titleLarge,
+                style = MaterialTheme.typography.titleLarge.scaled(),
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily(Font(R.font.font_bold)),
                 color = if (!uiState.isStepByStep)
@@ -92,7 +93,7 @@ fun DivisionAbacusItem(
 
             Text(
                 text = abacus.divisor.toString(),
-                style = MaterialTheme.typography.titleLarge,
+                style = MaterialTheme.typography.titleLarge.scaled(),
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily(Font(R.font.font_bold)),
                 color = if (!uiState.isStepByStep)
@@ -140,7 +141,7 @@ fun DivisionAbacusItem(
                                     else
                                         0f
                                 ),
-                            style = MaterialTheme.typography.titleLarge,
+                            style = MaterialTheme.typography.titleLarge.scaled(),
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
                             color =

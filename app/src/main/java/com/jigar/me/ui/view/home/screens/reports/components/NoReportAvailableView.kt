@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 
 @Composable
 fun NoReportAvailableView(
@@ -48,7 +49,7 @@ fun NoReportAvailableView(
 
             Text(
                 text = stringResource(R.string.no_report_available_yet),
-                style = MaterialTheme.typography.bodyLarge.copy(
+                style = MaterialTheme.typography.bodyLarge.scaled().copy(
                     fontFamily = FontFamily(Font(R.font.font_semibold)),
                     color = Color.Black,
                     fontWeight = FontWeight.SemiBold

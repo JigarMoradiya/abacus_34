@@ -26,6 +26,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.theme.AppDimens
 
 
@@ -81,7 +82,7 @@ fun ChipLabel(
         Text(
             text = text,
             color = Color.White,
-            style = MaterialTheme.typography.bodySmall.copy(
+            style = MaterialTheme.typography.bodySmall.scaled().copy(
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily(Font(R.font.font_bold)),
                 platformStyle = PlatformTextStyle(includeFontPadding = false)
@@ -117,7 +118,7 @@ fun TimerChip() {
             text = stringResource(R.string.timer_on),
             color = Color.White,
             modifier = Modifier.padding(start = AppDimens.Dimens4),
-            style = MaterialTheme.typography.bodySmall.copy(
+            style = MaterialTheme.typography.bodySmall.scaled().copy(
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily(Font(R.font.font_bold)),
                 platformStyle = PlatformTextStyle(includeFontPadding = false)

@@ -43,6 +43,7 @@ import com.jigar.me.R
 import com.jigar.me.ui.view.base.abacus_base.utils.MathUtils
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryLight
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.QuestionResult
 import com.jigar.me.ui.view.home.theme.AppDimens
 
@@ -74,7 +75,7 @@ fun ExamResultPopup(
                 Box(modifier = Modifier.fillMaxWidth()) {
                     Text(
                         text = stringResource(R.string.result_of_exam),
-                        style = MaterialTheme.typography.titleLarge.copy(color = ColorPrimary, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))), modifier = Modifier.align(Alignment.Center)
+                        style = MaterialTheme.typography.titleLarge.scaled().copy(color = ColorPrimary, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))), modifier = Modifier.align(Alignment.Center)
                     )
 
                     TextButton(
@@ -83,7 +84,7 @@ fun ExamResultPopup(
                         Icon(Icons.Default.Close, contentDescription = null,tint = Color.DarkGray)
                         Spacer(Modifier.width(AppDimens.Dimens4))
                         Text(
-                            stringResource(R.string.close), style = MaterialTheme.typography.bodyMedium.copy(color = Color.DarkGray, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold)))
+                            stringResource(R.string.close), style = MaterialTheme.typography.bodyMedium.scaled().copy(color = Color.DarkGray, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold)))
                         )
                     }
                 }
@@ -131,14 +132,14 @@ fun QuestionExamColumnItem(item: QuestionResult) {
             lines.forEach { part ->
                 Text(
                     text = part.replace("x", " x ").replace("×", " x ").replace("/", " ÷ ").replace("÷", " ÷ "),
-                    style = MaterialTheme.typography.titleSmall.copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))), textAlign = TextAlign.Center
+                    style = MaterialTheme.typography.titleSmall.scaled().copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))), textAlign = TextAlign.Center
                 )
             }
 
             HorizontalDivider(Modifier.padding(vertical = AppDimens.Dimens4), color = Color.Black.copy(alpha = 0.1f), thickness = AppDimens.Dimens1)
 
             Text(
-                text = item.userAnswer.toString(), style = MaterialTheme.typography.bodyLarge.copy(color = item.statusQue.color, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_bold)))
+                text = item.userAnswer.toString(), style = MaterialTheme.typography.bodyLarge.scaled().copy(color = item.statusQue.color, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_bold)))
             )
 
             Icon(

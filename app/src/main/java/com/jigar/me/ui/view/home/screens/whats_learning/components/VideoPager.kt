@@ -36,6 +36,7 @@ import androidx.media3.common.util.UnstableApi
 import com.jigar.me.R
 import com.jigar.me.data.local.data.VideoTutorial
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 
 @UnstableApi
 @OptIn(ExperimentalFoundationApi::class)
@@ -59,7 +60,7 @@ fun VideoPager(
 
         Text(
             text = videoList[currentPosition].title,
-            style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
+            style = MaterialTheme.typography.bodyLarge.scaled().copy(fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(horizontal = AppDimens.Dimens16)
         )

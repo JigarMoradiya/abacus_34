@@ -24,6 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.activities.exercise.components.pager.ExercisePagerScreen
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseUiState
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseViewModel
@@ -53,7 +54,7 @@ fun ExerciseScreen(
                 // show que no when exercise start
                 if (uiState.isExerciseStarted) {
                     Text(
-                        text = "Q${uiState.currentQueIndex + 1}", style = MaterialTheme.typography.titleMedium.copy(
+                        text = "Q${uiState.currentQueIndex + 1}", style = MaterialTheme.typography.titleMedium.scaled().copy(
                             color = ColorPrimary, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))
                         )
                     )

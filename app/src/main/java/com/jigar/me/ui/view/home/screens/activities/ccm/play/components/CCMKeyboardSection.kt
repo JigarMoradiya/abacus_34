@@ -30,6 +30,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsKeyPad
@@ -52,14 +53,14 @@ fun CCMKeyboardSection(
 
         Text(
             text = stringResource(R.string.set_your_answer),
-            style = MaterialTheme.typography.titleLarge.copy(color = Color.DarkGray, fontWeight = FontWeight.Medium,fontFamily = FontFamily(Font(R.font.font_medium))),
+            style = MaterialTheme.typography.titleLarge.scaled().copy(color = Color.DarkGray, fontWeight = FontWeight.Medium,fontFamily = FontFamily(Font(R.font.font_medium))),
         )
 
-        Spacer(Modifier.height(AppDimens.Dimens4))
+        Spacer(Modifier.height(Dimens4))
 
         Text(
             text = uiState.answerText,
-            style = MaterialTheme.typography.displaySmall.copy(color = theme.buttonColor, fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
+            style = MaterialTheme.typography.displaySmall.scaled().copy(color = theme.buttonColor, fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
         )
 
         Spacer(Modifier.height(AppDimens.Dimens8))

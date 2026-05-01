@@ -48,6 +48,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.base.abacus_base.ColorPresetModel
 import com.jigar.me.utils.AppConstants
@@ -193,7 +194,7 @@ fun ResetButton(
             color = Color.White,
             fontWeight = FontWeight.Bold,
             fontFamily = FontFamily(Font(R.font.font_bold)),
-            style = MaterialTheme.typography.labelSmall,
+            style = MaterialTheme.typography.labelSmall.scaled(),
             lineHeight = 12.sp,
         )
     }
@@ -297,7 +298,7 @@ fun NextButton(
                 else -> stringResource(R.string.next)
             },
             textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.labelSmall.copy(color = Color.White,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
+            style = MaterialTheme.typography.labelSmall.scaled().copy(color = Color.White,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
             lineHeight = 12.sp,
         )
     }

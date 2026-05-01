@@ -45,6 +45,7 @@ import com.jigar.me.data.model.data.QuestionDataRequest
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorDARKGreen
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.QuestionResult
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.toQuestionResultList
@@ -108,7 +109,7 @@ fun ExerciseExamCompleteResultDialog(
                     }
                     Text(
                         text = title,
-                        style = MaterialTheme.typography.titleMedium.copy(color = ColorPrimary,
+                        style = MaterialTheme.typography.titleMedium.scaled().copy(color = ColorPrimary,
                             fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))),
                     )
                     Spacer(modifier = Modifier.weight(1f))
@@ -118,7 +119,7 @@ fun ExerciseExamCompleteResultDialog(
                         Icon(Icons.Default.Close, contentDescription = null, tint = Color.DarkGray,modifier = Modifier.size(AppDimens.Dimens20))
                         Spacer(Modifier.width(AppDimens.Dimens4))
                         Text(
-                            stringResource(R.string.close), style = MaterialTheme.typography.bodyMedium.copy(color = Color.DarkGray, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold)))
+                            stringResource(R.string.close), style = MaterialTheme.typography.bodyMedium.scaled().copy(color = Color.DarkGray, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold)))
                         )
                     }
                 }
@@ -171,7 +172,7 @@ fun ExerciseExamCompleteResultDialog(
                             Text(
                                 text = result.title,
                                 textAlign = TextAlign.Center,
-                                style = MaterialTheme.typography.titleSmall.copy(color = result.titleColor, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_medium))))
+                                style = MaterialTheme.typography.titleSmall.scaled().copy(color = result.titleColor, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_medium))))
 
                             Spacer(Modifier.height(AppDimens.Dimens12))
 
