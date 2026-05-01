@@ -2,6 +2,7 @@ package com.jigar.me.ui.view.home.screens.category.components
 
 import com.jigar.me.ui.view.home.theme.AppDimens
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.StickyNote2
@@ -61,30 +63,28 @@ fun PageItem(
         modifier = Modifier
             .padding(AppDimens.Dimens6)
             .fillMaxWidth(),
-        shape = RoundedCornerShape(AppDimens.Dimens8),
-        elevation = CardDefaults.cardElevation(AppDimens.Dimens2),
+        shape = RoundedCornerShape(AppDimens.Dimens16),
+        elevation = CardDefaults.cardElevation(AppDimens.Dimens4),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
+            containerColor = Color(0xFFFFF8E1)
         )
     ) {
         Column {
 
-            // Header
-            PageHeader(page = page)
+            PageHeader(page)
 
             HorizontalDivider(
-                color = Color.Black.copy(alpha = 0.1f),
+                color = Color(0xFFFFCC80),
                 thickness = AppDimens.Dimens1
             )
 
-            // ✅ REAL GRID
             Column(
                 modifier = Modifier.padding(AppDimens.Dimens6),
-                verticalArrangement = Arrangement.spacedBy(0.dp)
+                verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens2)
             ) {
                 rows.forEach { row ->
                     Row(
-                        horizontalArrangement = Arrangement.spacedBy(0.dp)
+                        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens2)
                     ) {
                         row.forEach { set ->
                             Box(
@@ -98,7 +98,6 @@ fun PageItem(
                             }
                         }
 
-                        // 🔹 Fill empty columns (VERY IMPORTANT)
                         repeat(columns - row.size) {
                             Spacer(modifier = Modifier.weight(1f))
                         }
@@ -120,51 +119,61 @@ fun PageHeader(
         verticalAlignment = Alignment.CenterVertically
     ) {
 
-        // 🔹 Left icon (imgIcon)
-        Icon(
-            imageVector = Icons.AutoMirrored.Outlined.StickyNote2,
-            contentDescription = null,
-            modifier = Modifier.size(dimensionResource(R.dimen._28dp))
-        )
+        Box(
+            modifier = Modifier
+                .size(AppDimens.Dimens32)
+                .background(
+                    Color.White,
+                    CircleShape,
+                ),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                imageVector = Icons.AutoMirrored.Outlined.StickyNote2,
+                contentDescription = null,
+                tint = Color(0xFFFF9800),
+                modifier = Modifier.size(AppDimens.Dimens24)
+            )
+        }
 
-
-        // 🔹 Title + Description
         Column(
             modifier = Modifier
                 .weight(1f)
                 .padding(start = AppDimens.Dimens8)
         ) {
 
-            // Title
             Text(
                 text = page.name,
-                style = MaterialTheme.typography.bodyLarge.scaled().copy(lineHeight = 18.sp,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
+                style = MaterialTheme.typography.bodyLarge.scaled().copy(
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = FontFamily(Font(R.font.font_bold)),
+                    color = Color(0xFF5D4037)
+                ),
                 maxLines = 2
             )
 
-            // Description (only if not empty)
             if (!page.description.isNullOrEmpty()) {
                 Text(
                     text = page.description,
-                    style = MaterialTheme.typography.bodyMedium.scaled().copy(lineHeight = 16.sp,fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))),
+                    style = MaterialTheme.typography.bodySmall.scaled().copy(
+                        fontWeight = FontWeight.Medium,
+                        fontFamily = FontFamily(Font(R.font.font_medium)),
+                        color = Color(0xFF8D6E63)
+                    ),
                     maxLines = 2
                 )
             }
         }
 
-        // 🔹 Disabled indicator (imgActive)
         if (!page.is_active) {
             Image(
                 painter = painterResource(R.drawable.ic_disable),
                 contentDescription = null,
-                modifier = Modifier
-                    .size(AppDimens.Dimens12)
-                    .padding(start = AppDimens.Dimens4)
+                modifier = Modifier.size(AppDimens.Dimens14)
             )
         }
     }
 }
-
 
 fun <T> List<T>.chunkedGrid(columns: Int): List<List<T>> {
     return this.chunked(columns)

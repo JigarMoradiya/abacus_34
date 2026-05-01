@@ -48,46 +48,63 @@ fun SetItem(
     onClick: () -> Unit,
     onLongClick: () -> Unit
 ) {
-    Box(modifier = Modifier.padding(0.dp)) {
+    Box {
 
-        // 🔹 CARD
         Card(
-            shape = RoundedCornerShape(AppDimens.Dimens8),
-            elevation = CardDefaults.cardElevation(0.dp),
+            shape = RoundedCornerShape(AppDimens.Dimens4),
+            elevation = CardDefaults.cardElevation(AppDimens.Dimens2),
             colors = CardDefaults.cardColors(
                 containerColor = setCardColor(set.answer_setting)
             ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(AppDimens.Dimens4)
-                .clip(RoundedCornerShape(AppDimens.Dimens8))
+                .clip(RoundedCornerShape(AppDimens.Dimens4))
                 .combinedClickable(
                     onClick = onClick,
                     onLongClick = onLongClick
                 )
         ) {
 
-        Row(
+            Row(
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens2)
+                modifier = Modifier.padding(
+                    horizontal = AppDimens.Dimens8,
+                    vertical = AppDimens.Dimens4
+                )
             ) {
 
                 if (set.show_time_setting) {
-                    Icon(
-                        imageVector = Icons.Outlined.Timer,
-                        contentDescription = "Timer",
-                        modifier = Modifier.size(AppDimens.Dimens16),
-                        tint = Color.White
-                    )
-
+                    Box(
+                        modifier = Modifier
+                            .size(AppDimens.Dimens20)
+                            .background(
+                                Color.White.copy(alpha = 0.2f),
+                                CircleShape
+                            ),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            imageVector = Icons.Outlined.Timer,
+                            contentDescription = null,
+                            modifier = Modifier.size(AppDimens.Dimens12),
+                            tint = Color.White
+                        )
+                    }
                 }
 
                 Text(
                     text = set.getSetTitle(),
                     modifier = Modifier.padding(
-                        start = if (set.show_time_setting) AppDimens.Dimens6 else 0.dp
+                        start = if (set.show_time_setting)
+                            AppDimens.Dimens6
+                        else 0.dp
                     ),
-                    style = MaterialTheme.typography.titleMedium.scaled().copy(color = Color.White, fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
+                    style = MaterialTheme.typography.bodyMedium.scaled().copy(
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily(Font(R.font.font_bold))
+                    )
                 )
             }
         }
@@ -95,7 +112,7 @@ fun SetItem(
         Row(
             modifier = Modifier
                 .align(Alignment.TopEnd)
-                .offset(x = (-2).dp, y = (2).dp), // 👈 key part
+                .offset(x = (-2).dp, y = (2).dp),
             horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens2)
         ) {
 
@@ -119,9 +136,6 @@ fun SetItem(
         }
     }
 }
-
-
-
 
 @Composable
 private fun setCardColor(answerSetting: String): Color {
