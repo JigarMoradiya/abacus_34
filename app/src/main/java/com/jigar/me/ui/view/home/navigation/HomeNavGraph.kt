@@ -14,9 +14,9 @@ import com.jigar.me.ui.view.home.screens.activities.ccm.play.CCMPlayRoute
 import com.jigar.me.ui.view.home.screens.activities.exam.home.ExamHomeRoute
 import com.jigar.me.ui.view.home.screens.activities.exam.play.ExamPlayRoute
 import com.jigar.me.ui.view.home.screens.activities.exercise.ExerciseRoute
-import com.jigar.me.ui.view.home.screens.category.AbacusDoPracticeRoute
-import com.jigar.me.ui.view.home.screens.category.AbacusListRoute
-import com.jigar.me.ui.view.home.screens.category.CategoryScreen
+import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.AbacusDoPracticeRoute
+import com.jigar.me.ui.view.home.screens.abacus_practice.abacus_list.AbacusListRoute
+import com.jigar.me.ui.view.home.screens.abacus_practice.set_list.CategoryScreen
 import com.jigar.me.ui.view.home.screens.home.HomeScreen
 import com.jigar.me.ui.view.home.screens.my_account.FAQsRoute
 import com.jigar.me.ui.view.home.screens.my_account.MyAccountRoute
