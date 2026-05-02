@@ -1,13 +1,14 @@
 package com.jigar.me
 
 //import com.facebook.drawee.backends.pipeline.Fresco
+import android.app.Activity
 import android.app.Application
 import android.content.Context
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.annotation.NonNull
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
-import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.jigar.me.data.model.NotificationData
 import com.jigar.me.ui.view.base.inapp.BillingRepository
@@ -46,7 +47,6 @@ import javax.inject.Inject
 class MyApplication : Application(), Configuration.Provider {
     init {
         instance = this
-        alreadyCalledversionCheck = false
         System.loadLibrary("native-lib")
         System.loadLibrary("sqlcipher")
     }
@@ -64,13 +64,6 @@ class MyApplication : Application(), Configuration.Provider {
 
     companion object {
         var instance: MyApplication? = null
-        var alreadyCalledversionCheck: Boolean? = false
-
-        var analytics: FirebaseAnalytics? = null
-
-        fun logEvent(event:String,data: Bundle?){
-            analytics?.logEvent(event,data)
-        }
 
         fun getInstance(): Context {
             return instance!!.applicationContext
@@ -90,9 +83,23 @@ class MyApplication : Application(), Configuration.Provider {
         // app version update if any code logic change
         VersionUpdation.init(this)
 
-//        Fresco.initialize(this)
-        analytics = FirebaseAnalytics.getInstance(this@MyApplication)
         oneSignal()
+
+        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
+            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+                if (activity is HomeActivity){
+                    activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_USER_LANDSCAPE
+                }else{
+                    activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_USER_PORTRAIT
+                }
+            }
+            override fun onActivityStarted(activity: Activity) {}
+            override fun onActivityResumed(activity: Activity) {}
+            override fun onActivityPaused(activity: Activity) {}
+            override fun onActivityStopped(activity: Activity) {}
+            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
+            override fun onActivityDestroyed(activity: Activity) {}
+        })
     }
 
     private fun oneSignal() {
@@ -102,16 +109,16 @@ class MyApplication : Application(), Configuration.Provider {
         OneSignal.initWithContext(this, CommonUtils.getOneSignalKey())
 
         InAppMessages.addLifecycleListener(object : IInAppMessageLifecycleListener {
-            override fun onWillDisplay(@NonNull event: IInAppMessageWillDisplayEvent) {
+            override fun onWillDisplay(event: IInAppMessageWillDisplayEvent) {
             }
 
-            override fun onDidDisplay(@NonNull event: IInAppMessageDidDisplayEvent) {
+            override fun onDidDisplay(event: IInAppMessageDidDisplayEvent) {
             }
 
-            override fun onWillDismiss(@NonNull event: IInAppMessageWillDismissEvent) {
+            override fun onWillDismiss(event: IInAppMessageWillDismissEvent) {
             }
 
-            override fun onDidDismiss(@NonNull event: IInAppMessageDidDismissEvent) {
+            override fun onDidDismiss(event: IInAppMessageDidDismissEvent) {
             }
         })
 

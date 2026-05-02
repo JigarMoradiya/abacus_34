@@ -5,6 +5,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.view.home.theme.AppDimens
 
 // ColorPresetModel.kt
@@ -31,16 +32,17 @@ data class ColorPresetModel(
     val columnSpaces: Dp = AppDimens.Dimens1
 )*/
 
+// 9:5 45x25
 data class AbacusDimensionModel(
-    val beadWidth: Dp = 45.dp,
-    val beadHeight: Dp = 25.dp,
-    val beamHeight: Dp = 4.dp,
-    val extraSpace: Dp = 4.dp,
-    val rectLineWidth: Dp = 16.dp,
-    val rectLineCorner: Dp = 20.dp,
+    val beadWidth: Dp = if (DeviceInfo.isTablet) 63.dp else 45.dp,
+    val beadHeight: Dp = if (DeviceInfo.isTablet) 35.dp else 25.dp,
+    val beamHeight: Dp = if (DeviceInfo.isTablet) 8.dp else 4.dp,
+    val extraSpace: Dp = if (DeviceInfo.isTablet) 8.dp else 4.dp,
+    val rectLineWidth: Dp = if (DeviceInfo.isTablet) 32.dp else 16.dp,
+    val rectLineCorner: Dp = if (DeviceInfo.isTablet) 28.dp else 20.dp,
     val textSizeSp: Int = 13,
-    val stripHeight: Dp = 16.dp,
-    val columnSpaces: Dp = 1.dp
+    val stripHeight: Dp = if (DeviceInfo.isTablet) 32.dp else 16.dp,
+    val columnSpaces: Dp = if (DeviceInfo.isTablet) 2.dp else 1.dp
 )
 
 data class AbacusBottomLabel(

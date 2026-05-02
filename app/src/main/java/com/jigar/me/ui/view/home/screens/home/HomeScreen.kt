@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -25,6 +26,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.common_ui.Loader
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
@@ -34,6 +36,9 @@ import com.jigar.me.ui.view.home.screens.home.components.HomeHeaderRight
 import com.jigar.me.ui.view.home.screens.home.components.HomeMenuScreen
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeFragmentViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens100
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens50
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens80
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.checkPermissions
@@ -97,14 +102,20 @@ fun HomeScreen(
                 onMenuClick(it)
             }
         }
+        if (DeviceInfo.isTablet){
+            Spacer(Modifier.height(Dimens50))
+        }
         HomeMenuScreen(
             uiState = uiState,
             onMenuClick = {
                 AudioPlayerManager.playSoundBtnClick()
                 onMenuClick(it.name, it.id)
             },
-            modifier = Modifier.padding(vertical = AppDimens.Dimens16)
+            modifier = Modifier.weight(1f).padding(vertical = AppDimens.Dimens16)
         )
+        if (DeviceInfo.isTablet){
+            Spacer(Modifier.height(Dimens80))
+        }
     }
 
     if (uiState.isLoading == true) {

@@ -7,6 +7,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.graphics.toColorInt
 import androidx.media3.common.util.Log
 import androidx.media3.common.util.UnstableApi
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
 import kotlin.math.min
@@ -240,30 +241,12 @@ object AbacusTheme {
             }
             else -> 0.9f
         }
-        val multiplier = multiplierTemp * freeModeBase
+        val multiplier = (multiplierTemp * freeModeBase)
         val pref = AppPreferencesHelper(context, AppConstants.PREF_NAME)
         val screenWidthDp = pref.getCustomParamInt(AppConstants.screenWidthDp,0)
         val rectWidth = (base.rectLineWidth * 2).value
         val colSpace = (base.columnSpaces * 14).value
         val extraPadding = (base.extraSpace * 2).value
-
-        // OPTION 1
-//        val remainSpace = screenWidthDp - colSpace - rectWidth - extraPadding
-//        val beadWidth = remainSpace / 13
-//        val beadHeight : Double = ((5 * beadWidth) / 9).toDouble()  // 9 : 5
-
-        // OPTION 2
-//        val maxAbacusWidth = 820 // dp (tweak this)
-//        val usableWidth = min(screenWidthDp, maxAbacusWidth)
-//        val remainSpace = usableWidth - colSpace - rectWidth - extraPadding
-//        val beadWidth = remainSpace / 13
-//        val beadHeight : Double = ((5 * beadWidth) / 9).toDouble()  // 9 : 5
-
-        // OPTION 3
-//        val horizontalMargin = screenWidthDp * 0.05f // 5% margin
-//        val remainSpace = screenWidthDp - (horizontalMargin * 2) - colSpace - rectWidth - extraPadding
-//        val beadWidth = remainSpace / 13
-//        val beadHeight : Double = ((5 * beadWidth) / 9).toDouble()  // 9 : 5
 
         // OPTION 4 (option 2 and option 3 combo)
         val maxAbacusWidth = 820
@@ -276,7 +259,6 @@ object AbacusTheme {
         return base.copy(
             beadWidth = beadWidth.dp * multiplier,
             beadHeight = beadHeight.dp * multiplier,
-//            columnSpaces = base.columnSpaces,
             columnSpaces = if (screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise) base.columnSpaces * 2 else if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode) base.columnSpaces * 2 else base.columnSpaces,
             beamHeight = if (screenType == AppConstants.AbacusScreen.screenTypeExam || screenType == AppConstants.AbacusScreen.screenTypeExamResult || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) base.beamHeight else base.beamHeight * 2,
             rectLineWidth = when (screenType) {

@@ -20,7 +20,6 @@
         <activity
             android:name=".ui.view.login.LoginDashboardActivity"
             android:exported="true"
-            android:screenOrientation="portrait"
             android:theme="@style/AppThemeLogin.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +32,6 @@
             android:exported="true"
             android:configChanges="orientation|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape"
             android:resizeableActivity="false"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
@@ -41,14 +39,12 @@
             android:exported="true"
             android:configChanges="orientation|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"
             android:theme="@style/AppThemeLogin.NoActionBar"/>
         <activity
             android:name=".ui.view.other.ReviewSubmitActivity"
             android:exported="true"
             android:configChanges="orientation|screenSize"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"
             android:theme="@style/AppThemeLogin.NoActionBar"/>
 
         <meta-data
