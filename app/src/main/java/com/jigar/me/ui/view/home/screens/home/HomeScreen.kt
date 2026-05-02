@@ -22,7 +22,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
@@ -41,7 +40,7 @@ import com.jigar.me.utils.checkPermissions
 
 @Composable
 fun HomeScreen(
-    onNavigateToCategory: (levelId: String) -> Unit,
+    onNavigateToLevelCategory: (levelId: String) -> Unit,
     onNavigateToAbacusFreeMode: () -> Unit,
     onNavigateToMathGameZone: () -> Unit,
     onNavigateToSettings: () -> Unit,
@@ -74,7 +73,7 @@ fun HomeScreen(
     fun onMenuClick(level: String, id: String? = null) {
         when (level) {
             AppConstants.HomeClicks.Menu_Practice_Abacus -> {
-                id?.let { levelId -> onNavigateToCategory(levelId) }
+                id?.let { levelId -> onNavigateToLevelCategory(levelId) }
             }
             AppConstants.HomeClicks.Menu_Abacus_Free_Mode -> onNavigateToAbacusFreeMode()
             AppConstants.HomeClicks.Menu_Math_Game -> onNavigateToMathGameZone()

@@ -158,7 +158,7 @@ object CommonUtils {
         } else formattingInput
     }
 
-    fun checkLevelIsPurchase(purchasedSKU: List<InAppSkuDetails>, data: Category, prefManager: AppPreferencesHelper): Boolean {
+    fun checkLevelIsPurchase(purchasedSKU: List<InAppSkuDetails>, name: String, prefManager: AppPreferencesHelper): Boolean {
         if (BuildConfig.DEBUG){
 //            return true
         }
@@ -173,7 +173,7 @@ object CommonUtils {
                     || it.sku.contains(PRODUCT_ID_Week)
                     || it.sku.contains(PRODUCT_ID_1Month)
                     || it.sku.contains(PRODUCT_ID_3Month)
-                    || (it.sku.contains(data.name)) }.also {
+                    || (it.sku.contains(name)) }.also {
                 isPurchased = it != null
             }
             if (!isPurchased){
@@ -183,7 +183,7 @@ object CommonUtils {
                         object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
                     )
                     planListData.find { it.google_order_id == null &&
-                            (it.google_plan_id?.contains(data.name) == true
+                            (it.google_plan_id?.contains(name) == true
                                     || it.google_plan_id?.contains(PRODUCT_ID_All) == true
                                     || it.google_plan_id?.contains(PRODUCT_ID_1Year) == true
                                     || it.google_plan_id?.contains(PRODUCT_ID_Week) == true

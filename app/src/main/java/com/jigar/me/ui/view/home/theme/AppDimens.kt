@@ -60,6 +60,7 @@ object AppDimens {
     val keyPadWidth = if(isLargeTablet) 100.dp else if (isTablet) 80.dp else 56.dp
 
     val HomePageLogo = if(isLargeTablet) 90.dp else if (isTablet) 72.dp else 56.dp
+    val LevelSize = if(isLargeTablet) 340.dp else if (isTablet) 260.dp else 200.dp
     val exerciseWidth = if(isLargeTablet) 420.dp else if (isTablet) 360.dp else 300.dp
     val doPracticeNumberFonts = if(isLargeTablet) 140.sp else if (isTablet) 110.sp else 78.sp
 }

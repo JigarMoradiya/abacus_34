@@ -16,7 +16,7 @@ import com.jigar.me.ui.view.home.screens.activities.exam.play.ExamPlayRoute
 import com.jigar.me.ui.view.home.screens.activities.exercise.ExerciseRoute
 import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.AbacusDoPracticeRoute
 import com.jigar.me.ui.view.home.screens.abacus_practice.abacus_list.AbacusListRoute
-import com.jigar.me.ui.view.home.screens.abacus_practice.set_list.CategoryScreen
+import com.jigar.me.ui.view.home.screens.abacus_practice.set_list.SetScreen
 import com.jigar.me.ui.view.home.screens.home.HomeScreen
 import com.jigar.me.ui.view.home.screens.my_account.FAQsRoute
 import com.jigar.me.ui.view.home.screens.my_account.MyAccountRoute
@@ -36,6 +36,7 @@ import com.jigar.me.ui.view.home.screens.whats_learning.WhatsLearningScreenRoute
 import com.jigar.me.ui.view.home.screens.youtube.YoutubeVideoScreenRoute
 import com.jigar.me.ui.view.home.screens.abacus_free_mode.components.AbacusFreeModeScreen
 import com.jigar.me.ui.view.home.screens.abacus_free_mode.viewmodel.AbacusFreeModeViewModel
+import com.jigar.me.ui.view.home.screens.abacus_practice.level_list.LevelCategoryScreen
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 
 @Composable
@@ -58,8 +59,8 @@ fun HomeNavGraph(
     ) {
         composable(route = RouteNavigation.Home.route) {
             HomeScreen(
-                onNavigateToCategory = { levelId ->
-                    navController.navigate(RouteNavigation.Category.category(levelId))
+                onNavigateToLevelCategory = { levelId ->
+                    navController.navigate(RouteNavigation.LevelCategory.levelCategory(levelId))
                 },
                 onNavigateToAbacusFreeMode = {
                     navController.navigate(RouteNavigation.AbacusFreeMode.route)
@@ -103,12 +104,28 @@ fun HomeNavGraph(
         }
 
         composable(
-            route = RouteNavigation.Category.route,
+            route = RouteNavigation.LevelCategory.route,
             arguments = listOf(
                 navArgument("levelId") { type = NavType.StringType }
             )
         ) {
-            CategoryScreen(
+            LevelCategoryScreen(
+                homeActivityViewModel = homeActivityViewModel,
+                onBackClick = { navController.popBackStack() },
+                onNavigateToSet = { levelCategory ->
+                    navController.navigate(RouteNavigation.Set.abacusSet(levelCategory.id,levelCategory.name))
+                }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.Set.route,
+            arguments = listOf(
+                navArgument("levelCategoryId") { type = NavType.StringType },
+                navArgument("name") { type = NavType.StringType }
+            )
+        ) {
+            SetScreen(
                 homeActivityViewModel = homeActivityViewModel,
                 onBackClick = { navController.popBackStack() },
                 onNavigateToDoPractice = { setId ->

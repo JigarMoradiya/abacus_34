@@ -45,7 +45,7 @@ class HomeActivityViewModel @Inject constructor(
             )
 
     // check purchase for abacus level's
-    fun isPurchasedSelectedLevel(purchasedSKU: List<InAppSkuDetails>,selectedCategory: Category) = CommonUtils.checkLevelIsPurchase(purchasedSKU,selectedCategory,prefs)
+    fun isPurchasedSelectedLevel(purchasedSKU: List<InAppSkuDetails>,name: String) = CommonUtils.checkLevelIsPurchase(purchasedSKU,name,prefs)
     // check purchase for module
     fun isPurchasedForModule(purchasedSKU: List<InAppSkuDetails>) = CommonUtils.checkPurchaseForExerciseExamCCM(prefs,purchasedSKU)
 

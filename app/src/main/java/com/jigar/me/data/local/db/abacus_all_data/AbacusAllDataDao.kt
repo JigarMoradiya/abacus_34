@@ -39,6 +39,8 @@ interface AbacusAllDataDao {
     suspend fun getCategory(id : String): List<Category>
     @Query("SELECT * FROM '${AppConstants.DBParam.table_pages}' WHERE category_id = :id ORDER BY sort_order ASC,created_at ASC")
     suspend fun getPages(id : String): List<DisplayPages>
+    @Query("SELECT * FROM '${AppConstants.DBParam.table_pages}'")
+    suspend fun getAllPages(): List<DisplayPages>
     @Query("SELECT * FROM '${AppConstants.DBParam.table_pages}' WHERE category_id = :id AND is_active = 1 ORDER BY sort_order ASC,created_at ASC")
     suspend fun getPagesOnlyActive(id : String): List<DisplayPages>
     @Query("SELECT * FROM '${AppConstants.DBParam.table_sets}' WHERE page_id = :id ORDER BY sort_order ASC")

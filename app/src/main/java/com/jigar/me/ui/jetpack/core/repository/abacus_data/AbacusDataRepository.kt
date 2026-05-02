@@ -25,6 +25,9 @@ class AbacusDataRepository @Inject constructor(
     fun getPages(categoryId: String): Flow<List<DisplayPages>> = flow {
         emit(dao.getPages(categoryId))
     }
+    fun getAllPages(): Flow<List<DisplayPages>> = flow {
+        emit(dao.getAllPages())
+    }
     fun getAllSets(): Flow<List<Set>> = dao.observeAllSets()
 
     fun getAbacus(setId: String): Flow<List<Abacus>> = dao.getAbacusFlow(setId)

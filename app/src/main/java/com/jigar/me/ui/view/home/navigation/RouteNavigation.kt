@@ -6,8 +6,12 @@ sealed class RouteNavigation(val route: String) {
 
     object AbacusFreeMode : RouteNavigation("AbacusFreeMode")
 
-    object Category : RouteNavigation("Category/{levelId}") {
-        fun category(levelId: String): String = "Category/$levelId"
+    object LevelCategory : RouteNavigation("LevelCategory/{levelId}") {
+        fun levelCategory(levelId: String): String = "LevelCategory/$levelId"
+    }
+
+    object Set : RouteNavigation("AbacusSet/{levelCategoryId}/{name}") {
+        fun abacusSet(levelCategoryId: String,name : String): String = "AbacusSet/$levelCategoryId/$name"
     }
 
     object AbacusDoPractice : RouteNavigation("AbacusDoPractice/{setId}") {

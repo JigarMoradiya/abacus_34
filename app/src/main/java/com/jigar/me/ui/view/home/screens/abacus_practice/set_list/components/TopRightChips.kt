@@ -31,7 +31,7 @@ import com.jigar.me.ui.view.home.theme.AppDimens
 
 
 @Composable
-fun TopRightChips() {
+fun TopRightChips(isShowTimeChip : Boolean = true) {
     Row(
         modifier = Modifier
             .padding(top = AppDimens.Dimens12)
@@ -58,9 +58,10 @@ fun TopRightChips() {
             backgroundColor = colorResource(R.color.formal_exam)
         )
 
-        Spacer(modifier = Modifier.width(AppDimens.Dimens10))
-
-        TimerChip()
+        if (isShowTimeChip){
+            Spacer(modifier = Modifier.width(AppDimens.Dimens8))
+            TimerChip()
+        }
     }
 }
 
