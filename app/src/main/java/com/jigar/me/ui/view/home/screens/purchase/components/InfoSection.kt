@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.ui.extensions.htmlToAnnotatedString
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.theme.AppDimens
@@ -47,7 +48,7 @@ fun InfoSection(
         Icon(
             painterResource(R.drawable.crown),
             contentDescription = null,
-            modifier = Modifier.size(AppDimens.Dimens40),
+            modifier = Modifier.size(AppDimens.PurchaseCrownSize),
             tint = Color.Unspecified
         )
 
@@ -56,7 +57,7 @@ fun InfoSection(
         title?.let{
             Text(
                 text = title,
-                style = MaterialTheme.typography.bodyLarge.scaled().copy(fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
+                style = (if (DeviceInfo.isTablet) MaterialTheme.typography.titleLarge else MaterialTheme.typography.bodyLarge).scaled().copy(fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(horizontal = AppDimens.Dimens16)
             )
@@ -74,7 +75,7 @@ fun InfoSection(
             Column(
                 modifier = Modifier
                     .padding(AppDimens.Dimens12)
-                    .verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
+                    .verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(if (DeviceInfo.isTablet) AppDimens.Dimens8 else AppDimens.Dimens4)
             ) {
                 infoList.forEach {
                     Text(

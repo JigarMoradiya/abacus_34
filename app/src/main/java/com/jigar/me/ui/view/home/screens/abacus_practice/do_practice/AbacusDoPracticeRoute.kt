@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -21,12 +22,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo.screenHorizontalPadding
 import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.AbacusViewItem
 import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.AddSubAbacusItem
 import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.DivisionAbacusItem
@@ -40,6 +43,8 @@ import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.Loader
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.screens.reports.dialogs.ExerciseExamCompleteResultDialog
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.utils.AppConstants
 
 @Composable
@@ -79,7 +84,7 @@ fun AbacusDoPracticeRoute(
 
         Spacer(Modifier.weight(1f))
 
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(start = screenHorizontalPadding(),end = Dimens12)) {
             if (viewModel.isAbacusOnLeftHand) {
                 AbacusViewItem(viewModel, uiState)
                 uiState.currentAbacus?.let {

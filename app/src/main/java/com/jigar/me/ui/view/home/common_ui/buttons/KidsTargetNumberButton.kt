@@ -86,7 +86,7 @@ fun KidsNumberButton(
 
         Text(
             text = num.toString(),
-            fontSize = (minHeight.value * 0.55).sp,
+            fontSize = (minHeight.value * 0.55).sp.scaled(),
             fontWeight = FontWeight.ExtraBold,
             fontFamily = FontFamily(Font(R.font.font_extra_bold)),
             color = Color.Black.copy(alpha = 0.35f),
@@ -95,7 +95,7 @@ fun KidsNumberButton(
 
         Text(
             text = num.toString(),
-            fontSize = (minHeight.value * 0.55).sp,
+            fontSize = (minHeight.value * 0.55).sp.scaled(),
             fontWeight = FontWeight.ExtraBold,
             fontFamily = FontFamily(Font(R.font.font_extra_bold)),
             color = Color.White

@@ -56,6 +56,7 @@ fun BackButtonWithText(
     title: String,
     modifier: Modifier = Modifier,
     size: Dp = ToolbarIconSize,
+    enabled : Boolean = true,
     onBackClick: () -> Unit
 ) {
     val headerColors = getButtonColors(ButtonType.BLUE)
@@ -122,8 +123,10 @@ fun BackButtonWithText(
                         interactionSource = interactionSource,
                         indication = LocalIndication.current
                     ) {
-                        AudioPlayerManager.playSoundBtnBack()
-                        onBackClick()
+                        if (enabled){
+                            AudioPlayerManager.playSoundBtnBack()
+                            onBackClick()
+                        }
                     }
                     .align(Alignment.CenterStart),
                 contentAlignment = Alignment.Center

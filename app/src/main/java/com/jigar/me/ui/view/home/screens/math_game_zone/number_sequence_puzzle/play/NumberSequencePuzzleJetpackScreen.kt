@@ -59,6 +59,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
@@ -292,7 +293,7 @@ private fun TileView(number: Int?, size: Dp, color: Color, onClick: () -> Unit) 
             ) {
                 Text(
                     text = number.toString(),
-                    fontSize = (size.value * 0.6f).sp,
+                    fontSize = (size.value * 0.6f).sp.scaled(),
                     fontWeight = FontWeight.Bold,
                     color = Color.Black,
                     fontFamily = FontFamily(Font(R.font.font_extra_bold))

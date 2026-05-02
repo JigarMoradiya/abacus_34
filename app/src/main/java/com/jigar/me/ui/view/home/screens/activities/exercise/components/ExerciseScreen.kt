@@ -2,10 +2,15 @@ package com.jigar.me.ui.view.home.screens.activities.exercise.components
 
 import com.jigar.me.ui.view.home.theme.AppDimens
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -37,35 +42,52 @@ fun ExerciseScreen(
     uiState: ExerciseUiState, viewModel: ExerciseViewModel, onBackClick: () -> Unit) {
     val curve = if (uiState.isAbacusOnLeftHand) 0.dp else AppDimens.Dimens32
     val nonCurve = if (uiState.isAbacusOnLeftHand) AppDimens.Dimens32 else 0.dp
-    val shadowElevation = if (uiState.isAbacusOnLeftHand) AppDimens.Dimens4 else 0.dp
+    val shadowElevation = if (uiState.isAbacusOnLeftHand) AppDimens.Dimens4 else AppDimens.Dimens4
     Surface(
-        modifier = Modifier.width(exerciseWidth), shape = RoundedCornerShape(
+        modifier = Modifier
+            .width(exerciseWidth)
+            .fillMaxHeight(), shape = RoundedCornerShape(
             topStart = nonCurve, bottomStart = nonCurve, topEnd = curve, bottomEnd = curve
         ), color = Color.White, tonalElevation = 0.dp, shadowElevation = shadowElevation
     ) {
-        Column(modifier = Modifier.fillMaxSize()) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .windowInsetsPadding(WindowInsets.safeDrawing)
+            ) {
 
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                val alpha = if (uiState.isAbacusOnLeftHand){ 0f } else { 1f }
-                BackButtonWithText(title = stringResource(R.string.title_exercises),  modifier = Modifier.alpha(alpha).weight(1f),onBackClick = {
-                    onBackClick()
-                })
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    val isVisible = !uiState.isAbacusOnLeftHand
+                    val alpha = if (isVisible) 1f else 0f
 
-                // show que no when exercise start
-                if (uiState.isExerciseStarted) {
-                    Text(
-                        text = "Q${uiState.currentQueIndex + 1}", style = MaterialTheme.typography.titleMedium.scaled().copy(
-                            color = ColorPrimary, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))
-                        )
+                    BackButtonWithText(
+                        title = stringResource(R.string.title_exercises),
+                        modifier = Modifier
+                            .alpha(alpha)
+                            .weight(1f),
+                        enabled = isVisible,
+                        onBackClick = {
+                            onBackClick()
+                        }
                     )
-                    Spacer(Modifier.width(Dimens16))
+
+                    // show que no when exercise start
+                    if (uiState.isExerciseStarted) {
+                        Text(
+                            text = "Q${uiState.currentQueIndex + 1}", style = MaterialTheme.typography.titleMedium.scaled().copy(
+                                color = ColorPrimary, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))
+                            )
+                        )
+                        Spacer(Modifier.width(Dimens16))
+                    }
                 }
-            }
-            if (uiState.isExerciseStarted) {
-                ExerciseQuestions(uiState,viewModel)
-            } else {
-                ExercisePagerScreen(uiState, viewModel) { item, index ->
-                    viewModel.generateExercise()
+                if (uiState.isExerciseStarted) {
+                    ExerciseQuestions(uiState,viewModel)
+                } else {
+                    ExercisePagerScreen(uiState, viewModel) { item, index ->
+                        viewModel.generateExercise()
+                    }
                 }
             }
         }

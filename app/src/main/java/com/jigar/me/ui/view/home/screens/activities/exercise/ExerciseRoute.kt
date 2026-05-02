@@ -62,10 +62,12 @@ fun ExerciseRoute(
 
     BackHandler { handleBack() }
 
-    Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+    Box(modifier = Modifier.fillMaxSize()) {
         if (uiState.isAbacusOnLeftHand) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                ExerciseAbacusRow(uiState, viewModel, Modifier.weight(1f)) { handleBack() }
+                Box(modifier = Modifier.weight(1f).windowInsetsPadding(WindowInsets.safeDrawing)) {
+                    ExerciseAbacusRow(uiState, viewModel, Modifier) { handleBack() }
+                }
                 ExerciseScreen(uiState, viewModel) { handleBack() }
             }
         } else {
@@ -79,7 +81,7 @@ fun ExerciseRoute(
             val paddingStart = if (uiState.isAbacusOnLeftHand) 0.dp else exerciseWidth
             val paddingEnd = if (uiState.isAbacusOnLeftHand) exerciseWidth else 0.dp
             Row(
-                modifier = Modifier
+                modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing)
                     .height(ToolbarIconSize)
                     .align(alignment)
                     .padding(

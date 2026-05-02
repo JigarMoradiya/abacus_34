@@ -42,10 +42,12 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.text.HtmlCompat
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.appScale
 import com.jigar.me.ui.view.base.abacus_base.SpotlightTooltipCalculation
 import com.jigar.me.ui.view.home.theme.AppDimens
 import kotlin.math.max
@@ -321,7 +323,7 @@ fun HtmlText(
             TextView(context).apply {
                 setTextColor(android.graphics.Color.BLACK)
                 textAlignment = TextView.TEXT_ALIGNMENT_CENTER
-                textSize = 14f
+                textSize = 14f * appScale()
                 typeface = ResourcesCompat.getFont(context, R.font.font_regular)
             }
         },

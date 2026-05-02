@@ -248,9 +248,21 @@ object AbacusTheme {
         val colSpace = (base.columnSpaces * 14).value
         val extraPadding = (base.extraSpace * 2).value
 
+        Log.e("jigarDimensionPreset","isLargeTablet = "+DeviceInfo.isLargeTablet)
+        Log.e("jigarDimensionPreset","isTablet = "+DeviceInfo.isTablet)
+        Log.e("jigarDimensionPreset","screenWidthDp = "+screenWidthDp)
+
         // OPTION 4 (option 2 and option 3 combo)
-        val maxAbacusWidth = 820
-        val horizontalMargin = 24
+        val maxAbacusWidth = when {
+            DeviceInfo.isLargeTablet -> 1240
+            DeviceInfo.isTablet -> 1100
+            else -> 820
+        }
+        val horizontalMargin = when {
+            DeviceInfo.isLargeTablet -> 48
+            DeviceInfo.isTablet -> 40
+            else -> 24
+        }
         val usableWidth = min(screenWidthDp, maxAbacusWidth)
         val remainSpace = usableWidth - (horizontalMargin * 2) - colSpace - rectWidth - extraPadding
         val beadWidth = remainSpace / 13

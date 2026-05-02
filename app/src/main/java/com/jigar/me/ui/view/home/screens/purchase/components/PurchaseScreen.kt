@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Store
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -30,6 +31,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
@@ -38,6 +40,10 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsIconButton
+import com.jigar.me.ui.view.home.theme.AppDimens.KidIconMedium
+import com.jigar.me.ui.view.home.theme.ButtonType
+import com.jigar.me.utils.AppConstants
 
 @Composable
 fun PurchaseScreen(
@@ -89,16 +95,15 @@ fun PurchaseScreen(
             }
         }
 
-        Icon(
-            imageVector = Icons.Default.Close,
-            contentDescription = null,
-            modifier = Modifier
-                .align(Alignment.TopStart)
-                .padding(Dimens16)
-                .clickable {
-                    AudioPlayerManager.playSoundBtnBack()
-                    onClose()
-                }
+        KidsIconButton(
+            icon = Icons.Default.Close,
+            onClick = {
+                onClose()
+            },
+            type = ButtonType.BLUE,
+            size = KidIconMedium,
+            isPlayBackSound = true,
+            modifier = Modifier.align(Alignment.TopStart).padding(start = DeviceInfo.screenHorizontalPadding())
         )
     }
 

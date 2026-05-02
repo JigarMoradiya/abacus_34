@@ -34,15 +34,15 @@ data class ColorPresetModel(
 
 // 9:5 45x25
 data class AbacusDimensionModel(
-    val beadWidth: Dp = if (DeviceInfo.isTablet) 63.dp else 45.dp,
-    val beadHeight: Dp = if (DeviceInfo.isTablet) 35.dp else 25.dp,
-    val beamHeight: Dp = if (DeviceInfo.isTablet) 8.dp else 4.dp,
-    val extraSpace: Dp = if (DeviceInfo.isTablet) 8.dp else 4.dp,
-    val rectLineWidth: Dp = if (DeviceInfo.isTablet) 32.dp else 16.dp,
-    val rectLineCorner: Dp = if (DeviceInfo.isTablet) 28.dp else 20.dp,
+    val beadWidth: Dp = 45.dp,
+    val beadHeight: Dp = 25.dp,
+    val beamHeight: Dp = if (DeviceInfo.isLargeTablet) 8.dp else if (DeviceInfo.isTablet) 6.dp else 4.dp,
+    val extraSpace: Dp = if (DeviceInfo.isLargeTablet) 8.dp else if (DeviceInfo.isTablet) 6.dp else 4.dp,
+    val rectLineWidth: Dp = if (DeviceInfo.isLargeTablet) 32.dp else if (DeviceInfo.isTablet) 24.dp else 16.dp,
+    val rectLineCorner: Dp = if (DeviceInfo.isLargeTablet) 36.dp else if (DeviceInfo.isTablet) 28.dp else 20.dp,
     val textSizeSp: Int = 13,
-    val stripHeight: Dp = if (DeviceInfo.isTablet) 32.dp else 16.dp,
-    val columnSpaces: Dp = if (DeviceInfo.isTablet) 2.dp else 1.dp
+    val stripHeight: Dp = if (DeviceInfo.isLargeTablet) 36.dp else if (DeviceInfo.isTablet) 28.dp else 20.dp,
+    val columnSpaces: Dp = if (DeviceInfo.isLargeTablet) 3.dp else if (DeviceInfo.isTablet) 2.dp else 1.dp,
 )
 
 data class AbacusBottomLabel(
@@ -51,7 +51,6 @@ data class AbacusBottomLabel(
     val fontSize: TextUnit,
     val heightMultiplier: Int
 )
-
 
 data class SpotlightTooltipCalculation(
     val rect: RectF,

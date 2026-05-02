@@ -8,6 +8,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.annotation.OptIn
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.getValue
@@ -15,6 +16,8 @@ import androidx.compose.runtime.setValue
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.media3.common.util.Log
+import androidx.media3.common.util.UnstableApi
 import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
@@ -84,7 +87,9 @@ class HomeActivity : ComponentActivity() {
             // Detect tablet
             DeviceInfo.isLargeTablet = resources.configuration.smallestScreenWidthDp >= 840 && resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
             DeviceInfo.isTablet = resources.configuration.smallestScreenWidthDp >= 600 && resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-
+            Log.e("jigarDimensionPreset","smallestScreenWidthDp = "+resources.configuration.smallestScreenWidthDp.toString())
+            Log.e("jigarDimensionPreset","isLargeTablet = "+DeviceInfo.isLargeTablet)
+            Log.e("jigarDimensionPreset","isTablet = "+DeviceInfo.isTablet)
             // initialize audio player
             AudioPlayerManager.init(this)
 
@@ -124,8 +129,10 @@ class HomeActivity : ComponentActivity() {
         ttsManager.shutdown()
     }
 
+    @OptIn(UnstableApi::class)
     private fun logDeviceQualifiers(context: Context) {
         val config = context.resources.configuration
         preferences.setCustomParamInt(AppConstants.screenWidthDp, config.screenWidthDp)
+        Log.e("jigarDimensionPreset","logDeviceQualifiers screenWidthDp = "+config.screenWidthDp.toString())
     }
 }

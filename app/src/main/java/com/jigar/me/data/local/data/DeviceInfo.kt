@@ -1,7 +1,5 @@
 package com.jigar.me.data.local.data
 
-import com.jigar.me.ui.view.home.theme.AppDimens
-
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16

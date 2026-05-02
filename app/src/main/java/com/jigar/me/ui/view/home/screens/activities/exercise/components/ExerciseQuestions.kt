@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorDARKGreen
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
@@ -32,6 +33,7 @@ import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.Exercise
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens32
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens6
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
@@ -53,9 +55,9 @@ fun ExerciseQuestions(
                     val que = uiState.exerciseQuestionList[uiState.currentQueIndex].que+" = ?"
                     Text(
                         que,
-                        style = MaterialTheme.typography.headlineLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
+                        style = (if (DeviceInfo.isTablet)MaterialTheme.typography.displayMedium else MaterialTheme.typography.headlineLarge).scaled().copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
                     )
-                    Spacer(Modifier.height(Dimens16))
+                    Spacer(Modifier.height(if (DeviceInfo.isTablet)Dimens32 else Dimens16))
                 }
 
                 KeypadRow(listOf("1", "2", "3")) { viewModel.addKeyboardValue(it) }
@@ -99,7 +101,7 @@ fun ExerciseQuestions(
                     uiState.exerciseQuestionList[uiState.currentQueIndex].que.split(Regex("(?=[+-])")).forEach {
                         Text(
                             it,
-                            style = MaterialTheme.typography.bodyLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
+                            style = (if (DeviceInfo.isTablet) MaterialTheme.typography.titleMedium else MaterialTheme.typography.bodyLarge).scaled().copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
                         )
                     }
                 }

@@ -160,7 +160,7 @@ object CommonUtils {
 
     fun checkLevelIsPurchase(purchasedSKU: List<InAppSkuDetails>, name: String, prefManager: AppPreferencesHelper): Boolean {
         if (BuildConfig.DEBUG){
-//            return true
+            return true
         }
         var isPurchased = false
         val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
@@ -201,7 +201,7 @@ object CommonUtils {
 
     fun checkPurchaseForExerciseExamCCM(prefManager: AppPreferencesHelper,purchasedSKU: List<InAppSkuDetails>): Boolean {
         if (BuildConfig.DEBUG){
-//            return true
+            return true
         }
         val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
         var isPurchased = false

@@ -48,6 +48,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.base.abacus_base.ColorPresetModel
@@ -65,13 +66,22 @@ fun AbacusAnswerBarCompose(
     onNext: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val scale = 1.0
-
     val isSmall = screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise
+    val scale = when {
+        DeviceInfo.isLargeTablet -> if (isSmall) 1.35 else 1.5
+        DeviceInfo.isTablet -> if (isSmall) 1.2 else 1.3
+        else -> 1.0
+    }
     val horizontalPadding = ((if (isSmall) 8 else 16) * scale).dp
     val outFrameHeight = ((if (isSmall) 36 else 48) * scale).dp
     val iconDimensions = ((if (isSmall) 14 else 18) * scale).dp
-    val centerBoxValueTextSize = ((if (isSmall) 18 else 24) * scale).sp
+    val buttonLabelTextSize = ((if (isSmall) 10 else 11)).sp.scaled()
+    val buttonLabelLineHeight = ((if (isSmall) 12 else 13)).sp.scaled()
+    val centerBoxValueTextSize = ((if (isSmall) 18 else 24)).sp.scaled()
+    val centerBoxTitleTextSize = ((if (isSmall) 9 else 10)).sp.scaled()
+    val centerBoxTitleLineHeight = ((if (isSmall) 10 else 10)).sp.scaled()
+    val centerBoxHiddenTextSize = ((if (isSmall) 8 else 9)).sp.scaled()
+    val centerBoxHiddenLineHeight = ((if (isSmall) 9 else 10)).sp.scaled()
     val centerBoxHeight = ((if (isSmall) 48 else 60) * scale).dp
     val centerBoxMinWidth = ((if (isSmall) 100 else 140) * scale).dp
     val backgroundBoxBorder = ((if (isSmall) 2 else 4) * scale).dp
@@ -101,16 +111,34 @@ fun AbacusAnswerBarCompose(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(horizontalPadding / 2)
             ) {
-                ResetButton(resetOpacity, iconDimensions, onReset,backgroundBoxPadding)
+                ResetButton(
+                    resetOpacity,
+                    iconDimensions,
+                    onReset,
+                    backgroundBoxPadding,
+                    buttonLabelTextSize,
+                    buttonLabelLineHeight
+                )
                 CenterBox(centerBoxMinWidth,
                     centerBoxHeight, theme, horizontalPadding,
-                    isDisplayAbacusNumber, answer, centerBoxValueTextSize
+                    isDisplayAbacusNumber, answer, centerBoxValueTextSize,
+                    centerBoxTitleTextSize, centerBoxTitleLineHeight,
+                    centerBoxHiddenTextSize, centerBoxHiddenLineHeight
                 )
                 Box(
                     contentAlignment = Alignment.Center
                 ) {
 
-                    NextButton(nextOpacity, iconDimensions, screenType, abacusType, onNext,backgroundBoxPadding)
+                    NextButton(
+                        nextOpacity,
+                        iconDimensions,
+                        screenType,
+                        abacusType,
+                        onNext,
+                        backgroundBoxPadding,
+                        buttonLabelTextSize,
+                        buttonLabelLineHeight
+                    )
 
                     if (screenType == AppConstants.AbacusScreen.screenTypeAbacusPractice){
                         HandLeftRightIndicator(
@@ -174,7 +202,9 @@ fun ResetButton(
     resetOpacity: Float,
     iconDimensions: Dp,
     onReset: () -> Unit,
-    backgroundBoxPadding: Dp
+    backgroundBoxPadding: Dp,
+    buttonLabelTextSize: TextUnit,
+    buttonLabelLineHeight: TextUnit
 ) {
     Column(
         modifier = Modifier
@@ -194,8 +224,8 @@ fun ResetButton(
             color = Color.White,
             fontWeight = FontWeight.Bold,
             fontFamily = FontFamily(Font(R.font.font_bold)),
-            style = MaterialTheme.typography.labelSmall.scaled(),
-            lineHeight = 12.sp,
+            style = MaterialTheme.typography.labelSmall.scaled().copy(fontSize = buttonLabelTextSize),
+            lineHeight = buttonLabelLineHeight,
         )
     }
 }
@@ -208,7 +238,11 @@ fun CenterBox(
     horizontalPadding: Dp,
     isDisplayAbacusNumber: Boolean,
     answer: String,
-    centerBoxValueTextSize: TextUnit
+    centerBoxValueTextSize: TextUnit,
+    centerBoxTitleTextSize: TextUnit,
+    centerBoxTitleLineHeight: TextUnit,
+    centerBoxHiddenTextSize: TextUnit,
+    centerBoxHiddenLineHeight: TextUnit
 ) {
     Column(
         modifier = Modifier
@@ -235,8 +269,8 @@ fun CenterBox(
             color = Color.White,
             fontWeight = FontWeight.Bold,
             fontFamily = FontFamily(Font(R.font.font_bold)),
-            fontSize = 10.sp,
-            lineHeight = 10.sp
+            fontSize = centerBoxTitleTextSize,
+            lineHeight = centerBoxTitleLineHeight
         )
 
         if (isDisplayAbacusNumber) {
@@ -249,8 +283,13 @@ fun CenterBox(
                 lineHeight = centerBoxValueTextSize
             )
         } else {
-            Text("-", color = Color.White, fontSize = 10.sp,lineHeight = 11.sp)
-            Text(stringResource(R.string.hide_from_setting), color = Color.White, fontSize = 9.sp, lineHeight = 10.sp)
+            Text("-", color = Color.White, fontSize = centerBoxTitleTextSize, lineHeight = centerBoxTitleLineHeight)
+            Text(
+                stringResource(R.string.hide_from_setting),
+                color = Color.White,
+                fontSize = centerBoxHiddenTextSize,
+                lineHeight = centerBoxHiddenLineHeight
+            )
         }
     }
 }
@@ -262,7 +301,9 @@ fun NextButton(
     screenType: String,
     abacusType: String?,
     onNext: () -> Unit,
-    backgroundBoxPadding: Dp
+    backgroundBoxPadding: Dp,
+    buttonLabelTextSize: TextUnit,
+    buttonLabelLineHeight: TextUnit
 ) {
     val (pulseScale, pulseAlpha) = if (screenType == AppConstants.AbacusScreen.screenTypeAbacusPractice){
         rememberPulseEffect(nextOpacity == 1f)
@@ -298,8 +339,13 @@ fun NextButton(
                 else -> stringResource(R.string.next)
             },
             textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.labelSmall.scaled().copy(color = Color.White,fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
-            lineHeight = 12.sp,
+            style = MaterialTheme.typography.labelSmall.scaled().copy(
+                color = Color.White,
+                fontSize = buttonLabelTextSize,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily(Font(R.font.font_bold))
+            ),
+            lineHeight = buttonLabelLineHeight,
         )
     }
 }

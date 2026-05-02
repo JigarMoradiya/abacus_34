@@ -18,9 +18,13 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.util.UnstableApi
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsIconButton
 import com.jigar.me.ui.view.home.screens.whats_learning.viewmodels.WhatsLearnNewUiState
 import com.jigar.me.ui.view.home.screens.purchase.components.InfoSection
+import com.jigar.me.ui.view.home.theme.AppDimens.KidIconMedium
+import com.jigar.me.ui.view.home.theme.ButtonType
 
 @Composable
 @UnstableApi
@@ -49,16 +53,15 @@ fun WhatsLearnNewScreen(
 
         }
 
-        Icon(
-            imageVector = Icons.Default.Close,
-            contentDescription = null,
-            modifier = Modifier
-                .align(Alignment.TopStart)
-                .padding(AppDimens.Dimens16)
-                .clickable {
-                    AudioPlayerManager.playSoundBtnClick()
-                    onClose()
-                }
+        KidsIconButton(
+            icon = Icons.Default.Close,
+            onClick = {
+                onClose()
+            },
+            type = ButtonType.BLUE,
+            size = KidIconMedium,
+            isPlayBackSound = true,
+            modifier = Modifier.align(Alignment.TopStart).padding(start = DeviceInfo.screenHorizontalPadding())
         )
     }
 }

@@ -40,8 +40,10 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.data.local.data.RodMovement
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.base.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.base.abacus_base.components.AbacusAnswerBarCompose
@@ -140,7 +142,13 @@ fun AbacusWithDecimalCanvas(
 
         // Top Answer Bar (hidden in free mode, same as your old logic)
         if (!(screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn) && screenType != AppConstants.AbacusScreen.screenTypeSettingPreview && screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult) {
-            val offsetY = if(screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise) (-36).dp else (-48).dp
+            val isSmallAnswerBar = screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise
+            val answerBarScale = when {
+                DeviceInfo.isLargeTablet -> if (isSmallAnswerBar) 1.35 else 1.5
+                DeviceInfo.isTablet -> if (isSmallAnswerBar) 1.2 else 1.3
+                else -> 1.0
+            }
+            val offsetY = ((if (isSmallAnswerBar) -36 else -48) * answerBarScale).dp
 
             AbacusAnswerBarCompose(
                 answer = abacusData.displayValue,
@@ -296,8 +304,8 @@ fun AbacusWithDecimalCanvas(
                     modifier = Modifier.height(dim.rectLineWidth),
                     text = abacusData.displayValue,
                     color = textColor,
-                    fontSize = dim.textSizeSp.sp,
-                    lineHeight = dim.textSizeSp.sp,
+                    fontSize = dim.textSizeSp.sp.scaled(),
+                    lineHeight = dim.textSizeSp.sp.scaled(),
                     fontFamily = FontFamily(Font(R.font.font_extra_bold))
                 )
             }
@@ -635,7 +643,6 @@ fun AbacusWithDecimalCanvas(
         )
     }
 }
-
 
 
 

@@ -38,6 +38,7 @@ fun KidsIconButton(
     onClick: () -> Unit,
     type: ButtonType,
     size: Dp = KidsIconSize,
+    isPlayBackSound : Boolean = false,
     modifier: Modifier = Modifier
 ) {
     val colors = getButtonColors(type)
@@ -90,7 +91,11 @@ fun KidsIconButton(
                 interactionSource = interactionSource,
                 indication = null
             ) {
-                AudioPlayerManager.playSoundBtnClick()
+                if (isPlayBackSound){
+                    AudioPlayerManager.playSoundBtnBack()
+                }else{
+                    AudioPlayerManager.playSoundBtnClick()
+                }
                 onClick()
             },
         contentAlignment = Alignment.Center

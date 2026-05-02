@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -27,8 +28,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
+import coil.size.Dimension
 import com.google.gson.Gson
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
@@ -38,6 +41,9 @@ import com.jigar.me.ui.view.home.screens.abacus_practice.level_list.viewmodels.L
 import com.jigar.me.ui.view.home.screens.abacus_practice.set_list.components.TopRightChips
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens32
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens50
 
 @Composable
 fun LevelCategoryScreen(
@@ -61,10 +67,13 @@ fun LevelCategoryScreen(
             )
             TopRightChips(false)
         }
-        Spacer(Modifier.weight(1f))
+
+        if (DeviceInfo.isTablet){
+            Spacer(Modifier.height(Dimens16))
+        }
 
         Row(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.weight(1f),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
@@ -87,6 +96,9 @@ fun LevelCategoryScreen(
                     }
                 }
             }
+        }
+        if (DeviceInfo.isTablet){
+            Spacer(Modifier.height(Dimens50))
         }
     }
 }

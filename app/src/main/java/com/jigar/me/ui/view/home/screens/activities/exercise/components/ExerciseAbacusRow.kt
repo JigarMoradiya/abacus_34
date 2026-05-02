@@ -15,10 +15,12 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseUiState
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseViewModel
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.utils.AppConstants
 
 @Composable
@@ -37,7 +39,7 @@ fun ExerciseAbacusRow(uiState: ExerciseUiState, viewModel: ExerciseViewModel, mo
             }else{
                 Spacer(Modifier.height(AppDimens.Dimens32))
             }
-            Row {
+            Row(modifier = Modifier.padding(end = if (uiState.isAbacusOnLeftHand) 0.dp else Dimens16,start = if (uiState.isAbacusOnLeftHand) DeviceInfo.screenHorizontalPadding() else 0.dp)) {
                 if (!uiState.isAbacusOnLeftHand){
                     Spacer(Modifier.weight(1f))
                 }

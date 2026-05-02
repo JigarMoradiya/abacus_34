@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,6 +22,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.base.abacus_base.AbacusBottomLabel
 import com.jigar.me.ui.view.base.abacus_base.AbacusDimensionModel
 import com.jigar.me.ui.view.base.abacus_base.ColorPresets.hex
@@ -66,10 +68,13 @@ fun NumberStripBar(
                 ) {
                     Text(
                         text = item.first,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.White,
-                        fontSize = item.third,
-                        lineHeight = item.third,  // match line height to font
+                        style = MaterialTheme.typography.labelSmall.copy(
+                            fontWeight = FontWeight.Bold,
+                            color = Color.White,
+                            fontSize = item.third.scaled(),
+                            lineHeight = item.third.scaled(),
+                        ),
+
                         textAlign = TextAlign.Center
                     )
                 }
@@ -114,10 +119,12 @@ fun NumberStripBar(
                 ) {
                     Text(
                         text = item.first,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.White,
-                        fontSize = item.third,
-                        lineHeight = item.third,  // match line height to font
+                        style = MaterialTheme.typography.labelSmall.copy(
+                            fontWeight = FontWeight.Bold,
+                            color = Color.White,
+                            fontSize = item.third.scaled(),
+                            lineHeight = item.third.scaled(),  // match line height to font
+                        ),
                         textAlign = TextAlign.Center
                     )
                 }
@@ -145,11 +152,13 @@ fun NumberStripBar(
                     modifier = Modifier
                         .width(beadWidth)
                     ,
-                    fontWeight = FontWeight.Bold,
-                    color = hex(label.colorHex),
+                    style = MaterialTheme.typography.labelSmall.copy(
+                        fontWeight = FontWeight.Bold,
+                        color = hex(label.colorHex),
+                        lineHeight = label.fontSize.scaled(),
+                        fontSize = label.fontSize.scaled(),
+                    ),
                     textAlign = TextAlign.Center,
-                    lineHeight = label.fontSize,
-                    fontSize = label.fontSize,
                 )
             }
 
@@ -162,18 +171,22 @@ fun NumberStripBar(
             ) {
                 Text(
                     "Ones",
-                    fontWeight = FontWeight.Bold,
-                    color = hex("F57C00"),
-                    fontSize = 10.sp,
-                    lineHeight = 10.sp,
+                    style = MaterialTheme.typography.labelSmall.copy(
+                        fontWeight = FontWeight.Bold,
+                        color = hex("F57C00"),
+                        fontSize = 10.sp.scaled(),
+                        lineHeight = 10.sp.scaled(),
+                    ),
                     textAlign = TextAlign.Center
                 )
                 Text(
                     "Unit Rod",
-                    fontWeight = FontWeight.Bold,
-                    color = Color.Black,
-                    fontSize = 9.sp,
-                    lineHeight = 10.sp,
+                    style = MaterialTheme.typography.labelSmall.copy(
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black,
+                        fontSize = 9.sp.scaled(),
+                        lineHeight = 10.sp.scaled(),
+                    ),
                     textAlign = TextAlign.Center
                 )
             }
