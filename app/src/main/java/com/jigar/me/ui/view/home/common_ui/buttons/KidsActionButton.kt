@@ -129,8 +129,8 @@ fun KidsActionButton(
                     Text(
                         text = text,
                         color = Color.Black.copy(alpha = 0.35f),
-                        style = if (isSmall) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodyLarge.scaled(),
-                        fontWeight = FontWeight.Bold,
+                        style = if (isSmall) MaterialTheme.typography.bodySmall.scaled() else MaterialTheme.typography.bodyLarge.scaled(),
+                        fontWeight = if (isSmall)FontWeight.ExtraBold else FontWeight.Bold,
                         modifier = Modifier.offset(ShadowOffsetText, ShadowOffsetText)
                     )
                 }
@@ -140,8 +140,8 @@ fun KidsActionButton(
                 Text(
                     text = text,
                     color = if (type == ButtonType.DISABLE) colors.base else Color.White,
-                    style = if (isSmall) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodyLarge.scaled(),
-                    fontWeight = FontWeight.Bold
+                    style = if (isSmall) MaterialTheme.typography.bodySmall.scaled() else MaterialTheme.typography.bodyLarge.scaled(),
+                    fontWeight = if (isSmall)FontWeight.ExtraBold else FontWeight.Bold
                 )
             }
 

@@ -152,7 +152,7 @@ class CCMPlayViewModel @Inject constructor(
     fun eraseKeyboardValue() {
         updateState_ {
             if (answerDigits.isEmpty()) return@updateState_ this
-            AudioPlayerManager.playSoundBtnClick()
+            AudioPlayerManager.playSoundBtnBack()
             copy(answerDigits = answerDigits.dropLast(1))
         }
 

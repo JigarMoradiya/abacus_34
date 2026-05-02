@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.runtime.CompositionLocalProvider
@@ -18,7 +19,6 @@ import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.TextToSpeechManager
-import com.jigar.me.ui.view.base.BaseActivity
 import com.jigar.me.ui.view.home.common_ui.BackgroundUI
 import com.jigar.me.ui.view.home.navigation.HomeNavGraph
 import com.jigar.me.ui.view.home.theme.MyApplicationTheme
@@ -29,7 +29,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeActivity : BaseActivity() {
+class HomeActivity : ComponentActivity() {
 
     @Inject
     lateinit var preferences: AppPreferencesHelper
@@ -126,6 +126,6 @@ class HomeActivity : BaseActivity() {
 
     private fun logDeviceQualifiers(context: Context) {
         val config = context.resources.configuration
-        prefManager.setCustomParamInt(AppConstants.screenWidthDp, config.screenWidthDp)
+        preferences.setCustomParamInt(AppConstants.screenWidthDp, config.screenWidthDp)
     }
 }

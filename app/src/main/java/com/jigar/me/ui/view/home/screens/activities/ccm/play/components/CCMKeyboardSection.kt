@@ -52,15 +52,8 @@ fun CCMKeyboardSection(
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
         Text(
-            text = stringResource(R.string.set_your_answer),
-            style = MaterialTheme.typography.titleLarge.scaled().copy(color = Color.DarkGray, fontWeight = FontWeight.Medium,fontFamily = FontFamily(Font(R.font.font_medium))),
-        )
-
-        Spacer(Modifier.height(Dimens4))
-
-        Text(
             text = uiState.answerText,
-            style = MaterialTheme.typography.displaySmall.scaled().copy(color = theme.buttonColor, fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
+            style = MaterialTheme.typography.displayLarge.scaled().copy(color = theme.buttonColor, fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold))),
         )
 
         Spacer(Modifier.height(AppDimens.Dimens8))

@@ -3,24 +3,17 @@ package com.jigar.me.ui.view.login
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.core.view.WindowCompat
-import com.jigar.me.data.pref.AppPreferencesHelper
-import com.jigar.me.ui.view.base.BaseActivity
 import com.jigar.me.ui.view.home.HomeActivity
 import com.jigar.me.ui.view.home.common_ui.BackgroundUI
-import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.theme.MyApplicationTheme
 import com.jigar.me.ui.view.login.navigation.LoginNavGraph
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
-class LoginDashboardActivity : BaseActivity() {
-
-    @Inject
-    lateinit var preferences: AppPreferencesHelper
+class LoginDashboardActivity : ComponentActivity() {
 
     companion object {
         @JvmStatic
@@ -39,15 +32,13 @@ class LoginDashboardActivity : BaseActivity() {
         setContent {
             BackgroundUI()
             MyApplicationTheme {
-                CompositionLocalProvider(LocalPreferencesHelper provides preferences) {
-                    LoginNavGraph(
-                        onNavigateToHome = {
-                            HomeActivity.getInstance(this@LoginDashboardActivity)
-                            finish()
-                        },
-                        onFinishActivity = { finish() },
-                    )
-                }
+                LoginNavGraph(
+                    onNavigateToHome = {
+                        HomeActivity.getInstance(this@LoginDashboardActivity)
+                        finish()
+                    },
+                    onFinishActivity = { finish() },
+                )
             }
         }
     }
