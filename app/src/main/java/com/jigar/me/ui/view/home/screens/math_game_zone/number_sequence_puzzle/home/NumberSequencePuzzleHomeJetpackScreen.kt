@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -26,6 +27,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.HelpOutline
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.HelpOutline
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -50,10 +52,13 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.how_to_play.HowToPlayNumberSequenceView
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.AppDimens.SudokuHomeIconsBox
 import com.jigar.me.ui.view.home.theme.ButtonType
 
 @Composable
@@ -93,7 +98,7 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                     painter = painterResource(id = R.drawable.number_sequence_puzzle),
                     contentDescription = "Number Puzzle Logo",
                     modifier = Modifier
-                        .height(dimensionResource(R.dimen._120dp))
+                        .fillMaxHeight(if (DeviceInfo.isTablet) 0.4f else 0.35f)
                         .fillMaxWidth(),
                     contentScale = ContentScale.Fit
                 )
@@ -101,14 +106,14 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                 Text(
                     text = stringResource(R.string.select_the_puzzle_dashboard),
                     fontFamily = FontFamily(Font(R.font.font_bold)),
-                    fontSize = dimensionResource(id = R.dimen.textSize20).value.sp,
                     color = colorResource(id = R.color.colorBlueDark),
                     textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(top = AppDimens.Dimens16)
+                    style = MaterialTheme.typography.titleLarge.scaled(),
+                    modifier = Modifier.padding(top = Dimens16)
                 )
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens24),
-                    modifier = Modifier.padding(top = AppDimens.Dimens16)
+                    modifier = Modifier.padding(top = Dimens16)
                 ) {
                     PuzzleOptionView(
                         gridSize = 3,
@@ -149,7 +154,7 @@ fun PuzzleOptionView(
     color: Color,
     onClick: () -> Unit
 ) {
-    val boxSize = dimensionResource(R.dimen._72dp)
+    val boxSize = SudokuHomeIconsBox
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -199,7 +204,7 @@ fun PuzzleOptionView(
         Text(
             text = "$gridSize x $gridSize Puzzle",
             fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-            fontSize = dimensionResource(id = R.dimen.textSizeRegular).value.sp,
+            style = MaterialTheme.typography.labelLarge.scaled(),
             color = color,
             modifier = Modifier.padding(top = AppDimens.Dimens8)
         )

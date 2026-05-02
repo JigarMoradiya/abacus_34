@@ -19,7 +19,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
@@ -37,8 +38,13 @@ fun HowToPlaySudokuView(
     heightMultiplier: Float = 0.9f,
     onClose: () -> Unit
 ) {
-    val screenWidth = LocalConfiguration.current.screenWidthDp.dp
-    val screenHeight = LocalConfiguration.current.screenHeightDp.dp
+    val windowInfo = LocalWindowInfo.current
+    val screenWidth = with(LocalDensity.current) {
+        windowInfo.containerSize.width.toDp()
+    }
+    val screenHeight = with(LocalDensity.current) {
+        windowInfo.containerSize.height.toDp()
+    }
 
     // Dimmed background
     Box(

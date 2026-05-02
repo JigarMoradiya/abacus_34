@@ -96,7 +96,8 @@ fun TargetNumberHomeScreen(
 
             Row(
                 modifier = Modifier.weight(1f),
-                horizontalArrangement = Arrangement.SpaceEvenly
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 levelRange.forEach { level ->
                     val isSelected = state.selectedLevel == level
@@ -146,7 +147,7 @@ fun TargetNumberHomeScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(AppDimens.Dimens16),
+                    .padding(Dimens16),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 CommonDifficultySelectorCompose(

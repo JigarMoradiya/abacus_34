@@ -38,7 +38,7 @@ object AppDimens {
     val Dimens48 = if(isLargeTablet) 96.dp else if (isTablet) 70.dp else 48.dp
     val Dimens56 = if(isLargeTablet) 110.dp else if (isTablet) 80.dp else 56.dp
     val Dimens60 = if(isLargeTablet) 120.dp else if (isTablet) 84.dp else 60.dp
-    val Dimens64 = if(isLargeTablet) 128.dp else if (isTablet) 90.dp else 64.dp
+    val Dimens64 = if(isLargeTablet) 128.dp else if (isTablet) 110.dp else 64.dp
     val Dimens72 = if(isLargeTablet) 144.dp else if (isTablet) 100.dp else 72.dp
     val Dimens80 = if(isLargeTablet) 160.dp else if (isTablet) 112.dp else 80.dp
     val Dimens90 = if(isLargeTablet) 180.dp else if (isTablet) 128.dp else 90.dp
@@ -59,8 +59,10 @@ object AppDimens {
     val keyPadWidth = if(isLargeTablet) 100.dp else if (isTablet) 80.dp else 56.dp
 
     val HomePageLogo = if(isLargeTablet) 90.dp else if (isTablet) 72.dp else 56.dp
+    val SudokuHomeIconsBox = if(isLargeTablet) 144.dp else if (isTablet) 100.dp else 66.dp
     val LevelSize = if(isLargeTablet) 400.dp else if (isTablet) 300.dp else 200.dp
     val exerciseWidth = if(isLargeTablet) 540.dp else if (isTablet) 480.dp else 300.dp
     val PurchaseCrownSize = if(isLargeTablet) 120.dp else if (isTablet) 80.dp else 40.dp
+    val PyramidWidth = if(isLargeTablet) 144.dp else if (isTablet) 110.dp else 72.dp
     val doPracticeNumberFonts = if(isLargeTablet) 140.sp else if (isTablet) 110.sp else 78.sp
 }

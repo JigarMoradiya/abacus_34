@@ -248,10 +248,6 @@ object AbacusTheme {
         val colSpace = (base.columnSpaces * 14).value
         val extraPadding = (base.extraSpace * 2).value
 
-        Log.e("jigarDimensionPreset","isLargeTablet = "+DeviceInfo.isLargeTablet)
-        Log.e("jigarDimensionPreset","isTablet = "+DeviceInfo.isTablet)
-        Log.e("jigarDimensionPreset","screenWidthDp = "+screenWidthDp)
-
         // OPTION 4 (option 2 and option 3 combo)
         val maxAbacusWidth = when {
             DeviceInfo.isLargeTablet -> 1240

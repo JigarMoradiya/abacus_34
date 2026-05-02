@@ -27,6 +27,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
 
 
@@ -69,9 +70,9 @@ fun CommonDifficultySelectorCompose(
                     Text(
                         text = d.displayName,
                         fontSize = if (isSelected)
-                            dimensionResource(id = R.dimen.textSizeSuperExtraLarge).value.sp
+                            dimensionResource(id = R.dimen.textSizeSuperExtraLarge).value.sp.scaled()
                         else
-                            dimensionResource(id = R.dimen.textSizeRegular).value.sp,
+                            dimensionResource(id = R.dimen.textSizeRegular).value.sp.scaled(),
                         color = if (isSelected) Color.White else colorResource(R.color.black_text),
                         fontFamily = FontFamily(Font(if (isSelected) R.font.font_bold else R.font.font_regular))
                     )

@@ -42,6 +42,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens32
@@ -119,7 +120,7 @@ fun MathPyramidHomeJetpackScreen(
                                 fontFamily = FontFamily(Font(if (state.selectedLevel == level) R.font.font_bold else R.font.font_regular)),
                                 fontSize = dimensionResource(
                                     id = if (state.selectedLevel == level) R.dimen.textSize24 else R.dimen.textSize17
-                                ).value.sp
+                                ).value.sp.scaled()
                             )
                         }
                     }

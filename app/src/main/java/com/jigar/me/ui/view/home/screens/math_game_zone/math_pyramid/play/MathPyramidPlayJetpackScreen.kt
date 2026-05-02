@@ -221,71 +221,6 @@ private fun PyramidGrid(
         }
     }
 }
-
-//@Composable
-//private fun PyramidCell(levels : Int,value: Int?, isEditable: Boolean, isSelected: Boolean, onTap: () -> Unit) {
-//    val originalWidth = 72
-//    var width : Double = originalWidth.toDouble()
-//    var height : Double = originalWidth.toDouble()
-//    var color = Color.Cyan
-//    when (levels) {
-//        2 -> {
-//            width = (originalWidth * 1.9)
-//            height = (originalWidth * 1.2)
-//            color = Color.Cyan
-//        }
-//        3 -> {
-//            width = (originalWidth * 1.3)
-//            height = (originalWidth * 0.9)
-//            color = Color.Magenta
-//        }
-//        4 -> {
-//            width = (originalWidth * 1.1)
-//            height = (originalWidth * 0.7)
-//            color = Color.Yellow
-//        }
-//        5 -> {
-//            height = (originalWidth * 0.6)
-//            color = Color.Green
-//        }
-//        6 -> {
-//            width = (originalWidth * 0.95)
-//            height = (originalWidth * 0.56)
-//            color = Color.Red
-//        }
-//    }
-//    val fonts = height * 0.6
-//    Card(
-//        modifier = Modifier
-//            .size(width = width.dp, height = height.dp)
-//            .clickable { if (isEditable) onTap() },
-//        shape = RoundedCornerShape(AppDimens.Dimens8),
-//        elevation = CardDefaults.cardElevation(  // Material3 syntax
-//            defaultElevation = if (isEditable) AppDimens.Dimens6 else AppDimens.Dimens2
-//        ))
-//    {
-//        Box(modifier = Modifier.fillMaxSize()
-//            .background(
-//                when {
-//                    isEditable -> color.copy(alpha = if (isSelected) 0.3f else 0.1F)                 // empty editable
-//                    value != null -> Color.White                     // fixed number
-//                    else -> color.copy(alpha = if (isSelected) 0.3f else 0.1F)      // optional style
-//                }
-//            ),contentAlignment = Alignment.Center) {
-//            when {
-//                value != null -> Text(text = value.toString(), fontSize = fonts.sp,
-//                    fontFamily = FontFamily(Font(R.font.font_bold)))
-//                isEditable -> Text(text = "?", fontSize = fonts.sp, color = Color.Black.copy(alpha = 0.5f),fontFamily = FontFamily(Font(R.font.font_bold)))
-//                else -> Text("", fontSize = fonts.sp,fontFamily = FontFamily(Font(R.font.font_bold)))
-//            }
-//            if (isSelected) {
-//                // simple selected overlay
-//                Box(modifier = Modifier.matchParentSize().background(color.copy(alpha = 0.3f)))
-//            }
-//        }
-//    }
-//}
-
 @Composable
 private fun PyramidCell(
     levels: Int,
@@ -303,7 +238,7 @@ private fun PyramidCell(
         label = ""
     )
 
-    val originalWidth = 72
+    val originalWidth = AppDimens.PyramidWidth.value
     var width: Double = originalWidth.toDouble()
     var height: Double = originalWidth.toDouble()
     var baseColor = Color(0xFFE3F2FD)
@@ -359,7 +294,7 @@ private fun PyramidCell(
             }
         ),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = if (isSelected) 8.dp else if (isEditable) 5.dp else 2.dp
+            defaultElevation = if (isSelected) AppDimens.Dimens8 else if (isEditable) AppDimens.Dimens4 else AppDimens.Dimens2
         )
     ) {
 
@@ -390,7 +325,7 @@ private fun PyramidCell(
                     modifier = Modifier
                         .matchParentSize()
                         .border(
-                            2.dp,
+                            AppDimens.Dimens2,
                             Color(0xFF000000),
                             RoundedCornerShape(AppDimens.Dimens10)
                         )

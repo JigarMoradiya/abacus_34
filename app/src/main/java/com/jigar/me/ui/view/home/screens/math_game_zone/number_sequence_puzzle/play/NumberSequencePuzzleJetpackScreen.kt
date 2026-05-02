@@ -23,6 +23,7 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -34,7 +35,10 @@ import androidx.compose.material.icons.filled.VolumeOff
 import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -59,6 +63,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
@@ -66,6 +71,9 @@ import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.screens.math_game_zone.number_sequence_puzzle.viewmodels.NumberSequencePuzzleViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens24
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import com.jigar.me.ui.view.home.theme.ButtonType
 
 @Composable
@@ -92,14 +100,15 @@ fun NumberSequencePuzzleJetpackScreen(
         Column(modifier = Modifier.fillMaxSize()) {
             BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
                 val maxWidth = maxWidth
-
+                val leftRightWidth = 0.25f
+                val centerWidth = 0.50f
                 Row(
                     modifier = Modifier.fillMaxSize(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     LeftPanel(
                         moveCount = uiState.moveCount,
-                        modifier = Modifier.width(maxWidth * 0.25f)
+                        modifier = Modifier.width(maxWidth * leftRightWidth)
                     )
 
                     if (uiState.tiles.size == gridSize && tileColors.size == gridSize) {
@@ -110,18 +119,20 @@ fun NumberSequencePuzzleJetpackScreen(
                             opacity = opacity,
                             tileColors = tileColors,
                             onTileMove = { row, col -> viewModel.onTileMove(row, col) },
-                            modifier = Modifier.width(maxWidth * 0.5f)
+                            modifier = Modifier.width(maxWidth * centerWidth)
                         )
                     } else {
-                        Spacer(modifier = Modifier.width(maxWidth * 0.5f))
+                        Spacer(modifier = Modifier.width(maxWidth * centerWidth))
                     }
 
                     RightPanel(
                         soundOn = uiState.soundOn,
                         onSoundToggle = { viewModel.toggleSound() },
                         onRestart = { viewModel.restartGame() },
-                        modifier = Modifier.width(maxWidth * 0.25f)
+                        modifier = Modifier.width(maxWidth * leftRightWidth)
                     )
+
+
                 }
             }
         }
@@ -169,18 +180,48 @@ private fun LeftPanel(moveCount: Int, modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.Center,
         modifier = modifier.fillMaxHeight()
     ) {
-        Text(
-            text = moveCount.toString(),
-            fontSize = dimensionResource(id = R.dimen.textSize36).value.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color.Red
-        )
-        Text(
-            text = "Current Moves",
-            fontSize = dimensionResource(id = R.dimen.textSizeLarge).value.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color.Black.copy(alpha = 0.7f)
-        )
+        Card(
+            modifier = modifier
+                .wrapContentSize(),
+            shape = RoundedCornerShape(Dimens16),
+            colors = CardDefaults.cardColors(
+                containerColor = Color(0xFFFFF3CD) // soft yellow
+            ),
+            elevation = CardDefaults.cardElevation(Dimens4)
+        ) {
+            Column(
+                modifier = Modifier.padding(horizontal = Dimens24, vertical = Dimens16),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+
+                // Fun emoji/icon
+                Text(
+                    text = "🎯",
+                    style = MaterialTheme.typography.displaySmall.scaled(),
+                )
+
+                Spacer(modifier = Modifier.height(Dimens8))
+
+                // Move count
+                Text(
+                    text = moveCount.toString(),
+                    style = MaterialTheme.typography.displayLarge.scaled(),
+                    fontWeight = FontWeight.ExtraBold,
+                    color = Color(0xFFFF6B00) // playful orange
+                )
+
+                Spacer(modifier = Modifier.height(Dimens4))
+
+                // Label
+                Text(
+                    text = stringResource(R.string.current_moves),
+                    style = MaterialTheme.typography.titleMedium.scaled(),
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFF4E4E4E)
+                )
+            }
+        }
     }
 }
 
@@ -240,10 +281,8 @@ private fun PuzzleBoard(
         val availableWidth = constraints.maxWidth.toFloat()
         val availableHeight = constraints.maxHeight.toFloat() * 0.8f
 
-        val horizontalTileSizePx =
-            (availableWidth - ((gridSize - 1) * spacingPx)) / gridSize
-        val verticalTileSizePx =
-            (availableHeight - ((gridSize - 1) * spacingPx)) / gridSize
+        val horizontalTileSizePx = (availableWidth - ((gridSize - 1) * spacingPx)) / gridSize
+        val verticalTileSizePx = (availableHeight - ((gridSize - 1) * spacingPx)) / gridSize
         val tileSizePx = minOf(horizontalTileSizePx, verticalTileSizePx)
 
         val tileSize = with(LocalDensity.current) { tileSizePx.toDp() }
@@ -293,7 +332,7 @@ private fun TileView(number: Int?, size: Dp, color: Color, onClick: () -> Unit) 
             ) {
                 Text(
                     text = number.toString(),
-                    fontSize = (size.value * 0.6f).sp.scaled(),
+                    fontSize = (size.value * 0.6f).sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.Black,
                     fontFamily = FontFamily(Font(R.font.font_extra_bold))

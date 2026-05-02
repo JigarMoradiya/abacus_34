@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lightbulb
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
@@ -125,7 +126,8 @@ fun SudokuPlayScreen(
                     Spacer(Modifier.width(Dimens8))
 
                     KidsActionButton(
-                        text = "💡 Hint ${vm.hintUsed}/${vm.hintLimit}",
+                        text = "Hint ${vm.hintUsed}/${vm.hintLimit}",
+                        icon = Icons.Filled.Lightbulb,
                         type = ButtonType.ORANGE,
                         isSmall = true,
                         onClick = { vm.revealOneNumber() }

@@ -37,6 +37,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.theme.AppDimens
@@ -109,13 +110,13 @@ fun MathGameZoneScreen(
                             text = category.title,
                             color = colorResource(R.color.black),
                             fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                            style = MaterialTheme.typography.titleSmall.scaled(),
+                            style = if (DeviceInfo.isTablet) MaterialTheme.typography.titleLarge.scaled() else MaterialTheme.typography.titleSmall.scaled(),
                         )
                         Text(
                             text = category.desc,
                             color = colorResource(R.color.black).copy(alpha = 0.8f),
                             fontFamily = FontFamily(Font(R.font.font_bold)),
-                            style = MaterialTheme.typography.labelMedium.scaled(),
+                            style = if (DeviceInfo.isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.labelMedium.scaled(),
                         )
                     }
                 }

@@ -8,6 +8,7 @@ import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,7 +34,9 @@ import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens2
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import com.jigar.me.ui.view.home.theme.AppDimens.ShadowOffsetText
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.theme.getButtonColors
@@ -90,7 +93,7 @@ fun KidsNumberButton(
             fontWeight = FontWeight.ExtraBold,
             fontFamily = FontFamily(Font(R.font.font_extra_bold)),
             color = Color.Black.copy(alpha = 0.35f),
-            modifier = Modifier.offset(ShadowOffsetText, ShadowOffsetText)
+            modifier = Modifier.offset(ShadowOffsetText, ShadowOffsetText).padding(horizontal = Dimens16)
         )
 
         Text(
@@ -98,7 +101,8 @@ fun KidsNumberButton(
             fontSize = (minHeight.value * 0.55).sp.scaled(),
             fontWeight = FontWeight.ExtraBold,
             fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-            color = Color.White
+            color = Color.White,
+            modifier = Modifier.padding(horizontal = Dimens16)
         )
     }
 }

@@ -22,6 +22,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
@@ -35,10 +37,16 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.toColorInt
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
+import com.jigar.me.ui.jetpack.utils.ui.extensions.appScale
 import com.jigar.me.ui.jetpack.utils.ui.extensions.htmlToAnnotatedString
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens20
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import com.jigar.me.ui.view.home.theme.ButtonType
 
 @Composable
@@ -61,15 +69,18 @@ fun CustomPopupView(
         contentAlignment = position
     ) {
         // Calculate popup width based on screen width
-        val popupWidth = LocalConfiguration.current.screenWidthDp * widthMultiplier
+        val screenWidthDp = with(LocalDensity.current) {
+            LocalWindowInfo.current.containerSize.width.toDp()
+        }
+        val popupWidth = screenWidthDp * widthMultiplier
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
             modifier = Modifier
-                .width(popupWidth.dp)
-                .background(Color.White, RoundedCornerShape(AppDimens.Dimens20))
-                .padding(horizontal = dimensionResource(id = R.dimen.activity_padding20), vertical = dimensionResource(id = R.dimen.activity_padding4))
+                .width(popupWidth)
+                .background(Color.White, RoundedCornerShape(Dimens20))
+                .padding(horizontal = Dimens20, vertical = Dimens4)
         ) {
             // 🔹 Optional Icon
             if (icon != null) {
@@ -78,7 +89,7 @@ fun CustomPopupView(
                     contentDescription = null,
                     modifier = Modifier
                         .height(dimensionResource(id = R.dimen.popup_icon_height))
-                        .padding(top = dimensionResource(id = R.dimen.activity_padding12))
+                        .padding(top = Dimens12)
                 )
             }
 
@@ -86,12 +97,12 @@ fun CustomPopupView(
             if (!title.isNullOrEmpty()) {
                 Text(
                     text = title,
+                    style = MaterialTheme.typography.displaySmall.scaled(),
                     fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                    fontSize = dimensionResource(id = R.dimen.textSize24).value.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.Black,
                     textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(top = dimensionResource(id = R.dimen.activity_padding16))
+                    modifier = Modifier.padding(top = Dimens16)
                 )
             }
 
@@ -100,7 +111,7 @@ fun CustomPopupView(
                 AndroidView(
                     factory = { context ->
                         TextView(context).apply {
-                            textSize = 15f
+                            textSize = 15f * appScale()
                             setTextColor("#000000".toColorInt())
                             textAlignment = TextView.TEXT_ALIGNMENT_CENTER
 
@@ -110,7 +121,7 @@ fun CustomPopupView(
                     update = { textView ->
                         textView.text = Html.fromHtml(description, Html.FROM_HTML_MODE_LEGACY)
                     },
-                    modifier = Modifier.padding(top = dimensionResource(id = R.dimen.activity_padding4))
+                    modifier = Modifier.padding(top = Dimens4)
                 )
             }
 
@@ -119,12 +130,12 @@ fun CustomPopupView(
                     text = notes.htmlToAnnotatedString(),
                     style = MaterialTheme.typography.bodyMedium.scaled().copy(color = Color.Red, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
                     textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(top = AppDimens.Dimens8)
+                    modifier = Modifier.padding(top = Dimens8)
                 )
             }
 
             // 🔹 Buttons
-            Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(top = dimensionResource(id = R.dimen.activity_padding8))) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(top = Dimens8)) {
 
                 // ✅ Positive Button
                 if (!positiveButtonText.isNullOrEmpty() && onPositiveTapped != null) {
@@ -147,7 +158,7 @@ fun CustomPopupView(
                         Text(
                             text = negativeButtonText,
                             fontFamily = FontFamily(Font(R.font.font_medium)),
-                            fontSize = dimensionResource(id = R.dimen.textSizeRegular).value.sp,
+                            style = MaterialTheme.typography.bodySmall.scaled(),
                             fontWeight = FontWeight.Medium,
                             color = Color.Black
                         )

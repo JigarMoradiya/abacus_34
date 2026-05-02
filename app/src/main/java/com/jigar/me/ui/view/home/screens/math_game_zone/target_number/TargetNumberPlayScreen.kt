@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lightbulb
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -92,7 +93,7 @@ fun TargetNumberPlayScreen(
                     } else {
                         Text(
                             state.currentExpression.ifEmpty { " " },
-                            style = MaterialTheme.typography.titleSmall.scaled(),
+                            style = MaterialTheme.typography.titleMedium.scaled(),
                             fontFamily = FontFamily(Font(R.font.font_bold)),
                             modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center
                         )
@@ -178,7 +179,8 @@ fun TargetNumberPlayScreen(
                         )
                     } else {
                         KidsActionButton(
-                            text = "💡 Hint ${state.hintUsed}/${state.hintLimit}",
+                            text = "Hint ${state.hintUsed}/${state.hintLimit}",
+                            icon = Icons.Filled.Lightbulb,
                             type = ButtonType.ORANGE,
                             isSmall = true,
                             onClick = {
