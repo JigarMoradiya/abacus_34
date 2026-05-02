@@ -8,17 +8,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.*
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
 import com.jigar.me.ui.view.home.screens.activities.ccm.play.viewmodels.CCMPlayUiState
 import com.jigar.me.ui.view.home.screens.activities.ccm.play.viewmodels.CCMPlayViewModel
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import com.jigar.me.utils.AppConstants
 
 @Composable
 fun AnswerSection(
     uiState: CCMPlayUiState, viewModel: CCMPlayViewModel
 ) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
+    Row(verticalAlignment = Alignment.CenterVertically,modifier = Modifier.padding(start = DeviceInfo.screenHorizontalPadding(), end = Dimens16)) {
         if (uiState.isAbacusOnLeftHand) {
             CCMAbacusRow(viewModel)
             Spacer(Modifier.weight(1f))

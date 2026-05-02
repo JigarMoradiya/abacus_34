@@ -51,7 +51,7 @@ fun QuestionSection(
                 painter = painterResource(R.drawable.ic_kid_listen),
                 contentDescription = null,
                 modifier = Modifier
-                    .height(AppDimens.Dimens150)
+                    .height(AppDimens.CCMKidIcon)
                     .wrapContentWidth()
                     .padding(bottom = AppDimens.Dimens16)
             )
@@ -63,10 +63,10 @@ fun QuestionSection(
                 text = numberText,
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                fontSize = if (showListenImage) dimensionResource(R.dimen.textSizeCCMNumber).value.sp else dimensionResource(R.dimen.textSizeCCMNumber).value.sp * 2,
-                color = Color.Black,
                 style = MaterialTheme.typography.headlineLarge.scaled().copy(
+                    fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                    color = Color.Black,
+                    fontSize = if (showListenImage) dimensionResource(R.dimen.textSizeCCMNumber).value.sp.scaled() else dimensionResource(R.dimen.textSizeCCMNumber).value.sp.scaled() * 2,
                     shadow = Shadow(
                         color = Color.Black,
                         offset = Offset(1f, 1f),
@@ -84,7 +84,7 @@ fun QuestionSection(
                     .fillMaxWidth()
                     .padding(horizontal = AppDimens.Dimens20),
                 textAlign = TextAlign.Center,
-                fontSize = dimensionResource(R.dimen.textSizeCCMWord).value.sp,
+                style = MaterialTheme.typography.displaySmall.scaled(),
                 fontFamily = FontFamily(Font(R.font.font_bold)),
                 color = Color.DarkGray
             )

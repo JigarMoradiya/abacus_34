@@ -16,6 +16,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
@@ -23,7 +24,6 @@ import com.jigar.me.ui.view.home.common_ui.buttons.KidsKeyPad
 import com.jigar.me.ui.view.home.screens.activities.ccm.play.viewmodels.CCMPlayUiState
 import com.jigar.me.ui.view.home.screens.activities.ccm.play.viewmodels.CCMPlayViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens6
 import com.jigar.me.ui.view.home.theme.AppDimens.keyPadHeight
 import com.jigar.me.ui.view.home.theme.ButtonType
@@ -44,15 +44,15 @@ fun CCMKeyboardSection(
         Spacer(Modifier.height(AppDimens.Dimens8))
 
         KeypadRow(listOf("1", "2", "3")) { viewModel.addKeyboardValue(it) }
-        Spacer(Modifier.height(Dimens6))
+        Spacer(Modifier.height(if (DeviceInfo.isTablet)AppDimens.Dimens10 else Dimens6))
 
         KeypadRow(listOf("4", "5", "6")) { viewModel.addKeyboardValue(it) }
-        Spacer(Modifier.height(Dimens6))
+        Spacer(Modifier.height(if (DeviceInfo.isTablet)AppDimens.Dimens10 else Dimens6))
 
         KeypadRow(listOf("7", "8", "9")) { viewModel.addKeyboardValue(it) }
-        Spacer(Modifier.height(Dimens6))
+        Spacer(Modifier.height(if (DeviceInfo.isTablet)AppDimens.Dimens10 else Dimens6))
 
-        Row(horizontalArrangement = Arrangement.spacedBy(Dimens4)) {
+        Row(horizontalArrangement = Arrangement.spacedBy(if (DeviceInfo.isTablet)AppDimens.Dimens10 else Dimens6)) {
             KidsKeyPad(
                 text = "C",
                 type = ButtonType.RED,
@@ -75,7 +75,8 @@ fun CCMKeyboardSection(
                 onClick = { viewModel.eraseKeyboardValue() }
             )
         }
-        Spacer(Modifier.height(AppDimens.Dimens8))
+
+        Spacer(modifier = Modifier.height(if (DeviceInfo.isTablet) AppDimens.Dimens24 else AppDimens.Dimens16))
 
         KidsActionButton(
             text = stringResource(R.string.check_answer),
@@ -92,7 +93,7 @@ fun KeypadRow(
     onClick: (String) -> Unit
 ) {
     Row(
-        horizontalArrangement = Arrangement.spacedBy(Dimens4)
+        horizontalArrangement = Arrangement.spacedBy(if (DeviceInfo.isTablet)AppDimens.Dimens10 else Dimens6)
     ) {
         keys.forEach {
             KidsKeyPad(

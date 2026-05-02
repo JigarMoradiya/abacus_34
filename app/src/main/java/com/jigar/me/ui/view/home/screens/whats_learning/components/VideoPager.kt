@@ -34,6 +34,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.util.UnstableApi
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.data.local.data.VideoTutorial
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
@@ -60,7 +61,7 @@ fun VideoPager(
 
         Text(
             text = videoList[currentPosition].title,
-            style = MaterialTheme.typography.bodyLarge.scaled().copy(fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
+            style = (if (DeviceInfo.isTablet) MaterialTheme.typography.titleLarge else MaterialTheme.typography.bodyLarge).scaled().copy(fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(horizontal = AppDimens.Dimens16)
         )

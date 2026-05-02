@@ -27,6 +27,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.jetpack.utils.ui.extensions.appScale
 import kotlin.math.abs
 import kotlin.math.roundToInt
 
@@ -41,7 +42,7 @@ fun RangeSlider(
 
         val sliderHeightPx = with(density) { AppDimens.Dimens4.toPx() }
         val thumbRadiusPx = with(density) { AppDimens.Dimens12.toPx() }
-        val textSizePx = with(density) { 12.sp.toPx() }
+        val textSizePx = with(density) { 12.sp.toPx() * appScale() }
 
         var rawStart by remember { mutableFloatStateOf(startValue.toFloat()) }
         var rawEnd by remember { mutableFloatStateOf(endValue.toFloat()) }

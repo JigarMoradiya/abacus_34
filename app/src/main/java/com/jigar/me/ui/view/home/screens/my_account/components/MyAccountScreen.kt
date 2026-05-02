@@ -14,9 +14,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.dimensionResource
-
-import com.jigar.me.R
 import com.jigar.me.ui.view.home.screens.my_account.viewmodels.MyAccountUiState
 import com.jigar.me.ui.view.home.screens.my_account.viewmodels.getMenuList
 
@@ -28,8 +25,7 @@ fun MyAccountScreen(
     val menuList = remember { getMenuList(context) }
 
     LazyColumn(
-        modifier = Modifier
-            .fillMaxSize(), contentPadding = PaddingValues(AppDimens.Dimens12)
+        modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens12)
     ) {
 
         // 🔹 STATISTICS
@@ -57,7 +53,7 @@ fun MyAccountScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = AppDimens.Dimens12), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
+                    .padding(top = AppDimens.Dimens16), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)
             ) {
 
                 // Column 1 → My Account

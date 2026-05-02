@@ -27,6 +27,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.core.presentation.components.HorizontalCheckbox
 import com.jigar.me.ui.jetpack.core.presentation.components.HorizontalRadio
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
@@ -50,7 +51,7 @@ fun ExamHomeScreen(uiState: ExamHomeUiState, viewModel: ExamHomeViewModel, onSta
             imageVector = Icons.Default.AccessTimeFilled,
             contentDescription = AppConstants.HomeClicks.Menu_CCM,
             modifier = Modifier
-                .size(AppDimens.Dimens48)
+                .size(AppDimens.ExamCCMIconHeight)
                 .graphicsLayer(alpha = 0.99f)
                 .drawWithCache {
                     onDrawWithContent {
@@ -63,19 +64,20 @@ fun ExamHomeScreen(uiState: ExamHomeUiState, viewModel: ExamHomeViewModel, onSta
                     }
                 }
         )
-        Spacer(modifier = Modifier.height(AppDimens.Dimens4))
+
+        Spacer(modifier = Modifier.height(if (DeviceInfo.isTablet) AppDimens.Dimens16 else AppDimens.Dimens8))
 
         Text(
             text = stringResource(R.string.child_level),
             modifier = Modifier,
-            style = MaterialTheme.typography.titleLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))),
+            style = (if (DeviceInfo.isTablet) MaterialTheme.typography.headlineLarge else MaterialTheme.typography.titleLarge).scaled().copy(color = Color.Black, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))),
         )
         Spacer(modifier = Modifier.height(AppDimens.Dimens16))
 
         Text(
             text = stringResource(R.string.select_exam_types),
             modifier = Modifier,
-            style = MaterialTheme.typography.bodyMedium.scaled().copy(color = Color.DarkGray, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
+            style = (if (DeviceInfo.isTablet) MaterialTheme.typography.titleMedium else MaterialTheme.typography.bodyMedium).scaled().copy(color = Color.DarkGray, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
         )
         Row(
             modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16, Alignment.CenterHorizontally), verticalAlignment = Alignment.CenterVertically
@@ -98,7 +100,7 @@ fun ExamHomeScreen(uiState: ExamHomeUiState, viewModel: ExamHomeViewModel, onSta
         Text(
             text = stringResource(R.string.select_exam_difficulty),
             modifier = Modifier,
-            style = MaterialTheme.typography.bodyMedium.scaled().copy(color = Color.DarkGray, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
+            style = (if (DeviceInfo.isTablet) MaterialTheme.typography.titleMedium else MaterialTheme.typography.bodyMedium).scaled().copy(color = Color.DarkGray, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))),
         )
         Row(
             modifier = Modifier.fillMaxWidth(),

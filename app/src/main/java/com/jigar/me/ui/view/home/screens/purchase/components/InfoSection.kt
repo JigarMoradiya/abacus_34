@@ -67,7 +67,8 @@ fun InfoSection(
             colors = CardDefaults.cardColors(containerColor = Color(0xFFFFECE7)),
             shape = RoundedCornerShape(AppDimens.Dimens12),
             modifier = Modifier
-                .padding(AppDimens.Dimens12)
+                .padding(vertical = AppDimens.Dimens12)
+                .padding(start = AppDimens.Dimens2, end = AppDimens.Dimens16)
                 .heightIn(max = AppDimens.Dimens320),
             elevation = CardDefaults.cardElevation(AppDimens.Dimens2)
 
@@ -75,7 +76,8 @@ fun InfoSection(
             Column(
                 modifier = Modifier
                     .padding(AppDimens.Dimens12)
-                    .verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(if (DeviceInfo.isTablet) AppDimens.Dimens8 else AppDimens.Dimens4)
+                    .verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(if (DeviceInfo.isTablet) AppDimens.Dimens8 else AppDimens.Dimens4)
             ) {
                 infoList.forEach {
                     Text(

@@ -31,6 +31,7 @@ import com.jigar.me.ui.view.home.common_ui.buttons.KidsKeyPad
 import com.jigar.me.ui.view.home.screens.activities.ccm.play.components.KeypadRow
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseUiState
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseViewModel
+import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens32
@@ -61,15 +62,15 @@ fun ExerciseQuestions(
                 }
 
                 KeypadRow(listOf("1", "2", "3")) { viewModel.addKeyboardValue(it) }
-                Spacer(Modifier.height(Dimens6))
+                Spacer(Modifier.height(if (DeviceInfo.isTablet)AppDimens.Dimens10 else Dimens6))
 
                 KeypadRow(listOf("4", "5", "6")) { viewModel.addKeyboardValue(it) }
-                Spacer(Modifier.height(Dimens6))
+                Spacer(Modifier.height(if (DeviceInfo.isTablet)AppDimens.Dimens10 else Dimens6))
 
                 KeypadRow(listOf("7", "8", "9")) { viewModel.addKeyboardValue(it) }
-                Spacer(Modifier.height(Dimens6))
+                Spacer(Modifier.height(if (DeviceInfo.isTablet)AppDimens.Dimens10 else Dimens6))
 
-                Row(horizontalArrangement = Arrangement.spacedBy(Dimens4)) {
+                Row(horizontalArrangement = Arrangement.spacedBy(if (DeviceInfo.isTablet)AppDimens.Dimens10 else Dimens6)) {
                     KidsKeyPad(
                         text = "C",
                         type = ButtonType.RED,

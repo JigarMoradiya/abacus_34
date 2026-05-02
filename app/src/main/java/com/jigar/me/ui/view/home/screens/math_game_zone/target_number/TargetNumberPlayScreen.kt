@@ -35,6 +35,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorGreen
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorRed
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
@@ -116,9 +117,9 @@ fun TargetNumberPlayScreen(
                             }
                         }
 
-                        Spacer(Modifier.height(Dimens8))
+                        Spacer(Modifier.height(if (DeviceInfo.isTablet)AppDimens.Dimens10 else AppDimens.Dimens6))
 
-                        Row(horizontalArrangement = Arrangement.spacedBy(Dimens8)) {
+                        Row(horizontalArrangement = Arrangement.spacedBy(if (DeviceInfo.isTablet)AppDimens.Dimens10 else AppDimens.Dimens6)) {
                             state.allowedOps.forEach { op ->
                                 KidsKeyPad(
                                     text = op.symbol,

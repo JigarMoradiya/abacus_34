@@ -30,6 +30,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.core.presentation.components.HorizontalCheckbox
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryDark
@@ -54,7 +55,7 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
             imageVector = Icons.Default.DisplaySettings,
             contentDescription = AppConstants.HomeClicks.Menu_CCM,
             modifier = Modifier
-                .size(AppDimens.Dimens48)
+                .size(AppDimens.ExamCCMIconHeight)
                 .graphicsLayer(alpha = 0.99f)
                 .drawWithCache {
                     onDrawWithContent {
@@ -71,9 +72,9 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
         Text(
             text = stringResource(R.string.create_custom_challenge_as_per_your_kid_s_ability),
             modifier = Modifier,
-            style = MaterialTheme.typography.titleLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))),
+            style = (if (DeviceInfo.isTablet) MaterialTheme.typography.headlineLarge else MaterialTheme.typography.titleLarge).scaled().copy(color = Color.Black, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))),
         )
-        Spacer(modifier = Modifier.height(AppDimens.Dimens8))
+        Spacer(modifier = Modifier.height(if (DeviceInfo.isTablet) AppDimens.Dimens16 else AppDimens.Dimens8))
         Row(
             modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically
         ) {
@@ -81,7 +82,7 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
                 text = stringResource(R.string.number_of_questions),
                 modifier = Modifier.weight(1f),
                 textAlign = TextAlign.End,
-                style = MaterialTheme.typography.bodyLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
+                style = (if (DeviceInfo.isTablet) MaterialTheme.typography.titleLarge else MaterialTheme.typography.bodyLarge).scaled().copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
             )
             Spacer(modifier = Modifier.width(AppDimens.Dimens8))
             Row(modifier = Modifier.weight(1f)) {
@@ -103,7 +104,7 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
                 text = stringResource(R.string.gap_between_two_question_sec),
                 modifier = Modifier.weight(1f),
                 textAlign = TextAlign.End,
-                style = MaterialTheme.typography.bodyLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
+                style = if (DeviceInfo.isTablet) MaterialTheme.typography.titleLarge else MaterialTheme.typography.bodyLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
             )
             Spacer(modifier = Modifier.width(AppDimens.Dimens8))
             Row(modifier = Modifier.weight(1f)) {
@@ -125,7 +126,7 @@ fun CCMHomeScreen(uiState: CCMHomeUiState, viewModel: CCMHomeViewModel, onStartC
                 text = stringResource(R.string.question_min_max_length),
                 modifier = Modifier.weight(1f),
                 textAlign = TextAlign.End,
-                style = MaterialTheme.typography.bodyLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
+                style = if (DeviceInfo.isTablet) MaterialTheme.typography.titleLarge else MaterialTheme.typography.bodyLarge.scaled().copy(color = Color.Black, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
             )
             Spacer(modifier = Modifier.width(AppDimens.Dimens8))
             Row(modifier = Modifier.weight(1f)) {

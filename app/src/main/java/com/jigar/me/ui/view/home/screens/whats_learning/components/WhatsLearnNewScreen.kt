@@ -5,6 +5,7 @@ import com.jigar.me.ui.view.home.theme.AppDimens
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -41,9 +42,11 @@ fun WhatsLearnNewScreen(
                     videoList = uiState.videoList,
                     currentPosition = uiState.currentPosition,
                     onPageChanged = onPageChanged,
-                    modifier = Modifier.fillMaxSize().align(Alignment.Center)
+                    modifier = Modifier.fillMaxSize().align(Alignment.Center).padding(start = DeviceInfo.screenHorizontalPadding())
                 )
             }
+
+            Spacer(Modifier.padding(end = AppDimens.Dimens16))
 
             // RIGHT SIDE
             InfoSection(
@@ -61,7 +64,7 @@ fun WhatsLearnNewScreen(
             type = ButtonType.BLUE,
             size = KidIconMedium,
             isPlayBackSound = true,
-            modifier = Modifier.align(Alignment.TopStart).padding(start = DeviceInfo.screenHorizontalPadding())
+            modifier = Modifier.align(Alignment.TopStart).padding(start = DeviceInfo.screenHorizontalPadding(),top = DeviceInfo.screenTopPadding())
         )
     }
 }

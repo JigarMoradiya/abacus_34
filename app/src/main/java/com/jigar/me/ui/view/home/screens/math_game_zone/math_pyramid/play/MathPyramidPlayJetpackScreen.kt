@@ -55,6 +55,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
@@ -148,7 +149,7 @@ fun MathPyramidPlayJetpackScreen(
                         })
                     }
 
-                    Spacer(modifier = Modifier.height(AppDimens.Dimens16))
+                    Spacer(modifier = Modifier.height(if (DeviceInfo.isTablet) AppDimens.Dimens24 else AppDimens.Dimens16))
 
                     KidsActionButton(
                         text = stringResource(R.string.start_new),
@@ -343,9 +344,9 @@ fun KeypadCompose(onKey: (String) -> Unit) {
         listOf("Clear", "0", "Erase")
     )
 
-    Column(modifier = Modifier.wrapContentWidth(), verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)) {
+    Column(modifier = Modifier.wrapContentWidth(), verticalArrangement = Arrangement.spacedBy(if (DeviceInfo.isTablet)AppDimens.Dimens10 else AppDimens.Dimens6)) {
         buttons.forEach { row ->
-            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)) {
+            Row(horizontalArrangement = Arrangement.spacedBy(if (DeviceInfo.isTablet)AppDimens.Dimens10 else AppDimens.Dimens6)) {
                 row.forEach { label ->
                     when (label){
                         "Erase" ->{

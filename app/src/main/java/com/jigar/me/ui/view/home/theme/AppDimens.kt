@@ -35,7 +35,7 @@ object AppDimens {
     val Dimens36 = if(isLargeTablet) 72.dp else if (isTablet) 54.dp else 36.dp
     val Dimens45 = if(isLargeTablet) 90.dp else if (isTablet) 64.dp else 45.dp
     val Dimens46 = if(isLargeTablet) 92.dp else if (isTablet) 64.dp else 46.dp
-    val Dimens48 = if(isLargeTablet) 96.dp else if (isTablet) 70.dp else 48.dp
+    val Dimens48 = if(isLargeTablet) 96.dp else if (isTablet) 72.dp else 48.dp
     val Dimens56 = if(isLargeTablet) 110.dp else if (isTablet) 80.dp else 56.dp
     val Dimens60 = if(isLargeTablet) 120.dp else if (isTablet) 84.dp else 60.dp
     val Dimens64 = if(isLargeTablet) 128.dp else if (isTablet) 110.dp else 64.dp
@@ -64,5 +64,7 @@ object AppDimens {
     val exerciseWidth = if(isLargeTablet) 540.dp else if (isTablet) 480.dp else 300.dp
     val PurchaseCrownSize = if(isLargeTablet) 120.dp else if (isTablet) 80.dp else 40.dp
     val PyramidWidth = if(isLargeTablet) 144.dp else if (isTablet) 110.dp else 72.dp
+    val ExamCCMIconHeight = if(isLargeTablet) 200.dp else if (isTablet) 120.dp else 48.dp
+    val CCMKidIcon = if(isLargeTablet) 360.dp else if (isTablet) 240.dp else 150.dp
     val doPracticeNumberFonts = if(isLargeTablet) 140.sp else if (isTablet) 110.sp else 78.sp
 }
