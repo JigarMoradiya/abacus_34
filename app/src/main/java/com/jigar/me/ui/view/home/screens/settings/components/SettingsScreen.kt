@@ -39,7 +39,7 @@ fun SettingsScreen(
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
             .padding(bottom = AppDimens.Dimens16)
-            .padding(start = AppDimens.Dimens16, end = AppDimens.Dimens16)
+            .padding(horizontal = AppDimens.Dimens16)
     ) {
 
         ThemeSection(

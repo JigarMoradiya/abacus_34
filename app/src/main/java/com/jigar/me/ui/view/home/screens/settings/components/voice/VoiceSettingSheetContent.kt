@@ -16,6 +16,11 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Cancel
+import androidx.compose.material.icons.filled.RecordVoiceOver
+import androidx.compose.material.icons.filled.RemoveRedEye
+import androidx.compose.material.icons.filled.Update
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
@@ -34,7 +39,10 @@ import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.jetpack.utils.ui.slider.SingleSlider
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.settings.viewmodels.SettingUiState
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.ButtonType
 import java.util.Locale
 
 @Composable
@@ -128,23 +136,33 @@ fun VoiceSettingSheetContent(
             modifier = Modifier.fillMaxWidth()
         ) {
 
-            TextButton(onClick = onCancel) {
-                Text(text = stringResource(R.string.txtCancel))
-            }
+            KidsActionButton(
+                modifier = Modifier.padding(end = Dimens16),
+                text = stringResource(R.string.txtCancel),
+                icon = Icons.Default.Cancel,
+                type = ButtonType.NEGATIVE,
+                onClick = onCancel,
+                isSmall = true
+            )
 
             Row {
-                Button(
-                    onClick = onTest,
-                    colors = ButtonDefaults.buttonColors(containerColor = Color.Black)
-                ) {
-                    Text(stringResource(R.string.check_voice))
-                }
+                KidsActionButton(
+                    modifier = Modifier.padding(end = Dimens16),
+                    text = stringResource(R.string.check_voice),
+                    icon = Icons.Default.RecordVoiceOver,
+                    type = ButtonType.ORANGE,
+                    onClick = onSave,
+                    isSmall = true
+                )
 
-                Spacer(Modifier.width(AppDimens.Dimens12))
-
-                Button(onClick = onSave) {
-                    Text(stringResource(R.string.update))
-                }
+                KidsActionButton(
+                    modifier = Modifier.padding(end = Dimens16),
+                    text = stringResource(R.string.update),
+                    icon = Icons.Default.Update,
+                    type = ButtonType.GREEN,
+                    onClick = onSave,
+                    isSmall = true
+                )
             }
         }
 

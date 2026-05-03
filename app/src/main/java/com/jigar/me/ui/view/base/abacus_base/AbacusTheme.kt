@@ -292,7 +292,6 @@ object AbacusTheme {
 //        )
 //    }
 
-    @OptIn(UnstableApi::class)
     fun dimensionPreset(
         context: Context,
         screenType: String = AppConstants.AbacusScreen.screenTypeFreeMode,
@@ -364,15 +363,17 @@ object AbacusTheme {
         }
 
         val headerHeight = ToolbarIconSize.value
-        val availableHeight = screenHeightDp - verticalMargin - answerBarHeight - numberStripHeight - (headerHeight)
+        val availableHeight = if (DeviceInfo.isTablet || DeviceInfo.isLargeTablet) {
+            val phoneHeightRatio = 384f / 781f
+            val targetHeight = screenWidthDp * phoneHeightRatio
 
-        /*
-            Height formula:
-            (beadHeight * 7)
-            + (frame * 2)
-            + beam
-            + (extraSpace * 4)
-        */
+            val additionPadding = AppDimens.Dimens20.value * 2
+            minOf(targetHeight, screenHeightDp) - verticalMargin - answerBarHeight - numberStripHeight - headerHeight - additionPadding
+
+        } else {
+            screenHeightDp - verticalMargin - answerBarHeight - numberStripHeight - headerHeight
+        }
+
 
         val fixedHeightParts = (base.rectLineWidth.value * 2) + base.beamHeight.value + (base.extraSpace.value * 4)
         val availableHeightForBeads = availableHeight - fixedHeightParts
@@ -382,7 +383,6 @@ object AbacusTheme {
         val beadHeightFromWidth = (5f * beadWidthFromWidth) / 9f
         val beadWidthFromHeight = (beadHeightFromHeight * 9f) / 5f
 
-        // FINAL → take minimum fit
         val finalBeadWidth = minOf(beadWidthFromWidth, beadWidthFromHeight)
         val finalBeadHeight = minOf(beadHeightFromWidth, beadHeightFromHeight)
 

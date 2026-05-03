@@ -22,6 +22,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.DoneOutline
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Update
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
@@ -128,7 +129,7 @@ fun SettingsDialog(
                                     .padding(horizontal = Dimens16)
                                     .padding(top = Dimens16, bottom = Dimens4),
                                 text = stringResource(R.string.update),
-                                icon = Icons.Default.Done,
+                                icon = Icons.Default.Update,
                                 type = ButtonType.GREEN,
                                 isSmall = true,
                                 onClick = {

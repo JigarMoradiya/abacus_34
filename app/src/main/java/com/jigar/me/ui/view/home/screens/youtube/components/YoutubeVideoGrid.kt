@@ -1,11 +1,6 @@
 package com.jigar.me.ui.view.home.screens.youtube.components
 
-import com.jigar.me.ui.view.home.theme.AppDimens
-
 import android.content.Intent
-import android.net.Uri
-import android.util.Log
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
@@ -22,22 +17,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
-import com.jigar.me.data.model.VideoData
 import androidx.core.net.toUri
+import coil.compose.AsyncImage
 import com.jigar.me.R
+import com.jigar.me.data.model.VideoData
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryLight
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
 fun YoutubeVideoGrid(
@@ -52,8 +45,7 @@ fun YoutubeVideoGrid(
         horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
         modifier = Modifier.
         padding(vertical = AppDimens.Dimens8)
-            .padding(start = AppDimens.Dimens4)
-            .padding(end = AppDimens.Dimens16)
+            .padding(horizontal = AppDimens.Dimens16)
     ) {
         items(
             items = videos.sortedBy { it.so },
