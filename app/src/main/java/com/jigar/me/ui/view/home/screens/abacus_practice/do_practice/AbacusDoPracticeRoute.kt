@@ -84,7 +84,7 @@ fun AbacusDoPracticeRoute(
 
         Spacer(Modifier.weight(1f))
 
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(start = screenHorizontalPadding(),end = Dimens12)) {
+        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(start = screenHorizontalPadding())) {
             if (viewModel.isAbacusOnLeftHand) {
                 AbacusViewItem(viewModel, uiState)
                 uiState.currentAbacus?.let {

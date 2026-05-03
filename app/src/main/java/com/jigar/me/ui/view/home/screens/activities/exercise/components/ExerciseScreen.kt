@@ -51,11 +51,15 @@ fun ExerciseScreen(
         ), color = Color.White, tonalElevation = 0.dp, shadowElevation = shadowElevation
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
-            Column(
-                modifier = Modifier
+            val modifier = if (uiState.isAbacusOnLeftHand) {
+                Modifier.fillMaxSize()
+            }else{
+                Modifier
                     .fillMaxSize()
                     .windowInsetsPadding(WindowInsets.safeDrawing)
-            ) {
+            }
+
+            Column(modifier = modifier) {
 
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     val isVisible = !uiState.isAbacusOnLeftHand

@@ -9,6 +9,8 @@ import androidx.media3.common.util.Log
 import androidx.media3.common.util.UnstableApi
 import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.data.pref.AppPreferencesHelper
+import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
 import com.jigar.me.utils.AppConstants
 import kotlin.math.min
 
@@ -216,6 +218,80 @@ object AbacusTheme {
         }
     }
 
+//    @OptIn(UnstableApi::class)
+//    fun dimensionPreset(
+//        context: Context,
+//        screenType: String = AppConstants.AbacusScreen.screenTypeFreeMode,
+//        abacusType: String? = null,
+//        questionType: String? = null,
+//        isFreeModeOn: Boolean = false
+//    ): AbacusDimensionModel {
+//        // This is a simplified mapping of your AbacusDimension logic.
+//        // You can tweak multipliers same as Swift.
+//        val base = AbacusDimensionModel()
+//        val freeModeBase = 0.9f
+//        val multiplierTemp = when (screenType) {
+//            AppConstants.AbacusScreen.screenTypeExam, AppConstants.AbacusScreen.screenTypeSettingPreview -> 0.45f
+//            AppConstants.AbacusScreen.screenTypeExamResult -> 0.25f
+//            AppConstants.AbacusScreen.screenTypeCCM -> 0.85f
+//            AppConstants.AbacusScreen.screenTypeExercise -> 0.90f
+//            AppConstants.AbacusScreen.screenTypeAbacusPractice -> if (questionType == AppConstants.extras_Comman.AbacusTypeNumber) { 0.9f } else if (abacusType == AppConstants.apiParams.answerStepByStep) 0.85f else {0.9f}
+//            AppConstants.AbacusScreen.screenTypeFreeMode -> if (isFreeModeOn){
+//                1f
+//            }else{
+//                1f
+//            }
+//            else -> 0.9f
+//        }
+//        val multiplier = (multiplierTemp * freeModeBase)
+//        val pref = AppPreferencesHelper(context, AppConstants.PREF_NAME)
+//        val displayMetrics = context.resources.displayMetrics
+//        val density = displayMetrics.density.takeIf { it > 0f } ?: 1f
+//        val densityWidthDp = displayMetrics.widthPixels / density
+//        val configurationWidthDp = context.resources.configuration.screenWidthDp.toFloat()
+//        val prefWidthDp = pref.getCustomParamInt(AppConstants.screenWidthDp,0).toFloat()
+//        val screenWidthDp = listOf(prefWidthDp, configurationWidthDp, densityWidthDp)
+//            .filter { it > 0f }
+//            .minOrNull() ?: configurationWidthDp
+//        val rectWidth = (base.rectLineWidth * 2).value
+//        val colSpace = (base.columnSpaces * 14).value
+//        val extraPadding = (base.extraSpace * 2).value
+//
+//        // OPTION 4 (option 2 and option 3 combo)
+//        val maxAbacusWidth = when {
+//            DeviceInfo.isLargeTablet -> 1240
+//            DeviceInfo.isTablet -> 1100
+//            else -> 820
+//        }
+//        val horizontalMargin = when {
+//            DeviceInfo.isLargeTablet -> 48
+//            DeviceInfo.isTablet -> 40
+//            else -> 24
+//        }
+//        val usableWidth = min(screenWidthDp, maxAbacusWidth.toFloat())
+//        val remainSpace = usableWidth - (horizontalMargin * 2) - colSpace - rectWidth - extraPadding
+//        val beadWidth = (remainSpace / 13).coerceAtLeast(1f)
+//        val beadHeight : Double = ((5 * beadWidth) / 9).toDouble()  // 9 : 5
+//
+//        return base.copy(
+//            beadWidth = beadWidth.dp * multiplier,
+//            beadHeight = beadHeight.dp * multiplier,
+//            columnSpaces = if (screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise) base.columnSpaces * 2 else if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode) base.columnSpaces * 2 else base.columnSpaces,
+//            beamHeight = if (screenType == AppConstants.AbacusScreen.screenTypeExam || screenType == AppConstants.AbacusScreen.screenTypeExamResult || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) base.beamHeight else base.beamHeight * 2,
+//            rectLineWidth = when (screenType) {
+//                AppConstants.AbacusScreen.screenTypeExam, AppConstants.AbacusScreen.screenTypeExamResult -> { 0.dp }
+//                AppConstants.AbacusScreen.screenTypeSettingPreview -> base.rectLineWidth / 2
+//                else -> base.rectLineWidth
+//            },
+//            rectLineCorner = when (screenType) {
+//                AppConstants.AbacusScreen.screenTypeExam, AppConstants.AbacusScreen.screenTypeExamResult -> { 0.dp }
+//                AppConstants.AbacusScreen.screenTypeSettingPreview -> base.rectLineCorner / 2
+//                else -> base.rectLineCorner
+//            },
+//            textSizeSp =  if (screenType == AppConstants.AbacusScreen.screenTypeExam || screenType == AppConstants.AbacusScreen.screenTypeExamResult) {0} else if (screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) 7 else 13
+//        )
+//    }
+
     @OptIn(UnstableApi::class)
     fun dimensionPreset(
         context: Context,
@@ -224,62 +300,146 @@ object AbacusTheme {
         questionType: String? = null,
         isFreeModeOn: Boolean = false
     ): AbacusDimensionModel {
-        // This is a simplified mapping of your AbacusDimension logic.
-        // You can tweak multipliers same as Swift.
+
         val base = AbacusDimensionModel()
-        val freeModeBase = 0.9f
+
+        // Multiplier per screen type
+        val freeModeBase = 1f
+
         val multiplierTemp = when (screenType) {
-            AppConstants.AbacusScreen.screenTypeExam, AppConstants.AbacusScreen.screenTypeSettingPreview -> 0.45f
+            AppConstants.AbacusScreen.screenTypeSettingPreview -> 0.40f
+            AppConstants.AbacusScreen.screenTypeExam -> 0.45f
             AppConstants.AbacusScreen.screenTypeExamResult -> 0.25f
-            AppConstants.AbacusScreen.screenTypeCCM -> 0.85f
-            AppConstants.AbacusScreen.screenTypeExercise -> 0.90f
-            AppConstants.AbacusScreen.screenTypeAbacusPractice -> if (questionType == AppConstants.extras_Comman.AbacusTypeNumber) { 0.9f } else if (abacusType == AppConstants.apiParams.answerStepByStep) 0.85f else {0.9f}
-            AppConstants.AbacusScreen.screenTypeFreeMode -> if (isFreeModeOn){
-                1f
-            }else{
-                1f
-            }
+            AppConstants.AbacusScreen.screenTypeCCM -> 1f
+            AppConstants.AbacusScreen.screenTypeExercise -> 1f
+            AppConstants.AbacusScreen.screenTypeAbacusPractice ->
+                if (abacusType == AppConstants.apiParams.answerFinalAnswer || abacusType == AppConstants.apiParams.answerFormalExam) { 0.9f }
+                else if (questionType == AppConstants.extras_Comman.AbacusTypeNumber) { 0.9f }
+                else { 0.87f }
+            AppConstants.AbacusScreen.screenTypeFreeMode -> 1f
             else -> 0.9f
         }
-        val multiplier = (multiplierTemp * freeModeBase)
-        val pref = AppPreferencesHelper(context, AppConstants.PREF_NAME)
-        val screenWidthDp = pref.getCustomParamInt(AppConstants.screenWidthDp,0)
-        val rectWidth = (base.rectLineWidth * 2).value
-        val colSpace = (base.columnSpaces * 14).value
-        val extraPadding = (base.extraSpace * 2).value
 
-        // OPTION 4 (option 2 and option 3 combo)
-        val maxAbacusWidth = when {
-            DeviceInfo.isLargeTablet -> 1240
-            DeviceInfo.isTablet -> 1100
-            else -> 820
+        val multiplier = multiplierTemp * freeModeBase
+
+        // Screen dimensions
+        val displayMetrics = context.resources.displayMetrics
+        val density = displayMetrics.density.takeIf { it > 0f } ?: 1f
+        val screenWidthDp = displayMetrics.widthPixels / density
+        val screenHeightDp = displayMetrics.heightPixels / density
+
+        // Static dimensions
+        val frameWidth = (base.rectLineWidth * 2).value
+        val columnSpacing = (base.columnSpaces * 14).value
+        val extraHorizontalPadding = (base.extraSpace * 2).value
+
+        val usableWidth = screenWidthDp
+        val availableWidthForBeads = usableWidth - frameWidth - columnSpacing - extraHorizontalPadding
+        val beadWidthFromWidth = (availableWidthForBeads / 13f).coerceAtLeast(1f)
+
+        // HEIGHT CALCULATION
+        val verticalMargin = when {
+            DeviceInfo.isLargeTablet -> 40f
+            DeviceInfo.isTablet -> 32f
+            else -> 20f
         }
-        val horizontalMargin = when {
-            DeviceInfo.isLargeTablet -> 48
-            DeviceInfo.isTablet -> 40
-            else -> 24
+
+        val answerBarHeight = when {
+            (screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn) || screenType == AppConstants.AbacusScreen.screenTypeExam || screenType == AppConstants.AbacusScreen.screenTypeExamResult -> {
+                0f
+            }
+            else -> {
+                70f
+            }
         }
-        val usableWidth = min(screenWidthDp, maxAbacusWidth)
-        val remainSpace = usableWidth - (horizontalMargin * 2) - colSpace - rectWidth - extraPadding
-        val beadWidth = remainSpace / 13
-        val beadHeight : Double = ((5 * beadWidth) / 9).toDouble()  // 9 : 5
+
+        val numberStripHeight = when (screenType) {
+            AppConstants.AbacusScreen.screenTypeFreeMode if isFreeModeOn -> {
+                (base.stripHeight.value * 3f) + 40f
+            }
+            AppConstants.AbacusScreen.screenTypeAbacusPractice, AppConstants.AbacusScreen.screenTypeCCM, AppConstants.AbacusScreen.screenTypeExercise -> {
+                base.stripHeight.value + 20f
+            }
+            else -> 0f
+        }
+
+        val headerHeight = ToolbarIconSize.value
+        val availableHeight = screenHeightDp - verticalMargin - answerBarHeight - numberStripHeight - (headerHeight)
+
+        /*
+            Height formula:
+            (beadHeight * 7)
+            + (frame * 2)
+            + beam
+            + (extraSpace * 4)
+        */
+
+        val fixedHeightParts = (base.rectLineWidth.value * 2) + base.beamHeight.value + (base.extraSpace.value * 4)
+        val availableHeightForBeads = availableHeight - fixedHeightParts
+        val beadHeightFromHeight = (availableHeightForBeads / 7f).coerceAtLeast(1f)
+
+        // Convert width -> height ratio
+        val beadHeightFromWidth = (5f * beadWidthFromWidth) / 9f
+        val beadWidthFromHeight = (beadHeightFromHeight * 9f) / 5f
+
+        // FINAL → take minimum fit
+        val finalBeadWidth = minOf(beadWidthFromWidth, beadWidthFromHeight)
+        val finalBeadHeight = minOf(beadHeightFromWidth, beadHeightFromHeight)
 
         return base.copy(
-            beadWidth = beadWidth.dp * multiplier,
-            beadHeight = beadHeight.dp * multiplier,
-            columnSpaces = if (screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise) base.columnSpaces * 2 else if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode) base.columnSpaces * 2 else base.columnSpaces,
-            beamHeight = if (screenType == AppConstants.AbacusScreen.screenTypeExam || screenType == AppConstants.AbacusScreen.screenTypeExamResult || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) base.beamHeight else base.beamHeight * 2,
+            beadWidth = (finalBeadWidth * multiplier).dp,
+            beadHeight = (finalBeadHeight * multiplier).dp,
+
+            columnSpaces = when (screenType) {
+                AppConstants.AbacusScreen.screenTypeCCM,
+                AppConstants.AbacusScreen.screenTypeExercise,
+                AppConstants.AbacusScreen.screenTypeFreeMode -> {
+                    base.columnSpaces * 2
+                }
+
+                else -> base.columnSpaces
+            },
+
+            beamHeight = when (screenType) {
+                AppConstants.AbacusScreen.screenTypeExam,
+                AppConstants.AbacusScreen.screenTypeExamResult,
+                AppConstants.AbacusScreen.screenTypeSettingPreview -> {
+                    base.beamHeight
+                }
+
+                else -> base.beamHeight * 2
+            },
+
             rectLineWidth = when (screenType) {
-                AppConstants.AbacusScreen.screenTypeExam, AppConstants.AbacusScreen.screenTypeExamResult -> { 0.dp }
-                AppConstants.AbacusScreen.screenTypeSettingPreview -> base.rectLineWidth / 2
+                AppConstants.AbacusScreen.screenTypeExam,
+                AppConstants.AbacusScreen.screenTypeExamResult -> 0.dp
+
+                AppConstants.AbacusScreen.screenTypeSettingPreview -> {
+                    base.rectLineWidth / 2
+                }
+
                 else -> base.rectLineWidth
             },
+
             rectLineCorner = when (screenType) {
-                AppConstants.AbacusScreen.screenTypeExam, AppConstants.AbacusScreen.screenTypeExamResult -> { 0.dp }
-                AppConstants.AbacusScreen.screenTypeSettingPreview -> base.rectLineCorner / 2
+                AppConstants.AbacusScreen.screenTypeExam,
+                AppConstants.AbacusScreen.screenTypeExamResult -> 0.dp
+
+                AppConstants.AbacusScreen.screenTypeSettingPreview -> {
+                    base.rectLineCorner / 2
+                }
+
                 else -> base.rectLineCorner
             },
-            textSizeSp =  if (screenType == AppConstants.AbacusScreen.screenTypeExam || screenType == AppConstants.AbacusScreen.screenTypeExamResult) {0} else if (screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) 7 else 13
+
+            textSizeSp = when (screenType) {
+                AppConstants.AbacusScreen.screenTypeExam,
+                AppConstants.AbacusScreen.screenTypeExamResult -> 0
+
+                AppConstants.AbacusScreen.screenTypeSettingPreview -> 7
+
+                else -> 13
+            }
         )
     }
 }

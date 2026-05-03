@@ -111,7 +111,7 @@ fun QuestionExamColumnItemHorizontal(item: QuestionResult, selectedTheme: String
                                 val numberOfColumns = parts.number.toString().length
                                 AbacusWithDecimalCanvas(
                                     selectedTheme = selectedTheme,
-                                    screenType = AppConstants.AbacusScreen.screenTypeExam,
+                                    screenType = AppConstants.AbacusScreen.screenTypeExamResult,
                                     abacusData = abacusCalc,
                                     numberOfColumns = numberOfColumns,
                                     rodMovement = emptyList(),

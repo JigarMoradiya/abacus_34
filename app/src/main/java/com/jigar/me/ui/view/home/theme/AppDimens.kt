@@ -59,6 +59,7 @@ object AppDimens {
     val keyPadWidth = if(isLargeTablet) 100.dp else if (isTablet) 80.dp else 56.dp
 
     val HomePageLogo = if(isLargeTablet) 90.dp else if (isTablet) 72.dp else 56.dp
+    val AbacusHorizontalSpace = if(isLargeTablet) 144.dp else if (isTablet) 108.dp else 72.dp
     val SudokuHomeIconsBox = if(isLargeTablet) 144.dp else if (isTablet) 100.dp else 66.dp
     val LevelSize = if(isLargeTablet) 400.dp else if (isTablet) 300.dp else 200.dp
     val exerciseWidth = if(isLargeTablet) 540.dp else if (isTablet) 480.dp else 300.dp

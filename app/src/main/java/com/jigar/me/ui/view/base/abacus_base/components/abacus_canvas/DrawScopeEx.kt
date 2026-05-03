@@ -167,7 +167,7 @@ fun DrawScope.drawAbacusColumns(
             }
         }
 
-        if (screenType != AppConstants.AbacusScreen.screenTypeExam){
+        if (screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult){
             val isFirstColumn = col == 0
             val isLastColumn = col == numberOfColumns - 1
 
