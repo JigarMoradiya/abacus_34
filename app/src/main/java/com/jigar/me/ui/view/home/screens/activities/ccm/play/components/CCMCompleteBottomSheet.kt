@@ -6,6 +6,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.RocketLaunch
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -37,6 +40,10 @@ import com.jigar.me.ui.view.home.screens.activities.ccm.play.viewmodels.CCMPlayU
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.ButtonType
 
 @SuppressLint("ConfigurationScreenWidthHeight")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -57,7 +64,7 @@ fun CCMCompleteBottomSheetCompose(
         skipPartiallyExpanded = true
     )
 
-    val activity = LocalContext.current
+    LocalContext.current
     LaunchedEffect(Unit) {
         AudioPlayerManager.playSoundWin()
     }
@@ -87,8 +94,8 @@ fun CCMCompleteBottomSheetCompose(
                         bottomStart = 0.dp,
                         bottomEnd = 0.dp
                     ))
-                    .padding(horizontal = AppDimens.Dimens16)
-                    .padding(top = AppDimens.Dimens16),
+                    .padding(horizontal = Dimens16)
+                    .padding(top = Dimens16),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 // HANDLE (visual only)
@@ -103,7 +110,7 @@ fun CCMCompleteBottomSheetCompose(
                         )
                 )
 
-                Spacer(Modifier.height(AppDimens.Dimens12))
+                Spacer(Modifier.height(Dimens12))
 
                 Image(
                     painter = painterResource(
@@ -116,7 +123,7 @@ fun CCMCompleteBottomSheetCompose(
                     modifier = Modifier.height(AppDimens.Dimens60)
                 )
 
-                Spacer(Modifier.height(AppDimens.Dimens12))
+                Spacer(Modifier.height(Dimens12))
 
                 Text(
                     text = if (isAnswerTrue)
@@ -175,18 +182,15 @@ fun CCMCompleteBottomSheetCompose(
                     }
                 )
 
-                Spacer(Modifier.height(AppDimens.Dimens16))
+                Spacer(Modifier.height(Dimens16))
 
-                Button(
-                    onClick = onContinue,
-                    modifier = Modifier.fillMaxWidth(),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = colorResource(R.color.colorPrimary),
-                        contentColor = Color.White                           
-                    )
-                ) {
-                    Text(stringResource(R.string.start_new_challenge))
-                }
+                KidsActionButton(
+                    modifier = Modifier.padding(horizontal = Dimens16),
+                    text = stringResource(R.string.start_new_challenge),
+                    icon = Icons.Default.RocketLaunch,
+                    type = ButtonType.ORANGE,
+                    onClick = onContinue
+                )
 
                 TextButton(
                     onClick = onClose,

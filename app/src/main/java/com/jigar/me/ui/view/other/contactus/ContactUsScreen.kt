@@ -28,6 +28,8 @@ import androidx.compose.material.icons.filled.Description
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material.icons.filled.RocketLaunch
+import androidx.compose.material.icons.filled.Update
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -55,8 +57,12 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
 import com.jigar.me.ui.view.home.common_ui.Loader
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.other.contactus.components.CountryCodePickerView
 import com.jigar.me.ui.view.other.contactus.viewmodels.ContactUsViewModel
 import com.jigar.me.utils.extensions.toastL
@@ -220,26 +226,18 @@ fun ContactUsScreen(
 
             Spacer(modifier = Modifier.height(AppDimens.Dimens20))
 
-            Button(
+            KidsActionButton(
+                modifier = Modifier.padding(horizontal = AppDimens.Dimens10),
+                text = stringResource(R.string.submit),
+                icon = Icons.Default.Update,
+                type = ButtonType.ORANGE,
                 onClick = {
                     keyboardController?.hide()
                     viewModel.onSubmit()
-                },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = colorResource(id = R.color.colorPrimaryDark),
-                    contentColor = Color.White
-                ),
-                shape = RoundedCornerShape(AppDimens.Dimens24),
-                modifier = Modifier.padding(horizontal = AppDimens.Dimens10)
-            ) {
-                Text(
-                    text = stringResource(R.string.submit),
-                    fontSize = 15.sp,
-                    color = Color.White
-                )
-            }
+                }
+            )
 
-            Spacer(modifier = Modifier.height(AppDimens.Dimens12))
+            Spacer(modifier = Modifier.height(Dimens12))
         }
     }
 
