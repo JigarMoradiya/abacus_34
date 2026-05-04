@@ -11,9 +11,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
@@ -22,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.ui.view.home.screens.abacus_practice.level_list.viewmodels.LevelProgress
+import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.LevelSize
 
 @Composable
@@ -33,6 +36,7 @@ fun CategoryItem(
     Box(
         modifier = Modifier
             .width(LevelSize)
+            .clip(RoundedCornerShape(AppDimens.Dimens16))
             .clickable { onClick() }
     ) {
 
@@ -46,9 +50,7 @@ fun CategoryItem(
                 ),
                 contentDescription = null,
                 modifier = Modifier
-                    .fillMaxWidth()
                     .aspectRatio(379f / 519f),
-                contentScale = ContentScale.Crop
             )
 //            AsyncImage(
 //                model = category.icon,

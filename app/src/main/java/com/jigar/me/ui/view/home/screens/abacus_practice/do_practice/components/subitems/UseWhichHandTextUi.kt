@@ -5,7 +5,10 @@ import com.jigar.me.ui.view.home.theme.AppDimens
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,7 +28,7 @@ import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.viewmodels.
 @Composable
 fun UseWhichHandTextUi(uiState: AbacusDoPracticeUiState,viewModel : AbacusDoPracticeViewModel) {
     // use left or right hand text
-    Column {
+    Column(modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing)) {
         Spacer(Modifier.weight(1f))
         val highlightColor = uiState.currentColorPresetModel.buttonColor
         val normalColor = Color.Black.copy(alpha = 0.7f)

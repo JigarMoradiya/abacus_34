@@ -1,7 +1,5 @@
 package com.jigar.me.ui.view.home.screens.abacus_practice.level_list
 
-import android.util.Log
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -12,24 +10,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import coil.compose.AsyncImage
-import coil.size.Dimension
-import com.google.gson.Gson
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
@@ -40,7 +30,6 @@ import com.jigar.me.ui.view.home.screens.abacus_practice.level_list.viewmodels.L
 import com.jigar.me.ui.view.home.screens.abacus_practice.level_list.viewmodels.LevelProgress
 import com.jigar.me.ui.view.home.screens.abacus_practice.set_list.components.TopRightChips
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
-import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens32
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens50
@@ -69,6 +58,8 @@ fun LevelCategoryScreen(
         }
 
         if (DeviceInfo.isTablet){
+            Spacer(Modifier.height(Dimens32))
+        }else{
             Spacer(Modifier.height(Dimens16))
         }
 
@@ -80,11 +71,11 @@ fun LevelCategoryScreen(
             LazyRow(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(
-                    AppDimens.Dimens16,
+                    Dimens16,
                     Alignment.CenterHorizontally
                 ),
                 verticalAlignment = Alignment.CenterVertically,
-                contentPadding = PaddingValues(horizontal = AppDimens.Dimens16)
+                contentPadding = PaddingValues(horizontal = Dimens16)
             ) {
                 itemsIndexed(uiState.categories) { index, category ->
                     CategoryItem(
@@ -99,6 +90,8 @@ fun LevelCategoryScreen(
         }
         if (DeviceInfo.isTablet){
             Spacer(Modifier.height(Dimens50))
+        }else{
+            Spacer(Modifier.height(Dimens16))
         }
     }
 }
