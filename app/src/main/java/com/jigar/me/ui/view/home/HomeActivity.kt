@@ -87,9 +87,6 @@ class HomeActivity : ComponentActivity() {
             // Detect tablet
             DeviceInfo.isLargeTablet = resources.configuration.smallestScreenWidthDp >= 840 && resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
             DeviceInfo.isTablet = resources.configuration.smallestScreenWidthDp >= 600 && resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-            Log.e("jigarDimensionPreset","smallestScreenWidthDp = "+resources.configuration.smallestScreenWidthDp.toString())
-            Log.e("jigarDimensionPreset","isLargeTablet = "+DeviceInfo.isLargeTablet)
-            Log.e("jigarDimensionPreset","isTablet = "+DeviceInfo.isTablet)
             // initialize audio player
             AudioPlayerManager.init(this)
 
@@ -133,6 +130,5 @@ class HomeActivity : ComponentActivity() {
     private fun logDeviceQualifiers(context: Context) {
         val config = context.resources.configuration
         preferences.setCustomParamInt(AppConstants.screenWidthDp, config.screenWidthDp)
-        Log.e("jigarDimensionPreset","logDeviceQualifiers screenWidthDp = "+config.screenWidthDp.toString())
     }
 }

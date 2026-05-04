@@ -36,7 +36,6 @@ import com.jigar.me.ui.view.home.screens.home.components.HomeHeaderRight
 import com.jigar.me.ui.view.home.screens.home.components.HomeMenuScreen
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeFragmentViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens100
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens50
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens80
 import com.jigar.me.utils.AppConstants

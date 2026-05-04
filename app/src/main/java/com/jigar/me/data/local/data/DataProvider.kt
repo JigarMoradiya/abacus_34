@@ -132,8 +132,6 @@ object DataProvider {
             listMain.addAll(list)
         }
         listMain.shuffle()
-        Log.e("jigarGenerateSetDiv","listQue = "+ Gson().toJson(listMain))
-        Log.e("jigarGenerateSetDiv","joinToString = "+ listMain.joinToString(","))
     }
     fun generateDivisionQuestions(count : Int = 20): List<String> {
         val set = mutableSetOf<String>()
@@ -149,8 +147,6 @@ object DataProvider {
                 stringList.add("${q.dividend}/${q.divisor}")
             }
         }
-        Log.e("jigarGenerateSetDiv","listQue = "+ Gson().toJson(stringList))
-        Log.e("jigarGenerateSetDiv","joinToString = "+ stringList.joinToString(","))
         return stringList
     }
 
@@ -240,9 +236,6 @@ object DataProvider {
         listnew.map {
             listQue.add(it.question)
         }
-        Log.e("jigarGenerateSetDiv","listExercise = "+ Gson().toJson(listnew))
-        Log.e("jigarGenerateSetDiv","listQue = "+ Gson().toJson(listQue))
-        Log.e("jigarGenerateSetDiv","joinToString = "+ listQue.joinToString(","))
         return listExercise
     }
     private fun generateDivision(child: ExerciseLevelDetail): MutableList<ExerciseList>{
@@ -429,9 +422,6 @@ object DataProvider {
         listnew.map {
             listQue.add(it.question)
         }
-        Log.e("jigarGenerateSetMul","listExercise = "+ Gson().toJson(listnew))
-        Log.e("jigarGenerateSetMul","listQue = "+ Gson().toJson(listQue))
-        Log.e("jigarGenerateSetMul","joinToString = "+ listQue.joinToString(","))
         return listQue
     }
 
@@ -770,9 +760,6 @@ object DataProvider {
         listnew.map {
             listQue.add(it.question)
         }
-        Log.e("jigarGenerateSetAddSub","listExercise = "+ Gson().toJson(listnew))
-        Log.e("jigarGenerateSetAddSub","listQue = "+ Gson().toJson(listQue))
-        Log.e("jigarGenerateSetAddSub","joinToString = "+ listQue.joinToString(","))
         return listQue
     }
 

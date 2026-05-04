@@ -130,7 +130,6 @@ class ExamPlayViewModel @Inject constructor(
             questions = questionsList
         }
 //        if (BuildConfig.DEBUG){
-//            Log.e("jigarExamPlay","submitExamRequest = "+ Gson().toJson(submitExamRequest))
 //            updateState_ {
 //                copy(submitExamRequest = submitExamRequest,isShowCompletePopup = true)
 //            }
