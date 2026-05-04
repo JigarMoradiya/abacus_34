@@ -139,29 +139,6 @@
     <dimen name="home_menu_elevation">2dp</dimen>
     <dimen name="home_menu_margin">8dp</dimen>
     <dimen name="home_menu_corner">12dp</dimen>
-    <dimen name="exam_option_width">150dp</dimen>
-    <dimen name="exam_option_round">40dp</dimen>
-    <dimen name="exam_option_round_corner">20dp</dimen>
-
-    <dimen name="quiz_progress_height">10dp</dimen>
-
-    <dimen name="card_elevation">1dp</dimen>
-    <dimen name="card_elevation2">2dp</dimen>
-    <dimen name="card_elevation3">3dp</dimen>
-    <dimen name="card_elevation4">4dp</dimen>
-    <dimen name="card_elevation8">8dp</dimen>
-    <dimen name="card_corner_radius">6dp</dimen>
-    <dimen name="card_corner_radius4">4dp</dimen>
-    <dimen name="card_corner_radius8">8dp</dimen>
-    <dimen name="card_corner_radius12">12dp</dimen>
-    <dimen name="card_corner_radius14">14dp</dimen>
-
-
-    <!-- Profile Image Sizes   -->
-    <dimen name="box9SizeWidth">36dp</dimen>
-    <dimen name="box9SizeHeight">36dp</dimen>
-
-    <dimen name="box9SignSize">14dp</dimen>
     <dimen name="image_size_no_data_view">80dp</dimen>
     <dimen name="text_size_no_data_view">@dimen/textSizeLarge</dimen>
 

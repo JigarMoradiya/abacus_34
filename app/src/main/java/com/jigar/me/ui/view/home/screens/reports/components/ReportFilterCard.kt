@@ -32,6 +32,7 @@ import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryLight
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.reports.viewmodels.ReportHistoryUiState
 import com.jigar.me.ui.view.home.screens.reports.viewmodels.ReportHistoryViewModel
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens3
 
 @Composable
 fun ReportFilterCard(
@@ -44,7 +45,7 @@ fun ReportFilterCard(
             onClick = { viewModel.onFilterClick() },
             shape = RoundedCornerShape(AppDimens.Dimens30),
             elevation = CardDefaults.cardElevation(
-                dimensionResource(R.dimen.card_elevation3)
+                Dimens3
             ),
             colors = CardDefaults.cardColors(containerColor = ColorPrimaryLight),
             modifier = Modifier

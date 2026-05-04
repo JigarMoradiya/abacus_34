@@ -50,7 +50,7 @@ fun ReportDateFilterCard(
             colors = CardDefaults.cardColors(containerColor = ColorPrimaryLight),
             shape = RoundedCornerShape(AppDimens.Dimens30),
             elevation = CardDefaults.cardElevation(
-                dimensionResource(R.dimen.card_elevation3)
+                AppDimens.Dimens3
             ),
             modifier = Modifier
                 .wrapContentWidth()

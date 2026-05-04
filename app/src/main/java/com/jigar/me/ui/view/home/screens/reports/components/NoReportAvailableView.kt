@@ -41,7 +41,7 @@ fun NoReportAvailableView(
                 painter = painterResource(id = R.drawable.ic_report_card),
                 contentDescription = null,
                 modifier = Modifier.size(
-                    dimensionResource(R.dimen.image_size_no_data_view)
+                    AppDimens.Dimens80
                 )
             )
 

@@ -32,19 +32,6 @@
 
     </style>
 
-    <style name="BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/bottomsheetStyleWrapper</item>
-    </style>
-
-    <style name="bottomsheetStyleWrapper" parent="Widget.Design.BottomSheet.Modal">
-        <item name="android:background">@drawable/bg_top_curved_24_dp</item>
-        <item name="android:backgroundTint">@color/white</item>
-    </style>
-
-   <!-- <style name="App_EditTextStyle" parent="@android:style/Widget.EditText">
-        <item name="android:background">@drawable/text_box_underline</item>
-        <item name="android:paddingBottom">15dp</item>
-    </style>-->
 
     <style name="mainTitle" parent="">
         <item name="android:fontFamily">@font/font_bold</item>

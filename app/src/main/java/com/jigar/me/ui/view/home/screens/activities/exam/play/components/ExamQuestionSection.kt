@@ -55,8 +55,6 @@ fun ExamQuestionSection(
     viewModel: ExamPlayViewModel,
     modifier: Modifier = Modifier
 ) {
-    val blinkAlpha by rememberBlinkAlpha()
-
     // Safety check
     if (uiState.examPaper.isEmpty() || uiState.currentIndex >= uiState.examPaper.size) {
         return
@@ -180,18 +178,6 @@ fun ExamQuestionSection(
                 }
             }
         }
-
-
-        // ---------- Blink text ----------
-        Text(
-            text = stringResource(R.string.TapCorrectAns),
-            style = MaterialTheme.typography.bodyMedium.scaled(),
-            fontWeight = FontWeight.ExtraBold,
-            color = Color(0xFF0B5960),
-            modifier = Modifier
-                .padding(top = AppDimens.Dimens16)
-                .alpha(blinkAlpha)
-        )
 
         Spacer(modifier = Modifier.height(AppDimens.Dimens16))
 

@@ -30,13 +30,15 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 fun ProgressCandyRow(
     completed: Int,
     total: Int,
-    colors: List<Color>
+    colors: List<Color>,
+    modifier: Modifier = Modifier
 ) {
     val progress =
         if (total > 0) completed.toFloat() / total.toFloat()
         else 0f
 
     Row(
+        modifier = modifier,
         verticalAlignment = Alignment.CenterVertically
     ) {
 

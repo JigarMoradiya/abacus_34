@@ -312,9 +312,9 @@ object AbacusTheme {
             AppConstants.AbacusScreen.screenTypeCCM -> 1f
             AppConstants.AbacusScreen.screenTypeExercise -> 1f
             AppConstants.AbacusScreen.screenTypeAbacusPractice ->
-                if (abacusType == AppConstants.apiParams.answerFinalAnswer || abacusType == AppConstants.apiParams.answerFormalExam) { 0.9f }
+                if (abacusType == AppConstants.apiParams.answerFinalAnswer || abacusType == AppConstants.apiParams.answerFormalExam) { 0.95f }
                 else if (questionType == AppConstants.extras_Comman.AbacusTypeNumber) { 0.9f }
-                else { 0.87f }
+                else { 0.88f }
             AppConstants.AbacusScreen.screenTypeFreeMode -> 1f
             else -> 0.9f
         }
@@ -367,7 +367,7 @@ object AbacusTheme {
             val phoneHeightRatio = 384f / 781f
             val targetHeight = screenWidthDp * phoneHeightRatio
 
-            val additionPadding = AppDimens.Dimens20.value * 2
+            val additionPadding = if (DeviceInfo.isTablet || DeviceInfo.isLargeTablet) AppDimens.Dimens20.value * 2 else 0f
             minOf(targetHeight, screenHeightDp) - verticalMargin - answerBarHeight - numberStripHeight - headerHeight - additionPadding
 
         } else {
