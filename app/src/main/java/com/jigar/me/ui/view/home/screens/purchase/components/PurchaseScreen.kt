@@ -93,7 +93,7 @@ fun PurchaseScreen(
             type = ButtonType.BLUE,
             size = KidIconMedium,
             isPlayBackSound = true,
-            modifier = Modifier.align(Alignment.TopStart).padding(start = DeviceInfo.screenHorizontalPadding())
+            modifier = Modifier.align(Alignment.TopStart).padding(start = DeviceInfo.screenHorizontalPadding(),top = DeviceInfo.screenTopPadding())
         )
     }
 

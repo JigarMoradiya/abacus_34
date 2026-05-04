@@ -344,7 +344,7 @@ object AbacusTheme {
         }
 
         val answerBarHeight = when {
-            (screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn) || screenType == AppConstants.AbacusScreen.screenTypeExam || screenType == AppConstants.AbacusScreen.screenTypeExamResult -> {
+            (screenType == AppConstants.AbacusScreen.screenTypeFreeMode) || screenType == AppConstants.AbacusScreen.screenTypeExam || screenType == AppConstants.AbacusScreen.screenTypeExamResult -> {
                 0f
             }
             else -> {
@@ -353,7 +353,7 @@ object AbacusTheme {
         }
 
         val numberStripHeight = when (screenType) {
-            AppConstants.AbacusScreen.screenTypeFreeMode if isFreeModeOn -> {
+            AppConstants.AbacusScreen.screenTypeFreeMode -> {
                 (base.stripHeight.value * 3f) + 40f
             }
             AppConstants.AbacusScreen.screenTypeAbacusPractice, AppConstants.AbacusScreen.screenTypeCCM, AppConstants.AbacusScreen.screenTypeExercise -> {
