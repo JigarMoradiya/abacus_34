@@ -1,6 +1,6 @@
 [versions]
 # Build tools
-agp = "8.7.3"
+agp = "8.9.0"
 kotlin = "2.2.21"
 googleServices = "4.4.3"
 firebaseCrashlyticsPlugin = "3.0.6"
@@ -18,8 +18,8 @@ room = "2.8.3"
 sqlite = "2.6.1"
 work = "2.11.0"
 credentials = "1.5.0"
-activityCompose = "1.8.2"
-media3 = "1.8.0"
+activityCompose = "1.9.3"
+media3 = "1.9.0"
 composeBom = "2025.12.01"
 
 # Firebase
@@ -60,7 +60,7 @@ ccp = "2.7.3"
 simpleRatingBar = "1.5.1"
 eventbus = "3.3.1"
 imagepicker = "2.1"
-accompanist = "0.34.0"
+accompanist = "0.36.0"
 
 # Misc
 javaluator = "3.0.6"
