@@ -56,6 +56,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DeviceInfo
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorLightYellow
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4

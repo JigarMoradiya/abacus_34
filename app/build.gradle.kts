@@ -27,15 +27,22 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("/Users/jigarmoradiya/Documents/newProjects/abacus_34/app/keystore_live/abacus.jks")
+            storePassword = "abacus"
+            keyAlias = "abacus"
+            keyPassword = "abacus"
+        }
+    }
+
     buildTypes {
         release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-            )
-
-            isMinifyEnabled = false
+            isDebuggable=false
+            isMinifyEnabled=true
+            isShrinkResources=true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {
