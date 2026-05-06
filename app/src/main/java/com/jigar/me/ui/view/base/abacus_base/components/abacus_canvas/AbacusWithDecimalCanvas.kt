@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.data.local.data.RodMovement
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorCoffee
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.base.abacus_base.AbacusCalculations
@@ -117,7 +118,7 @@ fun AbacusWithDecimalCanvas(
     }
 
     val textColor = if (selectedTheme == "poligon_rainbow") {
-        Color(0xFF5D4037)
+        ColorCoffee
     } else {
         Color.White
     }

@@ -14,3 +14,8 @@ val ColorOrange = Color(0xFFFF7043)
 val ColorRed = Color(0xFFD32F2F)
 val White = Color(0xFFFFFFFF)
 val Black = Color(0xFF000000)
+
+val ColorCoffee = Color(0xFF5D4037)  // softer than black
+val ColorLightCoffee = Color(0xFF8D6E63)  // light coffee
+val ColorYellowOrange = Color(0xFFFF9800)
+val ColorLightYellow = Color(0xFFFFF8E1)  // light yellow bg

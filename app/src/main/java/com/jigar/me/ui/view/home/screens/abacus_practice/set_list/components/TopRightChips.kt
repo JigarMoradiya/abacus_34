@@ -26,6 +26,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorCoffee
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.theme.AppDimens
 
@@ -111,7 +112,7 @@ fun TimerChip() {
                 clip = false
             )
             .background(
-                color = Color(0xFF5D4037), // softer than black
+                color = ColorCoffee,
                 shape = RoundedCornerShape(AppDimens.Dimens12)
             )
             .padding(

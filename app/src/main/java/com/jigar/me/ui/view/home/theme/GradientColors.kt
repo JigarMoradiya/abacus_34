@@ -2,6 +2,7 @@ package com.jigar.me.ui.view.home.theme
 
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorYellowOrange
 
 val gradientBrushList = listOf(
 
@@ -14,7 +15,7 @@ val gradientBrushList = listOf(
     Brush.linearGradient(listOf(Color(0xFF4CAF50),Color(0xFF4CAF50))),
     Brush.linearGradient(listOf(Color(0xFF8BC34A),Color(0xFF8BC34A))),
     Brush.linearGradient(listOf(Color(0xFFFFEB3B),Color(0xFFFFEB3B))),
-    Brush.linearGradient(listOf(Color(0xFFFF9800),Color(0xFFFF9800))),
+    Brush.linearGradient(listOf(ColorYellowOrange,Color(0xFFFF9800))),
     Brush.linearGradient(listOf(Color(0xFFFF5722),Color(0xFFFF5722))),
 
     // 🌈 real gradients
@@ -40,7 +41,7 @@ val colorList = listOf(
     Color(0xFFCDDC39),
     Color(0xFFFFEB3B),
     Color(0xFFFFC107),
-    Color(0xFFFF9800),
+    ColorYellowOrange,
     Color(0xFFFF5722),
 )
 val randomButtonType = listOf(

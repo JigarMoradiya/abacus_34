@@ -37,6 +37,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorAccent
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorCoffee
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorLightCoffee
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorOrange
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
@@ -109,7 +111,7 @@ fun ExercisePagerScreen(
                     style = MaterialTheme.typography.bodyMedium.scaled().copy(
                         fontWeight = FontWeight.SemiBold,
                         fontFamily = FontFamily(Font(R.font.font_medium)),
-                        color = Color(0xFF8D6E63)
+                        color = ColorLightCoffee
                     ),
                     textAlign = TextAlign.Center
                 )
@@ -139,7 +141,7 @@ fun ExercisePagerScreen(
                     style = MaterialTheme.typography.bodyMedium.scaled().copy(
                         fontWeight = FontWeight.Medium,
                         fontFamily = FontFamily(Font(R.font.font_medium)),
-                        color = Color(0xFF5D4037),
+                        color = ColorCoffee,
                         shadow = Shadow(
                             color = Color.Black.copy(alpha = 0.1f),
                             offset = Offset(0.5f, 0.5f),

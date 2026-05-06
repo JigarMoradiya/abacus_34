@@ -34,6 +34,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorCoffee
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorLightYellow
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryLight
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
@@ -44,7 +46,7 @@ fun VoiceSection(
 ) {
     Card(shape = RoundedCornerShape(AppDimens.Dimens16),
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFFFFF8E1) // ✅ same as ToggleSection
+            containerColor = ColorLightYellow
         ), elevation = CardDefaults.cardElevation(defaultElevation = AppDimens.Dimens3), modifier = modifier
     ) {
         Column(
@@ -54,7 +56,7 @@ fun VoiceSection(
                 modifier = Modifier.padding(horizontal = AppDimens.Dimens12),
                 text = stringResource(R.string.change_voice_setting),
                 style = MaterialTheme.typography.bodyLarge.scaled().copy(
-                    fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium)), color = Color(0xFF5D4037)
+                    fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium)), color = ColorCoffee
                 )
             )
             Row(

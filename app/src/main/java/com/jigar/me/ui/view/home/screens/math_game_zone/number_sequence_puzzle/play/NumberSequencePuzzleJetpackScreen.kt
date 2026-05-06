@@ -64,6 +64,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DeviceInfo
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorYellowOrange
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
@@ -269,7 +270,7 @@ private fun PuzzleBoard(
 ) {
     val backgroundColor = when (gridSize) {
         3 -> Color(0xFFF33173).copy(alpha = opacity)
-        4 -> Color(0xFFFF9800).copy(alpha = opacity)
+        4 -> ColorYellowOrange.copy(alpha = opacity)
         else -> Color(0xFF2196F3).copy(alpha = opacity)
     }.copy(alpha = 0.15f)
 

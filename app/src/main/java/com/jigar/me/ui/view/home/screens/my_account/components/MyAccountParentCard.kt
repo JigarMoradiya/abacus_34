@@ -17,6 +17,8 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorCoffee
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorLightYellow
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.my_account.viewmodels.MyAccountMenu
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
@@ -38,7 +40,7 @@ fun MyAccountParentCard(
             shape = RoundedCornerShape(Dimens16), // ↓ reduced
             elevation = CardDefaults.cardElevation(Dimens4), // ↓ reduced
             colors = CardDefaults.cardColors(
-                containerColor = Color(0xFFFFF8E1)
+                containerColor = ColorLightYellow
             )
         ) {
             Column(modifier = Modifier.padding(vertical = Dimens8)) { // ↓ reduced
@@ -49,7 +51,7 @@ fun MyAccountParentCard(
                     style = MaterialTheme.typography.titleSmall.scaled().copy( // ↓ slightly smaller
                         fontWeight = FontWeight.ExtraBold,
                         fontFamily = FontFamily(Font(R.font.font_bold)),
-                        color = Color(0xFF5D4037)
+                        color = ColorCoffee
                     )
                 )
 

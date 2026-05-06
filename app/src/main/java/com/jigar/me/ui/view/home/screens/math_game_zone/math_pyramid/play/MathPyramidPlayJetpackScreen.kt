@@ -258,7 +258,7 @@ private fun PyramidCell(
         4 -> {
             width = (originalWidth * 1.1)
             height = (originalWidth * 0.7)
-            baseColor = Color(0xFFFFF8E1)
+            baseColor = ColorLightYellow
         }
         5 -> {
             height = (originalWidth * 0.6)

@@ -40,6 +40,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorCoffee
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryLight
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
@@ -116,7 +117,7 @@ fun SettingsSwitchRow(
         Icon(
             imageVector = icon,
             contentDescription = null,
-            tint = if (isOn) Color(0xFF43A047) else Color(0xFF5D4037),
+            tint = if (isOn) Color(0xFF43A047) else ColorCoffee,
             modifier = Modifier.size(AppDimens.Dimens24) // 👈 increased
         )
 
@@ -128,7 +129,7 @@ fun SettingsSwitchRow(
             style = MaterialTheme.typography.bodyLarge.scaled().copy(
                 fontWeight = FontWeight.Medium,
                 fontFamily = FontFamily(Font(R.font.font_medium)),
-                color = if (isOn) Color(0xFF2E7D32) else Color(0xFF5D4037)
+                color = if (isOn) Color(0xFF2E7D32) else ColorCoffee
             ),
             maxLines = 1
         )

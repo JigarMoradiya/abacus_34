@@ -53,6 +53,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DeviceInfo
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorYellowOrange
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
@@ -122,7 +123,7 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                     )
                     PuzzleOptionView(
                         gridSize = 4,
-                        color = Color(0xFFFF9800),
+                        color = ColorYellowOrange,
                         onClick = { onPuzzleSelect(4) }
                     )
                     PuzzleOptionView(

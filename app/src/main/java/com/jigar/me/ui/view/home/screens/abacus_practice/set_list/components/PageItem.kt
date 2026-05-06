@@ -33,6 +33,10 @@ import androidx.compose.ui.text.font.FontWeight
 import com.jigar.me.R
 import com.jigar.me.data.model.dbtable.abacus_all_data.DisplayPages
 import com.jigar.me.data.model.dbtable.abacus_all_data.Set
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorCoffee
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorLightCoffee
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorLightYellow
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorYellowOrange
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 
 @Composable
@@ -63,7 +67,7 @@ fun PageItem(
         shape = RoundedCornerShape(AppDimens.Dimens16),
         elevation = CardDefaults.cardElevation(AppDimens.Dimens4),
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFFFFF8E1)
+            containerColor = ColorLightYellow
         )
     ) {
         Column {
@@ -128,7 +132,7 @@ fun PageHeader(
             Icon(
                 imageVector = Icons.AutoMirrored.Outlined.StickyNote2,
                 contentDescription = null,
-                tint = Color(0xFFFF9800),
+                tint = ColorYellowOrange,
                 modifier = Modifier.size(AppDimens.Dimens24)
             )
         }
@@ -144,7 +148,7 @@ fun PageHeader(
                 style = MaterialTheme.typography.bodyLarge.scaled().copy(
                     fontWeight = FontWeight.Bold,
                     fontFamily = FontFamily(Font(R.font.font_bold)),
-                    color = Color(0xFF5D4037)
+                    color = ColorCoffee
                 ),
                 maxLines = 2
             )
@@ -155,7 +159,7 @@ fun PageHeader(
                     style = MaterialTheme.typography.bodySmall.scaled().copy(
                         fontWeight = FontWeight.Medium,
                         fontFamily = FontFamily(Font(R.font.font_medium)),
-                        color = Color(0xFF8D6E63)
+                        color = ColorLightCoffee
                     ),
                     maxLines = 2
                 )

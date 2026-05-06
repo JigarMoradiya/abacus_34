@@ -55,6 +55,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorCoffee
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorLightYellow
 import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.base.abacus_base.ColorPresets.getMixColorListOfPoligonUnique
 import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
@@ -74,7 +76,7 @@ fun ThemeSection(
     Row(verticalAlignment = Alignment.CenterVertically,horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
         Card(shape = RoundedCornerShape(AppDimens.Dimens16),
             colors = CardDefaults.cardColors(
-                containerColor = Color(0xFFFFF8E1) // ✅ same as ToggleSection
+                containerColor = ColorLightYellow
             ), elevation = CardDefaults.cardElevation(defaultElevation = AppDimens.Dimens3), modifier = Modifier.fillMaxWidth().weight(1f)
         ) {
             Column(modifier = Modifier.padding(vertical = AppDimens.Dimens6)) {
@@ -82,7 +84,7 @@ fun ThemeSection(
                     text = stringResource(R.string.free_abacus_theme),
                     modifier = Modifier.padding(horizontal = AppDimens.Dimens12),
                     style = MaterialTheme.typography.bodyLarge.scaled().copy(
-                        fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium)), color = Color(0xFF5D4037)
+                        fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium)), color = ColorCoffee
                     )
                 )
 

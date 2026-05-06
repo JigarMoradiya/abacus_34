@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import com.jigar.me.data.pref.AppPreferencesHelper
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorYellowOrange
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -46,7 +47,7 @@ class NumberSequencePuzzleViewModel @Inject constructor(
         Color(0xFFFBCEB1),
         Color(0xFFFFAC1C),
         Color(0xFFECB28D),
-        Color(0xFFFF9800),
+        ColorYellowOrange,
         Color(0xFFFF951E),
         Color(0xFFFAD5A5),
         Color(0xFFFFD580),
