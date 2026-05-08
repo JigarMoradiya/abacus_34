@@ -30,8 +30,7 @@ class DefaultAbacusRepository @Inject constructor(
 
     // network directory
     override fun changePlan(params: PurchasedPlanCheckRequest): Flow<Unit> = emitFlow {
-        val result = changePlanApi(params)
-        when (result) {
+        when (val result = changePlanApi(params)) {
             is Resource.Success -> {
                 val response = result.value
                 if (response.status == AppConstants.APIStatus.SUCCESS){
@@ -93,8 +92,7 @@ class DefaultAbacusRepository @Inject constructor(
         remote.handleExistingPurchase(request)
     }
     override fun getAbacusData(params: FetchAbacusDataRequest): Flow<Unit> = emitFlow {
-        val result = getAbacusDataApi(params)
-        when (result) {
+        when (val result = getAbacusDataApi(params)) {
             is Resource.Success -> {
                 val response = result.value
                 if (response.status == AppConstants.APIStatus.SUCCESS){

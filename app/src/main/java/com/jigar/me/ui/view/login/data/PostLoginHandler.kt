@@ -32,8 +32,7 @@ class PostLoginHandler @Inject constructor(
 
         val syncTime = prefs.getCustomParam(Constants.last_sync_time, Constants.last_sync_default_time)
         val request = FetchAbacusDataRequest(true, get_set_progress_report = true, last_sync_time = syncTime)
-        val abacusResponse = apiRepository.getAbacusData(request)
-        when (abacusResponse) {
+        when (val abacusResponse = apiRepository.getAbacusData(request)) {
             is Resource.Success -> {
                 if (abacusResponse.value.status == AppConstants.APIStatus.SUCCESS) {
                     insertAbacusData(abacusResponse.value.data)
@@ -49,8 +48,7 @@ class PostLoginHandler @Inject constructor(
     }
 
     suspend fun fetchReviewsAndContinue(markUserLoggedIn: Boolean): Outcome {
-        val reviewsResponse = apiRepository.appReviewsList()
-        return when (reviewsResponse) {
+        return when (val reviewsResponse = apiRepository.appReviewsList()) {
             is Resource.Success -> {
                 if (reviewsResponse.value.status == AppConstants.APIStatus.SUCCESS) {
                     persistPurchasedPlans(reviewsResponse.value.data)
