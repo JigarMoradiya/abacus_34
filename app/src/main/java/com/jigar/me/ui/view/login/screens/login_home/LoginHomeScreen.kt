@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.login.screens.login_home
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -134,6 +135,10 @@ fun LoginHomeScreen(
 
                 GoogleLoginButton(onClick = { viewModel.signInWithGoogle(context) })
 
+                Spacer(modifier = Modifier.height(AppDimens.Dimens8))
+
+                AppleLoginButton(onClick = { viewModel.signInWithApple(context) })
+
                 Spacer(modifier = Modifier.height(AppDimens.Dimens20))
                 Text(
                     text = "OR",
@@ -198,6 +203,7 @@ fun LoginHomeScreen(
     }
 
     uiState.errorMessage?.let { msg ->
+        Log.e("jigarLogins","msg = "+msg)
         LaunchedEffect(msg) {
             context.toastL(msg)
             viewModel.consumeError()
@@ -205,6 +211,31 @@ fun LoginHomeScreen(
     }
 
     uiState.navigateToHome?.consume { onNavigateToHome() }
+}
+
+@Composable
+private fun AppleLoginButton(onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .clip(RoundedCornerShape(AppDimens.Dimens25))
+            .background(Color.Black)
+            .clickable { onClick() }
+            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens10),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.ic_apple),
+            contentDescription = null,
+            modifier = Modifier.size(AppDimens.Dimens20)
+        )
+        Spacer(modifier = Modifier.width(AppDimens.Dimens10))
+        Text(
+            text = stringResource(R.string.login_with_apple).uppercase(),
+            color = Color.White,
+            style = MaterialTheme.typography.bodyLarge.scaled(),
+            fontWeight = FontWeight.Medium
+        )
+    }
 }
 
 @Composable

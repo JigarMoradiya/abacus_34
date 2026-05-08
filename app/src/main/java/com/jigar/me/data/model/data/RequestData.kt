@@ -28,7 +28,8 @@ data class LoginRequest(
 )
 data class SocialLoginRequest(
     var email: String? = null,
-    var token: String? = null
+    var token: String? = null,
+    var apple_user_id: String? = null,
 )
 
 data class PurchasedPlanCheckRequest(

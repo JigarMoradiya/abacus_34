@@ -781,7 +781,8 @@
     <string name="yes_i_want_to_move">Yes, I want to move</string>
     <string name="no_move_later">No, move later</string>
     <string name="no_move_later_msg">Can\'t access purchase features in this login.</string>
-    <string name="login_with_google">Login with Google</string>
+    <string name="login_with_google">Continue with Google</string>
+    <string name="login_with_apple">Continue with Apple</string>
     <string name="to_start_your_journey">to start your journey</string>
     <string name="one_step_away">One step away!</string>
     <string name="login_with_credentials">Login with Credentials</string>
