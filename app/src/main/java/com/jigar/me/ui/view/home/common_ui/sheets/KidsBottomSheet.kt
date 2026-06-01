@@ -32,6 +32,7 @@ fun KidsBottomSheet(
     visible: Boolean,
     onDismiss: () -> Unit,
     widthFraction: Float = 0.75f,
+    overlay: @Composable (androidx.compose.foundation.layout.BoxScope.() -> Unit) = {},
     content: @Composable () -> Unit
 ) {
     AnimatedVisibility(
@@ -78,6 +79,10 @@ fun KidsBottomSheet(
                     content()
                 }
             }
+
+            // Full-screen overlay slot — renders inside the fillMaxSize Box,
+            // so it sits on top of everything including the sheet panel.
+            overlay()
         }
     }
 }

@@ -896,5 +896,13 @@
     <string name="cancel">Cancel</string>
     <string name="alert">Alert</string>
     <string name="something_went_wrong">Something went wrong. Please try again.</string>
+    <string name="see_benefits">See Benefits</string>
+    <string name="premium_benefits_title">Premium Benefits</string>
+    <string name="benefit_all_levels">All levels practice (Level 1–8)</string>
+    <string name="benefit_all_exams">All exam types</string>
+    <string name="benefit_all_exercises">All exercises</string>
+    <string name="benefit_ccm">Custom Challenge Mode</string>
+    <string name="benefit_all_games">All math games</string>
+    <string name="benefit_report_history">Full report history</string>
 
 </resources>
