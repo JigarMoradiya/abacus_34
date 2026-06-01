@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.Constants
 import javax.inject.Inject
 
 
@@ -90,7 +91,9 @@ class AppPreferencesHelper @Inject constructor(
         return getCustomParamFloat(KEY_DEFAULT_TTS_SPEECH, 9f)
     }
 
-    fun clearPref(){
+    fun clearPref() {
+        val lastSyncTime = getCustomParam(Constants.last_sync_time, Constants.last_sync_default_time)
         mPrefs.edit { clear() }
+        setCustomParam(Constants.last_sync_time, lastSyncTime)
     }
 }

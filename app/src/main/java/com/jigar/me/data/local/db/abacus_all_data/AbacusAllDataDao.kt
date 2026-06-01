@@ -27,6 +27,8 @@ interface AbacusAllDataDao {
     fun insertSet(item: List<Set>)
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSetProgress(item: List<SetProgress>)
+    @Query("DELETE FROM '${AppConstants.DBParam.table_set_progress}'")
+    suspend fun deleteSetProgress()
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAbacus(item: List<Abacus>)
 

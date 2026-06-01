@@ -57,7 +57,8 @@ fun SetItem(
             colors = CardDefaults.cardColors(
                 containerColor = run {
                     val base = setCardColor(set.answer_setting)
-                    if (isLocked) lerp(base, Color.White, 0.6f) else base
+//                    if (isLocked) lerp(base, Color.White, 0.6f) else base
+                    base
                 }
             ),
             modifier = Modifier
@@ -105,7 +106,8 @@ fun SetItem(
                         else 0.dp
                     ),
                     style = MaterialTheme.typography.bodyMedium.scaled().copy(
-                        color = if (isLocked) Color.Gray.copy(alpha = 0.8f) else Color.White,
+//                        color = if (isLocked) Color.Gray.copy(alpha = 0.8f) else Color.White,
+                        color = Color.White,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily(Font(R.font.font_bold))
                     )

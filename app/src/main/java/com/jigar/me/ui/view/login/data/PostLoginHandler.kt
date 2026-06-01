@@ -1,10 +1,12 @@
 package com.jigar.me.ui.view.login.data
 
+import com.google.common.reflect.TypeToken
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.jigar.me.data.model.data.AbacusAllData
 import com.jigar.me.data.model.data.FetchAbacusDataRequest
 import com.jigar.me.data.model.data.LoginData
+import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.data.model.dbtable.abacus_all_data.Abacus
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.data.model.dbtable.abacus_all_data.Level
@@ -46,7 +48,6 @@ class PostLoginHandler @Inject constructor(
         when (val response = apiRepository.getAbacusData(request)) {
             is Resource.Success -> {
                 if (response.value.status == AppConstants.APIStatus.SUCCESS) {
-                    insertAllAbacusData(response.value.data)
                     insertProgressData(response.value.data)
                 } else {
                     return Outcome.Failure(response.value.error?.message)
@@ -56,7 +57,6 @@ class PostLoginHandler @Inject constructor(
             else -> Unit
         }
         return Outcome.NavigateHome
-//        return fetchReviewsAndContinue(markUserLoggedIn = false)
     }
 
     // Called on splash when user is NOT logged in — syncs public data only
@@ -105,22 +105,6 @@ class PostLoginHandler @Inject constructor(
         }
     }
 
-//    suspend fun fetchReviewsAndContinue(markUserLoggedIn: Boolean): Outcome {
-//        return when (val reviewsResponse = apiRepository.appReviewsList()) {
-//            is Resource.Success -> {
-//                if (reviewsResponse.value.status == AppConstants.APIStatus.SUCCESS) {
-//                    persistPurchasedPlans(reviewsResponse.value.data)
-//                    if (markUserLoggedIn) prefs.setUserLoggedIn(true)
-//                    Outcome.NavigateHome
-//                } else {
-//                    Outcome.Failure(reviewsResponse.value.error?.message)
-//                }
-//            }
-//            is Resource.Failure -> Outcome.Failure(reviewsResponse.errorBody)
-//            else -> Outcome.Failure(null)
-//        }
-//    }
-
     private fun persistLoginPayload(data: JsonObject) {
         val response = Gson().fromJson(data, LoginData::class.java)
         prefs.setAccessToken(response.token)
@@ -143,18 +127,32 @@ class PostLoginHandler @Inject constructor(
         response.setProgress?.let { dbRepository.insertSetProgress(it) }
     }
 
-//    private fun persistPurchasedPlans(data: JsonObject?) {
-//        if (data?.has("plans_purchased_manually") == true) {
-//            val arr = data.getAsJsonArray("plans_purchased_manually")
-//            if (arr?.isEmpty == true) {
-//                prefs.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, "")
-//            } else {
-//                val list: List<PlanAssignFromAdminData> = Gson().fromJson(
-//                    arr,
-//                    object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
-//                )
-//                prefs.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, Gson().toJson(list))
-//            }
-//        }
-//    }
+    suspend fun fetchAdminAssignPlan(): Outcome {
+        return when (val reviewsResponse = apiRepository.appReviewsList()) {
+            is Resource.Success -> {
+                if (reviewsResponse.value.status == AppConstants.APIStatus.SUCCESS) {
+                    persistPurchasedPlans(reviewsResponse.value.data)
+                    Outcome.NavigateHome
+                } else {
+                    Outcome.Failure(reviewsResponse.value.error?.message)
+                }
+            }
+            is Resource.Failure -> Outcome.Failure(reviewsResponse.errorBody)
+            else -> Outcome.Failure(null)
+        }
+    }
+    private fun persistPurchasedPlans(data: JsonObject?) {
+        if (data?.has("plans_purchased_manually") == true) {
+            val arr = data.getAsJsonArray("plans_purchased_manually")
+            if (arr?.isEmpty == true) {
+                prefs.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, "")
+            } else {
+                val list: List<PlanAssignFromAdminData> = Gson().fromJson(
+                    arr,
+                    object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
+                )
+                prefs.setCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, Gson().toJson(list))
+            }
+        }
+    }
 }

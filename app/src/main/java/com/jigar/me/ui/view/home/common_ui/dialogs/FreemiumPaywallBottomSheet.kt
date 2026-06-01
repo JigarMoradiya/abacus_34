@@ -62,6 +62,7 @@ import com.jigar.me.ui.view.home.theme.ButtonType
 @Composable
 fun FreemiumPaywallBottomSheet(
     purchasedSKU: List<InAppSkuDetails>,
+    onSubscriptionActivated: () -> Unit = {},
     onDismiss: () -> Unit,
 ) {
     val viewModel: PurchaseViewModel = hiltViewModel()
@@ -74,6 +75,24 @@ fun FreemiumPaywallBottomSheet(
 
     val isLoading = uiState.sortedSkuList.isEmpty()
     var showBenefits by remember { mutableStateOf(false) }
+    var showLoginSheet by remember { mutableStateOf(false) }
+    var pendingPlanIndex by remember { mutableStateOf<Int?>(null) }
+
+    // After login — check subscription, then proceed or purchase
+    fun handleAfterLogin() {
+        showLoginSheet = false
+        if (purchasedSKU.isNotEmpty()) {
+            // Already subscribed on this device
+            onDismiss()
+            onSubscriptionActivated()
+        } else {
+            pendingPlanIndex?.let { index ->
+                pendingPlanIndex = null
+                viewModel.onPlanSelected(index)
+                viewModel.makePurchase(activity)
+            }
+        }
+    }
 
     KidsBottomSheet(
         visible = true,
@@ -140,6 +159,15 @@ fun FreemiumPaywallBottomSheet(
                         BenefitRow(text = stringResource(R.string.benefit_report_history))
                     }
                 }
+            }
+
+            // Login sheet overlay — covers the whole sheet when login is required
+            if (showLoginSheet) {
+                FreemiumLoginBottomSheet(
+                    showContinueWithoutSaving = false,
+                    onLoginSuccess = { handleAfterLogin() },
+                    onDismiss = { showLoginSheet = false }
+                )
             }
         }
     ) {
@@ -268,8 +296,18 @@ fun FreemiumPaywallBottomSheet(
                                 badge = badge,
                                 uiState = uiState,
                                 onSubscribe = {
-                                    viewModel.onPlanSelected(index)
-                                    viewModel.makePurchase(activity)
+                                    if (!viewModel.isUserLoggedIn()) {
+                                        // Not logged in — save plan and show login
+                                        pendingPlanIndex = index
+                                        showLoginSheet = true
+                                    } else if (purchasedSKU.isNotEmpty()) {
+                                        // Already subscribed — close and activate
+                                        onDismiss()
+                                        onSubscriptionActivated()
+                                    } else {
+                                        viewModel.onPlanSelected(index)
+                                        viewModel.makePurchase(activity)
+                                    }
                                 }
                             )
                         }

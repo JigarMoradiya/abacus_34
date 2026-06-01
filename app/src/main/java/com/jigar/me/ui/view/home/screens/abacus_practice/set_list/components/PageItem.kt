@@ -61,7 +61,8 @@ fun PageItem(
         sets.chunkedGrid(columns)
     }
 
-    val bgColor = if (isLocked) Color(0x14808080) else ColorLightYellow
+//    val bgColor = if (isLocked) Color(0x14808080) else ColorLightYellow
+    val bgColor = ColorLightYellow
     val shadowColor = if (isLocked) Color.Gray.copy(alpha = 0.2f) else Color.Gray.copy(alpha = 0.5f)
     val shape = RoundedCornerShape(AppDimens.Dimens16)
 

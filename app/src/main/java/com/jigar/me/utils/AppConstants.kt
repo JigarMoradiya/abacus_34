@@ -9,6 +9,7 @@ object AppConstants {
     const val screenWidthDp = "screenWidthDp"
     const val NOTCH_HEIGHT = "notch_height"
     const val STATISTICS_DATA = "statisticsData"
+    const val IS_CREDENTIAL_LOGIN = "is_credential_login"
 
     const val PAGINATION_RECORDS = 20
 

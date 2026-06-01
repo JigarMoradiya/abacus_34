@@ -20,6 +20,7 @@ data class MyAccountUiState(
     val privacyPolicyUrl: String? = null,
     val statistics: Statistics? = null,
     val isShowLogoutPopup: Boolean = false,
+    val isLoggedIn: Boolean = false,
 )
 
 data class MyAccountMenu(
@@ -29,7 +30,7 @@ data class MyAccountMenu(
     val subMenu: List<MyAccountMenu> = emptyList()
 )
 
-fun getMenuList(context : Context): List<MyAccountMenu> {
+fun getMenuList(context: Context, isLoggedIn: Boolean): List<MyAccountMenu> {
     return listOf(
         MyAccountMenu("my_account", context.getString(R.string.my_account),
             subMenu = listOf(
@@ -40,12 +41,14 @@ fun getMenuList(context : Context): List<MyAccountMenu> {
             )
         ),
         MyAccountMenu("more", context.getString(R.string.more),
-            subMenu = listOf(
-                MyAccountMenu("faqs", context.getString(R.string.faqs), Icons.AutoMirrored.Outlined.Help),
-                MyAccountMenu("need_help", context.getString(R.string.need_help), Icons.Outlined.SupportAgent),
-                MyAccountMenu("privacy_policy", context.getString(R.string.privacy_policy), Icons.Outlined.PrivacyTip),
-                MyAccountMenu("logout", context.getString(R.string.logout), Icons.AutoMirrored.Outlined.Logout)
-            )
+            subMenu = buildList {
+                add(MyAccountMenu("faqs", context.getString(R.string.faqs), Icons.AutoMirrored.Outlined.Help))
+                add(MyAccountMenu("need_help", context.getString(R.string.need_help), Icons.Outlined.SupportAgent))
+                add(MyAccountMenu("privacy_policy", context.getString(R.string.privacy_policy), Icons.Outlined.PrivacyTip))
+                if (isLoggedIn) {
+                    add(MyAccountMenu("logout", context.getString(R.string.logout), Icons.AutoMirrored.Outlined.Logout))
+                }
+            }
         )
     )
 }

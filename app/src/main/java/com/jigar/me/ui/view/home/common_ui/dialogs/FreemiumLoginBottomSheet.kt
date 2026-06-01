@@ -15,8 +15,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.Login
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.Key
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -30,7 +30,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
@@ -38,8 +37,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
@@ -55,15 +52,15 @@ import com.jigar.me.utils.extensions.toastL
 @Composable
 fun FreemiumLoginBottomSheet(
     showContinueWithoutSaving: Boolean = true,
+    subtitle: String? = null,
     onLoginSuccess: () -> Unit,
     onContinueWithoutSaving: (() -> Unit)? = null,
+    onNavigateToCredentials: (() -> Unit)? = null,
     onDismiss: () -> Unit,
 ) {
     val viewModel: LoginHomeViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current
-    var showCredentialsLogin by remember { mutableStateOf(false) }
-
     uiState.navigateToHome?.consume {
         onLoginSuccess()
     }
@@ -115,7 +112,7 @@ fun FreemiumLoginBottomSheet(
                         )
                     )
                     Text(
-                        text = if (showContinueWithoutSaving) "Sign in to save your results"
+                        text = subtitle ?: if (showContinueWithoutSaving) "Sign in to save your results"
                                else "Sign in to access this feature",
                         style = MaterialTheme.typography.labelSmall.scaled().copy(
                             fontFamily = FontFamily(Font(R.font.font_regular)),
@@ -128,25 +125,14 @@ fun FreemiumLoginBottomSheet(
 
             Spacer(Modifier.size(AppDimens.Dimens12))
 
-            Row(
+            LoginPillButtonImage(
+                text = "Sign in with Google",
+                iconRes = R.drawable.ic_google,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = AppDimens.Dimens20),
-                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
-            ) {
-                LoginPillButtonImage(
-                    text = "Google",
-                    iconRes = R.drawable.ic_google,
-                    modifier = Modifier.weight(1f),
-                    onClick = { viewModel.signInWithGoogle(context) }
-                )
-                LoginPillButtonIcon(
-                    text = "Credentials",
-                    icon = Icons.Default.Key,
-                    modifier = Modifier.weight(1f),
-                    onClick = { showCredentialsLogin = true }
-                )
-            }
+                onClick = { viewModel.signInWithGoogle(context) }
+            )
 
             if (showContinueWithoutSaving && onContinueWithoutSaving != null) {
                 Spacer(Modifier.size(AppDimens.Dimens8))
@@ -163,23 +149,44 @@ fun FreemiumLoginBottomSheet(
                         .padding(AppDimens.Dimens8)
                 )
             }
-        }
-    }
 
-    if (showCredentialsLogin) {
-        Dialog(
-            onDismissRequest = { showCredentialsLogin = false },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color.White)
-            ) {
-                LoginScreen(
-                    onNavigateToFAQs = { },
-                    onGoBack = { showCredentialsLogin = false },
-                    onNavigateToHome = { showCredentialsLogin = false; onLoginSuccess() }
+            if (onNavigateToCredentials != null) {
+                Spacer(Modifier.size(AppDimens.Dimens8))
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = AppDimens.Dimens20)
+                        .clip(RoundedCornerShape(100))
+                        .background(Color(0xFF1C1C1E))
+                        .clickable { onNavigateToCredentials() }
+                        .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens10),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Outlined.Login,
+                        contentDescription = null,
+                        tint = Color.White,
+                        modifier = Modifier.size(AppDimens.Dimens16)
+                    )
+                    Spacer(Modifier.size(AppDimens.Dimens6))
+                    Text(
+                        text = context.getString(R.string.login_with_credentials),
+                        style = MaterialTheme.typography.labelSmall.scaled().copy(
+                            fontWeight = FontWeight.SemiBold,
+                            fontFamily = FontFamily(Font(R.font.font_semibold)),
+                            color = Color.White
+                        )
+                    )
+                }
+                Spacer(Modifier.size(AppDimens.Dimens4))
+                Text(
+                    text = context.getString(R.string.login_credentials_old_user_note),
+                    style = MaterialTheme.typography.labelSmall.scaled().copy(
+                        fontFamily = FontFamily(Font(R.font.font_regular)),
+                        color = Color.Gray
+                    ),
+                    modifier = Modifier.padding(horizontal = AppDimens.Dimens20)
                 )
             }
         }
@@ -223,36 +230,3 @@ private fun LoginPillButtonImage(
     }
 }
 
-@Composable
-private fun LoginPillButtonIcon(
-    text: String,
-    icon: ImageVector,
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit
-) {
-    Row(
-        modifier = modifier
-            .clip(RoundedCornerShape(100))
-            .background(Color(0xFF1C1C1E))
-            .clickable { onClick() }
-            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens10),
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = null,
-            tint = Color.White,
-            modifier = Modifier.size(AppDimens.Dimens16)
-        )
-        Spacer(Modifier.size(AppDimens.Dimens6))
-        Text(
-            text = text,
-            style = MaterialTheme.typography.labelSmall.scaled().copy(
-                fontWeight = FontWeight.SemiBold,
-                fontFamily = FontFamily(Font(R.font.font_semibold)),
-                color = Color.White
-            )
-        )
-    }
-}

@@ -35,6 +35,8 @@ class PurchaseViewModel @Inject constructor(
         )
     )
 
+    fun isUserLoggedIn(): Boolean = prefManager.isUserLoggedIn()
+
     // make purchase
     fun makePurchase(context: Activity) {
         billingRepository.launchBillingFlow(context, state().sortedSkuList[state().selectedIndex])

@@ -2,6 +2,7 @@ package com.jigar.me.ui.view.home.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -20,6 +21,8 @@ import com.jigar.me.ui.view.home.screens.abacus_practice.set_list.SetScreen
 import com.jigar.me.ui.view.home.screens.home.HomeScreen
 import com.jigar.me.ui.view.home.screens.my_account.FAQsRoute
 import com.jigar.me.ui.view.home.screens.my_account.MyAccountRoute
+import com.jigar.me.ui.view.home.screens.my_account.viewmodels.MyAccountViewModel
+import com.jigar.me.ui.view.login.screens.login.LoginWithCredentialsLandscapeScreen
 import com.jigar.me.ui.view.home.screens.reports.ReportHistoryRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.MathGameZoneScreenRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.MathPyramidHomeRoute
@@ -71,6 +74,9 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.Home.route) {
+            LaunchedEffect(Unit) {
+                homeActivityViewModel.fetchReviewsIfCredentialLogin()
+            }
             HomeScreen(
                 onNavigateToLevelCategory = { levelId ->
                     navController.navigate(RouteNavigation.LevelCategory.levelCategory(levelId))
@@ -319,6 +325,21 @@ fun HomeNavGraph(
                 onNavigateToSettings = { navController.navigate(RouteNavigation.Settings.route) },
                 onNavigateToReportHistory = { navController.navigate(RouteNavigation.ReportHistory.route) },
                 onNavigateToWhatsLearning = { navController.navigate(RouteNavigation.WhatsLearning.route) },
+                onNavigateToCredentials = { navController.navigate(RouteNavigation.CredentialsLoginLandscape.route) },
+            )
+        }
+
+        composable(route = RouteNavigation.CredentialsLoginLandscape.route) {
+            val myAccountEntry = remember(navController) {
+                navController.getBackStackEntry(RouteNavigation.MyAccount.route)
+            }
+            val myAccountViewModel: MyAccountViewModel = hiltViewModel(myAccountEntry)
+            LoginWithCredentialsLandscapeScreen(
+                onGoBack = { navController.popBackStack() },
+                onLoginSuccess = {
+                    myAccountViewModel.onLoginSuccess()
+                    navController.popBackStack()
+                }
             )
         }
 

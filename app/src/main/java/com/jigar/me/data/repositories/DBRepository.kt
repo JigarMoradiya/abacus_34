@@ -27,6 +27,7 @@ class DBRepository @Inject constructor(
     // abacus all data
     suspend fun insertLevel(data : List<Level>) = abacusAllDataDB.insertLevel(data)
     suspend fun insertSetProgress(data : List<SetProgress>) = abacusAllDataDB.insertSetProgress(data)
+    suspend fun deleteSetProgress() = abacusAllDataDB.deleteSetProgress()
     suspend fun insertAllData(
         levels: ArrayList<Level>,
         categories: ArrayList<Category>,

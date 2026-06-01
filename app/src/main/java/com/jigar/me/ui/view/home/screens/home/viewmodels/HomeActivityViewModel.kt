@@ -9,12 +9,15 @@ import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.jetpack.core.repository.abacus_data.AbacusDataRepository
 import com.jigar.me.ui.jetpack.core.repository.abacus_data.PurchaseRepository
 import com.jigar.me.ui.view.home.screens.home.interator.BackgroundMusicController
+import com.jigar.me.ui.view.login.data.PostLoginHandler
+import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -23,6 +26,7 @@ class HomeActivityViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val prefs: AppPreferencesHelper,
     purchaseRepository: PurchaseRepository,
+    private val postLoginHandler: PostLoginHandler,
 ) : ViewModel() {
 
     val purchasedSku: StateFlow<List<InAppSkuDetails>> =
@@ -46,6 +50,12 @@ class HomeActivityViewModel @Inject constructor(
             )
 
     private val bgController = BackgroundMusicController(context, prefs)
+
+    fun fetchReviewsIfCredentialLogin() {
+        if (prefs.getCustomParamBoolean(AppConstants.IS_CREDENTIAL_LOGIN, false)) {
+            viewModelScope.launch { postLoginHandler.fetchAdminAssignPlan() }
+        }
+    }
 
     fun updateMusicVolume(volume: Int) = bgController.updateVolume(volume)
     fun onResume() = bgController.playIfNeeded()

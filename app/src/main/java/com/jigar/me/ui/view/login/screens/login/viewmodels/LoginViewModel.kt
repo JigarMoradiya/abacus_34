@@ -76,12 +76,14 @@ class LoginViewModel @Inject constructor(
     }
 
     private suspend fun handlePostLogin(data: JsonObject?) {
-        when (val outcome = postLoginHandler.fetchProgressSetData(data)) {
+        when (val progressOutcome = postLoginHandler.fetchProgressSetData(data)) {
             is PostLoginHandler.Outcome.NavigateHome -> {
+                postLoginHandler.fetchAdminAssignPlan()
+                prefs.setCustomParamBoolean(AppConstants.IS_CREDENTIAL_LOGIN, true)
                 updateState_ { copy(isLoading = false, navigateToHome = ConsumableCommand(Unit)) }
             }
             is PostLoginHandler.Outcome.Failure -> {
-                updateState_ { copy(isLoading = false, errorMessage = outcome.message) }
+                updateState_ { copy(isLoading = false, errorMessage = progressOutcome.message) }
             }
         }
     }

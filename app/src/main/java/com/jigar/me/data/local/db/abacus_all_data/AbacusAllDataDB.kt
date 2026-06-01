@@ -23,6 +23,9 @@ class AbacusAllDataDB @Inject constructor(private val dao: AbacusAllDataDao) {
     suspend fun insertSetProgress(data : List<SetProgress>) = withContext(Dispatchers.IO){
         dao.insertSetProgress(data)
     }
+    suspend fun deleteSetProgress() = withContext(Dispatchers.IO) {
+        dao.deleteSetProgress()
+    }
     suspend fun removeUserAnswer(setId : String) = dao.removeUserAnswer(setId)
 
     suspend fun getParentLevelOfSet(setId: String): String = dao.getParentLevelOfSet(setId)

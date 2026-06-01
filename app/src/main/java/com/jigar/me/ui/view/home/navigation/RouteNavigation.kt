@@ -68,4 +68,6 @@ sealed class RouteNavigation(val route: String) {
 
     object CCMHome : RouteNavigation("CCMHome")
     object CCMPlay : RouteNavigation("CCMPlay")
+
+    object CredentialsLoginLandscape : RouteNavigation("CredentialsLoginLandscape")
 }
