@@ -39,10 +39,10 @@ class RemoteDataSource @Inject constructor() {
 
     private fun getClient(context: Context,baseUrl: String): Retrofit? {
         client = OkHttpClient.Builder()
+            .addInterceptor(AuthHeaderInterceptor(prefManager))
             .addInterceptor(Interceptor { chain ->
                 forwardNext(context, chain)
             })
-            .addInterceptor(AuthHeaderInterceptor(prefManager))
             .readTimeout(1, TimeUnit.MINUTES)
             .connectTimeout(1, TimeUnit.MINUTES)
             .build()
@@ -70,6 +70,7 @@ class RemoteDataSource @Inject constructor() {
 
         val strNewBody = buffer.readUtf8()
         Log.e("post_request_new_body", "Without encryption enabled body $strNewBody")
+        Log.e("post_request_new_body", "headers ${request.headers}")
         try {
             val response: Response = chain.proceed(request) // get the API response
 

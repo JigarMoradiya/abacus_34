@@ -10,9 +10,13 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -37,7 +41,10 @@ import kotlin.math.ceil
 
 @Composable
 fun ExerciseWrapGrid(
-    items: List<GridItemModel>, selectedItem: GridItemModel?, onItemSelected: (GridItemModel) -> Unit
+    items: List<GridItemModel>,
+    selectedItem: GridItemModel?,
+    isItemLocked: (itemIndex: Int) -> Boolean = { false },
+    onItemSelected: (GridItemModel) -> Unit
 ) {
     val rows = 2
     val columns = ceil(items.size / rows.toFloat()).toInt()
@@ -57,11 +64,13 @@ fun ExerciseWrapGrid(
                     if (index < items.size) {
                         val item = items[index]
                         val isSelected = selectedItem?.id == item.id
+                        val isLocked = isItemLocked(index)
 
                         KidsGridItem(
                             index = index,
                             isSelected = isSelected,
-                            onClick = { onItemSelected(item) }
+                            isLocked = isLocked,
+                            onClick = { if (!isLocked) onItemSelected(item) }
                         )
                     }
                 }
@@ -74,63 +83,92 @@ fun ExerciseWrapGrid(
 fun KidsGridItem(
     index: Int,
     isSelected: Boolean,
+    isLocked: Boolean = false,
     onClick: () -> Unit
 ) {
     val interaction = remember { MutableInteractionSource() }
     val pressed by interaction.collectIsPressedAsState()
 
     val scale by animateFloatAsState(
-        targetValue = if (pressed) 0.9f else 1f,
+        targetValue = if (pressed && !isLocked) 0.9f else 1f,
         label = ""
     )
 
-    val backgroundColor = if (isSelected) Color(0xFFFFB300) else Color(0xFFFFF3E0)
-    val borderColor = if (isSelected) Color(0xFFFF8F00) else Color(0xFFFFB74D)
+    val backgroundColor = when {
+        isLocked -> Color(0xFFEEEEEE)
+        isSelected -> Color(0xFFFFB300)
+        else -> Color(0xFFFFF3E0)
+    }
+    val borderColor = when {
+        isLocked -> Color(0xFFBDBDBD)
+        isSelected -> Color(0xFFFF8F00)
+        else -> Color(0xFFFFB74D)
+    }
 
-    Box(
-        modifier = Modifier
-            .size(AppDimens.Dimens28)
-            .graphicsLayer {
-                scaleX = scale
-                scaleY = scale
-            }
-            .drawBehind {
-                // 🔥 shadow (bottom depth)
-                drawCircle(
-                    color = Color.Black.copy(alpha = 0.15f),
-                    radius = size.minDimension / 2,
-                    center = center.copy(y = center.y + 2f)
+    Box(contentAlignment = Alignment.TopEnd) {
+        Box(
+            modifier = Modifier
+                .size(AppDimens.Dimens28)
+                .graphicsLayer {
+                    scaleX = scale
+                    scaleY = scale
+                }
+                .drawBehind {
+                    drawCircle(
+                        color = Color.Black.copy(alpha = if (isLocked) 0.05f else 0.15f),
+                        radius = size.minDimension / 2,
+                        center = center.copy(y = center.y + 2f)
+                    )
+                }
+                .clip(CircleShape)
+                .background(backgroundColor)
+                .border(
+                    width = AppDimens.Dimens1,
+                    color = borderColor,
+                    shape = CircleShape
                 )
-            }
-            .clip(CircleShape)
-            .background(backgroundColor)
-            .border(
-                width = AppDimens.Dimens1,
-                color = borderColor,
-                shape = CircleShape
+                .clickable(
+                    interactionSource = interaction,
+                    indication = null
+                ) {
+                    onClick()
+                },
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = "${index + 1}",
+                style = MaterialTheme.typography.bodyMedium.scaled().copy(
+                    fontWeight = FontWeight.ExtraBold,
+                    fontFamily = FontFamily(Font(R.font.font_bold)),
+                    color = when {
+                        isLocked -> Color(0xFFBDBDBD)
+                        isSelected -> Color.White
+                        else -> Color(0xFF6D4C41)
+                    },
+                    shadow = Shadow(
+                        color = Color.Black.copy(alpha = if (isLocked) 0.05f else 0.2f),
+                        offset = Offset(1f, 1f),
+                        blurRadius = 0f
+                    )
+                )
             )
-            .clickable(
-                interactionSource = interaction,
-                indication = null
+        }
+
+        if (isLocked) {
+            Box(
+                modifier = Modifier
+                    .offset(x = AppDimens.Dimens4, y = (-AppDimens.Dimens4))
+                    .size(AppDimens.Dimens10)
+                    .background(Color(0xFFFF9800), CircleShape),
+                contentAlignment = Alignment.Center
             ) {
-                onClick()
-            },
-        contentAlignment = Alignment.Center
-    ) {
-
-        // ✨ Text shadow (for depth)
-        Text(
-            text = "${index + 1}",
-            style = MaterialTheme.typography.bodyMedium.scaled().copy(
-                fontWeight = FontWeight.ExtraBold,
-                fontFamily = FontFamily(Font(R.font.font_bold)),
-                color = if (isSelected) Color.White else Color(0xFF6D4C41),
-                shadow = Shadow(
-                    color = Color.Black.copy(alpha = 0.2f),
-                    offset = Offset(1f, 1f),
-                    blurRadius = 0f
+                Icon(
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = Modifier.size(AppDimens.Dimens6)
                 )
-            )
-        )
+            }
+        }
     }
 }

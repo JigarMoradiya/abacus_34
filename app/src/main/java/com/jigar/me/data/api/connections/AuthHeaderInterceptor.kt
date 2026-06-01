@@ -12,6 +12,7 @@ class AuthHeaderInterceptor  private constructor(
     override fun intercept(chain: Interceptor.Chain): Response {
         val requestBuilder = chain.request().newBuilder()
         requestBuilder.header("organizer-id",CommonUtils.getOrganizerId())
+        Log.e("AuthHeaderInterceptor","organizer-id = "+CommonUtils.getOrganizerId())
         prefManager.getAccessToken()?.let {
             val token = it
             Log.e("AuthHeaderInterceptor","access-token = "+token)

@@ -1,0 +1,258 @@
+package com.jigar.me.ui.view.home.common_ui.dialogs
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Key
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.jigar.me.R
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.home.common_ui.Loader
+import com.jigar.me.ui.view.home.common_ui.sheets.KidsBottomSheet
+import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.login.screens.login.LoginScreen
+import com.jigar.me.ui.view.login.screens.login_home.viewmodels.LoginHomeViewModel
+import com.jigar.me.utils.extensions.toastL
+
+@Composable
+fun FreemiumLoginBottomSheet(
+    showContinueWithoutSaving: Boolean = true,
+    onLoginSuccess: () -> Unit,
+    onContinueWithoutSaving: (() -> Unit)? = null,
+    onDismiss: () -> Unit,
+) {
+    val viewModel: LoginHomeViewModel = hiltViewModel()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val context = LocalContext.current
+    var showCredentialsLogin by remember { mutableStateOf(false) }
+
+    uiState.navigateToHome?.consume {
+        onLoginSuccess()
+    }
+
+    uiState.errorMessage?.let { msg ->
+        LaunchedEffect(msg) {
+            context.toastL(msg)
+            viewModel.consumeError()
+        }
+    }
+
+    KidsBottomSheet(
+        visible = true,
+        onDismiss = onDismiss,
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = AppDimens.Dimens16),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = AppDimens.Dimens20),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .size(AppDimens.Dimens40)
+                        .background(ColorPrimary.copy(alpha = 0.12f), CircleShape),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.AccountCircle,
+                        contentDescription = null,
+                        tint = ColorPrimary,
+                        modifier = Modifier.size(AppDimens.Dimens20)
+                    )
+                }
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = "Login Required",
+                        style = MaterialTheme.typography.titleSmall.scaled().copy(
+                            fontWeight = FontWeight.Bold,
+                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            color = ColorPrimary
+                        )
+                    )
+                    Text(
+                        text = if (showContinueWithoutSaving) "Sign in to save your results"
+                               else "Sign in to access this feature",
+                        style = MaterialTheme.typography.labelSmall.scaled().copy(
+                            fontFamily = FontFamily(Font(R.font.font_regular)),
+                            color = Color.Black.copy(alpha = 0.6f)
+                        ),
+                        maxLines = 2
+                    )
+                }
+            }
+
+            Spacer(Modifier.size(AppDimens.Dimens12))
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = AppDimens.Dimens20),
+                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
+            ) {
+                LoginPillButtonImage(
+                    text = "Google",
+                    iconRes = R.drawable.ic_google,
+                    modifier = Modifier.weight(1f),
+                    onClick = { viewModel.signInWithGoogle(context) }
+                )
+                LoginPillButtonIcon(
+                    text = "Credentials",
+                    icon = Icons.Default.Key,
+                    modifier = Modifier.weight(1f),
+                    onClick = { showCredentialsLogin = true }
+                )
+            }
+
+            if (showContinueWithoutSaving && onContinueWithoutSaving != null) {
+                Spacer(Modifier.size(AppDimens.Dimens8))
+                Text(
+                    text = "Continue without saving",
+                    style = MaterialTheme.typography.labelSmall.scaled().copy(
+                        fontWeight = FontWeight.Medium,
+                        fontFamily = FontFamily(Font(R.font.font_medium)),
+                        color = Color.Gray,
+                        textDecoration = TextDecoration.Underline
+                    ),
+                    modifier = Modifier
+                        .clickable { onContinueWithoutSaving() }
+                        .padding(AppDimens.Dimens8)
+                )
+            }
+        }
+    }
+
+    if (showCredentialsLogin) {
+        Dialog(
+            onDismissRequest = { showCredentialsLogin = false },
+            properties = DialogProperties(usePlatformDefaultWidth = false)
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.White)
+            ) {
+                LoginScreen(
+                    onNavigateToFAQs = { },
+                    onGoBack = { showCredentialsLogin = false },
+                    onNavigateToHome = { showCredentialsLogin = false; onLoginSuccess() }
+                )
+            }
+        }
+    }
+
+    if (uiState.isLoading) {
+        Loader()
+    }
+}
+
+@Composable
+private fun LoginPillButtonImage(
+    text: String,
+    iconRes: Int,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
+    Row(
+        modifier = modifier
+            .clip(RoundedCornerShape(100))
+            .background(Color(0xFF1C1C1E))
+            .clickable { onClick() }
+            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens10),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Image(
+            painter = painterResource(iconRes),
+            contentDescription = null,
+            modifier = Modifier.size(AppDimens.Dimens16)
+        )
+        Spacer(Modifier.size(AppDimens.Dimens6))
+        Text(
+            text = text,
+            style = MaterialTheme.typography.labelSmall.scaled().copy(
+                fontWeight = FontWeight.SemiBold,
+                fontFamily = FontFamily(Font(R.font.font_semibold)),
+                color = Color.White
+            )
+        )
+    }
+}
+
+@Composable
+private fun LoginPillButtonIcon(
+    text: String,
+    icon: ImageVector,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
+    Row(
+        modifier = modifier
+            .clip(RoundedCornerShape(100))
+            .background(Color(0xFF1C1C1E))
+            .clickable { onClick() }
+            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens10),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = null,
+            tint = Color.White,
+            modifier = Modifier.size(AppDimens.Dimens16)
+        )
+        Spacer(Modifier.size(AppDimens.Dimens6))
+        Text(
+            text = text,
+            style = MaterialTheme.typography.labelSmall.scaled().copy(
+                fontWeight = FontWeight.SemiBold,
+                fontFamily = FontFamily(Font(R.font.font_semibold)),
+                color = Color.White
+            )
+        )
+    }
+}

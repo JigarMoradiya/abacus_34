@@ -22,11 +22,9 @@ import com.jigar.me.R
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.login.screens.splash.viewmodels.SplashViewModel
 import com.jigar.me.utils.extensions.openURL
-import com.jigar.me.utils.extensions.toastL
 
 @Composable
 fun SplashScreen(
-    onNavigateToLoginHome: () -> Unit,
     onNavigateToHome: () -> Unit,
     onFinishActivity: () -> Unit,
 ) {
@@ -46,11 +44,8 @@ fun SplashScreen(
         )
     }
 
-    AnimatedVisibility(
-        visible = uiState.showAppUpdatePopup,
-        enter = fadeIn(),
-        exit = fadeOut()
-    ) {
+    // App update popup
+    AnimatedVisibility(visible = uiState.showAppUpdatePopup, enter = fadeIn(), exit = fadeOut()) {
         CustomPopupView(
             title = stringResource(R.string.app_update),
             description = stringResource(R.string.new_version_msg),
@@ -66,19 +61,35 @@ fun SplashScreen(
         )
     }
 
-    uiState.errorMessage?.let { msg ->
-        LaunchedEffect(msg) {
-            context.toastL(msg)
-            viewModel.consumeError()
-        }
+    // No internet popup
+    AnimatedVisibility(visible = uiState.showNoInternetPopup, enter = fadeIn(), exit = fadeOut()) {
+        CustomPopupView(
+            title = stringResource(R.string.no_internet_working),
+            description = stringResource(R.string.no_internet),
+            positiveButtonText = stringResource(R.string.retry),
+            negativeButtonText = stringResource(R.string.cancel),
+            icon = R.drawable.ic_alert_sad_emoji,
+            widthMultiplier = 0.7f,
+            onPositiveTapped = { viewModel.retryAfterError() },
+            onNegativeTapped = { onFinishActivity() }
+        )
     }
 
-    uiState.noInternet?.consume {
-        context.toastL(context.getString(R.string.no_internet))
-        onFinishActivity()
+    // API error popup (only shown when no local data exists)
+    AnimatedVisibility(visible = uiState.showErrorPopup, enter = fadeIn(), exit = fadeOut()) {
+        CustomPopupView(
+            title = stringResource(R.string.alert),
+            description = stringResource(R.string.something_went_wrong),
+            positiveButtonText = stringResource(R.string.retry),
+            negativeButtonText = stringResource(R.string.cancel),
+            icon = R.drawable.ic_alert,
+            widthMultiplier = 0.7f,
+            onPositiveTapped = { viewModel.retryAfterError() },
+            onNegativeTapped = { onFinishActivity() }
+        )
     }
 
     uiState.finishActivity?.consume { onFinishActivity() }
-    uiState.navigateToLoginHome?.consume { onNavigateToLoginHome() }
+    uiState.navigateToLoginHome?.consume { onNavigateToHome() }
     uiState.navigateToHome?.consume { onNavigateToHome() }
 }

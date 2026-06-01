@@ -92,30 +92,41 @@ class DefaultAbacusRepository @Inject constructor(
         remote.handleExistingPurchase(request)
     }
     override fun getAbacusData(params: FetchAbacusDataRequest): Flow<Unit> = emitFlow {
-        when (val result = getAbacusDataApi(params)) {
+        when (val result = safeApiCall { remote.getAbacusData(params) }) {
             is Resource.Success -> {
                 val response = result.value
                 if (response.status == AppConstants.APIStatus.SUCCESS){
                     getAbacusDataSuccess(response.data)
                     return@emitFlow
                 } else {
-                    val errorMsg = response.error?.message
-                        ?: response.message
-                        ?: "Unknown server response"
-                    throw Exception(errorMsg)
+                    throw Exception(response.error?.message ?: response.message ?: "Unknown server response")
                 }
             }
-
             is Resource.Failure -> throw when {
                 result.isNetworkError -> IOException("Network error occurred")
                 else -> Exception("API error: ${result.errorBody ?: "Unknown error"}, code: ${result.errorCode}")
             }
-
             else -> throw Exception("Unexpected response type")
         }
     }
-    private suspend fun getAbacusDataApi(request: FetchAbacusDataRequest) = safeApiCall {
-        remote.getAbacusData(request)
+
+    override fun getAbacusDataPublic(params: FetchAbacusDataRequest): Flow<Unit> = emitFlow {
+        when (val result = safeApiCall { remote.getAbacusDataPublic(params) }) {
+            is Resource.Success -> {
+                val response = result.value
+                if (response.status == AppConstants.APIStatus.SUCCESS){
+                    getAbacusDataSuccess(response.data)
+                    return@emitFlow
+                } else {
+                    throw Exception(response.error?.message ?: response.message ?: "Unknown server response")
+                }
+            }
+            is Resource.Failure -> throw when {
+                result.isNetworkError -> IOException("Network error occurred")
+                else -> Exception("API error: ${result.errorBody ?: "Unknown error"}, code: ${result.errorCode}")
+            }
+            else -> throw Exception("Unexpected response type")
+        }
     }
     private suspend fun getAbacusDataSuccess(content: JsonObject?) {
         val response = Gson().fromJson(content, AbacusAllData::class.java)

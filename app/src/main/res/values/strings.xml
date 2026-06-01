@@ -144,7 +144,6 @@
     <string name="continue_working_internet">Internet working, please continue</string>
     <string name="no_working_internet">Okay, I will check, please close</string>
     <string name="yes_i_want_to_purchase">Yes, I want to Subscribe Now</string>
-    <string name="maybe_later">May be Subscribe Later</string>
     <string name="yes_i_want_to_update">Yes, I want to Update</string>
     <string name="no_purchase_later">No, I will Subscribe later</string>
     <string name="no_thanks">No, thanks</string>
@@ -891,5 +890,11 @@
     <string name="subscription_free_trial_msg">Payment will be charged after the free trial.\nCancel anytime before trial ends.</string>
     <string name="cancel_subscription_anytime">Cancel subscription anytime.</string>
     <string name="plan_assigned_from_admin">Plan assigned from Admin.</string>
+    <string name="unlock_premium">Unlock Premium</string>
+    <string name="maybe_later">Maybe later</string>
+    <string name="retry">Retry</string>
+    <string name="cancel">Cancel</string>
+    <string name="alert">Alert</string>
+    <string name="something_went_wrong">Something went wrong. Please try again.</string>
 
 </resources>

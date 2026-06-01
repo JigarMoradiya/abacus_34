@@ -69,7 +69,6 @@ class HomeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         deepLinkRoute = intent.getStringExtra(EXTRA_DEEP_LINK_ROUTE)
-        homeActivityViewModel.fetchAbacusData()
         logDeviceQualifiers(this)
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -97,7 +96,8 @@ class HomeActivity : ComponentActivity() {
                         HomeNavGraph(
                             homeActivityViewModel = homeActivityViewModel,
                             initialRoute = deepLinkRoute,
-                            onInitialRouteHandled = { deepLinkRoute = null }
+                            onInitialRouteHandled = { deepLinkRoute = null },
+                            onFinishActivity = { finish() }
                         )
                     }
                 }

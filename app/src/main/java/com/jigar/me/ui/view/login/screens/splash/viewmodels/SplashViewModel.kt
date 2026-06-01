@@ -10,6 +10,7 @@ import com.jigar.me.ui.jetpack.core.StatefulViewModel
 import com.jigar.me.ui.jetpack.core.domain.ConsumableCommand
 import com.jigar.me.ui.view.login.data.PostLoginHandler
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.Constants
 import com.jigar.me.utils.extensions.isNetworkAvailable
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -98,24 +99,36 @@ class SplashViewModel @Inject constructor(
 
     private fun routeAfterRemoteConfig() {
         if (!context.isNetworkAvailable) {
-            updateState_ { copy(isLoading = false, noInternet = ConsumableCommand(Unit)) }
+            updateState_ { copy(isLoading = false, showNoInternetPopup = true) }
             return
         }
-        if (!prefs.getAccessToken().isNullOrEmpty() && prefs.isUserLoggedIn()) {
-            // already logged in — fetch reviews then navigate home
-            viewModelScope.launch {
-                when (val outcome = postLoginHandler.fetchReviewsAndContinue(markUserLoggedIn = false)) {
-                    is PostLoginHandler.Outcome.NavigateHome -> {
+        val hasLocalData = prefs.getCustomParam(Constants.last_sync_time, "").isNotEmpty()
+        viewModelScope.launch {
+            val outcome = if (prefs.isUserLoggedIn() && !prefs.getAccessToken().isNullOrEmpty()) {
+                postLoginHandler.fetchAbacusDataForAuth()
+            } else {
+                postLoginHandler.fetchPublicAbacusData()
+            }
+            when (outcome) {
+                is PostLoginHandler.Outcome.NavigateHome -> {
+                    updateState_ { copy(isLoading = false, navigateToHome = ConsumableCommand(Unit)) }
+                }
+                is PostLoginHandler.Outcome.Failure -> {
+                    if (hasLocalData) {
+                        // Has cached data — navigate home, use cache
                         updateState_ { copy(isLoading = false, navigateToHome = ConsumableCommand(Unit)) }
-                    }
-                    is PostLoginHandler.Outcome.Failure -> {
-                        updateState_ { copy(isLoading = false, errorMessage = outcome.message) }
+                    } else {
+                        // No cached data — must show error, user needs to retry
+                        updateState_ { copy(isLoading = false, showErrorPopup = true, errorPopupMessage = outcome.message) }
                     }
                 }
             }
-        } else {
-            updateState_ { copy(isLoading = false, navigateToLoginHome = ConsumableCommand(Unit)) }
         }
+    }
+
+    fun retryAfterError() {
+        updateState_ { copy(isLoading = true, showErrorPopup = false, showNoInternetPopup = false, errorPopupMessage = null) }
+        fetchRemoteConfigAndContinue()
     }
 
     fun onUpdateConfirmed() {

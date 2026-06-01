@@ -15,8 +15,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.StickyNote2
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.WorkspacePremium
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -25,6 +25,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
@@ -33,7 +34,6 @@ import androidx.compose.ui.text.font.FontWeight
 import com.jigar.me.R
 import com.jigar.me.data.model.dbtable.abacus_all_data.DisplayPages
 import com.jigar.me.data.model.dbtable.abacus_all_data.Set
-import com.jigar.me.ui.jetpack.core.presentation.theme.ColorCoffee
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorLightCoffee
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorLightYellow
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorYellowOrange
@@ -43,6 +43,7 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 fun PageItem(
     page: DisplayPages,
     allSets: List<Set>,
+    isLocked: Boolean = false,
     onSetClick: (Set) -> Unit,
     onSetLongClick: (Set) -> Unit
 ) {
@@ -60,22 +61,30 @@ fun PageItem(
         sets.chunkedGrid(columns)
     }
 
-    Card(
+    val bgColor = if (isLocked) Color(0x14808080) else ColorLightYellow
+    val shadowColor = if (isLocked) Color.Gray.copy(alpha = 0.2f) else Color.Gray.copy(alpha = 0.5f)
+    val shape = RoundedCornerShape(AppDimens.Dimens16)
+
+    Box(
         modifier = Modifier
             .padding(AppDimens.Dimens6)
-            .fillMaxWidth(),
-        shape = RoundedCornerShape(AppDimens.Dimens16),
-        elevation = CardDefaults.cardElevation(AppDimens.Dimens4),
-        colors = CardDefaults.cardColors(
-            containerColor = ColorLightYellow
-        )
+            .fillMaxWidth()
     ) {
-        Column {
-
-            PageHeader(page)
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .shadow(
+                    elevation = if (isLocked) AppDimens.Dimens2 else AppDimens.Dimens4,
+                    shape = shape,
+                    ambientColor = shadowColor,
+                    spotColor = shadowColor
+                )
+                .background(bgColor, shape)
+        ) {
+            PageHeader(page, isLocked)
 
             HorizontalDivider(
-                color = Color(0xFFFFCC80),
+                color = if (isLocked) Color.Gray.copy(alpha = 0.3f) else Color(0xFFFFCC80),
                 thickness = AppDimens.Dimens1
             )
 
@@ -88,17 +97,15 @@ fun PageItem(
                         horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens2)
                     ) {
                         row.forEach { set ->
-                            Box(
-                                modifier = Modifier.weight(1f)
-                            ) {
+                            Box(modifier = Modifier.weight(1f)) {
                                 SetItem(
                                     set = set,
                                     onClick = { onSetClick(set) },
-                                    onLongClick = { onSetLongClick(set) }
+                                    onLongClick = { onSetLongClick(set) },
+                                    isLocked = isLocked
                                 )
                             }
                         }
-
                         repeat(columns - row.size) {
                             Spacer(modifier = Modifier.weight(1f))
                         }
@@ -111,7 +118,8 @@ fun PageItem(
 
 @Composable
 fun PageHeader(
-    page: DisplayPages
+    page: DisplayPages,
+    isLocked: Boolean = false
 ) {
     Row(
         modifier = Modifier
@@ -119,21 +127,17 @@ fun PageHeader(
             .padding(AppDimens.Dimens8),
         verticalAlignment = Alignment.CenterVertically
     ) {
-
         Box(
             modifier = Modifier
                 .size(AppDimens.Dimens32)
-                .background(
-                    Color.White,
-                    CircleShape,
-                ),
+                .background(Color.White, CircleShape),
             contentAlignment = Alignment.Center
         ) {
             Icon(
-                imageVector = Icons.AutoMirrored.Outlined.StickyNote2,
+                imageVector = if (isLocked) Icons.Default.Lock else Icons.AutoMirrored.Outlined.StickyNote2,
                 contentDescription = null,
-                tint = ColorYellowOrange,
-                modifier = Modifier.size(AppDimens.Dimens24)
+                tint = if (isLocked) Color.Gray else ColorYellowOrange,
+                modifier = Modifier.size(AppDimens.Dimens20)
             )
         }
 
@@ -142,13 +146,12 @@ fun PageHeader(
                 .weight(1f)
                 .padding(start = AppDimens.Dimens8)
         ) {
-
             Text(
                 text = page.name,
                 style = MaterialTheme.typography.bodyLarge.scaled().copy(
                     fontWeight = FontWeight.Bold,
                     fontFamily = FontFamily(Font(R.font.font_bold)),
-                    color = ColorCoffee
+                    color = if (isLocked) Color.Gray else Color(0xFF5D4037)
                 ),
                 maxLines = 2
             )
@@ -159,14 +162,21 @@ fun PageHeader(
                     style = MaterialTheme.typography.bodySmall.scaled().copy(
                         fontWeight = FontWeight.Medium,
                         fontFamily = FontFamily(Font(R.font.font_medium)),
-                        color = ColorLightCoffee
+                        color = if (isLocked) Color.Gray.copy(alpha = 0.7f) else ColorLightCoffee
                     ),
                     maxLines = 2
                 )
             }
         }
 
-        if (!page.is_active) {
+        if (isLocked) {
+            Icon(
+                imageVector = Icons.Filled.WorkspacePremium,
+                contentDescription = null,
+                tint = Color(0xFFFF9800),
+                modifier = Modifier.size(AppDimens.Dimens16)
+            )
+        } else if (!page.is_active) {
             Image(
                 painter = painterResource(R.drawable.ic_disable),
                 contentDescription = null,
@@ -179,5 +189,3 @@ fun PageHeader(
 fun <T> List<T>.chunkedGrid(columns: Int): List<List<T>> {
     return this.chunked(columns)
 }
-
-

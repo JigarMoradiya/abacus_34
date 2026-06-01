@@ -19,16 +19,10 @@
         android:requestLegacyExternalStorage="true">
         <activity
             android:name=".ui.view.login.LoginDashboardActivity"
-            android:exported="true"
+            android:exported="false"
             android:screenOrientation="portrait"
             android:resizeableActivity="true"
-            android:theme="@style/AppThemeLogin.NoActionBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppThemeLogin.NoActionBar" />
         <activity
             android:name=".ui.view.home.HomeActivity"
             android:exported="true"
@@ -36,8 +30,13 @@
             android:resizeableActivity="true"
             android:screenOrientation="landscape"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            android:theme="@style/AppTheme.NoActionBar"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.view.other.ContactUsActivity"
             android:exported="true"

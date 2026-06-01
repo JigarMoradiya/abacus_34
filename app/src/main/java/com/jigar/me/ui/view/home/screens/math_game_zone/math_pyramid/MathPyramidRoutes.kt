@@ -2,36 +2,49 @@ package com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet
 import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.home.MathPyramidHomeJetpackScreen
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.home.components.MathPyramidViewModel
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.play.MathPyramidPlayJetpackScreen
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
+import com.jigar.me.utils.FreemiumManager
 
 @Composable
 fun MathPyramidHomeRoute(
     homeActivityViewModel: HomeActivityViewModel,
     onStartPlay: (levels: Int, difficulty: String) -> Unit,
-    onPurchase: () -> Unit,
     onBackClick: () -> Unit,
 ) {
     val viewModel: MathPyramidViewModel = hiltViewModel()
     val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
+    val isSubscribed = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
+    var showPaywall by remember { mutableStateOf(false) }
 
     MathPyramidHomeJetpackScreen(
         viewModel = viewModel,
         onStartGame = {
-            if (homeActivityViewModel.isPurchasedForModule(purchasedSKU)) {
+            if (FreemiumManager.gameGate(isSubscribed) == FreemiumManager.GateResult.ALLOW) {
                 val state = viewModel.uiState.value
                 onStartPlay(state.selectedLevel, state.selectedDifficulty.name)
             } else {
-                onPurchase()
+                showPaywall = true
             }
         },
         onBackClick = onBackClick
     )
+
+    if (showPaywall) {
+        FreemiumPaywallBottomSheet(
+            purchasedSKU = purchasedSKU,
+            onDismiss = { showPaywall = false }
+        )
+    }
 }
 
 @Composable

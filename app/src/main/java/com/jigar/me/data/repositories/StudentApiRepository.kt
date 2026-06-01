@@ -31,6 +31,9 @@ class StudentApiRepository @Inject constructor(
     suspend fun getAbacusData(request : FetchAbacusDataRequest) = safeApiCall {
         api.getAbacusData(request)
     }
+    suspend fun getAbacusDataPublic(request : FetchAbacusDataRequest) = safeApiCall {
+        api.getAbacusDataPublic(request)
+    }
     suspend fun appReviewsList() = safeApiCall {
         api.appReviewsList()
     }

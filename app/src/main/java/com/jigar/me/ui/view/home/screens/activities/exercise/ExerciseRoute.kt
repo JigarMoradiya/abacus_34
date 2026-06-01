@@ -40,12 +40,12 @@ import com.jigar.me.utils.extensions.secToCountDown
 fun ExerciseRoute(
     homeActivityViewModel: HomeActivityViewModel,
     onBackClick: () -> Unit,
-    onNavigateToPurchase: () -> Unit,
 ) {
     val viewModel: ExerciseViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
     val isPurchase = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
+    val isLoggedIn = homeActivityViewModel.isUserLoggedIn()
     viewModel.setIsPurchased(isPurchase)
 
     LaunchedEffect(viewModel.abacusCalc.stateVersion) {
@@ -68,11 +68,11 @@ fun ExerciseRoute(
                 Box(modifier = Modifier.weight(1f).windowInsetsPadding(WindowInsets.safeDrawing)) {
                     ExerciseAbacusRow(uiState, viewModel, Modifier) { handleBack() }
                 }
-                ExerciseScreen(uiState, viewModel) { handleBack() }
+                ExerciseScreen(uiState, viewModel, isLoggedIn = isLoggedIn, purchasedSKU = purchasedSKU) { handleBack() }
             }
         } else {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                ExerciseScreen(uiState, viewModel) { handleBack() }
+                ExerciseScreen(uiState, viewModel, isLoggedIn = isLoggedIn, purchasedSKU = purchasedSKU) { handleBack() }
                 ExerciseAbacusRow(uiState, viewModel, Modifier.fillMaxSize()) { handleBack() }
             }
         }
@@ -103,10 +103,6 @@ fun ExerciseRoute(
 
     if (uiState.isLoading) {
         Loader()
-    }
-
-    uiState.navigateToPurchase?.consume {
-        onNavigateToPurchase()
     }
 
     AnimatedVisibility(

@@ -52,12 +52,16 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
 import com.jigar.me.ui.view.home.theme.ButtonType
+import com.jigar.me.utils.FreemiumManager
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ExercisePagerScreen(
     uiState: ExerciseUiState,
     viewModel: ExerciseViewModel,
+    isLoggedIn: Boolean = true,
+    onShowLogin: () -> Unit = {},
+    onShowPaywall: () -> Unit = {},
     onStart: (GridItemModel, Int) -> Unit
 ) {
     val pagerState = rememberPagerState(
@@ -126,6 +130,10 @@ fun ExercisePagerScreen(
                     ExerciseWrapGrid(
                         items = exercise.gridItems,
                         selectedItem = selectedItem,
+                        isItemLocked = { itemIndex ->
+                            val gate = FreemiumManager.exerciseGate(isLoggedIn, uiState.isPurchased, page, itemIndex)
+                            gate != FreemiumManager.GateResult.ALLOW
+                        },
                         onItemSelected = {
                             AudioPlayerManager.playSoundBtnClick()
                             viewModel.onGridItemSelected(page, it)
@@ -162,7 +170,15 @@ fun ExercisePagerScreen(
                     icon = Icons.Default.RocketLaunch,
                     type = ButtonType.ORANGE,
                     onClick = {
-                        selectedItem?.let { onStart(it, page) }
+                        selectedItem?.let { item ->
+                            val itemIdx = exercise.gridItems.indexOfFirst { it.id == item.id }
+                            when (FreemiumManager.exerciseGate(isLoggedIn, uiState.isPurchased, page, itemIdx)) {
+                                FreemiumManager.GateResult.ALLOW -> onStart(item, page)
+                                FreemiumManager.GateResult.REQUIRE_LOGIN -> onShowLogin()
+                                FreemiumManager.GateResult.REQUIRE_LOGIN_THEN_PAYWALL -> onShowLogin()
+                                FreemiumManager.GateResult.REQUIRE_PAYWALL -> onShowPaywall()
+                            }
+                        }
                     }
                 )
             }

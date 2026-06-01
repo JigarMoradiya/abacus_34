@@ -17,11 +17,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -30,16 +33,25 @@ import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumLoginBottomSheet
+import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet
 import com.jigar.me.ui.view.home.screens.activities.exercise.components.pager.ExercisePagerScreen
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseUiState
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseViewModel
-import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.exerciseWidth
 
 @Composable
 fun ExerciseScreen(
-    uiState: ExerciseUiState, viewModel: ExerciseViewModel, onBackClick: () -> Unit) {
+    uiState: ExerciseUiState,
+    viewModel: ExerciseViewModel,
+    isLoggedIn: Boolean = true,
+    purchasedSKU: List<com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails> = emptyList(),
+    onBackClick: () -> Unit
+) {
+    var showPaywall by remember { mutableStateOf(false) }
+    var showLogin by remember { mutableStateOf(false) }
     val curve = if (uiState.isAbacusOnLeftHand) 0.dp else AppDimens.Dimens32
     val nonCurve = if (uiState.isAbacusOnLeftHand) AppDimens.Dimens32 else 0.dp
     val shadowElevation = if (uiState.isAbacusOnLeftHand) AppDimens.Dimens4 else AppDimens.Dimens4
@@ -89,7 +101,13 @@ fun ExerciseScreen(
                 if (uiState.isExerciseStarted) {
                     ExerciseQuestions(uiState,viewModel)
                 } else {
-                    ExercisePagerScreen(uiState, viewModel) { item, index ->
+                    ExercisePagerScreen(
+                        uiState = uiState,
+                        viewModel = viewModel,
+                        isLoggedIn = isLoggedIn,
+                        onShowLogin = { showLogin = true },
+                        onShowPaywall = { showPaywall = true }
+                    ) { _, _ ->
                         viewModel.generateExercise()
                     }
                 }
@@ -97,4 +115,19 @@ fun ExerciseScreen(
         }
     }
 
+    if (showLogin) {
+        FreemiumLoginBottomSheet(
+            showContinueWithoutSaving = true,
+            onLoginSuccess = { showLogin = false; viewModel.generateExercise() },
+            onContinueWithoutSaving = { showLogin = false; viewModel.generateExercise() },
+            onDismiss = { showLogin = false }
+        )
+    }
+
+    if (showPaywall) {
+        FreemiumPaywallBottomSheet(
+            purchasedSKU = purchasedSKU,
+            onDismiss = { showPaywall = false }
+        )
+    }
 }

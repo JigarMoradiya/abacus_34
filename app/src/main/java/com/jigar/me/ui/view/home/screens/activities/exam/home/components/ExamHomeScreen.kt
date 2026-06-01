@@ -1,15 +1,20 @@
 package com.jigar.me.ui.view.home.screens.activities.exam.home.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessTimeFilled
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.RocketLaunch
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -41,7 +46,12 @@ import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.utils.AppConstants
 
 @Composable
-fun ExamHomeScreen(uiState: ExamHomeUiState, viewModel: ExamHomeViewModel, onStartClick: () -> Unit) {
+fun ExamHomeScreen(
+    uiState: ExamHomeUiState,
+    viewModel: ExamHomeViewModel,
+    isSubscribed: Boolean = true,
+    onStartClick: () -> Unit
+) {
     Column(
         modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
     ) {
@@ -85,15 +95,21 @@ fun ExamHomeScreen(uiState: ExamHomeUiState, viewModel: ExamHomeViewModel, onSta
             HorizontalCheckbox(
                 text = stringResource(R.string.Addition), checked = uiState.isAdditionSelected, type = AppConstants.EXAM.isAdditionSelected, onCheckedChange = viewModel::updateValues
             )
-            HorizontalCheckbox(
-                text = stringResource(R.string.Subtraction), checked = uiState.isSubtractionSelected, type = AppConstants.EXAM.isSubtractionSelected, onCheckedChange = viewModel::updateValues
-            )
-            HorizontalCheckbox(
-                text = stringResource(R.string.Multiplication), checked = uiState.isMultiplicationSelected, type = AppConstants.EXAM.isMultiplicationSelected, onCheckedChange = viewModel::updateValues
-            )
-            HorizontalCheckbox(
-                text = stringResource(R.string.Division), checked = uiState.isDivisionSelected, type = AppConstants.EXAM.isDivisionSelected, onCheckedChange = viewModel::updateValues
-            )
+            LockedExamOption(isLocked = !isSubscribed) {
+                HorizontalCheckbox(
+                    text = stringResource(R.string.Subtraction), checked = uiState.isSubtractionSelected, type = AppConstants.EXAM.isSubtractionSelected, onCheckedChange = viewModel::updateValues
+                )
+            }
+            LockedExamOption(isLocked = !isSubscribed) {
+                HorizontalCheckbox(
+                    text = stringResource(R.string.Multiplication), checked = uiState.isMultiplicationSelected, type = AppConstants.EXAM.isMultiplicationSelected, onCheckedChange = viewModel::updateValues
+                )
+            }
+            LockedExamOption(isLocked = !isSubscribed) {
+                HorizontalCheckbox(
+                    text = stringResource(R.string.Division), checked = uiState.isDivisionSelected, type = AppConstants.EXAM.isDivisionSelected, onCheckedChange = viewModel::updateValues
+                )
+            }
         }
         Spacer(modifier = Modifier.height(AppDimens.Dimens16))
 
@@ -116,20 +132,22 @@ fun ExamHomeScreen(uiState: ExamHomeUiState, viewModel: ExamHomeViewModel, onSta
                 type = AppConstants.EXAM.examDifficultyBeginner,
                 onSelected = viewModel::updateRadioValue
             )
-
-            HorizontalRadio(
-                text = stringResource(R.string.intermediate),
-                selected = uiState.selectedDifficulty == AppConstants.EXAM.examDifficultyIntermediate,
-                type = AppConstants.EXAM.examDifficultyIntermediate,
-                onSelected = viewModel::updateRadioValue
-            )
-
-            HorizontalRadio(
-                text = stringResource(R.string.expert),
-                selected = uiState.selectedDifficulty == AppConstants.EXAM.examDifficultyExpert,
-                type = AppConstants.EXAM.examDifficultyExpert,
-                onSelected = viewModel::updateRadioValue
-            )
+            LockedExamOption(isLocked = !isSubscribed) {
+                HorizontalRadio(
+                    text = stringResource(R.string.intermediate),
+                    selected = uiState.selectedDifficulty == AppConstants.EXAM.examDifficultyIntermediate,
+                    type = AppConstants.EXAM.examDifficultyIntermediate,
+                    onSelected = viewModel::updateRadioValue
+                )
+            }
+            LockedExamOption(isLocked = !isSubscribed) {
+                HorizontalRadio(
+                    text = stringResource(R.string.expert),
+                    selected = uiState.selectedDifficulty == AppConstants.EXAM.examDifficultyExpert,
+                    type = AppConstants.EXAM.examDifficultyExpert,
+                    onSelected = viewModel::updateRadioValue
+                )
+            }
         }
 
         Spacer(modifier = Modifier.height(AppDimens.Dimens12))
@@ -140,5 +158,31 @@ fun ExamHomeScreen(uiState: ExamHomeUiState, viewModel: ExamHomeViewModel, onSta
             type = ButtonType.ORANGE,
             onClick = onStartClick
         )
+    }
+}
+
+@Composable
+private fun LockedExamOption(isLocked: Boolean, content: @Composable () -> Unit) {
+    if (!isLocked) {
+        content()
+        return
+    }
+    Box {
+        content()
+        Box(
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .offset(x = AppDimens.Dimens4, y = (-AppDimens.Dimens4))
+                .size(AppDimens.Dimens14)
+                .background(Color(0xFFFF9800), CircleShape),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                imageVector = Icons.Default.Lock,
+                contentDescription = null,
+                tint = Color.White,
+                modifier = Modifier.size(AppDimens.Dimens8)
+            )
+        }
     }
 }

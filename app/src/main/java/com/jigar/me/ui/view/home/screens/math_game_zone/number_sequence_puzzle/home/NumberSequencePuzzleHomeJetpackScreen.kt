@@ -7,6 +7,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -19,14 +20,18 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.HelpOutline
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.HelpOutline
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -41,15 +46,12 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DeviceInfo
@@ -65,6 +67,7 @@ import com.jigar.me.ui.view.home.theme.ButtonType
 @Composable
 fun NumberSequencePuzzleHomeJetpackScreen(
     navController: NavController,
+    isSubscribed: Boolean = true,
     onPuzzleSelect: (Int) -> Unit,
     onBackClick: () -> Unit = {}
 ) {
@@ -119,16 +122,19 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                     PuzzleOptionView(
                         gridSize = 3,
                         color = Color(0xFFF33173),
+                        isLocked = false,
                         onClick = { onPuzzleSelect(3) }
                     )
                     PuzzleOptionView(
                         gridSize = 4,
                         color = ColorYellowOrange,
+                        isLocked = !isSubscribed,
                         onClick = { onPuzzleSelect(4) }
                     )
                     PuzzleOptionView(
                         gridSize = 5,
                         color = Color(0xFF2196F3),
+                        isLocked = !isSubscribed,
                         onClick = { onPuzzleSelect(5) }
                     )
                 }
@@ -153,51 +159,67 @@ fun NumberSequencePuzzleHomeJetpackScreen(
 fun PuzzleOptionView(
     gridSize: Int,
     color: Color,
+    isLocked: Boolean = false,
     onClick: () -> Unit
 ) {
     val boxSize = SudokuHomeIconsBox
+    val displayColor = if (isLocked) Color.Gray.copy(alpha = 0.4f) else color
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.clickable { onClick() }
     ) {
-        Box(
-            modifier = Modifier.size(boxSize)
-        ) {
-            Canvas(modifier = Modifier.matchParentSize()) {
-                drawRoundRect(
-                    color = color,
-                    size = size,
-                    style = Stroke(width = 4f)
-                )
-            }
+        Box(contentAlignment = Alignment.TopEnd) {
+            Box(modifier = Modifier.size(boxSize)) {
+                Canvas(modifier = Modifier.matchParentSize()) {
+                    drawRoundRect(
+                        color = displayColor,
+                        size = size,
+                        style = Stroke(width = 4f)
+                    )
+                }
 
-            val cellSize = with(LocalDensity.current) {
-                (boxSize.toPx() / gridSize).toDp()
-            }
+                val cellSize = with(LocalDensity.current) {
+                    (boxSize.toPx() / gridSize).toDp()
+                }
 
-            Column(
-                verticalArrangement = Arrangement.Top,
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.fillMaxSize()
-            ) {
-                repeat(gridSize) {
-                    Row(
-                        horizontalArrangement = Arrangement.Center,
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        repeat(gridSize) {
-                            Box(
-                                modifier = Modifier
-                                    .size(cellSize)
-                                    .border(
-                                        width = 0.5.dp,
-                                        color = color.copy(alpha = 1f)
-                                    )
-                            )
+                Column(
+                    verticalArrangement = Arrangement.Top,
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    repeat(gridSize) {
+                        Row(
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            repeat(gridSize) {
+                                Box(
+                                    modifier = Modifier
+                                        .size(cellSize)
+                                        .border(width = 0.5.dp, color = displayColor)
+                                )
+                            }
                         }
                     }
+                }
+            }
+
+            if (isLocked) {
+                Box(
+                    modifier = Modifier
+                        .offset(x = AppDimens.Dimens4, y = (-AppDimens.Dimens4))
+                        .size(AppDimens.Dimens18)
+                        .background(Color(0xFFFF9800), CircleShape),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Lock,
+                        contentDescription = null,
+                        tint = Color.White,
+                        modifier = Modifier.size(AppDimens.Dimens10)
+                    )
                 }
             }
         }
@@ -206,7 +228,7 @@ fun PuzzleOptionView(
             text = "$gridSize x $gridSize Puzzle",
             fontFamily = FontFamily(Font(R.font.font_extra_bold)),
             style = MaterialTheme.typography.labelLarge.scaled(),
-            color = color,
+            color = displayColor,
             modifier = Modifier.padding(top = AppDimens.Dimens8)
         )
     }

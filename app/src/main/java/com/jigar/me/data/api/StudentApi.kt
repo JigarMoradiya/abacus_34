@@ -28,6 +28,8 @@ interface StudentApi {
     suspend fun changePlan(@Body request : PurchasedPlanCheckRequest): MainAPIResponse
     @POST("student/get-abacus-set-pages-categories-levels-data")
     suspend fun getAbacusData(@Body request : FetchAbacusDataRequest): MainAPIResponse
+    @POST("student/get-abacus-set-pages-categories-levels-data-public")
+    suspend fun getAbacusDataPublic(@Body request : FetchAbacusDataRequest): MainAPIResponse
     @Multipart
     @POST("app-reviews")
     suspend fun submitReview(

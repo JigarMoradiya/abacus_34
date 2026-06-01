@@ -109,7 +109,7 @@ class LoginHomeViewModel @Inject constructor(
     }
 
     private suspend fun handlePostLogin(data: com.google.gson.JsonObject?) {
-        when (val outcome = postLoginHandler.fetchAbacusDataAndContinue(data)) {
+        when (val outcome = postLoginHandler.fetchProgressSetData(data)) {
             is PostLoginHandler.Outcome.NavigateHome -> {
                 updateState_ { copy(isLoading = false, navigateToHome = ConsumableCommand(Unit)) }
             }

@@ -29,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -45,7 +46,8 @@ import com.jigar.me.utils.AppConstants
 fun SetItem(
     set: Set,
     onClick: () -> Unit,
-    onLongClick: () -> Unit
+    onLongClick: () -> Unit,
+    isLocked: Boolean = false
 ) {
     Box {
 
@@ -53,7 +55,10 @@ fun SetItem(
             shape = RoundedCornerShape(AppDimens.Dimens4),
             elevation = CardDefaults.cardElevation(AppDimens.Dimens2),
             colors = CardDefaults.cardColors(
-                containerColor = setCardColor(set.answer_setting)
+                containerColor = run {
+                    val base = setCardColor(set.answer_setting)
+                    if (isLocked) lerp(base, Color.White, 0.6f) else base
+                }
             ),
             modifier = Modifier
                 .fillMaxWidth()
@@ -100,7 +105,7 @@ fun SetItem(
                         else 0.dp
                     ),
                     style = MaterialTheme.typography.bodyMedium.scaled().copy(
-                        color = Color.White,
+                        color = if (isLocked) Color.Gray.copy(alpha = 0.8f) else Color.White,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily(Font(R.font.font_bold))
                     )

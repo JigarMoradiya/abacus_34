@@ -12,6 +12,11 @@ Java_com_jigar_me_utils_CommonUtils_getOrganizerId(JNIEnv *env,jobject) {
     return env->NewStringUTF(app_secret.c_str());
 }
 extern "C" jstring
+Java_com_jigar_me_utils_CommonUtils_getPublicKey(JNIEnv *env,jobject) {
+    std::string app_secret = "c11b4ad7-f1df-477a-bd08-6a4db9806077";
+    return env->NewStringUTF(app_secret.c_str());
+}
+extern "C" jstring
 Java_com_jigar_me_utils_CommonUtils_getDatabaseKey(JNIEnv *env,jobject) {
     std::string app_secret = "YzI5dFpYZG9aWEpsWTNKaFkydHdhV2R3WVhKaFozSmhjR2hqYUdGdVoyVjZaWEp2WW1WdVpXRjBhR2hoWW1sMGIzYz0=";
     return env->NewStringUTF(app_secret.c_str());

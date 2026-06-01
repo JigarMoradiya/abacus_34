@@ -59,8 +59,7 @@ class LoginViewModel @Inject constructor(
 
         viewModelScope.launch {
             updateState_ { copy(isLoading = true) }
-            val response = apiRepository.login(LoginRequest(email, password))
-            when (response) {
+            when (val response = apiRepository.login(LoginRequest(email, password))) {
                 is Resource.Success -> {
                     if (response.value.status == AppConstants.APIStatus.SUCCESS) {
                         handlePostLogin(response.value.data)
@@ -77,7 +76,7 @@ class LoginViewModel @Inject constructor(
     }
 
     private suspend fun handlePostLogin(data: JsonObject?) {
-        when (val outcome = postLoginHandler.fetchAbacusDataAndContinue(data)) {
+        when (val outcome = postLoginHandler.fetchProgressSetData(data)) {
             is PostLoginHandler.Outcome.NavigateHome -> {
                 updateState_ { copy(isLoading = false, navigateToHome = ConsumableCommand(Unit)) }
             }

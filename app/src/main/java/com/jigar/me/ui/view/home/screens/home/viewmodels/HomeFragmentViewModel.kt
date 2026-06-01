@@ -97,7 +97,7 @@ class HomeFragmentViewModel @Inject constructor(
                         onEachEmit = {
                             when (it) {
                                 AppConstants.APIStatus.SUCCESS -> {
-                                    checkFreeTrial()
+//                                    checkFreeTrial()
                                 }
                                 AppConstants.APIStatus.ERROR_CODE_OTHER_STUDENT_IS_ASSOCIATED_WITH_THIS_ORDER,AppConstants.APIStatus.ERROR_CODE_THIS_STUDENT_IS_ASSOCIATED_WITH_OTHER_ORDER -> {
                                     updateState_ { copy(isShowPurchasedConflictPopup = true, purchasedConflictPopupType = it) }
@@ -109,7 +109,7 @@ class HomeFragmentViewModel @Inject constructor(
                     ).catch {}.collect()
                 }
             } else {
-                checkFreeTrial()
+//                checkFreeTrial()
             }
         }
     }
@@ -122,7 +122,7 @@ class HomeFragmentViewModel @Inject constructor(
                 onEachEmit = { },
                 onCompletion = {
                     updateState_ { copy(isLoading = false) }
-                    checkFreeTrial()
+//                    checkFreeTrial()
                 },
                 onError = {
                     updateState_ { copy(isLoading = false) }
@@ -131,33 +131,33 @@ class HomeFragmentViewModel @Inject constructor(
         }
     }
 
-    private fun checkFreeTrial() {
-        prefs.setUserInFreeTrial(false)
-
-        val manualFreeTrialDays = prefs.getCustomParamInt(AppConstants.RemoteConfig.manualFreeTrialDays,0)
-        if (manualFreeTrialDays > 0){
-            val purchasedSKU = state().purchasedList
-            val isPurchased = CommonUtils.checkPurchaseForExerciseExamCCM(prefs, purchasedSKU)
-            if (isPurchased) {
-                updateState_ { copy(checkNotificationPermission = ConsumableCommand(Unit)) }
-                return
-            }
-
-            val remainingDays = prefs.getCustomParamInt(Constants.free_trial_remaining_days, 0)
-            prefs.setUserInFreeTrial(remainingDays > 0)
-            val lastChecked = prefs.getCustomParamInt(Constants.free_trial_remaining_days_last_checked, -1)
-            if (lastChecked != remainingDays || remainingDays == 0) {
-                prefs.setCustomParamInt(Constants.free_trial_remaining_days_last_checked,remainingDays)
-                val discountPer = prefs.getCustomParamInt(AppConstants.RemoteConfig.discountPer,0)
-                val discountPerLifetime = prefs.getCustomParamInt(AppConstants.RemoteConfig.discountPerLifeTime,0)
-                updateState_ { copy(isShowFreeTrialPopup = true, freeTrialParam = FreeTrialParam(remainingDays,discountPer,discountPerLifetime,manualFreeTrialDays)) }
-            } else {
-                updateState_ { copy(checkNotificationPermission = ConsumableCommand(Unit)) }
-            }
-        }else{
-            updateState_ { copy(checkNotificationPermission = ConsumableCommand(Unit)) }
-        }
-    }
+//    private fun checkFreeTrial() {
+//        prefs.setUserInFreeTrial(false)
+//
+//        val manualFreeTrialDays = prefs.getCustomParamInt(AppConstants.RemoteConfig.manualFreeTrialDays,0)
+//        if (manualFreeTrialDays > 0){
+//            val purchasedSKU = state().purchasedList
+//            val isPurchased = CommonUtils.checkPurchaseForExerciseExamCCM(prefs, purchasedSKU)
+//            if (isPurchased) {
+//                updateState_ { copy(checkNotificationPermission = ConsumableCommand(Unit)) }
+//                return
+//            }
+//
+//            val remainingDays = prefs.getCustomParamInt(Constants.free_trial_remaining_days, 0)
+//            prefs.setUserInFreeTrial(remainingDays > 0)
+//            val lastChecked = prefs.getCustomParamInt(Constants.free_trial_remaining_days_last_checked, -1)
+//            if (lastChecked != remainingDays || remainingDays == 0) {
+//                prefs.setCustomParamInt(Constants.free_trial_remaining_days_last_checked,remainingDays)
+//                val discountPer = prefs.getCustomParamInt(AppConstants.RemoteConfig.discountPer,0)
+//                val discountPerLifetime = prefs.getCustomParamInt(AppConstants.RemoteConfig.discountPerLifeTime,0)
+//                updateState_ { copy(isShowFreeTrialPopup = true, freeTrialParam = FreeTrialParam(remainingDays,discountPer,discountPerLifetime,manualFreeTrialDays)) }
+//            } else {
+//                updateState_ { copy(checkNotificationPermission = ConsumableCommand(Unit)) }
+//            }
+//        }else{
+//            updateState_ { copy(checkNotificationPermission = ConsumableCommand(Unit)) }
+//        }
+//    }
 
     private fun getDisplayMenuList(): List<String> {
         val menuListStr = prefs.getCustomParam(AppConstants.RemoteConfig.displayMenuList, "")

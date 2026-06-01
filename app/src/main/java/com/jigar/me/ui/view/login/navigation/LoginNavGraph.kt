@@ -25,11 +25,6 @@ fun LoginNavGraph(
     ) {
         composable(route = LoginRoute.Splash.route) {
             SplashScreen(
-                onNavigateToLoginHome = {
-                    navController.navigate(LoginRoute.LoginHome.route) {
-                        popUpTo(LoginRoute.Splash.route) { inclusive = true }
-                    }
-                },
                 onNavigateToHome = onNavigateToHome,
                 onFinishActivity = onFinishActivity,
             )

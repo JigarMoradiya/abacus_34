@@ -2,6 +2,8 @@ package com.jigar.me.ui.view.home.navigation
 
 sealed class RouteNavigation(val route: String) {
 
+    object Splash : RouteNavigation("Splash")
+
     object Home : RouteNavigation("Home")
 
     object AbacusFreeMode : RouteNavigation("AbacusFreeMode")

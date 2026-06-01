@@ -38,6 +38,7 @@ import com.jigar.me.ui.view.home.screens.abacus_free_mode.components.AbacusFreeM
 import com.jigar.me.ui.view.home.screens.abacus_free_mode.viewmodel.AbacusFreeModeViewModel
 import com.jigar.me.ui.view.home.screens.abacus_practice.level_list.LevelCategoryScreen
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
+import com.jigar.me.ui.view.login.screens.splash.SplashScreen
 
 @Composable
 fun HomeNavGraph(
@@ -45,6 +46,7 @@ fun HomeNavGraph(
     navController: NavHostController = rememberNavController(),
     initialRoute: String? = null,
     onInitialRouteHandled: () -> Unit = {},
+    onFinishActivity: () -> Unit = {},
 ) {
     LaunchedEffect(initialRoute) {
         if (!initialRoute.isNullOrEmpty() && initialRoute != RouteNavigation.Home.route) {
@@ -55,8 +57,19 @@ fun HomeNavGraph(
 
     NavHost(
         navController = navController,
-        startDestination = RouteNavigation.Home.route
+        startDestination = RouteNavigation.Splash.route
     ) {
+        composable(route = RouteNavigation.Splash.route) {
+            SplashScreen(
+                onNavigateToHome = {
+                    navController.navigate(RouteNavigation.Home.route) {
+                        popUpTo(RouteNavigation.Splash.route) { inclusive = true }
+                    }
+                },
+                onFinishActivity = onFinishActivity
+            )
+        }
+
         composable(route = RouteNavigation.Home.route) {
             HomeScreen(
                 onNavigateToLevelCategory = { levelId ->
@@ -134,9 +147,6 @@ fun HomeNavGraph(
                 onNavigateToList = { setId ->
                     navController.navigate(RouteNavigation.AbacusList.list(setId))
                 },
-                onNavigateToPurchase = {
-                    navController.navigate(RouteNavigation.Purchase.route)
-                },
             )
         }
 
@@ -187,7 +197,6 @@ fun HomeNavGraph(
                 onPuzzleSelect = { type ->
                     navController.navigate(RouteNavigation.NumberSequencePuzzlePlay.play(type))
                 },
-                onPurchase = { navController.navigate(RouteNavigation.Purchase.route) },
                 onBackClick = { navController.popBackStack() }
             )
         }
@@ -213,8 +222,7 @@ fun HomeNavGraph(
                     navController.navigate(
                         RouteNavigation.SudokuPlay.play(size, difficulty, isNewPuzzle)
                     )
-                },
-                onPurchase = { navController.navigate(RouteNavigation.Purchase.route) }
+                }
             )
         }
 
@@ -235,7 +243,6 @@ fun HomeNavGraph(
                 onStartPlay = { levels, difficulty ->
                     navController.navigate(RouteNavigation.MathPyramidPlay.play(levels, difficulty))
                 },
-                onPurchase = { navController.navigate(RouteNavigation.Purchase.route) },
                 onBackClick = { navController.popBackStack() }
             )
         }
@@ -262,7 +269,6 @@ fun HomeNavGraph(
                 onStartPlay = { level, diff ->
                     navController.navigate(RouteNavigation.TargetNumberPlay.play(level, diff))
                 },
-                onPurchase = { navController.navigate(RouteNavigation.Purchase.route) },
                 onBackClick = { navController.popBackStack() }
             )
         }
@@ -318,6 +324,7 @@ fun HomeNavGraph(
 
         composable(route = RouteNavigation.ReportHistory.route) {
             ReportHistoryRoute(
+                homeActivityViewModel = homeActivityViewModel,
                 onBackClick = { navController.popBackStack() }
             )
         }
@@ -331,8 +338,7 @@ fun HomeNavGraph(
         composable(route = RouteNavigation.Exercise.route) {
             ExerciseRoute(
                 homeActivityViewModel = homeActivityViewModel,
-                onBackClick = { navController.popBackStack() },
-                onNavigateToPurchase = { navController.navigate(RouteNavigation.Purchase.route) }
+                onBackClick = { navController.popBackStack() }
             )
         }
 
@@ -340,8 +346,7 @@ fun HomeNavGraph(
             ExamHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onBackClick = { navController.popBackStack() },
-                onStartPlay = { navController.navigate(RouteNavigation.ExamPlay.route) },
-                onPurchase = { navController.navigate(RouteNavigation.Purchase.route) }
+                onStartPlay = { navController.navigate(RouteNavigation.ExamPlay.route) }
             )
         }
 
@@ -355,8 +360,7 @@ fun HomeNavGraph(
             CCMHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onBackClick = { navController.popBackStack() },
-                onStartPlay = { navController.navigate(RouteNavigation.CCMPlay.route) },
-                onPurchase = { navController.navigate(RouteNavigation.Purchase.route) }
+                onStartPlay = { navController.navigate(RouteNavigation.CCMPlay.route) }
             )
         }
 
