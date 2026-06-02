@@ -44,6 +44,7 @@ fun MyAccountRoute(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current
     var showLoginSheet by remember { mutableStateOf(false) }
+    var showLoginSheetForHistory by remember { mutableStateOf(false) }
 
     Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         BackButtonWithText(
@@ -56,7 +57,10 @@ fun MyAccountRoute(
                 "faqs" -> onNavigateToFAQs()
                 "subscription" -> onNavigateToPurchase()
                 "setting" -> onNavigateToSettings()
-                "report_history" -> onNavigateToReportHistory()
+                "report_history" -> {
+                    if (uiState.isLoggedIn) onNavigateToReportHistory()
+                    else showLoginSheetForHistory = true
+                }
                 "about_app" -> onNavigateToWhatsLearning()
                 "rate_us_on_the_play_store" -> {
                     context.openURL("https://play.google.com/store/apps/details?id=${context.packageName}")
@@ -85,6 +89,18 @@ fun MyAccountRoute(
                 onNavigateToCredentials()
             },
             onDismiss = { showLoginSheet = false }
+        )
+    }
+
+    if (showLoginSheetForHistory) {
+        FreemiumLoginBottomSheet(
+            showContinueWithoutSaving = false,
+            onLoginSuccess = {
+                showLoginSheetForHistory = false
+                viewModel.onLoginSuccess()
+                onNavigateToReportHistory()
+            },
+            onDismiss = { showLoginSheetForHistory = false }
         )
     }
 

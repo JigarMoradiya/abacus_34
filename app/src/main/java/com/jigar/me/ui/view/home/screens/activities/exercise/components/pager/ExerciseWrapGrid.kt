@@ -45,6 +45,7 @@ fun ExerciseWrapGrid(
     items: List<GridItemModel>,
     selectedItem: GridItemModel?,
     isItemLocked: (itemIndex: Int) -> Boolean = { false },
+    onLockedItemClick: () -> Unit = {},
     onItemSelected: (GridItemModel) -> Unit
 ) {
     val rows = 2
@@ -71,7 +72,10 @@ fun ExerciseWrapGrid(
                             index = index,
                             isSelected = isSelected,
                             isLocked = isLocked,
-                            onClick = { if (!isLocked) onItemSelected(item) }
+                            onClick = {
+                                if (isLocked) onLockedItemClick()
+                                else onItemSelected(item)
+                            }
                         )
                     }
                 }

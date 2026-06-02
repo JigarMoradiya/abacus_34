@@ -131,9 +131,9 @@ fun ExercisePagerScreen(
                         items = exercise.gridItems,
                         selectedItem = selectedItem,
                         isItemLocked = { itemIndex ->
-                            val gate = FreemiumManager.exerciseGate(isLoggedIn, uiState.isPurchased, page, itemIndex)
-                            gate != FreemiumManager.GateResult.ALLOW
+                            FreemiumManager.exerciseGate(isLoggedIn, uiState.isPurchased, page, itemIndex) == FreemiumManager.GateResult.REQUIRE_PAYWALL
                         },
+                        onLockedItemClick = { onShowPaywall() },
                         onItemSelected = {
                             AudioPlayerManager.playSoundBtnClick()
                             viewModel.onGridItemSelected(page, it)

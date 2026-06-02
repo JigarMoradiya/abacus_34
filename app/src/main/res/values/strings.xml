@@ -607,6 +607,7 @@
     <string name="login_credentials_old_user_note">For users registered in an earlier version of the app</string>
     <string name="login_to_save_results">Login to save your results and track your progress!</string>
     <string name="login_to_track_progress">Login to track your progress!</string>
+    <string name="exercise_login_subtitle">Sign in to save your results and review them anytime</string>
     <string name="register">Register</string>
     <string name="otp_verification">OTP Verification</string>
     <string name="verify">Verify</string>

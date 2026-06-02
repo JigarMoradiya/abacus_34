@@ -117,7 +117,7 @@ fun ExerciseRoute(
     if (showLogin) {
         FreemiumLoginBottomSheet(
             showContinueWithoutSaving = true,
-            subtitle = stringResource(R.string.login_to_save_results),
+            subtitle = stringResource(R.string.exercise_login_subtitle),
             onLoginSuccess = { showLogin = false; viewModel.generateExercise() },
             onContinueWithoutSaving = { showLogin = false; viewModel.generateExerciseWithoutSaving() },
             onDismiss = { showLogin = false }

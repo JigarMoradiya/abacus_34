@@ -41,7 +41,8 @@ object FreemiumManager {
         }
     }
 
-    // Exercise: page 0, items 0 and 1 are free — no login or subscription required.
+    // Exercise: page 0, items 0 and 1 are free (accessible without subscription).
+    // Login is required to save results; guest can proceed without saving.
     fun exerciseGate(
         isLoggedIn: Boolean,
         isSubscribed: Boolean,
@@ -51,7 +52,8 @@ object FreemiumManager {
         if (isSubscribed) return GateResult.ALLOW
         val isFreeItem = page == 0 && itemIndex < 2
         return when {
-            isFreeItem -> GateResult.ALLOW
+            isFreeItem && isLoggedIn -> GateResult.ALLOW
+            isFreeItem && !isLoggedIn -> GateResult.REQUIRE_LOGIN
             else -> GateResult.REQUIRE_PAYWALL
         }
     }
