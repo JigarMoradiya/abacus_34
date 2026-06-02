@@ -41,8 +41,19 @@ class ExerciseViewModel @Inject constructor(
     fun setIsPurchased(isPurchase : Boolean){
         updateState_ { copy(isPurchased = isPurchase) }
     }
+    fun generateExerciseWithoutSaving() {
+        updateState_ { copy(saveResults = false) }
+        generateExercise()
+    }
+
     fun generateExercise() {
-        if (!state().isPurchased){
+        val page = state().currentPage
+        val selectedItem = state().selectedItems[page]
+        val itemIdx = state().exercises.getOrNull(page)?.gridItems
+            ?.indexOfFirst { it.id == selectedItem?.id } ?: 0
+        val isFreeItem = page == 0 && itemIdx < 2
+
+        if (!state().isPurchased && !isFreeItem) {
             updateState_ { copy(navigateToPurchase = ConsumableCommand(Unit)) }
             return
         }
@@ -62,8 +73,8 @@ class ExerciseViewModel @Inject constructor(
             abacusCalc.resetAbacusData()
 
             updateState_ {
-                copy(exerciseQuestionList = exerciseList, isExerciseStarted = true, currentQueIndex = 0,elapsedSeconds = item.maxTime,
-                    isShowCompletePopup = false, totalCorrect = 0) // this param use when re generate exercise
+                copy(exerciseQuestionList = exerciseList, isExerciseStarted = true, currentQueIndex = 0, elapsedSeconds = item.maxTime,
+                    isShowCompletePopup = false, totalCorrect = 0)
             }
             timerJob?.cancel()
             startTimer()
@@ -73,7 +84,7 @@ class ExerciseViewModel @Inject constructor(
     fun closeExercise() {
         abacusCalc.resetAbacusData()
         updateState_ {
-            copy(isExerciseStarted = false, isShowCompletePopup = false,isLeavePage = false)
+            copy(isExerciseStarted = false, isShowCompletePopup = false, isLeavePage = false, saveResults = true)
         }
     }
 
@@ -232,11 +243,11 @@ class ExerciseViewModel @Inject constructor(
             }
             questions = questionsList
         }
-        if (BuildConfig.DEBUG){
+        if (BuildConfig.DEBUG || !state().saveResults) {
             updateState_ {
-                copy(submitExerciseRequest = submitExamRequest,isShowCompletePopup = true)
+                copy(submitExerciseRequest = submitExamRequest, isShowCompletePopup = true)
             }
-        }else{
+        } else {
             submitExamApi(submitExamRequest)
         }
     }

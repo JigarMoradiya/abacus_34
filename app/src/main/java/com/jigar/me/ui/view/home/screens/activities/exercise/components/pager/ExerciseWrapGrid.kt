@@ -33,6 +33,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.activities.exercise.exercise_generator.GridItemModel
@@ -157,7 +158,7 @@ fun KidsGridItem(
         if (isLocked) {
             Box(
                 modifier = Modifier
-                    .offset(x = AppDimens.Dimens4, y = (-AppDimens.Dimens4))
+                    .offset(x = 0.dp, y = (-AppDimens.Dimens2))
                     .size(AppDimens.Dimens10)
                     .background(Color(0xFFFF9800), CircleShape),
                 contentAlignment = Alignment.Center

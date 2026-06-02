@@ -49,7 +49,8 @@ class AbacusDoPracticeViewModel @Inject constructor(
 
     override val TAG = "AbacusDoPracticeViewModel"
 
-    override fun getInitialState() = AbacusDoPracticeUiState()
+    private val saveResults: Boolean = savedStateHandle.get<Boolean>("saveResults") ?: true
+    override fun getInitialState() = AbacusDoPracticeUiState(saveResults = saveResults)
     val setId: String? = savedStateHandle["setId"]
     private var timerJob: Job? = null // for timer of set
     init {
@@ -485,7 +486,17 @@ class AbacusDoPracticeViewModel @Inject constructor(
                         retry_count = retryCounts
 
                         is_set_completed = true
-                        submitExamApi(submitExamRequest)
+                        if (!saveResults) {
+                            setProgress?.let {
+                                it.is_set_completed = true
+                                it.latest_abacus_id = null
+                                if (setDetail?.show_time_setting == true) it.total_time_taken = (state().currentSetTime ?: 0L).toInt()
+                                updateProgress(it)
+                            }
+                            updateState_ { copy(submitExerciseRequest = submitExamRequest, isShowCompletePopup = true) }
+                        } else {
+                            submitExamApi(submitExamRequest)
+                        }
                     }
                 }else{ // update user answer only and go next abacus
                     changeAbacus()
@@ -511,7 +522,17 @@ class AbacusDoPracticeViewModel @Inject constructor(
                         abacus_id = null
                         set_id = setId
                         type = setDetail?.answer_setting
-                        submitExamApi(submitExamRequest)
+                        if (!saveResults) {
+                            setProgress?.let {
+                                it.is_set_completed = true
+                                it.latest_abacus_id = null
+                                if (setDetail?.show_time_setting == true) it.total_time_taken = (state().currentSetTime ?: 0L).toInt()
+                                updateProgress(it)
+                            }
+                            updateState_ { copy(submitExerciseRequest = submitExamRequest, isShowCompletePopup = true) }
+                        } else {
+                            submitExamApi(submitExamRequest)
+                        }
                     }
                 }else{ // update abacus index on database
                     changeAbacus()
@@ -568,7 +589,7 @@ class AbacusDoPracticeViewModel @Inject constructor(
                 val submitExamRequest = SubmitAllExamDataRequest()
                 submitExamRequest.apply {
                     retry_count = retryCounts
-                    if (state().isShowSubmitAnswer == false){
+                    if (state().isShowSubmitAnswer == false && saveResults){
                         if (setDetail?.show_time_setting == true){
                             total_time_taken = (state().currentSetTime?:0L).toInt()
                         }

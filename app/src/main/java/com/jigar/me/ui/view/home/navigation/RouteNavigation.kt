@@ -16,8 +16,8 @@ sealed class RouteNavigation(val route: String) {
         fun abacusSet(levelCategoryId: String,name : String): String = "AbacusSet/$levelCategoryId/$name"
     }
 
-    object AbacusDoPractice : RouteNavigation("AbacusDoPractice/{setId}") {
-        fun doPractice(setId: String): String = "AbacusDoPractice/$setId"
+    object AbacusDoPractice : RouteNavigation("AbacusDoPractice/{setId}/{saveResults}") {
+        fun doPractice(setId: String, saveResults: Boolean = true): String = "AbacusDoPractice/$setId/$saveResults"
     }
 
     object AbacusList : RouteNavigation("AbacusList/{setId}") {
@@ -64,7 +64,9 @@ sealed class RouteNavigation(val route: String) {
     object Exercise : RouteNavigation("Exercise")
 
     object ExamHome : RouteNavigation("ExamHome")
-    object ExamPlay : RouteNavigation("ExamPlay")
+    object ExamPlay : RouteNavigation("ExamPlay/{saveResults}") {
+        fun play(saveResults: Boolean = true): String = "ExamPlay/$saveResults"
+    }
 
     object CCMHome : RouteNavigation("CCMHome")
     object CCMPlay : RouteNavigation("CCMPlay")

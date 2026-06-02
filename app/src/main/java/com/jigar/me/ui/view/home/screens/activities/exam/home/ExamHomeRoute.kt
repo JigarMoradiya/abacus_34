@@ -30,6 +30,7 @@ fun ExamHomeRoute(
     homeActivityViewModel: HomeActivityViewModel,
     onBackClick: () -> Unit,
     onStartPlay: () -> Unit,
+    onStartPlayWithoutSaving: () -> Unit = onStartPlay,
 ) {
     val viewModel: ExamHomeViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -73,8 +74,9 @@ fun ExamHomeRoute(
     if (showLogin) {
         FreemiumLoginBottomSheet(
             showContinueWithoutSaving = true,
+            subtitle = stringResource(R.string.login_to_save_results),
             onLoginSuccess = { showLogin = false; onStartPlay() },
-            onContinueWithoutSaving = { showLogin = false; onStartPlay() },
+            onContinueWithoutSaving = { showLogin = false; onStartPlayWithoutSaving() },
             onDismiss = { showLogin = false }
         )
     }

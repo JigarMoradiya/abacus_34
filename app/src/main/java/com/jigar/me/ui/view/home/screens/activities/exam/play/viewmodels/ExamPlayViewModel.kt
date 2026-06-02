@@ -16,6 +16,7 @@ import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.toQ
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.utils.extensions.isNetworkAvailable
+import androidx.lifecycle.SavedStateHandle
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Job
@@ -29,12 +30,14 @@ import javax.inject.Inject
 class ExamPlayViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val prefs: AppPreferencesHelper,
-    private val submitAllExamUseCase: SubmitAllExamUseCase
-) : StatefulViewModelAbacus<ExamPlayUiState>(prefs = prefs,numberOfColumns = 3) {
+    private val submitAllExamUseCase: SubmitAllExamUseCase,
+    savedStateHandle: SavedStateHandle,
+) : StatefulViewModelAbacus<ExamPlayUiState>(prefs = prefs, numberOfColumns = 3) {
 
     override val TAG = "ExamPlayViewModel"
     private var timerJob: Job? = null
-    override fun getInitialState() = ExamPlayUiState()
+    private val saveResults: Boolean = savedStateHandle.get<Boolean>("saveResults") ?: true
+    override fun getInitialState() = ExamPlayUiState(saveResults = saveResults)
 
     init {
         generateExam()
@@ -129,13 +132,13 @@ class ExamPlayViewModel @Inject constructor(
             }
             questions = questionsList
         }
-//        if (BuildConfig.DEBUG){
-//            updateState_ {
-//                copy(submitExamRequest = submitExamRequest,isShowCompletePopup = true)
-//            }
-//        }else{
+        if (!saveResults) {
+            updateState_ {
+                copy(submitExamRequest = submitExamRequest, isShowCompletePopup = true)
+            }
+        } else {
             submitExamApi(submitExamRequest)
-//        }
+        }
     }
 
     fun submitExamApi(submitExamRequest : SubmitAllExamDataRequest) = viewModelScope.launch {

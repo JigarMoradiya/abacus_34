@@ -32,6 +32,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -104,7 +105,7 @@ fun FreemiumLoginBottomSheet(
                 }
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        text = "Login Required",
+                        text = stringResource(R.string.login_required),
                         style = MaterialTheme.typography.titleSmall.scaled().copy(
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
@@ -112,9 +113,9 @@ fun FreemiumLoginBottomSheet(
                         )
                     )
                     Text(
-                        text = subtitle ?: if (showContinueWithoutSaving) "Sign in to save your results"
-                               else "Sign in to access this feature",
-                        style = MaterialTheme.typography.labelSmall.scaled().copy(
+                        text = subtitle ?: if (showContinueWithoutSaving) stringResource(R.string.login_to_save_results)
+                               else stringResource(R.string.login_is_required_to_access_this_feature),
+                        style = MaterialTheme.typography.labelMedium.scaled().copy(
                             fontFamily = FontFamily(Font(R.font.font_regular)),
                             color = Color.Black.copy(alpha = 0.6f)
                         ),
@@ -126,7 +127,7 @@ fun FreemiumLoginBottomSheet(
             Spacer(Modifier.size(AppDimens.Dimens12))
 
             LoginPillButtonImage(
-                text = "Sign in with Google",
+                text = stringResource(R.string.sign_in_with_google),
                 iconRes = R.drawable.ic_google,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -137,8 +138,8 @@ fun FreemiumLoginBottomSheet(
             if (showContinueWithoutSaving && onContinueWithoutSaving != null) {
                 Spacer(Modifier.size(AppDimens.Dimens8))
                 Text(
-                    text = "Continue without saving",
-                    style = MaterialTheme.typography.labelSmall.scaled().copy(
+                    text = stringResource(R.string.continue_without_saving),
+                    style = MaterialTheme.typography.labelMedium.scaled().copy(
                         fontWeight = FontWeight.Medium,
                         fontFamily = FontFamily(Font(R.font.font_medium)),
                         color = Color.Gray,
@@ -171,7 +172,7 @@ fun FreemiumLoginBottomSheet(
                     )
                     Spacer(Modifier.size(AppDimens.Dimens6))
                     Text(
-                        text = context.getString(R.string.login_with_credentials),
+                        text = stringResource(R.string.login_with_credentials),
                         style = MaterialTheme.typography.labelSmall.scaled().copy(
                             fontWeight = FontWeight.SemiBold,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
@@ -181,7 +182,7 @@ fun FreemiumLoginBottomSheet(
                 }
                 Spacer(Modifier.size(AppDimens.Dimens4))
                 Text(
-                    text = context.getString(R.string.login_credentials_old_user_note),
+                    text = stringResource(R.string.login_credentials_old_user_note),
                     style = MaterialTheme.typography.labelSmall.scaled().copy(
                         fontFamily = FontFamily(Font(R.font.font_regular)),
                         color = Color.Gray

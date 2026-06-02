@@ -147,8 +147,8 @@ fun HomeNavGraph(
             SetScreen(
                 homeActivityViewModel = homeActivityViewModel,
                 onBackClick = { navController.popBackStack() },
-                onNavigateToDoPractice = { setId ->
-                    navController.navigate(RouteNavigation.AbacusDoPractice.doPractice(setId))
+                onNavigateToDoPractice = { setId, saveResults ->
+                    navController.navigate(RouteNavigation.AbacusDoPractice.doPractice(setId, saveResults))
                 },
                 onNavigateToList = { setId ->
                     navController.navigate(RouteNavigation.AbacusList.list(setId))
@@ -159,7 +159,8 @@ fun HomeNavGraph(
         composable(
             route = RouteNavigation.AbacusDoPractice.route,
             arguments = listOf(
-                navArgument("setId") { type = NavType.StringType }
+                navArgument("setId") { type = NavType.StringType },
+                navArgument("saveResults") { type = NavType.BoolType; defaultValue = true }
             )
         ) {
             AbacusDoPracticeRoute(
@@ -367,11 +368,15 @@ fun HomeNavGraph(
             ExamHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onBackClick = { navController.popBackStack() },
-                onStartPlay = { navController.navigate(RouteNavigation.ExamPlay.route) }
+                onStartPlay = { navController.navigate(RouteNavigation.ExamPlay.play(true)) },
+                onStartPlayWithoutSaving = { navController.navigate(RouteNavigation.ExamPlay.play(false)) }
             )
         }
 
-        composable(route = RouteNavigation.ExamPlay.route) {
+        composable(
+            route = RouteNavigation.ExamPlay.route,
+            arguments = listOf(navArgument("saveResults") { type = NavType.BoolType; defaultValue = true })
+        ) {
             ExamPlayRoute(
                 onBackClick = { navController.popBackStack() }
             )

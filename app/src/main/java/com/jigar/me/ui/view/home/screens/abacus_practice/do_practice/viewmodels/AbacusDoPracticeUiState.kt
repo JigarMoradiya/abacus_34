@@ -34,5 +34,6 @@ data class AbacusDoPracticeUiState(
     val isNextButtonEnable: Boolean = false,
     val submitExerciseRequest : SubmitAllExamDataRequest? = null,
 
-    val error: Int? = null
+    val error: Int? = null,
+    val saveResults: Boolean = true,
 )

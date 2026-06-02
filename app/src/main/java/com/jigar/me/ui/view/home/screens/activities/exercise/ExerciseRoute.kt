@@ -17,6 +17,9 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -30,6 +33,8 @@ import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.Exercise
 import com.jigar.me.ui.view.home.common_ui.Loader
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsLabel
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumLoginBottomSheet
+import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.home.screens.reports.dialogs.ExerciseExamCompleteResultDialog
 import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
@@ -47,6 +52,8 @@ fun ExerciseRoute(
     val isPurchase = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
     val isLoggedIn = homeActivityViewModel.isUserLoggedIn()
     viewModel.setIsPurchased(isPurchase)
+    var showPaywall by remember { mutableStateOf(false) }
+    var showLogin by remember { mutableStateOf(false) }
 
     LaunchedEffect(viewModel.abacusCalc.stateVersion) {
         viewModel.handleMatch()
@@ -68,11 +75,13 @@ fun ExerciseRoute(
                 Box(modifier = Modifier.weight(1f).windowInsetsPadding(WindowInsets.safeDrawing)) {
                     ExerciseAbacusRow(uiState, viewModel, Modifier) { handleBack() }
                 }
-                ExerciseScreen(uiState, viewModel, isLoggedIn = isLoggedIn, purchasedSKU = purchasedSKU) { handleBack() }
+                ExerciseScreen(uiState, viewModel, isLoggedIn = isLoggedIn,
+                    onShowLogin = { showLogin = true }, onShowPaywall = { showPaywall = true }) { handleBack() }
             }
         } else {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                ExerciseScreen(uiState, viewModel, isLoggedIn = isLoggedIn, purchasedSKU = purchasedSKU) { handleBack() }
+                ExerciseScreen(uiState, viewModel, isLoggedIn = isLoggedIn,
+                    onShowLogin = { showLogin = true }, onShowPaywall = { showPaywall = true }) { handleBack() }
                 ExerciseAbacusRow(uiState, viewModel, Modifier.fillMaxSize()) { handleBack() }
             }
         }
@@ -103,6 +112,23 @@ fun ExerciseRoute(
 
     if (uiState.isLoading) {
         Loader()
+    }
+
+    if (showLogin) {
+        FreemiumLoginBottomSheet(
+            showContinueWithoutSaving = true,
+            subtitle = stringResource(R.string.login_to_save_results),
+            onLoginSuccess = { showLogin = false; viewModel.generateExercise() },
+            onContinueWithoutSaving = { showLogin = false; viewModel.generateExerciseWithoutSaving() },
+            onDismiss = { showLogin = false }
+        )
+    }
+
+    if (showPaywall) {
+        FreemiumPaywallBottomSheet(
+            purchasedSKU = purchasedSKU,
+            onDismiss = { showPaywall = false }
+        )
     }
 
     AnimatedVisibility(

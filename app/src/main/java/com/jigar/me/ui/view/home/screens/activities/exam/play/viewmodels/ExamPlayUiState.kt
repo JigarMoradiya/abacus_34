@@ -22,4 +22,5 @@ data class ExamPlayUiState(
     val isShowNoInternet: Boolean = false,
     val noInternetMessage : String = "",
     val submitExamRequest : SubmitAllExamDataRequest? = null,
+    val saveResults: Boolean = true,
 )

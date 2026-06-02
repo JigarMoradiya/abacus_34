@@ -45,7 +45,7 @@ import com.jigar.me.utils.FreemiumManager
 fun SetScreen(
     homeActivityViewModel: HomeActivityViewModel,
     onBackClick: () -> Unit,
-    onNavigateToDoPractice: (setId: String) -> Unit,
+    onNavigateToDoPractice: (setId: String, saveResults: Boolean) -> Unit,
     onNavigateToList: (setId: String) -> Unit,
 ) {
     val viewModel: SetViewModel = hiltViewModel()
@@ -54,10 +54,10 @@ fun SetScreen(
     val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
     val isSubscribed = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
     val isLoggedIn = homeActivityViewModel.isUserLoggedIn()
-    val context = LocalContext.current
     var showPaywall by remember { mutableStateOf(false) }
     var showLogin by remember { mutableStateOf(false) }
     var pendingSetId by remember { mutableStateOf<String?>(null) }
+    var pendingSetAnswerSetting by remember { mutableStateOf<String?>(null) }
 
     Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         Row(
@@ -105,11 +105,12 @@ fun SetScreen(
                             AudioPlayerManager.playSoundBtnBack()
                             when {
                                 isLocked -> showPaywall = true
-                                set.answer_setting == AppConstants.apiParams.answerFormalExam && !isLoggedIn -> {
+                                !isLoggedIn -> {
                                     pendingSetId = set.id
+                                    pendingSetAnswerSetting = set.answer_setting
                                     showLogin = true
                                 }
-                                else -> onNavigateToDoPractice(set.id)
+                                else -> onNavigateToDoPractice(set.id, true)
                             }
                         },
                         onSetLongClick = { set ->
@@ -125,19 +126,25 @@ fun SetScreen(
 
     // Sheets outside Column — get full screen constraints from NavHost
     if (showLogin) {
+        val loginSubtitle = if (pendingSetAnswerSetting == AppConstants.apiParams.answerFormalExam)
+            stringResource(R.string.login_to_save_results)
+        else
+            stringResource(R.string.login_to_track_progress)
+
         FreemiumLoginBottomSheet(
             showContinueWithoutSaving = true,
+            subtitle = loginSubtitle,
             onLoginSuccess = {
                 showLogin = false
-                pendingSetId?.let { onNavigateToDoPractice(it) }
+                pendingSetId?.let { onNavigateToDoPractice(it, true) }
                 pendingSetId = null
             },
             onContinueWithoutSaving = {
                 showLogin = false
-                pendingSetId?.let { onNavigateToDoPractice(it) }
+                pendingSetId?.let { onNavigateToDoPractice(it, false) }
                 pendingSetId = null
             },
-            onDismiss = { showLogin = false; pendingSetId = null }
+            onDismiss = { showLogin = false; pendingSetId = null; pendingSetAnswerSetting = null }
         )
     }
 
