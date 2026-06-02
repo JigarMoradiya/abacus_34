@@ -21,6 +21,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -45,15 +46,20 @@ import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.screens.reports.dialogs.ExerciseExamCompleteResultDialog
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.login.screens.login_home.viewmodels.LoginHomeViewModel
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.extensions.toastL
 
 @Composable
 fun AbacusDoPracticeRoute(
     onBackClick: () -> Unit,
 ) {
     val viewModel: AbacusDoPracticeViewModel = hiltViewModel()
+    val loginViewModel: LoginHomeViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val loginUiState by loginViewModel.uiState.collectAsStateWithLifecycle()
     val lifecycleOwner = LocalLifecycleOwner.current
+    val context = LocalContext.current
 
     DisposableEffect(lifecycleOwner) {
         val observer = LifecycleEventObserver { _, event ->
@@ -68,6 +74,18 @@ fun AbacusDoPracticeRoute(
 
     LaunchedEffect(viewModel.abacusCalc.stateVersion) {
         viewModel.handleMatch()
+    }
+
+    // After Google login succeeds, submit the pending result
+    loginUiState.navigateToHome?.consume {
+        uiState.submitExerciseRequest?.let { viewModel.submitExamApi(it) }
+    }
+
+    loginUiState.errorMessage?.let { msg ->
+        LaunchedEffect(msg) {
+            context.toastL(msg)
+            loginViewModel.consumeError()
+        }
     }
 
     Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
@@ -142,7 +160,7 @@ fun AbacusDoPracticeRoute(
 
     UseWhichHandTextUi(uiState, viewModel)
 
-    if (uiState.isLoading) {
+    if (uiState.isLoading || loginUiState.isLoading) {
         Loader()
     }
 
@@ -155,7 +173,11 @@ fun AbacusDoPracticeRoute(
             uiState.submitExerciseRequest?.let {
                 ExerciseExamCompleteResultDialog(
                     selectedTheme = viewModel.selectedTheme,
-                    it,
+                    request = it,
+                    saveResults = uiState.saveResults,
+                    onLoginToSave = if (!uiState.saveResults && !uiState.resultSaved) {
+                        { loginViewModel.signInWithGoogle(context) }
+                    } else null,
                     onClose = onBackClick,
                     onGiveAgain = onBackClick,
                 )

@@ -29,6 +29,7 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -51,6 +52,7 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens3
 fun KidsActionButton(
     text: String,
     icon: ImageVector? = null,
+    painterIcon: Painter? = null,
     type: ButtonType,
     onClick: () -> Unit,
     isIconStart: Boolean = true,
@@ -101,29 +103,25 @@ fun KidsActionButton(
             horizontalArrangement = Arrangement.Center
         ) {
 
-            if (isIconStart && icon != null) {
+            val hasStartIcon = isIconStart && (icon != null || painterIcon != null)
+            if (hasStartIcon) {
                 Box {
-                    if (type != ButtonType.DISABLE){
-                        Icon(
-                            imageVector = icon,
-                            contentDescription = null,
-                            tint = Color.Black.copy(alpha = 0.35f),
-                            modifier = Modifier.size(iconSize)
-                                .offset(ShadowOffset, ShadowOffset), // shadow layer
-                        )
+                    if (type != ButtonType.DISABLE) {
+                        if (icon != null) {
+                            Icon(imageVector = icon, contentDescription = null, tint = Color.Black.copy(alpha = 0.35f), modifier = Modifier.size(iconSize).offset(ShadowOffset, ShadowOffset))
+                        }
                     }
-
-                    Icon(
-                        imageVector = icon,
-                        contentDescription = null,
-                        tint = if (type == ButtonType.DISABLE) colors.base else Color.White,
-                        modifier = Modifier.size(iconSize)
-                    )
+                    if (painterIcon != null) {
+                        Icon(painter = painterIcon, contentDescription = null, tint = Color.Unspecified, modifier = Modifier.size(iconSize))
+                    } else if (icon != null) {
+                        Icon(imageVector = icon, contentDescription = null, tint = if (type == ButtonType.DISABLE) colors.base else Color.White, modifier = Modifier.size(iconSize))
+                    }
                 }
                 Spacer(Modifier.width(if (isSmall) Dimens4 else Dimens6))
             }
 
-            Box(Modifier.padding(start = if (!isIconStart && icon != null) Dimens4 else 0.dp, end = if (isIconStart && icon != null) Dimens4 else 0.dp)) {
+            val hasEndIcon = !isIconStart && (icon != null || painterIcon != null)
+            Box(Modifier.padding(start = if (hasEndIcon) Dimens4 else 0.dp, end = if (hasStartIcon) Dimens4 else 0.dp)) {
                 // Shadow layer
                 if (type != ButtonType.DISABLE){
                     Text(
@@ -145,27 +143,19 @@ fun KidsActionButton(
                 )
             }
 
-            if (!isIconStart && icon != null) {
+            if (hasEndIcon) {
                 Spacer(Modifier.width(if (isSmall) Dimens4 else Dimens6))
-
                 Box {
-                    if (type != ButtonType.DISABLE){
-                        Icon(
-                            imageVector = icon,
-                            contentDescription = null,
-                            tint = Color.Black.copy(alpha = 0.35f),
-                            modifier = Modifier
-                                .size(iconSize)
-                                .offset(ShadowOffset, ShadowOffset), // shadow layer
-                        )
+                    if (type != ButtonType.DISABLE) {
+                        if (icon != null) {
+                            Icon(imageVector = icon, contentDescription = null, tint = Color.Black.copy(alpha = 0.35f), modifier = Modifier.size(iconSize).offset(ShadowOffset, ShadowOffset))
+                        }
                     }
-
-                    Icon(
-                        imageVector = icon,
-                        contentDescription = null,
-                        tint = if (type == ButtonType.DISABLE) colors.base else Color.White,
-                        modifier = Modifier.size(iconSize)
-                    )
+                    if (painterIcon != null) {
+                        Icon(painter = painterIcon, contentDescription = null, tint = Color.Unspecified, modifier = Modifier.size(iconSize))
+                    } else if (icon != null) {
+                        Icon(imageVector = icon, contentDescription = null, tint = if (type == ButtonType.DISABLE) colors.base else Color.White, modifier = Modifier.size(iconSize))
+                    }
                 }
             }
         }

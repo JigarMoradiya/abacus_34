@@ -223,13 +223,6 @@ class CCMPlayViewModel @Inject constructor(
     }
 
     fun submitExamApi(submitExamRequest : SubmitAllExamDataRequest) = viewModelScope.launch {
-//        updateState_ {
-//            copy(isLoading = true)
-//        }
-//        delay(5000)
-//        updateState_ {
-//            copy(isLoading = false, isShowCompletePopup = true)
-//        }
         submitAllExamUseCase(
             params = submitExamRequest,
             onStart = {

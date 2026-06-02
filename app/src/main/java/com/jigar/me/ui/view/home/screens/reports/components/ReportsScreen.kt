@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,10 +14,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.Star
+import androidx.compose.ui.res.painterResource
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -108,45 +110,51 @@ fun ReportsScreen(
 
 @Composable
 private fun ReportHistoryUpgradeBanner(onShowPaywall: () -> Unit) {
-    Column(
+    Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
-            .background(Color(0xFFFFF8E1), RoundedCornerShape(AppDimens.Dimens16))
-            .padding(AppDimens.Dimens20),
-        horizontalAlignment = Alignment.CenterHorizontally
+            .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens6)
+            .background(Color(0xFFFFF8E1), RoundedCornerShape(AppDimens.Dimens12))
+            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
     ) {
-        Icon(
-            imageVector = Icons.Default.Lock,
-            contentDescription = null,
-            tint = Color(0xFFFF9800),
-            modifier = Modifier.size(AppDimens.Dimens32)
-        )
-        Spacer(Modifier.height(AppDimens.Dimens8))
-        Text(
-            text = "Upgrade to Premium",
-            style = MaterialTheme.typography.titleMedium.scaled().copy(
-                fontWeight = FontWeight.ExtraBold,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                color = Color(0xFF5D4037)
-            ),
-            textAlign = TextAlign.Center
-        )
-        Spacer(Modifier.height(AppDimens.Dimens4))
-        Text(
-            text = "See your complete report history",
-            style = MaterialTheme.typography.bodySmall.scaled().copy(
-                fontFamily = FontFamily(Font(R.font.font_medium)),
-                color = Color(0xFF8D6E63)
-            ),
-            textAlign = TextAlign.Center
-        )
-        Spacer(Modifier.height(AppDimens.Dimens16))
+        Box(
+            modifier = Modifier
+                .size(AppDimens.Dimens32)
+                .background(Color(0xFFFF9800).copy(alpha = 0.15f), CircleShape),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                imageVector = Icons.Default.Lock,
+                contentDescription = null,
+                tint = Color(0xFFFF9800),
+                modifier = Modifier.size(AppDimens.Dimens16)
+            )
+        }
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = "Upgrade to Premium",
+                style = MaterialTheme.typography.labelMedium.scaled().copy(
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = FontFamily(Font(R.font.font_bold)),
+                    color = Color(0xFF5D4037)
+                )
+            )
+            Text(
+                text = "See your complete report history",
+                style = MaterialTheme.typography.labelSmall.scaled().copy(
+                    fontFamily = FontFamily(Font(R.font.font_regular)),
+                    color = Color(0xFF8D6E63)
+                )
+            )
+        }
         KidsActionButton(
             text = "View Plans",
-            icon = Icons.Default.Star,
+            painterIcon = painterResource(R.drawable.crown),
             type = ButtonType.ORANGE,
-            onClick = onShowPaywall
+            onClick = onShowPaywall,
+            isSmall = true
         )
     }
 }

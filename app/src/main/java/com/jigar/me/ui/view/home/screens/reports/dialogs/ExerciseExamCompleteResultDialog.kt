@@ -3,6 +3,7 @@ package com.jigar.me.ui.view.home.screens.reports.dialogs
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -63,6 +64,8 @@ fun ExerciseExamCompleteResultDialog(
     selectedTheme: String,
     request: SubmitAllExamDataRequest,
     isFromHistory: Boolean = false,
+    saveResults: Boolean = true,
+    onLoginToSave: (() -> Unit)? = null,
     onClose: () -> Unit,
     onGiveAgain: () -> Unit,
 ) {
@@ -162,6 +165,34 @@ fun ExerciseExamCompleteResultDialog(
                                 color = ColorDARKGreen
                             )
                         }
+                        if (!isFromHistory && !saveResults && onLoginToSave != null) {
+                            Spacer(Modifier.height(AppDimens.Dimens12))
+                            Row(
+                                modifier = Modifier
+                                    .padding(horizontal = AppDimens.Dimens16)
+                                    .clip(RoundedCornerShape(AppDimens.Dimens8))
+                                    .background(Color(0xFFFFF3E0))
+                                    .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.results_not_saved_to_account),
+                                    style = MaterialTheme.typography.labelSmall.scaled().copy(
+                                        color = Color(0xFFE65100),
+                                        fontFamily = FontFamily(androidx.compose.ui.text.font.Font(R.font.font_regular))
+                                    ),
+                                    modifier = Modifier.weight(1f)
+                                )
+                                KidsActionButton(
+                                    text = stringResource(R.string.login_now),
+                                    type = ButtonType.ORANGE,
+                                    onClick = onLoginToSave,
+                                    isSmall = true
+                                )
+                            }
+                        }
+
                         if (!isFromHistory){
                             Spacer(Modifier.height(AppDimens.Dimens16))
                             val result = buildExamResult(

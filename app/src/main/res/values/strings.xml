@@ -915,5 +915,6 @@
     <string name="login_is_required_to_access_this_feature">Login is required to access this feature.</string>
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="continue_without_saving">Continue without saving</string>
+    <string name="results_not_saved_to_account">Your results are not saved yet. Sign in to keep your progress!</string>
 
 </resources>

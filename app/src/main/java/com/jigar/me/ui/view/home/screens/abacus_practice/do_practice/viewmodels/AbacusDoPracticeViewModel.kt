@@ -632,7 +632,7 @@ class AbacusDoPracticeViewModel @Inject constructor(
                         updateProgress(setProgress)
                     }
                     updateState_ {
-                        copy(isLoading = false, isShowCompletePopup = true)
+                        copy(isLoading = false, isShowCompletePopup = true, resultSaved = true)
                     }
                 }
             },

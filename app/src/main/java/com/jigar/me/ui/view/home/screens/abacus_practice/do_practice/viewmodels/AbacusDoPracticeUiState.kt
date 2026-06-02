@@ -36,4 +36,5 @@ data class AbacusDoPracticeUiState(
 
     val error: Int? = null,
     val saveResults: Boolean = true,
+    val resultSaved: Boolean = false,
 )
