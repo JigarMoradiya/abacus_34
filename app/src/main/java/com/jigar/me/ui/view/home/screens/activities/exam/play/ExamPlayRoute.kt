@@ -18,8 +18,10 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
@@ -34,7 +36,10 @@ import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.Loader
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsLabel
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.Loader
 import com.jigar.me.ui.view.home.screens.abacus_practice.level_list.components.ProgressCandyRow
+import com.jigar.me.ui.view.login.screens.login_home.viewmodels.LoginHomeViewModel
+import com.jigar.me.utils.extensions.toastL
 import com.jigar.me.ui.view.home.screens.activities.exam.play.components.ExamQuestionSection
 import com.jigar.me.ui.view.home.screens.activities.exam.play.components.rememberBlinkAlpha
 import com.jigar.me.ui.view.home.screens.activities.exam.play.viewmodels.ExamPlayViewModel
@@ -47,8 +52,21 @@ fun ExamPlayRoute(
     onBackClick: () -> Unit,
 ) {
     val viewModel: ExamPlayViewModel = hiltViewModel()
+    val loginViewModel: LoginHomeViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val loginUiState by loginViewModel.uiState.collectAsStateWithLifecycle()
     val blinkAlpha by rememberBlinkAlpha()
+    val context = LocalContext.current
+
+    loginUiState.navigateToHome?.consume {
+        uiState.submitExamRequest?.let { viewModel.submitExamApi(it) }
+    }
+    loginUiState.errorMessage?.let { msg ->
+        LaunchedEffect(msg) {
+            context.toastL(msg)
+            loginViewModel.consumeError()
+        }
+    }
 
     BackHandler { viewModel.onLeaveExam() }
 
@@ -101,7 +119,7 @@ fun ExamPlayRoute(
         }
     }
 
-    if (uiState.isLoading) {
+    if (uiState.isLoading || loginUiState.isLoading) {
         Loader()
     }
 
@@ -110,7 +128,15 @@ fun ExamPlayRoute(
     ) {
         uiState.submitExamRequest?.let {
             ExerciseExamCompleteResultDialog(
-                selectedTheme = viewModel.selectedTheme, it, onClose = onBackClick, onGiveAgain = { viewModel.reGenerateExam() })
+                selectedTheme = viewModel.selectedTheme,
+                request = it,
+                saveResults = uiState.saveResults,
+                onLoginToSave = if (!uiState.saveResults && !uiState.resultSaved) {
+                    { loginViewModel.signInWithGoogle(context) }
+                } else null,
+                onClose = onBackClick,
+                onGiveAgain = { viewModel.reGenerateExam() }
+            )
         }
     }
 

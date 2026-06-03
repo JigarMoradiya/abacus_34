@@ -23,4 +23,5 @@ data class ExamPlayUiState(
     val noInternetMessage : String = "",
     val submitExamRequest : SubmitAllExamDataRequest? = null,
     val saveResults: Boolean = true,
+    val resultSaved: Boolean = false,
 )

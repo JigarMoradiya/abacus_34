@@ -37,6 +37,8 @@ import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumLoginBottomSheet
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.home.screens.reports.dialogs.ExerciseExamCompleteResultDialog
+import com.jigar.me.ui.view.login.screens.login_home.viewmodels.LoginHomeViewModel
+import com.jigar.me.utils.extensions.toastL
 import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
 import com.jigar.me.ui.view.home.theme.AppDimens.exerciseWidth
 import com.jigar.me.utils.extensions.secToCountDown
@@ -47,12 +49,25 @@ fun ExerciseRoute(
     onBackClick: () -> Unit,
 ) {
     val viewModel: ExerciseViewModel = hiltViewModel()
+    val loginViewModel: LoginHomeViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val loginUiState by loginViewModel.uiState.collectAsStateWithLifecycle()
     val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
     val isPurchase = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
     val isLoggedIn = homeActivityViewModel.isUserLoggedIn()
+    val context = androidx.compose.ui.platform.LocalContext.current
     viewModel.setIsPurchased(isPurchase)
     var showPaywall by remember { mutableStateOf(false) }
+
+    loginUiState.navigateToHome?.consume {
+        uiState.submitExerciseRequest?.let { viewModel.submitExamApi(it) }
+    }
+    loginUiState.errorMessage?.let { msg ->
+        LaunchedEffect(msg) {
+            context.toastL(msg)
+            loginViewModel.consumeError()
+        }
+    }
     var showLogin by remember { mutableStateOf(false) }
 
     LaunchedEffect(viewModel.abacusCalc.stateVersion) {
@@ -131,13 +146,19 @@ fun ExerciseRoute(
         )
     }
 
+    if (loginUiState.isLoading) { Loader() }
+
     AnimatedVisibility(
         visible = uiState.isShowCompletePopup, enter = fadeIn(), exit = fadeOut()
     ) {
         uiState.submitExerciseRequest?.let {
             ExerciseExamCompleteResultDialog(
                 selectedTheme = viewModel.selectedTheme,
-                it,
+                request = it,
+                saveResults = uiState.saveResults,
+                onLoginToSave = if (!uiState.saveResults && !uiState.resultSaved) {
+                    { loginViewModel.signInWithGoogle(context) }
+                } else null,
                 onClose = { viewModel.closeExercise() },
                 onGiveAgain = { viewModel.generateExercise() },
             )

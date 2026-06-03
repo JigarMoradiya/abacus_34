@@ -39,4 +39,5 @@ data class ExerciseUiState(
     val submitExerciseRequest : SubmitAllExamDataRequest? = null,
     val navigateToPurchase: ConsumableCommand<Unit>? = null,
     val saveResults: Boolean = true,
+    val resultSaved: Boolean = false,
 )

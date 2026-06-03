@@ -152,7 +152,7 @@ class ExamPlayViewModel @Inject constructor(
             onEachEmit = {},
             onCompletion = {
                 updateState_ {
-                    copy(isLoading = false, isShowCompletePopup = true)
+                    copy(isLoading = false, isShowCompletePopup = true, resultSaved = true)
                 }
             },
             onError = {
