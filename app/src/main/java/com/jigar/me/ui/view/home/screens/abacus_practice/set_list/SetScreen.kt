@@ -26,7 +26,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.compose.ui.platform.LocalContext
 import com.jigar.me.BuildConfig
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
@@ -52,7 +51,7 @@ fun SetScreen(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val allSets by homeActivityViewModel.allSets.collectAsStateWithLifecycle()
     val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
-    val isSubscribed = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
+    val isSubscribed = homeActivityViewModel.isPurchasedSelectedLevel(purchasedSKU,uiState.levelName)
     val isLoggedIn = homeActivityViewModel.isUserLoggedIn()
     var showPaywall by remember { mutableStateOf(false) }
     var showLogin by remember { mutableStateOf(false) }
@@ -65,7 +64,7 @@ fun SetScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             BackButtonWithText(
-                title = uiState.name,
+                title = uiState.pageTitle,
                 onBackClick = onBackClick,
                 modifier = Modifier.weight(1f)
             )

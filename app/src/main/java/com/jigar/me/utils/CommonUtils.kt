@@ -138,16 +138,6 @@ object CommonUtils {
         return null
     }
 
-    @SuppressLint("RestrictedApi")
-    fun setErrorToEditText(textInputLayout: TextInputLayout, validation_message: String?) {
-        textInputLayout.error = validation_message
-        textInputLayout.requestFocus()
-    }
-    fun removeError(textInputLayout: TextInputLayout) {
-        textInputLayout.error = null
-        textInputLayout.isErrorEnabled = false
-    }
-
     fun removeTrailingZero(formattingInput: String): String {
         if (!formattingInput.contains(".")) {
             return formattingInput

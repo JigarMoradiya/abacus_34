@@ -1,6 +1,5 @@
 package com.jigar.me.ui.view.home.screens.abacus_practice.set_list.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.jigar.me.ui.jetpack.core.StatefulViewModel
@@ -38,7 +37,8 @@ class SetViewModel @Inject constructor(
         ) { sku, pages ->
             updateState_ {
                 copy(
-                    name = title,
+                    levelName = name?:"",
+                    pageTitle = title,
                     purchasedSku = sku,
                     pages = pages,
                     showNoData = pages.isEmpty(),
