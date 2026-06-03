@@ -67,5 +67,7 @@ object AppDimens {
     val PyramidWidth = if(isLargeTablet) 144.dp else if (isTablet) 110.dp else 72.dp
     val ExamCCMIconHeight = if(isLargeTablet) 200.dp else if (isTablet) 120.dp else 48.dp
     val CCMKidIcon = if(isLargeTablet) 360.dp else if (isTablet) 240.dp else 150.dp
+    val examTypeCardWidth = if(isLargeTablet) 160.dp else if (isTablet) 120.dp else 80.dp
+    val examDiffCardWidth = if(isLargeTablet) 180.dp else if (isTablet) 140.dp else 90.dp
     val doPracticeNumberFonts = if(isLargeTablet) 140.sp else if (isTablet) 110.sp else 78.sp
 }

@@ -885,8 +885,8 @@
     <string name="customize_pronunciation_voice">Customize Pronunciation (Voice)</string>
     <string name="submit_answer">Submit\nAnswer</string>
     <string name="hide_from_setting">Hide From Setting</string>
-    <string name="select_exam_difficulty">Select Exam Difficulty :</string>
-    <string name="select_exam_types">Select Exam Types :</string>
+    <string name="select_exam_difficulty">Select Exam Difficulty</string>
+    <string name="select_exam_types">Select Exam Types</string>
     <string name="what_s_learn_in_application">What\'s Learn in Application</string>
     <string name="report_history_cards">Report History Cards</string>
     <string name="settings">Settings</string>

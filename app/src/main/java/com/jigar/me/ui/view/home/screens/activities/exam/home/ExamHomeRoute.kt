@@ -47,7 +47,7 @@ fun ExamHomeRoute(
             title = stringResource(R.string.math_exam),
             onBackClick = onBackClick
         )
-        ExamHomeScreen(uiState, viewModel, isSubscribed = isSubscribed) {
+        ExamHomeScreen(uiState, viewModel, isSubscribed = isSubscribed, onLockedClick = { showPaywall = true }) {
             if (!uiState.isAdditionSelected && !uiState.isSubtractionSelected &&
                 !uiState.isMultiplicationSelected && !uiState.isDivisionSelected
             ) {
