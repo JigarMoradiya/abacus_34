@@ -131,6 +131,7 @@ fun PageHeader(
         Box(
             modifier = Modifier
                 .size(AppDimens.Dimens32)
+                .shadow(elevation = AppDimens.Dimens4, shape = CircleShape, ambientColor = Color.Gray.copy(alpha = 0.35f), spotColor = Color.Gray.copy(alpha = 0.35f))
                 .background(Color.White, CircleShape),
             contentAlignment = Alignment.Center
         ) {

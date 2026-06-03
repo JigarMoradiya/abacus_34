@@ -548,11 +548,11 @@
 
     <string name="beginner">Beginner</string>
     <string name="nursery_class_and_maths_npractice_material"><font color='#00B64B'>Nursery Class and Maths</font>\nPractice Material</string>
-    <string name="create_custom_challenge_as_per_your_kid_s_ability">Create custom challenge as per your Kid\'s Ability</string>
+    <string name="create_custom_challenge_as_per_your_kid_s_ability">Create custom challenge as per\nKid\'s Ability</string>
     <string name="custom_challenge_mode">Custom Challenge Mode</string>
     <string name="result_of_practice_set">Result of Practice Set</string>
-    <string name="number_of_questions">Number of Questions :</string>
-    <string name="gap_between_two_question_sec">Gap between Two Question (In Sec) :</string>
+    <string name="number_of_questions">Number of Questions</string>
+    <string name="gap_between_two_question_sec">Gap between Two Question (In Sec)</string>
     <string name="question_min_max_length">Question Min Max Length</string>
     <string name="question_speak_voice">Question Speak Voice</string>
     <string name="question_show_in_number">Question show in Number</string>
@@ -916,5 +916,9 @@
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="continue_without_saving">Continue without saving</string>
     <string name="results_not_saved_to_account">Your results are not saved yet. Sign in to keep your progress!</string>
+    <string name="question_display_options">Display Options</string>
+    <string name="ccm_speak">Speak</string>
+    <string name="ccm_number">Number</string>
+    <string name="ccm_word">Word</string>
 
 </resources>
