@@ -93,7 +93,9 @@ class AppPreferencesHelper @Inject constructor(
 
     fun clearPref() {
         val lastSyncTime = getCustomParam(Constants.last_sync_time, Constants.last_sync_default_time)
+        val bgMusicVolume = getCustomParamInt(AppConstants.Settings.Setting_bg_music_volume, AppConstants.Settings.Setting_bg_music_volume_default)
         mPrefs.edit { clear() }
         setCustomParam(Constants.last_sync_time, lastSyncTime)
+        setCustomParamInt(AppConstants.Settings.Setting_bg_music_volume, bgMusicVolume)
     }
 }
