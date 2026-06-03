@@ -1,7 +1,6 @@
 package com.jigar.me.ui.view.login.screens.login_home.viewmodels
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.jigar.me.data.model.data.SocialLoginRequest
 import com.jigar.me.data.pref.AppPreferencesHelper
@@ -78,7 +77,6 @@ class LoginHomeViewModel @Inject constructor(
                     updateState_ { copy(isLoading = false) }
                 }
                 is AppleSignInHelper.Outcome.Failure -> {
-                    Log.e("jigarLogins","localizedMessage = "+outcome.throwable.localizedMessage)
                     updateState_ {
                         copy(
                             isLoading = false,
@@ -109,7 +107,7 @@ class LoginHomeViewModel @Inject constructor(
     }
 
     private suspend fun handlePostLogin(data: com.google.gson.JsonObject?) {
-        when (val outcome = postLoginHandler.fetchProgressSetData(data)) {
+        when (val outcome = postLoginHandler.fetchAppProgressData(data)) {
             is PostLoginHandler.Outcome.NavigateHome -> {
                 updateState_ { copy(isLoading = false, navigateToHome = ConsumableCommand(Unit)) }
             }

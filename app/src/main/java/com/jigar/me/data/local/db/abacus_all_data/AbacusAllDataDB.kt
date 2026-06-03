@@ -28,6 +28,8 @@ class AbacusAllDataDB @Inject constructor(private val dao: AbacusAllDataDao) {
     }
     suspend fun removeUserAnswer(setId : String) = dao.removeUserAnswer(setId)
 
+    suspend fun countAbacus(): Int = withContext(Dispatchers.IO) { dao.countAbacus() }
+
     suspend fun getParentLevelOfSet(setId: String): String = dao.getParentLevelOfSet(setId)
 
 }

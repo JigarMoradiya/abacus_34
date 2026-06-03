@@ -48,7 +48,7 @@ class PostLoginHandler @Inject constructor(
         when (val response = apiRepository.getAbacusData(request)) {
             is Resource.Success -> {
                 if (response.value.status == AppConstants.APIStatus.SUCCESS) {
-                    insertProgressData(response.value.data)
+                    insertAllAbacusData(response.value.data)
                 } else {
                     return Outcome.Failure(response.value.error?.message)
                 }
@@ -67,7 +67,6 @@ class PostLoginHandler @Inject constructor(
             get_categories = true,
             get_pages = true,
             get_sets = true,
-            get_abacus = true,
             last_sync_time = syncTime,
             public_key = CommonUtils.getPublicKey()
         )
@@ -85,8 +84,34 @@ class PostLoginHandler @Inject constructor(
         }
     }
 
+    // Called silently on home screen — fetches abacus questions only if DB is empty.
+    // Always uses the default sync time so all abacus data is retrieved fresh.
+    suspend fun fetchAbacusDataSilently(): Outcome {
+        if (dbRepository.countAbacus() > 0) return Outcome.NavigateHome
+        val isLoggedIn = prefs.isUserLoggedIn()
+        val request = FetchAbacusDataRequest(
+            get_abacus = true,
+            last_sync_time = Constants.last_sync_default_time,
+            public_key = if (!isLoggedIn) CommonUtils.getPublicKey() else null
+        )
+        val response = if (isLoggedIn) apiRepository.getAbacusData(request)
+                       else apiRepository.getAbacusDataPublic(request)
+        return when (response) {
+            is Resource.Success -> {
+                if (response.value.status == AppConstants.APIStatus.SUCCESS) {
+                    val data = Gson().fromJson(response.value.data, AbacusAllData::class.java)
+                    val abacus = ArrayList(data.abacus ?: emptyList<Abacus>())
+                    dbRepository.insertAllData(arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf(), abacus)
+                    Outcome.NavigateHome
+                } else Outcome.Failure(response.value.error?.message)
+            }
+            is Resource.Failure -> Outcome.Failure(response.errorBody)
+            else -> Outcome.Failure(null)
+        }
+    }
+
     // Called after login — only restores user's progress
-    suspend fun fetchProgressSetData(loginData: JsonObject?): Outcome {
+    suspend fun fetchAppProgressData(loginData: JsonObject?): Outcome {
         loginData?.let { persistLoginPayload(it) }
 
         val request = FetchAbacusDataRequest(get_set_progress_report = true)

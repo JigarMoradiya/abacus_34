@@ -25,6 +25,7 @@ class DBRepository @Inject constructor(
     suspend fun getInAppSKUPurchased(ids : ArrayList<String>) = inAppSKUDB.getInAppSKUPurchased(ids)
 
     // abacus all data
+    suspend fun countAbacus(): Int = abacusAllDataDB.countAbacus()
     suspend fun insertLevel(data : List<Level>) = abacusAllDataDB.insertLevel(data)
     suspend fun insertSetProgress(data : List<SetProgress>) = abacusAllDataDB.insertSetProgress(data)
     suspend fun deleteSetProgress() = abacusAllDataDB.deleteSetProgress()

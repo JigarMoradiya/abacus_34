@@ -57,6 +57,10 @@ class HomeActivityViewModel @Inject constructor(
         }
     }
 
+    fun fetchAbacusDataIfNeeded() {
+        viewModelScope.launch { postLoginHandler.fetchAbacusDataSilently() }
+    }
+
     fun updateMusicVolume(volume: Int) = bgController.updateVolume(volume)
     fun onResume() = bgController.playIfNeeded()
     fun onPause() = bgController.pause()

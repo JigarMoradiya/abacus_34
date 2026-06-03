@@ -76,6 +76,7 @@ fun HomeNavGraph(
         composable(route = RouteNavigation.Home.route) {
             LaunchedEffect(Unit) {
                 homeActivityViewModel.fetchReviewsIfCredentialLogin()
+                homeActivityViewModel.fetchAbacusDataIfNeeded()
             }
             HomeScreen(
                 onNavigateToLevelCategory = { levelId ->
