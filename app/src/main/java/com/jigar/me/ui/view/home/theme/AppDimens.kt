@@ -7,6 +7,7 @@ import com.jigar.me.data.local.data.DeviceInfo
 object AppDimens {
     val isTablet = DeviceInfo.isTablet
     val isLargeTablet = DeviceInfo.isLargeTablet
+    val LoginLogo = if(isLargeTablet) 120.dp else if (isTablet) 100.dp else 56.dp
     // Spacing
     val ToolbarIconSize = if(isLargeTablet) 72.dp else if (isTablet) 64.dp else 42.dp
     val KidsIconSize = if(isLargeTablet) 84.dp else if (isTablet) 72.dp else 56.dp
@@ -37,6 +38,7 @@ object AppDimens {
     val Dimens46 = if(isLargeTablet) 92.dp else if (isTablet) 64.dp else 46.dp
     val Dimens48 = if(isLargeTablet) 96.dp else if (isTablet) 72.dp else 48.dp
     val Dimens56 = if(isLargeTablet) 110.dp else if (isTablet) 80.dp else 56.dp
+
     val Dimens60 = if(isLargeTablet) 120.dp else if (isTablet) 84.dp else 60.dp
     val Dimens64 = if(isLargeTablet) 128.dp else if (isTablet) 110.dp else 64.dp
     val Dimens72 = if(isLargeTablet) 144.dp else if (isTablet) 100.dp else 72.dp

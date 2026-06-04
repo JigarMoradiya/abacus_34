@@ -10,7 +10,7 @@ import com.jigar.me.data.model.ErrorData
 import com.jigar.me.data.model.MainAPIResponse
 import com.jigar.me.data.model.MainAPIResponseArray
 import com.jigar.me.data.pref.AppPreferencesHelper
-import com.jigar.me.ui.view.login.LoginDashboardActivity
+import com.jigar.me.ui.view.home.HomeActivity
 import com.jigar.me.utils.AppConstants
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
@@ -114,7 +114,7 @@ class RemoteDataSource @Inject constructor() {
 
     private fun handleForbiddenResponse(context: Context) {
         prefManager.clearPref()
-        LoginDashboardActivity.getInstance(context)
+        HomeActivity.getInstance(context)
     }
 
 

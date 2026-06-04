@@ -18,12 +18,6 @@
         android:theme="@style/Theme.MyApplication"
         android:requestLegacyExternalStorage="true">
         <activity
-            android:name=".ui.view.login.LoginDashboardActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:resizeableActivity="true"
-            android:theme="@style/AppThemeLogin.NoActionBar" />
-        <activity
             android:name=".ui.view.home.HomeActivity"
             android:exported="true"
             android:launchMode="singleTop"

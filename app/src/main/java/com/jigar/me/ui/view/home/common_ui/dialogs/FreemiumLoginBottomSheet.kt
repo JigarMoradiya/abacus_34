@@ -46,7 +46,6 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.Loader
 import com.jigar.me.ui.view.home.common_ui.sheets.KidsBottomSheet
 import com.jigar.me.ui.view.home.theme.AppDimens
-import com.jigar.me.ui.view.login.screens.login.LoginScreen
 import com.jigar.me.ui.view.login.screens.login_home.viewmodels.LoginHomeViewModel
 import com.jigar.me.utils.extensions.toastL
 

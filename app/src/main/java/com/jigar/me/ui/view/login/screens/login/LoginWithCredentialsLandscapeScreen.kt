@@ -111,7 +111,7 @@ fun LoginWithCredentialsLandscapeScreen(
                 Image(
                     painter = painterResource(id = R.drawable.logo),
                     contentDescription = null,
-                    modifier = Modifier.size(AppDimens.Dimens56)
+                    modifier = Modifier.size(AppDimens.LoginLogo)
                 )
                 Spacer(modifier = Modifier.height(Dimens16))
                 Text(

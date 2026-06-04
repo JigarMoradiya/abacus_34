@@ -25,7 +25,6 @@ import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumLoginBottomSheet
 import com.jigar.me.ui.view.home.screens.my_account.components.MyAccountScreen
 import com.jigar.me.ui.view.home.screens.my_account.viewmodels.MyAccountViewModel
-import com.jigar.me.ui.view.login.LoginDashboardActivity
 import com.jigar.me.ui.view.other.ContactUsActivity
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.openURL
