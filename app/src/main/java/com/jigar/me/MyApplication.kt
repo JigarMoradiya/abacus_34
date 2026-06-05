@@ -12,8 +12,10 @@ import androidx.work.Configuration
 import com.google.gson.Gson
 import com.jigar.me.data.model.NotificationData
 import com.jigar.me.utils.RevenueCatHelper
+import com.revenuecat.purchases.CacheFetchPolicy
 import com.revenuecat.purchases.Purchases
 import com.revenuecat.purchases.PurchasesConfiguration
+import com.revenuecat.purchases.awaitCustomerInfo
 import com.revenuecat.purchases.awaitOfferings
 import com.revenuecat.purchases.interfaces.UpdatedCustomerInfoListener
 import kotlinx.coroutines.launch
@@ -81,6 +83,9 @@ class MyApplication : Application(), Configuration.Provider {
         )
         Purchases.sharedInstance.updatedCustomerInfoListener = UpdatedCustomerInfoListener { RevenueCatHelper.update(it) }
         kotlinx.coroutines.MainScope().launch {
+            // Seed RC cache from disk immediately — eliminates the cold-launch null window
+            // where cachedInfo is null for ~1s before the listener fires.
+            try { RevenueCatHelper.update(Purchases.sharedInstance.awaitCustomerInfo(CacheFetchPolicy.CACHE_ONLY)) } catch (_: Exception) {}
             try { Purchases.sharedInstance.awaitOfferings() } catch (_: Exception) {}
         }
 
