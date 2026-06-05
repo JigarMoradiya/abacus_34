@@ -7,8 +7,9 @@ import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.data.repositories.DBRepository
 import com.jigar.me.ui.jetpack.api.GetStatisticsUseCase
 import com.jigar.me.ui.jetpack.core.StatefulViewModel
-import com.jigar.me.ui.view.base.inapp.BillingRepository
 import com.jigar.me.utils.AppConstants
+import com.revenuecat.purchases.Purchases
+import com.revenuecat.purchases.awaitRestore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -20,7 +21,6 @@ class MyAccountViewModel @Inject constructor(
     private val getStatistics: GetStatisticsUseCase,
     private val pref: AppPreferencesHelper,
     private val dbRepository: DBRepository,
-    private val billingRepository: BillingRepository,
 ) : StatefulViewModel<MyAccountUiState>() {
 
     override val TAG = "MyAccountViewModel"
@@ -52,7 +52,7 @@ class MyAccountViewModel @Inject constructor(
     fun onLoginSuccess() {
         updateState_ { copy(isLoggedIn = true) }
         getStatistics()
-        billingRepository.startDataSourceConnections()
+        viewModelScope.launch { try { Purchases.sharedInstance.awaitRestore() } catch (_: Exception) {} }
     }
 
     fun logoutOpenClose(isShow : Boolean) {
@@ -64,6 +64,7 @@ class MyAccountViewModel @Inject constructor(
         logoutOpenClose(false)
         pref.clearPref()
         viewModelScope.launch { dbRepository.deleteSetProgress() }
+        Purchases.sharedInstance.logOut()
     }
     private fun getStatistics() = viewModelScope.launch {
         getStatistics(

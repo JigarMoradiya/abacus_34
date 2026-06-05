@@ -6,7 +6,6 @@ import com.jigar.me.data.model.dbtable.abacus_all_data.Category
 import com.jigar.me.data.model.dbtable.abacus_all_data.DisplayPages
 import com.jigar.me.ui.jetpack.core.StatefulViewModel
 import com.jigar.me.ui.jetpack.core.repository.abacus_data.AbacusDataRepository
-import com.jigar.me.ui.jetpack.core.repository.abacus_data.PurchaseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -19,7 +18,6 @@ import javax.inject.Inject
 @HiltViewModel
 class LevelCategoryViewModel @Inject constructor(
     private val abacusDataRepository: AbacusDataRepository,
-    private val purchaseRepository: PurchaseRepository,
     savedStateHandle: SavedStateHandle
 ) : StatefulViewModel<LevelCategoryUiState>() {
 
@@ -36,10 +34,9 @@ class LevelCategoryViewModel @Inject constructor(
 
     fun load(levelId: String, allSets: List<Set>)  = viewModelScope.launch {
         combine(
-            purchaseRepository.getPurchasedSku(),
             abacusDataRepository.getCategories(levelId),
             abacusDataRepository.getAllPages()
-        ) { sku, categories,pages ->
+        ) { categories, pages ->
             if (categories.isNotEmpty()) {
                 val progressMap = calculateAllProgress(
                     categories = categories,

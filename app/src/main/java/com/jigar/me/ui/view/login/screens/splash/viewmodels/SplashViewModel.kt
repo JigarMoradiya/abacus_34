@@ -32,7 +32,7 @@ class SplashViewModel @Inject constructor(
     private val remoteConfig: FirebaseRemoteConfig by lazy {
         FirebaseRemoteConfig.getInstance().apply {
             val settings = FirebaseRemoteConfigSettings.Builder()
-                .setMinimumFetchIntervalInSeconds(5)
+                .setMinimumFetchIntervalInSeconds(3600)
                 .build()
             setConfigSettingsAsync(settings)
         }

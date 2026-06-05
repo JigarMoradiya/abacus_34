@@ -24,7 +24,6 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import com.android.billingclient.api.BillingClient
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorRed
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
@@ -50,44 +49,37 @@ fun PurchasePlanSection(
                 .verticalScroll(rememberScrollState())
                 .padding(end = AppDimens.Dimens12, top = AppDimens.Dimens2, bottom = AppDimens.Dimens2),
         ) {
-            uiState.sortedSkuList.forEachIndexed { index, plan ->
+            uiState.sortedPlanList.forEachIndexed { index, plan ->
                 if (index > 0) Spacer(Modifier.height(AppDimens.Dimens8))
                 PurchasePlanCard(
                     uiState = uiState,
                     plan = plan,
                     isSelected = uiState.selectedIndex == index,
-                    onClick = {
-                        onPlanSelected(index)
-                    }
+                    onClick = { onPlanSelected(index) }
                 )
             }
         }
 
-        if (uiState.showSubmitButton && uiState.sortedSkuList.isNotEmpty()){
+        if (uiState.showSubmitButton && uiState.sortedPlanList.isNotEmpty()) {
             Spacer(Modifier.height(AppDimens.Dimens8))
-            val selected = uiState.sortedSkuList[uiState.selectedIndex]
+            val selected = uiState.sortedPlanList[uiState.selectedIndex]
+            val isSubs = selected.type == "subs"
 
-            val isSubs = selected.type == BillingClient.ProductType.SUBS
-            if (isSubs){
-                val text = if (selected.getFreeTrialDays() > 0){
-                    stringResource(R.string.subscription_free_trial_msg)
-                }else{
-                    stringResource(R.string.cancel_subscription_anytime)
-                }
+            if (isSubs) {
                 Text(
-                    text = text,
+                    text = stringResource(R.string.cancel_subscription_anytime),
                     style = MaterialTheme.typography.labelSmall.scaled().copy(
-                        color = ColorRed,fontWeight = FontWeight.Normal,fontFamily = FontFamily(Font(R.font.font_regular))
+                        color = ColorRed, fontWeight = FontWeight.Normal,
+                        fontFamily = FontFamily(Font(R.font.font_regular))
                     ),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth()
                 )
-
                 Spacer(Modifier.height(AppDimens.Dimens8))
             }
 
             KidsActionButton(
-                text = if (isSubs)stringResource(R.string.txt_subscribe_Now) else stringResource(R.string.txt_purchase_Now),
+                text = if (isSubs) stringResource(R.string.txt_subscribe_Now) else stringResource(R.string.txt_purchase_Now),
                 icon = Icons.Default.Subscriptions,
                 type = ButtonType.BLUE,
                 onClick = onSubscribe,

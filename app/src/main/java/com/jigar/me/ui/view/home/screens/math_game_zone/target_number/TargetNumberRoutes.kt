@@ -20,8 +20,7 @@ fun TargetNumberHomeRoute(
     onBackClick: () -> Unit,
 ) {
     val viewModel: TargetNumberViewModel = hiltViewModel()
-    val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
-    val isSubscribed = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
+    var isSubscribed by remember { mutableStateOf(homeActivityViewModel.isPurchasedForModule()) }
     var showPaywall by remember { mutableStateOf(false) }
 
     TargetNumberHomeScreen(
@@ -39,7 +38,7 @@ fun TargetNumberHomeRoute(
 
     if (showPaywall) {
         FreemiumPaywallBottomSheet(
-            purchasedSKU = purchasedSKU,
+            onSubscriptionActivated = { isSubscribed = true; showPaywall = false },
             onDismiss = { showPaywall = false }
         )
     }

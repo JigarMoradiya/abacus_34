@@ -50,6 +50,7 @@ coil = "2.7.0"
 sqlcipher = "4.11.0"
 gson = "2.13.2"
 billing = "8.1.0"
+revenuecat = "8.12.2"
 
 # UI libraries
 scrollingPageIndicator = "1.2.5"
@@ -161,6 +162,8 @@ media3-ui = { group = "androidx.media3", name = "media3-ui", version.ref = "medi
 
 # Billing & Data
 billing-ktx = { group = "com.android.billingclient", name = "billing-ktx", version.ref = "billing" }
+revenuecat = { group = "com.revenuecat.purchases", name = "purchases", version.ref = "revenuecat" }
+revenuecat-ui = { group = "com.revenuecat.purchases", name = "purchases-ui", version.ref = "revenuecat" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 javaluator = { group = "com.fathzer", name = "javaluator", version.ref = "javaluator" }
 commons-text = { group = "org.apache.commons", name = "commons-text", version.ref = "commonsText" }

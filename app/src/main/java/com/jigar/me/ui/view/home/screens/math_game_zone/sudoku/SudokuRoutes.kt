@@ -23,8 +23,7 @@ fun SudokuHomeRoute(
     onStartPlay: (size: String, difficulty: String, isNewPuzzle: Boolean) -> Unit,
 ) {
     val viewModel: SudokuHomeViewModel = hiltViewModel()
-    val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
-    val isSubscribed = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
+    var isSubscribed by remember { mutableStateOf(homeActivityViewModel.isPurchasedForModule()) }
     var showPaywall by remember { mutableStateOf(false) }
 
     SudokuHomeScreen(
@@ -46,7 +45,7 @@ fun SudokuHomeRoute(
 
     if (showPaywall) {
         FreemiumPaywallBottomSheet(
-            purchasedSKU = purchasedSKU,
+            onSubscriptionActivated = { isSubscribed = true; showPaywall = false },
             onDismiss = { showPaywall = false }
         )
     }

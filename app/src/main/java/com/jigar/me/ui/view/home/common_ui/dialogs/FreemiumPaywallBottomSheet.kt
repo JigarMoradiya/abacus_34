@@ -47,11 +47,10 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorAccent
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
-import com.jigar.me.ui.view.base.inapp.BillingRepository
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
+import com.jigar.me.ui.view.home.screens.purchase.components.getDurationTxt
 import com.jigar.me.ui.view.home.common_ui.sheets.KidsBottomSheet
 import com.jigar.me.ui.view.home.screens.purchase.components.PriceUi
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
@@ -61,7 +60,6 @@ import com.jigar.me.ui.view.home.theme.ButtonType
 
 @Composable
 fun FreemiumPaywallBottomSheet(
-    purchasedSKU: List<InAppSkuDetails>,
     onSubscriptionActivated: () -> Unit = {},
     onDismiss: () -> Unit,
 ) {
@@ -69,22 +67,20 @@ fun FreemiumPaywallBottomSheet(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val activity = LocalContext.current as Activity
 
-    LaunchedEffect(purchasedSKU) {
-        viewModel.loadInitialData(purchasedSKU)
+    LaunchedEffect(Unit) {
+        viewModel.loadData()
     }
 
-    val isLoading = uiState.sortedSkuList.isEmpty()
+    val isLoading = uiState.sortedPlanList.isEmpty()
     var showBenefits by remember { mutableStateOf(false) }
     var showLoginSheet by remember { mutableStateOf(false) }
     var pendingPlanIndex by remember { mutableStateOf<Int?>(null) }
 
-    // After login — check subscription, then proceed or purchase
+    // After login — re-check subscription fresh (RC + admin plans) then proceed or purchase
     fun handleAfterLogin() {
         showLoginSheet = false
-        if (purchasedSKU.isNotEmpty()) {
-            // Already subscribed on this device
-            onDismiss()
-            onSubscriptionActivated()
+        if (viewModel.isUserSubscribed()) {
+            onDismiss(); onSubscriptionActivated()
         } else {
             pendingPlanIndex?.let { index ->
                 pendingPlanIndex = null
@@ -273,10 +269,10 @@ fun FreemiumPaywallBottomSheet(
                             modifier = Modifier.size(AppDimens.Dimens40)
                         )
                     } else {
-                        uiState.sortedSkuList.forEachIndexed { index, plan ->
-                            val isYearly = plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_1Year)
-                            val isWeekly = plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_Week)
-                            val isLifetime = plan.sku.contains(BillingRepository.AbacusSku.PRODUCT_ID_All)
+                        uiState.sortedPlanList.forEachIndexed { index, plan ->
+                            val isYearly = plan.sku.contains("1year")
+                            val isWeekly = plan.sku.contains("week")
+                            val isLifetime = plan.sku.contains("all")
                             val emoji = when {
                                 isWeekly -> "📆"
                                 isLifetime -> "⭐"
@@ -297,13 +293,10 @@ fun FreemiumPaywallBottomSheet(
                                 uiState = uiState,
                                 onSubscribe = {
                                     if (!viewModel.isUserLoggedIn()) {
-                                        // Not logged in — save plan and show login
                                         pendingPlanIndex = index
                                         showLoginSheet = true
-                                    } else if (purchasedSKU.isNotEmpty()) {
-                                        // Already subscribed — close and activate
-                                        onDismiss()
-                                        onSubscriptionActivated()
+                                    } else if (viewModel.isUserSubscribed()) {
+                                        onDismiss(); onSubscriptionActivated()
                                     } else {
                                         viewModel.onPlanSelected(index)
                                         viewModel.makePurchase(activity)
@@ -350,7 +343,7 @@ private fun BenefitRow(text: String) {
 private fun PaywallPlanCard(
     emoji: String,
     title: String,
-    plan: InAppSkuDetails,
+    plan: com.jigar.me.ui.view.home.screens.purchase.viewmodels.RcPlanItem,
     isHighlighted: Boolean,
     badge: String?,
     uiState: PurchaseUiState,

@@ -50,8 +50,7 @@ fun SetScreen(
     val viewModel: SetViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val allSets by homeActivityViewModel.allSets.collectAsStateWithLifecycle()
-    val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
-    val isSubscribed = homeActivityViewModel.isPurchasedSelectedLevel(purchasedSKU,uiState.levelName)
+    var isSubscribed by remember(uiState.levelName) { mutableStateOf(homeActivityViewModel.isPurchasedSelectedLevel(uiState.levelName)) }
     val isLoggedIn = homeActivityViewModel.isUserLoggedIn()
     var showPaywall by remember { mutableStateOf(false) }
     var showLogin by remember { mutableStateOf(false) }
@@ -135,6 +134,7 @@ fun SetScreen(
             subtitle = loginSubtitle,
             onLoginSuccess = {
                 showLogin = false
+                isSubscribed = homeActivityViewModel.isPurchasedSelectedLevel(uiState.levelName)
                 pendingSetId?.let { onNavigateToDoPractice(it, true) }
                 pendingSetId = null
             },
@@ -149,7 +149,7 @@ fun SetScreen(
 
     if (showPaywall) {
         FreemiumPaywallBottomSheet(
-            purchasedSKU = purchasedSKU,
+            onSubscriptionActivated = { isSubscribed = true; showPaywall = false },
             onDismiss = { showPaywall = false }
         )
     }

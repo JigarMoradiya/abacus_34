@@ -140,7 +140,7 @@ fun HomeScreen(
             negativeButtonText = stringResource(R.string.no_move_later),
             notes = stringResource(R.string.no_move_later_msg),
             widthMultiplier = 0.8f,
-            onPositiveTapped = { viewModel.changePurchase() },
+            onPositiveTapped = { viewModel.closeConflictPopup() },
             onNegativeTapped = { viewModel.closeConflictPopup() }
         )
     }

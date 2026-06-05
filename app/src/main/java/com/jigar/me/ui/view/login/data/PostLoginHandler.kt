@@ -19,6 +19,8 @@ import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.Resource
+import com.revenuecat.purchases.Purchases
+import com.revenuecat.purchases.awaitLogIn
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -120,6 +122,11 @@ class PostLoginHandler @Inject constructor(
                 if (abacusResponse.value.status == AppConstants.APIStatus.SUCCESS) {
                     insertProgressData(abacusResponse.value.data)
                     prefs.setUserLoggedIn(true)
+                    // Identify user in RevenueCat so their purchases are synced
+                    val loginData = Gson().fromJson(prefs.getLoginData(), LoginData::class.java)
+                    loginData?.id?.let { userId ->
+                        try { Purchases.sharedInstance.awaitLogIn(userId) } catch (_: Exception) {}
+                    }
                     Outcome.NavigateHome
                 } else {
                     Outcome.Failure(abacusResponse.value.error?.message)

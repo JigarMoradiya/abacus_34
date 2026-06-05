@@ -22,8 +22,7 @@ fun NumberSequencePuzzleHomeRoute(
     onPuzzleSelect: (Int) -> Unit,
     onBackClick: () -> Unit,
 ) {
-    val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
-    val isSubscribed = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
+    var isSubscribed by remember { mutableStateOf(homeActivityViewModel.isPurchasedForModule()) }
     var showPaywall by remember { mutableStateOf(false) }
 
     NumberSequencePuzzleHomeJetpackScreen(
@@ -41,7 +40,7 @@ fun NumberSequencePuzzleHomeRoute(
 
     if (showPaywall) {
         FreemiumPaywallBottomSheet(
-            purchasedSKU = purchasedSKU,
+            onSubscriptionActivated = { isSubscribed = true; showPaywall = false },
             onDismiss = { showPaywall = false }
         )
     }

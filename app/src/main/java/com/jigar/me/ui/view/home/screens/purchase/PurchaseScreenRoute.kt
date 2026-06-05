@@ -27,11 +27,10 @@ fun PurchaseScreenRoute(
 ) {
     val viewModel: PurchaseViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
     val activity = LocalContext.current as Activity
     var showLoginSheet by remember { mutableStateOf(false) }
 
-    viewModel.loadInitialData(purchasedSKU)
+    viewModel.loadData()
 
     Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         PurchaseScreen(
@@ -52,7 +51,11 @@ fun PurchaseScreenRoute(
             showContinueWithoutSaving = false,
             onLoginSuccess = {
                 showLoginSheet = false
-                viewModel.makePurchase(activity)
+                if (viewModel.isUserSubscribed()) {
+                    viewModel.loadData()
+                } else {
+                    viewModel.makePurchase(activity)
+                }
             },
             onDismiss = { showLoginSheet = false }
         )

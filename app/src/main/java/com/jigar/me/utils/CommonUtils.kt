@@ -11,7 +11,6 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
-import com.android.billingclient.api.BillingClient
 import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -20,14 +19,7 @@ import com.jigar.me.R
 import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
-import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.data.pref.AppPreferencesHelper
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_1Month
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_1Year
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_3Month
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_old
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Week
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
@@ -98,7 +90,7 @@ object CommonUtils {
             val formatter = SimpleDateFormat(DateTimeUtils.dd_MMMM_yyyy)
             val calendar = Calendar.getInstance()
             calendar.timeInMillis = purchaseTime
-            return if (productType == BillingClient.ProductType.SUBS){
+            return if (productType == "subs"){
                 val calendarEnd = Calendar.getInstance()
                 calendarEnd.timeInMillis = purchaseTime
 
@@ -149,93 +141,66 @@ object CommonUtils {
         } else formattingInput
     }
 
-    fun checkLevelIsPurchase(purchasedSKU: List<InAppSkuDetails>, name: String, prefManager: AppPreferencesHelper): Boolean {
-//        if (BuildConfig.DEBUG){
-//            return true
-//        }
-        var isPurchased = false
+    // Checks RC entitlement + admin-assigned plans. Used for level-specific access.
+    fun checkLevelIsPurchase(name: String, prefManager: AppPreferencesHelper): Boolean {
         val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
-        if (loginData?.email.equals("abacus@yopmail.com") || prefManager.isUserInFreeTrial()){
-            isPurchased = true
-        }else{
-            purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime_old
-                    || it.sku.contains(PRODUCT_ID_All)
-                    || it.sku.contains(PRODUCT_ID_1Year)
-                    || it.sku.contains(PRODUCT_ID_Week)
-                    || it.sku.contains(PRODUCT_ID_1Month)
-                    || it.sku.contains(PRODUCT_ID_3Month)
-                    || (it.sku.contains(name)) }.also {
-                isPurchased = it != null
+        if (loginData?.email == "abacus@yopmail.com") return true
+
+        // RevenueCat entitlement
+        if (RevenueCatHelper.isSubscribed) return true
+
+        // Admin-assigned plans
+        val adminData = prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, "")
+        if (adminData.isNotEmpty()) {
+            val plans = Gson().fromJson<List<PlanAssignFromAdminData>>(
+                adminData, object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
+            )
+            val found = plans.find { plan ->
+                plan.google_order_id == null && (
+                    plan.google_plan_id?.contains(name) == true
+                    || plan.google_plan_id?.contains("all") == true
+                    || plan.google_plan_id?.contains("1year") == true
+                    || plan.google_plan_id?.contains("week") == true
+                    || plan.google_plan_id?.contains("1month") == true
+                    || plan.google_plan_id?.contains("3month") == true
+                )
             }
-            if (!isPurchased){
-                if (prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"").isNotEmpty()) {
-                    val planListData : List<PlanAssignFromAdminData> = Gson().fromJson(
-                        prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
-                        object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
-                    )
-                    planListData.find { it.google_order_id == null &&
-                            (it.google_plan_id?.contains(name) == true
-                                    || it.google_plan_id?.contains(PRODUCT_ID_All) == true
-                                    || it.google_plan_id?.contains(PRODUCT_ID_1Year) == true
-                                    || it.google_plan_id?.contains(PRODUCT_ID_Week) == true
-                                    || it.google_plan_id?.contains(PRODUCT_ID_1Month) == true
-                                    || it.google_plan_id?.contains(PRODUCT_ID_3Month) == true
-                                    )
-                    }.also {
-                        isPurchased = it != null
-                    }
-                }
-            }
+            if (found != null) return true
         }
-        return isPurchased
+        return false
     }
 
-    fun checkPurchaseForExerciseExamCCM(prefManager: AppPreferencesHelper,purchasedSKU: List<InAppSkuDetails>): Boolean {
-//        if (BuildConfig.DEBUG){
-//            return true
-//        }
+    // Checks RC entitlement + admin-assigned plans. Used for exercise/exam/CCM/games access.
+    fun checkPurchaseForExerciseExamCCM(prefManager: AppPreferencesHelper): Boolean {
         val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
-        var isPurchased = false
-        if (loginData?.email.equals("abacus@yopmail.com") || prefManager.isUserInFreeTrial()){
-            isPurchased = true
-        }else{
-            purchasedSKU.find {
-                it.sku == PRODUCT_ID_All_lifetime_old
-                    || it.sku.contains(PRODUCT_ID_All)
-                    || it.sku.contains(PRODUCT_ID_1Year)
-                    || it.sku.contains(PRODUCT_ID_Week)
-                    || it.sku.contains(PRODUCT_ID_1Month)
-                    || it.sku.contains(PRODUCT_ID_3Month)
-                    || (it.sku.contains("level3")) || (it.sku.contains("level4"))
-                    || (it.sku.contains("level5")) || (it.sku.contains("level6"))
-                    || (it.sku.contains("level7")) || (it.sku.contains("level8"))}.also {
-                isPurchased = it != null
-            }
-            if (!isPurchased){
-                if (prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"").isNotEmpty()) {
-                    val planListData : List<PlanAssignFromAdminData> = Gson().fromJson(
-                        prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
-                        object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
-                    )
-                    planListData.find { it.google_order_id == null && (
-                            (it.google_plan_id?.contains("level3") == true) ||
-                            (it.google_plan_id?.contains("level4") == true) ||
-                            (it.google_plan_id?.contains("level5") == true) ||
-                            (it.google_plan_id?.contains("level6") == true) ||
-                            (it.google_plan_id?.contains("level7") == true) ||
-                            (it.google_plan_id?.contains("level8") == true) ||
-                            (it.google_plan_id?.contains(PRODUCT_ID_1Year) == true) ||
-                            (it.google_plan_id?.contains(PRODUCT_ID_All) == true) ||
-                            (it.google_plan_id?.contains(PRODUCT_ID_Week) == true) ||
-                            (it.google_plan_id?.contains(PRODUCT_ID_1Month) == true) ||
-                            (it.google_plan_id?.contains(PRODUCT_ID_3Month) == true)
-                            ) }.also {
-                        isPurchased = it != null
-                    }
-                }
-            }
-        }
+        if (loginData?.email == "abacus@yopmail.com") return true
 
-        return isPurchased
+        // RevenueCat entitlement
+        if (RevenueCatHelper.isSubscribed) return true
+
+        // Admin-assigned plans
+        val adminData = prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, "")
+        if (adminData.isNotEmpty()) {
+            val plans = Gson().fromJson<List<PlanAssignFromAdminData>>(
+                adminData, object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
+            )
+            val found = plans.find { plan ->
+                plan.google_order_id == null && (
+                    plan.google_plan_id?.contains("all") == true
+                    || plan.google_plan_id?.contains("1year") == true
+                    || plan.google_plan_id?.contains("week") == true
+                    || plan.google_plan_id?.contains("1month") == true
+                    || plan.google_plan_id?.contains("3month") == true
+                    || plan.google_plan_id?.contains("level3") == true
+                    || plan.google_plan_id?.contains("level4") == true
+                    || plan.google_plan_id?.contains("level5") == true
+                    || plan.google_plan_id?.contains("level6") == true
+                    || plan.google_plan_id?.contains("level7") == true
+                    || plan.google_plan_id?.contains("level8") == true
+                )
+            }
+            if (found != null) return true
+        }
+        return false
     }
 }

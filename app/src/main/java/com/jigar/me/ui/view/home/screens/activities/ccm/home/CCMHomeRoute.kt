@@ -32,8 +32,7 @@ fun CCMHomeRoute(
 ) {
     val viewModel: CCMHomeViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
-    val isSubscribed = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
+    var isSubscribed by remember { mutableStateOf(homeActivityViewModel.isPurchasedForModule()) }
     val context = LocalContext.current
     val pleaseSelectMsg = stringResource(R.string.please_select_at_least_one_checkbox)
     var showPaywall by remember { mutableStateOf(false) }
@@ -58,7 +57,7 @@ fun CCMHomeRoute(
 
     if (showPaywall) {
         FreemiumPaywallBottomSheet(
-            purchasedSKU = purchasedSKU,
+            onSubscriptionActivated = { isSubscribed = true; showPaywall = false },
             onDismiss = { showPaywall = false }
         )
     }

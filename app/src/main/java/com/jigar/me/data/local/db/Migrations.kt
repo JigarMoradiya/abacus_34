@@ -5,6 +5,20 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.jigar.me.utils.AppConstants
 
 object Migrations {
+    // Drops IAP purchase and SKU tables — RevenueCat replaces local billing DB
+    val MIGRATION_2_3 = object : Migration(2, 3) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("DROP TABLE IF EXISTS tableInAppPurchase")
+            database.execSQL("DROP TABLE IF EXISTS tableInAppSKU")
+        }
+    }
+
+    val MIGRATION_3_4 = object : Migration(3, 4) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("DROP TABLE IF EXISTS ExamHistory")
+        }
+    }
+
     val MIGRATION_1_2 = object : Migration(1, 2) {
         override fun migrate(database: SupportSQLiteDatabase) {
 

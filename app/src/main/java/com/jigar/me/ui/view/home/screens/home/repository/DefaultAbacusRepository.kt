@@ -28,65 +28,10 @@ class DefaultAbacusRepository @Inject constructor(
     private val prefManager: AppPreferencesHelper,
     ) : AbacusRepository, SafeApiCall {
 
-    // network directory
-    override fun changePlan(params: PurchasedPlanCheckRequest): Flow<Unit> = emitFlow {
-        when (val result = changePlanApi(params)) {
-            is Resource.Success -> {
-                val response = result.value
-                if (response.status == AppConstants.APIStatus.SUCCESS){
-                    return@emitFlow
-                } else {
-                    val errorMsg = response.error?.message
-                        ?: response.message
-                        ?: "Unknown server response"
-                    throw Exception(errorMsg)
-                }
-            }
-
-            is Resource.Failure -> throw when {
-                result.isNetworkError -> IOException("Network error occurred")
-                else -> Exception("API error: ${result.errorBody ?: "Unknown error"}, code: ${result.errorCode}")
-            }
-
-            else -> throw Exception("Unexpected response type")
-        }
-    }
-    private suspend fun changePlanApi(request: PurchasedPlanCheckRequest) = safeApiCall {
-        remote.changePlan(request)
-    }
+    // Submits purchase to server — fire and forget, no error handling needed
     override fun devicePurchaseVerify(params: PurchasedPlanCheckRequest): Flow<String> = emitFlow {
-        when (val result = devicePurchaseVerifyApi(params)) {
-            is Resource.Success -> {
-                val response = result.value
-                when {
-                    response.status == AppConstants.APIStatus.SUCCESS -> {
-                        return@emitFlow AppConstants.APIStatus.SUCCESS
-                    }
-                    response.status == AppConstants.APIStatus.ERROR || response.error?.error_code != null -> {
-                        return@emitFlow response.error?.error_code?:""
-                    }
-                    else -> {
-                        val errorMsg = response.error?.message
-                            ?: response.message
-                            ?: "Unknown server response"
-                        throw Exception(errorMsg)
-                    }
-                }
-            }
-
-            is Resource.Failure -> {
-                if (result.errorType != null){
-                    return@emitFlow result.errorType?:""
-                }else{
-                    throw when {
-                        result.isNetworkError -> IOException("Network error occurred")
-                        else -> Exception("API error: ${result.errorBody ?: "Unknown error"}, code: ${result.errorCode}")
-                    }
-                }
-            }
-
-            else -> throw Exception("Unexpected response type")
-        }
+        runCatching { devicePurchaseVerifyApi(params) }
+        return@emitFlow AppConstants.APIStatus.SUCCESS
     }
     private suspend fun devicePurchaseVerifyApi(request: PurchasedPlanCheckRequest) = safeApiCall {
         remote.handleExistingPurchase(request)

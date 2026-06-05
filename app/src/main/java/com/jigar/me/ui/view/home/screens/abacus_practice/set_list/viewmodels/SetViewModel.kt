@@ -4,18 +4,15 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.jigar.me.ui.jetpack.core.StatefulViewModel
 import com.jigar.me.ui.jetpack.core.repository.abacus_data.AbacusDataRepository
-import com.jigar.me.ui.jetpack.core.repository.abacus_data.PurchaseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class SetViewModel @Inject constructor(
     private val abacusDataRepository: AbacusDataRepository,
-    private val purchaseRepository: PurchaseRepository,
     savedStateHandle: SavedStateHandle
 ) : StatefulViewModel<SetUiState>() {
 
@@ -31,21 +28,17 @@ class SetViewModel @Inject constructor(
     }
 
     fun load(levelCategoryId: String)  = viewModelScope.launch {
-        combine(
-            purchaseRepository.getPurchasedSku(),
-            abacusDataRepository.getPages(levelCategoryId)
-        ) { sku, pages ->
+        abacusDataRepository.getPages(levelCategoryId).catch { onFailure(it) }.collect { pages ->
             updateState_ {
                 copy(
                     levelName = name?:"",
                     pageTitle = title,
-                    purchasedSku = sku,
                     pages = pages,
                     showNoData = pages.isEmpty(),
                     isLoading = false
                 )
             }
-        }.catch { onFailure(it) }.collect()
+        }
     }
 
 

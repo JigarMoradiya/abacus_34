@@ -171,8 +171,9 @@ dependencies {
     implementation(libs.androidx.sqlite)
     implementation(libs.androidx.sqlite.framework)
 
-    // Billing
-    implementation(libs.billing.ktx)
+    // RevenueCat
+    implementation(libs.revenuecat)
+    implementation(libs.revenuecat.ui)
 
     // Data
     implementation(libs.gson)

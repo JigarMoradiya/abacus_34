@@ -11,12 +11,6 @@ import com.jigar.me.data.api.connections.RemoteDataSource
 import com.jigar.me.data.local.db.AppDatabase
 import com.jigar.me.data.local.db.abacus_all_data.AbacusAllDataDB
 import com.jigar.me.data.local.db.abacus_all_data.AbacusAllDataDao
-import com.jigar.me.data.local.db.exam.ExamHistoryDB
-import com.jigar.me.data.local.db.exam.ExamHistoryDao
-import com.jigar.me.data.local.db.inapp.purchase.InAppPurchaseDB
-import com.jigar.me.data.local.db.inapp.purchase.InAppPurchaseDao
-import com.jigar.me.data.local.db.inapp.sku.InAppSKUDB
-import com.jigar.me.data.local.db.inapp.sku.InAppSKUDao
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuRepository
 import com.jigar.me.ui.view.home.screens.math_game_zone.target_number.viewmodel.TargetRepository
@@ -47,22 +41,7 @@ object AppModule {
     @Singleton
     fun providesDatabase(@ApplicationContext context: Context): AppDatabase = AppDatabase.getInstance(context)
 
-    @Provides
-    fun providesInAppSKUDao(db: AppDatabase): InAppSKUDao = db.inAppSKUDao()
-    @Provides
-    fun providesInAppSKUDB(dao: InAppSKUDao): InAppSKUDB = InAppSKUDB(dao)
-
-    @Provides
-    fun providesInAppPurchaseDao(db: AppDatabase): InAppPurchaseDao = db.inAppPurchaseDao()
-    @Provides
-    fun providesInAppPurchaseDB(dao: InAppPurchaseDao): InAppPurchaseDB = InAppPurchaseDB(dao)
-
-    @Provides
-    fun providesExamHistoryDao(db: AppDatabase): ExamHistoryDao = db.examHistoryDao()
-    @Provides
-    fun providesExamHistoryDB(dao: ExamHistoryDao): ExamHistoryDB = ExamHistoryDB(dao)
-
-    @Provides
+@Provides
     fun providesAbacusAllDataDao(db: AppDatabase): AbacusAllDataDao = db.abacusAllDataDao()
     @Provides
     fun providesAbacusAllDataDB(dao: AbacusAllDataDao): AbacusAllDataDB = AbacusAllDataDB(dao)

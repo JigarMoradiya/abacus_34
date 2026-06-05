@@ -52,8 +52,7 @@ fun ExerciseRoute(
     val loginViewModel: LoginHomeViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val loginUiState by loginViewModel.uiState.collectAsStateWithLifecycle()
-    val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
-    val isPurchase = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
+    var isPurchase by remember { mutableStateOf(homeActivityViewModel.isPurchasedForModule()) }
     val isLoggedIn = homeActivityViewModel.isUserLoggedIn()
     val context = androidx.compose.ui.platform.LocalContext.current
     viewModel.setIsPurchased(isPurchase)
@@ -133,7 +132,7 @@ fun ExerciseRoute(
         FreemiumLoginBottomSheet(
             showContinueWithoutSaving = true,
             subtitle = stringResource(R.string.exercise_login_subtitle),
-            onLoginSuccess = { showLogin = false; viewModel.generateExercise() },
+            onLoginSuccess = { showLogin = false; isPurchase = homeActivityViewModel.isPurchasedForModule(); viewModel.generateExercise() },
             onContinueWithoutSaving = { showLogin = false; viewModel.generateExerciseWithoutSaving() },
             onDismiss = { showLogin = false }
         )
@@ -141,7 +140,7 @@ fun ExerciseRoute(
 
     if (showPaywall) {
         FreemiumPaywallBottomSheet(
-            purchasedSKU = purchasedSKU,
+            onSubscriptionActivated = { isPurchase = true; showPaywall = false },
             onDismiss = { showPaywall = false }
         )
     }

@@ -1,37 +1,48 @@
 package com.jigar.me.ui.view.home.screens.purchase.viewmodels
 
-import com.jigar.me.data.model.DisplayPurchaseData
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
-import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
+import com.revenuecat.purchases.Package
+
+data class RcPlanItem(
+    val sku: String,
+    val price: String?,
+    val price_amount_micros: Long?,
+    val type: String?,
+    val isPurchase: Boolean,
+    val billingPeriod: String?,
+    val purchaseTime: Long,
+    val rcPackage: Package
+) {
+    fun isLifeTimeOffer() = sku.contains("all")
+}
 
 data class PurchaseUiState(
     val error: Int? = null,
     val selectedIndex: Int = 0,
+    val isPurchasing: Boolean = false,
+    val purchaseSuccess: Boolean = false,
 
     val yearPlanAssignFromAdmin: PlanAssignFromAdminData? = null,
     val allPlanAssignFromAdmin: PlanAssignFromAdminData? = null,
-
-    // UI lists
-    val benefitList: List<String> = emptyList(),
-    val displayItemList: List<DisplayPurchaseData> = emptyList(),
     val planListAssignFromAdmin: List<PlanAssignFromAdminData> = emptyList(),
 
-    // SKU data
-    val inAppSkuDetailsList: List<InAppSkuDetails> = emptyList(),
-    val sortedSkuList: List<InAppSkuDetails> = emptyList(),
-    val oldPurchasedSkuList: List<InAppSkuDetails> = emptyList(),
+    // Plan data (from RC)
+    val sortedPlanList: List<RcPlanItem> = emptyList(),
+
+    // Originals for discount display
+    val original1YearData: RcPlanItem? = null,
+    val originalLifetimeData: RcPlanItem? = null,
+    val original1MonthData: RcPlanItem? = null,
 
     // Discounts
     val discountPer: Int = 0,
     val discountPerLifetime: Int = 0,
 
-    // Original (before discount)
-    val original1YearData: InAppSkuDetails? = null,
-    val originalLifetimeData: InAppSkuDetails? = null,
-    val original1MonthData: InAppSkuDetails? = null,
-
     // UI flags
+    val showSubmitButton: Boolean = true,
     val isOldSubscriptionThere: Boolean = false,
     val showOldSubscriptionPopup: Boolean = false,
-    val showSubmitButton: Boolean = true,
+
+    // Benefit list
+    val benefitList: List<String> = emptyList(),
 )

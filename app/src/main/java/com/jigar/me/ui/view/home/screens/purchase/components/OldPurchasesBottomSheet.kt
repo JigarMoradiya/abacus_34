@@ -85,15 +85,7 @@ fun OldPurchasesBottomSheet(
                         }
                     }
 
-                    LazyColumn(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens4),
-                    ) {
-                        itemsIndexed(uiState.oldPurchasedSkuList) { index, plan ->
-                            PurchasePlanCard(
-                                uiState = uiState, plan = plan, isSelected = uiState.selectedIndex == index, onClick = {})
-                        }
-                    }
+                    // Old subscription plans managed by RevenueCat
 
                 }
 

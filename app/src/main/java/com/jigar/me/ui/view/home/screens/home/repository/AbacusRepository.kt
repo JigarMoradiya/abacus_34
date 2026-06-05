@@ -8,5 +8,4 @@ interface AbacusRepository {
     fun getAbacusData(params: FetchAbacusDataRequest): Flow<Unit>
     fun getAbacusDataPublic(params: FetchAbacusDataRequest): Flow<Unit>
     fun devicePurchaseVerify(params: PurchasedPlanCheckRequest): Flow<String>
-    fun changePlan(params: PurchasedPlanCheckRequest): Flow<Unit>
 }

@@ -11,7 +11,12 @@ import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
 import com.google.gson.Gson
 import com.jigar.me.data.model.NotificationData
-import com.jigar.me.ui.view.base.inapp.BillingRepository
+import com.jigar.me.utils.RevenueCatHelper
+import com.revenuecat.purchases.Purchases
+import com.revenuecat.purchases.PurchasesConfiguration
+import com.revenuecat.purchases.awaitOfferings
+import com.revenuecat.purchases.interfaces.UpdatedCustomerInfoListener
+import kotlinx.coroutines.launch
 import com.jigar.me.ui.view.home.HomeActivity
 import com.jigar.me.ui.view.home.navigation.RouteNavigation
 import com.jigar.me.utils.CommonUtils
@@ -52,9 +57,6 @@ class MyApplication : Application(), Configuration.Provider {
     }
 
     @Inject
-    lateinit var billingRepository: BillingRepository
-
-    @Inject
     lateinit var workerFactory: HiltWorkerFactory
 
     override val workManagerConfiguration: Configuration
@@ -70,15 +72,17 @@ class MyApplication : Application(), Configuration.Provider {
         }
     }
 
-    override fun onTerminate() {
-        super.onTerminate()
-        billingRepository.endDataSourceConnections()
-    }
-
     override fun onCreate() {
         super.onCreate()
-        // Initialize billing once at app start
-        billingRepository.startDataSourceConnections()
+        // Initialize RevenueCat
+        Purchases.logLevel = com.revenuecat.purchases.LogLevel.DEBUG
+        Purchases.configure(
+            PurchasesConfiguration.Builder(this, "goog_GZMHOoRwGnscKzjqLIghpwwUzYh").build()
+        )
+        Purchases.sharedInstance.updatedCustomerInfoListener = UpdatedCustomerInfoListener { RevenueCatHelper.update(it) }
+        kotlinx.coroutines.MainScope().launch {
+            try { Purchases.sharedInstance.awaitOfferings() } catch (_: Exception) {}
+        }
 
         // app version update if any code logic change
         VersionUpdation.init(this)

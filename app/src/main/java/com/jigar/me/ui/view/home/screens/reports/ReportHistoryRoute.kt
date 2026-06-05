@@ -42,8 +42,7 @@ fun ReportHistoryRoute(
 ) {
     val viewModel: ReportHistoryViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
-    val isSubscribed = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
+    val isSubscribed = homeActivityViewModel.isPurchasedForModule()
     var showPaywall by remember { mutableStateOf(false) }
 
     Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
@@ -94,7 +93,6 @@ fun ReportHistoryRoute(
 
     if (showPaywall) {
         FreemiumPaywallBottomSheet(
-            purchasedSKU = purchasedSKU,
             onDismiss = { showPaywall = false }
         )
     }

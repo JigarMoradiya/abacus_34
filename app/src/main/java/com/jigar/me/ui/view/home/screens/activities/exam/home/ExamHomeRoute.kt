@@ -34,8 +34,7 @@ fun ExamHomeRoute(
 ) {
     val viewModel: ExamHomeViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val purchasedSKU by homeActivityViewModel.purchasedSku.collectAsStateWithLifecycle()
-    val isSubscribed = homeActivityViewModel.isPurchasedForModule(purchasedSKU)
+    var isSubscribed by remember { mutableStateOf(homeActivityViewModel.isPurchasedForModule()) }
     val isLoggedIn = homeActivityViewModel.isUserLoggedIn()
     val context = LocalContext.current
     val pleaseSelectMsg = stringResource(R.string.please_select_at_least_one_checkbox)
@@ -75,7 +74,7 @@ fun ExamHomeRoute(
         FreemiumLoginBottomSheet(
             showContinueWithoutSaving = true,
             subtitle = stringResource(R.string.exercise_login_subtitle),
-            onLoginSuccess = { showLogin = false; onStartPlay() },
+            onLoginSuccess = { showLogin = false; isSubscribed = homeActivityViewModel.isPurchasedForModule(); onStartPlay() },
             onContinueWithoutSaving = { showLogin = false; onStartPlayWithoutSaving() },
             onDismiss = { showLogin = false }
         )
@@ -83,7 +82,7 @@ fun ExamHomeRoute(
 
     if (showPaywall) {
         FreemiumPaywallBottomSheet(
-            purchasedSKU = purchasedSKU,
+            onSubscriptionActivated = { isSubscribed = true; showPaywall = false },
             onDismiss = { showPaywall = false }
         )
     }

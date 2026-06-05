@@ -24,8 +24,6 @@ interface StudentApi {
     suspend fun handleExistingPurchase(@Body request : PurchasedPlanCheckRequest): MainAPIResponse
     @GET("student/app-reviews-list")
     suspend fun appReviewsList(): MainAPIResponse
-    @POST("student/change-plan")
-    suspend fun changePlan(@Body request : PurchasedPlanCheckRequest): MainAPIResponse
     @POST("student/get-abacus-set-pages-categories-levels-data")
     suspend fun getAbacusData(@Body request : FetchAbacusDataRequest): MainAPIResponse
     @POST("student/get-abacus-set-pages-categories-levels-data-public")
