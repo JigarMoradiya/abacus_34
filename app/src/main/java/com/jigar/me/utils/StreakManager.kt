@@ -27,7 +27,7 @@ data class StreakResult(
 object StreakManager {
 
     // Create a new instance per call — SimpleDateFormat is not thread-safe
-    private fun sdf() = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    private fun sdf() = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
     fun today(): String = sdf().format(Calendar.getInstance().time)
 

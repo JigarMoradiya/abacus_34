@@ -95,6 +95,9 @@ override fun getAccessToken(): String? = mPrefs.getString(PREF_KEY_ACCESS_TOKEN,
         val streakTotal    = getCustomParamInt(AppConstants.Streak.totalActiveDays, 0)
         val streakShields  = getCustomParamInt(AppConstants.Streak.streakShields, 0)
         val streakClaimed  = getCustomParam(AppConstants.Streak.claimedRewards, "")
+        // Notification UX state — device-level, preserve across logout
+        val notifPermAsked     = getCustomParamBoolean(AppConstants.Notifications.permissionAsked, false)
+        val notifSheetLastDate = getCustomParam(AppConstants.Notifications.sheetLastShownDate, "")
         mPrefs.edit { clear() }
         setCustomParam(Constants.last_sync_time, lastSyncTime)
         setCustomParamInt(AppConstants.Settings.Setting_bg_music_volume, bgMusicVolume)
@@ -104,5 +107,7 @@ override fun getAccessToken(): String? = mPrefs.getString(PREF_KEY_ACCESS_TOKEN,
         setCustomParamInt(AppConstants.Streak.totalActiveDays, streakTotal)
         setCustomParamInt(AppConstants.Streak.streakShields, streakShields)
         setCustomParam(AppConstants.Streak.claimedRewards, streakClaimed)
+        setCustomParamBoolean(AppConstants.Notifications.permissionAsked, notifPermAsked)
+        setCustomParam(AppConstants.Notifications.sheetLastShownDate, notifSheetLastDate)
     }
 }
