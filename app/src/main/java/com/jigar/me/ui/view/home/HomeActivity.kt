@@ -22,7 +22,7 @@ import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.TextToSpeechManager
-import com.jigar.me.ui.view.home.common_ui.BackgroundUI
+import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.navigation.HomeNavGraph
 import com.jigar.me.ui.view.home.theme.MyApplicationTheme
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
@@ -90,7 +90,7 @@ class HomeActivity : ComponentActivity() {
             AudioPlayerManager.init(this)
 
             setContent {
-                BackgroundUI()
+                HomePageBackground()
                 MyApplicationTheme {
                     CompositionLocalProvider(LocalPreferencesHelper provides preferences) {
                         HomeNavGraph(

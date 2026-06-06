@@ -7,7 +7,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.view.WindowCompat
 import com.jigar.me.data.pref.AppPreferencesHelper
-import com.jigar.me.ui.view.home.common_ui.BackgroundUI
+import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.theme.MyApplicationTheme
 import com.jigar.me.ui.view.other.review_submit.ReviewSubmitScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,7 +32,7 @@ class ReviewSubmitActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
-            BackgroundUI()
+            HomePageBackground()
             MyApplicationTheme {
                 ReviewSubmitScreen(onFinish = { finish() })
             }

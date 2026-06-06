@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.view.WindowCompat
-import com.jigar.me.ui.view.home.common_ui.BackgroundUI
+import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.theme.MyApplicationTheme
 import com.jigar.me.ui.view.other.contactus.ContactUsScreen
 import com.jigar.me.utils.AppConstants
@@ -29,7 +29,7 @@ class ContactUsActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
-            BackgroundUI()
+            HomePageBackground()
             MyApplicationTheme {
                 ContactUsScreen(onFinish = { finish() })
             }
