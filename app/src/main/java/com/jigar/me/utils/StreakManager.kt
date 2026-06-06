@@ -139,6 +139,55 @@ object StreakManager {
         )
     }
 
+    fun notificationContent(currentStreak: Int): Pair<String, String> {
+        val dayOfYear = Calendar.getInstance().get(Calendar.DAY_OF_YEAR)
+        val (title, body) = streakMessages[dayOfYear % streakMessages.size]
+        return title.replace("{n}", currentStreak.toString()) to body
+    }
+
+    private val streakMessages = listOf(
+        "🔥 Day {n} — keep the fire burning!" to
+            "Your child's focus is growing stronger every day. A little practice today protects everything they've built.",
+        "{n} days straight — what a learner! ⭐" to
+            "Consistency like this is rare at any age. You're raising someone who truly finishes what they start.",
+        "Don't break the {n}-day chain! 🔗" to
+            "Every link in that chain represents real growth. Your child has come so far — today keeps it unbroken.",
+        "🧠 {n} days of brain training!" to
+            "The mental strength your child builds through daily practice will carry them through school and beyond.",
+        "{n} days — a milestone is near! 🏆" to
+            "Your child is on a remarkable run. A few minutes of practice today keeps that journey alive.",
+        "Day {n} is waiting ✨" to
+            "Small daily habits shape a child's future in ways we can't always see. Today's session matters more than you know.",
+        "🔥 {n} days in — raising a champion!" to
+            "Very few children build this kind of discipline. Be proud — and keep that momentum alive today.",
+        "{n}-day habit in the making! 💡" to
+            "Research shows consistent daily practice reshapes the brain for life. Your child is well on their way.",
+        "Day {n} — almost automatic! 🎯" to
+            "The best learners make practice a part of their daily life. Your child is already becoming one of them.",
+        "🌟 {n} days of pure dedication!" to
+            "Dedication at this age is extraordinary. A short session today adds to something truly special.",
+        "Day {n} — the streak lives on! 🔥" to
+            "Every day your child practices, their confidence and mental speed grow. Today is too important to miss.",
+        "{n} days — your child is unstoppable! 💪" to
+            "The best investment you can make is in daily learning. A few minutes today goes a long way.",
+        "🎯 {n} days — precision in progress!" to
+            "Abacus builds speed, focus, and confidence all at once. Your child is growing all three — keep it going.",
+        "Day {n} — steady wins the race! 🐢" to
+            "It's not about one big effort — it's about showing up every day. Your child already knows that.",
+        "🌙 End the day right — {n} days strong!" to
+            "A quick practice before bed is a powerful way to close the day. Your child will feel proud they showed up.",
+        "{n} days — this habit is real! 🏅" to
+            "Practice is becoming a part of who your child is. That's something worth protecting today.",
+        "🔥 Day {n} check-in!" to
+            "Champions show up every single day — even when life gets busy. Your child can do that today.",
+        "Day {n} — future mathematician in training! 🧮" to
+            "Every session sharpens their mind a little more. What feels small today adds up to something extraordinary.",
+        "{n} days and still counting! ✨" to
+            "Your child is among a rare group of consistent learners. That's something worth protecting — especially today.",
+        "🌟 Day {n} — don't stop now!" to
+            "You've invested so much in your child's learning. Today's practice is the simplest way to honor that."
+    )
+
     private fun dayOffset(fmt: SimpleDateFormat, dateStr: String, days: Int): String {
         return try {
             val cal = Calendar.getInstance()

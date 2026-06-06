@@ -57,13 +57,7 @@ class StreakNotificationWorker @AssistedInject constructor(
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        val (title, message) = if (currentStreak > 0) {
-            "Keep your $currentStreak-day streak going! 🔥" to
-            "Open the app and practice today to maintain your streak."
-        } else {
-            "Start your learning streak today! 🔥" to
-            "Open Vedaavi Abacus and begin your daily practice."
-        }
+        val (title, message) = StreakManager.notificationContent(currentStreak)
 
         val notification = NotificationCompat.Builder(appContext, CHANNEL_ID)
             .setSmallIcon(R.drawable.logo_small)
