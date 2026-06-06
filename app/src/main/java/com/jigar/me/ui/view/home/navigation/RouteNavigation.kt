@@ -72,4 +72,17 @@ sealed class RouteNavigation(val route: String) {
     object CCMPlay : RouteNavigation("CCMPlay")
 
     object CredentialsLoginLandscape : RouteNavigation("CredentialsLoginLandscape")
+
+    object TodayTableHome : RouteNavigation("TodayTableHome/{tableNumber}") {
+        fun create(tableNumber: Int) = "TodayTableHome/$tableNumber"
+    }
+    object TodayTableDrill : RouteNavigation("TodayTableDrill/{tableNumber}") {
+        fun create(tableNumber: Int) = "TodayTableDrill/$tableNumber"
+    }
+    object TodayTableFlashcard : RouteNavigation("TodayTableFlashcard/{tableNumber}") {
+        fun create(tableNumber: Int) = "TodayTableFlashcard/$tableNumber"
+    }
+    object TodayTableFillBlank : RouteNavigation("TodayTableFillBlank/{tableNumber}") {
+        fun create(tableNumber: Int) = "TodayTableFillBlank/$tableNumber"
+    }
 }

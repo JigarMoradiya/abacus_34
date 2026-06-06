@@ -86,10 +86,23 @@ override fun getAccessToken(): String? = mPrefs.getString(PREF_KEY_ACCESS_TOKEN,
     }
 
     fun clearPref() {
-        val lastSyncTime = getCustomParam(Constants.last_sync_time, Constants.last_sync_default_time)
+        val lastSyncTime  = getCustomParam(Constants.last_sync_time, Constants.last_sync_default_time)
         val bgMusicVolume = getCustomParamInt(AppConstants.Settings.Setting_bg_music_volume, AppConstants.Settings.Setting_bg_music_volume_default)
+        // Streak is device-level habit data — preserve across logout
+        val streakCurrent  = getCustomParamInt(AppConstants.Streak.currentStreak, 0)
+        val streakLongest  = getCustomParamInt(AppConstants.Streak.longestStreak, 0)
+        val streakLastDate = getCustomParam(AppConstants.Streak.lastActivityDate, "")
+        val streakTotal    = getCustomParamInt(AppConstants.Streak.totalActiveDays, 0)
+        val streakShields  = getCustomParamInt(AppConstants.Streak.streakShields, 0)
+        val streakClaimed  = getCustomParam(AppConstants.Streak.claimedRewards, "")
         mPrefs.edit { clear() }
         setCustomParam(Constants.last_sync_time, lastSyncTime)
         setCustomParamInt(AppConstants.Settings.Setting_bg_music_volume, bgMusicVolume)
+        setCustomParamInt(AppConstants.Streak.currentStreak, streakCurrent)
+        setCustomParamInt(AppConstants.Streak.longestStreak, streakLongest)
+        setCustomParam(AppConstants.Streak.lastActivityDate, streakLastDate)
+        setCustomParamInt(AppConstants.Streak.totalActiveDays, streakTotal)
+        setCustomParamInt(AppConstants.Streak.streakShields, streakShields)
+        setCustomParam(AppConstants.Streak.claimedRewards, streakClaimed)
     }
 }

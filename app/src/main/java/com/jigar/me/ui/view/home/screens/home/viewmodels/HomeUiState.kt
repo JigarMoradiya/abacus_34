@@ -19,6 +19,12 @@ data class HomeUiState(
 
     val isShowFreeTrialPopup: Boolean = false,
     val freeTrialParam: FreeTrialParam? = null,
+
+    // Streak
+    val currentStreak: Int = 0,
+    val longestStreak: Int = 0,
+    val streakShields: Int = 0,
+    val streakMilestoneAwarded: Int? = null,
 )
 
 data class FreeTrialParam(

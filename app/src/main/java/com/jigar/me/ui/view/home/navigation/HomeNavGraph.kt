@@ -42,6 +42,10 @@ import com.jigar.me.ui.view.home.screens.abacus_free_mode.viewmodel.AbacusFreeMo
 import com.jigar.me.ui.view.home.screens.abacus_practice.level_list.LevelCategoryScreen
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.login.screens.splash.SplashScreen
+import com.jigar.me.ui.view.home.screens.today_table.TodayTableHomeScreen
+import com.jigar.me.ui.view.home.screens.today_table.TableDrillScreen
+import com.jigar.me.ui.view.home.screens.today_table.TableFlashcardScreen
+import com.jigar.me.ui.view.home.screens.today_table.TableFillBlankScreen
 
 @Composable
 fun HomeNavGraph(
@@ -111,6 +115,9 @@ fun HomeNavGraph(
                 },
                 onNavigateToWhatsLearning = {
                     navController.navigate(RouteNavigation.WhatsLearning.route)
+                },
+                onNavigateToTodayTable = { tableNumber ->
+                    navController.navigate(RouteNavigation.TodayTableHome.create(tableNumber))
                 },
             )
         }
@@ -395,6 +402,41 @@ fun HomeNavGraph(
             CCMPlayRoute(
                 onBackClick = { navController.popBackStack() }
             )
+        }
+
+        composable(
+            route = RouteNavigation.TodayTableHome.route,
+            arguments = listOf(navArgument("tableNumber") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val tableNumber = backStackEntry.arguments?.getInt("tableNumber") ?: 7
+            TodayTableHomeScreen(
+                tableNumber = tableNumber,
+                onNavigateToDrill = { navController.navigate(RouteNavigation.TodayTableDrill.create(tableNumber)) },
+                onNavigateToFlashcard = { navController.navigate(RouteNavigation.TodayTableFlashcard.create(tableNumber)) },
+                onNavigateToFillBlank = { navController.navigate(RouteNavigation.TodayTableFillBlank.create(tableNumber)) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(
+            route = RouteNavigation.TodayTableDrill.route,
+            arguments = listOf(navArgument("tableNumber") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val tableNumber = backStackEntry.arguments?.getInt("tableNumber") ?: 7
+            TableDrillScreen(tableNumber = tableNumber, onBackClick = { navController.popBackStack() })
+        }
+        composable(
+            route = RouteNavigation.TodayTableFlashcard.route,
+            arguments = listOf(navArgument("tableNumber") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val tableNumber = backStackEntry.arguments?.getInt("tableNumber") ?: 7
+            TableFlashcardScreen(tableNumber = tableNumber, onBackClick = { navController.popBackStack() })
+        }
+        composable(
+            route = RouteNavigation.TodayTableFillBlank.route,
+            arguments = listOf(navArgument("tableNumber") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val tableNumber = backStackEntry.arguments?.getInt("tableNumber") ?: 7
+            TableFillBlankScreen(tableNumber = tableNumber, onBackClick = { navController.popBackStack() })
         }
     }
 }

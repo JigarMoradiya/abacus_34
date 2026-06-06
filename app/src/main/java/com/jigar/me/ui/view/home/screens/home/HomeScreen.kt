@@ -154,10 +154,14 @@ fun HomeScreen(
     onNavigateToPurchase: () -> Unit,
     onNavigateToYoutubeVideo: () -> Unit,
     onNavigateToWhatsLearning: () -> Unit,
+    onNavigateToTodayTable: (tableNumber: Int) -> Unit,
 ) {
     val viewModel: HomeFragmentViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current
+
+    val dayOfYear = remember { java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_YEAR) }
+    val todayTableNumber = remember { 2 + (dayOfYear - 1) % 14 }
 
     val resumeActivityResultLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -165,11 +169,7 @@ fun HomeScreen(
 
     val requestMultiplePermissions = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
-    ) { permissions ->
-        permissions.entries.filter { !it.value }.also {
-            if (it.isNotEmpty()) viewModel.showHideNotificationSettingPopup(true)
-        }
-    }
+    ) { /* denial is handled on the next app open, not immediately */ }
 
     fun onMenuClick(level: String, id: String? = null) {
         when (level) {
@@ -305,9 +305,16 @@ fun HomeScreen(
                         horizontalArrangement = Arrangement.Center,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        StreakCard(currentStreak = 0, bestStreak = 0)
+                        StreakCard(
+                            currentStreak = uiState.currentStreak,
+                            bestStreak    = uiState.longestStreak,
+                            shields       = uiState.streakShields
+                        )
                         Spacer(modifier = Modifier.width(Dimens12))
-                        TodayTableCard()
+                        TodayTableCard(
+                            tableNumber = todayTableNumber,
+                            onClick = { onNavigateToTodayTable(todayTableNumber) }
+                        )
                     }
 
                     // "Choose your activity" divider
@@ -401,23 +408,15 @@ fun HomeScreen(
             context.checkPermissions(Constants.NOTIFICATION_PERMISSION, requestMultiplePermissions)
         }
 
-        AnimatedVisibility(
-            visible = uiState.isShowNotificationSettingPopup,
-            enter = fadeIn(), exit = fadeOut()
-        ) {
-            CustomPopupView(
-                title = stringResource(R.string.permission_alert),
-                description = stringResource(R.string.notification_permission_msg),
-                positiveButtonText = stringResource(R.string.okay),
-                negativeButtonText = stringResource(R.string.give_later),
-                widthMultiplier = 0.7f,
-                onPositiveTapped = {
+        if (uiState.isShowNotificationSettingPopup) {
+            NotificationPermissionSheet(
+                onGoToSettings = {
                     viewModel.showHideNotificationSettingPopup(false)
                     val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                    intent.data = Uri.fromParts("package", context.packageName, null)
+                        .apply { data = Uri.fromParts("package", context.packageName, null) }
                     resumeActivityResultLauncher.launch(intent)
                 },
-                onNegativeTapped = { viewModel.showHideNotificationSettingPopup(false) }
+                onDismiss = { viewModel.showHideNotificationSettingPopup(false) }
             )
         }
 
@@ -440,6 +439,14 @@ fun HomeScreen(
                     onDismiss = { viewModel.hideFreeTrialPopup() }
                 )
             }
+        }
+
+        // ── Streak milestone reward dialog ─────────────────────────────
+        uiState.streakMilestoneAwarded?.let { milestone ->
+            StreakRewardDialog(
+                milestone = milestone,
+                onDismiss = { viewModel.dismissStreakMilestone() }
+            )
         }
     }
 }
@@ -551,7 +558,7 @@ private fun GradientPill(
 // ── Streak Card ───────────────────────────────────────────────────────────────
 
 @Composable
-private fun StreakCard(currentStreak: Int, bestStreak: Int) {
+private fun StreakCard(currentStreak: Int, bestStreak: Int, shields: Int = 0) {
     Row(
         modifier = Modifier
             .shadow(
@@ -570,12 +577,23 @@ private fun StreakCard(currentStreak: Int, bestStreak: Int) {
     ) {
         Text(text = "🔥", style = MaterialTheme.typography.titleMedium.scaled())
         Column {
-            Text(
-                text = "$currentStreak Day${if (currentStreak == 1) "" else "s"}",
-                style = MaterialTheme.typography.bodyMedium.scaled(),
-                fontWeight = FontWeight.Black,
-                color = PrimaryBlue
-            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(Dimens4)
+            ) {
+                Text(
+                    text = "$currentStreak Day${if (currentStreak == 1) "" else "s"}",
+                    style = MaterialTheme.typography.bodyMedium.scaled(),
+                    fontWeight = FontWeight.Black,
+                    color = PrimaryBlue
+                )
+                if (shields > 0) {
+                    Text(
+                        text = "🛡️".repeat(shields),
+                        style = MaterialTheme.typography.labelSmall.scaled()
+                    )
+                }
+            }
             Text(
                 text = "Streak  •  Best: $bestStreak",
                 style = MaterialTheme.typography.labelSmall.scaled(),
@@ -586,12 +604,217 @@ private fun StreakCard(currentStreak: Int, bestStreak: Int) {
     }
 }
 
+// ── Streak Reward Dialog ──────────────────────────────────────────────────────
+
+@Composable
+private fun StreakRewardDialog(milestone: Int, onDismiss: () -> Unit) {
+    val badgeName = com.jigar.me.utils.AppConstants.Streak.milestoneNames[milestone] ?: "Champion"
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black.copy(alpha = 0.55f))
+            .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }) { /* consume */ },
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth(0.55f)
+                .shadow(Dimens24, RoundedCornerShape(Dimens24))
+                .background(Color.White, RoundedCornerShape(Dimens24))
+                .padding(Dimens24),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(Dimens12)
+        ) {
+            Text(text = "🏆", style = MaterialTheme.typography.displayLarge.scaled())
+            Text(
+                text = "Milestone Reached!",
+                style = MaterialTheme.typography.titleMedium.scaled(),
+                fontWeight = FontWeight.Black,
+                color = PrimaryBlue
+            )
+            Text(
+                text = "$milestone-Day Streak",
+                style = MaterialTheme.typography.bodyLarge.scaled(),
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFFF57C00)
+            )
+            Text(
+                text = "You earned the \"$badgeName\" badge! 🎉",
+                style = MaterialTheme.typography.bodyMedium.scaled(),
+                color = Color.Black.copy(alpha = 0.7f),
+                textAlign = TextAlign.Center
+            )
+            Spacer(Modifier.height(Dimens8))
+            Box(
+                modifier = Modifier
+                    .shadow(Dimens6, PillShape, spotColor = PrimaryBlue.copy(alpha = 0.4f))
+                    .background(Brush.linearGradient(listOf(Color(0xFF42A5F5), PrimaryBlue)), PillShape)
+                    .clickable(
+                        indication = null,
+                        interactionSource = remember { MutableInteractionSource() },
+                        onClick = onDismiss
+                    )
+                    .padding(horizontal = Dimens24, vertical = Dimens12),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "Awesome! Keep Going 🔥",
+                    color = Color.White,
+                    style = MaterialTheme.typography.labelLarge.scaled(),
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+    }
+}
+
+// ── Notification Permission Bottom Sheet ──────────────────────────────────────
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun NotificationPermissionSheet(
+    onGoToSettings: () -> Unit,
+    onDismiss: () -> Unit,
+) {
+    // Custom overlay — avoids ModalBottomSheet animation glitch and nav bar bleed-through
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black.copy(alpha = 0.45f))
+            .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }) { onDismiss() },
+        contentAlignment = Alignment.BottomCenter
+    ) {
+        Surface(
+            modifier = Modifier
+                .fillMaxWidth(0.8f)
+                .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }) { /* block dismiss */ },
+            shape = RoundedCornerShape(topStart = Dimens24, topEnd = Dimens24),
+            color = Color.White,
+            tonalElevation = 8.dp
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .navigationBarsPadding()
+                    .padding(horizontal = Dimens24)
+                    .padding(top = Dimens20, bottom = Dimens24),
+                horizontalArrangement = Arrangement.spacedBy(Dimens24),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // ── Left: icon + title + description ──────────────────────
+                Column(
+                    modifier = Modifier.weight(0.42f),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(Dimens8)
+                ) {
+                    Text(text = "🔔", style = MaterialTheme.typography.displaySmall)
+                    Text(
+                        text = "Stay on Top of Learning",
+                        style = MaterialTheme.typography.titleSmall.scaled(),
+                        fontWeight = FontWeight.Black,
+                        color = PrimaryBlue,
+                        textAlign = TextAlign.Center
+                    )
+                    Text(
+                        text = "Allow notifications so the app can gently remind your child when it's the perfect time to practice. You're always in control — turn off anytime from Settings.",
+                        style = MaterialTheme.typography.labelSmall.scaled(),
+                        color = Color.Black.copy(alpha = 0.60f),
+                        textAlign = TextAlign.Center
+                    )
+                }
+
+                // ── Right: steps + buttons ─────────────────────────────────
+                Column(
+                    modifier = Modifier.weight(0.58f),
+                    verticalArrangement = Arrangement.spacedBy(Dimens10)
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(Color(0xFFF0F4FF), RoundedCornerShape(Dimens12))
+                            .padding(horizontal = Dimens16, vertical = Dimens12),
+                        verticalArrangement = Arrangement.spacedBy(Dimens10)
+                    ) {
+                        NotificationStep(number = "1", text = "Tap \"Go to Settings\" below")
+                        NotificationStep(number = "2", text = "Tap \"Notifications\"")
+                        NotificationStep(number = "3", text = "Turn on \"Allow Notifications\"")
+                    }
+
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .shadow(Dimens4, RoundedCornerShape(Dimens12), spotColor = PrimaryBlue.copy(alpha = 0.35f))
+                            .background(
+                                Brush.linearGradient(listOf(Color(0xFF42A5F5), PrimaryBlue)),
+                                RoundedCornerShape(Dimens12)
+                            )
+                            .clickable(
+                                indication = null,
+                                interactionSource = remember { MutableInteractionSource() },
+                                onClick = onGoToSettings
+                            )
+                            .padding(vertical = Dimens12),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Go to Settings",
+                            color = Color.White,
+                            style = MaterialTheme.typography.labelLarge.scaled(),
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+
+                    Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                        Text(
+                            text = "Maybe Later",
+                            color = PrimaryBlue.copy(alpha = 0.50f),
+                            style = MaterialTheme.typography.labelMedium.scaled(),
+                            modifier = Modifier
+                                .clickable(
+                                    indication = null,
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    onClick = onDismiss
+                                )
+                                .padding(top = Dimens4)
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun NotificationStep(number: String, text: String) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(Dimens10)
+    ) {
+        Box(
+            modifier = Modifier
+                .size(Dimens20)
+                .background(PrimaryBlue, CircleShape),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = number,
+                color = Color.White,
+                style = MaterialTheme.typography.labelSmall.scaled(),
+                fontWeight = FontWeight.Bold
+            )
+        }
+        Text(
+            text = text,
+            style = MaterialTheme.typography.labelSmall.scaled(),
+            color = Color.Black.copy(alpha = 0.75f)
+        )
+    }
+}
+
 // ── Today's Table Card ────────────────────────────────────────────────────────
 
 @Composable
-private fun TodayTableCard() {
-    val dayOfYear = remember { java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_YEAR) }
-    val tableNumber = remember { 2 + (dayOfYear - 1) % 14 }   // cycles 2–15
+private fun TodayTableCard(tableNumber: Int, onClick: () -> Unit) {
     val cardGrey = Color(0xFF757575)
 
     Row(
@@ -603,6 +826,7 @@ private fun TodayTableCard() {
             )
             .background(Color.White.copy(alpha = 0.88f), PillShape)
             .border(1.5.dp, cardGrey.copy(alpha = 0.35f), PillShape)
+            .clickable { onClick() }
             .padding(horizontal = Dimens14, vertical = Dimens8),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(Dimens8)
@@ -615,7 +839,7 @@ private fun TodayTableCard() {
         ) {
             Text(
                 text = "×$tableNumber",
-                style = MaterialTheme.typography.labelMedium.scaled(),
+                style = MaterialTheme.typography.labelLarge.scaled(),
                 fontWeight = FontWeight.Black,
                 color = cardGrey
             )

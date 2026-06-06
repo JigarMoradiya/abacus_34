@@ -208,5 +208,34 @@ object AppConstants {
         }
     }
 
+    annotation class Notifications {
+        companion object {
+            const val permissionAsked    = "notification_permission_asked"
+            const val sheetLastShownDate = "notification_sheet_last_shown"
+        }
+    }
+
+    annotation class Streak {
+        companion object {
+            const val currentStreak    = "streak_current"
+            const val longestStreak    = "streak_longest"
+            const val lastActivityDate = "streak_last_date"
+            const val totalActiveDays  = "streak_total_days"
+            const val streakShields    = "streak_shields"
+            const val claimedRewards   = "streak_claimed_rewards"
+            val milestones       = intArrayOf(3, 7, 14, 21, 30, 50, 100)
+            val shieldMilestones = intArrayOf(7, 21)
+            val milestoneNames   = mapOf(
+                3   to "Explorer",
+                7   to "Weekly Warrior",
+                14  to "Dedicated Learner",
+                21  to "Math Champion",
+                30  to "Monthly Master",
+                50  to "Super Star",
+                100 to "Legend"
+            )
+        }
+    }
+
 
 }
