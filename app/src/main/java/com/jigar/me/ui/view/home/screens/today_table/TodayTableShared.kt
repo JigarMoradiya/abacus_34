@@ -5,8 +5,10 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.filled.Refresh
@@ -69,77 +71,85 @@ fun generateTableQuestions(tableNumber: Int, count: Int = 10): List<TableQuestio
 
 @Composable
 fun TableDisplayCard(tableNumber: Int) {
-    Box(
+    Column(
         modifier = Modifier
-            .padding(
-                top = AppDimens.Dimens12,
-                start = AppDimens.Dimens12,
-                end = AppDimens.Dimens12,
-                bottom = AppDimens.Dimens12
-            ),
-        contentAlignment = Alignment.TopCenter
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
     ) {
-        // White card — internal spacer at top reserves room for the banner
-        Card(
-            shape = RoundedCornerShape(Dimens16),
-            elevation = CardDefaults.cardElevation(AppDimens.Dimens4),
-            colors = CardDefaults.cardColors(containerColor = Color.White),
-            modifier = Modifier.fillMaxWidth()
+        Box(
+            modifier = Modifier
+                .padding(
+                    top = AppDimens.Dimens12,
+                    start = AppDimens.Dimens12,
+                    end = AppDimens.Dimens12,
+                    bottom = AppDimens.Dimens12
+                ),
+            contentAlignment = Alignment.TopCenter
         ) {
-            Column {
-                Spacer(Modifier.height(ToolbarIconSize * 0.55f))
-                (1..10).forEach { i ->
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(
-                                if (i % 2 != 0) PrimaryBlue.copy(alpha = 0.06f)
-                                else Color.Transparent
+            // White card — internal spacer at top reserves room for the banner
+            Card(
+                shape = RoundedCornerShape(Dimens16),
+                elevation = CardDefaults.cardElevation(AppDimens.Dimens4),
+                colors = CardDefaults.cardColors(containerColor = Color.White),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column {
+                    Spacer(Modifier.height(ToolbarIconSize * 0.55f))
+                    (1..10).forEach { i ->
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .background(
+                                    if (i % 2 != 0) PrimaryBlue.copy(alpha = 0.06f)
+                                    else Color.Transparent
+                                )
+                                .padding(vertical = Dimens8, horizontal = Dimens16),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Center
+                        ) {
+                            Text(
+                                text = "$tableNumber × $i",
+                                style = MaterialTheme.typography.bodySmall.scaled(),
+                                fontWeight = FontWeight.SemiBold,
+                                color = Color.Black.copy(alpha = 0.75f)
                             )
-                            .padding(vertical = Dimens8, horizontal = Dimens16),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = "$tableNumber × $i",
-                            style = MaterialTheme.typography.bodySmall.scaled(),
-                            fontWeight = FontWeight.SemiBold,
-                            color = Color.Black.copy(alpha = 0.75f)
-                        )
-                        Text(
-                            text = " = ",
-                            style = MaterialTheme.typography.bodySmall.scaled(),
-                            color = Color.Gray
-                        )
-                        Text(
-                            text = "${tableNumber * i}",
-                            style = MaterialTheme.typography.bodySmall.scaled(),
-                            fontWeight = FontWeight.Black,
-                            color = PrimaryBlue
-                        )
+                            Text(
+                                text = " = ",
+                                style = MaterialTheme.typography.bodySmall.scaled(),
+                                color = Color.Gray
+                            )
+                            Text(
+                                text = "${tableNumber * i}",
+                                style = MaterialTheme.typography.bodySmall.scaled(),
+                                fontWeight = FontWeight.Black,
+                                color = PrimaryBlue
+                            )
+                        }
                     }
                 }
             }
-        }
-        // Banner: offset upward so it visually pokes above the card's top edge
-        Box(
-            modifier = Modifier
-                .offset(y = -(ToolbarIconSize * 0.22f))
-                .shadow(Dimens4, RoundedCornerShape(Dimens8))
-                .background(
-                    brush = Brush.horizontalGradient(
-                        listOf(PrimaryBlue, PrimaryBlue.copy(alpha = 0.85f))
-                    ),
-                    shape = RoundedCornerShape(Dimens8)
+            // Banner: offset upward so it visually pokes above the card's top edge
+            Box(
+                modifier = Modifier
+                    .offset(y = -(ToolbarIconSize * 0.22f))
+                    .shadow(Dimens4, RoundedCornerShape(Dimens8))
+                    .background(
+                        brush = Brush.horizontalGradient(
+                            listOf(PrimaryBlue, PrimaryBlue.copy(alpha = 0.85f))
+                        ),
+                        shape = RoundedCornerShape(Dimens8)
+                    )
+                    .padding(horizontal = Dimens20, vertical = Dimens4)
+            ) {
+                Text(
+                    text = "×$tableNumber",
+                    style = MaterialTheme.typography.bodyMedium.scaled(),
+                    fontWeight = FontWeight.Black,
+                    color = Color.White
                 )
-                .padding(horizontal = Dimens20, vertical = Dimens4)
-        ) {
-            Text(
-                text = "×$tableNumber",
-                style = MaterialTheme.typography.bodyMedium.scaled(),
-                fontWeight = FontWeight.Black,
-                color = Color.White
-            )
+            }
         }
+        Spacer(Modifier.height(AppDimens.Dimens12))
     }
 }
 
@@ -196,7 +206,7 @@ fun TableResultContent(
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
                     text = "$score",
-                    style = MaterialTheme.typography.displayMedium.scaled(),
+                    style = MaterialTheme.typography.displayLarge.scaled(),
                     fontWeight = FontWeight.Black,
                     color = Color.White
                 )
@@ -213,7 +223,7 @@ fun TableResultContent(
 
         Text(
             text = message,
-            style = MaterialTheme.typography.titleSmall.scaled(),
+            style = MaterialTheme.typography.bodyLarge.scaled(),
             fontWeight = FontWeight.Bold,
             color = PrimaryBlue,
             textAlign = TextAlign.Center,

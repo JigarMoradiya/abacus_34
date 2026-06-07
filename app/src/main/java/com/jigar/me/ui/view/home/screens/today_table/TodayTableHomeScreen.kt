@@ -2,9 +2,7 @@ package com.jigar.me.ui.view.home.screens.today_table
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material3.*
@@ -20,12 +18,8 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.theme.AppDimens
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens20
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
 import com.jigar.me.ui.view.home.theme.PrimaryBlue
 
@@ -48,7 +42,7 @@ fun TodayTableHomeScreen(
                         .fillMaxHeight()
                         .weight(0.35f)
                 ) {
-                    TablePanel(tableNumber = tableNumber)
+                    TableDisplayCard(tableNumber = tableNumber)
                 }
                 // Vertical divider
                 Box(
@@ -72,83 +66,6 @@ fun TodayTableHomeScreen(
                 }
             }
         }
-    }
-}
-
-@Composable
-private fun TablePanel(tableNumber: Int) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-    ) {
-        Box(
-            modifier = Modifier
-                .padding(top = Dimens12, start = Dimens12, end = Dimens12, bottom = Dimens12),
-            contentAlignment = Alignment.TopCenter
-        ) {
-            // White card with internal spacer to make room for banner
-            Card(
-                shape = RoundedCornerShape(Dimens16),
-                elevation = CardDefaults.cardElevation(AppDimens.Dimens4),
-                colors = CardDefaults.cardColors(containerColor = Color.White),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Column {
-                    Spacer(Modifier.height(ToolbarIconSize * 0.55f))
-                    (1..10).forEach { i ->
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .background(
-                                    if (i % 2 != 0) PrimaryBlue.copy(alpha = 0.06f) else Color.Transparent
-                                )
-                                .padding(vertical = Dimens8, horizontal = Dimens16),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Text(
-                                text = "$tableNumber × $i",
-                                style = MaterialTheme.typography.bodySmall.scaled(),
-                                fontWeight = FontWeight.SemiBold,
-                                color = Color.Black.copy(alpha = 0.75f)
-                            )
-                            Text(
-                                text = " = ",
-                                style = MaterialTheme.typography.bodySmall.scaled(),
-                                color = Color.Gray
-                            )
-                            Text(
-                                text = "${tableNumber * i}",
-                                style = MaterialTheme.typography.bodySmall.scaled(),
-                                fontWeight = FontWeight.Black,
-                                color = PrimaryBlue
-                            )
-                        }
-                    }
-                }
-            }
-            // Banner overflows above card (offset moves it up beyond card's top edge)
-            Box(
-                modifier = Modifier
-                    .offset(y = -(ToolbarIconSize * 0.22f))
-                    .shadow(Dimens4, RoundedCornerShape(Dimens8))
-                    .background(
-                        brush = Brush.horizontalGradient(
-                            listOf(PrimaryBlue, PrimaryBlue.copy(alpha = 0.85f))
-                        ),
-                        shape = RoundedCornerShape(Dimens8)
-                    )
-                    .padding(horizontal = Dimens20, vertical = Dimens4)
-            ) {
-                Text(
-                    text = "×$tableNumber",
-                    style = MaterialTheme.typography.bodyMedium.scaled(),
-                    fontWeight = FontWeight.Black,
-                    color = Color.White
-                )
-            }
-        }
-        Spacer(Modifier.height(Dimens12))
     }
 }
 
