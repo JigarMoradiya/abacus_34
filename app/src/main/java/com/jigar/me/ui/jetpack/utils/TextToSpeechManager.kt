@@ -1,6 +1,8 @@
 package com.jigar.me.ui.jetpack.utils
 
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
 import android.util.Log
@@ -40,9 +42,11 @@ class TextToSpeechManager @Inject constructor(
         tts?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
             override fun onStart(utteranceId: String?) = Unit
             override fun onDone(utteranceId: String?) {
-                utteranceId?.let { id ->
-                    utteranceCallbacks[id]?.invoke(id)
-                    utteranceCallbacks.remove(id)
+                Handler(Looper.getMainLooper()).post {
+                    utteranceId?.let { id ->
+                        utteranceCallbacks[id]?.invoke(id)
+                        utteranceCallbacks.remove(id)
+                    }
                 }
             }
             override fun onError(utteranceId: String?) = Unit
@@ -97,6 +101,11 @@ class TextToSpeechManager @Inject constructor(
 
         tts?.setSpeechRate(speed/10f)
         tts?.setPitch(pitch/10f)
+    }
+
+    fun stop() {
+        tts?.stop()
+        utteranceCallbacks.clear()
     }
 
     fun shutdown() {

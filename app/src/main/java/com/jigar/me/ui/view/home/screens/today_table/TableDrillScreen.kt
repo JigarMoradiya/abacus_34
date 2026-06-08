@@ -47,7 +47,7 @@ fun TableDrillScreen(
     var selectedAnswer by remember { mutableStateOf<Int?>(null) }
     var score by remember { mutableIntStateOf(0) }
     var showResult by remember { mutableStateOf(false) }
-    var showingTable by remember { mutableStateOf(true) }
+    var showingTable by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
@@ -112,7 +112,7 @@ fun TableDrillScreen(
                             total = questions.size,
                             onRetry = {
                                 score = 0; currentIndex = 0; selectedAnswer = null
-                                showResult = false; showingTable = true
+                                showResult = false; showingTable = false
                             },
                             onBack = onBackClick
                         )
@@ -213,14 +213,13 @@ private fun DrillPhase(
         Box(
             modifier = Modifier
                 .fillMaxWidth(0.80f)
-                .shadow(12.dp, RoundedCornerShape(Dimens20))
                 .background(
                     brush = Brush.linearGradient(
                         listOf(PrimaryBlue, PrimaryBlue.copy(alpha = 0.82f))
                     ),
                     shape = RoundedCornerShape(Dimens20)
                 )
-                .padding(Dimens24),
+                .padding(Dimens16),
             contentAlignment = Alignment.Center
         ) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -229,10 +228,10 @@ private fun DrillPhase(
                     style = MaterialTheme.typography.bodyMedium.scaled(),
                     color = Color.White.copy(alpha = 0.65f)
                 )
-                Spacer(Modifier.height(Dimens12))
+                Spacer(Modifier.height(Dimens8))
                 Text(
                     text = "${question.multiplier} × ${question.multiplicand} = ?",
-                    style = MaterialTheme.typography.displaySmall.scaled(),
+                    style = MaterialTheme.typography.displayLarge.scaled(),
                     fontWeight = FontWeight.Black,
                     color = Color.White,
                     textAlign = TextAlign.Center

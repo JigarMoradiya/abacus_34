@@ -4,6 +4,7 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -13,12 +14,17 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.rounded.VolumeOff
+import androidx.compose.material.icons.rounded.VolumeUp
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,13 +34,21 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.clipRect
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
-import kotlinx.coroutines.delay
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.home.common_ui.LocalTextToSpeechManager
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.theme.AppDimens
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlin.coroutines.resume
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens20
@@ -45,6 +59,7 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.theme.PrimaryBlue
+import kotlinx.coroutines.isActive
 
 enum class FillBlankType { ANSWER, MULTIPLICAND }
 
@@ -121,17 +136,85 @@ fun generateTableQuestions(tableNumber: Int, count: Int = 10): List<TableQuestio
 
 @Composable
 fun TableDisplayCard(tableNumber: Int) {
+    val tts = LocalTextToSpeechManager.current
+    val scope = rememberCoroutineScope()
+    var speakingRow by remember { mutableStateOf<Int?>(null) }
+    var isSpeaking by remember { mutableStateOf(false) }
+    var speakJob by remember { mutableStateOf<Job?>(null) }
+
+    // Stop when screen goes to background or leaves composition
+    val lifecycle = LocalLifecycleOwner.current.lifecycle
+    DisposableEffect(lifecycle) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_PAUSE) {
+                speakJob?.cancel()
+                tts.stop()
+                speakingRow = null
+                isSpeaking = false
+            }
+        }
+        lifecycle.addObserver(observer)
+        onDispose {
+            lifecycle.removeObserver(observer)
+            speakJob?.cancel()
+            tts.stop()
+            speakingRow = null
+        }
+    }
+
+    fun speakSingle(i: Int) {
+        speakJob?.cancel()
+        isSpeaking = false
+        tts.stop()
+        speakingRow = i
+        speakJob = scope.launch {
+            suspendCancellableCoroutine { cont ->
+                tts.speak("$tableNumber times $i equals ${tableNumber * i}", "row_tap_${tableNumber}_$i") {
+                    if (cont.isActive) cont.resume(Unit)
+                }
+                cont.invokeOnCancellation { tts.stop() }
+            }
+            speakingRow = null
+        }
+    }
+
+    fun speakAll() {
+        if (isSpeaking) {
+            speakJob?.cancel()
+            tts.stop()
+            speakingRow = null
+            isSpeaking = false
+            return
+        }
+        speakJob?.cancel()
+        isSpeaking = true
+        speakJob = scope.launch {
+            for (i in 1..10) {
+                if (!isActive) break
+                speakingRow = i
+                suspendCancellableCoroutine { cont ->
+                    tts.speak("$tableNumber times $i equals ${tableNumber * i}", "row_all_${tableNumber}_$i") {
+                        if (cont.isActive) cont.resume(Unit)
+                    }
+                    cont.invokeOnCancellation { tts.stop() }
+                }
+                if (i < 10) delay(400)
+            }
+            speakingRow = null
+            isSpeaking = false
+        }
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
     ) {
         Box(
-            modifier = Modifier
-                .padding(Dimens12),
+            modifier = Modifier.padding(Dimens12),
             contentAlignment = Alignment.TopCenter
         ) {
-            // White card — internal spacer at top reserves room for the banner
+            // White card
             Card(
                 shape = RoundedCornerShape(Dimens16),
                 elevation = CardDefaults.cardElevation(Dimens4),
@@ -141,13 +224,18 @@ fun TableDisplayCard(tableNumber: Int) {
                 Column {
                     Spacer(Modifier.height(ToolbarIconSize * 0.55f))
                     (1..10).forEach { i ->
+                        val highlighted = speakingRow == i
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .background(
-                                    if (i % 2 != 0) PrimaryBlue.copy(alpha = 0.06f)
-                                    else Color.Transparent
+                                    when {
+                                        highlighted -> PrimaryBlue.copy(alpha = 0.18f)
+                                        i % 2 != 0 -> PrimaryBlue.copy(alpha = 0.06f)
+                                        else -> Color.Transparent
+                                    }
                                 )
+                                .clickable { speakSingle(i) }
                                 .padding(vertical = Dimens6, horizontal = Dimens16),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.Center
@@ -156,7 +244,7 @@ fun TableDisplayCard(tableNumber: Int) {
                                 text = "$tableNumber × $i",
                                 style = MaterialTheme.typography.bodySmall.scaled(),
                                 fontWeight = FontWeight.SemiBold,
-                                color = Color.Black.copy(alpha = 0.75f)
+                                color = if (highlighted) PrimaryBlue else Color.Black.copy(alpha = 0.75f)
                             )
                             Text(
                                 text = " = ",
@@ -169,12 +257,21 @@ fun TableDisplayCard(tableNumber: Int) {
                                 fontWeight = FontWeight.Black,
                                 color = PrimaryBlue
                             )
+                            if (highlighted) {
+                                Spacer(Modifier.width(Dimens6))
+                                Icon(
+                                    imageVector = Icons.Rounded.VolumeUp,
+                                    contentDescription = null,
+                                    tint = PrimaryBlue,
+                                    modifier = Modifier.size(Dimens12)
+                                )
+                            }
                         }
                     }
                 }
             }
-            // Banner: offset upward so it visually pokes above the card's top edge
-            Box(
+            // Banner — tap to speak entire table (toggle)
+            Row(
                 modifier = Modifier
                     .offset(y = -(ToolbarIconSize * 0.22f))
                     .shadow(Dimens4, RoundedCornerShape(Dimens8))
@@ -184,13 +281,22 @@ fun TableDisplayCard(tableNumber: Int) {
                         ),
                         shape = RoundedCornerShape(Dimens8)
                     )
-                    .padding(horizontal = Dimens20, vertical = Dimens4)
+                    .clickable { speakAll() }
+                    .padding(horizontal = Dimens12, vertical = Dimens4),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(Dimens6)
             ) {
                 Text(
                     text = "×$tableNumber",
                     style = MaterialTheme.typography.bodyMedium.scaled(),
                     fontWeight = FontWeight.Black,
                     color = Color.White
+                )
+                Icon(
+                    imageVector = if (isSpeaking) Icons.Rounded.VolumeOff else Icons.Rounded.VolumeUp,
+                    contentDescription = "Speak table",
+                    tint = Color.White.copy(alpha = 0.85f),
+                    modifier = Modifier.size(Dimens16)
                 )
             }
         }

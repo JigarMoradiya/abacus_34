@@ -26,6 +26,7 @@ import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.navigation.HomeNavGraph
 import com.jigar.me.ui.view.home.theme.MyApplicationTheme
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
+import com.jigar.me.ui.view.home.common_ui.LocalTextToSpeechManager
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.utils.AppConstants
 import dagger.hilt.android.AndroidEntryPoint
@@ -92,7 +93,10 @@ class HomeActivity : ComponentActivity() {
             setContent {
                 HomePageBackground()
                 MyApplicationTheme {
-                    CompositionLocalProvider(LocalPreferencesHelper provides preferences) {
+                    CompositionLocalProvider(
+                        LocalPreferencesHelper provides preferences,
+                        LocalTextToSpeechManager provides ttsManager
+                    ) {
                         HomeNavGraph(
                             homeActivityViewModel = homeActivityViewModel,
                             initialRoute = deepLinkRoute,

@@ -92,14 +92,14 @@ private fun ActivitiesPanel(
             icon = "🃏",
             title = "Flashcard Quiz",
             subtitle = "Flip cards — Got it or Try Again",
-            gradient = listOf(Color(0xFF6A1B9A), Color(0xFF7B1FA2)),
+            gradient = listOf(Color(0xFF00695C), Color(0xFF00897B)),
             onClick = onFlashcard
         )
         ActivityCard(
             icon = "✏️",
             title = "Fill the Blanks",
             subtitle = "Pick the missing answer from 4 choices",
-            gradient = listOf(Color(0xFF00695C), Color(0xFF00897B)),
+            gradient = listOf(Color(0xFF6A1B9A), Color(0xFF7B1FA2)),
             onClick = onFillBlank
         )
     }

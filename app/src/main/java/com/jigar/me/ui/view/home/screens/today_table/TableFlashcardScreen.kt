@@ -108,7 +108,7 @@ fun TableFlashcardScreen(
                                 .fillMaxWidth()
                                 .height(Dimens8)
                                 .clip(RoundedCornerShape(100.dp)),
-                            color = PrimaryBlue,
+                            color = Color(0xFF00695C),
                             trackColor = Color.Black.copy(alpha = 0.08f)
                         )
                     }

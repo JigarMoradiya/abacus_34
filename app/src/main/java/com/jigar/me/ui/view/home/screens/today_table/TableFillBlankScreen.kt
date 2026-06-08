@@ -504,7 +504,7 @@ private fun FillBlankResultContent(
 
             Row(horizontalArrangement = Arrangement.spacedBy(Dimens16), verticalAlignment = Alignment.CenterVertically) {
                 KidsActionButton(text = "Back", icon = Icons.AutoMirrored.Rounded.ArrowBack, type = ButtonType.NEGATIVE, isIconStart = true, isSmall = true, onClick = onBack)
-                KidsActionButton(text = "Retry", icon = Icons.Default.Refresh, type = ButtonType.BLUE, isIconStart = true, isSmall = true, onClick = onRetry)
+                KidsActionButton(text = "Play Again!", icon = Icons.Default.Refresh, type = ButtonType.BLUE, isIconStart = true, isSmall = true, onClick = onRetry)
             }
         }
     }
