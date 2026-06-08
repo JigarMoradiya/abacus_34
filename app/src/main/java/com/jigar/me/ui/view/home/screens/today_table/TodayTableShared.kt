@@ -35,14 +35,64 @@ import kotlinx.coroutines.delay
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens20
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens28
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens6
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.theme.PrimaryBlue
+
+enum class FillBlankType { ANSWER, MULTIPLICAND }
+
+data class FillBlankQuestion(
+    val multiplier: Int,
+    val multiplicand: Int,
+    val blankType: FillBlankType,
+    val choices: List<Int>,
+) {
+    val correctAnswer: Int get() = when (blankType) {
+        FillBlankType.ANSWER -> multiplier * multiplicand
+        FillBlankType.MULTIPLICAND -> multiplicand
+    }
+}
+
+fun generateFillBlankQuestions(tableNumber: Int, count: Int = 10): List<FillBlankQuestion> {
+    val multiplicands = (1..10).shuffled().take(count)
+    return multiplicands.mapIndexed { idx, m ->
+        val type = if (idx % 2 == 0) FillBlankType.ANSWER else FillBlankType.MULTIPLICAND
+        when (type) {
+            FillBlankType.ANSWER -> {
+                val correct = tableNumber * m
+                val wrong = mutableSetOf<Int>()
+                while (wrong.size < 3) {
+                    val c = tableNumber * (1..10).random()
+                    if (c != correct) wrong.add(c)
+                }
+                FillBlankQuestion(tableNumber, m, type, (listOf(correct) + wrong.toList()).shuffled())
+            }
+            FillBlankType.MULTIPLICAND -> {
+                val correct = m
+                val wrong = mutableSetOf<Int>()
+                while (wrong.size < 3) {
+                    val c = (1..10).random()
+                    if (c != correct) wrong.add(c)
+                }
+                FillBlankQuestion(tableNumber, m, type, (listOf(correct) + wrong.toList()).shuffled())
+            }
+        }
+    }
+}
+
+fun optionType(choice: Int, answer: Int, selected: Int?): ButtonType {
+    if (selected == null) return ButtonType.OPTIONS
+    if (choice == answer) return ButtonType.POSITIVE
+    if (choice == selected) return ButtonType.RED
+    return ButtonType.OPTIONS
+}
 
 data class TableQuestionData(
     val multiplier: Int,
@@ -78,18 +128,13 @@ fun TableDisplayCard(tableNumber: Int) {
     ) {
         Box(
             modifier = Modifier
-                .padding(
-                    top = AppDimens.Dimens12,
-                    start = AppDimens.Dimens12,
-                    end = AppDimens.Dimens12,
-                    bottom = AppDimens.Dimens12
-                ),
+                .padding(Dimens12),
             contentAlignment = Alignment.TopCenter
         ) {
             // White card — internal spacer at top reserves room for the banner
             Card(
                 shape = RoundedCornerShape(Dimens16),
-                elevation = CardDefaults.cardElevation(AppDimens.Dimens4),
+                elevation = CardDefaults.cardElevation(Dimens4),
                 colors = CardDefaults.cardColors(containerColor = Color.White),
                 modifier = Modifier.fillMaxWidth()
             ) {
@@ -103,7 +148,7 @@ fun TableDisplayCard(tableNumber: Int) {
                                     if (i % 2 != 0) PrimaryBlue.copy(alpha = 0.06f)
                                     else Color.Transparent
                                 )
-                                .padding(vertical = Dimens8, horizontal = Dimens16),
+                                .padding(vertical = Dimens6, horizontal = Dimens16),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.Center
                         ) {
@@ -149,7 +194,7 @@ fun TableDisplayCard(tableNumber: Int) {
                 )
             }
         }
-        Spacer(Modifier.height(AppDimens.Dimens12))
+        Spacer(Modifier.height(Dimens12))
     }
 }
 
@@ -259,7 +304,7 @@ fun TableResultContent(
 }
 
 @Composable
-private fun ProgressiveStar(fill: Float, starSize: Dp, delayMs: Long = 0L) {
+internal fun ProgressiveStar(fill: Float, starSize: Dp, delayMs: Long = 0L) {
     var animTarget by remember { mutableFloatStateOf(0f) }
 
     val animatedFill by animateFloatAsState(

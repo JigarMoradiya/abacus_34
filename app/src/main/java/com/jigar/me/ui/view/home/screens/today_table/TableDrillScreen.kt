@@ -212,8 +212,7 @@ private fun DrillPhase(
         // Question card
         Box(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = Dimens16)
+                .fillMaxWidth(0.80f)
                 .shadow(12.dp, RoundedCornerShape(Dimens20))
                 .background(
                     brush = Brush.linearGradient(
@@ -288,9 +287,3 @@ private fun DrillPhase(
     }
 }
 
-private fun optionType(choice: Int, answer: Int, selected: Int?): ButtonType {
-    if (selected == null) return ButtonType.OPTIONS
-    if (choice == answer) return ButtonType.POSITIVE
-    if (choice == selected) return ButtonType.RED
-    return ButtonType.OPTIONS
-}
