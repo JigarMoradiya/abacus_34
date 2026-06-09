@@ -31,14 +31,22 @@ private data class PhaseData(
 )
 
 @Composable
-fun Level1LessonScreen(lessonId: Int, onBackClick: () -> Unit) {
+fun Level1LessonScreen(
+    lessonId: Int,
+    onBackClick: () -> Unit,
+    onNavigateToLearn: (Int) -> Unit = {},
+    onNavigateToPractice: (Int) -> Unit = {},
+    onNavigateToQuiz: (Int) -> Unit = {},
+) {
     val lesson = level1Lessons.find { it.id == lessonId } ?: return
 
-    val phases = listOf(
-        PhaseData("📚", "Learn",    "Understand the concept step by step",   lesson.startColor, lesson.endColor),
-        PhaseData("✏️", "Practice", "Move the abacus beads yourself",         Color(0xFF1B5E20),  Color(0xFF4CAF50)),
-        PhaseData("⭐", "Quiz",     "Test your skills & earn stars!",          Color(0xFF4A148C),  Color(0xFFAB47BC)),
+    data class PhaseAction(val phase: PhaseData, val onClick: () -> Unit)
+    val phaseActions = listOf(
+        PhaseAction(PhaseData("📚", "Learn",    "Understand the concept step by step",   lesson.startColor, lesson.endColor))   { onNavigateToLearn(lessonId) },
+        PhaseAction(PhaseData("✏️", "Practice", "Move the abacus beads yourself",         Color(0xFF1B5E20),  Color(0xFF4CAF50))) { onNavigateToPractice(lessonId) },
+        PhaseAction(PhaseData("⭐", "Quiz",     "Test your skills & earn stars!",          Color(0xFF4A148C),  Color(0xFFAB47BC))) { onNavigateToQuiz(lessonId) },
     )
+    val phases = phaseActions.map { it.phase }
 
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
@@ -54,25 +62,30 @@ fun Level1LessonScreen(lessonId: Int, onBackClick: () -> Unit) {
                     .weight(1f),
                 contentAlignment = Alignment.Center
             ) {
-                val spacing = AppDimens.Dimens16
-                val hPad    = AppDimens.Dimens20
-                val cardW   = (maxWidth - hPad * 2 - spacing * (phases.size - 1)) / phases.size
-                val cardH   = maxHeight * 0.82f
+                val spacing    = AppDimens.Dimens16
+                val hPad       = AppDimens.Dimens20
+                val shadowRoom = AppDimens.Dimens10
+                val cardW      = (maxWidth - hPad * 2 - spacing * (phases.size - 1)) / phases.size
+                val cardH      = maxHeight * 0.80f
 
-                Row(
-                    modifier = Modifier
-                        .width(maxWidth - hPad * 2),
-                    horizontalArrangement = Arrangement.spacedBy(spacing),
-                    verticalAlignment     = Alignment.CenterVertically
+                Column(
+                    modifier            = Modifier.width(maxWidth - hPad * 2),
+                    horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
-                    phases.forEach { phase ->
-                        PhaseCard(
-                            phase  = phase,
-                            cardW  = cardW,
-                            cardH  = cardH,
-                            onClick = { /* TODO: navigate to phase */ }
-                        )
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(spacing),
+                        verticalAlignment     = Alignment.CenterVertically
+                    ) {
+                        phaseActions.forEach { pa ->
+                            PhaseCard(
+                                phase   = pa.phase,
+                                cardW   = cardW,
+                                cardH   = cardH,
+                                onClick = pa.onClick
+                            )
+                        }
                     }
+                    Spacer(Modifier.height(shadowRoom))
                 }
             }
         }

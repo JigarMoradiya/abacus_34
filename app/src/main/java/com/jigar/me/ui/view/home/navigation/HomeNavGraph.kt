@@ -49,6 +49,9 @@ import com.jigar.me.ui.view.home.screens.today_table.TableFillBlankScreen
 import com.jigar.me.ui.view.home.screens.today_table.TablePickerScreen
 import com.jigar.me.ui.view.home.screens.levels.Level1HomeScreen
 import com.jigar.me.ui.view.home.screens.levels.Level1LessonScreen
+import com.jigar.me.ui.view.home.screens.levels.Level1LearnScreen
+import com.jigar.me.ui.view.home.screens.levels.Level1PracticeScreen
+import com.jigar.me.ui.view.home.screens.levels.Level1QuizScreen
 import com.jigar.me.ui.view.home.screens.levels.Level2HomeScreen
 import com.jigar.me.ui.view.home.screens.levels.Level3HomeScreen
 
@@ -468,8 +471,47 @@ fun HomeNavGraph(
         ) { backStackEntry ->
             val lessonId = backStackEntry.arguments?.getInt("lessonId") ?: 1
             Level1LessonScreen(
+                lessonId             = lessonId,
+                onBackClick          = { navController.popBackStack() },
+                onNavigateToLearn    = { navController.navigate(RouteNavigation.Level1Learn.create(it)) },
+                onNavigateToPractice = { navController.navigate(RouteNavigation.Level1Practice.create(it)) },
+                onNavigateToQuiz     = { navController.navigate(RouteNavigation.Level1Quiz.create(it)) },
+            )
+        }
+
+        composable(
+            route     = RouteNavigation.Level1Learn.route,
+            arguments = listOf(navArgument("lessonId") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val lessonId = backStackEntry.arguments?.getInt("lessonId") ?: 1
+            Level1LearnScreen(
                 lessonId    = lessonId,
-                onBackClick = { navController.popBackStack() }
+                onBackClick = { navController.popBackStack() },
+                onFinished  = { navController.popBackStack() },
+            )
+        }
+
+        composable(
+            route     = RouteNavigation.Level1Practice.route,
+            arguments = listOf(navArgument("lessonId") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val lessonId = backStackEntry.arguments?.getInt("lessonId") ?: 1
+            Level1PracticeScreen(
+                lessonId    = lessonId,
+                onBackClick = { navController.popBackStack() },
+                onFinished  = { navController.popBackStack() },
+            )
+        }
+
+        composable(
+            route     = RouteNavigation.Level1Quiz.route,
+            arguments = listOf(navArgument("lessonId") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val lessonId = backStackEntry.arguments?.getInt("lessonId") ?: 1
+            Level1QuizScreen(
+                lessonId    = lessonId,
+                onBackClick = { navController.popBackStack() },
+                onFinished  = { navController.popBackStack() },
             )
         }
 

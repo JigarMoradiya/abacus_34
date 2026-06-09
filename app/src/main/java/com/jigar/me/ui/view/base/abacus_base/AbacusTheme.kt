@@ -311,6 +311,7 @@ object AbacusTheme {
             AppConstants.AbacusScreen.screenTypeExamResult -> 0.25f
             AppConstants.AbacusScreen.screenTypeCCM -> 1f
             AppConstants.AbacusScreen.screenTypeExercise -> 1f
+            AppConstants.AbacusScreen.screenTypeLevel1Practice -> 1f
             AppConstants.AbacusScreen.screenTypeAbacusPractice ->
                 if (abacusType == AppConstants.apiParams.answerFinalAnswer || abacusType == AppConstants.apiParams.answerFormalExam) { 0.95f }
                 else if (questionType == AppConstants.extras_Comman.AbacusTypeNumber) { 0.9f }
@@ -344,12 +345,11 @@ object AbacusTheme {
         }
 
         val answerBarHeight = when {
-            (screenType == AppConstants.AbacusScreen.screenTypeFreeMode) || screenType == AppConstants.AbacusScreen.screenTypeExam || screenType == AppConstants.AbacusScreen.screenTypeExamResult -> {
-                0f
-            }
-            else -> {
-                70f
-            }
+            (screenType == AppConstants.AbacusScreen.screenTypeFreeMode)
+            || screenType == AppConstants.AbacusScreen.screenTypeExam
+            || screenType == AppConstants.AbacusScreen.screenTypeExamResult
+            || screenType == AppConstants.AbacusScreen.screenTypeLevel1Practice -> 0f
+            else -> 70f
         }
 
         val numberStripHeight = when (screenType) {
@@ -414,7 +414,8 @@ object AbacusTheme {
                 AppConstants.AbacusScreen.screenTypeExam,
                 AppConstants.AbacusScreen.screenTypeExamResult -> 0.dp
 
-                AppConstants.AbacusScreen.screenTypeSettingPreview -> {
+                AppConstants.AbacusScreen.screenTypeSettingPreview,
+                AppConstants.AbacusScreen.screenTypeLevel1Practice -> {
                     base.rectLineWidth / 2
                 }
 
@@ -425,7 +426,7 @@ object AbacusTheme {
                 AppConstants.AbacusScreen.screenTypeExam,
                 AppConstants.AbacusScreen.screenTypeExamResult -> 0.dp
 
-                AppConstants.AbacusScreen.screenTypeSettingPreview -> {
+                AppConstants.AbacusScreen.screenTypeSettingPreview,AppConstants.AbacusScreen.screenTypeLevel1Practice -> {
                     base.rectLineCorner / 2
                 }
 
