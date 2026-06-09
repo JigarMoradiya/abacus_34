@@ -46,6 +46,11 @@ import com.jigar.me.ui.view.home.screens.today_table.TodayTableHomeScreen
 import com.jigar.me.ui.view.home.screens.today_table.TableDrillScreen
 import com.jigar.me.ui.view.home.screens.today_table.TableFlashcardScreen
 import com.jigar.me.ui.view.home.screens.today_table.TableFillBlankScreen
+import com.jigar.me.ui.view.home.screens.today_table.TablePickerScreen
+import com.jigar.me.ui.view.home.screens.levels.Level1HomeScreen
+import com.jigar.me.ui.view.home.screens.levels.Level1LessonScreen
+import com.jigar.me.ui.view.home.screens.levels.Level2HomeScreen
+import com.jigar.me.ui.view.home.screens.levels.Level3HomeScreen
 
 @Composable
 fun HomeNavGraph(
@@ -116,8 +121,17 @@ fun HomeNavGraph(
                 onNavigateToWhatsLearning = {
                     navController.navigate(RouteNavigation.WhatsLearning.route)
                 },
-                onNavigateToTodayTable = { tableNumber ->
-                    navController.navigate(RouteNavigation.TodayTableHome.create(tableNumber))
+                onNavigateToLevel1 = {
+                    navController.navigate(RouteNavigation.Level1Home.route)
+                },
+                onNavigateToLevel2 = {
+                    navController.navigate(RouteNavigation.Level2Home.route)
+                },
+                onNavigateToLevel3 = {
+                    navController.navigate(RouteNavigation.Level3Home.route)
+                },
+                onNavigateToLevel4 = {
+                    navController.navigate(RouteNavigation.Level4TablePicker.route)
                 },
             )
         }
@@ -437,6 +451,43 @@ fun HomeNavGraph(
         ) { backStackEntry ->
             val tableNumber = backStackEntry.arguments?.getInt("tableNumber") ?: 7
             TableFillBlankScreen(tableNumber = tableNumber, onBackClick = { navController.popBackStack() })
+        }
+
+        composable(route = RouteNavigation.Level1Home.route) {
+            Level1HomeScreen(
+                onBackClick        = { navController.popBackStack() },
+                onNavigateToLesson = { lessonId ->
+                    navController.navigate(RouteNavigation.Level1Lesson.create(lessonId))
+                }
+            )
+        }
+
+        composable(
+            route     = RouteNavigation.Level1Lesson.route,
+            arguments = listOf(navArgument("lessonId") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val lessonId = backStackEntry.arguments?.getInt("lessonId") ?: 1
+            Level1LessonScreen(
+                lessonId    = lessonId,
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+
+        composable(route = RouteNavigation.Level2Home.route) {
+            Level2HomeScreen(onBackClick = { navController.popBackStack() })
+        }
+
+        composable(route = RouteNavigation.Level3Home.route) {
+            Level3HomeScreen(onBackClick = { navController.popBackStack() })
+        }
+
+        composable(route = RouteNavigation.Level4TablePicker.route) {
+            TablePickerScreen(
+                onTableSelected = { tableNumber ->
+                    navController.navigate(RouteNavigation.TodayTableHome.create(tableNumber))
+                },
+                onBackClick = { navController.popBackStack() }
+            )
         }
     }
 }

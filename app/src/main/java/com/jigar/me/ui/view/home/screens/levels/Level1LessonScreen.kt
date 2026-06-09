@@ -1,0 +1,127 @@
+package com.jigar.me.ui.view.home.screens.levels
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.common_ui.HomePageBackground
+import com.jigar.me.ui.view.home.theme.AppDimens
+
+private data class PhaseData(
+    val emoji: String,
+    val title: String,
+    val description: String,
+    val startColor: Color,
+    val endColor: Color,
+)
+
+@Composable
+fun Level1LessonScreen(lessonId: Int, onBackClick: () -> Unit) {
+    val lesson = level1Lessons.find { it.id == lessonId } ?: return
+
+    val phases = listOf(
+        PhaseData("📚", "Learn",    "Understand the concept step by step",   lesson.startColor, lesson.endColor),
+        PhaseData("✏️", "Practice", "Move the abacus beads yourself",         Color(0xFF1B5E20),  Color(0xFF4CAF50)),
+        PhaseData("⭐", "Quiz",     "Test your skills & earn stars!",          Color(0xFF4A148C),  Color(0xFFAB47BC)),
+    )
+
+    Box(modifier = Modifier.fillMaxSize()) {
+        HomePageBackground()
+        Column(modifier = Modifier.fillMaxSize()) {
+            BackButtonWithText(
+                title       = "Lesson ${lesson.id}  ·  ${lesson.title}",
+                onBackClick = onBackClick
+            )
+
+            BoxWithConstraints(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f),
+                contentAlignment = Alignment.Center
+            ) {
+                val spacing = AppDimens.Dimens16
+                val hPad    = AppDimens.Dimens20
+                val cardW   = (maxWidth - hPad * 2 - spacing * (phases.size - 1)) / phases.size
+                val cardH   = maxHeight * 0.82f
+
+                Row(
+                    modifier = Modifier
+                        .width(maxWidth - hPad * 2),
+                    horizontalArrangement = Arrangement.spacedBy(spacing),
+                    verticalAlignment     = Alignment.CenterVertically
+                ) {
+                    phases.forEach { phase ->
+                        PhaseCard(
+                            phase  = phase,
+                            cardW  = cardW,
+                            cardH  = cardH,
+                            onClick = { /* TODO: navigate to phase */ }
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun PhaseCard(phase: PhaseData, cardW: Dp, cardH: Dp, onClick: () -> Unit) {
+    val shape = RoundedCornerShape(AppDimens.Dimens24)
+    Box(
+        modifier = Modifier
+            .width(cardW)
+            .height(cardH)
+            .shadow(
+                elevation    = AppDimens.Dimens8,
+                shape        = shape,
+                ambientColor = phase.endColor.copy(alpha = 0.4f),
+                spotColor    = phase.endColor.copy(alpha = 0.4f)
+            )
+            .background(Brush.linearGradient(listOf(phase.startColor, phase.endColor)))
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication        = null
+            ) { onClick() },
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.padding(AppDimens.Dimens16)
+        ) {
+            Text(
+                text  = phase.emoji,
+                style = MaterialTheme.typography.displaySmall.scaled()
+            )
+            Spacer(modifier = Modifier.height(AppDimens.Dimens12))
+            Text(
+                text       = phase.title,
+                style      = MaterialTheme.typography.headlineMedium.scaled(),
+                color      = Color.White,
+                fontWeight = FontWeight.Black
+            )
+            Spacer(modifier = Modifier.height(AppDimens.Dimens8))
+            Text(
+                text      = phase.description,
+                style     = MaterialTheme.typography.bodyMedium.scaled(),
+                color     = Color.White.copy(alpha = 0.85f),
+                textAlign = TextAlign.Center
+            )
+        }
+    }
+}

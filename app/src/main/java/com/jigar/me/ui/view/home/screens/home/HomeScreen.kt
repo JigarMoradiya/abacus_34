@@ -10,6 +10,8 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.*
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.*
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -30,6 +32,8 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.*
+import androidx.compose.material3.CardDefaults
+import kotlinx.coroutines.delay
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -129,16 +133,6 @@ private fun rememberSpeechBubbleShape(
     }
 }
 
-// ── Today's table accent palette ──────────────────────────────────────────────
-
-private val tableAccentPalette = listOf(
-    Color(0xFFE53935), Color(0xFFF57C00), Color(0xFFF9A825),
-    Color(0xFF00ACC1), Color(0xFF00897B), Color(0xFF7B1FA2),
-    Color(0xFFC2185B), Color(0xFF5E35B1), Color(0xFF00695C),
-    Color(0xFFE64A19), Color(0xFF1565C0), Color(0xFF2E7D32),
-    Color(0xFF0984E3), Color(0xFFBF360C)
-)
-
 // ── Main Screen ───────────────────────────────────────────────────────────────
 
 @Composable
@@ -154,14 +148,14 @@ fun HomeScreen(
     onNavigateToPurchase: () -> Unit,
     onNavigateToYoutubeVideo: () -> Unit,
     onNavigateToWhatsLearning: () -> Unit,
-    onNavigateToTodayTable: (tableNumber: Int) -> Unit,
+    onNavigateToLevel1: () -> Unit,
+    onNavigateToLevel2: () -> Unit,
+    onNavigateToLevel3: () -> Unit,
+    onNavigateToLevel4: () -> Unit,
 ) {
     val viewModel: HomeFragmentViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current
-
-    val dayOfYear = remember { java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_YEAR) }
-    val todayTableNumber = remember { 2 + (dayOfYear - 1) % 14 }
 
     val resumeActivityResultLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -290,30 +284,34 @@ fun HomeScreen(
                     }
                 }
 
-                // ── Right panel: streak | today's table | menu list ────────
+                // ── Right panel: streak | level pager | menu list ──────
                 Column(
                     modifier = Modifier
                         .weight(1f)
                         .fillMaxHeight()
                 ) {
-                    // Streak + today's table
+                    // Streak + level cards pager
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = Dimens16)
                             .padding(bottom = Dimens8),
-                        horizontalArrangement = Arrangement.Center,
+                        horizontalArrangement = Arrangement.spacedBy(Dimens12, Alignment.CenterHorizontally),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        StreakCard(
-                            currentStreak = uiState.currentStreak,
-                            bestStreak    = uiState.longestStreak,
-                            shields       = uiState.streakShields
-                        )
-                        Spacer(modifier = Modifier.width(Dimens12))
-                        TodayTableCard(
-                            tableNumber = todayTableNumber,
-                            onClick = { onNavigateToTodayTable(todayTableNumber) }
+                        Box(modifier = Modifier.padding(bottom = Dimens12)) {
+                            StreakCard(
+                                currentStreak = uiState.currentStreak,
+                                bestStreak    = uiState.longestStreak,
+                                shields       = uiState.streakShields
+                            )
+                        }
+                        LevelsPager(
+                            modifier = Modifier.width(220.dp),
+                            onLevel1 = onNavigateToLevel1,
+                            onLevel2 = onNavigateToLevel2,
+                            onLevel3 = onNavigateToLevel3,
+                            onLevel4 = onNavigateToLevel4,
                         )
                     }
 
@@ -811,21 +809,76 @@ private fun NotificationStep(number: String, text: String) {
     }
 }
 
-// ── Today's Table Card ────────────────────────────────────────────────────────
+// ── Level Cards Pager ─────────────────────────────────────────────────────────
+
+private data class LevelInfo(
+    val number: Int, val emoji: String, val title: String,
+    val start: Color, val end: Color
+)
+
+private val levelInfoList = listOf(
+    LevelInfo(1, "🔢", "Bead Basics",    Color(0xFF2E7D32), Color(0xFF43A047)),
+    LevelInfo(2, "➕", "Add & Subtract", Color(0xFF1565C0), Color(0xFF1976D2)),
+    LevelInfo(3, "⚡", "Speed & Anzan",  Color(0xFF6A1B9A), Color(0xFF7B1FA2)),
+    LevelInfo(4, "✖️", "Times Tables",   Color(0xFFE65100), Color(0xFFF57C00)),
+)
 
 @Composable
-private fun TodayTableCard(tableNumber: Int, onClick: () -> Unit) {
-    val cardGrey = Color(0xFF757575)
+private fun LevelsPager(
+    onLevel1: () -> Unit,
+    onLevel2: () -> Unit,
+    onLevel3: () -> Unit,
+    onLevel4: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val actions = remember { listOf(onLevel1, onLevel2, onLevel3, onLevel4) }
+    val pagerState = rememberPagerState(pageCount = { levelInfoList.size })
 
+    LaunchedEffect(pagerState) {
+        while (true) {
+            delay(3000)
+            pagerState.animateScrollToPage((pagerState.currentPage + 1) % levelInfoList.size)
+        }
+    }
+
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(Dimens4)
+    ) {
+        HorizontalPager(
+            state = pagerState,
+            modifier = Modifier.fillMaxWidth()
+        ) { page ->
+            LevelMiniCard(info = levelInfoList[page], onClick = actions[page])
+        }
+        Row(horizontalArrangement = Arrangement.spacedBy(Dimens4), verticalAlignment = Alignment.CenterVertically) {
+            repeat(levelInfoList.size) { i ->
+                val selected = pagerState.currentPage == i
+                Box(
+                    modifier = Modifier
+                        .size(if (selected) Dimens8 else Dimens6)
+                        .background(
+                            if (selected) PrimaryBlue else PrimaryBlue.copy(alpha = 0.35f),
+                            CircleShape
+                        )
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun LevelMiniCard(info: LevelInfo, onClick: () -> Unit) {
     Row(
         modifier = Modifier
+            .fillMaxWidth()
             .shadow(
-                elevation = 4.dp, shape = PillShape,
-                ambientColor = cardGrey.copy(alpha = 0.15f),
-                spotColor   = cardGrey.copy(alpha = 0.15f)
+                elevation = Dimens4, shape = PillShape,
+                ambientColor = info.start.copy(alpha = 0.22f),
+                spotColor   = info.start.copy(alpha = 0.22f)
             )
-            .background(Color.White.copy(alpha = 0.88f), PillShape)
-            .border(1.5.dp, cardGrey.copy(alpha = 0.35f), PillShape)
+            .background(Brush.linearGradient(listOf(info.start, info.end)), PillShape)
             .clickable { onClick() }
             .padding(horizontal = Dimens14, vertical = Dimens8),
         verticalAlignment = Alignment.CenterVertically,
@@ -834,30 +887,32 @@ private fun TodayTableCard(tableNumber: Int, onClick: () -> Unit) {
         Box(
             modifier = Modifier
                 .size(AppDimens.Dimens40)
-                .background(cardGrey.copy(alpha = 0.12f), CircleShape),
+                .background(Color.White.copy(alpha = 0.22f), CircleShape),
             contentAlignment = Alignment.Center
         ) {
-            Text(
-                text = "×$tableNumber",
-                style = MaterialTheme.typography.labelLarge.scaled(),
-                fontWeight = FontWeight.Black,
-                color = cardGrey
-            )
+            Text(text = info.emoji, style = MaterialTheme.typography.titleSmall.scaled())
         }
-        Column {
+        Column(modifier = Modifier.weight(1f)) {
             Text(
-                text = "Today's Table",
-                style = MaterialTheme.typography.labelSmall.scaled(),
-                fontWeight = FontWeight.Medium,
-                color = cardGrey.copy(alpha = 0.7f)
-            )
-            Text(
-                text = "Practice ×$tableNumber table today! 🧮",
+                text = "LEVEL ${info.number}",
                 style = MaterialTheme.typography.labelSmall.scaled(),
                 fontWeight = FontWeight.Bold,
-                color = Color.Black.copy(alpha = 0.7f)
+                color = Color.White.copy(alpha = 0.75f),
+                letterSpacing = 1.sp
+            )
+            Text(
+                text = info.title,
+                style = MaterialTheme.typography.labelMedium.scaled(),
+                fontWeight = FontWeight.Black,
+                color = Color.White
             )
         }
+        Icon(
+            imageVector = Icons.Default.ChevronRight,
+            contentDescription = null,
+            tint = Color.White.copy(alpha = 0.8f),
+            modifier = Modifier.size(Dimens16)
+        )
     }
 }
 
