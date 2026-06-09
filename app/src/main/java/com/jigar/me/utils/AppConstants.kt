@@ -83,6 +83,7 @@ object AppConstants {
             const val screenTypeCCM = "CCM"
             const val screenTypeExercise = "Exercise"
             const val screenTypeLevel1Practice = "Level1Practice"
+            const val screenTypeLevel1PracticeHint = "Level1PracticeHint"
 
 
 
