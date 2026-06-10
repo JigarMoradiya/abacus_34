@@ -1,25 +1,22 @@
 package com.jigar.me.ui.view.home.screens.levels
 
 import androidx.compose.animation.*
-import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.base.abacus_base.AbacusCalculations
@@ -27,12 +24,13 @@ import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWith
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsOptionButton
+import com.jigar.me.ui.view.home.screens.today_table.optionType
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
+import com.jigar.me.ui.view.home.theme.AppDimens.examOptionHeight
 import com.jigar.me.utils.AppConstants
 import kotlinx.coroutines.delay
-
-private val CORRECT_COLOR = Color(0xFF2E7D32)
-private val WRONG_COLOR   = Color(0xFFC62828)
 
 @Composable
 fun Level1QuizScreen(
@@ -41,83 +39,64 @@ fun Level1QuizScreen(
     onFinished: () -> Unit,
 ) {
     val lesson    = level1Lessons.find { it.id == lessonId } ?: return
-    val content   = allLessonContent[lessonId] ?: return
-    val questions = content.quizQuestions
+    val questions = remember { generateQuizQuestions(lessonId) }
 
-    var qIndex      by remember { mutableIntStateOf(0) }
-    var selected    by remember { mutableStateOf<Int?>(null) }
-    var score       by remember { mutableIntStateOf(0) }
-    var showResult  by remember { mutableStateOf(false) }
+    var qIndex     by remember { mutableIntStateOf(0) }
+    var selected   by remember { mutableStateOf<Int?>(null) }
+    var score      by remember { mutableIntStateOf(0) }
+    var showResult by remember { mutableStateOf(false) }
 
-    // Auto-advance after answer
     LaunchedEffect(selected) {
         val sel = selected ?: return@LaunchedEffect
         if (sel == questions[qIndex].correctAnswer) score++
         delay(900)
-        if (qIndex < questions.size - 1) {
-            qIndex++
-            selected = null
-        } else {
-            showResult = true
-        }
+        if (qIndex < questions.size - 1) { qIndex++; selected = null }
+        else showResult = true
     }
 
-    if (showResult) {
-        QuizResultScreen(
-            lesson     = lesson,
-            score      = score,
-            total      = questions.size,
-            onRetry    = {
-                qIndex     = 0
-                selected   = null
-                score      = 0
-                showResult = false
-            },
-            onContinue = onFinished
-        )
-        return
-    }
-
-    val question = questions[qIndex]
-
-    val prefs = LocalPreferencesHelper.current
+    val question      = questions[minOf(qIndex, questions.size - 1)]
+    val prefs         = LocalPreferencesHelper.current
     val selectedTheme = prefs.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default)
 
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
         Column(modifier = Modifier.fillMaxSize()) {
-            BackButtonWithText(
-                title       = "Lesson ${lesson.id}  ·  Quiz",
-                onBackClick = onBackClick
-            )
 
-            // Progress bar
-            LinearProgressIndicator(
-                progress    = { (qIndex.toFloat() + 1f) / questions.size },
-                modifier    = Modifier.fillMaxWidth().padding(horizontal = AppDimens.Dimens16).height(AppDimens.Dimens8),
-                color       = lesson.endColor,
-                trackColor  = lesson.endColor.copy(alpha = 0.25f),
-            )
-            Spacer(Modifier.height(AppDimens.Dimens8))
+            // ── Header: back button + inline progress bar ──────────────
+            Row(
+                modifier          = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                BackButtonWithText(
+                    title       = "Lesson ${lesson.id}  ·  Quiz",
+                    onBackClick = onBackClick
+                )
+                LinearProgressIndicator(
+                    progress   = { (qIndex.toFloat() + 1f) / questions.size },
+                    modifier   = Modifier
+                        .weight(1f)
+                        .padding(end = AppDimens.Dimens32)
+                        .height(AppDimens.Dimens8),
+                    color      = lesson.endColor,
+                    trackColor = lesson.endColor.copy(alpha = 0.25f),
+                )
+            }
 
-            BoxWithConstraints(
+            // ── Main content ───────────────────────────────────────────
+            Box(
                 modifier         = Modifier.fillMaxWidth().weight(1f),
                 contentAlignment = Alignment.Center
             ) {
-                val hPad    = AppDimens.Dimens16
-                val vPad    = AppDimens.Dimens12
-                val spacing = AppDimens.Dimens16
-
                 Row(
                     modifier = Modifier
-                        .padding(horizontal = hPad, vertical = vPad)
+                        .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens12)
                         .fillMaxSize(),
-                    horizontalArrangement = Arrangement.spacedBy(spacing),
+                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16),
                     verticalAlignment     = Alignment.CenterVertically
                 ) {
-                    // ── Left panel: abacus diagram ─────────────────────────
+                    // ── Left panel: abacus ─────────────────────────────
                     AnimatedContent(
-                        targetState = question,
+                        targetState  = question,
                         transitionSpec = { fadeIn(tween(250)) togetherWith fadeOut(tween(250)) },
                         modifier     = Modifier.weight(0.45f).fillMaxHeight(),
                         label        = "quiz-abacus"
@@ -128,12 +107,9 @@ fun Level1QuizScreen(
                                 .fillMaxSize(0.95f)
                                 .padding(bottom = AppDimens.Dimens8)
                                 .shadow(AppDimens.Dimens8, leftShape,
-                                    spotColor    = lesson.endColor.copy(0.3f),
-                                    ambientColor = lesson.endColor.copy(0.3f))
-                                .background(
-                                    Brush.linearGradient(listOf(lesson.startColor, lesson.endColor)),
-                                    leftShape
-                                ),
+                                    spotColor    = lesson.endColor.copy(0.25f),
+                                    ambientColor = lesson.endColor.copy(0.15f))
+                                .background(Color.White.copy(0.20f), leftShape),
                             contentAlignment = Alignment.Center
                         ) {
                             val cols   = q.abacusState.rods.size
@@ -141,67 +117,123 @@ fun Level1QuizScreen(
                             LaunchedEffect(q.abacusState.value) {
                                 abCalc.setAbacusValueFromString(q.abacusState.value.toString())
                             }
-                            AbacusWithDecimalCanvas(
-                                selectedTheme             = selectedTheme,
-                                screenType                = AppConstants.AbacusScreen.screenTypeLevel1Practice,
-                                abacusData                = abCalc,
-                                numberOfColumns           = cols,
-                                rodMovement               = emptyList(),
-                                showDirectionHint         = false,
-                                isBeadSoundOn             = false,
-                                isDisplayCurrentAbacusInput = false,
-                                onRodMovementChange       = {},
-                                onShowDirectionHintsChange = {},
-                                onShowHighlighterChange   = {},
-                                onReset = {}, onNext = {},
-                                modifier = Modifier
-                                    .fillMaxHeight(0.75f)
-                                    .fillMaxWidth(if (cols > 1) 0.80f else 0.55f)
-                            )
+                            Box(
+                                modifier         = Modifier.fillMaxSize(),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                AbacusWithDecimalCanvas(
+                                    selectedTheme               = selectedTheme,
+                                    screenType                  = AppConstants.AbacusScreen.screenTypeLevel1Practice,
+                                    abacusData                  = abCalc,
+                                    numberOfColumns             = cols,
+                                    rodMovement                 = emptyList(),
+                                    showDirectionHint           = false,
+                                    isBeadSoundOn               = false,
+                                    isDisplayCurrentAbacusInput = false,
+                                    onRodMovementChange         = {},
+                                    onShowDirectionHintsChange  = {},
+                                    onShowHighlighterChange     = {},
+                                    onReset = {}, onNext = {},
+                                )
+                            }
                         }
                     }
 
-                    // ── Right panel: question + choices ────────────────────
-                    Column(
+                    // ── Right panel: question + options ────────────────
+                    val rightShape = RoundedCornerShape(AppDimens.Dimens24)
+                    Box(
                         modifier = Modifier
                             .weight(0.55f)
                             .fillMaxHeight()
-                            .padding(vertical = AppDimens.Dimens4),
-                        verticalArrangement   = Arrangement.spacedBy(AppDimens.Dimens12, Alignment.CenterVertically),
-                        horizontalAlignment   = Alignment.CenterHorizontally
+                            .padding(bottom = AppDimens.Dimens8)
+                            .shadow(AppDimens.Dimens6, rightShape,
+                                spotColor    = lesson.endColor.copy(0.25f),
+                                ambientColor = lesson.endColor.copy(0.15f))
+                            .background(
+                                Brush.linearGradient(
+                                    listOf(lesson.startColor.copy(0.70f), lesson.endColor.copy(0.70f))
+                                ),
+                                rightShape
+                            )
+                            .padding(AppDimens.Dimens20),
+                        contentAlignment = Alignment.Center
                     ) {
-                        Text(
-                            "Question ${qIndex + 1} of ${questions.size}",
-                            style      = MaterialTheme.typography.labelLarge.scaled(),
-                            color      = Color.White.copy(0.80f),
-                            fontWeight = FontWeight.Bold
-                        )
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12, Alignment.CenterVertically),
+                            modifier = Modifier.fillMaxSize()
+                        ) {
+                            Text(
+                                "Question ${qIndex + 1} of ${questions.size}",
+                                style      = MaterialTheme.typography.labelLarge.scaled(),
+                                color      = Color.White.copy(0.80f),
+                                fontWeight = FontWeight.Bold
+                            )
 
-                        Text(
-                            "What number is this? 🤔",
-                            style      = MaterialTheme.typography.headlineSmall.scaled(),
-                            color      = Color.White,
-                            fontWeight = FontWeight.Black,
-                            textAlign  = TextAlign.Center
-                        )
+                            Text(
+                                "What number is this? 🤔",
+                                style      = MaterialTheme.typography.headlineSmall.scaled(),
+                                color      = Color.White,
+                                fontWeight = FontWeight.Black,
+                                textAlign  = TextAlign.Center
+                            )
 
-                        Spacer(Modifier.height(AppDimens.Dimens8))
+                            Spacer(Modifier.height(AppDimens.Dimens4))
 
-                        // 2×2 choice grid
-                        val rows = question.choices.chunked(2)
-                        rows.forEach { rowChoices ->
-                            Row(
-                                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
+                            // Shuffle once per question so correct answer isn't always first
+                            val shuffledChoices = remember(question) { question.choices.shuffled() }
+
+                            // Options grid — 2×2, equal width buttons filling available space
+                            Column(
+                                verticalArrangement = Arrangement.spacedBy(Dimens10),
+                                horizontalAlignment = Alignment.CenterHorizontally,
                                 modifier = Modifier.fillMaxWidth()
                             ) {
-                                rowChoices.forEach { choice ->
-                                    ChoiceButton(
-                                        choice     = choice,
-                                        selected   = selected,
-                                        correct    = question.correctAnswer,
-                                        modifier   = Modifier.weight(1f),
-                                        onClick    = { if (selected == null) selected = choice }
-                                    )
+                                if (shuffledChoices.size >= 2) {
+                                    Row(
+                                        horizontalArrangement = Arrangement.spacedBy(Dimens10),
+                                        modifier = Modifier.fillMaxWidth()
+                                    ) {
+                                        KidsOptionButton(
+                                            text     = "${shuffledChoices[0]}",
+                                            type     = optionType(shuffledChoices[0], question.correctAnswer, selected),
+                                            fontSize = examOptionHeight.value.sp * 0.6f,
+                                            enabled  = selected == null,
+                                            onClick  = { if (selected == null) selected = shuffledChoices[0] },
+                                            modifier = Modifier.weight(1f).height(examOptionHeight)
+                                        )
+                                        KidsOptionButton(
+                                            text     = "${shuffledChoices[1]}",
+                                            type     = optionType(shuffledChoices[1], question.correctAnswer, selected),
+                                            fontSize = examOptionHeight.value.sp * 0.6f,
+                                            enabled  = selected == null,
+                                            onClick  = { if (selected == null) selected = shuffledChoices[1] },
+                                            modifier = Modifier.weight(1f).height(examOptionHeight)
+                                        )
+                                    }
+                                }
+                                if (shuffledChoices.size >= 4) {
+                                    Row(
+                                        horizontalArrangement = Arrangement.spacedBy(Dimens10),
+                                        modifier = Modifier.fillMaxWidth()
+                                    ) {
+                                        KidsOptionButton(
+                                            text     = "${shuffledChoices[2]}",
+                                            type     = optionType(shuffledChoices[2], question.correctAnswer, selected),
+                                            fontSize = examOptionHeight.value.sp * 0.6f,
+                                            enabled  = selected == null,
+                                            onClick  = { if (selected == null) selected = shuffledChoices[2] },
+                                            modifier = Modifier.weight(1f).height(examOptionHeight)
+                                        )
+                                        KidsOptionButton(
+                                            text     = "${shuffledChoices[3]}",
+                                            type     = optionType(shuffledChoices[3], question.correctAnswer, selected),
+                                            fontSize = examOptionHeight.value.sp * 0.6f,
+                                            enabled  = selected == null,
+                                            onClick  = { if (selected == null) selected = shuffledChoices[3] },
+                                            modifier = Modifier.weight(1f).height(examOptionHeight)
+                                        )
+                                    }
                                 }
                             }
                         }
@@ -209,127 +241,68 @@ fun Level1QuizScreen(
                 }
             }
         }
-    }
-}
 
-@Composable
-private fun ChoiceButton(
-    choice: Int,
-    selected: Int?,
-    correct: Int,
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-) {
-    val isSelected    = selected == choice
-    val isCorrect     = choice == correct
-    val answered      = selected != null
-    val scale by animateFloatAsState(
-        if (isSelected) 0.92f else 1f,
-        animationSpec = tween(120),
-        label = "scale"
-    )
-
-    val bgColor = when {
-        !answered          -> Color.White.copy(0.18f)
-        isCorrect          -> CORRECT_COLOR
-        isSelected         -> WRONG_COLOR
-        else               -> Color.White.copy(0.10f)
-    }
-    val textColor = if (!answered) Color.White else if (isCorrect || isSelected) Color.White else Color.White.copy(0.5f)
-
-    val shape = RoundedCornerShape(AppDimens.Dimens16)
-    Box(
-        modifier = modifier
-            .scale(scale)
-            .shadow(if (!answered) AppDimens.Dimens6 else AppDimens.Dimens2, shape)
-            .background(bgColor, shape)
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication        = null,
-                enabled           = !answered
-            ) { onClick() }
-            .padding(vertical = AppDimens.Dimens16),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text       = "$choice",
-            fontSize   = 30.sp,
-            color      = textColor,
-            fontWeight = FontWeight.Black
-        )
-    }
-}
-
-@Composable
-private fun QuizResultScreen(
-    lesson: Level1LessonData,
-    score: Int,
-    total: Int,
-    onRetry: () -> Unit,
-    onContinue: () -> Unit,
-) {
-    val stars = when {
-        score >= total - 1 -> 3
-        score >= total / 2 -> 2
-        else               -> 1
-    }
-    val starEmoji = "⭐".repeat(stars) + "☆".repeat(3 - stars)
-    val message = when (stars) {
-        3    -> "Perfect Score! You're a Star! 🌟"
-        2    -> "Great Job! Keep Practicing! 💪"
-        else -> "Good Try! Let's Practice More! 🎯"
-    }
-
-    Box(modifier = Modifier.fillMaxSize()) {
-        HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize()) {
-            BackButtonWithText(title = "Lesson ${lesson.id}  ·  Quiz", onBackClick = onContinue)
+        // ── Quiz result popup overlay ──────────────────────────────────
+        val stars     = when { score >= questions.size - 1 -> 3; score >= questions.size / 2 -> 2; else -> 1 }
+        val starEmoji = "⭐".repeat(stars) + "☆".repeat(3 - stars)
+        val message   = when (stars) {
+            3    -> "Perfect Score! You're a Star! 🌟"
+            2    -> "Great Job! Keep Practicing! 💪"
+            else -> "Good Try! Let's Practice More! 🎯"
         }
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            val shape = RoundedCornerShape(AppDimens.Dimens24)
+        AnimatedVisibility(
+            visible  = showResult,
+            enter    = fadeIn(tween(300)) + scaleIn(initialScale = 0.85f, animationSpec = spring(dampingRatio = 0.7f, stiffness = 400f)),
+            exit     = fadeOut(tween(200)) + scaleOut(targetScale = 0.85f),
+            modifier = Modifier.fillMaxSize()
+        ) {
             Box(
-                modifier = Modifier
-                    .fillMaxHeight(0.80f)
-                    .fillMaxWidth(0.58f)
-                    .shadow(AppDimens.Dimens12, shape,
-                        spotColor    = lesson.endColor.copy(0.45f),
-                        ambientColor = lesson.endColor.copy(0.45f))
-                    .background(Brush.linearGradient(listOf(lesson.startColor, lesson.endColor)), shape)
-                    .padding(AppDimens.Dimens28),
+                modifier         = Modifier.fillMaxSize().background(Color.Black.copy(0.45f)),
                 contentAlignment = Alignment.Center
             ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens16, Alignment.CenterVertically)
+                val popupShape = RoundedCornerShape(AppDimens.Dimens24)
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.50f)
+                        .shadow(AppDimens.Dimens16, popupShape,
+                            spotColor    = lesson.endColor.copy(0.4f),
+                            ambientColor = lesson.endColor.copy(0.4f))
+                        .background(Brush.linearGradient(listOf(lesson.startColor, lesson.endColor)), popupShape)
+                        .padding(AppDimens.Dimens24),
+                    contentAlignment = Alignment.Center
                 ) {
-                    Text(starEmoji, fontSize = 52.sp)
-
-                    Text(
-                        "$score / $total Correct",
-                        style      = MaterialTheme.typography.headlineMedium.scaled(),
-                        color      = Color.White,
-                        fontWeight = FontWeight.Black
-                    )
-
-                    Box(
-                        modifier = Modifier
-                            .background(Color.White.copy(0.18f), RoundedCornerShape(AppDimens.Dimens16))
-                            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens12)
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)
                     ) {
+                        Text(starEmoji, fontSize = 52.sp)
                         Text(
-                            message,
-                            style      = MaterialTheme.typography.bodyLarge.scaled(),
+                            "$score / ${questions.size} Correct",
+                            style      = MaterialTheme.typography.headlineMedium.scaled(),
                             color      = Color.White,
-                            textAlign  = TextAlign.Center,
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.Black,
+                            textAlign  = TextAlign.Center
                         )
-                    }
-
-                    Spacer(Modifier.height(AppDimens.Dimens4))
-
-                    Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
-                        ResultBtn("Try Again 🔄", filled = false, onClick = onRetry)
-                        ResultBtn("Continue →", filled = true, onClick = onContinue)
+                        Box(
+                            modifier = Modifier
+                                .background(Color.White.copy(0.18f), RoundedCornerShape(AppDimens.Dimens16))
+                                .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens12)
+                        ) {
+                            Text(
+                                message,
+                                style      = MaterialTheme.typography.bodyLarge.scaled(),
+                                color      = Color.White.copy(0.90f),
+                                textAlign  = TextAlign.Center,
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
+                        Spacer(Modifier.height(AppDimens.Dimens4))
+                        Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
+                            QuizResultBtn("Try Again 🔄", filled = false) {
+                                qIndex = 0; selected = null; score = 0; showResult = false
+                            }
+                            QuizResultBtn("Continue →", filled = true, onClick = onFinished)
+                        }
                     }
                 }
             }
@@ -338,7 +311,7 @@ private fun QuizResultScreen(
 }
 
 @Composable
-private fun ResultBtn(label: String, filled: Boolean, onClick: () -> Unit) {
+private fun QuizResultBtn(label: String, filled: Boolean, onClick: () -> Unit) {
     val shape = RoundedCornerShape(AppDimens.Dimens100)
     Box(
         modifier = Modifier

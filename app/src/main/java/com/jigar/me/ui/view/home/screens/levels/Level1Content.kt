@@ -62,8 +62,6 @@ internal data class QuizQuestion(
 
 internal data class LessonFullContent(
     val learnSteps: List<LearnStep>,
-    val practiceProblems: List<PracticeProblem>,
-    val quizQuestions: List<QuizQuestion>,
 )
 
 // ─── Lesson 1: Meet the Abacus ────────────────────────────────────────────
@@ -84,25 +82,6 @@ private val lesson1Content = LessonFullContent(
         LearnStep("🎉", "Reading the Abacus!",
             "Heaven bead down = 5. Count earth beads touching the beam. Add them! Here: heaven(5) + 3 earth = 8! 🌟",
             AbacusDisplayState.ones(true, 3)),
-    ),
-    practiceProblems = listOf(
-        PracticeProblem(1, AbacusDisplayState.ones(false, 1), "Push 1 earth bead UP to the beam"),
-        PracticeProblem(2, AbacusDisplayState.ones(false, 2), "Push 2 earth beads UP to the beam"),
-        PracticeProblem(3, AbacusDisplayState.ones(false, 3), "Push 3 earth beads UP to the beam"),
-        PracticeProblem(4, AbacusDisplayState.ones(false, 4), "Push ALL 4 earth beads UP to the beam"),
-        PracticeProblem(0, AbacusDisplayState.ones(false, 0), "Keep ALL beads away from the beam"),
-    ),
-    quizQuestions = listOf(
-        QuizQuestion(AbacusDisplayState.ones(false, 1), listOf(1, 2, 3, 4), 1),
-        QuizQuestion(AbacusDisplayState.ones(false, 3), listOf(1, 2, 3, 4), 3),
-        QuizQuestion(AbacusDisplayState.ones(false, 0), listOf(0, 1, 2, 3), 0),
-        QuizQuestion(AbacusDisplayState.ones(false, 4), listOf(2, 3, 4, 5), 4),
-        QuizQuestion(AbacusDisplayState.ones(false, 2), listOf(1, 2, 3, 4), 2),
-        QuizQuestion(AbacusDisplayState.ones(false, 1), listOf(0, 1, 2, 3), 1),
-        QuizQuestion(AbacusDisplayState.ones(false, 3), listOf(2, 3, 4, 5), 3),
-        QuizQuestion(AbacusDisplayState.ones(false, 4), listOf(3, 4, 5, 6), 4),
-        QuizQuestion(AbacusDisplayState.ones(false, 0), listOf(0, 1, 2, 4), 0),
-        QuizQuestion(AbacusDisplayState.ones(false, 2), listOf(0, 1, 2, 3), 2),
     ),
 )
 
@@ -126,25 +105,6 @@ private val lesson2Content = LessonFullContent(
             "Push ALL 4 earth beads up to the beam! Count: 1, 2, 3, 4! Maximum using only earth beads!",
             AbacusDisplayState.ones(false, 4)),
     ),
-    practiceProblems = listOf(
-        PracticeProblem(1, AbacusDisplayState.ones(false, 1), "Push 1 earth bead up to the beam"),
-        PracticeProblem(3, AbacusDisplayState.ones(false, 3), "Push 3 earth beads up to the beam"),
-        PracticeProblem(0, AbacusDisplayState.ones(false, 0), "Move ALL beads away from the beam"),
-        PracticeProblem(4, AbacusDisplayState.ones(false, 4), "Push all 4 earth beads to the beam"),
-        PracticeProblem(2, AbacusDisplayState.ones(false, 2), "Push 2 earth beads up to the beam"),
-    ),
-    quizQuestions = listOf(
-        QuizQuestion(AbacusDisplayState.ones(false, 0), listOf(0, 1, 2, 3), 0),
-        QuizQuestion(AbacusDisplayState.ones(false, 2), listOf(1, 2, 3, 4), 2),
-        QuizQuestion(AbacusDisplayState.ones(false, 4), listOf(2, 3, 4, 5), 4),
-        QuizQuestion(AbacusDisplayState.ones(false, 1), listOf(0, 1, 2, 3), 1),
-        QuizQuestion(AbacusDisplayState.ones(false, 3), listOf(2, 3, 4, 5), 3),
-        QuizQuestion(AbacusDisplayState.ones(false, 0), listOf(0, 1, 2, 4), 0),
-        QuizQuestion(AbacusDisplayState.ones(false, 4), listOf(3, 4, 5, 6), 4),
-        QuizQuestion(AbacusDisplayState.ones(false, 2), listOf(0, 2, 3, 4), 2),
-        QuizQuestion(AbacusDisplayState.ones(false, 1), listOf(1, 2, 3, 4), 1),
-        QuizQuestion(AbacusDisplayState.ones(false, 3), listOf(1, 2, 3, 4), 3),
-    ),
 )
 
 // ─── Lesson 3: Number 5 & Beyond ─────────────────────────────────────────
@@ -166,25 +126,6 @@ private val lesson3Content = LessonFullContent(
         LearnStep("9️⃣", "Nine — the Maximum!",
             "Heaven bead down (=5) + 4 earth beads up (=4). 5 + 4 = NINE! That's the most 1 rod can show! 🏆",
             AbacusDisplayState.ones(true, 4)),
-    ),
-    practiceProblems = listOf(
-        PracticeProblem(5, AbacusDisplayState.ones(true, 0), "Push ONLY the heaven bead DOWN to the beam"),
-        PracticeProblem(7, AbacusDisplayState.ones(true, 2), "Heaven bead down + push 2 earth beads up"),
-        PracticeProblem(6, AbacusDisplayState.ones(true, 1), "Heaven bead down + push 1 earth bead up"),
-        PracticeProblem(9, AbacusDisplayState.ones(true, 4), "Heaven bead down + push all 4 earth beads up"),
-        PracticeProblem(8, AbacusDisplayState.ones(true, 3), "Heaven bead down + push 3 earth beads up"),
-    ),
-    quizQuestions = listOf(
-        QuizQuestion(AbacusDisplayState.ones(true, 0), listOf(4, 5, 6, 7), 5),
-        QuizQuestion(AbacusDisplayState.ones(true, 2), listOf(5, 6, 7, 8), 7),
-        QuizQuestion(AbacusDisplayState.ones(true, 4), listOf(7, 8, 9, 10), 9),
-        QuizQuestion(AbacusDisplayState.ones(true, 1), listOf(4, 5, 6, 7), 6),
-        QuizQuestion(AbacusDisplayState.ones(true, 3), listOf(6, 7, 8, 9), 8),
-        QuizQuestion(AbacusDisplayState.ones(true, 0), listOf(5, 6, 7, 8), 5),
-        QuizQuestion(AbacusDisplayState.ones(true, 4), listOf(8, 9, 10, 11), 9),
-        QuizQuestion(AbacusDisplayState.ones(true, 2), listOf(6, 7, 8, 9), 7),
-        QuizQuestion(AbacusDisplayState.ones(true, 1), listOf(5, 6, 7, 8), 6),
-        QuizQuestion(AbacusDisplayState.ones(true, 3), listOf(7, 8, 9, 10), 8),
     ),
 )
 
@@ -208,25 +149,6 @@ private val lesson4Content = LessonFullContent(
             "Read LEFT rod first (tens × 10), then add RIGHT rod (ones). Here: 4 tens + 7 ones = 47! 🏆",
             AbacusDisplayState.tensOnes(false, 4, true, 2)),
     ),
-    practiceProblems = listOf(
-        PracticeProblem(12, AbacusDisplayState.tensOnes(false, 1, false, 2), "Tens rod: 1 earth bead up · Ones rod: 2 earth beads up"),
-        PracticeProblem(34, AbacusDisplayState.tensOnes(false, 3, false, 4), "Tens rod: 3 earth beads up · Ones rod: 4 earth beads up"),
-        PracticeProblem(50, AbacusDisplayState.tensOnes(true, 0, false, 0), "Tens rod: heaven bead down only · Ones rod: all beads down"),
-        PracticeProblem(28, AbacusDisplayState.tensOnes(false, 2, true, 3), "Tens rod: 2 earth beads up · Ones rod: heaven + 3 earth up"),
-        PracticeProblem(63, AbacusDisplayState.tensOnes(true, 1, false, 3), "Tens rod: heaven + 1 earth up · Ones rod: 3 earth beads up"),
-    ),
-    quizQuestions = listOf(
-        QuizQuestion(AbacusDisplayState.tensOnes(false, 1, false, 2), listOf(12, 21, 13, 11), 12),
-        QuizQuestion(AbacusDisplayState.tensOnes(false, 3, false, 4), listOf(34, 43, 33, 44), 34),
-        QuizQuestion(AbacusDisplayState.tensOnes(true, 0, false, 0), listOf(50, 55, 5, 45), 50),
-        QuizQuestion(AbacusDisplayState.tensOnes(false, 2, true, 3), listOf(23, 28, 82, 38), 28),
-        QuizQuestion(AbacusDisplayState.tensOnes(true, 1, false, 3), listOf(63, 36, 53, 68), 63),
-        QuizQuestion(AbacusDisplayState.tensOnes(false, 4, true, 2), listOf(47, 74, 42, 57), 47),
-        QuizQuestion(AbacusDisplayState.tensOnes(true, 0, true, 1), listOf(56, 65, 51, 61), 56),
-        QuizQuestion(AbacusDisplayState.tensOnes(false, 1, false, 0), listOf(10, 1, 20, 11), 10),
-        QuizQuestion(AbacusDisplayState.tensOnes(false, 0, false, 3), listOf(3, 30, 13, 33), 3),
-        QuizQuestion(AbacusDisplayState.tensOnes(true, 4, true, 4), listOf(99, 98, 89, 90), 99),
-    ),
 )
 
 // ─── Lesson 5: Numbers to 99 ─────────────────────────────────────────────
@@ -249,26 +171,67 @@ private val lesson5Content = LessonFullContent(
             "Read the LEFT rod (×10) then add the RIGHT rod. What's below? Left=3, Right=8 → 38! You did it! 🌈",
             AbacusDisplayState.tensOnes(false, 3, true, 3)),
     ),
-    practiceProblems = listOf(
-        PracticeProblem(15, AbacusDisplayState.tensOnes(false, 1, true, 0), "Tens: 1 earth bead up · Ones: heaven bead down only"),
-        PracticeProblem(72, AbacusDisplayState.tensOnes(true, 2, false, 2), "Tens: heaven + 2 earth up · Ones: 2 earth beads up"),
-        PracticeProblem(48, AbacusDisplayState.tensOnes(false, 4, true, 3), "Tens: 4 earth beads up · Ones: heaven + 3 earth up"),
-        PracticeProblem(91, AbacusDisplayState.tensOnes(true, 4, false, 1), "Tens: heaven + 4 earth up · Ones: 1 earth bead up"),
-        PracticeProblem(36, AbacusDisplayState.tensOnes(false, 3, true, 1), "Tens: 3 earth beads up · Ones: heaven + 1 earth up"),
-    ),
-    quizQuestions = listOf(
-        QuizQuestion(AbacusDisplayState.tensOnes(true, 1, true, 2), listOf(67, 76, 62, 57), 67),
-        QuizQuestion(AbacusDisplayState.tensOnes(true, 0, false, 0), listOf(50, 5, 55, 45), 50),
-        QuizQuestion(AbacusDisplayState.tensOnes(true, 4, true, 4), listOf(99, 98, 89, 90), 99),
-        QuizQuestion(AbacusDisplayState.tensOnes(false, 3, true, 3), listOf(38, 83, 33, 43), 38),
-        QuizQuestion(AbacusDisplayState.tensOnes(false, 1, true, 0), listOf(15, 51, 10, 25), 15),
-        QuizQuestion(AbacusDisplayState.tensOnes(true, 2, false, 2), listOf(72, 27, 22, 77), 72),
-        QuizQuestion(AbacusDisplayState.tensOnes(false, 4, true, 3), listOf(48, 84, 43, 58), 48),
-        QuizQuestion(AbacusDisplayState.tensOnes(true, 4, false, 1), listOf(91, 19, 90, 96), 91),
-        QuizQuestion(AbacusDisplayState.tensOnes(false, 3, true, 1), listOf(36, 63, 31, 46), 36),
-        QuizQuestion(AbacusDisplayState.tensOnes(true, 1, false, 3), listOf(63, 36, 53, 68), 63),
-    ),
 )
+
+// ─── Dynamic quiz generator ───────────────────────────────────────────────
+
+private fun abacusStateFor(value: Int): AbacusDisplayState =
+    if (value <= 9) AbacusDisplayState.ones(value >= 5, value % 5)
+    else { val t = value / 10; val o = value % 10; AbacusDisplayState.tensOnes(t >= 5, t % 5, o >= 5, o % 5) }
+
+private fun buildChoices(correct: Int, min: Int, max: Int): List<Int> {
+    val wrong = mutableListOf<Int>()
+    for (d in listOf(1, -1, 2, -2, 3, -3, 10, -10, 11, -11, 9, -9)) {
+        val c = correct + d
+        if (c in min..max && c != correct && c !in wrong) wrong.add(c)
+        if (wrong.size >= 3) break
+    }
+    if (wrong.size < 3) {
+        (min..max).filter { it != correct && it !in wrong }.shuffled()
+            .take(3 - wrong.size).forEach { wrong.add(it) }
+    }
+    return (wrong.take(3) + correct).sorted()
+}
+
+private fun rodDesc(digit: Int, label: String): String = when {
+    digit == 0 -> "$label: all beads down"
+    digit < 5  -> "$label: $digit earth bead${if (digit == 1) "" else "s"} up"
+    digit == 5 -> "$label: heaven bead down only"
+    else       -> "$label: heaven + ${digit - 5} earth bead${if (digit - 5 == 1) "" else "s"} up"
+}
+
+private fun instructionFor(value: Int): String = if (value <= 9) when {
+    value == 0 -> "Keep ALL beads away from the beam"
+    value < 5  -> "Push $value earth bead${if (value == 1) "" else "s"} UP to the beam"
+    value == 5 -> "Push ONLY the heaven bead DOWN to the beam"
+    else       -> "Heaven bead down + push ${value - 5} earth bead${if (value - 5 == 1) "" else "s"} up"
+} else "${rodDesc(value / 10, "Tens")} · ${rodDesc(value % 10, "Ones")}"
+
+internal fun generatePracticeProblems(lessonId: Int, count: Int = 5): List<PracticeProblem> {
+    val (min, max) = when (lessonId) {
+        1, 2 -> 0 to 4
+        3    -> 5 to 9
+        else -> 0 to 99
+    }
+    val pool = (min..max).toList().shuffled()
+    return List(count) { i ->
+        val value = pool[i % pool.size]
+        PracticeProblem(value, abacusStateFor(value), instructionFor(value))
+    }
+}
+
+internal fun generateQuizQuestions(lessonId: Int, count: Int = 10): List<QuizQuestion> {
+    val (min, max) = when (lessonId) {
+        1, 2 -> 0 to 4
+        3    -> 5 to 9
+        else -> 0 to 99
+    }
+    val pool = (min..max).toList().shuffled()
+    return List(count) { i ->
+        val correct = pool[i % pool.size]
+        QuizQuestion(abacusStateFor(correct), buildChoices(correct, min, max), correct)
+    }
+}
 
 // ─── Registry ─────────────────────────────────────────────────────────────
 

@@ -34,8 +34,7 @@ fun Level1PracticeScreen(
     onFinished: () -> Unit,
 ) {
     val lesson   = level1Lessons.find { it.id == lessonId } ?: return
-    val content  = allLessonContent[lessonId] ?: return
-    val problems = content.practiceProblems
+    val problems = remember { generatePracticeProblems(lessonId) }
 
     var problemIndex      by remember { mutableIntStateOf(0) }
     var showHint          by remember { mutableStateOf(false) }
@@ -248,7 +247,6 @@ fun Level1PracticeScreen(
                 val popupShape = RoundedCornerShape(AppDimens.Dimens24)
                 Box(
                     modifier = Modifier
-                        .fillMaxHeight(0.65f)
                         .fillMaxWidth(0.50f)
                         .shadow(AppDimens.Dimens16, popupShape,
                             spotColor    = lesson.endColor.copy(0.4f),
@@ -259,7 +257,7 @@ fun Level1PracticeScreen(
                 ) {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens16, Alignment.CenterVertically)
+                        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)
                     ) {
                         Text("🌟🌟🌟", fontSize = 52.sp)
                         Text(
@@ -276,22 +274,18 @@ fun Level1PracticeScreen(
                             textAlign  = TextAlign.Center
                         )
                         Spacer(Modifier.height(AppDimens.Dimens4))
-                        Box(
-                            modifier = Modifier
-                                .shadow(AppDimens.Dimens4, RoundedCornerShape(AppDimens.Dimens100))
-                                .background(Color.White, RoundedCornerShape(AppDimens.Dimens100))
-                                .clickable(
-                                    interactionSource = remember { MutableInteractionSource() },
-                                    indication        = null
-                                ) { onFinished() }
-                                .padding(horizontal = AppDimens.Dimens24, vertical = AppDimens.Dimens14),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Text(
-                                "Continue →",
-                                style      = MaterialTheme.typography.titleMedium.scaled(),
-                                color      = lesson.startColor,
-                                fontWeight = FontWeight.Black
+                        Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
+                            ActionBtn(
+                                label      = "Try Again 🔄",
+                                filled     = false,
+                                startColor = lesson.startColor,
+                                onClick    = { problemIndex = 0; showDone = false }
+                            )
+                            ActionBtn(
+                                label      = "Continue →",
+                                filled     = true,
+                                startColor = lesson.startColor,
+                                onClick    = { onFinished() }
                             )
                         }
                     }
