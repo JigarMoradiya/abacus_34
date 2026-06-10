@@ -47,17 +47,17 @@ import com.jigar.me.ui.view.home.screens.today_table.TableDrillScreen
 import com.jigar.me.ui.view.home.screens.today_table.TableFlashcardScreen
 import com.jigar.me.ui.view.home.screens.today_table.TableFillBlankScreen
 import com.jigar.me.ui.view.home.screens.today_table.TablePickerScreen
-import com.jigar.me.ui.view.home.screens.levels.Level1HomeScreen
-import com.jigar.me.ui.view.home.screens.levels.Level1LessonScreen
-import com.jigar.me.ui.view.home.screens.levels.Level1LearnScreen
-import com.jigar.me.ui.view.home.screens.levels.Level1PracticeScreen
-import com.jigar.me.ui.view.home.screens.levels.Level1QuizScreen
-import com.jigar.me.ui.view.home.screens.levels.Level2HomeScreen
-import com.jigar.me.ui.view.home.screens.levels.Level2LessonScreen
-import com.jigar.me.ui.view.home.screens.levels.Level2LearnScreen
-import com.jigar.me.ui.view.home.screens.levels.Level2PracticeScreen
-import com.jigar.me.ui.view.home.screens.levels.Level2QuizScreen
-import com.jigar.me.ui.view.home.screens.levels.Level3HomeScreen
+import com.jigar.me.ui.view.home.screens.levels.level1.Level1HomeScreen
+import com.jigar.me.ui.view.home.screens.levels.level1.Level1LessonScreen
+import com.jigar.me.ui.view.home.screens.levels.level1.learn.Level1LearnScreen
+import com.jigar.me.ui.view.home.screens.levels.level1.practice.Level1PracticeScreen
+import com.jigar.me.ui.view.home.screens.levels.level1.quiz.Level1QuizScreen
+import com.jigar.me.ui.view.home.screens.levels.level2.Level2HomeScreen
+import com.jigar.me.ui.view.home.screens.levels.level2.Level2LessonScreen
+import com.jigar.me.ui.view.home.screens.levels.level2.learn.Level2LearnScreen
+import com.jigar.me.ui.view.home.screens.levels.level2.practice.Level2PracticeScreen
+import com.jigar.me.ui.view.home.screens.levels.level2.quiz.Level2QuizScreen
+import com.jigar.me.ui.view.home.screens.levels.level3.Level3HomeScreen
 
 @Composable
 fun HomeNavGraph(

@@ -36,8 +36,6 @@ import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.base.abacus_base.ColorPresets
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens1
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens2
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens6
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.mixWith
 
@@ -85,7 +83,7 @@ fun DrawScope.drawAbacusColumns(
     for (col in 0 until numberOfColumns) {
         val columnState = abacusData.abacusState[col]
         val isCentralColumn = (col == 6)
-        val isRedDotColumn = if (screenType == AppConstants.AbacusScreen.screenTypeLevel1Practice || screenType == AppConstants.AbacusScreen.screenTypeLevel1PracticeHint) false else
+        val isRedDotColumn = if (screenType == AppConstants.AbacusScreen.screenTypeLevel1Learn || screenType == AppConstants.AbacusScreen.screenTypeLevel1Practice || screenType == AppConstants.AbacusScreen.screenTypeLevel2Learn || screenType == AppConstants.AbacusScreen.screenTypeLevel2Practice) false else
                     col == numberOfColumns - 1 ||
                     col == numberOfColumns - 4 ||
                     col == numberOfColumns - 7 ||
@@ -168,7 +166,7 @@ fun DrawScope.drawAbacusColumns(
             }
         }
 
-        if (screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult && screenType != AppConstants.AbacusScreen.screenTypeLevel1Practice && screenType != AppConstants.AbacusScreen.screenTypeLevel1PracticeHint){
+        if (screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult && screenType != AppConstants.AbacusScreen.screenTypeLevel1Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel1Practice && screenType != AppConstants.AbacusScreen.screenTypeLevel2Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel2Practice){
             val isFirstColumn = col == 0
             val isLastColumn = col == numberOfColumns - 1
 

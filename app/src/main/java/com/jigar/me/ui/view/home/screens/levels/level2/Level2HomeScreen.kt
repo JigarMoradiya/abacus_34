@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.levels
+package com.jigar.me.ui.view.home.screens.levels.level2
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,55 +23,46 @@ import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
-fun Level1HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit) {
+fun Level2HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit) {
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
         Column(modifier = Modifier.fillMaxSize()) {
-            BackButtonWithText(title = "Bead Basics", onBackClick = onBackClick)
+            BackButtonWithText(title = "Add & Subtract", onBackClick = onBackClick)
 
             BoxWithConstraints(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f),
+                modifier         = Modifier.fillMaxWidth().weight(1f),
                 contentAlignment = Alignment.TopCenter
             ) {
-                val cols        = 3
-                val rows        = 2
-                val spacing     = AppDimens.Dimens12
-                val hPad        = AppDimens.Dimens16
-                val vPad        = AppDimens.Dimens12  // top AND bottom padding
-                val shadowRoom  = AppDimens.Dimens8   // Spacer after last row so shadow isn't cut
+                val cols       = 3
+                val rows       = 2
+                val spacing    = AppDimens.Dimens12
+                val hPad       = AppDimens.Dimens16
+                val vPad       = AppDimens.Dimens12
+                val shadowRoom = AppDimens.Dimens8
 
-                // cellW × cellH fills available space minus padding and gaps
                 val cellW = (maxWidth - hPad * 2 - spacing * (cols - 1)) / cols
                 val cellH = (maxHeight - vPad * 2 - spacing * (rows - 1) - shadowRoom) / rows
 
-                // Regular Column+Row (NOT LazyGrid) — avoids lazy-layout shadow clipping
                 Column(
-                    modifier = Modifier
-                        .width(maxWidth - hPad * 2)
-                        .padding(vertical = vPad),
+                    modifier            = Modifier.width(maxWidth - hPad * 2).padding(vertical = vPad),
                     verticalArrangement = Arrangement.spacedBy(spacing)
                 ) {
-                    // Row 1 — all 3 lessons, left-aligned
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier              = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(spacing)
                     ) {
-                        level1Lessons.take(cols).forEach { lesson ->
-                            LessonCard(lesson, cellW, cellH) { onNavigateToLesson(lesson.id) }
+                        level2Lessons.take(cols).forEach { lesson ->
+                            L2LessonCard(lesson, cellW, cellH) { onNavigateToLesson(lesson.id) }
                         }
                     }
-                    // Row 2 — remaining 2 lessons, centered horizontally
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier              = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(spacing, Alignment.CenterHorizontally)
                     ) {
-                        level1Lessons.drop(cols).forEach { lesson ->
-                            LessonCard(lesson, cellW, cellH) { onNavigateToLesson(lesson.id) }
+                        level2Lessons.drop(cols).forEach { lesson ->
+                            L2LessonCard(lesson, cellW, cellH) { onNavigateToLesson(lesson.id) }
                         }
                     }
-                    // Transparent space so last-row card shadows render without clipping
                     Spacer(modifier = Modifier.height(shadowRoom))
                 }
             }
@@ -80,22 +71,16 @@ fun Level1HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit)
 }
 
 @Composable
-private fun LessonCard(lesson: Level1LessonData, cellW: Dp, cellH: Dp, onClick: () -> Unit) {
+private fun L2LessonCard(lesson: Level2LessonData, cellW: Dp, cellH: Dp, onClick: () -> Unit) {
     val shape = RoundedCornerShape(AppDimens.Dimens20)
     Box(
         modifier = Modifier
             .size(width = cellW, height = cellH)
-            .shadow(
-                elevation    = AppDimens.Dimens6,
-                shape        = shape,
+            .shadow(AppDimens.Dimens6, shape,
                 ambientColor = lesson.endColor.copy(alpha = 0.4f),
-                spotColor    = lesson.endColor.copy(alpha = 0.4f)
-            )
+                spotColor    = lesson.endColor.copy(alpha = 0.4f))
             .background(Brush.linearGradient(listOf(lesson.startColor, lesson.endColor)))
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication        = null
-            ) { onClick() },
+            .clickable(remember { MutableInteractionSource() }, null) { onClick() },
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -103,11 +88,8 @@ private fun LessonCard(lesson: Level1LessonData, cellW: Dp, cellH: Dp, onClick: 
             verticalArrangement = Arrangement.Center,
             modifier            = Modifier.padding(AppDimens.Dimens12)
         ) {
-            Text(
-                text  = lesson.emoji,
-                style = MaterialTheme.typography.displaySmall.scaled()
-            )
-            Spacer(modifier = Modifier.height(AppDimens.Dimens8))
+            Text(text = lesson.emoji, style = MaterialTheme.typography.displaySmall.scaled())
+            Spacer(Modifier.height(AppDimens.Dimens8))
             Box(
                 modifier = Modifier
                     .background(Color.White.copy(alpha = 0.25f), RoundedCornerShape(AppDimens.Dimens100))
@@ -120,7 +102,7 @@ private fun LessonCard(lesson: Level1LessonData, cellW: Dp, cellH: Dp, onClick: 
                     fontWeight = FontWeight.Bold
                 )
             }
-            Spacer(modifier = Modifier.height(AppDimens.Dimens6))
+            Spacer(Modifier.height(AppDimens.Dimens6))
             Text(
                 text       = lesson.title,
                 style      = MaterialTheme.typography.titleMedium.scaled(),

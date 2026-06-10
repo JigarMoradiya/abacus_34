@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.levels
+package com.jigar.me.ui.view.home.screens.levels.level1.quiz
 
 import androidx.compose.animation.*
 import androidx.compose.animation.core.spring
@@ -31,6 +31,8 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
 import com.jigar.me.ui.view.home.theme.AppDimens.examOptionHeight
 import com.jigar.me.utils.AppConstants
 import kotlinx.coroutines.delay
+import com.jigar.me.ui.view.home.screens.levels.level1.level1Lessons
+import com.jigar.me.ui.view.home.screens.levels.level1.generateQuizQuestions
 
 @Composable
 fun Level1QuizScreen(
@@ -101,15 +103,10 @@ fun Level1QuizScreen(
                         modifier     = Modifier.weight(0.45f).fillMaxHeight(),
                         label        = "quiz-abacus"
                     ) { q ->
-                        val leftShape = RoundedCornerShape(AppDimens.Dimens24)
                         Box(
                             modifier = Modifier
                                 .fillMaxSize(0.95f)
-                                .padding(bottom = AppDimens.Dimens8)
-                                .shadow(AppDimens.Dimens8, leftShape,
-                                    spotColor    = lesson.endColor.copy(0.25f),
-                                    ambientColor = lesson.endColor.copy(0.15f))
-                                .background(Color.White.copy(0.20f), leftShape),
+                                .padding(bottom = AppDimens.Dimens8),
                             contentAlignment = Alignment.Center
                         ) {
                             val cols   = q.abacusState.rods.size
@@ -123,7 +120,7 @@ fun Level1QuizScreen(
                             ) {
                                 AbacusWithDecimalCanvas(
                                     selectedTheme               = selectedTheme,
-                                    screenType                  = AppConstants.AbacusScreen.screenTypeLevel1Practice,
+                                    screenType                  = AppConstants.AbacusScreen.screenTypeLevel1Learn,
                                     abacusData                  = abCalc,
                                     numberOfColumns             = cols,
                                     rodMovement                 = emptyList(),

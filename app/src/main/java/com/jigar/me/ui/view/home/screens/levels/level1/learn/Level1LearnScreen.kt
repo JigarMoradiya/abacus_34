@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.levels
+package com.jigar.me.ui.view.home.screens.levels.level1.learn
 
 import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
@@ -25,7 +25,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
-import com.jigar.me.data.local.data.RodMovement
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.base.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
@@ -34,6 +33,8 @@ import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.ui.view.home.screens.levels.level1.level1Lessons
+import com.jigar.me.ui.view.home.screens.levels.level1.allLessonContent
 
 @Composable
 fun Level1LearnScreen(
@@ -88,7 +89,7 @@ fun Level1LearnScreen(
 
                             AbacusWithDecimalCanvas(
                                 selectedTheme             = selectedTheme,
-                                screenType                = AppConstants.AbacusScreen.screenTypeLevel1Practice,
+                                screenType                = AppConstants.AbacusScreen.screenTypeLevel1Learn,
                                 abacusData                = abCalc,
                                 numberOfColumns           = cols,
                                 rodMovement               = emptyList(),

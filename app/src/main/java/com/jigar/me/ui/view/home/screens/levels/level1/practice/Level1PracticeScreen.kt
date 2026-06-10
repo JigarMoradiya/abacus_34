@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.levels
+package com.jigar.me.ui.view.home.screens.levels.level1.practice
 
 import androidx.compose.animation.*
 import androidx.compose.animation.core.spring
@@ -24,8 +24,11 @@ import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWith
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
+import com.jigar.me.ui.view.home.common_ui.buttons.L2ActionBtn
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.ui.view.home.screens.levels.level1.level1Lessons
+import com.jigar.me.ui.view.home.screens.levels.level1.generatePracticeProblems
 
 @Composable
 fun Level1PracticeScreen(
@@ -92,16 +95,10 @@ fun Level1PracticeScreen(
                         modifier         = Modifier.weight(0.45f).fillMaxHeight(),
                         contentAlignment = Alignment.Center
                     ) {
-                        val leftShape = RoundedCornerShape(AppDimens.Dimens24)
                         Box(
                             modifier = Modifier
                                 .fillMaxSize(0.95f)
-                                .padding(bottom = AppDimens.Dimens8)
-                                .shadow(AppDimens.Dimens8, leftShape,
-                                    spotColor    = lesson.endColor.copy(0.25f),
-                                    ambientColor = lesson.endColor.copy(0.15f))
-                                // Light background so abacus beads remain visible
-                                .background(Color.White.copy(0.20f), leftShape),
+                                .padding(bottom = AppDimens.Dimens8),
                             contentAlignment = Alignment.Center
                         ) {
                             AnimatedContent(
@@ -121,7 +118,7 @@ fun Level1PracticeScreen(
                                     ) {
                                         AbacusWithDecimalCanvas(
                                             selectedTheme             = selectedTheme,
-                                            screenType                = AppConstants.AbacusScreen.screenTypeLevel1PracticeHint,
+                                            screenType                = AppConstants.AbacusScreen.screenTypeLevel1Practice,
                                             abacusData                = abCalc,
                                             numberOfColumns           = cols,
                                             rodMovement               = emptyList(),
@@ -208,7 +205,7 @@ fun Level1PracticeScreen(
                                 horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
                                 verticalAlignment     = Alignment.CenterVertically
                             ) {
-                                ActionBtn(
+                                L2ActionBtn(
                                     label      = if (showHint) "Got it! ✓" else "Show Me How 👀",
                                     filled     = false,
                                     startColor = lesson.startColor,
@@ -217,7 +214,7 @@ fun Level1PracticeScreen(
                                         showHint = !showHint
                                     }
                                 )
-                                ActionBtn(
+                                L2ActionBtn(
                                     label      = "I Did It! ✅",
                                     filled     = true,
                                     startColor = lesson.startColor,
@@ -275,13 +272,13 @@ fun Level1PracticeScreen(
                         )
                         Spacer(Modifier.height(AppDimens.Dimens4))
                         Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
-                            ActionBtn(
+                            L2ActionBtn(
                                 label      = "Try Again 🔄",
                                 filled     = false,
                                 startColor = lesson.startColor,
                                 onClick    = { problemIndex = 0; showDone = false }
                             )
-                            ActionBtn(
+                            L2ActionBtn(
                                 label      = "Continue →",
                                 filled     = true,
                                 startColor = lesson.startColor,
@@ -292,28 +289,5 @@ fun Level1PracticeScreen(
                 }
             }
         }
-    }
-}
-
-@Composable
-private fun ActionBtn(label: String, filled: Boolean, startColor: Color = Color(0xFF1B5E20), onClick: () -> Unit) {
-    val shape = RoundedCornerShape(AppDimens.Dimens100)
-    Box(
-        modifier = Modifier
-            .shadow(AppDimens.Dimens4, shape)
-            .background(if (filled) Color.White else Color.White.copy(0.25f), shape)
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication        = null
-            ) { onClick() }
-            .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens12),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text       = label,
-            style      = MaterialTheme.typography.labelLarge.scaled(),
-            color      = if (filled) startColor else Color.White,
-            fontWeight = FontWeight.Black
-        )
     }
 }

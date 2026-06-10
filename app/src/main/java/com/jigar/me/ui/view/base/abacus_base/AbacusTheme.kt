@@ -1,18 +1,13 @@
 package com.jigar.me.ui.view.base.abacus_base
 
 import android.content.Context
-import androidx.annotation.OptIn
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.toColorInt
-import androidx.media3.common.util.Log
-import androidx.media3.common.util.UnstableApi
 import com.jigar.me.data.local.data.DeviceInfo
-import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
 import com.jigar.me.utils.AppConstants
-import kotlin.math.min
 
 // AppThemeAbacus.kt
 object AbacusTheme {
@@ -311,8 +306,10 @@ object AbacusTheme {
             AppConstants.AbacusScreen.screenTypeExamResult -> 0.25f
             AppConstants.AbacusScreen.screenTypeCCM -> 1f
             AppConstants.AbacusScreen.screenTypeExercise -> 1f
-            AppConstants.AbacusScreen.screenTypeLevel1Practice,
-            AppConstants.AbacusScreen.screenTypeLevel1PracticeHint -> 1f
+            AppConstants.AbacusScreen.screenTypeLevel1Learn,
+            AppConstants.AbacusScreen.screenTypeLevel1Practice -> 1f
+            AppConstants.AbacusScreen.screenTypeLevel2Learn,
+            AppConstants.AbacusScreen.screenTypeLevel2Practice -> 0.9f
             AppConstants.AbacusScreen.screenTypeAbacusPractice ->
                 if (abacusType == AppConstants.apiParams.answerFinalAnswer || abacusType == AppConstants.apiParams.answerFormalExam) { 0.95f }
                 else if (questionType == AppConstants.extras_Comman.AbacusTypeNumber) { 0.9f }
@@ -349,8 +346,10 @@ object AbacusTheme {
             (screenType == AppConstants.AbacusScreen.screenTypeFreeMode)
             || screenType == AppConstants.AbacusScreen.screenTypeExam
             || screenType == AppConstants.AbacusScreen.screenTypeExamResult
+            || screenType == AppConstants.AbacusScreen.screenTypeLevel1Learn
             || screenType == AppConstants.AbacusScreen.screenTypeLevel1Practice
-            || screenType == AppConstants.AbacusScreen.screenTypeLevel1PracticeHint -> 0f
+            || screenType == AppConstants.AbacusScreen.screenTypeLevel2Learn
+            || screenType == AppConstants.AbacusScreen.screenTypeLevel2Practice -> 0f
             else -> 70f
         }
 
@@ -417,8 +416,10 @@ object AbacusTheme {
                 AppConstants.AbacusScreen.screenTypeExamResult -> 0.dp
 
                 AppConstants.AbacusScreen.screenTypeSettingPreview,
+                AppConstants.AbacusScreen.screenTypeLevel1Learn,
                 AppConstants.AbacusScreen.screenTypeLevel1Practice,
-                AppConstants.AbacusScreen.screenTypeLevel1PracticeHint -> {
+                AppConstants.AbacusScreen.screenTypeLevel2Learn,
+                AppConstants.AbacusScreen.screenTypeLevel2Practice -> {
                     base.rectLineWidth / 2
                 }
 
@@ -430,8 +431,10 @@ object AbacusTheme {
                 AppConstants.AbacusScreen.screenTypeExamResult -> 0.dp
 
                 AppConstants.AbacusScreen.screenTypeSettingPreview,
+                AppConstants.AbacusScreen.screenTypeLevel1Learn,
                 AppConstants.AbacusScreen.screenTypeLevel1Practice,
-                AppConstants.AbacusScreen.screenTypeLevel1PracticeHint -> {
+                AppConstants.AbacusScreen.screenTypeLevel2Learn,
+                AppConstants.AbacusScreen.screenTypeLevel2Practice -> {
                     base.rectLineCorner / 2
                 }
 

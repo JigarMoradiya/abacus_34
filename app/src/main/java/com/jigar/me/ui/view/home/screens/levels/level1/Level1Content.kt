@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.levels
+package com.jigar.me.ui.view.home.screens.levels.level1
 
 import androidx.compose.ui.graphics.Color
 
@@ -46,6 +46,7 @@ internal data class LearnStep(
     val body: String,
     val abacusState: AbacusDisplayState? = null,
     val showFrameOnly: Boolean = false,
+    val fromValue: Int? = null,
 )
 
 internal data class PracticeProblem(

@@ -1,7 +1,5 @@
 package com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas
 
-import com.jigar.me.ui.view.home.theme.AppDimens
-
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.border
@@ -143,8 +141,10 @@ fun AbacusWithDecimalCanvas(
 
         // Top Answer Bar (hidden in free mode, same as your old logic)
         if (!(screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn) && screenType != AppConstants.AbacusScreen.screenTypeSettingPreview && screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult
+            && screenType != AppConstants.AbacusScreen.screenTypeLevel1Learn
             && screenType != AppConstants.AbacusScreen.screenTypeLevel1Practice
-            && screenType != AppConstants.AbacusScreen.screenTypeLevel1PracticeHint
+            && screenType != AppConstants.AbacusScreen.screenTypeLevel2Learn
+            && screenType != AppConstants.AbacusScreen.screenTypeLevel2Practice
             ) {
             val isSmallAnswerBar = screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise
             val answerBarScale = when {
@@ -194,7 +194,7 @@ fun AbacusWithDecimalCanvas(
         // --- Inner rods & beads on Canvas ---
 
         if (!showHighlighter || currentSpot != 0) { // hide all things when frame highlighter show
-            val isTouchEnabled = screenType != AppConstants.AbacusScreen.screenTypeLevel1Practice && screenType != AppConstants.AbacusScreen.screenTypeLevel1PracticeHint && screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult && screenType != AppConstants.AbacusScreen.screenTypeSettingPreview
+            val isTouchEnabled = screenType != AppConstants.AbacusScreen.screenTypeLevel1Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel1Practice && screenType != AppConstants.AbacusScreen.screenTypeLevel2Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel2Practice && screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult && screenType != AppConstants.AbacusScreen.screenTypeSettingPreview
             val gestureModifier = if (isTouchEnabled) {
                 Modifier.pointerInput(Unit) {
                     val thresholdPx = with(density) { Dimens2.toPx() }

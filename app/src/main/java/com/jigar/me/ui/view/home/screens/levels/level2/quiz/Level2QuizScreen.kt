@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.levels
+package com.jigar.me.ui.view.home.screens.levels.level2.quiz
 
 import androidx.compose.animation.*
 import androidx.compose.animation.core.spring
@@ -31,6 +31,8 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
 import com.jigar.me.ui.view.home.theme.AppDimens.examOptionHeight
 import com.jigar.me.utils.AppConstants
 import kotlinx.coroutines.delay
+import com.jigar.me.ui.view.home.screens.levels.level2.level2Lessons
+import com.jigar.me.ui.view.home.screens.levels.level2.generateLevel2QuizQuestions
 
 @Composable
 fun Level2QuizScreen(
@@ -101,15 +103,10 @@ fun Level2QuizScreen(
                         modifier       = Modifier.weight(0.45f).fillMaxHeight(),
                         label          = "quiz-abacus"
                     ) { q ->
-                        val leftShape = RoundedCornerShape(AppDimens.Dimens24)
                         Box(
                             modifier = Modifier
                                 .fillMaxSize(0.95f)
-                                .padding(bottom = AppDimens.Dimens8)
-                                .shadow(AppDimens.Dimens8, leftShape,
-                                    spotColor    = lesson.endColor.copy(0.25f),
-                                    ambientColor = lesson.endColor.copy(0.15f))
-                                .background(Color.White.copy(0.20f), leftShape),
+                                .padding(bottom = AppDimens.Dimens8),
                             contentAlignment = Alignment.Center
                         ) {
                             val abCalc = remember { AbacusCalculations(1) }
@@ -119,7 +116,7 @@ fun Level2QuizScreen(
                             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                                 AbacusWithDecimalCanvas(
                                     selectedTheme               = selectedTheme,
-                                    screenType                  = AppConstants.AbacusScreen.screenTypeLevel1Practice,
+                                    screenType                  = AppConstants.AbacusScreen.screenTypeLevel2Practice,
                                     abacusData                  = abCalc,
                                     numberOfColumns             = 1,
                                     rodMovement                 = emptyList(),
@@ -275,7 +272,7 @@ fun Level2QuizScreen(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)
                     ) {
-                        Text(starEmoji, fontSize = 52.sp)
+                        Text(starEmoji, fontSize = 52.sp.scaled())
                         Text(
                             "$score / ${questions.size} Correct",
                             style      = MaterialTheme.typography.headlineMedium.scaled(),
