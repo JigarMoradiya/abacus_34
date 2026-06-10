@@ -100,6 +100,18 @@ sealed class RouteNavigation(val route: String) {
         fun create(lessonId: Int) = "Level1Quiz/$lessonId"
     }
     object Level2Home : RouteNavigation("Level2Home")
+    object Level2Lesson : RouteNavigation("Level2Lesson/{lessonId}") {
+        fun create(lessonId: Int) = "Level2Lesson/$lessonId"
+    }
+    object Level2Learn : RouteNavigation("Level2Learn/{lessonId}") {
+        fun create(lessonId: Int) = "Level2Learn/$lessonId"
+    }
+    object Level2Practice : RouteNavigation("Level2Practice/{lessonId}") {
+        fun create(lessonId: Int) = "Level2Practice/$lessonId"
+    }
+    object Level2Quiz : RouteNavigation("Level2Quiz/{lessonId}") {
+        fun create(lessonId: Int) = "Level2Quiz/$lessonId"
+    }
     object Level3Home : RouteNavigation("Level3Home")
     object Level4TablePicker : RouteNavigation("Level4TablePicker")
 }
