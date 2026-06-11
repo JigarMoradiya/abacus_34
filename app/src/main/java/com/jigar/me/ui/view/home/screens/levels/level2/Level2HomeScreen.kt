@@ -1,6 +1,7 @@
 package com.jigar.me.ui.view.home.screens.levels.level2
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
@@ -23,7 +24,10 @@ import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
-fun Level2HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit) {
+fun Level2HomeScreen(
+    onBackClick: () -> Unit,
+    onNavigateToChapter: (Int) -> Unit,
+) {
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
         Column(modifier = Modifier.fillMaxSize()) {
@@ -33,11 +37,11 @@ fun Level2HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit)
                 modifier         = Modifier.fillMaxWidth().weight(1f),
                 contentAlignment = Alignment.TopCenter
             ) {
-                val cols       = 3
+                val cols       = 5
                 val rows       = 2
-                val spacing    = AppDimens.Dimens12
+                val spacing    = AppDimens.Dimens10
                 val hPad       = AppDimens.Dimens16
-                val vPad       = AppDimens.Dimens12
+                val vPad       = AppDimens.Dimens10
                 val shadowRoom = AppDimens.Dimens8
 
                 val cellW = (maxWidth - hPad * 2 - spacing * (cols - 1)) / cols
@@ -51,16 +55,16 @@ fun Level2HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit)
                         modifier              = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(spacing)
                     ) {
-                        level2Lessons.take(cols).forEach { lesson ->
-                            L2LessonCard(lesson, cellW, cellH) { onNavigateToLesson(lesson.id) }
+                        level2Chapters.take(cols).forEach { chapter ->
+                            L2ChapterCard(chapter, cellW, cellH) { onNavigateToChapter(chapter.id) }
                         }
                     }
                     Row(
                         modifier              = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(spacing, Alignment.CenterHorizontally)
+                        horizontalArrangement = Arrangement.spacedBy(spacing)
                     ) {
-                        level2Lessons.drop(cols).forEach { lesson ->
-                            L2LessonCard(lesson, cellW, cellH) { onNavigateToLesson(lesson.id) }
+                        level2Chapters.drop(cols).forEach { chapter ->
+                            L2ChapterCard(chapter, cellW, cellH) { onNavigateToChapter(chapter.id) }
                         }
                     }
                     Spacer(modifier = Modifier.height(shadowRoom))
@@ -71,45 +75,81 @@ fun Level2HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit)
 }
 
 @Composable
-private fun L2LessonCard(lesson: Level2LessonData, cellW: Dp, cellH: Dp, onClick: () -> Unit) {
+private fun L2ChapterCard(
+    chapter: Level2ChapterData,
+    cellW: Dp,
+    cellH: Dp,
+    onClick: () -> Unit,
+) {
+    val isFormulaRef = chapter.type == Level2ChapterType.FORMULA_REF
     val shape = RoundedCornerShape(AppDimens.Dimens20)
+
     Box(
         modifier = Modifier
             .size(width = cellW, height = cellH)
             .shadow(AppDimens.Dimens6, shape,
-                ambientColor = lesson.endColor.copy(alpha = 0.4f),
-                spotColor    = lesson.endColor.copy(alpha = 0.4f))
-            .background(Brush.linearGradient(listOf(lesson.startColor, lesson.endColor)))
+                ambientColor = chapter.endColor.copy(alpha = 0.4f),
+                spotColor    = chapter.endColor.copy(alpha = 0.4f))
+            .background(
+                if (isFormulaRef)
+                    Brush.linearGradient(listOf(chapter.startColor, chapter.endColor))
+                else
+                    Brush.linearGradient(listOf(chapter.startColor, chapter.endColor)),
+                shape
+            )
+            .then(
+                if (isFormulaRef)
+                    Modifier.border(AppDimens.Dimens2, Color.White.copy(0.50f), shape)
+                else
+                    Modifier
+            )
             .clickable(remember { MutableInteractionSource() }, null) { onClick() },
         contentAlignment = Alignment.Center
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
-            modifier            = Modifier.padding(AppDimens.Dimens12)
+            modifier            = Modifier.padding(AppDimens.Dimens8)
         ) {
-            Text(text = lesson.emoji, style = MaterialTheme.typography.displaySmall.scaled())
-            Spacer(Modifier.height(AppDimens.Dimens8))
+            Text(
+                text  = chapter.emoji,
+                style = MaterialTheme.typography.titleLarge.scaled()
+            )
+            Spacer(Modifier.height(AppDimens.Dimens4))
+
+            val label = when (chapter.type) {
+                Level2ChapterType.FORMULA_REF -> "Reference"
+                else                          -> "Ch. ${chapter.id}"
+            }
             Box(
                 modifier = Modifier
                     .background(Color.White.copy(alpha = 0.25f), RoundedCornerShape(AppDimens.Dimens100))
-                    .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
+                    .padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens3)
             ) {
                 Text(
-                    text       = "Lesson ${lesson.id}",
+                    text       = label,
                     style      = MaterialTheme.typography.labelSmall.scaled(),
                     color      = Color.White,
                     fontWeight = FontWeight.Bold
                 )
             }
-            Spacer(Modifier.height(AppDimens.Dimens6))
+            Spacer(Modifier.height(AppDimens.Dimens4))
             Text(
-                text       = lesson.title,
-                style      = MaterialTheme.typography.titleMedium.scaled(),
+                text       = chapter.title,
+                style      = MaterialTheme.typography.labelLarge.scaled(),
                 color      = Color.White,
                 fontWeight = FontWeight.Black,
-                textAlign  = TextAlign.Center
+                textAlign  = TextAlign.Center,
+                maxLines   = 2
             )
+            if (chapter.columns == 2) {
+                Spacer(Modifier.height(AppDimens.Dimens2))
+                Text(
+                    text  = "2 columns",
+                    style = MaterialTheme.typography.labelSmall.scaled(),
+                    color = Color.White.copy(0.70f)
+                )
+            }
         }
     }
 }

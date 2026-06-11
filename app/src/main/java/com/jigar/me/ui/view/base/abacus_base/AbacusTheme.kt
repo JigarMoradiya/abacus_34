@@ -310,6 +310,7 @@ object AbacusTheme {
             AppConstants.AbacusScreen.screenTypeLevel1Practice -> 1f
             AppConstants.AbacusScreen.screenTypeLevel2Learn,
             AppConstants.AbacusScreen.screenTypeLevel2Practice -> 0.9f
+            AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula -> 0.65f
             AppConstants.AbacusScreen.screenTypeAbacusPractice ->
                 if (abacusType == AppConstants.apiParams.answerFinalAnswer || abacusType == AppConstants.apiParams.answerFormalExam) { 0.95f }
                 else if (questionType == AppConstants.extras_Comman.AbacusTypeNumber) { 0.9f }
@@ -349,6 +350,7 @@ object AbacusTheme {
             || screenType == AppConstants.AbacusScreen.screenTypeLevel1Learn
             || screenType == AppConstants.AbacusScreen.screenTypeLevel1Practice
             || screenType == AppConstants.AbacusScreen.screenTypeLevel2Learn
+            || screenType == AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula
             || screenType == AppConstants.AbacusScreen.screenTypeLevel2Practice -> 0f
             else -> 70f
         }
@@ -419,6 +421,7 @@ object AbacusTheme {
                 AppConstants.AbacusScreen.screenTypeLevel1Learn,
                 AppConstants.AbacusScreen.screenTypeLevel1Practice,
                 AppConstants.AbacusScreen.screenTypeLevel2Learn,
+                AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula,
                 AppConstants.AbacusScreen.screenTypeLevel2Practice -> {
                     base.rectLineWidth / 2
                 }
@@ -434,6 +437,7 @@ object AbacusTheme {
                 AppConstants.AbacusScreen.screenTypeLevel1Learn,
                 AppConstants.AbacusScreen.screenTypeLevel1Practice,
                 AppConstants.AbacusScreen.screenTypeLevel2Learn,
+                AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula,
                 AppConstants.AbacusScreen.screenTypeLevel2Practice -> {
                     base.rectLineCorner / 2
                 }

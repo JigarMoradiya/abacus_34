@@ -83,7 +83,7 @@ fun DrawScope.drawAbacusColumns(
     for (col in 0 until numberOfColumns) {
         val columnState = abacusData.abacusState[col]
         val isCentralColumn = (col == 6)
-        val isRedDotColumn = if (screenType == AppConstants.AbacusScreen.screenTypeLevel1Learn || screenType == AppConstants.AbacusScreen.screenTypeLevel1Practice || screenType == AppConstants.AbacusScreen.screenTypeLevel2Learn || screenType == AppConstants.AbacusScreen.screenTypeLevel2Practice) false else
+        val isRedDotColumn = if (screenType == AppConstants.AbacusScreen.screenTypeLevel1Learn || screenType == AppConstants.AbacusScreen.screenTypeLevel1Practice || screenType == AppConstants.AbacusScreen.screenTypeLevel2Learn || screenType == AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula || screenType == AppConstants.AbacusScreen.screenTypeLevel2Practice) false else
                     col == numberOfColumns - 1 ||
                     col == numberOfColumns - 4 ||
                     col == numberOfColumns - 7 ||
@@ -166,7 +166,7 @@ fun DrawScope.drawAbacusColumns(
             }
         }
 
-        if (screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult && screenType != AppConstants.AbacusScreen.screenTypeLevel1Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel1Practice && screenType != AppConstants.AbacusScreen.screenTypeLevel2Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel2Practice){
+        if (screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult && screenType != AppConstants.AbacusScreen.screenTypeLevel1Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel1Practice && screenType != AppConstants.AbacusScreen.screenTypeLevel2Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula && screenType != AppConstants.AbacusScreen.screenTypeLevel2Practice){
             val isFirstColumn = col == 0
             val isLastColumn = col == numberOfColumns - 1
 

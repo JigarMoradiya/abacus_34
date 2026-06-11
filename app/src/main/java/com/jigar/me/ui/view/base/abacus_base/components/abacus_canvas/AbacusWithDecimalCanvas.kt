@@ -144,6 +144,7 @@ fun AbacusWithDecimalCanvas(
             && screenType != AppConstants.AbacusScreen.screenTypeLevel1Learn
             && screenType != AppConstants.AbacusScreen.screenTypeLevel1Practice
             && screenType != AppConstants.AbacusScreen.screenTypeLevel2Learn
+            && screenType != AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula
             && screenType != AppConstants.AbacusScreen.screenTypeLevel2Practice
             ) {
             val isSmallAnswerBar = screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise
@@ -194,7 +195,7 @@ fun AbacusWithDecimalCanvas(
         // --- Inner rods & beads on Canvas ---
 
         if (!showHighlighter || currentSpot != 0) { // hide all things when frame highlighter show
-            val isTouchEnabled = screenType != AppConstants.AbacusScreen.screenTypeLevel1Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel1Practice && screenType != AppConstants.AbacusScreen.screenTypeLevel2Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel2Practice && screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult && screenType != AppConstants.AbacusScreen.screenTypeSettingPreview
+            val isTouchEnabled = screenType != AppConstants.AbacusScreen.screenTypeLevel1Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel1Practice && screenType != AppConstants.AbacusScreen.screenTypeLevel2Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula && screenType != AppConstants.AbacusScreen.screenTypeLevel2Practice && screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult && screenType != AppConstants.AbacusScreen.screenTypeSettingPreview
             val gestureModifier = if (isTouchEnabled) {
                 Modifier.pointerInput(Unit) {
                     val thresholdPx = with(density) { Dimens2.toPx() }

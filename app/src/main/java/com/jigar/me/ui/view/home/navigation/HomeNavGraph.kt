@@ -52,8 +52,11 @@ import com.jigar.me.ui.view.home.screens.levels.level1.Level1LessonScreen
 import com.jigar.me.ui.view.home.screens.levels.level1.learn.Level1LearnScreen
 import com.jigar.me.ui.view.home.screens.levels.level1.practice.Level1PracticeScreen
 import com.jigar.me.ui.view.home.screens.levels.level1.quiz.Level1QuizScreen
+import com.jigar.me.ui.view.home.screens.levels.level2.Level2ChapterType
 import com.jigar.me.ui.view.home.screens.levels.level2.Level2HomeScreen
 import com.jigar.me.ui.view.home.screens.levels.level2.Level2LessonScreen
+import com.jigar.me.ui.view.home.screens.levels.level2.level2Chapters
+import com.jigar.me.ui.view.home.screens.levels.level2.formula.Level2FormulaScreen
 import com.jigar.me.ui.view.home.screens.levels.level2.learn.Level2LearnScreen
 import com.jigar.me.ui.view.home.screens.levels.level2.practice.Level2PracticeScreen
 import com.jigar.me.ui.view.home.screens.levels.level2.quiz.Level2QuizScreen
@@ -521,8 +524,26 @@ fun HomeNavGraph(
 
         composable(route = RouteNavigation.Level2Home.route) {
             Level2HomeScreen(
-                onBackClick        = { navController.popBackStack() },
-                onNavigateToLesson = { lessonId -> navController.navigate(RouteNavigation.Level2Lesson.create(lessonId)) }
+                onBackClick = { navController.popBackStack() },
+                onNavigateToChapter = { chapterId ->
+                    val ch = level2Chapters.find { it.id == chapterId }
+                    if (ch?.type == Level2ChapterType.FORMULA_REF) {
+                        navController.navigate(RouteNavigation.Level2FormulaRef.create(1))
+                    } else {
+                        navController.navigate(RouteNavigation.Level2Lesson.create(chapterId))
+                    }
+                }
+            )
+        }
+
+        composable(
+            route     = RouteNavigation.Level2FormulaRef.route,
+            arguments = listOf(androidx.navigation.navArgument("groupId") { type = androidx.navigation.NavType.IntType })
+        ) { backStackEntry ->
+            val groupId = backStackEntry.arguments?.getInt("groupId") ?: 1
+            Level2FormulaScreen(
+                initialGroupId = groupId,
+                onBackClick    = { navController.popBackStack() },
             )
         }
 
