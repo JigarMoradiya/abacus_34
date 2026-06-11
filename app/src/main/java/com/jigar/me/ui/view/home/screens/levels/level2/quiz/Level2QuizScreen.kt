@@ -161,8 +161,12 @@ fun Level2QuizScreen(
                                 fontWeight = FontWeight.Bold
                             )
 
+                            val expr = if (question.c != null)
+                                "${question.a} ${question.op} ${question.b} ${question.op2} ${question.c} = ?"
+                            else
+                                "${question.a} ${question.op} ${question.b} = ?"
                             Text(
-                                "${question.a} ${question.op} ${question.b} = ?",
+                                expr,
                                 style      = MaterialTheme.typography.headlineMedium.scaled(),
                                 color      = Color.White,
                                 fontWeight = FontWeight.Black,

@@ -77,7 +77,7 @@ private val formulaGroups = listOf(
     ),
     FormulaGroup(
         id = 2, emoji = "🤝", name = "Small Friend −",
-        why   = "When your number is 5–9, the heaven bead is already down. Need to subtract but not enough earth beads? Swap the heaven bead back and get earth beads in return! 🔄",
+        why   = "When your number is 5–8, the heaven bead is already down. Need to subtract but not enough earth beads? Swap the heaven bead back and get earth beads in return! 🔄",
         when_ = "When you want to subtract 1, 2, 3, or 4 — but not enough earth beads to remove!",
         how   = "Push heaven bead UP + add earth beads UP at the same time. Two moves = one answer! 🤝",
         startColor = Color(0xFF004D40), endColor = Color(0xFF26A69A),
