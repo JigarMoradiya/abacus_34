@@ -31,6 +31,7 @@ import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.screens.levels.level2.l2ComputeMovement
+import com.jigar.me.ui.view.home.screens.levels.level2.l2FormulaRodMovements
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
 import kotlinx.coroutines.delay
@@ -60,16 +61,6 @@ private data class FormulaGroup(
 
 // Rod movements for both 1-column and 2-column abacus demos
 // 2-col layout: index 0 = tens (left), index 1 = ones (right)
-private fun l2FormulaRodMovements(from: Int, to: Int, columns: Int): List<RodMovement> {
-    if (columns == 1) return listOf(RodMovement(0, l2ComputeMovement(from, to)))
-    val fromTens = from / 10; val fromOnes = from % 10
-    val toTens   = to   / 10; val toOnes   = to   % 10
-    return buildList {
-        if (fromTens != toTens) add(RodMovement(0, l2ComputeMovement(fromTens, toTens)))
-        if (fromOnes != toOnes) add(RodMovement(1, l2ComputeMovement(fromOnes, toOnes)))
-    }
-}
-
 private val formulaGroups = listOf(
     FormulaGroup(
         id = 1, emoji = "🤝", name = "Small Friend +",

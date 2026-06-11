@@ -109,7 +109,7 @@ fun Level2QuizScreen(
                                 .padding(bottom = AppDimens.Dimens8),
                             contentAlignment = Alignment.Center
                         ) {
-                            val abCalc = remember { AbacusCalculations(1) }
+                            val abCalc = remember { AbacusCalculations(lesson.columns) }
                             LaunchedEffect(q.abacusState.value) {
                                 abCalc.setAbacusValueFromString(q.abacusState.value.toString())
                             }
@@ -118,7 +118,7 @@ fun Level2QuizScreen(
                                     selectedTheme               = selectedTheme,
                                     screenType                  = AppConstants.AbacusScreen.screenTypeLevel2Practice,
                                     abacusData                  = abCalc,
-                                    numberOfColumns             = 1,
+                                    numberOfColumns             = lesson.columns,
                                     rodMovement                 = emptyList(),
                                     showDirectionHint           = false,
                                     isBeadSoundOn               = false,

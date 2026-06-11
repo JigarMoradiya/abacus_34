@@ -32,7 +32,7 @@ import com.jigar.me.utils.AppConstants
 import kotlinx.coroutines.delay
 import com.jigar.me.ui.view.home.screens.levels.level2.level2Lessons
 import com.jigar.me.ui.view.home.screens.levels.level2.generateLevel2PracticeProblems
-import com.jigar.me.ui.view.home.screens.levels.level2.l2ComputeMovement
+import com.jigar.me.ui.view.home.screens.levels.level2.l2FormulaRodMovements
 
 private enum class L2PracticePhase { ZERO, SETUP_ARROW, INITIAL, OP_ARROW, RESULT }
 
@@ -53,7 +53,7 @@ fun Level2PracticeScreen(
     val prefs   = LocalPreferencesHelper.current
     val selectedTheme = prefs.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default)
 
-    val abCalc      = remember { AbacusCalculations(1) }
+    val abCalc      = remember { AbacusCalculations(lesson.columns) }
     var animPhase   by remember { mutableStateOf(L2PracticePhase.ZERO) }
     var rodMovement by remember { mutableStateOf<List<RodMovement>>(emptyList()) }
     var showArrows  by remember { mutableStateOf(false) }
@@ -77,7 +77,7 @@ fun Level2PracticeScreen(
         abCalc.resetAbacusData()
         delay(1200)
         animPhase   = L2PracticePhase.SETUP_ARROW
-        rodMovement = listOf(RodMovement(0, l2ComputeMovement(0, p.a)))
+        rodMovement = l2FormulaRodMovements(0, p.a, lesson.columns)
         showArrows  = true
         delay(1800)
         animPhase   = L2PracticePhase.INITIAL
@@ -86,7 +86,7 @@ fun Level2PracticeScreen(
         abCalc.setAbacusValueFromString(p.a.toString())
         delay(1200)
         animPhase   = L2PracticePhase.OP_ARROW
-        rodMovement = listOf(RodMovement(0, l2ComputeMovement(p.a, p.result)))
+        rodMovement = l2FormulaRodMovements(p.a, p.result, lesson.columns)
         showArrows  = true
         delay(1800)
         animPhase   = L2PracticePhase.RESULT
@@ -159,7 +159,7 @@ fun Level2PracticeScreen(
                                             selectedTheme               = selectedTheme,
                                             screenType                  = AppConstants.AbacusScreen.screenTypeLevel2Practice,
                                             abacusData                  = abCalc,
-                                            numberOfColumns             = 1,
+                                            numberOfColumns             = lesson.columns,
                                             rodMovement                 = rodMovement,
                                             showDirectionHint           = showArrows,
                                             isBeadSoundOn               = false,
