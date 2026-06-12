@@ -1,5 +1,7 @@
-package com.jigar.me.ui.view.home.screens.levels.level3
+package com.jigar.me.ui.view.home.screens.levels.level3.guided
 
+import com.jigar.me.ui.view.home.screens.levels.level3.*
+import com.jigar.me.ui.view.home.screens.levels.level3.components.*
 import androidx.compose.animation.*
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
@@ -25,7 +27,6 @@ import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWith
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
-import com.jigar.me.ui.view.home.screens.levels.level3.components.L3Numpad
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
 
@@ -80,7 +81,7 @@ fun Level3GuidedScreen(
                 modifier = Modifier
                     .weight(0.44f)
                     .fillMaxHeight()
-                    .padding(start = AppDimens.Dimens12, top = AppDimens.Dimens8, bottom = AppDimens.Dimens12, end = AppDimens.Dimens6)
+                    .padding(bottom = AppDimens.Dimens12, end = AppDimens.Dimens6)
             ) {
                 BackButtonWithText(title = mode.title, onBackClick = onBackClick)
                 Spacer(Modifier.height(AppDimens.Dimens8))
@@ -90,10 +91,8 @@ fun Level3GuidedScreen(
                     modifier = Modifier
                         .weight(1f)
                         .fillMaxWidth()
+                        .padding(start = AppDimens.Dimens12)
                         .padding(AppDimens.Dimens4)
-                        .shadow(AppDimens.Dimens6, abacusShape,
-                            spotColor    = mode.endColor.copy(0.35f),
-                            ambientColor = mode.endColor.copy(0.18f))
                         .background(Brush.linearGradient(listOf(Color.White.copy(0.18f), Color.White.copy(0.08f))), abacusShape),
                     contentAlignment = Alignment.Center
                 ) {
@@ -442,23 +441,3 @@ private fun GuidedAnswerPanel(
     }
 }
 
-@Composable
-internal fun L3ResultBtn(label: String, filled: Boolean, onClick: () -> Unit) {
-    val shape = RoundedCornerShape(AppDimens.Dimens100)
-    Box(
-        modifier = Modifier
-            .padding(AppDimens.Dimens3)
-            .shadow(AppDimens.Dimens4, shape)
-            .background(if (filled) Color.White else Color.White.copy(0.22f), shape)
-            .clickable(remember { MutableInteractionSource() }, null) { onClick() }
-            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens12),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            label,
-            style      = MaterialTheme.typography.labelLarge.scaled(),
-            color      = if (filled) Color(0xFF1A237E) else Color.White,
-            fontWeight = FontWeight.Black
-        )
-    }
-}

@@ -1,5 +1,6 @@
-package com.jigar.me.ui.view.home.screens.levels.level3
+package com.jigar.me.ui.view.home.screens.levels.level3.home
 
+import com.jigar.me.ui.view.home.screens.levels.level3.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable

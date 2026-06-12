@@ -114,3 +114,24 @@ private fun L3Key(
         )
     }
 }
+
+@Composable
+fun L3ResultBtn(label: String, filled: Boolean, onClick: () -> Unit) {
+    val shape = RoundedCornerShape(AppDimens.Dimens100)
+    Box(
+        modifier = Modifier
+            .padding(AppDimens.Dimens3)
+            .shadow(AppDimens.Dimens4, shape)
+            .background(if (filled) Color.White else Color.White.copy(0.22f), shape)
+            .clickable(remember { MutableInteractionSource() }, null) { onClick() }
+            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens12),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            label,
+            style      = MaterialTheme.typography.labelLarge.scaled(),
+            color      = if (filled) Color(0xFF1A237E) else Color.White,
+            fontWeight = FontWeight.Black
+        )
+    }
+}

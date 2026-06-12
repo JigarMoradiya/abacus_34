@@ -1,5 +1,6 @@
-package com.jigar.me.ui.view.home.screens.levels.level3
+package com.jigar.me.ui.view.home.screens.levels.level3.config
 
+import com.jigar.me.ui.view.home.screens.levels.level3.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -46,7 +47,7 @@ fun Level3ConfigScreen(
                 modifier = Modifier
                     .weight(0.42f)
                     .fillMaxHeight()
-                    .padding(start = AppDimens.Dimens12, top = AppDimens.Dimens8, bottom = AppDimens.Dimens12, end = AppDimens.Dimens6)
+                    .padding(bottom = AppDimens.Dimens12, end = AppDimens.Dimens6)
             ) {
                 BackButtonWithText(title = mode.title, onBackClick = onBackClick)
                 Spacer(Modifier.height(AppDimens.Dimens8))
@@ -55,6 +56,7 @@ fun Level3ConfigScreen(
                     modifier = Modifier
                         .weight(1f)
                         .fillMaxWidth()
+                        .padding(start = AppDimens.Dimens12)
                         .padding(AppDimens.Dimens4)
                         .shadow(AppDimens.Dimens6, cardShape,
                             spotColor    = mode.endColor.copy(0.35f),
@@ -199,7 +201,7 @@ fun Level3ConfigScreen(
                                             timeLimitSecs = timeLimitSecs,
                                         ))
                                     }
-                                    .padding(horizontal = AppDimens.Dimens18, vertical = AppDimens.Dimens10),
+                                    .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8),
                                 contentAlignment = Alignment.Center
                             ) {
                                 Text(

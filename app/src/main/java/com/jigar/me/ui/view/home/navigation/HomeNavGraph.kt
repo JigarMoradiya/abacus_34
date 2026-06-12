@@ -63,13 +63,13 @@ import com.jigar.me.ui.view.home.screens.levels.level2.quiz.Level2QuizScreen
 import com.jigar.me.ui.view.home.screens.levels.level3.L3Mode
 import com.jigar.me.ui.view.home.screens.levels.level3.L3Config
 import com.jigar.me.ui.view.home.screens.levels.level3.l3FlashDifficulties
-import com.jigar.me.ui.view.home.screens.levels.level3.Level3HomeScreen
-import com.jigar.me.ui.view.home.screens.levels.level3.Level3ConfigScreen
-import com.jigar.me.ui.view.home.screens.levels.level3.Level3GuidedScreen
-import com.jigar.me.ui.view.home.screens.levels.level3.Level3AnzanScreen
-import com.jigar.me.ui.view.home.screens.levels.level3.Level3SpeedDrillScreen
-import com.jigar.me.ui.view.home.screens.levels.level3.Level3FlashPickerScreen
-import com.jigar.me.ui.view.home.screens.levels.level3.Level3FlashPlayScreen
+import com.jigar.me.ui.view.home.screens.levels.level3.home.Level3HomeScreen
+import com.jigar.me.ui.view.home.screens.levels.level3.config.Level3ConfigScreen
+import com.jigar.me.ui.view.home.screens.levels.level3.guided.Level3GuidedScreen
+import com.jigar.me.ui.view.home.screens.levels.level3.anzan.Level3AnzanScreen
+import com.jigar.me.ui.view.home.screens.levels.level3.speed_drill.Level3SpeedDrillScreen
+import com.jigar.me.ui.view.home.screens.levels.level3.flash.Level3FlashPickerScreen
+import com.jigar.me.ui.view.home.screens.levels.level3.flash.Level3FlashPlayScreen
 
 @Composable
 fun HomeNavGraph(

@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.levels.level3
+package com.jigar.me.ui.view.home.screens.levels.level3.speed_drill
 
 import androidx.compose.animation.*
 import androidx.compose.animation.core.spring
@@ -21,17 +21,19 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
-import com.jigar.me.ui.view.home.screens.levels.level3.components.L3Numpad
+import com.jigar.me.ui.view.home.screens.levels.level3.*
+import com.jigar.me.ui.view.home.screens.levels.level3.components.*
 import com.jigar.me.ui.view.home.theme.AppDimens
 
 private sealed class L3DrillPhase {
-    data class Countdown(val n: Int)                                 : L3DrillPhase()
-    data class Playing(val attempt: Int, val wrongFlash: Boolean)    : L3DrillPhase()
-    data class Result(val score: Int)                                : L3DrillPhase()
+    data class Countdown(val n: Int)                             : L3DrillPhase()
+    data class Playing(val attempt: Int, val wrongFlash: Boolean): L3DrillPhase()
+    data class Result(val score: Int)                            : L3DrillPhase()
 }
 
 @Composable
@@ -65,82 +67,67 @@ fun Level3SpeedDrillScreen(
         if (p.wrongFlash) { delay(500); phase = L3DrillPhase.Playing(p.attempt, false) }
     }
 
-    val progress    = timeLeft.toFloat() / config.timeLimitSecs.toFloat()
-    val timerColor  = when {
+    val progress   = timeLeft.toFloat() / config.timeLimitSecs.toFloat()
+    val timerColor = when {
         progress > 0.5f  -> Color(0xFF4CAF50)
         progress > 0.25f -> Color(0xFFFFB300)
         else             -> Color(0xFFE53935)
     }
-    val cardShape = RoundedCornerShape(AppDimens.Dimens20)
+    val cardShape = remember { RoundedCornerShape(AppDimens.Dimens20) }
+    val cardBrush = remember(mode.startColor, mode.endColor) {
+        Brush.linearGradient(listOf(mode.startColor.copy(0.82f), mode.endColor.copy(0.82f)))
+    }
+    val isPlaying = phase is L3DrillPhase.Playing
 
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
 
-        Row(
-            modifier          = Modifier.fillMaxSize(),
-            verticalAlignment = Alignment.CenterVertically
+        // ── Single panel ──────────────────────────────────────────────────────
+        Column(
+            modifier = Modifier.fillMaxSize().padding(bottom = AppDimens.Dimens12)
         ) {
+            BackButtonWithText(title = mode.title, onBackClick = onBackClick)
+            Spacer(Modifier.height(AppDimens.Dimens8))
 
-            // ── LEFT: back button + mode info + timer + score ──────────────────
-            Column(
+            Box(
                 modifier = Modifier
-                    .weight(0.38f)
-                    .fillMaxHeight()
-                    .padding(start = AppDimens.Dimens12, top = AppDimens.Dimens8, bottom = AppDimens.Dimens12, end = AppDimens.Dimens6)
+                    .weight(1f).fillMaxWidth()
+                    .padding(horizontal = AppDimens.Dimens12).padding(AppDimens.Dimens4)
+                    .shadow(AppDimens.Dimens8, cardShape,
+                        spotColor    = mode.endColor.copy(0.38f),
+                        ambientColor = mode.endColor.copy(0.20f))
+                    .background(cardBrush, cardShape)
             ) {
-                BackButtonWithText(title = mode.title, onBackClick = onBackClick)
-                Spacer(Modifier.height(AppDimens.Dimens8))
-
-                // Mode info strip
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(AppDimens.Dimens4)
-                        .shadow(AppDimens.Dimens4, cardShape,
-                            spotColor    = mode.endColor.copy(0.40f),
-                            ambientColor = mode.endColor.copy(0.20f))
-                        .background(Brush.linearGradient(listOf(mode.startColor, mode.endColor)), cardShape)
-                        .padding(horizontal = AppDimens.Dimens14, vertical = AppDimens.Dimens10)
+                Column(
+                    modifier            = Modifier.fillMaxWidth().padding(AppDimens.Dimens16),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
                 ) {
+                    // Timer + score row: always visible
                     Row(
+                        modifier              = Modifier.fillMaxWidth(),
                         verticalAlignment     = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
                     ) {
-                        Text(mode.emoji, style = MaterialTheme.typography.titleLarge.scaled())
-                        Column {
-                            Text(mode.title,
-                                style      = MaterialTheme.typography.labelLarge.scaled(),
-                                color      = Color.White,
-                                fontWeight = FontWeight.Black)
-                            Text(mode.subtitle,
-                                style = MaterialTheme.typography.labelSmall.scaled(),
-                                color = Color.White.copy(0.80f))
+                        // Mode info: hidden when numpad is showing (playing phase)
+                        if (!isPlaying) {
+                            Text(mode.emoji, style = MaterialTheme.typography.titleLarge.scaled())
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text(mode.title,
+                                    style      = MaterialTheme.typography.labelLarge.scaled(),
+                                    color      = Color.White,
+                                    fontWeight = FontWeight.Black)
+                                Text(mode.subtitle,
+                                    style = MaterialTheme.typography.labelSmall.scaled(),
+                                    color = Color.White.copy(0.80f))
+                            }
+                        } else {
+                            Spacer(Modifier.weight(1f))
                         }
-                    }
-                }
-
-                Spacer(Modifier.height(AppDimens.Dimens8))
-
-                // Timer + score card
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxWidth()
-                        .padding(AppDimens.Dimens4)
-                        .shadow(AppDimens.Dimens8, cardShape,
-                            spotColor    = mode.endColor.copy(0.40f),
-                            ambientColor = mode.endColor.copy(0.20f))
-                        .background(Brush.linearGradient(listOf(mode.startColor.copy(0.85f), mode.endColor.copy(0.85f))), cardShape)
-                        .padding(AppDimens.Dimens20),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)
-                    ) {
+                        // Compact timer circle: always visible
                         Box(contentAlignment = Alignment.Center) {
-                            Canvas(modifier = Modifier.size(AppDimens.Dimens100)) {
-                                val strokeW = 12.dp.toPx()
+                            Canvas(modifier = Modifier.size(AppDimens.Dimens64)) {
+                                val strokeW = 8.dp.toPx()
                                 val inset   = strokeW / 2
                                 drawArc(
                                     color      = Color.White.copy(0.20f),
@@ -158,54 +145,56 @@ fun Level3SpeedDrillScreen(
                                 )
                             }
                             Text("$timeLeft",
-                                style      = MaterialTheme.typography.headlineMedium.scaled(),
+                                style      = MaterialTheme.typography.titleMedium.scaled(),
                                 color      = Color.White,
                                 fontWeight = FontWeight.Black)
                         }
+                        // Score: always visible
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text("Score",
-                                style      = MaterialTheme.typography.labelLarge.scaled(),
-                                color      = Color.White.copy(0.80f),
-                                fontWeight = FontWeight.Bold)
                             Text("$score",
-                                style      = MaterialTheme.typography.displaySmall.scaled(),
+                                style      = MaterialTheme.typography.headlineSmall.scaled(),
                                 color      = Color.White,
                                 fontWeight = FontWeight.Black)
+                            Text("pts",
+                                style = MaterialTheme.typography.labelSmall.scaled(),
+                                color = Color.White.copy(0.70f))
                         }
                     }
-                }
-            }
+                    Box(Modifier.fillMaxWidth().height(1.dp).background(Color.White.copy(0.25f)))
 
-            // ── RIGHT: question + numpad — wraps height, centered ─────────────
-            Column(
-                modifier = Modifier
-                    .weight(0.62f)
-                    .padding(start = AppDimens.Dimens6, end = AppDimens.Dimens12, top = AppDimens.Dimens8, bottom = AppDimens.Dimens12)
-            ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(AppDimens.Dimens4)
-                        .shadow(AppDimens.Dimens8, cardShape,
-                            spotColor    = Color.Black.copy(0.15f),
-                            ambientColor = Color.Black.copy(0.08f))
-                        .background(Color.White.copy(0.18f), cardShape)
-                ) {
+                    // Phase-specific content
                     AnimatedContent(
                         targetState    = phase,
+                        contentKey     = { p ->
+                            when (p) {
+                                is L3DrillPhase.Countdown -> "countdown"
+                                is L3DrillPhase.Playing   -> "playing"
+                                is L3DrillPhase.Result    -> "result"
+                            }
+                        },
                         transitionSpec = { fadeIn(tween(200)) togetherWith fadeOut(tween(150)) },
                         label          = "drill-phase",
                         modifier       = Modifier.fillMaxWidth()
                     ) { p ->
                         when (p) {
                             is L3DrillPhase.Countdown -> Box(
-                                modifier         = Modifier.fillMaxWidth().padding(vertical = AppDimens.Dimens40),
+                                modifier         = Modifier.fillMaxWidth().padding(vertical = AppDimens.Dimens16),
                                 contentAlignment = Alignment.Center
                             ) {
-                                Text("${p.n}",
-                                    style      = MaterialTheme.typography.displayLarge.scaled(),
-                                    color      = mode.startColor,
-                                    fontWeight = FontWeight.Black)
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
+                                ) {
+                                    Text("${p.n}",
+                                        fontSize   = 80.sp.scaled(),
+                                        color      = Color.White,
+                                        fontWeight = FontWeight.Black,
+                                        textAlign  = TextAlign.Center)
+                                    Text("Get ready!",
+                                        style      = MaterialTheme.typography.headlineLarge.scaled(),
+                                        color      = Color.White.copy(0.80f),
+                                        fontWeight = FontWeight.Medium)
+                                }
                             }
                             is L3DrillPhase.Playing -> {
                                 val terms = currentSession.terms
@@ -216,26 +205,29 @@ fun Level3SpeedDrillScreen(
                                     append(" = ?")
                                 }
                                 Column(
-                                    modifier            = Modifier.fillMaxWidth().padding(AppDimens.Dimens16),
+                                    modifier            = Modifier.fillMaxWidth(),
                                     horizontalAlignment = Alignment.CenterHorizontally,
                                     verticalArrangement = Arrangement.Top
                                 ) {
                                     Box(
                                         modifier = Modifier
                                             .fillMaxWidth()
+                                            .height(AppDimens.Dimens100)
                                             .background(
                                                 if (p.wrongFlash) Color(0xFFE53935).copy(0.25f)
-                                                else mode.startColor.copy(0.12f),
-                                                RoundedCornerShape(AppDimens.Dimens12)
-                                            )
-                                            .padding(vertical = AppDimens.Dimens14, horizontal = AppDimens.Dimens16),
+                                                else Color.White.copy(0.20f),
+                                                RoundedCornerShape(AppDimens.Dimens16)
+                                            ),
                                         contentAlignment = Alignment.Center
                                     ) {
-                                        Text(expr,
-                                            style      = MaterialTheme.typography.headlineMedium.scaled(),
-                                            color      = if (p.wrongFlash) Color(0xFFB71C1C) else mode.startColor,
-                                            fontWeight = FontWeight.Black,
-                                            textAlign  = TextAlign.Center)
+                                        Crossfade(targetState = expr, animationSpec = tween(180), label = "drill-expr") { e ->
+                                            Text(e,
+                                                fontSize   = 52.sp.scaled(),
+                                                color      = if (p.wrongFlash) Color(0xFFFF8A80) else Color.White,
+                                                fontWeight = FontWeight.Black,
+                                                textAlign  = TextAlign.Center,
+                                                modifier   = Modifier.fillMaxWidth())
+                                        }
                                     }
                                     Spacer(Modifier.height(AppDimens.Dimens12))
                                     L3Numpad(
@@ -253,7 +245,7 @@ fun Level3SpeedDrillScreen(
                                                 phase = L3DrillPhase.Playing(p.attempt + 1, true)
                                             }
                                         },
-                                        modifier = Modifier.fillMaxWidth().height(AppDimens.Dimens260)
+                                        modifier = Modifier.fillMaxWidth(0.72f).height(AppDimens.Dimens200)
                                     )
                                 }
                             }
@@ -262,9 +254,10 @@ fun Level3SpeedDrillScreen(
                     }
                 }
             }
+            Spacer(Modifier.height(AppDimens.Dimens12))
         }
 
-        // ── Result popup ────────────────────────────────────────────────────────
+        // ── Result popup ──────────────────────────────────────────────────────
         val rp = phase as? L3DrillPhase.Result
         AnimatedVisibility(
             visible  = rp != null,
@@ -280,8 +273,7 @@ fun Level3SpeedDrillScreen(
                 ) {
                     Box(
                         modifier = Modifier
-                            .fillMaxWidth(0.52f)
-                            .padding(AppDimens.Dimens6)
+                            .fillMaxWidth(0.52f).padding(AppDimens.Dimens6)
                             .shadow(AppDimens.Dimens16, popupShape,
                                 spotColor    = mode.endColor.copy(0.50f),
                                 ambientColor = mode.endColor.copy(0.30f))
