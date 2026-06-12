@@ -116,5 +116,23 @@ sealed class RouteNavigation(val route: String) {
         fun create(lessonId: Int) = "Level2Quiz/$lessonId"
     }
     object Level3Home : RouteNavigation("Level3Home")
+    object Level3Config : RouteNavigation("Level3Config/{modeOrdinal}") {
+        fun create(modeOrdinal: Int) = "Level3Config/$modeOrdinal"
+    }
+    object Level3Guided : RouteNavigation("Level3Guided/{terms}/{digits}/{flashMs}/{autoAbacus}") {
+        fun create(terms: Int, digits: Int, flashMs: Int, autoAbacus: Boolean) =
+            "Level3Guided/$terms/$digits/$flashMs/$autoAbacus"
+    }
+    object Level3Anzan : RouteNavigation("Level3Anzan/{modeOrd}/{terms}/{digits}/{flashMs}") {
+        fun create(modeOrd: Int, terms: Int, digits: Int, flashMs: Int) =
+            "Level3Anzan/$modeOrd/$terms/$digits/$flashMs"
+    }
+    object Level3SpeedDrill : RouteNavigation("Level3SpeedDrill/{digits}/{timeLimitSecs}") {
+        fun create(digits: Int, timeLimitSecs: Int) = "Level3SpeedDrill/$digits/$timeLimitSecs"
+    }
+    object Level3FlashPicker : RouteNavigation("Level3FlashPicker")
+    object Level3FlashPlay : RouteNavigation("Level3FlashPlay/{diffIndex}") {
+        fun create(diffIndex: Int) = "Level3FlashPlay/$diffIndex"
+    }
     object Level4TablePicker : RouteNavigation("Level4TablePicker")
 }

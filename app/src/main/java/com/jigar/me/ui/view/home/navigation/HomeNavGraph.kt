@@ -60,7 +60,16 @@ import com.jigar.me.ui.view.home.screens.levels.level2.formula.Level2FormulaScre
 import com.jigar.me.ui.view.home.screens.levels.level2.learn.Level2LearnScreen
 import com.jigar.me.ui.view.home.screens.levels.level2.practice.Level2PracticeScreen
 import com.jigar.me.ui.view.home.screens.levels.level2.quiz.Level2QuizScreen
+import com.jigar.me.ui.view.home.screens.levels.level3.L3Mode
+import com.jigar.me.ui.view.home.screens.levels.level3.L3Config
+import com.jigar.me.ui.view.home.screens.levels.level3.l3FlashDifficulties
 import com.jigar.me.ui.view.home.screens.levels.level3.Level3HomeScreen
+import com.jigar.me.ui.view.home.screens.levels.level3.Level3ConfigScreen
+import com.jigar.me.ui.view.home.screens.levels.level3.Level3GuidedScreen
+import com.jigar.me.ui.view.home.screens.levels.level3.Level3AnzanScreen
+import com.jigar.me.ui.view.home.screens.levels.level3.Level3SpeedDrillScreen
+import com.jigar.me.ui.view.home.screens.levels.level3.Level3FlashPickerScreen
+import com.jigar.me.ui.view.home.screens.levels.level3.Level3FlashPlayScreen
 
 @Composable
 fun HomeNavGraph(
@@ -598,7 +607,125 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.Level3Home.route) {
-            Level3HomeScreen(onBackClick = { navController.popBackStack() })
+            Level3HomeScreen(
+                onBackClick      = { navController.popBackStack() },
+                onNavigateToMode = { mode ->
+                    if (mode == L3Mode.FLASH) {
+                        navController.navigate(RouteNavigation.Level3FlashPicker.route)
+                    } else {
+                        navController.navigate(RouteNavigation.Level3Config.create(mode.ordinal))
+                    }
+                }
+            )
+        }
+
+        composable(
+            route     = RouteNavigation.Level3Config.route,
+            arguments = listOf(navArgument("modeOrdinal") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val ord  = backStackEntry.arguments?.getInt("modeOrdinal") ?: 0
+            val mode = L3Mode.entries[ord.coerceIn(0, L3Mode.entries.lastIndex)]
+            Level3ConfigScreen(
+                mode        = mode,
+                onBackClick = { navController.popBackStack() },
+                onStart     = { cfg ->
+                    when (cfg.mode) {
+                        L3Mode.GUIDED     -> navController.navigate(
+                            RouteNavigation.Level3Guided.create(cfg.terms, cfg.digits, cfg.flashMs, cfg.autoAbacus))
+                        L3Mode.SEMI_ANZAN, L3Mode.FULL_ANZAN -> navController.navigate(
+                            RouteNavigation.Level3Anzan.create(cfg.mode.ordinal, cfg.terms, cfg.digits, cfg.flashMs))
+                        L3Mode.SPEED_DRILL -> navController.navigate(
+                            RouteNavigation.Level3SpeedDrill.create(cfg.digits, cfg.timeLimitSecs))
+                        else -> Unit
+                    }
+                }
+            )
+        }
+
+        composable(
+            route     = RouteNavigation.Level3Guided.route,
+            arguments = listOf(
+                navArgument("terms")      { type = NavType.IntType  },
+                navArgument("digits")     { type = NavType.IntType  },
+                navArgument("flashMs")    { type = NavType.IntType  },
+                navArgument("autoAbacus") { type = NavType.BoolType; defaultValue = false },
+            )
+        ) { bs ->
+            val cfg = L3Config(
+                mode       = L3Mode.GUIDED,
+                terms      = bs.arguments?.getInt("terms")     ?: 5,
+                digits     = bs.arguments?.getInt("digits")    ?: 1,
+                flashMs    = bs.arguments?.getInt("flashMs")   ?: 800,
+                autoAbacus = bs.arguments?.getBoolean("autoAbacus") ?: false,
+            )
+            Level3GuidedScreen(
+                config      = cfg,
+                onBackClick = { navController.popBackStack() },
+                onFinished  = { navController.popBackStack(RouteNavigation.Level3Home.route, false) },
+            )
+        }
+
+        composable(
+            route     = RouteNavigation.Level3Anzan.route,
+            arguments = listOf(
+                navArgument("modeOrd") { type = NavType.IntType },
+                navArgument("terms")   { type = NavType.IntType },
+                navArgument("digits")  { type = NavType.IntType },
+                navArgument("flashMs") { type = NavType.IntType },
+            )
+        ) { bs ->
+            val modeOrd = bs.arguments?.getInt("modeOrd") ?: L3Mode.SEMI_ANZAN.ordinal
+            val cfg = L3Config(
+                mode    = L3Mode.entries[modeOrd.coerceIn(0, L3Mode.entries.lastIndex)],
+                terms   = bs.arguments?.getInt("terms")   ?: 5,
+                digits  = bs.arguments?.getInt("digits")  ?: 1,
+                flashMs = bs.arguments?.getInt("flashMs") ?: 800,
+            )
+            Level3AnzanScreen(
+                config      = cfg,
+                onBackClick = { navController.popBackStack() },
+                onFinished  = { navController.popBackStack(RouteNavigation.Level3Home.route, false) },
+            )
+        }
+
+        composable(
+            route     = RouteNavigation.Level3SpeedDrill.route,
+            arguments = listOf(
+                navArgument("digits")        { type = NavType.IntType },
+                navArgument("timeLimitSecs") { type = NavType.IntType },
+            )
+        ) { bs ->
+            val cfg = L3Config(
+                mode          = L3Mode.SPEED_DRILL,
+                digits        = bs.arguments?.getInt("digits")        ?: 1,
+                timeLimitSecs = bs.arguments?.getInt("timeLimitSecs") ?: 60,
+            )
+            Level3SpeedDrillScreen(
+                config      = cfg,
+                onBackClick = { navController.popBackStack() },
+                onFinished  = { navController.popBackStack(RouteNavigation.Level3Home.route, false) },
+            )
+        }
+
+        composable(route = RouteNavigation.Level3FlashPicker.route) {
+            Level3FlashPickerScreen(
+                onBackClick        = { navController.popBackStack() },
+                onSelectDifficulty = { idx ->
+                    navController.navigate(RouteNavigation.Level3FlashPlay.create(idx))
+                }
+            )
+        }
+
+        composable(
+            route     = RouteNavigation.Level3FlashPlay.route,
+            arguments = listOf(navArgument("diffIndex") { type = NavType.IntType })
+        ) { bs ->
+            val idx = bs.arguments?.getInt("diffIndex") ?: 0
+            Level3FlashPlayScreen(
+                diffIndex   = idx,
+                onBackClick = { navController.popBackStack() },
+                onFinished  = { navController.popBackStack(RouteNavigation.Level3Home.route, false) },
+            )
         }
 
         composable(route = RouteNavigation.Level4TablePicker.route) {
