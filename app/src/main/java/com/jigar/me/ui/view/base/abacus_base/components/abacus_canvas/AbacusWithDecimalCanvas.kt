@@ -146,6 +146,7 @@ fun AbacusWithDecimalCanvas(
             && screenType != AppConstants.AbacusScreen.screenTypeLevel2Learn
             && screenType != AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula
             && screenType != AppConstants.AbacusScreen.screenTypeLevel2Practice
+            && screenType != AppConstants.AbacusScreen.screenTypeLevel3
             ) {
             val isSmallAnswerBar = screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise
             val answerBarScale = when {

@@ -70,9 +70,12 @@ fun Level3GuidedScreen(
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
 
-        Row(modifier = Modifier.fillMaxSize()) {
+        Row(
+            modifier          = Modifier.fillMaxSize(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
 
-            // ── LEFT: back button + mode info + abacus ─────────────────────────
+            // ── LEFT: back button + abacus ────────────────────────────────────
             Column(
                 modifier = Modifier
                     .weight(0.44f)
@@ -82,52 +85,25 @@ fun Level3GuidedScreen(
                 BackButtonWithText(title = mode.title, onBackClick = onBackClick)
                 Spacer(Modifier.height(AppDimens.Dimens8))
 
-                // Mode info strip
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(AppDimens.Dimens4)
-                        .shadow(AppDimens.Dimens4, cardShape,
-                            spotColor    = mode.endColor.copy(0.40f),
-                            ambientColor = mode.endColor.copy(0.20f))
-                        .background(Brush.linearGradient(listOf(mode.startColor, mode.endColor)), cardShape)
-                        .padding(horizontal = AppDimens.Dimens14, vertical = AppDimens.Dimens10)
-                ) {
-                    Row(
-                        verticalAlignment     = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
-                    ) {
-                        Text(mode.emoji, style = MaterialTheme.typography.titleLarge.scaled())
-                        Column {
-                            Text(mode.title,
-                                style      = MaterialTheme.typography.labelLarge.scaled(),
-                                color      = Color.White,
-                                fontWeight = FontWeight.Black)
-                            Text(mode.subtitle,
-                                style = MaterialTheme.typography.labelSmall.scaled(),
-                                color = Color.White.copy(0.80f))
-                        }
-                    }
-                }
-
-                Spacer(Modifier.height(AppDimens.Dimens8))
-
-                // Abacus card — fills rest of left column
+                val abacusShape = RoundedCornerShape(AppDimens.Dimens24)
                 Box(
                     modifier = Modifier
                         .weight(1f)
                         .fillMaxWidth()
                         .padding(AppDimens.Dimens4)
-                        .shadow(AppDimens.Dimens6, cardShape,
-                            spotColor    = Color.Black.copy(0.18f),
-                            ambientColor = Color.Black.copy(0.08f))
-                        .background(Color.White.copy(0.90f), cardShape),
+                        .shadow(AppDimens.Dimens6, abacusShape,
+                            spotColor    = mode.endColor.copy(0.35f),
+                            ambientColor = mode.endColor.copy(0.18f))
+                        .background(Brush.linearGradient(listOf(Color.White.copy(0.18f), Color.White.copy(0.08f))), abacusShape),
                     contentAlignment = Alignment.Center
                 ) {
                     when (phase) {
                         is L3GuidedPhase.Step -> AbacusWithDecimalCanvas(
                             selectedTheme               = theme,
-                            screenType                  = AppConstants.AbacusScreen.screenTypeLevel2Practice,
+                            screenType                  = if (!config.autoAbacus)
+                                AppConstants.AbacusScreen.screenTypeLevel3
+                            else
+                                AppConstants.AbacusScreen.screenTypeLevel2Practice,
                             abacusData                  = abCalc,
                             numberOfColumns             = 2,
                             rodMovement                 = emptyList(),
@@ -153,21 +129,33 @@ fun Level3GuidedScreen(
                                 textAlign  = TextAlign.Center
                             )
                         }
-                        is L3GuidedPhase.Result -> Unit
+                        is L3GuidedPhase.Result -> AbacusWithDecimalCanvas(
+                            selectedTheme               = theme,
+                            screenType                  = AppConstants.AbacusScreen.screenTypeLevel2Practice,
+                            abacusData                  = abCalc,
+                            numberOfColumns             = 2,
+                            rodMovement                 = emptyList(),
+                            showDirectionHint           = false,
+                            isBeadSoundOn               = false,
+                            isDisplayCurrentAbacusInput = false,
+                            onRodMovementChange         = {},
+                            onShowDirectionHintsChange  = {},
+                            onShowHighlighterChange     = {},
+                            onReset = {}, onNext = {},
+                        )
                     }
                 }
             }
 
-            // ── RIGHT: step / answer panel — top-aligned ───────────────────────
+            // ── RIGHT: step / answer panel — wraps height, centered ────────────
             Column(
                 modifier = Modifier
                     .weight(0.56f)
-                    .fillMaxHeight()
                     .padding(start = AppDimens.Dimens6, end = AppDimens.Dimens12, top = AppDimens.Dimens8, bottom = AppDimens.Dimens12)
             ) {
                 Box(
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxWidth()
                         .padding(AppDimens.Dimens4)
                         .shadow(AppDimens.Dimens8, cardShape,
                             spotColor    = mode.endColor.copy(0.38f),
@@ -176,9 +164,16 @@ fun Level3GuidedScreen(
                 ) {
                     AnimatedContent(
                         targetState    = phase,
+                        contentKey     = { p ->
+                            when (p) {
+                                is L3GuidedPhase.Step      -> "step"
+                                is L3GuidedPhase.Answering -> "answering"
+                                is L3GuidedPhase.Result    -> "result"
+                            }
+                        },
                         transitionSpec = { fadeIn(tween(250)) togetherWith fadeOut(tween(200)) },
                         label          = "guided-phase",
-                        modifier       = Modifier.fillMaxSize()
+                        modifier       = Modifier.fillMaxWidth()
                     ) { p ->
                         when (p) {
                             is L3GuidedPhase.Step -> GuidedStepPanel(
@@ -210,7 +205,13 @@ fun Level3GuidedScreen(
                                     phase = L3GuidedPhase.Result(typed == session.answer, session.answer)
                                 }
                             )
-                            is L3GuidedPhase.Result -> Unit
+                            is L3GuidedPhase.Result -> GuidedStepPanel(
+                                session    = session,
+                                stepIndex  = session.terms.size - 1,
+                                autoAbacus = config.autoAbacus,
+                                mode       = mode,
+                                onNext     = {}
+                            )
                         }
                     }
                 }
@@ -313,72 +314,99 @@ private fun GuidedStepPanel(
     }
 
     Column(
-        modifier = Modifier.fillMaxSize().padding(AppDimens.Dimens20),
-        verticalArrangement = Arrangement.SpaceBetween
+        modifier            = Modifier.fillMaxWidth().padding(AppDimens.Dimens16),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
     ) {
-        // Top content
-        Column(verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens14)) {
-            Text(
-                "Step ${stepIndex + 1}  /  ${session.terms.size}",
-                style      = MaterialTheme.typography.labelLarge.scaled(),
-                color      = Color.White.copy(0.80f),
-                fontWeight = FontWeight.Bold
-            )
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(Color.White.copy(0.20f), RoundedCornerShape(AppDimens.Dimens16))
-                    .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens16),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    opDisplay,
-                    style      = MaterialTheme.typography.displaySmall.scaled(),
+        // Mode info strip
+        Row(
+            modifier              = Modifier.fillMaxWidth(),
+            verticalAlignment     = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
+        ) {
+            Text(mode.emoji, style = MaterialTheme.typography.titleLarge.scaled())
+            Column {
+                Text(mode.title,
+                    style      = MaterialTheme.typography.labelLarge.scaled(),
                     color      = Color.White,
-                    fontWeight = FontWeight.Black,
-                    textAlign  = TextAlign.Center
-                )
-            }
-            Text(
-                instruction,
-                style      = MaterialTheme.typography.bodyLarge.scaled(),
-                color      = Color.White.copy(0.90f),
-                fontWeight = FontWeight.Medium,
-                textAlign  = TextAlign.Start
-            )
-            // Step progress dots
-            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)) {
-                repeat(session.terms.size) { i ->
-                    Box(
-                        modifier = Modifier
-                            .size(if (i == stepIndex) AppDimens.Dimens12 else AppDimens.Dimens8)
-                            .background(
-                                if (i <= stepIndex) Color.White else Color.White.copy(0.30f),
-                                RoundedCornerShape(50)
-                            )
-                    )
-                }
+                    fontWeight = FontWeight.Black)
+                Text(mode.subtitle,
+                    style = MaterialTheme.typography.labelSmall.scaled(),
+                    color = Color.White.copy(0.80f))
             }
         }
-
-        // Bottom button
-        val btnShape = RoundedCornerShape(AppDimens.Dimens100)
         Box(
             modifier = Modifier
-                .align(Alignment.End)
-                .padding(AppDimens.Dimens4)
-                .shadow(AppDimens.Dimens4, btnShape)
-                .background(Color.White, btnShape)
-                .clickable(remember { MutableInteractionSource() }, null) { onNext() }
-                .padding(horizontal = AppDimens.Dimens24, vertical = AppDimens.Dimens14),
+                .fillMaxWidth()
+                .height(1.dp)
+                .background(Color.White.copy(0.25f))
+        )
+        Text(
+            "Step ${stepIndex + 1}  /  ${session.terms.size}",
+            style      = MaterialTheme.typography.labelLarge.scaled(),
+            color      = Color.White.copy(0.80f),
+            fontWeight = FontWeight.Bold,
+            textAlign  = TextAlign.Center,
+            modifier   = Modifier.fillMaxWidth()
+        )
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.White.copy(0.20f), RoundedCornerShape(AppDimens.Dimens16))
+                .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens16),
             contentAlignment = Alignment.Center
         ) {
             Text(
-                btnLabel,
-                style      = MaterialTheme.typography.labelLarge.scaled(),
-                color      = mode.startColor,
-                fontWeight = FontWeight.Black
+                opDisplay,
+                style      = MaterialTheme.typography.displayMedium.scaled(),
+                color      = Color.White,
+                fontWeight = FontWeight.Black,
+                textAlign  = TextAlign.Center
             )
+        }
+        Text(
+            instruction,
+            style      = MaterialTheme.typography.bodyLarge.scaled(),
+            color      = Color.White.copy(0.90f),
+            fontWeight = FontWeight.Medium,
+            textAlign  = TextAlign.Center,
+            modifier   = Modifier.fillMaxWidth()
+        )
+        // Line progress indicator (compact, not full width)
+        Row(
+            modifier              = Modifier.fillMaxWidth(0.60f).height(AppDimens.Dimens8),
+            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
+        ) {
+            repeat(session.terms.size) { i ->
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxHeight()
+                        .background(
+                            if (i <= stepIndex) Color.White else Color.White.copy(0.30f),
+                            RoundedCornerShape(AppDimens.Dimens100)
+                        )
+                )
+            }
+        }
+        val btnShape = RoundedCornerShape(AppDimens.Dimens100)
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+            Box(
+                modifier = Modifier
+                    .padding(AppDimens.Dimens3)
+                    .shadow(AppDimens.Dimens4, btnShape)
+                    .background(Color.White, btnShape)
+                    .clickable(remember { MutableInteractionSource() }, null) { onNext() }
+                    .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens10),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    btnLabel,
+                    style      = MaterialTheme.typography.labelMedium.scaled(),
+                    color      = mode.startColor,
+                    fontWeight = FontWeight.Black
+                )
+            }
         }
     }
 }
@@ -392,7 +420,7 @@ private fun GuidedAnswerPanel(
     onConfirm:  () -> Unit,
 ) {
     Column(
-        modifier            = Modifier.fillMaxSize().padding(AppDimens.Dimens16),
+        modifier            = Modifier.fillMaxWidth().padding(AppDimens.Dimens10),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
@@ -403,13 +431,13 @@ private fun GuidedAnswerPanel(
             fontWeight = FontWeight.Black,
             textAlign  = TextAlign.Center
         )
-        Spacer(Modifier.height(AppDimens.Dimens12))
+        Spacer(Modifier.height(AppDimens.Dimens8))
         L3Numpad(
             typedValue = typedValue,
             onDigit    = onDigit,
             onDelete   = onDelete,
             onConfirm  = onConfirm,
-            modifier   = Modifier.fillMaxWidth().weight(1f)
+            modifier   = Modifier.fillMaxWidth().height(AppDimens.Dimens260)
         )
     }
 }

@@ -87,6 +87,7 @@ object AppConstants {
             const val screenTypeLevel2Learn           = "Level2Learn"
             const val screenTypeLevel2LearnMeetFormula = "Level2LearnMeetFormula"
             const val screenTypeLevel2Practice         = "Level2Practice"
+            const val screenTypeLevel3                 = "Level3"
 
 
 

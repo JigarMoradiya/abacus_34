@@ -30,7 +30,7 @@ fun L3Numpad(
 ) {
     Column(
         modifier             = modifier,
-        verticalArrangement  = Arrangement.spacedBy(AppDimens.Dimens6)
+        verticalArrangement  = Arrangement.spacedBy(AppDimens.Dimens4)
     ) {
         // Answer display
         Box(
@@ -54,7 +54,7 @@ fun L3Numpad(
         listOf(listOf(7, 8, 9), listOf(4, 5, 6), listOf(1, 2, 3)).forEach { row ->
             Row(
                 modifier              = Modifier.fillMaxWidth().weight(1f),
-                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)
+                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
             ) {
                 row.forEach { digit ->
                     L3Key(
@@ -70,7 +70,7 @@ fun L3Numpad(
         // Bottom row: delete, 0, confirm
         Row(
             modifier              = Modifier.fillMaxWidth().weight(1f),
-            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)
+            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
         ) {
             L3Key("⌫", Color(0xFFC62828), Color(0xFF8B0000),
                 Modifier.weight(1f).fillMaxHeight()) { onDelete() }

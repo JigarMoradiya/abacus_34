@@ -10,6 +10,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -75,7 +76,10 @@ fun Level3AnzanScreen(
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
 
-        Row(modifier = Modifier.fillMaxSize()) {
+        Row(
+            modifier          = Modifier.fillMaxSize(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
 
             // ── LEFT: back button + mode info + abacus (semi only) ─────────────
             Column(
@@ -87,7 +91,6 @@ fun Level3AnzanScreen(
                 BackButtonWithText(title = mode.title, onBackClick = onBackClick)
                 Spacer(Modifier.height(AppDimens.Dimens8))
 
-                // Mode info strip
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -117,7 +120,6 @@ fun Level3AnzanScreen(
 
                 if (isSemi) {
                     Spacer(Modifier.height(AppDimens.Dimens8))
-                    // Abacus panel
                     Box(
                         modifier = Modifier
                             .weight(1f)
@@ -129,34 +131,35 @@ fun Level3AnzanScreen(
                             .background(Color.White.copy(0.90f), cardShape),
                         contentAlignment = Alignment.Center
                     ) {
-                        AbacusWithDecimalCanvas(
-                            selectedTheme               = theme,
-                            screenType                  = AppConstants.AbacusScreen.screenTypeLevel2Practice,
-                            abacusData                  = abCalc,
-                            numberOfColumns             = 2,
-                            rodMovement                 = emptyList(),
-                            showDirectionHint           = false,
-                            isBeadSoundOn               = false,
-                            isDisplayCurrentAbacusInput = false,
-                            onRodMovementChange         = {},
-                            onShowDirectionHintsChange  = {},
-                            onShowHighlighterChange     = {},
-                            onReset = {}, onNext = {},
-                        )
+                        Box(modifier = Modifier.fillMaxSize().scale(0.8f)) {
+                            AbacusWithDecimalCanvas(
+                                selectedTheme               = theme,
+                                screenType                  = AppConstants.AbacusScreen.screenTypeLevel2Practice,
+                                abacusData                  = abCalc,
+                                numberOfColumns             = 2,
+                                rodMovement                 = emptyList(),
+                                showDirectionHint           = false,
+                                isBeadSoundOn               = false,
+                                isDisplayCurrentAbacusInput = false,
+                                onRodMovementChange         = {},
+                                onShowDirectionHintsChange  = {},
+                                onShowHighlighterChange     = {},
+                                onReset = {}, onNext = {},
+                            )
+                        }
                     }
                 }
             }
 
-            // ── RIGHT: flash / answer panel — top-aligned ──────────────────────
+            // ── RIGHT: flash / answer panel — wraps height, centered ───────────
             Column(
                 modifier = Modifier
                     .weight(if (isSemi) 0.56f else 0.68f)
-                    .fillMaxHeight()
                     .padding(start = AppDimens.Dimens6, end = AppDimens.Dimens12, top = AppDimens.Dimens8, bottom = AppDimens.Dimens12)
             ) {
                 Box(
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxWidth()
                         .padding(AppDimens.Dimens4)
                         .shadow(AppDimens.Dimens8, cardShape,
                             spotColor    = mode.endColor.copy(0.38f),
@@ -167,7 +170,7 @@ fun Level3AnzanScreen(
                         targetState    = phase,
                         transitionSpec = { fadeIn(tween(180)) togetherWith fadeOut(tween(150)) },
                         label          = "anzan-phase",
-                        modifier       = Modifier.fillMaxSize()
+                        modifier       = Modifier.fillMaxWidth()
                     ) { p ->
                         when (p) {
                             is L3AnzanPhase.Countdown -> AnzanCountdownDisplay(p.n)
@@ -262,9 +265,9 @@ fun Level3AnzanScreen(
 @Composable
 private fun AnzanCountdownDisplay(n: Int) {
     Column(
-        modifier            = Modifier.fillMaxSize(),
+        modifier            = Modifier.fillMaxWidth().padding(vertical = AppDimens.Dimens40),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
     ) {
         Text("$n",
             style      = MaterialTheme.typography.displayLarge.scaled(),
@@ -283,21 +286,19 @@ private fun AnzanFlashDisplay(session: L3Session, idx: Int) {
     val term    = session.terms[idx]
     val display = if (term.sign.isEmpty()) "${term.value}" else "${term.sign} ${term.value}"
     Column(
-        modifier            = Modifier.fillMaxSize().padding(AppDimens.Dimens20),
+        modifier            = Modifier.fillMaxWidth().padding(AppDimens.Dimens20),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
     ) {
         Text("${idx + 1} / ${session.terms.size}",
             style      = MaterialTheme.typography.labelLarge.scaled(),
             color      = Color.White.copy(0.70f),
             fontWeight = FontWeight.Bold)
-        Spacer(Modifier.height(AppDimens.Dimens8))
         Text(display,
             style      = MaterialTheme.typography.displayMedium.scaled(),
             color      = Color.White,
             fontWeight = FontWeight.Black,
             textAlign  = TextAlign.Center)
-        Spacer(Modifier.height(AppDimens.Dimens12))
         Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
             session.terms.forEachIndexed { i, _ ->
                 Box(
@@ -315,7 +316,10 @@ private fun AnzanFlashDisplay(session: L3Session, idx: Int) {
 
 @Composable
 private fun AnzanGapDisplay() {
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+    Box(
+        modifier         = Modifier.fillMaxWidth().padding(vertical = AppDimens.Dimens40),
+        contentAlignment = Alignment.Center
+    ) {
         Text("•••",
             style  = MaterialTheme.typography.headlineLarge.scaled(),
             color  = Color.White.copy(0.50f))
@@ -331,7 +335,7 @@ private fun AnzanAnswerPanel(
     onConfirm:  () -> Unit,
 ) {
     Column(
-        modifier            = Modifier.fillMaxSize().padding(AppDimens.Dimens16),
+        modifier            = Modifier.fillMaxWidth().padding(AppDimens.Dimens16),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
@@ -346,7 +350,7 @@ private fun AnzanAnswerPanel(
             onDigit    = onDigit,
             onDelete   = onDelete,
             onConfirm  = onConfirm,
-            modifier   = Modifier.fillMaxWidth().weight(1f)
+            modifier   = Modifier.fillMaxWidth().height(AppDimens.Dimens260)
         )
     }
 }

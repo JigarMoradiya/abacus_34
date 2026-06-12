@@ -191,7 +191,10 @@ fun Level3FlashPlayScreen(
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
 
-        Row(modifier = Modifier.fillMaxSize()) {
+        Row(
+            modifier          = Modifier.fillMaxSize(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
 
             // ── LEFT: back button + difficulty info ─────────────────────────────
             Column(
@@ -234,16 +237,15 @@ fun Level3FlashPlayScreen(
                 }
             }
 
-            // ── RIGHT: flash content — top-aligned ─────────────────────────────
+            // ── RIGHT: flash content — wraps height, centered ──────────────────
             Column(
                 modifier = Modifier
                     .weight(0.70f)
-                    .fillMaxHeight()
                     .padding(start = AppDimens.Dimens6, end = AppDimens.Dimens12, top = AppDimens.Dimens8, bottom = AppDimens.Dimens12)
             ) {
                 Box(
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxWidth()
                         .padding(AppDimens.Dimens4)
                         .shadow(AppDimens.Dimens8, cardShape,
                             spotColor    = diff.endColor.copy(0.38f),
@@ -254,10 +256,13 @@ fun Level3FlashPlayScreen(
                         targetState    = phase,
                         transitionSpec = { fadeIn(tween(150)) togetherWith fadeOut(tween(120)) },
                         label          = "flash-phase",
-                        modifier       = Modifier.fillMaxSize()
+                        modifier       = Modifier.fillMaxWidth()
                     ) { p ->
                         when (p) {
-                            is L3FlashPhase.Countdown -> Box(Modifier.fillMaxSize(), Alignment.Center) {
+                            is L3FlashPhase.Countdown -> Box(
+                                modifier         = Modifier.fillMaxWidth().padding(vertical = AppDimens.Dimens40),
+                                contentAlignment = Alignment.Center
+                            ) {
                                 Text("${p.n}",
                                     style      = MaterialTheme.typography.displayLarge.scaled(),
                                     color      = Color.White,
@@ -267,21 +272,19 @@ fun Level3FlashPlayScreen(
                                 val term    = session.terms[p.idx]
                                 val display = if (term.sign.isEmpty()) "${term.value}" else "${term.sign} ${term.value}"
                                 Column(
-                                    modifier            = Modifier.fillMaxSize().padding(AppDimens.Dimens24),
+                                    modifier            = Modifier.fillMaxWidth().padding(AppDimens.Dimens24),
                                     horizontalAlignment = Alignment.CenterHorizontally,
-                                    verticalArrangement = Arrangement.Center
+                                    verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
                                 ) {
                                     Text("${p.idx + 1} / ${session.terms.size}",
                                         style      = MaterialTheme.typography.labelLarge.scaled(),
                                         color      = Color.White.copy(0.70f),
                                         fontWeight = FontWeight.Bold)
-                                    Spacer(Modifier.height(AppDimens.Dimens8))
                                     Text(display,
                                         style      = MaterialTheme.typography.displayMedium.scaled(),
                                         color      = Color.White,
                                         fontWeight = FontWeight.Black,
                                         textAlign  = TextAlign.Center)
-                                    Spacer(Modifier.height(AppDimens.Dimens12))
                                     Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
                                         session.terms.forEachIndexed { i, _ ->
                                             Box(
@@ -296,13 +299,16 @@ fun Level3FlashPlayScreen(
                                     }
                                 }
                             }
-                            is L3FlashPhase.Gap -> Box(Modifier.fillMaxSize(), Alignment.Center) {
+                            is L3FlashPhase.Gap -> Box(
+                                modifier         = Modifier.fillMaxWidth().padding(vertical = AppDimens.Dimens40),
+                                contentAlignment = Alignment.Center
+                            ) {
                                 Text("•••",
                                     style  = MaterialTheme.typography.headlineLarge.scaled(),
                                     color  = Color.White.copy(0.50f))
                             }
                             is L3FlashPhase.Answering -> Column(
-                                modifier            = Modifier.fillMaxSize().padding(AppDimens.Dimens20),
+                                modifier            = Modifier.fillMaxWidth().padding(AppDimens.Dimens20),
                                 horizontalAlignment = Alignment.CenterHorizontally,
                                 verticalArrangement = Arrangement.Top
                             ) {
@@ -320,7 +326,7 @@ fun Level3FlashPlayScreen(
                                         val typed = typedValue.toIntOrNull() ?: 0
                                         phase = L3FlashPhase.Result(typed == session.answer, session.answer)
                                     },
-                                    modifier = Modifier.fillMaxWidth().weight(1f)
+                                    modifier = Modifier.fillMaxWidth().height(AppDimens.Dimens260)
                                 )
                             }
                             is L3FlashPhase.Result -> Unit

@@ -76,7 +76,10 @@ fun Level3SpeedDrillScreen(
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
 
-        Row(modifier = Modifier.fillMaxSize()) {
+        Row(
+            modifier          = Modifier.fillMaxSize(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
 
             // ── LEFT: back button + mode info + timer + score ──────────────────
             Column(
@@ -173,16 +176,15 @@ fun Level3SpeedDrillScreen(
                 }
             }
 
-            // ── RIGHT: question + numpad — top-aligned ─────────────────────────
+            // ── RIGHT: question + numpad — wraps height, centered ─────────────
             Column(
                 modifier = Modifier
                     .weight(0.62f)
-                    .fillMaxHeight()
                     .padding(start = AppDimens.Dimens6, end = AppDimens.Dimens12, top = AppDimens.Dimens8, bottom = AppDimens.Dimens12)
             ) {
                 Box(
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxWidth()
                         .padding(AppDimens.Dimens4)
                         .shadow(AppDimens.Dimens8, cardShape,
                             spotColor    = Color.Black.copy(0.15f),
@@ -193,11 +195,12 @@ fun Level3SpeedDrillScreen(
                         targetState    = phase,
                         transitionSpec = { fadeIn(tween(200)) togetherWith fadeOut(tween(150)) },
                         label          = "drill-phase",
-                        modifier       = Modifier.fillMaxSize()
+                        modifier       = Modifier.fillMaxWidth()
                     ) { p ->
                         when (p) {
                             is L3DrillPhase.Countdown -> Box(
-                                Modifier.fillMaxSize(), Alignment.Center
+                                modifier         = Modifier.fillMaxWidth().padding(vertical = AppDimens.Dimens40),
+                                contentAlignment = Alignment.Center
                             ) {
                                 Text("${p.n}",
                                     style      = MaterialTheme.typography.displayLarge.scaled(),
@@ -213,7 +216,7 @@ fun Level3SpeedDrillScreen(
                                     append(" = ?")
                                 }
                                 Column(
-                                    modifier            = Modifier.fillMaxSize().padding(AppDimens.Dimens16),
+                                    modifier            = Modifier.fillMaxWidth().padding(AppDimens.Dimens16),
                                     horizontalAlignment = Alignment.CenterHorizontally,
                                     verticalArrangement = Arrangement.Top
                                 ) {
@@ -250,7 +253,7 @@ fun Level3SpeedDrillScreen(
                                                 phase = L3DrillPhase.Playing(p.attempt + 1, true)
                                             }
                                         },
-                                        modifier = Modifier.fillMaxWidth().weight(1f)
+                                        modifier = Modifier.fillMaxWidth().height(AppDimens.Dimens260)
                                     )
                                 }
                             }

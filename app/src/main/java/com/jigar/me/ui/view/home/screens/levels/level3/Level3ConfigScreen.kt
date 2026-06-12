@@ -31,24 +31,31 @@ fun Level3ConfigScreen(
     var autoAbacus    by remember { mutableStateOf(false) }
     var timeLimitSecs by remember { mutableIntStateOf(60) }
 
+    val cardShape = RoundedCornerShape(AppDimens.Dimens20)
+
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize()) {
-            BackButtonWithText(title = mode.title, onBackClick = onBackClick)
 
-            Row(
+        Row(
+            modifier          = Modifier.fillMaxSize(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+
+            // ── LEFT: back button + mode info card ────────────────────────────
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f)
-                    .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens10),
-                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens14),
+                    .weight(0.42f)
+                    .fillMaxHeight()
+                    .padding(start = AppDimens.Dimens12, top = AppDimens.Dimens8, bottom = AppDimens.Dimens12, end = AppDimens.Dimens6)
             ) {
-                // ── Left: mode description ────────────────────────────────────────
-                val cardShape = RoundedCornerShape(AppDimens.Dimens20)
+                BackButtonWithText(title = mode.title, onBackClick = onBackClick)
+                Spacer(Modifier.height(AppDimens.Dimens8))
+
                 Box(
                     modifier = Modifier
-                        .weight(0.42f)
-                        .fillMaxHeight()
+                        .weight(1f)
+                        .fillMaxWidth()
+                        .padding(AppDimens.Dimens4)
                         .shadow(AppDimens.Dimens6, cardShape,
                             spotColor    = mode.endColor.copy(0.35f),
                             ambientColor = mode.endColor.copy(0.15f))
@@ -83,18 +90,26 @@ fun Level3ConfigScreen(
                         }
                     }
                 }
+            }
 
-                // ── Right: config options ─────────────────────────────────────────
+            // ── RIGHT: config options ─────────────────────────────────────────
+            Column(
+                modifier = Modifier
+                    .weight(0.58f)
+                    .padding(start = AppDimens.Dimens6, top = AppDimens.Dimens8, bottom = AppDimens.Dimens12, end = AppDimens.Dimens12)
+            ) {
                 Box(
                     modifier = Modifier
-                        .weight(0.58f)
-                        .fillMaxHeight()
-                        .shadow(AppDimens.Dimens4, cardShape)
-                        .background(Color.White.copy(0.18f), cardShape)
+                        .fillMaxWidth()
+                        .padding(AppDimens.Dimens4)
+                        .shadow(AppDimens.Dimens8, cardShape,
+                            spotColor    = Color.Black.copy(0.12f),
+                            ambientColor = Color.Black.copy(0.06f))
+                        .background(Color.White.copy(0.88f), cardShape)
                         .padding(AppDimens.Dimens20),
                 ) {
                     Column(
-                        modifier            = Modifier.fillMaxSize(),
+                        modifier            = Modifier.fillMaxWidth(),
                         verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
                     ) {
                         // Terms
@@ -113,8 +128,8 @@ fun Level3ConfigScreen(
                             }
                         }
 
-                        // Flash speed (not for Speed Drill)
-                        if (mode != L3Mode.SPEED_DRILL) {
+                        // Flash speed (not for Speed Drill or Guided — user clicks Next manually)
+                        if (mode != L3Mode.SPEED_DRILL && mode != L3Mode.GUIDED) {
                             L3ConfigRow(label = "⚡ Speed") {
                                 listOf(1200 to "Slow", 800 to "Normal", 500 to "Fast", 300 to "Blazing").forEach { (ms, label) ->
                                     L3Chip(label, selected = flashMs == ms) { flashMs = ms }
@@ -154,43 +169,46 @@ fun Level3ConfigScreen(
                                     checked         = autoAbacus,
                                     onCheckedChange = { autoAbacus = it },
                                     colors          = SwitchDefaults.colors(
-                                        checkedThumbColor  = mode.startColor,
-                                        checkedTrackColor  = mode.startColor.copy(0.40f),
+                                        checkedThumbColor = mode.startColor,
+                                        checkedTrackColor = mode.startColor.copy(0.40f),
                                     )
                                 )
                             }
                         }
 
-                        Spacer(Modifier.weight(1f))
-
-                        // Start button
+                        // Start button — wrap content, right-aligned
                         val startShape = RoundedCornerShape(AppDimens.Dimens100)
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .shadow(AppDimens.Dimens6, startShape,
-                                    spotColor    = mode.endColor.copy(0.5f),
-                                    ambientColor = mode.endColor.copy(0.3f))
-                                .background(Brush.linearGradient(listOf(mode.startColor, mode.endColor)), startShape)
-                                .clickable(remember { MutableInteractionSource() }, null) {
-                                    onStart(L3Config(
-                                        mode          = mode,
-                                        terms         = terms,
-                                        digits        = digits,
-                                        flashMs       = flashMs,
-                                        autoAbacus    = autoAbacus,
-                                        timeLimitSecs = timeLimitSecs,
-                                    ))
-                                }
-                                .padding(vertical = AppDimens.Dimens14),
-                            contentAlignment = Alignment.Center
+                        Row(
+                            modifier              = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.End
                         ) {
-                            Text(
-                                "Start! 🚀",
-                                style      = MaterialTheme.typography.titleMedium.scaled(),
-                                color      = Color.White,
-                                fontWeight = FontWeight.Black,
-                            )
+                            Box(
+                                modifier = Modifier
+                                    .padding(AppDimens.Dimens3)
+                                    .shadow(AppDimens.Dimens6, startShape,
+                                        spotColor    = mode.endColor.copy(0.5f),
+                                        ambientColor = mode.endColor.copy(0.3f))
+                                    .background(Brush.linearGradient(listOf(mode.startColor, mode.endColor)), startShape)
+                                    .clickable(remember { MutableInteractionSource() }, null) {
+                                        onStart(L3Config(
+                                            mode          = mode,
+                                            terms         = terms,
+                                            digits        = digits,
+                                            flashMs       = flashMs,
+                                            autoAbacus    = autoAbacus,
+                                            timeLimitSecs = timeLimitSecs,
+                                        ))
+                                    }
+                                    .padding(horizontal = AppDimens.Dimens18, vertical = AppDimens.Dimens10),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    "Start! 🚀",
+                                    style      = MaterialTheme.typography.labelLarge.scaled(),
+                                    color      = Color.White,
+                                    fontWeight = FontWeight.Black,
+                                )
+                            }
                         }
                     }
                 }
