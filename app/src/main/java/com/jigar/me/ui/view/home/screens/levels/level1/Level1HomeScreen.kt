@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
@@ -44,7 +45,7 @@ fun Level1HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit)
 
                 // cellW × cellH fills available space minus padding and gaps
                 val cellW = (maxWidth - hPad * 2 - spacing * (cols - 1)) / cols
-                val cellH = (maxHeight - vPad * 2 - spacing * (rows - 1) - shadowRoom) / rows
+                val cellH = minOf((maxHeight - vPad * 2 - spacing * (rows - 1) - shadowRoom) / rows, 220.dp.scaled())
 
                 // Regular Column+Row (NOT LazyGrid) — avoids lazy-layout shadow clipping
                 Column(

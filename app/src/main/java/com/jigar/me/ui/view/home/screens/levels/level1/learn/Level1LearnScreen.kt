@@ -62,6 +62,7 @@ fun Level1LearnScreen(
         Row(
             modifier              = Modifier.fillMaxSize(),
             horizontalArrangement = Arrangement.spacedBy(spacing),
+            verticalAlignment     = Alignment.CenterVertically,
         ) {
             // ── LEFT: back button top, abacus / emoji centred below ────────────
             Column(modifier = Modifier.weight(0.40f).fillMaxHeight()) {
@@ -104,17 +105,16 @@ fun Level1LearnScreen(
                                 modifier                  = Modifier
                             )
                         }
-                        else -> Text(text = step.emoji, fontSize = 80.sp)
+                        else -> Text(text = step.emoji, fontSize = 80.sp.scaled())
                     }
                 }
             }
 
-            // ── RIGHT: gradient card — content top→bottom, buttons pinned at bottom ──
+            // ── RIGHT: gradient card — wraps content height, centred vertically ──
             val cardShape = RoundedCornerShape(AppDimens.Dimens24)
             Box(
                 modifier = Modifier
                     .weight(0.60f)
-                    .fillMaxHeight()
                     .padding(end = hPad, top = vPad, bottom = vPad)
                     .shadow(AppDimens.Dimens8, cardShape,
                         spotColor    = lesson.endColor.copy(0.3f),
@@ -125,19 +125,18 @@ fun Level1LearnScreen(
                     )
                     .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens16),
             ) {
-                // Only the content inside animates — card shell stays static (no blink)
                 AnimatedContent(
                     targetState    = stepIndex,
                     transitionSpec = {
                         fadeIn(animationSpec = tween(300)) togetherWith
                         fadeOut(animationSpec = tween(300))
                     },
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.fillMaxWidth(),
                     label    = "step-content"
                 ) { idx ->
                     val s = steps[idx]
                     Column(
-                        modifier            = Modifier.fillMaxSize(),
+                        modifier            = Modifier.fillMaxWidth(),
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
                         // Progress dots
@@ -161,7 +160,7 @@ fun Level1LearnScreen(
                             fontWeight = FontWeight.Bold
                         )
                         Spacer(Modifier.height(AppDimens.Dimens6))
-                        Text(text = s.emoji, fontSize = 48.sp)
+                        Text(text = s.emoji, fontSize = 48.sp.scaled())
                         Spacer(Modifier.height(AppDimens.Dimens8))
                         Text(
                             text       = s.title,
@@ -173,6 +172,7 @@ fun Level1LearnScreen(
                         Spacer(Modifier.height(AppDimens.Dimens10))
                         Box(
                             modifier = Modifier
+                                .fillMaxWidth()
                                 .background(Color.White.copy(0.15f), RoundedCornerShape(AppDimens.Dimens16))
                                 .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens12)
                         ) {
@@ -181,13 +181,10 @@ fun Level1LearnScreen(
                                 style      = MaterialTheme.typography.bodyMedium.scaled(),
                                 color      = Color.White.copy(alpha = 0.95f),
                                 textAlign  = TextAlign.Center,
-                                lineHeight = 22.sp
+                                lineHeight = 22.sp.scaled()
                             )
                         }
-
-                        Spacer(Modifier.weight(1f))
-
-                        // Nav buttons — same capsule style as iOS
+                        Spacer(Modifier.height(AppDimens.Dimens20))
                         Row(
                             modifier              = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween,

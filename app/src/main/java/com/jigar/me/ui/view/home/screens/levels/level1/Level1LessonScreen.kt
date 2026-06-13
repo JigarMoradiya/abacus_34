@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
@@ -66,7 +67,7 @@ fun Level1LessonScreen(
                 val hPad       = AppDimens.Dimens20
                 val shadowRoom = AppDimens.Dimens10
                 val cardW      = (maxWidth - hPad * 2 - spacing * (phases.size - 1)) / phases.size
-                val cardH      = maxHeight * 0.80f
+                val cardH      = minOf(maxHeight * 0.80f, 360.dp.scaled())
 
                 Column(
                     modifier            = Modifier.width(maxWidth - hPad * 2),
@@ -119,7 +120,7 @@ private fun PhaseCard(phase: PhaseData, cardW: Dp, cardH: Dp, onClick: () -> Uni
         ) {
             Text(
                 text  = phase.emoji,
-                style = MaterialTheme.typography.displaySmall.scaled()
+                style = MaterialTheme.typography.displayMedium.scaled()
             )
             Spacer(modifier = Modifier.height(AppDimens.Dimens12))
             Text(

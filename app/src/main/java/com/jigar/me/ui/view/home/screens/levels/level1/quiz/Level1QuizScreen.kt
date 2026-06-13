@@ -91,16 +91,16 @@ fun Level1QuizScreen(
             ) {
                 Row(
                     modifier = Modifier
-                        .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens12)
+                        .padding(top = AppDimens.Dimens12, end = AppDimens.Dimens20, bottom = AppDimens.Dimens12)
                         .fillMaxSize(),
-                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16),
+                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
                     verticalAlignment     = Alignment.CenterVertically
                 ) {
                     // ── Left panel: abacus ─────────────────────────────
                     AnimatedContent(
                         targetState  = question,
                         transitionSpec = { fadeIn(tween(250)) togetherWith fadeOut(tween(250)) },
-                        modifier     = Modifier.weight(0.45f).fillMaxHeight(),
+                        modifier     = Modifier.weight(0.35f).fillMaxHeight(),
                         label        = "quiz-abacus"
                     ) { q ->
                         Box(
@@ -140,7 +140,7 @@ fun Level1QuizScreen(
                     val rightShape = RoundedCornerShape(AppDimens.Dimens24)
                     Box(
                         modifier = Modifier
-                            .weight(0.55f)
+                            .weight(0.65f)
                             .fillMaxHeight()
                             .padding(bottom = AppDimens.Dimens8)
                             .shadow(AppDimens.Dimens6, rightShape,
@@ -260,7 +260,7 @@ fun Level1QuizScreen(
                 val popupShape = RoundedCornerShape(AppDimens.Dimens24)
                 Box(
                     modifier = Modifier
-                        .fillMaxWidth(0.50f)
+                        .fillMaxWidth(0.85f)
                         .shadow(AppDimens.Dimens16, popupShape,
                             spotColor    = lesson.endColor.copy(0.4f),
                             ambientColor = lesson.endColor.copy(0.4f))
@@ -272,7 +272,7 @@ fun Level1QuizScreen(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)
                     ) {
-                        Text(starEmoji, fontSize = 52.sp)
+                        Text(starEmoji, fontSize = 52.sp.scaled())
                         Text(
                             "$score / ${questions.size} Correct",
                             style      = MaterialTheme.typography.headlineMedium.scaled(),

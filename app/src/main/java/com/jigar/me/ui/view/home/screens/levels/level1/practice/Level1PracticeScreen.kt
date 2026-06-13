@@ -85,14 +85,14 @@ fun Level1PracticeScreen(
 
                 Row(
                     modifier = Modifier
-                        .padding(horizontal = hPad, vertical = vPad)
+                        .padding(top = vPad, end = AppDimens.Dimens20, bottom = vPad)
                         .fillMaxSize(),
                     horizontalArrangement = Arrangement.spacedBy(spacing),
                     verticalAlignment     = Alignment.CenterVertically
                 ) {
                     // ── Left panel: target number + revealed abacus ──────
                     Box(
-                        modifier         = Modifier.weight(0.45f).fillMaxHeight(),
+                        modifier         = Modifier.weight(0.35f).fillMaxHeight(),
                         contentAlignment = Alignment.Center
                     ) {
                         Box(
@@ -146,7 +146,7 @@ fun Level1PracticeScreen(
                                         Spacer(Modifier.height(AppDimens.Dimens8))
                                         Text(
                                             text       = "${problem.targetNumber}",
-                                            fontSize   = 88.sp,
+                                            fontSize   = 88.sp.scaled(),
                                             color      = lesson.startColor,
                                             fontWeight = FontWeight.Black
                                         )
@@ -160,7 +160,7 @@ fun Level1PracticeScreen(
                     val rightShape = RoundedCornerShape(AppDimens.Dimens24)
                     Box(
                         modifier = Modifier
-                            .weight(0.55f)
+                            .weight(0.65f)
                             .fillMaxHeight()
                             .padding(bottom = AppDimens.Dimens8)
                             .shadow(AppDimens.Dimens6, rightShape,
@@ -178,7 +178,7 @@ fun Level1PracticeScreen(
                             verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12, Alignment.CenterVertically),
                             modifier = Modifier.fillMaxSize()
                         ) {
-                            Text("🎯", fontSize = 44.sp)
+                            Text("🎯", fontSize = 44.sp.scaled())
 
                             Text(
                                 text       = "Set this number on\nyour abacus!",
@@ -244,7 +244,7 @@ fun Level1PracticeScreen(
                 val popupShape = RoundedCornerShape(AppDimens.Dimens24)
                 Box(
                     modifier = Modifier
-                        .fillMaxWidth(0.50f)
+                        .fillMaxWidth(0.85f)
                         .shadow(AppDimens.Dimens16, popupShape,
                             spotColor    = lesson.endColor.copy(0.4f),
                             ambientColor = lesson.endColor.copy(0.4f))
@@ -256,7 +256,7 @@ fun Level1PracticeScreen(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)
                     ) {
-                        Text("🌟🌟🌟", fontSize = 52.sp)
+                        Text("🌟🌟🌟", fontSize = 52.sp.scaled())
                         Text(
                             "Practice Complete!",
                             style      = MaterialTheme.typography.headlineMedium.scaled(),
