@@ -119,7 +119,7 @@ private fun L2ChapterCard(
 
             val label = when (chapter.type) {
                 Level2ChapterType.FORMULA_REF -> "Reference"
-                else                          -> "Ch. ${chapter.id}"
+                else                          -> "Chapter ${chapter.id}"
             }
             Box(
                 modifier = Modifier
