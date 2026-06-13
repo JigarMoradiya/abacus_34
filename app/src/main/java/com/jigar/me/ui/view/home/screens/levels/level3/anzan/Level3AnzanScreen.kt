@@ -44,9 +44,9 @@ fun Level3AnzanScreen(
     onBackClick: () -> Unit,
     onFinished:  () -> Unit,
 ) {
-    var session    by remember { mutableStateOf(generateL3Session(config.terms, config.digits)) }
-    val mode    = config.mode
-    val isSemi  = mode == L3Mode.SEMI_ANZAN
+    var session by remember { mutableStateOf(generateL3Session(config.terms, config.digits)) }
+    val mode   = config.mode
+    val isSemi = mode == L3Mode.SEMI_ANZAN
 
     var phase         by remember { mutableStateOf<L3AnzanPhase>(L3AnzanPhase.Countdown(3)) }
     var typedValue    by remember { mutableStateOf("") }
@@ -58,10 +58,7 @@ fun Level3AnzanScreen(
     val theme  = prefs.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default)
 
     LaunchedEffect(restartKey) {
-        for (n in 3 downTo 1) {
-            phase = L3AnzanPhase.Countdown(n)
-            delay(800)
-        }
+        for (n in 3 downTo 1) { phase = L3AnzanPhase.Countdown(n); delay(800) }
         var running = 0
         for ((idx, term) in session.terms.withIndex()) {
             numberVisible = true
@@ -69,10 +66,7 @@ fun Level3AnzanScreen(
             running += if (term.sign == "−") -term.value else term.value
             if (isSemi) abCalc.setAbacusValueFromString(running.toString())
             delay(config.flashMs.toLong())
-            if (idx < session.terms.size - 1) {
-                numberVisible = false
-                delay(250)
-            }
+            if (idx < session.terms.size - 1) { numberVisible = false; delay(250) }
         }
         phase = L3AnzanPhase.Answering
     }
@@ -82,9 +76,9 @@ fun Level3AnzanScreen(
         Brush.linearGradient(listOf(mode.startColor.copy(0.82f), mode.endColor.copy(0.82f)))
     }
 
-    val onDigit    : (Int) -> Unit = { typedValue = (typedValue + it.toString()).take(3) }
-    val onDelete   : () -> Unit    = { if (typedValue.isNotEmpty()) typedValue = typedValue.dropLast(1) }
-    val onConfirm  : () -> Unit    = {
+    val onDigit   : (Int) -> Unit = { typedValue = (typedValue + it.toString()).take(3) }
+    val onDelete  : () -> Unit    = { if (typedValue.isNotEmpty()) typedValue = typedValue.dropLast(1) }
+    val onConfirm : () -> Unit    = {
         val typed = typedValue.toIntOrNull() ?: 0
         phase = L3AnzanPhase.Result(typed == session.answer, session.answer)
     }
@@ -93,12 +87,8 @@ fun Level3AnzanScreen(
         HomePageBackground()
 
         if (isSemi) {
-            // ── Two-panel: left = abacus, right = content ─────────────────────
-            Row(
-                modifier          = Modifier.fillMaxSize(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                // LEFT: back button + abacus (guided style)
+            // ── Two-panel: left = abacus, right = content card ────────────────
+            Row(modifier = Modifier.fillMaxSize()) {
                 Column(
                     modifier = Modifier
                         .weight(0.44f).fillMaxHeight()
@@ -131,43 +121,51 @@ fun Level3AnzanScreen(
                     }
                 }
 
-                // RIGHT: content card
+                // Right: sticky header + content
                 Column(
                     modifier = Modifier
-                        .weight(0.56f)
+                        .weight(0.56f).fillMaxHeight()
                         .padding(start = AppDimens.Dimens6, end = AppDimens.Dimens12, top = AppDimens.Dimens8, bottom = AppDimens.Dimens12)
+                        .shadow(AppDimens.Dimens8, cardShape,
+                            spotColor    = mode.endColor.copy(0.38f),
+                            ambientColor = mode.endColor.copy(0.20f))
+                        .background(cardBrush, cardShape)
                 ) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth().padding(AppDimens.Dimens4)
-                            .shadow(AppDimens.Dimens8, cardShape,
-                                spotColor    = mode.endColor.copy(0.38f),
-                                ambientColor = mode.endColor.copy(0.20f))
-                            .background(cardBrush, cardShape),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        AnzanContentPanel(phase, session, mode, typedValue, numberVisible, onDigit, onDelete, onConfirm)
+                    AnzanCardHeader(mode)
+                    Box(Modifier.fillMaxWidth().height(1.dp).background(Color.White.copy(0.25f)))
+                    BoxWithConstraints(modifier = Modifier.weight(1f).fillMaxWidth()) {
+                        AnzanContentPanel(
+                            phase = phase, session = session, typedValue = typedValue,
+                            numberVisible = numberVisible,
+                            onDigit = onDigit, onDelete = onDelete, onConfirm = onConfirm,
+                            modifier = Modifier.width(maxWidth).height(maxHeight)
+                        )
                     }
                 }
             }
         } else {
-            // ── Single panel: full anzan ──────────────────────────────────────
-            Column(
-                modifier = Modifier.fillMaxSize().padding(bottom = AppDimens.Dimens12)
-            ) {
+            // ── Single panel ──────────────────────────────────────────────────
+            Column(modifier = Modifier.fillMaxSize().padding(bottom = AppDimens.Dimens8)) {
                 BackButtonWithText(title = mode.title, onBackClick = onBackClick)
-                Spacer(Modifier.height(AppDimens.Dimens8))
-                Box(
+                Column(
                     modifier = Modifier
                         .weight(1f).fillMaxWidth()
                         .padding(horizontal = AppDimens.Dimens12).padding(AppDimens.Dimens4)
                         .shadow(AppDimens.Dimens8, cardShape,
                             spotColor    = mode.endColor.copy(0.38f),
                             ambientColor = mode.endColor.copy(0.20f))
-                        .background(cardBrush, cardShape),
-                    contentAlignment = Alignment.Center
+                        .background(cardBrush, cardShape)
                 ) {
-                    AnzanContentPanel(phase, session, mode, typedValue, numberVisible, onDigit, onDelete, onConfirm)
+                    AnzanCardHeader(mode)
+                    Box(Modifier.fillMaxWidth().height(1.dp).background(Color.White.copy(0.25f)))
+                    BoxWithConstraints(modifier = Modifier.weight(1f).fillMaxWidth()) {
+                        AnzanContentPanel(
+                            phase = phase, session = session, typedValue = typedValue,
+                            numberVisible = numberVisible,
+                            onDigit = onDigit, onDelete = onDelete, onConfirm = onConfirm,
+                            modifier = Modifier.width(maxWidth).height(maxHeight)
+                        )
+                    }
                 }
             }
         }
@@ -207,8 +205,7 @@ fun Level3AnzanScreen(
                                 style      = MaterialTheme.typography.headlineMedium.scaled(),
                                 color      = Color.White,
                                 fontWeight = FontWeight.Black,
-                                textAlign  = TextAlign.Center
-                            )
+                                textAlign  = TextAlign.Center)
                             Box(
                                 modifier = Modifier
                                     .background(Color.White.copy(0.18f), RoundedCornerShape(AppDimens.Dimens16))
@@ -220,8 +217,7 @@ fun Level3AnzanScreen(
                                     style      = MaterialTheme.typography.bodyLarge.scaled(),
                                     color      = Color.White.copy(0.92f),
                                     textAlign  = TextAlign.Center,
-                                    fontWeight = FontWeight.Medium
-                                )
+                                    fontWeight = FontWeight.Medium)
                             }
                             Spacer(Modifier.height(AppDimens.Dimens4))
                             Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
@@ -244,84 +240,96 @@ fun Level3AnzanScreen(
 }
 
 @Composable
-private fun AnzanContentPanel(
-    phase:         L3AnzanPhase,
-    session:       L3Session,
-    mode:          L3Mode,
-    typedValue:    String,
-    numberVisible: Boolean,
-    onDigit:       (Int) -> Unit,
-    onDelete:      () -> Unit,
-    onConfirm:     () -> Unit,
-) {
-    val isAnswering = phase is L3AnzanPhase.Answering
-    Column(
-        modifier            = Modifier.fillMaxWidth().padding(AppDimens.Dimens16),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
+private fun AnzanCardHeader(mode: L3Mode) {
+    Row(
+        modifier              = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = AppDimens.Dimens16)
+            .padding(top = AppDimens.Dimens12, bottom = AppDimens.Dimens8),
+        verticalAlignment     = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
     ) {
-        // Mode info strip: hidden when numpad is showing
-        if (!isAnswering) {
-            Row(
-                modifier              = Modifier.fillMaxWidth(),
-                verticalAlignment     = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
-            ) {
-                Text(mode.emoji, style = MaterialTheme.typography.titleLarge.scaled())
-                Column {
-                    Text(mode.title,
-                        style      = MaterialTheme.typography.labelLarge.scaled(),
-                        color      = Color.White,
-                        fontWeight = FontWeight.Black)
-                    Text(mode.subtitle,
-                        style = MaterialTheme.typography.labelSmall.scaled(),
-                        color = Color.White.copy(0.80f))
-                }
-            }
-            Box(Modifier.fillMaxWidth().height(1.dp).background(Color.White.copy(0.25f)))
-        }
-
-        // Phase-specific content — gap phase removed, numberVisible controls number alpha
-        AnimatedContent(
-            targetState    = phase,
-            contentKey     = { p ->
-                when (p) {
-                    is L3AnzanPhase.Countdown -> "countdown"
-                    is L3AnzanPhase.Flash     -> "flash"
-                    is L3AnzanPhase.Answering -> "answering"
-                    is L3AnzanPhase.Result    -> "result"
-                }
-            },
-            transitionSpec = { fadeIn(tween(180)) togetherWith fadeOut(tween(150)) },
-            label          = "anzan-phase",
-            modifier       = Modifier.fillMaxWidth()
-        ) { p ->
-            when (p) {
-                is L3AnzanPhase.Countdown -> AnzanCountdownDisplay(p.n)
-                is L3AnzanPhase.Flash     -> AnzanFlashDisplay(session, p.idx, numberVisible)
-                is L3AnzanPhase.Answering -> AnzanAnswerPanel(typedValue, mode, onDigit, onDelete, onConfirm)
-                is L3AnzanPhase.Result    -> Unit
-            }
+        Text(mode.emoji, style = MaterialTheme.typography.titleLarge.scaled())
+        Column {
+            Text(mode.title,
+                style      = MaterialTheme.typography.labelLarge.scaled(),
+                color      = Color.White,
+                fontWeight = FontWeight.Black)
+            Text(mode.subtitle,
+                style = MaterialTheme.typography.labelSmall.scaled(),
+                color = Color.White.copy(0.80f))
         }
     }
 }
 
 @Composable
-private fun AnzanCountdownDisplay(n: Int) {
-    Column(
-        modifier            = Modifier.fillMaxWidth().padding(vertical = AppDimens.Dimens16),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
-    ) {
-        Text("$n",
-            fontSize   = 80.sp.scaled(),
-            color      = Color.White,
-            fontWeight = FontWeight.Black,
-            textAlign  = TextAlign.Center)
-        Text("Get ready!",
-            style      = MaterialTheme.typography.headlineLarge.scaled(),
-            color      = Color.White.copy(0.80f),
-            fontWeight = FontWeight.Medium)
+private fun AnzanContentPanel(
+    phase:         L3AnzanPhase,
+    session:       L3Session,
+    typedValue:    String,
+    numberVisible: Boolean,
+    onDigit:       (Int) -> Unit,
+    onDelete:      () -> Unit,
+    onConfirm:     () -> Unit,
+    modifier:      Modifier = Modifier,
+) {
+    AnimatedContent(
+        targetState    = phase,
+        contentKey     = { p ->
+            when (p) {
+                is L3AnzanPhase.Countdown -> "countdown"
+                is L3AnzanPhase.Flash     -> "flash"
+                is L3AnzanPhase.Answering -> "answering"
+                is L3AnzanPhase.Result    -> "result"
+            }
+        },
+        transitionSpec = { fadeIn(tween(180)) togetherWith fadeOut(tween(150)) },
+        label          = "anzan-phase",
+        modifier       = modifier
+    ) { p ->
+        when (p) {
+            is L3AnzanPhase.Countdown -> Box(
+                modifier         = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
+                ) {
+                    Text("${p.n}",
+                        fontSize   = 80.sp.scaled(),
+                        color      = Color.White,
+                        fontWeight = FontWeight.Black,
+                        textAlign  = TextAlign.Center)
+                    Text("Get ready!",
+                        style      = MaterialTheme.typography.headlineLarge.scaled(),
+                        color      = Color.White.copy(0.80f),
+                        fontWeight = FontWeight.Medium)
+                }
+            }
+            is L3AnzanPhase.Flash -> AnzanFlashDisplay(session, p.idx, numberVisible)
+            is L3AnzanPhase.Answering -> Column(
+                modifier            = Modifier.fillMaxSize()
+                    .padding(horizontal = AppDimens.Dimens16)
+                    .padding(vertical = AppDimens.Dimens12),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text("What's the total? 🤔",
+                    style      = MaterialTheme.typography.titleMedium.scaled(),
+                    color      = Color.White,
+                    fontWeight = FontWeight.Black,
+                    textAlign  = TextAlign.Center)
+                Spacer(Modifier.height(AppDimens.Dimens8))
+                L3Numpad(
+                    typedValue = typedValue,
+                    onDigit    = onDigit,
+                    onDelete   = onDelete,
+                    onConfirm  = onConfirm,
+                    modifier   = Modifier.fillMaxWidth().weight(1f)
+                )
+            }
+            is L3AnzanPhase.Result -> Unit
+        }
     }
 }
 
@@ -334,77 +342,49 @@ private fun AnzanFlashDisplay(session: L3Session, idx: Int, numberVisible: Boole
         animationSpec = tween(150),
         label         = "num-alpha"
     )
-    Column(
-        modifier            = Modifier.fillMaxWidth().padding(vertical = AppDimens.Dimens12),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
+    Box(
+        modifier         = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
     ) {
-        Text("${idx + 1}  /  ${session.terms.size}",
-            style      = MaterialTheme.typography.labelLarge.scaled(),
-            color      = Color.White.copy(0.70f),
-            fontWeight = FontWeight.Bold,
-            textAlign  = TextAlign.Center)
-        // Fixed height box — number fades via alpha, layout never shifts
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(AppDimens.Dimens100)
-                .alpha(numAlpha)
-                .background(Color.White.copy(0.20f), RoundedCornerShape(AppDimens.Dimens16)),
-            contentAlignment = Alignment.Center
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
         ) {
-            Text(display,
-                fontSize   = 72.sp.scaled(),
-                color      = Color.White,
-                fontWeight = FontWeight.Black,
-                textAlign  = TextAlign.Center,
-                modifier   = Modifier.fillMaxWidth())
-        }
-        // Line progress bar (compact)
-        Row(
-            modifier              = Modifier.fillMaxWidth(0.60f).height(AppDimens.Dimens8),
-            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
-        ) {
-            repeat(session.terms.size) { i ->
-                Box(
-                    modifier = Modifier
-                        .weight(1f).fillMaxHeight()
-                        .background(
-                            if (i <= idx) Color.White else Color.White.copy(0.30f),
-                            RoundedCornerShape(AppDimens.Dimens100)
-                        )
-                )
+            Text("${idx + 1}  /  ${session.terms.size}",
+                style      = MaterialTheme.typography.labelLarge.scaled(),
+                color      = Color.White.copy(0.70f),
+                fontWeight = FontWeight.Bold,
+                textAlign  = TextAlign.Center)
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth(0.85f)
+                    .height(AppDimens.Dimens100)
+                    .alpha(numAlpha)
+                    .background(Color.White.copy(0.20f), RoundedCornerShape(AppDimens.Dimens16)),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(display,
+                    fontSize   = 72.sp.scaled(),
+                    color      = Color.White,
+                    fontWeight = FontWeight.Black,
+                    textAlign  = TextAlign.Center,
+                    modifier   = Modifier.fillMaxWidth())
+            }
+            Row(
+                modifier              = Modifier.fillMaxWidth(0.60f).height(AppDimens.Dimens8),
+                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
+            ) {
+                repeat(session.terms.size) { i ->
+                    Box(
+                        modifier = Modifier
+                            .weight(1f).fillMaxHeight()
+                            .background(
+                                if (i <= idx) Color.White else Color.White.copy(0.30f),
+                                RoundedCornerShape(AppDimens.Dimens100)
+                            )
+                    )
+                }
             }
         }
-    }
-}
-
-
-@Composable
-private fun AnzanAnswerPanel(
-    typedValue: String,
-    mode:       L3Mode,
-    onDigit:    (Int) -> Unit,
-    onDelete:   () -> Unit,
-    onConfirm:  () -> Unit,
-) {
-    Column(
-        modifier            = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Top
-    ) {
-        Text("What's the total? 🤔",
-            style      = MaterialTheme.typography.titleLarge.scaled(),
-            color      = Color.White,
-            fontWeight = FontWeight.Black,
-            textAlign  = TextAlign.Center)
-        Spacer(Modifier.height(AppDimens.Dimens8))
-        L3Numpad(
-            typedValue = typedValue,
-            onDigit    = onDigit,
-            onDelete   = onDelete,
-            onConfirm  = onConfirm,
-            modifier   = Modifier.fillMaxWidth().height(AppDimens.Dimens200)
-        )
     }
 }

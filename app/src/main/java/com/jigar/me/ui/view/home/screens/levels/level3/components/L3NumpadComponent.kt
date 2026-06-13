@@ -47,7 +47,7 @@ fun L3Numpad(
         ) {
             Text(
                 text       = typedValue.ifEmpty { "?" },
-                fontSize   = 44.sp.scaled(),
+                fontSize   = 38.sp.scaled(),
                 color      = if (typedValue.isEmpty()) Color(0xFF1A237E).copy(0.30f) else Color(0xFF1A237E),
                 fontWeight = FontWeight.Black,
                 textAlign  = TextAlign.Center,

@@ -226,7 +226,7 @@ fun Level3FlashPlayScreen(
                     )
                 }
             }
-            Spacer(Modifier.height(AppDimens.Dimens12))
+            Spacer(Modifier.height(AppDimens.Dimens8))
         }
 
         // ── Result popup ──────────────────────────────────────────────────────
@@ -404,7 +404,7 @@ private fun FlashContentPanel(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text("What's the total? 🔥",
-                    style      = MaterialTheme.typography.titleLarge.scaled(),
+                    style      = MaterialTheme.typography.titleMedium.scaled(),
                     color      = Color.White,
                     fontWeight = FontWeight.Black,
                     textAlign  = TextAlign.Center)
