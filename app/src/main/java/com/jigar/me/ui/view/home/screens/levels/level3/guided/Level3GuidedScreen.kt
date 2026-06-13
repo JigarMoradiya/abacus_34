@@ -33,7 +33,7 @@ import com.jigar.me.utils.AppConstants
 private sealed class L3GuidedPhase {
     data class Step(val index: Int) : L3GuidedPhase()
     object Answering : L3GuidedPhase()
-    data class Result(val correct: Boolean, val expected: Int) : L3GuidedPhase()
+    data class Result(val correct: Boolean, val expected: Int, val userAnswer: Int) : L3GuidedPhase()
 }
 
 @Composable
@@ -201,7 +201,7 @@ fun Level3GuidedScreen(
                                         phase = L3GuidedPhase.Step(nextIdx)
                                     } else {
                                         if (config.autoAbacus) {
-                                            phase = L3GuidedPhase.Result(true, session.answer)
+                                            phase = L3GuidedPhase.Result(true, session.answer, session.answer)
                                         } else {
                                             abCalc.resetAbacusData()
                                             phase = L3GuidedPhase.Answering
@@ -229,7 +229,7 @@ fun Level3GuidedScreen(
                                     onDelete   = { if (typedValue.isNotEmpty()) typedValue = typedValue.dropLast(1) },
                                     onConfirm  = {
                                         val typed = typedValue.toIntOrNull() ?: 0
-                                        phase = L3GuidedPhase.Result(typed == session.answer, session.answer)
+                                        phase = L3GuidedPhase.Result(typed == session.answer, session.answer, typed)
                                     },
                                     modifier   = Modifier.fillMaxWidth().weight(1f)
                                 )
@@ -277,12 +277,40 @@ fun Level3GuidedScreen(
                         ) {
                             Text(if (resultPhase.correct) "🌟🌟🌟" else "💪",
                                 style = MaterialTheme.typography.displaySmall.scaled())
-                            Text(
-                                if (resultPhase.correct) "Correct! ${resultPhase.expected}" else "Answer: ${resultPhase.expected}",
-                                style      = MaterialTheme.typography.headlineMedium.scaled(),
-                                color      = Color.White,
-                                fontWeight = FontWeight.Black,
-                                textAlign  = TextAlign.Center)
+                            if (resultPhase.correct) {
+                                Text("Correct! ${resultPhase.expected}",
+                                    style      = MaterialTheme.typography.headlineMedium.scaled(),
+                                    color      = Color.White,
+                                    fontWeight = FontWeight.Black,
+                                    textAlign  = TextAlign.Center)
+                            } else {
+                                Row(
+                                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
+                                    verticalAlignment     = Alignment.CenterVertically
+                                ) {
+                                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                        Text("Your Answer",
+                                            style = MaterialTheme.typography.labelSmall.scaled(),
+                                            color = Color(0xFFFF8A80).copy(0.80f))
+                                        Text("${resultPhase.userAnswer}",
+                                            style      = MaterialTheme.typography.displaySmall.scaled(),
+                                            color      = Color(0xFFFF8A80),
+                                            fontWeight = FontWeight.Black)
+                                    }
+                                    Text("→",
+                                        style = MaterialTheme.typography.titleLarge.scaled(),
+                                        color = Color.White.copy(0.50f))
+                                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                        Text("Correct Answer",
+                                            style = MaterialTheme.typography.labelSmall.scaled(),
+                                            color = Color.White.copy(0.70f))
+                                        Text("${resultPhase.expected}",
+                                            style      = MaterialTheme.typography.displaySmall.scaled(),
+                                            color      = Color.White,
+                                            fontWeight = FontWeight.Black)
+                                    }
+                                }
+                            }
                             Box(
                                 modifier = Modifier
                                     .background(Color.White.copy(0.18f), RoundedCornerShape(AppDimens.Dimens16))

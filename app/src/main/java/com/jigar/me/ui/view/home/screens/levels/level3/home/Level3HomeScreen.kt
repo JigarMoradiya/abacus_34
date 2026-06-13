@@ -68,7 +68,7 @@ fun Level3HomeScreen(
                         horizontalArrangement = Arrangement.spacedBy(spacing),
                     ) {
                         bottomModes.forEach { mode ->
-                            L3ModeCard(mode, botW, cardH) { onNavigateToMode(mode) }
+                            L3ModeCard(mode, topW, cardH) { onNavigateToMode(mode) }
                         }
                     }
                 }

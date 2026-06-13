@@ -35,7 +35,7 @@ private sealed class L3AnzanPhase {
     data class Countdown(val n: Int) : L3AnzanPhase()
     data class Flash(val idx: Int)   : L3AnzanPhase()
     object Answering                 : L3AnzanPhase()
-    data class Result(val correct: Boolean, val expected: Int) : L3AnzanPhase()
+    data class Result(val correct: Boolean, val expected: Int, val userAnswer: Int) : L3AnzanPhase()
 }
 
 @Composable
@@ -80,7 +80,7 @@ fun Level3AnzanScreen(
     val onDelete  : () -> Unit    = { if (typedValue.isNotEmpty()) typedValue = typedValue.dropLast(1) }
     val onConfirm : () -> Unit    = {
         val typed = typedValue.toIntOrNull() ?: 0
-        phase = L3AnzanPhase.Result(typed == session.answer, session.answer)
+        phase = L3AnzanPhase.Result(typed == session.answer, session.answer, typed)
     }
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -200,12 +200,40 @@ fun Level3AnzanScreen(
                         ) {
                             Text(if (rp.correct) "🌟🌟🌟" else "💪",
                                 style = MaterialTheme.typography.displaySmall.scaled())
-                            Text(
-                                if (rp.correct) "Correct! ${rp.expected}" else "Answer: ${rp.expected}",
-                                style      = MaterialTheme.typography.headlineMedium.scaled(),
-                                color      = Color.White,
-                                fontWeight = FontWeight.Black,
-                                textAlign  = TextAlign.Center)
+                            if (rp.correct) {
+                                Text("Correct! ${rp.expected}",
+                                    style      = MaterialTheme.typography.headlineMedium.scaled(),
+                                    color      = Color.White,
+                                    fontWeight = FontWeight.Black,
+                                    textAlign  = TextAlign.Center)
+                            } else {
+                                Row(
+                                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
+                                    verticalAlignment     = Alignment.CenterVertically
+                                ) {
+                                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                        Text("Your Answer",
+                                            style = MaterialTheme.typography.labelSmall.scaled(),
+                                            color = Color(0xFFFF8A80).copy(0.80f))
+                                        Text("${rp.userAnswer}",
+                                            style      = MaterialTheme.typography.displaySmall.scaled(),
+                                            color      = Color(0xFFFF8A80),
+                                            fontWeight = FontWeight.Black)
+                                    }
+                                    Text("→",
+                                        style = MaterialTheme.typography.titleLarge.scaled(),
+                                        color = Color.White.copy(0.50f))
+                                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                        Text("Correct Answer",
+                                            style = MaterialTheme.typography.labelSmall.scaled(),
+                                            color = Color.White.copy(0.70f))
+                                        Text("${rp.expected}",
+                                            style      = MaterialTheme.typography.displaySmall.scaled(),
+                                            color      = Color.White,
+                                            fontWeight = FontWeight.Black)
+                                    }
+                                }
+                            }
                             Box(
                                 modifier = Modifier
                                     .background(Color.White.copy(0.18f), RoundedCornerShape(AppDimens.Dimens16))
