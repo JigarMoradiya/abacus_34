@@ -143,7 +143,8 @@ fun Level3AnzanScreen(
                             .shadow(AppDimens.Dimens8, cardShape,
                                 spotColor    = mode.endColor.copy(0.38f),
                                 ambientColor = mode.endColor.copy(0.20f))
-                            .background(cardBrush, cardShape)
+                            .background(cardBrush, cardShape),
+                        contentAlignment = Alignment.Center
                     ) {
                         AnzanContentPanel(phase, session, mode, typedValue, numberVisible, onDigit, onDelete, onConfirm)
                     }
@@ -163,7 +164,8 @@ fun Level3AnzanScreen(
                         .shadow(AppDimens.Dimens8, cardShape,
                             spotColor    = mode.endColor.copy(0.38f),
                             ambientColor = mode.endColor.copy(0.20f))
-                        .background(cardBrush, cardShape)
+                        .background(cardBrush, cardShape),
+                    contentAlignment = Alignment.Center
                 ) {
                     AnzanContentPanel(phase, session, mode, typedValue, numberVisible, onDigit, onDelete, onConfirm)
                 }

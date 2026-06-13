@@ -1,8 +1,10 @@
 package com.jigar.me.ui.view.home.screens.levels.level3.flash
 
 import androidx.compose.animation.*
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
+import androidx.compose.ui.draw.alpha
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -18,7 +20,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
@@ -40,91 +42,84 @@ fun Level3FlashPickerScreen(
         HomePageBackground()
 
         Column(
-            modifier = Modifier.fillMaxSize().padding(bottom = AppDimens.Dimens12)
+            modifier = Modifier.fillMaxSize()
         ) {
-            Spacer(Modifier.height(AppDimens.Dimens8))
             BackButtonWithText(title = "Flash Challenge", onBackClick = onBackClick)
-            Spacer(Modifier.height(AppDimens.Dimens8))
 
-            BoxWithConstraints(
-                modifier         = Modifier.weight(1f).fillMaxWidth()
+            Spacer(Modifier.weight(1f))
+
+            Row(
+                modifier              = Modifier.fillMaxWidth()
                     .padding(horizontal = AppDimens.Dimens12),
-                contentAlignment = Alignment.Center
+                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
+                verticalAlignment     = Alignment.CenterVertically
             ) {
-                val spacing = AppDimens.Dimens12
-                val cardW   = (maxWidth - spacing * 3) / 4
-                val cardH   = maxHeight - AppDimens.Dimens8
-
-                Row(
-                    modifier              = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(spacing),
-                    verticalAlignment     = Alignment.CenterVertically
-                ) {
-                    l3FlashDifficulties.forEachIndexed { idx, diff ->
-                        FlashDiffCard(diff, cardW, cardH) { onSelectDifficulty(idx) }
-                    }
+                l3FlashDifficulties.forEachIndexed { idx, diff ->
+                    FlashDiffCard(diff) { onSelectDifficulty(idx) }
                 }
             }
-            Spacer(Modifier.height(AppDimens.Dimens12))
+
+            Spacer(Modifier.weight(1f))
         }
     }
 }
 
 @Composable
-private fun FlashDiffCard(diff: L3FlashDifficulty, w: Dp, h: Dp, onClick: () -> Unit) {
+private fun RowScope.FlashDiffCard(diff: L3FlashDifficulty, onClick: () -> Unit) {
     val shape = RoundedCornerShape(AppDimens.Dimens20)
-    Box(
-        modifier = Modifier
-            .size(width = w, height = h)
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens10),
+        modifier            = Modifier
+            .weight(1f)
             .padding(AppDimens.Dimens4)
             .shadow(AppDimens.Dimens8, shape,
                 ambientColor = diff.endColor.copy(0.45f),
                 spotColor    = diff.endColor.copy(0.45f))
             .background(Brush.linearGradient(listOf(diff.startColor, diff.endColor)), shape)
             .border(AppDimens.Dimens1, Color.White.copy(0.25f), shape)
-            .clickable(remember { MutableInteractionSource() }, null) { onClick() },
-        contentAlignment = Alignment.Center
+            .clickable(remember { MutableInteractionSource() }, null) { onClick() }
+            .padding(AppDimens.Dimens12)
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceBetween,
-            modifier            = Modifier.fillMaxSize().padding(AppDimens.Dimens12)
+            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
         ) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
-            ) {
-                Text(diff.emoji, style = MaterialTheme.typography.displaySmall.scaled())
-                Text(diff.label,
-                    style      = MaterialTheme.typography.titleLarge.scaled(),
-                    color      = Color.White,
-                    fontWeight = FontWeight.Black,
-                    textAlign  = TextAlign.Center)
-                Box(
-                    modifier = Modifier
-                        .background(Color.White.copy(0.22f), RoundedCornerShape(AppDimens.Dimens12))
-                        .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens6)
-                ) {
-                    Text(diff.desc,
-                        style      = MaterialTheme.typography.labelMedium.scaled(),
-                        color      = Color.White,
-                        fontWeight = FontWeight.SemiBold,
-                        textAlign  = TextAlign.Center)
-                }
-            }
-            val tapShape = RoundedCornerShape(AppDimens.Dimens100)
+            Text(diff.emoji, style = MaterialTheme.typography.displaySmall.scaled())
+            Text(diff.label,
+                style      = MaterialTheme.typography.titleLarge.scaled(),
+                color      = Color.White,
+                fontWeight = FontWeight.Black,
+                textAlign  = TextAlign.Center)
             Box(
-                modifier = Modifier
-                    .padding(AppDimens.Dimens4)
-                    .shadow(AppDimens.Dimens4, tapShape)
-                    .background(Color.White, tapShape)
-                    .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
+                modifier         = Modifier
+                    .fillMaxWidth()
+                    .height(AppDimens.Dimens45)
+                    .background(Color.White.copy(0.22f), RoundedCornerShape(AppDimens.Dimens12))
+                    .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens6),
+                contentAlignment = Alignment.Center
             ) {
-                Text("Tap to Play!",
-                    style      = MaterialTheme.typography.labelLarge.scaled(),
-                    color      = diff.startColor,
-                    fontWeight = FontWeight.Black)
+                Text(diff.desc,
+                    style      = MaterialTheme.typography.labelMedium.scaled(),
+                    color      = Color.White,
+                    fontWeight = FontWeight.SemiBold,
+                    textAlign  = TextAlign.Center,
+                    maxLines   = 2,
+                    overflow   = TextOverflow.Ellipsis)
             }
+        }
+        val tapShape = RoundedCornerShape(AppDimens.Dimens100)
+        Box(
+            modifier = Modifier
+                .padding(AppDimens.Dimens4)
+                .shadow(AppDimens.Dimens4, tapShape)
+                .background(Color.White, tapShape)
+                .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
+        ) {
+            Text("Tap to Play!",
+                style      = MaterialTheme.typography.labelLarge.scaled(),
+                color      = diff.startColor,
+                fontWeight = FontWeight.Black)
         }
     }
 }
@@ -134,7 +129,6 @@ private fun FlashDiffCard(diff: L3FlashDifficulty, w: Dp, h: Dp, onClick: () -> 
 private sealed class L3FlashPhase {
     data class Countdown(val n: Int)                            : L3FlashPhase()
     data class Flash(val idx: Int)                              : L3FlashPhase()
-    object Gap                                                  : L3FlashPhase()
     object Answering                                            : L3FlashPhase()
     data class Result(val correct: Boolean, val expected: Int)  : L3FlashPhase()
 }
@@ -146,17 +140,23 @@ fun Level3FlashPlayScreen(
     onFinished:  () -> Unit,
 ) {
     val diff    = l3FlashDifficulties[diffIndex.coerceIn(0, l3FlashDifficulties.lastIndex)]
-    val session = remember { generateL3Session(diff.terms, diff.digits) }
+    var session by remember { mutableStateOf(generateL3Session(diff.terms, diff.digits)) }
 
-    var phase      by remember { mutableStateOf<L3FlashPhase>(L3FlashPhase.Countdown(3)) }
-    var typedValue by remember { mutableStateOf("") }
+    var phase         by remember { mutableStateOf<L3FlashPhase>(L3FlashPhase.Countdown(3)) }
+    var typedValue    by remember { mutableStateOf("") }
+    var numberVisible by remember { mutableStateOf(true) }
+    var restartKey    by remember { mutableIntStateOf(0) }
 
-    LaunchedEffect(Unit) {
+    LaunchedEffect(restartKey) {
         for (n in 3 downTo 1) { phase = L3FlashPhase.Countdown(n); delay(700) }
         for ((idx, _) in session.terms.withIndex()) {
+            numberVisible = true
             phase = L3FlashPhase.Flash(idx)
             delay(diff.flashMs.toLong())
-            if (idx < session.terms.size - 1) { phase = L3FlashPhase.Gap; delay(200) }
+            if (idx < session.terms.size - 1) {
+                numberVisible = false
+                delay(250)
+            }
         }
         phase = L3FlashPhase.Answering
     }
@@ -171,28 +171,60 @@ fun Level3FlashPlayScreen(
 
         // ── Single panel ──────────────────────────────────────────────────────
         Column(
-            modifier = Modifier.fillMaxSize().padding(bottom = AppDimens.Dimens12)
+            modifier = Modifier.fillMaxSize()
         ) {
             BackButtonWithText(title = "${diff.label} Flash", onBackClick = onBackClick)
-            Spacer(Modifier.height(AppDimens.Dimens8))
 
-            Box(
+            // Content card
+            Column(
                 modifier = Modifier
                     .weight(1f).fillMaxWidth()
-                    .padding(horizontal = AppDimens.Dimens12).padding(AppDimens.Dimens4)
+                    .padding(horizontal = AppDimens.Dimens12).padding(vertical = AppDimens.Dimens4)
                     .shadow(AppDimens.Dimens8, cardShape,
                         spotColor    = diff.endColor.copy(0.38f),
                         ambientColor = diff.endColor.copy(0.20f))
                     .background(cardBrush, cardShape)
             ) {
-                FlashContentPanel(phase, session, diff, typedValue,
-                    onDigit  = { typedValue = (typedValue + it.toString()).take(3) },
-                    onDelete = { if (typedValue.isNotEmpty()) typedValue = typedValue.dropLast(1) },
-                    onConfirm = {
-                        val typed = typedValue.toIntOrNull() ?: 0
-                        phase = L3FlashPhase.Result(typed == session.answer, session.answer)
+                // Info header — always sticky at top
+                Row(
+                    modifier              = Modifier.fillMaxWidth()
+                        .padding(horizontal = AppDimens.Dimens16)
+                        .padding(top = AppDimens.Dimens12, bottom = AppDimens.Dimens8),
+                    verticalAlignment     = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
+                ) {
+                    Text(diff.emoji, style = MaterialTheme.typography.titleLarge.scaled())
+                    Column {
+                        Text(diff.label,
+                            style      = MaterialTheme.typography.labelLarge.scaled(),
+                            color      = Color.White,
+                            fontWeight = FontWeight.Black)
+                        Text(diff.desc,
+                            style = MaterialTheme.typography.labelSmall.scaled(),
+                            color = Color.White.copy(0.80f))
                     }
-                )
+                }
+
+                // Divider
+                Box(Modifier.fillMaxWidth().height(1.dp).background(Color.White.copy(0.25f)))
+
+                // BoxWithConstraints measures exact remaining space — no layout ambiguity
+                BoxWithConstraints(modifier = Modifier.weight(1f).fillMaxWidth()) {
+                    FlashContentPanel(
+                        phase         = phase,
+                        session       = session,
+                        diff          = diff,
+                        typedValue    = typedValue,
+                        numberVisible = numberVisible,
+                        onDigit       = { typedValue = (typedValue + it.toString()).take(3) },
+                        onDelete      = { if (typedValue.isNotEmpty()) typedValue = typedValue.dropLast(1) },
+                        onConfirm     = {
+                            val typed = typedValue.toIntOrNull() ?: 0
+                            phase = L3FlashPhase.Result(typed == session.answer, session.answer)
+                        },
+                        modifier      = Modifier.width(maxWidth).height(maxHeight)
+                    )
+                }
             }
             Spacer(Modifier.height(AppDimens.Dimens12))
         }
@@ -249,8 +281,11 @@ fun Level3FlashPlayScreen(
                             Spacer(Modifier.height(AppDimens.Dimens4))
                             Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
                                 L3ResultBtn("Try Again 🔄", filled = false) {
-                                    typedValue = ""
-                                    phase      = L3FlashPhase.Countdown(3)
+                                    typedValue    = ""
+                                    numberVisible = true
+                                    session       = generateL3Session(diff.terms, diff.digits)
+                                    phase         = L3FlashPhase.Countdown(3)
+                                    restartKey++
                                 }
                                 L3ResultBtn("Done ✓", filled = true, onClick = onFinished)
                             }
@@ -264,82 +299,63 @@ fun Level3FlashPlayScreen(
 
 @Composable
 private fun FlashContentPanel(
-    phase:     L3FlashPhase,
-    session:   L3Session,
-    diff:      L3FlashDifficulty,
-    typedValue: String,
-    onDigit:   (Int) -> Unit,
-    onDelete:  () -> Unit,
-    onConfirm: () -> Unit,
+    phase:         L3FlashPhase,
+    session:       L3Session,
+    diff:          L3FlashDifficulty,
+    typedValue:    String,
+    numberVisible: Boolean,
+    onDigit:       (Int) -> Unit,
+    onDelete:      () -> Unit,
+    onConfirm:     () -> Unit,
+    modifier:      Modifier = Modifier,
 ) {
-    val isAnswering = phase is L3FlashPhase.Answering
-    Column(
-        modifier            = Modifier.fillMaxWidth().padding(AppDimens.Dimens16),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
-    ) {
-        // Difficulty info strip: hidden when numpad is showing
-        if (!isAnswering) {
-            Row(
-                modifier              = Modifier.fillMaxWidth(),
-                verticalAlignment     = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
+    AnimatedContent(
+        targetState    = phase,
+        contentKey     = { p ->
+            when (p) {
+                is L3FlashPhase.Countdown -> "countdown"
+                is L3FlashPhase.Flash     -> "flash"
+                is L3FlashPhase.Answering -> "answering"
+                is L3FlashPhase.Result    -> "result"
+            }
+        },
+        transitionSpec = { fadeIn(tween(150)) togetherWith fadeOut(tween(120)) },
+        label          = "flash-phase",
+        modifier       = modifier
+    ) { p ->
+        when (p) {
+            is L3FlashPhase.Countdown -> Box(
+                modifier         = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
             ) {
-                Text(diff.emoji, style = MaterialTheme.typography.titleLarge.scaled())
-                Column {
-                    Text(diff.label,
-                        style      = MaterialTheme.typography.labelLarge.scaled(),
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
+                ) {
+                    Text("${p.n}",
+                        fontSize   = 80.sp.scaled(),
                         color      = Color.White,
-                        fontWeight = FontWeight.Black)
-                    Text(diff.desc,
-                        style = MaterialTheme.typography.labelSmall.scaled(),
-                        color = Color.White.copy(0.80f))
+                        fontWeight = FontWeight.Black,
+                        textAlign  = TextAlign.Center)
+                    Text("Get ready!",
+                        style      = MaterialTheme.typography.headlineLarge.scaled(),
+                        color      = Color.White.copy(0.80f),
+                        fontWeight = FontWeight.Medium)
                 }
             }
-            Box(Modifier.fillMaxWidth().height(1.dp).background(Color.White.copy(0.25f)))
-        }
-
-        // Phase-specific content
-        AnimatedContent(
-            targetState    = phase,
-            contentKey     = { p ->
-                when (p) {
-                    is L3FlashPhase.Countdown -> "countdown"
-                    is L3FlashPhase.Flash     -> "flash"
-                    is L3FlashPhase.Gap       -> "gap"
-                    is L3FlashPhase.Answering -> "answering"
-                    is L3FlashPhase.Result    -> "result"
-                }
-            },
-            transitionSpec = { fadeIn(tween(150)) togetherWith fadeOut(tween(120)) },
-            label          = "flash-phase",
-            modifier       = Modifier.fillMaxWidth()
-        ) { p ->
-            when (p) {
-                is L3FlashPhase.Countdown -> Box(
-                    modifier         = Modifier.fillMaxWidth().padding(vertical = AppDimens.Dimens16),
+            is L3FlashPhase.Flash -> {
+                val term     = session.terms[p.idx]
+                val display  = if (term.sign.isEmpty()) "${term.value}" else "${term.sign} ${term.value}"
+                val numAlpha by animateFloatAsState(
+                    targetValue   = if (numberVisible) 1f else 0f,
+                    animationSpec = tween(150),
+                    label         = "flash-num-alpha"
+                )
+                Box(
+                    modifier         = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ) {
                     Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
-                    ) {
-                        Text("${p.n}",
-                            fontSize   = 80.sp.scaled(),
-                            color      = Color.White,
-                            fontWeight = FontWeight.Black,
-                            textAlign  = TextAlign.Center)
-                        Text("Get ready!",
-                            style      = MaterialTheme.typography.headlineLarge.scaled(),
-                            color      = Color.White.copy(0.80f),
-                            fontWeight = FontWeight.Medium)
-                    }
-                }
-                is L3FlashPhase.Flash -> {
-                    val term    = session.terms[p.idx]
-                    val display = if (term.sign.isEmpty()) "${term.value}" else "${term.sign} ${term.value}"
-                    Column(
-                        modifier            = Modifier.fillMaxWidth().padding(vertical = AppDimens.Dimens12),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
                     ) {
@@ -348,24 +364,21 @@ private fun FlashContentPanel(
                             color      = Color.White.copy(0.70f),
                             fontWeight = FontWeight.Bold,
                             textAlign  = TextAlign.Center)
-                        // Fixed height so layout never shifts when number changes
                         Box(
                             modifier = Modifier
-                                .fillMaxWidth()
+                                .fillMaxWidth(0.85f)
                                 .height(AppDimens.Dimens100)
+                                .alpha(numAlpha)
                                 .background(Color.White.copy(0.20f), RoundedCornerShape(AppDimens.Dimens16)),
                             contentAlignment = Alignment.Center
                         ) {
-                            Crossfade(targetState = display, animationSpec = tween(200), label = "flash-num") { d ->
-                                Text(d,
-                                    fontSize   = 72.sp.scaled(),
-                                    color      = Color.White,
-                                    fontWeight = FontWeight.Black,
-                                    textAlign  = TextAlign.Center,
-                                    modifier   = Modifier.fillMaxWidth())
-                            }
+                            Text(display,
+                                fontSize   = 72.sp.scaled(),
+                                color      = Color.White,
+                                fontWeight = FontWeight.Black,
+                                textAlign  = TextAlign.Center,
+                                modifier   = Modifier.fillMaxWidth())
                         }
-                        // Line progress bar (compact)
                         Row(
                             modifier              = Modifier.fillMaxWidth(0.60f).height(AppDimens.Dimens8),
                             horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
@@ -383,35 +396,28 @@ private fun FlashContentPanel(
                         }
                     }
                 }
-                is L3FlashPhase.Gap -> Box(
-                    modifier         = Modifier.fillMaxWidth().padding(vertical = AppDimens.Dimens40),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text("•••",
-                        style = MaterialTheme.typography.headlineLarge.scaled(),
-                        color = Color.White.copy(0.50f))
-                }
-                is L3FlashPhase.Answering -> Column(
-                    modifier            = Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Top
-                ) {
-                    Text("What's the total? 🔥",
-                        style      = MaterialTheme.typography.titleLarge.scaled(),
-                        color      = Color.White,
-                        fontWeight = FontWeight.Black,
-                        textAlign  = TextAlign.Center)
-                    Spacer(Modifier.height(AppDimens.Dimens8))
-                    L3Numpad(
-                        typedValue = typedValue,
-                        onDigit    = onDigit,
-                        onDelete   = onDelete,
-                        onConfirm  = onConfirm,
-                        modifier   = Modifier.fillMaxWidth(0.72f).height(AppDimens.Dimens200)
-                    )
-                }
-                is L3FlashPhase.Result -> Unit
             }
+            is L3FlashPhase.Answering -> Column(
+                modifier            = Modifier.fillMaxSize()
+                    .padding(horizontal = AppDimens.Dimens16)
+                    .padding(vertical = AppDimens.Dimens12),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text("What's the total? 🔥",
+                    style      = MaterialTheme.typography.titleLarge.scaled(),
+                    color      = Color.White,
+                    fontWeight = FontWeight.Black,
+                    textAlign  = TextAlign.Center)
+                Spacer(Modifier.height(AppDimens.Dimens8))
+                L3Numpad(
+                    typedValue = typedValue,
+                    onDigit    = onDigit,
+                    onDelete   = onDelete,
+                    onConfirm  = onConfirm,
+                    modifier   = Modifier.fillMaxWidth().weight(1f)
+                )
+            }
+            is L3FlashPhase.Result -> Unit
         }
     }
 }

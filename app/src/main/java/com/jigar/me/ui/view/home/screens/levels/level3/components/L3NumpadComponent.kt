@@ -16,6 +16,8 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.theme.AppDimens
 
@@ -28,23 +30,25 @@ fun L3Numpad(
     modifier:       Modifier = Modifier,
     confirmEnabled: Boolean  = typedValue.isNotEmpty(),
 ) {
+    val answerShape = RoundedCornerShape(AppDimens.Dimens12)
     Column(
         modifier             = modifier,
         verticalArrangement  = Arrangement.spacedBy(AppDimens.Dimens4)
     ) {
-        // Answer display
+        // Answer display — white card so it pops against the translucent keys
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1.4f)
-                .background(Color.White.copy(0.18f), RoundedCornerShape(AppDimens.Dimens12))
+                .shadow(5.dp, answerShape)
+                .background(Color.White.copy(0.92f), answerShape)
                 .padding(horizontal = AppDimens.Dimens12),
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text       = if (typedValue.isEmpty()) "?" else typedValue,
-                style      = MaterialTheme.typography.displaySmall.scaled(),
-                color      = if (typedValue.isEmpty()) Color.White.copy(0.40f) else Color.White,
+                text       = typedValue.ifEmpty { "?" },
+                fontSize   = 44.sp.scaled(),
+                color      = if (typedValue.isEmpty()) Color(0xFF1A237E).copy(0.30f) else Color(0xFF1A237E),
                 fontWeight = FontWeight.Black,
                 textAlign  = TextAlign.Center,
             )
@@ -59,8 +63,8 @@ fun L3Numpad(
                 row.forEach { digit ->
                     L3Key(
                         label      = "$digit",
-                        startColor = Color(0xFFFF8F00),
-                        endColor   = Color(0xFFE65100),
+                        startColor = Color.White.copy(0.28f),
+                        endColor   = Color.White.copy(0.18f),
                         modifier   = Modifier.weight(1f).fillMaxHeight()
                     ) { onDigit(digit) }
                 }
@@ -94,9 +98,6 @@ private fun L3Key(
     val shape = RoundedCornerShape(AppDimens.Dimens12)
     Box(
         modifier = modifier
-            .shadow(AppDimens.Dimens4, shape,
-                spotColor    = endColor.copy(0.45f),
-                ambientColor = endColor.copy(0.20f))
             .background(
                 if (enabled) Brush.linearGradient(listOf(startColor, endColor))
                 else Brush.linearGradient(listOf(Color.Gray.copy(0.5f), Color.Gray.copy(0.3f))),
