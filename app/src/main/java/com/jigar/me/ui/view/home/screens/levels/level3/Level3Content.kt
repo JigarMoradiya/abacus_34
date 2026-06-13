@@ -21,7 +21,7 @@ data class L3Config(
     val mode:          L3Mode,
     val terms:         Int     = 5,
     val digits:        Int     = 1,
-    val flashMs:       Int     = 800,
+    val flashMs:       Int     = 1200,
     val autoAbacus:    Boolean = false,
     val timeLimitSecs: Int     = 60,
 )
@@ -38,10 +38,10 @@ data class L3FlashDifficulty(
 )
 
 val l3FlashDifficulties = listOf(
-    L3FlashDifficulty("Starter",  "🌱",  3, 1, 1200, "3 numbers · 1-digit · Slow",     Color(0xFF2E7D32), Color(0xFF43A047)),
-    L3FlashDifficulty("Explorer", "🚀",  5, 1,  800, "5 numbers · 1-digit · Normal",   Color(0xFF1565C0), Color(0xFF1E88E5)),
-    L3FlashDifficulty("Expert",   "🦅",  7, 2,  500, "7 numbers · 2-digit · Fast",     Color(0xFFE65100), Color(0xFFFF7043)),
-    L3FlashDifficulty("Master",   "💎", 10, 2,  300, "10 numbers · 2-digit · Blazing", Color(0xFF4A148C), Color(0xFF7B1FA2)),
+    L3FlashDifficulty("Starter",  "🌱",  3, 1, 1600, "3 numbers · 1-digit · Slow",     Color(0xFF2E7D32), Color(0xFF43A047)),
+    L3FlashDifficulty("Explorer", "🚀",  5, 1, 1200, "5 numbers · 1-digit · Normal",   Color(0xFF1565C0), Color(0xFF1E88E5)),
+    L3FlashDifficulty("Expert",   "🦅",  7, 2,  800, "7 numbers · 2-digit · Fast",     Color(0xFFE65100), Color(0xFFFF7043)),
+    L3FlashDifficulty("Master",   "💎", 10, 2,  500, "10 numbers · 2-digit · Blazing", Color(0xFF4A148C), Color(0xFF7B1FA2)),
 )
 
 data class L3Term(val sign: String, val value: Int)   // sign: "" first | "+" | "−"

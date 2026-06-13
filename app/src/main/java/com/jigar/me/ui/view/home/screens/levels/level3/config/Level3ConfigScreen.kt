@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.home.screens.levels.level3.config
 
+import android.content.Context
 import com.jigar.me.ui.view.home.screens.levels.level3.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -13,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
@@ -26,11 +28,21 @@ fun Level3ConfigScreen(
     onBackClick: () -> Unit,
     onStart:     (L3Config) -> Unit,
 ) {
-    var terms         by remember { mutableIntStateOf(5) }
-    var digits        by remember { mutableIntStateOf(1) }
-    var flashMs       by remember { mutableIntStateOf(800) }
-    var autoAbacus    by remember { mutableStateOf(false) }
-    var timeLimitSecs by remember { mutableIntStateOf(60) }
+    val context  = LocalContext.current
+    val prefs    = remember { context.getSharedPreferences("kotlin_basic_pref", Context.MODE_PRIVATE) }
+    val modeKey  = "l3_${mode.name.lowercase()}"
+
+    var terms         by remember { mutableIntStateOf(prefs.getInt("${modeKey}_terms",         5)) }
+    var digits        by remember { mutableIntStateOf(prefs.getInt("${modeKey}_digits",        1)) }
+    var flashMs       by remember { mutableIntStateOf(prefs.getInt("${modeKey}_flashMs",       1200)) }
+    var autoAbacus    by remember { mutableStateOf(prefs.getBoolean("${modeKey}_autoAbacus",   false)) }
+    var timeLimitSecs by remember { mutableIntStateOf(prefs.getInt("${modeKey}_timeLimitSecs", 60)) }
+
+    LaunchedEffect(terms)         { prefs.edit().putInt("${modeKey}_terms",         terms).apply() }
+    LaunchedEffect(digits)        { prefs.edit().putInt("${modeKey}_digits",        digits).apply() }
+    LaunchedEffect(flashMs)       { prefs.edit().putInt("${modeKey}_flashMs",       flashMs).apply() }
+    LaunchedEffect(autoAbacus)    { prefs.edit().putBoolean("${modeKey}_autoAbacus", autoAbacus).apply() }
+    LaunchedEffect(timeLimitSecs) { prefs.edit().putInt("${modeKey}_timeLimitSecs", timeLimitSecs).apply() }
 
     val cardShape = RoundedCornerShape(AppDimens.Dimens20)
 
@@ -133,7 +145,7 @@ fun Level3ConfigScreen(
                         // Flash speed (not for Speed Drill or Guided — user clicks Next manually)
                         if (mode != L3Mode.SPEED_DRILL && mode != L3Mode.GUIDED) {
                             L3ConfigRow(label = "⚡ Speed") {
-                                listOf(1200 to "Slow", 800 to "Normal", 500 to "Fast", 300 to "Blazing").forEach { (ms, label) ->
+                                listOf(1600 to "Slow", 1200 to "Normal", 800 to "Fast", 500 to "Blazing").forEach { (ms, label) ->
                                     L3Chip(label, selected = flashMs == ms) { flashMs = ms }
                                 }
                             }
