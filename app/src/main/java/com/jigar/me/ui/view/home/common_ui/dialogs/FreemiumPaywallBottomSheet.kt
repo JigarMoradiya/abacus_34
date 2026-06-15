@@ -71,6 +71,14 @@ fun FreemiumPaywallBottomSheet(
         viewModel.loadData()
     }
 
+    // Purchase succeeded — dismiss and notify caller so background screen removes locks
+    LaunchedEffect(uiState.purchaseSuccess) {
+        if (uiState.purchaseSuccess) {
+            onDismiss()
+            onSubscriptionActivated()
+        }
+    }
+
     val isLoading = uiState.sortedPlanList.isEmpty()
     var showBenefits by remember { mutableStateOf(false) }
     var showLoginSheet by remember { mutableStateOf(false) }

@@ -533,6 +533,7 @@ fun HomeNavGraph(
 
         composable(route = RouteNavigation.Level2Home.route) {
             Level2HomeScreen(
+                homeActivityViewModel = homeActivityViewModel,
                 onBackClick = { navController.popBackStack() },
                 onNavigateToChapter = { chapterId ->
                     val ch = level2Chapters.find { it.id == chapterId }
@@ -608,6 +609,7 @@ fun HomeNavGraph(
 
         composable(route = RouteNavigation.Level3Home.route) {
             Level3HomeScreen(
+                homeActivityViewModel = homeActivityViewModel,
                 onBackClick      = { navController.popBackStack() },
                 onNavigateToMode = { mode ->
                     if (mode == L3Mode.FLASH) {
@@ -730,6 +732,7 @@ fun HomeNavGraph(
 
         composable(route = RouteNavigation.Level4TablePicker.route) {
             TablePickerScreen(
+                homeActivityViewModel = homeActivityViewModel,
                 onTableSelected = { tableNumber ->
                     navController.navigate(RouteNavigation.TodayTableHome.create(tableNumber))
                 },

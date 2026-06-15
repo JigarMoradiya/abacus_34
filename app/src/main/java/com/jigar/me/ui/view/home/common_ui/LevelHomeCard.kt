@@ -5,7 +5,11 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,6 +37,7 @@ fun LevelHomeCard(
     width:      Dp,
     height:     Dp,
     hasBorder:  Boolean = false,
+    isLocked:   Boolean = false,
     onClick:    () -> Unit,
 ) {
     val isTablet = DeviceInfo.isTablet
@@ -82,6 +87,24 @@ fun LevelHomeCard(
                     color      = Color.White,
                     fontWeight = FontWeight.SemiBold,
                     textAlign  = TextAlign.Center,
+                )
+            }
+        }
+
+        if (isLocked) {
+            Box(
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(AppDimens.Dimens6)
+                    .size(AppDimens.Dimens24)
+                    .background(Color.Black.copy(alpha = 0.35f), CircleShape),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = Modifier.size(AppDimens.Dimens14)
                 )
             }
         }

@@ -5,11 +5,18 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -22,13 +29,19 @@ import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
+import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet
+import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
 fun Level2HomeScreen(
+    homeActivityViewModel: HomeActivityViewModel,
     onBackClick: () -> Unit,
     onNavigateToChapter: (Int) -> Unit,
 ) {
+    var isSubscribed by remember { mutableStateOf(homeActivityViewModel.isPurchasedForModule()) }
+    var showPaywall  by remember { mutableStateOf(false) }
+
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
         Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
@@ -56,8 +69,11 @@ fun Level2HomeScreen(
                         modifier              = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(spacing)
                     ) {
-                        level2Chapters.take(cols).forEach { chapter ->
-                            L2ChapterCard(chapter, cellW, cellH) { onNavigateToChapter(chapter.id) }
+                        level2Chapters.take(cols).forEachIndexed { index, chapter ->
+                            val isLocked = !isSubscribed && index >= 3
+                            L2ChapterCard(chapter, cellW, cellH, isLocked) {
+                                if (isLocked) showPaywall = true else onNavigateToChapter(chapter.id)
+                            }
                         }
                     }
                     Row(
@@ -65,13 +81,22 @@ fun Level2HomeScreen(
                         horizontalArrangement = Arrangement.spacedBy(spacing)
                     ) {
                         level2Chapters.drop(cols).forEach { chapter ->
-                            L2ChapterCard(chapter, cellW, cellH) { onNavigateToChapter(chapter.id) }
+                            L2ChapterCard(chapter, cellW, cellH, isLocked = !isSubscribed) {
+                                if (!isSubscribed) showPaywall = true else onNavigateToChapter(chapter.id)
+                            }
                         }
                     }
                     Spacer(modifier = Modifier.height(shadowRoom))
                 }
             }
         }
+    }
+
+    if (showPaywall) {
+        FreemiumPaywallBottomSheet(
+            onSubscriptionActivated = { isSubscribed = true; showPaywall = false },
+            onDismiss = { showPaywall = false }
+        )
     }
 }
 
@@ -80,6 +105,7 @@ private fun L2ChapterCard(
     chapter: Level2ChapterData,
     cellW: Dp,
     cellH: Dp,
+    isLocked: Boolean = false,
     onClick: () -> Unit,
 ) {
     val isFormulaRef = chapter.type == Level2ChapterType.FORMULA_REF
@@ -92,10 +118,7 @@ private fun L2ChapterCard(
                 ambientColor = chapter.endColor.copy(alpha = 0.4f),
                 spotColor    = chapter.endColor.copy(alpha = 0.4f))
             .background(
-                if (isFormulaRef)
-                    Brush.linearGradient(listOf(chapter.startColor, chapter.endColor))
-                else
-                    Brush.linearGradient(listOf(chapter.startColor, chapter.endColor)),
+                Brush.linearGradient(listOf(chapter.startColor, chapter.endColor)),
                 shape
             )
             .then(
@@ -114,9 +137,9 @@ private fun L2ChapterCard(
         ) {
             Text(
                 text  = chapter.emoji,
-                style = if (DeviceInfo.isTablet)MaterialTheme.typography.displayLarge.scaled() else MaterialTheme.typography.displaySmall.scaled()
+                style = if (DeviceInfo.isTablet) MaterialTheme.typography.displayLarge.scaled() else MaterialTheme.typography.displaySmall.scaled()
             )
-            Spacer(Modifier.height(if (DeviceInfo.isTablet)AppDimens.Dimens8 else AppDimens.Dimens4))
+            Spacer(Modifier.height(if (DeviceInfo.isTablet) AppDimens.Dimens8 else AppDimens.Dimens4))
 
             val label = when (chapter.type) {
                 Level2ChapterType.FORMULA_REF -> "Reference"
@@ -149,6 +172,24 @@ private fun L2ChapterCard(
                     text  = "2 columns",
                     style = MaterialTheme.typography.labelSmall.scaled(),
                     color = Color.White.copy(0.70f)
+                )
+            }
+        }
+
+        if (isLocked) {
+            Box(
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(AppDimens.Dimens6)
+                    .size(AppDimens.Dimens24)
+                    .background(Color.Black.copy(alpha = 0.35f), CircleShape),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = Modifier.size(AppDimens.Dimens14)
                 )
             }
         }
