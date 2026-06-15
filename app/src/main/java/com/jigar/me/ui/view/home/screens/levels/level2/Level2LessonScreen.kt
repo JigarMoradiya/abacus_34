@@ -19,6 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.jigar.me.data.local.data.DeviceInfo
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
@@ -95,7 +96,7 @@ private fun L2PhaseCard(phase: L2PhaseData, cardW: Dp, cardH: Dp, onClick: () ->
                 ambientColor = phase.endColor.copy(alpha = 0.4f),
                 spotColor    = phase.endColor.copy(alpha = 0.4f))
             .background(Brush.linearGradient(listOf(phase.startColor, phase.endColor)))
-            .clickable(remember { MutableInteractionSource() }, null) { onClick() },
+            .clickable(remember { MutableInteractionSource() }, null) { AudioPlayerManager.playSoundBtnClick(); onClick() },
         contentAlignment = Alignment.Center
     ) {
         Column(

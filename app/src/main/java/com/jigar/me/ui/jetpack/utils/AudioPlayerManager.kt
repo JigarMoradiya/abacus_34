@@ -17,7 +17,6 @@ object AudioPlayerManager {
 
         soundMap["abacus_move"] = load(context, "abacus_move.mp3")
         soundMap["abacus_reset"] = load(context, "abacus_reset.mp3")
-        soundMap["ans_correct"] = load(context, "ans_correct.mp3")
         soundMap["ans_wrong"] = load(context, "ans_wrong.mp3")
         soundMap["back_click"] = load(context, "back_click.mp3")
         soundMap["btn_click"] = load(context, "btn_click.mp3")
@@ -25,6 +24,8 @@ object AudioPlayerManager {
         soundMap["clap"] = load(context, "clap.mp3")
         soundMap["play_swip"] = load(context, "play_swip.mp3")
         soundMap["play_win"] = load(context, "play_win.mp3")
+        soundMap["option_correct_ans"] = load(context, "option_correct_ans.mp3")
+        soundMap["option_wrong_ans"] = load(context, "option_wrong_ans.mp3")
     }
 
     private fun load(context: Context, fileName: String): Int {
@@ -38,9 +39,6 @@ object AudioPlayerManager {
     }
     fun playAbacusReset() {
         play("abacus_reset")
-    }
-    fun playSoundAnsCorrect() {
-        play("ans_correct")
     }
     fun playSoundAnsWrong() {
         play("ans_wrong")
@@ -62,6 +60,12 @@ object AudioPlayerManager {
     }
     fun playSoundWin() {
         play("play_win")
+    }
+    fun playSoundCorrectAns() {
+        play("option_correct_ans")
+    }
+    fun playSoundOptionWrong() {
+        play("option_wrong_ans")
     }
 
     private fun play(key: String) {

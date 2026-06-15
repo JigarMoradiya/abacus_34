@@ -29,6 +29,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.min
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet
@@ -96,7 +97,7 @@ fun TablePickerScreen(
                                 n = n, color = color,
                                 cellW = cellW, cellH = cellH,
                                 isLocked = !isSubscribed,
-                                onClick = { if (isSubscribed) onTableSelected(n) else showPaywall = true }
+                                onClick = { AudioPlayerManager.playSoundBtnClick(); if (isSubscribed) onTableSelected(n) else showPaywall = true }
                             )
                         }
                     }

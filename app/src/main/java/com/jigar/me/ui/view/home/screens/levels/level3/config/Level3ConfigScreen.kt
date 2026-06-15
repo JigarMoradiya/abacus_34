@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
@@ -204,6 +205,7 @@ fun Level3ConfigScreen(
                                         ambientColor = mode.endColor.copy(0.3f))
                                     .background(Brush.linearGradient(listOf(mode.startColor, mode.endColor)), startShape)
                                     .clickable(remember { MutableInteractionSource() }, null) {
+                                        AudioPlayerManager.playSoundBtnClick()
                                         onStart(L3Config(
                                             mode          = mode,
                                             terms         = terms,
@@ -256,7 +258,7 @@ private fun L3Chip(label: String, selected: Boolean, onClick: () -> Unit) {
                 if (selected) Color(0xFF1565C0) else Color.White.copy(0.55f),
                 shape
             )
-            .clickable(remember { MutableInteractionSource() }, null) { onClick() }
+            .clickable(remember { MutableInteractionSource() }, null) { AudioPlayerManager.playSoundBtnClick(); onClick() }
             .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6),
         contentAlignment = Alignment.Center
     ) {

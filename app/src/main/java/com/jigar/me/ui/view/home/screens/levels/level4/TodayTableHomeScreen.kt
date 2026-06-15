@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
@@ -116,7 +117,7 @@ private fun ActivityCard(
 ) {
     val isTablet = DeviceInfo.isTablet
     Card(
-        onClick = onClick,
+        onClick = { AudioPlayerManager.playSoundBtnClick(); onClick() },
         shape = RoundedCornerShape(Dimens16),
         elevation = CardDefaults.cardElevation(AppDimens.Dimens4),
         colors = CardDefaults.cardColors(containerColor = Color.Transparent),

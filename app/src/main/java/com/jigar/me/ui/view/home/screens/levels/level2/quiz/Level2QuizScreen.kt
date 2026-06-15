@@ -30,6 +30,7 @@ import com.jigar.me.ui.view.home.screens.levels.level4.optionType
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
 import com.jigar.me.ui.view.home.theme.AppDimens.examOptionHeight
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.utils.AppConstants
 import kotlinx.coroutines.delay
 import com.jigar.me.ui.view.home.screens.levels.level2.level2Lessons
@@ -51,10 +52,18 @@ fun Level2QuizScreen(
 
     LaunchedEffect(selected) {
         val sel = selected ?: return@LaunchedEffect
-        if (sel == questions[qIndex].result) score++
+        if (sel == questions[qIndex].result) {
+            score++
+            AudioPlayerManager.playSoundCorrectAns()
+        } else {
+            AudioPlayerManager.playSoundOptionWrong()
+        }
         delay(900)
         if (qIndex < questions.size - 1) { qIndex++; selected = null }
-        else showResult = true
+        else {
+            if (score.toFloat() / questions.size >= 0.70f) AudioPlayerManager.playSoundClap()
+            showResult = true
+        }
     }
 
     val isTablet      = DeviceInfo.isTablet
@@ -320,7 +329,7 @@ private fun L2QuizResultBtn(label: String, filled: Boolean, onClick: () -> Unit)
         modifier = Modifier
             .shadow(AppDimens.Dimens4, shape)
             .background(if (filled) Color.White else Color.White.copy(0.22f), shape)
-            .clickable(remember { MutableInteractionSource() }, null) { onClick() }
+            .clickable(remember { MutableInteractionSource() }, null) { AudioPlayerManager.playSoundBtnClick(); onClick() }
             .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens12),
         contentAlignment = Alignment.Center
     ) {

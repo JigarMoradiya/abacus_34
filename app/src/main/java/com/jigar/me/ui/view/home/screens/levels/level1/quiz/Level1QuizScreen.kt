@@ -29,6 +29,7 @@ import com.jigar.me.ui.view.home.screens.levels.level4.optionType
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
 import com.jigar.me.ui.view.home.theme.AppDimens.examOptionHeight
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.utils.AppConstants
 import kotlinx.coroutines.delay
 import com.jigar.me.ui.view.home.screens.levels.level1.level1Lessons
@@ -50,10 +51,18 @@ fun Level1QuizScreen(
 
     LaunchedEffect(selected) {
         val sel = selected ?: return@LaunchedEffect
-        if (sel == questions[qIndex].correctAnswer) score++
+        if (sel == questions[qIndex].correctAnswer) {
+            score++
+            AudioPlayerManager.playSoundCorrectAns()
+        } else {
+            AudioPlayerManager.playSoundOptionWrong()
+        }
         delay(900)
         if (qIndex < questions.size - 1) { qIndex++; selected = null }
-        else showResult = true
+        else {
+            if (score.toFloat() / questions.size >= 0.70f) AudioPlayerManager.playSoundClap()
+            showResult = true
+        }
     }
 
     val question      = questions[minOf(qIndex, questions.size - 1)]
@@ -317,7 +326,7 @@ private fun QuizResultBtn(label: String, filled: Boolean, onClick: () -> Unit) {
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication        = null
-            ) { onClick() }
+            ) { AudioPlayerManager.playSoundBtnClick(); onClick() }
             .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens12),
         contentAlignment = Alignment.Center
     ) {

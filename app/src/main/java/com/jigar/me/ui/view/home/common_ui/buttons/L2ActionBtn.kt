@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.theme.AppDimens
 
@@ -25,7 +26,7 @@ fun L2ActionBtn(label: String, filled: Boolean, startColor: Color = Color(0xFF1B
         modifier = Modifier
             .shadow(AppDimens.Dimens4, shape)
             .background(if (filled) Color.White else Color.White.copy(0.25f), shape)
-            .clickable(remember { MutableInteractionSource() }, null) { onClick() }
+            .clickable(remember { MutableInteractionSource() }, null) { AudioPlayerManager.playSoundBtnClick(); onClick() }
             .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens12),
         contentAlignment = Alignment.Center
     ) {

@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
@@ -110,7 +111,7 @@ private fun PhaseCard(phase: PhaseData, cardW: Dp, cardH: Dp, onClick: () -> Uni
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication        = null
-            ) { onClick() },
+            ) { AudioPlayerManager.playSoundBtnClick(); onClick() },
         contentAlignment = Alignment.Center
     ) {
         Column(

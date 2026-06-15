@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.jigar.me.data.local.data.RodMovement
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.base.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
@@ -291,7 +292,7 @@ private fun L2LearnNavBtn(label: String, filled: Boolean, onClick: () -> Unit) {
         modifier = Modifier
             .shadow(AppDimens.Dimens4, shape)
             .background(if (filled) Color.White else Color.White.copy(0.20f), shape)
-            .clickable(remember { MutableInteractionSource() }, null) { onClick() }
+            .clickable(remember { MutableInteractionSource() }, null) { AudioPlayerManager.playSoundBtnClick(); onClick() }
             .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens10),
         contentAlignment = Alignment.Center
     ) {

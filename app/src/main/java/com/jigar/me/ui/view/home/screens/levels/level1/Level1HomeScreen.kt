@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.common_ui.LevelHomeCard
@@ -47,7 +48,7 @@ fun Level1HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit)
                                 endColor   = lesson.endColor,
                                 width      = cellW,
                                 height     = cellH,
-                                onClick    = { onNavigateToLesson(lesson.id) },
+                                onClick    = { AudioPlayerManager.playSoundBtnClick(); onNavigateToLesson(lesson.id) },
                             )
                         }
                     }
@@ -64,7 +65,7 @@ fun Level1HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit)
                                 endColor   = lesson.endColor,
                                 width      = cellW,
                                 height     = cellH,
-                                onClick    = { onNavigateToLesson(lesson.id) },
+                                onClick    = { AudioPlayerManager.playSoundBtnClick(); onNavigateToLesson(lesson.id) },
                             )
                         }
                     }

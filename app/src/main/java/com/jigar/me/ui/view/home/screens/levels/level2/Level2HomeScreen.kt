@@ -26,6 +26,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import com.jigar.me.data.local.data.DeviceInfo
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
@@ -72,6 +73,7 @@ fun Level2HomeScreen(
                         level2Chapters.take(cols).forEachIndexed { index, chapter ->
                             val isLocked = !isSubscribed && index >= 3
                             L2ChapterCard(chapter, cellW, cellH, isLocked) {
+                                AudioPlayerManager.playSoundBtnClick()
                                 if (isLocked) showPaywall = true else onNavigateToChapter(chapter.id)
                             }
                         }
@@ -82,6 +84,7 @@ fun Level2HomeScreen(
                     ) {
                         level2Chapters.drop(cols).forEach { chapter ->
                             L2ChapterCard(chapter, cellW, cellH, isLocked = !isSubscribed) {
+                                AudioPlayerManager.playSoundBtnClick()
                                 if (!isSubscribed) showPaywall = true else onNavigateToChapter(chapter.id)
                             }
                         }

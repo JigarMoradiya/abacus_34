@@ -9,6 +9,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.common_ui.LevelHomeCard
@@ -64,7 +65,7 @@ fun Level3HomeScreen(
                                 height     = cardH,
                                 hasBorder  = true,
                                 isLocked   = !isSubscribed,
-                                onClick    = { if (isSubscribed) onNavigateToMode(mode) else showPaywall = true },
+                                onClick    = { AudioPlayerManager.playSoundBtnClick(); if (isSubscribed) onNavigateToMode(mode) else showPaywall = true },
                             )
                         }
                     }
@@ -83,7 +84,7 @@ fun Level3HomeScreen(
                                 height     = cardH,
                                 hasBorder  = true,
                                 isLocked   = !isSubscribed,
-                                onClick    = { if (isSubscribed) onNavigateToMode(mode) else showPaywall = true },
+                                onClick    = { AudioPlayerManager.playSoundBtnClick(); if (isSubscribed) onNavigateToMode(mode) else showPaywall = true },
                             )
                         }
                     }
