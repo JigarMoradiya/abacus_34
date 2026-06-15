@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
@@ -30,12 +31,12 @@ fun Level2HomeScreen(
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
             BackButtonWithText(title = "Add & Subtract", onBackClick = onBackClick)
 
             BoxWithConstraints(
                 modifier         = Modifier.fillMaxWidth().weight(1f),
-                contentAlignment = Alignment.TopCenter
+                contentAlignment = Alignment.Center
             ) {
                 val cols       = 5
                 val rows       = 2
@@ -113,13 +114,13 @@ private fun L2ChapterCard(
         ) {
             Text(
                 text  = chapter.emoji,
-                style = MaterialTheme.typography.titleLarge.scaled()
+                style = if (DeviceInfo.isTablet)MaterialTheme.typography.displayLarge.scaled() else MaterialTheme.typography.displaySmall.scaled()
             )
-            Spacer(Modifier.height(AppDimens.Dimens4))
+            Spacer(Modifier.height(if (DeviceInfo.isTablet)AppDimens.Dimens8 else AppDimens.Dimens4))
 
             val label = when (chapter.type) {
                 Level2ChapterType.FORMULA_REF -> "Reference"
-                else                          -> "Chapter ${chapter.id}"
+                else                          -> "Lesson ${chapter.id}"
             }
             Box(
                 modifier = Modifier

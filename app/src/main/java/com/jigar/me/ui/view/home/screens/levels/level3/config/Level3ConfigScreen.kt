@@ -50,7 +50,7 @@ fun Level3ConfigScreen(
         HomePageBackground()
 
         Row(
-            modifier          = Modifier.fillMaxSize(),
+            modifier          = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             verticalAlignment = Alignment.CenterVertically
         ) {
 

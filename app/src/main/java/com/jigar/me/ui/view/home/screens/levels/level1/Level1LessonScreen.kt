@@ -51,7 +51,7 @@ fun Level1LessonScreen(
 
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
             BackButtonWithText(
                 title       = "Lesson ${lesson.id}  ·  ${lesson.title}",
                 onBackClick = onBackClick

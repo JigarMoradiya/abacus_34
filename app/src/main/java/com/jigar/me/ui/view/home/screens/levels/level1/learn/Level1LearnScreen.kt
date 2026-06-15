@@ -60,7 +60,7 @@ fun Level1LearnScreen(
         HomePageBackground()
 
         Row(
-            modifier              = Modifier.fillMaxSize(),
+            modifier              = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             horizontalArrangement = Arrangement.spacedBy(spacing),
             verticalAlignment     = Alignment.CenterVertically,
         ) {

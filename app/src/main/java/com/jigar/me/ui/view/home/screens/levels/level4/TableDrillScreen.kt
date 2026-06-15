@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.today_table
+package com.jigar.me.ui.view.home.screens.levels.level4
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -17,6 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
@@ -51,7 +52,7 @@ fun TableDrillScreen(
 
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
             // Header — hidden when result is showing
             if (!showResult) {
                 Row(
@@ -204,6 +205,7 @@ private fun DrillPhase(
     selectedAnswer: Int?,
     onAnswerSelected: (Int) -> Unit,
 ) {
+    val isTablet = DeviceInfo.isTablet
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -225,7 +227,7 @@ private fun DrillPhase(
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
                     text = "Q${currentIndex + 1} of $totalCount",
-                    style = MaterialTheme.typography.bodyMedium.scaled(),
+                    style = if (isTablet) MaterialTheme.typography.bodyLarge.scaled() else MaterialTheme.typography.bodyMedium.scaled(),
                     color = Color.White.copy(alpha = 0.65f)
                 )
                 Spacer(Modifier.height(Dimens8))

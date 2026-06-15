@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.today_table
+package com.jigar.me.ui.view.home.screens.levels.level4
 
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
@@ -12,6 +12,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
+import androidx.compose.material.icons.automirrored.rounded.VolumeOff
+import androidx.compose.material.icons.automirrored.rounded.VolumeUp
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.rounded.VolumeOff
@@ -40,6 +42,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.LocalTextToSpeechManager
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
@@ -136,6 +139,7 @@ fun generateTableQuestions(tableNumber: Int, count: Int = 10): List<TableQuestio
 
 @Composable
 fun TableDisplayCard(tableNumber: Int) {
+    val isTablet = DeviceInfo.isTablet
     val tts = LocalTextToSpeechManager.current
     val scope = rememberCoroutineScope()
     var speakingRow by remember { mutableStateOf<Int?>(null) }
@@ -242,18 +246,18 @@ fun TableDisplayCard(tableNumber: Int) {
                         ) {
                             Text(
                                 text = "$tableNumber × $i",
-                                style = MaterialTheme.typography.bodySmall.scaled(),
+                                style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
                                 fontWeight = FontWeight.SemiBold,
                                 color = if (highlighted) PrimaryBlue else Color.Black.copy(alpha = 0.75f)
                             )
                             Text(
                                 text = " = ",
-                                style = MaterialTheme.typography.bodySmall.scaled(),
+                                style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
                                 color = Color.Gray
                             )
                             Text(
                                 text = "${tableNumber * i}",
-                                style = MaterialTheme.typography.bodySmall.scaled(),
+                                style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
                                 fontWeight = FontWeight.Black,
                                 color = PrimaryBlue
                             )
@@ -288,12 +292,12 @@ fun TableDisplayCard(tableNumber: Int) {
             ) {
                 Text(
                     text = "×$tableNumber",
-                    style = MaterialTheme.typography.bodyMedium.scaled(),
+                    style = if (DeviceInfo.isTablet) MaterialTheme.typography.titleMedium.scaled() else MaterialTheme.typography.bodyMedium.scaled(),
                     fontWeight = FontWeight.Black,
                     color = Color.White
                 )
                 Icon(
-                    imageVector = if (isSpeaking) Icons.Rounded.VolumeOff else Icons.Rounded.VolumeUp,
+                    imageVector = if (isSpeaking) Icons.AutoMirrored.Rounded.VolumeOff else Icons.AutoMirrored.Rounded.VolumeUp,
                     contentDescription = "Speak table",
                     tint = Color.White.copy(alpha = 0.85f),
                     modifier = Modifier.size(Dimens16)
@@ -311,6 +315,7 @@ fun TableResultContent(
     onRetry: () -> Unit,
     onBack: () -> Unit,
 ) {
+    val isTablet = DeviceInfo.isTablet
     val pct = if (total > 0) score.toDouble() / total.toDouble() else 0.0
     val starValue = pct * 3.0
 
@@ -363,7 +368,7 @@ fun TableResultContent(
                 )
                 Text(
                     text = "out of $total",
-                    style = MaterialTheme.typography.bodySmall.scaled(),
+                    style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
                     fontWeight = FontWeight.SemiBold,
                     color = Color.White.copy(alpha = 0.8f)
                 )
@@ -374,7 +379,7 @@ fun TableResultContent(
 
         Text(
             text = message,
-            style = MaterialTheme.typography.bodyLarge.scaled(),
+            style = if (isTablet) MaterialTheme.typography.titleMedium.scaled() else MaterialTheme.typography.bodyLarge.scaled(),
             fontWeight = FontWeight.Bold,
             color = PrimaryBlue,
             textAlign = TextAlign.Center,

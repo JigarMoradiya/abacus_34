@@ -39,15 +39,16 @@ class SplashViewModel @Inject constructor(
     }
 
     fun fetchRemoteConfigAndContinue() {
-        viewModelScope.launch {
-            try {
-                remoteConfig.fetchAndActivate().await()
-                handleVersionCheck()
-            } catch (_: Exception) {
-                // Ignore — splash should still continue silently if remote config fails
-                routeAfterRemoteConfig()
-            }
-        }
+//        viewModelScope.launch {
+//            try {
+//                remoteConfig.fetchAndActivate().await()
+//                handleVersionCheck()
+//            } catch (_: Exception) {
+//                // Ignore — splash should still continue silently if remote config fails
+//                routeAfterRemoteConfig()
+//            }
+//        }
+        updateState_ { copy(isLoading = false, navigateToHome = ConsumableCommand(Unit)) }
     }
 
     private fun handleVersionCheck() {

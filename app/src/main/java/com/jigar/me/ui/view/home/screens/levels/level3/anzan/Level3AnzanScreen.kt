@@ -88,7 +88,7 @@ fun Level3AnzanScreen(
 
         if (isSemi) {
             // ── Two-panel: left = abacus, right = content card ────────────────
-            Row(modifier = Modifier.fillMaxSize()) {
+            Row(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
                 Column(
                     modifier = Modifier
                         .weight(0.44f).fillMaxHeight()
@@ -145,7 +145,7 @@ fun Level3AnzanScreen(
             }
         } else {
             // ── Single panel ──────────────────────────────────────────────────
-            Column(modifier = Modifier.fillMaxSize().padding(bottom = AppDimens.Dimens8)) {
+            Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).padding(bottom = AppDimens.Dimens8)) {
                 BackButtonWithText(title = mode.title, onBackClick = onBackClick)
                 Column(
                     modifier = Modifier

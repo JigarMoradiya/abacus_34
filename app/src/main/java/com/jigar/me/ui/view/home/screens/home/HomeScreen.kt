@@ -307,7 +307,7 @@ fun HomeScreen(
                             )
                         }
                         LevelsPager(
-                            modifier = Modifier.width(220.dp),
+                            modifier = Modifier.width(if (isTablet) 280.dp else 220.dp),
                             onLevel1 = onNavigateToLevel1,
                             onLevel2 = onNavigateToLevel2,
                             onLevel3 = onNavigateToLevel3,

@@ -160,10 +160,10 @@ private fun familySubPairs(): List<Op> = listOf(
 )
 
 private fun buildPool(lessonId: Int): List<Op> = when (lessonId) {
-    1    -> addPairs(2..5)
-    2    -> addPairs(6..9)
-    3    -> subPairs(1..5)
-    4    -> subPairs(6..9)
+    1    -> addPairs(1..4)
+    2    -> addPairs(5..9).filter { it.a >= 5 || it.b >= 5 }
+    3    -> subPairs(1..4) + subPairs(6..9).filter { it.result >= 5 }
+    4    -> subPairs(5..9).filter { it.result < 5 && it.b >= 5 }
     6    -> smallFriendAddPairs()
     7    -> smallFriendSubPairs()
     8    -> bigFriendAddPairs()
@@ -241,29 +241,29 @@ private val lesson3LearnSteps = listOf(
     LearnStep("2️⃣", "4 − 2 = 2",
         "Watch! Start at 4, push 2 earth beads DOWN → 2! ✅",
         AbacusDisplayState.ones(false, 2), fromValue = 4),
-    LearnStep("✋", "5 − 3 = 2",
-        "Watch! Start at 5 (heaven), push heaven UP and 2 earth UP → 2! 🎯",
-        AbacusDisplayState.ones(false, 2), fromValue = 5),
+    LearnStep("5️⃣", "8 − 3 = 5",
+        "Watch! Start at 8 (heaven + 3 earth), push 3 earth beads DOWN → just heaven = 5! Heaven stays! 🌟",
+        AbacusDisplayState.ones(true, 0), fromValue = 8),
     LearnStep("🎉", "Subtracting = Push DOWN!",
-        "Subtracting means pushing beads AWAY from the beam. Your number goes DOWN! Try: 3 − 1 = ? (push 1 bead down!)",
+        "Only earth beads move — heaven bead NEVER moves in this lesson! Try: 9 − 4 = ? and 4 − 1 = ?",
         AbacusDisplayState.ones(false, 3)),
 )
 
 private val lesson4LearnSteps = listOf(
-    LearnStep("🔢", "Bigger Subtractions!",
-        "Now let's subtract from bigger numbers like 7, 8, and 9! Same rule: push beads DOWN to subtract. Ready? 🚀"),
-    LearnStep("8️⃣", "Show 8",
-        "Heaven bead down (=5) + 3 earth beads up (=3). 5 + 3 = 8! This is your starting number.",
-        AbacusDisplayState.ones(true, 3)),
-    LearnStep("5️⃣", "8 − 3 = 5",
-        "Watch! Start at 8, push 3 earth beads DOWN → just heaven = 5! ✨",
-        AbacusDisplayState.ones(true, 0), fromValue = 8),
-    LearnStep("9️⃣", "9 − 4 = 5",
-        "Watch! Start at 9, push 4 earth beads DOWN → just heaven = 5! 🌟",
-        AbacusDisplayState.ones(true, 0), fromValue = 9),
-    LearnStep("🏆", "You're Amazing!",
-        "7 = heaven + 2 earth. 7 − 2 = 5 (push 2 earth down). You can subtract any number from 1–9 now! 🎊",
-        AbacusDisplayState.ones(true, 0)),
+    LearnStep("🔽", "Remove the Heaven Bead!",
+        "When you subtract 5 or more, push the heaven bead AWAY from the beam (UP = −5). Let's practice!"),
+    LearnStep("0️⃣", "5 − 5 = 0",
+        "Watch! Heaven bead is DOWN (= 5). Push it UP → all beads away = 0! Simple heaven removal! 🎯",
+        AbacusDisplayState.ones(false, 0), fromValue = 5),
+    LearnStep("2️⃣", "7 − 5 = 2",
+        "Watch! Start at 7 (heaven + 2 earth). Push heaven UP (−5) → just 2 earth beads = 2! Earth stays! ✅",
+        AbacusDisplayState.ones(false, 2), fromValue = 7),
+    LearnStep("1️⃣", "9 − 8 = 1",
+        "Watch! Start at 9 (heaven + 4 earth). Push 3 earth DOWN, then push heaven UP → 1 earth = 1! 🌟",
+        AbacusDisplayState.ones(false, 1), fromValue = 9),
+    LearnStep("🏆", "You've Got It!",
+        "Subtract 5 → push heaven UP. Subtract more → remove earth first, then heaven. No formula needed! 🚀",
+        AbacusDisplayState.ones(false, 1)),
 )
 
 private val lesson5LearnSteps = listOf(

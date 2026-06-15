@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.today_table
+package com.jigar.me.ui.view.home.screens.levels.level4
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -41,7 +41,7 @@ fun TablePickerScreen(
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
 
             BackButtonWithText(title = "Choose a table to practise", onBackClick = onBackClick)
 

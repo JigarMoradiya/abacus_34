@@ -42,11 +42,11 @@ import com.jigar.me.ui.view.home.screens.abacus_free_mode.viewmodel.AbacusFreeMo
 import com.jigar.me.ui.view.home.screens.abacus_practice.level_list.LevelCategoryScreen
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.login.screens.splash.SplashScreen
-import com.jigar.me.ui.view.home.screens.today_table.TodayTableHomeScreen
-import com.jigar.me.ui.view.home.screens.today_table.TableDrillScreen
-import com.jigar.me.ui.view.home.screens.today_table.TableFlashcardScreen
-import com.jigar.me.ui.view.home.screens.today_table.TableFillBlankScreen
-import com.jigar.me.ui.view.home.screens.today_table.TablePickerScreen
+import com.jigar.me.ui.view.home.screens.levels.level4.TodayTableHomeScreen
+import com.jigar.me.ui.view.home.screens.levels.level4.TableDrillScreen
+import com.jigar.me.ui.view.home.screens.levels.level4.TableFlashcardScreen
+import com.jigar.me.ui.view.home.screens.levels.level4.TableFillBlankScreen
+import com.jigar.me.ui.view.home.screens.levels.level4.TablePickerScreen
 import com.jigar.me.ui.view.home.screens.levels.level1.Level1HomeScreen
 import com.jigar.me.ui.view.home.screens.levels.level1.Level1LessonScreen
 import com.jigar.me.ui.view.home.screens.levels.level1.learn.Level1LearnScreen

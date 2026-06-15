@@ -42,7 +42,7 @@ fun Level3FlashPickerScreen(
         HomePageBackground()
 
         Column(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)
         ) {
             BackButtonWithText(title = "Flash Challenge", onBackClick = onBackClick)
 
@@ -171,7 +171,7 @@ fun Level3FlashPlayScreen(
 
         // ── Single panel ──────────────────────────────────────────────────────
         Column(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)
         ) {
             BackButtonWithText(title = "${diff.label} Flash", onBackClick = onBackClick)
 

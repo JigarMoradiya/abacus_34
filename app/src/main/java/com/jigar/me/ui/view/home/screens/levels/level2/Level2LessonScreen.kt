@@ -17,6 +17,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
@@ -49,7 +51,7 @@ fun Level2LessonScreen(
 
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
             BackButtonWithText(
                 title       = "Lesson ${lesson.id}  ·  ${lesson.title}",
                 onBackClick = onBackClick
@@ -62,7 +64,7 @@ fun Level2LessonScreen(
                 val hPad       = AppDimens.Dimens20
                 val shadowRoom = AppDimens.Dimens10
                 val cardW      = (maxWidth - hPad * 2 - spacing * (phaseActions.size - 1)) / phaseActions.size
-                val cardH      = maxHeight * 0.80f
+                val cardH      = minOf(maxHeight * 0.80f, 360.dp.scaled())
 
                 Column(
                     modifier            = Modifier.width(maxWidth - hPad * 2),
@@ -101,18 +103,18 @@ private fun L2PhaseCard(phase: L2PhaseData, cardW: Dp, cardH: Dp, onClick: () ->
             verticalArrangement = Arrangement.Center,
             modifier            = Modifier.padding(AppDimens.Dimens16)
         ) {
-            Text(text = phase.emoji, style = MaterialTheme.typography.displaySmall.scaled())
+            Text(text = phase.emoji, style = if (DeviceInfo.isTablet)MaterialTheme.typography.displayLarge.scaled() else MaterialTheme.typography.displayMedium.scaled())
             Spacer(Modifier.height(AppDimens.Dimens12))
             Text(
                 text       = phase.title,
-                style      = MaterialTheme.typography.headlineMedium.scaled(),
+                style      = if (DeviceInfo.isTablet) MaterialTheme.typography.headlineLarge.scaled() else MaterialTheme.typography.headlineMedium.scaled(),
                 color      = Color.White,
                 fontWeight = FontWeight.Black
             )
             Spacer(Modifier.height(AppDimens.Dimens8))
             Text(
                 text      = phase.description,
-                style     = MaterialTheme.typography.bodyMedium.scaled(),
+                style     = if (DeviceInfo.isTablet) MaterialTheme.typography.bodyLarge.scaled() else MaterialTheme.typography.bodyMedium.scaled(),
                 color     = Color.White.copy(alpha = 0.85f),
                 textAlign = TextAlign.Center
             )

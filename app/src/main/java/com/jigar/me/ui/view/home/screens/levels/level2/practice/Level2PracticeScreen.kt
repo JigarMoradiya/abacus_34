@@ -13,6 +13,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.jigar.me.data.local.data.DeviceInfo
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -53,6 +54,7 @@ fun Level2PracticeScreen(
     val prefs   = LocalPreferencesHelper.current
     val selectedTheme = prefs.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default)
 
+    val isTablet    = DeviceInfo.isTablet
     val abCalc      = remember { AbacusCalculations(lesson.columns) }
     var animPhase   by remember { mutableStateOf(L2PracticePhase.ZERO) }
     var rodMovement by remember { mutableStateOf<List<RodMovement>>(emptyList()) }
@@ -97,7 +99,7 @@ fun Level2PracticeScreen(
 
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
 
             // ── Header: back button + progress bar ────────────────────────────
             Row(
@@ -126,7 +128,7 @@ fun Level2PracticeScreen(
             ) {
                 Row(
                     modifier = Modifier
-                        .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens12)
+                        .padding(top = AppDimens.Dimens12, end = AppDimens.Dimens20, bottom = AppDimens.Dimens12)
                         .fillMaxSize(),
                     horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16),
                     verticalAlignment     = Alignment.CenterVertically
@@ -134,7 +136,7 @@ fun Level2PracticeScreen(
                     // ── Left panel: equation or animated abacus ───────────────
                     Box(
                         modifier = Modifier
-                            .weight(0.45f)
+                            .weight(0.35f)
                             .fillMaxHeight()
                             .padding(bottom = AppDimens.Dimens8),
                         contentAlignment = Alignment.Center
@@ -230,8 +232,8 @@ fun Level2PracticeScreen(
                     val rightShape = RoundedCornerShape(AppDimens.Dimens24)
                     Box(
                         modifier = Modifier
-                            .weight(0.55f)
-                            .fillMaxHeight()
+                            .weight(0.65f)
+                            .then(if (!isTablet) Modifier.fillMaxHeight() else Modifier)
                             .padding(bottom = AppDimens.Dimens8)
                             .shadow(AppDimens.Dimens6, rightShape,
                                 spotColor    = lesson.endColor.copy(0.25f),
@@ -246,9 +248,9 @@ fun Level2PracticeScreen(
                         Column(
                             horizontalAlignment = Alignment.CenterHorizontally,
                             verticalArrangement = Arrangement.Center,
-                            modifier            = Modifier.fillMaxSize()
+                            modifier            = Modifier.fillMaxWidth()
                         ) {
-                            Text("🧮", fontSize = 40.sp.scaled())
+                            Text("🧮", fontSize = 44.sp.scaled())
 
                             Text(
                                 text       = "${problem.a} ${problem.op} ${problem.b} = ?",
@@ -313,7 +315,7 @@ fun Level2PracticeScreen(
                 val popupShape = RoundedCornerShape(AppDimens.Dimens24)
                 Box(
                     modifier = Modifier
-                        .fillMaxWidth(0.50f)
+                        .fillMaxWidth(0.85f)
                         .shadow(AppDimens.Dimens16, popupShape,
                             spotColor    = lesson.endColor.copy(0.4f),
                             ambientColor = lesson.endColor.copy(0.4f))

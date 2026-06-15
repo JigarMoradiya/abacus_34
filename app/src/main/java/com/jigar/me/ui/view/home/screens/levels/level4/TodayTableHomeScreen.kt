@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.today_table
+package com.jigar.me.ui.view.home.screens.levels.level4
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
@@ -33,7 +34,7 @@ fun TodayTableHomeScreen(
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
             BackButtonWithText(title = "$tableNumber Times Table", onBackClick = onBackClick)
             Row(modifier = Modifier.weight(1f).fillMaxWidth()) {
                 // Left panel — 35% — scrollable table with overflow banner
@@ -113,6 +114,7 @@ private fun ActivityCard(
     gradient: List<Color>,
     onClick: () -> Unit,
 ) {
+    val isTablet = DeviceInfo.isTablet
     Card(
         onClick = onClick,
         shape = RoundedCornerShape(Dimens16),
@@ -130,7 +132,7 @@ private fun ActivityCard(
         ) {
             Text(
                 text = icon,
-                style = MaterialTheme.typography.headlineSmall.scaled(),
+                style = if (isTablet) MaterialTheme.typography.headlineMedium.scaled() else MaterialTheme.typography.headlineSmall.scaled(),
                 modifier = Modifier
                     .size(ToolbarIconSize)
                     .background(Color.White.copy(alpha = 0.2f), RoundedCornerShape(Dimens12))
@@ -139,13 +141,13 @@ private fun ActivityCard(
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = title,
-                    style = MaterialTheme.typography.titleSmall.scaled(),
+                    style = if (isTablet) MaterialTheme.typography.titleLarge.scaled() else MaterialTheme.typography.titleSmall.scaled(),
                     fontWeight = FontWeight.Bold,
                     color = Color.White
                 )
                 Text(
                     text = subtitle,
-                    style = MaterialTheme.typography.bodySmall.scaled(),
+                    style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
                     color = Color.White.copy(alpha = 0.88f)
                 )
             }

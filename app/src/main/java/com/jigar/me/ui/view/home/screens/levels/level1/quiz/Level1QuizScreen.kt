@@ -25,7 +25,7 @@ import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsOptionButton
-import com.jigar.me.ui.view.home.screens.today_table.optionType
+import com.jigar.me.ui.view.home.screens.levels.level4.optionType
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
 import com.jigar.me.ui.view.home.theme.AppDimens.examOptionHeight
@@ -62,7 +62,7 @@ fun Level1QuizScreen(
 
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
 
             // ── Header: back button + inline progress bar ──────────────
             Row(

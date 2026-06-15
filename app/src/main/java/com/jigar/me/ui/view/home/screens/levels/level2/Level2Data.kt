@@ -21,8 +21,8 @@ internal val level2Lessons get() = level2Chapters
 internal val level2Chapters = listOf(
     Level2ChapterData(1,  "⬆️",  "Earth Add",      "Push earth beads — result 1 to 4",        Color(0xFF006064), Color(0xFF00BCD4), Level2ChapterType.DIRECT),
     Level2ChapterData(2,  "🌟",  "Heaven Add",      "Add with heaven bead — direct only",      Color(0xFF1565C0), Color(0xFF42A5F5), Level2ChapterType.DIRECT),
-    Level2ChapterData(3,  "⬇️",  "Earth Subtract", "Pull earth beads — no formula needed",    Color(0xFFBF360C), Color(0xFFFF7043), Level2ChapterType.DIRECT),
-    Level2ChapterData(4,  "🔽",  "Heaven Subtract","Subtract — heaven bead stays set",        Color(0xFF880E4F), Color(0xFFEC407A), Level2ChapterType.DIRECT),
+    Level2ChapterData(3,  "⬇️",  "Earth Subtract", "Earth beads only — heaven never moves",   Color(0xFFBF360C), Color(0xFFFF7043), Level2ChapterType.DIRECT),
+    Level2ChapterData(4,  "🔽",  "Heaven Subtract","Subtract 5+ — push the heaven bead away", Color(0xFF880E4F), Color(0xFFEC407A), Level2ChapterType.DIRECT),
     Level2ChapterData(5,  "📋",  "Meet Formulas",  "Why, when & how to use bead formulas",    Color(0xFF4A148C), Color(0xFFAB47BC), Level2ChapterType.FORMULA_REF),
     Level2ChapterData(6,  "🤝",  "Small Friend +", "+1=−4+5  +2=−3+5  +3=−2+5  +4=−1+5",    Color(0xFF1B5E20), Color(0xFF4CAF50), Level2ChapterType.FORMULA),
     Level2ChapterData(7,  "🤝",  "Small Friend −", "−1=−5+4  −2=−5+3  −3=−5+2  −4=−5+1",    Color(0xFF004D40), Color(0xFF26A69A), Level2ChapterType.FORMULA),

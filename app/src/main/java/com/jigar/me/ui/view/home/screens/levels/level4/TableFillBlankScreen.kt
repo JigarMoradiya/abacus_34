@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.today_table
+package com.jigar.me.ui.view.home.screens.levels.level4
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
@@ -26,6 +26,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
@@ -75,7 +76,7 @@ fun TableFillBlankScreen(
 
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
@@ -176,6 +177,7 @@ private fun FillBlankContent(
     selectedAnswer: Int?,
     onChoiceSelected: (Int) -> Unit,
 ) {
+    val isTablet = DeviceInfo.isTablet
     val isCorrect = selectedAnswer == question.correctAnswer
     val blankBg by animateColorAsState(
         targetValue = when {
@@ -221,7 +223,7 @@ private fun FillBlankContent(
                     ) {
                         Text(
                             text = "Q ${currentIndex + 1} of $totalQuestions",
-                            style = MaterialTheme.typography.bodySmall.scaled(),
+                            style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
                             fontWeight = FontWeight.Bold,
                             color = Color.White
                         )
@@ -255,7 +257,7 @@ private fun FillBlankContent(
                     ) {
                         Text(
                             text = "✏️  Fill in the blank!",
-                            style = MaterialTheme.typography.bodySmall.scaled(),
+                            style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
                             fontWeight = FontWeight.ExtraBold,
                             color = Color.White
                         )
@@ -329,6 +331,7 @@ private fun FillBlankResultContent(
     onRetry: () -> Unit,
     onBack: () -> Unit,
 ) {
+    val isTablet = DeviceInfo.isTablet
     val pct = if (questions.isNotEmpty()) score.toDouble() / questions.size else 0.0
     val starValue = pct * 3.0
     val starSize = ToolbarIconSize * 1.4f
@@ -362,7 +365,7 @@ private fun FillBlankResultContent(
                 ) {
                     Text(
                         text = "Your Answers",
-                        style = MaterialTheme.typography.titleSmall.scaled(),
+                        style = if (isTablet) MaterialTheme.typography.titleLarge.scaled() else MaterialTheme.typography.titleSmall.scaled(),
                         fontWeight = FontWeight.ExtraBold,
                         color = Color(0xFF6A1B9A),
                         textAlign = TextAlign.Center,
@@ -391,23 +394,23 @@ private fun FillBlankResultContent(
                             ) {
                                 when (q.blankType) {
                                     FillBlankType.ANSWER -> {
-                                        Text("${q.multiplier}×${q.multiplicand}=", style = MaterialTheme.typography.bodySmall.scaled(), color = Color.Black.copy(alpha = 0.6f))
+                                        Text("${q.multiplier}×${q.multiplicand}=", style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(), color = Color.Black.copy(alpha = 0.6f))
                                         Text(
                                             text = if (chosen != null) "$chosen" else "–",
-                                            style = MaterialTheme.typography.bodySmall.scaled(),
+                                            style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
                                             fontWeight = FontWeight.ExtraBold,
                                             color = if (chosen == null) Color.Gray else if (correct) Color(0xFF4CAF50) else Color(0xFFF44336)
                                         )
                                     }
                                     FillBlankType.MULTIPLICAND -> {
-                                        Text("${q.multiplier}×", style = MaterialTheme.typography.bodySmall.scaled(), color = Color.Black.copy(alpha = 0.6f))
+                                        Text("${q.multiplier}×", style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(), color = Color.Black.copy(alpha = 0.6f))
                                         Text(
                                             text = if (chosen != null) "$chosen" else "–",
-                                            style = MaterialTheme.typography.bodySmall.scaled(),
+                                            style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
                                             fontWeight = FontWeight.ExtraBold,
                                             color = if (chosen == null) Color.Gray else if (correct) Color(0xFF4CAF50) else Color(0xFFF44336)
                                         )
-                                        Text("=${q.multiplier * q.multiplicand}", style = MaterialTheme.typography.bodySmall.scaled(), color = Color.Black.copy(alpha = 0.6f))
+                                        Text("=${q.multiplier * q.multiplicand}", style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(), color = Color.Black.copy(alpha = 0.6f))
                                     }
                                 }
                             }
@@ -482,7 +485,7 @@ private fun FillBlankResultContent(
                     )
                     Text(
                         text = "out of ${questions.size}",
-                        style = MaterialTheme.typography.bodySmall.scaled(),
+                        style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
                         fontWeight = FontWeight.SemiBold,
                         color = Color.White.copy(alpha = 0.8f)
                     )
@@ -493,7 +496,7 @@ private fun FillBlankResultContent(
 
             Text(
                 text = message,
-                style = MaterialTheme.typography.bodyLarge.scaled(),
+                style = if (isTablet) MaterialTheme.typography.titleMedium.scaled() else MaterialTheme.typography.bodyLarge.scaled(),
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF6A1B9A),
                 textAlign = TextAlign.Center,

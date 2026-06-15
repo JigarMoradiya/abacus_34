@@ -163,7 +163,7 @@ fun Level2FormulaScreen(
 
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
             // Header row: back button + inline scrollable tab chips
             Row(
                 modifier          = Modifier.fillMaxWidth(),

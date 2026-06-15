@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.today_table
+package com.jigar.me.ui.view.home.screens.levels.level4
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
@@ -23,6 +23,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
@@ -86,7 +87,7 @@ fun TableFlashcardScreen(
 
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
 
             if (!showResult) {
                 Row(
@@ -315,6 +316,7 @@ private fun FlashcardContent(
 
 @Composable
 private fun FrontCard(card: Pair<Int, Int>, currentIndex: Int, totalCards: Int) {
+    val isTablet = DeviceInfo.isTablet
     Card(
         shape = RoundedCornerShape(AppDimens.Dimens28),
         elevation = CardDefaults.cardElevation(AppDimens.Dimens8),
@@ -344,7 +346,7 @@ private fun FrontCard(card: Pair<Int, Int>, currentIndex: Int, totalCards: Int) 
                 ) {
                     Text(
                         text = "Card ${currentIndex + 1} of $totalCards",
-                        style = MaterialTheme.typography.bodySmall.scaled(),
+                        style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
                         fontWeight = FontWeight.Bold,
                         color = Color.White
                     )
@@ -370,7 +372,7 @@ private fun FrontCard(card: Pair<Int, Int>, currentIndex: Int, totalCards: Int) 
                 ) {
                     Text(
                         text = "💡  Think first, then tap to reveal!",
-                        style = MaterialTheme.typography.bodySmall.scaled(),
+                        style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
                         fontWeight = FontWeight.ExtraBold,
                         color = Color.White
                     )
@@ -382,6 +384,7 @@ private fun FrontCard(card: Pair<Int, Int>, currentIndex: Int, totalCards: Int) 
 
 @Composable
 private fun BackCard(card: Pair<Int, Int>) {
+    val isTablet = DeviceInfo.isTablet
     Card(
         shape = RoundedCornerShape(AppDimens.Dimens28),
         elevation = CardDefaults.cardElevation(Dimens8),
@@ -428,7 +431,7 @@ private fun BackCard(card: Pair<Int, Int>) {
                     ) {
                         Text(
                             text = "⭐  Did you know it?",
-                            style = MaterialTheme.typography.bodyMedium.scaled(),
+                            style = if (isTablet) MaterialTheme.typography.bodyLarge.scaled() else MaterialTheme.typography.bodyMedium.scaled(),
                             fontWeight = FontWeight.ExtraBold,
                             color = Color(0xFFF57F17),
                             textAlign = TextAlign.Center

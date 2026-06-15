@@ -13,6 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import com.jigar.me.data.local.data.DeviceInfo
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -25,7 +26,7 @@ import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsOptionButton
-import com.jigar.me.ui.view.home.screens.today_table.optionType
+import com.jigar.me.ui.view.home.screens.levels.level4.optionType
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
 import com.jigar.me.ui.view.home.theme.AppDimens.examOptionHeight
@@ -56,13 +57,14 @@ fun Level2QuizScreen(
         else showResult = true
     }
 
+    val isTablet      = DeviceInfo.isTablet
     val question      = questions[minOf(qIndex, questions.size - 1)]
     val prefs         = LocalPreferencesHelper.current
     val selectedTheme = prefs.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default)
 
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
 
             // ── Header: back button + progress bar ────────────────────────────
             Row(
@@ -91,7 +93,7 @@ fun Level2QuizScreen(
             ) {
                 Row(
                     modifier = Modifier
-                        .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens12)
+                        .padding(top = AppDimens.Dimens12, end = AppDimens.Dimens20, bottom = AppDimens.Dimens12)
                         .fillMaxSize(),
                     horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16),
                     verticalAlignment     = Alignment.CenterVertically
@@ -100,7 +102,7 @@ fun Level2QuizScreen(
                     AnimatedContent(
                         targetState    = question,
                         transitionSpec = { fadeIn(tween(250)) togetherWith fadeOut(tween(250)) },
-                        modifier       = Modifier.weight(0.45f).fillMaxHeight(),
+                        modifier       = Modifier.weight(0.35f).fillMaxHeight(),
                         label          = "quiz-abacus"
                     ) { q ->
                         Box(
@@ -136,8 +138,8 @@ fun Level2QuizScreen(
                     val rightShape = RoundedCornerShape(AppDimens.Dimens24)
                     Box(
                         modifier = Modifier
-                            .weight(0.55f)
-                            .fillMaxHeight()
+                            .weight(0.65f)
+                            .then(if (!isTablet) Modifier.fillMaxHeight() else Modifier)
                             .padding(bottom = AppDimens.Dimens8)
                             .shadow(AppDimens.Dimens6, rightShape,
                                 spotColor    = lesson.endColor.copy(0.25f),
@@ -152,7 +154,7 @@ fun Level2QuizScreen(
                         Column(
                             horizontalAlignment = Alignment.CenterHorizontally,
                             verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12, Alignment.CenterVertically),
-                            modifier            = Modifier.fillMaxSize()
+                            modifier            = Modifier.fillMaxWidth()
                         ) {
                             Text(
                                 "Question ${qIndex + 1} of ${questions.size}",
@@ -167,7 +169,7 @@ fun Level2QuizScreen(
                                 "${question.a} ${question.op} ${question.b} = ?"
                             Text(
                                 expr,
-                                style      = MaterialTheme.typography.headlineMedium.scaled(),
+                                style      = MaterialTheme.typography.headlineLarge.scaled(),
                                 color      = Color.White,
                                 fontWeight = FontWeight.Black,
                                 textAlign  = TextAlign.Center
@@ -264,7 +266,7 @@ fun Level2QuizScreen(
                 val popupShape = RoundedCornerShape(AppDimens.Dimens24)
                 Box(
                     modifier = Modifier
-                        .fillMaxWidth(0.50f)
+                        .fillMaxWidth(0.85f)
                         .shadow(AppDimens.Dimens16, popupShape,
                             spotColor    = lesson.endColor.copy(0.4f),
                             ambientColor = lesson.endColor.copy(0.4f))

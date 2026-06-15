@@ -74,7 +74,7 @@ fun Level3GuidedScreen(
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
 
-        Row(modifier = Modifier.fillMaxSize()) {
+        Row(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
 
             // ── LEFT: back button + abacus ────────────────────────────────────
             Column(

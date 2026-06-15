@@ -52,7 +52,7 @@ fun Level1PracticeScreen(
 
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
 
             // ── Header: back button + inline progress bar ─────────────
             Row(

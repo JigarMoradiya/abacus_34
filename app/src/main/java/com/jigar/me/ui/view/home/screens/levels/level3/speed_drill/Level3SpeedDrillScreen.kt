@@ -95,7 +95,7 @@ fun Level3SpeedDrillScreen(
         HomePageBackground()
 
         // ── Two-panel ─────────────────────────────────────────────────────────
-        Row(modifier = Modifier.fillMaxSize()) {
+        Row(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
 
             // LEFT: back button + status card (mode info, timer, score)
             Column(

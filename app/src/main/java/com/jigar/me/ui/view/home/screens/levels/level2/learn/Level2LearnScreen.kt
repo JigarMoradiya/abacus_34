@@ -12,6 +12,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.jigar.me.data.local.data.DeviceInfo
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -50,6 +51,7 @@ fun Level2LearnScreen(
     val prefs         = LocalPreferencesHelper.current
     val selectedTheme = prefs.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default)
 
+    val isTablet    = DeviceInfo.isTablet
     val abCalc      = remember { AbacusCalculations(lesson.columns) }
     var animPhase   by remember { mutableStateOf(L2LearnPhase.RESULT) }
     var rodMovement by remember { mutableStateOf<List<RodMovement>>(emptyList()) }
@@ -93,8 +95,9 @@ fun Level2LearnScreen(
         HomePageBackground()
 
         Row(
-            modifier              = Modifier.fillMaxSize(),
+            modifier              = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16),
+            verticalAlignment     = Alignment.CenterVertically,
         ) {
             // ── LEFT: back button + abacus/emoji ──────────────────────────────
             Column(modifier = Modifier.weight(0.40f).fillMaxHeight()) {
@@ -184,7 +187,7 @@ fun Level2LearnScreen(
             Box(
                 modifier = Modifier
                     .weight(0.60f)
-                    .fillMaxHeight()
+                    .then(if (!isTablet) Modifier.fillMaxHeight() else Modifier)
                     .padding(end = AppDimens.Dimens16, top = AppDimens.Dimens12, bottom = AppDimens.Dimens12)
                     .shadow(AppDimens.Dimens8, cardShape,
                         spotColor    = lesson.endColor.copy(0.3f),
@@ -195,12 +198,12 @@ fun Level2LearnScreen(
                 AnimatedContent(
                     targetState    = stepIndex,
                     transitionSpec = { fadeIn(tween(300)) togetherWith fadeOut(tween(300)) },
-                    modifier       = Modifier.fillMaxSize(),
+                    modifier       = Modifier.fillMaxWidth(),
                     label          = "step-content"
                 ) { idx ->
                     val s = steps[idx]
                     Column(
-                        modifier            = Modifier.fillMaxSize(),
+                        modifier            = Modifier.fillMaxWidth(),
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
                         Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)) {
@@ -242,7 +245,8 @@ fun Level2LearnScreen(
                                 text       = s.body,
                                 style      = MaterialTheme.typography.bodyMedium.scaled(),
                                 color      = Color.White.copy(alpha = 0.95f),
-                                textAlign  = TextAlign.Center
+                                textAlign  = TextAlign.Center,
+                                lineHeight = 22.sp.scaled()
                             )
                         }
                         if (s.fromValue != null) {
@@ -255,7 +259,7 @@ fun Level2LearnScreen(
                             )
                         }
 
-                        Spacer(Modifier.weight(1f))
+                        Spacer(Modifier.height(AppDimens.Dimens20))
 
                         Row(
                             modifier              = Modifier.fillMaxWidth(),
