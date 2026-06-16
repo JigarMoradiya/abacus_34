@@ -18,6 +18,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.data.local.data.DeviceInfo
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
@@ -130,6 +131,7 @@ fun TableDrillScreen(
                                 selectedAnswer = selectedAnswer,
                                 onAnswerSelected = { choice ->
                                     if (selectedAnswer == null) {
+                                        AudioPlayerManager.playSoundBtnClick()
                                         selectedAnswer = choice
                                         if (choice == questions[currentIndex].answer) score++
                                     }

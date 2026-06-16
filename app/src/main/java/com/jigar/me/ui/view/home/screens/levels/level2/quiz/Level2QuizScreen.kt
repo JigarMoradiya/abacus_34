@@ -50,6 +50,18 @@ fun Level2QuizScreen(
     var score      by remember { mutableIntStateOf(0) }
     var showResult by remember { mutableStateOf(false) }
 
+    val prefs = LocalPreferencesHelper.current
+    LaunchedEffect(showResult) {
+        if (!showResult) return@LaunchedEffect
+        val stars = when {
+            score >= questions.size - 1 -> 3
+            score >= questions.size / 2  -> 2
+            else -> 1
+        }
+        val key = "l2_quiz_stars_$lessonId"
+        if (stars > prefs.getCustomParamInt(key, 0)) prefs.setCustomParamInt(key, stars)
+    }
+
     LaunchedEffect(selected) {
         val sel = selected ?: return@LaunchedEffect
         if (sel == questions[qIndex].result) {
@@ -68,7 +80,6 @@ fun Level2QuizScreen(
 
     val isTablet      = DeviceInfo.isTablet
     val question      = questions[minOf(qIndex, questions.size - 1)]
-    val prefs         = LocalPreferencesHelper.current
     val selectedTheme = prefs.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default)
 
     Box(modifier = Modifier.fillMaxSize()) {

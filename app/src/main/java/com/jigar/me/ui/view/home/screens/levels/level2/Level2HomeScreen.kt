@@ -1,6 +1,7 @@
 package com.jigar.me.ui.view.home.screens.levels.level2
 
 import androidx.compose.foundation.background
+import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -40,6 +41,7 @@ fun Level2HomeScreen(
     onBackClick: () -> Unit,
     onNavigateToChapter: (Int) -> Unit,
 ) {
+    val prefs        = LocalPreferencesHelper.current
     var isSubscribed by remember { mutableStateOf(homeActivityViewModel.isPurchasedForModule()) }
     var showPaywall  by remember { mutableStateOf(false) }
 
@@ -52,27 +54,28 @@ fun Level2HomeScreen(
                 modifier         = Modifier.fillMaxWidth().weight(1f),
                 contentAlignment = Alignment.Center
             ) {
-                val cols       = 5
-                val rows       = 2
-                val spacing    = AppDimens.Dimens10
-                val hPad       = AppDimens.Dimens16
-                val vPad       = AppDimens.Dimens10
-                val shadowRoom = AppDimens.Dimens8
+                val cols    = 5
+                val rows    = 2
+                val spacing = AppDimens.Dimens10
+                val hPad    = AppDimens.Dimens16
+                val vPad    = AppDimens.Dimens12
 
                 val cellW = (maxWidth - hPad * 2 - spacing * (cols - 1)) / cols
-                val cellH = (maxHeight - vPad * 2 - spacing * (rows - 1) - shadowRoom) / rows
+                val cellH = (maxHeight - spacing * (rows - 1) - vPad) / rows
 
                 Column(
-                    modifier            = Modifier.width(maxWidth - hPad * 2).padding(vertical = vPad),
-                    verticalArrangement = Arrangement.spacedBy(spacing)
+                    modifier            = Modifier.fillMaxSize().padding(horizontal = hPad).padding(bottom = vPad),
+                    verticalArrangement = Arrangement.spacedBy(spacing, Alignment.CenterVertically)
                 ) {
                     Row(
                         modifier              = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(spacing)
                     ) {
                         level2Chapters.take(cols).forEachIndexed { index, chapter ->
-                            val isLocked = !isSubscribed && index >= 3
-                            L2ChapterCard(chapter, cellW, cellH, isLocked) {
+                            val isLocked   = !isSubscribed && index >= 3
+                            val chapStars  = if (chapter.type != Level2ChapterType.FORMULA_REF)
+                                prefs.getCustomParamInt("l2_quiz_stars_${chapter.id}", 0) else 0
+                            L2ChapterCard(chapter, cellW, cellH, isLocked, chapStars) {
                                 AudioPlayerManager.playSoundBtnClick()
                                 if (isLocked) showPaywall = true else onNavigateToChapter(chapter.id)
                             }
@@ -83,13 +86,14 @@ fun Level2HomeScreen(
                         horizontalArrangement = Arrangement.spacedBy(spacing)
                     ) {
                         level2Chapters.drop(cols).forEach { chapter ->
-                            L2ChapterCard(chapter, cellW, cellH, isLocked = !isSubscribed) {
+                            val chapStars = if (chapter.type != Level2ChapterType.FORMULA_REF)
+                                prefs.getCustomParamInt("l2_quiz_stars_${chapter.id}", 0) else 0
+                            L2ChapterCard(chapter, cellW, cellH, isLocked = !isSubscribed, stars = chapStars) {
                                 AudioPlayerManager.playSoundBtnClick()
                                 if (!isSubscribed) showPaywall = true else onNavigateToChapter(chapter.id)
                             }
                         }
                     }
-                    Spacer(modifier = Modifier.height(shadowRoom))
                 }
             }
         }
@@ -109,6 +113,7 @@ private fun L2ChapterCard(
     cellW: Dp,
     cellH: Dp,
     isLocked: Boolean = false,
+    stars: Int = 0,
     onClick: () -> Unit,
 ) {
     val isFormulaRef = chapter.type == Level2ChapterType.FORMULA_REF
@@ -175,6 +180,15 @@ private fun L2ChapterCard(
                     text  = "2 columns",
                     style = MaterialTheme.typography.labelSmall.scaled(),
                     color = Color.White.copy(0.70f)
+                )
+            }
+            if (stars > 0) {
+                Spacer(Modifier.height(AppDimens.Dimens4))
+                Text(
+                    text  = "★".repeat(stars) + "☆".repeat(3 - stars),
+                    color = Color.White,
+                    style = if (DeviceInfo.isTablet) MaterialTheme.typography.labelLarge.scaled()
+                            else                     MaterialTheme.typography.labelMedium.scaled(),
                 )
             }
         }

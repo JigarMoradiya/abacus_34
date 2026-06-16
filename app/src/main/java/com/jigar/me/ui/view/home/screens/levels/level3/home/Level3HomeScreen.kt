@@ -35,19 +35,19 @@ fun Level3HomeScreen(
                 modifier         = Modifier.fillMaxWidth().weight(1f),
                 contentAlignment = Alignment.Center,
             ) {
-                val spacing    = AppDimens.Dimens10
-                val hPad       = AppDimens.Dimens16
-                val vPad       = AppDimens.Dimens10
+                val spacing = AppDimens.Dimens10
+                val hPad    = AppDimens.Dimens16
+                val vPad    = AppDimens.Dimens12
 
                 val topModes    = L3Mode.entries.take(3)
                 val bottomModes = L3Mode.entries.drop(3)
 
-                val cardH = (maxHeight - vPad * 2 - spacing - AppDimens.Dimens8) / 2
+                val cardH = (maxHeight - spacing - vPad) / 2
                 val topW  = (maxWidth  - hPad * 2 - spacing * 2) / 3
 
                 Column(
-                    modifier            = Modifier.fillMaxSize().padding(horizontal = hPad, vertical = vPad),
-                    verticalArrangement = Arrangement.spacedBy(spacing),
+                    modifier            = Modifier.fillMaxSize().padding(horizontal = hPad).padding(bottom = vPad),
+                    verticalArrangement = Arrangement.spacedBy(spacing, Alignment.CenterVertically),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Row(

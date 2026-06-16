@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.theme.AppDimens
 
@@ -103,7 +104,10 @@ private fun L3Key(
                 else Brush.linearGradient(listOf(Color.Gray.copy(0.5f), Color.Gray.copy(0.3f))),
                 shape
             )
-            .clickable(remember { MutableInteractionSource() }, null, enabled = enabled) { onClick() },
+            .clickable(remember { MutableInteractionSource() }, null, enabled = enabled) {
+                AudioPlayerManager.playSoundBtnClick()
+                onClick()
+            },
         contentAlignment = Alignment.Center
     ) {
         Text(
@@ -124,7 +128,10 @@ fun L3ResultBtn(label: String, filled: Boolean, onClick: () -> Unit) {
             .padding(AppDimens.Dimens3)
             .shadow(AppDimens.Dimens4, shape)
             .background(if (filled) Color.White else Color.White.copy(0.22f), shape)
-            .clickable(remember { MutableInteractionSource() }, null) { onClick() }
+            .clickable(remember { MutableInteractionSource() }, null) {
+                AudioPlayerManager.playSoundBtnClick()
+                onClick()
+            }
             .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens12),
         contentAlignment = Alignment.Center
     ) {

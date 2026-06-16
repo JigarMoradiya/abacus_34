@@ -606,7 +606,8 @@ private fun StreakCard(currentStreak: Int, bestStreak: Int, shields: Int = 0) {
 
 @Composable
 private fun StreakRewardDialog(milestone: Int, onDismiss: () -> Unit) {
-    val badgeName = com.jigar.me.utils.AppConstants.Streak.milestoneNames[milestone] ?: "Champion"
+    val badgeName = AppConstants.Streak.milestoneNames[milestone] ?: "Champion"
+    LaunchedEffect(Unit) { AudioPlayerManager.playSoundClap() }
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -879,7 +880,10 @@ private fun LevelMiniCard(info: LevelInfo, onClick: () -> Unit) {
                 spotColor   = info.start.copy(alpha = 0.22f)
             )
             .background(Brush.linearGradient(listOf(info.start, info.end)), PillShape)
-            .clickable { onClick() }
+            .clickable {
+                AudioPlayerManager.playSoundBtnClick()
+                onClick()
+            }
             .padding(horizontal = Dimens14, vertical = Dimens8),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(Dimens8)

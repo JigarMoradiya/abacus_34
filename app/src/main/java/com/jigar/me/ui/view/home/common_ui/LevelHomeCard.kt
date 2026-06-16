@@ -38,6 +38,7 @@ fun LevelHomeCard(
     height:     Dp,
     hasBorder:  Boolean = false,
     isLocked:   Boolean = false,
+    stars:      Int     = 0,
     onClick:    () -> Unit,
 ) {
     val isTablet = DeviceInfo.isTablet
@@ -87,6 +88,15 @@ fun LevelHomeCard(
                     color      = Color.White,
                     fontWeight = FontWeight.SemiBold,
                     textAlign  = TextAlign.Center,
+                )
+            }
+            if (stars > 0) {
+                Spacer(Modifier.height(AppDimens.Dimens4))
+                Text(
+                    text  = "★".repeat(stars) + "☆".repeat(3 - stars),
+                    color = Color.White,
+                    style = if (isTablet) MaterialTheme.typography.labelLarge.scaled()
+                            else          MaterialTheme.typography.labelMedium.scaled(),
                 )
             }
         }

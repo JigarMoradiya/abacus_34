@@ -24,6 +24,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
@@ -78,7 +79,10 @@ private fun RowScope.FlashDiffCard(diff: L3FlashDifficulty, onClick: () -> Unit)
                 spotColor    = diff.endColor.copy(0.45f))
             .background(Brush.linearGradient(listOf(diff.startColor, diff.endColor)), shape)
             .border(AppDimens.Dimens1, Color.White.copy(0.25f), shape)
-            .clickable(remember { MutableInteractionSource() }, null) { onClick() }
+            .clickable(remember { MutableInteractionSource() }, null) {
+                AudioPlayerManager.playSoundBtnClick()
+                onClick()
+            }
             .padding(AppDimens.Dimens12)
     ) {
         Column(

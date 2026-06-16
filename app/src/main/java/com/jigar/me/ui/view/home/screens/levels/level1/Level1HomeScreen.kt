@@ -8,10 +8,13 @@ import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.common_ui.LevelHomeCard
+import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
 fun Level1HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit) {
+    val prefs = LocalPreferencesHelper.current
+
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
         Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
@@ -21,19 +24,18 @@ fun Level1HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit)
                 modifier         = Modifier.fillMaxWidth().weight(1f),
                 contentAlignment = Alignment.Center,
             ) {
-                val cols       = 3
-                val rows       = 2
-                val spacing    = AppDimens.Dimens12
-                val hPad       = AppDimens.Dimens16
-                val vPad       = AppDimens.Dimens12
-                val shadowRoom = AppDimens.Dimens8
+                val cols    = 3
+                val rows    = 2
+                val spacing = AppDimens.Dimens12
+                val hPad    = AppDimens.Dimens16
+                val vPad    = AppDimens.Dimens12
 
                 val cellW = (maxWidth  - hPad * 2 - spacing * (cols - 1)) / cols
-                val cellH = (maxHeight - vPad * 2 - spacing * (rows - 1) - shadowRoom) / rows
+                val cellH = (maxHeight - spacing * (rows - 1) - vPad) / rows
 
                 Column(
-                    modifier            = Modifier.width(maxWidth - hPad * 2).padding(vertical = vPad),
-                    verticalArrangement = Arrangement.spacedBy(spacing),
+                    modifier            = Modifier.fillMaxSize().padding(horizontal = hPad).padding(bottom = vPad),
+                    verticalArrangement = Arrangement.spacedBy(spacing, Alignment.CenterVertically),
                 ) {
                     Row(
                         modifier              = Modifier.fillMaxWidth(),
@@ -48,6 +50,7 @@ fun Level1HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit)
                                 endColor   = lesson.endColor,
                                 width      = cellW,
                                 height     = cellH,
+                                stars      = prefs.getCustomParamInt("l1_quiz_stars_${lesson.id}", 0),
                                 onClick    = { AudioPlayerManager.playSoundBtnClick(); onNavigateToLesson(lesson.id) },
                             )
                         }
@@ -65,11 +68,11 @@ fun Level1HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit)
                                 endColor   = lesson.endColor,
                                 width      = cellW,
                                 height     = cellH,
+                                stars      = prefs.getCustomParamInt("l1_quiz_stars_${lesson.id}", 0),
                                 onClick    = { AudioPlayerManager.playSoundBtnClick(); onNavigateToLesson(lesson.id) },
                             )
                         }
                     }
-                    Spacer(modifier = Modifier.height(shadowRoom))
                 }
             }
         }

@@ -21,6 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.base.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
@@ -426,7 +427,10 @@ private fun GuidedStepPanel(
                         .padding(AppDimens.Dimens3)
                         .shadow(AppDimens.Dimens4, btnShape)
                         .background(Color.White, btnShape)
-                        .clickable(remember { MutableInteractionSource() }, null) { onNext() }
+                        .clickable(remember { MutableInteractionSource() }, null) {
+                            AudioPlayerManager.playSoundBtnClick()
+                            onNext()
+                        }
                         .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens10),
                     contentAlignment = Alignment.Center
                 ) {
