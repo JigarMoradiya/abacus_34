@@ -13,6 +13,7 @@ import com.jigar.me.ui.jetpack.core.StatefulViewModel
 import com.jigar.me.ui.jetpack.core.domain.ConsumableCommand
 import com.jigar.me.ui.jetpack.core.repository.abacus_data.AbacusDataRepository
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.AppReviewManager
 import com.jigar.me.utils.StreakManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -74,10 +75,32 @@ class HomeFragmentViewModel @Inject constructor(
             )
         }
         StreakManager.scheduleNotification(context)
+
+        // No streak dialog queued up to show this session — check the review
+        // gate immediately. If a milestone dialog IS queued, defer to
+        // dismissStreakMilestone() so the two never show at once.
+        if (result.milestoneAwarded == null) maybeShowReviewGate()
     }
 
     fun dismissStreakMilestone() {
         updateState_ { copy(streakMilestoneAwarded = null) }
+        maybeShowReviewGate()
+    }
+
+    private fun maybeShowReviewGate() {
+        if (!AppReviewManager.shouldShowReviewGate(prefs)) return
+        AppReviewManager.onGateShown(prefs)
+        updateState_ { copy(showReviewGate = true) }
+    }
+
+    fun onReviewGateNegative() {
+        AppReviewManager.onGateNegative(prefs)
+        updateState_ { copy(showReviewGate = false) }
+    }
+
+    fun onReviewGatePositive(activity: android.app.Activity) {
+        updateState_ { copy(showReviewGate = false) }
+        viewModelScope.launch { AppReviewManager.onGatePositive(prefs, activity) }
     }
 
     fun closeConflictPopup() {

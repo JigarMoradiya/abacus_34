@@ -42,6 +42,9 @@ import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.
 import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.viewmodels.AbacusDoPracticeViewModel
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.Loader
+import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
+import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateHost
+import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.screens.reports.dialogs.ExerciseExamCompleteResultDialog
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
@@ -60,6 +63,8 @@ fun AbacusDoPracticeRoute(
     val loginUiState by loginViewModel.uiState.collectAsStateWithLifecycle()
     val lifecycleOwner = LocalLifecycleOwner.current
     val context = LocalContext.current
+    val prefs = LocalPreferencesHelper.current
+    val reviewGate = rememberReviewGateController()
 
     DisposableEffect(lifecycleOwner) {
         val observer = LifecycleEventObserver { _, event ->
@@ -178,7 +183,10 @@ fun AbacusDoPracticeRoute(
                     onLoginToSave = if (!uiState.saveResults && !uiState.resultSaved) {
                         { loginViewModel.signInWithGoogle(context) }
                     } else null,
-                    onClose = onBackClick,
+                    onClose = {
+                        val pct = (it.no_of_right_answers ?: 0).toFloat() / (it.no_of_questions ?: 1).toFloat()
+                        if (pct >= 0.8f) reviewGate.attempt(prefs) { onBackClick() } else onBackClick()
+                    },
                     onGiveAgain = onBackClick,
                 )
             }
@@ -195,4 +203,6 @@ fun AbacusDoPracticeRoute(
             )
         }
     }
+
+    ReviewGateHost(reviewGate, prefs)
 }

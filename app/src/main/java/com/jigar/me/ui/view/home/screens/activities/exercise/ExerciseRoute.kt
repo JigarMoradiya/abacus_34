@@ -31,6 +31,9 @@ import com.jigar.me.ui.view.home.screens.activities.exercise.components.Exercise
 import com.jigar.me.ui.view.home.screens.activities.exercise.components.ExerciseScreen
 import com.jigar.me.ui.view.home.screens.activities.exercise.viewmodels.ExerciseViewModel
 import com.jigar.me.ui.view.home.common_ui.Loader
+import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
+import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateHost
+import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsLabel
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumLoginBottomSheet
@@ -55,6 +58,8 @@ fun ExerciseRoute(
     var isPurchase by remember { mutableStateOf(homeActivityViewModel.isPurchasedForModule()) }
     val isLoggedIn = homeActivityViewModel.isUserLoggedIn()
     val context = androidx.compose.ui.platform.LocalContext.current
+    val prefs = LocalPreferencesHelper.current
+    val reviewGate = rememberReviewGateController()
     viewModel.setIsPurchased(isPurchase)
     var showPaywall by remember { mutableStateOf(false) }
 
@@ -158,11 +163,16 @@ fun ExerciseRoute(
                 onLoginToSave = if (!uiState.saveResults && !uiState.resultSaved) {
                     { loginViewModel.signInWithGoogle(context) }
                 } else null,
-                onClose = { viewModel.closeExercise() },
+                onClose = {
+                    val pct = (it.no_of_right_answers ?: 0).toFloat() / (it.no_of_questions ?: 1).toFloat()
+                    if (pct >= 0.8f) reviewGate.attempt(prefs) { viewModel.closeExercise() } else viewModel.closeExercise()
+                },
                 onGiveAgain = { viewModel.generateExercise() },
             )
         }
     }
+
+    ReviewGateHost(reviewGate, prefs)
 
     AnimatedVisibility(
         visible = uiState.isLeavePage, enter = fadeIn(), exit = fadeOut()

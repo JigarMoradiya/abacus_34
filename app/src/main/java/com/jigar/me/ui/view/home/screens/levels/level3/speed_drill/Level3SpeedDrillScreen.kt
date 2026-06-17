@@ -28,6 +28,9 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
+import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
+import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateHost
+import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
 import com.jigar.me.ui.view.home.screens.levels.level3.*
 import com.jigar.me.ui.view.home.screens.levels.level3.components.*
 import com.jigar.me.ui.view.home.theme.AppDimens
@@ -91,6 +94,8 @@ fun Level3SpeedDrillScreen(
     val cardBrush = remember(mode.startColor, mode.endColor) {
         Brush.linearGradient(listOf(mode.startColor.copy(0.82f), mode.endColor.copy(0.82f)))
     }
+    val prefs = LocalPreferencesHelper.current
+    val reviewGate = rememberReviewGateController()
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
 
@@ -357,12 +362,16 @@ fun Level3SpeedDrillScreen(
                                     currentSession = generateL3Session(2, config.digits)
                                     resetKey++
                                 }
-                                L3ResultBtn("Done ✓", filled = true, onClick = onFinished)
+                                L3ResultBtn("Done ✓", filled = true, onClick = {
+                                    if (rp.score >= 10) reviewGate.attempt(prefs) { onFinished() } else onFinished()
+                                })
                             }
                         }
                     }
                 }
             }
         }
+
+        ReviewGateHost(reviewGate, prefs)
     }
 }

@@ -25,6 +25,9 @@ data class HomeUiState(
     val longestStreak: Int = 0,
     val streakShields: Int = 0,
     val streakMilestoneAwarded: Int? = null,
+
+    // Review gate — shown right after the streak dialog is dismissed, when eligible
+    val showReviewGate: Boolean = false,
 )
 
 data class FreeTrialParam(

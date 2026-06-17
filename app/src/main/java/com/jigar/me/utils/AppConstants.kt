@@ -243,5 +243,13 @@ object AppConstants {
         }
     }
 
+    annotation class Review {
+        companion object {
+            const val nextMilestoneDay = "review_next_milestone_day"
+            const val lastAskDate      = "review_last_ask_date"
+            const val exhausted        = -1
+            val milestones = intArrayOf(3, 7, 15, 30, 50, 75, 100)
+        }
+    }
 
 }

@@ -28,6 +28,8 @@ import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWith
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
+import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateHost
+import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
 
@@ -58,6 +60,7 @@ fun Level3GuidedScreen(
 
     val abCalc = remember { AbacusCalculations(2) }
     val prefs  = LocalPreferencesHelper.current
+    val reviewGate = rememberReviewGateController()
     val theme  = prefs.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default)
 
     LaunchedEffect(currentStep, config.autoAbacus) {
@@ -332,13 +335,17 @@ fun Level3GuidedScreen(
                                     typedValue = ""
                                     abCalc.resetAbacusData()
                                 }
-                                L3ResultBtn("Done ✓", filled = true, onClick = onFinished)
+                                L3ResultBtn("Done ✓", filled = true, onClick = {
+                                    if (resultPhase.correct) reviewGate.attempt(prefs) { onFinished() } else onFinished()
+                                })
                             }
                         }
                     }
                 }
             }
         }
+
+        ReviewGateHost(reviewGate, prefs)
     }
 }
 

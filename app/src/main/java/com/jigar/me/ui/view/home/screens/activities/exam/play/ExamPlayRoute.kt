@@ -34,6 +34,9 @@ import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.Loader
+import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
+import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateHost
+import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsLabel
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.common_ui.Loader
@@ -57,6 +60,8 @@ fun ExamPlayRoute(
     val loginUiState by loginViewModel.uiState.collectAsStateWithLifecycle()
     val blinkAlpha by rememberBlinkAlpha()
     val context = LocalContext.current
+    val prefs = LocalPreferencesHelper.current
+    val reviewGate = rememberReviewGateController()
 
     loginUiState.navigateToHome?.consume {
         uiState.submitExamRequest?.let { viewModel.submitExamApi(it) }
@@ -134,11 +139,16 @@ fun ExamPlayRoute(
                 onLoginToSave = if (!uiState.saveResults && !uiState.resultSaved) {
                     { loginViewModel.signInWithGoogle(context) }
                 } else null,
-                onClose = onBackClick,
+                onClose = {
+                    val pct = (it.no_of_right_answers ?: 0).toFloat() / (it.no_of_questions ?: 1).toFloat()
+                    if (pct >= 0.8f) reviewGate.attempt(prefs) { onBackClick() } else onBackClick()
+                },
                 onGiveAgain = { viewModel.reGenerateExam() }
             )
         }
     }
+
+    ReviewGateHost(reviewGate, prefs)
 
     AnimatedVisibility(
         visible = uiState.isLeavePage, enter = fadeIn(), exit = fadeOut()

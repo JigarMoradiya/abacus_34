@@ -26,6 +26,8 @@ import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsOptionButton
+import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateHost
+import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
 import com.jigar.me.ui.view.home.screens.levels.level4.optionType
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
@@ -51,6 +53,7 @@ fun Level2QuizScreen(
     var showResult by remember { mutableStateOf(false) }
 
     val prefs = LocalPreferencesHelper.current
+    val reviewGate = rememberReviewGateController()
     LaunchedEffect(showResult) {
         if (!showResult) return@LaunchedEffect
         val stars = when {
@@ -324,12 +327,16 @@ fun Level2QuizScreen(
                             L2QuizResultBtn("Try Again 🔄", filled = false) {
                                 qIndex = 0; selected = null; score = 0; showResult = false
                             }
-                            L2QuizResultBtn("Continue →", filled = true, onClick = onFinished)
+                            L2QuizResultBtn("Continue →", filled = true, onClick = {
+                                if (stars == 3) reviewGate.attempt(prefs) { onFinished() } else onFinished()
+                            })
                         }
                     }
                 }
             }
         }
+
+        ReviewGateHost(reviewGate, prefs)
     }
 }
 

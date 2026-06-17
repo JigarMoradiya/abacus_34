@@ -46,13 +46,13 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens40
 
 @Composable
 fun MyAccountScreen(
-    uiState: MyAccountUiState, onMenuClick: (String) -> Unit
+    uiState: MyAccountUiState, modifier: Modifier = Modifier.fillMaxSize(), onMenuClick: (String) -> Unit
 ) {
     val context = LocalContext.current
     val menuList = remember(uiState.isLoggedIn) { getMenuList(context, uiState.isLoggedIn) }
 
     LazyColumn(
-        modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens12)
+        modifier = modifier, contentPadding = PaddingValues(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens12)
     ) {
 
         // Not logged in banner

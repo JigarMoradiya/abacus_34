@@ -8,6 +8,7 @@ import androidx.compose.material.icons.outlined.Assessment
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.PrivacyTip
 import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.outlined.StarRate
 import androidx.compose.material.icons.outlined.Subscriptions
 import androidx.compose.material.icons.outlined.SupportAgent
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -44,6 +45,7 @@ fun getMenuList(context: Context, isLoggedIn: Boolean): List<MyAccountMenu> {
             subMenu = buildList {
                 add(MyAccountMenu("faqs", context.getString(R.string.faqs), Icons.AutoMirrored.Outlined.Help))
                 add(MyAccountMenu("need_help", context.getString(R.string.need_help), Icons.Outlined.SupportAgent))
+                add(MyAccountMenu("rate_us_on_the_play_store", context.getString(R.string.rate_us_on_the_play_store), Icons.Outlined.StarRate))
                 add(MyAccountMenu("privacy_policy", context.getString(R.string.privacy_policy), Icons.Outlined.PrivacyTip))
                 if (isLoggedIn) {
                     add(MyAccountMenu("logout", context.getString(R.string.logout), Icons.AutoMirrored.Outlined.Logout))

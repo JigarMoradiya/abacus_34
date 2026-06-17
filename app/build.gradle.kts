@@ -101,6 +101,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.play.asset.delivery.ktx)
+    implementation(libs.play.review.ktx)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.junit)

@@ -28,6 +28,9 @@ import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
+import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
+import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateHost
+import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
 import com.jigar.me.ui.view.home.screens.levels.level3.*
 import com.jigar.me.ui.view.home.screens.levels.level3.components.*
 import com.jigar.me.ui.view.home.theme.AppDimens
@@ -169,6 +172,8 @@ fun Level3FlashPlayScreen(
     val cardBrush = remember(diff.startColor, diff.endColor) {
         Brush.linearGradient(listOf(diff.startColor.copy(0.85f), diff.endColor.copy(0.85f)))
     }
+    val prefs = LocalPreferencesHelper.current
+    val reviewGate = rememberReviewGateController()
 
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
@@ -319,13 +324,17 @@ fun Level3FlashPlayScreen(
                                     phase         = L3FlashPhase.Countdown(3)
                                     restartKey++
                                 }
-                                L3ResultBtn("Done ✓", filled = true, onClick = onFinished)
+                                L3ResultBtn("Done ✓", filled = true, onClick = {
+                                    if (rp.correct) reviewGate.attempt(prefs) { onFinished() } else onFinished()
+                                })
                             }
                         }
                     }
                 }
             }
         }
+
+        ReviewGateHost(reviewGate, prefs)
     }
 }
 

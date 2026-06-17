@@ -22,6 +22,9 @@ import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
+import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
+import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateHost
+import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsOptionButton
 import com.jigar.me.ui.view.home.theme.AppDimens
@@ -50,6 +53,9 @@ fun TableDrillScreen(
     var score by remember { mutableIntStateOf(0) }
     var showResult by remember { mutableStateOf(false) }
     var showingTable by remember { mutableStateOf(false) }
+
+    val prefs = LocalPreferencesHelper.current
+    val reviewGate = rememberReviewGateController()
 
     Box(modifier = Modifier.fillMaxSize()) {
         HomePageBackground()
@@ -116,7 +122,10 @@ fun TableDrillScreen(
                                 score = 0; currentIndex = 0; selectedAnswer = null
                                 showResult = false; showingTable = false
                             },
-                            onBack = onBackClick
+                            onBack = {
+                                val pct = if (questions.isNotEmpty()) score.toDouble() / questions.size else 0.0
+                                if (pct >= 0.9) reviewGate.attempt(prefs) { onBackClick() } else onBackClick()
+                            }
                         )
                     }
                     showingTable -> {
@@ -142,6 +151,8 @@ fun TableDrillScreen(
                 }
             }
         }
+
+        ReviewGateHost(reviewGate, prefs)
     }
 }
 

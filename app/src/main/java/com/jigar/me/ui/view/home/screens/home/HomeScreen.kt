@@ -56,6 +56,7 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.Loader
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreeTrialDialog
+import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateBottomSheet
 import com.jigar.me.ui.view.home.screens.home.components.HomeMenuScreen
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeFragmentViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
@@ -446,6 +447,15 @@ fun HomeScreen(
                 onDismiss = { viewModel.dismissStreakMilestone() }
             )
         }
+
+        // ── Review gate sheet — shown after the streak dialog (if any) clears ──
+        val reviewActivity = LocalContext.current as? android.app.Activity
+        ReviewGateBottomSheet(
+            visible = uiState.showReviewGate,
+            onDismiss = { viewModel.onReviewGateNegative() },
+            onNegative = { viewModel.onReviewGateNegative() },
+            onPositive = { reviewActivity?.let { viewModel.onReviewGatePositive(it) } }
+        )
     }
 }
 

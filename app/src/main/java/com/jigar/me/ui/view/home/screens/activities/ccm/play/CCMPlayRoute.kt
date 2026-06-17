@@ -32,6 +32,9 @@ import com.jigar.me.ui.view.home.screens.activities.ccm.play.components.Question
 import com.jigar.me.ui.view.home.screens.activities.ccm.play.viewmodels.CCMPlayViewModel
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.Loader
+import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
+import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateHost
+import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 
 @Composable
@@ -40,6 +43,8 @@ fun CCMPlayRoute(
 ) {
     val viewModel: CCMPlayViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val prefs = LocalPreferencesHelper.current
+    val reviewGate = rememberReviewGateController()
 
     LaunchedEffect(viewModel.abacusCalc.stateVersion) {
         viewModel.handleMatch()
@@ -87,7 +92,7 @@ fun CCMPlayRoute(
             },
             onClose = {
                 viewModel.dismissCompletePopup()
-                onBackClick()
+                if (uiState.isAnswerTrue) reviewGate.attempt(prefs) { onBackClick() } else onBackClick()
             }
         )
     }
@@ -109,4 +114,6 @@ fun CCMPlayRoute(
             onNegativeTapped = onBackClick
         )
     }
+
+    ReviewGateHost(reviewGate, prefs)
 }
