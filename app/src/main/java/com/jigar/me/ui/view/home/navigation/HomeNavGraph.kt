@@ -47,6 +47,8 @@ import com.jigar.me.ui.view.home.screens.levels.level4.TableDrillScreen
 import com.jigar.me.ui.view.home.screens.levels.level4.TableFlashcardScreen
 import com.jigar.me.ui.view.home.screens.levels.level4.TableFillBlankScreen
 import com.jigar.me.ui.view.home.screens.levels.level4.TablePickerScreen
+import com.jigar.me.ui.view.home.screens.levels.level4.TableMixPickerScreen
+import com.jigar.me.ui.view.home.screens.levels.level4.TableMixHomeScreen
 import com.jigar.me.ui.view.home.screens.levels.level1.Level1HomeScreen
 import com.jigar.me.ui.view.home.screens.levels.level1.Level1LessonScreen
 import com.jigar.me.ui.view.home.screens.levels.level1.learn.Level1LearnScreen
@@ -736,6 +738,73 @@ fun HomeNavGraph(
                 onTableSelected = { tableNumber ->
                     navController.navigate(RouteNavigation.TodayTableHome.create(tableNumber))
                 },
+                onMixPractice = {
+                    navController.navigate(RouteNavigation.TableMixPicker.route)
+                },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+
+        composable(route = RouteNavigation.TableMixPicker.route) {
+            TableMixPickerScreen(
+                homeActivityViewModel = homeActivityViewModel,
+                onMixSelected = { tables ->
+                    navController.navigate(RouteNavigation.TableMixHome.create(tables))
+                },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.TableMixHome.route,
+            arguments = listOf(navArgument("tables") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val tables = backStackEntry.arguments?.getString("tables")
+                ?.split(",")?.mapNotNull { it.toIntOrNull() } ?: listOf(1, 2, 3)
+            TableMixHomeScreen(
+                tables = tables,
+                onNavigateToDrill = { navController.navigate(RouteNavigation.TableMixDrill.create(tables)) },
+                onNavigateToFlashcard = { navController.navigate(RouteNavigation.TableMixFlashcard.create(tables)) },
+                onNavigateToFillBlank = { navController.navigate(RouteNavigation.TableMixFillBlank.create(tables)) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.TableMixDrill.route,
+            arguments = listOf(navArgument("tables") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val tables = backStackEntry.arguments?.getString("tables")
+                ?.split(",")?.mapNotNull { it.toIntOrNull() } ?: listOf(1, 2, 3)
+            TableDrillScreen(
+                tableNumber = tables.first(),
+                tables = tables,
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.TableMixFlashcard.route,
+            arguments = listOf(navArgument("tables") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val tables = backStackEntry.arguments?.getString("tables")
+                ?.split(",")?.mapNotNull { it.toIntOrNull() } ?: listOf(1, 2, 3)
+            TableFlashcardScreen(
+                tableNumber = tables.first(),
+                tables = tables,
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.TableMixFillBlank.route,
+            arguments = listOf(navArgument("tables") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val tables = backStackEntry.arguments?.getString("tables")
+                ?.split(",")?.mapNotNull { it.toIntOrNull() } ?: listOf(1, 2, 3)
+            TableFillBlankScreen(
+                tableNumber = tables.first(),
+                tables = tables,
                 onBackClick = { navController.popBackStack() }
             )
         }

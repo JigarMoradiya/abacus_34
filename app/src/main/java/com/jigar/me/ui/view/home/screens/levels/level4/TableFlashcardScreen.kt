@@ -44,11 +44,13 @@ import kotlinx.coroutines.launch
 @Composable
 fun TableFlashcardScreen(
     tableNumber: Int,
+    tables: List<Int> = listOf(tableNumber),
     onBackClick: () -> Unit,
 ) {
     val cards = remember {
         mutableStateListOf<Pair<Int, Int>>().also { list ->
-            list.addAll((1..10).map { Pair(tableNumber, it) }.shuffled())
+            val pool = tables.flatMap { t -> (1..10).map { Pair(t, it) } }
+            list.addAll(pool.shuffled().take(10))
         }
     }
     var currentIndex by remember { mutableIntStateOf(0) }
@@ -147,7 +149,8 @@ fun TableFlashcardScreen(
                         total = cards.size,
                         onRetry = {
                             cards.clear()
-                            cards.addAll((1..10).map { Pair(tableNumber, it) }.shuffled())
+                            val pool = tables.flatMap { t -> (1..10).map { Pair(t, it) } }
+                            cards.addAll(pool.shuffled().take(10))
                             score = 0; currentIndex = 0; isFlipped = false; showResult = false
                             scope.launch { rotationAnim.snapTo(0f) }
                         },

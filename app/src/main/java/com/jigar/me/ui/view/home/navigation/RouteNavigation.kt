@@ -135,4 +135,18 @@ sealed class RouteNavigation(val route: String) {
         fun create(diffIndex: Int) = "Level3FlashPlay/$diffIndex"
     }
     object Level4TablePicker : RouteNavigation("Level4TablePicker")
+
+    object TableMixPicker : RouteNavigation("TableMixPicker")
+    object TableMixHome : RouteNavigation("TableMixHome/{tables}") {
+        fun create(tables: List<Int>) = "TableMixHome/${tables.joinToString(",")}"
+    }
+    object TableMixDrill : RouteNavigation("TableMixDrill/{tables}") {
+        fun create(tables: List<Int>) = "TableMixDrill/${tables.joinToString(",")}"
+    }
+    object TableMixFlashcard : RouteNavigation("TableMixFlashcard/{tables}") {
+        fun create(tables: List<Int>) = "TableMixFlashcard/${tables.joinToString(",")}"
+    }
+    object TableMixFillBlank : RouteNavigation("TableMixFillBlank/{tables}") {
+        fun create(tables: List<Int>) = "TableMixFillBlank/${tables.joinToString(",")}"
+    }
 }

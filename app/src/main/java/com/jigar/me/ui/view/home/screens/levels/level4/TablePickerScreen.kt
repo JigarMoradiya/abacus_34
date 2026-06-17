@@ -34,8 +34,14 @@ import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
+import androidx.compose.material.icons.filled.ChevronRight
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
+import androidx.compose.ui.text.style.TextAlign
 
 private val tablePickerColors = listOf(
     Color(0xFFE53935), Color(0xFFF57C00), Color(0xFFF9A825), Color(0xFF43A047), Color(0xFF00ACC1),
@@ -48,6 +54,7 @@ private val tablePickerColors = listOf(
 fun TablePickerScreen(
     homeActivityViewModel: HomeActivityViewModel,
     onTableSelected: (Int) -> Unit,
+    onMixPractice: () -> Unit = {},
     onBackClick: () -> Unit,
 ) {
     var isSubscribed by remember { mutableStateOf(homeActivityViewModel.isPurchasedForModule()) }
@@ -59,49 +66,66 @@ fun TablePickerScreen(
 
             BackButtonWithText(title = "Choose a table to practise", onBackClick = onBackClick)
 
-            BoxWithConstraints(
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(1f),
-                contentAlignment = Alignment.Center
+                    .weight(1f)
             ) {
-                val cols       = 5
-                val rows       = 4
-                val hPad       = AppDimens.Dimens16
-                val spacing    = AppDimens.Dimens12
-
-                val cellWfW = (maxWidth - hPad * 2 - spacing * (cols - 1)) / cols
-                val cellHfH = (maxHeight - spacing * (rows - 1) - AppDimens.Dimens12) / rows
-                val cellWfH = cellHfH * 1.5f
-                val cellW   = min(cellWfW, cellWfH)
-                val cellH   = cellW / 1.5f
-                val gridW   = cellW * cols + spacing * (cols - 1)
-
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
+                // LEFT 70% — table grid
+                BoxWithConstraints(
+                    modifier = Modifier
+                        .weight(0.70f)
+                        .fillMaxHeight(),
+                    contentAlignment = Alignment.Center
                 ) {
-                    LazyVerticalGrid(
-                        columns = GridCells.Fixed(cols),
-                        horizontalArrangement = Arrangement.spacedBy(spacing),
-                        verticalArrangement = Arrangement.spacedBy(spacing),
-                        userScrollEnabled = false,
-                        contentPadding = PaddingValues(bottom = AppDimens.Dimens12),
-                        modifier = Modifier
-                            .width(gridW)
-                            .height(cellH * rows + spacing * (rows - 1) + AppDimens.Dimens12)
+                    val cols    = 5
+                    val rows    = 4
+                    val hPad    = AppDimens.Dimens16
+                    val spacing = AppDimens.Dimens12
+
+                    val cellWfW = (maxWidth - hPad * 2 - spacing * (cols - 1)) / cols
+                    val cellHfH = (maxHeight - spacing * (rows - 1) - AppDimens.Dimens12) / rows
+                    val cellWfH = cellHfH * 1.5f
+                    val cellW   = min(cellWfW, cellWfH)
+                    val cellH   = cellW / 1.5f
+                    val gridW   = cellW * cols + spacing * (cols - 1)
+
+                    Column(
+                        modifier = Modifier.fillMaxHeight(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
                     ) {
-                        items((1..20).toList()) { n ->
-                            val color = tablePickerColors[(n - 1) % tablePickerColors.size]
-                            TablePickerButton(
-                                n = n, color = color,
-                                cellW = cellW, cellH = cellH,
-                                isLocked = n > 3 && !isSubscribed,
-                                onClick = { AudioPlayerManager.playSoundBtnClick(); if (isSubscribed || n <= 3) onTableSelected(n) else showPaywall = true }
-                            )
+                        LazyVerticalGrid(
+                            columns = GridCells.Fixed(cols),
+                            horizontalArrangement = Arrangement.spacedBy(spacing),
+                            verticalArrangement = Arrangement.spacedBy(spacing),
+                            userScrollEnabled = false,
+                            contentPadding = PaddingValues(bottom = AppDimens.Dimens12),
+                            modifier = Modifier
+                                .width(gridW)
+                                .height(cellH * rows + spacing * (rows - 1) + AppDimens.Dimens12)
+                        ) {
+                            items((1..20).toList()) { n ->
+                                val color = tablePickerColors[(n - 1) % tablePickerColors.size]
+                                TablePickerButton(
+                                    n = n, color = color,
+                                    cellW = cellW, cellH = cellH,
+                                    isLocked = n > 3 && !isSubscribed,
+                                    onClick = { AudioPlayerManager.playSoundBtnClick(); if (isSubscribed || n <= 3) onTableSelected(n) else showPaywall = true }
+                                )
+                            }
                         }
                     }
                 }
+
+                // RIGHT 30% — Mix Practice card
+                MixPracticeCard(
+                    modifier = Modifier
+                        .weight(0.30f)
+                        .fillMaxHeight()
+                        .padding(end = Dimens16, top = Dimens8, bottom = Dimens8),
+                    onClick = { AudioPlayerManager.playSoundBtnClick(); onMixPractice() }
+                )
             }
         }
     }
@@ -111,6 +135,77 @@ fun TablePickerScreen(
             onSubscriptionActivated = { isSubscribed = true; showPaywall = false },
             onDismiss = { showPaywall = false }
         )
+    }
+}
+
+@Composable
+private fun MixPracticeCard(modifier: Modifier = Modifier, onClick: () -> Unit) {
+    val isTablet = DeviceInfo.isTablet
+    Card(
+        onClick = onClick,
+        shape = RoundedCornerShape(Dimens16),
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
+        modifier = modifier
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        listOf(Color(0xFF1565C0), Color(0xFF0288D1), Color(0xFF00ACC1))
+                    )
+                ),
+            contentAlignment = Alignment.Center
+        ) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(Dimens8),
+                modifier = Modifier.padding(Dimens12)
+            ) {
+                Text(
+                    text = "🎲",
+                    style = if (isTablet) MaterialTheme.typography.displayLarge.scaled()
+                            else MaterialTheme.typography.displayMedium.scaled()
+                )
+                Text(
+                    text = "Mix\nTable\nPractice",
+                    style = if (isTablet) MaterialTheme.typography.titleLarge.scaled()
+                            else MaterialTheme.typography.titleMedium.scaled(),
+                    fontWeight = FontWeight.ExtraBold,
+                    color = Color.White,
+                    textAlign = TextAlign.Center
+                )
+                Text(
+                    text = "Practise multiple tables together!",
+                    style = MaterialTheme.typography.labelSmall.scaled(),
+                    color = Color.White.copy(alpha = 0.85f),
+                    textAlign = TextAlign.Center
+                )
+                Spacer(Modifier.height(Dimens4))
+                Row(
+                    modifier = Modifier
+                        .background(Color.White.copy(alpha = 0.22f), RoundedCornerShape(AppDimens.Dimens24))
+                        .padding(horizontal = Dimens12, vertical = Dimens8),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(Dimens4)
+                ) {
+                    Text(
+                        text = "Start",
+                        style = if (isTablet) MaterialTheme.typography.titleMedium.scaled()
+                                else MaterialTheme.typography.titleSmall.scaled(),
+                        fontWeight = FontWeight.ExtraBold,
+                        color = Color.White
+                    )
+                    Icon(
+                        imageVector = Icons.Default.ChevronRight,
+                        contentDescription = null,
+                        tint = Color.White,
+                        modifier = Modifier.size(AppDimens.Dimens20)
+                    )
+                }
+            }
+        }
     }
 }
 

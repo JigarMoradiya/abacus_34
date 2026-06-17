@@ -137,6 +137,71 @@ fun generateTableQuestions(tableNumber: Int, count: Int = 10): List<TableQuestio
     }
 }
 
+fun generateTableQuestions(tables: List<Int>, count: Int = 10): List<TableQuestionData> {
+    return (1..count).map {
+        val tableNum = tables.random()
+        val m = (1..10).random()
+        val correct = tableNum * m
+        val wrong = mutableSetOf<Int>()
+        while (wrong.size < 3) {
+            val candidate = tables.random() * (1..10).random()
+            if (candidate != correct) wrong.add(candidate)
+        }
+        TableQuestionData(
+            multiplier = tableNum,
+            multiplicand = m,
+            choices = (listOf(correct) + wrong.toList()).shuffled()
+        )
+    }
+}
+
+fun generateFillBlankQuestions(tables: List<Int>, count: Int = 10): List<FillBlankQuestion> {
+    return (0 until count).map { idx ->
+        val tableNum = tables.random()
+        val m = (1..10).random()
+        val type = if (idx % 2 == 0) FillBlankType.ANSWER else FillBlankType.MULTIPLICAND
+        when (type) {
+            FillBlankType.ANSWER -> {
+                val correct = tableNum * m
+                val wrong = mutableSetOf<Int>()
+                while (wrong.size < 3) {
+                    val c = tables.random() * (1..10).random()
+                    if (c != correct) wrong.add(c)
+                }
+                FillBlankQuestion(tableNum, m, type, (listOf(correct) + wrong.toList()).shuffled())
+            }
+            FillBlankType.MULTIPLICAND -> {
+                val correct = m
+                val wrong = mutableSetOf<Int>()
+                while (wrong.size < 3) {
+                    val c = (1..10).random()
+                    if (c != correct) wrong.add(c)
+                }
+                FillBlankQuestion(tableNum, m, type, (listOf(correct) + wrong.toList()).shuffled())
+            }
+        }
+    }
+}
+
+data class MixGroup(
+    val label: String,
+    val tables: List<Int>,
+    val isFree: Boolean,
+    val emoji: String,
+    val startColor: Color,
+    val endColor: Color,
+)
+
+val MIX_GROUPS = listOf(
+    MixGroup("×1 to ×3",   (1..3).toList(),   true,  "🌱", Color(0xFF2E7D32), Color(0xFF43A047)),
+    MixGroup("×1 to ×5",   (1..5).toList(),   false, "⭐", Color(0xFF1565C0), Color(0xFF1976D2)),
+    MixGroup("×6 to ×10",  (6..10).toList(),  false, "🔥", Color(0xFFE65100), Color(0xFFF57C00)),
+    MixGroup("×1 to ×10",  (1..10).toList(),  false, "🏆", Color(0xFF00695C), Color(0xFF00897B)),
+    MixGroup("×11 to ×15", (11..15).toList(), false, "💫", Color(0xFF6A1B9A), Color(0xFF7B1FA2)),
+    MixGroup("×15 to ×20", (15..20).toList(), false, "💪", Color(0xFFB71C1C), Color(0xFFE53935)),
+    MixGroup("×1 to ×20",  (1..20).toList(),  false, "👑", Color(0xFFF57F17), Color(0xFFF9A825)),
+)
+
 @Composable
 fun TableDisplayCard(tableNumber: Int) {
     val isTablet = DeviceInfo.isTablet

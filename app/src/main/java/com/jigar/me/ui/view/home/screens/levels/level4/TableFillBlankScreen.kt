@@ -53,9 +53,10 @@ import kotlinx.coroutines.delay
 @Composable
 fun TableFillBlankScreen(
     tableNumber: Int,
+    tables: List<Int> = listOf(tableNumber),
     onBackClick: () -> Unit,
 ) {
-    val questions = remember { generateFillBlankQuestions(tableNumber) }
+    val questions = remember { generateFillBlankQuestions(tables) }
     var currentIndex by remember { mutableIntStateOf(0) }
     var selectedAnswer by remember { mutableStateOf<Int?>(null) }
     val userAnswers = remember { mutableStateMapOf<Int, Int>() }

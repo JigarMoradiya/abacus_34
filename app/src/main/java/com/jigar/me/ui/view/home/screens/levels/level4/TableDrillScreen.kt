@@ -45,9 +45,10 @@ import com.jigar.me.ui.view.home.theme.PrimaryBlue
 @Composable
 fun TableDrillScreen(
     tableNumber: Int,
+    tables: List<Int> = listOf(tableNumber),
     onBackClick: () -> Unit,
 ) {
-    val questions = remember { generateTableQuestions(tableNumber) }
+    val questions = remember { generateTableQuestions(tables) }
     var currentIndex by remember { mutableIntStateOf(0) }
     var selectedAnswer by remember { mutableStateOf<Int?>(null) }
     var score by remember { mutableIntStateOf(0) }
