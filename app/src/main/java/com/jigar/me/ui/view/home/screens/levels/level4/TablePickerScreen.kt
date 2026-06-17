@@ -96,8 +96,8 @@ fun TablePickerScreen(
                             TablePickerButton(
                                 n = n, color = color,
                                 cellW = cellW, cellH = cellH,
-                                isLocked = !isSubscribed,
-                                onClick = { AudioPlayerManager.playSoundBtnClick(); if (isSubscribed) onTableSelected(n) else showPaywall = true }
+                                isLocked = n > 3 && !isSubscribed,
+                                onClick = { AudioPlayerManager.playSoundBtnClick(); if (isSubscribed || n <= 3) onTableSelected(n) else showPaywall = true }
                             )
                         }
                     }
