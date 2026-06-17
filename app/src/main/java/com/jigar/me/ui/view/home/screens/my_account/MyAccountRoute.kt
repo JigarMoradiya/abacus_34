@@ -45,8 +45,10 @@ import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateBottomSheet
 import com.jigar.me.ui.view.home.screens.my_account.components.MyAccountScreen
 import com.jigar.me.ui.view.home.screens.my_account.viewmodels.MyAccountViewModel
 import com.jigar.me.ui.view.other.ContactUsActivity
+import com.jigar.me.ui.view.home.common_ui.dialogs.ParentalGateDialog
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.AppReviewManager
+import com.jigar.me.utils.ParentalGateSessionCache
 import com.jigar.me.utils.extensions.openMail
 import com.jigar.me.utils.extensions.openURL
 import kotlinx.coroutines.launch
@@ -67,34 +69,46 @@ fun MyAccountRoute(
     val prefs = LocalPreferencesHelper.current
     var showLoginSheet by remember { mutableStateOf(false) }
     var showLoginSheetForHistory by remember { mutableStateOf(false) }
+    var showURLGate by remember { mutableStateOf(false) }
+    var pendingUrlAction by remember { mutableStateOf<(() -> Unit)?>(null) }
+    var showActionGate by remember { mutableStateOf(false) }
+    var pendingNavAction by remember { mutableStateOf<(() -> Unit)?>(null) }
+
+    fun openURLWithGate(action: () -> Unit) {
+        if (ParentalGateSessionCache.urlGatePassedThisSession) action()
+        else { pendingUrlAction = action; showURLGate = true }
+    }
+    fun openWithGate(action: () -> Unit) {
+        pendingNavAction = action; showActionGate = true
+    }
     var showRateUsSheet by remember { mutableStateOf(false) }
 //    var showDebugPreview by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
             BackButtonWithText(
-                title = stringResource(R.string.my_account),
+                title = stringResource(R.string.parent),
                 onBackClick = onBackClick
             )
             MyAccountScreen(uiState, modifier = Modifier.weight(1f)) { tag ->
                 when (tag) {
                     "login" -> showLoginSheet = true
-                    "faqs" -> onNavigateToFAQs()
-                    "subscription" -> onNavigateToPurchase()
+                    "faqs" -> openWithGate { onNavigateToFAQs() }
+                    "subscription" -> openWithGate { onNavigateToPurchase() }
                     "setting" -> onNavigateToSettings()
                     "report_history" -> {
                         if (uiState.isLoggedIn) onNavigateToReportHistory()
                         else showLoginSheetForHistory = true
                     }
                     "about_app" -> onNavigateToWhatsLearning()
-                    "rate_us_on_the_play_store" -> showRateUsSheet = true
-                    "need_help" -> {
+                    "rate_us_on_the_play_store" -> openWithGate { showRateUsSheet = true }
+                    "need_help" -> openWithGate {
                         ContactUsActivity.getInstance(context, AppConstants.extras_Comman.typeNeedHelp)
                     }
                     "privacy_policy" -> {
-                        uiState.privacyPolicyUrl?.let { context.openURL(it) }
+                        uiState.privacyPolicyUrl?.let { url -> openURLWithGate { context.openURL(url) } }
                     }
-                    "logout" -> viewModel.logoutOpenClose(true)
+                    "logout" -> openWithGate { viewModel.logoutOpenClose(true) }
                 }
             }
 
@@ -130,7 +144,7 @@ fun MyAccountRoute(
             },
             onPositive = {
                 showRateUsSheet = false
-                context.openURL("https://play.google.com/store/apps/details?id=${context.packageName}")
+                openURLWithGate { context.openURL("https://play.google.com/store/apps/details?id=${context.packageName}") }
             }
         )
 
@@ -180,6 +194,29 @@ fun MyAccountRoute(
                 onNavigateToReportHistory()
             },
             onDismiss = { showLoginSheetForHistory = false }
+        )
+    }
+
+    if (showURLGate) {
+        ParentalGateDialog(
+            onPassed = {
+                showURLGate = false
+                ParentalGateSessionCache.markPassed()
+                pendingUrlAction?.invoke()
+                pendingUrlAction = null
+            },
+            onCancelled = { showURLGate = false; pendingUrlAction = null }
+        )
+    }
+
+    if (showActionGate) {
+        ParentalGateDialog(
+            onPassed = {
+                showActionGate = false
+                pendingNavAction?.invoke()
+                pendingNavAction = null
+            },
+            onCancelled = { showActionGate = false; pendingNavAction = null }
         )
     }
 

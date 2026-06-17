@@ -67,8 +67,10 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens14
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.common_ui.dialogs.ParentalGateDialog
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Constants
+import com.jigar.me.utils.ParentalGateSessionCache
 import com.jigar.me.utils.checkPermissions
 import kotlin.math.min
 import androidx.core.net.toUri
@@ -157,6 +159,13 @@ fun HomeScreen(
     val viewModel: HomeFragmentViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current
+    var showURLGate by remember { mutableStateOf(false) }
+    var pendingUrlAction by remember { mutableStateOf<(() -> Unit)?>(null) }
+
+    fun openURLWithGate(action: () -> Unit) {
+        if (ParentalGateSessionCache.urlGatePassedThisSession) action()
+        else { pendingUrlAction = action; showURLGate = true }
+    }
 
     val resumeActivityResultLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -280,7 +289,17 @@ fun HomeScreen(
 
                     if (isTablet) {
                         Spacer(modifier = Modifier.weight(1f))
-                        EnglishBanner(context = context)
+                        EnglishBanner(context = context, onUrlClick = {
+                            openURLWithGate {
+                                runCatching {
+                                    val intent = Intent(Intent.ACTION_VIEW).apply {
+                                        data = "https://play.google.com/store/apps/details?id=com.vedaavi.english.learning&hl=en".toUri()
+                                        addCategory(Intent.CATEGORY_BROWSABLE)
+                                    }
+                                    context.startActivity(intent)
+                                }
+                            }
+                        })
                         Spacer(modifier = Modifier.height(Dimens8))
                     }
                 }
@@ -369,7 +388,17 @@ fun HomeScreen(
                                 .padding(bottom = Dimens8),
                             horizontalArrangement = Arrangement.End
                         ) {
-                            EnglishBanner(context = context)
+                            EnglishBanner(context = context, onUrlClick = {
+                            openURLWithGate {
+                                runCatching {
+                                    val intent = Intent(Intent.ACTION_VIEW).apply {
+                                        data = "https://play.google.com/store/apps/details?id=com.vedaavi.english.learning&hl=en".toUri()
+                                        addCategory(Intent.CATEGORY_BROWSABLE)
+                                    }
+                                    context.startActivity(intent)
+                                }
+                            }
+                        })
                         }
                     }
                 }
@@ -456,6 +485,18 @@ fun HomeScreen(
             onNegative = { viewModel.onReviewGateNegative() },
             onPositive = { reviewActivity?.let { viewModel.onReviewGatePositive(it) } }
         )
+
+        if (showURLGate) {
+            ParentalGateDialog(
+                onPassed = {
+                    showURLGate = false
+                    ParentalGateSessionCache.markPassed()
+                    pendingUrlAction?.invoke()
+                    pendingUrlAction = null
+                },
+                onCancelled = { showURLGate = false; pendingUrlAction = null }
+            )
+        }
     }
 }
 
@@ -933,7 +974,7 @@ private fun LevelMiniCard(info: LevelInfo, onClick: () -> Unit) {
 // ── English App Banner ────────────────────────────────────────────────────────
 
 @Composable
-private fun EnglishBanner(context: Context) {
+private fun EnglishBanner(context: Context, onUrlClick: () -> Unit) {
     val isTablet = DeviceInfo.isTablet
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
@@ -942,15 +983,7 @@ private fun EnglishBanner(context: Context) {
         animationSpec = spring(dampingRatio = 0.5f, stiffness = Spring.StiffnessMedium),
         label = "bannerScale"
     )
-    val clickAction: () -> Unit = {
-        runCatching {
-            val intent = Intent(Intent.ACTION_VIEW).apply {
-                data = "https://play.google.com/store/apps/details?id=com.vedaavi.english.learning&hl=en".toUri()
-                addCategory(Intent.CATEGORY_BROWSABLE)
-            }
-            context.startActivity(intent)
-        }
-    }
+    val clickAction: () -> Unit = { onUrlClick() }
 
     if (isTablet) {
         // Tablet: icon left + 3-line text + chevron right

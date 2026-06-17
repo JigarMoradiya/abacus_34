@@ -487,13 +487,12 @@ class AbacusDoPracticeViewModel @Inject constructor(
 
                         is_set_completed = true
                         if (!saveResults) {
-                            setProgress?.let {
-                                it.is_set_completed = true
-                                it.latest_abacus_id = null
-                                if (setDetail?.show_time_setting == true) it.total_time_taken = (state().currentSetTime ?: 0L).toInt()
-                                updateProgress(it)
-                            }
-                            updateState_ { copy(submitExerciseRequest = submitExamRequest, isShowCompletePopup = true) }
+                            val progress = setProgress ?: SetProgress(setId, null, false).also { it.retry_count = retryCounts }
+                            progress.is_set_completed = true
+                            progress.latest_abacus_id = null
+                            if (setDetail?.show_time_setting == true) progress.total_time_taken = (state().currentSetTime ?: 0L).toInt()
+                            updateProgress(progress)
+                            updateState_ { copy(setProgress = progress, submitExerciseRequest = submitExamRequest, isShowCompletePopup = true) }
                         } else {
                             submitExamApi(submitExamRequest)
                         }
@@ -523,13 +522,12 @@ class AbacusDoPracticeViewModel @Inject constructor(
                         set_id = setId
                         type = setDetail?.answer_setting
                         if (!saveResults) {
-                            setProgress?.let {
-                                it.is_set_completed = true
-                                it.latest_abacus_id = null
-                                if (setDetail?.show_time_setting == true) it.total_time_taken = (state().currentSetTime ?: 0L).toInt()
-                                updateProgress(it)
-                            }
-                            updateState_ { copy(submitExerciseRequest = submitExamRequest, isShowCompletePopup = true) }
+                            val progress = setProgress ?: SetProgress(setId, null, false).also { it.retry_count = retryCounts }
+                            progress.is_set_completed = true
+                            progress.latest_abacus_id = null
+                            if (setDetail?.show_time_setting == true) progress.total_time_taken = (state().currentSetTime ?: 0L).toInt()
+                            updateProgress(progress)
+                            updateState_ { copy(setProgress = progress, submitExerciseRequest = submitExamRequest, isShowCompletePopup = true) }
                         } else {
                             submitExamApi(submitExamRequest)
                         }
@@ -622,17 +620,15 @@ class AbacusDoPracticeViewModel @Inject constructor(
             onEachEmit = {},
             onCompletion = {
                 if (submitExamRequest.is_set_completed == true || state().isShowSubmitAnswer == true){
-                    val setProgress = state().setProgress
-                    setProgress?.let{
-                        it.is_set_completed = true
-                        it.latest_abacus_id = null
-                        if (state().setDetail?.show_time_setting == true){
-                            it.total_time_taken = (state().currentSetTime?:0L).toInt()
-                        }
-                        updateProgress(setProgress)
+                    val progress = state().setProgress ?: SetProgress(setId ?: "", null, false).also { it.retry_count = submitExamRequest.retry_count ?: 1 }
+                    progress.is_set_completed = true
+                    progress.latest_abacus_id = null
+                    if (state().setDetail?.show_time_setting == true){
+                        progress.total_time_taken = (state().currentSetTime?:0L).toInt()
                     }
+                    updateProgress(progress)
                     updateState_ {
-                        copy(isLoading = false, isShowCompletePopup = true, resultSaved = true)
+                        copy(setProgress = progress, isLoading = false, isShowCompletePopup = true, resultSaved = true)
                     }
                 }
             },

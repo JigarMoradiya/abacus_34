@@ -52,6 +52,7 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.purchase.components.getDurationTxt
 import com.jigar.me.ui.view.home.common_ui.sheets.KidsBottomSheet
+import com.jigar.me.ui.view.home.common_ui.dialogs.ParentalGateDialog
 import com.jigar.me.ui.view.home.screens.purchase.components.PriceUi
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseViewModel
@@ -83,6 +84,7 @@ fun FreemiumPaywallBottomSheet(
     var showBenefits by remember { mutableStateOf(false) }
     var showLoginSheet by remember { mutableStateOf(false) }
     var pendingPlanIndex by remember { mutableStateOf<Int?>(null) }
+    var parentalGatePassed by remember { mutableStateOf(false) }
 
     // After login — re-check subscription fresh (RC + admin plans) then proceed or purchase
     fun handleAfterLogin() {
@@ -165,12 +167,21 @@ fun FreemiumPaywallBottomSheet(
                 }
             }
 
-            // Login sheet overlay — covers the whole sheet when login is required
+            // Login sheet overlay — paywall gate was already passed, skip gate inside login
             if (showLoginSheet) {
                 FreemiumLoginBottomSheet(
                     showContinueWithoutSaving = false,
+                    skipParentalGate = true,
                     onLoginSuccess = { handleAfterLogin() },
                     onDismiss = { showLoginSheet = false }
+                )
+            }
+
+            // Parental gate — always shown first, every time the paywall opens
+            if (!parentalGatePassed) {
+                ParentalGateDialog(
+                    onPassed = { parentalGatePassed = true },
+                    onCancelled = { onDismiss() }
                 )
             }
         }

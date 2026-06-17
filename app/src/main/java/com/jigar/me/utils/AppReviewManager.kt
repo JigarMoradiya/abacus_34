@@ -43,6 +43,10 @@ object AppReviewManager {
         val today = StreakManager.today()
         Log.d(TAG, "onGateShown: stamping lastAskDate=$today")
         prefs.setCustomParam(AppConstants.Review.lastAskDate, today)
+        // Advance immediately so a force-quit can't cause the gate to re-show
+        // the next day. Button taps call advanceMilestone() again — harmless
+        // since totalActiveDays hasn't changed within the same session.
+        advanceMilestone(prefs)
     }
 
     // Milestone advances regardless of the answer so the gate doesn't

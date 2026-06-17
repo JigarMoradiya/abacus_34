@@ -29,6 +29,7 @@ import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.common_ui.LocalTextToSpeechManager
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.ParentalGateSessionCache
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -123,6 +124,7 @@ class HomeActivity : ComponentActivity() {
     override fun onPause() {
         super.onPause()
         homeActivityViewModel.onPause()
+        ParentalGateSessionCache.reset()
     }
 
     override fun onDestroy() {

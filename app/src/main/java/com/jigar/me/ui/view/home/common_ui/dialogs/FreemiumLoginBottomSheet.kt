@@ -45,6 +45,7 @@ import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.Loader
 import com.jigar.me.ui.view.home.common_ui.sheets.KidsBottomSheet
+import com.jigar.me.ui.view.home.common_ui.dialogs.ParentalGateDialog
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.login.screens.login_home.viewmodels.LoginHomeViewModel
 import com.jigar.me.utils.extensions.toastL
@@ -53,11 +54,13 @@ import com.jigar.me.utils.extensions.toastL
 fun FreemiumLoginBottomSheet(
     showContinueWithoutSaving: Boolean = true,
     subtitle: String? = null,
+    skipParentalGate: Boolean = false,
     onLoginSuccess: () -> Unit,
     onContinueWithoutSaving: (() -> Unit)? = null,
     onNavigateToCredentials: (() -> Unit)? = null,
     onDismiss: () -> Unit,
 ) {
+    var parentalGatePassed by remember { mutableStateOf(skipParentalGate) }
     val viewModel: LoginHomeViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current
@@ -75,6 +78,14 @@ fun FreemiumLoginBottomSheet(
     KidsBottomSheet(
         visible = true,
         onDismiss = onDismiss,
+        overlay = {
+            if (!parentalGatePassed) {
+                ParentalGateDialog(
+                    onPassed = { parentalGatePassed = true },
+                    onCancelled = { onDismiss() }
+                )
+            }
+        }
     ) {
         Column(
             modifier = Modifier

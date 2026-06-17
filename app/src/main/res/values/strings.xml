@@ -696,6 +696,7 @@
     <string name="please_enter_name">Please enter Name</string>
     <string name="please_enter_valid_date">Please enter valid date</string>
     <string name="my_account">My Account</string>
+    <string name="parent">Parent</string>
     <string name="more_">More</string>
     <string name="rate_us_on_the_play_store">Rate us on the Play store</string>
     <string name="logout">Logout</string>
