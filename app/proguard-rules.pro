@@ -116,3 +116,4 @@
 -dontwarn sun.misc.Unsafe
 -dontwarn javax.xml.bind.DatatypeConverter
 -dontwarn com.fasterxml.jackson.**
+-dontwarn com.google.android.gms.common.annotation.NoNullnessRewrite

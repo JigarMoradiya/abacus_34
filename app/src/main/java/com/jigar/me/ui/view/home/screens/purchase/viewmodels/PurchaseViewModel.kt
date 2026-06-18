@@ -85,21 +85,36 @@ class PurchaseViewModel @Inject constructor(
             try {
                 val offerings = Purchases.sharedInstance.awaitOfferings()
                 val allPackages = offerings.current?.availablePackages ?: emptyList()
-                val packages = if (displayPlanIds.isEmpty()) allPackages
+                var packages = if (displayPlanIds.isEmpty()) allPackages
                                else allPackages.filter { pkg ->
                                    displayPlanIds.any { id -> pkg.product.id == id || pkg.product.id.startsWith("$id:") }
                                }
                 val customerInfo = Purchases.sharedInstance.awaitCustomerInfo()
-                val isPremium = customerInfo.entitlements["premium"]?.isActive == true
+                val premiumEntitlement = customerInfo.entitlements["premium"]
+                val activeProdId: String? = if (premiumEntitlement?.isActive == true) premiumEntitlement?.productIdentifier else null
 
-                val purchasedIds = customerInfo.allPurchasedProductIds
+                // Always show the user's active plan even if not in Firebase config
+                if (activeProdId != null) {
+                    val alreadyInList = packages.any { pkg ->
+                        pkg.product.id == activeProdId || pkg.product.id.startsWith("$activeProdId:")
+                    }
+                    if (!alreadyInList) {
+                        val activePkg = allPackages.firstOrNull { pkg ->
+                            pkg.product.id == activeProdId || pkg.product.id.startsWith("$activeProdId:")
+                        }
+                        if (activePkg != null) packages = listOf(activePkg) + packages
+                    }
+                }
+
                 val allPlans = packages.map { pkg ->
                     RcPlanItem(
                         sku = pkg.product.id,
                         price = formatPrice(pkg.product.price.amountMicros, pkg.product.price.currencyCode),
                         price_amount_micros = pkg.product.price.amountMicros,
                         type = if (pkg.packageType == PackageType.LIFETIME) "inapp" else "subs",
-                        isPurchase = isPremium && purchasedIds.contains(pkg.product.id),
+                        isPurchase = activeProdId != null && (
+                            pkg.product.id == activeProdId || pkg.product.id.startsWith("$activeProdId:")
+                        ),
                         billingPeriod = billingPeriodFor(pkg.packageType),
                         purchaseTime = 0L,
                         rcPackage = pkg
