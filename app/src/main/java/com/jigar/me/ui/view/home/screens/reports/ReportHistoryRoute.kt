@@ -42,7 +42,7 @@ fun ReportHistoryRoute(
 ) {
     val viewModel: ReportHistoryViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val isSubscribed = homeActivityViewModel.isPurchasedForModule()
+    val isSubscribed by homeActivityViewModel.isPurchasedFlow.collectAsStateWithLifecycle()
     var showPaywall by remember { mutableStateOf(false) }
 
     Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {

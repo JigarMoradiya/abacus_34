@@ -19,8 +19,12 @@ import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.Resource
+import com.jigar.me.utils.RevenueCatHelper
 import com.revenuecat.purchases.Purchases
+import com.revenuecat.purchases.awaitCustomerInfo
 import com.revenuecat.purchases.awaitLogIn
+import com.revenuecat.purchases.awaitRestore
+import com.revenuecat.purchases.awaitSyncPurchases
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -122,11 +126,15 @@ class PostLoginHandler @Inject constructor(
                 if (abacusResponse.value.status == AppConstants.APIStatus.SUCCESS) {
                     insertProgressData(abacusResponse.value.data)
                     prefs.setUserLoggedIn(true)
-                    // Identify user in RevenueCat so their purchases are synced
+                    // Identify user in RC, then sync + restore so old purchases (e.g. com.abacus.all)
+                    // are recognized before onLoginSuccess callbacks read subscription state
                     val loginData = Gson().fromJson(prefs.getLoginData(), LoginData::class.java)
                     loginData?.id?.let { userId ->
                         try { Purchases.sharedInstance.awaitLogIn(userId) } catch (_: Exception) {}
                     }
+                    try { Purchases.sharedInstance.awaitSyncPurchases() } catch (_: Exception) {}
+                    try { Purchases.sharedInstance.awaitRestore() } catch (_: Exception) {}
+                    try { RevenueCatHelper.update(Purchases.sharedInstance.awaitCustomerInfo()) } catch (_: Exception) {}
                     Outcome.NavigateHome
                 } else {
                     Outcome.Failure(abacusResponse.value.error?.message)

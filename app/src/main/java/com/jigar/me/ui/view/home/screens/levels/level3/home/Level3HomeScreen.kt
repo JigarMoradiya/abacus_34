@@ -3,6 +3,7 @@ package com.jigar.me.ui.view.home.screens.levels.level3.home
 import com.jigar.me.ui.view.home.screens.levels.level3.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -24,6 +25,7 @@ fun Level3HomeScreen(
     onNavigateToMode: (L3Mode) -> Unit,
 ) {
     var isSubscribed by remember { mutableStateOf(homeActivityViewModel.isPurchasedForModule()) }
+    LaunchedEffect(Unit) { homeActivityViewModel.isPurchasedFlow.collect { if (it) isSubscribed = true } }
     var showPaywall  by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {

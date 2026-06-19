@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -35,6 +36,7 @@ fun ExamHomeRoute(
     val viewModel: ExamHomeViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     var isSubscribed by remember { mutableStateOf(homeActivityViewModel.isPurchasedForModule()) }
+    LaunchedEffect(Unit) { homeActivityViewModel.isPurchasedFlow.collect { if (it) isSubscribed = true } }
     val isLoggedIn = homeActivityViewModel.isUserLoggedIn()
     val context = LocalContext.current
     val pleaseSelectMsg = stringResource(R.string.please_select_at_least_one_checkbox)
@@ -74,7 +76,7 @@ fun ExamHomeRoute(
         FreemiumLoginBottomSheet(
             showContinueWithoutSaving = true,
             subtitle = stringResource(R.string.exercise_login_subtitle),
-            onLoginSuccess = { showLogin = false; isSubscribed = homeActivityViewModel.isPurchasedForModule(); onStartPlay() },
+            onLoginSuccess = { showLogin = false; homeActivityViewModel.refreshPurchaseState(); isSubscribed = homeActivityViewModel.isPurchasedForModule(); onStartPlay() },
             onContinueWithoutSaving = { showLogin = false; onStartPlayWithoutSaving() },
             onDismiss = { showLogin = false }
         )

@@ -14,6 +14,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -43,6 +44,7 @@ fun Level2HomeScreen(
 ) {
     val prefs        = LocalPreferencesHelper.current
     var isSubscribed by remember { mutableStateOf(homeActivityViewModel.isPurchasedForModule()) }
+    LaunchedEffect(Unit) { homeActivityViewModel.isPurchasedFlow.collect { if (it) isSubscribed = true } }
     var showPaywall  by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {

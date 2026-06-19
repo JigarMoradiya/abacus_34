@@ -1,6 +1,7 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.number_sequence_puzzle
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,6 +24,7 @@ fun NumberSequencePuzzleHomeRoute(
     onBackClick: () -> Unit,
 ) {
     var isSubscribed by remember { mutableStateOf(homeActivityViewModel.isPurchasedForModule()) }
+    LaunchedEffect(Unit) { homeActivityViewModel.isPurchasedFlow.collect { if (it) isSubscribed = true } }
     var showPaywall by remember { mutableStateOf(false) }
 
     NumberSequencePuzzleHomeJetpackScreen(

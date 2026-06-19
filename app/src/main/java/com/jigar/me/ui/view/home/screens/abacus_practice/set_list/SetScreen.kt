@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.home.screens.abacus_practice.set_list
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,6 +17,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -51,6 +53,7 @@ fun SetScreen(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val allSets by homeActivityViewModel.allSets.collectAsStateWithLifecycle()
     var isSubscribed by remember(uiState.levelName) { mutableStateOf(homeActivityViewModel.isPurchasedSelectedLevel(uiState.levelName)) }
+    LaunchedEffect(Unit) { homeActivityViewModel.isPurchasedFlow.collect { if (it) isSubscribed = true } }
     val isLoggedIn = homeActivityViewModel.isUserLoggedIn()
     var showPaywall by remember { mutableStateOf(false) }
     var showLogin by remember { mutableStateOf(false) }
@@ -134,6 +137,7 @@ fun SetScreen(
             subtitle = loginSubtitle,
             onLoginSuccess = {
                 showLogin = false
+                homeActivityViewModel.refreshPurchaseState()
                 isSubscribed = homeActivityViewModel.isPurchasedSelectedLevel(uiState.levelName)
                 pendingSetId?.let { onNavigateToDoPractice(it, true) }
                 pendingSetId = null

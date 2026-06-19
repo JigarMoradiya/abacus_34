@@ -90,31 +90,39 @@ class PurchaseViewModel @Inject constructor(
                                    displayPlanIds.any { id -> pkg.product.id == id || pkg.product.id.startsWith("$id:") }
                                }
                 val customerInfo = Purchases.sharedInstance.awaitCustomerInfo()
+                RevenueCatHelper.update(customerInfo)
                 val premiumEntitlement = customerInfo.entitlements["premium"]
                 val activeProdId: String? = if (premiumEntitlement?.isActive == true) premiumEntitlement?.productIdentifier else null
+                val allPurchasedIds = customerInfo.allPurchasedProductIds
 
                 // Always show the user's active plan even if not in Firebase config
-                if (activeProdId != null) {
+                val effectivePurchasedId = activeProdId
+                    ?: allPurchasedIds.firstOrNull { id -> allPackages.any { pkg -> pkg.product.id == id || pkg.product.id.startsWith("$id:") } }
+                if (effectivePurchasedId != null) {
                     val alreadyInList = packages.any { pkg ->
-                        pkg.product.id == activeProdId || pkg.product.id.startsWith("$activeProdId:")
+                        pkg.product.id == effectivePurchasedId || pkg.product.id.startsWith("$effectivePurchasedId:")
                     }
                     if (!alreadyInList) {
                         val activePkg = allPackages.firstOrNull { pkg ->
-                            pkg.product.id == activeProdId || pkg.product.id.startsWith("$activeProdId:")
+                            pkg.product.id == effectivePurchasedId || pkg.product.id.startsWith("$effectivePurchasedId:")
                         }
                         if (activePkg != null) packages = listOf(activePkg) + packages
                     }
                 }
 
                 val allPlans = packages.map { pkg ->
+                    val matchesActive = activeProdId != null && (
+                        pkg.product.id == activeProdId || pkg.product.id.startsWith("$activeProdId:")
+                    )
+                    val matchesAllPurchased = pkg.packageType == PackageType.LIFETIME && allPurchasedIds.any { id ->
+                        pkg.product.id == id || pkg.product.id.startsWith("$id:")
+                    }
                     RcPlanItem(
                         sku = pkg.product.id,
                         price = formatPrice(pkg.product.price.amountMicros, pkg.product.price.currencyCode),
                         price_amount_micros = pkg.product.price.amountMicros,
                         type = if (pkg.packageType == PackageType.LIFETIME) "inapp" else "subs",
-                        isPurchase = activeProdId != null && (
-                            pkg.product.id == activeProdId || pkg.product.id.startsWith("$activeProdId:")
-                        ),
+                        isPurchase = matchesActive || matchesAllPurchased,
                         billingPeriod = billingPeriodFor(pkg.packageType),
                         purchaseTime = 0L,
                         rcPackage = pkg
@@ -138,13 +146,9 @@ class PurchaseViewModel @Inject constructor(
                     PurchaseParams.Builder(activity, selected.rcPackage).build()
                 )
                 RevenueCatHelper.update(result.customerInfo)
-                if (result.customerInfo.entitlements["premium"]?.isActive == true) {
-                    submitToServer(result.storeTransaction, selected)
-                    updateState_ { copy(isPurchasing = false, purchaseSuccess = true) }
-                    loadData()
-                } else {
-                    updateState_ { copy(isPurchasing = false) }
-                }
+                submitToServer(result.storeTransaction, selected)
+                updateState_ { copy(isPurchasing = false, purchaseSuccess = true) }
+                loadData()
             } catch (e: PurchasesException) {
                 updateState_ { copy(isPurchasing = false, error = R.string.something_went_wrong) }
             }
@@ -198,6 +202,7 @@ class PurchaseViewModel @Inject constructor(
             removeExact("com.abacus.puzzle.1year"); remove("all")
             showSubmit = false
         } else {
+            // Monthly purchased: hide weekly (downgrade), keep yearly/lifetime for upgrade
             val monthlyPurchased = plans.any { it.sku.contains("1month") && it.isPurchase }
             if (monthlyPurchased) remove("week")
 

@@ -41,6 +41,7 @@ fun TableMixPickerScreen(
     onBackClick: () -> Unit,
 ) {
     var isSubscribed by remember { mutableStateOf(homeActivityViewModel.isPurchasedForModule()) }
+    LaunchedEffect(Unit) { homeActivityViewModel.isPurchasedFlow.collect { if (it) isSubscribed = true } }
     var showPaywall by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {

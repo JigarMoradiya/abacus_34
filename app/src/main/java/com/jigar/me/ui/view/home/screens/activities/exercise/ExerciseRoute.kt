@@ -56,6 +56,7 @@ fun ExerciseRoute(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val loginUiState by loginViewModel.uiState.collectAsStateWithLifecycle()
     var isPurchase by remember { mutableStateOf(homeActivityViewModel.isPurchasedForModule()) }
+    LaunchedEffect(Unit) { homeActivityViewModel.isPurchasedFlow.collect { if (it) isPurchase = true } }
     val isLoggedIn = homeActivityViewModel.isUserLoggedIn()
     val context = androidx.compose.ui.platform.LocalContext.current
     val prefs = LocalPreferencesHelper.current
@@ -137,7 +138,7 @@ fun ExerciseRoute(
         FreemiumLoginBottomSheet(
             showContinueWithoutSaving = true,
             subtitle = stringResource(R.string.exercise_login_subtitle),
-            onLoginSuccess = { showLogin = false; isPurchase = homeActivityViewModel.isPurchasedForModule(); viewModel.generateExercise() },
+            onLoginSuccess = { showLogin = false; homeActivityViewModel.refreshPurchaseState(); isPurchase = homeActivityViewModel.isPurchasedForModule(); viewModel.generateExercise() },
             onContinueWithoutSaving = { showLogin = false; viewModel.generateExerciseWithoutSaving() },
             onDismiss = { showLogin = false }
         )

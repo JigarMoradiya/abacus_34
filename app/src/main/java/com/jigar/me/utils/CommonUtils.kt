@@ -149,6 +149,9 @@ object CommonUtils {
         // RevenueCat entitlement
         if (RevenueCatHelper.isSubscribed) return true
 
+        // Lifetime plan purchased before RC migration — still grants full access
+        if (RevenueCatHelper.isLifetimePurchased) return true
+
         // Admin-assigned plans
         val adminData = prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, "")
         if (adminData.isNotEmpty()) {
@@ -177,6 +180,9 @@ object CommonUtils {
 
         // RevenueCat entitlement
         if (RevenueCatHelper.isSubscribed) return true
+
+        // Lifetime plan purchased before RC migration — still grants full access
+        if (RevenueCatHelper.isLifetimePurchased) return true
 
         // Admin-assigned plans
         val adminData = prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, "")
