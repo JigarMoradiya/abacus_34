@@ -95,6 +95,7 @@ class PurchaseViewModel @Inject constructor(
                 val activeProdId: String? = if (premiumEntitlement?.isActive == true) premiumEntitlement?.productIdentifier else null
                 val allPurchasedIds = customerInfo.allPurchasedProductIds
 
+
                 // Always show the user's active plan even if not in Firebase config
                 val effectivePurchasedId = activeProdId
                     ?: allPurchasedIds.firstOrNull { id -> allPackages.any { pkg -> pkg.product.id == id || pkg.product.id.startsWith("$id:") } }
@@ -110,13 +111,28 @@ class PurchaseViewModel @Inject constructor(
                     }
                 }
 
+                val activeSubIds = customerInfo.activeSubscriptions
                 val allPlans = packages.map { pkg ->
                     val matchesActive = activeProdId != null && (
-                        pkg.product.id == activeProdId || pkg.product.id.startsWith("$activeProdId:")
+                        pkg.product.id == activeProdId ||
+                        pkg.product.id.startsWith("$activeProdId:") ||
+                        pkg.product.id.endsWith(":$activeProdId")
                     )
-                    val matchesAllPurchased = pkg.packageType == PackageType.LIFETIME && allPurchasedIds.any { id ->
-                        pkg.product.id == id || pkg.product.id.startsWith("$id:")
+                    // For subscriptions use activeSubscriptions (expired subs are excluded).
+                    // For lifetime (INAPP) use allPurchasedProductIds since they never expire.
+                    val matchesAllPurchased = if (pkg.packageType == PackageType.LIFETIME) {
+                        allPurchasedIds.any { id ->
+                            pkg.product.id == id || pkg.product.id.startsWith("$id:") || pkg.product.id.endsWith(":$id")
+                        }
+                    } else {
+                        activeSubIds.any { id ->
+                            pkg.product.id == id || pkg.product.id.startsWith("$id:") || pkg.product.id.endsWith(":$id")
+                        }
                     }
+                    val purchaseTime = allPurchasedIds
+                        .firstOrNull { id -> pkg.product.id == id || pkg.product.id.startsWith("$id:") || pkg.product.id.endsWith(":$id") }
+                        ?.let { id -> customerInfo.getPurchaseDateForProductId(id)?.time ?: 0L }
+                        ?: 0L
                     RcPlanItem(
                         sku = pkg.product.id,
                         price = formatPrice(pkg.product.price.amountMicros, pkg.product.price.currencyCode),
@@ -124,7 +140,7 @@ class PurchaseViewModel @Inject constructor(
                         type = if (pkg.packageType == PackageType.LIFETIME) "inapp" else "subs",
                         isPurchase = matchesActive || matchesAllPurchased,
                         billingPeriod = billingPeriodFor(pkg.packageType),
-                        purchaseTime = 0L,
+                        purchaseTime = purchaseTime,
                         rcPackage = pkg
                     )
                 }.sortedBy { it.price_amount_micros }
@@ -146,9 +162,13 @@ class PurchaseViewModel @Inject constructor(
                     PurchaseParams.Builder(activity, selected.rcPackage).build()
                 )
                 RevenueCatHelper.update(result.customerInfo)
-                submitToServer(result.storeTransaction, selected)
-                updateState_ { copy(isPurchasing = false, purchaseSuccess = true) }
-                loadData()
+                if (result.customerInfo.entitlements["premium"]?.isActive == true) {
+                    submitToServer(result.storeTransaction, selected)
+                    updateState_ { copy(isPurchasing = false, purchaseSuccess = true) }
+                    loadData()
+                } else {
+                    updateState_ { copy(isPurchasing = false) }
+                }
             } catch (e: PurchasesException) {
                 updateState_ { copy(isPurchasing = false, error = R.string.something_went_wrong) }
             }
@@ -229,9 +249,12 @@ class PurchaseViewModel @Inject constructor(
             }
         }
 
+        val purchasedIndex = skuList.indexOfFirst { it.isPurchase }.takeIf { it >= 0 } ?: 0
+
         updateState_ {
             copy(
                 sortedPlanList = skuList,
+                selectedIndex = purchasedIndex,
                 original1YearData = originalYear,
                 originalLifetimeData = originalLifetime,
                 original1MonthData = originalMonth,

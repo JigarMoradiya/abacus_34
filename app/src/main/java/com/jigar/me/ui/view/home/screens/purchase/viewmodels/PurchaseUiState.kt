@@ -39,7 +39,7 @@ data class PurchaseUiState(
     val discountPerLifetime: Int = 0,
 
     // UI flags
-    val showSubmitButton: Boolean = true,
+    val showSubmitButton: Boolean = false,
     val isOldSubscriptionThere: Boolean = false,
     val showOldSubscriptionPopup: Boolean = false,
 

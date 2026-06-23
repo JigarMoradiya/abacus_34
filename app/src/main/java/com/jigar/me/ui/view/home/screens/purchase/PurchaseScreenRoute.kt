@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -30,7 +31,7 @@ fun PurchaseScreenRoute(
     val activity = LocalContext.current as Activity
     var showLoginSheet by remember { mutableStateOf(false) }
 
-    viewModel.loadData()
+    LaunchedEffect(Unit) { viewModel.loadData() }
 
     Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         PurchaseScreen(

@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Subscriptions
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -33,8 +35,10 @@ import com.jigar.me.ui.jetpack.core.presentation.theme.Black
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorAccent
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorAccentLight
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorGreen
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.RcPlanItem
+import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.DateTimeUtils
 
@@ -72,7 +76,8 @@ fun PurchasePlanCard(
     uiState: PurchaseUiState,
     plan: RcPlanItem,
     isSelected: Boolean,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    onSubscribe: () -> Unit = {}
 ) {
     val originalYearly = uiState.original1YearData
     val originalLifetime = uiState.originalLifetimeData
@@ -96,58 +101,45 @@ fun PurchasePlanCard(
     ) {
         Column(modifier = Modifier.padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8)) {
 
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(
-                    text = plan.getDurationTxt(),
-                    style = MaterialTheme.typography.labelMedium.copy(
-                        color = Color.DarkGray, fontWeight = FontWeight.Bold,
-                        fontFamily = FontFamily(Font(R.font.font_bold))
-                    )
-                )
-
-                if (isAssignedPlan) {
-                    Spacer(Modifier.width(AppDimens.Dimens8))
-                    Surface(
-                        shape = RoundedCornerShape(AppDimens.Dimens4),
-                        color = colorResource(R.color.green_500),
-                        modifier = Modifier.padding(top = AppDimens.Dimens2),
-                        tonalElevation = 0.dp, shadowElevation = 0.dp
-                    ) {
-                        Text(
-                            lineHeight = 10.sp, text = stringResource(R.string.assigned),
-                            style = MaterialTheme.typography.labelSmall.copy(
-                                color = Color.White, fontWeight = FontWeight.Bold,
-                                fontFamily = FontFamily(Font(R.font.font_bold))
-                            ),
-                            modifier = Modifier.padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens2)
-                        )
-                    }
-                } else if (plan.isPurchase) {
-                    Spacer(Modifier.width(AppDimens.Dimens8))
-                    Surface(
-                        shape = RoundedCornerShape(AppDimens.Dimens4),
-                        color = colorResource(R.color.green_500),
-                        modifier = Modifier.padding(top = AppDimens.Dimens2),
-                        tonalElevation = 0.dp, shadowElevation = 0.dp
-                    ) {
-                        Text(
-                            lineHeight = 10.sp, text = stringResource(R.string.txt_purchased),
-                            style = MaterialTheme.typography.labelSmall.copy(
-                                color = Color.White, fontWeight = FontWeight.Bold,
-                                fontFamily = FontFamily(Font(R.font.font_bold))
-                            ),
-                            modifier = Modifier.padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens2)
-                        )
-                    }
-                } else {
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+                // Plan name + price
+                Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.weight(1f)) {
                     Text(
-                        text = " : ",
-                        style = MaterialTheme.typography.bodySmall.copy(
-                            color = Black, fontWeight = FontWeight.Bold,
+                        text = plan.getDurationTxt(),
+                        style = MaterialTheme.typography.labelMedium.copy(
+                            color = Color.DarkGray, fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold))
                         )
                     )
-                    PriceUi(discountPer, plan, originalYearly, discountPerLifetime, originalLifetime)
+                    if (!isAssignedPlan && !plan.isPurchase) {
+                        Text(
+                            text = " : ",
+                            style = MaterialTheme.typography.bodySmall.copy(
+                                color = Black, fontWeight = FontWeight.Bold,
+                                fontFamily = FontFamily(Font(R.font.font_bold))
+                            )
+                        )
+                        PriceUi(discountPer, plan, originalYearly, discountPerLifetime, originalLifetime)
+                    }
+                }
+
+                // Action button on right
+                val isLifetime = plan.isLifeTimeOffer()
+                val isPurchased = plan.isPurchase || isAssignedPlan
+                Column(horizontalAlignment = Alignment.End) {
+                    KidsActionButton(
+                        text = when {
+                            isAssignedPlan -> stringResource(R.string.assigned)
+                            isPurchased && !isLifetime -> stringResource(R.string.txt_subscribed)
+                            isPurchased -> stringResource(R.string.txt_purchased)
+                            isLifetime -> stringResource(R.string.txt_purchase_Now)
+                            else -> stringResource(R.string.txt_subscribe_Now)
+                        },
+                        icon = Icons.Default.Subscriptions,
+                        type = if (isPurchased) ButtonType.GREEN else ButtonType.BLUE,
+                        onClick = { if (!isPurchased) onSubscribe() },
+                        isSmall = true
+                    )
                 }
             }
 
@@ -221,7 +213,7 @@ fun PurchasePlanCard(
                                 if (discountPer > 0) {
                                     Text(
                                         text = "(extra ~$discountPer% OFF)",
-                                        style = MaterialTheme.typography.labelSmall.copy(
+                                        style = MaterialTheme.typography.labelMedium.copy(
                                             color = ColorGreen, fontWeight = FontWeight.Bold,
                                             fontFamily = FontFamily(Font(R.font.font_bold))
                                         )
@@ -231,7 +223,7 @@ fun PurchasePlanCard(
                         } else if (plan.isLifeTimeOffer() && discountPerLifetime > 0) {
                             Text(
                                 text = "~ ${discountPerLifetime}% OFF",
-                                style = MaterialTheme.typography.labelSmall.copy(
+                                style = MaterialTheme.typography.labelMedium.copy(
                                     color = ColorGreen, fontWeight = FontWeight.Bold,
                                     fontFamily = FontFamily(Font(R.font.font_bold))
                                 )
@@ -259,10 +251,24 @@ fun PriceUi(
                 )
             )
         }
-    } else if (discountPerLifetime > 0 && plan.sku == "com.abacus.all.offer" && originalLifetime != null) {
-        if ((originalLifetime.price_amount_micros ?: 0) > (plan.price_amount_micros ?: 0)) {
+    } else if (discountPerLifetime > 0 && plan.sku == "com.abacus.all.offer") {
+        val originalPrice = if (originalLifetime != null && (originalLifetime.price_amount_micros ?: 0) > (plan.price_amount_micros ?: 0)) {
+            originalLifetime.price
+        } else {
+            // com.abacus.all not in offerings — calculate original from discount %
+            val offerMicros = plan.price_amount_micros ?: 0L
+            val originalMicros = (offerMicros * 100.0 / (100 - discountPerLifetime)).toLong()
+            val formatted = try {
+                val format = java.text.NumberFormat.getCurrencyInstance(java.util.Locale.getDefault())
+                format.currency = java.util.Currency.getInstance(plan.rcPackage.product.price.currencyCode)
+                format.maximumFractionDigits = 0
+                format.format(originalMicros / 1_000_000.0)
+            } catch (e: Exception) { null }
+            formatted
+        }
+        if (originalPrice != null) {
             Text(
-                text = originalLifetime.price ?: "",
+                text = originalPrice,
                 style = MaterialTheme.typography.bodySmall.copy(
                     textDecoration = TextDecoration.LineThrough, color = ColorAccent,
                     fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))
