@@ -63,10 +63,14 @@ fun RcPlanItem.getPriceSuffix(): String = when {
     else                   -> " one time"
 }
 
-fun RcPlanItem.calculateSavings(monthlyMicros: Long, yearlyMicros: Long): Long {
-    if (monthlyMicros == 0L) return 0L
-    val yearly12Month = monthlyMicros * 12
-    return ((yearly12Month - yearlyMicros).toDouble() / yearly12Month * 100).toLong().coerceAtLeast(0L)
+fun RcPlanItem.calculateSavings(monthlyMicros: Long, yearlyMicros: Long): Long =
+    yearlySavingsPercent(monthlyMicros, 12, yearlyMicros) ?: 0L
+
+/** Savings % of the yearly price vs paying [baselineMicros] every period, [periodsPerYear] times a year. */
+fun yearlySavingsPercent(baselineMicros: Long?, periodsPerYear: Int, yearlyMicros: Long?): Long? {
+    if (baselineMicros == null || baselineMicros <= 0L || yearlyMicros == null || yearlyMicros <= 0L) return null
+    val baselineYear = baselineMicros * periodsPerYear
+    return ((baselineYear - yearlyMicros).toDouble() / baselineYear * 100).toLong().coerceAtLeast(0L)
 }
 
 // ── Composables ─────────────────────────────────────────────────────────────

@@ -33,6 +33,7 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet
+import com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
 
@@ -103,6 +104,7 @@ fun Level2HomeScreen(
 
     if (showPaywall) {
         FreemiumPaywallBottomSheet(
+            paywallContext = PaywallContext.LEVEL2,
             onSubscriptionActivated = { isSubscribed = true; showPaywall = false },
             onDismiss = { showPaywall = false }
         )

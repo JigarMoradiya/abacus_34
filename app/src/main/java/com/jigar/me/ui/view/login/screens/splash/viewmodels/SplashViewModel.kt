@@ -5,6 +5,7 @@ import android.os.Build
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
+import com.jigar.me.BuildConfig
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.jetpack.core.StatefulViewModel
 import com.jigar.me.ui.jetpack.core.domain.ConsumableCommand
@@ -32,7 +33,8 @@ class SplashViewModel @Inject constructor(
     private val remoteConfig: FirebaseRemoteConfig by lazy {
         FirebaseRemoteConfig.getInstance().apply {
             val settings = FirebaseRemoteConfigSettings.Builder()
-                .setMinimumFetchIntervalInSeconds(3600)
+                // Debug: fetch fresh config on every launch; release keeps the 1h cache
+                .setMinimumFetchIntervalInSeconds(if (BuildConfig.DEBUG) 0 else 3600)
                 .build()
             setConfigSettingsAsync(settings)
         }
@@ -81,6 +83,7 @@ class SplashViewModel @Inject constructor(
         val discountPer = remoteConfig.getLong(AppConstants.RemoteConfig.discountPer)
         val discountPerLifeTime = remoteConfig.getLong(AppConstants.RemoteConfig.discountPerLifeTime)
         val manualFreeTrialDays = remoteConfig.getLong(AppConstants.RemoteConfig.manualFreeTrialDays)
+        val paywallSocialProof = remoteConfig.getString(AppConstants.RemoteConfig.paywallSocialProof)
 
         with(prefs) {
             setCustomParam(AppConstants.RemoteConfig.privacyPolicyUrl, privacyPolicyUrl)
@@ -94,6 +97,7 @@ class SplashViewModel @Inject constructor(
             setCustomParam(AppConstants.RemoteConfig.videoList, if (video.length > 5) video else "")
             setCustomParam(AppConstants.RemoteConfig.displayPlanList, displayPlan)
             setCustomParam(AppConstants.RemoteConfig.displayMenuList, displayMenu)
+            setCustomParam(AppConstants.RemoteConfig.paywallSocialProof, paywallSocialProof)
         }
     }
 

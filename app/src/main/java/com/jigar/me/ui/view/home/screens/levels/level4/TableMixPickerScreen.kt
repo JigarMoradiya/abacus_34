@@ -24,6 +24,7 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet
+import com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
@@ -123,6 +124,7 @@ fun TableMixPickerScreen(
 
     if (showPaywall) {
         FreemiumPaywallBottomSheet(
+            paywallContext = PaywallContext.TABLES,
             onSubscriptionActivated = { isSubscribed = true; showPaywall = false },
             onDismiss = { showPaywall = false }
         )

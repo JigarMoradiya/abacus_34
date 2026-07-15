@@ -34,6 +34,7 @@ import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumLoginBottomSheet
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet
+import com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext
 import com.jigar.me.ui.view.home.screens.abacus_practice.set_list.components.PageItem
 import com.jigar.me.ui.view.home.screens.abacus_practice.set_list.components.TopRightChips
 import com.jigar.me.ui.view.home.screens.abacus_practice.set_list.viewmodels.SetViewModel
@@ -153,6 +154,7 @@ fun SetScreen(
 
     if (showPaywall) {
         FreemiumPaywallBottomSheet(
+            paywallContext = PaywallContext.PRACTICE,
             onSubscriptionActivated = { isSubscribed = true; showPaywall = false },
             onDismiss = { showPaywall = false }
         )

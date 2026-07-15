@@ -19,6 +19,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet
+import com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext
 import com.jigar.me.ui.view.home.screens.activities.ccm.home.components.CCMHomeScreen
 import com.jigar.me.ui.view.home.screens.activities.ccm.home.viewmodels.CCMHomeViewModel
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
@@ -59,6 +60,7 @@ fun CCMHomeRoute(
 
     if (showPaywall) {
         FreemiumPaywallBottomSheet(
+            paywallContext = PaywallContext.CCM,
             onSubscriptionActivated = { isSubscribed = true; showPaywall = false },
             onDismiss = { showPaywall = false }
         )

@@ -33,6 +33,7 @@ data class PurchaseUiState(
     val original1YearData: RcPlanItem? = null,
     val originalLifetimeData: RcPlanItem? = null,
     val original1MonthData: RcPlanItem? = null,
+    val original1WeekData: RcPlanItem? = null,
 
     // Discounts
     val discountPer: Int = 0,
@@ -45,4 +46,7 @@ data class PurchaseUiState(
 
     // Benefit list
     val benefitList: List<String> = emptyList(),
+
+    // Social proof line (Remote Config, hidden when blank)
+    val socialProofText: String = "",
 )

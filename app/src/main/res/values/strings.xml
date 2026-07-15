@@ -912,6 +912,34 @@
     <string name="benefit_ccm">Custom Challenge Mode</string>
     <string name="benefit_all_games">All math games</string>
     <string name="benefit_report_history">Full report history</string>
+
+    <!-- Paywall sheet (FreemiumPaywallBottomSheet) -->
+    <string name="paywall_headline_generic">Go Premium!</string>
+    <string name="paywall_subtitle_generic">Unlock ALL levels\nNo limits\nLearn without limits!</string>
+    <string name="paywall_headline_level2">You\'re ready for Level 2!</string>
+    <string name="paywall_subtitle_level2">Upgrade to keep learning</string>
+    <string name="paywall_headline_level3">You\'ve reached Level 3!</string>
+    <string name="paywall_subtitle_level3">Upgrade to keep learning</string>
+    <string name="paywall_headline_tables">Tables practice is locked!</string>
+    <string name="paywall_subtitle_tables">Unlock to master multiplication</string>
+    <string name="paywall_headline_practice">You\'ve finished the free sets!</string>
+    <string name="paywall_subtitle_practice">Unlock every practice page</string>
+    <string name="paywall_headline_exercise">You\'re on a roll!</string>
+    <string name="paywall_subtitle_exercise">Unlock all exercises to keep going</string>
+    <string name="paywall_headline_exam">Ready for the real exam?</string>
+    <string name="paywall_subtitle_exam">Unlock all exam types</string>
+    <string name="paywall_headline_ccm">Custom challenges await!</string>
+    <string name="paywall_subtitle_ccm">Unlock Custom Challenge Mode</string>
+    <string name="paywall_headline_games">Don\'t stop playing!</string>
+    <string name="paywall_subtitle_games">Unlock all math games</string>
+    <string name="paywall_headline_reports">Your progress is waiting!</string>
+    <string name="paywall_subtitle_reports">Unlock full report history</string>
+    <string name="paywall_badge_best_value">Best Value!</string>
+    <string name="paywall_badge_one_time">One Time</string>
+    <string name="paywall_subscribe">Subscribe</string>
+    <string name="paywall_save_vs_monthly">Save ~%1$d%% vs monthly</string>
+    <string name="paywall_save_vs_weekly">Save ~%1$d%% vs weekly</string>
+    <string name="paywall_percent_off">~%1$d%% OFF</string>
     <string name="login_required">Login Required</string>
     <string name="login_is_required_to_access_this_feature">Login is required to access this feature.</string>
     <string name="sign_in_with_google">Sign in with Google</string>

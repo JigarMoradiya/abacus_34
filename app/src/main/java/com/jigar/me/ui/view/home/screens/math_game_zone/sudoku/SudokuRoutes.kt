@@ -10,6 +10,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet
+import com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.home.SudokuHomeScreen
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.home.SudokuHomeViewModel
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.SudokuPlayScreen
@@ -47,6 +48,7 @@ fun SudokuHomeRoute(
 
     if (showPaywall) {
         FreemiumPaywallBottomSheet(
+            paywallContext = PaywallContext.GAMES,
             onSubscriptionActivated = { isSubscribed = true; showPaywall = false },
             onDismiss = { showPaywall = false }
         )

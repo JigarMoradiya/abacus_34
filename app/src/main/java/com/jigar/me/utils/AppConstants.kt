@@ -70,6 +70,7 @@ object AppConstants {
             var versionCode = "versionCode"
             var discountPer = "discount_per"
             var discountPerLifeTime = "discount_per_lifetime"
+            var paywallSocialProof = "paywall_social_proof"
         }
     }
 

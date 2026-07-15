@@ -71,6 +71,7 @@ class PurchaseViewModel @Inject constructor(
                 planListAssignFromAdmin = adminPlanList,
                 yearPlanAssignFromAdmin = yearPlanFromAdmin,
                 allPlanAssignFromAdmin = allPlanFromAdmin,
+                socialProofText = prefManager.getCustomParam(AppConstants.RemoteConfig.paywallSocialProof, ""),
             )
         }
 
@@ -209,6 +210,7 @@ class PurchaseViewModel @Inject constructor(
         val originalYear = plans.find { it.sku == "com.abacus.puzzle.1year" }
         val originalLifetime = plans.find { it.sku == "com.abacus.all" }
         val originalMonth = plans.find { it.sku.contains("1month") && !it.sku.contains("trial") }
+        val originalWeek = plans.find { it.sku.contains("week") }
         var showSubmit = true
 
         fun remove(contains: String) = skuList.removeAll { it.sku.contains(contains) }
@@ -258,6 +260,7 @@ class PurchaseViewModel @Inject constructor(
                 original1YearData = originalYear,
                 originalLifetimeData = originalLifetime,
                 original1MonthData = originalMonth,
+                original1WeekData = originalWeek,
                 showSubmitButton = showSubmit
             )
         }
