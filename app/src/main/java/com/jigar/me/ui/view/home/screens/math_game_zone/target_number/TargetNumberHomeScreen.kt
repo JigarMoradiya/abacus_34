@@ -148,6 +148,7 @@ fun TargetNumberHomeScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(Dimens16),
+                horizontalArrangement = Arrangement.spacedBy(Dimens16, Alignment.CenterHorizontally),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 CommonDifficultySelectorCompose(
@@ -155,10 +156,8 @@ fun TargetNumberHomeScreen(
                     onSelect = { viewModel.selectDifficulty(it) }
                 )
 
-                Spacer(Modifier.weight(1f))
-
                 KidsActionButton(
-                    text = stringResource(R.string.lets_play),
+                    text = stringResource(R.string.lets_start),
                     icon = Icons.Rounded.PlayArrow,
                     type = ButtonType.ORANGE,
                     isIconStart = false,

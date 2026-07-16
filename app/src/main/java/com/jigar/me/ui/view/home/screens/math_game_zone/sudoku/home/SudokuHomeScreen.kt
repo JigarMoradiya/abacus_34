@@ -168,6 +168,7 @@ fun SudokuHomeScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(Dimens16),
+                horizontalArrangement = Arrangement.spacedBy(Dimens16, Alignment.CenterHorizontally),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 DifficultySelectorCompose(
@@ -175,10 +176,8 @@ fun SudokuHomeScreen(
                     onSelect = { viewModel.selectDifficulty(it) }
                 )
 
-                Spacer(Modifier.weight(1f))
-
                 KidsActionButton(
-                    text = stringResource(R.string.lets_play),
+                    text = stringResource(R.string.lets_start),
                     icon = Icons.Rounded.PlayArrow,
                     type = ButtonType.ORANGE,
                     isIconStart = false,
@@ -243,45 +242,13 @@ fun DifficultySelectorCompose(
     selected: SudokuDifficulty4,
     onSelect: (SudokuDifficulty4) -> Unit
 ) {
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
+    // Shared iOS-matching pill box (same as every other Math Game Zone game)
+    com.jigar.me.ui.view.home.common_ui.DifficultyPillBox {
         SudokuDifficulty4.entries.forEach { d ->
-            val isSelected = d == selected
-            val shape = RoundedCornerShape(AppDimens.Dimens20)
-            Surface(
-                modifier = Modifier
-                    .padding(horizontal = AppDimens.Dimens4),
-                shape = shape,
-                color = if (isSelected) colorResource(R.color.colorEditTextBlack_33) else Color.White,
-                shadowElevation = if (isSelected) AppDimens.Dimens8 else 0.dp,
-                tonalElevation = if (isSelected) AppDimens.Dimens4 else 0.dp,
-                border = if (!isSelected) BorderStroke(AppDimens.Dimens1, Color.LightGray) else null
-            ) {
-                Box(
-                    modifier = Modifier
-                        .clip(shape)
-                        .clickable(
-                            interactionSource = remember { MutableInteractionSource() },
-                            indication = LocalIndication.current
-                        ) {
-                            onSelect(d)
-                        }
-                        .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        text = d.displayName,
-                        fontSize = if (isSelected)
-                            dimensionResource(id = R.dimen.textSizeSuperExtraLarge).value.sp.scaled()
-                        else
-                            dimensionResource(id = R.dimen.textSizeRegular).value.sp.scaled(),
-                        color = if (isSelected) Color.White else colorResource(R.color.black_text),
-                        fontFamily = FontFamily(Font(if (isSelected) R.font.font_bold else R.font.font_regular))
-                    )
-                }
-            }
+            com.jigar.me.ui.view.home.common_ui.DifficultyPillItem(
+                text = d.displayName,
+                isSelected = d == selected
+            ) { onSelect(d) }
         }
     }
 }
