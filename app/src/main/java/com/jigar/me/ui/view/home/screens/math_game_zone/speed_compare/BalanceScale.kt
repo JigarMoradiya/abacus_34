@@ -56,9 +56,9 @@ private fun settle(t: Double): Double {
 @Composable
 fun BalanceScale(left: CompareOperand, right: CompareOperand, revealed: Boolean) {
     val s = deviceScale
-    val beamLength = 260f * s
-    val pivotHeight = 140f * s
-    val stringLength = 34f * s
+    val beamLength = 240f * s
+    val pivotHeight = 104f * s
+    val stringLength = 30f * s
 
     val truthTilt = when {
         left.value > right.value -> 13f
@@ -86,7 +86,7 @@ fun BalanceScale(left: CompareOperand, right: CompareOperand, revealed: Boolean)
 
     Box(
         contentAlignment = Alignment.TopCenter,
-        modifier = Modifier.height((pivotHeight + 60f * s).dp)
+        modifier = Modifier.height((pivotHeight + 44f * s).dp)
     ) {
         // Fulcrum: post (apex at top) + base
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
