@@ -69,9 +69,15 @@ fun BalloonPopHomeScreen(
     val bestScore = viewModel.bestScore(selectedDifficulty)
 
     Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
 
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 BackButtonWithText(
                     title = androidx.compose.ui.res.stringResource(R.string.balloon_pop_game),
                     modifier = Modifier.weight(1f),
