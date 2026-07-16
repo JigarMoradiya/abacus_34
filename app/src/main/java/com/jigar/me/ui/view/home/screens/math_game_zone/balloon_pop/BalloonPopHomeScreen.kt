@@ -5,6 +5,9 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,6 +37,7 @@ import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -47,8 +51,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.CommonDifficultySelectorCompose
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
+import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
 import com.jigar.me.ui.view.home.common_ui.how_to_play.HowToPlayBalloonPopView
 import com.jigar.me.ui.view.home.screens.math_game_zone.balloon_pop.components.BalloonPopHomeViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
@@ -140,13 +144,26 @@ fun BalloonPopHomeScreen(
                 modifier = Modifier.fillMaxWidth().padding(AppDimens.Dimens16),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                CommonDifficultySelectorCompose(
-                    selected = selectedDifficulty,
-                    onSelect = { viewModel.selectDifficulty(it) }
-                )
+                // Difficulty pills grouped inside a white translucent box — matches iOS
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(AppDimens.Dimens12))
+                        .background(Color.White.copy(alpha = 0.75f))
+                        .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens12)
+                ) {
+                    CommonDifficulty4.entries.forEach { difficulty ->
+                        DifficultyPill(
+                            text = difficulty.displayName,
+                            isSelected = difficulty == selectedDifficulty,
+                            onClick = { viewModel.selectDifficulty(difficulty) }
+                        )
+                    }
+                }
                 Spacer(Modifier.weight(1f))
                 KidsActionButton(
-                    text = androidx.compose.ui.res.stringResource(R.string.lets_play),
+                    text = androidx.compose.ui.res.stringResource(R.string.lets_start),
                     icon = Icons.Rounded.PlayArrow,
                     type = ButtonType.ORANGE,
                     isIconStart = false,
@@ -158,6 +175,33 @@ fun BalloonPopHomeScreen(
 
     AnimatedVisibility(visible = showHelp, enter = fadeIn(), exit = fadeOut()) {
         HowToPlayBalloonPopView { showHelp = false }
+    }
+}
+
+// Difficulty pill matching iOS DifficultyButtonPillStyle: selected = black fill
+// + white bold text + shadow; unselected = white + black regular text; gray border.
+@Composable
+private fun DifficultyPill(text: String, isSelected: Boolean, onClick: () -> Unit) {
+    val shape = RoundedCornerShape(100f)
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier
+            .then(if (isSelected) Modifier.shadow(AppDimens.Dimens6, shape) else Modifier)
+            .clip(shape)
+            .background(if (isSelected) Color.Black else Color.White.copy(alpha = 0.9f))
+            .border(1.dp, Color.Gray.copy(alpha = 0.2f), shape)
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null
+            ) { onClick() }
+            .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
+    ) {
+        Text(
+            text = text,
+            color = if (isSelected) Color.White else Color.Black,
+            fontFamily = FontFamily(Font(if (isSelected) R.font.font_extra_bold else R.font.font_regular)),
+            fontSize = 15.sp.scaled()
+        )
     }
 }
 
