@@ -47,6 +47,11 @@ sealed class RouteNavigation(val route: String) {
         fun play(level: Int, diff: String): String = "TargetNumberPlay/$level/$diff"
     }
 
+    object BalloonPopHome : RouteNavigation("BalloonPopHome")
+    object BalloonPopPlay : RouteNavigation("BalloonPopPlay/{balloon_diff}") {
+        fun play(diff: String): String = "BalloonPopPlay/$diff"
+    }
+
     object Settings : RouteNavigation("Settings")
 
     object Purchase : RouteNavigation("Purchase")

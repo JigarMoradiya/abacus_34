@@ -67,6 +67,11 @@ fun MathGameZoneScreen(
             type = GameCategoryType.TARGET_NUMBER,
             title = stringResource(R.string.target_the_number),
             desc = stringResource(R.string.target_number_desc)
+        ),
+        GameCategoryData(
+            type = GameCategoryType.BALLOON_POP,
+            title = stringResource(R.string.balloon_pop),
+            desc = stringResource(R.string.balloon_pop_desc)
         )
     )
 
@@ -134,5 +139,6 @@ fun GameCategoryType.toDrawable(): Int {
         GameCategoryType.SUDOKU -> R.drawable.sudoku
         GameCategoryType.MATH_PYRAMID -> R.drawable.math_pyramid
         GameCategoryType.TARGET_NUMBER -> R.drawable.target_number
+        GameCategoryType.BALLOON_POP -> R.drawable.balloon_pop
     }
 }

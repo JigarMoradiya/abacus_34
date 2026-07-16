@@ -5,7 +5,8 @@ enum class GameCategoryType {
     NUMBER_SEQUENCE_PUZZLE,
     SUDOKU,
     MATH_PYRAMID,
-    TARGET_NUMBER
+    TARGET_NUMBER,
+    BALLOON_POP
 }
 
 data class GameCategoryData(

@@ -33,6 +33,8 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.SudokuHomeRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.SudokuPlayRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.target_number.TargetNumberHomeRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.target_number.TargetNumberPlayRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.balloon_pop.BalloonPopHomeRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.balloon_pop.BalloonPopPlayRoute
 import com.jigar.me.ui.view.home.screens.purchase.PurchaseScreenRoute
 import com.jigar.me.ui.view.home.screens.settings.SettingsScreenRoute
 import com.jigar.me.ui.view.home.screens.whats_learning.WhatsLearningScreenRoute
@@ -237,6 +239,9 @@ fun HomeNavGraph(
                 onNavigateToTargetNumber = {
                     navController.navigate(RouteNavigation.TargetNumberHome.route)
                 },
+                onNavigateToBalloonPop = {
+                    navController.navigate(RouteNavigation.BalloonPopHome.route)
+                },
             )
         }
 
@@ -331,6 +336,27 @@ fun HomeNavGraph(
             )
         ) {
             TargetNumberPlayRoute(
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+
+        composable(route = RouteNavigation.BalloonPopHome.route) {
+            BalloonPopHomeRoute(
+                homeActivityViewModel = homeActivityViewModel,
+                onStartPlay = { diff ->
+                    navController.navigate(RouteNavigation.BalloonPopPlay.play(diff))
+                },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.BalloonPopPlay.route,
+            arguments = listOf(
+                navArgument("balloon_diff") { type = NavType.StringType }
+            )
+        ) {
+            BalloonPopPlayRoute(
                 onBackClick = { navController.popBackStack() }
             )
         }

@@ -10,6 +10,7 @@ fun MathGameZoneScreenRoute(
     onNavigateToSudoku: () -> Unit,
     onNavigateToMathPyramid: () -> Unit,
     onNavigateToTargetNumber: () -> Unit,
+    onNavigateToBalloonPop: () -> Unit,
 ) {
     MathGameZoneScreen(
         gameType = { type ->
@@ -19,6 +20,7 @@ fun MathGameZoneScreenRoute(
                 GameCategoryType.SUDOKU -> onNavigateToSudoku()
                 GameCategoryType.MATH_PYRAMID -> onNavigateToMathPyramid()
                 GameCategoryType.TARGET_NUMBER -> onNavigateToTargetNumber()
+                GameCategoryType.BALLOON_POP -> onNavigateToBalloonPop()
             }
         },
         onBackClick = onBackClick

@@ -874,6 +874,19 @@
     <string name="target_number_desc">Use operations to reach the target!</string>
     <string name="math_pyramid_desc">Add numbers to build the pyramid!</string>
     <string name="sudoku_desc">Fill the grid with logic!</string>
+
+    <!-- Balloon Pop game -->
+    <string name="balloon_pop">Balloon Pop</string>
+    <string name="balloon_pop_desc">Pop the number that makes 10!</string>
+    <string name="balloon_pop_game">Balloon Pop</string>
+    <string name="balloon_pop_tagline">Pop the number that completes the sum!</string>
+    <string name="balloon_make_target">Make %1$d with %2$d!</string>
+    <string name="balloon_new_target">New Target!</string>
+    <string name="balloon_great_job">Great Job!</string>
+    <string name="balloon_final_score">Final Score</string>
+    <string name="balloon_best_score">Best Score</string>
+    <string name="balloon_play_again">Play Again</string>
+    <string name="balloon_back">Back</string>
     <string name="number_sequence_desc"><![CDATA[Slide & order the numbers!]]></string>
     <string name="free_mode_settings">Free Mode Settings</string>
     <string name="click_here_to_show_abacus_tour">Show Abacus Tour</string>
