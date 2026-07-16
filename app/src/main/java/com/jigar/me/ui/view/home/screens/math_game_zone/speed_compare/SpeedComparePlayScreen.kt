@@ -68,7 +68,10 @@ fun SpeedComparePlayScreen(
     LaunchedEffect(Unit) { viewModel.start() }
 
     Box(modifier = Modifier.fillMaxSize()) {
-        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+        Column(
+            modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
 
             // Header: back left, prompt dead-center, HUD right
             Box(modifier = Modifier.fillMaxWidth()) {
