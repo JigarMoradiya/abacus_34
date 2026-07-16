@@ -35,6 +35,8 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.target_number.TargetNumb
 import com.jigar.me.ui.view.home.screens.math_game_zone.target_number.TargetNumberPlayRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.balloon_pop.BalloonPopHomeRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.balloon_pop.BalloonPopPlayRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.SpeedCompareHomeRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.SpeedComparePlayRoute
 import com.jigar.me.ui.view.home.screens.purchase.PurchaseScreenRoute
 import com.jigar.me.ui.view.home.screens.settings.SettingsScreenRoute
 import com.jigar.me.ui.view.home.screens.whats_learning.WhatsLearningScreenRoute
@@ -242,6 +244,9 @@ fun HomeNavGraph(
                 onNavigateToBalloonPop = {
                     navController.navigate(RouteNavigation.BalloonPopHome.route)
                 },
+                onNavigateToSpeedCompare = {
+                    navController.navigate(RouteNavigation.SpeedCompareHome.route)
+                },
             )
         }
 
@@ -357,6 +362,27 @@ fun HomeNavGraph(
             )
         ) {
             BalloonPopPlayRoute(
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+
+        composable(route = RouteNavigation.SpeedCompareHome.route) {
+            SpeedCompareHomeRoute(
+                homeActivityViewModel = homeActivityViewModel,
+                onStartPlay = { diff ->
+                    navController.navigate(RouteNavigation.SpeedComparePlay.play(diff))
+                },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.SpeedComparePlay.route,
+            arguments = listOf(
+                navArgument("speed_diff") { type = NavType.StringType }
+            )
+        ) {
+            SpeedComparePlayRoute(
                 onBackClick = { navController.popBackStack() }
             )
         }

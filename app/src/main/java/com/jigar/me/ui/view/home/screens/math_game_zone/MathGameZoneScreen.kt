@@ -72,6 +72,11 @@ fun MathGameZoneScreen(
             type = GameCategoryType.BALLOON_POP,
             title = stringResource(R.string.balloon_pop),
             desc = stringResource(R.string.balloon_pop_desc)
+        ),
+        GameCategoryData(
+            type = GameCategoryType.SPEED_COMPARE,
+            title = stringResource(R.string.speed_compare),
+            desc = stringResource(R.string.speed_compare_desc)
         )
     )
 
@@ -140,5 +145,6 @@ fun GameCategoryType.toDrawable(): Int {
         GameCategoryType.MATH_PYRAMID -> R.drawable.math_pyramid
         GameCategoryType.TARGET_NUMBER -> R.drawable.target_number
         GameCategoryType.BALLOON_POP -> R.drawable.balloon_pop
+        GameCategoryType.SPEED_COMPARE -> R.drawable.speed_compare
     }
 }

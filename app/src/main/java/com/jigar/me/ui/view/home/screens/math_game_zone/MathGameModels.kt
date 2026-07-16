@@ -6,7 +6,8 @@ enum class GameCategoryType {
     SUDOKU,
     MATH_PYRAMID,
     TARGET_NUMBER,
-    BALLOON_POP
+    BALLOON_POP,
+    SPEED_COMPARE
 }
 
 data class GameCategoryData(

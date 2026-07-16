@@ -887,6 +887,13 @@
     <string name="balloon_best_score">Best Score</string>
     <string name="balloon_play_again">Play Again</string>
     <string name="balloon_back">Back</string>
+
+    <!-- Speed Compare game -->
+    <string name="speed_compare">Speed Compare</string>
+    <string name="speed_compare_desc">Which side is bigger?</string>
+    <string name="speed_compare_game">Speed Compare</string>
+    <string name="speed_compare_tagline">Which side is bigger — tap &lt;, = or &gt;!</string>
+    <string name="speed_which_bigger">Which is bigger?</string>
     <string name="number_sequence_desc"><![CDATA[Slide & order the numbers!]]></string>
     <string name="free_mode_settings">Free Mode Settings</string>
     <string name="click_here_to_show_abacus_tour">Show Abacus Tour</string>
