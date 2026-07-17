@@ -894,6 +894,13 @@
     <string name="speed_compare_game">Speed Compare</string>
     <string name="speed_compare_tagline">Which side is bigger — tap &lt;, = or &gt;!</string>
     <string name="speed_which_bigger">Which is bigger?</string>
+
+    <!-- Missing Operator game -->
+    <string name="missing_operator">Missing Sign</string>
+    <string name="missing_operator_desc">Find the missing + − × ÷!</string>
+    <string name="missing_operator_game">Missing Sign</string>
+    <string name="missing_operator_tagline">Find the sign that makes it true!</string>
+    <string name="missing_op_which_sign">Which sign?</string>
     <string name="number_sequence_desc"><![CDATA[Slide & order the numbers!]]></string>
     <string name="free_mode_settings">Free Mode Settings</string>
     <string name="click_here_to_show_abacus_tour">Show Abacus Tour</string>

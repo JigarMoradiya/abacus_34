@@ -7,7 +7,8 @@ enum class GameCategoryType {
     MATH_PYRAMID,
     TARGET_NUMBER,
     BALLOON_POP,
-    SPEED_COMPARE
+    SPEED_COMPARE,
+    MISSING_OPERATOR
 }
 
 data class GameCategoryData(

@@ -57,6 +57,11 @@ sealed class RouteNavigation(val route: String) {
         fun play(diff: String): String = "SpeedComparePlay/$diff"
     }
 
+    object MissingOperatorHome : RouteNavigation("MissingOperatorHome")
+    object MissingOperatorPlay : RouteNavigation("MissingOperatorPlay/{missing_op_diff}") {
+        fun play(diff: String): String = "MissingOperatorPlay/$diff"
+    }
+
     object Settings : RouteNavigation("Settings")
 
     object Purchase : RouteNavigation("Purchase")

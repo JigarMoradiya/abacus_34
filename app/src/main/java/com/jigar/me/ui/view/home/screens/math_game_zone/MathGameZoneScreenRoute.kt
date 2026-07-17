@@ -12,6 +12,7 @@ fun MathGameZoneScreenRoute(
     onNavigateToTargetNumber: () -> Unit,
     onNavigateToBalloonPop: () -> Unit,
     onNavigateToSpeedCompare: () -> Unit,
+    onNavigateToMissingOperator: () -> Unit,
 ) {
     MathGameZoneScreen(
         gameType = { type ->
@@ -23,6 +24,7 @@ fun MathGameZoneScreenRoute(
                 GameCategoryType.TARGET_NUMBER -> onNavigateToTargetNumber()
                 GameCategoryType.BALLOON_POP -> onNavigateToBalloonPop()
                 GameCategoryType.SPEED_COMPARE -> onNavigateToSpeedCompare()
+                GameCategoryType.MISSING_OPERATOR -> onNavigateToMissingOperator()
             }
         },
         onBackClick = onBackClick

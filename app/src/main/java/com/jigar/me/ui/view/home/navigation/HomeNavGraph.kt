@@ -37,6 +37,8 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.balloon_pop.BalloonPopHo
 import com.jigar.me.ui.view.home.screens.math_game_zone.balloon_pop.BalloonPopPlayRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.SpeedCompareHomeRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.SpeedComparePlayRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.missing_operator.MissingOperatorHomeRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.missing_operator.MissingOperatorPlayRoute
 import com.jigar.me.ui.view.home.screens.purchase.PurchaseScreenRoute
 import com.jigar.me.ui.view.home.screens.settings.SettingsScreenRoute
 import com.jigar.me.ui.view.home.screens.whats_learning.WhatsLearningScreenRoute
@@ -247,6 +249,9 @@ fun HomeNavGraph(
                 onNavigateToSpeedCompare = {
                     navController.navigate(RouteNavigation.SpeedCompareHome.route)
                 },
+                onNavigateToMissingOperator = {
+                    navController.navigate(RouteNavigation.MissingOperatorHome.route)
+                },
             )
         }
 
@@ -383,6 +388,27 @@ fun HomeNavGraph(
             )
         ) {
             SpeedComparePlayRoute(
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+
+        composable(route = RouteNavigation.MissingOperatorHome.route) {
+            MissingOperatorHomeRoute(
+                homeActivityViewModel = homeActivityViewModel,
+                onStartPlay = { diff ->
+                    navController.navigate(RouteNavigation.MissingOperatorPlay.play(diff))
+                },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.MissingOperatorPlay.route,
+            arguments = listOf(
+                navArgument("missing_op_diff") { type = NavType.StringType }
+            )
+        ) {
+            MissingOperatorPlayRoute(
                 onBackClick = { navController.popBackStack() }
             )
         }
