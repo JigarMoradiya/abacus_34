@@ -916,6 +916,22 @@
     <string name="calcudoku_tagline">Fill the grid so every cage works!</string>
     <string name="calcudoku_prompt">Solve every cage!</string>
     <string name="best_time">Best Time</string>
+
+    <!-- Number Merge (2048) game -->
+    <string name="merge2048_game">Number Merge</string>
+    <string name="merge2048_desc">Swipe &amp; merge the numbers!</string>
+    <string name="merge2048_tagline">Swipe to add up and reach the target!</string>
+    <string name="merge2048_prompt">Reach %1$d!</string>
+    <string name="good_try">Good Try!</string>
+    <string name="merge2048_reached">Reached %1$d!</string>
+    <string name="merge2048_next">Next: %1$d</string>
+    <string name="resume_title">Welcome back!</string>
+    <string name="resume_message">Continue your saved game?</string>
+    <string name="continue_game">Continue</string>
+    <string name="new_game">New Game</string>
+    <string name="merge2048_target_title">Target Reached!</string>
+    <string name="merge2048_target_hint">The smallest tiles are cleared away — keep merging to the next target!</string>
+    <string name="keep_going">Keep Going!</string>
     <string name="number_sequence_desc"><![CDATA[Slide & order the numbers!]]></string>
     <string name="free_mode_settings">Free Mode Settings</string>
     <string name="click_here_to_show_abacus_tour">Show Abacus Tour</string>

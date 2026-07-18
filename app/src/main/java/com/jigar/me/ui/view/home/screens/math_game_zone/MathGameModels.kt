@@ -10,7 +10,8 @@ enum class GameCategoryType {
     SPEED_COMPARE,
     MISSING_OPERATOR,
     MAGIC_SQUARE,
-    CALCUDOKU
+    CALCUDOKU,
+    MERGE_2048
 }
 
 data class GameCategoryData(

@@ -43,6 +43,8 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.magic_square.MagicSquare
 import com.jigar.me.ui.view.home.screens.math_game_zone.magic_square.MagicSquarePlayRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.calcudoku.CalcudokuHomeRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.calcudoku.CalcudokuPlayRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.merge2048.Merge2048HomeRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.merge2048.Merge2048PlayRoute
 import com.jigar.me.ui.view.home.screens.purchase.PurchaseScreenRoute
 import com.jigar.me.ui.view.home.screens.settings.SettingsScreenRoute
 import com.jigar.me.ui.view.home.screens.whats_learning.WhatsLearningScreenRoute
@@ -262,6 +264,9 @@ fun HomeNavGraph(
                 onNavigateToCalcudoku = {
                     navController.navigate(RouteNavigation.CalcudokuHome.route)
                 },
+                onNavigateToMerge2048 = {
+                    navController.navigate(RouteNavigation.Merge2048Home.route)
+                },
             )
         }
 
@@ -461,6 +466,27 @@ fun HomeNavGraph(
             )
         ) {
             CalcudokuPlayRoute(
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+
+        composable(route = RouteNavigation.Merge2048Home.route) {
+            Merge2048HomeRoute(
+                homeActivityViewModel = homeActivityViewModel,
+                onStartPlay = { diff ->
+                    navController.navigate(RouteNavigation.Merge2048Play.play(diff))
+                },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.Merge2048Play.route,
+            arguments = listOf(
+                navArgument("merge2048_diff") { type = NavType.StringType }
+            )
+        ) {
+            Merge2048PlayRoute(
                 onBackClick = { navController.popBackStack() }
             )
         }

@@ -74,11 +74,12 @@ fun DifficultyPillItem(text: String, isSelected: Boolean, onClick: () -> Unit) {
 @Composable
 fun CommonDifficultySelectorCompose(
     selected: CommonDifficulty4,
-    onSelect: (CommonDifficulty4) -> Unit
+    onSelect: (CommonDifficulty4) -> Unit,
+    label: (CommonDifficulty4) -> String = { it.displayName }
 ) {
     DifficultyPillBox {
         CommonDifficulty4.entries.forEach { d ->
-            DifficultyPillItem(text = d.displayName, isSelected = d == selected) { onSelect(d) }
+            DifficultyPillItem(text = label(d), isSelected = d == selected) { onSelect(d) }
         }
     }
 }

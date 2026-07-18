@@ -56,6 +56,7 @@ import com.jigar.me.R
 import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.math_game_zone.calcudoku.components.Cage
@@ -369,7 +370,8 @@ private fun ResultOverlay(score: Int, elapsed: Int, bestTime: Int, speedBonus: I
     LaunchedEffect(Unit) { delay(1000); enabled = true }
 
     Box(modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)), contentAlignment = Alignment.Center) {
-        ConfettiRainEffect()
+        LaunchedEffect(Unit) { if (starCount >= 2) AudioPlayerManager.playSoundClap() else AudioPlayerManager.playSoundWin() }
+        if (starCount >= 2) ConfettiRainEffect()
         Column(
             modifier = Modifier.fillMaxWidth(0.6f).clip(RoundedCornerShape(AppDimens.Dimens20))
                 .border(3.dp, ORANGE_BORDER, RoundedCornerShape(AppDimens.Dimens20)).background(Color.White)

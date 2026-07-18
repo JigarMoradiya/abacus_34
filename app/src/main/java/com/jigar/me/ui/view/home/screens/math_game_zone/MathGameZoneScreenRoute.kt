@@ -15,6 +15,7 @@ fun MathGameZoneScreenRoute(
     onNavigateToMissingOperator: () -> Unit,
     onNavigateToMagicSquare: () -> Unit,
     onNavigateToCalcudoku: () -> Unit,
+    onNavigateToMerge2048: () -> Unit,
 ) {
     MathGameZoneScreen(
         gameType = { type ->
@@ -29,6 +30,7 @@ fun MathGameZoneScreenRoute(
                 GameCategoryType.MISSING_OPERATOR -> onNavigateToMissingOperator()
                 GameCategoryType.MAGIC_SQUARE -> onNavigateToMagicSquare()
                 GameCategoryType.CALCUDOKU -> onNavigateToCalcudoku()
+                GameCategoryType.MERGE_2048 -> onNavigateToMerge2048()
             }
         },
         onBackClick = onBackClick
