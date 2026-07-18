@@ -1,4 +1,4 @@
-package com.jigar.me.ui.view.home.screens.math_game_zone.missing_operator
+package com.jigar.me.ui.view.home.screens.math_game_zone.magic_square
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateFloatAsState
@@ -7,7 +7,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -50,8 +49,8 @@ import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameMascotPanel
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameScoreboardPanel
-import com.jigar.me.ui.view.home.screens.math_game_zone.missing_operator.components.MathOperator
-import com.jigar.me.ui.view.home.screens.math_game_zone.missing_operator.viewmodel.MissingOperatorPlayViewModel
+import com.jigar.me.ui.view.home.screens.math_game_zone.magic_square.components.MagicSquareUiState
+import com.jigar.me.ui.view.home.screens.math_game_zone.magic_square.viewmodel.MagicSquarePlayViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
 import kotlinx.coroutines.delay
@@ -60,18 +59,22 @@ private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
 private val BLUE = Color(0xFF0074D5)
 private val GREEN = Color(0xFF2E7D32)
-private val RED = Color(0xFFD32F2F)
+private val FIXED_BG = Color(0xFFEDE7F6)
+private val SOLVED_BG = Color(0xFFC8E6C9)
+private val SELECTED_BG = Color(0xFFFFE0B2)
+private val CHIP_GREY = Color(0xFF888888)
 
-private val moScale: Float
+private val msScale: Float
     get() = if (DeviceInfo.isLargeTablet) 1.7f else if (DeviceInfo.isTablet) 1.45f else 1.0f
 
 @Composable
-fun MissingOperatorPlayScreen(
-    viewModel: MissingOperatorPlayViewModel,
+fun MagicSquarePlayScreen(
+    viewModel: MagicSquarePlayViewModel,
     onBackClick: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    val s = moScale
+    val s = msScale
+    val cell = (64f * s).dp
     LaunchedEffect(Unit) { viewModel.start() }
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -81,12 +84,12 @@ fun MissingOperatorPlayScreen(
         ) {
             Box(modifier = Modifier.fillMaxWidth()) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = str(R.string.missing_operator_game), onBackClick = onBackClick)
+                    BackButtonWithText(title = str(R.string.magic_square_game), onBackClick = onBackClick)
                     Spacer(Modifier.weight(1f))
-                    Hud(viewModel.config.timerSeconds, viewModel.config.roundsGoal, state.timeLeft, state.roundsPlayed)
+                    Hud(viewModel.config.timerSeconds, viewModel.config.puzzlesGoal, state.timeLeft, state.puzzlesSolved)
                 }
                 Text(
-                    text = str(R.string.missing_op_which_sign),
+                    text = str(R.string.magic_square_make_target, viewModel.target),
                     color = ORANGE, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 20.sp.scaled(),
                     modifier = Modifier.align(Alignment.Center)
                         .clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.9f))
@@ -101,12 +104,11 @@ fun MissingOperatorPlayScreen(
             ) {
                 GameMascotPanel(
                     cheer = when {
-                        state.revealed && state.lastCorrect -> "Awesome! 🎉"
-                        state.revealed -> "Oops! Try again 💪"
-                        viewModel.multiplier > 1 -> "On fire! 🔥"
+                        state.justSolved -> "Awesome! 🎉"
+                        state.streak >= 3 -> "On fire! 🔥"
                         else -> "You can do it!"
                     },
-                    celebrate = state.revealed && state.lastCorrect, s = s,
+                    celebrate = state.justSolved, s = s,
                     modifier = Modifier.weight(1f).fillMaxHeight()
                 )
 
@@ -115,21 +117,24 @@ fun MissingOperatorPlayScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
-                    EquationCard(state, s)
+                    GridView(state, viewModel, cell, s)
 
                     Spacer(Modifier.height(AppDimens.Dimens16))
 
-                    Text(
-                        text = if (state.revealed) (if (state.lastCorrect) "✅" else "❌") else " ",
-                        fontSize = (40f * s).sp
-                    )
-
-                    Spacer(Modifier.height(AppDimens.Dimens16))
-
-                    Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
-                        state.round.options.forEach { op ->
-                            OperatorButton(op.symbol, opButtonState(op, state.revealed, state.round.answer, state.chosen), s) {
-                                viewModel.answer(op)
+                    // Number palette
+                    Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10), verticalAlignment = Alignment.CenterVertically) {
+                        state.palette.forEach { n ->
+                            val interaction = remember { MutableInteractionSource() }
+                            Box(
+                                contentAlignment = Alignment.Center,
+                                modifier = Modifier
+                                    .size(cell * 0.8f)
+                                    .clip(RoundedCornerShape(AppDimens.Dimens12))
+                                    .background(BLUE)
+                                    .clickable(interactionSource = interaction, indication = null) { viewModel.placeNumber(n) }
+                            ) {
+                                Text("$n", color = Color.White,
+                                    fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (30f * s).sp)
                             }
                         }
                     }
@@ -140,101 +145,83 @@ fun MissingOperatorPlayScreen(
         }
 
         if (state.isGameOver) {
-            ResultOverlay(state.score, state.correctCount, state.wrongCount, viewModel.bestScore,
+            ResultOverlay(state.score, state.puzzlesSolved, viewModel.bestScore,
                 onPlayAgain = { viewModel.start() }, onBack = onBackClick)
         }
     }
 }
 
-private enum class OpBtnState { IDLE, CORRECT, WRONG, DIMMED }
-private fun opButtonState(op: MathOperator, revealed: Boolean, answer: MathOperator, chosen: MathOperator?): OpBtnState {
-    if (!revealed) return OpBtnState.IDLE
-    if (op == answer) return OpBtnState.CORRECT
-    if (op == chosen) return OpBtnState.WRONG
-    return OpBtnState.DIMMED
+@Composable
+private fun GridView(state: MagicSquareUiState, viewModel: MagicSquarePlayViewModel, cell: androidx.compose.ui.unit.Dp, s: Float) {
+    Column(verticalArrangement = Arrangement.spacedBy((6f * s).dp)) {
+        for (r in 0 until 3) {
+            Row(horizontalArrangement = Arrangement.spacedBy((6f * s).dp), verticalAlignment = Alignment.CenterVertically) {
+                for (c in 0 until 3) {
+                    CellView(state, viewModel, r * 3 + c, cell, s)
+                }
+                SumChip(viewModel.rowSum(state.grid, r), viewModel.rowComplete(state.grid, r), cell, s)
+            }
+        }
+        Row(horizontalArrangement = Arrangement.spacedBy((6f * s).dp), verticalAlignment = Alignment.CenterVertically) {
+            for (c in 0 until 3) {
+                Box(modifier = Modifier.width(cell), contentAlignment = Alignment.Center) { // center the chip under its column
+                    SumChip(viewModel.colSum(state.grid, c), viewModel.colComplete(state.grid, c), cell, s)
+                }
+            }
+            Spacer(Modifier.size(cell * 0.72f, cell * 0.5f)) // filler under the row-chip column
+        }
+    }
+}
+
+@Composable
+private fun CellView(state: MagicSquareUiState, viewModel: MagicSquarePlayViewModel, i: Int, cell: androidx.compose.ui.unit.Dp, s: Float) {
+    val value = state.grid[i]
+    val isFixed = state.fixed[i]
+    val isSelected = state.selectedIndex == i
+    val bg = when {
+        state.justSolved -> SOLVED_BG
+        isFixed -> FIXED_BG
+        value != 0 -> BLUE
+        isSelected -> SELECTED_BG
+        else -> Color.White
+    }
+    val fg = if (value != 0 && !isFixed && !state.justSolved) Color.White else Color.Black
+    val borderColor = if (isSelected) ORANGE_BORDER else Color.Black.copy(alpha = 0.12f)
+    val scale by animateFloatAsState(if (state.justSolved) 1.05f else 1f, spring(dampingRatio = 0.5f), label = "")
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier
+            .graphicsLayer { scaleX = scale; scaleY = scale }
+            .size(cell)
+            .clip(RoundedCornerShape(AppDimens.Dimens12))
+            .background(bg)
+            .border(if (isSelected) 3.dp else 1.dp, borderColor, RoundedCornerShape(AppDimens.Dimens12))
+            .clickable { viewModel.tapCell(i) }
+    ) {
+        Text(if (value == 0) "" else "$value", color = fg,
+            fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (30f * s).sp)
+    }
+}
+
+@Composable
+private fun SumChip(sum: Int, complete: Boolean, cell: androidx.compose.ui.unit.Dp, s: Float) {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier
+            .size(cell * 0.72f, cell * 0.5f)
+            .clip(RoundedCornerShape(AppDimens.Dimens8))
+            .background(if (complete) GREEN else Color.White.copy(alpha = 0.7f))
+    ) {
+        Text("$sum", color = if (complete) Color.White else CHIP_GREY,
+            fontFamily = FontFamily(Font(R.font.font_bold)), fontSize = (18f * s).sp)
+    }
 }
 
 @Composable private fun str(id: Int): String = androidx.compose.ui.res.stringResource(id)
+@Composable private fun str(id: Int, vararg args: Any): String = androidx.compose.ui.res.stringResource(id, *args)
 
 @Composable
-private fun EquationCard(state: com.jigar.me.ui.view.home.screens.math_game_zone.missing_operator.components.MissingOperatorUiState, s: Float) {
-    val borderColor = if (state.revealed && state.lastCorrect) GREEN else ORANGE_BORDER
-    val cardScale by animateFloatAsState(
-        targetValue = if (state.revealed && state.lastCorrect) 1.06f else 1f,
-        animationSpec = spring(dampingRatio = 0.5f), label = ""
-    )
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10),
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .graphicsLayer { scaleX = cardScale; scaleY = cardScale }
-            .clip(RoundedCornerShape(AppDimens.Dimens20))
-            .background(Color.White.copy(alpha = 0.9f))
-            .border(3.dp, borderColor, RoundedCornerShape(AppDimens.Dimens20))
-            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens12)
-    ) {
-        Token("${state.round.left}", s)
-        Slot(state, s)
-        Token("${state.round.right}", s)
-        Token("=", s)
-        Token("${state.round.result}", s)
-    }
-}
-
-@Composable
-private fun Token(text: String, s: Float) {
-    Text(text, color = Color.Black, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (44f * s).sp,
-        maxLines = 1, softWrap = false)
-}
-
-@Composable
-private fun Slot(state: com.jigar.me.ui.view.home.screens.math_game_zone.missing_operator.components.MissingOperatorUiState, s: Float) {
-    val color = when {
-        !state.revealed -> BLUE
-        state.lastCorrect -> GREEN
-        else -> RED
-    }
-    val bump by animateFloatAsState(if (state.chosen != null) 1.15f else 1f, spring(dampingRatio = 0.45f), label = "")
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .graphicsLayer { scaleX = bump; scaleY = bump }
-            .size((62f * s).dp)
-            .clip(RoundedCornerShape(AppDimens.Dimens12))
-            .background(color.copy(alpha = 0.12f))
-            .border(2.5.dp, color, RoundedCornerShape(AppDimens.Dimens12))
-    ) {
-        Text(state.chosen?.symbol ?: "?", color = color,
-            fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (44f * s).sp)
-    }
-}
-
-@Composable
-private fun OperatorButton(symbol: String, state: OpBtnState, s: Float, onClick: () -> Unit) {
-    val fill = when (state) {
-        OpBtnState.IDLE -> BLUE
-        OpBtnState.CORRECT -> GREEN
-        OpBtnState.WRONG -> RED
-        OpBtnState.DIMMED -> Color(0xFFB0BEC5)
-    }
-    val interaction = remember { MutableInteractionSource() }
-    val pressed by interaction.collectIsPressedAsState()
-    val scale by animateFloatAsState(
-        if (pressed) 0.92f else if (state == OpBtnState.CORRECT) 1.08f else 1f, spring(dampingRatio = 0.5f), label = ""
-    )
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier.graphicsLayer { scaleX = scale; scaleY = scale }
-            .size((84f * s).dp, (80f * s).dp)
-            .clip(RoundedCornerShape(AppDimens.Dimens20)).background(fill)
-            .clickable(interactionSource = interaction, indication = null) { onClick() }
-    ) {
-        Text(symbol, color = Color.White, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (44f * s).sp)
-    }
-}
-
-@Composable
-private fun Hud(timerSeconds: Int?, roundsGoal: Int?, timeLeft: Int, roundsPlayed: Int) {
+private fun Hud(timerSeconds: Int?, puzzlesGoal: Int?, timeLeft: Int, puzzlesSolved: Int) {
     val font = FontFamily(Font(R.font.font_bold))
     Row(
         horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16), verticalAlignment = Alignment.CenterVertically,
@@ -242,15 +229,13 @@ private fun Hud(timerSeconds: Int?, roundsGoal: Int?, timeLeft: Int, roundsPlaye
             .background(Color.White.copy(alpha = 0.75f)).padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)
     ) {
         if (timerSeconds != null) Text("⏱ $timeLeft", color = Color.Black, fontFamily = font, fontSize = 16.sp.scaled())
-        else if (roundsGoal != null) Text("🎯 $roundsPlayed/$roundsGoal", color = Color.Black, fontFamily = font, fontSize = 16.sp.scaled())
+        else if (puzzlesGoal != null) Text("🧩 $puzzlesSolved/$puzzlesGoal", color = Color.Black, fontFamily = font, fontSize = 16.sp.scaled())
     }
 }
 
 @Composable
-private fun ResultOverlay(score: Int, correctCount: Int, wrongCount: Int, bestScore: Int, onPlayAgain: () -> Unit, onBack: () -> Unit) {
-    val attempts = correctCount + wrongCount
-    val accuracy = if (attempts > 0) correctCount.toFloat() / attempts else 0f
-    val starCount = when { accuracy >= 0.9f -> 3; accuracy >= 0.7f -> 2; else -> 1 }
+private fun ResultOverlay(score: Int, puzzlesSolved: Int, bestScore: Int, onPlayAgain: () -> Unit, onBack: () -> Unit) {
+    val starCount = when { puzzlesSolved >= 5 -> 3; puzzlesSolved >= 3 -> 2; else -> 1 }
     var enabled by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) { delay(1000); enabled = true }
 
@@ -267,10 +252,10 @@ private fun ResultOverlay(score: Int, correctCount: Int, wrongCount: Int, bestSc
             ) {
                 Row(modifier = Modifier.fillMaxWidth().padding(horizontal = AppDimens.Dimens20),
                     verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text("➗", fontSize = 34.sp)
+                    Text("🧩", fontSize = 34.sp)
                     Text(str(R.string.balloon_great_job), color = Color.White,
                         fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 32.sp.scaled())
-                    Text("✖️", fontSize = 34.sp)
+                    Text("✨", fontSize = 34.sp)
                 }
             }
             Column(
@@ -282,8 +267,8 @@ private fun ResultOverlay(score: Int, correctCount: Int, wrongCount: Int, bestSc
                 }
                 Text(str(R.string.balloon_final_score) + ": $score", color = BLUE,
                     fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 28.sp.scaled())
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
-                    StatChip("🎯", correctCount, GREEN); StatChip("❌", wrongCount, RED); StatChip("🏆", bestScore, ORANGE_BORDER)
+                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)) {
+                    StatChip("🧩", puzzlesSolved, GREEN); StatChip("🏆", bestScore, ORANGE_BORDER)
                 }
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
                     KidsActionButton(text = str(R.string.balloon_play_again), type = ButtonType.ORANGE, onClick = { if (enabled) onPlayAgain() })

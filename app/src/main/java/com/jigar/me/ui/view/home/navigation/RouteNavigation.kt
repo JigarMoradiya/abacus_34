@@ -62,6 +62,11 @@ sealed class RouteNavigation(val route: String) {
         fun play(diff: String): String = "MissingOperatorPlay/$diff"
     }
 
+    object MagicSquareHome : RouteNavigation("MagicSquareHome")
+    object MagicSquarePlay : RouteNavigation("MagicSquarePlay/{magic_square_diff}") {
+        fun play(diff: String): String = "MagicSquarePlay/$diff"
+    }
+
     object Settings : RouteNavigation("Settings")
 
     object Purchase : RouteNavigation("Purchase")

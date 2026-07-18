@@ -901,6 +901,13 @@
     <string name="missing_operator_game">Missing Sign</string>
     <string name="missing_operator_tagline">Find the sign that makes it true!</string>
     <string name="missing_op_which_sign">Which sign?</string>
+
+    <!-- Magic Square game -->
+    <string name="magic_square">Magic Square</string>
+    <string name="magic_square_desc">Make every line add up!</string>
+    <string name="magic_square_game">Magic Square</string>
+    <string name="magic_square_tagline">Make every row and column add up!</string>
+    <string name="magic_square_make_target">Make every line = %1$d!</string>
     <string name="number_sequence_desc"><![CDATA[Slide & order the numbers!]]></string>
     <string name="free_mode_settings">Free Mode Settings</string>
     <string name="click_here_to_show_abacus_tour">Show Abacus Tour</string>

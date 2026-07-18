@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -46,6 +47,8 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameMascotPanel
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameScoreboardPanel
 import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.components.Comparator
 import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.viewmodel.SpeedComparePlayViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
@@ -65,6 +68,7 @@ fun SpeedComparePlayScreen(
     onBackClick: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+    val s = if (DeviceScaleHolder.isLargeTablet) 1.7f else if (DeviceScaleHolder.isTablet) 1.45f else 1.0f
     LaunchedEffect(Unit) { viewModel.start() }
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -82,9 +86,7 @@ fun SpeedComparePlayScreen(
                         timerSeconds = viewModel.config.timerSeconds,
                         roundsGoal = viewModel.config.roundsGoal,
                         timeLeft = state.timeLeft,
-                        roundsPlayed = state.roundsPlayed,
-                        score = state.score,
-                        multiplier = viewModel.multiplier
+                        roundsPlayed = state.roundsPlayed
                     )
                 }
                 Text(
@@ -101,28 +103,48 @@ fun SpeedComparePlayScreen(
                 )
             }
 
-            Spacer(Modifier.weight(1f))
+            Row(
+                modifier = Modifier.fillMaxWidth().weight(1f),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                GameMascotPanel(
+                    cheer = when {
+                        state.revealed && state.lastCorrect -> "Awesome! 🎉"
+                        state.revealed -> "Oops! Try again 💪"
+                        viewModel.multiplier > 1 -> "On fire! 🔥"
+                        else -> "You can do it!"
+                    },
+                    celebrate = state.revealed && state.lastCorrect, s = s,
+                    modifier = Modifier.weight(1f).fillMaxHeight()
+                )
 
-            BalanceScale(left = state.round.left, right = state.round.right, revealed = state.revealed)
+                Column(
+                    modifier = Modifier.fillMaxHeight(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    BalanceScale(left = state.round.left, right = state.round.right, revealed = state.revealed)
 
-            Text(
-                text = if (state.revealed) (if (state.lastCorrect) "✅" else "❌") else " ",
-                fontSize = 40.sp
-            )
-
-            Spacer(Modifier.height(AppDimens.Dimens12))
-
-            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens24)) {
-                Comparator.entries.forEach { comparator ->
-                    CompareButton(
-                        symbol = comparator.symbol,
-                        state = buttonState(comparator, state.revealed, state.round.truth, state.chosen),
-                        onClick = { viewModel.answer(comparator) }
+                    Text(
+                        text = if (state.revealed) (if (state.lastCorrect) "✅" else "❌") else " ",
+                        fontSize = 40.sp
                     )
-                }
-            }
 
-            Spacer(Modifier.weight(1f))
+                    Spacer(Modifier.height(AppDimens.Dimens12))
+
+                    Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens24)) {
+                        Comparator.entries.forEach { comparator ->
+                            CompareButton(
+                                symbol = comparator.symbol,
+                                state = buttonState(comparator, state.revealed, state.round.truth, state.chosen),
+                                onClick = { viewModel.answer(comparator) }
+                            )
+                        }
+                    }
+                }
+
+                GameScoreboardPanel(state.score, viewModel.multiplier, viewModel.bestScore, s, Modifier.weight(1f).fillMaxHeight())
+            }
         }
 
         if (state.isGameOver) {
@@ -152,7 +174,7 @@ private fun stringRes(id: Int): String = androidx.compose.ui.res.stringResource(
 
 @Composable
 private fun Hud(
-    timerSeconds: Int?, roundsGoal: Int?, timeLeft: Int, roundsPlayed: Int, score: Int, multiplier: Int
+    timerSeconds: Int?, roundsGoal: Int?, timeLeft: Int, roundsPlayed: Int
 ) {
     val font = FontFamily(Font(R.font.font_bold))
     Row(
@@ -169,8 +191,6 @@ private fun Hud(
         } else if (roundsGoal != null) {
             Text("🎯 $roundsPlayed/$roundsGoal", color = Color.Black, fontFamily = font, fontSize = 16.sp.scaled())
         }
-        Text("⭐ $score", color = Color.Black, fontFamily = font, fontSize = 16.sp.scaled())
-        if (multiplier > 1) Text("🔥 x$multiplier", color = ORANGE, fontFamily = font, fontSize = 16.sp.scaled())
     }
 }
 

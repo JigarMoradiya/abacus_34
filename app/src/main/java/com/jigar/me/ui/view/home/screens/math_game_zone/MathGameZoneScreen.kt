@@ -82,6 +82,11 @@ fun MathGameZoneScreen(
             type = GameCategoryType.MISSING_OPERATOR,
             title = stringResource(R.string.missing_operator),
             desc = stringResource(R.string.missing_operator_desc)
+        ),
+        GameCategoryData(
+            type = GameCategoryType.MAGIC_SQUARE,
+            title = stringResource(R.string.magic_square),
+            desc = stringResource(R.string.magic_square_desc)
         )
     )
 
@@ -152,5 +157,6 @@ fun GameCategoryType.toDrawable(): Int {
         GameCategoryType.BALLOON_POP -> R.drawable.balloon_pop
         GameCategoryType.SPEED_COMPARE -> R.drawable.speed_compare
         GameCategoryType.MISSING_OPERATOR -> R.drawable.missing_operator
+        GameCategoryType.MAGIC_SQUARE -> R.drawable.magic_square
     }
 }

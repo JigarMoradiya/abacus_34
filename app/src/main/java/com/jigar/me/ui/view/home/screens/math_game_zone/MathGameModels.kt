@@ -8,7 +8,8 @@ enum class GameCategoryType {
     TARGET_NUMBER,
     BALLOON_POP,
     SPEED_COMPARE,
-    MISSING_OPERATOR
+    MISSING_OPERATOR,
+    MAGIC_SQUARE
 }
 
 data class GameCategoryData(
