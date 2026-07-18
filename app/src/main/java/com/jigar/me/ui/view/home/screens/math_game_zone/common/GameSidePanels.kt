@@ -30,7 +30,13 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.view.home.theme.AppDimens
+
+// Device scale used across game popups/side panels so tablets/iPad-parity get
+// bigger stars, emoji and cards.
+fun gameScale(): Float =
+    if (DeviceInfo.isLargeTablet) 1.7f else if (DeviceInfo.isTablet) 1.45f else 1f
 
 private val BLUE = Color(0xFF0074D5)
 private val ORANGE = Color(0xFFE65100)

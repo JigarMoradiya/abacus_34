@@ -67,9 +67,12 @@ fun ConfettiRainEffect() {
                 var idCounter = 0
                 val startTime = System.currentTimeMillis()
 
+                val pieceScale = if (com.jigar.me.data.local.data.DeviceInfo.isLargeTablet) 1.7f
+                    else if (com.jigar.me.data.local.data.DeviceInfo.isTablet) 1.45f else 1f
+
                 while (System.currentTimeMillis() - startTime < 2000) {
 
-                    repeat(3) { // 🔥 reduced load but still dense
+                    repeat(6) { // denser paper rain
 
                         val anim = Animatable(-100f)
 
@@ -77,7 +80,7 @@ fun ConfettiRainEffect() {
                             id = idCounter++,
                             x = Random.nextFloat(),
                             drift = Random.nextFloat() * 40f - 20f,
-                            size = Random.nextFloat() * 10f + 6f,
+                            size = (Random.nextFloat() * 10f + 6f) * pieceScale,
                             color = colorList.random(),
                             anim = anim
                         )

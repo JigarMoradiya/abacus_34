@@ -67,6 +67,11 @@ sealed class RouteNavigation(val route: String) {
         fun play(diff: String): String = "MagicSquarePlay/$diff"
     }
 
+    object CalcudokuHome : RouteNavigation("CalcudokuHome")
+    object CalcudokuPlay : RouteNavigation("CalcudokuPlay/{calcudoku_diff}") {
+        fun play(diff: String): String = "CalcudokuPlay/$diff"
+    }
+
     object Settings : RouteNavigation("Settings")
 
     object Purchase : RouteNavigation("Purchase")

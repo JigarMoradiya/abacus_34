@@ -87,6 +87,11 @@ fun MathGameZoneScreen(
             type = GameCategoryType.MAGIC_SQUARE,
             title = stringResource(R.string.magic_square),
             desc = stringResource(R.string.magic_square_desc)
+        ),
+        GameCategoryData(
+            type = GameCategoryType.CALCUDOKU,
+            title = stringResource(R.string.calcudoku),
+            desc = stringResource(R.string.calcudoku_desc)
         )
     )
 
@@ -158,5 +163,6 @@ fun GameCategoryType.toDrawable(): Int {
         GameCategoryType.SPEED_COMPARE -> R.drawable.speed_compare
         GameCategoryType.MISSING_OPERATOR -> R.drawable.missing_operator
         GameCategoryType.MAGIC_SQUARE -> R.drawable.magic_square
+        GameCategoryType.CALCUDOKU -> R.drawable.calcudoku
     }
 }

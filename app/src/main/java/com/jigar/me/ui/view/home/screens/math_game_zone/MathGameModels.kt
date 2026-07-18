@@ -9,7 +9,8 @@ enum class GameCategoryType {
     BALLOON_POP,
     SPEED_COMPARE,
     MISSING_OPERATOR,
-    MAGIC_SQUARE
+    MAGIC_SQUARE,
+    CALCUDOKU
 }
 
 data class GameCategoryData(

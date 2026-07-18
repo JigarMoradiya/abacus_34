@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.missing_operator
 
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
+
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
@@ -261,16 +263,16 @@ private fun ResultOverlay(score: Int, correctCount: Int, wrongCount: Int, bestSc
                 .border(3.dp, ORANGE_BORDER, RoundedCornerShape(AppDimens.Dimens20)).background(Color.White)
         ) {
             Box(
-                modifier = Modifier.fillMaxWidth().height(64.dp)
+                modifier = Modifier.fillMaxWidth().height((64f * gameScale()).dp)
                     .background(Brush.horizontalGradient(listOf(Color(0xFFFF8400), Color(0xFFFFC107)))),
                 contentAlignment = Alignment.Center
             ) {
                 Row(modifier = Modifier.fillMaxWidth().padding(horizontal = AppDimens.Dimens20),
                     verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text("➗", fontSize = 34.sp)
+                    Text("➗", fontSize = (34f * gameScale()).sp)
                     Text(str(R.string.balloon_great_job), color = Color.White,
                         fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 32.sp.scaled())
-                    Text("✖️", fontSize = 34.sp)
+                    Text("✖️", fontSize = (34f * gameScale()).sp)
                 }
             }
             Column(
@@ -299,7 +301,7 @@ private fun StatChip(emoji: String, value: Int, color: Color) {
     Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4), verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.clip(RoundedCornerShape(100f)).background(color.copy(alpha = 0.12f))
             .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)) {
-        Text(emoji, fontSize = 16.sp)
+        Text(emoji, fontSize = (16f * gameScale()).sp)
         Text("$value", color = color, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 20.sp.scaled())
     }
 }
@@ -308,5 +310,5 @@ private fun StatChip(emoji: String, value: Int, color: Color) {
 private fun BigStar(earned: Boolean, sizeSp: Int, delayMs: Long) {
     val scale = remember { Animatable(0.01f) }
     LaunchedEffect(Unit) { delay(delayMs); scale.animateTo(1f, spring(dampingRatio = 0.5f)) }
-    Text("⭐", fontSize = sizeSp.sp, modifier = Modifier.graphicsLayer { scaleX = scale.value; scaleY = scale.value; alpha = if (earned) 1f else 0.35f })
+    Text("⭐", fontSize = (sizeSp * gameScale()).sp, modifier = Modifier.graphicsLayer { scaleX = scale.value; scaleY = scale.value; alpha = if (earned) 1f else 0.35f })
 }

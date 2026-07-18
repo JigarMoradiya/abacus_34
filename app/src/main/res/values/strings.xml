@@ -908,6 +908,14 @@
     <string name="magic_square_game">Magic Square</string>
     <string name="magic_square_tagline">Make every row and column add up!</string>
     <string name="magic_square_make_target">Make every line = %1$d!</string>
+
+    <!-- Calcudoku game -->
+    <string name="calcudoku">Calcudoku</string>
+    <string name="calcudoku_desc">Solve every math cage!</string>
+    <string name="calcudoku_game">Calcudoku</string>
+    <string name="calcudoku_tagline">Fill the grid so every cage works!</string>
+    <string name="calcudoku_prompt">Solve every cage!</string>
+    <string name="best_time">Best Time</string>
     <string name="number_sequence_desc"><![CDATA[Slide & order the numbers!]]></string>
     <string name="free_mode_settings">Free Mode Settings</string>
     <string name="click_here_to_show_abacus_tour">Show Abacus Tour</string>
