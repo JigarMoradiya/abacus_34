@@ -918,6 +918,10 @@
     <string name="best_time">Best Time</string>
 
     <!-- Number Merge (2048) game -->
+    <string name="equation_match">Equation Match</string>
+    <string name="equation_match_desc">Flip &amp; match the pairs!</string>
+    <string name="equation_match_tagline">Flip &amp; match the pairs!</string>
+    <string name="equation_match_prompt">Match the pairs!</string>
     <string name="merge2048_game">Number Merge</string>
     <string name="merge2048_desc">Swipe &amp; merge the numbers!</string>
     <string name="merge2048_tagline">Swipe to add up and reach the target!</string>

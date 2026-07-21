@@ -97,6 +97,11 @@ fun MathGameZoneScreen(
             type = GameCategoryType.MERGE_2048,
             title = stringResource(R.string.merge2048_game),
             desc = stringResource(R.string.merge2048_desc)
+        ),
+        GameCategoryData(
+            type = GameCategoryType.EQUATION_MATCH,
+            title = stringResource(R.string.equation_match),
+            desc = stringResource(R.string.equation_match_desc)
         )
     )
 
@@ -170,5 +175,6 @@ fun GameCategoryType.toDrawable(): Int {
         GameCategoryType.MAGIC_SQUARE -> R.drawable.magic_square
         GameCategoryType.CALCUDOKU -> R.drawable.calcudoku
         GameCategoryType.MERGE_2048 -> R.drawable.merge2048
+        GameCategoryType.EQUATION_MATCH -> R.drawable.equation_match
     }
 }

@@ -64,6 +64,7 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.calcudoku.components.Cag
 import com.jigar.me.ui.view.home.screens.math_game_zone.calcudoku.components.CalcudokuUiState
 import com.jigar.me.ui.view.home.screens.math_game_zone.calcudoku.viewmodel.CalcudokuPlayViewModel
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameMascotPanel
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
 import kotlinx.coroutines.delay
@@ -91,6 +92,7 @@ fun CalcudokuPlayScreen(
     onBackClick: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+    val baseCheer = remember { randomGameCheer() }
     val s = cdScale
     val cellBase = if (state.size <= 3) 64f else if (state.size == 4) 56f else 46f
     val cell = (cellBase * s).dp
@@ -124,7 +126,7 @@ fun CalcudokuPlayScreen(
                     cheer = when {
                         state.justSolved -> "Awesome! 🎉"
                         state.streak >= 3 -> "On fire! 🔥"
-                        else -> "You can do it!"
+                        else -> baseCheer
                     },
                     celebrate = state.justSolved, s = s,
                     modifier = Modifier.weight(1f).fillMaxHeight()

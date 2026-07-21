@@ -45,6 +45,8 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.calcudoku.CalcudokuHomeR
 import com.jigar.me.ui.view.home.screens.math_game_zone.calcudoku.CalcudokuPlayRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.merge2048.Merge2048HomeRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.merge2048.Merge2048PlayRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.equation_match.EquationMatchHomeRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.equation_match.EquationMatchPlayRoute
 import com.jigar.me.ui.view.home.screens.purchase.PurchaseScreenRoute
 import com.jigar.me.ui.view.home.screens.settings.SettingsScreenRoute
 import com.jigar.me.ui.view.home.screens.whats_learning.WhatsLearningScreenRoute
@@ -267,6 +269,9 @@ fun HomeNavGraph(
                 onNavigateToMerge2048 = {
                     navController.navigate(RouteNavigation.Merge2048Home.route)
                 },
+                onNavigateToEquationMatch = {
+                    navController.navigate(RouteNavigation.EquationMatchHome.route)
+                },
             )
         }
 
@@ -487,6 +492,27 @@ fun HomeNavGraph(
             )
         ) {
             Merge2048PlayRoute(
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+
+        composable(route = RouteNavigation.EquationMatchHome.route) {
+            EquationMatchHomeRoute(
+                homeActivityViewModel = homeActivityViewModel,
+                onStartPlay = { diff ->
+                    navController.navigate(RouteNavigation.EquationMatchPlay.play(diff))
+                },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.EquationMatchPlay.route,
+            arguments = listOf(
+                navArgument("equation_match_diff") { type = NavType.StringType }
+            )
+        ) {
+            EquationMatchPlayRoute(
                 onBackClick = { navController.popBackStack() }
             )
         }

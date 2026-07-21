@@ -1,10 +1,9 @@
-package com.jigar.me.ui.view.home.screens.math_game_zone.magic_square
-
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
+package com.jigar.me.ui.view.home.screens.math_game_zone.equation_match
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -22,9 +21,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -40,21 +41,25 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DeviceInfo
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameMascotPanel
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameScoreboardPanel
-import com.jigar.me.ui.view.home.screens.math_game_zone.magic_square.components.MagicSquareUiState
-import com.jigar.me.ui.view.home.screens.math_game_zone.magic_square.viewmodel.MagicSquarePlayViewModel
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
+import com.jigar.me.ui.view.home.screens.math_game_zone.equation_match.components.EqMatchCard
+import com.jigar.me.ui.view.home.screens.math_game_zone.equation_match.components.EqMatchCardState
+import com.jigar.me.ui.view.home.screens.math_game_zone.equation_match.components.EqMatchPalette
+import com.jigar.me.ui.view.home.screens.math_game_zone.equation_match.viewmodel.EquationMatchPlayViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
 import kotlinx.coroutines.delay
@@ -63,24 +68,27 @@ private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
 private val BLUE = Color(0xFF0074D5)
 private val GREEN = Color(0xFF2E7D32)
-private val FIXED_BG = Color(0xFFEDE7F6)
-private val SOLVED_BG = Color(0xFFC8E6C9)
-private val SELECTED_BG = Color(0xFFFFE0B2)
-private val CHIP_GREY = Color(0xFF888888)
 
-private val msScale: Float
+private val mScale: Float
     get() = if (DeviceInfo.isLargeTablet) 1.7f else if (DeviceInfo.isTablet) 1.45f else 1.0f
 
+@Composable private fun str(id: Int): String = androidx.compose.ui.res.stringResource(id)
+@Composable private fun str(id: Int, vararg args: Any): String = androidx.compose.ui.res.stringResource(id, *args)
+
 @Composable
-fun MagicSquarePlayScreen(
-    viewModel: MagicSquarePlayViewModel,
-    onBackClick: () -> Unit
-) {
+fun EquationMatchPlayScreen(viewModel: EquationMatchPlayViewModel, onBackClick: () -> Unit) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val baseCheer = remember { randomGameCheer() }
-    val s = msScale
-    val cell = (64f * s).dp
-    LaunchedEffect(Unit) { viewModel.start() }
+    val s = mScale
+    val config = viewModel.config
+
+    val gap = (10f * s).dp
+    val cardW = ((360f * s).dp - gap * (config.cols + 1)) / config.cols
+    val cardH = ((240f * s).dp - gap * (config.rows + 1)) / config.rows
+    val cell = if (cardW < cardH) cardW else cardH
+
+    var started by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) { if (!started) { started = true; viewModel.start() } }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -89,12 +97,11 @@ fun MagicSquarePlayScreen(
         ) {
             Box(modifier = Modifier.fillMaxWidth()) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = str(R.string.magic_square_game), onBackClick = onBackClick)
+                    BackButtonWithText(title = str(R.string.equation_match), onBackClick = onBackClick)
                     Spacer(Modifier.weight(1f))
-                    Hud(viewModel.config.timerSeconds, viewModel.config.puzzlesGoal, state.timeLeft, state.puzzlesSolved)
                 }
                 Text(
-                    text = str(R.string.magic_square_make_target, viewModel.target),
+                    text = str(R.string.equation_match_prompt),
                     color = ORANGE, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 20.sp.scaled(),
                     modifier = Modifier.align(Alignment.Center)
                         .clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.9f))
@@ -103,144 +110,118 @@ fun MagicSquarePlayScreen(
                 )
             }
 
-            Row(
-                modifier = Modifier.fillMaxWidth().weight(1f),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
+            Row(modifier = Modifier.fillMaxWidth().weight(1f), verticalAlignment = Alignment.CenterVertically) {
                 GameMascotPanel(
                     cheer = when {
-                        state.justSolved -> "Awesome! 🎉"
-                        state.streak >= 3 -> "On fire! 🔥"
+                        state.multiplier >= 3 -> "On fire! 🔥"
+                        state.multiplier == 2 -> "Nice match! 🎉"
                         else -> baseCheer
                     },
-                    celebrate = state.justSolved, s = s,
+                    celebrate = state.pulse, s = s,
                     modifier = Modifier.weight(1f).fillMaxHeight()
                 )
 
-                Column(
-                    modifier = Modifier.fillMaxHeight(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    GridView(state, viewModel, cell, s)
+                BoardView(state.cards, config.cols, config.rows, cell, gap) { viewModel.tap(it) }
 
-                    Spacer(Modifier.height(AppDimens.Dimens16))
-
-                    // Number palette
-                    Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10), verticalAlignment = Alignment.CenterVertically) {
-                        state.palette.forEach { n ->
-                            val interaction = remember { MutableInteractionSource() }
-                            Box(
-                                contentAlignment = Alignment.Center,
-                                modifier = Modifier
-                                    .size(cell * 0.8f)
-                                    .clip(RoundedCornerShape(AppDimens.Dimens12))
-                                    .background(BLUE)
-                                    .clickable(interactionSource = interaction, indication = null) { viewModel.placeNumber(n) }
-                            ) {
-                                Text("$n", color = Color.White,
-                                    fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (30f * s).sp)
-                            }
-                        }
-                    }
-                }
-
-                GameScoreboardPanel(state.score, viewModel.multiplier, viewModel.bestScore, s, Modifier.weight(1f).fillMaxHeight())
+                GameScoreboardPanel(state.score, state.multiplier, viewModel.bestScore, s, Modifier.weight(1f).fillMaxHeight())
             }
         }
 
         if (state.isGameOver) {
-            ResultOverlay(state.score, state.puzzlesSolved, viewModel.bestScore,
+            ResultOverlay(state.score, viewModel.starCount(), state.matchesFound, viewModel.bestScore,
                 onPlayAgain = { viewModel.start() }, onBack = onBackClick)
         }
     }
 }
 
 @Composable
-private fun GridView(state: MagicSquareUiState, viewModel: MagicSquarePlayViewModel, cell: androidx.compose.ui.unit.Dp, s: Float) {
-    Column(verticalArrangement = Arrangement.spacedBy((6f * s).dp)) {
-        for (r in 0 until 3) {
-            Row(horizontalArrangement = Arrangement.spacedBy((6f * s).dp), verticalAlignment = Alignment.CenterVertically) {
-                for (c in 0 until 3) {
-                    CellView(state, viewModel, r * 3 + c, cell, s)
-                }
-                SumChip(viewModel.rowSum(state.grid, r), viewModel.rowComplete(state.grid, r), cell, s)
-            }
-        }
-        Row(horizontalArrangement = Arrangement.spacedBy((6f * s).dp), verticalAlignment = Alignment.CenterVertically) {
-            for (c in 0 until 3) {
-                Box(modifier = Modifier.width(cell), contentAlignment = Alignment.Center) { // center the chip under its column
-                    SumChip(viewModel.colSum(state.grid, c), viewModel.colComplete(state.grid, c), cell, s)
+private fun BoardView(cards: List<EqMatchCard>, cols: Int, rows: Int, cell: Dp, gap: Dp, onTap: (Int) -> Unit) {
+    Column(verticalArrangement = Arrangement.spacedBy(gap)) {
+        for (r in 0 until rows) {
+            Row(horizontalArrangement = Arrangement.spacedBy(gap)) {
+                for (c in 0 until cols) {
+                    val i = r * cols + c
+                    if (i < cards.size) FlipCard(cards[i], cell) { onTap(i) }
+                    else Spacer(Modifier.size(cell))
                 }
             }
-            Spacer(Modifier.size(cell * 0.72f, cell * 0.5f)) // filler under the row-chip column
         }
     }
 }
 
 @Composable
-private fun CellView(state: MagicSquareUiState, viewModel: MagicSquarePlayViewModel, i: Int, cell: androidx.compose.ui.unit.Dp, s: Float) {
-    val value = state.grid[i]
-    val isFixed = state.fixed[i]
-    val isSelected = state.selectedIndex == i
-    val bg = when {
-        state.justSolved -> SOLVED_BG
-        isFixed -> FIXED_BG
-        value != 0 -> BLUE
-        isSelected -> SELECTED_BG
-        else -> Color.White
-    }
-    val fg = if (value != 0 && !isFixed && !state.justSolved) Color.White else Color.Black
-    val borderColor = if (isSelected) ORANGE_BORDER else Color.Black.copy(alpha = 0.12f)
-    val scale by animateFloatAsState(if (state.justSolved) 1.05f else 1f, spring(dampingRatio = 0.5f), label = "")
+private fun FlipCard(card: EqMatchCard, size: Dp, onTap: () -> Unit) {
+    val isUp = card.state != EqMatchCardState.DOWN
+    val matched = card.state == EqMatchCardState.MATCHED
+    val rotation by animateFloatAsState(if (isUp) 180f else 0f, tween(350), label = "flip")
+    val pop by animateFloatAsState(if (matched) 1.06f else 1f, spring(dampingRatio = 0.5f), label = "pop")
+
     Box(
-        contentAlignment = Alignment.Center,
         modifier = Modifier
-            .graphicsLayer { scaleX = scale; scaleY = scale }
-            .size(cell)
-            .clip(RoundedCornerShape(AppDimens.Dimens12))
-            .background(bg)
-            .border(if (isSelected) 3.dp else 1.dp, borderColor, RoundedCornerShape(AppDimens.Dimens12))
-            .clickable { viewModel.tapCell(i) }
+            .size(size)
+            .graphicsLayer {
+                rotationY = rotation
+                cameraDistance = 12f * density
+                scaleX = pop; scaleY = pop
+            }
+            .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null) { onTap() },
+        contentAlignment = Alignment.Center
     ) {
-        Text(if (value == 0) "" else "$value", color = fg,
-            fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (30f * s).sp)
+        if (rotation < 90f) {
+            CardBack(size)
+        } else {
+            Box(modifier = Modifier.graphicsLayer { rotationY = 180f }) { CardFront(card, size, matched) }
+        }
     }
 }
 
 @Composable
-private fun SumChip(sum: Int, complete: Boolean, cell: androidx.compose.ui.unit.Dp, s: Float) {
+private fun CardBack(size: Dp) {
     Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .size(cell * 0.72f, cell * 0.5f)
-            .clip(RoundedCornerShape(AppDimens.Dimens8))
-            .background(if (complete) GREEN else Color.White.copy(alpha = 0.7f))
+        modifier = Modifier.size(size).clip(RoundedCornerShape(size * 0.18f))
+            .background(Brush.linearGradient(listOf(EqMatchPalette.backTop, EqMatchPalette.backBottom)))
+            .border(2.dp, Color.White.copy(alpha = 0.35f), RoundedCornerShape(size * 0.18f)),
+        contentAlignment = Alignment.Center
     ) {
-        Text("$sum", color = if (complete) Color.White else CHIP_GREY,
-            fontFamily = FontFamily(Font(R.font.font_bold)), fontSize = (18f * s).sp)
-    }
-}
-
-@Composable private fun str(id: Int): String = androidx.compose.ui.res.stringResource(id)
-@Composable private fun str(id: Int, vararg args: Any): String = androidx.compose.ui.res.stringResource(id, *args)
-
-@Composable
-private fun Hud(timerSeconds: Int?, puzzlesGoal: Int?, timeLeft: Int, puzzlesSolved: Int) {
-    val font = FontFamily(Font(R.font.font_bold))
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16), verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.padding(end = AppDimens.Dimens12).clip(RoundedCornerShape(AppDimens.Dimens12))
-            .background(Color.White.copy(alpha = 0.75f)).padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)
-    ) {
-        if (timerSeconds != null) Text("⏱ $timeLeft", color = Color.Black, fontFamily = font, fontSize = 16.sp.scaled())
-        else if (puzzlesGoal != null) Text("🧩 $puzzlesSolved/$puzzlesGoal", color = Color.Black, fontFamily = font, fontSize = 16.sp.scaled())
+        Text("?", color = Color.White.copy(alpha = 0.85f),
+            fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (size.value * 0.44f).sp)
     }
 }
 
 @Composable
-private fun ResultOverlay(score: Int, puzzlesSolved: Int, bestScore: Int, onPlayAgain: () -> Unit, onBack: () -> Unit) {
-    val starCount = when { puzzlesSolved >= 5 -> 3; puzzlesSolved >= 3 -> 2; else -> 1 }
+private fun CardFront(card: EqMatchCard, size: Dp, matched: Boolean) {
+    // Neutral while just flipped; once matched, the pair takes its own color + a ✓ badge.
+    val face = EqMatchPalette.face(card.pairId)
+    val ink = Color(0xFF2B2F36)
+    val len = card.text.length
+    val frac = when {
+        len <= 2 -> 0.38f
+        len == 3 -> 0.34f
+        len == 4 -> 0.30f
+        len == 5 -> 0.26f
+        else -> 0.22f
+    }
+    Box(
+        modifier = Modifier.size(size).clip(RoundedCornerShape(size * 0.18f))
+            .background(if (matched) face else Color.White)
+            .border(if (matched) 3.dp else 2.dp, if (matched) face else Color.Black.copy(alpha = 0.12f),
+                RoundedCornerShape(size * 0.18f)),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(card.text, color = if (matched) Color.White else ink,
+            fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (size.value * frac).sp,
+            maxLines = 1, softWrap = false)
+        if (matched) {
+            Icon(
+                imageVector = Icons.Filled.CheckCircle, contentDescription = null, tint = Color.White,
+                modifier = Modifier.align(Alignment.TopEnd).padding(size * 0.05f).size(size * 0.20f)
+            )
+        }
+    }
+}
+
+@Composable
+private fun ResultOverlay(score: Int, starCount: Int, matches: Int, best: Int, onPlayAgain: () -> Unit, onBack: () -> Unit) {
     var enabled by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) { delay(1000); enabled = true }
 
@@ -258,8 +239,8 @@ private fun ResultOverlay(score: Int, puzzlesSolved: Int, bestScore: Int, onPlay
             ) {
                 Row(modifier = Modifier.fillMaxWidth().padding(horizontal = AppDimens.Dimens20),
                     verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text("🧩", fontSize = (34f * gameScale()).sp)
-                    Text(str(R.string.balloon_great_job), color = Color.White,
+                    Text("🧮", fontSize = (34f * gameScale()).sp)
+                    Text(str(if (starCount >= 2) R.string.balloon_great_job else R.string.good_try), color = Color.White,
                         fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 32.sp.scaled())
                     Text("✨", fontSize = (34f * gameScale()).sp)
                 }
@@ -274,7 +255,7 @@ private fun ResultOverlay(score: Int, puzzlesSolved: Int, bestScore: Int, onPlay
                 Text(str(R.string.balloon_final_score) + ": $score", color = BLUE,
                     fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 28.sp.scaled())
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)) {
-                    StatChip("🧩", puzzlesSolved, GREEN); StatChip("🏆", bestScore, ORANGE_BORDER)
+                    StatChip("✅", matches, GREEN); StatChip("🏆", best, ORANGE_BORDER)
                 }
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
                     KidsActionButton(text = str(R.string.balloon_play_again), type = ButtonType.ORANGE, onClick = { if (enabled) onPlayAgain() })
@@ -299,5 +280,6 @@ private fun StatChip(emoji: String, value: Int, color: Color) {
 private fun BigStar(earned: Boolean, sizeSp: Int, delayMs: Long) {
     val scale = remember { Animatable(0.01f) }
     LaunchedEffect(Unit) { delay(delayMs); scale.animateTo(1f, spring(dampingRatio = 0.5f)) }
-    Text("⭐", fontSize = (sizeSp * gameScale()).sp, modifier = Modifier.graphicsLayer { scaleX = scale.value; scaleY = scale.value; alpha = if (earned) 1f else 0.35f })
+    Text("⭐", fontSize = (sizeSp * gameScale()).sp,
+        modifier = Modifier.graphicsLayer { scaleX = scale.value; scaleY = scale.value; alpha = if (earned) 1f else 0.35f })
 }

@@ -54,6 +54,7 @@ import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameMascotPanel
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
 import com.jigar.me.ui.view.home.screens.math_game_zone.merge2048.components.Merge2048Direction
 import com.jigar.me.ui.view.home.screens.math_game_zone.merge2048.components.Merge2048Palette
@@ -76,6 +77,7 @@ private val mScale: Float
 @Composable
 fun Merge2048PlayScreen(viewModel: Merge2048PlayViewModel, onBackClick: () -> Unit) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+    val baseCheer = remember { randomGameCheer() }
     val s = mScale
     val boardSide = (300f * s).dp
     val gap = (6f * s).dp
@@ -115,7 +117,7 @@ fun Merge2048PlayScreen(viewModel: Merge2048PlayViewModel, onBackClick: () -> Un
                 GameMascotPanel(
                     cheer = when {
                         viewModel.highestTile >= viewModel.target -> "On fire! 🔥"
-                        else -> "You can do it!"
+                        else -> baseCheer
                     },
                     celebrate = state.milestoneValue != null, s = s,
                     modifier = Modifier.weight(1f).fillMaxHeight()

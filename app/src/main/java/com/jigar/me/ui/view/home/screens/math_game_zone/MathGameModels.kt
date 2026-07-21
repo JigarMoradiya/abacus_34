@@ -11,7 +11,8 @@ enum class GameCategoryType {
     MISSING_OPERATOR,
     MAGIC_SQUARE,
     CALCUDOKU,
-    MERGE_2048
+    MERGE_2048,
+    EQUATION_MATCH
 }
 
 data class GameCategoryData(

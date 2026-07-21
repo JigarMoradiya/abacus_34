@@ -77,6 +77,11 @@ sealed class RouteNavigation(val route: String) {
         fun play(diff: String): String = "Merge2048Play/$diff"
     }
 
+    object EquationMatchHome : RouteNavigation("EquationMatchHome")
+    object EquationMatchPlay : RouteNavigation("EquationMatchPlay/{equation_match_diff}") {
+        fun play(diff: String): String = "EquationMatchPlay/$diff"
+    }
+
     object Settings : RouteNavigation("Settings")
 
     object Purchase : RouteNavigation("Purchase")

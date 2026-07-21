@@ -51,6 +51,7 @@ import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameMascotPanel
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameScoreboardPanel
 import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.components.Comparator
 import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.viewmodel.SpeedComparePlayViewModel
@@ -71,6 +72,7 @@ fun SpeedComparePlayScreen(
     onBackClick: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+    val baseCheer = remember { randomGameCheer() }
     val s = if (DeviceScaleHolder.isLargeTablet) 1.7f else if (DeviceScaleHolder.isTablet) 1.45f else 1.0f
     LaunchedEffect(Unit) { viewModel.start() }
 
@@ -115,7 +117,7 @@ fun SpeedComparePlayScreen(
                         state.revealed && state.lastCorrect -> "Awesome! 🎉"
                         state.revealed -> "Oops! Try again 💪"
                         viewModel.multiplier > 1 -> "On fire! 🔥"
-                        else -> "You can do it!"
+                        else -> baseCheer
                     },
                     celebrate = state.revealed && state.lastCorrect, s = s,
                     modifier = Modifier.weight(1f).fillMaxHeight()

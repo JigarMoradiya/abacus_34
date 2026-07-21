@@ -52,6 +52,7 @@ import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameMascotPanel
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameScoreboardPanel
 import com.jigar.me.ui.view.home.screens.math_game_zone.missing_operator.components.MathOperator
 import com.jigar.me.ui.view.home.screens.math_game_zone.missing_operator.viewmodel.MissingOperatorPlayViewModel
@@ -74,6 +75,7 @@ fun MissingOperatorPlayScreen(
     onBackClick: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+    val baseCheer = remember { randomGameCheer() }
     val s = moScale
     LaunchedEffect(Unit) { viewModel.start() }
 
@@ -107,7 +109,7 @@ fun MissingOperatorPlayScreen(
                         state.revealed && state.lastCorrect -> "Awesome! 🎉"
                         state.revealed -> "Oops! Try again 💪"
                         viewModel.multiplier > 1 -> "On fire! 🔥"
-                        else -> "You can do it!"
+                        else -> baseCheer
                     },
                     celebrate = state.revealed && state.lastCorrect, s = s,
                     modifier = Modifier.weight(1f).fillMaxHeight()

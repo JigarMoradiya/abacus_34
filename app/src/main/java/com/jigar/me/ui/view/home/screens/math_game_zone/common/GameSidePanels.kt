@@ -38,6 +38,21 @@ import com.jigar.me.ui.view.home.theme.AppDimens
 fun gameScale(): Float =
     if (DeviceInfo.isLargeTablet) 1.7f else if (DeviceInfo.isTablet) 1.45f else 1f
 
+// Encouraging lines the mascot shows while playing — one picked at random per game.
+val gameCheerLines = listOf(
+    "You can do it!",
+    "Keep it up! 💪",
+    "You've got this!",
+    "Nice going! 👍",
+    "Stay sharp! ✨",
+    "Great focus! 🎯",
+    "Keep going! 🚀",
+    "You're doing great!",
+    "Brain power! 🧠",
+    "Smart thinking! 💡"
+)
+fun randomGameCheer(): String = gameCheerLines.random()
+
 private val BLUE = Color(0xFF0074D5)
 private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)

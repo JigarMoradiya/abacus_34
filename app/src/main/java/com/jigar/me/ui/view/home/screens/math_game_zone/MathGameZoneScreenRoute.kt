@@ -16,6 +16,7 @@ fun MathGameZoneScreenRoute(
     onNavigateToMagicSquare: () -> Unit,
     onNavigateToCalcudoku: () -> Unit,
     onNavigateToMerge2048: () -> Unit,
+    onNavigateToEquationMatch: () -> Unit,
 ) {
     MathGameZoneScreen(
         gameType = { type ->
@@ -31,6 +32,7 @@ fun MathGameZoneScreenRoute(
                 GameCategoryType.MAGIC_SQUARE -> onNavigateToMagicSquare()
                 GameCategoryType.CALCUDOKU -> onNavigateToCalcudoku()
                 GameCategoryType.MERGE_2048 -> onNavigateToMerge2048()
+                GameCategoryType.EQUATION_MATCH -> onNavigateToEquationMatch()
             }
         },
         onBackClick = onBackClick
