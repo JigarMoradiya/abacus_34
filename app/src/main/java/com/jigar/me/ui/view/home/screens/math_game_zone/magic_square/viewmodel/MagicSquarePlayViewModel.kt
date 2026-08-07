@@ -103,7 +103,7 @@ class MagicSquarePlayViewModel @Inject constructor(
         newGrid[i] = n
         val pi = newPalette.indexOf(n)
         if (pi >= 0) newPalette.removeAt(pi)
-        AudioPlayerManager.playSoundBtnClick()
+        AudioPlayerManager.playSoundTilePlace()
         _uiState.update { it.copy(grid = newGrid, palette = newPalette, selectedIndex = null) }
         checkWin()
     }
@@ -130,7 +130,7 @@ class MagicSquarePlayViewModel @Inject constructor(
     private fun checkWin() {
         val s = _uiState.value
         if (s.grid.contains(0) || !linesSatisfied(s.grid)) return
-        AudioPlayerManager.playSoundCorrectAns()
+        AudioPlayerManager.playSoundSparkle()
         val mult = multiplier
         _uiState.update {
             it.copy(streak = it.streak + 1, score = it.score + 50 * mult,

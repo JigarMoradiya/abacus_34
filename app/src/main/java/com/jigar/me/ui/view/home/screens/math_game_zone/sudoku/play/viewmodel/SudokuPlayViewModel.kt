@@ -151,7 +151,7 @@ class SudokuPlayViewModel @Inject constructor(
 
 //        val valid = SudokuSolver.isValid(board, puzzle.size, r, c, number)
 
-        AudioPlayerManager.playSoundBtnClick()
+        AudioPlayerManager.playSoundTilePlace()
         saveProgress()
         checkSolved()
     }
@@ -168,7 +168,7 @@ class SudokuPlayViewModel @Inject constructor(
 
     fun toggleCandidates() {
         if (selected == null) {
-            AudioPlayerManager.playSoundAnsWrong()
+            AudioPlayerManager.playSoundWrongSoft()
             message = "Select a cell first"
             return
         }
@@ -182,12 +182,12 @@ class SudokuPlayViewModel @Inject constructor(
 
     fun revealOneNumber() {
         val s = selected ?: run {
-            AudioPlayerManager.playSoundAnsWrong()
+            AudioPlayerManager.playSoundWrongSoft()
             message = "Select a cell first"
             return
         }
         if (hintUsed >= hintLimit) {
-            AudioPlayerManager.playSoundAnsWrong()
+            AudioPlayerManager.playSoundWrongSoft()
             message = "No more hints available"
             return
         }

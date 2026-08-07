@@ -1,46 +1,56 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.LocalIndication
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.min
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.PrimaryBlue
+import kotlinx.coroutines.delay
 
 @Composable
 fun MathGameZoneScreen(
@@ -105,76 +115,173 @@ fun MathGameZoneScreen(
         )
     )
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    // Row layout: phone 6 + 5, tablet 4 + 4 + 3 — everything fits with no scrolling
+    val rowCounts = if (DeviceInfo.isTablet) listOf(4, 4, 3) else listOf(6, 5)
+    val rows = remember(categories, rowCounts) {
+        var index = 0
+        rowCounts.map { count ->
+            val end = minOf(index + count, categories.size)
+            categories.subList(index, end).also { index = end }
+        }
+    }
 
-        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+    Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
 
+        Row(verticalAlignment = Alignment.CenterVertically) {
             BackButtonWithText(title = stringResource(R.string.math_game_zone), onBackClick = onBackClick)
-
             Spacer(Modifier.weight(1f))
-
+            // Playful header hint
             Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .horizontalScroll(rememberScrollState()),
-                horizontalArrangement = Arrangement.SpaceEvenly
+                    .padding(end = AppDimens.Dimens16)
+                    .background(Color.White.copy(alpha = 0.85f), CircleShape)
+                    .border(1.5.dp, PrimaryBlue.copy(alpha = 0.3f), CircleShape)
+                    .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)
             ) {
-                categories.forEach { category ->
+                Text(text = "🎮", style = MaterialTheme.typography.labelMedium.scaled())
+                Text(
+                    text = stringResource(R.string.pick_a_game_have_fun),
+                    color = PrimaryBlue.copy(alpha = 0.9f),
+                    fontFamily = FontFamily(Font(R.font.font_bold)),
+                    style = MaterialTheme.typography.labelMedium.scaled()
+                )
+            }
+        }
 
-                    val shape = RoundedCornerShape(AppDimens.Dimens12)
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier
-                            .clip(shape)
-                            .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = LocalIndication.current
-                            ) {
-                                gameType.invoke(category.type)
-                            }
-                            .padding(horizontal = AppDimens.Dimens16)
+        BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+            val hPad = AppDimens.Dimens16
+            val vPad = AppDimens.Dimens10
+            val gap = AppDimens.Dimens10
+            val maxCols = rows.maxOf { it.size }
+            val tileW = (maxWidth - hPad * 2 - gap * (maxCols - 1)) / maxCols
+            val tileH = (maxHeight - vPad * 2 - gap * (rows.size - 1)) / rows.size
+
+            Column(
+                verticalArrangement = Arrangement.spacedBy(gap),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = hPad, vertical = vPad)
+            ) {
+                var index = 0
+                rows.forEach { rowItems ->
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(gap, Alignment.CenterHorizontally),
+                        modifier = Modifier.fillMaxWidth()
                     ) {
-                        Image(
-                            painter = painterResource(id = category.type.toDrawable()),
-                            contentDescription = category.type.name,
-                            contentScale = ContentScale.Fit,
-                            modifier = Modifier.fillMaxHeight(0.7f)
-                        )
-                        Spacer(modifier = Modifier.height(AppDimens.Dimens8))
-                        Text(
-                            text = category.title,
-                            color = colorResource(R.color.black),
-                            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                            style = if (DeviceInfo.isTablet) MaterialTheme.typography.titleLarge.scaled() else MaterialTheme.typography.titleSmall.scaled(),
-                        )
-                        Text(
-                            text = category.desc,
-                            color = colorResource(R.color.black).copy(alpha = 0.8f),
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
-                            style = if (DeviceInfo.isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.labelMedium.scaled(),
-                        )
+                        rowItems.forEach { category ->
+                            GameZoneCard(
+                                category = category,
+                                width = tileW,
+                                height = tileH,
+                                appearIndex = index++,
+                                onClick = { gameType.invoke(category.type) }
+                            )
+                        }
                     }
                 }
             }
-
-            Spacer(Modifier.weight(1f))
-
         }
     }
 }
 
-fun GameCategoryType.toDrawable(): Int {
-    return when (this) {
-        GameCategoryType.NUMBER_SEQUENCE_PUZZLE -> R.drawable.number_sequence_puzzle
-        GameCategoryType.SUDOKU -> R.drawable.sudoku
-        GameCategoryType.MATH_PYRAMID -> R.drawable.math_pyramid
-        GameCategoryType.TARGET_NUMBER -> R.drawable.target_number
-        GameCategoryType.BALLOON_POP -> R.drawable.balloon_pop
-        GameCategoryType.SPEED_COMPARE -> R.drawable.speed_compare
-        GameCategoryType.MISSING_OPERATOR -> R.drawable.missing_operator
-        GameCategoryType.MAGIC_SQUARE -> R.drawable.magic_square
-        GameCategoryType.CALCUDOKU -> R.drawable.calcudoku
-        GameCategoryType.MERGE_2048 -> R.drawable.merge2048
-        GameCategoryType.EQUATION_MATCH -> R.drawable.equation_match
+@Composable
+private fun GameZoneCard(
+    category: GameCategoryData,
+    width: Dp,
+    height: Dp,
+    appearIndex: Int,
+    onClick: () -> Unit
+) {
+    val style = gameCardStyle(category.type)
+    val corner = min(width, height) * 0.16f
+    val shape = RoundedCornerShape(corner)
+    val iconArea = min(width * 0.62f, height * 0.48f)
+
+    val interactionSource = remember { MutableInteractionSource() }
+    val pressed by interactionSource.collectIsPressedAsState()
+    val pressScale by animateFloatAsState(
+        targetValue = if (pressed) 0.92f else 1f,
+        label = "pressScale"
+    )
+
+    // Staggered pop-in on first show
+    var appeared by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) {
+        delay(appearIndex * 45L)
+        appeared = true
+    }
+    val appearScale by animateFloatAsState(
+        targetValue = if (appeared) 1f else 0.5f,
+        animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy, stiffness = Spring.StiffnessMediumLow),
+        label = "appearScale"
+    )
+    val appearAlpha by animateFloatAsState(
+        targetValue = if (appeared) 1f else 0f,
+        label = "appearAlpha"
+    )
+
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier
+            .size(width = width, height = height)
+            .graphicsLayer {
+                val scale = pressScale * appearScale
+                scaleX = scale
+                scaleY = scale
+                alpha = appearAlpha
+            }
+            .shadow(
+                elevation = AppDimens.Dimens6,
+                shape = shape,
+                ambientColor = style.dark,
+                spotColor = style.dark
+            )
+            .background(
+                brush = Brush.verticalGradient(listOf(style.light, style.dark)),
+                shape = shape
+            )
+            .border(2.dp, Color.White.copy(alpha = 0.7f), shape)
+            .clickable(
+                interactionSource = interactionSource,
+                indication = null
+            ) { onClick() }
+    ) {
+        // Programmatic icon on a soft white disc
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier
+                .size(iconArea * 1.28f)
+                .background(Color.White.copy(alpha = 0.18f), CircleShape)
+        ) {
+            GameTileIcon(type = category.type, size = iconArea, tint = style.tint)
+        }
+
+        Spacer(Modifier.size(height * 0.045f))
+
+        Text(
+            text = category.title,
+            color = Color.White,
+            textAlign = TextAlign.Center,
+            maxLines = 2,
+            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+            style = if (DeviceInfo.isTablet) MaterialTheme.typography.titleMedium.scaled()
+            else MaterialTheme.typography.labelMedium.scaled(),
+            modifier = Modifier.padding(horizontal = width * 0.06f)
+        )
+
+        if (DeviceInfo.isTablet) {
+            Text(
+                text = category.desc,
+                color = Color.White.copy(alpha = 0.85f),
+                textAlign = TextAlign.Center,
+                maxLines = 1,
+                fontFamily = FontFamily(Font(R.font.font_bold)),
+                style = MaterialTheme.typography.labelSmall.scaled(),
+                modifier = Modifier.padding(horizontal = width * 0.06f)
+            )
+        }
     }
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.jigar.me.data.model.data.Statistics
 import com.jigar.me.data.pref.AppPreferencesHelper
+import com.jigar.me.utils.WeeklySummaryManager
 import com.jigar.me.data.repositories.DBRepository
 import com.jigar.me.ui.jetpack.api.GetStatisticsUseCase
 import com.jigar.me.ui.jetpack.core.StatefulViewModel
@@ -47,6 +48,7 @@ class MyAccountViewModel @Inject constructor(
                 )
             }
         }
+        updateState_ { copy(weeklyStats = WeeklySummaryManager.readStats(pref)) }
         if (isLoggedIn) getStatistics()
     }
     fun onLoginSuccess() {

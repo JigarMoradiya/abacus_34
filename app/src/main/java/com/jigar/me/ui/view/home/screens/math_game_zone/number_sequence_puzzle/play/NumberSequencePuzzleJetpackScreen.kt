@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.number_sequence_puzzle.play
 
+import com.jigar.me.ui.view.home.navigation.safePopBackStack
 import com.jigar.me.ui.view.home.theme.AppDimens
 
 import androidx.compose.animation.AnimatedVisibility
@@ -96,7 +97,7 @@ fun NumberSequencePuzzleJetpackScreen(
             else -> stringResource(R.string._5_5_puzzle)
         }
         BackButtonWithText(title = title, onBackClick = {
-            navController.popBackStack()
+            navController.safePopBackStack()
         })
         Column(modifier = Modifier.fillMaxSize()) {
             BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
@@ -155,7 +156,7 @@ fun NumberSequencePuzzleJetpackScreen(
             onPositiveTapped = { viewModel.playAgain() },
             onNegativeTapped = {
                 viewModel.closePopup()
-                navController.popBackStack()
+                navController.safePopBackStack()
             }
         )
     }

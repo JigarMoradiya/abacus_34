@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play
 
+import com.jigar.me.ui.view.home.navigation.safePopBackStack
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -69,7 +70,7 @@ fun SudokuPlayScreen(
             Column(modifier = Modifier.wrapContentWidth()) {
                 BackButtonWithText(
                     title = "${size.displayName} • ${difficulty.displayName}",
-                    onBackClick = { navController.popBackStack() },
+                    onBackClick = { navController.safePopBackStack() },
                     modifier = Modifier.wrapContentWidth()
                 )
 
@@ -166,7 +167,7 @@ fun SudokuPlayScreen(
             },
             onNegativeTapped = {
                 vm.isSolved = false
-                navController.popBackStack()
+                navController.safePopBackStack()
             }
         )
     }

@@ -73,13 +73,13 @@ class MissingOperatorPlayViewModel @Inject constructor(
         val mult = when (newStreak) { in 0..2 -> 1; in 3..5 -> 2; in 6..9 -> 3; else -> 4 }
 
         if (correct) {
-            AudioPlayerManager.playSoundCorrectAns()
+            AudioPlayerManager.playSoundDing()
             _uiState.update {
                 it.copy(chosen = op, revealed = true, lastCorrect = true, roundsPlayed = it.roundsPlayed + 1,
                     streak = newStreak, score = it.score + 10 * mult, correctCount = it.correctCount + 1)
             }
         } else {
-            AudioPlayerManager.playSoundOptionWrong()
+            AudioPlayerManager.playSoundWrongSoft()
             _uiState.update {
                 it.copy(chosen = op, revealed = true, lastCorrect = false, roundsPlayed = it.roundsPlayed + 1,
                     streak = 0, wrongCount = it.wrongCount + 1,

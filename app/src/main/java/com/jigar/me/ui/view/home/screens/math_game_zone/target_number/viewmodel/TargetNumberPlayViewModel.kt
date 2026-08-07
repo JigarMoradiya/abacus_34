@@ -135,7 +135,7 @@ class TargetNumberPlayViewModel @Inject constructor(
 
         // SAME NUMBER PRESSED AGAIN
         if (selectedIndex == index) {
-            AudioPlayerManager.playSoundAnsWrong()
+            AudioPlayerManager.playSoundWrongSoft()
             updateState(s.copy(message = "You already selected this number. Choose another."))
             return
         }
@@ -144,7 +144,7 @@ class TargetNumberPlayViewModel @Inject constructor(
         val op = selectedOp
         val a = firstOperand
         if (op == null || a == null) {
-            AudioPlayerManager.playSoundAnsWrong()
+            AudioPlayerManager.playSoundWrongSoft()
             updateState(s.copy(message = "Select an operation first!"))
             return
         }
@@ -188,7 +188,7 @@ class TargetNumberPlayViewModel @Inject constructor(
         val s = uiState.value
 
         if (firstOperand == null) {
-            AudioPlayerManager.playSoundAnsWrong()
+            AudioPlayerManager.playSoundWrongSoft()
             updateState(s.copy(message = "Select a number first!"))
             return
         }
@@ -244,7 +244,7 @@ class TargetNumberPlayViewModel @Inject constructor(
 
         // Limit
         if (s.hintUsed >= s.hintLimit) {
-            AudioPlayerManager.playSoundAnsWrong()
+            AudioPlayerManager.playSoundWrongSoft()
             updateState(s.copy(message = "No more hints available."))
             return
         }
@@ -267,7 +267,7 @@ class TargetNumberPlayViewModel @Inject constructor(
         val next = s.steps.size
 
         if (next >= s.solutionSteps.size) {
-            AudioPlayerManager.playSoundAnsWrong()
+            AudioPlayerManager.playSoundWrongSoft()
             updateState(s.copy(message = "All hints already shown"))
             return
         }
@@ -380,7 +380,7 @@ class TargetNumberPlayViewModel @Inject constructor(
                 )
             )
         } else {
-            AudioPlayerManager.playSoundAnsWrong()
+            AudioPlayerManager.playSoundWrongSoft()
             updateState(
                 s.copy(
                     isSolved = true,

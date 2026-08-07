@@ -130,7 +130,7 @@ class Merge2048PlayViewModel @Inject constructor(
             if (cell != null) {
                 next = next + Merge2048Tile(nextId++, spawnValue(), cell.first, cell.second, isNew = true)
             }
-            if (gained > 0) AudioPlayerManager.playSoundCorrectAns() else AudioPlayerManager.playSoundSwip()   // merge vs plain slide
+            if (gained > 0) AudioPlayerManager.playSoundMergePop() else AudioPlayerManager.playSoundSwip()   // merge vs plain slide
             _uiState.update { it.copy(tiles = next, score = it.score + gained, target = newTarget, milestoneValue = milestone) }
 
             // Game ends only when no move is possible; otherwise persist progress.

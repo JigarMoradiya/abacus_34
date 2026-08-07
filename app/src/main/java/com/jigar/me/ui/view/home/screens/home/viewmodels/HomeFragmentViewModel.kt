@@ -15,6 +15,7 @@ import com.jigar.me.ui.jetpack.core.repository.abacus_data.AbacusDataRepository
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.AppReviewManager
 import com.jigar.me.utils.StreakManager
+import com.jigar.me.utils.WeeklySummaryManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -64,6 +65,8 @@ class HomeFragmentViewModel @Inject constructor(
         updateState_ { copy(isShowNotificationSettingPopup = true) }
     }
 
+    fun weeklyStats(): WeeklySummaryManager.WeeklyStats = WeeklySummaryManager.readStats(prefs)
+
     private suspend fun checkStreak() = withContext(Dispatchers.IO) {
         val result = StreakManager.checkAndUpdate(prefs)
         updateState_ {
@@ -75,6 +78,7 @@ class HomeFragmentViewModel @Inject constructor(
             )
         }
         StreakManager.scheduleNotification(context)
+        WeeklySummaryManager.scheduleNotification(context)
 
         // No streak dialog queued up to show this session — check the review
         // gate immediately. If a milestone dialog IS queued, defer to

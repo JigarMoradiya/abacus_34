@@ -10,6 +10,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet
 import com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext
+import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
 import com.jigar.me.ui.view.home.screens.math_game_zone.target_number.components.TargetNumberViewModel
 import com.jigar.me.ui.view.home.screens.math_game_zone.target_number.viewmodel.TargetNumberPlayViewModel
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
@@ -29,8 +30,14 @@ fun TargetNumberHomeRoute(
     TargetNumberHomeScreen(
         viewModel = viewModel,
         onStartGame = {
-            if (FreemiumManager.gameGate(isSubscribed) == FreemiumManager.GateResult.ALLOW) {
-                val state = viewModel.uiState.value
+            val state = viewModel.uiState.value
+            // Level 1 Easy is free forever — everything else is premium
+            val gate = FreemiumManager.targetNumberGate(
+                isSubscribed = isSubscribed,
+                level = state.selectedLevel,
+                isEasiestDifficulty = state.selectedDifficulty == CommonDifficulty4.easy
+            )
+            if (gate == FreemiumManager.GateResult.ALLOW) {
                 onStartPlay(state.selectedLevel, state.selectedDifficulty.name)
             } else {
                 showPaywall = true

@@ -26,6 +26,14 @@ object AudioPlayerManager {
         soundMap["play_win"] = load(context, "play_win.mp3")
         soundMap["option_correct_ans"] = load(context, "option_correct_ans.mp3")
         soundMap["option_wrong_ans"] = load(context, "option_wrong_ans.mp3")
+        // Game SFX (synthesized pack — see math game zone)
+        soundMap["sfx_balloon_pop"] = load(context, "sfx_balloon_pop.wav")
+        soundMap["sfx_wrong_soft"] = load(context, "sfx_wrong_soft.wav")
+        soundMap["sfx_correct_ding"] = load(context, "sfx_correct_ding.wav")
+        soundMap["sfx_sparkle"] = load(context, "sfx_sparkle.wav")
+        soundMap["sfx_card_flip"] = load(context, "sfx_card_flip.wav")
+        soundMap["sfx_tile_place"] = load(context, "sfx_tile_place.wav")
+        soundMap["sfx_merge_pop"] = load(context, "sfx_merge_pop.wav")
     }
 
     private fun load(context: Context, fileName: String): Int {
@@ -66,6 +74,29 @@ object AudioPlayerManager {
     }
     fun playSoundOptionWrong() {
         play("option_wrong_ans")
+    }
+
+    // Game SFX (synthesized pack — see math game zone)
+    fun playSoundBalloonPop() {
+        play("sfx_balloon_pop")
+    }
+    fun playSoundWrongSoft() {
+        play("sfx_wrong_soft")
+    }
+    fun playSoundDing() {
+        play("sfx_correct_ding")
+    }
+    fun playSoundSparkle() {
+        play("sfx_sparkle")
+    }
+    fun playSoundCardFlip() {
+        play("sfx_card_flip")
+    }
+    fun playSoundTilePlace() {
+        play("sfx_tile_place")
+    }
+    fun playSoundMergePop() {
+        play("sfx_merge_pop")
     }
 
     private fun play(key: String) {

@@ -244,6 +244,14 @@ object AppConstants {
         }
     }
 
+    annotation class WeeklySummary {
+        companion object {
+            const val weekStartDate     = "weekly_start_date"
+            const val weeklyProblems    = "weekly_problems"
+            const val weeklyActiveDates = "weekly_active_dates"
+        }
+    }
+
     annotation class Review {
         companion object {
             const val nextMilestoneDay = "review_next_milestone_day"

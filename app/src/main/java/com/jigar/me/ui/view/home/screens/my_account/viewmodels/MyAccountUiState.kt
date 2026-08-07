@@ -14,6 +14,7 @@ import androidx.compose.material.icons.outlined.SupportAgent
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.jigar.me.R
 import com.jigar.me.data.model.data.Statistics
+import com.jigar.me.utils.WeeklySummaryManager
 
 
 data class MyAccountUiState(
@@ -22,6 +23,7 @@ data class MyAccountUiState(
     val statistics: Statistics? = null,
     val isShowLogoutPopup: Boolean = false,
     val isLoggedIn: Boolean = false,
+    val weeklyStats: WeeklySummaryManager.WeeklyStats = WeeklySummaryManager.WeeklyStats(0, 0, 0),
 )
 
 data class MyAccountMenu(

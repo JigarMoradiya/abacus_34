@@ -31,8 +31,14 @@ fun MathPyramidHomeRoute(
     MathPyramidHomeJetpackScreen(
         viewModel = viewModel,
         onStartGame = {
-            if (FreemiumManager.gameGate(isSubscribed) == FreemiumManager.GateResult.ALLOW) {
-                val state = viewModel.uiState.value
+            val state = viewModel.uiState.value
+            // 2-level Easy pyramid is free forever — everything else is premium
+            val gate = FreemiumManager.mathPyramidGate(
+                isSubscribed = isSubscribed,
+                levels = state.selectedLevel,
+                isEasiestDifficulty = state.selectedDifficulty == CommonDifficulty4.easy
+            )
+            if (gate == FreemiumManager.GateResult.ALLOW) {
                 onStartPlay(state.selectedLevel, state.selectedDifficulty.name)
             } else {
                 showPaywall = true

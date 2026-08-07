@@ -112,7 +112,7 @@ class BalloonPopPlayViewModel @Inject constructor(
         if (balloon.isPopping) return
 
         if (balloon.value == complement) {
-            AudioPlayerManager.playSoundBtnClick()
+            AudioPlayerManager.playSoundBalloonPop()
             val newStreak = s.streak + 1
             val mult = when (newStreak) {
                 in 0..2 -> 1; in 3..5 -> 2; in 6..9 -> 3; else -> 4
@@ -143,6 +143,7 @@ class BalloonPopPlayViewModel @Inject constructor(
             // against its own shake window so a rapid double-tap (one mistake)
             // isn't counted as two wrongs / two streak resets.
             if (s.shakeBalloonId == id) return
+            AudioPlayerManager.playSoundWrongSoft()
             _uiState.update {
                 it.copy(
                     wrongCount = it.wrongCount + 1,

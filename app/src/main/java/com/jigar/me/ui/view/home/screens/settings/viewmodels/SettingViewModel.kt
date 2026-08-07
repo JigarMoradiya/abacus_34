@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.home.screens.settings.viewmodels
 
+import android.content.Context
 import android.speech.tts.TextToSpeech
 import android.speech.tts.Voice
 import android.util.Log
@@ -7,6 +8,7 @@ import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.jetpack.core.StatefulViewModelAbacus
 import com.jigar.me.ui.jetpack.utils.TextToSpeechManager
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.WeeklySummaryManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Locale
 import javax.inject.Inject
@@ -18,6 +20,11 @@ class SettingViewModel @Inject constructor(
 ) : StatefulViewModelAbacus<SettingUiState>(prefs = prefs,numberOfColumns = 3) {
 
     override val TAG = "SettingViewModel"
+
+    // TEMP (testing): fire the weekly parent summary notification in 5s.
+    fun testWeeklySummary(context: Context) {
+        WeeklySummaryManager.fireTestNotification(context, prefs)
+    }
 
     override fun getInitialState() = SettingUiState(
         displayNumber = prefs.getCustomParamBoolean(

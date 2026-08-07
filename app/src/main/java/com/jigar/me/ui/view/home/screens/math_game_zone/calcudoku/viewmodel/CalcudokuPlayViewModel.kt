@@ -110,7 +110,7 @@ class CalcudokuPlayViewModel @Inject constructor(
         val i = s.selectedIndex ?: firstEmptyEditable(s) ?: return
         if (s.fixed[i]) return
         val newGrid = s.grid.toMutableList().also { it[i] = n }
-        AudioPlayerManager.playSoundBtnClick()
+        AudioPlayerManager.playSoundTilePlace()
         _uiState.update { it.copy(grid = newGrid) }
         checkWin()
     }
@@ -174,7 +174,7 @@ class CalcudokuPlayViewModel @Inject constructor(
         if (s.grid.contains(0) || !latinValid(s.grid, s.size)) return
         if (s.cages.any { !cageSatisfied(it, s.grid) }) return
 
-        AudioPlayerManager.playSoundCorrectAns()
+        AudioPlayerManager.playSoundSparkle()
         _uiState.update {
             it.copy(score = it.score + 60, puzzlesSolved = it.puzzlesSolved + 1, justSolved = true)
         }

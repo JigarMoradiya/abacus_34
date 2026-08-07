@@ -12,14 +12,20 @@ import com.jigar.me.data.model.data.FetchReportHistoryRequest
 import com.jigar.me.data.model.data.FetchReportHistoryResponse
 import com.jigar.me.data.model.data.Statistics
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
+import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.jetpack.core.miscs.emitFlow
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.WeeklySummaryManager
 import com.jigar.me.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import java.io.IOException
 import javax.inject.Inject
 
-class DefaultExamNewRepository @Inject constructor(private val remote: ExamApi,private val abacusAllDataDB: AbacusAllDataDB) : ExamNewRepository, SafeApiCall {
+class DefaultExamNewRepository @Inject constructor(
+    private val remote: ExamApi,
+    private val abacusAllDataDB: AbacusAllDataDB,
+    private val prefs: AppPreferencesHelper
+) : ExamNewRepository, SafeApiCall {
 
     // network directory
     override fun submitExamData(params: SubmitAllExamDataRequest): Flow<Unit> = emitFlow {
@@ -47,6 +53,9 @@ class DefaultExamNewRepository @Inject constructor(private val remote: ExamApi,p
     }
 
     private suspend fun submitExamDataApi(request: SubmitAllExamDataRequest) = safeApiCall {
+        // Count the problems the child just worked through, for the weekly parent
+        // summary — same hook point as iOS (DataProgressManager.submitAnswerSheetCommon).
+        WeeklySummaryManager.record(prefs, request.no_of_questions ?: request.questions?.size ?: 0)
         remote.submitAllExam(request)
     }
 

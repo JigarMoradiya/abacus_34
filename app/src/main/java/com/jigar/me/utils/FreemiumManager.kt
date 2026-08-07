@@ -58,13 +58,34 @@ object FreemiumManager {
         }
     }
 
+    // Math games: the easiest variant of EVERY game is free (same rule as the
+    // newer zone games, where Easy is free and higher difficulties are premium).
+
     // Number Sequence: 3x3 free (local). 4x4 and 5x5 locked.
     fun numberSequenceGate(isSubscribed: Boolean, gridSize: Int): GateResult {
         if (isSubscribed) return GateResult.ALLOW
         return if (gridSize == 3) GateResult.ALLOW else GateResult.REQUIRE_PAYWALL
     }
 
-    // CCM, Sudoku, MathPyramid, TargetNumber: fully locked.
+    // Sudoku: 4x4 + easiest difficulty free.
+    fun sudokuGate(isSubscribed: Boolean, grid: Int, isEasiestDifficulty: Boolean): GateResult {
+        if (isSubscribed) return GateResult.ALLOW
+        return if (grid == 4 && isEasiestDifficulty) GateResult.ALLOW else GateResult.REQUIRE_PAYWALL
+    }
+
+    // Math Pyramid: 2 levels + easy free.
+    fun mathPyramidGate(isSubscribed: Boolean, levels: Int, isEasiestDifficulty: Boolean): GateResult {
+        if (isSubscribed) return GateResult.ALLOW
+        return if (levels <= 2 && isEasiestDifficulty) GateResult.ALLOW else GateResult.REQUIRE_PAYWALL
+    }
+
+    // Target Number: level 1 + easy free.
+    fun targetNumberGate(isSubscribed: Boolean, level: Int, isEasiestDifficulty: Boolean): GateResult {
+        if (isSubscribed) return GateResult.ALLOW
+        return if (level == 1 && isEasiestDifficulty) GateResult.ALLOW else GateResult.REQUIRE_PAYWALL
+    }
+
+    // CCM: fully locked.
     fun gameGate(isSubscribed: Boolean): GateResult {
         return if (isSubscribed) GateResult.ALLOW else GateResult.REQUIRE_PAYWALL
     }

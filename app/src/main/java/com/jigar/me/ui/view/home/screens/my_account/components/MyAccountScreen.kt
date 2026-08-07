@@ -55,34 +55,58 @@ fun MyAccountScreen(
         modifier = modifier, contentPadding = PaddingValues(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens12)
     ) {
 
-        // Not logged in banner
-        if (!uiState.isLoggedIn) {
+        // Same layout as iOS:
+        //  - logged in  → weekly report LEFT + 3 stat cards stacked vertically RIGHT
+        //  - logged out → centered compact weekly report + login banner
+        if (uiState.isLoggedIn && uiState.statistics != null) {
             item {
-                NotLoggedInBanner(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = AppDimens.Dimens12),
-                    onSignInClick = { onMenuClick("login") }
-                )
-            }
-        }
-
-        // Statistics (only when logged in)
-        uiState.statistics?.let { statistics ->
-            item {
+                val statistics = uiState.statistics
                 Row(
-                    modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.Top,
+                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
                 ) {
-                    StatisticsCard(
-                        title = "Total Exam : ", count = statistics.EXAM?.count?.toString() ?: "-", time = statistics.EXAM?.last_exam_given_time ?: "", backgroundColor = Color(0xFFFFEBEE), countColor = Color(0xFFC62828), modifier = Modifier.weight(1f)
+                    com.jigar.me.ui.view.home.screens.home.WeeklyReportContent(
+                        stats = uiState.weeklyStats,
+                        modifier = Modifier.weight(1f)
                     )
-
-                    StatisticsCard(
-                        title = "Total Exercise : ", count = statistics.EXERCISE?.count?.toString() ?: "-", time = statistics.EXERCISE?.last_exam_given_time ?: "", backgroundColor = Color(0xFFE8F5E9), countColor = Color(0xFF2E7D32), modifier = Modifier.weight(1f)
+                    androidx.compose.foundation.layout.Column(
+                        modifier = Modifier.weight(1f),
+                        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
+                    ) {
+                        StatisticsCard(
+                            title = "Total Exam : ", count = statistics.EXAM?.count?.toString() ?: "-", time = statistics.EXAM?.last_exam_given_time ?: "", backgroundColor = Color(0xFFFFEBEE), countColor = Color(0xFFC62828), modifier = Modifier.fillMaxWidth()
+                        )
+                        StatisticsCard(
+                            title = "Total Exercise : ", count = statistics.EXERCISE?.count?.toString() ?: "-", time = statistics.EXERCISE?.last_exam_given_time ?: "", backgroundColor = Color(0xFFE8F5E9), countColor = Color(0xFF2E7D32), modifier = Modifier.fillMaxWidth()
+                        )
+                        StatisticsCard(
+                            title = "Total CCM : ", count = statistics.CCM?.count?.toString() ?: "-", time = statistics.CCM?.last_exam_given_time ?: "", backgroundColor = Color(0xFFE3F2FD), countColor = Color(0xFF1565C0), modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+                }
+                androidx.compose.foundation.layout.Spacer(Modifier.padding(top = AppDimens.Dimens12))
+            }
+        } else {
+            item {
+                androidx.compose.foundation.layout.Box(
+                    modifier = Modifier.fillMaxWidth(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    com.jigar.me.ui.view.home.screens.home.WeeklyReportContent(
+                        stats = uiState.weeklyStats,
+                        compact = !uiState.isLoggedIn
                     )
-
-                    StatisticsCard(
-                        title = "Total Custom Challenge Mode : ", count = statistics.CCM?.count?.toString() ?: "-", time = statistics.CCM?.last_exam_given_time ?: "", backgroundColor = Color(0xFFE3F2FD), countColor = Color(0xFF1565C0), modifier = Modifier.weight(1.3f)
+                }
+                androidx.compose.foundation.layout.Spacer(Modifier.padding(top = AppDimens.Dimens12))
+            }
+            if (!uiState.isLoggedIn) {
+                item {
+                    NotLoggedInBanner(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = AppDimens.Dimens12),
+                        onSignInClick = { onMenuClick("login") }
                     )
                 }
             }

@@ -132,7 +132,7 @@ fun MathPyramidPlayJetpackScreen(
                                         newPyramid[r][c] = if (next == 0) null else next
                                     }
                                     else -> {
-                                        AudioPlayerManager.playSoundBtnClick()
+                                        AudioPlayerManager.playSoundTilePlace()
                                         val digit = label.toIntOrNull()
                                         if (digit != null) {
                                             val next = current * 10 + digit

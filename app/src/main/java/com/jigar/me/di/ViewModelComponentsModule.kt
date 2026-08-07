@@ -25,5 +25,6 @@ object ViewModelComponentsModule {
 
     @Provides
     @ViewModelScoped
-    fun provideExamNewRepository(remote: ExamApi, abacusAllDataDB : AbacusAllDataDB): ExamNewRepository = DefaultExamNewRepository(remote = remote, abacusAllDataDB = abacusAllDataDB)
+    fun provideExamNewRepository(remote: ExamApi, abacusAllDataDB : AbacusAllDataDB, prefs: AppPreferencesHelper): ExamNewRepository =
+        DefaultExamNewRepository(remote = remote, abacusAllDataDB = abacusAllDataDB, prefs = prefs)
 }

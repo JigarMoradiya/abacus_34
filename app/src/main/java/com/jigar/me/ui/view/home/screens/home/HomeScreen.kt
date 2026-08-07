@@ -40,6 +40,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Density
@@ -72,7 +74,11 @@ import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.ParentalGateSessionCache
 import com.jigar.me.utils.checkPermissions
+import kotlin.math.max
 import kotlin.math.min
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
+import com.jigar.me.ui.view.home.theme.ButtonType
+import com.jigar.me.utils.WeeklySummaryManager
 import androidx.core.net.toUri
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens20
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens24
@@ -161,6 +167,7 @@ fun HomeScreen(
     val context = LocalContext.current
     var showURLGate by remember { mutableStateOf(false) }
     var pendingUrlAction by remember { mutableStateOf<(() -> Unit)?>(null) }
+    var showWeeklyReport by remember { mutableStateOf(false) }
 
     fun openURLWithGate(action: () -> Unit) {
         if (ParentalGateSessionCache.urlGatePassedThisSession) action()
@@ -245,33 +252,41 @@ fun HomeScreen(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.spacedBy(Dimens12)
                     ) {
+                        // Speech bubble — friendly greeting + soft gradient
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .shadow(
                                     elevation = Dimens4,
                                     shape = bubbleShape,
-                                    ambientColor = PrimaryBlue.copy(alpha = 0.12f),
-                                    spotColor = PrimaryBlue.copy(alpha = 0.12f)
+                                    ambientColor = PrimaryBlue.copy(alpha = 0.18f),
+                                    spotColor = PrimaryBlue.copy(alpha = 0.18f)
                                 )
-                                .background(Color.White.copy(alpha = 0.95f), bubbleShape)
-                                .border(1.5.dp, PrimaryBlue.copy(alpha = 0.3f), bubbleShape)
+                                .background(
+                                    Brush.verticalGradient(
+                                        listOf(Color.White, Color(0xFFE3F2FD))
+                                    ),
+                                    bubbleShape
+                                )
+                                .border(1.5.dp, PrimaryBlue.copy(alpha = 0.25f), bubbleShape)
                                 .padding(horizontal = Dimens12)
                                 .padding(top = Dimens10)
                                 .padding(bottom = Dimens20),
                             horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.spacedBy(Dimens4)
+                            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens2)
                         ) {
-                            Image(
-                                painter = painterResource(R.drawable.logo_small),
-                                contentDescription = null,
-                                modifier = Modifier.size(Dimens28)
+                            Text(
+                                text = "Hi Champ! 👋",
+                                color = PrimaryBlue,
+                                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                                style = MaterialTheme.typography.labelLarge.scaled(),
+                                textAlign = TextAlign.Center
                             )
                             Text(
-                                text = "Ready to count\n& calculate today?",
-                                color = PrimaryBlue,
+                                text = "Let's count & calculate!",
+                                color = Color.Black.copy(alpha = 0.55f),
+                                fontFamily = FontFamily(Font(R.font.font_semibold)),
                                 style = MaterialTheme.typography.labelSmall.scaled(),
-                                fontWeight = FontWeight.Bold,
                                 textAlign = TextAlign.Center
                             )
                         }
@@ -379,15 +394,17 @@ fun HomeScreen(
                         modifier = Modifier.weight(1f)
                     )
 
-                    // English app cross-promo banner (phone only; tablet shows it in mascot panel)
+                    // Weekly report (left) + English cross-promo (right) — phone only
                     if (!isTablet) {
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(horizontal = Dimens16)
                                 .padding(bottom = Dimens8),
-                            horizontalArrangement = Arrangement.End
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
                         ) {
+                            WeeklyReportCard(viewModel.weeklyStats()) { showWeeklyReport = true }
                             EnglishBanner(context = context, onUrlClick = {
                             openURLWithGate {
                                 runCatching {
@@ -496,6 +513,10 @@ fun HomeScreen(
                 },
                 onCancelled = { showURLGate = false; pendingUrlAction = null }
             )
+        }
+
+        if (showWeeklyReport) {
+            WeeklyReportDialog(viewModel.weeklyStats()) { showWeeklyReport = false }
         }
     }
 }
@@ -1065,5 +1086,127 @@ private fun EnglishBanner(context: Context, onUrlClick: () -> Unit) {
                 modifier = Modifier.size(Dimens10)
             )
         }
+    }
+}
+
+// ── Weekly parent report ────────────────────────────────────────────────────
+
+@Composable
+private fun WeeklyReportCard(stats: WeeklySummaryManager.WeeklyStats, onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .background(Color(0xFF2E7D32).copy(alpha = 0.10f), RoundedCornerShape(percent = 50))
+            .border(1.dp, Color(0xFF43A047).copy(alpha = 0.35f), RoundedCornerShape(percent = 50))
+            .clickable { onClick() }
+            .padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens4),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)
+    ) {
+        Text("📊", style = MaterialTheme.typography.labelSmall.scaled())
+        Column(verticalArrangement = Arrangement.spacedBy(0.dp)) {
+            Text(
+                text = "This Week",
+                color = Color(0xFF2E7D32).copy(alpha = 0.85f),
+                fontFamily = FontFamily(Font(R.font.font_bold)),
+                style = MaterialTheme.typography.labelSmall.scaled()
+            )
+            Text(
+                text = if (stats.problems > 0) "${stats.problems} solved · ${max(1, stats.days)}d" else "Tap to view",
+                color = Color(0xFF2E7D32).copy(alpha = 0.6f),
+                style = MaterialTheme.typography.labelSmall.scaled()
+            )
+        }
+    }
+}
+
+@Composable
+private fun WeeklyReportDialog(stats: WeeklySummaryManager.WeeklyStats, onDismiss: () -> Unit) {
+    Box(
+        modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)),
+        contentAlignment = Alignment.Center
+    ) {
+        WeeklyReportContent(stats, onClose = onDismiss)
+    }
+}
+
+@Composable
+fun WeeklyReportContent(
+    stats: WeeklySummaryManager.WeeklyStats,
+    onClose: (() -> Unit)? = null,
+    compact: Boolean = false, // smaller paddings — used on My Account like iOS
+    modifier: Modifier = Modifier
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(if (compact) AppDimens.Dimens8 else AppDimens.Dimens16),
+        modifier = modifier
+            .background(Color.White, RoundedCornerShape(AppDimens.Dimens20))
+            .border(3.dp, Color(0xFF43A047), RoundedCornerShape(AppDimens.Dimens20))
+            .padding(
+                horizontal = if (compact) AppDimens.Dimens24 else AppDimens.Dimens30,
+                vertical = if (compact) AppDimens.Dimens12 else AppDimens.Dimens24
+            )
+    ) {
+        Text(
+            text = "📊 This Week",
+            color = Color(0xFF0074D5),
+            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+            style = MaterialTheme.typography.titleLarge.scaled()
+        )
+        if (stats.problems > 0) {
+            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
+                WRTile("⭐", "${stats.problems}", "Problems", Color(0xFF0074D5))
+                WRTile("📅", "${max(1, stats.days)}", "Days", Color(0xFF2E7D32))
+                WRTile("🔥", "${stats.streak}", "Streak", Color(0xFFE65100))
+            }
+            Text(
+                text = "Great progress this week — keep it going! 🌟",
+                color = Color.Black.copy(alpha = 0.65f),
+                fontFamily = FontFamily(Font(R.font.font_medium)),
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.bodyMedium.scaled()
+            )
+        } else {
+            Text("🌱", style = MaterialTheme.typography.headlineMedium.scaled())
+            Text(
+                text = "No practice yet this week",
+                color = Color(0xFF2E7D32),
+                fontFamily = FontFamily(Font(R.font.font_bold)),
+                style = MaterialTheme.typography.titleMedium.scaled()
+            )
+            Text(
+                text = "Practice together to build this week's report!",
+                color = Color.Black.copy(alpha = 0.65f),
+                fontFamily = FontFamily(Font(R.font.font_medium)),
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.bodyMedium.scaled()
+            )
+        }
+        Text(
+            text = "*Math games are not included",
+            color = Color.Black.copy(alpha = 0.35f),
+            fontFamily = FontFamily(Font(R.font.font_medium)),
+            style = MaterialTheme.typography.labelSmall.scaled()
+        )
+        if (onClose != null) {
+            KidsActionButton(text = "Got it!", type = ButtonType.ORANGE, onClick = onClose)
+        }
+    }
+}
+
+@Composable
+private fun WRTile(emoji: String, value: String, label: String, color: Color) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens4),
+        modifier = Modifier
+            .background(color.copy(alpha = 0.10f), RoundedCornerShape(AppDimens.Dimens12))
+            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens10)
+    ) {
+        Text(emoji, style = MaterialTheme.typography.titleLarge.scaled())
+        Text(value, color = color, fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+            style = MaterialTheme.typography.titleLarge.scaled())
+        Text(label, color = Color.Black.copy(alpha = 0.6f), fontFamily = FontFamily(Font(R.font.font_medium)),
+            style = MaterialTheme.typography.labelSmall.scaled())
     }
 }

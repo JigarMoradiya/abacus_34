@@ -17,7 +17,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -39,23 +41,42 @@ fun StatisticsCard(
 ) {
     Card(
         modifier = modifier,
-        shape = RoundedCornerShape(AppDimens.Dimens8),
+        shape = RoundedCornerShape(AppDimens.Dimens12),
         colors = CardDefaults.cardColors(containerColor = backgroundColor),
-        elevation = CardDefaults.cardElevation(AppDimens.Dimens4)
+        elevation = CardDefaults.cardElevation(AppDimens.Dimens2)
     ) {
         Column(modifier = Modifier.padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)) {
+            // Tight line boxes: no Android font padding + line height collapsed to
+            // the font size, so the "last attend" line sits right under the count row
+            val titleBase = MaterialTheme.typography.bodyMedium.scaled()
+            val countBase = MaterialTheme.typography.titleLarge.scaled()
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     title,
-                    style = MaterialTheme.typography.bodyMedium.scaled().copy(fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))),
+                    style = titleBase.copy(
+                        fontWeight = FontWeight.SemiBold,
+                        fontFamily = FontFamily(Font(R.font.font_semibold)),
+                        lineHeight = titleBase.fontSize,
+                        platformStyle = PlatformTextStyle(includeFontPadding = false),
+                        lineHeightStyle = LineHeightStyle(
+                            alignment = LineHeightStyle.Alignment.Center,
+                            trim = LineHeightStyle.Trim.Both
+                        )
+                    ),
                 )
                 Spacer(Modifier.width(AppDimens.Dimens4))
                 Text(
                     count,
-                    style = MaterialTheme.typography.titleLarge.scaled().copy(
+                    style = countBase.copy(
                         fontWeight = FontWeight.Bold,
                         color = countColor,
-                        fontFamily = FontFamily(Font(R.font.font_bold))
+                        fontFamily = FontFamily(Font(R.font.font_bold)),
+                        lineHeight = countBase.fontSize,
+                        platformStyle = PlatformTextStyle(includeFontPadding = false),
+                        lineHeightStyle = LineHeightStyle(
+                            alignment = LineHeightStyle.Alignment.Center,
+                            trim = LineHeightStyle.Trim.Both
+                        )
                     )
                 )
             }
@@ -64,8 +85,16 @@ fun StatisticsCard(
             }else{
                 time.toDate().formatTo(at_dd_mmm_yy_hh_mm_a).lowercase()
             }
+            val timeBase = MaterialTheme.typography.labelMedium.scaled()
             Text(timeFormat,
-                style = MaterialTheme.typography.labelMedium.scaled(),
+                style = timeBase.copy(
+                    lineHeight = timeBase.fontSize,
+                    platformStyle = PlatformTextStyle(includeFontPadding = false),
+                    lineHeightStyle = LineHeightStyle(
+                        alignment = LineHeightStyle.Alignment.Center,
+                        trim = LineHeightStyle.Trim.Both
+                    )
+                ),
                 fontFamily = FontFamily(Font(R.font.font_semibold))
             )
         }

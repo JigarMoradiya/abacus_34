@@ -14,6 +14,7 @@ import com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.home.SudokuHomeScreen
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.home.SudokuHomeViewModel
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.SudokuPlayScreen
+import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuDifficulty4
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuPlayViewModel
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.utils.FreemiumManager
@@ -33,8 +34,14 @@ fun SudokuHomeRoute(
         viewModel = viewModel,
         navController = navController,
         onStart = {
-            if (FreemiumManager.gameGate(isSubscribed) == FreemiumManager.GateResult.ALLOW) {
-                val state = viewModel.uiState.value
+            val state = viewModel.uiState.value
+            // 4×4 Easy is free forever — everything else is premium (same rule as the new games)
+            val gate = FreemiumManager.sudokuGate(
+                isSubscribed = isSubscribed,
+                grid = state.selectedSizeFinal.grid,
+                isEasiestDifficulty = state.selectedDifficultyFinal == SudokuDifficulty4.EASY
+            )
+            if (gate == FreemiumManager.GateResult.ALLOW) {
                 onStartPlay(
                     state.selectedSizeFinal.name,
                     state.selectedDifficultyFinal.name,

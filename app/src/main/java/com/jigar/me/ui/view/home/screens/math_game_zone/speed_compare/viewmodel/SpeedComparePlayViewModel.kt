@@ -76,7 +76,7 @@ class SpeedComparePlayViewModel @Inject constructor(
         val mult = when (newStreak) { in 0..2 -> 1; in 3..5 -> 2; in 6..9 -> 3; else -> 4 }
 
         if (correct) {
-            AudioPlayerManager.playSoundCorrectAns()
+            AudioPlayerManager.playSoundDing()
             _uiState.update {
                 it.copy(
                     chosen = comparator, revealed = true, lastCorrect = true,
@@ -86,7 +86,7 @@ class SpeedComparePlayViewModel @Inject constructor(
                 )
             }
         } else {
-            AudioPlayerManager.playSoundOptionWrong()
+            AudioPlayerManager.playSoundWrongSoft()
             _uiState.update {
                 it.copy(
                     chosen = comparator, revealed = true, lastCorrect = false,

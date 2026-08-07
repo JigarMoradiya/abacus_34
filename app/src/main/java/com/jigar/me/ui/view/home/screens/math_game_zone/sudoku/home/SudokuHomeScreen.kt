@@ -1,6 +1,7 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.home
 
 
+import com.jigar.me.ui.view.home.navigation.safePopBackStack
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
@@ -83,7 +84,7 @@ fun SudokuHomeScreen(
         Column(modifier = Modifier.fillMaxSize()) {
 
             Row(verticalAlignment = Alignment.CenterVertically) {
-                BackButtonWithText(title = stringResource(R.string.sudoku), modifier = Modifier.weight(1f),onBackClick = { navController.popBackStack() })
+                BackButtonWithText(title = stringResource(R.string.sudoku), modifier = Modifier.weight(1f),onBackClick = { navController.safePopBackStack() })
                 KidsActionButton(
                     modifier = Modifier.padding(end = Dimens16),
                     text = stringResource(R.string.how_to_play),
@@ -106,7 +107,7 @@ fun SudokuHomeScreen(
                 sizes.forEach { s ->
                     val isSelected = state.selectedSize == s
                     val animatedScale by animateFloatAsState(
-                        targetValue = if (isSelected) 1.1f else 0.9f, // 👈 bigger
+                        targetValue = if (isSelected) 1.0f else 0.82f,
                         animationSpec = spring(
                             dampingRatio = 0.6f,
                             stiffness = 300f
@@ -126,7 +127,10 @@ fun SudokuHomeScreen(
                     Box(
                         modifier = Modifier
                             .weight(1f)
-                            .aspectRatio(1f)
+                            // Size the circle from the row HEIGHT, not width/3 —
+                            // on landscape phones width/3 is taller than the row
+                            // and the circles blew past the screen
+                            .aspectRatio(1f, matchHeightConstraintsFirst = true)
                             .padding(AppDimens.Dimens12)
                             .graphicsLayer {
                                 scaleX = animatedScale

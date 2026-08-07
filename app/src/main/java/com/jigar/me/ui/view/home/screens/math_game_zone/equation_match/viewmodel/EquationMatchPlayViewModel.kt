@@ -61,7 +61,7 @@ class EquationMatchPlayViewModel @Inject constructor(
         if (firstIndex == index) return
 
         setCard(index, EqMatchCardState.UP)
-        AudioPlayerManager.playSoundBtnClick()
+        AudioPlayerManager.playSoundCardFlip()
 
         val first = firstIndex
         if (first == null) { firstIndex = index; return }
@@ -80,13 +80,13 @@ class EquationMatchPlayViewModel @Inject constructor(
                     pulse = !it.pulse
                 )
             }
-            AudioPlayerManager.playSoundCorrectAns()
+            AudioPlayerManager.playSoundSparkle()
             if (_uiState.value.matchesFound == config.pairs) endGame()
         } else {
             // Mismatch — flip both back after a beat.
             _uiState.update { it.copy(mismatches = it.mismatches + 1, multiplier = 1) }
             isLocked = true
-            AudioPlayerManager.playSoundOptionWrong()
+            AudioPlayerManager.playSoundWrongSoft()
             viewModelScope.launch {
                 delay(800)
                 setCard(first, EqMatchCardState.DOWN, onlyIfUp = true)
