@@ -937,6 +937,15 @@
     <string name="merge2048_target_title">Target Reached!</string>
     <string name="merge2048_target_hint">The smallest tiles are cleared away — keep merging to the next target!</string>
     <string name="keep_going">Keep Going!</string>
+
+    <!-- Cross Math game -->
+    <string name="cross_math">Cross Math</string>
+    <string name="cross_math_desc">Solve the number crossword!</string>
+    <string name="cross_math_game">Cross Math</string>
+    <string name="cross_math_tagline">Complete the crossing equations!</string>
+    <string name="cross_math_prompt">Fill the missing numbers!</string>
+    <string name="cross_math_level">Level %1$d</string>
+    <string name="cross_math_next_level">Next Level</string>
     <string name="number_sequence_desc"><![CDATA[Slide & order the numbers!]]></string>
     <string name="free_mode_settings">Free Mode Settings</string>
     <string name="click_here_to_show_abacus_tour">Show Abacus Tour</string>

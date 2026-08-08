@@ -82,6 +82,11 @@ sealed class RouteNavigation(val route: String) {
         fun play(diff: String): String = "EquationMatchPlay/$diff"
     }
 
+    object CrossMathHome : RouteNavigation("CrossMathHome")
+    object CrossMathPlay : RouteNavigation("CrossMathPlay/{cross_math_diff}/{cross_math_level}") {
+        fun play(diff: String, level: Int): String = "CrossMathPlay/$diff/$level"
+    }
+
     object Settings : RouteNavigation("Settings")
 
     object Purchase : RouteNavigation("Purchase")

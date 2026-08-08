@@ -112,11 +112,16 @@ fun MathGameZoneScreen(
             type = GameCategoryType.EQUATION_MATCH,
             title = stringResource(R.string.equation_match),
             desc = stringResource(R.string.equation_match_desc)
+        ),
+        GameCategoryData(
+            type = GameCategoryType.CROSS_MATH,
+            title = stringResource(R.string.cross_math),
+            desc = stringResource(R.string.cross_math_desc)
         )
     )
 
-    // Row layout: phone 6 + 5, tablet 4 + 4 + 3 — everything fits with no scrolling
-    val rowCounts = if (DeviceInfo.isTablet) listOf(4, 4, 3) else listOf(6, 5)
+    // Row layout: phone 6 + 6, tablet 4 + 4 + 4 — everything fits with no scrolling
+    val rowCounts = if (DeviceInfo.isTablet) listOf(4, 4, 4) else listOf(6, 6)
     val rows = remember(categories, rowCounts) {
         var index = 0
         rowCounts.map { count ->

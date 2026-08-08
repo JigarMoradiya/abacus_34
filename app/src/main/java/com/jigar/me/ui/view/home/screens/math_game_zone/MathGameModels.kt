@@ -12,7 +12,8 @@ enum class GameCategoryType {
     MAGIC_SQUARE,
     CALCUDOKU,
     MERGE_2048,
-    EQUATION_MATCH
+    EQUATION_MATCH,
+    CROSS_MATH
 }
 
 data class GameCategoryData(

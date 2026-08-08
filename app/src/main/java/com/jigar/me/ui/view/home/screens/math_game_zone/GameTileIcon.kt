@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,6 +26,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -67,6 +69,8 @@ fun gameCardStyle(type: GameCategoryType): GameCardStyle = when (type) {
         GameCardStyle(Color(0xFF9CCC65), Color(0xFF689F38), Color(0xFF33691E))
     GameCategoryType.EQUATION_MATCH ->
         GameCardStyle(Color(0xFF7E57C2), Color(0xFF512DA8), Color(0xFF4527A0))
+    GameCategoryType.CROSS_MATH ->
+        GameCardStyle(Color(0xFF26A69A), Color(0xFF00796B), Color(0xFF00695C))
 }
 
 // ── Icon dispatcher ─────────────────────────────────────────────────────────
@@ -86,6 +90,7 @@ fun GameTileIcon(type: GameCategoryType, size: Dp, tint: Color) {
             GameCategoryType.CALCUDOKU -> CalcudokuIcon(size)
             GameCategoryType.MERGE_2048 -> MergeIcon(size, tint)
             GameCategoryType.EQUATION_MATCH -> EquationMatchIcon(size, tint)
+            GameCategoryType.CROSS_MATH -> CrossMathIcon(size, tint)
         }
     }
 }
@@ -546,6 +551,60 @@ private fun MergeIcon(size: Dp, tint: Color) {
 }
 
 // ── 11. Equation Match — flipped pair of cards ──────────────────────────────
+
+@Composable
+private fun CrossMathIcon(size: Dp, tint: Color) {
+    // Real cross-math example: 3 + 2 = 5 across, 8 − 2 = 6 down, sharing the
+    // "2" in the middle — a tiny version of an actual puzzle. The two answer
+    // cells are pale, like the blanks the kid fills in.
+    val h = listOf("3", "+", "2", "=", "5")   // row 2
+    val v = listOf("8", "−", "2", "=", "6")   // col 2
+    val tile = size * 0.205f
+    Box(modifier = Modifier.size(size), contentAlignment = Alignment.Center) {
+        Column {
+            for (r in 0 until 5) {
+                Row {
+                    for (c in 0 until 5) {
+                        val text = when {
+                            r == 2 -> h[c]
+                            c == 2 -> v[r]
+                            else -> null
+                        }
+                        if (text == null) {
+                            Spacer(Modifier.size(tile))
+                        } else {
+                            val isBlankCell = (r == 2 && c == 4) || (r == 4 && c == 2)
+                            Box(
+                                modifier = Modifier
+                                    .size(tile)
+                                    .background(if (isBlankCell) Color.White.copy(alpha = 0.62f) else Color.White)
+                                    .border(Dp.Hairline, tint.copy(alpha = 0.35f)),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                // includeFontPadding=false + tight line height so the
+                                // glyph sits dead-center of the tiny tile instead of
+                                // being pushed down and clipped by font padding.
+                                androidx.compose.material3.Text(
+                                    text = text,
+                                    color = tint,
+                                    fontSize = (tile * 0.6f).asSp(),
+                                    fontFamily = heavyFont,
+                                    maxLines = 1,
+                                    softWrap = false,
+                                    textAlign = TextAlign.Center,
+                                    style = androidx.compose.ui.text.TextStyle(
+                                        platformStyle = androidx.compose.ui.text.PlatformTextStyle(includeFontPadding = false),
+                                        lineHeight = (tile * 0.6f).asSp()
+                                    )
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 @Composable
 private fun EquationMatchIcon(size: Dp, tint: Color) {

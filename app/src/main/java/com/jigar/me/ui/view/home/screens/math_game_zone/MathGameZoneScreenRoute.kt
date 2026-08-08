@@ -17,6 +17,7 @@ fun MathGameZoneScreenRoute(
     onNavigateToCalcudoku: () -> Unit,
     onNavigateToMerge2048: () -> Unit,
     onNavigateToEquationMatch: () -> Unit,
+    onNavigateToCrossMath: () -> Unit,
 ) {
     MathGameZoneScreen(
         gameType = { type ->
@@ -33,6 +34,7 @@ fun MathGameZoneScreenRoute(
                 GameCategoryType.CALCUDOKU -> onNavigateToCalcudoku()
                 GameCategoryType.MERGE_2048 -> onNavigateToMerge2048()
                 GameCategoryType.EQUATION_MATCH -> onNavigateToEquationMatch()
+                GameCategoryType.CROSS_MATH -> onNavigateToCrossMath()
             }
         },
         onBackClick = onBackClick

@@ -47,6 +47,8 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.merge2048.Merge2048HomeR
 import com.jigar.me.ui.view.home.screens.math_game_zone.merge2048.Merge2048PlayRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.equation_match.EquationMatchHomeRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.equation_match.EquationMatchPlayRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.cross_math.CrossMathHomeRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.cross_math.CrossMathPlayRoute
 import com.jigar.me.ui.view.home.screens.purchase.PurchaseScreenRoute
 import com.jigar.me.ui.view.home.screens.settings.SettingsScreenRoute
 import com.jigar.me.ui.view.home.screens.whats_learning.WhatsLearningScreenRoute
@@ -273,6 +275,9 @@ fun HomeNavGraph(
                 },
                 onNavigateToEquationMatch = {
                     navController.safeNavigate(RouteNavigation.EquationMatchHome.route)
+                },
+                onNavigateToCrossMath = {
+                    navController.safeNavigate(RouteNavigation.CrossMathHome.route)
                 },
             )
         }
@@ -516,6 +521,34 @@ fun HomeNavGraph(
         ) {
             EquationMatchPlayRoute(
                 onBackClick = { navController.safePopBackStack() }
+            )
+        }
+
+        composable(route = RouteNavigation.CrossMathHome.route) {
+            CrossMathHomeRoute(
+                homeActivityViewModel = homeActivityViewModel,
+                onStartPlay = { diff, level ->
+                    navController.safeNavigate(RouteNavigation.CrossMathPlay.play(diff, level))
+                },
+                onBackClick = { navController.safePopBackStack() }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.CrossMathPlay.route,
+            arguments = listOf(
+                navArgument("cross_math_diff") { type = NavType.StringType },
+                navArgument("cross_math_level") { type = NavType.IntType }
+            )
+        ) {
+            CrossMathPlayRoute(
+                onBackClick = { navController.safePopBackStack() },
+                onNextLevel = { diff, level ->
+                    // Replace the current play screen so Back returns to the roadmap.
+                    navController.safeNavigate(RouteNavigation.CrossMathPlay.play(diff, level)) {
+                        popUpTo(RouteNavigation.CrossMathHome.route)
+                    }
+                }
             )
         }
 
