@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.jigar.me.ui.view.home.screens.activities.ccm.home.CCMHomeRoute
@@ -97,8 +98,16 @@ fun HomeNavGraph(
     onInitialRouteHandled: () -> Unit = {},
     onFinishActivity: () -> Unit = {},
 ) {
-    LaunchedEffect(initialRoute) {
-        if (!initialRoute.isNullOrEmpty() && initialRoute != RouteNavigation.Home.route) {
+    // Deep links must wait until Splash has handed off to Home: navigating
+    // while Splash is still current gets popped away by Splash's own
+    // popUpTo(Splash){inclusive} hand-off, silently dropping the deep link
+    // on cold starts.
+    val currentEntry = navController.currentBackStackEntryAsState().value
+    LaunchedEffect(initialRoute, currentEntry?.destination?.route) {
+        val current = currentEntry?.destination?.route
+        if (!initialRoute.isNullOrEmpty() && initialRoute != RouteNavigation.Home.route &&
+            current != null && current != RouteNavigation.Splash.route
+        ) {
             // Deep link — not a user tap; must never be dropped by the RESUMED guard
             navController.navigate(initialRoute)
             onInitialRouteHandled()

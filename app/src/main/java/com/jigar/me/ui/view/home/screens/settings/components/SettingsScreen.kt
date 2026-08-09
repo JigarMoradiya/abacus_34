@@ -42,15 +42,6 @@ fun SettingsScreen(
             .padding(horizontal = AppDimens.Dimens16)
     ) {
 
-        // TEMP (testing): fire the weekly parent summary notification in 5s.
-        val ctx = androidx.compose.ui.platform.LocalContext.current
-        androidx.compose.material3.Button(
-            onClick = { viewModel.testWeeklySummary(ctx) },
-            modifier = Modifier.padding(vertical = AppDimens.Dimens8)
-        ) {
-            androidx.compose.material3.Text("🧪 Test Weekly Summary (fires in 5s)")
-        }
-
         ThemeSection(
             viewModel = viewModel,
             selectedTheme = viewModel.selectedTheme,

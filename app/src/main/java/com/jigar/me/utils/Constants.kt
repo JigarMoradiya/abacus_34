@@ -35,6 +35,23 @@ object Constants {
     const val notificationTypeYoutubeHome = "youtubeHome"
     const val notificationTypeRate = "rate"
     const val notificationTypeShare = "share"
+    const val notificationTypeMathGame = "math_game"
+    const val notificationTypeCrossMath = "cross_math"
+    const val notificationTypeSudoku = "sudoku"
+    const val notificationTypeMathPyramid = "math_pyramid"
+    const val notificationTypeTargetNumber = "target_number"
+    const val notificationTypeBalloonPop = "balloon_pop"
+    const val notificationTypeSpeedCompare = "speed_compare"
+    const val notificationTypeMissingOperator = "missing_operator"
+    const val notificationTypeMagicSquare = "magic_square"
+    const val notificationTypeCalcudoku = "calcudoku"
+    const val notificationTypeMerge2048 = "merge2048"
+    const val notificationTypeEquationMatch = "equation_match"
+    const val notificationTypePractice = "practice"
+    const val notificationTypeLevel1 = "level_1"
+    const val notificationTypeLevel2 = "level_2"
+    const val notificationTypeLevel3 = "level_3"
+    const val notificationTypeLevel4 = "level_4"
 
     const val bottomSheetWidthBaseOnRatio5 = 5
 

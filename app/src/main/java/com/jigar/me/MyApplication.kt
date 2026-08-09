@@ -112,8 +112,8 @@ class MyApplication : Application(), Configuration.Provider {
     }
 
     private fun oneSignal() {
-        // Enable verbose OneSignal logging to debug issues if needed.
-        OneSignal.Debug.logLevel = LogLevel.VERBOSE
+        // Verbose logging only for debug builds; releases stay quiet.
+        OneSignal.Debug.logLevel = if (BuildConfig.DEBUG) LogLevel.VERBOSE else LogLevel.WARN
         // OneSignal Initialization
         OneSignal.initWithContext(this, CommonUtils.getOneSignalKey())
 
@@ -165,6 +165,57 @@ class MyApplication : Application(), Configuration.Provider {
                             Constants.notificationTypePurchase -> {
                                 moveToDestination(RouteNavigation.Purchase.route)
                             }
+                            Constants.notificationTypeMathGame -> {
+                                moveToDestination(RouteNavigation.MathGameZone.route)
+                            }
+                            Constants.notificationTypeCrossMath -> {
+                                moveToDestination(RouteNavigation.CrossMathHome.route)
+                            }
+                            Constants.notificationTypeSudoku -> {
+                                moveToDestination(RouteNavigation.SudokuHome.route)
+                            }
+                            Constants.notificationTypeMathPyramid -> {
+                                moveToDestination(RouteNavigation.MathPyramidHome.route)
+                            }
+                            Constants.notificationTypeTargetNumber -> {
+                                moveToDestination(RouteNavigation.TargetNumberHome.route)
+                            }
+                            Constants.notificationTypeBalloonPop -> {
+                                moveToDestination(RouteNavigation.BalloonPopHome.route)
+                            }
+                            Constants.notificationTypeSpeedCompare -> {
+                                moveToDestination(RouteNavigation.SpeedCompareHome.route)
+                            }
+                            Constants.notificationTypeMissingOperator -> {
+                                moveToDestination(RouteNavigation.MissingOperatorHome.route)
+                            }
+                            Constants.notificationTypeMagicSquare -> {
+                                moveToDestination(RouteNavigation.MagicSquareHome.route)
+                            }
+                            Constants.notificationTypeCalcudoku -> {
+                                moveToDestination(RouteNavigation.CalcudokuHome.route)
+                            }
+                            Constants.notificationTypeMerge2048 -> {
+                                moveToDestination(RouteNavigation.Merge2048Home.route)
+                            }
+                            Constants.notificationTypeEquationMatch -> {
+                                moveToDestination(RouteNavigation.EquationMatchHome.route)
+                            }
+                            Constants.notificationTypePractice -> {
+                                moveToDestination(RouteNavigation.LevelCategory.levelCategory("1"))
+                            }
+                            Constants.notificationTypeLevel1 -> {
+                                moveToDestination(RouteNavigation.Level1Home.route)
+                            }
+                            Constants.notificationTypeLevel2 -> {
+                                moveToDestination(RouteNavigation.Level2Home.route)
+                            }
+                            Constants.notificationTypeLevel3 -> {
+                                moveToDestination(RouteNavigation.Level3Home.route)
+                            }
+                            Constants.notificationTypeLevel4 -> {
+                                moveToDestination(RouteNavigation.Level4TablePicker.route)
+                            }
                             Constants.notificationTypeYoutubeHome -> {
                                 getInstance().openYoutube()
                             }
@@ -191,26 +242,8 @@ class MyApplication : Application(), Configuration.Provider {
             }
         })
 
-        Notifications.addForegroundLifecycleListener(object : INotificationLifecycleListener {
-            override fun onWillDisplay(@NonNull event: INotificationWillDisplayEvent) {
-                val notification = event.notification
-                val data = notification.additionalData
-
-                //Prevent OneSignal from displaying the notification immediately on return. Spin
-                //up a new thread to mimic some asynchronous behavior, when the async behavior (which
-                //takes 2 seconds) completes, then the notification can be displayed.
-                event.preventDefault()
-                val r = Runnable {
-                    try {
-                        Thread.sleep(2000)
-                    } catch (ignored: InterruptedException) {
-                    }
-                    notification.display()
-                }
-                val t = Thread(r)
-                t.start()
-            }
-        })
+        // Foreground pushes display immediately with OneSignal's default
+        // behavior — the old sample-code listener added a 2s delay thread.
 
         User.addObserver(object : IUserStateObserver {
             override fun onUserStateChange(@NonNull state: UserChangedState) {
