@@ -171,6 +171,24 @@ class MyApplication : Application(), Configuration.Provider {
                             Constants.notificationTypeCrossMath -> {
                                 moveToDestination(RouteNavigation.CrossMathHome.route)
                             }
+                            Constants.notificationTypeNumberPath -> {
+                                moveToDestination(RouteNavigation.NumberPathHome.route)
+                            }
+                            Constants.notificationTypeTrueFalse -> {
+                                moveToDestination(RouteNavigation.TrueFalseHome.route)
+                            }
+                            Constants.notificationTypePlaceValue -> {
+                                moveToDestination(RouteNavigation.PlaceValueHome.route)
+                            }
+                            Constants.notificationTypeClockMaster -> {
+                                moveToDestination(RouteNavigation.ClockMasterHome.route)
+                            }
+                            Constants.notificationTypeMathBingo -> {
+                                moveToDestination(RouteNavigation.MathBingoHome.route)
+                            }
+                            Constants.notificationTypeKakuro -> {
+                                moveToDestination(RouteNavigation.KakuroHome.route)
+                            }
                             Constants.notificationTypeSudoku -> {
                                 moveToDestination(RouteNavigation.SudokuHome.route)
                             }

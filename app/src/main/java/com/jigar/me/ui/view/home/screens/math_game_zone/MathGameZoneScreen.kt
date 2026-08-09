@@ -72,6 +72,16 @@ fun MathGameZoneScreen(
             desc = stringResource(R.string.balloon_pop_desc)
         ),
         GameCategoryData(
+            type = GameCategoryType.TRUE_FALSE,
+            title = stringResource(R.string.true_false),
+            desc = stringResource(R.string.true_false_desc)
+        ),
+        GameCategoryData(
+            type = GameCategoryType.MATH_BINGO,
+            title = stringResource(R.string.math_bingo),
+            desc = stringResource(R.string.math_bingo_desc)
+        ),
+        GameCategoryData(
             type = GameCategoryType.MISSING_OPERATOR,
             title = stringResource(R.string.missing_operator),
             desc = stringResource(R.string.missing_operator_desc)
@@ -90,6 +100,11 @@ fun MathGameZoneScreen(
             type = GameCategoryType.TARGET_NUMBER,
             title = stringResource(R.string.target_the_number),
             desc = stringResource(R.string.target_number_desc)
+        ),
+        GameCategoryData(
+            type = GameCategoryType.NUMBER_PATH,
+            title = stringResource(R.string.number_path),
+            desc = stringResource(R.string.number_path_desc)
         ),
         GameCategoryData(
             type = GameCategoryType.MATH_PYRAMID,
@@ -112,6 +127,16 @@ fun MathGameZoneScreen(
             desc = stringResource(R.string.number_sequence_desc)
         ),
         GameCategoryData(
+            type = GameCategoryType.PLACE_VALUE,
+            title = stringResource(R.string.place_value),
+            desc = stringResource(R.string.place_value_desc)
+        ),
+        GameCategoryData(
+            type = GameCategoryType.CLOCK_MASTER,
+            title = stringResource(R.string.clock_master),
+            desc = stringResource(R.string.clock_master_desc)
+        ),
+        GameCategoryData(
             type = GameCategoryType.SUDOKU,
             title = stringResource(R.string.sudoku),
             desc = stringResource(R.string.sudoku_desc)
@@ -120,11 +145,16 @@ fun MathGameZoneScreen(
             type = GameCategoryType.CALCUDOKU,
             title = stringResource(R.string.calcudoku),
             desc = stringResource(R.string.calcudoku_desc)
+        ),
+        GameCategoryData(
+            type = GameCategoryType.KAKURO,
+            title = stringResource(R.string.kakuro),
+            desc = stringResource(R.string.kakuro_desc)
         )
     )
 
-    // Row layout: phone 6 + 6, tablet 4 + 4 + 4 — everything fits with no scrolling
-    val rowCounts = if (DeviceInfo.isTablet) listOf(4, 4, 4) else listOf(6, 6)
+    // Row layout: phone 9 + 9, tablet 6 + 6 + 6 — everything fits with no scrolling
+    val rowCounts = if (DeviceInfo.isTablet) listOf(6, 6, 6) else listOf(9, 9)
     val rows = remember(categories, rowCounts) {
         var index = 0
         rowCounts.map { count ->

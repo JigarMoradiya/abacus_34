@@ -87,6 +87,36 @@ sealed class RouteNavigation(val route: String) {
         fun play(diff: String, level: Int): String = "CrossMathPlay/$diff/$level"
     }
 
+    object NumberPathHome : RouteNavigation("NumberPathHome")
+    object NumberPathPlay : RouteNavigation("NumberPathPlay/{number_path_diff}/{number_path_level}") {
+        fun play(diff: String, level: Int): String = "NumberPathPlay/$diff/$level"
+    }
+
+    object TrueFalseHome : RouteNavigation("TrueFalseHome")
+    object TrueFalsePlay : RouteNavigation("TrueFalsePlay/{true_false_diff}") {
+        fun play(diff: String): String = "TrueFalsePlay/$diff"
+    }
+
+    object PlaceValueHome : RouteNavigation("PlaceValueHome")
+    object PlaceValuePlay : RouteNavigation("PlaceValuePlay/{place_value_diff}") {
+        fun play(diff: String): String = "PlaceValuePlay/$diff"
+    }
+
+    object ClockMasterHome : RouteNavigation("ClockMasterHome")
+    object ClockMasterPlay : RouteNavigation("ClockMasterPlay/{clock_master_diff}") {
+        fun play(diff: String): String = "ClockMasterPlay/$diff"
+    }
+
+    object MathBingoHome : RouteNavigation("MathBingoHome")
+    object MathBingoPlay : RouteNavigation("MathBingoPlay/{math_bingo_diff}") {
+        fun play(diff: String): String = "MathBingoPlay/$diff"
+    }
+
+    object KakuroHome : RouteNavigation("KakuroHome")
+    object KakuroPlay : RouteNavigation("KakuroPlay/{kakuro_diff}/{kakuro_level}") {
+        fun play(diff: String, level: Int): String = "KakuroPlay/$diff/$level"
+    }
+
     object Settings : RouteNavigation("Settings")
 
     object Purchase : RouteNavigation("Purchase")

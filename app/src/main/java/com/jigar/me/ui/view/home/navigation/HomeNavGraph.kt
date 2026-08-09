@@ -50,6 +50,18 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.equation_match.EquationM
 import com.jigar.me.ui.view.home.screens.math_game_zone.equation_match.EquationMatchPlayRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.cross_math.CrossMathHomeRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.cross_math.CrossMathPlayRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.number_path.NumberPathHomeRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.number_path.NumberPathPlayRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.true_false.TrueFalseHomeRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.true_false.TrueFalsePlayRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.place_value.PlaceValueHomeRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.place_value.PlaceValuePlayRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.clock_master.ClockMasterHomeRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.clock_master.ClockMasterPlayRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.math_bingo.MathBingoHomeRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.math_bingo.MathBingoPlayRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.kakuro.KakuroHomeRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.kakuro.KakuroPlayRoute
 import com.jigar.me.ui.view.home.screens.purchase.PurchaseScreenRoute
 import com.jigar.me.ui.view.home.screens.settings.SettingsScreenRoute
 import com.jigar.me.ui.view.home.screens.whats_learning.WhatsLearningScreenRoute
@@ -287,6 +299,24 @@ fun HomeNavGraph(
                 },
                 onNavigateToCrossMath = {
                     navController.safeNavigate(RouteNavigation.CrossMathHome.route)
+                },
+                onNavigateToNumberPath = {
+                    navController.safeNavigate(RouteNavigation.NumberPathHome.route)
+                },
+                onNavigateToTrueFalse = {
+                    navController.safeNavigate(RouteNavigation.TrueFalseHome.route)
+                },
+                onNavigateToPlaceValue = {
+                    navController.safeNavigate(RouteNavigation.PlaceValueHome.route)
+                },
+                onNavigateToClockMaster = {
+                    navController.safeNavigate(RouteNavigation.ClockMasterHome.route)
+                },
+                onNavigateToMathBingo = {
+                    navController.safeNavigate(RouteNavigation.MathBingoHome.route)
+                },
+                onNavigateToKakuro = {
+                    navController.safeNavigate(RouteNavigation.KakuroHome.route)
                 },
             )
         }
@@ -556,6 +586,146 @@ fun HomeNavGraph(
                     // Replace the current play screen so Back returns to the roadmap.
                     navController.safeNavigate(RouteNavigation.CrossMathPlay.play(diff, level)) {
                         popUpTo(RouteNavigation.CrossMathHome.route)
+                    }
+                }
+            )
+        }
+
+        composable(route = RouteNavigation.NumberPathHome.route) {
+            NumberPathHomeRoute(
+                homeActivityViewModel = homeActivityViewModel,
+                onStartPlay = { diff, level ->
+                    navController.safeNavigate(RouteNavigation.NumberPathPlay.play(diff, level))
+                },
+                onBackClick = { navController.safePopBackStack() }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.NumberPathPlay.route,
+            arguments = listOf(
+                navArgument("number_path_diff") { type = NavType.StringType },
+                navArgument("number_path_level") { type = NavType.IntType }
+            )
+        ) {
+            NumberPathPlayRoute(
+                onBackClick = { navController.safePopBackStack() },
+                onNextLevel = { diff, level ->
+                    // Replace the current play screen so Back returns to the roadmap.
+                    navController.safeNavigate(RouteNavigation.NumberPathPlay.play(diff, level)) {
+                        popUpTo(RouteNavigation.NumberPathHome.route)
+                    }
+                }
+            )
+        }
+
+        composable(route = RouteNavigation.TrueFalseHome.route) {
+            TrueFalseHomeRoute(
+                homeActivityViewModel = homeActivityViewModel,
+                onStartPlay = { diff ->
+                    navController.safeNavigate(RouteNavigation.TrueFalsePlay.play(diff))
+                },
+                onBackClick = { navController.safePopBackStack() }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.TrueFalsePlay.route,
+            arguments = listOf(
+                navArgument("true_false_diff") { type = NavType.StringType }
+            )
+        ) {
+            TrueFalsePlayRoute(
+                onBackClick = { navController.safePopBackStack() }
+            )
+        }
+
+        composable(route = RouteNavigation.PlaceValueHome.route) {
+            PlaceValueHomeRoute(
+                homeActivityViewModel = homeActivityViewModel,
+                onStartPlay = { diff ->
+                    navController.safeNavigate(RouteNavigation.PlaceValuePlay.play(diff))
+                },
+                onBackClick = { navController.safePopBackStack() }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.PlaceValuePlay.route,
+            arguments = listOf(
+                navArgument("place_value_diff") { type = NavType.StringType }
+            )
+        ) {
+            PlaceValuePlayRoute(
+                onBackClick = { navController.safePopBackStack() }
+            )
+        }
+
+        composable(route = RouteNavigation.ClockMasterHome.route) {
+            ClockMasterHomeRoute(
+                homeActivityViewModel = homeActivityViewModel,
+                onStartPlay = { diff ->
+                    navController.safeNavigate(RouteNavigation.ClockMasterPlay.play(diff))
+                },
+                onBackClick = { navController.safePopBackStack() }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.ClockMasterPlay.route,
+            arguments = listOf(
+                navArgument("clock_master_diff") { type = NavType.StringType }
+            )
+        ) {
+            ClockMasterPlayRoute(
+                onBackClick = { navController.safePopBackStack() }
+            )
+        }
+
+        composable(route = RouteNavigation.MathBingoHome.route) {
+            MathBingoHomeRoute(
+                homeActivityViewModel = homeActivityViewModel,
+                onStartPlay = { diff ->
+                    navController.safeNavigate(RouteNavigation.MathBingoPlay.play(diff))
+                },
+                onBackClick = { navController.safePopBackStack() }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.MathBingoPlay.route,
+            arguments = listOf(
+                navArgument("math_bingo_diff") { type = NavType.StringType }
+            )
+        ) {
+            MathBingoPlayRoute(
+                onBackClick = { navController.safePopBackStack() }
+            )
+        }
+
+        composable(route = RouteNavigation.KakuroHome.route) {
+            KakuroHomeRoute(
+                homeActivityViewModel = homeActivityViewModel,
+                onStartPlay = { diff, level ->
+                    navController.safeNavigate(RouteNavigation.KakuroPlay.play(diff, level))
+                },
+                onBackClick = { navController.safePopBackStack() }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.KakuroPlay.route,
+            arguments = listOf(
+                navArgument("kakuro_diff") { type = NavType.StringType },
+                navArgument("kakuro_level") { type = NavType.IntType }
+            )
+        ) {
+            KakuroPlayRoute(
+                onBackClick = { navController.safePopBackStack() },
+                onNextLevel = { diff, level ->
+                    // Replace the current play screen so Back returns to the roadmap.
+                    navController.safeNavigate(RouteNavigation.KakuroPlay.play(diff, level)) {
+                        popUpTo(RouteNavigation.KakuroHome.route)
                     }
                 }
             )

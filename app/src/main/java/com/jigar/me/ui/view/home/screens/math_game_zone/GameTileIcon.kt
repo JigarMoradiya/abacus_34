@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone
 
+import androidx.compose.animation.core.animateFloat
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -9,13 +10,16 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -71,6 +75,18 @@ fun gameCardStyle(type: GameCategoryType): GameCardStyle = when (type) {
         GameCardStyle(Color(0xFF7E57C2), Color(0xFF512DA8), Color(0xFF4527A0))
     GameCategoryType.CROSS_MATH ->
         GameCardStyle(Color(0xFF26A69A), Color(0xFF00796B), Color(0xFF00695C))
+    GameCategoryType.NUMBER_PATH ->
+        GameCardStyle(Color(0xFFFF7043), Color(0xFFE64A19), Color(0xFFBF360C))
+    GameCategoryType.TRUE_FALSE ->
+        GameCardStyle(Color(0xFF29B6F6), Color(0xFF0277BD), Color(0xFF01579B))
+    GameCategoryType.PLACE_VALUE ->
+        GameCardStyle(Color(0xFFEC407A), Color(0xFFAD1457), Color(0xFF880E4F))
+    GameCategoryType.CLOCK_MASTER ->
+        GameCardStyle(Color(0xFF66BB6A), Color(0xFF388E3C), Color(0xFF1B5E20))
+    GameCategoryType.MATH_BINGO ->
+        GameCardStyle(Color(0xFFFFCA28), Color(0xFFF57F17), Color(0xFFE65100))
+    GameCategoryType.KAKURO ->
+        GameCardStyle(Color(0xFF78909C), Color(0xFF455A64), Color(0xFF263238))
 }
 
 // ── Icon dispatcher ─────────────────────────────────────────────────────────
@@ -91,6 +107,12 @@ fun GameTileIcon(type: GameCategoryType, size: Dp, tint: Color) {
             GameCategoryType.MERGE_2048 -> MergeIcon(size, tint)
             GameCategoryType.EQUATION_MATCH -> EquationMatchIcon(size, tint)
             GameCategoryType.CROSS_MATH -> CrossMathIcon(size, tint)
+            GameCategoryType.NUMBER_PATH -> NumberPathIcon(size, tint)
+            GameCategoryType.TRUE_FALSE -> TrueFalseIcon(size, tint)
+            GameCategoryType.PLACE_VALUE -> PlaceValueIcon(size, tint)
+            GameCategoryType.CLOCK_MASTER -> ClockMasterIcon(size, tint)
+            GameCategoryType.MATH_BINGO -> MathBingoIcon(size, tint)
+            GameCategoryType.KAKURO -> KakuroIcon(size, tint)
         }
     }
 }
@@ -551,6 +573,222 @@ private fun MergeIcon(size: Dp, tint: Color) {
 }
 
 // ── 11. Equation Match — flipped pair of cards ──────────────────────────────
+
+// Animated: a mini kakuro corner — clue cell with diagonal, digits fading in
+// one after another like the puzzle being solved.
+@Composable
+private fun KakuroIcon(size: Dp, tint: Color) {
+    val t by androidx.compose.animation.core.rememberInfiniteTransition(label = "kkIcon").animateFloat(
+        initialValue = 0f, targetValue = 3f,
+        animationSpec = androidx.compose.animation.core.infiniteRepeatable(
+            androidx.compose.animation.core.tween(2700, easing = androidx.compose.animation.core.LinearEasing)
+        ), label = "kkIcon"
+    )
+    val tile = size * 0.3f
+    Column(modifier = Modifier.size(size).padding(size * 0.05f)) {
+        Row {
+            // Clue cell with the classic diagonal split.
+            Box(modifier = Modifier.size(tile)) {
+                Canvas(modifier = Modifier.size(tile)) {
+                    drawRoundRect(Color.White.copy(alpha = 0.35f), cornerRadius = CornerRadius(tile.toPx() * 0.15f))
+                    drawLine(Color.White, Offset(0f, 0f), Offset(this.size.width, this.size.height), 1.5.dp.toPx())
+                }
+                IconNumber("7", tile * 0.34f, Color.White, Modifier.align(Alignment.TopEnd).padding(end = tile * 0.08f))
+                IconNumber("6", tile * 0.34f, Color.White, Modifier.align(Alignment.BottomStart).padding(start = tile * 0.08f))
+            }
+            listOf("3", "4").forEachIndexed { i, d ->
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier.padding(start = size * 0.02f).size(tile)
+                        .alpha(if (t > i) 1f else 0.25f)
+                        .background(Color.White, RoundedCornerShape(tile * 0.15f))
+                ) { IconNumber(d, tile * 0.5f, tint) }
+            }
+        }
+        Row(modifier = Modifier.padding(top = size * 0.02f)) {
+            Spacer(Modifier.size(tile))
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier.padding(start = size * 0.02f).size(tile)
+                    .alpha(if (t > 2f) 1f else 0.25f)
+                    .background(Color.White, RoundedCornerShape(tile * 0.15f))
+            ) { IconNumber("2", tile * 0.5f, tint) }
+        }
+    }
+}
+
+// Animated: a mini bingo card whose diagonal stars pulse one after another.
+@Composable
+private fun MathBingoIcon(size: Dp, tint: Color) {
+    val t by androidx.compose.animation.core.rememberInfiniteTransition(label = "mbIcon").animateFloat(
+        initialValue = 0f, targetValue = (2f * Math.PI).toFloat(),
+        animationSpec = androidx.compose.animation.core.infiniteRepeatable(
+            androidx.compose.animation.core.tween(2000, easing = androidx.compose.animation.core.LinearEasing)
+        ), label = "mbIcon"
+    )
+    val tile = size * 0.24f
+    Column(
+        verticalArrangement = Arrangement.spacedBy(size * 0.03f),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.size(size).padding(size * 0.1f)
+    ) {
+        for (r in 0 until 3) {
+            Row(horizontalArrangement = Arrangement.spacedBy(size * 0.03f)) {
+                for (c in 0 until 3) {
+                    val onDiagonal = r == c
+                    val pulse = if (onDiagonal) 1f + kotlin.math.sin(t + r * 1.6f) * 0.12f else 1f
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier
+                            .graphicsLayer { scaleX = pulse; scaleY = pulse }
+                            .size(tile)
+                            .background(
+                                if (onDiagonal) Color.White else Color.White.copy(alpha = 0.6f),
+                                RoundedCornerShape(tile * 0.2f)
+                            )
+                    ) {
+                        if (onDiagonal) IconNumber("★", tile * 0.55f, tint)
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Animated: a mini clock whose hands sweep around continuously.
+@Composable
+private fun ClockMasterIcon(size: Dp, tint: Color) {
+    val t by androidx.compose.animation.core.rememberInfiniteTransition(label = "cmIcon").animateFloat(
+        initialValue = 0f, targetValue = 360f,
+        animationSpec = androidx.compose.animation.core.infiniteRepeatable(
+            androidx.compose.animation.core.tween(6000, easing = androidx.compose.animation.core.LinearEasing)
+        ), label = "cmIcon"
+    )
+    Canvas(modifier = Modifier.size(size)) {
+        val r = this.size.width * 0.36f
+        val c = Offset(this.size.width / 2f, this.size.height / 2f)
+        drawCircle(Color.White, radius = r, center = c)
+        for (i in 0 until 12) {
+            val a = Math.toRadians(i * 30.0).toFloat()
+            drawCircle(
+                tint.copy(alpha = 0.5f), radius = this.size.width * 0.015f,
+                center = Offset(
+                    c.x + kotlin.math.cos(a) * r * 0.82f,
+                    c.y + kotlin.math.sin(a) * r * 0.82f
+                )
+            )
+        }
+        // Minute hand sweeps fast, hour hand slow.
+        val ma = Math.toRadians(t * 2.0 - 90).toFloat()
+        drawLine(tint, c, Offset(c.x + kotlin.math.cos(ma) * r * 0.68f, c.y + kotlin.math.sin(ma) * r * 0.68f),
+            strokeWidth = this.size.width * 0.035f, cap = androidx.compose.ui.graphics.StrokeCap.Round)
+        val ha = Math.toRadians(t / 6.0 - 90).toFloat()
+        drawLine(tint, c, Offset(c.x + kotlin.math.cos(ha) * r * 0.45f, c.y + kotlin.math.sin(ha) * r * 0.45f),
+            strokeWidth = this.size.width * 0.05f, cap = androidx.compose.ui.graphics.StrokeCap.Round)
+        drawCircle(tint, radius = this.size.width * 0.03f, center = c)
+    }
+}
+
+// Animated: three stacked place-value blocks (H, T, O) bob one after another,
+// like blocks being stacked into a number.
+@Composable
+private fun PlaceValueIcon(size: Dp, tint: Color) {
+    val t by androidx.compose.animation.core.rememberInfiniteTransition(label = "pvIcon").animateFloat(
+        initialValue = 0f, targetValue = (2f * Math.PI).toFloat(),
+        animationSpec = androidx.compose.animation.core.infiniteRepeatable(
+            androidx.compose.animation.core.tween(2400, easing = androidx.compose.animation.core.LinearEasing)
+        ), label = "pvIcon"
+    )
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(size * 0.05f),
+        verticalAlignment = Alignment.Bottom,
+        modifier = Modifier.size(size).padding(size * 0.12f)
+    ) {
+        listOf("4" to 0.9f, "7" to 0.65f, "2" to 0.4f).forEachIndexed { i, (digit, h) ->
+            val bob = kotlin.math.sin(t + i * 1.2f) * size.value * 0.035f
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .offset(y = bob.dp)
+                    .size(width = size * 0.24f, height = size * h * 0.8f)
+                    .background(Color.White.copy(alpha = if (i == 0) 1f else 0.85f), RoundedCornerShape(size * 0.06f))
+            ) {
+                IconNumber(digit, size * 0.16f, tint)
+            }
+        }
+    }
+}
+
+// Animated: two cards see-saw like a judge's scale — ✓ up, ✗ down, and back.
+@Composable
+private fun TrueFalseIcon(size: Dp, tint: Color) {
+    val sway by androidx.compose.animation.core.rememberInfiniteTransition(label = "tfIcon").animateFloat(
+        initialValue = -8f, targetValue = 8f,
+        animationSpec = androidx.compose.animation.core.infiniteRepeatable(
+            androidx.compose.animation.core.tween(1400), androidx.compose.animation.core.RepeatMode.Reverse
+        ), label = "tfIcon"
+    )
+    Box(modifier = Modifier.size(size), contentAlignment = Alignment.Center) {
+        Box(
+            modifier = Modifier
+                .offset(x = -size * 0.18f, y = (sway * (size.value / 100f)).dp)
+                .rotate(-10f)
+                .size(width = size * 0.42f, height = size * 0.52f)
+                .background(Color.White, RoundedCornerShape(size * 0.1f)),
+            contentAlignment = Alignment.Center
+        ) {
+            IconNumber("✓", size * 0.26f, Color(0xFF2E7D32))
+        }
+        Box(
+            modifier = Modifier
+                .offset(x = size * 0.18f, y = (-sway * (size.value / 100f)).dp)
+                .rotate(10f)
+                .size(width = size * 0.42f, height = size * 0.52f)
+                .background(Color.White.copy(alpha = 0.85f), RoundedCornerShape(size * 0.1f)),
+            contentAlignment = Alignment.Center
+        ) {
+            IconNumber("✗", size * 0.26f, Color(0xFFC62828))
+        }
+    }
+}
+
+// Animated: a little dot travels along a mini S-shaped path of tiles,
+// echoing the game's hop-along-the-maze motion.
+@Composable
+private fun NumberPathIcon(size: Dp, tint: Color) {
+    val stops = listOf(
+        Offset(0.15f, 0.2f), Offset(0.5f, 0.2f), Offset(0.85f, 0.2f),
+        Offset(0.85f, 0.55f), Offset(0.5f, 0.55f), Offset(0.15f, 0.55f),
+        Offset(0.15f, 0.9f), Offset(0.5f, 0.9f), Offset(0.85f, 0.9f)
+    )
+    val progress by androidx.compose.animation.core.rememberInfiniteTransition(label = "npIcon").animateFloat(
+        initialValue = 0f, targetValue = (stops.size - 1).toFloat(),
+        animationSpec = androidx.compose.animation.core.infiniteRepeatable(
+            androidx.compose.animation.core.tween(4200, easing = androidx.compose.animation.core.LinearEasing)
+        ), label = "npIcon"
+    )
+    Canvas(modifier = Modifier.size(size)) {
+        val w = this.size.width
+        fun at(o: Offset) = Offset(o.x * w, o.y * w)
+        // Path line through the tile stops.
+        val path = Path()
+        stops.forEachIndexed { i, o -> if (i == 0) path.moveTo(at(o).x, at(o).y) else path.lineTo(at(o).x, at(o).y) }
+        drawPath(path, Color.White.copy(alpha = 0.5f), style = Stroke(width = w * 0.05f,
+            pathEffect = PathEffect.dashPathEffect(floatArrayOf(w * 0.06f, w * 0.05f))))
+        // Tile dots (start, mid, goal).
+        stops.forEachIndexed { i, o ->
+            val r = if (i == 0 || i == stops.size - 1) w * 0.09f else w * 0.055f
+            drawCircle(if (i == stops.size - 1) Color(0xFFFFD54F) else Color.White, radius = r, center = at(o))
+        }
+        // The traveling dot, interpolated between stops.
+        val seg = progress.toInt().coerceIn(0, stops.size - 2)
+        val f = progress - seg
+        val a = at(stops[seg]); val b = at(stops[seg + 1])
+        val dot = Offset(a.x + (b.x - a.x) * f, a.y + (b.y - a.y) * f)
+        drawCircle(tint, radius = w * 0.075f, center = dot)
+        drawCircle(Color.White, radius = w * 0.075f, center = dot, style = Stroke(width = w * 0.02f))
+    }
+}
 
 @Composable
 private fun CrossMathIcon(size: Dp, tint: Color) {

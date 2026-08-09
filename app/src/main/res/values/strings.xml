@@ -946,6 +946,50 @@
     <string name="cross_math_prompt">Fill the missing numbers!</string>
     <string name="cross_math_level">Level %1$d</string>
     <string name="cross_math_next_level">Next Level</string>
+
+    <!-- Number Path game -->
+    <string name="number_path">Number Path</string>
+    <string name="number_path_desc">Hop the maze to the target!</string>
+    <string name="number_path_game">Number Path</string>
+    <string name="number_path_tagline">Hop the math maze to the target!</string>
+
+    <!-- True or False game -->
+    <string name="true_false">True or False?</string>
+    <string name="true_false_desc">Spot the sneaky lies!</string>
+    <string name="true_false_game">True or False?</string>
+    <string name="true_false_tagline">Be the math judge — spot the lies!</string>
+    <string name="true_false_prompt">True or false?</string>
+    <string name="true_false_btn_true">TRUE</string>
+    <string name="true_false_btn_false">FALSE</string>
+    <string name="true_false_answer_was">It was %1$d!</string>
+
+    <!-- Place Value game -->
+    <string name="place_value">Place Value</string>
+    <string name="place_value_desc">Build numbers from pieces!</string>
+    <string name="place_value_game">Place Value</string>
+    <string name="place_value_tagline">Build the number from its pieces!</string>
+    <string name="place_value_prompt">Build the number!</string>
+    <string name="place_value_answer_was">It was %1$d!</string>
+
+    <!-- Clock Master game -->
+    <string name="clock_master">Clock Master</string>
+    <string name="clock_master_desc">Read the clock, beat the clock!</string>
+    <string name="clock_master_game">Clock Master</string>
+    <string name="clock_master_tagline">Read the clock, beat the clock!</string>
+    <string name="clock_master_prompt">What time is it?</string>
+
+    <!-- Math Bingo game -->
+    <string name="math_bingo">Math Bingo</string>
+    <string name="math_bingo_desc">Solve, stamp, BINGO!</string>
+    <string name="math_bingo_game">Math Bingo</string>
+    <string name="math_bingo_tagline">Solve the call, stamp your card!</string>
+
+    <!-- Kakuro game -->
+    <string name="kakuro">Kakuro</string>
+    <string name="kakuro_desc">The crossword of sums!</string>
+    <string name="kakuro_game">Kakuro</string>
+    <string name="kakuro_tagline">Make every line add up to its clue!</string>
+
     <string name="number_sequence_desc"><![CDATA[Slide & order the numbers!]]></string>
     <string name="free_mode_settings">Free Mode Settings</string>
     <string name="click_here_to_show_abacus_tour">Show Abacus Tour</string>

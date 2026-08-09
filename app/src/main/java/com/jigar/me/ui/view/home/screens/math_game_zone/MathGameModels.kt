@@ -13,7 +13,13 @@ enum class GameCategoryType {
     CALCUDOKU,
     MERGE_2048,
     EQUATION_MATCH,
-    CROSS_MATH
+    CROSS_MATH,
+    NUMBER_PATH,
+    TRUE_FALSE,
+    PLACE_VALUE,
+    CLOCK_MASTER,
+    MATH_BINGO,
+    KAKURO
 }
 
 data class GameCategoryData(

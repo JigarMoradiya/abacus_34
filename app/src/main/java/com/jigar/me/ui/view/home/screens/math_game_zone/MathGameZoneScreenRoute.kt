@@ -18,6 +18,12 @@ fun MathGameZoneScreenRoute(
     onNavigateToMerge2048: () -> Unit,
     onNavigateToEquationMatch: () -> Unit,
     onNavigateToCrossMath: () -> Unit,
+    onNavigateToNumberPath: () -> Unit,
+    onNavigateToTrueFalse: () -> Unit,
+    onNavigateToPlaceValue: () -> Unit,
+    onNavigateToClockMaster: () -> Unit,
+    onNavigateToMathBingo: () -> Unit,
+    onNavigateToKakuro: () -> Unit,
 ) {
     MathGameZoneScreen(
         gameType = { type ->
@@ -35,6 +41,12 @@ fun MathGameZoneScreenRoute(
                 GameCategoryType.MERGE_2048 -> onNavigateToMerge2048()
                 GameCategoryType.EQUATION_MATCH -> onNavigateToEquationMatch()
                 GameCategoryType.CROSS_MATH -> onNavigateToCrossMath()
+                GameCategoryType.NUMBER_PATH -> onNavigateToNumberPath()
+                GameCategoryType.TRUE_FALSE -> onNavigateToTrueFalse()
+                GameCategoryType.PLACE_VALUE -> onNavigateToPlaceValue()
+                GameCategoryType.CLOCK_MASTER -> onNavigateToClockMaster()
+                GameCategoryType.MATH_BINGO -> onNavigateToMathBingo()
+                GameCategoryType.KAKURO -> onNavigateToKakuro()
             }
         },
         onBackClick = onBackClick
