@@ -57,7 +57,55 @@ fun MathGameZoneScreen(
     gameType: (GameCategoryType) -> Unit,
     onBackClick: () -> Unit
 ) {
+    // Ordered easy → hard with similar games grouped: quick number sense
+    // first (a kid's very first game), then equation games, sum grids,
+    // number puzzles, and pure logic last.
     val categories: List<GameCategoryData> = listOf(
+        GameCategoryData(
+            type = GameCategoryType.SPEED_COMPARE,
+            title = stringResource(R.string.speed_compare),
+            desc = stringResource(R.string.speed_compare_desc)
+        ),
+        GameCategoryData(
+            type = GameCategoryType.BALLOON_POP,
+            title = stringResource(R.string.balloon_pop),
+            desc = stringResource(R.string.balloon_pop_desc)
+        ),
+        GameCategoryData(
+            type = GameCategoryType.MISSING_OPERATOR,
+            title = stringResource(R.string.missing_operator),
+            desc = stringResource(R.string.missing_operator_desc)
+        ),
+        GameCategoryData(
+            type = GameCategoryType.EQUATION_MATCH,
+            title = stringResource(R.string.equation_match),
+            desc = stringResource(R.string.equation_match_desc)
+        ),
+        GameCategoryData(
+            type = GameCategoryType.CROSS_MATH,
+            title = stringResource(R.string.cross_math),
+            desc = stringResource(R.string.cross_math_desc)
+        ),
+        GameCategoryData(
+            type = GameCategoryType.TARGET_NUMBER,
+            title = stringResource(R.string.target_the_number),
+            desc = stringResource(R.string.target_number_desc)
+        ),
+        GameCategoryData(
+            type = GameCategoryType.MATH_PYRAMID,
+            title = stringResource(R.string.math_pyramid),
+            desc = stringResource(R.string.math_pyramid_desc)
+        ),
+        GameCategoryData(
+            type = GameCategoryType.MAGIC_SQUARE,
+            title = stringResource(R.string.magic_square),
+            desc = stringResource(R.string.magic_square_desc)
+        ),
+        GameCategoryData(
+            type = GameCategoryType.MERGE_2048,
+            title = stringResource(R.string.merge2048_game),
+            desc = stringResource(R.string.merge2048_desc)
+        ),
         GameCategoryData(
             type = GameCategoryType.NUMBER_SEQUENCE_PUZZLE,
             title = stringResource(R.string.number_sequence_puzzle),
@@ -69,54 +117,9 @@ fun MathGameZoneScreen(
             desc = stringResource(R.string.sudoku_desc)
         ),
         GameCategoryData(
-            type = GameCategoryType.MATH_PYRAMID,
-            title = stringResource(R.string.math_pyramid),
-            desc = stringResource(R.string.math_pyramid_desc)
-        ),
-        GameCategoryData(
-            type = GameCategoryType.TARGET_NUMBER,
-            title = stringResource(R.string.target_the_number),
-            desc = stringResource(R.string.target_number_desc)
-        ),
-        GameCategoryData(
-            type = GameCategoryType.BALLOON_POP,
-            title = stringResource(R.string.balloon_pop),
-            desc = stringResource(R.string.balloon_pop_desc)
-        ),
-        GameCategoryData(
-            type = GameCategoryType.SPEED_COMPARE,
-            title = stringResource(R.string.speed_compare),
-            desc = stringResource(R.string.speed_compare_desc)
-        ),
-        GameCategoryData(
-            type = GameCategoryType.MISSING_OPERATOR,
-            title = stringResource(R.string.missing_operator),
-            desc = stringResource(R.string.missing_operator_desc)
-        ),
-        GameCategoryData(
-            type = GameCategoryType.MAGIC_SQUARE,
-            title = stringResource(R.string.magic_square),
-            desc = stringResource(R.string.magic_square_desc)
-        ),
-        GameCategoryData(
             type = GameCategoryType.CALCUDOKU,
             title = stringResource(R.string.calcudoku),
             desc = stringResource(R.string.calcudoku_desc)
-        ),
-        GameCategoryData(
-            type = GameCategoryType.MERGE_2048,
-            title = stringResource(R.string.merge2048_game),
-            desc = stringResource(R.string.merge2048_desc)
-        ),
-        GameCategoryData(
-            type = GameCategoryType.EQUATION_MATCH,
-            title = stringResource(R.string.equation_match),
-            desc = stringResource(R.string.equation_match_desc)
-        ),
-        GameCategoryData(
-            type = GameCategoryType.CROSS_MATH,
-            title = stringResource(R.string.cross_math),
-            desc = stringResource(R.string.cross_math_desc)
         )
     )
 
