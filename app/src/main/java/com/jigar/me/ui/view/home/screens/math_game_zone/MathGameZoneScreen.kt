@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -21,6 +22,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -153,16 +157,6 @@ fun MathGameZoneScreen(
         )
     )
 
-    // Row layout: phone 9 + 9, tablet 6 + 6 + 6 — everything fits with no scrolling
-    val rowCounts = if (DeviceInfo.isTablet) listOf(6, 6, 6) else listOf(9, 9)
-    val rows = remember(categories, rowCounts) {
-        var index = 0
-        rowCounts.map { count ->
-            val end = minOf(index + count, categories.size)
-            categories.subList(index, end).also { index = end }
-        }
-    }
-
     Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
 
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -188,36 +182,33 @@ fun MathGameZoneScreen(
             }
         }
 
+        // 18 games no longer fit as tiny fixed tiles — big clear cards in a
+        // horizontally scrolling grid, with the next column peeking in so
+        // kids know to swipe.
         BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
             val hPad = AppDimens.Dimens16
             val vPad = AppDimens.Dimens10
-            val gap = AppDimens.Dimens10
-            val maxCols = rows.maxOf { it.size }
-            val tileW = (maxWidth - hPad * 2 - gap * (maxCols - 1)) / maxCols
-            val tileH = (maxHeight - vPad * 2 - gap * (rows.size - 1)) / rows.size
+            val gap = AppDimens.Dimens12
+            val rowCount = if (DeviceInfo.isTablet) 3 else 2
+            val visibleCols = 4.4f
+            val tileW = (maxWidth - hPad * 2 - gap * 4) / visibleCols
+            val tileH = (maxHeight - vPad * 2 - gap * (rowCount - 1)) / rowCount
 
-            Column(
+            LazyHorizontalGrid(
+                rows = GridCells.Fixed(rowCount),
+                horizontalArrangement = Arrangement.spacedBy(gap),
                 verticalArrangement = Arrangement.spacedBy(gap),
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = hPad, vertical = vPad)
+                contentPadding = PaddingValues(horizontal = hPad, vertical = vPad),
+                modifier = Modifier.fillMaxSize()
             ) {
-                var index = 0
-                rows.forEach { rowItems ->
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(gap, Alignment.CenterHorizontally),
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        rowItems.forEach { category ->
-                            GameZoneCard(
-                                category = category,
-                                width = tileW,
-                                height = tileH,
-                                appearIndex = index++,
-                                onClick = { gameType.invoke(category.type) }
-                            )
-                        }
-                    }
+                itemsIndexed(categories) { index, category ->
+                    GameZoneCard(
+                        category = category,
+                        width = tileW,
+                        height = tileH,
+                        appearIndex = index,
+                        onClick = { gameType.invoke(category.type) }
+                    )
                 }
             }
         }
@@ -244,10 +235,11 @@ private fun GameZoneCard(
         label = "pressScale"
     )
 
-    // Staggered pop-in on first show
+    // Staggered pop-in on first show. Capped so cards scrolled into view
+    // later don't sit invisible waiting out a long delay.
     var appeared by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) {
-        delay(appearIndex * 45L)
+        delay(minOf(appearIndex, 10) * 45L)
         appeared = true
     }
     val appearScale by animateFloatAsState(
@@ -299,6 +291,7 @@ private fun GameZoneCard(
 
         Spacer(Modifier.size(height * 0.045f))
 
+        // Big scrollable tiles have room for the tagline everywhere.
         Text(
             text = category.title,
             color = Color.White,
@@ -306,20 +299,18 @@ private fun GameZoneCard(
             maxLines = 2,
             fontFamily = FontFamily(Font(R.font.font_extra_bold)),
             style = if (DeviceInfo.isTablet) MaterialTheme.typography.titleMedium.scaled()
-            else MaterialTheme.typography.labelMedium.scaled(),
+            else MaterialTheme.typography.titleSmall.scaled(),
             modifier = Modifier.padding(horizontal = width * 0.06f)
         )
 
-        if (DeviceInfo.isTablet) {
-            Text(
-                text = category.desc,
-                color = Color.White.copy(alpha = 0.85f),
-                textAlign = TextAlign.Center,
-                maxLines = 1,
-                fontFamily = FontFamily(Font(R.font.font_bold)),
-                style = MaterialTheme.typography.labelSmall.scaled(),
-                modifier = Modifier.padding(horizontal = width * 0.06f)
-            )
-        }
+        Text(
+            text = category.desc,
+            color = Color.White.copy(alpha = 0.85f),
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+            fontFamily = FontFamily(Font(R.font.font_bold)),
+            style = MaterialTheme.typography.labelSmall.scaled(),
+            modifier = Modifier.padding(horizontal = width * 0.06f)
+        )
     }
 }
