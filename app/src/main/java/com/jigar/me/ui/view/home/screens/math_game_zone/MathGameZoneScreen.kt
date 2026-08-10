@@ -208,8 +208,9 @@ fun MathGameZoneScreen(
             val gap = AppDimens.Dimens12
             val headerH = AppDimens.Dimens30
             // Room inside the clipping scroll row so card shadows (and the
-            // sticker tilt) aren't cut off at the top/bottom.
-            val shadowPad = AppDimens.Dimens8
+            // sticker tilt) aren't cut off at the top/bottom. The spot
+            // shadow throws ~1.5x elevation downward, so this must exceed it.
+            val shadowPad = AppDimens.Dimens12
             // Phone shows 1 full section + a peek; tablets fit more rows.
             val visibleSections = if (DeviceInfo.isTablet) 3.0f else 1.75f
             val sectionH = (maxHeight - vPad * 2) / visibleSections
