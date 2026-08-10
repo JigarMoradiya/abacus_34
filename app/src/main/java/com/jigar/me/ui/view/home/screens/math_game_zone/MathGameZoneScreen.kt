@@ -306,7 +306,7 @@ private fun GameZoneCard(
     val corner = min(width, height) * 0.16f
     val shape = RoundedCornerShape(corner)
     // Disc = iconArea * 1.28 must stay well inside the flexible icon zone
-    // (0.61 x height) even while bobbing — 0.38 leaves clear air above.
+    // (0.69 x height) even while bobbing — 0.38 leaves clear air above.
     val iconArea = min(width * 0.62f, height * 0.38f)
 
     val interactionSource = remember { MutableInteractionSource() }
@@ -392,34 +392,56 @@ private fun GameZoneCard(
             }
         }
 
-        // Fixed-height text zone: title starts right under the icon; 1-line
-        // and 2-line titles never shift the icon above.
+        // Fixed-height text zone: title starts right under the icon. Both
+        // lines are single-line and auto-shrink to fit the card width, so
+        // nothing can wrap past the card edge or get clipped by the shadow
+        // shape (dp-fixed zone vs sp-sized text was cutting 2-line titles).
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top,
             modifier = Modifier
-                .height(height * 0.28f)
+                .height(height * 0.30f)
                 .padding(horizontal = width * 0.06f)
         ) {
-            Text(
+            AutoShrinkText(
                 text = category.title,
                 color = Color.White,
-                textAlign = TextAlign.Center,
-                maxLines = 2,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                fontResId = R.font.font_extra_bold,
                 style = if (DeviceInfo.isTablet) MaterialTheme.typography.titleSmall.scaled()
                 else MaterialTheme.typography.labelMedium.scaled()
             )
 
-            Text(
+            AutoShrinkText(
                 text = category.desc,
                 color = Color.White.copy(alpha = 0.85f),
-                textAlign = TextAlign.Center,
-                maxLines = 1,
-                fontFamily = FontFamily(Font(R.font.font_bold)),
+                fontResId = R.font.font_bold,
                 style = MaterialTheme.typography.labelSmall.scaled()
             )
         }
         Spacer(Modifier.height(height * 0.03f))
     }
+}
+
+// Single-line text that shrinks itself (down to 55%) until it fits the
+// available width — long titles like "Number Sequence Puzzle" stay on one
+// line instead of wrapping past the card's clipped shadow shape.
+@Composable
+private fun AutoShrinkText(
+    text: String,
+    color: Color,
+    fontResId: Int,
+    style: androidx.compose.ui.text.TextStyle
+) {
+    var scale by remember(text) { mutableStateOf(1f) }
+    Text(
+        text = text,
+        color = color,
+        textAlign = TextAlign.Center,
+        maxLines = 1,
+        softWrap = false,
+        fontFamily = FontFamily(Font(fontResId)),
+        style = style,
+        fontSize = style.fontSize * scale,
+        onTextLayout = { if (it.hasVisualOverflow && scale > 0.55f) scale *= 0.93f }
+    )
 }

@@ -89,6 +89,14 @@ class MathBingoPlayViewModel @Inject constructor(
             if (used.add(c.answer)) calls.add(c)
             guard++
         }
+        // Defensive: if the guard tripped before 16 distinct answers were
+        // found, pad with unique fillers — lines() indexes 0..15 and a
+        // short card would crash on the first completed line.
+        var filler = 1
+        while (calls.size < BINGO_SIZE * BINGO_SIZE) {
+            if (used.add(filler)) calls.add(BingoCall("$filler + 0", filler))
+            filler++
+        }
         cellCalls = calls.shuffled(Random)
         _uiState.update {
             it.copy(

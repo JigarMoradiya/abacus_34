@@ -594,7 +594,9 @@ private fun KakuroIcon(size: Dp, tint: Color) {
             androidx.compose.animation.core.tween(2700, easing = androidx.compose.animation.core.LinearEasing)
         ), label = "kkIcon"
     )
-    val tile = size * 0.3f
+    // 3 tiles + 2 gaps must fit inside the 0.90 padded width — 0.3 overflowed
+    // and squeezed the last tile.
+    val tile = size * 0.28f
     // Content is ~2/3 of the box — center it or the icon hugs the top-left.
     Column(
         verticalArrangement = Arrangement.Center,
@@ -814,7 +816,9 @@ private fun CrossMathIcon(size: Dp, tint: Color) {
     // cells are pale, like the blanks the kid fills in.
     val h = listOf("3", "+", "2", "=", "5")   // row 2
     val v = listOf("8", "−", "2", "=", "6")   // col 2
-    val tile = size * 0.205f
+    // 5 columns must fit inside the box — 0.205 x 5 overflowed and squeezed
+    // the last "= 5" cell narrower than its siblings.
+    val tile = size * 0.19f
     Box(modifier = Modifier.size(size), contentAlignment = Alignment.Center) {
         Column {
             for (r in 0 until 5) {
