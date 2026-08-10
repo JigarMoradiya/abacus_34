@@ -363,11 +363,11 @@ private fun GameZoneCard(
             ) { onClick() }
     ) {
         // Icon zone takes the flexible space so every card's icon sits at
-        // the same height, no matter how the title below wraps. The icon
-        // hugs the bottom of its zone so it sits close to the title.
+        // the same height, no matter how the title below wraps. Centered:
+        // the bob animation keeps an even margin to the title below.
         Box(
-            modifier = Modifier.weight(1f).padding(bottom = height * 0.015f),
-            contentAlignment = Alignment.BottomCenter
+            modifier = Modifier.weight(1f),
+            contentAlignment = Alignment.Center
         ) {
             // Programmatic icon on a soft white disc — always in gentle
             // motion: a slow float + sway, phase-shifted per card so
@@ -398,7 +398,7 @@ private fun GameZoneCard(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top,
             modifier = Modifier
-                .height(height * 0.34f)
+                .height(height * 0.28f)
                 .padding(horizontal = width * 0.06f)
         ) {
             Text(
@@ -420,6 +420,6 @@ private fun GameZoneCard(
                 style = MaterialTheme.typography.labelSmall.scaled()
             )
         }
-        Spacer(Modifier.height(height * 0.05f))
+        Spacer(Modifier.height(height * 0.03f))
     }
 }
