@@ -91,11 +91,13 @@ fun NumberPathPlayScreen(
     val s = gameScale()
     LaunchedEffect(Unit) { viewModel.start() }
 
+    // Roomy tiles: start/goal stack an emoji over text, which clipped on
+    // smaller devices with the old sizes — and landscape has the space.
     val cellBase = when {
-        state.cols >= 9 -> 40f
-        state.cols >= 8 -> 44f
-        state.cols >= 7 -> 48f
-        else -> 54f
+        state.cols >= 9 -> 46f
+        state.cols >= 8 -> 50f
+        state.cols >= 7 -> 54f
+        else -> 62f
     }
     val cell = (cellBase * s).dp
 
@@ -300,11 +302,11 @@ private fun PathTile(state: NumberPathUiState, i: Int, cell: Dp, s: Float, onTap
                 fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (18f * s).sp
             )
             PathCellType.GOAL -> Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text("🎯", fontSize = (12f * s).sp)
+                Text("🎯", fontSize = (13f * s).sp)
                 Text(
                     "${state.target}", color = TILE_TEXT, maxLines = 1, softWrap = false,
                     fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                    fontSize = ((if (state.target >= 100) 12f else 15f) * s).sp
+                    fontSize = ((if (state.target >= 100) 13f else 16f) * s).sp
                 )
             }
             PathCellType.OP -> Text(

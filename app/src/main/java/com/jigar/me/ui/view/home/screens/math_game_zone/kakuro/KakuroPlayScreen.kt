@@ -42,6 +42,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
@@ -232,7 +233,20 @@ private fun KakuroCellView(state: KakuroUiState, i: Int, cell: Dp, s: Float, onT
                 drawLine(CELL_BORDER, Offset(0f, size.height), Offset(size.width, size.height), w)
                 drawLine(CELL_BORDER, Offset(size.width, 0f), Offset(size.width, size.height), w)
             }
-            .then(if (isSelected) Modifier.border(2.5.dp, SELECTED_BORDER) else Modifier)
+            // Selection ring drawn inset past the shared grid line: neighbor
+            // cells paint half a line-width into our bounds after us, so a
+            // plain border() gets overpainted on the right/bottom and looks
+            // thinner there. Insetting keeps it an even width on all 4 sides.
+            .then(if (isSelected) Modifier.drawBehind {
+                val bw = 2.5.dp.toPx()
+                val inset = 1.dp.toPx() / 2f + bw / 2f
+                drawRect(
+                    SELECTED_BORDER,
+                    topLeft = Offset(inset, inset),
+                    size = androidx.compose.ui.geometry.Size(size.width - 2f * inset, size.height - 2f * inset),
+                    style = Stroke(bw)
+                )
+            } else Modifier)
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = null,

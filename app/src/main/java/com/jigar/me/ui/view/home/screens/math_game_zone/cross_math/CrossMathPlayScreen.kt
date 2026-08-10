@@ -5,6 +5,7 @@ import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -309,7 +310,20 @@ private fun CrossCell(state: CrossMathUiState, i: Int, cell: Dp, s: Float, onTap
                 if (!bottomPresent) drawLine(CELL_BORDER, Offset(0f, size.height), Offset(size.width, size.height), w)
                 if (!rightPresent) drawLine(CELL_BORDER, Offset(size.width, 0f), Offset(size.width, size.height), w)
             }
-            .then(if (isSelected) Modifier.border(2.5.dp, SELECTED_BORDER) else Modifier)
+            // Selection ring drawn inset past the shared grid line: neighbor
+            // cells paint half a line-width into our bounds after us, so a
+            // plain border() gets overpainted on the right/bottom and looks
+            // thinner there. Insetting keeps it an even width on all 4 sides.
+            .then(if (isSelected) Modifier.drawBehind {
+                val bw = 2.5.dp.toPx()
+                val inset = 1.dp.toPx() / 2f + bw / 2f
+                drawRect(
+                    SELECTED_BORDER,
+                    topLeft = Offset(inset, inset),
+                    size = androidx.compose.ui.geometry.Size(size.width - 2f * inset, size.height - 2f * inset),
+                    style = Stroke(bw)
+                )
+            } else Modifier)
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = null,
