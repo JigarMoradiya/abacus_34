@@ -585,7 +585,12 @@ private fun KakuroIcon(size: Dp, tint: Color) {
         ), label = "kkIcon"
     )
     val tile = size * 0.3f
-    Column(modifier = Modifier.size(size).padding(size * 0.05f)) {
+    // Content is ~2/3 of the box — center it or the icon hugs the top-left.
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.size(size).padding(size * 0.05f)
+    ) {
         Row {
             // Clue cell with the classic diagonal split.
             Box(modifier = Modifier.size(tile)) {
@@ -628,7 +633,7 @@ private fun MathBingoIcon(size: Dp, tint: Color) {
     )
     val tile = size * 0.24f
     Column(
-        verticalArrangement = Arrangement.spacedBy(size * 0.03f),
+        verticalArrangement = Arrangement.spacedBy(size * 0.03f, Alignment.CenterVertically),
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.size(size).padding(size * 0.1f)
     ) {
@@ -699,10 +704,12 @@ private fun PlaceValueIcon(size: Dp, tint: Color) {
             androidx.compose.animation.core.tween(2400, easing = androidx.compose.animation.core.LinearEasing)
         ), label = "pvIcon"
     )
+    // Bars are 3x0.24 + 2x0.05 spacing = 0.82 wide — 0.08 padding fits them
+    // centered (0.12 made the row overflow and sit off-center).
     Row(
-        horizontalArrangement = Arrangement.spacedBy(size * 0.05f),
+        horizontalArrangement = Arrangement.spacedBy(size * 0.05f, Alignment.CenterHorizontally),
         verticalAlignment = Alignment.Bottom,
-        modifier = Modifier.size(size).padding(size * 0.12f)
+        modifier = Modifier.size(size).padding(size * 0.08f)
     ) {
         listOf("4" to 0.9f, "7" to 0.65f, "2" to 0.4f).forEachIndexed { i, (digit, h) ->
             val bob = kotlin.math.sin(t + i * 1.2f) * size.value * 0.035f

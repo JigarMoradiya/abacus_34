@@ -274,14 +274,14 @@ private fun SectionHeader(section: GameSection, hPad: Dp) {
                     CircleShape
                 )
                 .border(2.dp, Color.White.copy(alpha = 0.65f), CircleShape)
-                .padding(horizontal = AppDimens.Dimens14, vertical = AppDimens.Dimens6)
+                .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens4)
         ) {
-            Text(text = section.emoji, style = MaterialTheme.typography.titleMedium.scaled())
+            Text(text = section.emoji, style = MaterialTheme.typography.labelLarge.scaled())
             Text(
                 text = section.title,
                 color = Color.White,
                 fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                style = MaterialTheme.typography.titleMedium.scaled()
+                style = MaterialTheme.typography.labelLarge.scaled()
             )
         }
         // Soft rule line carrying the category color across the row.
@@ -305,7 +305,9 @@ private fun GameZoneCard(
     val style = gameCardStyle(category.type)
     val corner = min(width, height) * 0.16f
     val shape = RoundedCornerShape(corner)
-    val iconArea = min(width * 0.62f, height * 0.44f)
+    // Disc = iconArea * 1.28 must stay well inside the flexible icon zone
+    // (0.61 x height) even while bobbing — 0.38 leaves clear air above.
+    val iconArea = min(width * 0.62f, height * 0.38f)
 
     val interactionSource = remember { MutableInteractionSource() }
     val pressed by interactionSource.collectIsPressedAsState()
@@ -401,8 +403,8 @@ private fun GameZoneCard(
                 textAlign = TextAlign.Center,
                 maxLines = 2,
                 fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                style = if (DeviceInfo.isTablet) MaterialTheme.typography.titleMedium.scaled()
-                else MaterialTheme.typography.titleSmall.scaled()
+                style = if (DeviceInfo.isTablet) MaterialTheme.typography.titleSmall.scaled()
+                else MaterialTheme.typography.labelMedium.scaled()
             )
 
             Text(
