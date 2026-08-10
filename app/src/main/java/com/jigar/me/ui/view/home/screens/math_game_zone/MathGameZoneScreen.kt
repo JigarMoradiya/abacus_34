@@ -21,10 +21,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
-import androidx.compose.foundation.lazy.grid.itemsIndexed
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -182,36 +184,104 @@ fun MathGameZoneScreen(
             }
         }
 
-        // 18 games no longer fit as tiny fixed tiles — big clear cards in a
-        // horizontally scrolling grid, with the next column peeking in so
-        // kids know to swipe.
+        // Category rows: 5 themed sections, each a horizontal row of big
+        // tiles — vertical scroll between categories, the next section
+        // peeking in from the bottom so kids know to scroll.
+        val sections = listOf(
+            GameSection("⚡", stringResource(R.string.game_cat_speedy), Color(0xFFFF8400), categories.subList(0, 4)),
+            GameSection("➕", stringResource(R.string.game_cat_equations), Color(0xFF0074D5), categories.subList(4, 8)),
+            GameSection("🗺️", stringResource(R.string.game_cat_adventures), Color(0xFF43A047), categories.subList(8, 12)),
+            GameSection("🔢", stringResource(R.string.game_cat_builders), Color(0xFF8E24AA), categories.subList(12, 15)),
+            GameSection("🧩", stringResource(R.string.game_cat_puzzles), Color(0xFF546E7A), categories.subList(15, 18))
+        )
+
         BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
             val hPad = AppDimens.Dimens16
             val vPad = AppDimens.Dimens10
             val gap = AppDimens.Dimens12
-            val rowCount = if (DeviceInfo.isTablet) 3 else 2
-            val visibleCols = 4.4f
-            val tileW = (maxWidth - hPad * 2 - gap * 4) / visibleCols
-            val tileH = (maxHeight - vPad * 2 - gap * (rowCount - 1)) / rowCount
+            val headerH = AppDimens.Dimens30
+            // Phone shows 1 full section + a peek; tablets fit more rows.
+            val visibleSections = if (DeviceInfo.isTablet) 3.0f else 1.75f
+            val sectionH = (maxHeight - vPad * 2) / visibleSections
+            val tileH = sectionH - headerH - gap
+            val tileW = tileH * 0.92f
 
-            LazyHorizontalGrid(
-                rows = GridCells.Fixed(rowCount),
-                horizontalArrangement = Arrangement.spacedBy(gap),
+            LazyColumn(
                 verticalArrangement = Arrangement.spacedBy(gap),
-                contentPadding = PaddingValues(horizontal = hPad, vertical = vPad),
+                contentPadding = PaddingValues(vertical = vPad),
                 modifier = Modifier.fillMaxSize()
             ) {
-                itemsIndexed(categories) { index, category ->
-                    GameZoneCard(
-                        category = category,
-                        width = tileW,
-                        height = tileH,
-                        appearIndex = index,
-                        onClick = { gameType.invoke(category.type) }
-                    )
+                items(sections, key = { it.title }) { section ->
+                    Column {
+                        SectionHeader(section, hPad)
+                        LazyRow(
+                            horizontalArrangement = Arrangement.spacedBy(gap),
+                            contentPadding = PaddingValues(horizontal = hPad)
+                        ) {
+                            itemsIndexed(section.games, key = { _, c -> c.type.name }) { i, category ->
+                                GameZoneCard(
+                                    category = category,
+                                    width = tileW,
+                                    height = tileH,
+                                    appearIndex = i,
+                                    onClick = { gameType.invoke(category.type) }
+                                )
+                            }
+                        }
+                    }
                 }
             }
         }
+    }
+}
+
+private data class GameSection(
+    val emoji: String,
+    val title: String,
+    val accent: Color,
+    val games: List<GameCategoryData>
+)
+
+@Composable
+private fun SectionHeader(section: GameSection, hPad: Dp) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = hPad)
+            .padding(bottom = AppDimens.Dimens6)
+    ) {
+        // Playful sticker-style badge: gradient capsule, white outline,
+        // tilted a touch like it was slapped on by hand.
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
+            modifier = Modifier
+                .graphicsLayer { rotationZ = -1.5f }
+                .shadow(AppDimens.Dimens4, CircleShape, ambientColor = section.accent, spotColor = section.accent)
+                .background(
+                    Brush.horizontalGradient(listOf(section.accent.copy(alpha = 0.8f), section.accent)),
+                    CircleShape
+                )
+                .border(2.dp, Color.White.copy(alpha = 0.65f), CircleShape)
+                .padding(horizontal = AppDimens.Dimens14, vertical = AppDimens.Dimens6)
+        ) {
+            Text(text = section.emoji, style = MaterialTheme.typography.titleMedium.scaled())
+            Text(
+                text = section.title,
+                color = Color.White,
+                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                style = MaterialTheme.typography.titleMedium.scaled()
+            )
+        }
+        // Soft rule line carrying the category color across the row.
+        Box(
+            modifier = Modifier
+                .weight(1f)
+                .height(3.dp)
+                .background(section.accent.copy(alpha = 0.2f), CircleShape)
+        )
     }
 }
 
@@ -262,6 +332,8 @@ private fun GameZoneCard(
                 scaleX = scale
                 scaleY = scale
                 alpha = appearAlpha
+                // Sticker-book feel: neighbors lean opposite ways a touch.
+                rotationZ = ((appearIndex % 3) - 1) * 1.2f
             }
             .shadow(
                 elevation = AppDimens.Dimens6,

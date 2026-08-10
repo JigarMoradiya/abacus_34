@@ -850,6 +850,11 @@
     <string name="sudoku">Sudoku</string>
     <string name="math_game_zone">Math Game Zone</string>
     <string name="pick_a_game_have_fun">Pick a game &amp; have fun!</string>
+    <string name="game_cat_speedy">Speedy Games</string>
+    <string name="game_cat_equations">Equation Fun</string>
+    <string name="game_cat_adventures">Number Adventures</string>
+    <string name="game_cat_builders">Number Builders</string>
+    <string name="game_cat_puzzles">Brain Puzzles</string>
     <string name="_3_3_puzzle">3×3 Puzzle</string>
     <string name="_4_4_puzzle">4×4 Puzzle</string>
     <string name="_5_5_puzzle">5×5 Puzzle</string>
