@@ -204,7 +204,8 @@ fun MathGameZoneScreen(
             val visibleSections = if (DeviceInfo.isTablet) 3.0f else 1.75f
             val sectionH = (maxHeight - vPad * 2) / visibleSections
             val tileH = sectionH - headerH - gap
-            val tileW = tileH * 0.92f
+            // Wide cards (not square) — roomier title/tagline, landscape feel.
+            val tileW = tileH * 1.35f
 
             LazyColumn(
                 verticalArrangement = Arrangement.spacedBy(gap),
