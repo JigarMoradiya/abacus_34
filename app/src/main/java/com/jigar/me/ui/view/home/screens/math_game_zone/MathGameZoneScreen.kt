@@ -1,8 +1,13 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone
 
+import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -57,6 +62,8 @@ import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.PrimaryBlue
 import kotlinx.coroutines.delay
+import kotlin.math.PI
+import kotlin.math.sin
 
 @Composable
 fun MathGameZoneScreen(
@@ -200,10 +207,13 @@ fun MathGameZoneScreen(
             val vPad = AppDimens.Dimens10
             val gap = AppDimens.Dimens12
             val headerH = AppDimens.Dimens30
+            // Room inside the clipping scroll row so card shadows (and the
+            // sticker tilt) aren't cut off at the top/bottom.
+            val shadowPad = AppDimens.Dimens8
             // Phone shows 1 full section + a peek; tablets fit more rows.
             val visibleSections = if (DeviceInfo.isTablet) 3.0f else 1.75f
             val sectionH = (maxHeight - vPad * 2) / visibleSections
-            val tileH = sectionH - headerH - gap
+            val tileH = sectionH - headerH - gap - shadowPad * 2
             // Wide cards (not square) — roomier title/tagline, landscape feel.
             val tileW = tileH * 1.35f
 
@@ -217,7 +227,7 @@ fun MathGameZoneScreen(
                         SectionHeader(section, hPad)
                         LazyRow(
                             horizontalArrangement = Arrangement.spacedBy(gap),
-                            contentPadding = PaddingValues(horizontal = hPad)
+                            contentPadding = PaddingValues(horizontal = hPad, vertical = shadowPad)
                         ) {
                             itemsIndexed(section.games, key = { _, c -> c.type.name }) { i, category ->
                                 GameZoneCard(
@@ -352,10 +362,22 @@ private fun GameZoneCard(
                 indication = null
             ) { onClick() }
     ) {
-        // Programmatic icon on a soft white disc
+        // Programmatic icon on a soft white disc — always in gentle motion:
+        // a slow float + sway, phase-shifted per card so neighbors don't
+        // bob in sync.
+        val bob by rememberInfiniteTransition(label = "bob").animateFloat(
+            initialValue = 0f, targetValue = (2.0 * PI).toFloat(),
+            animationSpec = infiniteRepeatable(tween(2600, easing = LinearEasing)),
+            label = "bob"
+        )
+        val phase = appearIndex * 0.9f
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
+                .graphicsLayer {
+                    translationY = sin(bob + phase) * 3.dp.toPx()
+                    rotationZ = sin(bob * 0.5f + phase) * 3f
+                }
                 .size(iconArea * 1.28f)
                 .background(Color.White.copy(alpha = 0.18f), CircleShape)
         ) {
