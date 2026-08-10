@@ -363,8 +363,12 @@ private fun GameZoneCard(
             ) { onClick() }
     ) {
         // Icon zone takes the flexible space so every card's icon sits at
-        // the same height, no matter how the title below wraps.
-        Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) {
+        // the same height, no matter how the title below wraps. The icon
+        // hugs the bottom of its zone so it sits close to the title.
+        Box(
+            modifier = Modifier.weight(1f).padding(bottom = height * 0.015f),
+            contentAlignment = Alignment.BottomCenter
+        ) {
             // Programmatic icon on a soft white disc — always in gentle
             // motion: a slow float + sway, phase-shifted per card so
             // neighbors don't bob in sync.
@@ -388,11 +392,11 @@ private fun GameZoneCard(
             }
         }
 
-        // Fixed-height text zone: 1-line and 2-line titles both center here
-        // without shifting the icon above.
+        // Fixed-height text zone: title starts right under the icon; 1-line
+        // and 2-line titles never shift the icon above.
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
+            verticalArrangement = Arrangement.Top,
             modifier = Modifier
                 .height(height * 0.34f)
                 .padding(horizontal = width * 0.06f)

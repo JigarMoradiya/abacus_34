@@ -133,6 +133,16 @@ private fun IconNumber(text: String, fontSize: Dp, color: Color, modifier: Modif
         fontFamily = heavyFont,
         maxLines = 1,
         softWrap = false,
+        // Android's default font padding pushes digits below center inside
+        // small tiles — trim it and center the glyph in its line box.
+        style = androidx.compose.ui.text.TextStyle(
+            lineHeight = fontSize.asSp(),
+            platformStyle = androidx.compose.ui.text.PlatformTextStyle(includeFontPadding = false),
+            lineHeightStyle = androidx.compose.ui.text.style.LineHeightStyle(
+                alignment = androidx.compose.ui.text.style.LineHeightStyle.Alignment.Center,
+                trim = androidx.compose.ui.text.style.LineHeightStyle.Trim.Both
+            )
+        ),
         modifier = modifier
     )
 }
