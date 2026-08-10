@@ -206,17 +206,14 @@ fun MathGameZoneScreen(
             val hPad = AppDimens.Dimens16
             val vPad = AppDimens.Dimens10
             val gap = AppDimens.Dimens12
-            val headerH = AppDimens.Dimens30
             // Room inside the clipping scroll row so card shadows (and the
             // sticker tilt) aren't cut off at the top/bottom. The spot
             // shadow throws ~1.5x elevation downward, so this must exceed it.
             val shadowPad = AppDimens.Dimens12
-            // Phone shows 1 full section + a peek; tablets fit more rows.
-            val visibleSections = if (DeviceInfo.isTablet) 3.0f else 1.75f
-            val sectionH = (maxHeight - vPad * 2) / visibleSections
-            val tileH = sectionH - headerH - gap - shadowPad * 2
-            // Wide cards (not square) — roomier title/tagline, landscape feel.
-            val tileW = tileH * 1.35f
+            // Width-driven sizing: exactly 4 wide cards cover the screen
+            // width — the 4-game categories fill their row edge to edge.
+            val tileW = (maxWidth - hPad * 2 - gap * 3) / 4
+            val tileH = tileW / 1.35f
 
             LazyColumn(
                 verticalArrangement = Arrangement.spacedBy(gap),
@@ -308,7 +305,7 @@ private fun GameZoneCard(
     val style = gameCardStyle(category.type)
     val corner = min(width, height) * 0.16f
     val shape = RoundedCornerShape(corner)
-    val iconArea = min(width * 0.62f, height * 0.48f)
+    val iconArea = min(width * 0.62f, height * 0.44f)
 
     val interactionSource = remember { MutableInteractionSource() }
     val pressed by interactionSource.collectIsPressedAsState()
@@ -363,50 +360,60 @@ private fun GameZoneCard(
                 indication = null
             ) { onClick() }
     ) {
-        // Programmatic icon on a soft white disc — always in gentle motion:
-        // a slow float + sway, phase-shifted per card so neighbors don't
-        // bob in sync.
-        val bob by rememberInfiniteTransition(label = "bob").animateFloat(
-            initialValue = 0f, targetValue = (2.0 * PI).toFloat(),
-            animationSpec = infiniteRepeatable(tween(2600, easing = LinearEasing)),
-            label = "bob"
-        )
-        val phase = appearIndex * 0.9f
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .graphicsLayer {
-                    translationY = sin(bob + phase) * 3.dp.toPx()
-                    rotationZ = sin(bob * 0.5f + phase) * 3f
-                }
-                .size(iconArea * 1.28f)
-                .background(Color.White.copy(alpha = 0.18f), CircleShape)
-        ) {
-            GameTileIcon(type = category.type, size = iconArea, tint = style.tint)
+        // Icon zone takes the flexible space so every card's icon sits at
+        // the same height, no matter how the title below wraps.
+        Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) {
+            // Programmatic icon on a soft white disc — always in gentle
+            // motion: a slow float + sway, phase-shifted per card so
+            // neighbors don't bob in sync.
+            val bob by rememberInfiniteTransition(label = "bob").animateFloat(
+                initialValue = 0f, targetValue = (2.0 * PI).toFloat(),
+                animationSpec = infiniteRepeatable(tween(2600, easing = LinearEasing)),
+                label = "bob"
+            )
+            val phase = appearIndex * 0.9f
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .graphicsLayer {
+                        translationY = sin(bob + phase) * 2.dp.toPx()
+                        rotationZ = sin(bob * 0.5f + phase) * 3f
+                    }
+                    .size(iconArea * 1.28f)
+                    .background(Color.White.copy(alpha = 0.18f), CircleShape)
+            ) {
+                GameTileIcon(type = category.type, size = iconArea, tint = style.tint)
+            }
         }
 
-        Spacer(Modifier.size(height * 0.045f))
+        // Fixed-height text zone: 1-line and 2-line titles both center here
+        // without shifting the icon above.
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .height(height * 0.34f)
+                .padding(horizontal = width * 0.06f)
+        ) {
+            Text(
+                text = category.title,
+                color = Color.White,
+                textAlign = TextAlign.Center,
+                maxLines = 2,
+                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                style = if (DeviceInfo.isTablet) MaterialTheme.typography.titleMedium.scaled()
+                else MaterialTheme.typography.titleSmall.scaled()
+            )
 
-        // Big scrollable tiles have room for the tagline everywhere.
-        Text(
-            text = category.title,
-            color = Color.White,
-            textAlign = TextAlign.Center,
-            maxLines = 2,
-            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-            style = if (DeviceInfo.isTablet) MaterialTheme.typography.titleMedium.scaled()
-            else MaterialTheme.typography.titleSmall.scaled(),
-            modifier = Modifier.padding(horizontal = width * 0.06f)
-        )
-
-        Text(
-            text = category.desc,
-            color = Color.White.copy(alpha = 0.85f),
-            textAlign = TextAlign.Center,
-            maxLines = 1,
-            fontFamily = FontFamily(Font(R.font.font_bold)),
-            style = MaterialTheme.typography.labelSmall.scaled(),
-            modifier = Modifier.padding(horizontal = width * 0.06f)
-        )
+            Text(
+                text = category.desc,
+                color = Color.White.copy(alpha = 0.85f),
+                textAlign = TextAlign.Center,
+                maxLines = 1,
+                fontFamily = FontFamily(Font(R.font.font_bold)),
+                style = MaterialTheme.typography.labelSmall.scaled()
+            )
+        }
+        Spacer(Modifier.height(height * 0.05f))
     }
 }

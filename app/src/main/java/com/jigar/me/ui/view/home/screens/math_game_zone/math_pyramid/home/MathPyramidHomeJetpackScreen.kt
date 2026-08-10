@@ -108,16 +108,15 @@ fun MathPyramidHomeJetpackScreen(
             ) {
                 levelRange.forEach { level ->
 
-                    val shape = RoundedCornerShape(Dimens12)
-
+                    // No clip here — the selected pyramid scales up, sways and
+                    // glows beyond its own bounds; clipping cut it off.
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         modifier = Modifier
                             .weight(1f)
-                            .clip(shape)
                             .clickable(
                                 interactionSource = remember { MutableInteractionSource() },
-                                indication = LocalIndication.current
+                                indication = null
                             ) {
                                 viewModel.selectLevel(level)
                             }
@@ -135,10 +134,11 @@ fun MathPyramidHomeJetpackScreen(
                             modifier = Modifier.height(Dimens32),
                             contentAlignment = Alignment.Center
                         ) {
+                            // Kids style: chunky rounded label, orange when picked.
                             Text(
                                 text = "Level $level",
-                                color = if (state.selectedLevel == level) colorResource(R.color.black) else colorResource(R.color.black_text),
-                                fontFamily = FontFamily(Font(if (state.selectedLevel == level) R.font.font_bold else R.font.font_regular)),
+                                color = if (state.selectedLevel == level) Color(0xFFE65100) else Color(0xFF5D4037),
+                                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
                                 fontSize = dimensionResource(
                                     id = if (state.selectedLevel == level) R.dimen.textSize24 else R.dimen.textSize17
                                 ).value.sp.scaled()
