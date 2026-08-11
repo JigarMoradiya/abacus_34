@@ -1,0 +1,78 @@
+package com.jigar.me.ui.view.home.screens.math_game_zone
+
+import androidx.lifecycle.ViewModel
+import com.jigar.me.data.pref.AppPreferencesHelper
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import javax.inject.Inject
+
+// Surfaces each game's saved progress on its zone card (total stars for
+// roadmap games, best score for session games) and remembers the last games
+// played for the "Jump back in" row.
+@HiltViewModel
+class MathGameZoneViewModel @Inject constructor(
+    private val prefManager: AppPreferencesHelper
+) : ViewModel() {
+
+    private val difficulties = listOf("easy", "medium", "hard", "veryHard")
+
+    private val _recentGames = MutableStateFlow<List<GameCategoryType>>(emptyList())
+    val recentGames: StateFlow<List<GameCategoryType>> = _recentGames
+
+    private val _badges = MutableStateFlow<Map<GameCategoryType, String>>(emptyMap())
+    val badges: StateFlow<Map<GameCategoryType, String>> = _badges
+
+    init { refresh() }
+
+    // Re-read prefs — runs again when the zone comes back into composition,
+    // so fresh wins show up right after a game.
+    fun refresh() {
+        _recentGames.value = prefManager.getCustomParam(KEY_RECENT, "")
+            .split(",")
+            .mapNotNull { name -> GameCategoryType.entries.firstOrNull { it.name == name } }
+            .take(3)
+
+        _badges.value = buildMap {
+            starBadge(GameCategoryType.CROSS_MATH, "crossMathStars")
+            starBadge(GameCategoryType.NUMBER_PATH, "numberPathStars")
+            starBadge(GameCategoryType.KAKURO, "kakuroStars")
+            bestBadge(GameCategoryType.SPEED_COMPARE, "speedCompareBest")
+            bestBadge(GameCategoryType.BALLOON_POP, "balloonMakeTenBest")
+            bestBadge(GameCategoryType.TRUE_FALSE, "trueFalseBest")
+            bestBadge(GameCategoryType.MATH_BINGO, "mathBingoBest")
+            bestBadge(GameCategoryType.MISSING_OPERATOR, "missingOperatorBest")
+            bestBadge(GameCategoryType.EQUATION_MATCH, "equationMatchBest")
+            bestBadge(GameCategoryType.MAGIC_SQUARE, "magicSquareBest")
+            bestBadge(GameCategoryType.MERGE_2048, "merge2048Best")
+            bestBadge(GameCategoryType.PLACE_VALUE, "placeValueBest")
+            bestBadge(GameCategoryType.CLOCK_MASTER, "clockMasterBest")
+            bestBadge(GameCategoryType.CALCUDOKU, "calcudokuBest")
+            // Target Number, Math Pyramid, Sudoku and Number Sequence don't
+            // persist scores today — no badge for them.
+        }
+    }
+
+    fun recordPlay(type: GameCategoryType) {
+        val updated = (listOf(type) + _recentGames.value).distinct().take(3)
+        _recentGames.value = updated
+        prefManager.setCustomParam(KEY_RECENT, updated.joinToString(",") { it.name })
+    }
+
+    // Sum of stars across all four tiers (CSV of 50 levels per tier).
+    private fun MutableMap<GameCategoryType, String>.starBadge(type: GameCategoryType, keyPrefix: String) {
+        val total = difficulties.sumOf { tier ->
+            prefManager.getCustomParam("${keyPrefix}_$tier", "")
+                .split(",").sumOf { it.trim().toIntOrNull() ?: 0 }
+        }
+        if (total > 0) put(type, "⭐ $total")
+    }
+
+    // Highest best score across the four difficulties.
+    private fun MutableMap<GameCategoryType, String>.bestBadge(type: GameCategoryType, keyPrefix: String) {
+        val top = difficulties.maxOf { prefManager.getCustomParamInt("${keyPrefix}_$it", 0) }
+        if (top > 0) put(type, "🏆 $top")
+    }
+
+    companion object { private const val KEY_RECENT = "gameZoneRecentGames" }
+}

@@ -55,6 +55,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.min
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
@@ -68,8 +70,14 @@ import kotlin.math.sin
 @Composable
 fun MathGameZoneScreen(
     gameType: (GameCategoryType) -> Unit,
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
+    viewModel: MathGameZoneViewModel = hiltViewModel()
 ) {
+    val recentGames by viewModel.recentGames.collectAsStateWithLifecycle()
+    val badges by viewModel.badges.collectAsStateWithLifecycle()
+    // Re-read progress every time the zone comes back into view.
+    LaunchedEffect(Unit) { viewModel.refresh() }
+
     // Ordered easy → hard with similar games grouped: quick number sense
     // first (a kid's very first game), then equation games, sum grids,
     // number puzzles, and pure logic last.
@@ -194,13 +202,18 @@ fun MathGameZoneScreen(
         // Category rows: 5 themed sections, each a horizontal row of big
         // tiles — vertical scroll between categories, the next section
         // peeking in from the bottom so kids know to scroll.
-        val sections = listOf(
-            GameSection("⚡", stringResource(R.string.game_cat_speedy), Color(0xFFFF8400), categories.subList(0, 4)),
-            GameSection("➕", stringResource(R.string.game_cat_equations), Color(0xFF0074D5), categories.subList(4, 8)),
-            GameSection("🗺️", stringResource(R.string.game_cat_adventures), Color(0xFF43A047), categories.subList(8, 12)),
-            GameSection("🔢", stringResource(R.string.game_cat_builders), Color(0xFF8E24AA), categories.subList(12, 15)),
-            GameSection("🧩", stringResource(R.string.game_cat_puzzles), Color(0xFF546E7A), categories.subList(15, 18))
-        )
+        val sections = buildList {
+            // "Jump back in" first — the kid's last games, one tap away.
+            val recents = recentGames.mapNotNull { t -> categories.firstOrNull { it.type == t } }
+            if (recents.isNotEmpty()) {
+                add(GameSection("🕹️", stringResource(R.string.game_cat_recent), Color(0xFFE91E63), recents))
+            }
+            add(GameSection("⚡", stringResource(R.string.game_cat_speedy), Color(0xFFFF8400), categories.subList(0, 4)))
+            add(GameSection("➕", stringResource(R.string.game_cat_equations), Color(0xFF0074D5), categories.subList(4, 8)))
+            add(GameSection("🗺️", stringResource(R.string.game_cat_adventures), Color(0xFF43A047), categories.subList(8, 12)))
+            add(GameSection("🔢", stringResource(R.string.game_cat_builders), Color(0xFF8E24AA), categories.subList(12, 15)))
+            add(GameSection("🧩", stringResource(R.string.game_cat_puzzles), Color(0xFF546E7A), categories.subList(15, 18)))
+        }
 
         BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
             val hPad = AppDimens.Dimens16
@@ -233,7 +246,11 @@ fun MathGameZoneScreen(
                                     width = tileW,
                                     height = tileH,
                                     appearIndex = i,
-                                    onClick = { gameType.invoke(category.type) }
+                                    badge = badges[category.type],
+                                    onClick = {
+                                        viewModel.recordPlay(category.type)
+                                        gameType.invoke(category.type)
+                                    }
                                 )
                             }
                         }
@@ -300,6 +317,7 @@ private fun GameZoneCard(
     width: Dp,
     height: Dp,
     appearIndex: Int,
+    badge: String? = null,
     onClick: () -> Unit
 ) {
     val style = gameCardStyle(category.type)
@@ -366,9 +384,25 @@ private fun GameZoneCard(
         // the same height, no matter how the title below wraps. Centered:
         // the bob animation keeps an even margin to the title below.
         Box(
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxWidth(),
             contentAlignment = Alignment.Center
         ) {
+            // Progress badge: total stars (roadmap games) or best score.
+            if (badge != null) {
+                Text(
+                    text = badge,
+                    color = Color.White,
+                    maxLines = 1,
+                    softWrap = false,
+                    fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                    style = MaterialTheme.typography.labelSmall.scaled(),
+                    modifier = Modifier
+                        .align(Alignment.TopStart)
+                        .padding(start = AppDimens.Dimens6, top = AppDimens.Dimens6)
+                        .background(Color.Black.copy(alpha = 0.22f), CircleShape)
+                        .padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens2)
+                )
+            }
             // Programmatic icon on a soft white disc — always in gentle
             // motion: a slow float + sway, phase-shifted per card so
             // neighbors don't bob in sync.
