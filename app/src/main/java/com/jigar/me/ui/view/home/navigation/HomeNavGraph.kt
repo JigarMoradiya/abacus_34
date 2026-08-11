@@ -26,6 +26,7 @@ import com.jigar.me.ui.view.home.screens.my_account.viewmodels.MyAccountViewMode
 import com.jigar.me.ui.view.login.screens.login.LoginWithCredentialsLandscapeScreen
 import com.jigar.me.ui.view.home.screens.reports.ReportHistoryRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.MathGameZoneScreenRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.ZoneDailyMarkerViewModel
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.MathPyramidHomeRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.MathPyramidPlayRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.number_sequence_puzzle.NumberSequencePuzzleHomeRoute
@@ -117,6 +118,14 @@ fun HomeNavGraph(
     // popUpTo(Splash){inclusive} hand-off, silently dropping the deep link
     // on cold starts.
     val currentEntry = navController.currentBackStackEntryAsState().value
+
+    // Daily challenge counts only when a play screen actually opens — not
+    // when a game's home page is merely peeked at.
+    val dailyMarker: ZoneDailyMarkerViewModel = hiltViewModel()
+    LaunchedEffect(currentEntry?.destination?.route) {
+        currentEntry?.destination?.route?.let { dailyMarker.onRouteVisited(it) }
+    }
+
     LaunchedEffect(initialRoute, currentEntry?.destination?.route) {
         val current = currentEntry?.destination?.route
         if (!initialRoute.isNullOrEmpty() && initialRoute != RouteNavigation.Home.route &&

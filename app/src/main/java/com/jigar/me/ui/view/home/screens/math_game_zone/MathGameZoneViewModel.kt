@@ -77,16 +77,9 @@ class MathGameZoneViewModel @Inject constructor(
             prefManager.setCustomParam(KEY_PLAYED, played.joinToString(","))
         }
 
-        // Playing today's featured game keeps the streak flame alive.
-        val d = _daily.value
-        val today = System.currentTimeMillis() / DAY_MS
-        if (d != null && type == d.type && !d.playedToday) {
-            val lastDay = prefManager.getCustomParam(KEY_DAILY_DAY, "").toLongOrNull() ?: -1L
-            val newStreak = if (lastDay == today - 1) prefManager.getCustomParamInt(KEY_DAILY_STREAK, 0) + 1 else 1
-            prefManager.setCustomParam(KEY_DAILY_DAY, today.toString())
-            prefManager.setCustomParamInt(KEY_DAILY_STREAK, newStreak)
-            _daily.value = d.copy(playedToday = true, streak = newStreak)
-        }
+        // The daily streak is NOT updated here — opening a game's home page
+        // isn't playing. ZoneDailyChallenge.onRouteVisited marks it when a
+        // play screen actually opens; refresh() shows it on return.
     }
 
     // Sum of stars across all four tiers (CSV of 50 levels per tier).

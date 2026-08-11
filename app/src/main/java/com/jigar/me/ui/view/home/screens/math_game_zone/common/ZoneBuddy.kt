@@ -11,10 +11,15 @@ object ZoneBuddy {
 
     val all = listOf(
         BuddyDef("🐻", 0),
+        BuddyDef("🐰", 10),
         BuddyDef("🐼", 25),
+        BuddyDef("🐸", 50),
         BuddyDef("🦊", 75),
+        BuddyDef("🦁", 120),
         BuddyDef("🦖", 150),
-        BuddyDef("🦄", 300)
+        BuddyDef("🦉", 220),
+        BuddyDef("🦄", 300),
+        BuddyDef("🐲", 400)
     )
 
     fun current(prefManager: AppPreferencesHelper): String =

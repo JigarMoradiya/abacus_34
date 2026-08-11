@@ -68,7 +68,9 @@ private data class Trophy(
     val emoji: String,
     val title: String,
     val desc: String,
-    val earned: Boolean
+    val earned: Boolean,
+    val accent: Color,
+    val progress: String
 )
 
 @Composable
@@ -81,22 +83,25 @@ fun TrophyRoomScreen(
 
     // The first 11 trophies come straight from stats; Champion needs their
     // earned count, so it is appended after.
+    // Each trophy shows live progress toward its goal, so kids always know
+    // what to do next — and every card has its own color.
+    fun prog(current: Int, goal: Int) = "${minOf(current, goal)}/$goal"
     val base = listOf(
-        Trophy("🎮", stringResource(R.string.trophy_first_game), stringResource(R.string.trophy_first_game_desc), stats.gamesPlayed >= 1),
-        Trophy("🧭", stringResource(R.string.trophy_explorer), stringResource(R.string.trophy_explorer_desc), stats.gamesPlayed >= 6),
-        Trophy("🧠", stringResource(R.string.trophy_all_rounder), stringResource(R.string.trophy_all_rounder_desc), stats.gamesPlayed >= 18),
-        Trophy("🌟", stringResource(R.string.trophy_star_10), stringResource(R.string.trophy_star_10_desc), stats.totalStars >= 10),
-        Trophy("💫", stringResource(R.string.trophy_star_50), stringResource(R.string.trophy_star_50_desc), stats.totalStars >= 50),
-        Trophy("👑", stringResource(R.string.trophy_star_150), stringResource(R.string.trophy_star_150_desc), stats.totalStars >= 150),
-        Trophy("🗺️", stringResource(R.string.trophy_levels_10), stringResource(R.string.trophy_levels_10_desc), stats.levelsDone >= 10),
-        Trophy("🚀", stringResource(R.string.trophy_levels_50), stringResource(R.string.trophy_levels_50_desc), stats.levelsDone >= 50),
-        Trophy("✨", stringResource(R.string.trophy_perfect_5), stringResource(R.string.trophy_perfect_5_desc), stats.threeStars >= 5),
-        Trophy("🔥", stringResource(R.string.trophy_hard_hero), stringResource(R.string.trophy_hard_hero_desc), stats.hardThreeStar),
-        Trophy("💨", stringResource(R.string.trophy_speed_200), stringResource(R.string.trophy_speed_200_desc), stats.maxBest >= 200)
+        Trophy("🎮", stringResource(R.string.trophy_first_game), stringResource(R.string.trophy_first_game_desc), stats.gamesPlayed >= 1, Color(0xFF42A5F5), prog(stats.gamesPlayed, 1)),
+        Trophy("🧭", stringResource(R.string.trophy_explorer), stringResource(R.string.trophy_explorer_desc), stats.gamesPlayed >= 6, Color(0xFF26A69A), prog(stats.gamesPlayed, 6)),
+        Trophy("🧠", stringResource(R.string.trophy_all_rounder), stringResource(R.string.trophy_all_rounder_desc), stats.gamesPlayed >= 18, Color(0xFF7E57C2), prog(stats.gamesPlayed, 18)),
+        Trophy("🌟", stringResource(R.string.trophy_star_10), stringResource(R.string.trophy_star_10_desc), stats.totalStars >= 10, Color(0xFFFFB300), prog(stats.totalStars, 10)),
+        Trophy("💫", stringResource(R.string.trophy_star_50), stringResource(R.string.trophy_star_50_desc), stats.totalStars >= 50, Color(0xFFFF7043), prog(stats.totalStars, 50)),
+        Trophy("👑", stringResource(R.string.trophy_star_150), stringResource(R.string.trophy_star_150_desc), stats.totalStars >= 150, Color(0xFFAB47BC), prog(stats.totalStars, 150)),
+        Trophy("🗺️", stringResource(R.string.trophy_levels_10), stringResource(R.string.trophy_levels_10_desc), stats.levelsDone >= 10, Color(0xFF66BB6A), prog(stats.levelsDone, 10)),
+        Trophy("🚀", stringResource(R.string.trophy_levels_50), stringResource(R.string.trophy_levels_50_desc), stats.levelsDone >= 50, Color(0xFF29B6F6), prog(stats.levelsDone, 50)),
+        Trophy("✨", stringResource(R.string.trophy_perfect_5), stringResource(R.string.trophy_perfect_5_desc), stats.threeStars >= 5, Color(0xFFEC407A), prog(stats.threeStars, 5)),
+        Trophy("🔥", stringResource(R.string.trophy_hard_hero), stringResource(R.string.trophy_hard_hero_desc), stats.hardThreeStar, Color(0xFFEF5350), prog(if (stats.hardThreeStar) 1 else 0, 1)),
+        Trophy("💨", stringResource(R.string.trophy_speed_200), stringResource(R.string.trophy_speed_200_desc), stats.maxBest >= 200, Color(0xFF5C6BC0), prog(stats.maxBest, 200))
     )
     val trophies = base + Trophy(
         "🏆", stringResource(R.string.trophy_champion), stringResource(R.string.trophy_champion_desc),
-        base.count { it.earned } >= 8
+        base.count { it.earned } >= 8, Color(0xFFFFA000), prog(base.count { it.earned }, 8)
     )
     val earnedCount = trophies.count { it.earned }
 
@@ -209,11 +214,11 @@ private fun BuddyShelf(totalStars: Int, selected: String, onSelect: (String) -> 
                             if (isSelected) Color(0xFFE65100) else Color(0xFFBDBDBD),
                             CircleShape
                         )
-                        .padding(AppDimens.Dimens8)
+                        .padding(AppDimens.Dimens10)
                 ) {
                     Text(
                         def.emoji,
-                        style = MaterialTheme.typography.titleLarge.scaled(),
+                        style = MaterialTheme.typography.headlineSmall.scaled(),
                         modifier = Modifier.graphicsLayer { if (!unlocked) alpha = 0.35f }
                     )
                 }
@@ -290,23 +295,26 @@ private fun TrophyCard(trophy: Trophy, index: Int) {
     )
     val phase = index * 0.8f
 
+    // Every trophy wears its own color; locked ones stay muted gray so the
+    // earned ones pop like a real collection shelf.
     val gradient = if (trophy.earned) {
-        Brush.verticalGradient(listOf(Color(0xFFFFD54F), Color(0xFFFFA000)))
+        Brush.verticalGradient(
+            listOf(androidx.compose.ui.graphics.lerp(trophy.accent, Color.White, 0.3f), trophy.accent)
+        )
     } else {
         Brush.verticalGradient(listOf(Color(0xFFCFD8DC), Color(0xFF90A4AE)))
     }
+    val glowColor = if (trophy.earned) trophy.accent else Color(0xFF90A4AE)
 
     Box(
         modifier = Modifier
-            .aspectRatio(1.45f)
+            .aspectRatio(1.3f)
             .graphicsLayer {
                 scaleX = appearScale; scaleY = appearScale
                 alpha = if (appeared) 1f else 0f
                 rotationZ = ((index % 3) - 1) * 1.2f
             }
-            .shadow(AppDimens.Dimens4, shape,
-                ambientColor = if (trophy.earned) Color(0xFFFFA000) else Color(0xFF90A4AE),
-                spotColor = if (trophy.earned) Color(0xFFFFA000) else Color(0xFF90A4AE))
+            .shadow(AppDimens.Dimens4, shape, ambientColor = glowColor, spotColor = glowColor)
             .background(gradient, shape)
             .border(2.dp, Color.White.copy(alpha = 0.7f), shape)
     ) {
@@ -317,7 +325,7 @@ private fun TrophyCard(trophy: Trophy, index: Int) {
         ) {
             Text(
                 trophy.emoji,
-                style = MaterialTheme.typography.headlineMedium.scaled(),
+                style = MaterialTheme.typography.displaySmall.scaled(),
                 modifier = Modifier.graphicsLayer {
                     if (trophy.earned) {
                         rotationZ = sin(t + phase) * 8f
@@ -338,6 +346,18 @@ private fun TrophyCard(trophy: Trophy, index: Int) {
                 color = Color.White.copy(alpha = 0.9f),
                 fontResId = R.font.font_bold,
                 style = MaterialTheme.typography.labelSmall.scaled()
+            )
+            // Live progress toward the goal — kids see exactly what's left.
+            Text(
+                if (trophy.earned) "✓ ${trophy.progress}" else trophy.progress,
+                color = Color.White,
+                maxLines = 1, softWrap = false,
+                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                style = MaterialTheme.typography.labelSmall.scaled(),
+                modifier = Modifier
+                    .padding(top = AppDimens.Dimens2)
+                    .background(Color.Black.copy(alpha = 0.22f), CircleShape)
+                    .padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens2)
             )
         }
         if (!trophy.earned) {
