@@ -854,6 +854,9 @@
     <string name="trophy_room">Trophy Room</string>
     <string name="trophy_buddies">🐾 My Buddies</string>
     <string name="ready_for_next">You\'re ready for %1$s!</string>
+    <string name="daily_challenge">Today\'s Challenge</string>
+    <string name="daily_play">Play!</string>
+    <string name="daily_done">Done ✓</string>
     <string name="trophy_first_game">First Steps</string>
     <string name="trophy_first_game_desc">Play your first game</string>
     <string name="trophy_explorer">Explorer</string>

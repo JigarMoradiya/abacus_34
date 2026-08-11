@@ -76,6 +76,7 @@ fun MathGameZoneScreen(
 ) {
     val recentGames by viewModel.recentGames.collectAsStateWithLifecycle()
     val badges by viewModel.badges.collectAsStateWithLifecycle()
+    val daily by viewModel.daily.collectAsStateWithLifecycle()
     // Re-read progress every time the zone comes back into view.
     LaunchedEffect(Unit) { viewModel.refresh() }
 
@@ -236,6 +237,22 @@ fun MathGameZoneScreen(
                 contentPadding = PaddingValues(vertical = vPad),
                 modifier = Modifier.fillMaxSize()
             ) {
+                // Today's challenge banner — play the featured game to keep
+                // the streak flame burning.
+                daily?.let { d ->
+                    item(key = "daily") {
+                        val title = categories.firstOrNull { it.type == d.type }?.title ?: ""
+                        DailyChallengeBanner(
+                            daily = d,
+                            gameTitle = title,
+                            hPad = hPad,
+                            onPlay = {
+                                viewModel.recordPlay(d.type)
+                                gameType.invoke(d.type)
+                            }
+                        )
+                    }
+                }
                 items(sections, key = { it.title }) { section ->
                     Column {
                         SectionHeader(section, hPad)
@@ -261,6 +278,87 @@ fun MathGameZoneScreen(
                 }
             }
         }
+    }
+}
+
+// A sunny card announcing today's featured game, with the streak flame.
+@Composable
+private fun DailyChallengeBanner(
+    daily: DailyChallenge,
+    gameTitle: String,
+    hPad: Dp,
+    onPlay: () -> Unit
+) {
+    val t by rememberInfiniteTransition(label = "sun").animateFloat(
+        initialValue = 0f, targetValue = (2.0 * PI).toFloat(),
+        animationSpec = infiniteRepeatable(tween(2400, easing = LinearEasing)),
+        label = "sun"
+    )
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = hPad)
+            .shadow(AppDimens.Dimens4, RoundedCornerShape(AppDimens.Dimens16),
+                ambientColor = Color(0xFFFF7043), spotColor = Color(0xFFFF7043))
+            .background(
+                Brush.horizontalGradient(listOf(Color(0xFFFFB300), Color(0xFFFF7043))),
+                RoundedCornerShape(AppDimens.Dimens16)
+            )
+            .border(2.dp, Color.White.copy(alpha = 0.7f), RoundedCornerShape(AppDimens.Dimens16))
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null
+            ) { onPlay() }
+            .padding(horizontal = AppDimens.Dimens14, vertical = AppDimens.Dimens8)
+    ) {
+        Text(
+            "🌞",
+            style = MaterialTheme.typography.headlineSmall.scaled(),
+            modifier = Modifier.graphicsLayer { rotationZ = sin(t) * 12f }
+        )
+        Column {
+            Text(
+                stringResource(R.string.daily_challenge),
+                color = Color.White.copy(alpha = 0.9f),
+                fontFamily = FontFamily(Font(R.font.font_bold)),
+                style = MaterialTheme.typography.labelSmall.scaled()
+            )
+            Text(
+                gameTitle,
+                color = Color.White, maxLines = 1, softWrap = false,
+                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                style = MaterialTheme.typography.titleSmall.scaled()
+            )
+        }
+        Spacer(Modifier.weight(1f))
+        if (daily.streak > 0) {
+            Text(
+                "🔥${daily.streak}",
+                color = Color.White,
+                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                style = MaterialTheme.typography.labelLarge.scaled(),
+                modifier = Modifier
+                    .background(Color.Black.copy(alpha = 0.2f), CircleShape)
+                    .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
+            )
+        }
+        Text(
+            stringResource(if (daily.playedToday) R.string.daily_done else R.string.daily_play),
+            color = if (daily.playedToday) Color(0xFF2E7D32) else Color(0xFFE65100),
+            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+            style = MaterialTheme.typography.labelLarge.scaled(),
+            modifier = Modifier
+                .graphicsLayer {
+                    if (!daily.playedToday) {
+                        val pulse = 1f + 0.05f * sin(t * 2f)
+                        scaleX = pulse; scaleY = pulse
+                    }
+                }
+                .background(Color.White.copy(alpha = 0.95f), CircleShape)
+                .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens4)
+        )
     }
 }
 

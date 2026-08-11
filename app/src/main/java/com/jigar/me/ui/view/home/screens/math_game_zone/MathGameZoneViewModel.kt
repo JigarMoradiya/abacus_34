@@ -23,6 +23,9 @@ class MathGameZoneViewModel @Inject constructor(
     private val _badges = MutableStateFlow<Map<GameCategoryType, String>>(emptyMap())
     val badges: StateFlow<Map<GameCategoryType, String>> = _badges
 
+    private val _daily = MutableStateFlow<DailyChallenge?>(null)
+    val daily: StateFlow<DailyChallenge?> = _daily
+
     init { refresh() }
 
     // Re-read prefs — runs again when the zone comes back into composition,
@@ -32,6 +35,15 @@ class MathGameZoneViewModel @Inject constructor(
             .split(",")
             .mapNotNull { name -> GameCategoryType.entries.firstOrNull { it.name == name } }
             .take(3)
+
+        // Daily challenge: the featured game rotates through all 18 by UTC
+        // day, identical on both platforms. Missing a day breaks the streak.
+        val today = System.currentTimeMillis() / DAY_MS
+        val featured = GameCategoryType.entries[(today % GameCategoryType.entries.size).toInt()]
+        val lastDay = prefManager.getCustomParam(KEY_DAILY_DAY, "").toLongOrNull() ?: -1L
+        var streak = prefManager.getCustomParamInt(KEY_DAILY_STREAK, 0)
+        if (lastDay < today - 1) streak = 0
+        _daily.value = DailyChallenge(featured, playedToday = lastDay == today, streak = streak)
 
         _badges.value = buildMap {
             starBadge(GameCategoryType.CROSS_MATH, "crossMathStars")
@@ -64,6 +76,17 @@ class MathGameZoneViewModel @Inject constructor(
         if (played.add(type.name)) {
             prefManager.setCustomParam(KEY_PLAYED, played.joinToString(","))
         }
+
+        // Playing today's featured game keeps the streak flame alive.
+        val d = _daily.value
+        val today = System.currentTimeMillis() / DAY_MS
+        if (d != null && type == d.type && !d.playedToday) {
+            val lastDay = prefManager.getCustomParam(KEY_DAILY_DAY, "").toLongOrNull() ?: -1L
+            val newStreak = if (lastDay == today - 1) prefManager.getCustomParamInt(KEY_DAILY_STREAK, 0) + 1 else 1
+            prefManager.setCustomParam(KEY_DAILY_DAY, today.toString())
+            prefManager.setCustomParamInt(KEY_DAILY_STREAK, newStreak)
+            _daily.value = d.copy(playedToday = true, streak = newStreak)
+        }
     }
 
     // Sum of stars across all four tiers (CSV of 50 levels per tier).
@@ -84,5 +107,15 @@ class MathGameZoneViewModel @Inject constructor(
     companion object {
         private const val KEY_RECENT = "gameZoneRecentGames"
         private const val KEY_PLAYED = "gameZonePlayedGames"
+        private const val KEY_DAILY_DAY = "dailyChallengeLastDay"
+        private const val KEY_DAILY_STREAK = "dailyChallengeStreak"
+        private const val DAY_MS = 86_400_000L
     }
 }
+
+// Today's featured game + whether it's already been played + streak length.
+data class DailyChallenge(
+    val type: GameCategoryType,
+    val playedToday: Boolean,
+    val streak: Int
+)
