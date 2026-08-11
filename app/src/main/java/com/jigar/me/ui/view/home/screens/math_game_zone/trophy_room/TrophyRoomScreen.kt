@@ -11,6 +11,8 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -168,6 +170,12 @@ private fun BuddyShelf(totalStars: Int, selected: String, onSelect: (String) -> 
             style = MaterialTheme.typography.labelLarge.scaled()
         )
         Spacer(Modifier.weight(1f))
+        // Scrollable so 5 buddies never clip on narrow tablets or big fonts.
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10),
+            modifier = Modifier.horizontalScroll(rememberScrollState())
+        ) {
         ZoneBuddy.all.forEachIndexed { i, def ->
             val unlocked = totalStars >= def.starsNeeded
             val isSelected = unlocked && selected == def.emoji
@@ -217,7 +225,31 @@ private fun BuddyShelf(totalStars: Int, selected: String, onSelect: (String) -> 
                 )
             }
         }
+        }
     }
+}
+
+// Single-line text that shrinks itself until it fits — so trophy labels
+// never clip, even at big system font sizes.
+@Composable
+private fun ShrinkText(
+    text: String,
+    color: Color,
+    fontResId: Int,
+    style: androidx.compose.ui.text.TextStyle
+) {
+    var scale by remember(text) { mutableStateOf(1f) }
+    Text(
+        text = text,
+        color = color,
+        textAlign = TextAlign.Center,
+        maxLines = 1,
+        softWrap = false,
+        fontFamily = FontFamily(Font(fontResId)),
+        style = style,
+        fontSize = style.fontSize * scale,
+        onTextLayout = { if (it.hasVisualOverflow && scale > 0.55f) scale *= 0.93f }
+    )
 }
 
 @Composable
@@ -295,16 +327,16 @@ private fun TrophyCard(trophy: Trophy, index: Int) {
                     }
                 }
             )
-            Text(
+            ShrinkText(
                 trophy.title,
-                color = Color.White, textAlign = TextAlign.Center, maxLines = 1, softWrap = false,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                color = Color.White,
+                fontResId = R.font.font_extra_bold,
                 style = MaterialTheme.typography.labelMedium.scaled()
             )
-            Text(
+            ShrinkText(
                 trophy.desc,
-                color = Color.White.copy(alpha = 0.9f), textAlign = TextAlign.Center, maxLines = 1, softWrap = false,
-                fontFamily = FontFamily(Font(R.font.font_bold)),
+                color = Color.White.copy(alpha = 0.9f),
+                fontResId = R.font.font_bold,
                 style = MaterialTheme.typography.labelSmall.scaled()
             )
         }
