@@ -35,7 +35,9 @@ data class TrueFalseUiState(
     val timeLeft: Int = 60,
     val lastAnswerWrong: Boolean = false,   // flashes the correct answer
     val lastAnswerRight: Boolean = false,
-    val isGameOver: Boolean = false
+    val isGameOver: Boolean = false,
+    // Set after a strong run - the result overlay invites the kid up a tier.
+    val suggestedDifficulty: String? = null
 ) {
     val multiplier: Int
         get() = when (streak) {

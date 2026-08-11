@@ -130,10 +130,32 @@ class TrueFalsePlayViewModel @Inject constructor(
         }
     }
 
+    // After 2 strong sessions in a row, invite the kid up a tier.
+    private fun maybeSuggestNextDifficulty() {
+        val next = when (difficulty) {
+            CommonDifficulty4.easy -> CommonDifficulty4.medium
+            CommonDifficulty4.medium -> CommonDifficulty4.hard
+            CommonDifficulty4.hard -> CommonDifficulty4.veryHard
+            else -> return
+        }
+        val s = _uiState.value
+        val total = s.correctCount + s.wrongCount
+        val accuracy = if (total == 0) 0f else s.correctCount.toFloat() / total
+        val strong = accuracy >= 0.9f && s.correctCount >= 12
+        val key = "trueFalseStrongRuns_${difficulty.name}"
+        val runs = if (strong) prefManager.getCustomParamInt(key, 0) + 1 else 0
+        prefManager.setCustomParamInt(key, runs)
+        if (runs >= 2) {
+            prefManager.setCustomParamInt(key, 0)
+            _uiState.update { it.copy(suggestedDifficulty = next.displayName) }
+        }
+    }
+
     private fun endGame() {
         stop()
         _uiState.update { it.copy(isGameOver = true) }
         val finalScore = _uiState.value.score
         if (finalScore > bestScore) prefManager.setCustomParamInt(bestKey, finalScore)
+        maybeSuggestNextDifficulty()
     }
 }

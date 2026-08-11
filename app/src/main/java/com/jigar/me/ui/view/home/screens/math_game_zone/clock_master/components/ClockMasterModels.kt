@@ -38,7 +38,9 @@ data class ClockMasterUiState(
     val selectedIndex: Int? = null,      // the tapped option (for feedback color)
     val lastAnswerWrong: Boolean = false,
     val lastAnswerRight: Boolean = false,
-    val isGameOver: Boolean = false
+    val isGameOver: Boolean = false,
+    // Set after a strong run - the result overlay invites the kid up a tier.
+    val suggestedDifficulty: String? = null
 ) {
     val multiplier: Int
         get() = when (streak) {

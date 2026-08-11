@@ -46,6 +46,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.PauseTimerInBackground
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.NextDifficultyBanner
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
@@ -156,6 +157,8 @@ fun PlaceValuePlayScreen(
         if (state.isGameOver) {
             ResultOverlay(state = state, best = viewModel.bestScore,
                 onPlayAgain = { viewModel.start() }, onBack = onBackClick)
+            // Two strong runs in a row? Invite the kid up a tier.
+            state.suggestedDifficulty?.let { NextDifficultyBanner(it) }
         }
     }
 }

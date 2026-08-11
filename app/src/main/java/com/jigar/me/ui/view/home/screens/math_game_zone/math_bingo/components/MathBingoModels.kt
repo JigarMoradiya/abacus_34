@@ -42,7 +42,9 @@ data class MathBingoUiState(
     val wrongTapIndex: Int? = null,           // shakes that cell
     val wrongTapCount: Int = 0,               // bumps so repeat taps re-shake
     val justBingo: Boolean = false,           // triggers the BINGO banner
-    val isGameOver: Boolean = false
+    val isGameOver: Boolean = false,
+    // Set after a strong run - the result overlay invites the kid up a tier.
+    val suggestedDifficulty: String? = null
 ) {
     val accuracy: Float
         get() = if (correctCount + wrongCount == 0) 0f else correctCount.toFloat() / (correctCount + wrongCount)
