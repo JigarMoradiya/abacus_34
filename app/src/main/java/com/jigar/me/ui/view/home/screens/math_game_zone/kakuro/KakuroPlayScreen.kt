@@ -52,6 +52,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.PauseTimerInBackground
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
@@ -85,6 +86,8 @@ fun KakuroPlayScreen(
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val s = gameScale()
     LaunchedEffect(Unit) { viewModel.start() }
+    // A phone call or the home button freezes the clock - fair play.
+    PauseTimerInBackground { viewModel.setTimerPaused(it) }
 
     val cellBase = when {
         state.cols >= 7 -> 44f

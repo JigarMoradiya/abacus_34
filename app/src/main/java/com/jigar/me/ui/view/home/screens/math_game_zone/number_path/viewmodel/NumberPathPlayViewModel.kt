@@ -46,6 +46,11 @@ class NumberPathPlayViewModel @Inject constructor(
 
     private var timerJob: Job? = null
 
+    // App in background - freeze the clock so interruptions never cost
+    // stars or time. Set from the screen via lifecycle events.
+    private var timerPaused = false
+    fun setTimerPaused(paused: Boolean) { timerPaused = paused }
+
     // The kid's chosen companion walks the maze.
     val buddy: String
         get() = com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneBuddy.current(prefManager)
@@ -73,6 +78,7 @@ class NumberPathPlayViewModel @Inject constructor(
         timerJob = viewModelScope.launch {
             while (isActive && !_uiState.value.isGameOver) {
                 delay(1000)
+                if (timerPaused) continue
                 _uiState.update { it.copy(elapsed = it.elapsed + 1) }
             }
         }

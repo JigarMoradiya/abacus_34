@@ -48,6 +48,11 @@ class CrossMathPlayViewModel @Inject constructor(
 
     private var timerJob: Job? = null
 
+    // App in background - freeze the clock so interruptions never cost
+    // stars or time. Set from the screen via lifecycle events.
+    private var timerPaused = false
+    fun setTimerPaused(paused: Boolean) { timerPaused = paused }
+
     val parSeconds: Int get() = CrossMathConfig.parSeconds(difficulty, puzzle.blankCount)
     val hasNextLevel: Boolean get() = level < CrossMathConfig.LEVEL_COUNT
     val hasOpBlanks: Boolean
@@ -70,6 +75,7 @@ class CrossMathPlayViewModel @Inject constructor(
         timerJob = viewModelScope.launch {
             while (isActive && !_uiState.value.isGameOver) {
                 delay(1000)
+                if (timerPaused) continue
                 _uiState.update { it.copy(elapsed = it.elapsed + 1) }
             }
         }
