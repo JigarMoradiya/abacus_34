@@ -2,8 +2,8 @@ package com.jigar.me.ui.view.home.screens.math_game_zone.common
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.LifecycleEventObserver
 
 // Freezes a game's clock while the app is in the background (home button,

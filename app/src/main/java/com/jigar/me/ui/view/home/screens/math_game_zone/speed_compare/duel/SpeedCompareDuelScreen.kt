@@ -1,7 +1,5 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.duel
 
-import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -204,11 +202,9 @@ private fun QuestionCard(text: String, accent: Color, s: Float) {
 
 @Composable
 private fun AnswerBubble(symbol: String, color: Color, enabled: Boolean, s: Float, onClick: () -> Unit) {
-    val press = remember { Animatable(1f) }
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
-            .graphicsLayer { scaleX = press.value; scaleY = press.value }
             .size((52f * s).dp)
             .clip(CircleShape)
             .background(Brush.verticalGradient(listOf(color.copy(alpha = 0.85f), color)))
