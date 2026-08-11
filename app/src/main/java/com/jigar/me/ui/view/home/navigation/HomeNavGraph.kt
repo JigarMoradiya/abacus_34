@@ -36,6 +36,7 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.target_number.TargetNumb
 import com.jigar.me.ui.view.home.screens.math_game_zone.target_number.TargetNumberPlayRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.balloon_pop.BalloonPopHomeRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.balloon_pop.BalloonPopPlayRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.SpeedCompareDuelRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.SpeedCompareHomeRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.SpeedComparePlayRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.missing_operator.MissingOperatorHomeRoute
@@ -451,6 +452,9 @@ fun HomeNavGraph(
                 onStartPlay = { diff ->
                     navController.safeNavigate(RouteNavigation.SpeedComparePlay.play(diff))
                 },
+                onStartDuel = { diff ->
+                    navController.safeNavigate(RouteNavigation.SpeedCompareDuel.play(diff))
+                },
                 onBackClick = { navController.safePopBackStack() }
             )
         }
@@ -462,6 +466,17 @@ fun HomeNavGraph(
             )
         ) {
             SpeedComparePlayRoute(
+                onBackClick = { navController.safePopBackStack() }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.SpeedCompareDuel.route,
+            arguments = listOf(
+                navArgument("speed_duel_diff") { type = NavType.StringType }
+            )
+        ) {
+            SpeedCompareDuelRoute(
                 onBackClick = { navController.safePopBackStack() }
             )
         }

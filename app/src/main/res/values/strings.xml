@@ -857,6 +857,11 @@
     <string name="daily_challenge">Today\'s Challenge</string>
     <string name="daily_play">Play!</string>
     <string name="daily_done">Done ✓</string>
+    <string name="duel_two_players">👫 2 Players</string>
+    <string name="duel_blue">Blue</string>
+    <string name="duel_pink">Pink</string>
+    <string name="duel_wins">%1$s wins!</string>
+    <string name="duel_tie">It\'s a tie!</string>
     <string name="trophy_first_game">First Steps</string>
     <string name="trophy_first_game_desc">Play your first game</string>
     <string name="trophy_explorer">Explorer</string>

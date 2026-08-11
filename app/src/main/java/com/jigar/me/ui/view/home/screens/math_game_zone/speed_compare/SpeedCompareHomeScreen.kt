@@ -59,6 +59,7 @@ private val GREEN = Color(0xFF2E7D32)
 fun SpeedCompareHomeScreen(
     viewModel: SpeedCompareHomeViewModel,
     onStartGame: () -> Unit,
+    onStartDuel: () -> Unit = {},
     onBackClick: () -> Unit
 ) {
     val selectedDifficulty by viewModel.selectedDifficulty.collectAsStateWithLifecycle()
@@ -145,6 +146,14 @@ fun SpeedCompareHomeScreen(
                     isIconStart = false,
                     onClick = onStartGame
                 )
+                // Face-to-face duel needs the big screen.
+                if (com.jigar.me.data.local.data.DeviceInfo.isTablet) {
+                    KidsActionButton(
+                        text = androidx.compose.ui.res.stringResource(R.string.duel_two_players),
+                        type = ButtonType.BLUE,
+                        onClick = onStartDuel
+                    )
+                }
             }
         }
     }

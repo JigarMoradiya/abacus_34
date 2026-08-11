@@ -13,12 +13,15 @@ import com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext
 import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.components.SpeedCompareHomeViewModel
+import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.duel.SpeedCompareDuelScreen
+import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.duel.SpeedCompareDuelViewModel
 import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.viewmodel.SpeedComparePlayViewModel
 
 @Composable
 fun SpeedCompareHomeRoute(
     homeActivityViewModel: HomeActivityViewModel,
     onStartPlay: (diff: String) -> Unit,
+    onStartDuel: (diff: String) -> Unit,
     onBackClick: () -> Unit,
 ) {
     val viewModel: SpeedCompareHomeViewModel = hiltViewModel()
@@ -33,6 +36,13 @@ fun SpeedCompareHomeRoute(
             // Easy is free forever — only the harder modes are premium.
             if (selectedDifficulty == CommonDifficulty4.easy || isSubscribed) {
                 onStartPlay(selectedDifficulty.name)
+            } else {
+                showPaywall = true
+            }
+        },
+        onStartDuel = {
+            if (selectedDifficulty == CommonDifficulty4.easy || isSubscribed) {
+                onStartDuel(selectedDifficulty.name)
             } else {
                 showPaywall = true
             }
@@ -55,4 +65,12 @@ fun SpeedComparePlayRoute(
 ) {
     val viewModel: SpeedComparePlayViewModel = hiltViewModel()
     SpeedComparePlayScreen(viewModel = viewModel, onBackClick = onBackClick)
+}
+
+@Composable
+fun SpeedCompareDuelRoute(
+    onBackClick: () -> Unit,
+) {
+    val viewModel: SpeedCompareDuelViewModel = hiltViewModel()
+    SpeedCompareDuelScreen(viewModel = viewModel, onBackClick = onBackClick)
 }

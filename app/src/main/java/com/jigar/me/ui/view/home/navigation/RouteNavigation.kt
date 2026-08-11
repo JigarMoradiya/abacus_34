@@ -54,6 +54,9 @@ sealed class RouteNavigation(val route: String) {
     }
 
     object SpeedCompareHome : RouteNavigation("SpeedCompareHome")
+    object SpeedCompareDuel : RouteNavigation("SpeedCompareDuel/{speed_duel_diff}") {
+        fun play(diff: String): String = "SpeedCompareDuel/$diff"
+    }
     object SpeedComparePlay : RouteNavigation("SpeedComparePlay/{speed_diff}") {
         fun play(diff: String): String = "SpeedComparePlay/$diff"
     }
