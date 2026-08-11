@@ -46,6 +46,10 @@ class NumberPathPlayViewModel @Inject constructor(
 
     private var timerJob: Job? = null
 
+    // The kid's chosen companion walks the maze.
+    val buddy: String
+        get() = com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneBuddy.current(prefManager)
+
     val parSeconds: Int get() = NumberPathConfig.parSeconds(difficulty, puzzle.canonicalPath.size)
     val hasNextLevel: Boolean get() = level < NumberPathConfig.LEVEL_COUNT
     val goalIndex: Int get() = puzzle.goalIndex

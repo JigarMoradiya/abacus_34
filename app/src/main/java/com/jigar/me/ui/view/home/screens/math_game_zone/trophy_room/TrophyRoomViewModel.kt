@@ -2,6 +2,7 @@ package com.jigar.me.ui.view.home.screens.math_game_zone.trophy_room
 
 import androidx.lifecycle.ViewModel
 import com.jigar.me.data.pref.AppPreferencesHelper
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneBuddy
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -26,7 +27,15 @@ class TrophyRoomViewModel @Inject constructor(
     private val _stats = MutableStateFlow(ZoneStats())
     val stats: StateFlow<ZoneStats> = _stats
 
+    private val _buddy = MutableStateFlow(ZoneBuddy.current(prefManager))
+    val buddy: StateFlow<String> = _buddy
+
     init { refresh() }
+
+    fun selectBuddy(emoji: String) {
+        prefManager.setCustomParam(ZoneBuddy.KEY, emoji)
+        _buddy.value = emoji
+    }
 
     fun refresh() {
         val starPrefixes = listOf("crossMathStars", "numberPathStars", "kakuroStars")

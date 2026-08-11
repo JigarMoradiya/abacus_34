@@ -146,7 +146,7 @@ fun NumberPathPlayScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
-                    PathGrid(state, cell, s) { viewModel.tapCell(it) }
+                    PathGrid(state, cell, s, viewModel.buddy) { viewModel.tapCell(it) }
                 }
 
                 Spacer(Modifier.width((32f * s).dp))
@@ -156,7 +156,7 @@ fun NumberPathPlayScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
-                    TotalsPanel(state, s)
+                    TotalsPanel(state, s, viewModel.buddy)
                     Spacer(Modifier.height(AppDimens.Dimens12))
                     ToolBar(state, cell, s,
                         onUndo = { viewModel.undo() },
@@ -168,6 +168,7 @@ fun NumberPathPlayScreen(
 
         if (state.isGameOver) {
             ResultOverlay(
+                buddy = viewModel.buddy,
                 stars = state.starsEarned,
                 elapsed = state.elapsed,
                 hintsUsed = state.hintsUsed,
@@ -183,7 +184,7 @@ fun NumberPathPlayScreen(
 // ── maze grid + hopping buddy ───────────────────────────────────────────────
 
 @Composable
-private fun PathGrid(state: NumberPathUiState, cell: Dp, s: Float, onTap: (Int) -> Unit) {
+private fun PathGrid(state: NumberPathUiState, cell: Dp, s: Float, buddy: String, onTap: (Int) -> Unit) {
     if (state.cells.isEmpty()) return
     val density = LocalDensity.current
     // Tiles lay out at rounded px sizes — the buddy must use the same
@@ -236,7 +237,7 @@ private fun PathGrid(state: NumberPathUiState, cell: Dp, s: Float, onTap: (Int) 
                 .size(buddySize)
                 .graphicsLayer { scaleX = hop.value; scaleY = hop.value }
         ) {
-            Text("🐻", fontSize = (26f * s).sp)
+            Text(buddy, fontSize = (26f * s).sp)
             // Little total bubble riding on the buddy's head.
             Text(
                 "${state.currentTotal}",
@@ -322,7 +323,7 @@ private fun PathTile(state: NumberPathUiState, i: Int, cell: Dp, s: Float, onTap
 // ── right panel: target + animated running total ───────────────────────────
 
 @Composable
-private fun TotalsPanel(state: NumberPathUiState, s: Float) {
+private fun TotalsPanel(state: NumberPathUiState, s: Float, buddy: String) {
     // The running total pops with a bounce every time it changes.
     val popScale = remember { Animatable(1f) }
     LaunchedEffect(state.totals.size) {
@@ -343,7 +344,7 @@ private fun TotalsPanel(state: NumberPathUiState, s: Float) {
             )
         }
         Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
-            Text("🐻", fontSize = (20f * s).sp)
+            Text(buddy, fontSize = (20f * s).sp)
             Text(
                 "${state.currentTotal}",
                 color = if (state.currentTotal == state.target) Color(0xFF2E7D32) else BLUE,
@@ -406,6 +407,7 @@ private fun timeString(seconds: Int): String = "%d:%02d".format(seconds / 60, se
 
 @Composable
 private fun ResultOverlay(
+    buddy: String,
     stars: Int, elapsed: Int, hintsUsed: Int, hasNextLevel: Boolean,
     onNextLevel: () -> Unit, onPlayAgain: () -> Unit, onBack: () -> Unit
 ) {
@@ -427,7 +429,7 @@ private fun ResultOverlay(
             ) {
                 Row(modifier = Modifier.fillMaxWidth().padding(horizontal = AppDimens.Dimens20),
                     verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text("🐻", fontSize = (34f * gameScale()).sp)
+                    Text(buddy, fontSize = (34f * gameScale()).sp)
                     Text(stringResource(R.string.balloon_great_job),
                         color = Color.White,
                         fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 32.sp.scaled())

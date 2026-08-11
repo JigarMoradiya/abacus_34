@@ -10,6 +10,8 @@ import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,6 +26,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
@@ -50,8 +53,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneBuddy
 import com.jigar.me.ui.view.home.theme.AppDimens
 import kotlinx.coroutines.delay
 import kotlin.math.PI
@@ -112,6 +117,8 @@ fun TrophyRoomScreen(
             }
         }
 
+        val buddy by viewModel.buddy.collectAsStateWithLifecycle()
+
         LazyVerticalGrid(
             columns = GridCells.Fixed(4),
             horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
@@ -122,8 +129,92 @@ fun TrophyRoomScreen(
             ),
             modifier = Modifier.fillMaxSize()
         ) {
+            // Buddy shelf: earn stars to free new companions; tap to pick
+            // who walks the Number Path maze.
+            item(span = { GridItemSpan(maxLineSpan) }, key = "buddies") {
+                BuddyShelf(
+                    totalStars = stats.totalStars,
+                    selected = buddy,
+                    onSelect = { viewModel.selectBuddy(it) }
+                )
+            }
             itemsIndexed(trophies, key = { _, t -> t.title }) { i, trophy ->
                 TrophyCard(trophy, i)
+            }
+        }
+    }
+}
+
+@Composable
+private fun BuddyShelf(totalStars: Int, selected: String, onSelect: (String) -> Unit) {
+    val t by rememberInfiniteTransition(label = "buddyBob").animateFloat(
+        initialValue = 0f, targetValue = (2.0 * PI).toFloat(),
+        animationSpec = infiniteRepeatable(tween(2000, easing = LinearEasing)),
+        label = "buddyBob"
+    )
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10),
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.White.copy(alpha = 0.85f), RoundedCornerShape(AppDimens.Dimens16))
+            .border(2.dp, Color(0xFFFFB300).copy(alpha = 0.5f), RoundedCornerShape(AppDimens.Dimens16))
+            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8)
+    ) {
+        Text(
+            stringResource(R.string.trophy_buddies),
+            color = Color(0xFFE65100),
+            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+            style = MaterialTheme.typography.labelLarge.scaled()
+        )
+        Spacer(Modifier.weight(1f))
+        ZoneBuddy.all.forEachIndexed { i, def ->
+            val unlocked = totalStars >= def.starsNeeded
+            val isSelected = unlocked && selected == def.emoji
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = null,
+                    enabled = unlocked
+                ) {
+                    AudioPlayerManager.playSoundTilePlace()
+                    onSelect(def.emoji)
+                }
+            ) {
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .graphicsLayer {
+                            if (isSelected) {
+                                translationY = sin(t + i) * 2.dp.toPx()
+                                rotationZ = sin(t * 0.5f + i) * 6f
+                            }
+                        }
+                        .background(
+                            if (isSelected) Brush.verticalGradient(listOf(Color(0xFFFFD54F), Color(0xFFFFA000)))
+                            else Brush.verticalGradient(listOf(Color(0xFFF5F5F5), Color(0xFFE0E0E0))),
+                            CircleShape
+                        )
+                        .border(
+                            2.dp,
+                            if (isSelected) Color(0xFFE65100) else Color(0xFFBDBDBD),
+                            CircleShape
+                        )
+                        .padding(AppDimens.Dimens8)
+                ) {
+                    Text(
+                        def.emoji,
+                        style = MaterialTheme.typography.titleLarge.scaled(),
+                        modifier = Modifier.graphicsLayer { if (!unlocked) alpha = 0.35f }
+                    )
+                }
+                Text(
+                    if (unlocked) (if (isSelected) "✓" else " ") else "⭐${def.starsNeeded}",
+                    color = if (isSelected) Color(0xFF2E7D32) else Color(0xFF8D6E63),
+                    fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                    style = MaterialTheme.typography.labelSmall.scaled()
+                )
             }
         }
     }
