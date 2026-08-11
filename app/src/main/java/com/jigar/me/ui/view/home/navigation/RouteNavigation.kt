@@ -25,6 +25,7 @@ sealed class RouteNavigation(val route: String) {
     }
 
     object MathGameZone : RouteNavigation("MathGameZone")
+    object TrophyRoom : RouteNavigation("TrophyRoom")
 
     object NumberSequencePuzzleHome : RouteNavigation("NumberSequencePuzzleHome")
     object NumberSequencePuzzlePlay : RouteNavigation("NumberSequencePuzzlePlay/{type}") {

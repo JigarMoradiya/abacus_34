@@ -62,6 +62,7 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.math_bingo.MathBingoHome
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_bingo.MathBingoPlayRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.kakuro.KakuroHomeRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.kakuro.KakuroPlayRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.trophy_room.TrophyRoomScreen
 import com.jigar.me.ui.view.home.screens.purchase.PurchaseScreenRoute
 import com.jigar.me.ui.view.home.screens.settings.SettingsScreenRoute
 import com.jigar.me.ui.view.home.screens.whats_learning.WhatsLearningScreenRoute
@@ -318,7 +319,14 @@ fun HomeNavGraph(
                 onNavigateToKakuro = {
                     navController.safeNavigate(RouteNavigation.KakuroHome.route)
                 },
+                onNavigateToTrophyRoom = {
+                    navController.safeNavigate(RouteNavigation.TrophyRoom.route)
+                },
             )
+        }
+
+        composable(route = RouteNavigation.TrophyRoom.route) {
+            TrophyRoomScreen(onBackClick = { navController.safePopBackStack() })
         }
 
         composable(route = RouteNavigation.NumberSequencePuzzleHome.route) {

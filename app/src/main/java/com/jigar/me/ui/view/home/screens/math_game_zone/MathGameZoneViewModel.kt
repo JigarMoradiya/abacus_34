@@ -57,6 +57,13 @@ class MathGameZoneViewModel @Inject constructor(
         val updated = (listOf(type) + _recentGames.value).distinct().take(3)
         _recentGames.value = updated
         prefManager.setCustomParam(KEY_RECENT, updated.joinToString(",") { it.name })
+
+        // Ever-played set feeds the Trophy Room (Explorer / All-Rounder).
+        val played = prefManager.getCustomParam(KEY_PLAYED, "")
+            .split(",").filter { it.isNotBlank() }.toMutableSet()
+        if (played.add(type.name)) {
+            prefManager.setCustomParam(KEY_PLAYED, played.joinToString(","))
+        }
     }
 
     // Sum of stars across all four tiers (CSV of 50 levels per tier).
@@ -74,5 +81,8 @@ class MathGameZoneViewModel @Inject constructor(
         if (top > 0) put(type, "🏆 $top")
     }
 
-    companion object { private const val KEY_RECENT = "gameZoneRecentGames" }
+    companion object {
+        private const val KEY_RECENT = "gameZoneRecentGames"
+        private const val KEY_PLAYED = "gameZonePlayedGames"
+    }
 }

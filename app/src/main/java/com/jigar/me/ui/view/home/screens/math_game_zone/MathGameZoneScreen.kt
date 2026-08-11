@@ -71,6 +71,7 @@ import kotlin.math.sin
 fun MathGameZoneScreen(
     gameType: (GameCategoryType) -> Unit,
     onBackClick: () -> Unit,
+    onTrophyRoom: () -> Unit = {},
     viewModel: MathGameZoneViewModel = hiltViewModel()
 ) {
     val recentGames by viewModel.recentGames.collectAsStateWithLifecycle()
@@ -179,6 +180,8 @@ fun MathGameZoneScreen(
         Row(verticalAlignment = Alignment.CenterVertically) {
             BackButtonWithText(title = stringResource(R.string.math_game_zone), onBackClick = onBackClick)
             Spacer(Modifier.weight(1f))
+            // Trophy Room door — a bouncing golden cup.
+            TrophyButton(onClick = onTrophyRoom)
             // Playful header hint
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -258,6 +261,47 @@ fun MathGameZoneScreen(
                 }
             }
         }
+    }
+}
+
+// A little golden cup that bounces to invite kids into the Trophy Room.
+@Composable
+private fun TrophyButton(onClick: () -> Unit) {
+    val t by rememberInfiniteTransition(label = "cup").animateFloat(
+        initialValue = 0f, targetValue = (2.0 * PI).toFloat(),
+        animationSpec = infiniteRepeatable(tween(1800, easing = LinearEasing)),
+        label = "cup"
+    )
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4),
+        modifier = Modifier
+            .padding(end = AppDimens.Dimens10)
+            .background(
+                Brush.horizontalGradient(listOf(Color(0xFFFFD54F), Color(0xFFFFA000))),
+                CircleShape
+            )
+            .border(2.dp, Color.White.copy(alpha = 0.7f), CircleShape)
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null
+            ) { onClick() }
+            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens4)
+    ) {
+        Text(
+            "🏆",
+            style = MaterialTheme.typography.labelLarge.scaled(),
+            modifier = Modifier.graphicsLayer {
+                translationY = sin(t) * 1.5.dp.toPx()
+                rotationZ = sin(t * 0.5f) * 6f
+            }
+        )
+        Text(
+            stringResource(R.string.trophy_room),
+            color = Color.White,
+            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+            style = MaterialTheme.typography.labelMedium.scaled()
+        )
     }
 }
 

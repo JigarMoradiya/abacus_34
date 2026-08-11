@@ -24,8 +24,13 @@ fun MathGameZoneScreenRoute(
     onNavigateToClockMaster: () -> Unit,
     onNavigateToMathBingo: () -> Unit,
     onNavigateToKakuro: () -> Unit,
+    onNavigateToTrophyRoom: () -> Unit,
 ) {
     MathGameZoneScreen(
+        onTrophyRoom = {
+            AudioPlayerManager.playSoundBtnClick()
+            onNavigateToTrophyRoom()
+        },
         gameType = { type ->
             AudioPlayerManager.playSoundBtnClick()
             when (type) {
