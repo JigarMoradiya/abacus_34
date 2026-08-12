@@ -177,10 +177,21 @@ class Merge2048PlayViewModel @Inject constructor(
     }
 
     private fun endGame() {
-        val finalScore = _uiState.value.score
-        if (finalScore > bestScore) prefManager.setCustomParamInt(bestScoreKey, finalScore)
+        saveBestIfHigher()
         clearSave()
         _uiState.update { it.copy(isGameOver = true, didWin = reachedGoal, milestoneValue = null) }
+    }
+
+    // 2048 only "ends" when the board is completely stuck — unlike the
+    // timed games, most kids just hit Back mid-game with a great score
+    // still on screen. Bank it as best whenever we leave, not only then.
+    private fun saveBestIfHigher() {
+        val finalScore = _uiState.value.score
+        if (finalScore > bestScore) prefManager.setCustomParamInt(bestScoreKey, finalScore)
+    }
+
+    override fun onCleared() {
+        saveBestIfHigher()
     }
 
     // MARK: - Save / resume (per difficulty)
