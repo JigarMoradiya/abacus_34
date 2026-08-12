@@ -146,7 +146,8 @@ fun MathPyramidPlayJetpackScreen(
                                 if (checkIfSolved(pyramid)) {
                                     AudioPlayerManager.playSoundWin()
                                     solveMarker.markSolved(
-                                        com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.MATH_PYRAMID
+                                        com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.MATH_PYRAMID,
+                                        difficulty.name
                                     )
                                     isSolved = true
                                     selectedCell = null

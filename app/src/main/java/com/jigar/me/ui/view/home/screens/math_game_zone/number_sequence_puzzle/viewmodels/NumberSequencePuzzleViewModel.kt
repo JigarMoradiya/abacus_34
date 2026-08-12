@@ -148,7 +148,8 @@ class NumberSequencePuzzleViewModel @Inject constructor(
 
             if (isSolve) {
                 com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.increment(
-                    prefManager, com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.NUMBER_SEQUENCE
+                    prefManager, com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.NUMBER_SEQUENCE,
+                    "grid$gridSize"
                 )
             }
             _uiState.update {

@@ -16,6 +16,9 @@ class MathGameZoneViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val difficulties = listOf("easy", "medium", "hard", "veryHard")
+    private val difficultyTiers = listOf("easy", "medium", "hard", "veryHard")
+    private val sudokuTiers = listOf("FOUR", "SIX", "NINE")
+    private val nspTiers = listOf("grid3", "grid4", "grid5")
 
     private val _recentGames = MutableStateFlow<List<GameCategoryType>>(emptyList())
     val recentGames: StateFlow<List<GameCategoryType>> = _recentGames
@@ -60,11 +63,12 @@ class MathGameZoneViewModel @Inject constructor(
             bestBadge(GameCategoryType.PLACE_VALUE, "placeValueBest")
             bestBadge(GameCategoryType.CLOCK_MASTER, "clockMasterBest")
             bestBadge(GameCategoryType.CALCUDOKU, "calcudokuBest")
-            // Puzzle games without a score system show lifetime solves.
-            solvedBadge(GameCategoryType.TARGET_NUMBER, "targetNumberSolved")
-            solvedBadge(GameCategoryType.SUDOKU, "sudokuSolved")
-            solvedBadge(GameCategoryType.NUMBER_SEQUENCE_PUZZLE, "numberSequenceSolved")
-            solvedBadge(GameCategoryType.MATH_PYRAMID, "mathPyramidSolved")
+            // Puzzle games without a score system show lifetime solves,
+            // summed across every difficulty/size tier that game has used.
+            solvedBadge(GameCategoryType.TARGET_NUMBER, "targetNumberSolved", difficultyTiers)
+            solvedBadge(GameCategoryType.SUDOKU, "sudokuSolved", sudokuTiers)
+            solvedBadge(GameCategoryType.NUMBER_SEQUENCE_PUZZLE, "numberSequenceSolved", nspTiers)
+            solvedBadge(GameCategoryType.MATH_PYRAMID, "mathPyramidSolved", difficultyTiers)
         }
     }
 
@@ -94,9 +98,10 @@ class MathGameZoneViewModel @Inject constructor(
         if (total > 0) put(type, "⭐ $total")
     }
 
-    // Lifetime solved-puzzle count for games without a score system.
-    private fun MutableMap<GameCategoryType, String>.solvedBadge(type: GameCategoryType, key: String) {
-        val solved = prefManager.getCustomParamInt(key, 0)
+    // Lifetime solved-puzzle count for games without a score system, summed
+    // across every tier that game tracks.
+    private fun MutableMap<GameCategoryType, String>.solvedBadge(type: GameCategoryType, gameKey: String, tiers: List<String>) {
+        val solved = com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.total(prefManager, gameKey, tiers)
         if (solved > 0) put(type, "🧩 $solved")
     }
 

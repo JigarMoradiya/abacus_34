@@ -19,12 +19,20 @@ data class MathPyramidUiState(
 
 @HiltViewModel
 class MathPyramidViewModel @Inject constructor(
-    private val savedStateHandle: SavedStateHandle
+    private val savedStateHandle: SavedStateHandle,
+    private val prefManager: com.jigar.me.data.pref.AppPreferencesHelper
 ) : ViewModel() {
 
     companion object {
         private const val KEY_UI_STATE = "pyramid_ui_state"
     }
+
+    // How many pyramids the kid has actually beaten on the selected
+    // difficulty — same idea as "best score per difficulty" on other games.
+    fun solvedCount(difficulty: CommonDifficulty4): Int =
+        com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.solved(
+            prefManager, com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.MATH_PYRAMID, difficulty
+        )
 
     private val _uiState = MutableStateFlow(
         savedStateHandle.get<MathPyramidUiState>(KEY_UI_STATE) ?: MathPyramidUiState()

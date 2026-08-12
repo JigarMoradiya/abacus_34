@@ -232,7 +232,7 @@ class SudokuPlayViewModel @Inject constructor(
         SudokuStorage.clear(app)
         AudioPlayerManager.playSoundWin()
         com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.increment(
-            prefManager, com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.SUDOKU
+            prefManager, com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.SUDOKU, size.name
         )
     }
 

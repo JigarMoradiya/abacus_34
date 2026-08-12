@@ -14,10 +14,12 @@ data class ZoneStats(
     val totalStars: Int = 0,      // all stars across the 3 roadmap games
     val levelsDone: Int = 0,      // levels with at least 1 star
     val threeStars: Int = 0,      // levels with a perfect 3
-    val hardThreeStar: Boolean = false, // any 3-star on hard/veryHard
+    val hardThreeStarCount: Int = 0, // 3-star levels on hard/veryHard
     val maxBest: Int = 0,         // highest session best score anywhere
     val gamesPlayed: Int = 0      // distinct games ever opened
-)
+) {
+    val hardThreeStar: Boolean get() = hardThreeStarCount > 0
+}
 
 @HiltViewModel
 class TrophyRoomViewModel @Inject constructor(
@@ -42,14 +44,14 @@ class TrophyRoomViewModel @Inject constructor(
         val tiers = listOf("easy", "medium", "hard", "veryHard")
         val hardTiers = setOf("hard", "veryHard")
 
-        var total = 0; var done = 0; var perfect = 0; var hardPerfect = false
+        var total = 0; var done = 0; var perfect = 0; var hardPerfect = 0
         for (prefix in starPrefixes) for (tier in tiers) {
             val stars = prefManager.getCustomParam("${prefix}_$tier", "")
                 .split(",").mapNotNull { it.trim().toIntOrNull() }
             total += stars.sum()
             done += stars.count { it > 0 }
             perfect += stars.count { it >= 3 }
-            if (tier in hardTiers && stars.any { it >= 3 }) hardPerfect = true
+            if (tier in hardTiers) hardPerfect += stars.count { it >= 3 }
         }
 
         val bestPrefixes = listOf(
@@ -68,7 +70,7 @@ class TrophyRoomViewModel @Inject constructor(
             totalStars = total,
             levelsDone = done,
             threeStars = perfect,
-            hardThreeStar = hardPerfect,
+            hardThreeStarCount = hardPerfect,
             maxBest = maxBest,
             gamesPlayed = played
         )

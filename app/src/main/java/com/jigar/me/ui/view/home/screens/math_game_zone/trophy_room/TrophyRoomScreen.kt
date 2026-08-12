@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,6 +28,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -81,8 +83,9 @@ fun TrophyRoomScreen(
     val stats by viewModel.stats.collectAsStateWithLifecycle()
     LaunchedEffect(Unit) { viewModel.refresh() }
 
-    // The first 11 trophies come straight from stats; Champion needs their
-    // earned count, so it is appended after.
+    // Every progressive trophy now has a 2nd, harder tier so kids always
+    // have a next goal even after clearing the first one. Champion +
+    // Legend are appended last since they depend on the others' count.
     // Each trophy shows live progress toward its goal, so kids always know
     // what to do next — and every card has its own color.
     fun prog(current: Int, goal: Int) = "${minOf(current, goal)}/$goal"
@@ -93,16 +96,27 @@ fun TrophyRoomScreen(
         Trophy("🌟", stringResource(R.string.trophy_star_10), stringResource(R.string.trophy_star_10_desc), stats.totalStars >= 10, Color(0xFFFFB300), prog(stats.totalStars, 10)),
         Trophy("💫", stringResource(R.string.trophy_star_50), stringResource(R.string.trophy_star_50_desc), stats.totalStars >= 50, Color(0xFFFF7043), prog(stats.totalStars, 50)),
         Trophy("👑", stringResource(R.string.trophy_star_150), stringResource(R.string.trophy_star_150_desc), stats.totalStars >= 150, Color(0xFFAB47BC), prog(stats.totalStars, 150)),
+        Trophy("🌌", stringResource(R.string.trophy_star_300), stringResource(R.string.trophy_star_300_desc), stats.totalStars >= 300, Color(0xFF8E24AA), prog(stats.totalStars, 300)),
         Trophy("🗺️", stringResource(R.string.trophy_levels_10), stringResource(R.string.trophy_levels_10_desc), stats.levelsDone >= 10, Color(0xFF66BB6A), prog(stats.levelsDone, 10)),
         Trophy("🚀", stringResource(R.string.trophy_levels_50), stringResource(R.string.trophy_levels_50_desc), stats.levelsDone >= 50, Color(0xFF29B6F6), prog(stats.levelsDone, 50)),
+        Trophy("🌠", stringResource(R.string.trophy_levels_150), stringResource(R.string.trophy_levels_150_desc), stats.levelsDone >= 150, Color(0xFF00897B), prog(stats.levelsDone, 150)),
         Trophy("✨", stringResource(R.string.trophy_perfect_5), stringResource(R.string.trophy_perfect_5_desc), stats.threeStars >= 5, Color(0xFFEC407A), prog(stats.threeStars, 5)),
-        Trophy("🔥", stringResource(R.string.trophy_hard_hero), stringResource(R.string.trophy_hard_hero_desc), stats.hardThreeStar, Color(0xFFEF5350), prog(if (stats.hardThreeStar) 1 else 0, 1)),
-        Trophy("💨", stringResource(R.string.trophy_speed_200), stringResource(R.string.trophy_speed_200_desc), stats.maxBest >= 200, Color(0xFF5C6BC0), prog(stats.maxBest, 200))
+        Trophy("🎆", stringResource(R.string.trophy_perfect_20), stringResource(R.string.trophy_perfect_20_desc), stats.threeStars >= 20, Color(0xFFD81B60), prog(stats.threeStars, 20)),
+        Trophy("🔥", stringResource(R.string.trophy_hard_hero), stringResource(R.string.trophy_hard_hero_desc), stats.hardThreeStarCount >= 1, Color(0xFFEF5350), prog(stats.hardThreeStarCount, 1)),
+        Trophy("🌋", stringResource(R.string.trophy_hard_master), stringResource(R.string.trophy_hard_master_desc), stats.hardThreeStarCount >= 10, Color(0xFFD84315), prog(stats.hardThreeStarCount, 10)),
+        Trophy("💨", stringResource(R.string.trophy_speed_200), stringResource(R.string.trophy_speed_200_desc), stats.maxBest >= 200, Color(0xFF5C6BC0), prog(stats.maxBest, 200)),
+        Trophy("⚡", stringResource(R.string.trophy_speed_500), stringResource(R.string.trophy_speed_500_desc), stats.maxBest >= 500, Color(0xFF3949AB), prog(stats.maxBest, 500))
     )
-    val trophies = base + Trophy(
+    val champion = Trophy(
         "🏆", stringResource(R.string.trophy_champion), stringResource(R.string.trophy_champion_desc),
-        base.count { it.earned } >= 8, Color(0xFFFFA000), prog(base.count { it.earned }, 8)
+        base.count { it.earned } >= 10, Color(0xFFFFA000), prog(base.count { it.earned }, 10)
     )
+    val legend = Trophy(
+        "💎", stringResource(R.string.trophy_legend), stringResource(R.string.trophy_legend_desc),
+        base.all { it.earned } && champion.earned, Color(0xFF00BCD4),
+        prog(base.count { it.earned } + (if (champion.earned) 1 else 0), base.size + 1)
+    )
+    val trophies = base + champion + legend
     val earnedCount = trophies.count { it.earned }
 
     Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
@@ -120,7 +134,7 @@ fun TrophyRoomScreen(
                 StatChip("⭐", "${stats.totalStars}", Color(0xFFF57F17))
                 StatChip("🗺️", "${stats.levelsDone}", Color(0xFF43A047))
                 StatChip("🎮", "${stats.gamesPlayed}/18", Color(0xFF0074D5))
-                StatChip("🏅", "$earnedCount/12", Color(0xFFE91E63))
+                StatChip("🏅", "$earnedCount/${trophies.size}", Color(0xFFE91E63))
             }
         }
 
@@ -128,8 +142,8 @@ fun TrophyRoomScreen(
 
         LazyVerticalGrid(
             columns = GridCells.Fixed(4),
-            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
-            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
+            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
+            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens10),
             contentPadding = PaddingValues(
                 start = AppDimens.Dimens16, end = AppDimens.Dimens16,
                 top = AppDimens.Dimens10, bottom = AppDimens.Dimens16
@@ -159,27 +173,32 @@ private fun BuddyShelf(totalStars: Int, selected: String, onSelect: (String) -> 
         animationSpec = infiniteRepeatable(tween(2000, easing = LinearEasing)),
         label = "buddyBob"
     )
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10),
+    // Title sits on its own line so the buddy row gets the full width, and
+    // the scroll row carries side/vertical padding of its own so a bobbing,
+    // rotating buddy at either end never gets clipped by the scroll bounds.
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.White.copy(alpha = 0.85f), RoundedCornerShape(AppDimens.Dimens16))
             .border(2.dp, Color(0xFFFFB300).copy(alpha = 0.5f), RoundedCornerShape(AppDimens.Dimens16))
-            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8)
+            .padding(vertical = AppDimens.Dimens8)
     ) {
         Text(
             stringResource(R.string.trophy_buddies),
             color = Color(0xFFE65100),
             fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-            style = MaterialTheme.typography.labelLarge.scaled()
+            style = MaterialTheme.typography.labelLarge.scaled(),
+            modifier = Modifier.padding(horizontal = AppDimens.Dimens12)
         )
-        Spacer(Modifier.weight(1f))
-        // Scrollable so 5 buddies never clip on narrow tablets or big fonts.
+        Spacer(Modifier.height(AppDimens.Dimens6))
+        // Scrollable so all buddies never clip on narrow tablets or big fonts.
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10),
-            modifier = Modifier.horizontalScroll(rememberScrollState())
+            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens14),
+            modifier = Modifier
+                .fillMaxWidth()
+                .horizontalScroll(rememberScrollState())
+                .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8)
         ) {
         ZoneBuddy.all.forEachIndexed { i, def ->
             val unlocked = totalStars >= def.starsNeeded
@@ -214,11 +233,11 @@ private fun BuddyShelf(totalStars: Int, selected: String, onSelect: (String) -> 
                             if (isSelected) Color(0xFFE65100) else Color(0xFFBDBDBD),
                             CircleShape
                         )
-                        .padding(AppDimens.Dimens10)
+                        .padding(AppDimens.Dimens12)
                 ) {
                     Text(
                         def.emoji,
-                        style = MaterialTheme.typography.headlineSmall.scaled(),
+                        style = MaterialTheme.typography.headlineMedium.scaled(),
                         modifier = Modifier.graphicsLayer { if (!unlocked) alpha = 0.35f }
                     )
                 }
@@ -308,13 +327,17 @@ private fun TrophyCard(trophy: Trophy, index: Int) {
 
     Box(
         modifier = Modifier
-            .aspectRatio(1.3f)
+            // Taller than before: emoji + title + desc + progress chip need
+            // the room, and .clip() below is the safety net so nothing
+            // bleeds past the card's rounded edge into the row beneath it.
+            .aspectRatio(1.0f)
             .graphicsLayer {
                 scaleX = appearScale; scaleY = appearScale
                 alpha = if (appeared) 1f else 0f
                 rotationZ = ((index % 3) - 1) * 1.2f
             }
             .shadow(AppDimens.Dimens4, shape, ambientColor = glowColor, spotColor = glowColor)
+            .clip(shape)
             .background(gradient, shape)
             .border(2.dp, Color.White.copy(alpha = 0.7f), shape)
     ) {

@@ -374,7 +374,7 @@ class TargetNumberPlayViewModel @Inject constructor(
         if (result == s.target) {
             AudioPlayerManager.playSoundWin()
             com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.increment(
-                prefManager, com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.TARGET_NUMBER
+                prefManager, com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.TARGET_NUMBER, difficulty
             )
             updateState(
                 s.copy(

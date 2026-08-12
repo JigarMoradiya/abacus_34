@@ -151,10 +151,24 @@ fun TargetNumberHomeScreen(
                 horizontalArrangement = Arrangement.spacedBy(Dimens16, Alignment.CenterHorizontally),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                CommonDifficultySelectorCompose(
-                    selected = state.selectedDifficulty,
-                    onSelect = { viewModel.selectDifficulty(it) }
-                )
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    CommonDifficultySelectorCompose(
+                        selected = state.selectedDifficulty,
+                        onSelect = { viewModel.selectDifficulty(it) }
+                    )
+                    // Solved count for the difficulty currently selected —
+                    // so it's obvious which tier has actually been beaten.
+                    val solved = viewModel.solvedCount(state.selectedDifficulty)
+                    if (solved > 0) {
+                        Text(
+                            "🧩 " + stringResource(R.string.zone_solved_count, solved),
+                            color = colorResource(R.color.colorBlueDark),
+                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            fontSize = 14.sp,
+                            modifier = Modifier.padding(top = Dimens4)
+                        )
+                    }
+                }
 
                 KidsActionButton(
                     text = stringResource(R.string.lets_start),

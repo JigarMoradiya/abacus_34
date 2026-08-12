@@ -13,12 +13,20 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SudokuHomeViewModel @Inject constructor(
-    private val savedStateHandle: SavedStateHandle
+    private val savedStateHandle: SavedStateHandle,
+    private val prefManager: com.jigar.me.data.pref.AppPreferencesHelper
 ) : ViewModel() {
 
     companion object {
         private const val KEY_UI_STATE = "sudoku_ui_state"
     }
+
+    // How many puzzles the kid has actually beaten on this size — same idea
+    // as "best score per difficulty" on other games.
+    fun solvedCount(size: SudokuSize): Int =
+        com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.solved(
+            prefManager, com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.SUDOKU, size.name
+        )
 
     private val _uiState = MutableStateFlow(
         savedStateHandle.get<SudokuHomeUiState>(KEY_UI_STATE) ?: SudokuHomeUiState()

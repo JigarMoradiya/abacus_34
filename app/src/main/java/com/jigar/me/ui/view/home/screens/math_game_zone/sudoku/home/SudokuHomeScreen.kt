@@ -30,6 +30,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.HelpOutline
 import androidx.compose.material.icons.rounded.PlayArrow
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -123,46 +124,62 @@ fun SudokuHomeScreen(
 
                     val shape = RoundedCornerShape(AppDimens.Dimens200)
                     val interactionSource = remember { MutableInteractionSource() }
+                    val solved = viewModel.solvedCount(s)
 
-                    Box(
-                        modifier = Modifier
-                            .weight(1f)
-                            // Size the circle from the row HEIGHT, not width/3 —
-                            // on landscape phones width/3 is taller than the row
-                            // and the circles blew past the screen
-                            .aspectRatio(1f, matchHeightConstraintsFirst = true)
-                            .padding(AppDimens.Dimens12)
-                            .graphicsLayer {
-                                scaleX = animatedScale
-                                scaleY = animatedScale
-                            }
-                            .shadow(
-                                elevation = animatedShadow,
-                                shape = shape,
-                                clip = false
-                            )
-                            .clip(shape)
-                            .background(Color.Transparent)
-                            .clickable(
-                                interactionSource = interactionSource,
-                                indication = LocalIndication.current
-                            ) {
-                                viewModel.selectSize(s)
-                            },
-
-                        contentAlignment = Alignment.Center
+                    Column(
+                        modifier = Modifier.weight(1f),
+                        horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Image(
-                            painter = painterResource(
-                                id = when (s) {
-                                    SudokuSize.FOUR -> R.drawable.sudoku_4
-                                    SudokuSize.SIX -> R.drawable.sudoku_6
-                                    SudokuSize.NINE -> R.drawable.sudoku_9
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                // Size the circle from the row HEIGHT, not width/3 —
+                                // on landscape phones width/3 is taller than the row
+                                // and the circles blew past the screen
+                                .aspectRatio(1f, matchHeightConstraintsFirst = true)
+                                .padding(AppDimens.Dimens12)
+                                .graphicsLayer {
+                                    scaleX = animatedScale
+                                    scaleY = animatedScale
                                 }
-                            ),
-                            contentScale = ContentScale.Fit,
-                            contentDescription = null
-                        )
+                                .shadow(
+                                    elevation = animatedShadow,
+                                    shape = shape,
+                                    clip = false
+                                )
+                                .clip(shape)
+                                .background(Color.Transparent)
+                                .clickable(
+                                    interactionSource = interactionSource,
+                                    indication = LocalIndication.current
+                                ) {
+                                    viewModel.selectSize(s)
+                                },
+
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Image(
+                                painter = painterResource(
+                                    id = when (s) {
+                                        SudokuSize.FOUR -> R.drawable.sudoku_4
+                                        SudokuSize.SIX -> R.drawable.sudoku_6
+                                        SudokuSize.NINE -> R.drawable.sudoku_9
+                                    }
+                                ),
+                                contentScale = ContentScale.Fit,
+                                contentDescription = null
+                            )
+                        }
+                        // Solved count for this size — so it's obvious which
+                        // size was beaten.
+                        if (solved > 0) {
+                            Text(
+                                text = "🧩 " + stringResource(R.string.zone_solved_count, solved),
+                                fontFamily = FontFamily(Font(R.font.font_bold)),
+                                style = MaterialTheme.typography.labelSmall.scaled(),
+                                color = colorResource(R.color.colorBlueDark)
+                            )
+                        }
                     }
 
                 }

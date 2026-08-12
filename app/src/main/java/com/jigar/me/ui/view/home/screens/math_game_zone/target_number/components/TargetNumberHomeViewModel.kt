@@ -19,8 +19,16 @@ data class TargetNumberUiState(
 
 @HiltViewModel
 class TargetNumberViewModel @Inject constructor(
-    private val savedStateHandle: SavedStateHandle
+    private val savedStateHandle: SavedStateHandle,
+    private val prefManager: com.jigar.me.data.pref.AppPreferencesHelper
 ) : ViewModel() {
+
+    // How many puzzles the kid has actually beaten on the selected
+    // difficulty — same idea as "best score per difficulty" on other games.
+    fun solvedCount(difficulty: CommonDifficulty4): Int =
+        com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.solved(
+            prefManager, com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.TARGET_NUMBER, difficulty
+        )
 
     companion object {
         private const val KEY_UI_STATE = "pyramid_ui_state"

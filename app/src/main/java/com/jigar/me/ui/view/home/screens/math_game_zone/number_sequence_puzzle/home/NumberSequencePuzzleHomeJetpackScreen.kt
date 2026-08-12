@@ -81,6 +81,9 @@ fun NumberSequencePuzzleHomeJetpackScreen(
     onBackClick: () -> Unit = {}
 ) {
     var showHelp by remember { mutableStateOf(false) }
+    // Solved counts per grid size — so it's obvious which size was beaten.
+    val solveMarker: com.jigar.me.ui.view.home.screens.math_game_zone.ZoneDailyMarkerViewModel =
+        androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel()
 
     Box(
         modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)
@@ -134,18 +137,27 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                         gridSize = 3,
                         color = Color(0xFFF33173),
                         isLocked = false,
+                        solved = solveMarker.solvedCount(
+                            com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.NUMBER_SEQUENCE, "grid3"
+                        ),
                         onClick = { onPuzzleSelect(3) }
                     )
                     PuzzleOptionView(
                         gridSize = 4,
                         color = ColorYellowOrange,
                         isLocked = !isSubscribed,
+                        solved = solveMarker.solvedCount(
+                            com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.NUMBER_SEQUENCE, "grid4"
+                        ),
                         onClick = { onPuzzleSelect(4) }
                     )
                     PuzzleOptionView(
                         gridSize = 5,
                         color = Color(0xFF2196F3),
                         isLocked = !isSubscribed,
+                        solved = solveMarker.solvedCount(
+                            com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.NUMBER_SEQUENCE, "grid5"
+                        ),
                         onClick = { onPuzzleSelect(5) }
                     )
                 }
@@ -171,6 +183,7 @@ fun PuzzleOptionView(
     gridSize: Int,
     color: Color,
     isLocked: Boolean = false,
+    solved: Int = 0,
     onClick: () -> Unit
 ) {
     val boxSize = SudokuHomeIconsBox
@@ -213,6 +226,15 @@ fun PuzzleOptionView(
             color = displayColor,
             modifier = Modifier.padding(top = AppDimens.Dimens8)
         )
+        // Solved count for this size — so it's obvious which size was beaten.
+        if (!isLocked && solved > 0) {
+            Text(
+                text = "🧩 " + stringResource(R.string.zone_solved_count, solved),
+                fontFamily = FontFamily(Font(R.font.font_bold)),
+                style = MaterialTheme.typography.labelSmall.scaled(),
+                color = displayColor.copy(alpha = 0.85f)
+            )
+        }
     }
 }
 
