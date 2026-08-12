@@ -60,8 +60,11 @@ class MathGameZoneViewModel @Inject constructor(
             bestBadge(GameCategoryType.PLACE_VALUE, "placeValueBest")
             bestBadge(GameCategoryType.CLOCK_MASTER, "clockMasterBest")
             bestBadge(GameCategoryType.CALCUDOKU, "calcudokuBest")
-            // Target Number, Math Pyramid, Sudoku and Number Sequence don't
-            // persist scores today — no badge for them.
+            // Puzzle games without a score system show lifetime solves.
+            solvedBadge(GameCategoryType.TARGET_NUMBER, "targetNumberSolved")
+            solvedBadge(GameCategoryType.SUDOKU, "sudokuSolved")
+            solvedBadge(GameCategoryType.NUMBER_SEQUENCE_PUZZLE, "numberSequenceSolved")
+            solvedBadge(GameCategoryType.MATH_PYRAMID, "mathPyramidSolved")
         }
     }
 
@@ -89,6 +92,12 @@ class MathGameZoneViewModel @Inject constructor(
                 .split(",").sumOf { it.trim().toIntOrNull() ?: 0 }
         }
         if (total > 0) put(type, "⭐ $total")
+    }
+
+    // Lifetime solved-puzzle count for games without a score system.
+    private fun MutableMap<GameCategoryType, String>.solvedBadge(type: GameCategoryType, key: String) {
+        val solved = prefManager.getCustomParamInt(key, 0)
+        if (solved > 0) put(type, "🧩 $solved")
     }
 
     // Highest best score across the four difficulties.

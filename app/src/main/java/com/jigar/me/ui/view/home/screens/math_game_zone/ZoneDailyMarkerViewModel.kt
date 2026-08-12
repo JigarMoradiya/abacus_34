@@ -13,4 +13,8 @@ class ZoneDailyMarkerViewModel @Inject constructor(
     private val prefManager: AppPreferencesHelper
 ) : ViewModel() {
     fun onRouteVisited(route: String) = ZoneDailyChallenge.onRouteVisited(route, prefManager)
+
+    // Also lets screens without their own prefs bump a solved counter.
+    fun markSolved(key: String) =
+        com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.increment(prefManager, key)
 }

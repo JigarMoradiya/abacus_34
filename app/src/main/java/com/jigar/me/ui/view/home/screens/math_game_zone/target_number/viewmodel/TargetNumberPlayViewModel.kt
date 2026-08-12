@@ -22,7 +22,8 @@ private const val KEY_DIFF = "target_diff"
 @HiltViewModel
 class TargetNumberPlayViewModel @Inject constructor(
     private val repo: TargetRepository,
-    private val savedStateHandle: SavedStateHandle
+    private val savedStateHandle: SavedStateHandle,
+    private val prefManager: com.jigar.me.data.pref.AppPreferencesHelper
 ) : ViewModel() {
 
     private val gson = Gson()
@@ -372,6 +373,9 @@ class TargetNumberPlayViewModel @Inject constructor(
 
         if (result == s.target) {
             AudioPlayerManager.playSoundWin()
+            com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.increment(
+                prefManager, com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.TARGET_NUMBER
+            )
             updateState(
                 s.copy(
                     isSolved = true,

@@ -146,6 +146,11 @@ class NumberSequencePuzzleViewModel @Inject constructor(
             if (playSwap) AudioPlayerManager.playSoundSwip()
             if (playWin) AudioPlayerManager.playSoundWin()
 
+            if (isSolve) {
+                com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.increment(
+                    prefManager, com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.NUMBER_SEQUENCE
+                )
+            }
             _uiState.update {
                 it.copy(
                     tiles = newTiles,

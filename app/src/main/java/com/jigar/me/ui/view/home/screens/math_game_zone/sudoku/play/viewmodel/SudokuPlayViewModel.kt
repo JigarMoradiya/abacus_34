@@ -22,7 +22,8 @@ import javax.inject.Inject
 class SudokuPlayViewModel @Inject constructor(
     private val app: Application,
     private val repository: SudokuRepository,
-    savedStateHandle: SavedStateHandle
+    savedStateHandle: SavedStateHandle,
+    private val prefManager: com.jigar.me.data.pref.AppPreferencesHelper
 ) : ViewModel() {
 
     // Read args via SavedStateHandle
@@ -230,6 +231,9 @@ class SudokuPlayViewModel @Inject constructor(
         isSolved = true
         SudokuStorage.clear(app)
         AudioPlayerManager.playSoundWin()
+        com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.increment(
+            prefManager, com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.SUDOKU
+        )
     }
 
     private fun isValidIgnoringSelf(row: Int, col: Int, num: Int): Boolean {

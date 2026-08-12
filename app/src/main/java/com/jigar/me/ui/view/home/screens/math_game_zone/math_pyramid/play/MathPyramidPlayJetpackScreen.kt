@@ -75,6 +75,8 @@ fun MathPyramidPlayJetpackScreen(
     difficulty: CommonDifficulty4 = CommonDifficulty4.easy,
     onBackClick: () -> Unit
 ) {
+    val solveMarker: com.jigar.me.ui.view.home.screens.math_game_zone.ZoneDailyMarkerViewModel =
+        androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel()
     var pyramid by remember { mutableStateOf<List<List<Int?>>>(emptyList()) }
     var editableMask by remember { mutableStateOf<List<List<Boolean>>>(emptyList()) }
     var selectedCell by remember { mutableStateOf<Pair<Int, Int>?>(null) }
@@ -143,6 +145,9 @@ fun MathPyramidPlayJetpackScreen(
                                 pyramid = newPyramid
                                 if (checkIfSolved(pyramid)) {
                                     AudioPlayerManager.playSoundWin()
+                                    solveMarker.markSolved(
+                                        com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.MATH_PYRAMID
+                                    )
                                     isSolved = true
                                     selectedCell = null
                                 }
