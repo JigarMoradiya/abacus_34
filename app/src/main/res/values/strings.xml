@@ -886,6 +886,12 @@
     <string name="trophy_perfect_5_desc">3-star 5 levels</string>
     <string name="trophy_perfect_20">Perfectionist</string>
     <string name="trophy_perfect_20_desc">3-star 20 levels</string>
+    <string name="trophy_medium_climber">Climbing Up</string>
+    <string name="trophy_medium_climber_desc">Beat 5 Medium levels</string>
+    <string name="trophy_hard_tough">Tough Cookie</string>
+    <string name="trophy_hard_tough_desc">Beat 5 Hard levels</string>
+    <string name="trophy_veryhard_fearless">Fearless</string>
+    <string name="trophy_veryhard_fearless_desc">Beat 3 Very Hard levels</string>
     <string name="trophy_hard_hero">Hard Hero</string>
     <string name="trophy_hard_hero_desc">3-star a Hard level</string>
     <string name="trophy_hard_master">Hard Master</string>

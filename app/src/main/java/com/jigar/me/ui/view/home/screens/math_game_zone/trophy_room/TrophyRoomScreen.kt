@@ -54,6 +54,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
@@ -102,6 +103,11 @@ fun TrophyRoomScreen(
         Trophy("🌠", stringResource(R.string.trophy_levels_150), stringResource(R.string.trophy_levels_150_desc), stats.levelsDone >= 150, Color(0xFF00897B), prog(stats.levelsDone, 150)),
         Trophy("✨", stringResource(R.string.trophy_perfect_5), stringResource(R.string.trophy_perfect_5_desc), stats.threeStars >= 5, Color(0xFFEC407A), prog(stats.threeStars, 5)),
         Trophy("🎆", stringResource(R.string.trophy_perfect_20), stringResource(R.string.trophy_perfect_20_desc), stats.threeStars >= 20, Color(0xFFD81B60), prog(stats.threeStars, 20)),
+        // Tier-specific — totals above can be filled on Easy alone, these
+        // can't, so they actually push a kid toward the harder difficulties.
+        Trophy("🧗", stringResource(R.string.trophy_medium_climber), stringResource(R.string.trophy_medium_climber_desc), stats.mediumLevelsDone >= 5, Color(0xFF7CB342), prog(stats.mediumLevelsDone, 5)),
+        Trophy("💪", stringResource(R.string.trophy_hard_tough), stringResource(R.string.trophy_hard_tough_desc), stats.hardLevelsDone >= 5, Color(0xFFE64A19), prog(stats.hardLevelsDone, 5)),
+        Trophy("🦸", stringResource(R.string.trophy_veryhard_fearless), stringResource(R.string.trophy_veryhard_fearless_desc), stats.veryHardLevelsDone >= 3, Color(0xFF6A1B9A), prog(stats.veryHardLevelsDone, 3)),
         Trophy("🔥", stringResource(R.string.trophy_hard_hero), stringResource(R.string.trophy_hard_hero_desc), stats.hardThreeStarCount >= 1, Color(0xFFEF5350), prog(stats.hardThreeStarCount, 1)),
         Trophy("🌋", stringResource(R.string.trophy_hard_master), stringResource(R.string.trophy_hard_master_desc), stats.hardThreeStarCount >= 10, Color(0xFFD84315), prog(stats.hardThreeStarCount, 10)),
         Trophy("💨", stringResource(R.string.trophy_speed_200), stringResource(R.string.trophy_speed_200_desc), stats.maxBest >= 200, Color(0xFF5C6BC0), prog(stats.maxBest, 200)),
@@ -173,32 +179,31 @@ private fun BuddyShelf(totalStars: Int, selected: String, onSelect: (String) -> 
         animationSpec = infiniteRepeatable(tween(2000, easing = LinearEasing)),
         label = "buddyBob"
     )
-    // Title sits on its own line so the buddy row gets the full width, and
-    // the scroll row carries side/vertical padding of its own so a bobbing,
-    // rotating buddy at either end never gets clipped by the scroll bounds.
-    Column(
+    // Title on the left, buddy list docked to the right in the same row —
+    // each buddy's own icon sits above its label. The row carries its own
+    // padding so a bobbing, rotating buddy at either end never gets clipped.
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.White.copy(alpha = 0.85f), RoundedCornerShape(AppDimens.Dimens16))
             .border(2.dp, Color(0xFFFFB300).copy(alpha = 0.5f), RoundedCornerShape(AppDimens.Dimens16))
-            .padding(vertical = AppDimens.Dimens8)
+            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8)
     ) {
         Text(
             stringResource(R.string.trophy_buddies),
             color = Color(0xFFE65100),
             fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-            style = MaterialTheme.typography.labelLarge.scaled(),
-            modifier = Modifier.padding(horizontal = AppDimens.Dimens12)
+            style = MaterialTheme.typography.labelLarge.scaled()
         )
-        Spacer(Modifier.height(AppDimens.Dimens6))
+        Spacer(Modifier.weight(1f))
         // Scrollable so all buddies never clip on narrow tablets or big fonts.
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens14),
+            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
             modifier = Modifier
-                .fillMaxWidth()
                 .horizontalScroll(rememberScrollState())
-                .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8)
+                .padding(vertical = AppDimens.Dimens8)
         ) {
         ZoneBuddy.all.forEachIndexed { i, def ->
             val unlocked = totalStars >= def.starsNeeded
@@ -327,10 +332,10 @@ private fun TrophyCard(trophy: Trophy, index: Int) {
 
     Box(
         modifier = Modifier
-            // Taller than before: emoji + title + desc + progress chip need
-            // the room, and .clip() below is the safety net so nothing
-            // bleeds past the card's rounded edge into the row beneath it.
-            .aspectRatio(1.0f)
+            // .clip() below is the safety net that keeps content from
+            // bleeding into the row beneath, so this can stay close to the
+            // original card shape instead of a tall square.
+            .aspectRatio(1.15f)
             .graphicsLayer {
                 scaleX = appearScale; scaleY = appearScale
                 alpha = if (appeared) 1f else 0f
@@ -348,7 +353,7 @@ private fun TrophyCard(trophy: Trophy, index: Int) {
         ) {
             Text(
                 trophy.emoji,
-                style = MaterialTheme.typography.displaySmall.scaled(),
+                fontSize = 40.sp.scaled(),
                 modifier = Modifier.graphicsLayer {
                     if (trophy.earned) {
                         rotationZ = sin(t + phase) * 8f
