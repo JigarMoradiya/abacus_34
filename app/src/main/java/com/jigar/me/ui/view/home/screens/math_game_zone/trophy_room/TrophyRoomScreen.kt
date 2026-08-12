@@ -106,8 +106,11 @@ fun TrophyRoomScreen(
         // Tier-specific — totals above can be filled on Easy alone, these
         // can't, so they actually push a kid toward the harder difficulties.
         Trophy("🧗", stringResource(R.string.trophy_medium_climber), stringResource(R.string.trophy_medium_climber_desc), stats.mediumLevelsDone >= 5, Color(0xFF7CB342), prog(stats.mediumLevelsDone, 5)),
+        Trophy("🏔️", stringResource(R.string.trophy_medium_mountain), stringResource(R.string.trophy_medium_mountain_desc), stats.mediumLevelsDone >= 20, Color(0xFF558B2F), prog(stats.mediumLevelsDone, 20)),
         Trophy("💪", stringResource(R.string.trophy_hard_tough), stringResource(R.string.trophy_hard_tough_desc), stats.hardLevelsDone >= 5, Color(0xFFE64A19), prog(stats.hardLevelsDone, 5)),
+        Trophy("🛡️", stringResource(R.string.trophy_hard_iron), stringResource(R.string.trophy_hard_iron_desc), stats.hardLevelsDone >= 15, Color(0xFFBF360C), prog(stats.hardLevelsDone, 15)),
         Trophy("🦸", stringResource(R.string.trophy_veryhard_fearless), stringResource(R.string.trophy_veryhard_fearless_desc), stats.veryHardLevelsDone >= 3, Color(0xFF6A1B9A), prog(stats.veryHardLevelsDone, 3)),
+        Trophy("🦾", stringResource(R.string.trophy_veryhard_unstoppable), stringResource(R.string.trophy_veryhard_unstoppable_desc), stats.veryHardLevelsDone >= 8, Color(0xFF4A148C), prog(stats.veryHardLevelsDone, 8)),
         Trophy("🔥", stringResource(R.string.trophy_hard_hero), stringResource(R.string.trophy_hard_hero_desc), stats.hardThreeStarCount >= 1, Color(0xFFEF5350), prog(stats.hardThreeStarCount, 1)),
         Trophy("🌋", stringResource(R.string.trophy_hard_master), stringResource(R.string.trophy_hard_master_desc), stats.hardThreeStarCount >= 10, Color(0xFFD84315), prog(stats.hardThreeStarCount, 10)),
         Trophy("💨", stringResource(R.string.trophy_speed_200), stringResource(R.string.trophy_speed_200_desc), stats.maxBest >= 200, Color(0xFF5C6BC0), prog(stats.maxBest, 200)),
@@ -115,7 +118,7 @@ fun TrophyRoomScreen(
     )
     val champion = Trophy(
         "🏆", stringResource(R.string.trophy_champion), stringResource(R.string.trophy_champion_desc),
-        base.count { it.earned } >= 10, Color(0xFFFFA000), prog(base.count { it.earned }, 10)
+        base.count { it.earned } >= 12, Color(0xFFFFA000), prog(base.count { it.earned }, 12)
     )
     val legend = Trophy(
         "💎", stringResource(R.string.trophy_legend), stringResource(R.string.trophy_legend_desc),

@@ -888,10 +888,16 @@
     <string name="trophy_perfect_20_desc">3-star 20 levels</string>
     <string name="trophy_medium_climber">Climbing Up</string>
     <string name="trophy_medium_climber_desc">Beat 5 Medium levels</string>
+    <string name="trophy_medium_mountain">Mountain Master</string>
+    <string name="trophy_medium_mountain_desc">Beat 20 Medium levels</string>
     <string name="trophy_hard_tough">Tough Cookie</string>
     <string name="trophy_hard_tough_desc">Beat 5 Hard levels</string>
+    <string name="trophy_hard_iron">Iron Will</string>
+    <string name="trophy_hard_iron_desc">Beat 15 Hard levels</string>
     <string name="trophy_veryhard_fearless">Fearless</string>
     <string name="trophy_veryhard_fearless_desc">Beat 3 Very Hard levels</string>
+    <string name="trophy_veryhard_unstoppable">Unstoppable</string>
+    <string name="trophy_veryhard_unstoppable_desc">Beat 8 Very Hard levels</string>
     <string name="trophy_hard_hero">Hard Hero</string>
     <string name="trophy_hard_hero_desc">3-star a Hard level</string>
     <string name="trophy_hard_master">Hard Master</string>
@@ -901,7 +907,7 @@
     <string name="trophy_speed_500">Speed Legend</string>
     <string name="trophy_speed_500_desc">Score 500 in any game</string>
     <string name="trophy_champion">Champion</string>
-    <string name="trophy_champion_desc">Earn 10 trophies</string>
+    <string name="trophy_champion_desc">Earn 12 trophies</string>
     <string name="trophy_legend">Legend</string>
     <string name="trophy_legend_desc">Earn every trophy!</string>
     <string name="zone_solved_count">Solved: %1$d</string>
