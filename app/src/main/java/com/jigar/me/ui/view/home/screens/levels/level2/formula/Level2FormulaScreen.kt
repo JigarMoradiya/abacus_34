@@ -82,10 +82,10 @@ private val formulaGroups = listOf(
         how   = "Push heaven bead UP + add earth beads UP at the same time. Two moves = one answer! 🤝",
         startColor = Color(0xFF004D40), endColor = Color(0xFF26A69A),
         rows = listOf(
-            FormulaRow("−1 = −5+4", "Push heaven up → add 4 earth", "5−1=4", 5, 4),
-            FormulaRow("−2 = −5+3", "Push heaven up → add 3 earth", "5−2=3", 5, 3),
-            FormulaRow("−3 = −5+2", "Push heaven up → add 2 earth", "5−3=2", 5, 2),
-            FormulaRow("−4 = −5+1", "Push heaven up → add 1 earth", "5−4=1", 5, 1),
+            FormulaRow("−1 = +4−5", "Push heaven up → add 4 earth", "5−1=4", 5, 4),
+            FormulaRow("−2 = +3−5", "Push heaven up → add 3 earth", "5−2=3", 5, 3),
+            FormulaRow("−3 = +2−5", "Push heaven up → add 2 earth", "5−3=2", 5, 2),
+            FormulaRow("−4 = +1−5", "Push heaven up → add 1 earth", "5−4=1", 5, 1),
         )
     ),
     FormulaGroup(
@@ -95,15 +95,15 @@ private val formulaGroups = listOf(
         how   = "Add 1 bead to the TENS rod (+10), then remove beads from ONES rod. They balance out to give the right answer! 🔢",
         startColor = Color(0xFF1A237E), endColor = Color(0xFF5C6BC0), columns = 2,
         rows = listOf(
-            FormulaRow("+1 = +10−9", "Carry to tens → remove 9 from ones", "9+1=10", 9, 10),
-            FormulaRow("+2 = +10−8", "Carry to tens → remove 8 from ones", "8+2=10", 8, 10),
-            FormulaRow("+3 = +10−7", "Carry to tens → remove 7 from ones", "7+3=10", 7, 10),
-            FormulaRow("+4 = +10−6", "Carry to tens → remove 6 from ones", "6+4=10", 6, 10),
-            FormulaRow("+5 = +10−5", "Carry to tens → remove 5 from ones", "5+5=10", 5, 10),
-            FormulaRow("+6 = +10−4", "Carry to tens → remove 4 from ones", "5+6=11", 5, 11),
-            FormulaRow("+7 = +10−3", "Carry to tens → remove 3 from ones", "4+7=11", 4, 11),
-            FormulaRow("+8 = +10−2", "Carry to tens → remove 2 from ones", "3+8=11", 3, 11),
-            FormulaRow("+9 = +10−1", "Carry to tens → remove 1 from ones", "5+9=14", 5, 14),
+            FormulaRow("+1 = −9+10", "Carry to tens → remove 9 from ones", "9+1=10", 9, 10),
+            FormulaRow("+2 = −8+10", "Carry to tens → remove 8 from ones", "8+2=10", 8, 10),
+            FormulaRow("+3 = −7+10", "Carry to tens → remove 7 from ones", "7+3=10", 7, 10),
+            FormulaRow("+4 = −6+10", "Carry to tens → remove 6 from ones", "6+4=10", 6, 10),
+            FormulaRow("+5 = −5+10", "Carry to tens → remove 5 from ones", "5+5=10", 5, 10),
+            FormulaRow("+6 = −4+10", "Carry to tens → remove 4 from ones", "5+6=11", 5, 11),
+            FormulaRow("+7 = −3+10", "Carry to tens → remove 3 from ones", "4+7=11", 4, 11),
+            FormulaRow("+8 = −2+10", "Carry to tens → remove 2 from ones", "3+8=11", 3, 11),
+            FormulaRow("+9 = −1+10", "Carry to tens → remove 1 from ones", "5+9=14", 5, 14),
         )
     ),
     FormulaGroup(
@@ -113,15 +113,15 @@ private val formulaGroups = listOf(
         how   = "Remove 1 bead from TENS rod (−10), then add beads to ONES rod. Borrow and give back — easy! 🔢",
         startColor = Color(0xFF33691E), endColor = Color(0xFF8BC34A), columns = 2,
         rows = listOf(
-            FormulaRow("−1 = −10+9", "Borrow from tens → add 9 to ones", "10−1=9",  10, 9),
-            FormulaRow("−2 = −10+8", "Borrow from tens → add 8 to ones", "10−2=8",  10, 8),
-            FormulaRow("−3 = −10+7", "Borrow from tens → add 7 to ones", "12−3=9",  12, 9),
-            FormulaRow("−4 = −10+6", "Borrow from tens → add 6 to ones", "11−4=7",  11, 7),
-            FormulaRow("−5 = −10+5", "Borrow from tens → add 5 to ones", "10−5=5",  10, 5),
-            FormulaRow("−6 = −10+4", "Borrow from tens → add 4 to ones", "11−6=5",  11, 5),
-            FormulaRow("−7 = −10+3", "Borrow from tens → add 3 to ones", "12−7=5",  12, 5),
-            FormulaRow("−8 = −10+2", "Borrow from tens → add 2 to ones", "13−8=5",  13, 5),
-            FormulaRow("−9 = −10+1", "Borrow from tens → add 1 to ones", "14−9=5",  14, 5),
+            FormulaRow("−1 = +9−10", "Borrow from tens → add 9 to ones", "10−1=9",  10, 9),
+            FormulaRow("−2 = +8−10", "Borrow from tens → add 8 to ones", "10−2=8",  10, 8),
+            FormulaRow("−3 = +7−10", "Borrow from tens → add 7 to ones", "12−3=9",  12, 9),
+            FormulaRow("−4 = +6−10", "Borrow from tens → add 6 to ones", "11−4=7",  11, 7),
+            FormulaRow("−5 = +5−10", "Borrow from tens → add 5 to ones", "10−5=5",  10, 5),
+            FormulaRow("−6 = +4−10", "Borrow from tens → add 4 to ones", "11−6=5",  11, 5),
+            FormulaRow("−7 = +3−10", "Borrow from tens → add 3 to ones", "12−7=5",  12, 5),
+            FormulaRow("−8 = +2−10", "Borrow from tens → add 2 to ones", "13−8=5",  13, 5),
+            FormulaRow("−9 = +1−10", "Borrow from tens → add 1 to ones", "14−9=5",  14, 5),
         )
     ),
     FormulaGroup(
@@ -131,10 +131,10 @@ private val formulaGroups = listOf(
         how   = "3 quick moves: heaven UP (−5) → carry to TENS (+10) → add a few earth beads. All at once! 🤝",
         startColor = Color(0xFFE65100), endColor = Color(0xFFFF8F00), columns = 2,
         rows = listOf(
-            FormulaRow("+6 = −5+10+1", "Heaven up → carry → add 1 earth", "7+6=13", 7,  13),
-            FormulaRow("+7 = −5+10+2", "Heaven up → carry → add 2 earth", "6+7=13", 6,  13),
-            FormulaRow("+8 = −5+10+3", "Heaven up → carry → add 3 earth", "6+8=14", 6,  14),
-            FormulaRow("+9 = −5+10+4", "Heaven up → carry → add 4 earth", "6+9=15", 6,  15),
+            FormulaRow("+6 = +1−5+10", "Heaven up → carry → add 1 earth", "7+6=13", 7,  13),
+            FormulaRow("+7 = +2−5+10", "Heaven up → carry → add 2 earth", "6+7=13", 6,  13),
+            FormulaRow("+8 = +3−5+10", "Heaven up → carry → add 3 earth", "6+8=14", 6,  14),
+            FormulaRow("+9 = +4−5+10", "Heaven up → carry → add 4 earth", "6+9=15", 6,  15),
         )
     ),
     FormulaGroup(
@@ -144,10 +144,10 @@ private val formulaGroups = listOf(
         how   = "3 quick moves: borrow from TENS (−10) → heaven bead DOWN (+5) → remove a few earth beads. Team effort! 🤝",
         startColor = Color(0xFFBF360C), endColor = Color(0xFFE64A19), columns = 2,
         rows = listOf(
-            FormulaRow("−6 = +5−10−1", "Borrow → heaven down → remove 1 earth", "11−6=5",  11, 5),
-            FormulaRow("−7 = +5−10−2", "Borrow → heaven down → remove 2 earth", "12−7=5",  12, 5),
-            FormulaRow("−8 = +5−10−3", "Borrow → heaven down → remove 3 earth", "13−8=5",  13, 5),
-            FormulaRow("−9 = +5−10−4", "Borrow → heaven down → remove 4 earth", "14−9=5",  14, 5),
+            FormulaRow("−6 = −1+5−10", "Borrow → heaven down → remove 1 earth", "11−6=5",  11, 5),
+            FormulaRow("−7 = −2+5−10", "Borrow → heaven down → remove 2 earth", "12−7=5",  12, 5),
+            FormulaRow("−8 = −3+5−10", "Borrow → heaven down → remove 3 earth", "13−8=5",  13, 5),
+            FormulaRow("−9 = −4+5−10", "Borrow → heaven down → remove 4 earth", "14−9=5",  14, 5),
         )
     ),
 )

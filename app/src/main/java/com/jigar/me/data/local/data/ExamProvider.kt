@@ -110,7 +110,7 @@ object ExamProvider {
         // --- Small Friend Subtraction ---
         if ((delta in (-4..-1)) && ((fromDigit-5) < -delta) && (fromDigit >= 5) && (from >= 5)) {
             val friend = 5+delta
-            return FormulaStep(delta, "$delta=-5+$friend", AbacusFormulaType.SMALL_FRIEND_SUB.description)
+            return FormulaStep(delta, "$delta=+$friend-5", AbacusFormulaType.SMALL_FRIEND_SUB.description)
         }
 
 
@@ -131,16 +131,16 @@ object ExamProvider {
 
             return when (delta) {
                 6 -> if (bottomBeads >= 4) FormulaStep(delta, "+6=-4+10", AbacusFormulaType.BIG_FRIEND.description)
-                else FormulaStep(delta, "+6=-5+1+10", AbacusFormulaType.COMBINATION.description)
+                else FormulaStep(delta, "+6=+1-5+10", AbacusFormulaType.COMBINATION.description)
 
                 7 -> if (bottomBeads >= 3) FormulaStep(delta, "+7=-3+10", AbacusFormulaType.BIG_FRIEND.description)
-                else FormulaStep(delta, "+7=-5+2+10", AbacusFormulaType.COMBINATION.description)
+                else FormulaStep(delta, "+7=+2-5+10", AbacusFormulaType.COMBINATION.description)
 
                 8 -> if (bottomBeads >= 2) FormulaStep(delta, "+8=-2+10", AbacusFormulaType.BIG_FRIEND.description)
-                else FormulaStep(delta, "+8=-5+3+10", AbacusFormulaType.COMBINATION.description)
+                else FormulaStep(delta, "+8=+3-5+10", AbacusFormulaType.COMBINATION.description)
 
                 9 -> if (bottomBeads >= 1) FormulaStep(delta, "+9=-1+10", AbacusFormulaType.BIG_FRIEND.description)
-                else FormulaStep(delta, "+9=-5+4+10", AbacusFormulaType.COMBINATION.description)
+                else FormulaStep(delta, "+9=+4-5+10", AbacusFormulaType.COMBINATION.description)
 
                 else -> null
             }
@@ -150,19 +150,19 @@ object ExamProvider {
         // --- Big Friend Subtraction or Combination Subtraction ---
         if (delta in -9..-1 && fromDigit + delta < 0) {
             return when (delta) {
-                -1 -> if (bottomBeads <= 0) FormulaStep(delta, "-1=-10+9", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
-                -2 -> if (bottomBeads <= 1) FormulaStep(delta, "-2=-10+8", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
-                -3 -> if (bottomBeads <= 2) FormulaStep(delta, "-3=-10+7", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
-                -4 -> if (bottomBeads <= 3) FormulaStep(delta, "-4=-10+6", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
-                -5 -> if (bottomBeads <= 4) FormulaStep(delta, "-5=-10+5", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
-                -6 -> if (bottomBeads <= 0) FormulaStep(delta, "-6=-10+4", AbacusFormulaType.BIG_FRIEND_SUB.description)
-                else FormulaStep(delta, "-6=-10+5-1", AbacusFormulaType.COMBINATION_SUB.description)
-                -7 -> if (bottomBeads <= 1) FormulaStep(delta, "-7=-10+3", AbacusFormulaType.BIG_FRIEND_SUB.description)
-                else FormulaStep(delta, "-7=-10+5-2", AbacusFormulaType.COMBINATION_SUB.description)
-                -8 -> if (bottomBeads <= 2) FormulaStep(delta, "-8=-10+2", AbacusFormulaType.BIG_FRIEND_SUB.description)
-                else FormulaStep(delta, "-8=-10+5-3", AbacusFormulaType.COMBINATION_SUB.description)
-                -9 -> if (bottomBeads <= 3) FormulaStep(delta, "-9=-10+1", AbacusFormulaType.BIG_FRIEND_SUB.description)
-                else FormulaStep(delta, "-9=-10+5-4", AbacusFormulaType.COMBINATION_SUB.description)
+                -1 -> if (bottomBeads <= 0) FormulaStep(delta, "-1=+9-10", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -2 -> if (bottomBeads <= 1) FormulaStep(delta, "-2=+8-10", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -3 -> if (bottomBeads <= 2) FormulaStep(delta, "-3=+7-10", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -4 -> if (bottomBeads <= 3) FormulaStep(delta, "-4=+6-10", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -5 -> if (bottomBeads <= 4) FormulaStep(delta, "-5=+5-10", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -6 -> if (bottomBeads <= 0) FormulaStep(delta, "-6=+4-10", AbacusFormulaType.BIG_FRIEND_SUB.description)
+                else FormulaStep(delta, "-6=-1+5-10", AbacusFormulaType.COMBINATION_SUB.description)
+                -7 -> if (bottomBeads <= 1) FormulaStep(delta, "-7=+3-10", AbacusFormulaType.BIG_FRIEND_SUB.description)
+                else FormulaStep(delta, "-7=-2+5-10", AbacusFormulaType.COMBINATION_SUB.description)
+                -8 -> if (bottomBeads <= 2) FormulaStep(delta, "-8=+2-10", AbacusFormulaType.BIG_FRIEND_SUB.description)
+                else FormulaStep(delta, "-8=-3+5-10", AbacusFormulaType.COMBINATION_SUB.description)
+                -9 -> if (bottomBeads <= 3) FormulaStep(delta, "-9=+1-10", AbacusFormulaType.BIG_FRIEND_SUB.description)
+                else FormulaStep(delta, "-9=-4+5-10", AbacusFormulaType.COMBINATION_SUB.description)
                 else -> null
             }
         }
