@@ -137,6 +137,7 @@ class NumberSequencePuzzleViewModel @Inject constructor(
     }
 
     fun onTileMove(row: Int, col: Int) {
+        if (_uiState.value.isSolved) return
         val (newTiles, moved) = moveTile(_uiState.value.tiles, row, col)
         if (moved) {
             val isSolve = checkSolved(newTiles)
