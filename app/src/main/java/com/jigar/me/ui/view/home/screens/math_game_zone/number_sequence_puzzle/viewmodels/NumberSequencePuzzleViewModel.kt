@@ -152,6 +152,7 @@ class NumberSequencePuzzleViewModel @Inject constructor(
                     prefManager, com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.NUMBER_SEQUENCE,
                     "grid$gridSize"
                 )
+                com.jigar.me.utils.WeeklySummaryManager.record(prefManager, 1)
             }
             _uiState.update {
                 it.copy(

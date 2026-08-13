@@ -376,6 +376,7 @@ class TargetNumberPlayViewModel @Inject constructor(
             com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.increment(
                 prefManager, com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.TARGET_NUMBER, difficulty
             )
+            com.jigar.me.utils.WeeklySummaryManager.record(prefManager, 1)
             updateState(
                 s.copy(
                     isSolved = true,

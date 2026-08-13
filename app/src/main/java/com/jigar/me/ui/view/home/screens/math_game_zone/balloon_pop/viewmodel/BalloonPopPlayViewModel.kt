@@ -198,6 +198,7 @@ class BalloonPopPlayViewModel @Inject constructor(
         stop()
         val finalScore = _uiState.value.score
         if (finalScore > bestScore) prefManager.setCustomParamInt(bestScoreKey, finalScore)
+        com.jigar.me.utils.WeeklySummaryManager.record(prefManager, _uiState.value.correctCount)
         _uiState.update { it.copy(isGameOver = true, balloons = emptyList()) }
     }
 }

@@ -215,6 +215,7 @@ class KakuroPlayViewModel @Inject constructor(
         val s = _uiState.value
         val stars = KakuroConfig.stars(s.hintsUsed, s.elapsed, parSeconds)
         progress.setStars(difficulty, level, stars)
+        com.jigar.me.utils.WeeklySummaryManager.record(prefManager, 1)
         _uiState.update { it.copy(isGameOver = true, starsEarned = stars) }
     }
 

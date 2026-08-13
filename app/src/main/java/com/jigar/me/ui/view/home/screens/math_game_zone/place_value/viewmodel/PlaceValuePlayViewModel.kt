@@ -192,9 +192,11 @@ class PlaceValuePlayViewModel @Inject constructor(
 
     private fun endGame() {
         stop()
+        val correctCount = _uiState.value.correctCount
         _uiState.update { it.copy(isGameOver = true) }
         val finalScore = _uiState.value.score
         if (finalScore > bestScore) prefManager.setCustomParamInt(bestKey, finalScore)
+        com.jigar.me.utils.WeeklySummaryManager.record(prefManager, correctCount)
         maybeSuggestNextDifficulty()
     }
 }

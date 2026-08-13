@@ -195,5 +195,6 @@ class CalcudokuPlayViewModel @Inject constructor(
         if (finalScore > bestScore) prefManager.setCustomParamInt(bestScoreKey, finalScore)
         val time = _uiState.value.elapsed
         if (time > 0 && (bestTime == 0 || time < bestTime)) prefManager.setCustomParamInt(bestTimeKey, time)
+        com.jigar.me.utils.WeeklySummaryManager.record(prefManager, 1)
     }
 }

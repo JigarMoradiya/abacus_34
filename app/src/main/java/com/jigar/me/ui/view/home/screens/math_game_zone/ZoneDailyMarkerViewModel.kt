@@ -18,6 +18,10 @@ class ZoneDailyMarkerViewModel @Inject constructor(
     fun markSolved(gameKey: String, tier: String) =
         com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.increment(prefManager, gameKey, tier)
 
+    // Lets screens without their own prefs bump the weekly parent-report counter.
+    fun recordWeekly(problems: Int) =
+        com.jigar.me.utils.WeeklySummaryManager.record(prefManager, problems)
+
     fun solvedCount(gameKey: String, tier: String): Int =
         com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.solved(prefManager, gameKey, tier)
 }

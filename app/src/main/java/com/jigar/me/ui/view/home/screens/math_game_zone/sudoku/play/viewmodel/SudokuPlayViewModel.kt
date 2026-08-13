@@ -234,6 +234,7 @@ class SudokuPlayViewModel @Inject constructor(
         com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.increment(
             prefManager, com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.SUDOKU, size.name
         )
+        com.jigar.me.utils.WeeklySummaryManager.record(prefManager, 1)
     }
 
     private fun isValidIgnoringSelf(row: Int, col: Int, num: Int): Boolean {

@@ -149,6 +149,7 @@ fun MathPyramidPlayJetpackScreen(
                                         com.jigar.me.ui.view.home.screens.math_game_zone.common.ZoneSolveCounter.MATH_PYRAMID,
                                         difficulty.name
                                     )
+                                    solveMarker.recordWeekly(1)
                                     isSolved = true
                                     selectedCell = null
                                 }

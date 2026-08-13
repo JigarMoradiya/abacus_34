@@ -109,6 +109,7 @@ class EquationMatchPlayViewModel @Inject constructor(
             delay(500)
             val score = _uiState.value.score
             if (score > bestScore) prefManager.setCustomParamInt(bestKey, score)
+            com.jigar.me.utils.WeeklySummaryManager.record(prefManager, _uiState.value.matchesFound)
             _uiState.update { it.copy(isGameOver = true) }
         }
     }

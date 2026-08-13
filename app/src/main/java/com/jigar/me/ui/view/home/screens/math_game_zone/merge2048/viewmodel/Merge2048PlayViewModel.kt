@@ -192,6 +192,7 @@ class Merge2048PlayViewModel @Inject constructor(
 
     override fun onCleared() {
         saveBestIfHigher()
+        com.jigar.me.utils.WeeklySummaryManager.record(prefManager, 1)
     }
 
     // MARK: - Save / resume (per difficulty)
