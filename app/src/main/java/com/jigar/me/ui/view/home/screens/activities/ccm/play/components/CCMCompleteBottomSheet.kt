@@ -66,7 +66,7 @@ fun CCMCompleteBottomSheetCompose(
 
     LocalContext.current
     LaunchedEffect(Unit) {
-        if (isAnswerTrue) AudioPlayerManager.playSoundWin()
+        if (isAnswerTrue) AudioPlayerManager.playSoundWin() else AudioPlayerManager.playSoundOptionWrong()
     }
 
     ModalBottomSheet(
