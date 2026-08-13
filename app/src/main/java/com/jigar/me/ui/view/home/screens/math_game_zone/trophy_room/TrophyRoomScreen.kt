@@ -241,11 +241,11 @@ private fun BuddyShelf(totalStars: Int, selected: String, onSelect: (String) -> 
                             if (isSelected) Color(0xFFE65100) else Color(0xFFBDBDBD),
                             CircleShape
                         )
-                        .padding(AppDimens.Dimens12)
+                        .padding(AppDimens.Dimens14)
                 ) {
                     Text(
                         def.emoji,
-                        style = MaterialTheme.typography.headlineMedium.scaled(),
+                        style = MaterialTheme.typography.headlineLarge.scaled(),
                         modifier = Modifier.graphicsLayer { if (!unlocked) alpha = 0.35f }
                     )
                 }
@@ -338,7 +338,7 @@ private fun TrophyCard(trophy: Trophy, index: Int) {
             // .clip() below is the safety net that keeps content from
             // bleeding into the row beneath, so this can stay close to the
             // original card shape instead of a tall square.
-            .aspectRatio(1.15f)
+            .aspectRatio(1.3f)
             .graphicsLayer {
                 scaleX = appearScale; scaleY = appearScale
                 alpha = if (appeared) 1f else 0f
@@ -356,7 +356,7 @@ private fun TrophyCard(trophy: Trophy, index: Int) {
         ) {
             Text(
                 trophy.emoji,
-                fontSize = 40.sp.scaled(),
+                fontSize = 46.sp.scaled(),
                 modifier = Modifier.graphicsLayer {
                     if (trophy.earned) {
                         rotationZ = sin(t + phase) * 8f
@@ -370,13 +370,13 @@ private fun TrophyCard(trophy: Trophy, index: Int) {
                 trophy.title,
                 color = Color.White,
                 fontResId = R.font.font_extra_bold,
-                style = MaterialTheme.typography.labelMedium.scaled()
+                style = MaterialTheme.typography.titleSmall.scaled()
             )
             ShrinkText(
                 trophy.desc,
                 color = Color.White.copy(alpha = 0.9f),
                 fontResId = R.font.font_bold,
-                style = MaterialTheme.typography.labelSmall.scaled()
+                style = MaterialTheme.typography.labelMedium.scaled()
             )
             // Live progress toward the goal — kids see exactly what's left.
             Text(
@@ -384,7 +384,7 @@ private fun TrophyCard(trophy: Trophy, index: Int) {
                 color = Color.White,
                 maxLines = 1, softWrap = false,
                 fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                style = MaterialTheme.typography.labelSmall.scaled(),
+                style = MaterialTheme.typography.labelMedium.scaled(),
                 modifier = Modifier
                     .padding(top = AppDimens.Dimens2)
                     .background(Color.Black.copy(alpha = 0.22f), CircleShape)
