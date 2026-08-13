@@ -25,8 +25,8 @@ internal val level2Chapters = listOf(
     Level2ChapterData(4,  "🔽",  "Heaven Subtract","Subtract 5+ — push the heaven bead away", Color(0xFF880E4F), Color(0xFFEC407A), Level2ChapterType.DIRECT),
     Level2ChapterData(5,  "📋",  "Meet Formulas",  "Why, when & how to use bead formulas",    Color(0xFF4A148C), Color(0xFFAB47BC), Level2ChapterType.FORMULA_REF),
     Level2ChapterData(6,  "🤝",  "Small Friend +", "+1=−4+5  +2=−3+5  +3=−2+5  +4=−1+5",    Color(0xFF1B5E20), Color(0xFF4CAF50), Level2ChapterType.FORMULA),
-    Level2ChapterData(7,  "🤝",  "Small Friend −", "−1=−5+4  −2=−5+3  −3=−5+2  −4=−5+1",    Color(0xFF004D40), Color(0xFF26A69A), Level2ChapterType.FORMULA),
-    Level2ChapterData(8,  "🔢",  "Big Friend +",   "+1=+10−9  …  +9=+10−1 (carry to tens)",  Color(0xFF1A237E), Color(0xFF5C6BC0), Level2ChapterType.FORMULA, columns = 2),
-    Level2ChapterData(9,  "🔢",  "Big Friend −",   "−1=−10+9  …  −9=−10+1 (borrow tens)",    Color(0xFF33691E), Color(0xFF8BC34A), Level2ChapterType.FORMULA, columns = 2),
+    Level2ChapterData(7,  "🤝",  "Small Friend −", "−1=+4−5  −2=+3−5  −3=+2−5  −4=+1−5",    Color(0xFF004D40), Color(0xFF26A69A), Level2ChapterType.FORMULA),
+    Level2ChapterData(8,  "🔢",  "Big Friend +",   "+1=−9+10  …  +9=−1+10 (carry to tens)",  Color(0xFF1A237E), Color(0xFF5C6BC0), Level2ChapterType.FORMULA, columns = 2),
+    Level2ChapterData(9,  "🔢",  "Big Friend −",   "−1=+9−10  …  −9=+1−10 (borrow tens)",    Color(0xFF33691E), Color(0xFF8BC34A), Level2ChapterType.FORMULA, columns = 2),
     Level2ChapterData(10, "👨‍👩‍👧‍👦", "Family",         "−5+10 and +5−10 combined",                Color(0xFFE65100), Color(0xFFFFB300), Level2ChapterType.FORMULA, columns = 2),
 )
