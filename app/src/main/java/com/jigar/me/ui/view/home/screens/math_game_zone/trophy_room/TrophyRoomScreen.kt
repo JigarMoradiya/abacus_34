@@ -194,13 +194,16 @@ private fun BuddyShelf(totalStars: Int, selected: String, onSelect: (String) -> 
             .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8)
     ) {
         // Paw + label stacked vertically instead of inline.
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text("🐾", style = MaterialTheme.typography.titleMedium.scaled())
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
+        ) {
+            Text("🐾", style = MaterialTheme.typography.headlineSmall.scaled())
             Text(
                 stringResource(R.string.trophy_buddies),
                 color = Color(0xFFE65100),
                 fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                style = MaterialTheme.typography.labelSmall.scaled()
+                style = MaterialTheme.typography.labelMedium.scaled()
             )
         }
         Spacer(Modifier.weight(1f))
