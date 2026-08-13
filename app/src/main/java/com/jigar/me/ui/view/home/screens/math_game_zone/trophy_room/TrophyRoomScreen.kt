@@ -198,12 +198,12 @@ private fun BuddyShelf(totalStars: Int, selected: String, onSelect: (String) -> 
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
         ) {
-            Text("🐾", style = MaterialTheme.typography.headlineSmall.scaled())
+            Text("🐾", style = MaterialTheme.typography.headlineMedium.scaled())
             Text(
                 stringResource(R.string.trophy_buddies),
                 color = Color(0xFFE65100),
                 fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                style = MaterialTheme.typography.labelMedium.scaled()
+                style = MaterialTheme.typography.labelLarge.scaled()
             )
         }
         Spacer(Modifier.weight(1f))
