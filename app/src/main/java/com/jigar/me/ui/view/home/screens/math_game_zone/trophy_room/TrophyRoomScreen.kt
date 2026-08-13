@@ -193,12 +193,16 @@ private fun BuddyShelf(totalStars: Int, selected: String, onSelect: (String) -> 
             .border(2.dp, Color(0xFFFFB300).copy(alpha = 0.5f), RoundedCornerShape(AppDimens.Dimens16))
             .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8)
     ) {
-        Text(
-            stringResource(R.string.trophy_buddies),
-            color = Color(0xFFE65100),
-            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-            style = MaterialTheme.typography.labelLarge.scaled()
-        )
+        // Paw + label stacked vertically instead of inline.
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text("🐾", style = MaterialTheme.typography.titleMedium.scaled())
+            Text(
+                stringResource(R.string.trophy_buddies),
+                color = Color(0xFFE65100),
+                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                style = MaterialTheme.typography.labelSmall.scaled()
+            )
+        }
         Spacer(Modifier.weight(1f))
         // Scrollable so all buddies never clip on narrow tablets or big fonts.
         Row(
