@@ -31,6 +31,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -46,6 +47,7 @@ import com.jigar.me.data.model.data.QuestionDataRequest
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorDARKGreen
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.QuestionResult
@@ -73,6 +75,11 @@ fun ExerciseExamCompleteResultDialog(
     val context = LocalContext.current
     val questionList: List<QuestionDataRequest> = request.questions?:arrayListOf()
     val questionResults: List<QuestionResult> = questionList.toQuestionResultList()
+
+    LaunchedEffect(Unit) {
+        if (!isFromHistory) AudioPlayerManager.playSoundClap()
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()

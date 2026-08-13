@@ -38,6 +38,7 @@ import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.
 import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.NumberAbacusItem
 import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.subitems.AbacusFormulaItem
 import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.subitems.SetTimer
+import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.subitems.SumCompleteCelebration
 import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.subitems.UseWhichHandTextUi
 import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.viewmodels.AbacusDoPracticeViewModel
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
@@ -164,6 +165,13 @@ fun AbacusDoPracticeRoute(
     }
 
     UseWhichHandTextUi(uiState, viewModel)
+
+    // Quick, non-blocking sparkle burst when a sum finishes in step-by-step
+    // or final-answer mode — purely decorative, so it never traps input or
+    // pauses the timer/practice flow while it plays.
+    if (uiState.isSumComplete && (uiState.isStepByStep || uiState.isFinalAnswer)) {
+        SumCompleteCelebration()
+    }
 
     if (uiState.isLoading || loginUiState.isLoading) {
         Loader()
