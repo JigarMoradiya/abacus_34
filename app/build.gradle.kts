@@ -29,7 +29,7 @@ android {
 
     signingConfigs {
         create("release") {
-            storeFile = file("/Users/jigarmoradiya/Documents/newProjects/abacus_34/app/keystore_live/abacus.jks")
+            storeFile = file("keystore_live/abacus.jks")
             storePassword = "android"
             keyAlias = "android"
             keyPassword = "android"
@@ -73,8 +73,8 @@ android {
 
             dimension = "variant1"
             applicationId = "com.abacus.puzzle"
-            versionCode = 168
-            versionName = "16.0.0"
+            versionCode = 169
+            versionName = "16.0.1"
         }
     }
 

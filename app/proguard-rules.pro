@@ -17,14 +17,14 @@
     public static *** e(...);
 }
 
-##---------------Retrofit 3 (package changed from retrofit.* to retrofit3.*)--------##
--dontwarn retrofit3.**
--keep class retrofit3.** { *; }
+##---------------Retrofit (com.squareup.retrofit2:retrofit:3.0.0, package stays retrofit2.*)--------##
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
 -keepclasseswithmembers class * {
-    @retrofit3.http.* <methods>;
+    @retrofit2.http.* <methods>;
 }
 -keepclassmembernames interface * {
-    @retrofit3.http.* <methods>;
+    @retrofit2.http.* <methods>;
 }
 
 ##---------------OkHttp3--------##
@@ -111,6 +111,15 @@
 -keepclassmembers class com.jigar.me.data.model.dbtable.exam.** { *; }
 -keepclassmembers class com.jigar.me.data.model.dbtable.inapp.** { *; }
 -keepclassmembers class com.jigar.me.data.model.dbtable.suduko.** { *; }
+
+##---------------Gson-persisted game state (SharedPreferences/SavedStateHandle)--------##
+# These aren't under data.model.** and have no @SerializedName, so R8 field
+# renaming breaks Gson round-trips across separate release builds (mapping
+# isn't stable build-to-build) -- e.g. saved sudoku progress silently
+# disappearing after an app update.
+-keepclassmembers class com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SavedSudokuGame { *; }
+-keepclassmembers class com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuPuzzle { *; }
+-keepclassmembers class com.jigar.me.ui.view.home.screens.math_game_zone.target_number.components.TargetUiState { *; }
 
 ##---------------Suppress irrelevant warnings--------##
 -dontwarn sun.misc.Unsafe
