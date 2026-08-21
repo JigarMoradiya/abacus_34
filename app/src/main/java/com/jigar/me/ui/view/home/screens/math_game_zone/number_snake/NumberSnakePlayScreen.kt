@@ -58,14 +58,14 @@ import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
 import kotlinx.coroutines.delay
 
-private val GREEN = Color(0xFF33691E)
-private val GREEN_BORDER = Color(0xFF558B2F)
+private val VIOLET = Color(0xFF4A148C)
+private val VIOLET_BORDER = Color(0xFF8E24AA)
 private val BLUE = Color(0xFF0074D5)
-private val GIVEN_BG = Color(0xFFAED581)
-private val EMPTY_BG = Color(0xFFE0F2F1)
+private val GIVEN_BG = Color(0xFFE1BEE7)
+private val EMPTY_BG = Color(0xFFF3E5F5)
 private val SELECTED_BORDER = Color(0xFFFFB300)
 private val WRONG_RED = Color(0xFFE53935)
-private val TRAY_BG = Color(0xFF7CB342)
+private val TRAY_BG = Color(0xFFBA68C8)
 
 @Composable
 fun NumberSnakePlayScreen(
@@ -92,10 +92,10 @@ fun NumberSnakePlayScreen(
                     horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10),
                     modifier = Modifier.align(Alignment.Center)
                 ) {
-                    Text("💡 ${state.hintsLeft}", color = GREEN,
+                    Text("💡 ${state.hintsLeft}", color = VIOLET,
                         fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 18.sp.scaled(),
                         modifier = Modifier.clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.9f))
-                            .border(2.dp, GREEN_BORDER, RoundedCornerShape(100f))
+                            .border(2.dp, VIOLET_BORDER, RoundedCornerShape(100f))
                             .padding(horizontal = AppDimens.Dimens14, vertical = AppDimens.Dimens6)
                             .clickable(
                                 interactionSource = remember { MutableInteractionSource() }, indication = null
@@ -177,7 +177,7 @@ private fun NumberGrid(state: NumberSnakeUiState, s: Float, onTapCell: (Int) -> 
                             .background(bg)
                             .border(
                                 width = if (isSelected) 3.dp else 1.dp,
-                                color = if (isSelected) SELECTED_BORDER else GREEN_BORDER.copy(alpha = 0.4f),
+                                color = if (isSelected) SELECTED_BORDER else VIOLET_BORDER.copy(alpha = 0.4f),
                                 shape = RoundedCornerShape(AppDimens.Dimens6)
                             )
                             .clickable(
@@ -189,7 +189,7 @@ private fun NumberGrid(state: NumberSnakeUiState, s: Float, onTapCell: (Int) -> 
                         if (value != 0) {
                             Text(
                                 "$value",
-                                color = if (isGiven) Color(0xFF1B5E20) else GREEN,
+                                color = if (isGiven) Color(0xFF38006B) else VIOLET,
                                 fontFamily = FontFamily(Font(R.font.font_extra_bold)),
                                 fontSize = (cellSize * 0.42f).sp
                             )
@@ -242,11 +242,11 @@ private fun ResultOverlay(
         ConfettiRainEffect()
         Column(
             modifier = Modifier.fillMaxWidth(0.6f).clip(RoundedCornerShape(AppDimens.Dimens20))
-                .border(3.dp, GREEN_BORDER, RoundedCornerShape(AppDimens.Dimens20)).background(Color.White)
+                .border(3.dp, VIOLET_BORDER, RoundedCornerShape(AppDimens.Dimens20)).background(Color.White)
         ) {
             Box(
                 modifier = Modifier.fillMaxWidth().height((64f * gameScale()).dp)
-                    .background(Brush.horizontalGradient(listOf(Color(0xFF7CB342), Color(0xFF33691E)))),
+                    .background(Brush.horizontalGradient(listOf(Color(0xFFBA68C8), Color(0xFF4A148C)))),
                 contentAlignment = Alignment.Center
             ) {
                 Row(modifier = Modifier.fillMaxWidth().padding(horizontal = AppDimens.Dimens20),
@@ -268,8 +268,8 @@ private fun ResultOverlay(
                 Text(stringResource(R.string.balloon_final_score) + ": ${state.score}", color = BLUE,
                     fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 28.sp.scaled())
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)) {
-                    StatChipStr("⏱", "%d:%02d".format(state.elapsed / 60, state.elapsed % 60), GREEN)
-                    StatChipStr("🏆", "$best", GREEN_BORDER)
+                    StatChipStr("⏱", "%d:%02d".format(state.elapsed / 60, state.elapsed % 60), VIOLET)
+                    StatChipStr("🏆", "$best", VIOLET_BORDER)
                 }
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
                     KidsActionButton(text = stringResource(R.string.balloon_play_again), type = ButtonType.ORANGE,

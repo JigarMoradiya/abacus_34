@@ -53,9 +53,9 @@ import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
 import kotlin.math.sin
 
-private val GREEN = Color(0xFF33691E)
-private val GREEN_LIGHT = Color(0xFF7CB342)
-private val BEST_GREEN = Color(0xFF2E7D32)
+private val VIOLET = Color(0xFF4A148C)
+private val VIOLET_LIGHT = Color(0xFFBA68C8)
+private val BEST_VIOLET = Color(0xFF6A1B9A)
 
 // A 3x3 snapshot showing the number trail winding through the grid.
 private val PREVIEW = listOf(1, 2, 3, 8, 9, 4, 7, 6, 5)
@@ -93,7 +93,7 @@ fun NumberSnakeHomeScreen(
                                     .graphicsLayer { scaleX = scale; scaleY = scale }
                                     .size((48f * s).dp)
                                     .clip(RoundedCornerShape(AppDimens.Dimens8))
-                                    .background(GREEN_LIGHT),
+                                    .background(VIOLET_LIGHT),
                                 contentAlignment = Alignment.Center
                             ) {
                                 Text("${PREVIEW[i]}", color = Color.White,
@@ -108,7 +108,7 @@ fun NumberSnakeHomeScreen(
 
             Text(
                 text = stringResource(R.string.number_snake_tagline),
-                color = GREEN, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 22.sp.scaled(),
+                color = VIOLET, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 22.sp.scaled(),
                 modifier = Modifier.clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.85f))
                     .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
             )
@@ -116,7 +116,7 @@ fun NumberSnakeHomeScreen(
             if (bestTime > 0) {
                 Spacer(Modifier.height(AppDimens.Dimens6))
                 Text("🏆 " + stringResource(R.string.best_time) + ": " + "%d:%02d".format(bestTime / 60, bestTime % 60),
-                    color = BEST_GREEN, fontFamily = FontFamily(Font(R.font.font_bold)), fontSize = 16.sp.scaled(),
+                    color = BEST_VIOLET, fontFamily = FontFamily(Font(R.font.font_bold)), fontSize = 16.sp.scaled(),
                     modifier = Modifier.clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.75f))
                         .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens4))
             }
