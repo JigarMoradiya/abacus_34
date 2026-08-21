@@ -90,7 +90,7 @@ fun gameCardStyle(type: GameCategoryType): GameCardStyle = when (type) {
     GameCategoryType.NUMBER_DETECTIVE ->
         GameCardStyle(Color(0xFF5C6BC0), Color(0xFF283593), Color(0xFF1A237E))
     GameCategoryType.NUMBER_SNAKE ->
-        GameCardStyle(Color(0xFFBA68C8), Color(0xFF8E24AA), Color(0xFF4A148C))
+        GameCardStyle(Color(0xFFFFD54F), Color(0xFFFFA000), Color(0xFFFF6F00))
 }
 
 // ── Icon dispatcher ─────────────────────────────────────────────────────────
