@@ -1056,6 +1056,26 @@
     <string name="kakuro_game">Kakuro</string>
     <string name="kakuro_tagline">Make every line add up to its clue!</string>
 
+    <!-- Number Detective game -->
+    <string name="number_detective">Number Detective</string>
+    <string name="number_detective_desc">Crack the secret number!</string>
+    <string name="number_detective_game">Number Detective</string>
+    <string name="number_detective_tagline">Crack the secret number!</string>
+    <string name="number_detective_prompt">Range: %1$d–%2$d</string>
+    <string name="number_detective_correct">Correct!</string>
+    <string name="number_detective_answer_was">It was %1$d</string>
+    <string name="number_detective_too_low">Too low</string>
+    <string name="number_detective_too_high">Too high</string>
+    <string name="number_detective_tries_left">Tries left: %1$d</string>
+    <string name="number_detective_guess">Guess</string>
+
+    <!-- Number Snake game -->
+    <string name="number_snake">Number Snake</string>
+    <string name="number_snake_desc">Connect the number trail!</string>
+    <string name="number_snake_game">Number Snake</string>
+    <string name="number_snake_tagline">Connect 1 to the end, one step at a time!</string>
+    <string name="number_snake_level">Level %1$d</string>
+
     <string name="number_sequence_desc"><![CDATA[Slide & order the numbers!]]></string>
     <string name="free_mode_settings">Free Mode Settings</string>
     <string name="click_here_to_show_abacus_tour">Show Abacus Tour</string>

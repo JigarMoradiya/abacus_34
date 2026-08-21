@@ -19,7 +19,9 @@ enum class GameCategoryType {
     PLACE_VALUE,
     CLOCK_MASTER,
     MATH_BINGO,
-    KAKURO
+    KAKURO,
+    NUMBER_DETECTIVE,
+    NUMBER_SNAKE
 }
 
 data class GameCategoryData(

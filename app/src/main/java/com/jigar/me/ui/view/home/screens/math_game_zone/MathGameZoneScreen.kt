@@ -160,6 +160,11 @@ fun MathGameZoneScreen(
             desc = stringResource(R.string.clock_master_desc)
         ),
         GameCategoryData(
+            type = GameCategoryType.NUMBER_DETECTIVE,
+            title = stringResource(R.string.number_detective),
+            desc = stringResource(R.string.number_detective_desc)
+        ),
+        GameCategoryData(
             type = GameCategoryType.SUDOKU,
             title = stringResource(R.string.sudoku),
             desc = stringResource(R.string.sudoku_desc)
@@ -173,6 +178,11 @@ fun MathGameZoneScreen(
             type = GameCategoryType.KAKURO,
             title = stringResource(R.string.kakuro),
             desc = stringResource(R.string.kakuro_desc)
+        ),
+        GameCategoryData(
+            type = GameCategoryType.NUMBER_SNAKE,
+            title = stringResource(R.string.number_snake),
+            desc = stringResource(R.string.number_snake_desc)
         )
     )
 
@@ -215,8 +225,8 @@ fun MathGameZoneScreen(
             add(GameSection("⚡", stringResource(R.string.game_cat_speedy), Color(0xFFFF8400), categories.subList(0, 4)))
             add(GameSection("➕", stringResource(R.string.game_cat_equations), Color(0xFF0074D5), categories.subList(4, 8)))
             add(GameSection("🗺️", stringResource(R.string.game_cat_adventures), Color(0xFF43A047), categories.subList(8, 12)))
-            add(GameSection("🔢", stringResource(R.string.game_cat_builders), Color(0xFF8E24AA), categories.subList(12, 15)))
-            add(GameSection("🧩", stringResource(R.string.game_cat_puzzles), Color(0xFF546E7A), categories.subList(15, 18)))
+            add(GameSection("🔢", stringResource(R.string.game_cat_builders), Color(0xFF8E24AA), categories.subList(12, 16)))
+            add(GameSection("🧩", stringResource(R.string.game_cat_puzzles), Color(0xFF546E7A), categories.subList(16, 20)))
         }
 
         BoxWithConstraints(modifier = Modifier.fillMaxSize()) {

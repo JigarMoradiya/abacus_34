@@ -121,6 +121,16 @@ sealed class RouteNavigation(val route: String) {
         fun play(diff: String, level: Int): String = "KakuroPlay/$diff/$level"
     }
 
+    object NumberDetectiveHome : RouteNavigation("NumberDetectiveHome")
+    object NumberDetectivePlay : RouteNavigation("NumberDetectivePlay/{number_detective_diff}") {
+        fun play(diff: String): String = "NumberDetectivePlay/$diff"
+    }
+
+    object NumberSnakeHome : RouteNavigation("NumberSnakeHome")
+    object NumberSnakePlay : RouteNavigation("NumberSnakePlay/{number_snake_diff}") {
+        fun play(diff: String): String = "NumberSnakePlay/$diff"
+    }
+
     object Settings : RouteNavigation("Settings")
 
     object Purchase : RouteNavigation("Purchase")

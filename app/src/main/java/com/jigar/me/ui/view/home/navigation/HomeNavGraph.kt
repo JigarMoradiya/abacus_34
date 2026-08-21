@@ -64,6 +64,10 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.math_bingo.MathBingoHome
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_bingo.MathBingoPlayRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.kakuro.KakuroHomeRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.kakuro.KakuroPlayRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.number_detective.NumberDetectiveHomeRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.number_detective.NumberDetectivePlayRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.number_snake.NumberSnakeHomeRoute
+import com.jigar.me.ui.view.home.screens.math_game_zone.number_snake.NumberSnakePlayRoute
 import com.jigar.me.ui.view.home.screens.math_game_zone.trophy_room.TrophyRoomScreen
 import com.jigar.me.ui.view.home.screens.purchase.PurchaseScreenRoute
 import com.jigar.me.ui.view.home.screens.settings.SettingsScreenRoute
@@ -328,6 +332,12 @@ fun HomeNavGraph(
                 },
                 onNavigateToKakuro = {
                     navController.safeNavigate(RouteNavigation.KakuroHome.route)
+                },
+                onNavigateToNumberDetective = {
+                    navController.safeNavigate(RouteNavigation.NumberDetectiveHome.route)
+                },
+                onNavigateToNumberSnake = {
+                    navController.safeNavigate(RouteNavigation.NumberSnakeHome.route)
                 },
                 onNavigateToTrophyRoom = {
                     navController.safeNavigate(RouteNavigation.TrophyRoom.route)
@@ -760,6 +770,48 @@ fun HomeNavGraph(
                         popUpTo(RouteNavigation.KakuroHome.route)
                     }
                 }
+            )
+        }
+
+        composable(route = RouteNavigation.NumberDetectiveHome.route) {
+            NumberDetectiveHomeRoute(
+                homeActivityViewModel = homeActivityViewModel,
+                onStartPlay = { diff ->
+                    navController.safeNavigate(RouteNavigation.NumberDetectivePlay.play(diff))
+                },
+                onBackClick = { navController.safePopBackStack() }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.NumberDetectivePlay.route,
+            arguments = listOf(
+                navArgument("number_detective_diff") { type = NavType.StringType }
+            )
+        ) {
+            NumberDetectivePlayRoute(
+                onBackClick = { navController.safePopBackStack() }
+            )
+        }
+
+        composable(route = RouteNavigation.NumberSnakeHome.route) {
+            NumberSnakeHomeRoute(
+                homeActivityViewModel = homeActivityViewModel,
+                onStartPlay = { diff ->
+                    navController.safeNavigate(RouteNavigation.NumberSnakePlay.play(diff))
+                },
+                onBackClick = { navController.safePopBackStack() }
+            )
+        }
+
+        composable(
+            route = RouteNavigation.NumberSnakePlay.route,
+            arguments = listOf(
+                navArgument("number_snake_diff") { type = NavType.StringType }
+            )
+        ) {
+            NumberSnakePlayRoute(
+                onBackClick = { navController.safePopBackStack() }
             )
         }
 

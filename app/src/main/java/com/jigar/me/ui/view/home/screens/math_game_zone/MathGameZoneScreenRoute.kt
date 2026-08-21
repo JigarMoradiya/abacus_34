@@ -24,6 +24,8 @@ fun MathGameZoneScreenRoute(
     onNavigateToClockMaster: () -> Unit,
     onNavigateToMathBingo: () -> Unit,
     onNavigateToKakuro: () -> Unit,
+    onNavigateToNumberDetective: () -> Unit,
+    onNavigateToNumberSnake: () -> Unit,
     onNavigateToTrophyRoom: () -> Unit,
 ) {
     MathGameZoneScreen(
@@ -52,6 +54,8 @@ fun MathGameZoneScreenRoute(
                 GameCategoryType.CLOCK_MASTER -> onNavigateToClockMaster()
                 GameCategoryType.MATH_BINGO -> onNavigateToMathBingo()
                 GameCategoryType.KAKURO -> onNavigateToKakuro()
+                GameCategoryType.NUMBER_DETECTIVE -> onNavigateToNumberDetective()
+                GameCategoryType.NUMBER_SNAKE -> onNavigateToNumberSnake()
             }
         },
         onBackClick = onBackClick

@@ -87,6 +87,10 @@ fun gameCardStyle(type: GameCategoryType): GameCardStyle = when (type) {
         GameCardStyle(Color(0xFFFFCA28), Color(0xFFF57F17), Color(0xFFE65100))
     GameCategoryType.KAKURO ->
         GameCardStyle(Color(0xFF78909C), Color(0xFF455A64), Color(0xFF263238))
+    GameCategoryType.NUMBER_DETECTIVE ->
+        GameCardStyle(Color(0xFF5C6BC0), Color(0xFF283593), Color(0xFF1A237E))
+    GameCategoryType.NUMBER_SNAKE ->
+        GameCardStyle(Color(0xFF7CB342), Color(0xFF558B2F), Color(0xFF33691E))
 }
 
 // ── Icon dispatcher ─────────────────────────────────────────────────────────
@@ -113,6 +117,8 @@ fun GameTileIcon(type: GameCategoryType, size: Dp, tint: Color) {
             GameCategoryType.CLOCK_MASTER -> ClockMasterIcon(size, tint)
             GameCategoryType.MATH_BINGO -> MathBingoIcon(size, tint)
             GameCategoryType.KAKURO -> KakuroIcon(size, tint)
+            GameCategoryType.NUMBER_DETECTIVE -> NumberDetectiveIcon(size, tint)
+            GameCategoryType.NUMBER_SNAKE -> NumberSnakeIcon(size, tint)
         }
     }
 }
@@ -349,6 +355,50 @@ private fun RingToken(text: String, size: Dp, tint: Color, x: Float, y: Float, r
             .rotate(rotation)
     ) {
         IconNumber(text, size * 0.18f, Color.White)
+    }
+}
+
+// ── Number Detective — magnifying glass over a mystery number ──────────────
+
+@Composable
+private fun NumberDetectiveIcon(size: Dp, tint: Color) {
+    Box(modifier = Modifier.size(size), contentAlignment = Alignment.Center) {
+        Canvas(modifier = Modifier.size(size)) {
+            val s = this.size.width
+            // Lens
+            drawCircle(
+                Color.White,
+                radius = s * 0.28f,
+                center = androidx.compose.ui.geometry.Offset(s * 0.42f, s * 0.42f),
+                style = Stroke(width = s * 0.07f)
+            )
+            // Handle
+            drawLine(
+                Color.White,
+                start = androidx.compose.ui.geometry.Offset(s * 0.62f, s * 0.62f),
+                end = androidx.compose.ui.geometry.Offset(s * 0.82f, s * 0.82f),
+                strokeWidth = s * 0.09f,
+                cap = androidx.compose.ui.graphics.StrokeCap.Round
+            )
+        }
+        Box(
+            modifier = Modifier.offset(x = -size * 0.08f, y = -size * 0.08f),
+            contentAlignment = Alignment.Center
+        ) {
+            IconNumber("?", size * 0.22f, tint)
+        }
+    }
+}
+
+// ── Number Snake — a connected 1→2→3 trail ──────────────────────────────────
+
+@Composable
+private fun NumberSnakeIcon(size: Dp, tint: Color) {
+    Box(modifier = Modifier.size(size), contentAlignment = Alignment.Center) {
+        val tile = size * 0.32f
+        Box(modifier = Modifier.offset(x = -size * 0.24f, y = -size * 0.22f)) { MiniTile("1", tile, tint) }
+        Box(modifier = Modifier.offset(x = size * 0.02f, y = size * 0.02f)) { MiniTile("2", tile, tint) }
+        Box(modifier = Modifier.offset(x = size * 0.28f, y = size * 0.26f)) { MiniTile("3", tile, tint) }
     }
 }
 
