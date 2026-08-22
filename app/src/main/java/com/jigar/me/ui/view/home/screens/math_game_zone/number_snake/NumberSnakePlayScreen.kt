@@ -156,15 +156,6 @@ private fun NumberGrid(state: NumberSnakeUiState, s: Float, onTapCell: (Int) -> 
     } * s
     val gap = 9f * s
 
-    // Where each number 1..total currently sits, so we can draw a trail
-    // segment the instant both its neighbours are correctly in place —
-    // the "snake" visibly grows as the kid builds the sequence.
-    val positionOfNumber = remember(state.solution) {
-        IntArray(state.solution.size + 1).also { arr ->
-            state.solution.forEachIndexed { index, number -> if (number in arr.indices) arr[number] = index }
-        }
-    }
-
     Box(modifier = Modifier.graphicsLayer { translationX = shake.value }) {
         Canvas(
             modifier = Modifier.size(
@@ -180,18 +171,33 @@ private fun NumberGrid(state: NumberSnakeUiState, s: Float, onTapCell: (Int) -> 
                     r * (cellPx + gapPx) + cellPx / 2f
                 )
             }
-            val total = state.size * state.size
-            for (num in 1 until total) {
-                val i1 = positionOfNumber[num]
-                val i2 = positionOfNumber[num + 1]
-                if (state.grid[i1] != num || state.grid[i2] != num + 1) continue
-                drawLine(
-                    color = Color(0xFFFF6F00),
-                    start = centerOf(i1),
-                    end = centerOf(i2),
-                    strokeWidth = gapPx * 1.1f,
-                    cap = StrokeCap.Round
-                )
+            // Purely local rule: any two GRID-ADJACENT cells whose visible
+            // values are consecutive get connected — regardless of whether
+            // that matches the puzzle's one true solution. Checking against
+            // the solution key instead would only draw a line for placements
+            // that happen to be "officially correct", which quietly tells the
+            // kid their guess is right before they've solved anything.
+            val n = state.size
+            for (r in 0 until n) {
+                for (c in 0 until n) {
+                    val i = r * n + c
+                    val v = state.grid[i]
+                    if (v == 0) continue
+                    if (c + 1 < n) {
+                        val i2 = i + 1
+                        val v2 = state.grid[i2]
+                        if (v2 != 0 && kotlin.math.abs(v - v2) == 1) {
+                            drawLine(Color(0xFFFF6F00), centerOf(i), centerOf(i2), gapPx * 1.1f, cap = StrokeCap.Round)
+                        }
+                    }
+                    if (r + 1 < n) {
+                        val i2 = i + n
+                        val v2 = state.grid[i2]
+                        if (v2 != 0 && kotlin.math.abs(v - v2) == 1) {
+                            drawLine(Color(0xFFFF6F00), centerOf(i), centerOf(i2), gapPx * 1.1f, cap = StrokeCap.Round)
+                        }
+                    }
+                }
             }
         }
 
