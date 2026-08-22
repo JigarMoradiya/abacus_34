@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -34,8 +35,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
@@ -65,7 +68,7 @@ private val GIVEN_BG = Color(0xFFFFECB3)
 private val EMPTY_BG = Color(0xFFFFF8E1)
 private val SELECTED_BORDER = Color(0xFFE91E63)
 private val WRONG_RED = Color(0xFFE53935)
-private val TRAY_BG = Color(0xFFFFD54F)
+private val TRAY_BG = Color(0xFFFF6F00)
 
 @Composable
 fun NumberSnakePlayScreen(
@@ -149,50 +152,88 @@ private fun NumberGrid(state: NumberSnakeUiState, s: Float, onTapCell: (Int) -> 
     val cellSize = when (state.size) {
         4 -> 56f; 5 -> 48f; else -> 42f
     } * s
+    val gap = 9f * s
 
-    Column(
-        verticalArrangement = Arrangement.spacedBy(4.dp),
-        modifier = Modifier.graphicsLayer { translationX = shake.value }
-    ) {
-        for (r in 0 until state.size) {
-            Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                for (c in 0 until state.size) {
-                    val i = r * state.size + c
-                    val value = state.grid[i]
-                    val isGiven = state.given[i] != 0
-                    val isHint = i in state.hintLocked
-                    val isSelected = state.selectedIndex == i
-                    val bg = when {
-                        state.wrongFlash && value != 0 -> WRONG_RED.copy(alpha = 0.35f)
-                        isGiven -> GIVEN_BG
-                        isHint -> Color(0xFFFFE082)
-                        value != 0 -> Color.White
-                        else -> EMPTY_BG
-                    }
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier
-                            .size(cellSize.dp)
-                            .clip(RoundedCornerShape(AppDimens.Dimens6))
-                            .background(bg)
-                            .border(
-                                width = if (isSelected) 3.dp else 1.dp,
-                                color = if (isSelected) SELECTED_BORDER else GOLD_BORDER.copy(alpha = 0.4f),
-                                shape = RoundedCornerShape(AppDimens.Dimens6)
-                            )
-                            .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = null,
-                                enabled = !isGiven && !isHint
-                            ) { onTapCell(i) }
-                    ) {
-                        if (value != 0) {
-                            Text(
-                                "$value",
-                                color = if (isGiven) Color(0xFFE65100) else GOLD,
-                                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                                fontSize = (cellSize * 0.42f).sp
-                            )
+    // Where each number 1..total currently sits, so we can draw a trail
+    // segment the instant both its neighbours are correctly in place —
+    // the "snake" visibly grows as the kid builds the sequence.
+    val positionOfNumber = remember(state.solution) {
+        IntArray(state.solution.size + 1).also { arr ->
+            state.solution.forEachIndexed { index, number -> if (number in arr.indices) arr[number] = index }
+        }
+    }
+
+    Box(modifier = Modifier.graphicsLayer { translationX = shake.value }) {
+        Canvas(
+            modifier = Modifier.size(
+                (cellSize * state.size + gap * (state.size - 1)).dp
+            )
+        ) {
+            val cellPx = cellSize.dp.toPx()
+            val gapPx = gap.dp.toPx()
+            fun centerOf(index: Int): Offset {
+                val r = index / state.size; val c = index % state.size
+                return Offset(
+                    c * (cellPx + gapPx) + cellPx / 2f,
+                    r * (cellPx + gapPx) + cellPx / 2f
+                )
+            }
+            val total = state.size * state.size
+            for (num in 1 until total) {
+                val i1 = positionOfNumber[num]
+                val i2 = positionOfNumber[num + 1]
+                if (state.grid[i1] != num || state.grid[i2] != num + 1) continue
+                drawLine(
+                    color = Color(0xFFFF6F00),
+                    start = centerOf(i1),
+                    end = centerOf(i2),
+                    strokeWidth = gapPx * 1.1f,
+                    cap = StrokeCap.Round
+                )
+            }
+        }
+
+        Column(verticalArrangement = Arrangement.spacedBy(gap.dp)) {
+            for (r in 0 until state.size) {
+                Row(horizontalArrangement = Arrangement.spacedBy(gap.dp)) {
+                    for (c in 0 until state.size) {
+                        val i = r * state.size + c
+                        val value = state.grid[i]
+                        val isGiven = state.given[i] != 0
+                        val isHint = i in state.hintLocked
+                        val isSelected = state.selectedIndex == i
+                        val bg = when {
+                            state.wrongFlash && value != 0 -> WRONG_RED.copy(alpha = 0.35f)
+                            isGiven -> GIVEN_BG
+                            isHint -> Color(0xFFFFE082)
+                            value != 0 -> Color.White
+                            else -> EMPTY_BG
+                        }
+                        Box(
+                            contentAlignment = Alignment.Center,
+                            modifier = Modifier
+                                .size(cellSize.dp)
+                                .clip(RoundedCornerShape(AppDimens.Dimens6))
+                                .background(bg)
+                                .border(
+                                    width = if (isSelected) 3.dp else 1.dp,
+                                    color = if (isSelected) SELECTED_BORDER else GOLD_BORDER.copy(alpha = 0.4f),
+                                    shape = RoundedCornerShape(AppDimens.Dimens6)
+                                )
+                                .clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = null,
+                                    enabled = !isGiven && !isHint
+                                ) { onTapCell(i) }
+                        ) {
+                            if (value != 0) {
+                                Text(
+                                    "$value",
+                                    color = if (isGiven) Color(0xFFE65100) else GOLD,
+                                    fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                                    fontSize = (cellSize * 0.42f).sp
+                                )
+                            }
                         }
                     }
                 }
@@ -203,26 +244,28 @@ private fun NumberGrid(state: NumberSnakeUiState, s: Float, onTapCell: (Int) -> 
 
 @Composable
 private fun Tray(state: NumberSnakeUiState, s: Float, onTapNumber: (Int) -> Unit) {
-    Row(
-        horizontalArrangement = Arrangement.spacedBy((8f * s).dp),
-        modifier = Modifier
-            .horizontalScroll(rememberScrollState())
-            .padding(horizontal = AppDimens.Dimens16)
-    ) {
-        state.tray.forEach { n ->
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier
-                    .size((40f * s).dp)
-                    .clip(RoundedCornerShape(AppDimens.Dimens8))
-                    .background(TRAY_BG)
-                    .clickable(
-                        interactionSource = remember { MutableInteractionSource() },
-                        indication = null
-                    ) { onTapNumber(n) }
-            ) {
-                Text("$n", color = Color.White,
-                    fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (18f * s).sp)
+    Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy((8f * s).dp),
+            modifier = Modifier
+                .horizontalScroll(rememberScrollState())
+                .padding(horizontal = AppDimens.Dimens16)
+        ) {
+            state.tray.forEach { n ->
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .size((40f * s).dp)
+                        .clip(RoundedCornerShape(AppDimens.Dimens8))
+                        .background(TRAY_BG)
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = null
+                        ) { onTapNumber(n) }
+                ) {
+                    Text("$n", color = Color.White,
+                        fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (18f * s).sp)
+                }
             }
         }
     }
