@@ -64,8 +64,10 @@ import kotlinx.coroutines.delay
 private val GOLD = Color(0xFFFF6F00)
 private val GOLD_BORDER = Color(0xFFFFA000)
 private val BLUE = Color(0xFF0074D5)
-private val GIVEN_BG = Color(0xFFFFECB3)
-private val EMPTY_BG = Color(0xFFFFF8E1)
+private val GIVEN_BG = Color(0xFFFFCC80)
+private val EMPTY_BG = Color(0xFFCFD8DC)
+private val FILLED_BG = Color(0xFFC8E6C9)
+private val HINT_BG = Color(0xFFB3E5FC)
 private val SELECTED_BORDER = Color(0xFFE91E63)
 private val WRONG_RED = Color(0xFFE53935)
 private val TRAY_BG = Color(0xFFFF6F00)
@@ -205,8 +207,8 @@ private fun NumberGrid(state: NumberSnakeUiState, s: Float, onTapCell: (Int) -> 
                         val bg = when {
                             state.wrongFlash && value != 0 -> WRONG_RED.copy(alpha = 0.35f)
                             isGiven -> GIVEN_BG
-                            isHint -> Color(0xFFFFE082)
-                            value != 0 -> Color.White
+                            isHint -> HINT_BG
+                            value != 0 -> FILLED_BG
                             else -> EMPTY_BG
                         }
                         Box(
@@ -244,28 +246,32 @@ private fun NumberGrid(state: NumberSnakeUiState, s: Float, onTapCell: (Int) -> 
 
 @Composable
 private fun Tray(state: NumberSnakeUiState, s: Float, onTapNumber: (Int) -> Unit) {
-    Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-        Row(
-            horizontalArrangement = Arrangement.spacedBy((8f * s).dp),
-            modifier = Modifier
-                .horizontalScroll(rememberScrollState())
-                .padding(horizontal = AppDimens.Dimens16)
-        ) {
-            state.tray.forEach { n ->
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = Modifier
-                        .size((40f * s).dp)
-                        .clip(RoundedCornerShape(AppDimens.Dimens8))
-                        .background(TRAY_BG)
-                        .clickable(
-                            interactionSource = remember { MutableInteractionSource() },
-                            indication = null
-                        ) { onTapNumber(n) }
-                ) {
-                    Text("$n", color = Color.White,
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (18f * s).sp)
-                }
+    // horizontalScroll makes the Row report itself as filling the available
+    // width regardless of content, so a plain Box+contentAlignment wrapper
+    // around it can't center anything — spacedBy's own alignment param is
+    // what actually centers the tiles when they fit, while still allowing
+    // the Row to scroll once they overflow.
+    Row(
+        horizontalArrangement = Arrangement.spacedBy((8f * s).dp, Alignment.CenterHorizontally),
+        modifier = Modifier
+            .fillMaxWidth()
+            .horizontalScroll(rememberScrollState())
+            .padding(horizontal = AppDimens.Dimens16)
+    ) {
+        state.tray.forEach { n ->
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .size((40f * s).dp)
+                    .clip(RoundedCornerShape(AppDimens.Dimens8))
+                    .background(TRAY_BG)
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null
+                    ) { onTapNumber(n) }
+            ) {
+                Text("$n", color = Color.White,
+                    fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (18f * s).sp)
             }
         }
     }
