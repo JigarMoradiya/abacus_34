@@ -106,6 +106,17 @@ fun NumberSnakePlayScreen(
                                 interactionSource = remember { MutableInteractionSource() }, indication = null
                             ) { viewModel.useHint() }
                     )
+                    // Clears the number in the currently selected cell so a
+                    // kid can undo a placement without waiting for a wrong-flash.
+                    Text("🧹", color = SELECTED_BORDER,
+                        fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 18.sp.scaled(),
+                        modifier = Modifier.clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.9f))
+                            .border(2.dp, SELECTED_BORDER, RoundedCornerShape(100f))
+                            .padding(horizontal = AppDimens.Dimens14, vertical = AppDimens.Dimens6)
+                            .clickable(
+                                interactionSource = remember { MutableInteractionSource() }, indication = null
+                            ) { state.selectedIndex?.let { viewModel.clearCell(it) } }
+                    )
                 }
                 Row(
                     verticalAlignment = Alignment.CenterVertically,

@@ -107,11 +107,24 @@ class NumberSnakePlayViewModel @Inject constructor(
         newGrid[i] = number
         newTray.remove(number)
 
-        val nextSelected = newGrid.indices.firstOrNull { newGrid[it] == 0 && it != i }
+        val nextSelected = nearestEmptyIndex(i, s.size, newGrid)
         _uiState.update {
             it.copy(grid = newGrid, tray = newTray, selectedIndex = nextSelected, wrongFlash = false)
         }
         checkWin()
+    }
+
+    // After placing a number, jump the selection to the physically closest
+    // blank cell instead of the next one in row-major order — jumping across
+    // the grid to a far-away cell every tap made the flow feel random.
+    private fun nearestEmptyIndex(from: Int, size: Int, grid: List<Int>): Int? {
+        val fr = from / size; val fc = from % size
+        return grid.indices
+            .filter { grid[it] == 0 }
+            .minByOrNull { idx ->
+                val r = idx / size; val c = idx % size
+                (r - fr) * (r - fr) + (c - fc) * (c - fc)
+            }
     }
 
     fun clearCell(index: Int) {
