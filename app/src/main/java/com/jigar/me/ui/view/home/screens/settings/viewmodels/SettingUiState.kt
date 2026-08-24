@@ -13,6 +13,7 @@ data class SettingUiState(
     val leftHanded: Boolean = true,
     val sumSound: Boolean = true,
     val beadSound: Boolean = true,
+    val is7RodsMode: Boolean = false,
 
     val musicVolume: Int = 10,
 

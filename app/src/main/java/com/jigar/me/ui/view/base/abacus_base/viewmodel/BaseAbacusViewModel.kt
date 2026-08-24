@@ -39,6 +39,14 @@ open class BaseAbacusViewModel(
     val isAbacusOnLeftHand: Boolean
         get() = prefs.getCustomParamBoolean(AppConstants.Settings.Setting_left_hand, true)
 
+    // 7-rod vs 13-rod abacus setting
+    val is7RodsModeEnabled: Boolean
+        get() = prefs.getCustomParamBoolean(AppConstants.Settings.Setting_7_rods_mode, false)
+
+    // single source of truth for the abacus column count (may change per-question for Division)
+    val currentNumberOfColumns: Int
+        get() = abacusCalc.numberOfColumns
+
     var rodMovements by mutableStateOf(listOf<RodMovement>())
         protected set
 

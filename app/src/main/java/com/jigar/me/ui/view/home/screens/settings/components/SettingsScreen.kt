@@ -15,6 +15,7 @@ import androidx.compose.material.icons.outlined.MusicNote
 import androidx.compose.material.icons.outlined.PanToolAlt
 import androidx.compose.material.icons.outlined.Speaker
 import androidx.compose.material.icons.outlined.Swipe
+import androidx.compose.material.icons.outlined.ViewColumn
 import androidx.compose.material.icons.outlined.Visibility
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -109,6 +110,11 @@ fun SettingsScreen(
                         stringResource(R.string.txt_setting_sound),
                         uiState.beadSound,
                         viewModel::toggleBeadSound
+                    ),
+                    ToggleItem(Icons.Outlined.ViewColumn,
+                        stringResource(R.string.txt_setting_7_rods_mode),
+                        uiState.is7RodsMode,
+                        viewModel::toggle7RodsMode
                     )
                 )
             )

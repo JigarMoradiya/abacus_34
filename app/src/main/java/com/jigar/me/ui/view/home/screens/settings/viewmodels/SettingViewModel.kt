@@ -40,6 +40,9 @@ class SettingViewModel @Inject constructor(
         ),
         musicVolume = prefs.getCustomParamInt(
             AppConstants.Settings.Setting_bg_music_volume, AppConstants.Settings.Setting_bg_music_volume_default
+        ),
+        is7RodsMode = prefs.getCustomParamBoolean(
+            AppConstants.Settings.Setting_7_rods_mode, false
         )
     )
 
@@ -182,6 +185,13 @@ class SettingViewModel @Inject constructor(
             AppConstants.Settings.Setting_sound, value
         )
         updateState_ { copy(beadSound = value) }
+    }
+
+    fun toggle7RodsMode(value: Boolean) {
+        prefs.setCustomParamBoolean(
+            AppConstants.Settings.Setting_7_rods_mode, value
+        )
+        updateState_ { copy(is7RodsMode = value) }
     }
 
 

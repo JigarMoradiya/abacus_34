@@ -24,7 +24,10 @@ class AbacusFreeModeViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val prefs: AppPreferencesHelper,
     private val ttsManager: TextToSpeechManager,
-) : BaseAbacusViewModel(numberOfColumns = 13, prefs = prefs) {
+) : BaseAbacusViewModel(
+    numberOfColumns = if (prefs.getCustomParamBoolean(AppConstants.Settings.Setting_7_rods_mode, false)) 7 else 13,
+    prefs = prefs
+) {
 
     // --------- UI / Settings state (persisted in prefs) ----------
 
@@ -155,7 +158,7 @@ class AbacusFreeModeViewModel @Inject constructor(
 
             val rods = max(leftInt.toString().length, target.toString().length)
             val left = MathUtils.calculateRodMovements(from = leftInt, to = target, rods = rods, isForRightRods = false)
-            val right = MathUtils.calculateRodMovements(from = rightInt, to = 0, rods = 6, isForRightRods = true)
+            val right = MathUtils.calculateRodMovements(from = rightInt, to = 0, rods = currentNumberOfColumns - 7, isForRightRods = true)
             updateRodMovements(left + right)
         }
     }

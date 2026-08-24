@@ -112,7 +112,7 @@ object MathUtils{
 
         (0 until rods).forEach { i ->
             val rodIndex = rods - 1 - i   // rightmost is least significant
-            val realIndex = if (isForRightRods) 12 - i else 6 - i
+            val realIndex = if (isForRightRods) (6 + rods) - i else 6 - i
 
             val f = fromDigits[rodIndex]
             val t = toDigits[rodIndex]

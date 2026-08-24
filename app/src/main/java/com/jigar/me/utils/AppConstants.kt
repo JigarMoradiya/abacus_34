@@ -109,6 +109,7 @@ object AppConstants {
             const val Setting_display_abacus_number = "Setting_display_abacus_number"
             const val Setting_display_help_message = "Setting_display_help_message"
             const val Setting_left_hand = "Setting_left_hand"
+            const val Setting_7_rods_mode = "Setting_7_rods_mode"
             const val Setting_bg_music_volume = "Setting_bg_music_volume"
             const val Setting_bg_music_volume_default = 5
 

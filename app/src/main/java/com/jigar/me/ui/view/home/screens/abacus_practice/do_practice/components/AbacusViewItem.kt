@@ -17,7 +17,7 @@ fun AbacusViewItem(viewModel : AbacusDoPracticeViewModel, uiState: AbacusDoPract
             isBeadSoundOn = viewModel.isBeadSoundEnabled,
             isDisplayCurrentAbacusInput = viewModel.isDisplayCurrentAbacusInput,
             abacusData = viewModel.abacusCalc,
-            numberOfColumns = 13,
+            numberOfColumns = viewModel.currentNumberOfColumns,
             rodMovement = viewModel.rodMovements,
             showDirectionHint = viewModel.showDirectionHints,
             abacusType = uiState.setDetail?.answer_setting,

@@ -3,7 +3,10 @@ package com.jigar.me.ui.view.base.abacus_base
 import android.util.Log
 import androidx.compose.runtime.*
 
-class AbacusCalculations(private val numberOfColumns: Int) {
+class AbacusCalculations(numberOfColumns: Int) {
+
+    var numberOfColumns = numberOfColumns
+        private set
 
     // ⭐ Fires whenever any bead changes
     var stateVersion by mutableIntStateOf(0)
@@ -30,7 +33,7 @@ class AbacusCalculations(private val numberOfColumns: Int) {
     // RESET
     // -------------------------------------------------------
     fun resetAbacusData() {
-        abacusState = MutableList(abacusState.size) {
+        abacusState = MutableList(numberOfColumns) {
             mutableListOf(true, false, false, true, true, true, true)
         }
 
@@ -38,6 +41,15 @@ class AbacusCalculations(private val numberOfColumns: Int) {
         totalValuePair = "0" to "0"
 
         stateVersion++   // ⭐ trigger recomposition
+    }
+
+    // -------------------------------------------------------
+    // RESIZE (used to switch between 7-rod / 13-rod abacus)
+    // -------------------------------------------------------
+    fun resizeColumns(newColumns: Int) {
+        if (newColumns == numberOfColumns) return
+        numberOfColumns = newColumns
+        resetAbacusData()
     }
 
     // -------------------------------------------------------
@@ -169,11 +181,11 @@ class AbacusCalculations(private val numberOfColumns: Int) {
     // -------------------------------------------------------
     private fun recalcTotal() {
         val raw = calculateAbacusString()
-        if (numberOfColumns == 13){
-            val padded = raw.padStart(13, '0')
+        if (numberOfColumns > 7){
+            val padded = raw.padStart(numberOfColumns, '0')
 
             val firstPart = padded.substring(0, 7)
-            val secondPart = padded.substring(7, 13)
+            val secondPart = padded.substring(7, numberOfColumns)
 
             totalValuePair = firstPart to secondPart
 

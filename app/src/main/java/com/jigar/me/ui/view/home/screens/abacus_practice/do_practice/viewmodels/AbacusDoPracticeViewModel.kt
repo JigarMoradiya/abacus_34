@@ -45,7 +45,10 @@ class AbacusDoPracticeViewModel @Inject constructor(
     private val abacusDataRepository: AbacusDataRepository,
     private val submitAllExamUseCase: SubmitAllExamUseCase,
     savedStateHandle: SavedStateHandle
-) : StatefulViewModelAbacus<AbacusDoPracticeUiState>(prefs = prefs,numberOfColumns = 13) {
+) : StatefulViewModelAbacus<AbacusDoPracticeUiState>(
+    prefs = prefs,
+    numberOfColumns = if (prefs.getCustomParamBoolean(AppConstants.Settings.Setting_7_rods_mode, false)) 7 else 13
+) {
 
     override val TAG = "AbacusDoPracticeViewModel"
 
@@ -122,10 +125,28 @@ class AbacusDoPracticeViewModel @Inject constructor(
         }
     }
     private fun preSetAbacus() {
+        // resize abacus columns first (no-op in 13-rod mode — always resolves to 13)
+        val targetColumns = computeNumberOfColumns()
+        if (targetColumns != abacusCalc.numberOfColumns) {
+            abacusCalc.resizeColumns(targetColumns)
+        }
         // set dividend on abacus
         if (state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeDivision){
             abacusCalc.setAbacusValueFromString((state().currentAbacus?.dividend?:"0").toString(), true)
         }
+    }
+
+    // how many total rods the abacus needs for the current question.
+    // 13-rod mode always stays 13 (unchanged behavior); 7-rod mode is flat 7
+    // rods, except Division which gets 7 + as many right rods as the
+    // question's remainder needs.
+    private fun computeNumberOfColumns(): Int {
+        if (!is7RodsModeEnabled) return 13
+        val currentAbacus = state().currentAbacus
+        if (state().currentAbacusType != AppConstants.extras_Comman.AbacusTypeDivision || currentAbacus == null) return 7
+        val maxRemainder = maxOf(currentAbacus.remainder, currentAbacus.eachStepRemainder.maxOrNull() ?: 0)
+        val remainderDigits = maxOf(maxRemainder.toString().length, 1)
+        return 7 + remainderDigits
     }
 
     // observer of currentIndexOfOperation for formula find of Multiplication and Division
@@ -369,19 +390,19 @@ class AbacusDoPracticeViewModel @Inject constructor(
                                 if (rightInt > 0) {
                                     val newValueRemainder = currentAbacus.eachStepRemainder.getOrNull(currentOperationIndex)
                                     if (newValueRemainder != null) {
-                                        rightList = MathUtils.calculateRodMovements(from = rightInt, to = newValueRemainder, rods = 6, isForRightRods = true)
+                                        rightList = MathUtils.calculateRodMovements(from = rightInt, to = newValueRemainder, rods = abacusCalc.numberOfColumns - 7, isForRightRods = true)
                                     }
                                 } else {
                                     if (!state().isSumComplete) {
                                         val newValueRemainder = currentAbacus.eachStepRemainder.getOrNull(currentOperationIndex)
                                         if (newValueRemainder != null) {
-                                            rightList = MathUtils.calculateRodMovements(from = 0, to = newValueRemainder, rods = 6, isForRightRods = true)
+                                            rightList = MathUtils.calculateRodMovements(from = 0, to = newValueRemainder, rods = abacusCalc.numberOfColumns - 7, isForRightRods = true)
                                         }
                                     }
                                 }
                                 updateRodMovements(left + rightList)
                             }else{
-                                val right = MathUtils.calculateRodMovements(from = rightInt, to = 0, rods = 6, isForRightRods = true)
+                                val right = MathUtils.calculateRodMovements(from = rightInt, to = 0, rods = abacusCalc.numberOfColumns - 7, isForRightRods = true)
                                 when (state().currentAbacusType) {
                                     AppConstants.extras_Comman.AbacusTypeNumber -> {
                                         val rods = max(leftInt.toString().length, currentAbacus.question.length)
@@ -432,7 +453,7 @@ class AbacusDoPracticeViewModel @Inject constructor(
                     val userAnswer = if (rightInt == 0 || state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeDivision){
                         "$leftInt"
                     }else{
-                        val toStr = rightInt.toString().padStart(6, '0')
+                        val toStr = rightInt.toString().padStart(abacusCalc.numberOfColumns - 7, '0')
                         val fractionalTrimmed = toStr.trimEnd('0')
                         "$leftInt.$fractionalTrimmed"
                     }

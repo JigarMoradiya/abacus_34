@@ -158,6 +158,7 @@
     <string name="txt_setting_left_hand">Abacus for Left Handed</string>
     <string name="txt_setting_sound">Bead Move Sound</string>
     <string name="txt_setting_hintsound">Sums Speak Sound</string>
+    <string name="txt_setting_7_rods_mode">7 Rods Abacus</string>
 
     <!--  Daily Exam  -->
     <string name="testResult">Exam\'s Result</string>
