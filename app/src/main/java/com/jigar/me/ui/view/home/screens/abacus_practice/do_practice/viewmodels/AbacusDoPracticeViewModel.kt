@@ -138,15 +138,15 @@ class AbacusDoPracticeViewModel @Inject constructor(
 
     // how many total rods the abacus needs for the current question.
     // 13-rod mode always stays 13 (unchanged behavior); 7-rod mode is flat 7
-    // rods, except Division which gets 7 + as many right rods as the
-    // question's remainder needs.
+    // rods, except Division which gets 7 + (digits of dividend + 1 extra rod) —
+    // the dividend is what actually sits on the right side while working
+    // through the question, so it (not the smaller final remainder) sizes it.
     private fun computeNumberOfColumns(): Int {
         if (!is7RodsModeEnabled) return 13
         val currentAbacus = state().currentAbacus
         if (state().currentAbacusType != AppConstants.extras_Comman.AbacusTypeDivision || currentAbacus == null) return 7
-        val maxRemainder = maxOf(currentAbacus.remainder, currentAbacus.eachStepRemainder.maxOrNull() ?: 0)
-        val remainderDigits = maxOf(maxRemainder.toString().length, 1)
-        return 7 + remainderDigits
+        val dividendDigits = currentAbacus.dividend.toString().length
+        return 7 + dividendDigits + 1
     }
 
     // observer of currentIndexOfOperation for formula find of Multiplication and Division

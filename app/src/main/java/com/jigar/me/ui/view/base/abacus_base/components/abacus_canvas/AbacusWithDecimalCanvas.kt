@@ -331,6 +331,10 @@ fun AbacusWithDecimalCanvas(
     if (!showHighlighter) return
 
     val totalBeadsHeight = totalHeight - (dim.rectLineWidth * 2)
+    // width of one abacus column — used to position tour highlights by exact
+    // rod index instead of hardcoded 13-column pixel offsets, so the tour
+    // still points at the right rod when numberOfColumns is 7.
+    val colUnit = dim.beadWidth + (dim.columnSpaces * 2)
 
     // 2️⃣ Beam (bar)
     Column(
@@ -400,23 +404,25 @@ fun AbacusWithDecimalCanvas(
         Spacer(modifier = Modifier.weight(1f))
     }
 
-    // 6️⃣ First rods
+    // 6️⃣ First rods — ones place is always column index 6 (the integer part
+    // is always the first 7 columns), so it's colUnit*6 from the left and
+    // whatever's left (numberOfColumns - 7) from the right.
     Row(modifier = Modifier.padding(dim.rectLineWidth)) {
-        Spacer(modifier = Modifier.weight(1f))
+        Box(modifier = Modifier.width(colUnit * 6).height(totalBeadsHeight))
         Box(
             modifier = Modifier
                 .width(dim.beadWidth)
                 .height(totalBeadsHeight)
                 .spotlightTag(6, highlightSteps[6].message)
         )
-        Spacer(modifier = Modifier.weight(1f))
+        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7)).height(totalBeadsHeight))
     }
 
-    // 7️⃣ Second rods
+    // 7️⃣ Second rods — tens place is always column index 5
     Row(modifier = Modifier.padding(dim.rectLineWidth)) {
         Box(
             modifier = Modifier
-                .width((dim.beadWidth + (dim.columnSpaces * 2)) * 5)
+                .width(colUnit * 5)
                 .height(totalBeadsHeight)
         )
         Box(
@@ -427,16 +433,16 @@ fun AbacusWithDecimalCanvas(
         )
         Box(
             modifier = Modifier
-                .width((dim.beadWidth + (dim.columnSpaces * 2)) * 7)
+                .width(colUnit * (numberOfColumns - 6))
                 .height(totalBeadsHeight)
         )
     }
 
-    // 8️⃣ Third rods
+    // 8️⃣ Third rods — hundreds place is always column index 4
     Row(modifier = Modifier.padding(dim.rectLineWidth)) {
         Box(
             modifier = Modifier
-                .width((dim.beadWidth + (dim.columnSpaces * 2)) * 4)
+                .width(colUnit * 4)
                 .height(totalBeadsHeight)
         )
         Box(
@@ -447,66 +453,66 @@ fun AbacusWithDecimalCanvas(
         )
         Box(
             modifier = Modifier
-                .width((dim.beadWidth + (dim.columnSpaces * 2)) * 8)
+                .width(colUnit * (numberOfColumns - 5))
                 .height(totalBeadsHeight)
         )
     }
 
-    // 9️⃣ 1 rod = 0–9
+    // 9️⃣ 1 rod = 0–9 — same position as step 6 (ones, column index 6)
     Row(modifier = Modifier.padding(dim.rectLineWidth)) {
-        Spacer(modifier = Modifier.weight(1f))
+        Box(modifier = Modifier.width(colUnit * 6).height(totalBeadsHeight))
         Box(
             modifier = Modifier
                 .width(dim.beadWidth)
                 .height(totalBeadsHeight)
                 .spotlightTag(9, highlightSteps[9].message)
         )
-        Spacer(modifier = Modifier.weight(1f))
+        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7)).height(totalBeadsHeight))
     }
 
-    // 🔟 2 rods = 0–99
+    // 🔟 2 rods = 0–99 — tens + ones, column indices 5-6
     Row(modifier = Modifier.padding(dim.rectLineWidth)) {
         Box(
             modifier = Modifier
-                .width((dim.beadWidth + (dim.columnSpaces * 2)) * 5)
+                .width(colUnit * 5)
                 .height(totalBeadsHeight)
         )
         Box(
             modifier = Modifier
-                .width((dim.beadWidth + (dim.columnSpaces * 2)) * 2)
+                .width(colUnit * 2)
                 .height(totalBeadsHeight)
                 .spotlightTag(10, highlightSteps[10].message)
         )
         Box(
             modifier = Modifier
-                .width((dim.beadWidth + (dim.columnSpaces * 2)) * 6)
+                .width(colUnit * (numberOfColumns - 7))
                 .height(totalBeadsHeight)
         )
     }
 
-    // 1️⃣1️⃣ 3 rods = 0–999
+    // 1️⃣1️⃣ 3 rods = 0–999 — hundreds + tens + ones, column indices 4-6
     Row(modifier = Modifier.padding(dim.rectLineWidth)) {
         Box(
             modifier = Modifier
-                .width((dim.beadWidth + (dim.columnSpaces * 2)) * 4)
+                .width(colUnit * 4)
                 .height(totalBeadsHeight)
         )
         Box(
             modifier = Modifier
-                .width((dim.beadWidth + (dim.columnSpaces * 2)) * 3)
+                .width(colUnit * 3)
                 .height(totalBeadsHeight)
                 .spotlightTag(11, highlightSteps[11].message)
         )
         Box(
             modifier = Modifier
-                .width((dim.beadWidth + (dim.columnSpaces * 2)) * 6)
+                .width(colUnit * (numberOfColumns - 7))
                 .height(totalBeadsHeight)
         )
     }
 
-    // 1️⃣2️⃣ Addition bottom bead
+    // 1️⃣2️⃣ Addition bottom bead — ones place, column index 6
     Row(modifier = Modifier.padding(dim.rectLineWidth)) {
-        Spacer(modifier = Modifier.weight(1f))
+        Box(modifier = Modifier.width(colUnit * 6))
         Column {
             Box(
                 modifier = Modifier
@@ -520,7 +526,7 @@ fun AbacusWithDecimalCanvas(
                     .spotlightTag(12, highlightSteps[12].message)
             )
         }
-        Spacer(modifier = Modifier.weight(1f))
+        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7)))
     }
 
     // 1️⃣3️⃣ Addition top bead
@@ -542,9 +548,9 @@ fun AbacusWithDecimalCanvas(
         Spacer(modifier = Modifier.weight(1f))
     }
 
-    // 1️⃣4️⃣ Subtraction bottom bead
+    // 1️⃣4️⃣ Subtraction bottom bead — ones place, column index 6
     Row(modifier = Modifier.padding(dim.rectLineWidth)) {
-        Spacer(modifier = Modifier.weight(1f))
+        Box(modifier = Modifier.width(colUnit * 6))
         Column(
             modifier = Modifier.height(totalHeight - (dim.rectLineWidth * 2))
         ) {
@@ -560,12 +566,12 @@ fun AbacusWithDecimalCanvas(
                     .spotlightTag(14, highlightSteps[14].message)
             )
         }
-        Spacer(modifier = Modifier.weight(1f))
+        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7)))
     }
 
-    // 1️⃣5️⃣ Subtraction top bead
+    // 1️⃣5️⃣ Subtraction top bead — ones place, column index 6
     Row(modifier = Modifier.padding(dim.rectLineWidth)) {
-        Spacer(modifier = Modifier.weight(1f))
+        Box(modifier = Modifier.width(colUnit * 6))
         Column(
             modifier = Modifier.height(totalHeight - (dim.rectLineWidth * 2))
         ) {
@@ -577,7 +583,7 @@ fun AbacusWithDecimalCanvas(
             )
             Spacer(modifier = Modifier.weight(1f))
         }
-        Spacer(modifier = Modifier.weight(1f))
+        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7)))
     }
 
     // ==========================
@@ -608,12 +614,17 @@ fun AbacusWithDecimalCanvas(
                     return@SpotlightOverlay
                 }
 
+                // demo values below are built as "<leading digits>" + trailing
+                // zeros so they land on the correct rod (ones/tens/hundreds are
+                // always columns 6/5/4) regardless of numberOfColumns, instead
+                // of fixed 7-9 digit literals that only lined up at 13 columns.
+                val trailingZerosFromOnes = "0".repeat(numberOfColumns - 7)
                 when (nextSpot) {
-                    6, 9 -> abacusData.setAbacusValueFromString("9000000")
-                    7 -> abacusData.setAbacusValueFromString("90000000")
-                    8 -> abacusData.setAbacusValueFromString("900000000")
-                    10 -> abacusData.setAbacusValueFromString("99000000")
-                    11 -> abacusData.setAbacusValueFromString("999000000")
+                    6, 9 -> abacusData.setAbacusValueFromString("9$trailingZerosFromOnes")
+                    7 -> abacusData.setAbacusValueFromString("9" + "0".repeat(numberOfColumns - 6))
+                    8 -> abacusData.setAbacusValueFromString("9" + "0".repeat(numberOfColumns - 5))
+                    10 -> abacusData.setAbacusValueFromString("99$trailingZerosFromOnes")
+                    11 -> abacusData.setAbacusValueFromString("999$trailingZerosFromOnes")
 
                     12 -> {
                         val list = MathUtils.calculateRodMovements(from = 0, to = 4, rods = 1, isForRightRods = false)
@@ -628,14 +639,14 @@ fun AbacusWithDecimalCanvas(
                     }
 
                     14 -> {
-                        abacusData.setAbacusValueFromString("4000000")
+                        abacusData.setAbacusValueFromString("4$trailingZerosFromOnes")
                         val list = MathUtils.calculateRodMovements(from = 4, to = 0, rods = 1, isForRightRods = false)
                         onRodMovementChange(list)
                         onShowDirectionHintsChange(true)
                     }
 
                     15 -> {
-                        abacusData.setAbacusValueFromString("5000000")
+                        abacusData.setAbacusValueFromString("5$trailingZerosFromOnes")
                         val list = MathUtils.calculateRodMovements(from = 5, to = 0, rods = 1, isForRightRods = false)
                         onRodMovementChange(list)
                         onShowDirectionHintsChange(true)
