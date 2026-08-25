@@ -382,7 +382,7 @@ fun AbacusWithDecimalCanvas(
         )
     }
 
-    // 5️⃣ Unit place
+    // 5️⃣ Unit place — ones place is always column index 6
     Column(
         modifier = Modifier
             .height(totalHeight)
@@ -392,14 +392,14 @@ fun AbacusWithDecimalCanvas(
             modifier = Modifier
                 .padding(top = (dim.beadHeight * 2) + dim.extraSpace)
         ) {
-            Spacer(modifier = Modifier.weight(1f))
+            Box(modifier = Modifier.width(colUnit * 6))
             Box(
                 modifier = Modifier
                     .width(dim.beadWidth)
                     .height(dim.beamHeight)
                     .spotlightTag(5, highlightSteps[5].message)
             )
-            Spacer(modifier = Modifier.weight(1f))
+            Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7)))
         }
         Spacer(modifier = Modifier.weight(1f))
     }
@@ -529,14 +529,12 @@ fun AbacusWithDecimalCanvas(
         Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7)))
     }
 
-    // 1️⃣3️⃣ Addition top bead
-    Column(
-        modifier = Modifier
-            .height(totalHeight)
-            .padding(dim.rectLineWidth)
-    ) {
-        Spacer(modifier = Modifier.weight(1f))
-        Column {
+    // 1️⃣3️⃣ Addition top bead — ones place, column index 6
+    Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+        Box(modifier = Modifier.width(colUnit * 6))
+        Column(
+            modifier = Modifier.height(totalHeight - (dim.rectLineWidth * 2))
+        ) {
             Box(
                 modifier = Modifier
                     .width(dim.beadWidth)
@@ -545,7 +543,7 @@ fun AbacusWithDecimalCanvas(
             )
             Spacer(modifier = Modifier.weight(1f))
         }
-        Spacer(modifier = Modifier.weight(1f))
+        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7)))
     }
 
     // 1️⃣4️⃣ Subtraction bottom bead — ones place, column index 6

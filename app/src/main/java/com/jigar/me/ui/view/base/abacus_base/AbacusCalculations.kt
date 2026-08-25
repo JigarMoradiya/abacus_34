@@ -38,6 +38,7 @@ class AbacusCalculations(numberOfColumns: Int) {
         }
 
         displayValue = "0"
+        isDivisionQuestion = false
         totalValuePair = "0" to "0"
 
         stateVersion++   // ⭐ trigger recomposition
