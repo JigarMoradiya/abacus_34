@@ -72,16 +72,17 @@ Sized against the *existing* architecture, not a rewritten one. Ordered by effor
 - Accessibility-friendly theme variants (color-blind-safe, dyslexia-friendly font) — the theme system is already pluggable, just needs the variants.
 - Offline-state handling + a simple "you're offline, results will sync later" indicator (no connectivity monitoring exists on either platform today).
 
+**Correction:** the initial audit missed that push notifications already work on both platforms via OneSignal (plus local notifications) — the "no notification channel on iOS" finding below was wrong. Struck from Large/strategic; the streak-save nudge downgrades from "needs new infra" to a straightforward addition on the existing OneSignal integration.
+
 **Medium (M):**
 - iOS VoiceOver/accessibility pass — Android already has 122 `contentDescription` tags across 68 files; iOS has zero `accessibilityLabel` usage. Real parity gap for a kids' app that may be used by mixed-ability households.
 - First-run onboarding flow — nothing like this exists; users land straight on Home today.
 - Badges/achievement system beyond the existing per-lesson star ratings.
 - Adaptive review of previously-missed problem types (spaced repetition) — reuses result data that's already stored.
-- Streak-save nudge ("about to lose your streak") — Android has the WorkManager infra already (`StreakNotificationWorker`); iOS would need its notification base built first (ties into the push-notification item below).
+- Streak-save nudge ("about to lose your streak") — both platforms already have a working notification channel (OneSignal + local); this is just a new scheduled message on existing infra.
 - Referral program (parent-invites-parent) — no referral system exists in the current RevenueCat/account flow.
 
 **Large / strategic (L):**
-- Real push notifications (FCM + APNs) — today only Android has *local* WorkManager reminders; iOS has no notification channel at all. This is also a prerequisite for several of the Medium items above.
 - Multi-language localization — iOS only has `en.lproj`; Android has no source-level `values-xx` folders. Hindi/Spanish/Arabic would fit this app's likely demographic best.
 - Parent dashboard / progress digest beyond the current local weekly summary.
 - Multi-child family profiles under one subscription (no evidence this exists — RevenueCat entitlement looks single-user).
