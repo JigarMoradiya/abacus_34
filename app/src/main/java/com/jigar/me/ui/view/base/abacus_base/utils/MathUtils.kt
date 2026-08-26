@@ -2,6 +2,7 @@ package com.jigar.me.ui.view.base.abacus_base.utils
 
 import com.jigar.me.data.local.data.Movement
 import com.jigar.me.data.local.data.RodMovement
+import com.jigar.me.ui.view.base.abacus_base.AbacusCalculations
 import kotlin.math.cos
 import kotlin.math.pow
 import kotlin.math.sin
@@ -112,7 +113,8 @@ object MathUtils{
 
         (0 until rods).forEach { i ->
             val rodIndex = rods - 1 - i   // rightmost is least significant
-            val realIndex = if (isForRightRods) (6 + rods) - i else 6 - i
+            val lastIntegerColumnIndex = AbacusCalculations.INTEGER_RODS - 1
+            val realIndex = if (isForRightRods) (lastIntegerColumnIndex + rods) - i else lastIntegerColumnIndex - i
 
             val f = fromDigits[rodIndex]
             val t = toDigits[rodIndex]

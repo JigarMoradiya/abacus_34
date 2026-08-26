@@ -47,6 +47,11 @@ open class BaseAbacusViewModel(
     val currentNumberOfColumns: Int
         get() = abacusCalc.numberOfColumns
 
+    // how many columns sit right of the integer part (0 when there's no
+    // decimal/remainder side at all, e.g. 7-rod mode outside Division)
+    val currentRightRodCount: Int
+        get() = abacusCalc.rightRodCount
+
     var rodMovements by mutableStateOf(listOf<RodMovement>())
         protected set
 

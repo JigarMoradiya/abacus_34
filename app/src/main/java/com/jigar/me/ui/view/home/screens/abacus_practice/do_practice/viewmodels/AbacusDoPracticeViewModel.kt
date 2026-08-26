@@ -390,19 +390,19 @@ class AbacusDoPracticeViewModel @Inject constructor(
                                 if (rightInt > 0) {
                                     val newValueRemainder = currentAbacus.eachStepRemainder.getOrNull(currentOperationIndex)
                                     if (newValueRemainder != null) {
-                                        rightList = MathUtils.calculateRodMovements(from = rightInt, to = newValueRemainder, rods = abacusCalc.numberOfColumns - 7, isForRightRods = true)
+                                        rightList = MathUtils.calculateRodMovements(from = rightInt, to = newValueRemainder, rods = abacusCalc.rightRodCount, isForRightRods = true)
                                     }
                                 } else {
                                     if (!state().isSumComplete) {
                                         val newValueRemainder = currentAbacus.eachStepRemainder.getOrNull(currentOperationIndex)
                                         if (newValueRemainder != null) {
-                                            rightList = MathUtils.calculateRodMovements(from = 0, to = newValueRemainder, rods = abacusCalc.numberOfColumns - 7, isForRightRods = true)
+                                            rightList = MathUtils.calculateRodMovements(from = 0, to = newValueRemainder, rods = abacusCalc.rightRodCount, isForRightRods = true)
                                         }
                                     }
                                 }
                                 updateRodMovements(left + rightList)
                             }else{
-                                val right = MathUtils.calculateRodMovements(from = rightInt, to = 0, rods = abacusCalc.numberOfColumns - 7, isForRightRods = true)
+                                val right = MathUtils.calculateRodMovements(from = rightInt, to = 0, rods = abacusCalc.rightRodCount, isForRightRods = true)
                                 when (state().currentAbacusType) {
                                     AppConstants.extras_Comman.AbacusTypeNumber -> {
                                         val rods = max(leftInt.toString().length, currentAbacus.question.length)
@@ -453,7 +453,7 @@ class AbacusDoPracticeViewModel @Inject constructor(
                     val userAnswer = if (rightInt == 0 || state().currentAbacusType == AppConstants.extras_Comman.AbacusTypeDivision){
                         "$leftInt"
                     }else{
-                        val toStr = rightInt.toString().padStart(abacusCalc.numberOfColumns - 7, '0')
+                        val toStr = rightInt.toString().padStart(abacusCalc.rightRodCount, '0')
                         val fractionalTrimmed = toStr.trimEnd('0')
                         "$leftInt.$fractionalTrimmed"
                     }

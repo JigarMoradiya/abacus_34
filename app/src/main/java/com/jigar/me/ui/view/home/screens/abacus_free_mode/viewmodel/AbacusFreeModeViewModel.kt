@@ -158,7 +158,7 @@ class AbacusFreeModeViewModel @Inject constructor(
 
             val rods = max(leftInt.toString().length, target.toString().length)
             val left = MathUtils.calculateRodMovements(from = leftInt, to = target, rods = rods, isForRightRods = false)
-            val right = MathUtils.calculateRodMovements(from = rightInt, to = 0, rods = currentNumberOfColumns - 7, isForRightRods = true)
+            val right = MathUtils.calculateRodMovements(from = rightInt, to = 0, rods = currentRightRodCount, isForRightRods = true)
             updateRodMovements(left + right)
         }
     }

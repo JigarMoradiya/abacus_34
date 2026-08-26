@@ -5,8 +5,22 @@ import androidx.compose.runtime.*
 
 class AbacusCalculations(numberOfColumns: Int) {
 
+    companion object {
+        // The integer part of the abacus is always exactly the first 7
+        // columns (ones/tens/hundreds/.../ten-lakhs) regardless of total
+        // column count — named here since it was previously a bare `7`
+        // repeated at many call sites, which made the 7-rod feature's bugs
+        // easy to miss.
+        const val INTEGER_RODS = 7
+    }
+
     var numberOfColumns = numberOfColumns
         private set
+
+    // How many columns sit right of the integer part (0 when there's no
+    // decimal/remainder side at all, e.g. 7-rod mode outside Division).
+    val rightRodCount: Int
+        get() = (numberOfColumns - INTEGER_RODS).coerceAtLeast(0)
 
     // ⭐ Fires whenever any bead changes
     var stateVersion by mutableIntStateOf(0)
@@ -182,11 +196,11 @@ class AbacusCalculations(numberOfColumns: Int) {
     // -------------------------------------------------------
     private fun recalcTotal() {
         val raw = calculateAbacusString()
-        if (numberOfColumns > 7){
+        if (numberOfColumns > INTEGER_RODS){
             val padded = raw.padStart(numberOfColumns, '0')
 
-            val firstPart = padded.substring(0, 7)
-            val secondPart = padded.substring(7, numberOfColumns)
+            val firstPart = padded.substring(0, INTEGER_RODS)
+            val secondPart = padded.substring(INTEGER_RODS, numberOfColumns)
 
             totalValuePair = firstPart to secondPart
 
