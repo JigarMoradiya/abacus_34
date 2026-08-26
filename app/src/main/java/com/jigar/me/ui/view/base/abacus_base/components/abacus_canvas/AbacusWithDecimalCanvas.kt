@@ -103,7 +103,7 @@ fun AbacusWithDecimalCanvas(
 
 
     val dim = AbacusTheme.dimensionPreset(context,screenType = screenType,abacusType = abacusType,questionType = questionType, isFreeModeOn = isFreeModeOn)
-    val totalWidth = (dim.beadWidth * numberOfColumns) + (dim.rectLineWidth * 2) + (dim.columnSpaces * (numberOfColumns) * 2)
+    val totalWidth = (dim.beadWidth * numberOfColumns) + (dim.rectLineWidth * 2) + (dim.columnSpaces * (numberOfColumns) * 2) + (if (numberOfColumns > 7) dim.decimalSeparatorGap else 0.dp)
     val totalHeight = (dim.beadHeight * 7) + (dim.rectLineWidth * 2) + (dim.extraSpace * 2) + dim.beamHeight
 
     val highlightSteps = freeModeHighlightSteps

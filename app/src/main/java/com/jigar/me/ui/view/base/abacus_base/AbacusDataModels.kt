@@ -43,6 +43,10 @@ data class AbacusDimensionModel(
     val textSizeSp: Int = 13,
     val stripHeight: Dp = if (DeviceInfo.isLargeTablet) 36.dp else if (DeviceInfo.isTablet) 28.dp else 20.dp,
     val columnSpaces: Dp = if (DeviceInfo.isLargeTablet) 3.dp else if (DeviceInfo.isTablet) 2.dp else 1.dp,
+    // extra horizontal gap inserted between column 6 (last integer rod) and
+    // column 7 (first decimal/remainder rod), so kids can see the two groups
+    // are separate. Only applied when numberOfColumns > 7.
+    val decimalSeparatorGap: Dp = if (DeviceInfo.isLargeTablet) 26.dp else if (DeviceInfo.isTablet) 20.dp else 14.dp,
 )
 
 data class AbacusBottomLabel(

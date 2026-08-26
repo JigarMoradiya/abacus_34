@@ -21,8 +21,12 @@ data class AbacusCanvasGeometry(
     fun findColumn(x: Float): Int? {
         val colWidth = beadWidthPx + (columnSpacesPx * 2f)
         if (colWidth <= 0f) return null
-        val index = (x / colWidth).toInt()
-        return if (index in columnCentersX.indices) index else null
+        // columns are no longer uniformly spaced once the decimal-separator
+        // gap is inserted after column 6, so find the nearest column center
+        // instead of dividing by a fixed pitch.
+        val nearest = columnCentersX.indices.minByOrNull { i -> kotlin.math.abs(columnCentersX[i] - x) }
+            ?: return null
+        return nearest.takeIf { kotlin.math.abs(columnCentersX[nearest] - x) <= colWidth / 2f }
     }
 
     fun findRow(y: Float): Int? {
@@ -40,11 +44,15 @@ data class AbacusCanvasGeometry(
             val beamH = dim.beamHeight.toPx()
             val spacing = dim.columnSpaces.toPx()
             val extra = dim.extraSpace.toPx()
+            // extra gap after column 6 (integer/decimal boundary) — zero when
+            // there's no decimal side at all (numberOfColumns <= 7)
+            val separatorGap = if (numberOfColumns > 7) dim.decimalSeparatorGap.toPx() else 0f
 
             // Column centers
             val colWidth = beadW + spacing * 2
             val centers = List(numberOfColumns) { i ->
-                spacing + beadW / 2 + i * colWidth
+                val gapShift = if (i >= 7) separatorGap else 0f
+                spacing + beadW / 2 + i * colWidth + gapShift
             }
 
             // -------------------------
