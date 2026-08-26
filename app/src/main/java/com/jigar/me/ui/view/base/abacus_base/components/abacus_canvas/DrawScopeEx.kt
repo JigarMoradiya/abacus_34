@@ -320,13 +320,15 @@ fun DrawScope.drawAbacusColumns(
 
     // ───────── Decimal separator dots (between column 6 and column 7) ─────────
     // Marks the boundary between the integer rods and the decimal/remainder
-    // rods so kids can see the two groups are separate.
+    // rods so kids can see the two groups are separate. Uses the theme's own
+    // accent color (same as the existing every-3rd-column grouping dots)
+    // instead of a fixed white, so it stays visible against light themes too.
     if (numberOfColumns > 7 && (!showHighlighter || currentSpot != 1)) {
         val gapCenterX = (geometry.columnCentersX[6] + geometry.columnCentersX[7]) / 2f
         val dotRadius = geometry.beamHeightPx * 0.35f
         val dotGap = geometry.beamHeightPx * 1.6f
         val midY = size.height / 2f
-        val dotColor = Color.White.copy(alpha = 0.5f)
+        val dotColor = preset.buttonColor
         drawCircle(color = dotColor, radius = dotRadius, center = Offset(x = gapCenterX, y = midY - dotGap / 2f))
         drawCircle(color = dotColor, radius = dotRadius, center = Offset(x = gapCenterX, y = midY + dotGap / 2f))
     }
