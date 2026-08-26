@@ -181,16 +181,34 @@ User-configured dynamic challenge session.
 
 ## Math Game Zone
 
-4 math-skill games. All are mind-development focused, not just entertainment.
+_Last verified against source 2026: 20 games (this list previously undercounted at 4 — verify game count against `math_game_zone/` on Android / `Main/Games/` on iOS before relying on this section for planning)._
 
-| Game | Variants | Free |
-|---|---|---|
-| Number Sequence Puzzle | 3×3, 4×4, 5×5 sliding board | 3×3 only |
-| Sudoku | 4×4, 6×6, 9×9 with difficulty selection | Locked |
-| Math Pyramid | Pyramid steps 2–6 with difficulty selection | Locked |
-| Target the Number | 3 difficulty levels | Locked |
+20 math-skill mini-games, all mind-development focused, not just entertainment. Free-tier access follows the general Math Game Zone gating in the Access Model table above (Number Sequence 3×3 free, rest premium) unless a game implements its own override — check that game's route/ViewModel for the exact gate.
 
-**Game logic:**
+| Game |
+|---|
+| Number Sequence Puzzle (3×3, 4×4, 5×5 sliding board) |
+| Sudoku (4×4, 6×6, 9×9 with difficulty selection) |
+| Math Pyramid (pyramid steps 2–6 with difficulty selection) |
+| Target the Number |
+| Kakuro |
+| Calcudoku |
+| Magic Square |
+| Missing Operator |
+| Merge 2048 |
+| Equation Match |
+| Cross Math |
+| Balloon Pop / Balloon Make Ten |
+| Speed Compare |
+| Place Value |
+| Math Bingo |
+| Clock Master |
+| True / False |
+| Number Path |
+| Number Snake |
+| Number Detective |
+
+**Game logic (original 4, documented in detail; others follow the same "one clear rule, quick round" design — see each game's own README/ViewModel for specifics):**
 - **Number Sequence**: Slide tiles to arrange numbers in sequence (1 empty cell)
 - **Sudoku**: Each row, column, and grid must contain unique numbers
 - **Math Pyramid**: Sum of bottom 2 numbers equals the number above them
