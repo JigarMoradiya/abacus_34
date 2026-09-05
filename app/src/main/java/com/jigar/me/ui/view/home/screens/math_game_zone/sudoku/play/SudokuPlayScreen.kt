@@ -40,6 +40,7 @@ import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.dialogs.CommonLoadingView
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.dialogs.PopupTheme
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.components.SudokuNumberPad
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.components.SudokuBoard
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuPlayViewModel
@@ -160,6 +161,8 @@ fun SudokuPlayScreen(
             positiveButtonText = stringResource(R.string.play_again),
             negativeButtonText = stringResource(R.string.no_i_will_play_letter),
             icon = R.drawable.ic_complete,
+            theme = PopupTheme.CELEBRATION,
+            accent = ButtonType.ORANGE,
             widthMultiplier = 0.5f,
             onPositiveTapped = {
                 vm.isSolved = false

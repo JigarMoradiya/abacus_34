@@ -61,6 +61,7 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.dialogs.PopupTheme
 import com.jigar.me.ui.view.home.common_ui.how_to_play.HowToPlaySudokuView
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuDifficulty4
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuSize
@@ -253,7 +254,10 @@ fun SudokuHomeScreen(
                 viewModel.closeResumePopup()
                 viewModel.setDataGameStart(state.selectedSize, state.selectedDifficulty, true)
                 onStart()
-            }
+            },
+            icon = R.drawable.ic_alert,
+            theme = PopupTheme.CONFIRM,
+            accent = ButtonType.BLUE
         )
     }
 }

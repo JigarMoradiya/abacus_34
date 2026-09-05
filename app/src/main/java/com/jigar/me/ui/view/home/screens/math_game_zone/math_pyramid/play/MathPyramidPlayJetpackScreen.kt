@@ -59,6 +59,7 @@ import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorLightYellow
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.dialogs.PopupTheme
 import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.play.components.NumberPyramidGenerator
 import com.jigar.me.ui.view.home.theme.AppDimens
@@ -186,6 +187,8 @@ fun MathPyramidPlayJetpackScreen(
             positiveButtonText = stringResource(R.string.continue_to_play),
             negativeButtonText = stringResource(R.string.no_i_want_to_close),
             icon = R.drawable.ic_complete,
+            theme = PopupTheme.CELEBRATION,
+            accent = ButtonType.ORANGE,
             widthMultiplier = 0.5f,
             onPositiveTapped = {
                 isSolved = false

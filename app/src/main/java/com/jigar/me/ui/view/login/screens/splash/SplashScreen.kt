@@ -20,6 +20,8 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.dialogs.PopupTheme
+import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.login.screens.splash.viewmodels.SplashViewModel
 import com.jigar.me.utils.extensions.openURL
 
@@ -52,6 +54,8 @@ fun SplashScreen(
             positiveButtonText = stringResource(R.string.yes_i_want_to_update),
             negativeButtonText = stringResource(R.string.no_thanks),
             icon = R.drawable.ic_alert,
+            theme = PopupTheme.CONFIRM,
+            accent = ButtonType.BLUE,
             widthMultiplier = 0.7f,
             onPositiveTapped = {
                 viewModel.onUpdateConfirmed()
@@ -69,6 +73,8 @@ fun SplashScreen(
             positiveButtonText = stringResource(R.string.retry),
             negativeButtonText = stringResource(R.string.cancel),
             icon = R.drawable.ic_alert_sad_emoji,
+            theme = PopupTheme.CONFIRM,
+            accent = ButtonType.RED,
             widthMultiplier = 0.7f,
             onPositiveTapped = { viewModel.retryAfterError() },
             onNegativeTapped = { onFinishActivity() }
@@ -83,6 +89,8 @@ fun SplashScreen(
             positiveButtonText = stringResource(R.string.retry),
             negativeButtonText = stringResource(R.string.cancel),
             icon = R.drawable.ic_alert,
+            theme = PopupTheme.CONFIRM,
+            accent = ButtonType.RED,
             widthMultiplier = 0.7f,
             onPositiveTapped = { viewModel.retryAfterError() },
             onNegativeTapped = { onFinishActivity() }

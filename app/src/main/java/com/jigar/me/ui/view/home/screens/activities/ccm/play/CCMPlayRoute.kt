@@ -36,6 +36,8 @@ import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateHost
 import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.dialogs.PopupTheme
+import com.jigar.me.ui.view.home.theme.ButtonType
 
 @Composable
 fun CCMPlayRoute(
@@ -109,6 +111,8 @@ fun CCMPlayRoute(
             positiveButtonText = stringResource(R.string.continue_working_internet),
             negativeButtonText = stringResource(R.string.no_working_internet),
             icon = R.drawable.ic_alert_sad_emoji,
+            theme = PopupTheme.CONFIRM,
+            accent = ButtonType.RED,
             widthMultiplier = 0.7f,
             onPositiveTapped = { viewModel.submitAnswer(false) },
             onNegativeTapped = onBackClick

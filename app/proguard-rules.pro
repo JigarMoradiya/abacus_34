@@ -105,12 +105,14 @@
 -keep class com.google.android.material.internal.CollapsingTextHelper { *; }
 
 ##---------------App model classes--------##
+# Everything under data.model.** is already covered by the blanket rule below,
+# including data.model.dbtable.abacus_all_data.** (Level/Abacus/Pages/Category/
+# Set/SetProgress). The old dbtable.exam/inapp/suduko lines matched packages
+# that no longer exist in the codebase, so they were removed as dead config.
 -keepclassmembers class com.jigar.me.data.model.** { *; }
 -keepclassmembers class com.jigar.me.data.model.data.** { *; }
 -keepclassmembers class com.jigar.me.data.model.pages.** { *; }
--keepclassmembers class com.jigar.me.data.model.dbtable.exam.** { *; }
--keepclassmembers class com.jigar.me.data.model.dbtable.inapp.** { *; }
--keepclassmembers class com.jigar.me.data.model.dbtable.suduko.** { *; }
+-keepclassmembers class com.jigar.me.data.model.dbtable.abacus_all_data.** { *; }
 
 ##---------------Gson-persisted game state (SharedPreferences/SavedStateHandle)--------##
 # These aren't under data.model.** and have no @SerializedName, so R8 field

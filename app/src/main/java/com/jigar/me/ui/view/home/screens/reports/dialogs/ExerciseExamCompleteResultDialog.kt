@@ -25,16 +25,15 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -46,7 +45,6 @@ import com.jigar.me.R
 import com.jigar.me.data.model.data.QuestionDataRequest
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorDARKGreen
-import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
@@ -99,9 +97,11 @@ fun ExerciseExamCompleteResultDialog(
                 modifier = Modifier.fillMaxSize()
             ) {
 
-                // Header
+                // Header -- "Sticker Book" colored band, body stays white/readable below
                 Row(modifier = Modifier.fillMaxWidth()
-                    .padding(start = AppDimens.Dimens16).padding(end = AppDimens.Dimens12),
+                    .background(Brush.horizontalGradient(listOf(Color(0xFF42A5F5), Color(0xFF0074D5))))
+                    .clip(RoundedCornerShape(topStart = AppDimens.Dimens20, topEnd = AppDimens.Dimens20))
+                    .padding(start = AppDimens.Dimens16, end = AppDimens.Dimens12, top = AppDimens.Dimens12, bottom = AppDimens.Dimens12),
                     verticalAlignment = Alignment.CenterVertically) {
                     val title = when (request.type) {
                         AppConstants.EXAM.type_Exercise -> {
@@ -119,24 +119,21 @@ fun ExerciseExamCompleteResultDialog(
                     }
                     Text(
                         text = title,
-                        style = MaterialTheme.typography.titleMedium.scaled().copy(color = ColorPrimary,
+                        style = MaterialTheme.typography.titleMedium.scaled().copy(color = Color.White,
                             fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))),
                     )
                     Spacer(modifier = Modifier.weight(1f))
-                    TextButton(
-                        onClick = onClose,
+                    Box(
+                        modifier = Modifier
+                            .size(AppDimens.Dimens28)
+                            .clip(RoundedCornerShape(percent = 50))
+                            .background(Color.White.copy(alpha = 0.25f))
+                            .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }) { onClose() },
+                        contentAlignment = Alignment.Center
                     ) {
-                        Icon(Icons.Default.Close, contentDescription = null, tint = Color.DarkGray,modifier = Modifier.size(AppDimens.Dimens20))
-                        Spacer(Modifier.width(AppDimens.Dimens4))
-                        Text(
-                            stringResource(R.string.close), style = MaterialTheme.typography.bodyMedium.scaled().copy(color = Color.DarkGray, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold)))
-                        )
+                        Icon(Icons.Default.Close, contentDescription = stringResource(R.string.close), tint = Color.White, modifier = Modifier.size(AppDimens.Dimens16))
                     }
                 }
-
-                HorizontalDivider(
-                    Modifier, color = Color.Black.copy(alpha = 0.1f), thickness = AppDimens.Dimens1
-                )
 
                 Row{
                     Column(modifier = Modifier.weight(1f).fillMaxHeight(),horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {

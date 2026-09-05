@@ -29,6 +29,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -103,13 +105,14 @@ fun FreemiumLoginBottomSheet(
                 Box(
                     modifier = Modifier
                         .size(AppDimens.Dimens40)
-                        .background(ColorPrimary.copy(alpha = 0.12f), CircleShape),
+                        .shadow(elevation = 6.dp, shape = CircleShape, ambientColor = Color(0xFF6446CC), spotColor = Color(0xFF6446CC))
+                        .background(Brush.linearGradient(listOf(Color(0xFF9374EF), Color(0xFF6446CC))), CircleShape),
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
                         imageVector = Icons.Default.AccountCircle,
                         contentDescription = null,
-                        tint = ColorPrimary,
+                        tint = Color.White,
                         modifier = Modifier.size(AppDimens.Dimens20)
                     )
                 }
@@ -119,7 +122,7 @@ fun FreemiumLoginBottomSheet(
                         style = MaterialTheme.typography.titleSmall.scaled().copy(
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily(Font(R.font.font_bold)),
-                            color = ColorPrimary
+                            color = Color(0xFF6446CC)
                         )
                     )
                     Text(

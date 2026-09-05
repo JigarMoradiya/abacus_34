@@ -4,6 +4,7 @@ import com.jigar.me.ui.view.home.theme.AppDimens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.LocalIndication
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -15,7 +16,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -23,6 +26,7 @@ import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.DoneOutline
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Update
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
@@ -108,8 +112,24 @@ fun SettingsDialog(
                     modifier = Modifier
                 ) {
 
-                    // Title
+                    // Title -- subtle accent-colored icon badge, light touch only
                     Row {
+
+                        Box(
+                            modifier = Modifier
+                                .padding(start = Dimens16, top = Dimens16)
+                                .size(28.dp)
+                                .clip(CircleShape)
+                                .background(ColorPrimary.copy(alpha = 0.12f)),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Settings,
+                                contentDescription = null,
+                                tint = ColorPrimary,
+                                modifier = Modifier.size(Dimens16)
+                            )
+                        }
 
                         Text(
                             stringResource(R.string.free_mode_settings),

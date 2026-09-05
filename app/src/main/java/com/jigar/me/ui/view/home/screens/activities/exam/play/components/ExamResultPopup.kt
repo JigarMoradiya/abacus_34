@@ -122,7 +122,7 @@ fun QuestionExamColumnItem(item: QuestionResult) {
     ) {
 
         Column(
-            modifier = Modifier.padding(vertical = AppDimens.Dimens6), horizontalAlignment = Alignment.CenterHorizontally
+            modifier = Modifier.fillMaxWidth().padding(vertical = AppDimens.Dimens6), horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
             val lines = remember(item.que) {

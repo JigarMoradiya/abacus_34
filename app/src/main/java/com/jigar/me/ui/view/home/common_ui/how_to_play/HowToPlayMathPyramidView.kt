@@ -1,6 +1,7 @@
 package com.jigar.me.ui.view.home.common_ui.how_to_play
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -31,7 +32,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.ButtonType
+import com.jigar.me.ui.view.home.theme.getButtonColors
 
 @Composable
 fun HowToPlayMathPyramidView(
@@ -46,6 +50,7 @@ fun HowToPlayMathPyramidView(
     val screenHeight = with(LocalDensity.current) {
         windowInfo.containerSize.height.toDp()
     }
+    val accentColors = getButtonColors(ButtonType.RED)
 
     // Dim background
     Box(
@@ -62,6 +67,7 @@ fun HowToPlayMathPyramidView(
                 .width(screenWidth * widthMultiplier)
                 .height(screenHeight * heightMultiplier)
                 .background(Color.White, RoundedCornerShape(AppDimens.Dimens20))
+                .border(AppDimens.Dimens4, accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20))
                 .padding(AppDimens.Dimens16)
         ) {
 
@@ -76,20 +82,17 @@ fun HowToPlayMathPyramidView(
                         text = stringResource(R.string.math_pyramid),
                         fontFamily = FontFamily(Font(R.font.font_extra_bold)),
                         fontSize = dimensionResource(R.dimen.textSize18).value.sp,
-                        color = ColorPrimary
+                        fontWeight = FontWeight.Bold,
+                        color = accentColors.base
                     )
 
                     Spacer(modifier = Modifier.weight(1f))
 
-                    Text(
+                    KidsActionButton(
                         text = stringResource(R.string.close),
-                        fontSize = 14.sp,
-                        fontFamily = FontFamily(Font(R.font.font_medium)),
-                        fontWeight = FontWeight.Medium,
-                        color = Color.Black,
-                        modifier = Modifier
-                            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8)
-                            .clickable { onClose() }
+                        type = ButtonType.RED,
+                        onClick = onClose,
+                        isSmall = true
                     )
                 }
 

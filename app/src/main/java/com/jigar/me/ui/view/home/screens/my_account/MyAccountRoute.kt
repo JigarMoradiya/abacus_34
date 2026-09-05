@@ -40,6 +40,8 @@ import com.jigar.me.ui.view.home.HomeActivity
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.dialogs.PopupTheme
+import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumLoginBottomSheet
 import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateBottomSheet
 import com.jigar.me.ui.view.home.screens.my_account.components.MyAccountScreen
@@ -159,6 +161,8 @@ fun MyAccountRoute(
                 positiveButtonText = stringResource(R.string.yes_i_m_sure),
                 negativeButtonText = stringResource(R.string.no),
                 icon = R.drawable.ic_alert,
+                theme = PopupTheme.CONFIRM,
+                accent = ButtonType.RED,
                 widthMultiplier = 0.5f,
                 onPositiveTapped = {
                     viewModel.makeLogout()

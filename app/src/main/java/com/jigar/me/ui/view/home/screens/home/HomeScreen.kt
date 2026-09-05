@@ -27,8 +27,10 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.*
@@ -57,6 +59,7 @@ import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.Loader
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.dialogs.PopupTheme
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreeTrialDialog
 import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateBottomSheet
 import com.jigar.me.ui.view.home.screens.home.components.HomeMenuScreen
@@ -78,6 +81,7 @@ import kotlin.math.max
 import kotlin.math.min
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.theme.ButtonType
+import com.jigar.me.ui.view.home.theme.getButtonColors
 import com.jigar.me.utils.WeeklySummaryManager
 import androidx.core.net.toUri
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens20
@@ -445,7 +449,10 @@ fun HomeScreen(
                 notes = stringResource(R.string.no_move_later_msg),
                 widthMultiplier = 0.8f,
                 onPositiveTapped = { viewModel.closeConflictPopup() },
-                onNegativeTapped = { viewModel.closeConflictPopup() }
+                onNegativeTapped = { viewModel.closeConflictPopup() },
+                icon = R.drawable.ic_alert,
+                theme = PopupTheme.CONFIRM,
+                accent = ButtonType.BLUE
             )
         }
 
@@ -680,6 +687,9 @@ private fun StreakCard(currentStreak: Int, bestStreak: Int, shields: Int = 0) {
 private fun StreakRewardDialog(milestone: Int, onDismiss: () -> Unit) {
     val badgeName = AppConstants.Streak.milestoneNames[milestone] ?: "Champion"
     LaunchedEffect(Unit) { AudioPlayerManager.playSoundClap() }
+    // Gold/amber -- distinct from Review Gate's orange.
+    val goldBase = Color(0xFFB8860B)
+    val goldGradient = Brush.verticalGradient(listOf(Color(0xFFFFD54F), Color(0xFFD4A017)))
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -687,53 +697,79 @@ private fun StreakRewardDialog(milestone: Int, onDismiss: () -> Unit) {
             .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }) { /* consume */ },
         contentAlignment = Alignment.Center
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth(0.55f)
-                .shadow(Dimens24, RoundedCornerShape(Dimens24))
-                .background(Color.White, RoundedCornerShape(Dimens24))
-                .padding(Dimens24),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(Dimens12)
+        // "Candy Pop" theme -- gold/orange gradient card, white trophy badge overlapping
+        // the top edge, bubble-outline title, white pill positive action.
+        Box(
+            modifier = Modifier.fillMaxWidth(0.55f),
+            contentAlignment = Alignment.TopCenter
         ) {
-            Text(text = "🏆", style = MaterialTheme.typography.displayLarge.scaled())
-            Text(
-                text = "Milestone Reached!",
-                style = MaterialTheme.typography.titleMedium.scaled(),
-                fontWeight = FontWeight.Black,
-                color = PrimaryBlue
-            )
-            Text(
-                text = "$milestone-Day Streak",
-                style = MaterialTheme.typography.bodyLarge.scaled(),
-                fontWeight = FontWeight.Bold,
-                color = Color(0xFFF57C00)
-            )
-            Text(
-                text = "You earned the \"$badgeName\" badge! 🎉",
-                style = MaterialTheme.typography.bodyMedium.scaled(),
-                color = Color.Black.copy(alpha = 0.7f),
-                textAlign = TextAlign.Center
-            )
-            Spacer(Modifier.height(Dimens8))
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .shadow(Dimens24, RoundedCornerShape(Dimens24), ambientColor = goldBase, spotColor = goldBase)
+                    .background(goldGradient, RoundedCornerShape(Dimens24))
+                    .padding(Dimens24),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(Dimens8)
+            ) {
+                Box(Modifier.height(Dimens16))
+                Text(
+                    text = "Milestone Reached!",
+                    style = MaterialTheme.typography.titleMedium.scaled().copy(
+                        shadow = Shadow(
+                            color = goldBase.copy(alpha = 0.85f),
+                            offset = Offset(1.5f, 1.5f),
+                            blurRadius = 0f
+                        )
+                    ),
+                    fontWeight = FontWeight.Black,
+                    color = Color.White,
+                    textAlign = TextAlign.Center
+                )
+                Text(
+                    text = "$milestone-Day Streak",
+                    style = MaterialTheme.typography.bodyLarge.scaled(),
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White
+                )
+                Text(
+                    text = "You earned the \"$badgeName\" badge! 🎉",
+                    style = MaterialTheme.typography.bodyMedium.scaled(),
+                    color = Color.White.copy(alpha = 0.92f),
+                    textAlign = TextAlign.Center
+                )
+                Box(
+                    modifier = Modifier
+                        .shadow(Dimens6, PillShape)
+                        .background(Color.White, PillShape)
+                        .clickable(
+                            indication = null,
+                            interactionSource = remember { MutableInteractionSource() },
+                            onClick = onDismiss
+                        )
+                        .padding(horizontal = Dimens24, vertical = Dimens12),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "Awesome! Keep Going 🔥",
+                        color = goldBase,
+                        style = MaterialTheme.typography.labelLarge.scaled(),
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
+
+            // White trophy badge, overlapping the card's top edge
             Box(
                 modifier = Modifier
-                    .shadow(Dimens6, PillShape, spotColor = PrimaryBlue.copy(alpha = 0.4f))
-                    .background(Brush.linearGradient(listOf(Color(0xFF42A5F5), PrimaryBlue)), PillShape)
-                    .clickable(
-                        indication = null,
-                        interactionSource = remember { MutableInteractionSource() },
-                        onClick = onDismiss
-                    )
-                    .padding(horizontal = Dimens24, vertical = Dimens12),
+                    .offset(y = (-32).dp)
+                    .size(76.dp)
+                    .shadow(8.dp, CircleShape)
+                    .background(Color.White, CircleShape)
+                    .border(4.dp, Color.White, CircleShape),
                 contentAlignment = Alignment.Center
             ) {
-                Text(
-                    text = "Awesome! Keep Going 🔥",
-                    color = Color.White,
-                    style = MaterialTheme.typography.labelLarge.scaled(),
-                    fontWeight = FontWeight.Bold
-                )
+                Text(text = "🏆", fontSize = 40.sp)
             }
         }
     }
@@ -778,12 +814,20 @@ private fun NotificationPermissionSheet(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(Dimens8)
                 ) {
-                    Text(text = "🔔", style = MaterialTheme.typography.displaySmall)
+                    Box(
+                        modifier = Modifier
+                            .size(AppDimens.Dimens48)
+                            .shadow(elevation = Dimens6, shape = CircleShape, ambientColor = Color(0xFFE91E63).copy(alpha = 0.4f), spotColor = Color(0xFFE91E63).copy(alpha = 0.4f))
+                            .background(Brush.linearGradient(listOf(Color(0xFFF5538A), Color(0xFFE91E63))), CircleShape),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(text = "🔔", style = MaterialTheme.typography.displaySmall)
+                    }
                     Text(
                         text = "Stay on Top of Learning",
                         style = MaterialTheme.typography.titleSmall.scaled(),
                         fontWeight = FontWeight.Black,
-                        color = PrimaryBlue,
+                        color = Color(0xFFE91E63),
                         textAlign = TextAlign.Center
                     )
                     Text(
@@ -1136,60 +1180,90 @@ fun WeeklyReportContent(
     compact: Boolean = false, // smaller paddings — used on My Account like iOS
     modifier: Modifier = Modifier
 ) {
+    // Only the real modal popup (has a close button) gets the "Sticker Book"
+    // teal header band. The inline/embedded usage (My Account) is untouched.
+    val isPopup = onClose != null
+    val headerAccent = Brush.horizontalGradient(listOf(Color(0xFF46BBC5), Color(0xFF107D86)))
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(if (compact) AppDimens.Dimens8 else AppDimens.Dimens16),
-        modifier = modifier
-            .background(Color.White, RoundedCornerShape(AppDimens.Dimens20))
-            .border(3.dp, Color(0xFF43A047), RoundedCornerShape(AppDimens.Dimens20))
-            .padding(
+        modifier = if (isPopup) {
+            modifier
+                .widthIn(max = 380.dp)
+                .shadow(AppDimens.Dimens20, RoundedCornerShape(AppDimens.Dimens20), ambientColor = Color(0xFF107D86), spotColor = Color(0xFF107D86))
+                .clip(RoundedCornerShape(AppDimens.Dimens20))
+                .background(Color.White)
+        } else {
+            modifier
+                .background(Color.White, RoundedCornerShape(AppDimens.Dimens20))
+                .border(3.dp, Color(0xFF43A047), RoundedCornerShape(AppDimens.Dimens20))
+        }
+    ) {
+        if (isPopup) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(headerAccent)
+                    .padding(vertical = AppDimens.Dimens12),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "📊 This Week",
+                    color = Color.White,
+                    fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                    style = MaterialTheme.typography.titleLarge.scaled()
+                )
+            }
+        }
+
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(if (compact) AppDimens.Dimens8 else AppDimens.Dimens16),
+            modifier = Modifier.padding(
                 horizontal = if (compact) AppDimens.Dimens24 else AppDimens.Dimens30,
                 vertical = if (compact) AppDimens.Dimens12 else AppDimens.Dimens24
             )
-    ) {
-        Text(
-            text = "📊 This Week",
-            color = Color(0xFF0074D5),
-            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-            style = MaterialTheme.typography.titleLarge.scaled()
-        )
-        if (stats.problems > 0) {
-            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
-                WRTile("⭐", "${stats.problems}", "Problems", Color(0xFF0074D5))
-                WRTile("📅", "${max(1, stats.days)}", "Days", Color(0xFF2E7D32))
-                WRTile("🔥", "${stats.streak}", "Streak", Color(0xFFE65100))
+        ) {
+            if (!isPopup) {
+                Text(
+                    text = "📊 This Week",
+                    color = Color(0xFF0074D5),
+                    fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                    style = MaterialTheme.typography.titleLarge.scaled()
+                )
             }
-            Text(
-                text = "Great progress this week — keep it going! 🌟",
-                color = Color.Black.copy(alpha = 0.65f),
-                fontFamily = FontFamily(Font(R.font.font_medium)),
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.bodyMedium.scaled()
-            )
-        } else {
-            Text("🌱", style = MaterialTheme.typography.headlineMedium.scaled())
-            Text(
-                text = "No practice yet this week",
-                color = Color(0xFF2E7D32),
-                fontFamily = FontFamily(Font(R.font.font_bold)),
-                style = MaterialTheme.typography.titleMedium.scaled()
-            )
-            Text(
-                text = "Practice together to build this week's report!",
-                color = Color.Black.copy(alpha = 0.65f),
-                fontFamily = FontFamily(Font(R.font.font_medium)),
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.bodyMedium.scaled()
-            )
-        }
-        Text(
-            text = "*Math games are not included",
-            color = Color.Black.copy(alpha = 0.35f),
-            fontFamily = FontFamily(Font(R.font.font_medium)),
-            style = MaterialTheme.typography.labelSmall.scaled()
-        )
-        if (onClose != null) {
-            KidsActionButton(text = "Got it!", type = ButtonType.ORANGE, onClick = onClose)
+            if (stats.problems > 0) {
+                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
+                    WRTile("⭐", "${stats.problems}", "Problems", Color(0xFF0074D5))
+                    WRTile("📅", "${max(1, stats.days)}", "Days", Color(0xFF2E7D32))
+                    WRTile("🔥", "${stats.streak}", "Streak", Color(0xFFE65100))
+                }
+                Text(
+                    text = "Great progress this week — keep it going! 🌟",
+                    color = Color.Black.copy(alpha = 0.65f),
+                    fontFamily = FontFamily(Font(R.font.font_medium)),
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.bodyMedium.scaled()
+                )
+            } else {
+                Text("🌱", style = MaterialTheme.typography.headlineMedium.scaled())
+                Text(
+                    text = "No practice yet this week",
+                    color = Color(0xFF2E7D32),
+                    fontFamily = FontFamily(Font(R.font.font_bold)),
+                    style = MaterialTheme.typography.titleMedium.scaled()
+                )
+                Text(
+                    text = "Practice together to build this week's report!",
+                    color = Color.Black.copy(alpha = 0.65f),
+                    fontFamily = FontFamily(Font(R.font.font_medium)),
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.bodyMedium.scaled()
+                )
+            }
+            if (onClose != null) {
+                KidsActionButton(text = "Got it!", type = ButtonType.ORANGE, onClick = onClose)
+            }
         }
     }
 }

@@ -47,6 +47,8 @@ import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateHost
 import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.dialogs.PopupTheme
+import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.screens.reports.dialogs.ExerciseExamCompleteResultDialog
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
@@ -205,6 +207,8 @@ fun AbacusDoPracticeRoute(
                 positiveButtonText = stringResource(R.string.ok_thanks),
                 negativeButtonText = stringResource(R.string.close),
                 icon = R.drawable.ic_alert_complete_page,
+                theme = PopupTheme.CELEBRATION,
+                accent = ButtonType.ORANGE,
                 widthMultiplier = 0.5f,
                 onPositiveTapped = onBackClick,
                 onNegativeTapped = onBackClick

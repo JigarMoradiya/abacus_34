@@ -59,6 +59,7 @@ import com.jigar.me.R
 import com.jigar.me.ui.view.home.common_ui.Loader
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.dialogs.PopupTheme
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
@@ -255,6 +256,9 @@ fun ContactUsScreen(
             positiveButtonText = stringResource(R.string.ok_thanks),
             widthMultiplier = 0.7f,
             onPositiveTapped = { viewModel.onSuccessDialogDismissed() },
+            icon = R.drawable.ic_alert_complete_page,
+            theme = PopupTheme.CONFIRM,
+            accent = ButtonType.GREEN
         )
     }
 

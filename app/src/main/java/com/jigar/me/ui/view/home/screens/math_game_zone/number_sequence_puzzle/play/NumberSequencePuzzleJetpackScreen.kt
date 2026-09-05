@@ -71,6 +71,7 @@ import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.dialogs.PopupTheme
 import com.jigar.me.ui.view.home.screens.math_game_zone.number_sequence_puzzle.viewmodels.NumberSequencePuzzleViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens24
@@ -152,6 +153,8 @@ fun NumberSequencePuzzleJetpackScreen(
             positiveButtonText = stringResource(R.string.continue_to_play),
             negativeButtonText = stringResource(R.string.no_i_want_to_close),
             icon = R.drawable.ic_complete,
+            theme = PopupTheme.CELEBRATION,
+            accent = ButtonType.ORANGE,
             widthMultiplier = 0.5f,
             onPositiveTapped = { viewModel.playAgain() },
             onNegativeTapped = {

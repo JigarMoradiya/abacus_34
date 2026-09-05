@@ -39,6 +39,8 @@ import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateHost
 import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsLabel
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.dialogs.PopupTheme
+import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.common_ui.Loader
 import com.jigar.me.ui.view.home.screens.abacus_practice.level_list.components.ProgressCandyRow
 import com.jigar.me.ui.view.login.screens.login_home.viewmodels.LoginHomeViewModel
@@ -159,6 +161,8 @@ fun ExamPlayRoute(
             positiveButtonText = stringResource(R.string.yes_i_m_sure),
             negativeButtonText = stringResource(R.string.no_please_continue),
             icon = R.drawable.ic_alert,
+            theme = PopupTheme.CONFIRM,
+            accent = ButtonType.RED,
             widthMultiplier = 0.5f,
             onPositiveTapped = onBackClick,
             onNegativeTapped = { viewModel.resumeExam() })
@@ -174,6 +178,8 @@ fun ExamPlayRoute(
             positiveButtonText = stringResource(R.string.continue_working_internet),
             negativeButtonText = stringResource(R.string.no_working_internet),
             icon = R.drawable.ic_alert_sad_emoji,
+            theme = PopupTheme.CONFIRM,
+            accent = ButtonType.RED,
             widthMultiplier = 0.7f,
             onPositiveTapped = { viewModel.completeExam(false) },
             onNegativeTapped = onBackClick

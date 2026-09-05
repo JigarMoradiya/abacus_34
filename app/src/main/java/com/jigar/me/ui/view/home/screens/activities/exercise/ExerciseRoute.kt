@@ -36,6 +36,8 @@ import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateHost
 import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsLabel
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
+import com.jigar.me.ui.view.home.common_ui.dialogs.PopupTheme
+import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumLoginBottomSheet
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet
 import com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext
@@ -186,6 +188,8 @@ fun ExerciseRoute(
             positiveButtonText = stringResource(R.string.yes_i_m_sure),
             negativeButtonText = stringResource(R.string.no_please_continue),
             icon = R.drawable.ic_alert,
+            theme = PopupTheme.CONFIRM,
+            accent = ButtonType.RED,
             widthMultiplier = 0.5f,
             onPositiveTapped = { viewModel.closeExercise() },
             onNegativeTapped = { viewModel.resumeExercise() }
@@ -202,6 +206,8 @@ fun ExerciseRoute(
             positiveButtonText = stringResource(R.string.continue_working_internet),
             negativeButtonText = stringResource(R.string.no_working_internet),
             icon = R.drawable.ic_alert_sad_emoji,
+            theme = PopupTheme.CONFIRM,
+            accent = ButtonType.RED,
             widthMultiplier = 0.7f,
             onPositiveTapped = { viewModel.completeExercise(false) },
             onNegativeTapped = { onBackClick() }

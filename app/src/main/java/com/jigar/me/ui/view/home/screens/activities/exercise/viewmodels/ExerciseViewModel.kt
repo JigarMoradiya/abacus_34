@@ -70,12 +70,14 @@ class ExerciseViewModel @Inject constructor(
                     ExerciseGenerator.generateAddSubQuestions(item)
                 }
             }
-            abacusCalc.resetAbacusData()
-
             updateState_ {
                 copy(exerciseQuestionList = exerciseList, isExerciseStarted = true, currentQueIndex = 0, elapsedSeconds = item.maxTime,
                     isShowCompletePopup = false, totalCorrect = 0)
             }
+            // Clears the previous exercise's typed answer AND resets the visual
+            // abacus beads -- otherwise a new exercise starts with the last
+            // exercise's answer still showing (same fix as the CCM reset bug).
+            clearKeyboard()
             timerJob?.cancel()
             startTimer()
         }

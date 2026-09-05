@@ -51,6 +51,10 @@ class CCMPlayViewModel @Inject constructor(
         updateState_ {
             copy(customChallengeData = challengeData, questionList = challengeQuestionList, currentIndex = 0, isQuestionPhase = true)
         }
+        // Clears the previous challenge's typed answer AND resets the visual
+        // abacus beads (same logic the "Reset" button uses) -- otherwise a new
+        // challenge starts with the last challenge's answer still showing.
+        clearKeyboard()
         setChallengeNumber()
     }
 

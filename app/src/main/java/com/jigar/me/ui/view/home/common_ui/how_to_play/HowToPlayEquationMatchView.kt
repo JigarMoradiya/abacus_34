@@ -1,6 +1,7 @@
 package com.jigar.me.ui.view.home.common_ui.how_to_play
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,7 +30,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
+import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.theme.ButtonType
+import com.jigar.me.ui.view.home.theme.getButtonColors
 
 @Composable
 fun HowToPlayEquationMatchView(
@@ -40,6 +44,7 @@ fun HowToPlayEquationMatchView(
     val windowInfo = LocalWindowInfo.current
     val screenWidth = with(LocalDensity.current) { windowInfo.containerSize.width.toDp() }
     val screenHeight = with(LocalDensity.current) { windowInfo.containerSize.height.toDp() }
+    val accentColors = getButtonColors(ButtonType.RED)
 
     Box(
         modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)).padding(AppDimens.Dimens16),
@@ -47,16 +52,21 @@ fun HowToPlayEquationMatchView(
     ) {
         Box(
             modifier = Modifier.width(screenWidth * widthMultiplier).height(screenHeight * heightMultiplier)
-                .background(Color.White, RoundedCornerShape(AppDimens.Dimens20)).padding(AppDimens.Dimens16)
+                .background(Color.White, RoundedCornerShape(AppDimens.Dimens20))
+                .border(AppDimens.Dimens4, accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20))
+                .padding(AppDimens.Dimens16)
         ) {
             Column(modifier = Modifier.fillMaxSize()) {
                 Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
                     Text(stringResource(R.string.equation_match),
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 18.sp, color = ColorPrimary)
+                        fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 18.sp, fontWeight = FontWeight.Bold, color = accentColors.base)
                     Spacer(Modifier.weight(1f))
-                    Text(stringResource(R.string.close), fontSize = 14.sp, fontWeight = FontWeight.Medium,
-                        fontFamily = FontFamily(Font(R.font.font_medium)), color = Color.Black,
-                        modifier = Modifier.padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8).clickable { onClose() })
+                    KidsActionButton(
+                        text = stringResource(R.string.close),
+                        type = ButtonType.RED,
+                        onClick = onClose,
+                        isSmall = true
+                    )
                 }
                 Spacer(Modifier.height(AppDimens.Dimens8))
                 LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(bottom = AppDimens.Dimens16)) {

@@ -20,9 +20,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Backspace
@@ -40,11 +42,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.Dp
@@ -58,6 +63,7 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
+import com.jigar.me.ui.view.home.theme.getButtonColors
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
 import com.jigar.me.ui.view.home.screens.math_game_zone.cross_math.components.CrossCellType
 import com.jigar.me.ui.view.home.screens.math_game_zone.cross_math.components.CrossMathUiState
@@ -525,6 +531,7 @@ private fun ResultOverlay(
     stars: Int, elapsed: Int, hintsUsed: Int, hasNextLevel: Boolean,
     onNextLevel: () -> Unit, onPlayAgain: () -> Unit, onBack: () -> Unit
 ) {
+    val accentColors = getButtonColors(ButtonType.ORANGE)
     var enabled by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) { delay(1000); enabled = true }
 
@@ -532,28 +539,29 @@ private fun ResultOverlay(
         // Finishing a Cross Math level is always a win — always celebrate.
         LaunchedEffect(Unit) { if (stars >= 2) AudioPlayerManager.playSoundClap() else AudioPlayerManager.playSoundWin() }
         ConfettiRainEffect()
-        Column(
-            modifier = Modifier.fillMaxWidth(0.6f).clip(RoundedCornerShape(AppDimens.Dimens20))
-                .border(3.dp, ORANGE_BORDER, RoundedCornerShape(AppDimens.Dimens20)).background(Color.White)
-        ) {
-            Box(
-                modifier = Modifier.fillMaxWidth().height((64f * gameScale()).dp)
-                    .background(Brush.horizontalGradient(listOf(Color(0xFFFF8400), Color(0xFFFFC107)))),
-                contentAlignment = Alignment.Center
-            ) {
-                Row(modifier = Modifier.fillMaxWidth().padding(horizontal = AppDimens.Dimens20),
-                    verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text("🧮", fontSize = (34f * gameScale()).sp)
-                    Text(stringResource(R.string.balloon_great_job),
-                        color = Color.White,
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 32.sp.scaled())
-                    Text("✨", fontSize = (34f * gameScale()).sp)
-                }
-            }
+        // "Candy Pop" celebration card — saturated gradient block with a white badge overlapping the top edge.
+        Box(modifier = Modifier.fillMaxWidth(0.6f), contentAlignment = Alignment.TopCenter) {
             Column(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = AppDimens.Dimens30, vertical = AppDimens.Dimens16),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .shadow(20.dp, RoundedCornerShape(AppDimens.Dimens20 * 1.2f), ambientColor = accentColors.base, spotColor = accentColors.base)
+                    .background(accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20 * 1.2f))
+                    .padding(horizontal = AppDimens.Dimens30, vertical = AppDimens.Dimens20),
                 horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
             ) {
+                Spacer(Modifier.height(AppDimens.Dimens20))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text("🔢", fontSize = (28f * gameScale()).sp)
+                    Text(
+                        stringResource(R.string.balloon_great_job),
+                        color = Color.White,
+                        fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                        fontSize = 30.sp.scaled(),
+                        style = TextStyle(shadow = Shadow(color = accentColors.base.copy(alpha = 0.9f), offset = Offset(1.5f, 1.5f), blurRadius = 0f)),
+                        modifier = Modifier.padding(horizontal = AppDimens.Dimens8)
+                    )
+                    Text("✨", fontSize = (28f * gameScale()).sp)
+                }
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16), verticalAlignment = Alignment.Bottom) {
                     BigStar(stars >= 1, 44, 150); BigStar(stars >= 2, 58, 400); BigStar(stars >= 3, 44, 650)
                 }
@@ -572,6 +580,18 @@ private fun ResultOverlay(
                         onClick = { if (enabled) onBack() })
                 }
             }
+
+            Box(
+                modifier = Modifier
+                    .offset(y = (-28).dp)
+                    .size(64.dp)
+                    .shadow(8.dp, CircleShape)
+                    .background(Color.White, CircleShape)
+                    .border(4.dp, Color.White, CircleShape),
+                contentAlignment = Alignment.Center
+            ) {
+                Text("🔢", fontSize = 32.sp)
+            }
         }
     }
 }
@@ -579,7 +599,7 @@ private fun ResultOverlay(
 @Composable
 private fun StatChipStr(emoji: String, value: String, color: Color) {
     Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4), verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.clip(RoundedCornerShape(100f)).background(color.copy(alpha = 0.12f))
+        modifier = Modifier.clip(RoundedCornerShape(100f)).background(Color.White)
             .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)) {
         Text(emoji, fontSize = (16f * gameScale()).sp)
         Text(value, color = color, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 20.sp.scaled(),

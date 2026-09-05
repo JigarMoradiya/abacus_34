@@ -34,6 +34,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -124,11 +125,13 @@ fun FreemiumPaywallBottomSheet(
                             .fillMaxWidth(0.6f)
                             .clip(RoundedCornerShape(AppDimens.Dimens16))
                             .background(Color.White)
-                            .padding(AppDimens.Dimens20),
-                        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
                     ) {
+                        // Purple gradient header band -- "Sticker Book" treatment
                         Row(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .background(Brush.horizontalGradient(listOf(Color(0xFF9374EF), Color(0xFF6446CC))))
+                                .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens12),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(
@@ -136,14 +139,14 @@ fun FreemiumPaywallBottomSheet(
                                 style = MaterialTheme.typography.titleSmall.scaled(),
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily(Font(R.font.font_bold)),
-                                color = Color(0xFF0074D5),
+                                color = Color.White,
                                 modifier = Modifier.weight(1f)
                             )
                             Box(
                                 modifier = Modifier
                                     .size(AppDimens.Dimens24)
                                     .clip(CircleShape)
-                                    .background(Color(0xFFF0F0F0))
+                                    .background(Color.White.copy(alpha = 0.25f))
                                     .clickable(
                                         indication = null,
                                         interactionSource = remember { MutableInteractionSource() }
@@ -153,20 +156,23 @@ fun FreemiumPaywallBottomSheet(
                                 Icon(
                                     imageVector = Icons.Default.Close,
                                     contentDescription = "Close",
-                                    tint = Color(0xFF666666),
+                                    tint = Color.White,
                                     modifier = Modifier.size(AppDimens.Dimens16)
                                 )
                             }
                         }
 
-                        Spacer(modifier = Modifier.height(AppDimens.Dimens4))
-
-                        BenefitRow(text = stringResource(R.string.benefit_all_levels))
-                        BenefitRow(text = stringResource(R.string.benefit_all_exams))
-                        BenefitRow(text = stringResource(R.string.benefit_all_exercises))
-                        BenefitRow(text = stringResource(R.string.benefit_ccm))
-                        BenefitRow(text = stringResource(R.string.benefit_all_games))
-                        BenefitRow(text = stringResource(R.string.benefit_report_history))
+                        Column(
+                            modifier = Modifier.padding(AppDimens.Dimens20),
+                            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
+                        ) {
+                            BenefitRow(text = stringResource(R.string.benefit_all_levels))
+                            BenefitRow(text = stringResource(R.string.benefit_all_exams))
+                            BenefitRow(text = stringResource(R.string.benefit_all_exercises))
+                            BenefitRow(text = stringResource(R.string.benefit_ccm))
+                            BenefitRow(text = stringResource(R.string.benefit_all_games))
+                            BenefitRow(text = stringResource(R.string.benefit_report_history))
+                        }
                     }
                 }
             }
@@ -207,8 +213,9 @@ fun FreemiumPaywallBottomSheet(
                     Box(
                         modifier = Modifier
                             .size(AppDimens.Dimens56)
+                            .shadow(elevation = 6.dp, shape = CircleShape, ambientColor = Color(0xFFC77601), spotColor = Color(0xFFC77601))
                             .clip(CircleShape)
-                            .background(Color(0xFFFFF8F0)),
+                            .background(Brush.linearGradient(listOf(Color(0xFFFFD54F), Color(0xFFFB8C00)))),
                         contentAlignment = Alignment.Center
                     ) {
                         Text(text = "👑", fontSize = 28.sp)
@@ -258,15 +265,11 @@ fun FreemiumPaywallBottomSheet(
 
                     Spacer(modifier = Modifier.height(AppDimens.Dimens10))
 
-                    // See Benefits button
+                    // See Benefits button -- filled purple gradient pill
                     Box(
                         modifier = Modifier
                             .clip(RoundedCornerShape(100f))
-                            .border(
-                                width = 1.dp,
-                                color = Color(0xFF0074D5).copy(alpha = 0.6f),
-                                shape = RoundedCornerShape(100f)
-                            )
+                            .background(Brush.horizontalGradient(listOf(Color(0xFF9374EF), Color(0xFF6446CC))))
                             .clickable(
                                 indication = null,
                                 interactionSource = remember { MutableInteractionSource() }
@@ -276,9 +279,9 @@ fun FreemiumPaywallBottomSheet(
                     ) {
                         Text(
                             text = stringResource(R.string.see_benefits),
-                            color = Color(0xFF0074D5),
+                            color = Color.White,
                             style = MaterialTheme.typography.labelSmall.scaled(),
-                            fontWeight = FontWeight.Medium
+                            fontWeight = FontWeight.Bold
                         )
                     }
                 }

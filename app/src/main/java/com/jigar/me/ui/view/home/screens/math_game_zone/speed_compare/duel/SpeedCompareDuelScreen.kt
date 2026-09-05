@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -27,8 +28,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
@@ -45,6 +49,7 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
 import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.components.Comparator
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
+import com.jigar.me.ui.view.home.theme.getButtonColors
 import kotlinx.coroutines.delay
 
 private val P1_COLOR = Color(0xFF0074D5)   // blue, bottom player
@@ -225,6 +230,7 @@ private fun AnswerBubble(symbol: String, color: Color, enabled: Boolean, s: Floa
 
 @Composable
 private fun DuelResultOverlay(p1: Int, p2: Int, onPlayAgain: () -> Unit, onBack: () -> Unit) {
+    val accentColors = getButtonColors(ButtonType.ORANGE)
     var enabled by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) { delay(1000); enabled = true }
 
@@ -233,35 +239,51 @@ private fun DuelResultOverlay(p1: Int, p2: Int, onPlayAgain: () -> Unit, onBack:
         contentAlignment = Alignment.Center
     ) {
         ConfettiRainEffect()
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
-            modifier = Modifier
-                .clip(RoundedCornerShape(AppDimens.Dimens20))
-                .background(Color.White)
-                .border(3.dp, Color(0xFFFF8400), RoundedCornerShape(AppDimens.Dimens20))
-                .padding(horizontal = AppDimens.Dimens30, vertical = AppDimens.Dimens20)
-        ) {
-            Text("🏆", style = MaterialTheme.typography.displaySmall.scaled())
-            Text(
-                when {
-                    p1 > p2 -> stringResource(R.string.duel_wins, stringResource(R.string.duel_blue))
-                    p2 > p1 -> stringResource(R.string.duel_wins, stringResource(R.string.duel_pink))
-                    else -> stringResource(R.string.duel_tie)
-                },
-                color = Color(0xFFE65100),
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                style = MaterialTheme.typography.headlineSmall.scaled()
-            )
-            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)) {
-                ScoreChip(stringResource(R.string.duel_blue), p1, P1_COLOR)
-                ScoreChip(stringResource(R.string.duel_pink), p2, P2_COLOR)
+        // "Candy Pop" celebration card — saturated gradient block with a white badge overlapping the top edge.
+        Box(contentAlignment = Alignment.TopCenter) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
+                modifier = Modifier
+                    .shadow(20.dp, RoundedCornerShape(AppDimens.Dimens20 * 1.2f), ambientColor = accentColors.base, spotColor = accentColors.base)
+                    .background(accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20 * 1.2f))
+                    .padding(horizontal = AppDimens.Dimens30, vertical = AppDimens.Dimens20)
+            ) {
+                Spacer(Modifier.height(AppDimens.Dimens20))
+                Text(
+                    when {
+                        p1 > p2 -> stringResource(R.string.duel_wins, stringResource(R.string.duel_blue))
+                        p2 > p1 -> stringResource(R.string.duel_wins, stringResource(R.string.duel_pink))
+                        else -> stringResource(R.string.duel_tie)
+                    },
+                    color = Color.White,
+                    fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                    style = MaterialTheme.typography.headlineSmall.scaled().copy(
+                        shadow = Shadow(color = accentColors.base.copy(alpha = 0.9f), offset = Offset(1.5f, 1.5f), blurRadius = 0f)
+                    )
+                )
+                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)) {
+                    ScoreChip(stringResource(R.string.duel_blue), p1, P1_COLOR)
+                    ScoreChip(stringResource(R.string.duel_pink), p2, P2_COLOR)
+                }
+                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)) {
+                    KidsActionButton(text = stringResource(R.string.balloon_play_again), type = ButtonType.ORANGE,
+                        onClick = { if (enabled) onPlayAgain() })
+                    KidsActionButton(text = stringResource(R.string.balloon_back), type = ButtonType.PINK,
+                        onClick = { if (enabled) onBack() })
+                }
             }
-            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)) {
-                KidsActionButton(text = stringResource(R.string.balloon_play_again), type = ButtonType.BLUE,
-                    onClick = { if (enabled) onPlayAgain() })
-                KidsActionButton(text = stringResource(R.string.balloon_back), type = ButtonType.PINK,
-                    onClick = { if (enabled) onBack() })
+
+            Box(
+                modifier = Modifier
+                    .offset(y = (-28).dp)
+                    .size(64.dp)
+                    .shadow(8.dp, CircleShape)
+                    .background(Color.White, CircleShape)
+                    .border(4.dp, Color.White, CircleShape),
+                contentAlignment = Alignment.Center
+            ) {
+                Text("🏆", style = MaterialTheme.typography.displaySmall.scaled())
             }
         }
     }
@@ -273,7 +295,7 @@ private fun ScoreChip(label: String, score: Int, color: Color) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
         modifier = Modifier
-            .background(color.copy(alpha = 0.12f), CircleShape)
+            .background(Color.White, CircleShape)
             .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)
     ) {
         Text(

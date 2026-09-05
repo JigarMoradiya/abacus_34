@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
@@ -67,6 +68,9 @@ fun ParentalGateDialog(
         }
     }
 
+    val accent = Brush.horizontalGradient(listOf(Color(0xFF9374EF), Color(0xFF6446CC)))
+    val accentSolid = Color(0xFF6446CC)
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -80,78 +84,93 @@ fun ParentalGateDialog(
                 .shadow(elevation = 16.dp, shape = RoundedCornerShape(AppDimens.Dimens24))
                 .clip(RoundedCornerShape(AppDimens.Dimens24))
                 .background(Color.White)
-                .padding(AppDimens.Dimens24),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
         ) {
-            // Lock icon circle
+            // Colored header band -- "Sticker Book" treatment
             Box(
                 modifier = Modifier
-                    .size(AppDimens.Dimens56)
-                    .clip(CircleShape)
-                    .background(Color(0xFFEFF6FF)),
+                    .fillMaxWidth()
+                    .height(76.dp)
+                    .background(accent),
                 contentAlignment = Alignment.Center
             ) {
-                Text(text = "🔒", style = MaterialTheme.typography.headlineSmall.scaled())
-            }
-
-            Text(
-                text = "For Parents",
-                style = MaterialTheme.typography.titleLarge.scaled(),
-                fontWeight = FontWeight.Bold,
-                color = Color(0xFF1C1C1C)
-            )
-
-            Text(
-                text = "Solve this to continue",
-                style = MaterialTheme.typography.bodyMedium.scaled(),
-                color = Color(0xFF666666)
-            )
-
-            // Question with shake animation
-            Text(
-                text = "$num1 + $num2 = ?",
-                style = MaterialTheme.typography.headlineMedium.scaled(),
-                fontWeight = FontWeight.Bold,
-                color = Color(0xFF0074D5),
-                modifier = Modifier.graphicsLayer { translationX = shakeOffset.value }
-            )
-
-            // 3 answer buttons
-            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
-                options.forEach { option ->
-                    Box(
-                        modifier = Modifier
-                            .size(AppDimens.Dimens56)
-                            .clip(RoundedCornerShape(AppDimens.Dimens12))
-                            .background(Color(0xFFEFF6FF))
-                            .clickable(
-                                indication = null,
-                                interactionSource = remember { MutableInteractionSource() }
-                            ) { handleAnswer(option) },
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = "$option",
-                            style = MaterialTheme.typography.titleMedium.scaled(),
-                            fontWeight = FontWeight.Bold,
-                            color = Color(0xFF0074D5)
-                        )
-                    }
+                Box(
+                    modifier = Modifier
+                        .size(AppDimens.Dimens56)
+                        .clip(CircleShape)
+                        .background(Color.White),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(text = "🔒", style = MaterialTheme.typography.headlineSmall.scaled())
                 }
             }
 
-            Text(
-                text = "Cancel",
-                style = MaterialTheme.typography.bodyMedium.scaled(),
-                color = Color(0xFF999999),
+            Column(
                 modifier = Modifier
-                    .clickable(
-                        indication = null,
-                        interactionSource = remember { MutableInteractionSource() }
-                    ) { onCancelled() }
-                    .padding(AppDimens.Dimens8)
-            )
+                    .fillMaxWidth()
+                    .padding(horizontal = AppDimens.Dimens24)
+                    .padding(top = AppDimens.Dimens24, bottom = AppDimens.Dimens16),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
+            ) {
+                Text(
+                    text = "For Parents",
+                    style = MaterialTheme.typography.titleLarge.scaled(),
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFF1C1C1C)
+                )
+
+                Text(
+                    text = "Solve this to continue",
+                    style = MaterialTheme.typography.bodyMedium.scaled(),
+                    color = Color(0xFF666666)
+                )
+
+                // Question with shake animation
+                Text(
+                    text = "$num1 + $num2 = ?",
+                    style = MaterialTheme.typography.headlineMedium.scaled(),
+                    fontWeight = FontWeight.Bold,
+                    color = accentSolid,
+                    modifier = Modifier.graphicsLayer { translationX = shakeOffset.value }
+                )
+
+                // 3 answer buttons
+                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
+                    options.forEach { option ->
+                        Box(
+                            modifier = Modifier
+                                .size(AppDimens.Dimens56)
+                                .shadow(elevation = 6.dp, shape = RoundedCornerShape(AppDimens.Dimens12), ambientColor = accentSolid, spotColor = accentSolid)
+                                .clip(RoundedCornerShape(AppDimens.Dimens12))
+                                .background(accent)
+                                .clickable(
+                                    indication = null,
+                                    interactionSource = remember { MutableInteractionSource() }
+                                ) { handleAnswer(option) },
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = "$option",
+                                style = MaterialTheme.typography.titleMedium.scaled(),
+                                fontWeight = FontWeight.Bold,
+                                color = Color.White
+                            )
+                        }
+                    }
+                }
+
+                Text(
+                    text = "Cancel",
+                    style = MaterialTheme.typography.bodyMedium.scaled(),
+                    color = Color(0xFF999999),
+                    modifier = Modifier
+                        .clickable(
+                            indication = null,
+                            interactionSource = remember { MutableInteractionSource() }
+                        ) { onCancelled() }
+                        .padding(AppDimens.Dimens8)
+                )
+            }
         }
     }
 }
