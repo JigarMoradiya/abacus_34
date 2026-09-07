@@ -267,9 +267,9 @@ private fun DuelResultOverlay(p1: Int, p2: Int, onPlayAgain: () -> Unit, onBack:
                     ScoreChip(stringResource(R.string.duel_pink), p2, P2_COLOR)
                 }
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)) {
-                    KidsActionButton(text = stringResource(R.string.balloon_play_again), type = ButtonType.ORANGE,
+                    KidsActionButton(text = stringResource(R.string.balloon_play_again), type = ButtonType.POSITIVE,
                         onClick = { if (enabled) onPlayAgain() })
-                    KidsActionButton(text = stringResource(R.string.balloon_back), type = ButtonType.PINK,
+                    KidsActionButton(text = stringResource(R.string.balloon_back), type = ButtonType.NEGATIVE,
                         onClick = { if (enabled) onBack() })
                 }
             }

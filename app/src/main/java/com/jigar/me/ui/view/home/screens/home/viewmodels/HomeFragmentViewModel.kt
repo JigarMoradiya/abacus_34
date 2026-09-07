@@ -91,7 +91,15 @@ class HomeFragmentViewModel @Inject constructor(
         maybeShowReviewGate()
     }
 
+    // Day-2 emotional review ask takes priority (once-ever); falls through to
+    // the recurring milestone gate only when day 2 isn't eligible (they can
+    // never both be eligible the same day since the milestone gate's earliest
+    // day is 3), so the two overlays never stack.
     private fun maybeShowReviewGate() {
+        if (AppReviewManager.shouldShowDay2Review(prefs)) {
+            updateState_ { copy(showDay2Review = true) }
+            return
+        }
         if (!AppReviewManager.shouldShowReviewGate(prefs)) return
         AppReviewManager.onGateShown(prefs)
         updateState_ { copy(showReviewGate = true) }
@@ -105,6 +113,23 @@ class HomeFragmentViewModel @Inject constructor(
     fun onReviewGatePositive(activity: android.app.Activity) {
         updateState_ { copy(showReviewGate = false) }
         viewModelScope.launch { AppReviewManager.onGatePositive(prefs, activity) }
+    }
+
+    fun onDay2ReviewFiveStars() {
+        updateState_ { copy(showDay2Review = false) }
+        AppReviewManager.onDay2ReviewFiveStars(prefs)
+    }
+
+    fun onDay2ReviewLowRating() {
+        updateState_ { copy(showDay2Review = false) }
+        AppReviewManager.onDay2ReviewLowRating(prefs)
+    }
+
+    fun dismissDay2Review() {
+        updateState_ { copy(showDay2Review = false) }
+        // Swiping away / tapping outside without picking a star must still stamp
+        // the flag -- otherwise it re-qualifies and re-shows on every next launch.
+        AppReviewManager.onDay2ReviewLowRating(prefs)
     }
 
     fun closeConflictPopup() {

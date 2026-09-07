@@ -28,6 +28,8 @@ data class HomeUiState(
 
     // Review gate — shown right after the streak dialog is dismissed, when eligible
     val showReviewGate: Boolean = false,
+    // One-time emotional review ask on day 2 — takes priority over showReviewGate above
+    val showDay2Review: Boolean = false,
 )
 
 data class FreeTrialParam(

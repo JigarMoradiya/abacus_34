@@ -56,7 +56,15 @@ fun PurchasePlanSection(
         }
 
         val selected = uiState.sortedPlanList.getOrNull(uiState.selectedIndex)
-        val showCancelText = selected != null && !selected.isLifeTimeOffer() && !selected.isPurchase
+        // Exact SKU match, not .contains() -- arrangeData() only removeExact()s the
+        // plain SKU when a plan is admin-assigned, so a real purchasable ".offer"
+        // variant of the same plan type can still be in the list and selected.
+        val isSelectedAssignedFromAdmin = selected != null && (
+            (selected.sku == "com.abacus.puzzle.1year" && uiState.yearPlanAssignFromAdmin != null) ||
+                (selected.sku == "com.abacus.all" && uiState.allPlanAssignFromAdmin != null)
+            )
+        val showCancelText = selected != null && !selected.isLifeTimeOffer() && !selected.isPurchase &&
+            !isSelectedAssignedFromAdmin
         if (showCancelText) {
             Spacer(Modifier.height(AppDimens.Dimens8))
             Text(

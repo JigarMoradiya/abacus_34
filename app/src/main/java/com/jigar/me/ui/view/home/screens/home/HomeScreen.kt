@@ -58,9 +58,14 @@ import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.Loader
+import com.jigar.me.utils.extensions.openURL
+import com.jigar.me.ui.view.home.common_ui.MadeInIndiaBadge
+import com.jigar.me.ui.view.home.common_ui.SafeAdFreeBadge
+import com.jigar.me.ui.view.home.common_ui.isIndianUser
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.common_ui.dialogs.PopupTheme
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreeTrialDialog
+import com.jigar.me.ui.view.home.common_ui.sheets.Day2ReviewGateBottomSheet
 import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateBottomSheet
 import com.jigar.me.ui.view.home.screens.home.components.HomeMenuScreen
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeFragmentViewModel
@@ -308,6 +313,12 @@ fun HomeScreen(
 
                     if (isTablet) {
                         Spacer(modifier = Modifier.weight(1f))
+                        if (isIndianUser()) {
+                            MadeInIndiaBadge()
+                        } else {
+                            SafeAdFreeBadge()
+                        }
+                        Spacer(modifier = Modifier.height(Dimens12))
                         EnglishBanner(context = context, onUrlClick = {
                             openURLWithGate {
                                 runCatching {
@@ -409,6 +420,11 @@ fun HomeScreen(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             WeeklyReportCard(viewModel.weeklyStats()) { showWeeklyReport = true }
+                            if (isIndianUser()) {
+                                MadeInIndiaBadge()
+                            } else {
+                                SafeAdFreeBadge()
+                            }
                             EnglishBanner(context = context, onUrlClick = {
                             openURLWithGate {
                                 runCatching {
@@ -508,6 +524,17 @@ fun HomeScreen(
             onDismiss = { viewModel.onReviewGateNegative() },
             onNegative = { viewModel.onReviewGateNegative() },
             onPositive = { reviewActivity?.let { viewModel.onReviewGatePositive(it) } }
+        )
+
+        // ── One-time emotional review ask on day 2 ──
+        Day2ReviewGateBottomSheet(
+            visible = uiState.showDay2Review,
+            onDismiss = { viewModel.dismissDay2Review() },
+            onFiveStars = {
+                viewModel.onDay2ReviewFiveStars()
+                context.openURL("https://play.google.com/store/apps/details?id=${context.packageName}")
+            },
+            onLowRating = { viewModel.onDay2ReviewLowRating() }
         )
 
         if (showURLGate) {

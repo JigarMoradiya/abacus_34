@@ -18,6 +18,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.ui.draw.shadow
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
@@ -70,14 +72,22 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
-import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
-import com.jigar.me.ui.view.home.common_ui.dialogs.PopupTheme
 import com.jigar.me.ui.view.home.screens.math_game_zone.number_sequence_puzzle.viewmodels.NumberSequencePuzzleViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens24
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import com.jigar.me.ui.view.home.theme.ButtonType
+import com.jigar.me.ui.view.home.theme.getButtonColors
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
+import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.foundation.layout.offset
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import kotlinx.coroutines.delay
 
 @Composable
 fun NumberSequencePuzzleJetpackScreen(
@@ -142,30 +152,15 @@ fun NumberSequencePuzzleJetpackScreen(
 
     }
 
-    AnimatedVisibility(
-        visible = uiState.isSolved,
-        enter = fadeIn(),
-        exit = fadeOut()
-    ) {
-        CustomPopupView(
-            title = stringResource(R.string.you_did_it),
-            description = stringResource(R.string.completed_in_b_moves_b, uiState.moveCount),
-            positiveButtonText = stringResource(R.string.continue_to_play),
-            negativeButtonText = stringResource(R.string.no_i_want_to_close),
-            icon = R.drawable.ic_complete,
-            theme = PopupTheme.CELEBRATION,
-            accent = ButtonType.ORANGE,
-            widthMultiplier = 0.5f,
-            onPositiveTapped = { viewModel.playAgain() },
-            onNegativeTapped = {
+    if (uiState.isSolved) {
+        PuzzleResultOverlay(
+            moveCount = uiState.moveCount,
+            onPlayAgain = { viewModel.playAgain() },
+            onBack = {
                 viewModel.closePopup()
                 navController.safePopBackStack()
             }
         )
-    }
-
-    if (uiState.isSolved){
-        ConfettiRainEffect()
     }
 
     LaunchedEffect(gridSize) {
@@ -353,6 +348,70 @@ private fun TileView(number: Int?, size: Dp, color: Color, onClick: () -> Unit) 
                         shape = RoundedCornerShape(AppDimens.Dimens12)
                     )
             )
+        }
+    }
+}
+
+// "Candy Pop" celebration card — matches Number Snake's result popup style
+// (gradient card, white badge overlapping the top edge, two symmetric filled
+// buttons) instead of the generic CustomPopupView celebration theme.
+@Composable
+private fun PuzzleResultOverlay(
+    moveCount: Int,
+    onPlayAgain: () -> Unit,
+    onBack: () -> Unit
+) {
+    val accentColors = getButtonColors(ButtonType.ORANGE)
+    var enabled by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) { delay(1000); enabled = true }
+
+    Box(modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)), contentAlignment = Alignment.Center) {
+        LaunchedEffect(Unit) { AudioPlayerManager.playSoundClap() }
+        ConfettiRainEffect()
+        Box(modifier = Modifier.fillMaxWidth(0.6f), contentAlignment = Alignment.TopCenter) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .shadow(20.dp, RoundedCornerShape(AppDimens.Dimens20 * 1.2f), ambientColor = accentColors.base, spotColor = accentColors.base)
+                    .background(accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20 * 1.2f))
+                    .padding(horizontal = AppDimens.Dimens30, vertical = AppDimens.Dimens20),
+                horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
+            ) {
+                Spacer(Modifier.height(AppDimens.Dimens20))
+                Text(
+                    stringResource(R.string.you_did_it),
+                    color = Color.White,
+                    fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                    fontSize = 26.sp.scaled(),
+                    style = TextStyle(shadow = Shadow(color = accentColors.base.copy(alpha = 0.9f), offset = Offset(1.5f, 1.5f), blurRadius = 0f)),
+                    textAlign = TextAlign.Center
+                )
+                Text(
+                    stringResource(R.string.completed_in_b_moves_b, moveCount).replace("<b>", "").replace("</b>", ""),
+                    color = Color.White,
+                    fontFamily = FontFamily(Font(R.font.font_semibold)),
+                    fontSize = 18.sp.scaled(),
+                    textAlign = TextAlign.Center
+                )
+                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
+                    KidsActionButton(text = stringResource(R.string.continue_to_play), type = ButtonType.POSITIVE,
+                        onClick = { if (enabled) onPlayAgain() })
+                    KidsActionButton(text = stringResource(R.string.no_i_want_to_close), type = ButtonType.NEGATIVE,
+                        onClick = { if (enabled) onBack() })
+                }
+            }
+
+            Box(
+                modifier = Modifier
+                    .offset(y = (-28).dp)
+                    .size(64.dp)
+                    .shadow(8.dp, CircleShape)
+                    .background(Color.White, CircleShape)
+                    .border(4.dp, Color.White, CircleShape),
+                contentAlignment = Alignment.Center
+            ) {
+                Text("🧩", fontSize = (32f * gameScale()).sp)
+            }
         }
     }
 }

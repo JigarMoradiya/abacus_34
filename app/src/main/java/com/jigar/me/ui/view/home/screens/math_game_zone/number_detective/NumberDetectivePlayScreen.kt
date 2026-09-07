@@ -308,8 +308,8 @@ private fun ResultOverlay(state: NumberDetectiveUiState, best: Int, onPlayAgain:
                     )
                     Text("🔍", fontSize = (28f * gameScale()).sp)
                 }
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16), verticalAlignment = Alignment.Bottom) {
-                    BigStar(stars >= 1, 44, 150); BigStar(stars >= 2, 58, 400); BigStar(stars >= 3, 44, 650)
+                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8), verticalAlignment = Alignment.Bottom) {
+                    BigStar(stars >= 1, 32, 150); BigStar(stars >= 2, 40, 400); BigStar(stars >= 3, 32, 650)
                 }
                 Text(stringResource(R.string.balloon_final_score) + ": ${state.score}", color = Color.White,
                     fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 26.sp.scaled())
@@ -319,9 +319,9 @@ private fun ResultOverlay(state: NumberDetectiveUiState, best: Int, onPlayAgain:
                     StatChipStr("🏆", "$best", INDIGO_BORDER)
                 }
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
-                    KidsActionButton(text = stringResource(R.string.balloon_play_again), type = ButtonType.ORANGE,
+                    KidsActionButton(text = stringResource(R.string.balloon_play_again), type = ButtonType.POSITIVE,
                         onClick = { if (enabled) onPlayAgain() })
-                    KidsActionButton(text = stringResource(R.string.balloon_back), type = ButtonType.BLUE,
+                    KidsActionButton(text = stringResource(R.string.balloon_back), type = ButtonType.NEGATIVE,
                         onClick = { if (enabled) onBack() })
                 }
             }

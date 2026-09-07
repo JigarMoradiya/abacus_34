@@ -259,6 +259,8 @@ object AppConstants {
             const val lastAskDate      = "review_last_ask_date"
             const val exhausted        = -1
             val milestones = intArrayOf(3, 7, 15, 30, 50, 75, 100)
+            // One-time emotional review ask on day 2 -- separate from the milestone gate above.
+            const val day2ReviewShown  = "day2_review_shown"
         }
     }
 

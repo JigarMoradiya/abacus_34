@@ -404,8 +404,8 @@ private fun ResultOverlay(score: Int, elapsed: Int, bestTime: Int, speedBonus: I
                     )
                     Text("✨", fontSize = (28f * gameScale()).sp)
                 }
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16), verticalAlignment = Alignment.Bottom) {
-                    BigStar(starCount >= 1, 44, 150); BigStar(starCount >= 2, 58, 400); BigStar(starCount >= 3, 44, 650)
+                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8), verticalAlignment = Alignment.Bottom) {
+                    BigStar(starCount >= 1, 32, 150); BigStar(starCount >= 2, 40, 400); BigStar(starCount >= 3, 32, 650)
                 }
                 Text(str(R.string.balloon_final_score) + ": $score", color = Color.White,
                     fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 26.sp.scaled())
@@ -415,8 +415,8 @@ private fun ResultOverlay(score: Int, elapsed: Int, bestTime: Int, speedBonus: I
                     StatChipStr("🏆", if (bestTime > 0) timeString(bestTime) else "—", ORANGE_BORDER)
                 }
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
-                    KidsActionButton(text = str(R.string.balloon_play_again), type = ButtonType.ORANGE, onClick = { if (enabled) onPlayAgain() })
-                    KidsActionButton(text = str(R.string.balloon_back), type = ButtonType.BLUE, onClick = { if (enabled) onBack() })
+                    KidsActionButton(text = str(R.string.balloon_play_again), type = ButtonType.POSITIVE, onClick = { if (enabled) onPlayAgain() })
+                    KidsActionButton(text = str(R.string.balloon_back), type = ButtonType.NEGATIVE, onClick = { if (enabled) onBack() })
                 }
             }
 

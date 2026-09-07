@@ -283,12 +283,12 @@ private fun ResultOverlay(
                 }
 
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16),
+                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
                     verticalAlignment = Alignment.Bottom
                 ) {
-                    BigStar(earned = starCount >= 1, sizeDp = 44, delayMs = 150)
-                    BigStar(earned = starCount >= 2, sizeDp = 58, delayMs = 400)
-                    BigStar(earned = starCount >= 3, sizeDp = 44, delayMs = 650)
+                    BigStar(earned = starCount >= 1, sizeDp = 32, delayMs = 150)
+                    BigStar(earned = starCount >= 2, sizeDp = 40, delayMs = 400)
+                    BigStar(earned = starCount >= 3, sizeDp = 32, delayMs = 650)
                 }
 
                 Text(
@@ -306,12 +306,12 @@ private fun ResultOverlay(
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
                     KidsActionButton(
                         text = androidx.compose.ui.res.stringResource(R.string.balloon_play_again),
-                        type = ButtonType.ORANGE,
+                        type = ButtonType.POSITIVE,
                         onClick = { if (buttonsEnabled) onPlayAgain() }
                     )
                     KidsActionButton(
                         text = androidx.compose.ui.res.stringResource(R.string.balloon_back),
-                        type = ButtonType.BLUE,
+                        type = ButtonType.NEGATIVE,
                         onClick = { if (buttonsEnabled) onBack() }
                     )
                 }

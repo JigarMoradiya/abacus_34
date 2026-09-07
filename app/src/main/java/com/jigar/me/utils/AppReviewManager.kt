@@ -70,6 +70,34 @@ object AppReviewManager {
         prefs.setCustomParamInt(AppConstants.Review.nextMilestoneDay, resolved)
     }
 
+    // MARK: - Day-2 emotional review ask
+    // A separate, one-time-only prompt shown the first time the child has used
+    // the app on 2 distinct days -- independent of the milestone gate above so
+    // it never re-fires and never interferes with the day 3/7/15/... gate.
+    // A 5-star tap opens the Play Store listing directly (handled by the
+    // caller, which owns the URL/parental-gate flow); anything else resolves
+    // silently. This is a deliberate product decision, made with the
+    // "review gating" policy risk (Google/Apple) called out and accepted.
+    fun shouldShowDay2Review(prefs: AppPreferencesHelper): Boolean {
+        if (prefs.getCustomParamBoolean(AppConstants.Review.day2ReviewShown, false)) {
+            return false
+        }
+        val totalActiveDays = prefs.getCustomParamInt(AppConstants.Streak.totalActiveDays, 0)
+        val eligible = totalActiveDays >= 2
+        Log.d(TAG, "shouldShowDay2Review: $eligible — totalActiveDays=$totalActiveDays")
+        return eligible
+    }
+
+    fun onDay2ReviewFiveStars(prefs: AppPreferencesHelper) {
+        Log.d(TAG, "onDay2ReviewFiveStars: stamping day2ReviewShown, opening Play Store")
+        prefs.setCustomParamBoolean(AppConstants.Review.day2ReviewShown, true)
+    }
+
+    fun onDay2ReviewLowRating(prefs: AppPreferencesHelper) {
+        Log.d(TAG, "onDay2ReviewLowRating: stamping day2ReviewShown (silent)")
+        prefs.setCustomParamBoolean(AppConstants.Review.day2ReviewShown, true)
+    }
+
     // Google's native in-app review flow. May silently no-op per Play's own quota rules.
     // NOTE for debug builds: Play's In-App Review API generally only renders the real
     // system dialog for apps installed via Play (production/internal/closed testing

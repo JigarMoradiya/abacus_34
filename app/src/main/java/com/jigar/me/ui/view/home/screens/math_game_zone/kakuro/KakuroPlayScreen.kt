@@ -425,8 +425,8 @@ private fun ResultOverlay(
                     )
                     Text("✨", fontSize = (28f * gameScale()).sp)
                 }
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16), verticalAlignment = Alignment.Bottom) {
-                    BigStar(stars >= 1, 44, 150); BigStar(stars >= 2, 58, 400); BigStar(stars >= 3, 44, 650)
+                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8), verticalAlignment = Alignment.Bottom) {
+                    BigStar(stars >= 1, 32, 150); BigStar(stars >= 2, 40, 400); BigStar(stars >= 3, 32, 650)
                 }
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)) {
                     StatChipStr("⏱", timeString(elapsed), Color(0xFF5D4037))
@@ -437,9 +437,9 @@ private fun ResultOverlay(
                         KidsActionButton(text = stringResource(R.string.cross_math_next_level), type = ButtonType.ORANGE,
                             onClick = { if (enabled) onNextLevel() })
                     }
-                    KidsActionButton(text = stringResource(R.string.balloon_play_again), type = ButtonType.BLUE,
+                    KidsActionButton(text = stringResource(R.string.balloon_play_again), type = ButtonType.POSITIVE,
                         onClick = { if (enabled) onPlayAgain() })
-                    KidsActionButton(text = stringResource(R.string.balloon_back), type = ButtonType.PINK,
+                    KidsActionButton(text = stringResource(R.string.balloon_back), type = ButtonType.NEGATIVE,
                         onClick = { if (enabled) onBack() })
                 }
             }

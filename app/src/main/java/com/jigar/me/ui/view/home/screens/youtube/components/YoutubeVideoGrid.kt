@@ -27,67 +27,47 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.core.net.toUri
 import coil.compose.AsyncImage
 import com.jigar.me.R
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import com.jigar.me.data.model.VideoData
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryLight
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
-import com.jigar.me.ui.view.home.common_ui.dialogs.ParentalGateDialog
 import com.jigar.me.ui.view.home.theme.AppDimens
-import com.jigar.me.utils.ParentalGateSessionCache
 
+// Gate state/rendering is owned by the caller (YoutubeVideoScreenRoute), not
+// this composable -- so its scrim can cover the whole screen (including the
+// header above this grid) instead of just this grid's own bounds.
 @Composable
 fun YoutubeVideoGrid(
     videos: List<VideoData>,
-    columns: Int = 3
+    columns: Int = 3,
+    gateResolvedThisVisit: Boolean,
+    onRequestGate: (action: () -> Unit) -> Unit
 ) {
     val context = LocalContext.current
-    var showURLGate by remember { mutableStateOf(false) }
-    var pendingUrlAction by remember { mutableStateOf<(() -> Unit)?>(null) }
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(columns),
-            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
-            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
-            modifier = Modifier
-                .padding(vertical = AppDimens.Dimens8)
-                .padding(horizontal = AppDimens.Dimens16)
-        ) {
-            items(
-                items = videos.sortedBy { it.so },
-                key = { it.id }
-            ) { video ->
-                VideoGridItem(
-                    video = video,
-                    onClick = {
-                        val action: () -> Unit = {
-                            val intent = Intent(
-                                Intent.ACTION_VIEW,
-                                "https://www.youtube.com/watch?v=${video.id}".toUri()
-                            )
-                            context.startActivity(intent)
-                        }
-                        if (ParentalGateSessionCache.urlGatePassedThisSession) action()
-                        else { pendingUrlAction = action; showURLGate = true }
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(columns),
+        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
+        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
+        modifier = Modifier
+            .padding(vertical = AppDimens.Dimens8)
+            .padding(horizontal = AppDimens.Dimens16)
+    ) {
+        items(
+            items = videos.sortedBy { it.so },
+            key = { it.id }
+        ) { video ->
+            VideoGridItem(
+                video = video,
+                onClick = {
+                    val action: () -> Unit = {
+                        val intent = Intent(
+                            Intent.ACTION_VIEW,
+                            "https://www.youtube.com/watch?v=${video.id}".toUri()
+                        )
+                        context.startActivity(intent)
                     }
-                )
-            }
-        }
-
-        if (showURLGate) {
-            ParentalGateDialog(
-                onPassed = {
-                    showURLGate = false
-                    ParentalGateSessionCache.markPassed()
-                    pendingUrlAction?.invoke()
-                    pendingUrlAction = null
-                },
-                onCancelled = { showURLGate = false; pendingUrlAction = null }
+                    if (gateResolvedThisVisit) action() else onRequestGate(action)
+                }
             )
         }
     }
