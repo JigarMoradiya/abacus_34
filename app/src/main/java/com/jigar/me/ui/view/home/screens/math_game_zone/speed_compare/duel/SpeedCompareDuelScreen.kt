@@ -42,7 +42,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
-import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.PauseTimerInBackground
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
@@ -238,7 +237,6 @@ private fun DuelResultOverlay(p1: Int, p2: Int, onPlayAgain: () -> Unit, onBack:
         modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.55f)),
         contentAlignment = Alignment.Center
     ) {
-        ConfettiRainEffect()
         // "Candy Pop" celebration card — saturated gradient block with a white badge overlapping the top edge.
         Box(contentAlignment = Alignment.TopCenter) {
             Column(

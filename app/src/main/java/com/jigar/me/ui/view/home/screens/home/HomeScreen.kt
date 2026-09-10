@@ -318,7 +318,7 @@ fun HomeScreen(
 
                     if (isTablet) {
                         Spacer(modifier = Modifier.weight(1f))
-                        if (isIndianUser()) {
+                        if (isIndianUser(context)) {
                             MadeInIndiaBadge()
                         } else {
                             SafeAdFreeBadge()
@@ -425,7 +425,7 @@ fun HomeScreen(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             WeeklyReportCard(viewModel.weeklyStats()) { showWeeklyReport = true }
-                            if (isIndianUser()) {
+                            if (isIndianUser(context)) {
                                 MadeInIndiaBadge()
                             } else {
                                 SafeAdFreeBadge()

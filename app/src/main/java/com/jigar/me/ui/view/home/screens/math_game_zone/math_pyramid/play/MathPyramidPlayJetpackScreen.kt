@@ -75,7 +75,6 @@ import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.getButtonColors
 import kotlinx.coroutines.delay
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
-import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsKeyPad
 import com.jigar.me.ui.view.home.theme.AppDimens.keyPadHeight
@@ -219,7 +218,6 @@ private fun PyramidResultOverlay(
 
     Box(modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)), contentAlignment = Alignment.Center) {
         LaunchedEffect(Unit) { AudioPlayerManager.playSoundClap() }
-        ConfettiRainEffect()
         Box(modifier = Modifier.fillMaxWidth(0.6f), contentAlignment = Alignment.TopCenter) {
             Column(
                 modifier = Modifier

@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.common_ui
 
+import android.content.Context
+import android.telephony.TelephonyManager
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -101,5 +103,19 @@ fun SafeAdFreeBadge() {
     )
 }
 
-// Device-locale-based India check -- no network call, matches how most apps do this.
-fun isIndianUser(): Boolean = Locale.getDefault().country == "IN"
+// Device locale alone is unreliable -- plenty of users in India leave their
+// phone's display language set to "English (United States)" or similar, which
+// reports as a non-IN locale even though they're clearly Indian (e.g. billed
+// in INR). SIM/network country comes from the actual carrier, not a display
+// preference, so it catches that case; locale is kept as a fallback for
+// SIM-less devices (tablets, Wi-Fi only).
+fun isIndianUser(context: Context): Boolean {
+    if (Locale.getDefault().country.equals("IN", ignoreCase = true)) return true
+    return try {
+        val telephonyManager = context.getSystemService(Context.TELEPHONY_SERVICE) as? TelephonyManager
+        telephonyManager?.simCountryIso?.equals("in", ignoreCase = true) == true ||
+            telephonyManager?.networkCountryIso?.equals("in", ignoreCase = true) == true
+    } catch (e: Exception) {
+        false
+    }
+}

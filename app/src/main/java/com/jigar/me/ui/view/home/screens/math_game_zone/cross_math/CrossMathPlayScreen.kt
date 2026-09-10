@@ -61,7 +61,6 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.common.PauseTimerInBackg
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.theme.getButtonColors
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
@@ -538,7 +537,6 @@ private fun ResultOverlay(
     Box(modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)), contentAlignment = Alignment.Center) {
         // Finishing a Cross Math level is always a win — always celebrate.
         LaunchedEffect(Unit) { if (stars >= 2) AudioPlayerManager.playSoundClap() else AudioPlayerManager.playSoundWin() }
-        ConfettiRainEffect()
         // "Candy Pop" celebration card — saturated gradient block with a white badge overlapping the top edge.
         Box(modifier = Modifier.fillMaxWidth(0.6f), contentAlignment = Alignment.TopCenter) {
             Column(

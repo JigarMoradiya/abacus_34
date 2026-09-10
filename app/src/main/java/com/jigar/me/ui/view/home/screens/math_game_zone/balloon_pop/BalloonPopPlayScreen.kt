@@ -53,7 +53,6 @@ import com.jigar.me.R
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
-import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.math_game_zone.balloon_pop.viewmodel.BalloonPopPlayViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
@@ -251,7 +250,6 @@ private fun ResultOverlay(
         contentAlignment = Alignment.Center
     ) {
         LaunchedEffect(Unit) { if (starCount >= 2) AudioPlayerManager.playSoundClap() else AudioPlayerManager.playSoundWin() }
-        if (starCount >= 2) ConfettiRainEffect()
 
         // "Candy Pop" celebration card — saturated gradient block with a white badge overlapping the top edge.
         Box(

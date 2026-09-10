@@ -40,7 +40,6 @@ import com.jigar.me.ui.jetpack.core.presentation.theme.ColorGreen
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorRed
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsKeyPad
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsNumberButton
@@ -206,7 +205,6 @@ fun TargetNumberPlayScreen(
     }
 
     if (state.isSolvedCorrect == true) {
-        ConfettiRainEffect()
     }
 }
 

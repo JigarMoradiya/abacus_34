@@ -70,7 +70,6 @@ import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorYellowOrange
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.animations.ConfettiRainEffect
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.math_game_zone.number_sequence_puzzle.viewmodels.NumberSequencePuzzleViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
@@ -367,7 +366,6 @@ private fun PuzzleResultOverlay(
 
     Box(modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)), contentAlignment = Alignment.Center) {
         LaunchedEffect(Unit) { AudioPlayerManager.playSoundClap() }
-        ConfettiRainEffect()
         Box(modifier = Modifier.fillMaxWidth(0.6f), contentAlignment = Alignment.TopCenter) {
             Column(
                 modifier = Modifier
