@@ -23,7 +23,13 @@ class ReviewGateController internal constructor() {
 
     fun attempt(prefs: AppPreferencesHelper, onDone: () -> Unit) {
         Log.d("ReviewGate", "attempt() called from a trigger site")
-        if (AppReviewManager.shouldShowReviewGate(prefs)) {
+        // The Day-2 review ask always takes priority (shown at most once, ever) --
+        // deferring to it here (rather than only checking it from Home) is what
+        // actually guarantees the two overlays never stack, regardless of which
+        // screen's trigger fires first.
+        if (AppReviewManager.shouldShowDay2Review(prefs)) {
+            onDone()
+        } else if (AppReviewManager.shouldShowReviewGate(prefs)) {
             AppReviewManager.onGateShown(prefs)
             onResolved = onDone
             visible = true

@@ -50,7 +50,6 @@ import com.jigar.me.ui.view.other.ContactUsActivity
 import com.jigar.me.ui.view.home.common_ui.dialogs.ParentalGateDialog
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.AppReviewManager
-import com.jigar.me.utils.ParentalGateSessionCache
 import com.jigar.me.utils.extensions.openMail
 import com.jigar.me.utils.extensions.openURL
 import kotlinx.coroutines.launch
@@ -75,9 +74,14 @@ fun MyAccountRoute(
     var pendingUrlAction by remember { mutableStateOf<(() -> Unit)?>(null) }
     var showActionGate by remember { mutableStateOf(false) }
     var pendingNavAction by remember { mutableStateOf<(() -> Unit)?>(null) }
+    // Tracked locally (not via ParentalGateSessionCache) because opening an
+    // external link backgrounds the app, which resets that session cache --
+    // relying on it here would re-ask the gate on every single tap instead of
+    // once per visit to this screen.
+    var gateResolvedThisVisit by remember { mutableStateOf(false) }
 
     fun openURLWithGate(action: () -> Unit) {
-        if (ParentalGateSessionCache.urlGatePassedThisSession) action()
+        if (gateResolvedThisVisit) action()
         else { pendingUrlAction = action; showURLGate = true }
     }
     fun openWithGate(action: () -> Unit) {
@@ -205,7 +209,7 @@ fun MyAccountRoute(
         ParentalGateDialog(
             onPassed = {
                 showURLGate = false
-                ParentalGateSessionCache.markPassed()
+                gateResolvedThisVisit = true
                 pendingUrlAction?.invoke()
                 pendingUrlAction = null
             },

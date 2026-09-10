@@ -3,6 +3,7 @@ package com.jigar.me.ui.view.home.screens.home
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import androidx.activity.compose.BackHandler
 import android.provider.Settings
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -80,7 +81,6 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.common_ui.dialogs.ParentalGateDialog
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Constants
-import com.jigar.me.utils.ParentalGateSessionCache
 import com.jigar.me.utils.checkPermissions
 import kotlin.math.max
 import kotlin.math.min
@@ -177,9 +177,14 @@ fun HomeScreen(
     var showURLGate by remember { mutableStateOf(false) }
     var pendingUrlAction by remember { mutableStateOf<(() -> Unit)?>(null) }
     var showWeeklyReport by remember { mutableStateOf(false) }
+    // Tracked locally (not via ParentalGateSessionCache) because opening an
+    // external link backgrounds the app, which resets that session cache --
+    // relying on it here would re-ask the gate on every single tap instead of
+    // once per visit to this screen.
+    var gateResolvedThisVisit by remember { mutableStateOf(false) }
 
     fun openURLWithGate(action: () -> Unit) {
-        if (ParentalGateSessionCache.urlGatePassedThisSession) action()
+        if (gateResolvedThisVisit) action()
         else { pendingUrlAction = action; showURLGate = true }
     }
 
@@ -527,6 +532,10 @@ fun HomeScreen(
         )
 
         // ── One-time emotional review ask on day 2 ──
+        // System back-press must also stamp the "shown" flag, same as tap-outside --
+        // otherwise a back-press dismissal leaves it unset and the sheet re-qualifies
+        // to show again on the next app open.
+        BackHandler(enabled = uiState.showDay2Review) { viewModel.dismissDay2Review() }
         Day2ReviewGateBottomSheet(
             visible = uiState.showDay2Review,
             onDismiss = { viewModel.dismissDay2Review() },
@@ -541,7 +550,7 @@ fun HomeScreen(
             ParentalGateDialog(
                 onPassed = {
                     showURLGate = false
-                    ParentalGateSessionCache.markPassed()
+                    gateResolvedThisVisit = true
                     pendingUrlAction?.invoke()
                     pendingUrlAction = null
                 },

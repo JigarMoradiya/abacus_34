@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -21,7 +20,6 @@ import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.dialogs.ParentalGateDialog
 import com.jigar.me.ui.view.home.screens.youtube.components.YoutubeVideoGrid
 import com.jigar.me.ui.view.home.screens.youtube.viewmodels.YoutubeVideoViewModel
-import com.jigar.me.utils.ParentalGateSessionCache
 
 @Composable
 fun YoutubeVideoScreenRoute(
@@ -36,10 +34,6 @@ fun YoutubeVideoScreenRoute(
     // backgrounds the app, which resets that session cache -- relying on it here
     // would re-ask the gate on every single video tap instead of once per visit.
     var gateResolvedThisVisit by remember { mutableStateOf(false) }
-
-    LaunchedEffect(Unit) {
-        if (!gateResolvedThisVisit) showURLGate = true
-    }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
@@ -64,7 +58,6 @@ fun YoutubeVideoScreenRoute(
                 onPassed = {
                     showURLGate = false
                     gateResolvedThisVisit = true
-                    ParentalGateSessionCache.markPassed()
                     pendingUrlAction?.invoke()
                     pendingUrlAction = null
                 },
