@@ -237,7 +237,7 @@ private fun PyramidResultOverlay(
                     textAlign = TextAlign.Center
                 )
                 Text(
-                    "You built the pyramid",
+                    stringResource(R.string.you_built_the_pyramid),
                     color = Color.White,
                     fontFamily = FontFamily(Font(R.font.font_semibold)),
                     fontSize = 18.sp.scaled(),

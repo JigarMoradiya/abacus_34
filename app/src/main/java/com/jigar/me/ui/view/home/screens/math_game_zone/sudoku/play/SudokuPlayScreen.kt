@@ -249,7 +249,7 @@ private fun SudokuResultOverlay(
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
                     KidsActionButton(text = stringResource(R.string.play_again), type = ButtonType.POSITIVE,
                         onClick = { if (enabled) onPlayAgain() })
-                    KidsActionButton(text = stringResource(R.string.no_i_will_play_letter), type = ButtonType.NEGATIVE,
+                    KidsActionButton(text = stringResource(R.string.no_i_want_to_close), type = ButtonType.NEGATIVE,
                         onClick = { if (enabled) onBack() })
                 }
             }

@@ -234,15 +234,16 @@ private fun DuelResultOverlay(p1: Int, p2: Int, onPlayAgain: () -> Unit, onBack:
     LaunchedEffect(Unit) { delay(1000); enabled = true }
 
     Box(
-        modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.55f)),
+        modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)),
         contentAlignment = Alignment.Center
     ) {
         // "Candy Pop" celebration card — saturated gradient block with a white badge overlapping the top edge.
-        Box(contentAlignment = Alignment.TopCenter) {
+        Box(modifier = Modifier.fillMaxWidth(0.6f), contentAlignment = Alignment.TopCenter) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
                 modifier = Modifier
+                    .fillMaxWidth()
                     .shadow(20.dp, RoundedCornerShape(AppDimens.Dimens20 * 1.2f), ambientColor = accentColors.base, spotColor = accentColors.base)
                     .background(accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20 * 1.2f))
                     .padding(horizontal = AppDimens.Dimens30, vertical = AppDimens.Dimens20)

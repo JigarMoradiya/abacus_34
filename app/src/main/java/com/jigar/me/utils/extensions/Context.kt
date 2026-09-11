@@ -1,6 +1,7 @@
  package com.jigar.me.utils.extensions
 
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.app.DownloadManager
 import android.app.NotificationManager
 import android.content.ClipboardManager
@@ -31,13 +32,17 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.gson.Gson
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DataProvider
+import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Constants
+import com.revenuecat.purchases.Purchases
 import java.io.IOException
 import java.util.*
+import androidx.core.net.toUri
 
 
  @Suppress("UNCHECKED_CAST")
@@ -234,25 +239,49 @@ import java.util.*
 
 fun Context.openMail(prefManager: AppPreferencesHelper) {
     val emailId = prefManager.getCustomParam(AppConstants.RemoteConfig.supportEmail,"")
-    val email = Intent(Intent.ACTION_SENDTO,Uri.fromParts(
-        "mailto",emailId, null))
-//    email.type = "message/rfc822"
-    email.putExtra(Intent.EXTRA_EMAIL,arrayOf(emailId.toString()))
-    email.putExtra(Intent.EXTRA_SUBJECT, resources.getText(R.string.app_name))
-    email.putExtra(Intent.EXTRA_TEXT, "")
-//    email.setPackage("com.google.android.gm")
-//    if (email.resolveActivity(packageManager)!=null){
-        startActivity(Intent.createChooser(email, resources.getString(R.string.app_name)))
-//    }else{
-//        toastS(getString(R.string.gmail_not_found))
-//    }
+    val subject = resources.getString(R.string.app_name)
+    val body = supportEmailFooter(prefManager)
 
+    // Some mail apps (Gmail included, depending on version) only read subject/body
+    // from the mailto: URI's own query string, not from the Intent extras alone --
+    // so both are set, redundantly, to make sure the body actually shows up.
+    val mailUri = ("mailto:" + Uri.encode(emailId) + "?subject=" + Uri.encode(subject) + "&body=" + Uri.encode(body)).toUri()
+    fun mailIntent() = Intent(Intent.ACTION_SENDTO, mailUri).apply {
+        putExtra(Intent.EXTRA_EMAIL, arrayOf(emailId))
+        putExtra(Intent.EXTRA_SUBJECT, subject)
+        putExtra(Intent.EXTRA_TEXT, body)
+    }
+
+    try {
+        // Go straight to Gmail -- no chooser -- when it's installed.
+        startActivity(mailIntent().setPackage("com.google.android.gm"))
+    } catch (e: ActivityNotFoundException) {
+        try {
+            startActivity(mailIntent())
+        } catch (e2: ActivityNotFoundException) {
+            toastS(getString(R.string.gmail_not_found))
+        }
+    }
+}
+
+// So support can look the user up (and assign a paid plan from the RevenueCat
+// dashboard if needed), pre-fill a footer with whatever identifiers we have --
+// left blank per field when the user isn't logged in / an id isn't available.
+private fun supportEmailFooter(prefManager: AppPreferencesHelper): String {
+    val lines = mutableListOf<String>()
+    val loginData = runCatching { Gson().fromJson(prefManager.getLoginData(), LoginData::class.java) }.getOrNull()
+    loginData?.name?.takeIf { it.isNotBlank() }?.let { lines.add("Name: $it") }
+    runCatching { Purchases.sharedInstance.appUserID }.getOrNull()?.takeIf { it.isNotBlank() }?.let {
+        lines.add("User ID: $it")
+    }
+    if (lines.isEmpty()) return ""
+    return "\n\n\n---\n" + lines.joinToString("\n")
 }
 fun Context.openURL(url : String) {
     try {
         val i = Intent(Intent.ACTION_VIEW)
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        i.data = Uri.parse(url)
+        i.data = url.toUri()
         startActivity(i)
     } catch (e: Exception) {
      e.printStackTrace()

@@ -152,7 +152,7 @@ fun NumberSnakePlayScreen(
         }
 
         if (state.isGameOver) {
-            ResultOverlay(state = state, config = viewModel.config, best = viewModel.bestScore,
+            ResultOverlay(state = state, config = viewModel.config, bestTime = viewModel.bestTime,
                 onPlayAgain = { viewModel.start() }, onBack = onBackClick)
         }
     }
@@ -301,7 +301,7 @@ private fun Tray(state: NumberSnakeUiState, s: Float, onTapNumber: (Int) -> Unit
 
 @Composable
 private fun ResultOverlay(
-    state: NumberSnakeUiState, config: NumberSnakeConfig, best: Int,
+    state: NumberSnakeUiState, config: NumberSnakeConfig, bestTime: Int,
     onPlayAgain: () -> Unit, onBack: () -> Unit
 ) {
     val stars = NumberSnakeConfig.stars(state.hintsUsed, state.elapsed, config.parSeconds)
@@ -318,10 +318,10 @@ private fun ResultOverlay(
                     .fillMaxWidth()
                     .shadow(20.dp, RoundedCornerShape(AppDimens.Dimens20 * 1.2f), ambientColor = accentColors.base, spotColor = accentColors.base)
                     .background(accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20 * 1.2f))
-                    .padding(horizontal = AppDimens.Dimens30, vertical = AppDimens.Dimens16),
-                horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
+                    .padding(horizontal = AppDimens.Dimens30, vertical = AppDimens.Dimens20),
+                horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
             ) {
-                Spacer(Modifier.height(AppDimens.Dimens12))
+                Spacer(Modifier.height(AppDimens.Dimens20))
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text("🐍", fontSize = (28f * gameScale()).sp)
                     Text(
@@ -341,7 +341,7 @@ private fun ResultOverlay(
                     fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 26.sp.scaled())
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)) {
                     StatChipStr("⏱", "%d:%02d".format(state.elapsed / 60, state.elapsed % 60), GOLD)
-                    StatChipStr("🏆", "$best", GOLD_BORDER)
+                    StatChipStr("🏆", if (bestTime > 0) "%d:%02d".format(bestTime / 60, bestTime % 60) else "—", GOLD_BORDER)
                 }
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
                     KidsActionButton(text = stringResource(R.string.balloon_play_again), type = ButtonType.POSITIVE,

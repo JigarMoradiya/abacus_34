@@ -46,7 +46,6 @@ import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumLoginBottomSheet
 import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateBottomSheet
 import com.jigar.me.ui.view.home.screens.my_account.components.MyAccountScreen
 import com.jigar.me.ui.view.home.screens.my_account.viewmodels.MyAccountViewModel
-import com.jigar.me.ui.view.other.ContactUsActivity
 import com.jigar.me.ui.view.home.common_ui.dialogs.ParentalGateDialog
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.AppReviewManager
@@ -85,7 +84,8 @@ fun MyAccountRoute(
         else { pendingUrlAction = action; showURLGate = true }
     }
     fun openWithGate(action: () -> Unit) {
-        pendingNavAction = action; showActionGate = true
+        if (gateResolvedThisVisit) action()
+        else { pendingNavAction = action; showActionGate = true }
     }
     var showRateUsSheet by remember { mutableStateOf(false) }
 //    var showDebugPreview by remember { mutableStateOf(false) }
@@ -108,9 +108,7 @@ fun MyAccountRoute(
                     }
                     "about_app" -> onNavigateToWhatsLearning()
                     "rate_us_on_the_play_store" -> openWithGate { showRateUsSheet = true }
-                    "need_help" -> openWithGate {
-                        ContactUsActivity.getInstance(context, AppConstants.extras_Comman.typeNeedHelp)
-                    }
+                    "need_help" -> context.openMail(prefs)
                     "privacy_policy" -> {
                         uiState.privacyPolicyUrl?.let { url -> openURLWithGate { context.openURL(url) } }
                     }
@@ -221,6 +219,7 @@ fun MyAccountRoute(
         ParentalGateDialog(
             onPassed = {
                 showActionGate = false
+                gateResolvedThisVisit = true
                 pendingNavAction?.invoke()
                 pendingNavAction = null
             },

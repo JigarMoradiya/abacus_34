@@ -845,8 +845,9 @@
     <string name="lets_start">Let\'s Start</string>
     <string name="lets_play">Let\'s Play</string>
     <string name="continue_to_play">Continue to Play</string>
-    <string name="completed_in_b_moves_b"><![CDATA[Completed in <b>%1$d moves!</b>]]></string>
+    <string name="completed_in_b_moves_b"><![CDATA[You completed this puzzle in <b>%1$d moves</b>.]]></string>
     <string name="you_did_it">🎉 You Did It! 🎉</string>
+    <string name="you_built_the_pyramid">You built the pyramid…</string>
     <string name="target_the_number">Target the Number</string>
     <string name="sudoku">Sudoku</string>
     <string name="math_game_zone">Math Game Zone</string>
@@ -954,7 +955,7 @@
     <string name="balloon_final_score">Final Score</string>
     <string name="balloon_best_score">Best Score</string>
     <string name="balloon_play_again">Play Again</string>
-    <string name="balloon_back">Back</string>
+    <string name="balloon_back">No, I want to close</string>
 
     <!-- Speed Compare game -->
     <string name="speed_compare">Speed Compare</string>
