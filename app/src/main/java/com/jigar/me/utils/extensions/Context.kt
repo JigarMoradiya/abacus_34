@@ -245,7 +245,10 @@ fun Context.openMail(prefManager: AppPreferencesHelper) {
     // Some mail apps (Gmail included, depending on version) only read subject/body
     // from the mailto: URI's own query string, not from the Intent extras alone --
     // so both are set, redundantly, to make sure the body actually shows up.
-    val mailUri = ("mailto:" + Uri.encode(emailId) + "?subject=" + Uri.encode(subject) + "&body=" + Uri.encode(body)).toUri()
+    // Uri.encode()'s default safe-chars set does NOT include '@' -- passing it
+    // as `allow` keeps the address itself valid instead of becoming
+    // "name%40host", which mail apps may fail to parse as a recipient at all.
+    val mailUri = ("mailto:" + Uri.encode(emailId, "@") + "?subject=" + Uri.encode(subject) + "&body=" + Uri.encode(body)).toUri()
     fun mailIntent() = Intent(Intent.ACTION_SENDTO, mailUri).apply {
         putExtra(Intent.EXTRA_EMAIL, arrayOf(emailId))
         putExtra(Intent.EXTRA_SUBJECT, subject)

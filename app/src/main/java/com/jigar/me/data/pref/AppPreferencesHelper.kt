@@ -98,6 +98,12 @@ override fun getAccessToken(): String? = mPrefs.getString(PREF_KEY_ACCESS_TOKEN,
         // Notification UX state — device-level, preserve across logout
         val notifPermAsked     = getCustomParamBoolean(AppConstants.Notifications.permissionAsked, false)
         val notifSheetLastDate = getCustomParam(AppConstants.Notifications.sheetLastShownDate, "")
+        // Review gate — device-level, preserve across logout (mirrors Streak.*
+        // above; otherwise a logout+login cycle wipes "already asked"/"already
+        // answered day 2" while totalActiveDays survives, re-firing both gates)
+        val reviewNextMilestone = getCustomParamInt(AppConstants.Review.nextMilestoneDay, AppConstants.Review.milestones.first())
+        val reviewLastAskDate   = getCustomParam(AppConstants.Review.lastAskDate, "")
+        val reviewDay2Shown     = getCustomParamBoolean(AppConstants.Review.day2ReviewShown, false)
         mPrefs.edit { clear() }
         setCustomParam(Constants.last_sync_time, lastSyncTime)
         setCustomParamInt(AppConstants.Settings.Setting_bg_music_volume, bgMusicVolume)
@@ -109,5 +115,8 @@ override fun getAccessToken(): String? = mPrefs.getString(PREF_KEY_ACCESS_TOKEN,
         setCustomParam(AppConstants.Streak.claimedRewards, streakClaimed)
         setCustomParamBoolean(AppConstants.Notifications.permissionAsked, notifPermAsked)
         setCustomParam(AppConstants.Notifications.sheetLastShownDate, notifSheetLastDate)
+        setCustomParamInt(AppConstants.Review.nextMilestoneDay, reviewNextMilestone)
+        setCustomParam(AppConstants.Review.lastAskDate, reviewLastAskDate)
+        setCustomParamBoolean(AppConstants.Review.day2ReviewShown, reviewDay2Shown)
     }
 }
