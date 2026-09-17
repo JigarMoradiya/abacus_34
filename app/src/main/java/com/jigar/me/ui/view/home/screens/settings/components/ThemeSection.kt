@@ -58,6 +58,7 @@ import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorCoffee
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorLightYellow
 import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
+import com.jigar.me.ui.view.base.abacus_base.ColorPresets
 import com.jigar.me.ui.view.base.abacus_base.ColorPresets.getMixColorListOfPoligonUnique
 import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
 import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.drawableToImageBitmap
@@ -66,6 +67,27 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.screens.settings.viewmodels.SettingViewModel
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.mixWith
+
+// Display label shown under each swatch in the theme picker.
+fun themeDisplayName(id: String): String = when (id) {
+    "poligon_rainbow" -> "Rainbow"
+    "poligon_duotone" -> "Duo-Tone"
+    "poligon_candy" -> "Candy"
+    "poligon_heaven_earth" -> "Heaven & Earth"
+    "poligon_purple" -> "Purple"
+    "poligon_blue" -> "Blue"
+    "poligon_skyblue" -> "Sky Blue"
+    "poligon_red" -> "Red"
+    "poligon_green" -> "Green"
+    "poligon_orange" -> "Orange"
+    "poligon_cyan" -> "Cyan"
+    "poligon_pink" -> "Pink"
+    "poligon_yellow" -> "Yellow"
+    "poligon_silver" -> "Silver"
+    "poligon_brown" -> "Brown"
+    "poligon_black" -> "Black"
+    else -> id.removePrefix("poligon_").replaceFirstChar { it.uppercase() }
+}
 
 @Composable
 fun ThemeSection(
@@ -97,7 +119,7 @@ fun ThemeSection(
                 ) {
                     this.items(
                         listOf(
-                            "poligon_rainbow",
+                            "poligon_rainbow", "poligon_candy", "poligon_heaven_earth", "poligon_duotone",
                             "poligon_purple", "poligon_blue", "poligon_skyblue",
                             "poligon_red", "poligon_green", "poligon_orange", "poligon_cyan",
                             "poligon_pink", "poligon_yellow", "poligon_silver", "poligon_brown",
@@ -106,12 +128,16 @@ fun ThemeSection(
                     ) { theme ->
                         val gradientColors =
                             if (theme.contains("poligon"))
-                                if (theme.contains("rainbow")){
-                                    getMixColorListOfPoligonUnique()
-                                }else{
-                                    val preset = AbacusTheme.colorPreset(theme)
-                                    val baseColor = preset.abacusTopGradient
-                                    listOf(baseColor.mixWith(Color.White, 0.40f), baseColor.mixWith(Color.White,0.10f))
+                                when {
+                                    theme.contains("rainbow") -> getMixColorListOfPoligonUnique()
+                                    theme == "poligon_candy" -> ColorPresets.getCandyColorList()
+                                    theme == "poligon_heaven_earth" -> listOf(ColorPresets.heavenBeadColor, ColorPresets.earthBeadColor)
+                                    theme == "poligon_duotone" -> ColorPresets.getDuoToneColorList()
+                                    else -> {
+                                        val preset = AbacusTheme.colorPreset(theme)
+                                        val baseColor = preset.abacusTopGradient
+                                        listOf(baseColor.mixWith(Color.White, 0.40f), baseColor.mixWith(Color.White,0.10f))
+                                    }
                                 }
                             else arrayListOf()
 
@@ -120,13 +146,22 @@ fun ThemeSection(
                         val beadImage = remember {
                             drawableToImageBitmap(context, R.drawable.poligon_gray_light)
                         }
-                        BeadThemeItemCanvas(
-                            beadImage = beadImage,
-                            gradientColors = gradientColors,
-                            isSelected = theme == selectedTheme,
-                            isPolygon = theme.contains("poligon"),
-                            onClick = { onThemeSelected(theme) }
-                        )
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                            BeadThemeItemCanvas(
+                                beadImage = beadImage,
+                                gradientColors = gradientColors,
+                                isSelected = theme == selectedTheme,
+                                isPolygon = theme.contains("poligon"),
+                                onClick = { onThemeSelected(theme) }
+                            )
+                            Text(
+                                text = themeDisplayName(theme),
+                                style = MaterialTheme.typography.labelSmall.scaled().copy(
+                                    fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium)), color = ColorCoffee
+                                ),
+                                modifier = Modifier.padding(top = AppDimens.Dimens2)
+                            )
+                        }
                     }
                 }
             }

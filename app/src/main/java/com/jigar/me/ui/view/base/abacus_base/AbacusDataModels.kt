@@ -17,7 +17,11 @@ data class ColorPresetModel(
     val displayBGColor: Color = Color(229, 74, 57),
     val displayBorderColor: Color = Color.Yellow,
     val columnColors: Color = Color.Cyan,
-    val arrowColor: Color = Color.Black
+    val arrowColor: Color = Color.Black,
+    // Stroke around the Reset/Current-Input/Next capsule (AbacusAnswerBarCompose).
+    // Null = keep the old behavior of reusing abacusCenterGradient, for every theme
+    // that hasn't been given its own dedicated value.
+    val answerBarStrokeColor: Color? = null
 )
 
 /*data class AbacusDimensionModel(

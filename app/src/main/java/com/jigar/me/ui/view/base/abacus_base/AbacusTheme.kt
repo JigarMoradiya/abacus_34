@@ -26,8 +26,8 @@ object AbacusTheme {
                 abacusBottomGradient = hex("ECEFF1"),
                 buttonColor = hex("37474F"),
                 columnColors = hex("BCAAA4"),
-                displayBGColor = hex("4E342E"),
-                displayBorderColor = hex("8D6E63")
+                displayBGColor = hex("607D8B"),
+                displayBorderColor = hex("90A4AE")
             )
 
             // -----------------------
@@ -39,8 +39,8 @@ object AbacusTheme {
                 abacusBottomGradient = hex("EEEEEE"),
                 buttonColor = hex("212121"),
                 columnColors = hex("E0E0E0"),
-                displayBGColor = hex("bb4430"),
-                displayBorderColor = hex("f6ae29"),
+                displayBGColor = hex("616161"),
+                displayBorderColor = hex("BDBDBD"),
                 arrowColor = hex("000000")
             )
 
@@ -53,8 +53,8 @@ object AbacusTheme {
                 abacusBottomGradient = hex("E8EAF6"),
                 buttonColor = hex("283593"),
                 columnColors = hex("9FA8DA"),
-                displayBGColor = hex("7f2ccb"),
-                displayBorderColor = hex("ffa9e7")
+                displayBGColor = hex("3F51B5"),
+                displayBorderColor = hex("7986CB")
             )
 
             // -----------------------
@@ -66,8 +66,8 @@ object AbacusTheme {
                 abacusBottomGradient = hex("F3E5F5"),
                 buttonColor = hex("6A1B9A"),
                 columnColors = hex("CE93D8"),
-                displayBGColor = hex("a23a06"),
-                displayBorderColor = hex("f6ae29")
+                displayBGColor = hex("9C27B0"),
+                displayBorderColor = hex("BA68C8")
             )
 
             // -----------------------
@@ -79,8 +79,8 @@ object AbacusTheme {
                 abacusBottomGradient = hex("E3F2FD"),
                 buttonColor = hex("1565C0"),
                 columnColors = hex("90CAF9"),
-                displayBGColor = hex("401e5b"),
-                displayBorderColor = hex("ff8552")
+                displayBGColor = hex("2196F3"),
+                displayBorderColor = hex("64B5F6")
             )
 
             // -----------------------
@@ -92,8 +92,8 @@ object AbacusTheme {
                 abacusBottomGradient = hex("FFEBEE"),
                 buttonColor = hex("B71C1C"),
                 columnColors = hex("EF9A9A"),
-                displayBGColor = hex("0D1764"),
-                displayBorderColor = hex("9199e2")
+                displayBGColor = hex("FF0000"),
+                displayBorderColor = hex("E57373")
             )
 
             // -----------------------
@@ -105,8 +105,8 @@ object AbacusTheme {
                 abacusBottomGradient = hex("E8F5E9"),
                 buttonColor = hex("2E7D32"),
                 columnColors = hex("A5D6A7"),
-                displayBGColor = hex("932826"),
-                displayBorderColor = hex("fb9648")
+                displayBGColor = hex("4CAF50"),
+                displayBorderColor = hex("81C784")
             )
 
             // -----------------------
@@ -118,8 +118,10 @@ object AbacusTheme {
                 abacusBottomGradient = hex("FFF3E0"),
                 buttonColor = hex("EF6C00"),
                 columnColors = hex("FFCC80"),
-                displayBGColor = hex("731500"),
-                displayBorderColor = hex("fcdc4d")
+                // Bead orange is too light for white text -- use the darker button
+                // shade instead, same hue family either way.
+                displayBGColor = hex("EF6C00"),
+                displayBorderColor = hex("FFB74D")
             )
 
             // -----------------------
@@ -131,8 +133,10 @@ object AbacusTheme {
                 abacusBottomGradient = hex("E0F7FA"),
                 buttonColor = hex("00838F"),
                 columnColors = hex("80DEEA"),
-                displayBGColor = hex("5f0f40"),
-                displayBorderColor = hex("da7422")
+                // Bead cyan is too light for white text -- use the darker button
+                // shade instead, same hue family either way.
+                displayBGColor = hex("00838F"),
+                displayBorderColor = hex("4DD0E1")
             )
 
             // -----------------------
@@ -144,8 +148,8 @@ object AbacusTheme {
                 abacusBottomGradient = hex("FCE4EC"),
                 buttonColor = hex("AD1457"),
                 columnColors = hex("F48FB1"),
-                displayBGColor = hex("216869"),
-                displayBorderColor = hex("49a078")
+                displayBGColor = hex("E91E63"),
+                displayBorderColor = hex("F06292")
             )
 
             // -----------------------
@@ -157,8 +161,10 @@ object AbacusTheme {
                 abacusBottomGradient = hex("FFF8E1"),
                 buttonColor = hex("FF8F00"),
                 columnColors = hex("FFE082"),
-                displayBGColor = hex("388659"),
-                displayBorderColor = hex("33ca7f")
+                // Bead yellow is far too light for white text -- use the darker
+                // button shade instead, same hue family either way.
+                displayBGColor = hex("FF8F00"),
+                displayBorderColor = hex("FFD54F")
             )
 
             // -----------------------
@@ -170,8 +176,8 @@ object AbacusTheme {
                 abacusBottomGradient = hex("ECEFF1"),
                 buttonColor = hex("37474F"),
                 columnColors = hex("B0BEC5"),
-                displayBGColor = hex("235789"),
-                displayBorderColor = hex("e1bc29")
+                displayBGColor = hex("607D8B"),
+                displayBorderColor = hex("90A4AE")
             )
 
             // -----------------------
@@ -183,8 +189,61 @@ object AbacusTheme {
                 abacusBottomGradient = hex("EFEBE9"),
                 buttonColor = hex("4E342E"),
                 columnColors = hex("BCAAA4"),
-                displayBGColor = hex("932826"),
-                displayBorderColor = hex("ff8841")
+                displayBGColor = hex("795548"),
+                displayBorderColor = hex("A1887F")
+            )
+
+            // -----------------------
+            //  poligon_duotone -- rod alternates between 2 colors (see ColorPresets.getDuoToneColorList)
+            // -----------------------
+            "poligon_duotone" -> ColorPresetModel(
+                abacusTopGradient = hex("2E86AB"),
+                abacusCenterGradient = hex("6BA9C6"),
+                abacusBottomGradient = hex("E3EEF3"),
+                buttonColor = hex("1B5E76"),
+                columnColors = hex("A9CBDA"),
+                // Monochromatic blue, matching the frame -- the coral duo-tone accent
+                // looked good on its own bead but clashed as a border/chrome color.
+                displayBGColor = hex("1B3A4B"),
+                displayBorderColor = hex("6BA9C6")
+            )
+
+            // -----------------------
+            //  poligon_candy -- 5 colors, one per bead position (see ColorPresets.getCandyColorList)
+            // -----------------------
+            "poligon_candy" -> ColorPresetModel(
+                // Same neutral slate frame Rainbow uses, so the 5-color candy beads are
+                // the visual focus instead of competing with a single frame hue. (A near-
+                // white value here would also wash out the rod tint, which mixes this
+                // color 80% with white -- this shade is proven visible at that mix.)
+                abacusTopGradient = hex("607D8B"),
+                abacusCenterGradient = hex("90A4AE"),
+                abacusBottomGradient = hex("ECEFF1"),
+                // Dark neutral tint (same as Rainbow's) -- drives the Reset/Next
+                // background, the dot markers, and the beam end-caps, so none of them
+                // compete with the candy beads either.
+                buttonColor = hex("37474F"),
+                columnColors = hex("F8BBD9"),
+                // Neutral, matching the frame -- the answer bar stays out of the way so
+                // the 5-color candy beads are the only colorful thing on screen.
+                displayBGColor = hex("607D8B"),
+                displayBorderColor = hex("90A4AE"),
+                answerBarStrokeColor = hex("90A4AE")
+            )
+
+            // -----------------------
+            //  poligon_heaven_earth -- heaven bead (upper) vs earth beads (lower) two-tone
+            // -----------------------
+            "poligon_heaven_earth" -> ColorPresetModel(
+                abacusTopGradient = hex("0B4F6C"),
+                abacusCenterGradient = hex("4A82A0"),
+                abacusBottomGradient = hex("DCEAF1"),
+                buttonColor = hex("083A50"),
+                columnColors = hex("9DC3D6"),
+                // Monochromatic teal, matching the frame -- the gold heaven-bead accent
+                // looked good on the bead itself but clashed as a border/chrome color.
+                displayBGColor = hex("0B4F6C"),
+                displayBorderColor = hex("4A82A0")
             )
 
             // -----------------------
@@ -196,8 +255,8 @@ object AbacusTheme {
                 abacusBottomGradient = hex("FFCDD2"),
                 buttonColor = hex("B71C1C"),
                 columnColors = hex("E57373"),
-                displayBGColor = hex("344a70"),
-                displayBorderColor = hex("57babb")
+                displayBGColor = hex("E53935"),
+                displayBorderColor = hex("EF5350")
             )
 
             // -----------------------

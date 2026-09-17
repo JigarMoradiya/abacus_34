@@ -62,6 +62,11 @@ fun DrawScope.drawAbacusColumns(
     val preset = AbacusTheme.colorPreset(selectedTheme)
     val isPolygonTheme = selectedTheme.contains("poligon", ignoreCase = true)
     val isRainbow = selectedTheme.equals("poligon_rainbow", ignoreCase = true)
+    val isDuoTone = selectedTheme.equals("poligon_duotone", ignoreCase = true)
+    // Per-bead-position themes: color depends on idx (bead slot within the rod),
+    // not on col (rod number) -- every rod shows the same sequence.
+    val isCandy = selectedTheme.equals("poligon_candy", ignoreCase = true)
+    val isHeavenEarth = selectedTheme.equals("poligon_heaven_earth", ignoreCase = true)
 
     val beadH = geometry.beadHeightPx
     val beamH = geometry.beamHeightPx
@@ -90,7 +95,11 @@ fun DrawScope.drawAbacusColumns(
                     col == numberOfColumns - 10 ||
                     col == numberOfColumns - 13
 
-        val baseColor = if (isRainbow) ColorPresets.getMixColorListOfPoligon()[col] else preset.abacusTopGradient
+        val baseColor = when {
+            isRainbow -> ColorPresets.getMixColorListOfPoligon()[col]
+            isDuoTone -> ColorPresets.getDuoToneColorList()[col % ColorPresets.getDuoToneColorList().size]
+            else -> preset.abacusTopGradient
+        }
         val columnColor = baseColor.mixWith(Color.White, 0.8f)
         val beamColor = preset.abacusTopGradient.mixWith(Color.White, 0.8f)
 
@@ -238,6 +247,14 @@ fun DrawScope.drawAbacusColumns(
         }
 
         // ───────── Per bead index (0..6) ─────────
+        // Not every idx in 0..6 is actually drawn for a given value (columnState[idx] gates
+        // it), and which ones are skipped shifts with the rod's value -- so a color keyed
+        // directly off idx (e.g. idx % paletteSize) can land two DIFFERENT idx on the same
+        // palette slot for one value and different slots for another, making two visibly
+        // adjacent beads (e.g. the heaven bead and the 3rd earth bead) sometimes render the
+        // same color. Keying off "visibleBeadRank" instead -- the bead's position among only
+        // the beads actually drawn on this rod, top to bottom -- is stable and collision-free.
+        var visibleBeadRank = 0
         if (!showHighlighter || currentSpot != 1) { // hide all beads when rods highlighter show
             columnState.indices.forEach { idx ->
                 val beadTop = beadTopForIndex(idx)
@@ -247,24 +264,33 @@ fun DrawScope.drawAbacusColumns(
                     val beadIsActive = arr[idx]
                     val imageToDraw: ImageBitmap = beadPolygonGray
 
+                    // Per-bead-position color override -- same on every rod, keyed by the
+                    // bead's visible rank (0 = topmost drawn bead), not the raw idx.
+                    val beadColor = when {
+                        isCandy -> ColorPresets.getCandyColorList().let { it[visibleBeadRank % it.size] }
+                        isHeavenEarth -> if (visibleBeadRank == 0) ColorPresets.heavenBeadColor else ColorPresets.earthBeadColor
+                        else -> baseColor
+                    }
+                    visibleBeadRank++
+
                     val tintColor =
                         if (!isPolygonTheme) Color.White
                         else if (beadIsActive)
-                            baseColor.mixWith(Color.White, 0.4f)   // active, brighter
+                            beadColor.mixWith(Color.White, 0.4f)   // active, brighter
                         else
-                            baseColor.mixWith(Color.White,  0.9f)   // inactive, dimmer
+                            beadColor.mixWith(Color.White, 0.9f)   // inactive, dimmer
 
                     if (isPolygonTheme) {
                         drawIntoCanvas { canvas ->
                             val topColor = if (beadIsActive)
-                                baseColor.mixWith(Color.White, 0.40f)
+                                beadColor.mixWith(Color.White, 0.40f)
                             else
-                                baseColor.mixWith(Color.White, 0.8f)
+                                beadColor.mixWith(Color.White, 0.8f)
 
                             val bottomColor = if (beadIsActive)
-                                baseColor.mixWith(Color.White,0.10f)
+                                beadColor.mixWith(Color.White,0.10f)
                             else
-                                baseColor.mixWith(Color.White, 0.7f)
+                                beadColor.mixWith(Color.White, 0.7f)
 
                             drawBeadWithGradientMask(
                                 image = beadPolygonGray,      // or faceOpen / faceClose

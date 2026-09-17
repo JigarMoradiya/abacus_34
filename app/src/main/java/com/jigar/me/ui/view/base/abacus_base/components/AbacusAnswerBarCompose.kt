@@ -169,7 +169,7 @@ fun AbacusAnswerBarCompose(
                         clip = false
                     )
                     .background(theme.buttonColor, RoundedCornerShape(AppDimens.Dimens100))
-                    .border(backgroundBoxBorder, theme.abacusCenterGradient, RoundedCornerShape(AppDimens.Dimens100))
+                    .border(backgroundBoxBorder, theme.answerBarStrokeColor ?: theme.abacusCenterGradient, RoundedCornerShape(AppDimens.Dimens100))
             )
         }.first()
 
