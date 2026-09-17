@@ -122,6 +122,9 @@
 -keepclassmembers class com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SavedSudokuGame { *; }
 -keepclassmembers class com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel.SudokuPuzzle { *; }
 -keepclassmembers class com.jigar.me.ui.view.home.screens.math_game_zone.target_number.components.TargetUiState { *; }
+# Home offer config from Remote Config JSON (`home_offer`) -- same trap as above:
+# R8 field renaming would leave every field null and the offer permanently disabled.
+-keepclassmembers class com.jigar.me.utils.HomeOfferConfig { *; }
 
 ##---------------Suppress irrelevant warnings--------##
 -dontwarn sun.misc.Unsafe

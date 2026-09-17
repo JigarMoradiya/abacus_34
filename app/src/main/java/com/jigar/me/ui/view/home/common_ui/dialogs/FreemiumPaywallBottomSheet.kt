@@ -51,6 +51,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorAccent
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.purchase.components.getDurationTxt
 import com.jigar.me.ui.view.home.screens.purchase.components.isYearly
@@ -338,7 +339,8 @@ fun FreemiumPaywallBottomSheet(
                                         viewModel.onPlanSelected(index)
                                         viewModel.makePurchase(activity)
                                     }
-                                }
+                                },
+                                onOfferExpired = { viewModel.loadData() }
                             )
                         }
                     }
@@ -385,6 +387,7 @@ private fun PaywallPlanCard(
     badge: String?,
     uiState: PurchaseUiState,
     onSubscribe: () -> Unit,
+    onOfferExpired: () -> Unit = {},
 ) {
     val borderColor = if (isHighlighted) Color(0xFFFF8400) else Color(0xFFDDDDDD)
     val bgColor = if (isHighlighted) Color(0xFFFFF8F0) else Color(0xFFFAFAFA)
@@ -436,23 +439,47 @@ private fun PaywallPlanCard(
                     if (savingsText != null) {
                         Text(
                             text = savingsText,
+                            color = Color.Black,
+                            style = MaterialTheme.typography.labelSmall.scaled(),
+                            fontWeight = FontWeight.Medium
+                        )
+                    }
+                    // "extra ~% OFF" + countdown -- own row below the savings line,
+                    // matching the Purchase page and the Home timed-offer badge.
+                    if (uiState.discountPer > 0) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text(
+                                text = stringResource(R.string.paywall_percent_off_extra, uiState.discountPer),
+                                color = Color(0xFF2E7D32),
+                                style = MaterialTheme.typography.labelSmall.scaled(),
+                                fontWeight = FontWeight.Bold
+                            )
+                            uiState.homeOfferYearlyEndMillis?.let { endMillis ->
+                                Spacer(Modifier.width(AppDimens.Dimens6))
+                                InlineCountdownPill(endMillis, onOfferExpired)
+                            }
+                        }
+                    }
+                } else if (plan.isLifeTimeOffer() && plan.sku.contains("offer") && uiState.discountPerLifetime > 0) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(
+                            text = stringResource(R.string.paywall_percent_off, uiState.discountPerLifetime),
                             color = Color(0xFF2E7D32),
                             style = MaterialTheme.typography.labelSmall.scaled(),
                             fontWeight = FontWeight.Bold
                         )
+                        // Same live countdown as the Home card, tied directly to this
+                        // discounted plan -- only when the timed offer targets lifetime.
+                        uiState.homeOfferLifetimeEndMillis?.let { endMillis ->
+                            Spacer(Modifier.width(AppDimens.Dimens6))
+                            InlineCountdownPill(endMillis, onOfferExpired)
+                        }
                     }
-                } else if (plan.isLifeTimeOffer() && plan.sku.contains("offer") && uiState.discountPerLifetime > 0) {
-                    Text(
-                        text = stringResource(R.string.paywall_percent_off, uiState.discountPerLifetime),
-                        color = Color(0xFF2E7D32),
-                        style = MaterialTheme.typography.labelSmall.scaled(),
-                        fontWeight = FontWeight.Bold
-                    )
                 }
             }
 
             KidsActionButton(
-                text = stringResource(R.string.paywall_subscribe),
+                text = if (plan.isLifeTimeOffer()) stringResource(R.string.txt_purchase_Now) else stringResource(R.string.paywall_subscribe),
                 type = if (isHighlighted) ButtonType.ORANGE else ButtonType.BLUE,
                 onClick = onSubscribe,
                 isSmall = true

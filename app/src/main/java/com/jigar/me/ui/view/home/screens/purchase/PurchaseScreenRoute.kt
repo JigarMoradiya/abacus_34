@@ -43,7 +43,8 @@ fun PurchaseScreenRoute(
                 else showLoginSheet = true
             },
             onClose = onClose,
-            oldSubPopupCloseClick = { viewModel.oldSubPopupClose() }
+            oldSubPopupCloseClick = { viewModel.oldSubPopupClose() },
+            onOfferExpired = { viewModel.loadData() }
         )
     }
 

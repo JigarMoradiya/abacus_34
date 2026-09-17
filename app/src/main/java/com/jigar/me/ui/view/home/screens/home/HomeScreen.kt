@@ -69,6 +69,8 @@ import com.jigar.me.ui.view.home.common_ui.dialogs.FreeTrialDialog
 import com.jigar.me.ui.view.home.common_ui.sheets.Day2ReviewGateBottomSheet
 import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateBottomSheet
 import com.jigar.me.ui.view.home.screens.home.components.HomeMenuScreen
+import com.jigar.me.ui.view.home.screens.home.components.HomeOfferBadge
+import com.jigar.me.ui.view.home.screens.home.components.HomeOfferCard
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeFragmentViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
@@ -345,7 +347,16 @@ fun HomeScreen(
                         .weight(1f)
                         .fillMaxHeight()
                 ) {
-                    // Streak + level cards pager
+                    // Time-limited offer (Remote Config `home_offer`) -- hidden for premium
+                    // users. On phone it's shown as a compact badge in the bottom row
+                    // (below) instead of its own row, so the activity tile list never
+                    // shrinks to make room for it; "This Week" moves up here to free that
+                    // slot. On tablet, which has room to spare, it keeps its own full-size
+                    // row further down, unchanged.
+                    val activeOffer = uiState.homeOffer?.takeIf { !uiState.isPremium }
+
+                    // Streak + level cards pager (+ "This Week" when the offer has taken
+                    // its usual spot in the bottom row below)
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -367,6 +378,27 @@ fun HomeScreen(
                             onLevel2 = onNavigateToLevel2,
                             onLevel3 = onNavigateToLevel3,
                             onLevel4 = onNavigateToLevel4,
+                        )
+                        if (activeOffer != null && !isTablet) {
+                            WeeklyReportCard(viewModel.weeklyStats()) { showWeeklyReport = true }
+                        }
+                    }
+
+                    // Tablet only: offer keeps its own full-size row (plenty of vertical
+                    // space there; no need to relocate anything to make room for it).
+                    if (activeOffer != null && isTablet) {
+                        HomeOfferCard(
+                            title = activeOffer.title,
+                            startedAtMillis = activeOffer.startedAtMillis,
+                            durationMin = activeOffer.durationMin,
+                            discountPercent = activeOffer.discountPercent,
+                            targetsLifetime = activeOffer.targetsLifetime,
+                            onClick = { AudioPlayerManager.playSoundBtnClick(); onNavigateToPurchase() },
+                            onExpired = viewModel::onHomeOfferExpired,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = Dimens16)
+                                .padding(bottom = Dimens8)
                         )
                     }
 
@@ -414,7 +446,10 @@ fun HomeScreen(
                         modifier = Modifier.weight(1f)
                     )
 
-                    // Weekly report (left) + English cross-promo (right) — phone only
+                    // Offer badge (or weekly report) + Made in India/Safe badge + English
+                    // cross-promo — phone only. When the timed offer is active it takes
+                    // this first slot (compact, same size class as its neighbours) and
+                    // "This Week" moves up to the top row instead -- see activeOffer above.
                     if (!isTablet) {
                         Row(
                             modifier = Modifier
@@ -424,7 +459,19 @@ fun HomeScreen(
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            WeeklyReportCard(viewModel.weeklyStats()) { showWeeklyReport = true }
+                            if (activeOffer != null) {
+                                HomeOfferBadge(
+                                    title = activeOffer.title,
+                                    startedAtMillis = activeOffer.startedAtMillis,
+                                    durationMin = activeOffer.durationMin,
+                                    discountPercent = activeOffer.discountPercent,
+                                    targetsLifetime = activeOffer.targetsLifetime,
+                                    onClick = { AudioPlayerManager.playSoundBtnClick(); onNavigateToPurchase() },
+                                    onExpired = viewModel::onHomeOfferExpired,
+                                )
+                            } else {
+                                WeeklyReportCard(viewModel.weeklyStats()) { showWeeklyReport = true }
+                            }
                             if (isIndianUser(context)) {
                                 MadeInIndiaBadge()
                             } else {

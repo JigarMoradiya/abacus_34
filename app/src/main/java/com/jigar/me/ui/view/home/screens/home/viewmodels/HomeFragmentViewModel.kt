@@ -8,14 +8,20 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.jigar.me.BuildConfig
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.jetpack.core.StatefulViewModel
 import com.jigar.me.ui.jetpack.core.domain.ConsumableCommand
 import com.jigar.me.ui.jetpack.core.repository.abacus_data.AbacusDataRepository
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.AppReviewManager
+import com.jigar.me.utils.CommonUtils
+import com.jigar.me.utils.HomeOfferManager
+import com.jigar.me.utils.RevenueCatHelper
 import com.jigar.me.utils.StreakManager
 import com.jigar.me.utils.WeeklySummaryManager
+import com.revenuecat.purchases.Purchases
+import com.revenuecat.purchases.awaitOfferings
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -38,7 +44,58 @@ class HomeFragmentViewModel @Inject constructor(
         viewModelScope.launch { loadHomeMenu() }
         viewModelScope.launch { checkStreak() }
         handleNotificationPermission()
+        initHomeOffer()
     }
+
+    // Time-limited Home offer (Remote Config `home_offer`). `enabled` + `product` is
+    // the only thing that decides whether this shows -- no dependency on the
+    // permanent discount_per(_lifetime) fields or the display_plan whitelist.
+    private fun initHomeOffer() {
+        val cfg = HomeOfferManager.config(prefs)
+        val targetsLifetime = cfg.targetsLifetime
+        HomeOfferManager.startIfNeeded(prefs, forceRestart = BuildConfig.DEBUG)
+        if (!HomeOfferManager.isTimedOfferActive(prefs)) return
+
+        // Hide the card for premium users, reacting to RC updates (login, restore, purchase).
+        viewModelScope.launch {
+            RevenueCatHelper.customerInfoFlow.collect {
+                updateState_ { copy(isPremium = CommonUtils.checkPurchaseForExerciseExamCCM(prefs)) }
+            }
+        }
+        viewModelScope.launch {
+            val packages = runCatching { Purchases.sharedInstance.awaitOfferings().current?.availablePackages }
+                .getOrNull() ?: emptyList()
+            val baseId = if (targetsLifetime) AppConstants.Products.lifetime else AppConstants.Products.year
+            val offerId = if (targetsLifetime) AppConstants.Products.lifetimeOffer else AppConstants.Products.yearOffer
+            val base  = packages.firstOrNull { AppConstants.Products.matches(it.product.id, baseId) }
+            val offer = packages.firstOrNull { AppConstants.Products.matches(it.product.id, offerId) }
+            // The .offer package must actually exist in the store offering -- can't
+            // show a discount for a product that isn't real. (The paywall itself is
+            // made to always include this pair while the timed offer is active, so
+            // there's no display_plan whitelist dependency to check here either.)
+            if (offer == null) return@launch
+            // Re-validate the window is still running now that offerings have loaded --
+            // it may have expired during the await -- so an already-expired offer is
+            // never published (HomeOfferCard would self-correct within a frame anyway,
+            // but there's no reason to show it even briefly).
+            if (!HomeOfferManager.isTimedOfferActive(prefs)) return@launch
+            val startedAt = HomeOfferManager.startedAt(prefs) ?: return@launch
+            val discountPercent = if (targetsLifetime)
+                HomeOfferManager.effectiveLifetimeDiscountPer(prefs, base?.product?.price?.amountMicros, offer.product.price.amountMicros)
+            else
+                HomeOfferManager.effectiveYearDiscountPer(prefs, base?.product?.price?.amountMicros, offer.product.price.amountMicros)
+            val offerUi = HomeOfferUi(
+                title = cfg.name?.takeIf { it.isNotBlank() },
+                startedAtMillis = startedAt,
+                durationMin = cfg.duration_min ?: 0,
+                discountPercent = discountPercent,
+                targetsLifetime = targetsLifetime,
+            )
+            updateState_ { copy(homeOffer = offerUi) }
+        }
+    }
+
+    fun onHomeOfferExpired() = updateState_ { copy(homeOffer = null) }
 
     private fun handleNotificationPermission() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) return

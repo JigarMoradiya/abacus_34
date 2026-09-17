@@ -39,6 +39,14 @@ data class PurchaseUiState(
     val discountPer: Int = 0,
     val discountPerLifetime: Int = 0,
 
+    // Timed Home offer (Remote Config `home_offer`): when it ends, so the Purchase
+    // page can show the same live countdown as the Home card. Null = not active for
+    // that specific plan -- a campaign targeting yearly must never also show a
+    // countdown on the lifetime row (or vice versa), so these are kept separate
+    // rather than one shared value.
+    val homeOfferYearlyEndMillis: Long? = null,
+    val homeOfferLifetimeEndMillis: Long? = null,
+
     // UI flags
     val showSubmitButton: Boolean = false,
     val isOldSubscriptionThere: Boolean = false,

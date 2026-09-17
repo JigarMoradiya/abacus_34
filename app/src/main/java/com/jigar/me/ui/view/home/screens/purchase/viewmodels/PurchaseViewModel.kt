@@ -14,6 +14,7 @@ import com.jigar.me.ui.view.home.screens.home.repository.AbacusRepository
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
+import com.jigar.me.utils.HomeOfferManager
 import com.jigar.me.utils.RevenueCatHelper
 import com.revenuecat.purchases.Package
 import com.revenuecat.purchases.PackageType
@@ -49,8 +50,14 @@ class PurchaseViewModel @Inject constructor(
     fun isUserSubscribed(): Boolean = CommonUtils.checkPurchaseForExerciseExamCCM(prefManager)
 
     fun loadData() {
-        val discountPer = prefManager.getCustomParamInt(AppConstants.RemoteConfig.discountPer, 0)
         val discountLifetime = prefManager.getCustomParamInt(AppConstants.RemoteConfig.discountPerLifeTime, 0)
+        // The timed Home offer (Remote Config `home_offer`) makes the yearly .offer plan
+        // active exactly like the permanent discount does. Inactive => unchanged behaviour.
+        // Pinned to one instant so the SKU choice below and the % badge computed after
+        // awaitOfferings() can't disagree if the window happens to expire mid-load.
+        val decisionNow = System.currentTimeMillis()
+        val yearlyDiscountActive = HomeOfferManager.isYearlyDiscountActive(prefManager, decisionNow)
+        val lifetimeDiscountActive = HomeOfferManager.isLifetimeDiscountActive(prefManager, decisionNow)
 
         val adminPlanList = prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, "")
             .takeIf { it.isNotEmpty() }
@@ -66,7 +73,12 @@ class PurchaseViewModel @Inject constructor(
 
         updateState_ {
             copy(
-                discountPer = discountPer,
+                // Fallback floor: the permanent Remote Config value, set synchronously so
+                // the paywall never loses its discount badge if awaitOfferings() below
+                // fails (e.g. offline). The async block overwrites this with the timed-
+                // offer-aware value once offerings load; until then this is exactly the
+                // pre-existing behaviour.
+                discountPer = prefManager.getCustomParamInt(AppConstants.RemoteConfig.discountPer, 0),
                 discountPerLifetime = discountLifetime,
                 planListAssignFromAdmin = adminPlanList,
                 yearPlanAssignFromAdmin = yearPlanFromAdmin,
@@ -86,19 +98,60 @@ class PurchaseViewModel @Inject constructor(
             try {
                 val offerings = Purchases.sharedInstance.awaitOfferings()
                 val allPackages = offerings.current?.availablePackages ?: emptyList()
+                // The timed Home offer is fully self-contained (enabled + product decide
+                // everything), so its target base/.offer pair is always shown regardless
+                // of display_plan -- otherwise the Home card could promise a discount the
+                // paywall then filters back out.
+                val timedOfferIds = HomeOfferManager.targetProductIds(prefManager, decisionNow)
                 var packages = if (displayPlanIds.isEmpty()) allPackages
                                else allPackages.filter { pkg ->
-                                   displayPlanIds.any { id -> pkg.product.id == id || pkg.product.id.startsWith("$id:") }
+                                   displayPlanIds.any { id -> pkg.product.id == id || pkg.product.id.startsWith("$id:") } ||
+                                       timedOfferIds.any { id -> AppConstants.Products.matches(pkg.product.id, id) }
                                }
+                // % shown on the yearly .offer: the permanent Remote Config value wins;
+                // during the timed Home offer it's derived from the real base vs .offer
+                // store prices so it always matches what the store actually charges.
+                // (Written once here, not synchronously above, so it never flickers to
+                // the wrong value while offerings are loading.)
+                val effectiveDiscountPer = HomeOfferManager.effectiveYearDiscountPer(
+                    prefManager,
+                    allPackages.firstOrNull { AppConstants.Products.matches(it.product.id, AppConstants.Products.year) }?.product?.price?.amountMicros,
+                    allPackages.firstOrNull { AppConstants.Products.matches(it.product.id, AppConstants.Products.yearOffer) }?.product?.price?.amountMicros,
+                    decisionNow
+                )
+                // Same formula, mirrored for the lifetime plan.
+                val effectiveDiscountPerLifetime = HomeOfferManager.effectiveLifetimeDiscountPer(
+                    prefManager,
+                    allPackages.firstOrNull { it.product.id == AppConstants.Products.lifetime }?.product?.price?.amountMicros,
+                    allPackages.firstOrNull { it.product.id == AppConstants.Products.lifetimeOffer }?.product?.price?.amountMicros,
+                    decisionNow
+                )
+                updateState_ {
+                    copy(
+                        discountPer = effectiveDiscountPer,
+                        discountPerLifetime = effectiveDiscountPerLifetime,
+                        homeOfferYearlyEndMillis = HomeOfferManager.yearlyEndMillis(prefManager, decisionNow),
+                        homeOfferLifetimeEndMillis = HomeOfferManager.lifetimeEndMillis(prefManager, decisionNow)
+                    )
+                }
                 val customerInfo = Purchases.sharedInstance.awaitCustomerInfo()
                 RevenueCatHelper.update(customerInfo)
                 val premiumEntitlement = customerInfo.entitlements["premium"]
                 val activeProdId: String? = if (premiumEntitlement?.isActive == true) premiumEntitlement?.productIdentifier else null
+                // "com.abacus.puzzle.onetime" is a legacy pre-RevenueCat lifetime purchase --
+                // it's not part of any current RC offering, so it can never match a Package
+                // and the paywall would show NO card as Purchased even though the entitlement
+                // is active. Remap it to today's lifetime SKU for matching purposes only.
+                // Android-only: iOS never sold this SKU, so it has no such legacy product.
+                val activeProdIdForMatching: String? = if (activeProdId == "com.abacus.puzzle.onetime") {
+                    AppConstants.Products.lifetime
+                } else {
+                    activeProdId
+                }
                 val allPurchasedIds = customerInfo.allPurchasedProductIds
 
-
                 // Always show the user's active plan even if not in Firebase config
-                val effectivePurchasedId = activeProdId
+                val effectivePurchasedId = activeProdIdForMatching
                     ?: allPurchasedIds.firstOrNull { id -> allPackages.any { pkg -> pkg.product.id == id || pkg.product.id.startsWith("$id:") } }
                 if (effectivePurchasedId != null) {
                     val alreadyInList = packages.any { pkg ->
@@ -113,11 +166,11 @@ class PurchaseViewModel @Inject constructor(
                 }
 
                 val activeSubIds = customerInfo.activeSubscriptions
-                val allPlans = packages.map { pkg ->
-                    val matchesActive = activeProdId != null && (
-                        pkg.product.id == activeProdId ||
-                        pkg.product.id.startsWith("$activeProdId:") ||
-                        pkg.product.id.endsWith(":$activeProdId")
+                fun toPlanItem(pkg: Package): RcPlanItem {
+                    val matchesActive = activeProdIdForMatching != null && (
+                        pkg.product.id == activeProdIdForMatching ||
+                        pkg.product.id.startsWith("$activeProdIdForMatching:") ||
+                        pkg.product.id.endsWith(":$activeProdIdForMatching")
                     )
                     // For subscriptions use activeSubscriptions (expired subs are excluded).
                     // For lifetime (INAPP) use allPurchasedProductIds since they never expire.
@@ -130,23 +183,42 @@ class PurchaseViewModel @Inject constructor(
                             pkg.product.id == id || pkg.product.id.startsWith("$id:") || pkg.product.id.endsWith(":$id")
                         }
                     }
-                    val purchaseTime = allPurchasedIds
+                    val purchasedIdForDate = allPurchasedIds
                         .firstOrNull { id -> pkg.product.id == id || pkg.product.id.startsWith("$id:") || pkg.product.id.endsWith(":$id") }
+                        // This package can stand in for a legacy purchase under a different
+                        // SKU (e.g. "com.abacus.puzzle.onetime" remapped to today's lifetime
+                        // plan above) -- allPurchasedIds has the LEGACY id, not this package's
+                        // id, so fall back to the real underlying id for the date lookup.
+                        ?: activeProdId?.takeIf { pkg.product.id == activeProdIdForMatching && activeProdId != activeProdIdForMatching }
+                    val purchaseTime = purchasedIdForDate
                         ?.let { id -> customerInfo.getPurchaseDateForProductId(id)?.time ?: 0L }
                         ?: 0L
-                    RcPlanItem(
+                    return RcPlanItem(
                         sku = pkg.product.id,
                         price = formatPrice(pkg.product.price.amountMicros, pkg.product.price.currencyCode),
                         price_amount_micros = pkg.product.price.amountMicros,
                         type = if (pkg.packageType == PackageType.LIFETIME) "inapp" else "subs",
-                        isPurchase = matchesActive || matchesAllPurchased,
+                        // When there's a live entitlement, only the SKU actually backing it
+                        // counts as "purchased" -- an upgrade (e.g. monthly -> yearly) leaves
+                        // the old SKU sitting in allPurchasedProductIds/activeSubscriptions
+                        // forever (Play doesn't retroactively clear purchase history), so
+                        // OR-ing the two let the old, cheaper plan win the "Purchased" badge.
+                        // Only fall back to the broader purchase-history match when there is
+                        // no active entitlement at all (e.g. it expired).
+                        isPurchase = if (activeProdIdForMatching != null) matchesActive else matchesAllPurchased,
                         billingPeriod = billingPeriodFor(pkg.packageType),
                         purchaseTime = purchaseTime,
                         rcPackage = pkg
                     )
-                }.sortedBy { it.price_amount_micros }
+                }
+                val allPlans = packages.map { toPlanItem(it) }.sortedBy { it.price_amount_micros }
+                // Strike-through anchor from the UNFILTERED offering so it survives a
+                // display_plan whitelist that omits the base yearly (matches iOS).
+                val originalYearFromOffering = allPackages
+                    .firstOrNull { AppConstants.Products.matches(it.product.id, AppConstants.Products.year) }
+                    ?.let { toPlanItem(it) }
 
-                arrangeData(allPlans, discountPer, discountLifetime, yearPlanFromAdmin, allPlanFromAdmin)
+                arrangeData(allPlans, yearlyDiscountActive, lifetimeDiscountActive, yearPlanFromAdmin, allPlanFromAdmin, originalYearFromOffering)
 
             } catch (e: Exception) {
                 updateState_ { copy(error = R.string.something_went_wrong) }
@@ -200,21 +272,24 @@ class PurchaseViewModel @Inject constructor(
 
     private fun arrangeData(
         plans: List<RcPlanItem>,
-        discountPer: Int,
-        discountPerLifetime: Int,
+        yearlyDiscountActive: Boolean,
+        lifetimeDiscountActive: Boolean,
         yearAdmin: PlanAssignFromAdminData?,
-        allAdmin: PlanAssignFromAdminData?
+        allAdmin: PlanAssignFromAdminData?,
+        originalYearFromOffering: RcPlanItem?
     ) {
         val skuList = plans.toMutableList()
 
-        val originalYear = plans.find { it.sku == "com.abacus.puzzle.1year" }
+        val originalYear = originalYearFromOffering ?: plans.find { AppConstants.Products.matches(it.sku, AppConstants.Products.year) }
         val originalLifetime = plans.find { it.sku == "com.abacus.all" }
         val originalMonth = plans.find { it.sku.contains("1month") && !it.sku.contains("trial") }
         val originalWeek = plans.find { it.sku.contains("week") }
         var showSubmit = true
 
         fun remove(contains: String) = skuList.removeAll { it.sku.contains(contains) }
-        fun removeExact(sku: String) = skuList.removeAll { it.sku == sku }
+        // Tolerant of the "<sku>:<basePlanId>" suffix Google Play Billing subscriptions
+        // (yearly) carry -- see AppConstants.Products.matches.
+        fun removeExact(sku: String) = skuList.removeAll { AppConstants.Products.matches(it.sku, sku) }
 
         if (allAdmin != null) {
             remove("week"); remove("1month"); remove("1year")
@@ -234,9 +309,9 @@ class PurchaseViewModel @Inject constructor(
                 else removeExact("com.abacus.puzzle.1year")
                 remove("week"); remove("1month"); showSubmit = false
             } else {
-                val hasYearOffer = skuList.any { it.sku == "com.abacus.puzzle.1year.offer" }
-                if (discountPer > 0 && hasYearOffer) removeExact("com.abacus.puzzle.1year")
-                else removeExact("com.abacus.puzzle.1year.offer")
+                val hasYearOffer = skuList.any { AppConstants.Products.matches(it.sku, AppConstants.Products.yearOffer) }
+                if (yearlyDiscountActive && hasYearOffer) removeExact(AppConstants.Products.year)
+                else removeExact(AppConstants.Products.yearOffer)
             }
 
             val lifetimePurchased = plans.find { it.sku.contains("all") && it.isPurchase }
@@ -245,9 +320,9 @@ class PurchaseViewModel @Inject constructor(
                 else removeExact("com.abacus.all")
                 remove("week"); remove("1month"); remove("1year"); showSubmit = false
             } else {
-                val hasLifetimeOffer = skuList.any { it.sku == "com.abacus.all.offer" }
-                if (discountPerLifetime > 0 && hasLifetimeOffer) removeExact("com.abacus.all")
-                else removeExact("com.abacus.all.offer")
+                val hasLifetimeOffer = skuList.any { it.sku == AppConstants.Products.lifetimeOffer }
+                if (lifetimeDiscountActive && hasLifetimeOffer) removeExact(AppConstants.Products.lifetime)
+                else removeExact(AppConstants.Products.lifetimeOffer)
             }
         }
 

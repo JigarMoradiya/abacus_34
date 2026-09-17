@@ -104,6 +104,9 @@ override fun getAccessToken(): String? = mPrefs.getString(PREF_KEY_ACCESS_TOKEN,
         val reviewNextMilestone = getCustomParamInt(AppConstants.Review.nextMilestoneDay, AppConstants.Review.milestones.first())
         val reviewLastAskDate   = getCustomParam(AppConstants.Review.lastAskDate, "")
         val reviewDay2Shown     = getCustomParamBoolean(AppConstants.Review.day2ReviewShown, false)
+        // Timed Home offer window — device-level; otherwise logout+login would restart it
+        val homeOfferStartedAt   = getCustomParam(AppConstants.HomeOffer.startedAt, "")
+        val homeOfferStartedName = getCustomParam(AppConstants.HomeOffer.startedName, "")
         mPrefs.edit { clear() }
         setCustomParam(Constants.last_sync_time, lastSyncTime)
         setCustomParamInt(AppConstants.Settings.Setting_bg_music_volume, bgMusicVolume)
@@ -118,5 +121,7 @@ override fun getAccessToken(): String? = mPrefs.getString(PREF_KEY_ACCESS_TOKEN,
         setCustomParamInt(AppConstants.Review.nextMilestoneDay, reviewNextMilestone)
         setCustomParam(AppConstants.Review.lastAskDate, reviewLastAskDate)
         setCustomParamBoolean(AppConstants.Review.day2ReviewShown, reviewDay2Shown)
+        setCustomParam(AppConstants.HomeOffer.startedAt, homeOfferStartedAt)
+        setCustomParam(AppConstants.HomeOffer.startedName, homeOfferStartedName)
     }
 }

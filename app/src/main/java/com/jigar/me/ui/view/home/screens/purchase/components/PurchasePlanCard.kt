@@ -35,10 +35,12 @@ import com.jigar.me.ui.jetpack.core.presentation.theme.Black
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorAccent
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorAccentLight
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorGreen
+import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.RcPlanItem
 import com.jigar.me.ui.view.home.theme.ButtonType
+import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.DateTimeUtils
 
@@ -81,7 +83,8 @@ fun PurchasePlanCard(
     plan: RcPlanItem,
     isSelected: Boolean,
     onClick: () -> Unit,
-    onSubscribe: () -> Unit = {}
+    onSubscribe: () -> Unit = {},
+    onOfferExpired: () -> Unit = {},
 ) {
     val originalYearly = uiState.original1YearData
     val originalLifetime = uiState.originalLifetimeData
@@ -203,35 +206,54 @@ fun PurchasePlanCard(
                     )
                 }
                 else -> {
-                    Row {
+                    Column {
                         if (plan.isYearly()) {
                             if (original1MonthData != null) {
                                 val yearlyMicros = (originalYearly?.price_amount_micros ?: plan.price_amount_micros) ?: 0L
-                                Text(
-                                    text = "save ~${plan.calculateSavings(original1MonthData.price_amount_micros ?: 0L, yearlyMicros)}% vs monthly",
-                                    style = MaterialTheme.typography.labelSmall.copy(
-                                        color = Black, fontWeight = FontWeight.Medium,
-                                        fontFamily = FontFamily(Font(R.font.font_medium))
-                                    )
-                                )
-                                if (discountPer > 0) {
+                                Row {
                                     Text(
-                                        text = "(extra ~$discountPer% OFF)",
-                                        style = MaterialTheme.typography.labelMedium.copy(
-                                            color = ColorGreen, fontWeight = FontWeight.Bold,
-                                            fontFamily = FontFamily(Font(R.font.font_bold))
+                                        text = "save ~${plan.calculateSavings(original1MonthData.price_amount_micros ?: 0L, yearlyMicros)}% vs monthly",
+                                        style = MaterialTheme.typography.labelSmall.copy(
+                                            color = Black, fontWeight = FontWeight.Medium,
+                                            fontFamily = FontFamily(Font(R.font.font_medium))
                                         )
                                     )
                                 }
+                                // "extra ~% OFF" + countdown always on their own row below
+                                // the savings line.
+                                if (discountPer > 0) {
+                                    Row {
+                                        Text(
+                                            text = "(extra ~$discountPer% OFF)",
+                                            style = MaterialTheme.typography.labelMedium.copy(
+                                                color = ColorGreen, fontWeight = FontWeight.Bold,
+                                                fontFamily = FontFamily(Font(R.font.font_bold))
+                                            )
+                                        )
+                                        // Same live countdown as the Home card, tied directly to
+                                        // this discounted plan -- only when the timed offer's own
+                                        // campaign targets yearly, never a lifetime-targeted one.
+                                        uiState.homeOfferYearlyEndMillis?.let { endMillis ->
+                                            Spacer(Modifier.width(AppDimens.Dimens6))
+                                            InlineCountdownPill(endMillis, onOfferExpired)
+                                        }
+                                    }
+                                }
                             }
                         } else if (plan.isLifeTimeOffer() && discountPerLifetime > 0) {
-                            Text(
-                                text = "~ ${discountPerLifetime}% OFF",
-                                style = MaterialTheme.typography.labelMedium.copy(
-                                    color = ColorGreen, fontWeight = FontWeight.Bold,
-                                    fontFamily = FontFamily(Font(R.font.font_bold))
+                            Row {
+                                Text(
+                                    text = "~ ${discountPerLifetime}% OFF",
+                                    style = MaterialTheme.typography.labelMedium.copy(
+                                        color = ColorGreen, fontWeight = FontWeight.Bold,
+                                        fontFamily = FontFamily(Font(R.font.font_bold))
+                                    )
                                 )
-                            )
+                                uiState.homeOfferLifetimeEndMillis?.let { endMillis ->
+                                    Spacer(Modifier.width(AppDimens.Dimens6))
+                                    InlineCountdownPill(endMillis, onOfferExpired)
+                                }
+                            }
                         }
                     }
                 }
@@ -245,7 +267,7 @@ fun PriceUi(
     discountPer: Int, plan: RcPlanItem,
     originalYearly: RcPlanItem?, discountPerLifetime: Int, originalLifetime: RcPlanItem?
 ) {
-    if (discountPer > 0 && plan.sku == "com.abacus.puzzle.1year.offer" && originalYearly != null) {
+    if (discountPer > 0 && AppConstants.Products.matches(plan.sku, AppConstants.Products.yearOffer) && originalYearly != null) {
         if ((originalYearly.price_amount_micros ?: 0) > (plan.price_amount_micros ?: 0)) {
             Text(
                 text = originalYearly.price ?: "",

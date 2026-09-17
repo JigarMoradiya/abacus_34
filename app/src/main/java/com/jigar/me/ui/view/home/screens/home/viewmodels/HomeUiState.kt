@@ -30,6 +30,18 @@ data class HomeUiState(
     val showReviewGate: Boolean = false,
     // One-time emotional review ask on day 2 — takes priority over showReviewGate above
     val showDay2Review: Boolean = false,
+
+    // Time-limited offer card (Remote Config `home_offer`); null = nothing to show
+    val homeOffer: HomeOfferUi? = null,
+    val isPremium: Boolean = false,
+)
+
+data class HomeOfferUi(
+    val title: String?,          // campaign name from Remote Config, null -> generic title
+    val startedAtMillis: Long,
+    val durationMin: Int,
+    val discountPercent: Int,
+    val targetsLifetime: Boolean = false,   // which plan this campaign discounts
 )
 
 data class FreeTrialParam(

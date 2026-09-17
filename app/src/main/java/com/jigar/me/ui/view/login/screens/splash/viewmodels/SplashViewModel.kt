@@ -12,6 +12,7 @@ import com.jigar.me.ui.jetpack.core.domain.ConsumableCommand
 import com.jigar.me.ui.view.login.data.PostLoginHandler
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Constants
+import com.jigar.me.utils.HomeOfferManager
 import com.jigar.me.utils.extensions.isNetworkAvailable
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -84,6 +85,7 @@ class SplashViewModel @Inject constructor(
         val discountPerLifeTime = remoteConfig.getLong(AppConstants.RemoteConfig.discountPerLifeTime)
         val manualFreeTrialDays = remoteConfig.getLong(AppConstants.RemoteConfig.manualFreeTrialDays)
         val paywallSocialProof = remoteConfig.getString(AppConstants.RemoteConfig.paywallSocialProof)
+        val homeOffer = remoteConfig.getString(AppConstants.RemoteConfig.homeOffer)
 
         with(prefs) {
             setCustomParam(AppConstants.RemoteConfig.privacyPolicyUrl, privacyPolicyUrl)
@@ -98,7 +100,11 @@ class SplashViewModel @Inject constructor(
             setCustomParam(AppConstants.RemoteConfig.displayPlanList, displayPlan)
             setCustomParam(AppConstants.RemoteConfig.displayMenuList, displayMenu)
             setCustomParam(AppConstants.RemoteConfig.paywallSocialProof, paywallSocialProof)
+            setCustomParam(AppConstants.RemoteConfig.homeOffer, homeOffer)
         }
+        // Timed Home offer: a disabled/missing config clears any running per-device
+        // window, so turning it OFF then ON later starts a fresh campaign.
+        if (!HomeOfferManager.config(prefs).isEnabled) HomeOfferManager.clearStart(prefs)
     }
 
     private fun routeAfterRemoteConfig() {

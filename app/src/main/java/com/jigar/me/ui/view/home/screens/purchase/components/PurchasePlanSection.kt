@@ -31,7 +31,8 @@ fun PurchasePlanSection(
     modifier: Modifier = Modifier,
     uiState: PurchaseUiState,
     onPlanSelected: (Int) -> Unit,
-    onSubscribe: () -> Unit
+    onSubscribe: () -> Unit,
+    onOfferExpired: () -> Unit = {},
 ) {
     Column(
         modifier = modifier.fillMaxHeight(),
@@ -50,7 +51,8 @@ fun PurchasePlanSection(
                     plan = plan,
                     isSelected = uiState.selectedIndex == index,
                     onClick = { onPlanSelected(index) },
-                    onSubscribe = onSubscribe
+                    onSubscribe = onSubscribe,
+                    onOfferExpired = onOfferExpired
                 )
             }
         }

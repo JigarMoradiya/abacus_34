@@ -71,6 +71,8 @@ object AppConstants {
             var discountPer = "discount_per"
             var discountPerLifeTime = "discount_per_lifetime"
             var paywallSocialProof = "paywall_social_proof"
+            // JSON: {"enabled": bool, "duration_min": number, "name": string} -- see HomeOfferManager
+            var homeOffer = "home_offer"
         }
     }
 
@@ -261,6 +263,32 @@ object AppConstants {
             val milestones = intArrayOf(3, 7, 15, 30, 50, 75, 100)
             // One-time emotional review ask on day 2 -- separate from the milestone gate above.
             const val day2ReviewShown  = "day2_review_shown"
+        }
+    }
+
+    // Timed Home offer -- per-device window; device-level, preserved across logout
+    annotation class HomeOffer {
+        companion object {
+            const val startedAt   = "home_offer_started_at"   // epoch millis as String (prefs have no Long)
+            const val startedName = "home_offer_started_name" // campaign `name` the window belongs to
+        }
+    }
+
+    // Store product ids (mirrors iOS SubscriptionProduct.SubscriptionProductID)
+    annotation class Products {
+        companion object {
+            const val year          = "com.abacus.puzzle.1year"
+            const val yearOffer     = "com.abacus.puzzle.1year.offer"
+            const val lifetime      = "com.abacus.all"
+            const val lifetimeOffer = "com.abacus.all.offer"
+
+            // Google Play subscriptions (year/yearOffer) require a base plan, so
+            // RevenueCat reports their Package.product.id as "<productId>:<basePlanId>"
+            // (e.g. "com.abacus.puzzle.1year:1year") -- lifetime (INAPP) ids stay bare.
+            // Every lookup against a bare id above must go through this, or it silently
+            // never matches for the yearly plans.
+            fun matches(packageProductId: String, targetId: String): Boolean =
+                packageProductId == targetId || packageProductId.startsWith("$targetId:")
         }
     }
 

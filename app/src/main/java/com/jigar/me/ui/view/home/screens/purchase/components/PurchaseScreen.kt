@@ -42,7 +42,8 @@ fun PurchaseScreen(
     onShowOldSubClick: () -> Unit,
     oldSubPopupCloseClick: () -> Unit,
     onSubscribe: () -> Unit,
-    onClose: () -> Unit
+    onClose: () -> Unit,
+    onOfferExpired: () -> Unit = {},
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
 
@@ -59,7 +60,8 @@ fun PurchaseScreen(
                 modifier = Modifier.weight(1f),
                 uiState = uiState,
                 onPlanSelected = onPlanSelected,
-                onSubscribe = onSubscribe
+                onSubscribe = onSubscribe,
+                onOfferExpired = onOfferExpired
             )
         }
 

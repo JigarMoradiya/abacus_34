@@ -105,9 +105,9 @@
     <string name="txt_reset_now">START AGAIN</string>
     <string name="txt_purchase">Purchase</string>
     <string name="txt_purchased">Purchased</string>
-    <string name="txt_purchase_Now">Purchase Now</string>
+    <string name="txt_purchase_Now">Purchase</string>
     <string name="txt_subscribed">Subscribed</string>
-    <string name="txt_subscribe_Now">Subscribe Now</string>
+    <string name="txt_subscribe_Now">Subscribe</string>
 
     <string name="txt_page_full_abacus_not_purchased">We apologize, but access to this feature requires a subscription to our paid plan. To unlock and enjoy the benefits of this feature, please consider subscribing to our premium plan.\nThank you for your understanding!</string>
     <string name="txt_page_practise_material_not_purchased">We regret to inform you that downloading this material is restricted to subscribers of our paid plan. To access and download this content, please consider upgrading to our premium plan.\nThank you for your understanding!</string>
@@ -848,6 +848,12 @@
     <string name="completed_in_b_moves_b"><![CDATA[You completed this puzzle in <b>%1$d moves</b>.]]></string>
     <string name="you_did_it">🎉 You Did It! 🎉</string>
     <string name="you_built_the_pyramid">You built the pyramid…</string>
+    <string name="home_offer_title">Limited-time offer!</string>
+    <string name="home_offer_save_pct">Save %1$d%% on the %2$s plan</string>
+    <string name="home_offer_special_price">Special price on the %1$s plan</string>
+    <string name="home_offer_ends_in">Ends in %1$s</string>
+    <string name="home_offer_product_yearly">Yearly</string>
+    <string name="home_offer_product_lifetime">Lifetime</string>
     <string name="target_the_number">Target the Number</string>
     <string name="sudoku">Sudoku</string>
     <string name="math_game_zone">Math Game Zone</string>
@@ -1144,6 +1150,7 @@
     <string name="paywall_save_vs_monthly">Save ~%1$d%% vs monthly</string>
     <string name="paywall_save_vs_weekly">Save ~%1$d%% vs weekly</string>
     <string name="paywall_percent_off">~%1$d%% OFF</string>
+    <string name="paywall_percent_off_extra">(extra ~%1$d%% OFF)</string>
     <string name="login_required">Login Required</string>
     <string name="login_is_required_to_access_this_feature">Login is required to access this feature.</string>
     <string name="sign_in_with_google">Sign in with Google</string>
