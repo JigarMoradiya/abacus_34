@@ -1,6 +1,5 @@
 package com.jigar.me.utils
 
-import android.util.Log
 import com.google.gson.Gson
 import com.revenuecat.purchases.CustomerInfo
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,6 +1,5 @@
 package com.jigar.me.ui.view.home.screens.abacus_practice.set_list
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
