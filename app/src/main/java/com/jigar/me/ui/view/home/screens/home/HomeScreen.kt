@@ -47,6 +47,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
@@ -71,6 +72,7 @@ import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateBottomSheet
 import com.jigar.me.ui.view.home.screens.home.components.HomeMenuScreen
 import com.jigar.me.ui.view.home.screens.home.components.HomeOfferBadge
 import com.jigar.me.ui.view.home.screens.home.components.HomeOfferCard
+import com.jigar.me.ui.view.home.screens.home.components.HomeOfferSidebarCard
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeFragmentViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
@@ -230,6 +232,11 @@ fun HomeScreen(
         val totalH = maxHeight
         val isTablet = DeviceInfo.isTablet
         val mascotMaxH = min(totalH.value * 0.55f, 240f).dp
+        // Time-limited offer (Remote Config `home_offer`) -- hidden for premium users.
+        // Hoisted above the left/right panel split so both can react to it: on tablet,
+        // it (or "This Week" when there's no active offer) sits below the mascot, and
+        // "This Week" additionally moves next to the level pager while the offer's on.
+        val activeOffer = uiState.homeOffer?.takeIf { !uiState.isPremium }
 
         Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
 
@@ -319,24 +326,17 @@ fun HomeScreen(
                     }
 
                     if (isTablet) {
-                        Spacer(modifier = Modifier.weight(1f))
+                        // Badge sits just below the mascot with a small fixed gap. Only
+                        // "This Week" anchors the very bottom (the offer card has its
+                        // own dedicated slot in the right panel's bottom row instead).
+                        Spacer(modifier = Modifier.height(Dimens12))
                         if (isIndianUser(context)) {
                             MadeInIndiaBadge()
                         } else {
                             SafeAdFreeBadge()
                         }
-                        Spacer(modifier = Modifier.height(Dimens12))
-                        EnglishBanner(context = context, onUrlClick = {
-                            openURLWithGate {
-                                runCatching {
-                                    val intent = Intent(Intent.ACTION_VIEW).apply {
-                                        data = "https://play.google.com/store/apps/details?id=com.vedaavi.english.learning&hl=en".toUri()
-                                        addCategory(Intent.CATEGORY_BROWSABLE)
-                                    }
-                                    context.startActivity(intent)
-                                }
-                            }
-                        })
+                        Spacer(modifier = Modifier.weight(1f))
+                        WeeklyReportCard(viewModel.weeklyStats()) { showWeeklyReport = true }
                         Spacer(modifier = Modifier.height(Dimens8))
                     }
                 }
@@ -347,16 +347,9 @@ fun HomeScreen(
                         .weight(1f)
                         .fillMaxHeight()
                 ) {
-                    // Time-limited offer (Remote Config `home_offer`) -- hidden for premium
-                    // users. On phone it's shown as a compact badge in the bottom row
-                    // (below) instead of its own row, so the activity tile list never
-                    // shrinks to make room for it; "This Week" moves up here to free that
-                    // slot. On tablet, which has room to spare, it keeps its own full-size
-                    // row further down, unchanged.
-                    val activeOffer = uiState.homeOffer?.takeIf { !uiState.isPremium }
-
-                    // Streak + level cards pager (+ "This Week" when the offer has taken
-                    // its usual spot in the bottom row below)
+                    // Streak + level cards pager (+ "This Week" on phone only, whenever
+                    // the offer badge has taken its usual bottom-row spot; on tablet
+                    // "This Week" has its own permanent slot below the mascot instead).
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -382,24 +375,6 @@ fun HomeScreen(
                         if (activeOffer != null && !isTablet) {
                             WeeklyReportCard(viewModel.weeklyStats()) { showWeeklyReport = true }
                         }
-                    }
-
-                    // Tablet only: offer keeps its own full-size row (plenty of vertical
-                    // space there; no need to relocate anything to make room for it).
-                    if (activeOffer != null && isTablet) {
-                        HomeOfferCard(
-                            title = activeOffer.title,
-                            startedAtMillis = activeOffer.startedAtMillis,
-                            durationMin = activeOffer.durationMin,
-                            discountPercent = activeOffer.discountPercent,
-                            targetsLifetime = activeOffer.targetsLifetime,
-                            onClick = { AudioPlayerManager.playSoundBtnClick(); onNavigateToPurchase() },
-                            onExpired = viewModel::onHomeOfferExpired,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = Dimens16)
-                                .padding(bottom = Dimens8)
-                        )
                     }
 
                     // "Choose your activity" divider
@@ -488,6 +463,44 @@ fun HomeScreen(
                                 }
                             }
                         })
+                        }
+                    } else {
+                        // Tablet: home offer card (only when active) bottom-left, wrapped
+                        // to its own natural width -- NOT stretched/weighted -- and
+                        // English cross-promo always bottom-right, also wrapped. Neither
+                        // card is weighted, so Arrangement.SpaceBetween supplies the gap
+                        // as pure whitespace instead of either card stretching into it.
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = Dimens16)
+                                .padding(bottom = Dimens12)
+                                .padding(top = Dimens8),
+                            horizontalArrangement = if (activeOffer != null) Arrangement.SpaceBetween else Arrangement.End,
+                            verticalAlignment = Alignment.Bottom
+                        ) {
+                            if (activeOffer != null) {
+                                HomeOfferSidebarCard(
+                                    title = activeOffer.title,
+                                    startedAtMillis = activeOffer.startedAtMillis,
+                                    durationMin = activeOffer.durationMin,
+                                    discountPercent = activeOffer.discountPercent,
+                                    targetsLifetime = activeOffer.targetsLifetime,
+                                    onClick = { AudioPlayerManager.playSoundBtnClick(); onNavigateToPurchase() },
+                                    onExpired = viewModel::onHomeOfferExpired
+                                )
+                            }
+                            EnglishBanner(context = context, onUrlClick = {
+                                openURLWithGate {
+                                    runCatching {
+                                        val intent = Intent(Intent.ACTION_VIEW).apply {
+                                            data = "https://play.google.com/store/apps/details?id=com.vedaavi.english.learning&hl=en".toUri()
+                                            addCategory(Intent.CATEGORY_BROWSABLE)
+                                        }
+                                        context.startActivity(intent)
+                                    }
+                                }
+                            })
                         }
                     }
                 }
@@ -1150,22 +1163,28 @@ private fun EnglishBanner(context: Context, onUrlClick: () -> Unit) {
                 contentDescription = null,
                 modifier = Modifier.size(AppDimens.Dimens32)
             )
-            Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(1.dp)) {
+            Column(verticalArrangement = Arrangement.spacedBy(1.dp)) {
                 Text(
                     text = "Also try",
                     color = Color(0xFF5532D2).copy(alpha = 0.50f),
-                    style = MaterialTheme.typography.labelSmall.scaled()
+                    style = MaterialTheme.typography.labelSmall.scaled(),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
                 Text(
                     text = "Vedaavi English 📚",
                     color = Color(0xFF5532D2).copy(alpha = 0.70f),
                     style = MaterialTheme.typography.labelSmall.scaled(),
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
                 Text(
                     text = "Fun learning for kids",
                     color = Color(0xFF5532D2).copy(alpha = 0.50f),
-                    style = MaterialTheme.typography.labelSmall.scaled()
+                    style = MaterialTheme.typography.labelSmall.scaled(),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
             }
             Icon(

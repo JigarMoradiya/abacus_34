@@ -247,6 +247,58 @@ object AbacusTheme {
             )
 
             // -----------------------
+            //  Bead-shape themes (hexagon-horizontal, rectangle, real bead, circle):
+            //  each bead already carries a per-rod/per-position color, so the chrome
+            //  stays a single neutral-ish shade -- but each theme gets its OWN muted
+            //  hue (matching its picker swatch) instead of sharing one color. A bright
+            //  saturated chrome (tried first) fights the rainbow beads, so these are
+            //  all dusty/desaturated, same quality as Circle's coffee tone.
+            // -----------------------
+            "poligon_hex_horizontal" -> ColorPresetModel(
+                abacusTopGradient = hex("2C3E50"),
+                abacusCenterGradient = hex("5D7A99"),
+                abacusBottomGradient = hex("DCE4EA"),
+                buttonColor = hex("1B2838"),
+                columnColors = hex("A9BCCB"),
+                displayBGColor = hex("2C3E50"),
+                displayBorderColor = hex("5D7A99"),
+                answerBarStrokeColor = hex("5D7A99")
+            )
+
+            "poligon_rectangle" -> ColorPresetModel(
+                abacusTopGradient = hex("5C2A2A"),
+                abacusCenterGradient = hex("8B5A5A"),
+                abacusBottomGradient = hex("EDE0E0"),
+                buttonColor = hex("3D1A1A"),
+                columnColors = hex("C7A3A3"),
+                displayBGColor = hex("5C2A2A"),
+                displayBorderColor = hex("8B5A5A"),
+                answerBarStrokeColor = hex("8B5A5A")
+            )
+
+            "poligon_real_bead" -> ColorPresetModel(
+                abacusTopGradient = hex("6D4A5C"),
+                abacusCenterGradient = hex("A87E93"),
+                abacusBottomGradient = hex("F0E4E9"),
+                buttonColor = hex("4A2E3C"),
+                columnColors = hex("D4B8C4"),
+                displayBGColor = hex("6D4A5C"),
+                displayBorderColor = hex("A87E93"),
+                answerBarStrokeColor = hex("A87E93")
+            )
+
+            "poligon_circle" -> ColorPresetModel(
+                abacusTopGradient = hex("4E342E"),
+                abacusCenterGradient = hex("A1887F"),
+                abacusBottomGradient = hex("EFEBE9"),
+                buttonColor = hex("3E2723"),
+                columnColors = hex("D7CCC8"),
+                displayBGColor = hex("4E342E"),
+                displayBorderColor = hex("A1887F"),
+                answerBarStrokeColor = hex("A1887F")
+            )
+
+            // -----------------------
             //  face_red
             // -----------------------
             "face_red" -> ColorPresetModel(

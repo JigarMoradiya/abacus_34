@@ -48,18 +48,19 @@ fun HomeMenuScreen(
     modifier: Modifier
 ) {
     if (DeviceInfo.isTablet) {
-        // Tablet: 3-col × 2-row fixed grid.
+        // Tablet: 4-col fixed grid.
         // BoxWithConstraints gives the exact available width + height so we can
         // compute a square cell size that fits both dimensions.
         BoxWithConstraints(modifier = modifier) {
+            val columns = 4
             val hPad     = AppDimens.Dimens12
             val vPad     = AppDimens.Dimens4
             val gap      = AppDimens.Dimens12
-            val cellByW  = (maxWidth  - hPad * 2 - gap * 2) / 3
+            val cellByW  = (maxWidth  - hPad * 2 - gap * (columns - 1)) / columns
             val cellByH  = (maxHeight - vPad * 2 - gap)     / 2
             val cellSize = minOf(cellByW, cellByH)
 
-            val rows = uiState.menuLevels.chunked(3)
+            val rows = uiState.menuLevels.chunked(columns)
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -79,8 +80,8 @@ fun HomeMenuScreen(
                                 onClick  = { onMenuClick(level) }
                             )
                         }
-                        // Pad row if fewer than 3 items
-                        repeat(3 - rowItems.size) {
+                        // Pad row if fewer than `columns` items
+                        repeat(columns - rowItems.size) {
                             Spacer(modifier = Modifier.size(cellSize))
                         }
                     }

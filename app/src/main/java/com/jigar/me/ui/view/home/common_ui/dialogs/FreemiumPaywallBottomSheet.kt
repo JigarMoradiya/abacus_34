@@ -86,7 +86,11 @@ fun FreemiumPaywallBottomSheet(
         }
     }
 
-    val isLoading = uiState.sortedPlanList.isEmpty()
+    // Was `uiState.sortedPlanList.isEmpty()` -- that never turns false again once the
+    // offerings fetch fails (no connectivity, no signed-in store account, etc.), so a
+    // real failure showed an infinite spinner forever instead of an error. isLoading
+    // now reflects whether the fetch actually finished.
+    val isLoading = uiState.isLoading
     var showBenefits by remember { mutableStateOf(false) }
     var showLoginSheet by remember { mutableStateOf(false) }
     var pendingPlanIndex by remember { mutableStateOf<Int?>(null) }
@@ -305,6 +309,19 @@ fun FreemiumPaywallBottomSheet(
                         CircularProgressIndicator(
                             color = ColorAccent,
                             modifier = Modifier.size(AppDimens.Dimens40)
+                        )
+                    } else if (uiState.sortedPlanList.isEmpty()) {
+                        Text(
+                            text = stringResource(uiState.error ?: R.string.something_went_wrong),
+                            style = MaterialTheme.typography.bodyMedium.scaled(),
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.padding(horizontal = AppDimens.Dimens12)
+                        )
+                        KidsActionButton(
+                            text = stringResource(R.string.retry),
+                            type = ButtonType.BLUE,
+                            isSmall = true,
+                            onClick = { viewModel.loadData() }
                         )
                     } else {
                         uiState.sortedPlanList.forEachIndexed { index, plan ->

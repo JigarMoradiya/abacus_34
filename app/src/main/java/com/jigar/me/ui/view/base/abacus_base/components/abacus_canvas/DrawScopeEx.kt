@@ -15,13 +15,17 @@ import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.RoundRect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.toArgb
@@ -68,6 +72,14 @@ fun DrawScope.drawAbacusColumns(
     val isCandy = selectedTheme.equals("poligon_candy", ignoreCase = true)
     val isHeavenEarth = selectedTheme.equals("poligon_heaven_earth", ignoreCase = true)
 
+    // Bead-shape themes: same per-rod rainbow palette as poligon_rainbow, but each bead is
+    // drawn as a hand-built vector shape (no bitmap mask) instead of the default hexagon.
+    val isHexHorizontal = selectedTheme.equals("poligon_hex_horizontal", ignoreCase = true)
+    val isRectangleBead = selectedTheme.equals("poligon_rectangle", ignoreCase = true)
+    val isRealBead = selectedTheme.equals("poligon_real_bead", ignoreCase = true)
+    val isCircleBead = selectedTheme.equals("poligon_circle", ignoreCase = true)
+    val isShapeTheme = isHexHorizontal || isRectangleBead || isRealBead || isCircleBead
+
     val beadH = geometry.beadHeightPx
     val beamH = geometry.beamHeightPx
     val extra = geometry.extraSpacePx
@@ -96,7 +108,10 @@ fun DrawScope.drawAbacusColumns(
                     col == numberOfColumns - 13
 
         val baseColor = when {
-            isRainbow -> ColorPresets.getMixColorListOfPoligon()[col]
+            // Real Bead cycles Candy colors by bead POSITION, not by rod, so a per-rod
+            // rainbow tint on its rod line wouldn't match anything -- it keeps the
+            // theme's own fixed (dusty mauve) chrome color instead, same as iOS.
+            isRainbow || isHexHorizontal || isRectangleBead || isCircleBead -> ColorPresets.getMixColorListOfPoligon()[col]
             isDuoTone -> ColorPresets.getDuoToneColorList()[col % ColorPresets.getDuoToneColorList().size]
             else -> preset.abacusTopGradient
         }
@@ -269,6 +284,9 @@ fun DrawScope.drawAbacusColumns(
                     val beadColor = when {
                         isCandy -> ColorPresets.getCandyColorList().let { it[visibleBeadRank % it.size] }
                         isHeavenEarth -> if (visibleBeadRank == 0) ColorPresets.heavenBeadColor else ColorPresets.earthBeadColor
+                        // Real Bead cycles the same Candy palette by bead position, not by
+                        // rod, so every rod shows the same 5-color sequence (matches iOS).
+                        isRealBead -> ColorPresets.getCandyColorList().let { it[visibleBeadRank % it.size] }
                         else -> baseColor
                     }
                     visibleBeadRank++
@@ -280,7 +298,22 @@ fun DrawScope.drawAbacusColumns(
                         else
                             beadColor.mixWith(Color.White, 0.9f)   // inactive, dimmer
 
-                    if (isPolygonTheme) {
+                    if (isShapeTheme) {
+                        val shapeType = when {
+                            isHexHorizontal -> ShapeBeadType.HexHorizontal
+                            isRectangleBead -> ShapeBeadType.Rectangle
+                            isRealBead -> ShapeBeadType.RealBead
+                            else -> ShapeBeadType.Circle
+                        }
+                        drawShapeBead(
+                            shapeType = shapeType,
+                            xCenter = xCenter,
+                            beadTop = beadTop,
+                            geometry = geometry,
+                            baseColor = beadColor,
+                            beadIsActive = beadIsActive
+                        )
+                    } else if (isPolygonTheme) {
                         drawIntoCanvas { canvas ->
                             val topColor = if (beadIsActive)
                                 beadColor.mixWith(Color.White, 0.40f)
@@ -332,7 +365,7 @@ fun DrawScope.drawAbacusColumns(
                             rowIndex = idx,
                             movement = movement,
                             geometry = geometry,
-                            isPolygon = isPolygonTheme,
+                            isPolygon = isPolygonTheme || isShapeTheme,
                             arrowColor = arrowColor,
                             arrowUp = arrowUPBitmap,
                             arrowDown = arrowDownBitmap,
@@ -444,6 +477,173 @@ private fun DrawScope.drawBeadWithGradientMask(
     }
 }
 
+
+// ─────────────────────────────────────────────────────────────
+// Bead "shape" themes -- hand-drawn vector beads (no bitmap mask), each with
+// its own gradient recipe. No stroke/border on any of these by design.
+// ─────────────────────────────────────────────────────────────
+
+enum class ShapeBeadType { HexHorizontal, Rectangle, RealBead, Circle }
+
+private fun biconePath(cx: Float, cy: Float, hw: Float, hh: Float): Path = Path().apply {
+    moveTo(cx - hw, cy)
+    cubicTo(cx - hw * 0.767f, cy - hh * 0.625f, cx - hw * 0.5f, cy - hh, cx, cy - hh)
+    cubicTo(cx + hw * 0.5f, cy - hh, cx + hw * 0.767f, cy - hh * 0.625f, cx + hw, cy)
+    cubicTo(cx + hw * 0.767f, cy + hh * 0.625f, cx + hw * 0.5f, cy + hh, cx, cy + hh)
+    cubicTo(cx - hw * 0.5f, cy + hh, cx - hw * 0.767f, cy + hh * 0.625f, cx - hw, cy)
+    close()
+}
+
+private fun DrawScope.drawBeadFace(cx: Float, cy: Float, hw: Float, hh: Float, isActive: Boolean) {
+    if (isActive) {
+        val darkColor = Color(0xFF2A1600)
+        val eyeR = hh * 0.19f
+        val eyeDX = hw * 0.20f
+        val eyeDY = -hh * 0.03f
+        val leftEye = Offset(cx - eyeDX, cy + eyeDY)
+        val rightEye = Offset(cx + eyeDX, cy + eyeDY)
+        drawCircle(color = darkColor, radius = eyeR, center = leftEye)
+        drawCircle(color = darkColor, radius = eyeR, center = rightEye)
+        val shineR = eyeR * 0.35f
+        drawCircle(color = Color.White, radius = shineR, center = Offset(leftEye.x + eyeR * 0.4f, leftEye.y - eyeR * 0.4f))
+        drawCircle(color = Color.White, radius = shineR, center = Offset(rightEye.x + eyeR * 0.4f, rightEye.y - eyeR * 0.4f))
+
+        val smile = Path().apply {
+            moveTo(cx - hw * 0.333f, cy + hh * 0.375f)
+            quadraticTo(cx, cy + hh * 0.9375f, cx + hw * 0.367f, cy + hh * 0.375f)
+            quadraticTo(cx, cy + hh * 0.6875f, cx - hw * 0.333f, cy + hh * 0.375f)
+            close()
+        }
+        drawPath(path = smile, color = darkColor)
+
+        val cheekColor = Color(0xFFFF8FA3).copy(alpha = 0.55f)
+        drawOval(
+            color = cheekColor,
+            topLeft = Offset(cx - hw * 0.608f, cy + hh * 0.1875f),
+            size = Size(hw * 0.216f, hh * 0.25f)
+        )
+        drawOval(
+            color = cheekColor,
+            topLeft = Offset(cx + hw * 0.392f, cy + hh * 0.1875f),
+            size = Size(hw * 0.216f, hh * 0.25f)
+        )
+    } else {
+        val lineColor = Color(0xFF8A6A3A)
+        val strokeStyle = Stroke(width = hh * 0.15f, cap = StrokeCap.Round)
+        fun eyeArc(dxFraction: Float) {
+            val p = Path().apply {
+                moveTo(cx + dxFraction * hw - hw * 0.083f, cy - hh * 0.0625f)
+                quadraticTo(cx + dxFraction * hw, cy + hh * 0.047f, cx + dxFraction * hw + hw * 0.083f, cy - hh * 0.0625f)
+            }
+            drawPath(path = p, color = lineColor, style = strokeStyle)
+        }
+        eyeArc(-0.20f)
+        eyeArc(0.20f)
+        val mouth = Path().apply {
+            moveTo(cx - hw * 0.083f, cy + hh * 0.3125f)
+            quadraticTo(cx, cy + hh * 0.39f, cx + hw * 0.083f, cy + hh * 0.3125f)
+        }
+        drawPath(path = mouth, color = lineColor, style = strokeStyle)
+    }
+}
+
+// Not private: reused by the settings theme-picker swatch (ThemeSection.kt) to
+// preview these shapes with a real, matching render instead of a generic icon.
+fun DrawScope.drawShapeBead(
+    shapeType: ShapeBeadType,
+    xCenter: Float,
+    beadTop: Float,
+    geometry: AbacusCanvasGeometry,
+    baseColor: Color,
+    beadIsActive: Boolean
+) {
+    val fullW = geometry.beadWidthPx
+    val fullH = geometry.beadHeightPx
+    // Fill nearly the whole bead slot (matches the default hexagon theme, which uses
+    // the full frame with no shrink) so stacked beads sit close together instead of
+    // leaving a visible gap.
+    val w = fullW * 0.90f
+    val h = fullH * 0.94f
+    val cy = beadTop + fullH / 2f
+    val left = xCenter - w / 2f
+    val top = cy - h / 2f
+    val hw = w / 2f
+    val hh = h / 2f
+
+    when (shapeType) {
+        ShapeBeadType.HexHorizontal -> {
+            val topColor = if (beadIsActive) baseColor.mixWith(Color.White, 0.25f) else baseColor.mixWith(Color.White, 0.72f)
+            val bottomColor = if (beadIsActive) baseColor.mixWith(Color.Black, 0.35f) else baseColor.mixWith(Color.White, 0.55f)
+            val hexPath = Path().apply {
+                moveTo(left, cy)
+                lineTo(left + w * 0.25f, top)
+                lineTo(left + w * 0.75f, top)
+                lineTo(left + w, cy)
+                lineTo(left + w * 0.75f, top + h)
+                lineTo(left + w * 0.25f, top + h)
+                close()
+            }
+            clipPath(hexPath) {
+                drawRect(color = topColor, topLeft = Offset(left, top), size = Size(w, h / 2f))
+                drawRect(color = bottomColor, topLeft = Offset(left, cy), size = Size(w, h / 2f))
+            }
+            drawOval(
+                color = Color.White.copy(alpha = if (beadIsActive) 0.32f else 0.18f),
+                topLeft = Offset(left + w * 0.14f, top + h * 0.08f),
+                size = Size(w * 0.26f, h * 0.20f)
+            )
+        }
+
+        ShapeBeadType.Rectangle -> {
+            val fillColor = if (beadIsActive) baseColor else baseColor.mixWith(Color.White, 0.55f)
+            val highlight = if (beadIsActive) fillColor.mixWith(Color.White, 0.78f) else fillColor.mixWith(Color.White, 0.5f)
+            val shadow = if (beadIsActive) fillColor.mixWith(Color.Black, 0.62f) else fillColor.mixWith(Color.Black, 0.2f)
+            val brush = Brush.radialGradient(
+                colors = listOf(highlight, fillColor, shadow),
+                center = Offset(left + w * 0.32f, top + h * 0.26f),
+                radius = maxOf(w, h) * 0.8f
+            )
+            drawRoundRect(brush = brush, topLeft = Offset(left, top), size = Size(w, h), cornerRadius = CornerRadius(minOf(w, h) * 0.30f))
+            drawOval(
+                color = Color.White.copy(alpha = if (beadIsActive) 0.45f else 0.22f),
+                topLeft = Offset(left + w * 0.12f, top + h * 0.08f),
+                size = Size(w * 0.28f, h * 0.34f)
+            )
+        }
+
+        ShapeBeadType.Circle -> {
+            val fillColor = if (beadIsActive) baseColor else baseColor.mixWith(Color.White, 0.55f)
+            val highlight = if (beadIsActive) fillColor.mixWith(Color.White, 0.70f) else fillColor.mixWith(Color.White, 0.45f)
+            val shadow = if (beadIsActive) fillColor.mixWith(Color.Black, 0.55f) else fillColor.mixWith(Color.Black, 0.15f)
+            val brush = Brush.radialGradient(
+                colors = listOf(highlight, fillColor, shadow),
+                center = Offset(left + w * 0.32f, top + h * 0.28f),
+                radius = maxOf(w, h) * 0.85f
+            )
+            drawOval(brush = brush, topLeft = Offset(left, top), size = Size(w, h))
+            drawOval(
+                color = Color.White.copy(alpha = if (beadIsActive) 0.4f else 0.2f),
+                topLeft = Offset(left + w * 0.12f, top + h * 0.10f),
+                size = Size(w * 0.32f, h * 0.34f)
+            )
+        }
+
+        ShapeBeadType.RealBead -> {
+            val fillColor = if (beadIsActive) baseColor else baseColor.mixWith(Color.White, 0.62f)
+            val highlight = if (beadIsActive) fillColor.mixWith(Color.White, 0.75f) else fillColor.mixWith(Color.White, 0.5f)
+            val shadow = if (beadIsActive) fillColor.mixWith(Color.Black, 0.55f) else fillColor.mixWith(Color.Black, 0.1f)
+            val cx = left + w / 2f
+            val path = biconePath(cx, cy, hw, hh)
+            val brush = Brush.radialGradient(
+                colors = listOf(highlight, fillColor, shadow),
+                center = Offset(cx - hw * 0.36f, cy - hh * 0.5f),
+                radius = maxOf(w, h) * 0.95f
+            )
+            drawPath(path = path, brush = brush)
+            drawBeadFace(cx = cx, cy = cy, hw = hw, hh = hh, isActive = beadIsActive)
+        }
+    }
+}
 
 fun drawableToImageBitmap(context: Context, resId: Int): ImageBitmap {
     val drawable = AppCompatResources.getDrawable(context, resId)!!

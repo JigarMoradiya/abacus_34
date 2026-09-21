@@ -154,6 +154,7 @@ class HomeFragmentViewModel @Inject constructor(
     // day is 3), so the two overlays never stack.
     private fun maybeShowReviewGate() {
         if (AppReviewManager.shouldShowDay2Review(prefs)) {
+            AppReviewManager.onDay2ReviewShown(prefs)
             updateState_ { copy(showDay2Review = true) }
             return
         }

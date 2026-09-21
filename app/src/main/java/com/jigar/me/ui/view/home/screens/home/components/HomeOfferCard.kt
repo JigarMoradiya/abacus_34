@@ -9,6 +9,7 @@ import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -107,6 +108,77 @@ fun HomeOfferCard(
             color = Color.White,
             fontFamily = FontFamily(Font(R.font.font_extra_bold)),
             style = MaterialTheme.typography.labelLarge.scaled(),
+            modifier = Modifier
+                .background(if (endingSoon) Color(0xFFE53935) else Color.Black.copy(alpha = 0.2f), CircleShape)
+                .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
+        )
+        Icon(Icons.Default.ChevronRight, contentDescription = null, tint = Color.White.copy(alpha = 0.9f))
+    }
+}
+
+// Horizontal card -- icon, then title+description stacked as two lines, then the
+// countdown pill+chevron in that SAME row (not a 3rd stacked row below). Every
+// piece wraps to its own natural width -- nothing here uses weight/fillMaxWidth --
+// so the whole card only ever takes the width its content actually needs.
+@Composable
+fun HomeOfferSidebarCard(
+    title: String?,
+    startedAtMillis: Long,
+    durationMin: Int,
+    discountPercent: Int,
+    targetsLifetime: Boolean,
+    onClick: () -> Unit,
+    onExpired: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val remainingSec = rememberOfferRemainingSeconds(startedAtMillis, durationMin, onExpired)
+    val endingSoon = remainingSec <= 60L
+
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
+    val scale by animateFloatAsState(if (pressed) 0.97f else 1f, label = "offerSidebarScale")
+    val shape = RoundedCornerShape(AppDimens.Dimens16)
+
+    Row(
+        modifier = modifier
+            .graphicsLayer { scaleX = scale; scaleY = scale }
+            .clip(shape)
+            .background(Brush.horizontalGradient(listOf(Color(0xFFFFB300), Color(0xFFFF7043))))
+            .border(2.dp, Color.White.copy(alpha = 0.7f), shape)
+            .clickable(interactionSource = interaction, indication = null) { onClick() }
+            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
+    ) {
+        Text("🏷️", style = MaterialTheme.typography.titleMedium.scaled())
+        Column(verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens2)) {
+            Text(
+                text = title?.takeIf { it.isNotBlank() } ?: stringResource(R.string.home_offer_title),
+                color = Color.White,
+                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                style = MaterialTheme.typography.titleSmall.scaled(),
+                maxLines = 1,
+                overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+            )
+            val productLabel = stringResource(
+                if (targetsLifetime) R.string.home_offer_product_lifetime else R.string.home_offer_product_yearly
+            )
+            Text(
+                text = if (discountPercent > 0) stringResource(R.string.home_offer_save_pct, discountPercent, productLabel)
+                       else stringResource(R.string.home_offer_special_price, productLabel),
+                color = Color.White.copy(alpha = 0.9f),
+                fontFamily = FontFamily(Font(R.font.font_semibold)),
+                style = MaterialTheme.typography.labelMedium.scaled(),
+                maxLines = 1,
+                overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+            )
+        }
+        Text(
+            text = stringResource(R.string.home_offer_ends_in, DateTimeUtils.displayDurationHourMinSec(remainingSec)),
+            color = Color.White,
+            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+            style = MaterialTheme.typography.labelLarge.scaled(),
+            maxLines = 1,
             modifier = Modifier
                 .background(if (endingSoon) Color(0xFFE53935) else Color.Black.copy(alpha = 0.2f), CircleShape)
                 .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)

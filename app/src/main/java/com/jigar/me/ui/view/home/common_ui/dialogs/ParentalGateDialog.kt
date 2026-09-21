@@ -85,11 +85,14 @@ fun ParentalGateDialog(
                 .clip(RoundedCornerShape(AppDimens.Dimens24))
                 .background(Color.White)
         ) {
-            // Colored header band -- "Sticker Book" treatment
+            // Colored header band -- "Sticker Book" treatment. Height is derived from
+            // the icon circle's own (tablet-scaled) size, not a flat 76dp -- a fixed
+            // height let the circle outgrow its box and poke out top/bottom on tablet,
+            // where Dimens56 scales up to 80/110dp.
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(76.dp)
+                    .height(AppDimens.Dimens56 + AppDimens.Dimens20)
                     .background(accent),
                 contentAlignment = Alignment.Center
             ) {
@@ -134,12 +137,18 @@ fun ParentalGateDialog(
                     modifier = Modifier.graphicsLayer { translationX = shakeOffset.value }
                 )
 
-                // 3 answer buttons
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
+                // 3 answer buttons -- each gets an equal share of the row's width via
+                // weight(1f) so all three are always identical, by construction, rather
+                // than relying on 3 independently-fixed .size() boxes to happen to match.
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
+                ) {
                     options.forEach { option ->
                         Box(
                             modifier = Modifier
-                                .size(AppDimens.Dimens56)
+                                .weight(1f)
+                                .aspectRatio(1f)
                                 .shadow(elevation = 6.dp, shape = RoundedCornerShape(AppDimens.Dimens12), ambientColor = accentSolid, spotColor = accentSolid)
                                 .clip(RoundedCornerShape(AppDimens.Dimens12))
                                 .background(accent)

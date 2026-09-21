@@ -18,6 +18,7 @@ data class RcPlanItem(
 
 data class PurchaseUiState(
     val error: Int? = null,
+    val isLoading: Boolean = true,
     val selectedIndex: Int = 0,
     val isPurchasing: Boolean = false,
     val purchaseSuccess: Boolean = false,

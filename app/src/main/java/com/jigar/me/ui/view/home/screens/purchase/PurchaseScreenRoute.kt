@@ -44,7 +44,8 @@ fun PurchaseScreenRoute(
             },
             onClose = onClose,
             oldSubPopupCloseClick = { viewModel.oldSubPopupClose() },
-            onOfferExpired = { viewModel.loadData() }
+            onOfferExpired = { viewModel.loadData() },
+            onRetry = { viewModel.loadData() }
         )
     }
 

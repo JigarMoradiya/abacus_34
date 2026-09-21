@@ -44,6 +44,7 @@ fun PurchaseScreen(
     onSubscribe: () -> Unit,
     onClose: () -> Unit,
     onOfferExpired: () -> Unit = {},
+    onRetry: () -> Unit = {},
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
 
@@ -61,7 +62,8 @@ fun PurchaseScreen(
                 uiState = uiState,
                 onPlanSelected = onPlanSelected,
                 onSubscribe = onSubscribe,
-                onOfferExpired = onOfferExpired
+                onOfferExpired = onOfferExpired,
+                onRetry = onRetry
             )
         }
 

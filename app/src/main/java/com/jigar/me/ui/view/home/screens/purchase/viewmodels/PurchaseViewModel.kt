@@ -84,6 +84,8 @@ class PurchaseViewModel @Inject constructor(
                 yearPlanAssignFromAdmin = yearPlanFromAdmin,
                 allPlanAssignFromAdmin = allPlanFromAdmin,
                 socialProofText = prefManager.getCustomParam(AppConstants.RemoteConfig.paywallSocialProof, ""),
+                isLoading = true,
+                error = null,
             )
         }
 
@@ -219,9 +221,10 @@ class PurchaseViewModel @Inject constructor(
                     ?.let { toPlanItem(it) }
 
                 arrangeData(allPlans, yearlyDiscountActive, lifetimeDiscountActive, yearPlanFromAdmin, allPlanFromAdmin, originalYearFromOffering)
+                updateState_ { copy(isLoading = false) }
 
             } catch (e: Exception) {
-                updateState_ { copy(error = R.string.something_went_wrong) }
+                updateState_ { copy(error = R.string.something_went_wrong, isLoading = false) }
             }
         }
     }

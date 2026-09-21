@@ -88,6 +88,14 @@ object AppReviewManager {
         return eligible
     }
 
+    // Stamped the instant the sheet is decided to show -- like onGateShown() for the
+    // milestone gate -- so a force-quit/kill before the user picks a star or dismisses
+    // it can't leave the flag unset and cause the one-time sheet to re-show later.
+    fun onDay2ReviewShown(prefs: AppPreferencesHelper) {
+        Log.d(TAG, "onDay2ReviewShown: stamping day2ReviewShown immediately")
+        prefs.setCustomParamBoolean(AppConstants.Review.day2ReviewShown, true)
+    }
+
     fun onDay2ReviewFiveStars(prefs: AppPreferencesHelper) {
         Log.d(TAG, "onDay2ReviewFiveStars: stamping day2ReviewShown, opening Play Store")
         prefs.setCustomParamBoolean(AppConstants.Review.day2ReviewShown, true)

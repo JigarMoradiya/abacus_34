@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,11 +35,32 @@ fun PurchasePlanSection(
     onPlanSelected: (Int) -> Unit,
     onSubscribe: () -> Unit,
     onOfferExpired: () -> Unit = {},
+    onRetry: () -> Unit = {},
 ) {
     Column(
         modifier = modifier.fillMaxHeight(),
         horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
     ) {
+        // Plans come from a network fetch (RevenueCat offerings) that can fail (no
+        // connectivity, no signed-in store account, etc.) -- without this branch the
+        // screen just silently rendered nothing, with no way to tell what happened
+        // or retry.
+        if (uiState.isLoading) {
+            CircularProgressIndicator()
+        } else if (uiState.sortedPlanList.isEmpty()) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Text(
+                    text = stringResource(uiState.error ?: R.string.something_went_wrong),
+                    style = MaterialTheme.typography.bodyMedium.scaled(),
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(horizontal = AppDimens.Dimens12)
+                )
+                Spacer(Modifier.height(AppDimens.Dimens8))
+                Button(onClick = onRetry) {
+                    Text(stringResource(R.string.retry))
+                }
+            }
+        } else {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -55,6 +78,7 @@ fun PurchasePlanSection(
                     onOfferExpired = onOfferExpired
                 )
             }
+        }
         }
 
         val selected = uiState.sortedPlanList.getOrNull(uiState.selectedIndex)
