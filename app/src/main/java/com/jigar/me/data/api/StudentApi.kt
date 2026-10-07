@@ -1,6 +1,7 @@
 package com.jigar.me.data.api
 
 import com.jigar.me.data.model.MainAPIResponse
+import com.jigar.me.data.model.data.FcmTokenRequest
 import com.jigar.me.data.model.data.FetchAbacusDataRequest
 import com.jigar.me.data.model.data.LoginRequest
 import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
@@ -22,6 +23,9 @@ interface StudentApi {
     suspend fun login(@Body request : LoginRequest): MainAPIResponse
     @POST("student/handle-existing-plan")
     suspend fun handleExistingPurchase(@Body request : PurchasedPlanCheckRequest): MainAPIResponse
+    // tokenOverride lets logout clear the token after local prefs (and the auth header source) are wiped
+    @PUT("student/fcm-token")
+    suspend fun updateFcmToken(@Body request : FcmTokenRequest, @Header("access-token") tokenOverride: String? = null): MainAPIResponse
     @GET("student/app-reviews-list")
     suspend fun appReviewsList(): MainAPIResponse
     @POST("student/get-abacus-set-pages-categories-levels-data")

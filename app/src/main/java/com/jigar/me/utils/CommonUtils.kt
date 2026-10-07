@@ -26,7 +26,6 @@ import java.util.concurrent.TimeUnit
 
 
 object CommonUtils {
-    external fun getOneSignalKey() : String
     external fun getOrganizerId() : String
     external fun getPublicKey() : String
     external fun getDatabaseKey() : String

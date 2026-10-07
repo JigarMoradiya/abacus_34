@@ -222,6 +222,8 @@ object AppConstants {
         companion object {
             const val permissionAsked    = "notification_permission_asked"
             const val sheetLastShownDate = "notification_sheet_last_shown"
+            // "studentId|token" last registered on the server; wiped on logout with the rest of prefs
+            const val fcmLastSent        = "fcm_token_last_sent"
         }
     }
 
