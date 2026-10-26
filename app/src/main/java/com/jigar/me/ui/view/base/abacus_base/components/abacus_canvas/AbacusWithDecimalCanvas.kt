@@ -335,6 +335,11 @@ fun AbacusWithDecimalCanvas(
     // rod index instead of hardcoded 13-column pixel offsets, so the tour
     // still points at the right rod when numberOfColumns is 7.
     val colUnit = dim.beadWidth + (dim.columnSpaces * 2)
+    // The decimal separator sits between rod 6 and rod 7, i.e. to the RIGHT of every
+    // rod the tour points at (ones/tens/hundreds). These overlay rows are centered,
+    // so their trailing filler must include this gap or every highlight lands gap/2
+    // to the right of its rod. 0 when there are 7 rods.
+    val gap = if (numberOfColumns > 7) dim.decimalSeparatorGap else 0.dp
 
     // 2️⃣ Beam (bar)
     Column(
@@ -399,7 +404,7 @@ fun AbacusWithDecimalCanvas(
                     .height(dim.beamHeight)
                     .spotlightTag(5, highlightSteps[5].message)
             )
-            Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7)))
+            Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7) + gap))
         }
         Spacer(modifier = Modifier.weight(1f))
     }
@@ -415,7 +420,7 @@ fun AbacusWithDecimalCanvas(
                 .height(totalBeadsHeight)
                 .spotlightTag(6, highlightSteps[6].message)
         )
-        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7)).height(totalBeadsHeight))
+        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7) + gap).height(totalBeadsHeight))
     }
 
     // 7️⃣ Second rods — tens place is always column index 5
@@ -433,7 +438,7 @@ fun AbacusWithDecimalCanvas(
         )
         Box(
             modifier = Modifier
-                .width(colUnit * (numberOfColumns - 6))
+                .width(colUnit * (numberOfColumns - 6) + gap)
                 .height(totalBeadsHeight)
         )
     }
@@ -453,7 +458,7 @@ fun AbacusWithDecimalCanvas(
         )
         Box(
             modifier = Modifier
-                .width(colUnit * (numberOfColumns - 5))
+                .width(colUnit * (numberOfColumns - 5) + gap)
                 .height(totalBeadsHeight)
         )
     }
@@ -467,7 +472,7 @@ fun AbacusWithDecimalCanvas(
                 .height(totalBeadsHeight)
                 .spotlightTag(9, highlightSteps[9].message)
         )
-        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7)).height(totalBeadsHeight))
+        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7) + gap).height(totalBeadsHeight))
     }
 
     // 🔟 2 rods = 0–99 — tens + ones, column indices 5-6
@@ -485,7 +490,7 @@ fun AbacusWithDecimalCanvas(
         )
         Box(
             modifier = Modifier
-                .width(colUnit * (numberOfColumns - 7))
+                .width(colUnit * (numberOfColumns - 7) + gap)
                 .height(totalBeadsHeight)
         )
     }
@@ -505,7 +510,7 @@ fun AbacusWithDecimalCanvas(
         )
         Box(
             modifier = Modifier
-                .width(colUnit * (numberOfColumns - 7))
+                .width(colUnit * (numberOfColumns - 7) + gap)
                 .height(totalBeadsHeight)
         )
     }
@@ -526,7 +531,7 @@ fun AbacusWithDecimalCanvas(
                     .spotlightTag(12, highlightSteps[12].message)
             )
         }
-        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7)))
+        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7) + gap))
     }
 
     // 1️⃣3️⃣ Addition top bead — ones place, column index 6
@@ -543,7 +548,7 @@ fun AbacusWithDecimalCanvas(
             )
             Spacer(modifier = Modifier.weight(1f))
         }
-        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7)))
+        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7) + gap))
     }
 
     // 1️⃣4️⃣ Subtraction bottom bead — ones place, column index 6
@@ -564,7 +569,7 @@ fun AbacusWithDecimalCanvas(
                     .spotlightTag(14, highlightSteps[14].message)
             )
         }
-        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7)))
+        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7) + gap))
     }
 
     // 1️⃣5️⃣ Subtraction top bead — ones place, column index 6
@@ -581,7 +586,7 @@ fun AbacusWithDecimalCanvas(
             )
             Spacer(modifier = Modifier.weight(1f))
         }
-        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7)))
+        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7) + gap))
     }
 
     // ==========================
