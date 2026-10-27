@@ -14,9 +14,6 @@
     <dimen name="poligon_space">4dp</dimen>
 
     <!-- 6:5 -->
-    <dimen name="face_width">30dp</dimen>
-    <dimen name="face_height">25dp</dimen>
-    <dimen name="face_space">12dp</dimen>
 
     <dimen name="star_width">26dp</dimen>
     <dimen name="star_height">25dp</dimen>

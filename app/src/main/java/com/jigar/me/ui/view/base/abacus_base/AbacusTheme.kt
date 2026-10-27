@@ -299,19 +299,6 @@ object AbacusTheme {
             )
 
             // -----------------------
-            //  face_red
-            // -----------------------
-            "face_red" -> ColorPresetModel(
-                abacusTopGradient = hex("E53935"),
-                abacusCenterGradient = hex("EF5350"),
-                abacusBottomGradient = hex("FFCDD2"),
-                buttonColor = hex("B71C1C"),
-                columnColors = hex("E57373"),
-                displayBGColor = hex("E53935"),
-                displayBorderColor = hex("EF5350")
-            )
-
-            // -----------------------
             //  DEFAULT (poligon_purple)
             // -----------------------
             else -> ColorPresetModel(
