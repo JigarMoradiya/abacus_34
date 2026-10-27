@@ -25,6 +25,9 @@ import com.jigar.me.ui.jetpack.utils.TextToSpeechManager
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.navigation.HomeNavGraph
 import com.jigar.me.ui.view.home.theme.MyApplicationTheme
+import com.jigar.me.ui.view.ab.AbDebugScreens
+import com.jigar.me.ui.view.ab.AbThemeController
+import com.jigar.me.BuildConfig
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.common_ui.LocalTextToSpeechManager
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
@@ -71,6 +74,7 @@ class HomeActivity : ComponentActivity() {
 
         deepLinkRoute = intent.getStringExtra(EXTRA_DEEP_LINK_ROUTE)
         logDeviceQualifiers(this)
+        AbThemeController.init(preferences)
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
         WindowInsetsControllerCompat(window, window.decorView).apply {
@@ -90,6 +94,12 @@ class HomeActivity : ComponentActivity() {
             // initialize audio player
             AudioPlayerManager.init(this)
 
+            val abScreen = if (BuildConfig.DEBUG) intent.getStringExtra("ab_screen") else null
+            if (abScreen != null) {
+                // Debug-only preview of one restyled screen (see AbKitGallery.kt), skipping the normal app shell.
+                setContent { AbDebugScreens.Render(abScreen, intent.getBooleanExtra("ab_dark", false)) }
+                return@post
+            }
             setContent {
                 HomePageBackground()
                 MyApplicationTheme {
