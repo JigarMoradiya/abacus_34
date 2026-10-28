@@ -34,6 +34,9 @@ object AudioPlayerManager {
         soundMap["sfx_card_flip"] = load(context, "sfx_card_flip.wav")
         soundMap["sfx_tile_place"] = load(context, "sfx_tile_place.wav")
         soundMap["sfx_merge_pop"] = load(context, "sfx_merge_pop.wav")
+        // Countdown: a clock tick for 3, 2, 1 and a stopwatch "go" beep
+        soundMap["sfx_count_tick"] = load(context, "sfx_count_tick.wav")
+        soundMap["sfx_count_go"] = load(context, "sfx_count_go.wav")
     }
 
     private fun load(context: Context, fileName: String): Int {
@@ -97,6 +100,12 @@ object AudioPlayerManager {
     }
     fun playSoundMergePop() {
         play("sfx_merge_pop")
+    }
+    fun playSoundCountTick() {
+        play("sfx_count_tick")
+    }
+    fun playSoundCountGo() {
+        play("sfx_count_go")
     }
 
     private fun play(key: String) {

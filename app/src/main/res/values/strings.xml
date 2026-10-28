@@ -303,7 +303,7 @@
     <string name="select_your_exercise">Select your Exercise</string>
     <string name="clear_each_exercise_to_get_80_of_3_times_in_a_row">To clear each exercise, get 80% of 3 times in a row.</string>
     <string name="start_exercise">Start Exercise</string>
-    <string name="title_exercises">Exercises</string>
+    <string name="title_exercises">Abacus Exercises</string>
     <string name="next">Next</string>
     <string name="answer">Answer :</string>
     <string name="result_of_exercise">Result of Exercise</string>
@@ -333,7 +333,7 @@
     <string name="abacus_free_mode">Abacus Free Mode</string>
     <string name="free_abacus_theme">Abacus Themes</string>
     <string name="paid_abacus_themes">Advance Abacus Themes</string>
-    <string name="preview_of_theme">Preview of Theme</string>
+    <string name="preview_of_theme">Preview Of Theme</string>
     <string name="welcome_to_abacus_application">Welcome to the Vedaavi Learning</string>
     <string name="please_choose_your_anonymous_name_and_avatar">Please choose child\'s anonymous\nname and avatar</string>
     <string name="choose_child_avatar">Choose child\'s avatar</string>
@@ -344,7 +344,7 @@
     <string name="okay_let_s_start">Okay, let\'s start</string>
     <string name="will_select_later_from_settings">Will change later from settings</string>
     <string name="free_mode">Free Mode?</string>
-    <string name="video_tutorials">Video Tutorials</string>
+    <string name="video_tutorials">Video Tutorial</string>
     <string name="use_left_hand_to_move_beads">Use your <b>Left Hand</b> to move beads</string>
     <string name="use_right_hand_to_move_beads">Use your <b>Right Hand</b> to move beads</string>
 
@@ -1114,6 +1114,7 @@
     <string name="cancel">Cancel</string>
     <string name="alert">Alert</string>
     <string name="something_went_wrong">Something went wrong. Please try again.</string>
+    <string name="purchase_no_plans">No plans are available right now. Please try again in a moment.</string>
     <string name="see_benefits">See Benefits</string>
     <string name="premium_benefits_title">Premium Benefits</string>
     <string name="benefit_all_levels">All levels practice (Level 1–8)</string>
@@ -1160,7 +1161,11 @@
     <string name="ccm_speak">Speak</string>
     <string name="ccm_number">Number</string>
     <string name="ccm_word">Word</string>
+    <string name="ccm_listen_hint">Listen carefully to each number</string>
     <string name="got_it">Got it!</string>
     <string name="try_again">Try Again</string>
 
+    <string name="loading">Loading</string>
+    <string name="purchase_headline">Go Premium</string>
+    <string name="purchase_subline">Unlock everything, learn without limits</string>
 </resources>

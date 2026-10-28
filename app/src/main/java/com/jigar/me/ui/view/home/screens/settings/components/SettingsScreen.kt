@@ -3,14 +3,14 @@ package com.jigar.me.ui.view.home.screens.settings.components
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.HelpOutline
+import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material.icons.outlined.MusicNote
 import androidx.compose.material.icons.outlined.PanToolAlt
 import androidx.compose.material.icons.outlined.Speaker
@@ -20,9 +20,11 @@ import androidx.compose.material.icons.outlined.Visibility
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
+import com.jigar.me.ui.view.ab.AbThemeController
+import com.jigar.me.ui.view.ab.AbThemeMode
 import com.jigar.me.ui.view.home.screens.settings.viewmodels.SettingUiState
 import com.jigar.me.ui.view.home.screens.settings.viewmodels.SettingViewModel
 import com.jigar.me.ui.view.home.screens.settings.viewmodels.ToggleItem
@@ -39,8 +41,13 @@ fun SettingsScreen(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(bottom = AppDimens.Dimens16)
-            .padding(horizontal = AppDimens.Dimens16)
+            .padding(
+                start = DeviceInfo.screenHorizontalPadding(),
+                end = AppDimens.Dimens16,
+                top = AppDimens.Dimens12,
+                bottom = AppDimens.Dimens16
+            ),
+        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
     ) {
 
         ThemeSection(
@@ -49,9 +56,11 @@ fun SettingsScreen(
             onThemeSelected = viewModel::selectTheme
         )
 
-        Spacer(Modifier.height(AppDimens.Dimens12))
-
-        Row(verticalAlignment = Alignment.CenterVertically,horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
+        Row(
+            Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
+        ) {
             VoiceSection(
                 modifier = Modifier.weight(1f),
                 onVoiceChange = {
@@ -68,9 +77,10 @@ fun SettingsScreen(
             )
         }
 
-        Spacer(Modifier.height(AppDimens.Dimens12))
-
-        Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
+        Row(
+            Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
+        ) {
             ToggleSection(
                 modifier = Modifier.weight(1f),
                 items = listOf(
@@ -89,7 +99,13 @@ fun SettingsScreen(
                         stringResource(R.string.display_bead_direction),
                         uiState.displayDirection,
                         viewModel::toggleDirection
-                    )
+                    ),
+                    // In-app Light/Dark choice for the restyled screens (never follows the device).
+                    ToggleItem(
+                        Icons.Outlined.DarkMode,
+                        "Dark Mode",
+                        AbThemeController.mode == AbThemeMode.Dark
+                    ) { AbThemeController.set(if (it) AbThemeMode.Dark else AbThemeMode.Light) }
                 )
             )
 

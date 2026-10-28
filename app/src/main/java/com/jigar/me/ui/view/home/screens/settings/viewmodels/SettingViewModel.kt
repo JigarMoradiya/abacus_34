@@ -3,6 +3,7 @@
 import android.speech.tts.TextToSpeech
 import android.speech.tts.Voice
 import android.util.Log
+import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.jetpack.core.StatefulViewModelAbacus
 import com.jigar.me.ui.jetpack.utils.TextToSpeechManager
@@ -125,7 +126,7 @@ class SettingViewModel @Inject constructor(
     * Theme
     * ------------------------- */
     fun selectTheme(theme: String) {
-        prefs.setCustomParam(AppConstants.Settings.Theam, theme)
+        AbacusTheme.setActive(prefs, theme)
         updateState_ {
             copy(previewKey = previewKey + 1)
         }

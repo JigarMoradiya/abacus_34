@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
@@ -16,10 +17,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.dialogs.ParentalGateDialog
+import com.jigar.me.data.local.data.DeviceInfo
+import com.jigar.me.ui.view.ab.AbBackground
+import com.jigar.me.ui.view.ab.AbParentalGate
+import com.jigar.me.ui.view.ab.AbTheme
+import com.jigar.me.ui.view.ab.AbTopBar
+import com.jigar.me.ui.view.ab.AbWorld
 import com.jigar.me.ui.view.home.screens.youtube.components.YoutubeVideoGrid
 import com.jigar.me.ui.view.home.screens.youtube.viewmodels.YoutubeVideoViewModel
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
 fun YoutubeVideoScreenRoute(
@@ -35,34 +41,43 @@ fun YoutubeVideoScreenRoute(
     // would re-ask the gate on every single video tap instead of once per visit.
     var gateResolvedThisVisit by remember { mutableStateOf(false) }
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-            BackButtonWithText(
-                title = stringResource(R.string.video_tutorials),
-                onBackClick = onBackClick
-            )
-            YoutubeVideoGrid(
-                videos = uiState.videoList,
-                gateResolvedThisVisit = gateResolvedThisVisit,
-                onRequestGate = { action ->
-                    pendingUrlAction = action
-                    showURLGate = true
-                }
-            )
-        }
+    AbTheme {
+        Box(modifier = Modifier.fillMaxSize()) {
+            AbBackground(AbWorld.Lagoon, Modifier.fillMaxSize())
 
-        // Rendered at this outer level (not inside YoutubeVideoGrid) so the scrim
-        // covers the whole screen, including the header bar above the grid.
-        if (showURLGate) {
-            ParentalGateDialog(
-                onPassed = {
-                    showURLGate = false
-                    gateResolvedThisVisit = true
-                    pendingUrlAction?.invoke()
-                    pendingUrlAction = null
-                },
-                onCancelled = { showURLGate = false; pendingUrlAction = null }
-            )
+            Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+                AbTopBar(
+                    title = stringResource(R.string.video_tutorials),
+                    onBack = onBackClick,
+                    modifier = Modifier.padding(
+                        start = DeviceInfo.screenHorizontalPadding(),
+                        end = AppDimens.Dimens16,
+                        top = DeviceInfo.screenTopPadding()
+                    )
+                )
+                YoutubeVideoGrid(
+                    videos = uiState.videoList,
+                    gateResolvedThisVisit = gateResolvedThisVisit,
+                    onRequestGate = { action ->
+                        pendingUrlAction = action
+                        showURLGate = true
+                    }
+                )
+            }
+
+            // Rendered at this outer level (not inside YoutubeVideoGrid) so the scrim
+            // covers the whole screen, including the header bar above the grid.
+            if (showURLGate) {
+                AbParentalGate(
+                    onSuccess = {
+                        showURLGate = false
+                        gateResolvedThisVisit = true
+                        pendingUrlAction?.invoke()
+                        pendingUrlAction = null
+                    },
+                    onClose = { showURLGate = false; pendingUrlAction = null }
+                )
+            }
         }
     }
 }

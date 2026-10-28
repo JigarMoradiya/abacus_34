@@ -1,9 +1,6 @@
 package com.jigar.me.ui.view.home.screens.my_account
 
 import android.app.Activity
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,6 +13,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.Logout
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,18 +34,21 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.BuildConfig
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.data.pref.AppPreferencesHelper
+import com.jigar.me.ui.view.ab.AbBackground
+import com.jigar.me.ui.view.ab.AbConfirmDialog
+import com.jigar.me.ui.view.ab.AbParentalGate
+import com.jigar.me.ui.view.ab.AbTheme
+import com.jigar.me.ui.view.ab.AbTopBar
+import com.jigar.me.ui.view.ab.AbWorld
 import com.jigar.me.ui.view.home.HomeActivity
-import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
-import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
-import com.jigar.me.ui.view.home.common_ui.dialogs.PopupTheme
-import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumLoginBottomSheet
 import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateBottomSheet
 import com.jigar.me.ui.view.home.screens.my_account.components.MyAccountScreen
 import com.jigar.me.ui.view.home.screens.my_account.viewmodels.MyAccountViewModel
-import com.jigar.me.ui.view.home.common_ui.dialogs.ParentalGateDialog
+import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.AppReviewManager
 import com.jigar.me.utils.extensions.openMail
@@ -90,11 +92,19 @@ fun MyAccountRoute(
     var showRateUsSheet by remember { mutableStateOf(false) }
 //    var showDebugPreview by remember { mutableStateOf(false) }
 
+    AbTheme {
     Box(modifier = Modifier.fillMaxSize()) {
+        AbBackground(AbWorld.Lagoon, Modifier.fillMaxSize())
+
         Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-            BackButtonWithText(
+            AbTopBar(
                 title = stringResource(R.string.parent),
-                onBackClick = onBackClick
+                onBack = onBackClick,
+                modifier = Modifier.padding(
+                    start = DeviceInfo.screenHorizontalPadding(),
+                    end = AppDimens.Dimens16,
+                    top = DeviceInfo.screenTopPadding()
+                )
             )
             MyAccountScreen(uiState, modifier = Modifier.weight(1f)) { tag ->
                 when (tag) {
@@ -152,25 +162,42 @@ fun MyAccountRoute(
             }
         )
 
-        AnimatedVisibility(
-            visible = uiState.isShowLogoutPopup,
-            enter = fadeIn(),
-            exit = fadeOut()
-        ) {
-            CustomPopupView(
+        if (uiState.isShowLogoutPopup) {
+            AbConfirmDialog(
                 title = stringResource(R.string.logout_alert),
-                description = stringResource(R.string.logout_alert_msg),
-                positiveButtonText = stringResource(R.string.yes_i_m_sure),
-                negativeButtonText = stringResource(R.string.no),
-                icon = R.drawable.ic_alert,
-                theme = PopupTheme.CONFIRM,
-                accent = ButtonType.RED,
-                widthMultiplier = 0.5f,
-                onPositiveTapped = {
+                message = stringResource(R.string.logout_alert_msg),
+                positiveText = stringResource(R.string.yes_i_m_sure),
+                negativeText = stringResource(R.string.no),
+                icon = Icons.AutoMirrored.Rounded.Logout,
+                onNegative = { viewModel.logoutOpenClose(false) },
+                onPositive = {
                     viewModel.makeLogout()
                     HomeActivity.getInstance(context)
+                }
+            )
+        }
+
+        if (showURLGate) {
+            AbParentalGate(
+                onSuccess = {
+                    showURLGate = false
+                    gateResolvedThisVisit = true
+                    pendingUrlAction?.invoke()
+                    pendingUrlAction = null
                 },
-                onNegativeTapped = { viewModel.logoutOpenClose(false) }
+                onClose = { showURLGate = false; pendingUrlAction = null }
+            )
+        }
+
+        if (showActionGate) {
+            AbParentalGate(
+                onSuccess = {
+                    showActionGate = false
+                    gateResolvedThisVisit = true
+                    pendingNavAction?.invoke()
+                    pendingNavAction = null
+                },
+                onClose = { showActionGate = false; pendingNavAction = null }
             )
         }
     }
@@ -202,31 +229,7 @@ fun MyAccountRoute(
             onDismiss = { showLoginSheetForHistory = false }
         )
     }
-
-    if (showURLGate) {
-        ParentalGateDialog(
-            onPassed = {
-                showURLGate = false
-                gateResolvedThisVisit = true
-                pendingUrlAction?.invoke()
-                pendingUrlAction = null
-            },
-            onCancelled = { showURLGate = false; pendingUrlAction = null }
-        )
     }
-
-    if (showActionGate) {
-        ParentalGateDialog(
-            onPassed = {
-                showActionGate = false
-                gateResolvedThisVisit = true
-                pendingNavAction?.invoke()
-                pendingNavAction = null
-            },
-            onCancelled = { showActionGate = false; pendingNavAction = null }
-        )
-    }
-
 }
 
 // ── DEBUG ONLY — review-gate test harness ──────────────────────────────────

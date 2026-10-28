@@ -1,20 +1,39 @@
 package com.jigar.me.ui.view.home.screens.levels.level2.formula
 
-import androidx.compose.animation.*
+import com.jigar.me.ui.view.ab.abReadable
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.*
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.runtime.*
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -22,16 +41,32 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
 import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.data.local.data.RodMovement
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.ab.AbCard
+import com.jigar.me.ui.view.ab.AbGlassPanel
+import com.jigar.me.ui.view.ab.AbPanelButton
+import com.jigar.me.ui.view.ab.AbShapes
+import com.jigar.me.ui.view.ab.AbTopBar
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.AbWorld
+import com.jigar.me.ui.view.ab.AbacusFrameStyle
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abDarkened
+import com.jigar.me.ui.view.ab.abSquash
 import com.jigar.me.ui.view.base.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
-import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
-import com.jigar.me.ui.view.home.screens.levels.level2.l2ComputeMovement
+import com.jigar.me.ui.view.home.screens.levels.LevelFitToBox
+import com.jigar.me.ui.view.home.screens.levels.LevelScreenRoot
 import com.jigar.me.ui.view.home.screens.levels.level2.l2FormulaRodMovements
+import com.jigar.me.ui.view.home.screens.levels.levelForeground
+import com.jigar.me.ui.view.home.screens.levels.levelParagraph
+import com.jigar.me.ui.view.home.screens.levels.levelText
+import com.jigar.me.ui.view.home.screens.levels.levelTopBarPadding
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
 import kotlinx.coroutines.delay
@@ -161,23 +196,14 @@ fun Level2FormulaScreen(
 ) {
     var selectedGroupId by remember { mutableIntStateOf(initialGroupId.coerceIn(1, 6)) }
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-            // Header row: back button + inline scrollable tab chips
-            Row(
-                modifier          = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                BackButtonWithText(
-                    title       = "Formulas 📋",
-                    modifier    = Modifier.wrapContentWidth(),
-                    onBackClick = onBackClick
-                )
+    LevelScreenRoot(AbWorld.Sunset) {
+        Column(modifier = Modifier.levelForeground()) {
+            // Header row: back button + title + inline scrollable tab chips
+            AbTopBar(title = "Formulas 📋", onBack = onBackClick, modifier = Modifier.levelTopBarPadding()) {
                 LazyRow(
-                    modifier              = Modifier.weight(1f),
+                    modifier              = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
-                    contentPadding        = PaddingValues(end = AppDimens.Dimens12)
+                    contentPadding        = PaddingValues(horizontal = AppDimens.Dimens4, vertical = AppDimens.Dimens6)
                 ) {
                     itemsIndexed(formulaGroups) { _, g ->
                         FormulaGroupTab(
@@ -211,41 +237,30 @@ fun Level2FormulaScreen(
 
 @Composable
 private fun FormulaGroupTab(group: FormulaGroup, isSelected: Boolean, onClick: () -> Unit) {
-    val bg = if (isSelected)
-        Brush.linearGradient(listOf(group.startColor, group.endColor))
-    else
-        Brush.linearGradient(listOf(Color(0xFF37474F), Color(0xFF546E7A)))
-
-    Box(
+    val colors = LocalAbColors.current
+    val s      = LocalAbScale.current.factor
+    Row(
         modifier = Modifier
-            .height(AppDimens.Dimens32)
-            .shadow(
-                if (isSelected) AppDimens.Dimens6 else AppDimens.Dimens2,
-                RoundedCornerShape(AppDimens.Dimens24),
-                ambientColor = group.endColor.copy(if (isSelected) 0.5f else 0f),
-                spotColor    = group.endColor.copy(if (isSelected) 0.5f else 0f)
+            .abSquash(
+                face         = if (isSelected) group.endColor else colors.bgSecondary,
+                edge         = if (isSelected) group.endColor.abDarkened(0.32f) else colors.outline,
+                stroke       = if (isSelected) null else colors.outline,
+                cornerRadius = AbShapes.pill,
+                edgeHeight   = 4.dp * s,
+                onClick      = onClick
             )
-            .background(bg, RoundedCornerShape(AppDimens.Dimens24))
-            .then(
-                if (isSelected) Modifier.border(AppDimens.Dimens2, Color.White.copy(0.4f), RoundedCornerShape(AppDimens.Dimens24))
-                else Modifier
-            )
-            .clickable(remember { MutableInteractionSource() }, null) { onClick() }
-            .padding(horizontal = AppDimens.Dimens12),
-        contentAlignment = Alignment.Center
+            .height(38.dp * s)
+            .padding(horizontal = 14.dp * s),
+        verticalAlignment     = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(4.dp * s)
     ) {
-        Row(
-            verticalAlignment     = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
-        ) {
-            Text(text = group.emoji, style = MaterialTheme.typography.labelMedium.scaled())
-            Text(
-                text       = group.name,
-                style      = MaterialTheme.typography.labelMedium.scaled(),
-                color      = Color.White,
-                fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal
-            )
-        }
+        Text(text = group.emoji, style = AbTypography.fixed(15f * s, FontWeight.SemiBold))
+        Text(
+            text     = group.name,
+            style    = AbTypography.fixed(14f * s, if (isSelected) FontWeight.ExtraBold else FontWeight.SemiBold),
+            color    = if (isSelected) Color.White else colors.textPrimary,
+            maxLines = 1
+        )
     }
 }
 
@@ -284,26 +299,17 @@ private fun FormulaGroupDetail(group: FormulaGroup, modifier: Modifier = Modifie
 
 @Composable
 private fun ExplanationSection(label: String, text: String, endColor: Color) {
-    val shape = RoundedCornerShape(AppDimens.Dimens16)
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .shadow(AppDimens.Dimens4, shape, ambientColor = endColor.copy(0.2f), spotColor = endColor.copy(0.2f))
-            .background(Color.White, shape)
-            .border(AppDimens.Dimens1, endColor.copy(0.40f), shape)
-            .padding(AppDimens.Dimens12)
-    ) {
+    AbCard {
         Column(verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)) {
             Text(
-                text       = label,
-                style      = MaterialTheme.typography.labelLarge.scaled(),
-                fontWeight = FontWeight.Bold,
-                color      = endColor
+                text  = label,
+                style = levelText(12f, FontWeight.Bold),
+                color = endColor.abReadable(4.0f)
             )
             Text(
                 text  = text,
-                style = MaterialTheme.typography.bodySmall.scaled(),
-                color = Color(0xFF1A1A1A)
+                style = levelParagraph(12f, FontWeight.SemiBold),
+                color = LocalAbColors.current.textPrimary
             )
         }
     }
@@ -316,7 +322,7 @@ private enum class FormulaAnimPhase { ZERO, SETUP_ARROW, INITIAL, OP_ARROW, RESU
 @Composable
 private fun FormulaAnimatedDemo(group: FormulaGroup, heightFraction: Float = 0.82f) {
     val prefs         = LocalPreferencesHelper.current
-    val selectedTheme = prefs.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default)
+    val selectedTheme = AbacusTheme.active(prefs)
 
     var rowIndex    by remember(group.id) { mutableIntStateOf(0) }
     var animPhase   by remember(group.id) { mutableStateOf(FormulaAnimPhase.RESULT) }
@@ -365,63 +371,62 @@ private fun FormulaAnimatedDemo(group: FormulaGroup, heightFraction: Float = 0.8
 
     val opLabel = row.formula.substringBefore(" =")
 
-    val outerShape = RoundedCornerShape(AppDimens.Dimens20)
+    val s          = LocalAbScale.current.factor
+    val outerShape = RoundedCornerShape(AbShapes.lg * s)
     val rightShape = RoundedCornerShape(topEnd = AppDimens.Dimens20, bottomEnd = AppDimens.Dimens20)
 
-    Box(
+    // Calm background card
+    AbGlassPanel(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight(heightFraction)
-            .shadow(AppDimens.Dimens6, outerShape,
+            .shadow(AppDimens.Dimens6, outerShape, clip = false,
                 ambientColor = group.endColor.copy(0.3f),
                 spotColor    = group.endColor.copy(0.3f))
-            .background(Color.White, outerShape)
-            .border(AppDimens.Dimens2, group.endColor.copy(0.25f), outerShape)
     ) {
         Row(modifier = Modifier.fillMaxSize()) {
-            // Left: abacus + phase step label below (white background)
+            // Left: abacus + phase step label below
             Column(
                 modifier            = Modifier.weight(0.55f).fillMaxHeight(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 // Abacus
                 Box(
-                    modifier         = Modifier.weight(1f),
+                    modifier         = Modifier.weight(1f).fillMaxWidth(),
                     contentAlignment = Alignment.Center
                 ) {
-                    AbacusWithDecimalCanvas(
-                        selectedTheme               = selectedTheme,
-                        screenType                  = AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula,
-                        abacusData                  = abCalc,
-                        numberOfColumns             = group.columns,
-                        rodMovement                 = rodMovement,
-                        showDirectionHint           = showArrows,
-                        isBeadSoundOn               = false,
-                        isDisplayCurrentAbacusInput = false,
-                        onRodMovementChange         = {},
-                        onShowDirectionHintsChange  = {},
-                        onShowHighlighterChange     = {},
-                        onReset                     = {},
-                        onNext                      = {},
-                    )
+                    LevelFitToBox {
+                        AbacusWithDecimalCanvas(
+                            selectedTheme               = selectedTheme,
+                            screenType                  = AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula,
+                            abacusData                  = abCalc,
+                            numberOfColumns             = group.columns,
+                            rodMovement                 = rodMovement,
+                            showDirectionHint           = showArrows,
+                            isBeadSoundOn               = false,
+                            isDisplayCurrentAbacusInput = false,
+                            frameStyle                  = AbacusFrameStyle.Toy,
+                            onRodMovementChange         = {},
+                            onShowDirectionHintsChange  = {},
+                            onShowHighlighterChange     = {},
+                            onReset                     = {},
+                            onNext                      = {},
+                        )
+                    }
                 }
                 // Phase step label below abacus
-                Box(
-                    modifier = Modifier
+                Text(
+                    text      = phaseLabel,
+                    style     = levelText(12f, FontWeight.Black),
+                    color     = group.endColor.abReadable(4.0f),
+                    textAlign = TextAlign.Center,
+                    modifier  = Modifier
+                        .padding(horizontal = AppDimens.Dimens16)
+                        .padding(bottom = AppDimens.Dimens8)
                         .fillMaxWidth()
-                        .padding(start = AppDimens.Dimens16, end = AppDimens.Dimens16, bottom = AppDimens.Dimens8)
-                        .background(group.endColor.copy(0.12f), RoundedCornerShape(AppDimens.Dimens8)),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        text       = phaseLabel,
-                        style      = MaterialTheme.typography.bodySmall.scaled(),
-                        fontWeight = FontWeight.Bold,
-                        color      = group.endColor,
-                        textAlign  = TextAlign.Center,
-                        modifier   = Modifier.padding(vertical = AppDimens.Dimens4)
-                    )
-                }
+                        .background(group.endColor.copy(0.1f), RoundedCornerShape(AppDimens.Dimens8))
+                        .padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens6)
+                )
             }
 
             // Right panel: colored gradient, op label, current formula, nav, example
@@ -430,7 +435,7 @@ private fun FormulaAnimatedDemo(group: FormulaGroup, heightFraction: Float = 0.8
                     .weight(0.45f)
                     .fillMaxHeight()
                     .background(
-                        Brush.linearGradient(listOf(group.startColor.copy(0.85f), group.endColor.copy(0.75f))),
+                        Brush.verticalGradient(listOf(group.startColor.copy(0.85f), group.endColor.copy(0.75f))),
                         rightShape
                     )
                     .padding(AppDimens.Dimens10),
@@ -443,107 +448,80 @@ private fun FormulaAnimatedDemo(group: FormulaGroup, heightFraction: Float = 0.8
                     verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
                 ) {
                     Text(
-                        text       = opLabel,
-                        style      = MaterialTheme.typography.headlineMedium.scaled(),
-                        fontWeight = FontWeight.Black,
-                        color      = Color.White,
-                        textAlign  = TextAlign.Center
+                        text      = opLabel,
+                        style     = levelText(28f, FontWeight.Black),
+                        color     = Color.White,
+                        textAlign = TextAlign.Center
                     )
                     Text(
-                        text       = row.formula,
-                        style      = MaterialTheme.typography.labelSmall.scaled(),
-                        fontWeight = FontWeight.Bold,
-                        color      = Color.White.copy(0.85f),
-                        textAlign  = TextAlign.Center
+                        text      = row.formula,
+                        style     = levelText(11f, FontWeight.Bold),
+                        color     = Color.White.copy(0.95f),
+                        textAlign = TextAlign.Center
                     )
                     Text(
-                        text       = group.name,
-                        style      = MaterialTheme.typography.labelSmall.scaled(),
-                        fontWeight = FontWeight.Medium,
-                        color      = Color.White.copy(0.65f),
-                        textAlign  = TextAlign.Center
+                        text      = group.name,
+                        style     = levelText(11f, FontWeight.Medium),
+                        color     = Color.White.copy(0.92f),
+                        textAlign = TextAlign.Center
                     )
                 }
 
                 // Prev / Next navigation buttons
                 Row(
-                    modifier              = Modifier.padding(vertical = AppDimens.Dimens10),
                     horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10),
                     verticalAlignment     = Alignment.CenterVertically
                 ) {
                     val hasPrev = rowIndex > 0
                     val hasNext = rowIndex < group.rows.size - 1
-                    Box(
-                        modifier = Modifier
-                            .background(
-                                if (hasPrev) Color.White.copy(0.3f) else Color.White.copy(0.1f),
-                                RoundedCornerShape(AppDimens.Dimens8)
-                            )
-                            .clickable(remember { MutableInteractionSource() }, null) {
-                                if (hasPrev) { rowIndex--; animTrigger++ }
-                            }
-                            .padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens6),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text  = "◀",
-                            style = MaterialTheme.typography.bodySmall.scaled(),
-                            color = if (hasPrev) Color.White else Color.White.copy(0.3f)
-                        )
-                    }
+                    FormulaNavButton("◀", hasPrev) { rowIndex--; animTrigger++ }
                     Text(
-                        text       = "${rowIndex + 1}/${group.rows.size}",
-                        style      = MaterialTheme.typography.labelMedium.scaled(),
-                        color      = Color.White,
-                        fontWeight = FontWeight.Bold
+                        text  = "${rowIndex + 1}/${group.rows.size}",
+                        style = levelText(12f, FontWeight.Bold),
+                        color = Color.White
                     )
-                    Box(
-                        modifier = Modifier
-                            .background(
-                                if (hasNext) Color.White.copy(0.3f) else Color.White.copy(0.1f),
-                                RoundedCornerShape(AppDimens.Dimens8)
-                            )
-                            .clickable(remember { MutableInteractionSource() }, null) {
-                                if (hasNext) { rowIndex++; animTrigger++ }
-                            }
-                            .padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens6),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text  = "▶",
-                            style = MaterialTheme.typography.bodySmall.scaled(),
-                            color = if (hasNext) Color.White else Color.White.copy(0.3f)
-                        )
-                    }
+                    FormulaNavButton("▶", hasNext) { rowIndex++; animTrigger++ }
                 }
 
                 // Example + replay
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
+                ) {
                     Text(
-                        text       = row.example,
-                        style      = MaterialTheme.typography.titleLarge.scaled(),
-                        color      = Color.White,
-                        fontWeight = FontWeight.Black,
-                        textAlign  = TextAlign.Center
+                        text      = row.example,
+                        style     = levelText(20f, FontWeight.Black),
+                        color     = Color.White,
+                        textAlign = TextAlign.Center
                     )
-                    Spacer(Modifier.height(AppDimens.Dimens6))
-                    Box(
-                        modifier = Modifier
-                            .background(Color.White.copy(0.20f), RoundedCornerShape(AppDimens.Dimens20))
-                            .clickable(remember { MutableInteractionSource() }, null) { animTrigger++ }
-                            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text       = "▶ Replay",
-                            style      = MaterialTheme.typography.labelMedium.scaled(),
-                            color      = Color.White,
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
+                    AbPanelButton(label = "▶ Replay", accent = group.endColor, filled = false) { animTrigger++ }
                 }
             }
         }
+    }
+}
+
+/** The small chunky ◀ / ▶ that steps through a group's rows; dim and inert at either end. */
+@Composable
+private fun FormulaNavButton(symbol: String, enabled: Boolean, onClick: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .abSquash(
+                face         = Color.White.copy(alpha = if (enabled) 0.3f else 0.12f),
+                edge         = Color.Black.copy(alpha = 0.2f),
+                cornerRadius = 12.dp,
+                edgeHeight   = 3.dp,
+                enabled      = enabled,
+                onClick      = onClick
+            )
+            .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens6),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text  = symbol,
+            style = levelText(14f, FontWeight.Bold),
+            color = if (enabled) Color.White else Color.White.copy(0.3f)
+        )
     }
 }
 
@@ -565,9 +543,9 @@ private fun FormulaTable(group: FormulaGroup) {
             modifier              = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
         ) {
-            Text("Formula",    Modifier.weight(0.28f), group.endColor, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.labelSmall.scaled())
-            Text("Bead Moves", Modifier.weight(0.45f), group.endColor, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.labelSmall.scaled())
-            Text("Example",    Modifier.weight(0.27f), group.endColor, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.labelSmall.scaled(), textAlign = TextAlign.End)
+            Text("Formula",    Modifier.weight(0.28f), group.endColor.abReadable(4.0f), style = levelText(10f, FontWeight.Bold))
+            Text("Bead Moves", Modifier.weight(0.45f), group.endColor.abReadable(4.0f), style = levelText(10f, FontWeight.Bold))
+            Text("Example",    Modifier.weight(0.27f), group.endColor.abReadable(4.0f), style = levelText(10f, FontWeight.Bold), textAlign = TextAlign.End)
         }
 
         HorizontalDivider(color = group.endColor.copy(0.3f), thickness = AppDimens.Dimens1)
@@ -579,9 +557,9 @@ private fun FormulaTable(group: FormulaGroup) {
                 horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
                 verticalAlignment     = Alignment.CenterVertically
             ) {
-                Text(row.formula,   Modifier.weight(0.28f), Color.White,               fontWeight = FontWeight.Bold,  style = MaterialTheme.typography.labelMedium.scaled())
-                Text(row.beadMoves, Modifier.weight(0.45f), Color.White.copy(0.75f),                                   style = MaterialTheme.typography.labelSmall.scaled())
-                Text(row.example,   Modifier.weight(0.27f), group.endColor.copy(0.9f), fontWeight = FontWeight.Bold,  style = MaterialTheme.typography.labelSmall.scaled(), textAlign = TextAlign.End)
+                Text(row.formula,   Modifier.weight(0.28f), Color.White,               style = levelText(10f, FontWeight.Bold))
+                Text(row.beadMoves, Modifier.weight(0.45f), Color.White.copy(0.92f),   style = levelText(10f, FontWeight.SemiBold))
+                Text(row.example,   Modifier.weight(0.27f), group.endColor.copy(0.9f), style = levelText(10f, FontWeight.Bold), textAlign = TextAlign.End)
             }
         }
     }

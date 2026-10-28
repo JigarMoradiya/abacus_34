@@ -1,60 +1,50 @@
 package com.jigar.me.ui.view.home.screens.reports.components
 
-import com.jigar.me.ui.view.home.theme.AppDimens
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Inbox
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.dp
 import com.jigar.me.R
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.ab.AbColors
+import com.jigar.me.ui.view.ab.AbHeroBadge
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
 
+/** The empty state: a big round icon and a line of text. */
 @Composable
 fun NoReportAvailableView(
     modifier: Modifier = Modifier
 ) {
+    val colors = LocalAbColors.current
+    val s = LocalAbScale.current.factor
     Box(
         modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
         Column(
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(10.dp * s)
         ) {
-
-            Image(
-                painter = painterResource(id = R.drawable.ic_report_card),
-                contentDescription = null,
-                modifier = Modifier.size(
-                    AppDimens.Dimens80
-                )
-            )
-
-            Spacer(modifier = Modifier.height(AppDimens.Dimens16))
+            AbHeroBadge(Icons.Rounded.Inbox, accent = AbColors.Light.brandSecondary, size = 72.dp * s)
 
             Text(
                 text = stringResource(R.string.no_report_available_yet),
-                style = MaterialTheme.typography.bodyLarge.scaled().copy(
-                    fontFamily = FontFamily(Font(R.font.font_semibold)),
-                    color = Color.Black,
-                    fontWeight = FontWeight.SemiBold
-                ),
+                style = AbTypography.body(s).copy(fontWeight = FontWeight.ExtraBold),
+                color = colors.textPrimary,
                 textAlign = TextAlign.Center,
+                modifier = Modifier.padding(horizontal = 24.dp * s)
             )
         }
     }

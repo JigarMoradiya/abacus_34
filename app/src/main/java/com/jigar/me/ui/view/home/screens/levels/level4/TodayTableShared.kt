@@ -5,18 +5,17 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.automirrored.rounded.VolumeOff
 import androidx.compose.material.icons.automirrored.rounded.VolumeUp
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.rounded.VolumeOff
+import androidx.compose.material.icons.rounded.Replay
 import androidx.compose.material.icons.rounded.VolumeUp
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -32,20 +31,36 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.clipRect
+import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.unit.constrainHeight
+import androidx.compose.ui.unit.constrainWidth
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
-import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.ab.AB_SF_TO_VECTOR
+import com.jigar.me.ui.view.ab.AbButton
+import com.jigar.me.ui.view.ab.AbGlassPanel
+import com.jigar.me.ui.view.ab.AbOptionState
+import com.jigar.me.ui.view.ab.AbSize
+import com.jigar.me.ui.view.ab.AbTone
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abChunkyFace
+import com.jigar.me.ui.view.ab.abFixedStyle
 import com.jigar.me.ui.view.home.common_ui.LocalTextToSpeechManager
-import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
+import com.jigar.me.ui.view.home.screens.levels.level3.components.abFont
+import com.jigar.me.ui.view.home.screens.levels.level3.components.abResponsive
+import com.jigar.me.ui.view.home.screens.levels.level3.components.systemPrimary
 import com.jigar.me.ui.view.home.theme.AppDimens
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -58,9 +73,7 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens20
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens28
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens6
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
-import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.theme.PrimaryBlue
 import kotlinx.coroutines.isActive
 
@@ -105,11 +118,11 @@ fun generateFillBlankQuestions(tableNumber: Int, count: Int = 10): List<FillBlan
     }
 }
 
-fun optionType(choice: Int, answer: Int, selected: Int?): ButtonType {
-    if (selected == null) return ButtonType.OPTIONS
-    if (choice == answer) return ButtonType.POSITIVE
-    if (choice == selected) return ButtonType.RED
-    return ButtonType.OPTIONS
+fun optionState(choice: Int, answer: Int, selected: Int?): AbOptionState {
+    if (selected == null) return AbOptionState.Idle
+    if (choice == answer) return AbOptionState.Correct
+    if (choice == selected) return AbOptionState.Wrong
+    return AbOptionState.Idle
 }
 
 data class TableQuestionData(
@@ -202,9 +215,47 @@ val MIX_GROUPS = listOf(
     MixGroup("×1 to ×20",  (1..20).toList(),  false, "👑", Color(0xFFF57F17), Color(0xFFF9A825)),
 )
 
+/** iOS `min(UIScreen.main.bounds.width * 0.80, responsiveDimenstion(360))`: the width of a question or flash card. */
+@Composable
+internal fun tableCardWidth(): Dp =
+    minOf(LocalConfiguration.current.screenWidthDp.dp * 0.80f, abResponsive(360f).dp)
+
+/** The green "✓ 3" pill of the quiz headers. */
+@Composable
+internal fun TableScoreBadge(score: Int) {
+    val style = abFixedStyle(abResponsive(14f), FontWeight.ExtraBold)
+    Row(
+        modifier = Modifier
+            .background(Color(0xFF2FC48D), CircleShape)
+            .padding(horizontal = Dimens12, vertical = AppDimens.Dimens6),
+        horizontalArrangement = Arrangement.spacedBy(Dimens4),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text("✓", style = style, color = Color.White)
+        Text("$score", style = style, color = Color.White)
+    }
+}
+
+/**
+ * Stacks its children on top of each other, every one at the size of the biggest (a SwiftUI `ZStack` of flexible panels): the
+ * two faces of a flip card stay the same size whichever one is showing.
+ */
+@Composable
+internal fun EqualStack(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
+    Layout(content = content, modifier = modifier) { measurables, constraints ->
+        // A Measurable may be measured only once per pass, so the biggest size comes from the intrinsic sizes.
+        val width = constraints.constrainWidth(measurables.maxOfOrNull { it.maxIntrinsicWidth(constraints.maxHeight) } ?: 0)
+        val height = constraints.constrainHeight(measurables.maxOfOrNull { it.maxIntrinsicHeight(width) } ?: 0)
+        val fixed = Constraints.fixed(width, height)
+        val placeables = measurables.map { it.measure(fixed) }
+        layout(width, height) { placeables.forEach { it.place(0, 0) } }
+    }
+}
+
 @Composable
 fun TableDisplayCard(tableNumber: Int) {
-    val isTablet = DeviceInfo.isTablet
+    val colors = LocalAbColors.current
+    val s = LocalAbScale.current.factor
     val tts = LocalTextToSpeechManager.current
     val scope = rememberCoroutineScope()
     var speakingRow by remember { mutableStateOf<Int?>(null) }
@@ -274,6 +325,9 @@ fun TableDisplayCard(tableNumber: Int) {
         }
     }
 
+    // iOS DimensionsUtils.backIconCircleSize is the kit's back button
+    val backIconSize = 48.dp * s
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -283,15 +337,10 @@ fun TableDisplayCard(tableNumber: Int) {
             modifier = Modifier.padding(Dimens12),
             contentAlignment = Alignment.TopCenter
         ) {
-            // White card
-            Card(
-                shape = RoundedCornerShape(Dimens16),
-                elevation = CardDefaults.cardElevation(Dimens4),
-                colors = CardDefaults.cardColors(containerColor = Color.White),
-                modifier = Modifier.fillMaxWidth()
-            ) {
+            // Glass card with the ten rows
+            AbGlassPanel(Modifier.fillMaxWidth()) {
                 Column {
-                    Spacer(Modifier.height(ToolbarIconSize * 0.55f))
+                    Spacer(Modifier.height(backIconSize * 0.55f))
                     (1..10).forEach { i ->
                         val highlighted = speakingRow == i
                         Row(
@@ -299,40 +348,37 @@ fun TableDisplayCard(tableNumber: Int) {
                                 .fillMaxWidth()
                                 .background(
                                     when {
-                                        highlighted -> PrimaryBlue.copy(alpha = 0.18f)
-                                        i % 2 != 0 -> PrimaryBlue.copy(alpha = 0.06f)
+                                        highlighted -> colors.brandPrimary.copy(alpha = 0.18f)
+                                        i % 2 != 0 -> colors.brandPrimary.copy(alpha = 0.06f)
                                         else -> Color.Transparent
                                     }
                                 )
-                                .clickable { speakSingle(i) }
-                                .padding(vertical = Dimens6, horizontal = Dimens16),
+                                .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null) { speakSingle(i) }
+                                .padding(vertical = AppDimens.Dimens6),
                             verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.Center
+                            horizontalArrangement = Arrangement.spacedBy(Dimens4, Alignment.CenterHorizontally)
                         ) {
                             Text(
                                 text = "$tableNumber × $i",
-                                style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
-                                fontWeight = FontWeight.SemiBold,
-                                color = if (highlighted) PrimaryBlue else Color.Black.copy(alpha = 0.75f)
+                                style = abFont(12f),
+                                color = if (highlighted) colors.brandPrimary else colors.textPrimary
                             )
                             Text(
                                 text = " = ",
-                                style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
-                                color = Color.Gray
+                                style = abFont(12f),
+                                color = colors.textSecondary
                             )
                             Text(
                                 text = "${tableNumber * i}",
-                                style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
-                                fontWeight = FontWeight.Black,
-                                color = PrimaryBlue
+                                style = abFont(12f, FontWeight.Black),
+                                color = colors.brandPrimary
                             )
                             if (highlighted) {
-                                Spacer(Modifier.width(Dimens6))
                                 Icon(
                                     imageVector = Icons.Rounded.VolumeUp,
                                     contentDescription = null,
-                                    tint = PrimaryBlue,
-                                    modifier = Modifier.size(Dimens12)
+                                    tint = colors.brandPrimary,
+                                    modifier = Modifier.size((10f * AB_SF_TO_VECTOR).dp)
                                 )
                             }
                         }
@@ -342,34 +388,26 @@ fun TableDisplayCard(tableNumber: Int) {
             // Banner — tap to speak entire table (toggle)
             Row(
                 modifier = Modifier
-                    .offset(y = -(ToolbarIconSize * 0.22f))
-                    .shadow(Dimens4, RoundedCornerShape(Dimens8))
-                    .background(
-                        brush = Brush.horizontalGradient(
-                            listOf(PrimaryBlue, PrimaryBlue.copy(alpha = 0.85f))
-                        ),
-                        shape = RoundedCornerShape(Dimens8)
-                    )
-                    .clickable { speakAll() }
-                    .padding(horizontal = Dimens12, vertical = Dimens4),
+                    .offset(y = -(backIconSize * 0.22f))
+                    .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null) { speakAll() }
+                    .abChunkyFace(colors.brandPrimary, colors.brandPrimaryDark, null, Dimens12, 4.dp)
+                    .padding(horizontal = Dimens16, vertical = Dimens4),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(Dimens6)
             ) {
                 Text(
                     text = "×$tableNumber",
-                    style = if (DeviceInfo.isTablet) MaterialTheme.typography.titleMedium.scaled() else MaterialTheme.typography.bodyMedium.scaled(),
-                    fontWeight = FontWeight.Black,
+                    style = abFixedStyle(15f, FontWeight.Black),
                     color = Color.White
                 )
                 Icon(
                     imageVector = if (isSpeaking) Icons.AutoMirrored.Rounded.VolumeOff else Icons.AutoMirrored.Rounded.VolumeUp,
                     contentDescription = "Speak table",
-                    tint = Color.White.copy(alpha = 0.85f),
-                    modifier = Modifier.size(Dimens16)
+                    tint = Color.White.copy(alpha = 0.88f),
+                    modifier = Modifier.size((12f * AB_SF_TO_VECTOR).dp)
                 )
             }
         }
-        Spacer(Modifier.height(Dimens12))
     }
 }
 
@@ -380,7 +418,7 @@ fun TableResultContent(
     onRetry: () -> Unit,
     onBack: () -> Unit,
 ) {
-    val isTablet = DeviceInfo.isTablet
+    val colors = LocalAbColors.current
     val pct = if (total > 0) score.toDouble() / total.toDouble() else 0.0
     val starValue = pct * 3.0
 
@@ -433,8 +471,7 @@ fun TableResultContent(
                 )
                 Text(
                     text = "out of $total",
-                    style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
-                    fontWeight = FontWeight.SemiBold,
+                    style = abFont(11f),
                     color = Color.White.copy(alpha = 0.8f)
                 )
             }
@@ -444,35 +481,32 @@ fun TableResultContent(
 
         Text(
             text = message,
-            style = if (isTablet) MaterialTheme.typography.titleMedium.scaled() else MaterialTheme.typography.bodyLarge.scaled(),
-            fontWeight = FontWeight.Bold,
-            color = PrimaryBlue,
+            style = abFont(16f, FontWeight.Bold),
+            color = colors.systemPrimary,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(horizontal = AppDimens.Dimens24)
         )
 
         Spacer(modifier = Modifier.weight(1f))
 
-        // Action buttons — KidsActionButton centered horizontally (wrapContentWidth)
+        // Action buttons, centered horizontally
         Row(
             horizontalArrangement = Arrangement.spacedBy(Dimens16),
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(bottom = Dimens28)
         ) {
-            KidsActionButton(
+            AbButton(
                 text = "Back",
+                tone = AbTone.Ghost,
+                size = AbSize.Medium,
                 icon = Icons.AutoMirrored.Rounded.ArrowBack,
-                type = ButtonType.NEGATIVE,
-                isIconStart = true,
-                isSmall = true,
                 onClick = onBack
             )
-            KidsActionButton(
+            AbButton(
                 text = "Try Again",
-                icon = Icons.Default.Refresh,
-                type = ButtonType.BLUE,
-                isIconStart = true,
-                isSmall = true,
+                tone = AbTone.Primary,
+                size = AbSize.Medium,
+                icon = Icons.Rounded.Replay,
                 onClick = onRetry
             )
         }

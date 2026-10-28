@@ -4,7 +4,9 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
@@ -18,7 +20,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.WifiOff
 import com.jigar.me.R
+import com.jigar.me.ui.view.ab.AbBackground
+import com.jigar.me.ui.view.ab.AbBeadsLoader
+import com.jigar.me.ui.view.ab.AbColors
+import com.jigar.me.ui.view.ab.AbConfirmDialog
+import com.jigar.me.ui.view.ab.AbTheme
+import com.jigar.me.ui.view.ab.AbThemeMode
+import com.jigar.me.ui.view.ab.AbWorld
+import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.common_ui.dialogs.PopupTheme
 import com.jigar.me.ui.view.home.theme.ButtonType
@@ -38,12 +50,18 @@ fun SplashScreen(
         viewModel.fetchRemoteConfigAndContinue()
     }
 
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Image(
-            painter = painterResource(id = R.drawable.logo),
-            contentDescription = null,
-            modifier = Modifier.size(150.dp)
-        )
+    AbTheme {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            AbBackground(AbWorld.Meadow, Modifier.fillMaxSize())
+            Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)) {
+                Image(
+                    painter = painterResource(id = R.drawable.logo),
+                    contentDescription = null,
+                    modifier = Modifier.size(150.dp)
+                )
+                AbBeadsLoader()
+            }
+        }
     }
 
     // App update popup
@@ -65,36 +83,22 @@ fun SplashScreen(
         )
     }
 
-    // No internet popup
-    AnimatedVisibility(visible = uiState.showNoInternetPopup, enter = fadeIn(), exit = fadeOut()) {
-        CustomPopupView(
-            title = stringResource(R.string.no_internet_working),
-            description = stringResource(R.string.no_internet),
-            positiveButtonText = stringResource(R.string.retry),
-            negativeButtonText = stringResource(R.string.cancel),
-            icon = R.drawable.ic_alert_sad_emoji,
-            theme = PopupTheme.CONFIRM,
-            accent = ButtonType.RED,
-            widthMultiplier = 0.7f,
-            onPositiveTapped = { viewModel.retryAfterError() },
-            onNegativeTapped = { onFinishActivity() }
-        )
-    }
-
-    // API error popup (only shown when no local data exists)
-    AnimatedVisibility(visible = uiState.showErrorPopup, enter = fadeIn(), exit = fadeOut()) {
-        CustomPopupView(
-            title = stringResource(R.string.alert),
-            description = stringResource(R.string.something_went_wrong),
-            positiveButtonText = stringResource(R.string.retry),
-            negativeButtonText = stringResource(R.string.cancel),
-            icon = R.drawable.ic_alert,
-            theme = PopupTheme.CONFIRM,
-            accent = ButtonType.RED,
-            widthMultiplier = 0.7f,
-            onPositiveTapped = { viewModel.retryAfterError() },
-            onNegativeTapped = { onFinishActivity() }
-        )
+    // No internet popup / API error popup (the latter only when no local data exists). They appear before the user has
+    // chosen anything, so they use the Light kit palette.
+    if (uiState.showNoInternetPopup || uiState.showErrorPopup) {
+        AbTheme(forcing = AbThemeMode.Light) {
+            AbConfirmDialog(
+                title = stringResource(if (uiState.showNoInternetPopup) R.string.no_internet_working else R.string.alert),
+                message = stringResource(if (uiState.showNoInternetPopup) R.string.no_internet else R.string.something_went_wrong),
+                positiveText = stringResource(R.string.retry),
+                negativeText = stringResource(R.string.cancel),
+                icon = Icons.Rounded.WifiOff,
+                destructive = false,
+                accent = AbColors.Light.accentOrange,
+                onPositive = { viewModel.retryAfterError() },
+                onNegative = { onFinishActivity() },
+            )
+        }
     }
 
     uiState.finishActivity?.consume { onFinishActivity() }

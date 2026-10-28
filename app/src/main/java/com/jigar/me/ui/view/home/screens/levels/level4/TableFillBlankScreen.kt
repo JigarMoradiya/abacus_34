@@ -10,44 +10,57 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material3.*
+import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
+import androidx.compose.material.icons.rounded.Cancel
+import androidx.compose.material.icons.rounded.CheckCircle
+import androidx.compose.material.icons.rounded.Help
+import androidx.compose.material.icons.rounded.Replay
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.jigar.me.data.local.data.DeviceInfo
-import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
-import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.HomePageBackground
-import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
-import com.jigar.me.ui.view.home.common_ui.buttons.KidsOptionButton
-import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.ab.AB_SF_TO_VECTOR
+import com.jigar.me.ui.view.ab.AbBackground
+import com.jigar.me.ui.view.ab.AbButton
+import com.jigar.me.ui.view.ab.AbCountPill
+import com.jigar.me.ui.view.ab.AbGlassPanel
+import com.jigar.me.ui.view.ab.AbHeroPanel
+import com.jigar.me.ui.view.ab.AbOptionButton
+import com.jigar.me.ui.view.ab.AbProgressBar
+import com.jigar.me.ui.view.ab.AbSize
+import com.jigar.me.ui.view.ab.AbTheme
+import com.jigar.me.ui.view.ab.AbTone
+import com.jigar.me.ui.view.ab.AbWorld
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.abFixedStyle
+import com.jigar.me.ui.view.home.screens.levels.level3.components.FitOnPhone
+import com.jigar.me.ui.view.home.screens.levels.level3.components.ScreenTopBar
+import com.jigar.me.ui.view.home.screens.levels.level3.components.abEmojiStyle
+import com.jigar.me.ui.view.home.screens.levels.level3.components.abFont
+import com.jigar.me.ui.view.home.screens.levels.level3.components.abResponsive
+import com.jigar.me.ui.view.home.screens.levels.level3.components.abTabletSize
+import com.jigar.me.ui.view.home.screens.levels.level3.components.screenLeftEdge
+import com.jigar.me.ui.view.home.screens.levels.level3.components.systemPrimary
+import com.jigar.me.ui.view.home.screens.levels.level3.components.systemSecondary
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens20
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens24
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens28
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens50
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens6
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
 import com.jigar.me.ui.view.home.theme.AppDimens.examOptionHeight
 import com.jigar.me.ui.view.home.theme.AppDimens.examOptionWidth
-import com.jigar.me.ui.view.home.theme.ButtonType
 import kotlinx.coroutines.delay
 
 @Composable
@@ -75,93 +88,71 @@ fun TableFillBlankScreen(
         }
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                BackButtonWithText(title = "Fill the Blanks", onBackClick = onBackClick)
-                if (!showResult) {
-                    Box(
-                        modifier = Modifier
-                            .weight(1f)
-                            .height(ToolbarIconSize)
-                            .padding(horizontal = Dimens50),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        LinearProgressIndicator(
-                            progress = { (currentIndex + 1).toFloat() / questions.size.coerceAtLeast(1) },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(Dimens8)
-                                .clip(RoundedCornerShape(100.dp)),
-                            color = Color(0xFF7B1FA2),
-                            trackColor = Color.Black.copy(alpha = 0.08f)
+    AbTheme {
+        Box(modifier = Modifier.fillMaxSize()) {
+            AbBackground(AbWorld.Twilight)
+            Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).screenLeftEdge()) {
+                ScreenTopBar(title = "Fill the Blanks", onBack = onBackClick) {
+                    if (!showResult) {
+                        AbProgressBar(
+                            filled = currentIndex + 1,
+                            total = maxOf(1, questions.size),
+                            modifier = Modifier.widthIn(max = abResponsive(220f).dp).fillMaxWidth(),
+                        )
+                        // Score badge
+                        TableScoreBadge(score)
+                        // Next / Results button
+                        AbButton(
+                            text = if (currentIndex < questions.size - 1) "Next" else "Results",
+                            tone = AbTone.Primary,
+                            size = AbSize.Compact,
+                            enabled = selectedAnswer != null,
+                            icon = Icons.AutoMirrored.Rounded.KeyboardArrowRight,
+                            iconAtEnd = true,
+                            onClick = {
+                                if (selectedAnswer != null) {
+                                    if (currentIndex < questions.size - 1) {
+                                        currentIndex++
+                                        selectedAnswer = null
+                                    } else {
+                                        showResult = true
+                                    }
+                                }
+                            },
                         )
                     }
-                    // Score badge
-                    Row(
-                        modifier = Modifier
-                            .background(Color(0xFF4CAF50).copy(alpha = 0.14f), RoundedCornerShape(Dimens8))
-                            .padding(horizontal = Dimens12, vertical = Dimens6),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(Dimens4)
-                    ) {
-                        Text("✓", style = MaterialTheme.typography.bodyLarge.scaled(), fontWeight = FontWeight.Black, color = Color(0xFF4CAF50))
-                        Text("$score", style = MaterialTheme.typography.titleMedium.scaled(), fontWeight = FontWeight.Black, color = Color(0xFF4CAF50))
-                    }
-                    // Next / Results button
-                    KidsActionButton(
-                        text = if (currentIndex < questions.size - 1) "Next" else "Results",
-                        icon = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                        type = if (selectedAnswer == null) ButtonType.DISABLE else ButtonType.BLUE,
-                        isIconStart = false,
-                        isSmall = true,
-                        onClick = {
-                            if (selectedAnswer != null) {
-                                if (currentIndex < questions.size - 1) {
-                                    currentIndex++
-                                    selectedAnswer = null
-                                } else {
-                                    showResult = true
-                                }
-                            }
-                        },
-                        modifier = Modifier.padding(start = Dimens8, end = Dimens16)
-                    )
                 }
-            }
 
-            Box(modifier = Modifier.weight(1f).fillMaxWidth()) {
-                if (showResult) {
-                    FillBlankResultContent(
-                        questions = questions,
-                        userAnswers = userAnswers,
-                        score = score,
-                        elapsedSeconds = elapsedSeconds,
-                        onRetry = {
-                            userAnswers.clear()
-                            score = 0; currentIndex = 0; selectedAnswer = null; showResult = false
-                        },
-                        onBack = onBackClick
-                    )
-                } else if (questions.isNotEmpty()) {
-                    FillBlankContent(
-                        question = questions[currentIndex],
-                        currentIndex = currentIndex,
-                        totalQuestions = questions.size,
-                        selectedAnswer = selectedAnswer,
-                        onChoiceSelected = { choice ->
-                            if (selectedAnswer == null) {
-                                AudioPlayerManager.playSoundBtnClick()
-                                selectedAnswer = choice
-                                userAnswers[currentIndex] = choice
-                                if (choice == questions[currentIndex].correctAnswer) score++
-                            }
+                Box(modifier = Modifier.weight(1f).fillMaxWidth()) {
+                    if (showResult) {
+                        FillBlankResultContent(
+                            questions = questions,
+                            userAnswers = userAnswers,
+                            score = score,
+                            elapsedSeconds = elapsedSeconds,
+                            onRetry = {
+                                userAnswers.clear()
+                                score = 0; currentIndex = 0; selectedAnswer = null; showResult = false
+                            },
+                            onBack = onBackClick
+                        )
+                    } else if (questions.isNotEmpty()) {
+                        FitOnPhone(Modifier.fillMaxSize()) {
+                            FillBlankContent(
+                                question = questions[currentIndex],
+                                currentIndex = currentIndex,
+                                totalQuestions = questions.size,
+                                selectedAnswer = selectedAnswer,
+                                onChoiceSelected = { choice ->
+                                    if (selectedAnswer == null) {
+                                        selectedAnswer = choice
+                                        userAnswers[currentIndex] = choice
+                                        if (choice == questions[currentIndex].correctAnswer) score++
+                                    }
+                                }
+                            )
                         }
-                    )
+                    }
                 }
             }
         }
@@ -178,7 +169,6 @@ private fun FillBlankContent(
     selectedAnswer: Int?,
     onChoiceSelected: (Int) -> Unit,
 ) {
-    val isTablet = DeviceInfo.isTablet
     val isCorrect = selectedAnswer == question.correctAnswer
     val blankBg by animateColorAsState(
         targetValue = when {
@@ -191,134 +181,105 @@ private fun FillBlankContent(
     )
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(Modifier.weight(1f))
-
-        Card(
-            shape = RoundedCornerShape(Dimens28),
-            elevation = CardDefaults.cardElevation(Dimens8),
-            colors = CardDefaults.cardColors(containerColor = Color.Transparent),
-            modifier = Modifier.fillMaxWidth(0.80f)
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(
-                        Brush.linearGradient(
-                            listOf(Color(0xFF6A1B9A), Color(0xFF7B1FA2), Color(0xFF8E24AA))
-                        )
-                    ),
-                contentAlignment = Alignment.Center
+        Box(Modifier.width(tableCardWidth())) {
+            AbHeroPanel(Color(0xFF8E24AA), Modifier.matchParentSize(), padding = 0.dp)
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.fillMaxWidth().padding(Dimens12)
             ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(0.dp),
-                    modifier = Modifier.padding(Dimens16)
+                AbCountPill(
+                    text = "Question ${currentIndex + 1} of $totalQuestions",
+                    icon = Icons.Rounded.Help,
+                )
+                Text(
+                    text = "✏️",
+                    style = abEmojiStyle(abResponsive(28f)),
+                    modifier = Modifier.padding(top = Dimens8)
+                )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(Dimens4),
+                    modifier = Modifier.padding(vertical = Dimens8)
                 ) {
-                    Box(
-                        modifier = Modifier
-                            .background(Color.White.copy(alpha = 0.22f), RoundedCornerShape(100.dp))
-                            .padding(horizontal = Dimens16, vertical = Dimens4)
-                    ) {
-                        Text(
-                            text = "Q ${currentIndex + 1} of $totalQuestions",
-                            style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
-                            fontWeight = FontWeight.Bold,
-                            color = Color.White
-                        )
-                    }
-                    Text(
-                        text = "✏️",
-                        style = MaterialTheme.typography.headlineMedium.scaled(),
-                        modifier = Modifier.padding(top = Dimens8)
-                    )
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center,
-                        modifier = Modifier.padding(vertical = Dimens12)
-                    ) {
-                        when (question.blankType) {
-                            FillBlankType.ANSWER -> {
-                                EquationText("${question.multiplier} × ${question.multiplicand} = ")
-                                BlankBox(selectedAnswer, blankBg)
-                            }
-                            FillBlankType.MULTIPLICAND -> {
-                                EquationText("${question.multiplier} × ")
-                                BlankBox(selectedAnswer, blankBg)
-                                EquationText(" = ${question.multiplier * question.multiplicand}")
-                            }
+                    when (question.blankType) {
+                        FillBlankType.ANSWER -> {
+                            EquationText("${question.multiplier} × ${question.multiplicand} = ")
+                            BlankBox(selectedAnswer, blankBg)
+                        }
+                        FillBlankType.MULTIPLICAND -> {
+                            EquationText("${question.multiplier} × ")
+                            BlankBox(selectedAnswer, blankBg)
+                            EquationText(" = ${question.multiplier * question.multiplicand}")
                         }
                     }
-                    Box(
-                        modifier = Modifier
-                            .background(Color(0xFFF57F17), RoundedCornerShape(100.dp))
-                            .padding(horizontal = Dimens12, vertical = Dimens6)
-                    ) {
-                        Text(
-                            text = "✏️  Fill in the blank!",
-                            style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
-                            fontWeight = FontWeight.ExtraBold,
-                            color = Color.White
-                        )
-                    }
                 }
+                Text(
+                    text = "✏️  Fill in the blank!",
+                    style = abFixedStyle(abTabletSize(10f, 15f, 18f), FontWeight.ExtraBold),
+                    color = Color.White,
+                    modifier = Modifier
+                        .background(Color(0xFFC74500), CircleShape)
+                        .padding(horizontal = Dimens12, vertical = Dimens6)
+                )
             }
         }
 
-        Spacer(Modifier.height(Dimens20))
+        Spacer(Modifier.height(Dimens12))
 
         Column(
-            verticalArrangement = Arrangement.spacedBy(Dimens10),
+            verticalArrangement = Arrangement.spacedBy(Dimens4),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Row(horizontalArrangement = Arrangement.spacedBy(Dimens10)) {
-                KidsOptionButton(text = "${question.choices[0]}", type = optionType(question.choices[0], question.correctAnswer, selectedAnswer), fontSize = examOptionHeight.value.sp * 0.6f, onClick = { onChoiceSelected(question.choices[0]) }, modifier = Modifier.width(examOptionWidth).height(examOptionHeight))
-                KidsOptionButton(text = "${question.choices[1]}", type = optionType(question.choices[1], question.correctAnswer, selectedAnswer), fontSize = examOptionHeight.value.sp * 0.6f, onClick = { onChoiceSelected(question.choices[1]) }, modifier = Modifier.width(examOptionWidth).height(examOptionHeight))
+                question.choices.take(2).forEach { choice -> FillOption(choice, question.correctAnswer, selectedAnswer, onChoiceSelected) }
             }
             Row(horizontalArrangement = Arrangement.spacedBy(Dimens10)) {
-                KidsOptionButton(text = "${question.choices[2]}", type = optionType(question.choices[2], question.correctAnswer, selectedAnswer), fontSize = examOptionHeight.value.sp * 0.6f, onClick = { onChoiceSelected(question.choices[2]) }, modifier = Modifier.width(examOptionWidth).height(examOptionHeight))
-                KidsOptionButton(text = "${question.choices[3]}", type = optionType(question.choices[3], question.correctAnswer, selectedAnswer), fontSize = examOptionHeight.value.sp * 0.6f, onClick = { onChoiceSelected(question.choices[3]) }, modifier = Modifier.width(examOptionWidth).height(examOptionHeight))
+                question.choices.drop(2).take(2).forEach { choice -> FillOption(choice, question.correctAnswer, selectedAnswer, onChoiceSelected) }
             }
         }
-
-        Spacer(Modifier.weight(1f))
     }
+}
+
+@Composable
+private fun FillOption(choice: Int, answer: Int, selectedAnswer: Int?, onChoiceSelected: (Int) -> Unit) {
+    AbOptionButton(
+        text = "$choice",
+        state = optionState(choice, answer, selectedAnswer),
+        width = examOptionWidth,
+        height = examOptionHeight,
+        onClick = { onChoiceSelected(choice) },
+    )
 }
 
 @Composable
 private fun EquationText(text: String) {
     Text(
         text = text,
-        style = MaterialTheme.typography.headlineMedium.scaled(),
-        fontWeight = FontWeight.SemiBold,
+        style = abFont(36f),
         color = Color.White.copy(alpha = 0.90f)
     )
 }
 
 @Composable
 private fun BlankBox(selectedAnswer: Int?, blankBg: Color) {
-    Box(
+    val shape = RoundedCornerShape(Dimens12)
+    Text(
+        text = if (selectedAnswer != null) "$selectedAnswer" else "?",
+        style = abFont(28f, FontWeight.Black),
+        color = Color.White,
+        textAlign = TextAlign.Center,
         modifier = Modifier
-            .wrapContentWidth()
-            .background(blankBg, RoundedCornerShape(Dimens12))
+            .background(blankBg, shape)
             .then(
                 if (selectedAnswer == null)
-                    Modifier.border(2.dp, Color.White.copy(alpha = 0.55f), RoundedCornerShape(Dimens12))
+                    Modifier.border(2.dp, Color.White.copy(alpha = 0.55f), shape)
                 else Modifier
             )
-            .padding(horizontal = Dimens16, vertical = Dimens8),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = if (selectedAnswer != null) "$selectedAnswer" else "?",
-            style = MaterialTheme.typography.headlineMedium.scaled(),
-            fontWeight = FontWeight.Black,
-            color = Color.White,
-            textAlign = TextAlign.Center
-        )
-    }
+            .padding(horizontal = Dimens16, vertical = Dimens8)
+    )
 }
 
 // ─── Result view ──────────────────────────────────────────────────────────────
@@ -332,7 +293,7 @@ private fun FillBlankResultContent(
     onRetry: () -> Unit,
     onBack: () -> Unit,
 ) {
-    val isTablet = DeviceInfo.isTablet
+    val colors = LocalAbColors.current
     val pct = if (questions.isNotEmpty()) score.toDouble() / questions.size else 0.0
     val starValue = pct * 3.0
     val starSize = ToolbarIconSize * 1.4f
@@ -342,88 +303,79 @@ private fun FillBlankResultContent(
         pct >= 0.3 -> "Good effort! Keep practicing! 💪"
         else -> "Don't give up! Try again! 🎯"
     }
+    val divider = colors.outline
 
     Row(modifier = Modifier.fillMaxSize()) {
 
         // ── Left 35%: question list (card, vertically centered) ──────────────
-        Box(
+        BoxWithConstraints(
             modifier = Modifier
                 .fillMaxHeight()
                 .weight(0.35f),
             contentAlignment = Alignment.Center
         ) {
-            Card(
-                shape = RoundedCornerShape(Dimens16),
-                elevation = CardDefaults.cardElevation(defaultElevation = Dimens8),
-                colors = CardDefaults.cardColors(containerColor = Color.White),
+            AbGlassPanel(
                 modifier = Modifier
-                    .fillMaxWidth()
                     .padding(horizontal = Dimens12, vertical = Dimens8)
+                    .fillMaxWidth()
+                    .heightIn(max = maxHeight * 0.85f)
             ) {
-                Column(
-                    modifier = Modifier.verticalScroll(rememberScrollState()),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(
                         text = "Your Answers",
-                        style = if (isTablet) MaterialTheme.typography.titleLarge.scaled() else MaterialTheme.typography.titleSmall.scaled(),
-                        fontWeight = FontWeight.ExtraBold,
-                        color = Color(0xFF6A1B9A),
+                        style = abFont(14f, FontWeight.ExtraBold),
+                        color = colors.systemPrimary,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = Dimens8)
                     )
-                    questions.forEachIndexed { idx, q ->
-                        val chosen = userAnswers[idx]
-                        val correct = chosen == q.correctAnswer
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .background(
-                                    if (idx % 2 == 0) Color(0xFF7B1FA2).copy(alpha = 0.05f)
-                                    else Color.Transparent
-                                )
-                                .padding(vertical = Dimens4, horizontal = Dimens8),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.Center
-                        ) {
+                    HorizontalDivider(color = divider)
+                    Column(Modifier.weight(1f, fill = false).verticalScroll(rememberScrollState())) {
+                        questions.forEachIndexed { idx, q ->
+                            val chosen = userAnswers[idx]
+                            val correct = chosen == q.correctAnswer
+                            val chosenColor = if (chosen == null) Color.Gray else if (correct) Color(0xFF4CAF50) else Color(0xFFF44336)
                             Row(
-                                modifier = Modifier.weight(1f),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .background(
+                                        if (idx % 2 == 0) Color(0xFF7B1FA2).copy(alpha = 0.05f)
+                                        else Color.Transparent
+                                    )
+                                    .padding(vertical = Dimens6, horizontal = Dimens8),
                                 verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.Center
+                                horizontalArrangement = Arrangement.spacedBy(Dimens4)
                             ) {
-                                when (q.blankType) {
-                                    FillBlankType.ANSWER -> {
-                                        Text("${q.multiplier}×${q.multiplicand}=", style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(), color = Color.Black.copy(alpha = 0.6f))
-                                        Text(
-                                            text = if (chosen != null) "$chosen" else "–",
-                                            style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
-                                            fontWeight = FontWeight.ExtraBold,
-                                            color = if (chosen == null) Color.Gray else if (correct) Color(0xFF4CAF50) else Color(0xFFF44336)
-                                        )
-                                    }
-                                    FillBlankType.MULTIPLICAND -> {
-                                        Text("${q.multiplier}×", style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(), color = Color.Black.copy(alpha = 0.6f))
-                                        Text(
-                                            text = if (chosen != null) "$chosen" else "–",
-                                            style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
-                                            fontWeight = FontWeight.ExtraBold,
-                                            color = if (chosen == null) Color.Gray else if (correct) Color(0xFF4CAF50) else Color(0xFFF44336)
-                                        )
-                                        Text("=${q.multiplier * q.multiplicand}", style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(), color = Color.Black.copy(alpha = 0.6f))
+                                Row(
+                                    modifier = Modifier.weight(1f),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(2.dp, Alignment.CenterHorizontally)
+                                ) {
+                                    val given = abFont(12f)
+                                    val picked = abFont(12f, FontWeight.ExtraBold)
+                                    when (q.blankType) {
+                                        FillBlankType.ANSWER -> {
+                                            Text("${q.multiplier}×${q.multiplicand}=", style = given, color = colors.systemSecondary)
+                                            Text(if (chosen != null) "$chosen" else "–", style = picked, color = chosenColor)
+                                        }
+                                        FillBlankType.MULTIPLICAND -> {
+                                            Text("${q.multiplier}×", style = given, color = colors.systemSecondary)
+                                            Text(if (chosen != null) "$chosen" else "–", style = picked, color = chosenColor)
+                                            Text("=${q.multiplier * q.multiplicand}", style = given, color = colors.systemSecondary)
+                                        }
                                     }
                                 }
+                                Icon(
+                                    imageVector = if (correct) Icons.Rounded.CheckCircle else Icons.Rounded.Cancel,
+                                    contentDescription = null,
+                                    tint = if (correct) Color(0xFF4CAF50) else Color(0xFFF44336),
+                                    modifier = Modifier.size((14f * AB_SF_TO_VECTOR).dp)
+                                )
                             }
-                            Icon(
-                                imageVector = if (correct) Icons.Default.Check else Icons.Default.Close,
-                                contentDescription = null,
-                                tint = if (correct) Color(0xFF4CAF50) else Color(0xFFF44336),
-                                modifier = Modifier.size(Dimens16)
-                            )
-                        }
-                        if (idx < questions.size - 1) {
-                            HorizontalDivider(color = Color(0xFF7B1FA2).copy(alpha = 0.08f))
+                            if (idx < questions.size - 1) {
+                                HorizontalDivider(color = divider)
+                            }
                         }
                     }
                 }
@@ -431,7 +383,7 @@ private fun FillBlankResultContent(
         }
 
         // Vertical divider
-        Box(modifier = Modifier.fillMaxHeight().width(1.dp).background(Color.Gray.copy(alpha = 0.2f)))
+        Box(modifier = Modifier.fillMaxHeight().width(1.dp).background(divider))
 
         // ── Right 65%: summary ───────────────────────────────────────────────
         Column(
@@ -452,63 +404,60 @@ private fun FillBlankResultContent(
             Row(
                 modifier = Modifier
                     .background(Color(0xFF7B1FA2).copy(alpha = 0.10f), RoundedCornerShape(Dimens8))
-                    .padding(horizontal = Dimens12, vertical = Dimens4),
+                    .padding(horizontal = Dimens16, vertical = Dimens6),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(Dimens6)
             ) {
-                Text("⏱", style = MaterialTheme.typography.bodyLarge.scaled())
+                Text("⏱", style = abFont(16f))
                 Text(
                     text = formatTime(elapsedSeconds),
-                    style = MaterialTheme.typography.bodyLarge.scaled(),
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF7B1FA2)
+                    style = abFont(16f, FontWeight.Bold),
+                    color = colors.systemPrimary
                 )
             }
 
             Spacer(Modifier.height(Dimens12))
 
             // Score circle
+            val circleSize = ToolbarIconSize * 2.0f
             Box(
                 modifier = Modifier
-                    .size(ToolbarIconSize * 2.0f)
+                    .size(circleSize)
                     .background(
                         brush = Brush.linearGradient(listOf(Color(0xFF6A1B9A), Color(0xFF7B1FA2))),
                         shape = CircleShape
                     ),
                 contentAlignment = Alignment.Center
             ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(Dimens4)) {
                     Text(
                         text = "$score",
-                        style = MaterialTheme.typography.displayLarge.scaled(),
-                        fontWeight = FontWeight.Black,
+                        style = abFixedStyle(circleSize.value * 0.38f, FontWeight.Black),
                         color = Color.White
                     )
                     Text(
                         text = "out of ${questions.size}",
-                        style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
-                        fontWeight = FontWeight.SemiBold,
+                        style = abFont(10f),
                         color = Color.White.copy(alpha = 0.8f)
                     )
                 }
             }
 
-            Spacer(Modifier.height(Dimens12))
+            Spacer(Modifier.height(Dimens16))
 
             Text(
                 text = message,
-                style = if (isTablet) MaterialTheme.typography.titleMedium.scaled() else MaterialTheme.typography.bodyLarge.scaled(),
-                fontWeight = FontWeight.Bold,
-                color = Color(0xFF6A1B9A),
+                style = abFont(16f, FontWeight.Bold),
+                color = colors.systemPrimary,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(horizontal = Dimens24)
             )
 
-            Spacer(Modifier.height(Dimens12))
+            Spacer(Modifier.height(Dimens20))
 
             Row(horizontalArrangement = Arrangement.spacedBy(Dimens16), verticalAlignment = Alignment.CenterVertically) {
-                KidsActionButton(text = "Back", icon = Icons.AutoMirrored.Rounded.ArrowBack, type = ButtonType.NEGATIVE, isIconStart = true, isSmall = true, onClick = onBack)
-                KidsActionButton(text = "Play Again!", icon = Icons.Default.Refresh, type = ButtonType.BLUE, isIconStart = true, isSmall = true, onClick = onRetry)
+                AbButton(text = "Back", tone = AbTone.Ghost, size = AbSize.Medium, icon = Icons.AutoMirrored.Rounded.ArrowBack, onClick = onBack)
+                AbButton(text = "Play Again!", tone = AbTone.Primary, size = AbSize.Medium, icon = Icons.Rounded.Replay, onClick = onRetry)
             }
         }
     }

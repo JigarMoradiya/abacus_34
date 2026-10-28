@@ -1,5 +1,15 @@
 package com.jigar.me.ui.view.home.common_ui.sheets
 
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.drawscope.Stroke
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbThemed
+import com.jigar.me.ui.view.ab.abScrimEntrance
+import com.jigar.me.ui.view.ab.abSheetEntrance
+import com.jigar.me.ui.view.ab.rememberAbEntranceShown
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -51,6 +61,11 @@ fun KidsBottomSheet(
     showHandle: Boolean = true,
     content: @Composable () -> Unit
 ) {
+    // Restyled screens get the kit sheet (iOS CustomBottomSheet, themed): the scrim only fades, the sheet slides up.
+    if (LocalAbThemed.current) {
+        KitBottomSheet(visible, onDismiss, widthFraction, overlay, containerBackground, borderColor, showHandle, decoration, content)
+        return
+    }
     AnimatedVisibility(
         visible = visible,
         enter = fadeIn(animationSpec = tween(200)),
@@ -120,5 +135,66 @@ fun KidsBottomSheet(
             // so it sits on top of everything including the sheet panel.
             overlay()
         }
+    }
+}
+
+
+/** The kit look of [KidsBottomSheet]: dim scrim, a floating card with a chunky outline, entrance driven by the sheet itself. */
+@Composable
+private fun KitBottomSheet(
+    visible: Boolean,
+    onDismiss: () -> Unit,
+    widthFraction: Float,
+    overlay: @Composable (androidx.compose.foundation.layout.BoxScope.() -> Unit),
+    containerBackground: Brush?,
+    borderColor: Color?,
+    showHandle: Boolean,
+    decoration: @Composable androidx.compose.foundation.layout.BoxScope.() -> Unit,
+    content: @Composable () -> Unit,
+) {
+    if (!visible) return
+    val colors = LocalAbColors.current
+    val shown = rememberAbEntranceShown()
+    val shape = RoundedCornerShape(28.dp)
+    val rim = borderColor ?: colors.brandPrimary.copy(alpha = if (colors.isDark) 0.7f else 0.4f)
+    Box(Modifier.fillMaxSize()) {
+        Box(
+            Modifier
+                .fillMaxSize()
+                .abScrimEntrance(shown)
+                .background(colors.overlayScrim)
+                .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }) { onDismiss() }
+        )
+        Box(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(bottom = AppDimens.Dimens12)
+                .abSheetEntrance(shown)
+                .fillMaxWidth(widthFraction)
+                .wrapContentHeight()
+                .shadow(elevation = 16.dp, shape = shape)
+                .clip(shape)
+                .then(if (containerBackground != null) Modifier.background(containerBackground) else Modifier.background(colors.bgSecondary))
+                .drawWithContent {
+                    drawContent()
+                    val stroke = 3.dp.toPx()
+                    drawRoundRect(
+                        rim, Offset(stroke / 2, stroke / 2), Size(size.width - stroke, size.height - stroke),
+                        CornerRadius(28.dp.toPx() - stroke / 2), style = Stroke(stroke),
+                    )
+                }
+                .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }) { }
+        ) {
+            decoration()
+            Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+                if (showHandle) {
+                    Spacer(Modifier.height(AppDimens.Dimens8))
+                    Box(Modifier.width(40.dp).height(4.dp).clip(RoundedCornerShape(100f)).background(colors.outline))
+                    Spacer(Modifier.height(AppDimens.Dimens4))
+                }
+                content()
+            }
+        }
+        overlay()
     }
 }

@@ -1,10 +1,12 @@
 package com.jigar.me.ui.view.ab
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
@@ -33,6 +35,18 @@ object AbDebugScreens {
         AbTheme(forcing = if (dark) AbThemeMode.Dark else AbThemeMode.Light) {
             when (name) {
                 "kit" -> AbKitGallery()
+                // the abacus with the toy frame: a 13-rod practice abacus, a 7-rod exercise one, and Free Mode with the tags
+                "toy" -> AbToyAbacusPreview(13, com.jigar.me.utils.AppConstants.AbacusScreen.screenTypeAbacusPractice, false)
+                "toy7" -> AbToyAbacusPreview(7, com.jigar.me.utils.AppConstants.AbacusScreen.screenTypeExercise, false)
+                "toyfree" -> AbToyAbacusPreview(13, com.jigar.me.utils.AppConstants.AbacusScreen.screenTypeFreeMode, true)
+                "art" -> AbArtPreview()
+                "board" -> AbBoardPreview()
+                "paywall" -> AbPaywallPreview()
+                "purchase" -> AbPurchasePreview()
+                "account" -> AbAccountPreview()
+                "reports" -> AbReportsPreview()
+                "ccmresult" -> AbCcmResultPreview(true)
+                "ccmwrong" -> AbCcmResultPreview(false)
                 else -> AbKitGallery()
             }
         }
@@ -88,6 +102,60 @@ fun AbKitGallery() {
                     AbCountPill("Question 3 of 10", onColor = false)
                 }
                 Text("Display\n0123456789\n12 + 34 = 46", style = AbTypography.number(s), color = colors.textPrimary)
+            }
+        }
+    }
+}
+
+
+/** Debug preview of the abacus drawn with the toy frame. */
+@Composable
+private fun AbToyAbacusPreview(columns: Int, screenType: String, freeMode: Boolean) {
+    val abacusData = remember { com.jigar.me.ui.view.base.abacus_base.AbacusCalculations(columns) }
+    Box(Modifier.fillMaxSize()) {
+        AbBackground(AbWorld.Meadow)
+        Box(Modifier.fillMaxSize().padding(top = 110.dp, start = 40.dp), contentAlignment = Alignment.TopStart) {
+            com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas(
+                selectedTheme = "poligon_purple",
+                screenType = screenType,
+                isFreeModeOn = freeMode,
+                isBeadSoundOn = false,
+                isDisplayCurrentAbacusInput = true,
+                abacusData = abacusData,
+                numberOfColumns = columns,
+                rodMovement = emptyList(),
+                showDirectionHint = false,
+                abacusType = "step_by_step_answer",
+                frameStyle = AbacusFrameStyle.Toy,
+                onRodMovementChange = {},
+                onShowDirectionHintsChange = {},
+                onShowHighlighterChange = {},
+                onReset = {},
+                onNext = {},
+            )
+        }
+    }
+}
+
+
+/** Debug preview of the drawn artwork: menu tiles, level characters and the Exercise art. */
+@Composable
+private fun AbArtPreview() {
+    val colors = LocalAbColors.current
+    Box(Modifier.fillMaxSize()) {
+        AbBackground(AbWorld.Meadow)
+        Column(Modifier.fillMaxSize().padding(horizontal = 20.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                AbMenuKind.entries.forEach { AbMenuTile(it, 150.dp) }
+            }
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                for (level in 1..10) Box(Modifier.width(90.dp).height(120.dp)) { AbCritterView(level) }
+            }
+            Row(horizontalArrangement = Arrangement.spacedBy(16.dp), verticalAlignment = Alignment.CenterVertically) {
+                for (page in 0..2) Box(Modifier.width(220.dp).height(150.dp).background(colors.bgSecondary)) {
+                    ExercisePageDecor(page); Box(Modifier.align(Alignment.Center)) { ExercisePageArt(page) }
+                }
+                for (page in 0..2) Box(Modifier.width(150.dp).height(150.dp).background(colors.bgSecondary)) { ExerciseQuestionDecor(page) }
             }
         }
     }

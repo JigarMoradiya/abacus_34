@@ -1,44 +1,57 @@
 package com.jigar.me.ui.view.home.screens.levels.level4
 
+import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.alpha
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material3.*
+import androidx.compose.material.icons.rounded.Check
+import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.Style
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.jigar.me.R
-import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
-import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.HomePageBackground
+import com.jigar.me.ui.view.ab.AbBackground
+import com.jigar.me.ui.view.ab.AbButton
+import com.jigar.me.ui.view.ab.AbCountPill
+import com.jigar.me.ui.view.ab.AbHeroPanel
+import com.jigar.me.ui.view.ab.AbProgressBar
+import com.jigar.me.ui.view.ab.AbSize
+import com.jigar.me.ui.view.ab.AbTheme
+import com.jigar.me.ui.view.ab.AbTone
+import com.jigar.me.ui.view.ab.AbWorld
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abFixedStyle
+import com.jigar.me.ui.view.home.screens.levels.level3.components.FitOnPhone
+import com.jigar.me.ui.view.home.screens.levels.level3.components.ScreenTopBar
+import com.jigar.me.ui.view.home.screens.levels.level3.components.abEmojiStyle
+import com.jigar.me.ui.view.home.screens.levels.level3.components.abFont
+import com.jigar.me.ui.view.home.screens.levels.level3.components.abResponsive
+import com.jigar.me.ui.view.home.screens.levels.level3.components.abTabletSize
+import com.jigar.me.ui.view.home.screens.levels.level3.components.screenLeftEdge
+import com.jigar.me.ui.view.home.screens.levels.level3.components.systemPrimary
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens20
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens24
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens50
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens6
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
-import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
-import com.jigar.me.ui.view.home.theme.PrimaryBlue
 import kotlinx.coroutines.launch
 
 @Composable
@@ -87,86 +100,54 @@ fun TableFlashcardScreen(
         }
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+    AbTheme {
+        Box(modifier = Modifier.fillMaxSize()) {
+            AbBackground(AbWorld.Twilight)
+            Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).screenLeftEdge()) {
 
-            if (!showResult) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    BackButtonWithText(title = "Flashcard Quiz", onBackClick = onBackClick)
-                    // Progress bar — same layout as TableDrillScreen header
-                    Box(
-                        modifier = Modifier
-                            .weight(1f)
-                            .height(ToolbarIconSize)
-                            .padding(horizontal = Dimens50),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        LinearProgressIndicator(
-                            progress = { (currentIndex + 1).toFloat() / cards.size.coerceAtLeast(1) },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(Dimens8)
-                                .clip(RoundedCornerShape(100.dp)),
-                            color = Color(0xFF00695C),
-                            trackColor = Color.Black.copy(alpha = 0.08f)
+                if (!showResult) {
+                    ScreenTopBar(title = "Flashcard Quiz", onBack = onBackClick) {
+                        AbProgressBar(
+                            filled = currentIndex + 1,
+                            total = maxOf(1, cards.size),
+                            modifier = Modifier.widthIn(max = abResponsive(220f).dp).fillMaxWidth(),
                         )
-                    }
-                    // Got It score badge
-                    Row(
-                        modifier = Modifier
-                            .padding(end = Dimens16)
-                            .background(Color(0xFF4CAF50).copy(alpha = 0.14f), RoundedCornerShape(Dimens8))
-                            .padding(horizontal = Dimens12, vertical = Dimens6),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(Dimens4)
-                    ) {
-                        Text(
-                            text = "✓",
-                            style = MaterialTheme.typography.bodyLarge.scaled(),
-                            fontWeight = FontWeight.Black,
-                            color = Color(0xFF4CAF50)
-                        )
-                        Text(
-                            text = "$score",
-                            style = MaterialTheme.typography.titleMedium.scaled(),
-                            fontWeight = FontWeight.Black,
-                            color = Color(0xFF4CAF50)
-                        )
+                        // Got It score badge
+                        TableScoreBadge(score)
                     }
                 }
-            }
 
-            Box(modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth()) {
-                if (showResult) {
-                    TableResultContent(
-                        score = score,
-                        total = cards.size,
-                        onRetry = {
-                            cards.clear()
-                            val pool = tables.flatMap { t -> (1..10).map { Pair(t, it) } }
-                            cards.addAll(pool.shuffled().take(10))
-                            score = 0; currentIndex = 0; isFlipped = false; showResult = false
-                            scope.launch { rotationAnim.snapTo(0f) }
-                        },
-                        onBack = onBackClick
-                    )
-                } else if (cards.isNotEmpty()) {
-                    FlashcardContent(
-                        card = cards[currentIndex],
-                        currentIndex = currentIndex,
-                        totalCards = cards.size,
-                        rotation = rotation,
-                        isFlipped = isFlipped,
-                        onFlip = { AudioPlayerManager.playSoundBtnClick(); flipCard() },
-                        onGotIt = { AudioPlayerManager.playSoundBtnClick(); advance(true) },
-                        onTryAgain = { AudioPlayerManager.playSoundBtnClick(); advance(false) }
-                    )
+                Box(modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()) {
+                    if (showResult) {
+                        TableResultContent(
+                            score = score,
+                            total = cards.size,
+                            onRetry = {
+                                cards.clear()
+                                val pool = tables.flatMap { t -> (1..10).map { Pair(t, it) } }
+                                cards.addAll(pool.shuffled().take(10))
+                                score = 0; currentIndex = 0; isFlipped = false; showResult = false
+                                scope.launch { rotationAnim.snapTo(0f) }
+                            },
+                            onBack = onBackClick
+                        )
+                    } else if (cards.isNotEmpty()) {
+                        FitOnPhone(Modifier.fillMaxSize()) { flexible ->
+                            FlashcardContent(
+                                card = cards[currentIndex],
+                                currentIndex = currentIndex,
+                                totalCards = cards.size,
+                                rotation = rotation,
+                                isFlipped = isFlipped,
+                                flexible = flexible,
+                                onFlip = { AudioPlayerManager.playSoundBtnClick(); flipCard() },
+                                onGotIt = { advance(true) },
+                                onTryAgain = { advance(false) }
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -180,134 +161,93 @@ private fun FlashcardContent(
     totalCards: Int,
     rotation: Float,
     isFlipped: Boolean,
+    flexible: Boolean,
     onFlip: () -> Unit,
     onGotIt: () -> Unit,
     onTryAgain: () -> Unit,
 ) {
+    val colors = LocalAbColors.current
+    val s = LocalAbScale.current.factor
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(vertical = Dimens12),
-        horizontalAlignment = Alignment.CenterHorizontally
+        modifier = if (flexible) Modifier.fillMaxSize() else Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(Dimens12)
     ) {
-        // Flip card — both front and back always in layout, alpha switches at 90°
-        // Mirrors iOS ZStack approach for smooth perspective flip
-        Box(
-            modifier = Modifier
-                .fillMaxWidth(0.80f)
-                .weight(1f)
-                .padding(horizontal = Dimens16, vertical = Dimens12)
-                .clickable { onFlip() },
-            contentAlignment = Alignment.Center
+        // Flip card — both faces always in layout (at the size of the bigger one), alpha switches at 90°
+        EqualStack(
+            Modifier
+                .then(if (flexible) Modifier.weight(1f) else Modifier)
+                .padding(horizontal = Dimens16)
+                .padding(top = Dimens16)
+                .width(tableCardWidth())
+                .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null) { onFlip() }
         ) {
             // Front: rotates 0 → 180, fades out at 90°
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .graphicsLayer {
-                        rotationY = rotation
-                        cameraDistance = 8 * density
-                        alpha = if (rotation < 90f || rotation > 270f) 1f else 0f
-                    }
-            ) {
-                FrontCard(card = card, currentIndex = currentIndex, totalCards = totalCards)
-            }
+            FrontCard(
+                card = card, currentIndex = currentIndex, totalCards = totalCards,
+                modifier = Modifier.graphicsLayer {
+                    rotationY = rotation
+                    cameraDistance = 8 * density
+                    alpha = if (rotation < 90f || rotation > 270f) 1f else 0f
+                }
+            )
             // Back: starts at -180°, rotates to 0°, visible between 90° and 270°
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .graphicsLayer {
-                        rotationY = rotation - 180f
-                        cameraDistance = 8 * density
-                        alpha = if (rotation >= 90f && rotation <= 270f) 1f else 0f
-                    }
-            ) {
-                BackCard(card = card)
-            }
+            BackCard(
+                card = card,
+                modifier = Modifier.graphicsLayer {
+                    rotationY = rotation - 180f
+                    cameraDistance = 8 * density
+                    alpha = if (rotation >= 90f && rotation <= 270f) 1f else 0f
+                }
+            )
         }
 
-        Spacer(modifier = Modifier.height(Dimens12))
-
-        // Fixed-height bottom area — prevents card from shifting when content switches
+        // Fixed-height bottom area — prevents the card from shifting when content switches
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(AppDimens.Dimens48)
-                .padding(horizontal = Dimens16),
+                .height(maxOf(AppDimens.Dimens60, (70f * s).dp)),
             contentAlignment = Alignment.Center
         ) {
-            if (isFlipped) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(Dimens12)
-                ) {
-                    OutlinedButton(
-                        onClick = onTryAgain,
+            Crossfade(targetState = isFlipped, animationSpec = tween(200), label = "flashcard-bottom") { flipped ->
+                if (flipped) {
+                    Row(
+                        // centred in the fixed area, where the tap hint is, so nothing jumps when the card is turned
                         modifier = Modifier
-                            .weight(1f)
-                            .fillMaxHeight(),
-                        shape = RoundedCornerShape(Dimens16),
-                        border = androidx.compose.foundation.BorderStroke(
-                            AppDimens.Dimens2, Color(0xFFF44336)
+                            .fillMaxWidth()
+                            .padding(horizontal = Dimens24),
+                        horizontalArrangement = Arrangement.spacedBy(Dimens12)
+                    ) {
+                        AbButton(
+                            text = stringResource(R.string.try_again),
+                            modifier = Modifier.weight(1f),
+                            tone = AbTone.Danger,
+                            size = AbSize.Medium,
+                            icon = Icons.Rounded.Close,
+                            fillWidth = true,
+                            onClick = onTryAgain
                         )
-                    ) {
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(Dimens8),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Close,
-                                contentDescription = null,
-                                tint = Color(0xFFF44336),
-                                modifier = Modifier.size(Dimens20)
-                            )
-                            Text(
-                                text = stringResource(R.string.try_again),
-                                style = MaterialTheme.typography.bodyLarge.scaled(),
-                                fontWeight = FontWeight.Bold,
-                                color = Color(0xFFF44336)
-                            )
-                        }
+                        AbButton(
+                            text = stringResource(R.string.got_it),
+                            modifier = Modifier.weight(1f),
+                            tone = AbTone.Success,
+                            size = AbSize.Medium,
+                            icon = Icons.Rounded.Check,
+                            fillWidth = true,
+                            onClick = onGotIt
+                        )
                     }
-                    Button(
-                        onClick = onGotIt,
-                        modifier = Modifier
-                            .weight(1f)
-                            .fillMaxHeight(),
-                        shape = RoundedCornerShape(Dimens16),
-                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))
-                    ) {
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(Dimens8),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Check,
-                                contentDescription = null,
-                                tint = Color.White,
-                                modifier = Modifier.size(Dimens20)
-                            )
-                            Text(
-                                text = stringResource(R.string.got_it),
-                                style = MaterialTheme.typography.bodyLarge.scaled(),
-                                fontWeight = FontWeight.Bold,
-                                color = Color.White
-                            )
-                        }
-                    }
-                }
-            } else {
-                Box(
-                    modifier = Modifier
-                        .background(PrimaryBlue.copy(alpha = 0.12f), RoundedCornerShape(100.dp))
-                        .padding(horizontal = Dimens20, vertical = Dimens8)
-                ) {
+                } else {
+                    // Tap hint — highlighted pill
                     Text(
                         text = "👆  Tap the card to reveal the answer",
-                        style = MaterialTheme.typography.bodyMedium.scaled(),
-                        fontWeight = FontWeight.SemiBold,
-                        color = PrimaryBlue,
-                        textAlign = TextAlign.Center
+                        style = abFont(14f),
+                        color = colors.systemPrimary,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .padding(horizontal = Dimens16)
+                            .background(colors.systemPrimary.copy(alpha = 0.10f), CircleShape)
+                            .padding(horizontal = Dimens16, vertical = Dimens8)
                     )
                 }
             }
@@ -318,129 +258,106 @@ private fun FlashcardContent(
 }
 
 @Composable
-private fun FrontCard(card: Pair<Int, Int>, currentIndex: Int, totalCards: Int) {
-    val isTablet = DeviceInfo.isTablet
-    Card(
-        shape = RoundedCornerShape(AppDimens.Dimens28),
-        elevation = CardDefaults.cardElevation(AppDimens.Dimens8),
-        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
-        modifier = Modifier.fillMaxSize()
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(
-                    Brush.linearGradient(
-                        listOf(Color(0xFF1565C0), Color(0xFF0288D1), Color(0xFF0097A7))
-                    )
-                ),
-            contentAlignment = Alignment.Center
+private fun FrontCard(card: Pair<Int, Int>, currentIndex: Int, totalCards: Int, modifier: Modifier = Modifier) {
+    Box(modifier, contentAlignment = Alignment.Center) {
+        AbHeroPanel(Color(0xFF0288D1), Modifier.matchParentSize(), padding = 0.dp)
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(Dimens16)
         ) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(0.dp),
-                modifier = Modifier.padding(Dimens16)
-            ) {
-                // Card counter pill
-                Box(
-                    modifier = Modifier
-                        .background(Color.White.copy(alpha = 0.22f), RoundedCornerShape(100.dp))
-                        .padding(horizontal = Dimens16, vertical = Dimens4)
-                ) {
-                    Text(
-                        text = "Card ${currentIndex + 1} of $totalCards",
-                        style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
-                        fontWeight = FontWeight.Bold,
-                        color = Color.White
-                    )
-                }
-                Text(
-                    text = "🤔",
-                    style = MaterialTheme.typography.displaySmall.scaled(),
-                    modifier = Modifier.padding(top = Dimens8)
-                )
+            // Card counter pill
+            AbCountPill(
+                text = "Card ${currentIndex + 1} of $totalCards",
+                icon = Icons.Rounded.Style,
+            )
+            Text(
+                text = "🤔",
+                style = abEmojiStyle(abResponsive(40f)),
+                modifier = Modifier.padding(top = Dimens8)
+            )
+            // the line with the sum and the pill under it sit in slots of the same height on both faces
+            FlashSlot(flashRowHeight(), Modifier.padding(vertical = Dimens12)) {
                 Text(
                     text = "${card.first} × ${card.second} = ?",
-                    style = MaterialTheme.typography.displayLarge.scaled(),
-                    fontWeight = FontWeight.Black,
+                    style = abFont(40f, FontWeight.Black),
                     color = Color.White,
                     textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(vertical = Dimens8)
                 )
-                // "Think first" — orange pill with white text
-                Box(
+            }
+            // "Think first" — orange pill with white text
+            FlashSlot(flashPillHeight()) {
+                Text(
+                    text = "💡  Think first, then tap to reveal!",
+                    style = abFixedStyle(abTabletSize(10f, 15f, 18f), FontWeight.ExtraBold),
+                    color = Color.White,
                     modifier = Modifier
-                        .background(Color(0xFFF57F17), RoundedCornerShape(100.dp))
+                        .background(Color(0xFFC74500), CircleShape)
                         .padding(horizontal = Dimens12, vertical = Dimens6)
-                ) {
-                    Text(
-                        text = "💡  Think first, then tap to reveal!",
-                        style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled() else MaterialTheme.typography.bodySmall.scaled(),
-                        fontWeight = FontWeight.ExtraBold,
-                        color = Color.White
-                    )
-                }
+                )
             }
         }
     }
 }
 
 @Composable
-private fun BackCard(card: Pair<Int, Int>) {
-    val isTablet = DeviceInfo.isTablet
-    Card(
-        shape = RoundedCornerShape(AppDimens.Dimens28),
-        elevation = CardDefaults.cardElevation(Dimens8),
-        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
-        modifier = Modifier.fillMaxSize()
-    ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(
-                        Brush.linearGradient(
-                            listOf(Color(0xFF2E7D32), Color(0xFF388E3C), Color(0xFF43A047))
-                        )
-                    ),
-                contentAlignment = Alignment.Center
-            ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(Dimens8),
-                    modifier = Modifier.padding(vertical = Dimens12)
+private fun BackCard(card: Pair<Int, Int>, modifier: Modifier = Modifier) {
+    Box(modifier, contentAlignment = Alignment.Center) {
+        AbHeroPanel(Color(0xFF43A047), Modifier.matchParentSize(), padding = 0.dp)
+        // the same skeleton as the front (its pill and emoji unseen), so the answer sits exactly where the question was
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(Dimens16)
+        ) {
+            Box(Modifier.alpha(0f)) { AbCountPill(text = "Card", icon = Icons.Rounded.Style) }
+            Text(
+                text = "🤔",
+                style = abEmojiStyle(abResponsive(40f)),
+                modifier = Modifier.padding(top = Dimens8).alpha(0f)
+            )
+            FlashSlot(flashRowHeight(), Modifier.padding(vertical = Dimens12)) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(Dimens8)
                 ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(Dimens8)
-                    ) {
-                        Text(
-                            text = "${card.first} × ${card.second} =",
-                            style = MaterialTheme.typography.headlineLarge.scaled(),
-                            fontWeight = FontWeight.SemiBold,
-                            color = Color.White.copy(alpha = 0.82f)
-                        )
-                        Text(
-                            text = "${card.first * card.second}",
-                            style = MaterialTheme.typography.displayLarge.copy(fontSize = 60.sp.scaled()),
-                            fontWeight = FontWeight.Black,
-                            color = Color.White
-                        )
-                    }
-                    // "Did you know it?" — yellow highlight pill
-                    Box(
-                        modifier = Modifier
-                            .background(Color(0xFFFFF9C4), RoundedCornerShape(100.dp))
-                            .padding(horizontal = Dimens12, vertical = Dimens6)
-                    ) {
-                        Text(
-                            text = "⭐  Did you know it?",
-                            style = if (isTablet) MaterialTheme.typography.bodyLarge.scaled() else MaterialTheme.typography.bodyMedium.scaled(),
-                            fontWeight = FontWeight.ExtraBold,
-                            color = Color(0xFFF57F17),
-                            textAlign = TextAlign.Center
-                        )
-                    }
+                    Text(
+                        text = "${card.first} × ${card.second} =",
+                        style = abFont(28f),
+                        color = Color.White.copy(alpha = 0.82f)
+                    )
+                    Text(
+                        text = "${card.first * card.second}",
+                        style = abFont(60f, FontWeight.Black),
+                        color = Color.White
+                    )
                 }
             }
+            // "Did you know it?" — yellow highlight pill
+            FlashSlot(flashPillHeight()) {
+                Text(
+                    text = "⭐  Did you know it?",
+                    style = abFixedStyle(abTabletSize(14f, 18f, 22f), FontWeight.ExtraBold),
+                    color = Color(0xFFC74500),
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .background(Color(0xFFFFF9C4), CircleShape)
+                        .padding(horizontal = Dimens12, vertical = Dimens6)
+                )
+            }
         }
+    }
 }
+
+/** A slot of exactly [height] for [content], centred in it, so both faces of the card place their lines in the same spots. */
+@Composable
+private fun FlashSlot(height: Dp, modifier: Modifier = Modifier, content: @Composable () -> Unit) {
+    Box(modifier.height(height), contentAlignment = Alignment.Center) {
+        Box(Modifier.wrapContentHeight(unbounded = true)) { content() }
+    }
+}
+
+/** The height both faces of the flashcard give the line with the sum, and the pill under it (see FrontCard and BackCard). */
+@Composable
+private fun flashRowHeight() = (abResponsive(60f) * 1.12f).dp
+
+@Composable
+private fun flashPillHeight() = (abTabletSize(14f, 18f, 22f) * 1.12f).dp + Dimens6 * 2

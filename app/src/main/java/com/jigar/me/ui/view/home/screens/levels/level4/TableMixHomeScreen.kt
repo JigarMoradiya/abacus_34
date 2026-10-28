@@ -3,30 +3,31 @@ package com.jigar.me.ui.view.home.screens.levels.level4
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ChevronRight
-import androidx.compose.material3.*
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.jigar.me.data.local.data.DeviceInfo
-import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
-import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.HomePageBackground
-import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.ab.AbActivityRow
+import com.jigar.me.ui.view.ab.AbBackground
+import com.jigar.me.ui.view.ab.AbHeroPanel
+import com.jigar.me.ui.view.ab.AbTheme
+import com.jigar.me.ui.view.ab.AbWorld
+import com.jigar.me.ui.view.ab.abFixedStyle
+import com.jigar.me.ui.view.home.screens.levels.level3.components.ScreenTopBar
+import com.jigar.me.ui.view.home.screens.levels.level3.components.abEmojiStyle
+import com.jigar.me.ui.view.home.screens.levels.level3.components.abFont
+import com.jigar.me.ui.view.home.screens.levels.level3.components.abResponsive
+import com.jigar.me.ui.view.home.screens.levels.level3.components.screenLeftEdge
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens20
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens3
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens6
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
-import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
 
 @Composable
 fun TableMixHomeScreen(
@@ -38,50 +39,45 @@ fun TableMixHomeScreen(
 ) {
     val group = MIX_GROUPS.find { it.tables == tables } ?: MIX_GROUPS.first()
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        HomePageBackground()
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .windowInsetsPadding(WindowInsets.safeDrawing)
-        ) {
-            BackButtonWithText(title = "${group.label} Mix", onBackClick = onBackClick)
-
-            Row(
+    AbTheme {
+        Box(modifier = Modifier.fillMaxSize()) {
+            AbBackground(AbWorld.Twilight)
+            Column(
                 modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth()
+                    .fillMaxSize()
+                    .windowInsetsPadding(WindowInsets.safeDrawing)
+                    .screenLeftEdge()
             ) {
-                // Left panel 35% — mix info card
-                Box(
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .weight(0.35f),
-                    contentAlignment = Alignment.Center
-                ) {
-                    MixInfoPanel(group = group)
-                }
+                ScreenTopBar(title = "${group.label} Mix", onBack = onBackClick)
 
-                // Divider
-                Box(
+                Row(
                     modifier = Modifier
-                        .fillMaxHeight()
-                        .width(1.dp)
-                        .background(Color.Gray.copy(alpha = 0.2f))
-                )
-
-                // Right panel 65% — activity cards
-                Box(
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .weight(0.65f),
-                    contentAlignment = Alignment.Center
+                        .weight(1f)
+                        .fillMaxWidth()
                 ) {
-                    MixActivitiesPanel(
-                        onDrill = onNavigateToDrill,
-                        onFlashcard = onNavigateToFlashcard,
-                        onFillBlank = onNavigateToFillBlank
-                    )
+                    // Left panel 35% — mix info card
+                    Box(
+                        modifier = Modifier
+                            .fillMaxHeight()
+                            .weight(0.35f),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        MixInfoPanel(group = group)
+                    }
+
+                    // Right panel 65% — activity cards
+                    Box(
+                        modifier = Modifier
+                            .fillMaxHeight()
+                            .weight(0.65f),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        MixActivitiesPanel(
+                            onDrill = onNavigateToDrill,
+                            onFlashcard = onNavigateToFlashcard,
+                            onFillBlank = onNavigateToFillBlank
+                        )
+                    }
                 }
             }
         }
@@ -90,57 +86,52 @@ fun TableMixHomeScreen(
 
 @Composable
 private fun MixInfoPanel(group: MixGroup) {
-    val isTablet = DeviceInfo.isTablet
-    val shape = RoundedCornerShape(Dimens20)
-
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(Dimens16)
-            .shadow(elevation = 8.dp, shape = shape)
-            .background(Brush.linearGradient(listOf(group.startColor, group.endColor)), shape)
-            .padding(Dimens20),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(Dimens8)
-    ) {
-        Text(
-            text = group.emoji,
-            style = if (isTablet) MaterialTheme.typography.displaySmall.scaled()
-                    else MaterialTheme.typography.headlineLarge.scaled()
-        )
-        Text(
-            text = group.label,
-            style = if (isTablet) MaterialTheme.typography.headlineMedium.scaled()
-                    else MaterialTheme.typography.headlineSmall.scaled(),
-            fontWeight = FontWeight.ExtraBold,
-            color = Color.White,
-            textAlign = TextAlign.Center
-        )
-        Text(
-            text = "${group.tables.size} tables mixed",
-            style = if (isTablet) MaterialTheme.typography.bodyLarge.scaled()
-                    else MaterialTheme.typography.bodyMedium.scaled(),
-            color = Color.White.copy(alpha = 0.85f)
-        )
-        Spacer(Modifier.height(AppDimens.Dimens4))
-        // Table number chips — up to 5 per row
-        group.tables.chunked(5).forEach { row ->
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4),
-                verticalAlignment = Alignment.CenterVertically
+    Box(Modifier.fillMaxWidth().padding(Dimens16)) {
+        AbHeroPanel(group.endColor, Modifier.matchParentSize(), padding = 0.dp)
+        Column(
+            modifier = Modifier.fillMaxWidth().padding(Dimens16),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(Dimens8)
+        ) {
+            Text(
+                text = group.emoji,
+                style = abEmojiStyle(abResponsive(36f))
+            )
+            // the title and its line below sit close: Baloo's line box leaves a wide empty band between two lines
+            Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy((-6).dp)) {
+                Text(
+                    text = group.label,
+                    style = abFixedStyle(abResponsive(17f), FontWeight.Black),
+                    color = Color.White,
+                    textAlign = TextAlign.Center
+                )
+                Text(
+                    text = "${group.tables.size} tables mixed",
+                    style = abFont(11f),
+                    color = Color.White.copy(alpha = 0.88f)
+                )
+            }
+            Spacer(Modifier.height(Dimens8))
+            // Table number chips — up to 5 per row
+            Column(
+                verticalArrangement = Arrangement.spacedBy(Dimens4),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                row.forEach { n ->
-                    Surface(
-                        color = Color.White.copy(alpha = 0.22f),
-                        shape = RoundedCornerShape(AppDimens.Dimens6)
+                group.tables.chunked(5).forEach { row ->
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(Dimens4),
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text(
-                            text = "×$n",
-                            style = MaterialTheme.typography.labelSmall.scaled(),
-                            fontWeight = FontWeight.Bold,
-                            color = Color.White,
-                            modifier = Modifier.padding(horizontal = AppDimens.Dimens6, vertical = AppDimens.Dimens4)
-                        )
+                        row.forEach { n ->
+                            Text(
+                                text = "×$n",
+                                style = abFixedStyle(abResponsive(9f), FontWeight.Bold),
+                                color = Color.White,
+                                modifier = Modifier
+                                    .background(Color.White.copy(alpha = 0.22f), RoundedCornerShape(Dimens4))
+                                    .padding(horizontal = Dimens6, vertical = Dimens3)
+                            )
+                        }
                     }
                 }
             }
@@ -160,83 +151,26 @@ private fun MixActivitiesPanel(
             .padding(Dimens12),
         verticalArrangement = Arrangement.spacedBy(Dimens12)
     ) {
-        MixActivityCard(
-            icon = "🎯",
+        AbActivityRow(
+            emoji = "🎯",
             title = "Mix Drill",
             subtitle = "10 questions from mixed tables",
-            gradient = listOf(Color(0xFF1565C0), Color(0xFF1976D2)),
+            accent = Color(0xFF1976D2),
             onClick = onDrill
         )
-        MixActivityCard(
-            icon = "🃏",
+        AbActivityRow(
+            emoji = "🃏",
             title = "Mix Flashcards",
             subtitle = "Flip cards from mixed tables",
-            gradient = listOf(Color(0xFF00695C), Color(0xFF00897B)),
+            accent = Color(0xFF00897B),
             onClick = onFlashcard
         )
-        MixActivityCard(
-            icon = "✏️",
+        AbActivityRow(
+            emoji = "✏️",
             title = "Mix Fill the Blanks",
             subtitle = "Fill missing answers from mixed tables",
-            gradient = listOf(Color(0xFF6A1B9A), Color(0xFF7B1FA2)),
+            accent = Color(0xFF7B1FA2),
             onClick = onFillBlank
         )
-    }
-}
-
-@Composable
-private fun MixActivityCard(
-    icon: String,
-    title: String,
-    subtitle: String,
-    gradient: List<Color>,
-    onClick: () -> Unit,
-) {
-    val isTablet = DeviceInfo.isTablet
-    Card(
-        onClick = { AudioPlayerManager.playSoundBtnClick(); onClick() },
-        shape = RoundedCornerShape(Dimens16),
-        elevation = CardDefaults.cardElevation(AppDimens.Dimens4),
-        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(Brush.horizontalGradient(gradient))
-                .padding(Dimens16),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(Dimens16)
-        ) {
-            Text(
-                text = icon,
-                style = if (isTablet) MaterialTheme.typography.headlineMedium.scaled()
-                        else MaterialTheme.typography.headlineSmall.scaled(),
-                modifier = Modifier
-                    .size(ToolbarIconSize)
-                    .background(Color.White.copy(alpha = 0.2f), RoundedCornerShape(Dimens12))
-                    .wrapContentSize(Alignment.Center)
-            )
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = title,
-                    style = if (isTablet) MaterialTheme.typography.titleLarge.scaled()
-                            else MaterialTheme.typography.titleMedium.scaled(),
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White
-                )
-                Text(
-                    text = subtitle,
-                    style = if (isTablet) MaterialTheme.typography.bodyMedium.scaled()
-                            else MaterialTheme.typography.bodySmall.scaled(),
-                    color = Color.White.copy(alpha = 0.88f)
-                )
-            }
-            Icon(
-                imageVector = Icons.Default.ChevronRight,
-                contentDescription = null,
-                tint = Color.White.copy(alpha = 0.8f)
-            )
-        }
     }
 }

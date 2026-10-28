@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
 import com.jigar.me.data.local.data.RodMovement
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.base.abacus_base.AbacusCalculations
@@ -20,7 +21,7 @@ open class BaseAbacusViewModel(
 
     // get selected theme
     val selectedTheme : String
-        get() = prefs.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default)
+        get() = AbacusTheme.active(prefs)
 
     // sound setting
     val isBeadSoundEnabled: Boolean

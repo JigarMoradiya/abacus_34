@@ -1,46 +1,41 @@
 package com.jigar.me.ui.view.home.screens.levels.level4
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material3.*
+import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
+import androidx.compose.material.icons.rounded.Help
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.jigar.me.data.local.data.DeviceInfo
-import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
-import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.HomePageBackground
+import com.jigar.me.ui.view.ab.AbBackground
+import com.jigar.me.ui.view.ab.AbButton
+import com.jigar.me.ui.view.ab.AbCountPill
+import com.jigar.me.ui.view.ab.AbHeroPanel
+import com.jigar.me.ui.view.ab.AbOptionButton
+import com.jigar.me.ui.view.ab.AbProgressBar
+import com.jigar.me.ui.view.ab.AbSize
+import com.jigar.me.ui.view.ab.AbTheme
+import com.jigar.me.ui.view.ab.AbTone
+import com.jigar.me.ui.view.ab.AbWorld
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateHost
 import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
-import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
-import com.jigar.me.ui.view.home.common_ui.buttons.KidsOptionButton
-import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.home.screens.levels.level3.components.ScreenTopBar
+import com.jigar.me.ui.view.home.screens.levels.level3.components.abFont
+import com.jigar.me.ui.view.home.screens.levels.level3.components.abResponsive
+import com.jigar.me.ui.view.home.screens.levels.level3.components.screenLeftEdge
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens20
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens24
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens50
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens24
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
-import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
 import com.jigar.me.ui.view.home.theme.AppDimens.examOptionHeight
 import com.jigar.me.ui.view.home.theme.AppDimens.examOptionWidth
-import com.jigar.me.ui.view.home.theme.ButtonType
-import com.jigar.me.ui.view.home.theme.PrimaryBlue
 
 @Composable
 fun TableDrillScreen(
@@ -53,159 +48,76 @@ fun TableDrillScreen(
     var selectedAnswer by remember { mutableStateOf<Int?>(null) }
     var score by remember { mutableIntStateOf(0) }
     var showResult by remember { mutableStateOf(false) }
-    var showingTable by remember { mutableStateOf(false) }
 
     val prefs = LocalPreferencesHelper.current
     val reviewGate = rememberReviewGateController()
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-            // Header — hidden when result is showing
-            if (!showResult) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    BackButtonWithText(title = "Learn & Drill", onBackClick = onBackClick)
-                    if (!showingTable && questions.isNotEmpty()) {
-                        Box(
-                            modifier = Modifier
-                                .weight(1f)
-                                .height(ToolbarIconSize)
-                                .padding(horizontal = Dimens50),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            LinearProgressIndicator(
-                                progress = {
-                                    (currentIndex + 1).toFloat() / questions.size.coerceAtLeast(1)
-                                },
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(Dimens8)
-                                    .clip(RoundedCornerShape(100.dp)),
-                                color = PrimaryBlue,
-                                trackColor = Color.Black.copy(alpha = 0.08f)
+    AbTheme {
+        Box(modifier = Modifier.fillMaxSize()) {
+            AbBackground(AbWorld.Twilight)
+            Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).screenLeftEdge()) {
+                // Header — hidden when result is showing
+                if (!showResult) {
+                    ScreenTopBar(title = "Learn & Drill", onBack = onBackClick) {
+                        if (questions.isNotEmpty()) {
+                            AbProgressBar(
+                                filled = currentIndex + 1,
+                                total = questions.size,
+                                modifier = Modifier.widthIn(max = abResponsive(220f).dp).fillMaxWidth(),
                             )
-                        }
-                        KidsActionButton(
-                            text = if (currentIndex < questions.size - 1) "Next" else "Results",
-                            icon = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                            type = if (selectedAnswer == null) ButtonType.DISABLE else ButtonType.BLUE,
-                            isIconStart = false,
-                            isSmall = true,
-                            onClick = {
-                                if (selectedAnswer != null) {
+                            AbButton(
+                                text = if (currentIndex < questions.size - 1) "Next" else "Results",
+                                tone = AbTone.Primary,
+                                size = AbSize.Small,
+                                enabled = selectedAnswer != null,
+                                icon = Icons.AutoMirrored.Rounded.KeyboardArrowRight,
+                                iconAtEnd = true,
+                                onClick = {
                                     if (currentIndex < questions.size - 1) {
                                         currentIndex++
                                         selectedAnswer = null
                                     } else {
                                         showResult = true
                                     }
-                                }
-                            },
-                            modifier = Modifier.padding(end = Dimens16)
-                        )
-                    } else {
-                        Spacer(modifier = Modifier.weight(1f))
+                                },
+                            )
+                        }
                     }
                 }
-            }
 
-            // Content fills remaining height
-            Box(modifier = Modifier.weight(1f).fillMaxWidth()) {
-                when {
-                    showResult -> {
+                // Content fills remaining height
+                Box(modifier = Modifier.weight(1f).fillMaxWidth()) {
+                    if (showResult) {
                         TableResultContent(
                             score = score,
                             total = questions.size,
                             onRetry = {
                                 score = 0; currentIndex = 0; selectedAnswer = null
-                                showResult = false; showingTable = false
+                                showResult = false
                             },
                             onBack = {
                                 val pct = if (questions.isNotEmpty()) score.toDouble() / questions.size else 0.0
                                 if (pct >= 0.9) reviewGate.attempt(prefs) { onBackClick() } else onBackClick()
                             }
                         )
-                    }
-                    showingTable -> {
-                        TablePhase(tableNumber = tableNumber, onStartDrill = { showingTable = false })
-                    }
-                    else -> {
-                        if (questions.isNotEmpty()) {
-                            DrillPhase(
-                                question = questions[currentIndex],
-                                currentIndex = currentIndex,
-                                totalCount = questions.size,
-                                selectedAnswer = selectedAnswer,
-                                onAnswerSelected = { choice ->
-                                    if (selectedAnswer == null) {
-                                        AudioPlayerManager.playSoundBtnClick()
-                                        selectedAnswer = choice
-                                        if (choice == questions[currentIndex].answer) score++
-                                    }
+                    } else if (questions.isNotEmpty()) {
+                        DrillPhase(
+                            question = questions[currentIndex],
+                            currentIndex = currentIndex,
+                            totalCount = questions.size,
+                            selectedAnswer = selectedAnswer,
+                            onAnswerSelected = { choice ->
+                                if (selectedAnswer == null) {
+                                    selectedAnswer = choice
+                                    if (choice == questions[currentIndex].answer) score++
                                 }
-                            )
-                        }
+                            }
+                        )
                     }
                 }
             }
-        }
 
-        ReviewGateHost(reviewGate, prefs)
-    }
-}
-
-// 0.35 / 0.65 split — same as TodayTableHomeScreen
-@Composable
-private fun TablePhase(tableNumber: Int, onStartDrill: () -> Unit) {
-    Row(modifier = Modifier.fillMaxSize()) {
-        // Left panel 35% — scrollable table with overflow banner
-        Box(modifier = Modifier.fillMaxHeight().weight(0.35f)) {
-            TableDisplayCard(tableNumber = tableNumber)
-        }
-        // Vertical divider
-        Box(
-            modifier = Modifier
-                .fillMaxHeight()
-                .width(1.dp)
-                .background(Color.Gray.copy(alpha = 0.2f))
-        )
-        // Right panel 65% — vertically centered start area
-        Column(
-            modifier = Modifier
-                .fillMaxHeight()
-                .weight(0.65f)
-                .padding(horizontal = Dimens16),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Text(text = "🎯", style = MaterialTheme.typography.displayLarge.scaled())
-            Spacer(Modifier.height(Dimens12))
-            Text(
-                text = "Ready to drill?",
-                style = MaterialTheme.typography.titleLarge.scaled(),
-                fontWeight = FontWeight.ExtraBold,
-                color = PrimaryBlue
-            )
-            Spacer(Modifier.height(Dimens8))
-            Text(
-                text = "10 random questions from the ×$tableNumber table",
-                style = MaterialTheme.typography.bodyMedium.scaled(),
-                color = PrimaryBlue.copy(alpha = 0.6f),
-                fontWeight = FontWeight.Medium,
-                textAlign = TextAlign.Center
-            )
-            Spacer(Modifier.height(Dimens16))
-            KidsActionButton(
-                text = "Start Drill",
-                icon = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                type = ButtonType.BLUE,
-                isIconStart = false,
-                isSmall = true,
-                onClick = onStartDrill
-            )
+            ReviewGateHost(reviewGate, prefs)
         }
     }
 }
@@ -219,36 +131,26 @@ private fun DrillPhase(
     selectedAnswer: Int?,
     onAnswerSelected: (Int) -> Unit,
 ) {
-    val isTablet = DeviceInfo.isTablet
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        // Question card
-        Box(
-            modifier = Modifier
-                .fillMaxWidth(0.80f)
-                .background(
-                    brush = Brush.linearGradient(
-                        listOf(PrimaryBlue, PrimaryBlue.copy(alpha = 0.82f))
-                    ),
-                    shape = RoundedCornerShape(Dimens20)
+        // Question card — its height wraps the content
+        Box(Modifier.width(tableCardWidth())) {
+            AbHeroPanel(Color(0xFF3F5CE0), Modifier.matchParentSize(), padding = 0.dp)
+            Column(
+                modifier = Modifier.fillMaxWidth().padding(Dimens16),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(Dimens8)
+            ) {
+                AbCountPill(
+                    text = "Question ${currentIndex + 1} of $totalCount",
+                    icon = Icons.Rounded.Help,
                 )
-                .padding(Dimens16),
-            contentAlignment = Alignment.Center
-        ) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(
-                    text = "Q${currentIndex + 1} of $totalCount",
-                    style = if (isTablet) MaterialTheme.typography.bodyLarge.scaled() else MaterialTheme.typography.bodyMedium.scaled(),
-                    color = Color.White.copy(alpha = 0.65f)
-                )
-                Spacer(Modifier.height(Dimens8))
                 Text(
                     text = "${question.multiplier} × ${question.multiplicand} = ?",
-                    style = MaterialTheme.typography.displayLarge.scaled(),
-                    fontWeight = FontWeight.Black,
+                    style = abFont(48f, FontWeight.Black),
                     color = Color.White,
                     textAlign = TextAlign.Center
                 )
@@ -257,48 +159,36 @@ private fun DrillPhase(
 
         Spacer(modifier = Modifier.height(Dimens24))
 
-        // Options grid — 2×2 matching ExamQuestionSection: fixed examOptionWidth per button
+        // Options grid — 2×2: fixed examOptionWidth per button
         Column(
-            verticalArrangement = Arrangement.spacedBy(Dimens10),
+            verticalArrangement = Arrangement.spacedBy(Dimens4),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             if (question.choices.size >= 2) {
                 Row(horizontalArrangement = Arrangement.spacedBy(Dimens10)) {
-                    KidsOptionButton(
-                        text = "${question.choices[0]}",
-                        type = optionType(question.choices[0], question.answer, selectedAnswer),
-                        fontSize = examOptionHeight.value.sp * 0.6f,
-                        onClick = { onAnswerSelected(question.choices[0]) },
-                        modifier = Modifier.width(examOptionWidth).height(examOptionHeight)
-                    )
-                    KidsOptionButton(
-                        text = "${question.choices[1]}",
-                        type = optionType(question.choices[1], question.answer, selectedAnswer),
-                        fontSize = examOptionHeight.value.sp * 0.6f,
-                        onClick = { onAnswerSelected(question.choices[1]) },
-                        modifier = Modifier.width(examOptionWidth).height(examOptionHeight)
-                    )
+                    question.choices.take(2).forEach { choice ->
+                        DrillOption(choice, question.answer, selectedAnswer, onAnswerSelected)
+                    }
                 }
             }
             if (question.choices.size >= 4) {
                 Row(horizontalArrangement = Arrangement.spacedBy(Dimens10)) {
-                    KidsOptionButton(
-                        text = "${question.choices[2]}",
-                        type = optionType(question.choices[2], question.answer, selectedAnswer),
-                        fontSize = examOptionHeight.value.sp * 0.6f,
-                        onClick = { onAnswerSelected(question.choices[2]) },
-                        modifier = Modifier.width(examOptionWidth).height(examOptionHeight)
-                    )
-                    KidsOptionButton(
-                        text = "${question.choices[3]}",
-                        type = optionType(question.choices[3], question.answer, selectedAnswer),
-                        fontSize = examOptionHeight.value.sp * 0.6f,
-                        onClick = { onAnswerSelected(question.choices[3]) },
-                        modifier = Modifier.width(examOptionWidth).height(examOptionHeight)
-                    )
+                    question.choices.drop(2).take(2).forEach { choice ->
+                        DrillOption(choice, question.answer, selectedAnswer, onAnswerSelected)
+                    }
                 }
             }
         }
     }
 }
 
+@Composable
+private fun DrillOption(choice: Int, answer: Int, selectedAnswer: Int?, onAnswerSelected: (Int) -> Unit) {
+    AbOptionButton(
+        text = "$choice",
+        state = optionState(choice, answer, selectedAnswer),
+        width = examOptionWidth,
+        height = examOptionHeight,
+        onClick = { onAnswerSelected(choice) },
+    )
+}

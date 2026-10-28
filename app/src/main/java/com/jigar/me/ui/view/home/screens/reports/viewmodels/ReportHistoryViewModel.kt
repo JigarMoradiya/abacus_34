@@ -2,6 +2,7 @@ package com.jigar.me.ui.view.home.screens.reports.viewmodels
 
 import android.content.Context
 import androidx.lifecycle.viewModelScope
+import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
 import com.jigar.me.R
 import com.jigar.me.data.model.data.AllExamData
 import com.jigar.me.data.model.data.FetchReportHistoryRequest
@@ -38,7 +39,7 @@ class ReportHistoryViewModel @Inject constructor(
 
     // get selected theme
     val dateFilterList = buildDateFilterList(context)
-    override fun getInitialState() = ReportHistoryUiState(selectedTheme = prefs.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default),filterList = list, selectedFilter = list[1], dateFilterList = dateFilterList, selectedDateFilter = dateFilterList.first())
+    override fun getInitialState() = ReportHistoryUiState(selectedTheme = AbacusTheme.active(prefs),filterList = list, selectedFilter = list[1], dateFilterList = dateFilterList, selectedDateFilter = dateFilterList.first())
 
     init {
         callApi()

@@ -1,36 +1,28 @@
 package com.jigar.me.ui.view.home.screens.levels.level3.anzan
 
 import androidx.compose.animation.*
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
+import com.jigar.me.ui.view.ab.AbBackground
+import com.jigar.me.ui.view.ab.AbGlassPanel
+import com.jigar.me.ui.view.ab.AbTheme
+import com.jigar.me.ui.view.ab.AbWorld
+import com.jigar.me.ui.view.ab.AbacusFrameStyle
 import com.jigar.me.ui.view.base.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
-import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateHost
 import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
 import com.jigar.me.ui.view.home.screens.levels.level3.*
 import com.jigar.me.ui.view.home.screens.levels.level3.components.*
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.utils.AppConstants
 
 private sealed class L3AnzanPhase {
@@ -58,10 +50,11 @@ fun Level3AnzanScreen(
     val abCalc = remember { AbacusCalculations(2) }
     val prefs  = LocalPreferencesHelper.current
     val reviewGate = rememberReviewGateController()
-    val theme  = prefs.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default)
+    val theme  = AbacusTheme.active(prefs)
 
     LaunchedEffect(restartKey) {
         for (n in 3 downTo 1) { phase = L3AnzanPhase.Countdown(n); delay(800) }
+        AudioPlayerManager.playSoundCountGo()
         var running = 0
         for ((idx, term) in session.terms.withIndex()) {
             numberVisible = true
@@ -74,11 +67,6 @@ fun Level3AnzanScreen(
         phase = L3AnzanPhase.Answering
     }
 
-    val cardShape = remember { RoundedCornerShape(AppDimens.Dimens20) }
-    val cardBrush = remember(mode.startColor, mode.endColor) {
-        Brush.linearGradient(listOf(mode.startColor.copy(0.82f), mode.endColor.copy(0.82f)))
-    }
-
     val onDigit   : (Int) -> Unit = { typedValue = (typedValue + it.toString()).take(3) }
     val onDelete  : () -> Unit    = { if (typedValue.isNotEmpty()) typedValue = typedValue.dropLast(1) }
     val onConfirm : () -> Unit    = {
@@ -86,219 +74,108 @@ fun Level3AnzanScreen(
         phase = L3AnzanPhase.Result(typed == session.answer, session.answer, typed)
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        HomePageBackground()
+    AbTheme {
+        Box(modifier = Modifier.fillMaxSize()) {
+            AbBackground(AbWorld.Lagoon)
 
-        if (isSemi) {
-            // ── Two-panel: left = abacus, right = content card ────────────────
-            Row(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-                Column(
-                    modifier = Modifier
-                        .weight(0.44f).fillMaxHeight()
-                        .padding(bottom = AppDimens.Dimens12, end = AppDimens.Dimens6)
-                ) {
-                    BackButtonWithText(title = mode.title, onBackClick = onBackClick)
-                    Spacer(Modifier.height(AppDimens.Dimens8))
-                    val abacusShape = RoundedCornerShape(AppDimens.Dimens24)
-                    Box(
+            if (isSemi) {
+                // ── Two-panel: left = abacus, right = content card ────────────────
+                Row(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).screenLeftEdge()) {
+                    Column(
                         modifier = Modifier
-                            .weight(1f).fillMaxWidth()
-                            .padding(start = AppDimens.Dimens12).padding(AppDimens.Dimens4)
-                            .background(Brush.linearGradient(listOf(Color.White.copy(0.18f), Color.White.copy(0.08f))), abacusShape),
-                        contentAlignment = Alignment.Center
+                            .weight(0.44f).fillMaxHeight()
+                            .padding(bottom = AppDimens.Dimens12, end = AppDimens.Dimens6)
                     ) {
-                        AbacusWithDecimalCanvas(
-                            selectedTheme               = theme,
-                            screenType                  = AppConstants.AbacusScreen.screenTypeLevel2Practice,
-                            abacusData                  = abCalc,
-                            numberOfColumns             = 2,
-                            rodMovement                 = emptyList(),
-                            showDirectionHint           = false,
-                            isBeadSoundOn               = false,
-                            isDisplayCurrentAbacusInput = false,
-                            onRodMovementChange         = {},
-                            onShowDirectionHintsChange  = {},
-                            onShowHighlighterChange     = {},
-                            onReset = {}, onNext = {}
-                        )
-                    }
-                }
-
-                // Right: sticky header + content
-                Column(
-                    modifier = Modifier
-                        .weight(0.56f).fillMaxHeight()
-                        .padding(start = AppDimens.Dimens6, end = AppDimens.Dimens12, top = AppDimens.Dimens8, bottom = AppDimens.Dimens12)
-                        .shadow(AppDimens.Dimens8, cardShape,
-                            spotColor    = mode.endColor.copy(0.38f),
-                            ambientColor = mode.endColor.copy(0.20f))
-                        .background(cardBrush, cardShape)
-                ) {
-                    AnzanCardHeader(mode)
-                    Box(Modifier.fillMaxWidth().height(1.dp).background(Color.White.copy(0.25f)))
-                    BoxWithConstraints(modifier = Modifier.weight(1f).fillMaxWidth()) {
-                        AnzanContentPanel(
-                            phase = phase, session = session, typedValue = typedValue,
-                            numberVisible = numberVisible,
-                            onDigit = onDigit, onDelete = onDelete, onConfirm = onConfirm,
-                            modifier = Modifier.width(maxWidth).height(maxHeight)
-                        )
-                    }
-                }
-            }
-        } else {
-            // ── Single panel ──────────────────────────────────────────────────
-            Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).padding(bottom = AppDimens.Dimens8)) {
-                BackButtonWithText(title = mode.title, onBackClick = onBackClick)
-                Column(
-                    modifier = Modifier
-                        .weight(1f).fillMaxWidth()
-                        .padding(horizontal = AppDimens.Dimens12).padding(AppDimens.Dimens4)
-                        .shadow(AppDimens.Dimens8, cardShape,
-                            spotColor    = mode.endColor.copy(0.38f),
-                            ambientColor = mode.endColor.copy(0.20f))
-                        .background(cardBrush, cardShape)
-                ) {
-                    AnzanCardHeader(mode)
-                    Box(Modifier.fillMaxWidth().height(1.dp).background(Color.White.copy(0.25f)))
-                    BoxWithConstraints(modifier = Modifier.weight(1f).fillMaxWidth()) {
-                        AnzanContentPanel(
-                            phase = phase, session = session, typedValue = typedValue,
-                            numberVisible = numberVisible,
-                            onDigit = onDigit, onDelete = onDelete, onConfirm = onConfirm,
-                            modifier = Modifier.width(maxWidth).height(maxHeight)
-                        )
-                    }
-                }
-            }
-        }
-
-        // ── Result popup ──────────────────────────────────────────────────────
-        val rp = phase as? L3AnzanPhase.Result
-        AnimatedVisibility(
-            visible  = rp != null,
-            enter    = fadeIn(tween(300)) + scaleIn(initialScale = 0.85f, animationSpec = spring(dampingRatio = 0.7f, stiffness = 400f)),
-            exit     = fadeOut(tween(200)) + scaleOut(targetScale = 0.85f),
-            modifier = Modifier.fillMaxSize()
-        ) {
-            if (rp != null) {
-                val popupShape = RoundedCornerShape(AppDimens.Dimens24)
-                Box(
-                    modifier         = Modifier.fillMaxSize().background(Color.Black.copy(0.45f)),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth(0.52f).padding(AppDimens.Dimens6)
-                            .shadow(AppDimens.Dimens16, popupShape,
-                                spotColor    = mode.endColor.copy(0.50f),
-                                ambientColor = mode.endColor.copy(0.30f))
-                            .background(Brush.linearGradient(listOf(mode.startColor, mode.endColor)), popupShape)
-                            .padding(AppDimens.Dimens28),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens14)
+                        ScreenTopBar(title = mode.title, onBack = onBackClick)
+                        Spacer(Modifier.height(AppDimens.Dimens8))
+                        AbGlassPanel(
+                            modifier = Modifier.weight(1f).fillMaxWidth().padding(start = AppDimens.Dimens12)
                         ) {
-                            Text(if (rp.correct) "🌟🌟🌟" else "💪",
-                                style = MaterialTheme.typography.displaySmall.scaled())
-                            if (rp.correct) {
-                                Text("Correct! ${rp.expected}",
-                                    style      = MaterialTheme.typography.headlineMedium.scaled(),
-                                    color      = Color.White,
-                                    fontWeight = FontWeight.Black,
-                                    textAlign  = TextAlign.Center)
-                            } else {
-                                Row(
-                                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
-                                    verticalAlignment     = Alignment.CenterVertically
-                                ) {
-                                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                        Text("Your Answer",
-                                            style = MaterialTheme.typography.labelSmall.scaled(),
-                                            color = Color(0xFFFF8A80).copy(0.80f))
-                                        Text("${rp.userAnswer}",
-                                            style      = MaterialTheme.typography.displaySmall.scaled(),
-                                            color      = Color(0xFFFF8A80),
-                                            fontWeight = FontWeight.Black)
-                                    }
-                                    Text("→",
-                                        style = MaterialTheme.typography.titleLarge.scaled(),
-                                        color = Color.White.copy(0.50f))
-                                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                        Text("Correct Answer",
-                                            style = MaterialTheme.typography.labelSmall.scaled(),
-                                            color = Color.White.copy(0.70f))
-                                        Text("${rp.expected}",
-                                            style      = MaterialTheme.typography.displaySmall.scaled(),
-                                            color      = Color.White,
-                                            fontWeight = FontWeight.Black)
-                                    }
-                                }
-                            }
-                            Box(
-                                modifier = Modifier
-                                    .background(Color.White.copy(0.18f), RoundedCornerShape(AppDimens.Dimens16))
-                                    .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens10)
-                            ) {
-                                Text(
-                                    if (rp.correct) "Brilliant mental math! Keep it up! 🧠✨"
-                                    else "Great try! Mental math takes practice — you'll get it! 💪",
-                                    style      = MaterialTheme.typography.bodyLarge.scaled(),
-                                    color      = Color.White.copy(0.92f),
-                                    textAlign  = TextAlign.Center,
-                                    fontWeight = FontWeight.Medium)
-                            }
-                            Spacer(Modifier.height(AppDimens.Dimens4))
-                            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
-                                L3ResultBtn("Try Again 🔄", filled = false) {
-                                    abCalc.resetAbacusData()
-                                    typedValue    = ""
-                                    numberVisible = true
-                                    session       = generateL3Session(config.terms, config.digits)
-                                    phase         = L3AnzanPhase.Countdown(3)
-                                    restartKey++
-                                }
-                                L3ResultBtn("Done ✓", filled = true, onClick = {
-                                    if (rp.correct) reviewGate.attempt(prefs) { onFinished() } else onFinished()
-                                })
+                            Box(Modifier.fillMaxSize().padding(AppDimens.Dimens8), contentAlignment = Alignment.Center) {
+                                AbacusWithDecimalCanvas(
+                                    selectedTheme               = theme,
+                                    screenType                  = AppConstants.AbacusScreen.screenTypeLevel2Practice,
+                                    abacusData                  = abCalc,
+                                    numberOfColumns             = 2,
+                                    rodMovement                 = emptyList(),
+                                    showDirectionHint           = false,
+                                    isBeadSoundOn               = false,
+                                    isDisplayCurrentAbacusInput = false,
+                                    frameStyle                  = AbacusFrameStyle.Toy,
+                                    onRodMovementChange         = {},
+                                    onShowDirectionHintsChange  = {},
+                                    onShowHighlighterChange     = {},
+                                    onReset = {}, onNext = {}
+                                )
                             }
                         }
                     }
+
+                    // Right: sticky header + content
+                    AnzanCard(
+                        mode      = mode,
+                        phase     = phase,
+                        session   = session,
+                        typedValue = typedValue,
+                        numberVisible = numberVisible,
+                        onDigit   = onDigit, onDelete = onDelete, onConfirm = onConfirm,
+                        modifier  = Modifier
+                            .weight(0.56f).fillMaxHeight()
+                            .padding(start = AppDimens.Dimens6, end = AppDimens.Dimens12, top = DeviceInfo.screenTopPadding(), bottom = AppDimens.Dimens12)
+                    )
+                }
+            } else {
+                // ── Single panel ──────────────────────────────────────────────────
+                Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).screenLeftEdge()) {
+                    ScreenTopBar(title = mode.title, onBack = onBackClick)
+                    Spacer(Modifier.height(AppDimens.Dimens8))
+                    AnzanCard(
+                        mode      = mode,
+                        phase     = phase,
+                        session   = session,
+                        typedValue = typedValue,
+                        numberVisible = numberVisible,
+                        onDigit   = onDigit, onDelete = onDelete, onConfirm = onConfirm,
+                        modifier  = Modifier.weight(1f).fillMaxWidth().padding(horizontal = AppDimens.Dimens12)
+                    )
+                    Spacer(Modifier.height(AppDimens.Dimens12))
                 }
             }
-        }
 
-        ReviewGateHost(reviewGate, prefs)
+            // ── Result popup ──────────────────────────────────────────────────────
+            (phase as? L3AnzanPhase.Result)?.let { rp ->
+                L3ResultPopup(
+                    accent     = mode.endColor,
+                    correct    = rp.correct,
+                    emoji      = if (rp.correct) "🌟🌟🌟" else "💪",
+                    message    = if (rp.correct) "Brilliant mental math! Keep it up! 🧠✨"
+                                 else "Great try! Mental math takes practice — you'll get it! 💪",
+                    retryLabel = "Try Again 🔄",
+                    onRetry    = {
+                        abCalc.resetAbacusData()
+                        typedValue    = ""
+                        numberVisible = true
+                        session       = generateL3Session(config.terms, config.digits)
+                        phase         = L3AnzanPhase.Countdown(3)
+                        restartKey++
+                    },
+                    onDone     = {
+                        if (rp.correct) reviewGate.attempt(prefs) { onFinished() } else onFinished()
+                    },
+                ) {
+                    L3AnswerTitle(rp.correct, rp.expected, rp.userAnswer, correctText = "Correct! ${rp.expected}")
+                }
+            }
+
+            ReviewGateHost(reviewGate, prefs)
+        }
     }
 }
 
+/** The mode card of the Anzan screen: sticky header, then the countdown, the flashed numbers and the answer pad. */
 @Composable
-private fun AnzanCardHeader(mode: L3Mode) {
-    Row(
-        modifier              = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = AppDimens.Dimens16)
-            .padding(top = AppDimens.Dimens12, bottom = AppDimens.Dimens8),
-        verticalAlignment     = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
-    ) {
-        Text(mode.emoji, style = MaterialTheme.typography.titleLarge.scaled())
-        Column {
-            Text(mode.title,
-                style      = MaterialTheme.typography.labelLarge.scaled(),
-                color      = Color.White,
-                fontWeight = FontWeight.Black)
-            Text(mode.subtitle,
-                style = MaterialTheme.typography.labelSmall.scaled(),
-                color = Color.White.copy(0.80f))
-        }
-    }
-}
-
-@Composable
-private fun AnzanContentPanel(
+private fun AnzanCard(
+    mode:          L3Mode,
     phase:         L3AnzanPhase,
     session:       L3Session,
     typedValue:    String,
@@ -308,117 +185,47 @@ private fun AnzanContentPanel(
     onConfirm:     () -> Unit,
     modifier:      Modifier = Modifier,
 ) {
-    AnimatedContent(
-        targetState    = phase,
-        contentKey     = { p ->
-            when (p) {
-                is L3AnzanPhase.Countdown -> "countdown"
-                is L3AnzanPhase.Flash     -> "flash"
-                is L3AnzanPhase.Answering -> "answering"
-                is L3AnzanPhase.Result    -> "result"
-            }
-        },
-        transitionSpec = { fadeIn(tween(180)) togetherWith fadeOut(tween(150)) },
-        label          = "anzan-phase",
-        modifier       = modifier
-    ) { p ->
-        when (p) {
-            is L3AnzanPhase.Countdown -> Box(
-                modifier         = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
-                ) {
-                    Text("${p.n}",
-                        fontSize   = 80.sp.scaled(),
-                        color      = Color.White,
-                        fontWeight = FontWeight.Black,
-                        textAlign  = TextAlign.Center)
-                    Text("Get ready!",
-                        style      = MaterialTheme.typography.headlineLarge.scaled(),
-                        color      = Color.White.copy(0.80f),
-                        fontWeight = FontWeight.Medium)
+    L3ModeCard(
+        accent   = mode.endColor,
+        emoji    = mode.emoji,
+        title    = mode.title,
+        subtitle = mode.subtitle,
+        modifier = modifier,
+    ) {
+        AnimatedContent(
+            targetState    = phase,
+            contentKey     = { p ->
+                when (p) {
+                    is L3AnzanPhase.Countdown -> "countdown"
+                    is L3AnzanPhase.Flash     -> "flash"
+                    is L3AnzanPhase.Answering -> "answering"
+                    is L3AnzanPhase.Result    -> "result"
                 }
-            }
-            is L3AnzanPhase.Flash -> AnzanFlashDisplay(session, p.idx, numberVisible)
-            is L3AnzanPhase.Answering -> Column(
-                modifier            = Modifier.fillMaxSize()
-                    .padding(horizontal = AppDimens.Dimens16)
-                    .padding(vertical = AppDimens.Dimens12),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text("What's the total? 🤔",
-                    style      = MaterialTheme.typography.titleMedium.scaled(),
-                    color      = Color.White,
-                    fontWeight = FontWeight.Black,
-                    textAlign  = TextAlign.Center)
-                Spacer(Modifier.height(AppDimens.Dimens8))
-                L3Numpad(
+            },
+            transitionSpec = { fadeIn(tween(180)) togetherWith fadeOut(tween(150)) },
+            contentAlignment = Alignment.Center,
+            label          = "anzan-phase",
+            modifier       = Modifier.fillMaxSize()
+        ) { p ->
+            when (p) {
+                is L3AnzanPhase.Countdown -> L3Countdown(p.n, digitSize = 80f)
+                is L3AnzanPhase.Flash -> {
+                    val term = session.terms[p.idx]
+                    L3FlashDisplay(
+                        display       = if (term.sign.isEmpty()) "${term.value}" else "${term.sign} ${term.value}",
+                        index         = p.idx,
+                        total         = session.terms.size,
+                        numberVisible = numberVisible,
+                    )
+                }
+                is L3AnzanPhase.Answering -> L3AnswerPhase(
+                    title      = "What's the total? 🤔",
                     typedValue = typedValue,
                     onDigit    = onDigit,
                     onDelete   = onDelete,
                     onConfirm  = onConfirm,
-                    modifier   = Modifier.fillMaxWidth().weight(1f)
                 )
-            }
-            is L3AnzanPhase.Result -> Unit
-        }
-    }
-}
-
-@Composable
-private fun AnzanFlashDisplay(session: L3Session, idx: Int, numberVisible: Boolean) {
-    val term     = session.terms[idx]
-    val display  = if (term.sign.isEmpty()) "${term.value}" else "${term.sign} ${term.value}"
-    val numAlpha by animateFloatAsState(
-        targetValue   = if (numberVisible) 1f else 0f,
-        animationSpec = tween(150),
-        label         = "num-alpha"
-    )
-    Box(
-        modifier         = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
-        ) {
-            Text("${idx + 1}  /  ${session.terms.size}",
-                style      = MaterialTheme.typography.labelLarge.scaled(),
-                color      = Color.White.copy(0.70f),
-                fontWeight = FontWeight.Bold,
-                textAlign  = TextAlign.Center)
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth(0.85f)
-                    .height(AppDimens.Dimens100)
-                    .alpha(numAlpha)
-                    .background(Color.White.copy(0.20f), RoundedCornerShape(AppDimens.Dimens16)),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(display,
-                    fontSize   = 72.sp.scaled(),
-                    color      = Color.White,
-                    fontWeight = FontWeight.Black,
-                    textAlign  = TextAlign.Center,
-                    modifier   = Modifier.fillMaxWidth())
-            }
-            Row(
-                modifier              = Modifier.fillMaxWidth(0.60f).height(AppDimens.Dimens8),
-                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
-            ) {
-                repeat(session.terms.size) { i ->
-                    Box(
-                        modifier = Modifier
-                            .weight(1f).fillMaxHeight()
-                            .background(
-                                if (i <= idx) Color.White else Color.White.copy(0.30f),
-                                RoundedCornerShape(AppDimens.Dimens100)
-                            )
-                    )
-                }
+                is L3AnzanPhase.Result -> Unit
             }
         }
     }

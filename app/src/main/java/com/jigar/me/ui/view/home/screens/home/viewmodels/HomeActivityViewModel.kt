@@ -64,7 +64,9 @@ class HomeActivityViewModel @Inject constructor(
     }
 
     fun isPurchasedSelectedLevel(name: String) = CommonUtils.checkLevelIsPurchase(name, prefs)
-    fun isPurchasedForModule() = _isPurchasedFlow.value
+    // Worked out again every time it is asked (Exercise / Exam / Custom Challenge read it when they open): the value kept from
+    // app start does not know about a plan that was assigned by the admin after a credentials login.
+    fun isPurchasedForModule(): Boolean { refreshPurchaseState(); return _isPurchasedFlow.value }
     fun refreshPurchaseState() { _isPurchasedFlow.value = CommonUtils.checkPurchaseForExerciseExamCCM(prefs) }
     fun isUserLoggedIn(): Boolean = prefs.isUserLoggedIn()
 
@@ -80,7 +82,11 @@ class HomeActivityViewModel @Inject constructor(
 
     fun fetchReviewsIfCredentialLogin() {
         if (prefs.getCustomParamBoolean(AppConstants.IS_CREDENTIAL_LOGIN, false)) {
-            viewModelScope.launch { postLoginHandler.fetchAdminAssignPlan() }
+            viewModelScope.launch {
+                postLoginHandler.fetchAdminAssignPlan()
+                // the plan is saved now: unlock the modules that read the premium state
+                refreshPurchaseState()
+            }
         }
     }
 

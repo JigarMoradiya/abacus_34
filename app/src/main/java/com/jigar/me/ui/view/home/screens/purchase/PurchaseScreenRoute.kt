@@ -1,6 +1,7 @@
 package com.jigar.me.ui.view.home.screens.purchase
 
 import android.app.Activity
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,6 +17,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.jigar.me.ui.view.ab.AbBackground
+import com.jigar.me.ui.view.ab.AbTheme
+import com.jigar.me.ui.view.ab.AbWorld
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumLoginBottomSheet
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.home.screens.purchase.components.PurchaseScreen
@@ -33,34 +37,38 @@ fun PurchaseScreenRoute(
 
     LaunchedEffect(Unit) { viewModel.loadData() }
 
-    Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-        PurchaseScreen(
-            uiState = uiState,
-            onPlanSelected = { viewModel.onPlanSelected(it) },
-            onShowOldSubClick = { viewModel.onShowOldSubClick() },
-            onSubscribe = {
-                if (homeActivityViewModel.isUserLoggedIn()) viewModel.makePurchase(activity)
-                else showLoginSheet = true
-            },
-            onClose = onClose,
-            oldSubPopupCloseClick = { viewModel.oldSubPopupClose() },
-            onOfferExpired = { viewModel.loadData() },
-            onRetry = { viewModel.loadData() }
-        )
-    }
+    AbTheme {
+        // the scene runs under the system bars; only the content is inset
+        Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Sunset, Modifier.fillMaxSize()) }
+        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+            PurchaseScreen(
+                uiState = uiState,
+                onPlanSelected = { viewModel.onPlanSelected(it) },
+                onShowOldSubClick = { viewModel.onShowOldSubClick() },
+                onSubscribe = {
+                    if (homeActivityViewModel.isUserLoggedIn()) viewModel.makePurchase(activity)
+                    else showLoginSheet = true
+                },
+                onClose = onClose,
+                oldSubPopupCloseClick = { viewModel.oldSubPopupClose() },
+                onOfferExpired = { viewModel.loadData() },
+                onRetry = { viewModel.loadData() }
+            )
+        }
 
-    if (showLoginSheet) {
-        FreemiumLoginBottomSheet(
-            showContinueWithoutSaving = false,
-            onLoginSuccess = {
-                showLoginSheet = false
-                if (viewModel.isUserSubscribed()) {
-                    viewModel.loadData()
-                } else {
-                    viewModel.makePurchase(activity)
-                }
-            },
-            onDismiss = { showLoginSheet = false }
-        )
+        if (showLoginSheet) {
+            FreemiumLoginBottomSheet(
+                showContinueWithoutSaving = false,
+                onLoginSuccess = {
+                    showLoginSheet = false
+                    if (viewModel.isUserSubscribed()) {
+                        viewModel.loadData()
+                    } else {
+                        viewModel.makePurchase(activity)
+                    }
+                },
+                onDismiss = { showLoginSheet = false }
+            )
+        }
     }
 }

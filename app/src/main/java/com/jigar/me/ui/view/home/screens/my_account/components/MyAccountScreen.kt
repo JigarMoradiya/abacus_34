@@ -1,111 +1,123 @@
 package com.jigar.me.ui.view.home.screens.my_account.components
 
-import com.jigar.me.ui.view.home.theme.AppDimens
-
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.Login
 import androidx.compose.material.icons.outlined.PersonOff
+import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import com.jigar.me.R
-import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.data.local.data.DeviceInfo
+import com.jigar.me.ui.view.ab.AB_SF_TO_VECTOR
+import com.jigar.me.ui.view.ab.AbButton
+import com.jigar.me.ui.view.ab.AbShapes
+import com.jigar.me.ui.view.ab.AbShrinkText
+import com.jigar.me.ui.view.ab.AbSize
+import com.jigar.me.ui.view.ab.AbTone
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abChunkyFace
+import com.jigar.me.ui.view.home.screens.home.WeeklyReportContent
 import com.jigar.me.ui.view.home.screens.my_account.viewmodels.MyAccountUiState
 import com.jigar.me.ui.view.home.screens.my_account.viewmodels.getMenuList
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens2
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens20
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens40
+import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
 fun MyAccountScreen(
     uiState: MyAccountUiState, modifier: Modifier = Modifier.fillMaxSize(), onMenuClick: (String) -> Unit
 ) {
     val context = LocalContext.current
+    val colors = LocalAbColors.current
     val menuList = remember(uiState.isLoggedIn) { getMenuList(context, uiState.isLoggedIn) }
 
     LazyColumn(
-        modifier = modifier, contentPadding = PaddingValues(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens12)
+        modifier = modifier,
+        contentPadding = PaddingValues(
+            start = DeviceInfo.screenHorizontalPadding(),
+            end = AppDimens.Dimens16,
+            top = AppDimens.Dimens10,
+            bottom = AppDimens.Dimens16
+        ),
+        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
     ) {
 
         // Same layout as iOS:
-        //  - logged in  → weekly report LEFT + 3 stat cards stacked vertically RIGHT
+        //  - logged in  → weekly report LEFT + 3 stat cards stacked vertically RIGHT (centred against each other)
         //  - logged out → centered compact weekly report + login banner
         if (uiState.isLoggedIn && uiState.statistics != null) {
             item {
                 val statistics = uiState.statistics
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.Top,
+                    verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
                 ) {
-                    com.jigar.me.ui.view.home.screens.home.WeeklyReportContent(
-                        stats = uiState.weeklyStats,
-                        modifier = Modifier.weight(1f)
-                    )
-                    androidx.compose.foundation.layout.Column(
+                    // padded so the card's shadow is not clipped, like iOS
+                    Box(Modifier.weight(1f).padding(AppDimens.Dimens8)) {
+                        WeeklyReportContent(
+                            stats = uiState.weeklyStats,
+                            compact = true,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+                    Column(
                         modifier = Modifier.weight(1f),
                         verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
                     ) {
                         StatisticsCard(
-                            title = "Total Exam : ", count = statistics.EXAM?.count?.toString() ?: "-", time = statistics.EXAM?.last_exam_given_time ?: "", backgroundColor = Color(0xFFFFEBEE), countColor = Color(0xFFC62828), modifier = Modifier.fillMaxWidth()
+                            title = "Total Exam", count = statistics.EXAM?.count?.toString() ?: "-", time = statistics.EXAM?.last_exam_given_time ?: "",
+                            tone = if (colors.isDark) Color(0xFFFF453A) else Color(0xFFFF3B30)
                         )
                         StatisticsCard(
-                            title = "Total Exercise : ", count = statistics.EXERCISE?.count?.toString() ?: "-", time = statistics.EXERCISE?.last_exam_given_time ?: "", backgroundColor = Color(0xFFE8F5E9), countColor = Color(0xFF2E7D32), modifier = Modifier.fillMaxWidth()
+                            title = "Total Exercise", count = statistics.EXERCISE?.count?.toString() ?: "-", time = statistics.EXERCISE?.last_exam_given_time ?: "",
+                            tone = if (colors.isDark) Color(0xFF30D158) else Color(0xFF34C759)
                         )
                         StatisticsCard(
-                            title = "Total CCM : ", count = statistics.CCM?.count?.toString() ?: "-", time = statistics.CCM?.last_exam_given_time ?: "", backgroundColor = Color(0xFFE3F2FD), countColor = Color(0xFF1565C0), modifier = Modifier.fillMaxWidth()
+                            title = "Total CCM", count = statistics.CCM?.count?.toString() ?: "-", time = statistics.CCM?.last_exam_given_time ?: "",
+                            tone = if (colors.isDark) Color(0xFF0A84FF) else Color(0xFF007AFF)
                         )
                     }
                 }
-                androidx.compose.foundation.layout.Spacer(Modifier.padding(top = AppDimens.Dimens12))
             }
         } else {
             item {
-                androidx.compose.foundation.layout.Box(
-                    modifier = Modifier.fillMaxWidth(),
+                Box(
+                    modifier = Modifier.fillMaxWidth().padding(AppDimens.Dimens8),
                     contentAlignment = Alignment.Center
                 ) {
-                    com.jigar.me.ui.view.home.screens.home.WeeklyReportContent(
+                    WeeklyReportContent(
                         stats = uiState.weeklyStats,
-                        compact = !uiState.isLoggedIn
+                        compact = true,
+                        modifier = Modifier.widthIn(max = 480.dp).fillMaxWidth()
                     )
                 }
-                androidx.compose.foundation.layout.Spacer(Modifier.padding(top = AppDimens.Dimens12))
             }
             if (!uiState.isLoggedIn) {
                 item {
                     NotLoggedInBanner(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(bottom = AppDimens.Dimens12),
+                            .padding(top = AppDimens.Dimens10),
                         onSignInClick = { onMenuClick("login") }
                     )
                 }
@@ -114,9 +126,9 @@ fun MyAccountScreen(
         item {
             // Menu list (horizontal)
             Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = AppDimens.Dimens16), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
+                verticalAlignment = Alignment.Top
             ) {
 
                 // Column 1 → My Account
@@ -134,82 +146,50 @@ fun MyAccountScreen(
     }
 }
 
+/** "Sign in to view your account": a friendly strip with a sign-in button. */
 @Composable
 private fun NotLoggedInBanner(
     modifier: Modifier = Modifier,
     onSignInClick: () -> Unit
 ) {
+    val colors = LocalAbColors.current
+    val s = LocalAbScale.current.factor
     Row(
         modifier = modifier
-            .clip(RoundedCornerShape(Dimens12))
-            .background(ColorPrimary.copy(alpha = 0.08f))
-            .clickable { onSignInClick() }
-            .padding(horizontal = Dimens16, vertical = Dimens10),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(Dimens10)
-    ) {
-        Box(
-            modifier = Modifier
-                .size(Dimens40)
-                .background(ColorPrimary.copy(alpha = 0.12f), CircleShape),
-            contentAlignment = Alignment.Center
-        ) {
-            Icon(
-                imageVector = Icons.Outlined.PersonOff,
-                contentDescription = null,
-                tint = ColorPrimary,
-                modifier = Modifier.size(Dimens20)
+            .abChunkyFace(
+                face = colors.bgSecondary.copy(alpha = if (colors.isDark) 0.96f else 0.94f),
+                edge = colors.outline, stroke = colors.outline,
+                cornerRadius = AbShapes.md * s, edgeHeight = 3.dp * s,
             )
-        }
+            .padding(horizontal = 16.dp * s, vertical = 10.dp * s),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(12.dp * s)
+    ) {
+        Icon(
+            imageVector = Icons.Outlined.PersonOff,
+            contentDescription = null,
+            tint = colors.brandPrimary,
+            modifier = Modifier.size((26f * AB_SF_TO_VECTOR).dp * s)
+        )
 
-        androidx.compose.foundation.layout.Column(
-            modifier = Modifier.weight(1f),
-            verticalArrangement = Arrangement.spacedBy(Dimens2)
-        ) {
+        Column(modifier = Modifier.weight(1f)) {
             Text(
                 text = stringResource(R.string.login_to_view_your_account),
-                style = MaterialTheme.typography.labelMedium.scaled().copy(
-                    fontWeight = FontWeight.Bold,
-                    fontFamily = FontFamily(Font(R.font.font_bold)),
-                    color = ColorPrimary
-                )
+                style = AbTypography.fixed(15f * s, FontWeight.ExtraBold),
+                color = colors.textPrimary
             )
-            Text(
+            AbShrinkText(
                 text = stringResource(R.string.login_to_view_account_description),
-                style = MaterialTheme.typography.labelSmall.scaled().copy(
-                    fontFamily = FontFamily(Font(R.font.font_regular)),
-                    color = Color.Black.copy(alpha = 0.55f)
-                ),
-                maxLines = 1
+                style = AbTypography.fixed(12f * s, FontWeight.SemiBold),
+                color = colors.textSecondary,
+                minScale = 0.8f,
+                maxLines = 2
             )
         }
 
-        Box(
-            modifier = Modifier
-                .clip(RoundedCornerShape(100))
-                .background(ColorPrimary)
-                .padding(horizontal = Dimens12, vertical = AppDimens.Dimens6),
-            contentAlignment = Alignment.Center
-        ) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
-            ) {
-                Text(
-                    text = stringResource(R.string.login_now),
-                    style = MaterialTheme.typography.labelSmall.scaled().copy(
-                        fontWeight = FontWeight.SemiBold,
-                        fontFamily = FontFamily(Font(R.font.font_semibold)),
-                        color = Color.White
-                    )
-                )
-                Icon(
-                    imageVector = Icons.AutoMirrored.Outlined.Login,
-                    contentDescription = null,
-                    tint = Color.White,
-                    modifier = Modifier.size(AppDimens.Dimens14)
-                )
-            }
-        }
+        AbButton(
+            text = stringResource(R.string.login_now), tone = AbTone.Primary, size = AbSize.Small,
+            icon = Icons.Rounded.ChevronRight, iconAtEnd = true, onClick = onSignInClick
+        )
     }
 }

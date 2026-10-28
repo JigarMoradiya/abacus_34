@@ -1,5 +1,39 @@
 package com.jigar.me.ui.view.home.screens.home
 
+import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.rounded.Notifications
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.layout
+import androidx.compose.ui.layout.ContentScale
+import com.jigar.me.ui.view.ab.AbHeroBadge
+import com.jigar.me.ui.view.ab.AbPopupLayer
+import com.jigar.me.ui.view.ab.AbSound
+import com.jigar.me.ui.view.ab.abCardEntrance
+import com.jigar.me.ui.view.ab.abSheetEntrance
+import com.jigar.me.ui.view.home.screens.home.components.HomeStreakChip
+import com.jigar.me.ui.view.ab.AbBackground
+import com.jigar.me.ui.view.ab.AbButton
+import com.jigar.me.ui.view.ab.AbHeroTitle
+import com.jigar.me.ui.view.ab.AbParentalGate
+import com.jigar.me.ui.view.ab.AbSize
+import com.jigar.me.ui.view.ab.AbTone
+import com.jigar.me.ui.view.ab.AbShapes
+import com.jigar.me.ui.view.ab.AbTheme
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.AbWorld
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abDarkened
+import com.jigar.me.ui.view.ab.abSquash
+import com.jigar.me.ui.view.home.screens.home.components.HomeSectionDivider
+import com.jigar.me.ui.view.home.screens.home.components.HomeSpeechBubble
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -20,7 +54,6 @@ import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
@@ -28,17 +61,16 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.*
 import androidx.compose.material3.CardDefaults
 import kotlinx.coroutines.delay
-import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
@@ -227,6 +259,9 @@ fun HomeScreen(
 
     val bubbleShape = rememberSpeechBubbleShape(cornerRadius = 16.dp)
 
+    AbTheme {
+    Box(Modifier.fillMaxSize()) {
+    AbBackground(AbWorld.Meadow, Modifier.fillMaxSize())
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
         val totalW = maxWidth
         val totalH = maxHeight
@@ -242,14 +277,9 @@ fun HomeScreen(
 
             // ── Full-width top bar ─────────────────────────────────────────
             HomeTopBar(
-                onMyAccountClick = {
-                    AudioPlayerManager.playSoundBtnClick()
-                    onMenuClick(AppConstants.HomeClicks.Menu_My_Account)
-                },
-                onSettingsClick = {
-                    AudioPlayerManager.playSoundBtnClick()
-                    onMenuClick(AppConstants.HomeClicks.Menu_Settings)
-                }
+                // the kit buttons play the click cue themselves
+                onMyAccountClick = { onMenuClick(AppConstants.HomeClicks.Menu_My_Account) },
+                onSettingsClick = { onMenuClick(AppConstants.HomeClicks.Menu_Settings) }
             )
 
             // ── Body: mascot left (22%) + content right (78%) ─────────────
@@ -275,44 +305,8 @@ fun HomeScreen(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.spacedBy(Dimens12)
                     ) {
-                        // Speech bubble — friendly greeting + soft gradient
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .shadow(
-                                    elevation = Dimens4,
-                                    shape = bubbleShape,
-                                    ambientColor = PrimaryBlue.copy(alpha = 0.18f),
-                                    spotColor = PrimaryBlue.copy(alpha = 0.18f)
-                                )
-                                .background(
-                                    Brush.verticalGradient(
-                                        listOf(Color.White, Color(0xFFE3F2FD))
-                                    ),
-                                    bubbleShape
-                                )
-                                .border(1.5.dp, PrimaryBlue.copy(alpha = 0.25f), bubbleShape)
-                                .padding(horizontal = Dimens12)
-                                .padding(top = Dimens10)
-                                .padding(bottom = Dimens20),
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens2)
-                        ) {
-                            Text(
-                                text = "Hi Champ! 👋",
-                                color = PrimaryBlue,
-                                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                                style = MaterialTheme.typography.labelLarge.scaled(),
-                                textAlign = TextAlign.Center
-                            )
-                            Text(
-                                text = "Let's count & calculate!",
-                                color = Color.Black.copy(alpha = 0.55f),
-                                fontFamily = FontFamily(Font(R.font.font_semibold)),
-                                style = MaterialTheme.typography.labelSmall.scaled(),
-                                textAlign = TextAlign.Center
-                            )
-                        }
+                        // Speech bubble: a friendly greeting, drawn from the kit colours
+                        HomeSpeechBubble()
 
                         Image(
                             painter = painterResource(R.drawable._mascot_),
@@ -377,47 +371,16 @@ fun HomeScreen(
                         }
                     }
 
-                    // "Choose your activity" divider
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = Dimens16)
-                            .padding(bottom = Dimens4),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        HorizontalDivider(
-                            modifier = Modifier.weight(1f),
-                            color = PrimaryBlue.copy(alpha = 0.35f),
-                            thickness = 1.5.dp
-                        )
-                        Spacer(modifier = Modifier.width(Dimens6))
-                        Image(
-                            painter = painterResource(R.drawable.fireworks),
-                            contentDescription = null,
-                            modifier = Modifier.size(if (DeviceInfo.isTablet) Dimens20 else Dimens16)
-                        )
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text(
-                            text = "Choose your activity and start learning!",
-                            color = PrimaryBlue.copy(alpha = 0.85f),
-                            style = MaterialTheme.typography.labelSmall.scaled(),
-                            fontWeight = FontWeight.Bold
-                        )
-                        Spacer(modifier = Modifier.width(Dimens6))
-                        HorizontalDivider(
-                            modifier = Modifier.weight(1f),
-                            color = PrimaryBlue.copy(alpha = 0.35f),
-                            thickness = 1.5.dp
-                        )
-                    }
+                    // "Choose your activity" divider: rods fading out to the sides and a coloured pill with the sentence
+                    HomeSectionDivider(
+                        text = "Choose your activity and start learning!",
+                        modifier = Modifier.padding(horizontal = Dimens16).padding(bottom = Dimens4)
+                    )
 
                     // Horizontal menu list
                     HomeMenuScreen(
                         uiState = uiState,
-                        onMenuClick = {
-                            AudioPlayerManager.playSoundBtnClick()
-                            onMenuClick(it.name, it.id)
-                        },
+                        onMenuClick = { onMenuClick(it.name, it.id) },
                         modifier = Modifier.weight(1f)
                     )
 
@@ -430,7 +393,7 @@ fun HomeScreen(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(horizontal = Dimens16)
-                                .padding(bottom = Dimens8),
+                                .padding(top = Dimens8, bottom = Dimens12), // same as iOS
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
@@ -607,20 +570,22 @@ fun HomeScreen(
         )
 
         if (showURLGate) {
-            ParentalGateDialog(
-                onPassed = {
+            AbParentalGate(
+                onSuccess = {
                     showURLGate = false
                     gateResolvedThisVisit = true
                     pendingUrlAction?.invoke()
                     pendingUrlAction = null
                 },
-                onCancelled = { showURLGate = false; pendingUrlAction = null }
+                onClose = { showURLGate = false; pendingUrlAction = null }
             )
         }
 
         if (showWeeklyReport) {
             WeeklyReportDialog(viewModel.weeklyStats()) { showWeeklyReport = false }
         }
+    }
+    }
     }
 }
 
@@ -638,92 +603,23 @@ private fun HomeTopBar(
             .padding(top = DeviceInfo.screenTopPadding(), bottom = Dimens8),
         contentAlignment = Alignment.Center
     ) {
-        // Center: app title
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(
-                text = "Vedaavi Abacus",
-                style = MaterialTheme.typography.displayLarge.scaled(),
-                fontWeight = FontWeight.Black,
-                color = PrimaryBlue,
-                letterSpacing = androidx.compose.ui.unit.TextUnit.Unspecified
-            )
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(Dimens4)
-            ) {
-                Text(
-                    text = "Count • Calculate • Conquer",
-                    style = MaterialTheme.typography.labelSmall.scaled(),
-                    fontWeight = FontWeight.Bold,
-                    color = PrimaryBlue.copy(alpha = 0.75f)
-                )
-                Image(
-                    painter = painterResource(R.drawable.abacus_emoji),
-                    contentDescription = null,
-                    modifier = Modifier.size(Dimens16)
-                )
-            }
-        }
+        // Centre: app title with its tagline and the abacus emoji
+        AbHeroTitle(
+            title = "Vedaavi Abacus",
+            tagline = "Count • Calculate • Conquer",
+            taglineIcon = painterResource(R.drawable.abacus_emoji),
+        )
 
         // Left: My Account pill
-        GradientPill(
-            text = "Parent",
-            icon = Icons.Default.Person,
-            gradient = Brush.linearGradient(listOf(Color(0xFF42A5F5), PrimaryBlue)),
-            shadowColor = PrimaryBlue.copy(alpha = 0.45f),
-            modifier = Modifier.align(Alignment.CenterStart),
-            onClick = onMyAccountClick
+        AbButton(
+            text = "Parent", tone = AbTone.Primary, size = AbSize.Compact, icon = Icons.Default.Person,
+            modifier = Modifier.align(Alignment.CenterStart), onClick = onMyAccountClick,
         )
 
         // Right: Settings pill
-        GradientPill(
-            text = "Settings",
-            icon = Icons.Default.Settings,
-            gradient = Brush.linearGradient(listOf(Color(0xFF43A047), Color(0xFF2E7D32))),
-            shadowColor = Color(0xFF2E7D32).copy(alpha = 0.45f),
-            modifier = Modifier.align(Alignment.CenterEnd),
-            onClick = onSettingsClick
-        )
-    }
-}
-
-@Composable
-private fun GradientPill(
-    text: String,
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
-    gradient: Brush,
-    shadowColor: Color,
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit
-) {
-    val interactionSource = remember { MutableInteractionSource() }
-    val isPressed by interactionSource.collectIsPressedAsState()
-    val scale by animateFloatAsState(
-        targetValue = if (isPressed) 0.88f else 1f,
-        animationSpec = spring(dampingRatio = 0.5f, stiffness = Spring.StiffnessMedium),
-        label = "pillScale"
-    )
-    Row(
-        modifier = modifier
-            .graphicsLayer { scaleX = scale; scaleY = scale }
-            .shadow(elevation = Dimens6, shape = PillShape, spotColor = shadowColor, ambientColor = shadowColor)
-            .background(gradient, PillShape)
-            .clickable(interactionSource = interactionSource, indication = null, onClick = onClick)
-            .padding(horizontal = Dimens12, vertical = Dimens4),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(Dimens6)
-    ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = null,
-            tint = Color.White,
-            modifier = Modifier.size(Dimens16)
-        )
-        Text(
-            text = text,
-            color = Color.White,
-            style = MaterialTheme.typography.labelMedium.scaled(),
-            fontWeight = FontWeight.Bold
+        AbButton(
+            text = "Settings", tone = AbTone.Success, size = AbSize.Compact, icon = Icons.Default.Settings,
+            modifier = Modifier.align(Alignment.CenterEnd), onClick = onSettingsClick,
         )
     }
 }
@@ -732,262 +628,185 @@ private fun GradientPill(
 
 @Composable
 private fun StreakCard(currentStreak: Int, bestStreak: Int, shields: Int = 0) {
-    Row(
-        modifier = Modifier
-            .shadow(
-                elevation = Dimens4, shape = PillShape,
-                ambientColor = PrimaryBlue.copy(alpha = 0.28f),
-                spotColor   = PrimaryBlue.copy(alpha = 0.28f)
-            )
-            .background(
-                brush = Brush.verticalGradient(listOf(Color(0xFFE8EAF6), Color(0xFFE3F2FD))),
-                shape = PillShape
-            )
-            .border(1.5.dp, PrimaryBlue.copy(alpha = 0.5f), PillShape)
-            .padding(horizontal = Dimens14, vertical = Dimens8),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(Dimens8)
-    ) {
-        Text(text = "🔥", style = MaterialTheme.typography.titleMedium.scaled())
-        Column {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(Dimens4)
-            ) {
-                Text(
-                    text = "$currentStreak Day${if (currentStreak == 1) "" else "s"}",
-                    style = MaterialTheme.typography.bodyMedium.scaled(),
-                    fontWeight = FontWeight.Black,
-                    color = PrimaryBlue
-                )
-                if (shields > 0) {
-                    Text(
-                        text = "🛡️".repeat(shields),
-                        style = MaterialTheme.typography.labelSmall.scaled()
-                    )
-                }
-            }
-            Text(
-                text = "Streak  •  Best: $bestStreak",
-                style = MaterialTheme.typography.labelSmall.scaled(),
-                fontWeight = FontWeight.Medium,
-                color = PrimaryBlue
-            )
-        }
-    }
+    val dayLabel = "$currentStreak Day${if (currentStreak == 1) "" else "s"}"
+    val shieldsStr = if (shields > 0) " " + "🛡️".repeat(shields) else ""
+    HomeStreakChip(title = dayLabel + shieldsStr, subtitle = "Streak  •  Best: $bestStreak")
 }
 
 // ── Streak Reward Dialog ──────────────────────────────────────────────────────
 
 @Composable
 private fun StreakRewardDialog(milestone: Int, onDismiss: () -> Unit) {
+    val colors = LocalAbColors.current
+    val s = LocalAbScale.current.factor
     val badgeName = AppConstants.Streak.milestoneNames[milestone] ?: "Champion"
     LaunchedEffect(Unit) { AudioPlayerManager.playSoundClap() }
-    // Gold/amber -- distinct from Review Gate's orange.
-    val goldBase = Color(0xFFB8860B)
-    val goldGradient = Brush.verticalGradient(listOf(Color(0xFFFFD54F), Color(0xFFD4A017)))
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Black.copy(alpha = 0.55f))
-            .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }) { /* consume */ },
-        contentAlignment = Alignment.Center
-    ) {
-        // "Candy Pop" theme -- gold/orange gradient card, white trophy badge overlapping
-        // the top edge, bubble-outline title, white pill positive action.
-        Box(
-            modifier = Modifier.fillMaxWidth(0.55f),
-            contentAlignment = Alignment.TopCenter
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .shadow(Dimens24, RoundedCornerShape(Dimens24), ambientColor = goldBase, spotColor = goldBase)
-                    .background(goldGradient, RoundedCornerShape(Dimens24))
-                    .padding(Dimens24),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(Dimens8)
-            ) {
-                Box(Modifier.height(Dimens16))
-                Text(
-                    text = "Milestone Reached!",
-                    style = MaterialTheme.typography.titleMedium.scaled().copy(
-                        shadow = Shadow(
-                            color = goldBase.copy(alpha = 0.85f),
-                            offset = Offset(1.5f, 1.5f),
-                            blurRadius = 0f
-                        )
-                    ),
-                    fontWeight = FontWeight.Black,
-                    color = Color.White,
-                    textAlign = TextAlign.Center
-                )
-                Text(
-                    text = "$milestone-Day Streak",
-                    style = MaterialTheme.typography.bodyLarge.scaled(),
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White
-                )
-                Text(
-                    text = "You earned the \"$badgeName\" badge! 🎉",
-                    style = MaterialTheme.typography.bodyMedium.scaled(),
-                    color = Color.White.copy(alpha = 0.92f),
-                    textAlign = TextAlign.Center
-                )
-                Box(
-                    modifier = Modifier
-                        .shadow(Dimens6, PillShape)
-                        .background(Color.White, PillShape)
-                        .clickable(
-                            indication = null,
-                            interactionSource = remember { MutableInteractionSource() },
-                            onClick = onDismiss
-                        )
-                        .padding(horizontal = Dimens24, vertical = Dimens12),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        text = "Awesome! Keep Going 🔥",
-                        color = goldBase,
-                        style = MaterialTheme.typography.labelLarge.scaled(),
-                        fontWeight = FontWeight.Bold
-                    )
+    val gold = Color(0xFFFFB800)
+    val goldEdge = Color(0xFFB07A00)
+    val shape = RoundedCornerShape(AbShapes.lg * s)
+    // The dimmed backdrop only fades and swallows taps (outside does nothing); the gold card alone pops in.
+    AbPopupLayer(onScrimTap = null) { layerWidth, _, shown ->
+        Column(
+            modifier = Modifier
+                .offset(y = 24.dp * s)
+                .width(minOf(layerWidth * 0.55f, 520.dp * s))
+                .abCardEntrance(shown)
+                .shadow(24.dp * s, shape, clip = false, ambientColor = gold, spotColor = gold)
+                .padding(bottom = 6.dp * s)
+                .drawBehind {
+                    val r = AbShapes.lg.toPx() * s
+                    drawRoundRect(goldEdge, Offset(0f, 6.dp.toPx() * s), size, CornerRadius(r, r))
                 }
+                .background(colors.bgSecondary, shape)
+                .background(gold.copy(alpha = if (colors.isDark) 0.12f else 0.10f), shape)
+                .border(3.dp, gold, shape)
+                .padding(start = 20.dp * s, end = 20.dp * s, top = 8.dp * s, bottom = 18.dp * s),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(6.dp * s),
+        ) {
+            // trophy badge, half outside the card
+            Box(
+                Modifier
+                    .negativeTopPadding(52.dp * s)
+                    .size(84.dp * s)
+                    .drawBehind {
+                        drawCircle(goldEdge, center = center.copy(y = center.y + 5.dp.toPx() * s))
+                        drawCircle(Brush.verticalGradient(listOf(Color(0xFFFFE680), gold)))
+                        drawCircle(Color.White, radius = size.minDimension / 2 - 2.dp.toPx(), style = Stroke(4.dp.toPx()))
+                    },
+                contentAlignment = Alignment.Center,
+            ) { Text("🏆", fontSize = (44 * s).sp) }
+
+            Text(
+                "Milestone Reached!",
+                style = AbTypography.title(s),
+                color = colors.accentOrange.let { if (colors.isDark) it else it.abDarkened(0.15f) },
+            )
+
+            // the streak count as a gold pill
+            Row(
+                Modifier
+                    .height(38.dp * s)
+                    .padding(bottom = 3.dp * s)
+                    .drawBehind {
+                        val c = CornerRadius(size.height / 2)
+                        drawRoundRect(goldEdge, Offset(0f, 3.dp.toPx() * s), size, c)
+                        drawRoundRect(Brush.verticalGradient(listOf(Color(0xFFFFD54F), Color(0xFFF2A91C))), size = size, cornerRadius = c)
+                        val sw = 2.dp.toPx()
+                        drawRoundRect(
+                            Color.White.copy(alpha = 0.85f), Offset(sw / 2, sw / 2), Size(size.width - sw, size.height - sw),
+                            CornerRadius(size.height / 2 - sw / 2), style = Stroke(sw),
+                        )
+                    }
+                    .padding(horizontal = 16.dp * s),
+                horizontalArrangement = Arrangement.spacedBy(6.dp * s),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Image(painterResource(R.drawable.fire), null, Modifier.size(22.dp * s), contentScale = ContentScale.Fit)
+                Text(
+                    "$milestone-Day Streak",
+                    style = AbTypography.fixed(20f * s, FontWeight.ExtraBold).copy(shadow = Shadow(Color.Black.copy(alpha = 0.2f), Offset(0f, 1f), 0f)),
+                    color = Color.White,
+                )
             }
 
-            // White trophy badge, overlapping the card's top edge
-            Box(
-                modifier = Modifier
-                    .offset(y = (-32).dp)
-                    .size(76.dp)
-                    .shadow(8.dp, CircleShape)
-                    .background(Color.White, CircleShape)
-                    .border(4.dp, Color.White, CircleShape),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(text = "🏆", fontSize = 40.sp)
-            }
+            Text(
+                "You earned the \"$badgeName\" badge! 🎉",
+                style = AbTypography.body(s).copy(fontWeight = FontWeight.SemiBold),
+                color = colors.textSecondary,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(horizontal = 8.dp * s),
+            )
+
+            AbButton(
+                text = "Awesome! Keep Going 🔥", tone = AbTone.Warning, size = AbSize.Medium, fillWidth = true,
+                modifier = Modifier.padding(top = 4.dp * s), onClick = onDismiss,
+            )
         }
     }
 }
 
+/** Pulls the content up by [amount] and gives that room back to the layout (SwiftUI's negative padding). */
+private fun Modifier.negativeTopPadding(amount: Dp): Modifier = layout { measurable, constraints ->
+    val p = measurable.measure(constraints)
+    val up = amount.roundToPx()
+    layout(p.width, (p.height - up).coerceAtLeast(0)) { p.place(0, -up) }
+}
+
 // ── Notification Permission Bottom Sheet ──────────────────────────────────────
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun NotificationPermissionSheet(
     onGoToSettings: () -> Unit,
     onDismiss: () -> Unit,
 ) {
-    // Custom overlay — avoids ModalBottomSheet animation glitch and nav bar bleed-through
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Black.copy(alpha = 0.45f))
-            .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }) { onDismiss() },
-        contentAlignment = Alignment.BottomCenter
-    ) {
-        Surface(
-            modifier = Modifier
-                .fillMaxWidth(0.8f)
-                .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }) { /* block dismiss */ },
-            shape = RoundedCornerShape(topStart = Dimens24, topEnd = Dimens24),
-            color = Color.White,
-            tonalElevation = 8.dp
-        ) {
+    val colors = LocalAbColors.current
+    val s = LocalAbScale.current.factor
+    // The dimmed backdrop only fades; the sheet alone rises from the bottom edge.
+    AbPopupLayer(onScrimTap = onDismiss) { layerWidth, _, shown ->
+        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.BottomCenter) {
+            val sheet = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp)
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .width(layerWidth * 0.8f)
+                    .abSheetEntrance(shown)
+                    .pointerInput(Unit) { detectTapGestures(onTap = { }) }
+                    .shadow(20.dp, sheet, clip = false, ambientColor = Color.Black, spotColor = Color.Black)
+                    .background(colors.bgSecondary, sheet)
+                    .border(3.dp, colors.brandPrimary.copy(alpha = if (colors.isDark) 0.7f else 0.4f), sheet)
                     .navigationBarsPadding()
-                    .padding(horizontal = Dimens24)
-                    .padding(top = Dimens20, bottom = Dimens24),
-                horizontalArrangement = Arrangement.spacedBy(Dimens24),
-                verticalAlignment = Alignment.CenterVertically
+                    .padding(start = 24.dp * s, end = 24.dp * s, top = 20.dp * s, bottom = 16.dp * s),
+                horizontalArrangement = Arrangement.spacedBy(20.dp * s),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
-                // ── Left: icon + title + description ──────────────────────
+                // ── Left: icon + title + description ──
                 Column(
-                    modifier = Modifier.weight(0.42f),
+                    modifier = Modifier.weight(1f),
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(Dimens8)
+                    verticalArrangement = Arrangement.spacedBy(8.dp * s),
                 ) {
-                    Box(
-                        modifier = Modifier
-                            .size(AppDimens.Dimens48)
-                            .shadow(elevation = Dimens6, shape = CircleShape, ambientColor = Color(0xFFE91E63).copy(alpha = 0.4f), spotColor = Color(0xFFE91E63).copy(alpha = 0.4f))
-                            .background(Brush.linearGradient(listOf(Color(0xFFF5538A), Color(0xFFE91E63))), CircleShape),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(text = "🔔", style = MaterialTheme.typography.displaySmall)
+                    AbHeroBadge(icon = Icons.Rounded.Notifications, accent = colors.accentPink, size = 56.dp * s)
+                    // the title and its line below sit close: Baloo's line box leaves a wide empty band between two lines
+                    Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy((-4).dp * s)) {
+                        Text(
+                            "Stay on Top of Learning", style = AbTypography.headline(s), color = colors.accentPink,
+                            textAlign = TextAlign.Center,
+                        )
+                        Text(
+                            "Allow notifications so the app can gently remind your child when it's the perfect time to practice. You're always in control — turn off anytime from Settings.",
+                            style = AbTypography.fixed(13f * s, FontWeight.SemiBold), color = colors.textSecondary,
+                            textAlign = TextAlign.Center,
+                        )
                     }
-                    Text(
-                        text = "Stay on Top of Learning",
-                        style = MaterialTheme.typography.titleSmall.scaled(),
-                        fontWeight = FontWeight.Black,
-                        color = Color(0xFFE91E63),
-                        textAlign = TextAlign.Center
-                    )
-                    Text(
-                        text = "Allow notifications so the app can gently remind your child when it's the perfect time to practice. You're always in control — turn off anytime from Settings.",
-                        style = MaterialTheme.typography.labelSmall.scaled(),
-                        color = Color.Black.copy(alpha = 0.60f),
-                        textAlign = TextAlign.Center
-                    )
                 }
 
-                // ── Right: steps + buttons ─────────────────────────────────
+                // ── Right: steps + buttons ──
                 Column(
-                    modifier = Modifier.weight(0.58f),
-                    verticalArrangement = Arrangement.spacedBy(Dimens10)
+                    modifier = Modifier.weight(1f),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(10.dp * s),
                 ) {
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(Color(0xFFF0F4FF), RoundedCornerShape(Dimens12))
-                            .padding(horizontal = Dimens16, vertical = Dimens12),
-                        verticalArrangement = Arrangement.spacedBy(Dimens10)
+                            .background(colors.surfaceTint.copy(alpha = if (colors.isDark) 0.5f else 0.7f), RoundedCornerShape(AbShapes.md * s))
+                            .padding(horizontal = 14.dp * s, vertical = 10.dp * s),
+                        verticalArrangement = Arrangement.spacedBy(8.dp * s),
                     ) {
                         NotificationStep(number = "1", text = "Tap \"Go to Settings\" below")
                         NotificationStep(number = "2", text = "Tap \"Notifications\"")
                         NotificationStep(number = "3", text = "Turn on \"Allow Notifications\"")
                     }
-
+                    AbButton(
+                        text = "Go to Settings", tone = AbTone.Primary, size = AbSize.Medium, icon = Icons.Default.Settings,
+                        fillWidth = true, onClick = onGoToSettings,
+                    )
                     Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .shadow(Dimens4, RoundedCornerShape(Dimens12), spotColor = PrimaryBlue.copy(alpha = 0.35f))
-                            .background(
-                                Brush.linearGradient(listOf(Color(0xFF42A5F5), PrimaryBlue)),
-                                RoundedCornerShape(Dimens12)
-                            )
-                            .clickable(
-                                indication = null,
-                                interactionSource = remember { MutableInteractionSource() },
-                                onClick = onGoToSettings
-                            )
-                            .padding(vertical = Dimens12),
-                        contentAlignment = Alignment.Center
+                        Modifier
+                            .abSquash(cornerRadius = AbShapes.sm * s, sound = AbSound.Back, onClick = onDismiss)
+                            .padding(vertical = 4.dp * s, horizontal = 12.dp * s),
                     ) {
-                        Text(
-                            text = "Go to Settings",
-                            color = Color.White,
-                            style = MaterialTheme.typography.labelLarge.scaled(),
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
-
-                    Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-                        Text(
-                            text = "Maybe Later",
-                            color = PrimaryBlue.copy(alpha = 0.50f),
-                            style = MaterialTheme.typography.labelMedium.scaled(),
-                            modifier = Modifier
-                                .clickable(
-                                    indication = null,
-                                    interactionSource = remember { MutableInteractionSource() },
-                                    onClick = onDismiss
-                                )
-                                .padding(top = Dimens4)
-                        )
+                        Text("Maybe Later", style = AbTypography.label(s), color = colors.textSecondary)
                     }
                 }
             }
@@ -997,28 +816,13 @@ private fun NotificationPermissionSheet(
 
 @Composable
 private fun NotificationStep(number: String, text: String) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(Dimens10)
-    ) {
-        Box(
-            modifier = Modifier
-                .size(Dimens20)
-                .background(PrimaryBlue, CircleShape),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = number,
-                color = Color.White,
-                style = MaterialTheme.typography.labelSmall.scaled(),
-                fontWeight = FontWeight.Bold
-            )
+    val colors = LocalAbColors.current
+    val s = LocalAbScale.current.factor
+    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp * s)) {
+        Box(Modifier.size(22.dp * s).background(colors.brandPrimary, CircleShape), contentAlignment = Alignment.Center) {
+            Text(number, color = Color.White, style = AbTypography.fixed(12f * s, FontWeight.ExtraBold))
         }
-        Text(
-            text = text,
-            style = MaterialTheme.typography.labelSmall.scaled(),
-            color = Color.Black.copy(alpha = 0.75f)
-        )
+        Text(text, style = AbTypography.fixed(13f * s, FontWeight.SemiBold), color = colors.textPrimary)
     }
 }
 
@@ -1065,16 +869,14 @@ private fun LevelsPager(
         ) { page ->
             LevelMiniCard(info = levelInfoList[page], onClick = actions[page])
         }
+        val dotInk = LocalAbColors.current.textPrimary
         Row(horizontalArrangement = Arrangement.spacedBy(Dimens4), verticalAlignment = Alignment.CenterVertically) {
             repeat(levelInfoList.size) { i ->
                 val selected = pagerState.currentPage == i
                 Box(
                     modifier = Modifier
                         .size(if (selected) Dimens8 else Dimens6)
-                        .background(
-                            if (selected) PrimaryBlue else PrimaryBlue.copy(alpha = 0.35f),
-                            CircleShape
-                        )
+                        .background(dotInk.copy(alpha = if (selected) 0.8f else 0.25f), CircleShape)
                 )
             }
         }
@@ -1083,51 +885,49 @@ private fun LevelsPager(
 
 @Composable
 private fun LevelMiniCard(info: LevelInfo, onClick: () -> Unit) {
+    val s = LocalAbScale.current.factor
+    // A chunky capsule: the card's own gradient on a darker 3D edge that sinks under the press.
     Row(
         modifier = Modifier
+            .padding(horizontal = Dimens6)
+            .padding(top = Dimens6, bottom = AppDimens.Dimens2)
             .fillMaxWidth()
-            .shadow(
-                elevation = Dimens4, shape = PillShape,
-                ambientColor = info.start.copy(alpha = 0.22f),
-                spotColor   = info.start.copy(alpha = 0.22f)
+            .abSquash(
+                face = Color.Transparent, edge = info.start.abDarkened(0.3f), stroke = null,
+                cornerRadius = AbShapes.pill, edgeHeight = 4.dp, sound = null,
+                onClick = { AudioPlayerManager.playSoundBtnClick(); onClick() },
             )
-            .background(Brush.linearGradient(listOf(info.start, info.end)), PillShape)
-            .clickable {
-                AudioPlayerManager.playSoundBtnClick()
-                onClick()
-            }
+            .background(Brush.horizontalGradient(listOf(info.start, info.end)), PillShape)
             .padding(horizontal = Dimens14, vertical = Dimens8),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(Dimens8)
     ) {
         Box(
             modifier = Modifier
-                .size(AppDimens.Dimens40)
+                .size((34 * s).dp)
                 .background(Color.White.copy(alpha = 0.22f), CircleShape),
             contentAlignment = Alignment.Center
         ) {
-            Text(text = info.emoji, style = MaterialTheme.typography.titleSmall.scaled())
+            Text(text = info.emoji, fontSize = (15 * s).sp)
         }
-        Column(modifier = Modifier.weight(1f)) {
+        Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(1.dp)) {
             Text(
                 text = "LEVEL ${info.number}",
-                style = MaterialTheme.typography.labelSmall.scaled(),
-                fontWeight = FontWeight.Bold,
-                color = Color.White.copy(alpha = 0.75f),
-                letterSpacing = 1.sp
+                style = AbTypography.fixed(9f * s, FontWeight.Bold).copy(letterSpacing = 1.sp),
+                color = Color.White.copy(alpha = 0.75f)
             )
             Text(
                 text = info.title,
-                style = MaterialTheme.typography.labelMedium.scaled(),
-                fontWeight = FontWeight.Black,
-                color = Color.White
+                style = AbTypography.fixed(13f * s, FontWeight.Black),
+                color = Color.White,
+                maxLines = 1
             )
         }
         Icon(
             imageVector = Icons.Default.ChevronRight,
             contentDescription = null,
             tint = Color.White.copy(alpha = 0.8f),
-            modifier = Modifier.size(Dimens16)
+            modifier = Modifier.size((12 * s).dp)
         )
     }
 }
@@ -1137,6 +937,9 @@ private fun LevelMiniCard(info: LevelInfo, onClick: () -> Unit) {
 @Composable
 private fun EnglishBanner(context: Context, onUrlClick: () -> Unit) {
     val isTablet = DeviceInfo.isTablet
+    val colors = LocalAbColors.current
+    val s = LocalAbScale.current.factor
+    val ink = colors.textPrimary
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
     val scale by animateFloatAsState(
@@ -1145,53 +948,36 @@ private fun EnglishBanner(context: Context, onUrlClick: () -> Unit) {
         label = "bannerScale"
     )
     val clickAction: () -> Unit = { onUrlClick() }
+    val chevronTint = Color(0xFF9374EF).copy(alpha = 0.55f)
 
     if (isTablet) {
-        // Tablet: icon left + 3-line text + chevron right
+        // Tablet: icon left + 3-line text + chevron right. Each line gets an exact-height box so Baloo's tall line box
+        // does not spread the lines apart.
         Row(
             modifier = Modifier
                 .graphicsLayer { scaleX = scale; scaleY = scale }
                 .background(Color(0xFF5532D2).copy(alpha = 0.10f), RoundedCornerShape(percent = 50))
                 .border(1.dp, Color(0xFF9374EF).copy(alpha = 0.35f), RoundedCornerShape(percent = 50))
                 .clickable(interactionSource = interactionSource, indication = null, onClick = clickAction)
-                .padding(horizontal = Dimens16, vertical = Dimens8),
+                .padding(horizontal = Dimens12, vertical = AppDimens.Dimens2),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(Dimens8)
         ) {
             Image(
                 painter = painterResource(R.drawable._english),
                 contentDescription = null,
-                modifier = Modifier.size(AppDimens.Dimens32)
+                modifier = Modifier.size(Dimens24)
             )
-            Column(verticalArrangement = Arrangement.spacedBy(1.dp)) {
-                Text(
-                    text = "Also try",
-                    color = Color(0xFF5532D2).copy(alpha = 0.50f),
-                    style = MaterialTheme.typography.labelSmall.scaled(),
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-                Text(
-                    text = "Vedaavi English 📚",
-                    color = Color(0xFF5532D2).copy(alpha = 0.70f),
-                    style = MaterialTheme.typography.labelSmall.scaled(),
-                    fontWeight = FontWeight.Bold,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-                Text(
-                    text = "Fun learning for kids",
-                    color = Color(0xFF5532D2).copy(alpha = 0.50f),
-                    style = MaterialTheme.typography.labelSmall.scaled(),
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
+            Column {
+                BannerLine("Also try", 9f * s, FontWeight.SemiBold, ink.copy(alpha = 0.55f))
+                BannerLine("Vedaavi English", 11f * s, FontWeight.Bold, ink.copy(alpha = 0.75f))
+                BannerLine("Fun learning for kids", 9f * s, FontWeight.SemiBold, ink.copy(alpha = 0.55f))
             }
             Icon(
                 imageVector = Icons.Default.ChevronRight,
                 contentDescription = null,
-                tint = Color(0xFF9374EF).copy(alpha = 0.55f),
-                modifier = Modifier.size(Dimens10)
+                tint = chevronTint,
+                modifier = Modifier.size((9 * s).dp)
             )
         }
     } else {
@@ -1209,29 +995,30 @@ private fun EnglishBanner(context: Context, onUrlClick: () -> Unit) {
             Image(
                 painter = painterResource(R.drawable._english),
                 contentDescription = null,
-                modifier = Modifier.size(Dimens24)
+                modifier = Modifier.size(20.dp)
             )
-            Column(verticalArrangement = Arrangement.spacedBy(0.dp)) {
-                Text(
-                    text = "Also try: Vedaavi English! 📚",
-                    color = Color(0xFF5532D2).copy(alpha = 0.70f),
-                    style = MaterialTheme.typography.labelSmall.scaled(),
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = "Fun learning for kids",
-                    color = Color(0xFF5532D2).copy(alpha = 0.50f),
-                    style = MaterialTheme.typography.labelSmall.scaled(),
-                    fontWeight = FontWeight.Normal
-                )
+            Column {
+                BannerLine("Also try: Vedaavi English!", 11f * s, FontWeight.Bold, ink.copy(alpha = 0.75f))
+                BannerLine("Fun learning for kids", 9f * s, FontWeight.SemiBold, ink.copy(alpha = 0.55f))
             }
             Icon(
                 imageVector = Icons.Default.ChevronRight,
                 contentDescription = null,
-                tint = Color(0xFF9374EF).copy(alpha = 0.55f),
-                modifier = Modifier.size(Dimens10)
+                tint = chevronTint,
+                modifier = Modifier.size((9 * s).dp)
             )
         }
+    }
+}
+
+/** One line of the English banner in an exact-height box (the font size is also the line height). */
+@Composable
+private fun BannerLine(text: String, size: Float, weight: FontWeight, color: Color) {
+    androidx.compose.foundation.layout.Box(Modifier.height((size * 1.1f).dp), contentAlignment = Alignment.CenterStart) {
+        Text(
+            text = text, color = color, style = AbTypography.fixed(size, weight), maxLines = 1,
+            overflow = TextOverflow.Ellipsis, modifier = Modifier.wrapContentHeight(unbounded = true)
+        )
     }
 }
 
@@ -1239,27 +1026,31 @@ private fun EnglishBanner(context: Context, onUrlClick: () -> Unit) {
 
 @Composable
 private fun WeeklyReportCard(stats: WeeklySummaryManager.WeeklyStats, onClick: () -> Unit) {
+    val colors = LocalAbColors.current
+    val s = LocalAbScale.current.factor
     Row(
         modifier = Modifier
             .background(Color(0xFF2E7D32).copy(alpha = 0.10f), RoundedCornerShape(percent = 50))
             .border(1.dp, Color(0xFF43A047).copy(alpha = 0.35f), RoundedCornerShape(percent = 50))
+            // the tap ripple follows the pill: clip to its shape before the click area
+            .clip(RoundedCornerShape(percent = 50))
             .clickable { onClick() }
             .padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens4),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)
     ) {
-        Text("📊", style = MaterialTheme.typography.labelSmall.scaled())
-        Column(verticalArrangement = Arrangement.spacedBy(0.dp)) {
+        Text("📊", fontSize = (11 * s).sp)
+        // the title and its line below sit close: Baloo's line box leaves a band between two lines
+        Column(verticalArrangement = Arrangement.spacedBy((-3).dp * s)) {
             Text(
                 text = "This Week",
-                color = Color(0xFF2E7D32).copy(alpha = 0.85f),
-                fontFamily = FontFamily(Font(R.font.font_bold)),
-                style = MaterialTheme.typography.labelSmall.scaled()
+                color = colors.textPrimary.copy(alpha = 0.85f),
+                style = AbTypography.fixed(11f * s, FontWeight.ExtraBold)
             )
             Text(
                 text = if (stats.problems > 0) "${stats.problems} solved · ${max(1, stats.days)}d" else "Tap to view",
-                color = Color(0xFF2E7D32).copy(alpha = 0.6f),
-                style = MaterialTheme.typography.labelSmall.scaled()
+                color = colors.textPrimary.copy(alpha = 0.6f),
+                style = AbTypography.fixed(9f * s, FontWeight.SemiBold)
             )
         }
     }
@@ -1267,11 +1058,9 @@ private fun WeeklyReportCard(stats: WeeklySummaryManager.WeeklyStats, onClick: (
 
 @Composable
 private fun WeeklyReportDialog(stats: WeeklySummaryManager.WeeklyStats, onDismiss: () -> Unit) {
-    Box(
-        modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)),
-        contentAlignment = Alignment.Center
-    ) {
-        WeeklyReportContent(stats, onClose = onDismiss)
+    // The dimmed backdrop only fades (tapping it closes); the card alone pops in.
+    AbPopupLayer(onScrimTap = onDismiss) { _, _, shown ->
+        Box(Modifier.abCardEntrance(shown)) { WeeklyReportContent(stats, onClose = onDismiss) }
     }
 }
 
@@ -1279,110 +1068,95 @@ private fun WeeklyReportDialog(stats: WeeklySummaryManager.WeeklyStats, onDismis
 fun WeeklyReportContent(
     stats: WeeklySummaryManager.WeeklyStats,
     onClose: (() -> Unit)? = null,
-    compact: Boolean = false, // smaller paddings — used on My Account like iOS
+    compact: Boolean = false, // smaller paddings: used on My Account, like iOS
     modifier: Modifier = Modifier
 ) {
-    // Only the real modal popup (has a close button) gets the "Sticker Book"
-    // teal header band. The inline/embedded usage (My Account) is untouched.
+    val colors = LocalAbColors.current
+    val abScale = LocalAbScale.current
+    // A tablet gets a bigger card (iOS: 1 / 1.45 / 1.7)
+    val s = if (abScale.factor >= 1.5f) 1.7f else if (abScale.isTablet) 1.45f else 1f
     val isPopup = onClose != null
-    val headerAccent = Brush.horizontalGradient(listOf(Color(0xFF46BBC5), Color(0xFF107D86)))
+    val shape = RoundedCornerShape(AppDimens.Dimens20)
+    val edge = if (compact) 3.dp else 6.dp
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = if (isPopup) {
-            modifier
-                .widthIn(max = 380.dp)
-                .shadow(AppDimens.Dimens20, RoundedCornerShape(AppDimens.Dimens20), ambientColor = Color(0xFF107D86), spotColor = Color(0xFF107D86))
-                .clip(RoundedCornerShape(AppDimens.Dimens20))
-                .background(Color.White)
-        } else {
-            modifier
-                .background(Color.White, RoundedCornerShape(AppDimens.Dimens20))
-                .border(3.dp, Color(0xFF43A047), RoundedCornerShape(AppDimens.Dimens20))
-        }
-    ) {
-        if (isPopup) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(headerAccent)
-                    .padding(vertical = AppDimens.Dimens12),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "📊 This Week",
-                    color = Color.White,
-                    fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                    style = MaterialTheme.typography.titleLarge.scaled()
-                )
+        verticalArrangement = Arrangement.spacedBy(if (compact) AppDimens.Dimens10 else AppDimens.Dimens16),
+        modifier = modifier
+            .then(if (isPopup) Modifier.width(minOf(androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp.dp * 0.6f, 540.dp * s)) else Modifier)
+            .shadow(if (compact) 5.dp else 14.dp, shape, clip = false, ambientColor = Color.Black.copy(alpha = if (compact) 0.08f else 0.25f), spotColor = Color.Black.copy(alpha = if (compact) 0.08f else 0.25f))
+            .padding(bottom = edge)
+            .drawBehind {
+                val r = AppDimens.Dimens20.toPx()
+                drawRoundRect(colors.outline, Offset(0f, edge.toPx()), size, CornerRadius(r, r))
             }
-        }
-
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(if (compact) AppDimens.Dimens8 else AppDimens.Dimens16),
-            modifier = Modifier.padding(
-                horizontal = if (compact) AppDimens.Dimens24 else AppDimens.Dimens30,
+            .background(colors.bgSecondary.copy(alpha = if (colors.isDark) 0.97f else 0.95f), shape)
+            .border(if (compact) 2.dp else 3.dp, colors.accentGreen.copy(alpha = if (colors.isDark) 0.7f else 0.55f), shape)
+            .padding(
+                horizontal = if (compact) AppDimens.Dimens16 else AppDimens.Dimens30,
                 vertical = if (compact) AppDimens.Dimens12 else AppDimens.Dimens24
             )
-        ) {
-            if (!isPopup) {
-                Text(
-                    text = "📊 This Week",
-                    color = Color(0xFF0074D5),
-                    fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                    style = MaterialTheme.typography.titleLarge.scaled()
-                )
+    ) {
+        // Coloured header band: popup presentation only; the inline My Account embed keeps a plain title.
+        val titleSize = (if (compact) 22f else 28f) * s
+        if (isPopup) {
+            Box(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = AppDimens.Dimens4)
+                    .clip(RoundedCornerShape(AppDimens.Dimens14))
+                    .background(Brush.horizontalGradient(listOf(colors.brandPrimary, colors.brandPrimaryDark)))
+                    .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens10),
+                contentAlignment = Alignment.Center,
+            ) { Text("📊 This Week", color = Color.White, style = AbTypography.fixed(titleSize, FontWeight.ExtraBold)) }
+        } else {
+            Text("📊 This Week", color = colors.brandPrimary, style = AbTypography.fixed(titleSize, FontWeight.ExtraBold))
+        }
+
+        if (stats.problems > 0) {
+            Row(horizontalArrangement = Arrangement.spacedBy(if (compact) AppDimens.Dimens8 else AppDimens.Dimens12)) {
+                WRTile("⭐", "${stats.problems}", "Problems", colors.brandPrimary, compact, s)
+                WRTile("📅", "${max(1, stats.days)}", "Days", colors.accentGreen, compact, s)
+                WRTile("🔥", "${stats.streak}", "Streak", colors.accentOrange, compact, s)
             }
-            if (stats.problems > 0) {
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
-                    WRTile("⭐", "${stats.problems}", "Problems", Color(0xFF0074D5))
-                    WRTile("📅", "${max(1, stats.days)}", "Days", Color(0xFF2E7D32))
-                    WRTile("🔥", "${stats.streak}", "Streak", Color(0xFFE65100))
-                }
-                Text(
-                    text = "Great progress this week — keep it going! 🌟",
-                    color = Color.Black.copy(alpha = 0.65f),
-                    fontFamily = FontFamily(Font(R.font.font_medium)),
-                    textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.bodyMedium.scaled()
-                )
-            } else {
-                Text("🌱", style = MaterialTheme.typography.headlineMedium.scaled())
-                Text(
-                    text = "No practice yet this week",
-                    color = Color(0xFF2E7D32),
-                    fontFamily = FontFamily(Font(R.font.font_bold)),
-                    style = MaterialTheme.typography.titleMedium.scaled()
-                )
-                Text(
-                    text = "Practice together to build this week's report!",
-                    color = Color.Black.copy(alpha = 0.65f),
-                    fontFamily = FontFamily(Font(R.font.font_medium)),
-                    textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.bodyMedium.scaled()
-                )
-            }
-            if (onClose != null) {
-                KidsActionButton(text = "Got it!", type = ButtonType.ORANGE, onClick = onClose)
-            }
+            Text(
+                "Great progress this week — keep it going! 🌟", color = colors.textSecondary, textAlign = TextAlign.Center,
+                style = AbTypography.fixed((if (compact) 14f else 17f) * s, FontWeight.SemiBold),
+            )
+        } else {
+            Text("🌱", fontSize = ((if (compact) 30 else 40) * s).sp)
+            Text(
+                "No practice yet this week", textAlign = TextAlign.Center,
+                color = colors.accentGreen.let { if (colors.isDark) it else it.abDarkened(0.2f) },
+                style = AbTypography.fixed((if (compact) 17f else 22f) * s, FontWeight.ExtraBold),
+            )
+            Text(
+                "Practice together to build this week's report!", color = colors.textSecondary, textAlign = TextAlign.Center,
+                style = AbTypography.fixed((if (compact) 14f else 17f) * s, FontWeight.SemiBold),
+            )
+        }
+        if (onClose != null) {
+            AbButton(
+                text = stringResource(R.string.close), tone = AbTone.Warning, size = AbSize.Medium, icon = Icons.Default.Check,
+                modifier = Modifier.padding(top = AppDimens.Dimens4), onClick = onClose,
+            )
         }
     }
 }
 
 @Composable
-private fun WRTile(emoji: String, value: String, label: String, color: Color) {
+private fun WRTile(emoji: String, value: String, label: String, color: Color, compact: Boolean, s: Float) {
+    val colors = LocalAbColors.current
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens4),
         modifier = Modifier
-            .background(color.copy(alpha = 0.10f), RoundedCornerShape(AppDimens.Dimens12))
-            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens10)
+            .widthIn(min = ((if (compact) 54 else 68) * s).dp)
+            .background(color.copy(alpha = if (colors.isDark) 0.18f else 0.12f), RoundedCornerShape(AppDimens.Dimens12))
+            .padding(horizontal = AppDimens.Dimens8, vertical = if (compact) AppDimens.Dimens8 else AppDimens.Dimens10)
     ) {
-        Text(emoji, style = MaterialTheme.typography.titleLarge.scaled())
-        Text(value, color = color, fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-            style = MaterialTheme.typography.titleLarge.scaled())
-        Text(label, color = Color.Black.copy(alpha = 0.6f), fontFamily = FontFamily(Font(R.font.font_medium)),
-            style = MaterialTheme.typography.labelSmall.scaled())
+        Text(emoji, fontSize = ((if (compact) 24 else 30) * s).sp)
+        Text(value, color = color, style = AbTypography.fixed((if (compact) 22f else 28f) * s, FontWeight.ExtraBold))
+        Text(label, color = colors.textSecondary, style = AbTypography.fixed(11f * s, FontWeight.SemiBold))
     }
 }

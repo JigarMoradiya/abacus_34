@@ -1,113 +1,29 @@
 package com.jigar.me.ui.view.home.screens.reports.components
 
-
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.rounded.CalendarMonth
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
-import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryLight
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.ab.AbMenuPicker
+import com.jigar.me.ui.view.ab.LocalAbScale
 import com.jigar.me.ui.view.home.screens.reports.viewmodels.ReportHistoryUiState
 import com.jigar.me.ui.view.home.screens.reports.viewmodels.ReportHistoryViewModel
-import com.jigar.me.ui.view.home.theme.AppDimens
 
-
+/** The date range picker of the header (last 30 days, this month ...). */
 @Composable
 fun ReportDateFilterCard(
     uiState: ReportHistoryUiState,
     viewModel: ReportHistoryViewModel
 ) {
-    Box {
-
-        Card(
-            onClick = { viewModel.onDateFilterClick() },
-            colors = CardDefaults.cardColors(containerColor = ColorPrimaryLight),
-            shape = RoundedCornerShape(AppDimens.Dimens30),
-            elevation = CardDefaults.cardElevation(
-                AppDimens.Dimens3
-            ),
-            modifier = Modifier
-                .wrapContentWidth()
-                .padding(top = AppDimens.Dimens6)
-                .padding(end = AppDimens.Dimens16)
-        ) {
-
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .padding(
-                        start = AppDimens.Dimens12,
-                        end = AppDimens.Dimens6
-                    ).padding(vertical = AppDimens.Dimens4)
-            ) {
-
-                Text(
-                    text = uiState.selectedDateFilter?.label ?: stringResource(R.string.select_date),
-                    style = MaterialTheme.typography.bodySmall.scaled().copy(
-                        fontFamily = FontFamily(Font(R.font.font_bold)),
-                        color = Color.Black
-                    ),
-                    modifier = Modifier.width(AppDimens.Dimens90),
-                    maxLines = 1
-                )
-
-                Icon(
-                    modifier = Modifier.size(AppDimens.Dimens16),
-                    imageVector = Icons.Default.ArrowDropDown,
-                    contentDescription = null,
-                    tint = Color.Black
-                )
-            }
-        }
-
-        DropdownMenu(
-            expanded = uiState.isDateDropdownExpanded,
-            onDismissRequest = { viewModel.onDateFilterDismiss() },
-            containerColor = ColorPrimaryLight
-        ) {
-            uiState.dateFilterList.forEach { item ->
-                DropdownMenuItem(
-                    modifier = Modifier.height(AppDimens.Dimens36),
-                    text = {
-                        Text(
-                            text = item.label,
-                            style = MaterialTheme.typography.bodyMedium.scaled().copy(
-                                fontWeight = FontWeight.SemiBold,
-                                fontFamily = FontFamily(Font(R.font.font_semibold))
-                            )
-                        )
-                    },
-                    onClick = {
-                        viewModel.onDateFilterSelected(item)
-                    }
-                )
-            }
-        }
-    }
+    AbMenuPicker(
+        items = uiState.dateFilterList,
+        selectedTitle = uiState.selectedDateFilter?.label ?: "",
+        title = { it.label },
+        onSelect = viewModel::onDateFilterSelected,
+        placeholder = stringResource(R.string.select_date),
+        icon = Icons.Rounded.CalendarMonth,
+        minWidth = 150.dp * LocalAbScale.current.factor,
+    )
 }

@@ -1,35 +1,30 @@
 package com.jigar.me.ui.view.home.screens.levels.level1
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
-import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.HomePageBackground
+import com.jigar.me.ui.view.home.screens.levels.levelDp
+import com.jigar.me.ui.view.ab.AbLevelCard
+import com.jigar.me.ui.view.ab.AbTopBar
+import com.jigar.me.ui.view.ab.AbWorld
+import com.jigar.me.ui.view.home.screens.levels.LevelScreenRoot
+import com.jigar.me.ui.view.home.screens.levels.levelForeground
+import com.jigar.me.ui.view.home.screens.levels.levelTopBarPadding
 import com.jigar.me.ui.view.home.theme.AppDimens
 
 private data class PhaseData(
     val emoji: String,
     val title: String,
     val description: String,
-    val startColor: Color,
-    val endColor: Color,
+    val accent: Color,
 )
 
 @Composable
@@ -44,99 +39,45 @@ fun Level1LessonScreen(
 
     data class PhaseAction(val phase: PhaseData, val onClick: () -> Unit)
     val phaseActions = listOf(
-        PhaseAction(PhaseData("📚", "Learn",    "Understand the concept step by step",   lesson.startColor, lesson.endColor))   { onNavigateToLearn(lessonId) },
-        PhaseAction(PhaseData("✏️", "Practice", "Move the abacus beads yourself",         Color(0xFF1B5E20),  Color(0xFF4CAF50))) { onNavigateToPractice(lessonId) },
-        PhaseAction(PhaseData("⭐", "Quiz",     "Test your skills & earn stars!",          Color(0xFF4A148C),  Color(0xFFAB47BC))) { onNavigateToQuiz(lessonId) },
+        PhaseAction(PhaseData("📚", "Learn",    "Understand the concept step by step", lesson.endColor))  { onNavigateToLearn(lessonId) },
+        PhaseAction(PhaseData("✏️", "Practice", "Move the abacus beads yourself",      Color(0xFF4CAF50))) { onNavigateToPractice(lessonId) },
+        PhaseAction(PhaseData("⭐", "Quiz",     "Test your skills & earn stars!",      Color(0xFFAB47BC))) { onNavigateToQuiz(lessonId) },
     )
-    val phases = phaseActions.map { it.phase }
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-            BackButtonWithText(
-                title       = "Lesson ${lesson.id}  ·  ${lesson.title}",
-                onBackClick = onBackClick
+    LevelScreenRoot(AbWorld.Meadow) {
+        Column(modifier = Modifier.levelForeground()) {
+            AbTopBar(
+                title    = "Lesson ${lesson.id}  ·  ${lesson.title}",
+                onBack   = onBackClick,
+                modifier = Modifier.levelTopBarPadding(),
             )
 
-            BoxWithConstraints(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f),
-                contentAlignment = Alignment.Center
-            ) {
-                val spacing    = AppDimens.Dimens16
-                val hPad       = AppDimens.Dimens20
-                val shadowRoom = AppDimens.Dimens10
-                val cardW      = (maxWidth - hPad * 2 - spacing * (phases.size - 1)) / phases.size
-                val cardH      = minOf(maxHeight * 0.80f, 360.dp.scaled())
+            BoxWithConstraints(modifier = Modifier.fillMaxWidth().weight(1f)) {
+                val spacing = AppDimens.Dimens16
+                val hPad    = AppDimens.Dimens20
+                val cardW   = (maxWidth - hPad * 2 - spacing * (phaseActions.size - 1)) / phaseActions.size
+                val cardH   = minOf(maxHeight * 0.82f, levelDp(360f))
 
-                Column(
-                    modifier            = Modifier.width(maxWidth - hPad * 2),
-                    horizontalAlignment = Alignment.CenterHorizontally,
+                Row(
+                    modifier              = Modifier.fillMaxSize(),
+                    horizontalArrangement = Arrangement.spacedBy(spacing, Alignment.CenterHorizontally),
+                    verticalAlignment     = Alignment.CenterVertically,
                 ) {
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(spacing),
-                        verticalAlignment     = Alignment.CenterVertically
-                    ) {
-                        phaseActions.forEach { pa ->
-                            PhaseCard(
-                                phase   = pa.phase,
-                                cardW   = cardW,
-                                cardH   = cardH,
-                                onClick = pa.onClick
-                            )
-                        }
+                    phaseActions.forEach { pa ->
+                        AbLevelCard(
+                            emoji     = pa.phase.emoji,
+                            title     = pa.phase.title,
+                            label     = pa.phase.title,
+                            accent    = pa.phase.accent,
+                            width     = cardW,
+                            height    = cardH,
+                            showStars = false,
+                            subtitle  = pa.phase.description,
+                            onClick   = pa.onClick,
+                        )
                     }
-                    Spacer(Modifier.height(shadowRoom))
                 }
             }
-        }
-    }
-}
-
-@Composable
-private fun PhaseCard(phase: PhaseData, cardW: Dp, cardH: Dp, onClick: () -> Unit) {
-    val shape = RoundedCornerShape(AppDimens.Dimens24)
-    Box(
-        modifier = Modifier
-            .width(cardW)
-            .height(cardH)
-            .shadow(
-                elevation    = AppDimens.Dimens8,
-                shape        = shape,
-                ambientColor = phase.endColor.copy(alpha = 0.4f),
-                spotColor    = phase.endColor.copy(alpha = 0.4f)
-            )
-            .background(Brush.linearGradient(listOf(phase.startColor, phase.endColor)))
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication        = null
-            ) { AudioPlayerManager.playSoundBtnClick(); onClick() },
-        contentAlignment = Alignment.Center
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-            modifier = Modifier.padding(AppDimens.Dimens16)
-        ) {
-            Text(
-                text  = phase.emoji,
-                style = MaterialTheme.typography.displayMedium.scaled()
-            )
-            Spacer(modifier = Modifier.height(AppDimens.Dimens12))
-            Text(
-                text       = phase.title,
-                style      = MaterialTheme.typography.headlineMedium.scaled(),
-                color      = Color.White,
-                fontWeight = FontWeight.Black
-            )
-            Spacer(modifier = Modifier.height(AppDimens.Dimens8))
-            Text(
-                text      = phase.description,
-                style     = MaterialTheme.typography.bodyMedium.scaled(),
-                color     = Color.White.copy(alpha = 0.85f),
-                textAlign = TextAlign.Center
-            )
         }
     }
 }

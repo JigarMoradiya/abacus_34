@@ -1,16 +1,12 @@
 package com.jigar.me.ui.view.home.screens.whats_learning.components
 
-import com.jigar.me.ui.view.home.theme.AppDimens
-
 import android.net.Uri
 import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
+import com.jigar.me.ui.view.ab.AbBeadsLoader
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -20,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -35,6 +32,10 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.ProgressiveMediaSource
 import androidx.media3.ui.PlayerView
 import com.jigar.me.R
+import com.jigar.me.ui.view.ab.AbGlassPanel
+import com.jigar.me.ui.view.ab.AbShapes
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
 
 @androidx.annotation.OptIn(UnstableApi::class)
 @OptIn(UnstableApi::class)
@@ -45,6 +46,8 @@ fun AssetVideoPlayer(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
+    val colors = LocalAbColors.current
+    val s = LocalAbScale.current.factor
     var isLoading by remember { mutableStateOf(true) }
     var exoPlayer by remember { mutableStateOf<ExoPlayer?>(null) }
 
@@ -92,12 +95,9 @@ fun AssetVideoPlayer(
         exoPlayer?.playWhenReady = isPlaying
     }
 
-    Card(
-        modifier = modifier,
-        shape = RoundedCornerShape(AppDimens.Dimens12),
-        elevation = CardDefaults.cardElevation(AppDimens.Dimens4)
-    ) {
-        Box {
+    // the video sits on a calm kit panel, like the abacus board elsewhere
+    AbGlassPanel(modifier, padding = 6.dp) {
+        Box(Modifier.clip(RoundedCornerShape(AbShapes.sm * s))) {
             AndroidView(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -116,9 +116,7 @@ fun AssetVideoPlayer(
             )
 
             if (isLoading) {
-                CircularProgressIndicator(
-                    modifier = Modifier.align(Alignment.Center)
-                )
+                AbBeadsLoader(Modifier.align(Alignment.Center))
             }
         }
     }

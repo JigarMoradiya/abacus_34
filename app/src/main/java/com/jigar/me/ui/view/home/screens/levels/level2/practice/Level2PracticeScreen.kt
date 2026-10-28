@@ -1,39 +1,72 @@
 package com.jigar.me.ui.view.home.screens.levels.level2.practice
 
-import androidx.compose.animation.*
-import androidx.compose.animation.core.spring
+import com.jigar.me.ui.view.ab.abReadable
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.*
+import androidx.compose.ui.unit.dp
+import com.jigar.me.ui.view.ab.abDarkened
+import com.jigar.me.ui.view.ab.abChunkyFace
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.jigar.me.data.local.data.DeviceInfo
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
+import com.jigar.me.ui.view.home.screens.levels.levelSp
+import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.data.local.data.RodMovement
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.ab.AbGlassPanel
+import com.jigar.me.ui.view.ab.AbInsetBox
+import com.jigar.me.ui.view.ab.AbPanelButton
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.AbWorld
+import com.jigar.me.ui.view.ab.AbacusFrameStyle
 import com.jigar.me.ui.view.base.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas.AbacusWithDecimalCanvas
-import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
-import com.jigar.me.ui.view.home.common_ui.buttons.L2ActionBtn
+import com.jigar.me.ui.view.home.screens.levels.LevelHeroPanel
+import com.jigar.me.ui.view.home.screens.levels.LevelPanelFit
+import com.jigar.me.ui.view.home.screens.levels.LevelProgressTopBar
+import com.jigar.me.ui.view.home.screens.levels.LevelResultPopup
+import com.jigar.me.ui.view.home.screens.levels.LevelFitToBox
+import com.jigar.me.ui.view.home.screens.levels.LevelScreenRoot
+import com.jigar.me.ui.view.home.screens.levels.level2.generateLevel2PracticeProblems
+import com.jigar.me.ui.view.home.screens.levels.level2.l2FormulaRodMovements
+import com.jigar.me.ui.view.home.screens.levels.level2.level2Lessons
+import com.jigar.me.ui.view.home.screens.levels.levelForeground
+import com.jigar.me.ui.view.home.screens.levels.levelMainTitleSize
+import com.jigar.me.ui.view.home.screens.levels.levelParagraph
+import com.jigar.me.ui.view.home.screens.levels.levelText
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
 import kotlinx.coroutines.delay
-import com.jigar.me.ui.view.home.screens.levels.level2.level2Lessons
-import com.jigar.me.ui.view.home.screens.levels.level2.generateLevel2PracticeProblems
-import com.jigar.me.ui.view.home.screens.levels.level2.l2FormulaRodMovements
 
 private enum class L2PracticePhase { ZERO, SETUP_ARROW, INITIAL, OP_ARROW, RESULT }
 
@@ -52,7 +85,7 @@ fun Level2PracticeScreen(
 
     val problem = problems[minOf(problemIndex, problems.size - 1)]
     val prefs   = LocalPreferencesHelper.current
-    val selectedTheme = prefs.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default)
+    val selectedTheme = AbacusTheme.active(prefs)
 
     val isTablet    = DeviceInfo.isTablet
     val abCalc      = remember { AbacusCalculations(lesson.columns) }
@@ -97,50 +130,31 @@ fun Level2PracticeScreen(
         abCalc.setAbacusValueFromString(p.result.toString())
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        HomePageBackground()
-        Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+    LevelScreenRoot(AbWorld.Sunset) {
+        Column(modifier = Modifier.levelForeground()) {
 
-            // ── Header: back button + progress bar ────────────────────────────
-            Row(
-                modifier          = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                BackButtonWithText(
-                    title       = "Lesson ${lesson.id}  ·  Practice",
-                    onBackClick = onBackClick
-                )
-                LinearProgressIndicator(
-                    progress   = { (problemIndex.toFloat() + 1f) / problems.size },
-                    modifier   = Modifier
-                        .weight(1f)
-                        .padding(end = AppDimens.Dimens32)
-                        .height(AppDimens.Dimens8),
-                    color      = lesson.endColor,
-                    trackColor = lesson.endColor.copy(alpha = 0.25f),
-                )
-            }
+            // ── Header: back button + progress ────────────────────────────────
+            LevelProgressTopBar(
+                title  = "Lesson ${lesson.id}  ·  Practice",
+                filled = problemIndex + 1,
+                total  = problems.size,
+                onBack = onBackClick,
+            )
 
             // ── Main content ──────────────────────────────────────────────────
-            Box(
-                modifier         = Modifier.fillMaxWidth().weight(1f),
-                contentAlignment = Alignment.Center
-            ) {
+            BoxWithConstraints(modifier = Modifier.fillMaxWidth().weight(1f)) {
+                val leftW = maxWidth * 0.35f
+
                 Row(
                     modifier = Modifier
-                        .padding(top = AppDimens.Dimens12, end = AppDimens.Dimens20, bottom = AppDimens.Dimens12)
-                        .fillMaxSize(),
+                        .fillMaxSize()
+                        .padding(start = AppDimens.Dimens16, end = AppDimens.Dimens20) // the panel keeps the same edge as the back button
+                        .padding(vertical = AppDimens.Dimens12),
                     horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16),
                     verticalAlignment     = Alignment.CenterVertically
                 ) {
                     // ── Left panel: equation or animated abacus ───────────────
-                    Box(
-                        modifier = Modifier
-                            .weight(0.35f)
-                            .fillMaxHeight()
-                            .padding(bottom = AppDimens.Dimens8),
-                        contentAlignment = Alignment.Center
-                    ) {
+                    AbGlassPanel(modifier = Modifier.width(leftW).fillMaxHeight()) {
                         AnimatedContent(
                             targetState    = animStarted,
                             transitionSpec = { fadeIn(tween(250)) togetherWith fadeOut(tween(250)) },
@@ -151,77 +165,77 @@ fun Level2PracticeScreen(
                                 Column(
                                     modifier            = Modifier.fillMaxSize(),
                                     horizontalAlignment = Alignment.CenterHorizontally,
-                                    verticalArrangement = Arrangement.Center
+                                    verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
                                 ) {
+                                    // the abacus fills the card, shrinking to fit inside it
                                     Box(
-                                        modifier         = Modifier.weight(1f).fillMaxWidth(),
+                                        modifier         = Modifier.weight(1f).fillMaxWidth().padding(AppDimens.Dimens8),
                                         contentAlignment = Alignment.Center
                                     ) {
-                                        AbacusWithDecimalCanvas(
-                                            selectedTheme               = selectedTheme,
-                                            screenType                  = AppConstants.AbacusScreen.screenTypeLevel2Practice,
-                                            abacusData                  = abCalc,
-                                            numberOfColumns             = lesson.columns,
-                                            rodMovement                 = rodMovement,
-                                            showDirectionHint           = showArrows,
-                                            isBeadSoundOn               = false,
-                                            isDisplayCurrentAbacusInput = false,
-                                            onRodMovementChange         = {},
-                                            onShowDirectionHintsChange  = {},
-                                            onShowHighlighterChange     = {},
-                                            onReset = {}, onNext = {},
-                                        )
-                                    }
-                                    Box(
-                                        modifier = Modifier
-                                            .padding(vertical = AppDimens.Dimens8)
-                                            .background(
-                                                when (animPhase) {
-                                                    L2PracticePhase.RESULT     -> Color(0xFF43A047).copy(0.88f)
-                                                    L2PracticePhase.INITIAL    -> Color(0xFF43A047).copy(0.88f)
-                                                    L2PracticePhase.SETUP_ARROW,
-                                                    L2PracticePhase.OP_ARROW   -> lesson.endColor.copy(0.88f)
-                                                    else                       -> Color.Black.copy(0.55f)
-                                                },
-                                                RoundedCornerShape(AppDimens.Dimens24)
+                                        LevelFitToBox {
+                                            AbacusWithDecimalCanvas(
+                                                selectedTheme               = selectedTheme,
+                                                screenType                  = AppConstants.AbacusScreen.screenTypeLevel2Practice,
+                                                abacusData                  = abCalc,
+                                                numberOfColumns             = lesson.columns,
+                                                rodMovement                 = rodMovement,
+                                                showDirectionHint           = showArrows,
+                                                isBeadSoundOn               = false,
+                                                isDisplayCurrentAbacusInput = false,
+                                                frameStyle                  = AbacusFrameStyle.Toy,
+                                                onRodMovementChange         = {},
+                                                onShowDirectionHintsChange  = {},
+                                                onShowHighlighterChange     = {},
+                                                onReset = {}, onNext = {},
                                             )
-                                            .padding(horizontal = AppDimens.Dimens14, vertical = AppDimens.Dimens6)
-                                    ) {
-                                        Text(
-                                            text = when (animPhase) {
-                                                L2PracticePhase.ZERO        -> "Start: 0"
-                                                L2PracticePhase.SETUP_ARROW -> "+ ${problem.a}"
-                                                L2PracticePhase.INITIAL     -> "= ${problem.a} ✓"
-                                                L2PracticePhase.OP_ARROW    -> "${problem.op} ${problem.b}"
-                                                L2PracticePhase.RESULT      -> "${problem.a} ${problem.op} ${problem.b} = ${problem.result} ✓"
-                                            },
-                                            style      = MaterialTheme.typography.bodyMedium.scaled(),
-                                            color      = Color.White,
-                                            fontWeight = FontWeight.Black
-                                        )
+                                        }
                                     }
+                                    val badgeColor by animateColorAsState(
+                                        targetValue = when (animPhase) {
+                                            L2PracticePhase.RESULT, L2PracticePhase.INITIAL -> Color(0xFF43A047).copy(alpha = 0.88f)
+                                            L2PracticePhase.SETUP_ARROW, L2PracticePhase.OP_ARROW -> lesson.endColor.copy(alpha = 0.88f)
+                                            else -> Color.Black.copy(alpha = 0.55f)
+                                        },
+                                        animationSpec = tween(250),
+                                        label = "phase-badge"
+                                    )
+                                    Text(
+                                        text = when (animPhase) {
+                                            L2PracticePhase.ZERO        -> "Start: 0"
+                                            L2PracticePhase.SETUP_ARROW -> "+ ${problem.a}"
+                                            L2PracticePhase.INITIAL     -> "= ${problem.a} ✓"
+                                            L2PracticePhase.OP_ARROW    -> "${problem.op} ${problem.b}"
+                                            L2PracticePhase.RESULT      -> "${problem.a} ${problem.op} ${problem.b} = ${problem.result} ✓"
+                                        },
+                                        style    = levelText(14f, FontWeight.Black),
+                                        color    = Color.White,
+                                        modifier = Modifier
+                                            .padding(bottom = AppDimens.Dimens8)
+                                            .background(badgeColor, CircleShape)
+                                            .padding(horizontal = AppDimens.Dimens14, vertical = AppDimens.Dimens6)
+                                    )
                                 }
                             } else {
                                 Column(
                                     modifier            = Modifier.fillMaxSize(),
                                     horizontalAlignment = Alignment.CenterHorizontally,
-                                    verticalArrangement = Arrangement.Center
+                                    verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12, Alignment.CenterVertically)
                                 ) {
-                                    Text("🧮", fontSize = 48.sp.scaled())
-                                    Spacer(Modifier.height(AppDimens.Dimens12))
+                                    Text("🧮", fontSize = levelSp(48f))
                                     Text(
-                                        text       = "${problem.a} ${problem.op} ${problem.b} = ?",
-                                        fontSize   = 40.sp.scaled(),
-                                        color      = lesson.endColor,
-                                        fontWeight = FontWeight.Black,
-                                        textAlign  = TextAlign.Center
+                                        text      = "${problem.a} ${problem.op} ${problem.b} = ?",
+                                        style     = levelText(40f, FontWeight.Black),
+                                        color     = lesson.endColor.abReadable(),
+                                        textAlign = TextAlign.Center
                                     )
-                                    Spacer(Modifier.height(AppDimens.Dimens12))
                                     Text(
-                                        text       = "Try it on your\nabacus! →",
-                                        style      = MaterialTheme.typography.labelLarge.scaled(),
-                                        color      = lesson.startColor.copy(0.80f),
-                                        textAlign  = TextAlign.Center
+                                        text      = "Try it on your\nabacus! →",
+                                        style     = levelText(18f, FontWeight.ExtraBold),
+                                        color     = Color.White,
+                                        textAlign = TextAlign.Center,
+                                        modifier  = Modifier
+                                            .abChunkyFace(lesson.endColor.abReadable(), lesson.endColor.abReadable().abDarkened(0.3f), null, 22.dp, 3.dp)
+                                            .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens6)
                                     )
                                 }
                             }
@@ -229,71 +243,54 @@ fun Level2PracticeScreen(
                     }
 
                     // ── Right panel: equation + buttons ───────────────────────
-                    val rightShape = RoundedCornerShape(AppDimens.Dimens24)
-                    Box(
-                        modifier = Modifier
-                            .weight(0.65f)
-                            .then(if (!isTablet) Modifier.fillMaxHeight() else Modifier)
-                            .padding(bottom = AppDimens.Dimens8)
-                            .shadow(AppDimens.Dimens6, rightShape,
-                                spotColor    = lesson.endColor.copy(0.25f),
-                                ambientColor = lesson.endColor.copy(0.15f))
-                            .background(
-                                Brush.linearGradient(listOf(lesson.startColor.copy(0.70f), lesson.endColor.copy(0.70f))),
-                                rightShape
-                            )
-                            .padding(AppDimens.Dimens16),
+                    LevelHeroPanel(
+                        accent           = lesson.endColor,
+                        modifier         = Modifier.weight(1f).then(if (!isTablet) Modifier.fillMaxHeight() else Modifier),
                         contentAlignment = Alignment.Center
                     ) {
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.Center,
-                            modifier            = Modifier.fillMaxWidth()
-                        ) {
-                            Text("🧮", fontSize = 44.sp.scaled())
-
-                            Text(
-                                text       = "${problem.a} ${problem.op} ${problem.b} = ?",
-                                fontSize   = 40.sp.scaled(),
-                                color      = Color.White,
-                                fontWeight = FontWeight.Black,
-                                textAlign  = TextAlign.Center
-                            )
-
-                            Box(
-                                modifier = Modifier.fillMaxWidth().padding(top = AppDimens.Dimens8)
-                                    .background(Color.White.copy(0.18f), RoundedCornerShape(AppDimens.Dimens16))
-                                    .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens10)
+                        LevelPanelFit {
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
+                                modifier            = Modifier.padding(AppDimens.Dimens20)
                             ) {
+                                Text("🧮", fontSize = levelSp(44f))
+
                                 Text(
-                                    text      = "Solve it on your abacus, then\ncheck your answer:\n${problem.instruction}",
-                                    style     = MaterialTheme.typography.bodyMedium.scaled(),
-                                    color     = Color.White.copy(0.90f),
-                                    textAlign = TextAlign.Center,
-                                    modifier  = Modifier.fillMaxWidth(),
+                                    text      = "${problem.a} ${problem.op} ${problem.b} = ?",
+                                    style     = levelText(38f, FontWeight.Black),
+                                    color     = Color.White,
+                                    textAlign = TextAlign.Center
                                 )
-                            }
 
-                            Row(
-                                modifier = Modifier.fillMaxWidth().padding(top = AppDimens.Dimens12),
-                                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12, Alignment.CenterHorizontally),
-                                verticalAlignment     = Alignment.CenterVertically,
-                            ) {
-                                L2ActionBtn(
-                                    label      = if (!animStarted) "Show Me How 👀" else "Replay ▶",
-                                    filled     = false,
-                                    startColor = lesson.startColor,
-                                    onClick    = { animStarted = true; animTrigger++ }
-                                )
-                                L2ActionBtn(
-                                    label      = "I Did It! ✅",
-                                    filled     = true,
-                                    startColor = lesson.startColor,
-                                    onClick    = {
-                                        if (problemIndex < problems.size - 1) problemIndex++
-                                        else showDone = true
-                                    }
-                                )
+                                AbInsetBox {
+                                    Text(
+                                        text      = "Solve it on your abacus, then\ncheck your answer:\n${problem.instruction}",
+                                        style     = levelParagraph(14f, FontWeight.Medium),
+                                        color     = Color.White.copy(alpha = 0.90f),
+                                        textAlign = TextAlign.Center
+                                    )
+                                }
+
+                                Row(
+                                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
+                                    verticalAlignment     = Alignment.CenterVertically,
+                                ) {
+                                    AbPanelButton(
+                                        label   = if (!animStarted) "Show Me How 👀" else "Replay ▶",
+                                        accent  = lesson.endColor,
+                                        filled  = false,
+                                        onClick = { animStarted = true; animTrigger++ }
+                                    )
+                                    AbPanelButton(
+                                        label   = "I Did It! ✅",
+                                        accent  = lesson.endColor,
+                                        onClick = {
+                                            if (problemIndex < problems.size - 1) problemIndex++
+                                            else showDone = true
+                                        }
+                                    )
+                                }
                             }
                         }
                     }
@@ -302,61 +299,36 @@ fun Level2PracticeScreen(
         }
 
         // ── Practice complete popup ────────────────────────────────────────────
-        AnimatedVisibility(
-            visible  = showDone,
-            enter    = fadeIn(tween(300)) + scaleIn(initialScale = 0.85f, animationSpec = spring(dampingRatio = 0.7f, stiffness = 400f)),
-            exit     = fadeOut(tween(200)) + scaleOut(targetScale = 0.85f),
-            modifier = Modifier.fillMaxSize()
-        ) {
-            Box(
-                modifier         = Modifier.fillMaxSize().background(Color.Black.copy(0.45f)),
-                contentAlignment = Alignment.Center
-            ) {
-                val popupShape = RoundedCornerShape(AppDimens.Dimens24)
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth(0.85f)
-                        .shadow(AppDimens.Dimens16, popupShape,
-                            spotColor    = lesson.endColor.copy(0.4f),
-                            ambientColor = lesson.endColor.copy(0.4f))
-                        .background(Brush.linearGradient(listOf(lesson.startColor, lesson.endColor)), popupShape)
-                        .padding(AppDimens.Dimens24),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)
-                    ) {
-                        Text("🌟🌟🌟", fontSize = 52.sp.scaled())
-                        Text(
-                            "Practice Complete!",
-                            style      = MaterialTheme.typography.headlineMedium.scaled(),
-                            color      = Color.White,
-                            fontWeight = FontWeight.Black,
-                            textAlign  = TextAlign.Center
-                        )
-                        Box(
-                            modifier = Modifier
-                                .background(Color.White.copy(0.18f), RoundedCornerShape(AppDimens.Dimens16))
-                                .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens12)
-                        ) {
-                            Text(
-                                "Amazing! You solved all ${problems.size} equations on the abacus!\nReady for the quiz?",
-                                style      = MaterialTheme.typography.bodyLarge.scaled(),
-                                color      = Color.White.copy(0.90f),
-                                textAlign  = TextAlign.Center
-                            )
-                        }
-                        Spacer(Modifier.height(AppDimens.Dimens4))
-                        Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
-                            L2ActionBtn("Try Again 🔄", filled = false, startColor = lesson.startColor) {
-                                problemIndex = 0; showDone = false
-                            }
-                            L2ActionBtn("Continue →", filled = true, startColor = lesson.startColor) {
-                                onFinished()
-                            }
-                        }
-                    }
+        if (showDone) {
+            LevelResultPopup(accent = lesson.endColor) {
+                Text("🌟🌟🌟", fontSize = levelSp(52f))
+                Text(
+                    "Practice Complete!",
+                    style     = AbTypography.fixed(levelMainTitleSize, FontWeight.Black),
+                    color     = Color.White,
+                    textAlign = TextAlign.Center
+                )
+                AbInsetBox {
+                    Text(
+                        "Amazing! You solved all ${problems.size} equations on the abacus!\nReady for the quiz?",
+                        style     = levelParagraph(15f, FontWeight.Medium),
+                        color     = Color.White.copy(alpha = 0.90f),
+                        textAlign = TextAlign.Center
+                    )
+                }
+                Spacer(Modifier.height(AppDimens.Dimens4))
+                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
+                    AbPanelButton(
+                        label   = "Try Again 🔄",
+                        accent  = lesson.endColor,
+                        filled  = false,
+                        onClick = { problemIndex = 0; showDone = false }
+                    )
+                    AbPanelButton(
+                        label   = "Continue →",
+                        accent  = lesson.endColor,
+                        onClick = { onFinished() }
+                    )
                 }
             }
         }

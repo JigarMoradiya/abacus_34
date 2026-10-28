@@ -5,37 +5,33 @@ import android.telephony.TelephonyManager
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jigar.me.ui.view.ab.AbShapes
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.home.theme.AppDimens
 import java.util.Locale
 
-// Pale-tinted "Underline Chip": an icon + label with most of the color kept
-// to a thick gradient bar flush along the bottom edge, matching the Home
-// screen's other small chips (This Week, Vedaavi English).
-// `Modifier.width(IntrinsicSize.Max)` makes the Column hug the text row's
-// natural width instead of the bar's fillMaxWidth stretching it out.
-// (IntrinsicSize.Min is the wrong tool here: for non-wrapping text, the
-// minimum width before height must increase degenerates toward zero, since
-// height never changes with width when there's nothing to wrap -- Max asks
-// for the natural single-line width instead.)
+// "Underline Chip" on the kit surface: an icon + label over a thick gradient bar flush along the bottom edge, matching
+// the Home screen's other small chips (This Week, Vedaavi English). Only Home shows it, so it always wears the kit look.
+// [backgroundColor] is kept for the callers; the kit surface replaces the old pale per-chip colour in both modes.
+@Suppress("UNUSED_PARAMETER")
 @Composable
 fun UnderlineChip(
     icon: String,
@@ -44,36 +40,31 @@ fun UnderlineChip(
     backgroundColor: Color,
     borderColor: Color,
 ) {
-    val shape = RoundedCornerShape(12.dp)
-    Column(
+    val colors = LocalAbColors.current
+    val shape = RoundedCornerShape(AbShapes.sm)
+    val k = if (AppDimens.isLargeTablet) 1.7f else if (AppDimens.isTablet) 1.5f else 1f
+    val shadowColor = (if (colors.isDark) Color.Black else colors.outline).copy(alpha = 0.6f)
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(5.dp),
+        verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
-            .width(IntrinsicSize.Max)
-            .shadow(elevation = 3.dp, shape = shape, ambientColor = Color.Black.copy(alpha = 0.06f), spotColor = Color.Black.copy(alpha = 0.06f))
+            .shadow(elevation = 3.dp, shape = shape, ambientColor = shadowColor, spotColor = shadowColor)
             .clip(shape)
-            .background(backgroundColor)
-            .border(1.dp, borderColor, shape)
+            .background(colors.bgSecondary)
+            .drawBehind {
+                val bar = 5.dp.toPx()
+                drawRect(Brush.horizontalGradient(barColors), Offset(0f, size.height - bar), Size(size.width, bar))
+            }
+            .border(2.dp, if (colors.isDark) borderColor.copy(alpha = 0.8f) else borderColor, shape)
+            .padding(horizontal = 12.dp)
+            .padding(top = 6.dp, bottom = 10.dp),
     ) {
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(5.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .padding(horizontal = 12.dp)
-                .padding(top = 7.dp, bottom = 5.dp)
-        ) {
-            Text(text = icon, fontSize = 13.sp)
-            Text(
-                text = label,
-                fontSize = 11.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.Black.copy(alpha = 0.65f)
-            )
-        }
-
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(5.dp)
-                .background(Brush.horizontalGradient(barColors))
+        Text(text = icon, fontSize = (14 * k).sp)
+        Text(
+            text = label,
+            style = AbTypography.fixed(12f * k, FontWeight.ExtraBold),
+            color = colors.textPrimary,
+            maxLines = 1,
         )
     }
 }

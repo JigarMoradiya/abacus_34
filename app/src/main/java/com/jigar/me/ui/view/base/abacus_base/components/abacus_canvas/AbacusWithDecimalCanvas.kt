@@ -36,6 +36,7 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DeviceInfo
@@ -43,6 +44,16 @@ import com.jigar.me.data.local.data.RodMovement
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorCoffee
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import androidx.compose.foundation.layout.fillMaxSize
+import com.jigar.me.ui.view.ab.AbToyAnswerBar
+import com.jigar.me.ui.view.ab.AbToyAnswerBarMetrics
+import com.jigar.me.ui.view.ab.AbacusFrameStyle
+import com.jigar.me.ui.view.ab.AbacusToyFrameBack
+import com.jigar.me.ui.view.ab.AbacusToyGeometry
+import com.jigar.me.ui.view.ab.AbacusToyHeavenTags
+import com.jigar.me.ui.view.ab.AbacusToyLabels
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abReadableInk
 import com.jigar.me.ui.view.base.abacus_base.AbacusCalculations
 import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.base.abacus_base.components.AbacusAnswerBarCompose
@@ -71,6 +82,8 @@ fun AbacusWithDecimalCanvas(
     showHighlighter: Boolean = false,
     abacusType: String? = null,
     questionType: String? = null,
+    /** `Toy` = the Ab kit's toy frame (its own answer bar, rods, beam and tags); `Classic` = the original frame. */
+    frameStyle: AbacusFrameStyle = AbacusFrameStyle.Classic,
     isNextButtonEnable: Boolean = false,
     onRodMovementChange: (List<RodMovement>) -> Unit,
     onShowDirectionHintsChange: (Boolean) -> Unit,
@@ -121,6 +134,34 @@ fun AbacusWithDecimalCanvas(
         Color.White
     }
 
+    val toy = frameStyle == AbacusFrameStyle.Toy
+    val abScale = LocalAbScale.current.factor
+    val toyGeometry = AbacusToyGeometry(
+        numberOfColumns = numberOfColumns, totalWidth = totalWidth, totalHeight = totalHeight, lineWidth = dim.rectLineWidth,
+        beadWidth = dim.beadWidth, beadHeight = dim.beadHeight, beamHeight = dim.beamHeight, extraSpace = dim.extraSpace,
+        columnSpaces = dim.columnSpaces, decimalGap = if (numberOfColumns > 7) dim.decimalSeparatorGap else 0.dp,
+        corner = dim.rectLineCorner,
+    )
+    // The bead theme's frame colours, reused by the toy frame so the theme picker still recolours the abacus.
+    val toyTop: Color
+    val toyBase: Color
+    val toyBottom: Color
+    if (selectedTheme == "poligon_rainbow") {
+        toyTop = Color(0xFFD7CCC8); toyBase = Color(0xFFBCAAA4); toyBottom = Color(0xFFA1887F)
+    } else {
+        val toyPreset = AbacusTheme.colorPreset(selectedTheme)
+        toyTop = toyPreset.abacusTopGradient; toyBase = toyPreset.buttonColor; toyBottom = toyPreset.abacusBottomGradient
+    }
+    // Small abaci (Level screens, the Settings preview) show just the frame and beads, no tags under it.
+    val isMiniScreen = screenType == AppConstants.AbacusScreen.screenTypeLevel1Learn ||
+        screenType == AppConstants.AbacusScreen.screenTypeLevel1Practice ||
+        screenType == AppConstants.AbacusScreen.screenTypeLevel2Learn ||
+        screenType == AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula ||
+        screenType == AppConstants.AbacusScreen.screenTypeLevel2Practice ||
+        screenType == AppConstants.AbacusScreen.screenTypeSettingPreview
+    val toyStripHeight = dim.stripHeight * 0.8f
+    val toyShowsValues = screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn
+
     // ─────────────────────────────────────────────
     // Geometry for hit-testing and drawing
     // ─────────────────────────────────────────────
@@ -156,7 +197,36 @@ fun AbacusWithDecimalCanvas(
             }
             val offsetY = ((if (isSmallAnswerBar) -36 else -48) * answerBarScale).dp
 
-            AbacusAnswerBarCompose(
+            if (toy) {
+                // The toy bar's lower edge lands on the frame's top rail (it overlaps the rail by 0.4 of its width), never on the beads.
+                AbToyAnswerBar(
+                    answer = abacusData.displayValue,
+                    abacusType = abacusType,
+                    screenType = screenType,
+                    isNextButtonEnable = isNextButtonEnable,
+                    isDisplayAbacusNumber = isDisplayCurrentAbacusInput,
+                    frameTop = toyTop,
+                    frameBase = toyBase,
+                    onReset = {
+                        abacusData.resetAbacusData()
+                        onReset()
+                        if (isBeadSoundOn) AudioPlayerManager.playAbacusReset()
+                    },
+                    onNext = {
+                        onNext()
+                        if (isBeadSoundOn && screenType != AppConstants.AbacusScreen.screenTypeCCM && screenType != AppConstants.AbacusScreen.screenTypeExercise) {
+                            AudioPlayerManager.playAbacusReset()
+                        } else {
+                            AudioPlayerManager.playSoundBtnClick()
+                        }
+                    },
+                    modifier = Modifier
+                        .align(Alignment.TopCenter)
+                        .offset(y = -((70 * abScale).dp - dim.rectLineWidth * 0.4f))
+                        // the bar sits on the frame's top rail (iOS draws it over the frame), so it is stacked above the frame
+                        .zIndex(1f),
+                )
+            } else AbacusAnswerBarCompose(
                 answer = abacusData.displayValue,
                 theme = selectedTheme,
                 screenType = screenType,
@@ -191,6 +261,11 @@ fun AbacusWithDecimalCanvas(
         // Preload polygon bead image
         val beadPolygonGray = remember {
             ImageBitmap.imageResource(context.resources, R.drawable.poligon_gray_light)
+        }
+
+        // The toy frame (body, panel, rods, beam, markers) sits behind the beads.
+        if (toy) {
+            AbacusToyFrameBack(toyGeometry, toyTop, toyBase, toyBottom, Modifier.align(Alignment.Center))
         }
 
         // --- Inner rods & beads on Canvas ---
@@ -245,7 +320,7 @@ fun AbacusWithDecimalCanvas(
                     .padding(vertical = dim.rectLineWidth, horizontal = dim.rectLineWidth)
                     .align(Alignment.Center)
                     .then(gestureModifier)
-                    .spotlightTag(1, highlightSteps[1].message) // rods highlight
+                    .spotlightTag(1, highlightSteps[1].message, if (toy) toyGeometry.panelCorner else null) // rods highlight
             ) {
                 // Draw all columns inside Canvas
                 drawAbacusColumns(
@@ -261,13 +336,23 @@ fun AbacusWithDecimalCanvas(
                     showDirectionHint = showDirectionHint,
                     beadPolygonGray = beadPolygonGray,
                     arrowUPBitmap = arrowUp,
-                    arrowDownBitmap = arrowDown
+                    arrowDownBitmap = arrowDown,
+                    toyFrame = toy
                 )
             }
         }
 
         // --- Outer frame ---
-        if (screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult){
+        if (toy) {
+            // The toy frame is drawn above; this transparent box only marks the frame for the tour.
+            Box(
+                modifier = Modifier
+                    .width(totalWidth)
+                    .height(totalHeight)
+                    .align(Alignment.Center)
+                    .spotlightTag(0, highlightSteps[0].message, toyGeometry.frameCorner)
+            )
+        } else if (screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult){
             val shape = RoundedCornerShape(dim.rectLineCorner)
 
             Box(
@@ -309,7 +394,8 @@ fun AbacusWithDecimalCanvas(
                 Text(
                     modifier = Modifier.height(dim.rectLineWidth),
                     text = abacusData.displayValue,
-                    color = textColor,
+                    // white on a deep toy frame, a dark shade of the frame colour on a bright one
+                    color = if (toy && selectedTheme != "poligon_rainbow") toyTop.abReadableInk else textColor,
                     fontSize = dim.textSizeSp.sp.scaled(),
                     lineHeight = dim.textSizeSp.sp.scaled(),
                     fontFamily = FontFamily(Font(R.font.font_extra_bold))
@@ -318,6 +404,22 @@ fun AbacusWithDecimalCanvas(
         }
     }
 
+    if (toy) {
+        // Tags hang from the frame: the place names (or, in Free Mode, the values and the names) under it, and in Free Mode
+        // the heaven-bead values on its top rail.
+        if (!isMiniScreen) {
+            Column(Modifier.width(totalWidth)) {
+                Spacer(Modifier.height(totalHeight))
+                AbacusToyLabels(toyGeometry, toyStripHeight, showsValues = toyShowsValues)
+            }
+        }
+        if (toyShowsValues) {
+            val tagsHeight = minOf(toyGeometry.cellWidth * 0.46f, toyStripHeight * 1.45f) * 0.86f + 4.dp
+            Box(Modifier.width(totalWidth).offset(y = -tagsHeight)) {
+                AbacusToyHeavenTags(toyGeometry, toyStripHeight)
+            }
+        }
+    } else
     // Number strip below abacus (same as before)
     if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode) {
         if (isFreeModeOn){
@@ -367,7 +469,7 @@ fun AbacusWithDecimalCanvas(
             modifier = Modifier
                 .width(totalWidth - (dim.rectLineWidth * 2))
                 .height(dim.beadHeight + (dim.extraSpace * 2))
-                .spotlightTag(3, highlightSteps[3].message)
+                .spotlightTag(3, highlightSteps[3].message, if (toy) toyGeometry.panelCorner else null)
         )
         Spacer(modifier = Modifier.weight(1f))
     }
@@ -383,7 +485,7 @@ fun AbacusWithDecimalCanvas(
             modifier = Modifier
                 .width(totalWidth - (dim.rectLineWidth * 2))
                 .height((dim.beadHeight * 4) + (dim.extraSpace * 2))
-                .spotlightTag(4, highlightSteps[4].message)
+                .spotlightTag(4, highlightSteps[4].message, if (toy) toyGeometry.panelCorner else null)
         )
     }
 

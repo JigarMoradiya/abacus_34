@@ -1,69 +1,65 @@
 package com.jigar.me.ui.view.other.contactus
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.filled.Description
-import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Phone
-import androidx.compose.material.icons.filled.RocketLaunch
-import androidx.compose.material.icons.filled.Update
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.rounded.Description
+import androidx.compose.material.icons.rounded.Email
+import androidx.compose.material.icons.rounded.Person
+import androidx.compose.material.icons.rounded.Phone
+import androidx.compose.material.icons.rounded.Send
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
+import com.jigar.me.ui.view.ab.AbBackground
+import com.jigar.me.ui.view.ab.AbButton
+import com.jigar.me.ui.view.ab.AbConfirmDialog
+import com.jigar.me.ui.view.ab.AbFormField
+import com.jigar.me.ui.view.ab.AbFormTextArea
+import com.jigar.me.ui.view.ab.AbSectionLabel
+import com.jigar.me.ui.view.ab.AbShapes
+import com.jigar.me.ui.view.ab.AbSize
+import com.jigar.me.ui.view.ab.AbTheme
+import com.jigar.me.ui.view.ab.AbTone
+import com.jigar.me.ui.view.ab.AbTopBar
+import com.jigar.me.ui.view.ab.AbWorld
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
 import com.jigar.me.ui.view.home.common_ui.Loader
-import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
-import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
-import com.jigar.me.ui.view.home.common_ui.dialogs.PopupTheme
 import com.jigar.me.ui.view.home.theme.AppDimens
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
-import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.other.contactus.components.CountryCodePickerView
 import com.jigar.me.ui.view.other.contactus.viewmodels.ContactUsViewModel
 import com.jigar.me.utils.extensions.toastL
@@ -78,188 +74,149 @@ fun ContactUsScreen(
     val focusManager = LocalFocusManager.current
     val keyboardController = LocalSoftwareKeyboardController.current
 
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .windowInsetsPadding(WindowInsets.safeDrawing)
-    ) {
-        // Top bar: back card + logo
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(AppDimens.Dimens8),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            BackButton(onClick = { viewModel.onBack() })
-            Spacer(modifier = Modifier.weight(1f))
-            Image(
-                painter = painterResource(id = R.drawable.logo),
-                contentDescription = null,
-                modifier = Modifier.size(AppDimens.Dimens45)
-            )
-        }
+    AbTheme {
+        val colors = LocalAbColors.current
+        val s = LocalAbScale.current.factor
+        val density = LocalDensity.current
+        val moveDown = KeyboardActions(onNext = { focusManager.moveFocus(FocusDirection.Down) })
 
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .verticalScroll(rememberScrollState())
-                .padding(vertical = AppDimens.Dimens20),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = stringResource(R.string.contact_us),
-                fontSize = 20.sp,
-                color = Color.Black,
-            )
+        Box(Modifier.fillMaxSize()) {
+            AbBackground(AbWorld.Lagoon, Modifier.fillMaxSize())
 
-            Spacer(modifier = Modifier.height(AppDimens.Dimens6))
-            Text(
-                text = stringResource(R.string.contact_us_fill_detail),
-                fontSize = 13.sp,
-                color = Color.Black,
-            )
-
-            Spacer(modifier = Modifier.height(AppDimens.Dimens24))
-
-            // Name
-            OutlinedTextField(
-                value = uiState.name,
-                onValueChange = viewModel::onNameChange,
-                placeholder = { Text(stringResource(R.string.your_name)) },
-                leadingIcon = { Icon(Icons.Filled.Person, contentDescription = null) },
-                singleLine = true,
-                isError = uiState.nameError != null,
-                supportingText = {
-                    uiState.nameError?.let {
-                        Text(stringResource(it), color = MaterialTheme.colorScheme.error)
-                    }
-                },
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Text,
-                    imeAction = ImeAction.Next
-                ),
-                keyboardActions = KeyboardActions(
-                    onNext = { focusManager.moveFocus(FocusDirection.Down) }
-                ),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = AppDimens.Dimens10)
-            )
-
-            // Country code + Mobile
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens8),
-                verticalAlignment = Alignment.CenterVertically
+            Column(modifier = Modifier
+                .fillMaxSize()
+                .windowInsetsPadding(WindowInsets.safeDrawing)
             ) {
-                CountryCodePickerView(
-                    initialNameCode = uiState.countryNameCode,
-                    onCountryChanged = viewModel::onCountrySelected,
-                    modifier = Modifier.height(AppDimens.Dimens56)
+                AbTopBar(
+                    title = stringResource(R.string.contact_us),
+                    onBack = { viewModel.onBack() },
+                    modifier = Modifier.padding(
+                        start = DeviceInfo.screenHorizontalPadding(),
+                        end = AppDimens.Dimens16,
+                        top = DeviceInfo.screenTopPadding()
+                    )
                 )
-                Spacer(modifier = Modifier.width(AppDimens.Dimens8))
-                OutlinedTextField(
-                    value = uiState.mobile,
-                    onValueChange = viewModel::onMobileChange,
-                    placeholder = { Text(stringResource(R.string.mobile_number)) },
-                    leadingIcon = { Icon(Icons.Filled.Phone, contentDescription = null) },
-                    singleLine = true,
-                    isError = uiState.mobileError != null,
-                    supportingText = {
-                        uiState.mobileError?.let {
-                            Text(stringResource(it), color = MaterialTheme.colorScheme.error)
+
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .verticalScroll(rememberScrollState())
+                        .padding(
+                            start = DeviceInfo.screenHorizontalPadding(),
+                            end = AppDimens.Dimens16,
+                            top = AppDimens.Dimens10,
+                            bottom = AppDimens.Dimens16
+                        )
+                ) {
+                    Column(
+                        modifier = Modifier.widthIn(max = 720.dp).fillMaxWidth(),
+                        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
+                    ) {
+                        AbSectionLabel(stringResource(R.string.contact_us_fill_detail))
+
+                        // Name
+                        AbFormField(
+                            icon = Icons.Rounded.Person,
+                            placeholder = stringResource(R.string.your_name),
+                            text = uiState.name,
+                            onTextChange = viewModel::onNameChange,
+                            capitalization = KeyboardCapitalization.Words,
+                            error = uiState.nameError?.let { stringResource(it) },
+                            imeAction = ImeAction.Next,
+                            keyboardActions = moveDown
+                        )
+
+                        // Country code + Mobile
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
+                            verticalAlignment = Alignment.Top
+                        ) {
+                            // the country code sits on a plate like the fields beside it
+                            val plateShape = RoundedCornerShape(AbShapes.md * s)
+                            Box(
+                                Modifier
+                                    .heightIn(min = 48.dp * s)
+                                    .background(colors.surfaceTint.copy(alpha = if (colors.isDark) 0.5f else 0.6f), plateShape)
+                                    .border(2.dp, colors.outline, plateShape)
+                                    .padding(horizontal = 6.dp * s),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                CountryCodePickerView(
+                                    initialNameCode = uiState.countryNameCode,
+                                    contentColor = colors.textPrimary,
+                                    listBackgroundColor = colors.bgSecondary,
+                                    textSizePx = with(density) { (15f * s).sp.toPx() }.toInt(),
+                                    onCountryChanged = viewModel::onCountrySelected
+                                )
+                            }
+                            AbFormField(
+                                icon = Icons.Rounded.Phone,
+                                placeholder = stringResource(R.string.mobile_number),
+                                text = uiState.mobile,
+                                onTextChange = viewModel::onMobileChange,
+                                modifier = Modifier.weight(1f),
+                                keyboardType = KeyboardType.Phone,
+                                error = uiState.mobileError?.let { stringResource(it) },
+                                imeAction = ImeAction.Next,
+                                keyboardActions = moveDown
+                            )
                         }
-                    },
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Phone,
-                        imeAction = ImeAction.Next
-                    ),
-                    keyboardActions = KeyboardActions(
-                        onNext = { focusManager.moveFocus(FocusDirection.Down) }
-                    ),
-                    modifier = Modifier.weight(1f)
-                )
+
+                        // Email
+                        AbFormField(
+                            icon = Icons.Rounded.Email,
+                            placeholder = stringResource(R.string.email_id),
+                            text = uiState.email,
+                            onTextChange = viewModel::onEmailChange,
+                            keyboardType = KeyboardType.Email,
+                            capitalization = KeyboardCapitalization.None,
+                            error = uiState.emailError?.let { stringResource(it) },
+                            imeAction = ImeAction.Next,
+                            keyboardActions = moveDown
+                        )
+
+                        // Description (multi-line)
+                        AbFormTextArea(
+                            icon = Icons.Rounded.Description,
+                            placeholder = stringResource(R.string.description),
+                            text = uiState.description,
+                            onTextChange = viewModel::onDescriptionChange,
+                            error = uiState.descriptionError?.let { stringResource(it) }
+                        )
+
+                        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+                            AbButton(
+                                text = stringResource(R.string.submit),
+                                tone = AbTone.Primary,
+                                size = AbSize.Medium,
+                                icon = Icons.Rounded.Send,
+                                onClick = {
+                                    keyboardController?.hide()
+                                    viewModel.onSubmit()
+                                }
+                            )
+                        }
+                    }
+                }
             }
 
-            // Email
-            OutlinedTextField(
-                value = uiState.email,
-                onValueChange = viewModel::onEmailChange,
-                placeholder = { Text(stringResource(R.string.email_id)) },
-                leadingIcon = { Icon(Icons.Filled.Email, contentDescription = null) },
-                singleLine = true,
-                isError = uiState.emailError != null,
-                supportingText = {
-                    uiState.emailError?.let {
-                        Text(stringResource(it), color = MaterialTheme.colorScheme.error)
-                    }
-                },
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Email,
-                    imeAction = ImeAction.Next
-                ),
-                keyboardActions = KeyboardActions(
-                    onNext = { focusManager.moveFocus(FocusDirection.Down) }
-                ),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = AppDimens.Dimens10)
-            )
+            if (uiState.isLoading) {
+                Loader()
+            }
 
-            // Description (multi-line)
-            OutlinedTextField(
-                value = uiState.description,
-                onValueChange = viewModel::onDescriptionChange,
-                placeholder = { Text(stringResource(R.string.description)) },
-                leadingIcon = { Icon(Icons.Filled.Description, contentDescription = null) },
-                isError = uiState.descriptionError != null,
-                supportingText = {
-                    uiState.descriptionError?.let {
-                        Text(stringResource(it), color = MaterialTheme.colorScheme.error)
-                    }
-                },
-                maxLines = 5,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens8)
-                    .height(AppDimens.Dimens150)
-            )
-
-            Spacer(modifier = Modifier.height(AppDimens.Dimens20))
-
-            KidsActionButton(
-                modifier = Modifier.padding(horizontal = AppDimens.Dimens10),
-                text = stringResource(R.string.submit),
-                icon = Icons.Default.Update,
-                type = ButtonType.ORANGE,
-                onClick = {
-                    keyboardController?.hide()
-                    viewModel.onSubmit()
-                }
-            )
-
-            Spacer(modifier = Modifier.height(Dimens12))
+            if (uiState.showSuccessDialog) {
+                AbConfirmDialog(
+                    title = stringResource(R.string.thank_you_for_reaching_out),
+                    message = stringResource(R.string.thank_you_for_reaching_out1),
+                    positiveText = stringResource(R.string.ok_thanks),
+                    icon = Icons.Rounded.Send,
+                    destructive = false,
+                    accent = colors.accentGreen,
+                    onPositive = { viewModel.onSuccessDialogDismissed() }
+                )
+            }
         }
-    }
-
-    if (uiState.isLoading) {
-        Loader()
-    }
-
-    AnimatedVisibility(
-        visible = uiState.showSuccessDialog,
-        enter = fadeIn(),
-        exit = fadeOut()
-    ) {
-        CustomPopupView(
-            title = stringResource(R.string.thank_you_for_reaching_out),
-            positiveButtonText = stringResource(R.string.ok_thanks),
-            widthMultiplier = 0.7f,
-            onPositiveTapped = { viewModel.onSuccessDialogDismissed() },
-            icon = R.drawable.ic_alert_complete_page,
-            theme = PopupTheme.CONFIRM,
-            accent = ButtonType.GREEN
-        )
     }
 
     uiState.errorMessage?.let { msg ->
@@ -270,23 +227,4 @@ fun ContactUsScreen(
     }
 
     uiState.finishActivity?.consume { onFinish() }
-}
-
-@Composable
-private fun BackButton(onClick: () -> Unit) {
-    Box(
-        modifier = Modifier
-            .size(AppDimens.Dimens45)
-    ) {
-        IconButton(
-            onClick = onClick,
-            modifier = Modifier.fillMaxSize()
-        ) {
-            Icon(
-                imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                contentDescription = null,
-                tint = Color.Black
-            )
-        }
-    }
 }

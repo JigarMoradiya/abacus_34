@@ -4,8 +4,10 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.RoundRect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -104,14 +106,19 @@ private fun hill(w: Float, h: Float, base: Float, amp: Float, freq: Float, phase
     close()
 }
 
+/**
+ * A cloud: a flat-bottomed base and four round puffs, joined into ONE outline and filled once. Filling each shape on its
+ * own with some opacity would stack the opacity where they overlap and show every seam.
+ */
 private fun DrawScope.drawCloud(c: Offset, scale: Float) {
-    listOf(floatArrayOf(0f, 0f, 120f, 44f), floatArrayOf(-38f, 8f, 70f, 34f), floatArrayOf(40f, 10f, 76f, 34f), floatArrayOf(6f, -14f, 64f, 40f)).forEach { p ->
-        drawOval(
-            Color.White.copy(alpha = 0.55f),
-            topLeft = Offset(c.x + p[0] * scale - p[2] * scale / 2f, c.y + p[1] * scale - p[3] * scale / 2f),
-            size = Size(p[2] * scale, p[3] * scale),
-        )
+    val cloud = Path().apply {
+        addRoundRect(RoundRect(c.x - 62f * scale, c.y - 2f * scale, c.x + 62f * scale, c.y + 20f * scale, CornerRadius(20f * scale)))
+        // (dx, dy, radius) of the puffs
+        listOf(floatArrayOf(-36f, -2f, 24f), floatArrayOf(-8f, -16f, 34f), floatArrayOf(24f, -8f, 28f), floatArrayOf(48f, 4f, 18f)).forEach { p ->
+            addOval(Rect(Offset(c.x + p[0] * scale, c.y + p[1] * scale), p[2] * scale))
+        }
     }
+    drawPath(cloud, Color.White.copy(alpha = 0.55f))
 }
 
 /** Deterministic 0..1 noise for static scatter (stars). */

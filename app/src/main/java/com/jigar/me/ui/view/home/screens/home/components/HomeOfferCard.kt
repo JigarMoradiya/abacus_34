@@ -25,6 +25,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbScale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
@@ -48,6 +55,11 @@ private fun rememberOfferRemainingSeconds(startedAtMillis: Long, durationMin: In
     return remainingSec.coerceAtMost(durationMin * 60L)
 }
 
+/** The chunky 3D edge under a full offer card (the iOS card's hard `D8572B` shadow, 3pt down). */
+private fun Modifier.offerEdge(corner: Dp): Modifier = drawBehind {
+    drawRoundRect(Color(0xFFD8572B), topLeft = Offset(0f, 3.dp.toPx()), size = size, cornerRadius = CornerRadius(corner.toPx()))
+}
+
 // Full-size offer strip -- used on tablet, which has room for its own dedicated
 // row without squeezing the activity tile list.
 @Composable
@@ -63,6 +75,7 @@ fun HomeOfferCard(
 ) {
     val remainingSec = rememberOfferRemainingSeconds(startedAtMillis, durationMin, onExpired)
     val endingSoon = remainingSec <= 60L
+    val abS = LocalAbScale.current.factor
 
     val interaction = remember { MutableInteractionSource() }
     val pressed by interaction.collectIsPressedAsState()
@@ -72,6 +85,7 @@ fun HomeOfferCard(
     Row(
         modifier = modifier
             .graphicsLayer { scaleX = scale; scaleY = scale }
+            .offerEdge(AppDimens.Dimens16)
             .clip(shape)
             .background(Brush.horizontalGradient(listOf(Color(0xFFFFB300), Color(0xFFFF7043))))
             .border(2.dp, Color.White.copy(alpha = 0.7f), shape)
@@ -85,8 +99,7 @@ fun HomeOfferCard(
             Text(
                 text = title?.takeIf { it.isNotBlank() } ?: stringResource(R.string.home_offer_title),
                 color = Color.White,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                style = MaterialTheme.typography.titleSmall.scaled(),
+                style = AbTypography.fixed(13f * abS, FontWeight.ExtraBold),
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
@@ -97,8 +110,7 @@ fun HomeOfferCard(
                 text = if (discountPercent > 0) stringResource(R.string.home_offer_save_pct, discountPercent, productLabel)
                        else stringResource(R.string.home_offer_special_price, productLabel),
                 color = Color.White.copy(alpha = 0.9f),
-                fontFamily = FontFamily(Font(R.font.font_semibold)),
-                style = MaterialTheme.typography.labelMedium.scaled(),
+                style = AbTypography.fixed(10f * abS, FontWeight.Bold),
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
@@ -106,8 +118,7 @@ fun HomeOfferCard(
         Text(
             text = stringResource(R.string.home_offer_ends_in, DateTimeUtils.displayDurationHourMinSec(remainingSec)),
             color = Color.White,
-            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-            style = MaterialTheme.typography.labelLarge.scaled(),
+            style = AbTypography.fixed(11f * abS, FontWeight.ExtraBold, tabular = true),
             modifier = Modifier
                 .background(if (endingSoon) Color(0xFFE53935) else Color.Black.copy(alpha = 0.2f), CircleShape)
                 .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
@@ -133,6 +144,7 @@ fun HomeOfferSidebarCard(
 ) {
     val remainingSec = rememberOfferRemainingSeconds(startedAtMillis, durationMin, onExpired)
     val endingSoon = remainingSec <= 60L
+    val abS = LocalAbScale.current.factor
 
     val interaction = remember { MutableInteractionSource() }
     val pressed by interaction.collectIsPressedAsState()
@@ -142,6 +154,7 @@ fun HomeOfferSidebarCard(
     Row(
         modifier = modifier
             .graphicsLayer { scaleX = scale; scaleY = scale }
+            .offerEdge(AppDimens.Dimens16)
             .clip(shape)
             .background(Brush.horizontalGradient(listOf(Color(0xFFFFB300), Color(0xFFFF7043))))
             .border(2.dp, Color.White.copy(alpha = 0.7f), shape)
@@ -155,8 +168,7 @@ fun HomeOfferSidebarCard(
             Text(
                 text = title?.takeIf { it.isNotBlank() } ?: stringResource(R.string.home_offer_title),
                 color = Color.White,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                style = MaterialTheme.typography.titleSmall.scaled(),
+                style = AbTypography.fixed(13f * abS, FontWeight.ExtraBold),
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
@@ -167,8 +179,7 @@ fun HomeOfferSidebarCard(
                 text = if (discountPercent > 0) stringResource(R.string.home_offer_save_pct, discountPercent, productLabel)
                        else stringResource(R.string.home_offer_special_price, productLabel),
                 color = Color.White.copy(alpha = 0.9f),
-                fontFamily = FontFamily(Font(R.font.font_semibold)),
-                style = MaterialTheme.typography.labelMedium.scaled(),
+                style = AbTypography.fixed(10f * abS, FontWeight.Bold),
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
@@ -176,8 +187,7 @@ fun HomeOfferSidebarCard(
         Text(
             text = stringResource(R.string.home_offer_ends_in, DateTimeUtils.displayDurationHourMinSec(remainingSec)),
             color = Color.White,
-            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-            style = MaterialTheme.typography.labelLarge.scaled(),
+            style = AbTypography.fixed(11f * abS, FontWeight.ExtraBold, tabular = true),
             maxLines = 1,
             modifier = Modifier
                 .background(if (endingSoon) Color(0xFFE53935) else Color.Black.copy(alpha = 0.2f), CircleShape)
@@ -203,6 +213,7 @@ fun HomeOfferBadge(
 ) {
     val remainingSec = rememberOfferRemainingSeconds(startedAtMillis, durationMin, onExpired)
     val endingSoon = remainingSec <= 60L
+    val abS = LocalAbScale.current.factor
     val shape = RoundedCornerShape(percent = 50)
 
     val interaction = remember { MutableInteractionSource() }
@@ -227,8 +238,7 @@ fun HomeOfferBadge(
             Text(
                 text = title?.takeIf { it.isNotBlank() } ?: stringResource(R.string.home_offer_title),
                 color = Color(0xFFE65100),
-                fontFamily = FontFamily(Font(R.font.font_bold)),
-                style = MaterialTheme.typography.labelSmall.scaled(),
+                style = AbTypography.fixed(11f * abS, FontWeight.Bold),
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
@@ -240,7 +250,7 @@ fun HomeOfferBadge(
             Text(
                 text = pctText,
                 color = Color(0xFFE65100).copy(alpha = 0.7f),
-                style = MaterialTheme.typography.labelSmall.scaled(),
+                style = AbTypography.fixed(10f * abS, FontWeight.SemiBold),
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
@@ -250,8 +260,7 @@ fun HomeOfferBadge(
         Text(
             text = DateTimeUtils.displayDurationHourMinSec(remainingSec),
             color = Color.White,
-            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-            style = MaterialTheme.typography.labelSmall.scaled(),
+            style = AbTypography.fixed(10f * abS, FontWeight.ExtraBold, tabular = true),
             maxLines = 1,
             modifier = Modifier
                 .background(if (endingSoon) Color(0xFFE53935) else Color(0xFFFF7043), RoundedCornerShape(percent = 50))

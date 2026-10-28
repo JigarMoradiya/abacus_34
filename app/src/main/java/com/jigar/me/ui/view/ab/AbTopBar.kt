@@ -30,8 +30,8 @@ fun AbTopBar(
         AbBackButton(onClick = onBack)
         Box(
             Modifier
-                .abChunkyFace(colors.brandPrimary, colors.brandPrimaryDark, null, AbShapes.pill, 5.dp * s)
-                .heightIn(min = 44.dp * s)
+                .abChunkyFace(colors.brandPrimary, colors.brandPrimaryDark, null, AbShapes.pill, 4.dp * s)
+                .heightIn(min = 36.dp * s)
                 .padding(horizontal = 20.dp * s),
             contentAlignment = Alignment.Center,
         ) {

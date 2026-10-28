@@ -21,6 +21,8 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.ab.AbParentalGate
+import com.jigar.me.ui.view.ab.LocalAbThemed
 import com.jigar.me.ui.view.home.theme.AppDimens
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -38,6 +40,11 @@ fun ParentalGateDialog(
     onPassed: () -> Unit,
     onCancelled: () -> Unit,
 ) {
+    // Restyled screens get the kit's gate (same sum, same rules); the Game Zone keeps the original card below.
+    if (LocalAbThemed.current) {
+        AbParentalGate(onSuccess = onPassed, onClose = onCancelled)
+        return
+    }
     var num1 by remember { mutableStateOf(Random.nextInt(11, 50)) }
     var num2 by remember { mutableStateOf(Random.nextInt(11, 50)) }
     var options by remember { mutableStateOf(generateOptions(num1 + num2)) }

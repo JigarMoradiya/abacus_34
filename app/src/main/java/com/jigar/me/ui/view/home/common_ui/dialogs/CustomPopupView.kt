@@ -1,5 +1,13 @@
 package com.jigar.me.ui.view.home.common_ui.dialogs
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.CheckCircle
+import androidx.compose.material.icons.rounded.Info
+import androidx.compose.material.icons.rounded.Star
+import androidx.compose.material.icons.rounded.Warning
+import com.jigar.me.ui.view.ab.AbConfirmDialog
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbThemed
 import android.text.Html
 import android.widget.TextView
 import androidx.compose.foundation.Image
@@ -91,6 +99,12 @@ fun CustomPopupView(
     theme: PopupTheme = PopupTheme.CLASSIC,
     accent: ButtonType = ButtonType.POSITIVE,
 ) {
+    // Restyled screens draw every popup in the kit style; the Game Zone is not themed and keeps the originals below.
+    if (LocalAbThemed.current) {
+        KitPopup(title, description, notes, positiveButtonText, negativeButtonText, onPositiveTapped, onNegativeTapped, icon, theme, accent)
+        return
+    }
+
     val accentColors = getButtonColors(accent)
 
     Box(
@@ -432,4 +446,47 @@ private fun PopupButtons(
             }
         }
     }
+}
+
+
+/** The kit dialog for any theme: the accent picks the colour, the icon drawable picks a symbol. */
+@Composable
+private fun KitPopup(
+    title: String?,
+    description: String?,
+    notes: String?,
+    positiveButtonText: String?,
+    negativeButtonText: String?,
+    onPositiveTapped: (() -> Unit)?,
+    onNegativeTapped: (() -> Unit)?,
+    icon: Int?,
+    theme: PopupTheme,
+    accent: ButtonType,
+) {
+    val colors = LocalAbColors.current
+    val tone = when (accent) {
+        ButtonType.RED -> colors.danger
+        ButtonType.GREEN, ButtonType.POSITIVE, ButtonType.TEAL -> colors.accentGreen
+        ButtonType.ORANGE -> colors.accentOrange
+        ButtonType.PINK -> colors.accentPink
+        ButtonType.PURPLE -> colors.accentPurple
+        else -> colors.brandPrimary
+    }
+    val symbol = when (icon) {
+        R.drawable.ic_complete -> if (theme == PopupTheme.CELEBRATION) Icons.Rounded.Star else Icons.Rounded.CheckCircle
+        R.drawable.ic_alert -> Icons.Rounded.Warning
+        else -> if (theme == PopupTheme.CELEBRATION) Icons.Rounded.Star else Icons.Rounded.Info
+    }
+    AbConfirmDialog(
+        title = title.orEmpty(),
+        message = description.orEmpty(),
+        positiveText = positiveButtonText.orEmpty(),
+        negativeText = if (!negativeButtonText.isNullOrEmpty() && onNegativeTapped != null) negativeButtonText else null,
+        icon = symbol,
+        destructive = accent == ButtonType.RED,
+        accent = tone,
+        note = notes,
+        onPositive = { onPositiveTapped?.invoke() },
+        onNegative = { onNegativeTapped?.invoke() },
+    )
 }

@@ -1,5 +1,12 @@
 package com.jigar.me.ui.view.home.screens.home.components
 
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.offset
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
+import com.jigar.me.ui.view.ab.AbMenuKind
+import com.jigar.me.ui.view.ab.AbMenuTile
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -115,47 +122,39 @@ fun HomeMenuItem(
     // Tablet: explicit Modifier.size(cellSize) from the grid calculation.
     val boxModifier = if (size != null) Modifier.size(size) else Modifier.aspectRatio(1f)
 
-    Box(modifier = boxModifier) {
-        Card(
-            onClick = { onClick() },
-            shape = CircleShape,
-            elevation = CardDefaults.cardElevation(AppDimens.Dimens4),
-            colors = CardDefaults.cardColors(
-                containerColor = colorResource(R.color.home_menu_icon_bg)
-            ),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(AppDimens.Dimens8)
-        ) {
-            AsyncImage(
-                model = level.icon,
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize()
-            )
-        }
-
-        if (level.tag.length > 2) {
-            Surface(
-                color = colorResource(R.color.yellow_300),
-                shape = RoundedCornerShape(AppDimens.Dimens20),
-                tonalElevation = AppDimens.Dimens8,
-                shadowElevation = AppDimens.Dimens8,
-                modifier = Modifier.align(Alignment.TopCenter)
+    BoxWithConstraints(modifier = boxModifier) {
+        val itemSize = minOf(maxWidth, maxHeight)
+        val kind = AbMenuKind.fromMenuName(level.name)
+        if (kind != null) {
+            // Our own drawn icon (it plays the click sound itself); menus we have no drawing for still use the server picture.
+            AbMenuTile(kind = kind, size = itemSize, onClick = onClick)
+        } else {
+            Card(
+                onClick = { AudioPlayerManager.playSoundBtnClick(); onClick() },
+                shape = CircleShape,
+                elevation = CardDefaults.cardElevation(AppDimens.Dimens4),
+                colors = CardDefaults.cardColors(
+                    containerColor = colorResource(R.color.home_menu_icon_bg)
+                ),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(AppDimens.Dimens8)
             ) {
-                Text(
-                    text = level.tag,
-                    style = MaterialTheme.typography.bodyMedium.scaled().copy(
-                        fontWeight = FontWeight.ExtraBold,
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                        color = Color.Black
-                    ),
-                    modifier = Modifier.padding(
-                        horizontal = AppDimens.Dimens10,
-                        vertical = AppDimens.Dimens4
-                    )
+                AsyncImage(
+                    model = level.icon,
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
                 )
             }
+        }
+
+        if (level.tag.isNotEmpty() && !level.tag.startsWith("-")) {
+            HomeTagBadge(
+                text = level.tag,
+                size = itemSize,
+                modifier = Modifier.align(Alignment.TopCenter).offset(y = (-4).dp).zIndex(10f)
+            )
         }
     }
 }

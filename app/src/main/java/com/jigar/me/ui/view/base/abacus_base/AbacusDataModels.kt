@@ -21,7 +21,12 @@ data class ColorPresetModel(
     // Stroke around the Reset/Current-Input/Next capsule (AbacusAnswerBarCompose).
     // Null = keep the old behavior of reusing abacusCenterGradient, for every theme
     // that hasn't been given its own dedicated value.
-    val answerBarStrokeColor: Color? = null
+    val answerBarStrokeColor: Color? = null,
+    // Top-to-bottom gradient of a bead that is not counted (resting away from the beam) and of one that is counted
+    // (pushed up to the beam). Null = the usual tint of the bead colour; Dark mode sets its own so resting beads recede
+    // on the dark panel and counted beads glow.
+    val inactiveBeadColors: List<Color>? = null,
+    val activeBeadColors: List<Color>? = null,
 )
 
 /*data class AbacusDimensionModel(

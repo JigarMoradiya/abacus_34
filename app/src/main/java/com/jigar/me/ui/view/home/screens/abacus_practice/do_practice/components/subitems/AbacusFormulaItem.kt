@@ -1,32 +1,31 @@
 package com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.subitems
 
-import com.jigar.me.ui.view.home.theme.AppDimens
-
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.font.FontWeight
-import com.jigar.me.R
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.data.local.data.DeviceInfo
+import com.jigar.me.ui.view.ab.AbHintCard
+import com.jigar.me.ui.view.ab.AbHintKind
+import com.jigar.me.ui.view.ab.AbHintTag
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.abFixedStyle
+import com.jigar.me.ui.view.ab.hintInk
 import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.viewmodels.AbacusDoPracticeUiState
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
 
-
+/**
+ * The hint card (a sticky note) with the formula, or the multiplication table row, that goes with the step being worked
+ * on. Shows nothing while there is no hint or once the sum is complete; the panel keeps the card's place meanwhile.
+ */
 @Composable
 fun AbacusFormulaItem(uiState: AbacusDoPracticeUiState) {
-    val colorPreset = uiState.currentColorPresetModel
+    if (uiState.isSumComplete) return
+    val colors = LocalAbColors.current
     val distinctList = if (uiState.currentAbacusType == AppConstants.extras_Comman.AbacusTypeAdditionSubtraction){
         uiState.currentAbacusFormula
             .filter { !it.formulaUsed.isNullOrEmpty() && it.index == uiState.currentIndexOfOperation }
@@ -39,36 +38,17 @@ fun AbacusFormulaItem(uiState: AbacusDoPracticeUiState) {
         emptyList()
     }
     if (distinctList.isNotNullOrEmpty()){
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
-            modifier = Modifier
-                .padding(end = AppDimens.Dimens4)
-                .border(
-                    width = AppDimens.Dimens1,
-                    color = colorPreset.buttonColor.copy(alpha = 0.6f),
-                    shape = RoundedCornerShape(AppDimens.Dimens8)
-                )
-                .background(
-                    color = colorPreset.columnColors.copy(alpha = 0.2f),
-                    shape = RoundedCornerShape(AppDimens.Dimens8)
-                )
-                .padding(AppDimens.Dimens8)
-        ) {
+        // DimensionsUtils.formulaHintTextSize: 12 on a phone, 20 / 24 on the two tablet classes
+        val hintSize = (if (DeviceInfo.isLargeTablet) 24f else if (DeviceInfo.isTablet) 20f else 12f) * 1.3f
+        AbHintCard {
             distinctList.forEach { item ->
                 item.formulaUsed?.let { formulaHint ->
                     Column(
-                        horizontalAlignment = Alignment.CenterHorizontally
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(3.dp)
                     ) {
-
                         // Formula Type
-                        Text(
-                            text = item.formulaType,
-                            style = MaterialTheme.typography.bodySmall.scaled(),
-                            fontWeight = FontWeight.SemiBold,
-                            color = colorPreset.buttonColor,
-                            fontFamily = FontFamily(Font(R.font.font_semibold))
-                        )
+                        AbHintTag(title = item.formulaType, kind = AbHintKind.fromFormulaType(item.formulaType))
 
                         // Formula Hint (with Carry)
                         Text(
@@ -76,10 +56,8 @@ fun AbacusFormulaItem(uiState: AbacusDoPracticeUiState) {
                                 if (item.isCarryFormula) append("Carry: ")
                                 append(formulaHint)
                             },
-                            style = MaterialTheme.typography.bodyMedium.scaled(),
-                            fontWeight = FontWeight.Bold,
-                            color = Color.Black,
-                            fontFamily = FontFamily(Font(R.font.font_bold))
+                            style = abFixedStyle(hintSize, FontWeight.ExtraBold),
+                            color = colors.hintInk
                         )
                     }
                 }
@@ -87,4 +65,3 @@ fun AbacusFormulaItem(uiState: AbacusDoPracticeUiState) {
         }
     }
 }
-

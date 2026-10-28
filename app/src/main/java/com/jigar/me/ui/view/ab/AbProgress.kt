@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -53,7 +54,7 @@ fun AbProgressBar(
         BoxWithConstraints(Modifier.weight(1f).height(h)) {
             val track = if (onColor) Color.White.copy(alpha = 0.26f) else colors.bgSecondary.copy(alpha = if (colors.isDark) 0.6f else 0.92f)
             val ring = if (onColor) Color.White.copy(alpha = 0.4f) else colors.outline
-            Box(Modifier.fillMaxHeight().background(track, CircleShape).border(2.dp, ring, CircleShape))
+            Box(Modifier.fillMaxSize().background(track, CircleShape).border(2.dp, ring, CircleShape))
             Box(
                 Modifier
                     .width(maxOf(h, maxWidth * value))

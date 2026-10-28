@@ -1,27 +1,33 @@
 package com.jigar.me.ui.view.home.screens.abacus_practice.do_practice
 
-import com.jigar.me.ui.view.home.theme.AppDimens
-
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -30,18 +36,18 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.data.local.data.DeviceInfo.screenHorizontalPadding
+import com.jigar.me.ui.view.ab.AbBackground
+import com.jigar.me.ui.view.ab.AbTheme
+import com.jigar.me.ui.view.ab.AbTopBar
+import com.jigar.me.ui.view.ab.AbWorld
+import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.AbacusQuestionPanel
 import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.AbacusViewItem
-import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.AddSubAbacusItem
-import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.DivisionAbacusItem
-import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.MultiplicationAbacusItem
-import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.NumberAbacusItem
-import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.subitems.AbacusFormulaItem
 import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.subitems.SetTimer
 import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.subitems.SumCompleteCelebration
 import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.components.subitems.UseWhichHandTextUi
 import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.viewmodels.AbacusDoPracticeViewModel
-import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.Loader
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateHost
@@ -50,10 +56,9 @@ import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
 import com.jigar.me.ui.view.home.common_ui.dialogs.PopupTheme
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.screens.reports.dialogs.ExerciseExamCompleteResultDialog
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens10
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.login.screens.login_home.viewmodels.LoginHomeViewModel
-import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.toastL
 
 @Composable
@@ -96,77 +101,90 @@ fun AbacusDoPracticeRoute(
         }
     }
 
-    Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            BackButtonWithText(
-                title = "Abacus No : ${(uiState.currentIndexOfAbacus + 1)}",
-                onBackClick = onBackClick,
-                modifier = Modifier.weight(1f))
-            SetTimer(uiState)
-        }
+    // Where the hand instruction line at the foot of the screen starts, and where the question panel's room is (both in
+    // root coordinates), so the panel can stop just above that line.
+    var handLineTop by remember { mutableFloatStateOf(0f) }
+    var panelTop by remember { mutableFloatStateOf(0f) }
+    var panelHeight by remember { mutableFloatStateOf(0f) }
+    val localDensity = LocalDensity.current
+    // A phone keeps a little air at the top of the panel, which reaches down to just above the hand line. That is
+    // measured (not a fixed number) so it also holds on every screen size.
+    val panelTopInset = if (DeviceInfo.isTablet) 0.dp else 6.dp
+    val panelBottomInset = if (handLineTop > 0f && panelHeight > 0f) {
+        with(localDensity) { ((panelTop + panelHeight - handLineTop) / density + 6f).coerceAtLeast(0f).dp }
+    } else if (DeviceInfo.isTablet) 0.dp else 40.dp
+    val abacusOnLeft = viewModel.isAbacusOnLeftHand
 
-        Spacer(Modifier.weight(1f))
+    AbTheme {
+    Box(Modifier.fillMaxSize()) {
+    AbBackground(AbWorld.Meadow, Modifier.fillMaxSize())
 
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(start = screenHorizontalPadding())) {
-            if (viewModel.isAbacusOnLeftHand) {
-                AbacusViewItem(viewModel, uiState)
-                uiState.currentAbacus?.let {
-                    when (uiState.currentAbacusType) {
-                        AppConstants.extras_Comman.AbacusTypeNumber -> {
-                            NumberAbacusItem(it, modifier = Modifier.weight(1f))
-                        }
-                        AppConstants.extras_Comman.AbacusTypeAdditionSubtraction -> {
-                            Spacer(Modifier.weight(1f))
-                            AbacusFormulaItem(uiState)
-                            AddSubAbacusItem(uiState)
-                        }
-                        AppConstants.extras_Comman.AbacusTypeMultiplication -> {
-                            Spacer(Modifier.weight(1f))
-                            AbacusFormulaItem(uiState)
-                            MultiplicationAbacusItem(uiState)
-                        }
-                        AppConstants.extras_Comman.AbacusTypeDivision -> {
-                            Spacer(Modifier.weight(1f))
-                            AbacusFormulaItem(uiState)
-                            DivisionAbacusItem(uiState)
-                        }
-                    }
+    // abacus and questions: the abacus keeps clear of the system bars, the question panel uses the full height of the screen
+    Row(
+        Modifier
+            .fillMaxSize()
+            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
+            .padding(
+                start = if (abacusOnLeft) screenHorizontalPadding() else 0.dp,
+                end = if (!abacusOnLeft) Dimens16 else if (DeviceInfo.isTablet) 0.dp else Dimens10,
+            )
+    ) {
+        val abacusBody: @Composable () -> Unit = {
+            Box(
+                Modifier
+                    .fillMaxHeight()
+                    .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Vertical))
+                    // on a phone the header is tall next to the screen, so only the abacus is kept clear of it
+                    .padding(top = if (DeviceInfo.isTablet) 0.dp else 54.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                if (uiState.currentAbacus != null) {
+                    AbacusViewItem(viewModel, uiState)
                 }
-            } else {
-                uiState.currentAbacus?.let {
-                    when (uiState.currentAbacusType) {
-                        AppConstants.extras_Comman.AbacusTypeNumber -> {
-                            NumberAbacusItem(it, modifier = Modifier.weight(1f))
-                        }
-                        AppConstants.extras_Comman.AbacusTypeAdditionSubtraction -> {
-                            AddSubAbacusItem(uiState)
-                            AbacusFormulaItem(uiState)
-                            Spacer(Modifier.weight(1f))
-                        }
-                        AppConstants.extras_Comman.AbacusTypeMultiplication -> {
-                            MultiplicationAbacusItem(uiState)
-                            AbacusFormulaItem(uiState)
-                            Spacer(Modifier.weight(1f))
-                        }
-                        AppConstants.extras_Comman.AbacusTypeDivision -> {
-                            DivisionAbacusItem(uiState)
-                            AbacusFormulaItem(uiState)
-                            Spacer(Modifier.weight(1f))
-                        }
-                    }
-                }
-                AbacusViewItem(viewModel, uiState)
-                Spacer(Modifier.width(AppDimens.Dimens4))
             }
         }
-
-        Spacer(Modifier.weight(1f))
+        val questionPanel: @Composable () -> Unit = {
+            Box(
+                Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
+                    .onGloballyPositioned { panelTop = it.positionInRoot().y; panelHeight = it.size.height.toFloat() }
+            ) {
+                AbacusQuestionPanel(
+                    viewModel = viewModel,
+                    uiState = uiState,
+                    topInset = panelTopInset,
+                    bottomInset = panelBottomInset,
+                    modifier = Modifier.fillMaxSize(),
+                )
+            }
+        }
+        if (abacusOnLeft) {
+            abacusBody()
+            questionPanel()
+        } else {
+            questionPanel()
+            abacusBody()
+        }
     }
 
-    UseWhichHandTextUi(uiState, viewModel)
+    // Header and the hand instruction line, above the abacus and the panel
+    Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+        AbTopBar(
+            title = "Abacus No : ${(uiState.currentIndexOfAbacus + 1)}",
+            onBack = onBackClick,
+            modifier = Modifier.padding(
+                start = screenHorizontalPadding(),
+                end = Dimens16,
+                top = DeviceInfo.screenTopPadding(),
+            ),
+            trailing = { SetTimer(uiState) },
+        )
+
+        Spacer(Modifier.weight(1f))
+
+        UseWhichHandTextUi(uiState, viewModel, onTopChanged = { handLineTop = it })
+    }
 
     // Quick, non-blocking sparkle burst when a sum finishes in step-by-step
     // or final-answer mode — purely decorative, so it never traps input or
@@ -214,6 +232,9 @@ fun AbacusDoPracticeRoute(
                 onNegativeTapped = onBackClick
             )
         }
+    }
+
+    }
     }
 
     ReviewGateHost(reviewGate, prefs)

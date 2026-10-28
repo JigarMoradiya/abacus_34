@@ -2,32 +2,34 @@ package com.jigar.me.ui.view.home.screens.levels.level3.speed_drill
 
 import androidx.compose.animation.*
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.data.local.data.DeviceInfo
-import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.HomePageBackground
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
+import com.jigar.me.ui.view.ab.AbBackground
+import com.jigar.me.ui.view.ab.AbFitToSpace
+import com.jigar.me.ui.view.ab.AbHeroPanel
+import com.jigar.me.ui.view.ab.AbTheme
+import com.jigar.me.ui.view.ab.AbWorld
+import com.jigar.me.ui.view.ab.abFixedStyle
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateHost
 import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
@@ -79,6 +81,7 @@ fun Level3SpeedDrillScreen(
     // Countdown + timer — runs once; resetKey restart on Play Again
     LaunchedEffect(resetKey) {
         for (n in 3 downTo 1) { phase = L3DrillPhase.Countdown(n); delay(800) }
+        AudioPlayerManager.playSoundCountGo()
         phase = L3DrillPhase.Playing(0)
         while (timeLeft > 0) { delay(1000); timeLeft-- }
         phase = L3DrillPhase.Result(score)
@@ -90,116 +93,110 @@ fun Level3SpeedDrillScreen(
         progress > 0.25f -> Color(0xFFFFB300)
         else             -> Color(0xFFE53935)
     }
-    val cardShape = remember { RoundedCornerShape(AppDimens.Dimens20) }
-    val cardBrush = remember(mode.startColor, mode.endColor) {
-        Brush.linearGradient(listOf(mode.startColor.copy(0.82f), mode.endColor.copy(0.82f)))
-    }
     val prefs = LocalPreferencesHelper.current
     val reviewGate = rememberReviewGateController()
-    Box(modifier = Modifier.fillMaxSize()) {
-        HomePageBackground()
 
-        // ── Two-panel ─────────────────────────────────────────────────────────
-        Row(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+    AbTheme {
+        Box(modifier = Modifier.fillMaxSize()) {
+            AbBackground(AbWorld.Lagoon)
 
-            // LEFT: back button + status card (mode info, timer, score)
-            Column(
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .weight(0.44f)
-                    .padding(bottom = AppDimens.Dimens12, end = AppDimens.Dimens6)
-            ) {
-                BackButtonWithText(title = mode.title, onBackClick = onBackClick)
-                Spacer(Modifier.height(AppDimens.Dimens8))
+            // ── Two-panel ─────────────────────────────────────────────────────────
+            Row(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).screenLeftEdge()) {
 
-                Box(
+                // LEFT: back button + status card (mode info, timer, score)
+                Column(
                     modifier = Modifier
-                        .weight(1f).fillMaxWidth()
-                        .padding(start = AppDimens.Dimens12)
-                        .shadow(AppDimens.Dimens8, cardShape,
-                            spotColor    = mode.endColor.copy(0.38f),
-                            ambientColor = mode.endColor.copy(0.20f))
-                        .background(cardBrush, cardShape),
-                    contentAlignment = Alignment.Center
+                        .fillMaxHeight()
+                        .weight(0.44f)
+                        .padding(bottom = AppDimens.Dimens12, end = AppDimens.Dimens6)
                 ) {
-                    Column(
-                        modifier            = Modifier.fillMaxWidth().padding(AppDimens.Dimens16),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens14)
+                    ScreenTopBar(title = mode.title, onBack = onBackClick)
+                    Spacer(Modifier.height(AppDimens.Dimens8))
+
+                    Box(
+                        modifier = Modifier
+                            .weight(1f).fillMaxWidth()
+                            .padding(start = AppDimens.Dimens12)
                     ) {
-                        Text(mode.emoji, style = MaterialTheme.typography.titleLarge.scaled())
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens2)
-                        ) {
-                            Text(mode.title,
-                                style      = MaterialTheme.typography.labelLarge.scaled(),
-                                color      = Color.White,
-                                fontWeight = FontWeight.Black,
-                                textAlign  = TextAlign.Center)
-                            Text(mode.subtitle,
-                                style     = MaterialTheme.typography.labelSmall.scaled(),
-                                color     = Color.White.copy(0.80f),
-                                textAlign = TextAlign.Center)
-                        }
-                        // Large timer circle
-                        Box(contentAlignment = Alignment.Center) {
-                            Canvas(modifier = Modifier.size(AppDimens.Dimens72)) {
-                                val strokeW = 7.dp.toPx()
-                                val inset   = strokeW / 2
-                                drawArc(
-                                    color      = Color.White.copy(0.20f),
-                                    startAngle = -90f, sweepAngle = 360f, useCenter = false,
-                                    topLeft    = Offset(inset, inset),
-                                    size       = Size(size.width - strokeW, size.height - strokeW),
-                                    style      = Stroke(strokeW)
-                                )
-                                drawArc(
-                                    color      = timerColor,
-                                    startAngle = -90f, sweepAngle = 360f * progress, useCenter = false,
-                                    topLeft    = Offset(inset, inset),
-                                    size       = Size(size.width - strokeW, size.height - strokeW),
-                                    style      = Stroke(strokeW, cap = StrokeCap.Round)
-                                )
+                        AbHeroPanel(mode.endColor, Modifier.matchParentSize(), padding = 0.dp)
+                        AbFitToSpace(Modifier.matchParentSize().padding(AppDimens.Dimens16)) {
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens14)
+                            ) {
+                                Text(mode.emoji, style = abEmojiStyle(abResponsive(38f)))
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    verticalArrangement = Arrangement.spacedBy((-6).dp)
+                                ) {
+                                    Text(mode.title,
+                                        style     = abFont(13f, FontWeight.Black),
+                                        color     = Color.White,
+                                        textAlign = TextAlign.Center)
+                                    Text(mode.subtitle,
+                                        style     = abFont(11f),
+                                        color     = Color.White.copy(alpha = 0.95f),
+                                        textAlign = TextAlign.Center)
+                                }
+                                // Large timer circle
+                                val sweep by animateFloatAsState(progress, tween(1000, easing = LinearEasing), label = "drill-timer")
+                                Box(Modifier.size(abResponsive(76f).dp), contentAlignment = Alignment.Center) {
+                                    Canvas(modifier = Modifier.fillMaxSize()) {
+                                        val strokeW = 7.dp.toPx()
+                                        val inset   = strokeW / 2
+                                        drawArc(
+                                            color      = Color.White.copy(alpha = 0.20f),
+                                            startAngle = -90f, sweepAngle = 360f, useCenter = false,
+                                            topLeft    = Offset(inset, inset),
+                                            size       = Size(size.width - strokeW, size.height - strokeW),
+                                            style      = Stroke(strokeW)
+                                        )
+                                        drawArc(
+                                            color      = timerColor,
+                                            startAngle = -90f, sweepAngle = 360f * sweep, useCenter = false,
+                                            topLeft    = Offset(inset, inset),
+                                            size       = Size(size.width - strokeW, size.height - strokeW),
+                                            style      = Stroke(strokeW, cap = StrokeCap.Round)
+                                        )
+                                    }
+                                    Column(
+                                        horizontalAlignment = Alignment.CenterHorizontally,
+                                        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens1)
+                                    ) {
+                                        Text("$timeLeft",
+                                            style = abFont(24f, FontWeight.Black),
+                                            color = Color.White)
+                                        Text("sec",
+                                            style = abFont(10f),
+                                            color = Color.White.copy(alpha = 0.90f))
+                                    }
+                                }
+                                // Score
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens2)
+                                ) {
+                                    Text("$score",
+                                        style = abFont(30f, FontWeight.Black),
+                                        color = Color.White)
+                                    Text("pts",
+                                        style = abFont(11f),
+                                        color = Color.White.copy(alpha = 0.90f))
+                                }
                             }
-                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                Text("$timeLeft",
-                                    style      = MaterialTheme.typography.titleMedium.scaled(),
-                                    color      = Color.White,
-                                    fontWeight = FontWeight.Black)
-                                Text("sec",
-                                    style = MaterialTheme.typography.labelSmall.scaled(),
-                                    color = Color.White.copy(0.70f))
-                            }
-                        }
-                        // Score
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text("$score",
-                                style      = MaterialTheme.typography.headlineSmall.scaled(),
-                                color      = Color.White,
-                                fontWeight = FontWeight.Black)
-                            Text("pts",
-                                style = MaterialTheme.typography.labelSmall.scaled(),
-                                color = Color.White.copy(0.70f))
                         }
                     }
                 }
-            }
 
-            // RIGHT: phase content card
-            Box(
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .weight(0.56f)
-                    .padding(start = AppDimens.Dimens6, end = AppDimens.Dimens12)
-                    .padding(top = DeviceInfo.screenTopPadding(), bottom = AppDimens.Dimens12)
-                    .shadow(AppDimens.Dimens8, cardShape,
-                        spotColor    = mode.endColor.copy(0.38f),
-                        ambientColor = mode.endColor.copy(0.20f))
-                    .background(cardBrush, cardShape),
-                contentAlignment = Alignment.Center
-            ) {
-                BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+                // RIGHT: phase content card
+                Box(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(0.56f)
+                        .padding(start = AppDimens.Dimens6, end = AppDimens.Dimens12)
+                        .padding(top = DeviceInfo.screenTopPadding(), bottom = AppDimens.Dimens12)
+                ) {
+                    AbHeroPanel(mode.endColor, Modifier.matchParentSize(), padding = 0.dp)
                     AnimatedContent(
                         targetState    = phase,
                         contentKey     = { p ->
@@ -210,67 +207,35 @@ fun Level3SpeedDrillScreen(
                             }
                         },
                         transitionSpec = { fadeIn(tween(200)) togetherWith fadeOut(tween(150)) },
+                        contentAlignment = Alignment.Center,
                         label          = "drill-phase",
-                        modifier       = Modifier.size(maxWidth, maxHeight)
+                        modifier       = Modifier
+                            .matchParentSize()
+                            .padding(horizontal = AppDimens.Dimens16)
+                            .padding(top = AppDimens.Dimens16, bottom = AppDimens.Dimens12)
                     ) { p ->
-                        when (p) {
-                            is L3DrillPhase.Countdown -> Box(
-                                modifier         = Modifier.fillMaxSize().padding(vertical = AppDimens.Dimens16),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Column(
-                                    horizontalAlignment = Alignment.CenterHorizontally,
-                                    verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
+                        FitOnPhone(Modifier.fillMaxSize()) { flexible ->
+                            when (p) {
+                                is L3DrillPhase.Countdown -> Box(
+                                    modifier         = Modifier.fillMaxWidth().padding(vertical = AppDimens.Dimens16),
+                                    contentAlignment = Alignment.Center
                                 ) {
-                                    Text("${p.n}",
-                                        fontSize   = 80.sp.scaled(),
-                                        color      = Color.White,
-                                        fontWeight = FontWeight.Black,
-                                        textAlign  = TextAlign.Center)
-                                    Text("Get ready!",
-                                        style      = MaterialTheme.typography.headlineLarge.scaled(),
-                                        color      = Color.White.copy(0.80f),
-                                        fontWeight = FontWeight.Medium)
+                                    L3Countdown(p.n, digitSize = 80f)
                                 }
-                            }
-                            is L3DrillPhase.Playing -> {
-                                val terms = currentSession.terms
-                                val expr  = buildString {
-                                    terms.forEachIndexed { i, t ->
-                                        if (i == 0) append("${t.value}") else append(" ${t.sign} ${t.value}")
-                                    }
-                                    append(" = ?")
-                                }
-                                Column(
-                                    modifier            = Modifier.fillMaxSize().padding(AppDimens.Dimens16),
-                                    horizontalAlignment = Alignment.CenterHorizontally,
-                                    verticalArrangement = Arrangement.Top
-                                ) {
-                                    Box(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .weight(1f)
-                                            .offset(x = shakeOffset.value.dp)
-                                            .background(
-                                                if (wrongFlash) Color(0xFFE53935).copy(0.25f)
-                                                else Color.White.copy(0.20f),
-                                                RoundedCornerShape(AppDimens.Dimens16)
-                                            ),
-                                        contentAlignment = Alignment.Center
-                                    ) {
-                                        Crossfade(targetState = expr, animationSpec = tween(180), label = "drill-expr") { e ->
-                                            Text(e,
-                                                fontSize   = 52.sp.scaled(),
-                                                color      = if (wrongFlash) Color(0xFFFF8A80) else Color.White,
-                                                fontWeight = FontWeight.Black,
-                                                textAlign  = TextAlign.Center,
-                                                modifier   = Modifier.fillMaxWidth())
+                                is L3DrillPhase.Playing -> {
+                                    val expr = buildString {
+                                        currentSession.terms.forEachIndexed { i, t ->
+                                            if (i == 0) append("${t.value}") else append(" ${t.sign} ${t.value}")
                                         }
+                                        append(" = ?")
                                     }
-                                    Spacer(Modifier.height(AppDimens.Dimens8))
-                                    L3Numpad(
+                                    DrillPlaying(
+                                        expr           = expr,
+                                        wrongFlash     = wrongFlash,
+                                        shakeOffset    = shakeOffset.value,
                                         typedValue     = typedValue,
                                         confirmEnabled = typedValue.isNotEmpty() && timeLeft > 0,
+                                        flexible       = flexible,
                                         onDigit        = { typedValue = (typedValue + it.toString()).take(3) },
                                         onDelete       = { if (typedValue.isNotEmpty()) typedValue = typedValue.dropLast(1) },
                                         onConfirm      = {
@@ -288,90 +253,100 @@ fun Level3SpeedDrillScreen(
                                                 }
                                             }
                                         },
-                                        modifier       = Modifier.fillMaxWidth().height(AppDimens.Dimens240)
                                     )
                                 }
+                                is L3DrillPhase.Result -> Unit
                             }
-                            is L3DrillPhase.Result -> Unit
                         }
                     }
                 }
             }
-        }
 
-        // ── Result popup ──────────────────────────────────────────────────────
-        val rp = phase as? L3DrillPhase.Result
-        AnimatedVisibility(
-            visible  = rp != null,
-            enter    = fadeIn(tween(300)) + scaleIn(initialScale = 0.85f, animationSpec = spring(dampingRatio = 0.7f, stiffness = 400f)),
-            exit     = fadeOut(tween(200)) + scaleOut(targetScale = 0.85f),
-            modifier = Modifier.fillMaxSize()
-        ) {
-            if (rp != null) {
-                val popupShape = RoundedCornerShape(AppDimens.Dimens24)
-                Box(
-                    modifier         = Modifier.fillMaxSize().background(Color.Black.copy(0.45f)),
-                    contentAlignment = Alignment.Center
+            // ── Result popup ──────────────────────────────────────────────────────
+            (phase as? L3DrillPhase.Result)?.let { rp ->
+                L3ResultPopup(
+                    accent     = mode.endColor,
+                    correct    = rp.score >= 1,
+                    emoji      = when {
+                        rp.score >= 10 -> "🌟🌟🌟"
+                        rp.score >= 5  -> "🌟🌟"
+                        rp.score >= 1  -> "🌟"
+                        else           -> "💪"
+                    },
+                    message    = "In ${config.timeLimitSecs}s you solved ${rp.score} problems! ⚡",
+                    retryLabel = "Play Again 🔄",
+                    onRetry    = {
+                        score          = 0
+                        timeLeft       = config.timeLimitSecs
+                        typedValue     = ""
+                        wrongFlash     = false
+                        shakeCount     = 0
+                        currentSession = generateL3Session(2, config.digits)
+                        resetKey++
+                    },
+                    onDone     = {
+                        if (rp.score >= 10) reviewGate.attempt(prefs) { onFinished() } else onFinished()
+                    },
                 ) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth(0.52f).padding(AppDimens.Dimens6)
-                            .shadow(AppDimens.Dimens16, popupShape,
-                                spotColor    = mode.endColor.copy(0.50f),
-                                ambientColor = mode.endColor.copy(0.30f))
-                            .background(Brush.linearGradient(listOf(mode.startColor, mode.endColor)), popupShape)
-                            .padding(AppDimens.Dimens28),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens14)
-                        ) {
-                            val emoji = when {
-                                rp.score >= 10 -> "🌟🌟🌟"
-                                rp.score >= 5  -> "🌟🌟"
-                                rp.score >= 1  -> "🌟"
-                                else           -> "💪"
-                            }
-                            Text(emoji, style = MaterialTheme.typography.displaySmall.scaled())
-                            Text("${rp.score} Correct!",
-                                style      = MaterialTheme.typography.headlineMedium.scaled(),
-                                color      = Color.White,
-                                fontWeight = FontWeight.Black,
-                                textAlign  = TextAlign.Center)
-                            Box(
-                                modifier = Modifier
-                                    .background(Color.White.copy(0.18f), RoundedCornerShape(AppDimens.Dimens16))
-                                    .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens10)
-                            ) {
-                                Text(
-                                    "In ${config.timeLimitSecs}s you solved ${rp.score} problems! ⚡",
-                                    style      = MaterialTheme.typography.bodyLarge.scaled(),
-                                    color      = Color.White.copy(0.92f),
-                                    textAlign  = TextAlign.Center,
-                                    fontWeight = FontWeight.Medium)
-                            }
-                            Spacer(Modifier.height(AppDimens.Dimens4))
-                            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
-                                L3ResultBtn("Play Again 🔄", filled = false) {
-                                    score          = 0
-                                    timeLeft       = config.timeLimitSecs
-                                    typedValue     = ""
-                                    wrongFlash     = false
-                                    shakeCount     = 0
-                                    currentSession = generateL3Session(2, config.digits)
-                                    resetKey++
-                                }
-                                L3ResultBtn("Done ✓", filled = true, onClick = {
-                                    if (rp.score >= 10) reviewGate.attempt(prefs) { onFinished() } else onFinished()
-                                })
-                            }
-                        }
-                    }
+                    Text("${rp.score} Correct!",
+                        style     = abFixedStyle(abMainTitleSize(), FontWeight.Black),
+                        color     = Color.White,
+                        textAlign = TextAlign.Center)
                 }
             }
-        }
 
-        ReviewGateHost(reviewGate, prefs)
+            ReviewGateHost(reviewGate, prefs)
+        }
+    }
+}
+
+/**
+ * The question over the number pad. On a phone ([flexible] = false) everything is laid out at its natural size and shrunk to
+ * fit by [FitOnPhone]; on a tablet the question plate takes the room the pad leaves.
+ */
+@Composable
+private fun DrillPlaying(
+    expr:           String,
+    wrongFlash:     Boolean,
+    shakeOffset:    Float,
+    typedValue:     String,
+    confirmEnabled: Boolean,
+    flexible:       Boolean,
+    onDigit:        (Int) -> Unit,
+    onDelete:       () -> Unit,
+    onConfirm:      () -> Unit,
+) {
+    Column(
+        modifier            = if (flexible) Modifier.fillMaxSize() else Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .then(if (flexible) Modifier.weight(1f) else Modifier)
+                .offset(x = shakeOffset.dp)
+                .background(
+                    if (wrongFlash) Color(0xFFE53935).copy(alpha = 0.25f) else Color.White.copy(alpha = 0.20f),
+                    RoundedCornerShape(AppDimens.Dimens16)
+                ),
+            contentAlignment = Alignment.Center
+        ) {
+            Crossfade(targetState = expr, animationSpec = tween(180), label = "drill-expr") { e ->
+                Text(e,
+                    style     = abFont(48f, FontWeight.Black),
+                    color     = if (wrongFlash) Color(0xFFFF8A80) else Color.White,
+                    textAlign = TextAlign.Center,
+                    modifier  = Modifier.fillMaxWidth().padding(vertical = if (flexible) 0.dp else AppDimens.Dimens12))
+            }
+        }
+        Spacer(Modifier.height(AppDimens.Dimens8))
+        L3Numpad(
+            typedValue     = typedValue,
+            confirmEnabled = confirmEnabled,
+            onDigit        = onDigit,
+            onDelete       = onDelete,
+            onConfirm      = onConfirm,
+            modifier       = Modifier.fillMaxWidth().height(abResponsive(250f).dp)
+        )
     }
 }

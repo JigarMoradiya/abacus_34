@@ -2,25 +2,40 @@ package com.jigar.me.ui.view.home.screens.levels.level3.config
 
 import android.content.Context
 import com.jigar.me.ui.view.home.screens.levels.level3.*
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
-import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.HomePageBackground
+import androidx.compose.ui.unit.dp
+import com.jigar.me.ui.view.ab.AbBackground
+import com.jigar.me.ui.view.ab.AbButton
+import com.jigar.me.ui.view.ab.AbGlassPanel
+import com.jigar.me.ui.view.ab.AbHeroPanel
+import com.jigar.me.ui.view.ab.AbInsetBox
+import com.jigar.me.ui.view.ab.AbShapes
+import com.jigar.me.ui.view.ab.AbSize
+import com.jigar.me.ui.view.ab.AbSound
+import com.jigar.me.ui.view.ab.AbTheme
+import com.jigar.me.ui.view.ab.AbToggle
+import com.jigar.me.ui.view.ab.AbTone
+import com.jigar.me.ui.view.ab.AbWorld
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abFixedStyle
+import com.jigar.me.ui.view.ab.abSquash
+import com.jigar.me.ui.view.home.screens.levels.level3.components.ScreenTopBar
+import com.jigar.me.ui.view.home.screens.levels.level3.components.abEmojiStyle
+import com.jigar.me.ui.view.home.screens.levels.level3.components.abFont
+import com.jigar.me.ui.view.home.screens.levels.level3.components.abMainTitleSize
+import com.jigar.me.ui.view.home.screens.levels.level3.components.abResponsive
+import com.jigar.me.ui.view.home.screens.levels.level3.components.screenLeftEdge
+import com.jigar.me.ui.view.home.screens.levels.level3.components.systemPrimary
+import com.jigar.me.ui.view.home.screens.levels.level3.components.systemSecondary
 import com.jigar.me.ui.view.home.theme.AppDimens
 
 @Composable
@@ -45,167 +60,125 @@ fun Level3ConfigScreen(
     LaunchedEffect(autoAbacus)    { prefs.edit().putBoolean("${modeKey}_autoAbacus", autoAbacus).apply() }
     LaunchedEffect(timeLimitSecs) { prefs.edit().putInt("${modeKey}_timeLimitSecs", timeLimitSecs).apply() }
 
-    val cardShape = RoundedCornerShape(AppDimens.Dimens20)
+    AbTheme {
+        val colors = LocalAbColors.current
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        HomePageBackground()
+        Box(modifier = Modifier.fillMaxSize()) {
+            AbBackground(AbWorld.Lagoon)
 
-        Row(
-            modifier          = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-
-            // ── LEFT: back button + mode info card ────────────────────────────
-            Column(
-                modifier = Modifier
-                    .weight(0.42f)
-                    .fillMaxHeight()
-                    .padding(bottom = AppDimens.Dimens12, end = AppDimens.Dimens6)
+            Row(
+                modifier          = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).screenLeftEdge(),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                BackButtonWithText(title = mode.title, onBackClick = onBackClick)
-                Spacer(Modifier.height(AppDimens.Dimens8))
 
-                Box(
+                // ── LEFT: back button + mode info card ────────────────────────────
+                Column(
                     modifier = Modifier
-                        .weight(1f)
-                        .fillMaxWidth()
-                        .padding(start = AppDimens.Dimens12)
-                        .padding(AppDimens.Dimens4)
-                        .shadow(AppDimens.Dimens6, cardShape,
-                            spotColor    = mode.endColor.copy(0.35f),
-                            ambientColor = mode.endColor.copy(0.15f))
-                        .background(Brush.linearGradient(listOf(mode.startColor, mode.endColor)), cardShape)
-                        .padding(AppDimens.Dimens20),
-                    contentAlignment = Alignment.Center
+                        .weight(0.40f)
+                        .fillMaxHeight()
+                        .padding(bottom = AppDimens.Dimens12, end = AppDimens.Dimens6)
                 ) {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
+                    ScreenTopBar(title = mode.title, onBack = onBackClick)
+                    Spacer(Modifier.height(AppDimens.Dimens8))
+
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxWidth()
+                            .padding(start = AppDimens.Dimens12)
                     ) {
-                        Text(mode.emoji, style = MaterialTheme.typography.displaySmall.scaled())
-                        Text(
-                            mode.title,
-                            style      = MaterialTheme.typography.headlineSmall.scaled(),
-                            color      = Color.White,
-                            fontWeight = FontWeight.Black,
-                            textAlign  = TextAlign.Center,
-                        )
-                        Box(
-                            modifier = Modifier
-                                .background(Color.White.copy(0.20f), RoundedCornerShape(AppDimens.Dimens16))
-                                .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens10)
+                        AbHeroPanel(mode.endColor, Modifier.matchParentSize(), padding = 0.dp)
+                        Column(
+                            modifier            = Modifier.fillMaxSize().padding(AppDimens.Dimens20),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12, Alignment.CenterVertically)
                         ) {
+                            Text(mode.emoji, style = abEmojiStyle(abResponsive(52f)))
                             Text(
-                                modeDescription(mode),
-                                style      = MaterialTheme.typography.bodyMedium.scaled(),
-                                color      = Color.White.copy(0.92f),
-                                textAlign  = TextAlign.Center,
-                                fontWeight = FontWeight.Medium,
+                                mode.title,
+                                style     = abFixedStyle(abMainTitleSize(), FontWeight.Black),
+                                color     = Color.White,
+                                textAlign = TextAlign.Center,
                             )
-                        }
-                    }
-                }
-            }
-
-            // ── RIGHT: config options ─────────────────────────────────────────
-            Column(
-                modifier = Modifier
-                    .weight(0.58f)
-                    .padding(start = AppDimens.Dimens6, top = AppDimens.Dimens8, bottom = AppDimens.Dimens12, end = AppDimens.Dimens12)
-            ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(AppDimens.Dimens4)
-                        .shadow(AppDimens.Dimens8, cardShape,
-                            spotColor    = Color.Black.copy(0.12f),
-                            ambientColor = Color.Black.copy(0.06f))
-                        .background(Color.White.copy(0.88f), cardShape)
-                        .padding(AppDimens.Dimens20),
-                ) {
-                    Column(
-                        modifier            = Modifier.fillMaxWidth(),
-                        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
-                    ) {
-                        // Terms
-                        if (mode != L3Mode.SPEED_DRILL) {
-                            L3ConfigRow(label = "📊 Terms") {
-                                listOf(3, 5, 7, 10).forEach { t ->
-                                    L3Chip("$t", selected = terms == t) { terms = t }
-                                }
-                            }
-                        }
-
-                        // Digits
-                        L3ConfigRow(label = "🔢 Digits") {
-                            listOf(1 to "1-digit", 2 to "2-digit").forEach { (d, label) ->
-                                L3Chip(label, selected = digits == d) { digits = d }
-                            }
-                        }
-
-                        // Flash speed (not for Speed Drill or Guided — user clicks Next manually)
-                        if (mode != L3Mode.SPEED_DRILL && mode != L3Mode.GUIDED) {
-                            L3ConfigRow(label = "⚡ Speed") {
-                                listOf(1600 to "Slow", 1200 to "Normal", 800 to "Fast", 500 to "Blazing").forEach { (ms, label) ->
-                                    L3Chip(label, selected = flashMs == ms) { flashMs = ms }
-                                }
-                            }
-                        }
-
-                        // Time limit (Speed Drill only)
-                        if (mode == L3Mode.SPEED_DRILL) {
-                            L3ConfigRow(label = "⏱ Time") {
-                                listOf(30, 60, 90).forEach { t ->
-                                    L3Chip("${t}s", selected = timeLimitSecs == t) { timeLimitSecs = t }
-                                }
-                            }
-                        }
-
-                        // Auto-abacus toggle (Guided only)
-                        if (mode == L3Mode.GUIDED) {
-                            Row(
-                                modifier          = Modifier.fillMaxWidth(),
-                                verticalAlignment = Alignment.CenterVertically,
-                            ) {
-                                Column(modifier = Modifier.weight(1f)) {
-                                    Text(
-                                        "🧮 Auto-Abacus",
-                                        style      = MaterialTheme.typography.labelLarge.scaled(),
-                                        fontWeight = FontWeight.Bold,
-                                        color      = Color.Black.copy(0.80f),
-                                    )
-                                    Text(
-                                        if (autoAbacus) "Abacus updates automatically" else "You move the beads yourself",
-                                        style = MaterialTheme.typography.labelSmall.scaled(),
-                                        color = Color.Black.copy(0.55f),
-                                    )
-                                }
-                                Switch(
-                                    checked         = autoAbacus,
-                                    onCheckedChange = { autoAbacus = it },
-                                    colors          = SwitchDefaults.colors(
-                                        checkedThumbColor = mode.startColor,
-                                        checkedTrackColor = mode.startColor.copy(0.40f),
-                                    )
+                            AbInsetBox {
+                                Text(
+                                    modeDescription(mode),
+                                    style     = abFont(14f, FontWeight.Medium),
+                                    color     = Color.White.copy(alpha = 0.92f),
+                                    textAlign = TextAlign.Center,
                                 )
                             }
                         }
+                    }
+                }
 
-                        // Start button — wrap content, right-aligned
-                        val startShape = RoundedCornerShape(AppDimens.Dimens100)
-                        Row(
-                            modifier              = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.End
+                // ── RIGHT: config options ─────────────────────────────────────────
+                Column(
+                    modifier = Modifier
+                        .weight(0.60f)
+                        .padding(start = AppDimens.Dimens6, top = AppDimens.Dimens8, bottom = AppDimens.Dimens12, end = AppDimens.Dimens12)
+                ) {
+                    AbGlassPanel(modifier = Modifier.fillMaxWidth()) {
+                        Column(
+                            modifier            = Modifier.fillMaxWidth().padding(AppDimens.Dimens16),
+                            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
                         ) {
-                            Box(
-                                modifier = Modifier
-                                    .padding(AppDimens.Dimens3)
-                                    .shadow(AppDimens.Dimens6, startShape,
-                                        spotColor    = mode.endColor.copy(0.5f),
-                                        ambientColor = mode.endColor.copy(0.3f))
-                                    .background(Brush.linearGradient(listOf(mode.startColor, mode.endColor)), startShape)
-                                    .clickable(remember { MutableInteractionSource() }, null) {
-                                        AudioPlayerManager.playSoundBtnClick()
+                            // Terms
+                            if (mode != L3Mode.SPEED_DRILL) {
+                                L3ConfigRow(label = "📊 Terms") {
+                                    listOf(3, 5, 7, 10).forEach { t ->
+                                        L3Chip("$t", selected = terms == t) { terms = t }
+                                    }
+                                }
+                            }
+
+                            // Digits
+                            L3ConfigRow(label = "🔢 Digits") {
+                                listOf(1 to "1-digit", 2 to "2-digit").forEach { (d, label) ->
+                                    L3Chip(label, selected = digits == d) { digits = d }
+                                }
+                            }
+
+                            // Flash speed (not for Speed Drill or Guided — user clicks Next manually)
+                            if (mode != L3Mode.SPEED_DRILL && mode != L3Mode.GUIDED) {
+                                L3ConfigRow(label = "⚡ Speed") {
+                                    listOf(1600 to "Slow", 1200 to "Normal", 800 to "Fast", 500 to "Blazing").forEach { (ms, label) ->
+                                        L3Chip(label, selected = flashMs == ms) { flashMs = ms }
+                                    }
+                                }
+                            }
+
+                            // Time limit (Speed Drill only)
+                            if (mode == L3Mode.SPEED_DRILL) {
+                                L3ConfigRow(label = "⏱ Time") {
+                                    listOf(30, 60, 90).forEach { t ->
+                                        L3Chip("${t}s", selected = timeLimitSecs == t) { timeLimitSecs = t }
+                                    }
+                                }
+                            }
+
+                            // Auto-abacus toggle (Guided only)
+                            if (mode == L3Mode.GUIDED) {
+                                Column(verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens2)) {
+                                    AbToggle(isOn = autoAbacus, label = "🧮 Auto-Abacus", onChange = { autoAbacus = it })
+                                    Text(
+                                        if (autoAbacus) "Abacus updates automatically" else "You move the beads yourself",
+                                        style = abFont(12f),
+                                        color = colors.systemSecondary,
+                                    )
+                                }
+                            }
+
+                            // Start button — wrap content, right-aligned
+                            Row(
+                                modifier              = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.End
+                            ) {
+                                AbButton(
+                                    text    = "Start! 🚀",
+                                    tone    = AbTone.Primary,
+                                    size    = AbSize.Medium,
+                                    onClick = {
                                         onStart(L3Config(
                                             mode          = mode,
                                             terms         = terms,
@@ -214,15 +187,7 @@ fun Level3ConfigScreen(
                                             autoAbacus    = autoAbacus,
                                             timeLimitSecs = timeLimitSecs,
                                         ))
-                                    }
-                                    .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text(
-                                    "Start! 🚀",
-                                    style      = MaterialTheme.typography.labelLarge.scaled(),
-                                    color      = Color.White,
-                                    fontWeight = FontWeight.Black,
+                                    },
                                 )
                             }
                         }
@@ -235,38 +200,41 @@ fun Level3ConfigScreen(
 
 @Composable
 private fun L3ConfigRow(label: String, content: @Composable RowScope.() -> Unit) {
+    val colors = LocalAbColors.current
     Column(verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)) {
         Text(
             label,
-            style      = MaterialTheme.typography.labelLarge.scaled(),
-            fontWeight = FontWeight.Bold,
-            color      = Color.Black.copy(0.80f),
+            style = abFont(14f, FontWeight.Bold),
+            color = colors.systemPrimary.copy(alpha = 0.85f),
         )
-        Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
-            content()
-        }
+        Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8), content = content)
     }
 }
 
 @Composable
 private fun L3Chip(label: String, selected: Boolean, onClick: () -> Unit) {
-    val shape = RoundedCornerShape(AppDimens.Dimens100)
+    val colors = LocalAbColors.current
+    val s      = LocalAbScale.current.factor
     Box(
         modifier = Modifier
-            .shadow(AppDimens.Dimens3, shape)
-            .background(
-                if (selected) Color(0xFF1565C0) else Color.White.copy(0.55f),
-                shape
+            .abSquash(
+                face         = if (selected) colors.brandPrimary else colors.bgSecondary,
+                edge         = if (selected) colors.brandPrimaryDark else colors.outline,
+                stroke       = if (selected) null else colors.outline,
+                cornerRadius = AbShapes.pill,
+                edgeHeight   = (4f * s).dp,
+                sound        = AbSound.Button,
+                onClick      = onClick,
             )
-            .clickable(remember { MutableInteractionSource() }, null) { AudioPlayerManager.playSoundBtnClick(); onClick() }
-            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6),
+            .heightIn(min = (36f * s).dp)
+            .padding(horizontal = (14f * s).dp),
         contentAlignment = Alignment.Center
     ) {
         Text(
             label,
-            style      = MaterialTheme.typography.labelMedium.scaled(),
-            color      = if (selected) Color.White else Color.Black.copy(0.75f),
-            fontWeight = if (selected) FontWeight.Bold else FontWeight.Medium,
+            style    = abFixedStyle(14f * s, if (selected) FontWeight.ExtraBold else FontWeight.SemiBold),
+            color    = if (selected) Color.White else colors.textPrimary,
+            maxLines = 1,
         )
     }
 }

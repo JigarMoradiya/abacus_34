@@ -16,11 +16,11 @@ class CCMHomeViewModel @Inject constructor(
     override fun getInitialState() = CCMHomeUiState(
         totalQuestion = prefs.getCustomParamInt(AppConstants.CCM.totalQuestion, 10),
         questionGap = prefs.getCustomParamInt(AppConstants.CCM.questionGap, 3),
-        questionMinLength = prefs.getCustomParamInt(AppConstants.CCM.questionMinLength, 2),
+        questionMinLength = prefs.getCustomParamInt(AppConstants.CCM.questionMinLength, 1),
         questionMaxLength = prefs.getCustomParamInt(AppConstants.CCM.questionMaxLength, 3),
-        isQuestionSpeak = prefs.getCustomParamBoolean(AppConstants.CCM.isQuestionSpeak, true),
+        isQuestionSpeak = prefs.getCustomParamBoolean(AppConstants.CCM.isQuestionSpeak, false),
         isQuestionShowNumber = prefs.getCustomParamBoolean(AppConstants.CCM.isQuestionShowNumber, true),
-        isQuestionShowWord = prefs.getCustomParamBoolean(AppConstants.CCM.isQuestionShowWord, true),
+        isQuestionShowWord = prefs.getCustomParamBoolean(AppConstants.CCM.isQuestionShowWord, false),
     )
 
     fun updateValues(type : String, value: Int) {

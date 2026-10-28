@@ -37,7 +37,7 @@ data class AbColors(
     /** The place-value rainbow on the Free Mode rods, ones first: orange, lime, green, dark teal, teal, blue, indigo. */
     val placeValue: List<Color>,
 ) {
-    val overlayScrim: Color get() = overlay.copy(alpha = if (isDark) 0.62f else 0.5f)
+    val overlayScrim: Color get() = Color.Black.copy(alpha = if (isDark) 0.62f else 0.45f) // plain gray, never tinted
 
     companion object {
         val Light = AbColors(
@@ -100,6 +100,17 @@ fun Color.abBlended(other: Color, fraction: Float): Color {
 /** Relative luminance (0 black ... 1 white) of the colour as drawn in sRGB. */
 val Color.abLuminance: Float
     get() = 0.2126f * toLinear(red) + 0.7152f * toLinear(green) + 0.0722f * toLinear(blue)
+
+/**
+ * A deeper shade of this same colour that white text (or this colour as text on white) reads on: it sinks toward black in
+ * small steps until the contrast with white is at least [min]. Colours that already pass are returned unchanged.
+ */
+fun Color.abReadable(min: Float = 3.0f): Color {
+    var c = this
+    var steps = 0
+    while (1.05f / (c.abLuminance + 0.05f) < min && steps < 14) { c = c.abDarkened(0.06f); steps++ }
+    return c
+}
 
 /**
  * Text colour that reads on top of this colour: white when the contrast against white is good, otherwise a very dark

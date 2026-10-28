@@ -1,27 +1,39 @@
 package com.jigar.me.ui.view.home.screens.levels.level3.components
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.Backspace
+import androidx.compose.material.icons.rounded.Check
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.ab.AB_SF_TO_VECTOR
+import com.jigar.me.ui.view.ab.AbGlassPanel
+import com.jigar.me.ui.view.ab.AbPanelButton
+import com.jigar.me.ui.view.ab.AbShrinkText
+import com.jigar.me.ui.view.ab.AbSound
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abDarkened
+import com.jigar.me.ui.view.ab.abFixedStyle
+import com.jigar.me.ui.view.ab.abSquash
 import com.jigar.me.ui.view.home.theme.AppDimens
+import kotlin.math.min
 
+/** Number pad for the Level 3 answer phases: an answer display and chunky keys. */
 @Composable
 fun L3Numpad(
     typedValue:     String,
@@ -31,43 +43,33 @@ fun L3Numpad(
     modifier:       Modifier = Modifier,
     confirmEnabled: Boolean  = typedValue.isNotEmpty(),
 ) {
-    val answerShape = RoundedCornerShape(AppDimens.Dimens12)
+    val colors = LocalAbColors.current
     Column(
-        modifier             = modifier,
-        verticalArrangement  = Arrangement.spacedBy(AppDimens.Dimens4)
+        modifier            = modifier,
+        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)
     ) {
-        // Answer display — white card so it pops against the translucent keys
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1.4f)
-                .shadow(5.dp, answerShape)
-                .background(Color.White.copy(0.92f), answerShape)
-                .padding(horizontal = AppDimens.Dimens12),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text       = typedValue.ifEmpty { "?" },
-                fontSize   = 38.sp.scaled(),
-                color      = if (typedValue.isEmpty()) Color(0xFF1A237E).copy(0.30f) else Color(0xFF1A237E),
-                fontWeight = FontWeight.Black,
-                textAlign  = TextAlign.Center,
-            )
+        // Answer display. The text is sized from the room it gets, so the pad never outgrows its panel.
+        AbGlassPanel(Modifier.fillMaxWidth().weight(1f)) {
+            BoxWithConstraints(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                AbShrinkText(
+                    text      = typedValue.ifEmpty { "?" },
+                    style     = abFixedStyle(maxOf(1f, min(abResponsive(44f), maxHeight.value * 0.6f)), FontWeight.ExtraBold),
+                    color     = if (typedValue.isEmpty()) colors.textSecondary.copy(alpha = 0.5f) else colors.textPrimary,
+                    minScale  = 0.5f,
+                    maxLines  = 1,
+                    textAlign = TextAlign.Center,
+                )
+            }
         }
 
         // Digit rows
         listOf(listOf(7, 8, 9), listOf(4, 5, 6), listOf(1, 2, 3)).forEach { row ->
             Row(
                 modifier              = Modifier.fillMaxWidth().weight(1f),
-                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
+                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)
             ) {
                 row.forEach { digit ->
-                    L3Key(
-                        label      = "$digit",
-                        startColor = Color.White.copy(0.28f),
-                        endColor   = Color.White.copy(0.18f),
-                        modifier   = Modifier.weight(1f).fillMaxHeight()
-                    ) { onDigit(digit) }
+                    L3Key("$digit", L3KeyKind.Digit, Modifier.weight(1f).fillMaxHeight()) { onDigit(digit) }
                 }
             }
         }
@@ -75,71 +77,70 @@ fun L3Numpad(
         // Bottom row: delete, 0, confirm
         Row(
             modifier              = Modifier.fillMaxWidth().weight(1f),
-            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
+            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)
         ) {
-            L3Key("⌫", Color(0xFFC62828), Color(0xFF8B0000),
-                Modifier.weight(1f).fillMaxHeight()) { onDelete() }
-            L3Key("0", Color(0xFF546E7A), Color(0xFF263238),
-                Modifier.weight(1f).fillMaxHeight()) { onDigit(0) }
-            L3Key("✓", Color(0xFF2E7D32), Color(0xFF1B5E20),
-                Modifier.weight(1f).fillMaxHeight(), enabled = confirmEnabled) { onConfirm() }
+            L3Key("⌫", L3KeyKind.Delete, Modifier.weight(1f).fillMaxHeight()) { onDelete() }
+            L3Key("0", L3KeyKind.Digit, Modifier.weight(1f).fillMaxHeight()) { onDigit(0) }
+            L3Key("✓", L3KeyKind.Confirm, Modifier.weight(1f).fillMaxHeight(), enabled = confirmEnabled) { onConfirm() }
         }
     }
 }
 
+private enum class L3KeyKind { Digit, Delete, Confirm }
+
 @Composable
 private fun L3Key(
-    label:      String,
-    startColor: Color,
-    endColor:   Color,
-    modifier:   Modifier = Modifier,
-    enabled:    Boolean  = true,
-    onClick:    () -> Unit,
+    label:    String,
+    kind:     L3KeyKind,
+    modifier: Modifier = Modifier,
+    enabled:  Boolean  = true,
+    onClick:  () -> Unit,
 ) {
-    val shape = RoundedCornerShape(AppDimens.Dimens12)
-    Box(
-        modifier = modifier
-            .background(
-                if (enabled) Brush.linearGradient(listOf(startColor, endColor))
-                else Brush.linearGradient(listOf(Color.Gray.copy(0.5f), Color.Gray.copy(0.3f))),
-                shape
-            )
-            .clickable(remember { MutableInteractionSource() }, null, enabled = enabled) {
-                AudioPlayerManager.playSoundBtnClick()
-                onClick()
-            },
-        contentAlignment = Alignment.Center
+    val colors = LocalAbColors.current
+    val s      = LocalAbScale.current.factor
+    val face = when (kind) {
+        L3KeyKind.Digit   -> Color.White
+        L3KeyKind.Delete  -> colors.danger
+        L3KeyKind.Confirm -> if (enabled) colors.accentGreen else colors.surfaceTint
+    }
+    val edge = when (kind) {
+        L3KeyKind.Digit   -> Color(0xFFC9CEE6)
+        L3KeyKind.Delete  -> colors.danger.abDarkened(0.3f)
+        L3KeyKind.Confirm -> if (enabled) colors.accentGreen.abDarkened(0.3f) else colors.outline
+    }
+    val ink = if (kind == L3KeyKind.Digit) Color(0xFF1E2470) else if (enabled) Color.White else colors.textSecondary
+
+    BoxWithConstraints(
+        modifier = modifier.abSquash(
+            face = face, edge = edge, stroke = null,
+            cornerRadius = (14f * s).dp, edgeHeight = (4f * s).dp,
+            enabled = enabled, sound = AbSound.Button, onClick = onClick,
+        ),
+        contentAlignment = Alignment.Center,
     ) {
-        Text(
-            text       = label,
-            style      = MaterialTheme.typography.titleLarge.scaled(),
-            color      = Color.White.copy(if (enabled) 1f else 0.5f),
-            fontWeight = FontWeight.Black,
-            textAlign  = TextAlign.Center,
-        )
+        val keyHeight = maxHeight.value
+        when (kind) {
+            // Baloo has no erase / check glyphs, so they are drawn as icons that scale with the key.
+            L3KeyKind.Delete -> Icon(
+                Icons.AutoMirrored.Rounded.Backspace, null,
+                Modifier.size((min(abResponsive(28f), keyHeight * 0.5f) * AB_SF_TO_VECTOR).dp), tint = ink,
+            )
+            L3KeyKind.Confirm -> Icon(
+                Icons.Rounded.Check, null,
+                Modifier.size((min(abResponsive(28f), keyHeight * 0.5f) * AB_SF_TO_VECTOR).dp), tint = ink,
+            )
+            L3KeyKind.Digit -> Text(
+                text     = label,
+                style    = abFixedStyle(min(abResponsive(26f), keyHeight * 0.55f), FontWeight.ExtraBold),
+                color    = ink,
+                maxLines = 1,
+            )
+        }
     }
 }
 
+/** The Try Again / Done buttons of every Level 3 result popup. */
 @Composable
 fun L3ResultBtn(label: String, filled: Boolean, onClick: () -> Unit) {
-    val shape = RoundedCornerShape(AppDimens.Dimens100)
-    Box(
-        modifier = Modifier
-            .padding(AppDimens.Dimens3)
-            .shadow(AppDimens.Dimens4, shape)
-            .background(if (filled) Color.White else Color.White.copy(0.22f), shape)
-            .clickable(remember { MutableInteractionSource() }, null) {
-                AudioPlayerManager.playSoundBtnClick()
-                onClick()
-            }
-            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens12),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            label,
-            style      = MaterialTheme.typography.labelLarge.scaled(),
-            color      = if (filled) Color(0xFF1A237E) else Color.White,
-            fontWeight = FontWeight.Black
-        )
-    }
+    AbPanelButton(label = label, accent = Color(0xFF303F9F), filled = filled, onClick = onClick)
 }

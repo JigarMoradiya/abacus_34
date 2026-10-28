@@ -1,108 +1,29 @@
 package com.jigar.me.ui.view.home.screens.reports.components
 
-import com.jigar.me.ui.view.home.theme.AppDimens
-
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.rounded.FilterList
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
-import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimaryLight
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.ab.AbMenuPicker
+import com.jigar.me.ui.view.ab.LocalAbScale
 import com.jigar.me.ui.view.home.screens.reports.viewmodels.ReportHistoryUiState
 import com.jigar.me.ui.view.home.screens.reports.viewmodels.ReportHistoryViewModel
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens3
 
+/** The report type picker of the header (all reports, exam, exercise ...). The first filter is only a placeholder, so it is not listed. */
 @Composable
 fun ReportFilterCard(
     uiState: ReportHistoryUiState,
     viewModel: ReportHistoryViewModel
 ) {
-    Box {
-
-        Card(
-            onClick = { viewModel.onFilterClick() },
-            shape = RoundedCornerShape(AppDimens.Dimens30),
-            elevation = CardDefaults.cardElevation(
-                Dimens3
-            ),
-            colors = CardDefaults.cardColors(containerColor = ColorPrimaryLight),
-            modifier = Modifier
-                .wrapContentWidth()
-                .padding(top = AppDimens.Dimens6)
-        ) {
-
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(
-                    start = AppDimens.Dimens12,
-                    end = AppDimens.Dimens6,
-                ).padding(vertical = AppDimens.Dimens2)
-            ) {
-
-                Text(
-                    text = uiState.selectedFilter?.label?:"",
-                    style = MaterialTheme.typography.bodyMedium.scaled().copy(
-                        fontFamily = FontFamily(Font(R.font.font_bold)),
-                        color = Color.Black
-                    ),
-                    modifier = Modifier.width(AppDimens.Dimens200),
-                    maxLines = 1
-                )
-
-                Icon(
-                    imageVector = Icons.Default.ArrowDropDown,
-                    contentDescription = null,
-                    tint = Color.Black
-                )
-            }
-        }
-
-        // 🔽 Dropdown (Spinner replacement)
-        DropdownMenu(
-            expanded = uiState.isDropdownExpanded,
-            onDismissRequest = { viewModel.onFilterDismiss() },
-            containerColor = ColorPrimaryLight
-        ) {
-            uiState.filterList.forEachIndexed { index, item ->
-                DropdownMenuItem(
-                    modifier = Modifier.height(AppDimens.Dimens36),
-                    text = {
-                        Text(
-                            text = item.label,
-                            style = MaterialTheme.typography.bodyMedium.scaled().copy(fontWeight = FontWeight.SemiBold,fontFamily = FontFamily(Font(R.font.font_semibold))),
-                        )
-                    },
-                    onClick = {
-                        if (index > 0) {
-                            viewModel.onFilterSelected(item)
-                        } else {
-                            viewModel.onFilterDismiss()
-                        }
-                    }
-                )
-            }
-        }
-    }
+    AbMenuPicker(
+        items = uiState.filterList.drop(1),
+        selectedTitle = uiState.selectedFilter?.label ?: "",
+        title = { it.label },
+        onSelect = viewModel::onFilterSelected,
+        placeholder = stringResource(R.string.select_report_type),
+        icon = Icons.Rounded.FilterList,
+        minWidth = 150.dp * LocalAbScale.current.factor,
+    )
 }

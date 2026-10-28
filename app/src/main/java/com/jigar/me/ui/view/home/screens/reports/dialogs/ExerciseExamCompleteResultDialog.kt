@@ -1,60 +1,82 @@
 package com.jigar.me.ui.view.home.screens.reports.dialogs
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.border
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
+import androidx.compose.material.icons.rounded.Alarm
+import androidx.compose.material.icons.rounded.Check
+import androidx.compose.material.icons.rounded.CheckCircle
+import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.data.model.data.QuestionDataRequest
 import com.jigar.me.data.model.data.SubmitAllExamDataRequest
-import com.jigar.me.ui.jetpack.core.presentation.theme.ColorDARKGreen
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
-import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
+import com.jigar.me.ui.view.ab.AB_SF_TO_VECTOR
+import com.jigar.me.ui.view.ab.AbButton
+import com.jigar.me.ui.view.ab.AbFitOnPhone
+import com.jigar.me.ui.view.ab.AbPopupLayer
+import com.jigar.me.ui.view.ab.AbShapes
+import com.jigar.me.ui.view.ab.AbSize
+import com.jigar.me.ui.view.ab.AbSound
+import com.jigar.me.ui.view.ab.AbTheme
+import com.jigar.me.ui.view.ab.AbTone
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abCardEntrance
+import com.jigar.me.ui.view.ab.abSquash
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.QuestionResult
 import com.jigar.me.ui.view.home.screens.activities.exam.play.exam_generator.toQuestionResultList
 import com.jigar.me.ui.view.home.screens.reports.dialogs.common.QuestionExamColumnItemHorizontal
 import com.jigar.me.ui.view.home.screens.reports.dialogs.common.StatItem
 import com.jigar.me.ui.view.home.screens.reports.dialogs.common.buildExamResult
 import com.jigar.me.ui.view.home.theme.AppDimens
-import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.secToCountDown
 import com.jigar.me.utils.extensions.secToTimeFormat
@@ -78,31 +100,46 @@ fun ExerciseExamCompleteResultDialog(
         if (!isFromHistory) AudioPlayerManager.playSoundClap()
     }
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Black.copy(alpha = 0.4f))
-            .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }) { onClose() }) {
-
-        Card(
-            modifier = Modifier
-                .align(Alignment.Center)
-                .fillMaxWidth()
-                .fillMaxHeight(0.9f)
-                .padding(AppDimens.Dimens16), shape = RoundedCornerShape(AppDimens.Dimens20),
-            colors = CardDefaults.cardColors(containerColor = Color.White), elevation = CardDefaults.cardElevation(AppDimens.Dimens6)
-        ) {
+    AbTheme {
+        // the dimmed backdrop only fades (tapping it closes); the card alone pops in
+        AbPopupLayer(onScrimTap = onClose, scrim = Color.Black.copy(alpha = 0.45f)) { layerWidth, layerHeight, shown ->
+            val colors = LocalAbColors.current
+            val s = LocalAbScale.current.factor
+            val shape = RoundedCornerShape(AbShapes.lg * s)
+            val rim = colors.brandPrimary.copy(alpha = if (colors.isDark) 0.8f else 0.5f)
+            // the card stays inside the safe area (a phone's cutout side), centred in it, like the iOS card
+            val insets = WindowInsets.safeDrawing.asPaddingValues()
+            val insetStart = insets.calculateLeftPadding(LocalLayoutDirection.current)
+            val insetEnd = insets.calculateRightPadding(LocalLayoutDirection.current)
 
             Column(
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier
+                    .offset(x = (insetStart - insetEnd) / 2)
+                    .width(minOf(900.dp * s, layerWidth - insetStart - insetEnd - (DeviceInfo.screenHorizontalPadding() + 8.dp) * 2))
+                    .height(layerHeight * (if (DeviceInfo.isTablet) 0.8f else 0.86f))
+                    .abCardEntrance(shown, from = 0.94f)
+                    .pointerInput(Unit) { detectTapGestures(onTap = { }) }
+                    .shadow(16.dp * s, shape, clip = false, ambientColor = Color.Black.copy(alpha = 0.3f), spotColor = Color.Black.copy(alpha = 0.3f))
+                    .clip(shape)
+                    .background(colors.bgSecondary)
+                    .drawBehind {
+                        // a 3 dp rim drawn inside the card (the header band covers it where it touches)
+                        val inset = 1.5.dp.toPx()
+                        val r = AbShapes.lg.toPx() * s - inset
+                        drawRoundRect(
+                            rim, Offset(inset, inset), Size(size.width - inset * 2, size.height - inset * 2),
+                            CornerRadius(r, r), style = Stroke(3.dp.toPx()),
+                        )
+                    }
             ) {
-
-                // Header -- "Sticker Book" colored band, body stays white/readable below
-                Row(modifier = Modifier.fillMaxWidth()
-                    .background(Brush.horizontalGradient(listOf(Color(0xFF42A5F5), Color(0xFF0074D5))))
-                    .clip(RoundedCornerShape(topStart = AppDimens.Dimens20, topEnd = AppDimens.Dimens20))
-                    .padding(start = AppDimens.Dimens16, end = AppDimens.Dimens12, top = AppDimens.Dimens12, bottom = AppDimens.Dimens12),
-                    verticalAlignment = Alignment.CenterVertically) {
+                // HEADER: a coloured band with the title and a close button
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(Brush.horizontalGradient(listOf(colors.brandPrimary, colors.brandPrimaryDark)))
+                        .padding(horizontal = AppDimens.Dimens16, vertical = 10.dp * s),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     val title = when (request.type) {
                         AppConstants.EXAM.type_Exercise -> {
                             stringResource(R.string.result_of_exercise)
@@ -119,128 +156,120 @@ fun ExerciseExamCompleteResultDialog(
                     }
                     Text(
                         text = title,
-                        style = MaterialTheme.typography.titleMedium.scaled().copy(color = Color.White,
-                            fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_extra_bold))),
+                        style = AbTypography.title(s),
+                        color = Color.White,
+                        modifier = Modifier.weight(1f)
                     )
-                    Spacer(modifier = Modifier.weight(1f))
                     Box(
                         modifier = Modifier
-                            .size(AppDimens.Dimens28)
-                            .clip(RoundedCornerShape(percent = 50))
-                            .background(Color.White.copy(alpha = 0.25f))
-                            .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }) { onClose() },
+                            .size(34.dp * s)
+                            .abSquash(
+                                face = Color.White.copy(alpha = 0.25f), cornerRadius = AbShapes.pill, edgeHeight = 0.dp,
+                                sound = AbSound.Back, onClick = onClose,
+                            )
+                            .border(2.dp, Color.White.copy(alpha = 0.7f), CircleShape),
                         contentAlignment = Alignment.Center
                     ) {
-                        Icon(Icons.Default.Close, contentDescription = stringResource(R.string.close), tint = Color.White, modifier = Modifier.size(AppDimens.Dimens16))
+                        Icon(
+                            Icons.Rounded.Close, contentDescription = stringResource(R.string.close),
+                            tint = Color.White, modifier = Modifier.size((14f * AB_SF_TO_VECTOR).dp * s)
+                        )
                     }
                 }
 
-                Row{
-                    Column(modifier = Modifier.weight(1f).fillMaxHeight(),horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceEvenly
-                        ) {
-                            var timeLabel = R.string.TotalTakeTime
-                            var timeValue = ""
-                            when (request.type) {
-                                AppConstants.EXAM.type_Exercise -> {
-                                    timeLabel = R.string.TotalTakeTime
-                                    timeValue = (request.total_time_taken?:0).secToCountDown()+" / "+(request.allowed_max_time?:0).secToCountDown()
-                                }
-                                AppConstants.EXAM.type_Exam, AppConstants.apiParams.answerFormalExam -> {
-                                    timeLabel = R.string.TotalTime
-                                    timeValue = (request.total_time_taken?:0).secToTimeFormat()
-                                }
-                                else -> {
-                                    ""
-                                }
-                            }
-                            StatItem(
-                                icon = R.mipmap.ic_time,
-                                value = timeValue,
-                                label = timeLabel,
-                                color = Color(0xFFD81B60)
-                            )
-                            StatItem(
-                                icon = R.mipmap.ic_question_right,
-                                value = request.no_of_right_answers.toString()+" / "+questionList.size.toString(),
-                                label = R.string.RightQue,
-                                color = ColorDARKGreen
-                            )
-                        }
-                        if (!isFromHistory && !saveResults && onLoginToSave != null) {
-                            Spacer(Modifier.height(AppDimens.Dimens12))
-                            Row(
-                                modifier = Modifier
-                                    .padding(horizontal = AppDimens.Dimens16)
-                                    .clip(RoundedCornerShape(AppDimens.Dimens8))
-                                    .background(Color(0xFFFFF3E0))
-                                    .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
+                Row(Modifier.fillMaxWidth().weight(1f)) {
+                    // LEFT PANEL: time, score, the verdict and the buttons. On a phone it shrinks to fit rather than pushing the button off the card.
+                    Box(Modifier.weight(0.4f).fillMaxHeight()) {
+                        AbFitOnPhone(modifier = Modifier.fillMaxSize().padding(bottom = 8.dp * s), stretchWidth = true) {
+                            Column(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.spacedBy(14.dp * s)
                             ) {
-                                Text(
-                                    text = stringResource(R.string.results_not_saved_to_account),
-                                    style = MaterialTheme.typography.labelSmall.scaled().copy(
-                                        color = Color(0xFFE65100),
-                                        fontFamily = FontFamily(androidx.compose.ui.text.font.Font(R.font.font_regular))
-                                    ),
-                                    modifier = Modifier.weight(1f)
-                                )
-                                KidsActionButton(
-                                    text = stringResource(R.string.login_now),
-                                    type = ButtonType.ORANGE,
-                                    onClick = onLoginToSave,
-                                    isSmall = true
-                                )
+                                Row(Modifier.fillMaxWidth()) {
+                                    var timeLabel = R.string.TotalTakeTime
+                                    var timeValue = ""
+                                    when (request.type) {
+                                        AppConstants.EXAM.type_Exercise -> {
+                                            timeLabel = R.string.TotalTakeTime
+                                            timeValue = (request.total_time_taken?:0).secToCountDown()+" / "+(request.allowed_max_time?:0).secToCountDown()
+                                        }
+                                        AppConstants.EXAM.type_Exam, AppConstants.apiParams.answerFormalExam -> {
+                                            timeLabel = R.string.TotalTime
+                                            timeValue = (request.total_time_taken?:0).secToTimeFormat()
+                                        }
+                                        else -> {
+                                            ""
+                                        }
+                                    }
+                                    Spacer(Modifier.weight(1f))
+                                    StatItem(
+                                        icon = Icons.Rounded.Alarm,
+                                        value = timeValue,
+                                        label = stringResource(timeLabel),
+                                        color = colors.accentPink
+                                    )
+                                    Spacer(Modifier.weight(1f))
+                                    StatItem(
+                                        icon = Icons.Rounded.CheckCircle,
+                                        value = request.no_of_right_answers.toString()+" / "+questionList.size.toString(),
+                                        label = stringResource(R.string.RightQue),
+                                        color = colors.accentGreen
+                                    )
+                                    Spacer(Modifier.weight(1f))
+                                }
+
+                                if (!isFromHistory) {
+                                    val result = buildExamResult(
+                                        context = context,
+                                        totalRight = request.no_of_right_answers?:0,
+                                        totalQuestion = questionList.size
+                                    )
+                                    Text(
+                                        text = result.title,
+                                        textAlign = TextAlign.Center,
+                                        style = AbTypography.headline(s),
+                                        color = result.titleColor
+                                    )
+
+                                    // Not-saved banner with a button to sign in
+                                    if (!saveResults && onLoginToSave != null) {
+                                        NotSavedBanner(onLoginToSave)
+                                    }
+
+                                    val btnLabel = when (request.type) {
+                                        AppConstants.EXAM.type_Exercise -> {
+                                            stringResource(R.string.do_exercise_again)
+                                        }
+                                        AppConstants.EXAM.type_Exam -> {
+                                            stringResource(R.string.give_exam_again)
+                                        }
+                                        AppConstants.apiParams.answerFormalExam -> {
+                                            stringResource(R.string.ok_please_close)
+                                        }
+                                        else -> {
+                                            ""
+                                        }
+                                    }
+                                    AbButton(
+                                        text = btnLabel,
+                                        tone = AbTone.Primary,
+                                        size = AbSize.Small,
+                                        icon = if (request.type == AppConstants.apiParams.answerFormalExam) Icons.Rounded.Check else Icons.Rounded.Refresh,
+                                        onClick = onGiveAgain
+                                    )
+                                }
                             }
-                        }
-
-                        if (!isFromHistory){
-                            Spacer(Modifier.height(AppDimens.Dimens16))
-                            val result = buildExamResult(
-                                context = context,
-                                totalRight = request.no_of_right_answers?:0,
-                                totalQuestion = questionList.size
-                            )
-                            Text(
-                                text = result.title,
-                                textAlign = TextAlign.Center,
-                                style = MaterialTheme.typography.titleSmall.scaled().copy(color = result.titleColor, fontWeight = FontWeight.ExtraBold, fontFamily = FontFamily(Font(R.font.font_medium))))
-
-                            Spacer(Modifier.height(AppDimens.Dimens12))
-
-                            val btnLabel = when (request.type) {
-                                AppConstants.EXAM.type_Exercise -> {
-                                    stringResource(R.string.do_exercise_again)
-                                }
-                                AppConstants.EXAM.type_Exam -> {
-                                    stringResource(R.string.give_exam_again)
-                                }
-                                AppConstants.apiParams.answerFormalExam -> {
-                                    stringResource(R.string.ok_please_close)
-                                }
-                                else -> {
-                                    ""
-                                }
-                            }
-                            KidsActionButton(
-                                text = btnLabel,
-                                icon = Icons.Default.Refresh,
-                                type = ButtonType.BLUE,
-                                onClick = onGiveAgain,
-                                isSmall = true
-                            )
                         }
                     }
 
+                    // RIGHT PANEL: every question with the answer given
                     LazyColumn(
                         modifier = Modifier
-                            .weight(1f)
-                            .fillMaxWidth(),
-                        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
-                        contentPadding = PaddingValues(AppDimens.Dimens12)
+                            .weight(0.6f)
+                            .fillMaxHeight(),
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        contentPadding = PaddingValues(16.dp)
                     ) {
                         items(
                             items = questionResults,
@@ -255,4 +284,34 @@ fun ExerciseExamCompleteResultDialog(
     }
 }
 
-
+/** "Your results are not saved yet": a warm strip with a button to sign in. */
+@Composable
+private fun NotSavedBanner(onLoginToSave: () -> Unit) {
+    val colors = LocalAbColors.current
+    val s = LocalAbScale.current.factor
+    val warn = colors.accentOrange
+    val shape = RoundedCornerShape(AbShapes.sm * s)
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = AppDimens.Dimens16)
+            .background(warn.copy(alpha = if (colors.isDark) 0.2f else 0.14f), shape)
+            .border(2.dp, warn.copy(alpha = 0.6f), shape)
+            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
+    ) {
+        Text(
+            text = stringResource(R.string.results_not_saved_to_account),
+            style = AbTypography.fixed(12f * s, FontWeight.ExtraBold),
+            color = colors.textPrimary,
+            modifier = Modifier.weight(1f)
+        )
+        AbButton(
+            text = stringResource(R.string.login_now),
+            tone = AbTone.Warning,
+            size = AbSize.Compact,
+            onClick = onLoginToSave
+        )
+    }
+}

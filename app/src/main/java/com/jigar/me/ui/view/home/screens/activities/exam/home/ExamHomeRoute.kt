@@ -3,6 +3,7 @@ package com.jigar.me.ui.view.home.screens.activities.exam.home
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
@@ -11,19 +12,25 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.data.local.data.DeviceInfo
+import com.jigar.me.ui.view.ab.AbBackground
+import com.jigar.me.ui.view.ab.AbTheme
+import com.jigar.me.ui.view.ab.AbWorld
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumLoginBottomSheet
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet
 import com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext
+import com.jigar.me.ui.view.home.screens.activities.ActivityTopBar
 import com.jigar.me.ui.view.home.screens.activities.exam.home.components.ExamHomeScreen
 import com.jigar.me.ui.view.home.screens.activities.exam.home.viewmodels.ExamHomeViewModel
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
+import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.FreemiumManager
 import com.jigar.me.utils.extensions.toastS
 
@@ -44,50 +51,60 @@ fun ExamHomeRoute(
     var showPaywall by remember { mutableStateOf(false) }
     var showLogin by remember { mutableStateOf(false) }
 
-    Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-        BackButtonWithText(
-            title = stringResource(R.string.math_exam),
-            onBackClick = onBackClick
-        )
-        ExamHomeScreen(uiState, viewModel, isSubscribed = isSubscribed, onLockedClick = { showPaywall = true }) {
-            if (!uiState.isAdditionSelected && !uiState.isSubtractionSelected &&
-                !uiState.isMultiplicationSelected && !uiState.isDivisionSelected
-            ) {
-                context.toastS(pleaseSelectMsg)
-            } else {
-                when (FreemiumManager.examGate(
-                    isLoggedIn = isLoggedIn,
-                    isSubscribed = isSubscribed,
-                    isAddition = uiState.isAdditionSelected,
-                    isSubtraction = uiState.isSubtractionSelected,
-                    isMultiplication = uiState.isMultiplicationSelected,
-                    isDivision = uiState.isDivisionSelected,
-                    difficulty = uiState.selectedDifficulty
-                )) {
-                    FreemiumManager.GateResult.ALLOW -> onStartPlay()
-                    FreemiumManager.GateResult.REQUIRE_LOGIN -> showLogin = true
-                    FreemiumManager.GateResult.REQUIRE_LOGIN_THEN_PAYWALL -> showLogin = true
-                    FreemiumManager.GateResult.REQUIRE_PAYWALL -> showPaywall = true
+    AbTheme {
+        Box(modifier = Modifier.fillMaxSize()) {
+            AbBackground(AbWorld.Twilight, Modifier.fillMaxSize())
+            Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+                // the content is centred on the whole screen, the header floats over its top-left corner
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(start = DeviceInfo.screenHorizontalPadding(), end = AppDimens.Dimens16),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    ExamHomeScreen(uiState, viewModel, isSubscribed = isSubscribed, onLockedClick = { showPaywall = true }) {
+                        if (!uiState.isAdditionSelected && !uiState.isSubtractionSelected &&
+                            !uiState.isMultiplicationSelected && !uiState.isDivisionSelected
+                        ) {
+                            context.toastS(pleaseSelectMsg)
+                        } else {
+                            when (FreemiumManager.examGate(
+                                isLoggedIn = isLoggedIn,
+                                isSubscribed = isSubscribed,
+                                isAddition = uiState.isAdditionSelected,
+                                isSubtraction = uiState.isSubtractionSelected,
+                                isMultiplication = uiState.isMultiplicationSelected,
+                                isDivision = uiState.isDivisionSelected,
+                                difficulty = uiState.selectedDifficulty
+                            )) {
+                                FreemiumManager.GateResult.ALLOW -> onStartPlay()
+                                FreemiumManager.GateResult.REQUIRE_LOGIN -> showLogin = true
+                                FreemiumManager.GateResult.REQUIRE_LOGIN_THEN_PAYWALL -> showLogin = true
+                                FreemiumManager.GateResult.REQUIRE_PAYWALL -> showPaywall = true
+                            }
+                        }
+                    }
                 }
+                ActivityTopBar(title = stringResource(R.string.math_exam), onBack = onBackClick)
             }
         }
-    }
 
-    if (showLogin) {
-        FreemiumLoginBottomSheet(
-            showContinueWithoutSaving = true,
-            subtitle = stringResource(R.string.exercise_login_subtitle),
-            onLoginSuccess = { showLogin = false; homeActivityViewModel.refreshPurchaseState(); isSubscribed = homeActivityViewModel.isPurchasedForModule(); onStartPlay() },
-            onContinueWithoutSaving = { showLogin = false; onStartPlayWithoutSaving() },
-            onDismiss = { showLogin = false }
-        )
-    }
+        if (showLogin) {
+            FreemiumLoginBottomSheet(
+                showContinueWithoutSaving = true,
+                subtitle = stringResource(R.string.exercise_login_subtitle),
+                onLoginSuccess = { showLogin = false; homeActivityViewModel.refreshPurchaseState(); isSubscribed = homeActivityViewModel.isPurchasedForModule(); onStartPlay() },
+                onContinueWithoutSaving = { showLogin = false; onStartPlayWithoutSaving() },
+                onDismiss = { showLogin = false }
+            )
+        }
 
-    if (showPaywall) {
-        FreemiumPaywallBottomSheet(
-            paywallContext = PaywallContext.EXAM,
-            onSubscriptionActivated = { isSubscribed = true; showPaywall = false },
-            onDismiss = { showPaywall = false }
-        )
+        if (showPaywall) {
+            FreemiumPaywallBottomSheet(
+                paywallContext = PaywallContext.EXAM,
+                onSubscriptionActivated = { isSubscribed = true; showPaywall = false },
+                onDismiss = { showPaywall = false }
+            )
+        }
     }
 }

@@ -79,6 +79,8 @@ fun AbButton(
     iconAtEnd: Boolean = false,
     fillWidth: Boolean = false,
     sound: AbSound? = AbSound.Button,
+    /** A shorter (or taller) face than the size's own, in kit units (x the kit factor); the text size stays that of [size]. */
+    minHeightOverride: Float? = null,
     onClick: () -> Unit,
 ) {
     val colors = LocalAbColors.current
@@ -89,7 +91,7 @@ fun AbButton(
         AbSize.Medium -> AbTypography.body(s).copy(fontWeight = FontWeight.Bold)
         AbSize.Large -> AbTypography.headline(s)
     }
-    val minHeight = when (size) { AbSize.Compact -> 32; AbSize.Small -> 40; AbSize.Medium -> 52; AbSize.Large -> 64 }
+    val minHeight = minHeightOverride ?: when (size) { AbSize.Compact -> 32f; AbSize.Small -> 40f; AbSize.Medium -> 44f; AbSize.Large -> 54f }
     val hPad = when (size) { AbSize.Compact -> 12; AbSize.Small -> 16; AbSize.Medium -> 22; AbSize.Large -> 28 }
     val iconPx = when (size) { AbSize.Compact -> 13; AbSize.Small -> 16; else -> 22 }
     val edge = (if (size == AbSize.Compact) 3.5f else AbShapes.buttonEdge.value).dp * s

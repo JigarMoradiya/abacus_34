@@ -1,14 +1,14 @@
 package com.jigar.me.ui.view.home.screens.abacus_practice.set_list
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -23,14 +23,20 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.BuildConfig
 import com.jigar.me.R
-import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
-import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.data.local.data.DeviceInfo
+import com.jigar.me.ui.view.ab.AbBackground
+import com.jigar.me.ui.view.ab.AbTheme
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.AbTopBar
+import com.jigar.me.ui.view.ab.AbWorld
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumLoginBottomSheet
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet
 import com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext
@@ -60,38 +66,52 @@ fun SetScreen(
     var pendingSetId by remember { mutableStateOf<String?>(null) }
     var pendingSetAnswerSetting by remember { mutableStateOf<String?>(null) }
 
+    AbTheme {
+    Box(Modifier.fillMaxSize()) {
+    AbBackground(AbWorld.Meadow, Modifier.fillMaxSize())
     Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            BackButtonWithText(
-                title = uiState.pageTitle,
-                onBackClick = onBackClick,
-                modifier = Modifier.weight(1f)
-            )
-            TopRightChips()
-        }
-        Spacer(Modifier.weight(1f))
+        AbTopBar(
+            title = uiState.pageTitle,
+            onBack = onBackClick,
+            modifier = Modifier.padding(
+                start = DeviceInfo.screenHorizontalPadding(),
+                end = AppDimens.Dimens16,
+                top = DeviceInfo.screenTopPadding(),
+                bottom = AppDimens.Dimens6,
+            ),
+            trailing = { TopRightChips() },
+        )
 
         if (uiState.showNoData) {
             Box(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier.weight(1f).fillMaxWidth().padding(vertical = AppDimens.Dimens20),
                 contentAlignment = Alignment.Center
             ) {
                 Image(
                     painter = painterResource(R.drawable.ic_coming_soon),
-                    contentDescription = null
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Fit
                 )
             }
         } else {
             val pageGridState = rememberLazyGridState()
+            val level = uiState.levelName.filter { it.isDigit() }.toIntOrNull() ?: 1
 
             LazyVerticalGrid(
                 state = pageGridState,
                 columns = GridCells.Fixed(2),
-                modifier = Modifier.fillMaxSize(),
-                contentPadding = PaddingValues(AppDimens.Dimens8)
+                modifier = Modifier.weight(1f).fillMaxWidth(),
+                // the cards carry a small inset of their own, so only the difference to the header edge is added
+                contentPadding = PaddingValues(
+                    start = maxOf(DeviceInfo.screenHorizontalPadding() - AppDimens.Dimens4, 0.dp),
+                    end = AppDimens.Dimens16,
+                    bottom = AppDimens.Dimens16
+                ),
+                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
+                // each card also carries a 3D edge (6 * scale) under it, so it is taken off the row gap: the gap between rows
+                // then looks the same as the gap between the two columns
+                verticalArrangement = Arrangement.spacedBy(maxOf(0.dp, AppDimens.Dimens8 - 6.dp * LocalAbScale.current.factor))
             ) {
                 itemsIndexed(uiState.pages) { pageIndex, page ->
                     val isLocked = FreemiumManager.levelPageGate(
@@ -101,11 +121,10 @@ fun SetScreen(
                     PageItem(
                         page = page,
                         allSets = allSets,
+                        level = level,
                         isLocked = isLocked,
                         onSetClick = { set ->
-                            AudioPlayerManager.playSoundBtnBack()
                             when {
-                                isLocked -> showPaywall = true
                                 !isLoggedIn -> {
                                     pendingSetId = set.id
                                     pendingSetAnswerSetting = set.answer_setting
@@ -118,7 +137,8 @@ fun SetScreen(
                             if (BuildConfig.DEBUG) {
                                 onNavigateToList(set.id)
                             }
-                        }
+                        },
+                        onLockedTapped = { showPaywall = true }
                     )
                 }
             }
@@ -157,5 +177,7 @@ fun SetScreen(
             onSubscriptionActivated = { isSubscribed = true; showPaywall = false },
             onDismiss = { showPaywall = false }
         )
+    }
+    }
     }
 }

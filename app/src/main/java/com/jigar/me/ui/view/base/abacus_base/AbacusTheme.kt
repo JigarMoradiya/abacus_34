@@ -5,16 +5,55 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.toColorInt
 import com.jigar.me.data.local.data.DeviceInfo
+import com.jigar.me.data.pref.PreferencesHelper
+import com.jigar.me.ui.view.ab.AbThemeController
+import com.jigar.me.ui.view.ab.AbThemeMode
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.extensions.mixWith
 
 // AppThemeAbacus.kt
 object AbacusTheme {
 
     private fun hex(h: String) = Color("#$h".toColorInt())
 
+    /**
+     * The palette for the app's current mode. Light returns the original; Dark swaps in the Dark variant of a
+     * solid-colour theme and leaves the multi-colour / shape themes alone.
+     */
     fun colorPreset(name: String): ColorPresetModel {
+        val base = lightColorPreset(name)
+        val hex = ColorPresets.darkBeadHex[name]
+        return if (AbThemeController.mode == AbThemeMode.Dark && hex != null) darkVariant(base, hex(hex)) else base
+    }
+
+    private fun darkVariant(base: ColorPresetModel, c: Color): ColorPresetModel {
+        val navy = hex("1E1B55")
+        return base.copy(
+            abacusTopGradient = c,
+            abacusCenterGradient = c.mixWith(Color.Black, 0.12f),
+            abacusBottomGradient = c.mixWith(Color.Black, 0.34f),
+            buttonColor = c.mixWith(Color.Black, 0.26f),
+            columnColors = c.mixWith(navy, 0.35f),
+            displayBGColor = c.mixWith(Color.Black, 0.30f),
+            displayBorderColor = c,
+            arrowColor = Color.White,
+            // Resting beads are the same colour, dimmed; a counted bead is the full, glowing colour.
+            inactiveBeadColors = listOf(c.mixWith(Color.Black, 0.26f), c.mixWith(Color.Black, 0.34f)),
+            activeBeadColors = listOf(c, c.mixWith(Color.Black, 0.10f)),
+        )
+    }
+
+    /** The selected bead theme. It is the same in Light and in Dark mode; only its colours are brighter in Dark. */
+    fun active(prefs: PreferencesHelper): String =
+        prefs.getCustomParam(AppConstants.Settings.Theam, AppConstants.Settings.theam_Default)
+
+    fun setActive(prefs: PreferencesHelper, name: String) {
+        prefs.setCustomParam(AppConstants.Settings.Theam, name)
+    }
+
+    private fun lightColorPreset(name: String): ColorPresetModel {
         return when (name) {
 
             // -----------------------
@@ -400,10 +439,11 @@ object AbacusTheme {
 
         val multiplierTemp = when (screenType) {
             AppConstants.AbacusScreen.screenTypeSettingPreview -> 0.40f
-            AppConstants.AbacusScreen.screenTypeExam -> 0.45f
+            // a little smaller on a phone, where the question, the hint and the four answers share one short screen
+            AppConstants.AbacusScreen.screenTypeExam -> if (DeviceInfo.isTablet) 0.45f else 0.4f
             AppConstants.AbacusScreen.screenTypeExamResult -> 0.25f
             AppConstants.AbacusScreen.screenTypeCCM -> 1f
-            AppConstants.AbacusScreen.screenTypeExercise -> 1f
+            AppConstants.AbacusScreen.screenTypeExercise -> 0.9f
             AppConstants.AbacusScreen.screenTypeLevel1Learn,
             AppConstants.AbacusScreen.screenTypeLevel1Practice -> 1f
             AppConstants.AbacusScreen.screenTypeLevel2Learn,

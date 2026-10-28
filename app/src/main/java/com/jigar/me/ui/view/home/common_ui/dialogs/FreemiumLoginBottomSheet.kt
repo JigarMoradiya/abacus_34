@@ -10,6 +10,19 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.material.icons.rounded.HowToReg
+import androidx.compose.material.icons.rounded.Key
+import androidx.compose.ui.text.style.TextAlign
+import com.jigar.me.ui.view.ab.AbButton
+import com.jigar.me.ui.view.ab.AbHeroBadge
+import com.jigar.me.ui.view.ab.AbShapes
+import com.jigar.me.ui.view.ab.AbSize
+import com.jigar.me.ui.view.ab.AbTone
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abSquash
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -48,6 +61,7 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.Loader
 import com.jigar.me.ui.view.home.common_ui.sheets.KidsBottomSheet
 import com.jigar.me.ui.view.home.common_ui.dialogs.ParentalGateDialog
+import com.jigar.me.ui.view.ab.LocalAbThemed
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.login.screens.login_home.viewmodels.LoginHomeViewModel
 import com.jigar.me.utils.extensions.toastL
@@ -77,9 +91,12 @@ fun FreemiumLoginBottomSheet(
         }
     }
 
+    val themed = LocalAbThemed.current
     KidsBottomSheet(
         visible = true,
         onDismiss = onDismiss,
+        widthFraction = if (themed) 0.8f else 0.75f,
+        showHandle = !themed,
         overlay = {
             if (!parentalGatePassed) {
                 ParentalGateDialog(
@@ -89,6 +106,17 @@ fun FreemiumLoginBottomSheet(
             }
         }
     ) {
+      if (themed) {
+        LoginKitContent(
+            subtitle = subtitle ?: if (showContinueWithoutSaving) stringResource(R.string.login_to_save_results)
+                       else stringResource(R.string.login_is_required_to_access_this_feature),
+            showContinueWithoutSaving = showContinueWithoutSaving && onContinueWithoutSaving != null,
+            showCredentials = onNavigateToCredentials != null,
+            onGoogle = { viewModel.signInWithGoogle(context) },
+            onContinueWithoutSaving = { onContinueWithoutSaving?.invoke() },
+            onCredentials = { onNavigateToCredentials?.invoke() },
+        )
+      } else {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -204,6 +232,7 @@ fun FreemiumLoginBottomSheet(
                 )
             }
         }
+      }
     }
 
     if (uiState.isLoading) {
@@ -244,3 +273,79 @@ private fun LoginPillButtonImage(
     }
 }
 
+
+/** The kit look of the sheet (iOS `kitContent`): a lock badge, a friendly title, the sign-in pill and quiet links. */
+@Composable
+private fun LoginKitContent(
+    subtitle: String,
+    showContinueWithoutSaving: Boolean,
+    showCredentials: Boolean,
+    onGoogle: () -> Unit,
+    onContinueWithoutSaving: () -> Unit,
+    onCredentials: () -> Unit,
+) {
+    val colors = LocalAbColors.current
+    val s = LocalAbScale.current.factor
+    Column(
+        Modifier.fillMaxWidth().padding(bottom = 16.dp * s),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(12.dp * s),
+    ) {
+        Box(Modifier.padding(top = 10.dp * s).size(44.dp * s, 5.dp * s).clip(RoundedCornerShape(3.dp * s)).background(colors.outline))
+
+        Row(
+            Modifier.fillMaxWidth().padding(horizontal = 20.dp * s),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp * s),
+        ) {
+            AbHeroBadge(Icons.Rounded.HowToReg, accent = colors.accentPurple, size = 48.dp * s)
+            Column(Modifier.weight(1f)) {
+                Text(stringResource(R.string.login_required), style = AbTypography.headline(s), color = colors.textPrimary)
+                Text(
+                    subtitle, style = AbTypography.fixed(13f * s, FontWeight.SemiBold), color = colors.textSecondary,
+                    maxLines = 2,
+                )
+            }
+        }
+
+        // the pill is black in Light and white in Dark, outlined like the other kit pills
+        val pillFace = if (colors.isDark) Color.White else Color.Black
+        val pillInk = if (colors.isDark) Color.Black else Color.White
+        Row(
+            Modifier
+                .padding(horizontal = 20.dp * s)
+                .fillMaxWidth()
+                .abSquash(face = pillFace, stroke = colors.outline, cornerRadius = AbShapes.pill, edgeHeight = 0.dp, onClick = onGoogle)
+                .height(52.dp * s),
+            horizontalArrangement = Arrangement.spacedBy(8.dp * s, Alignment.CenterHorizontally),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Image(painterResource(R.drawable.ic_google), null, Modifier.size(20.dp * s))
+            Text(stringResource(R.string.sign_in_with_google), style = AbTypography.fixed(16f * s, FontWeight.ExtraBold), color = pillInk, maxLines = 1)
+        }
+
+        if (showContinueWithoutSaving) {
+            Text(
+                stringResource(R.string.continue_without_saving),
+                modifier = Modifier
+                    .abSquash(cornerRadius = AbShapes.sm * s, onClick = onContinueWithoutSaving)
+                    .padding(horizontal = 8.dp * s, vertical = 4.dp * s),
+                style = AbTypography.label(s).copy(textDecoration = TextDecoration.Underline),
+                color = colors.textSecondary,
+            )
+        }
+
+        if (showCredentials) {
+            AbButton(
+                stringResource(R.string.login_with_credentials),
+                Modifier.padding(horizontal = 20.dp * s),
+                tone = AbTone.Ghost, size = AbSize.Small, icon = Icons.Rounded.Key, fillWidth = true, onClick = onCredentials,
+            )
+            Text(
+                stringResource(R.string.login_credentials_old_user_note),
+                Modifier.padding(horizontal = 20.dp * s),
+                style = AbTypography.fixed(12f * s, FontWeight.SemiBold), color = colors.textSecondary, textAlign = TextAlign.Center,
+            )
+        }
+    }
+}

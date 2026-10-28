@@ -12,7 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
+import com.jigar.me.ui.view.ab.AbBeadsLoader
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -46,7 +46,7 @@ fun PurchasePlanSection(
         // screen just silently rendered nothing, with no way to tell what happened
         // or retry.
         if (uiState.isLoading) {
-            CircularProgressIndicator()
+            AbBeadsLoader()
         } else if (uiState.sortedPlanList.isEmpty()) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(

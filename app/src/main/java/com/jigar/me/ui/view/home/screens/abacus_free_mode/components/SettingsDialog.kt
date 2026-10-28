@@ -1,69 +1,43 @@
 package com.jigar.me.ui.view.home.screens.abacus_free_mode.components
 
-import com.jigar.me.ui.view.home.theme.AppDimens
-
-import android.annotation.SuppressLint
-import androidx.compose.foundation.LocalIndication
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Done
-import androidx.compose.material.icons.filled.DoneOutline
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.Update
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Switch
+import androidx.compose.material.icons.rounded.Refresh
+import androidx.compose.material.icons.rounded.Tune
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.scale
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.graphics.CompositingStrategy
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextRange
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import com.jigar.me.R
-import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens6
-import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
-import com.jigar.me.ui.view.home.theme.ButtonType
-import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.ab.AbButton
+import com.jigar.me.ui.view.ab.AbColors
+import com.jigar.me.ui.view.ab.AbDialog
+import com.jigar.me.ui.view.ab.AbSettingRow
+import com.jigar.me.ui.view.ab.AbSize
+import com.jigar.me.ui.view.ab.AbSwitch
+import com.jigar.me.ui.view.ab.AbTextField
+import com.jigar.me.ui.view.ab.AbTone
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbScale
 
-@SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
 fun SettingsDialog(
     isFreeModeOn: Boolean,
@@ -82,320 +56,177 @@ fun SettingsDialog(
     onUpdateRange: (Int, Int) -> Unit,
     dismiss: () -> Unit
 ) {
-    val configuration = LocalConfiguration.current
-    val screenWidth = configuration.screenWidthDp.dp
-    val dialogWidth = remember(screenWidth) {
-        // 80% of screen, max 600, min 320
-        val target = screenWidth * 0.7f
-        target.coerceIn(AppDimens.Dimens320, AppDimens.Dimens600)
-    }
-
+    val s = LocalAbScale.current.factor
     var tempLow by remember { mutableStateOf(randomRangeLow.toString()) }
     var tempHigh by remember { mutableStateOf(randomRangeHigh.toString()) }
     var fromError by remember { mutableStateOf<String?>(null) }
     var toError by remember { mutableStateOf<String?>(null) }
     var generalError by remember { mutableStateOf<String?>(null) }
 
-    Dialog(
-        onDismissRequest = dismiss, properties = DialogProperties(usePlatformDefaultWidth = false)
-    ) {
-        // Fullscreen box to center the card
-        Box(
-            modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
-        ) {
-            Surface(
-                modifier = Modifier.width(dialogWidth),     // but never more than 600dp
-                shape = RoundedCornerShape(Dimens16), color = Color.White, tonalElevation = Dimens8
-            ) {
+    // Flattened first, so the dimming is applied once to the finished picture (otherwise each layer of a switch is dimmed
+    // on its own and they show through each other).
+    val groupAlpha by animateFloatAsState(
+        targetValue = if (isFreeModeOn) 0.4f else 1f,
+        animationSpec = tween(200, easing = FastOutSlowInEasing),
+        label = "freeModeGroupAlpha"
+    )
 
-                Column(
-                    modifier = Modifier
-                ) {
+    AbDialog(
+        title = stringResource(R.string.free_mode_settings),
+        icon = Icons.Rounded.Tune,
+        accent = AbColors.Light.accentGreen,
+        onDismiss = dismiss,
+        widthFraction = 0.72f,
+        footer = {
+            AbButton(
+                text = stringResource(R.string.update),
+                tone = AbTone.Success,
+                size = AbSize.Compact,
+                icon = Icons.Rounded.Refresh,
+                onClick = {
+                    if (!isFreeModeOn) {
+                        val from = tempLow.toIntOrNull()
+                        val to = tempHigh.toIntOrNull()
 
-                    // Title -- subtle accent-colored icon badge, light touch only
-                    Row {
+                        // Reset errors
+                        fromError = null
+                        toError = null
+                        generalError = null
 
-                        Box(
-                            modifier = Modifier
-                                .padding(start = Dimens16, top = Dimens16)
-                                .size(28.dp)
-                                .clip(CircleShape)
-                                .background(ColorPrimary.copy(alpha = 0.12f)),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Settings,
-                                contentDescription = null,
-                                tint = ColorPrimary,
-                                modifier = Modifier.size(Dimens16)
-                            )
+                        // 1) Empty validation
+                        if (tempLow.isBlank()) {
+                            fromError = "From number cannot be empty"
+                            return@AbButton
+                        }
+                        if (tempHigh.isBlank()) {
+                            toError = "To number cannot be empty"
+                            return@AbButton
                         }
 
-                        Text(
-                            stringResource(R.string.free_mode_settings),
-                            style = MaterialTheme.typography.titleLarge.scaled(),
-                            modifier = Modifier
-                                .padding(horizontal = Dimens16)
-                                .padding(top = Dimens16, bottom = Dimens4)
-                                .weight(1f)
-                        )
-
-                        Box(
-                            modifier = Modifier, contentAlignment = Alignment.CenterEnd
-                        ) {
-
-                            KidsActionButton(
-                                modifier = Modifier
-                                    .padding(horizontal = Dimens16)
-                                    .padding(top = Dimens16, bottom = Dimens4),
-                                text = stringResource(R.string.update),
-                                icon = Icons.Default.Update,
-                                type = ButtonType.GREEN,
-                                isSmall = true,
-                                onClick = {
-                                    if (!isFreeModeOn){
-                                        val from = tempLow.toIntOrNull()
-                                        val to = tempHigh.toIntOrNull()
-
-                                        // Reset errors
-                                        fromError = null
-                                        toError = null
-                                        generalError = null
-
-                                        // 1) Empty validation
-                                        if (tempLow.isBlank()) {
-                                            fromError = "From number cannot be empty"
-                                            return@KidsActionButton
-                                        }
-                                        if (tempHigh.isBlank()) {
-                                            toError = "To number cannot be empty"
-                                            return@KidsActionButton
-                                        }
-
-                                        // 2) Parse fail
-                                        if (from == null) {
-                                            fromError = "Invalid number"
-                                            return@KidsActionButton
-                                        }
-                                        if (to == null) {
-                                            toError = "Invalid number"
-                                            return@KidsActionButton
-                                        }
-
-                                        // 3) Max number validation
-                                        if (from > 9_999_999) {
-                                            fromError = "Maximum allowed number is 9,999,999"
-                                            return@KidsActionButton
-                                        }
-                                        if (to > 9_999_999) {
-                                            toError = "Maximum allowed number is 9,999,999"
-                                            return@KidsActionButton
-                                        }
-
-                                        // 4) To >= From
-                                        if (to <= from) {
-                                            generalError = "To number must be greater than From number"
-                                            return@KidsActionButton
-                                        }
-
-                                        // 5) Gap must be at least 20
-                                        if ((to - from) < 5) {
-                                            generalError = "Difference must be at least 5"
-                                            return@KidsActionButton
-                                        }
-
-                                        // ✔ All good — Apply changes
-                                        onUpdateRange(from, to)
-                                    }
-                                    dismiss()
-                                },
-                            )
+                        // 2) Parse fail
+                        if (from == null) {
+                            fromError = "Invalid number"
+                            return@AbButton
+                        }
+                        if (to == null) {
+                            toError = "Invalid number"
+                            return@AbButton
                         }
 
+                        // 3) Max number validation
+                        if (from > 9_999_999) {
+                            fromError = "Maximum allowed number is 9,999,999"
+                            return@AbButton
+                        }
+                        if (to > 9_999_999) {
+                            toError = "Maximum allowed number is 9,999,999"
+                            return@AbButton
+                        }
 
+                        // 4) To >= From
+                        if (to <= from) {
+                            generalError = "To number must be greater than From number"
+                            return@AbButton
+                        }
+
+                        // 5) Gap must be at least 5
+                        if ((to - from) < 5) {
+                            generalError = "Difference must be at least 5"
+                            return@AbButton
+                        }
+
+                        // ✔ All good — Apply changes
+                        onUpdateRange(from, to)
                     }
-
-                    // ----------------------------------------------------------------------------------------------------
-                    //  FREE MODE
-                    // ----------------------------------------------------------------------------------------------------
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = Dimens16, end = Dimens16)
-                    ) {
-                        Text(
-                            "Want to learn the abacus parts and how it works? \uD83E\uDDE0",
-                            modifier = Modifier.weight(1f),
-                            style = MaterialTheme.typography.labelLarge.scaled()
-                        )
-
-                        Switch(
-                            modifier = Modifier.scale(0.9f),
-                            checked = isFreeModeOn, onCheckedChange = {
-                                setFreeMode(it)
-                                if (it) {
-                                    refreshBeadMovement(null)
-                                }
-                            })
-                    }
-
-                    // ----------------------------------------------------------------------------------------------------
-                    // ALWAYS VISIBLE — Auto-disabled in Free Mode
-                    // ----------------------------------------------------------------------------------------------------
-                    Column(
-                        verticalArrangement = Arrangement.spacedBy(0.dp),
-                        modifier = Modifier
-                            .alpha(if (isFreeModeOn) 0.4f else 1f)
-                            .padding(horizontal = Dimens16)
-                    ) {
-
-                        // Reset every time
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            Text(
-                                "Should I clear the abacus after you finish a number? \uD83E\uDDF9",
-                                modifier = Modifier.weight(1f),
-                                style = MaterialTheme.typography.labelLarge.scaled()
-                            )
-
-                            Switch(
-                                modifier = Modifier.scale(0.9f),
-                                checked = resetEveryTime,
-                                onCheckedChange = setResetEveryTime,
-                                enabled = !isFreeModeOn
-                            )
-                        }
-
-                        // Random Toggle
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            Text(
-                                "Should I show numbers in a fun random order? \uD83C\uDFB2",
-                                modifier = Modifier.weight(1f),
-                                style = MaterialTheme.typography.labelLarge.scaled()
-                            )
-
-                            Switch(
-                                modifier = Modifier.scale(0.9f),
-                                checked = randomToggle, onCheckedChange = {
-                                    setRandomToggle(it)
-                                }, enabled = !isFreeModeOn
-                            )
-                        }
-
-                        // Range display
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.fillMaxWidth().padding(top = Dimens4)
-                        ) {
-                            Text(
-                                "Choose the numbers range you want to play with! \uD83D\uDD22",
-                                modifier = Modifier.weight(1f),
-                                style = MaterialTheme.typography.labelLarge.scaled()
-                            )
-                        }
-
-                        // Input row (NEW)
-                        Spacer(Modifier.height(Dimens12))
-
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(bottom = Dimens12),
-                            horizontalArrangement = Arrangement.spacedBy(Dimens12)
-                        ) {
-                            var tempLowState by remember {
-                                mutableStateOf(TextFieldValue(text = tempLow))
-                            }
-
-                            OutlinedTextField(
-                                value = tempLowState,
-                                enabled = !isFreeModeOn,
-                                onValueChange = { newValue ->
-
-                                    val maxLength = 7
-
-                                    if (newValue.text.length <= maxLength) {
-                                        // Accept the new value
-                                        tempLowState = newValue
-                                        tempLow = newValue.text
-                                        fromError = null
-                                        generalError = null
-                                    } else {
-                                        // BLOCK input and restore cursor position
-                                        tempLowState = newValue.copy(
-                                            text = newValue.text.take(maxLength),
-                                            selection = TextRange(maxLength)
-                                        )
-                                        tempLow = newValue.text.take(maxLength)
-                                    }
-                                },
-                                label = { Text("From Number") },
-                                isError = fromError != null,
-                                singleLine = true,
-                                modifier = Modifier.weight(1f),
-                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-                            )
-
-
-                            var tempHighState by remember {
-                                mutableStateOf(TextFieldValue(text = tempHigh))
-                            }
-
-                            OutlinedTextField(
-                                value = tempHighState,
-                                enabled = !isFreeModeOn,
-                                onValueChange = { newValue ->
-
-                                    val maxLength = 7
-
-                                    // allow only digits
-                                    if (!newValue.text.all { it.isDigit() }) {
-                                        return@OutlinedTextField
-                                    }
-
-                                    if (newValue.text.length <= maxLength) {
-                                        // Accept input normally
-                                        tempHighState = newValue
-                                        tempHigh = newValue.text
-                                        toError = null
-                                        generalError = null
-                                    } else {
-                                        // Block extra characters + fix cursor
-                                        tempHighState = newValue.copy(
-                                            text = newValue.text.take(maxLength),
-                                            selection = TextRange(maxLength)
-                                        )
-                                        tempHigh = newValue.text.take(maxLength)
-                                    }
-                                },
-                                label = { Text("To Number") },
-                                isError = toError != null,
-                                singleLine = true,
-                                modifier = Modifier.weight(1f),
-                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-                            )
-
-                        }
-
-                        if (fromError != null || toError != null || generalError != null) {
-                            Text(
-                                text = fromError ?: toError ?: generalError!!,
-                                color = Color.Red,
-                                style = MaterialTheme.typography.labelMedium.scaled(),
-                                modifier = Modifier.padding(bottom = Dimens8)
-                            )
-                        }
-
-                    }
-
+                    dismiss()
                 }
+            )
+        }
+    ) {
+        Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            // ----------------------------------------------------------------------------------------------------
+            //  FREE MODE
+            // ----------------------------------------------------------------------------------------------------
+            AbSettingRow(label = "Want to learn the abacus parts and how it works? 🧠") {
+                AbSwitch(
+                    isOn = isFreeModeOn,
+                    onChange = {
+                        setFreeMode(it)
+                        if (it) {
+                            refreshBeadMovement(null)
+                        }
+                    }
+                )
+            }
+
+            // ----------------------------------------------------------------------------------------------------
+            // ALWAYS VISIBLE — Auto-disabled in Free Mode
+            // ----------------------------------------------------------------------------------------------------
+            Box {
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                    modifier = Modifier.graphicsLayer {
+                        alpha = groupAlpha
+                        compositingStrategy = CompositingStrategy.Offscreen
+                    }
+                ) {
+                    // Reset every time
+                    AbSettingRow(label = "Should I clear the abacus after you finish a number? 🧹") {
+                        AbSwitch(isOn = resetEveryTime, onChange = setResetEveryTime)
+                    }
+
+                    // Random Toggle
+                    AbSettingRow(label = "Should I show numbers in a fun random order? 🎲") {
+                        AbSwitch(isOn = randomToggle, onChange = setRandomToggle)
+                    }
+
+                    // Range
+                    AbSettingRow(label = "Choose the numbers range you want to play with! 🔢") {
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            AbTextField(
+                                placeholder = "From",
+                                text = tempLow,
+                                onTextChange = { value ->
+                                    tempLow = value.filter { it.isDigit() }.take(MAX_DIGITS)
+                                    fromError = null
+                                    generalError = null
+                                },
+                                modifier = Modifier.width(110.dp)
+                            )
+                            AbTextField(
+                                placeholder = "To",
+                                text = tempHigh,
+                                onTextChange = { value ->
+                                    tempHigh = value.filter { it.isDigit() }.take(MAX_DIGITS)
+                                    toError = null
+                                    generalError = null
+                                },
+                                modifier = Modifier.width(110.dp)
+                            )
+                        }
+                    }
+                }
+
+                // the group is disabled while Free Mode is on: it swallows every touch
+                if (isFreeModeOn) {
+                    Box(Modifier.matchParentSize().pointerInput(Unit) { detectTapGestures { } })
+                }
+            }
+
+            // Inline error message
+            val error = fromError ?: toError ?: generalError
+            if (error != null) {
+                Text(
+                    text = error,
+                    style = AbTypography.label(s),
+                    color = AbColors.Light.danger,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
+                )
             }
         }
     }
 }
+
+/** The most digits a range number may have (9,999,999). */
+private const val MAX_DIGITS = 7

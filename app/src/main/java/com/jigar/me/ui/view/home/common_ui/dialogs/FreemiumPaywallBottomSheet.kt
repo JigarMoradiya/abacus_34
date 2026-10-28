@@ -21,7 +21,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material3.CircularProgressIndicator
+import com.jigar.me.ui.view.ab.AbBeadsLoader
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -61,6 +61,7 @@ import com.jigar.me.ui.view.home.common_ui.dialogs.ParentalGateDialog
 import com.jigar.me.ui.view.home.screens.purchase.components.PriceUi
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseViewModel
+import com.jigar.me.ui.view.ab.LocalAbThemed
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
 
@@ -110,11 +111,16 @@ fun FreemiumPaywallBottomSheet(
         }
     }
 
+    val themed = LocalAbThemed.current
     KidsBottomSheet(
         visible = true,
         onDismiss = onDismiss,
+        widthFraction = if (themed) 0.85f else 0.75f,
+        showHandle = !themed,
         overlay = {
-            if (showBenefits) {
+            if (showBenefits && themed) {
+                PaywallKitBenefits(onClose = { showBenefits = false })
+            } else if (showBenefits) {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
@@ -201,6 +207,29 @@ fun FreemiumPaywallBottomSheet(
             }
         }
     ) {
+      if (themed) {
+        PaywallKitContent(
+            headline = stringResource(paywallContext.headlineRes),
+            subtitle = stringResource(paywallContext.subtitleRes),
+            socialProof = uiState.socialProofText,
+            uiState = uiState,
+            onClose = onDismiss,
+            onSeeBenefits = { showBenefits = true },
+            onRetry = { viewModel.loadData() },
+            onSubscribe = { index ->
+                if (!viewModel.isUserLoggedIn()) {
+                    pendingPlanIndex = index
+                    showLoginSheet = true
+                } else if (viewModel.isUserSubscribed()) {
+                    onDismiss(); onSubscriptionActivated()
+                } else {
+                    viewModel.onPlanSelected(index)
+                    viewModel.makePurchase(activity)
+                }
+            },
+            onOfferExpired = { viewModel.loadData() },
+        )
+      } else {
         // ── Main landscape layout ──────────────────────────────────
         Row(
                 modifier = Modifier
@@ -306,10 +335,7 @@ fun FreemiumPaywallBottomSheet(
                     verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
                 ) {
                     if (isLoading) {
-                        CircularProgressIndicator(
-                            color = ColorAccent,
-                            modifier = Modifier.size(AppDimens.Dimens40)
-                        )
+                        AbBeadsLoader()
                     } else if (uiState.sortedPlanList.isEmpty()) {
                         Text(
                             text = stringResource(uiState.error ?: R.string.something_went_wrong),
@@ -363,6 +389,7 @@ fun FreemiumPaywallBottomSheet(
                     }
                 }
             }
+      }
     }
 }
 
@@ -444,15 +471,7 @@ private fun PaywallPlanCard(
                     )
                 }
                 if (plan.isYearly()) {
-                    val yearlyMicros = uiState.original1YearData?.price_amount_micros ?: plan.price_amount_micros
-                    val monthlyPct = yearlySavingsPercent(uiState.original1MonthData?.price_amount_micros, 12, yearlyMicros)
-                    val weeklyPct = if (monthlyPct == null)
-                        yearlySavingsPercent(uiState.original1WeekData?.price_amount_micros, 52, yearlyMicros) else null
-                    val savingsText = when {
-                        monthlyPct != null && monthlyPct > 0 -> stringResource(R.string.paywall_save_vs_monthly, monthlyPct)
-                        weeklyPct != null && weeklyPct > 0 -> stringResource(R.string.paywall_save_vs_weekly, weeklyPct)
-                        else -> null
-                    }
+                    val savingsText = paywallSavingsText(plan, uiState)
                     if (savingsText != null) {
                         Text(
                             text = savingsText,
@@ -524,5 +543,19 @@ private fun PaywallPlanCard(
                 )
             }
         }
+    }
+}
+/** "Save N% vs monthly / weekly" for the yearly plan, computed against the original (non-offer) yearly price. */
+@Composable
+internal fun paywallSavingsText(plan: com.jigar.me.ui.view.home.screens.purchase.viewmodels.RcPlanItem, uiState: PurchaseUiState): String? {
+    if (!plan.isYearly()) return null
+    val yearlyMicros = uiState.original1YearData?.price_amount_micros ?: plan.price_amount_micros
+    val monthlyPct = yearlySavingsPercent(uiState.original1MonthData?.price_amount_micros, 12, yearlyMicros)
+    val weeklyPct = if (monthlyPct == null)
+        yearlySavingsPercent(uiState.original1WeekData?.price_amount_micros, 52, yearlyMicros) else null
+    return when {
+        monthlyPct != null && monthlyPct > 0 -> stringResource(R.string.paywall_save_vs_monthly, monthlyPct)
+        weeklyPct != null && weeklyPct > 0 -> stringResource(R.string.paywall_save_vs_weekly, weeklyPct)
+        else -> null
     }
 }

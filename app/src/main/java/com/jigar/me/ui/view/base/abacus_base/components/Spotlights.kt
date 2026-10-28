@@ -18,9 +18,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.withFrameNanos
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -33,12 +39,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.boundsInRoot
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.composed
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
@@ -48,17 +57,42 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.text.HtmlCompat
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.utils.ui.extensions.appScale
+import com.jigar.me.ui.view.ab.LocalAbFitScale
 import com.jigar.me.ui.view.base.abacus_base.SpotlightTooltipCalculation
 import com.jigar.me.ui.view.home.theme.AppDimens
 import kotlin.math.max
 import kotlin.math.min
 
-@SuppressLint("ConfigurationScreenWidthHeight")
+/**
+ * Where a screen wants the tour layer drawn. The layer fills the screen and works in root coordinates, so it cannot live
+ * inside a box that scales or clips the abacus (the fit-to-space box of the restyled screens). A screen that scales its
+ * abacus provides one of these and shows [content] last in its full-screen root; without one the layer is drawn in place.
+ */
+class SpotlightPortal {
+    var content: (@Composable () -> Unit)? by mutableStateOf(null)
+}
+
+val LocalSpotlightPortal = staticCompositionLocalOf<SpotlightPortal?> { null }
+
 @Composable
 fun SpotlightOverlay(currentSpot: Int?, onNext: () -> Unit) {
     if (currentSpot == null) return
 
+    val portal = LocalSpotlightPortal.current
+    if (portal == null) {
+        SpotlightLayer(currentSpot, onNext)
+        return
+    }
+    // re-published after every recomposition, so the layer always holds this pass's step and click handler
+    SideEffect { portal.content = { SpotlightLayer(currentSpot, onNext) } }
+    DisposableEffect(portal) { onDispose { portal.content = null } }
+}
+
+@SuppressLint("ConfigurationScreenWidthHeight")
+@Composable
+private fun SpotlightLayer(currentSpot: Int, onNext: () -> Unit) {
     val item = SpotlightRegistry.get(currentSpot) ?: return
+    val latestOnNext by rememberUpdatedState(onNext)
 
     Box(
         modifier = Modifier
@@ -70,7 +104,7 @@ fun SpotlightOverlay(currentSpot: Int?, onNext: () -> Unit) {
         // Background dim layer
         Canvas(modifier = Modifier
             .fillMaxSize()
-            .pointerInput(Unit) { detectTapGestures { onNext() } }
+            .pointerInput(Unit) { detectTapGestures { latestOnNext() } }
         ) {
             // Dim layer
             drawRect(Color.Black.copy(alpha = 0.70f))
@@ -81,7 +115,7 @@ fun SpotlightOverlay(currentSpot: Int?, onNext: () -> Unit) {
                 topLeft = Offset(item.rect.left, item.rect.top),
                 size = Size(item.rect.width, item.rect.height),
                 blendMode = BlendMode.Clear,      // THIS NOW WORKS!
-                cornerRadius = CornerRadius(16f)
+                cornerRadius = CornerRadius(item.cornerRadius)
             )
         }
 
@@ -336,7 +370,8 @@ fun HtmlText(
 
 
 object SpotlightRegistry {
-    private val items = mutableMapOf<Int, SpotlightItem>()
+    // observable, so the tour layer follows a rectangle that is measured again (the abacus is rescaled to fit)
+    private val items = mutableStateMapOf<Int, SpotlightItem>()
 
     fun register(id: Int, item: SpotlightItem) {
         items[id] = item
@@ -347,11 +382,26 @@ object SpotlightRegistry {
 
 data class SpotlightItem(
     val rect: Rect,
-    val text: String
+    val text: String,
+    /** Corner radius of the lit hole in px (the toy frame's own corner radii; 16 for the classic frame). */
+    val cornerRadius: Float = 16f
 )
 
 
-fun Modifier.spotlightTag(id: Int, text: String): Modifier =
+fun Modifier.spotlightTag(id: Int, text: String, cornerRadius: Dp? = null): Modifier = composed {
+    val density = LocalDensity.current
+    val radiusPx = cornerRadius?.let { with(density) { it.toPx() } } ?: 16f
+    // A screen that scales its abacus to fit changes the scale without laying the tag out again, so the rectangle taken at
+    // layout time goes stale: measure it again once the new scale is in place.
+    val fitScale = LocalAbFitScale.current
+    var coordinates by remember { mutableStateOf<LayoutCoordinates?>(null) }
+    fun register(layout: LayoutCoordinates) {
+        SpotlightRegistry.register(id, SpotlightItem(rect = layout.boundsInRoot(), text = text, cornerRadius = radiusPx))
+    }
+    LaunchedEffect(fitScale, coordinates) {
+        withFrameNanos { }
+        coordinates?.takeIf { it.isAttached }?.let { register(it) }
+    }
     this.then(
         Modifier.layout { measurable, constraints ->
             val placeable = measurable.measure(constraints)
@@ -359,15 +409,11 @@ fun Modifier.spotlightTag(id: Int, text: String): Modifier =
                 placeable.place(0, 0)
             }
         }.onGloballyPositioned { layout ->
-            SpotlightRegistry.register(
-                id,
-                SpotlightItem(
-                    rect = layout.boundsInRoot(),
-                    text = text
-                )
-            )
+            coordinates = layout
+            register(layout)
         }
     )
+}
 
 
 private fun clamp(v: Float, min: Float, max: Float): Float {

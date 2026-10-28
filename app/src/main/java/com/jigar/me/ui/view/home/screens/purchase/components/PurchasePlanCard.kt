@@ -262,45 +262,45 @@ fun PurchasePlanCard(
     }
 }
 
-@Composable
-fun PriceUi(
+/** The struck-through base price shown next to a discounted yearly / lifetime plan, or null when no discount applies. */
+fun originalPriceText(
     discountPer: Int, plan: RcPlanItem,
     originalYearly: RcPlanItem?, discountPerLifetime: Int, originalLifetime: RcPlanItem?
-) {
+): String? {
     if (discountPer > 0 && AppConstants.Products.matches(plan.sku, AppConstants.Products.yearOffer) && originalYearly != null) {
-        if ((originalYearly.price_amount_micros ?: 0) > (plan.price_amount_micros ?: 0)) {
-            Text(
-                text = originalYearly.price ?: "",
-                style = MaterialTheme.typography.bodySmall.copy(
-                    textDecoration = TextDecoration.LineThrough, color = ColorAccent,
-                    fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))
-                )
-            )
-        }
+        return if ((originalYearly.price_amount_micros ?: 0) > (plan.price_amount_micros ?: 0)) originalYearly.price ?: "" else null
     } else if (discountPerLifetime > 0 && plan.sku == "com.abacus.all.offer") {
-        val originalPrice = if (originalLifetime != null && (originalLifetime.price_amount_micros ?: 0) > (plan.price_amount_micros ?: 0)) {
+        return if (originalLifetime != null && (originalLifetime.price_amount_micros ?: 0) > (plan.price_amount_micros ?: 0)) {
             originalLifetime.price
         } else {
             // com.abacus.all not in offerings — calculate original from discount %
             val offerMicros = plan.price_amount_micros ?: 0L
             val originalMicros = (offerMicros * 100.0 / (100 - discountPerLifetime)).toLong()
-            val formatted = try {
+            try {
                 val format = java.text.NumberFormat.getCurrencyInstance(java.util.Locale.getDefault())
                 format.currency = java.util.Currency.getInstance(plan.rcPackage.product.price.currencyCode)
                 format.maximumFractionDigits = 0
                 format.format(originalMicros / 1_000_000.0)
             } catch (e: Exception) { null }
-            formatted
         }
-        if (originalPrice != null) {
-            Text(
-                text = originalPrice,
-                style = MaterialTheme.typography.bodySmall.copy(
-                    textDecoration = TextDecoration.LineThrough, color = ColorAccent,
-                    fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))
-                )
+    }
+    return null
+}
+
+@Composable
+fun PriceUi(
+    discountPer: Int, plan: RcPlanItem,
+    originalYearly: RcPlanItem?, discountPerLifetime: Int, originalLifetime: RcPlanItem?
+) {
+    val originalPrice = originalPriceText(discountPer, plan, originalYearly, discountPerLifetime, originalLifetime)
+    if (originalPrice != null) {
+        Text(
+            text = originalPrice,
+            style = MaterialTheme.typography.bodySmall.copy(
+                textDecoration = TextDecoration.LineThrough, color = ColorAccent,
+                fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))
             )
-        }
+        )
     }
 
     Spacer(Modifier.width(AppDimens.Dimens4))

@@ -61,7 +61,9 @@ fun DrawScope.drawAbacusColumns(
     showDirectionHint: Boolean,
     beadPolygonGray: ImageBitmap,
     arrowUPBitmap: ImageBitmap,
-    arrowDownBitmap: ImageBitmap
+    arrowDownBitmap: ImageBitmap,
+    // The toy frame draws its own rods, beam and markers behind the beads, so the classic ones are skipped.
+    toyFrame: Boolean = false
 ) {
     val preset = AbacusTheme.colorPreset(selectedTheme)
     val isPolygonTheme = selectedTheme.contains("poligon", ignoreCase = true)
@@ -132,6 +134,7 @@ fun DrawScope.drawAbacusColumns(
             else -> 0.4f
         }
 
+        if (!toyFrame) {
         // Shadow (draw first)
         drawRoundRect(
             color = Color.Black.copy(alpha = 0.20f),
@@ -148,6 +151,7 @@ fun DrawScope.drawAbacusColumns(
             cornerRadius = CornerRadius(0f, 0f),
             alpha = alphaValue
         )
+        }
 
         // Compute "active" mask (same as ColumnViewCompose)
         val arr = MutableList(columnState.size) { false }.also { mask ->
@@ -158,7 +162,7 @@ fun DrawScope.drawAbacusColumns(
         }
 
         // ───────── Beam band + red dot (shared for the column) ─────────
-        run {
+        if (!toyFrame) run {
             val beamWidth = geometry.beadWidthPx + (geometry.columnSpacesPx * 2f)
             val beamLeft = xCenter - beamWidth / 2f
             val beamTop = beamBandTop + (beamH / 4f)
@@ -190,7 +194,7 @@ fun DrawScope.drawAbacusColumns(
             }
         }
 
-        if (screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult && screenType != AppConstants.AbacusScreen.screenTypeLevel1Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel1Practice && screenType != AppConstants.AbacusScreen.screenTypeLevel2Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula && screenType != AppConstants.AbacusScreen.screenTypeLevel2Practice){
+        if (!toyFrame && screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult && screenType != AppConstants.AbacusScreen.screenTypeLevel1Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel1Practice && screenType != AppConstants.AbacusScreen.screenTypeLevel2Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula && screenType != AppConstants.AbacusScreen.screenTypeLevel2Practice){
             val isFirstColumn = col == 0
             val isLastColumn = col == numberOfColumns - 1
 
@@ -315,12 +319,14 @@ fun DrawScope.drawAbacusColumns(
                         )
                     } else if (isPolygonTheme) {
                         drawIntoCanvas { canvas ->
-                            val topColor = if (beadIsActive)
+                            // Dark mode brings its own gradient for counted and for resting beads of a solid colour
+                            val darkTint = if (beadIsActive) preset.activeBeadColors else preset.inactiveBeadColors
+                            val topColor = darkTint?.first() ?: if (beadIsActive)
                                 beadColor.mixWith(Color.White, 0.40f)
                             else
                                 beadColor.mixWith(Color.White, 0.8f)
 
-                            val bottomColor = if (beadIsActive)
+                            val bottomColor = darkTint?.last() ?: if (beadIsActive)
                                 beadColor.mixWith(Color.White,0.10f)
                             else
                                 beadColor.mixWith(Color.White, 0.7f)
@@ -369,6 +375,9 @@ fun DrawScope.drawAbacusColumns(
                             arrowColor = arrowColor,
                             arrowUp = arrowUPBitmap,
                             arrowDown = arrowDownBitmap,
+                            // the Happy Bead has its face in the middle: the arrow goes to the left of it, with a little room before the tip
+                            centerShiftPx = if (isRealBead) -geometry.beadWidthPx * 0.90f / 2f * 0.60f else 0f,
+                            sizeScale = if (isRealBead) 0.78f else 1f,
                         )
                     }
                 }
@@ -669,9 +678,11 @@ fun DrawScope.drawArrowForBeadCanvas(
     isPolygon: Boolean,
     arrowColor: Color,
     arrowUp: ImageBitmap,
-    arrowDown: ImageBitmap
+    arrowDown: ImageBitmap,
+    centerShiftPx: Float = 0f,
+    sizeScale: Float = 1f,
 ) {
-    val arrowSize = (geometry.beadHeightPx * 0.70f).toInt()
+    val arrowSize = (geometry.beadHeightPx * 0.70f * sizeScale).toInt()
 
     fun drawArrow(isUp: Boolean) {
         val img = if (isUp) arrowUp else arrowDown
@@ -680,7 +691,7 @@ fun DrawScope.drawArrowForBeadCanvas(
         drawImage(
             image = img,
             dstOffset = IntOffset(
-                (colCenterX - arrowSize / 2f).toInt(),
+                (colCenterX + centerShiftPx - arrowSize / 2f).toInt(),
                 (centerY - arrowSize / 2f).toInt()
             ),
             dstSize = IntSize(arrowSize, arrowSize),
