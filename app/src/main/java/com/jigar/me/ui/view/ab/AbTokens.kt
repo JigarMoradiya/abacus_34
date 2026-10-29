@@ -39,6 +39,9 @@ data class AbColors(
 ) {
     val overlayScrim: Color get() = Color.Black.copy(alpha = if (isDark) 0.62f else 0.45f) // plain gray, never tinted
 
+    /** [accentGreen] as TEXT on a card: darkened until it has 4.5:1 against the white face. In dark mode the bright green already reads. */
+    val accentGreenInk: Color get() = if (isDark) accentGreen else accentGreen.abReadable(4.5f)
+
     companion object {
         val Light = AbColors(
             isDark = false,

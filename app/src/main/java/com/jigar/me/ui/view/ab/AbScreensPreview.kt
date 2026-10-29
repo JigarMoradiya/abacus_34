@@ -125,3 +125,15 @@ fun AbBoardPreview() {
         }
     }
 }
+
+/** The Home "This Week" popup over a themed screen (debug only): `ab_screen=weekly` = no practice yet, `weekly2` = a busy week. */
+@Composable
+fun AbWeeklyPreview(empty: Boolean) {
+    androidx.compose.foundation.layout.Box(Modifier.fillMaxSize(), contentAlignment = androidx.compose.ui.Alignment.Center) {
+        AbBackground(AbWorld.Meadow, Modifier.fillMaxSize())
+        com.jigar.me.ui.view.home.screens.home.WeeklyReportContent(
+            WeeklySummaryManager.WeeklyStats(problems = if (empty) 0 else 41, days = if (empty) 0 else 3, streak = if (empty) 0 else 2),
+            onClose = {},
+        )
+    }
+}

@@ -1081,7 +1081,8 @@ fun WeeklyReportContent(
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(if (compact) AppDimens.Dimens10 else AppDimens.Dimens16),
+        // popup rows sit close together (the gaps were about 27 dp, Baloo's line boxes already add their own air)
+        verticalArrangement = Arrangement.spacedBy(if (compact) AppDimens.Dimens10 else AppDimens.Dimens4),
         modifier = modifier
             .then(if (isPopup) Modifier.width(minOf(androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp.dp * 0.6f, 540.dp * s)) else Modifier)
             .shadow(if (compact) 5.dp else 14.dp, shape, clip = false, ambientColor = Color.Black.copy(alpha = if (compact) 0.08f else 0.25f), spotColor = Color.Black.copy(alpha = if (compact) 0.08f else 0.25f))

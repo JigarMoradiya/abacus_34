@@ -342,7 +342,7 @@ private fun PaywallKitPlanCard(
                         Text(
                             if (showYearOff) stringResource(R.string.paywall_percent_off_extra, uiState.discountPer)
                             else stringResource(R.string.paywall_percent_off, uiState.discountPerLifetime),
-                            style = AbTypography.fixed(11f * k, FontWeight.ExtraBold), color = colors.accentGreen,
+                            style = AbTypography.fixed(11f * k, FontWeight.ExtraBold), color = colors.accentGreenInk,
                         )
                         countdownEnd?.let { InlineCountdownPill(it, onOfferExpired) }
                     }

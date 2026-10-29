@@ -26,20 +26,21 @@ private fun samplePlan(sku: String, formatted: String, micros: Long, type: Packa
     )
 }
 
-private fun sampleState(selected: Int = 1): PurchaseUiState {
+private fun sampleState(selected: Int = 0): PurchaseUiState {
+    // the India store numbers of the plan page: monthly, the yearly timed offer (from 1,200, 30% off) and lifetime
     val month = samplePlan("com.abacus.puzzle.1month", "₹199", 199_000_000, PackageType.MONTHLY)
-    val year = samplePlan("com.abacus.puzzle.1year.offer", "₹1,199", 1_199_000_000, PackageType.ANNUAL)
-    val lifetime = samplePlan("com.abacus.all.offer", "₹2,999", 2_999_000_000, PackageType.LIFETIME)
+    val year = samplePlan("com.abacus.puzzle.1year.offer", "₹840", 840_000_000, PackageType.ANNUAL)
+    val lifetime = samplePlan("com.abacus.all", "₹4,750", 4_750_000_000, PackageType.LIFETIME)
     return PurchaseUiState(
         isLoading = false,
         selectedIndex = selected,
         sortedPlanList = listOf(month, year, lifetime),
-        original1YearData = samplePlan("com.abacus.puzzle.1year", "₹1,999", 1_999_000_000, PackageType.ANNUAL),
-        originalLifetimeData = samplePlan("com.abacus.all", "₹4,999", 4_999_000_000, PackageType.LIFETIME),
+        original1YearData = samplePlan("com.abacus.puzzle.1year", "₹1,200", 1_200_000_000, PackageType.ANNUAL),
+        originalLifetimeData = samplePlan("com.abacus.all", "₹4,750", 4_750_000_000, PackageType.LIFETIME),
         original1MonthData = month,
-        discountPer = 40,
-        discountPerLifetime = 40,
-        homeOfferYearlyEndMillis = System.currentTimeMillis() + 3_600_000L,
+        discountPer = 30,
+        discountPerLifetime = 0,
+        homeOfferYearlyEndMillis = System.currentTimeMillis() + 565_000L,
         benefitList = listOf(
             "⭐ <strong>Get unlimited access</strong> to all Abacus Levels, Exercises, Exams and Custom Challenge Modes Module.",
             "🧮 Practice Addition, Subtraction, Multiplication, Division, with <strong>smart bead directions</strong> and <strong>formula on every steps.</strong>",

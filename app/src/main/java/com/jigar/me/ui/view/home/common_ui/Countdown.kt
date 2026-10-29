@@ -53,7 +53,8 @@ fun InlineCountdownPill(endMillis: Long, onExpired: () -> Unit, modifier: Modifi
         fontFamily = FontFamily(Font(R.font.font_extra_bold)),
         style = MaterialTheme.typography.labelSmall.scaled(),
         modifier = modifier
-            .background(if (endingSoon) Color(0xFFE53935) else Color(0xFFFF7043), RoundedCornerShape(percent = 50))
+            // deep orange / red: white 9sp text on the old FF7043 / E53935 was only 3.1 / 4.2 : 1
+            .background(if (endingSoon) Color(0xFFC62828) else Color(0xFFD84315), RoundedCornerShape(percent = 50))
             .padding(horizontal = AppDimens.Dimens8, vertical = 2.dp)
     )
 }

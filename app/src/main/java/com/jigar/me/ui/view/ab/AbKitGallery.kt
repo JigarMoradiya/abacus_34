@@ -43,6 +43,8 @@ object AbDebugScreens {
                 "board" -> AbBoardPreview()
                 "paywall" -> AbPaywallPreview()
                 "purchase" -> AbPurchasePreview()
+                "weekly" -> AbWeeklyPreview(true)
+                "weekly2" -> AbWeeklyPreview(false)
                 "account" -> AbAccountPreview()
                 "reports" -> AbReportsPreview()
                 "ccmresult" -> AbCcmResultPreview(true)

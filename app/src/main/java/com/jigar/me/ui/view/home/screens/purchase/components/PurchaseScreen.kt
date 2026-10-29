@@ -39,6 +39,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
@@ -48,6 +49,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DeviceInfo
@@ -61,6 +63,7 @@ import com.jigar.me.ui.view.ab.AbTone
 import com.jigar.me.ui.view.ab.AbTypography
 import com.jigar.me.ui.view.ab.LocalAbColors
 import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abReadable
 import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.RcPlanItem
@@ -299,7 +302,7 @@ private fun PurchaseKitAdminPlanCard(isLifetime: Boolean, startDate: String?) {
                 Text(
                     stringResource(R.string.assigned),
                     Modifier
-                        .background(colors.accentGreen, CircleShape)
+                        .background(colors.accentGreen.abReadable(4.5f), CircleShape)
                         .padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens4),
                     style = AbTypography.fixed(12f * k, FontWeight.SemiBold), color = Color.White,
                 )
@@ -382,15 +385,16 @@ private fun PurchaseKitPlanCard(
                             }
                         ),
                         Modifier
-                            .background(colors.accentGreen, CircleShape)
+                            .background(colors.accentGreen.abReadable(4.5f), CircleShape)
                             .padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens4),
                         style = AbTypography.fixed(12f * k, FontWeight.SemiBold), color = Color.White,
                     )
                 }
             }
 
-            // Baloo's line boxes are tall, so the second row is pulled up under the first one
-            Column(Modifier.offset(y = if (isPurchased || isAssigned) 4.dp * s else (-6).dp * s)) {
+            // Baloo's line boxes are tall, so the rows under the price line are pulled up: the group under the price line,
+            // and each row under the one above it (the gaps measured about 12 and 10 dp before)
+            Column(if (isPurchased || isAssigned) Modifier.offset(y = 4.dp * s) else Modifier.tuckUp(12.dp * s)) {
                 when {
                     isAssigned && plan.sku.contains("1year") && uiState.yearPlanAssignFromAdmin != null -> {
                         Text(stringResource(R.string.plan_assigned_from_admin), style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = ink)
@@ -437,14 +441,14 @@ private fun PurchaseKitPlanCard(
                             }
                             // "extra ~% OFF" + countdown always on their own row below the savings line
                             if (discountPer > 0) {
-                                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens2), verticalAlignment = Alignment.CenterVertically) {
-                                    Text("(extra ~$discountPer% OFF)", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.accentGreen)
+                                Row(Modifier.tuckUp(6.dp * s), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens2), verticalAlignment = Alignment.CenterVertically) {
+                                    Text("(extra ~$discountPer% OFF)", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.accentGreenInk)
                                     uiState.homeOfferYearlyEndMillis?.let { InlineCountdownPill(it, onOfferExpired) }
                                 }
                             }
                         } else if (plan.isLifeTimeOffer() && discountPerLifetime > 0) {
                             Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens2), verticalAlignment = Alignment.CenterVertically) {
-                                Text("~$discountPerLifetime% OFF", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.accentGreen)
+                                Text("~$discountPerLifetime% OFF", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.accentGreenInk)
                                 uiState.homeOfferLifetimeEndMillis?.let { InlineCountdownPill(it, onOfferExpired) }
                             }
                         }
@@ -475,3 +479,10 @@ private fun PurchaseKitPlanCard(
 }
 
 // endregion
+
+/** Pulls a row up by [by] and gives that room back, so stacked Baloo lines (tall line boxes) sit close together. */
+private fun Modifier.tuckUp(by: Dp): Modifier = layout { measurable, constraints ->
+    val placeable = measurable.measure(constraints)
+    val pull = by.roundToPx().coerceAtMost(placeable.height)
+    layout(placeable.width, placeable.height - pull) { placeable.place(0, -pull) }
+}
