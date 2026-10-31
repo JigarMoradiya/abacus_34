@@ -144,9 +144,15 @@ internal fun IconPen.bunny() {
     for (sx in listOf(-1f, 1f)) {
         for (dy in listOf(0f, 3f)) flat(circle(50f + sx * 14f, 70f + dy, 0.9f), h(0x9B86C9))
     }
-    // little carrot sticker
-    sticker(poly(78f to 78f, 90f to 80f, 82f to 94f), h(0xFF8A2E), lw = 1.6f, gloss = false)
-    sticker(poly(82f to 77f, 80f to 71f, 86f to 75f), h(0x4CC764), lw = 1.4f, gloss = false)
+    // a real carrot: leafy green top, round shoulders tapering to a tip, ridge lines
+    sticker(poly(83f to 77f, 77f to 69f, 82.5f to 72f), h(0x4CC764), lw = 1.2f, gloss = false)
+    sticker(poly(83.5f to 77f, 83f to 65f, 86f to 72.5f), h(0x4CC764), lw = 1.2f, gloss = false)
+    sticker(poly(84.5f to 77f, 91f to 69f, 87f to 73f), h(0x4CC764), lw = 1.2f, gloss = false)
+    sticker(poly(76.5f to 80f, 79f to 77f, 84f to 76.5f, 88.5f to 78.5f, 90f to 82f, 88f to 88f, 84f to 95f, 83f to 98f, 81f to 95f, 77.5f to 88f, 75.5f to 83f),
+        h(0xFF8A2E), lw = 1.6f, gloss = false)
+    line(78.2f, 83.4f, 81.6f, 84.4f, h(0xD9611A), 1.1f)
+    line(84.6f, 86.6f, 88.0f, 85.4f, h(0xD9611A), 1.1f)
+    line(80.4f, 90.2f, 83.2f, 91.2f, h(0xD9611A), 1.1f)
 }
 
 // MARK: Level 3: kitten
