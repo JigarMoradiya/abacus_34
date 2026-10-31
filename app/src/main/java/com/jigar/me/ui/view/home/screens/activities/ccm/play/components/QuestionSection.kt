@@ -58,7 +58,7 @@ fun QuestionSection(
                     text = stringResource(R.string.ccm_listen_hint),
                     modifier = Modifier.padding(top = AppDimens.Dimens16, start = AppDimens.Dimens16, end = AppDimens.Dimens16),
                     style = AbTypography.fixed(ActivityDimens.ccmWordTextSize, FontWeight.ExtraBold),
-                    color = AbColors.Light.brandPrimary,
+                    color = com.jigar.me.ui.view.ab.LocalAbColors.current.brandPrimary,
                     textAlign = TextAlign.Center,
                 )
             }
@@ -76,7 +76,7 @@ fun QuestionSection(
                         Text(
                             text = it,
                             style = AbTypography.fixed(ActivityDimens.ccmNumberTextSize, FontWeight.ExtraBold),
-                            color = AbColors.Light.brandPrimary,
+                            color = com.jigar.me.ui.view.ab.LocalAbColors.current.brandPrimary,
                         )
                     }
                 }
@@ -85,7 +85,7 @@ fun QuestionSection(
                         Text(
                             text = it,
                             style = AbTypography.fixed(ActivityDimens.ccmWordTextSize, FontWeight.ExtraBold),
-                            color = AbColors.Light.accentPink,
+                            color = com.jigar.me.ui.view.ab.LocalAbColors.current.accentPink,
                         )
                     }
                 }

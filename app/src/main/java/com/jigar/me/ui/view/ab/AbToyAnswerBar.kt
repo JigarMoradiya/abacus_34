@@ -86,7 +86,7 @@ fun AbToyAnswerBar(
     val cream = if (colors.isDark) toyHex(0xFFEFC4) else AbacusToyPalette.panel(frameBase, false).first
     // An idle button: the cream pulled toward the frame colour, so it still reads but clearly is not tappable.
     val recessed = cream.abBlended(frameBase, 0.55f)
-    val idleInk = frameBase.abDarkened(0.5f).copy(alpha = 0.78f)
+    val idleInk = if (LocalAbColors.current.isDark) frameBase.abDarkened(0.75f) else frameBase.abDarkened(0.5f).copy(alpha = 0.78f)
 
     Row(
         modifier = modifier

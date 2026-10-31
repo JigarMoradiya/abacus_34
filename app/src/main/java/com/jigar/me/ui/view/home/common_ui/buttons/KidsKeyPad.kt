@@ -22,6 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
@@ -57,6 +58,8 @@ fun KidsKeyPad(
     }
 
     val colors = getButtonColors(type)
+    // dark label on a light key, white on a dark key (keeps every key readable in light and dark mode)
+    val keyInk = if (colors.base.luminance() > 0.5f) androidx.compose.ui.graphics.Color(0xFF3B2A00) else androidx.compose.ui.graphics.Color.White
     val interaction = remember { MutableInteractionSource() }
     val pressed by interaction.collectIsPressedAsState()
 
@@ -116,7 +119,7 @@ fun KidsKeyPad(
                 style = MaterialTheme.typography.titleMedium.scaled().copy(
                     fontSize = (keyPadHeight.value * 0.6).sp
                 ),
-                color = Color.White,
+                color = keyInk,
                 fontWeight = FontWeight.Bold
             )
         }
@@ -137,7 +140,7 @@ fun KidsKeyPad(
             Icon(
                 painter = icon,
                 contentDescription = null,
-                tint = Color.White,
+                tint = keyInk,
                 modifier = Modifier.size(keyPadHeight / 2)
             )
         }
