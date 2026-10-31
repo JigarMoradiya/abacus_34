@@ -62,7 +62,7 @@ fun HowToPlayPlaceValueView(
             Column(modifier = Modifier.fillMaxSize()) {
                 Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
                     Text(stringResource(R.string.place_value),
-                        fontFamily = AbTypography.Baloo, fontSize = 18.sp, fontWeight = FontWeight.Bold, color = accentColors.base)
+                        fontFamily = AbTypography.Baloo, fontSize = 18.sp, fontWeight = FontWeight.Bold, color = com.jigar.me.ui.view.home.screens.math_game_zone.common.howToInk(accentColors.base))
                     Spacer(Modifier.weight(1f))
                     GameButton(
                         text = stringResource(R.string.close),

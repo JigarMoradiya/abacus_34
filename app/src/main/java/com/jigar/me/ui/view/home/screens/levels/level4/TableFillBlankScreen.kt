@@ -408,7 +408,7 @@ private fun FillBlankResultContent(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(Dimens6)
             ) {
-                Text("⏱", style = abFont(16f))
+                Text("⏱️", style = abFont(16f))
                 Text(
                     text = formatTime(elapsedSeconds),
                     style = abFont(16f, FontWeight.Bold),

@@ -75,7 +75,7 @@ fun HowToPlayCalcudokuView(
             Column(modifier = Modifier.fillMaxSize()) {
                 Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
                     Text(stringResource(R.string.calcudoku_game),
-                        fontFamily = AbTypography.Baloo, fontSize = 18.sp, fontWeight = FontWeight.Bold, color = accentColors.base)
+                        fontFamily = AbTypography.Baloo, fontSize = 18.sp, fontWeight = FontWeight.Bold, color = com.jigar.me.ui.view.home.screens.math_game_zone.common.howToInk(accentColors.base))
                     Spacer(Modifier.weight(1f))
                     GameButton(
                         text = stringResource(R.string.close),
@@ -107,13 +107,13 @@ fun HowToPlayCalcudokuView(
                                 modifier = Modifier.clip(RoundedCornerShape(AppDimens.Dimens10))
                                     .background(HIGHLIGHT).padding(AppDimens.Dimens10)
                             ) {
-                                Text("Look at the yellow 6× cage:", fontSize = 15.sp, color = LocalAbColors.current.textPrimary,
+                                Text("Look at the yellow 6× cage:", fontSize = 15.sp, color = Color(0xFF3B2A00),
                                     fontFamily = AbTypography.Baloo)
-                                Text("2 and 3 go in it, because 2 × 3 = 6  ✔", fontSize = 15.sp, color = LocalAbColors.current.textPrimary,
+                                Text("2 and 3 go in it, because 2 × 3 = 6  ✔", fontSize = 15.sp, color = Color(0xFF3B2A00),
                                     fontFamily = AbTypography.Baloo)
-                                Text("3+ means the boxes add to 3  (1 + 2).", fontSize = 15.sp, color = LocalAbColors.current.textPrimary,
+                                Text("3+ means the boxes add to 3  (1 + 2).", fontSize = 15.sp, color = Color(0xFF3B2A00),
                                     fontFamily = AbTypography.Baloo)
-                                Text("2− means the boxes differ by 2  (3 − 1).", fontSize = 15.sp, color = LocalAbColors.current.textPrimary,
+                                Text("2− means the boxes differ by 2  (3 − 1).", fontSize = 15.sp, color = Color(0xFF3B2A00),
                                     fontFamily = AbTypography.Baloo)
                             }
 
@@ -157,7 +157,7 @@ private fun MiniCell(i: Int, cell: androidx.compose.ui.unit.Dp) {
             Text(clue, color = CAGE_LINE, fontFamily = AbTypography.Baloo, fontSize = 11.sp,
                 modifier = Modifier.align(Alignment.TopStart).padding(start = 4.dp, top = 3.dp))
         }
-        Text("${EX_VALUES[i]}", color = LocalAbColors.current.textPrimary,
+        Text("${EX_VALUES[i]}", color = Color(0xFF3B2A00),
             fontFamily = AbTypography.Baloo, fontSize = 22.sp)
     }
 }

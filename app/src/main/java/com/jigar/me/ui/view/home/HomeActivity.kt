@@ -80,6 +80,8 @@ class HomeActivity : ComponentActivity() {
         deepLinkRoute = intent.getStringExtra(EXTRA_DEEP_LINK_ROUTE)
         logDeviceQualifiers(this)
         AbThemeController.init(preferences)
+        // debug builds only: `--ez ab_dark_app true` forces dark mode for screenshot runs
+        if (BuildConfig.DEBUG && intent.getBooleanExtra("ab_dark_app", false)) AbThemeController.set(com.jigar.me.ui.view.ab.AbThemeMode.Dark)
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
         WindowInsetsControllerCompat(window, window.decorView).apply {

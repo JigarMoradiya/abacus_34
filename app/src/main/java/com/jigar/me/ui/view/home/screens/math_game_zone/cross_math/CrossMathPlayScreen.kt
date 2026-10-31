@@ -152,7 +152,7 @@ fun CrossMathPlayScreen(
                         .abGamePill()
                         .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
                 ) {
-                    Text("⏱", fontSize = (24f * s).sp)
+                    Text("⏱️", fontSize = (24f * s).sp)
                     Text(
                         timeString(state.elapsed), color = colors.textPrimary,
                         style = AbTypography.fixed(26f * appScale(), FontWeight.ExtraBold)

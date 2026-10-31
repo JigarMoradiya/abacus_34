@@ -146,7 +146,7 @@ fun TrueFalsePlayScreen(
                         .abGamePill()
                         .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
                 ) {
-                    Text("⏱", fontSize = (24f * s).sp)
+                    Text("⏱️", fontSize = (24f * s).sp)
                     Text(
                         "${state.timeLeft}",
                         color = if (state.timeLeft <= 10) FALSE_RED else colors.textPrimary,

@@ -151,7 +151,7 @@ fun NumberSnakePlayScreen(
                         .abGamePill()
                         .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
                 ) {
-                    Text("⏱", fontSize = (22f * s).sp)
+                    Text("⏱️", fontSize = (22f * s).sp)
                     Text(
                         "%d:%02d".format(state.elapsed / 60, state.elapsed % 60),
                         color = colors.textPrimary,
