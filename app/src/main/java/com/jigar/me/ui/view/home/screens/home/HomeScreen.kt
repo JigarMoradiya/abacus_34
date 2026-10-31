@@ -913,8 +913,8 @@ private fun LevelMiniCard(info: LevelInfo, onClick: () -> Unit) {
         Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy((-3f * s).dp)) {
             Text(
                 text = "LEVEL ${info.number}",
-                style = AbTypography.fixed(9f * s, FontWeight.Bold).copy(letterSpacing = 1.sp),
-                color = Color.White.copy(alpha = 0.75f)
+                style = AbTypography.fixed(11.5f * s, FontWeight.Bold).copy(letterSpacing = 1.sp),
+                color = Color.White.copy(alpha = 0.85f)
             )
             Text(
                 text = info.title,
