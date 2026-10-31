@@ -80,7 +80,7 @@ fun SudokuCell(vm: SudokuPlayViewModel, row: Int, col: Int, sizeDp: Dp) {
     // given digits sit on white; the empty cells carry a pastel that alternates box by box, so the boxes read without lines
     val oddBox: Boolean = ((row / brc.first) + (col / brc.second)) % 2 == 1
     val emptyFill: Color = if (oddBox) colors.accentPurple.copy(alpha = 0.16f) else colors.brandSecondary.copy(alpha = 0.18f)
-    val baseFill: Color = if (puzzleGiven) Color.White else emptyFill
+    val baseFill: Color = if (puzzleGiven) (if (colors.isDark) colors.bgSecondary else Color.White) else emptyFill
 
     // the selected cell is washed blue, the cells that share its row / column / box yellow
     val related: Boolean = inSameRow || inSameCol || inSameBox

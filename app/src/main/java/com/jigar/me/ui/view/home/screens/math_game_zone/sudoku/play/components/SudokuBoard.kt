@@ -76,7 +76,7 @@ fun SudokuBoard(vm: SudokuPlayViewModel, modifier: Modifier = Modifier) {
                         )
                     }
                     .shadow(12.dp, trayShape, clip = false)
-                    .background(Color.White.copy(alpha = 0.94f), trayShape)
+                    .background((if (com.jigar.me.ui.view.ab.LocalAbColors.current.isDark) com.jigar.me.ui.view.ab.LocalAbColors.current.bgSecondary else Color.White).copy(alpha = 0.94f), trayShape)
                     .border(rim, accent, trayShape)
             )
 

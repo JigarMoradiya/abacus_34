@@ -128,6 +128,7 @@ fun Modifier.abToyTile(face: Color, corner: Dp = 10.dp, edgeHeight: Dp = 3.dp): 
 /** The toy tray a board sits in: a thick rim in the game's colour on a soft white base, with a 3D edge. */
 fun Modifier.abToyTray(accent: Color, inset: Dp = 10.dp): Modifier = composed {
     val shape = RoundedCornerShape(22.dp)
+    val trayBase = com.jigar.me.ui.view.ab.LocalAbColors.current.let { if (it.isDark) it.bgSecondary else Color.White }
     val drop = 6.dp
     this
         .padding(bottom = drop)
@@ -135,7 +136,7 @@ fun Modifier.abToyTray(accent: Color, inset: Dp = 10.dp): Modifier = composed {
             drawRoundRect(accent.abDarkened(0.3f), Offset(0f, drop.toPx()), size, CornerRadius(22.dp.toPx()))
         }
         .shadow(12.dp, shape, clip = false)
-        .background(Color.White.copy(alpha = 0.94f), shape)
+        .background(trayBase.copy(alpha = 0.94f), shape)
         // the rim is drawn BEHIND the content (Modifier.border paints over it and cut off tiles that scale or hop past the edge)
         .drawBehind {
             val w = 5.dp.toPx()
