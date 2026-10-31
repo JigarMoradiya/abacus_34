@@ -212,6 +212,6 @@ fun howToInk(c: Color): Color {
     if (!com.jigar.me.ui.view.ab.LocalAbColors.current.isDark) return c
     val hsv = FloatArray(3)
     android.graphics.Color.colorToHSV(android.graphics.Color.argb(255, (c.red * 255).toInt(), (c.green * 255).toInt(), (c.blue * 255).toInt()), hsv)
-    hsv[1] = minOf(hsv[1], 0.75f); hsv[2] = maxOf(hsv[2], 0.95f)
+    hsv[1] = minOf(hsv[1], 0.6f); hsv[2] = maxOf(hsv[2], 0.97f)
     return Color(android.graphics.Color.HSVToColor(hsv))
 }
