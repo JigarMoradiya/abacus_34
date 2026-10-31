@@ -3,6 +3,7 @@ package com.jigar.me.ui.view.ab
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -83,10 +84,7 @@ fun AbSectionLabel(text: String, modifier: Modifier = Modifier) {
  * caller decides what a tap on it does, usually the paywall).
  *
  * @param width the card width (the caller lays a row of equal cards out).
- * @param stars 1..3 = that many gold-style stars lit out of three (a difficulty).
- */
-@Composable
-fun AbSelectCard(
+ * @param stars 1..3 = that many gold-sfun AbSelectCard(
     title: String,
     accent: Color,
     isSelected: Boolean,
@@ -118,23 +116,27 @@ fun AbSelectCard(
                 )
                 .width(width)
                 .border(2.dp, if (isSelected) Color.White.copy(alpha = 0.6f) else colors.outline, shape)
-                .padding(vertical = (if (compact) 4f else 8f).dp * s),
-            verticalArrangement = Arrangement.spacedBy(2.dp * s),
+                .padding(vertical = (if (compact) 6f else 8f).dp * s),
+            verticalArrangement = Arrangement.spacedBy((if (compact) 0f else 2f).dp * s),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             if (symbol != null) {
-                Box(Modifier.height((if (compact) 24f else 32f).dp * s), contentAlignment = Alignment.Center) {
-                    Text(symbol, style = AbTypography.fixed(28f * s, FontWeight.ExtraBold), color = if (isSelected) Color.White else accent, maxLines = 1)
+                Box(Modifier.height((if (compact) 22f else 32f).dp * s), contentAlignment = Alignment.Center) {
+                    Text(
+                        symbol, style = AbTypography.fixed((if (compact) 24f else 28f) * s, FontWeight.ExtraBold),
+                        color = if (isSelected) Color.White else accent, maxLines = 1,
+                        modifier = Modifier.wrapContentHeight(align = Alignment.CenterVertically, unbounded = true),
+                    )
                 }
             }
             if (icon != null) {
-                Box(Modifier.height((if (compact) 24f else 32f).dp * s), contentAlignment = Alignment.Center) {
+                Box(Modifier.height((if (compact) 22f else 32f).dp * s), contentAlignment = Alignment.Center) {
                     Icon(icon, null, Modifier.size((20f * AB_SF_TO_VECTOR).dp * s), tint = if (isSelected) Color.White else accent)
                 }
             }
             if (stars != null) {
                 // the star vector has its own padding, which stands in for the 2 pt gap between the stars of the iOS card
-                Row(Modifier.height((if (compact) 24f else 32f).dp * s), verticalAlignment = Alignment.CenterVertically) {
+                Row(Modifier.height((if (compact) 16f else 32f).dp * s), verticalAlignment = Alignment.CenterVertically) {
                     for (i in 0 until 3) {
                         Icon(
                             Icons.Rounded.Star, null, Modifier.size((14f * AB_SF_TO_VECTOR).dp * s),
@@ -151,6 +153,11 @@ fun AbSelectCard(
                     minScale = 0.6f,
                     maxLines = 1,
                     textAlign = TextAlign.Center,
+                )
+            }
+        }
+
+extAlign.Center,
                 )
             }
         }

@@ -45,9 +45,11 @@ fun UseWhichHandTextUi(highlightColor: Color,
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
 
-    val annotatedText = remember(highlightColor, s) {
+    // the preset's button colour is a deep tone made for the light page: on the dark page it is pulled toward white so it still reads
+    val shown = if (colors.isDark) highlightColor.abBlended(Color.White, 0.62f) else highlightColor
+    val annotatedText = remember(shown, s) {
         buildAnnotatedString {
-            val highlight = SpanStyle(fontWeight = FontWeight.Bold, color = highlightColor, fontSize = (13f * s).sp)
+            val highlight = SpanStyle(fontWeight = FontWeight.Bold, color = shown, fontSize = (13f * s).sp)
             append("Use ")
             withStyle(highlight) { append("the keypad") }
             append(" or ")
