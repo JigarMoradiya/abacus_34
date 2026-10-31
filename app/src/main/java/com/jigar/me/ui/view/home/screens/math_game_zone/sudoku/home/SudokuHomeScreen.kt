@@ -1,5 +1,9 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.home
 
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameHomeLayout
+
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+
 
 import com.jigar.me.ui.view.home.navigation.safePopBackStack
 import androidx.compose.animation.AnimatedVisibility
@@ -58,6 +62,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
+import androidx.compose.ui.text.font.FontWeight
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.dialogs.CustomPopupView
@@ -83,11 +91,11 @@ fun SudokuHomeScreen(
     var showHelp by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-        Column(modifier = Modifier.fillMaxSize()) {
-
-            Row(verticalAlignment = Alignment.CenterVertically) {
+        GameHomeLayout(
+            fillHeight = true,
+            header = {Row(verticalAlignment = Alignment.CenterVertically) {
                 BackButtonWithText(title = stringResource(R.string.sudoku), modifier = Modifier.weight(1f),onBackClick = { navController.safePopBackStack() })
-                KidsActionButton(
+                GameButton(
                     modifier = Modifier.padding(end = Dimens16),
                     text = stringResource(R.string.how_to_play),
                     icon = Icons.AutoMirrored.Filled.HelpOutline,
@@ -97,9 +105,36 @@ fun SudokuHomeScreen(
                         showHelp = true
                     }
                 )
-            }
+            }},
+            bottom = {Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(Dimens16),
+                horizontalArrangement = Arrangement.spacedBy(Dimens16, Alignment.CenterHorizontally),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                DifficultySelectorCompose(
+                    selected = state.selectedDifficulty,
+                    onSelect = { viewModel.selectDifficulty(it) }
+                )
 
-            Row(
+                GameButton(
+                    text = stringResource(R.string.lets_start),
+                    icon = Icons.Rounded.PlayArrow,
+                    type = ButtonType.ORANGE,
+                    isIconStart = false,
+                    onClick = {
+                        if (SudokuStorage.hasSavedGame(context)) {
+                            viewModel.openResumePopup()
+                        } else {
+                            viewModel.setDataGameStart(state.selectedSize, state.selectedDifficulty, true)
+                            onStart()
+                        }
+                    }
+                )
+
+            }},
+        ) {Row(
                 modifier = Modifier
                     .weight(1f)
                     .padding(horizontal = Dimens16),
@@ -117,13 +152,6 @@ fun SudokuHomeScreen(
                         label = ""
                     )
 
-                    val animatedShadow by animateDpAsState(
-                        targetValue = if (isSelected) Dimens16 else AppDimens.Dimens4,
-                        animationSpec = spring(),
-                        label = ""
-                    )
-
-                    val shape = RoundedCornerShape(AppDimens.Dimens200)
                     val interactionSource = remember { MutableInteractionSource() }
                     val solved = viewModel.solvedCount(s)
 
@@ -134,41 +162,30 @@ fun SudokuHomeScreen(
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                // Size the circle from the row HEIGHT, not width/3 —
+                                // Size the icon from the row HEIGHT, not width/3 —
                                 // on landscape phones width/3 is taller than the row
-                                // and the circles blew past the screen
+                                // and the icons blew past the screen
                                 .aspectRatio(1f, matchHeightConstraintsFirst = true)
                                 .padding(AppDimens.Dimens12)
                                 .graphicsLayer {
                                     scaleX = animatedScale
                                     scaleY = animatedScale
                                 }
-                                .shadow(
-                                    elevation = animatedShadow,
-                                    shape = shape,
-                                    clip = false
-                                )
-                                .clip(shape)
-                                .background(Color.Transparent)
                                 .clickable(
                                     interactionSource = interactionSource,
-                                    indication = LocalIndication.current
+                                    indication = null
                                 ) {
                                     viewModel.selectSize(s)
                                 },
 
                             contentAlignment = Alignment.Center
                         ) {
-                            Image(
-                                painter = painterResource(
-                                    id = when (s) {
-                                        SudokuSize.FOUR -> R.drawable.sudoku_4
-                                        SudokuSize.SIX -> R.drawable.sudoku_6
-                                        SudokuSize.NINE -> R.drawable.sudoku_9
-                                    }
-                                ),
-                                contentScale = ContentScale.Fit,
-                                contentDescription = null
+                            // A drawn, animated toy board with the real Sudoku grid for this size
+                            // (replaces the old sudoku_4/6/9 pictures)
+                            SudokuSizeIcon(
+                                size = s,
+                                selected = isSelected,
+                                modifier = Modifier.fillMaxSize()
                             )
                         }
                         // Solved count for this size — so it's obvious which
@@ -176,45 +193,14 @@ fun SudokuHomeScreen(
                         if (solved > 0) {
                             Text(
                                 text = "🧩 " + stringResource(R.string.zone_solved_count, solved),
-                                fontFamily = FontFamily(Font(R.font.font_bold)),
-                                style = MaterialTheme.typography.labelSmall.scaled(),
-                                color = colorResource(R.color.colorBlueDark)
+                                style = AbTypography.fixed(11f * LocalAbScale.current.factor, FontWeight.Bold),
+                                color = LocalAbColors.current.brandPrimary
                             )
                         }
                     }
 
                 }
-            }
-
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(Dimens16),
-                horizontalArrangement = Arrangement.spacedBy(Dimens16, Alignment.CenterHorizontally),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                DifficultySelectorCompose(
-                    selected = state.selectedDifficulty,
-                    onSelect = { viewModel.selectDifficulty(it) }
-                )
-
-                KidsActionButton(
-                    text = stringResource(R.string.lets_start),
-                    icon = Icons.Rounded.PlayArrow,
-                    type = ButtonType.ORANGE,
-                    isIconStart = false,
-                    onClick = {
-                        if (SudokuStorage.hasSavedGame(context)) {
-                            viewModel.openResumePopup()
-                        } else {
-                            viewModel.setDataGameStart(state.selectedSize, state.selectedDifficulty, true)
-                            onStart()
-                        }
-                    }
-                )
-
-            }
-        }
+            }}
 
     }
 

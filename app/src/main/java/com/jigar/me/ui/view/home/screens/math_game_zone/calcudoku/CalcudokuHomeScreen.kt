@@ -1,9 +1,10 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.calcudoku
 
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameHomeLayout
+
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,7 +18,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.HelpOutline
 import androidx.compose.material.icons.rounded.PlayArrow
@@ -32,23 +32,29 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DeviceInfo
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abReadable
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.CommonDifficultySelectorCompose
-import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.how_to_play.HowToPlayCalcudokuView
 import com.jigar.me.ui.view.home.screens.math_game_zone.calcudoku.components.CalcudokuHomeViewModel
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGamePill
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abPopIn
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
 import kotlin.math.sin
@@ -61,10 +67,6 @@ private val GREEN = Color(0xFF2E7D32)
 private val PREVIEW = listOf(1, 2, 3, 2, 3, 1, 3, 1, 2)
 private val PREVIEW_CAGE = listOf(0, 0, 1, 2, 3, 3, 2, 4, 4)
 private val CLUES = mapOf(0 to "3+", 2 to "3", 3 to "6×", 4 to "2−", 7 to "2×")
-private val CAGE_COLORS = listOf(
-    Color(0xFFFF6B6B), Color(0xFFFFC107), Color(0xFF0074D5),
-    Color(0xFF9B59B6), Color(0xFF2ECC71),
-)
 
 @Composable
 fun CalcudokuHomeScreen(
@@ -76,7 +78,16 @@ fun CalcudokuHomeScreen(
     var showHelp by remember { mutableStateOf(false) }
     val bestTime = viewModel.bestTime(selectedDifficulty)
     val s = if (DeviceInfo.isLargeTablet) 1.7f else if (DeviceInfo.isTablet) 1.45f else 1.0f
+    val kitScale = LocalAbScale.current.factor
+    val colors = LocalAbColors.current
 
+    // one candy colour per cage, deepened until white digits read on it
+    val faces: List<Color> = remember(colors) {
+        listOf(colors.accentPink, colors.accentOrange, colors.brandPrimary, colors.accentPurple, colors.accentGreen)
+            .map { it.abReadable(3f) }
+    }
+
+    // read in the draw phase only, so the preview animates without recomposing the screen
     var time by remember { mutableFloatStateOf(0f) }
     LaunchedEffect(Unit) {
         val start = withFrameNanos { it }
@@ -86,32 +97,53 @@ fun CalcudokuHomeScreen(
     Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
 
         // Content centered over the full screen
-        Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Spacer(Modifier.weight(1f))
+        GameHomeLayout(
+            header = {Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+            BackButtonWithText(
+                title = stringResource(R.string.calcudoku_game),
+                modifier = Modifier.weight(1f), onBackClick = onBackClick
+            )
+            GameButton(
+                modifier = Modifier.padding(end = AppDimens.Dimens16),
+                text = stringResource(R.string.how_to_play),
+                icon = Icons.AutoMirrored.Filled.HelpOutline, type = ButtonType.PINK, isSmall = true,
+                onClick = { showHelp = true }
+            )
+        }},
+            bottom = {
 
-            Column(verticalArrangement = Arrangement.spacedBy((4f * s).dp)) {
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(AppDimens.Dimens16),
+                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16, Alignment.CenterHorizontally),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                CommonDifficultySelectorCompose(selected = selectedDifficulty, onSelect = { viewModel.selectDifficulty(it) })
+                GameButton(
+                    text = stringResource(R.string.lets_start),
+                    icon = Icons.Rounded.PlayArrow, type = ButtonType.ORANGE, isIconStart = false, onClick = onStartGame
+                )
+            }
+        },
+        ) {
+
+            // Candy cells coloured by cage: same-cage cells pulse in unison, the whole board bobs, every cell pops in.
+            Column(
+                verticalArrangement = Arrangement.spacedBy((4f * s).dp),
+                modifier = Modifier.graphicsLayer { translationY = sin(time * 1.6f) * 3f * s * density }
+            ) {
                 for (r in 0 until 3) {
                     Row(horizontalArrangement = Arrangement.spacedBy((4f * s).dp)) {
                         for (c in 0 until 3) {
                             val i = r * 3 + c
-                            val cage = PREVIEW_CAGE[i]
-                            val scale = 1f + sin(time * 2.0f + cage * 1.2f) * 0.08f   // same cage pulses together
-                            Box(
-                                modifier = Modifier
-                                    .graphicsLayer { scaleX = scale; scaleY = scale }
-                                    .size((50f * s).dp)
-                                    .clip(RoundedCornerShape(AppDimens.Dimens8))
-                                    .background(CAGE_COLORS[cage]),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                CLUES[i]?.let { clue ->
-                                    Text(clue, color = Color.White.copy(alpha = 0.95f),
-                                        fontFamily = FontFamily(Font(R.font.font_bold)), fontSize = (11f * s).sp,
-                                        modifier = Modifier.align(Alignment.TopStart).padding(start = (4f * s).dp, top = (2f * s).dp))
-                                }
-                                Text("${PREVIEW[i]}", color = Color.White,
-                                    fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (24f * s).sp)
-                            }
+                            CalcudokuPreviewCell(
+                                index = i,
+                                face = faces[PREVIEW_CAGE[i]],
+                                clue = CLUES[i],
+                                digit = PREVIEW[i],
+                                cage = PREVIEW_CAGE[i],
+                                s = s,
+                                time = { time }
+                            )
                         }
                     }
                 }
@@ -121,50 +153,71 @@ fun CalcudokuHomeScreen(
 
             Text(
                 text = stringResource(R.string.calcudoku_tagline),
-                color = ORANGE, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 22.sp.scaled(),
-                modifier = Modifier.clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.85f))
+                color = ORANGE,
+                style = AbTypography.fixed(22f * kitScale, FontWeight.ExtraBold),
+                textAlign = TextAlign.Center,
+                modifier = Modifier.abGamePill()
                     .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
             )
 
             if (bestTime > 0) {
                 Spacer(Modifier.height(AppDimens.Dimens6))
-                Text("🏆 " + stringResource(R.string.best_time) + ": " + "%d:%02d".format(bestTime / 60, bestTime % 60),
-                    color = GREEN, fontFamily = FontFamily(Font(R.font.font_bold)), fontSize = 16.sp.scaled(),
-                    modifier = Modifier.clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.75f))
-                        .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens4))
-            }
-
-            Spacer(Modifier.weight(1f))
-
-            Row(
-                modifier = Modifier.fillMaxWidth().padding(AppDimens.Dimens16),
-                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16, Alignment.CenterHorizontally),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                CommonDifficultySelectorCompose(selected = selectedDifficulty, onSelect = { viewModel.selectDifficulty(it) })
-                KidsActionButton(
-                    text = stringResource(R.string.lets_start),
-                    icon = Icons.Rounded.PlayArrow, type = ButtonType.ORANGE, isIconStart = false, onClick = onStartGame
+                Text(
+                    "🏆 " + stringResource(R.string.best_time) + ": " + "%d:%02d".format(bestTime / 60, bestTime % 60),
+                    color = GREEN,
+                    style = AbTypography.fixed(17f * kitScale, FontWeight.Bold),
+                    modifier = Modifier.abGamePill()
+                        .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens4)
                 )
             }
-        }
 
-        // Header floats on top (z-index above the centered content)
-        Row(modifier = Modifier.fillMaxWidth().align(Alignment.TopStart), verticalAlignment = Alignment.CenterVertically) {
-            BackButtonWithText(
-                title = stringResource(R.string.calcudoku_game),
-                modifier = Modifier.weight(1f), onBackClick = onBackClick
-            )
-            KidsActionButton(
-                modifier = Modifier.padding(end = AppDimens.Dimens16),
-                text = stringResource(R.string.how_to_play),
-                icon = Icons.AutoMirrored.Filled.HelpOutline, type = ButtonType.PINK, isSmall = true,
-                onClick = { showHelp = true }
-            )
-        }
+            }
     }
 
     AnimatedVisibility(visible = showHelp, enter = fadeIn(), exit = fadeOut()) {
         HowToPlayCalcudokuView { showHelp = false }
+    }
+}
+
+/** One candy cell of the preview board: pops in, then swells together with the other cells of its cage. */
+@Composable
+private fun CalcudokuPreviewCell(
+    index: Int,
+    face: Color,
+    clue: String?,
+    digit: Int,
+    cage: Int,
+    s: Float,
+    time: () -> Float
+) {
+    Box(
+        modifier = Modifier
+            .abPopIn(minOf(400, index * 40))
+            .graphicsLayer {
+                val pulse = 1f + sin(time() * 2.0f + cage * 1.2f) * 0.08f
+                scaleX = pulse
+                scaleY = pulse
+            }
+            .size((50f * s).dp)
+            .abToyTile(face, (12f * s).dp, (4f * s).dp),
+        contentAlignment = Alignment.Center
+    ) {
+        if (clue != null) {
+            Text(
+                clue,
+                style = AbTypography.fixed(12f * s, FontWeight.Black),
+                color = Color.White.copy(alpha = 0.95f),
+                maxLines = 1,
+                softWrap = false,
+                modifier = Modifier.align(Alignment.TopStart).padding(start = (5f * s).dp, top = (2f * s).dp)
+            )
+        }
+        Text(
+            "$digit",
+            style = AbTypography.fixed(26f * s, FontWeight.Black).copy(
+                shadow = Shadow(Color.Black.copy(alpha = 0.25f), Offset(0f, 3f), 0f)
+            ),
+            color = Color.White
+        )
     }
 }

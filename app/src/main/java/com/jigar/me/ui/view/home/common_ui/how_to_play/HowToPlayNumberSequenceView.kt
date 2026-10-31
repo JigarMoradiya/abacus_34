@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.common_ui.how_to_play
 
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -35,6 +37,9 @@ import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.theme.getButtonColors
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abHowToCard
 
 @Composable
 fun HowToPlayNumberSequenceView(
@@ -63,9 +68,7 @@ fun HowToPlayNumberSequenceView(
             modifier = Modifier
                 .width(screenWidth * widthMultiplier)
                 .height(screenHeight * heightMultiplier)
-                .background(Color.White, RoundedCornerShape(AppDimens.Dimens20))
-                .border(AppDimens.Dimens4, accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20))
-                .padding(AppDimens.Dimens16),
+                .abHowToCard(ButtonType.PURPLE),
             contentAlignment = Alignment.Center
         ){
             Column(modifier = Modifier.fillMaxSize()) {
@@ -77,7 +80,7 @@ fun HowToPlayNumberSequenceView(
                 ) {
                     Text(
                         text = stringResource(R.string.number_sequence_puzzle),
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                        fontFamily = AbTypography.Baloo,
                         fontSize = dimensionResource(id = R.dimen.textSize18).value.sp,
                         fontWeight = FontWeight.Bold,
                         color = accentColors.base
@@ -85,7 +88,7 @@ fun HowToPlayNumberSequenceView(
 
                     Spacer(modifier = Modifier.weight(1f))
 
-                    KidsActionButton(
+                    GameButton(
                         text = stringResource(R.string.close),
                         type = ButtonType.PURPLE,
                         onClick = onClose,
@@ -110,7 +113,7 @@ fun HowToPlayNumberSequenceView(
                             text = "Depending on the level, the grid size can be:",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            fontFamily = AbTypography.Baloo,
                             modifier = Modifier.padding(top = AppDimens.Dimens8)
                         )
                     }
@@ -124,7 +127,7 @@ fun HowToPlayNumberSequenceView(
                             text = "👉 How you play:",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            fontFamily = AbTypography.Baloo,
                             modifier = Modifier.padding(top = AppDimens.Dimens8)
                         )
                     }
@@ -149,7 +152,7 @@ fun HowToPlayNumberSequenceView(
                             text = "👨‍👩‍👧 How It Helps:",
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            fontFamily = AbTypography.Baloo,
                             modifier = Modifier.padding(top = AppDimens.Dimens12)
                         )
                     }
@@ -175,7 +178,7 @@ fun HowToPlayNumberSequenceView(
                             text = "❤️ Why This Game Matters:",
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            fontFamily = AbTypography.Baloo,
                             modifier = Modifier.padding(top = AppDimens.Dimens12)
                         )
                     }
@@ -203,24 +206,24 @@ fun HowToPlayNumberSequenceView(
 @Composable
 fun Bullet(text: String) {
     Row(modifier = Modifier.padding(top = AppDimens.Dimens4)) {
-        Text("•  ", fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_regular)))
-        Text(text, fontSize = 16.sp,fontFamily = FontFamily(Font(R.font.font_regular)))
+        Text("•  ", fontWeight = FontWeight.Bold,fontFamily = AbTypography.Baloo)
+        Text(text, fontSize = 16.sp,fontFamily = AbTypography.Baloo)
     }
 }
 
 @Composable
 fun SubBullet(text: String) {
     Row(modifier = Modifier.padding(start = AppDimens.Dimens12, top = AppDimens.Dimens2)) {
-        Text("•  ",fontFamily = FontFamily(Font(R.font.font_regular)))
-        Text(text, fontSize = 16.sp,fontFamily = FontFamily(Font(R.font.font_regular)))
+        Text("•  ",fontFamily = AbTypography.Baloo)
+        Text(text, fontSize = 16.sp,fontFamily = AbTypography.Baloo)
     }
 }
 
 @Composable
 fun Check(text: String) {
     Row(modifier = Modifier.padding(top = AppDimens.Dimens6)) {
-        Text("✔ ", color = Color(0xFF4CAF50), fontWeight = FontWeight.Bold,fontFamily = FontFamily(Font(R.font.font_bold)))
-        Text(text, fontWeight = FontWeight.Bold, fontSize = 16.sp,fontFamily = FontFamily(Font(R.font.font_bold)))
+        Text("✔ ", color = Color(0xFF4CAF50), fontWeight = FontWeight.Bold,fontFamily = AbTypography.Baloo)
+        Text(text, fontWeight = FontWeight.Bold, fontSize = 16.sp,fontFamily = AbTypography.Baloo)
     }
 }
 
@@ -231,6 +234,6 @@ fun Detail(text: String) {
         color = Color.DarkGray,
         fontSize = 15.sp,
         modifier = Modifier.padding(top = AppDimens.Dimens2),
-        fontFamily = FontFamily(Font(R.font.font_regular))
+        fontFamily = AbTypography.Baloo
     )
 }

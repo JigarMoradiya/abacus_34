@@ -46,6 +46,8 @@ import androidx.compose.ui.geometry.RoundRect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.Shadow
@@ -140,8 +142,8 @@ object AbChalk {
 
 /** One line of chalk: a text in a box of 1.08 x its size, with an optional glow. */
 @Composable
-private fun AbChalkLine(text: String, sizePt: Float, color: Color, glow: Shadow?, modifier: Modifier = Modifier) {
-    val style = abFixedStyle(sizePt, FontWeight.ExtraBold)
+private fun AbChalkLine(text: String, sizePt: Float, color: Color, glow: Shadow?, modifier: Modifier = Modifier, tabular: Boolean = false) {
+    val style = abFixedStyle(sizePt, FontWeight.ExtraBold, tabular)
     Box(modifier.height((sizePt * 1.08f).dp), contentAlignment = Alignment.Center) {
         Text(
             text, style = if (glow != null) style.copy(shadow = glow) else style, color = color,
@@ -164,6 +166,8 @@ fun AbChalkText(
     tone: AbChalkTone = AbChalkTone.Normal,
     size: Float? = null,
     pill: Boolean = false,
+    /** Digits all as wide as each other, so a column of numbers lines up place by place when it is right-aligned. */
+    tabular: Boolean = false,
 ) {
     val sizePt = (size ?: (abQuestionMetrics().queTextSize * AbChalk.SCALE)) * LocalAbQuestionTextScale.current
     val dens = LocalDensity.current.density
@@ -188,9 +192,19 @@ fun AbChalkText(
     } else {
         Modifier
     }
+    // The step being worked on is written a little bigger than the others. It grows from its right edge (the sum is
+    // right-aligned) and without changing the layout, so the lines never move.
+    val grow by animateFloatAsState(if (pill && tone == AbChalkTone.Active) 1.15f else 1f, easeOut, label = "abChalkGrow")
     AbChalkLine(
         text, sizePt, color, Shadow(glowColor, Offset.Zero, glowRadius * dens),
-        modifier.then(ringModifier),
+        modifier
+            .graphicsLayer {
+                scaleX = grow
+                scaleY = grow
+                transformOrigin = TransformOrigin(1f, 0.5f)
+            }
+            .then(ringModifier),
+        tabular,
     )
 }
 
@@ -211,10 +225,13 @@ fun AbChalkDash(modifier: Modifier = Modifier) {
 
 /** The answer under the line: a faint "?" until it is revealed, then big glowing chalk. */
 @Composable
-fun AbChalkAnswer(text: String, revealed: Boolean, modifier: Modifier = Modifier) {
+fun AbChalkAnswer(text: String, revealed: Boolean, modifier: Modifier = Modifier, trailing: Boolean = false) {
     val sizePt = abQuestionMetrics().ansTextSize * AbChalk.SCALE * LocalAbQuestionTextScale.current
+    val lineSize = abQuestionMetrics().queTextSize * AbChalk.SCALE * LocalAbQuestionTextScale.current
     val dens = LocalDensity.current.density
-    Box(modifier.padding(vertical = 3.dp), contentAlignment = Alignment.Center) {
+    // Right-aligned sums: the answer ends where the digits above it end (same inset as a chalk line's highlight padding).
+    val endInset = if (trailing) (lineSize * 0.35f).dp else 0.dp
+    Box(modifier.padding(top = 3.dp, bottom = 3.dp, end = endInset), contentAlignment = if (trailing) Alignment.CenterEnd else Alignment.Center) {
         AbChalkLine("?", sizePt, AbChalk.White.copy(alpha = 0.28f), null, Modifier.alpha(if (revealed) 0f else 1f))
         AbChalkLine(
             text, sizePt, AbChalk.Yellow, Shadow(AbChalk.Yellow.copy(alpha = 0.6f), Offset.Zero, sizePt * 0.22f * dens),

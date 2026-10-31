@@ -1,17 +1,21 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.number_path
 
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.VectorConverter
 import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -43,48 +47,65 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.composed
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.StrokeJoin
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.offset
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.PauseTimerInBackground
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.jetpack.utils.ui.extensions.appScale
+import com.jigar.me.ui.view.ab.AbColors
+import com.jigar.me.ui.view.ab.AbGlassPanel
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.abBlended
+import com.jigar.me.ui.view.ab.abReadable
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
+import com.jigar.me.ui.view.home.screens.math_game_zone.GameCategoryType
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameHomeButton
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameResultCard
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameStatChip
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.PauseTimerInBackground
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abBounce
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGamePill
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abPopIn
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTray
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
+import com.jigar.me.ui.view.home.screens.math_game_zone.gameCardStyle
+import com.jigar.me.ui.view.home.screens.math_game_zone.number_path.components.NumberPathCell
 import com.jigar.me.ui.view.home.screens.math_game_zone.number_path.components.NumberPathUiState
 import com.jigar.me.ui.view.home.screens.math_game_zone.number_path.components.PathCellType
 import com.jigar.me.ui.view.home.screens.math_game_zone.number_path.viewmodel.NumberPathPlayViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
-import com.jigar.me.ui.view.home.theme.getButtonColors
 import kotlinx.coroutines.delay
 import kotlin.math.roundToInt
 
 private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
 private val BLUE = Color(0xFF0074D5)
-private val TILE_BG = Color.White
-private val TILE_VISITED = Color(0xFFA5D6A7)
-private val TILE_START = Color(0xFF90CAF9)
-private val TILE_GOAL = Color(0xFFFFD54F)
-private val TILE_TEXT = Color(0xFF3E2723)
-private val HINT_BORDER = Color(0xFFFFB300)
+private val TILE_INK = Color(0xFF3E2723)
 
 @Composable
 fun NumberPathPlayScreen(
@@ -94,6 +115,8 @@ fun NumberPathPlayScreen(
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val s = gameScale()
+    val colors = LocalAbColors.current
+    val accent: Color = gameCardStyle(GameCategoryType.NUMBER_PATH).light
     LaunchedEffect(Unit) { viewModel.start() }
     // A phone call or the home button freezes the clock - fair play.
     PauseTimerInBackground { viewModel.setTimerPaused(it) }
@@ -121,10 +144,9 @@ fun NumberPathPlayScreen(
                 Text(
                     text = viewModel.difficulty.displayName + " · " +
                         stringResource(R.string.cross_math_level, viewModel.level),
-                    color = ORANGE, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 20.sp.scaled(),
+                    color = ORANGE, style = AbTypography.fixed(20f * appScale(), FontWeight.ExtraBold),
                     modifier = Modifier.align(Alignment.Center)
-                        .clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.9f))
-                        .border(2.dp, ORANGE_BORDER, RoundedCornerShape(100f))
+                        .abGamePill(outline = ORANGE_BORDER)
                         .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
                 )
                 Row(
@@ -132,13 +154,13 @@ fun NumberPathPlayScreen(
                     horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
                     modifier = Modifier.align(Alignment.CenterEnd)
                         .padding(end = AppDimens.Dimens16)
-                        .clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.9f))
+                        .abGamePill()
                         .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
                 ) {
                     Text("⏱", fontSize = (24f * s).sp)
                     Text(
-                        timeString(state.elapsed), color = Color(0xFF5D4037),
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 26.sp.scaled()
+                        timeString(state.elapsed), color = colors.textPrimary,
+                        style = AbTypography.fixed(26f * appScale(), FontWeight.ExtraBold)
                     )
                 }
             }
@@ -153,7 +175,7 @@ fun NumberPathPlayScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
-                    PathGrid(state, cell, s, viewModel.buddy) { viewModel.tapCell(it) }
+                    PathGrid(state, cell, s, accent, viewModel.buddy) { viewModel.tapCell(it) }
                 }
 
                 Spacer(Modifier.width((32f * s).dp))
@@ -185,20 +207,74 @@ fun NumberPathPlayScreen(
                 onBack = onBackClick
             )
         }
+
+        // Debug builds only (`--ez ab_show_result true`): shows the real result overlay without playing a level.
+        if (AbDebugFlags.showResultEnabled && !state.isGameOver) {
+            ResultOverlay(
+                buddy = viewModel.buddy,
+                stars = 3,
+                elapsed = state.elapsed,
+                hintsUsed = state.hintsUsed,
+                hasNextLevel = viewModel.hasNextLevel,
+                onNextLevel = onNextLevel,
+                onPlayAgain = { viewModel.start() },
+                onBack = onBackClick
+            )
+        }
     }
+}
+
+// Lets a decoration reach past its content: the content keeps the layout size it would have had, but the node is
+// measured and placed bigger (the reverse of padding), so a tray can be drawn around the maze without shrinking it.
+private fun Modifier.numberPathOutset(horizontal: Dp, top: Dp, bottom: Dp): Modifier = layout { measurable, constraints ->
+    val h = horizontal.roundToPx()
+    val t = top.roundToPx()
+    val b = bottom.roundToPx()
+    val placeable = measurable.measure(constraints.offset(horizontal = 2 * h, vertical = t + b))
+    layout(placeable.width - 2 * h, placeable.height - t - b) { placeable.place(-h, -t) }
+}
+
+// Springy squash while a key is pressed, then the tap. Silent (the maze has no click sound).
+private fun Modifier.numberPathPressClick(enabled: Boolean = true, onClick: () -> Unit): Modifier = composed {
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
+    val squash by animateFloatAsState(
+        targetValue = if (pressed && enabled) 0.9f else 1f,
+        animationSpec = spring(dampingRatio = 0.55f, stiffness = 600f),
+        label = "numberPathPress"
+    )
+    this
+        .clickable(interactionSource = interaction, indication = null, enabled = enabled, onClick = onClick)
+        .graphicsLayer { scaleX = squash; scaleY = squash }
 }
 
 // ── maze grid + hopping buddy ───────────────────────────────────────────────
 
+// The maze sits in a chunky coral tray. The tray is drawn OUTSIDE the grid's layout box (outset), so the tiles keep
+// their size and the board keeps the room it had.
 @Composable
-private fun PathGrid(state: NumberPathUiState, cell: Dp, s: Float, buddy: String, onTap: (Int) -> Unit) {
+private fun PathGrid(state: NumberPathUiState, cell: Dp, s: Float, accent: Color, buddy: String, onTap: (Int) -> Unit) {
     if (state.cells.isEmpty()) return
+    val colors = LocalAbColors.current
     val density = LocalDensity.current
     // Tiles lay out at rounded px sizes — the buddy must use the same
     // rounded step or it drifts off-center on wide grids.
     val cellPx = with(density) { cell.roundToPx() }.toFloat()
+    val ribbon: Color = colors.accentGreen.copy(alpha = 0.75f)
 
-    Box {
+    Box(Modifier.numberPathOutset(horizontal = 6.dp, top = 6.dp, bottom = 12.dp).abToyTray(accent, 6.dp)) {
+        // A green ribbon through the tiles the buddy has walked, peeking out in the gaps between them.
+        Canvas(Modifier.matchParentSize()) {
+            val cols = maxOf(state.cols, 1)
+            val line = Path()
+            state.trail.forEachIndexed { n, idx ->
+                val x = (idx % cols) * cellPx + cellPx / 2f
+                val y = (idx / cols) * cellPx + cellPx / 2f
+                if (n == 0) line.moveTo(x, y) else line.lineTo(x, y)
+            }
+            drawPath(line, ribbon, style = Stroke(width = cellPx * 0.24f, cap = StrokeCap.Round, join = StrokeJoin.Round))
+        }
+
         Column {
             for (r in 0 until state.rows) {
                 Row {
@@ -226,7 +302,7 @@ private fun PathGrid(state: NumberPathUiState, cell: Dp, s: Float, buddy: String
         val shake = remember { Animatable(0f) }
         LaunchedEffect(state.goalBounceCount, state.blockedBounceCount) {
             if (state.goalBounceCount > 0 || state.blockedBounceCount > 0) {
-                repeat(3) { shake.animateTo(7f, tween(45)); shake.animateTo(-7f, tween(45)) }
+                repeat(3) { shake.animateTo(4f, tween(45)); shake.animateTo(-4f, tween(45)) }
                 shake.animateTo(0f, tween(40))
             }
         }
@@ -237,27 +313,70 @@ private fun PathGrid(state: NumberPathUiState, cell: Dp, s: Float, buddy: String
             modifier = Modifier
                 .offset {
                     IntOffset(
-                        (pos.value.x - with(density) { buddySize.toPx() } / 2f + shake.value).roundToInt(),
+                        (pos.value.x - with(density) { buddySize.toPx() } / 2f + shake.value * density.density).roundToInt(),
                         (pos.value.y - with(density) { buddySize.toPx() } / 2f).roundToInt()
                     )
                 }
                 .size(buddySize)
                 .graphicsLayer { scaleX = hop.value; scaleY = hop.value }
         ) {
-            Text(buddy, fontSize = (26f * s).sp)
-            // Little total bubble riding on the buddy's head.
-            Text(
-                "${state.currentTotal}",
-                color = Color.White,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (11f * s).sp,
-                modifier = Modifier.align(Alignment.TopCenter)
-                    .offset(y = (-6f * s).dp)
-                    .clip(RoundedCornerShape(100f)).background(BLUE)
-                    .padding(horizontal = (5f * s).dp, vertical = 1.dp)
-            )
+            NumberPathBuddy(emoji = buddy, total = state.currentTotal, s = s)
         }
     }
 }
+
+// The kid's companion on the maze: it bobs and tilts while it waits, and wears a little chip with the running total.
+@Composable
+private fun NumberPathBuddy(emoji: String, total: Int, s: Float) {
+    val colors = LocalAbColors.current
+    val transition = rememberInfiniteTransition(label = "numberPathBuddy")
+    val tilt by transition.animateFloat(
+        initialValue = -5f, targetValue = 5f,
+        animationSpec = infiniteRepeatable(tween(1047, easing = FastOutSlowInEasing), RepeatMode.Reverse), label = "tilt"
+    )
+    val bob by transition.animateFloat(
+        initialValue = -2f, targetValue = 2f,
+        animationSpec = infiniteRepeatable(tween(628, easing = FastOutSlowInEasing), RepeatMode.Reverse), label = "bob"
+    )
+    Box(contentAlignment = Alignment.TopCenter) {
+        Text(
+            emoji, fontSize = (26f * s).sp,
+            modifier = Modifier.graphicsLayer { rotationZ = tilt; translationY = bob * s * density }
+        )
+        Text(
+            "$total",
+            style = AbTypography.fixed(12f * s, FontWeight.Black),
+            color = Color.White,
+            modifier = Modifier
+                .offset(y = (-10f * s).dp)
+                .abBounce(total, 1.35f)
+                .background(colors.brandPrimary, CircleShape)
+                .border(1.5.dp, Color.White, CircleShape)
+                .padding(horizontal = (6f * s).dp, vertical = 1.dp)
+        )
+    }
+}
+
+// The colour of an operation: plus is green, minus orange, times purple, divide pink.
+private fun opColor(colors: AbColors, op: Char?): Color = when (op) {
+    '+' -> colors.accentGreen
+    '-' -> colors.accentOrange
+    '*' -> colors.accentPurple
+    else -> colors.accentPink
+}
+
+// Face and ink of a tile. An op tile is a pastel until the buddy walks over it, then it fills with its colour.
+private fun tileLook(colors: AbColors, data: NumberPathCell, visited: Boolean, justSolved: Boolean): Pair<Color, Color> =
+    when (data.type) {
+        PathCellType.START -> Pair(colors.brandSecondary.abReadable(3f), Color.White)
+        PathCellType.GOAL ->
+            if (justSolved) Pair(colors.accentGreen.abReadable(3f), Color.White) else Pair(colors.accentYellow, TILE_INK)
+        else -> {
+            val base: Color = opColor(colors, data.op)
+            if (visited) Pair(base.abReadable(3f), Color.White)
+            else Pair(base.abBlended(Color.White, 0.7f), base.abReadable(6f))
+        }
+    }
 
 @Composable
 private fun PathTile(state: NumberPathUiState, i: Int, cell: Dp, s: Float, onTap: (Int) -> Unit) {
@@ -266,6 +385,7 @@ private fun PathTile(state: NumberPathUiState, i: Int, cell: Dp, s: Float, onTap
         Spacer(Modifier.size(cell))
         return
     }
+    val colors = LocalAbColors.current
     val visited = i in state.trail
     val isHint = state.hintIndex == i
 
@@ -278,93 +398,116 @@ private fun PathTile(state: NumberPathUiState, i: Int, cell: Dp, s: Float, onTap
         ).value
     } else 1f
 
-    val bg = when {
-        state.justSolved && data.type == PathCellType.GOAL -> Color(0xFF81C784)
-        data.type == PathCellType.START -> TILE_START
-        data.type == PathCellType.GOAL -> TILE_GOAL
-        visited -> TILE_VISITED
-        else -> TILE_BG
+    val look = tileLook(colors, data, visited, state.justSolved)
+    val face = look.first
+    val ink = look.second
+    val edge: Dp = if (cell >= 54.dp) 4.dp else 3.dp
+    val corner: Dp = (10f * s).dp
+    val label: String = when (data.type) {
+        PathCellType.START -> "${state.startValue}"
+        PathCellType.GOAL -> "${state.target}"
+        else -> data.displayText
     }
 
+    // The cell is a fixed square; the candy tile is inset 2dp inside it, so neighbours are separated by a small gap.
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
             .size(cell)
             .padding(2.dp)
-            .graphicsLayer { if (isHint) { scaleX = pulse; scaleY = pulse } }
-            .clip(RoundedCornerShape((10f * s).dp))
-            .background(bg)
-            .border(
-                width = if (isHint) 3.dp else 1.5.dp,
-                color = if (isHint) HINT_BORDER else Color(0xFFBCAAA4),
-                shape = RoundedCornerShape((10f * s).dp)
-            )
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = null
             ) { onTap(i) }
+            .abPopIn(minOf(i * 15, 400))
+            .graphicsLayer { if (isHint) { scaleX = pulse; scaleY = pulse } }
+            .abBounce(visited, 1.18f)
     ) {
-        when (data.type) {
-            PathCellType.START -> Text(
-                "${state.startValue}", color = TILE_TEXT,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (18f * s).sp
-            )
-            PathCellType.GOAL -> Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text("🎯", fontSize = (13f * s).sp)
-                Text(
-                    "${state.target}", color = TILE_TEXT, maxLines = 1, softWrap = false,
-                    fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                    fontSize = ((if (state.target >= 100) 13f else 16f) * s).sp
+        Box(Modifier.fillMaxSize().abToyTile(face, corner, edge), contentAlignment = Alignment.Center) {
+            when (data.type) {
+                PathCellType.START -> Text(
+                    label, color = ink, style = AbTypography.fixed(18f * s, FontWeight.Black),
+                    maxLines = 1, softWrap = false
                 )
+                PathCellType.GOAL -> Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Text("🎯", style = AbTypography.fixed(12f * s, FontWeight.Black))
+                    Text(
+                        label, color = ink, maxLines = 1, softWrap = false,
+                        style = AbTypography.fixed((if (state.target >= 100) 12f else 15f) * s, FontWeight.Black)
+                    )
+                }
+                PathCellType.OP -> Text(
+                    label, color = ink, maxLines = 1, softWrap = false,
+                    style = AbTypography.fixed(15f * s, FontWeight.Black)
+                )
+                else -> {}
             }
-            PathCellType.OP -> Text(
-                data.displayText, color = if (visited) Color(0xFF1B5E20) else TILE_TEXT,
-                maxLines = 1, softWrap = false,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (15f * s).sp
+        }
+        if (isHint) {
+            // The gold hint ring with a soft glow. It draws only, so it never takes a tap.
+            Box(
+                Modifier
+                    .fillMaxSize()
+                    .drawBehind {
+                        val g = 3.dp.toPx()
+                        drawRoundRect(
+                            color = colors.accentYellow.copy(alpha = 0.5f),
+                            topLeft = Offset(-g, -g),
+                            size = androidx.compose.ui.geometry.Size(this.size.width + 2f * g, this.size.height + 2f * g),
+                            cornerRadius = CornerRadius(corner.toPx() + g),
+                            style = Stroke(width = 2f * g)
+                        )
+                    }
+                    .border(3.5.dp, colors.accentYellow, RoundedCornerShape(corner))
             )
-            else -> {}
         }
     }
+}
+
+// A chunky candy key (tool button): a bright face with the toy 3D edge, `height` in total.
+@Composable
+private fun NumberPathKey(
+    face: Color, width: Dp, height: Dp, modifier: Modifier = Modifier, content: @Composable () -> Unit
+) {
+    Box(
+        modifier
+            .size(width, height)
+            .abToyTile(face, minOf(width, height) * 0.3f, 4.dp),
+        contentAlignment = Alignment.Center
+    ) { content() }
 }
 
 // ── right panel: target + animated running total ───────────────────────────
 
 @Composable
 private fun TotalsPanel(state: NumberPathUiState, s: Float, buddy: String) {
-    // The running total pops with a bounce every time it changes.
-    val popScale = remember { Animatable(1f) }
-    LaunchedEffect(state.totals.size) {
-        popScale.snapTo(1.35f)
-        popScale.animateTo(1f, spring(dampingRatio = 0.45f))
-    }
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens10),
-        modifier = Modifier.clip(RoundedCornerShape(AppDimens.Dimens16)).background(Color.White.copy(alpha = 0.8f))
-            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens16)
-    ) {
-        Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
-            Text("🎯", fontSize = (20f * s).sp)
-            Text(
-                "${state.target}", color = ORANGE,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (26f * s).sp
-            )
-        }
-        Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
-            Text(buddy, fontSize = (20f * s).sp)
-            Text(
-                "${state.currentTotal}",
-                color = if (state.currentTotal == state.target) Color(0xFF2E7D32) else BLUE,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (26f * s).sp,
-                modifier = Modifier.graphicsLayer { scaleX = popScale.value; scaleY = popScale.value }
-            )
-        }
-        Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
-            Text("💡", fontSize = (18f * s).sp)
-            Text(
-                "${state.hintsLeft}", color = Color(0xFFF57F17),
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (20f * s).sp
-            )
+    AbGlassPanel {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens10),
+            modifier = Modifier.padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens16)
+        ) {
+            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
+                Text("🎯", fontSize = (20f * s).sp)
+                Text("${state.target}", color = ORANGE, style = AbTypography.fixed(26f * s, FontWeight.Black))
+            }
+            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
+                Text(buddy, fontSize = (20f * s).sp)
+                Text(
+                    "${state.currentTotal}",
+                    color = if (state.currentTotal == state.target) Color(0xFF2E7D32) else BLUE,
+                    style = AbTypography.fixed(26f * s, FontWeight.Black),
+                    modifier = Modifier.abBounce(state.currentTotal, 1.25f)
+                )
+            }
+            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
+                Text("💡", fontSize = (18f * s).sp)
+                Text(
+                    "${state.hintsLeft}", color = Color(0xFFF57F17),
+                    style = AbTypography.fixed(20f * s, FontWeight.Black),
+                    modifier = Modifier.abBounce(state.hintsLeft)
+                )
+            }
         }
     }
 }
@@ -376,35 +519,29 @@ private fun ToolBar(
     state: NumberPathUiState, cell: Dp, s: Float,
     onUndo: () -> Unit, onRestart: () -> Unit, onHint: () -> Unit
 ) {
+    val colors = LocalAbColors.current
     Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12), verticalAlignment = Alignment.CenterVertically) {
-        ToolButton(bg = Color(0xFF90A4AE), enabled = state.trail.size > 1, size = cell, onClick = onUndo) {
+        ToolButton(face = colors.brandSecondary.abReadable(3f), enabled = state.trail.size > 1, size = cell, onClick = onUndo) {
             Icon(Icons.AutoMirrored.Rounded.Undo, contentDescription = null, tint = Color.White,
                 modifier = Modifier.size((22f * s).dp))
         }
-        ToolButton(bg = Color(0xFFFFB74D), enabled = true, size = cell, onClick = onRestart) {
+        ToolButton(face = colors.accentOrange.abReadable(3f), enabled = true, size = cell, onClick = onRestart) {
             Icon(Icons.Rounded.Refresh, contentDescription = null, tint = Color.White,
                 modifier = Modifier.size((22f * s).dp))
         }
-        ToolButton(bg = Color(0xFFFFCA28), enabled = state.hintsLeft > 0, size = cell, onClick = onHint) {
-            Text("💡${state.hintsLeft}", color = Color.White,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (16f * s).sp)
+        ToolButton(face = colors.accentYellow, enabled = state.hintsLeft > 0, size = cell, onClick = onHint) {
+            Text("💡${state.hintsLeft}", color = TILE_INK, style = AbTypography.fixed(16f * s, FontWeight.Black))
         }
     }
 }
 
 @Composable
-private fun ToolButton(bg: Color, enabled: Boolean, size: Dp, onClick: () -> Unit, content: @Composable () -> Unit) {
-    Box(
-        contentAlignment = Alignment.Center,
+private fun ToolButton(face: Color, enabled: Boolean, size: Dp, onClick: () -> Unit, content: @Composable () -> Unit) {
+    NumberPathKey(
+        face = face, width = size * 0.9f, height = size * 0.9f,
         modifier = Modifier
             .graphicsLayer { alpha = if (enabled) 1f else 0.4f }
-            .size(size * 0.9f)
-            .clip(RoundedCornerShape(AppDimens.Dimens10))
-            .background(bg)
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = null, enabled = enabled
-            ) { onClick() }
+            .numberPathPressClick(enabled = enabled, onClick = onClick)
     ) { content() }
 }
 
@@ -418,85 +555,36 @@ private fun ResultOverlay(
     stars: Int, elapsed: Int, hintsUsed: Int, hasNextLevel: Boolean,
     onNextLevel: () -> Unit, onPlayAgain: () -> Unit, onBack: () -> Unit
 ) {
-    val accentColors = getButtonColors(ButtonType.ORANGE)
     var enabled by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) { delay(1000); enabled = true }
 
     Box(modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)), contentAlignment = Alignment.Center) {
         // Finishing a Number Path level is always a win — always celebrate.
         LaunchedEffect(Unit) { if (stars >= 2) AudioPlayerManager.playSoundClap() else AudioPlayerManager.playSoundWin() }
-        // "Candy Pop" celebration card — saturated gradient block with a white badge overlapping the top edge.
-        Box(modifier = Modifier.fillMaxWidth(0.6f), contentAlignment = Alignment.TopCenter) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .shadow(20.dp, RoundedCornerShape(AppDimens.Dimens20 * 1.2f), ambientColor = accentColors.base, spotColor = accentColors.base)
-                    .background(accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20 * 1.2f))
-                    .padding(horizontal = AppDimens.Dimens30, vertical = AppDimens.Dimens20),
-                horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
-            ) {
-                Spacer(Modifier.height(AppDimens.Dimens20))
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(buddy, fontSize = (28f * gameScale()).sp)
-                    Text(
-                        stringResource(R.string.balloon_great_job),
-                        color = Color.White,
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                        fontSize = 30.sp.scaled(),
-                        style = TextStyle(shadow = Shadow(color = accentColors.base.copy(alpha = 0.9f), offset = Offset(1.5f, 1.5f), blurRadius = 0f)),
-                        modifier = Modifier.padding(horizontal = AppDimens.Dimens8)
-                    )
-                    Text("✨", fontSize = (28f * gameScale()).sp)
+        // "Candy Pop" celebration card: the shared glossy accent panel with the bouncing badge, stars and confetti.
+        GameResultCard(
+            title = stringResource(R.string.balloon_great_job),
+            emoji = buddy,
+            accent = ButtonType.BLUE,
+            stars = stars,
+            wide = true,
+            stats = {
+                Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
+                    GameStatChip("⏱️", timeString(elapsed), Color(0xFF5D4037))
+                    GameStatChip("💡", "$hintsUsed", Color(0xFFF57F17))
                 }
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8), verticalAlignment = Alignment.Bottom) {
-                    BigStar(stars >= 1, 32, 150); BigStar(stars >= 2, 40, 400); BigStar(stars >= 3, 32, 650)
-                }
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)) {
-                    StatChipStr("⏱", timeString(elapsed), Color(0xFF5D4037))
-                    StatChipStr("💡", "$hintsUsed", Color(0xFFF57F17))
-                }
+            },
+            buttons = {
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
                     if (hasNextLevel) {
-                        KidsActionButton(text = stringResource(R.string.cross_math_next_level), type = ButtonType.ORANGE,
+                        GameButton(text = stringResource(R.string.cross_math_next_level), type = ButtonType.ORANGE,
                             onClick = { if (enabled) onNextLevel() })
                     }
-                    KidsActionButton(text = stringResource(R.string.balloon_play_again), type = ButtonType.POSITIVE,
+                    GameButton(text = stringResource(R.string.balloon_play_again), type = ButtonType.POSITIVE,
                         onClick = { if (enabled) onPlayAgain() })
-                    KidsActionButton(text = stringResource(R.string.balloon_back), type = ButtonType.NEGATIVE,
-                        onClick = { if (enabled) onBack() })
+                    GameHomeButton(onClick = { if (enabled) onBack() })
                 }
             }
-
-            Box(
-                modifier = Modifier
-                    .offset(y = (-28).dp)
-                    .size(64.dp)
-                    .shadow(8.dp, CircleShape)
-                    .background(Color.White, CircleShape)
-                    .border(4.dp, Color.White, CircleShape),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(buddy, fontSize = 32.sp)
-            }
-        }
+        )
     }
-}
-
-@Composable
-private fun StatChipStr(emoji: String, value: String, color: Color) {
-    Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4), verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.clip(RoundedCornerShape(100f)).background(Color.White)
-            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)) {
-        Text(emoji, fontSize = (16f * gameScale()).sp)
-        Text(value, color = color, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 20.sp.scaled(),
-            maxLines = 1, softWrap = false)
-    }
-}
-
-@Composable
-private fun BigStar(earned: Boolean, sizeSp: Int, delayMs: Long) {
-    val scale = remember { Animatable(0.01f) }
-    LaunchedEffect(Unit) { delay(delayMs); scale.animateTo(1f, spring(dampingRatio = 0.5f)) }
-    Text("⭐", fontSize = (sizeSp * gameScale()).sp,
-        modifier = Modifier.graphicsLayer { scaleX = scale.value; scaleY = scale.value; alpha = if (earned) 1f else 0.35f })
 }

@@ -1,12 +1,18 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.clock_master
 
-import androidx.compose.animation.core.Animatable
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameCharacter
+
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,60 +22,68 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.PauseTimerInBackground
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.NextDifficultyBanner
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.jetpack.utils.ui.extensions.appScale
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.abReadable
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.math_game_zone.clock_master.components.ClockMasterUiState
 import com.jigar.me.ui.view.home.screens.math_game_zone.clock_master.viewmodel.ClockMasterPlayViewModel
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameHomeButton
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameMascotPanel
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameResultCard
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameScoreboardPanel
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameStatChip
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.NextDifficultyBanner
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.PauseTimerInBackground
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abBounce
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGamePill
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abPopIn
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abWobble
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
-import com.jigar.me.ui.view.home.theme.getButtonColors
 import kotlinx.coroutines.delay
 
 private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
-private val BLUE = Color(0xFF0074D5)
-private val RIGHT_GREEN = Color(0xFF43A047)
-private val WRONG_RED = Color(0xFFE53935)
 
 @Composable
 fun ClockMasterPlayScreen(
@@ -79,6 +93,7 @@ fun ClockMasterPlayScreen(
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val baseCheer = remember { randomGameCheer() }
     val s = gameScale()
+    val colors = LocalAbColors.current
     LaunchedEffect(Unit) { viewModel.start() }
     // A phone call or the home button freezes the clock - fair play.
     PauseTimerInBackground { viewModel.setTimerPaused(it) }
@@ -93,27 +108,29 @@ fun ClockMasterPlayScreen(
                     BackButtonWithText(title = stringResource(R.string.clock_master_game), onBackClick = onBackClick)
                     Spacer(Modifier.weight(1f))
                 }
+                // The question, on a pill with an orange rim.
                 Text(
                     text = stringResource(R.string.clock_master_prompt),
-                    color = ORANGE, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 20.sp.scaled(),
+                    style = AbTypography.fixed(20f * appScale(), FontWeight.ExtraBold),
+                    color = ORANGE,
                     modifier = Modifier.align(Alignment.Center)
-                        .clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.9f))
-                        .border(2.dp, ORANGE_BORDER, RoundedCornerShape(100f))
+                        .abGamePill(outline = ORANGE_BORDER)
                         .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
                 )
+                // The clock, turning red for the last ten seconds.
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
                     modifier = Modifier.align(Alignment.CenterEnd)
                         .padding(end = AppDimens.Dimens16)
-                        .clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.9f))
+                        .abGamePill()
                         .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
                 ) {
-                    Text("⏱", fontSize = (24f * s).sp)
+                    Text("⏱️", fontSize = (24f * s).sp)
                     Text(
                         "${state.timeLeft}",
-                        color = if (state.timeLeft <= 10) WRONG_RED else Color(0xFF5D4037),
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 26.sp.scaled()
+                        style = AbTypography.fixed(26f * s, FontWeight.Black),
+                        color = if (state.timeLeft <= 10) colors.danger.abReadable(4.5f) else colors.textPrimary
                     )
                 }
             }
@@ -129,8 +146,7 @@ fun ClockMasterPlayScreen(
                         else -> baseCheer
                     },
                     celebrate = state.lastAnswerRight, s = s,
-                    modifier = Modifier.weight(1f).fillMaxHeight()
-                )
+                    modifier = Modifier.weight(1f).fillMaxHeight(), character = GameCharacter.Rabbit)
 
                 Row(
                     modifier = Modifier.fillMaxHeight(),
@@ -162,61 +178,34 @@ fun ClockMasterPlayScreen(
             // Two strong runs in a row? Invite the kid up a tier.
             state.suggestedDifficulty?.let { NextDifficultyBanner(it) }
         }
+        // Debug builds only: lets the lead render the real result overlay without playing a round.
+        if (AbDebugFlags.showResultEnabled && !state.isGameOver) {
+            ResultOverlay(state = state, best = viewModel.bestScore,
+                onPlayAgain = { viewModel.start() }, onBack = onBackClick)
+        }
     }
 }
 
-// 2x2 digital-time options; right answer flashes green, wrong tap shakes red
-// while the correct one glows.
+// 2x2 digital-time options as candy tiles; the right answer turns green and bounces, a wrong tap turns red and
+// wobbles while the correct one glows.
 @Composable
 private fun OptionsColumn(state: ClockMasterUiState, s: Float, onTap: (Int) -> Unit) {
     val q = state.question ?: return
-    val shake = remember { Animatable(0f) }
-    LaunchedEffect(state.lastAnswerWrong) {
-        if (state.lastAnswerWrong) {
-            repeat(3) { shake.animateTo(7f, tween(45)); shake.animateTo(-7f, tween(45)) }
-            shake.animateTo(0f, tween(40))
-        }
-    }
-    Column(
-        verticalArrangement = Arrangement.spacedBy((12f * s).dp),
-        modifier = Modifier.graphicsLayer { translationX = shake.value }
-    ) {
-        q.options.chunked(2).forEach { rowOptions ->
-            Row(horizontalArrangement = Arrangement.spacedBy((12f * s).dp)) {
-                rowOptions.forEach { option ->
-                    val index = q.options.indexOf(option)
-                    val revealCorrect = (state.lastAnswerRight || state.lastAnswerWrong) && index == q.correctIndex
-                    val tappedWrong = state.lastAnswerWrong && index == state.selectedIndex
-                    val enter = remember(state.questionNumber, index) { Animatable(0.01f) }
-                    LaunchedEffect(state.questionNumber) {
-                        enter.snapTo(0.01f)
-                        delay(70L * index)
-                        enter.animateTo(1f, spring(dampingRatio = 0.5f))
-                    }
-                    val bg = when {
-                        revealCorrect -> RIGHT_GREEN
-                        tappedWrong -> WRONG_RED
-                        else -> Color.White
-                    }
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier
-                            .graphicsLayer { scaleX = enter.value; scaleY = enter.value }
-                            .clip(RoundedCornerShape(AppDimens.Dimens12))
-                            .background(bg)
-                            .border(2.5.dp, if (revealCorrect) Color(0xFF2E7D32) else ORANGE_BORDER,
-                                RoundedCornerShape(AppDimens.Dimens12))
-                            .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = null
-                            ) { onTap(index) }
-                            .padding(horizontal = (24f * s).dp, vertical = (14f * s).dp)
-                    ) {
-                        Text(
-                            option,
-                            color = if (revealCorrect || tappedWrong) Color.White else Color(0xFF3E2723),
-                            fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (26f * s).sp,
-                            maxLines = 1, softWrap = false
+    // A new question builds the tiles afresh, so they pop in one after another again.
+    key(state.questionNumber) {
+        Column(verticalArrangement = Arrangement.spacedBy((12f * s).dp)) {
+            q.options.chunked(2).forEach { rowOptions ->
+                Row(horizontalArrangement = Arrangement.spacedBy((12f * s).dp)) {
+                    rowOptions.forEach { option ->
+                        val index = q.options.indexOf(option)
+                        val revealed = state.lastAnswerRight || state.lastAnswerWrong
+                        val revealCorrect = revealed && index == q.correctIndex
+                        val tappedWrong = state.lastAnswerWrong && index == state.selectedIndex
+                        val faded = revealed && !revealCorrect && !tappedWrong
+                        ClockMasterOptionTile(
+                            option = option, index = index, s = s,
+                            revealCorrect = revealCorrect, tappedWrong = tappedWrong, faded = faded,
+                            onTap = { onTap(index) }
                         )
                     }
                 }
@@ -226,86 +215,107 @@ private fun OptionsColumn(state: ClockMasterUiState, s: Float, onTap: (Int) -> U
 }
 
 @Composable
-private fun ResultOverlay(state: ClockMasterUiState, best: Int, onPlayAgain: () -> Unit, onBack: () -> Unit) {
-    val stars = state.starCount
-    val accentColors = getButtonColors(ButtonType.ORANGE)
-    var enabled by remember { mutableStateOf(false) }
-    LaunchedEffect(Unit) { delay(1000); enabled = true }
+private fun ClockMasterOptionTile(
+    option: String,
+    index: Int,
+    s: Float,
+    revealCorrect: Boolean,
+    tappedWrong: Boolean,
+    faded: Boolean,
+    onTap: () -> Unit
+) {
+    val colors = LocalAbColors.current
+    val face = when {
+        revealCorrect -> colors.accentGreen.abReadable(3f)
+        tappedWrong -> colors.danger.abReadable(3f)
+        else -> listOf(colors.accentOrange, colors.brandSecondary, colors.accentPurple, colors.accentPink)[index % 4].abReadable(3f)
+    }
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
+    val squash by animateFloatAsState(
+        targetValue = if (pressed) 0.94f else 1f,
+        animationSpec = spring(dampingRatio = 0.55f, stiffness = Spring.StiffnessMedium),
+        label = "clockMasterTile"
+    )
+    val fade by animateFloatAsState(targetValue = if (faded) 0.55f else 1f, animationSpec = tween(200), label = "clockMasterFade")
 
-    Box(modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)), contentAlignment = Alignment.Center) {
-        LaunchedEffect(Unit) { if (stars >= 2) AudioPlayerManager.playSoundClap() else AudioPlayerManager.playSoundWin() }
-        // "Candy Pop" celebration card — saturated gradient block with a white badge overlapping the top edge.
-        Box(modifier = Modifier.fillMaxWidth(0.6f), contentAlignment = Alignment.TopCenter) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .shadow(20.dp, RoundedCornerShape(AppDimens.Dimens20 * 1.2f), ambientColor = accentColors.base, spotColor = accentColors.base)
-                    .background(accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20 * 1.2f))
-                    .padding(horizontal = AppDimens.Dimens30, vertical = AppDimens.Dimens20),
-                horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
-            ) {
-                Spacer(Modifier.height(AppDimens.Dimens20))
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text("🕐", fontSize = (28f * gameScale()).sp)
-                    Text(
-                        stringResource(if (stars >= 2) R.string.balloon_great_job else R.string.good_try),
-                        color = Color.White,
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                        fontSize = 30.sp.scaled(),
-                        style = TextStyle(shadow = Shadow(color = accentColors.base.copy(alpha = 0.9f), offset = Offset(1.5f, 1.5f), blurRadius = 0f)),
-                        modifier = Modifier.padding(horizontal = AppDimens.Dimens8)
-                    )
-                    Text("✨", fontSize = (28f * gameScale()).sp)
-                }
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8), verticalAlignment = Alignment.Bottom) {
-                    BigStar(stars >= 1, 32, 150); BigStar(stars >= 2, 40, 400); BigStar(stars >= 3, 32, 650)
-                }
-                Text(stringResource(R.string.balloon_final_score) + ": ${state.score}", color = Color.White,
-                    fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 26.sp.scaled())
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)) {
-                    StatChipStr("✓", "${state.correctCount}", Color(0xFF2E7D32))
-                    StatChipStr("✗", "${state.wrongCount}", Color(0xFFB71C1C))
-                    StatChipStr("🏆", "$best", ORANGE_BORDER)
-                }
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
-                    KidsActionButton(text = stringResource(R.string.balloon_play_again), type = ButtonType.POSITIVE,
-                        onClick = { if (enabled) onPlayAgain() })
-                    KidsActionButton(text = stringResource(R.string.balloon_back), type = ButtonType.NEGATIVE,
-                        onClick = { if (enabled) onBack() })
-                }
-            }
-
+    Box(
+        modifier = Modifier
+            .abPopIn(index * 60)
+            .abBounce(revealCorrect, 1.12f)
+            .abWobble(tappedWrong)
+            .graphicsLayer { scaleX = squash; scaleY = squash; alpha = fade }
+            .clickable(interactionSource = interaction, indication = null, onClick = onTap)
+    ) {
+        Box(
+            modifier = Modifier
+                .abToyTile(face, (18f * s).dp, 4.dp)
+                .padding(horizontal = (24f * s).dp, vertical = (8f * s).dp)
+                .widthIn(min = (64f * s).dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                option,
+                style = AbTypography.fixed(26f * s, FontWeight.Black).copy(shadow = Shadow(Color.Black.copy(alpha = 0.25f), Offset(0f, 3f), 0f)),
+                color = Color.White,
+                maxLines = 1, softWrap = false
+            )
+        }
+        // A tick on the right answer, a cross on a wrong tap.
+        if (revealCorrect || tappedWrong) {
+            val tint = if (revealCorrect) colors.accentGreen.abReadable(3f) else colors.danger.abReadable(3f)
             Box(
                 modifier = Modifier
-                    .offset(y = (-28).dp)
-                    .size(64.dp)
-                    .shadow(8.dp, CircleShape)
-                    .background(Color.White, CircleShape)
-                    .border(4.dp, Color.White, CircleShape),
+                    .align(Alignment.TopEnd)
+                    .offset(x = (8f * s).dp, y = (-8f * s).dp)
+                    .abPopIn()
+                    .size((24f * s).dp)
+                    .background(tint, CircleShape)
+                    .border(2.dp, Color.White, CircleShape),
                 contentAlignment = Alignment.Center
             ) {
-                Text("🕐", fontSize = 32.sp)
+                Icon(
+                    if (revealCorrect) Icons.Filled.Check else Icons.Filled.Close,
+                    contentDescription = null, tint = Color.White,
+                    modifier = Modifier.size((14f * s).dp)
+                )
             }
         }
     }
 }
 
 @Composable
-private fun StatChipStr(emoji: String, value: String, color: Color) {
-    Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4), verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.clip(RoundedCornerShape(100f)).background(Color.White)
-            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)) {
-        Text(emoji, color = color, fontSize = (16f * gameScale()).sp,
-            fontFamily = FontFamily(Font(R.font.font_extra_bold)))
-        Text(value, color = color, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 20.sp.scaled(),
-            maxLines = 1, softWrap = false)
-    }
-}
+private fun ResultOverlay(state: ClockMasterUiState, best: Int, onPlayAgain: () -> Unit, onBack: () -> Unit) {
+    val stars = state.starCount
+    var enabled by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) { delay(1000); enabled = true }
 
-@Composable
-private fun BigStar(earned: Boolean, sizeSp: Int, delayMs: Long) {
-    val scale = remember { Animatable(0.01f) }
-    LaunchedEffect(Unit) { delay(delayMs); scale.animateTo(1f, spring(dampingRatio = 0.5f)) }
-    Text("⭐", fontSize = (sizeSp * gameScale()).sp,
-        modifier = Modifier.graphicsLayer { scaleX = scale.value; scaleY = scale.value; alpha = if (earned) 1f else 0.35f })
+    Box(modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)), contentAlignment = Alignment.Center) {
+        LaunchedEffect(Unit) { if (stars >= 2) AudioPlayerManager.playSoundClap() else AudioPlayerManager.playSoundWin() }
+        GameResultCard(
+            title = stringResource(if (stars >= 2) R.string.balloon_great_job else R.string.good_try),
+            emoji = "🕐",
+            accent = ButtonType.GREEN,
+            stars = stars,
+            score = stringResource(R.string.balloon_final_score) + ": ${state.score}",
+            stats = {
+                Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                    GameStatChip("✅", "${state.correctCount}", Color(0xFF2E7D32))
+                    GameStatChip("❌", "${state.wrongCount}", Color(0xFFB71C1C))
+                    GameStatChip("🏆", "$best", ORANGE)
+                }
+            },
+            buttons = {
+                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
+                    GameButton(
+                        text = stringResource(R.string.balloon_play_again),
+                        icon = Icons.Filled.Refresh,
+                        type = if (enabled) ButtonType.POSITIVE else ButtonType.DISABLE,
+                        onClick = { if (enabled) onPlayAgain() }
+                    )
+                    GameHomeButton(onClick = { if (enabled) onBack() })
+                }
+            }
+        )
+    }
 }

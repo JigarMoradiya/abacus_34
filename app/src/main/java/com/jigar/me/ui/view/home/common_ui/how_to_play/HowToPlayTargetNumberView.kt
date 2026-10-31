@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.common_ui.how_to_play
 
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -36,6 +38,9 @@ import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.theme.getButtonColors
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abHowToCard
 
 @Composable
 fun HowToPlayTargetNumberView(
@@ -66,9 +71,7 @@ fun HowToPlayTargetNumberView(
             modifier = Modifier
                 .width(screenWidth * widthMultiplier)
                 .height(screenHeight * heightMultiplier)
-                .background(Color.White, RoundedCornerShape(AppDimens.Dimens20))
-                .border(AppDimens.Dimens4, accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20))
-                .padding(AppDimens.Dimens16)
+                .abHowToCard(ButtonType.ORANGE)
         ) {
 
             Column(modifier = Modifier.fillMaxSize()) {
@@ -80,7 +83,7 @@ fun HowToPlayTargetNumberView(
                 ) {
                     Text(
                         text = stringResource(R.string.target_the_number),
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                        fontFamily = AbTypography.Baloo,
                         fontSize = dimensionResource(R.dimen.textSize18).value.sp,
                         fontWeight = FontWeight.Bold,
                         color = accentColors.base
@@ -88,7 +91,7 @@ fun HowToPlayTargetNumberView(
 
                     Spacer(modifier = Modifier.weight(1f))
 
-                    KidsActionButton(
+                    GameButton(
                         text = stringResource(R.string.close),
                         type = ButtonType.ORANGE,
                         onClick = onClose,
@@ -115,7 +118,7 @@ fun HowToPlayTargetNumberView(
                             text = "👉 How it works:",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            fontFamily = AbTypography.Baloo,
                             modifier = Modifier.padding(top = AppDimens.Dimens8)
                         )
                     }
@@ -129,7 +132,7 @@ fun HowToPlayTargetNumberView(
                         Text(
                             text = "➕ Addition, ➖ Subtraction, ✖️ Multiplication, ➗ Division",
                             fontSize = 16.sp,
-                            fontFamily = FontFamily(Font(R.font.font_regular))
+                            fontFamily = AbTypography.Baloo
                         )
                     }
 
@@ -149,7 +152,7 @@ fun HowToPlayTargetNumberView(
                             text = "🧒 Example:",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            fontFamily = AbTypography.Baloo,
                             color = Color.Red,
                             modifier = Modifier.padding(top = AppDimens.Dimens8)
                         )
@@ -160,20 +163,20 @@ fun HowToPlayTargetNumberView(
                             modifier = Modifier.padding(start = AppDimens.Dimens16),
                             verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
                         ) {
-                            Text("Target: 26", fontFamily = FontFamily(Font(R.font.font_regular)))
-                            Text("Numbers: 4, 2 and 6", fontFamily = FontFamily(Font(R.font.font_regular)))
-                            Text("Operations : +  -  ×", fontFamily = FontFamily(Font(R.font.font_regular)))
-                            Text("You can do:", fontFamily = FontFamily(Font(R.font.font_regular)))
+                            Text("Target: 26", fontFamily = AbTypography.Baloo)
+                            Text("Numbers: 4, 2 and 6", fontFamily = AbTypography.Baloo)
+                            Text("Operations : +  -  ×", fontFamily = AbTypography.Baloo)
+                            Text("You can do:", fontFamily = AbTypography.Baloo)
 
                             Text(
                                 "4 × 6 = 24 ✔",
                                 fontSize = 16.sp,
-                                fontFamily = FontFamily(Font(R.font.font_bold))
+                                fontFamily = AbTypography.Baloo
                             )
                             Text(
                                 "then 24 + 2 = 26 ✔",
                                 fontSize = 16.sp,
-                                fontFamily = FontFamily(Font(R.font.font_bold))
+                                fontFamily = AbTypography.Baloo
                             )
                         }
                     }
@@ -187,7 +190,7 @@ fun HowToPlayTargetNumberView(
                             text = "👨‍👩‍👧 How It Helps:",
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            fontFamily = AbTypography.Baloo,
                             modifier = Modifier.padding(top = AppDimens.Dimens12)
                         )
                     }
@@ -222,7 +225,7 @@ fun HowToPlayTargetNumberView(
                             text = "❤️ Why This Game Matters:",
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            fontFamily = AbTypography.Baloo,
                             modifier = Modifier.padding(top = AppDimens.Dimens12)
                         )
                     }

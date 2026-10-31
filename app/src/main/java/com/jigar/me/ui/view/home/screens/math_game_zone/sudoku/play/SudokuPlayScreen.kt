@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play
 
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+
 import com.jigar.me.ui.view.home.navigation.safePopBackStack
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -61,6 +63,14 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.dialogs.CommonLoadingView
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abReadable
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameHomeButton
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameResultCard
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameStatChip
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.components.SudokuNumberPad
 import com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.components.SudokuBoard
@@ -100,8 +110,10 @@ fun SudokuPlayScreen(
 
                 Box(
                     modifier = Modifier
-                        .fillMaxHeight()
-                        .aspectRatio(1f),
+                        // the room UNDER the header (fillMaxHeight() was the whole column, so the board ran past the bottom edge)
+                        .weight(1f)
+                        .aspectRatio(1f, matchHeightConstraintsFirst = true)
+                        .padding(bottom = Dimens12),
                     contentAlignment = Alignment.Center
                 ) {
                     SudokuBoard(vm = vm, modifier = Modifier.fillMaxSize())
@@ -121,26 +133,28 @@ fun SudokuPlayScreen(
 
                 Spacer(Modifier.height(Dimens12))
 
+                // the line under the keypad keeps its height even when empty, so nothing jumps
+                val colors = LocalAbColors.current
+                val s = LocalAbScale.current.factor
+                val messageColor: Color = if (colors.isDark) colors.danger else colors.danger.abReadable(4.5f)
                 if (vm.message.isNullOrEmpty()) {
                     Text(
                         "",
-                        color = Color.Red,
-                        style = MaterialTheme.typography.labelSmall.scaled(),
-                        fontWeight = FontWeight.Bold
+                        color = messageColor,
+                        style = AbTypography.fixed(15f * s, FontWeight.ExtraBold)
                     )
                 } else {
                     Text(
                         vm.message ?: "",
-                        color = Color.Red,
-                        style = MaterialTheme.typography.labelSmall.scaled(),
-                        fontWeight = FontWeight.Bold
+                        color = messageColor,
+                        style = AbTypography.fixed(15f * s, FontWeight.ExtraBold)
                     )
                 }
 
                 Spacer(Modifier.height(Dimens4))
 
                 Row {
-                    KidsActionButton(
+                    GameButton(
                         text = if (vm.showCandidates) stringResource(R.string.hide_options) else stringResource(R.string.show_options),
                         icon = if (vm.showCandidates) Icons.Filled.VisibilityOff else Icons.Filled.Visibility,
                         type = ButtonType.TEAL,
@@ -150,7 +164,7 @@ fun SudokuPlayScreen(
 
                     Spacer(Modifier.width(Dimens8))
 
-                    KidsActionButton(
+                    GameButton(
                         text = "Hint ${vm.hintUsed}/${vm.hintLimit}",
                         icon = Icons.Filled.Lightbulb,
                         type = ButtonType.ORANGE,
@@ -160,7 +174,7 @@ fun SudokuPlayScreen(
 
                     Spacer(Modifier.width(Dimens8))
 
-                    KidsActionButton(
+                    GameButton(
                         text = stringResource(R.string.restart),
                         icon = Icons.Filled.Refresh,
                         type = ButtonType.PINK,
@@ -187,11 +201,26 @@ fun SudokuPlayScreen(
             }
         )
     }
+
+    // Debug builds only: lets the lead render the real result overlay without playing (`--ez ab_show_result true`).
+    if (AbDebugFlags.showResultEnabled && !vm.isSolved) {
+        SudokuResultOverlay(
+            hintUsed = vm.hintUsed,
+            hintLimit = vm.hintLimit,
+            onPlayAgain = {
+                vm.isSolved = false
+                vm.loadNewPuzzle(size, difficulty)
+            },
+            onBack = {
+                vm.isSolved = false
+                navController.safePopBackStack()
+            }
+        )
+    }
 }
 
-// "Candy Pop" celebration card — matches Number Snake's result popup style
-// (gradient card, white badge overlapping the top edge, two symmetric filled
-// buttons) instead of the generic CustomPopupView celebration theme.
+// "Candy Pop" celebration: the shared Game Zone result card (glossy orange panel, bouncing brain badge, three stars, confetti).
+// The scrim, the clap sound and the 1 second button delay are the game's own and stay exactly as they were.
 @Composable
 private fun SudokuResultOverlay(
     hintUsed: Int,
@@ -199,72 +228,44 @@ private fun SudokuResultOverlay(
     onPlayAgain: () -> Unit,
     onBack: () -> Unit
 ) {
-    val accentColors = getButtonColors(ButtonType.ORANGE)
+    val s = LocalAbScale.current.factor
     var enabled by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) { delay(1000); enabled = true }
 
     Box(modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)), contentAlignment = Alignment.Center) {
         LaunchedEffect(Unit) { AudioPlayerManager.playSoundClap() }
-        Box(modifier = Modifier.fillMaxWidth(0.6f), contentAlignment = Alignment.TopCenter) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .shadow(20.dp, RoundedCornerShape(AppDimens.Dimens20 * 1.2f), ambientColor = accentColors.base, spotColor = accentColors.base)
-                    .background(accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20 * 1.2f))
-                    .padding(horizontal = AppDimens.Dimens30, vertical = AppDimens.Dimens20),
-                horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
-            ) {
-                Spacer(Modifier.height(AppDimens.Dimens20))
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text("🧠", fontSize = (28f * gameScale()).sp)
+        GameResultCard(
+            title = stringResource(R.string.you_are_a_genius),
+            emoji = "🧠",
+            accent = ButtonType.ORANGE,
+            stars = 3,
+            stats = {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)
+                ) {
                     Text(
-                        stringResource(R.string.you_are_a_genius),
+                        stringResource(R.string.you_completed_this_sudoku),
                         color = Color.White,
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                        fontSize = 26.sp.scaled(),
-                        style = TextStyle(shadow = Shadow(color = accentColors.base.copy(alpha = 0.9f), offset = Offset(1.5f, 1.5f), blurRadius = 0f)),
-                        modifier = Modifier.padding(horizontal = AppDimens.Dimens8)
+                        style = AbTypography.fixed(18f * s, FontWeight.ExtraBold).copy(
+                            shadow = Shadow(Color.Black.copy(alpha = 0.22f), Offset(0f, 3f), 0f)
+                        ),
+                        textAlign = TextAlign.Center
                     )
-                    Text("🧠", fontSize = (28f * gameScale()).sp)
+                    GameStatChip(emoji = "💡", value = "Hints used: $hintUsed/$hintLimit", color = Color(0xFFB45309))
                 }
-                Text(
-                    stringResource(R.string.you_completed_this_sudoku),
-                    color = Color.White,
-                    fontFamily = FontFamily(Font(R.font.font_semibold)),
-                    fontSize = 18.sp.scaled(),
-                    textAlign = TextAlign.Center
-                )
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4), verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.clip(RoundedCornerShape(100f)).background(Color.White)
-                        .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)) {
-                    Text("💡", fontSize = (16f * gameScale()).sp)
-                    Text(
-                        "Hints used: $hintUsed/$hintLimit",
-                        color = accentColors.base,
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                        fontSize = 16.sp.scaled(),
-                        maxLines = 1
-                    )
-                }
+            },
+            buttons = {
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
-                    KidsActionButton(text = stringResource(R.string.play_again), type = ButtonType.POSITIVE,
-                        onClick = { if (enabled) onPlayAgain() })
-                    KidsActionButton(text = stringResource(R.string.no_i_want_to_close), type = ButtonType.NEGATIVE,
-                        onClick = { if (enabled) onBack() })
+                    GameButton(
+                        text = stringResource(R.string.play_again),
+                        icon = Icons.Filled.Refresh,
+                        type = ButtonType.POSITIVE,
+                        onClick = { if (enabled) onPlayAgain() }
+                    )
+                    GameHomeButton(onClick = { if (enabled) onBack() })
                 }
             }
-
-            Box(
-                modifier = Modifier
-                    .offset(y = (-28).dp)
-                    .size(64.dp)
-                    .shadow(8.dp, CircleShape)
-                    .background(Color.White, CircleShape)
-                    .border(4.dp, Color.White, CircleShape),
-                contentAlignment = Alignment.Center
-            ) {
-                Text("🧠", fontSize = (32f * gameScale()).sp)
-            }
-        }
+        )
     }
 }

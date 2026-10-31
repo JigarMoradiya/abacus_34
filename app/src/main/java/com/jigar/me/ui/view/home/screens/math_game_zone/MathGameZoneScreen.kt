@@ -27,6 +27,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -44,23 +45,37 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.min
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.ab.AbShapes
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abChunkyFace
+import com.jigar.me.ui.view.ab.abDarkened
+import com.jigar.me.ui.view.ab.abReadable
+import com.jigar.me.ui.view.ab.abSquash
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGamePill
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.PrimaryBlue
 import kotlinx.coroutines.delay
@@ -194,21 +209,21 @@ fun MathGameZoneScreen(
             // Trophy Room door — a bouncing golden cup.
             TrophyButton(onClick = onTrophyRoom)
             // Playful header hint
+            val hintColors = LocalAbColors.current
+            val hintScale = LocalAbScale.current.factor
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
                 modifier = Modifier
                     .padding(end = AppDimens.Dimens16)
-                    .background(Color.White.copy(alpha = 0.85f), CircleShape)
-                    .border(1.5.dp, PrimaryBlue.copy(alpha = 0.3f), CircleShape)
+                    .abGamePill()
                     .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)
             ) {
-                Text(text = "🎮", style = MaterialTheme.typography.labelMedium.scaled())
+                Text(text = "🎮", fontSize = (14f * hintScale).sp)
                 Text(
                     text = stringResource(R.string.pick_a_game_have_fun),
-                    color = PrimaryBlue.copy(alpha = 0.9f),
-                    fontFamily = FontFamily(Font(R.font.font_bold)),
-                    style = MaterialTheme.typography.labelMedium.scaled()
+                    color = hintColors.brandPrimary.copy(alpha = 0.9f),
+                    style = AbTypography.fixed(12f * hintScale, FontWeight.Bold)
                 )
             }
         }
@@ -291,7 +306,8 @@ fun MathGameZoneScreen(
     }
 }
 
-// A sunny card announcing today's featured game, with the streak flame.
+// A sunny chunky card announcing today's featured game, with the streak flame: an orange gradient with a white rim and a
+// darker 3D bottom edge (the kit's look).
 @Composable
 private fun DailyChallengeBanner(
     daily: DailyChallenge,
@@ -299,47 +315,57 @@ private fun DailyChallengeBanner(
     hPad: Dp,
     onPlay: () -> Unit
 ) {
+    val s = LocalAbScale.current.factor
     val t by rememberInfiniteTransition(label = "sun").animateFloat(
         initialValue = 0f, targetValue = (2.0 * PI).toFloat(),
         animationSpec = infiniteRepeatable(tween(2400, easing = LinearEasing)),
         label = "sun"
     )
+    val corner = AppDimens.Dimens16
+    val shape = RoundedCornerShape(corner)
+    val edge = 4.dp
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10),
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = hPad)
-            .shadow(AppDimens.Dimens4, RoundedCornerShape(AppDimens.Dimens16),
-                ambientColor = Color(0xFFFF7043), spotColor = Color(0xFFFF7043))
+            .padding(bottom = edge)
+            .drawBehind {
+                // the kit's 3D bottom edge
+                drawRoundRect(
+                    color = Color(0xFF9A3412),
+                    topLeft = Offset(0f, edge.toPx()),
+                    size = this.size,
+                    cornerRadius = CornerRadius(corner.toPx())
+                )
+            }
             .background(
-                Brush.horizontalGradient(listOf(Color(0xFFFFB300), Color(0xFFFF7043))),
-                RoundedCornerShape(AppDimens.Dimens16)
+                Brush.horizontalGradient(listOf(Color(0xFFF97316), Color(0xFFEA580C))),
+                shape
             )
-            .border(2.dp, Color.White.copy(alpha = 0.7f), RoundedCornerShape(AppDimens.Dimens16))
+            .border(2.dp, Color.White.copy(alpha = 0.45f), shape)
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = null
             ) { onPlay() }
-            .padding(horizontal = AppDimens.Dimens14, vertical = AppDimens.Dimens8)
+            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8)
     ) {
         Text(
             "🌞",
-            style = MaterialTheme.typography.headlineSmall.scaled(),
+            fontSize = (22f * s).sp,
             modifier = Modifier.graphicsLayer { rotationZ = sin(t) * 12f }
         )
         Column {
             Text(
                 stringResource(R.string.daily_challenge),
                 color = Color.White.copy(alpha = 0.9f),
-                fontFamily = FontFamily(Font(R.font.font_bold)),
-                style = MaterialTheme.typography.labelSmall.scaled()
+                style = AbTypography.fixed(11f * s, FontWeight.Bold)
             )
             Text(
                 gameTitle,
                 color = Color.White, maxLines = 1, softWrap = false,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                style = MaterialTheme.typography.titleSmall.scaled()
+                style = AbTypography.fixed(16f * s, FontWeight.ExtraBold)
             )
         }
         Spacer(Modifier.weight(1f))
@@ -347,8 +373,7 @@ private fun DailyChallengeBanner(
             Text(
                 "🔥${daily.streak}",
                 color = Color.White,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                style = MaterialTheme.typography.labelLarge.scaled(),
+                style = AbTypography.fixed(14f * s, FontWeight.ExtraBold),
                 modifier = Modifier
                     .background(Color.Black.copy(alpha = 0.2f), CircleShape)
                     .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
@@ -357,8 +382,7 @@ private fun DailyChallengeBanner(
         Text(
             stringResource(if (daily.playedToday) R.string.daily_done else R.string.daily_play),
             color = if (daily.playedToday) Color(0xFF2E7D32) else Color(0xFFE65100),
-            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-            style = MaterialTheme.typography.labelLarge.scaled(),
+            style = AbTypography.fixed(14f * s, FontWeight.ExtraBold),
             modifier = Modifier
                 .graphicsLayer {
                     if (!daily.playedToday) {
@@ -372,33 +396,36 @@ private fun DailyChallengeBanner(
     }
 }
 
-// A little golden cup that bounces to invite kids into the Trophy Room.
+// A little golden cup that bounces to invite kids into the Trophy Room: a chunky gold pill with a 3D edge.
 @Composable
 private fun TrophyButton(onClick: () -> Unit) {
+    val s = LocalAbScale.current.factor
     val t by rememberInfiniteTransition(label = "cup").animateFloat(
         initialValue = 0f, targetValue = (2.0 * PI).toFloat(),
         animationSpec = infiniteRepeatable(tween(1800, easing = LinearEasing)),
         label = "cup"
     )
+    val face = Color(0xFFF59E0B).abReadable(3f)
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4),
         modifier = Modifier
             .padding(end = AppDimens.Dimens10)
-            .background(
-                Brush.horizontalGradient(listOf(Color(0xFFFFD54F), Color(0xFFFFA000))),
-                CircleShape
+            // silent: the route plays the click for this door itself
+            .abSquash(
+                face = face,
+                edge = face.abDarkened(0.3f),
+                stroke = null,
+                cornerRadius = AbShapes.pill,
+                edgeHeight = 3.dp * s,
+                sound = null,
+                onClick = onClick
             )
-            .border(2.dp, Color.White.copy(alpha = 0.7f), CircleShape)
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = null
-            ) { onClick() }
             .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens4)
     ) {
         Text(
             "🏆",
-            style = MaterialTheme.typography.labelLarge.scaled(),
+            fontSize = (13f * s).sp,
             modifier = Modifier.graphicsLayer {
                 translationY = sin(t) * 1.5.dp.toPx()
                 rotationZ = sin(t * 0.5f) * 6f
@@ -407,8 +434,7 @@ private fun TrophyButton(onClick: () -> Unit) {
         Text(
             stringResource(R.string.trophy_room),
             color = Color.White,
-            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-            style = MaterialTheme.typography.labelMedium.scaled()
+            style = AbTypography.fixed(12f * s, FontWeight.ExtraBold)
         )
     }
 }
@@ -422,6 +448,8 @@ private data class GameSection(
 
 @Composable
 private fun SectionHeader(section: GameSection, hPad: Dp) {
+    val s = LocalAbScale.current.factor
+    val face = section.accent.abReadable(3f)
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10),
@@ -430,27 +458,19 @@ private fun SectionHeader(section: GameSection, hPad: Dp) {
             .padding(horizontal = hPad)
             .padding(bottom = AppDimens.Dimens6)
     ) {
-        // Playful sticker-style badge: gradient capsule, white outline,
-        // tilted a touch like it was slapped on by hand.
+        // Chunky category chip: the section colour as a face with a darker 3D edge (no tilt).
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
             modifier = Modifier
-                .graphicsLayer { rotationZ = -1.5f }
-                .shadow(AppDimens.Dimens4, CircleShape, ambientColor = section.accent, spotColor = section.accent)
-                .background(
-                    Brush.horizontalGradient(listOf(section.accent.copy(alpha = 0.8f), section.accent)),
-                    CircleShape
-                )
-                .border(2.dp, Color.White.copy(alpha = 0.65f), CircleShape)
+                .abChunkyFace(face, face.abDarkened(0.3f), null, AbShapes.pill, 3.dp * s)
                 .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens4)
         ) {
-            Text(text = section.emoji, style = MaterialTheme.typography.labelLarge.scaled())
+            Text(text = section.emoji, fontSize = (14f * s).sp)
             Text(
                 text = section.title,
                 color = Color.White,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                style = MaterialTheme.typography.labelLarge.scaled()
+                style = AbTypography.fixed(14f * s, FontWeight.ExtraBold)
             )
         }
         // Soft rule line carrying the category color across the row.
@@ -472,9 +492,12 @@ private fun GameZoneCard(
     badge: String? = null,
     onClick: () -> Unit
 ) {
+    val s = LocalAbScale.current.factor
     val style = gameCardStyle(category.type)
     val corner = min(width, height) * 0.16f
     val shape = RoundedCornerShape(corner)
+    // the kit's 3D bottom edge under the card
+    val edge: Dp = maxOf(4.dp, height * 0.04f)
     // Disc = iconArea * 1.28 must stay well inside the flexible icon zone
     // (0.69 x height) even while bobbing — 0.38 leaves clear air above.
     val iconArea = min(width * 0.62f, height * 0.38f)
@@ -503,108 +526,108 @@ private fun GameZoneCard(
         label = "appearAlpha"
     )
 
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
+    Box(
         modifier = Modifier
-            .size(width = width, height = height)
+            .size(width = width, height = height + edge)
             .graphicsLayer {
                 val scale = pressScale * appearScale
                 scaleX = scale
                 scaleY = scale
                 alpha = appearAlpha
-                // Sticker-book feel: neighbors lean opposite ways a touch.
-                rotationZ = ((appearIndex % 3) - 1) * 1.2f
             }
-            .shadow(
-                elevation = AppDimens.Dimens6,
-                shape = shape,
-                ambientColor = style.dark,
-                spotColor = style.dark
-            )
-            .background(
-                brush = Brush.verticalGradient(listOf(style.light, style.dark)),
-                shape = shape
-            )
-            .border(2.dp, Color.White.copy(alpha = 0.7f), shape)
             .clickable(
                 interactionSource = interactionSource,
                 indication = null
             ) { onClick() }
     ) {
-        // Icon zone takes the flexible space so every card's icon sits at
-        // the same height, no matter how the title below wraps. Centered:
-        // the bob animation keeps an even margin to the title below.
+        // the darker bottom edge: the same shape, pushed down
         Box(
-            modifier = Modifier.weight(1f).fillMaxWidth(),
-            contentAlignment = Alignment.Center
-        ) {
-            // Progress badge: total stars (roadmap games) or best score.
-            if (badge != null) {
-                Text(
-                    text = badge,
-                    color = Color.White,
-                    maxLines = 1,
-                    softWrap = false,
-                    fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                    style = MaterialTheme.typography.labelSmall.scaled(),
-                    modifier = Modifier
-                        .align(Alignment.TopStart)
-                        .padding(start = AppDimens.Dimens6, top = AppDimens.Dimens6)
-                        .background(Color.Black.copy(alpha = 0.22f), CircleShape)
-                        .padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens2)
-                )
-            }
-            // Programmatic icon on a soft white disc — always in gentle
-            // motion: a slow float + sway, phase-shifted per card so
-            // neighbors don't bob in sync.
-            val bob by rememberInfiniteTransition(label = "bob").animateFloat(
-                initialValue = 0f, targetValue = (2.0 * PI).toFloat(),
-                animationSpec = infiniteRepeatable(tween(2600, easing = LinearEasing)),
-                label = "bob"
-            )
-            val phase = appearIndex * 0.9f
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier
-                    .graphicsLayer {
-                        translationY = sin(bob + phase) * 2.dp.toPx()
-                        rotationZ = sin(bob * 0.5f + phase) * 3f
-                    }
-                    .size(iconArea * 1.28f)
-                    .background(Color.White.copy(alpha = 0.18f), CircleShape)
-            ) {
-                GameTileIcon(type = category.type, size = iconArea, tint = style.tint)
-            }
-        }
-
-        // Fixed-height text zone: title starts right under the icon. Both
-        // lines are single-line and auto-shrink to fit the card width, so
-        // nothing can wrap past the card edge or get clipped by the shadow
-        // shape (dp-fixed zone vs sp-sized text was cutting 2-line titles).
+            modifier = Modifier
+                .size(width = width, height = height)
+                .offset(y = edge)
+                .background(style.dark.abDarkened(0.3f), shape)
+        )
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top,
+            verticalArrangement = Arrangement.Center,
             modifier = Modifier
-                .height(height * 0.30f)
-                .padding(horizontal = width * 0.06f)
+                .size(width = width, height = height)
+                .background(
+                    brush = Brush.verticalGradient(listOf(style.light, style.dark)),
+                    shape = shape
+                )
+                .border(2.dp, Color.White.copy(alpha = 0.45f), shape)
         ) {
-            AutoShrinkText(
-                text = category.title,
-                color = Color.White,
-                fontResId = R.font.font_extra_bold,
-                style = if (DeviceInfo.isTablet) MaterialTheme.typography.titleSmall.scaled()
-                else MaterialTheme.typography.labelMedium.scaled()
-            )
+            // Icon zone takes the flexible space so every card's icon sits at
+            // the same height, no matter how the title below wraps. Centered:
+            // the bob animation keeps an even margin to the title below.
+            Box(
+                modifier = Modifier.weight(1f).fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ) {
+                // Progress badge: total stars (roadmap games) or best score.
+                if (badge != null) {
+                    Text(
+                        text = badge,
+                        color = Color.White,
+                        maxLines = 1,
+                        softWrap = false,
+                        style = AbTypography.fixed(11f * s, FontWeight.ExtraBold),
+                        modifier = Modifier
+                            .align(Alignment.TopStart)
+                            .padding(start = AppDimens.Dimens6, top = AppDimens.Dimens6)
+                            .background(Color.Black.copy(alpha = 0.22f), CircleShape)
+                            .padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens2)
+                    )
+                }
+                // Programmatic icon on a soft white disc — always in gentle
+                // motion: a slow float + sway, phase-shifted per card so
+                // neighbors don't bob in sync.
+                val bob by rememberInfiniteTransition(label = "bob").animateFloat(
+                    initialValue = 0f, targetValue = (2.0 * PI).toFloat(),
+                    animationSpec = infiniteRepeatable(tween(2600, easing = LinearEasing)),
+                    label = "bob"
+                )
+                val phase = appearIndex * 0.9f
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .graphicsLayer {
+                            translationY = sin(bob + phase) * 2.dp.toPx()
+                            rotationZ = sin(bob * 0.5f + phase) * 3f
+                        }
+                        .size(iconArea * 1.28f)
+                        .background(Color.White.copy(alpha = 0.18f), CircleShape)
+                ) {
+                    GameTileIcon(type = category.type, size = iconArea, tint = style.tint)
+                }
+            }
 
-            AutoShrinkText(
-                text = category.desc,
-                color = Color.White.copy(alpha = 0.85f),
-                fontResId = R.font.font_bold,
-                style = MaterialTheme.typography.labelSmall.scaled()
-            )
+            // Fixed-height text zone: title starts right under the icon. Both
+            // lines are single-line and auto-shrink to fit the card width, so
+            // nothing can wrap past the card edge or get clipped by the shadow
+            // shape (dp-fixed zone vs sp-sized text was cutting 2-line titles).
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Top,
+                modifier = Modifier
+                    .height(height * 0.30f)
+                    .padding(horizontal = width * 0.06f)
+            ) {
+                AutoShrinkText(
+                    text = category.title,
+                    color = Color.White,
+                    style = AbTypography.fixed(if (DeviceInfo.isTablet) 16f * s else 12f * s, FontWeight.ExtraBold)
+                )
+
+                AutoShrinkText(
+                    text = category.desc,
+                    color = Color.White.copy(alpha = 0.85f),
+                    style = AbTypography.fixed(11f * s, FontWeight.Bold)
+                )
+            }
+            Spacer(Modifier.height(height * 0.03f))
         }
-        Spacer(Modifier.height(height * 0.03f))
     }
 }
 
@@ -615,7 +638,6 @@ private fun GameZoneCard(
 private fun AutoShrinkText(
     text: String,
     color: Color,
-    fontResId: Int,
     style: androidx.compose.ui.text.TextStyle
 ) {
     var scale by remember(text) { mutableStateOf(1f) }
@@ -625,9 +647,9 @@ private fun AutoShrinkText(
         textAlign = TextAlign.Center,
         maxLines = 1,
         softWrap = false,
-        fontFamily = FontFamily(Font(fontResId)),
         style = style,
         fontSize = style.fontSize * scale,
+        lineHeight = style.lineHeight * scale,
         onTextLayout = { if (it.hasVisualOverflow && scale > 0.55f) scale *= 0.93f }
     )
 }

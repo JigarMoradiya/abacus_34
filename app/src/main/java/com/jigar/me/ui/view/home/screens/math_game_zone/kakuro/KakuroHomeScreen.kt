@@ -34,7 +34,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.HelpOutline
 import androidx.compose.material3.Text
@@ -46,27 +45,36 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathEffect
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abDarkened
+import com.jigar.me.ui.view.ab.abReadable
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.DifficultyPillBox
 import com.jigar.me.ui.view.home.common_ui.DifficultyPillItem
-import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
 import com.jigar.me.ui.view.home.common_ui.how_to_play.HowToPlayKakuroView
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGamePill
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abPopIn
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
 import com.jigar.me.ui.view.home.screens.math_game_zone.kakuro.components.KakuroConfig
 import com.jigar.me.ui.view.home.screens.math_game_zone.kakuro.components.KakuroHomeViewModel
@@ -75,8 +83,6 @@ import com.jigar.me.ui.view.home.theme.ButtonType
 import kotlin.math.sin
 
 private val ORANGE = Color(0xFFE65100)
-private val NODE_DONE = Color(0xFF78909C)
-private val NODE_NEXT = Color(0xFF455A64)
 private val NODE_LOCKED = Color(0xFFB0BEC5)
 private val PATH_COLOR = Color(0xFFB0BEC5)
 
@@ -91,6 +97,7 @@ fun KakuroHomeScreen(
     val progressVersion by viewModel.progressVersion.collectAsStateWithLifecycle()
     var showHelp by remember { mutableStateOf(false) }
     val s = gameScale()
+    val kitScale = LocalAbScale.current.factor
 
     val stars = remember(selectedDifficulty, progressVersion) {
         viewModel.progress.stars(selectedDifficulty)
@@ -105,8 +112,10 @@ fun KakuroHomeScreen(
 
             Text(
                 text = stringResource(R.string.kakuro_tagline),
-                color = ORANGE, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 22.sp.scaled(),
-                modifier = Modifier.clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.85f))
+                color = ORANGE,
+                style = AbTypography.fixed(22f * kitScale, FontWeight.ExtraBold),
+                textAlign = TextAlign.Center,
+                modifier = Modifier.abGamePill()
                     .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
             )
 
@@ -142,7 +151,7 @@ fun KakuroHomeScreen(
                 title = stringResource(R.string.kakuro),
                 modifier = Modifier.weight(1f), onBackClick = onBackClick
             )
-            KidsActionButton(
+            GameButton(
                 modifier = Modifier.padding(end = AppDimens.Dimens16),
                 text = stringResource(R.string.how_to_play),
                 icon = Icons.AutoMirrored.Filled.HelpOutline, type = ButtonType.PINK, isSmall = true,
@@ -165,6 +174,7 @@ private fun RoadmapPath(
     modifier: Modifier = Modifier,
     onLevelClick: (Int) -> Unit
 ) {
+    val colors = LocalAbColors.current
     val scrollState = rememberScrollState()
     val density = LocalDensity.current
     val nodeSize = (46f * s).dp
@@ -219,6 +229,14 @@ private fun RoadmapPath(
                 val unlocked = level == 1 || stars[i - 1] > 0
                 val isNext = unlocked && !done && level == nextLevel
 
+                // candy level buttons: green when finished, orange for the one to play next, indigo when open, grey when locked
+                val face = when {
+                    !unlocked -> NODE_LOCKED
+                    done -> colors.accentGreen.abReadable(3f)
+                    isNext -> colors.accentOrange.abReadable(3f)
+                    else -> colors.brandPrimary.abReadable(3f)
+                }
+
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier
@@ -228,26 +246,43 @@ private fun RoadmapPath(
                     Box(
                         contentAlignment = Alignment.Center,
                         modifier = Modifier
+                            .abPopIn(minOf(400, level * 30))
                             .graphicsLayer {
                                 if (isNext) { scaleX = pulse; scaleY = pulse }
                             }
                             .size(nodeSize)
-                            .clip(CircleShape)
-                            .background(if (unlocked) (if (done) NODE_DONE else NODE_NEXT) else NODE_LOCKED)
-                            .border(3.dp, Color.White, CircleShape)
+                            .drawBehind {
+                                drawCircle(
+                                    color = face.abDarkened(0.3f),
+                                    radius = size.minDimension / 2f,
+                                    center = Offset(size.width / 2f, size.height / 2f + 3f * s * this.density)
+                                )
+                            }
                             .clickable(
                                 interactionSource = remember { MutableInteractionSource() },
                                 indication = null,
                                 enabled = unlocked
                             ) { onLevelClick(level) }
+                            .background(face, CircleShape)
+                            .drawBehind {
+                                drawCircle(
+                                    brush = Brush.verticalGradient(
+                                        listOf(Color.White.copy(alpha = 0.38f), Color.Transparent),
+                                        startY = 0f, endY = size.height / 2f
+                                    )
+                                )
+                            }
+                            .border(3.dp, Color.White, CircleShape)
                     ) {
                         Text(
                             text = if (unlocked) "$level" else "🔒",
                             color = Color.White,
-                            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                            fontSize = (18f * s).sp
+                            style = AbTypography.fixed(20f * s, FontWeight.Black).copy(
+                                shadow = Shadow(Color.Black.copy(alpha = 0.25f), Offset(0f, 3f), 0f)
+                            )
                         )
                     }
+                    Spacer(Modifier.height(2.dp))
                     NodeStars(count = stars[i], s = s)
                 }
             }

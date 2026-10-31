@@ -1,5 +1,9 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.number_sequence_puzzle.home
 
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameHomeLayout
+
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+
 import com.jigar.me.ui.view.home.theme.AppDimens
 
 import androidx.compose.animation.AnimatedVisibility
@@ -53,12 +57,21 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.nativeCanvas
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.res.ResourcesCompat
+import androidx.compose.ui.graphics.drawscope.Stroke
+import com.jigar.me.ui.jetpack.utils.ui.extensions.appScale
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.abDarkened
+import com.jigar.me.ui.view.ab.abReadable
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abPopIn
 import androidx.navigation.NavController
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DeviceInfo
@@ -71,6 +84,8 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.SudokuHomeIconsBox
 import com.jigar.me.ui.view.home.theme.ButtonType
 import kotlin.math.PI
+import kotlin.math.cos
+import kotlin.math.exp
 import kotlin.math.sin
 
 @Composable
@@ -88,9 +103,10 @@ fun NumberSequencePuzzleHomeJetpackScreen(
     Box(
         modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        GameHomeLayout(
+            header = {Row(verticalAlignment = Alignment.CenterVertically) {
             BackButtonWithText(title = stringResource(R.string.number_sequence_puzzle), modifier = Modifier.weight(1f),onBackClick = onBackClick)
-            KidsActionButton(
+            GameButton(
                 modifier = Modifier.padding(end = Dimens16),
                 text = stringResource(R.string.how_to_play),
                 icon = Icons.AutoMirrored.Filled.HelpOutline,
@@ -100,12 +116,9 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                     showHelp = true
                 }
             )
-        }
-
-        Column(
-            modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally
+        }},
+            bottom = {},
         ) {
-            Spacer(Modifier.weight(1f))
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
@@ -117,16 +130,14 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                     color = Color(0xFF2196F3),
                     multicolor = true,
                     modifier = Modifier
-                        .fillMaxHeight(if (DeviceInfo.isTablet) 0.4f else 0.35f)
-                        .aspectRatio(1f)
+                        .size((androidx.compose.ui.platform.LocalConfiguration.current.screenHeightDp * (if (DeviceInfo.isTablet) 0.34f else 0.26f)).dp)
                 )
 
                 Text(
                     text = stringResource(R.string.select_the_puzzle_dashboard),
-                    fontFamily = FontFamily(Font(R.font.font_bold)),
-                    color = colorResource(id = R.color.colorBlueDark),
+                    color = LocalAbColors.current.textPrimary,
                     textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.titleLarge.scaled(),
+                    style = AbTypography.fixed(22f * appScale(), FontWeight.Bold),
                     modifier = Modifier.padding(top = Dimens16)
                 )
                 Row(
@@ -163,8 +174,7 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                 }
             }
 
-            Spacer(Modifier.weight(1f))
-        }
+            }
 
     }
     AnimatedVisibility(
@@ -191,14 +201,18 @@ fun PuzzleOptionView(
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.clickable { onClick() }
+        modifier = Modifier
+            .clickable { onClick() }
+            .abPopIn((gridSize - 3) * 120 + 100)
     ) {
         Box(contentAlignment = Alignment.TopEnd) {
             SlidingPuzzleIcon(
                 gridSize = gridSize,
                 color = color,
                 locked = isLocked,
-                modifier = Modifier.size(boxSize)
+                modifier = Modifier
+                    .size(boxSize)
+                    .graphicsLayer { alpha = if (isLocked) 0.5f else 1f }
             )
 
             if (isLocked) {
@@ -206,13 +220,13 @@ fun PuzzleOptionView(
                     modifier = Modifier
                         .offset(x = AppDimens.Dimens4, y = (-AppDimens.Dimens4))
                         .size(AppDimens.Dimens18)
-                        .background(Color(0xFFFF9800), CircleShape),
+                        .background(Color.White.copy(alpha = 0.9f), CircleShape),
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
                         imageVector = Icons.Default.Lock,
                         contentDescription = null,
-                        tint = Color.White,
+                        tint = ColorYellowOrange,
                         modifier = Modifier.size(AppDimens.Dimens10)
                     )
                 }
@@ -221,8 +235,7 @@ fun PuzzleOptionView(
 
         Text(
             text = "$gridSize x $gridSize Puzzle",
-            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-            style = MaterialTheme.typography.labelLarge.scaled(),
+            style = AbTypography.fixed(16f * appScale(), FontWeight.ExtraBold),
             color = displayColor,
             modifier = Modifier.padding(top = AppDimens.Dimens8)
         )
@@ -230,18 +243,27 @@ fun PuzzleOptionView(
         if (!isLocked && solved > 0) {
             Text(
                 text = "🧩 " + stringResource(R.string.zone_solved_count, solved),
-                fontFamily = FontFamily(Font(R.font.font_bold)),
-                style = MaterialTheme.typography.labelSmall.scaled(),
+                style = AbTypography.fixed(11f * appScale(), FontWeight.Bold),
                 color = displayColor.copy(alpha = 0.85f)
             )
         }
     }
 }
 
-// A real sliding number puzzle drawn in code: colored tiles 1..n²-1 with the
-// bottom-right corner open. One tile keeps sliding into the gap and back —
-// exactly the motion of the actual game — while the whole board sways
-// gently (phase-shifted per size so the three previews don't move in sync).
+private fun puzzleEaseInOut(x: Float): Float =
+    if (x < 0.5f) 2f * x * x else 1f - (-2f * x + 2f).let { it * it } / 2f
+
+// 0 -> 1 with a small springy overshoot that settles (the tile bounces into the gap).
+private fun puzzleSpringOut(x: Float): Float {
+    val clamped = x.coerceIn(0f, 1f)
+    val value = 1f - exp(-6f * clamped) * cos(9f * clamped)
+    return minOf(value, 1.08f)
+}
+
+// A real sliding number puzzle drawn in code (twin of iOS SlidingPuzzleIcon): a toy tray (3D edge, soft white base, thick
+// rim in [color]) with recessed slots and candy tiles 1..n²-1, the bottom-right corner open. One tile keeps sliding into
+// the gap with a springy overshoot and gliding home — exactly the motion of the actual game — while the whole board
+// sways gently (phase-shifted per size so the three previews don't move in sync).
 @Composable
 private fun SlidingPuzzleIcon(
     gridSize: Int,
@@ -250,20 +272,15 @@ private fun SlidingPuzzleIcon(
     multicolor: Boolean = false,
     modifier: Modifier = Modifier
 ) {
-    val t by rememberInfiniteTransition(label = "slide").animateFloat(
+    val cycle = rememberInfiniteTransition(label = "slide").animateFloat(
         initialValue = 0f, targetValue = 1f,
         animationSpec = infiniteRepeatable(tween(2200, easing = LinearEasing)),
         label = "slide"
     )
-    // Slide into the gap, rest, slide home, rest.
-    val slide = when {
-        t < 0.2f -> FastOutSlowInEasing.transform(t / 0.2f)
-        t < 0.55f -> 1f
-        t < 0.75f -> 1f - FastOutSlowInEasing.transform((t - 0.55f) / 0.2f)
-        else -> 0f
-    }
     val phase = gridSize * 1.1f
     val palette = listOf(Color(0xFFF33173), Color(0xFFFF9800), Color(0xFF2196F3), Color(0xFF43A047))
+    val base: Color = if (locked) Color.Gray else color
+    val context = LocalContext.current
     val numberPaint = remember {
         android.graphics.Paint().apply {
             // `this.` needed — the composable's `color` param shadows Paint's.
@@ -271,52 +288,93 @@ private fun SlidingPuzzleIcon(
             textAlign = android.graphics.Paint.Align.CENTER
             isFakeBoldText = true
             isAntiAlias = true
+            // the kit's heavy rounded font; the fake bold is only the fallback when it is missing
+            val kitFont = ResourcesCompat.getFont(context, R.font.baloo2_extrabold)
+            if (kitFont != null) { typeface = kitFont; isFakeBoldText = false }
         }
     }
 
     Canvas(
         modifier = modifier.graphicsLayer {
-            rotationZ = sin(t * 2f * PI.toFloat() + phase) * 1.2f
+            rotationZ = sin(cycle.value * 2f * PI.toFloat() + phase) * 1.2f
         }
     ) {
-        val gap = 2.dp.toPx()
-        val cell = (size.minDimension - gap * (gridSize + 1)) / gridSize
-        val corner = CornerRadius(cell * 0.2f, cell * 0.2f)
-        val baseTint = if (locked) Color.Gray.copy(alpha = 0.55f) else color
+        val t = cycle.value
+        // Slide into the gap with a springy overshoot, rest, glide home, rest (2.2s cycle).
+        val slide = when {
+            t < 0.2f -> puzzleSpringOut(t / 0.2f)
+            t < 0.55f -> 1f
+            t < 0.75f -> 1f - puzzleEaseInOut((t - 0.55f) / 0.2f)
+            else -> 0f
+        }
+        val w = this.size.width
+        val h = this.size.height
+        val minDim = minOf(w, h)
+        val rim = maxOf(3.dp.toPx(), minDim * 0.035f)
+        val trayEdge = maxOf(2.dp.toPx(), minDim * 0.035f)
+        val gap = maxOf(2.dp.toPx(), minDim * 0.025f)
+        val trayH = h - trayEdge
+        val trayCorner = minDim * 0.14f
 
-        // Soft board behind the tiles.
+        // The toy tray: a 3D edge, a soft white base, a thick rim in the preview's colour.
+        drawRoundRect(base.abDarkened(0.3f), topLeft = Offset(0f, trayEdge), size = Size(w, trayH), cornerRadius = CornerRadius(trayCorner))
+        drawRoundRect(Color.White.copy(alpha = 0.94f), size = Size(w, trayH), cornerRadius = CornerRadius(trayCorner))
         drawRoundRect(
-            color = baseTint.copy(alpha = 0.14f),
-            cornerRadius = CornerRadius(cell * 0.3f, cell * 0.3f)
+            base, topLeft = Offset(rim / 2f, rim / 2f), size = Size(w - rim, trayH - rim),
+            cornerRadius = CornerRadius(trayCorner), style = Stroke(width = rim)
         )
-        numberPaint.textSize = cell * 0.5f
 
+        val innerLeft = rim + gap
+        val innerTop = rim + gap
+        val innerW = w - 2f * (rim + gap)
+        val innerH = trayH - 2f * (rim + gap)
+        val cell = (minOf(innerW, innerH) - gap * (gridSize - 1)) / gridSize
+        val corner = cell * 0.24f
+        val edge = maxOf(2.dp.toPx(), cell * 0.07f)
         val total = gridSize * gridSize
+
+        // Recessed slots, one per position.
+        for (i in 0 until total) {
+            val r = i / gridSize
+            val c = i % gridSize
+            drawRoundRect(
+                base.copy(alpha = 0.16f),
+                topLeft = Offset(innerLeft + c * (cell + gap), innerTop + r * (cell + gap)),
+                size = Size(cell, cell), cornerRadius = CornerRadius(corner)
+            )
+        }
+
+        numberPaint.textSize = cell * 0.5f
         val emptyIndex = total - 1     // bottom-right corner stays open
         val sliderIndex = total - 2    // its left neighbor does the sliding
         for (i in 0 until total) {
             if (i == emptyIndex) continue
             val r = i / gridSize
             val c = i % gridSize
-            var x = gap + c * (cell + gap)
-            val y = gap + r * (cell + gap)
+            var x = innerLeft + c * (cell + gap)
+            val y = innerTop + r * (cell + gap)
             if (i == sliderIndex) x += slide * (cell + gap)
-            val tint = when {
-                locked -> baseTint
-                multicolor -> palette[i % palette.size]
-                else -> baseTint
-            }
+            val tint: Color = (if (locked) base else if (multicolor) palette[i % palette.size] else base).abReadable(3f)
+            val faceH = cell - edge
+
+            // 3D edge, bright face, glossy top, soft rim.
+            drawRoundRect(tint.abDarkened(0.3f), topLeft = Offset(x, y + edge), size = Size(cell, faceH), cornerRadius = CornerRadius(corner))
+            drawRoundRect(tint, topLeft = Offset(x, y), size = Size(cell, faceH), cornerRadius = CornerRadius(corner))
             drawRoundRect(
-                brush = Brush.verticalGradient(
-                    listOf(tint.copy(alpha = 0.8f), tint),
-                    startY = y, endY = y + cell
+                Brush.verticalGradient(
+                    listOf(Color.White.copy(alpha = 0.32f), Color.Transparent),
+                    startY = y, endY = y + faceH / 2f
                 ),
-                topLeft = Offset(x, y),
-                size = Size(cell, cell),
-                cornerRadius = corner
+                topLeft = Offset(x, y), size = Size(cell, faceH), cornerRadius = CornerRadius(corner)
             )
+            drawRoundRect(
+                Color.White.copy(alpha = 0.45f),
+                topLeft = Offset(x + 0.75f, y + 0.75f), size = Size(cell - 1.5f, faceH - 1.5f),
+                cornerRadius = CornerRadius(corner), style = Stroke(width = 1.5.dp.toPx())
+            )
+            val cy = y + faceH / 2f
             drawContext.canvas.nativeCanvas.drawText(
-                "${i + 1}", x + cell / 2f, y + cell / 2f + cell * 0.18f, numberPaint
+                "${i + 1}", x + cell / 2f, cy - (numberPaint.descent() + numberPaint.ascent()) / 2f, numberPaint
             )
         }
     }

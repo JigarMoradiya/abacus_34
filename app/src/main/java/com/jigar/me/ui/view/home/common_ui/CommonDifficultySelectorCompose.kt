@@ -26,6 +26,14 @@ import com.jigar.me.R
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
 import com.jigar.me.ui.view.home.theme.AppDimens
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.text.font.FontWeight
+import com.jigar.me.ui.view.ab.AbShapes
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abChunkyFace
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGameTray
 
 // ── Shared iOS-matching difficulty selector ────────────────────────────────
 // Matches iOS: pills grouped inside a white translucent rounded box; each pill
@@ -39,8 +47,7 @@ fun DifficultyPillBox(content: @Composable RowScope.() -> Unit) {
         horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
-            .clip(RoundedCornerShape(AppDimens.Dimens12))
-            .background(Color.White.copy(alpha = 0.75f))
+            .abGameTray()
             .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens12),
         content = content
     )
@@ -48,27 +55,23 @@ fun DifficultyPillBox(content: @Composable RowScope.() -> Unit) {
 
 @Composable
 fun DifficultyPillItem(text: String, isSelected: Boolean, onClick: () -> Unit) {
-    val shape = RoundedCornerShape(100f)
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .then(if (isSelected) Modifier.shadow(AppDimens.Dimens6, shape) else Modifier)
-            .clip(shape)
-            .background(if (isSelected) Color.Black else Color.White.copy(alpha = 0.9f))
-            .border(1.dp, Color.Gray.copy(alpha = 0.2f), shape)
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = null
-            ) { onClick() }
-            .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
-    ) {
-        Text(
-            text = text,
-            color = if (isSelected) Color.White else Color.Black,
-            fontFamily = FontFamily(Font(if (isSelected) R.font.font_extra_bold else R.font.font_regular)),
-            fontSize = 15.sp.scaled()
-        )
+    val colors = LocalAbColors.current
+    val s = LocalAbScale.current.factor
+    // the selected choice is a chunky brand pill; the others sit flat on the tray at the same height (its 3D edge)
+    val look = if (isSelected) {
+        Modifier.abChunkyFace(colors.brandPrimary, colors.brandPrimaryDark, null, AbShapes.pill, 3.dp * s)
+    } else {
+        Modifier.padding(bottom = 3.dp * s).background(colors.bgSecondary, CircleShape).border(2.dp, colors.outline, CircleShape)
     }
+    Text(
+        text = text,
+        style = AbTypography.fixed(14f * s, FontWeight.ExtraBold),
+        color = if (isSelected) Color.White else colors.textPrimary,
+        modifier = Modifier
+            .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null) { onClick() }
+            .then(look)
+            .padding(horizontal = 14.dp * s, vertical = 6.dp * s)
+    )
 }
 
 @Composable

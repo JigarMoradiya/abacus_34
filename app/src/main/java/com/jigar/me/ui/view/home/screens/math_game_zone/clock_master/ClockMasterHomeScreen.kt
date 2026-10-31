@@ -1,9 +1,12 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.clock_master
 
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameHomeLayout
+
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,7 +19,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.HelpOutline
 import androidx.compose.material.icons.rounded.PlayArrow
@@ -30,21 +32,20 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.jetpack.utils.ui.extensions.appScale
+import com.jigar.me.ui.view.ab.AbTypography
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.CommonDifficultySelectorCompose
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.how_to_play.HowToPlayClockMasterView
 import com.jigar.me.ui.view.home.screens.math_game_zone.clock_master.components.ClockMasterHomeViewModel
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGamePill
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
@@ -77,29 +78,20 @@ fun ClockMasterHomeScreen(
 
     Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
 
-        Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Spacer(Modifier.weight(1f))
-
-            ClockFace(hour = ph, minute = pm, questionKey = previewIndex, diameter = (120f * s).dp)
-
-            Spacer(Modifier.height(AppDimens.Dimens16))
-
-            Text(
-                text = stringResource(R.string.clock_master_tagline),
-                color = ORANGE, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 22.sp.scaled(),
-                modifier = Modifier.clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.85f))
-                    .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
+        GameHomeLayout(
+            header = {Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+            BackButtonWithText(
+                title = stringResource(R.string.clock_master),
+                modifier = Modifier.weight(1f), onBackClick = onBackClick
             )
-
-            if (bestScore > 0) {
-                Spacer(Modifier.height(AppDimens.Dimens6))
-                Text("🏆 " + stringResource(R.string.balloon_best_score) + ": $bestScore",
-                    color = GREEN, fontFamily = FontFamily(Font(R.font.font_bold)), fontSize = 16.sp.scaled(),
-                    modifier = Modifier.clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.75f))
-                        .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens4))
-            }
-
-            Spacer(Modifier.weight(1f))
+            GameButton(
+                modifier = Modifier.padding(end = AppDimens.Dimens16),
+                text = stringResource(R.string.how_to_play),
+                icon = Icons.AutoMirrored.Filled.HelpOutline, type = ButtonType.PINK, isSmall = true,
+                onClick = { showHelp = true }
+            )
+        }},
+            bottom = {
 
             Row(
                 modifier = Modifier.fillMaxWidth().padding(AppDimens.Dimens16),
@@ -110,25 +102,36 @@ fun ClockMasterHomeScreen(
                     selected = selectedDifficulty,
                     onSelect = { viewModel.selectDifficulty(it) }
                 )
-                KidsActionButton(
+                GameButton(
                     text = stringResource(R.string.lets_start),
                     icon = Icons.Rounded.PlayArrow, type = ButtonType.ORANGE, isIconStart = false, onClick = onStartGame
                 )
             }
-        }
+        },
+        ) {
 
-        Row(modifier = Modifier.fillMaxWidth().align(Alignment.TopStart), verticalAlignment = Alignment.CenterVertically) {
-            BackButtonWithText(
-                title = stringResource(R.string.clock_master),
-                modifier = Modifier.weight(1f), onBackClick = onBackClick
+            ClockFace(hour = ph, minute = pm, questionKey = previewIndex, diameter = (120f * s).dp)
+
+            Spacer(Modifier.height(AppDimens.Dimens16))
+
+            Text(
+                text = stringResource(R.string.clock_master_tagline),
+                style = AbTypography.fixed(22f * appScale(), FontWeight.ExtraBold),
+                color = ORANGE,
+                modifier = Modifier.abGamePill()
+                    .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
             )
-            KidsActionButton(
-                modifier = Modifier.padding(end = AppDimens.Dimens16),
-                text = stringResource(R.string.how_to_play),
-                icon = Icons.AutoMirrored.Filled.HelpOutline, type = ButtonType.PINK, isSmall = true,
-                onClick = { showHelp = true }
-            )
-        }
+
+            if (bestScore > 0) {
+                Spacer(Modifier.height(AppDimens.Dimens6))
+                Text("🏆 " + stringResource(R.string.balloon_best_score) + ": $bestScore",
+                    style = AbTypography.fixed(18f * appScale(), FontWeight.Bold),
+                    color = GREEN,
+                    modifier = Modifier.abGamePill()
+                        .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens4))
+            }
+
+            }
     }
 
     AnimatedVisibility(visible = showHelp, enter = fadeIn(), exit = fadeOut()) {

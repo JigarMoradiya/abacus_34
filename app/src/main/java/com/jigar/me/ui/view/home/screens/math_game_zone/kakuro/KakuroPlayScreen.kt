@@ -1,6 +1,9 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.kakuro
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
@@ -8,8 +11,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -19,14 +24,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.automirrored.filled.Backspace
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material3.Icon
@@ -34,53 +39,81 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.Shadow
-import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.PauseTimerInBackground
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.ab.AbGlassPanel
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abBlended
+import com.jigar.me.ui.view.ab.abDarkened
+import com.jigar.me.ui.view.ab.abReadable
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
-import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
+import com.jigar.me.ui.view.home.screens.math_game_zone.GameCategoryType
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameHomeButton
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameResultCard
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameStatChip
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.PauseTimerInBackground
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abBounce
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abBreathe
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGamePill
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abPopIn
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTray
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.toyColor
+import com.jigar.me.ui.view.home.screens.math_game_zone.gameCardStyle
+import com.jigar.me.ui.view.home.screens.math_game_zone.kakuro.components.KakuroCell
 import com.jigar.me.ui.view.home.screens.math_game_zone.kakuro.components.KakuroCellType
 import com.jigar.me.ui.view.home.screens.math_game_zone.kakuro.components.KakuroUiState
 import com.jigar.me.ui.view.home.screens.math_game_zone.kakuro.viewmodel.KakuroPlayViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
-import com.jigar.me.ui.view.home.theme.getButtonColors
 import kotlinx.coroutines.delay
+import kotlin.math.PI
+import kotlin.math.cos
+import kotlin.math.max
+import kotlin.math.min
+import kotlin.math.sin
 
 private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
-private val BLUE = Color(0xFF0074D5)
-private val WALL_BG = Color(0xFF455A64)
-private val CLUE_BG = Color(0xFF37474F)
-private val BLANK_BG = Color.White
-private val WRONG_BG = Color(0xFFEF9A9A)
-private val SOLVED_BG = Color(0xFF81C784)
-private val SELECTED_BORDER = Color(0xFF0074D5)
-private val CELL_BORDER = Color(0xFF263238)
+private val NO_SUM = Color(0xFF90A4AE)
+private val WALL_FACE = Color(0xFFCFD8DC)
+private val SOLVED_INK = Color(0xFF0B5D43)
+
+// Measurements of the toy tiles (in design points, scaled by the game's scale).
+private const val TILE_GAP = 2.5f   // half the space between two tiles
+private const val TILE_EDGE = 3f    // the 3D lip under a tile
+private const val TILE_CORNER = 9f
 
 @Composable
 fun KakuroPlayScreen(
@@ -90,6 +123,9 @@ fun KakuroPlayScreen(
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val s = gameScale()
+    val kitScale = LocalAbScale.current.factor
+    val colors = LocalAbColors.current
+    val trayAccent = remember { gameCardStyle(GameCategoryType.KAKURO).light }
     LaunchedEffect(Unit) { viewModel.start() }
     // A phone call or the home button freezes the clock - fair play.
     PauseTimerInBackground { viewModel.setTimerPaused(it) }
@@ -101,6 +137,7 @@ fun KakuroPlayScreen(
         else -> 54f
     }
     val cell = (cellBase * s).dp
+    val keySide = cell * 0.82f
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -115,10 +152,10 @@ fun KakuroPlayScreen(
                 Text(
                     text = viewModel.difficulty.displayName + " · " +
                         stringResource(R.string.cross_math_level, viewModel.level),
-                    color = ORANGE, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 20.sp.scaled(),
+                    color = ORANGE,
+                    style = AbTypography.fixed(22f * kitScale, FontWeight.ExtraBold),
                     modifier = Modifier.align(Alignment.Center)
-                        .clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.9f))
-                        .border(2.dp, ORANGE_BORDER, RoundedCornerShape(100f))
+                        .abGamePill(ORANGE_BORDER)
                         .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
                 )
                 Row(
@@ -126,13 +163,13 @@ fun KakuroPlayScreen(
                     horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
                     modifier = Modifier.align(Alignment.CenterEnd)
                         .padding(end = AppDimens.Dimens16)
-                        .clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.9f))
+                        .abGamePill()
                         .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
                 ) {
-                    Text("⏱", fontSize = (24f * s).sp)
+                    Text("⏱️", fontSize = (24f * s).sp)
                     Text(
-                        timeString(state.elapsed), color = Color(0xFF5D4037),
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 26.sp.scaled()
+                        timeString(state.elapsed), color = colors.textPrimary,
+                        style = AbTypography.fixed(26f * kitScale, FontWeight.Black)
                     )
                 }
             }
@@ -142,7 +179,7 @@ fun KakuroPlayScreen(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
             ) {
-                KakuroGrid(state, cell, s) { viewModel.tapCell(it) }
+                KakuroGrid(state, cell, s, trayAccent) { viewModel.tapCell(it) }
 
                 Spacer(Modifier.width((32f * s).dp))
 
@@ -153,9 +190,9 @@ fun KakuroPlayScreen(
                 ) {
                     StatsPanel(state, s)
                     Spacer(Modifier.height(AppDimens.Dimens12))
-                    DigitPad(cell, s) { viewModel.tapDigit(it) }
+                    DigitPad(keySide, s) { viewModel.tapDigit(it) }
                     Spacer(Modifier.height(AppDimens.Dimens10))
-                    ToolBar(state, viewModel.canErase, cell, s,
+                    ToolBar(state, viewModel.canErase, keySide, s,
                         onErase = { viewModel.erase() },
                         onRestart = { viewModel.restart() },
                         onHint = { viewModel.useHint() })
@@ -174,19 +211,55 @@ fun KakuroPlayScreen(
                 onBack = onBackClick
             )
         }
+
+        // Debug builds only: lets the lead render the real result overlay without playing.
+        if (AbDebugFlags.showResultEnabled) {
+            ResultOverlay(
+                stars = state.starsEarned,
+                elapsed = state.elapsed,
+                hintsUsed = state.hintsUsed,
+                hasNextLevel = viewModel.hasNextLevel,
+                onNextLevel = onNextLevel,
+                onPlayAgain = { viewModel.start() },
+                onBack = onBackClick
+            )
+        }
     }
 }
 
 // ── grid ────────────────────────────────────────────────────────────────────
 
+/** Reports the size of the board itself while the tray around it is drawn outward, so the column keeps its old size. */
+private fun Modifier.kakuroOutward(width: Dp, height: Dp, inset: Dp): Modifier = this.layout { measurable, _ ->
+    val placeable = measurable.measure(Constraints())
+    val shift = inset.roundToPx()
+    layout(width.roundToPx(), height.roundToPx()) { placeable.place(-shift, -shift) }
+}
+
+// The board sits in a toy tray; the tray grows outward so the column keeps its old size.
 @Composable
-private fun KakuroGrid(state: KakuroUiState, cell: Dp, s: Float, onTap: (Int) -> Unit) {
-    Column {
-        for (r in 0 until state.rows) {
-            Row {
-                for (c in 0 until state.cols) {
-                    KakuroCellView(state, r * state.cols + c, cell, s, onTap)
+private fun KakuroGrid(state: KakuroUiState, cell: Dp, s: Float, accent: Color, onTap: (Int) -> Unit) {
+    val w = cell * state.cols
+    val h = cell * state.rows
+    val inset = 6.dp
+    Box(
+        modifier = Modifier
+            .kakuroOutward(w, h, inset)
+            .graphicsLayer { alpha = if (state.cells.isEmpty()) 0f else 1f }
+            .abToyTray(accent, inset)
+    ) {
+        Box(modifier = Modifier.size(w, h), contentAlignment = Alignment.Center) {
+            Column {
+                for (r in 0 until state.rows) {
+                    Row {
+                        for (c in 0 until state.cols) {
+                            KakuroCellView(state, r * state.cols + c, cell, s, onTap)
+                        }
+                    }
                 }
+            }
+            if (state.justSolved && state.cols > 0) {
+                KakuroSolvedBurst(side = w, unit = s)
             }
         }
     }
@@ -200,15 +273,10 @@ private fun KakuroCellView(state: KakuroUiState, i: Int, cell: Dp, s: Float, onT
     val isSolvedRun = i in state.solvedCells
     val isHintCell = i in state.hintLocked
     val placed = state.placed[i]
+    val isGreen = state.justSolved || (isSolvedRun && placed != null)
+    val row = if (state.cols > 0) i / state.cols else 0
+    val col = if (state.cols > 0) i % state.cols else 0
 
-    // Pop-in animation each time a digit lands.
-    val pop = remember { Animatable(1f) }
-    LaunchedEffect(placed) {
-        if (placed != null && data.type == KakuroCellType.BLANK) {
-            pop.snapTo(0.55f)
-            pop.animateTo(1f, spring(dampingRatio = 0.45f, stiffness = 700f))
-        }
-    }
     val shake = remember { Animatable(0f) }
     LaunchedEffect(isWrong) {
         if (isWrong) {
@@ -217,44 +285,11 @@ private fun KakuroCellView(state: KakuroUiState, i: Int, cell: Dp, s: Float, onT
         }
     }
 
-    val bg = when (data.type) {
-        KakuroCellType.WALL -> WALL_BG
-        KakuroCellType.CLUE -> CLUE_BG
-        KakuroCellType.BLANK -> when {
-            state.justSolved -> SOLVED_BG
-            isWrong -> WRONG_BG
-            isSolvedRun && placed != null -> SOLVED_BG
-            else -> BLANK_BG
-        }
-    }
-
     Box(
-        contentAlignment = Alignment.Center,
         modifier = Modifier
+            .abPopIn(minOf(400, (row + col) * 30))
             .graphicsLayer { translationX = shake.value }
             .size(cell)
-            .background(bg)
-            .drawBehind {
-                val w = 1.dp.toPx()
-                drawLine(CELL_BORDER, Offset(0f, 0f), Offset(size.width, 0f), w)
-                drawLine(CELL_BORDER, Offset(0f, 0f), Offset(0f, size.height), w)
-                drawLine(CELL_BORDER, Offset(0f, size.height), Offset(size.width, size.height), w)
-                drawLine(CELL_BORDER, Offset(size.width, 0f), Offset(size.width, size.height), w)
-            }
-            // Selection ring drawn inset past the shared grid line: neighbor
-            // cells paint half a line-width into our bounds after us, so a
-            // plain border() gets overpainted on the right/bottom and looks
-            // thinner there. Insetting keeps it an even width on all 4 sides.
-            .then(if (isSelected) Modifier.drawBehind {
-                val bw = 2.5.dp.toPx()
-                val inset = 1.dp.toPx() / 2f + bw / 2f
-                drawRect(
-                    SELECTED_BORDER,
-                    topLeft = Offset(inset, inset),
-                    size = androidx.compose.ui.geometry.Size(size.width - 2f * inset, size.height - 2f * inset),
-                    style = Stroke(bw)
-                )
-            } else Modifier)
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = null,
@@ -262,84 +297,242 @@ private fun KakuroCellView(state: KakuroUiState, i: Int, cell: Dp, s: Float, onT
             ) { onTap(i) }
     ) {
         when (data.type) {
-            KakuroCellType.CLUE -> {
-                // Classic kakuro clue: diagonal split, across sum top-right,
-                // down sum bottom-left.
-                Canvas(modifier = Modifier.matchParentSize()) {
-                    drawLine(Color.White.copy(alpha = 0.5f), Offset(0f, 0f), Offset(size.width, size.height), 1.5.dp.toPx())
-                }
-                data.acrossSum?.let {
-                    Text(
-                        "$it", color = Color.White,
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (13f * s).sp,
-                        modifier = Modifier.align(Alignment.TopEnd).padding(end = (4f * s).dp, top = (2f * s).dp)
-                    )
-                }
-                data.downSum?.let {
-                    Text(
-                        "$it", color = Color.White,
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (13f * s).sp,
-                        modifier = Modifier.align(Alignment.BottomStart).padding(start = (4f * s).dp, bottom = (2f * s).dp)
-                    )
-                }
-            }
-            KakuroCellType.BLANK -> if (placed != null) {
-                Text(
-                    "$placed",
-                    color = if (isHintCell) Color(0xFF7B1FA2) else BLUE,
-                    fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (22f * s).sp,
-                    modifier = Modifier.graphicsLayer { scaleX = pop.value; scaleY = pop.value }
-                )
-            }
-            else -> {}
+            KakuroCellType.WALL -> KakuroWallTile(s)
+            KakuroCellType.CLUE -> KakuroClueTile(data, s)
+            KakuroCellType.BLANK -> KakuroEntryTile(placed, isSelected, isWrong, isGreen, isHintCell, s)
         }
     }
+}
+
+/** Walls: a quiet pale block so the puzzle's shape reads, but it never competes with the clues. */
+@Composable
+private fun KakuroWallTile(s: Float) {
+    Box(
+        Modifier.fillMaxSize()
+            .padding((TILE_GAP * s).dp)
+            .background(WALL_FACE.copy(alpha = 0.55f), RoundedCornerShape((TILE_CORNER * s).dp))
+    )
+}
+
+/**
+ * Clues: a rounded candy block split by a diagonal. The "across" sum rides the orange half (top right), the "down" sum
+ * rides the blue half (bottom left).
+ */
+@Composable
+private fun KakuroClueTile(data: KakuroCell, s: Float) {
+    val colors = LocalAbColors.current
+    val corner = (TILE_CORNER * s).dp
+    val acrossFace = if (data.acrossSum != null) colors.accentOrange.abReadable(3f) else NO_SUM
+    val downFace = if (data.downSum != null) colors.brandSecondary.abReadable(3f) else NO_SUM
+    val numberStyle = AbTypography.fixed(14f * s, FontWeight.Black).copy(
+        shadow = Shadow(Color.Black.copy(alpha = 0.2f), Offset(0f, 2f), 0f)
+    )
+    Box(
+        Modifier.fillMaxSize()
+            .padding((TILE_GAP * s).dp)
+            .abToyTile(colors.brandPrimaryDark, corner, (TILE_EDGE * s).dp)
+    ) {
+        Box(Modifier.fillMaxSize().clip(RoundedCornerShape(corner))) {
+            Canvas(Modifier.fillMaxSize()) {
+                val w = size.width
+                val h = size.height
+                val across = Path().apply { moveTo(0f, 0f); lineTo(w, 0f); lineTo(w, h); close() }
+                val down = Path().apply { moveTo(0f, 0f); lineTo(w, h); lineTo(0f, h); close() }
+                drawPath(across, acrossFace)
+                drawPath(down, downFace)
+                drawLine(Color.White.copy(alpha = 0.85f), Offset(0f, 0f), Offset(w, h), 1.5f * s * density)
+            }
+            data.acrossSum?.let {
+                Text(
+                    "$it", color = Color.White, style = numberStyle,
+                    modifier = Modifier.align(Alignment.TopEnd).padding(end = (5f * s).dp, top = (2f * s).dp)
+                )
+            }
+            data.downSum?.let {
+                Text(
+                    "$it", color = Color.White, style = numberStyle,
+                    modifier = Modifier.align(Alignment.BottomStart).padding(start = (5f * s).dp, bottom = (2f * s).dp)
+                )
+            }
+        }
+    }
+}
+
+/**
+ * Entry boxes: white candy tiles with a soft coloured rim. They turn yellow when picked (and breathe), pink when a line
+ * is wrong, green when a line adds up, lilac when a hint filled them.
+ */
+@Composable
+private fun KakuroEntryTile(placed: Int?, selected: Boolean, wrong: Boolean, green: Boolean, hint: Boolean, s: Float) {
+    val colors = LocalAbColors.current
+    val gap = (TILE_GAP * s).dp
+    val edge = (TILE_EDGE * s).dp
+    val corner = (TILE_CORNER * s).dp
+
+    var face = Color.White
+    var rim = colors.brandPrimary.abBlended(Color.White, 0.6f)
+    var ink = colors.brandPrimaryDark
+    if (hint) {
+        face = colors.accentPurple.abBlended(Color.White, 0.82f)
+        rim = colors.accentPurple.abBlended(Color.White, 0.35f)
+        ink = colors.accentPurple.abReadable(4.5f)
+    }
+    if (selected) {
+        face = colors.accentYellow.abBlended(Color.White, 0.6f)
+        rim = colors.brandPrimary
+    }
+    if (wrong) {
+        face = colors.danger.abBlended(Color.White, 0.6f)
+        rim = colors.danger
+        ink = colors.danger.abReadable(4.5f)
+    }
+    if (green) {
+        face = colors.accentGreen.abBlended(Color.White, 0.45f)
+        rim = colors.accentGreen.abDarkened(0.08f)
+        ink = SOLVED_INK
+    }
+    val rimWidth = (if (selected) 3f else 2f) * s
+
+    val faceNow by animateColorAsState(face, tween(180), label = "kakuroFace")
+    val rimNow by animateColorAsState(rim, tween(180), label = "kakuroRim")
+    val inkNow by animateColorAsState(ink, tween(180), label = "kakuroInk")
+
+    Box(Modifier.fillMaxSize().padding(gap)) {
+        Box(
+            Modifier.fillMaxSize()
+                .then(if (selected) Modifier.abBreathe(0.04f, 1300) else Modifier)
+                .kakuroEntryFace(faceNow, rimNow, rimWidth.dp, corner, edge)
+        )
+        Box(Modifier.fillMaxSize().padding(bottom = edge), contentAlignment = Alignment.Center) {
+            Text(
+                placed?.toString() ?: "",
+                style = AbTypography.fixed(24f * s, FontWeight.Black),
+                color = inkNow,
+                modifier = Modifier.abBounce(placed)
+            )
+        }
+    }
+}
+
+/** One toy block: a face with a glossy top, a rim, and a 3D lip under it. */
+private fun Modifier.kakuroEntryFace(face: Color, rim: Color, rimWidth: Dp, corner: Dp, edge: Dp): Modifier {
+    val shape = RoundedCornerShape(corner)
+    return this
+        .padding(bottom = edge)
+        .drawBehind {
+            drawRoundRect(
+                rim.abDarkened(0.2f),
+                Offset(0f, edge.toPx()),
+                size,
+                CornerRadius(corner.toPx())
+            )
+        }
+        .background(face, shape)
+        .drawBehind {
+            drawRoundRect(
+                brush = Brush.verticalGradient(
+                    listOf(Color.White.copy(alpha = 0.55f), Color.Transparent),
+                    startY = 0f, endY = size.height / 2f
+                ),
+                cornerRadius = CornerRadius(corner.toPx())
+            )
+        }
+        .border(rimWidth, rim, shape)
+}
+
+/** A burst of stars from the board's centre when the level is solved. It starts the moment it appears and fades out. */
+@Composable
+private fun KakuroSolvedBurst(side: Dp, unit: Float) {
+    val colors = LocalAbColors.current
+    var t by remember { mutableFloatStateOf(0f) }
+    LaunchedEffect(Unit) {
+        val start = withFrameNanos { it }
+        var elapsed = 0f
+        while (elapsed < 1.2f) {
+            withFrameNanos { now ->
+                elapsed = (now - start) / 1_000_000_000f
+                t = elapsed
+            }
+        }
+    }
+    Canvas(modifier = Modifier.requiredSize(side)) {
+        val tt = t
+        val sidePx = size.width
+        val centre = Offset(size.width / 2f, size.height / 2f)
+        for (k in 0 until 12) {
+            val angle = k / 12.0 * 2.0 * PI + 0.3
+            val progress = min(tt / 1f, 1f)
+            val eased = 1f - (1f - progress) * (1f - progress) * (1f - progress)
+            val far = sidePx * (if (k % 2 == 0) 0.62f else 0.46f)
+            val dist = far * eased
+            val grow = min(tt / 0.25f, 1f)
+            val fade = if (progress < 0.6f) 1f else max(0f, 1f - (progress - 0.6f) / 0.4f)
+            val star = Offset(centre.x + (cos(angle) * dist).toFloat(), centre.y + (sin(angle) * dist).toFloat())
+            val outer = (if (k % 2 == 0) 11f else 8f) * unit * density * grow
+            drawKakuroStar(star, outer, tt * 220f, colors.toyColor(k).copy(alpha = fade))
+        }
+    }
+}
+
+private fun DrawScope.drawKakuroStar(centre: Offset, outer: Float, degrees: Float, color: Color) {
+    val inner = outer * 0.45f
+    val path = Path()
+    for (p in 0 until 10) {
+        val radius = if (p % 2 == 0) outer else inner
+        val a = (p * 36.0 - 90.0) * PI / 180.0
+        val x = centre.x + (cos(a) * radius).toFloat()
+        val y = centre.y + (sin(a) * radius).toFloat()
+        if (p == 0) path.moveTo(x, y) else path.lineTo(x, y)
+    }
+    path.close()
+    rotate(degrees, pivot = centre) { drawPath(path, color) }
 }
 
 // ── right panel ─────────────────────────────────────────────────────────────
 
 @Composable
 private fun StatsPanel(state: KakuroUiState, s: Float) {
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16),
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.clip(RoundedCornerShape(AppDimens.Dimens16)).background(Color.White.copy(alpha = 0.8f))
-            .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens10)
-    ) {
-        Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
-            Text("💡", fontSize = (18f * s).sp)
-            Text("${state.hintsLeft}", color = Color(0xFFF57F17),
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (20f * s).sp)
-        }
-        Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
-            Text("🧩", fontSize = (18f * s).sp)
-            Text(
-                "${state.placed.size}/${state.cells.count { it.type == KakuroCellType.BLANK }}",
-                color = BLUE, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (20f * s).sp
-            )
+    val colors = LocalAbColors.current
+    AbGlassPanel {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16),
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens10)
+        ) {
+            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
+                Text("💡", fontSize = (18f * s).sp)
+                Text(
+                    "${state.hintsLeft}", color = colors.accentOrange.abReadable(3f),
+                    style = AbTypography.fixed(20f * s, FontWeight.ExtraBold),
+                    modifier = Modifier.abBounce(state.hintsLeft)
+                )
+            }
+            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
+                Text("🧩", fontSize = (18f * s).sp)
+                Text(
+                    "${state.placed.size}/${state.cells.count { it.type == KakuroCellType.BLANK }}",
+                    color = colors.brandPrimary, style = AbTypography.fixed(20f * s, FontWeight.ExtraBold)
+                )
+            }
         }
     }
 }
 
 @Composable
-private fun DigitPad(cell: Dp, s: Float, onDigit: (Int) -> Unit) {
+private fun DigitPad(keySide: Dp, s: Float, onDigit: (Int) -> Unit) {
+    val colors = LocalAbColors.current
     Column(verticalArrangement = Arrangement.spacedBy((8f * s).dp)) {
         listOf(listOf(1, 2, 3), listOf(4, 5, 6), listOf(7, 8, 9)).forEach { row ->
             Row(horizontalArrangement = Arrangement.spacedBy((8f * s).dp)) {
                 row.forEach { n ->
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier
-                            .size(cell * 0.82f)
-                            .clip(RoundedCornerShape(AppDimens.Dimens10))
-                            .background(BLUE)
-                            .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = null
-                            ) { onDigit(n) }
-                    ) {
-                        Text("$n", color = Color.White,
-                            fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (22f * s).sp)
+                    KakuroKey(face = colors.toyColor(n - 1), side = keySide, enabled = true, onClick = { onDigit(n) }) {
+                        Text(
+                            "$n",
+                            style = AbTypography.fixed(min(24f * s, keySide.value * 0.6f), FontWeight.Black).copy(
+                                shadow = Shadow(Color.Black.copy(alpha = 0.25f), Offset(0f, 3f), 0f)
+                            ),
+                            color = Color.White
+                        )
                     }
                 }
             }
@@ -349,39 +542,52 @@ private fun DigitPad(cell: Dp, s: Float, onDigit: (Int) -> Unit) {
 
 @Composable
 private fun ToolBar(
-    state: KakuroUiState, canErase: Boolean, cell: Dp, s: Float,
+    state: KakuroUiState, canErase: Boolean, keySide: Dp, s: Float,
     onErase: () -> Unit, onRestart: () -> Unit, onHint: () -> Unit
 ) {
+    val colors = LocalAbColors.current
     Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12), verticalAlignment = Alignment.CenterVertically) {
-        ToolButton(bg = Color(0xFFEF5350), enabled = canErase, size = cell, onClick = onErase) {
+        KakuroKey(face = colors.danger.abReadable(3f), side = keySide, enabled = canErase, onClick = onErase) {
             Icon(Icons.AutoMirrored.Filled.Backspace, contentDescription = null, tint = Color.White,
                 modifier = Modifier.size((20f * s).dp))
         }
-        ToolButton(bg = Color(0xFFFFB74D), enabled = true, size = cell, onClick = onRestart) {
+        KakuroKey(face = colors.accentOrange.abReadable(3f), side = keySide, enabled = true, onClick = onRestart) {
             Icon(Icons.Rounded.Refresh, contentDescription = null, tint = Color.White,
                 modifier = Modifier.size((22f * s).dp))
         }
-        ToolButton(bg = Color(0xFFFFCA28), enabled = state.hintsLeft > 0, size = cell, onClick = onHint) {
-            Text("💡${state.hintsLeft}", color = Color.White,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (16f * s).sp)
+        KakuroKey(face = colors.accentYellow.abReadable(3f), side = keySide, enabled = state.hintsLeft > 0, onClick = onHint) {
+            Text(
+                "💡${state.hintsLeft}", color = Color.White,
+                style = AbTypography.fixed(16f * s, FontWeight.Black),
+                modifier = Modifier.abBounce(state.hintsLeft)
+            )
         }
     }
 }
 
+/** A chunky candy key that squishes while it is pressed. */
 @Composable
-private fun ToolButton(bg: Color, enabled: Boolean, size: Dp, onClick: () -> Unit, content: @Composable () -> Unit) {
+private fun KakuroKey(face: Color, side: Dp, enabled: Boolean, onClick: () -> Unit, content: @Composable BoxScope.() -> Unit) {
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
+    val squash by animateFloatAsState(
+        targetValue = if (pressed) 0.9f else 1f,
+        animationSpec = spring(dampingRatio = 0.55f, stiffness = Spring.StiffnessMedium),
+        label = "kakuroKey"
+    )
     Box(
-        contentAlignment = Alignment.Center,
         modifier = Modifier
-            .graphicsLayer { alpha = if (enabled) 1f else 0.4f }
-            .size(size * 0.82f)
-            .clip(RoundedCornerShape(AppDimens.Dimens10))
-            .background(bg)
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = null, enabled = enabled
-            ) { onClick() }
-    ) { content() }
+            .size(side)
+            .graphicsLayer {
+                scaleX = squash
+                scaleY = squash
+                alpha = if (enabled) 1f else 0.4f
+            }
+            .clickable(interactionSource = interaction, indication = null, enabled = enabled, onClick = onClick)
+            .abToyTile(face, side * 0.3f, 4.dp),
+        contentAlignment = Alignment.Center,
+        content = content
+    )
 }
 
 // ── result overlay ──────────────────────────────────────────────────────────
@@ -393,85 +599,42 @@ private fun ResultOverlay(
     stars: Int, elapsed: Int, hintsUsed: Int, hasNextLevel: Boolean,
     onNextLevel: () -> Unit, onPlayAgain: () -> Unit, onBack: () -> Unit
 ) {
-    val accentColors = getButtonColors(ButtonType.ORANGE)
     var enabled by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) { delay(1000); enabled = true }
 
     Box(modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)), contentAlignment = Alignment.Center) {
         // Finishing a Kakuro level is always a win — always celebrate.
         LaunchedEffect(Unit) { if (stars >= 2) AudioPlayerManager.playSoundClap() else AudioPlayerManager.playSoundWin() }
-        // "Candy Pop" celebration card — saturated gradient block with a white badge overlapping the top edge.
-        Box(modifier = Modifier.fillMaxWidth(0.6f), contentAlignment = Alignment.TopCenter) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .shadow(20.dp, RoundedCornerShape(AppDimens.Dimens20 * 1.2f), ambientColor = accentColors.base, spotColor = accentColors.base)
-                    .background(accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20 * 1.2f))
-                    .padding(horizontal = AppDimens.Dimens30, vertical = AppDimens.Dimens20),
-                horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
-            ) {
-                Spacer(Modifier.height(AppDimens.Dimens20))
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text("➕", fontSize = (28f * gameScale()).sp)
-                    Text(
-                        stringResource(R.string.balloon_great_job),
-                        color = Color.White,
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                        fontSize = 30.sp.scaled(),
-                        style = TextStyle(shadow = Shadow(color = accentColors.base.copy(alpha = 0.9f), offset = Offset(1.5f, 1.5f), blurRadius = 0f)),
-                        modifier = Modifier.padding(horizontal = AppDimens.Dimens8)
-                    )
-                    Text("✨", fontSize = (28f * gameScale()).sp)
+        GameResultCard(
+            title = stringResource(R.string.balloon_great_job),
+            emoji = "➕",
+            accent = ButtonType.TEAL,
+            stars = stars,
+            wide = true,
+            stats = {
+                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
+                    GameStatChip(emoji = "⏱️", value = timeString(elapsed), color = Color(0xFF5D4037))
+                    GameStatChip(emoji = "💡", value = "$hintsUsed", color = Color(0xFFB45309))
                 }
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8), verticalAlignment = Alignment.Bottom) {
-                    BigStar(stars >= 1, 32, 150); BigStar(stars >= 2, 40, 400); BigStar(stars >= 3, 32, 650)
-                }
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)) {
-                    StatChipStr("⏱", timeString(elapsed), Color(0xFF5D4037))
-                    StatChipStr("💡", "$hintsUsed", Color(0xFFF57F17))
-                }
+            },
+            buttons = {
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
                     if (hasNextLevel) {
-                        KidsActionButton(text = stringResource(R.string.cross_math_next_level), type = ButtonType.ORANGE,
-                            onClick = { if (enabled) onNextLevel() })
+                        GameButton(
+                            text = stringResource(R.string.cross_math_next_level),
+                            icon = Icons.AutoMirrored.Filled.ArrowForward, isIconStart = false,
+                            type = ButtonType.ORANGE,
+                            onClick = { if (enabled) onNextLevel() }
+                        )
                     }
-                    KidsActionButton(text = stringResource(R.string.balloon_play_again), type = ButtonType.POSITIVE,
-                        onClick = { if (enabled) onPlayAgain() })
-                    KidsActionButton(text = stringResource(R.string.balloon_back), type = ButtonType.NEGATIVE,
-                        onClick = { if (enabled) onBack() })
+                    GameButton(
+                        text = stringResource(R.string.balloon_play_again),
+                        icon = Icons.Rounded.Refresh, type = ButtonType.POSITIVE,
+                        onClick = { if (enabled) onPlayAgain() }
+                    )
+                    GameHomeButton(onClick = { if (enabled) onBack() })
                 }
             }
-
-            Box(
-                modifier = Modifier
-                    .offset(y = (-28).dp)
-                    .size(64.dp)
-                    .shadow(8.dp, CircleShape)
-                    .background(Color.White, CircleShape)
-                    .border(4.dp, Color.White, CircleShape),
-                contentAlignment = Alignment.Center
-            ) {
-                Text("➕", fontSize = 32.sp)
-            }
-        }
+        )
     }
-}
-
-@Composable
-private fun StatChipStr(emoji: String, value: String, color: Color) {
-    Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4), verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.clip(RoundedCornerShape(100f)).background(Color.White)
-            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)) {
-        Text(emoji, fontSize = (16f * gameScale()).sp)
-        Text(value, color = color, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 20.sp.scaled(),
-            maxLines = 1, softWrap = false)
-    }
-}
-
-@Composable
-private fun BigStar(earned: Boolean, sizeSp: Int, delayMs: Long) {
-    val scale = remember { Animatable(0.01f) }
-    LaunchedEffect(Unit) { delay(delayMs); scale.animateTo(1f, spring(dampingRatio = 0.5f)) }
-    Text("⭐", fontSize = (sizeSp * gameScale()).sp,
-        modifier = Modifier.graphicsLayer { scaleX = scale.value; scaleY = scale.value; alpha = if (earned) 1f else 0.35f })
 }

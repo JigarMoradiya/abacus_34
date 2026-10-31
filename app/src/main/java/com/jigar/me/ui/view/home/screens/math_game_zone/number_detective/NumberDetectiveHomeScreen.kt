@@ -1,9 +1,12 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.number_detective
 
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameHomeLayout
+
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,46 +18,45 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.HelpOutline
 import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.jetpack.utils.ui.extensions.appScale
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.abReadable
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.CommonDifficultySelectorCompose
-import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.how_to_play.HowToPlayNumberDetectiveView
+import com.jigar.me.ui.view.home.screens.math_game_zone.GameCategoryType
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGamePill
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
+import com.jigar.me.ui.view.home.screens.math_game_zone.gameCardStyle
 import com.jigar.me.ui.view.home.screens.math_game_zone.number_detective.components.NumberDetectiveHomeViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
 import kotlin.math.sin
-
-private val INDIGO = Color(0xFF283593)
-private val GREEN = Color(0xFF2E7D32)
-private val CHIP_TEAL = Color(0xFF00897B)
 
 @Composable
 fun NumberDetectiveHomeScreen(
@@ -66,54 +68,25 @@ fun NumberDetectiveHomeScreen(
     var showHelp by remember { mutableStateOf(false) }
     val bestScore = viewModel.bestScore(selectedDifficulty)
     val s = gameScale()
-
-    var time by remember { mutableFloatStateOf(0f) }
-    LaunchedEffect(Unit) {
-        val start = withFrameNanos { it }
-        while (true) { withFrameNanos { now -> time = (now - start) / 1_000_000_000f } }
-    }
+    val colors = LocalAbColors.current
+    val time = rememberNumberDetectiveTime()
 
     Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
 
-        Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Spacer(Modifier.weight(1f))
-
-            // Preview: a magnifying glass hovering over a mystery number,
-            // with a "too high / too low" hint bouncing beside it.
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy((12f * s).dp)) {
-                val bob = sin(time * 2.2f) * 4f
-                Text("🔍", fontSize = (46f * s).sp,
-                    modifier = Modifier.graphicsLayer { translationY = bob })
-                Text(
-                    "?", color = Color.White,
-                    fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (34f * s).sp,
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(AppDimens.Dimens10))
-                        .background(CHIP_TEAL)
-                        .padding(horizontal = (18f * s).dp, vertical = (10f * s).dp)
-                )
-                val nudge = sin(time * 2.2f + 1f) * 3f
-                Text("⬆️", fontSize = (28f * s).sp, modifier = Modifier.graphicsLayer { translationY = nudge })
-            }
-
-            Spacer(Modifier.height(AppDimens.Dimens24))
-
-            Text(
-                text = stringResource(R.string.number_detective_tagline),
-                color = INDIGO, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 22.sp.scaled(),
-                modifier = Modifier.clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.85f))
-                    .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
+        GameHomeLayout(
+            header = {Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+            BackButtonWithText(
+                title = stringResource(R.string.number_detective),
+                modifier = Modifier.weight(1f), onBackClick = onBackClick
             )
-
-            if (bestScore > 0) {
-                Spacer(Modifier.height(AppDimens.Dimens6))
-                Text("🏆 " + stringResource(R.string.balloon_best_score) + ": $bestScore",
-                    color = GREEN, fontFamily = FontFamily(Font(R.font.font_bold)), fontSize = 16.sp.scaled(),
-                    modifier = Modifier.clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.75f))
-                        .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens4))
-            }
-
-            Spacer(Modifier.weight(1f))
+            GameButton(
+                modifier = Modifier.padding(end = AppDimens.Dimens16),
+                text = stringResource(R.string.how_to_play),
+                icon = Icons.AutoMirrored.Filled.HelpOutline, type = ButtonType.PINK, isSmall = true,
+                onClick = { showHelp = true }
+            )
+        }},
+            bottom = {
 
             Row(
                 modifier = Modifier.fillMaxWidth().padding(AppDimens.Dimens16),
@@ -124,28 +97,92 @@ fun NumberDetectiveHomeScreen(
                     selected = selectedDifficulty,
                     onSelect = { viewModel.selectDifficulty(it) }
                 )
-                KidsActionButton(
+                GameButton(
                     text = stringResource(R.string.lets_start),
                     icon = Icons.Rounded.PlayArrow, type = ButtonType.ORANGE, isIconStart = false, onClick = onStartGame
                 )
             }
-        }
+        },
+        ) {
 
-        Row(modifier = Modifier.fillMaxWidth().align(Alignment.TopStart), verticalAlignment = Alignment.CenterVertically) {
-            BackButtonWithText(
-                title = stringResource(R.string.number_detective),
-                modifier = Modifier.weight(1f), onBackClick = onBackClick
+            // Preview: a magnifying glass hovering over a mystery number, with the tries coins bobbing below.
+            Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy((10f * s).dp)) {
+                NumberDetectivePreviewRow(s = s, time = time)
+                NumberDetectiveTriesTrail(maxTries = 5, triesUsed = 0, s = s, time = time)
+            }
+
+            Spacer(Modifier.height(AppDimens.Dimens24))
+
+            Text(
+                text = stringResource(R.string.number_detective_tagline),
+                style = AbTypography.fixed(22f * appScale(), FontWeight.ExtraBold),
+                color = colors.textPrimary,
+                modifier = Modifier.abGamePill()
+                    .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
             )
-            KidsActionButton(
-                modifier = Modifier.padding(end = AppDimens.Dimens16),
-                text = stringResource(R.string.how_to_play),
-                icon = Icons.AutoMirrored.Filled.HelpOutline, type = ButtonType.PINK, isSmall = true,
-                onClick = { showHelp = true }
-            )
-        }
+
+            if (bestScore > 0) {
+                Spacer(Modifier.height(AppDimens.Dimens6))
+                Text("🏆 " + stringResource(R.string.balloon_best_score) + ": $bestScore",
+                    style = AbTypography.fixed(18f * appScale(), FontWeight.Bold),
+                    color = colors.accentGreenInk,
+                    modifier = Modifier.abGamePill()
+                        .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens4))
+            }
+
+            }
     }
 
     AnimatedVisibility(visible = showHelp, enter = fadeIn(), exit = fadeOut()) {
         HowToPlayNumberDetectiveView { showHelp = false }
+    }
+}
+
+// The preview art: a wiggling magnifier, a candy "?" box that breathes and bobs, and a hopping orange hint arrow.
+@Composable
+private fun NumberDetectivePreviewRow(s: Float, time: androidx.compose.runtime.State<Float>) {
+    val colors = LocalAbColors.current
+    val boxFace = gameCardStyle(GameCategoryType.NUMBER_DETECTIVE).light.abReadable(3f)
+    val arrowFace = colors.accentOrange.abReadable(3f)
+    Row(
+        horizontalArrangement = Arrangement.spacedBy((14f * s).dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            "🔍",
+            fontSize = (46f * s).sp,
+            modifier = Modifier.graphicsLayer {
+                val t = time.value
+                rotationZ = sin(t * 1.7f) * 12f
+                translationY = sin(t * 2.2f) * 4f * density
+            }
+        )
+        Box(
+            Modifier
+                .graphicsLayer { translationY = sin(time.value * 2f) * 3f * s * density }
+                .abToyTile(boxFace, (18f * s).dp, 4.dp)
+                .size((72f * s).dp, (58f * s).dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                "?",
+                style = AbTypography.fixed(36f * s, FontWeight.Black).copy(shadow = Shadow(Color.Black.copy(alpha = 0.25f), Offset(0f, 3f), 0f)),
+                color = Color.White,
+                modifier = Modifier.graphicsLayer {
+                    val breathe = 1f + 0.07f * sin(time.value * 3f)
+                    scaleX = breathe
+                    scaleY = breathe
+                }
+            )
+        }
+        Box(
+            Modifier
+                .graphicsLayer { translationY = sin(time.value * 4f + 1f) * -4f * s * density }
+                .abToyTile(arrowFace, (17f * s).dp, 3.dp)
+                .size((34f * s).dp),
+            contentAlignment = Alignment.Center
+        ) {
+            NumberDetectiveArrow(up = true, size = (18f * s).dp)
+        }
     }
 }

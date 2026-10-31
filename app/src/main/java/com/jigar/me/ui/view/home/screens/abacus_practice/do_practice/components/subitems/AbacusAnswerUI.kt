@@ -14,13 +14,16 @@ import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.viewmodels.
  */
 @Composable
 fun AbacusAnswerUI(
-    uiState: AbacusDoPracticeUiState
+    uiState: AbacusDoPracticeUiState,
+    /** Right-aligned sums (addition / subtraction): the answer ends where the digits above it end. */
+    trailing: Boolean = false,
 ) {
     val abacus = uiState.currentAbacus ?: return
 
     AbChalkDash(Modifier.padding(top = 5.dp))
     AbChalkAnswer(
         text = abacus.finalAnswer.toString(),
-        revealed = uiState.isSumComplete && uiState.isShowSubmitAnswer != true
+        revealed = uiState.isSumComplete && uiState.isShowSubmitAnswer != true,
+        trailing = trailing
     )
 }

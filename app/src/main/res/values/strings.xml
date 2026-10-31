@@ -945,6 +945,8 @@
     <string name="target_number_game">Target Number Game</string>
     <string name="complete_the_target">Complete the Target</string>
     <string name="new_target">New Target</string>
+    <string name="target_banner">🎯 Target: %1$s</string>
+    <string name="hint_count">Hint %1$d/%2$d</string>
     <string name="all_steps">All Steps</string>
     <string name="target_number_desc">Use operations to reach the target!</string>
     <string name="math_pyramid_desc">Add numbers to build the pyramid!</string>

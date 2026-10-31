@@ -1,7 +1,9 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.play
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
@@ -11,74 +13,82 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.RocketLaunch
 import androidx.compose.material.icons.filled.Shuffle
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
+import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DeviceInfo
-import com.jigar.me.ui.jetpack.core.presentation.theme.ColorLightYellow
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.ab.AbColors
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.abBlended
+import com.jigar.me.ui.view.ab.abDarkened
+import com.jigar.me.ui.view.ab.abReadable
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.view.home.common_ui.enums.CommonDifficulty4
+import com.jigar.me.ui.view.home.screens.math_game_zone.GameCategoryType
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameHomeButton
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameResultCard
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameStatChip
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abBounce
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abBreathe
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abPopIn
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTray
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abWobble
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.toyColor
+import com.jigar.me.ui.view.home.screens.math_game_zone.gameCardStyle
 import com.jigar.me.ui.view.home.screens.math_game_zone.math_pyramid.play.components.NumberPyramidGenerator
 import com.jigar.me.ui.view.home.theme.AppDimens
-import com.jigar.me.ui.view.home.theme.getButtonColors
-import kotlinx.coroutines.delay
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
-import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
-import com.jigar.me.ui.view.home.common_ui.buttons.KidsKeyPad
 import com.jigar.me.ui.view.home.theme.AppDimens.keyPadHeight
 import com.jigar.me.ui.view.home.theme.ButtonType
+import kotlinx.coroutines.delay
+import kotlin.math.max
+import kotlin.math.min
 
 @Composable
 fun MathPyramidPlayJetpackScreen(
@@ -119,10 +129,13 @@ fun MathPyramidPlayJetpackScreen(
             Row {
                 // Pyramid grid
                 Column(modifier = Modifier.weight(0.7f), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
-                    PyramidGrid(levels,pyramid, editableMask, selectedCell) { r, c ->
-                        if (editableMask.getOrNull(r)?.getOrNull(c) == true) {
-                            selectedCell = Pair(r, c)
-                            AudioPlayerManager.playSoundBtnClick()
+                    // a new puzzle builds a new grid, so its bricks pop in again, top down
+                    key(System.identityHashCode(editableMask)) {
+                        PyramidGrid(levels,pyramid, editableMask, selectedCell) { r, c ->
+                            if (editableMask.getOrNull(r)?.getOrNull(c) == true) {
+                                selectedCell = Pair(r, c)
+                                AudioPlayerManager.playSoundBtnClick()
+                            }
                         }
                     }
                 }
@@ -170,7 +183,7 @@ fun MathPyramidPlayJetpackScreen(
 
                     Spacer(modifier = Modifier.height(if (DeviceInfo.isTablet) AppDimens.Dimens24 else AppDimens.Dimens16))
 
-                    KidsActionButton(
+                    GameButton(
                         text = stringResource(R.string.start_new),
                         icon = Icons.Filled.Shuffle,
                         type = ButtonType.ORANGE,
@@ -200,11 +213,25 @@ fun MathPyramidPlayJetpackScreen(
             }
         )
     }
+
+    // Debug builds only: lets the lead render the real result overlay without playing.
+    if (AbDebugFlags.showResultEnabled) {
+        PyramidResultOverlay(
+            levels = levels,
+            difficultyName = difficulty.displayName,
+            onPlayAgain = {
+                isSolved = false
+                generateNewPuzzle()
+            },
+            onBack = {
+                isSolved = false
+                onBackClick()
+            }
+        )
+    }
 }
 
-// "Candy Pop" celebration card — matches Number Snake's result popup style
-// (gradient card, white badge overlapping the top edge, two symmetric filled
-// buttons) instead of the generic CustomPopupView celebration theme.
+// "Candy Pop" celebration card — the shared result card, always with all three stars (a solved pyramid is always a win).
 @Composable
 private fun PyramidResultOverlay(
     levels: Int,
@@ -212,72 +239,97 @@ private fun PyramidResultOverlay(
     onPlayAgain: () -> Unit,
     onBack: () -> Unit
 ) {
-    val accentColors = getButtonColors(ButtonType.ORANGE)
     var enabled by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) { delay(1000); enabled = true }
 
     Box(modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)), contentAlignment = Alignment.Center) {
         LaunchedEffect(Unit) { AudioPlayerManager.playSoundClap() }
-        Box(modifier = Modifier.fillMaxWidth(0.6f), contentAlignment = Alignment.TopCenter) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .shadow(20.dp, RoundedCornerShape(AppDimens.Dimens20 * 1.2f), ambientColor = accentColors.base, spotColor = accentColors.base)
-                    .background(accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20 * 1.2f))
-                    .padding(horizontal = AppDimens.Dimens30, vertical = AppDimens.Dimens20),
-                horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
-            ) {
-                Spacer(Modifier.height(AppDimens.Dimens20))
-                Text(
-                    stringResource(R.string.you_did_it),
-                    color = Color.White,
-                    fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                    fontSize = 26.sp.scaled(),
-                    style = TextStyle(shadow = Shadow(color = accentColors.base.copy(alpha = 0.9f), offset = Offset(1.5f, 1.5f), blurRadius = 0f)),
-                    textAlign = TextAlign.Center
-                )
-                Text(
-                    stringResource(R.string.you_built_the_pyramid),
-                    color = Color.White,
-                    fontFamily = FontFamily(Font(R.font.font_semibold)),
-                    fontSize = 18.sp.scaled(),
-                    textAlign = TextAlign.Center
-                )
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4), verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.clip(RoundedCornerShape(100f)).background(Color.White)
-                        .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)) {
-                    Text("🔺", fontSize = (16f * gameScale()).sp)
+        GameResultCard(
+            title = stringResource(R.string.you_did_it),
+            emoji = "🔺",
+            accent = ButtonType.ORANGE,
+            stars = 3,
+            stats = {
+                Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
                     Text(
-                        "Level $levels • $difficultyName",
-                        color = accentColors.base,
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                        fontSize = 16.sp.scaled(),
-                        maxLines = 1
+                        stringResource(R.string.you_built_the_pyramid),
+                        color = Color.White,
+                        style = AbTypography.fixed(17f * gameScale(), FontWeight.ExtraBold).copy(
+                            shadow = Shadow(Color.Black.copy(alpha = 0.22f), Offset(0f, 4f), 0f)
+                        ),
+                        textAlign = TextAlign.Center,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis
                     )
+                    GameStatChip(emoji = "🔺", value = "Level $levels • $difficultyName", color = Color(0xFFE65100))
                 }
+            },
+            buttons = {
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
-                    KidsActionButton(text = stringResource(R.string.continue_to_play), type = ButtonType.POSITIVE,
-                        onClick = { if (enabled) onPlayAgain() })
-                    KidsActionButton(text = stringResource(R.string.no_i_want_to_close), type = ButtonType.NEGATIVE,
-                        onClick = { if (enabled) onBack() })
+                    GameButton(
+                        text = stringResource(R.string.continue_to_play),
+                        icon = Icons.Rounded.PlayArrow, type = ButtonType.POSITIVE,
+                        onClick = { if (enabled) onPlayAgain() }
+                    )
+                    GameHomeButton(onClick = { if (enabled) onBack() })
                 }
             }
-
-            Box(
-                modifier = Modifier
-                    .offset(y = (-28).dp)
-                    .size(64.dp)
-                    .shadow(8.dp, CircleShape)
-                    .background(Color.White, CircleShape)
-                    .border(4.dp, Color.White, CircleShape),
-                contentAlignment = Alignment.Center
-            ) {
-                Text("🔺", fontSize = (32f * gameScale()).sp)
-            }
-        }
+        )
     }
 }
 
+// ── toy-box pyramid ──────────────────────────────────────────────────────────
+
+/** The size of one brick for a pyramid of [levels] rows. */
+private fun pyramidCellSize(levels: Int): Pair<Dp, Dp> {
+    val base = AppDimens.PyramidWidth.value
+    var w = base
+    var h = base
+    when (levels) {
+        2 -> { w = base * 1.9f; h = base * 1.2f }
+        3 -> { w = base * 1.3f; h = base * 0.9f }
+        4 -> { w = base * 1.1f; h = base * 0.7f }
+        5 -> { h = base * 0.6f }
+        6 -> { w = base * 0.95f; h = base * 0.56f }
+    }
+    return Pair(w.dp, h.dp)
+}
+
+/** A rainbow down the pyramid: pink at the top, then orange, green, sky, purple, indigo. */
+private fun pyramidBrickTone(colors: AbColors, row: Int): Color {
+    val tones = listOf(colors.accentPink, colors.accentOrange, colors.accentGreen, colors.brandSecondary, colors.accentPurple, colors.brandPrimary)
+    return tones[row % tones.size]
+}
+
+/**
+ * Bricks of a fully filled "top = left + right" triple that does not add up. A triple that contains the brick being typed
+ * into is left alone, so a number that is still being typed never flashes red.
+ */
+private fun pyramidClashMask(pyramid: List<List<Int?>>, selected: Pair<Int, Int>?): List<List<Boolean>> {
+    val mask: List<MutableList<Boolean>> = pyramid.map { row -> MutableList(row.size) { false } }
+    val n = pyramid.size
+    if (n < 2) return mask
+    for (r in 0 until n - 1) {
+        for (c in pyramid[r].indices) {
+            if (pyramid[r + 1].size <= c + 1) continue
+            val top = pyramid[r][c] ?: continue
+            val left = pyramid[r + 1][c] ?: continue
+            val right = pyramid[r + 1][c + 1] ?: continue
+            if (top == left + right) continue
+            if (selected != null) {
+                val inTriple = (selected.first == r && selected.second == c) ||
+                    (selected.first == r + 1 && (selected.second == c || selected.second == c + 1))
+                if (inTriple) continue
+            }
+            mask[r][c] = true
+            mask[r + 1][c] = true
+            mask[r + 1][c + 1] = true
+        }
+    }
+    return mask
+}
+
+// The bricks stack straight into a pyramid on the background: no box around them, the stepped shape itself is the pyramid.
 @Composable
 private fun PyramidGrid(
     levels: Int,
@@ -286,145 +338,186 @@ private fun PyramidGrid(
     selectedCell: Pair<Int, Int>?,
     onCellTap: (Int, Int) -> Unit
 ) {
-    Column(verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8), horizontalAlignment = Alignment.CenterHorizontally) {
-        val rows = pyramid.size
-        for (r in 0 until rows) {
-            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
-                // add spacer left to center the row like pyramid
-                val leftPadding = 0
-                Spacer(modifier = Modifier.width(leftPadding.dp))
-                for (c in 0 until pyramid[r].size) {
-                    val value = pyramid[r][c]
-                    val isEditable = editableMask.getOrNull(r)?.getOrNull(c) ?: false
-                    val isSelected = selectedCell?.first == r && selectedCell.second == c
-                    PyramidCell(levels, value = value, isEditable = isEditable, isSelected = isSelected) {
-                        onCellTap(r, c)
+    val clash = pyramidClashMask(pyramid, selectedCell)
+    val accent = remember { gameCardStyle(GameCategoryType.MATH_PYRAMID).light }
+    val cellSize = pyramidCellSize(levels)
+    val gap = AppDimens.Dimens8
+    val rows = pyramid.size
+
+    Box(
+        modifier = Modifier.graphicsLayer { alpha = if (pyramid.isEmpty()) 0f else 1f }
+    ) {
+        // the six-step pyramid has the most rows, so its rows sit closer together
+        val rowGap = if (levels >= 6) 4.dp else gap
+        Column(verticalArrangement = Arrangement.spacedBy(rowGap), horizontalAlignment = Alignment.CenterHorizontally) {
+            for (r in 0 until rows) {
+                Row(horizontalArrangement = Arrangement.spacedBy(gap)) {
+                    for (c in 0 until pyramid[r].size) {
+                        val value = pyramid[r][c]
+                        val isEditable = editableMask.getOrNull(r)?.getOrNull(c) ?: false
+                        val isSelected = selectedCell?.first == r && selectedCell.second == c
+                        val isClash = clash.getOrNull(r)?.getOrNull(c) ?: false
+                        PyramidCell(levels, r, c, value = value, isEditable = isEditable, isSelected = isSelected, clash = isClash) {
+                            onCellTap(r, c)
+                        }
                     }
                 }
             }
         }
     }
 }
+
 @Composable
 private fun PyramidCell(
     levels: Int,
+    row: Int,
+    col: Int,
     value: Int?,
     isEditable: Boolean,
     isSelected: Boolean,
+    clash: Boolean,
     onTap: () -> Unit
 ) {
-
+    val colors = LocalAbColors.current
+    val gs = gameScale()
     val interaction = remember { MutableInteractionSource() }
     val pressed by interaction.collectIsPressedAsState()
-
     val scale by animateFloatAsState(
         targetValue = if (pressed) 0.9f else 1f,
         label = ""
     )
 
-    val originalWidth = AppDimens.PyramidWidth.value
-    var width: Double = originalWidth.toDouble()
-    var height: Double = originalWidth.toDouble()
-    var baseColor = Color(0xFFE3F2FD)
+    val cellSize = pyramidCellSize(levels)
+    val width = cellSize.first
+    val height = cellSize.second
+    val tone = pyramidBrickTone(colors, row)
+    val conflict = clash && isEditable && value != null
+    val edge = (3f * gs).dp
+    val corner = min(height.value * 0.3f, 14f * gs).dp
+    val ink = Color(0xFF1E2470)
 
-    when (levels) {
-        2 -> {
-            width = (originalWidth * 1.9)
-            height = (originalWidth * 1.2)
-            baseColor = Color(0xFFE1F5FE)
-        }
-        3 -> {
-            width = (originalWidth * 1.3)
-            height = (originalWidth * 0.9)
-            baseColor = Color(0xFFF3E5F5)
-        }
-        4 -> {
-            width = (originalWidth * 1.1)
-            height = (originalWidth * 0.7)
-            baseColor = ColorLightYellow
-        }
-        5 -> {
-            height = (originalWidth * 0.6)
-            baseColor = Color(0xFFE8F5E9)
-        }
-        6 -> {
-            width = (originalWidth * 0.95)
-            height = (originalWidth * 0.56)
-            baseColor = Color(0xFFFFEBEE)
+    // Given bricks are white with a coloured rim; empty slots are pale; typed bricks are solid candy.
+    var face = Color.White
+    var rim = tone
+    var lip = tone.abDarkened(0.2f)
+    var rimWidth = 3f
+    var digit = ink
+    if (isEditable) {
+        if (value == null) {
+            face = tone.abBlended(Color.White, 0.7f)
+            digit = tone.abReadable(4.5f)
+        } else {
+            face = tone.abReadable(3f)
+            rim = Color.White.copy(alpha = 0.5f)
+            lip = face.abDarkened(0.3f)
+            rimWidth = 2f
+            digit = Color.White
         }
     }
+    if (conflict) {
+        face = colors.danger.abBlended(Color.White, 0.6f)
+        rim = colors.danger
+        lip = colors.danger.abDarkened(0.25f)
+        rimWidth = 3f
+        digit = colors.danger.abReadable(4.5f)
+    }
+    if (isSelected) {
+        face = colors.accentYellow.abBlended(Color.White, 0.55f)
+        rim = colors.brandPrimary
+        lip = colors.brandPrimary.abDarkened(0.2f)
+        rimWidth = 3.5f
+        digit = ink
+    }
 
-    val fontSize = height * 0.6
+    val label = value?.toString() ?: (if (isEditable && !isSelected) "?" else "")
 
-    Card(
+    Box(
         modifier = Modifier
-            .size(width.dp, height.dp)
+            .abPopIn(minOf(400, row * 70 + col * 20))
+            .abWobble(conflict)
             .graphicsLayer {
                 scaleX = scale
                 scaleY = scale
             }
+            .size(width, height)
             .clickable(
                 interactionSource = interaction,
                 indication = null
             ) {
                 if (isEditable) onTap()
-            },
-        shape = RoundedCornerShape(AppDimens.Dimens10),
-        colors = CardDefaults.cardColors(
-            containerColor = when {
-                isSelected -> baseColor.copy(alpha = 0.9f)
-                isEditable -> baseColor
-                else -> Color.White
             }
-        ),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = if (isSelected) AppDimens.Dimens8 else if (isEditable) AppDimens.Dimens4 else AppDimens.Dimens2
-        )
     ) {
-
+        // One toy block: a face with a glossy top, a rim, and a 3D lip under it.
         Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-
+            Modifier.fillMaxSize()
+                .then(if (isSelected) Modifier.abBreathe(0.04f, 1300) else Modifier)
+                .pyramidBrickFace(face, rim, lip, rimWidth.dp, corner, edge)
+        )
+        // Value or placeholder
+        Box(Modifier.fillMaxSize().padding(bottom = edge), contentAlignment = Alignment.Center) {
             Text(
-                text = when {
-                    value != null -> value.toString()
-                    isEditable -> "?"
-                    else -> ""
-                },
-                fontSize = fontSize.sp,
-                fontWeight = FontWeight.Bold,
-                fontFamily = FontFamily(Font(R.font.font_bold)),
-                color = when {
-                    value != null -> Color(0xFF3E2723)
-                    isEditable -> Color.Gray
-                    else -> Color.Transparent
-                }
+                text = label,
+                color = digit,
+                style = AbTypography.fixed(height.value * 0.6f, FontWeight.Black),
+                modifier = Modifier.abBounce(value)
             )
-
-            // ✅ Simple selected border (clean!)
-            if (isSelected) {
-                Box(
-                    modifier = Modifier
-                        .matchParentSize()
-                        .border(
-                            AppDimens.Dimens2,
-                            Color(0xFF000000),
-                            RoundedCornerShape(AppDimens.Dimens10)
-                        )
-                )
-            }
         }
     }
 }
+
+private fun Modifier.pyramidBrickFace(face: Color, rim: Color, lip: Color, rimWidth: Dp, corner: Dp, edge: Dp): Modifier {
+    val shape = RoundedCornerShape(corner)
+    return this
+        .padding(bottom = edge)
+        .drawBehind {
+            drawRoundRect(lip, Offset(0f, edge.toPx()), size, CornerRadius(corner.toPx()))
+        }
+        .background(face, shape)
+        .drawBehind {
+            drawRoundRect(
+                brush = Brush.verticalGradient(
+                    listOf(Color.White.copy(alpha = 0.4f), Color.Transparent),
+                    startY = 0f, endY = size.height / 2f
+                ),
+                cornerRadius = CornerRadius(corner.toPx())
+            )
+        }
+        .border(rimWidth, rim, shape)
+}
+
+/** A chunky candy key that squishes while it is pressed. */
+@Composable
+private fun PyramidKey(face: Color, side: Dp, onClick: () -> Unit, content: @Composable BoxScope.() -> Unit) {
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
+    val squash by animateFloatAsState(
+        targetValue = if (pressed) 0.9f else 1f,
+        animationSpec = spring(dampingRatio = 0.55f, stiffness = Spring.StiffnessMedium),
+        label = "pyramidKey"
+    )
+    Box(
+        modifier = Modifier
+            .size(side)
+            .graphicsLayer { scaleX = squash; scaleY = squash }
+            .clickable(interactionSource = interaction, indication = null, onClick = onClick)
+            .abToyTile(face, side * 0.3f, 4.dp),
+        contentAlignment = Alignment.Center,
+        content = content
+    )
+}
+
 @Composable
 fun KeypadCompose(onKey: (String) -> Unit) {
+    val colors = LocalAbColors.current
     val buttons = listOf(
         listOf("1", "2", "3"),
         listOf("4", "5", "6"),
         listOf("7", "8", "9"),
         listOf("Clear", "0", "Erase")
+    )
+    val fontSize = keyPadHeight.value * 0.55f
+    val keyText = AbTypography.fixed(fontSize, FontWeight.Black).copy(
+        shadow = Shadow(Color.Black.copy(alpha = 0.25f), Offset(0f, 3f), 0f)
     )
 
     Column(modifier = Modifier.wrapContentWidth(), verticalArrangement = Arrangement.spacedBy(if (DeviceInfo.isTablet)AppDimens.Dimens10 else AppDimens.Dimens6)) {
@@ -433,31 +526,28 @@ fun KeypadCompose(onKey: (String) -> Unit) {
                 row.forEach { label ->
                     when (label){
                         "Erase" ->{
-                            KidsKeyPad(
-                                icon = painterResource(R.drawable.ic_backspace),
-                                type = ButtonType.RED,
-                                width = keyPadHeight,
-                                height = keyPadHeight,
-                                onClick = { onKey("Erase") }
-                            )
+                            PyramidKey(face = colors.danger.abReadable(3f), side = keyPadHeight, onClick = { onKey("Erase") }) {
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_backspace),
+                                    contentDescription = null,
+                                    tint = Color.White,
+                                    modifier = Modifier.size(keyPadHeight * 0.55f)
+                                )
+                            }
                         }
                         "Clear" ->{
-                            KidsKeyPad(
-                                text = "C",
-                                type = ButtonType.RED,
-                                width = keyPadHeight,
-                                height = keyPadHeight,
-                                onClick = { onKey("Clear") }
-                            )
+                            PyramidKey(face = colors.danger.abReadable(3f), side = keyPadHeight, onClick = { onKey("Clear") }) {
+                                Text("C", style = keyText, color = Color.White)
+                            }
                         }
                         else ->{
-                            KidsKeyPad(
-                                text = label,
-                                type = ButtonType.GREEN,
-                                width = keyPadHeight,
-                                height = keyPadHeight,
+                            PyramidKey(
+                                face = colors.toyColor((label.toIntOrNull() ?: 1) - 1),
+                                side = keyPadHeight,
                                 onClick = { onKey(label) }
-                            )
+                            ) {
+                                Text(label, style = keyText, color = Color.White)
+                            }
                         }
                     }
                 }

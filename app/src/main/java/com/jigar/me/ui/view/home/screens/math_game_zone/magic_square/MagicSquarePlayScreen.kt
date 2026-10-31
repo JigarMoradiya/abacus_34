@@ -1,16 +1,21 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.magic_square
 
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
+import androidx.compose.ui.platform.LocalConfiguration
 
-import androidx.compose.animation.core.Animatable
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameCharacter
+
+import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -20,58 +25,78 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.layout.layout
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DeviceInfo
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
-import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
-import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abBlended
+import com.jigar.me.ui.view.ab.abReadable
+import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
+import com.jigar.me.ui.view.home.screens.math_game_zone.GameCategoryType
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameHomeButton
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameMascotPanel
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameResultCard
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameScoreboardPanel
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameStatChip
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abBounce
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abBreathe
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGamePill
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTray
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abWobble
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.toyColor
+import com.jigar.me.ui.view.home.screens.math_game_zone.gameCardStyle
 import com.jigar.me.ui.view.home.screens.math_game_zone.magic_square.components.MagicSquareUiState
 import com.jigar.me.ui.view.home.screens.math_game_zone.magic_square.viewmodel.MagicSquarePlayViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
-import com.jigar.me.ui.view.home.theme.getButtonColors
 import kotlinx.coroutines.delay
+import kotlin.math.PI
+import kotlin.math.cos
+import kotlin.math.max
+import kotlin.math.min
+import kotlin.math.sin
 
 private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
-private val BLUE = Color(0xFF0074D5)
 private val GREEN = Color(0xFF2E7D32)
-private val FIXED_BG = Color(0xFFEDE7F6)
-private val SOLVED_BG = Color(0xFFC8E6C9)
-private val SELECTED_BG = Color(0xFFFFE0B2)
-private val CHIP_GREY = Color(0xFF888888)
 
 private val msScale: Float
     get() = if (DeviceInfo.isLargeTablet) 1.7f else if (DeviceInfo.isTablet) 1.45f else 1.0f
@@ -84,7 +109,11 @@ fun MagicSquarePlayScreen(
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val baseCheer = remember { randomGameCheer() }
     val s = msScale
-    val cell = (64f * s).dp
+    val kitScale = LocalAbScale.current.factor
+    val colors = LocalAbColors.current
+    // 3 rows + the sums row + the number chips must fit a short phone screen
+    val cell = minOf((64f * s).dp, ((LocalConfiguration.current.screenHeightDp - 150) / 4f).dp)
+    val trayAccent = remember { gameCardStyle(GameCategoryType.MAGIC_SQUARE).light }
     LaunchedEffect(Unit) { viewModel.start() }
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -96,14 +125,14 @@ fun MagicSquarePlayScreen(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     BackButtonWithText(title = str(R.string.magic_square_game), onBackClick = onBackClick)
                     Spacer(Modifier.weight(1f))
-                    Hud(viewModel.config.timerSeconds, viewModel.config.puzzlesGoal, state.timeLeft, state.puzzlesSolved)
+                    Hud(viewModel.config.timerSeconds, viewModel.config.puzzlesGoal, state.timeLeft, state.puzzlesSolved, s)
                 }
                 Text(
                     text = str(R.string.magic_square_make_target, viewModel.target),
-                    color = ORANGE, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 20.sp.scaled(),
+                    color = ORANGE,
+                    style = AbTypography.fixed(22f * kitScale, FontWeight.ExtraBold),
                     modifier = Modifier.align(Alignment.Center)
-                        .clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.9f))
-                        .border(2.dp, ORANGE_BORDER, RoundedCornerShape(100f))
+                        .abGamePill(ORANGE_BORDER)
                         .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
                 )
             }
@@ -119,32 +148,29 @@ fun MagicSquarePlayScreen(
                         else -> baseCheer
                     },
                     celebrate = state.justSolved, s = s,
-                    modifier = Modifier.weight(1f).fillMaxHeight()
-                )
+                    modifier = Modifier.weight(1f).fillMaxHeight(), character = GameCharacter.Unicorn)
 
                 Column(
                     modifier = Modifier.fillMaxHeight(),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
-                    GridView(state, viewModel, cell, s)
+                    GridView(state, viewModel, cell, s, trayAccent)
 
                     Spacer(Modifier.height(AppDimens.Dimens16))
 
                     // Number palette
                     Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10), verticalAlignment = Alignment.CenterVertically) {
                         state.palette.forEach { n ->
-                            val interaction = remember { MutableInteractionSource() }
-                            Box(
-                                contentAlignment = Alignment.Center,
-                                modifier = Modifier
-                                    .size(cell * 0.8f)
-                                    .clip(RoundedCornerShape(AppDimens.Dimens12))
-                                    .background(BLUE)
-                                    .clickable(interactionSource = interaction, indication = null) { viewModel.placeNumber(n) }
-                            ) {
-                                Text("$n", color = Color.White,
-                                    fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (30f * s).sp)
+                            MagicSquareKey(face = colors.toyColor(n - 1), side = cell * 0.8f, onClick = { viewModel.placeNumber(n) }) {
+                                Text(
+                                    "$n",
+                                    style = AbTypography.fixed(30f * s, FontWeight.Black).copy(
+                                        shadow = Shadow(Color.Black.copy(alpha = 0.25f), Offset(0f, 3f), 0f)
+                                    ),
+                                    color = Color.White,
+                                    modifier = Modifier.abBounce(n)
+                                )
                             }
                         }
                     }
@@ -158,165 +184,280 @@ fun MagicSquarePlayScreen(
             ResultOverlay(state.score, state.puzzlesSolved, viewModel.bestScore,
                 onPlayAgain = { viewModel.start() }, onBack = onBackClick)
         }
-    }
-}
 
-@Composable
-private fun GridView(state: MagicSquareUiState, viewModel: MagicSquarePlayViewModel, cell: androidx.compose.ui.unit.Dp, s: Float) {
-    Column(verticalArrangement = Arrangement.spacedBy((6f * s).dp)) {
-        for (r in 0 until 3) {
-            Row(horizontalArrangement = Arrangement.spacedBy((6f * s).dp), verticalAlignment = Alignment.CenterVertically) {
-                for (c in 0 until 3) {
-                    CellView(state, viewModel, r * 3 + c, cell, s)
-                }
-                SumChip(viewModel.rowSum(state.grid, r), viewModel.rowComplete(state.grid, r), cell, s)
-            }
-        }
-        Row(horizontalArrangement = Arrangement.spacedBy((6f * s).dp), verticalAlignment = Alignment.CenterVertically) {
-            for (c in 0 until 3) {
-                Box(modifier = Modifier.width(cell), contentAlignment = Alignment.Center) { // center the chip under its column
-                    SumChip(viewModel.colSum(state.grid, c), viewModel.colComplete(state.grid, c), cell, s)
-                }
-            }
-            Spacer(Modifier.size(cell * 0.72f, cell * 0.5f)) // filler under the row-chip column
+        // Debug builds only: lets the lead render the real result overlay without playing.
+        if (AbDebugFlags.showResultEnabled) {
+            ResultOverlay(state.score, state.puzzlesSolved, viewModel.bestScore,
+                onPlayAgain = { viewModel.start() }, onBack = onBackClick)
         }
     }
 }
 
+// ── toy-box board ────────────────────────────────────────────────────────────
+
+/** Reports the size of the board itself while the tray around it is drawn outward, so the layout keeps its old size. */
+private fun Modifier.magicOutward(width: Dp, height: Dp, inset: Dp): Modifier = this.layout { measurable, _ ->
+    val placeable = measurable.measure(Constraints())
+    val shift = inset.roundToPx()
+    layout(width.roundToPx(), height.roundToPx()) { placeable.place(-shift, -shift) }
+}
+
+private fun rowWrong(state: MagicSquareUiState, viewModel: MagicSquarePlayViewModel, r: Int): Boolean =
+    (0..2).all { state.grid[r * 3 + it] != 0 } && viewModel.rowSum(state.grid, r) != viewModel.target
+
+private fun colWrong(state: MagicSquareUiState, viewModel: MagicSquarePlayViewModel, c: Int): Boolean =
+    (0..2).all { state.grid[it * 3 + c] != 0 } && viewModel.colSum(state.grid, c) != viewModel.target
+
+// The board sits in a toy tray. The tray grows outward so the layout keeps its old size.
 @Composable
-private fun CellView(state: MagicSquareUiState, viewModel: MagicSquarePlayViewModel, i: Int, cell: androidx.compose.ui.unit.Dp, s: Float) {
+private fun GridView(
+    state: MagicSquareUiState,
+    viewModel: MagicSquarePlayViewModel,
+    cell: Dp,
+    s: Float,
+    accent: Color
+) {
+    val gap = (6f * s).dp
+    val boardW = cell * 3 + cell * 0.72f + gap * 3
+    val boardH = cell * 3 + cell * 0.5f + gap * 3
+    val inset = 8.dp
+    Box(
+        modifier = Modifier
+            .magicOutward(boardW, boardH, inset)
+            .abToyTray(accent, inset)
+    ) {
+        Box(modifier = Modifier.size(boardW, boardH), contentAlignment = Alignment.Center) {
+            Column(verticalArrangement = Arrangement.spacedBy(gap)) {
+                for (r in 0 until 3) {
+                    Row(horizontalArrangement = Arrangement.spacedBy(gap), verticalAlignment = Alignment.CenterVertically) {
+                        for (c in 0 until 3) {
+                            val i = r * 3 + c
+                            val lineWrong = state.grid[i] != 0 && !state.fixed[i] &&
+                                (rowWrong(state, viewModel, r) || colWrong(state, viewModel, c))
+                            CellView(state, viewModel, i, cell, s, lineWrong)
+                        }
+                        SumChip(
+                            viewModel.rowSum(state.grid, r), viewModel.rowComplete(state.grid, r),
+                            rowWrong(state, viewModel, r), cell, s
+                        )
+                    }
+                }
+                Row(horizontalArrangement = Arrangement.spacedBy(gap), verticalAlignment = Alignment.CenterVertically) {
+                    for (c in 0 until 3) {
+                        Box(modifier = Modifier.width(cell), contentAlignment = Alignment.Center) { // center the chip under its column
+                            SumChip(
+                                viewModel.colSum(state.grid, c), viewModel.colComplete(state.grid, c),
+                                colWrong(state, viewModel, c), cell, s
+                            )
+                        }
+                    }
+                    Spacer(Modifier.size(cell * 0.72f, cell * 0.5f)) // filler under the row-chip column
+                }
+            }
+            if (state.justSolved) {
+                MagicSquareSolvedBurst(side = cell * 3, unit = s)
+            }
+        }
+    }
+}
+
+@Composable
+private fun CellView(
+    state: MagicSquareUiState,
+    viewModel: MagicSquarePlayViewModel,
+    i: Int,
+    cell: Dp,
+    s: Float,
+    lineWrong: Boolean
+) {
+    val colors = LocalAbColors.current
     val value = state.grid[i]
     val isFixed = state.fixed[i]
     val isSelected = state.selectedIndex == i
-    val bg = when {
-        state.justSolved -> SOLVED_BG
-        isFixed -> FIXED_BG
-        value != 0 -> BLUE
-        isSelected -> SELECTED_BG
-        else -> Color.White
+
+    // given numbers are purple, yours are blue, empty slots are pale, the picked slot is sunny
+    val face = when {
+        state.justSolved -> colors.accentGreen.abReadable(3f)
+        isFixed -> colors.accentPurple.abReadable(3f)
+        value != 0 -> colors.brandPrimary.abReadable(3f)
+        isSelected -> colors.accentYellow.abBlended(Color.White, 0.45f)
+        else -> colors.brandSecondary.abBlended(Color.White, 0.72f)
     }
-    val fg = if (value != 0 && !isFixed && !state.justSolved) Color.White else Color.Black
-    val borderColor = if (isSelected) ORANGE_BORDER else Color.Black.copy(alpha = 0.12f)
+    val corner = (14f * s).dp
     val scale by animateFloatAsState(if (state.justSolved) 1.05f else 1f, spring(dampingRatio = 0.5f), label = "")
+
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
             .graphicsLayer { scaleX = scale; scaleY = scale }
+            .then(if (isSelected) Modifier.abBreathe(0.045f, 1300) else Modifier)
             .size(cell)
-            .clip(RoundedCornerShape(AppDimens.Dimens12))
-            .background(bg)
-            .border(if (isSelected) 3.dp else 1.dp, borderColor, RoundedCornerShape(AppDimens.Dimens12))
-            .clickable { viewModel.tapCell(i) }
+            .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null) { viewModel.tapCell(i) }
+            .abToyTile(face, corner, (3f * s).dp)
+            .then(
+                if (isSelected) Modifier.border((3f * s).dp, colors.accentOrange, RoundedCornerShape(corner))
+                else Modifier
+            )
     ) {
-        Text(if (value == 0) "" else "$value", color = fg,
-            fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (30f * s).sp)
+        Text(
+            if (value == 0) "" else "$value",
+            style = AbTypography.fixed(30f * s, FontWeight.Black).copy(
+                shadow = Shadow(Color.Black.copy(alpha = 0.25f), Offset(0f, 3f), 0f)
+            ),
+            color = Color.White,
+            modifier = Modifier.abBounce(value).abWobble(lineWrong)
+        )
     }
 }
 
+/**
+ * A row/column total chip. Neutral while it fills up, green and popping once it hits the target, red and shaking if the
+ * line is full but does not add up.
+ */
 @Composable
-private fun SumChip(sum: Int, complete: Boolean, cell: androidx.compose.ui.unit.Dp, s: Float) {
+private fun SumChip(sum: Int, complete: Boolean, wrong: Boolean, cell: Dp, s: Float) {
+    val colors = LocalAbColors.current
+    val face = when {
+        complete -> colors.accentGreen.abReadable(3f)
+        wrong -> colors.danger.abReadable(3f)
+        else -> colors.brandSecondary.abBlended(Color.White, 0.78f)
+    }
+    val ink = if (complete || wrong) Color.White else colors.brandPrimaryDark
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
+            .abBounce(complete, 1.22f)
+            .abWobble(wrong)
             .size(cell * 0.72f, cell * 0.5f)
-            .clip(RoundedCornerShape(AppDimens.Dimens8))
-            .background(if (complete) GREEN else Color.White.copy(alpha = 0.7f))
+            .abToyTile(face, (10f * s).dp, (3f * s).dp)
     ) {
-        Text("$sum", color = if (complete) Color.White else CHIP_GREY,
-            fontFamily = FontFamily(Font(R.font.font_bold)), fontSize = (18f * s).sp)
+        Text(
+            "$sum", color = ink,
+            style = AbTypography.fixed(18f * s, FontWeight.Black),
+            modifier = Modifier.abBounce(sum)
+        )
     }
+}
+
+/** A chunky candy key that squishes while it is pressed. */
+@Composable
+private fun MagicSquareKey(face: Color, side: Dp, onClick: () -> Unit, content: @Composable BoxScope.() -> Unit) {
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
+    val squash by animateFloatAsState(
+        targetValue = if (pressed) 0.9f else 1f,
+        animationSpec = spring(dampingRatio = 0.55f, stiffness = Spring.StiffnessMedium),
+        label = "magicSquareKey"
+    )
+    Box(
+        modifier = Modifier
+            .size(side)
+            .graphicsLayer { scaleX = squash; scaleY = squash }
+            .clickable(interactionSource = interaction, indication = null, onClick = onClick)
+            .abToyTile(face, side * 0.3f, 4.dp),
+        contentAlignment = Alignment.Center,
+        content = content
+    )
+}
+
+/** A burst of stars from the board's centre when the square is solved. It starts the moment it appears and fades out. */
+@Composable
+private fun MagicSquareSolvedBurst(side: Dp, unit: Float) {
+    val colors = LocalAbColors.current
+    var t by remember { mutableFloatStateOf(0f) }
+    LaunchedEffect(Unit) {
+        val start = withFrameNanos { it }
+        var elapsed = 0f
+        while (elapsed < 1.2f) {
+            withFrameNanos { now ->
+                elapsed = (now - start) / 1_000_000_000f
+                t = elapsed
+            }
+        }
+    }
+    Canvas(modifier = Modifier.requiredSize(side)) {
+        val tt = t
+        val sidePx = size.width
+        val centre = Offset(size.width / 2f, size.height / 2f)
+        for (k in 0 until 12) {
+            val angle = k / 12.0 * 2.0 * PI + 0.3
+            val progress = min(tt / 1f, 1f)
+            val eased = 1f - (1f - progress) * (1f - progress) * (1f - progress)
+            val far = sidePx * (if (k % 2 == 0) 0.62f else 0.46f)
+            val dist = far * eased
+            val grow = min(tt / 0.25f, 1f)
+            val fade = if (progress < 0.6f) 1f else max(0f, 1f - (progress - 0.6f) / 0.4f)
+            val star = Offset(centre.x + (cos(angle) * dist).toFloat(), centre.y + (sin(angle) * dist).toFloat())
+            val outer = (if (k % 2 == 0) 11f else 8f) * unit * density * grow
+            drawMagicSquareStar(star, outer, tt * 220f, colors.toyColor(k).copy(alpha = fade))
+        }
+    }
+}
+
+private fun DrawScope.drawMagicSquareStar(centre: Offset, outer: Float, degrees: Float, color: Color) {
+    val inner = outer * 0.45f
+    val path = Path()
+    for (p in 0 until 10) {
+        val radius = if (p % 2 == 0) outer else inner
+        val a = (p * 36.0 - 90.0) * PI / 180.0
+        val x = centre.x + (cos(a) * radius).toFloat()
+        val y = centre.y + (sin(a) * radius).toFloat()
+        if (p == 0) path.moveTo(x, y) else path.lineTo(x, y)
+    }
+    path.close()
+    rotate(degrees, pivot = centre) { drawPath(path, color) }
 }
 
 @Composable private fun str(id: Int): String = androidx.compose.ui.res.stringResource(id)
 @Composable private fun str(id: Int, vararg args: Any): String = androidx.compose.ui.res.stringResource(id, *args)
 
 @Composable
-private fun Hud(timerSeconds: Int?, puzzlesGoal: Int?, timeLeft: Int, puzzlesSolved: Int) {
-    val font = FontFamily(Font(R.font.font_bold))
+private fun Hud(timerSeconds: Int?, puzzlesGoal: Int?, timeLeft: Int, puzzlesSolved: Int, s: Float) {
+    val colors = LocalAbColors.current
+    val kitScale = LocalAbScale.current.factor
+    val style = AbTypography.fixed(20f * kitScale, FontWeight.ExtraBold)
     Row(
         horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16), verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.padding(end = AppDimens.Dimens12).clip(RoundedCornerShape(AppDimens.Dimens12))
-            .background(Color.White.copy(alpha = 0.75f)).padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)
+        modifier = Modifier.padding(end = AppDimens.Dimens12).abGamePill()
+            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)
     ) {
-        if (timerSeconds != null) Text("⏱ $timeLeft", color = Color.Black, fontFamily = font, fontSize = 16.sp.scaled())
-        else if (puzzlesGoal != null) Text("🧩 $puzzlesSolved/$puzzlesGoal", color = Color.Black, fontFamily = font, fontSize = 16.sp.scaled())
+        if (timerSeconds != null) Text("⏱ $timeLeft", color = colors.brandPrimaryDark, style = style)
+        else if (puzzlesGoal != null) Text("🧩 $puzzlesSolved/$puzzlesGoal", color = colors.brandPrimaryDark, style = style)
     }
 }
+
+// ── result ───────────────────────────────────────────────────────────
 
 @Composable
 private fun ResultOverlay(score: Int, puzzlesSolved: Int, bestScore: Int, onPlayAgain: () -> Unit, onBack: () -> Unit) {
     val starCount = when { puzzlesSolved >= 5 -> 3; puzzlesSolved >= 3 -> 2; else -> 1 }
-    val accentColors = getButtonColors(ButtonType.ORANGE)
     var enabled by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) { delay(1000); enabled = true }
 
     Box(modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)), contentAlignment = Alignment.Center) {
         LaunchedEffect(Unit) { if (starCount >= 2) AudioPlayerManager.playSoundClap() else AudioPlayerManager.playSoundWin() }
-        // "Candy Pop" celebration card — saturated gradient block with a white badge overlapping the top edge.
-        Box(modifier = Modifier.fillMaxWidth(0.6f), contentAlignment = Alignment.TopCenter) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .shadow(20.dp, RoundedCornerShape(AppDimens.Dimens20 * 1.2f), ambientColor = accentColors.base, spotColor = accentColors.base)
-                    .background(accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20 * 1.2f))
-                    .padding(horizontal = AppDimens.Dimens30, vertical = AppDimens.Dimens20),
-                horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
-            ) {
-                Spacer(Modifier.height(AppDimens.Dimens20))
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text("🧩", fontSize = (28f * gameScale()).sp)
-                    Text(
-                        str(R.string.balloon_great_job),
-                        color = Color.White,
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                        fontSize = 30.sp.scaled(),
-                        style = TextStyle(shadow = Shadow(color = accentColors.base.copy(alpha = 0.9f), offset = Offset(1.5f, 1.5f), blurRadius = 0f)),
-                        modifier = Modifier.padding(horizontal = AppDimens.Dimens8)
-                    )
-                    Text("✨", fontSize = (28f * gameScale()).sp)
+        GameResultCard(
+            title = str(R.string.balloon_great_job),
+            emoji = "🧩",
+            accent = ButtonType.PURPLE,
+            stars = starCount,
+            score = str(R.string.balloon_final_score) + ": $score",
+            stats = {
+                Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
+                    GameStatChip(emoji = "🧩", value = "$puzzlesSolved", color = GREEN)
+                    GameStatChip(emoji = "🏆", value = "$bestScore", color = ORANGE)
                 }
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8), verticalAlignment = Alignment.Bottom) {
-                    BigStar(starCount >= 1, 32, 150); BigStar(starCount >= 2, 40, 400); BigStar(starCount >= 3, 32, 650)
-                }
-                Text(str(R.string.balloon_final_score) + ": $score", color = Color.White,
-                    fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 26.sp.scaled())
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)) {
-                    StatChip("🧩", puzzlesSolved, GREEN); StatChip("🏆", bestScore, ORANGE_BORDER)
-                }
+            },
+            buttons = {
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
-                    KidsActionButton(text = str(R.string.balloon_play_again), type = ButtonType.POSITIVE, onClick = { if (enabled) onPlayAgain() })
-                    KidsActionButton(text = str(R.string.balloon_back), type = ButtonType.NEGATIVE, onClick = { if (enabled) onBack() })
+                    GameButton(
+                        text = str(R.string.balloon_play_again),
+                        icon = Icons.Rounded.Refresh, type = ButtonType.POSITIVE,
+                        onClick = { if (enabled) onPlayAgain() }
+                    )
+                    GameHomeButton(onClick = { if (enabled) onBack() })
                 }
             }
-
-            Box(
-                modifier = Modifier
-                    .offset(y = (-28).dp)
-                    .size(64.dp)
-                    .shadow(8.dp, CircleShape)
-                    .background(Color.White, CircleShape)
-                    .border(4.dp, Color.White, CircleShape),
-                contentAlignment = Alignment.Center
-            ) {
-                Text("🧩", fontSize = 32.sp)
-            }
-        }
+        )
     }
-}
-
-@Composable
-private fun StatChip(emoji: String, value: Int, color: Color) {
-    Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4), verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.clip(RoundedCornerShape(100f)).background(Color.White)
-            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)) {
-        Text(emoji, fontSize = (16f * gameScale()).sp)
-        Text("$value", color = color, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 20.sp.scaled())
-    }
-}
-
-@Composable
-private fun BigStar(earned: Boolean, sizeSp: Int, delayMs: Long) {
-    val scale = remember { Animatable(0.01f) }
-    LaunchedEffect(Unit) { delay(delayMs); scale.animateTo(1f, spring(dampingRatio = 0.5f)) }
-    Text("⭐", fontSize = (sizeSp * gameScale()).sp, modifier = Modifier.graphicsLayer { scaleX = scale.value; scaleY = scale.value; alpha = if (earned) 1f else 0.35f })
 }

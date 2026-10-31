@@ -1,5 +1,8 @@
 package com.jigar.me.ui.view.home.navigation
 
+import com.jigar.me.ui.view.ab.AbWorld
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameFrame
+
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -277,6 +280,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.MathGameZone.route) {
+            GameFrame(AbWorld.Meadow) {
             MathGameZoneScreenRoute(
                 onBackClick = { navController.safePopBackStack() },
                 onNavigateToNumberSequencePuzzle = {
@@ -344,12 +348,16 @@ fun HomeNavGraph(
                 },
             )
         }
+        }
 
         composable(route = RouteNavigation.TrophyRoom.route) {
+            GameFrame(AbWorld.Meadow) {
             TrophyRoomScreen(onBackClick = { navController.safePopBackStack() })
+        }
         }
 
         composable(route = RouteNavigation.NumberSequencePuzzleHome.route) {
+            GameFrame(AbWorld.Twilight) {
             NumberSequencePuzzleHomeRoute(
                 navController = navController,
                 homeActivityViewModel = homeActivityViewModel,
@@ -359,6 +367,7 @@ fun HomeNavGraph(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(
             route = RouteNavigation.NumberSequencePuzzlePlay.route,
@@ -366,14 +375,17 @@ fun HomeNavGraph(
                 navArgument("type") { type = NavType.IntType }
             )
         ) { backStackEntry ->
+            GameFrame(AbWorld.Twilight) {
             val type = backStackEntry.arguments?.getInt("type") ?: 3
             NumberSequencePuzzlePlayRoute(
                 navController = navController,
                 gridSize = type
             )
         }
+        }
 
         composable(route = RouteNavigation.SudokuHome.route) {
+            GameFrame(AbWorld.Lagoon) {
             SudokuHomeRoute(
                 navController = navController,
                 homeActivityViewModel = homeActivityViewModel,
@@ -384,6 +396,7 @@ fun HomeNavGraph(
                 }
             )
         }
+        }
 
         composable(
             route = RouteNavigation.SudokuPlay.route,
@@ -393,10 +406,13 @@ fun HomeNavGraph(
                 navArgument("isNewPuzzle") { type = NavType.BoolType }
             )
         ) {
+            GameFrame(AbWorld.Lagoon) {
             SudokuPlayRoute(navController = navController)
+        }
         }
 
         composable(route = RouteNavigation.MathPyramidHome.route) {
+            GameFrame(AbWorld.Meadow) {
             MathPyramidHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { levels, difficulty ->
@@ -404,6 +420,7 @@ fun HomeNavGraph(
                 },
                 onBackClick = { navController.safePopBackStack() }
             )
+        }
         }
 
         composable(
@@ -413,6 +430,7 @@ fun HomeNavGraph(
                 navArgument("difficulty") { type = NavType.StringType }
             )
         ) { backStackEntry ->
+            GameFrame(AbWorld.Meadow) {
             val levels = backStackEntry.arguments?.getInt("levels") ?: 4
             val difficultyName = backStackEntry.arguments?.getString("difficulty")
             MathPyramidPlayRoute(
@@ -421,8 +439,10 @@ fun HomeNavGraph(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(route = RouteNavigation.TargetNumberHome.route) {
+            GameFrame(AbWorld.Lagoon) {
             TargetNumberHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { level, diff ->
@@ -430,6 +450,7 @@ fun HomeNavGraph(
                 },
                 onBackClick = { navController.safePopBackStack() }
             )
+        }
         }
 
         composable(
@@ -439,12 +460,15 @@ fun HomeNavGraph(
                 navArgument("target_diff") { type = NavType.StringType }
             )
         ) {
+            GameFrame(AbWorld.Lagoon) {
             TargetNumberPlayRoute(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(route = RouteNavigation.BalloonPopHome.route) {
+            GameFrame(AbWorld.Sunset) {
             BalloonPopHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -453,6 +477,7 @@ fun HomeNavGraph(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(
             route = RouteNavigation.BalloonPopPlay.route,
@@ -460,12 +485,15 @@ fun HomeNavGraph(
                 navArgument("balloon_diff") { type = NavType.StringType }
             )
         ) {
+            GameFrame(AbWorld.Sunset) {
             BalloonPopPlayRoute(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(route = RouteNavigation.SpeedCompareHome.route) {
+            GameFrame(AbWorld.Sunset) {
             SpeedCompareHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -477,6 +505,7 @@ fun HomeNavGraph(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(
             route = RouteNavigation.SpeedComparePlay.route,
@@ -484,9 +513,11 @@ fun HomeNavGraph(
                 navArgument("speed_diff") { type = NavType.StringType }
             )
         ) {
+            GameFrame(AbWorld.Sunset) {
             SpeedComparePlayRoute(
                 onBackClick = { navController.safePopBackStack() }
             )
+        }
         }
 
         composable(
@@ -495,12 +526,15 @@ fun HomeNavGraph(
                 navArgument("speed_duel_diff") { type = NavType.StringType }
             )
         ) {
+            GameFrame(AbWorld.Sunset) {
             SpeedCompareDuelRoute(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(route = RouteNavigation.MissingOperatorHome.route) {
+            GameFrame(AbWorld.Lagoon) {
             MissingOperatorHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -509,6 +543,7 @@ fun HomeNavGraph(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(
             route = RouteNavigation.MissingOperatorPlay.route,
@@ -516,12 +551,15 @@ fun HomeNavGraph(
                 navArgument("missing_op_diff") { type = NavType.StringType }
             )
         ) {
+            GameFrame(AbWorld.Lagoon) {
             MissingOperatorPlayRoute(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(route = RouteNavigation.MagicSquareHome.route) {
+            GameFrame(AbWorld.Meadow) {
             MagicSquareHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -530,6 +568,7 @@ fun HomeNavGraph(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(
             route = RouteNavigation.MagicSquarePlay.route,
@@ -537,12 +576,15 @@ fun HomeNavGraph(
                 navArgument("magic_square_diff") { type = NavType.StringType }
             )
         ) {
+            GameFrame(AbWorld.Meadow) {
             MagicSquarePlayRoute(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(route = RouteNavigation.CalcudokuHome.route) {
+            GameFrame(AbWorld.Lagoon) {
             CalcudokuHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -551,6 +593,7 @@ fun HomeNavGraph(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(
             route = RouteNavigation.CalcudokuPlay.route,
@@ -558,12 +601,15 @@ fun HomeNavGraph(
                 navArgument("calcudoku_diff") { type = NavType.StringType }
             )
         ) {
+            GameFrame(AbWorld.Lagoon) {
             CalcudokuPlayRoute(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(route = RouteNavigation.Merge2048Home.route) {
+            GameFrame(AbWorld.Meadow) {
             Merge2048HomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -572,6 +618,7 @@ fun HomeNavGraph(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(
             route = RouteNavigation.Merge2048Play.route,
@@ -579,12 +626,15 @@ fun HomeNavGraph(
                 navArgument("merge2048_diff") { type = NavType.StringType }
             )
         ) {
+            GameFrame(AbWorld.Meadow) {
             Merge2048PlayRoute(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(route = RouteNavigation.EquationMatchHome.route) {
+            GameFrame(AbWorld.Lagoon) {
             EquationMatchHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -593,6 +643,7 @@ fun HomeNavGraph(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(
             route = RouteNavigation.EquationMatchPlay.route,
@@ -600,12 +651,15 @@ fun HomeNavGraph(
                 navArgument("equation_match_diff") { type = NavType.StringType }
             )
         ) {
+            GameFrame(AbWorld.Lagoon) {
             EquationMatchPlayRoute(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(route = RouteNavigation.CrossMathHome.route) {
+            GameFrame(AbWorld.Lagoon) {
             CrossMathHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff, level ->
@@ -613,6 +667,7 @@ fun HomeNavGraph(
                 },
                 onBackClick = { navController.safePopBackStack() }
             )
+        }
         }
 
         composable(
@@ -622,6 +677,7 @@ fun HomeNavGraph(
                 navArgument("cross_math_level") { type = NavType.IntType }
             )
         ) {
+            GameFrame(AbWorld.Lagoon) {
             CrossMathPlayRoute(
                 onBackClick = { navController.safePopBackStack() },
                 onNextLevel = { diff, level ->
@@ -632,8 +688,10 @@ fun HomeNavGraph(
                 }
             )
         }
+        }
 
         composable(route = RouteNavigation.NumberPathHome.route) {
+            GameFrame(AbWorld.Meadow) {
             NumberPathHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff, level ->
@@ -641,6 +699,7 @@ fun HomeNavGraph(
                 },
                 onBackClick = { navController.safePopBackStack() }
             )
+        }
         }
 
         composable(
@@ -650,6 +709,7 @@ fun HomeNavGraph(
                 navArgument("number_path_level") { type = NavType.IntType }
             )
         ) {
+            GameFrame(AbWorld.Meadow) {
             NumberPathPlayRoute(
                 onBackClick = { navController.safePopBackStack() },
                 onNextLevel = { diff, level ->
@@ -660,8 +720,10 @@ fun HomeNavGraph(
                 }
             )
         }
+        }
 
         composable(route = RouteNavigation.TrueFalseHome.route) {
+            GameFrame(AbWorld.Sunset) {
             TrueFalseHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -670,6 +732,7 @@ fun HomeNavGraph(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(
             route = RouteNavigation.TrueFalsePlay.route,
@@ -677,12 +740,15 @@ fun HomeNavGraph(
                 navArgument("true_false_diff") { type = NavType.StringType }
             )
         ) {
+            GameFrame(AbWorld.Sunset) {
             TrueFalsePlayRoute(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(route = RouteNavigation.PlaceValueHome.route) {
+            GameFrame(AbWorld.Twilight) {
             PlaceValueHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -691,6 +757,7 @@ fun HomeNavGraph(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(
             route = RouteNavigation.PlaceValuePlay.route,
@@ -698,12 +765,15 @@ fun HomeNavGraph(
                 navArgument("place_value_diff") { type = NavType.StringType }
             )
         ) {
+            GameFrame(AbWorld.Twilight) {
             PlaceValuePlayRoute(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(route = RouteNavigation.ClockMasterHome.route) {
+            GameFrame(AbWorld.Twilight) {
             ClockMasterHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -712,6 +782,7 @@ fun HomeNavGraph(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(
             route = RouteNavigation.ClockMasterPlay.route,
@@ -719,12 +790,15 @@ fun HomeNavGraph(
                 navArgument("clock_master_diff") { type = NavType.StringType }
             )
         ) {
+            GameFrame(AbWorld.Twilight) {
             ClockMasterPlayRoute(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(route = RouteNavigation.MathBingoHome.route) {
+            GameFrame(AbWorld.Sunset) {
             MathBingoHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -733,6 +807,7 @@ fun HomeNavGraph(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(
             route = RouteNavigation.MathBingoPlay.route,
@@ -740,12 +815,15 @@ fun HomeNavGraph(
                 navArgument("math_bingo_diff") { type = NavType.StringType }
             )
         ) {
+            GameFrame(AbWorld.Sunset) {
             MathBingoPlayRoute(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(route = RouteNavigation.KakuroHome.route) {
+            GameFrame(AbWorld.Lagoon) {
             KakuroHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff, level ->
@@ -753,6 +831,7 @@ fun HomeNavGraph(
                 },
                 onBackClick = { navController.safePopBackStack() }
             )
+        }
         }
 
         composable(
@@ -762,6 +841,7 @@ fun HomeNavGraph(
                 navArgument("kakuro_level") { type = NavType.IntType }
             )
         ) {
+            GameFrame(AbWorld.Lagoon) {
             KakuroPlayRoute(
                 onBackClick = { navController.safePopBackStack() },
                 onNextLevel = { diff, level ->
@@ -772,8 +852,10 @@ fun HomeNavGraph(
                 }
             )
         }
+        }
 
         composable(route = RouteNavigation.NumberDetectiveHome.route) {
+            GameFrame(AbWorld.Twilight) {
             NumberDetectiveHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -782,6 +864,7 @@ fun HomeNavGraph(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(
             route = RouteNavigation.NumberDetectivePlay.route,
@@ -789,12 +872,15 @@ fun HomeNavGraph(
                 navArgument("number_detective_diff") { type = NavType.StringType }
             )
         ) {
+            GameFrame(AbWorld.Twilight) {
             NumberDetectivePlayRoute(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(route = RouteNavigation.NumberSnakeHome.route) {
+            GameFrame(AbWorld.Lagoon) {
             NumberSnakeHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -803,6 +889,7 @@ fun HomeNavGraph(
                 onBackClick = { navController.safePopBackStack() }
             )
         }
+        }
 
         composable(
             route = RouteNavigation.NumberSnakePlay.route,
@@ -810,9 +897,11 @@ fun HomeNavGraph(
                 navArgument("number_snake_diff") { type = NavType.StringType }
             )
         ) {
+            GameFrame(AbWorld.Lagoon) {
             NumberSnakePlayRoute(
                 onBackClick = { navController.safePopBackStack() }
             )
+        }
         }
 
         composable(route = RouteNavigation.Settings.route) {

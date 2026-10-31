@@ -30,6 +30,10 @@ import androidx.compose.ui.unit.sp
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorPrimary
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abHowToCard
+import com.jigar.me.ui.view.home.theme.ButtonType
 
 @Composable
 fun HowToPlayTrueFalseView(
@@ -47,15 +51,15 @@ fun HowToPlayTrueFalseView(
     ) {
         Box(
             modifier = Modifier.width(screenWidth * widthMultiplier).height(screenHeight * heightMultiplier)
-                .background(Color.White, RoundedCornerShape(AppDimens.Dimens20)).padding(AppDimens.Dimens16)
+                .abHowToCard(ButtonType.BLUE)
         ) {
             Column(modifier = Modifier.fillMaxSize()) {
                 Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
                     Text(stringResource(R.string.true_false),
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 18.sp, color = ColorPrimary)
+                        fontFamily = AbTypography.Baloo, fontSize = 18.sp, color = ColorPrimary)
                     Spacer(Modifier.weight(1f))
                     Text(stringResource(R.string.close), fontSize = 14.sp, fontWeight = FontWeight.Medium,
-                        fontFamily = FontFamily(Font(R.font.font_medium)), color = Color.Black,
+                        fontFamily = AbTypography.Baloo, color = LocalAbColors.current.textPrimary,
                         modifier = Modifier.padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8).clickable { onClose() })
                 }
                 Spacer(Modifier.height(AppDimens.Dimens8))
@@ -83,13 +87,13 @@ fun HowToPlayTrueFalseView(
 @Composable
 private fun TfBullet(text: String) {
     Row(modifier = Modifier.fillMaxWidth().padding(vertical = AppDimens.Dimens4)) {
-        Text("•  ", fontSize = 16.sp, color = Color.Black, fontFamily = FontFamily(Font(R.font.font_bold)))
-        Text(text, fontSize = 15.sp, color = Color.Black, fontFamily = FontFamily(Font(R.font.font_regular)))
+        Text("•  ", fontSize = 16.sp, color = LocalAbColors.current.textPrimary, fontFamily = AbTypography.Baloo)
+        Text(text, fontSize = 15.sp, color = LocalAbColors.current.textPrimary, fontFamily = AbTypography.Baloo)
     }
 }
 
 @Composable
 private fun TfHeading(text: String) {
     Text(text, fontSize = 18.sp, fontWeight = FontWeight.Bold,
-        fontFamily = FontFamily(Font(R.font.font_bold)), modifier = Modifier.padding(top = AppDimens.Dimens8))
+        fontFamily = AbTypography.Baloo, modifier = Modifier.padding(top = AppDimens.Dimens8))
 }

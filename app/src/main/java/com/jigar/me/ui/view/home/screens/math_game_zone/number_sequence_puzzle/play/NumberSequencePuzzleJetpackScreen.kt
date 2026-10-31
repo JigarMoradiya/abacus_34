@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.number_sequence_puzzle.play
 
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+
 import com.jigar.me.ui.view.home.navigation.safePopBackStack
 import com.jigar.me.ui.view.home.theme.AppDimens
 
@@ -86,6 +88,27 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.foundation.layout.offset
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import androidx.compose.animation.core.animateIntOffsetAsState
+import androidx.compose.animation.core.spring
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.ui.layout.layout
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.offset
+import com.jigar.me.ui.jetpack.utils.ui.extensions.appScale
+import com.jigar.me.ui.view.ab.AbGlassPanel
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.abReadable
+import com.jigar.me.ui.view.home.screens.math_game_zone.GameCategoryType
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameHomeButton
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameResultCard
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abBounce
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abPopIn
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTray
+import com.jigar.me.ui.view.home.screens.math_game_zone.gameCardStyle
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import kotlinx.coroutines.delay
 
 @Composable
@@ -98,7 +121,6 @@ fun NumberSequencePuzzleJetpackScreen(
     var tileColors by remember { mutableStateOf(listOf<List<Color>>()) }
 
     val spacing = if (gridSize == 5) { AppDimens.Dimens8 } else if (gridSize == 4) { AppDimens.Dimens10 } else { AppDimens.Dimens12 }
-    val opacity = 0.4f
 
     Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         val title = when (gridSize) {
@@ -128,8 +150,7 @@ fun NumberSequencePuzzleJetpackScreen(
                             gridSize = gridSize,
                             tiles = uiState.tiles,
                             spacing = spacing,
-                            opacity = opacity,
-                            tileColors = tileColors,
+                            isSolved = uiState.isSolved,
                             onTileMove = { row, col -> viewModel.onTileMove(row, col) },
                             modifier = Modifier.width(maxWidth * centerWidth)
                         )
@@ -162,6 +183,18 @@ fun NumberSequencePuzzleJetpackScreen(
         )
     }
 
+    // Debug builds only (`--ez ab_show_result true`): shows the real result overlay without solving a puzzle.
+    if (AbDebugFlags.showResultEnabled && !uiState.isSolved) {
+        PuzzleResultOverlay(
+            moveCount = uiState.moveCount,
+            onPlayAgain = { viewModel.playAgain() },
+            onBack = {
+                viewModel.closePopup()
+                navController.safePopBackStack()
+            }
+        )
+    }
+
     LaunchedEffect(gridSize) {
         viewModel.initialize(gridSize)
         tileColors = List(gridSize) {
@@ -174,50 +207,30 @@ fun NumberSequencePuzzleJetpackScreen(
 
 @Composable
 private fun LeftPanel(moveCount: Int, modifier: Modifier = Modifier) {
+    val colors = LocalAbColors.current
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
         modifier = modifier.fillMaxHeight()
     ) {
-        Card(
-            modifier = modifier
-                .wrapContentSize(),
-            shape = RoundedCornerShape(Dimens16),
-            colors = CardDefaults.cardColors(
-                containerColor = Color(0xFFFFF3CD) // soft yellow
-            ),
-            elevation = CardDefaults.cardElevation(Dimens4)
-        ) {
+        // The "Current Moves" box: the count pops every time it changes.
+        AbGlassPanel {
             Column(
-                modifier = Modifier.padding(horizontal = Dimens24, vertical = Dimens16),
+                modifier = Modifier.padding(horizontal = Dimens12, vertical = Dimens16),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+                verticalArrangement = Arrangement.spacedBy(Dimens8)
             ) {
-
-                // Fun emoji/icon
-                Text(
-                    text = "🎯",
-                    style = MaterialTheme.typography.displaySmall.scaled(),
-                )
-
-                Spacer(modifier = Modifier.height(Dimens8))
-
-                // Move count
                 Text(
                     text = moveCount.toString(),
-                    style = MaterialTheme.typography.displayLarge.scaled(),
-                    fontWeight = FontWeight.ExtraBold,
-                    color = Color(0xFFFF6B00) // playful orange
+                    style = AbTypography.fixed(30f * appScale(), FontWeight.Black),
+                    color = colors.accentOrange.abReadable(3f),
+                    modifier = Modifier.abBounce(moveCount)
                 )
-
-                Spacer(modifier = Modifier.height(Dimens4))
-
-                // Label
                 Text(
                     text = stringResource(R.string.current_moves),
-                    style = MaterialTheme.typography.titleMedium.scaled(),
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF4E4E4E)
+                    style = AbTypography.fixed(17f * appScale(), FontWeight.ExtraBold),
+                    color = colors.textSecondary,
+                    textAlign = TextAlign.Center
                 )
             }
         }
@@ -236,7 +249,7 @@ private fun RightPanel(
         verticalArrangement = Arrangement.Center,
         modifier = modifier.fillMaxHeight()
     ) {
-        KidsActionButton(
+        GameButton(
             text = if (soundOn) stringResource(R.string.volume_on) else stringResource(R.string.volume_off),
             icon = if (soundOn) Icons.AutoMirrored.Filled.VolumeUp else Icons.AutoMirrored.Filled.VolumeOff,
             type = ButtonType.ORANGE,
@@ -246,7 +259,7 @@ private fun RightPanel(
 
         Spacer(Modifier.height(AppDimens.Dimens12))
 
-        KidsActionButton(
+        GameButton(
             text = stringResource(R.string.start_new_game),
             icon = Icons.Filled.SportsEsports,
             type = ButtonType.GREEN,
@@ -256,27 +269,35 @@ private fun RightPanel(
     }
 }
 
+// Lets a decoration reach past its content: the content keeps the layout size it would have had, but the node is
+// measured and placed bigger (the reverse of padding), so the tray's 3D edge can hang below the board without growing it.
+private fun Modifier.puzzleOutset(bottom: Dp): Modifier = layout { measurable, constraints ->
+    val b = bottom.roundToPx()
+    val placeable = measurable.measure(constraints.offset(vertical = b))
+    layout(placeable.width, placeable.height - b) { placeable.place(0, 0) }
+}
+
+// The board is a toy tray in the game's blue. Underneath, one recessed slot per position takes the taps exactly as
+// before (a tile's slot calls onTileMove for its row and column). On top, every numbered tile is keyed by its number and
+// placed by an offset, so when the tiles change each tile glides to its new spot on a spring.
 @Composable
 private fun PuzzleBoard(
     gridSize: Int,
     tiles: List<List<Int?>>,
     spacing: Dp,
-    opacity: Float,
-    tileColors: List<List<Color>>,
+    isSolved: Boolean,
     onTileMove: (Int, Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val backgroundColor = when (gridSize) {
-        3 -> Color(0xFFF33173).copy(alpha = opacity)
-        4 -> ColorYellowOrange.copy(alpha = opacity)
-        else -> Color(0xFF2196F3).copy(alpha = opacity)
-    }.copy(alpha = 0.15f)
+    val colors = LocalAbColors.current
+    val accent: Color = gameCardStyle(GameCategoryType.NUMBER_SEQUENCE_PUZZLE).light
+    val density = LocalDensity.current
 
     BoxWithConstraints(
         modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        val spacingPx = with(LocalDensity.current) { spacing.toPx() }
+        val spacingPx = with(density) { spacing.toPx() }
         val availableWidth = constraints.maxWidth.toFloat()
         val availableHeight = constraints.maxHeight.toFloat() * 0.8f
 
@@ -284,12 +305,26 @@ private fun PuzzleBoard(
         val verticalTileSizePx = (availableHeight - ((gridSize - 1) * spacingPx)) / gridSize
         val tileSizePx = minOf(horizontalTileSizePx, verticalTileSizePx)
 
-        val tileSize = with(LocalDensity.current) { tileSizePx.toDp() }
+        val tileSize = with(density) { tileSizePx.toDp() }
+        // Slots lay out at rounded px sizes, so the tiles above them use the same rounded step.
+        val pitchPx = with(density) { tileSize.roundToPx() + spacing.roundToPx() }
+
+        // Where every numbered tile is right now: number -> (row, col).
+        val positions = HashMap<Int, Pair<Int, Int>>()
+        for (r in tiles.indices) {
+            for (c in tiles[r].indices) {
+                val n = tiles[r][c]
+                if (n != null) positions[n] = Pair(r, c)
+            }
+        }
+        // One colour per row of the finished puzzle, so the solved board is a rainbow of rows and a tile's colour tells
+        // the kid which row it belongs to.
+        val rowPalette = listOf(colors.accentPink, colors.accentOrange, colors.accentGreen, colors.brandSecondary, colors.accentPurple)
 
         Box(
             modifier = Modifier
-                .background(backgroundColor, RoundedCornerShape(AppDimens.Dimens20))
-                .padding(spacing)
+                .puzzleOutset(bottom = 6.dp)
+                .abToyTray(accent, spacing)
         ) {
             Column(
                 verticalArrangement = Arrangement.spacedBy(spacing),
@@ -298,118 +333,101 @@ private fun PuzzleBoard(
                 for (row in 0 until gridSize) {
                     Row(horizontalArrangement = Arrangement.spacedBy(spacing)) {
                         for (col in 0 until gridSize) {
-                            val num = tiles.getOrNull(row)?.getOrNull(col)
-                            TileView(
-                                number = num,
-                                size = tileSize,
-                                color = tileColors.getOrNull(row)?.getOrNull(col) ?: Color.Transparent,
-                                onClick = { onTileMove(row, col) }
+                            val hasTile = tiles.getOrNull(row)?.getOrNull(col) != null
+                            val slotShape = RoundedCornerShape(tileSize * 0.22f)
+                            Box(
+                                modifier = Modifier
+                                    .size(tileSize)
+                                    .background(accent.copy(alpha = 0.16f), slotShape)
+                                    .border(2.dp, accent.copy(alpha = 0.28f), slotShape)
+                                    .clickable(
+                                        interactionSource = remember { MutableInteractionSource() },
+                                        indication = null,
+                                        enabled = hasTile
+                                    ) { onTileMove(row, col) }
                             )
                         }
                     }
                 }
             }
-        }
-    }
-}
 
-@Composable
-private fun TileView(number: Int?, size: Dp, color: Color, onClick: () -> Unit) {
-    Box(
-        modifier = Modifier
-            .size(size)
-            .clickable(enabled = number != null) { onClick() },
-        contentAlignment = Alignment.Center
-    ) {
-        if (number != null) {
-            Box(
-                modifier = Modifier
-                    .size(size)
-                    .clip(RoundedCornerShape(AppDimens.Dimens10))
-                    .background(color),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = number.toString(),
-                    fontSize = (size.value * 0.6f).sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.Black,
-                    fontFamily = FontFamily(Font(R.font.font_extra_bold))
+            for (n in 1 until gridSize * gridSize) {
+                val pos = positions[n] ?: continue
+                PuzzleSlidingTile(
+                    number = n, row = pos.first, col = pos.second, size = tileSize, pitchPx = pitchPx,
+                    face = rowPalette[((n - 1).coerceAtLeast(0) / gridSize.coerceAtLeast(1)) % rowPalette.size].abReadable(3f),
+                    solved = isSolved
                 )
             }
-        } else {
-            Box(
-                modifier = Modifier
-                    .size(size)
-                    .border(
-                        width = AppDimens.Dimens1,
-                        color = Color.Black.copy(alpha = 0.6f),
-                        shape = RoundedCornerShape(AppDimens.Dimens12)
-                    )
-            )
         }
     }
 }
 
-// "Candy Pop" celebration card — matches Number Snake's result popup style
-// (gradient card, white badge overlapping the top edge, two symmetric filled
-// buttons) instead of the generic CustomPopupView celebration theme.
+// One sliding tile: a candy square in its row colour with a big white number. It fills its whole square (face plus the 3D
+// edge), glides to its new spot on a spring, and does a little hop when the puzzle is solved. It never takes a tap.
+@Composable
+private fun PuzzleSlidingTile(number: Int, row: Int, col: Int, size: Dp, pitchPx: Int, face: Color, solved: Boolean) {
+    val target = IntOffset(col * pitchPx, row * pitchPx)
+    val animated by animateIntOffsetAsState(
+        targetValue = target,
+        animationSpec = spring<IntOffset>(dampingRatio = 0.62f, stiffness = 340f),
+        label = "puzzleTileSlide"
+    )
+    Box(
+        modifier = Modifier
+            .offset { animated }
+            .size(size)
+            .abPopIn(minOf(number * 30, 400))
+            .abBounce(solved, 1.12f)
+            .abToyTile(face, size * 0.22f, maxOf(3.dp, size * 0.06f)),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = number.toString(),
+            color = Color.White, maxLines = 1, softWrap = false,
+            style = AbTypography.fixed(size.value * 0.5f, FontWeight.Black).copy(
+                shadow = Shadow(Color.Black.copy(alpha = 0.25f), Offset(0f, 2f), 0f)
+            )
+        )
+    }
+}
+
+// "Candy Pop" celebration card: the shared glossy accent panel with the bouncing badge, stars and confetti. A solved
+// puzzle is always a win, so the card shows all three stars.
 @Composable
 private fun PuzzleResultOverlay(
     moveCount: Int,
     onPlayAgain: () -> Unit,
     onBack: () -> Unit
 ) {
-    val accentColors = getButtonColors(ButtonType.ORANGE)
+    val s = gameScale()
     var enabled by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) { delay(1000); enabled = true }
 
     Box(modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)), contentAlignment = Alignment.Center) {
         LaunchedEffect(Unit) { AudioPlayerManager.playSoundClap() }
-        Box(modifier = Modifier.fillMaxWidth(0.6f), contentAlignment = Alignment.TopCenter) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .shadow(20.dp, RoundedCornerShape(AppDimens.Dimens20 * 1.2f), ambientColor = accentColors.base, spotColor = accentColors.base)
-                    .background(accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20 * 1.2f))
-                    .padding(horizontal = AppDimens.Dimens30, vertical = AppDimens.Dimens20),
-                horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
-            ) {
-                Spacer(Modifier.height(AppDimens.Dimens20))
-                Text(
-                    stringResource(R.string.you_did_it),
-                    color = Color.White,
-                    fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                    fontSize = 26.sp.scaled(),
-                    style = TextStyle(shadow = Shadow(color = accentColors.base.copy(alpha = 0.9f), offset = Offset(1.5f, 1.5f), blurRadius = 0f)),
-                    textAlign = TextAlign.Center
-                )
+        GameResultCard(
+            title = stringResource(R.string.you_did_it),
+            emoji = "🧩",
+            accent = ButtonType.ORANGE,
+            stars = 3,
+            stats = {
                 Text(
                     stringResource(R.string.completed_in_b_moves_b, moveCount).replace("<b>", "").replace("</b>", ""),
                     color = Color.White,
-                    fontFamily = FontFamily(Font(R.font.font_semibold)),
-                    fontSize = 18.sp.scaled(),
+                    style = AbTypography.fixed(20f * s, FontWeight.ExtraBold).copy(
+                        shadow = Shadow(Color.Black.copy(alpha = 0.22f), Offset(0f, 4f), 0f)
+                    ),
                     textAlign = TextAlign.Center
                 )
+            },
+            buttons = {
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
-                    KidsActionButton(text = stringResource(R.string.continue_to_play), type = ButtonType.POSITIVE,
+                    GameButton(text = stringResource(R.string.continue_to_play), type = ButtonType.POSITIVE,
                         onClick = { if (enabled) onPlayAgain() })
-                    KidsActionButton(text = stringResource(R.string.no_i_want_to_close), type = ButtonType.NEGATIVE,
-                        onClick = { if (enabled) onBack() })
+                    GameHomeButton(onClick = { if (enabled) onBack() })
                 }
             }
-
-            Box(
-                modifier = Modifier
-                    .offset(y = (-28).dp)
-                    .size(64.dp)
-                    .shadow(8.dp, CircleShape)
-                    .background(Color.White, CircleShape)
-                    .border(4.dp, Color.White, CircleShape),
-                contentAlignment = Alignment.Center
-            ) {
-                Text("🧩", fontSize = (32f * gameScale()).sp)
-            }
-        }
+        )
     }
 }

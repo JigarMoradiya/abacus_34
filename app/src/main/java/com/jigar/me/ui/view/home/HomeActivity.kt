@@ -13,6 +13,11 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.ui.Modifier
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -94,6 +99,7 @@ class HomeActivity : ComponentActivity() {
             // initialize audio player
             AudioPlayerManager.init(this)
 
+            com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags.showResult = BuildConfig.DEBUG && intent.getBooleanExtra("ab_show_result", false)
             val abScreen = if (BuildConfig.DEBUG) intent.getStringExtra("ab_screen") else null
             if (abScreen != null) {
                 // Debug-only preview of one restyled screen (see AbKitGallery.kt), skipping the normal app shell.
@@ -107,16 +113,29 @@ class HomeActivity : ComponentActivity() {
                         LocalPreferencesHelper provides preferences,
                         LocalTextToSpeechManager provides ttsManager
                     ) {
-                        HomeNavGraph(
-                            homeActivityViewModel = homeActivityViewModel,
-                            initialRoute = deepLinkRoute,
-                            onInitialRouteHandled = { deepLinkRoute = null },
-                            onFinishActivity = { finish() }
-                        )
+                        // The app is full screen: if the status or navigation bar is showing (it can come back after a dialog,
+                        // the shade, or on a tablet), the screens must not move down to make room for it. Their windowInsetsPadding
+                        // keeps only the camera-cutout part of the insets.
+                        androidx.compose.foundation.layout.Box(
+                            Modifier.fillMaxSize().consumeWindowInsets(WindowInsets.systemBars)
+                        ) {
+                            HomeNavGraph(
+                                homeActivityViewModel = homeActivityViewModel,
+                                initialRoute = deepLinkRoute,
+                                onInitialRouteHandled = { deepLinkRoute = null },
+                                onFinishActivity = { finish() }
+                            )
+                        }
                     }
                 }
             }
         }
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        // Back from a dialog / the shade / another app, the system bars can stay visible: hide them again.
+        if (hasFocus) WindowInsetsControllerCompat(window, window.decorView).hide(WindowInsetsCompat.Type.systemBars())
     }
 
     override fun onNewIntent(intent: Intent) {

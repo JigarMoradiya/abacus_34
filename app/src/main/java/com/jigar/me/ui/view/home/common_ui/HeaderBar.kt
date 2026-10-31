@@ -50,105 +50,40 @@ import com.jigar.me.ui.view.home.theme.AppDimens.ShadowOffset
 import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.theme.getButtonColors
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.ui.text.style.TextOverflow
+import com.jigar.me.ui.view.ab.AbBackButton
+import com.jigar.me.ui.view.ab.AbShapes
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abChunkyFace
 
 @Composable
 fun BackButtonWithText(
     title: String,
     modifier: Modifier = Modifier,
-    size: Dp = ToolbarIconSize,
+    size: Dp = ToolbarIconSize,   // kept for the old call sites: the kit bar has one size
     enabled : Boolean = true,
     onBackClick: () -> Unit
 ) {
-    val headerColors = getButtonColors(ButtonType.BLUE)
+    val colors = LocalAbColors.current
+    val s = LocalAbScale.current.factor
     Row(
         modifier = modifier.padding(top = DeviceInfo.screenTopPadding(), bottom = Dimens8, start = DeviceInfo.screenHorizontalPadding(), end = Dimens16),
+        horizontalArrangement = Arrangement.spacedBy(12.dp * s),
         verticalAlignment = Alignment.CenterVertically
     ) {
-
+        AbBackButton(onClick = { if (enabled) onBackClick() })
         Box(
-            modifier = Modifier.wrapContentSize()
+            Modifier
+                .abChunkyFace(colors.brandPrimary, colors.brandPrimaryDark, null, AbShapes.pill, 4.dp * s)
+                .heightIn(min = 36.dp * s)
+                .padding(horizontal = 20.dp * s),
+            contentAlignment = Alignment.Center,
         ) {
-
-            // BACK CAPSULE (BEHIND)
-            Box(
-                modifier = Modifier
-                    .padding(start = (size / 2) + Dimens12) // ⭐ push to allow circle overlap
-                    .height(size * 0.8f)
-                    .shadow(
-                        elevation = Dimens10,
-                        shape = RoundedCornerShape(
-                            topStart = 0.dp,
-                            bottomStart = 0.dp,
-                            topEnd = AppDimens.Dimens100,
-                            bottomEnd = AppDimens.Dimens100
-                        ),
-                        clip = false
-                    )
-                    .background(
-                        brush = headerColors.gradient,
-                        shape = RoundedCornerShape(
-                            topStart = 0.dp,
-                            bottomStart = 0.dp,
-                            topEnd = AppDimens.Dimens100,
-                            bottomEnd = AppDimens.Dimens100
-                        )
-                    )
-                    .padding(start = size / 2, end = Dimens16) // ⭐ space for circle
-                    .align(Alignment.CenterStart)
-            ) {
-
-                // TEXT inside capsule
-                Box(
-                    modifier = Modifier.fillMaxHeight(),
-                    contentAlignment = Alignment.CenterStart
-                ) {
-                    Text(
-                        text = title,
-                        color = Color.White,
-                        style = MaterialTheme.typography.bodyLarge.scaled(),
-                        fontWeight = FontWeight.Black
-                    )
-                }
-            }
-
-            val interactionSource = remember { MutableInteractionSource() }
-
-            Box(
-                modifier = Modifier
-                    .size(size)
-                    .shadow(Dimens8, CircleShape, clip = false)
-                    .background(headerColors.base, CircleShape)
-                    .clip(CircleShape)
-                    .clickable(
-                        interactionSource = interactionSource,
-                        indication = LocalIndication.current
-                    ) {
-                        if (enabled){
-                            AudioPlayerManager.playSoundBtnBack()
-                            onBackClick()
-                        }
-                    }
-                    .align(Alignment.CenterStart),
-                contentAlignment = Alignment.Center
-            ) {
-                Box {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                        contentDescription = null,
-                        tint = Color.Black.copy(alpha = 0.35f),
-                        modifier = Modifier.size(AppDimens.Dimens24.scaled())
-                            .offset(ShadowOffset, ShadowOffset), // shadow layer
-                    )
-
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                        contentDescription = null,
-                        tint = Color.White,
-                        modifier = Modifier.size(AppDimens.Dimens24.scaled())
-                    )
-                }
-            }
+            Text(title, style = AbTypography.headline(s), color = Color.White, maxLines = 1, overflow = TextOverflow.Ellipsis)
         }
-
     }
 }

@@ -1,9 +1,15 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.duel
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,11 +18,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,22 +39,33 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
-import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.abReadable
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameHomeButton
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameResultCard
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.PauseTimerInBackground
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abBounce
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abPopIn
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abWobble
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
 import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.components.Comparator
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
-import com.jigar.me.ui.view.home.theme.getButtonColors
 import kotlinx.coroutines.delay
 
 private val P1_COLOR = Color(0xFF0074D5)   // blue, bottom player
@@ -127,6 +144,15 @@ fun SpeedCompareDuelScreen(
                 onBack = onBackClick
             )
         }
+
+        // Debug builds only: render the duel's result overlay without playing a round (`--ez ab_show_result true`).
+        if (AbDebugFlags.showResultEnabled && !state.isGameOver) {
+            DuelResultOverlay(
+                p1 = state.p1Score, p2 = state.p2Score,
+                onPlayAgain = { viewModel.start() },
+                onBack = onBackClick
+            )
+        }
     }
 }
 
@@ -141,13 +167,15 @@ private fun PlayerPanel(
     val round = state.round
     val locked = player in state.lockedPlayers && !state.revealed
     val won = state.roundWinner == player
+    val tint: Color = if (won) CORRECT_GREEN else accent
+    val panelTint by animateColorAsState(tint.copy(alpha = if (won) 0.18f else 0.08f), tween(250), label = "panelTint")
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxSize()
-            .background(accent.copy(alpha = 0.08f))
+            .background(panelTint)
             .graphicsLayer { alpha = if (locked) 0.55f else 1f }
             .padding(horizontal = AppDimens.Dimens16)
     ) {
@@ -156,30 +184,31 @@ private fun PlayerPanel(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)
         ) {
-            QuestionCard(round?.left?.display ?: "", accent, s)
+            DuelQuestionCard(round?.left?.display ?: "", accent, s)
             Text(
                 if (state.revealed) (round?.truth?.symbol ?: "?") else "?",
                 color = if (state.revealed) CORRECT_GREEN else Color(0xFFE65100),
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                style = MaterialTheme.typography.headlineMedium.scaled()
+                style = AbTypography.fixed(28f, FontWeight.Black).scaled(),
+                modifier = Modifier.abBounce(state.revealed, 1.4f)
             )
-            QuestionCard(round?.right?.display ?: "", accent, s)
+            DuelQuestionCard(round?.right?.display ?: "", accent, s)
             if (won) {
                 Text(
                     "+10 🎉",
                     color = CORRECT_GREEN,
-                    fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                    style = MaterialTheme.typography.titleMedium.scaled()
+                    style = AbTypography.fixed(18f, FontWeight.ExtraBold).scaled(),
+                    modifier = Modifier.abPopIn()
                 )
             }
         }
         Spacer(Modifier.height(AppDimens.Dimens12))
-        Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)) {
+        Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16), modifier = Modifier.abWobble(locked)) {
             Comparator.entries.forEach { comp ->
                 val highlight = state.revealed && round?.truth == comp
                 AnswerBubble(
                     symbol = comp.symbol,
                     color = if (highlight) CORRECT_GREEN else accent,
+                    highlight = highlight,
                     enabled = !locked && !state.revealed,
                     s = s
                 ) { onAnswer(comp) }
@@ -188,48 +217,59 @@ private fun PlayerPanel(
     }
 }
 
+/** A candy number tile in the player's colour; it bounces when the number changes. */
 @Composable
-private fun QuestionCard(text: String, accent: Color, s: Float) {
+private fun DuelQuestionCard(text: String, accent: Color, s: Float) {
     Text(
         text,
-        color = Color(0xFF3E2723),
+        color = Color.White,
         maxLines = 1, softWrap = false,
-        fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-        style = MaterialTheme.typography.headlineSmall.scaled(),
+        style = AbTypography.fixed(24f, FontWeight.Black).scaled().copy(shadow = Shadow(Color.Black.copy(alpha = 0.25f), Offset(0f, 3f), 0f)),
         modifier = Modifier
-            .clip(RoundedCornerShape(AppDimens.Dimens12))
-            .background(Color.White)
-            .border(2.dp, accent, RoundedCornerShape(AppDimens.Dimens12))
-            .padding(horizontal = (18f * s).dp, vertical = (10f * s).dp)
+            .abBounce(text, 1.12f)
+            .abToyTile(accent.abReadable(3f), AppDimens.Dimens12, 4.dp)
+            .padding(horizontal = (18f * s).dp, vertical = (8f * s).dp)
     )
 }
 
+/** A candy answer key: squashes when pressed, goes green and bounces when it is the right sign. */
 @Composable
-private fun AnswerBubble(symbol: String, color: Color, enabled: Boolean, s: Float, onClick: () -> Unit) {
+private fun AnswerBubble(symbol: String, color: Color, highlight: Boolean, enabled: Boolean, s: Float, onClick: () -> Unit) {
+    val keyW = 52f * s
+    val face by animateColorAsState(color.abReadable(3f), tween(180), label = "bubbleFace")
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
+    val sx by animateFloatAsState(
+        targetValue = if (pressed) 1.07f else 1f,
+        animationSpec = spring(dampingRatio = 0.5f, stiffness = Spring.StiffnessMedium), label = "bubbleSx"
+    )
+    val sy by animateFloatAsState(
+        targetValue = if (pressed) 0.88f else 1f,
+        animationSpec = spring(dampingRatio = 0.5f, stiffness = Spring.StiffnessMedium), label = "bubbleSy"
+    )
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
-            .size((52f * s).dp)
-            .clip(CircleShape)
-            .background(Brush.verticalGradient(listOf(color.copy(alpha = 0.85f), color)))
-            .border(2.dp, Color.White.copy(alpha = 0.7f), CircleShape)
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = null, enabled = enabled
-            ) { onClick() }
+            .abBounce(highlight, 1.18f)
+            .graphicsLayer {
+                scaleX = sx
+                scaleY = sy
+                transformOrigin = TransformOrigin(0.5f, 1f)
+            }
+            .clickable(interactionSource = interaction, indication = null, enabled = enabled) { onClick() }
+            .abToyTile(face, (keyW * 0.32f).dp, 4.dp)
+            .size(keyW.dp, (keyW - 4f).dp)
     ) {
         Text(
             symbol,
             color = Color.White,
-            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-            style = MaterialTheme.typography.titleLarge.scaled()
+            style = AbTypography.fixed(24f * s, FontWeight.Black).copy(shadow = Shadow(Color.Black.copy(alpha = 0.25f), Offset(0f, 3f), 0f))
         )
     }
 }
 
 @Composable
 private fun DuelResultOverlay(p1: Int, p2: Int, onPlayAgain: () -> Unit, onBack: () -> Unit) {
-    val accentColors = getButtonColors(ButtonType.ORANGE)
     var enabled by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) { delay(1000); enabled = true }
 
@@ -237,75 +277,54 @@ private fun DuelResultOverlay(p1: Int, p2: Int, onPlayAgain: () -> Unit, onBack:
         modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)),
         contentAlignment = Alignment.Center
     ) {
-        // "Candy Pop" celebration card — saturated gradient block with a white badge overlapping the top edge.
-        Box(modifier = Modifier.fillMaxWidth(0.6f), contentAlignment = Alignment.TopCenter) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .shadow(20.dp, RoundedCornerShape(AppDimens.Dimens20 * 1.2f), ambientColor = accentColors.base, spotColor = accentColors.base)
-                    .background(accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20 * 1.2f))
-                    .padding(horizontal = AppDimens.Dimens30, vertical = AppDimens.Dimens20)
-            ) {
-                Spacer(Modifier.height(AppDimens.Dimens20))
-                Text(
-                    when {
-                        p1 > p2 -> stringResource(R.string.duel_wins, stringResource(R.string.duel_blue))
-                        p2 > p1 -> stringResource(R.string.duel_wins, stringResource(R.string.duel_pink))
-                        else -> stringResource(R.string.duel_tie)
-                    },
-                    color = Color.White,
-                    fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                    style = MaterialTheme.typography.headlineSmall.scaled().copy(
-                        shadow = Shadow(color = accentColors.base.copy(alpha = 0.9f), offset = Offset(1.5f, 1.5f), blurRadius = 0f)
-                    )
-                )
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)) {
+        // The duel has no star rating, so the shared card shows its three ghost stars.
+        GameResultCard(
+            title = when {
+                p1 > p2 -> stringResource(R.string.duel_wins, stringResource(R.string.duel_blue))
+                p2 > p1 -> stringResource(R.string.duel_wins, stringResource(R.string.duel_pink))
+                else -> stringResource(R.string.duel_tie)
+            },
+            emoji = "🏆",
+            accent = ButtonType.ORANGE,
+            stars = 0,
+            stats = {
+                Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
                     ScoreChip(stringResource(R.string.duel_blue), p1, P1_COLOR)
                     ScoreChip(stringResource(R.string.duel_pink), p2, P2_COLOR)
                 }
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)) {
-                    KidsActionButton(text = stringResource(R.string.balloon_play_again), type = ButtonType.POSITIVE,
-                        onClick = { if (enabled) onPlayAgain() })
-                    KidsActionButton(text = stringResource(R.string.balloon_back), type = ButtonType.NEGATIVE,
-                        onClick = { if (enabled) onBack() })
+            },
+            buttons = {
+                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
+                    GameButton(
+                        text = stringResource(R.string.balloon_play_again),
+                        icon = Icons.Filled.Refresh,
+                        type = if (enabled) ButtonType.POSITIVE else ButtonType.DISABLE,
+                        onClick = { if (enabled) onPlayAgain() }
+                    )
+                    GameHomeButton(
+                        modifier = Modifier.graphicsLayer { alpha = if (enabled) 1f else 0.5f },
+                        onClick = { if (enabled) onBack() }
+                    )
                 }
             }
-
-            Box(
-                modifier = Modifier
-                    .offset(y = (-28).dp)
-                    .size(64.dp)
-                    .shadow(8.dp, CircleShape)
-                    .background(Color.White, CircleShape)
-                    .border(4.dp, Color.White, CircleShape),
-                contentAlignment = Alignment.Center
-            ) {
-                Text("🏆", style = MaterialTheme.typography.displaySmall.scaled())
-            }
-        }
+        )
     }
 }
 
+/** One player's score on a white pill, in that player's colour. */
 @Composable
 private fun ScoreChip(label: String, score: Int, color: Color) {
+    val s = gameScale()
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
+        horizontalArrangement = Arrangement.spacedBy((6f * s).dp),
         modifier = Modifier
+            .shadow(3.dp, CircleShape)
             .background(Color.White, CircleShape)
-            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)
+            .border(1.5.dp, Color.Black.copy(alpha = 0.06f), CircleShape)
+            .padding(horizontal = (14f * s).dp, vertical = (4f * s).dp)
     ) {
-        Text(
-            label, color = color,
-            fontFamily = FontFamily(Font(R.font.font_bold)),
-            style = MaterialTheme.typography.labelLarge.scaled()
-        )
-        Text(
-            "$score", color = color,
-            fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-            style = MaterialTheme.typography.titleMedium.scaled()
-        )
+        Text(label, color = color, style = AbTypography.fixed(16f * s, FontWeight.ExtraBold))
+        Text("$score", color = color, style = AbTypography.fixed(22f * s, FontWeight.Black))
     }
 }

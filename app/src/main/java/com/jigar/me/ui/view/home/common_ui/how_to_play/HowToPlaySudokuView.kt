@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.common_ui.how_to_play
 
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -35,6 +37,9 @@ import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.theme.getButtonColors
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abHowToCard
 
 @Composable
 fun HowToPlaySudokuView(
@@ -65,9 +70,7 @@ fun HowToPlaySudokuView(
             modifier = Modifier
                 .width(screenWidth * widthMultiplier)
                 .height(screenHeight * heightMultiplier)
-                .background(Color.White, RoundedCornerShape(AppDimens.Dimens20))
-                .border(AppDimens.Dimens4, accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20))
-                .padding(AppDimens.Dimens16)
+                .abHowToCard(ButtonType.PURPLE)
         ) {
 
             Column(modifier = Modifier.fillMaxSize()) {
@@ -79,7 +82,7 @@ fun HowToPlaySudokuView(
                 ) {
                     Text(
                         text = stringResource(R.string.sudoku),
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                        fontFamily = AbTypography.Baloo,
                         fontSize = dimensionResource(R.dimen.textSize18).value.sp,
                         fontWeight = FontWeight.Bold,
                         color = accentColors.base
@@ -87,7 +90,7 @@ fun HowToPlaySudokuView(
 
                     Spacer(modifier = Modifier.weight(1f))
 
-                    KidsActionButton(
+                    GameButton(
                         text = stringResource(R.string.close),
                         type = ButtonType.PURPLE,
                         onClick = onClose,
@@ -114,7 +117,7 @@ fun HowToPlaySudokuView(
                             text = "We have different grid sizes:",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            fontFamily = AbTypography.Baloo,
                             modifier = Modifier.padding(top = AppDimens.Dimens8)
                         )
                     }
@@ -129,7 +132,7 @@ fun HowToPlaySudokuView(
                             text = "👉 How you play:",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            fontFamily = AbTypography.Baloo,
                             modifier = Modifier.padding(top = AppDimens.Dimens8)
                         )
                     }
@@ -156,7 +159,7 @@ fun HowToPlaySudokuView(
                             text = "👨‍👩‍👧 How It Helps:",
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            fontFamily = AbTypography.Baloo,
                             modifier = Modifier.padding(top = AppDimens.Dimens12)
                         )
                     }
@@ -191,7 +194,7 @@ fun HowToPlaySudokuView(
                             text = "❤️ Why This Game Matters:",
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            fontFamily = AbTypography.Baloo,
                             modifier = Modifier.padding(top = AppDimens.Dimens12)
                         )
                     }

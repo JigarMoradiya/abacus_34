@@ -1,5 +1,9 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.merge2048
 
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameCharacter
+
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.spring
@@ -10,20 +14,23 @@ import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -35,57 +42,85 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DeviceInfo
-import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.ab.AbColors
+import com.jigar.me.ui.view.ab.AbGlassPanel
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.ab.abBlended
+import com.jigar.me.ui.view.ab.abDarkened
+import com.jigar.me.ui.view.ab.abReadable
 import com.jigar.me.ui.view.home.common_ui.BackButtonWithText
 import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
-import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
+import com.jigar.me.ui.view.home.screens.math_game_zone.GameCategoryType
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameHomeButton
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameMascotPanel
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameResultCard
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameStatChip
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abBounce
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abBreathe
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGamePill
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abPopIn
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.gameScale
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.toyColor
+import com.jigar.me.ui.view.home.screens.math_game_zone.gameCardStyle
 import com.jigar.me.ui.view.home.screens.math_game_zone.merge2048.components.Merge2048Direction
 import com.jigar.me.ui.view.home.screens.math_game_zone.merge2048.components.Merge2048Palette
 import com.jigar.me.ui.view.home.screens.math_game_zone.merge2048.components.Merge2048Tile
 import com.jigar.me.ui.view.home.screens.math_game_zone.merge2048.viewmodel.Merge2048PlayViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
-import com.jigar.me.ui.view.home.theme.getButtonColors
 import kotlinx.coroutines.delay
 import kotlin.math.abs
 
 private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
-private val BLUE = Color(0xFF0074D5)
 private val GREEN = Color(0xFF2E7D32)
-private val BOARD_BG = Color(0xFFBBADA0)
 
 private val mScale: Float
     get() = if (DeviceInfo.isLargeTablet) 1.7f else if (DeviceInfo.isTablet) 1.45f else 1.0f
+
+/**
+ * The candy colour of a tile: one step of the toy rainbow per doubling (2, 4, 8 ... walk through the colours and repeat).
+ * Also used by the Home preview.
+ */
+internal fun merge2048Candy(value: Int, colors: AbColors): Color {
+    val step = maxOf(1, value.countTrailingZeroBits()) - 1
+    return colors.toyColor(step)
+}
 
 @Composable
 fun Merge2048PlayScreen(viewModel: Merge2048PlayViewModel, onBackClick: () -> Unit) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val baseCheer = remember { randomGameCheer() }
     val s = mScale
-    val boardSide = (300f * s).dp
+    // on a short phone screen (384dp tall) a fixed 300dp board ran past the bottom edge: never taller than the room left
+    val boardSide = minOf((300f * s).dp, (LocalConfiguration.current.screenHeightDp - 100).dp)
     val gap = (6f * s).dp
     val cell = (boardSide - gap * (state.size + 1)) / state.size
+    // The tray takes the game's own colour from the zone list.
+    val trayAccent = gameCardStyle(GameCategoryType.MERGE_2048).light
 
     var showResume by remember { mutableStateOf(false) }
     var started by remember { mutableStateOf(false) }
@@ -109,10 +144,9 @@ fun Merge2048PlayScreen(viewModel: Merge2048PlayViewModel, onBackClick: () -> Un
                 }
                 Text(
                     text = str(R.string.merge2048_prompt, state.target),
-                    color = ORANGE, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 20.sp.scaled(),
+                    color = ORANGE, style = AbTypography.fixed(22f * s, FontWeight.ExtraBold),
                     modifier = Modifier.align(Alignment.Center)
-                        .clip(RoundedCornerShape(100f)).background(Color.White.copy(alpha = 0.9f))
-                        .border(2.dp, ORANGE_BORDER, RoundedCornerShape(100f))
+                        .abGamePill(outline = ORANGE_BORDER)
                         .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
                 )
             }
@@ -124,19 +158,18 @@ fun Merge2048PlayScreen(viewModel: Merge2048PlayViewModel, onBackClick: () -> Un
                         else -> baseCheer
                     },
                     celebrate = state.milestoneValue != null, s = s,
-                    modifier = Modifier.weight(1f).fillMaxHeight()
-                )
+                    modifier = Modifier.weight(1f).fillMaxHeight(), character = GameCharacter.Panda)
 
-                BoardView(state.tiles, state.size, boardSide, cell, gap) { dir -> viewModel.move(dir) }
+                BoardView(state.tiles, state.size, boardSide, cell, gap, trayAccent) { dir -> viewModel.move(dir) }
 
                 Scoreboard(state.score, state.target, viewModel.bestScore, s, Modifier.weight(1f).fillMaxHeight())
             }
         }
 
-        state.milestoneValue?.let { m -> MilestonePopup(m, state.target, s) { viewModel.dismissMilestone() } }
+        state.milestoneValue?.let { m -> MilestonePopup(m, state.target, s, trayAccent) { viewModel.dismissMilestone() } }
 
         if (showResume) {
-            ResumePopup(s,
+            ResumePopup(s, trayAccent,
                 onContinue = { showResume = false; viewModel.resumeSavedGame() },
                 onNew = { showResume = false; viewModel.clearSave(); viewModel.start() })
         }
@@ -145,51 +178,88 @@ fun Merge2048PlayScreen(viewModel: Merge2048PlayViewModel, onBackClick: () -> Un
             ResultOverlay(state.score, state.didWin, viewModel.highestTile, viewModel.target, viewModel.bestScore,
                 onPlayAgain = { viewModel.start() }, onBack = onBackClick)
         }
+
+        // Debug builds only: lets the lead render the real result overlay without playing a round.
+        if (AbDebugFlags.showResultEnabled) {
+            ResultOverlay(state.score, state.didWin, viewModel.highestTile, viewModel.target, viewModel.bestScore,
+                onPlayAgain = { viewModel.start() }, onBack = onBackClick)
+        }
     }
 }
 
+/** The frame of this game's popups: a white card with a rim in the game's colour and a 3D edge, like the board's tray. */
 @Composable
-private fun MilestonePopup(value: Int, nextTarget: Int, s: Float, onContinue: () -> Unit) {
+private fun Merge2048PopupCard(accent: Color, width: Dp, s: Float, content: @Composable ColumnScope.() -> Unit) {
+    val colors = LocalAbColors.current
+    val corner = (24f * s).dp
+    val shape = RoundedCornerShape(corner)
+    val drop = (6f * s).dp
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .width(width)
+            .padding(bottom = drop)
+            .drawBehind {
+                drawRoundRect(accent.abDarkened(0.3f), Offset(0f, drop.toPx()), size, CornerRadius(corner.toPx()))
+            }
+            .shadow((14f * s).dp, shape, clip = false)
+            .background(colors.bgSecondary, shape)
+            .border(5.dp, accent, shape)
+            .padding(horizontal = (26f * s).dp, vertical = (20f * s).dp),
+        content = content
+    )
+}
+
+@Composable
+private fun MilestonePopup(value: Int, nextTarget: Int, s: Float, accent: Color, onContinue: () -> Unit) {
+    val colors = LocalAbColors.current
+    val screenW = LocalConfiguration.current.screenWidthDp.dp
     Box(modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)), contentAlignment = Alignment.Center) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
-            modifier = Modifier.fillMaxWidth(0.6f).clip(RoundedCornerShape(AppDimens.Dimens20)).background(Color.White)
-                .border(3.dp, ORANGE_BORDER, RoundedCornerShape(AppDimens.Dimens20))
-                .padding(horizontal = AppDimens.Dimens30, vertical = AppDimens.Dimens24)
-        ) {
-            Text("🎉", fontSize = (54f * s).sp)
-            Text(str(R.string.merge2048_target_title), color = BLUE,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 28.sp.scaled())
-            Text(str(R.string.merge2048_reached, value), color = GREEN,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 22.sp.scaled())
-            Text(str(R.string.merge2048_next, nextTarget), color = ORANGE,
-                fontFamily = FontFamily(Font(R.font.font_bold)), fontSize = 16.sp.scaled())
-            Text(str(R.string.merge2048_target_hint), color = Color.Black.copy(alpha = 0.65f),
-                fontFamily = FontFamily(Font(R.font.font_medium)), fontSize = 14.sp.scaled())
-            KidsActionButton(text = str(R.string.keep_going), type = ButtonType.ORANGE, onClick = onContinue)
+        Box(modifier = Modifier.abPopIn()) {
+            Merge2048PopupCard(accent = accent, width = minOf(screenW * 0.6f, (580f * s).dp), s = s) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy((8f * s).dp)
+                ) {
+                    Text("🎉", fontSize = (54f * s).sp, modifier = Modifier.abBreathe(0.08f, 1200))
+                    Text(str(R.string.merge2048_target_title), color = colors.brandPrimary,
+                        style = AbTypography.fixed(30f * s, FontWeight.Black), textAlign = TextAlign.Center)
+                    Text(str(R.string.merge2048_reached, value), color = colors.accentGreenInk,
+                        style = AbTypography.fixed(22f * s, FontWeight.ExtraBold), textAlign = TextAlign.Center)
+                    Text(str(R.string.merge2048_next, nextTarget), color = colors.accentOrange.abReadable(3f),
+                        style = AbTypography.fixed(19f * s, FontWeight.ExtraBold), textAlign = TextAlign.Center)
+                    Text(str(R.string.merge2048_target_hint), color = colors.textSecondary,
+                        style = AbTypography.fixed(16f * s, FontWeight.SemiBold), textAlign = TextAlign.Center,
+                        modifier = Modifier.padding(horizontal = AppDimens.Dimens8))
+                    GameButton(text = str(R.string.keep_going), icon = Icons.Rounded.PlayArrow, type = ButtonType.ORANGE,
+                        isIconStart = false, onClick = onContinue, modifier = Modifier.padding(top = AppDimens.Dimens6))
+                }
+            }
         }
     }
 }
 
 @Composable
-private fun ResumePopup(s: Float, onContinue: () -> Unit, onNew: () -> Unit) {
+private fun ResumePopup(s: Float, accent: Color, onContinue: () -> Unit, onNew: () -> Unit) {
+    val colors = LocalAbColors.current
+    val screenW = LocalConfiguration.current.screenWidthDp.dp
     Box(modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)), contentAlignment = Alignment.Center) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens16),
-            modifier = Modifier.fillMaxWidth(0.6f).clip(RoundedCornerShape(AppDimens.Dimens20)).background(Color.White)
-                .border(3.dp, ORANGE_BORDER, RoundedCornerShape(AppDimens.Dimens20))
-                .padding(horizontal = AppDimens.Dimens30, vertical = AppDimens.Dimens24)
-        ) {
-            Text("👋", fontSize = (44f * s).sp)
-            Text(str(R.string.resume_title), color = BLUE,
-                fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 26.sp.scaled())
-            Text(str(R.string.resume_message), color = Color.Black.copy(alpha = 0.7f),
-                fontFamily = FontFamily(Font(R.font.font_medium)), fontSize = 15.sp.scaled())
-            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
-                KidsActionButton(text = str(R.string.continue_game), type = ButtonType.ORANGE, onClick = onContinue)
-                KidsActionButton(text = str(R.string.new_game), type = ButtonType.BLUE, onClick = onNew)
+        Box(modifier = Modifier.abPopIn()) {
+            Merge2048PopupCard(accent = accent, width = minOf(screenW * 0.55f, (520f * s).dp), s = s) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy((12f * s).dp)
+                ) {
+                    Text("👋", fontSize = (44f * s).sp, modifier = Modifier.abBreathe(0.08f, 1200))
+                    Text(str(R.string.resume_title), color = colors.brandPrimary,
+                        style = AbTypography.fixed(28f * s, FontWeight.Black), textAlign = TextAlign.Center)
+                    Text(str(R.string.resume_message), color = colors.textSecondary,
+                        style = AbTypography.fixed(17f * s, FontWeight.SemiBold), textAlign = TextAlign.Center)
+                    Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
+                        GameButton(text = str(R.string.continue_game), icon = Icons.Rounded.PlayArrow, type = ButtonType.ORANGE, onClick = onContinue)
+                        GameButton(text = str(R.string.new_game), icon = Icons.Filled.Refresh, type = ButtonType.BLUE, onClick = onNew)
+                    }
+                }
             }
         }
     }
@@ -197,14 +267,36 @@ private fun ResumePopup(s: Float, onContinue: () -> Unit, onNew: () -> Unit) {
 
 @Composable
 private fun BoardView(
-    tiles: List<Merge2048Tile>, size: Int, boardSide: Dp, cell: Dp, gap: Dp,
+    tiles: List<Merge2048Tile>, size: Int, boardSide: Dp, cell: Dp, gap: Dp, accent: Color,
     onSwipe: (Merge2048Direction) -> Unit
 ) {
+    val tileCorner = maxOf(7f, cell.value * 0.22f).dp
+    val outerCorner = 18.dp
+    val outer = RoundedCornerShape(outerCorner)
     Box(
         modifier = Modifier
             .size(boardSide)
-            .clip(RoundedCornerShape(AppDimens.Dimens12))
-            .background(BOARD_BG)
+            // The board's toy tray, drawn inside the board's own frame: a rim in the game's colour, a pale well and a 3D edge.
+            .drawBehind {
+                drawRoundRect(accent.abDarkened(0.3f), Offset(0f, 6.dp.toPx()), this.size, CornerRadius(outerCorner.toPx()))
+            }
+            .shadow(12.dp, outer, clip = false)
+            .drawBehind {
+                val r = CornerRadius(outerCorner.toPx())
+                drawRoundRect(accent, cornerRadius = r)
+                drawRoundRect(
+                    Brush.verticalGradient(listOf(Color.White.copy(alpha = 0.3f), Color.Transparent), endY = this.size.height * 0.5f),
+                    cornerRadius = r,
+                )
+                val rim = 3.dp.toPx()
+                drawRoundRect(
+                    accent.abBlended(Color.White, 0.72f),
+                    topLeft = Offset(rim, rim),
+                    size = Size(this.size.width - rim * 2f, this.size.height - rim * 2f),
+                    cornerRadius = CornerRadius(15.dp.toPx()),
+                )
+                drawRoundRect(Color.White.copy(alpha = 0.45f), cornerRadius = r, style = Stroke(width = 1.5.dp.toPx()))
+            }
             .pointerInput(size) {
                 var total = Offset.Zero
                 detectDragGestures(
@@ -219,28 +311,26 @@ private fun BoardView(
                 )
             }
     ) {
+        // empty sockets the tiles sit in
         for (i in 0 until size * size) {
             Box(
                 modifier = Modifier
                     .offset(gap + (cell + gap) * (i % size), gap + (cell + gap) * (i / size))
                     .size(cell)
-                    .clip(RoundedCornerShape(AppDimens.Dimens8))
-                    .background(Color.White.copy(alpha = 0.25f))
+                    .background(accent.copy(alpha = 0.3f), RoundedCornerShape(tileCorner))
             )
         }
-        tiles.forEach { tile -> key(tile.id) { MergeTile(tile, cell, gap) } }
+        tiles.forEach { tile -> key(tile.id) { MergeTile(tile, cell, gap, tileCorner) } }
     }
 }
 
 @Composable
-private fun MergeTile(tile: Merge2048Tile, cell: Dp, gap: Dp) {
+private fun MergeTile(tile: Merge2048Tile, cell: Dp, gap: Dp, tileCorner: Dp) {
+    val colors = LocalAbColors.current
     val x by animateDpAsState(gap + (cell + gap) * tile.col, tween(130), label = "")
     val y by animateDpAsState(gap + (cell + gap) * tile.row, tween(130), label = "")
     val pop = remember { Animatable(if (tile.isNew) 0.4f else 1f) }
     LaunchedEffect(tile.isNew) { if (tile.isNew) pop.animateTo(1f, spring(dampingRatio = 0.5f)) }
-    LaunchedEffect(tile.justMerged) {
-        if (tile.justMerged) { pop.animateTo(1.14f, tween(90)); pop.animateTo(1f, spring(dampingRatio = 0.55f)) }
-    }
     // ≤4 digits show the full number; bigger values show as K/M (max 4 chars).
     // Font shrinks by label length so it always fits one line on a 7×7 board.
     val text = Merge2048Palette.label(tile.value)
@@ -250,45 +340,63 @@ private fun MergeTile(tile: Merge2048Tile, cell: Dp, gap: Dp) {
         3 -> 0.34f
         else -> 0.29f   // 4 chars ("8192", "512K")
     }
+    val face = merge2048Candy(tile.value, colors)
+    val edge = minOf(3f, maxOf(2f, cell.value * 0.06f)).dp
+    val shape = RoundedCornerShape(tileCorner)
+    // The tile is `cell` tall in total: a face (cell - edge) plus the 3D bottom edge the toy tile adds.
     Box(
         modifier = Modifier
             .offset(x, y)
             .size(cell)
             .graphicsLayer { scaleX = pop.value; scaleY = pop.value }
-            .clip(RoundedCornerShape(AppDimens.Dimens8))
-            .background(Merge2048Palette.bg(tile.value)),
+            .abBounce(tile.value, 1.28f)
+            .then(
+                if (tile.justMerged) Modifier.shadow(10.dp, shape, clip = false, ambientColor = face, spotColor = face)
+                else Modifier
+            )
+            .abToyTile(face, tileCorner, edge),
         contentAlignment = Alignment.Center
     ) {
-        Text(text, color = Merge2048Palette.fg(tile.value),
-            fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (cell.value * fontFrac).sp,
-            maxLines = 1, softWrap = false)
+        Text(
+            text,
+            style = AbTypography.fixed(cell.value * fontFrac, FontWeight.Black).copy(
+                shadow = Shadow(face.abDarkened(0.5f).copy(alpha = 0.6f), Offset(0f, 3f), 0f)
+            ),
+            color = Color.White,
+            maxLines = 1, softWrap = false
+        )
+        if (tile.justMerged) {
+            Box(Modifier.fillMaxSize().border(3.dp, Color.White, shape))
+        }
+    }
+}
+
+// ⭐ Score / 🎯 Target / 🏆 Best
+@Composable
+private fun Scoreboard(score: Int, target: Int, best: Int, s: Float, modifier: Modifier = Modifier) {
+    val colors = LocalAbColors.current
+    Column(modifier = modifier.padding(horizontal = AppDimens.Dimens8), horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center) {
+        AbGlassPanel {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
+                modifier = Modifier.padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens16)
+            ) {
+                ScoreRow("⭐", "$score", colors.brandPrimary, s)
+                ScoreRow("🎯", "$target", colors.accentOrange.abReadable(3f), s)
+                if (best > 0) ScoreRow("🏆", "$best", colors.accentOrange.abReadable(3f), s)
+            }
+        }
     }
 }
 
 @Composable
-private fun Scoreboard(score: Int, target: Int, best: Int, s: Float, modifier: Modifier = Modifier) {
-    Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens16),
-            modifier = Modifier.clip(RoundedCornerShape(AppDimens.Dimens16)).background(Color.White.copy(alpha = 0.8f))
-                .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens16)
-        ) {
-            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
-                Text("⭐", fontSize = (22f * s).sp)
-                Text("$score", color = BLUE, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (22f * s).sp)
-            }
-            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
-                Text("🎯", fontSize = (22f * s).sp)
-                Text("$target", color = ORANGE, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (22f * s).sp)
-            }
-            if (best > 0) {
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
-                    Text("🏆", fontSize = (22f * s).sp)
-                    Text("$best", color = ORANGE_BORDER, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = (22f * s).sp)
-                }
-            }
-        }
+private fun ScoreRow(emoji: String, value: String, color: Color, s: Float) {
+    Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
+        Text(emoji, fontSize = (22f * s).sp)
+        Text(value, color = color, style = AbTypography.fixed(22f * s, FontWeight.ExtraBold), maxLines = 1, softWrap = false,
+            modifier = Modifier.abBounce(value))
     }
 }
 
@@ -298,81 +406,34 @@ private fun Scoreboard(score: Int, target: Int, best: Int, s: Float, modifier: M
 @Composable
 private fun ResultOverlay(score: Int, didWin: Boolean, highest: Int, goal: Int, best: Int, onPlayAgain: () -> Unit, onBack: () -> Unit) {
     val starCount = when { didWin -> 3; highest >= goal / 2 -> 2; else -> 1 }
-    // A full win (reached the target tile) earns the stronger green celebration accent;
-    // any other completion keeps the default orange.
-    val accent = if (didWin) ButtonType.GREEN else ButtonType.ORANGE
-    val accentColors = getButtonColors(accent)
     var enabled by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) { delay(1000); enabled = true }
 
     Box(modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)), contentAlignment = Alignment.Center) {
         LaunchedEffect(Unit) { if (starCount >= 2) AudioPlayerManager.playSoundClap() else AudioPlayerManager.playSoundWin() }
-        // "Candy Pop" celebration card — saturated gradient block with a white badge overlapping the top edge.
-        Box(modifier = Modifier.fillMaxWidth(0.6f), contentAlignment = Alignment.TopCenter) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .shadow(20.dp, RoundedCornerShape(AppDimens.Dimens20 * 1.2f), ambientColor = accentColors.base, spotColor = accentColors.base)
-                    .background(accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20 * 1.2f))
-                    .padding(horizontal = AppDimens.Dimens30, vertical = AppDimens.Dimens20),
-                horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
-            ) {
-                Spacer(Modifier.height(AppDimens.Dimens20))
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text("🔢", fontSize = (28f * gameScale()).sp)
-                    Text(
-                        str(if (didWin) R.string.balloon_great_job else R.string.good_try),
-                        color = Color.White,
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)),
-                        fontSize = 30.sp.scaled(),
-                        style = TextStyle(shadow = Shadow(color = accentColors.base.copy(alpha = 0.9f), offset = Offset(1.5f, 1.5f), blurRadius = 0f)),
-                        modifier = Modifier.padding(horizontal = AppDimens.Dimens8)
-                    )
-                    Text("✨", fontSize = (28f * gameScale()).sp)
+        // "Candy Pop" celebration card from the shared kit.
+        GameResultCard(
+            title = str(if (didWin) R.string.balloon_great_job else R.string.good_try),
+            emoji = "🔢",
+            accent = ButtonType.PINK,
+            stars = starCount,
+            score = str(R.string.balloon_final_score) + ": $score",
+            stats = {
+                Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
+                    GameStatChip("🔝", "$highest", GREEN)
+                    GameStatChip("🏆", "$best", ORANGE)
                 }
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8), verticalAlignment = Alignment.Bottom) {
-                    BigStar(starCount >= 1, 32, 150); BigStar(starCount >= 2, 40, 400); BigStar(starCount >= 3, 32, 650)
+            },
+            buttons = {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20),
+                    modifier = Modifier.graphicsLayer { alpha = if (enabled) 1f else 0.55f }
+                ) {
+                    GameButton(text = str(R.string.balloon_play_again), icon = Icons.Filled.Refresh,
+                        type = ButtonType.POSITIVE, onClick = { if (enabled) onPlayAgain() })
+                    GameHomeButton(onClick = { if (enabled) onBack() })
                 }
-                Text(str(R.string.balloon_final_score) + ": $score", color = Color.White,
-                    fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 26.sp.scaled())
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16)) {
-                    StatChip("🔝", highest, GREEN); StatChip("🏆", best, ORANGE_BORDER)
-                }
-                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens20)) {
-                    KidsActionButton(text = str(R.string.balloon_play_again), type = ButtonType.POSITIVE, onClick = { if (enabled) onPlayAgain() })
-                    KidsActionButton(text = str(R.string.balloon_back), type = ButtonType.NEGATIVE, onClick = { if (enabled) onBack() })
-                }
-            }
-
-            Box(
-                modifier = Modifier
-                    .offset(y = (-28).dp)
-                    .size(64.dp)
-                    .shadow(8.dp, CircleShape)
-                    .background(Color.White, CircleShape)
-                    .border(4.dp, Color.White, CircleShape),
-                contentAlignment = Alignment.Center
-            ) {
-                Text("🔢", fontSize = 32.sp)
-            }
-        }
+            },
+        )
     }
-}
-
-@Composable
-private fun StatChip(emoji: String, value: Int, color: Color) {
-    Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens4), verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.clip(RoundedCornerShape(100f)).background(Color.White)
-            .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens6)) {
-        Text(emoji, fontSize = (16f * gameScale()).sp)
-        Text("$value", color = color, fontFamily = FontFamily(Font(R.font.font_extra_bold)), fontSize = 20.sp.scaled())
-    }
-}
-
-@Composable
-private fun BigStar(earned: Boolean, sizeSp: Int, delayMs: Long) {
-    val scale = remember { Animatable(0.01f) }
-    LaunchedEffect(Unit) { delay(delayMs); scale.animateTo(1f, spring(dampingRatio = 0.5f)) }
-    Text("⭐", fontSize = (sizeSp * gameScale()).sp,
-        modifier = Modifier.graphicsLayer { scaleX = scale.value; scaleY = scale.value; alpha = if (earned) 1f else 0.35f })
 }

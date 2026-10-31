@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.common_ui.how_to_play
 
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -34,6 +36,9 @@ import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.theme.getButtonColors
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abHowToCard
 
 @Composable
 fun HowToPlayBalloonPopView(
@@ -57,21 +62,19 @@ fun HowToPlayBalloonPopView(
             modifier = Modifier
                 .width(screenWidth * widthMultiplier)
                 .height(screenHeight * heightMultiplier)
-                .background(Color.White, RoundedCornerShape(AppDimens.Dimens20))
-                .border(AppDimens.Dimens4, accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20))
-                .padding(AppDimens.Dimens16)
+                .abHowToCard(ButtonType.PINK)
         ) {
             Column(modifier = Modifier.fillMaxSize()) {
                 Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
                     Text(
                         text = stringResource(R.string.balloon_pop_game),
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                        fontFamily = AbTypography.Baloo,
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold,
                         color = accentColors.base
                     )
                     Spacer(modifier = Modifier.weight(1f))
-                    KidsActionButton(
+                    GameButton(
                         text = stringResource(R.string.close),
                         type = ButtonType.PINK,
                         onClick = onClose,
@@ -112,8 +115,8 @@ fun HowToPlayBalloonPopView(
 @Composable
 private fun HowToBullet(text: String) {
     Row(modifier = Modifier.fillMaxWidth().padding(vertical = AppDimens.Dimens4)) {
-        Text("•  ", fontSize = 16.sp, color = Color.Black, fontFamily = FontFamily(Font(R.font.font_bold)))
-        Text(text, fontSize = 15.sp, color = Color.Black, fontFamily = FontFamily(Font(R.font.font_regular)))
+        Text("•  ", fontSize = 16.sp, color = LocalAbColors.current.textPrimary, fontFamily = AbTypography.Baloo)
+        Text(text, fontSize = 15.sp, color = LocalAbColors.current.textPrimary, fontFamily = AbTypography.Baloo)
     }
 }
 
@@ -123,7 +126,7 @@ private fun HowToHeading(text: String) {
         text = text,
         fontSize = 18.sp,
         fontWeight = FontWeight.Bold,
-        fontFamily = FontFamily(Font(R.font.font_bold)),
+        fontFamily = AbTypography.Baloo,
         modifier = Modifier.padding(top = AppDimens.Dimens8)
     )
 }

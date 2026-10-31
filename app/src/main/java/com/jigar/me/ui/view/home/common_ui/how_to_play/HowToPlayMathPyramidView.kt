@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.common_ui.how_to_play
 
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameButton
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -36,6 +38,9 @@ import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.theme.getButtonColors
+import com.jigar.me.ui.view.ab.AbTypography
+import com.jigar.me.ui.view.ab.LocalAbColors
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.abHowToCard
 
 @Composable
 fun HowToPlayMathPyramidView(
@@ -66,9 +71,7 @@ fun HowToPlayMathPyramidView(
             modifier = Modifier
                 .width(screenWidth * widthMultiplier)
                 .height(screenHeight * heightMultiplier)
-                .background(Color.White, RoundedCornerShape(AppDimens.Dimens20))
-                .border(AppDimens.Dimens4, accentColors.gradient, RoundedCornerShape(AppDimens.Dimens20))
-                .padding(AppDimens.Dimens16)
+                .abHowToCard(ButtonType.RED)
         ) {
 
             Column(modifier = Modifier.fillMaxSize()) {
@@ -80,7 +83,7 @@ fun HowToPlayMathPyramidView(
                 ) {
                     Text(
                         text = stringResource(R.string.math_pyramid),
-                        fontFamily = FontFamily(Font(R.font.font_extra_bold)),
+                        fontFamily = AbTypography.Baloo,
                         fontSize = dimensionResource(R.dimen.textSize18).value.sp,
                         fontWeight = FontWeight.Bold,
                         color = accentColors.base
@@ -88,7 +91,7 @@ fun HowToPlayMathPyramidView(
 
                     Spacer(modifier = Modifier.weight(1f))
 
-                    KidsActionButton(
+                    GameButton(
                         text = stringResource(R.string.close),
                         type = ButtonType.RED,
                         onClick = onClose,
@@ -115,7 +118,7 @@ fun HowToPlayMathPyramidView(
                             text = "👉 How it works:",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            fontFamily = AbTypography.Baloo,
                             modifier = Modifier.padding(top = AppDimens.Dimens8)
                         )
                     }
@@ -130,7 +133,7 @@ fun HowToPlayMathPyramidView(
                             text = "Example:",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            fontFamily = AbTypography.Baloo,
                             color = Color.Red,
                             modifier = Modifier.padding(top = AppDimens.Dimens8)
                         )
@@ -142,9 +145,9 @@ fun HowToPlayMathPyramidView(
                             modifier = Modifier.padding(start = AppDimens.Dimens16),
                             verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens4)
                         ) {
-                            Text("    [ ? ]", fontFamily = FontFamily(Font(R.font.font_regular)))
-                            Text("[ 4 ] [ 6 ]", fontFamily = FontFamily(Font(R.font.font_regular)))
-                            Text("Because 4 + 6 = 10, the top box should be 10.", fontFamily = FontFamily(Font(R.font.font_regular)))
+                            Text("    [ ? ]", fontFamily = AbTypography.Baloo)
+                            Text("[ 4 ] [ 6 ]", fontFamily = AbTypography.Baloo)
+                            Text("Because 4 + 6 = 10, the top box should be 10.", fontFamily = AbTypography.Baloo)
                         }
                     }
 
@@ -154,7 +157,7 @@ fun HowToPlayMathPyramidView(
                             text = "👉 Your job:",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            fontFamily = AbTypography.Baloo,
                             modifier = Modifier.padding(top = AppDimens.Dimens8)
                         )
                     }
@@ -178,7 +181,7 @@ fun HowToPlayMathPyramidView(
                             text = "👨‍👩‍👧 How It Helps:",
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            fontFamily = AbTypography.Baloo,
                             modifier = Modifier.padding(top = AppDimens.Dimens12)
                         )
                     }
@@ -204,7 +207,7 @@ fun HowToPlayMathPyramidView(
                             text = "❤️ Why This Game Matters:",
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = FontFamily(Font(R.font.font_bold)),
+                            fontFamily = AbTypography.Baloo,
                             modifier = Modifier.padding(top = AppDimens.Dimens12)
                         )
                     }
