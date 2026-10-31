@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.res.stringResource
@@ -45,8 +46,15 @@ fun UseWhichHandTextUi(highlightColor: Color,
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
 
-    // the preset's button colour is a deep tone made for the light page: on the dark page it is pulled toward white so it still reads
-    val shown = if (colors.isDark) highlightColor.abBlended(Color.White, 0.62f) else highlightColor
+    // the preset's button colour is a deep or pastel tone made for the light page. On the dark page it becomes a bright, saturated
+    // version of the same hue, so the two words still read as a highlight (not as plain white text).
+    val shown = if (colors.isDark) {
+        val hsv = FloatArray(3)
+        android.graphics.Color.colorToHSV(highlightColor.toArgb(), hsv)
+        if (hsv[1] < 0.08f) hsv[0] = 45f            // a grey preset has no hue: use gold
+        hsv[1] = maxOf(hsv[1], 0.6f); hsv[2] = 1f
+        Color(android.graphics.Color.HSVToColor(hsv))
+    } else highlightColor
     val annotatedText = remember(shown, s) {
         buildAnnotatedString {
             val highlight = SpanStyle(fontWeight = FontWeight.Bold, color = shown, fontSize = (13f * s).sp)
