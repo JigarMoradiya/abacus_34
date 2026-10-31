@@ -77,6 +77,23 @@ import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
 import com.jigar.me.ui.view.home.theme.PrimaryBlue
 import kotlinx.coroutines.isActive
 
+private val ONES_WORDS = arrayOf("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve",
+    "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen")
+private val TENS_WORDS = arrayOf("", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety")
+
+/** 126 -> "one hundred twenty six". Spoken as words so every TTS engine and phone language reads the whole number, not digit by digit. */
+fun numberToWords(n: Int): String = when {
+    n < 0 -> "minus " + numberToWords(-n)
+    n < 20 -> ONES_WORDS[n]
+    n < 100 -> TENS_WORDS[n / 10] + if (n % 10 != 0) " " + ONES_WORDS[n % 10] else ""
+    n < 1000 -> ONES_WORDS[n / 100] + " hundred" + if (n % 100 != 0) " " + numberToWords(n % 100) else ""
+    else -> numberToWords(n / 1000) + " thousand" + if (n % 1000 != 0) " " + numberToWords(n % 1000) else ""
+}
+
+/** "eighteen times seven equals one hundred twenty six" */
+fun tableSpokenLine(table: Int, i: Int): String = "${numberToWords(table)} times ${numberToWords(i)} equals ${numberToWords(table * i)}"
+
+
 enum class FillBlankType { ANSWER, MULTIPLICAND }
 
 data class FillBlankQuestion(
@@ -289,7 +306,7 @@ fun TableDisplayCard(tableNumber: Int) {
         speakingRow = i
         speakJob = scope.launch {
             suspendCancellableCoroutine { cont ->
-                tts.speak("$tableNumber times $i equals ${tableNumber * i}", "row_tap_${tableNumber}_$i") {
+                tts.speak(tableSpokenLine(tableNumber, i), "row_tap_${tableNumber}_$i") {
                     if (cont.isActive) cont.resume(Unit)
                 }
                 cont.invokeOnCancellation { tts.stop() }
@@ -313,7 +330,7 @@ fun TableDisplayCard(tableNumber: Int) {
                 if (!isActive) break
                 speakingRow = i
                 suspendCancellableCoroutine { cont ->
-                    tts.speak("$tableNumber times $i equals ${tableNumber * i}", "row_all_${tableNumber}_$i") {
+                    tts.speak(tableSpokenLine(tableNumber, i), "row_all_${tableNumber}_$i") {
                         if (cont.isActive) cont.resume(Unit)
                     }
                     cont.invokeOnCancellation { tts.stop() }
@@ -354,7 +371,7 @@ fun TableDisplayCard(tableNumber: Int) {
                                     }
                                 )
                                 .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null) { speakSingle(i) }
-                                .padding(vertical = AppDimens.Dimens6),
+                                .padding(vertical = 3.dp),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(Dimens4, Alignment.CenterHorizontally)
                         ) {

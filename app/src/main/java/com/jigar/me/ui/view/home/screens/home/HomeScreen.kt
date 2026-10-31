@@ -898,7 +898,7 @@ private fun LevelMiniCard(info: LevelInfo, onClick: () -> Unit) {
                 onClick = { AudioPlayerManager.playSoundBtnClick(); onClick() },
             )
             .background(Brush.horizontalGradient(listOf(info.start, info.end)), PillShape)
-            .padding(horizontal = Dimens14, vertical = Dimens8),
+            .padding(horizontal = Dimens14, vertical = Dimens4),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(Dimens8)
     ) {
@@ -910,7 +910,7 @@ private fun LevelMiniCard(info: LevelInfo, onClick: () -> Unit) {
         ) {
             Text(text = info.emoji, fontSize = (15 * s).sp)
         }
-        Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy((-3f * s).dp)) {
+        Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy((-6f * s).dp)) {
             Text(
                 text = "LEVEL ${info.number}",
                 style = AbTypography.fixed(11.5f * s, FontWeight.Bold).copy(letterSpacing = 1.sp),
