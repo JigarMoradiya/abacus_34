@@ -88,7 +88,8 @@ fun GameHomeButton(modifier: Modifier = Modifier, isSmall: Boolean = false, onCl
  */
 @Composable
 fun GameFrame(world: AbWorld, content: @Composable () -> Unit) {
-    AbTheme(forcing = AbThemeMode.Light) {
+    // follows the app's Light/Dark toggle (it used to be pinned to light)
+    AbTheme {
         Box(Modifier.fillMaxSize()) {
             AbBackground(world, Modifier.fillMaxSize())
             content()
