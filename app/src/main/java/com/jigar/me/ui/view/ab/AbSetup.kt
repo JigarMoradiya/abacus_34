@@ -84,7 +84,10 @@ fun AbSectionLabel(text: String, modifier: Modifier = Modifier) {
  * caller decides what a tap on it does, usually the paywall).
  *
  * @param width the card width (the caller lays a row of equal cards out).
- * @param stars 1..3 = that many gold-sfun AbSelectCard(
+ * @param stars 1..3 = that many gold-style stars lit out of three (a difficulty).
+ */
+@Composable
+fun AbSelectCard(
     title: String,
     accent: Color,
     isSelected: Boolean,
@@ -153,11 +156,6 @@ fun AbSectionLabel(text: String, modifier: Modifier = Modifier) {
                     minScale = 0.6f,
                     maxLines = 1,
                     textAlign = TextAlign.Center,
-                )
-            }
-        }
-
-extAlign.Center,
                 )
             }
         }
