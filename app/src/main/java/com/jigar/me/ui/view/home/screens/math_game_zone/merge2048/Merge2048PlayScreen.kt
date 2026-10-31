@@ -273,6 +273,8 @@ private fun BoardView(
     val tileCorner = maxOf(7f, cell.value * 0.22f).dp
     val outerCorner = 18.dp
     val outer = RoundedCornerShape(outerCorner)
+    // the pale well of the tray: a dark surface with a hint of the game colour in dark mode
+    val wellColor = com.jigar.me.ui.view.ab.LocalAbColors.current.let { c -> if (c.isDark) accent.abBlended(c.bgSecondary, 0.82f) else accent.abBlended(Color.White, 0.72f) }
     Box(
         modifier = Modifier
             .size(boardSide)
@@ -290,7 +292,7 @@ private fun BoardView(
                 )
                 val rim = 3.dp.toPx()
                 drawRoundRect(
-                    accent.abBlended(Color.White, 0.72f),
+                    wellColor,
                     topLeft = Offset(rim, rim),
                     size = Size(this.size.width - rim * 2f, this.size.height - rim * 2f),
                     cornerRadius = CornerRadius(15.dp.toPx()),
