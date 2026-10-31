@@ -114,8 +114,8 @@ fun PurchaseScreen(
             Icons.Rounded.Close, tone = AbTone.Primary, sound = AbSound.Back, onClick = onClose,
             modifier = Modifier
                 .align(Alignment.TopStart)
-                .padding(start = DeviceInfo.screenHorizontalPadding(), top = DeviceInfo.screenTopPadding() + AppDimens.Dimens10)
-                .padding(start = if (DeviceInfo.screenHorizontalPadding() == 0.dp) AppDimens.Dimens16 else 0.dp),
+                // same position as the back button of every other screen (HeaderBar: screenHorizontalPadding / screenTopPadding)
+                .padding(start = DeviceInfo.screenHorizontalPadding(), top = DeviceInfo.screenTopPadding()),
         )
     }
 

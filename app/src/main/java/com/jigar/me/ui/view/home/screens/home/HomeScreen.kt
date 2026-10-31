@@ -910,7 +910,7 @@ private fun LevelMiniCard(info: LevelInfo, onClick: () -> Unit) {
         ) {
             Text(text = info.emoji, fontSize = (15 * s).sp)
         }
-        Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(1.dp)) {
+        Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy((-3f * s).dp)) {
             Text(
                 text = "LEVEL ${info.number}",
                 style = AbTypography.fixed(9f * s, FontWeight.Bold).copy(letterSpacing = 1.sp),
@@ -918,7 +918,7 @@ private fun LevelMiniCard(info: LevelInfo, onClick: () -> Unit) {
             )
             Text(
                 text = info.title,
-                style = AbTypography.fixed(13f * s, FontWeight.Black),
+                style = AbTypography.fixed(17f * s, FontWeight.Black),
                 color = Color.White,
                 maxLines = 1
             )

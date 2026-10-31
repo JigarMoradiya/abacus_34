@@ -130,7 +130,7 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                     color = Color(0xFF2196F3),
                     multicolor = true,
                     modifier = Modifier
-                        .size((androidx.compose.ui.platform.LocalConfiguration.current.screenHeightDp * (if (DeviceInfo.isTablet) 0.34f else 0.26f)).dp)
+                        .size((androidx.compose.ui.platform.LocalConfiguration.current.screenHeightDp * (if (DeviceInfo.isTablet) 0.4f else 0.34f)).dp)
                 )
 
                 Text(
@@ -196,7 +196,7 @@ fun PuzzleOptionView(
     solved: Int = 0,
     onClick: () -> Unit
 ) {
-    val boxSize = SudokuHomeIconsBox
+    val boxSize = if (DeviceInfo.isLargeTablet) 190.dp else if (DeviceInfo.isTablet) 140.dp else 100.dp
     val displayColor = if (isLocked) Color.Gray.copy(alpha = 0.4f) else color
 
     Column(
