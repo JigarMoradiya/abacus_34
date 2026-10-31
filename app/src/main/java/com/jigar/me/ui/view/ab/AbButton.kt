@@ -81,16 +81,20 @@ fun AbButton(
     sound: AbSound? = AbSound.Button,
     /** A shorter (or taller) face than the size's own, in kit units (x the kit factor); the text size stays that of [size]. */
     minHeightOverride: Float? = null,
+    /** A bigger label (in kit units x the kit factor) and/or a heavier weight than the size's own; the face height is not changed. */
+    labelSize: Float? = null,
+    labelWeight: FontWeight? = null,
     onClick: () -> Unit,
 ) {
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
     val palette = if (enabled) AbTonePalette.of(tone, colors) else AbTonePalette.disabled(tone, colors)
-    val style = when (size) {
+    val baseStyle = when (size) {
         AbSize.Compact, AbSize.Small -> AbTypography.label(s)
         AbSize.Medium -> AbTypography.body(s).copy(fontWeight = FontWeight.Bold)
         AbSize.Large -> AbTypography.headline(s)
     }
+    val style = baseStyle.let { st -> st.copy(fontSize = labelSize?.let { AbTypography.fixed(it * s, st.fontWeight ?: FontWeight.Normal).fontSize } ?: st.fontSize, fontWeight = labelWeight ?: st.fontWeight) }
     val minHeight = minHeightOverride ?: when (size) { AbSize.Compact -> 32f; AbSize.Small -> 40f; AbSize.Medium -> 44f; AbSize.Large -> 54f }
     val hPad = when (size) { AbSize.Compact -> 12; AbSize.Small -> 16; AbSize.Medium -> 22; AbSize.Large -> 28 }
     val iconPx = when (size) { AbSize.Compact -> 13; AbSize.Small -> 16; else -> 22 }

@@ -227,6 +227,7 @@ fun ExerciseExamCompleteResultDialog(
                                     )
                                     Text(
                                         text = result.title,
+                                        modifier = Modifier.padding(horizontal = AppDimens.Dimens16),
                                         textAlign = TextAlign.Center,
                                         style = AbTypography.headline(s),
                                         color = result.titleColor
@@ -255,6 +256,8 @@ fun ExerciseExamCompleteResultDialog(
                                         text = btnLabel,
                                         tone = AbTone.Primary,
                                         size = AbSize.Small,
+                                        labelSize = 16f,
+                                        labelWeight = FontWeight.ExtraBold,
                                         icon = if (request.type == AppConstants.apiParams.answerFormalExam) Icons.Rounded.Check else Icons.Rounded.Refresh,
                                         onClick = onGiveAgain
                                     )
