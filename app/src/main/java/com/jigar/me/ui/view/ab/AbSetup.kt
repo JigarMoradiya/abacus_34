@@ -97,6 +97,8 @@ fun AbSelectCard(
     icon: ImageVector? = null,
     stars: Int? = null,
     isLocked: Boolean = false,
+    /** A shorter card (the Exam home): smaller icon row and less vertical padding. */
+    compact: Boolean = false,
 ) {
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
@@ -116,23 +118,23 @@ fun AbSelectCard(
                 )
                 .width(width)
                 .border(2.dp, if (isSelected) Color.White.copy(alpha = 0.6f) else colors.outline, shape)
-                .padding(vertical = 8.dp * s),
+                .padding(vertical = (if (compact) 4f else 8f).dp * s),
             verticalArrangement = Arrangement.spacedBy(2.dp * s),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             if (symbol != null) {
-                Box(Modifier.height(32.dp * s), contentAlignment = Alignment.Center) {
+                Box(Modifier.height((if (compact) 24f else 32f).dp * s), contentAlignment = Alignment.Center) {
                     Text(symbol, style = AbTypography.fixed(28f * s, FontWeight.ExtraBold), color = if (isSelected) Color.White else accent, maxLines = 1)
                 }
             }
             if (icon != null) {
-                Box(Modifier.height(32.dp * s), contentAlignment = Alignment.Center) {
+                Box(Modifier.height((if (compact) 24f else 32f).dp * s), contentAlignment = Alignment.Center) {
                     Icon(icon, null, Modifier.size((20f * AB_SF_TO_VECTOR).dp * s), tint = if (isSelected) Color.White else accent)
                 }
             }
             if (stars != null) {
                 // the star vector has its own padding, which stands in for the 2 pt gap between the stars of the iOS card
-                Row(Modifier.height(32.dp * s), verticalAlignment = Alignment.CenterVertically) {
+                Row(Modifier.height((if (compact) 24f else 32f).dp * s), verticalAlignment = Alignment.CenterVertically) {
                     for (i in 0 until 3) {
                         Icon(
                             Icons.Rounded.Star, null, Modifier.size((14f * AB_SF_TO_VECTOR).dp * s),

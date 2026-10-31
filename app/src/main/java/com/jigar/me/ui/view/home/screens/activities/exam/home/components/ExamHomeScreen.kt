@@ -67,7 +67,7 @@ fun ExamHomeScreen(
 
             Text(
                 text = stringResource(R.string.child_level),
-                modifier = Modifier.padding(top = ActivityDimens.homeTitleTopSpacing / 2),
+                modifier = Modifier.padding(top = ActivityDimens.homeTitleTopSpacing / 8),
                 textAlign = TextAlign.Center,
                 style = AbTypography.fixed(22f * s, FontWeight.Black),
                 // the system's primary label colour: black on the light theme, white on the dark one
@@ -82,21 +82,25 @@ fun ExamHomeScreen(
 
             Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)) {
                 AbSelectCard(
+                    compact = true,
                     title = stringResource(R.string.Addition), symbol = "+", accent = ColorGreen,
                     isSelected = uiState.isAdditionSelected, width = ActivityDimens.examTypeCardWidth,
                     onClick = { viewModel.updateValues(AppConstants.EXAM.isAdditionSelected, !uiState.isAdditionSelected) },
                 )
                 AbSelectCard(
+                    compact = true,
                     title = stringResource(R.string.Subtraction), symbol = "−", accent = ColorBlue,
                     isSelected = uiState.isSubtractionSelected, isLocked = !isSubscribed, width = ActivityDimens.examTypeCardWidth,
                     onClick = { if (isSubscribed) viewModel.updateValues(AppConstants.EXAM.isSubtractionSelected, !uiState.isSubtractionSelected) else onLockedClick() },
                 )
                 AbSelectCard(
+                    compact = true,
                     title = stringResource(R.string.Multiplication), symbol = "×", accent = ColorPurple,
                     isSelected = uiState.isMultiplicationSelected, isLocked = !isSubscribed, width = ActivityDimens.examTypeCardWidth,
                     onClick = { if (isSubscribed) viewModel.updateValues(AppConstants.EXAM.isMultiplicationSelected, !uiState.isMultiplicationSelected) else onLockedClick() },
                 )
                 AbSelectCard(
+                    compact = true,
                     title = stringResource(R.string.Division), symbol = "÷", accent = ColorPink,
                     isSelected = uiState.isDivisionSelected, isLocked = !isSubscribed, width = ActivityDimens.examTypeCardWidth,
                     onClick = { if (isSubscribed) viewModel.updateValues(AppConstants.EXAM.isDivisionSelected, !uiState.isDivisionSelected) else onLockedClick() },
@@ -111,18 +115,21 @@ fun ExamHomeScreen(
 
             Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)) {
                 AbSelectCard(
+                    compact = true,
                     title = stringResource(R.string.beginner), stars = 1, accent = ColorGreen,
                     isSelected = uiState.selectedDifficulty == AppConstants.EXAM.examDifficultyBeginner,
                     width = ActivityDimens.examDiffCardWidth,
                     onClick = { viewModel.updateRadioValue(AppConstants.EXAM.examDifficultyBeginner) },
                 )
                 AbSelectCard(
+                    compact = true,
                     title = stringResource(R.string.intermediate), stars = 2, accent = ColorOrange,
                     isSelected = uiState.selectedDifficulty == AppConstants.EXAM.examDifficultyIntermediate,
                     isLocked = !isSubscribed, width = ActivityDimens.examDiffCardWidth,
                     onClick = { if (isSubscribed) viewModel.updateRadioValue(AppConstants.EXAM.examDifficultyIntermediate) else onLockedClick() },
                 )
                 AbSelectCard(
+                    compact = true,
                     title = stringResource(R.string.expert), stars = 3, accent = ColorRed,
                     isSelected = uiState.selectedDifficulty == AppConstants.EXAM.examDifficultyExpert,
                     isLocked = !isSubscribed, width = ActivityDimens.examDiffCardWidth,
