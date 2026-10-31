@@ -56,7 +56,7 @@ fun HowToPlayTrueFalseView(
             Column(modifier = Modifier.fillMaxSize()) {
                 Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
                     Text(stringResource(R.string.true_false),
-                        fontFamily = AbTypography.Baloo, fontSize = 18.sp, color = ColorPrimary)
+                        fontFamily = AbTypography.Baloo, fontSize = 18.sp, color = com.jigar.me.ui.view.home.screens.math_game_zone.common.howToInk(ColorPrimary))
                     Spacer(Modifier.weight(1f))
                     Text(stringResource(R.string.close), fontSize = 14.sp, fontWeight = FontWeight.Medium,
                         fontFamily = AbTypography.Baloo, color = LocalAbColors.current.textPrimary,

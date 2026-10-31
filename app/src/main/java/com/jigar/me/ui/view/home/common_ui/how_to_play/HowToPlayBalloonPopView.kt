@@ -71,7 +71,7 @@ fun HowToPlayBalloonPopView(
                         fontFamily = AbTypography.Baloo,
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold,
-                        color = accentColors.base
+                        color = com.jigar.me.ui.view.home.screens.math_game_zone.common.howToInk(accentColors.base)
                     )
                     Spacer(modifier = Modifier.weight(1f))
                     GameButton(

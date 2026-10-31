@@ -90,9 +90,14 @@ fun GameHomeButton(modifier: Modifier = Modifier, isSmall: Boolean = false, onCl
 fun GameFrame(world: AbWorld, content: @Composable () -> Unit) {
     // follows the app's Light/Dark toggle (it used to be pinned to light)
     AbTheme {
-        Box(Modifier.fillMaxSize()) {
-            AbBackground(world, Modifier.fillMaxSize())
-            content()
+        // plain Text with no colour follows the theme (it used to fall back to black, invisible on the dark page)
+        androidx.compose.runtime.CompositionLocalProvider(
+            androidx.compose.material3.LocalContentColor provides com.jigar.me.ui.view.ab.LocalAbColors.current.textPrimary
+        ) {
+            Box(Modifier.fillMaxSize()) {
+                AbBackground(world, Modifier.fillMaxSize())
+                content()
+            }
         }
     }
 }

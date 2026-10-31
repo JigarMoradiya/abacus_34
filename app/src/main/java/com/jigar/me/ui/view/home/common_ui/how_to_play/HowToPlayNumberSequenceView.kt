@@ -83,7 +83,7 @@ fun HowToPlayNumberSequenceView(
                         fontFamily = AbTypography.Baloo,
                         fontSize = dimensionResource(id = R.dimen.textSize18).value.sp,
                         fontWeight = FontWeight.Bold,
-                        color = accentColors.base
+                        color = com.jigar.me.ui.view.home.screens.math_game_zone.common.howToInk(accentColors.base)
                     )
 
                     Spacer(modifier = Modifier.weight(1f))
@@ -231,7 +231,7 @@ fun Check(text: String) {
 fun Detail(text: String) {
     Text(
         text = "   $text",
-        color = Color.DarkGray,
+        color = com.jigar.me.ui.view.ab.LocalAbColors.current.textSecondary,
         fontSize = 15.sp,
         modifier = Modifier.padding(top = AppDimens.Dimens2),
         fontFamily = AbTypography.Baloo

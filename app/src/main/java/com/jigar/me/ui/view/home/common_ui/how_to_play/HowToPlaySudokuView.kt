@@ -85,7 +85,7 @@ fun HowToPlaySudokuView(
                         fontFamily = AbTypography.Baloo,
                         fontSize = dimensionResource(R.dimen.textSize18).value.sp,
                         fontWeight = FontWeight.Bold,
-                        color = accentColors.base
+                        color = com.jigar.me.ui.view.home.screens.math_game_zone.common.howToInk(accentColors.base)
                     )
 
                     Spacer(modifier = Modifier.weight(1f))
