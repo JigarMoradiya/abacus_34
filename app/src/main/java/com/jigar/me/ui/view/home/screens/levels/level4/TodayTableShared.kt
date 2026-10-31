@@ -9,6 +9,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
@@ -356,7 +357,8 @@ fun TableDisplayCard(tableNumber: Int) {
         ) {
             // Glass card with the ten rows
             AbGlassPanel(Modifier.fillMaxWidth()) {
-                Column {
+                // rows are clipped to the card's corners, so the highlight of the last row is rounded at the bottom
+                Column(Modifier.clip(androidx.compose.foundation.shape.RoundedCornerShape(com.jigar.me.ui.view.ab.AbShapes.lg * s))) {
                     Spacer(Modifier.height(backIconSize * 0.55f))
                     (1..10).forEach { i ->
                         val highlighted = speakingRow == i
