@@ -119,7 +119,12 @@ class HomeActivity : ComponentActivity() {
             val abScreen = if (BuildConfig.DEBUG) intent.getStringExtra("ab_screen") else null
             if (abScreen != null) {
                 // Debug-only preview of one restyled screen (see AbKitGallery.kt), skipping the normal app shell.
-                setContent { AbDebugScreens.Render(abScreen, intent.getBooleanExtra("ab_dark", false)) }
+                setContent {
+                    CompositionLocalProvider(
+                        LocalPreferencesHelper provides preferences,
+                        LocalTextToSpeechManager provides ttsManager
+                    ) { AbDebugScreens.Render(abScreen, intent.getBooleanExtra("ab_dark", false)) }
+                }
                 return@post
             }
             setContent {

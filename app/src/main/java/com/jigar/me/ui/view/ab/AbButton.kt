@@ -81,6 +81,8 @@ fun AbButton(
     sound: AbSound? = AbSound.Button,
     /** A shorter (or taller) face than the size's own, in kit units (x the kit factor); the text size stays that of [size]. */
     minHeightOverride: Float? = null,
+    /** Less (or more) side padding than the size's own, in kit units (x the kit factor); the text size stays that of [size]. */
+    horizontalPaddingOverride: Float? = null,
     /** A bigger label (in kit units x the kit factor) and/or a heavier weight than the size's own; the face height is not changed. */
     labelSize: Float? = null,
     labelWeight: FontWeight? = null,
@@ -108,7 +110,7 @@ fun AbButton(
                 cornerRadius = AbShapes.pill, edgeHeight = edge, enabled = enabled, sound = sound, onClick = onClick,
             )
             .heightIn(min = minHeight.dp * s)
-            .padding(horizontal = hPad.dp * s),
+            .padding(horizontal = (horizontalPaddingOverride ?: hPad.toFloat()).dp * s),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
     ) {

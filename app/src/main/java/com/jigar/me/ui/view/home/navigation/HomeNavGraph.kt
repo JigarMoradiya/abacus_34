@@ -182,12 +182,13 @@ fun HomeNavGraph(
                             popUpTo(RouteNavigation.Onboarding.route) { inclusive = true }
                         }
                     },
-                ) { left, finish ->
+                ) { left, footer, finish ->
                     // the last page IS the paywall: the plans are drawn right on it, no sheet to open
                     FreemiumPaywallBottomSheet(
                         paywallContext = PaywallContext.ONBOARDING,
                         onSubscriptionActivated = { finish(true) },
                         embeddedLeft = left,
+                        embeddedFooter = footer,
                         onDismiss = {},
                     )
                 }

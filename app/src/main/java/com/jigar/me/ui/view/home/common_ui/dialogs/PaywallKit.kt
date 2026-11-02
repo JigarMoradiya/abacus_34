@@ -19,6 +19,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -212,7 +213,7 @@ internal fun PaywallKitPlans(
 
 /** The first-launch page: the page's own left column and the plans side by side (inside the camera cut-out), no sheet. */
 @Composable
-fun PaywallKitEmbeddedLayout(left: @Composable () -> Unit, plans: @Composable () -> Unit) {
+fun PaywallKitEmbeddedLayout(left: @Composable () -> Unit, footer: (@Composable () -> Unit)? = null, plans: @Composable () -> Unit) {
     Row(
         Modifier
             .fillMaxSize()
@@ -221,8 +222,12 @@ fun PaywallKitEmbeddedLayout(left: @Composable () -> Unit, plans: @Composable ()
         horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Box(Modifier.weight(0.44f), contentAlignment = Alignment.CenterStart) { left() }
-        Box(Modifier.weight(0.56f), contentAlignment = Alignment.Center) { plans() }
+        Box(Modifier.weight(0.44f).fillMaxHeight(), contentAlignment = Alignment.CenterStart) { left() }
+        // the plans stay centred as before; a footer row (the tutorial's "Continue free for now") sits at the very bottom of the right side
+        Box(Modifier.weight(0.56f).fillMaxHeight()) {
+            Box(Modifier.align(Alignment.Center)) { plans() }
+            footer?.let { Box(Modifier.align(Alignment.BottomCenter).fillMaxWidth()) { it() } }
+        }
     }
 }
 

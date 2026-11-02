@@ -79,6 +79,7 @@ fun FreemiumPaywallBottomSheet(
     onSubscriptionActivated: () -> Unit = {},
     /** The first-launch page's own left column: when set, the plans are drawn on that page instead of in a bottom sheet. */
     embeddedLeft: (@Composable () -> Unit)? = null,
+    embeddedFooter: (@Composable () -> Unit)? = null,
     /** The grown-up question was already answered just before this sheet opened (the day 3 / day 7 reminder). */
     gateAlreadyPassed: Boolean = false,
     onDismiss: () -> Unit,
@@ -214,7 +215,7 @@ fun FreemiumPaywallBottomSheet(
     val themed = LocalAbThemed.current
     if (embeddedLeft != null && themed) {
         Box(Modifier.fillMaxSize()) {
-            PaywallKitEmbeddedLayout(left = embeddedLeft) {
+            PaywallKitEmbeddedLayout(left = embeddedLeft, footer = embeddedFooter) {
                 PaywallKitPlans(
                     uiState = uiState,
                     onRetry = { viewModel.loadData() },

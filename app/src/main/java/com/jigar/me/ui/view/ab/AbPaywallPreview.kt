@@ -117,8 +117,8 @@ fun AbOnboardingPreview(page: Int) {
         selectedTheme = com.jigar.me.utils.AppConstants.Settings.theam_Default,
         onFinish = {},
         startPage = page - 1,
-    ) { left, _ ->
-        com.jigar.me.ui.view.home.common_ui.dialogs.PaywallKitEmbeddedLayout(left = left) {
+    ) { left, footer, _ ->
+        com.jigar.me.ui.view.home.common_ui.dialogs.PaywallKitEmbeddedLayout(left = left, footer = footer) {
             // a fresh install: the yearly plan first with the store's intro price (lifetime is hidden on this page)
             val fresh = sampleState()
             com.jigar.me.ui.view.home.common_ui.dialogs.PaywallKitPlans(
