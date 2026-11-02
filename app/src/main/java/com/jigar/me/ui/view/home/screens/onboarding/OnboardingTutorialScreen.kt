@@ -762,14 +762,14 @@ private fun ParentLeft() {
                 ReasonRow("A weekly progress report for parents")
                 ReasonRow("Learn at their own pace, with rewards")
             }
-            // the free week, when the limit is on: no surprise later
-            if (windowActive) {
-                Text(
-                    if (com.jigar.me.utils.FreemiumWindow.coreAfterWindow(prefs) >= 2) "Free for $days days, then Free Mode and Level 1 stay free."
-                    else "Free for $days days, then pick a plan to keep going.",
-                    style = AbTypography.fixed(12f * k, FontWeight.SemiBold), color = colors.textSecondary,
-                )
-            }
+            // Removed (owner): the "Free for N days, then ..." line under the reasons.
+            // if (windowActive) {
+            //     Text(
+            //         if (com.jigar.me.utils.FreemiumWindow.coreAfterWindow(prefs) >= 2) "Free for $days days, then Free Mode and Level 1 stay free."
+            //         else "Free for $days days, then pick a plan to keep going.",
+            //         style = AbTypography.fixed(12f * k, FontWeight.SemiBold), color = colors.textSecondary,
+            //     )
+            // }
         }
     }
 }
