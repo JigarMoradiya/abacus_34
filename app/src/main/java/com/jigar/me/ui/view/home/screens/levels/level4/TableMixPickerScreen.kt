@@ -46,6 +46,8 @@ fun TableMixPickerScreen(
                 ) {
                     // LEFT — FREE card (35%)
                     val free = MIX_GROUPS.first()
+                    // the free mix locks with the rest of the free tier once the free week is over
+                    val freeLocked = !isSubscribed && com.jigar.me.utils.FreemiumWindow.hasEnded
                     BoxWithConstraints(
                         modifier = Modifier
                             .weight(0.35f)
@@ -58,10 +60,11 @@ fun TableMixPickerScreen(
                             accent    = free.endColor,
                             width     = maxWidth,
                             height    = maxHeight,
+                            isLocked  = freeLocked,
                             showStars = false,
-                            tag       = "FREE FOREVER",
+                            tag       = if (freeLocked) null else "FREE",   // was "FREE FOREVER"
                             subtitle  = "${free.tables.size} tables mixed together",
-                            onClick   = { onMixSelected(free.tables) },
+                            onClick   = { if (freeLocked) showPaywall = true else onMixSelected(free.tables) },
                         )
                     }
 
