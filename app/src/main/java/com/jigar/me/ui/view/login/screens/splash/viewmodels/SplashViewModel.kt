@@ -94,7 +94,8 @@ class SplashViewModel @Inject constructor(
         val freeCore = if (freeCoreValue.source == com.google.firebase.remoteconfig.FirebaseRemoteConfig.VALUE_SOURCE_STATIC) 2L else freeCoreValue.asLong()
 
         with(prefs) {
-            setCustomParam(AppConstants.RemoteConfig.privacyPolicyUrl, privacyPolicyUrl)
+            // the website's page when the key is missing: a plans screen always has the privacy link the stores require
+            setCustomParam(AppConstants.RemoteConfig.privacyPolicyUrl, privacyPolicyUrl.ifBlank { "https://www.abacuspro.in/privacy/" })
             setCustomParam(AppConstants.RemoteConfig.supportEmail, supportEmail)
             setCustomParam(AppConstants.RemoteConfig.newVersionNotes, newVersionNotes)
             setCustomParam(AppConstants.RemoteConfig.bulkLogin, bulkLogin)

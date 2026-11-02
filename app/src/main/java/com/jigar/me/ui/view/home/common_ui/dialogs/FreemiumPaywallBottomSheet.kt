@@ -86,6 +86,10 @@ fun FreemiumPaywallBottomSheet(
 ) {
     val viewModel: PurchaseViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val toastContext = LocalContext.current
+    LaunchedEffect(uiState.message) {
+        uiState.message?.let { android.widget.Toast.makeText(toastContext, toastContext.getString(it), android.widget.Toast.LENGTH_LONG).show(); viewModel.clearMessage() }
+    }
     val activity = LocalContext.current as Activity
     val prefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current
     // Lifetime shows from the paywall sheet number `lifetime_min_paywalls` + 1 (0 = from the first, as before); the embedded

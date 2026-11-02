@@ -1118,6 +1118,10 @@
     <string name="cancel">Cancel</string>
     <string name="alert">Alert</string>
     <string name="something_went_wrong">Something went wrong. Please try again.</string>
+    <string name="purchase_pending">Your payment is waiting for approval. You get access as soon as it goes through.</string>
+    <string name="purchase_not_allowed">Purchases are turned off on this device. A parent can allow them in the Google Play settings.</string>
+    <string name="purchase_already_owned">You already own this plan. We are restoring it now.</string>
+    <string name="purchase_network">No internet connection. Please check it and try again.</string>
     <string name="purchase_no_plans">No plans are available right now. Please try again in a moment.</string>
     <string name="see_benefits">See Benefits</string>
     <string name="premium_benefits_title">Premium Benefits</string>
@@ -1199,8 +1203,8 @@
     <string name="paywall_headline_onboarding">Unlock everything!</string>
     <string name="paywall_subtitle_onboarding">Beginner to expert, with progress reports for you</string>
     <string name="paywall_headline_free_ending">Loving it so far?</string>
-    <string name="paywall_subtitle_free_ending">Keep every level and game after your free week</string>
-    <string name="paywall_headline_free_ended">Your free week is over</string>
+    <string name="paywall_subtitle_free_ending">Keep every level and game with a plan</string>
+    <string name="paywall_headline_free_ended">Your freemium access is over</string>
     <string name="paywall_subtitle_free_ended">Keep learning with Premium</string>
     <string name="paywall_headline_returning">Ready for the next level?</string>
     <string name="paywall_subtitle_returning">Unlock every level, game and progress report</string>

@@ -27,6 +27,7 @@ import com.revenuecat.purchases.Purchases
 import com.revenuecat.purchases.awaitOfferings
 import com.revenuecat.purchases.awaitCustomerInfo
 import com.revenuecat.purchases.awaitPurchase
+import com.revenuecat.purchases.awaitRestore
 import com.revenuecat.purchases.models.StoreTransaction
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -91,10 +92,13 @@ class PurchaseViewModel @Inject constructor(
 
         val displayPlanJson = prefManager.getCustomParam(AppConstants.RemoteConfig.displayPlanList, "")
         val displayPlanIds: Set<String> = if (displayPlanJson.length > 5) {
-            val type = object : TypeToken<List<Map<String, Any>>>() {}.type
-            val list: List<Map<String, Any>> = Gson().fromJson(displayPlanJson, type)
-            // an id of a legacy ".offer" product whitelists the regular product behind it
-            list.mapNotNull { it["id"] as? String }.map { AppConstants.Products.withoutOffer(it) }.toSet()
+            // a typo in the Remote Config list must not crash the paywall: a list that cannot be read shows every plan
+            runCatching {
+                val type = object : TypeToken<List<Map<String, Any>>>() {}.type
+                val list: List<Map<String, Any>> = Gson().fromJson(displayPlanJson, type)
+                // an id of a legacy ".offer" product whitelists the regular product behind it
+                list.mapNotNull { it["id"] as? String }.map { AppConstants.Products.withoutOffer(it) }.toSet()
+            }.getOrDefault(emptySet())
         } else emptySet()
 
         viewModelScope.launch {
@@ -222,6 +226,7 @@ class PurchaseViewModel @Inject constructor(
 
     fun makePurchase(activity: Activity, surface: String = "purchase_screen", context: String = "full") {
         val selected = state().sortedPlanList.getOrNull(state().selectedIndex) ?: return
+        if (state().isPurchasing) return   // a second tap while the store sheet is opening
         viewModelScope.launch {
             updateState_ { copy(isPurchasing = true) }
             val analytics = arrayOf("surface" to surface, "context" to context, "product_id" to selected.sku)
@@ -243,7 +248,7 @@ class PurchaseViewModel @Inject constructor(
                 } else {
                     // not active yet: a pending (slow payment method) purchase, or an entitlement that has not synced
                     AppAnalytics.log(AppAnalytics.PURCHASE_NOT_ACTIVE, *analytics)
-                    updateState_ { copy(isPurchasing = false) }
+                    updateState_ { copy(isPurchasing = false, message = R.string.purchase_pending) }
                 }
             } catch (e: PurchasesException) {
                 if (e.error.code == PurchasesErrorCode.PurchaseCancelledError) {
@@ -251,10 +256,26 @@ class PurchaseViewModel @Inject constructor(
                 } else {
                     AppAnalytics.log(AppAnalytics.PURCHASE_FAILED, *analytics, "error_code" to e.error.code.code)
                 }
-                updateState_ { copy(isPurchasing = false, error = R.string.something_went_wrong) }
+                // say what happened (a pending payment, purchases blocked on this device, already owned, no network)
+                val message = when (e.error.code) {
+                    PurchasesErrorCode.PurchaseCancelledError -> null
+                    PurchasesErrorCode.PaymentPendingError -> R.string.purchase_pending
+                    PurchasesErrorCode.PurchaseNotAllowedError -> R.string.purchase_not_allowed
+                    PurchasesErrorCode.ProductAlreadyPurchasedError -> R.string.purchase_already_owned
+                    PurchasesErrorCode.NetworkError -> R.string.purchase_network
+                    else -> R.string.something_went_wrong
+                }
+                updateState_ { copy(isPurchasing = false, message = message) }
+                // already owned: the purchase exists on the store but not on this account yet, so restore it now
+                if (e.error.code == PurchasesErrorCode.ProductAlreadyPurchasedError) {
+                    runCatching { RevenueCatHelper.update(Purchases.sharedInstance.awaitRestore()) }
+                    loadData()
+                }
             }
         }
     }
+
+    fun clearMessage() = updateState_ { copy(message = null) }
 
     private fun submitToServer(transaction: StoreTransaction?, plan: RcPlanItem) {
         viewModelScope.launch {
@@ -305,9 +326,12 @@ class PurchaseViewModel @Inject constructor(
             removeExact("com.abacus.puzzle.1year"); remove("all")
             showSubmit = false
         } else {
-            // Monthly purchased: hide weekly (downgrade), keep yearly/lifetime for upgrade
+            // Monthly, Yearly and Weekly are separate Google Play subscriptions and no replacement mode is configured, so a second
+            // subscription bought on top of an active one would bill BOTH: a subscriber is only offered Lifetime (like iOS).
             val monthlyPurchased = plans.any { it.sku.contains("1month") && it.isPurchase }
-            if (monthlyPurchased) remove("week")
+            if (monthlyPurchased) { remove("week"); remove("1year") }   // was: remove("week") only, "keep yearly for upgrade"
+            val weeklyPurchased = plans.any { it.sku.contains("week") && it.isPurchase }
+            if (weeklyPurchased) { remove("1month"); remove("1year") }
 
             // Removed: the store provides the discount. There is only ONE yearly and ONE lifetime product now (the
             // regular ones), so the old "keep the base or the .offer variant" removal is gone:

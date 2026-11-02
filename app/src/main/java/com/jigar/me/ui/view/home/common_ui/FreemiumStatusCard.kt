@@ -55,11 +55,11 @@ fun FreemiumStatusCard(onSeePlans: () -> Unit, modifier: Modifier = Modifier, ve
     val left = FreemiumWindow.daysLeft(prefs) ?: 0
     val ended = phase == Phase.ENDED
     val shape = RoundedCornerShape(AppDimens.Dimens16)
-    val title = if (ended) "Your free week is over" else if (left == 1) "Freemium access: 1 day left" else "Freemium access: $left days left"
+    val title = if (ended) "Your freemium access is over" else if (left == 1) "Freemium access: 1 day left" else "Freemium access: $left days left"
     val body = if (ended) {
         if (FreemiumWindow.coreAfterWindow(prefs) >= 2) "Free Mode and Level 1 stay free. Premium opens everything else."
         else "Premium opens the whole app."
-    } else "Start a free trial to keep every level, game and report."
+    } else "Pick a plan to keep every level, game and report."
     val frame = modifier
         .fillMaxWidth()
         .padding(bottom = 3.dp)

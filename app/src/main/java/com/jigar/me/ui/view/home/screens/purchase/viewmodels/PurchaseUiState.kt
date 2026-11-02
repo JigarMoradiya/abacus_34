@@ -18,12 +18,14 @@ data class RcPlanItem(
     fun isLifeTimeOffer() = sku.contains("all")
 }
 
-/** A plan price the way every plan card shows it: the store currency, no decimals ("₹1,200"). */
+/** A plan price the way every plan card shows it: the store currency, no decimals for a whole amount ("₹1,200") and the cents otherwise ("$4.99": never rounded). */
 fun formatPlanPrice(amountMicros: Long, currencyCode: String): String {
     return try {
         val format = java.text.NumberFormat.getCurrencyInstance(java.util.Locale.getDefault())
         format.currency = java.util.Currency.getInstance(currencyCode)
-        format.maximumFractionDigits = 0
+        val whole = amountMicros % 1_000_000L == 0L
+        format.minimumFractionDigits = if (whole) 0 else format.currency!!.defaultFractionDigits.coerceAtLeast(0)
+        format.maximumFractionDigits = if (whole) 0 else format.currency!!.defaultFractionDigits.coerceAtLeast(0)
         format.format(amountMicros / 1_000_000.0)
     } catch (e: Exception) {
         amountMicros.div(1_000_000).toString()
@@ -32,6 +34,8 @@ fun formatPlanPrice(amountMicros: Long, currencyCode: String): String {
 
 data class PurchaseUiState(
     val error: Int? = null,
+    /** A one-time message about a purchase that failed, is waiting for approval or was already owned (shown as a Toast, then cleared). */
+    val message: Int? = null,
     val isLoading: Boolean = true,
     val selectedIndex: Int = 0,
     val isPurchasing: Boolean = false,

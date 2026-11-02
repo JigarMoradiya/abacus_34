@@ -77,7 +77,7 @@ class MyApplication : Application(), Configuration.Provider {
     override fun onCreate() {
         super.onCreate()
         // Initialize RevenueCat
-        Purchases.logLevel = com.revenuecat.purchases.LogLevel.DEBUG
+        Purchases.logLevel = if (BuildConfig.DEBUG) com.revenuecat.purchases.LogLevel.DEBUG else com.revenuecat.purchases.LogLevel.WARN
         Purchases.configure(
             PurchasesConfiguration.Builder(this, "goog_GZMHOoRwGnscKzjqLIghpwwUzYh").build()
         )

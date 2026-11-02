@@ -46,7 +46,7 @@ class FreemiumNotificationWorker @AssistedInject constructor(
             left == 1 -> "1 free day left"
             else -> "Last free day"
         }
-        show(day, title, "Keep every level, game and progress report. See the plans and start a free trial.")
+        show(day, title, "Keep every level, game and progress report. See the plans and pick one.")
         return Result.success()
     }
 

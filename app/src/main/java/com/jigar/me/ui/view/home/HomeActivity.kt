@@ -29,6 +29,7 @@ import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.TextToSpeechManager
 import com.jigar.me.ui.view.home.common_ui.HomePageBackground
 import com.jigar.me.ui.view.home.navigation.HomeNavGraph
+import com.jigar.me.ui.view.home.navigation.RouteNavigation
 import com.jigar.me.ui.view.home.theme.MyApplicationTheme
 import com.jigar.me.ui.view.ab.AbDebugScreens
 import com.jigar.me.ui.view.ab.AbThemeController
@@ -56,6 +57,17 @@ class HomeActivity : ComponentActivity() {
     companion object {
         const val EXTRA_DEEP_LINK_ROUTE = "deep_link_route"
 
+        /** The screens our own notifications open. This activity is exported, so any other app could send any route string: only these
+         *  (and, in a debug build, any route for testing) are followed; anything else is ignored. */
+        private val ALLOWED_DEEP_LINKS = setOf(
+            RouteNavigation.Home.route, RouteNavigation.Purchase.route,
+            RouteNavigation.Level1Home.route, RouteNavigation.Level2Home.route, RouteNavigation.Level3Home.route,
+            RouteNavigation.Level4TablePicker.route,
+        )
+
+        fun allowedDeepLink(route: String?): String? =
+            if (route != null && (BuildConfig.DEBUG || route in ALLOWED_DEEP_LINKS)) route else null
+
         @JvmStatic
         fun getInstance(context: Context?) {
             Intent(context, HomeActivity::class.java).apply {
@@ -77,7 +89,7 @@ class HomeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        deepLinkRoute = intent.getStringExtra(EXTRA_DEEP_LINK_ROUTE)
+        deepLinkRoute = allowedDeepLink(intent.getStringExtra(EXTRA_DEEP_LINK_ROUTE))
         logDeviceQualifiers(this)
         AbThemeController.init(preferences)
         // debug builds only: `--ez ab_dark_app true` forces dark mode for screenshot runs
@@ -162,7 +174,7 @@ class HomeActivity : ComponentActivity() {
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
-        deepLinkRoute = intent.getStringExtra(EXTRA_DEEP_LINK_ROUTE)
+        deepLinkRoute = allowedDeepLink(intent.getStringExtra(EXTRA_DEEP_LINK_ROUTE))
     }
 
     override fun onResume() {

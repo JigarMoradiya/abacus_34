@@ -393,6 +393,7 @@ private fun TutorialPage(
 private data class Feature(
     val emoji: String, val name: String, val note: String, val free: String?, val premium: String?,
     val span: Int = 1,                  // columns it covers (the Game Zone tile is three wide)
+    val limit: Int = 0,                 // after the free week: 0 = its free part stays free, 1 = stays free only while free_core_after_window >= 2, 2 = locks
     val games: List<String>? = null,    // the Game Zone tile lists its games
 )
 private data class FeatureGroup(val title: String, val items: List<Feature>)
@@ -407,15 +408,15 @@ private val gameNames = listOf(
 /** The app on two pages (kept in line with APP_FEATURES.md and the Game Zone roster). */
 private val featureGroups = listOf(
     FeatureGroup("Learn and practice", listOf(
-        Feature("🧮", "Free Mode", "Play with the real abacus and see how beads count", "Everything, always", null),
-        Feature("🌱", "Learning path", "4 levels, from first beads to speed and tables", "Level 1: Bead Basics", "Formulas, speed training, tables"),
-        Feature("📚", "Abacus Practice", "8 levels of sums with step-by-step help", "Level 1 and the first Level 2 pages", "All 8 levels"),
-        Feature("✏️", "Exercise", "Timed drills that build speed", "Addition and subtraction basics", "All drills, with multiply and divide"),
-        Feature("📝", "Exam", "Timed tests with saved results", "Addition, beginner level", "All operations and levels"),
+        Feature("🧮", "Free Mode", "Play with the real abacus and see how beads count", "Everything, always", null, limit = 1),
+        Feature("🌱", "Learning path", "4 levels, from first beads to speed and tables", "Level 1: Bead Basics", "Formulas, speed training, tables", limit = 1),
+        Feature("📚", "Abacus Practice", "8 levels of sums with step-by-step help", "Level 1 and the first Level 2 pages", "All 8 levels", limit = 2),
+        Feature("✏️", "Exercise", "Timed drills that build speed", "Addition and subtraction basics", "All drills, with multiply and divide", limit = 2),
+        Feature("📝", "Exam", "Timed tests with saved results", "Addition, beginner level", "All operations and levels", limit = 2),
     )),
     FeatureGroup("Challenge, games and progress", listOf(
-        Feature("🎯", "Custom Challenge (CCM)", "Hear or see numbers, then work out the answer in your head.\n5 to 20 questions\n2 to 6 digits", null, "Full access"),
-        Feature("🎮", "Math Game Zone", "20 brain games for speed, logic and number sense", "The easiest level of every game", "All levels and board sizes", span = 3, games = gameNames),
+        Feature("🎯", "Custom Challenge (CCM)", "Hear or see numbers, then work out the answer in your head.\n5 to 20 questions\n1 to 6 digits", null, "Full access"),
+        Feature("🎮", "Math Game Zone", "20 brain games for speed, logic and number sense", "The easiest level of every game", "All levels and board sizes", span = 3, games = gameNames, limit = 2),
         Feature("📊", "Progress and rewards", "Weekly parent report, streak and themes", "Streak, themes, last 3 results", "Full report history"),
     )),
 )
@@ -489,7 +490,7 @@ private fun FeatureTile(f: Feature, modifier: Modifier) {
         Spacer(Modifier.weight(1f))
         // the FREE and PREMIUM boxes, with a clear gap between them; a free-only tile keeps its FREE box on the row of its neighbours
         Column(verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
-            f.free?.let { InfoBox("FREE", it, colors.accentGreen.abReadable(4.5f)) }
+            freeBox(f)?.let { (label, text) -> InfoBox(label, text, colors.accentGreen.abReadable(4.5f)) }
             if (f.premium != null) InfoBox("PREMIUM", f.premium, colors.accentOrange.abReadable(4.5f))
             else if (f.free != null) Spacer(Modifier.height(INFO_BOX_MIN * k))
         }
@@ -533,13 +534,29 @@ private fun GameZoneTile(f: Feature, modifier: Modifier) {
         }
         Spacer(Modifier.weight(1f))
         Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
-            f.free?.let { Box(Modifier.weight(1f)) { InfoBox("FREE", it, colors.accentGreen.abReadable(4.5f)) } }
+            freeBox(f)?.let { (label, text) -> Box(Modifier.weight(1f)) { InfoBox(label, text, colors.accentGreen.abReadable(4.5f)) } }
             f.premium?.let { Box(Modifier.weight(1f)) { InfoBox("PREMIUM", it, colors.accentOrange.abReadable(4.5f)) } }
         }
     }
 }
 
 private val INFO_BOX_MIN = 58.dp
+
+/**
+ * The FREE box of a card, read live from the same values the gates use: with a free week on (`freemium_days` > 0) what locks after it
+ * says "FREE FOR N DAYS" (and "FREE FOR THE FIRST N DAYS" once the week is over), what stays free after it says "FREE".
+ * Free Mode and Level 1 stay free only while `free_core_after_window` is 2 or more.
+ */
+@Composable
+private fun freeBox(f: Feature): Pair<String, String>? {
+    val free = f.free ?: return null
+    val prefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current
+    val days = com.jigar.me.utils.FreemiumWindow.windowDays(prefs)
+    val limited = days > 0 && (f.limit == 2 || (f.limit == 1 && com.jigar.me.utils.FreemiumWindow.coreAfterWindow(prefs) < 2))
+    if (!limited) return "FREE" to free
+    val label = if (com.jigar.me.utils.FreemiumWindow.hasEnded) "FREE FOR THE FIRST $days DAYS" else "FREE FOR $days DAYS"
+    return label to free.replace(", always", "")
+}
 
 /** A small coloured box: its label (FREE / PREMIUM) over what it covers. */
 @Composable

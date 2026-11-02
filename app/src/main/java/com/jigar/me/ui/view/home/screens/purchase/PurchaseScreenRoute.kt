@@ -34,6 +34,10 @@ fun PurchaseScreenRoute(
 ) {
     val viewModel: PurchaseViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val toastContext = LocalContext.current
+    LaunchedEffect(uiState.message) {
+        uiState.message?.let { android.widget.Toast.makeText(toastContext, toastContext.getString(it), android.widget.Toast.LENGTH_LONG).show(); viewModel.clearMessage() }
+    }
     val activity = LocalContext.current as Activity
     val uriHandler = androidx.compose.ui.platform.LocalUriHandler.current
     var showLoginSheet by remember { mutableStateOf(false) }
