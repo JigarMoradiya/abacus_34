@@ -47,6 +47,7 @@ import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumLoginBottomSheet
 import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateBottomSheet
 import com.jigar.me.ui.view.home.screens.my_account.components.MyAccountScreen
+import com.jigar.me.ui.view.home.screens.onboarding.FeatureListScreen
 import com.jigar.me.ui.view.home.screens.my_account.viewmodels.MyAccountViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
@@ -72,6 +73,7 @@ fun MyAccountRoute(
     var showLoginSheet by remember { mutableStateOf(false) }
     var showLoginSheetForHistory by remember { mutableStateOf(false) }
     var showURLGate by remember { mutableStateOf(false) }
+    var showFeatures by remember { mutableStateOf(false) }
     var pendingUrlAction by remember { mutableStateOf<(() -> Unit)?>(null) }
     var showActionGate by remember { mutableStateOf(false) }
     var pendingNavAction by remember { mutableStateOf<(() -> Unit)?>(null) }
@@ -117,6 +119,7 @@ fun MyAccountRoute(
                         else showLoginSheetForHistory = true
                     }
                     "about_app" -> onNavigateToWhatsLearning()
+                    "free_premium" -> showFeatures = true
                     "rate_us_on_the_play_store" -> openWithGate { showRateUsSheet = true }
                     "share_app" -> openWithGate {
                         // a parent sends the app to another parent: the store link and one honest line, no reward, no tracking
@@ -176,6 +179,8 @@ fun MyAccountRoute(
                 openURLWithGate { context.openURL("https://play.google.com/store/apps/details?id=${context.packageName}") }
             }
         )
+
+        if (showFeatures) FeatureListScreen(onClose = { showFeatures = false })
 
         if (uiState.isShowLogoutPopup) {
             AbConfirmDialog(

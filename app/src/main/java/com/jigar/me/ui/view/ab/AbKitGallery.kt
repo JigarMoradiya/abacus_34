@@ -44,6 +44,7 @@ object AbDebugScreens {
                 "paywall" -> AbPaywallPreview()
                 "purchase" -> AbPurchasePreview()
                 "purchasebought" -> AbPurchaseBoughtPreview()
+                "featurelist" -> com.jigar.me.ui.view.home.screens.onboarding.FeatureListScreen(onClose = {})
                 "weekly" -> AbWeeklyPreview(true)
                 "weekly2" -> AbWeeklyPreview(false)
                 "gameresult" -> AbGameResultPreview(3)

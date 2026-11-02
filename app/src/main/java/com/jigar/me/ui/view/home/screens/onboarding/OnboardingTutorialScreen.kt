@@ -32,6 +32,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.width
+import com.jigar.me.ui.view.ab.AbTopBar
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -207,6 +210,37 @@ fun OnboardingTutorialScreen(
                     if (showsPlans()) index = parentIndex else finish(true)
                 },
             )
+        }
+    }
+}
+
+/** Settings: every card of both "What's inside" pages in one horizontal list, to look at any time. */
+@Composable
+fun FeatureListScreen(onClose: () -> Unit) {
+    val gap = AppDimens.Dimens8
+    val unit = 165.dp * responsive   // one column; the Game Zone tile is three wide
+    BackHandler(onBack = onClose)
+    Box(Modifier.fillMaxSize()) {
+        AbBackground(AbWorld.Meadow, Modifier.fillMaxSize())
+        Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+            AbTopBar(
+                title = "What's free and Premium", onBack = onClose,
+                modifier = Modifier.padding(start = DeviceInfo.screenHorizontalPadding(), end = AppDimens.Dimens16, top = DeviceInfo.screenTopPadding()),
+            )
+            Box(Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
+                Row(
+                    Modifier
+                        .horizontalScroll(rememberScrollState())
+                        .height(IntrinsicSize.Min)      // every card as tall as the tallest
+                        .padding(start = DeviceInfo.screenHorizontalPadding(), end = DeviceInfo.screenHorizontalPadding() + AppDimens.Dimens24),   // room after the last card
+                    horizontalArrangement = Arrangement.spacedBy(gap),
+                ) {
+                    featureGroups.flatMap { it.items }.forEach { f ->
+                        val tile = Modifier.width(unit * f.span + gap * (f.span - 1)).fillMaxHeight()
+                        if (f.games != null) GameZoneTile(f, tile) else FeatureTile(f, tile)
+                    }
+                }
+            }
         }
     }
 }
