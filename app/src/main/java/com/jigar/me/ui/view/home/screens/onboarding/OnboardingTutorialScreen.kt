@@ -31,6 +31,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -397,10 +398,11 @@ private fun FeaturesPage(index: Int, group: FeatureGroup, nextText: String, onPr
                 style = AbTypography.fixed(14f * k, FontWeight.Bold), color = colors.textSecondary,
             )
         }
-        // tiles are at most 340 dp tall on a phone (shorter than that anyway), scaled like the text on a tablet, and stay centred
+        // phone: tiles fill the room. tablet: tiles wrap their content (all as tall as the tallest) and sit centred in the room
+        val wrap = AppDimens.isTablet || AppDimens.isLargeTablet
         Box(Modifier.weight(1f).fillMaxWidth().padding(vertical = AppDimens.Dimens8), contentAlignment = Alignment.Center) {
             Row(
-                Modifier.fillMaxWidth().heightIn(max = AppDimens.Dimens40 * 8.5f),
+                Modifier.fillMaxWidth().then(if (wrap) Modifier.height(IntrinsicSize.Min) else Modifier.fillMaxHeight()),
                 horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
             ) {
                 group.items.forEach {
