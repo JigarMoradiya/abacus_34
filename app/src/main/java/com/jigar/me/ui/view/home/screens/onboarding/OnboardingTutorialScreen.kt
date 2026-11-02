@@ -83,6 +83,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
@@ -287,12 +288,14 @@ private fun TutorialPage(
         }
     }
 
-    Column(
+    // the buttons float over the bottom corners (not in a row of their own), so the abacus keeps its full height
+    Box(
         Modifier
             .fillMaxSize()
             .windowInsetsPadding(WindowInsets.safeDrawing)
             .padding(horizontal = AppDimens.Dimens16),
     ) {
+    Column(Modifier.fillMaxSize()) {
         Box(Modifier.fillMaxWidth().padding(top = AppDimens.Dimens8), contentAlignment = Alignment.Center) {
             StepBubbles(index, title)
             Text(
@@ -315,23 +318,6 @@ private fun TutorialPage(
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Bottom) {
                     Mascot(116.dp * k)
                     Spacer(Modifier.weight(1f))
-                    Row(Modifier.padding(bottom = AppDimens.Dimens8), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
-                        if (index > 0 || moved) {
-                            AbButton(
-                                text = "Previous", tone = AbTone.Purple, size = AbSize.Small, icon = Icons.Rounded.KeyboardArrowLeft,
-                                minHeightOverride = 32f, horizontalPaddingOverride = 11f, onClick = onPrevious,
-                            )
-                        }
-                        AbButton(
-                            text = if (hasMoveToShow) "Show me" else nextText,
-                            tone = if (hasMoveToShow) AbTone.Warning else AbTone.Primary,
-                            size = AbSize.Small,
-                            icon = if (hasMoveToShow) Icons.Rounded.TouchApp else Icons.Rounded.KeyboardArrowRight,
-                            iconAtEnd = !hasMoveToShow,
-                            minHeightOverride = 32f, horizontalPaddingOverride = 11f,
-                            onClick = { if (hasMoveToShow) onShowMe() else onNext() },
-                        )
-                    }
                 }
             }
             Row(
@@ -340,7 +326,7 @@ private fun TutorialPage(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 // the abacus is for watching: a transparent layer on top takes the touches; the number it shows sits under it
-                Column(Modifier.fillMaxHeight(), horizontalAlignment = Alignment.CenterHorizontally) {
+                Column(Modifier.fillMaxHeight().offset(x = (-24).dp * k), horizontalAlignment = Alignment.CenterHorizontally) {   // a little to the left
                 Box(Modifier.weight(1f).aspectRatio(0.8f)) {
                     AbacusWithDecimalCanvas(
                         selectedTheme = selectedTheme,
@@ -376,6 +362,29 @@ private fun TutorialPage(
                     }
                 }
             }
+        }
+    }
+        // Previous bottom-left, Next / Show me bottom-right (the corners a thumb reaches)
+        Row(
+            Modifier.align(Alignment.BottomCenter).fillMaxWidth().padding(bottom = AppDimens.Dimens8),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            if (index > 0 || moved) {
+                AbButton(
+                    text = "Previous", tone = AbTone.Purple, size = AbSize.Small, icon = Icons.Rounded.KeyboardArrowLeft,
+                    minHeightOverride = 32f, horizontalPaddingOverride = 11f, onClick = onPrevious,
+                )
+            } else Spacer(Modifier)
+            AbButton(
+                text = if (hasMoveToShow) "Show me" else nextText,
+                tone = if (hasMoveToShow) AbTone.Warning else AbTone.Primary,
+                size = AbSize.Small,
+                icon = if (hasMoveToShow) Icons.Rounded.TouchApp else Icons.Rounded.KeyboardArrowRight,
+                iconAtEnd = !hasMoveToShow,
+                minHeightOverride = 32f, horizontalPaddingOverride = 11f,
+                onClick = { if (hasMoveToShow) onShowMe() else onNext() },
+            )
         }
     }
 }
@@ -448,7 +457,7 @@ private fun FeaturesPage(index: Int, group: FeatureGroup, nextText: String, onPr
         Row(
             Modifier.fillMaxWidth().padding(bottom = AppDimens.Dimens12),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8, Alignment.End),
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             AbButton(text = "Previous", tone = AbTone.Purple, size = AbSize.Small, icon = Icons.Rounded.KeyboardArrowLeft,
                 minHeightOverride = 32f, horizontalPaddingOverride = 11f, onClick = onPrevious)
@@ -562,17 +571,20 @@ private fun NumberPlate(value: Int) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
         ) {
-            Text("Number", style = AbTypography.fixed(12f * k, FontWeight.Bold), color = colors.textSecondary)
+            Text("Number", style = AbTypography.fixed(12f * k, FontWeight.Bold).copy(lineHeight = (14f * k).sp, lineHeightStyle = PLATE_LINES), color = colors.textSecondary)
             AnimatedContent(
                 targetState = value,
                 transitionSpec = { (scaleIn(initialScale = 0.6f) + fadeIn()) togetherWith (scaleOut(targetScale = 1.4f) + fadeOut()) },
                 label = "abacusNumber",
             ) { v ->
-                Text(v.toString(), style = AbTypography.fixed(30f * k, FontWeight.Black), color = colors.brandPrimary)
+                Text(v.toString(), style = AbTypography.fixed(30f * k, FontWeight.Black).copy(lineHeight = (32f * k).sp, lineHeightStyle = PLATE_LINES), color = colors.brandPrimary)
             }
         }
     }
 }
+
+// Baloo's line boxes are tall: a tight, centred line keeps the number plate short without changing the text size
+private val PLATE_LINES = LineHeightStyle(LineHeightStyle.Alignment.Center, LineHeightStyle.Trim.Both)
 
 /** 1 ... N bubbles: done = green tick, current = big and gold, next = plain. */
 @Composable
