@@ -135,10 +135,10 @@ fun MyAccountScreen(
             }
             if (!uiState.isLoggedIn) {
                 item {
+                    // no extra top padding: the weekly card's shadow room (8) and the list spacing (10) already leave the gap
                     NotLoggedInBanner(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = AppDimens.Dimens10),
+                            .fillMaxWidth(),
                         onSignInClick = { onMenuClick("login") }
                     )
                 }

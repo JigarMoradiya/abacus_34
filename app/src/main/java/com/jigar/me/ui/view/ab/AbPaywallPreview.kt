@@ -1,6 +1,9 @@
 package com.jigar.me.ui.view.ab
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -84,10 +87,13 @@ fun AbPaywallPreview() {
 fun AbPurchasePreview() {
     Box(Modifier.fillMaxSize()) {
         AbBackground(AbWorld.Sunset, Modifier.fillMaxSize())
-        PurchaseScreen(
-            uiState = sampleState(), onPlanSelected = {}, onShowOldSubClick = {}, oldSubPopupCloseClick = {},
-            onSubscribe = {}, onClose = {}, privacyUrl = "https://example.com/privacy",
-        )
+        // inside the safe area, like the real route (PurchaseScreenRoute)
+        Box(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+            PurchaseScreen(
+                uiState = sampleState(), onPlanSelected = {}, onShowOldSubClick = {}, oldSubPopupCloseClick = {},
+                onSubscribe = {}, onClose = {}, privacyUrl = "https://example.com/privacy",
+            )
+        }
     }
 }
 
@@ -102,11 +108,13 @@ fun AbPurchaseBoughtPreview() {
     val lifetime = samplePlan("com.abacus.all", "₹4,750", 4_750_000_000, PackageType.LIFETIME)
     Box(Modifier.fillMaxSize()) {
         AbBackground(AbWorld.Sunset, Modifier.fillMaxSize())
-        PurchaseScreen(
-            uiState = sampleState().copy(sortedPlanList = listOf(bought, lifetime), selectedIndex = 1, original1YearData = bought, original1MonthData = null),
-            onPlanSelected = {}, onShowOldSubClick = {}, oldSubPopupCloseClick = {},
-            onSubscribe = {}, onClose = {}, privacyUrl = "https://example.com/privacy",
-        )
+        Box(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+            PurchaseScreen(
+                uiState = sampleState().copy(sortedPlanList = listOf(bought, lifetime), selectedIndex = 1, original1YearData = bought, original1MonthData = null),
+                onPlanSelected = {}, onShowOldSubClick = {}, oldSubPopupCloseClick = {},
+                onSubscribe = {}, onClose = {}, privacyUrl = "https://example.com/privacy",
+            )
+        }
     }
 }
 

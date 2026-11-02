@@ -15,8 +15,9 @@ import java.util.concurrent.TimeUnit
  *
  * - Remote Config `freemium_days` (<= 0 or missing = off, the default) is the length of the free window.
  * - Remote Config `free_core_after_window`: 2 (default) keeps Free Mode + Level 1 free once the window is over, 0 locks everything.
- * - An install only gets a window if the limit was ON when the install was first seen. Installs that already existed
- *   (a streak day or a login) and installs that started while the limit was off are grandfathered: they keep today's free tier.
+ * - EVERY user who is not subscribed (and has no admin plan) gets the window, existing users too: it starts the first time the
+ *   app runs with the limit ON (`freemium_days` > 0), so an update that brings the limit is a fresh free week for everyone.
+ *   (The old rule kept existing installs and installs from while the limit was off out of it: see the commented code below.)
  *
  * The gates are plain functions with no preferences at hand, so the state they need ([hasEnded], [coreAfterWindow]) is cached
  * here by [refresh]; call it at launch, after Remote Config is stored, and whenever Home opens.
@@ -46,8 +47,10 @@ object FreemiumWindow {
 
     fun windowDays(prefs: PreferencesHelper): Int = debugDays ?: prefs.getCustomParamInt(AppConstants.RemoteConfig.freemiumDays, 0)
     fun coreAfterWindow(prefs: PreferencesHelper): Int = debugCore ?: prefs.getCustomParamInt(AppConstants.RemoteConfig.freeCoreAfterWindow, 2)
-    fun isGrandfathered(prefs: PreferencesHelper): Boolean =
-        if (debugDay != null) false else prefs.getCustomParamBoolean(AppConstants.Freemium.grandfathered, false)
+    // Nobody is grandfathered any more (the owner wants existing users treated as new). Old rule:
+    // fun isGrandfathered(prefs: PreferencesHelper): Boolean =
+    //     if (debugDay != null) false else prefs.getCustomParamBoolean(AppConstants.Freemium.grandfathered, false)
+    fun isGrandfathered(prefs: PreferencesHelper): Boolean = false
 
     fun startMillis(prefs: PreferencesHelper, now: Long = System.currentTimeMillis()): Long? {
         debugDay?.let { return now - it * FreemiumWindowLogic.DAY_MS - 60_000L }
@@ -73,32 +76,38 @@ object FreemiumWindow {
     // ---- first sight of an install (called right after Remote Config has been stored) ----
 
     /**
-     * Looks at this install once: an existing user, or one that started while the limit was off, is grandfathered; any other
-     * install gets its window start stamped now. Safe to call on every launch.
+     * Looks at this install: the first call stamps its first-seen time (day 1 of the returning-user prompts), and the window
+     * starts at the first call that finds the limit ON, whatever the age of the install. Safe to call on every launch.
      */
     fun registerIfNeeded(prefs: PreferencesHelper, now: Long = System.currentTimeMillis()) {
         if (!prefs.getCustomParamBoolean(AppConstants.Freemium.registered, false)) {
             prefs.setCustomParamBoolean(AppConstants.Freemium.registered, true)
             prefs.setCustomParam(AppConstants.Freemium.firstSeenAt, now.toString())   // day 1 of the returning-user prompts
-            val days = prefs.getCustomParamInt(AppConstants.RemoteConfig.freemiumDays, 0)
+        }
+        val days = windowDays(prefs)
+        if (days > 0 && prefs.getCustomParam(AppConstants.Freemium.startAt, "").isEmpty()) {
+            prefs.setCustomParam(AppConstants.Freemium.startAt, now.toString())
             val existing = prefs.getCustomParamInt(AppConstants.Streak.totalActiveDays, 0) > 0 || prefs.isUserLoggedIn()
-            when {
-                existing -> {
-                    prefs.setCustomParamBoolean(AppConstants.Freemium.grandfathered, true)
-                    AppAnalytics.log(AppAnalytics.FREEMIUM_GRANDFATHERED, "reason" to "existing")
-                }
-                days <= 0 -> {
-                    prefs.setCustomParamBoolean(AppConstants.Freemium.grandfathered, true)
-                    AppAnalytics.log(AppAnalytics.FREEMIUM_GRANDFATHERED, "reason" to "limit_off")
-                }
-                else -> {
-                    prefs.setCustomParam(AppConstants.Freemium.startAt, now.toString())
-                    AppAnalytics.log(AppAnalytics.FREEMIUM_WINDOW_STARTED, "days" to days, "core" to prefs.getCustomParamInt(AppConstants.RemoteConfig.freeCoreAfterWindow, 2))
-                }
-            }
+            AppAnalytics.log(AppAnalytics.FREEMIUM_WINDOW_STARTED, "days" to days, "core" to prefs.getCustomParamInt(AppConstants.RemoteConfig.freeCoreAfterWindow, 2), "existing" to existing)
         }
         refresh(prefs, now)
     }
+
+    // The old rule, kept for reference: an existing user, or an install from while the limit was off, was grandfathered.
+    // fun registerIfNeeded(prefs: PreferencesHelper, now: Long = System.currentTimeMillis()) {
+    //     if (!prefs.getCustomParamBoolean(AppConstants.Freemium.registered, false)) {
+    //         prefs.setCustomParamBoolean(AppConstants.Freemium.registered, true)
+    //         prefs.setCustomParam(AppConstants.Freemium.firstSeenAt, now.toString())
+    //         val days = prefs.getCustomParamInt(AppConstants.RemoteConfig.freemiumDays, 0)
+    //         val existing = prefs.getCustomParamInt(AppConstants.Streak.totalActiveDays, 0) > 0 || prefs.isUserLoggedIn()
+    //         when {
+    //             existing -> { prefs.setCustomParamBoolean(AppConstants.Freemium.grandfathered, true); AppAnalytics.log(AppAnalytics.FREEMIUM_GRANDFATHERED, "reason" to "existing") }
+    //             days <= 0 -> { prefs.setCustomParamBoolean(AppConstants.Freemium.grandfathered, true); AppAnalytics.log(AppAnalytics.FREEMIUM_GRANDFATHERED, "reason" to "limit_off") }
+    //             else -> { prefs.setCustomParam(AppConstants.Freemium.startAt, now.toString()); AppAnalytics.log(AppAnalytics.FREEMIUM_WINDOW_STARTED, "days" to days, "core" to prefs.getCustomParamInt(AppConstants.RemoteConfig.freeCoreAfterWindow, 2)) }
+    //         }
+    //     }
+    //     refresh(prefs, now)
+    // }
 
     /** Logs the end of the window once, and tags the user for the A/B comparison. Call when Home opens. */
     fun noteStateForAnalytics(prefs: PreferencesHelper) {

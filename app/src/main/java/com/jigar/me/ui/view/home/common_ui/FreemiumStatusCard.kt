@@ -31,7 +31,7 @@ import com.jigar.me.utils.FreemiumWindow
 import com.jigar.me.utils.FreemiumWindowLogic.Phase
 
 /**
- * "Free access: 4 days left" for a parent, in My Account. Shown only to a new install with a free window that is not
+ * "Freemium access: 4 days left" for a parent, in My Account. Shown only to a new install with a free window that is not
  * subscribed (nothing for a grandfathered install, an install with no limit, or a subscriber). Never on a child screen.
  * Mirrors the iOS `FreemiumStatusCard`.
  */
@@ -55,7 +55,7 @@ fun FreemiumStatusCard(onSeePlans: () -> Unit, modifier: Modifier = Modifier, ve
     val left = FreemiumWindow.daysLeft(prefs) ?: 0
     val ended = phase == Phase.ENDED
     val shape = RoundedCornerShape(AppDimens.Dimens16)
-    val title = if (ended) "Your free week is over" else if (left == 1) "Free access: 1 day left" else "Free access: $left days left"
+    val title = if (ended) "Your free week is over" else if (left == 1) "Freemium access: 1 day left" else "Freemium access: $left days left"
     val body = if (ended) {
         if (FreemiumWindow.coreAfterWindow(prefs) >= 2) "Free Mode and Level 1 stay free. Premium opens everything else."
         else "Premium opens the whole app."

@@ -262,7 +262,7 @@ private fun PurchaseKitPlans(
                     Text(
                         stringResource(R.string.cancel_subscription_anytime),
                         Modifier.fillMaxWidth().padding(top = AppDimens.Dimens8),
-                        style = AbTypography.fixed(14f * s, FontWeight.SemiBold), color = colors.textSecondary, textAlign = TextAlign.Center,
+                        style = AbTypography.fixed(10f * s, FontWeight.SemiBold), color = colors.textSecondary, textAlign = TextAlign.Center,
                     )
                 }
                 // the common button below the list
@@ -273,6 +273,7 @@ private fun PurchaseKitPlans(
                         stringResource(if (selected.isLifeTimeOffer()) R.string.txt_purchase_Now else R.string.txt_subscribe_Now),
                         Modifier.padding(horizontal = AppDimens.Dimens16).padding(top = AppDimens.Dimens8, bottom = AppDimens.Dimens8),
                         tone = AbTone.Warning, size = AbSize.Medium, icon = Icons.Rounded.WorkspacePremium, fillWidth = true,
+                        minHeightOverride = 34f,   // a shorter face (was 44); text and icon keep their size
                         onClick = onSubscribe,
                     )
                 }
@@ -348,6 +349,8 @@ private fun PurchaseKitPlanCard(
     val ink = colors.textPrimary
     // a paid intro price the store offers (a Play offer on the base plan): the intro price leads, the regular one is struck through
     val intro = if (!isPurchased && !isAssigned) plan.storeIntroOffer() else null
+    // a store free trial: the card reads "Monthly Plan : 3 Days Free" and, under it, "then ₹199 / month" (same as iOS)
+    val trialDays = if (!isPurchased && !isAssigned) plan.freeTrialDays() else 0
     // Removed: the store provides the discount (no struck-through ".offer" anchor from Remote Config)
     // val original = originalPriceText(discountPer, plan, originalYearly, discountPerLifetime, uiState.originalLifetimeData)
 
@@ -370,7 +373,13 @@ private fun PurchaseKitPlanCard(
             Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens2), verticalAlignment = Alignment.CenterVertically) {
                 Text("${plan.getDurationTxt()} Plan :", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = ink)
                 if (!isPurchased && !isAssigned) {
-                    if (intro != null) {
+                    if (trialDays > 0) {
+                        // the trial leads, the price follows on the line below ("then ₹199 / month")
+                        Text(
+                            "$trialDays Days Free", style = AbTypography.fixed(20f * k, FontWeight.ExtraBold), color = ink,
+                            modifier = Modifier.padding(start = AppDimens.Dimens4),
+                        )
+                    } else if (intro != null) {
                         Text(
                             intro.regularPrice, style = AbTypography.fixed(15f * k, FontWeight.SemiBold), color = colors.brandPrimary,
                             textDecoration = TextDecoration.LineThrough,
@@ -456,13 +465,16 @@ private fun PurchaseKitPlanCard(
                         )
                     }
                     else -> {
-                        val trialDays = plan.freeTrialDays()
                         if (trialDays > 0) {
-                            // a store free trial: the price (and period) is already on the line above, so this row only says how long it is free
-                            Text(
-                                "$trialDays Days Free",
-                                style = AbTypography.fixed(13f * k, FontWeight.ExtraBold), color = colors.accentGreenInk,
-                            )
+                            // a store free trial: what it costs once the trial is over
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Text("then", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = ink)
+                                Text(
+                                    plan.price ?: "", Modifier.padding(start = AppDimens.Dimens4),
+                                    style = AbTypography.fixed(16f * k, FontWeight.ExtraBold), color = colors.brandPrimary,
+                                )
+                                Text(plan.getPriceSuffix(), style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.brandPrimary)
+                            }
                         }
                         // "save ~N% vs monthly" was removed from the plan card earlier (too much data). To bring it back:
                         // val monthly = uiState.original1MonthData
