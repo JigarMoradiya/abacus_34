@@ -73,6 +73,14 @@ object AppConstants {
             var paywallSocialProof = "paywall_social_proof"
             // JSON: {"enabled": bool, "duration_min": number, "name": string} -- see HomeOfferManager
             var homeOffer = "home_offer"
+            /** Freemium time limit: days of free-tier access for a NEW install (<= 0 or missing = no limit, the default). */
+            var freemiumDays = "freemium_days"
+            /** What stays free once the window is over: 2 = Free Mode + Level 1 (default), 0 = nothing free. */
+            var freeCoreAfterWindow = "free_core_after_window"
+            /** Returning-user paywall: comma-separated days of use that get a parent prompt ("3,10,21,45" by default; "off" = none). */
+            var returningPaywallDays = "returning_paywall_days"
+            /** Lifetime plan stays off the first N paywall sheets a device opens (0 or missing = shown from the first one, as before). */
+            var lifetimeMinPaywalls = "lifetime_min_paywalls"
         }
     }
 
@@ -266,6 +274,23 @@ object AppConstants {
         }
     }
 
+    // Freemium time limit -- per-install window; device-level, preserved across logout (see FreemiumWindow)
+    annotation class Freemium {
+        companion object {
+            const val startAt        = "freemium_start_at"        // epoch millis as String (prefs have no Long)
+            const val grandfathered  = "freemium_grandfathered"   // an install the limit never applies to
+            const val registered     = "freemium_registered"      // this install was looked at once
+            const val remindersShown = "freemium_reminders_shown" // bit 1 = day 3, bit 2 = day 7
+            const val endedLogged    = "freemium_ended_logged"
+            const val firstSeenAt    = "freemium_first_seen_at"   // epoch millis as String: day 1 of the returning-user prompts
+            const val returningShown = "returning_shown"          // scheduled days that already got a prompt ("3,10")
+            const val lastPromptDay  = "last_prompt_day"          // yyyy-MM-dd of the last parent prompt
+            const val lastPaywallDay = "last_paywall_day"         // yyyy-MM-dd of the last paywall sheet of any kind
+            const val paywallOpenCount = "paywall_open_count"     // paywall sheets this device has opened
+            const val billingIssueDay = "billing_issue_day"       // yyyy-MM-dd the "payment problem" prompt was last shown
+        }
+    }
+
     // Timed Home offer -- per-device window; device-level, preserved across logout
     annotation class HomeOffer {
         companion object {
@@ -278,9 +303,19 @@ object AppConstants {
     annotation class Products {
         companion object {
             const val year          = "com.abacus.puzzle.1year"
-            const val yearOffer     = "com.abacus.puzzle.1year.offer"
             const val lifetime      = "com.abacus.all"
+            // Legacy ".offer" products: never shown or selected any more -- the store (Google Play offers on the
+            // regular base plan, read through RevenueCat) provides the discount. Kept only so old code and tests compile.
+            const val yearOffer     = "com.abacus.puzzle.1year.offer"
             const val lifetimeOffer = "com.abacus.all.offer"
+
+            /** True for a legacy ".offer" product id (with or without the ":<basePlanId>" suffix). */
+            fun isOffer(productId: String): Boolean = productId.contains("offer", ignoreCase = true)
+
+            /** The regular product id behind a legacy ".offer" id ("com.abacus.all.offer" -> "com.abacus.all"). */
+            // Anything after ".offer" (a ":<basePlanId>" suffix) goes too, so "com.abacus.puzzle.1year.offer:1year-offer"
+            // still lands on the regular "com.abacus.puzzle.1year" and matches "com.abacus.puzzle.1year:<basePlan>".
+            fun withoutOffer(productId: String): String = productId.substringBefore(".offer")
 
             // Google Play subscriptions (year/yearOffer) require a base plan, so
             // RevenueCat reports their Package.product.id as "<productId>:<basePlanId>"

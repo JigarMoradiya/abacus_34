@@ -1,5 +1,9 @@
 package com.jigar.me.ui.view.home.screens.purchase.components
 
+import com.jigar.me.ui.view.home.common_ui.dialogs.freeTrialDays
+import com.jigar.me.ui.view.home.common_ui.dialogs.storeIntroOffer
+import com.jigar.me.ui.view.home.common_ui.dialogs.thenLine
+import com.jigar.me.ui.view.home.common_ui.dialogs.PaywallKitLegal
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -64,7 +68,8 @@ import com.jigar.me.ui.view.ab.AbTypography
 import com.jigar.me.ui.view.ab.LocalAbColors
 import com.jigar.me.ui.view.ab.LocalAbScale
 import com.jigar.me.ui.view.ab.abReadable
-import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
+// Removed: the store provides the discount (no countdown pill)
+// import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.RcPlanItem
 import com.jigar.me.ui.view.home.theme.AppDimens
@@ -86,8 +91,9 @@ fun PurchaseScreen(
     oldSubPopupCloseClick: () -> Unit,
     onSubscribe: () -> Unit,
     onClose: () -> Unit,
-    onOfferExpired: () -> Unit = {},
     onRetry: () -> Unit = {},
+    privacyUrl: String = "",
+    onOpenLink: (String) -> Unit = {},
 ) {
     val s = LocalAbScale.current.factor
     Box(modifier = Modifier.fillMaxSize()) {
@@ -99,7 +105,7 @@ fun PurchaseScreen(
             horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16),
         ) {
             PurchaseKitBenefits(uiState.benefitList, Modifier.weight(0.6f).fillMaxHeight())
-            PurchaseKitPlans(uiState, onPlanSelected, onSubscribe, onOfferExpired, onRetry, Modifier.weight(0.4f).fillMaxHeight())
+            PurchaseKitPlans(uiState, onPlanSelected, onSubscribe, onRetry, privacyUrl, onOpenLink, Modifier.weight(0.4f).fillMaxHeight())
         }
 
         if (uiState.isOldSubscriptionThere) {
@@ -204,8 +210,9 @@ private fun PurchaseKitPlans(
     uiState: PurchaseUiState,
     onPlanSelected: (Int) -> Unit,
     onSubscribe: () -> Unit,
-    onOfferExpired: () -> Unit,
     onRetry: () -> Unit,
+    privacyUrl: String,
+    onOpenLink: (String) -> Unit,
     modifier: Modifier,
 ) {
     val colors = LocalAbColors.current
@@ -240,14 +247,12 @@ private fun PurchaseKitPlans(
                         plan = plan,
                         isSelected = uiState.selectedIndex == index,
                         onClick = { onPlanSelected(index) },
-                        onOfferExpired = onOfferExpired,
                     )
                 }
             }
 
             val selected = uiState.sortedPlanList.getOrNull(uiState.selectedIndex)
-            // startsWith, not == -- arrangeData() only removeExact()s the plain SKU when a plan is admin-assigned, so
-            // only the ".offer" variant of that same plan type ever remains selectable in that case.
+            // startsWith: a subscription's id can carry a ":<basePlanId>" suffix
             val isSelectedAssignedFromAdmin = selected != null && (
                 (selected.sku.startsWith("com.abacus.puzzle.1year") && uiState.yearPlanAssignFromAdmin != null) ||
                     (selected.sku.startsWith("com.abacus.all") && uiState.allPlanAssignFromAdmin != null)
@@ -271,6 +276,8 @@ private fun PurchaseKitPlans(
                         onClick = onSubscribe,
                     )
                 }
+                // billing / cancel wording and the privacy link (Google Play subscription disclosure)
+                PaywallKitLegal(privacyUrl, onOpenLink, showRenewal = !selected.isLifeTimeOffer(), showLifetimeNote = selected.isLifeTimeOffer())
             }
         }
     }
@@ -329,21 +336,20 @@ private fun PurchaseKitPlanCard(
     plan: RcPlanItem,
     isSelected: Boolean,
     onClick: () -> Unit,
-    onOfferExpired: () -> Unit,
 ) {
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
     val k = responsive
-    val originalYearly = uiState.original1YearData
-    val discountPer = uiState.discountPer
-    val discountPerLifetime = uiState.discountPerLifetime
     val isAssigned = (plan.sku.contains("1year") && uiState.yearPlanAssignFromAdmin != null) ||
         (plan.sku.contains("all") && uiState.allPlanAssignFromAdmin != null)
     val isPurchased = plan.isPurchase
     val showsBestValue = plan.isYearly() && !isPurchased && !isAssigned
     val shape = RoundedCornerShape(AbShapes.md * s)
     val ink = colors.textPrimary
-    val original = originalPriceText(discountPer, plan, originalYearly, discountPerLifetime, uiState.originalLifetimeData)
+    // a paid intro price the store offers (a Play offer on the base plan): the intro price leads, the regular one is struck through
+    val intro = if (!isPurchased && !isAssigned) plan.storeIntroOffer() else null
+    // Removed: the store provides the discount (no struck-through ".offer" anchor from Remote Config)
+    // val original = originalPriceText(discountPer, plan, originalYearly, discountPerLifetime, uiState.originalLifetimeData)
 
     Box(Modifier.padding(AppDimens.Dimens4).padding(top = if (showsBestValue) 8.dp * s else 0.dp)) {
         Column(
@@ -364,17 +370,23 @@ private fun PurchaseKitPlanCard(
             Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens2), verticalAlignment = Alignment.CenterVertically) {
                 Text("${plan.getDurationTxt()} Plan :", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = ink)
                 if (!isPurchased && !isAssigned) {
-                    if (original != null) {
+                    if (intro != null) {
                         Text(
-                            original, style = AbTypography.fixed(15f * k, FontWeight.SemiBold), color = colors.brandPrimary,
+                            intro.regularPrice, style = AbTypography.fixed(15f * k, FontWeight.SemiBold), color = colors.brandPrimary,
                             textDecoration = TextDecoration.LineThrough,
                         )
+                        // the period the intro price covers is in the "first year, then ..." line under it, so no "/ year" here
+                        Text(
+                            intro.introPrice, style = AbTypography.fixed(20f * k, FontWeight.ExtraBold), color = colors.brandPrimary,
+                            modifier = Modifier.padding(start = AppDimens.Dimens4),
+                        )
+                    } else {
+                        Text(
+                            plan.price ?: "", style = AbTypography.fixed(20f * k, FontWeight.ExtraBold), color = colors.brandPrimary,
+                            modifier = Modifier.padding(start = AppDimens.Dimens4),
+                        )
+                        Text(plan.getPriceSuffix(), style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.brandPrimary)
                     }
-                    Text(
-                        plan.price ?: "", style = AbTypography.fixed(20f * k, FontWeight.ExtraBold), color = colors.brandPrimary,
-                        modifier = Modifier.padding(start = AppDimens.Dimens4),
-                    )
-                    Text(plan.getPriceSuffix(), style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.brandPrimary)
                 } else {
                     Text(
                         stringResource(
@@ -389,6 +401,22 @@ private fun PurchaseKitPlanCard(
                             .padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens4),
                         style = AbTypography.fixed(12f * k, FontWeight.SemiBold), color = Color.White,
                     )
+                    // the store order id: a small "Order ID" label over the id, kept to the right edge of the card (same as iOS)
+                    if (isPurchased && !isAssigned) {
+                        plan.orderId?.takeIf { it.isNotBlank() }?.let { orderId ->
+                            Column(Modifier.weight(1f).padding(start = AppDimens.Dimens4), horizontalAlignment = Alignment.End) {
+                                Text(
+                                    stringResource(R.string.order_id),
+                                    style = AbTypography.fixed(9f * k, FontWeight.SemiBold), color = colors.textSecondary,
+                                )
+                                Text(
+                                    orderId, Modifier.tuckUp(4.dp * s),   // Baloo's line boxes are tall: the id sits right under its label
+                                    style = AbTypography.fixed(11f * k, FontWeight.Normal), color = colors.textSecondary,
+                                    maxLines = 1, softWrap = false, textAlign = TextAlign.End,
+                                )
+                            }
+                        }
+                    }
                 }
             }
 
@@ -428,30 +456,49 @@ private fun PurchaseKitPlanCard(
                         )
                     }
                     else -> {
-                        val monthly = uiState.original1MonthData
-                        if (plan.isYearly() && monthly != null) {
-                            val yearlyMicros = (originalYearly?.price_amount_micros ?: plan.price_amount_micros) ?: 0L
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                Text("save", style = AbTypography.fixed(12f * k, FontWeight.SemiBold), color = ink)
+                        val trialDays = plan.freeTrialDays()
+                        if (trialDays > 0) {
+                            // a store free trial: the price (and period) is already on the line above, so this row only says how long it is free
+                            Text(
+                                "$trialDays Days Free",
+                                style = AbTypography.fixed(13f * k, FontWeight.ExtraBold), color = colors.accentGreenInk,
+                            )
+                        }
+                        // "save ~N% vs monthly" was removed from the plan card earlier (too much data). To bring it back:
+                        // val monthly = uiState.original1MonthData
+                        // if (plan.isYearly() && monthly != null) {
+                        //     val yearlyMicros = (uiState.original1YearData?.price_amount_micros ?: plan.price_amount_micros) ?: 0L
+                        //     Row(verticalAlignment = Alignment.CenterVertically) {
+                        //         Text("save", style = AbTypography.fixed(12f * k, FontWeight.SemiBold), color = ink)
+                        //         Text(
+                        //             " ~${plan.calculateSavings(monthly.price_amount_micros ?: 0L, yearlyMicros)}% ",
+                        //             style = AbTypography.fixed(18f * k, FontWeight.ExtraBold), color = ink,
+                        //         )
+                        //         Text("vs monthly", style = AbTypography.fixed(12f * k, FontWeight.SemiBold), color = ink)
+                        //     }
+                        // }
+                        if (intro != null) {
+                            // "first year, then ₹1,200 / year" and the small green "N% OFF", both from the store prices
+                            Row(Modifier.padding(top = (if (trialDays > 0) 2.dp else 6.dp) * s), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
+                                Text(intro.thenLine(plan), Modifier.weight(1f, fill = false), style = AbTypography.fixed(13f * k, FontWeight.SemiBold), color = ink)
                                 Text(
-                                    " ~${plan.calculateSavings(monthly.price_amount_micros ?: 0L, yearlyMicros)}% ",
-                                    style = AbTypography.fixed(18f * k, FontWeight.ExtraBold), color = ink,
+                                    stringResource(R.string.paywall_percent_off_store, intro.percentOff),
+                                    style = AbTypography.fixed(14f * k, FontWeight.ExtraBold), color = colors.accentGreenInk,
                                 )
-                                Text("vs monthly", style = AbTypography.fixed(12f * k, FontWeight.SemiBold), color = ink)
-                            }
-                            // "extra ~% OFF" + countdown always on their own row below the savings line
-                            if (discountPer > 0) {
-                                Row(Modifier.tuckUp(6.dp * s), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens2), verticalAlignment = Alignment.CenterVertically) {
-                                    Text("(extra ~$discountPer% OFF)", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.accentGreenInk)
-                                    uiState.homeOfferYearlyEndMillis?.let { InlineCountdownPill(it, onOfferExpired) }
-                                }
-                            }
-                        } else if (plan.isLifeTimeOffer() && discountPerLifetime > 0) {
-                            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens2), verticalAlignment = Alignment.CenterVertically) {
-                                Text("~$discountPerLifetime% OFF", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.accentGreenInk)
-                                uiState.homeOfferLifetimeEndMillis?.let { InlineCountdownPill(it, onOfferExpired) }
                             }
                         }
+                        // Removed: the store provides the discount ("(extra ~N% OFF)" / "~N% OFF" rows and the countdown pill)
+                        // if (plan.isYearly() && monthly != null && discountPer > 0) {
+                        //     Row(Modifier.padding(top = (if (trialDays > 0) 2.dp else 6.dp) * s), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens2), verticalAlignment = Alignment.CenterVertically) {
+                        //         Text("(extra ~$discountPer% OFF)", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.accentGreenInk)
+                        //         uiState.homeOfferYearlyEndMillis?.let { InlineCountdownPill(it, onOfferExpired) }
+                        //     }
+                        // } else if (plan.isLifeTimeOffer() && discountPerLifetime > 0) {
+                        //     Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens2), verticalAlignment = Alignment.CenterVertically) {
+                        //         Text("~$discountPerLifetime% OFF", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.accentGreenInk)
+                        //         uiState.homeOfferLifetimeEndMillis?.let { InlineCountdownPill(it, onOfferExpired) }
+                        //     }
+                        // }
                     }
                 }
             }

@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.home.screens.levels.level2.quiz
 
+import androidx.compose.foundation.clickable
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -72,6 +73,7 @@ fun Level2QuizScreen(
     onBackClick: () -> Unit,
     onFinished: () -> Unit,
 ) {
+    val weeklyPrefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current   // the weekly parent report counts practice
     val lesson    = level2Lessons.find { it.id == lessonId } ?: return
     val questions = remember { generateLevel2QuizQuestions(lessonId) }
 
@@ -79,6 +81,8 @@ fun Level2QuizScreen(
     var selected   by remember { mutableStateOf<Int?>(null) }
     var score      by remember { mutableIntStateOf(0) }
     var showResult by remember { mutableStateOf(false) }
+    var showPaywall by remember { mutableStateOf(false) }   // value moment: a 3-star run offers the abacus formulas
+    val fullAccess = com.jigar.me.ui.view.home.common_ui.rememberHasFullAccess()
 
     val prefs = LocalPreferencesHelper.current
     val reviewGate = rememberReviewGateController()
@@ -97,6 +101,7 @@ fun Level2QuizScreen(
         val sel = selected ?: return@LaunchedEffect
         if (sel == questions[qIndex].result) {
             score++
+            com.jigar.me.utils.WeeklyActivity.record(weeklyPrefs)
             AudioPlayerManager.playSoundCorrectAns()
         } else {
             AudioPlayerManager.playSoundOptionWrong()
@@ -260,7 +265,25 @@ fun Level2QuizScreen(
                         onClick = { if (stars == 3) reviewGate.attempt(prefs) { onFinished() } else onFinished() }
                     )
                 }
+                if (stars == 3 && !fullAccess) {
+                    androidx.compose.material3.Text(
+                        "\uD83D\uDD13 Unlock the abacus formulas",
+                        style = AbTypography.fixed(14f, FontWeight.ExtraBold),
+                        color = Color.White,
+                        textDecoration = androidx.compose.ui.text.style.TextDecoration.Underline,
+                        modifier = Modifier
+                            .clickable(remember { androidx.compose.foundation.interaction.MutableInteractionSource() }, indication = null) { showPaywall = true }
+                            .padding(AppDimens.Dimens4)
+                    )
+                }
             }
+        }
+
+        if (showPaywall) {
+            com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet(
+                paywallContext = com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext.LEVEL2,
+                onDismiss = { showPaywall = false }
+            )
         }
 
         ReviewGateHost(reviewGate, prefs)

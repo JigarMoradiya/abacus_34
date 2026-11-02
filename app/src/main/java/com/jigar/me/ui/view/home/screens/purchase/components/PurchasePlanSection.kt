@@ -34,7 +34,6 @@ fun PurchasePlanSection(
     uiState: PurchaseUiState,
     onPlanSelected: (Int) -> Unit,
     onSubscribe: () -> Unit,
-    onOfferExpired: () -> Unit = {},
     onRetry: () -> Unit = {},
 ) {
     Column(
@@ -75,17 +74,13 @@ fun PurchasePlanSection(
                     isSelected = uiState.selectedIndex == index,
                     onClick = { onPlanSelected(index) },
                     onSubscribe = onSubscribe,
-                    onOfferExpired = onOfferExpired
                 )
             }
         }
         }
 
         val selected = uiState.sortedPlanList.getOrNull(uiState.selectedIndex)
-        // startsWith, not == -- arrangeData() only removeExact()s the plain SKU
-        // when a plan is admin-assigned, so only the ".offer" variant of that same
-        // plan type ever remains selectable in that case; matching just the plain
-        // SKU here would make this check unreachable.
+        // startsWith: a subscription's id can carry a ":<basePlanId>" suffix
         val isSelectedAssignedFromAdmin = selected != null && (
             (selected.sku.startsWith("com.abacus.puzzle.1year") && uiState.yearPlanAssignFromAdmin != null) ||
                 (selected.sku.startsWith("com.abacus.all") && uiState.allPlanAssignFromAdmin != null)

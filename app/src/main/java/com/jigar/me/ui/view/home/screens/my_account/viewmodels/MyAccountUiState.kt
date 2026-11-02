@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.home.screens.my_account.viewmodels
 
+import androidx.compose.material.icons.outlined.Share
 import android.content.Context
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.Help
@@ -48,6 +49,7 @@ fun getMenuList(context: Context, isLoggedIn: Boolean): List<MyAccountMenu> {
                 add(MyAccountMenu("faqs", context.getString(R.string.faqs), Icons.AutoMirrored.Outlined.Help))
                 add(MyAccountMenu("need_help", context.getString(R.string.need_help), Icons.Outlined.SupportAgent))
                 add(MyAccountMenu("rate_us_on_the_play_store", context.getString(R.string.rate_us_on_the_play_store), Icons.Outlined.StarRate))
+                add(MyAccountMenu("share_app", context.getString(R.string.share_with_friend), Icons.Outlined.Share))
                 add(MyAccountMenu("privacy_policy", context.getString(R.string.privacy_policy), Icons.Outlined.PrivacyTip))
                 if (isLoggedIn) {
                     add(MyAccountMenu("logout", context.getString(R.string.logout), Icons.AutoMirrored.Outlined.Logout))

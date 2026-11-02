@@ -49,6 +49,7 @@ fun Level3SpeedDrillScreen(
     onBackClick: () -> Unit,
     onFinished:  () -> Unit,
 ) {
+    val weeklyPrefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current   // the weekly parent report counts practice
     val mode = config.mode
 
     var phase          by remember { mutableStateOf<L3DrillPhase>(L3DrillPhase.Countdown(3)) }
@@ -84,6 +85,7 @@ fun Level3SpeedDrillScreen(
         AudioPlayerManager.playSoundCountGo()
         phase = L3DrillPhase.Playing(0)
         while (timeLeft > 0) { delay(1000); timeLeft-- }
+        com.jigar.me.utils.WeeklyActivity.record(weeklyPrefs, score)
         phase = L3DrillPhase.Result(score)
     }
 

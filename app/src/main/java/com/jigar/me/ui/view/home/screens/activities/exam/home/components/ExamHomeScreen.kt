@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.home.screens.activities.exam.home.components
 
+import com.jigar.me.utils.FreemiumWindow
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -84,7 +85,7 @@ fun ExamHomeScreen(
                 AbSelectCard(
                     compact = true,
                     title = stringResource(R.string.Addition), symbol = "+", accent = ColorGreen,
-                    isSelected = uiState.isAdditionSelected, width = ActivityDimens.examTypeCardWidth,
+                    isSelected = uiState.isAdditionSelected, isLocked = FreemiumWindow.freeTierExpired(isSubscribed), width = ActivityDimens.examTypeCardWidth,
                     onClick = { viewModel.updateValues(AppConstants.EXAM.isAdditionSelected, !uiState.isAdditionSelected) },
                 )
                 AbSelectCard(
@@ -117,7 +118,7 @@ fun ExamHomeScreen(
                 AbSelectCard(
                     compact = true,
                     title = stringResource(R.string.beginner), stars = 1, accent = ColorGreen,
-                    isSelected = uiState.selectedDifficulty == AppConstants.EXAM.examDifficultyBeginner,
+                    isSelected = uiState.selectedDifficulty == AppConstants.EXAM.examDifficultyBeginner, isLocked = FreemiumWindow.freeTierExpired(isSubscribed),
                     width = ActivityDimens.examDiffCardWidth,
                     onClick = { viewModel.updateRadioValue(AppConstants.EXAM.examDifficultyBeginner) },
                 )

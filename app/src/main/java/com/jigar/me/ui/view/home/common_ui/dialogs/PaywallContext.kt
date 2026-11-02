@@ -15,4 +15,15 @@ enum class PaywallContext(@StringRes val headlineRes: Int, @StringRes val subtit
     GAMES(R.string.paywall_headline_games, R.string.paywall_subtitle_games),
     REPORTS(R.string.paywall_headline_reports, R.string.paywall_subtitle_reports),
     GENERIC(R.string.paywall_headline_generic, R.string.paywall_subtitle_generic),
+    /** The plans page at the end of the first-launch tutorial (lifetime is not offered there). */
+    ONBOARDING(R.string.paywall_headline_onboarding, R.string.paywall_subtitle_onboarding),
+    /** The parent reminder on day 3 / day 7 of a new install's free week. */
+    FREE_ENDING(R.string.paywall_headline_free_ending, R.string.paywall_subtitle_free_ending),
+    /** Any locked tap once the free week is over (the sheet switches to this headline by itself). */
+    FREE_ENDED(R.string.paywall_headline_free_ended, R.string.paywall_subtitle_free_ended),
+    /** The returning-user prompt: a free parent who keeps coming back (days 3, 10, 21, 45 by default). */
+    RETURNING(R.string.paywall_headline_returning, R.string.paywall_subtitle_returning);
+
+    /** Stable name for analytics, the same as on iOS (for example "level3"). */
+    val analyticsName: String get() = name.lowercase()
 }

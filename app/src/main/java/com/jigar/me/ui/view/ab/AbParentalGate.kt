@@ -59,21 +59,23 @@ fun AbParentalGate(
     val s = LocalAbScale.current.factor
     val tone = colors.accentPurple
 
-    var num1 by remember { mutableIntStateOf(Random.nextInt(11, 50)) }
-    var num2 by remember { mutableIntStateOf(Random.nextInt(11, 50)) }
-    var options by remember { mutableStateOf(makeOptions(num1 + num2)) }
+    // A times-sum (two digits x one digit), so a young child cannot just add: 12..29 x 6..9
+    var num1 by remember { mutableIntStateOf(Random.nextInt(12, 30)) }
+    var num2 by remember { mutableIntStateOf(Random.nextInt(6, 10)) }
+    var options by remember { mutableStateOf(makeOptions(num1 * num2)) }
+    var wrongTries by remember { mutableIntStateOf(0) }
     var isShaking by remember { mutableStateOf(false) }
     val shake = remember { Animatable(0f) }
     val scope = rememberCoroutineScope()
 
     fun regenerate() {
-        num1 = Random.nextInt(11, 50)
-        num2 = Random.nextInt(11, 50)
-        options = makeOptions(num1 + num2)
+        num1 = Random.nextInt(12, 30)
+        num2 = Random.nextInt(6, 10)
+        options = makeOptions(num1 * num2)
     }
 
     // 4 swings of +-14 (80 ms each, after an 80 ms beat), back to centre, then a new sum 150 ms after the return starts.
-    fun shakeSum() {
+    fun shakeSum(closeAfter: Boolean = false) {
         if (isShaking) return
         isShaking = true
         scope.launch {
@@ -83,13 +85,19 @@ fun AbParentalGate(
             }
             launch { shake.animateTo(0f, tween(80, easing = LinearEasing)) }
             delay(150)
-            regenerate()
+            if (closeAfter) onClose() else regenerate()
             isShaking = false
         }
     }
 
     fun handleAnswer(selected: Int) {
-        if (selected == num1 + num2) onSuccess() else shakeSum()
+        if (selected == num1 * num2) {
+            onSuccess()
+        } else {
+            // two wrong answers close the gate (a new one has to be opened): guessing does not get through
+            wrongTries += 1
+            shakeSum(closeAfter = wrongTries >= 2)
+        }
     }
 
     AbPopupLayer(onScrimTap = onClose) { layerWidth, _, shown ->
@@ -133,7 +141,7 @@ fun AbParentalGate(
                     .offset { IntOffset(shake.value.dp.roundToPx(), 0) },
                 contentAlignment = Alignment.Center,
             ) {
-                Text("$num1 + $num2 = ?", style = AbTypography.fixed(30f * s, FontWeight.ExtraBold), color = colors.brandPrimary, maxLines = 1)
+                Text("$num1 × $num2 = ?", style = AbTypography.fixed(30f * s, FontWeight.ExtraBold), color = colors.brandPrimary, maxLines = 1)
             }
 
             Row(Modifier.padding(bottom = 4.dp * s), horizontalArrangement = Arrangement.spacedBy(12.dp * s)) {
@@ -167,11 +175,11 @@ fun AbParentalGate(
     }
 }
 
-/** The right answer plus two near misses (1 to 6 off, never zero or negative), in random order. */
+/** The right answer plus three near misses (1, 2 or 10 off, never zero or negative), in random order. */
 private fun makeOptions(correct: Int): List<Int> {
     val set = linkedSetOf(correct)
-    while (set.size < 3) {
-        val delta = Random.nextInt(1, 7) * (if (Random.nextBoolean()) 1 else -1)
+    while (set.size < 4) {
+        val delta = listOf(1, 2, 10).random() * (if (Random.nextBoolean()) 1 else -1)
         val wrong = correct + delta
         if (wrong > 0) set.add(wrong)
     }

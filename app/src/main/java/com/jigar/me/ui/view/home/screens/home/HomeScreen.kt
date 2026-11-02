@@ -1,5 +1,9 @@
 package com.jigar.me.ui.view.home.screens.home
 
+import com.jigar.me.utils.CommonUtils
+import com.jigar.me.utils.AppAnalytics
+import com.jigar.me.utils.FreemiumWindow
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.widthIn
@@ -102,9 +106,10 @@ import com.jigar.me.ui.view.home.common_ui.dialogs.FreeTrialDialog
 import com.jigar.me.ui.view.home.common_ui.sheets.Day2ReviewGateBottomSheet
 import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateBottomSheet
 import com.jigar.me.ui.view.home.screens.home.components.HomeMenuScreen
-import com.jigar.me.ui.view.home.screens.home.components.HomeOfferBadge
-import com.jigar.me.ui.view.home.screens.home.components.HomeOfferCard
-import com.jigar.me.ui.view.home.screens.home.components.HomeOfferSidebarCard
+// Removed: the store provides the discount (no timed Home offer card)
+// import com.jigar.me.ui.view.home.screens.home.components.HomeOfferBadge
+// import com.jigar.me.ui.view.home.screens.home.components.HomeOfferCard
+// import com.jigar.me.ui.view.home.screens.home.components.HomeOfferSidebarCard
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeFragmentViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
@@ -213,6 +218,19 @@ fun HomeScreen(
     var showURLGate by remember { mutableStateOf(false) }
     var pendingUrlAction by remember { mutableStateOf<(() -> Unit)?>(null) }
     var showWeeklyReport by remember { mutableStateOf(false) }
+    var showReportsPaywall by remember { mutableStateOf(false) }
+    // Freemium time limit
+    var showFreeEndedPaywall by remember { mutableStateOf(false) }   // a locked Free Mode / Level 1 tile after the window ("nothing free" mode)
+    var showReminderPaywall by remember { mutableStateOf(false) }    // day 3 / day 7 reminder: the plans, after the grown-up question
+    val prefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current
+
+    // Once the free week is over and the setup is "nothing free", Free Mode and Level 1 open the paywall instead
+    fun openCore(action: () -> Unit) {
+        if (FreemiumWindow.coreLocked(CommonUtils.checkPurchaseForExerciseExamCCM(prefs))) {
+            AppAnalytics.log(AppAnalytics.FREEMIUM_LOCKED_TAP, "feature" to "core")
+            showFreeEndedPaywall = true
+        } else action()
+    }
     // Tracked locally (not via ParentalGateSessionCache) because opening an
     // external link backgrounds the app, which resets that session cache --
     // relying on it here would re-ask the gate on every single tap instead of
@@ -235,7 +253,7 @@ fun HomeScreen(
     fun onMenuClick(level: String, id: String? = null) {
         when (level) {
             AppConstants.HomeClicks.Menu_Practice_Abacus  -> id?.let { onNavigateToLevelCategory(it) }
-            AppConstants.HomeClicks.Menu_Abacus_Free_Mode -> onNavigateToAbacusFreeMode()
+            AppConstants.HomeClicks.Menu_Abacus_Free_Mode -> openCore { onNavigateToAbacusFreeMode() }
             AppConstants.HomeClicks.Menu_Math_Game        -> onNavigateToMathGameZone()
             AppConstants.HomeClicks.Menu_Settings         -> onNavigateToSettings()
             AppConstants.HomeClicks.Menu_My_Account       -> onNavigateToMyAccount()
@@ -267,11 +285,9 @@ fun HomeScreen(
         val totalH = maxHeight
         val isTablet = DeviceInfo.isTablet
         val mascotMaxH = min(totalH.value * 0.55f, 240f).dp
-        // Time-limited offer (Remote Config `home_offer`) -- hidden for premium users.
-        // Hoisted above the left/right panel split so both can react to it: on tablet,
-        // it (or "This Week" when there's no active offer) sits below the mascot, and
-        // "This Week" additionally moves next to the level pager while the offer's on.
-        val activeOffer = uiState.homeOffer?.takeIf { !uiState.isPremium }
+        // Removed: the store provides the discount. The time-limited offer (Remote Config `home_offer`) is gone, so
+        // "This Week" always has its own slot below the mascot / in the bottom row (it no longer moves for an offer card):
+        // val activeOffer = uiState.homeOffer?.takeIf { !uiState.isPremium }
 
         Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
 
@@ -361,14 +377,15 @@ fun HomeScreen(
                         }
                         LevelsPager(
                             modifier = Modifier.width(if (isTablet) 310.dp else 250.dp),
-                            onLevel1 = onNavigateToLevel1,
+                            onLevel1 = { openCore(onNavigateToLevel1) },
                             onLevel2 = onNavigateToLevel2,
                             onLevel3 = onNavigateToLevel3,
                             onLevel4 = onNavigateToLevel4,
                         )
-                        if (activeOffer != null && !isTablet) {
-                            WeeklyReportCard(viewModel.weeklyStats()) { showWeeklyReport = true }
-                        }
+                        // Removed: the store provides the discount ("This Week" moved up here while the offer card was on)
+                        // if (activeOffer != null && !isTablet) {
+                        //     WeeklyReportCard(viewModel.weeklyStats()) { showWeeklyReport = true }
+                        // }
                     }
 
                     // "Choose your activity" divider: rods fading out to the sides and a coloured pill with the sentence
@@ -384,10 +401,8 @@ fun HomeScreen(
                         modifier = Modifier.weight(1f)
                     )
 
-                    // Offer badge (or weekly report) + Made in India/Safe badge + English
-                    // cross-promo — phone only. When the timed offer is active it takes
-                    // this first slot (compact, same size class as its neighbours) and
-                    // "This Week" moves up to the top row instead -- see activeOffer above.
+                    // Weekly report + Made in India/Safe badge + English cross-promo — phone only.
+                    // (The compact timed-offer chip that used to take the first slot is removed: the store provides the discount.)
                     if (!isTablet) {
                         Row(
                             modifier = Modifier
@@ -397,19 +412,20 @@ fun HomeScreen(
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            if (activeOffer != null) {
-                                HomeOfferBadge(
-                                    title = activeOffer.title,
-                                    startedAtMillis = activeOffer.startedAtMillis,
-                                    durationMin = activeOffer.durationMin,
-                                    discountPercent = activeOffer.discountPercent,
-                                    targetsLifetime = activeOffer.targetsLifetime,
-                                    onClick = { AudioPlayerManager.playSoundBtnClick(); onNavigateToPurchase() },
-                                    onExpired = viewModel::onHomeOfferExpired,
-                                )
-                            } else {
-                                WeeklyReportCard(viewModel.weeklyStats()) { showWeeklyReport = true }
-                            }
+                            // Removed: the store provides the discount (the compact offer chip took this slot while an offer ran)
+                            // if (activeOffer != null) {
+                            //     HomeOfferBadge(
+                            //         title = activeOffer.title,
+                            //         startedAtMillis = activeOffer.startedAtMillis,
+                            //         durationMin = activeOffer.durationMin,
+                            //         discountPercent = activeOffer.discountPercent,
+                            //         targetsLifetime = activeOffer.targetsLifetime,
+                            //         onClick = { AudioPlayerManager.playSoundBtnClick(); onNavigateToPurchase() },
+                            //         onExpired = viewModel::onHomeOfferExpired,
+                            //     )
+                            // } else {
+                            WeeklyReportCard(viewModel.weeklyStats()) { showWeeklyReport = true }
+                            // }
                             if (isIndianUser(context)) {
                                 MadeInIndiaBadge()
                             } else {
@@ -439,20 +455,21 @@ fun HomeScreen(
                                 .padding(horizontal = Dimens16)
                                 .padding(bottom = Dimens12)
                                 .padding(top = Dimens8),
-                            horizontalArrangement = if (activeOffer != null) Arrangement.SpaceBetween else Arrangement.End,
+                            horizontalArrangement = Arrangement.End, // was SpaceBetween while the timed offer card was shown
                             verticalAlignment = Alignment.Bottom
                         ) {
-                            if (activeOffer != null) {
-                                HomeOfferSidebarCard(
-                                    title = activeOffer.title,
-                                    startedAtMillis = activeOffer.startedAtMillis,
-                                    durationMin = activeOffer.durationMin,
-                                    discountPercent = activeOffer.discountPercent,
-                                    targetsLifetime = activeOffer.targetsLifetime,
-                                    onClick = { AudioPlayerManager.playSoundBtnClick(); onNavigateToPurchase() },
-                                    onExpired = viewModel::onHomeOfferExpired
-                                )
-                            }
+                            // Removed: the store provides the discount
+                            // if (activeOffer != null) {
+                            //     HomeOfferSidebarCard(
+                            //         title = activeOffer.title,
+                            //         startedAtMillis = activeOffer.startedAtMillis,
+                            //         durationMin = activeOffer.durationMin,
+                            //         discountPercent = activeOffer.discountPercent,
+                            //         targetsLifetime = activeOffer.targetsLifetime,
+                            //         onClick = { AudioPlayerManager.playSoundBtnClick(); onNavigateToPurchase() },
+                            //         onExpired = viewModel::onHomeOfferExpired
+                            //     )
+                            // }
                             EnglishBanner(context = context, onUrlClick = {
                                 openURLWithGate {
                                     runCatching {
@@ -582,7 +599,60 @@ fun HomeScreen(
         }
 
         if (showWeeklyReport) {
-            WeeklyReportDialog(viewModel.weeklyStats()) { showWeeklyReport = false }
+            WeeklyReportDialog(
+                viewModel.weeklyStats(),
+                onUpgrade = if (uiState.isPremium) null else ({ showWeeklyReport = false; showReportsPaywall = true }),
+            ) { showWeeklyReport = false }
+        }
+        // Freemium time limit: the free window is over and nothing is free ("free week is over" headline)
+        if (showFreeEndedPaywall) {
+            com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet(
+                paywallContext = com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext.GENERIC,
+                onDismiss = { showFreeEndedPaywall = false }
+            )
+        }
+        // A failed renewal: tell the parent (once a day); the store page opens only after the grown-up question
+        uiState.billingIssueUrl?.let { url ->
+            val uriHandler = androidx.compose.ui.platform.LocalUriHandler.current
+            com.jigar.me.ui.view.ab.AbConfirmDialog(
+                title = "There's a problem with your payment",
+                message = "Your Premium renewal did not go through. Update your payment method so your child keeps every level, game and report.",
+                positiveText = "Fix payment",
+                negativeText = "Later",
+                destructive = false,
+                onNegative = { viewModel.dismissBillingIssue() },
+                onPositive = {
+                    AppAnalytics.log(AppAnalytics.BILLING_ISSUE_FIX_TAPPED)
+                    viewModel.dismissBillingIssue()
+                    openURLWithGate { uriHandler.openUri(url) }
+                },
+            )
+        }
+        // Parent reminder on day 3 / day 7: the grown-up question, then the plans
+        if (uiState.showParentReminder) {
+            AbParentalGate(
+                onSuccess = {
+                    viewModel.dismissParentReminder()
+                    AppAnalytics.log(AppAnalytics.FREEMIUM_REMINDER_GATE_PASSED)
+                    showReminderPaywall = true
+                },
+                onClose = { viewModel.dismissParentReminder() }
+            )
+        }
+        if (showReminderPaywall) {
+            com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet(
+                paywallContext = if (uiState.reminderIsReturning) com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext.RETURNING
+                                 else com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext.FREE_ENDING,
+                gateAlreadyPassed = true,
+                onDismiss = { showReminderPaywall = false }
+            )
+        }
+        // Value moment: a parent looking at this week's numbers can open the full report history
+        if (showReportsPaywall) {
+            com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet(
+                paywallContext = com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext.REPORTS,
+                onDismiss = { showReportsPaywall = false }
+            )
         }
     }
     }
@@ -1059,10 +1129,10 @@ private fun WeeklyReportCard(stats: WeeklySummaryManager.WeeklyStats, onClick: (
 }
 
 @Composable
-private fun WeeklyReportDialog(stats: WeeklySummaryManager.WeeklyStats, onDismiss: () -> Unit) {
+private fun WeeklyReportDialog(stats: WeeklySummaryManager.WeeklyStats, onUpgrade: (() -> Unit)? = null, onDismiss: () -> Unit) {
     // The dimmed backdrop only fades (tapping it closes); the card alone pops in.
     AbPopupLayer(onScrimTap = onDismiss) { _, _, shown ->
-        Box(Modifier.abCardEntrance(shown)) { WeeklyReportContent(stats, onClose = onDismiss) }
+        Box(Modifier.abCardEntrance(shown)) { WeeklyReportContent(stats, onClose = onDismiss, onUpgrade = onUpgrade) }
     }
 }
 
@@ -1071,7 +1141,8 @@ fun WeeklyReportContent(
     stats: WeeklySummaryManager.WeeklyStats,
     onClose: (() -> Unit)? = null,
     compact: Boolean = false, // smaller paddings: used on My Account, like iOS
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onUpgrade: (() -> Unit)? = null, // set for free players: a link to the full report history under the numbers
 ) {
     val colors = LocalAbColors.current
     val abScale = LocalAbScale.current
@@ -1126,6 +1197,13 @@ fun WeeklyReportContent(
                 "Great progress this week — keep it going! 🌟", color = colors.textSecondary, textAlign = TextAlign.Center,
                 style = AbTypography.fixed((if (compact) 14f else 17f) * s, FontWeight.SemiBold),
             )
+            if (isPopup && onUpgrade != null) {
+                Text(
+                    "See the full report history \u203A", color = colors.brandPrimary, textDecoration = androidx.compose.ui.text.style.TextDecoration.Underline,
+                    style = AbTypography.fixed(17f * s, FontWeight.ExtraBold),
+                    modifier = Modifier.clickable(remember { androidx.compose.foundation.interaction.MutableInteractionSource() }, indication = null) { onUpgrade() },
+                )
+            }
         } else {
             Text("🌱", fontSize = ((if (compact) 30 else 40) * s).sp)
             Text(

@@ -165,7 +165,16 @@ class AbacusFreeModeViewModel @Inject constructor(
 
     // --------- Matching logic (guided mode) ----------
 
+    // bead moves this visit: plain play counts as one "problem" in the weekly report once it is a real session (20 moves)
+    private var beadMoves = 0
+    private var sessionCounted = false
+
     fun handleMatch() {
+        beadMoves++
+        if (isFreeModeOn && beadMoves >= 20 && !sessionCounted) {
+            sessionCounted = true
+            com.jigar.me.utils.WeeklyActivity.record(prefs)
+        }
         if (isFreeModeOn || showHighlighter) {
             // In free mode or tour mode, we don't auto-advance numbers
             return
@@ -176,6 +185,7 @@ class AbacusFreeModeViewModel @Inject constructor(
 
         if (rightInt == 0 && leftInt == numberToMatch) {
             // ✅ matched
+            com.jigar.me.utils.WeeklyActivity.record(prefs)   // a matched target is one solved problem
             if (isResetEveryTime) {
                 viewModelScope.launch {
                     delay(500)

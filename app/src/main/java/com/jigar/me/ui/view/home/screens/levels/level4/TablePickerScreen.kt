@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.home.screens.levels.level4
 
+import com.jigar.me.utils.FreemiumWindow
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -80,7 +81,7 @@ fun TablePickerScreen(
                                 Row(horizontalArrangement = Arrangement.spacedBy(spacing)) {
                                     for (c in 0 until cols) {
                                         val n = r * cols + c + 1
-                                        val isLocked = n > 3 && !isSubscribed
+                                        val isLocked = (n > 3 || FreemiumWindow.hasEnded) && !isSubscribed
                                         AbTableTile(
                                             number = n,
                                             accent = tablePickerColors[n - 1],

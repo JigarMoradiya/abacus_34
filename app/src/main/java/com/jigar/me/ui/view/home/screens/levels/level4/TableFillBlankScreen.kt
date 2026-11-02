@@ -69,6 +69,7 @@ fun TableFillBlankScreen(
     tables: List<Int> = listOf(tableNumber),
     onBackClick: () -> Unit,
 ) {
+    val weeklyPrefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current   // the weekly parent report counts practice
     val questions = remember { generateFillBlankQuestions(tables) }
     var currentIndex by remember { mutableIntStateOf(0) }
     var selectedAnswer by remember { mutableStateOf<Int?>(null) }
@@ -147,7 +148,7 @@ fun TableFillBlankScreen(
                                     if (selectedAnswer == null) {
                                         selectedAnswer = choice
                                         userAnswers[currentIndex] = choice
-                                        if (choice == questions[currentIndex].correctAnswer) score++
+                                        if (choice == questions[currentIndex].correctAnswer) { score++; com.jigar.me.utils.WeeklyActivity.record(weeklyPrefs) }
                                     }
                                 }
                             )

@@ -1086,6 +1086,7 @@
     <string name="number_snake_tagline">Connect 1 to the end, one step at a time!</string>
     <string name="number_snake_level">Level %1$d</string>
 
+    <string name="order_id">Order ID</string>
     <string name="number_sequence_desc"><![CDATA[Slide & order the numbers!]]></string>
     <string name="free_mode_settings">Free Mode Settings</string>
     <string name="click_here_to_show_abacus_tour">Show Abacus Tour</string>
@@ -1129,23 +1130,23 @@
     <!-- Paywall sheet (FreemiumPaywallBottomSheet) -->
     <string name="paywall_headline_generic">Go Premium!</string>
     <string name="paywall_subtitle_generic">Unlock ALL levels\nNo limits\nLearn without limits!</string>
-    <string name="paywall_headline_level2">You\'re ready for Level 2!</string>
-    <string name="paywall_subtitle_level2">Upgrade to keep learning</string>
-    <string name="paywall_headline_level3">You\'ve reached Level 3!</string>
-    <string name="paywall_subtitle_level3">Upgrade to keep learning</string>
-    <string name="paywall_headline_tables">Tables practice is locked!</string>
-    <string name="paywall_subtitle_tables">Unlock to master multiplication</string>
-    <string name="paywall_headline_practice">You\'ve finished the free sets!</string>
+    <string name="paywall_headline_level2">Unlock the abacus formulas!</string>
+    <string name="paywall_subtitle_level2">Small Friend, Big Friend and Family tricks</string>
+    <string name="paywall_headline_level3">Ready for speed training?</string>
+    <string name="paywall_subtitle_level3">Unlock Level 3: mental math and Anzan</string>
+    <string name="paywall_headline_tables">Master the times tables!</string>
+    <string name="paywall_subtitle_tables">Unlock every table and mixed practice</string>
+    <string name="paywall_headline_practice">Want more practice?</string>
     <string name="paywall_subtitle_practice">Unlock every practice page</string>
-    <string name="paywall_headline_exercise">You\'re on a roll!</string>
-    <string name="paywall_subtitle_exercise">Unlock all exercises to keep going</string>
+    <string name="paywall_headline_exercise">Keep the practice going!</string>
+    <string name="paywall_subtitle_exercise">Unlock all exercises</string>
     <string name="paywall_headline_exam">Ready for the real exam?</string>
     <string name="paywall_subtitle_exam">Unlock all exam types</string>
     <string name="paywall_headline_ccm">Custom challenges await!</string>
     <string name="paywall_subtitle_ccm">Unlock Custom Challenge Mode</string>
     <string name="paywall_headline_games">Don\'t stop playing!</string>
     <string name="paywall_subtitle_games">Unlock all math games</string>
-    <string name="paywall_headline_reports">Your progress is waiting!</string>
+    <string name="paywall_headline_reports">See your child\'s progress!</string>
     <string name="paywall_subtitle_reports">Unlock full report history</string>
     <string name="paywall_badge_best_value">Best Value!</string>
     <string name="paywall_badge_one_time">One Time</string>
@@ -1154,6 +1155,25 @@
     <string name="paywall_save_vs_weekly">Save ~%1$d%% vs weekly</string>
     <string name="paywall_percent_off">~%1$d%% OFF</string>
     <string name="paywall_percent_off_extra">(extra ~%1$d%% OFF)</string>
+    <!-- a paid intro price the store offers (a Google Play offer): "30% OFF", then "first year, then ₹1,200 / year" -->
+    <string name="paywall_percent_off_store">%1$d%% OFF</string>
+    <string name="paywall_intro_then">%1$s, then %2$s</string>
+    <plurals name="paywall_intro_first_days">
+        <item quantity="one">first day</item>
+        <item quantity="other">first %1$d days</item>
+    </plurals>
+    <plurals name="paywall_intro_first_weeks">
+        <item quantity="one">first week</item>
+        <item quantity="other">first %1$d weeks</item>
+    </plurals>
+    <plurals name="paywall_intro_first_months">
+        <item quantity="one">first month</item>
+        <item quantity="other">first %1$d months</item>
+    </plurals>
+    <plurals name="paywall_intro_first_years">
+        <item quantity="one">first year</item>
+        <item quantity="other">first %1$d years</item>
+    </plurals>
     <string name="login_required">Login Required</string>
     <string name="login_is_required_to_access_this_feature">Login is required to access this feature.</string>
     <string name="sign_in_with_google">Sign in with Google</string>
@@ -1170,4 +1190,19 @@
     <string name="loading">Loading</string>
     <string name="purchase_headline">Go Premium</string>
     <string name="purchase_subline">Unlock everything, learn without limits</string>
+    <string name="paywall_billing_note">Monthly and yearly plans renew automatically until cancelled. Cancel anytime in your Google Play settings.</string>
+    <string name="paywall_billing_note_lifetime">Lifetime is a one-time purchase. It does not renew.</string>
+    <string name="paywall_privacy_link">Privacy Policy</string>
+    <string name="paywall_trial_then">%1$d Days Free, then </string>
+    <string name="paywall_per_month_approx">~%1$s / month</string>
+    <string name="paywall_headline_onboarding">Unlock everything!</string>
+    <string name="paywall_subtitle_onboarding">Beginner to expert, with progress reports for you</string>
+    <string name="paywall_headline_free_ending">Loving it so far?</string>
+    <string name="paywall_subtitle_free_ending">Keep every level and game after your free week</string>
+    <string name="paywall_headline_free_ended">Your free week is over</string>
+    <string name="paywall_subtitle_free_ended">Keep learning with Premium</string>
+    <string name="paywall_headline_returning">Ready for the next level?</string>
+    <string name="paywall_subtitle_returning">Unlock every level, game and progress report</string>
+    <string name="share_with_friend">Share with a friend</string>
+    <string name="share_with_friend_text">My child is learning abacus and mental maths with Vedaavi Abacus: step by step lessons, games and a weekly progress report for parents. Free to start: %1$s</string>
 </resources>

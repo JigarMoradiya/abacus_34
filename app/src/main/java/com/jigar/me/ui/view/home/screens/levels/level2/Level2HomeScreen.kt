@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.home.screens.levels.level2
 
+import com.jigar.me.utils.FreemiumWindow
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -61,7 +62,7 @@ fun Level2HomeScreen(
                         horizontalArrangement = Arrangement.spacedBy(spacing)
                     ) {
                         level2Chapters.take(cols).forEachIndexed { index, chapter ->
-                            val isLocked   = !isSubscribed && index >= 3
+                            val isLocked   = !isSubscribed && (index >= 3 || FreemiumWindow.hasEnded)
                             val chapStars  = if (chapter.type != Level2ChapterType.FORMULA_REF)
                                 prefs.getCustomParamInt("l2_quiz_stars_${chapter.id}", 0) else 0
                             L2ChapterCard(chapter, cellW, cellH, isLocked, chapStars) {

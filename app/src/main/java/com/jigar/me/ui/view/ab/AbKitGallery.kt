@@ -43,6 +43,7 @@ object AbDebugScreens {
                 "board" -> AbBoardPreview()
                 "paywall" -> AbPaywallPreview()
                 "purchase" -> AbPurchasePreview()
+                "purchasebought" -> AbPurchaseBoughtPreview()
                 "weekly" -> AbWeeklyPreview(true)
                 "weekly2" -> AbWeeklyPreview(false)
                 "gameresult" -> AbGameResultPreview(3)
@@ -53,7 +54,8 @@ object AbDebugScreens {
                 "reports" -> AbReportsPreview()
                 "ccmresult" -> AbCcmResultPreview(true)
                 "ccmwrong" -> AbCcmResultPreview(false)
-                else -> AbKitGallery()
+                // the first-launch tutorial, page N of 6 (6 = the plans page): `--es ab_screen onboarding6`
+                else -> if (name.startsWith("onboarding")) AbOnboardingPreview(name.removePrefix("onboarding").toIntOrNull() ?: 1) else AbKitGallery()
             }
         }
     }

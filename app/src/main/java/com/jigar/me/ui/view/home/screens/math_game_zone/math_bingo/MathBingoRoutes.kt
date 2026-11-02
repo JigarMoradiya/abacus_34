@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.math_bingo
 
+import com.jigar.me.utils.FreemiumWindow
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -30,7 +31,7 @@ fun MathBingoHomeRoute(
     MathBingoHomeScreen(
         viewModel = viewModel,
         onStartGame = {
-            if (selectedDifficulty == CommonDifficulty4.easy || isSubscribed) {
+            if ((selectedDifficulty == CommonDifficulty4.easy && !FreemiumWindow.hasEnded) || isSubscribed) {
                 onStartPlay(selectedDifficulty.name)
             } else {
                 showPaywall = true

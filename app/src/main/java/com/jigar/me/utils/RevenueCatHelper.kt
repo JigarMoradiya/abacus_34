@@ -21,6 +21,14 @@ object RevenueCatHelper {
     val isSubscribed: Boolean
         get() = cachedInfo?.entitlements?.get("premium")?.isActive == true
 
+    // A failed renewal (an expired card, no funds) sits in the store's grace period or billing retry: the parent has to fix the
+    // payment method or the subscription ends. RevenueCat reports it as `billingIssueDetectedAt`.
+    val hasBillingIssue: Boolean
+        get() = cachedInfo?.entitlements?.get("premium")?.billingIssueDetectedAt != null
+
+    val managementUrl: String?
+        get() = cachedInfo?.managementURL?.toString()
+
     val allPurchasedProductIds: Set<String>
         get() = cachedInfo?.allPurchasedProductIds ?: emptySet()
 

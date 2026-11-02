@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.purchase
 
+import com.jigar.me.ui.view.home.common_ui.dialogs.ParentalGateDialog
+import com.jigar.me.utils.AppAnalytics
 import android.app.Activity
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -33,9 +35,24 @@ fun PurchaseScreenRoute(
     val viewModel: PurchaseViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val activity = LocalContext.current as Activity
+    val uriHandler = androidx.compose.ui.platform.LocalUriHandler.current
     var showLoginSheet by remember { mutableStateOf(false) }
+    // Grown-up gate: asked once per visit, when a parent taps Subscribe (this screen had no gate at all)
+    var gatePassed by remember { mutableStateOf(false) }
+    var showGate by remember { mutableStateOf(false) }
+    var pendingGateAction by remember { mutableStateOf<(() -> Unit)?>(null) }
+    fun requireGate(action: () -> Unit) {
+        if (gatePassed) { action(); return }
+        pendingGateAction = action
+        showGate = true
+        AppAnalytics.log(AppAnalytics.GATE_SHOWN, "surface" to "purchase_screen", "context" to "full")
+    }
 
-    LaunchedEffect(Unit) { viewModel.loadData() }
+    LaunchedEffect(Unit) {
+        viewModel.loadData()
+        AppAnalytics.log(AppAnalytics.PAYWALL_VIEWED, "surface" to "purchase_screen", "context" to "full",
+            "logged_in" to homeActivityViewModel.isUserLoggedIn())
+    }
 
     AbTheme {
         // the scene runs under the system bars; only the content is inset
@@ -46,20 +63,44 @@ fun PurchaseScreenRoute(
                 onPlanSelected = { viewModel.onPlanSelected(it) },
                 onShowOldSubClick = { viewModel.onShowOldSubClick() },
                 onSubscribe = {
-                    if (homeActivityViewModel.isUserLoggedIn()) viewModel.makePurchase(activity)
-                    else showLoginSheet = true
+                    val sku = uiState.sortedPlanList.getOrNull(uiState.selectedIndex)?.sku ?: ""
+                    AppAnalytics.log(AppAnalytics.PLAN_SELECTED, "surface" to "purchase_screen", "context" to "full", "product_id" to sku)
+                    requireGate {
+                        if (homeActivityViewModel.isUserLoggedIn()) viewModel.makePurchase(activity)
+                        else {
+                            showLoginSheet = true
+                            AppAnalytics.log(AppAnalytics.LOGIN_PROMPTED, "surface" to "purchase_screen", "context" to "full", "product_id" to sku)
+                        }
+                    }
                 },
                 onClose = onClose,
                 oldSubPopupCloseClick = { viewModel.oldSubPopupClose() },
-                onOfferExpired = { viewModel.loadData() },
-                onRetry = { viewModel.loadData() }
+                onRetry = { viewModel.loadData() },
+                privacyUrl = viewModel.privacyPolicyUrl(),
+                onOpenLink = { url -> requireGate { uriHandler.openUri(url) } },
+            )
+        }
+
+        if (showGate) {
+            ParentalGateDialog(
+                onPassed = {
+                    gatePassed = true
+                    showGate = false
+                    AppAnalytics.log(AppAnalytics.GATE_PASSED, "surface" to "purchase_screen", "context" to "full")
+                    val action = pendingGateAction
+                    pendingGateAction = null
+                    action?.invoke()
+                },
+                onCancelled = { showGate = false; pendingGateAction = null }
             )
         }
 
         if (showLoginSheet) {
             FreemiumLoginBottomSheet(
                 showContinueWithoutSaving = false,
+                skipParentalGate = true,   // the grown-up gate was already passed at the Subscribe tap
                 onLoginSuccess = {
+                    AppAnalytics.log(AppAnalytics.LOGIN_COMPLETED, "surface" to "purchase_screen", "context" to "full")
                     showLoginSheet = false
                     if (viewModel.isUserSubscribed()) {
                         viewModel.loadData()

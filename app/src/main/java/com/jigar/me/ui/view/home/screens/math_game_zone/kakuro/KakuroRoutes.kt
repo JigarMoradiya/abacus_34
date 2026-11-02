@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.kakuro
 
+import com.jigar.me.utils.FreemiumWindow
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -32,7 +33,7 @@ fun KakuroHomeRoute(
         viewModel = viewModel,
         isSubscribed = isSubscribed,
         onLevelClick = { difficulty, level ->
-            if (difficulty == CommonDifficulty4.easy || isSubscribed) {
+            if ((difficulty == CommonDifficulty4.easy && !FreemiumWindow.hasEnded) || isSubscribed) {
                 onStartPlay(difficulty.name, level)
             } else {
                 showPaywall = true

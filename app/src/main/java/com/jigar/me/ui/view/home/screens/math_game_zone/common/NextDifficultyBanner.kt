@@ -1,5 +1,10 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.common
 
+import androidx.compose.material.icons.rounded.Lock
+import androidx.compose.material.icons.Icons
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.clickable
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
@@ -45,6 +50,10 @@ fun NextDifficultyBanner(nextDifficultyName: String) {
         label = "nudge"
     )
 
+    // A free player cannot play the next tier: the banner becomes the invitation to unlock it (tap = the paywall sheet).
+    val locked = !com.jigar.me.ui.view.home.common_ui.rememberHasFullAccess()
+    var showPaywall by remember { mutableStateOf(false) }
+
     Box(modifier = Modifier.fillMaxSize().padding(top = AppDimens.Dimens16)) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -61,6 +70,7 @@ fun NextDifficultyBanner(nextDifficultyName: String) {
                     CircleShape
                 )
                 .border(2.dp, Color.White.copy(alpha = 0.75f), CircleShape)
+                .clickable(enabled = locked, interactionSource = remember { MutableInteractionSource() }, indication = null) { showPaywall = true }
                 .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
         ) {
             Text("🚀", style = MaterialTheme.typography.titleMedium.scaled())
@@ -69,6 +79,13 @@ fun NextDifficultyBanner(nextDifficultyName: String) {
                 color = Color.White,
                 fontFamily = FontFamily(Font(R.font.font_extra_bold)),
                 style = MaterialTheme.typography.labelLarge.scaled()
+            )
+            if (locked) androidx.compose.material3.Icon(androidx.compose.material.icons.Icons.Rounded.Lock, null, Modifier.size(14.dp), tint = Color.White)
+        }
+        if (showPaywall) {
+            com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet(
+                paywallContext = com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext.GAMES,
+                onDismiss = { showPaywall = false }
             )
         }
     }

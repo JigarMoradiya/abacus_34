@@ -102,6 +102,20 @@ class HomeActivity : ComponentActivity() {
             AudioPlayerManager.init(this)
 
             com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags.showResult = BuildConfig.DEBUG && intent.getBooleanExtra("ab_show_result", false)
+            com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags.paywallTrialDays = if (BuildConfig.DEBUG) intent.getIntExtra("ab_paywall_trial", 0) else 0
+            // Freemium time limit: refresh the cached state the gates read; debug builds can force it
+            // (`--ei ab_freemium_days 7 --ei ab_freemium_core 0 --ei ab_freemium_day 8`)
+            if (BuildConfig.DEBUG) {
+                com.jigar.me.utils.FreemiumWindow.debugDays = if (intent.hasExtra("ab_freemium_days")) intent.getIntExtra("ab_freemium_days", 0) else null
+                com.jigar.me.utils.FreemiumWindow.debugCore = if (intent.hasExtra("ab_freemium_core")) intent.getIntExtra("ab_freemium_core", 2) else null
+                com.jigar.me.utils.FreemiumWindow.debugDay = if (intent.hasExtra("ab_freemium_day")) intent.getIntExtra("ab_freemium_day", 0) else null
+            }
+            if (BuildConfig.DEBUG) {
+                com.jigar.me.utils.FreemiumWindow.debugBillingIssue = intent.getBooleanExtra("ab_billing_issue", false)
+                com.jigar.me.utils.FreemiumWindow.debugReturningDay = if (intent.hasExtra("ab_returning_day")) intent.getIntExtra("ab_returning_day", 0) else null
+            }
+            com.jigar.me.utils.FreemiumWindow.refresh(preferences)
+            if (BuildConfig.DEBUG && intent.getBooleanExtra("ab_freemium_notify_now", false)) com.jigar.me.utils.FreemiumWindow.debugNotifyNow(this)
             val abScreen = if (BuildConfig.DEBUG) intent.getStringExtra("ab_screen") else null
             if (abScreen != null) {
                 // Debug-only preview of one restyled screen (see AbKitGallery.kt), skipping the normal app shell.
@@ -148,6 +162,7 @@ class HomeActivity : ComponentActivity() {
 
     override fun onResume() {
         super.onResume()
+        com.jigar.me.utils.FreemiumWindow.refresh(preferences)   // the free week may have ended while the app was in the background
         homeActivityViewModel.onResume()
     }
 

@@ -254,11 +254,13 @@ fun DifficultySelectorCompose(
     onSelect: (SudokuDifficulty4) -> Unit
 ) {
     // Shared iOS-matching pill box (same as every other Math Game Zone game)
+    val fullAccess = com.jigar.me.ui.view.home.common_ui.rememberHasFullAccess()
     com.jigar.me.ui.view.home.common_ui.DifficultyPillBox {
         SudokuDifficulty4.entries.forEach { d ->
             com.jigar.me.ui.view.home.common_ui.DifficultyPillItem(
                 text = d.displayName,
-                isSelected = d == selected
+                isSelected = d == selected,
+                isLocked = (d != SudokuDifficulty4.EASY || com.jigar.me.utils.FreemiumWindow.hasEnded) && !fullAccess
             ) { onSelect(d) }
         }
     }

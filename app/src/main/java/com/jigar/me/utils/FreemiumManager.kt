@@ -13,9 +13,11 @@ object FreemiumManager {
     // Abacus practice is local — no login required, purely subscription-based.
     fun levelPageGate(isSubscribed: Boolean, levelName: String, pageIndex: Int): GateResult {
         if (isSubscribed) return GateResult.ALLOW
+        // Freemium time limit: once a new install's free week is over, Level 2's free pages lock; Level 1 locks only in
+        // "nothing free" mode (Remote Config free_core_after_window = 0)
         return when (levelName) {
-            "level1" -> GateResult.ALLOW
-            "level2" -> if (pageIndex < 20) GateResult.ALLOW else GateResult.REQUIRE_PAYWALL
+            "level1" -> if (FreemiumWindow.coreLocked(isSubscribed)) GateResult.REQUIRE_PAYWALL else GateResult.ALLOW
+            "level2" -> if (pageIndex < 20 && !FreemiumWindow.hasEnded) GateResult.ALLOW else GateResult.REQUIRE_PAYWALL
             else -> GateResult.REQUIRE_PAYWALL
         }
     }
@@ -31,6 +33,7 @@ object FreemiumManager {
         difficulty: String
     ): GateResult {
         if (isSubscribed) return GateResult.ALLOW
+        if (FreemiumWindow.hasEnded) return GateResult.REQUIRE_PAYWALL   // the free week is over
         val onlyAddition = isAddition && !isSubtraction && !isMultiplication && !isDivision
         val isBeginner = difficulty == AppConstants.EXAM.examDifficultyBeginner
         val isFreeConfig = onlyAddition && isBeginner
@@ -50,6 +53,7 @@ object FreemiumManager {
         itemIndex: Int
     ): GateResult {
         if (isSubscribed) return GateResult.ALLOW
+        if (FreemiumWindow.hasEnded) return GateResult.REQUIRE_PAYWALL   // the free week is over
         val isFreeItem = page == 0 && itemIndex < 2
         return when {
             isFreeItem && isLoggedIn -> GateResult.ALLOW
@@ -64,24 +68,28 @@ object FreemiumManager {
     // Number Sequence: 3x3 free (local). 4x4 and 5x5 locked.
     fun numberSequenceGate(isSubscribed: Boolean, gridSize: Int): GateResult {
         if (isSubscribed) return GateResult.ALLOW
+        if (FreemiumWindow.hasEnded) return GateResult.REQUIRE_PAYWALL   // the free week is over
         return if (gridSize == 3) GateResult.ALLOW else GateResult.REQUIRE_PAYWALL
     }
 
     // Sudoku: 4x4 + easiest difficulty free.
     fun sudokuGate(isSubscribed: Boolean, grid: Int, isEasiestDifficulty: Boolean): GateResult {
         if (isSubscribed) return GateResult.ALLOW
+        if (FreemiumWindow.hasEnded) return GateResult.REQUIRE_PAYWALL   // the free week is over
         return if (grid == 4 && isEasiestDifficulty) GateResult.ALLOW else GateResult.REQUIRE_PAYWALL
     }
 
     // Math Pyramid: 2 levels + easy free.
     fun mathPyramidGate(isSubscribed: Boolean, levels: Int, isEasiestDifficulty: Boolean): GateResult {
         if (isSubscribed) return GateResult.ALLOW
+        if (FreemiumWindow.hasEnded) return GateResult.REQUIRE_PAYWALL   // the free week is over
         return if (levels <= 2 && isEasiestDifficulty) GateResult.ALLOW else GateResult.REQUIRE_PAYWALL
     }
 
     // Target Number: level 1 + easy free.
     fun targetNumberGate(isSubscribed: Boolean, level: Int, isEasiestDifficulty: Boolean): GateResult {
         if (isSubscribed) return GateResult.ALLOW
+        if (FreemiumWindow.hasEnded) return GateResult.REQUIRE_PAYWALL   // the free week is over
         return if (level == 1 && isEasiestDifficulty) GateResult.ALLOW else GateResult.REQUIRE_PAYWALL
     }
 

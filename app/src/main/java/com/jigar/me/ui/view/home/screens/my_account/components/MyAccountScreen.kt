@@ -60,7 +60,6 @@ fun MyAccountScreen(
         ),
         verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
     ) {
-
         // Same layout as iOS:
         //  - logged in  → weekly report LEFT + 3 stat cards stacked vertically RIGHT (centred against each other)
         //  - logged out → centered compact weekly report + login banner
@@ -73,7 +72,9 @@ fun MyAccountScreen(
                     horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
                 ) {
                     // padded so the card's shadow is not clipped, like iOS
-                    Box(Modifier.weight(1f).padding(AppDimens.Dimens8)) {
+                    // the free-days card sits right above the weekly card, same width and edges
+                    Column(Modifier.weight(1f).padding(AppDimens.Dimens8), verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
+                        com.jigar.me.ui.view.home.common_ui.FreemiumStatusCard(onSeePlans = { onMenuClick("subscription") })
                         WeeklyReportContent(
                             stats = uiState.weeklyStats,
                             compact = true,
@@ -105,11 +106,31 @@ fun MyAccountScreen(
                     modifier = Modifier.fillMaxWidth().padding(AppDimens.Dimens8),
                     contentAlignment = Alignment.Center
                 ) {
-                    WeeklyReportContent(
-                        stats = uiState.weeklyStats,
-                        compact = true,
-                        modifier = Modifier.widthIn(max = 480.dp).fillMaxWidth()
-                    )
+                    if (com.jigar.me.ui.view.home.common_ui.rememberFreemiumStatusVisible()) {
+                        // logged out: the free-days card sits to the RIGHT of the weekly card
+                        Row(
+                            Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12, Alignment.CenterHorizontally),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            WeeklyReportContent(
+                                stats = uiState.weeklyStats,
+                                compact = true,
+                                modifier = Modifier.weight(1f)
+                            )
+                            com.jigar.me.ui.view.home.common_ui.FreemiumStatusCard(
+                                onSeePlans = { onMenuClick("subscription") },
+                                modifier = Modifier.weight(0.8f),
+                                vertical = true,
+                            )
+                        }
+                    } else {
+                        WeeklyReportContent(
+                            stats = uiState.weeklyStats,
+                            compact = true,
+                            modifier = Modifier.widthIn(max = 480.dp).fillMaxWidth()
+                        )
+                    }
                 }
             }
             if (!uiState.isLoggedIn) {

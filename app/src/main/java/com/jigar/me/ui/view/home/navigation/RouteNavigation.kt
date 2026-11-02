@@ -4,6 +4,9 @@ sealed class RouteNavigation(val route: String) {
 
     object Splash : RouteNavigation("Splash")
 
+    /** The first-launch tutorial + plans page, between Splash and Home (fresh installs only). */
+    object Onboarding : RouteNavigation("Onboarding")
+
     object Home : RouteNavigation("Home")
 
     object AbacusFreeMode : RouteNavigation("AbacusFreeMode")

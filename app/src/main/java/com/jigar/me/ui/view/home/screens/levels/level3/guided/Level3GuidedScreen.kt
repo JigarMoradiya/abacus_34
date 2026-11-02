@@ -47,6 +47,7 @@ fun Level3GuidedScreen(
     onBackClick: () -> Unit,
     onFinished:  () -> Unit,
 ) {
+    val weeklyPrefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current   // the weekly parent report counts practice
     val session = remember { generateL3Session(config.terms, config.digits) }
     val mode    = config.mode
 
@@ -179,6 +180,7 @@ fun Level3GuidedScreen(
                                         phase = L3GuidedPhase.Step(nextIdx)
                                     } else {
                                         if (config.autoAbacus) {
+                                            com.jigar.me.utils.WeeklyActivity.record(weeklyPrefs)
                                             phase = L3GuidedPhase.Result(true, session.answer, session.answer)
                                         } else {
                                             abCalc.resetAbacusData()
@@ -194,6 +196,7 @@ fun Level3GuidedScreen(
                                 onDelete   = { if (typedValue.isNotEmpty()) typedValue = typedValue.dropLast(1) },
                                 onConfirm  = {
                                     val typed = typedValue.toIntOrNull() ?: 0
+                                    if (typed == session.answer) com.jigar.me.utils.WeeklyActivity.record(weeklyPrefs)
                                     phase = L3GuidedPhase.Result(typed == session.answer, session.answer, typed)
                                 },
                             )

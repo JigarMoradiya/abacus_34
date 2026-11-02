@@ -83,6 +83,7 @@ fun Level3FlashPlayScreen(
     onBackClick: () -> Unit,
     onFinished:  () -> Unit,
 ) {
+    val weeklyPrefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current   // the weekly parent report counts practice
     val diff    = l3FlashDifficulties[diffIndex.coerceIn(0, l3FlashDifficulties.lastIndex)]
     var session by remember { mutableStateOf(generateL3Session(diff.terms, diff.digits)) }
 
@@ -161,6 +162,7 @@ fun Level3FlashPlayScreen(
                                 onDelete   = { if (typedValue.isNotEmpty()) typedValue = typedValue.dropLast(1) },
                                 onConfirm  = {
                                     val typed = typedValue.toIntOrNull() ?: 0
+                                    if (typed == session.answer) com.jigar.me.utils.WeeklyActivity.record(weeklyPrefs)
                                     phase = L3FlashPhase.Result(typed == session.answer, session.answer, typed)
                                 },
                             )

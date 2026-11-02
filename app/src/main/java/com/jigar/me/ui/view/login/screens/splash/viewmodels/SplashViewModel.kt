@@ -86,6 +86,12 @@ class SplashViewModel @Inject constructor(
         val manualFreeTrialDays = remoteConfig.getLong(AppConstants.RemoteConfig.manualFreeTrialDays)
         val paywallSocialProof = remoteConfig.getString(AppConstants.RemoteConfig.paywallSocialProof)
         val homeOffer = remoteConfig.getString(AppConstants.RemoteConfig.homeOffer)
+        // Freemium time limit: <= 0 or missing = off; the core value defaults to 2 (Free Mode + Level 1 stay free)
+        val freemiumDays = remoteConfig.getLong(AppConstants.RemoteConfig.freemiumDays)
+        val returningDays = remoteConfig.getString(AppConstants.RemoteConfig.returningPaywallDays)
+        val lifetimeMin = remoteConfig.getLong(AppConstants.RemoteConfig.lifetimeMinPaywalls)
+        val freeCoreValue = remoteConfig.getValue(AppConstants.RemoteConfig.freeCoreAfterWindow)
+        val freeCore = if (freeCoreValue.source == com.google.firebase.remoteconfig.FirebaseRemoteConfig.VALUE_SOURCE_STATIC) 2L else freeCoreValue.asLong()
 
         with(prefs) {
             setCustomParam(AppConstants.RemoteConfig.privacyPolicyUrl, privacyPolicyUrl)
@@ -101,7 +107,14 @@ class SplashViewModel @Inject constructor(
             setCustomParam(AppConstants.RemoteConfig.displayMenuList, displayMenu)
             setCustomParam(AppConstants.RemoteConfig.paywallSocialProof, paywallSocialProof)
             setCustomParam(AppConstants.RemoteConfig.homeOffer, homeOffer)
+            setCustomParamInt(AppConstants.RemoteConfig.freemiumDays, freemiumDays.toInt())
+            setCustomParamInt(AppConstants.RemoteConfig.freeCoreAfterWindow, freeCore.toInt())
+            setCustomParam(AppConstants.RemoteConfig.returningPaywallDays, returningDays)
+            setCustomParamInt(AppConstants.RemoteConfig.lifetimeMinPaywalls, lifetimeMin.toInt())
         }
+        // Freemium time limit: look at this install once (an existing or limit-off install is grandfathered, any other gets
+        // its window started), then cache the state the gates read
+        com.jigar.me.utils.FreemiumWindow.registerIfNeeded(prefs)
         // Timed Home offer: a disabled/missing config clears any running per-device
         // window, so turning it OFF then ON later starts a fresh campaign.
         if (!HomeOfferManager.config(prefs).isEnabled) HomeOfferManager.clearStart(prefs)

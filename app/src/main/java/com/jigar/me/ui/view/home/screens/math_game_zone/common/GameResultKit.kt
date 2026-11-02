@@ -79,6 +79,8 @@ import kotlin.math.sin
 object AbDebugFlags {
     @Volatile var showResult: Boolean = false
     val showResultEnabled: Boolean get() = BuildConfig.DEBUG && showResult
+    /** Debug builds only (`--ei ab_paywall_trial 7`): shows a free-trial line on the paywall plan cards for renders. */
+    @Volatile var paywallTrialDays: Int = 0
 }
 
 @Composable

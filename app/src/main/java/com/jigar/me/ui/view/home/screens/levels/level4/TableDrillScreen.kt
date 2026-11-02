@@ -43,6 +43,7 @@ fun TableDrillScreen(
     tables: List<Int> = listOf(tableNumber),
     onBackClick: () -> Unit,
 ) {
+    val weeklyPrefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current   // the weekly parent report counts practice
     val questions = remember { generateTableQuestions(tables) }
     var currentIndex by remember { mutableIntStateOf(0) }
     var selectedAnswer by remember { mutableStateOf<Int?>(null) }
@@ -109,7 +110,7 @@ fun TableDrillScreen(
                             onAnswerSelected = { choice ->
                                 if (selectedAnswer == null) {
                                     selectedAnswer = choice
-                                    if (choice == questions[currentIndex].answer) score++
+                                    if (choice == questions[currentIndex].answer) { score++; com.jigar.me.utils.WeeklyActivity.record(weeklyPrefs) }
                                 }
                             }
                         )

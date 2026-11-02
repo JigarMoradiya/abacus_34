@@ -67,6 +67,7 @@ fun Level1PracticeScreen(
     onBackClick: () -> Unit,
     onFinished: () -> Unit,
 ) {
+    val weeklyPrefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current   // the weekly parent report counts practice
     val lesson   = level1Lessons.find { it.id == lessonId } ?: return
     val problems = remember { generatePracticeProblems(lessonId) }
 
@@ -214,6 +215,7 @@ fun Level1PracticeScreen(
                                         label   = "I Did It! ✅",
                                         accent  = lesson.endColor,
                                         onClick = {
+                                            com.jigar.me.utils.WeeklyActivity.record(weeklyPrefs)
                                             if (problemIndex < problems.size - 1) problemIndex++
                                             else showDone = true
                                         }

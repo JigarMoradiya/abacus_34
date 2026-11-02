@@ -45,22 +45,26 @@ fun ParentalGateDialog(
         AbParentalGate(onSuccess = onPassed, onClose = onCancelled)
         return
     }
-    var num1 by remember { mutableStateOf(Random.nextInt(11, 50)) }
-    var num2 by remember { mutableStateOf(Random.nextInt(11, 50)) }
-    var options by remember { mutableStateOf(generateOptions(num1 + num2)) }
+    // A times-sum (two digits x one digit), so a young child cannot just add: 12..29 x 6..9
+    var num1 by remember { mutableStateOf(Random.nextInt(12, 30)) }
+    var num2 by remember { mutableStateOf(Random.nextInt(6, 10)) }
+    var options by remember { mutableStateOf(generateOptions(num1 * num2)) }
+    var wrongTries by remember { mutableStateOf(0) }
     val shakeOffset = remember { Animatable(0f) }
     val scope = rememberCoroutineScope()
 
     fun regenerate() {
-        num1 = Random.nextInt(11, 50)
-        num2 = Random.nextInt(11, 50)
-        options = generateOptions(num1 + num2)
+        num1 = Random.nextInt(12, 30)
+        num2 = Random.nextInt(6, 10)
+        options = generateOptions(num1 * num2)
     }
 
     fun handleAnswer(selected: Int) {
-        if (selected == num1 + num2) {
+        if (selected == num1 * num2) {
             onPassed()
         } else {
+            wrongTries += 1
+            val closeAfter = wrongTries >= 2   // two wrong answers close the gate: guessing does not get through
             scope.launch {
                 repeat(4) { i ->
                     shakeOffset.animateTo(
@@ -70,7 +74,7 @@ fun ParentalGateDialog(
                 }
                 shakeOffset.animateTo(0f, animationSpec = tween(80))
                 delay(150)
-                regenerate()
+                if (closeAfter) onCancelled() else regenerate()
             }
         }
     }
@@ -137,7 +141,7 @@ fun ParentalGateDialog(
 
                 // Question with shake animation
                 Text(
-                    text = "$num1 + $num2 = ?",
+                    text = "$num1 × $num2 = ?",
                     style = MaterialTheme.typography.headlineMedium.scaled(),
                     fontWeight = FontWeight.Bold,
                     color = accentSolid,
@@ -194,7 +198,7 @@ fun ParentalGateDialog(
 private fun generateOptions(correct: Int): List<Int> {
     val set = mutableSetOf(correct)
     while (set.size < 3) {
-        val delta = (1..6).random() * if (Math.random() > 0.5) 1 else -1
+        val delta = listOf(1, 2, 10).random() * if (Math.random() > 0.5) 1 else -1
         val wrong = correct + delta
         if (wrong > 0 && wrong != correct) set.add(wrong)
     }

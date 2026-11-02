@@ -38,6 +38,7 @@ fun Level3AnzanScreen(
     onBackClick: () -> Unit,
     onFinished:  () -> Unit,
 ) {
+    val weeklyPrefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current   // the weekly parent report counts practice
     var session by remember { mutableStateOf(generateL3Session(config.terms, config.digits)) }
     val mode   = config.mode
     val isSemi = mode == L3Mode.SEMI_ANZAN
@@ -71,6 +72,7 @@ fun Level3AnzanScreen(
     val onDelete  : () -> Unit    = { if (typedValue.isNotEmpty()) typedValue = typedValue.dropLast(1) }
     val onConfirm : () -> Unit    = {
         val typed = typedValue.toIntOrNull() ?: 0
+        if (typed == session.answer) com.jigar.me.utils.WeeklyActivity.record(weeklyPrefs)
         phase = L3AnzanPhase.Result(typed == session.answer, session.answer, typed)
     }
 

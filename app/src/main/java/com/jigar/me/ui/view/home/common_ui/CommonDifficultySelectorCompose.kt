@@ -1,5 +1,10 @@
 package com.jigar.me.ui.view.home.common_ui
 
+import com.jigar.me.utils.FreemiumWindow
+import androidx.compose.material3.Icon
+import androidx.compose.material.icons.rounded.Lock
+import androidx.compose.material.icons.Icons
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -53,8 +58,13 @@ fun DifficultyPillBox(content: @Composable RowScope.() -> Unit) {
     )
 }
 
+/** True when the player has full access: premium difficulties show a lock for everyone else. */
 @Composable
-fun DifficultyPillItem(text: String, isSelected: Boolean, onClick: () -> Unit) {
+fun rememberHasFullAccess(): Boolean =
+    com.jigar.me.utils.CommonUtils.checkPurchaseForExerciseExamCCM(LocalPreferencesHelper.current)
+
+@Composable
+fun DifficultyPillItem(text: String, isSelected: Boolean, isLocked: Boolean = false, onClick: () -> Unit) {
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
     // the selected choice is a chunky brand pill; the others sit flat on the tray at the same height (its 3D edge)
@@ -63,15 +73,19 @@ fun DifficultyPillItem(text: String, isSelected: Boolean, onClick: () -> Unit) {
     } else {
         Modifier.padding(bottom = 3.dp * s).background(colors.bgSecondary, CircleShape).border(2.dp, colors.outline, CircleShape)
     }
-    Text(
-        text = text,
-        style = AbTypography.fixed(14f * s, FontWeight.ExtraBold),
-        color = if (isSelected) Color.White else colors.textPrimary,
+    val ink = if (isSelected) Color.White else colors.textPrimary
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(5.dp * s),
         modifier = Modifier
             .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null) { onClick() }
             .then(look)
             .padding(horizontal = 14.dp * s, vertical = 6.dp * s)
-    )
+    ) {
+        // a premium difficulty for a free player wears a small lock, so the wall is visible before Start
+        if (isLocked) Icon(Icons.Rounded.Lock, null, Modifier.size(12.dp * s), tint = ink)
+        Text(text = text, style = AbTypography.fixed(14f * s, FontWeight.ExtraBold), color = ink)
+    }
 }
 
 @Composable
@@ -80,9 +94,10 @@ fun CommonDifficultySelectorCompose(
     onSelect: (CommonDifficulty4) -> Unit,
     label: (CommonDifficulty4) -> String = { it.displayName }
 ) {
+    val fullAccess = rememberHasFullAccess()
     DifficultyPillBox {
         CommonDifficulty4.entries.forEach { d ->
-            DifficultyPillItem(text = label(d), isSelected = d == selected) { onSelect(d) }
+            DifficultyPillItem(text = label(d), isSelected = d == selected, isLocked = (d != CommonDifficulty4.easy || FreemiumWindow.hasEnded) && !fullAccess) { onSelect(d) }
         }
     }
 }

@@ -51,7 +51,7 @@ class ExerciseViewModel @Inject constructor(
         val selectedItem = state().selectedItems[page]
         val itemIdx = state().exercises.getOrNull(page)?.gridItems
             ?.indexOfFirst { it.id == selectedItem?.id } ?: 0
-        val isFreeItem = page == 0 && itemIdx < 2
+        val isFreeItem = page == 0 && itemIdx < 2 && !com.jigar.me.utils.FreemiumWindow.hasEnded
 
         if (!state().isPurchased && !isFreeItem) {
             updateState_ { copy(navigateToPurchase = ConsumableCommand(Unit)) }

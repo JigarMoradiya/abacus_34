@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.kakuro
 
+import com.jigar.me.utils.FreemiumWindow
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.RepeatMode
@@ -136,9 +137,10 @@ fun KakuroHomeScreen(
             ) {
                 DifficultyPillBox {
                     CommonDifficulty4.entries.forEach { d ->
-                        val locked = d != CommonDifficulty4.easy && !isSubscribed
+                        val locked = (d != CommonDifficulty4.easy || FreemiumWindow.hasEnded) && !isSubscribed
                         DifficultyPillItem(
-                            text = (if (locked) "🔒 " else "") + d.displayName,
+                            text = d.displayName,
+                            isLocked = locked,
                             isSelected = d == selectedDifficulty
                         ) { viewModel.selectDifficulty(d) }
                     }

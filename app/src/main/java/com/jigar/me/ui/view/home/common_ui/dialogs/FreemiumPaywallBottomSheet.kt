@@ -1,5 +1,11 @@
 package com.jigar.me.ui.view.home.common_ui.dialogs
 
+import com.jigar.me.utils.AppConstants
+// Removed: the store provides the discount (no timed Home offer to start on dismiss)
+// import com.jigar.me.utils.HomeOfferManager
+import com.jigar.me.utils.CommonUtils
+import com.jigar.me.utils.FreemiumWindow
+import androidx.compose.ui.platform.LocalUriHandler
 import android.app.Activity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -26,6 +32,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -51,7 +58,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorAccent
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
-import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
+// import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.purchase.components.getDurationTxt
 import com.jigar.me.ui.view.home.screens.purchase.components.isYearly
@@ -63,20 +70,51 @@ import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseViewModel
 import com.jigar.me.ui.view.ab.LocalAbThemed
 import com.jigar.me.ui.view.home.theme.AppDimens
+import com.jigar.me.utils.AppAnalytics
 import com.jigar.me.ui.view.home.theme.ButtonType
 
 @Composable
 fun FreemiumPaywallBottomSheet(
     paywallContext: PaywallContext = PaywallContext.GENERIC,
     onSubscriptionActivated: () -> Unit = {},
+    /** The first-launch page's own left column: when set, the plans are drawn on that page instead of in a bottom sheet. */
+    embeddedLeft: (@Composable () -> Unit)? = null,
+    /** The grown-up question was already answered just before this sheet opened (the day 3 / day 7 reminder). */
+    gateAlreadyPassed: Boolean = false,
     onDismiss: () -> Unit,
 ) {
     val viewModel: PurchaseViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val activity = LocalContext.current as Activity
+    val prefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current
+    // Lifetime shows from the paywall sheet number `lifetime_min_paywalls` + 1 (0 = from the first, as before); the embedded
+    // first-launch page does not count as a sheet
+    val lifetimeHidden = remember {
+        if (embeddedLeft != null) false
+        else {
+            val opened = prefs.getCustomParamInt(AppConstants.Freemium.paywallOpenCount, 0)
+            prefs.setCustomParamInt(AppConstants.Freemium.paywallOpenCount, opened + 1)
+            opened < prefs.getCustomParamInt(AppConstants.RemoteConfig.lifetimeMinPaywalls, 0)
+        }
+    }
+    // Which price variant this user sees (RevenueCat Experiments swap the current offering)
+    LaunchedEffect(uiState.offeringId) {
+        val yearly = uiState.sortedPlanList.firstOrNull { it.sku.contains("1year") && !it.sku.contains("offer") }
+        FreemiumWindow.notePriceVariant(
+            uiState.offeringId, yearly?.sku,
+            yearly?.price_amount_micros?.let { it / 1_000_000.0 }, yearly?.rcPackage?.product?.price?.currencyCode,
+        )
+    }
 
+    val ctx = paywallContext.analyticsName
+    // Once the free week is over every locked tap says so (the item's own headline otherwise)
+    val headlineContext = if (FreemiumWindow.freeTierExpired(viewModel.isUserSubscribed()) &&
+        paywallContext != PaywallContext.ONBOARDING && paywallContext != PaywallContext.FREE_ENDING
+    ) PaywallContext.FREE_ENDED else paywallContext
     LaunchedEffect(Unit) {
         viewModel.loadData()
+        FreemiumWindow.notePaywallShown(prefs)
+        AppAnalytics.log(AppAnalytics.PAYWALL_VIEWED, "surface" to (if (embeddedLeft != null) "page" else "sheet"), "context" to ctx, "window" to FreemiumWindow.phase.name.lowercase(), "logged_in" to viewModel.isUserLoggedIn())
     }
 
     // Purchase succeeded — dismiss and notify caller so background screen removes locks
@@ -95,10 +133,27 @@ fun FreemiumPaywallBottomSheet(
     var showBenefits by remember { mutableStateOf(false) }
     var showLoginSheet by remember { mutableStateOf(false) }
     var pendingPlanIndex by remember { mutableStateOf<Int?>(null) }
-    var parentalGatePassed by remember { mutableStateOf(false) }
+    var parentalGatePassed by remember { mutableStateOf(gateAlreadyPassed) }
+    var showGate by remember { mutableStateOf(false) }               // the grown-up gate is asked when a parent TAPS a plan or link (price is visible first)
+    var pendingGateAction by remember { mutableStateOf<(() -> Unit)?>(null) }
+    val uriHandler = LocalUriHandler.current
+    fun requireGate(action: () -> Unit) {
+        if (parentalGatePassed) { action(); return }
+        pendingGateAction = action
+        showGate = true
+        AppAnalytics.log(AppAnalytics.GATE_SHOWN, "surface" to "sheet", "context" to ctx)
+    }
+    DisposableEffect(Unit) {
+        onDispose {
+            // Removed: the store provides the discount (a one-time home_offer used to start here when a parent who saw the prices closed the sheet)
+            // if (parentalGatePassed && !CommonUtils.checkPurchaseForExerciseExamCCM(prefs)) HomeOfferManager.startOnDismissIfNeeded(prefs)
+            AppAnalytics.log(AppAnalytics.PAYWALL_DISMISSED, "surface" to "sheet", "context" to ctx, "gate_passed" to parentalGatePassed) }
+    }
+    fun planSku(index: Int) = uiState.sortedPlanList.getOrNull(index)?.sku ?: ""
 
     // After login — re-check subscription fresh (RC + admin plans) then proceed or purchase
     fun handleAfterLogin() {
+        AppAnalytics.log(AppAnalytics.LOGIN_COMPLETED, "surface" to "sheet", "context" to ctx)
         showLoginSheet = false
         if (viewModel.isUserSubscribed()) {
             onDismiss(); onSubscriptionActivated()
@@ -106,12 +161,73 @@ fun FreemiumPaywallBottomSheet(
             pendingPlanIndex?.let { index ->
                 pendingPlanIndex = null
                 viewModel.onPlanSelected(index)
-                viewModel.makePurchase(activity)
+                viewModel.makePurchase(activity, "sheet", ctx)
+            }
+        }
+    }
+
+    // the login sheet and the grown-up gate: over the bottom sheet, or over the first-launch page
+    val loginAndGate: @Composable () -> Unit = {
+    // Login sheet overlay — paywall gate was already passed, skip gate inside login
+    if (showLoginSheet) {
+        FreemiumLoginBottomSheet(
+            showContinueWithoutSaving = false,
+            skipParentalGate = true,
+            onLoginSuccess = { handleAfterLogin() },
+            onDismiss = { showLoginSheet = false }
+        )
+    }
+
+    // Parental gate — asked once per opening, when a parent taps a plan or the privacy link
+    if (showGate) {
+        ParentalGateDialog(
+            onPassed = {
+                parentalGatePassed = true
+                showGate = false
+                AppAnalytics.log(AppAnalytics.GATE_PASSED, "surface" to "sheet", "context" to ctx)
+                val action = pendingGateAction
+                pendingGateAction = null
+                action?.invoke()
+            },
+            onCancelled = { showGate = false; pendingGateAction = null }
+        )
+    }
+    }
+
+    // a tap on a plan: gate first, then login, then the store
+    val subscribeTapped: (Int) -> Unit = { index ->
+        AppAnalytics.log(AppAnalytics.PLAN_SELECTED, "surface" to "sheet", "context" to ctx, "product_id" to planSku(index))
+        requireGate {
+            if (!viewModel.isUserLoggedIn()) {
+                pendingPlanIndex = index
+                showLoginSheet = true
+                AppAnalytics.log(AppAnalytics.LOGIN_PROMPTED, "surface" to "sheet", "context" to ctx, "product_id" to planSku(index))
+            } else if (viewModel.isUserSubscribed()) {
+                onDismiss(); onSubscriptionActivated()
+            } else {
+                viewModel.onPlanSelected(index)
+                viewModel.makePurchase(activity, "sheet", ctx)
             }
         }
     }
 
     val themed = LocalAbThemed.current
+    if (embeddedLeft != null && themed) {
+        Box(Modifier.fillMaxSize()) {
+            PaywallKitEmbeddedLayout(left = embeddedLeft) {
+                PaywallKitPlans(
+                    uiState = uiState,
+                    onRetry = { viewModel.loadData() },
+                    onSubscribe = subscribeTapped,
+                    privacyUrl = viewModel.privacyPolicyUrl(),
+                    onOpenLink = { url -> requireGate { uriHandler.openUri(url) } },
+                    firstLaunch = true,
+                )
+            }
+            loginAndGate()
+        }
+        return
+    }
     KidsBottomSheet(
         visible = true,
         onDismiss = onDismiss,
@@ -188,46 +304,22 @@ fun FreemiumPaywallBottomSheet(
                 }
             }
 
-            // Login sheet overlay — paywall gate was already passed, skip gate inside login
-            if (showLoginSheet) {
-                FreemiumLoginBottomSheet(
-                    showContinueWithoutSaving = false,
-                    skipParentalGate = true,
-                    onLoginSuccess = { handleAfterLogin() },
-                    onDismiss = { showLoginSheet = false }
-                )
-            }
-
-            // Parental gate — always shown first, every time the paywall opens
-            if (!parentalGatePassed) {
-                ParentalGateDialog(
-                    onPassed = { parentalGatePassed = true },
-                    onCancelled = { onDismiss() }
-                )
-            }
+            loginAndGate()
         }
     ) {
       if (themed) {
         PaywallKitContent(
-            headline = stringResource(paywallContext.headlineRes),
-            subtitle = stringResource(paywallContext.subtitleRes),
+            headline = stringResource(headlineContext.headlineRes),
+            subtitle = stringResource(headlineContext.subtitleRes),
             socialProof = uiState.socialProofText,
             uiState = uiState,
             onClose = onDismiss,
             onSeeBenefits = { showBenefits = true },
             onRetry = { viewModel.loadData() },
-            onSubscribe = { index ->
-                if (!viewModel.isUserLoggedIn()) {
-                    pendingPlanIndex = index
-                    showLoginSheet = true
-                } else if (viewModel.isUserSubscribed()) {
-                    onDismiss(); onSubscriptionActivated()
-                } else {
-                    viewModel.onPlanSelected(index)
-                    viewModel.makePurchase(activity)
-                }
-            },
-            onOfferExpired = { viewModel.loadData() },
+            onSubscribe = subscribeTapped,
+            privacyUrl = viewModel.privacyPolicyUrl(),
+            onOpenLink = { url -> requireGate { uriHandler.openUri(url) } },
+            hideLifetime = lifetimeHidden,
         )
       } else {
         // ── Main landscape layout ──────────────────────────────────
@@ -259,7 +351,7 @@ fun FreemiumPaywallBottomSheet(
 
                     Box {
                         Text(
-                            text = stringResource(paywallContext.headlineRes),
+                            text = stringResource(headlineContext.headlineRes),
                             color = Color.Black.copy(alpha = 0.2f),
                             style = MaterialTheme.typography.titleLarge.scaled(),
                             fontWeight = FontWeight.Bold,
@@ -268,7 +360,7 @@ fun FreemiumPaywallBottomSheet(
                             modifier = Modifier.offset(2.dp, 2.dp)
                         )
                         Text(
-                            text = stringResource(paywallContext.headlineRes),
+                            text = stringResource(headlineContext.headlineRes),
                             color = Color(0xFFE65100),
                             style = MaterialTheme.typography.titleLarge.scaled(),
                             fontWeight = FontWeight.Bold,
@@ -280,7 +372,7 @@ fun FreemiumPaywallBottomSheet(
                     Spacer(modifier = Modifier.height(AppDimens.Dimens6))
 
                     Text(
-                        text = stringResource(paywallContext.subtitleRes),
+                        text = stringResource(headlineContext.subtitleRes),
                         color = Color(0xFF666666),
                         style = MaterialTheme.typography.bodySmall.scaled(),
                         textAlign = TextAlign.Center
@@ -373,17 +465,20 @@ fun FreemiumPaywallBottomSheet(
                                 badge = badge,
                                 uiState = uiState,
                                 onSubscribe = {
-                                    if (!viewModel.isUserLoggedIn()) {
-                                        pendingPlanIndex = index
-                                        showLoginSheet = true
-                                    } else if (viewModel.isUserSubscribed()) {
-                                        onDismiss(); onSubscriptionActivated()
-                                    } else {
-                                        viewModel.onPlanSelected(index)
-                                        viewModel.makePurchase(activity)
+                                    AppAnalytics.log(AppAnalytics.PLAN_SELECTED, "surface" to "sheet", "context" to ctx, "product_id" to planSku(index))
+                                    requireGate {
+                                        if (!viewModel.isUserLoggedIn()) {
+                                            pendingPlanIndex = index
+                                            showLoginSheet = true
+                                            AppAnalytics.log(AppAnalytics.LOGIN_PROMPTED, "surface" to "sheet", "context" to ctx, "product_id" to planSku(index))
+                                        } else if (viewModel.isUserSubscribed()) {
+                                            onDismiss(); onSubscriptionActivated()
+                                        } else {
+                                            viewModel.onPlanSelected(index)
+                                            viewModel.makePurchase(activity, "sheet", ctx)
+                                        }
                                     }
                                 },
-                                onOfferExpired = { viewModel.loadData() }
                             )
                         }
                     }
@@ -431,7 +526,6 @@ private fun PaywallPlanCard(
     badge: String?,
     uiState: PurchaseUiState,
     onSubscribe: () -> Unit,
-    onOfferExpired: () -> Unit = {},
 ) {
     val borderColor = if (isHighlighted) Color(0xFFFF8400) else Color(0xFFDDDDDD)
     val bgColor = if (isHighlighted) Color(0xFFFFF8F0) else Color(0xFFFAFAFA)
@@ -462,56 +556,38 @@ private fun PaywallPlanCard(
                     fontFamily = FontFamily(Font(R.font.font_bold))
                 )
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    PriceUi(
-                        discountPer = uiState.discountPer,
-                        plan = plan,
-                        originalYearly = uiState.original1YearData,
-                        discountPerLifetime = uiState.discountPerLifetime,
-                        originalLifetime = uiState.originalLifetimeData
-                    )
+                    PriceUi(plan)
                 }
-                if (plan.isYearly()) {
-                    val savingsText = paywallSavingsText(plan, uiState)
-                    if (savingsText != null) {
+                // a paid intro price the store offers: "first year, then ₹1,200 / year" and the green N% OFF
+                val intro = plan.storeIntroOffer()
+                if (intro != null) {
+                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)) {
                         Text(
-                            text = savingsText,
+                            text = intro.thenLine(plan),
                             color = Color.Black,
                             style = MaterialTheme.typography.labelSmall.scaled(),
-                            fontWeight = FontWeight.Medium
+                            fontWeight = FontWeight.Medium,
+                            modifier = Modifier.weight(1f, fill = false)
                         )
-                    }
-                    // "extra ~% OFF" + countdown -- own row below the savings line,
-                    // matching the Purchase page and the Home timed-offer badge.
-                    if (uiState.discountPer > 0) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(
-                                text = stringResource(R.string.paywall_percent_off_extra, uiState.discountPer),
-                                color = Color(0xFF2E7D32),
-                                style = MaterialTheme.typography.labelSmall.scaled(),
-                                fontWeight = FontWeight.Bold
-                            )
-                            uiState.homeOfferYearlyEndMillis?.let { endMillis ->
-                                Spacer(Modifier.width(AppDimens.Dimens6))
-                                InlineCountdownPill(endMillis, onOfferExpired)
-                            }
-                        }
-                    }
-                } else if (plan.isLifeTimeOffer() && plan.sku.contains("offer") && uiState.discountPerLifetime > 0) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
-                            text = stringResource(R.string.paywall_percent_off, uiState.discountPerLifetime),
+                            text = stringResource(R.string.paywall_percent_off_store, intro.percentOff),
                             color = Color(0xFF2E7D32),
                             style = MaterialTheme.typography.labelSmall.scaled(),
                             fontWeight = FontWeight.Bold
                         )
-                        // Same live countdown as the Home card, tied directly to this
-                        // discounted plan -- only when the timed offer targets lifetime.
-                        uiState.homeOfferLifetimeEndMillis?.let { endMillis ->
-                            Spacer(Modifier.width(AppDimens.Dimens6))
-                            InlineCountdownPill(endMillis, onOfferExpired)
-                        }
                     }
                 }
+                // Removed: the store provides the discount ("(extra ~N% OFF)" / "~N% OFF" rows and the countdown pill)
+                // if (plan.isYearly()) {
+                //     // "save ~N% vs monthly" was removed from the plan card earlier (too much data): paywallSavingsText(plan, uiState)
+                //     if (uiState.discountPer > 0) {
+                //         Text(text = stringResource(R.string.paywall_percent_off_extra, uiState.discountPer), ...)
+                //         // uiState.homeOfferYearlyEndMillis?.let { endMillis -> InlineCountdownPill(endMillis, onOfferExpired) }
+                //     }
+                // } else if (plan.isLifeTimeOffer() && plan.sku.contains("offer") && uiState.discountPerLifetime > 0) {
+                //     Text(text = stringResource(R.string.paywall_percent_off, uiState.discountPerLifetime), ...)
+                //     // uiState.homeOfferLifetimeEndMillis?.let { endMillis -> InlineCountdownPill(endMillis, onOfferExpired) }
+                // }
             }
 
             KidsActionButton(

@@ -1,5 +1,12 @@
 package com.jigar.me.ui.view.home.navigation
 
+import com.jigar.me.ui.view.home.screens.onboarding.OnboardingTutorialScreen
+import com.jigar.me.ui.view.home.screens.onboarding.OnboardingGate
+import com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext
+import com.jigar.me.ui.view.home.common_ui.dialogs.FreemiumPaywallBottomSheet
+import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
+import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
+import com.jigar.me.ui.view.ab.AbTheme
 import com.jigar.me.ui.view.ab.AbWorld
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameFrame
 
@@ -136,7 +143,7 @@ fun HomeNavGraph(
     LaunchedEffect(initialRoute, currentEntry?.destination?.route) {
         val current = currentEntry?.destination?.route
         if (!initialRoute.isNullOrEmpty() && initialRoute != RouteNavigation.Home.route &&
-            current != null && current != RouteNavigation.Splash.route
+            current != null && current != RouteNavigation.Splash.route && current != RouteNavigation.Onboarding.route
         ) {
             // Deep link — not a user tap; must never be dropped by the RESUMED guard
             navController.navigate(initialRoute)
@@ -149,15 +156,42 @@ fun HomeNavGraph(
         startDestination = RouteNavigation.Splash.route
     ) {
         composable(route = RouteNavigation.Splash.route) {
+            val prefs = LocalPreferencesHelper.current
             SplashScreen(
                 onNavigateToHome = {
-                    // Programmatic handoff — not a user tap; must never be dropped
-                    navController.navigate(RouteNavigation.Home.route) {
+                    // Programmatic handoff — not a user tap; must never be dropped.
+                    // A fresh install sees the tutorial (and the plans) once before Home.
+                    val next = if (OnboardingGate.shouldShow(prefs)) RouteNavigation.Onboarding.route else RouteNavigation.Home.route
+                    navController.navigate(next) {
                         popUpTo(RouteNavigation.Splash.route) { inclusive = true }
                     }
                 },
                 onFinishActivity = onFinishActivity
             )
+        }
+
+        composable(route = RouteNavigation.Onboarding.route) {
+            val prefs = LocalPreferencesHelper.current
+            AbTheme {
+                OnboardingTutorialScreen(
+                    selectedTheme = AbacusTheme.active(prefs),
+                    showsPlans = { !com.jigar.me.utils.CommonUtils.checkPurchaseForExerciseExamCCM(prefs) },
+                    onFinish = {
+                        OnboardingGate.markSeen(prefs)
+                        navController.navigate(RouteNavigation.Home.route) {
+                            popUpTo(RouteNavigation.Onboarding.route) { inclusive = true }
+                        }
+                    },
+                ) { left, finish ->
+                    // the last page IS the paywall: the plans are drawn right on it, no sheet to open
+                    FreemiumPaywallBottomSheet(
+                        paywallContext = PaywallContext.ONBOARDING,
+                        onSubscriptionActivated = { finish(true) },
+                        embeddedLeft = left,
+                        onDismiss = {},
+                    )
+                }
+            }
         }
 
         composable(route = RouteNavigation.Home.route) {

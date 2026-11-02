@@ -60,6 +60,7 @@ fun TableFlashcardScreen(
     tables: List<Int> = listOf(tableNumber),
     onBackClick: () -> Unit,
 ) {
+    val weeklyPrefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current   // the weekly parent report counts practice
     val cards = remember {
         mutableStateListOf<Pair<Int, Int>>().also { list ->
             val pool = tables.flatMap { t -> (1..10).map { Pair(t, it) } }
@@ -85,7 +86,7 @@ fun TableFlashcardScreen(
     }
 
     fun advance(gotIt: Boolean) {
-        if (gotIt) score++
+        if (gotIt) { score++; com.jigar.me.utils.WeeklyActivity.record(weeklyPrefs) }
         else cards.add(cards[currentIndex])
         if (currentIndex < cards.size - 1) {
             scope.launch {

@@ -118,6 +118,21 @@ fun MyAccountRoute(
                     }
                     "about_app" -> onNavigateToWhatsLearning()
                     "rate_us_on_the_play_store" -> openWithGate { showRateUsSheet = true }
+                    "share_app" -> openWithGate {
+                        // a parent sends the app to another parent: the store link and one honest line, no reward, no tracking
+                        val text = context.getString(R.string.share_with_friend_text, "https://play.google.com/store/apps/details?id=${context.packageName}")
+                        context.startActivity(
+                            android.content.Intent.createChooser(
+                                android.content.Intent(android.content.Intent.ACTION_SEND).apply {
+                                    type = "text/plain"
+                                    putExtra(android.content.Intent.EXTRA_SUBJECT, context.getString(R.string.app_name))
+                                    putExtra(android.content.Intent.EXTRA_TEXT, text)
+                                },
+                                null,
+                            ).addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
+                        )
+                        com.jigar.me.utils.AppAnalytics.log(com.jigar.me.utils.AppAnalytics.SHARE_APP)
+                    }
                     "need_help" -> context.openMail(prefs)
                     "privacy_policy" -> {
                         uiState.privacyPolicyUrl?.let { url -> openURLWithGate { context.openURL(url) } }

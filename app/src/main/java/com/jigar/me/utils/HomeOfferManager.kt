@@ -13,14 +13,21 @@ data class HomeOfferConfig(
     val duration_min: Int? = null,
     val name: String? = null,
     val product: String? = null,
+    /** "dismiss" = a one-time offer: the window starts the first time a parent closes a paywall without buying
+     *  (missing or anything else = it starts on the first Home visit, as before). */
+    val trigger: String? = null,
 ) {
     val isEnabled: Boolean get() = enabled == true && (duration_min ?: 0) > 0
     val durationMillis: Long get() = (duration_min ?: 0).toLong() * 60_000L
     // Which plan this campaign discounts. Missing/unrecognized value defaults to
     // yearly, so configs written before this field existed keep working unchanged.
     val targetsLifetime: Boolean get() = product?.equals("lifetime", ignoreCase = true) == true
+    val startsOnDismiss: Boolean get() = trigger?.equals("dismiss", ignoreCase = true) == true
 }
 
+// Removed: the store provides the discount. Nothing in the app calls this manager any more (no timed Home offer, no
+// Remote Config discount_per). The class stays, with its unit test, so the old code still reads and compiles.
+//
 // Time-limited "Home offer": a per-device window during which the yearly .offer
 // plan is shown everywhere (exactly like the permanent `discount_per` switch) plus
 // a countdown card on Home. Mirrors iOS HomeOfferManager.
@@ -55,6 +62,14 @@ object HomeOfferManager {
         }
         prefs.setCustomParam(AppConstants.HomeOffer.startedAt, now.toString())
         prefs.setCustomParam(AppConstants.HomeOffer.startedName, cfg.name ?: "")
+    }
+
+    // A paywall sheet was closed without a purchase after a parent passed the grown-up question: for a campaign with
+    // `"trigger": "dismiss"` this is the moment its one-time window starts. A normal campaign ignores it.
+    fun startOnDismissIfNeeded(prefs: PreferencesHelper, now: Long = System.currentTimeMillis()) {
+        val cfg = config(prefs)
+        if (!cfg.isEnabled || !cfg.startsOnDismiss) return
+        startIfNeeded(prefs, now)
     }
 
     // Called at Remote Config persist time when the config comes back disabled or

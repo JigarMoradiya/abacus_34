@@ -11,9 +11,23 @@ data class RcPlanItem(
     val isPurchase: Boolean,
     val billingPeriod: String?,
     val purchaseTime: Long,
-    val rcPackage: Package
+    val rcPackage: Package,
+    /** The store order (transaction) id of this plan's purchase, from RevenueCat's records; null when not bought. */
+    val orderId: String? = null
 ) {
     fun isLifeTimeOffer() = sku.contains("all")
+}
+
+/** A plan price the way every plan card shows it: the store currency, no decimals ("₹1,200"). */
+fun formatPlanPrice(amountMicros: Long, currencyCode: String): String {
+    return try {
+        val format = java.text.NumberFormat.getCurrencyInstance(java.util.Locale.getDefault())
+        format.currency = java.util.Currency.getInstance(currencyCode)
+        format.maximumFractionDigits = 0
+        format.format(amountMicros / 1_000_000.0)
+    } catch (e: Exception) {
+        amountMicros.div(1_000_000).toString()
+    }
 }
 
 data class PurchaseUiState(
@@ -29,24 +43,25 @@ data class PurchaseUiState(
 
     // Plan data (from RC)
     val sortedPlanList: List<RcPlanItem> = emptyList(),
+    // The RevenueCat offering these plans came from (an Experiments price variant is a different offering)
+    val offeringId: String = "",
 
-    // Originals for discount display
+    // The regular plans by type (the monthly one feeds the "save vs monthly" maths)
     val original1YearData: RcPlanItem? = null,
     val originalLifetimeData: RcPlanItem? = null,
     val original1MonthData: RcPlanItem? = null,
     val original1WeekData: RcPlanItem? = null,
 
-    // Discounts
-    val discountPer: Int = 0,
-    val discountPerLifetime: Int = 0,
-
-    // Timed Home offer (Remote Config `home_offer`): when it ends, so the Purchase
-    // page can show the same live countdown as the Home card. Null = not active for
-    // that specific plan -- a campaign targeting yearly must never also show a
-    // countdown on the lifetime row (or vice versa), so these are kept separate
-    // rather than one shared value.
-    val homeOfferYearlyEndMillis: Long? = null,
-    val homeOfferLifetimeEndMillis: Long? = null,
+    // Removed: the store provides the discount (Google Play offers read through RevenueCat, see storeIntroOffer()).
+    // // Discounts
+    // val discountPer: Int = 0,
+    // val discountPerLifetime: Int = 0,
+    //
+    // // Timed Home offer (Remote Config `home_offer`): when it ends, so the Purchase
+    // // page can show the same live countdown as the Home card. Null = not active for
+    // // that specific plan.
+    // val homeOfferYearlyEndMillis: Long? = null,
+    // val homeOfferLifetimeEndMillis: Long? = null,
 
     // UI flags
     val showSubmitButton: Boolean = false,
