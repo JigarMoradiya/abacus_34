@@ -122,7 +122,7 @@ fun MathPyramidPlayJetpackScreen(
     Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         Column(modifier = Modifier.fillMaxSize()) {
             // 🔹 Header Bar
-            BackButtonWithText(title = "Level $levels • ${difficulty.displayName}", onBackClick = onBackClick)
+            BackButtonWithText(title = "Level $levels • ${stringResource(difficulty.nameRes)}", onBackClick = onBackClick)
 
             Spacer(Modifier.weight(1f))
 
@@ -202,7 +202,7 @@ fun MathPyramidPlayJetpackScreen(
     if (isSolved) {
         PyramidResultOverlay(
             levels = levels,
-            difficultyName = difficulty.displayName,
+            difficultyName = stringResource(difficulty.nameRes),
             onPlayAgain = {
                 isSolved = false
                 generateNewPuzzle()
@@ -218,7 +218,7 @@ fun MathPyramidPlayJetpackScreen(
     if (AbDebugFlags.showResultEnabled) {
         PyramidResultOverlay(
             levels = levels,
-            difficultyName = difficulty.displayName,
+            difficultyName = stringResource(difficulty.nameRes),
             onPlayAgain = {
                 isSolved = false
                 generateNewPuzzle()

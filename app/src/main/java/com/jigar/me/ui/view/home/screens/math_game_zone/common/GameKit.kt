@@ -34,6 +34,8 @@ import com.jigar.me.ui.view.ab.LocalAbColors
 import com.jigar.me.ui.view.ab.LocalAbScale
 import com.jigar.me.ui.view.ab.abDarkened
 import com.jigar.me.ui.view.home.theme.ButtonType
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 // The Math Game Zone's bridge to the Ab UI kit (Android twin of iOS Main/Games/GameKit.swift). The games were written against
 // the old Kids* components; these keep the same call shapes so a screen can switch look without touching its logic.
@@ -79,7 +81,7 @@ fun GameButton(
 /** The button on a result card that returns to the game's own home screen: a house, in the friendly blue of the kit. */
 @Composable
 fun GameHomeButton(modifier: Modifier = Modifier, isSmall: Boolean = false, onClick: () -> Unit) {
-    GameButton(text = "Home", icon = Icons.Filled.Home, type = ButtonType.BLUE, isSmall = isSmall, modifier = modifier, onClick = onClick)
+    GameButton(text = stringResource(R.string.g_home), icon = Icons.Filled.Home, type = ButtonType.BLUE, isSmall = isSmall, modifier = modifier, onClick = onClick)
 }
 
 /**

@@ -45,7 +45,7 @@ data class NumberDetectiveUiState(
     val lastAnswerRight: Boolean = false,
     val isGameOver: Boolean = false,
     // Set after a strong run - the result overlay invites the kid up a tier.
-    val suggestedDifficulty: String? = null
+    val suggestedDifficulty: CommonDifficulty4? = null
 ) {
     val triesLeft: Int get() = (maxTries - triesUsed).coerceAtLeast(0)
     val multiplier: Int

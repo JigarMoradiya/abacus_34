@@ -2069,4 +2069,32 @@
         <item quantity="one">%1$d table</item>
         <item quantity="other">%1$d tables</item>
     </plurals>
+
+    <!-- Math Game Zone: shared (M17a) -->
+    <string name="g_cheer_1">You can do it!</string>
+    <string name="g_cheer_2">Keep it up! 💪</string>
+    <string name="g_cheer_3">You\'ve got this!</string>
+    <string name="g_cheer_4">Nice going! 👍</string>
+    <string name="g_cheer_5">Stay sharp! ✨</string>
+    <string name="g_cheer_6">Great focus! 🎯</string>
+    <string name="g_cheer_7">Keep going! 🚀</string>
+    <string name="g_cheer_8">You\'re doing great!</string>
+    <string name="g_cheer_9">Brain power! 🧠</string>
+    <string name="g_cheer_10">Smart thinking! 💡</string>
+    <string name="g_char_fox">Foxy</string>
+    <string name="g_char_owl">Hoot</string>
+    <string name="g_char_parrot">Polly</string>
+    <string name="g_char_monkey">Momo</string>
+    <string name="g_char_unicorn">Sparkle</string>
+    <string name="g_char_elephant">Ellie</string>
+    <string name="g_char_panda">Bamboo</string>
+    <string name="g_char_frog">Hops</string>
+    <string name="g_char_giraffe">Gigi</string>
+    <string name="g_char_rabbit">Zippy</string>
+    <string name="g_char_dog">Scout</string>
+    <string name="g_home">Home</string>
+    <string name="g_diff_easy">Easy</string>
+    <string name="g_diff_medium">Medium</string>
+    <string name="g_diff_hard">Hard</string>
+    <string name="g_diff_very_hard">Very Hard</string>
 </resources>

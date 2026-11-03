@@ -54,6 +54,8 @@ import com.jigar.me.ui.view.ab.AbShapes
 import com.jigar.me.ui.view.ab.abChunkyFace
 import com.jigar.me.ui.view.ab.abDarkened
 import kotlinx.coroutines.delay
+import androidx.compose.ui.res.stringResource
+import androidx.annotation.StringRes
 
 // Device scale used across game popups/side panels so tablets/iPad-parity get
 // bigger stars, emoji and cards.
@@ -61,19 +63,25 @@ fun gameScale(): Float =
     if (DeviceInfo.isLargeTablet) 1.7f else if (DeviceInfo.isTablet) 1.45f else 1f
 
 // Encouraging lines the mascot shows while playing — one picked at random per game.
-val gameCheerLines = listOf(
-    "You can do it!",
-    "Keep it up! 💪",
-    "You've got this!",
-    "Nice going! 👍",
-    "Stay sharp! ✨",
-    "Great focus! 🎯",
-    "Keep going! 🚀",
-    "You're doing great!",
-    "Brain power! 🧠",
-    "Smart thinking! 💡"
+val gameCheerIds = listOf(
+    R.string.g_cheer_1,
+    R.string.g_cheer_2,
+    R.string.g_cheer_3,
+    R.string.g_cheer_4,
+    R.string.g_cheer_5,
+    R.string.g_cheer_6,
+    R.string.g_cheer_7,
+    R.string.g_cheer_8,
+    R.string.g_cheer_9,
+    R.string.g_cheer_10
 )
-fun randomGameCheer(): String = gameCheerLines.random()
+
+/** One encouraging line, picked once per game screen, in the app language. */
+@Composable
+fun rememberGameCheer(): String {
+    val id = remember { gameCheerIds.random() }
+    return stringResource(id)
+}
 
 private val BLUE = Color(0xFF0074D5)
 private val ORANGE = Color(0xFFE65100)
@@ -83,18 +91,18 @@ private val ORANGE_BORDER = Color(0xFFFF8400)
 // ── Characters ───────────────────────────────────────────────────────────────────────────────────────────────────────
 
 /** The friend that cheers a game on. Every game has its own character instead of one shared mascot (iOS twin: GameCharacter). */
-enum class GameCharacter(val emoji: String, val charName: String, val tint: Color) {
-    Fox("🦊", "Foxy", Color(0xFFF59E0B)),
-    Owl("🦉", "Hoot", Color(0xFF8B5CF6)),
-    Parrot("🦜", "Polly", Color(0xFF22C55E)),
-    Monkey("🐵", "Momo", Color(0xFFD97706)),
-    Unicorn("🦄", "Sparkle", Color(0xFFEC4899)),
-    Elephant("🐘", "Ellie", Color(0xFF60A5FA)),
-    Panda("🐼", "Bamboo", Color(0xFF64748B)),
-    Frog("🐸", "Hops", Color(0xFF84CC16)),
-    Giraffe("🦒", "Gigi", Color(0xFFEAB308)),
-    Rabbit("🐰", "Zippy", Color(0xFF38BDF8)),
-    Dog("🐶", "Scout", Color(0xFFF97316));
+enum class GameCharacter(val emoji: String, @StringRes val nameRes: Int, val tint: Color) {
+    Fox("🦊", R.string.g_char_fox, Color(0xFFF59E0B)),
+    Owl("🦉", R.string.g_char_owl, Color(0xFF8B5CF6)),
+    Parrot("🦜", R.string.g_char_parrot, Color(0xFF22C55E)),
+    Monkey("🐵", R.string.g_char_monkey, Color(0xFFD97706)),
+    Unicorn("🦄", R.string.g_char_unicorn, Color(0xFFEC4899)),
+    Elephant("🐘", R.string.g_char_elephant, Color(0xFF60A5FA)),
+    Panda("🐼", R.string.g_char_panda, Color(0xFF64748B)),
+    Frog("🐸", R.string.g_char_frog, Color(0xFF84CC16)),
+    Giraffe("🦒", R.string.g_char_giraffe, Color(0xFFEAB308)),
+    Rabbit("🐰", R.string.g_char_rabbit, Color(0xFF38BDF8)),
+    Dog("🐶", R.string.g_char_dog, Color(0xFFF97316));
 
     companion object {
         /** Which friend belongs to which game. */
@@ -154,7 +162,7 @@ fun GameFloatingMascot(heightDp: Float, celebrate: Boolean, modifier: Modifier =
             },
         )
         Text(
-            character.charName,
+            stringResource(character.nameRes),
             style = AbTypography.fixed(heightDp * 0.12f, FontWeight.ExtraBold),
             color = Color.White,
             modifier = Modifier

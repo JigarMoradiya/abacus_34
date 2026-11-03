@@ -69,7 +69,7 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.common.abBounce
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGamePill
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abWobble
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.rememberGameCheer
 import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.components.Comparator
 import com.jigar.me.ui.view.home.screens.math_game_zone.speed_compare.viewmodel.SpeedComparePlayViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
@@ -90,7 +90,7 @@ fun SpeedComparePlayScreen(
     onBackClick: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    val baseCheer = remember { randomGameCheer() }
+    val baseCheer = rememberGameCheer()
     val s = if (DeviceScaleHolder.isLargeTablet) 1.7f else if (DeviceScaleHolder.isTablet) 1.45f else 1.0f
     LaunchedEffect(Unit) { viewModel.start() }
 

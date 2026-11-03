@@ -1,0 +1,202 @@
+{
+ "balloon_pop": {
+  "fr": "Ballons à éclater",
+  "es": "Revienta globos",
+  "pt": "Estoura balões",
+  "tr": "Balon Patlat",
+  "ru": "Лопни шарик",
+  "ja": "風船わり",
+  "th": "ปาลูกโป่ง"
+ },
+ "calcudoku": {
+  "fr": "Calcudoku",
+  "es": "Calcudoku",
+  "pt": "Calcudoku",
+  "tr": "Calcudoku",
+  "ru": "Калькудоку",
+  "ja": "計算数独",
+  "th": "แคลคูโดกุ"
+ },
+ "clock_master": {
+  "fr": "Maître de l'horloge",
+  "es": "Maestro del reloj",
+  "pt": "Mestre do relógio",
+  "tr": "Saat Ustası",
+  "ru": "Мастер часов",
+  "ja": "時計マスター",
+  "th": "ยอดนักอ่านนาฬิกา"
+ },
+ "cross_math": {
+  "fr": "Maths croisées",
+  "es": "Mates cruzadas",
+  "pt": "Cruzadinha de contas",
+  "tr": "Çapraz Matematik",
+  "ru": "Числовой кроссворд",
+  "ja": "クロス計算",
+  "th": "คณิตศาสตร์ไขว้"
+ },
+ "daily_done": {
+  "fr": "Terminé ✓",
+  "es": "Listo ✓",
+  "pt": "Pronto ✓",
+  "tr": "Bitti ✓",
+  "ru": "Готово ✓",
+  "ja": "できた ✓",
+  "th": "เสร็จแล้ว ✓"
+ },
+ "equation_match": {
+  "fr": "Équations à relier",
+  "es": "Une las ecuaciones",
+  "pt": "Ligue as equações",
+  "tr": "Denklem Eşleştir",
+  "ru": "Найди пару",
+  "ja": "式合わせ",
+  "th": "จับคู่สมการ"
+ },
+ "kakuro": {
+  "fr": "Kakuro",
+  "es": "Kakuro",
+  "pt": "Kakuro",
+  "tr": "Kakuro",
+  "ru": "Какуро",
+  "ja": "カックロ",
+  "th": "คาคุโระ"
+ },
+ "magic_square": {
+  "fr": "Carré magique",
+  "es": "Cuadrado mágico",
+  "pt": "Quadrado mágico",
+  "tr": "Sihirli Kare",
+  "ru": "Магический квадрат",
+  "ja": "魔方陣",
+  "th": "จัตุรัสมหัศจรรย์"
+ },
+ "math_bingo": {
+  "fr": "Bingo des maths",
+  "es": "Bingo matemático",
+  "pt": "Bingo matemático",
+  "tr": "Matematik Bingosu",
+  "ru": "Числовое бинго",
+  "ja": "算数ビンゴ",
+  "th": "บิงโกคณิตศาสตร์"
+ },
+ "math_pyramid": {
+  "fr": "Pyramide des maths",
+  "es": "Pirámide matemática",
+  "pt": "Pirâmide matemática",
+  "tr": "Matematik Piramidi",
+  "ru": "Числовая пирамида",
+  "ja": "算数ピラミッド",
+  "th": "พีระมิดคณิตศาสตร์"
+ },
+ "merge2048_game": {
+  "fr": "Fusion de nombres",
+  "es": "Fusión de números",
+  "pt": "Fusão de números",
+  "tr": "Sayı Birleştir",
+  "ru": "Слияние чисел",
+  "ja": "数字合体",
+  "th": "รวมตัวเลข"
+ },
+ "missing_operator": {
+  "fr": "Signe manquant",
+  "es": "Signo perdido",
+  "pt": "Sinal faltando",
+  "tr": "Eksik İşaret",
+  "ru": "Пропавший знак",
+  "ja": "ぬけた記号",
+  "th": "เครื่องหมายหาย"
+ },
+ "number_detective": {
+  "fr": "Détective des nombres",
+  "es": "Detective de números",
+  "pt": "Detetive de números",
+  "tr": "Sayı Dedektifi",
+  "ru": "Числовой детектив",
+  "ja": "数のたんてい",
+  "th": "นักสืบตัวเลข"
+ },
+ "number_path": {
+  "fr": "Chemin des nombres",
+  "es": "Camino de números",
+  "pt": "Caminho dos números",
+  "tr": "Sayı Yolu",
+  "ru": "Путь чисел",
+  "ja": "数のみち",
+  "th": "เส้นทางตัวเลข"
+ },
+ "number_snake": {
+  "fr": "Serpent des nombres",
+  "es": "Serpiente numérica",
+  "pt": "Cobrinha numérica",
+  "tr": "Sayı Yılanı",
+  "ru": "Числовая змейка",
+  "ja": "数字へび",
+  "th": "งูตัวเลข"
+ },
+ "place_value": {
+  "fr": "Valeur de position",
+  "es": "Valor posicional",
+  "pt": "Valor Posicional",
+  "tr": "Basamak Değeri",
+  "ru": "Разряды",
+  "ja": "位取り",
+  "th": "ค่าประจำหลัก"
+ },
+ "speed_compare": {
+  "fr": "Comparaison express",
+  "es": "Comparación veloz",
+  "pt": "Comparação veloz",
+  "tr": "Hızlı Karşılaştırma",
+  "ru": "Быстрое сравнение",
+  "ja": "スピード比べ",
+  "th": "เปรียบเทียบเร็ว"
+ },
+ "sudoku": {
+  "fr": "Sudoku",
+  "es": "Sudoku",
+  "pt": "Sudoku",
+  "tr": "Sudoku",
+  "ru": "Судоку",
+  "ja": "数独",
+  "th": "ซูโดกุ"
+ },
+ "target_the_number": {
+  "fr": "Atteins le nombre",
+  "es": "Alcanza el número",
+  "pt": "Alcance o número",
+  "tr": "Sayıyı Hedefle",
+  "ru": "Попади в число",
+  "ja": "ターゲットナンバー",
+  "th": "เล็งเลขเป้าหมาย"
+ },
+ "trophy_champion": {
+  "fr": "Champion",
+  "es": "Campeón",
+  "pt": "Campeão",
+  "tr": "Şampiyon",
+  "ru": "Чемпион",
+  "ja": "チャンピオン",
+  "th": "แชมป์",
+  "ar": "بطل"
+ },
+ "trophy_explorer": {
+  "fr": "Explorateur",
+  "es": "Explorador",
+  "pt": "Explorador",
+  "tr": "Kaşif",
+  "ru": "Исследователь",
+  "ja": "たんけんか",
+  "th": "นักสำรวจ"
+ },
+ "trophy_legend": {
+  "fr": "Légende",
+  "es": "Leyenda",
+  "pt": "Lenda",
+  "tr": "Efsane",
+  "ru": "Легенда",
+  "ja": "レジェンド",
+  "th": "ตำนาน",
+  "ar": "أسطورة"
+ }
+}

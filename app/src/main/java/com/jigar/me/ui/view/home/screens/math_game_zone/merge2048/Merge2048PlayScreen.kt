@@ -82,7 +82,7 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.common.abBreathe
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abGamePill
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abPopIn
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.abToyTile
-import com.jigar.me.ui.view.home.screens.math_game_zone.common.randomGameCheer
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.rememberGameCheer
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.toyColor
 import com.jigar.me.ui.view.home.screens.math_game_zone.gameCardStyle
 import com.jigar.me.ui.view.home.screens.math_game_zone.merge2048.components.Merge2048Direction
@@ -113,7 +113,7 @@ internal fun merge2048Candy(value: Int, colors: AbColors): Color {
 @Composable
 fun Merge2048PlayScreen(viewModel: Merge2048PlayViewModel, onBackClick: () -> Unit) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    val baseCheer = remember { randomGameCheer() }
+    val baseCheer = rememberGameCheer()
     val s = mScale
     // on a short phone screen (384dp tall) a fixed 300dp board ran past the bottom edge: never taller than the room left
     val boardSide = minOf((300f * s).dp, (LocalConfiguration.current.screenHeightDp - 100).dp)

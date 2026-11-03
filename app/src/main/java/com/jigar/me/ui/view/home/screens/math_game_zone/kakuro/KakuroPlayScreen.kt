@@ -150,7 +150,7 @@ fun KakuroPlayScreen(
                     Spacer(Modifier.weight(1f))
                 }
                 Text(
-                    text = viewModel.difficulty.displayName + " · " +
+                    text = stringResource(viewModel.difficulty.nameRes) + " · " +
                         stringResource(R.string.cross_math_level, viewModel.level),
                     color = ORANGE,
                     style = AbTypography.fixed(22f * kitScale, FontWeight.ExtraBold),

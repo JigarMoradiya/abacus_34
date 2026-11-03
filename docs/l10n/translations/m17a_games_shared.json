@@ -1,0 +1,947 @@
+{
+ "balloon_pop_desc": {
+  "fr": "Éclate le nombre qui fait 10 !",
+  "es": "¡Revienta el número que completa 10!",
+  "pt": "Estoure o número que dá 10!",
+  "tr": "10 yapan sayıyı patlat!",
+  "ru": "Лопни число, которое даёт 10!",
+  "ja": "10になる数の風船をわろう！",
+  "th": "ปาลูกโป่งเลขที่ได้ 10!"
+ },
+ "calcudoku_desc": {
+  "fr": "Résous tous les blocs de calcul !",
+  "es": "¡Resuelve cada jaula de mates!",
+  "pt": "Resolva todos os blocos de contas!",
+  "tr": "Her matematik kafesini çöz!",
+  "ru": "Реши все блоки с примерами!",
+  "ja": "計算ブロックをぜんぶとこう！",
+  "th": "ไขทุกกรงเลข!"
+ },
+ "clock_master_desc": {
+  "fr": "Lis l'heure, bats l'horloge !",
+  "es": "¡Lee el reloj, vence al reloj!",
+  "pt": "Leia o relógio, vença o tempo!",
+  "tr": "Saati oku, saati yen!",
+  "ru": "Читай часы и обгоняй время!",
+  "ja": "時計を読んで、タイムにかとう！",
+  "th": "อ่านนาฬิกา เอาชนะเวลา!"
+ },
+ "cross_math_desc": {
+  "fr": "Résous les mots croisés de nombres !",
+  "es": "¡Resuelve el crucigrama de números!",
+  "pt": "Resolva a cruzadinha de contas!",
+  "tr": "Sayı bulmacasını çöz!",
+  "ru": "Разгадай числовой кроссворд!",
+  "ja": "数のクロスワードをとこう！",
+  "th": "ไขปริศนาตัวเลขไขว้!"
+ },
+ "daily_challenge": {
+  "fr": "Défi du jour",
+  "es": "Reto de hoy",
+  "pt": "Desafio de hoje",
+  "tr": "Bugünün Meydan Okuması",
+  "ru": "Задание дня",
+  "ja": "今日のチャレンジ",
+  "th": "ชาเลนจ์วันนี้"
+ },
+ "daily_play": {
+  "fr": "Jouer !",
+  "es": "¡Jugar!",
+  "pt": "Jogar!",
+  "tr": "Oyna!",
+  "ru": "Играть!",
+  "ja": "あそぶ！",
+  "th": "เล่นเลย!"
+ },
+ "equation_match_desc": {
+  "fr": "Retourne et associe les paires !",
+  "es": "¡Voltea y une las parejas!",
+  "pt": "Vire e ligue os pares!",
+  "tr": "Kartları çevir, çiftleri eşleştir!",
+  "ru": "Открывай и находи пары!",
+  "ja": "めくって、ペアをそろえよう！",
+  "th": "พลิกการ์ดแล้วจับคู่!"
+ },
+ "g_char_dog": {
+  "fr": "Scout",
+  "es": "Scout",
+  "pt": "Scout",
+  "tr": "Scout",
+  "ru": "Скаут",
+  "ja": "スカウト",
+  "th": "สเกาต์"
+ },
+ "g_char_elephant": {
+  "fr": "Ellie",
+  "es": "Ellie",
+  "pt": "Ellie",
+  "tr": "Ellie",
+  "ru": "Элли",
+  "ja": "エリー",
+  "th": "เอลลี่"
+ },
+ "g_char_fox": {
+  "fr": "Foxy",
+  "es": "Foxy",
+  "pt": "Foxy",
+  "tr": "Foxy",
+  "ru": "Фокси",
+  "ja": "フォクシー",
+  "th": "ฟ็อกซี่"
+ },
+ "g_char_frog": {
+  "fr": "Hops",
+  "es": "Hops",
+  "pt": "Hops",
+  "tr": "Hops",
+  "ru": "Хопс",
+  "ja": "ホップス",
+  "th": "ฮอปส์"
+ },
+ "g_char_giraffe": {
+  "fr": "Gigi",
+  "es": "Gigi",
+  "pt": "Gigi",
+  "tr": "Gigi",
+  "ru": "Джиджи",
+  "ja": "ジジ",
+  "th": "จีจี้"
+ },
+ "g_char_monkey": {
+  "fr": "Momo",
+  "es": "Momo",
+  "pt": "Momo",
+  "tr": "Momo",
+  "ru": "Момо",
+  "ja": "モモ",
+  "th": "โมโม่"
+ },
+ "g_char_owl": {
+  "fr": "Hoot",
+  "es": "Hoot",
+  "pt": "Hoot",
+  "tr": "Hoot",
+  "ru": "Хут",
+  "ja": "フート",
+  "th": "ฮูท"
+ },
+ "g_char_panda": {
+  "fr": "Bambou",
+  "es": "Bambú",
+  "pt": "Bambu",
+  "tr": "Bambu",
+  "ru": "Бамбу",
+  "ja": "バンブー",
+  "th": "แบมบู"
+ },
+ "g_char_parrot": {
+  "fr": "Polly",
+  "es": "Polly",
+  "pt": "Polly",
+  "tr": "Polly",
+  "ru": "Полли",
+  "ja": "ポリー",
+  "th": "พอลลี่"
+ },
+ "g_char_rabbit": {
+  "fr": "Zippy",
+  "es": "Zippy",
+  "pt": "Zippy",
+  "tr": "Zippy",
+  "ru": "Зиппи",
+  "ja": "ジッピー",
+  "th": "ซิปปี้"
+ },
+ "g_char_unicorn": {
+  "fr": "Sparkle",
+  "es": "Chispa",
+  "pt": "Sparkle",
+  "tr": "Sparkle",
+  "ru": "Спаркл",
+  "ja": "スパークル",
+  "th": "สปาร์คเคิล"
+ },
+ "g_cheer_1": {
+  "fr": "Tu peux le faire !",
+  "es": "¡Tú puedes!",
+  "pt": "Você consegue!",
+  "tr": "Yapabilirsin!",
+  "ru": "У тебя получится!",
+  "ja": "きみならできるよ！",
+  "th": "ทำได้แน่นอน!"
+ },
+ "g_cheer_10": {
+  "fr": "Bien réfléchi ! 💡",
+  "es": "¡Piensas genial! 💡",
+  "pt": "Pensou bem! 💡",
+  "tr": "Akıllıca düşündün! 💡",
+  "ru": "Умно придумано! 💡",
+  "ja": "いい考えだね！ 💡",
+  "th": "คิดเก่งจัง! 💡"
+ },
+ "g_cheer_2": {
+  "fr": "Continue comme ça ! 💪",
+  "es": "¡Sigue así! 💪",
+  "pt": "Continue assim! 💪",
+  "tr": "Böyle devam! 💪",
+  "ru": "Так держать! 💪",
+  "ja": "その調子！ 💪",
+  "th": "สู้ต่อไปนะ! 💪"
+ },
+ "g_cheer_3": {
+  "fr": "Tu y arrives !",
+  "es": "¡Lo vas a lograr!",
+  "pt": "Você tira de letra!",
+  "tr": "Bu iş sende!",
+  "ru": "Ты справишься!",
+  "ja": "だいじょうぶ、できるよ！",
+  "th": "เอาอยู่แน่นอน!"
+ },
+ "g_cheer_4": {
+  "fr": "Bravo ! 👍",
+  "es": "¡Bien hecho! 👍",
+  "pt": "Mandou bem! 👍",
+  "tr": "Bravo sana! 👍",
+  "ru": "Хорошо идёшь! 👍",
+  "ja": "いいぞ！ 👍",
+  "th": "เยี่ยมไปเลย! 👍"
+ },
+ "g_cheer_5": {
+  "fr": "Reste bien attentif ! ✨",
+  "es": "¡Mente despierta! ✨",
+  "pt": "Atenção total! ✨",
+  "tr": "Dikkatli ol! ✨",
+  "ru": "Не зевай! ✨",
+  "ja": "集中、集中！ ✨",
+  "th": "ตื่นตัวไว้นะ! ✨"
+ },
+ "g_cheer_6": {
+  "fr": "Super concentration ! 🎯",
+  "es": "¡Gran concentración! 🎯",
+  "pt": "Ótimo foco! 🎯",
+  "tr": "Harika odaklandın! 🎯",
+  "ru": "Вот это внимание! 🎯",
+  "ja": "すごい集中力！ 🎯",
+  "th": "สมาธิดีมาก! 🎯"
+ },
+ "g_cheer_7": {
+  "fr": "Continue ! 🚀",
+  "es": "¡Adelante! 🚀",
+  "pt": "Bora lá! 🚀",
+  "tr": "Devam et! 🚀",
+  "ru": "Вперёд! 🚀",
+  "ja": "どんどん行こう！ 🚀",
+  "th": "ลุยต่อเลย! 🚀"
+ },
+ "g_cheer_8": {
+  "fr": "Tu t'en sors super bien !",
+  "es": "¡Lo haces genial!",
+  "pt": "Você está arrasando!",
+  "tr": "Harika gidiyorsun!",
+  "ru": "У тебя отлично получается!",
+  "ja": "とってもいい調子！",
+  "th": "เก่งมากเลย!"
+ },
+ "g_cheer_9": {
+  "fr": "Super cerveau ! 🧠",
+  "es": "¡Poder cerebral! 🧠",
+  "pt": "Cérebro a mil! 🧠",
+  "tr": "Beyin gücü! 🧠",
+  "ru": "Мозг в деле! 🧠",
+  "ja": "あたまパワー！ 🧠",
+  "th": "พลังสมอง! 🧠"
+ },
+ "g_home": {
+  "fr": "Accueil",
+  "es": "Inicio",
+  "pt": "Início",
+  "tr": "Ana Sayfa",
+  "ru": "Домой",
+  "ja": "ホーム",
+  "th": "หน้าหลัก"
+ },
+ "game_cat_adventures": {
+  "fr": "Aventures des nombres",
+  "es": "Aventuras numéricas",
+  "pt": "Aventuras numéricas",
+  "tr": "Sayı Maceraları",
+  "ru": "Приключения с числами",
+  "ja": "数のぼうけん",
+  "th": "ผจญภัยตัวเลข"
+ },
+ "game_cat_builders": {
+  "fr": "Bâtisseurs de nombres",
+  "es": "Constructores de números",
+  "pt": "Construtores de números",
+  "tr": "Sayı Kurucuları",
+  "ru": "Строители чисел",
+  "ja": "数づくり",
+  "th": "นักสร้างตัวเลข"
+ },
+ "game_cat_equations": {
+  "fr": "Équations en folie",
+  "es": "Diversión con ecuaciones",
+  "pt": "Diversão com equações",
+  "tr": "Denklem Eğlencesi",
+  "ru": "Весёлые уравнения",
+  "ja": "式であそぼう",
+  "th": "สมการสนุก"
+ },
+ "game_cat_puzzles": {
+  "fr": "Casse-têtes",
+  "es": "Rompecabezas mentales",
+  "pt": "Quebra-cabeças mentais",
+  "tr": "Zeka Bulmacaları",
+  "ru": "Головоломки",
+  "ja": "あたまのパズル",
+  "th": "ปริศนาฝึกสมอง"
+ },
+ "game_cat_recent": {
+  "fr": "Reprends la partie",
+  "es": "Sigue jugando",
+  "pt": "Volte a jogar",
+  "tr": "Kaldığın Yerden Devam",
+  "ru": "Снова в игру!",
+  "ja": "つづきから",
+  "th": "กลับมาเล่นต่อ"
+ },
+ "game_cat_speedy": {
+  "fr": "Jeux rapides",
+  "es": "Juegos rápidos",
+  "pt": "Jogos velozes",
+  "tr": "Hızlı Oyunlar",
+  "ru": "Быстрые игры",
+  "ja": "スピードゲーム",
+  "th": "เกมความเร็ว"
+ },
+ "kakuro_desc": {
+  "fr": "Les mots croisés des sommes !",
+  "es": "¡El crucigrama de sumas!",
+  "pt": "A cruzadinha das somas!",
+  "tr": "Toplamların bulmacası!",
+  "ru": "Кроссворд из сумм!",
+  "ja": "たし算のクロスワード！",
+  "th": "ปริศนาไขว้แห่งผลรวม!"
+ },
+ "magic_square_desc": {
+  "fr": "Chaque ligne doit faire le bon total !",
+  "es": "¡Haz que cada línea sume igual!",
+  "pt": "Faça cada linha fechar a soma!",
+  "tr": "Her sıranın toplamını tuttur!",
+  "ru": "Все линии — одна сумма!",
+  "ja": "どの列も合計をそろえよう！",
+  "th": "จัดให้ทุกแถวรวมเท่ากัน!"
+ },
+ "math_bingo_desc": {
+  "fr": "Résous, tamponne, BINGO !",
+  "es": "¡Resuelve, marca, BINGO!",
+  "pt": "Resolva, carimbe, BINGO!",
+  "tr": "Çöz, damgala, BİNGO!",
+  "ru": "Решай, отмечай, БИНГО!",
+  "ja": "解いて、スタンプ、ビンゴ！",
+  "th": "แก้โจทย์ ปั๊มตรา บิงโก!"
+ },
+ "math_pyramid_desc": {
+  "fr": "Additionne pour bâtir la pyramide !",
+  "es": "¡Suma números para armar la pirámide!",
+  "pt": "Some números e monte a pirâmide!",
+  "tr": "Sayıları toplayıp piramidi kur!",
+  "ru": "Складывай числа и строй пирамиду!",
+  "ja": "たし算でピラミッドを作ろう！",
+  "th": "บวกเลขเพื่อสร้างพีระมิด!"
+ },
+ "merge2048_desc": {
+  "fr": "Glisse et fusionne les nombres !",
+  "es": "¡Desliza y fusiona los números!",
+  "pt": "Deslize e junte os números!",
+  "tr": "Kaydır, sayıları birleştir!",
+  "ru": "Сдвигай и сливай числа!",
+  "ja": "スワイプして数を合体！",
+  "th": "ปัดแล้วรวมตัวเลข!"
+ },
+ "missing_operator_desc": {
+  "fr": "Trouve le signe manquant : + − × ÷ !",
+  "es": "¡Encuentra el + − × ÷ que falta!",
+  "pt": "Descubra o + − × ÷ que falta!",
+  "tr": "Eksik + − × ÷ işaretini bul!",
+  "ru": "Найди пропавший знак + − × ÷!",
+  "ja": "ぬけた + − × ÷ を見つけよう！",
+  "th": "หาเครื่องหมาย + − × ÷ ที่หายไป!"
+ },
+ "number_detective_desc": {
+  "fr": "Perce le nombre secret !",
+  "es": "¡Descubre el número secreto!",
+  "pt": "Descubra o número secreto!",
+  "tr": "Gizli sayıyı çöz!",
+  "ru": "Разгадай секретное число!",
+  "ja": "ひみつの数をつきとめよう！",
+  "th": "ถอดรหัสเลขลับ!"
+ },
+ "number_path_desc": {
+  "fr": "Saute dans le labyrinthe jusqu'à la cible !",
+  "es": "¡Salta por el laberinto hasta la meta!",
+  "pt": "Pule pelo labirinto até o alvo!",
+  "tr": "Labirentte zıpla, hedefe ulaş!",
+  "ru": "Прыгай по лабиринту к цели!",
+  "ja": "めいろをジャンプして目標の数へ！",
+  "th": "กระโดดผ่านเขาวงกตสู่เป้าหมาย!"
+ },
+ "number_sequence_desc": {
+  "fr": "Glisse les nombres pour les ordonner !",
+  "es": "¡Desliza y ordena los números!",
+  "pt": "Deslize e ordene os números!",
+  "tr": "Sayıları kaydır ve sırala!",
+  "ru": "Двигай и строй числа в ряд!",
+  "ja": "スライドして数をならべよう！",
+  "th": "เลื่อนแล้วเรียงตัวเลข!"
+ },
+ "number_sequence_puzzle": {
+  "fr": "Puzzle de suites de nombres",
+  "es": "Rompecabezas de secuencias numéricas",
+  "pt": "Quebra-cabeça de sequências",
+  "tr": "Sayı Dizisi Bulmacası",
+  "ru": "Головоломка «Числовой ряд»",
+  "ja": "数列パズル",
+  "th": "ปริศนาลำดับตัวเลข"
+ },
+ "number_snake_desc": {
+  "fr": "Relie la piste des nombres !",
+  "es": "¡Conecta el camino de números!",
+  "pt": "Ligue a trilha dos números!",
+  "tr": "Sayı izini bağla!",
+  "ru": "Соедини числа в цепочку!",
+  "ja": "数の道をつなごう！",
+  "th": "ต่อเส้นทางตัวเลข!"
+ },
+ "pick_a_game_have_fun": {
+  "fr": "Choisis un jeu et amuse-toi !",
+  "es": "¡Elige un juego y diviértete!",
+  "pt": "Escolha um jogo e divirta-se!",
+  "tr": "Bir oyun seç, eğlen!",
+  "ru": "Выбери игру и веселись!",
+  "ja": "ゲームをえらんで、楽しもう！",
+  "th": "เลือกเกมแล้วสนุกกันเลย!"
+ },
+ "place_value_desc": {
+  "fr": "Construis des nombres avec des morceaux !",
+  "es": "¡Arma números con piezas!",
+  "pt": "Monte números com as peças!",
+  "tr": "Parçalardan sayılar oluştur!",
+  "ru": "Собирай числа из частей!",
+  "ja": "パーツから数を作ろう！",
+  "th": "ประกอบตัวเลขจากชิ้นส่วน!"
+ },
+ "ready_for_next": {
+  "fr": "Tu peux passer à %1$s !",
+  "es": "¡Ya puedes pasar a %1$s!",
+  "pt": "Você já pode encarar o nível %1$s!",
+  "tr": "%1$s için hazırsın!",
+  "ru": "Тебе по силам уровень «%1$s»!",
+  "ja": "%1$sに進む準備ができたよ！",
+  "th": "พร้อมลุยด่าน%1$sแล้ว!"
+ },
+ "speed_compare_desc": {
+  "fr": "Quel côté est le plus grand ?",
+  "es": "¿Qué lado es mayor?",
+  "pt": "Qual lado é maior?",
+  "tr": "Hangi taraf daha büyük?",
+  "ru": "Какая сторона больше?",
+  "ja": "どっちが大きい？",
+  "th": "ฝั่งไหนมากกว่ากัน?"
+ },
+ "sudoku_desc": {
+  "fr": "Remplis la grille grâce à la logique !",
+  "es": "¡Llena la cuadrícula con lógica!",
+  "pt": "Preencha a grade com lógica!",
+  "tr": "Izgarayı mantıkla doldur!",
+  "ru": "Заполни сетку логикой!",
+  "ja": "頭を使ってマスをうめよう！",
+  "th": "เติมตารางด้วยตรรกะ!"
+ },
+ "target_number_desc": {
+  "fr": "Utilise les opérations pour atteindre la cible !",
+  "es": "¡Usa operaciones para llegar al objetivo!",
+  "pt": "Use operações para chegar ao alvo!",
+  "tr": "İşlemlerle hedefe ulaş!",
+  "ru": "Попади в цель с помощью действий!",
+  "ja": "計算して、目標の数を作ろう！",
+  "th": "ใช้การคำนวณให้ถึงเลขเป้าหมาย!"
+ },
+ "trophy_all_rounder": {
+  "fr": "Touche-à-tout",
+  "es": "Todoterreno",
+  "pt": "Craque em tudo",
+  "tr": "Çok Yönlü",
+  "ru": "Универсал",
+  "ja": "オールラウンダー",
+  "th": "เก่งรอบด้าน"
+ },
+ "trophy_all_rounder_desc": {
+  "fr": "Joue aux 18 jeux",
+  "es": "Juega los 18 juegos",
+  "pt": "Jogue os 18 jogos",
+  "tr": "18 oyunun hepsini oyna",
+  "ru": "Сыграй во все 18 игр",
+  "ja": "18のゲームをぜんぶあそぶ",
+  "th": "เล่นครบทั้ง 18 เกม"
+ },
+ "trophy_buddies": {
+  "fr": "Mes copains",
+  "es": "Mis amigos",
+  "pt": "Meus amiguinhos",
+  "tr": "Arkadaşlarım",
+  "ru": "Мои друзья",
+  "ja": "なかまたち",
+  "th": "เพื่อนซี้ของฉัน"
+ },
+ "trophy_champion_desc": {
+  "fr": "Gagne 12 trophées",
+  "es": "Gana 12 trofeos",
+  "pt": "Ganhe 12 troféus",
+  "tr": "12 kupa kazan",
+  "ru": "Получи 12 трофеев",
+  "ja": "トロフィーを12こ集める",
+  "th": "รับถ้วยรางวัลครบ 12 ใบ"
+ },
+ "trophy_explorer_desc": {
+  "fr": "Joue à 6 jeux différents",
+  "es": "Juega 6 juegos distintos",
+  "pt": "Jogue 6 jogos diferentes",
+  "tr": "6 farklı oyun oyna",
+  "ru": "Сыграй в 6 разных игр",
+  "ja": "ちがうゲームを6つあそぶ",
+  "th": "เล่นเกมที่ต่างกัน 6 เกม"
+ },
+ "trophy_first_game": {
+  "fr": "Premiers pas",
+  "es": "Primeros pasos",
+  "pt": "Primeiros passos",
+  "tr": "İlk Adımlar",
+  "ru": "Первые шаги",
+  "ja": "はじめの一歩",
+  "th": "ก้าวแรก"
+ },
+ "trophy_first_game_desc": {
+  "fr": "Joue à ton premier jeu",
+  "es": "Juega tu primer juego",
+  "pt": "Jogue seu primeiro jogo",
+  "tr": "İlk oyununu oyna",
+  "ru": "Сыграй в свою первую игру",
+  "ja": "はじめてのゲームをあそぶ",
+  "th": "เล่นเกมแรก"
+ },
+ "trophy_hard_hero": {
+  "fr": "Héros du difficile",
+  "es": "Héroe en Difícil",
+  "pt": "Herói do Difícil",
+  "tr": "Zor Kahramanı",
+  "ru": "Герой сложных уровней",
+  "ja": "ハードヒーロー",
+  "th": "ฮีโร่ด่านยาก"
+ },
+ "trophy_hard_hero_desc": {
+  "fr": "Obtiens 3 étoiles à un niveau difficile",
+  "es": "Logra 3 estrellas en un nivel difícil",
+  "pt": "Ganhe 3 estrelas em um nível difícil",
+  "tr": "Bir Zor seviyeyi 3 yıldızla geç",
+  "ru": "Получи 3 звезды на сложном уровне",
+  "ja": "むずかしいレベルを星3つでクリア",
+  "th": "ได้ 3 ดาวในด่านยาก"
+ },
+ "trophy_hard_iron": {
+  "fr": "Volonté de fer",
+  "es": "Voluntad de hierro",
+  "pt": "Vontade de ferro",
+  "tr": "Demir İrade",
+  "ru": "Железная воля",
+  "ja": "鉄の心",
+  "th": "ใจเหล็ก"
+ },
+ "trophy_hard_iron_desc": {
+  "fr": "Réussis 15 niveaux difficiles",
+  "es": "Supera 15 niveles difíciles",
+  "pt": "Vença 15 níveis difíceis",
+  "tr": "15 Zor seviyeyi geç",
+  "ru": "Пройди 15 сложных уровней",
+  "ja": "むずかしいレベルを15こクリア",
+  "th": "ผ่านด่านยาก 15 ด่าน"
+ },
+ "trophy_hard_master": {
+  "fr": "Maître du difficile",
+  "es": "Maestro en Difícil",
+  "pt": "Mestre do Difícil",
+  "tr": "Zor Ustası",
+  "ru": "Мастер сложных уровней",
+  "ja": "ハードマスター",
+  "th": "เจ้าแห่งด่านยาก"
+ },
+ "trophy_hard_master_desc": {
+  "fr": "Obtiens 3 étoiles à 10 niveaux difficiles",
+  "es": "Logra 3 estrellas en 10 niveles difíciles",
+  "pt": "Ganhe 3 estrelas em 10 níveis difíceis",
+  "tr": "10 Zor seviyeyi 3 yıldızla geç",
+  "ru": "Получи 3 звезды на 10 сложных уровнях",
+  "ja": "むずかしいレベルを10こ星3つでクリア",
+  "th": "ได้ 3 ดาวในด่านยาก 10 ด่าน"
+ },
+ "trophy_hard_tough": {
+  "fr": "Dur à cuire",
+  "es": "Duro de pelar",
+  "pt": "Casca grossa",
+  "tr": "Sert Ceviz",
+  "ru": "Крепкий орешек",
+  "ja": "タフなやつ",
+  "th": "จอมแกร่ง"
+ },
+ "trophy_hard_tough_desc": {
+  "fr": "Réussis 5 niveaux difficiles",
+  "es": "Supera 5 niveles difíciles",
+  "pt": "Vença 5 níveis difíceis",
+  "tr": "5 Zor seviyeyi geç",
+  "ru": "Пройди 5 сложных уровней",
+  "ja": "むずかしいレベルを5こクリア",
+  "th": "ผ่านด่านยาก 5 ด่าน"
+ },
+ "trophy_legend_desc": {
+  "fr": "Gagne tous les trophées !",
+  "es": "¡Gana todos los trofeos!",
+  "pt": "Ganhe todos os troféus!",
+  "tr": "Tüm kupaları kazan!",
+  "ru": "Собери все трофеи!",
+  "ja": "ぜんぶのトロフィーをゲット！",
+  "th": "รับถ้วยรางวัลให้ครบทุกใบ!"
+ },
+ "trophy_levels_10": {
+  "fr": "Aventurier",
+  "es": "Aventurero",
+  "pt": "Aventureiro",
+  "tr": "Maceracı",
+  "ru": "Искатель приключений",
+  "ja": "ぼうけんか",
+  "th": "นักผจญภัย"
+ },
+ "trophy_levels_10_desc": {
+  "fr": "Réussis 10 niveaux",
+  "es": "Supera 10 niveles",
+  "pt": "Vença 10 níveis",
+  "tr": "10 seviyeyi geç",
+  "ru": "Пройди 10 уровней",
+  "ja": "10レベルをクリア",
+  "th": "ผ่าน 10 ด่าน"
+ },
+ "trophy_levels_150": {
+  "fr": "Maître du chemin",
+  "es": "Maestro del camino",
+  "pt": "Mestre do Caminho",
+  "tr": "Yol Ustası",
+  "ru": "Мастер пути",
+  "ja": "みちマスター",
+  "th": "เจ้าแห่งเส้นทาง"
+ },
+ "trophy_levels_150_desc": {
+  "fr": "Réussis 150 niveaux",
+  "es": "Supera 150 niveles",
+  "pt": "Vença 150 níveis",
+  "tr": "150 seviyeyi geç",
+  "ru": "Пройди 150 уровней",
+  "ja": "150レベルをクリア",
+  "th": "ผ่าน 150 ด่าน"
+ },
+ "trophy_levels_50": {
+  "fr": "Pionnier",
+  "es": "Pionero",
+  "pt": "Desbravador",
+  "tr": "Öncü",
+  "ru": "Первопроходец",
+  "ja": "パイオニア",
+  "th": "ผู้บุกเบิก"
+ },
+ "trophy_levels_50_desc": {
+  "fr": "Réussis 50 niveaux",
+  "es": "Supera 50 niveles",
+  "pt": "Vença 50 níveis",
+  "tr": "50 seviyeyi geç",
+  "ru": "Пройди 50 уровней",
+  "ja": "50レベルをクリア",
+  "th": "ผ่าน 50 ด่าน"
+ },
+ "trophy_medium_climber": {
+  "fr": "En pleine montée",
+  "es": "Escalando",
+  "pt": "Subindo",
+  "tr": "Tırmanış",
+  "ru": "Всё выше",
+  "ja": "山のぼり",
+  "th": "ไต่ขึ้นไป"
+ },
+ "trophy_medium_climber_desc": {
+  "fr": "Réussis 5 niveaux moyens",
+  "es": "Supera 5 niveles medios",
+  "pt": "Vença 5 níveis médios",
+  "tr": "5 Orta seviyeyi geç",
+  "ru": "Пройди 5 средних уровней",
+  "ja": "ふつうのレベルを5こクリア",
+  "th": "ผ่านด่านปานกลาง 5 ด่าน"
+ },
+ "trophy_medium_mountain": {
+  "fr": "Maître de la montagne",
+  "es": "Maestro de la montaña",
+  "pt": "Mestre da Montanha",
+  "tr": "Dağ Ustası",
+  "ru": "Покоритель гор",
+  "ja": "山のマスター",
+  "th": "เจ้าแห่งขุนเขา"
+ },
+ "trophy_medium_mountain_desc": {
+  "fr": "Réussis 20 niveaux moyens",
+  "es": "Supera 20 niveles medios",
+  "pt": "Vença 20 níveis médios",
+  "tr": "20 Orta seviyeyi geç",
+  "ru": "Пройди 20 средних уровней",
+  "ja": "ふつうのレベルを20こクリア",
+  "th": "ผ่านด่านปานกลาง 20 ด่าน"
+ },
+ "trophy_perfect_20": {
+  "fr": "Perfectionniste",
+  "es": "Perfeccionista",
+  "pt": "Perfeccionista",
+  "tr": "Mükemmeliyetçi",
+  "ru": "Перфекционист",
+  "ja": "かんぺきさん",
+  "th": "จอมสมบูรณ์แบบ"
+ },
+ "trophy_perfect_20_desc": {
+  "fr": "Obtiens 3 étoiles à 20 niveaux",
+  "es": "Logra 3 estrellas en 20 niveles",
+  "pt": "Ganhe 3 estrelas em 20 níveis",
+  "tr": "20 seviyeyi 3 yıldızla geç",
+  "ru": "Получи 3 звезды на 20 уровнях",
+  "ja": "20レベルを星3つでクリア",
+  "th": "ได้ 3 ดาวใน 20 ด่าน"
+ },
+ "trophy_perfect_5": {
+  "fr": "Cinq parfaits",
+  "es": "Cinco perfectos",
+  "pt": "Cinco perfeito",
+  "tr": "Mükemmel Beşli",
+  "ru": "Идеальная пятёрка",
+  "ja": "パーフェクト5",
+  "th": "ห้าด่านสมบูรณ์แบบ"
+ },
+ "trophy_perfect_5_desc": {
+  "fr": "Obtiens 3 étoiles à 5 niveaux",
+  "es": "Logra 3 estrellas en 5 niveles",
+  "pt": "Ganhe 3 estrelas em 5 níveis",
+  "tr": "5 seviyeyi 3 yıldızla geç",
+  "ru": "Получи 3 звезды на 5 уровнях",
+  "ja": "5レベルを星3つでクリア",
+  "th": "ได้ 3 ดาวใน 5 ด่าน"
+ },
+ "trophy_room": {
+  "fr": "Salle des trophées",
+  "es": "Sala de trofeos",
+  "pt": "Sala de troféus",
+  "tr": "Kupa Odası",
+  "ru": "Зал трофеев",
+  "ja": "トロフィールーム",
+  "th": "ห้องถ้วยรางวัล"
+ },
+ "trophy_speed_200": {
+  "fr": "Étoile de vitesse",
+  "es": "Estrella veloz",
+  "pt": "Estrela veloz",
+  "tr": "Hız Yıldızı",
+  "ru": "Звезда скорости",
+  "ja": "スピードスター",
+  "th": "ดาวความเร็ว"
+ },
+ "trophy_speed_200_desc": {
+  "fr": "Marque 200 points dans un jeu",
+  "es": "Anota 200 puntos en cualquier juego",
+  "pt": "Faça 200 pontos em qualquer jogo",
+  "tr": "Herhangi bir oyunda 200 puan yap",
+  "ru": "Набери 200 очков в любой игре",
+  "ja": "どれかのゲームで200点をとる",
+  "th": "ทำคะแนนได้ 200 ในเกมใดก็ได้"
+ },
+ "trophy_speed_500": {
+  "fr": "Légende de la vitesse",
+  "es": "Leyenda veloz",
+  "pt": "Lenda veloz",
+  "tr": "Hız Efsanesi",
+  "ru": "Легенда скорости",
+  "ja": "スピードレジェンド",
+  "th": "ตำนานความเร็ว"
+ },
+ "trophy_speed_500_desc": {
+  "fr": "Marque 500 points dans un jeu",
+  "es": "Anota 500 puntos en cualquier juego",
+  "pt": "Faça 500 pontos em qualquer jogo",
+  "tr": "Herhangi bir oyunda 500 puan yap",
+  "ru": "Набери 500 очков в любой игре",
+  "ja": "どれかのゲームで500点をとる",
+  "th": "ทำคะแนนได้ 500 ในเกมใดก็ได้"
+ },
+ "trophy_star_10": {
+  "fr": "Petite étoile",
+  "es": "Primeras estrellas",
+  "pt": "Primeiras estrelas",
+  "tr": "İlk Yıldızlar",
+  "ru": "Звёздный старт",
+  "ja": "スターのたまご",
+  "th": "เริ่มสะสมดาว"
+ },
+ "trophy_star_10_desc": {
+  "fr": "Récolte 10 étoiles",
+  "es": "Reúne 10 estrellas",
+  "pt": "Junte 10 estrelas",
+  "tr": "10 yıldız topla",
+  "ru": "Собери 10 звёзд",
+  "ja": "星を10こ集める",
+  "th": "สะสมดาว 10 ดวง"
+ },
+ "trophy_star_150": {
+  "fr": "Roi des étoiles",
+  "es": "Rey de las estrellas",
+  "pt": "Rei das estrelas",
+  "tr": "Yıldız Kral",
+  "ru": "Король звёзд",
+  "ja": "星の王さま",
+  "th": "ราชาดาว"
+ },
+ "trophy_star_150_desc": {
+  "fr": "Récolte 150 étoiles",
+  "es": "Reúne 150 estrellas",
+  "pt": "Junte 150 estrelas",
+  "tr": "150 yıldız topla",
+  "ru": "Собери 150 звёзд",
+  "ja": "星を150こ集める",
+  "th": "สะสมดาว 150 ดวง"
+ },
+ "trophy_star_300": {
+  "fr": "Étoile galactique",
+  "es": "Estrella galáctica",
+  "pt": "Estrela da galáxia",
+  "tr": "Galaksi Yıldızı",
+  "ru": "Звезда галактики",
+  "ja": "ギャラクシースター",
+  "th": "ดาวแห่งกาแล็กซี"
+ },
+ "trophy_star_300_desc": {
+  "fr": "Récolte 300 étoiles",
+  "es": "Reúne 300 estrellas",
+  "pt": "Junte 300 estrelas",
+  "tr": "300 yıldız topla",
+  "ru": "Собери 300 звёзд",
+  "ja": "星を300こ集める",
+  "th": "สะสมดาว 300 ดวง"
+ },
+ "trophy_star_50": {
+  "fr": "Collectionneur d'étoiles",
+  "es": "Cazaestrellas",
+  "pt": "Caçador de estrelas",
+  "tr": "Yıldız Toplayıcı",
+  "ru": "Собиратель звёзд",
+  "ja": "星あつめ名人",
+  "th": "นักสะสมดาว"
+ },
+ "trophy_star_50_desc": {
+  "fr": "Récolte 50 étoiles",
+  "es": "Reúne 50 estrellas",
+  "pt": "Junte 50 estrelas",
+  "tr": "50 yıldız topla",
+  "ru": "Собери 50 звёзд",
+  "ja": "星を50こ集める",
+  "th": "สะสมดาว 50 ดวง"
+ },
+ "trophy_veryhard_fearless": {
+  "fr": "Intrépide",
+  "es": "Sin miedo",
+  "pt": "Sem medo",
+  "tr": "Korkusuz",
+  "ru": "Бесстрашный",
+  "ja": "こわいものなし",
+  "th": "ใจกล้า"
+ },
+ "trophy_veryhard_fearless_desc": {
+  "fr": "Réussis 3 niveaux très difficiles",
+  "es": "Supera 3 niveles muy difíciles",
+  "pt": "Vença 3 níveis muito difíceis",
+  "tr": "3 Çok Zor seviyeyi geç",
+  "ru": "Пройди 3 очень сложных уровня",
+  "ja": "とてもむずかしいレベルを3こクリア",
+  "th": "ผ่านด่านยากมาก 3 ด่าน"
+ },
+ "trophy_veryhard_unstoppable": {
+  "fr": "Inarrêtable",
+  "es": "Imparable",
+  "pt": "Imparável",
+  "tr": "Durdurulamaz",
+  "ru": "Неудержимый",
+  "ja": "とまらない！",
+  "th": "หยุดไม่อยู่"
+ },
+ "trophy_veryhard_unstoppable_desc": {
+  "fr": "Réussis 8 niveaux très difficiles",
+  "es": "Supera 8 niveles muy difíciles",
+  "pt": "Vença 8 níveis muito difíceis",
+  "tr": "8 Çok Zor seviyeyi geç",
+  "ru": "Пройди 8 очень сложных уровней",
+  "ja": "とてもむずかしいレベルを8こクリア",
+  "th": "ผ่านด่านยากมาก 8 ด่าน"
+ },
+ "true_false": {
+  "fr": "Vrai ou faux ?",
+  "es": "¿Verdadero o falso?",
+  "pt": "Verdadeiro ou falso?",
+  "tr": "Doğru mu Yanlış mı?",
+  "ru": "Верно или нет?",
+  "ja": "○か×か？",
+  "th": "จริงหรือเท็จ?"
+ },
+ "true_false_desc": {
+  "fr": "Repère les mensonges rusés !",
+  "es": "¡Descubre las mentiras astutas!",
+  "pt": "Descubra as mentirinhas!",
+  "tr": "Sinsi yalanları yakala!",
+  "ru": "Поймай хитрый обман!",
+  "ja": "ずるいウソを見やぶろう！",
+  "th": "จับผิดคำโกหกแสนแสบ!"
+ },
+ "g_diff_easy": {
+  "fr": "Facile",
+  "es": "Fácil",
+  "pt": "Fácil",
+  "tr": "Kolay",
+  "ru": "Лёгкий",
+  "ja": "やさしい",
+  "th": "ง่าย"
+ },
+ "g_diff_medium": {
+  "fr": "Moyen",
+  "es": "Medio",
+  "pt": "Médio",
+  "tr": "Orta",
+  "ru": "Средний",
+  "ja": "ふつう",
+  "th": "ปานกลาง"
+ },
+ "g_diff_hard": {
+  "fr": "Difficile",
+  "es": "Difícil",
+  "pt": "Difícil",
+  "tr": "Zor",
+  "ru": "Сложный",
+  "ja": "むずかしい",
+  "th": "ยาก"
+ },
+ "g_diff_very_hard": {
+  "fr": "Très difficile",
+  "es": "Muy difícil",
+  "pt": "Muito difícil",
+  "tr": "Çok zor",
+  "ru": "Очень сложный",
+  "ja": "とてもむずかしい",
+  "th": "ยากมาก"
+ }
+}
