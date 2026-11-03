@@ -71,7 +71,7 @@ fun SetScreen(
     AbBackground(AbWorld.Meadow, Modifier.fillMaxSize())
     Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         AbTopBar(
-            title = uiState.pageTitle,
+            title = uiState.pageLevel?.let { stringResource(R.string.practice_pages_of_level, it) } ?: stringResource(R.string.practice_pages_of_level_generic),
             onBack = onBackClick,
             modifier = Modifier.padding(
                 start = DeviceInfo.screenHorizontalPadding(),

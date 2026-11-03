@@ -17,6 +17,8 @@ import com.jigar.me.ui.view.ab.hintInk
 import com.jigar.me.ui.view.home.screens.abacus_practice.do_practice.viewmodels.AbacusDoPracticeUiState
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 /**
  * The hint card (a sticky note) with the formula, or the multiplication table row, that goes with the step being worked
@@ -52,10 +54,7 @@ fun AbacusFormulaItem(uiState: AbacusDoPracticeUiState) {
 
                         // Formula Hint (with Carry)
                         Text(
-                            text = buildString {
-                                if (item.isCarryFormula) append("Carry: ")
-                                append(formulaHint)
-                            },
+                            text = if (item.isCarryFormula) stringResource(R.string.practice_carry_hint, formulaHint) else formulaHint,
                             style = abFixedStyle(hintSize, FontWeight.ExtraBold),
                             color = colors.hintInk
                         )

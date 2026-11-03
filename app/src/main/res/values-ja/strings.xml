@@ -37,6 +37,32 @@
     <string name="question_display_options">表示のオプション</string>
     <string name="sorry">ざんねん！</string>
     <string name="start_new_challenge">あたらしいチャレンジをはじめる</string>
+    <!-- m12_practice -->
+    <string name="practice_pages_of_level">レベル%1$dのページ</string>
+    <string name="practice_pages_of_level_generic">レベルのページ</string>
+    <string name="practice_level_label">レベル%1$d</string>
+    <string name="practice_abacus_no">そろばん %1$d番</string>
+    <string name="practice_carry_hint">くり上がり：%1$s</string>
+    <string name="practice_use_left_hand">&lt;b>左手&lt;/b>で珠を動かそう</string>
+    <string name="practice_use_right_hand">&lt;b>右手&lt;/b>で珠を動かそう</string>
+    <string name="critter_chick">ひよこ</string>
+    <string name="critter_bunny">うさぎ</string>
+    <string name="critter_kitten">こねこ</string>
+    <string name="critter_puppy">こいぬ</string>
+    <string name="critter_panda">パンダ</string>
+    <string name="critter_fox">きつね</string>
+    <string name="critter_owl">ふくろう</string>
+    <string name="critter_lion">ライオン</string>
+    <string name="critter_unicorn">ユニコーン</string>
+    <string name="critter_dragon">ドラゴン</string>
+    <string name="final_answer">最終の答え</string>
+    <string name="formal_exam">本番テスト</string>
+    <string name="list_of_abacus">そろばん一覧</string>
+    <string name="login_to_track_progress">ログインして成長を見よう！</string>
+    <string name="practice_of_abacus">そろばん練習</string>
+    <string name="step_by_step">ステップごとの答え</string>
+    <string name="timer_on">タイマーON</string>
+    <string name="txt_set_completed_msg">このセットをクリアしたよ！</string>
     <!-- m1_settings -->
     <string name="background_music_volume">BGMの音量</string>
     <string name="change_voice_setting">音声設定を変更</string>

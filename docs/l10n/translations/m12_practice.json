@@ -1,0 +1,227 @@
+{
+ "practice_pages_of_level": {
+  "fr": "Pages du niveau %1$d",
+  "es": "Páginas del nivel %1$d",
+  "pt": "Páginas do nível %1$d",
+  "tr": "Seviye %1$d sayfaları",
+  "ru": "Страницы уровня %1$d",
+  "ja": "レベル%1$dのページ",
+  "th": "หน้าของระดับ %1$d"
+ },
+ "practice_pages_of_level_generic": {
+  "fr": "Pages du niveau",
+  "es": "Páginas del nivel",
+  "pt": "Páginas do nível",
+  "tr": "Seviye sayfaları",
+  "ru": "Страницы уровня",
+  "ja": "レベルのページ",
+  "th": "หน้าของระดับ"
+ },
+ "practice_level_label": {
+  "fr": "Niveau %1$d",
+  "es": "Nivel %1$d",
+  "pt": "Nível %1$d",
+  "tr": "Seviye %1$d",
+  "ru": "Уровень %1$d",
+  "ja": "レベル%1$d",
+  "th": "ระดับ %1$d"
+ },
+ "practice_abacus_no": {
+  "fr": "Boulier n° %1$d",
+  "es": "Ábaco n.º %1$d",
+  "pt": "Ábaco n.º %1$d",
+  "tr": "Abaküs No: %1$d",
+  "ru": "Абакус № %1$d",
+  "ja": "そろばん %1$d番",
+  "th": "ลูกคิดที่ %1$d"
+ },
+ "practice_carry_hint": {
+  "fr": "Retenue : %1$s",
+  "es": "Llevada: %1$s",
+  "pt": "Vai um: %1$s",
+  "tr": "Eldeki: %1$s",
+  "ru": "Перенос: %1$s",
+  "ja": "くり上がり：%1$s",
+  "th": "ทด: %1$s"
+ },
+ "practice_use_left_hand": {
+  "fr": "Utilise ta <b>main gauche</b> pour déplacer les boules",
+  "es": "Usa tu <b>mano izquierda</b> para mover las cuentas",
+  "pt": "Use sua <b>mão esquerda</b> para mover as contas",
+  "tr": "Boncukları hareket ettirmek için <b>sol elini</b> kullan",
+  "ru": "Двигай бусины <b>левой рукой</b>",
+  "ja": "<b>左手</b>で珠を動かそう",
+  "th": "ใช้ <b>มือซ้าย</b> เลื่อนลูกคิด"
+ },
+ "practice_use_right_hand": {
+  "fr": "Utilise ta <b>main droite</b> pour déplacer les boules",
+  "es": "Usa tu <b>mano derecha</b> para mover las cuentas",
+  "pt": "Use sua <b>mão direita</b> para mover as contas",
+  "tr": "Boncukları hareket ettirmek için <b>sağ elini</b> kullan",
+  "ru": "Двигай бусины <b>правой рукой</b>",
+  "ja": "<b>右手</b>で珠を動かそう",
+  "th": "ใช้ <b>มือขวา</b> เลื่อนลูกคิด"
+ },
+ "critter_chick": {
+  "fr": "Poussin",
+  "es": "Pollito",
+  "pt": "Pintinho",
+  "tr": "Civciv",
+  "ru": "Цыплёнок",
+  "ja": "ひよこ",
+  "th": "ลูกเจี๊ยบ"
+ },
+ "critter_bunny": {
+  "fr": "Lapin",
+  "es": "Conejito",
+  "pt": "Coelhinho",
+  "tr": "Tavşan",
+  "ru": "Зайчик",
+  "ja": "うさぎ",
+  "th": "กระต่าย"
+ },
+ "critter_kitten": {
+  "fr": "Chaton",
+  "es": "Gatito",
+  "pt": "Gatinho",
+  "tr": "Kedi",
+  "ru": "Котёнок",
+  "ja": "こねこ",
+  "th": "ลูกแมว"
+ },
+ "critter_puppy": {
+  "fr": "Chiot",
+  "es": "Cachorro",
+  "pt": "Cachorrinho",
+  "tr": "Köpek",
+  "ru": "Щенок",
+  "ja": "こいぬ",
+  "th": "ลูกสุนัข"
+ },
+ "critter_panda": {
+  "fr": "Panda",
+  "es": "Panda",
+  "pt": "Panda",
+  "tr": "Panda",
+  "ru": "Панда",
+  "ja": "パンダ",
+  "th": "แพนด้า"
+ },
+ "critter_fox": {
+  "fr": "Renard",
+  "es": "Zorro",
+  "pt": "Raposa",
+  "tr": "Tilki",
+  "ru": "Лиса",
+  "ja": "きつね",
+  "th": "จิ้งจอก"
+ },
+ "critter_owl": {
+  "fr": "Hibou",
+  "es": "Búho",
+  "pt": "Coruja",
+  "tr": "Baykuş",
+  "ru": "Сова",
+  "ja": "ふくろう",
+  "th": "นกฮูก"
+ },
+ "critter_lion": {
+  "fr": "Lion",
+  "es": "León",
+  "pt": "Leão",
+  "tr": "Aslan",
+  "ru": "Лев",
+  "ja": "ライオン",
+  "th": "สิงโต"
+ },
+ "critter_unicorn": {
+  "fr": "Licorne",
+  "es": "Unicornio",
+  "pt": "Unicórnio",
+  "tr": "Tek Boynuzlu At",
+  "ru": "Единорог",
+  "ja": "ユニコーン",
+  "th": "ยูนิคอร์น"
+ },
+ "critter_dragon": {
+  "fr": "Dragon",
+  "es": "Dragón",
+  "pt": "Dragão",
+  "tr": "Ejderha",
+  "ru": "Дракон",
+  "ja": "ドラゴン",
+  "th": "มังกร"
+ },
+ "final_answer": {
+  "fr": "Réponse finale",
+  "es": "Respuesta final",
+  "pt": "Resposta final",
+  "tr": "Son cevap",
+  "ru": "Итоговый ответ",
+  "ja": "最終の答え",
+  "th": "คำตอบสุดท้าย"
+ },
+ "formal_exam": {
+  "fr": "Examen officiel",
+  "es": "Examen formal",
+  "pt": "Prova formal",
+  "tr": "Resmî sınav",
+  "ru": "Формальный экзамен",
+  "ja": "本番テスト",
+  "th": "ข้อสอบทางการ"
+ },
+ "list_of_abacus": {
+  "fr": "Liste des exercices de boulier",
+  "es": "Lista de ábacos",
+  "pt": "Lista de ábacos",
+  "tr": "Abaküs listesi",
+  "ru": "Список абакусов",
+  "ja": "そろばん一覧",
+  "th": "รายการลูกคิด"
+ },
+ "login_to_track_progress": {
+  "fr": "Connectez-vous pour suivre les progrès !",
+  "es": "¡Inicia sesión para seguir tu progreso!",
+  "pt": "Faça login para acompanhar seu progresso!",
+  "tr": "İlerlemeni takip etmek için giriş yap!",
+  "ru": "Войдите, чтобы следить за прогрессом!",
+  "ja": "ログインして成長を見よう！",
+  "th": "เข้าสู่ระบบเพื่อติดตามความก้าวหน้า!"
+ },
+ "practice_of_abacus": {
+  "fr": "Entraînement au boulier",
+  "es": "Práctica de ábaco",
+  "pt": "Prática de ábaco",
+  "tr": "Abaküs alıştırması",
+  "ru": "Практика на абакусе",
+  "ja": "そろばん練習",
+  "th": "ฝึกลูกคิด"
+ },
+ "step_by_step": {
+  "fr": "Réponse pas à pas",
+  "es": "Respuesta paso a paso",
+  "pt": "Resposta passo a passo",
+  "tr": "Adım adım cevap",
+  "ru": "Ответ по шагам",
+  "ja": "ステップごとの答え",
+  "th": "คำตอบทีละขั้น"
+ },
+ "timer_on": {
+  "fr": "Chrono activé",
+  "es": "Cronómetro activado",
+  "pt": "Cronômetro ligado",
+  "tr": "Zamanlayıcı açık",
+  "ru": "Таймер включён",
+  "ja": "タイマーON",
+  "th": "จับเวลาเปิดอยู่"
+ },
+ "txt_set_completed_msg": {
+  "fr": "Tu as terminé cette série de boulier !",
+  "es": "¡Completaste este set de ábaco!",
+  "pt": "Você completou este conjunto de ábaco!",
+  "tr": "Bu abaküs setini tamamladın!",
+  "ru": "Ты выполнил этот набор!",
+  "ja": "このセットをクリアしたよ！",
+  "th": "คุณทำชุดลูกคิดนี้เสร็จแล้ว!"
+ }
+}

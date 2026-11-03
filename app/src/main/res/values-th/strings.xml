@@ -37,6 +37,32 @@
     <string name="question_display_options">ตัวเลือกการแสดงผล</string>
     <string name="sorry">เสียใจด้วย!</string>
     <string name="start_new_challenge">เริ่มชาเลนจ์ใหม่</string>
+    <!-- m12_practice -->
+    <string name="practice_pages_of_level">หน้าของระดับ %1$d</string>
+    <string name="practice_pages_of_level_generic">หน้าของระดับ</string>
+    <string name="practice_level_label">ระดับ %1$d</string>
+    <string name="practice_abacus_no">ลูกคิดที่ %1$d</string>
+    <string name="practice_carry_hint">ทด: %1$s</string>
+    <string name="practice_use_left_hand">ใช้ &lt;b>มือซ้าย&lt;/b> เลื่อนลูกคิด</string>
+    <string name="practice_use_right_hand">ใช้ &lt;b>มือขวา&lt;/b> เลื่อนลูกคิด</string>
+    <string name="critter_chick">ลูกเจี๊ยบ</string>
+    <string name="critter_bunny">กระต่าย</string>
+    <string name="critter_kitten">ลูกแมว</string>
+    <string name="critter_puppy">ลูกสุนัข</string>
+    <string name="critter_panda">แพนด้า</string>
+    <string name="critter_fox">จิ้งจอก</string>
+    <string name="critter_owl">นกฮูก</string>
+    <string name="critter_lion">สิงโต</string>
+    <string name="critter_unicorn">ยูนิคอร์น</string>
+    <string name="critter_dragon">มังกร</string>
+    <string name="final_answer">คำตอบสุดท้าย</string>
+    <string name="formal_exam">ข้อสอบทางการ</string>
+    <string name="list_of_abacus">รายการลูกคิด</string>
+    <string name="login_to_track_progress">เข้าสู่ระบบเพื่อติดตามความก้าวหน้า!</string>
+    <string name="practice_of_abacus">ฝึกลูกคิด</string>
+    <string name="step_by_step">คำตอบทีละขั้น</string>
+    <string name="timer_on">จับเวลาเปิดอยู่</string>
+    <string name="txt_set_completed_msg">คุณทำชุดลูกคิดนี้เสร็จแล้ว!</string>
     <!-- m1_settings -->
     <string name="background_music_volume">ระดับเสียงเพลงพื้นหลัง</string>
     <string name="change_voice_setting">เปลี่ยนการตั้งค่าเสียงพูด</string>

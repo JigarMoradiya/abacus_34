@@ -43,6 +43,32 @@
     <string name="question_display_options">Opções de exibição</string>
     <string name="sorry">Que pena!</string>
     <string name="start_new_challenge">Começar um novo desafio</string>
+    <!-- m12_practice -->
+    <string name="practice_pages_of_level">Páginas do nível %1$d</string>
+    <string name="practice_pages_of_level_generic">Páginas do nível</string>
+    <string name="practice_level_label">Nível %1$d</string>
+    <string name="practice_abacus_no">Ábaco n.º %1$d</string>
+    <string name="practice_carry_hint">Vai um: %1$s</string>
+    <string name="practice_use_left_hand">Use sua &lt;b>mão esquerda&lt;/b> para mover as contas</string>
+    <string name="practice_use_right_hand">Use sua &lt;b>mão direita&lt;/b> para mover as contas</string>
+    <string name="critter_chick">Pintinho</string>
+    <string name="critter_bunny">Coelhinho</string>
+    <string name="critter_kitten">Gatinho</string>
+    <string name="critter_puppy">Cachorrinho</string>
+    <string name="critter_panda">Panda</string>
+    <string name="critter_fox">Raposa</string>
+    <string name="critter_owl">Coruja</string>
+    <string name="critter_lion">Leão</string>
+    <string name="critter_unicorn">Unicórnio</string>
+    <string name="critter_dragon">Dragão</string>
+    <string name="final_answer">Resposta final</string>
+    <string name="formal_exam">Prova formal</string>
+    <string name="list_of_abacus">Lista de ábacos</string>
+    <string name="login_to_track_progress">Faça login para acompanhar seu progresso!</string>
+    <string name="practice_of_abacus">Prática de ábaco</string>
+    <string name="step_by_step">Resposta passo a passo</string>
+    <string name="timer_on">Cronômetro ligado</string>
+    <string name="txt_set_completed_msg">Você completou este conjunto de ábaco!</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Volume da música de fundo</string>
     <string name="change_voice_setting">Alterar a voz</string>

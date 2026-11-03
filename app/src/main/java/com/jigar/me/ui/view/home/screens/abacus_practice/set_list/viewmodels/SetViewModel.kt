@@ -24,41 +24,8 @@ class SetViewModel @Inject constructor(
 
     // Declared BEFORE init: init starts load(), and when the database answers at once the result is delivered inside the constructor,
     // before a property declared further down has its value (title was null then: "Parameter specified as non-null is null: pageTitle").
-    val title : String = when (name) {
-        "level1" -> {
-            "Pages of Level 1"
-        }
-        "level2" -> {
-            "Pages of Level 2"
-        }
-        "level3" -> {
-            "Pages of Level 3"
-        }
-        "level4" -> {
-            "Pages of Level 4"
-        }
-        "level5" -> {
-            "Pages of Level 5"
-        }
-        "level6" -> {
-            "Pages of Level 6"
-        }
-        "level7" -> {
-            "Pages of Level 7"
-        }
-        "level8" -> {
-            "Pages of Level 8"
-        }
-        "level9" -> {
-            "Pages of Level 9"
-        }
-        "level10" -> {
-            "Pages of Level 10"
-        }
-        else -> {
-            "Pages of Level"
-        }
-    }
+    /** 1..10 for "level1".."level10", else null (the title then has no number); the words are read when drawn. */
+    val pageLevel: Int? = name?.removePrefix("level")?.toIntOrNull()?.takeIf { name.startsWith("level") && it in 1..10 }
 
     init {
         levelCategoryId?.let {
@@ -71,7 +38,7 @@ class SetViewModel @Inject constructor(
             updateState_ {
                 copy(
                     levelName = name?:"",
-                    pageTitle = title,
+                    pageLevel = pageLevel,
                     pages = pages,
                     showNoData = pages.isEmpty(),
                     isLoading = false

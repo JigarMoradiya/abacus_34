@@ -1629,4 +1629,23 @@
     <string name="exercise_q_counter">Q %1$d / %2$d</string>
     <string name="exercise_answer_label">Answer:</string>
     <string name="exercise_use_keypad_or_abacus">Use &lt;b>the keypad&lt;/b> or &lt;b>the abacus&lt;/b> to give your answer!</string>
+
+    <!-- Abacus Practice screens (M12) -->
+    <string name="practice_pages_of_level">Pages of Level %1$d</string>
+    <string name="practice_pages_of_level_generic">Pages of Level</string>
+    <string name="practice_level_label">Level %1$d</string>
+    <string name="practice_abacus_no">Abacus No : %1$d</string>
+    <string name="practice_carry_hint">Carry: %1$s</string>
+    <string name="practice_use_left_hand">Use your &lt;b>Left Hand&lt;/b> to move beads</string>
+    <string name="practice_use_right_hand">Use your &lt;b>Right Hand&lt;/b> to move beads</string>
+    <string name="critter_chick">Chick</string>
+    <string name="critter_bunny">Bunny</string>
+    <string name="critter_kitten">Kitten</string>
+    <string name="critter_puppy">Puppy</string>
+    <string name="critter_panda">Panda</string>
+    <string name="critter_fox">Fox</string>
+    <string name="critter_owl">Owl</string>
+    <string name="critter_lion">Lion</string>
+    <string name="critter_unicorn">Unicorn</string>
+    <string name="critter_dragon">Dragon</string>
 </resources>

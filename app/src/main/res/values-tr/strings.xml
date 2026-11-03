@@ -40,6 +40,32 @@
     <string name="question_display_options">Görüntüleme seçenekleri</string>
     <string name="sorry">Üzgünüm!</string>
     <string name="start_new_challenge">Yeni meydan okumayı başlat</string>
+    <!-- m12_practice -->
+    <string name="practice_pages_of_level">Seviye %1$d sayfaları</string>
+    <string name="practice_pages_of_level_generic">Seviye sayfaları</string>
+    <string name="practice_level_label">Seviye %1$d</string>
+    <string name="practice_abacus_no">Abaküs No: %1$d</string>
+    <string name="practice_carry_hint">Eldeki: %1$s</string>
+    <string name="practice_use_left_hand">Boncukları hareket ettirmek için &lt;b>sol elini&lt;/b> kullan</string>
+    <string name="practice_use_right_hand">Boncukları hareket ettirmek için &lt;b>sağ elini&lt;/b> kullan</string>
+    <string name="critter_chick">Civciv</string>
+    <string name="critter_bunny">Tavşan</string>
+    <string name="critter_kitten">Kedi</string>
+    <string name="critter_puppy">Köpek</string>
+    <string name="critter_panda">Panda</string>
+    <string name="critter_fox">Tilki</string>
+    <string name="critter_owl">Baykuş</string>
+    <string name="critter_lion">Aslan</string>
+    <string name="critter_unicorn">Tek Boynuzlu At</string>
+    <string name="critter_dragon">Ejderha</string>
+    <string name="final_answer">Son cevap</string>
+    <string name="formal_exam">Resmî sınav</string>
+    <string name="list_of_abacus">Abaküs listesi</string>
+    <string name="login_to_track_progress">İlerlemeni takip etmek için giriş yap!</string>
+    <string name="practice_of_abacus">Abaküs alıştırması</string>
+    <string name="step_by_step">Adım adım cevap</string>
+    <string name="timer_on">Zamanlayıcı açık</string>
+    <string name="txt_set_completed_msg">Bu abaküs setini tamamladın!</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Arka plan müziği ses düzeyi</string>
     <string name="change_voice_setting">Ses ayarını değiştir</string>

@@ -46,6 +46,32 @@
     <string name="question_display_options">Параметры показа</string>
     <string name="sorry">Увы!</string>
     <string name="start_new_challenge">Начать новый вызов</string>
+    <!-- m12_practice -->
+    <string name="practice_pages_of_level">Страницы уровня %1$d</string>
+    <string name="practice_pages_of_level_generic">Страницы уровня</string>
+    <string name="practice_level_label">Уровень %1$d</string>
+    <string name="practice_abacus_no">Абакус № %1$d</string>
+    <string name="practice_carry_hint">Перенос: %1$s</string>
+    <string name="practice_use_left_hand">Двигай бусины &lt;b>левой рукой&lt;/b></string>
+    <string name="practice_use_right_hand">Двигай бусины &lt;b>правой рукой&lt;/b></string>
+    <string name="critter_chick">Цыплёнок</string>
+    <string name="critter_bunny">Зайчик</string>
+    <string name="critter_kitten">Котёнок</string>
+    <string name="critter_puppy">Щенок</string>
+    <string name="critter_panda">Панда</string>
+    <string name="critter_fox">Лиса</string>
+    <string name="critter_owl">Сова</string>
+    <string name="critter_lion">Лев</string>
+    <string name="critter_unicorn">Единорог</string>
+    <string name="critter_dragon">Дракон</string>
+    <string name="final_answer">Итоговый ответ</string>
+    <string name="formal_exam">Формальный экзамен</string>
+    <string name="list_of_abacus">Список абакусов</string>
+    <string name="login_to_track_progress">Войдите, чтобы следить за прогрессом!</string>
+    <string name="practice_of_abacus">Практика на абакусе</string>
+    <string name="step_by_step">Ответ по шагам</string>
+    <string name="timer_on">Таймер включён</string>
+    <string name="txt_set_completed_msg">Ты выполнил этот набор!</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Громкость фоновой музыки</string>
     <string name="change_voice_setting">Настройки голоса</string>

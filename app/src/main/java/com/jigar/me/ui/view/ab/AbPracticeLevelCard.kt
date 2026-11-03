@@ -44,6 +44,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jigar.me.ui.view.home.screens.abacus_practice.level_list.viewmodels.LevelProgress
 import kotlin.math.max
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 // The three progress tints are the iOS colour sets CustomStepByStep / CustomFinalAnswer / CustomFormalExam, which are the
 // same values as R.color.step_by_step_answer / final_answer / formal_exam.
@@ -65,7 +67,7 @@ fun AbPracticeLevelCard(
     level: Int,
     progress: LevelProgress,
     modifier: Modifier = Modifier,
-    levelLabel: String = "Level $level",
+    levelLabel: String = stringResource(R.string.practice_level_label, level),
     onClick: () -> Unit,
 ) {
     val colors = LocalAbColors.current
@@ -133,7 +135,7 @@ fun AbPracticeLevelCard(
 
                 // Name tag under the character
                 Text(
-                    look.name,
+                    stringResource(look.nameRes),
                     style = abFixedStyle(w * 0.07f, FontWeight.ExtraBold),
                     color = look.deep.abDarkened(0.35f),
                     maxLines = 1,
