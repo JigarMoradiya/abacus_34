@@ -1261,4 +1261,76 @@
     <string name="review_gate_enjoying">Yes, Enjoying! 😄</string>
     <string name="badge_made_in_india">Made in India</string>
     <string name="badge_safe_ad_free">Safe &amp; Ad-Free</string>
+
+    <!-- Home (M4) -->
+    <string name="home_choose_activity">Choose your activity and start learning!</string>
+    <string name="billing_issue_title">There\'s a problem with your payment</string>
+    <string name="billing_issue_message">Your Premium renewal did not go through. Update your payment method so your child keeps every level, game and report.</string>
+    <string name="billing_issue_fix">Fix payment</string>
+    <string name="billing_issue_later">Later</string>
+    <string name="home_app_title" translatable="false">Vedaavi Abacus</string>
+    <string name="home_tagline">Count • Calculate • Conquer</string>
+    <plurals name="home_streak_days">
+        <item quantity="one">%1$d Day</item>
+        <item quantity="other">%1$d Days</item>
+    </plurals>
+    <string name="home_streak_subtitle">"Streak  •  Best: %1$d"</string>
+    <string name="streak_badge_explorer">Explorer</string>
+    <string name="streak_badge_weekly_warrior">Weekly Warrior</string>
+    <string name="streak_badge_dedicated_learner">Dedicated Learner</string>
+    <string name="streak_badge_math_champion">Math Champion</string>
+    <string name="streak_badge_monthly_master">Monthly Master</string>
+    <string name="streak_badge_super_star">Super Star</string>
+    <string name="streak_badge_legend">Legend</string>
+    <string name="streak_badge_champion">Champion</string>
+    <string name="home_milestone_title">Milestone Reached!</string>
+    <string name="home_milestone_days">%1$d-Day Streak</string>
+    <string name="home_milestone_earned">You earned the \"%1$s\" badge! 🎉</string>
+    <string name="home_milestone_keep_going">Awesome! Keep Going 🔥</string>
+    <string name="home_notif_title">Stay on Top of Learning</string>
+    <string name="home_notif_message">Allow notifications so the app can gently remind your child when it\'s the perfect time to practice. You\'re always in control — turn off anytime from Settings.</string>
+    <string name="home_notif_step1">Tap \"Go to Settings\" below</string>
+    <string name="home_notif_step2">Tap \"Notifications\"</string>
+    <string name="home_notif_step3">Turn on \"Allow Notifications\"</string>
+    <string name="home_notif_go_settings">Go to Settings</string>
+    <string name="home_notif_later">Maybe Later</string>
+    <string name="home_level_label">LEVEL %1$d</string>
+    <string name="level_name_bead_basics">Bead Basics</string>
+    <string name="level_name_add_subtract">Add &amp; Subtract</string>
+    <string name="level_name_speed_anzan">Speed &amp; Anzan</string>
+    <string name="level_name_times_tables">Times Tables</string>
+    <string name="home_promo_also_try">Also try</string>
+    <string name="home_promo_english" translatable="false">Vedaavi English</string>
+    <string name="home_promo_tagline">Fun learning for kids</string>
+    <string name="home_promo_also_try_english">Also try: Vedaavi English!</string>
+    <string name="home_week_title">This Week</string>
+    <string name="home_week_summary">%1$d solved · %2$dd</string>
+    <string name="home_week_tap">Tap to view</string>
+    <string name="home_week_header">📊 This Week</string>
+    <string name="home_week_problems">Problems</string>
+    <string name="home_week_days">Days</string>
+    <string name="home_week_streak">Streak</string>
+    <string name="home_week_great">Great progress this week — keep it going! 🌟</string>
+    <string name="home_week_full_history">See the full report history ›</string>
+    <string name="home_week_none">No practice yet this week</string>
+    <string name="home_week_none_hint">Practice together to build this week\'s report!</string>
+    <string name="home_hi_champ">Hi Champ!</string>
+    <string name="home_lets_count">Let\'s count &amp; calculate!</string>
+    <string name="home_logo_description">Abacus</string>
+    <string name="menu_free_mode_title">Abacus Free Mode</string>
+    <string name="menu_games_title">Math Game Zone</string>
+    <string name="menu_exam_title">Math Exam</string>
+    <string name="menu_video_title">Video Tutorial</string>
+    <string name="menu_free_mode_subtitle">Perfect for beginner</string>
+    <string name="menu_practice_title">Abacus Practice</string>
+    <string name="menu_practice_subtitle">Learn math in easy way</string>
+    <string name="menu_exercise_title">Abacus Exercise</string>
+    <string name="menu_exercise_subtitle">Boost speed and accuracy</string>
+    <string name="menu_games_subtitle">Unlock your mind\'s fun</string>
+    <string name="menu_exam_subtitle">Be ready, be confident</string>
+    <string name="menu_challenge_title">Custom Challenge</string>
+    <string name="menu_challenge_subtitle">Your rules, your challenge!</string>
+    <string name="menu_store_title">Purchase Store</string>
+    <string name="menu_store_subtitle">Unlock new math adventures!</string>
+    <string name="menu_video_subtitle">Learn abacus visually</string>
 </resources>

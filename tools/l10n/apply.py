@@ -29,11 +29,13 @@ def raw(t):
 
 def main():
     source = {el.get('name'): el.tag for el in ET.parse(os.path.join(RES, 'values', 'strings.xml')).getroot() if el.get('name')}
-    data = {lang: [] for lang in LANGS}; problems = 0
+    data = {lang: [] for lang in LANGS}; problems = 0; seen = {}
     for path in MASTERS:
         module = os.path.basename(path)[:-5]
         for key, entry in json.load(open(path, encoding='utf-8')).items():
             if key not in source: print(f'{module}: key "{key}" is not in res/values/strings.xml'); problems += 1; continue
+            if key in seen: print(f'{module}: key "{key}" is already translated in {seen[key]}'); problems += 1; continue
+            seen[key] = module
             for lang in LANGS:
                 if 'plural' in entry:
                     if lang in entry['plural']: data[lang].append((module, key, entry['plural'][lang]))

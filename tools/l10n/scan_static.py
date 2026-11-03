@@ -37,6 +37,8 @@ def classify(text):
     """Return a list of (line_no, kind, snippet) found in one Kotlin file."""
     out, stack = [], []          # stack of scope kinds: class/object/enum/fun/other
     in_block_comment = False
+    pending_kind = None          # a class / enum header whose `{` is on a later line (constructor over several lines)
+    open_static = 0              # > 0 while inside a multi-line `val x = listOf(` / mapOf( / arrayOf( at object / top level
     for i, raw in enumerate(text.splitlines(), 1):
         line = raw.strip()
         if in_block_comment:
@@ -51,8 +53,17 @@ def classify(text):
         strs = [m.group(1) for m in STR.finditer(code) if visible(m.group(1))]
         # decide the scope this line belongs to
         top = stack[-1] if stack else 'file'
+        if open_static > 0:
+            if strs and 'log' not in code.lower(): out.append((i, 'static: list/map field', code[:140]))
+            open_static += code.count('(') - code.count(')')
+            if open_static <= 0: open_static = 0
+            continue
+        if top in ('object', 'file') and re.match(r'^(private |internal |public )?(const )?(val|var) \w+(\s*:\s*[\w<>?,\s]+)?\s*=\s*(listOf|mapOf|arrayOf|arrayListOf|setOf)\(', code) and code.count('(') > code.count(')'):
+            open_static = code.count('(') - code.count(')')
+            if strs: out.append((i, 'static: list/map field', code[:140]))
+            continue
         is_decl_val = re.match(r'^(private |internal |public |protected )?(const )?(val|var) \w+(\s*:\s*[\w<>?,\s]+)?\s*(=|by)', code) is not None
-        is_enum_entry = top == 'enum' and re.match(r'^[A-Z][A-Z0-9_]*\s*(\(|,|;|$)', code) is not None
+        is_enum_entry = top == 'enum' and re.match(r'^[A-Z][A-Za-z0-9_]*\s*(\(|,|;|$)', code) is not None
         is_default_param = re.search(r'\b(val|var) \w+\s*:\s*String\??\s*=\s*"', code) is not None
         if strs and top != 'fun' and 'log' not in code.lower() and 'route' not in code.lower():
             if 'const val' in code and ('"' in code): kind = 'static: const val'
@@ -67,7 +78,14 @@ def classify(text):
             out.append((i, 'literal in code', code[:140]))
         # update scope stack from braces on this line (simple but good enough for a finder)
         opens, closes = code.count('{'), code.count('}')
-        if opens:
+        if not opens and not pending_kind:
+            m = re.search(r'\b(enum class|data class|class|interface|object)\b', code)
+            if m and code.count('(') > code.count(')') and not code.startswith(('val ', 'var ', 'return ')): pending_kind = 'enum' if m.group(1) == 'enum class' else ('object' if m.group(1) == 'object' else 'class')
+        if opens and pending_kind and not re.search(r'\b(class|object|interface|fun)\b', code):
+            for _ in range(opens): stack.append(pending_kind)
+            pending_kind = None
+        elif opens:
+            pending_kind = None
             if re.search(r'\bcompanion object\b|\bobject\b', code): kind_new = 'object'
             elif re.search(r'\benum class\b', code): kind_new = 'enum'
             elif re.search(r'\b(class|interface)\b', code): kind_new = 'class'

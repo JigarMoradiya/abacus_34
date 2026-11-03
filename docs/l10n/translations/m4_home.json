@@ -1,0 +1,835 @@
+{
+ "home_choose_activity": {
+  "fr": "Choisis une activité et commence à apprendre !",
+  "es": "¡Elige una actividad y empieza a aprender!",
+  "pt": "Escolha uma atividade e comece a aprender!",
+  "tr": "Bir etkinlik seç ve öğrenmeye başla!",
+  "ru": "Выбери занятие и начни учиться!",
+  "ja": "アクティビティを選んで、学びはじめよう！",
+  "th": "เลือกกิจกรรม แล้วเริ่มเรียนกันเลย!",
+  "ar": "اختر نشاطًا وابدأ التعلم!"
+ },
+ "billing_issue_title": {
+  "fr": "Un problème est survenu avec votre paiement",
+  "es": "Hay un problema con tu pago",
+  "pt": "Há um problema com o seu pagamento",
+  "tr": "Ödemenizle ilgili bir sorun var",
+  "ru": "Возникла проблема с оплатой",
+  "ja": "お支払いに問題があります",
+  "th": "มีปัญหากับการชำระเงินของคุณ",
+  "ar": "هناك مشكلة في الدفع"
+ },
+ "billing_issue_message": {
+  "fr": "Le renouvellement de votre abonnement Premium n'a pas abouti. Mettez à jour votre moyen de paiement pour que votre enfant garde tous les niveaux, jeux et rapports.",
+  "es": "No se pudo renovar tu suscripción Premium. Actualiza tu método de pago para que tu hijo o hija conserve todos los niveles, juegos e informes.",
+  "pt": "A renovação do seu Premium não foi concluída. Atualize sua forma de pagamento para que seu filho continue com todos os níveis, jogos e relatórios.",
+  "tr": "Premium yenilemeniz tamamlanamadı. Çocuğunuzun tüm seviyelere, oyunlara ve raporlara erişimini kaybetmemesi için ödeme yönteminizi güncelleyin.",
+  "ru": "Не удалось продлить подписку Premium. Обновите способ оплаты, чтобы ребёнок сохранил доступ ко всем уровням, играм и отчётам.",
+  "ja": "Premiumの更新ができませんでした。お子さまがすべてのレベル・ゲーム・レポートを使い続けられるよう、お支払い方法を更新してください。",
+  "th": "ต่ออายุ Premium ไม่สำเร็จ โปรดอัปเดตวิธีการชำระเงิน เพื่อให้ลูกของคุณใช้ได้ทุกระดับ เกม และรายงานต่อไป",
+  "ar": "تعذّر تجديد اشتراك Premium. حدّث طريقة الدفع حتى يحتفظ طفلك بجميع المستويات والألعاب والتقارير."
+ },
+ "billing_issue_fix": {
+  "fr": "Corriger le paiement",
+  "es": "Corregir el pago",
+  "pt": "Corrigir pagamento",
+  "tr": "Ödemeyi düzelt",
+  "ru": "Исправить оплату",
+  "ja": "支払いを修正",
+  "th": "แก้ไขการชำระเงิน",
+  "ar": "إصلاح الدفع"
+ },
+ "billing_issue_later": {
+  "fr": "Plus tard",
+  "es": "Más tarde",
+  "pt": "Depois",
+  "tr": "Sonra",
+  "ru": "Позже",
+  "ja": "あとで",
+  "th": "ภายหลัง",
+  "ar": "لاحقًا"
+ },
+ "home_tagline": {
+  "fr": "Compte • Calcule • Gagne",
+  "es": "Cuenta • Calcula • Conquista",
+  "pt": "Conte • Calcule • Conquiste",
+  "tr": "Say • Hesapla • Fethet",
+  "ru": "Считай • Вычисляй • Побеждай",
+  "ja": "かぞえて • けいさん • せいふく",
+  "th": "นับ • คำนวณ • พิชิต",
+  "ar": "عُدّ • احسب • انتصر"
+ },
+ "home_streak_subtitle": {
+  "fr": "Série • Record : %1$d",
+  "es": "Racha • Mejor: %1$d",
+  "pt": "Sequência • Melhor: %1$d",
+  "tr": "Seri • En iyi: %1$d",
+  "ru": "Серия • Рекорд: %1$d",
+  "ja": "連続日数 • 最高: %1$d",
+  "th": "ต่อเนื่องกัน • สูงสุด: %1$d",
+  "ar": "تتابع • الأفضل: %1$d"
+ },
+ "streak_badge_explorer": {
+  "fr": "Explorateur",
+  "es": "Explorador",
+  "pt": "Explorador",
+  "tr": "Kaşif",
+  "ru": "Исследователь",
+  "ja": "たんけんか",
+  "th": "นักสำรวจ",
+  "ar": "المستكشف"
+ },
+ "streak_badge_weekly_warrior": {
+  "fr": "Guerrier de la semaine",
+  "es": "Guerrero semanal",
+  "pt": "Guerreiro da semana",
+  "tr": "Haftalık Savaşçı",
+  "ru": "Воин недели",
+  "ja": "週間ファイター",
+  "th": "นักสู้ประจำสัปดาห์",
+  "ar": "محارب الأسبوع"
+ },
+ "streak_badge_dedicated_learner": {
+  "fr": "Élève assidu",
+  "es": "Aprendiz dedicado",
+  "pt": "Aprendiz dedicado",
+  "tr": "Azimli Öğrenci",
+  "ru": "Усердный ученик",
+  "ja": "がんばり屋さん",
+  "th": "นักเรียนผู้มุ่งมั่น",
+  "ar": "المتعلم المجتهد"
+ },
+ "streak_badge_math_champion": {
+  "fr": "Champion des maths",
+  "es": "Campeón de mates",
+  "pt": "Campeão da matemática",
+  "tr": "Matematik Şampiyonu",
+  "ru": "Чемпион математики",
+  "ja": "算数チャンピオン",
+  "th": "แชมป์คณิตศาสตร์",
+  "ar": "بطل الرياضيات"
+ },
+ "streak_badge_monthly_master": {
+  "fr": "Maître du mois",
+  "es": "Maestro del mes",
+  "pt": "Mestre do mês",
+  "tr": "Ayın Ustası",
+  "ru": "Мастер месяца",
+  "ja": "月間マスター",
+  "th": "ปรมาจารย์ประจำเดือน",
+  "ar": "سيد الشهر"
+ },
+ "streak_badge_super_star": {
+  "fr": "Super star",
+  "es": "Superestrella",
+  "pt": "Superestrela",
+  "tr": "Süper Yıldız",
+  "ru": "Суперзвезда",
+  "ja": "スーパースター",
+  "th": "ซูเปอร์สตาร์",
+  "ar": "نجم خارق"
+ },
+ "streak_badge_legend": {
+  "fr": "Légende",
+  "es": "Leyenda",
+  "pt": "Lenda",
+  "tr": "Efsane",
+  "ru": "Легенда",
+  "ja": "レジェンド",
+  "th": "ตำนาน",
+  "ar": "أسطورة"
+ },
+ "streak_badge_champion": {
+  "fr": "Champion",
+  "es": "Campeón",
+  "pt": "Campeão",
+  "tr": "Şampiyon",
+  "ru": "Чемпион",
+  "ja": "チャンピオン",
+  "th": "แชมป์",
+  "ar": "بطل"
+ },
+ "home_milestone_title": {
+  "fr": "Étape franchie !",
+  "es": "¡Meta alcanzada!",
+  "pt": "Meta alcançada!",
+  "tr": "Hedefe ulaştın!",
+  "ru": "Достигнута новая цель!",
+  "ja": "マイルストーン達成！",
+  "th": "ถึงหมุดหมายแล้ว!",
+  "ar": "حققت إنجازًا جديدًا!"
+ },
+ "home_milestone_days": {
+  "fr": "Série de %1$d jours",
+  "es": "Racha de %1$d días",
+  "pt": "Sequência de %1$d dias",
+  "tr": "%1$d günlük seri",
+  "ru": "Серия: %1$d дн.",
+  "ja": "%1$d日連続",
+  "th": "ต่อเนื่อง %1$d วัน",
+  "ar": "تتابع %1$d يوم"
+ },
+ "home_milestone_earned": {
+  "fr": "Tu as gagné le badge « %1$s » ! 🎉",
+  "es": "¡Has ganado la insignia «%1$s»! 🎉",
+  "pt": "Você ganhou o selo \"%1$s\"! 🎉",
+  "tr": "\"%1$s\" rozetini kazandın! 🎉",
+  "ru": "Тебе достался значок «%1$s»! 🎉",
+  "ja": "「%1$s」バッジをゲット！🎉",
+  "th": "คุณได้รับเหรียญ “%1$s” แล้ว! 🎉",
+  "ar": "حصلت على شارة «%1$s»! 🎉"
+ },
+ "home_milestone_keep_going": {
+  "fr": "Génial ! Continue 🔥",
+  "es": "¡Genial! Sigue así 🔥",
+  "pt": "Demais! Continue assim 🔥",
+  "tr": "Harika! Devam et 🔥",
+  "ru": "Отлично! Так держать 🔥",
+  "ja": "すごい！ つづけよう 🔥",
+  "th": "เยี่ยมมาก! ไปต่อกันเลย 🔥",
+  "ar": "رائع! واصل 🔥"
+ },
+ "home_notif_title": {
+  "fr": "Gardez le rythme d'apprentissage",
+  "es": "Mantén el ritmo del aprendizaje",
+  "pt": "Mantenha o aprendizado em dia",
+  "tr": "Öğrenmeyi aksatmayın",
+  "ru": "Не пропускайте занятия",
+  "ja": "学習を続けましょう",
+  "th": "ไม่พลาดทุกการเรียนรู้",
+  "ar": "حافظ على استمرار التعلم"
+ },
+ "home_notif_message": {
+  "fr": "Autorisez les notifications pour que l'application rappelle gentiment à votre enfant quand c'est le bon moment de s'entraîner. Vous gardez toujours le contrôle : désactivez-les à tout moment dans les réglages.",
+  "es": "Permite las notificaciones para que la app le recuerde amablemente a tu hijo o hija el mejor momento para practicar. Tú siempre tienes el control: puedes desactivarlas cuando quieras en Ajustes.",
+  "pt": "Permita as notificações para que o app lembre gentilmente seu filho do melhor momento para praticar. Você está sempre no controle: desative quando quiser nas Configurações.",
+  "tr": "Uygulamanın, çocuğunuza alıştırma için en uygun zamanı nazikçe hatırlatabilmesi için bildirimlere izin verin. Kontrol her zaman sizde: istediğiniz zaman Ayarlar'dan kapatabilirsiniz.",
+  "ru": "Разрешите уведомления, чтобы приложение мягко напоминало ребёнку, когда пора заниматься. Вы всегда всё контролируете: отключить их можно в любой момент в настройках.",
+  "ja": "通知を許可すると、練習にぴったりの時間にお子さまへやさしくお知らせします。いつでも設定からオフにできます。",
+  "th": "อนุญาตการแจ้งเตือนเพื่อให้แอปเตือนลูกของคุณเบา ๆ เมื่อถึงเวลาฝึกที่เหมาะสม คุณควบคุมได้เสมอ ปิดได้ทุกเมื่อในการตั้งค่า",
+  "ar": "اسمح بالإشعارات ليذكّر التطبيق طفلك بلطف بالوقت المناسب للتدرّب. أنت المتحكم دائمًا، ويمكنك إيقافها في أي وقت من الإعدادات."
+ },
+ "home_notif_step1": {
+  "fr": "Touchez « Aller aux réglages » ci-dessous",
+  "es": "Toca «Ir a Ajustes» abajo",
+  "pt": "Toque em \"Ir para Configurações\" abaixo",
+  "tr": "Aşağıdaki \"Ayarlara git\" düğmesine dokunun",
+  "ru": "Нажмите «Перейти в настройки» ниже",
+  "ja": "下の「設定を開く」をタップ",
+  "th": "แตะ “ไปที่การตั้งค่า” ด้านล่าง",
+  "ar": "اضغط «الانتقال إلى الإعدادات» أدناه"
+ },
+ "home_notif_step2": {
+  "fr": "Touchez « Notifications »",
+  "es": "Toca «Notificaciones»",
+  "pt": "Toque em \"Notificações\"",
+  "tr": "\"Bildirimler\"e dokunun",
+  "ru": "Нажмите «Уведомления»",
+  "ja": "「通知」をタップ",
+  "th": "แตะ “การแจ้งเตือน”",
+  "ar": "اضغط «الإشعارات»"
+ },
+ "home_notif_step3": {
+  "fr": "Activez « Autoriser les notifications »",
+  "es": "Activa «Permitir notificaciones»",
+  "pt": "Ative \"Permitir notificações\"",
+  "tr": "\"Bildirimlere izin ver\"i açın",
+  "ru": "Включите «Разрешить уведомления»",
+  "ja": "「通知を許可」をオンにする",
+  "th": "เปิด “อนุญาตการแจ้งเตือน”",
+  "ar": "فعّل «السماح بالإشعارات»"
+ },
+ "home_notif_go_settings": {
+  "fr": "Aller aux réglages",
+  "es": "Ir a Ajustes",
+  "pt": "Ir para Configurações",
+  "tr": "Ayarlara git",
+  "ru": "Перейти в настройки",
+  "ja": "設定を開く",
+  "th": "ไปที่การตั้งค่า",
+  "ar": "الانتقال إلى الإعدادات"
+ },
+ "home_notif_later": {
+  "fr": "Peut-être plus tard",
+  "es": "Quizás luego",
+  "pt": "Talvez depois",
+  "tr": "Belki sonra",
+  "ru": "Может, позже",
+  "ja": "あとで",
+  "th": "ไว้ทีหลัง",
+  "ar": "ربما لاحقًا"
+ },
+ "home_level_label": {
+  "fr": "NIVEAU %1$d",
+  "es": "NIVEL %1$d",
+  "pt": "NÍVEL %1$d",
+  "tr": "SEVİYE %1$d",
+  "ru": "УРОВЕНЬ %1$d",
+  "ja": "レベル %1$d",
+  "th": "ระดับ %1$d",
+  "ar": "المستوى %1$d"
+ },
+ "level_name_bead_basics": {
+  "fr": "Bases des boules",
+  "es": "Lo básico de las cuentas",
+  "pt": "Básico das contas",
+  "tr": "Boncuk Temelleri",
+  "ru": "Основы бусин",
+  "ja": "たまの基本",
+  "th": "พื้นฐานลูกคิด",
+  "ar": "أساسيات الخرز"
+ },
+ "level_name_add_subtract": {
+  "fr": "Additions et soustractions",
+  "es": "Sumar y restar",
+  "pt": "Somar e subtrair",
+  "tr": "Toplama ve Çıkarma",
+  "ru": "Сложение и вычитание",
+  "ja": "たし算・ひき算",
+  "th": "บวกและลบ",
+  "ar": "الجمع والطرح"
+ },
+ "level_name_speed_anzan": {
+  "fr": "Vitesse et Anzan",
+  "es": "Velocidad y Anzan",
+  "pt": "Velocidade e Anzan",
+  "tr": "Hız ve Anzan",
+  "ru": "Скорость и Анзан",
+  "ja": "スピードとアンザン",
+  "th": "ความเร็วและอันซัง",
+  "ar": "السرعة والأنزان"
+ },
+ "level_name_times_tables": {
+  "fr": "Tables de multiplication",
+  "es": "Tablas de multiplicar",
+  "pt": "Tabuadas",
+  "tr": "Çarpım Tabloları",
+  "ru": "Таблица умножения",
+  "ja": "九九",
+  "th": "สูตรคูณ",
+  "ar": "جداول الضرب"
+ },
+ "home_promo_also_try": {
+  "fr": "Essayez aussi",
+  "es": "Prueba también",
+  "pt": "Experimente também",
+  "tr": "Bunu da deneyin",
+  "ru": "Попробуйте также",
+  "ja": "こちらもどうぞ",
+  "th": "ลองด้วย",
+  "ar": "جرّب أيضًا"
+ },
+ "home_promo_tagline": {
+  "fr": "Apprendre en s'amusant",
+  "es": "Aprender jugando",
+  "pt": "Aprender se divertindo",
+  "tr": "Çocuklar için eğlenceli öğrenme",
+  "ru": "Весёлое обучение для детей",
+  "ja": "楽しく学べる子ども向けアプリ",
+  "th": "เรียนสนุกสำหรับเด็ก",
+  "ar": "تعلّم ممتع للأطفال"
+ },
+ "home_promo_also_try_english": {
+  "fr": "Essayez aussi : Vedaavi English !",
+  "es": "Prueba también: ¡Vedaavi English!",
+  "pt": "Experimente também: Vedaavi English!",
+  "tr": "Bunu da deneyin: Vedaavi English!",
+  "ru": "Попробуйте также: Vedaavi English!",
+  "ja": "こちらもどうぞ：Vedaavi English！",
+  "th": "ลองด้วย: Vedaavi English!",
+  "ar": "جرّب أيضًا: Vedaavi English!"
+ },
+ "home_week_title": {
+  "fr": "Cette semaine",
+  "es": "Esta semana",
+  "pt": "Esta semana",
+  "tr": "Bu hafta",
+  "ru": "На этой неделе",
+  "ja": "今週",
+  "th": "สัปดาห์นี้",
+  "ar": "هذا الأسبوع"
+ },
+ "home_week_summary": {
+  "fr": "%1$d résolus · %2$d j",
+  "es": "%1$d resueltos · %2$d d",
+  "pt": "%1$d resolvidos · %2$d d",
+  "tr": "%1$d çözüldü · %2$d g",
+  "ru": "решено: %1$d · %2$d дн.",
+  "ja": "%1$d問 · %2$d日",
+  "th": "แก้ได้ %1$d · %2$d วัน",
+  "ar": "تم حل %1$d · %2$d يوم"
+ },
+ "home_week_tap": {
+  "fr": "Touchez pour voir",
+  "es": "Toca para ver",
+  "pt": "Toque para ver",
+  "tr": "Görmek için dokunun",
+  "ru": "Нажмите, чтобы открыть",
+  "ja": "タップして表示",
+  "th": "แตะเพื่อดู",
+  "ar": "اضغط للعرض"
+ },
+ "home_week_header": {
+  "fr": "📊 Cette semaine",
+  "es": "📊 Esta semana",
+  "pt": "📊 Esta semana",
+  "tr": "📊 Bu hafta",
+  "ru": "📊 На этой неделе",
+  "ja": "📊 今週",
+  "th": "📊 สัปดาห์นี้",
+  "ar": "📊 هذا الأسبوع"
+ },
+ "home_week_problems": {
+  "fr": "Problèmes",
+  "es": "Problemas",
+  "pt": "Problemas",
+  "tr": "Soru",
+  "ru": "Задачи",
+  "ja": "もんだい",
+  "th": "โจทย์",
+  "ar": "المسائل"
+ },
+ "home_week_days": {
+  "fr": "Jours",
+  "es": "Días",
+  "pt": "Dias",
+  "tr": "Gün",
+  "ru": "Дни",
+  "ja": "日数",
+  "th": "วัน",
+  "ar": "الأيام"
+ },
+ "home_week_streak": {
+  "fr": "Série",
+  "es": "Racha",
+  "pt": "Sequência",
+  "tr": "Seri",
+  "ru": "Серия",
+  "ja": "連続",
+  "th": "ต่อเนื่อง",
+  "ar": "التتابع"
+ },
+ "home_week_great": {
+  "fr": "Beaux progrès cette semaine, continuez ! 🌟",
+  "es": "¡Gran progreso esta semana, sigan así! 🌟",
+  "pt": "Ótimo progresso esta semana, continuem assim! 🌟",
+  "tr": "Bu hafta harika ilerleme, böyle devam! 🌟",
+  "ru": "Отличный прогресс на этой неделе — так держать! 🌟",
+  "ja": "今週もよくがんばりました。この調子で続けましょう！🌟",
+  "th": "สัปดาห์นี้ก้าวหน้าดีมาก ไปต่อกันเลย! 🌟",
+  "ar": "تقدّم رائع هذا الأسبوع، واصلوا! 🌟"
+ },
+ "home_week_full_history": {
+  "fr": "Voir tout l'historique des rapports ›",
+  "es": "Ver todo el historial de informes ›",
+  "pt": "Ver todo o histórico de relatórios ›",
+  "tr": "Tüm rapor geçmişini gör ›",
+  "ru": "Открыть всю историю отчётов ›",
+  "ja": "レポート履歴をすべて見る ›",
+  "th": "ดูประวัติรายงานทั้งหมด ›",
+  "ar": "عرض سجل التقارير كاملًا ›"
+ },
+ "home_week_none": {
+  "fr": "Pas encore d'entraînement cette semaine",
+  "es": "Aún no hay práctica esta semana",
+  "pt": "Ainda sem prática esta semana",
+  "tr": "Bu hafta henüz alıştırma yok",
+  "ru": "На этой неделе занятий ещё не было",
+  "ja": "今週はまだ練習していません",
+  "th": "สัปดาห์นี้ยังไม่ได้ฝึก",
+  "ar": "لا يوجد تدريب هذا الأسبوع بعد"
+ },
+ "home_week_none_hint": {
+  "fr": "Entraînez-vous ensemble pour construire le rapport de la semaine !",
+  "es": "¡Practiquen juntos para crear el informe de esta semana!",
+  "pt": "Pratiquem juntos para montar o relatório desta semana!",
+  "tr": "Bu haftanın raporunu oluşturmak için birlikte alıştırma yapın!",
+  "ru": "Занимайтесь вместе, и появится отчёт за эту неделю!",
+  "ja": "いっしょに練習して、今週のレポートを作りましょう！",
+  "th": "ฝึกด้วยกันเพื่อสร้างรายงานประจำสัปดาห์นี้!",
+  "ar": "تدرّبوا معًا لإنشاء تقرير هذا الأسبوع!"
+ },
+ "home_hi_champ": {
+  "fr": "Salut champion !",
+  "es": "¡Hola, campeón!",
+  "pt": "Oi, campeão!",
+  "tr": "Selam şampiyon!",
+  "ru": "Привет, чемпион!",
+  "ja": "やあ、チャンピオン！",
+  "th": "สวัสดีแชมป์!",
+  "ar": "مرحبًا يا بطل!"
+ },
+ "home_lets_count": {
+  "fr": "Comptons et calculons !",
+  "es": "¡A contar y calcular!",
+  "pt": "Vamos contar e calcular!",
+  "tr": "Hadi sayalım ve hesaplayalım!",
+  "ru": "Давай считать и вычислять!",
+  "ja": "かぞえて、けいさんしよう！",
+  "th": "มานับและคำนวณกัน!",
+  "ar": "هيا نعدّ ونحسب!"
+ },
+ "home_logo_description": {
+  "fr": "Boulier",
+  "es": "Ábaco",
+  "pt": "Ábaco",
+  "tr": "Abaküs",
+  "ru": "Абакус",
+  "ja": "そろばん",
+  "th": "ลูกคิด",
+  "ar": "الأباكوس"
+ },
+ "menu_free_mode_subtitle": {
+  "fr": "Idéal pour débuter",
+  "es": "Ideal para principiantes",
+  "pt": "Perfeito para iniciantes",
+  "tr": "Yeni başlayanlar için ideal",
+  "ru": "Идеально для начинающих",
+  "ja": "はじめての人にぴったり",
+  "th": "เหมาะสำหรับมือใหม่",
+  "ar": "مثالي للمبتدئين"
+ },
+ "menu_practice_title": {
+  "fr": "Entraînement",
+  "es": "Práctica",
+  "pt": "Prática",
+  "tr": "Alıştırma",
+  "ru": "Практика",
+  "ja": "そろばん練習",
+  "th": "ฝึกลูกคิด",
+  "ar": "تدريب"
+ },
+ "menu_practice_subtitle": {
+  "fr": "Apprendre les maths facilement",
+  "es": "Aprende mates de forma fácil",
+  "pt": "Aprenda matemática de um jeito fácil",
+  "tr": "Matematiği kolayca öğren",
+  "ru": "Учим математику легко",
+  "ja": "かんたんに算数をまなぶ",
+  "th": "เรียนคณิตศาสตร์แบบง่าย ๆ",
+  "ar": "تعلّم الرياضيات بطريقة سهلة"
+ },
+ "menu_exercise_title": {
+  "fr": "Exercices",
+  "es": "Ejercicios",
+  "pt": "Exercícios",
+  "tr": "Egzersiz",
+  "ru": "Упражнения",
+  "ja": "トレーニング",
+  "th": "แบบฝึกหัด",
+  "ar": "تمارين"
+ },
+ "menu_exercise_subtitle": {
+  "fr": "Gagne en vitesse et en précision",
+  "es": "Mejora tu velocidad y precisión",
+  "pt": "Aumente velocidade e precisão",
+  "tr": "Hız ve doğruluğunu artır",
+  "ru": "Быстрее и точнее",
+  "ja": "スピードと正確さをアップ",
+  "th": "เพิ่มความเร็วและความแม่นยำ",
+  "ar": "عزّز السرعة والدقة"
+ },
+ "math_game_zone": {
+  "fr": "Zone de jeux de maths",
+  "es": "Zona de juegos matemáticos",
+  "pt": "Zona de jogos de matemática",
+  "tr": "Matematik Oyun Alanı",
+  "ru": "Игровая зона математики",
+  "ja": "算数ゲームゾーン",
+  "th": "โซนเกมคณิตศาสตร์",
+  "ar": "منطقة ألعاب الرياضيات"
+ },
+ "menu_games_subtitle": {
+  "fr": "Libère le plaisir de ton esprit",
+  "es": "Despierta la diversión de tu mente",
+  "pt": "Libere a diversão da sua mente",
+  "tr": "Zihnin eğlencesinin kilidini aç",
+  "ru": "Раскрой веселье своего ума",
+  "ja": "頭が楽しくなるゲーム",
+  "th": "ปลดล็อกความสนุกของสมอง",
+  "ar": "افتح متعة عقلك"
+ },
+ "math_exam": {
+  "fr": "Examen de maths",
+  "es": "Examen de matemáticas",
+  "pt": "Prova de matemática",
+  "tr": "Matematik Sınavı",
+  "ru": "Экзамен по математике",
+  "ja": "算数テスト",
+  "th": "ข้อสอบคณิตศาสตร์",
+  "ar": "اختبار الرياضيات"
+ },
+ "menu_exam_subtitle": {
+  "fr": "Sois prêt, sois confiant",
+  "es": "Prepárate y ten confianza",
+  "pt": "Esteja pronto, tenha confiança",
+  "tr": "Hazır ol, kendine güven",
+  "ru": "Будь готов и уверен",
+  "ja": "じゅんびして、じしんをもとう",
+  "th": "พร้อมและมั่นใจ",
+  "ar": "كن مستعدًا وواثقًا"
+ },
+ "menu_challenge_title": {
+  "fr": "Défi sur mesure",
+  "es": "Reto a medida",
+  "pt": "Desafio próprio",
+  "tr": "Özel Görev",
+  "ru": "Свой вызов",
+  "ja": "オリジナル",
+  "th": "ชาเลนจ์ของฉัน",
+  "ar": "تحدٍّ مخصص"
+ },
+ "menu_challenge_subtitle": {
+  "fr": "Tes règles, ton défi !",
+  "es": "¡Tus reglas, tu reto!",
+  "pt": "Suas regras, seu desafio!",
+  "tr": "Kurallar senin, meydan okuma senin!",
+  "ru": "Твои правила, твой вызов!",
+  "ja": "ルールもチャレンジも自分で決めよう！",
+  "th": "กติกาของคุณ ชาเลนจ์ของคุณ!",
+  "ar": "قواعدك، تحدّيك!"
+ },
+ "menu_store_title": {
+  "fr": "Boutique",
+  "es": "Tienda",
+  "pt": "Loja",
+  "tr": "Mağaza",
+  "ru": "Магазин",
+  "ja": "ストア",
+  "th": "ร้านค้า",
+  "ar": "المتجر"
+ },
+ "menu_store_subtitle": {
+  "fr": "Débloque de nouvelles aventures mathématiques !",
+  "es": "¡Desbloquea nuevas aventuras matemáticas!",
+  "pt": "Desbloqueie novas aventuras matemáticas!",
+  "tr": "Yeni matematik maceralarının kilidini aç!",
+  "ru": "Открой новые математические приключения!",
+  "ja": "新しい算数のぼうけんを解放しよう！",
+  "th": "ปลดล็อกการผจญภัยคณิตศาสตร์ใหม่ ๆ!",
+  "ar": "افتح مغامرات رياضية جديدة!"
+ },
+ "video_tutorials": {
+  "fr": "Tutoriel vidéo",
+  "es": "Videotutorial",
+  "pt": "Vídeo tutorial",
+  "tr": "Video Eğitimi",
+  "ru": "Видеоурок",
+  "ja": "動画チュートリアル",
+  "th": "วิดีโอสอน",
+  "ar": "فيديو تعليمي"
+ },
+ "menu_video_subtitle": {
+  "fr": "Apprends le boulier en images",
+  "es": "Aprende ábaco viendo",
+  "pt": "Aprenda ábaco com vídeos",
+  "tr": "Abaküsü görerek öğren",
+  "ru": "Учись абакусу наглядно",
+  "ja": "見てわかる、そろばん",
+  "th": "เรียนลูกคิดผ่านภาพ",
+  "ar": "تعلّم الأباكوس بالصورة"
+ },
+ "abacus_free_mode": {
+  "fr": "Boulier en mode libre",
+  "es": "Ábaco en modo libre",
+  "pt": "Ábaco em modo livre",
+  "tr": "Abaküs Serbest Mod",
+  "ru": "Свободный режим абакуса",
+  "ja": "そろばんフリーモード",
+  "th": "ลูกคิดโหมดอิสระ",
+  "ar": "وضع الأباكوس الحر"
+ },
+ "parent": {
+  "fr": "Parent",
+  "es": "Padres",
+  "pt": "Pais",
+  "tr": "Ebeveyn",
+  "ru": "Родителям",
+  "ja": "保護者",
+  "th": "ผู้ปกครอง",
+  "ar": "الوالدين"
+ },
+ "settings": {
+  "fr": "Réglages",
+  "es": "Ajustes",
+  "pt": "Ajustes",
+  "tr": "Ayarlar",
+  "ru": "Настройки",
+  "ja": "設定",
+  "th": "ตั้งค่า",
+  "ar": "الإعدادات"
+ },
+ "close": {
+  "fr": "Fermer",
+  "es": "Cerrar",
+  "pt": "Fechar",
+  "tr": "Kapat",
+  "ru": "Закрыть",
+  "ja": "閉じる",
+  "th": "ปิด",
+  "ar": "إغلاق"
+ },
+ "my_account": {
+  "fr": "Mon compte",
+  "es": "Mi cuenta",
+  "pt": "Minha conta",
+  "tr": "Hesabım",
+  "ru": "Мой аккаунт",
+  "ja": "マイアカウント",
+  "th": "บัญชีของฉัน",
+  "ar": "حسابي"
+ },
+ "no_move_later": {
+  "fr": "Non, plus tard",
+  "es": "No, mover después",
+  "pt": "Não, mover depois",
+  "tr": "Hayır, sonra taşı",
+  "ru": "Нет, перенести позже",
+  "ja": "いいえ、あとで移行",
+  "th": "ไม่ ย้ายภายหลัง",
+  "ar": "لا، النقل لاحقًا"
+ },
+ "no_move_later_msg": {
+  "fr": "Impossible d'accéder aux fonctions d'achat avec cette connexion.",
+  "es": "No se puede acceder a las funciones de compra con este inicio de sesión.",
+  "pt": "Não é possível acessar os recursos de compra com este login.",
+  "tr": "Bu girişle satın alma özelliklerine erişilemiyor.",
+  "ru": "С этим входом функции покупки недоступны.",
+  "ja": "このログインでは購入機能を使えません。",
+  "th": "ไม่สามารถใช้ฟีเจอร์การซื้อกับการเข้าสู่ระบบนี้ได้",
+  "ar": "لا يمكن الوصول إلى ميزات الشراء بهذا الحساب."
+ },
+ "want_to_move_purchase_with_this_login": {
+  "fr": "Voulez-vous transférer l'achat vers cette connexion ?",
+  "es": "¿Quieres mover la compra a este inicio de sesión?",
+  "pt": "Deseja mover a compra para este login?",
+  "tr": "Satın alımı bu girişe taşımak ister misiniz?",
+  "ru": "Перенести покупку на этот аккаунт?",
+  "ja": "購入をこのログインに移しますか？",
+  "th": "ต้องการย้ายการซื้อมายังบัญชีนี้หรือไม่",
+  "ar": "هل تريد نقل عملية الشراء إلى هذا الحساب؟"
+ },
+ "welcome_to_abacus_application": {
+  "fr": "Bienvenue sur Vedaavi Learning",
+  "es": "Te damos la bienvenida a Vedaavi Learning",
+  "pt": "Boas-vindas ao Vedaavi Learning",
+  "tr": "Vedaavi Learning'e hoş geldiniz",
+  "ru": "Добро пожаловать в Vedaavi Learning",
+  "ja": "Vedaavi Learningへようこそ",
+  "th": "ยินดีต้อนรับสู่ Vedaavi Learning",
+  "ar": "مرحبًا بك في Vedaavi Learning"
+ },
+ "yes_i_want_to_move": {
+  "fr": "Oui, transférer",
+  "es": "Sí, quiero moverla",
+  "pt": "Sim, quero mover",
+  "tr": "Evet, taşımak istiyorum",
+  "ru": "Да, перенести",
+  "ja": "はい、移行します",
+  "th": "ใช่ ฉันต้องการย้าย",
+  "ar": "نعم، أريد النقل"
+ },
+ "your_device_purchases_is_associated_with_other_login": {
+  "fr": "Les achats de cet appareil sont déjà associés à une autre connexion !",
+  "es": "Las compras de este dispositivo ya están asociadas a otro inicio de sesión.",
+  "pt": "As compras deste dispositivo já estão associadas a outro login.",
+  "tr": "Bu cihazdaki satın alımlar zaten başka bir girişle ilişkili.",
+  "ru": "Покупки на этом устройстве уже связаны с другим аккаунтом.",
+  "ja": "このデバイスの購入は、すでに別のログインに紐づいています。",
+  "th": "การซื้อบนอุปกรณ์นี้ผูกกับบัญชีอื่นอยู่แล้ว",
+  "ar": "مشتريات هذا الجهاز مرتبطة بالفعل بحساب آخر."
+ },
+ "your_login_is_associated_with_other_purchases": {
+  "fr": "Cette connexion est déjà associée à d'autres achats !",
+  "es": "Este inicio de sesión ya está asociado a otras compras.",
+  "pt": "Este login já está associado a outras compras.",
+  "tr": "Bu giriş zaten başka satın alımlarla ilişkili.",
+  "ru": "Этот аккаунт уже связан с другими покупками.",
+  "ja": "このログインは、すでに別の購入に紐づいています。",
+  "th": "บัญชีนี้ผูกกับการซื้ออื่นอยู่แล้ว",
+  "ar": "هذا الحساب مرتبط بالفعل بمشتريات أخرى."
+ },
+ "home_streak_days": {
+  "plural": {
+   "fr": {
+    "one": "%1$d jour",
+    "many": "%1$d de jours",
+    "other": "%1$d jours"
+   },
+   "es": {
+    "one": "%1$d día",
+    "many": "%1$d de días",
+    "other": "%1$d días"
+   },
+   "pt": {
+    "one": "%1$d dia",
+    "many": "%1$d de dias",
+    "other": "%1$d dias"
+   },
+   "tr": {
+    "one": "%1$d gün",
+    "other": "%1$d gün"
+   },
+   "ru": {
+    "one": "%1$d день",
+    "few": "%1$d дня",
+    "many": "%1$d дней",
+    "other": "%1$d дня"
+   },
+   "ja": {
+    "other": "%1$d日"
+   },
+   "th": {
+    "other": "%1$d วัน"
+   },
+   "ar": {
+    "zero": "%1$d يوم",
+    "one": "يوم واحد",
+    "two": "يومان",
+    "few": "%1$d أيام",
+    "many": "%1$d يومًا",
+    "other": "%1$d يوم"
+   }
+  }
+ },
+ "menu_free_mode_title": {
+  "fr": "Boulier libre",
+  "es": "Ábaco libre",
+  "pt": "Ábaco livre",
+  "tr": "Serbest Mod",
+  "ru": "Свободный режим",
+  "ja": "フリーモード",
+  "th": "โหมดอิสระ",
+  "ar": "الوضع الحر"
+ },
+ "menu_games_title": {
+  "fr": "Jeux de maths",
+  "es": "Zona de juegos",
+  "pt": "Zona de jogos",
+  "tr": "Oyun Alanı",
+  "ru": "Игровая зона",
+  "ja": "算数ゲーム",
+  "th": "โซนเกม",
+  "ar": "ألعاب الرياضيات"
+ },
+ "menu_exam_title": {
+  "fr": "Examen de maths",
+  "es": "Examen de mates",
+  "pt": "Prova de mate",
+  "tr": "Matematik Sınavı",
+  "ru": "Экзамен",
+  "ja": "算数テスト",
+  "th": "ข้อสอบ",
+  "ar": "اختبار الرياضيات"
+ },
+ "menu_video_title": {
+  "fr": "Tutoriel vidéo",
+  "es": "Videotutorial",
+  "pt": "Vídeo aula",
+  "tr": "Video Eğitimi",
+  "ru": "Видеоурок",
+  "ja": "動画で学ぶ",
+  "th": "วิดีโอสอน",
+  "ar": "فيديو تعليمي"
+ }
+}

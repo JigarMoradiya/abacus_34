@@ -41,6 +41,7 @@ import com.jigar.me.ui.view.ab.LocalAbScale
 import com.jigar.me.ui.view.ab.abBlended
 import com.jigar.me.ui.view.ab.abChunkyFace
 import kotlin.math.min
+import androidx.compose.ui.res.stringResource
 
 /*
  * Small pieces of the restyled Home screen (mirror the private views at the bottom of the iOS `HomeView.swift`):
@@ -119,7 +120,7 @@ fun HomeSpeechBubble(modifier: Modifier = Modifier) {
             Sparkle(tone, (9 * s).dp)
             Box(Modifier.height((18 * s).dp), contentAlignment = Alignment.Center) {
                 Text(
-                    "Hi Champ!", color = colors.textPrimary, style = AbTypography.fixed(16f * s, FontWeight.ExtraBold),
+                    stringResource(R.string.home_hi_champ), color = colors.textPrimary, style = AbTypography.fixed(16f * s, FontWeight.ExtraBold),
                     maxLines = 1, modifier = Modifier.wrapContentHeight(unbounded = true),
                 )
             }
@@ -127,7 +128,7 @@ fun HomeSpeechBubble(modifier: Modifier = Modifier) {
         }
         Box(Modifier.height((13 * s).dp), contentAlignment = Alignment.Center) {
             Text(
-                "Let's count & calculate!", color = colors.textSecondary, style = AbTypography.fixed(10.5f * s, FontWeight.Bold),
+                stringResource(R.string.home_lets_count), color = colors.textSecondary, style = AbTypography.fixed(10.5f * s, FontWeight.Bold),
                 maxLines = 2, textAlign = TextAlign.Center, modifier = Modifier.wrapContentHeight(unbounded = true),
             )
         }

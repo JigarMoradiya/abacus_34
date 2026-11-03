@@ -134,6 +134,8 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens20
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens24
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens28
 import com.jigar.me.ui.view.home.theme.PrimaryBlue
+import androidx.compose.ui.res.pluralStringResource
+import androidx.annotation.StringRes
 
 // ── Pill shape ────────────────────────────────────────────────────────────────
 
@@ -390,7 +392,7 @@ fun HomeScreen(
 
                     // "Choose your activity" divider: rods fading out to the sides and a coloured pill with the sentence
                     HomeSectionDivider(
-                        text = "Choose your activity and start learning!",
+                        text = stringResource(R.string.home_choose_activity),
                         modifier = Modifier.padding(horizontal = Dimens16).padding(bottom = Dimens4)
                     )
 
@@ -615,10 +617,10 @@ fun HomeScreen(
         uiState.billingIssueUrl?.let { url ->
             val uriHandler = androidx.compose.ui.platform.LocalUriHandler.current
             com.jigar.me.ui.view.ab.AbConfirmDialog(
-                title = "There's a problem with your payment",
-                message = "Your Premium renewal did not go through. Update your payment method so your child keeps every level, game and report.",
-                positiveText = "Fix payment",
-                negativeText = "Later",
+                title = stringResource(R.string.billing_issue_title),
+                message = stringResource(R.string.billing_issue_message),
+                positiveText = stringResource(R.string.billing_issue_fix),
+                negativeText = stringResource(R.string.billing_issue_later),
                 destructive = false,
                 onNegative = { viewModel.dismissBillingIssue() },
                 onPositive = {
@@ -675,20 +677,20 @@ private fun HomeTopBar(
     ) {
         // Centre: app title with its tagline and the abacus emoji
         AbHeroTitle(
-            title = "Vedaavi Abacus",
-            tagline = "Count • Calculate • Conquer",
+            title = stringResource(R.string.home_app_title),
+            tagline = stringResource(R.string.home_tagline),
             taglineIcon = painterResource(R.drawable.abacus_emoji),
         )
 
         // Left: My Account pill
         AbButton(
-            text = "Parent", tone = AbTone.Primary, size = AbSize.Compact, icon = Icons.Default.Person,
+            text = stringResource(R.string.parent), tone = AbTone.Primary, size = AbSize.Compact, icon = Icons.Default.Person,
             modifier = Modifier.align(Alignment.CenterStart), onClick = onMyAccountClick,
         )
 
         // Right: Settings pill
         AbButton(
-            text = "Settings", tone = AbTone.Success, size = AbSize.Compact, icon = Icons.Default.Settings,
+            text = stringResource(R.string.settings), tone = AbTone.Success, size = AbSize.Compact, icon = Icons.Default.Settings,
             modifier = Modifier.align(Alignment.CenterEnd), onClick = onSettingsClick,
         )
     }
@@ -698,9 +700,9 @@ private fun HomeTopBar(
 
 @Composable
 private fun StreakCard(currentStreak: Int, bestStreak: Int, shields: Int = 0) {
-    val dayLabel = "$currentStreak Day${if (currentStreak == 1) "" else "s"}"
+    val dayLabel = pluralStringResource(R.plurals.home_streak_days, currentStreak, currentStreak)
     val shieldsStr = if (shields > 0) " " + "🛡️".repeat(shields) else ""
-    HomeStreakChip(title = dayLabel + shieldsStr, subtitle = "Streak  •  Best: $bestStreak")
+    HomeStreakChip(title = dayLabel + shieldsStr, subtitle = stringResource(R.string.home_streak_subtitle, bestStreak))
 }
 
 // ── Streak Reward Dialog ──────────────────────────────────────────────────────
@@ -709,7 +711,7 @@ private fun StreakCard(currentStreak: Int, bestStreak: Int, shields: Int = 0) {
 private fun StreakRewardDialog(milestone: Int, onDismiss: () -> Unit) {
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
-    val badgeName = AppConstants.Streak.milestoneNames[milestone] ?: "Champion"
+    val badgeName = stringResource(AppConstants.Streak.milestoneNameRes[milestone] ?: R.string.streak_badge_champion)
     LaunchedEffect(Unit) { AudioPlayerManager.playSoundClap() }
     val gold = Color(0xFFFFB800)
     val goldEdge = Color(0xFFB07A00)
@@ -748,7 +750,7 @@ private fun StreakRewardDialog(milestone: Int, onDismiss: () -> Unit) {
             ) { Text("🏆", fontSize = (44 * s).sp) }
 
             Text(
-                "Milestone Reached!",
+                stringResource(R.string.home_milestone_title),
                 style = AbTypography.title(s),
                 color = colors.accentOrange.let { if (colors.isDark) it else it.abDarkened(0.15f) },
             )
@@ -774,14 +776,14 @@ private fun StreakRewardDialog(milestone: Int, onDismiss: () -> Unit) {
             ) {
                 Image(painterResource(R.drawable.fire), null, Modifier.size(22.dp * s), contentScale = ContentScale.Fit)
                 Text(
-                    "$milestone-Day Streak",
+                    stringResource(R.string.home_milestone_days, milestone),
                     style = AbTypography.fixed(20f * s, FontWeight.ExtraBold).copy(shadow = Shadow(Color.Black.copy(alpha = 0.2f), Offset(0f, 1f), 0f)),
                     color = Color.White,
                 )
             }
 
             Text(
-                "You earned the \"$badgeName\" badge! 🎉",
+                stringResource(R.string.home_milestone_earned, badgeName),
                 style = AbTypography.body(s).copy(fontWeight = FontWeight.SemiBold),
                 color = colors.textSecondary,
                 textAlign = TextAlign.Center,
@@ -789,7 +791,7 @@ private fun StreakRewardDialog(milestone: Int, onDismiss: () -> Unit) {
             )
 
             AbButton(
-                text = "Awesome! Keep Going 🔥", tone = AbTone.Warning, size = AbSize.Medium, fillWidth = true,
+                text = stringResource(R.string.home_milestone_keep_going), tone = AbTone.Warning, size = AbSize.Medium, fillWidth = true,
                 modifier = Modifier.padding(top = 4.dp * s), onClick = onDismiss,
             )
         }
@@ -839,11 +841,11 @@ private fun NotificationPermissionSheet(
                     // the title and its line below sit close: Baloo's line box leaves a wide empty band between two lines
                     Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy((-4).dp * s)) {
                         Text(
-                            "Stay on Top of Learning", style = AbTypography.headline(s), color = colors.accentPink,
+                            stringResource(R.string.home_notif_title), style = AbTypography.headline(s), color = colors.accentPink,
                             textAlign = TextAlign.Center,
                         )
                         Text(
-                            "Allow notifications so the app can gently remind your child when it's the perfect time to practice. You're always in control — turn off anytime from Settings.",
+                            stringResource(R.string.home_notif_message),
                             style = AbTypography.fixed(13f * s, FontWeight.SemiBold), color = colors.textSecondary,
                             textAlign = TextAlign.Center,
                         )
@@ -863,12 +865,12 @@ private fun NotificationPermissionSheet(
                             .padding(horizontal = 14.dp * s, vertical = 10.dp * s),
                         verticalArrangement = Arrangement.spacedBy(8.dp * s),
                     ) {
-                        NotificationStep(number = "1", text = "Tap \"Go to Settings\" below")
-                        NotificationStep(number = "2", text = "Tap \"Notifications\"")
-                        NotificationStep(number = "3", text = "Turn on \"Allow Notifications\"")
+                        NotificationStep(number = "1", text = stringResource(R.string.home_notif_step1))
+                        NotificationStep(number = "2", text = stringResource(R.string.home_notif_step2))
+                        NotificationStep(number = "3", text = stringResource(R.string.home_notif_step3))
                     }
                     AbButton(
-                        text = "Go to Settings", tone = AbTone.Primary, size = AbSize.Medium, icon = Icons.Default.Settings,
+                        text = stringResource(R.string.home_notif_go_settings), tone = AbTone.Primary, size = AbSize.Medium, icon = Icons.Default.Settings,
                         fillWidth = true, onClick = onGoToSettings,
                     )
                     Box(
@@ -876,7 +878,7 @@ private fun NotificationPermissionSheet(
                             .abSquash(cornerRadius = AbShapes.sm * s, sound = AbSound.Back, onClick = onDismiss)
                             .padding(vertical = 4.dp * s, horizontal = 12.dp * s),
                     ) {
-                        Text("Maybe Later", style = AbTypography.label(s), color = colors.textSecondary)
+                        Text(stringResource(R.string.home_notif_later), style = AbTypography.label(s), color = colors.textSecondary)
                     }
                 }
             }
@@ -899,15 +901,15 @@ private fun NotificationStep(number: String, text: String) {
 // ── Level Cards Pager ─────────────────────────────────────────────────────────
 
 private data class LevelInfo(
-    val number: Int, val emoji: String, val title: String,
+    val number: Int, val emoji: String, @StringRes val titleRes: Int,
     val start: Color, val end: Color
 )
 
 private val levelInfoList = listOf(
-    LevelInfo(1, "🔢", "Bead Basics",    Color(0xFF2E7D32), Color(0xFF43A047)),
-    LevelInfo(2, "➕", "Add & Subtract", Color(0xFF1565C0), Color(0xFF1976D2)),
-    LevelInfo(3, "⚡", "Speed & Anzan",  Color(0xFF6A1B9A), Color(0xFF7B1FA2)),
-    LevelInfo(4, "✖️", "Times Tables",   Color(0xFFE65100), Color(0xFFF57C00)),
+    LevelInfo(1, "🔢", R.string.level_name_bead_basics, Color(0xFF2E7D32), Color(0xFF43A047)),
+    LevelInfo(2, "➕", R.string.level_name_add_subtract, Color(0xFF1565C0), Color(0xFF1976D2)),
+    LevelInfo(3, "⚡", R.string.level_name_speed_anzan, Color(0xFF6A1B9A), Color(0xFF7B1FA2)),
+    LevelInfo(4, "✖️", R.string.level_name_times_tables, Color(0xFFE65100), Color(0xFFF57C00)),
 )
 
 @Composable
@@ -989,13 +991,13 @@ private fun LevelMiniCard(info: LevelInfo, onClick: () -> Unit) {
         }
         Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy((-6f * s).dp)) {
             Text(
-                text = "LEVEL ${info.number}",
+                text = stringResource(R.string.home_level_label, info.number),
                 style = AbTypography.fixed(11.5f * s, FontWeight.Bold).copy(letterSpacing = 1.sp),
                 color = Color.White.copy(alpha = 0.85f)
             )
             // shrinks a little instead of cutting the name ("Add & Subtra...") on a narrow screen
             com.jigar.me.ui.view.ab.AbShrinkText(
-                text = info.title,
+                text = stringResource(info.titleRes),
                 style = AbTypography.fixed(17f * s, FontWeight.Black),
                 color = Color.White,
                 minScale = 0.7f,
@@ -1048,9 +1050,9 @@ private fun EnglishBanner(context: Context, onUrlClick: () -> Unit) {
                 modifier = Modifier.size(Dimens24)
             )
             Column {
-                BannerLine("Also try", 9f * s, FontWeight.SemiBold, ink.copy(alpha = 0.55f))
-                BannerLine("Vedaavi English", 11f * s, FontWeight.Bold, ink.copy(alpha = 0.75f))
-                BannerLine("Fun learning for kids", 9f * s, FontWeight.SemiBold, ink.copy(alpha = 0.55f))
+                BannerLine(stringResource(R.string.home_promo_also_try), 9f * s, FontWeight.SemiBold, ink.copy(alpha = 0.55f))
+                BannerLine(stringResource(R.string.home_promo_english), 11f * s, FontWeight.Bold, ink.copy(alpha = 0.75f))
+                BannerLine(stringResource(R.string.home_promo_tagline), 9f * s, FontWeight.SemiBold, ink.copy(alpha = 0.55f))
             }
             Icon(
                 imageVector = Icons.Default.ChevronRight,
@@ -1077,8 +1079,8 @@ private fun EnglishBanner(context: Context, onUrlClick: () -> Unit) {
                 modifier = Modifier.size(20.dp)
             )
             Column {
-                BannerLine("Also try: Vedaavi English!", 11f * s, FontWeight.Bold, ink.copy(alpha = 0.75f))
-                BannerLine("Fun learning for kids", 9f * s, FontWeight.SemiBold, ink.copy(alpha = 0.55f))
+                BannerLine(stringResource(R.string.home_promo_also_try_english), 11f * s, FontWeight.Bold, ink.copy(alpha = 0.75f))
+                BannerLine(stringResource(R.string.home_promo_tagline), 9f * s, FontWeight.SemiBold, ink.copy(alpha = 0.55f))
             }
             Icon(
                 imageVector = Icons.Default.ChevronRight,
@@ -1122,12 +1124,12 @@ private fun WeeklyReportCard(stats: WeeklySummaryManager.WeeklyStats, onClick: (
         // the title and its line below sit close: Baloo's line box leaves a band between two lines
         Column(verticalArrangement = Arrangement.spacedBy((-3).dp * s)) {
             Text(
-                text = "This Week",
+                text = stringResource(R.string.home_week_title),
                 color = colors.textPrimary.copy(alpha = 0.85f),
                 style = AbTypography.fixed(11f * s, FontWeight.ExtraBold)
             )
             Text(
-                text = if (stats.problems > 0) "${stats.problems} solved · ${max(1, stats.days)}d" else "Tap to view",
+                text = if (stats.problems > 0) stringResource(R.string.home_week_summary, stats.problems, max(1, stats.days)) else stringResource(R.string.home_week_tap),
                 color = colors.textPrimary.copy(alpha = 0.6f),
                 style = AbTypography.fixed(9f * s, FontWeight.SemiBold)
             )
@@ -1189,24 +1191,24 @@ fun WeeklyReportContent(
                     .background(Brush.horizontalGradient(listOf(colors.brandPrimary, colors.brandPrimaryDark)))
                     .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens10),
                 contentAlignment = Alignment.Center,
-            ) { Text("📊 This Week", color = Color.White, style = AbTypography.fixed(titleSize, FontWeight.ExtraBold)) }
+            ) { Text(stringResource(R.string.home_week_header), color = Color.White, style = AbTypography.fixed(titleSize, FontWeight.ExtraBold)) }
         } else {
-            Text("📊 This Week", color = colors.brandPrimary, style = AbTypography.fixed(titleSize, FontWeight.ExtraBold))
+            Text(stringResource(R.string.home_week_header), color = colors.brandPrimary, style = AbTypography.fixed(titleSize, FontWeight.ExtraBold))
         }
 
         if (stats.problems > 0) {
             Row(horizontalArrangement = Arrangement.spacedBy(if (compact) AppDimens.Dimens8 else AppDimens.Dimens12)) {
-                WRTile("⭐", "${stats.problems}", "Problems", colors.brandPrimary, compact, s)
-                WRTile("📅", "${max(1, stats.days)}", "Days", colors.accentGreen, compact, s)
-                WRTile("🔥", "${stats.streak}", "Streak", colors.accentOrange, compact, s)
+                WRTile("⭐", "${stats.problems}", stringResource(R.string.home_week_problems), colors.brandPrimary, compact, s)
+                WRTile("📅", "${max(1, stats.days)}", stringResource(R.string.home_week_days), colors.accentGreen, compact, s)
+                WRTile("🔥", "${stats.streak}", stringResource(R.string.home_week_streak), colors.accentOrange, compact, s)
             }
             Text(
-                "Great progress this week — keep it going! 🌟", color = colors.textSecondary, textAlign = TextAlign.Center,
+                stringResource(R.string.home_week_great), color = colors.textSecondary, textAlign = TextAlign.Center,
                 style = AbTypography.fixed((if (compact) 14f else 17f) * s, FontWeight.SemiBold),
             )
             if (isPopup && onUpgrade != null) {
                 Text(
-                    "See the full report history \u203A", color = colors.brandPrimary, textDecoration = androidx.compose.ui.text.style.TextDecoration.Underline,
+                    stringResource(R.string.home_week_full_history), color = colors.brandPrimary, textDecoration = androidx.compose.ui.text.style.TextDecoration.Underline,
                     style = AbTypography.fixed(17f * s, FontWeight.ExtraBold),
                     modifier = Modifier.clickable(remember { androidx.compose.foundation.interaction.MutableInteractionSource() }, indication = null) { onUpgrade() },
                 )
@@ -1214,12 +1216,12 @@ fun WeeklyReportContent(
         } else {
             Text("🌱", fontSize = ((if (compact) 30 else 40) * s).sp)
             Text(
-                "No practice yet this week", textAlign = TextAlign.Center,
+                stringResource(R.string.home_week_none), textAlign = TextAlign.Center,
                 color = colors.accentGreen.let { if (colors.isDark) it else it.abDarkened(0.2f) },
                 style = AbTypography.fixed((if (compact) 17f else 22f) * s, FontWeight.ExtraBold),
             )
             Text(
-                "Practice together to build this week's report!", color = colors.textSecondary, textAlign = TextAlign.Center,
+                stringResource(R.string.home_week_none_hint), color = colors.textSecondary, textAlign = TextAlign.Center,
                 style = AbTypography.fixed((if (compact) 14f else 17f) * s, FontWeight.SemiBold),
             )
         }

@@ -1,5 +1,7 @@
 package com.jigar.me.utils
 
+import com.jigar.me.R
+
 object AppConstants {
     internal const val DB_NAME = "kotlin_basic.db"
     internal const val DB_NAME_NEW = "VedaaviAbacus.db"
@@ -245,14 +247,15 @@ object AppConstants {
             const val claimedRewards   = "streak_claimed_rewards"
             val milestones       = intArrayOf(3, 7, 14, 21, 30, 50, 100)
             val shieldMilestones = intArrayOf(7, 21)
-            val milestoneNames   = mapOf(
-                3   to "Explorer",
-                7   to "Weekly Warrior",
-                14  to "Dedicated Learner",
-                21  to "Math Champion",
-                30  to "Monthly Master",
-                50  to "Super Star",
-                100 to "Legend"
+            /** badge name of each streak milestone (text in strings.xml, so it follows the app language) */
+            val milestoneNameRes = mapOf(
+                3   to R.string.streak_badge_explorer,
+                7   to R.string.streak_badge_weekly_warrior,
+                14  to R.string.streak_badge_dedicated_learner,
+                21  to R.string.streak_badge_math_champion,
+                30  to R.string.streak_badge_monthly_master,
+                50  to R.string.streak_badge_super_star,
+                100 to R.string.streak_badge_legend
             )
         }
     }
