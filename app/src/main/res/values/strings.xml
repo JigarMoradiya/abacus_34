@@ -1386,4 +1386,49 @@
     <string name="whats_learn_ccm_5">• &lt;b>Versatile Usage –&lt;/b> Suitable for home practice, classroom activities, and custom coaching sessions.</string>
     <string name="whats_learn_ccm_6">• &lt;b>Skill Development –&lt;/b> Enhances listening, memory power, concentration, visualization, and calculation speed.</string>
     <string name="whats_learn_ccm_7">• &lt;b>Benefit –&lt;/b> Builds adaptability, improves decision-making, and prepares students for diverse test formats.</string>
+
+    <!-- Free Mode, tour and place values (M6) -->
+    <string name="free_mode_set_label">Set :</string>
+    <string name="free_mode_range">%1$d to %2$d</string>
+    <string name="free_mode_from">From</string>
+    <string name="free_mode_to">To</string>
+    <string name="free_mode_error_from_empty">From number cannot be empty</string>
+    <string name="free_mode_error_to_empty">To number cannot be empty</string>
+    <string name="free_mode_error_invalid">Invalid number</string>
+    <string name="free_mode_error_max">Maximum allowed number is 9,999,999</string>
+    <string name="free_mode_error_order">To number must be greater than From number</string>
+    <string name="free_mode_error_gap">Difference must be at least 5</string>
+    <string name="free_mode_setting_learn_parts">Want to learn the abacus parts and how it works? 🧠</string>
+    <string name="free_mode_setting_clear">Should I clear the abacus after you finish a number? 🧹</string>
+    <string name="free_mode_setting_random">Should I show numbers in a fun random order? 🎲</string>
+    <string name="free_mode_setting_range">Choose the numbers range you want to play with! 🔢</string>
+    <string name="tour_skip">Skip</string>
+    <string name="tour_next">Next →</string>
+    <string name="tour_done">Done</string>
+    <string name="tour_step_counter">%1$d / %2$d</string>
+    <string name="place_ones">Ones</string>
+    <string name="place_tens">Tens</string>
+    <string name="place_hundreds">Hundreds</string>
+    <string name="place_thousands">Thousands</string>
+    <string name="place_ten_thousands">Ten\nThousands</string>
+    <string name="place_lakhs">Lakhs</string>
+    <string name="place_ten_lakhs">Ten\nLakhs</string>
+    <string name="place_unit_rod">Unit Rod</string>
+    <!-- the Free Mode tour: HTML kept as text, shown by htmlToAnnotatedString -->
+    <string name="tour_step_01">This is the &lt;font color=\'#FF5722\'>&lt;b>Frame&lt;/b>&lt;/font> of the Abacus</string>
+    <string name="tour_step_02">These are the &lt;font color=\'#0000EE\'>&lt;b>Rods&lt;/b>&lt;/font> or &lt;font color=\'#0000EE\'>&lt;b>Columns&lt;/b>&lt;/font> of the Abacus</string>
+    <string name="tour_step_03">This is the &lt;font color=\'#6200EA\'>&lt;b>Bar&lt;/b>&lt;/font> or &lt;font color=\'#6200EA\'>&lt;b>Beam&lt;/b>&lt;/font> of the Abacus</string>
+    <string name="tour_step_04">These are the &lt;font color=\'#E91E63\'>&lt;b>Upper Beads&lt;/b>&lt;/font> of the Abacus</string>
+    <string name="tour_step_05">These are the &lt;font color=\'#9C27B0\'>&lt;b>Lower Beads&lt;/b>&lt;/font> of the Abacus</string>
+    <string name="tour_step_06">This is the &lt;font color=\'#0000EE\'>&lt;b>Unit\'s Place&lt;/b>&lt;/font> &lt;b>(Ones column)&lt;/b>&lt;br/>of the Abacus</string>
+    <string name="tour_step_07">&lt;b>On the 1st ROD&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(Ones column)&lt;/b>&lt;/font>&lt;br/>each lower bead &lt;font color=\'#D81B60\'>&lt;b>value is 1&lt;/b>&lt;/font>&lt;br/>and the upper bead &lt;font color=\'#388E3C\'>&lt;b>value is 5&lt;/b>&lt;/font></string>
+    <string name="tour_step_08">&lt;b>On the 2nd ROD&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(Tens column)&lt;/b>&lt;/font>&lt;br/>each lower bead &lt;font color=\'#D81B60\'>&lt;b>value is 10&lt;/b>&lt;/font>&lt;br/>and the upper bead &lt;font color=\'#388E3C\'>&lt;b>value is 50&lt;/b>&lt;/font></string>
+    <string name="tour_step_09">&lt;b>On the 3rd ROD&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(Hundreds column)&lt;/b>&lt;/font>&lt;br/>each lower bead &lt;font color=\'#D81B60\'>&lt;b>value is 100&lt;/b>&lt;/font>&lt;br/>and the upper bead &lt;font color=\'#388E3C\'>&lt;b>value is 500&lt;/b>&lt;/font>&lt;br/>and so on...</string>
+    <string name="tour_step_10">&lt;b>One Column&lt;/b>&lt;br/>can show any number from &lt;font color=\'#EE0000\'>&lt;b>0 to 9&lt;/b>&lt;/font></string>
+    <string name="tour_step_11">&lt;b>Two Columns&lt;/b>&lt;br/>can show any number from &lt;font color=\'#EE0000\'>&lt;b>0 to 99&lt;/b>&lt;/font></string>
+    <string name="tour_step_12">&lt;b>Three Columns&lt;/b>&lt;br/>can show any number from &lt;font color=\'#EE0000\'>&lt;b>0 to 999&lt;/b>&lt;/font></string>
+    <string name="tour_step_13">&lt;b>For Addition&lt;/b>&lt;br/>always use your &lt;font color=\'#D81B60\'>&lt;b>thumb&lt;/b>&lt;/font>&lt;br/>to &lt;font color=\'#0000EE\'>&lt;b>move the lower beads upward&lt;/b>&lt;/font></string>
+    <string name="tour_step_14">&lt;b>For Addition&lt;/b>&lt;br/>always use your &lt;font color=\'#D81B60\'>&lt;b>index finger&lt;/b>&lt;/font>&lt;br/>to &lt;font color=\'#0000EE\'>&lt;b>move the upper bead downward&lt;/b>&lt;/font></string>
+    <string name="tour_step_15">&lt;b>For Subtraction&lt;/b>&lt;br/>always use your &lt;font color=\'#D81B60\'>&lt;b>index finger&lt;/b>&lt;/font>&lt;br/>to &lt;font color=\'#0000EE\'>&lt;b>move the lower beads downward&lt;/b>&lt;/font></string>
+    <string name="tour_step_16">&lt;b>For Subtraction&lt;/b>&lt;br/>always use your &lt;font color=\'#D81B60\'>&lt;b>thumb&lt;/b>&lt;/font>&lt;br/>to &lt;font color=\'#0000EE\'>&lt;b>move the upper bead upward&lt;/b>&lt;/font></string>
 </resources>

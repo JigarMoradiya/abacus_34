@@ -51,6 +51,8 @@ import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sin
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 /*
  * The "toy" abacus frame of the Ab kit (mirrors `AbacusToyFrame.swift`): a chunky frame body with rivets, a pale panel with
@@ -70,7 +72,11 @@ enum class AbacusFrameStyle {
 object AbacusPlaceValue {
     val colors: List<Long> = listOf(0xF57C00, 0xA4B42B, 0x388E3C, 0x00796B, 0x0097A7, 0x1976D2, 0x303F9F)
     val values = listOf("1", "10", "100", "1000", "10000", "100000", "1000000")
-    val names = listOf("Ones", "Tens", "Hundreds", "Thousands", "Ten\nThousands", "Lakhs", "Ten\nLakhs")
+    /** The name of each rod, ones first, as string ids (a name may hold a line break: "Ten" / "Thousands"). */
+    val nameRes = listOf(
+        R.string.place_ones, R.string.place_tens, R.string.place_hundreds, R.string.place_thousands,
+        R.string.place_ten_thousands, R.string.place_lakhs, R.string.place_ten_lakhs,
+    )
 }
 
 internal fun toyHex(hex: Long): Color = Color(
@@ -366,11 +372,13 @@ fun AbacusToyLabels(g: AbacusToyGeometry, stripHeight: Dp, modifier: Modifier = 
     val cardH = (nameFont * 0.66f * 2 + tagH.value * 0.3f).dp
     val rowH = if (showsValues) tagH + nameH else cardH
 
-    // The longest word of any name ("Thousands") sets the size of every name, so "Ten", "Lakhs" and "Thousands" all read alike.
+    // The widest line of any name ("Thousands" in English) sets the size of every name, so they all read alike.
+    val placeNames = AbacusPlaceValue.nameRes.map { stringResource(it) }
+    val widestLine = remember(placeNames) { placeNames.flatMap { it.split("\n") }.maxByOrNull { it.length } ?: "Thousands" }
     val measurer = rememberTextMeasurer()
     val density = LocalDensity.current
     fun sizeForLongestWord(size: Float, weight: FontWeight, available: Dp, floor: Float): Float {
-        val wordPx = measurer.measure(AnnotatedString("Thousands"), AbTypography.fixed(size, weight)).size.width
+        val wordPx = measurer.measure(AnnotatedString(widestLine), AbTypography.fixed(size, weight)).size.width
         return size * (with(density) { available.toPx() } / wordPx * 0.97f).coerceIn(floor, 1f)
     }
     val cardFontShown = remember(nameFont, cw) { sizeForLongestWord(nameFont, FontWeight.ExtraBold, cw * 0.84f, 0.55f) }
@@ -412,7 +420,7 @@ fun AbacusToyLabels(g: AbacusToyGeometry, stripHeight: Dp, modifier: Modifier = 
                             .padding(top = tagH * 0.3f),
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
-                        val name = p?.let { AbacusPlaceValue.names[it] } ?: ""
+                        val name = p?.let { placeNames[it] } ?: ""
                         for (line in name.split("\n")) {
                             Box(Modifier.height((nameSize * 0.68f).dp), contentAlignment = Alignment.Center) {
                                 ToyFitText(
@@ -429,7 +437,7 @@ fun AbacusToyLabels(g: AbacusToyGeometry, stripHeight: Dp, modifier: Modifier = 
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center,
                     ) {
-                        for (line in AbacusPlaceValue.names[p].split("\n")) {
+                        for (line in placeNames[p].split("\n")) {
                             Box(Modifier.height((nameFont * 0.66f).dp), contentAlignment = Alignment.Center) {
                                 ToyFitText(line, AbTypography.fixed(cardFontShown, FontWeight.ExtraBold), Color.White, minScale = 0.55f, shadow = true)
                             }

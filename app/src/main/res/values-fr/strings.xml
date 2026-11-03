@@ -344,4 +344,50 @@
     <string name="whats_learn_ccm_5">• &lt;b>Usages variés –&lt;/b> Convient à l\'entraînement à la maison, aux activités en classe et aux séances de coaching sur mesure.</string>
     <string name="whats_learn_ccm_6">• &lt;b>Développement des compétences –&lt;/b> Renforce l\'écoute, la mémoire, la concentration, la visualisation et la vitesse de calcul.</string>
     <string name="whats_learn_ccm_7">• &lt;b>Atout –&lt;/b> Développe l\'adaptabilité, améliore la prise de décision et prépare aux formats de tests variés.</string>
+    <!-- m6_free_mode -->
+    <string name="free_mode_set_label">Série :</string>
+    <string name="free_mode_range">de %1$d à %2$d</string>
+    <string name="free_mode_from">De</string>
+    <string name="free_mode_to">À</string>
+    <string name="free_mode_error_from_empty">Le nombre de départ ne peut pas être vide</string>
+    <string name="free_mode_error_to_empty">Le nombre d\'arrivée ne peut pas être vide</string>
+    <string name="free_mode_error_invalid">Nombre invalide</string>
+    <string name="free_mode_error_max">Le nombre maximum autorisé est 9 999 999</string>
+    <string name="free_mode_error_order">Le nombre d\'arrivée doit être supérieur au nombre de départ</string>
+    <string name="free_mode_error_gap">L\'écart doit être d\'au moins 5</string>
+    <string name="free_mode_setting_learn_parts">Tu veux découvrir les parties du boulier et comment il fonctionne ? 🧠</string>
+    <string name="free_mode_setting_clear">Je vide le boulier quand tu as fini un nombre ? 🧹</string>
+    <string name="free_mode_setting_random">Je montre les nombres dans un ordre aléatoire amusant ? 🎲</string>
+    <string name="free_mode_setting_range">Choisis la plage de nombres avec laquelle tu veux jouer ! 🔢</string>
+    <string name="tour_skip">Passer</string>
+    <string name="tour_next">Suivant →</string>
+    <string name="tour_done">Terminé</string>
+    <string name="tour_step_counter">%1$d / %2$d</string>
+    <string name="click_here_to_show_abacus_tour">Voir la visite du boulier</string>
+    <string name="free_mode_settings">Réglages du mode libre</string>
+    <string name="numbers_generate_between">Nombres générés entre</string>
+    <string name="place_ones">Unités</string>
+    <string name="place_tens">Dizaines</string>
+    <string name="place_hundreds">Centaines</string>
+    <string name="place_thousands">Milliers</string>
+    <string name="place_ten_thousands">Dix\nmille</string>
+    <string name="place_lakhs">Cent\nmille</string>
+    <string name="place_ten_lakhs">Million</string>
+    <string name="place_unit_rod">Tige des unités</string>
+    <string name="tour_step_01">Voici le &lt;font color=\'#FF5722\'>&lt;b>cadre&lt;/b>&lt;/font> du boulier</string>
+    <string name="tour_step_02">Ce sont les &lt;font color=\'#0000EE\'>&lt;b>tiges&lt;/b>&lt;/font> ou &lt;font color=\'#0000EE\'>&lt;b>colonnes&lt;/b>&lt;/font> du boulier</string>
+    <string name="tour_step_03">Voici la &lt;font color=\'#6200EA\'>&lt;b>barre&lt;/b>&lt;/font> ou &lt;font color=\'#6200EA\'>&lt;b>traverse&lt;/b>&lt;/font> du boulier</string>
+    <string name="tour_step_04">Ce sont les &lt;font color=\'#E91E63\'>&lt;b>boules du haut&lt;/b>&lt;/font> du boulier</string>
+    <string name="tour_step_05">Ce sont les &lt;font color=\'#9C27B0\'>&lt;b>boules du bas&lt;/b>&lt;/font> du boulier</string>
+    <string name="tour_step_06">Voici la &lt;font color=\'#0000EE\'>&lt;b>place des unités&lt;/b>&lt;/font> &lt;b>(colonne des unités)&lt;/b>&lt;br/>du boulier</string>
+    <string name="tour_step_07">&lt;b>Sur la 1re TIGE&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(colonne des unités)&lt;/b>&lt;/font>&lt;br/>chaque boule du bas &lt;font color=\'#D81B60\'>&lt;b>vaut 1&lt;/b>&lt;/font>&lt;br/>et la boule du haut &lt;font color=\'#388E3C\'>&lt;b>vaut 5&lt;/b>&lt;/font></string>
+    <string name="tour_step_08">&lt;b>Sur la 2e TIGE&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(colonne des dizaines)&lt;/b>&lt;/font>&lt;br/>chaque boule du bas &lt;font color=\'#D81B60\'>&lt;b>vaut 10&lt;/b>&lt;/font>&lt;br/>et la boule du haut &lt;font color=\'#388E3C\'>&lt;b>vaut 50&lt;/b>&lt;/font></string>
+    <string name="tour_step_09">&lt;b>Sur la 3e TIGE&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(colonne des centaines)&lt;/b>&lt;/font>&lt;br/>chaque boule du bas &lt;font color=\'#D81B60\'>&lt;b>vaut 100&lt;/b>&lt;/font>&lt;br/>et la boule du haut &lt;font color=\'#388E3C\'>&lt;b>vaut 500&lt;/b>&lt;/font>&lt;br/>et ainsi de suite...</string>
+    <string name="tour_step_10">&lt;b>Une colonne&lt;/b>&lt;br/>peut montrer tous les nombres de &lt;font color=\'#EE0000\'>&lt;b>0 à 9&lt;/b>&lt;/font></string>
+    <string name="tour_step_11">&lt;b>Deux colonnes&lt;/b>&lt;br/>peuvent montrer tous les nombres de &lt;font color=\'#EE0000\'>&lt;b>0 à 99&lt;/b>&lt;/font></string>
+    <string name="tour_step_12">&lt;b>Trois colonnes&lt;/b>&lt;br/>peuvent montrer tous les nombres de &lt;font color=\'#EE0000\'>&lt;b>0 à 999&lt;/b>&lt;/font></string>
+    <string name="tour_step_13">&lt;b>Pour additionner&lt;/b>&lt;br/>utilise toujours ton &lt;font color=\'#D81B60\'>&lt;b>pouce&lt;/b>&lt;/font>&lt;br/>pour &lt;font color=\'#0000EE\'>&lt;b>monter les boules du bas&lt;/b>&lt;/font></string>
+    <string name="tour_step_14">&lt;b>Pour additionner&lt;/b>&lt;br/>utilise toujours ton &lt;font color=\'#D81B60\'>&lt;b>index&lt;/b>&lt;/font>&lt;br/>pour &lt;font color=\'#0000EE\'>&lt;b>descendre la boule du haut&lt;/b>&lt;/font></string>
+    <string name="tour_step_15">&lt;b>Pour soustraire&lt;/b>&lt;br/>utilise toujours ton &lt;font color=\'#D81B60\'>&lt;b>index&lt;/b>&lt;/font>&lt;br/>pour &lt;font color=\'#0000EE\'>&lt;b>descendre les boules du bas&lt;/b>&lt;/font></string>
+    <string name="tour_step_16">&lt;b>Pour soustraire&lt;/b>&lt;br/>utilise toujours ton &lt;font color=\'#D81B60\'>&lt;b>pouce&lt;/b>&lt;/font>&lt;br/>pour &lt;font color=\'#0000EE\'>&lt;b>monter la boule du haut&lt;/b>&lt;/font></string>
 </resources>

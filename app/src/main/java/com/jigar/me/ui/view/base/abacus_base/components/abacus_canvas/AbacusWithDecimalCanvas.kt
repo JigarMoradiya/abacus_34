@@ -66,6 +66,7 @@ import com.jigar.me.ui.view.base.abacus_base.utils.MathUtils
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens2
 import com.jigar.me.utils.AppConstants
 import kotlin.math.abs
+import androidx.compose.ui.res.stringResource
 
 @SuppressLint("LocalContextResourcesRead")
 @Composable
@@ -119,7 +120,7 @@ fun AbacusWithDecimalCanvas(
     val totalWidth = (dim.beadWidth * numberOfColumns) + (dim.rectLineWidth * 2) + (dim.columnSpaces * (numberOfColumns) * 2) + (if (numberOfColumns > 7) dim.decimalSeparatorGap else 0.dp)
     val totalHeight = (dim.beadHeight * 7) + (dim.rectLineWidth * 2) + (dim.extraSpace * 2) + dim.beamHeight
 
-    val highlightSteps = freeModeHighlightSteps
+    val highlightSteps = freeModeHighlightSteps.map { stringResource(it.messageRes) }  // the tour texts, in the app language
 
     val strokeBrush = if (selectedTheme == "poligon_rainbow") {
         Brush.verticalGradient(listOf(Color(0xFFD7CCC8), Color(0xFFE0E0E0), Color(0xFFCFD8DC)))
@@ -321,7 +322,7 @@ fun AbacusWithDecimalCanvas(
                     .padding(vertical = dim.rectLineWidth, horizontal = dim.rectLineWidth)
                     .align(Alignment.Center)
                     .then(gestureModifier)
-                    .spotlightTag(1, highlightSteps[1].message, if (toy) toyGeometry.panelCorner else null) // rods highlight
+                    .spotlightTag(1, highlightSteps[1], if (toy) toyGeometry.panelCorner else null) // rods highlight
             ) {
                 // Draw all columns inside Canvas
                 drawAbacusColumns(
@@ -351,7 +352,7 @@ fun AbacusWithDecimalCanvas(
                     .width(totalWidth)
                     .height(totalHeight)
                     .align(Alignment.Center)
-                    .spotlightTag(0, highlightSteps[0].message, toyGeometry.frameCorner)
+                    .spotlightTag(0, highlightSteps[0], toyGeometry.frameCorner)
             )
         } else if (screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult){
             val shape = RoundedCornerShape(dim.rectLineCorner)
@@ -381,7 +382,7 @@ fun AbacusWithDecimalCanvas(
                         shape = shape
                     )
 
-                    .spotlightTag(0, highlightSteps[0].message)
+                    .spotlightTag(0, highlightSteps[0])
             )
         }
 
@@ -455,7 +456,7 @@ fun AbacusWithDecimalCanvas(
             modifier = Modifier
                 .width(totalWidth - (dim.rectLineWidth * 2))
                 .height(dim.beamHeight)
-                .spotlightTag(2, highlightSteps[2].message)
+                .spotlightTag(2, highlightSteps[2])
         )
         Spacer(modifier = Modifier.weight(1f))
     }
@@ -470,7 +471,7 @@ fun AbacusWithDecimalCanvas(
             modifier = Modifier
                 .width(totalWidth - (dim.rectLineWidth * 2))
                 .height(dim.beadHeight + (dim.extraSpace * 2))
-                .spotlightTag(3, highlightSteps[3].message, if (toy) toyGeometry.panelCorner else null)
+                .spotlightTag(3, highlightSteps[3], if (toy) toyGeometry.panelCorner else null)
         )
         Spacer(modifier = Modifier.weight(1f))
     }
@@ -486,7 +487,7 @@ fun AbacusWithDecimalCanvas(
             modifier = Modifier
                 .width(totalWidth - (dim.rectLineWidth * 2))
                 .height((dim.beadHeight * 4) + (dim.extraSpace * 2))
-                .spotlightTag(4, highlightSteps[4].message, if (toy) toyGeometry.panelCorner else null)
+                .spotlightTag(4, highlightSteps[4], if (toy) toyGeometry.panelCorner else null)
         )
     }
 
@@ -505,7 +506,7 @@ fun AbacusWithDecimalCanvas(
                 modifier = Modifier
                     .width(colUnit)
                     .height(dim.beamHeight)
-                    .spotlightTag(5, highlightSteps[5].message)
+                    .spotlightTag(5, highlightSteps[5])
             )
             Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7) + gap))
         }
@@ -523,7 +524,7 @@ fun AbacusWithDecimalCanvas(
             modifier = Modifier
                 .width(colUnit)
                 .height(totalBeadsHeight)
-                .spotlightTag(6, highlightSteps[6].message)
+                .spotlightTag(6, highlightSteps[6])
         )
         Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7) + gap).height(totalBeadsHeight))
     }
@@ -539,7 +540,7 @@ fun AbacusWithDecimalCanvas(
             modifier = Modifier
                 .width(colUnit)
                 .height(totalHeight - dim.rectLineWidth - (dim.beamHeight * 2))
-                .spotlightTag(7, highlightSteps[7].message)
+                .spotlightTag(7, highlightSteps[7])
         )
         Box(
             modifier = Modifier
@@ -559,7 +560,7 @@ fun AbacusWithDecimalCanvas(
             modifier = Modifier
                 .width(colUnit)
                 .height(totalBeadsHeight)
-                .spotlightTag(8, highlightSteps[8].message)
+                .spotlightTag(8, highlightSteps[8])
         )
         Box(
             modifier = Modifier
@@ -575,7 +576,7 @@ fun AbacusWithDecimalCanvas(
             modifier = Modifier
                 .width(colUnit)
                 .height(totalBeadsHeight)
-                .spotlightTag(9, highlightSteps[9].message)
+                .spotlightTag(9, highlightSteps[9])
         )
         Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7) + gap).height(totalBeadsHeight))
     }
@@ -591,7 +592,7 @@ fun AbacusWithDecimalCanvas(
             modifier = Modifier
                 .width(colUnit * 2)
                 .height(totalBeadsHeight)
-                .spotlightTag(10, highlightSteps[10].message)
+                .spotlightTag(10, highlightSteps[10])
         )
         Box(
             modifier = Modifier
@@ -611,7 +612,7 @@ fun AbacusWithDecimalCanvas(
             modifier = Modifier
                 .width(colUnit * 3)
                 .height(totalBeadsHeight)
-                .spotlightTag(11, highlightSteps[11].message)
+                .spotlightTag(11, highlightSteps[11])
         )
         Box(
             modifier = Modifier
@@ -633,7 +634,7 @@ fun AbacusWithDecimalCanvas(
                 modifier = Modifier
                     .width(colUnit)
                     .height((dim.beadHeight * 5) + dim.extraSpace)
-                    .spotlightTag(12, highlightSteps[12].message)
+                    .spotlightTag(12, highlightSteps[12])
             )
         }
         Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7) + gap))
@@ -649,7 +650,7 @@ fun AbacusWithDecimalCanvas(
                 modifier = Modifier
                     .width(colUnit)
                     .height((dim.beadHeight * 2) + dim.extraSpace)
-                    .spotlightTag(13, highlightSteps[13].message)
+                    .spotlightTag(13, highlightSteps[13])
             )
             Spacer(modifier = Modifier.weight(1f))
         }
@@ -671,7 +672,7 @@ fun AbacusWithDecimalCanvas(
                 modifier = Modifier
                     .width(colUnit)
                     .height((dim.beadHeight * 5) + dim.extraSpace)
-                    .spotlightTag(14, highlightSteps[14].message)
+                    .spotlightTag(14, highlightSteps[14])
             )
         }
         Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7) + gap))
@@ -687,7 +688,7 @@ fun AbacusWithDecimalCanvas(
                 modifier = Modifier
                     .width(colUnit)
                     .height((dim.beadHeight * 2) + dim.extraSpace)
-                    .spotlightTag(15, highlightSteps[15].message)
+                    .spotlightTag(15, highlightSteps[15])
             )
             Spacer(modifier = Modifier.weight(1f))
         }

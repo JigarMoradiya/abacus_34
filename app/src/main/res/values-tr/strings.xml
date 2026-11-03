@@ -342,4 +342,50 @@
     <string name="whats_learn_ccm_5">• &lt;b>Çok yönlü kullanım –&lt;/b> Ev çalışması, sınıf etkinlikleri ve özel ders oturumları için uygundur.</string>
     <string name="whats_learn_ccm_6">• &lt;b>Beceri gelişimi –&lt;/b> Dinlemeyi, hafızayı, konsantrasyonu, görselleştirmeyi ve hesaplama hızını artırır.</string>
     <string name="whats_learn_ccm_7">• &lt;b>Fayda –&lt;/b> Uyum yeteneğini geliştirir, karar vermeyi güçlendirir ve öğrencileri farklı sınav biçimlerine hazırlar.</string>
+    <!-- m6_free_mode -->
+    <string name="free_mode_set_label">Set:</string>
+    <string name="free_mode_range">%1$d – %2$d</string>
+    <string name="free_mode_from">Başlangıç</string>
+    <string name="free_mode_to">Bitiş</string>
+    <string name="free_mode_error_from_empty">Başlangıç sayısı boş olamaz</string>
+    <string name="free_mode_error_to_empty">Bitiş sayısı boş olamaz</string>
+    <string name="free_mode_error_invalid">Geçersiz sayı</string>
+    <string name="free_mode_error_max">İzin verilen en büyük sayı 9.999.999</string>
+    <string name="free_mode_error_order">Bitiş sayısı başlangıç sayısından büyük olmalı</string>
+    <string name="free_mode_error_gap">Fark en az 5 olmalı</string>
+    <string name="free_mode_setting_learn_parts">Abaküsün parçalarını ve nasıl çalıştığını öğrenmek ister misin? 🧠</string>
+    <string name="free_mode_setting_clear">Bir sayıyı bitirince abaküsü temizleyeyim mi? 🧹</string>
+    <string name="free_mode_setting_random">Sayıları eğlenceli, rastgele bir sırayla göstereyim mi? 🎲</string>
+    <string name="free_mode_setting_range">Oynamak istediğin sayı aralığını seç! 🔢</string>
+    <string name="tour_skip">Atla</string>
+    <string name="tour_next">İleri →</string>
+    <string name="tour_done">Bitti</string>
+    <string name="tour_step_counter">%1$d / %2$d</string>
+    <string name="click_here_to_show_abacus_tour">Abaküs turunu göster</string>
+    <string name="free_mode_settings">Serbest Mod ayarları</string>
+    <string name="numbers_generate_between">Sayıların üretildiği aralık</string>
+    <string name="place_ones">Birler</string>
+    <string name="place_tens">Onlar</string>
+    <string name="place_hundreds">Yüzler</string>
+    <string name="place_thousands">Binler</string>
+    <string name="place_ten_thousands">On\nbin</string>
+    <string name="place_lakhs">Yüz\nbin</string>
+    <string name="place_ten_lakhs">Milyon</string>
+    <string name="place_unit_rod">Birler çubuğu</string>
+    <string name="tour_step_01">Bu abaküsün &lt;font color=\'#FF5722\'>&lt;b>çerçevesi&lt;/b>&lt;/font></string>
+    <string name="tour_step_02">Bunlar abaküsün &lt;font color=\'#0000EE\'>&lt;b>çubukları&lt;/b>&lt;/font> veya &lt;font color=\'#0000EE\'>&lt;b>sütunları&lt;/b>&lt;/font></string>
+    <string name="tour_step_03">Bu abaküsün &lt;font color=\'#6200EA\'>&lt;b>orta çubuğu&lt;/b>&lt;/font> ya da &lt;font color=\'#6200EA\'>&lt;b>kirişi&lt;/b>&lt;/font></string>
+    <string name="tour_step_04">Bunlar abaküsün &lt;font color=\'#E91E63\'>&lt;b>üst boncukları&lt;/b>&lt;/font></string>
+    <string name="tour_step_05">Bunlar abaküsün &lt;font color=\'#9C27B0\'>&lt;b>alt boncukları&lt;/b>&lt;/font></string>
+    <string name="tour_step_06">Bu, abaküsün&lt;br/>&lt;font color=\'#0000EE\'>&lt;b>birler basamağı&lt;/b>&lt;/font> &lt;b>(birler sütunu)&lt;/b></string>
+    <string name="tour_step_07">&lt;b>1. ÇUBUKTA&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(birler sütunu)&lt;/b>&lt;/font>&lt;br/>her alt boncuğun &lt;font color=\'#D81B60\'>&lt;b>değeri 1&lt;/b>&lt;/font>&lt;br/>üst boncuğun &lt;font color=\'#388E3C\'>&lt;b>değeri 5&lt;/b>&lt;/font></string>
+    <string name="tour_step_08">&lt;b>2. ÇUBUKTA&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(onlar sütunu)&lt;/b>&lt;/font>&lt;br/>her alt boncuğun &lt;font color=\'#D81B60\'>&lt;b>değeri 10&lt;/b>&lt;/font>&lt;br/>üst boncuğun &lt;font color=\'#388E3C\'>&lt;b>değeri 50&lt;/b>&lt;/font></string>
+    <string name="tour_step_09">&lt;b>3. ÇUBUKTA&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(yüzler sütunu)&lt;/b>&lt;/font>&lt;br/>her alt boncuğun &lt;font color=\'#D81B60\'>&lt;b>değeri 100&lt;/b>&lt;/font>&lt;br/>üst boncuğun &lt;font color=\'#388E3C\'>&lt;b>değeri 500&lt;/b>&lt;/font>&lt;br/>ve böyle devam eder...</string>
+    <string name="tour_step_10">&lt;b>Bir sütun&lt;/b>&lt;br/>&lt;font color=\'#EE0000\'>&lt;b>0 ile 9&lt;/b>&lt;/font> arasındaki her sayıyı gösterebilir</string>
+    <string name="tour_step_11">&lt;b>İki sütun&lt;/b>&lt;br/>&lt;font color=\'#EE0000\'>&lt;b>0 ile 99&lt;/b>&lt;/font> arasındaki her sayıyı gösterebilir</string>
+    <string name="tour_step_12">&lt;b>Üç sütun&lt;/b>&lt;br/>&lt;font color=\'#EE0000\'>&lt;b>0 ile 999&lt;/b>&lt;/font> arasındaki her sayıyı gösterebilir</string>
+    <string name="tour_step_13">&lt;b>Toplama için&lt;/b>&lt;br/>her zaman &lt;font color=\'#D81B60\'>&lt;b>başparmağını&lt;/b>&lt;/font> kullan&lt;br/>&lt;font color=\'#0000EE\'>&lt;b>alt boncukları yukarı çıkarmak&lt;/b>&lt;/font> için</string>
+    <string name="tour_step_14">&lt;b>Toplama için&lt;/b>&lt;br/>her zaman &lt;font color=\'#D81B60\'>&lt;b>işaret parmağını&lt;/b>&lt;/font> kullan&lt;br/>&lt;font color=\'#0000EE\'>&lt;b>üst boncuğu aşağı indirmek&lt;/b>&lt;/font> için</string>
+    <string name="tour_step_15">&lt;b>Çıkarma için&lt;/b>&lt;br/>her zaman &lt;font color=\'#D81B60\'>&lt;b>işaret parmağını&lt;/b>&lt;/font> kullan&lt;br/>&lt;font color=\'#0000EE\'>&lt;b>alt boncukları aşağı indirmek&lt;/b>&lt;/font> için</string>
+    <string name="tour_step_16">&lt;b>Çıkarma için&lt;/b>&lt;br/>her zaman &lt;font color=\'#D81B60\'>&lt;b>başparmağını&lt;/b>&lt;/font> kullan&lt;br/>&lt;font color=\'#0000EE\'>&lt;b>üst boncuğu yukarı çıkarmak&lt;/b>&lt;/font> için</string>
 </resources>

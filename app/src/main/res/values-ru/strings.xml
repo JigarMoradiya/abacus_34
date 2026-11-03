@@ -346,4 +346,50 @@
     <string name="whats_learn_ccm_5">• &lt;b>Универсальность –&lt;/b> подходит для занятий дома, в классе и на индивидуальных уроках.</string>
     <string name="whats_learn_ccm_6">• &lt;b>Развитие навыков –&lt;/b> улучшает слух, память, концентрацию, визуализацию и скорость счёта.</string>
     <string name="whats_learn_ccm_7">• &lt;b>Польза –&lt;/b> развивает гибкость, умение принимать решения и готовит к разным форматам тестов.</string>
+    <!-- m6_free_mode -->
+    <string name="free_mode_set_label">Набор:</string>
+    <string name="free_mode_range">от %1$d до %2$d</string>
+    <string name="free_mode_from">От</string>
+    <string name="free_mode_to">До</string>
+    <string name="free_mode_error_from_empty">Начальное число не может быть пустым</string>
+    <string name="free_mode_error_to_empty">Конечное число не может быть пустым</string>
+    <string name="free_mode_error_invalid">Недопустимое число</string>
+    <string name="free_mode_error_max">Максимально допустимое число: 9 999 999</string>
+    <string name="free_mode_error_order">Конечное число должно быть больше начального</string>
+    <string name="free_mode_error_gap">Разница должна быть не меньше 5</string>
+    <string name="free_mode_setting_learn_parts">Хочешь узнать, из чего состоит абакус и как он работает? 🧠</string>
+    <string name="free_mode_setting_clear">Очищать абакус, когда ты закончишь число? 🧹</string>
+    <string name="free_mode_setting_random">Показывать числа в случайном порядке? 🎲</string>
+    <string name="free_mode_setting_range">Выбери диапазон чисел для игры! 🔢</string>
+    <string name="tour_skip">Пропустить</string>
+    <string name="tour_next">Далее →</string>
+    <string name="tour_done">Готово</string>
+    <string name="tour_step_counter">%1$d / %2$d</string>
+    <string name="click_here_to_show_abacus_tour">Показать тур по абакусу</string>
+    <string name="free_mode_settings">Настройки свободного режима</string>
+    <string name="numbers_generate_between">Числа создаются в диапазоне</string>
+    <string name="place_ones">Единицы</string>
+    <string name="place_tens">Десятки</string>
+    <string name="place_hundreds">Сотни</string>
+    <string name="place_thousands">Тысячи</string>
+    <string name="place_ten_thousands">Десять\nтысяч</string>
+    <string name="place_lakhs">Сто\nтысяч</string>
+    <string name="place_ten_lakhs">Миллион</string>
+    <string name="place_unit_rod">Спица единиц</string>
+    <string name="tour_step_01">Это &lt;font color=\'#FF5722\'>&lt;b>рамка&lt;/b>&lt;/font> абакуса</string>
+    <string name="tour_step_02">Это &lt;font color=\'#0000EE\'>&lt;b>спицы&lt;/b>&lt;/font> или &lt;font color=\'#0000EE\'>&lt;b>столбцы&lt;/b>&lt;/font> абакуса</string>
+    <string name="tour_step_03">Это &lt;font color=\'#6200EA\'>&lt;b>перекладина&lt;/b>&lt;/font> или &lt;font color=\'#6200EA\'>&lt;b>планка&lt;/b>&lt;/font> абакуса</string>
+    <string name="tour_step_04">Это &lt;font color=\'#E91E63\'>&lt;b>верхние бусины&lt;/b>&lt;/font> абакуса</string>
+    <string name="tour_step_05">Это &lt;font color=\'#9C27B0\'>&lt;b>нижние бусины&lt;/b>&lt;/font> абакуса</string>
+    <string name="tour_step_06">Это &lt;font color=\'#0000EE\'>&lt;b>разряд единиц&lt;/b>&lt;/font> &lt;b>(столбец единиц)&lt;/b>&lt;br/>абакуса</string>
+    <string name="tour_step_07">&lt;b>На 1-й СПИЦЕ&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(столбец единиц)&lt;/b>&lt;/font>&lt;br/>каждая нижняя бусина &lt;font color=\'#D81B60\'>&lt;b>равна 1&lt;/b>&lt;/font>&lt;br/>а верхняя бусина &lt;font color=\'#388E3C\'>&lt;b>равна 5&lt;/b>&lt;/font></string>
+    <string name="tour_step_08">&lt;b>На 2-й СПИЦЕ&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(столбец десятков)&lt;/b>&lt;/font>&lt;br/>каждая нижняя бусина &lt;font color=\'#D81B60\'>&lt;b>равна 10&lt;/b>&lt;/font>&lt;br/>а верхняя бусина &lt;font color=\'#388E3C\'>&lt;b>равна 50&lt;/b>&lt;/font></string>
+    <string name="tour_step_09">&lt;b>На 3-й СПИЦЕ&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(столбец сотен)&lt;/b>&lt;/font>&lt;br/>каждая нижняя бусина &lt;font color=\'#D81B60\'>&lt;b>равна 100&lt;/b>&lt;/font>&lt;br/>а верхняя бусина &lt;font color=\'#388E3C\'>&lt;b>равна 500&lt;/b>&lt;/font>&lt;br/>и так далее...</string>
+    <string name="tour_step_10">&lt;b>Один столбец&lt;/b>&lt;br/>может показать любое число от &lt;font color=\'#EE0000\'>&lt;b>0 до 9&lt;/b>&lt;/font></string>
+    <string name="tour_step_11">&lt;b>Два столбца&lt;/b>&lt;br/>могут показать любое число от &lt;font color=\'#EE0000\'>&lt;b>0 до 99&lt;/b>&lt;/font></string>
+    <string name="tour_step_12">&lt;b>Три столбца&lt;/b>&lt;br/>могут показать любое число от &lt;font color=\'#EE0000\'>&lt;b>0 до 999&lt;/b>&lt;/font></string>
+    <string name="tour_step_13">&lt;b>Для сложения&lt;/b>&lt;br/>всегда используй &lt;font color=\'#D81B60\'>&lt;b>большой палец&lt;/b>&lt;/font>&lt;br/>чтобы &lt;font color=\'#0000EE\'>&lt;b>поднимать нижние бусины вверх&lt;/b>&lt;/font></string>
+    <string name="tour_step_14">&lt;b>Для сложения&lt;/b>&lt;br/>всегда используй &lt;font color=\'#D81B60\'>&lt;b>указательный палец&lt;/b>&lt;/font>&lt;br/>чтобы &lt;font color=\'#0000EE\'>&lt;b>опускать верхнюю бусину вниз&lt;/b>&lt;/font></string>
+    <string name="tour_step_15">&lt;b>Для вычитания&lt;/b>&lt;br/>всегда используй &lt;font color=\'#D81B60\'>&lt;b>указательный палец&lt;/b>&lt;/font>&lt;br/>чтобы &lt;font color=\'#0000EE\'>&lt;b>опускать нижние бусины вниз&lt;/b>&lt;/font></string>
+    <string name="tour_step_16">&lt;b>Для вычитания&lt;/b>&lt;br/>всегда используй &lt;font color=\'#D81B60\'>&lt;b>большой палец&lt;/b>&lt;/font>&lt;br/>чтобы &lt;font color=\'#0000EE\'>&lt;b>поднимать верхнюю бусину вверх&lt;/b>&lt;/font></string>
 </resources>

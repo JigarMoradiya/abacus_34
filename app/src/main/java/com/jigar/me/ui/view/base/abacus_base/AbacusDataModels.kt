@@ -7,6 +7,8 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import com.jigar.me.data.local.data.DeviceInfo
 import com.jigar.me.ui.view.home.theme.AppDimens
+import androidx.annotation.StringRes
+import com.jigar.me.R
 
 // ColorPresetModel.kt
 data class ColorPresetModel(
@@ -59,7 +61,7 @@ data class AbacusDimensionModel(
 )
 
 data class AbacusBottomLabel(
-    val textKey: String,
+    @StringRes val textRes: Int,
     val colorHex: String,
     val fontSize: TextUnit,
     val heightMultiplier: Int
@@ -80,23 +82,24 @@ data class SpotlightTooltipCalculation(
 )
 
 
-data class HighlightStep(val index: Int, val message: String)
+/** One step of the Free Mode tour: the string id of its text (HTML kept as text, shown by htmlToAnnotatedString). */
+data class HighlightStep(val index: Int, @StringRes val messageRes: Int)
 
 val freeModeHighlightSteps = listOf(
-    HighlightStep(0, "This is the <font color='#FF5722'><b>Frame</b></font> of the Abacus"),
-    HighlightStep(1, "These are the <font color='#0000EE'><b>Rods</b></font> or <font color='#0000EE'><b>Columns</b></font> of the Abacus"),
-    HighlightStep(2, "This is the <font color='#6200EA'><b>Bar</b></font> or <font color='#6200EA'><b>Beam</b></font> of the Abacus"),
-    HighlightStep(3, "These are the <font color='#E91E63'><b>Upper Beads</b></font> of the Abacus"),
-    HighlightStep(4, "These are the <font color='#9C27B0'><b>Lower Beads</b></font> of the Abacus"),
-    HighlightStep(5, "This is the <font color='#0000EE'><b>Unit's Place</b></font> <b>(Ones column)</b><br/>of the Abacus"),
-    HighlightStep(6, "<b>On the 1st ROD</b> <font color='#0000EE'><b>(Ones column)</b></font><br/>each lower bead <font color='#D81B60'><b>value is 1</b></font><br/>and the upper bead <font color='#388E3C'><b>value is 5</b></font>"),
-    HighlightStep(7, "<b>On the 2nd ROD</b> <font color='#0000EE'><b>(Tens column)</b></font><br/>each lower bead <font color='#D81B60'><b>value is 10</b></font><br/>and the upper bead <font color='#388E3C'><b>value is 50</b></font>"),
-    HighlightStep(8, "<b>On the 3rd ROD</b> <font color='#0000EE'><b>(Hundreds column)</b></font><br/>each lower bead <font color='#D81B60'><b>value is 100</b></font><br/>and the upper bead <font color='#388E3C'><b>value is 500</b></font><br/>and so on..."),
-    HighlightStep(9, "<b>One Column</b><br/>can show any number from <font color='#EE0000'><b>0 to 9</b></font>"),
-    HighlightStep(10, "<b>Two Columns</b><br/>can show any number from <font color='#EE0000'><b>0 to 99</b></font>"),
-    HighlightStep(11, "<b>Three Columns</b><br/>can show any number from <font color='#EE0000'><b>0 to 999</b></font>"),
-    HighlightStep(12, "<b>For Addition</b><br/>always use your <font color='#D81B60'><b>thumb</b></font><br/>to <font color='#0000EE'><b>move the lower beads upward</b></font>"),
-    HighlightStep(13, "<b>For Addition</b><br/>always use your <font color='#D81B60'><b>index finger</b></font><br/>to <font color='#0000EE'><b>move the upper bead downward</b></font>"),
-    HighlightStep(14, "<b>For Subtraction</b><br/>always use your <font color='#D81B60'><b>index finger</b></font><br/>to <font color='#0000EE'><b>move the lower beads downward</b></font>"),
-    HighlightStep(15, "<b>For Subtraction</b><br/>always use your <font color='#D81B60'><b>thumb</b></font><br/>to <font color='#0000EE'><b>move the upper bead upward</b></font>"),
+    HighlightStep(0, R.string.tour_step_01),
+    HighlightStep(1, R.string.tour_step_02),
+    HighlightStep(2, R.string.tour_step_03),
+    HighlightStep(3, R.string.tour_step_04),
+    HighlightStep(4, R.string.tour_step_05),
+    HighlightStep(5, R.string.tour_step_06),
+    HighlightStep(6, R.string.tour_step_07),
+    HighlightStep(7, R.string.tour_step_08),
+    HighlightStep(8, R.string.tour_step_09),
+    HighlightStep(9, R.string.tour_step_10),
+    HighlightStep(10, R.string.tour_step_11),
+    HighlightStep(11, R.string.tour_step_12),
+    HighlightStep(12, R.string.tour_step_13),
+    HighlightStep(13, R.string.tour_step_14),
+    HighlightStep(14, R.string.tour_step_15),
+    HighlightStep(15, R.string.tour_step_16),
 )

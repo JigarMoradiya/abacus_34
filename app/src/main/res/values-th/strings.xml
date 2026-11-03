@@ -340,4 +340,50 @@
     <string name="whats_learn_ccm_5">• &lt;b>ใช้ได้หลากหลาย –&lt;/b> เหมาะกับการฝึกที่บ้าน กิจกรรมในห้องเรียน และการสอนเสริมแบบเฉพาะตัว</string>
     <string name="whats_learn_ccm_6">• &lt;b>พัฒนาทักษะ –&lt;/b> เสริมการฟัง ความจำ สมาธิ การจินตนาการ และความเร็วในการคำนวณ</string>
     <string name="whats_learn_ccm_7">• &lt;b>ประโยชน์ –&lt;/b> สร้างความยืดหยุ่น พัฒนาการตัดสินใจ และเตรียมพร้อมสำหรับข้อสอบหลายรูปแบบ</string>
+    <!-- m6_free_mode -->
+    <string name="free_mode_set_label">ชุด:</string>
+    <string name="free_mode_range">%1$d ถึง %2$d</string>
+    <string name="free_mode_from">จาก</string>
+    <string name="free_mode_to">ถึง</string>
+    <string name="free_mode_error_from_empty">ต้องกรอกตัวเลขเริ่มต้น</string>
+    <string name="free_mode_error_to_empty">ต้องกรอกตัวเลขสิ้นสุด</string>
+    <string name="free_mode_error_invalid">ตัวเลขไม่ถูกต้อง</string>
+    <string name="free_mode_error_max">ตัวเลขสูงสุดที่ใช้ได้คือ 9,999,999</string>
+    <string name="free_mode_error_order">ตัวเลขสิ้นสุดต้องมากกว่าตัวเลขเริ่มต้น</string>
+    <string name="free_mode_error_gap">ผลต่างต้องมีอย่างน้อย 5</string>
+    <string name="free_mode_setting_learn_parts">อยากเรียนรู้ส่วนต่าง ๆ ของลูกคิดและวิธีทำงานไหม 🧠</string>
+    <string name="free_mode_setting_clear">ให้ล้างลูกคิดทุกครั้งหลังทำเลขเสร็จไหม 🧹</string>
+    <string name="free_mode_setting_random">ให้แสดงตัวเลขสลับแบบสุ่มสนุก ๆ ไหม 🎲</string>
+    <string name="free_mode_setting_range">เลือกช่วงตัวเลขที่อยากเล่น! 🔢</string>
+    <string name="tour_skip">ข้าม</string>
+    <string name="tour_next">ถัดไป →</string>
+    <string name="tour_done">เสร็จสิ้น</string>
+    <string name="tour_step_counter">%1$d / %2$d</string>
+    <string name="click_here_to_show_abacus_tour">ดูทัวร์ลูกคิด</string>
+    <string name="free_mode_settings">ตั้งค่าโหมดอิสระ</string>
+    <string name="numbers_generate_between">ช่วงตัวเลขที่สุ่ม</string>
+    <string name="place_ones">หน่วย</string>
+    <string name="place_tens">สิบ</string>
+    <string name="place_hundreds">ร้อย</string>
+    <string name="place_thousands">พัน</string>
+    <string name="place_ten_thousands">หมื่น</string>
+    <string name="place_lakhs">แสน</string>
+    <string name="place_ten_lakhs">ล้าน</string>
+    <string name="place_unit_rod">แกนหน่วย</string>
+    <string name="tour_step_01">นี่คือ&lt;font color=\'#FF5722\'>&lt;b>กรอบ&lt;/b>&lt;/font>ของลูกคิด</string>
+    <string name="tour_step_02">นี่คือ&lt;font color=\'#0000EE\'>&lt;b>แกน&lt;/b>&lt;/font>หรือ&lt;font color=\'#0000EE\'>&lt;b>คอลัมน์&lt;/b>&lt;/font>ของลูกคิด</string>
+    <string name="tour_step_03">นี่คือ&lt;font color=\'#6200EA\'>&lt;b>คาน&lt;/b>&lt;/font>หรือ&lt;font color=\'#6200EA\'>&lt;b>แถบกลาง&lt;/b>&lt;/font>ของลูกคิด</string>
+    <string name="tour_step_04">นี่คือ&lt;font color=\'#E91E63\'>&lt;b>ลูกคิดแถวบน&lt;/b>&lt;/font>ของลูกคิด</string>
+    <string name="tour_step_05">นี่คือ&lt;font color=\'#9C27B0\'>&lt;b>ลูกคิดแถวล่าง&lt;/b>&lt;/font>ของลูกคิด</string>
+    <string name="tour_step_06">นี่คือ&lt;font color=\'#0000EE\'>&lt;b>หลักหน่วย&lt;/b>&lt;/font> &lt;b>(คอลัมน์หน่วย)&lt;/b>&lt;br/>ของลูกคิด</string>
+    <string name="tour_step_07">&lt;b>ที่แกนที่ 1&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(คอลัมน์หน่วย)&lt;/b>&lt;/font>&lt;br/>ลูกล่างแต่ละลูก&lt;font color=\'#D81B60\'>&lt;b>มีค่า 1&lt;/b>&lt;/font>&lt;br/>และลูกบน&lt;font color=\'#388E3C\'>&lt;b>มีค่า 5&lt;/b>&lt;/font></string>
+    <string name="tour_step_08">&lt;b>ที่แกนที่ 2&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(คอลัมน์สิบ)&lt;/b>&lt;/font>&lt;br/>ลูกล่างแต่ละลูก&lt;font color=\'#D81B60\'>&lt;b>มีค่า 10&lt;/b>&lt;/font>&lt;br/>และลูกบน&lt;font color=\'#388E3C\'>&lt;b>มีค่า 50&lt;/b>&lt;/font></string>
+    <string name="tour_step_09">&lt;b>ที่แกนที่ 3&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(คอลัมน์ร้อย)&lt;/b>&lt;/font>&lt;br/>ลูกล่างแต่ละลูก&lt;font color=\'#D81B60\'>&lt;b>มีค่า 100&lt;/b>&lt;/font>&lt;br/>และลูกบน&lt;font color=\'#388E3C\'>&lt;b>มีค่า 500&lt;/b>&lt;/font>&lt;br/>และเป็นเช่นนี้ต่อไป...</string>
+    <string name="tour_step_10">&lt;b>1 คอลัมน์&lt;/b>&lt;br/>แสดงตัวเลขได้ตั้งแต่ &lt;font color=\'#EE0000\'>&lt;b>0 ถึง 9&lt;/b>&lt;/font></string>
+    <string name="tour_step_11">&lt;b>2 คอลัมน์&lt;/b>&lt;br/>แสดงตัวเลขได้ตั้งแต่ &lt;font color=\'#EE0000\'>&lt;b>0 ถึง 99&lt;/b>&lt;/font></string>
+    <string name="tour_step_12">&lt;b>3 คอลัมน์&lt;/b>&lt;br/>แสดงตัวเลขได้ตั้งแต่ &lt;font color=\'#EE0000\'>&lt;b>0 ถึง 999&lt;/b>&lt;/font></string>
+    <string name="tour_step_13">&lt;b>การบวก&lt;/b>&lt;br/>ใช้ &lt;font color=\'#D81B60\'>&lt;b>นิ้วโป้ง&lt;/b>&lt;/font> เสมอ&lt;br/>เพื่อ&lt;font color=\'#0000EE\'>&lt;b>เลื่อนลูกล่างขึ้น&lt;/b>&lt;/font></string>
+    <string name="tour_step_14">&lt;b>การบวก&lt;/b>&lt;br/>ใช้ &lt;font color=\'#D81B60\'>&lt;b>นิ้วชี้&lt;/b>&lt;/font> เสมอ&lt;br/>เพื่อ&lt;font color=\'#0000EE\'>&lt;b>เลื่อนลูกบนลง&lt;/b>&lt;/font></string>
+    <string name="tour_step_15">&lt;b>การลบ&lt;/b>&lt;br/>ใช้ &lt;font color=\'#D81B60\'>&lt;b>นิ้วชี้&lt;/b>&lt;/font> เสมอ&lt;br/>เพื่อ&lt;font color=\'#0000EE\'>&lt;b>เลื่อนลูกล่างลง&lt;/b>&lt;/font></string>
+    <string name="tour_step_16">&lt;b>การลบ&lt;/b>&lt;br/>ใช้ &lt;font color=\'#D81B60\'>&lt;b>นิ้วโป้ง&lt;/b>&lt;/font> เสมอ&lt;br/>เพื่อ&lt;font color=\'#0000EE\'>&lt;b>เลื่อนลูกบนขึ้น&lt;/b>&lt;/font></string>
 </resources>

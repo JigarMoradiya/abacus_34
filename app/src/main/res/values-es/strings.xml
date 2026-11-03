@@ -344,4 +344,50 @@
     <string name="whats_learn_ccm_5">• &lt;b>Uso versátil –&lt;/b> Ideal para practicar en casa, en clase o en sesiones de tutoría personalizadas.</string>
     <string name="whats_learn_ccm_6">• &lt;b>Desarrollo de habilidades –&lt;/b> Mejora la escucha, la memoria, la concentración, la visualización y la velocidad de cálculo.</string>
     <string name="whats_learn_ccm_7">• &lt;b>Beneficio –&lt;/b> Fomenta la adaptabilidad, mejora la toma de decisiones y prepara para distintos formatos de prueba.</string>
+    <!-- m6_free_mode -->
+    <string name="free_mode_set_label">Set:</string>
+    <string name="free_mode_range">de %1$d a %2$d</string>
+    <string name="free_mode_from">Desde</string>
+    <string name="free_mode_to">Hasta</string>
+    <string name="free_mode_error_from_empty">El número inicial no puede estar vacío</string>
+    <string name="free_mode_error_to_empty">El número final no puede estar vacío</string>
+    <string name="free_mode_error_invalid">Número no válido</string>
+    <string name="free_mode_error_max">El número máximo permitido es 9.999.999</string>
+    <string name="free_mode_error_order">El número final debe ser mayor que el inicial</string>
+    <string name="free_mode_error_gap">La diferencia debe ser de al menos 5</string>
+    <string name="free_mode_setting_learn_parts">¿Quieres aprender las partes del ábaco y cómo funciona? 🧠</string>
+    <string name="free_mode_setting_clear">¿Limpio el ábaco cuando termines un número? 🧹</string>
+    <string name="free_mode_setting_random">¿Muestro los números en un orden aleatorio divertido? 🎲</string>
+    <string name="free_mode_setting_range">¡Elige el rango de números con el que quieres jugar! 🔢</string>
+    <string name="tour_skip">Omitir</string>
+    <string name="tour_next">Siguiente →</string>
+    <string name="tour_done">Listo</string>
+    <string name="tour_step_counter">%1$d / %2$d</string>
+    <string name="click_here_to_show_abacus_tour">Ver el recorrido del ábaco</string>
+    <string name="free_mode_settings">Ajustes del modo libre</string>
+    <string name="numbers_generate_between">Números generados entre</string>
+    <string name="place_ones">Unidades</string>
+    <string name="place_tens">Decenas</string>
+    <string name="place_hundreds">Centenas</string>
+    <string name="place_thousands">Millares</string>
+    <string name="place_ten_thousands">Diez\nmil</string>
+    <string name="place_lakhs">Cien\nmil</string>
+    <string name="place_ten_lakhs">Millón</string>
+    <string name="place_unit_rod">Varilla de unidades</string>
+    <string name="tour_step_01">Este es el &lt;font color=\'#FF5722\'>&lt;b>marco&lt;/b>&lt;/font> del ábaco</string>
+    <string name="tour_step_02">Estas son las &lt;font color=\'#0000EE\'>&lt;b>varillas&lt;/b>&lt;/font> o &lt;font color=\'#0000EE\'>&lt;b>columnas&lt;/b>&lt;/font> del ábaco</string>
+    <string name="tour_step_03">Esta es la &lt;font color=\'#6200EA\'>&lt;b>barra&lt;/b>&lt;/font> o &lt;font color=\'#6200EA\'>&lt;b>travesaño&lt;/b>&lt;/font> del ábaco</string>
+    <string name="tour_step_04">Estas son las &lt;font color=\'#E91E63\'>&lt;b>cuentas superiores&lt;/b>&lt;/font> del ábaco</string>
+    <string name="tour_step_05">Estas son las &lt;font color=\'#9C27B0\'>&lt;b>cuentas inferiores&lt;/b>&lt;/font> del ábaco</string>
+    <string name="tour_step_06">Este es el &lt;font color=\'#0000EE\'>&lt;b>lugar de las unidades&lt;/b>&lt;/font> &lt;b>(columna de unidades)&lt;/b>&lt;br/>del ábaco</string>
+    <string name="tour_step_07">&lt;b>En la 1.ª VARILLA&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(columna de unidades)&lt;/b>&lt;/font>&lt;br/>cada cuenta inferior &lt;font color=\'#D81B60\'>&lt;b>vale 1&lt;/b>&lt;/font>&lt;br/>y la cuenta superior &lt;font color=\'#388E3C\'>&lt;b>vale 5&lt;/b>&lt;/font></string>
+    <string name="tour_step_08">&lt;b>En la 2.ª VARILLA&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(columna de decenas)&lt;/b>&lt;/font>&lt;br/>cada cuenta inferior &lt;font color=\'#D81B60\'>&lt;b>vale 10&lt;/b>&lt;/font>&lt;br/>y la cuenta superior &lt;font color=\'#388E3C\'>&lt;b>vale 50&lt;/b>&lt;/font></string>
+    <string name="tour_step_09">&lt;b>En la 3.ª VARILLA&lt;/b> &lt;font color=\'#0000EE\'>&lt;b>(columna de centenas)&lt;/b>&lt;/font>&lt;br/>cada cuenta inferior &lt;font color=\'#D81B60\'>&lt;b>vale 100&lt;/b>&lt;/font>&lt;br/>y la cuenta superior &lt;font color=\'#388E3C\'>&lt;b>vale 500&lt;/b>&lt;/font>&lt;br/>y así sucesivamente...</string>
+    <string name="tour_step_10">&lt;b>Una columna&lt;/b>&lt;br/>puede mostrar cualquier número de &lt;font color=\'#EE0000\'>&lt;b>0 a 9&lt;/b>&lt;/font></string>
+    <string name="tour_step_11">&lt;b>Dos columnas&lt;/b>&lt;br/>pueden mostrar cualquier número de &lt;font color=\'#EE0000\'>&lt;b>0 a 99&lt;/b>&lt;/font></string>
+    <string name="tour_step_12">&lt;b>Tres columnas&lt;/b>&lt;br/>pueden mostrar cualquier número de &lt;font color=\'#EE0000\'>&lt;b>0 a 999&lt;/b>&lt;/font></string>
+    <string name="tour_step_13">&lt;b>Para sumar&lt;/b>&lt;br/>usa siempre el &lt;font color=\'#D81B60\'>&lt;b>pulgar&lt;/b>&lt;/font>&lt;br/>para &lt;font color=\'#0000EE\'>&lt;b>subir las cuentas inferiores&lt;/b>&lt;/font></string>
+    <string name="tour_step_14">&lt;b>Para sumar&lt;/b>&lt;br/>usa siempre el &lt;font color=\'#D81B60\'>&lt;b>dedo índice&lt;/b>&lt;/font>&lt;br/>para &lt;font color=\'#0000EE\'>&lt;b>bajar la cuenta superior&lt;/b>&lt;/font></string>
+    <string name="tour_step_15">&lt;b>Para restar&lt;/b>&lt;br/>usa siempre el &lt;font color=\'#D81B60\'>&lt;b>dedo índice&lt;/b>&lt;/font>&lt;br/>para &lt;font color=\'#0000EE\'>&lt;b>bajar las cuentas inferiores&lt;/b>&lt;/font></string>
+    <string name="tour_step_16">&lt;b>Para restar&lt;/b>&lt;br/>usa siempre el &lt;font color=\'#D81B60\'>&lt;b>pulgar&lt;/b>&lt;/font>&lt;br/>para &lt;font color=\'#0000EE\'>&lt;b>subir la cuenta superior&lt;/b>&lt;/font></string>
 </resources>

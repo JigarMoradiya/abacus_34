@@ -79,6 +79,7 @@ import com.jigar.me.ui.view.base.abacus_base.SpotlightTooltipCalculation
 import com.jigar.me.ui.view.home.theme.AppDimens
 import kotlin.math.max
 import kotlin.math.min
+import androidx.compose.ui.res.stringResource
 
 /**
  * Where a screen wants the tour layer drawn. The layer fills the screen and works in root coordinates, so it cannot live
@@ -195,15 +196,15 @@ private fun TourControls(step: Int, total: Int, onNext: () -> Unit, onSkip: () -
             .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens8),
     ) {
         if (!isLast) {
-            AbButton(text = "Skip", tone = AbTone.Ghost, size = AbSize.Compact, onClick = onSkip)
+            AbButton(text = stringResource(R.string.tour_skip), tone = AbTone.Ghost, size = AbSize.Compact, onClick = onSkip)
         }
         Text(
-            text = "${step + 1} / $total",
+            text = stringResource(R.string.tour_step_counter, step + 1, total),
             color = LocalAbColors.current.textSecondary,
             fontSize = (13f * appScale()).sp,
             fontWeight = FontWeight.Bold,
         )
-        AbButton(text = if (isLast) "Done" else "Next →", tone = AbTone.Primary, size = AbSize.Small, onClick = onNext)
+        AbButton(text = stringResource(if (isLast) R.string.tour_done else R.string.tour_next), tone = AbTone.Primary, size = AbSize.Small, onClick = onNext)
     }
 }
 

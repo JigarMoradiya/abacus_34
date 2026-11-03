@@ -340,4 +340,50 @@
     <string name="whats_learn_ccm_5">• &lt;b>いろいろな使い方&lt;/b>：家での練習、教室の活動、個別指導にも使えます。</string>
     <string name="whats_learn_ccm_6">• &lt;b>力を伸ばす&lt;/b>：聞く力、記憶力、集中力、イメージ力、計算スピードが向上します。</string>
     <string name="whats_learn_ccm_7">• &lt;b>効果&lt;/b>：対応力と判断力が育ち、さまざまな形式のテストに備えられます。</string>
+    <!-- m6_free_mode -->
+    <string name="free_mode_set_label">セット：</string>
+    <string name="free_mode_range">%1$d〜%2$d</string>
+    <string name="free_mode_from">から</string>
+    <string name="free_mode_to">まで</string>
+    <string name="free_mode_error_from_empty">開始の数を入力してください</string>
+    <string name="free_mode_error_to_empty">終了の数を入力してください</string>
+    <string name="free_mode_error_invalid">正しい数ではありません</string>
+    <string name="free_mode_error_max">入力できる最大の数は9,999,999です</string>
+    <string name="free_mode_error_order">終了の数は開始の数より大きくしてください</string>
+    <string name="free_mode_error_gap">差は5以上にしてください</string>
+    <string name="free_mode_setting_learn_parts">そろばんのパーツとしくみを学んでみる？ 🧠</string>
+    <string name="free_mode_setting_clear">ひとつ数ができたら、そろばんをリセットする？ 🧹</string>
+    <string name="free_mode_setting_random">数をランダムな順番で出す？ 🎲</string>
+    <string name="free_mode_setting_range">あそびたい数のはんいをえらんでね！ 🔢</string>
+    <string name="tour_skip">スキップ</string>
+    <string name="tour_next">次へ →</string>
+    <string name="tour_done">完了</string>
+    <string name="tour_step_counter">%1$d / %2$d</string>
+    <string name="click_here_to_show_abacus_tour">そろばんツアーを見る</string>
+    <string name="free_mode_settings">フリーモードの設定</string>
+    <string name="numbers_generate_between">出る数のはんい</string>
+    <string name="place_ones">一の位</string>
+    <string name="place_tens">十の位</string>
+    <string name="place_hundreds">百の位</string>
+    <string name="place_thousands">千の位</string>
+    <string name="place_ten_thousands">万の位</string>
+    <string name="place_lakhs">十万の位</string>
+    <string name="place_ten_lakhs">百万の位</string>
+    <string name="place_unit_rod">一の位の桁</string>
+    <string name="tour_step_01">これがそろばんの&lt;font color=\'#FF5722\'>&lt;b>わく&lt;/b>&lt;/font>です</string>
+    <string name="tour_step_02">これがそろばんの&lt;font color=\'#0000EE\'>&lt;b>桁&lt;/b>&lt;/font>、つまり&lt;font color=\'#0000EE\'>&lt;b>列&lt;/b>&lt;/font>です</string>
+    <string name="tour_step_03">これがそろばんの&lt;font color=\'#6200EA\'>&lt;b>梁（はり）&lt;/b>&lt;/font>、つまり&lt;font color=\'#6200EA\'>&lt;b>真ん中の仕切り&lt;/b>&lt;/font>です</string>
+    <string name="tour_step_04">これがそろばんの&lt;font color=\'#E91E63\'>&lt;b>上の珠&lt;/b>&lt;/font>です</string>
+    <string name="tour_step_05">これがそろばんの&lt;font color=\'#9C27B0\'>&lt;b>下の珠&lt;/b>&lt;/font>です</string>
+    <string name="tour_step_06">これがそろばんの&lt;font color=\'#0000EE\'>&lt;b>一の位&lt;/b>&lt;/font>&lt;b>（1の桁）&lt;/b>&lt;br/>です</string>
+    <string name="tour_step_07">&lt;b>1番目の桁&lt;/b>&lt;font color=\'#0000EE\'>&lt;b>（一の位）&lt;/b>&lt;/font>&lt;br/>では、下の珠1つが&lt;font color=\'#D81B60\'>&lt;b>1&lt;/b>&lt;/font>&lt;br/>上の珠1つが&lt;font color=\'#388E3C\'>&lt;b>5&lt;/b>&lt;/font>です</string>
+    <string name="tour_step_08">&lt;b>2番目の桁&lt;/b>&lt;font color=\'#0000EE\'>&lt;b>（十の位）&lt;/b>&lt;/font>&lt;br/>では、下の珠1つが&lt;font color=\'#D81B60\'>&lt;b>10&lt;/b>&lt;/font>&lt;br/>上の珠1つが&lt;font color=\'#388E3C\'>&lt;b>50&lt;/b>&lt;/font>です</string>
+    <string name="tour_step_09">&lt;b>3番目の桁&lt;/b>&lt;font color=\'#0000EE\'>&lt;b>（百の位）&lt;/b>&lt;/font>&lt;br/>では、下の珠1つが&lt;font color=\'#D81B60\'>&lt;b>100&lt;/b>&lt;/font>&lt;br/>上の珠1つが&lt;font color=\'#388E3C\'>&lt;b>500&lt;/b>&lt;/font>&lt;br/>…というふうに続きます</string>
+    <string name="tour_step_10">&lt;b>1つの桁&lt;/b>&lt;br/>で&lt;font color=\'#EE0000\'>&lt;b>0から9&lt;/b>&lt;/font>までの数を表せます</string>
+    <string name="tour_step_11">&lt;b>2つの桁&lt;/b>&lt;br/>で&lt;font color=\'#EE0000\'>&lt;b>0から99&lt;/b>&lt;/font>までの数を表せます</string>
+    <string name="tour_step_12">&lt;b>3つの桁&lt;/b>&lt;br/>で&lt;font color=\'#EE0000\'>&lt;b>0から999&lt;/b>&lt;/font>までの数を表せます</string>
+    <string name="tour_step_13">&lt;b>たし算のときは&lt;/b>&lt;br/>いつも&lt;font color=\'#D81B60\'>&lt;b>親指&lt;/b>&lt;/font>で&lt;br/>&lt;font color=\'#0000EE\'>&lt;b>下の珠を上へ動かします&lt;/b>&lt;/font></string>
+    <string name="tour_step_14">&lt;b>たし算のときは&lt;/b>&lt;br/>いつも&lt;font color=\'#D81B60\'>&lt;b>人さし指&lt;/b>&lt;/font>で&lt;br/>&lt;font color=\'#0000EE\'>&lt;b>上の珠を下へ動かします&lt;/b>&lt;/font></string>
+    <string name="tour_step_15">&lt;b>ひき算のときは&lt;/b>&lt;br/>いつも&lt;font color=\'#D81B60\'>&lt;b>人さし指&lt;/b>&lt;/font>で&lt;br/>&lt;font color=\'#0000EE\'>&lt;b>下の珠を下へ動かします&lt;/b>&lt;/font></string>
+    <string name="tour_step_16">&lt;b>ひき算のときは&lt;/b>&lt;br/>いつも&lt;font color=\'#D81B60\'>&lt;b>親指&lt;/b>&lt;/font>で&lt;br/>&lt;font color=\'#0000EE\'>&lt;b>上の珠を上へ動かします&lt;/b>&lt;/font></string>
 </resources>
