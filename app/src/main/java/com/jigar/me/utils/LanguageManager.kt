@@ -2,6 +2,8 @@ package com.jigar.me.utils
 
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatDelegate
+import android.content.Context
+import android.content.res.Configuration
 import androidx.core.os.LocaleListCompat
 import com.jigar.me.BuildConfig
 import com.jigar.me.R
@@ -57,6 +59,10 @@ object LanguageManager {
         return all.firstOrNull { it.tag == language && isOffered(it.tag) }?.tag ?: "en"
     }
 
+    /** The app language whose words a voice of [voice] speaks: the voice's own language when the app has it, else English
+     *  (an Indian English or Hindi voice gets English words, as before). */
+    fun tagForVoice(voice: Locale): String = all.firstOrNull { it.tag == voice.language && isOffered(it.tag) }?.tag ?: "en"
+
     /** True when the user has not picked a language in the app (the phone's language is followed). */
     fun isFollowingPhone(): Boolean = AppCompatDelegate.getApplicationLocales().isEmpty
 
@@ -66,3 +72,17 @@ object LanguageManager {
         AppCompatDelegate.setApplicationLocales(list)
     }
 }
+
+/**
+ * This context with its strings in language [tag] ("en" = the default strings).
+ * Needed because the application context (the one view models hold) does not follow the language picked inside the app on Android 12
+ * and older, only the activity does.
+ */
+fun Context.withLanguage(tag: String): Context {
+    val config = Configuration(resources.configuration)
+    config.setLocale(Locale.forLanguageTag(tag))
+    return createConfigurationContext(config)
+}
+
+/** This context in the language the app shows now (the chosen language, else the phone's when we have it, else English). */
+fun Context.inAppLanguage(): Context = withLanguage(LanguageManager.currentTag())

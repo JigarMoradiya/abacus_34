@@ -357,38 +357,39 @@
     <string name="hundreds">Hundreds</string>
     <string name="tens">Tens</string>
     <string name="ones">Ones\n<font color='#000000'>Unit Rod</font></string>
-    <string name="Hundred">Hundred</string>
-    <string name="Thousand">Thousand</string>
-    <string name="Lakh">Lakh</string>
-    <string name="Crore">Crore</string>
-    <string name="Minus">Minus</string>
-    <string name="One">One</string>
-    <string name="Two">Two</string>
-    <string name="Three">Three</string>
-    <string name="Four">Four</string>
-    <string name="Five">Five</string>
-    <string name="Six">Six</string>
-    <string name="Seven">Seven</string>
-    <string name="Eight">Eight</string>
-    <string name="Nine">Nine</string>
-    <string name="Ten">Ten</string>
-    <string name="Eleven">Eleven</string>
-    <string name="Twelve">Twelve</string>
-    <string name="Thirteen">Thirteen</string>
-    <string name="Fourteen">Fourteen</string>
-    <string name="Fifteen">Fifteen</string>
-    <string name="Sixteen">Sixteen</string>
-    <string name="Seventeen">Seventeen</string>
-    <string name="Eighteen">Eighteen</string>
-    <string name="Nineteen">Nineteen</string>
-    <string name="Twenty">Twenty</string>
-    <string name="Thirty">Thirty</string>
-    <string name="Forty">Forty</string>
-    <string name="Fifty">Fifty</string>
-    <string name="Sixty">Sixty</string>
-    <string name="Seventy">Seventy</string>
-    <string name="Eighty">Eighty</string>
-    <string name="Ninety">Ninety</string>
+    <string name="Zero" translatable="false">Zero</string>
+    <string name="Hundred" translatable="false">Hundred</string>
+    <string name="Thousand" translatable="false">Thousand</string>
+    <string name="Lakh" translatable="false">Lakh</string>
+    <string name="Crore" translatable="false">Crore</string>
+    <string name="Minus" translatable="false">Minus</string>
+    <string name="One" translatable="false">One</string>
+    <string name="Two" translatable="false">Two</string>
+    <string name="Three" translatable="false">Three</string>
+    <string name="Four" translatable="false">Four</string>
+    <string name="Five" translatable="false">Five</string>
+    <string name="Six" translatable="false">Six</string>
+    <string name="Seven" translatable="false">Seven</string>
+    <string name="Eight" translatable="false">Eight</string>
+    <string name="Nine" translatable="false">Nine</string>
+    <string name="Ten" translatable="false">Ten</string>
+    <string name="Eleven" translatable="false">Eleven</string>
+    <string name="Twelve" translatable="false">Twelve</string>
+    <string name="Thirteen" translatable="false">Thirteen</string>
+    <string name="Fourteen" translatable="false">Fourteen</string>
+    <string name="Fifteen" translatable="false">Fifteen</string>
+    <string name="Sixteen" translatable="false">Sixteen</string>
+    <string name="Seventeen" translatable="false">Seventeen</string>
+    <string name="Eighteen" translatable="false">Eighteen</string>
+    <string name="Nineteen" translatable="false">Nineteen</string>
+    <string name="Twenty" translatable="false">Twenty</string>
+    <string name="Thirty" translatable="false">Thirty</string>
+    <string name="Forty" translatable="false">Forty</string>
+    <string name="Fifty" translatable="false">Fifty</string>
+    <string name="Sixty" translatable="false">Sixty</string>
+    <string name="Seventy" translatable="false">Seventy</string>
+    <string name="Eighty" translatable="false">Eighty</string>
+    <string name="Ninety" translatable="false">Ninety</string>
     <string name="click_here_to_watch_nvideo_tutorial_of_abacus">Click here to <font color='#FF8F00'>Watch Video Tutorial</font>\nto learn how make <font color='#FF8F00'>calculation with Abacus</font></string>
     <string name="enable_free_mode">Enable Free Mode</string>
     <string name="to_know_about_abacus">To know about Abacus</string>
@@ -1241,4 +1242,7 @@
     <string name="settings_theme_brown">Brown</string>
     <string name="settings_theme_black">Black</string>
     <string name="settings_theme_pearl">Pearl</string>
+
+    <!-- Numbers and speech (M2) -->
+    <string name="speak_times_equals">%1$s times %2$s equals %3$s</string>
 </resources>

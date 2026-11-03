@@ -47,4 +47,11 @@
     <string name="settings_theme_brown">น้ำตาล</string>
     <string name="settings_theme_black">ดำ</string>
     <string name="settings_theme_pearl">ไข่มุก</string>
+    <!-- m2_numbers -->
+    <string name="minus">ลบ</string>
+    <string name="plus">บวก</string>
+    <string name="set_your_answer">ตั้งคำตอบของหนู</string>
+    <string name="speak_multiply_by">%1$s คูณ %2$s</string>
+    <string name="speak_divide_by">%1$s หาร %2$s</string>
+    <string name="speak_times_equals">%1$s คูณ %2$s เท่ากับ %3$s</string>
 </resources>

@@ -6,14 +6,18 @@ import android.os.Looper
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
 import android.util.Log
+import androidx.annotation.StringRes
+import com.jigar.me.R
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.LanguageManager
 import com.jigar.me.utils.TtsLocale
+import com.jigar.me.utils.extensions.convertNumberToWords
+import com.jigar.me.utils.withLanguage
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 class TextToSpeechManager @Inject constructor(
-    @ApplicationContext context: Context,
+    @ApplicationContext private val context: Context,
     private val prefs: AppPreferencesHelper
 ) {
 
@@ -70,6 +74,21 @@ class TextToSpeechManager @Inject constructor(
         tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId)
     }
 
+
+    // ---- what is said: the words follow the language of the voice, so a French voice never reads English words
+
+    /** The app language whose words the voice speaks now: the voice's language when the app has it, else English. */
+    fun speechTag(): String =
+        LanguageManager.tagForVoice(TtsLocale.current(prefs.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_LANGUAGE, ""), LanguageManager.currentTag()))
+
+    /** [n] in words in the voice's language. */
+    fun words(n: Int): String = context.convertNumberToWords(n, speechTag())
+
+    /** A string of the app in the voice's language, e.g. `phrase(R.string.speak_multiply_by, a, b)`. */
+    fun phrase(@StringRes id: Int, vararg args: Any): String = context.withLanguage(speechTag()).getString(id, *args)
+
+    /** "eighteen times seven equals one hundred twenty six" in the voice's language. */
+    fun tableLine(table: Int, i: Int): String = phrase(R.string.speak_times_equals, words(table), words(i), words(table * i))
 
     fun applySettings() {
         if (!ready) return   // the engine is still starting: its start-up callback applies the settings

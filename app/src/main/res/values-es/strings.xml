@@ -47,4 +47,11 @@
     <string name="settings_theme_brown">Marrón</string>
     <string name="settings_theme_black">Negro</string>
     <string name="settings_theme_pearl">Perla</string>
+    <!-- m2_numbers -->
+    <string name="minus">Menos</string>
+    <string name="plus">Más</string>
+    <string name="set_your_answer">Pon tu respuesta</string>
+    <string name="speak_multiply_by">%1$s multiplicado por %2$s</string>
+    <string name="speak_divide_by">%1$s dividido entre %2$s</string>
+    <string name="speak_times_equals">%1$s por %2$s es igual a %3$s</string>
 </resources>

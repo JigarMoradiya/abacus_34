@@ -12,6 +12,7 @@ import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
 import com.jigar.me.ui.jetpack.utils.TextToSpeechManager
 import com.jigar.me.utils.*
 import com.jigar.me.utils.extensions.convertNumberToWords
+import com.jigar.me.utils.inAppLanguage
 import com.jigar.me.utils.extensions.isNetworkAvailable
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -81,16 +82,17 @@ class CCMPlayViewModel @Inject constructor(
                 else
                     ""
 
-            // 🔹 Word text
-            val wordPrefix = when (sign) {
-                "-" -> context.getString(R.string.minus) + " "
-                "+" -> context.getString(R.string.plus) + " "
-                else -> ""
+            // 🔹 Word text: shown in the app language, spoken in the language of the voice (the same unless the user chose another voice)
+            val signRes = when (sign) {
+                "-" -> R.string.minus
+                "+" -> R.string.plus
+                else -> null
             }
-
+            val appContext = context.inAppLanguage()
+            val shownWords = (signRes?.let { appContext.getString(it) + " " } ?: "") + appContext.convertNumberToWords(number)
+            val spokenText = (signRes?.let { ttsManager.phrase(it) + " " } ?: "") + ttsManager.words(number)
             // what is said: always the number in words, whatever is shown on the screen (Speak can be on alone)
-            val spokenText = wordPrefix + context.convertNumberToWords(number)
-            val wordText = if (state.isQuestionShowWord) spokenText else ""
+            val wordText = if (state.isQuestionShowWord) shownWords else ""
             updateState_ {
                 copy(
                     currentNumberText = numberText,
@@ -122,7 +124,7 @@ class CCMPlayViewModel @Inject constructor(
     }
 
     private fun onQuestionsCompleted() {
-        speakText(context.getString(R.string.set_your_answer), "complete")
+        speakText(ttsManager.phrase(R.string.set_your_answer), "complete")
         updateState_ {
             copy(isQuestionPhase = false, currentNumberText = "", currentWordText = "")
         }

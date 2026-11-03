@@ -47,4 +47,11 @@
     <string name="settings_theme_brown">Коричневый</string>
     <string name="settings_theme_black">Чёрный</string>
     <string name="settings_theme_pearl">Жемчужный</string>
+    <!-- m2_numbers -->
+    <string name="minus">Минус</string>
+    <string name="plus">Плюс</string>
+    <string name="set_your_answer">Выставь свой ответ</string>
+    <string name="speak_multiply_by">%1$s умножить на %2$s</string>
+    <string name="speak_divide_by">%1$s разделить на %2$s</string>
+    <string name="speak_times_equals">%1$s умножить на %2$s равно %3$s</string>
 </resources>

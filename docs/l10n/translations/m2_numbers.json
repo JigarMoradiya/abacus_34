@@ -1,0 +1,20 @@
+{
+  "minus": {
+    "fr": "Moins", "es": "Menos", "pt": "Menos", "tr": "Eksi", "ru": "Минус", "ja": "マイナス", "th": "ลบ", "ar": "ناقص"
+  },
+  "plus": {
+    "fr": "Plus", "es": "Más", "pt": "Mais", "tr": "Artı", "ru": "Плюс", "ja": "プラス", "th": "บวก", "ar": "زائد"
+  },
+  "set_your_answer": {
+    "fr": "Donne ta réponse", "es": "Pon tu respuesta", "pt": "Coloque sua resposta", "tr": "Cevabını ayarla", "ru": "Выставь свой ответ", "ja": "答えをセットしてね", "th": "ตั้งคำตอบของหนู", "ar": "ضع إجابتك"
+  },
+  "speak_multiply_by": {
+    "fr": "%1$s multiplié par %2$s", "es": "%1$s multiplicado por %2$s", "pt": "%1$s multiplicado por %2$s", "tr": "%1$s çarpı %2$s", "ru": "%1$s умножить на %2$s", "ja": "%1$s かける %2$s", "th": "%1$s คูณ %2$s", "ar": "%1$s مضروبًا في %2$s"
+  },
+  "speak_divide_by": {
+    "fr": "%1$s divisé par %2$s", "es": "%1$s dividido entre %2$s", "pt": "%1$s dividido por %2$s", "tr": "%1$s bölü %2$s", "ru": "%1$s разделить на %2$s", "ja": "%1$s わる %2$s", "th": "%1$s หาร %2$s", "ar": "%1$s مقسومًا على %2$s"
+  },
+  "speak_times_equals": {
+    "fr": "%1$s fois %2$s égale %3$s", "es": "%1$s por %2$s es igual a %3$s", "pt": "%1$s vezes %2$s é igual a %3$s", "tr": "%1$s çarpı %2$s eşittir %3$s", "ru": "%1$s умножить на %2$s равно %3$s", "ja": "%1$s かける %2$s は %3$s", "th": "%1$s คูณ %2$s เท่ากับ %3$s", "ar": "%1$s في %2$s يساوي %3$s"
+  }
+}

@@ -52,4 +52,12 @@ class LanguageAndNumberFormatTest {
         assertEquals("2,5", LocalizedNumberFormat.format(2.5, locale = Locale.forLanguageTag("es")))
         assertEquals("3", LocalizedNumberFormat.format(3.0, locale = Locale.forLanguageTag("ja")))
     }
+
+    @Test fun voiceLanguageDecidesTheSpokenWords() {
+        assertEquals("fr", LanguageManager.tagForVoice(Locale.forLanguageTag("fr-CA")))
+        assertEquals("pt", LanguageManager.tagForVoice(Locale.forLanguageTag("pt-BR")))
+        assertEquals("en", LanguageManager.tagForVoice(Locale.forLanguageTag("en-IN")))
+        assertEquals("en", LanguageManager.tagForVoice(Locale.forLanguageTag("hi-IN")))   // a Hindi voice gets English words, as before
+        assertEquals("en", LanguageManager.tagForVoice(Locale.forLanguageTag("ar")))      // Arabic is off until the right-to-left pass
+    }
 }

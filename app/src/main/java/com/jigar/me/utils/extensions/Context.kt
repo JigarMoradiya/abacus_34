@@ -39,6 +39,8 @@ import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Constants
+import com.jigar.me.utils.LanguageManager
+import com.jigar.me.utils.NumberWords
 import com.revenuecat.purchases.Purchases
 import java.io.IOException
 import java.util.*
@@ -356,35 +358,14 @@ fun Context.downloadFilePath() : String?{
     }else{""}
 }
 
-// fun Context.convertNumberToWords(n: Int): String {
-//     val tens = DataProvider.getTensList(this)
-//     val units = DataProvider.getUnitsList(this)
-//     if (n < 0) {
-//         return resources.getString(R.string.Minus) + " " + convertNumberToWords(-n)
-//     }
-//     if (n < 20) {
-//         return units[n]
-//     }
-//     if (n < 100) {
-//         return tens[n / 10] + (if (n % 10 != 0) " " else "") + units[n % 10]
-//     }
-//     if (n < 1000) {
-//         return units[n / 100] + " " + resources
-//             .getString(R.string.Hundred) + (if (n % 100 != 0) " " else "") + convertNumberToWords(n % 100)
-//     }
-//     if (n < 100000) {
-//         return convertNumberToWords(n / 1000) + " " + resources
-//             .getString(R.string.Thousand) + (if (n % 10000 != 0) " " else "") + convertNumberToWords(n % 1000)
-//     }
-//     return if (n < 10000000) {
-//         convertNumberToWords(n / 100000) + " " + resources
-//             .getString(R.string.Lakh) + (if (n % 100000 != 0) " " else "") + convertNumberToWords(n % 100000)
-//     } else convertNumberToWords(n / 10000000) + " " + resources
-//         .getString(R.string.Crore) + (if (n % 10000000 != 0) " " else "") + convertNumberToWords(n % 10000000)
-// }
+ /**
+  * [n] in words. [lang] is the language of the words: the app language by default; speech passes the language of the voice.
+  * English keeps its own Indian-style words (lakh, crore) from the resource strings, every other language comes from [NumberWords].
+  */
+ fun Context.convertNumberToWords(n: Int, lang: String = LanguageManager.currentTag()): String {
+     NumberWords.spell(n.toLong(), lang)?.let { return it }
 
- fun Context.convertNumberToWords(n: Int): String {
-     if (n == 0) return DataProvider.getUnitsList(this)[0]
+     if (n == 0) return getString(R.string.Zero)
 
      val units = DataProvider.getUnitsList(this)
      val tens = DataProvider.getTensList(this)

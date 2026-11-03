@@ -47,4 +47,11 @@
     <string name="settings_theme_brown">Kahverengi</string>
     <string name="settings_theme_black">Siyah</string>
     <string name="settings_theme_pearl">İnci</string>
+    <!-- m2_numbers -->
+    <string name="minus">Eksi</string>
+    <string name="plus">Artı</string>
+    <string name="set_your_answer">Cevabını ayarla</string>
+    <string name="speak_multiply_by">%1$s çarpı %2$s</string>
+    <string name="speak_divide_by">%1$s bölü %2$s</string>
+    <string name="speak_times_equals">%1$s çarpı %2$s eşittir %3$s</string>
 </resources>

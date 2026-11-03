@@ -19,7 +19,6 @@ import com.jigar.me.ui.jetpack.utils.TextToSpeechManager
 import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
 import com.jigar.me.ui.view.base.abacus_base.utils.MathUtils
 import com.jigar.me.utils.AppConstants
-import com.jigar.me.utils.extensions.convertNumberToWords
 import com.jigar.me.utils.extensions.isNotNullOrEmpty
 import com.jigar.me.utils.extensions.sumToIntList
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -242,28 +241,20 @@ class AbacusDoPracticeViewModel @Inject constructor(
             currentAbacus?.let{ currentAbacus ->
                 when (currentAbacusType) {
                     AppConstants.extras_Comman.AbacusTypeNumber -> {
-                        val questionWord = context.convertNumberToWords(currentAbacus.question.toInt())
-                        ttsManager.speak(questionWord)
+                        ttsManager.speak(ttsManager.words(currentAbacus.question.toInt()))
                     }
                     AppConstants.extras_Comman.AbacusTypeAdditionSubtraction -> {
                         // past the last step there is nothing left to read out
                         val step = currentAbacus.operationStepsStringsArray.getOrNull(currentIndexOfOperation)?.toIntOrNull() ?: return@let
-                        val questionWord = context.convertNumberToWords(step)
-                        ttsManager.speak(questionWord)
+                        ttsManager.speak(ttsManager.words(step))
                     }
                     AppConstants.extras_Comman.AbacusTypeMultiplication -> {
                         val num1Int = currentAbacus.num1.joinToString("").toIntOrNull() ?: 0
                         val num2Int = currentAbacus.num2.joinToString("").toIntOrNull() ?: 0
-                        val num1Str = context.convertNumberToWords(num1Int)
-                        val num2Str = context.convertNumberToWords(num2Int)
-                        val questionWord = String.format(context.getString(R.string.speak_multiply_by),num1Str,num2Str)
-                        ttsManager.speak(questionWord)
+                        ttsManager.speak(ttsManager.phrase(R.string.speak_multiply_by, ttsManager.words(num1Int), ttsManager.words(num2Int)))
                     }
                     AppConstants.extras_Comman.AbacusTypeDivision -> {
-                        val dividend = context.convertNumberToWords(currentAbacus.dividend)
-                        val divisor = context.convertNumberToWords(currentAbacus.divisor)
-                        val questionWord = String.format(context.getString(R.string.speak_divide_by),dividend,divisor)
-                        ttsManager.speak(questionWord)
+                        ttsManager.speak(ttsManager.phrase(R.string.speak_divide_by, ttsManager.words(currentAbacus.dividend), ttsManager.words(currentAbacus.divisor)))
                     }
                 }
             }

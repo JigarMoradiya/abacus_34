@@ -47,4 +47,11 @@
     <string name="settings_theme_brown">ちゃいろ</string>
     <string name="settings_theme_black">くろ</string>
     <string name="settings_theme_pearl">パール</string>
+    <!-- m2_numbers -->
+    <string name="minus">マイナス</string>
+    <string name="plus">プラス</string>
+    <string name="set_your_answer">答えをセットしてね</string>
+    <string name="speak_multiply_by">%1$s かける %2$s</string>
+    <string name="speak_divide_by">%1$s わる %2$s</string>
+    <string name="speak_times_equals">%1$s かける %2$s は %3$s</string>
 </resources>
