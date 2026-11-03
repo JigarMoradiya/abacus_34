@@ -1,0 +1,55 @@
+package com.jigar.me
+
+import com.jigar.me.utils.LanguageManager
+import com.jigar.me.utils.LocalizedNumberFormat
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
+import org.junit.Test
+import java.util.Locale
+
+class LanguageAndNumberFormatTest {
+
+    @Test fun missingListMeansEnglishOnly() {
+        assertEquals(listOf("en"), LanguageManager.parseEnabled(null))
+        assertEquals(listOf("en"), LanguageManager.parseEnabled(""))
+    }
+
+    @Test fun listedLanguagesAreOfferedInTheFixedOrderAndEnglishIsAlwaysThere() {
+        assertEquals(listOf("en", "fr", "ru"), LanguageManager.parseEnabled("ru, fr"))
+        assertEquals(listOf("en", "es", "ar"), LanguageManager.parseEnabled("AR;es"))
+    }
+
+    @Test fun unknownTagsAndJunkAreIgnored() {
+        assertEquals(listOf("en", "tr"), LanguageManager.parseEnabled("xx,,tr, ,zz"))
+    }
+
+    @Test fun includeAllGivesEveryLanguage() {
+        assertEquals(9, LanguageManager.parseEnabled("fr", includeAll = true).size)
+    }
+
+    @Test fun decimalMarkFollowsTheLanguage() {
+        for (tag in listOf("fr", "es", "pt", "ru", "tr")) assertEquals("$tag", ',', LocalizedNumberFormat.decimalSeparator(Locale.forLanguageTag(tag)))
+        for (tag in listOf("en", "ja", "th")) assertEquals("$tag", '.', LocalizedNumberFormat.decimalSeparator(Locale.forLanguageTag(tag)))
+    }
+
+    @Test fun digitsAreAlwaysWestern() {
+        for (tag in listOf("ar", "ar-SA", "ar-EG", "th", "ja", "ru", "fr")) {
+            val shown = LocalizedNumberFormat.format(1234.5, locale = Locale.forLanguageTag(tag))
+            assertTrue("$tag -> $shown", shown.all { it in '0'..'9' || it == ',' || it == '.' || it == '٫' })
+            assertTrue("$tag -> $shown", shown.startsWith("1234"))
+        }
+    }
+
+    @Test fun displayKeepsTheDigitsAndOnlyChangesTheMark() {
+        assertEquals("12,5", LocalizedNumberFormat.display("12.5", Locale.forLanguageTag("fr")))
+        assertEquals("0,05", LocalizedNumberFormat.display("0.05", Locale.forLanguageTag("ru")))
+        assertEquals("12.5", LocalizedNumberFormat.display("12.5", Locale.forLanguageTag("en")))
+        assertEquals("456", LocalizedNumberFormat.display("456", Locale.forLanguageTag("tr")))
+    }
+
+    @Test fun formatHasNoGroupingAndTrimsZeros() {
+        assertEquals("1000000", LocalizedNumberFormat.format(1000000.0, locale = Locale.forLanguageTag("fr")))
+        assertEquals("2,5", LocalizedNumberFormat.format(2.5, locale = Locale.forLanguageTag("es")))
+        assertEquals("3", LocalizedNumberFormat.format(3.0, locale = Locale.forLanguageTag("ja")))
+    }
+}

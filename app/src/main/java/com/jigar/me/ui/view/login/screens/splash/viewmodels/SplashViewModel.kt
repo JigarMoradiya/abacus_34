@@ -112,6 +112,8 @@ class SplashViewModel @Inject constructor(
             setCustomParamInt(AppConstants.RemoteConfig.freeCoreAfterWindow, freeCore.toInt())
             setCustomParam(AppConstants.RemoteConfig.returningPaywallDays, returningDays)
             setCustomParamInt(AppConstants.RemoteConfig.lifetimeMinPaywalls, lifetimeMin.toInt())
+            // which languages the picker offers (missing = English only): read by LanguageManager
+            setCustomParam(AppConstants.RemoteConfig.enabledLanguages, remoteConfig.getString(AppConstants.RemoteConfig.enabledLanguages))
         }
         // Freemium time limit: look at this install once (an existing or limit-off install is grandfathered, any other gets
         // its window started), then cache the state the gates read

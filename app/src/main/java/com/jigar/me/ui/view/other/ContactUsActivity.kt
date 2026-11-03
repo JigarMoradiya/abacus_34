@@ -3,7 +3,7 @@ package com.jigar.me.ui.view.other
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.compose.setContent
 import androidx.core.view.WindowCompat
 import com.jigar.me.ui.view.home.theme.MyApplicationTheme
@@ -12,7 +12,7 @@ import com.jigar.me.utils.AppConstants
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ContactUsActivity : ComponentActivity() {
+class ContactUsActivity : AppCompatActivity() {
 
     companion object {
         fun getInstance(context: Context?, type: String) {

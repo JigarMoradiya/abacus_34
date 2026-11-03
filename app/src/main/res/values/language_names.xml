@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Every language is written in itself and is NOT translated on purpose: a person must be able to find their own language
+         in the picker whatever language the app is showing. -->
+    <string name="language_name_en" translatable="false">English</string>
+    <string name="language_name_fr" translatable="false">Français</string>
+    <string name="language_name_es" translatable="false">Español</string>
+    <string name="language_name_pt" translatable="false">Português</string>
+    <string name="language_name_tr" translatable="false">Türkçe</string>
+    <string name="language_name_ru" translatable="false">Русский</string>
+    <string name="language_name_ja" translatable="false">日本語</string>
+    <string name="language_name_th" translatable="false">ไทย</string>
+    <string name="language_name_ar" translatable="false">العربية</string>
+</resources>

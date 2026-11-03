@@ -25,6 +25,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        // the authority of the first FileProvider in the manifest (kept as it always was; the test copy below needs its own)
+        manifestPlaceholders["fetchAuthority"] = "com.tonyodev.fetch2.provider"
     }
 
     signingConfigs {
@@ -43,6 +45,17 @@ android {
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("release")
+        }
+        debug {
+            // fake languages for testing without translations: en-XA (long accented text) and ar-XB (right-to-left)
+            isPseudoLocalesEnabled = true
+            // `./gradlew assembleDev1Debug -Pl10nCopy` builds a test copy that installs NEXT TO the Play app (own id, own icon label)
+            // without touching it or its data. Purchases cannot be tested in the copy (other package); everything else works.
+            if (project.hasProperty("l10nCopy")) {
+                applicationIdSuffix = ".l10n"
+                manifestPlaceholders["fetchAuthority"] = "com.abacus.puzzle.l10n.fetch.provider"
+                resValue("string", "app_name", "Abacus L10n")
+            }
         }
     }
 

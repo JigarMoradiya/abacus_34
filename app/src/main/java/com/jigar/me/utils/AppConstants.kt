@@ -81,6 +81,8 @@ object AppConstants {
             var returningPaywallDays = "returning_paywall_days"
             /** Lifetime plan stays off the first N paywall sheets a device opens (0 or missing = shown from the first one, as before). */
             var lifetimeMinPaywalls = "lifetime_min_paywalls"
+            /** Languages shown in the language picker besides English, comma-separated language tags ("fr,es,pt,tr,ru"). Missing = English only. */
+            var enabledLanguages = "enabled_languages"
         }
     }
 

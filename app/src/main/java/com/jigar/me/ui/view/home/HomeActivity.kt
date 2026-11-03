@@ -5,7 +5,7 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.annotation.OptIn
@@ -42,7 +42,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeActivity : ComponentActivity() {
+class HomeActivity : AppCompatActivity() {   // AppCompat so the chosen app language also applies on Android 7-12
 
     @Inject
     lateinit var preferences: AppPreferencesHelper
@@ -92,6 +92,8 @@ class HomeActivity : ComponentActivity() {
         deepLinkRoute = allowedDeepLink(intent.getStringExtra(EXTRA_DEEP_LINK_ROUTE))
         logDeviceQualifiers(this)
         AbThemeController.init(preferences)
+        // the voice follows the app language: after a language change this screen is created again, so the voice is set again too
+        ttsManager.applySettings()
         // debug builds only: `--ez ab_dark_app true` forces dark mode for screenshot runs
         if (BuildConfig.DEBUG && intent.getBooleanExtra("ab_dark_app", false)) AbThemeController.set(com.jigar.me.ui.view.ab.AbThemeMode.Dark)
 
