@@ -12,6 +12,8 @@ import com.jigar.me.ui.view.ab.AbWorld
 import com.jigar.me.ui.view.home.screens.levels.level3.components.ScreenTopBar
 import com.jigar.me.ui.view.home.screens.levels.level3.components.screenLeftEdge
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 @Composable
 fun TodayTableHomeScreen(
@@ -25,7 +27,7 @@ fun TodayTableHomeScreen(
         Box(modifier = Modifier.fillMaxSize()) {
             AbBackground(AbWorld.Twilight)
             Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).screenLeftEdge()) {
-                ScreenTopBar(title = "$tableNumber Times Table", onBack = onBackClick)
+                ScreenTopBar(title = stringResource(R.string.l4_times_table, tableNumber), onBack = onBackClick)
                 Row(modifier = Modifier.weight(1f).fillMaxWidth()) {
                     // Left panel — 35% — scrollable table with overflow banner
                     Box(
@@ -68,22 +70,22 @@ private fun ActivitiesPanel(
     ) {
         AbActivityRow(
             emoji = "🎯",
-            title = "Learn & Drill",
-            subtitle = "Study the table, then tackle 10 questions",
+            title = stringResource(R.string.l4_learn_drill),
+            subtitle = stringResource(R.string.l4_learn_drill_sub),
             accent = Color(0xFF1976D2),
             onClick = onDrill
         )
         AbActivityRow(
             emoji = "🃏",
-            title = "Flashcard Quiz",
-            subtitle = "Flip cards — Got it or Try Again",
+            title = stringResource(R.string.l4_flashcard_quiz),
+            subtitle = stringResource(R.string.l4_flashcard_quiz_sub),
             accent = Color(0xFF00897B),
             onClick = onFlashcard
         )
         AbActivityRow(
             emoji = "✏️",
-            title = "Fill the Blanks",
-            subtitle = "Pick the missing answer from 4 choices",
+            title = stringResource(R.string.l4_fill_blanks),
+            subtitle = stringResource(R.string.l4_fill_blanks_sub),
             accent = Color(0xFF7B1FA2),
             onClick = onFillBlank
         )

@@ -15,6 +15,9 @@ import com.jigar.me.ui.view.home.screens.levels.level3.components.screenLeftEdge
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.pluralStringResource
+import com.jigar.me.R
 
 @Composable
 fun TableMixPickerScreen(
@@ -35,7 +38,7 @@ fun TableMixPickerScreen(
                     .windowInsetsPadding(WindowInsets.safeDrawing)
                     .screenLeftEdge()
             ) {
-                ScreenTopBar(title = "🎲 Mix Table Practice", onBack = onBackClick)
+                ScreenTopBar(title = stringResource(R.string.l4_mix_picker_title), onBack = onBackClick)
 
                 Row(
                     modifier = Modifier
@@ -55,15 +58,15 @@ fun TableMixPickerScreen(
                     ) {
                         AbLevelCard(
                             emoji     = free.emoji,
-                            title     = free.label,
-                            label     = free.label,
+                            title     = free.rangeLabel(),
+                            label     = free.rangeLabel(),
                             accent    = free.endColor,
                             width     = maxWidth,
                             height    = maxHeight,
                             isLocked  = freeLocked,
                             showStars = false,
-                            tag       = if (freeLocked) null else "FREE",   // was "FREE FOREVER"
-                            subtitle  = "${free.tables.size} tables mixed together",
+                            tag       = if (freeLocked) null else stringResource(R.string.ob_free_label),   // was "FREE FOREVER"
+                            subtitle  = pluralStringResource(R.plurals.l4_n_tables_together, free.tables.size, free.tables.size),
                             onClick   = { if (freeLocked) showPaywall = true else onMixSelected(free.tables) },
                         )
                     }
@@ -88,14 +91,14 @@ fun TableMixPickerScreen(
                                     ) {
                                         AbLevelCard(
                                             emoji     = group.emoji,
-                                            title     = group.label,
-                                            label     = group.label,
+                                            title     = group.rangeLabel(),
+                                            label     = group.rangeLabel(),
                                             accent    = group.endColor,
                                             width     = maxWidth,
                                             height    = maxHeight,
                                             isLocked  = !isSubscribed,
                                             showStars = false,
-                                            subtitle  = "${group.tables.size} tables",
+                                            subtitle  = pluralStringResource(R.plurals.l4_n_tables, group.tables.size, group.tables.size),
                                             onClick   = {
                                                 if (isSubscribed) onMixSelected(group.tables)
                                                 else showPaywall = true

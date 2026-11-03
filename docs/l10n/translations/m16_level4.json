@@ -1,0 +1,467 @@
+{
+ "l4_msg_perfect": {
+  "fr": "Parfait ! Tu maîtrises les tables ! 🏆",
+  "es": "¡Perfecto! ¡Eres un maestro de las tablas! 🏆",
+  "pt": "Perfeito! Você é mestre da tabuada! 🏆",
+  "tr": "Mükemmel! Çarpım tablosu ustasısın! 🏆",
+  "ru": "Идеально! Ты мастер таблицы! 🏆",
+  "ja": "満点です! きみは九九の名人! 🏆",
+  "th": "เยี่ยมมาก! เป็นเซียนสูตรคูณแล้ว! 🏆"
+ },
+ "l4_msg_great": {
+  "fr": "Super travail ! Tu y es presque ! 🎉",
+  "es": "¡Buen trabajo! ¡Ya casi lo logras! 🎉",
+  "pt": "Muito bem! Quase lá! 🎉",
+  "tr": "Harika iş! Az kaldı! 🎉",
+  "ru": "Молодец! Ещё чуть-чуть! 🎉",
+  "ja": "よくできました! あと少し! 🎉",
+  "th": "เก่งมาก! เกือบแล้ว! 🎉"
+ },
+ "l4_msg_good": {
+  "fr": "Bien essayé ! Continue de t'entraîner ! 💪",
+  "es": "¡Buen intento! ¡Sigue practicando! 💪",
+  "pt": "Bom esforço! Continue praticando! 💪",
+  "tr": "İyi deneme! Çalışmaya devam! 💪",
+  "ru": "Хорошая попытка! Тренируйся дальше! 💪",
+  "ja": "がんばったね! 練習をつづけよう! 💪",
+  "th": "ทำได้ดี! ฝึกต่อไปนะ! 💪"
+ },
+ "l4_msg_giveup": {
+  "fr": "Ne lâche rien ! Réessaie ! 🎯",
+  "es": "¡No te rindas! ¡Inténtalo otra vez! 🎯",
+  "pt": "Não desista! Tente de novo! 🎯",
+  "tr": "Pes etme! Tekrar dene! 🎯",
+  "ru": "Не сдавайся! Попробуй ещё! 🎯",
+  "ja": "あきらめないで! もう一度やってみよう! 🎯",
+  "th": "อย่าเพิ่งยอมแพ้! ลองอีกครั้งนะ! 🎯"
+ },
+ "l4_out_of": {
+  "fr": "sur %1$d",
+  "es": "de %1$d",
+  "pt": "de %1$d",
+  "tr": "/ %1$d",
+  "ru": "из %1$d",
+  "ja": "/ %1$d",
+  "th": "จาก %1$d"
+ },
+ "l4_back": {
+  "fr": "Retour",
+  "es": "Atrás",
+  "pt": "Voltar",
+  "tr": "Geri",
+  "ru": "Назад",
+  "ja": "もどる",
+  "th": "กลับ"
+ },
+ "l4_try_again": {
+  "fr": "Réessayer",
+  "es": "Inténtalo otra vez",
+  "pt": "Tentar de Novo",
+  "tr": "Tekrar Dene",
+  "ru": "Ещё раз",
+  "ja": "もう一度",
+  "th": "ลองอีกครั้ง"
+ },
+ "l4_speak_table": {
+  "fr": "Écouter la table",
+  "es": "Escuchar la tabla",
+  "pt": "Ouvir tabuada",
+  "tr": "Tabloyu seslendir",
+  "ru": "Озвучить таблицу",
+  "ja": "九九を読む",
+  "th": "ฟังสูตรคูณ"
+ },
+ "l4_mix_range": {
+  "fr": "×%1$d à ×%2$d",
+  "es": "×%1$d a ×%2$d",
+  "pt": "×%1$d a ×%2$d",
+  "tr": "×%1$d – ×%2$d",
+  "ru": "от ×%1$d до ×%2$d",
+  "ja": "×%1$d〜×%2$d",
+  "th": "×%1$d ถึง ×%2$d"
+ },
+ "l4_learn_drill": {
+  "fr": "Apprendre & s'exercer",
+  "es": "Aprende y practica",
+  "pt": "Aprender e Treinar",
+  "tr": "Öğren ve Alıştır",
+  "ru": "Учись и тренируйся",
+  "ja": "おぼえて練習",
+  "th": "เรียนและฝึก"
+ },
+ "l4_next": {
+  "fr": "Suivant",
+  "es": "Siguiente",
+  "pt": "Próximo",
+  "tr": "İleri",
+  "ru": "Дальше",
+  "ja": "次へ",
+  "th": "ถัดไป"
+ },
+ "l4_results": {
+  "fr": "Résultats",
+  "es": "Resultados",
+  "pt": "Resultados",
+  "tr": "Sonuçlar",
+  "ru": "Результаты",
+  "ja": "結果",
+  "th": "ผลลัพธ์"
+ },
+ "l4_fill_blanks": {
+  "fr": "Complète les trous",
+  "es": "Completa los espacios",
+  "pt": "Complete as Lacunas",
+  "tr": "Boşlukları Doldur",
+  "ru": "Заполни пропуски",
+  "ja": "穴うめ",
+  "th": "เติมช่องว่าง"
+ },
+ "l4_fill_hint": {
+  "fr": "✏️ Complète le trou !",
+  "es": "✏️ ¡Completa el espacio!",
+  "pt": "✏️ Complete a lacuna!",
+  "tr": "✏️ Boşluğu doldur!",
+  "ru": "✏️ Заполни пропуск!",
+  "ja": "✏️ □に入る数は?",
+  "th": "✏️ เติมช่องว่าง!"
+ },
+ "l4_your_answers": {
+  "fr": "Tes réponses",
+  "es": "Tus respuestas",
+  "pt": "Suas Respostas",
+  "tr": "Cevapların",
+  "ru": "Твои ответы",
+  "ja": "きみの答え",
+  "th": "คำตอบของคุณ"
+ },
+ "l4_play_again": {
+  "fr": "Rejouer !",
+  "es": "¡Jugar otra vez!",
+  "pt": "Jogar de Novo!",
+  "tr": "Tekrar Oyna!",
+  "ru": "Играть снова!",
+  "ja": "もう一度あそぶ!",
+  "th": "เล่นอีกครั้ง!"
+ },
+ "l4_flashcard_quiz": {
+  "fr": "Quiz cartes mémoire",
+  "es": "Cuestionario de tarjetas",
+  "pt": "Questionário de Cartões",
+  "tr": "Bilgi Kartı Testi",
+  "ru": "Карточки-викторина",
+  "ja": "フラッシュカードクイズ",
+  "th": "แบบทดสอบบัตรคำ"
+ },
+ "l4_flash_tap": {
+  "fr": "👆 Touche la carte pour voir la réponse",
+  "es": "👆 Toca la tarjeta para ver la respuesta",
+  "pt": "👆 Toque no cartão para ver a resposta",
+  "tr": "👆 Cevabı görmek için karta dokun",
+  "ru": "👆 Нажми на карточку, чтобы увидеть ответ",
+  "ja": "👆 カードをタップして答えを見よう",
+  "th": "👆 แตะบัตรคำเพื่อดูคำตอบ"
+ },
+ "l4_card_counter": {
+  "fr": "Carte %1$d sur %2$d",
+  "es": "Tarjeta %1$d de %2$d",
+  "pt": "Cartão %1$d de %2$d",
+  "tr": "Kart %1$d / %2$d",
+  "ru": "Карточка %1$d из %2$d",
+  "ja": "%2$d枚中 %1$d枚目",
+  "th": "บัตรคำที่ %1$d จาก %2$d"
+ },
+ "l4_flash_think": {
+  "fr": "💡 Réfléchis d'abord, puis touche pour voir !",
+  "es": "💡 ¡Piensa primero y luego toca para ver!",
+  "pt": "💡 Pense primeiro, depois toque para ver!",
+  "tr": "💡 Önce düşün, sonra dokunup gör!",
+  "ru": "💡 Сначала подумай, потом нажми!",
+  "ja": "💡 まず考えて、それからタップ!",
+  "th": "💡 คิดก่อน แล้วแตะเพื่อดูคำตอบ!"
+ },
+ "l4_card": {
+  "fr": "Carte",
+  "es": "Tarjeta",
+  "pt": "Cartão",
+  "tr": "Kart",
+  "ru": "Карточка",
+  "ja": "カード",
+  "th": "บัตรคำ"
+ },
+ "l4_flash_know": {
+  "fr": "⭐ Tu le savais ?",
+  "es": "⭐ ¿Sabías la respuesta?",
+  "pt": "⭐ Sabia a resposta?",
+  "tr": "⭐ Bildin mi?",
+  "ru": "⭐ Знаешь ответ?",
+  "ja": "⭐ わかったかな?",
+  "th": "⭐ รู้คำตอบไหม?"
+ },
+ "l4_mix_title": {
+  "fr": "Mix %1$s",
+  "es": "Mezcla %1$s",
+  "pt": "Misto %1$s",
+  "tr": "%1$s Karışık",
+  "ru": "Микс %1$s",
+  "ja": "%1$sミックス",
+  "th": "ผสม %1$s"
+ },
+ "l4_mix_drill": {
+  "fr": "Entraînement mixte",
+  "es": "Práctica mixta",
+  "pt": "Treino Misto",
+  "tr": "Karışık Alıştırma",
+  "ru": "Микс-тренировка",
+  "ja": "ミックスドリル",
+  "th": "ฝึกแบบผสม"
+ },
+ "l4_mix_drill_sub": {
+  "fr": "10 questions de tables mélangées",
+  "es": "10 preguntas de tablas mezcladas",
+  "pt": "10 perguntas de tabuadas mistas",
+  "tr": "Karışık tablolardan 10 soru",
+  "ru": "10 вопросов из разных таблиц",
+  "ja": "いろいろな九九から10問",
+  "th": "10 ข้อจากสูตรคูณหลายแม่"
+ },
+ "l4_mix_flash": {
+  "fr": "Cartes mémoire mixtes",
+  "es": "Tarjetas mixtas",
+  "pt": "Cartões Mistos",
+  "tr": "Karışık Kartlar",
+  "ru": "Микс-карточки",
+  "ja": "ミックスカード",
+  "th": "บัตรคำแบบผสม"
+ },
+ "l4_mix_flash_sub": {
+  "fr": "Retourne des cartes de tables mélangées",
+  "es": "Voltea tarjetas de tablas mezcladas",
+  "pt": "Vire cartões de tabuadas mistas",
+  "tr": "Karışık tablolardan kartları çevir",
+  "ru": "Переворачивай карточки из разных таблиц",
+  "ja": "いろいろな九九のカードをめくろう",
+  "th": "พลิกบัตรคำจากหลายแม่"
+ },
+ "l4_mix_fill": {
+  "fr": "Trous mixtes",
+  "es": "Mezcla: completa los espacios",
+  "pt": "Lacunas Mistas",
+  "tr": "Karışık Boşluk Doldurma",
+  "ru": "Микс: заполни пропуски",
+  "ja": "ミックス穴うめ",
+  "th": "เติมช่องว่างแบบผสม"
+ },
+ "l4_mix_fill_sub": {
+  "fr": "Complète les réponses manquantes de tables mélangées",
+  "es": "Completa respuestas de tablas mezcladas",
+  "pt": "Complete respostas de tabuadas mistas",
+  "tr": "Karışık tablolardaki eksik cevapları bul",
+  "ru": "Заполни пропущенные ответы в разных таблицах",
+  "ja": "いろいろな九九の、ぬけた答えをうめよう",
+  "th": "เติมคำตอบที่หายไปจากหลายแม่"
+ },
+ "l4_mix_picker_title": {
+  "fr": "🎲 Mix de tables",
+  "es": "🎲 Práctica de tablas mixtas",
+  "pt": "🎲 Prática de Tabuadas Mistas",
+  "tr": "🎲 Karışık Tablo Alıştırması",
+  "ru": "🎲 Практика: микс таблиц",
+  "ja": "🎲 ミックス九九練習",
+  "th": "🎲 ฝึกสูตรคูณแบบผสม"
+ },
+ "l4_picker_title": {
+  "fr": "Choisis une table pour t'entraîner",
+  "es": "Elige una tabla para practicar",
+  "pt": "Escolha uma tabuada para praticar",
+  "tr": "Alıştırmak için bir tablo seç",
+  "ru": "Выбери таблицу для практики",
+  "ja": "練習する九九をえらぼう",
+  "th": "เลือกสูตรคูณที่จะฝึก"
+ },
+ "l4_mix_practice": {
+  "fr": "Mix de tables",
+  "es": "Práctica de tablas mixtas",
+  "pt": "Prática de Tabuadas Mistas",
+  "tr": "Karışık Tablo Alıştırması",
+  "ru": "Практика: микс таблиц",
+  "ja": "ミックス九九練習",
+  "th": "ฝึกสูตรคูณแบบผสม"
+ },
+ "l4_mix_practice_sub": {
+  "fr": "Entraîne-toi sur plusieurs tables à la fois !",
+  "es": "¡Practica varias tablas a la vez!",
+  "pt": "Pratique várias tabuadas juntas!",
+  "tr": "Birkaç tabloyu birlikte alıştır!",
+  "ru": "Тренируй сразу несколько таблиц!",
+  "ja": "いくつかの九九をいっしょに練習しよう!",
+  "th": "ฝึกหลายแม่ไปพร้อมกัน!"
+ },
+ "l4_start": {
+  "fr": "Commencer",
+  "es": "Empezar",
+  "pt": "Começar",
+  "tr": "Başla",
+  "ru": "Старт",
+  "ja": "スタート",
+  "th": "เริ่มเลย"
+ },
+ "l4_times_table": {
+  "fr": "Table de %1$d",
+  "es": "Tabla del %1$d",
+  "pt": "Tabuada do %1$d",
+  "tr": "%1$d Çarpım Tablosu",
+  "ru": "Таблица на %1$d",
+  "ja": "%1$dのだん",
+  "th": "สูตรคูณแม่ %1$d"
+ },
+ "l4_learn_drill_sub": {
+  "fr": "Étudie la table, puis réponds à 10 questions",
+  "es": "Estudia la tabla y resuelve 10 preguntas",
+  "pt": "Estude a tabuada e resolva 10 perguntas",
+  "tr": "Tabloyu çalış, sonra 10 soruyu çöz",
+  "ru": "Выучи таблицу, потом ответь на 10 вопросов",
+  "ja": "九九をおぼえて、10問にちょうせん",
+  "th": "ดูสูตรคูณ แล้วทำ 10 ข้อ"
+ },
+ "l4_flashcard_quiz_sub": {
+  "fr": "Retourne les cartes : Compris ou Réessayer",
+  "es": "Voltea tarjetas: ¡Entendido! o Inténtalo otra vez",
+  "pt": "Vire os cartões: Entendi! ou Tentar de Novo",
+  "tr": "Kartları çevir: Anladım ya da Tekrar Dene",
+  "ru": "Переворачивай карточки: Понятно! или Ещё раз",
+  "ja": "カードをめくって「わかった!」か「もう一度」",
+  "th": "พลิกบัตรคำ: เข้าใจแล้ว หรือ ลองอีกครั้ง"
+ },
+ "l4_fill_blanks_sub": {
+  "fr": "Choisis la réponse manquante parmi 4 choix",
+  "es": "Elige la respuesta que falta entre 4 opciones",
+  "pt": "Escolha a resposta que falta entre 4 opções",
+  "tr": "Eksik cevabı 4 seçenekten seç",
+  "ru": "Выбери пропущенный ответ из 4 вариантов",
+  "ja": "4つの中から、ぬけた答えをえらぼう",
+  "th": "เลือกคำตอบที่หายไปจาก 4 ตัวเลือก"
+ },
+ "l4_n_tables_mixed": {
+  "plural": {
+   "fr": {
+    "one": "%1$d table mélangée",
+    "many": "%1$d tables mélangées",
+    "other": "%1$d tables mélangées"
+   },
+   "es": {
+    "one": "%1$d tabla mezclada",
+    "many": "%1$d tablas mezcladas",
+    "other": "%1$d tablas mezcladas"
+   },
+   "pt": {
+    "one": "%1$d tabuada misturada",
+    "many": "%1$d tabuadas misturadas",
+    "other": "%1$d tabuadas misturadas"
+   },
+   "tr": {
+    "one": "%1$d tablo karıştı",
+    "other": "%1$d tablo karıştı"
+   },
+   "ru": {
+    "one": "%1$d таблица в миксе",
+    "few": "%1$d таблицы в миксе",
+    "many": "%1$d таблиц в миксе",
+    "other": "%1$d таблицы в миксе"
+   },
+   "ja": {
+    "other": "%1$d個の九九をミックス"
+   },
+   "th": {
+    "other": "ผสม %1$d แม่"
+   }
+  }
+ },
+ "l4_n_tables_together": {
+  "plural": {
+   "fr": {
+    "one": "%1$d table réunie",
+    "many": "%1$d tables réunies",
+    "other": "%1$d tables réunies"
+   },
+   "es": {
+    "one": "%1$d tabla mezclada",
+    "many": "%1$d tablas mezcladas juntas",
+    "other": "%1$d tablas mezcladas juntas"
+   },
+   "pt": {
+    "one": "%1$d tabuada misturada",
+    "many": "%1$d tabuadas misturadas juntas",
+    "other": "%1$d tabuadas misturadas juntas"
+   },
+   "tr": {
+    "one": "%1$d tablo bir arada",
+    "other": "%1$d tablo bir arada"
+   },
+   "ru": {
+    "one": "%1$d таблица вперемешку",
+    "few": "%1$d таблицы вперемешку",
+    "many": "%1$d таблиц вперемешку",
+    "other": "%1$d таблицы вперемешку"
+   },
+   "ja": {
+    "other": "%1$d個の九九をまぜたよ"
+   },
+   "th": {
+    "other": "ผสมรวมกัน %1$d แม่"
+   }
+  }
+ },
+ "l4_n_tables": {
+  "plural": {
+   "fr": {
+    "one": "%1$d table",
+    "many": "%1$d tables",
+    "other": "%1$d tables"
+   },
+   "es": {
+    "one": "%1$d tabla",
+    "many": "%1$d tablas",
+    "other": "%1$d tablas"
+   },
+   "pt": {
+    "one": "%1$d tabuada",
+    "many": "%1$d tabuadas",
+    "other": "%1$d tabuadas"
+   },
+   "tr": {
+    "one": "%1$d tablo",
+    "other": "%1$d tablo"
+   },
+   "ru": {
+    "one": "%1$d таблица",
+    "few": "%1$d таблицы",
+    "many": "%1$d таблиц",
+    "other": "%1$d таблицы"
+   },
+   "ja": {
+    "other": "%1$d個の九九"
+   },
+   "th": {
+    "other": "สูตรคูณ %1$d แม่"
+   }
+  }
+ },
+ "got_it": {
+  "fr": "Compris !",
+  "es": "¡Entendido!",
+  "pt": "Entendi!",
+  "tr": "Anladım!",
+  "ru": "Понятно!",
+  "ja": "わかった!",
+  "th": "เข้าใจแล้ว!"
+ },
+ "try_again": {
+  "fr": "Réessayer",
+  "es": "Inténtalo otra vez",
+  "pt": "Tentar de Novo",
+  "tr": "Tekrar Dene",
+  "ru": "Ещё раз",
+  "ja": "もう一度",
+  "th": "ลองอีกครั้ง"
+ }
+}

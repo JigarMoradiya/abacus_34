@@ -112,7 +112,7 @@ fun TableFlashcardScreen(
             Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).screenLeftEdge()) {
 
                 if (!showResult) {
-                    ScreenTopBar(title = "Flashcard Quiz", onBack = onBackClick) {
+                    ScreenTopBar(title = stringResource(R.string.l4_flashcard_quiz), onBack = onBackClick) {
                         AbProgressBar(
                             filled = currentIndex + 1,
                             total = maxOf(1, cards.size),
@@ -246,7 +246,7 @@ private fun FlashcardContent(
                 } else {
                     // Tap hint — highlighted pill
                     Text(
-                        text = "👆  Tap the card to reveal the answer",
+                        text = stringResource(R.string.l4_flash_tap),
                         style = abFont(14f),
                         color = colors.systemPrimary,
                         textAlign = TextAlign.Center,
@@ -273,7 +273,7 @@ private fun FrontCard(card: Pair<Int, Int>, currentIndex: Int, totalCards: Int, 
         ) {
             // Card counter pill
             AbCountPill(
-                text = "Card ${currentIndex + 1} of $totalCards",
+                text = stringResource(R.string.l4_card_counter, currentIndex + 1, totalCards),
                 icon = Icons.Rounded.Style,
             )
             Text(
@@ -293,7 +293,7 @@ private fun FrontCard(card: Pair<Int, Int>, currentIndex: Int, totalCards: Int, 
             // "Think first" — orange pill with white text
             FlashSlot(flashPillHeight()) {
                 Text(
-                    text = "💡  Think first, then tap to reveal!",
+                    text = stringResource(R.string.l4_flash_think),
                     style = abFixedStyle(abTabletSize(10f, 15f, 18f), FontWeight.ExtraBold),
                     color = Color.White,
                     modifier = Modifier
@@ -314,7 +314,7 @@ private fun BackCard(card: Pair<Int, Int>, modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.padding(Dimens16)
         ) {
-            Box(Modifier.alpha(0f)) { AbCountPill(text = "Card", icon = Icons.Rounded.Style) }
+            Box(Modifier.alpha(0f)) { AbCountPill(text = stringResource(R.string.l4_card), icon = Icons.Rounded.Style) }
             Text(
                 text = "🤔",
                 style = abEmojiStyle(abResponsive(40f)),
@@ -340,7 +340,7 @@ private fun BackCard(card: Pair<Int, Int>, modifier: Modifier = Modifier) {
             // "Did you know it?" — yellow highlight pill
             FlashSlot(flashPillHeight()) {
                 Text(
-                    text = "⭐  Did you know it?",
+                    text = stringResource(R.string.l4_flash_know),
                     style = abFixedStyle(abTabletSize(14f, 18f, 22f), FontWeight.ExtraBold),
                     color = Color(0xFFC74500),
                     textAlign = TextAlign.Center,

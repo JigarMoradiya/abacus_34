@@ -441,6 +441,65 @@
     <string name="l3_unit_sec">сек</string>
     <string name="l3_unit_pts">очк.</string>
     <string name="purchase_then">затем</string>
+    <!-- m16_level4 -->
+    <string name="l4_msg_perfect">Идеально! Ты мастер таблицы! 🏆</string>
+    <string name="l4_msg_great">Молодец! Ещё чуть-чуть! 🎉</string>
+    <string name="l4_msg_good">Хорошая попытка! Тренируйся дальше! 💪</string>
+    <string name="l4_msg_giveup">Не сдавайся! Попробуй ещё! 🎯</string>
+    <string name="l4_out_of">из %1$d</string>
+    <string name="l4_back">Назад</string>
+    <string name="l4_try_again">Ещё раз</string>
+    <string name="l4_speak_table">Озвучить таблицу</string>
+    <string name="l4_mix_range">от ×%1$d до ×%2$d</string>
+    <string name="l4_learn_drill">Учись и тренируйся</string>
+    <string name="l4_next">Дальше</string>
+    <string name="l4_results">Результаты</string>
+    <string name="l4_fill_blanks">Заполни пропуски</string>
+    <string name="l4_fill_hint">✏️ Заполни пропуск!</string>
+    <string name="l4_your_answers">Твои ответы</string>
+    <string name="l4_play_again">Играть снова!</string>
+    <string name="l4_flashcard_quiz">Карточки-викторина</string>
+    <string name="l4_flash_tap">👆 Нажми на карточку, чтобы увидеть ответ</string>
+    <string name="l4_card_counter">Карточка %1$d из %2$d</string>
+    <string name="l4_flash_think">💡 Сначала подумай, потом нажми!</string>
+    <string name="l4_card">Карточка</string>
+    <string name="l4_flash_know">⭐ Знаешь ответ?</string>
+    <string name="l4_mix_title">Микс %1$s</string>
+    <string name="l4_mix_drill">Микс-тренировка</string>
+    <string name="l4_mix_drill_sub">10 вопросов из разных таблиц</string>
+    <string name="l4_mix_flash">Микс-карточки</string>
+    <string name="l4_mix_flash_sub">Переворачивай карточки из разных таблиц</string>
+    <string name="l4_mix_fill">Микс: заполни пропуски</string>
+    <string name="l4_mix_fill_sub">Заполни пропущенные ответы в разных таблицах</string>
+    <string name="l4_mix_picker_title">🎲 Практика: микс таблиц</string>
+    <string name="l4_picker_title">Выбери таблицу для практики</string>
+    <string name="l4_mix_practice">Практика: микс таблиц</string>
+    <string name="l4_mix_practice_sub">Тренируй сразу несколько таблиц!</string>
+    <string name="l4_start">Старт</string>
+    <string name="l4_times_table">Таблица на %1$d</string>
+    <string name="l4_learn_drill_sub">Выучи таблицу, потом ответь на 10 вопросов</string>
+    <string name="l4_flashcard_quiz_sub">Переворачивай карточки: Понятно! или Ещё раз</string>
+    <string name="l4_fill_blanks_sub">Выбери пропущенный ответ из 4 вариантов</string>
+    <plurals name="l4_n_tables_mixed">
+        <item quantity="one">%1$d таблица в миксе</item>
+        <item quantity="few">%1$d таблицы в миксе</item>
+        <item quantity="many">%1$d таблиц в миксе</item>
+        <item quantity="other">%1$d таблицы в миксе</item>
+    </plurals>
+    <plurals name="l4_n_tables_together">
+        <item quantity="one">%1$d таблица вперемешку</item>
+        <item quantity="few">%1$d таблицы вперемешку</item>
+        <item quantity="many">%1$d таблиц вперемешку</item>
+        <item quantity="other">%1$d таблицы вперемешку</item>
+    </plurals>
+    <plurals name="l4_n_tables">
+        <item quantity="one">%1$d таблица</item>
+        <item quantity="few">%1$d таблицы</item>
+        <item quantity="many">%1$d таблиц</item>
+        <item quantity="other">%1$d таблицы</item>
+    </plurals>
+    <string name="got_it">Понятно!</string>
+    <string name="try_again">Ещё раз</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Громкость фоновой музыки</string>
     <string name="change_voice_setting">Настройки голоса</string>

@@ -393,6 +393,56 @@
     <string name="l3_unit_sec">วินาที</string>
     <string name="l3_unit_pts">คะแนน</string>
     <string name="purchase_then">จากนั้น</string>
+    <!-- m16_level4 -->
+    <string name="l4_msg_perfect">เยี่ยมมาก! เป็นเซียนสูตรคูณแล้ว! 🏆</string>
+    <string name="l4_msg_great">เก่งมาก! เกือบแล้ว! 🎉</string>
+    <string name="l4_msg_good">ทำได้ดี! ฝึกต่อไปนะ! 💪</string>
+    <string name="l4_msg_giveup">อย่าเพิ่งยอมแพ้! ลองอีกครั้งนะ! 🎯</string>
+    <string name="l4_out_of">จาก %1$d</string>
+    <string name="l4_back">กลับ</string>
+    <string name="l4_try_again">ลองอีกครั้ง</string>
+    <string name="l4_speak_table">ฟังสูตรคูณ</string>
+    <string name="l4_mix_range">×%1$d ถึง ×%2$d</string>
+    <string name="l4_learn_drill">เรียนและฝึก</string>
+    <string name="l4_next">ถัดไป</string>
+    <string name="l4_results">ผลลัพธ์</string>
+    <string name="l4_fill_blanks">เติมช่องว่าง</string>
+    <string name="l4_fill_hint">✏️ เติมช่องว่าง!</string>
+    <string name="l4_your_answers">คำตอบของคุณ</string>
+    <string name="l4_play_again">เล่นอีกครั้ง!</string>
+    <string name="l4_flashcard_quiz">แบบทดสอบบัตรคำ</string>
+    <string name="l4_flash_tap">👆 แตะบัตรคำเพื่อดูคำตอบ</string>
+    <string name="l4_card_counter">บัตรคำที่ %1$d จาก %2$d</string>
+    <string name="l4_flash_think">💡 คิดก่อน แล้วแตะเพื่อดูคำตอบ!</string>
+    <string name="l4_card">บัตรคำ</string>
+    <string name="l4_flash_know">⭐ รู้คำตอบไหม?</string>
+    <string name="l4_mix_title">ผสม %1$s</string>
+    <string name="l4_mix_drill">ฝึกแบบผสม</string>
+    <string name="l4_mix_drill_sub">10 ข้อจากสูตรคูณหลายแม่</string>
+    <string name="l4_mix_flash">บัตรคำแบบผสม</string>
+    <string name="l4_mix_flash_sub">พลิกบัตรคำจากหลายแม่</string>
+    <string name="l4_mix_fill">เติมช่องว่างแบบผสม</string>
+    <string name="l4_mix_fill_sub">เติมคำตอบที่หายไปจากหลายแม่</string>
+    <string name="l4_mix_picker_title">🎲 ฝึกสูตรคูณแบบผสม</string>
+    <string name="l4_picker_title">เลือกสูตรคูณที่จะฝึก</string>
+    <string name="l4_mix_practice">ฝึกสูตรคูณแบบผสม</string>
+    <string name="l4_mix_practice_sub">ฝึกหลายแม่ไปพร้อมกัน!</string>
+    <string name="l4_start">เริ่มเลย</string>
+    <string name="l4_times_table">สูตรคูณแม่ %1$d</string>
+    <string name="l4_learn_drill_sub">ดูสูตรคูณ แล้วทำ 10 ข้อ</string>
+    <string name="l4_flashcard_quiz_sub">พลิกบัตรคำ: เข้าใจแล้ว หรือ ลองอีกครั้ง</string>
+    <string name="l4_fill_blanks_sub">เลือกคำตอบที่หายไปจาก 4 ตัวเลือก</string>
+    <plurals name="l4_n_tables_mixed">
+        <item quantity="other">ผสม %1$d แม่</item>
+    </plurals>
+    <plurals name="l4_n_tables_together">
+        <item quantity="other">ผสมรวมกัน %1$d แม่</item>
+    </plurals>
+    <plurals name="l4_n_tables">
+        <item quantity="other">สูตรคูณ %1$d แม่</item>
+    </plurals>
+    <string name="got_it">เข้าใจแล้ว!</string>
+    <string name="try_again">ลองอีกครั้ง</string>
     <!-- m1_settings -->
     <string name="background_music_volume">ระดับเสียงเพลงพื้นหลัง</string>
     <string name="change_voice_setting">เปลี่ยนการตั้งค่าเสียงพูด</string>

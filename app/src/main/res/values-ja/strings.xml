@@ -393,6 +393,56 @@
     <string name="l3_unit_sec">秒</string>
     <string name="l3_unit_pts">点</string>
     <string name="purchase_then">その後</string>
+    <!-- m16_level4 -->
+    <string name="l4_msg_perfect">満点です! きみは九九の名人! 🏆</string>
+    <string name="l4_msg_great">よくできました! あと少し! 🎉</string>
+    <string name="l4_msg_good">がんばったね! 練習をつづけよう! 💪</string>
+    <string name="l4_msg_giveup">あきらめないで! もう一度やってみよう! 🎯</string>
+    <string name="l4_out_of">/ %1$d</string>
+    <string name="l4_back">もどる</string>
+    <string name="l4_try_again">もう一度</string>
+    <string name="l4_speak_table">九九を読む</string>
+    <string name="l4_mix_range">×%1$d〜×%2$d</string>
+    <string name="l4_learn_drill">おぼえて練習</string>
+    <string name="l4_next">次へ</string>
+    <string name="l4_results">結果</string>
+    <string name="l4_fill_blanks">穴うめ</string>
+    <string name="l4_fill_hint">✏️ □に入る数は?</string>
+    <string name="l4_your_answers">きみの答え</string>
+    <string name="l4_play_again">もう一度あそぶ!</string>
+    <string name="l4_flashcard_quiz">フラッシュカードクイズ</string>
+    <string name="l4_flash_tap">👆 カードをタップして答えを見よう</string>
+    <string name="l4_card_counter">%2$d枚中 %1$d枚目</string>
+    <string name="l4_flash_think">💡 まず考えて、それからタップ!</string>
+    <string name="l4_card">カード</string>
+    <string name="l4_flash_know">⭐ わかったかな?</string>
+    <string name="l4_mix_title">%1$sミックス</string>
+    <string name="l4_mix_drill">ミックスドリル</string>
+    <string name="l4_mix_drill_sub">いろいろな九九から10問</string>
+    <string name="l4_mix_flash">ミックスカード</string>
+    <string name="l4_mix_flash_sub">いろいろな九九のカードをめくろう</string>
+    <string name="l4_mix_fill">ミックス穴うめ</string>
+    <string name="l4_mix_fill_sub">いろいろな九九の、ぬけた答えをうめよう</string>
+    <string name="l4_mix_picker_title">🎲 ミックス九九練習</string>
+    <string name="l4_picker_title">練習する九九をえらぼう</string>
+    <string name="l4_mix_practice">ミックス九九練習</string>
+    <string name="l4_mix_practice_sub">いくつかの九九をいっしょに練習しよう!</string>
+    <string name="l4_start">スタート</string>
+    <string name="l4_times_table">%1$dのだん</string>
+    <string name="l4_learn_drill_sub">九九をおぼえて、10問にちょうせん</string>
+    <string name="l4_flashcard_quiz_sub">カードをめくって「わかった!」か「もう一度」</string>
+    <string name="l4_fill_blanks_sub">4つの中から、ぬけた答えをえらぼう</string>
+    <plurals name="l4_n_tables_mixed">
+        <item quantity="other">%1$d個の九九をミックス</item>
+    </plurals>
+    <plurals name="l4_n_tables_together">
+        <item quantity="other">%1$d個の九九をまぜたよ</item>
+    </plurals>
+    <plurals name="l4_n_tables">
+        <item quantity="other">%1$d個の九九</item>
+    </plurals>
+    <string name="got_it">わかった!</string>
+    <string name="try_again">もう一度</string>
     <!-- m1_settings -->
     <string name="background_music_volume">BGMの音量</string>
     <string name="change_voice_setting">音声設定を変更</string>

@@ -62,6 +62,8 @@ import com.jigar.me.ui.view.home.theme.AppDimens.ToolbarIconSize
 import com.jigar.me.ui.view.home.theme.AppDimens.examOptionHeight
 import com.jigar.me.ui.view.home.theme.AppDimens.examOptionWidth
 import kotlinx.coroutines.delay
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 @Composable
 fun TableFillBlankScreen(
@@ -93,7 +95,7 @@ fun TableFillBlankScreen(
         Box(modifier = Modifier.fillMaxSize()) {
             AbBackground(AbWorld.Twilight)
             Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).screenLeftEdge()) {
-                ScreenTopBar(title = "Fill the Blanks", onBack = onBackClick) {
+                ScreenTopBar(title = stringResource(R.string.l4_fill_blanks), onBack = onBackClick) {
                     if (!showResult) {
                         AbProgressBar(
                             filled = currentIndex + 1,
@@ -104,7 +106,7 @@ fun TableFillBlankScreen(
                         TableScoreBadge(score)
                         // Next / Results button
                         AbButton(
-                            text = if (currentIndex < questions.size - 1) "Next" else "Results",
+                            text = if (currentIndex < questions.size - 1) stringResource(R.string.l4_next) else stringResource(R.string.l4_results),
                             tone = AbTone.Primary,
                             size = AbSize.Compact,
                             enabled = selectedAnswer != null,
@@ -192,7 +194,7 @@ private fun FillBlankContent(
                 modifier = Modifier.fillMaxWidth().padding(Dimens12)
             ) {
                 AbCountPill(
-                    text = "Question ${currentIndex + 1} of $totalQuestions",
+                    text = stringResource(R.string.l1_question_counter, currentIndex + 1, totalQuestions),
                     icon = Icons.Rounded.Help,
                 )
                 Text(
@@ -218,7 +220,7 @@ private fun FillBlankContent(
                     }
                 }
                 Text(
-                    text = "✏️  Fill in the blank!",
+                    text = stringResource(R.string.l4_fill_hint),
                     style = abFixedStyle(abTabletSize(10f, 15f, 18f), FontWeight.ExtraBold),
                     color = Color.White,
                     modifier = Modifier
@@ -299,10 +301,10 @@ private fun FillBlankResultContent(
     val starValue = pct * 3.0
     val starSize = ToolbarIconSize * 1.4f
     val message = when {
-        pct >= 0.9 -> "Perfect! You're a table master! 🏆"
-        pct >= 0.6 -> "Great job! Almost there! 🎉"
-        pct >= 0.3 -> "Good effort! Keep practicing! 💪"
-        else -> "Don't give up! Try again! 🎯"
+        pct >= 0.9 -> stringResource(R.string.l4_msg_perfect)
+        pct >= 0.6 -> stringResource(R.string.l4_msg_great)
+        pct >= 0.3 -> stringResource(R.string.l4_msg_good)
+        else -> stringResource(R.string.l4_msg_giveup)
     }
     val divider = colors.outline
 
@@ -323,7 +325,7 @@ private fun FillBlankResultContent(
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(
-                        text = "Your Answers",
+                        text = stringResource(R.string.l4_your_answers),
                         style = abFont(14f, FontWeight.ExtraBold),
                         color = colors.systemPrimary,
                         textAlign = TextAlign.Center,
@@ -437,7 +439,7 @@ private fun FillBlankResultContent(
                         color = Color.White
                     )
                     Text(
-                        text = "out of ${questions.size}",
+                        text = stringResource(R.string.l4_out_of, questions.size),
                         style = abFont(10f),
                         color = Color.White.copy(alpha = 0.8f)
                     )
@@ -457,8 +459,8 @@ private fun FillBlankResultContent(
             Spacer(Modifier.height(Dimens20))
 
             Row(horizontalArrangement = Arrangement.spacedBy(Dimens16), verticalAlignment = Alignment.CenterVertically) {
-                AbButton(text = "Back", tone = AbTone.Ghost, size = AbSize.Medium, icon = Icons.AutoMirrored.Rounded.ArrowBack, onClick = onBack)
-                AbButton(text = "Play Again!", tone = AbTone.Primary, size = AbSize.Medium, icon = Icons.Rounded.Replay, onClick = onRetry)
+                AbButton(text = stringResource(R.string.l4_back), tone = AbTone.Ghost, size = AbSize.Medium, icon = Icons.AutoMirrored.Rounded.ArrowBack, onClick = onBack)
+                AbButton(text = stringResource(R.string.l4_play_again), tone = AbTone.Primary, size = AbSize.Medium, icon = Icons.Rounded.Replay, onClick = onRetry)
             }
         }
     }

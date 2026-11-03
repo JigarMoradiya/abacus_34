@@ -409,6 +409,59 @@
     <string name="l3_unit_sec">sn</string>
     <string name="l3_unit_pts">puan</string>
     <string name="purchase_then">ardından</string>
+    <!-- m16_level4 -->
+    <string name="l4_msg_perfect">Mükemmel! Çarpım tablosu ustasısın! 🏆</string>
+    <string name="l4_msg_great">Harika iş! Az kaldı! 🎉</string>
+    <string name="l4_msg_good">İyi deneme! Çalışmaya devam! 💪</string>
+    <string name="l4_msg_giveup">Pes etme! Tekrar dene! 🎯</string>
+    <string name="l4_out_of">/ %1$d</string>
+    <string name="l4_back">Geri</string>
+    <string name="l4_try_again">Tekrar Dene</string>
+    <string name="l4_speak_table">Tabloyu seslendir</string>
+    <string name="l4_mix_range">×%1$d – ×%2$d</string>
+    <string name="l4_learn_drill">Öğren ve Alıştır</string>
+    <string name="l4_next">İleri</string>
+    <string name="l4_results">Sonuçlar</string>
+    <string name="l4_fill_blanks">Boşlukları Doldur</string>
+    <string name="l4_fill_hint">✏️ Boşluğu doldur!</string>
+    <string name="l4_your_answers">Cevapların</string>
+    <string name="l4_play_again">Tekrar Oyna!</string>
+    <string name="l4_flashcard_quiz">Bilgi Kartı Testi</string>
+    <string name="l4_flash_tap">👆 Cevabı görmek için karta dokun</string>
+    <string name="l4_card_counter">Kart %1$d / %2$d</string>
+    <string name="l4_flash_think">💡 Önce düşün, sonra dokunup gör!</string>
+    <string name="l4_card">Kart</string>
+    <string name="l4_flash_know">⭐ Bildin mi?</string>
+    <string name="l4_mix_title">%1$s Karışık</string>
+    <string name="l4_mix_drill">Karışık Alıştırma</string>
+    <string name="l4_mix_drill_sub">Karışık tablolardan 10 soru</string>
+    <string name="l4_mix_flash">Karışık Kartlar</string>
+    <string name="l4_mix_flash_sub">Karışık tablolardan kartları çevir</string>
+    <string name="l4_mix_fill">Karışık Boşluk Doldurma</string>
+    <string name="l4_mix_fill_sub">Karışık tablolardaki eksik cevapları bul</string>
+    <string name="l4_mix_picker_title">🎲 Karışık Tablo Alıştırması</string>
+    <string name="l4_picker_title">Alıştırmak için bir tablo seç</string>
+    <string name="l4_mix_practice">Karışık Tablo Alıştırması</string>
+    <string name="l4_mix_practice_sub">Birkaç tabloyu birlikte alıştır!</string>
+    <string name="l4_start">Başla</string>
+    <string name="l4_times_table">%1$d Çarpım Tablosu</string>
+    <string name="l4_learn_drill_sub">Tabloyu çalış, sonra 10 soruyu çöz</string>
+    <string name="l4_flashcard_quiz_sub">Kartları çevir: Anladım ya da Tekrar Dene</string>
+    <string name="l4_fill_blanks_sub">Eksik cevabı 4 seçenekten seç</string>
+    <plurals name="l4_n_tables_mixed">
+        <item quantity="one">%1$d tablo karıştı</item>
+        <item quantity="other">%1$d tablo karıştı</item>
+    </plurals>
+    <plurals name="l4_n_tables_together">
+        <item quantity="one">%1$d tablo bir arada</item>
+        <item quantity="other">%1$d tablo bir arada</item>
+    </plurals>
+    <plurals name="l4_n_tables">
+        <item quantity="one">%1$d tablo</item>
+        <item quantity="other">%1$d tablo</item>
+    </plurals>
+    <string name="got_it">Anladım!</string>
+    <string name="try_again">Tekrar Dene</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Arka plan müziği ses düzeyi</string>
     <string name="change_voice_setting">Ses ayarını değiştir</string>

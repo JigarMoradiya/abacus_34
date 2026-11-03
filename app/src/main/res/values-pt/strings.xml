@@ -425,6 +425,62 @@
     <string name="l3_unit_sec">seg</string>
     <string name="l3_unit_pts">pts</string>
     <string name="purchase_then">depois</string>
+    <!-- m16_level4 -->
+    <string name="l4_msg_perfect">Perfeito! Você é mestre da tabuada! 🏆</string>
+    <string name="l4_msg_great">Muito bem! Quase lá! 🎉</string>
+    <string name="l4_msg_good">Bom esforço! Continue praticando! 💪</string>
+    <string name="l4_msg_giveup">Não desista! Tente de novo! 🎯</string>
+    <string name="l4_out_of">de %1$d</string>
+    <string name="l4_back">Voltar</string>
+    <string name="l4_try_again">Tentar de Novo</string>
+    <string name="l4_speak_table">Ouvir tabuada</string>
+    <string name="l4_mix_range">×%1$d a ×%2$d</string>
+    <string name="l4_learn_drill">Aprender e Treinar</string>
+    <string name="l4_next">Próximo</string>
+    <string name="l4_results">Resultados</string>
+    <string name="l4_fill_blanks">Complete as Lacunas</string>
+    <string name="l4_fill_hint">✏️ Complete a lacuna!</string>
+    <string name="l4_your_answers">Suas Respostas</string>
+    <string name="l4_play_again">Jogar de Novo!</string>
+    <string name="l4_flashcard_quiz">Questionário de Cartões</string>
+    <string name="l4_flash_tap">👆 Toque no cartão para ver a resposta</string>
+    <string name="l4_card_counter">Cartão %1$d de %2$d</string>
+    <string name="l4_flash_think">💡 Pense primeiro, depois toque para ver!</string>
+    <string name="l4_card">Cartão</string>
+    <string name="l4_flash_know">⭐ Sabia a resposta?</string>
+    <string name="l4_mix_title">Misto %1$s</string>
+    <string name="l4_mix_drill">Treino Misto</string>
+    <string name="l4_mix_drill_sub">10 perguntas de tabuadas mistas</string>
+    <string name="l4_mix_flash">Cartões Mistos</string>
+    <string name="l4_mix_flash_sub">Vire cartões de tabuadas mistas</string>
+    <string name="l4_mix_fill">Lacunas Mistas</string>
+    <string name="l4_mix_fill_sub">Complete respostas de tabuadas mistas</string>
+    <string name="l4_mix_picker_title">🎲 Prática de Tabuadas Mistas</string>
+    <string name="l4_picker_title">Escolha uma tabuada para praticar</string>
+    <string name="l4_mix_practice">Prática de Tabuadas Mistas</string>
+    <string name="l4_mix_practice_sub">Pratique várias tabuadas juntas!</string>
+    <string name="l4_start">Começar</string>
+    <string name="l4_times_table">Tabuada do %1$d</string>
+    <string name="l4_learn_drill_sub">Estude a tabuada e resolva 10 perguntas</string>
+    <string name="l4_flashcard_quiz_sub">Vire os cartões: Entendi! ou Tentar de Novo</string>
+    <string name="l4_fill_blanks_sub">Escolha a resposta que falta entre 4 opções</string>
+    <plurals name="l4_n_tables_mixed">
+        <item quantity="one">%1$d tabuada misturada</item>
+        <item quantity="many">%1$d tabuadas misturadas</item>
+        <item quantity="other">%1$d tabuadas misturadas</item>
+    </plurals>
+    <plurals name="l4_n_tables_together">
+        <item quantity="one">%1$d tabuada misturada</item>
+        <item quantity="many">%1$d tabuadas misturadas juntas</item>
+        <item quantity="other">%1$d tabuadas misturadas juntas</item>
+    </plurals>
+    <plurals name="l4_n_tables">
+        <item quantity="one">%1$d tabuada</item>
+        <item quantity="many">%1$d tabuadas</item>
+        <item quantity="other">%1$d tabuadas</item>
+    </plurals>
+    <string name="got_it">Entendi!</string>
+    <string name="try_again">Tentar de Novo</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Volume da música de fundo</string>
     <string name="change_voice_setting">Alterar a voz</string>

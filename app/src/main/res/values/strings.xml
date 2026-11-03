@@ -2017,4 +2017,56 @@
     <string name="l3_unit_sec">sec</string>
     <string name="l3_unit_pts">pts</string>
     <string name="purchase_then">then</string>
+
+    <!-- Level 4: Times Tables (M16) -->
+    <string name="l4_msg_perfect">Perfect! You\'re a table master! 🏆</string>
+    <string name="l4_msg_great">Great job! Almost there! 🎉</string>
+    <string name="l4_msg_good">Good effort! Keep practicing! 💪</string>
+    <string name="l4_msg_giveup">Don\'t give up! Try again! 🎯</string>
+    <string name="l4_out_of">out of %1$d</string>
+    <string name="l4_back">Back</string>
+    <string name="l4_try_again">Try Again</string>
+    <string name="l4_speak_table">Speak table</string>
+    <string name="l4_mix_range">×%1$d to ×%2$d</string>
+    <string name="l4_learn_drill">Learn &amp; Drill</string>
+    <string name="l4_next">Next</string>
+    <string name="l4_results">Results</string>
+    <string name="l4_fill_blanks">Fill the Blanks</string>
+    <string name="l4_fill_hint">"✏️  Fill in the blank!"</string>
+    <string name="l4_your_answers">Your Answers</string>
+    <string name="l4_play_again">Play Again!</string>
+    <string name="l4_flashcard_quiz">Flashcard Quiz</string>
+    <string name="l4_flash_tap">"👆  Tap the card to reveal the answer"</string>
+    <string name="l4_card_counter">Card %1$d of %2$d</string>
+    <string name="l4_flash_think">"💡  Think first, then tap to reveal!"</string>
+    <string name="l4_card">Card</string>
+    <string name="l4_flash_know">"⭐  Did you know it?"</string>
+    <string name="l4_mix_title">%1$s Mix</string>
+    <string name="l4_mix_drill">Mix Drill</string>
+    <string name="l4_mix_drill_sub">10 questions from mixed tables</string>
+    <string name="l4_mix_flash">Mix Flashcards</string>
+    <string name="l4_mix_flash_sub">Flip cards from mixed tables</string>
+    <string name="l4_mix_fill">Mix Fill the Blanks</string>
+    <string name="l4_mix_fill_sub">Fill missing answers from mixed tables</string>
+    <string name="l4_mix_picker_title">🎲 Mix Table Practice</string>
+    <string name="l4_picker_title">Choose a table to practise</string>
+    <string name="l4_mix_practice">Mix Table Practice</string>
+    <string name="l4_mix_practice_sub">Practise multiple tables together!</string>
+    <string name="l4_start">Start</string>
+    <string name="l4_times_table">%1$d Times Table</string>
+    <string name="l4_learn_drill_sub">Study the table, then tackle 10 questions</string>
+    <string name="l4_flashcard_quiz_sub">Flip cards — Got it or Try Again</string>
+    <string name="l4_fill_blanks_sub">Pick the missing answer from 4 choices</string>
+    <plurals name="l4_n_tables_mixed">
+        <item quantity="one">%1$d table mixed</item>
+        <item quantity="other">%1$d tables mixed</item>
+    </plurals>
+    <plurals name="l4_n_tables_together">
+        <item quantity="one">%1$d table mixed together</item>
+        <item quantity="other">%1$d tables mixed together</item>
+    </plurals>
+    <plurals name="l4_n_tables">
+        <item quantity="one">%1$d table</item>
+        <item quantity="other">%1$d tables</item>
+    </plurals>
 </resources>

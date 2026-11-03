@@ -425,6 +425,62 @@
     <string name="l3_unit_sec">s</string>
     <string name="l3_unit_pts">pts</string>
     <string name="purchase_then">puis</string>
+    <!-- m16_level4 -->
+    <string name="l4_msg_perfect">Parfait ! Tu maîtrises les tables ! 🏆</string>
+    <string name="l4_msg_great">Super travail ! Tu y es presque ! 🎉</string>
+    <string name="l4_msg_good">Bien essayé ! Continue de t\'entraîner ! 💪</string>
+    <string name="l4_msg_giveup">Ne lâche rien ! Réessaie ! 🎯</string>
+    <string name="l4_out_of">sur %1$d</string>
+    <string name="l4_back">Retour</string>
+    <string name="l4_try_again">Réessayer</string>
+    <string name="l4_speak_table">Écouter la table</string>
+    <string name="l4_mix_range">×%1$d à ×%2$d</string>
+    <string name="l4_learn_drill">Apprendre &amp; s\'exercer</string>
+    <string name="l4_next">Suivant</string>
+    <string name="l4_results">Résultats</string>
+    <string name="l4_fill_blanks">Complète les trous</string>
+    <string name="l4_fill_hint">✏️ Complète le trou !</string>
+    <string name="l4_your_answers">Tes réponses</string>
+    <string name="l4_play_again">Rejouer !</string>
+    <string name="l4_flashcard_quiz">Quiz cartes mémoire</string>
+    <string name="l4_flash_tap">👆 Touche la carte pour voir la réponse</string>
+    <string name="l4_card_counter">Carte %1$d sur %2$d</string>
+    <string name="l4_flash_think">💡 Réfléchis d\'abord, puis touche pour voir !</string>
+    <string name="l4_card">Carte</string>
+    <string name="l4_flash_know">⭐ Tu le savais ?</string>
+    <string name="l4_mix_title">Mix %1$s</string>
+    <string name="l4_mix_drill">Entraînement mixte</string>
+    <string name="l4_mix_drill_sub">10 questions de tables mélangées</string>
+    <string name="l4_mix_flash">Cartes mémoire mixtes</string>
+    <string name="l4_mix_flash_sub">Retourne des cartes de tables mélangées</string>
+    <string name="l4_mix_fill">Trous mixtes</string>
+    <string name="l4_mix_fill_sub">Complète les réponses manquantes de tables mélangées</string>
+    <string name="l4_mix_picker_title">🎲 Mix de tables</string>
+    <string name="l4_picker_title">Choisis une table pour t\'entraîner</string>
+    <string name="l4_mix_practice">Mix de tables</string>
+    <string name="l4_mix_practice_sub">Entraîne-toi sur plusieurs tables à la fois !</string>
+    <string name="l4_start">Commencer</string>
+    <string name="l4_times_table">Table de %1$d</string>
+    <string name="l4_learn_drill_sub">Étudie la table, puis réponds à 10 questions</string>
+    <string name="l4_flashcard_quiz_sub">Retourne les cartes : Compris ou Réessayer</string>
+    <string name="l4_fill_blanks_sub">Choisis la réponse manquante parmi 4 choix</string>
+    <plurals name="l4_n_tables_mixed">
+        <item quantity="one">%1$d table mélangée</item>
+        <item quantity="many">%1$d tables mélangées</item>
+        <item quantity="other">%1$d tables mélangées</item>
+    </plurals>
+    <plurals name="l4_n_tables_together">
+        <item quantity="one">%1$d table réunie</item>
+        <item quantity="many">%1$d tables réunies</item>
+        <item quantity="other">%1$d tables réunies</item>
+    </plurals>
+    <plurals name="l4_n_tables">
+        <item quantity="one">%1$d table</item>
+        <item quantity="many">%1$d tables</item>
+        <item quantity="other">%1$d tables</item>
+    </plurals>
+    <string name="got_it">Compris !</string>
+    <string name="try_again">Réessayer</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Volume de la musique de fond</string>
     <string name="change_voice_setting">Modifier la voix</string>
