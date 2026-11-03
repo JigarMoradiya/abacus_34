@@ -42,12 +42,7 @@ class PurchaseViewModel @Inject constructor(
     override val TAG = "PurchaseViewModel"
 
     override fun getInitialState() = PurchaseUiState(
-        benefitList = listOf(
-            "⭐ <strong>Get unlimited access</strong> to all Abacus Levels, Exercises, Exams and Custom Challenge Modes Module.",
-            "🧮 Practice Addition, Subtraction, Multiplication, Division, with <strong>smart bead directions</strong> and <strong>formula on every steps.</strong>",
-            "🎯 Prepare for math competitions, UCMAS and abacus exams with <strong>real exam-style practice.</strong>",
-            "📊 <strong>Track your child's</strong> progress, speed and accuracy with detailed reports."
-        )
+        benefitList = listOf(R.string.purchase_benefit_1, R.string.purchase_benefit_2, R.string.purchase_benefit_3, R.string.purchase_benefit_4)
     )
 
     private var lastOfferingId = ""

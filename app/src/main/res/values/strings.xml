@@ -1527,4 +1527,71 @@
         <item quantity="one">FREE FOR THE FIRST %1$d DAY</item>
         <item quantity="other">FREE FOR THE FIRST %1$d DAYS</item>
     </plurals>
+
+    <!-- Purchase, paywall, free trial (M8) -->
+    <string name="plan_weekly">Weekly</string>
+    <string name="plan_monthly">Monthly</string>
+    <string name="plan_3_month">3 Month</string>
+    <string name="plan_6_month">6 Month</string>
+    <string name="plan_yearly">Yearly</string>
+    <string name="plan_lifetime">Lifetime</string>
+    <string name="plan_name_label">%1$s Plan :</string>
+    <string name="plan_per_week">/ week</string>
+    <string name="plan_per_month">/ month</string>
+    <string name="plan_per_year">/ year</string>
+    <string name="plan_one_time">one time</string>
+    <string name="purchase_assigned_on">&lt;strong>Assigned ON : &lt;/strong>%1$s</string>
+    <string name="freemium_body_core">Free Mode and Level 1 stay free. Premium opens everything else.</string>
+    <string name="freemium_body_all">Premium opens the whole app.</string>
+    <string name="freemium_body_pick">Pick a plan to keep every level, game and report.</string>
+    <string name="freemium_see_plans">See plans</string>
+    <string name="ft_title_welcome_3">Welcome to your 3 days free trial!</string>
+    <string name="ft_title_2_remaining">2 days remaining in your free trial.</string>
+    <string name="ft_title_last_day">Last day of your free trial!</string>
+    <string name="ft_title_ended">Your free trial has ended.</string>
+    <string name="ft_title_welcome_7">Welcome to your 7 days free trial!</string>
+    <string name="ft_title_6_left">6 days left in your free trial.</string>
+    <string name="ft_title_5_days">Your free trial ends in 5 days.</string>
+    <string name="ft_title_4_left">Only 4 days left!</string>
+    <string name="ft_title_3_remaining">3 days remaining in your free trial.</string>
+    <string name="ft_title_2_soon">Your free trial ends soon - only 2 days left!</string>
+    <string name="ft_desc_full_access">You now have full access - explore, learn &amp; enjoy your journey.</string>
+    <string name="ft_desc_keep_safe">Keep your learning data and achievements safe by unlocking full access before your trial ends.</string>
+    <string name="ft_desc_stay_on_track">Stay on track with your learning - subscribe today.</string>
+    <string name="ft_desc_subscribe_continue">Subscribe now to continue your learning journey.</string>
+    <string name="ft_desc_keep_exploring">Keep exploring and see all the features waiting for you!</string>
+    <string name="ft_desc_enjoy_lessons">Enjoy full access to all lessons during your trial!</string>
+    <string name="ft_desc_right_track">You\'re on the right track - don\'t stop now, success is just ahead!</string>
+    <string name="ft_desc_adventure">Continue your learning adventure by subscribing today.</string>
+    <string name="ft_btn_start_learning">Start Learning</string>
+    <string name="ft_btn_subscribe_now">Subscribe Now</string>
+    <string name="ft_btn_maybe_later">Maybe Later</string>
+    <string name="ft_btn_continue_learning">Continue Learning</string>
+    <string name="ft_btn_keep_going">Keep Going</string>
+    <string name="ft_btn_continue">Continue</string>
+    <string name="ft_btn_remind_later">Remind Me Later</string>
+    <string name="ft_no_payment">No payment or subscription setup needed during your free trial.</string>
+    <string name="ft_limited_deal">&lt;strong>Limited time deal - &lt;/strong> unlock premium at a discounted price!</string>
+    <string name="ft_now">NOW</string>
+    <plurals name="freemium_days_left">
+        <item quantity="one">Freemium access: %1$d day left</item>
+        <item quantity="other">Freemium access: %1$d days left</item>
+    </plurals>
+    <plurals name="purchase_days_free">
+        <item quantity="one">%1$d Day Free</item>
+        <item quantity="other">%1$d Days Free</item>
+    </plurals>
+    <plurals name="ft_badge_days_free_trial">
+        <item quantity="one">DAY\nFREE TRIAL</item>
+        <item quantity="other">DAYS\nFREE TRIAL</item>
+    </plurals>
+    <plurals name="ft_days_left">
+        <item quantity="one">day left</item>
+        <item quantity="other">days left</item>
+    </plurals>
+    <!-- the purchase page benefits: HTML kept as text, each line starts with its emoji -->
+    <string name="purchase_benefit_1">⭐ &lt;strong>Get unlimited access&lt;/strong> to all Abacus Levels, Exercises, Exams and Custom Challenge Modes Module.</string>
+    <string name="purchase_benefit_2">🧮 Practice Addition, Subtraction, Multiplication, Division, with &lt;strong>smart bead directions&lt;/strong> and &lt;strong>formula on every steps.&lt;/strong></string>
+    <string name="purchase_benefit_3">🎯 Prepare for math competitions, UCMAS and abacus exams with &lt;strong>real exam-style practice.&lt;/strong></string>
+    <string name="purchase_benefit_4">📊 &lt;strong>Track your child\'s&lt;/strong> progress, speed and accuracy with detailed reports.</string>
 </resources>

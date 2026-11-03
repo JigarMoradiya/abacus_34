@@ -1,0 +1,1371 @@
+{
+ "txt_purchased": {
+  "fr": "Acheté",
+  "es": "Comprado",
+  "pt": "Comprado",
+  "tr": "Satın alındı",
+  "ru": "Куплено",
+  "ja": "購入済み",
+  "th": "ซื้อแล้ว"
+ },
+ "txt_purchase_Now": {
+  "fr": "Acheter",
+  "es": "Comprar",
+  "pt": "Comprar",
+  "tr": "Satın al",
+  "ru": "Купить",
+  "ja": "購入",
+  "th": "ซื้อ"
+ },
+ "txt_subscribed": {
+  "fr": "Abonné",
+  "es": "Suscrito",
+  "pt": "Assinado",
+  "tr": "Abone",
+  "ru": "Подписка активна",
+  "ja": "購読中",
+  "th": "สมัครแล้ว"
+ },
+ "txt_subscribe_Now": {
+  "fr": "S'abonner",
+  "es": "Suscribirse",
+  "pt": "Assinar",
+  "tr": "Abone ol",
+  "ru": "Подписаться",
+  "ja": "購読する",
+  "th": "สมัครสมาชิก"
+ },
+ "paywall_subscribe": {
+  "fr": "S'abonner",
+  "es": "Suscribirse",
+  "pt": "Assinar",
+  "tr": "Abone ol",
+  "ru": "Подписаться",
+  "ja": "購読する",
+  "th": "สมัครสมาชิก"
+ },
+ "assigned": {
+  "fr": "Attribué",
+  "es": "Asignado",
+  "pt": "Atribuído",
+  "tr": "Atandı",
+  "ru": "Назначено",
+  "ja": "付与済み",
+  "th": "ได้รับสิทธิ์"
+ },
+ "old_purchases": {
+  "fr": "Anciens achats",
+  "es": "Compras anteriores",
+  "pt": "Compras antigas",
+  "tr": "Eski satın alımlar",
+  "ru": "Прежние покупки",
+  "ja": "以前の購入",
+  "th": "การซื้อก่อนหน้า"
+ },
+ "home_offer_title": {
+  "fr": "Offre à durée limitée !",
+  "es": "¡Oferta por tiempo limitado!",
+  "pt": "Oferta por tempo limitado!",
+  "tr": "Sınırlı süreli teklif!",
+  "ru": "Предложение ограничено по времени!",
+  "ja": "期間限定オファー！",
+  "th": "ข้อเสนอจำกัดเวลา!"
+ },
+ "home_offer_save_pct": {
+  "fr": "Économisez %1$d%% sur l'offre %2$s",
+  "es": "Ahorra un %1$d%% en el plan %2$s",
+  "pt": "Economize %1$d%% no plano %2$s",
+  "tr": "%2$s planında %%%1$d tasarruf edin",
+  "ru": "Скидка %1$d%% на тариф «%2$s»",
+  "ja": "%2$sプランが%1$d%%オフ",
+  "th": "ประหยัด %1$d%% กับแพ็กเกจ%2$s"
+ },
+ "home_offer_special_price": {
+  "fr": "Prix spécial sur l'offre %1$s",
+  "es": "Precio especial en el plan %1$s",
+  "pt": "Preço especial no plano %1$s",
+  "tr": "%1$s planında özel fiyat",
+  "ru": "Специальная цена на тариф «%1$s»",
+  "ja": "%1$sプランが特別価格",
+  "th": "ราคาพิเศษสำหรับแพ็กเกจ%1$s"
+ },
+ "home_offer_ends_in": {
+  "fr": "Se termine dans %1$s",
+  "es": "Termina en %1$s",
+  "pt": "Termina em %1$s",
+  "tr": "Bitmesine %1$s",
+  "ru": "Осталось: %1$s",
+  "ja": "終了まで%1$s",
+  "th": "สิ้นสุดใน %1$s"
+ },
+ "home_offer_product_yearly": {
+  "fr": "annuelle",
+  "es": "anual",
+  "pt": "anual",
+  "tr": "Yıllık",
+  "ru": "годовой",
+  "ja": "年額",
+  "th": "รายปี"
+ },
+ "home_offer_product_lifetime": {
+  "fr": "à vie",
+  "es": "de por vida",
+  "pt": "vitalício",
+  "tr": "Ömür boyu",
+  "ru": "пожизненный",
+  "ja": "永久",
+  "th": "ตลอดชีพ"
+ },
+ "order_id": {
+  "fr": "N° de commande",
+  "es": "ID de pedido",
+  "pt": "ID do pedido",
+  "tr": "Sipariş kimliği",
+  "ru": "Номер заказа",
+  "ja": "注文ID",
+  "th": "รหัสคำสั่งซื้อ"
+ },
+ "subscription_free_trial_msg": {
+  "fr": "Le paiement sera débité après l'essai gratuit.\nAnnulez à tout moment avant la fin de l'essai.",
+  "es": "El pago se cobrará después de la prueba gratuita.\nCancela cuando quieras antes de que termine.",
+  "pt": "A cobrança será feita após o teste grátis.\nCancele quando quiser antes do fim do teste.",
+  "tr": "Ödeme, ücretsiz denemeden sonra alınır.\nDeneme bitmeden istediğiniz zaman iptal edin.",
+  "ru": "Оплата будет списана после бесплатного периода.\nОтменить можно в любой момент до его окончания.",
+  "ja": "お支払いは無料体験の終了後に請求されます。\n体験期間中はいつでも解約できます。",
+  "th": "จะเรียกเก็บเงินหลังช่วงทดลองใช้ฟรี\nยกเลิกได้ทุกเมื่อก่อนสิ้นสุดช่วงทดลอง"
+ },
+ "cancel_subscription_anytime": {
+  "fr": "Résiliez à tout moment.",
+  "es": "Cancela la suscripción cuando quieras.",
+  "pt": "Cancele a assinatura quando quiser.",
+  "tr": "Aboneliği istediğiniz zaman iptal edin.",
+  "ru": "Подписку можно отменить в любой момент.",
+  "ja": "購読はいつでも解約できます。",
+  "th": "ยกเลิกการสมัครสมาชิกได้ทุกเมื่อ"
+ },
+ "plan_assigned_from_admin": {
+  "fr": "Offre attribuée par l'administrateur.",
+  "es": "Plan asignado por el administrador.",
+  "pt": "Plano atribuído pelo administrador.",
+  "tr": "Plan yönetici tarafından atandı.",
+  "ru": "Тариф назначен администратором.",
+  "ja": "管理者から付与されたプランです。",
+  "th": "แพ็กเกจที่ผู้ดูแลระบบมอบให้"
+ },
+ "purchase_pending": {
+  "fr": "Votre paiement est en attente d'approbation. Vous aurez accès dès qu'il sera validé.",
+  "es": "Tu pago está pendiente de aprobación. Tendrás acceso en cuanto se complete.",
+  "pt": "Seu pagamento está aguardando aprovação. Você terá acesso assim que for concluído.",
+  "tr": "Ödemeniz onay bekliyor. Onaylanır onaylanmaz erişiminiz açılır.",
+  "ru": "Платёж ожидает подтверждения. Доступ откроется сразу после его завершения.",
+  "ja": "お支払いは承認待ちです。完了しだい、すぐに利用できます。",
+  "th": "การชำระเงินของคุณรอการอนุมัติ คุณจะเข้าใช้ได้ทันทีที่เสร็จสมบูรณ์"
+ },
+ "purchase_not_allowed": {
+  "fr": "Les achats sont désactivés sur cet appareil. Un parent peut les autoriser dans les paramètres de Google Play.",
+  "es": "Las compras están desactivadas en este dispositivo. Un padre o madre puede permitirlas en los ajustes de Google Play.",
+  "pt": "As compras estão desativadas neste dispositivo. Um responsável pode permiti-las nas configurações do Google Play.",
+  "tr": "Bu cihazda satın alma kapalı. Bir ebeveyn bunu Google Play ayarlarından açabilir.",
+  "ru": "Покупки отключены на этом устройстве. Родитель может разрешить их в настройках Google Play.",
+  "ja": "このデバイスでは購入が無効になっています。保護者の方がGoogle Playの設定で許可できます。",
+  "th": "ปิดการซื้อบนอุปกรณ์นี้อยู่ ผู้ปกครองสามารถอนุญาตได้ในการตั้งค่า Google Play"
+ },
+ "purchase_already_owned": {
+  "fr": "Vous possédez déjà cette offre. Nous la restaurons.",
+  "es": "Ya tienes este plan. Lo estamos restaurando.",
+  "pt": "Você já tem este plano. Estamos restaurando.",
+  "tr": "Bu plana zaten sahipsiniz. Şimdi geri yüklüyoruz.",
+  "ru": "Этот тариф у вас уже есть. Восстанавливаем его.",
+  "ja": "このプランはすでにお持ちです。復元しています。",
+  "th": "คุณมีแพ็กเกจนี้อยู่แล้ว กำลังกู้คืนให้"
+ },
+ "purchase_network": {
+  "fr": "Pas de connexion Internet. Vérifiez-la et réessayez.",
+  "es": "Sin conexión a Internet. Revísala e inténtalo de nuevo.",
+  "pt": "Sem conexão com a internet. Verifique e tente novamente.",
+  "tr": "İnternet bağlantısı yok. Kontrol edip tekrar deneyin.",
+  "ru": "Нет подключения к интернету. Проверьте его и повторите.",
+  "ja": "インターネットに接続されていません。確認してもう一度お試しください。",
+  "th": "ไม่มีอินเทอร์เน็ต โปรดตรวจสอบแล้วลองอีกครั้ง"
+ },
+ "purchase_no_plans": {
+  "fr": "Aucune offre n'est disponible pour le moment. Réessayez dans un instant.",
+  "es": "No hay planes disponibles ahora. Inténtalo de nuevo en un momento.",
+  "pt": "Nenhum plano disponível no momento. Tente novamente em instantes.",
+  "tr": "Şu anda kullanılabilir plan yok. Birazdan tekrar deneyin.",
+  "ru": "Сейчас нет доступных тарифов. Попробуйте чуть позже.",
+  "ja": "現在利用できるプランがありません。しばらくしてからお試しください。",
+  "th": "ตอนนี้ยังไม่มีแพ็กเกจให้เลือก โปรดลองอีกครั้งในอีกสักครู่"
+ },
+ "see_benefits": {
+  "fr": "Voir les avantages",
+  "es": "Ver ventajas",
+  "pt": "Ver benefícios",
+  "tr": "Avantajları gör",
+  "ru": "Посмотреть преимущества",
+  "ja": "特典を見る",
+  "th": "ดูสิทธิประโยชน์"
+ },
+ "premium_benefits_title": {
+  "fr": "Avantages Premium",
+  "es": "Ventajas Premium",
+  "pt": "Benefícios Premium",
+  "tr": "Premium Avantajları",
+  "ru": "Преимущества Premium",
+  "ja": "Premiumの特典",
+  "th": "สิทธิประโยชน์ Premium"
+ },
+ "benefit_all_levels": {
+  "fr": "Entraînement sur tous les niveaux (1 à 8)",
+  "es": "Práctica de todos los niveles (1 a 8)",
+  "pt": "Prática de todos os níveis (1 a 8)",
+  "tr": "Tüm seviyelerde alıştırma (Seviye 1–8)",
+  "ru": "Практика на всех уровнях (1–8)",
+  "ja": "全レベルの練習（レベル1〜8）",
+  "th": "ฝึกทุกระดับ (ระดับ 1–8)"
+ },
+ "benefit_all_exams": {
+  "fr": "Tous les types d'examens",
+  "es": "Todos los tipos de examen",
+  "pt": "Todos os tipos de prova",
+  "tr": "Tüm sınav türleri",
+  "ru": "Все типы экзаменов",
+  "ja": "すべてのテスト",
+  "th": "ข้อสอบทุกประเภท"
+ },
+ "benefit_all_exercises": {
+  "fr": "Tous les exercices",
+  "es": "Todos los ejercicios",
+  "pt": "Todos os exercícios",
+  "tr": "Tüm egzersizler",
+  "ru": "Все упражнения",
+  "ja": "すべてのトレーニング",
+  "th": "แบบฝึกหัดทั้งหมด"
+ },
+ "benefit_ccm": {
+  "fr": "Mode défi personnalisé",
+  "es": "Modo reto personalizado",
+  "pt": "Modo desafio personalizado",
+  "tr": "Özel Meydan Okuma Modu",
+  "ru": "Режим «Свой вызов»",
+  "ja": "オリジナルチャレンジモード",
+  "th": "โหมดชาเลนจ์ที่กำหนดเอง"
+ },
+ "benefit_all_games": {
+  "fr": "Tous les jeux de maths",
+  "es": "Todos los juegos matemáticos",
+  "pt": "Todos os jogos de matemática",
+  "tr": "Tüm matematik oyunları",
+  "ru": "Все математические игры",
+  "ja": "すべての算数ゲーム",
+  "th": "เกมคณิตศาสตร์ทั้งหมด"
+ },
+ "benefit_report_history": {
+  "fr": "Historique complet des rapports",
+  "es": "Historial completo de informes",
+  "pt": "Histórico completo de relatórios",
+  "tr": "Tam rapor geçmişi",
+  "ru": "Вся история отчётов",
+  "ja": "レポート履歴すべて",
+  "th": "ประวัติรายงานทั้งหมด"
+ },
+ "paywall_headline_generic": {
+  "fr": "Passez à Premium !",
+  "es": "¡Hazte Premium!",
+  "pt": "Seja Premium!",
+  "tr": "Premium'a Geçin!",
+  "ru": "Перейдите на Premium!",
+  "ja": "Premiumにしよう！",
+  "th": "อัปเกรดเป็น Premium!"
+ },
+ "paywall_subtitle_generic": {
+  "fr": "Débloquez TOUS les niveaux\nSans limites\nApprenez sans limites !",
+  "es": "Desbloquea TODOS los niveles\nSin límites\n¡Aprende sin límites!",
+  "pt": "Desbloqueie TODOS os níveis\nSem limites\nAprenda sem limites!",
+  "tr": "TÜM seviyelerin kilidini açın\nSınır yok\nSınırsız öğrenin!",
+  "ru": "Откройте ВСЕ уровни\nБез ограничений\nУчитесь без границ!",
+  "ja": "すべてのレベルが解放\n制限なし\n自由に学べる！",
+  "th": "ปลดล็อกทุกระดับ\nไม่มีข้อจำกัด\nเรียนได้ไม่จำกัด!"
+ },
+ "paywall_headline_level2": {
+  "fr": "Débloquez les formules du boulier !",
+  "es": "¡Desbloquea las fórmulas del ábaco!",
+  "pt": "Desbloqueie as fórmulas do ábaco!",
+  "tr": "Abaküs formüllerinin kilidini açın!",
+  "ru": "Откройте формулы абакуса!",
+  "ja": "そろばんの公式を解放しよう！",
+  "th": "ปลดล็อกสูตรลูกคิด!"
+ },
+ "paywall_subtitle_level2": {
+  "fr": "Les astuces du petit ami, du grand ami et de la famille",
+  "es": "Los trucos del pequeño amigo, el gran amigo y la familia",
+  "pt": "Os truques do pequeno amigo, do grande amigo e da família",
+  "tr": "Küçük Arkadaş, Büyük Arkadaş ve Aile püf noktaları",
+  "ru": "Приёмы «малый друг», «большой друг» и «семья»",
+  "ja": "「小さな友だち」「大きな友だち」「家族」のコツ",
+  "th": "เทคนิคเพื่อนเล็ก เพื่อนใหญ่ และครอบครัว"
+ },
+ "paywall_headline_level3": {
+  "fr": "Prêt pour l'entraînement à la vitesse ?",
+  "es": "¿Listo para el entrenamiento de velocidad?",
+  "pt": "Pronto para o treino de velocidade?",
+  "tr": "Hız antrenmanına hazır mısınız?",
+  "ru": "Готовы к тренировке скорости?",
+  "ja": "スピード練習の準備はいい？",
+  "th": "พร้อมฝึกความเร็วหรือยัง"
+ },
+ "paywall_subtitle_level3": {
+  "fr": "Débloquez le niveau 3 : calcul mental et Anzan",
+  "es": "Desbloquea el nivel 3: cálculo mental y Anzan",
+  "pt": "Desbloqueie o nível 3: cálculo mental e Anzan",
+  "tr": "Seviye 3'ün kilidini açın: zihinden hesaplama ve Anzan",
+  "ru": "Откройте уровень 3: счёт в уме и Анзан",
+  "ja": "レベル3を解放：暗算とアンザン",
+  "th": "ปลดล็อกระดับ 3: คิดเลขในใจและอันซัง"
+ },
+ "paywall_headline_tables": {
+  "fr": "Maîtrisez les tables de multiplication !",
+  "es": "¡Domina las tablas de multiplicar!",
+  "pt": "Domine as tabuadas!",
+  "tr": "Çarpım tablolarında ustalaşın!",
+  "ru": "Освойте таблицу умножения!",
+  "ja": "九九をマスターしよう！",
+  "th": "เก่งสูตรคูณ!"
+ },
+ "paywall_subtitle_tables": {
+  "fr": "Débloquez toutes les tables et l'entraînement mixte",
+  "es": "Desbloquea todas las tablas y la práctica mixta",
+  "pt": "Desbloqueie todas as tabuadas e a prática mista",
+  "tr": "Tüm tabloların ve karışık alıştırmanın kilidini açın",
+  "ru": "Откройте все таблицы и смешанную практику",
+  "ja": "すべての九九とミックス練習を解放",
+  "th": "ปลดล็อกทุกตารางและการฝึกแบบผสม"
+ },
+ "paywall_headline_practice": {
+  "fr": "Envie de plus d'entraînement ?",
+  "es": "¿Quieres más práctica?",
+  "pt": "Quer mais prática?",
+  "tr": "Daha fazla alıştırma ister misiniz?",
+  "ru": "Хотите больше практики?",
+  "ja": "もっと練習したい？",
+  "th": "อยากฝึกเพิ่มไหม"
+ },
+ "paywall_subtitle_practice": {
+  "fr": "Débloquez toutes les pages d'entraînement",
+  "es": "Desbloquea todas las páginas de práctica",
+  "pt": "Desbloqueie todas as páginas de prática",
+  "tr": "Tüm alıştırma sayfalarının kilidini açın",
+  "ru": "Откройте все страницы практики",
+  "ja": "すべての練習ページを解放",
+  "th": "ปลดล็อกทุกหน้าฝึก"
+ },
+ "paywall_headline_exercise": {
+  "fr": "Continuez à vous entraîner !",
+  "es": "¡Sigue practicando!",
+  "pt": "Continue praticando!",
+  "tr": "Alıştırmaya devam edin!",
+  "ru": "Продолжайте тренироваться!",
+  "ja": "練習を続けよう！",
+  "th": "ฝึกต่อไปเรื่อย ๆ!"
+ },
+ "paywall_subtitle_exercise": {
+  "fr": "Débloquez tous les exercices",
+  "es": "Desbloquea todos los ejercicios",
+  "pt": "Desbloqueie todos os exercícios",
+  "tr": "Tüm egzersizlerin kilidini açın",
+  "ru": "Откройте все упражнения",
+  "ja": "すべてのトレーニングを解放",
+  "th": "ปลดล็อกแบบฝึกหัดทั้งหมด"
+ },
+ "paywall_headline_exam": {
+  "fr": "Prêt pour le vrai examen ?",
+  "es": "¿Listo para el examen de verdad?",
+  "pt": "Pronto para a prova de verdade?",
+  "tr": "Gerçek sınava hazır mısınız?",
+  "ru": "Готовы к настоящему экзамену?",
+  "ja": "本番のテストに備えよう！",
+  "th": "พร้อมสอบจริงหรือยัง"
+ },
+ "paywall_subtitle_exam": {
+  "fr": "Débloquez tous les types d'examens",
+  "es": "Desbloquea todos los tipos de examen",
+  "pt": "Desbloqueie todos os tipos de prova",
+  "tr": "Tüm sınav türlerinin kilidini açın",
+  "ru": "Откройте все типы экзаменов",
+  "ja": "すべてのテストを解放",
+  "th": "ปลดล็อกข้อสอบทุกประเภท"
+ },
+ "paywall_headline_ccm": {
+  "fr": "Des défis personnalisés vous attendent !",
+  "es": "¡Te esperan retos personalizados!",
+  "pt": "Desafios personalizados esperam por você!",
+  "tr": "Özel meydan okumalar sizi bekliyor!",
+  "ru": "Вас ждут свои вызовы!",
+  "ja": "オリジナルチャレンジが待っています！",
+  "th": "ชาเลนจ์ที่กำหนดเองรออยู่!"
+ },
+ "paywall_subtitle_ccm": {
+  "fr": "Débloquez le mode défi personnalisé",
+  "es": "Desbloquea el modo reto personalizado",
+  "pt": "Desbloqueie o modo desafio personalizado",
+  "tr": "Özel Meydan Okuma Modu'nun kilidini açın",
+  "ru": "Откройте режим «Свой вызов»",
+  "ja": "オリジナルチャレンジモードを解放",
+  "th": "ปลดล็อกโหมดชาเลนจ์ที่กำหนดเอง"
+ },
+ "paywall_headline_games": {
+  "fr": "Ne vous arrêtez pas de jouer !",
+  "es": "¡No dejes de jugar!",
+  "pt": "Não pare de jogar!",
+  "tr": "Oynamaya devam edin!",
+  "ru": "Не останавливайтесь!",
+  "ja": "遊びをやめないで！",
+  "th": "เล่นต่อไปอย่าหยุด!"
+ },
+ "paywall_subtitle_games": {
+  "fr": "Débloquez tous les jeux de maths",
+  "es": "Desbloquea todos los juegos matemáticos",
+  "pt": "Desbloqueie todos os jogos de matemática",
+  "tr": "Tüm matematik oyunlarının kilidini açın",
+  "ru": "Откройте все математические игры",
+  "ja": "すべての算数ゲームを解放",
+  "th": "ปลดล็อกเกมคณิตศาสตร์ทั้งหมด"
+ },
+ "paywall_headline_reports": {
+  "fr": "Suivez les progrès de votre enfant !",
+  "es": "¡Mira el progreso de tu hijo!",
+  "pt": "Veja o progresso do seu filho!",
+  "tr": "Çocuğunuzun ilerlemesini görün!",
+  "ru": "Следите за прогрессом ребёнка!",
+  "ja": "お子さまの成長を見よう！",
+  "th": "ดูความก้าวหน้าของลูก!"
+ },
+ "paywall_subtitle_reports": {
+  "fr": "Débloquez tout l'historique des rapports",
+  "es": "Desbloquea todo el historial de informes",
+  "pt": "Desbloqueie todo o histórico de relatórios",
+  "tr": "Tüm rapor geçmişinin kilidini açın",
+  "ru": "Откройте всю историю отчётов",
+  "ja": "レポート履歴をすべて解放",
+  "th": "ปลดล็อกประวัติรายงานทั้งหมด"
+ },
+ "paywall_badge_best_value": {
+  "fr": "Meilleur choix !",
+  "es": "¡Mejor valor!",
+  "pt": "Melhor custo-benefício!",
+  "tr": "En iyi değer!",
+  "ru": "Лучшая цена!",
+  "ja": "いちばんお得！",
+  "th": "คุ้มที่สุด!"
+ },
+ "paywall_badge_one_time": {
+  "fr": "Paiement unique",
+  "es": "Pago único",
+  "pt": "Pagamento único",
+  "tr": "Tek seferlik",
+  "ru": "Разовый платёж",
+  "ja": "買い切り",
+  "th": "จ่ายครั้งเดียว"
+ },
+ "paywall_save_vs_monthly": {
+  "fr": "Économisez ~%1$d %% par rapport au mensuel",
+  "es": "Ahorra ~%1$d%% frente al mensual",
+  "pt": "Economize ~%1$d%% em relação ao mensal",
+  "tr": "Aylığa göre ~%%%1$d tasarruf",
+  "ru": "Экономия ~%1$d%% по сравнению с месячной",
+  "ja": "月額より約%1$d%%お得",
+  "th": "ประหยัด ~%1$d%% เทียบกับรายเดือน"
+ },
+ "paywall_save_vs_weekly": {
+  "fr": "Économisez ~%1$d %% par rapport au hebdomadaire",
+  "es": "Ahorra ~%1$d%% frente al semanal",
+  "pt": "Economize ~%1$d%% em relação ao semanal",
+  "tr": "Haftalığa göre ~%%%1$d tasarruf",
+  "ru": "Экономия ~%1$d%% по сравнению с недельной",
+  "ja": "週額より約%1$d%%お得",
+  "th": "ประหยัด ~%1$d%% เทียบกับรายสัปดาห์"
+ },
+ "paywall_percent_off": {
+  "fr": "~%1$d %% DE REMISE",
+  "es": "~%1$d%% DE DESCUENTO",
+  "pt": "~%1$d%% DE DESCONTO",
+  "tr": "~%%%1$d İNDİRİM",
+  "ru": "СКИДКА ~%1$d%%",
+  "ja": "約%1$d%%オフ",
+  "th": "ลด ~%1$d%%"
+ },
+ "paywall_percent_off_extra": {
+  "fr": "(en plus ~%1$d %% de remise)",
+  "es": "(~%1$d%% extra de descuento)",
+  "pt": "(mais ~%1$d%% de desconto)",
+  "tr": "(ek ~%%%1$d indirim)",
+  "ru": "(ещё ~%1$d%% скидки)",
+  "ja": "（さらに約%1$d%%オフ）",
+  "th": "(ลดเพิ่ม ~%1$d%%)"
+ },
+ "paywall_percent_off_store": {
+  "fr": "-%1$d %%",
+  "es": "-%1$d%%",
+  "pt": "-%1$d%%",
+  "tr": "%%%1$d İNDİRİM",
+  "ru": "-%1$d%%",
+  "ja": "%1$d%%オフ",
+  "th": "ลด %1$d%%"
+ },
+ "paywall_intro_then": {
+  "fr": "%1$s, puis %2$s",
+  "es": "%1$s, luego %2$s",
+  "pt": "%1$s, depois %2$s",
+  "tr": "%1$s, sonra %2$s",
+  "ru": "%1$s, затем %2$s",
+  "ja": "%1$s、その後は%2$s",
+  "th": "%1$s หลังจากนั้น %2$s"
+ },
+ "purchase_headline": {
+  "fr": "Passez à Premium",
+  "es": "Hazte Premium",
+  "pt": "Seja Premium",
+  "tr": "Premium'a Geçin",
+  "ru": "Перейдите на Premium",
+  "ja": "Premiumにしよう",
+  "th": "อัปเกรดเป็น Premium"
+ },
+ "purchase_subline": {
+  "fr": "Tout débloquer, apprendre sans limites",
+  "es": "Desbloquea todo y aprende sin límites",
+  "pt": "Desbloqueie tudo e aprenda sem limites",
+  "tr": "Her şeyi açın, sınırsız öğrenin",
+  "ru": "Откройте всё и учитесь без ограничений",
+  "ja": "すべて解放して、自由に学ぼう",
+  "th": "ปลดล็อกทุกอย่าง เรียนได้ไม่จำกัด"
+ },
+ "paywall_billing_note": {
+  "fr": "Les offres mensuelles et annuelles se renouvellent automatiquement jusqu'à leur résiliation. Résiliez à tout moment dans les paramètres de Google Play.",
+  "es": "Los planes mensuales y anuales se renuevan automáticamente hasta que los canceles. Cancela cuando quieras en los ajustes de Google Play.",
+  "pt": "Os planos mensais e anuais são renovados automaticamente até serem cancelados. Cancele quando quiser nas configurações do Google Play.",
+  "tr": "Aylık ve yıllık planlar iptal edilene kadar otomatik yenilenir. İstediğiniz zaman Google Play ayarlarından iptal edebilirsiniz.",
+  "ru": "Месячные и годовые тарифы продлеваются автоматически, пока вы их не отмените. Отменить можно в любой момент в настройках Google Play.",
+  "ja": "月額・年額プランは、解約するまで自動で更新されます。Google Playの設定からいつでも解約できます。",
+  "th": "แพ็กเกจรายเดือนและรายปีจะต่ออายุอัตโนมัติจนกว่าจะยกเลิก ยกเลิกได้ทุกเมื่อในการตั้งค่า Google Play"
+ },
+ "paywall_billing_note_lifetime": {
+  "fr": "L'offre à vie est un achat unique. Elle ne se renouvelle pas.",
+  "es": "El plan de por vida es una compra única. No se renueva.",
+  "pt": "O plano vitalício é uma compra única. Não é renovado.",
+  "tr": "Ömür boyu plan tek seferlik bir satın alımdır. Yenilenmez.",
+  "ru": "Пожизненный тариф — разовая покупка. Он не продлевается.",
+  "ja": "永久プランは買い切りです。更新はありません。",
+  "th": "แพ็กเกจตลอดชีพเป็นการซื้อครั้งเดียว ไม่มีการต่ออายุ"
+ },
+ "paywall_privacy_link": {
+  "fr": "Politique de confidentialité",
+  "es": "Política de privacidad",
+  "pt": "Política de privacidade",
+  "tr": "Gizlilik Politikası",
+  "ru": "Политика конфиденциальности",
+  "ja": "プライバシーポリシー",
+  "th": "นโยบายความเป็นส่วนตัว"
+ },
+ "paywall_trial_then": {
+  "fr": "%1$d jours gratuits, puis",
+  "es": "%1$d días gratis, luego",
+  "pt": "%1$d dias grátis, depois",
+  "tr": "%1$d gün ücretsiz, sonra",
+  "ru": "%1$d дн. бесплатно, затем",
+  "ja": "%1$d日間無料、その後",
+  "th": "ฟรี %1$d วัน หลังจากนั้น"
+ },
+ "paywall_per_month_approx": {
+  "fr": "~%1$s / mois",
+  "es": "~%1$s / mes",
+  "pt": "~%1$s / mês",
+  "tr": "~%1$s / ay",
+  "ru": "~%1$s / мес.",
+  "ja": "約%1$s / 月",
+  "th": "~%1$s / เดือน"
+ },
+ "paywall_headline_onboarding": {
+  "fr": "Tout débloquer !",
+  "es": "¡Desbloquea todo!",
+  "pt": "Desbloqueie tudo!",
+  "tr": "Her şeyin kilidini açın!",
+  "ru": "Откройте всё!",
+  "ja": "すべてを解放！",
+  "th": "ปลดล็อกทุกอย่าง!"
+ },
+ "paywall_subtitle_onboarding": {
+  "fr": "Du débutant à l'expert, avec des rapports de progrès pour vous",
+  "es": "De principiante a experto, con informes de progreso para ti",
+  "pt": "De iniciante a especialista, com relatórios de progresso para você",
+  "tr": "Başlangıçtan uzmanlığa, sizin için ilerleme raporlarıyla",
+  "ru": "От новичка до эксперта, с отчётами о прогрессе для вас",
+  "ja": "初級から上級まで。保護者向けレポートつき",
+  "th": "ตั้งแต่มือใหม่ถึงเชี่ยวชาญ พร้อมรายงานความก้าวหน้าสำหรับคุณ"
+ },
+ "paywall_headline_free_ending": {
+  "fr": "Vous aimez jusqu'ici ?",
+  "es": "¿Te está gustando?",
+  "pt": "Está gostando até agora?",
+  "tr": "Şimdiye kadar beğendiniz mi?",
+  "ru": "Нравится пока?",
+  "ja": "ここまで気に入りましたか？",
+  "th": "ชอบไหมจนถึงตอนนี้"
+ },
+ "paywall_subtitle_free_ending": {
+  "fr": "Gardez tous les niveaux et jeux avec un abonnement",
+  "es": "Conserva todos los niveles y juegos con un plan",
+  "pt": "Mantenha todos os níveis e jogos com um plano",
+  "tr": "Bir planla tüm seviyeleri ve oyunları koruyun",
+  "ru": "Сохраните все уровни и игры с подпиской",
+  "ja": "プランで、すべてのレベルとゲームを続けられます",
+  "th": "เก็บทุกระดับและทุกเกมไว้ด้วยแพ็กเกจ"
+ },
+ "paywall_headline_free_ended": {
+  "fr": "Votre accès gratuit est terminé",
+  "es": "Tu acceso gratuito ha terminado",
+  "pt": "Seu acesso gratuito terminou",
+  "tr": "Ücretsiz erişiminiz sona erdi",
+  "ru": "Бесплатный доступ закончился",
+  "ja": "無料期間が終了しました",
+  "th": "สิทธิ์ใช้ฟรีสิ้นสุดแล้ว"
+ },
+ "paywall_subtitle_free_ended": {
+  "fr": "Continuez d'apprendre avec Premium",
+  "es": "Sigue aprendiendo con Premium",
+  "pt": "Continue aprendendo com o Premium",
+  "tr": "Premium ile öğrenmeye devam edin",
+  "ru": "Продолжайте учиться с Premium",
+  "ja": "Premiumで学びを続けよう",
+  "th": "เรียนต่อกับ Premium"
+ },
+ "paywall_headline_returning": {
+  "fr": "Prêt pour le niveau suivant ?",
+  "es": "¿Listo para el siguiente nivel?",
+  "pt": "Pronto para o próximo nível?",
+  "tr": "Sonraki seviyeye hazır mısınız?",
+  "ru": "Готовы к следующему уровню?",
+  "ja": "次のレベルに進もう！",
+  "th": "พร้อมสำหรับระดับต่อไปหรือยัง"
+ },
+ "paywall_subtitle_returning": {
+  "fr": "Débloquez tous les niveaux, jeux et rapports de progrès",
+  "es": "Desbloquea todos los niveles, juegos e informes de progreso",
+  "pt": "Desbloqueie todos os níveis, jogos e relatórios de progresso",
+  "tr": "Tüm seviyelerin, oyunların ve ilerleme raporlarının kilidini açın",
+  "ru": "Откройте все уровни, игры и отчёты о прогрессе",
+  "ja": "すべてのレベル・ゲーム・成長レポートを解放",
+  "th": "ปลดล็อกทุกระดับ ทุกเกม และรายงานความก้าวหน้า"
+ },
+ "plan_weekly": {
+  "fr": "Hebdomadaire",
+  "es": "Semanal",
+  "pt": "Semanal",
+  "tr": "Haftalık",
+  "ru": "Недельный",
+  "ja": "週額",
+  "th": "รายสัปดาห์"
+ },
+ "plan_monthly": {
+  "fr": "Mensuel",
+  "es": "Mensual",
+  "pt": "Mensal",
+  "tr": "Aylık",
+  "ru": "Месячный",
+  "ja": "月額",
+  "th": "รายเดือน"
+ },
+ "plan_3_month": {
+  "fr": "3 mois",
+  "es": "3 meses",
+  "pt": "3 meses",
+  "tr": "3 Aylık",
+  "ru": "3 месяца",
+  "ja": "3か月",
+  "th": "3 เดือน"
+ },
+ "plan_6_month": {
+  "fr": "6 mois",
+  "es": "6 meses",
+  "pt": "6 meses",
+  "tr": "6 Aylık",
+  "ru": "6 месяцев",
+  "ja": "6か月",
+  "th": "6 เดือน"
+ },
+ "plan_yearly": {
+  "fr": "Annuel",
+  "es": "Anual",
+  "pt": "Anual",
+  "tr": "Yıllık",
+  "ru": "Годовой",
+  "ja": "年額",
+  "th": "รายปี"
+ },
+ "plan_lifetime": {
+  "fr": "À vie",
+  "es": "De por vida",
+  "pt": "Vitalício",
+  "tr": "Ömür boyu",
+  "ru": "Пожизненный",
+  "ja": "永久",
+  "th": "ตลอดชีพ"
+ },
+ "plan_name_label": {
+  "fr": "%1$s :",
+  "es": "Plan %1$s:",
+  "pt": "Plano %1$s:",
+  "tr": "%1$s Plan:",
+  "ru": "Тариф: %1$s",
+  "ja": "%1$sプラン：",
+  "th": "แพ็กเกจ%1$s:"
+ },
+ "plan_per_week": {
+  "fr": "/ semaine",
+  "es": "/ semana",
+  "pt": "/ semana",
+  "tr": "/ hafta",
+  "ru": "/ неделя",
+  "ja": "/ 週",
+  "th": "/ สัปดาห์"
+ },
+ "plan_per_month": {
+  "fr": "/ mois",
+  "es": "/ mes",
+  "pt": "/ mês",
+  "tr": "/ ay",
+  "ru": "/ месяц",
+  "ja": "/ 月",
+  "th": "/ เดือน"
+ },
+ "plan_per_year": {
+  "fr": "/ an",
+  "es": "/ año",
+  "pt": "/ ano",
+  "tr": "/ yıl",
+  "ru": "/ год",
+  "ja": "/ 年",
+  "th": "/ ปี"
+ },
+ "plan_one_time": {
+  "fr": "paiement unique",
+  "es": "pago único",
+  "pt": "pagamento único",
+  "tr": "tek seferlik",
+  "ru": "разово",
+  "ja": "買い切り",
+  "th": "จ่ายครั้งเดียว"
+ },
+ "purchase_assigned_on": {
+  "fr": "<strong>Attribué le :</strong> %1$s",
+  "es": "<strong>Asignado el:</strong> %1$s",
+  "pt": "<strong>Atribuído em:</strong> %1$s",
+  "tr": "<strong>Atanma tarihi:</strong> %1$s",
+  "ru": "<strong>Назначено:</strong> %1$s",
+  "ja": "<strong>付与日：</strong>%1$s",
+  "th": "<strong>ได้รับเมื่อ:</strong> %1$s"
+ },
+ "freemium_body_core": {
+  "fr": "Le mode libre et le niveau 1 restent gratuits. Premium ouvre tout le reste.",
+  "es": "El modo libre y el nivel 1 siguen gratis. Premium abre todo lo demás.",
+  "pt": "O modo livre e o nível 1 continuam grátis. O Premium abre todo o resto.",
+  "tr": "Serbest Mod ve Seviye 1 ücretsiz kalır. Premium geri kalan her şeyi açar.",
+  "ru": "Свободный режим и уровень 1 остаются бесплатными. Premium открывает всё остальное.",
+  "ja": "フリーモードとレベル1は無料のままです。Premiumでそれ以外がすべて使えます。",
+  "th": "โหมดอิสระและระดับ 1 ยังคงใช้ฟรี Premium ปลดล็อกส่วนที่เหลือทั้งหมด"
+ },
+ "freemium_body_all": {
+  "fr": "Premium ouvre toute l'application.",
+  "es": "Premium abre toda la aplicación.",
+  "pt": "O Premium abre todo o aplicativo.",
+  "tr": "Premium uygulamanın tamamını açar.",
+  "ru": "Premium открывает всё приложение.",
+  "ja": "Premiumでアプリのすべてが使えます。",
+  "th": "Premium ปลดล็อกทั้งแอป"
+ },
+ "freemium_body_pick": {
+  "fr": "Choisissez une offre pour garder tous les niveaux, jeux et rapports.",
+  "es": "Elige un plan para conservar todos los niveles, juegos e informes.",
+  "pt": "Escolha um plano para manter todos os níveis, jogos e relatórios.",
+  "tr": "Tüm seviyeleri, oyunları ve raporları korumak için bir plan seçin.",
+  "ru": "Выберите тариф, чтобы сохранить все уровни, игры и отчёты.",
+  "ja": "プランを選んで、すべてのレベル・ゲーム・レポートを続けましょう。",
+  "th": "เลือกแพ็กเกจเพื่อเก็บทุกระดับ เกม และรายงานไว้"
+ },
+ "freemium_see_plans": {
+  "fr": "Voir les offres",
+  "es": "Ver planes",
+  "pt": "Ver planos",
+  "tr": "Planları gör",
+  "ru": "Смотреть тарифы",
+  "ja": "プランを見る",
+  "th": "ดูแพ็กเกจ"
+ },
+ "ft_title_welcome_3": {
+  "fr": "Bienvenue dans votre essai gratuit de 3 jours !",
+  "es": "¡Te damos la bienvenida a tu prueba gratuita de 3 días!",
+  "pt": "Boas-vindas ao seu teste grátis de 3 dias!",
+  "tr": "3 günlük ücretsiz denemenize hoş geldiniz!",
+  "ru": "Добро пожаловать в бесплатный 3-дневный период!",
+  "ja": "3日間の無料体験へようこそ！",
+  "th": "ยินดีต้อนรับสู่การทดลองใช้ฟรี 3 วัน!"
+ },
+ "ft_title_2_remaining": {
+  "fr": "Il reste 2 jours à votre essai gratuit.",
+  "es": "Quedan 2 días de tu prueba gratuita.",
+  "pt": "Restam 2 dias do seu teste grátis.",
+  "tr": "Ücretsiz denemenizde 2 gün kaldı.",
+  "ru": "До конца бесплатного периода осталось 2 дня.",
+  "ja": "無料体験はあと2日です。",
+  "th": "ช่วงทดลองใช้ฟรีเหลืออีก 2 วัน"
+ },
+ "ft_title_last_day": {
+  "fr": "Dernier jour de votre essai gratuit !",
+  "es": "¡Último día de tu prueba gratuita!",
+  "pt": "Último dia do seu teste grátis!",
+  "tr": "Ücretsiz denemenizin son günü!",
+  "ru": "Последний день бесплатного периода!",
+  "ja": "無料体験の最終日です！",
+  "th": "วันสุดท้ายของช่วงทดลองใช้ฟรี!"
+ },
+ "ft_title_ended": {
+  "fr": "Votre essai gratuit est terminé.",
+  "es": "Tu prueba gratuita ha terminado.",
+  "pt": "Seu teste grátis terminou.",
+  "tr": "Ücretsiz deneme süreniz sona erdi.",
+  "ru": "Бесплатный период закончился.",
+  "ja": "無料体験は終了しました。",
+  "th": "ช่วงทดลองใช้ฟรีสิ้นสุดแล้ว"
+ },
+ "ft_title_welcome_7": {
+  "fr": "Bienvenue dans votre essai gratuit de 7 jours !",
+  "es": "¡Te damos la bienvenida a tu prueba gratuita de 7 días!",
+  "pt": "Boas-vindas ao seu teste grátis de 7 dias!",
+  "tr": "7 günlük ücretsiz denemenize hoş geldiniz!",
+  "ru": "Добро пожаловать в бесплатный 7-дневный период!",
+  "ja": "7日間の無料体験へようこそ！",
+  "th": "ยินดีต้อนรับสู่การทดลองใช้ฟรี 7 วัน!"
+ },
+ "ft_title_6_left": {
+  "fr": "Il reste 6 jours à votre essai gratuit.",
+  "es": "Quedan 6 días de tu prueba gratuita.",
+  "pt": "Restam 6 dias do seu teste grátis.",
+  "tr": "Ücretsiz denemenizde 6 gün kaldı.",
+  "ru": "До конца бесплатного периода осталось 6 дней.",
+  "ja": "無料体験はあと6日です。",
+  "th": "ช่วงทดลองใช้ฟรีเหลืออีก 6 วัน"
+ },
+ "ft_title_5_days": {
+  "fr": "Votre essai gratuit se termine dans 5 jours.",
+  "es": "Tu prueba gratuita termina en 5 días.",
+  "pt": "Seu teste grátis termina em 5 dias.",
+  "tr": "Ücretsiz denemeniz 5 gün sonra bitiyor.",
+  "ru": "Бесплатный период закончится через 5 дней.",
+  "ja": "無料体験は5日後に終了します。",
+  "th": "ช่วงทดลองใช้ฟรีจะสิ้นสุดใน 5 วัน"
+ },
+ "ft_title_4_left": {
+  "fr": "Plus que 4 jours !",
+  "es": "¡Solo quedan 4 días!",
+  "pt": "Só restam 4 dias!",
+  "tr": "Sadece 4 gün kaldı!",
+  "ru": "Осталось всего 4 дня!",
+  "ja": "あと4日です！",
+  "th": "เหลืออีกแค่ 4 วัน!"
+ },
+ "ft_title_3_remaining": {
+  "fr": "Il reste 3 jours à votre essai gratuit.",
+  "es": "Quedan 3 días de tu prueba gratuita.",
+  "pt": "Restam 3 dias do seu teste grátis.",
+  "tr": "Ücretsiz denemenizde 3 gün kaldı.",
+  "ru": "До конца бесплатного периода осталось 3 дня.",
+  "ja": "無料体験はあと3日です。",
+  "th": "ช่วงทดลองใช้ฟรีเหลืออีก 3 วัน"
+ },
+ "ft_title_2_soon": {
+  "fr": "Votre essai gratuit se termine bientôt : plus que 2 jours !",
+  "es": "Tu prueba gratuita termina pronto: ¡solo quedan 2 días!",
+  "pt": "Seu teste grátis termina em breve: só restam 2 dias!",
+  "tr": "Ücretsiz denemeniz yakında bitiyor: sadece 2 gün kaldı!",
+  "ru": "Бесплатный период скоро закончится — осталось всего 2 дня!",
+  "ja": "無料体験がまもなく終了します。あと2日です！",
+  "th": "ช่วงทดลองใช้ฟรีใกล้สิ้นสุดแล้ว เหลืออีกแค่ 2 วัน!"
+ },
+ "ft_desc_full_access": {
+  "fr": "Vous avez maintenant un accès complet : explorez, apprenez et profitez du voyage.",
+  "es": "Ahora tienes acceso completo: explora, aprende y disfruta del camino.",
+  "pt": "Agora você tem acesso completo: explore, aprenda e aproveite a jornada.",
+  "tr": "Artık tam erişiminiz var: keşfedin, öğrenin ve yolculuğun tadını çıkarın.",
+  "ru": "Теперь у вас полный доступ: исследуйте, учитесь и наслаждайтесь.",
+  "ja": "すべての機能が使えます。見て、学んで、楽しんでください。",
+  "th": "ตอนนี้คุณเข้าถึงได้ทั้งหมดแล้ว สำรวจ เรียนรู้ และสนุกไปกับการเดินทาง"
+ },
+ "ft_desc_keep_safe": {
+  "fr": "Gardez vos données d'apprentissage et vos réussites en sécurité en débloquant l'accès complet avant la fin de l'essai.",
+  "es": "Mantén a salvo tus datos de aprendizaje y logros desbloqueando el acceso completo antes de que termine la prueba.",
+  "pt": "Mantenha seus dados de aprendizado e conquistas seguros liberando o acesso completo antes do fim do teste.",
+  "tr": "Deneme bitmeden tam erişimi açarak öğrenme verilerinizi ve başarılarınızı koruyun.",
+  "ru": "Сохраните данные об обучении и достижения, открыв полный доступ до конца бесплатного периода.",
+  "ja": "体験が終わる前にすべての機能を解放して、学習データと成果を守りましょう。",
+  "th": "เก็บข้อมูลการเรียนและความสำเร็จของคุณให้ปลอดภัย ด้วยการปลดล็อกการเข้าถึงทั้งหมดก่อนช่วงทดลองสิ้นสุด"
+ },
+ "ft_desc_stay_on_track": {
+  "fr": "Gardez le cap dans votre apprentissage : abonnez-vous dès aujourd'hui.",
+  "es": "Mantén el ritmo de tu aprendizaje: suscríbete hoy.",
+  "pt": "Continue no caminho do aprendizado: assine hoje.",
+  "tr": "Öğrenmenizi sürdürün: bugün abone olun.",
+  "ru": "Не прерывайте обучение — оформите подписку сегодня.",
+  "ja": "学びを止めないために、今日から購読しましょう。",
+  "th": "เรียนต่อเนื่องไปกับเรา สมัครสมาชิกวันนี้"
+ },
+ "ft_desc_subscribe_continue": {
+  "fr": "Abonnez-vous maintenant pour poursuivre votre parcours d'apprentissage.",
+  "es": "Suscríbete ahora para continuar tu aprendizaje.",
+  "pt": "Assine agora para continuar sua jornada de aprendizado.",
+  "tr": "Öğrenme yolculuğunuza devam etmek için şimdi abone olun.",
+  "ru": "Оформите подписку, чтобы продолжить обучение.",
+  "ja": "学びを続けるには、今すぐ購読してください。",
+  "th": "สมัครสมาชิกตอนนี้เพื่อเรียนต่อ"
+ },
+ "ft_desc_keep_exploring": {
+  "fr": "Continuez d'explorer et découvrez toutes les fonctions qui vous attendent !",
+  "es": "¡Sigue explorando y descubre todas las funciones que te esperan!",
+  "pt": "Continue explorando e veja todos os recursos que esperam por você!",
+  "tr": "Keşfetmeye devam edin ve sizi bekleyen tüm özellikleri görün!",
+  "ru": "Продолжайте исследовать и открывайте все возможности!",
+  "ja": "もっと試して、すべての機能を見つけましょう！",
+  "th": "สำรวจต่อไปและดูฟีเจอร์ทั้งหมดที่รอคุณอยู่!"
+ },
+ "ft_desc_enjoy_lessons": {
+  "fr": "Profitez de l'accès complet à toutes les leçons pendant votre essai !",
+  "es": "¡Disfruta del acceso completo a todas las lecciones durante tu prueba!",
+  "pt": "Aproveite o acesso completo a todas as lições durante o teste!",
+  "tr": "Deneme süresince tüm derslere tam erişimin keyfini çıkarın!",
+  "ru": "Пользуйтесь всеми уроками без ограничений в бесплатный период!",
+  "ja": "体験期間中は、すべてのレッスンを自由に使えます！",
+  "th": "สนุกกับการเข้าถึงทุกบทเรียนได้เต็มที่ตลอดช่วงทดลอง!"
+ },
+ "ft_desc_right_track": {
+  "fr": "Vous êtes sur la bonne voie : ne vous arrêtez pas, le succès est tout proche !",
+  "es": "Vas por buen camino: ¡no pares ahora, el éxito está cerca!",
+  "pt": "Você está no caminho certo: não pare agora, o sucesso está logo ali!",
+  "tr": "Doğru yoldasınız: şimdi durmayın, başarı çok yakın!",
+  "ru": "Вы на верном пути — не останавливайтесь, успех уже близко!",
+  "ja": "いい調子です。ここで止まらず、成功はもうすぐです！",
+  "th": "คุณมาถูกทางแล้ว อย่าหยุดตอนนี้ ความสำเร็จอยู่ไม่ไกล!"
+ },
+ "ft_desc_adventure": {
+  "fr": "Poursuivez votre aventure d'apprentissage en vous abonnant dès aujourd'hui.",
+  "es": "Continúa tu aventura de aprendizaje suscribiéndote hoy.",
+  "pt": "Continue sua aventura de aprendizado assinando hoje.",
+  "tr": "Bugün abone olarak öğrenme maceranıza devam edin.",
+  "ru": "Продолжите путешествие в мир знаний — оформите подписку сегодня.",
+  "ja": "今日から購読して、学びの冒険を続けましょう。",
+  "th": "เรียนรู้ต่อในการผจญภัยนี้ด้วยการสมัครสมาชิกวันนี้"
+ },
+ "ft_btn_start_learning": {
+  "fr": "Commencer à apprendre",
+  "es": "Empezar a aprender",
+  "pt": "Começar a aprender",
+  "tr": "Öğrenmeye başla",
+  "ru": "Начать учиться",
+  "ja": "学びはじめる",
+  "th": "เริ่มเรียน"
+ },
+ "ft_btn_subscribe_now": {
+  "fr": "S'abonner maintenant",
+  "es": "Suscribirse ahora",
+  "pt": "Assinar agora",
+  "tr": "Şimdi abone ol",
+  "ru": "Подписаться",
+  "ja": "今すぐ購読",
+  "th": "สมัครสมาชิกเลย"
+ },
+ "ft_btn_maybe_later": {
+  "fr": "Peut-être plus tard",
+  "es": "Quizás luego",
+  "pt": "Talvez depois",
+  "tr": "Belki sonra",
+  "ru": "Может, позже",
+  "ja": "あとで",
+  "th": "ไว้ทีหลัง"
+ },
+ "ft_btn_continue_learning": {
+  "fr": "Continuer à apprendre",
+  "es": "Seguir aprendiendo",
+  "pt": "Continuar aprendendo",
+  "tr": "Öğrenmeye devam et",
+  "ru": "Продолжить учиться",
+  "ja": "学びを続ける",
+  "th": "เรียนต่อ"
+ },
+ "ft_btn_keep_going": {
+  "fr": "Continuer",
+  "es": "Seguir adelante",
+  "pt": "Continuar",
+  "tr": "Devam et",
+  "ru": "Продолжать",
+  "ja": "つづける",
+  "th": "ไปต่อ"
+ },
+ "ft_btn_continue": {
+  "fr": "Continuer",
+  "es": "Continuar",
+  "pt": "Continuar",
+  "tr": "Devam",
+  "ru": "Продолжить",
+  "ja": "続ける",
+  "th": "ต่อไป"
+ },
+ "ft_btn_remind_later": {
+  "fr": "Me le rappeler plus tard",
+  "es": "Recordármelo luego",
+  "pt": "Lembrar mais tarde",
+  "tr": "Daha sonra hatırlat",
+  "ru": "Напомнить позже",
+  "ja": "あとで知らせて",
+  "th": "เตือนฉันทีหลัง"
+ },
+ "ft_no_payment": {
+  "fr": "Aucun paiement ni abonnement à configurer pendant votre essai gratuit.",
+  "es": "No hace falta pagar ni configurar una suscripción durante tu prueba gratuita.",
+  "pt": "Não é preciso pagar nem configurar assinatura durante o teste grátis.",
+  "tr": "Ücretsiz deneme sırasında ödeme veya abonelik kurulumu gerekmez.",
+  "ru": "В бесплатный период оплата и подписка не нужны.",
+  "ja": "無料体験中は、お支払いや購読の設定は不要です。",
+  "th": "ไม่ต้องชำระเงินหรือตั้งค่าการสมัครสมาชิกในช่วงทดลองใช้ฟรี"
+ },
+ "ft_limited_deal": {
+  "fr": "<strong>Offre limitée :</strong> débloquez Premium à prix réduit !",
+  "es": "<strong>Oferta por tiempo limitado:</strong> ¡desbloquea Premium con descuento!",
+  "pt": "<strong>Oferta por tempo limitado:</strong> libere o Premium com desconto!",
+  "tr": "<strong>Sınırlı süreli fırsat:</strong> Premium'u indirimli fiyata açın!",
+  "ru": "<strong>Предложение ограничено по времени:</strong> откройте Premium со скидкой!",
+  "ja": "<strong>期間限定：</strong>Premiumを割引価格で解放しましょう！",
+  "th": "<strong>ข้อเสนอจำกัดเวลา:</strong> ปลดล็อก Premium ในราคาพิเศษ!"
+ },
+ "ft_now": {
+  "fr": "MAINTENANT",
+  "es": "AHORA",
+  "pt": "AGORA",
+  "tr": "ŞİMDİ",
+  "ru": "СЕЙЧАС",
+  "ja": "いま！",
+  "th": "ตอนนี้"
+ },
+ "paywall_intro_first_days": {
+  "plural": {
+   "fr": {
+    "one": "le premier jour",
+    "many": "les %1$d premiers jours",
+    "other": "les %1$d premiers jours"
+   },
+   "es": {
+    "one": "el primer día",
+    "many": "los primeros %1$d días",
+    "other": "los primeros %1$d días"
+   },
+   "pt": {
+    "one": "o primeiro dia",
+    "many": "os primeiros %1$d dias",
+    "other": "os primeiros %1$d dias"
+   },
+   "tr": {
+    "one": "ilk gün",
+    "other": "ilk %1$d gün"
+   },
+   "ru": {
+    "one": "первый день",
+    "few": "первые %1$d дня",
+    "many": "первые %1$d дней",
+    "other": "первые %1$d дня"
+   },
+   "ja": {
+    "other": "最初の%1$d日間"
+   },
+   "th": {
+    "other": "%1$d วันแรก"
+   }
+  }
+ },
+ "paywall_intro_first_weeks": {
+  "plural": {
+   "fr": {
+    "one": "la première semaine",
+    "many": "les %1$d premières semaines",
+    "other": "les %1$d premières semaines"
+   },
+   "es": {
+    "one": "la primera semana",
+    "many": "las primeras %1$d semanas",
+    "other": "las primeras %1$d semanas"
+   },
+   "pt": {
+    "one": "a primeira semana",
+    "many": "as primeiras %1$d semanas",
+    "other": "as primeiras %1$d semanas"
+   },
+   "tr": {
+    "one": "ilk hafta",
+    "other": "ilk %1$d hafta"
+   },
+   "ru": {
+    "one": "первая неделя",
+    "few": "первые %1$d недели",
+    "many": "первые %1$d недель",
+    "other": "первые %1$d недели"
+   },
+   "ja": {
+    "other": "最初の%1$d週間"
+   },
+   "th": {
+    "other": "%1$d สัปดาห์แรก"
+   }
+  }
+ },
+ "paywall_intro_first_months": {
+  "plural": {
+   "fr": {
+    "one": "le premier mois",
+    "many": "les %1$d premiers mois",
+    "other": "les %1$d premiers mois"
+   },
+   "es": {
+    "one": "el primer mes",
+    "many": "los primeros %1$d meses",
+    "other": "los primeros %1$d meses"
+   },
+   "pt": {
+    "one": "o primeiro mês",
+    "many": "os primeiros %1$d meses",
+    "other": "os primeiros %1$d meses"
+   },
+   "tr": {
+    "one": "ilk ay",
+    "other": "ilk %1$d ay"
+   },
+   "ru": {
+    "one": "первый месяц",
+    "few": "первые %1$d месяца",
+    "many": "первые %1$d месяцев",
+    "other": "первые %1$d месяца"
+   },
+   "ja": {
+    "other": "最初の%1$dか月"
+   },
+   "th": {
+    "other": "%1$d เดือนแรก"
+   }
+  }
+ },
+ "paywall_intro_first_years": {
+  "plural": {
+   "fr": {
+    "one": "la première année",
+    "many": "les %1$d premières années",
+    "other": "les %1$d premières années"
+   },
+   "es": {
+    "one": "el primer año",
+    "many": "los primeros %1$d años",
+    "other": "los primeros %1$d años"
+   },
+   "pt": {
+    "one": "o primeiro ano",
+    "many": "os primeiros %1$d anos",
+    "other": "os primeiros %1$d anos"
+   },
+   "tr": {
+    "one": "ilk yıl",
+    "other": "ilk %1$d yıl"
+   },
+   "ru": {
+    "one": "первый год",
+    "few": "первые %1$d года",
+    "many": "первые %1$d лет",
+    "other": "первые %1$d года"
+   },
+   "ja": {
+    "other": "最初の%1$d年間"
+   },
+   "th": {
+    "other": "%1$d ปีแรก"
+   }
+  }
+ },
+ "freemium_days_left": {
+  "plural": {
+   "fr": {
+    "one": "Accès gratuit : %1$d jour restant",
+    "many": "Accès gratuit : %1$d jours restants",
+    "other": "Accès gratuit : %1$d jours restants"
+   },
+   "es": {
+    "one": "Acceso gratuito: queda %1$d día",
+    "many": "Acceso gratuito: quedan %1$d días",
+    "other": "Acceso gratuito: quedan %1$d días"
+   },
+   "pt": {
+    "one": "Acesso grátis: resta %1$d dia",
+    "many": "Acesso grátis: restam %1$d dias",
+    "other": "Acesso grátis: restam %1$d dias"
+   },
+   "tr": {
+    "one": "Ücretsiz erişim: %1$d gün kaldı",
+    "other": "Ücretsiz erişim: %1$d gün kaldı"
+   },
+   "ru": {
+    "one": "Бесплатный доступ: остался %1$d день",
+    "few": "Бесплатный доступ: осталось %1$d дня",
+    "many": "Бесплатный доступ: осталось %1$d дней",
+    "other": "Бесплатный доступ: осталось %1$d дня"
+   },
+   "ja": {
+    "other": "無料期間：残り%1$d日"
+   },
+   "th": {
+    "other": "ใช้ฟรี: เหลืออีก %1$d วัน"
+   }
+  }
+ },
+ "purchase_days_free": {
+  "plural": {
+   "fr": {
+    "one": "%1$d jour gratuit",
+    "many": "%1$d jours gratuits",
+    "other": "%1$d jours gratuits"
+   },
+   "es": {
+    "one": "%1$d día gratis",
+    "many": "%1$d días gratis",
+    "other": "%1$d días gratis"
+   },
+   "pt": {
+    "one": "%1$d dia grátis",
+    "many": "%1$d dias grátis",
+    "other": "%1$d dias grátis"
+   },
+   "tr": {
+    "one": "%1$d gün ücretsiz",
+    "other": "%1$d gün ücretsiz"
+   },
+   "ru": {
+    "one": "%1$d день бесплатно",
+    "few": "%1$d дня бесплатно",
+    "many": "%1$d дней бесплатно",
+    "other": "%1$d дня бесплатно"
+   },
+   "ja": {
+    "other": "%1$d日間無料"
+   },
+   "th": {
+    "other": "ฟรี %1$d วัน"
+   }
+  }
+ },
+ "ft_badge_days_free_trial": {
+  "plural": {
+   "fr": {
+    "one": "JOUR\nD'ESSAI GRATUIT",
+    "many": "JOURS\nD'ESSAI GRATUIT",
+    "other": "JOURS\nD'ESSAI GRATUIT"
+   },
+   "es": {
+    "one": "DÍA\nDE PRUEBA GRATIS",
+    "many": "DÍAS\nDE PRUEBA GRATIS",
+    "other": "DÍAS\nDE PRUEBA GRATIS"
+   },
+   "pt": {
+    "one": "DIA\nDE TESTE GRÁTIS",
+    "many": "DIAS\nDE TESTE GRÁTIS",
+    "other": "DIAS\nDE TESTE GRÁTIS"
+   },
+   "tr": {
+    "one": "GÜN\nÜCRETSİZ DENEME",
+    "other": "GÜN\nÜCRETSİZ DENEME"
+   },
+   "ru": {
+    "one": "ДЕНЬ\nБЕСПЛАТНО",
+    "few": "ДНЯ\nБЕСПЛАТНО",
+    "many": "ДНЕЙ\nБЕСПЛАТНО",
+    "other": "ДНЯ\nБЕСПЛАТНО"
+   },
+   "ja": {
+    "other": "日間\n無料体験"
+   },
+   "th": {
+    "other": "วัน\nทดลองใช้ฟรี"
+   }
+  }
+ },
+ "ft_days_left": {
+  "plural": {
+   "fr": {
+    "one": "jour restant",
+    "many": "jours restants",
+    "other": "jours restants"
+   },
+   "es": {
+    "one": "día restante",
+    "many": "días restantes",
+    "other": "días restantes"
+   },
+   "pt": {
+    "one": "dia restante",
+    "many": "dias restantes",
+    "other": "dias restantes"
+   },
+   "tr": {
+    "one": "gün kaldı",
+    "other": "gün kaldı"
+   },
+   "ru": {
+    "one": "день остался",
+    "few": "дня осталось",
+    "many": "дней осталось",
+    "other": "дня осталось"
+   },
+   "ja": {
+    "other": "日 残り"
+   },
+   "th": {
+    "other": "วันที่เหลือ"
+   }
+  }
+ },
+ "purchase_benefit_1": {
+  "fr": "⭐ <strong>Accès illimité</strong> à tous les niveaux du boulier, aux exercices, aux examens et au mode défi personnalisé.",
+  "es": "⭐ <strong>Acceso ilimitado</strong> a todos los niveles de ábaco, ejercicios, exámenes y al modo reto personalizado.",
+  "pt": "⭐ <strong>Acesso ilimitado</strong> a todos os níveis do ábaco, exercícios, provas e ao modo desafio personalizado.",
+  "tr": "⭐ Tüm abaküs seviyelerine, egzersizlere, sınavlara ve Özel Meydan Okuma Modu'na <strong>sınırsız erişim</strong>.",
+  "ru": "⭐ <strong>Неограниченный доступ</strong> ко всем уровням абакуса, упражнениям, экзаменам и режиму «Свой вызов».",
+  "ja": "⭐ すべてのそろばんレベル、トレーニング、テスト、オリジナルチャレンジモードが<strong>使い放題</strong>。",
+  "th": "⭐ <strong>เข้าถึงได้ไม่จำกัด</strong> ทุกระดับลูกคิด แบบฝึกหัด ข้อสอบ และโหมดชาเลนจ์ที่กำหนดเอง"
+ },
+ "purchase_benefit_2": {
+  "fr": "🧮 Entraînez-vous à l'addition, la soustraction, la multiplication et la division avec des <strong>indications intelligentes sur les boules</strong> et la <strong>formule à chaque étape.</strong>",
+  "es": "🧮 Practica suma, resta, multiplicación y división con <strong>indicaciones inteligentes de las cuentas</strong> y la <strong>fórmula en cada paso.</strong>",
+  "pt": "🧮 Pratique soma, subtração, multiplicação e divisão com <strong>direções inteligentes das contas</strong> e a <strong>fórmula em cada passo.</strong>",
+  "tr": "🧮 Toplama, çıkarma, çarpma ve bölmeyi <strong>akıllı boncuk yönleri</strong> ve <strong>her adımda formülle</strong> çalışın.",
+  "ru": "🧮 Тренируйте сложение, вычитание, умножение и деление с <strong>умными подсказками по бусинам</strong> и <strong>формулой на каждом шаге.</strong>",
+  "ja": "🧮 たし算・ひき算・かけ算・わり算を、<strong>珠の動かし方のヒント</strong>と<strong>各ステップの公式</strong>つきで練習できます。",
+  "th": "🧮 ฝึกการบวก ลบ คูณ หาร พร้อม<strong>คำแนะนำการเลื่อนลูกคิดอัจฉริยะ</strong>และ<strong>สูตรในทุกขั้นตอน</strong>"
+ },
+ "purchase_benefit_3": {
+  "fr": "🎯 Préparez les concours de maths, l'UCMAS et les examens de boulier avec un <strong>entraînement au format réel de l'examen.</strong>",
+  "es": "🎯 Prepárate para concursos de matemáticas, UCMAS y exámenes de ábaco con <strong>práctica al estilo del examen real.</strong>",
+  "pt": "🎯 Prepare-se para competições de matemática, UCMAS e provas de ábaco com <strong>prática no estilo da prova real.</strong>",
+  "tr": "🎯 Matematik yarışmalarına, UCMAS'a ve abaküs sınavlarına <strong>gerçek sınav tarzı alıştırmalarla</strong> hazırlanın.",
+  "ru": "🎯 Готовьтесь к математическим конкурсам, UCMAS и экзаменам по абакусу с <strong>тренировками в формате настоящего экзамена.</strong>",
+  "ja": "🎯 算数コンテスト、UCMAS、そろばん検定に向けて、<strong>本番形式の練習</strong>ができます。",
+  "th": "🎯 เตรียมตัวสำหรับการแข่งขันคณิตศาสตร์ UCMAS และข้อสอบลูกคิด ด้วย<strong>การฝึกแบบข้อสอบจริง</strong>"
+ },
+ "purchase_benefit_4": {
+  "fr": "📊 <strong>Suivez les progrès de votre enfant</strong>, sa vitesse et sa précision grâce à des rapports détaillés.",
+  "es": "📊 <strong>Sigue el progreso de tu hijo</strong>, su velocidad y su precisión con informes detallados.",
+  "pt": "📊 <strong>Acompanhe o progresso do seu filho</strong>, a velocidade e a precisão com relatórios detalhados.",
+  "tr": "📊 Ayrıntılı raporlarla <strong>çocuğunuzun ilerlemesini</strong>, hızını ve doğruluğunu takip edin.",
+  "ru": "📊 <strong>Следите за прогрессом ребёнка</strong>, его скоростью и точностью с помощью подробных отчётов.",
+  "ja": "📊 詳しいレポートで、<strong>お子さまの成長</strong>、スピード、正確さを見守れます。",
+  "th": "📊 <strong>ติดตามความก้าวหน้าของลูก</strong> ความเร็ว และความแม่นยำ ด้วยรายงานโดยละเอียด"
+ }
+}

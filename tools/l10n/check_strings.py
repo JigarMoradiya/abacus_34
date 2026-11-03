@@ -59,7 +59,8 @@ def main():
                 if not need <= set(val): e.append(f'{k}: plural quantities missing {sorted(need - set(val))}')
                 for q, t in val.items():
                     base = sval.get(q) or sval.get('other') or ''
-                    if placeholders(t) != placeholders(base) and q in sval: e.append(f'{k}[{q}]: placeholders differ')
+                    exactly_one = q == 'one' and lang in ('fr', 'es', 'pt', 'tr', 'ja', 'th')   # there "one" is the number 1 only: "the first day" may drop the number
+                    if placeholders(t) != placeholders(base) and q in sval and not (exactly_one and not placeholders(t)): e.append(f'{k}[{q}]: placeholders differ')
         for k in raw_apostrophes(path): e.append(f'{k}: unescaped apostrophe (use \\\')')
         same = [k for k, (kind, v) in tr.items() if k in src and kind == 'string' and v == src[k][1] and len(v) > 25]
         print(f'[{lang}] {len(tr)} strings: {len(miss)} missing (fall back to English), {len(extra)} extra, {len(e)} errors, {len(same)} identical-to-English')

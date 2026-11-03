@@ -287,7 +287,7 @@ fun FreemiumPaywallBottomSheet(
                             ) {
                                 Icon(
                                     imageVector = Icons.Default.Close,
-                                    contentDescription = "Close",
+                                    contentDescription = stringResource(R.string.close),
                                     tint = Color.White,
                                     modifier = Modifier.size(AppDimens.Dimens16)
                                 )

@@ -75,6 +75,7 @@ import com.jigar.me.ui.view.home.screens.purchase.viewmodels.RcPlanItem
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.DateTimeUtils
+import androidx.compose.ui.res.pluralStringResource
 
 /** The iPad multiplier of `responsiveDimenstion`, so the type grows the same way on tablets. */
 private val responsive: Float get() = if (AppDimens.isLargeTablet) 1.7f else if (AppDimens.isTablet) 1.5f else 1f
@@ -142,7 +143,8 @@ fun PurchaseScreen(
 // region left: the benefits
 
 @Composable
-private fun PurchaseKitBenefits(benefits: List<String>, modifier: Modifier) {
+private fun PurchaseKitBenefits(benefitIds: List<Int>, modifier: Modifier) {
+    val benefits = benefitIds.map { stringResource(it) }
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
     val k = responsive
@@ -306,7 +308,7 @@ private fun PurchaseKitAdminPlanCard(isLifetime: Boolean, startDate: String?) {
                 .padding(AppDimens.Dimens8),
         ) {
             Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens2), verticalAlignment = Alignment.CenterVertically) {
-                Text("${if (isLifetime) "Lifetime" else "Yearly"} Plan :", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = ink)
+                Text(stringResource(R.string.plan_name_label, stringResource(if (isLifetime) R.string.plan_lifetime else R.string.plan_yearly)), style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = ink)
                 Text(
                     stringResource(R.string.assigned),
                     Modifier
@@ -321,8 +323,8 @@ private fun PurchaseKitAdminPlanCard(isLifetime: Boolean, startDate: String?) {
                     style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = ink,
                 )
                 Text(
-                    CommonUtils.htmlToAnnotatedString("<strong>Assigned ON : </strong>${
-                        DateTimeUtils.convertDateFormat(startDate ?: "", DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz, DateTimeUtils.dd_MMMM_yyyy)}"),
+                    CommonUtils.htmlToAnnotatedString(stringResource(R.string.purchase_assigned_on, 
+                        DateTimeUtils.convertDateFormat(startDate ?: "", DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz, DateTimeUtils.dd_MMMM_yyyy))),
                     style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = ink,
                 )
             }
@@ -371,12 +373,12 @@ private fun PurchaseKitPlanCard(
         ) {
             // name + price (or the "Subscribed" / "Assigned" pill)
             Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens2), verticalAlignment = Alignment.CenterVertically) {
-                Text("${plan.getDurationTxt()} Plan :", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = ink)
+                Text(stringResource(R.string.plan_name_label, plan.getDurationTxt()), style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = ink)
                 if (!isPurchased && !isAssigned) {
                     if (trialDays > 0) {
                         // the trial leads, the price follows on the line below ("then ₹199 / month")
                         Text(
-                            "$trialDays Days Free", style = AbTypography.fixed(20f * k, FontWeight.ExtraBold), color = ink,
+                            pluralStringResource(R.plurals.purchase_days_free, trialDays, trialDays), style = AbTypography.fixed(20f * k, FontWeight.ExtraBold), color = ink,
                             modifier = Modifier.padding(start = AppDimens.Dimens4),
                         )
                     } else if (intro != null) {
@@ -436,11 +438,11 @@ private fun PurchaseKitPlanCard(
                     isAssigned && plan.sku.contains("1year") && uiState.yearPlanAssignFromAdmin != null -> {
                         Text(stringResource(R.string.plan_assigned_from_admin), style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = ink)
                         Text(
-                            CommonUtils.htmlToAnnotatedString("<strong>Assigned ON : </strong>${
+                            CommonUtils.htmlToAnnotatedString(stringResource(R.string.purchase_assigned_on, 
                                 DateTimeUtils.convertDateFormat(
                                     uiState.yearPlanAssignFromAdmin.start_date ?: "",
                                     DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz, DateTimeUtils.dd_MMMM_yyyy
-                                )}"),
+                                ))),
                             style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = ink,
                         )
                     }
@@ -450,11 +452,11 @@ private fun PurchaseKitPlanCard(
                             style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = ink,
                         )
                         Text(
-                            CommonUtils.htmlToAnnotatedString("<strong>Assigned ON : </strong>${
+                            CommonUtils.htmlToAnnotatedString(stringResource(R.string.purchase_assigned_on, 
                                 DateTimeUtils.convertDateFormat(
                                     uiState.allPlanAssignFromAdmin.start_date ?: "",
                                     DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz, DateTimeUtils.dd_MMMM_yyyy
-                                )}"),
+                                ))),
                             style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = ink,
                         )
                     }

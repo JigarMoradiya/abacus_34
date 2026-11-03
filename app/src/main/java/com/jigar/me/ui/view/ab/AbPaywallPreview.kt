@@ -21,6 +21,7 @@ import com.revenuecat.purchases.models.Price
 import com.revenuecat.purchases.models.PricingPhase
 import com.revenuecat.purchases.models.RecurrenceMode
 import com.revenuecat.purchases.models.TestStoreProduct
+import com.jigar.me.R
 
 /**
  * Debug previews of the two paywalls with sample plans (the real offerings need the store): `ab_screen=paywall|purchase`.
@@ -58,12 +59,7 @@ private fun sampleState(selected: Int = 0, withIntro: Boolean = true): PurchaseU
         original1YearData = year,
         originalLifetimeData = lifetime,
         original1MonthData = month,
-        benefitList = listOf(
-            "⭐ <strong>Get unlimited access</strong> to all Abacus Levels, Exercises, Exams and Custom Challenge Modes Module.",
-            "🧮 Practice Addition, Subtraction, Multiplication, Division, with <strong>smart bead directions</strong> and <strong>formula on every steps.</strong>",
-            "🎯 Prepare for math competitions, UCMAS and abacus exams with <strong>real exam-style practice.</strong>",
-            "📊 <strong>Track your child's</strong> progress, speed and accuracy with detailed reports.",
-        ),
+        benefitList = listOf(R.string.purchase_benefit_1, R.string.purchase_benefit_2, R.string.purchase_benefit_3, R.string.purchase_benefit_4),
         socialProofText = "Join thousands of students learning with Vedaavi Abacus",
     )
 }

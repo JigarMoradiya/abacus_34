@@ -73,7 +73,7 @@ data class PurchaseUiState(
     val showOldSubscriptionPopup: Boolean = false,
 
     // Benefit list
-    val benefitList: List<String> = emptyList(),
+    val benefitList: List<Int> = emptyList(),   // string ids (each line starts with its emoji)
 
     // Social proof line (Remote Config, hidden when blank)
     val socialProofText: String = "",

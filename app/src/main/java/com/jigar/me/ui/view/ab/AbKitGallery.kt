@@ -61,7 +61,11 @@ object AbDebugScreens {
                 "review2" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.common_ui.sheets.Day2ReviewGateBottomSheet(visible = true, onDismiss = {}, onFiveStars = {}, onLowRating = {}) }
                 "badges" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); Column(Modifier.padding(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) { com.jigar.me.ui.view.home.common_ui.MadeInIndiaBadge(); com.jigar.me.ui.view.home.common_ui.SafeAdFreeBadge() } }
                 // the first-launch tutorial, page N of 6 (6 = the plans page): `--es ab_screen onboarding6`
-                else -> if (name.startsWith("onboarding")) AbOnboardingPreview(name.removePrefix("onboarding").toIntOrNull() ?: 1) else AbKitGallery()
+                // the old free-trial popup: `freetrial<trial length 3 or 7>_<days left>`, e.g. freetrial7_6
+                else -> if (name.startsWith("freetrial")) {
+                    val (m, r) = name.removePrefix("freetrial").split("_").map { it.toIntOrNull() ?: 0 }
+                    Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.common_ui.dialogs.FreeTrialDialog(remainingDays = r, discountPer = 10, discountPerLifetime = 10, manualFreeTrialDays = m, onYes = {}, onNo = {}, onDismiss = {}) }
+                } else if (name.startsWith("onboarding")) AbOnboardingPreview(name.removePrefix("onboarding").toIntOrNull() ?: 1) else AbKitGallery()
             }
         }
     }

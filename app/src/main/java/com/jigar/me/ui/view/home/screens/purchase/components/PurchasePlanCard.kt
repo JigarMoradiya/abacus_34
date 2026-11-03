@@ -46,26 +46,29 @@ import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.DateTimeUtils
+import androidx.compose.ui.res.pluralStringResource
 
 // ── RcPlanItem helpers ──────────────────────────────────────────────────────
 
+@Composable
 fun RcPlanItem.getDurationTxt(): String = when {
-    sku.contains("week") -> "Weekly"
-    sku.contains("1month") && !sku.contains("trial") -> "Monthly"
-    sku.contains("3month") -> "3 Month"
-    sku.contains("6month") -> "6 Month"
-    sku.contains("1year") -> "Yearly"
-    sku.contains("all") -> "Lifetime"
+    sku.contains("week") -> stringResource(R.string.plan_weekly)
+    sku.contains("1month") && !sku.contains("trial") -> stringResource(R.string.plan_monthly)
+    sku.contains("3month") -> stringResource(R.string.plan_3_month)
+    sku.contains("6month") -> stringResource(R.string.plan_6_month)
+    sku.contains("1year") -> stringResource(R.string.plan_yearly)
+    sku.contains("all") -> stringResource(R.string.plan_lifetime)
     else -> sku
 }
 
 fun RcPlanItem.isYearly(): Boolean = sku.contains("1year")
 
-fun RcPlanItem.getPriceSuffix(): String = when {
-    sku.contains("week")   -> " / week"
-    sku.contains("1month") -> " / month"
-    sku.contains("1year")  -> " / year"
-    else                   -> " one time"
+@Composable
+fun RcPlanItem.getPriceSuffix(): String = " " + when {
+    sku.contains("week")   -> stringResource(R.string.plan_per_week)
+    sku.contains("1month") -> stringResource(R.string.plan_per_month)
+    sku.contains("1year")  -> stringResource(R.string.plan_per_year)
+    else                   -> stringResource(R.string.plan_one_time)
 }
 
 fun RcPlanItem.calculateSavings(monthlyMicros: Long, yearlyMicros: Long): Long =
@@ -158,11 +161,11 @@ fun PurchasePlanCard(
                         )
                     )
                     Text(
-                        text = CommonUtils.htmlToAnnotatedString("<strong>Assigned ON : </strong>${
+                        text = CommonUtils.htmlToAnnotatedString(stringResource(R.string.purchase_assigned_on, 
                             DateTimeUtils.convertDateFormat(
                                 uiState.yearPlanAssignFromAdmin.start_date ?: "",
                                 DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz, DateTimeUtils.dd_MMMM_yyyy
-                            )}"),
+                            ))),
                         style = MaterialTheme.typography.labelMedium.copy(
                             color = Color.Black, fontWeight = FontWeight.Normal,
                             fontFamily = FontFamily(Font(R.font.font_regular))
@@ -179,11 +182,11 @@ fun PurchasePlanCard(
                         )
                     )
                     Text(
-                        text = CommonUtils.htmlToAnnotatedString("<strong>Assigned ON : </strong>${
+                        text = CommonUtils.htmlToAnnotatedString(stringResource(R.string.purchase_assigned_on, 
                             DateTimeUtils.convertDateFormat(
                                 uiState.allPlanAssignFromAdmin.start_date ?: "",
                                 DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz, DateTimeUtils.dd_MMMM_yyyy
-                            )}"),
+                            ))),
                         style = MaterialTheme.typography.labelMedium.copy(
                             color = Color.Black, fontWeight = FontWeight.Normal,
                             fontFamily = FontFamily(Font(R.font.font_regular))

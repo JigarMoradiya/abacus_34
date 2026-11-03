@@ -4,6 +4,7 @@ import com.jigar.me.R
 import com.jigar.me.data.model.data.GooglePurchasedPlanRequest
 import com.jigar.me.data.model.dbtable.abacus_all_data.Level
 import com.jigar.me.ui.jetpack.core.domain.ConsumableCommand
+import androidx.annotation.StringRes
 
 data class HomeUiState(
     val error: Int? = null,
@@ -61,10 +62,10 @@ data class FreeTrialParam(
 )
 
 data class FreeTrialUiConfig(
-    val title: String,
-    val desc: String,
-    val yesText: String,
-    val noText: String? = null,
+    @StringRes val title: Int,
+    @StringRes val desc: Int,
+    @StringRes val yesText: Int,
+    @StringRes val noText: Int? = null,
     val showNow: Boolean = false,
     val showTrialStart: Boolean = false,
     val showDayLeft: Boolean = false,
@@ -80,19 +81,19 @@ fun getFreeTrialUi(
         return when {
             daysLeft >= 3 -> {
                 FreeTrialUiConfig(
-                    title = "Welcome to your 3 days free trial!",
-                    desc = "You now have full access - explore, learn & enjoy your journey.",
-                    yesText = "Start Learning",
+                    title = R.string.ft_title_welcome_3,
+                    desc = R.string.ft_desc_full_access,
+                    yesText = R.string.ft_btn_start_learning,
                     showTrialStart = true,
                     numberRes = R.drawable.ic_number_3
                 )
             }
             daysLeft == 2 -> {
                 FreeTrialUiConfig(
-                    title = "2 days remaining in your free trial.",
-                    desc = "Keep your learning data and achievements safe by unlocking full access before your trial ends.",
-                    yesText = "Subscribe Now",
-                    noText = "Maybe Later",
+                    title = R.string.ft_title_2_remaining,
+                    desc = R.string.ft_desc_keep_safe,
+                    yesText = R.string.ft_btn_subscribe_now,
+                    noText = R.string.ft_btn_maybe_later,
                     showDayLeft = true,
                     showNoButton = true,
                     numberRes = R.drawable.ic_number_2
@@ -100,10 +101,10 @@ fun getFreeTrialUi(
             }
             daysLeft == 1 -> {
                 FreeTrialUiConfig(
-                    title = "Last day of your free trial!",
-                    desc = "Stay on track with your learning - subscribe today.",
-                    yesText = "Subscribe Now",
-                    noText = "Maybe Later",
+                    title = R.string.ft_title_last_day,
+                    desc = R.string.ft_desc_stay_on_track,
+                    yesText = R.string.ft_btn_subscribe_now,
+                    noText = R.string.ft_btn_maybe_later,
                     showDayLeft = true,
                     showNoButton = true,
                     numberRes = R.drawable.ic_number_1
@@ -111,9 +112,9 @@ fun getFreeTrialUi(
             }
             else -> {
                 FreeTrialUiConfig(
-                    title = "Your free trial has ended.",
-                    desc = "Subscribe now to continue your learning journey.",
-                    yesText = "View Plans",
+                    title = R.string.ft_title_ended,
+                    desc = R.string.ft_desc_subscribe_continue,
+                    yesText = R.string.view_plans,
                     showDayLeft = true,
                     numberRes = R.drawable.ic_number_0
                 )
@@ -123,71 +124,71 @@ fun getFreeTrialUi(
         return when {
             daysLeft >= 7 -> {
                 FreeTrialUiConfig(
-                    title = "Welcome to your 7 days free trial!",
-                    desc = "You now have full access - explore, learn & enjoy your journey.",
-                    yesText = "Start Learning",
+                    title = R.string.ft_title_welcome_7,
+                    desc = R.string.ft_desc_full_access,
+                    yesText = R.string.ft_btn_start_learning,
                     showTrialStart = true
                 )
             }
             daysLeft == 6 -> FreeTrialUiConfig(
-                title = "6 days left in your free trial.",
-                desc = "Keep exploring and see all the features waiting for you!",
-                yesText = "Subscribe Now",
-                noText = "Continue Learning",
+                title = R.string.ft_title_6_left,
+                desc = R.string.ft_desc_keep_exploring,
+                yesText = R.string.ft_btn_subscribe_now,
+                noText = R.string.ft_btn_continue_learning,
                 showNow = true,
                 showDayLeft = true,
                 showNoButton = true,
                 numberRes = R.drawable.ic_number_6
             )
             daysLeft == 5 -> FreeTrialUiConfig(
-                title = "Your free trial ends in 5 days.",
-                desc = "Enjoy full access to all lessons during your trial!",
-                yesText = "Subscribe Now",
-                noText = "Keep Going",
+                title = R.string.ft_title_5_days,
+                desc = R.string.ft_desc_enjoy_lessons,
+                yesText = R.string.ft_btn_subscribe_now,
+                noText = R.string.ft_btn_keep_going,
                 showDayLeft = true,
                 showNoButton = true,
                 numberRes = R.drawable.ic_number_5
             )
             daysLeft == 4 -> FreeTrialUiConfig(
-                title = "Only 4 days left!",
-                desc = "You're on the right track - don't stop now, success is just ahead!",
-                yesText = "Subscribe Now",
-                noText = "Continue",
+                title = R.string.ft_title_4_left,
+                desc = R.string.ft_desc_right_track,
+                yesText = R.string.ft_btn_subscribe_now,
+                noText = R.string.ft_btn_continue,
                 showDayLeft = true,
                 showNoButton = true,
                 numberRes = R.drawable.ic_number_4
             )
             daysLeft == 3 -> FreeTrialUiConfig(
-                title = "3 days remaining in your free trial.",
-                desc = "Keep your learning data and achievements safe by unlocking full access before your trial ends.",
-                yesText = "Subscribe Now",
-                noText = "Maybe Later",
+                title = R.string.ft_title_3_remaining,
+                desc = R.string.ft_desc_keep_safe,
+                yesText = R.string.ft_btn_subscribe_now,
+                noText = R.string.ft_btn_maybe_later,
                 showDayLeft = true,
                 showNoButton = true,
                 numberRes = R.drawable.ic_number_3
             )
             daysLeft == 2 -> FreeTrialUiConfig(
-                title = "Your free trial ends soon - only 2 days left!",
-                desc = "Continue your learning adventure by subscribing today.",
-                yesText = "Subscribe Now",
-                noText = "Remind Me Later",
+                title = R.string.ft_title_2_soon,
+                desc = R.string.ft_desc_adventure,
+                yesText = R.string.ft_btn_subscribe_now,
+                noText = R.string.ft_btn_remind_later,
                 showDayLeft = true,
                 showNoButton = true,
                 numberRes = R.drawable.ic_number_2
             )
             daysLeft == 1 -> FreeTrialUiConfig(
-                title = "Last day of your free trial!",
-                desc = "Stay on track with your learning - subscribe today.",
-                yesText = "Subscribe Now",
-                noText = "Maybe Later",
+                title = R.string.ft_title_last_day,
+                desc = R.string.ft_desc_stay_on_track,
+                yesText = R.string.ft_btn_subscribe_now,
+                noText = R.string.ft_btn_maybe_later,
                 showDayLeft = true,
                 showNoButton = true,
                 numberRes = R.drawable.ic_number_1
             )
             else -> FreeTrialUiConfig(
-                title = "Your free trial has ended.",
-                desc = "Subscribe now to continue your learning journey.",
-                yesText = "View Plans",
+                title = R.string.ft_title_ended,
+                desc = R.string.ft_desc_subscribe_continue,
+                yesText = R.string.view_plans,
                 showDayLeft = true,
                 numberRes = R.drawable.ic_number_0
             )
