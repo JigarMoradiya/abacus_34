@@ -175,6 +175,163 @@
         <item quantity="one">Gök boncuğu aşağıda + %1$d yer boncuğunu yukarı it</item>
         <item quantity="other">Gök boncuğu aşağıda + %1$d yer boncuğunu yukarı it</item>
     </plurals>
+    <!-- m14_level2 -->
+    <string name="l2_chapter1_title">Yer Toplama</string>
+    <string name="l2_chapter2_title">Gök Toplama</string>
+    <string name="l2_chapter3_title">Yer Çıkarma</string>
+    <string name="l2_chapter4_title">Gök Çıkarma</string>
+    <string name="l2_chapter5_title">Formüllerle Tanış</string>
+    <string name="l2_chapter6_title">Küçük Arkadaş +</string>
+    <string name="l2_chapter7_title">Küçük Arkadaş −</string>
+    <string name="l2_chapter8_title">Büyük Arkadaş +</string>
+    <string name="l2_chapter9_title">Büyük Arkadaş −</string>
+    <string name="l2_chapter10_title">Aile</string>
+    <string name="l2_lesson1_step1_title">Abaküste Toplama!</string>
+    <string name="l2_lesson1_step1_body">TOPLARKEN orta çubuğa doğru DAHA FAZLA boncuğu YUKARI it. 2\'den başla, 1 ekle → 1 boncuk daha yukarı it = 3! Daha çok boncuk = daha büyük sayı!</string>
+    <string name="l2_lesson1_step2_title">2 ile Başla</string>
+    <string name="l2_lesson1_step2_body">2 yer boncuğunu orta çubuğa kadar yukarı it. Abaküsün 2\'yi gösteriyor. Başlangıç sayın bu!</string>
+    <string name="l2_lesson1_step3_title">1 Ekle → 3 Olur</string>
+    <string name="l2_lesson1_step3_body">Boncuğun nasıl hareket ettiğini izle! 2\'den başla, 1 yer boncuğu daha YUKARI it → 3! 🎊</string>
+    <string name="l2_lesson1_step4_body">2\'den başla, 3 boncuk daha ekle. 5\'e gelince gök boncuğuna geçersin! ✨</string>
+    <string name="l2_lesson1_step5_title">Toplama = YUKARI İtmek!</string>
+    <string name="l2_lesson1_step5_body">Unutma: toplamak her zaman orta çubuğa doğru DAHA FAZLA boncuk itmek demektir. Sayın YUKARI çıkar! Dene: 1 + 3 = ? (3 boncuk daha it!)</string>
+    <string name="l2_lesson2_step1_title">5\'i Geçerek Toplama!</string>
+    <string name="l2_lesson2_step1_body">Toplamın 5 ya da daha fazla olunca 5 yer boncuğunu GÖK boncuğuyla değiştir! Tüm yer boncuklarını AŞAĞI it + gök boncuğunu AŞAĞI it = 5!</string>
+    <string name="l2_lesson2_step2_body">İzle! 4\'ten başla, 2 ekle → gök boncuğuna geç + 1 yer = 6! ✨</string>
+    <string name="l2_lesson2_step3_body">İzle! 3\'ten başla, 4 ekle → gök boncuğuna geç + 2 yer = 7! 🎯</string>
+    <string name="l2_lesson2_step4_body">İzle! 5\'ten (gök) başla, 3 yer boncuğunu yukarı it → gök + 3 yer = 8! 🎈</string>
+    <string name="l2_lesson2_step5_body">İzle! 5\'ten (gök) başla, 4 yer boncuğu ekle → gök + 4 yer = 9! 🏆</string>
+    <string name="l2_lesson3_step1_title">Abaküste Çıkarma!</string>
+    <string name="l2_lesson3_step1_body">ÇIKARIRKEN boncukları AŞAĞI it (orta çubuktan uzağa). 4\'ten başla, 2 çıkar → 2 yer boncuğunu AŞAĞI it = 2!</string>
+    <string name="l2_lesson3_step2_title">4\'ten Başla</string>
+    <string name="l2_lesson3_step2_body">4 yer boncuğunu orta çubuğa kadar yukarı it. Abaküsün 4\'ü gösteriyor! Başlangıç sayın bu.</string>
+    <string name="l2_lesson3_step3_body">İzle! 4\'ten başla, 2 yer boncuğunu AŞAĞI it → 2! ✅</string>
+    <string name="l2_lesson3_step4_body">İzle! 8\'den (gök + 3 yer) başla, 3 yer boncuğunu AŞAĞI it → yalnızca gök = 5! Gök boncuğu yerinde kalır! 🌟</string>
+    <string name="l2_lesson3_step5_title">Çıkarma = AŞAĞI İtmek!</string>
+    <string name="l2_lesson3_step5_body">Yalnızca yer boncukları oynar — bu derste gök boncuğu ASLA oynamaz! Dene: 9 − 4 = ? ve 4 − 1 = ?</string>
+    <string name="l2_lesson4_step1_title">Gök Boncuğunu Uzaklaştır!</string>
+    <string name="l2_lesson4_step1_body">5 ya da daha fazlasını çıkarırken gök boncuğunu orta çubuktan UZAĞA it (YUKARI = −5). Haydi deneyelim!</string>
+    <string name="l2_lesson4_step2_body">İzle! Gök boncuğu AŞAĞIDA (= 5). Onu YUKARI it → tüm boncuklar uzakta = 0! Gök boncuğunu kaldırmak çok kolay! 🎯</string>
+    <string name="l2_lesson4_step3_body">İzle! 7\'den (gök + 2 yer) başla. Gök boncuğunu YUKARI it (−5) → yalnızca 2 yer boncuğu kalır = 2! Yer boncukları yerinde kalır! ✅</string>
+    <string name="l2_lesson4_step4_body">İzle! 9\'dan (gök + 4 yer) başla. 3 yer boncuğunu AŞAĞI it, sonra gök boncuğunu YUKARI it → 1 yer = 1! 🌟</string>
+    <string name="l2_lesson4_step5_title">Başardın!</string>
+    <string name="l2_lesson4_step5_body">5 çıkar → gök boncuğunu YUKARI it. Daha fazla çıkar → önce yer boncuklarını, sonra gök boncuğunu kaldır. Formül gerekmez! 🚀</string>
+    <string name="l2_lesson5_step1_title">Karıştıralım!</string>
+    <string name="l2_lesson5_step1_body">Gerçek matematik toplamayı VE çıkarmayı karıştırır! İkisini de ayrı ayrı biliyorsun. Şimdi birlikte kullanalım! 🚀</string>
+    <string name="l2_lesson5_step2_title">Önce Topla: 3 + 5 = 8</string>
+    <string name="l2_lesson5_step2_body">İzle! 3\'ten başla, 5 ekle → gök + 3 yer boncuğuna geç = 8! 🎯</string>
+    <string name="l2_lesson5_step3_title">Sonra Çıkar: 8 − 2 = 6</string>
+    <string name="l2_lesson5_step3_body">İzle! 8\'den başla, 2 yer boncuğunu AŞAĞI it → gök + 1 yer = 6! ✨</string>
+    <string name="l2_lesson5_step4_title">Zincir: 5 − 2 = 3</string>
+    <string name="l2_lesson5_step4_body">İzle! 5\'ten (gök) başla, gök boncuğunu YUKARI ve 3 yer boncuğunu YUKARI it → 3! 🌟</string>
+    <string name="l2_lesson5_step5_title">Matematik Ustasısın!</string>
+    <string name="l2_lesson5_step5_body">Toplarken boncuklar orta çubuğa DOĞRU itilir. Çıkarırken orta çubuktan UZAĞA itilir. İstediğin gibi karıştır! 🎊 2. Seviye Tamam! 🏆</string>
+    <string name="l2_lesson6_step1_title">Küçük Arkadaş +</string>
+    <string name="l2_lesson6_step1_body">Toplarken yer boncukları yetmiyor ama sonuç ≤ 9 kalıyorsa Küçük Arkadaş formülünü kullan: yer boncuklarını kaldır + gök boncuğunu AŞAĞI it.</string>
+    <string name="l2_lesson6_step2_body">Dene: 1+4. 4 yer boncuğunu direkt ekleyemezsin (yalnızca 3 boş yer var!). Formül: 1 yer boncuğunu AŞAĞI it, gök boncuğunu AŞAĞI it. 1−1+5 = 5! ✨</string>
+    <string name="l2_lesson6_step3_body">Dene: 2+3. Formül: 2 yer boncuğunu AŞAĞI it, gök boncuğunu AŞAĞI it. 2−2+5 = 5! Sonuç aynı!</string>
+    <string name="l2_lesson6_step4_title">+4 = −1+5 (orta aralık)</string>
+    <string name="l2_lesson6_step4_body">Dene: 3+4. Formül: 1 yer boncuğunu AŞAĞI it, gök boncuğunu AŞAĞI it. 3−1+5 = 7! 🎯</string>
+    <string name="l2_lesson6_step5_title">Küçük Arkadaş + Örüntüsü</string>
+    <string name="l2_lesson6_step5_body">+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5. İki sayı her zaman 5 eder! 🤝 İşte 5\'e tamamlama püf noktası!</string>
+    <string name="l2_lesson7_step1_title">Küçük Arkadaş −</string>
+    <string name="l2_lesson7_step1_body">Sayın 5, 6, 7 veya 8 ise gök boncuğu zaten orta çubuğa değiyor! Çıkarman gerekiyor ama yer boncukları yetmiyorsa — gök boncuğunu YUKARI it, onun yerine yer boncuklarını orta çubuğa YUKARI it! İşte Küçük Arkadaş değişimi! 🤝</string>
+    <string name="l2_lesson7_step2_body">Dene: 5−1. Gök boncuğu AŞAĞIDA. 1 yer boncuğunu kaldıramazsın! Formül: gök boncuğunu YUKARI it (−5), 4 yer boncuğunu YUKARI ekle (+4). 5−5+4 = 4! ✅</string>
+    <string name="l2_lesson7_step3_body">Dene: 5−2. Gök boncuğunu YUKARI it (−5), 3 yer boncuğunu YUKARI ekle (+3). 5−5+3 = 3! 🎯</string>
+    <string name="l2_lesson7_step4_title">−4 = +1−5 (orta aralık)</string>
+    <string name="l2_lesson7_step4_body">Dene: 7−4. Gök + 2 yer = 7. Gök boncuğunu YUKARI it (7→2), 1 yer boncuğunu YUKARI ekle. 7−5+1 = 3! 🌟</string>
+    <string name="l2_lesson7_step5_title">Küçük Arkadaş − Örüntüsü</string>
+    <string name="l2_lesson7_step5_body">−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5. Gök boncuğu yer boncuklarıyla yer değiştirir! İki sayı her zaman 5 eder. 🤝</string>
+    <string name="l2_lesson8_step1_title">Büyük Arkadaş +</string>
+    <string name="l2_lesson8_step1_body">Birler çubuğu doluysa ve sonuç 10 ya da daha fazla oluyorsa, bir boncuğu ONLAR çubuğuna taşı! Formül: +N = +10 − (10−N). Onlar çubuğunun parlamasını izle!</string>
+    <string name="l2_lesson8_step2_body">Dene: 9+1. Birler dolu (gök+4yer=9). Elde: ONLARA 1 ekle, birlerden 9 kaldır. 9+1=10 → onlar=1, birler=0! 🎉</string>
+    <string name="l2_lesson8_step3_body">Dene: 5+6. Birler 5\'i (gök) gösteriyor. Elde: ONLARA 1 ekle, birlerden 4 kaldır. 5+6=11 → onlar=1, birler=1! ✨</string>
+    <string name="l2_lesson8_step4_body">Dene: 5+9. Gök aşağıda (=5). Elde: ONLARA 1 ekle, birlerden 1 çıkar: gök YUKARI + 4 yer YUKARI. 5+9=14 → onlar=1, birler=4! 🌟</string>
+    <string name="l2_lesson8_step5_title">Büyük Arkadaş + Örüntüsü</string>
+    <string name="l2_lesson8_step5_body">+1=−9+10, +2=−8+10 … +9=−1+10. Her zaman: onlara 10 ekle, birlerden tamamlayan sayıyı çıkar. Sayı çiftleri 10 eder! 🔢</string>
+    <string name="l2_lesson9_step1_title">Büyük Arkadaş −</string>
+    <string name="l2_lesson9_step1_body">Birler çubuğunda çıkarmak için yeterli boncuk yoksa ONLAR çubuğundan ÖDÜNÇ AL! Formül: −N = −10 + (10−N).</string>
+    <string name="l2_lesson9_step2_body">Dene: 10−1. Birler 0! Ödünç al: ONLARDAN 1 kaldır, birlere 9 ekle. 10−1=9 → onlar=0, birler=9! ✅</string>
+    <string name="l2_lesson9_step3_body">Dene: 10−2. Ödünç al: ONLARDAN 1 kaldır, birlere 8 ekle. 10−2=8! ✨</string>
+    <string name="l2_lesson9_step4_body">Dene: 11−6. Birlerde yalnızca 1 boncuk var — 6 kaldıramazsın! Ödünç al: ONLARDAN −1, birlere +4. 11−6=5! 🎯</string>
+    <string name="l2_lesson9_step5_title">Büyük Arkadaş − Örüntüsü</string>
+    <string name="l2_lesson9_step5_body">−1=+9−10, −2=+8−10 … −9=+1−10. Her zaman: onlardan 10 ödünç al, birlere tamamlayan sayıyı ekle. Sayı çiftleri 10 eder! 🔢</string>
+    <string name="l2_lesson10_step1_title">Aile Formülleri!</string>
+    <string name="l2_lesson10_step1_body">Bazen tek adımda HEM gök boncuğu değişimi HEM de onlara elde gerekir. Bu \'Aile\' formülü Küçük Arkadaş ile Büyük Arkadaş\'ı bir araya getirir!</string>
+    <string name="l2_lesson10_step2_body">Dene: 7+6. Gök aşağıda (7=gök+2yer). Aile: gök YUKARI (7→2), onlara taşı, 1 yer ekle. 7+6=13! ✨</string>
+    <string name="l2_lesson10_step3_body">Dene: 6+9. Gök YUKARI (6→1), onlara taşı, 4 yer ekle. 6+9=15! 🎯</string>
+    <string name="l2_lesson10_step4_body">Dene: 11−6. Onlar=1, birler=1. Onlardan ödünç al (−10), gök boncuğunu AŞAĞI it (+5), 1 yer kaldır (−1). 11−6=5! 🌟</string>
+    <string name="l2_lesson10_step5_title">Aile Tamam!</string>
+    <string name="l2_lesson10_step5_body">+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10. 2. Seviye bitti! 🎊</string>
+    <string name="l2_reference">Rehber</string>
+    <string name="l2_two_cols">2 sütun</string>
+    <string name="l2_phase_practice_desc">İşlemleri abaküste çöz</string>
+    <string name="l2_phase_quiz_desc">Matematik becerilerini sına, yıldız kazan!</string>
+    <string name="l2_start_zero">Başla: 0</string>
+    <string name="l2_watch_animate">👀 Abaküsün hareketini izle!</string>
+    <string name="l2_quiz_what_answer">Cevap ne? 🤔</string>
+    <string name="l2_quiz_perfect">Tam Puan! Sen Bir Matematik Yıldızısın! 🌟</string>
+    <string name="l2_try_on_abacus">Abaküste\ndene! →</string>
+    <string name="l2_solve_instruction">Önce abaküste çöz, sonra\ncevabını kontrol et:\n%1$s</string>
+    <string name="l2_replay_arrow">Tekrar Oynat ▶</string>
+    <string name="l2_practice_done_msg">Harika! %1$d işlemin hepsini abaküste çözdün!\nTeste hazır mısın?</string>
+    <string name="l2_group1_why">Birler çubuğuna yalnızca 4 yer boncuğu sığar! Yer boncukları için yer kalmadı ama cevap hâlâ 10\'dan küçükse, gök boncuğuyla sihirli bir değişim yaparız! 🪄</string>
+    <string name="l2_group1_when">1, 2, 3 veya 4 eklemek istediğinde — ama yer boncukları için yer kalmadığında!</string>
+    <string name="l2_group1_how">Yer boncuklarını AŞAĞI it + gök boncuğunu AŞAĞI it, aynı anda. İki hareket = bir cevap! 🤝</string>
+    <string name="l2_group2_why">Sayın 5–8 arasındayken gök boncuğu zaten aşağıdadır. Çıkarmak gerekiyor ama yer boncuğu yetmiyor mu? Gök boncuğunu geri ver, karşılığında yer boncukları al! 🔄</string>
+    <string name="l2_group2_when">1, 2, 3 veya 4 çıkarmak istediğinde — ama kaldıracak yeterli yer boncuğu olmadığında!</string>
+    <string name="l2_group2_how">Gök boncuğunu YUKARI it + yer boncuklarını YUKARI ekle, aynı anda. İki hareket = bir cevap! 🤝</string>
+    <string name="l2_group3_why">Toplama sonucu 10 ya da daha büyük olunca, yandaki ONLAR çubuğuna elde taşımak gerekir! Daha büyük bir mahalleye taşındığını düşün! 🏘️</string>
+    <string name="l2_group3_when">Toplam 10 ya da daha fazla olacaksa — elde zamanı!</string>
+    <string name="l2_group3_how">ONLAR çubuğuna 1 boncuk ekle (+10), sonra BİRLER çubuğundan boncuk kaldır. İkisi dengelenir ve doğru cevabı verir! 🔢</string>
+    <string name="l2_group4_why">BİRLER çubuğu boş ama hâlâ çıkarman gerekiyorsa, yandaki ONLAR çubuğundan 10 ödünç al! Tıpkı arkadaşından boya kalemi ödünç almak gibi! 🖍️</string>
+    <string name="l2_group4_when">Birler çubuğunda çıkarmaya yetecek kadar boncuk olmadığında!</string>
+    <string name="l2_group4_how">ONLAR çubuğundan 1 boncuk kaldır (−10), sonra BİRLER çubuğuna boncuk ekle. Ödünç al, geri ver — çok kolay! 🔢</string>
+    <string name="l2_group5_name">Aile + (−5+10)</string>
+    <string name="l2_group5_why">Bazen toplamak HEM gök boncuğu değişimi HEM de onlara elde gerektirir — hepsi bir arada! Küçük Arkadaş ile Büyük Arkadaş bir aile olur! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group5_when">6, 7, 8 veya 9 eklerken — ve gök boncuğu zaten AŞAĞIDAYKEN!</string>
+    <string name="l2_group5_how">3 hızlı hareket: gök YUKARI (−5) → ONLARA taşı (+10) → birkaç yer boncuğu ekle. Hepsi bir arada! 🤝</string>
+    <string name="l2_group6_name">Aile − (+5−10)</string>
+    <string name="l2_group6_why">Bazen çıkarmak hem onlardan ödünç almayı HEM de gök boncuğunu gerektirir — hepsi bir arada! Bütün aile birlikte çalışır! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group6_when">6, 7, 8 veya 9 çıkarırken — ve yer boncuğu yetmediğinde!</string>
+    <string name="l2_group6_how">3 hızlı hareket: ONLARDAN ödünç al (−10) → gök boncuğu AŞAĞI (+5) → birkaç yer boncuğu kaldır. Takım işi! 🤝</string>
+    <string name="l2_formulas_title">Formüller 📋</string>
+    <string name="l2_why">💡 Neden?</string>
+    <string name="l2_when">⏰ Ne zaman?</string>
+    <string name="l2_how">🛠️ Nasıl?</string>
+    <string name="l2_phase_start">0\'dan başla</string>
+    <string name="l2_phase_setup">%1$d kuruluyor</string>
+    <string name="l2_phase_now">Şimdi: %1$d</string>
+    <string name="l2_phase_apply">Uygula: %1$s</string>
+    <string name="l2_phase_result">Sonuç: %1$d ✅</string>
+    <string name="l2_replay">▶ Tekrar Oynat</string>
+    <string name="l2_col_formula">Formül</string>
+    <string name="l2_col_moves">Boncuk Hareketleri</string>
+    <string name="l2_col_example">Örnek</string>
+    <plurals name="l2_moves_g1">
+        <item quantity="one">%1$d yer kaldır → gök aşağı</item>
+        <item quantity="other">%1$d yer kaldır → gök aşağı</item>
+    </plurals>
+    <plurals name="l2_moves_g2">
+        <item quantity="one">Gök yukarı → %1$d yer ekle</item>
+        <item quantity="other">Gök yukarı → %1$d yer ekle</item>
+    </plurals>
+    <plurals name="l2_moves_g3">
+        <item quantity="one">Onlara taşı → birlerden %1$d kaldır</item>
+        <item quantity="other">Onlara taşı → birlerden %1$d kaldır</item>
+    </plurals>
+    <plurals name="l2_moves_g4">
+        <item quantity="one">Onlardan ödünç al → birlere %1$d ekle</item>
+        <item quantity="other">Onlardan ödünç al → birlere %1$d ekle</item>
+    </plurals>
+    <plurals name="l2_moves_g5">
+        <item quantity="one">Gök yukarı → taşı → %1$d yer ekle</item>
+        <item quantity="other">Gök yukarı → taşı → %1$d yer ekle</item>
+    </plurals>
+    <plurals name="l2_moves_g6">
+        <item quantity="one">Ödünç al → gök aşağı → %1$d yer kaldır</item>
+        <item quantity="other">Ödünç al → gök aşağı → %1$d yer kaldır</item>
+    </plurals>
     <!-- m1_settings -->
     <string name="background_music_volume">Arka plan müziği ses düzeyi</string>
     <string name="change_voice_setting">Ses ayarını değiştir</string>

@@ -168,6 +168,157 @@
     <plurals name="l1_instr_heaven_earth">
         <item quantity="other">ลูกบนลง + ดันลูกล่างขึ้น %1$d ลูก</item>
     </plurals>
+    <!-- m14_level2 -->
+    <string name="l2_chapter1_title">บวกลูกล่าง</string>
+    <string name="l2_chapter2_title">บวกลูกบน</string>
+    <string name="l2_chapter3_title">ลบลูกล่าง</string>
+    <string name="l2_chapter4_title">ลบลูกบน</string>
+    <string name="l2_chapter5_title">รู้จักสูตร</string>
+    <string name="l2_chapter6_title">เพื่อนเล็ก +</string>
+    <string name="l2_chapter7_title">เพื่อนเล็ก −</string>
+    <string name="l2_chapter8_title">เพื่อนใหญ่ +</string>
+    <string name="l2_chapter9_title">เพื่อนใหญ่ −</string>
+    <string name="l2_chapter10_title">ครอบครัว</string>
+    <string name="l2_lesson1_step1_title">บวกบนลูกคิด!</string>
+    <string name="l2_lesson1_step1_body">เวลาบวก ให้ดันลูกเพิ่มขึ้นไปหาคานกลาง เริ่มที่ 2 บวก 1 → ดันขึ้นอีก 1 ลูก = 3! ลูกมากขึ้น เลขก็มากขึ้น!</string>
+    <string name="l2_lesson1_step2_title">เริ่มที่ 2</string>
+    <string name="l2_lesson1_step2_body">ดันลูกล่าง 2 ลูกขึ้นไปแตะคานกลาง ลูกคิดแสดงเลข 2 นี่คือเลขเริ่มต้นของเรา!</string>
+    <string name="l2_lesson1_step3_title">บวก 1 → ได้ 3</string>
+    <string name="l2_lesson1_step3_body">ดูลูกเลื่อนนะ! เริ่มที่ 2 ดันลูกล่างขึ้นอีก 1 ลูก → 3! 🎊</string>
+    <string name="l2_lesson1_step4_body">เริ่มที่ 2 แล้วบวกลูกอีก 3 ลูก พอถึง 5 ก็เปลี่ยนมาใช้ลูกบน! ✨</string>
+    <string name="l2_lesson1_step5_title">บวก = ดันขึ้น!</string>
+    <string name="l2_lesson1_step5_body">จำไว้นะ: การบวกคือดันลูกเพิ่มเข้าหาคานกลางเสมอ เลขของเราจะมากขึ้น! ลองดู: 1 + 3 = ? (ดันเพิ่มอีก 3 ลูก!)</string>
+    <string name="l2_lesson2_step1_title">บวกให้เกิน 5!</string>
+    <string name="l2_lesson2_step1_body">พอรวมได้ 5 ขึ้นไป ให้เปลี่ยนลูกล่าง 5 ลูกเป็นลูกบน! ดันลูกล่างทั้งหมดลง + ดันลูกบนลง = 5!</string>
+    <string name="l2_lesson2_step2_body">ดูนะ! เริ่มที่ 4 บวก 2 → เปลี่ยนเป็นลูกบน + ลูกล่าง 1 ลูก = 6! ✨</string>
+    <string name="l2_lesson2_step3_body">ดูนะ! เริ่มที่ 3 บวก 4 → เปลี่ยนเป็นลูกบน + ลูกล่าง 2 ลูก = 7! 🎯</string>
+    <string name="l2_lesson2_step4_body">ดูนะ! เริ่มที่ 5 (ลูกบน) ดันลูกล่างขึ้น 3 ลูก → ลูกบน + ลูกล่าง 3 ลูก = 8! 🎈</string>
+    <string name="l2_lesson2_step5_body">ดูนะ! เริ่มที่ 5 (ลูกบน) ดันลูกล่างขึ้น 4 ลูก → ลูกบน + ลูกล่าง 4 ลูก = 9! 🏆</string>
+    <string name="l2_lesson3_step1_title">ลบบนลูกคิด!</string>
+    <string name="l2_lesson3_step1_body">เวลาลบ ให้ดันลูกลงห่างจากคานกลาง เริ่มที่ 4 ลบ 2 → ดันลูกล่างลง 2 ลูก = 2!</string>
+    <string name="l2_lesson3_step2_title">เริ่มที่ 4</string>
+    <string name="l2_lesson3_step2_body">ดันลูกล่าง 4 ลูกขึ้นไปแตะคานกลาง ลูกคิดแสดงเลข 4! นี่คือเลขเริ่มต้นของเรา</string>
+    <string name="l2_lesson3_step3_body">ดูนะ! เริ่มที่ 4 ดันลูกล่างลง 2 ลูก → 2! ✅</string>
+    <string name="l2_lesson3_step4_body">ดูนะ! เริ่มที่ 8 (ลูกบน + ลูกล่าง 3 ลูก) ดันลูกล่างลง 3 ลูก → เหลือแค่ลูกบน = 5! ลูกบนอยู่ที่เดิม! 🌟</string>
+    <string name="l2_lesson3_step5_title">ลบ = ดันลง!</string>
+    <string name="l2_lesson3_step5_body">ขยับแค่ลูกล่างเท่านั้น ในบทนี้ไม่ขยับลูกบนเลย! ลองดู: 9 − 4 = ? และ 4 − 1 = ?</string>
+    <string name="l2_lesson4_step1_title">เอาลูกบนออก!</string>
+    <string name="l2_lesson4_step1_body">เวลาลบ 5 หรือมากกว่า ให้ดันลูกบนขึ้นห่างจากคานกลาง (ขึ้น = −5) มาฝึกกัน!</string>
+    <string name="l2_lesson4_step2_body">ดูนะ! ลูกบนอยู่ข้างล่าง (= 5) ดันขึ้น → ลูกทุกลูกห่างคานกลาง = 0! เอาลูกบนออกง่ายนิดเดียว! 🎯</string>
+    <string name="l2_lesson4_step3_body">ดูนะ! เริ่มที่ 7 (ลูกบน + ลูกล่าง 2 ลูก) ดันลูกบนขึ้น (−5) → เหลือแค่ลูกล่าง 2 ลูก = 2! ลูกล่างอยู่ที่เดิม! ✅</string>
+    <string name="l2_lesson4_step4_body">ดูนะ! เริ่มที่ 9 (ลูกบน + ลูกล่าง 4 ลูก) ดันลูกล่างลง 3 ลูก แล้วดันลูกบนขึ้น → เหลือลูกล่าง 1 ลูก = 1! 🌟</string>
+    <string name="l2_lesson4_step5_title">เข้าใจแล้วใช่ไหม!</string>
+    <string name="l2_lesson4_step5_body">ลบ 5 → ดันลูกบนขึ้น ลบมากกว่านั้น → เอาลูกล่างออกก่อน แล้วค่อยเอาลูกบน ไม่ต้องใช้สูตรเลย! 🚀</string>
+    <string name="l2_lesson5_step1_title">ผสมกันเลย!</string>
+    <string name="l2_lesson5_step1_body">เลขจริงๆ มีทั้งบวกและลบปนกัน! เรารู้ทั้งสองอย่างแล้ว คราวนี้มาใช้ด้วยกัน! 🚀</string>
+    <string name="l2_lesson5_step2_title">บวกก่อน: 3 + 5 = 8</string>
+    <string name="l2_lesson5_step2_body">ดูนะ! เริ่มที่ 3 บวก 5 → เปลี่ยนเป็นลูกบน + ลูกล่าง 3 ลูก = 8! 🎯</string>
+    <string name="l2_lesson5_step3_title">แล้วลบ: 8 − 2 = 6</string>
+    <string name="l2_lesson5_step3_body">ดูนะ! เริ่มที่ 8 ดันลูกล่างลง 2 ลูก → ลูกบน + ลูกล่าง 1 ลูก = 6! ✨</string>
+    <string name="l2_lesson5_step4_title">ต่อกัน: 5 − 2 = 3</string>
+    <string name="l2_lesson5_step4_body">ดูนะ! เริ่มที่ 5 (ลูกบน) ดันลูกบนขึ้น แล้วดันลูกล่างขึ้น 3 ลูก → 3! 🌟</string>
+    <string name="l2_lesson5_step5_title">เก่งเลขสุดยอด!</string>
+    <string name="l2_lesson5_step5_body">บวกคือดันลูกเข้าหาคานกลาง ลบคือดันลูกออกห่างจากคานกลาง ผสมกันได้เลย! 🎊 จบระดับ 2 แล้ว! 🏆</string>
+    <string name="l2_lesson6_step1_title">เพื่อนเล็ก +</string>
+    <string name="l2_lesson6_step1_body">ถ้าบวกแล้วลูกล่างไม่พอ แต่ผลลัพธ์ยังคง ≤ 9 ให้ใช้สูตรเพื่อนเล็ก (ส่วนเติมเต็ม 5): เอาลูกล่างออก + ดันลูกบนลง</string>
+    <string name="l2_lesson6_step2_body">ลอง 1+4 ใส่ลูกล่างเพิ่ม 4 ลูกตรงๆ ไม่ได้ (ว่างแค่ 3 ลูก!) ใช้สูตร: ดันลูกล่างลง 1 ลูก และดันลูกบนลง 1−1+5 = 5! ✨</string>
+    <string name="l2_lesson6_step3_body">ลอง 2+3 ใช้สูตร: ดันลูกล่างลง 2 ลูก และดันลูกบนลง 2−2+5 = 5! ได้ผลเท่ากัน!</string>
+    <string name="l2_lesson6_step4_title">+4 = −1+5 (ช่วงกลาง)</string>
+    <string name="l2_lesson6_step4_body">ลอง 3+4 ใช้สูตร: ดันลูกล่างลง 1 ลูก และดันลูกบนลง 3−1+5 = 7! 🎯</string>
+    <string name="l2_lesson6_step5_title">รูปแบบเพื่อนเล็ก +</string>
+    <string name="l2_lesson6_step5_body">+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5 เลขสองตัวรวมกันได้ 5 เสมอ! 🤝 นี่คือเคล็ดลับส่วนเติมเต็ม 5!</string>
+    <string name="l2_lesson7_step1_title">เพื่อนเล็ก −</string>
+    <string name="l2_lesson7_step1_body">ถ้าเลขของเราเป็น 5, 6, 7 หรือ 8 ลูกบนแตะคานกลางอยู่แล้ว! ตอนจะลบแต่ลูกล่างไม่พอ ให้ดันลูกบนขึ้น แล้วดันลูกล่างขึ้นไปแตะคานกลางแทน! นี่คือการสลับแบบเพื่อนเล็ก! 🤝</string>
+    <string name="l2_lesson7_step2_body">ลอง 5−1 ลูกบนอยู่ข้างล่าง เอาลูกล่าง 1 ลูกออกไม่ได้! สูตร: ดันลูกบนขึ้น (−5) แล้วดันลูกล่างขึ้น 4 ลูก (+4) 5−5+4 = 4! ✅</string>
+    <string name="l2_lesson7_step3_body">ลอง 5−2 ดันลูกบนขึ้น (−5) แล้วดันลูกล่างขึ้น 3 ลูก (+3) 5−5+3 = 3! 🎯</string>
+    <string name="l2_lesson7_step4_title">−4 = +1−5 (ช่วงกลาง)</string>
+    <string name="l2_lesson7_step4_body">ลอง 7−4 ลูกบน + ลูกล่าง 2 ลูก = 7 ดันลูกบนขึ้น (7→2) แล้วดันลูกล่างขึ้น 1 ลูก 7−5+1 = 3! 🌟</string>
+    <string name="l2_lesson7_step5_title">รูปแบบเพื่อนเล็ก −</string>
+    <string name="l2_lesson7_step5_body">−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5 ลูกบนสลับกับลูกล่าง! เลขสองตัวรวมกันได้ 5 เสมอ 🤝</string>
+    <string name="l2_lesson8_step1_title">เพื่อนใหญ่ +</string>
+    <string name="l2_lesson8_step1_body">เมื่อแกนหลักหน่วยเต็มและผลลัพธ์ถึง 10 ขึ้นไป ให้ทดลูกไปที่แกนหลักสิบ! สูตรเพื่อนใหญ่ (ส่วนเติมเต็ม 10): +N = +10 − (10−N) ดูแกนหลักสิบสว่างขึ้นนะ!</string>
+    <string name="l2_lesson8_step2_body">ลอง 9+1 หลักหน่วยเต็ม (ลูกบน+ลูกล่าง 4 ลูก=9) ทด: บวก 1 ที่หลักสิบ แล้วเอา 9 ออกจากหลักหน่วย 9+1=10 → หลักสิบ=1 หลักหน่วย=0! 🎉</string>
+    <string name="l2_lesson8_step3_body">ลอง 5+6 หลักหน่วยแสดง 5 (ลูกบน) ทด: บวก 1 ที่หลักสิบ แล้วเอา 4 ออกจากหลักหน่วย 5+6=11 → หลักสิบ=1 หลักหน่วย=1! ✨</string>
+    <string name="l2_lesson8_step4_body">ลอง 5+9 ลูกบนอยู่ข้างล่าง (=5) ทด: บวก 1 ที่หลักสิบ ลบ 1 ที่หลักหน่วย: ลูกบนยกขึ้น + ลูกล่าง 4 ลูกดันขึ้น 5+9=14 → หลักสิบ=1 หลักหน่วย=4! 🌟</string>
+    <string name="l2_lesson8_step5_title">รูปแบบเพื่อนใหญ่ +</string>
+    <string name="l2_lesson8_step5_body">+1=−9+10, +2=−8+10 … +9=−1+10 ทุกครั้ง: บวก 10 ที่หลักสิบ แล้วลบส่วนเติมเต็มออกจากหลักหน่วย เลขคู่กันรวมได้ 10! 🔢</string>
+    <string name="l2_lesson9_step1_title">เพื่อนใหญ่ −</string>
+    <string name="l2_lesson9_step1_body">เมื่อแกนหลักหน่วยมีลูกไม่พอให้ลบ ให้ยืมจากแกนหลักสิบ! สูตร: −N = −10 + (10−N)</string>
+    <string name="l2_lesson9_step2_body">ลอง 10−1 หลักหน่วยเป็น 0! ยืม: เอา 1 ออกจากหลักสิบ แล้วบวก 9 ที่หลักหน่วย 10−1=9 → หลักสิบ=0 หลักหน่วย=9! ✅</string>
+    <string name="l2_lesson9_step3_body">ลอง 10−2 ยืม: เอา 1 ออกจากหลักสิบ แล้วบวก 8 ที่หลักหน่วย 10−2=8! ✨</string>
+    <string name="l2_lesson9_step4_body">ลอง 11−6 หลักหน่วยมีลูกแค่ 1 ลูก เอา 6 ออกไม่ได้! ยืม: −1 จากหลักสิบ, +4 ที่หลักหน่วย 11−6=5! 🎯</string>
+    <string name="l2_lesson9_step5_title">รูปแบบเพื่อนใหญ่ −</string>
+    <string name="l2_lesson9_step5_body">−1=+9−10, −2=+8−10 … −9=+1−10 ทุกครั้ง: ยืม 10 จากหลักสิบ แล้วบวกส่วนเติมเต็มที่หลักหน่วย เลขคู่กันรวมได้ 10! 🔢</string>
+    <string name="l2_lesson10_step1_title">สูตรครอบครัว!</string>
+    <string name="l2_lesson10_step1_body">บางครั้งต้องทั้งสลับลูกบนและทดไปหลักสิบในขั้นเดียว สูตร \'ครอบครัว\' รวมเพื่อนเล็ก + เพื่อนใหญ่ไว้ด้วยกัน!</string>
+    <string name="l2_lesson10_step2_body">ลอง 7+6 ลูกบนอยู่ข้างล่าง (7=ลูกบน+ลูกล่าง 2 ลูก) ครอบครัว: ดันลูกบนขึ้น (7→2) ทดไปหลักสิบ แล้วบวกลูกล่าง 1 ลูก 7+6=13! ✨</string>
+    <string name="l2_lesson10_step3_body">ลอง 6+9 ดันลูกบนขึ้น (6→1) ทดไปหลักสิบ แล้วบวกลูกล่าง 4 ลูก 6+9=15! 🎯</string>
+    <string name="l2_lesson10_step4_body">ลอง 11−6 หลักสิบ=1 หลักหน่วย=1 ยืมจากหลักสิบ (−10) ดันลูกบนลง (+5) แล้วเอาลูกล่างออก 1 ลูก (−1) 11−6=5! 🌟</string>
+    <string name="l2_lesson10_step5_title">ครอบครัวครบแล้ว!</string>
+    <string name="l2_lesson10_step5_body">+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10 จบระดับ 2 แล้ว! 🎊</string>
+    <string name="l2_reference">ตารางสูตร</string>
+    <string name="l2_two_cols">2 คอลัมน์</string>
+    <string name="l2_phase_practice_desc">ทำโจทย์บนลูกคิด</string>
+    <string name="l2_phase_quiz_desc">ทดสอบฝีมือเลขและรับดาว!</string>
+    <string name="l2_start_zero">เริ่ม: 0</string>
+    <string name="l2_watch_animate">👀 ดูลูกคิดเคลื่อนไหวสิ!</string>
+    <string name="l2_quiz_what_answer">คำตอบคืออะไร? 🤔</string>
+    <string name="l2_quiz_perfect">เต็มคะแนน! เก่งเลขเป็นดาวเลย! 🌟</string>
+    <string name="l2_try_on_abacus">ลองทำบน\nลูกคิดเลย! →</string>
+    <string name="l2_solve_instruction">ทำบนลูกคิดก่อน แล้ว\nตรวจคำตอบ:\n%1$s</string>
+    <string name="l2_replay_arrow">ดูซ้ำ ▶</string>
+    <string name="l2_practice_done_msg">สุดยอด! ทำครบทั้ง %1$d โจทย์บนลูกคิดแล้ว!\nพร้อมทำแบบทดสอบหรือยัง?</string>
+    <string name="l2_group1_why">แกนหลักหน่วยมีลูกล่างได้แค่ 4 ลูก! ถ้าลูกล่างไม่มีที่ว่างแล้ว แต่คำตอบยังไม่ถึง 10 เราก็สลับกับลูกบนด้วยเวทมนตร์! 🪄</string>
+    <string name="l2_group1_when">เวลาจะบวก 1, 2, 3 หรือ 4 แต่ลูกล่างไม่มีที่ว่างแล้ว!</string>
+    <string name="l2_group1_how">ดันลูกล่างลง + ดันลูกบนลงพร้อมกัน สองขั้น = หนึ่งคำตอบ! 🤝</string>
+    <string name="l2_group2_why">เมื่อเลขเป็น 5–8 ลูกบนลงมาอยู่แล้ว ถ้าจะลบแต่ลูกล่างไม่พอ ก็เอาลูกบนขึ้น แล้วรับลูกล่างมาแทน! 🔄</string>
+    <string name="l2_group2_when">เวลาจะลบ 1, 2, 3 หรือ 4 แต่ลูกล่างมีไม่พอให้เอาออก!</string>
+    <string name="l2_group2_how">ดันลูกบนขึ้น + ดันลูกล่างขึ้นพร้อมกัน สองขั้น = หนึ่งคำตอบ! 🤝</string>
+    <string name="l2_group3_why">เมื่อบวกแล้วได้ 10 ขึ้นไป ต้องทดไปแกนหลักสิบที่อยู่ข้างๆ! เหมือนย้ายไปอยู่ย่านที่ใหญ่ขึ้น! 🏘️</string>
+    <string name="l2_group3_when">เมื่อบวกแล้วรวมได้ 10 ขึ้นไป ถึงเวลาทด!</string>
+    <string name="l2_group3_how">บวก 1 ลูกที่แกนหลักสิบ (+10) แล้วเอาลูกออกจากแกนหลักหน่วย สองอย่างนี้หักล้างกันจนได้คำตอบที่ถูก! 🔢</string>
+    <string name="l2_group4_why">เมื่อแกนหลักหน่วยว่างแต่ยังต้องลบ ให้ยืม 10 จากแกนหลักสิบข้างๆ! เหมือนยืมสีเทียนจากเพื่อน! 🖍️</string>
+    <string name="l2_group4_when">เมื่อแกนหลักหน่วยมีลูกไม่พอให้ลบ!</string>
+    <string name="l2_group4_how">เอา 1 ลูกออกจากแกนหลักสิบ (−10) แล้วบวกลูกที่แกนหลักหน่วย ยืมแล้วคืน ง่ายนิดเดียว! 🔢</string>
+    <string name="l2_group5_name">ครอบครัว + (−5+10)</string>
+    <string name="l2_group5_why">บางครั้งการบวกต้องทั้งสลับลูกบนและทดไปหลักสิบ พร้อมกันเลย! เพื่อนเล็กกับเพื่อนใหญ่จับมือกันเป็นครอบครัว! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group5_when">เวลาจะบวก 6, 7, 8 หรือ 9 และลูกบนลงมาอยู่แล้ว!</string>
+    <string name="l2_group5_how">3 ขั้นรวด: ลูกบนขึ้น (−5) → ทดไปหลักสิบ (+10) → บวกลูกล่างอีกนิดหน่อย ทำรวดเดียว! 🤝</string>
+    <string name="l2_group6_name">ครอบครัว − (+5−10)</string>
+    <string name="l2_group6_why">บางครั้งการลบต้องทั้งยืมจากหลักสิบและใช้ลูกบน พร้อมกันเลย! ทั้งครอบครัวช่วยกันทำงาน! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group6_when">เวลาจะลบ 6, 7, 8 หรือ 9 และลูกล่างมีไม่พอ!</string>
+    <string name="l2_group6_how">3 ขั้นรวด: ยืมจากหลักสิบ (−10) → ลูกบนลง (+5) → เอาลูกล่างออกอีกนิดหน่อย ช่วยกันทำ! 🤝</string>
+    <string name="l2_formulas_title">สูตร 📋</string>
+    <string name="l2_why">💡 ทำไม?</string>
+    <string name="l2_when">⏰ เมื่อไร?</string>
+    <string name="l2_how">🛠️ ทำยังไง?</string>
+    <string name="l2_phase_start">เริ่มที่ 0</string>
+    <string name="l2_phase_setup">ตั้งเลข %1$d</string>
+    <string name="l2_phase_now">ตอนนี้: %1$d</string>
+    <string name="l2_phase_apply">ใช้สูตร %1$s</string>
+    <string name="l2_phase_result">ผลลัพธ์: %1$d ✅</string>
+    <string name="l2_replay">▶ ดูซ้ำ</string>
+    <string name="l2_col_formula">สูตร</string>
+    <string name="l2_col_moves">การเลื่อนลูก</string>
+    <string name="l2_col_example">ตัวอย่าง</string>
+    <plurals name="l2_moves_g1">
+        <item quantity="other">เอาลูกล่าง %1$d ออก → ดันลูกบนลง</item>
+    </plurals>
+    <plurals name="l2_moves_g2">
+        <item quantity="other">ดันลูกบนขึ้น → เพิ่มลูกล่าง %1$d</item>
+    </plurals>
+    <plurals name="l2_moves_g3">
+        <item quantity="other">ทดไปหลักสิบ → เอา %1$d ออกจากหลักหน่วย</item>
+    </plurals>
+    <plurals name="l2_moves_g4">
+        <item quantity="other">ยืมจากหลักสิบ → บวก %1$d ที่หลักหน่วย</item>
+    </plurals>
+    <plurals name="l2_moves_g5">
+        <item quantity="other">ลูกบนขึ้น → ทด → เพิ่มลูกล่าง %1$d</item>
+    </plurals>
+    <plurals name="l2_moves_g6">
+        <item quantity="other">ยืม → ลูกบนลง → เอาลูกล่าง %1$d ออก</item>
+    </plurals>
     <!-- m1_settings -->
     <string name="background_music_volume">ระดับเสียงเพลงพื้นหลัง</string>
     <string name="change_voice_setting">เปลี่ยนการตั้งค่าเสียงพูด</string>

@@ -1758,4 +1758,185 @@
         <item quantity="one">Heaven bead down + push %1$d earth bead up</item>
         <item quantity="other">Heaven bead down + push %1$d earth beads up</item>
     </plurals>
+
+    <!-- Level 2: Add & Subtract (M14) -->
+    <string name="l2_chapter1_title">Earth Add</string>
+    <string name="l2_chapter2_title">Heaven Add</string>
+    <string name="l2_chapter3_title">Earth Subtract</string>
+    <string name="l2_chapter4_title">Heaven Subtract</string>
+    <string name="l2_chapter5_title">Meet Formulas</string>
+    <string name="l2_chapter6_title">Small Friend +</string>
+    <string name="l2_chapter7_title">Small Friend −</string>
+    <string name="l2_chapter8_title">Big Friend +</string>
+    <string name="l2_chapter9_title">Big Friend −</string>
+    <string name="l2_chapter10_title">Family</string>
+    <string name="l2_lesson1_step1_title">Adding on the Abacus!</string>
+    <string name="l2_lesson1_step1_body">When you ADD, push MORE beads UP toward the beam. Start at 2, add 1 → push 1 more bead up = 3! More beads = bigger number!</string>
+    <string name="l2_lesson1_step2_title">Start with 2</string>
+    <string name="l2_lesson1_step2_body">Push 2 earth beads up to the beam. Your abacus shows 2. This is your starting number!</string>
+    <string name="l2_lesson1_step3_title">Add 1 → Get 3</string>
+    <string name="l2_lesson1_step3_body">Watch the bead move! Start at 2, push 1 more earth bead UP → 3! 🎊</string>
+    <string name="l2_lesson1_step4_title" translatable="false">2 + 3 = 5</string>
+    <string name="l2_lesson1_step4_body">Start at 2, add 3 more beads. At 5 you swap to the heaven bead! ✨</string>
+    <string name="l2_lesson1_step5_title">Adding = Push UP!</string>
+    <string name="l2_lesson1_step5_body">Remember: adding always means pushing MORE beads toward the beam. Your number goes UP! Try: 1 + 3 = ? (push 3 more beads!)</string>
+    <string name="l2_lesson2_step1_title">Adding Past 5!</string>
+    <string name="l2_lesson2_step1_body">When your total reaches 5 or more, swap 5 earth beads for the HEAVEN bead! Push all earth DOWN + heaven DOWN = 5!</string>
+    <string name="l2_lesson2_step2_title" translatable="false">4 + 2 = 6</string>
+    <string name="l2_lesson2_step2_body">Watch! Start at 4, add 2 → swap to heaven bead + 1 earth = 6! ✨</string>
+    <string name="l2_lesson2_step3_title" translatable="false">3 + 4 = 7</string>
+    <string name="l2_lesson2_step3_body">Watch! Start at 3, add 4 → swap to heaven + 2 earth = 7! 🎯</string>
+    <string name="l2_lesson2_step4_title" translatable="false">5 + 3 = 8</string>
+    <string name="l2_lesson2_step4_body">Watch! Start at 5 (heaven), add 3 earth beads up → heaven + 3 earth = 8! 🎈</string>
+    <string name="l2_lesson2_step5_title" translatable="false">5 + 4 = 9</string>
+    <string name="l2_lesson2_step5_body">Watch! Start at 5 (heaven), add 4 earth beads → heaven + 4 earth = 9! 🏆</string>
+    <string name="l2_lesson3_step1_title">Subtracting on the Abacus!</string>
+    <string name="l2_lesson3_step1_body">When you SUBTRACT, push beads DOWN (away from the beam). Start at 4, subtract 2 → push 2 earth beads DOWN = 2!</string>
+    <string name="l2_lesson3_step2_title">Start at 4</string>
+    <string name="l2_lesson3_step2_body">Push 4 earth beads up to the beam. Your abacus shows 4! This is your starting number.</string>
+    <string name="l2_lesson3_step3_title" translatable="false">4 − 2 = 2</string>
+    <string name="l2_lesson3_step3_body">Watch! Start at 4, push 2 earth beads DOWN → 2! ✅</string>
+    <string name="l2_lesson3_step4_title" translatable="false">8 − 3 = 5</string>
+    <string name="l2_lesson3_step4_body">Watch! Start at 8 (heaven + 3 earth), push 3 earth beads DOWN → just heaven = 5! Heaven stays! 🌟</string>
+    <string name="l2_lesson3_step5_title">Subtracting = Push DOWN!</string>
+    <string name="l2_lesson3_step5_body">Only earth beads move — heaven bead NEVER moves in this lesson! Try: 9 − 4 = ? and 4 − 1 = ?</string>
+    <string name="l2_lesson4_step1_title">Remove the Heaven Bead!</string>
+    <string name="l2_lesson4_step1_body">When you subtract 5 or more, push the heaven bead AWAY from the beam (UP = −5). Let\'s practice!</string>
+    <string name="l2_lesson4_step2_title" translatable="false">5 − 5 = 0</string>
+    <string name="l2_lesson4_step2_body">Watch! Heaven bead is DOWN (= 5). Push it UP → all beads away = 0! Simple heaven removal! 🎯</string>
+    <string name="l2_lesson4_step3_title" translatable="false">7 − 5 = 2</string>
+    <string name="l2_lesson4_step3_body">Watch! Start at 7 (heaven + 2 earth). Push heaven UP (−5) → just 2 earth beads = 2! Earth stays! ✅</string>
+    <string name="l2_lesson4_step4_title" translatable="false">9 − 8 = 1</string>
+    <string name="l2_lesson4_step4_body">Watch! Start at 9 (heaven + 4 earth). Push 3 earth DOWN, then push heaven UP → 1 earth = 1! 🌟</string>
+    <string name="l2_lesson4_step5_title">You\'ve Got It!</string>
+    <string name="l2_lesson4_step5_body">Subtract 5 → push heaven UP. Subtract more → remove earth first, then heaven. No formula needed! 🚀</string>
+    <string name="l2_lesson5_step1_title">Mix It Up!</string>
+    <string name="l2_lesson5_step1_body">Real math mixes adding AND subtracting! You already know both separately. Now let\'s use them together! 🚀</string>
+    <string name="l2_lesson5_step2_title">Add First: 3 + 5 = 8</string>
+    <string name="l2_lesson5_step2_body">Watch! Start at 3, add 5 → swap to heaven + 3 earth = 8! 🎯</string>
+    <string name="l2_lesson5_step3_title">Then Subtract: 8 − 2 = 6</string>
+    <string name="l2_lesson5_step3_body">Watch! Start at 8, push 2 earth beads DOWN → heaven + 1 earth = 6! ✨</string>
+    <string name="l2_lesson5_step4_title">Chain: 5 − 2 = 3</string>
+    <string name="l2_lesson5_step4_body">Watch! Start at 5 (heaven), push heaven UP and 3 earth UP → 3! 🌟</string>
+    <string name="l2_lesson5_step5_title">You\'re a Math Master!</string>
+    <string name="l2_lesson5_step5_body">Adding pushes beads TOWARD the beam. Subtracting pushes beads AWAY from the beam. Mix them freely! 🎊 Level 2 Complete! 🏆</string>
+    <string name="l2_lesson6_step1_title">Small Friend +</string>
+    <string name="l2_lesson6_step1_body">When adding would overflow the earth beads but result stays ≤ 9, use the Small Friend formula: remove earth beads + push heaven DOWN.</string>
+    <string name="l2_lesson6_step2_title" translatable="false">+4 = −1+5</string>
+    <string name="l2_lesson6_step2_body">Try 1+4. Can\'t just add 4 earth (only 3 free!). Formula: remove 1 earth DOWN, push heaven DOWN. 1−1+5 = 5! ✨</string>
+    <string name="l2_lesson6_step3_title" translatable="false">+3 = −2+5</string>
+    <string name="l2_lesson6_step3_body">Try 2+3. Formula: remove 2 earth DOWN, push heaven DOWN. 2−2+5 = 5! Same net result!</string>
+    <string name="l2_lesson6_step4_title">+4 = −1+5 (mid-range)</string>
+    <string name="l2_lesson6_step4_body">Try 3+4. Formula: remove 1 earth DOWN, push heaven DOWN. 3−1+5 = 7! 🎯</string>
+    <string name="l2_lesson6_step5_title">Small Friend + Pattern</string>
+    <string name="l2_lesson6_step5_body">+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5. The two numbers always add to 5! 🤝 That\'s the 5-complement trick!</string>
+    <string name="l2_lesson7_step1_title">Small Friend −</string>
+    <string name="l2_lesson7_step1_body">If your number is 5, 6, 7 or 8, the heaven bead is already touching the beam! When you need to subtract but there aren\'t enough earth beads — push heaven UP and move earth beads UP to the beam instead! That\'s the Small Friend swap! 🤝</string>
+    <string name="l2_lesson7_step2_title" translatable="false">−1 = +4−5</string>
+    <string name="l2_lesson7_step2_body">Try 5−1. Heaven is DOWN. Can\'t remove 1 earth! Formula: push heaven UP (−5), add 4 earth UP (+4). 5−5+4 = 4! ✅</string>
+    <string name="l2_lesson7_step3_title" translatable="false">−2 = +3−5</string>
+    <string name="l2_lesson7_step3_body">Try 5−2. Push heaven UP (−5), add 3 earth UP (+3). 5−5+3 = 3! 🎯</string>
+    <string name="l2_lesson7_step4_title">−4 = +1−5 (mid-range)</string>
+    <string name="l2_lesson7_step4_body">Try 7−4. Heaven + 2 earth = 7. Push heaven UP (7→2), add 1 earth UP. 7−5+1 = 3! 🌟</string>
+    <string name="l2_lesson7_step5_title">Small Friend − Pattern</string>
+    <string name="l2_lesson7_step5_body">−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5. Heaven bead swaps with earth beads! The two numbers always add to 5. 🤝</string>
+    <string name="l2_lesson8_step1_title">Big Friend +</string>
+    <string name="l2_lesson8_step1_body">When ones column is full and result goes to 10+, carry a bead to the TENS column! Formula: +N = +10 − (10−N). Watch the tens rod light up!</string>
+    <string name="l2_lesson8_step2_title" translatable="false">+1 = −9+10</string>
+    <string name="l2_lesson8_step2_body">Try 9+1. Ones is full (heaven+4earth=9). Carry: add 1 to TENS, remove 9 from ones. 9+1=10 → tens=1, ones=0! 🎉</string>
+    <string name="l2_lesson8_step3_title" translatable="false">+6 = −4+10</string>
+    <string name="l2_lesson8_step3_body">Try 5+6. Ones shows 5 (heaven). Carry: add 1 to TENS, remove 4 from ones. 5+6=11 → tens=1, ones=1! ✨</string>
+    <string name="l2_lesson8_step4_title" translatable="false">+9 = −1+10</string>
+    <string name="l2_lesson8_step4_body">Try 5+9. Heaven down (=5). Carry: add 1 to TENS, take 1 from ones: heaven UP + 4 earth UP. 5+9=14 → tens=1, ones=4! 🌟</string>
+    <string name="l2_lesson8_step5_title">Big Friend + Pattern</string>
+    <string name="l2_lesson8_step5_body">+1=−9+10, +2=−8+10 … +9=−1+10. Always: add 10 to tens, subtract the complement from ones. Pairs add to 10! 🔢</string>
+    <string name="l2_lesson9_step1_title">Big Friend −</string>
+    <string name="l2_lesson9_step1_body">When ones column doesn\'t have enough beads to subtract, BORROW from the tens column! Formula: −N = −10 + (10−N).</string>
+    <string name="l2_lesson9_step2_title" translatable="false">−1 = +9−10</string>
+    <string name="l2_lesson9_step2_body">Try 10−1. Ones is 0! Borrow: remove 1 from TENS, add 9 to ones. 10−1=9 → tens=0, ones=9! ✅</string>
+    <string name="l2_lesson9_step3_title" translatable="false">−2 = +8−10</string>
+    <string name="l2_lesson9_step3_body">Try 10−2. Borrow: remove 1 from TENS, add 8 to ones. 10−2=8! ✨</string>
+    <string name="l2_lesson9_step4_title" translatable="false">−6 = +4−10</string>
+    <string name="l2_lesson9_step4_body">Try 11−6. Ones has only 1 bead — can\'t remove 6! Borrow: −1 from TENS, +4 to ones. 11−6=5! 🎯</string>
+    <string name="l2_lesson9_step5_title">Big Friend − Pattern</string>
+    <string name="l2_lesson9_step5_body">−1=+9−10, −2=+8−10 … −9=+1−10. Always: borrow 10 from tens, add the complement to ones. Pairs add to 10! 🔢</string>
+    <string name="l2_lesson10_step1_title">Family Formulas!</string>
+    <string name="l2_lesson10_step1_body">Sometimes you need BOTH a heaven-bead swap AND a tens carry in one step. This \'Family\' formula combines Small Friend + Big Friend together!</string>
+    <string name="l2_lesson10_step2_title" translatable="false">+6 = +1−5+10</string>
+    <string name="l2_lesson10_step2_body">Try 7+6. Heaven is down (7=heaven+2earth). Family: heaven UP (7→2), carry to tens, add 1 earth. 7+6=13! ✨</string>
+    <string name="l2_lesson10_step3_title" translatable="false">+9 = +4−5+10</string>
+    <string name="l2_lesson10_step3_body">Try 6+9. Heaven UP (6→1), carry to tens, add 4 earth. 6+9=15! 🎯</string>
+    <string name="l2_lesson10_step4_title" translatable="false">−6 = −1+5−10</string>
+    <string name="l2_lesson10_step4_body">Try 11−6. Tens=1, ones=1. Borrow from tens (−10), push heaven DOWN (+5), remove 1 earth (−1). 11−6=5! 🌟</string>
+    <string name="l2_lesson10_step5_title">Family Complete!</string>
+    <string name="l2_lesson10_step5_body">+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10. Level 2 done! 🎊</string>
+    <string name="l2_reference">Reference</string>
+    <string name="l2_two_cols">2 cols</string>
+    <string name="l2_phase_practice_desc">Solve equations on your abacus</string>
+    <string name="l2_phase_quiz_desc">Test your math skills &amp; earn stars!</string>
+    <string name="l2_start_zero">Start: 0</string>
+    <string name="l2_watch_animate">👀 Watch the abacus animate!</string>
+    <string name="l2_quiz_what_answer">What\'s the answer? 🤔</string>
+    <string name="l2_quiz_perfect">Perfect Score! You\'re a Math Star! 🌟</string>
+    <string name="l2_try_on_abacus">Try it on your\nabacus! →</string>
+    <string name="l2_solve_instruction">Solve it on your abacus, then\ncheck your answer:\n%1$s</string>
+    <string name="l2_replay_arrow">Replay ▶</string>
+    <string name="l2_practice_done_msg">Amazing! You solved all %1$d equations on the abacus!\nReady for the quiz?</string>
+    <string name="l2_group1_why">The ones rod can only hold 4 earth beads! When there\'s no room for more earth beads but the answer is still below 10, we do a magic swap with the heaven bead! 🪄</string>
+    <string name="l2_group1_when">When you want to add 1, 2, 3, or 4 — but there\'s no more space for earth beads!</string>
+    <string name="l2_group1_how">Push earth beads DOWN + push heaven bead DOWN at the same time. Two moves = one answer! 🤝</string>
+    <string name="l2_group2_why">When your number is 5–8, the heaven bead is already down. Need to subtract but not enough earth beads? Swap the heaven bead back and get earth beads in return! 🔄</string>
+    <string name="l2_group2_when">When you want to subtract 1, 2, 3, or 4 — but not enough earth beads to remove!</string>
+    <string name="l2_group2_how">Push heaven bead UP + add earth beads UP at the same time. Two moves = one answer! 🤝</string>
+    <string name="l2_group3_why">When adding makes your total 10 or bigger, you need to carry over to the TENS rod next door! Think of moving to a bigger neighborhood! 🏘️</string>
+    <string name="l2_group3_when">When adding would make your total 10 or more — time to carry!</string>
+    <string name="l2_group3_how">Add 1 bead to the TENS rod (+10), then remove beads from ONES rod. They balance out to give the right answer! 🔢</string>
+    <string name="l2_group4_why">When the ONES rod is empty but you still need to subtract, borrow 10 from the TENS rod next door! Like borrowing a crayon from a friend! 🖍️</string>
+    <string name="l2_group4_when">When the ones rod doesn\'t have enough beads to subtract!</string>
+    <string name="l2_group4_how">Remove 1 bead from TENS rod (−10), then add beads to ONES rod. Borrow and give back — easy! 🔢</string>
+    <string name="l2_group5_name">Family + (−5+10)</string>
+    <string name="l2_group5_why">Sometimes adding needs BOTH a heaven swap AND a carry to tens — all at once! Small Friend and Big Friend team up as a family! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group5_when">When adding 6, 7, 8, or 9 — and the heaven bead is already DOWN!</string>
+    <string name="l2_group5_how">3 quick moves: heaven UP (−5) → carry to TENS (+10) → add a few earth beads. All at once! 🤝</string>
+    <string name="l2_group6_name">Family − (+5−10)</string>
+    <string name="l2_group6_why">Sometimes subtracting needs both a borrow from tens AND a heaven bead — all at once! The whole family works together! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group6_when">When subtracting 6, 7, 8, or 9 — and there aren\'t enough earth beads!</string>
+    <string name="l2_group6_how">3 quick moves: borrow from TENS (−10) → heaven bead DOWN (+5) → remove a few earth beads. Team effort! 🤝</string>
+    <string name="l2_formulas_title">Formulas 📋</string>
+    <string name="l2_why">💡 Why?</string>
+    <string name="l2_when">⏰ When?</string>
+    <string name="l2_how">🛠️ How?</string>
+    <string name="l2_phase_start">Start at 0</string>
+    <string name="l2_phase_setup">Setting up %1$d</string>
+    <string name="l2_phase_now">Now: %1$d</string>
+    <string name="l2_phase_apply">Applying %1$s</string>
+    <string name="l2_phase_result">Result: %1$d ✅</string>
+    <string name="l2_replay">▶ Replay</string>
+    <string name="l2_col_formula">Formula</string>
+    <string name="l2_col_moves">Bead Moves</string>
+    <string name="l2_col_example">Example</string>
+    <plurals name="l2_moves_g1">
+        <item quantity="one">Remove %1$d earth → push heaven down</item>
+        <item quantity="other">Remove %1$d earth → push heaven down</item>
+    </plurals>
+    <plurals name="l2_moves_g2">
+        <item quantity="one">Push heaven up → add %1$d earth</item>
+        <item quantity="other">Push heaven up → add %1$d earth</item>
+    </plurals>
+    <plurals name="l2_moves_g3">
+        <item quantity="one">Carry to tens → remove %1$d from ones</item>
+        <item quantity="other">Carry to tens → remove %1$d from ones</item>
+    </plurals>
+    <plurals name="l2_moves_g4">
+        <item quantity="one">Borrow from tens → add %1$d to ones</item>
+        <item quantity="other">Borrow from tens → add %1$d to ones</item>
+    </plurals>
+    <plurals name="l2_moves_g5">
+        <item quantity="one">Heaven up → carry → add %1$d earth</item>
+        <item quantity="other">Heaven up → carry → add %1$d earth</item>
+    </plurals>
+    <plurals name="l2_moves_g6">
+        <item quantity="one">Borrow → heaven down → remove %1$d earth</item>
+        <item quantity="other">Borrow → heaven down → remove %1$d earth</item>
+    </plurals>
 </resources>

@@ -182,6 +182,169 @@
         <item quantity="many">Boule du ciel en bas + pousse %1$d boules de la terre en haut</item>
         <item quantity="other">Boule du ciel en bas + pousse %1$d boules de la terre en haut</item>
     </plurals>
+    <!-- m14_level2 -->
+    <string name="l2_chapter1_title">Ajouter : terre</string>
+    <string name="l2_chapter2_title">Ajouter : ciel</string>
+    <string name="l2_chapter3_title">Soustraire : terre</string>
+    <string name="l2_chapter4_title">Soustraire : ciel</string>
+    <string name="l2_chapter5_title">Les formules</string>
+    <string name="l2_chapter6_title">Petit ami +</string>
+    <string name="l2_chapter7_title">Petit ami −</string>
+    <string name="l2_chapter8_title">Grand ami +</string>
+    <string name="l2_chapter9_title">Grand ami −</string>
+    <string name="l2_chapter10_title">Famille</string>
+    <string name="l2_lesson1_step1_title">Ajouter sur le boulier !</string>
+    <string name="l2_lesson1_step1_body">Quand tu AJOUTES, pousse PLUS de boules vers le HAUT, jusqu\'à la barre. Tu pars de 2, tu ajoutes 1 → tu pousses 1 boule de plus vers le haut = 3 ! Plus de boules = un plus grand nombre !</string>
+    <string name="l2_lesson1_step2_title">Pars de 2</string>
+    <string name="l2_lesson1_step2_body">Pousse 2 boules de la terre vers le haut jusqu\'à la barre. Ton boulier montre 2. C\'est ton nombre de départ !</string>
+    <string name="l2_lesson1_step3_title">Ajoute 1 → Ça fait 3</string>
+    <string name="l2_lesson1_step3_body">Regarde la boule bouger ! Tu pars de 2, tu pousses 1 boule de la terre de plus vers le HAUT → 3 ! 🎊</string>
+    <string name="l2_lesson1_step4_body">Tu pars de 2, tu ajoutes 3 boules de plus. Arrivé à 5, tu passes à la boule du ciel ! ✨</string>
+    <string name="l2_lesson1_step5_title">Ajouter = pousser vers le HAUT !</string>
+    <string name="l2_lesson1_step5_body">Souviens-toi : ajouter, c\'est toujours pousser PLUS de boules vers la barre. Ton nombre MONTE ! Essaie : 1 + 3 = ? (pousse 3 boules de plus !)</string>
+    <string name="l2_lesson2_step1_title">Ajouter au-delà de 5 !</string>
+    <string name="l2_lesson2_step1_body">Quand ton total atteint 5 ou plus, remplace 5 boules de la terre par la boule du CIEL ! Pousse toutes les boules de la terre vers le BAS + la boule du ciel vers le BAS = 5 !</string>
+    <string name="l2_lesson2_step2_body">Regarde ! Tu pars de 4, tu ajoutes 2 → tu passes à la boule du ciel + 1 de la terre = 6 ! ✨</string>
+    <string name="l2_lesson2_step3_body">Regarde ! Tu pars de 3, tu ajoutes 4 → tu passes au ciel + 2 de la terre = 7 ! 🎯</string>
+    <string name="l2_lesson2_step4_body">Regarde ! Tu pars de 5 (ciel), tu montes 3 boules de la terre → ciel + 3 de la terre = 8 ! 🎈</string>
+    <string name="l2_lesson2_step5_body">Regarde ! Tu pars de 5 (ciel), tu ajoutes 4 boules de la terre → ciel + 4 de la terre = 9 ! 🏆</string>
+    <string name="l2_lesson3_step1_title">Soustraire sur le boulier !</string>
+    <string name="l2_lesson3_step1_body">Quand tu SOUSTRAIS, pousse les boules vers le BAS (loin de la barre). Tu pars de 4, tu soustrais 2 → tu pousses 2 boules de la terre vers le BAS = 2 !</string>
+    <string name="l2_lesson3_step2_title">Pars de 4</string>
+    <string name="l2_lesson3_step2_body">Pousse 4 boules de la terre vers le haut jusqu\'à la barre. Ton boulier montre 4 ! C\'est ton nombre de départ.</string>
+    <string name="l2_lesson3_step3_body">Regarde ! Tu pars de 4, tu pousses 2 boules de la terre vers le BAS → 2 ! ✅</string>
+    <string name="l2_lesson3_step4_body">Regarde ! Tu pars de 8 (ciel + 3 de la terre), tu pousses 3 boules de la terre vers le BAS → il reste juste le ciel = 5 ! Le ciel ne bouge pas ! 🌟</string>
+    <string name="l2_lesson3_step5_title">Soustraire = pousser vers le BAS !</string>
+    <string name="l2_lesson3_step5_body">Seules les boules de la terre bougent — la boule du ciel NE BOUGE JAMAIS dans cette leçon ! Essaie : 9 − 4 = ? et 4 − 1 = ?</string>
+    <string name="l2_lesson4_step1_title">Retire la boule du ciel !</string>
+    <string name="l2_lesson4_step1_body">Quand tu soustrais 5 ou plus, éloigne la boule du ciel de la barre (HAUT = −5). On s\'entraîne !</string>
+    <string name="l2_lesson4_step2_body">Regarde ! La boule du ciel est en BAS (= 5). Pousse-la vers le HAUT → toutes les boules sont loin de la barre = 0 ! On retire simplement le ciel ! 🎯</string>
+    <string name="l2_lesson4_step3_body">Regarde ! Tu pars de 7 (ciel + 2 de la terre). Pousse le ciel vers le HAUT (−5) → il reste 2 boules de la terre = 2 ! La terre ne bouge pas ! ✅</string>
+    <string name="l2_lesson4_step4_body">Regarde ! Tu pars de 9 (ciel + 4 de la terre). Pousse 3 boules de la terre vers le BAS, puis le ciel vers le HAUT → 1 boule de la terre = 1 ! 🌟</string>
+    <string name="l2_lesson4_step5_title">Tu as compris !</string>
+    <string name="l2_lesson4_step5_body">Soustraire 5 → pousse le ciel vers le HAUT. Soustraire plus → retire d\'abord la terre, puis le ciel. Pas besoin de formule ! 🚀</string>
+    <string name="l2_lesson5_step1_title">On mélange tout !</string>
+    <string name="l2_lesson5_step1_body">En vrai, les maths mélangent additions ET soustractions ! Tu connais déjà les deux séparément. Maintenant, on les utilise ensemble ! 🚀</string>
+    <string name="l2_lesson5_step2_title">D\'abord ajouter : 3 + 5 = 8</string>
+    <string name="l2_lesson5_step2_body">Regarde ! Tu pars de 3, tu ajoutes 5 → tu passes au ciel + 3 de la terre = 8 ! 🎯</string>
+    <string name="l2_lesson5_step3_title">Puis soustraire : 8 − 2 = 6</string>
+    <string name="l2_lesson5_step3_body">Regarde ! Tu pars de 8, tu pousses 2 boules de la terre vers le BAS → ciel + 1 de la terre = 6 ! ✨</string>
+    <string name="l2_lesson5_step4_title">Enchaînement : 5 − 2 = 3</string>
+    <string name="l2_lesson5_step4_body">Regarde ! Tu pars de 5 (ciel), pousse le ciel vers le HAUT et 3 boules de la terre vers le HAUT → 3 ! 🌟</string>
+    <string name="l2_lesson5_step5_title">Tu es un as des maths !</string>
+    <string name="l2_lesson5_step5_body">Ajouter pousse les boules VERS la barre. Soustraire pousse les boules LOIN de la barre. Mélange-les comme tu veux ! 🎊 Niveau 2 terminé ! 🏆</string>
+    <string name="l2_lesson6_step1_title">Petit ami +</string>
+    <string name="l2_lesson6_step1_body">Quand ajouter dépasse les boules de la terre mais que le résultat reste ≤ 9, utilise la formule du Petit ami : retire des boules de la terre + pousse le ciel vers le BAS.</string>
+    <string name="l2_lesson6_step2_body">Essaie 1+4. Impossible d\'ajouter 4 boules de la terre d\'un coup (seulement 3 de libres !). Formule : retire 1 boule de la terre vers le BAS, pousse le ciel vers le BAS. 1−1+5 = 5 ! ✨</string>
+    <string name="l2_lesson6_step3_body">Essaie 2+3. Formule : retire 2 boules de la terre vers le BAS, pousse le ciel vers le BAS. 2−2+5 = 5 ! Le résultat est le même !</string>
+    <string name="l2_lesson6_step4_title">+4 = −1+5 (au milieu)</string>
+    <string name="l2_lesson6_step4_body">Essaie 3+4. Formule : retire 1 boule de la terre vers le BAS, pousse le ciel vers le BAS. 3−1+5 = 7 ! 🎯</string>
+    <string name="l2_lesson6_step5_title">Schéma du Petit ami +</string>
+    <string name="l2_lesson6_step5_body">+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5. Les deux nombres font toujours 5 en tout ! 🤝 C\'est l\'astuce du complément à 5 !</string>
+    <string name="l2_lesson7_step1_title">Petit ami −</string>
+    <string name="l2_lesson7_step1_body">Si ton nombre est 5, 6, 7 ou 8, la boule du ciel touche déjà la barre ! Quand tu dois soustraire mais qu\'il n\'y a pas assez de boules de la terre — pousse le ciel vers le HAUT et monte des boules de la terre jusqu\'à la barre à la place ! C\'est l\'échange du Petit ami ! 🤝</string>
+    <string name="l2_lesson7_step2_body">Essaie 5−1. Le ciel est en BAS. Impossible de retirer 1 boule de la terre ! Formule : pousse le ciel vers le HAUT (−5), monte 4 boules de la terre (+4). 5−5+4 = 4 ! ✅</string>
+    <string name="l2_lesson7_step3_body">Essaie 5−2. Pousse le ciel vers le HAUT (−5), monte 3 boules de la terre (+3). 5−5+3 = 3 ! 🎯</string>
+    <string name="l2_lesson7_step4_title">−4 = +1−5 (au milieu)</string>
+    <string name="l2_lesson7_step4_body">Essaie 7−4. Ciel + 2 de la terre = 7. Pousse le ciel vers le HAUT (7→2), monte 1 boule de la terre. 7−5+1 = 3 ! 🌟</string>
+    <string name="l2_lesson7_step5_title">Schéma du Petit ami −</string>
+    <string name="l2_lesson7_step5_body">−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5. La boule du ciel s\'échange avec des boules de la terre ! Les deux nombres font toujours 5 en tout. 🤝</string>
+    <string name="l2_lesson8_step1_title">Grand ami +</string>
+    <string name="l2_lesson8_step1_body">Quand la tige des unités est pleine et que le résultat atteint 10 ou plus, reporte une boule sur la tige des DIZAINES ! Formule : +N = +10 − (10−N). Regarde la tige des dizaines s\'allumer !</string>
+    <string name="l2_lesson8_step2_body">Essaie 9+1. Les unités sont pleines (ciel+4 terre=9). Retenue : ajoute 1 aux DIZAINES, retire 9 des unités. 9+1=10 → dizaines=1, unités=0 ! 🎉</string>
+    <string name="l2_lesson8_step3_body">Essaie 5+6. Les unités montrent 5 (ciel). Retenue : ajoute 1 aux DIZAINES, retire 4 des unités. 5+6=11 → dizaines=1, unités=1 ! ✨</string>
+    <string name="l2_lesson8_step4_body">Essaie 5+9. Ciel en bas (=5). Retenue : ajoute 1 aux DIZAINES, enlève 1 aux unités : ciel en HAUT + 4 de la terre en HAUT. 5+9=14 → dizaines=1, unités=4 ! 🌟</string>
+    <string name="l2_lesson8_step5_title">Schéma du Grand ami +</string>
+    <string name="l2_lesson8_step5_body">+1=−9+10, +2=−8+10 … +9=−1+10. Toujours : ajoute 10 aux dizaines, retire le complément des unités. Les paires font 10 en tout ! 🔢</string>
+    <string name="l2_lesson9_step1_title">Grand ami −</string>
+    <string name="l2_lesson9_step1_body">Quand la tige des unités n\'a pas assez de boules pour soustraire, EMPRUNTE aux dizaines ! Formule : −N = −10 + (10−N).</string>
+    <string name="l2_lesson9_step2_body">Essaie 10−1. Les unités sont à 0 ! Emprunte : retire 1 aux DIZAINES, ajoute 9 aux unités. 10−1=9 → dizaines=0, unités=9 ! ✅</string>
+    <string name="l2_lesson9_step3_body">Essaie 10−2. Emprunte : retire 1 aux DIZAINES, ajoute 8 aux unités. 10−2=8 ! ✨</string>
+    <string name="l2_lesson9_step4_body">Essaie 11−6. Les unités n\'ont que 1 boule — impossible d\'en retirer 6 ! Emprunte : −1 aux DIZAINES, +4 aux unités. 11−6=5 ! 🎯</string>
+    <string name="l2_lesson9_step5_title">Schéma du Grand ami −</string>
+    <string name="l2_lesson9_step5_body">−1=+9−10, −2=+8−10 … −9=+1−10. Toujours : emprunte 10 aux dizaines, ajoute le complément aux unités. Les paires font 10 en tout ! 🔢</string>
+    <string name="l2_lesson10_step1_title">Les formules Famille !</string>
+    <string name="l2_lesson10_step1_body">Parfois, il faut À LA FOIS un échange avec la boule du ciel ET une retenue aux dizaines en un seul geste. Cette formule « Famille » réunit le Petit ami + le Grand ami !</string>
+    <string name="l2_lesson10_step2_body">Essaie 7+6. Le ciel est en bas (7=ciel+2 terre). Famille : ciel vers le HAUT (7→2), retenue aux dizaines, ajoute 1 boule de la terre. 7+6=13 ! ✨</string>
+    <string name="l2_lesson10_step3_body">Essaie 6+9. Ciel vers le HAUT (6→1), retenue aux dizaines, ajoute 4 boules de la terre. 6+9=15 ! 🎯</string>
+    <string name="l2_lesson10_step4_body">Essaie 11−6. Dizaines=1, unités=1. Emprunte aux dizaines (−10), pousse le ciel vers le BAS (+5), retire 1 boule de la terre (−1). 11−6=5 ! 🌟</string>
+    <string name="l2_lesson10_step5_title">Famille terminée !</string>
+    <string name="l2_lesson10_step5_body">+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10. Niveau 2 terminé ! 🎊</string>
+    <string name="l2_reference">Référence</string>
+    <string name="l2_two_cols">2 col.</string>
+    <string name="l2_phase_practice_desc">Résous les calculs sur ton boulier</string>
+    <string name="l2_phase_quiz_desc">Teste-toi en maths et gagne des étoiles !</string>
+    <string name="l2_start_zero">Départ : 0</string>
+    <string name="l2_watch_animate">👀 Regarde le boulier s\'animer !</string>
+    <string name="l2_quiz_what_answer">Quelle est la réponse ? 🤔</string>
+    <string name="l2_quiz_perfect">Score parfait ! Tu es une star des maths ! 🌟</string>
+    <string name="l2_try_on_abacus">Essaie sur ton\nboulier ! →</string>
+    <string name="l2_solve_instruction">Résous-le sur ton boulier, puis\nvérifie ta réponse :\n%1$s</string>
+    <string name="l2_replay_arrow">Revoir ▶</string>
+    <string name="l2_practice_done_msg">Génial ! Tu as résolu les %1$d calculs sur le boulier !\nOn passe au quiz ?</string>
+    <string name="l2_group1_why">La tige des unités ne peut tenir que 4 boules de la terre ! Quand il n\'y a plus de place pour d\'autres boules de la terre mais que la réponse reste sous 10, on fait un échange magique avec la boule du ciel ! 🪄</string>
+    <string name="l2_group1_when">Quand tu veux ajouter 1, 2, 3 ou 4 — mais qu\'il n\'y a plus de place pour les boules de la terre !</string>
+    <string name="l2_group1_how">Pousse des boules de la terre vers le BAS + pousse la boule du ciel vers le BAS en même temps. Deux gestes = une réponse ! 🤝</string>
+    <string name="l2_group2_why">Quand ton nombre est entre 5 et 8, la boule du ciel est déjà en bas. Tu dois soustraire mais il n\'y a pas assez de boules de la terre ? Remets la boule du ciel en place et récupère des boules de la terre en échange ! 🔄</string>
+    <string name="l2_group2_when">Quand tu veux soustraire 1, 2, 3 ou 4 — mais qu\'il n\'y a pas assez de boules de la terre à retirer !</string>
+    <string name="l2_group2_how">Pousse la boule du ciel vers le HAUT + monte des boules de la terre en même temps. Deux gestes = une réponse ! 🤝</string>
+    <string name="l2_group3_why">Quand une addition te fait arriver à 10 ou plus, tu dois reporter sur la tige des DIZAINES juste à côté ! C\'est comme déménager dans un plus grand quartier ! 🏘️</string>
+    <string name="l2_group3_when">Quand ton total va atteindre 10 ou plus en ajoutant — c\'est l\'heure de la retenue !</string>
+    <string name="l2_group3_how">Ajoute 1 boule sur la tige des DIZAINES (+10), puis retire des boules de la tige des UNITÉS. Les deux s\'équilibrent pour donner la bonne réponse ! 🔢</string>
+    <string name="l2_group4_why">Quand la tige des UNITÉS est vide mais que tu dois encore soustraire, emprunte 10 à la tige des DIZAINES juste à côté ! Comme emprunter un crayon de couleur à un ami ! 🖍️</string>
+    <string name="l2_group4_when">Quand la tige des unités n\'a pas assez de boules pour soustraire !</string>
+    <string name="l2_group4_how">Retire 1 boule de la tige des DIZAINES (−10), puis ajoute des boules sur la tige des UNITÉS. Tu empruntes, tu rends — facile ! 🔢</string>
+    <string name="l2_group5_name">Famille + (−5+10)</string>
+    <string name="l2_group5_why">Parfois, ajouter demande À LA FOIS un échange avec le ciel ET une retenue aux dizaines — tout d\'un coup ! Le Petit ami et le Grand ami font équipe en famille ! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group5_when">Quand tu ajoutes 6, 7, 8 ou 9 — et que la boule du ciel est déjà en BAS !</string>
+    <string name="l2_group5_how">3 gestes rapides : ciel vers le HAUT (−5) → retenue aux DIZAINES (+10) → ajoute quelques boules de la terre. Tout d\'un coup ! 🤝</string>
+    <string name="l2_group6_name">Famille − (+5−10)</string>
+    <string name="l2_group6_why">Parfois, soustraire demande à la fois un emprunt aux dizaines ET la boule du ciel — tout d\'un coup ! Toute la famille travaille ensemble ! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group6_when">Quand tu soustrais 6, 7, 8 ou 9 — et qu\'il n\'y a pas assez de boules de la terre !</string>
+    <string name="l2_group6_how">3 gestes rapides : emprunte aux DIZAINES (−10) → boule du ciel vers le BAS (+5) → retire quelques boules de la terre. Travail d\'équipe ! 🤝</string>
+    <string name="l2_formulas_title">Formules 📋</string>
+    <string name="l2_why">💡 Pourquoi ?</string>
+    <string name="l2_when">⏰ Quand ?</string>
+    <string name="l2_how">🛠️ Comment ?</string>
+    <string name="l2_phase_start">Départ à 0</string>
+    <string name="l2_phase_setup">On prépare %1$d</string>
+    <string name="l2_phase_now">Maintenant : %1$d</string>
+    <string name="l2_phase_apply">On applique %1$s</string>
+    <string name="l2_phase_result">Résultat : %1$d ✅</string>
+    <string name="l2_replay">▶ Revoir</string>
+    <string name="l2_col_formula">Formule</string>
+    <string name="l2_col_moves">Mouvements</string>
+    <string name="l2_col_example">Exemple</string>
+    <plurals name="l2_moves_g1">
+        <item quantity="one">Retire %1$d terre → ciel vers le bas</item>
+        <item quantity="many">Retire %1$d terre → ciel vers le bas</item>
+        <item quantity="other">Retire %1$d terre → ciel vers le bas</item>
+    </plurals>
+    <plurals name="l2_moves_g2">
+        <item quantity="one">Ciel vers le haut → ajoute %1$d terre</item>
+        <item quantity="many">Ciel vers le haut → ajoute %1$d terre</item>
+        <item quantity="other">Ciel vers le haut → ajoute %1$d terre</item>
+    </plurals>
+    <plurals name="l2_moves_g3">
+        <item quantity="one">Retenue aux dizaines → retire %1$d des unités</item>
+        <item quantity="many">Retenue aux dizaines → retire %1$d des unités</item>
+        <item quantity="other">Retenue aux dizaines → retire %1$d des unités</item>
+    </plurals>
+    <plurals name="l2_moves_g4">
+        <item quantity="one">Emprunt aux dizaines → ajoute %1$d aux unités</item>
+        <item quantity="many">Emprunt aux dizaines → ajoute %1$d aux unités</item>
+        <item quantity="other">Emprunt aux dizaines → ajoute %1$d aux unités</item>
+    </plurals>
+    <plurals name="l2_moves_g5">
+        <item quantity="one">Ciel en haut → retenue → ajoute %1$d terre</item>
+        <item quantity="many">Ciel en haut → retenue → ajoute %1$d terre</item>
+        <item quantity="other">Ciel en haut → retenue → ajoute %1$d terre</item>
+    </plurals>
+    <plurals name="l2_moves_g6">
+        <item quantity="one">Emprunt → ciel en bas → retire %1$d terre</item>
+        <item quantity="many">Emprunt → ciel en bas → retire %1$d terre</item>
+        <item quantity="other">Emprunt → ciel en bas → retire %1$d terre</item>
+    </plurals>
     <!-- m1_settings -->
     <string name="background_music_volume">Volume de la musique de fond</string>
     <string name="change_voice_setting">Modifier la voix</string>

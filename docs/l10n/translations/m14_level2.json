@@ -1,0 +1,1400 @@
+{
+ "l2_chapter1_title": {
+  "fr": "Ajouter : terre",
+  "es": "Sumar tierra",
+  "pt": "Soma da Terra",
+  "tr": "Yer Toplama",
+  "ru": "Сложение земных",
+  "ja": "下の珠のたし算",
+  "th": "บวกลูกล่าง"
+ },
+ "l2_chapter2_title": {
+  "fr": "Ajouter : ciel",
+  "es": "Sumar cielo",
+  "pt": "Soma do Céu",
+  "tr": "Gök Toplama",
+  "ru": "Сложение небесной",
+  "ja": "上の珠のたし算",
+  "th": "บวกลูกบน"
+ },
+ "l2_chapter3_title": {
+  "fr": "Soustraire : terre",
+  "es": "Restar tierra",
+  "pt": "Subtração da Terra",
+  "tr": "Yer Çıkarma",
+  "ru": "Вычитание земных",
+  "ja": "下の珠のひき算",
+  "th": "ลบลูกล่าง"
+ },
+ "l2_chapter4_title": {
+  "fr": "Soustraire : ciel",
+  "es": "Restar cielo",
+  "pt": "Subtração do Céu",
+  "tr": "Gök Çıkarma",
+  "ru": "Вычитание небесной",
+  "ja": "上の珠のひき算",
+  "th": "ลบลูกบน"
+ },
+ "l2_chapter5_title": {
+  "fr": "Les formules",
+  "es": "Conoce las fórmulas",
+  "pt": "Conheça as Fórmulas",
+  "tr": "Formüllerle Tanış",
+  "ru": "Знакомство с формулами",
+  "ja": "公式と出会おう",
+  "th": "รู้จักสูตร"
+ },
+ "l2_chapter6_title": {
+  "fr": "Petit ami +",
+  "es": "Pequeño amigo +",
+  "pt": "Pequeno Amigo +",
+  "tr": "Küçük Arkadaş +",
+  "ru": "Малый друг +",
+  "ja": "小さな友だち +",
+  "th": "เพื่อนเล็ก +"
+ },
+ "l2_chapter7_title": {
+  "fr": "Petit ami −",
+  "es": "Pequeño amigo −",
+  "pt": "Pequeno Amigo −",
+  "tr": "Küçük Arkadaş −",
+  "ru": "Малый друг −",
+  "ja": "小さな友だち −",
+  "th": "เพื่อนเล็ก −"
+ },
+ "l2_chapter8_title": {
+  "fr": "Grand ami +",
+  "es": "Gran amigo +",
+  "pt": "Grande Amigo +",
+  "tr": "Büyük Arkadaş +",
+  "ru": "Большой друг +",
+  "ja": "大きな友だち +",
+  "th": "เพื่อนใหญ่ +"
+ },
+ "l2_chapter9_title": {
+  "fr": "Grand ami −",
+  "es": "Gran amigo −",
+  "pt": "Grande Amigo −",
+  "tr": "Büyük Arkadaş −",
+  "ru": "Большой друг −",
+  "ja": "大きな友だち −",
+  "th": "เพื่อนใหญ่ −"
+ },
+ "l2_chapter10_title": {
+  "fr": "Famille",
+  "es": "Familia",
+  "pt": "Família",
+  "tr": "Aile",
+  "ru": "Семья",
+  "ja": "家族",
+  "th": "ครอบครัว"
+ },
+ "l2_lesson1_step1_title": {
+  "fr": "Ajouter sur le boulier !",
+  "es": "¡Sumar en el ábaco!",
+  "pt": "Somando no Ábaco!",
+  "tr": "Abaküste Toplama!",
+  "ru": "Сложение на абакусе!",
+  "ja": "そろばんでたし算!",
+  "th": "บวกบนลูกคิด!"
+ },
+ "l2_lesson1_step1_body": {
+  "fr": "Quand tu AJOUTES, pousse PLUS de boules vers le HAUT, jusqu'à la barre. Tu pars de 2, tu ajoutes 1 → tu pousses 1 boule de plus vers le haut = 3 ! Plus de boules = un plus grand nombre !",
+  "es": "Cuando SUMAS, empuja MÁS cuentas hacia ARRIBA, hasta la barra central. Empieza en 2, suma 1 → ¡empuja 1 cuenta más hacia arriba = 3! ¡Más cuentas = número más grande!",
+  "pt": "Ao SOMAR, empurre MAIS contas para CIMA, até a barra. Comece em 2, some 1 → empurre mais 1 conta para cima = 3! Mais contas = número maior!",
+  "tr": "TOPLARKEN orta çubuğa doğru DAHA FAZLA boncuğu YUKARI it. 2'den başla, 1 ekle → 1 boncuk daha yukarı it = 3! Daha çok boncuk = daha büyük sayı!",
+  "ru": "Когда ты СКЛАДЫВАЕШЬ, двигай ЕЩЁ бусины ВВЕРХ к планке. Начни с 2, прибавь 1 → сдвинь ещё 1 бусину вверх = 3! Больше бусин = больше число!",
+  "ja": "たし算のときは、梁に向かって珠を「もっと」上げます。2から始めて 1 をたす → 珠をもう1つ上げて = 3! 珠がふえると、数も大きくなります!",
+  "th": "เวลาบวก ให้ดันลูกเพิ่มขึ้นไปหาคานกลาง เริ่มที่ 2 บวก 1 → ดันขึ้นอีก 1 ลูก = 3! ลูกมากขึ้น เลขก็มากขึ้น!"
+ },
+ "l2_lesson1_step2_title": {
+  "fr": "Pars de 2",
+  "es": "Empieza con 2",
+  "pt": "Comece com 2",
+  "tr": "2 ile Başla",
+  "ru": "Начни с 2",
+  "ja": "2から始めよう",
+  "th": "เริ่มที่ 2"
+ },
+ "l2_lesson1_step2_body": {
+  "fr": "Pousse 2 boules de la terre vers le haut jusqu'à la barre. Ton boulier montre 2. C'est ton nombre de départ !",
+  "es": "Empuja 2 cuentas de la tierra hacia arriba, hasta la barra central. Tu ábaco muestra 2. ¡Este es tu número de partida!",
+  "pt": "Empurre 2 contas da terra para cima até a barra. Seu ábaco mostra 2. Este é o seu número inicial!",
+  "tr": "2 yer boncuğunu orta çubuğa kadar yukarı it. Abaküsün 2'yi gösteriyor. Başlangıç sayın bu!",
+  "ru": "Сдвинь 2 земные бусины вверх к планке. На абакусе число 2. Это твоё начальное число!",
+  "ja": "下の珠を2つ、梁まで上げます。そろばんは2を表しています。ここが、はじまりの数です!",
+  "th": "ดันลูกล่าง 2 ลูกขึ้นไปแตะคานกลาง ลูกคิดแสดงเลข 2 นี่คือเลขเริ่มต้นของเรา!"
+ },
+ "l2_lesson1_step3_title": {
+  "fr": "Ajoute 1 → Ça fait 3",
+  "es": "Suma 1 → Obtienes 3",
+  "pt": "Some 1 → Dá 3",
+  "tr": "1 Ekle → 3 Olur",
+  "ru": "Прибавь 1 → будет 3",
+  "ja": "1をたす → 3",
+  "th": "บวก 1 → ได้ 3"
+ },
+ "l2_lesson1_step3_body": {
+  "fr": "Regarde la boule bouger ! Tu pars de 2, tu pousses 1 boule de la terre de plus vers le HAUT → 3 ! 🎊",
+  "es": "¡Mira cómo se mueve la cuenta! Empieza en 2, empuja 1 cuenta más de la tierra hacia ARRIBA → ¡3! 🎊",
+  "pt": "Veja a conta se mover! Comece em 2, empurre mais 1 conta da terra para CIMA → 3! 🎊",
+  "tr": "Boncuğun nasıl hareket ettiğini izle! 2'den başla, 1 yer boncuğu daha YUKARI it → 3! 🎊",
+  "ru": "Смотри, как движется бусина! Начни с 2, сдвинь ещё 1 земную бусину ВВЕРХ → 3! 🎊",
+  "ja": "珠の動きを見てね! 2から始めて、下の珠をもう1つ「上」に押すと → 3! 🎊",
+  "th": "ดูลูกเลื่อนนะ! เริ่มที่ 2 ดันลูกล่างขึ้นอีก 1 ลูก → 3! 🎊"
+ },
+ "l2_lesson1_step4_body": {
+  "fr": "Tu pars de 2, tu ajoutes 3 boules de plus. Arrivé à 5, tu passes à la boule du ciel ! ✨",
+  "es": "Empieza en 2, suma 3 cuentas más. ¡Al llegar a 5 cambias a la cuenta del cielo! ✨",
+  "pt": "Comece em 2, some mais 3 contas. No 5 você troca pela conta do céu! ✨",
+  "tr": "2'den başla, 3 boncuk daha ekle. 5'e gelince gök boncuğuna geçersin! ✨",
+  "ru": "Начни с 2, прибавь ещё 3 бусины. Дошёл до 5 — меняй на небесную бусину! ✨",
+  "ja": "2から始めて、珠を3つたします。5になったら、上の珠にチェンジ! ✨",
+  "th": "เริ่มที่ 2 แล้วบวกลูกอีก 3 ลูก พอถึง 5 ก็เปลี่ยนมาใช้ลูกบน! ✨"
+ },
+ "l2_lesson1_step5_title": {
+  "fr": "Ajouter = pousser vers le HAUT !",
+  "es": "¡Sumar = empujar ARRIBA!",
+  "pt": "Somar = Empurrar para CIMA!",
+  "tr": "Toplama = YUKARI İtmek!",
+  "ru": "Прибавить = сдвинуть ВВЕРХ!",
+  "ja": "たす = 上へ押す!",
+  "th": "บวก = ดันขึ้น!"
+ },
+ "l2_lesson1_step5_body": {
+  "fr": "Souviens-toi : ajouter, c'est toujours pousser PLUS de boules vers la barre. Ton nombre MONTE ! Essaie : 1 + 3 = ? (pousse 3 boules de plus !)",
+  "es": "Recuerda: sumar siempre es empujar MÁS cuentas hacia la barra central. ¡Tu número SUBE! Prueba: 1 + 3 = ? (¡empuja 3 cuentas más!)",
+  "pt": "Lembre: somar sempre é empurrar MAIS contas até a barra. Seu número SOBE! Tente: 1 + 3 = ? (empurre mais 3 contas!)",
+  "tr": "Unutma: toplamak her zaman orta çubuğa doğru DAHA FAZLA boncuk itmek demektir. Sayın YUKARI çıkar! Dene: 1 + 3 = ? (3 boncuk daha it!)",
+  "ru": "Запомни: сложение всегда значит сдвинуть ЕЩЁ бусины к планке. Число идёт ВВЕРХ! Попробуй: 1 + 3 = ? (сдвинь ещё 3 бусины!)",
+  "ja": "おぼえよう: たし算は、いつも梁に向かって珠を「もっと」動かすこと。数は大きくなります! やってみよう: 1 + 3 = ? (珠をあと3つ押そう!)",
+  "th": "จำไว้นะ: การบวกคือดันลูกเพิ่มเข้าหาคานกลางเสมอ เลขของเราจะมากขึ้น! ลองดู: 1 + 3 = ? (ดันเพิ่มอีก 3 ลูก!)"
+ },
+ "l2_lesson2_step1_title": {
+  "fr": "Ajouter au-delà de 5 !",
+  "es": "¡Sumar pasando el 5!",
+  "pt": "Somando Além do 5!",
+  "tr": "5'i Geçerek Toplama!",
+  "ru": "Сложение после 5!",
+  "ja": "5をこえるたし算!",
+  "th": "บวกให้เกิน 5!"
+ },
+ "l2_lesson2_step1_body": {
+  "fr": "Quand ton total atteint 5 ou plus, remplace 5 boules de la terre par la boule du CIEL ! Pousse toutes les boules de la terre vers le BAS + la boule du ciel vers le BAS = 5 !",
+  "es": "Cuando tu total llega a 5 o más, ¡cambia 5 cuentas de la tierra por la cuenta del CIELO! ¡Empuja toda la tierra ABAJO + el cielo ABAJO = 5!",
+  "pt": "Quando o total chega a 5 ou mais, troque 5 contas da terra pela conta do CÉU! Empurre as da terra para BAIXO + a do céu para BAIXO = 5!",
+  "tr": "Toplamın 5 ya da daha fazla olunca 5 yer boncuğunu GÖK boncuğuyla değiştir! Tüm yer boncuklarını AŞAĞI it + gök boncuğunu AŞAĞI it = 5!",
+  "ru": "Когда сумма доходит до 5 или больше, меняй 5 земных бусин на НЕБЕСНУЮ! Все земные ВНИЗ + небесная ВНИЗ = 5!",
+  "ja": "合計が5以上になったら、下の珠5つを「上の珠」1つにチェンジ! 下の珠をぜんぶ下げて + 上の珠を下げると = 5!",
+  "th": "พอรวมได้ 5 ขึ้นไป ให้เปลี่ยนลูกล่าง 5 ลูกเป็นลูกบน! ดันลูกล่างทั้งหมดลง + ดันลูกบนลง = 5!"
+ },
+ "l2_lesson2_step2_body": {
+  "fr": "Regarde ! Tu pars de 4, tu ajoutes 2 → tu passes à la boule du ciel + 1 de la terre = 6 ! ✨",
+  "es": "¡Mira! Empieza en 4, suma 2 → ¡cambia a la cuenta del cielo + 1 de la tierra = 6! ✨",
+  "pt": "Veja! Comece em 4, some 2 → troque pela conta do céu + 1 da terra = 6! ✨",
+  "tr": "İzle! 4'ten başla, 2 ekle → gök boncuğuna geç + 1 yer = 6! ✨",
+  "ru": "Смотри! Начни с 4, прибавь 2 → меняем на небесную бусину + 1 земную = 6! ✨",
+  "ja": "見てね! 4から始めて 2をたす → 上の珠 + 下の珠1つにチェンジ = 6! ✨",
+  "th": "ดูนะ! เริ่มที่ 4 บวก 2 → เปลี่ยนเป็นลูกบน + ลูกล่าง 1 ลูก = 6! ✨"
+ },
+ "l2_lesson2_step3_body": {
+  "fr": "Regarde ! Tu pars de 3, tu ajoutes 4 → tu passes au ciel + 2 de la terre = 7 ! 🎯",
+  "es": "¡Mira! Empieza en 3, suma 4 → ¡cambia a cielo + 2 de la tierra = 7! 🎯",
+  "pt": "Veja! Comece em 3, some 4 → troque pelo céu + 2 da terra = 7! 🎯",
+  "tr": "İzle! 3'ten başla, 4 ekle → gök boncuğuna geç + 2 yer = 7! 🎯",
+  "ru": "Смотри! Начни с 3, прибавь 4 → меняем на небесную + 2 земные = 7! 🎯",
+  "ja": "見てね! 3から始めて 4をたす → 上の珠 + 下の珠2つにチェンジ = 7! 🎯",
+  "th": "ดูนะ! เริ่มที่ 3 บวก 4 → เปลี่ยนเป็นลูกบน + ลูกล่าง 2 ลูก = 7! 🎯"
+ },
+ "l2_lesson2_step4_body": {
+  "fr": "Regarde ! Tu pars de 5 (ciel), tu montes 3 boules de la terre → ciel + 3 de la terre = 8 ! 🎈",
+  "es": "¡Mira! Empieza en 5 (cielo), sube 3 cuentas de la tierra → ¡cielo + 3 de la tierra = 8! 🎈",
+  "pt": "Veja! Comece em 5 (céu), empurre 3 contas da terra para cima → céu + 3 da terra = 8! 🎈",
+  "tr": "İzle! 5'ten (gök) başla, 3 yer boncuğunu yukarı it → gök + 3 yer = 8! 🎈",
+  "ru": "Смотри! Начни с 5 (небесная), сдвинь 3 земные бусины вверх → небесная + 3 земные = 8! 🎈",
+  "ja": "見てね! 5 (上の珠) から始めて、下の珠を3つ上げる → 上の珠 + 下の珠3つ = 8! 🎈",
+  "th": "ดูนะ! เริ่มที่ 5 (ลูกบน) ดันลูกล่างขึ้น 3 ลูก → ลูกบน + ลูกล่าง 3 ลูก = 8! 🎈"
+ },
+ "l2_lesson2_step5_body": {
+  "fr": "Regarde ! Tu pars de 5 (ciel), tu ajoutes 4 boules de la terre → ciel + 4 de la terre = 9 ! 🏆",
+  "es": "¡Mira! Empieza en 5 (cielo), suma 4 cuentas de la tierra → ¡cielo + 4 de la tierra = 9! 🏆",
+  "pt": "Veja! Comece em 5 (céu), some 4 contas da terra → céu + 4 da terra = 9! 🏆",
+  "tr": "İzle! 5'ten (gök) başla, 4 yer boncuğu ekle → gök + 4 yer = 9! 🏆",
+  "ru": "Смотри! Начни с 5 (небесная), добавь 4 земные бусины → небесная + 4 земные = 9! 🏆",
+  "ja": "見てね! 5 (上の珠) から始めて、下の珠を4つ上げる → 上の珠 + 下の珠4つ = 9! 🏆",
+  "th": "ดูนะ! เริ่มที่ 5 (ลูกบน) ดันลูกล่างขึ้น 4 ลูก → ลูกบน + ลูกล่าง 4 ลูก = 9! 🏆"
+ },
+ "l2_lesson3_step1_title": {
+  "fr": "Soustraire sur le boulier !",
+  "es": "¡Restar en el ábaco!",
+  "pt": "Subtraindo no Ábaco!",
+  "tr": "Abaküste Çıkarma!",
+  "ru": "Вычитание на абакусе!",
+  "ja": "そろばんでひき算!",
+  "th": "ลบบนลูกคิด!"
+ },
+ "l2_lesson3_step1_body": {
+  "fr": "Quand tu SOUSTRAIS, pousse les boules vers le BAS (loin de la barre). Tu pars de 4, tu soustrais 2 → tu pousses 2 boules de la terre vers le BAS = 2 !",
+  "es": "Cuando RESTAS, empuja las cuentas hacia ABAJO (lejos de la barra central). Empieza en 4, resta 2 → ¡empuja 2 cuentas de la tierra hacia ABAJO = 2!",
+  "pt": "Ao SUBTRAIR, empurre as contas para BAIXO (longe da barra). Comece em 4, subtraia 2 → empurre 2 contas da terra para BAIXO = 2!",
+  "tr": "ÇIKARIRKEN boncukları AŞAĞI it (orta çubuktan uzağa). 4'ten başla, 2 çıkar → 2 yer boncuğunu AŞAĞI it = 2!",
+  "ru": "Когда ты ВЫЧИТАЕШЬ, двигай бусины ВНИЗ (от планки). Начни с 4, вычти 2 → сдвинь 2 земные бусины ВНИЗ = 2!",
+  "ja": "ひき算のときは、珠を「下」へ (梁からはなす方へ) 動かします。4から始めて 2をひく → 下の珠を2つ下げて = 2!",
+  "th": "เวลาลบ ให้ดันลูกลงห่างจากคานกลาง เริ่มที่ 4 ลบ 2 → ดันลูกล่างลง 2 ลูก = 2!"
+ },
+ "l2_lesson3_step2_title": {
+  "fr": "Pars de 4",
+  "es": "Empieza en 4",
+  "pt": "Comece em 4",
+  "tr": "4'ten Başla",
+  "ru": "Начни с 4",
+  "ja": "4から始めよう",
+  "th": "เริ่มที่ 4"
+ },
+ "l2_lesson3_step2_body": {
+  "fr": "Pousse 4 boules de la terre vers le haut jusqu'à la barre. Ton boulier montre 4 ! C'est ton nombre de départ.",
+  "es": "Empuja 4 cuentas de la tierra hacia arriba, hasta la barra central. ¡Tu ábaco muestra 4! Este es tu número de partida.",
+  "pt": "Empurre 4 contas da terra para cima até a barra. Seu ábaco mostra 4! Este é o seu número inicial.",
+  "tr": "4 yer boncuğunu orta çubuğa kadar yukarı it. Abaküsün 4'ü gösteriyor! Başlangıç sayın bu.",
+  "ru": "Сдвинь 4 земные бусины вверх к планке. На абакусе 4! Это твоё начальное число.",
+  "ja": "下の珠を4つ、梁まで上げます。そろばんは4を表しています! ここが、はじまりの数です。",
+  "th": "ดันลูกล่าง 4 ลูกขึ้นไปแตะคานกลาง ลูกคิดแสดงเลข 4! นี่คือเลขเริ่มต้นของเรา"
+ },
+ "l2_lesson3_step3_body": {
+  "fr": "Regarde ! Tu pars de 4, tu pousses 2 boules de la terre vers le BAS → 2 ! ✅",
+  "es": "¡Mira! Empieza en 4, empuja 2 cuentas de la tierra hacia ABAJO → ¡2! ✅",
+  "pt": "Veja! Comece em 4, empurre 2 contas da terra para BAIXO → 2! ✅",
+  "tr": "İzle! 4'ten başla, 2 yer boncuğunu AŞAĞI it → 2! ✅",
+  "ru": "Смотри! Начни с 4, сдвинь 2 земные бусины ВНИЗ → 2! ✅",
+  "ja": "見てね! 4から始めて、下の珠を2つ「下」へ → 2! ✅",
+  "th": "ดูนะ! เริ่มที่ 4 ดันลูกล่างลง 2 ลูก → 2! ✅"
+ },
+ "l2_lesson3_step4_body": {
+  "fr": "Regarde ! Tu pars de 8 (ciel + 3 de la terre), tu pousses 3 boules de la terre vers le BAS → il reste juste le ciel = 5 ! Le ciel ne bouge pas ! 🌟",
+  "es": "¡Mira! Empieza en 8 (cielo + 3 de la tierra), empuja 3 cuentas de la tierra hacia ABAJO → ¡solo el cielo = 5! ¡El cielo se queda! 🌟",
+  "pt": "Veja! Comece em 8 (céu + 3 da terra), empurre 3 contas da terra para BAIXO → só o céu = 5! O céu fica! 🌟",
+  "tr": "İzle! 8'den (gök + 3 yer) başla, 3 yer boncuğunu AŞAĞI it → yalnızca gök = 5! Gök boncuğu yerinde kalır! 🌟",
+  "ru": "Смотри! Начни с 8 (небесная + 3 земные), сдвинь 3 земные бусины ВНИЗ → остаётся только небесная = 5! Небесная на месте! 🌟",
+  "ja": "見てね! 8 (上の珠 + 下の珠3つ) から始めて、下の珠を3つ「下」へ → 上の珠だけで = 5! 上の珠は、そのまま! 🌟",
+  "th": "ดูนะ! เริ่มที่ 8 (ลูกบน + ลูกล่าง 3 ลูก) ดันลูกล่างลง 3 ลูก → เหลือแค่ลูกบน = 5! ลูกบนอยู่ที่เดิม! 🌟"
+ },
+ "l2_lesson3_step5_title": {
+  "fr": "Soustraire = pousser vers le BAS !",
+  "es": "¡Restar = empujar ABAJO!",
+  "pt": "Subtrair = Empurrar para BAIXO!",
+  "tr": "Çıkarma = AŞAĞI İtmek!",
+  "ru": "Вычесть = сдвинуть ВНИЗ!",
+  "ja": "ひく = 下へ押す!",
+  "th": "ลบ = ดันลง!"
+ },
+ "l2_lesson3_step5_body": {
+  "fr": "Seules les boules de la terre bougent — la boule du ciel NE BOUGE JAMAIS dans cette leçon ! Essaie : 9 − 4 = ? et 4 − 1 = ?",
+  "es": "Solo se mueven las cuentas de la tierra: ¡la cuenta del cielo NUNCA se mueve en esta lección! Prueba: 9 − 4 = ? y 4 − 1 = ?",
+  "pt": "Só as contas da terra se movem — a conta do céu NUNCA se move nesta lição! Tente: 9 − 4 = ? e 4 − 1 = ?",
+  "tr": "Yalnızca yer boncukları oynar — bu derste gök boncuğu ASLA oynamaz! Dene: 9 − 4 = ? ve 4 − 1 = ?",
+  "ru": "Двигаются только земные бусины — небесная в этом уроке НИКОГДА не двигается! Попробуй: 9 − 4 = ? и 4 − 1 = ?",
+  "ja": "動くのは下の珠だけ。このレッスンでは、上の珠は「ぜったいに」動きません! やってみよう: 9 − 4 = ? と 4 − 1 = ?",
+  "th": "ขยับแค่ลูกล่างเท่านั้น ในบทนี้ไม่ขยับลูกบนเลย! ลองดู: 9 − 4 = ? และ 4 − 1 = ?"
+ },
+ "l2_lesson4_step1_title": {
+  "fr": "Retire la boule du ciel !",
+  "es": "¡Quita la cuenta del cielo!",
+  "pt": "Tire a Conta do Céu!",
+  "tr": "Gök Boncuğunu Uzaklaştır!",
+  "ru": "Убираем небесную бусину!",
+  "ja": "上の珠をはずそう!",
+  "th": "เอาลูกบนออก!"
+ },
+ "l2_lesson4_step1_body": {
+  "fr": "Quand tu soustrais 5 ou plus, éloigne la boule du ciel de la barre (HAUT = −5). On s'entraîne !",
+  "es": "Cuando restas 5 o más, empuja la cuenta del cielo LEJOS de la barra central (ARRIBA = −5). ¡Vamos a practicar!",
+  "pt": "Ao subtrair 5 ou mais, empurre a conta do céu para LONGE da barra (CIMA = −5). Vamos praticar!",
+  "tr": "5 ya da daha fazlasını çıkarırken gök boncuğunu orta çubuktan UZAĞA it (YUKARI = −5). Haydi deneyelim!",
+  "ru": "Когда вычитаешь 5 или больше, сдвинь небесную бусину ОТ планки (ВВЕРХ = −5). Потренируемся!",
+  "ja": "5以上をひくときは、上の珠を梁からはなします (「上」へ = −5)。練習しよう!",
+  "th": "เวลาลบ 5 หรือมากกว่า ให้ดันลูกบนขึ้นห่างจากคานกลาง (ขึ้น = −5) มาฝึกกัน!"
+ },
+ "l2_lesson4_step2_body": {
+  "fr": "Regarde ! La boule du ciel est en BAS (= 5). Pousse-la vers le HAUT → toutes les boules sont loin de la barre = 0 ! On retire simplement le ciel ! 🎯",
+  "es": "¡Mira! La cuenta del cielo está ABAJO (= 5). Empújala ARRIBA → ¡todas las cuentas lejos = 0! ¡Así de fácil se quita el cielo! 🎯",
+  "pt": "Veja! A conta do céu está para BAIXO (= 5). Empurre para CIMA → todas as contas longe = 0! Tirar o céu é fácil! 🎯",
+  "tr": "İzle! Gök boncuğu AŞAĞIDA (= 5). Onu YUKARI it → tüm boncuklar uzakta = 0! Gök boncuğunu kaldırmak çok kolay! 🎯",
+  "ru": "Смотри! Небесная бусина ВНИЗ (= 5). Сдвинь её ВВЕРХ → все бусины далеко = 0! Просто убрали небесную! 🎯",
+  "ja": "見てね! 上の珠は「下」(= 5)。「上」に押すと → 珠がぜんぶはなれて = 0! かんたんな、上の珠のはずし方です! 🎯",
+  "th": "ดูนะ! ลูกบนอยู่ข้างล่าง (= 5) ดันขึ้น → ลูกทุกลูกห่างคานกลาง = 0! เอาลูกบนออกง่ายนิดเดียว! 🎯"
+ },
+ "l2_lesson4_step3_body": {
+  "fr": "Regarde ! Tu pars de 7 (ciel + 2 de la terre). Pousse le ciel vers le HAUT (−5) → il reste 2 boules de la terre = 2 ! La terre ne bouge pas ! ✅",
+  "es": "¡Mira! Empieza en 7 (cielo + 2 de la tierra). Empuja el cielo ARRIBA (−5) → ¡solo 2 cuentas de la tierra = 2! ¡La tierra se queda! ✅",
+  "pt": "Veja! Comece em 7 (céu + 2 da terra). Empurre o céu para CIMA (−5) → só 2 contas da terra = 2! A terra fica! ✅",
+  "tr": "İzle! 7'den (gök + 2 yer) başla. Gök boncuğunu YUKARI it (−5) → yalnızca 2 yer boncuğu kalır = 2! Yer boncukları yerinde kalır! ✅",
+  "ru": "Смотри! Начни с 7 (небесная + 2 земные). Сдвинь небесную ВВЕРХ (−5) → остаются 2 земные бусины = 2! Земные на месте! ✅",
+  "ja": "見てね! 7 (上の珠 + 下の珠2つ) から始めます。上の珠を「上」へ (−5) → 下の珠2つだけで = 2! 下の珠は、そのまま! ✅",
+  "th": "ดูนะ! เริ่มที่ 7 (ลูกบน + ลูกล่าง 2 ลูก) ดันลูกบนขึ้น (−5) → เหลือแค่ลูกล่าง 2 ลูก = 2! ลูกล่างอยู่ที่เดิม! ✅"
+ },
+ "l2_lesson4_step4_body": {
+  "fr": "Regarde ! Tu pars de 9 (ciel + 4 de la terre). Pousse 3 boules de la terre vers le BAS, puis le ciel vers le HAUT → 1 boule de la terre = 1 ! 🌟",
+  "es": "¡Mira! Empieza en 9 (cielo + 4 de la tierra). Empuja 3 de la tierra ABAJO y luego el cielo ARRIBA → ¡1 de la tierra = 1! 🌟",
+  "pt": "Veja! Comece em 9 (céu + 4 da terra). Empurre 3 da terra para BAIXO, depois o céu para CIMA → 1 da terra = 1! 🌟",
+  "tr": "İzle! 9'dan (gök + 4 yer) başla. 3 yer boncuğunu AŞAĞI it, sonra gök boncuğunu YUKARI it → 1 yer = 1! 🌟",
+  "ru": "Смотри! Начни с 9 (небесная + 4 земные). Сдвинь 3 земные ВНИЗ, потом небесную ВВЕРХ → 1 земная = 1! 🌟",
+  "ja": "見てね! 9 (上の珠 + 下の珠4つ) から始めます。下の珠を3つ「下」へ、それから上の珠を「上」へ → 下の珠1つで = 1! 🌟",
+  "th": "ดูนะ! เริ่มที่ 9 (ลูกบน + ลูกล่าง 4 ลูก) ดันลูกล่างลง 3 ลูก แล้วดันลูกบนขึ้น → เหลือลูกล่าง 1 ลูก = 1! 🌟"
+ },
+ "l2_lesson4_step5_title": {
+  "fr": "Tu as compris !",
+  "es": "¡Ya lo tienes!",
+  "pt": "Você Pegou o Jeito!",
+  "tr": "Başardın!",
+  "ru": "У тебя получилось!",
+  "ja": "できたね!",
+  "th": "เข้าใจแล้วใช่ไหม!"
+ },
+ "l2_lesson4_step5_body": {
+  "fr": "Soustraire 5 → pousse le ciel vers le HAUT. Soustraire plus → retire d'abord la terre, puis le ciel. Pas besoin de formule ! 🚀",
+  "es": "Resta 5 → empuja el cielo ARRIBA. Resta más → quita primero la tierra y luego el cielo. ¡No necesitas fórmula! 🚀",
+  "pt": "Subtrair 5 → empurre o céu para CIMA. Subtrair mais → tire primeiro a terra, depois o céu. Sem fórmula! 🚀",
+  "tr": "5 çıkar → gök boncuğunu YUKARI it. Daha fazla çıkar → önce yer boncuklarını, sonra gök boncuğunu kaldır. Formül gerekmez! 🚀",
+  "ru": "Вычитаем 5 → сдвигаем небесную ВВЕРХ. Вычитаем больше → сначала земные, потом небесная. Формула не нужна! 🚀",
+  "ja": "5をひくときは → 上の珠を「上」へ。もっとひくときは → 先に下の珠をはずして、それから上の珠。公式はいりません! 🚀",
+  "th": "ลบ 5 → ดันลูกบนขึ้น ลบมากกว่านั้น → เอาลูกล่างออกก่อน แล้วค่อยเอาลูกบน ไม่ต้องใช้สูตรเลย! 🚀"
+ },
+ "l2_lesson5_step1_title": {
+  "fr": "On mélange tout !",
+  "es": "¡Mézclalo todo!",
+  "pt": "Misture Tudo!",
+  "tr": "Karıştıralım!",
+  "ru": "Всё вместе!",
+  "ja": "ミックスしよう!",
+  "th": "ผสมกันเลย!"
+ },
+ "l2_lesson5_step1_body": {
+  "fr": "En vrai, les maths mélangent additions ET soustractions ! Tu connais déjà les deux séparément. Maintenant, on les utilise ensemble ! 🚀",
+  "es": "¡Las matemáticas de verdad mezclan sumar Y restar! Ya conoces las dos por separado. ¡Ahora las usamos juntas! 🚀",
+  "pt": "A matemática de verdade mistura somar E subtrair! Você já conhece os dois separados. Agora vamos usar juntos! 🚀",
+  "tr": "Gerçek matematik toplamayı VE çıkarmayı karıştırır! İkisini de ayrı ayrı biliyorsun. Şimdi birlikte kullanalım! 🚀",
+  "ru": "Настоящая математика смешивает сложение И вычитание! Ты уже умеешь то и другое по отдельности. Теперь используем их вместе! 🚀",
+  "ja": "本当の計算は、たし算「と」ひき算がまざっています! どちらも、もう知っていますね。いっしょに使ってみよう! 🚀",
+  "th": "เลขจริงๆ มีทั้งบวกและลบปนกัน! เรารู้ทั้งสองอย่างแล้ว คราวนี้มาใช้ด้วยกัน! 🚀"
+ },
+ "l2_lesson5_step2_title": {
+  "fr": "D'abord ajouter : 3 + 5 = 8",
+  "es": "Primero suma: 3 + 5 = 8",
+  "pt": "Some Primeiro: 3 + 5 = 8",
+  "tr": "Önce Topla: 3 + 5 = 8",
+  "ru": "Сначала прибавим: 3 + 5 = 8",
+  "ja": "まずたす: 3 + 5 = 8",
+  "th": "บวกก่อน: 3 + 5 = 8"
+ },
+ "l2_lesson5_step2_body": {
+  "fr": "Regarde ! Tu pars de 3, tu ajoutes 5 → tu passes au ciel + 3 de la terre = 8 ! 🎯",
+  "es": "¡Mira! Empieza en 3, suma 5 → ¡cambia a cielo + 3 de la tierra = 8! 🎯",
+  "pt": "Veja! Comece em 3, some 5 → troque pelo céu + 3 da terra = 8! 🎯",
+  "tr": "İzle! 3'ten başla, 5 ekle → gök + 3 yer boncuğuna geç = 8! 🎯",
+  "ru": "Смотри! Начни с 3, прибавь 5 → меняем на небесную + 3 земные = 8! 🎯",
+  "ja": "見てね! 3から始めて 5をたす → 上の珠 + 下の珠3つにチェンジ = 8! 🎯",
+  "th": "ดูนะ! เริ่มที่ 3 บวก 5 → เปลี่ยนเป็นลูกบน + ลูกล่าง 3 ลูก = 8! 🎯"
+ },
+ "l2_lesson5_step3_title": {
+  "fr": "Puis soustraire : 8 − 2 = 6",
+  "es": "Luego resta: 8 − 2 = 6",
+  "pt": "Depois Subtraia: 8 − 2 = 6",
+  "tr": "Sonra Çıkar: 8 − 2 = 6",
+  "ru": "Потом вычтем: 8 − 2 = 6",
+  "ja": "つぎにひく: 8 − 2 = 6",
+  "th": "แล้วลบ: 8 − 2 = 6"
+ },
+ "l2_lesson5_step3_body": {
+  "fr": "Regarde ! Tu pars de 8, tu pousses 2 boules de la terre vers le BAS → ciel + 1 de la terre = 6 ! ✨",
+  "es": "¡Mira! Empieza en 8, empuja 2 cuentas de la tierra hacia ABAJO → ¡cielo + 1 de la tierra = 6! ✨",
+  "pt": "Veja! Comece em 8, empurre 2 contas da terra para BAIXO → céu + 1 da terra = 6! ✨",
+  "tr": "İzle! 8'den başla, 2 yer boncuğunu AŞAĞI it → gök + 1 yer = 6! ✨",
+  "ru": "Смотри! Начни с 8, сдвинь 2 земные бусины ВНИЗ → небесная + 1 земная = 6! ✨",
+  "ja": "見てね! 8から始めて、下の珠を2つ「下」へ → 上の珠 + 下の珠1つ = 6! ✨",
+  "th": "ดูนะ! เริ่มที่ 8 ดันลูกล่างลง 2 ลูก → ลูกบน + ลูกล่าง 1 ลูก = 6! ✨"
+ },
+ "l2_lesson5_step4_title": {
+  "fr": "Enchaînement : 5 − 2 = 3",
+  "es": "En cadena: 5 − 2 = 3",
+  "pt": "Em Sequência: 5 − 2 = 3",
+  "tr": "Zincir: 5 − 2 = 3",
+  "ru": "Цепочка: 5 − 2 = 3",
+  "ja": "つづけて: 5 − 2 = 3",
+  "th": "ต่อกัน: 5 − 2 = 3"
+ },
+ "l2_lesson5_step4_body": {
+  "fr": "Regarde ! Tu pars de 5 (ciel), pousse le ciel vers le HAUT et 3 boules de la terre vers le HAUT → 3 ! 🌟",
+  "es": "¡Mira! Empieza en 5 (cielo), empuja el cielo ARRIBA y 3 de la tierra ARRIBA → ¡3! 🌟",
+  "pt": "Veja! Comece em 5 (céu), empurre o céu para CIMA e 3 da terra para CIMA → 3! 🌟",
+  "tr": "İzle! 5'ten (gök) başla, gök boncuğunu YUKARI ve 3 yer boncuğunu YUKARI it → 3! 🌟",
+  "ru": "Смотри! Начни с 5 (небесная), сдвинь небесную ВВЕРХ и 3 земные ВВЕРХ → 3! 🌟",
+  "ja": "見てね! 5 (上の珠) から始めて、上の珠を「上」へ、下の珠を3つ「上」へ → 3! 🌟",
+  "th": "ดูนะ! เริ่มที่ 5 (ลูกบน) ดันลูกบนขึ้น แล้วดันลูกล่างขึ้น 3 ลูก → 3! 🌟"
+ },
+ "l2_lesson5_step5_title": {
+  "fr": "Tu es un as des maths !",
+  "es": "¡Eres un genio de las mates!",
+  "pt": "Você é Mestre da Matemática!",
+  "tr": "Matematik Ustasısın!",
+  "ru": "Ты мастер математики!",
+  "ja": "計算マスターだね!",
+  "th": "เก่งเลขสุดยอด!"
+ },
+ "l2_lesson5_step5_body": {
+  "fr": "Ajouter pousse les boules VERS la barre. Soustraire pousse les boules LOIN de la barre. Mélange-les comme tu veux ! 🎊 Niveau 2 terminé ! 🏆",
+  "es": "Sumar empuja las cuentas HACIA la barra central. Restar las empuja LEJOS de la barra central. ¡Mézclalas como quieras! 🎊 ¡Nivel 2 completado! 🏆",
+  "pt": "Somar empurra as contas PARA PERTO da barra. Subtrair empurra as contas PARA LONGE da barra. Misture à vontade! 🎊 Nível 2 Concluído! 🏆",
+  "tr": "Toplarken boncuklar orta çubuğa DOĞRU itilir. Çıkarırken orta çubuktan UZAĞA itilir. İstediğin gibi karıştır! 🎊 2. Seviye Tamam! 🏆",
+  "ru": "Сложение двигает бусины К планке. Вычитание двигает бусины ОТ планки. Смешивай как хочешь! 🎊 Уровень 2 пройден! 🏆",
+  "ja": "たし算は、梁に「向かって」珠を動かします。ひき算は、梁から「はなれる」方へ動かします。自由にまぜよう! 🎊 レベル2 クリア! 🏆",
+  "th": "บวกคือดันลูกเข้าหาคานกลาง ลบคือดันลูกออกห่างจากคานกลาง ผสมกันได้เลย! 🎊 จบระดับ 2 แล้ว! 🏆"
+ },
+ "l2_lesson6_step1_title": {
+  "fr": "Petit ami +",
+  "es": "Pequeño amigo +",
+  "pt": "Pequeno Amigo +",
+  "tr": "Küçük Arkadaş +",
+  "ru": "Малый друг +",
+  "ja": "小さな友だち +",
+  "th": "เพื่อนเล็ก +"
+ },
+ "l2_lesson6_step1_body": {
+  "fr": "Quand ajouter dépasse les boules de la terre mais que le résultat reste ≤ 9, utilise la formule du Petit ami : retire des boules de la terre + pousse le ciel vers le BAS.",
+  "es": "Cuando ya no caben más cuentas de la tierra pero el resultado sigue siendo ≤ 9, usa la fórmula del Pequeño amigo: quita cuentas de la tierra + empuja el cielo hacia ABAJO.",
+  "pt": "Quando faltam contas da terra para somar, mas o resultado fica ≤ 9, use a fórmula do Pequeno Amigo: tire contas da terra + empurre o céu para BAIXO.",
+  "tr": "Toplarken yer boncukları yetmiyor ama sonuç ≤ 9 kalıyorsa Küçük Arkadaş formülünü kullan: yer boncuklarını kaldır + gök boncuğunu AŞAĞI it.",
+  "ru": "Когда земных бусин не хватает, а ответ ≤ 9, используй формулу Малого друга: убери земные бусины + сдвинь небесную ВНИЗ.",
+  "ja": "たすと下の珠が足りなくなるけれど、答えが9以下のときは、小さな友だちの公式を使います。下の珠をはずして + 上の珠を下げよう。",
+  "th": "ถ้าบวกแล้วลูกล่างไม่พอ แต่ผลลัพธ์ยังคง ≤ 9 ให้ใช้สูตรเพื่อนเล็ก (ส่วนเติมเต็ม 5): เอาลูกล่างออก + ดันลูกบนลง"
+ },
+ "l2_lesson6_step2_body": {
+  "fr": "Essaie 1+4. Impossible d'ajouter 4 boules de la terre d'un coup (seulement 3 de libres !). Formule : retire 1 boule de la terre vers le BAS, pousse le ciel vers le BAS. 1−1+5 = 5 ! ✨",
+  "es": "Prueba 1+4. No puedes sumar 4 de la tierra, ¡solo hay 3 libres! Fórmula: empuja 1 de la tierra ABAJO y el cielo ABAJO. ¡1−1+5 = 5! ✨",
+  "pt": "Tente 1+4. Não dá para só somar 4 da terra (só há 3 livres!). Fórmula: tire 1 da terra para BAIXO, empurre o céu para BAIXO. 1−1+5 = 5! ✨",
+  "tr": "Dene: 1+4. 4 yer boncuğunu direkt ekleyemezsin (yalnızca 3 boş yer var!). Formül: 1 yer boncuğunu AŞAĞI it, gök boncuğunu AŞAĞI it. 1−1+5 = 5! ✨",
+  "ru": "Попробуй 1+4. Просто добавить 4 земные нельзя (свободны только 3!). Формула: убери 1 земную ВНИЗ, сдвинь небесную ВНИЗ. 1−1+5 = 5! ✨",
+  "ja": "1+4 をやってみよう。下の珠を4つたすのは無理 (あきは3つだけ!)。公式: 下の珠1つを「下」へ、上の珠を下げる。1−1+5 = 5! ✨",
+  "th": "ลอง 1+4 ใส่ลูกล่างเพิ่ม 4 ลูกตรงๆ ไม่ได้ (ว่างแค่ 3 ลูก!) ใช้สูตร: ดันลูกล่างลง 1 ลูก และดันลูกบนลง 1−1+5 = 5! ✨"
+ },
+ "l2_lesson6_step3_body": {
+  "fr": "Essaie 2+3. Formule : retire 2 boules de la terre vers le BAS, pousse le ciel vers le BAS. 2−2+5 = 5 ! Le résultat est le même !",
+  "es": "Prueba 2+3. Fórmula: empuja 2 de la tierra ABAJO y el cielo ABAJO. ¡2−2+5 = 5! ¡El mismo resultado final!",
+  "pt": "Tente 2+3. Fórmula: tire 2 da terra para BAIXO, empurre o céu para BAIXO. 2−2+5 = 5! Mesmo resultado!",
+  "tr": "Dene: 2+3. Formül: 2 yer boncuğunu AŞAĞI it, gök boncuğunu AŞAĞI it. 2−2+5 = 5! Sonuç aynı!",
+  "ru": "Попробуй 2+3. Формула: убери 2 земные ВНИЗ, сдвинь небесную ВНИЗ. 2−2+5 = 5! Итог тот же!",
+  "ja": "2+3 をやってみよう。公式: 下の珠2つを「下」へ、上の珠を下げる。2−2+5 = 5! 答えは同じです!",
+  "th": "ลอง 2+3 ใช้สูตร: ดันลูกล่างลง 2 ลูก และดันลูกบนลง 2−2+5 = 5! ได้ผลเท่ากัน!"
+ },
+ "l2_lesson6_step4_title": {
+  "fr": "+4 = −1+5 (au milieu)",
+  "es": "+4 = −1+5 (rango medio)",
+  "pt": "+4 = −1+5 (intermediário)",
+  "tr": "+4 = −1+5 (orta aralık)",
+  "ru": "+4 = −1+5 (середина)",
+  "ja": "+4 = −1+5 (中くらいの数)",
+  "th": "+4 = −1+5 (ช่วงกลาง)"
+ },
+ "l2_lesson6_step4_body": {
+  "fr": "Essaie 3+4. Formule : retire 1 boule de la terre vers le BAS, pousse le ciel vers le BAS. 3−1+5 = 7 ! 🎯",
+  "es": "Prueba 3+4. Fórmula: empuja 1 de la tierra ABAJO y el cielo ABAJO. ¡3−1+5 = 7! 🎯",
+  "pt": "Tente 3+4. Fórmula: tire 1 da terra para BAIXO, empurre o céu para BAIXO. 3−1+5 = 7! 🎯",
+  "tr": "Dene: 3+4. Formül: 1 yer boncuğunu AŞAĞI it, gök boncuğunu AŞAĞI it. 3−1+5 = 7! 🎯",
+  "ru": "Попробуй 3+4. Формула: убери 1 земную ВНИЗ, сдвинь небесную ВНИЗ. 3−1+5 = 7! 🎯",
+  "ja": "3+4 をやってみよう。公式: 下の珠1つを「下」へ、上の珠を下げる。3−1+5 = 7! 🎯",
+  "th": "ลอง 3+4 ใช้สูตร: ดันลูกล่างลง 1 ลูก และดันลูกบนลง 3−1+5 = 7! 🎯"
+ },
+ "l2_lesson6_step5_title": {
+  "fr": "Schéma du Petit ami +",
+  "es": "Patrón del Pequeño amigo +",
+  "pt": "Padrão do Pequeno Amigo +",
+  "tr": "Küçük Arkadaş + Örüntüsü",
+  "ru": "Закономерность: Малый друг +",
+  "ja": "小さな友だち + のパターン",
+  "th": "รูปแบบเพื่อนเล็ก +"
+ },
+ "l2_lesson6_step5_body": {
+  "fr": "+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5. Les deux nombres font toujours 5 en tout ! 🤝 C'est l'astuce du complément à 5 !",
+  "es": "+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5. ¡Los dos números siempre suman 5! 🤝 ¡Es el truco del complemento a 5!",
+  "pt": "+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5. Os dois números sempre somam 5! 🤝 É o truque do complemento de 5!",
+  "tr": "+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5. İki sayı her zaman 5 eder! 🤝 İşte 5'e tamamlama püf noktası!",
+  "ru": "+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5. Два числа всегда дают в сумме 5! 🤝 Это секрет дополнения до 5!",
+  "ja": "+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5。2つの数をたすと、いつも5! 🤝 これが5の補数のコツです!",
+  "th": "+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5 เลขสองตัวรวมกันได้ 5 เสมอ! 🤝 นี่คือเคล็ดลับส่วนเติมเต็ม 5!"
+ },
+ "l2_lesson7_step1_title": {
+  "fr": "Petit ami −",
+  "es": "Pequeño amigo −",
+  "pt": "Pequeno Amigo −",
+  "tr": "Küçük Arkadaş −",
+  "ru": "Малый друг −",
+  "ja": "小さな友だち −",
+  "th": "เพื่อนเล็ก −"
+ },
+ "l2_lesson7_step1_body": {
+  "fr": "Si ton nombre est 5, 6, 7 ou 8, la boule du ciel touche déjà la barre ! Quand tu dois soustraire mais qu'il n'y a pas assez de boules de la terre — pousse le ciel vers le HAUT et monte des boules de la terre jusqu'à la barre à la place ! C'est l'échange du Petit ami ! 🤝",
+  "es": "Si tu número es 5, 6, 7 u 8, ¡la cuenta del cielo ya toca la barra central! Cuando tienes que restar pero no hay suficientes cuentas de la tierra, ¡empuja el cielo ARRIBA y sube cuentas de la tierra hasta la barra central! ¡Ese es el cambio del Pequeño amigo! 🤝",
+  "pt": "Se o seu número é 5, 6, 7 ou 8, a conta do céu já está tocando a barra! Quando você precisa subtrair mas não há contas da terra suficientes — empurre o céu para CIMA e, em troca, empurre contas da terra para CIMA até a barra! É a troca do Pequeno Amigo! 🤝",
+  "tr": "Sayın 5, 6, 7 veya 8 ise gök boncuğu zaten orta çubuğa değiyor! Çıkarman gerekiyor ama yer boncukları yetmiyorsa — gök boncuğunu YUKARI it, onun yerine yer boncuklarını orta çubuğa YUKARI it! İşte Küçük Arkadaş değişimi! 🤝",
+  "ru": "Если на абакусе 5, 6, 7 или 8, небесная бусина уже у планки! Нужно вычесть, а земных бусин не хватает? Сдвинь небесную ВВЕРХ, а земные подними ВВЕРХ к планке! Это обмен Малого друга! 🤝",
+  "ja": "数が5、6、7、8のとき、上の珠はもう梁にくっついています! ひきたいのに下の珠が足りないときは、上の珠を「上」へはなして、かわりに下の珠を梁まで上げよう! これが小さな友だちのチェンジです! 🤝",
+  "th": "ถ้าเลขของเราเป็น 5, 6, 7 หรือ 8 ลูกบนแตะคานกลางอยู่แล้ว! ตอนจะลบแต่ลูกล่างไม่พอ ให้ดันลูกบนขึ้น แล้วดันลูกล่างขึ้นไปแตะคานกลางแทน! นี่คือการสลับแบบเพื่อนเล็ก! 🤝"
+ },
+ "l2_lesson7_step2_body": {
+  "fr": "Essaie 5−1. Le ciel est en BAS. Impossible de retirer 1 boule de la terre ! Formule : pousse le ciel vers le HAUT (−5), monte 4 boules de la terre (+4). 5−5+4 = 4 ! ✅",
+  "es": "Prueba 5−1. El cielo está ABAJO. ¡No puedes quitar 1 de la tierra! Fórmula: empuja el cielo ARRIBA (−5) y 4 de la tierra ARRIBA (+4). ¡5−5+4 = 4! ✅",
+  "pt": "Tente 5−1. O céu está para BAIXO. Não dá para tirar 1 da terra! Fórmula: empurre o céu para CIMA (−5), 4 da terra para CIMA (+4). 5−5+4 = 4! ✅",
+  "tr": "Dene: 5−1. Gök boncuğu AŞAĞIDA. 1 yer boncuğunu kaldıramazsın! Formül: gök boncuğunu YUKARI it (−5), 4 yer boncuğunu YUKARI ekle (+4). 5−5+4 = 4! ✅",
+  "ru": "Попробуй 5−1. Небесная ВНИЗ. Убрать 1 земную нельзя! Формула: сдвинь небесную ВВЕРХ (−5), добавь 4 земные ВВЕРХ (+4). 5−5+4 = 4! ✅",
+  "ja": "5−1 をやってみよう。上の珠は「下」。下の珠は1つもはずせません! 公式: 上の珠を「上」へ (−5)、下の珠を4つ「上」へ (+4)。5−5+4 = 4! ✅",
+  "th": "ลอง 5−1 ลูกบนอยู่ข้างล่าง เอาลูกล่าง 1 ลูกออกไม่ได้! สูตร: ดันลูกบนขึ้น (−5) แล้วดันลูกล่างขึ้น 4 ลูก (+4) 5−5+4 = 4! ✅"
+ },
+ "l2_lesson7_step3_body": {
+  "fr": "Essaie 5−2. Pousse le ciel vers le HAUT (−5), monte 3 boules de la terre (+3). 5−5+3 = 3 ! 🎯",
+  "es": "Prueba 5−2. Empuja el cielo ARRIBA (−5) y 3 de la tierra ARRIBA (+3). ¡5−5+3 = 3! 🎯",
+  "pt": "Tente 5−2. Empurre o céu para CIMA (−5), 3 da terra para CIMA (+3). 5−5+3 = 3! 🎯",
+  "tr": "Dene: 5−2. Gök boncuğunu YUKARI it (−5), 3 yer boncuğunu YUKARI ekle (+3). 5−5+3 = 3! 🎯",
+  "ru": "Попробуй 5−2. Сдвинь небесную ВВЕРХ (−5), добавь 3 земные ВВЕРХ (+3). 5−5+3 = 3! 🎯",
+  "ja": "5−2 をやってみよう。上の珠を「上」へ (−5)、下の珠を3つ「上」へ (+3)。5−5+3 = 3! 🎯",
+  "th": "ลอง 5−2 ดันลูกบนขึ้น (−5) แล้วดันลูกล่างขึ้น 3 ลูก (+3) 5−5+3 = 3! 🎯"
+ },
+ "l2_lesson7_step4_title": {
+  "fr": "−4 = +1−5 (au milieu)",
+  "es": "−4 = +1−5 (rango medio)",
+  "pt": "−4 = +1−5 (intermediário)",
+  "tr": "−4 = +1−5 (orta aralık)",
+  "ru": "−4 = +1−5 (середина)",
+  "ja": "−4 = +1−5 (中くらいの数)",
+  "th": "−4 = +1−5 (ช่วงกลาง)"
+ },
+ "l2_lesson7_step4_body": {
+  "fr": "Essaie 7−4. Ciel + 2 de la terre = 7. Pousse le ciel vers le HAUT (7→2), monte 1 boule de la terre. 7−5+1 = 3 ! 🌟",
+  "es": "Prueba 7−4. Cielo + 2 de la tierra = 7. Empuja el cielo ARRIBA (7→2) y 1 de la tierra ARRIBA. ¡7−5+1 = 3! 🌟",
+  "pt": "Tente 7−4. Céu + 2 da terra = 7. Empurre o céu para CIMA (7→2), 1 da terra para CIMA. 7−5+1 = 3! 🌟",
+  "tr": "Dene: 7−4. Gök + 2 yer = 7. Gök boncuğunu YUKARI it (7→2), 1 yer boncuğunu YUKARI ekle. 7−5+1 = 3! 🌟",
+  "ru": "Попробуй 7−4. Небесная + 2 земные = 7. Сдвинь небесную ВВЕРХ (7→2), добавь 1 земную ВВЕРХ. 7−5+1 = 3! 🌟",
+  "ja": "7−4 をやってみよう。上の珠 + 下の珠2つ = 7。上の珠を「上」へ (7→2)、下の珠を1つ「上」へ。7−5+1 = 3! 🌟",
+  "th": "ลอง 7−4 ลูกบน + ลูกล่าง 2 ลูก = 7 ดันลูกบนขึ้น (7→2) แล้วดันลูกล่างขึ้น 1 ลูก 7−5+1 = 3! 🌟"
+ },
+ "l2_lesson7_step5_title": {
+  "fr": "Schéma du Petit ami −",
+  "es": "Patrón del Pequeño amigo −",
+  "pt": "Padrão do Pequeno Amigo −",
+  "tr": "Küçük Arkadaş − Örüntüsü",
+  "ru": "Закономерность: Малый друг −",
+  "ja": "小さな友だち − のパターン",
+  "th": "รูปแบบเพื่อนเล็ก −"
+ },
+ "l2_lesson7_step5_body": {
+  "fr": "−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5. La boule du ciel s'échange avec des boules de la terre ! Les deux nombres font toujours 5 en tout. 🤝",
+  "es": "−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5. ¡La cuenta del cielo se cambia por cuentas de la tierra! Los dos números siempre suman 5. 🤝",
+  "pt": "−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5. A conta do céu troca com as contas da terra! Os dois números sempre somam 5. 🤝",
+  "tr": "−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5. Gök boncuğu yer boncuklarıyla yer değiştirir! İki sayı her zaman 5 eder. 🤝",
+  "ru": "−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5. Небесная бусина меняется на земные! Два числа всегда дают в сумме 5. 🤝",
+  "ja": "−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5。上の珠と下の珠がチェンジ! 2つの数をたすと、いつも5です。🤝",
+  "th": "−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5 ลูกบนสลับกับลูกล่าง! เลขสองตัวรวมกันได้ 5 เสมอ 🤝"
+ },
+ "l2_lesson8_step1_title": {
+  "fr": "Grand ami +",
+  "es": "Gran amigo +",
+  "pt": "Grande Amigo +",
+  "tr": "Büyük Arkadaş +",
+  "ru": "Большой друг +",
+  "ja": "大きな友だち +",
+  "th": "เพื่อนใหญ่ +"
+ },
+ "l2_lesson8_step1_body": {
+  "fr": "Quand la tige des unités est pleine et que le résultat atteint 10 ou plus, reporte une boule sur la tige des DIZAINES ! Formule : +N = +10 − (10−N). Regarde la tige des dizaines s'allumer !",
+  "es": "Cuando la varilla de las unidades está llena y el resultado llega a 10 o más, ¡lleva una cuenta a la varilla de las DECENAS! Fórmula: +N = +10 − (10−N). ¡Mira cómo se ilumina la varilla de las decenas!",
+  "pt": "Quando a haste das unidades está cheia e o resultado chega a 10 ou mais, passe uma conta para a haste das DEZENAS! Fórmula: +N = +10 − (10−N). Veja a haste das dezenas acender!",
+  "tr": "Birler çubuğu doluysa ve sonuç 10 ya da daha fazla oluyorsa, bir boncuğu ONLAR çubuğuna taşı! Formül: +N = +10 − (10−N). Onlar çubuğunun parlamasını izle!",
+  "ru": "Когда спица единиц заполнена и ответ 10 или больше, перенеси бусину на спицу ДЕСЯТКОВ! Формула: +N = +10 − (10−N). Смотри, как загорается спица десятков!",
+  "ja": "一の位がいっぱいで、答えが10以上になるときは、十の位に珠をくり上げよう! 公式: +N = +10 − (10−N)。十の位の桁が光るのを見てね!",
+  "th": "เมื่อแกนหลักหน่วยเต็มและผลลัพธ์ถึง 10 ขึ้นไป ให้ทดลูกไปที่แกนหลักสิบ! สูตรเพื่อนใหญ่ (ส่วนเติมเต็ม 10): +N = +10 − (10−N) ดูแกนหลักสิบสว่างขึ้นนะ!"
+ },
+ "l2_lesson8_step2_body": {
+  "fr": "Essaie 9+1. Les unités sont pleines (ciel+4 terre=9). Retenue : ajoute 1 aux DIZAINES, retire 9 des unités. 9+1=10 → dizaines=1, unités=0 ! 🎉",
+  "es": "Prueba 9+1. Las unidades están llenas (cielo+4 tierra=9). Lleva: suma 1 a las DECENAS y quita 9 de las unidades. ¡9+1=10 → decenas=1, unidades=0! 🎉",
+  "pt": "Tente 9+1. As unidades estão cheias (céu+4 da terra=9). Passe: some 1 às DEZENAS, tire 9 das unidades. 9+1=10 → dezenas=1, unidades=0! 🎉",
+  "tr": "Dene: 9+1. Birler dolu (gök+4yer=9). Elde: ONLARA 1 ekle, birlerden 9 kaldır. 9+1=10 → onlar=1, birler=0! 🎉",
+  "ru": "Попробуй 9+1. Единицы заполнены (небесная+4 земные=9). Перенос: добавь 1 к ДЕСЯТКАМ, убери 9 из единиц. 9+1=10 → десятки=1, единицы=0! 🎉",
+  "ja": "9+1 をやってみよう。一の位はいっぱい (上の珠+下の珠4つ=9)。くり上げ: 十の位に1をたして、一の位から9をとる。9+1=10 → 十の位=1、一の位=0! 🎉",
+  "th": "ลอง 9+1 หลักหน่วยเต็ม (ลูกบน+ลูกล่าง 4 ลูก=9) ทด: บวก 1 ที่หลักสิบ แล้วเอา 9 ออกจากหลักหน่วย 9+1=10 → หลักสิบ=1 หลักหน่วย=0! 🎉"
+ },
+ "l2_lesson8_step3_body": {
+  "fr": "Essaie 5+6. Les unités montrent 5 (ciel). Retenue : ajoute 1 aux DIZAINES, retire 4 des unités. 5+6=11 → dizaines=1, unités=1 ! ✨",
+  "es": "Prueba 5+6. Las unidades muestran 5 (cielo). Lleva: suma 1 a las DECENAS y quita 4 de las unidades. ¡5+6=11 → decenas=1, unidades=1! ✨",
+  "pt": "Tente 5+6. As unidades mostram 5 (céu). Passe: some 1 às DEZENAS, tire 4 das unidades. 5+6=11 → dezenas=1, unidades=1! ✨",
+  "tr": "Dene: 5+6. Birler 5'i (gök) gösteriyor. Elde: ONLARA 1 ekle, birlerden 4 kaldır. 5+6=11 → onlar=1, birler=1! ✨",
+  "ru": "Попробуй 5+6. В единицах 5 (небесная). Перенос: добавь 1 к ДЕСЯТКАМ, убери 4 из единиц. 5+6=11 → десятки=1, единицы=1! ✨",
+  "ja": "5+6 をやってみよう。一の位は5 (上の珠)。くり上げ: 十の位に1をたして、一の位から4をとる。5+6=11 → 十の位=1、一の位=1! ✨",
+  "th": "ลอง 5+6 หลักหน่วยแสดง 5 (ลูกบน) ทด: บวก 1 ที่หลักสิบ แล้วเอา 4 ออกจากหลักหน่วย 5+6=11 → หลักสิบ=1 หลักหน่วย=1! ✨"
+ },
+ "l2_lesson8_step4_body": {
+  "fr": "Essaie 5+9. Ciel en bas (=5). Retenue : ajoute 1 aux DIZAINES, enlève 1 aux unités : ciel en HAUT + 4 de la terre en HAUT. 5+9=14 → dizaines=1, unités=4 ! 🌟",
+  "es": "Prueba 5+9. Cielo abajo (=5). Lleva: suma 1 a las DECENAS, quita 1 de las unidades: cielo ARRIBA + 4 de la tierra ARRIBA. ¡5+9=14 → decenas=1, unidades=4! 🌟",
+  "pt": "Tente 5+9. Céu para baixo (=5). Passe: some 1 às DEZENAS, tire 1 das unidades: céu para CIMA + 4 da terra para CIMA. 5+9=14 → dezenas=1, unidades=4! 🌟",
+  "tr": "Dene: 5+9. Gök aşağıda (=5). Elde: ONLARA 1 ekle, birlerden 1 çıkar: gök YUKARI + 4 yer YUKARI. 5+9=14 → onlar=1, birler=4! 🌟",
+  "ru": "Попробуй 5+9. Небесная внизу (=5). Перенос: добавь 1 к ДЕСЯТКАМ, убери 1 из единиц: небесная ВВЕРХ + 4 земные ВВЕРХ. 5+9=14 → десятки=1, единицы=4! 🌟",
+  "ja": "5+9 をやってみよう。上の珠は「下」(=5)。くり上げ: 十の位に1をたして、一の位から1をひく: 上の珠を「上」へ + 下の珠を4つ「上」へ。5+9=14 → 十の位=1、一の位=4! 🌟",
+  "th": "ลอง 5+9 ลูกบนอยู่ข้างล่าง (=5) ทด: บวก 1 ที่หลักสิบ ลบ 1 ที่หลักหน่วย: ลูกบนยกขึ้น + ลูกล่าง 4 ลูกดันขึ้น 5+9=14 → หลักสิบ=1 หลักหน่วย=4! 🌟"
+ },
+ "l2_lesson8_step5_title": {
+  "fr": "Schéma du Grand ami +",
+  "es": "Patrón del Gran amigo +",
+  "pt": "Padrão do Grande Amigo +",
+  "tr": "Büyük Arkadaş + Örüntüsü",
+  "ru": "Закономерность: Большой друг +",
+  "ja": "大きな友だち + のパターン",
+  "th": "รูปแบบเพื่อนใหญ่ +"
+ },
+ "l2_lesson8_step5_body": {
+  "fr": "+1=−9+10, +2=−8+10 … +9=−1+10. Toujours : ajoute 10 aux dizaines, retire le complément des unités. Les paires font 10 en tout ! 🔢",
+  "es": "+1=−9+10, +2=−8+10 … +9=−1+10. Siempre: suma 10 a las decenas y resta el complemento a las unidades. ¡Las parejas suman 10! 🔢",
+  "pt": "+1=−9+10, +2=−8+10 … +9=−1+10. Sempre: some 10 às dezenas, subtraia o complemento das unidades. Os pares somam 10! 🔢",
+  "tr": "+1=−9+10, +2=−8+10 … +9=−1+10. Her zaman: onlara 10 ekle, birlerden tamamlayan sayıyı çıkar. Sayı çiftleri 10 eder! 🔢",
+  "ru": "+1=−9+10, +2=−8+10 … +9=−1+10. Всегда: добавь 10 к десяткам, вычти дополнение из единиц. Пары дают в сумме 10! 🔢",
+  "ja": "+1=−9+10, +2=−8+10 … +9=−1+10。いつも同じ: 十の位に10をたして、一の位から「たして10になる数」をひく。ペアをたすと10! 🔢",
+  "th": "+1=−9+10, +2=−8+10 … +9=−1+10 ทุกครั้ง: บวก 10 ที่หลักสิบ แล้วลบส่วนเติมเต็มออกจากหลักหน่วย เลขคู่กันรวมได้ 10! 🔢"
+ },
+ "l2_lesson9_step1_title": {
+  "fr": "Grand ami −",
+  "es": "Gran amigo −",
+  "pt": "Grande Amigo −",
+  "tr": "Büyük Arkadaş −",
+  "ru": "Большой друг −",
+  "ja": "大きな友だち −",
+  "th": "เพื่อนใหญ่ −"
+ },
+ "l2_lesson9_step1_body": {
+  "fr": "Quand la tige des unités n'a pas assez de boules pour soustraire, EMPRUNTE aux dizaines ! Formule : −N = −10 + (10−N).",
+  "es": "Cuando la varilla de las unidades no tiene suficientes cuentas para restar, ¡PIDE PRESTADO a la varilla de las decenas! Fórmula: −N = −10 + (10−N).",
+  "pt": "Quando a haste das unidades não tem contas suficientes para subtrair, PEÇA EMPRESTADO da haste das dezenas! Fórmula: −N = −10 + (10−N).",
+  "tr": "Birler çubuğunda çıkarmak için yeterli boncuk yoksa ONLAR çubuğundan ÖDÜNÇ AL! Formül: −N = −10 + (10−N).",
+  "ru": "Когда на спице единиц не хватает бусин для вычитания, ЗАЙМИ у десятков! Формула: −N = −10 + (10−N).",
+  "ja": "一の位の珠が足りなくて、ひけないときは、十の位から「かり」ましょう! 公式: −N = −10 + (10−N)。",
+  "th": "เมื่อแกนหลักหน่วยมีลูกไม่พอให้ลบ ให้ยืมจากแกนหลักสิบ! สูตร: −N = −10 + (10−N)"
+ },
+ "l2_lesson9_step2_body": {
+  "fr": "Essaie 10−1. Les unités sont à 0 ! Emprunte : retire 1 aux DIZAINES, ajoute 9 aux unités. 10−1=9 → dizaines=0, unités=9 ! ✅",
+  "es": "Prueba 10−1. ¡Las unidades están en 0! Pide prestado: quita 1 de las DECENAS y suma 9 a las unidades. ¡10−1=9 → decenas=0, unidades=9! ✅",
+  "pt": "Tente 10−1. As unidades estão em 0! Empréstimo: tire 1 das DEZENAS, some 9 às unidades. 10−1=9 → dezenas=0, unidades=9! ✅",
+  "tr": "Dene: 10−1. Birler 0! Ödünç al: ONLARDAN 1 kaldır, birlere 9 ekle. 10−1=9 → onlar=0, birler=9! ✅",
+  "ru": "Попробуй 10−1. В единицах 0! Займи: убери 1 из ДЕСЯТКОВ, добавь 9 к единицам. 10−1=9 → десятки=0, единицы=9! ✅",
+  "ja": "10−1 をやってみよう。一の位は0! かりる: 十の位から1をとって、一の位に9をたす。10−1=9 → 十の位=0、一の位=9! ✅",
+  "th": "ลอง 10−1 หลักหน่วยเป็น 0! ยืม: เอา 1 ออกจากหลักสิบ แล้วบวก 9 ที่หลักหน่วย 10−1=9 → หลักสิบ=0 หลักหน่วย=9! ✅"
+ },
+ "l2_lesson9_step3_body": {
+  "fr": "Essaie 10−2. Emprunte : retire 1 aux DIZAINES, ajoute 8 aux unités. 10−2=8 ! ✨",
+  "es": "Prueba 10−2. Pide prestado: quita 1 de las DECENAS y suma 8 a las unidades. ¡10−2=8! ✨",
+  "pt": "Tente 10−2. Empréstimo: tire 1 das DEZENAS, some 8 às unidades. 10−2=8! ✨",
+  "tr": "Dene: 10−2. Ödünç al: ONLARDAN 1 kaldır, birlere 8 ekle. 10−2=8! ✨",
+  "ru": "Попробуй 10−2. Займи: убери 1 из ДЕСЯТКОВ, добавь 8 к единицам. 10−2=8! ✨",
+  "ja": "10−2 をやってみよう。かりる: 十の位から1をとって、一の位に8をたす。10−2=8! ✨",
+  "th": "ลอง 10−2 ยืม: เอา 1 ออกจากหลักสิบ แล้วบวก 8 ที่หลักหน่วย 10−2=8! ✨"
+ },
+ "l2_lesson9_step4_body": {
+  "fr": "Essaie 11−6. Les unités n'ont que 1 boule — impossible d'en retirer 6 ! Emprunte : −1 aux DIZAINES, +4 aux unités. 11−6=5 ! 🎯",
+  "es": "Prueba 11−6. Las unidades solo tienen 1 cuenta, ¡no puedes quitar 6! Pide prestado: −1 a las DECENAS, +4 a las unidades. ¡11−6=5! 🎯",
+  "pt": "Tente 11−6. As unidades têm só 1 conta — não dá para tirar 6! Empréstimo: −1 das DEZENAS, +4 às unidades. 11−6=5! 🎯",
+  "tr": "Dene: 11−6. Birlerde yalnızca 1 boncuk var — 6 kaldıramazsın! Ödünç al: ONLARDAN −1, birlere +4. 11−6=5! 🎯",
+  "ru": "Попробуй 11−6. В единицах всего 1 бусина — убрать 6 нельзя! Займи: −1 из ДЕСЯТКОВ, +4 к единицам. 11−6=5! 🎯",
+  "ja": "11−6 をやってみよう。一の位は珠が1つだけ。6はとれません! かりる: 十の位から −1、一の位に +4。11−6=5! 🎯",
+  "th": "ลอง 11−6 หลักหน่วยมีลูกแค่ 1 ลูก เอา 6 ออกไม่ได้! ยืม: −1 จากหลักสิบ, +4 ที่หลักหน่วย 11−6=5! 🎯"
+ },
+ "l2_lesson9_step5_title": {
+  "fr": "Schéma du Grand ami −",
+  "es": "Patrón del Gran amigo −",
+  "pt": "Padrão do Grande Amigo −",
+  "tr": "Büyük Arkadaş − Örüntüsü",
+  "ru": "Закономерность: Большой друг −",
+  "ja": "大きな友だち − のパターン",
+  "th": "รูปแบบเพื่อนใหญ่ −"
+ },
+ "l2_lesson9_step5_body": {
+  "fr": "−1=+9−10, −2=+8−10 … −9=+1−10. Toujours : emprunte 10 aux dizaines, ajoute le complément aux unités. Les paires font 10 en tout ! 🔢",
+  "es": "−1=+9−10, −2=+8−10 … −9=+1−10. Siempre: pide prestado 10 a las decenas y suma el complemento a las unidades. ¡Las parejas suman 10! 🔢",
+  "pt": "−1=+9−10, −2=+8−10 … −9=+1−10. Sempre: peça 10 emprestado das dezenas, some o complemento às unidades. Os pares somam 10! 🔢",
+  "tr": "−1=+9−10, −2=+8−10 … −9=+1−10. Her zaman: onlardan 10 ödünç al, birlere tamamlayan sayıyı ekle. Sayı çiftleri 10 eder! 🔢",
+  "ru": "−1=+9−10, −2=+8−10 … −9=+1−10. Всегда: займи 10 у десятков, добавь дополнение к единицам. Пары дают в сумме 10! 🔢",
+  "ja": "−1=+9−10, −2=+8−10 … −9=+1−10。いつも同じ: 十の位から10をかりて、一の位に「たして10になる数」をたす。ペアをたすと10! 🔢",
+  "th": "−1=+9−10, −2=+8−10 … −9=+1−10 ทุกครั้ง: ยืม 10 จากหลักสิบ แล้วบวกส่วนเติมเต็มที่หลักหน่วย เลขคู่กันรวมได้ 10! 🔢"
+ },
+ "l2_lesson10_step1_title": {
+  "fr": "Les formules Famille !",
+  "es": "¡Fórmulas de la Familia!",
+  "pt": "Fórmulas da Família!",
+  "tr": "Aile Formülleri!",
+  "ru": "Формулы «Семья»!",
+  "ja": "家族の公式!",
+  "th": "สูตรครอบครัว!"
+ },
+ "l2_lesson10_step1_body": {
+  "fr": "Parfois, il faut À LA FOIS un échange avec la boule du ciel ET une retenue aux dizaines en un seul geste. Cette formule « Famille » réunit le Petit ami + le Grand ami !",
+  "es": "A veces necesitas AMBAS cosas: cambiar la cuenta del cielo Y llevar a las decenas, todo en un solo paso. ¡Esta fórmula de la «Familia» une al Pequeño amigo y al Gran amigo!",
+  "pt": "Às vezes você precisa dos DOIS: trocar a conta do céu E passar para as dezenas, num só passo. A fórmula 'Família' junta o Pequeno Amigo + o Grande Amigo!",
+  "tr": "Bazen tek adımda HEM gök boncuğu değişimi HEM de onlara elde gerekir. Bu 'Aile' formülü Küçük Arkadaş ile Büyük Arkadaş'ı bir araya getirir!",
+  "ru": "Иногда нужны ОБА шага сразу: обмен небесной бусины И перенос в десятки. Формула «Семья» объединяет Малого друга и Большого друга!",
+  "ja": "1回の動きで、上の珠のチェンジ「と」十の位へのくり上げが、どちらも必要なときがあります。この「家族」の公式は、小さな友だちと大きな友だちが、いっしょになったものです!",
+  "th": "บางครั้งต้องทั้งสลับลูกบนและทดไปหลักสิบในขั้นเดียว สูตร 'ครอบครัว' รวมเพื่อนเล็ก + เพื่อนใหญ่ไว้ด้วยกัน!"
+ },
+ "l2_lesson10_step2_body": {
+  "fr": "Essaie 7+6. Le ciel est en bas (7=ciel+2 terre). Famille : ciel vers le HAUT (7→2), retenue aux dizaines, ajoute 1 boule de la terre. 7+6=13 ! ✨",
+  "es": "Prueba 7+6. El cielo está abajo (7=cielo+2 tierra). Familia: cielo ARRIBA (7→2), lleva a las decenas y suma 1 de la tierra. ¡7+6=13! ✨",
+  "pt": "Tente 7+6. O céu está para baixo (7=céu+2 da terra). Família: céu para CIMA (7→2), passe às dezenas, some 1 da terra. 7+6=13! ✨",
+  "tr": "Dene: 7+6. Gök aşağıda (7=gök+2yer). Aile: gök YUKARI (7→2), onlara taşı, 1 yer ekle. 7+6=13! ✨",
+  "ru": "Попробуй 7+6. Небесная внизу (7 = небесная + 2 земные). Семья: небесную ВВЕРХ (7→2), перенос в десятки, добавь 1 земную. 7+6=13! ✨",
+  "ja": "7+6 をやってみよう。上の珠は「下」(7=上の珠+下の珠2つ)。家族: 上の珠を「上」へ (7→2)、十の位にくり上げ、下の珠を1つたす。7+6=13! ✨",
+  "th": "ลอง 7+6 ลูกบนอยู่ข้างล่าง (7=ลูกบน+ลูกล่าง 2 ลูก) ครอบครัว: ดันลูกบนขึ้น (7→2) ทดไปหลักสิบ แล้วบวกลูกล่าง 1 ลูก 7+6=13! ✨"
+ },
+ "l2_lesson10_step3_body": {
+  "fr": "Essaie 6+9. Ciel vers le HAUT (6→1), retenue aux dizaines, ajoute 4 boules de la terre. 6+9=15 ! 🎯",
+  "es": "Prueba 6+9. Cielo ARRIBA (6→1), lleva a las decenas y suma 4 de la tierra. ¡6+9=15! 🎯",
+  "pt": "Tente 6+9. Céu para CIMA (6→1), passe às dezenas, some 4 da terra. 6+9=15! 🎯",
+  "tr": "Dene: 6+9. Gök YUKARI (6→1), onlara taşı, 4 yer ekle. 6+9=15! 🎯",
+  "ru": "Попробуй 6+9. Небесную ВВЕРХ (6→1), перенос в десятки, добавь 4 земные. 6+9=15! 🎯",
+  "ja": "6+9 をやってみよう。上の珠を「上」へ (6→1)、十の位にくり上げ、下の珠を4つたす。6+9=15! 🎯",
+  "th": "ลอง 6+9 ดันลูกบนขึ้น (6→1) ทดไปหลักสิบ แล้วบวกลูกล่าง 4 ลูก 6+9=15! 🎯"
+ },
+ "l2_lesson10_step4_body": {
+  "fr": "Essaie 11−6. Dizaines=1, unités=1. Emprunte aux dizaines (−10), pousse le ciel vers le BAS (+5), retire 1 boule de la terre (−1). 11−6=5 ! 🌟",
+  "es": "Prueba 11−6. Decenas=1, unidades=1. Pide prestado a las decenas (−10), empuja el cielo ABAJO (+5) y quita 1 de la tierra (−1). ¡11−6=5! 🌟",
+  "pt": "Tente 11−6. Dezenas=1, unidades=1. Empréstimo das dezenas (−10), céu para BAIXO (+5), tire 1 da terra (−1). 11−6=5! 🌟",
+  "tr": "Dene: 11−6. Onlar=1, birler=1. Onlardan ödünç al (−10), gök boncuğunu AŞAĞI it (+5), 1 yer kaldır (−1). 11−6=5! 🌟",
+  "ru": "Попробуй 11−6. Десятки=1, единицы=1. Займи у десятков (−10), сдвинь небесную ВНИЗ (+5), убери 1 земную (−1). 11−6=5! 🌟",
+  "ja": "11−6 をやってみよう。十の位=1、一の位=1。十の位からかりて (−10)、上の珠を「下」へ (+5)、下の珠を1つはずす (−1)。11−6=5! 🌟",
+  "th": "ลอง 11−6 หลักสิบ=1 หลักหน่วย=1 ยืมจากหลักสิบ (−10) ดันลูกบนลง (+5) แล้วเอาลูกล่างออก 1 ลูก (−1) 11−6=5! 🌟"
+ },
+ "l2_lesson10_step5_title": {
+  "fr": "Famille terminée !",
+  "es": "¡Familia completa!",
+  "pt": "Família Completa!",
+  "tr": "Aile Tamam!",
+  "ru": "Семья освоена!",
+  "ja": "家族クリア!",
+  "th": "ครอบครัวครบแล้ว!"
+ },
+ "l2_lesson10_step5_body": {
+  "fr": "+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10. Niveau 2 terminé ! 🎊",
+  "es": "+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10. ¡Nivel 2 terminado! 🎊",
+  "pt": "+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10. Nível 2 concluído! 🎊",
+  "tr": "+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10. 2. Seviye bitti! 🎊",
+  "ru": "+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10. Уровень 2 пройден! 🎊",
+  "ja": "+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10。レベル2 おわり! 🎊",
+  "th": "+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10 จบระดับ 2 แล้ว! 🎊"
+ },
+ "l2_reference": {
+  "fr": "Référence",
+  "es": "Referencia",
+  "pt": "Referência",
+  "tr": "Rehber",
+  "ru": "Справочник",
+  "ja": "公式まとめ",
+  "th": "ตารางสูตร"
+ },
+ "l2_two_cols": {
+  "fr": "2 col.",
+  "es": "2 col.",
+  "pt": "2 col.",
+  "tr": "2 sütun",
+  "ru": "2 колонки",
+  "ja": "2列",
+  "th": "2 คอลัมน์"
+ },
+ "l2_phase_practice_desc": {
+  "fr": "Résous les calculs sur ton boulier",
+  "es": "Resuelve operaciones en tu ábaco",
+  "pt": "Resolva as contas no seu ábaco",
+  "tr": "İşlemleri abaküste çöz",
+  "ru": "Решай примеры на своём абакусе",
+  "ja": "そろばんで式をといてみよう",
+  "th": "ทำโจทย์บนลูกคิด"
+ },
+ "l2_phase_quiz_desc": {
+  "fr": "Teste-toi en maths et gagne des étoiles !",
+  "es": "¡Pon a prueba tus mates y gana estrellas!",
+  "pt": "Teste sua matemática e ganhe estrelas!",
+  "tr": "Matematik becerilerini sına, yıldız kazan!",
+  "ru": "Проверь свои силы и получи звёзды!",
+  "ja": "計算の力をためして、星をゲットしよう!",
+  "th": "ทดสอบฝีมือเลขและรับดาว!"
+ },
+ "l2_start_zero": {
+  "fr": "Départ : 0",
+  "es": "Inicio: 0",
+  "pt": "Início: 0",
+  "tr": "Başla: 0",
+  "ru": "Старт: 0",
+  "ja": "スタート: 0",
+  "th": "เริ่ม: 0"
+ },
+ "l2_watch_animate": {
+  "fr": "👀 Regarde le boulier s'animer !",
+  "es": "👀 ¡Mira cómo se mueve el ábaco!",
+  "pt": "👀 Veja o ábaco em ação!",
+  "tr": "👀 Abaküsün hareketini izle!",
+  "ru": "👀 Смотри, как двигаются бусины!",
+  "ja": "👀 そろばんの動きを見てね!",
+  "th": "👀 ดูลูกคิดเคลื่อนไหวสิ!"
+ },
+ "l2_quiz_what_answer": {
+  "fr": "Quelle est la réponse ? 🤔",
+  "es": "¿Cuál es la respuesta? 🤔",
+  "pt": "Qual é a resposta? 🤔",
+  "tr": "Cevap ne? 🤔",
+  "ru": "Какой ответ? 🤔",
+  "ja": "答えはいくつ? 🤔",
+  "th": "คำตอบคืออะไร? 🤔"
+ },
+ "l2_quiz_perfect": {
+  "fr": "Score parfait ! Tu es une star des maths ! 🌟",
+  "es": "¡Puntuación perfecta! ¡Eres una estrella de las mates! 🌟",
+  "pt": "Acertou Tudo! Você é uma Estrela da Matemática! 🌟",
+  "tr": "Tam Puan! Sen Bir Matematik Yıldızısın! 🌟",
+  "ru": "Без ошибок! Ты звезда математики! 🌟",
+  "ja": "満点です! きみは計算スター! 🌟",
+  "th": "เต็มคะแนน! เก่งเลขเป็นดาวเลย! 🌟"
+ },
+ "l2_try_on_abacus": {
+  "fr": "Essaie sur ton\nboulier ! →",
+  "es": "¡Pruébalo en tu\nábaco! →",
+  "pt": "Tente no seu\nábaco! →",
+  "tr": "Abaküste\ndene! →",
+  "ru": "Попробуй на своём\nабакусе! →",
+  "ja": "そろばんで\nやってみよう! →",
+  "th": "ลองทำบน\nลูกคิดเลย! →"
+ },
+ "l2_solve_instruction": {
+  "fr": "Résous-le sur ton boulier, puis\nvérifie ta réponse :\n%1$s",
+  "es": "Resuélvelo en tu ábaco y luego\ncomprueba tu respuesta:\n%1$s",
+  "pt": "Resolva no seu ábaco e depois\nconfira a resposta:\n%1$s",
+  "tr": "Önce abaküste çöz, sonra\ncevabını kontrol et:\n%1$s",
+  "ru": "Реши на своём абакусе,\nпотом проверь ответ:\n%1$s",
+  "ja": "そろばんでといてから、\n答えをたしかめよう:\n%1$s",
+  "th": "ทำบนลูกคิดก่อน แล้ว\nตรวจคำตอบ:\n%1$s"
+ },
+ "l2_replay_arrow": {
+  "fr": "Revoir ▶",
+  "es": "Repetir ▶",
+  "pt": "Repetir ▶",
+  "tr": "Tekrar Oynat ▶",
+  "ru": "Повтор ▶",
+  "ja": "もう一度 ▶",
+  "th": "ดูซ้ำ ▶"
+ },
+ "l2_practice_done_msg": {
+  "fr": "Génial ! Tu as résolu les %1$d calculs sur le boulier !\nOn passe au quiz ?",
+  "es": "¡Increíble! ¡Resolviste las %1$d operaciones en el ábaco!\n¿Listo para el cuestionario?",
+  "pt": "Incrível! Você resolveu todas as %1$d contas no ábaco!\nVamos fazer o questionário?",
+  "tr": "Harika! %1$d işlemin hepsini abaküste çözdün!\nTeste hazır mısın?",
+  "ru": "Супер! Все примеры (%1$d) решены на абакусе!\nПройдём викторину?",
+  "ja": "すばらしい! %1$d個の式を、ぜんぶそろばんでとけました!\nクイズにちょうせんしますか?",
+  "th": "สุดยอด! ทำครบทั้ง %1$d โจทย์บนลูกคิดแล้ว!\nพร้อมทำแบบทดสอบหรือยัง?"
+ },
+ "l2_group1_why": {
+  "fr": "La tige des unités ne peut tenir que 4 boules de la terre ! Quand il n'y a plus de place pour d'autres boules de la terre mais que la réponse reste sous 10, on fait un échange magique avec la boule du ciel ! 🪄",
+  "es": "¡La varilla de las unidades solo guarda 4 cuentas de la tierra! Cuando ya no caben más pero la respuesta sigue por debajo de 10, ¡hacemos un cambio mágico con la cuenta del cielo! 🪄",
+  "pt": "A haste das unidades só aguenta 4 contas da terra! Quando não cabem mais contas da terra mas a resposta ainda é menor que 10, fazemos uma troca mágica com a conta do céu! 🪄",
+  "tr": "Birler çubuğuna yalnızca 4 yer boncuğu sığar! Yer boncukları için yer kalmadı ama cevap hâlâ 10'dan küçükse, gök boncuğuyla sihirli bir değişim yaparız! 🪄",
+  "ru": "На спице единиц помещаются только 4 земные бусины! Когда земным уже нет места, а ответ всё ещё меньше 10, мы делаем волшебный обмен с небесной бусиной! 🪄",
+  "ja": "一の位の桁には、下の珠が4つまでしか入りません! 下の珠をおく場所がないのに、答えがまだ10より小さいときは、上の珠を使った、まほうのチェンジをします! 🪄",
+  "th": "แกนหลักหน่วยมีลูกล่างได้แค่ 4 ลูก! ถ้าลูกล่างไม่มีที่ว่างแล้ว แต่คำตอบยังไม่ถึง 10 เราก็สลับกับลูกบนด้วยเวทมนตร์! 🪄"
+ },
+ "l2_group1_when": {
+  "fr": "Quand tu veux ajouter 1, 2, 3 ou 4 — mais qu'il n'y a plus de place pour les boules de la terre !",
+  "es": "¡Cuando quieres sumar 1, 2, 3 o 4, pero ya no hay espacio para más cuentas de la tierra!",
+  "pt": "Quando você quer somar 1, 2, 3 ou 4 — mas não há mais espaço para contas da terra!",
+  "tr": "1, 2, 3 veya 4 eklemek istediğinde — ama yer boncukları için yer kalmadığında!",
+  "ru": "Когда нужно прибавить 1, 2, 3 или 4, но места для земных бусин уже нет!",
+  "ja": "1、2、3、4をたしたいのに、下の珠をおく場所がないとき!",
+  "th": "เวลาจะบวก 1, 2, 3 หรือ 4 แต่ลูกล่างไม่มีที่ว่างแล้ว!"
+ },
+ "l2_group1_how": {
+  "fr": "Pousse des boules de la terre vers le BAS + pousse la boule du ciel vers le BAS en même temps. Deux gestes = une réponse ! 🤝",
+  "es": "Empuja cuentas de la tierra ABAJO + empuja la cuenta del cielo ABAJO al mismo tiempo. ¡Dos movimientos = una respuesta! 🤝",
+  "pt": "Empurre contas da terra para BAIXO + a conta do céu para BAIXO ao mesmo tempo. Dois movimentos = uma resposta! 🤝",
+  "tr": "Yer boncuklarını AŞAĞI it + gök boncuğunu AŞAĞI it, aynı anda. İki hareket = bir cevap! 🤝",
+  "ru": "Сдвинь земные бусины ВНИЗ и сразу небесную бусину ВНИЗ. Два движения = один ответ! 🤝",
+  "ja": "下の珠を下げて、同時に上の珠も下げます。2つの動きで、ひとつの答え! 🤝",
+  "th": "ดันลูกล่างลง + ดันลูกบนลงพร้อมกัน สองขั้น = หนึ่งคำตอบ! 🤝"
+ },
+ "l2_group2_why": {
+  "fr": "Quand ton nombre est entre 5 et 8, la boule du ciel est déjà en bas. Tu dois soustraire mais il n'y a pas assez de boules de la terre ? Remets la boule du ciel en place et récupère des boules de la terre en échange ! 🔄",
+  "es": "Cuando tu número es 5–8, la cuenta del cielo ya está abajo. ¿Tienes que restar y no hay suficientes cuentas de la tierra? ¡Devuelve la cuenta del cielo y recibe cuentas de la tierra a cambio! 🔄",
+  "pt": "Quando seu número é 5–8, a conta do céu já está para baixo. Precisa subtrair mas faltam contas da terra? Devolva a conta do céu e receba contas da terra em troca! 🔄",
+  "tr": "Sayın 5–8 arasındayken gök boncuğu zaten aşağıdadır. Çıkarmak gerekiyor ama yer boncuğu yetmiyor mu? Gök boncuğunu geri ver, karşılığında yer boncukları al! 🔄",
+  "ru": "Когда на абакусе 5–8, небесная бусина уже внизу. Нужно вычесть, а земных бусин мало? Верни небесную бусину и получи взамен земные! 🔄",
+  "ja": "数が5–8のとき、上の珠はもう下がっています。ひきたいのに下の珠が足りない? 上の珠を元にもどして、かわりに下の珠をもらおう! 🔄",
+  "th": "เมื่อเลขเป็น 5–8 ลูกบนลงมาอยู่แล้ว ถ้าจะลบแต่ลูกล่างไม่พอ ก็เอาลูกบนขึ้น แล้วรับลูกล่างมาแทน! 🔄"
+ },
+ "l2_group2_when": {
+  "fr": "Quand tu veux soustraire 1, 2, 3 ou 4 — mais qu'il n'y a pas assez de boules de la terre à retirer !",
+  "es": "¡Cuando quieres restar 1, 2, 3 o 4, pero no hay suficientes cuentas de la tierra para quitar!",
+  "pt": "Quando você quer subtrair 1, 2, 3 ou 4 — mas não há contas da terra suficientes para tirar!",
+  "tr": "1, 2, 3 veya 4 çıkarmak istediğinde — ama kaldıracak yeterli yer boncuğu olmadığında!",
+  "ru": "Когда нужно вычесть 1, 2, 3 или 4, но земных бусин не хватает!",
+  "ja": "1、2、3、4をひきたいのに、とれる下の珠が足りないとき!",
+  "th": "เวลาจะลบ 1, 2, 3 หรือ 4 แต่ลูกล่างมีไม่พอให้เอาออก!"
+ },
+ "l2_group2_how": {
+  "fr": "Pousse la boule du ciel vers le HAUT + monte des boules de la terre en même temps. Deux gestes = une réponse ! 🤝",
+  "es": "Empuja la cuenta del cielo ARRIBA + suma cuentas de la tierra ARRIBA al mismo tiempo. ¡Dos movimientos = una respuesta! 🤝",
+  "pt": "Empurre a conta do céu para CIMA + contas da terra para CIMA ao mesmo tempo. Dois movimentos = uma resposta! 🤝",
+  "tr": "Gök boncuğunu YUKARI it + yer boncuklarını YUKARI ekle, aynı anda. İki hareket = bir cevap! 🤝",
+  "ru": "Сдвинь небесную бусину ВВЕРХ и сразу добавь земные бусины ВВЕРХ. Два движения = один ответ! 🤝",
+  "ja": "上の珠を「上」へ、同時に下の珠も「上」へ。2つの動きで、ひとつの答え! 🤝",
+  "th": "ดันลูกบนขึ้น + ดันลูกล่างขึ้นพร้อมกัน สองขั้น = หนึ่งคำตอบ! 🤝"
+ },
+ "l2_group3_why": {
+  "fr": "Quand une addition te fait arriver à 10 ou plus, tu dois reporter sur la tige des DIZAINES juste à côté ! C'est comme déménager dans un plus grand quartier ! 🏘️",
+  "es": "Cuando al sumar el total llega a 10 o más, ¡hay que llevar a la varilla de las DECENAS, la de al lado! ¡Es como mudarse a un barrio más grande! 🏘️",
+  "pt": "Quando a soma chega a 10 ou mais, é preciso passar para a haste das DEZENAS ao lado! Pense que você se mudou para um bairro maior! 🏘️",
+  "tr": "Toplama sonucu 10 ya da daha büyük olunca, yandaki ONLAR çubuğuna elde taşımak gerekir! Daha büyük bir mahalleye taşındığını düşün! 🏘️",
+  "ru": "Когда после сложения выходит 10 или больше, нужен перенос на соседнюю спицу ДЕСЯТКОВ! Как переезд в район побольше! 🏘️",
+  "ja": "たして合計が10以上になるときは、となりの十の位の桁にくり上げます! 大きな町へお引っこし、というイメージです! 🏘️",
+  "th": "เมื่อบวกแล้วได้ 10 ขึ้นไป ต้องทดไปแกนหลักสิบที่อยู่ข้างๆ! เหมือนย้ายไปอยู่ย่านที่ใหญ่ขึ้น! 🏘️"
+ },
+ "l2_group3_when": {
+  "fr": "Quand ton total va atteindre 10 ou plus en ajoutant — c'est l'heure de la retenue !",
+  "es": "Cuando al sumar el total llega a 10 o más: ¡hora de llevar!",
+  "pt": "Quando somar daria 10 ou mais — hora de passar para as dezenas!",
+  "tr": "Toplam 10 ya da daha fazla olacaksa — elde zamanı!",
+  "ru": "Когда сумма станет 10 или больше — пора делать перенос!",
+  "ja": "たして合計が10以上になるとき。くり上げのタイミング!",
+  "th": "เมื่อบวกแล้วรวมได้ 10 ขึ้นไป ถึงเวลาทด!"
+ },
+ "l2_group3_how": {
+  "fr": "Ajoute 1 boule sur la tige des DIZAINES (+10), puis retire des boules de la tige des UNITÉS. Les deux s'équilibrent pour donner la bonne réponse ! 🔢",
+  "es": "Suma 1 cuenta a la varilla de las DECENAS (+10) y quita cuentas de la varilla de las UNIDADES. ¡Se compensan y dan la respuesta correcta! 🔢",
+  "pt": "Some 1 conta à haste das DEZENAS (+10), depois tire contas da haste das UNIDADES. Elas se equilibram e dão a resposta certa! 🔢",
+  "tr": "ONLAR çubuğuna 1 boncuk ekle (+10), sonra BİRLER çubuğundan boncuk kaldır. İkisi dengelenir ve doğru cevabı verir! 🔢",
+  "ru": "Добавь 1 бусину на спицу ДЕСЯТКОВ (+10), потом убери бусины со спицы ЕДИНИЦ. Всё уравновесится и даст верный ответ! 🔢",
+  "ja": "十の位の桁に珠を1つたして (+10)、一の位の桁から珠をとります。ちょうどつりあって、正しい答えに! 🔢",
+  "th": "บวก 1 ลูกที่แกนหลักสิบ (+10) แล้วเอาลูกออกจากแกนหลักหน่วย สองอย่างนี้หักล้างกันจนได้คำตอบที่ถูก! 🔢"
+ },
+ "l2_group4_why": {
+  "fr": "Quand la tige des UNITÉS est vide mais que tu dois encore soustraire, emprunte 10 à la tige des DIZAINES juste à côté ! Comme emprunter un crayon de couleur à un ami ! 🖍️",
+  "es": "Cuando la varilla de las UNIDADES está vacía y aún tienes que restar, ¡pide prestado 10 a la varilla de las DECENAS, la de al lado! ¡Como pedirle un lápiz de color a un amigo! 🖍️",
+  "pt": "Quando a haste das UNIDADES está vazia mas você ainda precisa subtrair, peça 10 emprestado à haste das DEZENAS ao lado! Como pedir um lápis de cor emprestado a um amigo! 🖍️",
+  "tr": "BİRLER çubuğu boş ama hâlâ çıkarman gerekiyorsa, yandaki ONLAR çubuğundan 10 ödünç al! Tıpkı arkadaşından boya kalemi ödünç almak gibi! 🖍️",
+  "ru": "Когда спица ЕДИНИЦ пуста, а вычесть всё равно нужно, займи 10 на соседней спице ДЕСЯТКОВ! Как одолжить у друга карандаш! 🖍️",
+  "ja": "一の位の桁がからっぽなのに、まだひきたいときは、となりの十の位の桁から10をかりよう! 友だちからクレヨンをかりるみたいに! 🖍️",
+  "th": "เมื่อแกนหลักหน่วยว่างแต่ยังต้องลบ ให้ยืม 10 จากแกนหลักสิบข้างๆ! เหมือนยืมสีเทียนจากเพื่อน! 🖍️"
+ },
+ "l2_group4_when": {
+  "fr": "Quand la tige des unités n'a pas assez de boules pour soustraire !",
+  "es": "¡Cuando la varilla de las unidades no tiene suficientes cuentas para restar!",
+  "pt": "Quando a haste das unidades não tem contas suficientes para subtrair!",
+  "tr": "Birler çubuğunda çıkarmaya yetecek kadar boncuk olmadığında!",
+  "ru": "Когда на спице единиц не хватает бусин для вычитания!",
+  "ja": "一の位の桁に、ひく分の珠が足りないとき!",
+  "th": "เมื่อแกนหลักหน่วยมีลูกไม่พอให้ลบ!"
+ },
+ "l2_group4_how": {
+  "fr": "Retire 1 boule de la tige des DIZAINES (−10), puis ajoute des boules sur la tige des UNITÉS. Tu empruntes, tu rends — facile ! 🔢",
+  "es": "Quita 1 cuenta de la varilla de las DECENAS (−10) y suma cuentas a la varilla de las UNIDADES. Pides prestado y devuelves: ¡fácil! 🔢",
+  "pt": "Tire 1 conta da haste das DEZENAS (−10), depois some contas à haste das UNIDADES. Pegue emprestado e devolva — fácil! 🔢",
+  "tr": "ONLAR çubuğundan 1 boncuk kaldır (−10), sonra BİRLER çubuğuna boncuk ekle. Ödünç al, geri ver — çok kolay! 🔢",
+  "ru": "Убери 1 бусину со спицы ДЕСЯТКОВ (−10), потом добавь бусины на спицу ЕДИНИЦ. Заняли и вернули — легко! 🔢",
+  "ja": "十の位の桁から珠を1つとって (−10)、一の位の桁に珠をたします。かりて、かえす。かんたん! 🔢",
+  "th": "เอา 1 ลูกออกจากแกนหลักสิบ (−10) แล้วบวกลูกที่แกนหลักหน่วย ยืมแล้วคืน ง่ายนิดเดียว! 🔢"
+ },
+ "l2_group5_name": {
+  "fr": "Famille + (−5+10)",
+  "es": "Familia + (−5+10)",
+  "pt": "Família + (−5+10)",
+  "tr": "Aile + (−5+10)",
+  "ru": "Семья + (−5+10)",
+  "ja": "家族 + (−5+10)",
+  "th": "ครอบครัว + (−5+10)"
+ },
+ "l2_group5_why": {
+  "fr": "Parfois, ajouter demande À LA FOIS un échange avec le ciel ET une retenue aux dizaines — tout d'un coup ! Le Petit ami et le Grand ami font équipe en famille ! 👨‍👩‍👧‍👦",
+  "es": "¡A veces sumar necesita AMBAS cosas, un cambio del cielo Y una llevada a las decenas, todo a la vez! ¡El Pequeño amigo y el Gran amigo se unen como una familia! 👨‍👩‍👧‍👦",
+  "pt": "Às vezes somar precisa dos DOIS: trocar o céu E passar para as dezenas — tudo de uma vez! O Pequeno Amigo e o Grande Amigo se juntam como uma família! 👨‍👩‍👧‍👦",
+  "tr": "Bazen toplamak HEM gök boncuğu değişimi HEM de onlara elde gerektirir — hepsi bir arada! Küçük Arkadaş ile Büyük Arkadaş bir aile olur! 👨‍👩‍👧‍👦",
+  "ru": "Иногда для сложения нужны ОБА шага сразу: обмен небесной бусины И перенос в десятки! Малый друг и Большой друг объединяются в семью! 👨‍👩‍👧‍👦",
+  "ja": "たし算で、上の珠のチェンジ「と」十の位へのくり上げが、同時に必要なときもあります! 小さな友だちと大きな友だちが、家族になってチームを組みます! 👨‍👩‍👧‍👦",
+  "th": "บางครั้งการบวกต้องทั้งสลับลูกบนและทดไปหลักสิบ พร้อมกันเลย! เพื่อนเล็กกับเพื่อนใหญ่จับมือกันเป็นครอบครัว! 👨‍👩‍👧‍👦"
+ },
+ "l2_group5_when": {
+  "fr": "Quand tu ajoutes 6, 7, 8 ou 9 — et que la boule du ciel est déjà en BAS !",
+  "es": "¡Cuando sumas 6, 7, 8 o 9 y la cuenta del cielo ya está ABAJO!",
+  "pt": "Quando você soma 6, 7, 8 ou 9 — e a conta do céu já está para BAIXO!",
+  "tr": "6, 7, 8 veya 9 eklerken — ve gök boncuğu zaten AŞAĞIDAYKEN!",
+  "ru": "Когда прибавляешь 6, 7, 8 или 9, а небесная бусина уже ВНИЗУ!",
+  "ja": "6、7、8、9をたすとき。しかも上の珠がもう「下」にあるとき!",
+  "th": "เวลาจะบวก 6, 7, 8 หรือ 9 และลูกบนลงมาอยู่แล้ว!"
+ },
+ "l2_group5_how": {
+  "fr": "3 gestes rapides : ciel vers le HAUT (−5) → retenue aux DIZAINES (+10) → ajoute quelques boules de la terre. Tout d'un coup ! 🤝",
+  "es": "3 movimientos rápidos: cielo ARRIBA (−5) → llevar a las DECENAS (+10) → sumar unas cuentas de la tierra. ¡Todo a la vez! 🤝",
+  "pt": "3 movimentos rápidos: céu para CIMA (−5) → passe às DEZENAS (+10) → some algumas contas da terra. Tudo de uma vez! 🤝",
+  "tr": "3 hızlı hareket: gök YUKARI (−5) → ONLARA taşı (+10) → birkaç yer boncuğu ekle. Hepsi bir arada! 🤝",
+  "ru": "3 быстрых движения: небесная ВВЕРХ (−5) → перенос в ДЕСЯТКИ (+10) → добавь немного земных бусин. Всё сразу! 🤝",
+  "ja": "すばやい3つの動き: 上の珠を「上」へ (−5) → 十の位にくり上げ (+10) → 下の珠を少したす。ぜんぶ一度に! 🤝",
+  "th": "3 ขั้นรวด: ลูกบนขึ้น (−5) → ทดไปหลักสิบ (+10) → บวกลูกล่างอีกนิดหน่อย ทำรวดเดียว! 🤝"
+ },
+ "l2_group6_name": {
+  "fr": "Famille − (+5−10)",
+  "es": "Familia − (+5−10)",
+  "pt": "Família − (+5−10)",
+  "tr": "Aile − (+5−10)",
+  "ru": "Семья − (+5−10)",
+  "ja": "家族 − (+5−10)",
+  "th": "ครอบครัว − (+5−10)"
+ },
+ "l2_group6_why": {
+  "fr": "Parfois, soustraire demande à la fois un emprunt aux dizaines ET la boule du ciel — tout d'un coup ! Toute la famille travaille ensemble ! 👨‍👩‍👧‍👦",
+  "es": "¡A veces restar necesita pedir prestado a las decenas Y usar la cuenta del cielo, todo a la vez! ¡Toda la familia trabaja en equipo! 👨‍👩‍👧‍👦",
+  "pt": "Às vezes subtrair precisa de um empréstimo das dezenas E da conta do céu — tudo de uma vez! A família toda trabalha junta! 👨‍👩‍👧‍👦",
+  "tr": "Bazen çıkarmak hem onlardan ödünç almayı HEM de gök boncuğunu gerektirir — hepsi bir arada! Bütün aile birlikte çalışır! 👨‍👩‍👧‍👦",
+  "ru": "Иногда для вычитания нужны оба шага сразу: заём у десятков И небесная бусина! Вся семья работает вместе! 👨‍👩‍👧‍👦",
+  "ja": "ひき算で、十の位からのかり「と」上の珠が、同時に必要なときもあります! 家族みんなで力を合わせます! 👨‍👩‍👧‍👦",
+  "th": "บางครั้งการลบต้องทั้งยืมจากหลักสิบและใช้ลูกบน พร้อมกันเลย! ทั้งครอบครัวช่วยกันทำงาน! 👨‍👩‍👧‍👦"
+ },
+ "l2_group6_when": {
+  "fr": "Quand tu soustrais 6, 7, 8 ou 9 — et qu'il n'y a pas assez de boules de la terre !",
+  "es": "¡Cuando restas 6, 7, 8 o 9 y no hay suficientes cuentas de la tierra!",
+  "pt": "Quando você subtrai 6, 7, 8 ou 9 — e não há contas da terra suficientes!",
+  "tr": "6, 7, 8 veya 9 çıkarırken — ve yer boncuğu yetmediğinde!",
+  "ru": "Когда вычитаешь 6, 7, 8 или 9, а земных бусин не хватает!",
+  "ja": "6、7、8、9をひくとき。しかも下の珠が足りないとき!",
+  "th": "เวลาจะลบ 6, 7, 8 หรือ 9 และลูกล่างมีไม่พอ!"
+ },
+ "l2_group6_how": {
+  "fr": "3 gestes rapides : emprunte aux DIZAINES (−10) → boule du ciel vers le BAS (+5) → retire quelques boules de la terre. Travail d'équipe ! 🤝",
+  "es": "3 movimientos rápidos: pedir prestado a las DECENAS (−10) → cuenta del cielo ABAJO (+5) → quitar unas cuentas de la tierra. ¡Trabajo en equipo! 🤝",
+  "pt": "3 movimentos rápidos: peça emprestado das DEZENAS (−10) → conta do céu para BAIXO (+5) → tire algumas contas da terra. Trabalho em equipe! 🤝",
+  "tr": "3 hızlı hareket: ONLARDAN ödünç al (−10) → gök boncuğu AŞAĞI (+5) → birkaç yer boncuğu kaldır. Takım işi! 🤝",
+  "ru": "3 быстрых движения: заём у ДЕСЯТКОВ (−10) → небесная бусина ВНИЗ (+5) → убери немного земных бусин. Работаем командой! 🤝",
+  "ja": "すばやい3つの動き: 十の位からかりる (−10) → 上の珠を「下」へ (+5) → 下の珠を少しはずす。チームワーク! 🤝",
+  "th": "3 ขั้นรวด: ยืมจากหลักสิบ (−10) → ลูกบนลง (+5) → เอาลูกล่างออกอีกนิดหน่อย ช่วยกันทำ! 🤝"
+ },
+ "l2_formulas_title": {
+  "fr": "Formules 📋",
+  "es": "Fórmulas 📋",
+  "pt": "Fórmulas 📋",
+  "tr": "Formüller 📋",
+  "ru": "Формулы 📋",
+  "ja": "公式 📋",
+  "th": "สูตร 📋"
+ },
+ "l2_why": {
+  "fr": "💡 Pourquoi ?",
+  "es": "💡 ¿Por qué?",
+  "pt": "💡 Por quê?",
+  "tr": "💡 Neden?",
+  "ru": "💡 Почему?",
+  "ja": "💡 なぜ?",
+  "th": "💡 ทำไม?"
+ },
+ "l2_when": {
+  "fr": "⏰ Quand ?",
+  "es": "⏰ ¿Cuándo?",
+  "pt": "⏰ Quando?",
+  "tr": "⏰ Ne zaman?",
+  "ru": "⏰ Когда?",
+  "ja": "⏰ いつ?",
+  "th": "⏰ เมื่อไร?"
+ },
+ "l2_how": {
+  "fr": "🛠️ Comment ?",
+  "es": "🛠️ ¿Cómo?",
+  "pt": "🛠️ Como?",
+  "tr": "🛠️ Nasıl?",
+  "ru": "🛠️ Как?",
+  "ja": "🛠️ どうやって?",
+  "th": "🛠️ ทำยังไง?"
+ },
+ "l2_phase_start": {
+  "fr": "Départ à 0",
+  "es": "Empieza en 0",
+  "pt": "Comece em 0",
+  "tr": "0'dan başla",
+  "ru": "Старт с 0",
+  "ja": "0からスタート",
+  "th": "เริ่มที่ 0"
+ },
+ "l2_phase_setup": {
+  "fr": "On prépare %1$d",
+  "es": "Formando %1$d",
+  "pt": "Formando %1$d",
+  "tr": "%1$d kuruluyor",
+  "ru": "Набираем %1$d",
+  "ja": "%1$d をセット",
+  "th": "ตั้งเลข %1$d"
+ },
+ "l2_phase_now": {
+  "fr": "Maintenant : %1$d",
+  "es": "Ahora: %1$d",
+  "pt": "Agora: %1$d",
+  "tr": "Şimdi: %1$d",
+  "ru": "Сейчас: %1$d",
+  "ja": "いま: %1$d",
+  "th": "ตอนนี้: %1$d"
+ },
+ "l2_phase_apply": {
+  "fr": "On applique %1$s",
+  "es": "Aplicando %1$s",
+  "pt": "Aplicando %1$s",
+  "tr": "Uygula: %1$s",
+  "ru": "Применяем %1$s",
+  "ja": "%1$s を使う",
+  "th": "ใช้สูตร %1$s"
+ },
+ "l2_phase_result": {
+  "fr": "Résultat : %1$d ✅",
+  "es": "Resultado: %1$d ✅",
+  "pt": "Resultado: %1$d ✅",
+  "tr": "Sonuç: %1$d ✅",
+  "ru": "Результат: %1$d ✅",
+  "ja": "答え: %1$d ✅",
+  "th": "ผลลัพธ์: %1$d ✅"
+ },
+ "l2_replay": {
+  "fr": "▶ Revoir",
+  "es": "▶ Repetir",
+  "pt": "▶ Repetir",
+  "tr": "▶ Tekrar Oynat",
+  "ru": "▶ Повтор",
+  "ja": "▶ もう一度",
+  "th": "▶ ดูซ้ำ"
+ },
+ "l2_col_formula": {
+  "fr": "Formule",
+  "es": "Fórmula",
+  "pt": "Fórmula",
+  "tr": "Formül",
+  "ru": "Формула",
+  "ja": "公式",
+  "th": "สูตร"
+ },
+ "l2_col_moves": {
+  "fr": "Mouvements",
+  "es": "Movimientos",
+  "pt": "Movimentos",
+  "tr": "Boncuk Hareketleri",
+  "ru": "Движения бусин",
+  "ja": "珠の動き",
+  "th": "การเลื่อนลูก"
+ },
+ "l2_col_example": {
+  "fr": "Exemple",
+  "es": "Ejemplo",
+  "pt": "Exemplo",
+  "tr": "Örnek",
+  "ru": "Пример",
+  "ja": "例",
+  "th": "ตัวอย่าง"
+ },
+ "l2_moves_g1": {
+  "plural": {
+   "fr": {
+    "one": "Retire %1$d terre → ciel vers le bas",
+    "many": "Retire %1$d terre → ciel vers le bas",
+    "other": "Retire %1$d terre → ciel vers le bas"
+   },
+   "es": {
+    "one": "Quita %1$d tierra → baja el cielo",
+    "many": "Quita %1$d tierra → baja el cielo",
+    "other": "Quita %1$d tierra → baja el cielo"
+   },
+   "pt": {
+    "one": "Tire %1$d da terra → céu para baixo",
+    "many": "Tire %1$d da terra → céu para baixo",
+    "other": "Tire %1$d da terra → céu para baixo"
+   },
+   "tr": {
+    "one": "%1$d yer kaldır → gök aşağı",
+    "other": "%1$d yer kaldır → gök aşağı"
+   },
+   "ru": {
+    "one": "Убери %1$d земную → небесную вниз",
+    "few": "Убери %1$d земные → небесную вниз",
+    "many": "Убери %1$d земных → небесную вниз",
+    "other": "Убери %1$d земные → небесную вниз"
+   },
+   "ja": {
+    "other": "下の珠を%1$d個はずす → 上の珠を下げる"
+   },
+   "th": {
+    "other": "เอาลูกล่าง %1$d ออก → ดันลูกบนลง"
+   }
+  }
+ },
+ "l2_moves_g2": {
+  "plural": {
+   "fr": {
+    "one": "Ciel vers le haut → ajoute %1$d terre",
+    "many": "Ciel vers le haut → ajoute %1$d terre",
+    "other": "Ciel vers le haut → ajoute %1$d terre"
+   },
+   "es": {
+    "one": "Sube el cielo → suma %1$d tierra",
+    "many": "Sube el cielo → suma %1$d tierra",
+    "other": "Sube el cielo → suma %1$d tierra"
+   },
+   "pt": {
+    "one": "Céu para cima → some %1$d da terra",
+    "many": "Céu para cima → some %1$d da terra",
+    "other": "Céu para cima → some %1$d da terra"
+   },
+   "tr": {
+    "one": "Gök yukarı → %1$d yer ekle",
+    "other": "Gök yukarı → %1$d yer ekle"
+   },
+   "ru": {
+    "one": "Небесную вверх → добавь %1$d земную",
+    "few": "Небесную вверх → добавь %1$d земные",
+    "many": "Небесную вверх → добавь %1$d земных",
+    "other": "Небесную вверх → добавь %1$d земные"
+   },
+   "ja": {
+    "other": "上の珠を上げる → 下の珠を%1$d個たす"
+   },
+   "th": {
+    "other": "ดันลูกบนขึ้น → เพิ่มลูกล่าง %1$d"
+   }
+  }
+ },
+ "l2_moves_g3": {
+  "plural": {
+   "fr": {
+    "one": "Retenue aux dizaines → retire %1$d des unités",
+    "many": "Retenue aux dizaines → retire %1$d des unités",
+    "other": "Retenue aux dizaines → retire %1$d des unités"
+   },
+   "es": {
+    "one": "Lleva a decenas → quita %1$d de unidades",
+    "many": "Lleva a decenas → quita %1$d de unidades",
+    "other": "Lleva a decenas → quita %1$d de unidades"
+   },
+   "pt": {
+    "one": "Passe às dezenas → tire %1$d das unidades",
+    "many": "Passe às dezenas → tire %1$d das unidades",
+    "other": "Passe às dezenas → tire %1$d das unidades"
+   },
+   "tr": {
+    "one": "Onlara taşı → birlerden %1$d kaldır",
+    "other": "Onlara taşı → birlerden %1$d kaldır"
+   },
+   "ru": {
+    "one": "Перенос в десятки → убери %1$d из единиц",
+    "few": "Перенос в десятки → убери %1$d из единиц",
+    "many": "Перенос в десятки → убери %1$d из единиц",
+    "other": "Перенос в десятки → убери %1$d из единиц"
+   },
+   "ja": {
+    "other": "十の位にくり上げ → 一の位から%1$d個はずす"
+   },
+   "th": {
+    "other": "ทดไปหลักสิบ → เอา %1$d ออกจากหลักหน่วย"
+   }
+  }
+ },
+ "l2_moves_g4": {
+  "plural": {
+   "fr": {
+    "one": "Emprunt aux dizaines → ajoute %1$d aux unités",
+    "many": "Emprunt aux dizaines → ajoute %1$d aux unités",
+    "other": "Emprunt aux dizaines → ajoute %1$d aux unités"
+   },
+   "es": {
+    "one": "Pide prestado a decenas → suma %1$d a unidades",
+    "many": "Pide prestado a decenas → suma %1$d a unidades",
+    "other": "Pide prestado a decenas → suma %1$d a unidades"
+   },
+   "pt": {
+    "one": "Empréstimo das dezenas → some %1$d às unidades",
+    "many": "Empréstimo das dezenas → some %1$d às unidades",
+    "other": "Empréstimo das dezenas → some %1$d às unidades"
+   },
+   "tr": {
+    "one": "Onlardan ödünç al → birlere %1$d ekle",
+    "other": "Onlardan ödünç al → birlere %1$d ekle"
+   },
+   "ru": {
+    "one": "Заём у десятков → добавь %1$d к единицам",
+    "few": "Заём у десятков → добавь %1$d к единицам",
+    "many": "Заём у десятков → добавь %1$d к единицам",
+    "other": "Заём у десятков → добавь %1$d к единицам"
+   },
+   "ja": {
+    "other": "十の位からかりる → 一の位に%1$d個たす"
+   },
+   "th": {
+    "other": "ยืมจากหลักสิบ → บวก %1$d ที่หลักหน่วย"
+   }
+  }
+ },
+ "l2_moves_g5": {
+  "plural": {
+   "fr": {
+    "one": "Ciel en haut → retenue → ajoute %1$d terre",
+    "many": "Ciel en haut → retenue → ajoute %1$d terre",
+    "other": "Ciel en haut → retenue → ajoute %1$d terre"
+   },
+   "es": {
+    "one": "Cielo arriba → lleva → suma %1$d tierra",
+    "many": "Cielo arriba → lleva → suma %1$d tierra",
+    "other": "Cielo arriba → lleva → suma %1$d tierra"
+   },
+   "pt": {
+    "one": "Céu para cima → passe → some %1$d da terra",
+    "many": "Céu para cima → passe → some %1$d da terra",
+    "other": "Céu para cima → passe → some %1$d da terra"
+   },
+   "tr": {
+    "one": "Gök yukarı → taşı → %1$d yer ekle",
+    "other": "Gök yukarı → taşı → %1$d yer ekle"
+   },
+   "ru": {
+    "one": "Небесную вверх → перенос → добавь %1$d земную",
+    "few": "Небесную вверх → перенос → добавь %1$d земные",
+    "many": "Небесную вверх → перенос → добавь %1$d земных",
+    "other": "Небесную вверх → перенос → добавь %1$d земные"
+   },
+   "ja": {
+    "other": "上の珠を上げる → くり上げ → 下の珠を%1$d個たす"
+   },
+   "th": {
+    "other": "ลูกบนขึ้น → ทด → เพิ่มลูกล่าง %1$d"
+   }
+  }
+ },
+ "l2_moves_g6": {
+  "plural": {
+   "fr": {
+    "one": "Emprunt → ciel en bas → retire %1$d terre",
+    "many": "Emprunt → ciel en bas → retire %1$d terre",
+    "other": "Emprunt → ciel en bas → retire %1$d terre"
+   },
+   "es": {
+    "one": "Pide prestado → cielo abajo → quita %1$d tierra",
+    "many": "Pide prestado → cielo abajo → quita %1$d tierra",
+    "other": "Pide prestado → cielo abajo → quita %1$d tierra"
+   },
+   "pt": {
+    "one": "Empréstimo → céu para baixo → tire %1$d da terra",
+    "many": "Empréstimo → céu para baixo → tire %1$d da terra",
+    "other": "Empréstimo → céu para baixo → tire %1$d da terra"
+   },
+   "tr": {
+    "one": "Ödünç al → gök aşağı → %1$d yer kaldır",
+    "other": "Ödünç al → gök aşağı → %1$d yer kaldır"
+   },
+   "ru": {
+    "one": "Заём → небесную вниз → убери %1$d земную",
+    "few": "Заём → небесную вниз → убери %1$d земные",
+    "many": "Заём → небесную вниз → убери %1$d земных",
+    "other": "Заём → небесную вниз → убери %1$d земные"
+   },
+   "ja": {
+    "other": "かりる → 上の珠を下げる → 下の珠を%1$d個はずす"
+   },
+   "th": {
+    "other": "ยืม → ลูกบนลง → เอาลูกล่าง %1$d ออก"
+   }
+  }
+ }
+}

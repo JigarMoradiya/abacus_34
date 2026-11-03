@@ -189,6 +189,175 @@
         <item quantity="many">Небесную бусину вниз + сдвинь %1$d земных вверх</item>
         <item quantity="other">Небесную бусину вниз + сдвинь %1$d земные вверх</item>
     </plurals>
+    <!-- m14_level2 -->
+    <string name="l2_chapter1_title">Сложение земных</string>
+    <string name="l2_chapter2_title">Сложение небесной</string>
+    <string name="l2_chapter3_title">Вычитание земных</string>
+    <string name="l2_chapter4_title">Вычитание небесной</string>
+    <string name="l2_chapter5_title">Знакомство с формулами</string>
+    <string name="l2_chapter6_title">Малый друг +</string>
+    <string name="l2_chapter7_title">Малый друг −</string>
+    <string name="l2_chapter8_title">Большой друг +</string>
+    <string name="l2_chapter9_title">Большой друг −</string>
+    <string name="l2_chapter10_title">Семья</string>
+    <string name="l2_lesson1_step1_title">Сложение на абакусе!</string>
+    <string name="l2_lesson1_step1_body">Когда ты СКЛАДЫВАЕШЬ, двигай ЕЩЁ бусины ВВЕРХ к планке. Начни с 2, прибавь 1 → сдвинь ещё 1 бусину вверх = 3! Больше бусин = больше число!</string>
+    <string name="l2_lesson1_step2_title">Начни с 2</string>
+    <string name="l2_lesson1_step2_body">Сдвинь 2 земные бусины вверх к планке. На абакусе число 2. Это твоё начальное число!</string>
+    <string name="l2_lesson1_step3_title">Прибавь 1 → будет 3</string>
+    <string name="l2_lesson1_step3_body">Смотри, как движется бусина! Начни с 2, сдвинь ещё 1 земную бусину ВВЕРХ → 3! 🎊</string>
+    <string name="l2_lesson1_step4_body">Начни с 2, прибавь ещё 3 бусины. Дошёл до 5 — меняй на небесную бусину! ✨</string>
+    <string name="l2_lesson1_step5_title">Прибавить = сдвинуть ВВЕРХ!</string>
+    <string name="l2_lesson1_step5_body">Запомни: сложение всегда значит сдвинуть ЕЩЁ бусины к планке. Число идёт ВВЕРХ! Попробуй: 1 + 3 = ? (сдвинь ещё 3 бусины!)</string>
+    <string name="l2_lesson2_step1_title">Сложение после 5!</string>
+    <string name="l2_lesson2_step1_body">Когда сумма доходит до 5 или больше, меняй 5 земных бусин на НЕБЕСНУЮ! Все земные ВНИЗ + небесная ВНИЗ = 5!</string>
+    <string name="l2_lesson2_step2_body">Смотри! Начни с 4, прибавь 2 → меняем на небесную бусину + 1 земную = 6! ✨</string>
+    <string name="l2_lesson2_step3_body">Смотри! Начни с 3, прибавь 4 → меняем на небесную + 2 земные = 7! 🎯</string>
+    <string name="l2_lesson2_step4_body">Смотри! Начни с 5 (небесная), сдвинь 3 земные бусины вверх → небесная + 3 земные = 8! 🎈</string>
+    <string name="l2_lesson2_step5_body">Смотри! Начни с 5 (небесная), добавь 4 земные бусины → небесная + 4 земные = 9! 🏆</string>
+    <string name="l2_lesson3_step1_title">Вычитание на абакусе!</string>
+    <string name="l2_lesson3_step1_body">Когда ты ВЫЧИТАЕШЬ, двигай бусины ВНИЗ (от планки). Начни с 4, вычти 2 → сдвинь 2 земные бусины ВНИЗ = 2!</string>
+    <string name="l2_lesson3_step2_title">Начни с 4</string>
+    <string name="l2_lesson3_step2_body">Сдвинь 4 земные бусины вверх к планке. На абакусе 4! Это твоё начальное число.</string>
+    <string name="l2_lesson3_step3_body">Смотри! Начни с 4, сдвинь 2 земные бусины ВНИЗ → 2! ✅</string>
+    <string name="l2_lesson3_step4_body">Смотри! Начни с 8 (небесная + 3 земные), сдвинь 3 земные бусины ВНИЗ → остаётся только небесная = 5! Небесная на месте! 🌟</string>
+    <string name="l2_lesson3_step5_title">Вычесть = сдвинуть ВНИЗ!</string>
+    <string name="l2_lesson3_step5_body">Двигаются только земные бусины — небесная в этом уроке НИКОГДА не двигается! Попробуй: 9 − 4 = ? и 4 − 1 = ?</string>
+    <string name="l2_lesson4_step1_title">Убираем небесную бусину!</string>
+    <string name="l2_lesson4_step1_body">Когда вычитаешь 5 или больше, сдвинь небесную бусину ОТ планки (ВВЕРХ = −5). Потренируемся!</string>
+    <string name="l2_lesson4_step2_body">Смотри! Небесная бусина ВНИЗ (= 5). Сдвинь её ВВЕРХ → все бусины далеко = 0! Просто убрали небесную! 🎯</string>
+    <string name="l2_lesson4_step3_body">Смотри! Начни с 7 (небесная + 2 земные). Сдвинь небесную ВВЕРХ (−5) → остаются 2 земные бусины = 2! Земные на месте! ✅</string>
+    <string name="l2_lesson4_step4_body">Смотри! Начни с 9 (небесная + 4 земные). Сдвинь 3 земные ВНИЗ, потом небесную ВВЕРХ → 1 земная = 1! 🌟</string>
+    <string name="l2_lesson4_step5_title">У тебя получилось!</string>
+    <string name="l2_lesson4_step5_body">Вычитаем 5 → сдвигаем небесную ВВЕРХ. Вычитаем больше → сначала земные, потом небесная. Формула не нужна! 🚀</string>
+    <string name="l2_lesson5_step1_title">Всё вместе!</string>
+    <string name="l2_lesson5_step1_body">Настоящая математика смешивает сложение И вычитание! Ты уже умеешь то и другое по отдельности. Теперь используем их вместе! 🚀</string>
+    <string name="l2_lesson5_step2_title">Сначала прибавим: 3 + 5 = 8</string>
+    <string name="l2_lesson5_step2_body">Смотри! Начни с 3, прибавь 5 → меняем на небесную + 3 земные = 8! 🎯</string>
+    <string name="l2_lesson5_step3_title">Потом вычтем: 8 − 2 = 6</string>
+    <string name="l2_lesson5_step3_body">Смотри! Начни с 8, сдвинь 2 земные бусины ВНИЗ → небесная + 1 земная = 6! ✨</string>
+    <string name="l2_lesson5_step4_title">Цепочка: 5 − 2 = 3</string>
+    <string name="l2_lesson5_step4_body">Смотри! Начни с 5 (небесная), сдвинь небесную ВВЕРХ и 3 земные ВВЕРХ → 3! 🌟</string>
+    <string name="l2_lesson5_step5_title">Ты мастер математики!</string>
+    <string name="l2_lesson5_step5_body">Сложение двигает бусины К планке. Вычитание двигает бусины ОТ планки. Смешивай как хочешь! 🎊 Уровень 2 пройден! 🏆</string>
+    <string name="l2_lesson6_step1_title">Малый друг +</string>
+    <string name="l2_lesson6_step1_body">Когда земных бусин не хватает, а ответ ≤ 9, используй формулу Малого друга: убери земные бусины + сдвинь небесную ВНИЗ.</string>
+    <string name="l2_lesson6_step2_body">Попробуй 1+4. Просто добавить 4 земные нельзя (свободны только 3!). Формула: убери 1 земную ВНИЗ, сдвинь небесную ВНИЗ. 1−1+5 = 5! ✨</string>
+    <string name="l2_lesson6_step3_body">Попробуй 2+3. Формула: убери 2 земные ВНИЗ, сдвинь небесную ВНИЗ. 2−2+5 = 5! Итог тот же!</string>
+    <string name="l2_lesson6_step4_title">+4 = −1+5 (середина)</string>
+    <string name="l2_lesson6_step4_body">Попробуй 3+4. Формула: убери 1 земную ВНИЗ, сдвинь небесную ВНИЗ. 3−1+5 = 7! 🎯</string>
+    <string name="l2_lesson6_step5_title">Закономерность: Малый друг +</string>
+    <string name="l2_lesson6_step5_body">+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5. Два числа всегда дают в сумме 5! 🤝 Это секрет дополнения до 5!</string>
+    <string name="l2_lesson7_step1_title">Малый друг −</string>
+    <string name="l2_lesson7_step1_body">Если на абакусе 5, 6, 7 или 8, небесная бусина уже у планки! Нужно вычесть, а земных бусин не хватает? Сдвинь небесную ВВЕРХ, а земные подними ВВЕРХ к планке! Это обмен Малого друга! 🤝</string>
+    <string name="l2_lesson7_step2_body">Попробуй 5−1. Небесная ВНИЗ. Убрать 1 земную нельзя! Формула: сдвинь небесную ВВЕРХ (−5), добавь 4 земные ВВЕРХ (+4). 5−5+4 = 4! ✅</string>
+    <string name="l2_lesson7_step3_body">Попробуй 5−2. Сдвинь небесную ВВЕРХ (−5), добавь 3 земные ВВЕРХ (+3). 5−5+3 = 3! 🎯</string>
+    <string name="l2_lesson7_step4_title">−4 = +1−5 (середина)</string>
+    <string name="l2_lesson7_step4_body">Попробуй 7−4. Небесная + 2 земные = 7. Сдвинь небесную ВВЕРХ (7→2), добавь 1 земную ВВЕРХ. 7−5+1 = 3! 🌟</string>
+    <string name="l2_lesson7_step5_title">Закономерность: Малый друг −</string>
+    <string name="l2_lesson7_step5_body">−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5. Небесная бусина меняется на земные! Два числа всегда дают в сумме 5. 🤝</string>
+    <string name="l2_lesson8_step1_title">Большой друг +</string>
+    <string name="l2_lesson8_step1_body">Когда спица единиц заполнена и ответ 10 или больше, перенеси бусину на спицу ДЕСЯТКОВ! Формула: +N = +10 − (10−N). Смотри, как загорается спица десятков!</string>
+    <string name="l2_lesson8_step2_body">Попробуй 9+1. Единицы заполнены (небесная+4 земные=9). Перенос: добавь 1 к ДЕСЯТКАМ, убери 9 из единиц. 9+1=10 → десятки=1, единицы=0! 🎉</string>
+    <string name="l2_lesson8_step3_body">Попробуй 5+6. В единицах 5 (небесная). Перенос: добавь 1 к ДЕСЯТКАМ, убери 4 из единиц. 5+6=11 → десятки=1, единицы=1! ✨</string>
+    <string name="l2_lesson8_step4_body">Попробуй 5+9. Небесная внизу (=5). Перенос: добавь 1 к ДЕСЯТКАМ, убери 1 из единиц: небесная ВВЕРХ + 4 земные ВВЕРХ. 5+9=14 → десятки=1, единицы=4! 🌟</string>
+    <string name="l2_lesson8_step5_title">Закономерность: Большой друг +</string>
+    <string name="l2_lesson8_step5_body">+1=−9+10, +2=−8+10 … +9=−1+10. Всегда: добавь 10 к десяткам, вычти дополнение из единиц. Пары дают в сумме 10! 🔢</string>
+    <string name="l2_lesson9_step1_title">Большой друг −</string>
+    <string name="l2_lesson9_step1_body">Когда на спице единиц не хватает бусин для вычитания, ЗАЙМИ у десятков! Формула: −N = −10 + (10−N).</string>
+    <string name="l2_lesson9_step2_body">Попробуй 10−1. В единицах 0! Займи: убери 1 из ДЕСЯТКОВ, добавь 9 к единицам. 10−1=9 → десятки=0, единицы=9! ✅</string>
+    <string name="l2_lesson9_step3_body">Попробуй 10−2. Займи: убери 1 из ДЕСЯТКОВ, добавь 8 к единицам. 10−2=8! ✨</string>
+    <string name="l2_lesson9_step4_body">Попробуй 11−6. В единицах всего 1 бусина — убрать 6 нельзя! Займи: −1 из ДЕСЯТКОВ, +4 к единицам. 11−6=5! 🎯</string>
+    <string name="l2_lesson9_step5_title">Закономерность: Большой друг −</string>
+    <string name="l2_lesson9_step5_body">−1=+9−10, −2=+8−10 … −9=+1−10. Всегда: займи 10 у десятков, добавь дополнение к единицам. Пары дают в сумме 10! 🔢</string>
+    <string name="l2_lesson10_step1_title">Формулы «Семья»!</string>
+    <string name="l2_lesson10_step1_body">Иногда нужны ОБА шага сразу: обмен небесной бусины И перенос в десятки. Формула «Семья» объединяет Малого друга и Большого друга!</string>
+    <string name="l2_lesson10_step2_body">Попробуй 7+6. Небесная внизу (7 = небесная + 2 земные). Семья: небесную ВВЕРХ (7→2), перенос в десятки, добавь 1 земную. 7+6=13! ✨</string>
+    <string name="l2_lesson10_step3_body">Попробуй 6+9. Небесную ВВЕРХ (6→1), перенос в десятки, добавь 4 земные. 6+9=15! 🎯</string>
+    <string name="l2_lesson10_step4_body">Попробуй 11−6. Десятки=1, единицы=1. Займи у десятков (−10), сдвинь небесную ВНИЗ (+5), убери 1 земную (−1). 11−6=5! 🌟</string>
+    <string name="l2_lesson10_step5_title">Семья освоена!</string>
+    <string name="l2_lesson10_step5_body">+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10. Уровень 2 пройден! 🎊</string>
+    <string name="l2_reference">Справочник</string>
+    <string name="l2_two_cols">2 колонки</string>
+    <string name="l2_phase_practice_desc">Решай примеры на своём абакусе</string>
+    <string name="l2_phase_quiz_desc">Проверь свои силы и получи звёзды!</string>
+    <string name="l2_start_zero">Старт: 0</string>
+    <string name="l2_watch_animate">👀 Смотри, как двигаются бусины!</string>
+    <string name="l2_quiz_what_answer">Какой ответ? 🤔</string>
+    <string name="l2_quiz_perfect">Без ошибок! Ты звезда математики! 🌟</string>
+    <string name="l2_try_on_abacus">Попробуй на своём\nабакусе! →</string>
+    <string name="l2_solve_instruction">Реши на своём абакусе,\nпотом проверь ответ:\n%1$s</string>
+    <string name="l2_replay_arrow">Повтор ▶</string>
+    <string name="l2_practice_done_msg">Супер! Все примеры (%1$d) решены на абакусе!\nПройдём викторину?</string>
+    <string name="l2_group1_why">На спице единиц помещаются только 4 земные бусины! Когда земным уже нет места, а ответ всё ещё меньше 10, мы делаем волшебный обмен с небесной бусиной! 🪄</string>
+    <string name="l2_group1_when">Когда нужно прибавить 1, 2, 3 или 4, но места для земных бусин уже нет!</string>
+    <string name="l2_group1_how">Сдвинь земные бусины ВНИЗ и сразу небесную бусину ВНИЗ. Два движения = один ответ! 🤝</string>
+    <string name="l2_group2_why">Когда на абакусе 5–8, небесная бусина уже внизу. Нужно вычесть, а земных бусин мало? Верни небесную бусину и получи взамен земные! 🔄</string>
+    <string name="l2_group2_when">Когда нужно вычесть 1, 2, 3 или 4, но земных бусин не хватает!</string>
+    <string name="l2_group2_how">Сдвинь небесную бусину ВВЕРХ и сразу добавь земные бусины ВВЕРХ. Два движения = один ответ! 🤝</string>
+    <string name="l2_group3_why">Когда после сложения выходит 10 или больше, нужен перенос на соседнюю спицу ДЕСЯТКОВ! Как переезд в район побольше! 🏘️</string>
+    <string name="l2_group3_when">Когда сумма станет 10 или больше — пора делать перенос!</string>
+    <string name="l2_group3_how">Добавь 1 бусину на спицу ДЕСЯТКОВ (+10), потом убери бусины со спицы ЕДИНИЦ. Всё уравновесится и даст верный ответ! 🔢</string>
+    <string name="l2_group4_why">Когда спица ЕДИНИЦ пуста, а вычесть всё равно нужно, займи 10 на соседней спице ДЕСЯТКОВ! Как одолжить у друга карандаш! 🖍️</string>
+    <string name="l2_group4_when">Когда на спице единиц не хватает бусин для вычитания!</string>
+    <string name="l2_group4_how">Убери 1 бусину со спицы ДЕСЯТКОВ (−10), потом добавь бусины на спицу ЕДИНИЦ. Заняли и вернули — легко! 🔢</string>
+    <string name="l2_group5_name">Семья + (−5+10)</string>
+    <string name="l2_group5_why">Иногда для сложения нужны ОБА шага сразу: обмен небесной бусины И перенос в десятки! Малый друг и Большой друг объединяются в семью! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group5_when">Когда прибавляешь 6, 7, 8 или 9, а небесная бусина уже ВНИЗУ!</string>
+    <string name="l2_group5_how">3 быстрых движения: небесная ВВЕРХ (−5) → перенос в ДЕСЯТКИ (+10) → добавь немного земных бусин. Всё сразу! 🤝</string>
+    <string name="l2_group6_name">Семья − (+5−10)</string>
+    <string name="l2_group6_why">Иногда для вычитания нужны оба шага сразу: заём у десятков И небесная бусина! Вся семья работает вместе! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group6_when">Когда вычитаешь 6, 7, 8 или 9, а земных бусин не хватает!</string>
+    <string name="l2_group6_how">3 быстрых движения: заём у ДЕСЯТКОВ (−10) → небесная бусина ВНИЗ (+5) → убери немного земных бусин. Работаем командой! 🤝</string>
+    <string name="l2_formulas_title">Формулы 📋</string>
+    <string name="l2_why">💡 Почему?</string>
+    <string name="l2_when">⏰ Когда?</string>
+    <string name="l2_how">🛠️ Как?</string>
+    <string name="l2_phase_start">Старт с 0</string>
+    <string name="l2_phase_setup">Набираем %1$d</string>
+    <string name="l2_phase_now">Сейчас: %1$d</string>
+    <string name="l2_phase_apply">Применяем %1$s</string>
+    <string name="l2_phase_result">Результат: %1$d ✅</string>
+    <string name="l2_replay">▶ Повтор</string>
+    <string name="l2_col_formula">Формула</string>
+    <string name="l2_col_moves">Движения бусин</string>
+    <string name="l2_col_example">Пример</string>
+    <plurals name="l2_moves_g1">
+        <item quantity="one">Убери %1$d земную → небесную вниз</item>
+        <item quantity="few">Убери %1$d земные → небесную вниз</item>
+        <item quantity="many">Убери %1$d земных → небесную вниз</item>
+        <item quantity="other">Убери %1$d земные → небесную вниз</item>
+    </plurals>
+    <plurals name="l2_moves_g2">
+        <item quantity="one">Небесную вверх → добавь %1$d земную</item>
+        <item quantity="few">Небесную вверх → добавь %1$d земные</item>
+        <item quantity="many">Небесную вверх → добавь %1$d земных</item>
+        <item quantity="other">Небесную вверх → добавь %1$d земные</item>
+    </plurals>
+    <plurals name="l2_moves_g3">
+        <item quantity="one">Перенос в десятки → убери %1$d из единиц</item>
+        <item quantity="few">Перенос в десятки → убери %1$d из единиц</item>
+        <item quantity="many">Перенос в десятки → убери %1$d из единиц</item>
+        <item quantity="other">Перенос в десятки → убери %1$d из единиц</item>
+    </plurals>
+    <plurals name="l2_moves_g4">
+        <item quantity="one">Заём у десятков → добавь %1$d к единицам</item>
+        <item quantity="few">Заём у десятков → добавь %1$d к единицам</item>
+        <item quantity="many">Заём у десятков → добавь %1$d к единицам</item>
+        <item quantity="other">Заём у десятков → добавь %1$d к единицам</item>
+    </plurals>
+    <plurals name="l2_moves_g5">
+        <item quantity="one">Небесную вверх → перенос → добавь %1$d земную</item>
+        <item quantity="few">Небесную вверх → перенос → добавь %1$d земные</item>
+        <item quantity="many">Небесную вверх → перенос → добавь %1$d земных</item>
+        <item quantity="other">Небесную вверх → перенос → добавь %1$d земные</item>
+    </plurals>
+    <plurals name="l2_moves_g6">
+        <item quantity="one">Заём → небесную вниз → убери %1$d земную</item>
+        <item quantity="few">Заём → небесную вниз → убери %1$d земные</item>
+        <item quantity="many">Заём → небесную вниз → убери %1$d земных</item>
+        <item quantity="other">Заём → небесную вниз → убери %1$d земные</item>
+    </plurals>
     <!-- m1_settings -->
     <string name="background_music_volume">Громкость фоновой музыки</string>
     <string name="change_voice_setting">Настройки голоса</string>

@@ -3,12 +3,13 @@ package com.jigar.me.ui.view.home.screens.levels.level2
 import com.jigar.me.data.local.data.Movement
 import com.jigar.me.data.local.data.RodMovement
 import com.jigar.me.ui.view.home.screens.levels.level1.AbacusDisplayState
+import androidx.annotation.StringRes
+import com.jigar.me.R
 
-// Level 2 lesson text (moves to strings.xml in M14); Level 1's own step type now holds string ids.
 internal data class LearnStep(
     val emoji: String,
-    val title: String,
-    val body: String,
+    @StringRes val title: Int,
+    @StringRes val body: Int,
     val abacusState: AbacusDisplayState? = null,
     val showFrameOnly: Boolean = false,
     val fromValue: Int? = null,
@@ -50,7 +51,6 @@ internal data class Level2PracticeProblem(
     val b: Int,
     val result: Int,
     val abacusState: AbacusDisplayState,
-    val instruction: String,
 )
 
 internal data class Level2QuizQuestion(
@@ -70,13 +70,6 @@ private fun l2AbacusStateFor(value: Int): AbacusDisplayState = when {
     value <= 9 -> AbacusDisplayState.ones(value >= 5, value % 5)
     else       -> { val t = value / 10; val o = value % 10
                     AbacusDisplayState.tensOnes(t >= 5, t % 5, o >= 5, o % 5) }
-}
-
-private fun l2InstructionFor(value: Int): String = when {
-    value == 0 -> "Keep ALL beads away from the beam"
-    value < 5  -> "Push $value earth bead${if (value == 1) "" else "s"} UP to the beam"
-    value == 5 -> "Push ONLY the heaven bead DOWN to the beam"
-    else       -> "Heaven bead down + push ${value - 5} earth bead${if (value - 5 == 1) "" else "s"} up"
 }
 
 private fun buildL2Choices(result: Int): List<Int> {
@@ -188,7 +181,7 @@ internal fun generateLevel2PracticeProblems(lessonId: Int, count: Int = 5): List
     val pool = buildPool(lessonId).shuffled()
     return List(count) { i ->
         val op = pool[i % pool.size]
-        Level2PracticeProblem(op.a, op.op, op.b, op.result, l2AbacusStateFor(op.result), l2InstructionFor(op.result))
+        Level2PracticeProblem(op.a, op.op, op.b, op.result, l2AbacusStateFor(op.result))
     }
 }
 
@@ -211,171 +204,171 @@ internal fun generateLevel2QuizQuestions(lessonId: Int, count: Int = 10): List<L
 // ─── Learn steps ─────────────────────────────────────────────────────────────
 
 private val lesson1LearnSteps = listOf(
-    LearnStep("➕", "Adding on the Abacus!",
-        "When you ADD, push MORE beads UP toward the beam. Start at 2, add 1 → push 1 more bead up = 3! More beads = bigger number!"),
-    LearnStep("2️⃣", "Start with 2",
-        "Push 2 earth beads up to the beam. Your abacus shows 2. This is your starting number!",
+    LearnStep("➕", R.string.l2_lesson1_step1_title,
+        R.string.l2_lesson1_step1_body),
+    LearnStep("2️⃣", R.string.l2_lesson1_step2_title,
+        R.string.l2_lesson1_step2_body,
         AbacusDisplayState.ones(false, 2)),
-    LearnStep("➕", "Add 1 → Get 3",
-        "Watch the bead move! Start at 2, push 1 more earth bead UP → 3! 🎊",
+    LearnStep("➕", R.string.l2_lesson1_step3_title,
+        R.string.l2_lesson1_step3_body,
         AbacusDisplayState.ones(false, 3), fromValue = 2),
-    LearnStep("🌟", "2 + 3 = 5",
-        "Start at 2, add 3 more beads. At 5 you swap to the heaven bead! ✨",
+    LearnStep("🌟", R.string.l2_lesson1_step4_title,
+        R.string.l2_lesson1_step4_body,
         AbacusDisplayState.ones(true, 0), fromValue = 2),
-    LearnStep("⭐", "Adding = Push UP!",
-        "Remember: adding always means pushing MORE beads toward the beam. Your number goes UP! Try: 1 + 3 = ? (push 3 more beads!)",
+    LearnStep("⭐", R.string.l2_lesson1_step5_title,
+        R.string.l2_lesson1_step5_body,
         AbacusDisplayState.ones(false, 4)),
 )
 
 private val lesson2LearnSteps = listOf(
-    LearnStep("🌟", "Adding Past 5!",
-        "When your total reaches 5 or more, swap 5 earth beads for the HEAVEN bead! Push all earth DOWN + heaven DOWN = 5!"),
-    LearnStep("6️⃣", "4 + 2 = 6",
-        "Watch! Start at 4, add 2 → swap to heaven bead + 1 earth = 6! ✨",
+    LearnStep("🌟", R.string.l2_lesson2_step1_title,
+        R.string.l2_lesson2_step1_body),
+    LearnStep("6️⃣", R.string.l2_lesson2_step2_title,
+        R.string.l2_lesson2_step2_body,
         AbacusDisplayState.ones(true, 1), fromValue = 4),
-    LearnStep("7️⃣", "3 + 4 = 7",
-        "Watch! Start at 3, add 4 → swap to heaven + 2 earth = 7! 🎯",
+    LearnStep("7️⃣", R.string.l2_lesson2_step3_title,
+        R.string.l2_lesson2_step3_body,
         AbacusDisplayState.ones(true, 2), fromValue = 3),
-    LearnStep("8️⃣", "5 + 3 = 8",
-        "Watch! Start at 5 (heaven), add 3 earth beads up → heaven + 3 earth = 8! 🎈",
+    LearnStep("8️⃣", R.string.l2_lesson2_step4_title,
+        R.string.l2_lesson2_step4_body,
         AbacusDisplayState.ones(true, 3), fromValue = 5),
-    LearnStep("9️⃣", "5 + 4 = 9",
-        "Watch! Start at 5 (heaven), add 4 earth beads → heaven + 4 earth = 9! 🏆",
+    LearnStep("9️⃣", R.string.l2_lesson2_step5_title,
+        R.string.l2_lesson2_step5_body,
         AbacusDisplayState.ones(true, 4), fromValue = 5),
 )
 
 private val lesson3LearnSteps = listOf(
-    LearnStep("➖", "Subtracting on the Abacus!",
-        "When you SUBTRACT, push beads DOWN (away from the beam). Start at 4, subtract 2 → push 2 earth beads DOWN = 2!"),
-    LearnStep("4️⃣", "Start at 4",
-        "Push 4 earth beads up to the beam. Your abacus shows 4! This is your starting number.",
+    LearnStep("➖", R.string.l2_lesson3_step1_title,
+        R.string.l2_lesson3_step1_body),
+    LearnStep("4️⃣", R.string.l2_lesson3_step2_title,
+        R.string.l2_lesson3_step2_body,
         AbacusDisplayState.ones(false, 4)),
-    LearnStep("2️⃣", "4 − 2 = 2",
-        "Watch! Start at 4, push 2 earth beads DOWN → 2! ✅",
+    LearnStep("2️⃣", R.string.l2_lesson3_step3_title,
+        R.string.l2_lesson3_step3_body,
         AbacusDisplayState.ones(false, 2), fromValue = 4),
-    LearnStep("5️⃣", "8 − 3 = 5",
-        "Watch! Start at 8 (heaven + 3 earth), push 3 earth beads DOWN → just heaven = 5! Heaven stays! 🌟",
+    LearnStep("5️⃣", R.string.l2_lesson3_step4_title,
+        R.string.l2_lesson3_step4_body,
         AbacusDisplayState.ones(true, 0), fromValue = 8),
-    LearnStep("🎉", "Subtracting = Push DOWN!",
-        "Only earth beads move — heaven bead NEVER moves in this lesson! Try: 9 − 4 = ? and 4 − 1 = ?",
+    LearnStep("🎉", R.string.l2_lesson3_step5_title,
+        R.string.l2_lesson3_step5_body,
         AbacusDisplayState.ones(false, 3)),
 )
 
 private val lesson4LearnSteps = listOf(
-    LearnStep("🔽", "Remove the Heaven Bead!",
-        "When you subtract 5 or more, push the heaven bead AWAY from the beam (UP = −5). Let's practice!"),
-    LearnStep("0️⃣", "5 − 5 = 0",
-        "Watch! Heaven bead is DOWN (= 5). Push it UP → all beads away = 0! Simple heaven removal! 🎯",
+    LearnStep("🔽", R.string.l2_lesson4_step1_title,
+        R.string.l2_lesson4_step1_body),
+    LearnStep("0️⃣", R.string.l2_lesson4_step2_title,
+        R.string.l2_lesson4_step2_body,
         AbacusDisplayState.ones(false, 0), fromValue = 5),
-    LearnStep("2️⃣", "7 − 5 = 2",
-        "Watch! Start at 7 (heaven + 2 earth). Push heaven UP (−5) → just 2 earth beads = 2! Earth stays! ✅",
+    LearnStep("2️⃣", R.string.l2_lesson4_step3_title,
+        R.string.l2_lesson4_step3_body,
         AbacusDisplayState.ones(false, 2), fromValue = 7),
-    LearnStep("1️⃣", "9 − 8 = 1",
-        "Watch! Start at 9 (heaven + 4 earth). Push 3 earth DOWN, then push heaven UP → 1 earth = 1! 🌟",
+    LearnStep("1️⃣", R.string.l2_lesson4_step4_title,
+        R.string.l2_lesson4_step4_body,
         AbacusDisplayState.ones(false, 1), fromValue = 9),
-    LearnStep("🏆", "You've Got It!",
-        "Subtract 5 → push heaven UP. Subtract more → remove earth first, then heaven. No formula needed! 🚀",
+    LearnStep("🏆", R.string.l2_lesson4_step5_title,
+        R.string.l2_lesson4_step5_body,
         AbacusDisplayState.ones(false, 1)),
 )
 
 private val lesson5LearnSteps = listOf(
-    LearnStep("🔀", "Mix It Up!",
-        "Real math mixes adding AND subtracting! You already know both separately. Now let's use them together! 🚀"),
-    LearnStep("➕", "Add First: 3 + 5 = 8",
-        "Watch! Start at 3, add 5 → swap to heaven + 3 earth = 8! 🎯",
+    LearnStep("🔀", R.string.l2_lesson5_step1_title,
+        R.string.l2_lesson5_step1_body),
+    LearnStep("➕", R.string.l2_lesson5_step2_title,
+        R.string.l2_lesson5_step2_body,
         AbacusDisplayState.ones(true, 3), fromValue = 3),
-    LearnStep("➖", "Then Subtract: 8 − 2 = 6",
-        "Watch! Start at 8, push 2 earth beads DOWN → heaven + 1 earth = 6! ✨",
+    LearnStep("➖", R.string.l2_lesson5_step3_title,
+        R.string.l2_lesson5_step3_body,
         AbacusDisplayState.ones(true, 1), fromValue = 8),
-    LearnStep("🔢", "Chain: 5 − 2 = 3",
-        "Watch! Start at 5 (heaven), push heaven UP and 3 earth UP → 3! 🌟",
+    LearnStep("🔢", R.string.l2_lesson5_step4_title,
+        R.string.l2_lesson5_step4_body,
         AbacusDisplayState.ones(false, 3), fromValue = 5),
-    LearnStep("🌟", "You're a Math Master!",
-        "Adding pushes beads TOWARD the beam. Subtracting pushes beads AWAY from the beam. Mix them freely! 🎊 Level 2 Complete! 🏆"),
+    LearnStep("🌟", R.string.l2_lesson5_step5_title,
+        R.string.l2_lesson5_step5_body),
 )
 
 private val lesson6LearnSteps = listOf(
-    LearnStep("🤝", "Small Friend +",
-        "When adding would overflow the earth beads but result stays ≤ 9, use the Small Friend formula: remove earth beads + push heaven DOWN."),
-    LearnStep("5️⃣", "+4 = −1+5",
-        "Try 1+4. Can't just add 4 earth (only 3 free!). Formula: remove 1 earth DOWN, push heaven DOWN. 1−1+5 = 5! ✨",
+    LearnStep("🤝", R.string.l2_lesson6_step1_title,
+        R.string.l2_lesson6_step1_body),
+    LearnStep("5️⃣", R.string.l2_lesson6_step2_title,
+        R.string.l2_lesson6_step2_body,
         AbacusDisplayState.ones(true, 0), fromValue = 1),
-    LearnStep("5️⃣", "+3 = −2+5",
-        "Try 2+3. Formula: remove 2 earth DOWN, push heaven DOWN. 2−2+5 = 5! Same net result!",
+    LearnStep("5️⃣", R.string.l2_lesson6_step3_title,
+        R.string.l2_lesson6_step3_body,
         AbacusDisplayState.ones(true, 0), fromValue = 2),
-    LearnStep("7️⃣", "+4 = −1+5 (mid-range)",
-        "Try 3+4. Formula: remove 1 earth DOWN, push heaven DOWN. 3−1+5 = 7! 🎯",
+    LearnStep("7️⃣", R.string.l2_lesson6_step4_title,
+        R.string.l2_lesson6_step4_body,
         AbacusDisplayState.ones(true, 2), fromValue = 3),
-    LearnStep("🌟", "Small Friend + Pattern",
-        "+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5. The two numbers always add to 5! 🤝 That's the 5-complement trick!",
+    LearnStep("🌟", R.string.l2_lesson6_step5_title,
+        R.string.l2_lesson6_step5_body,
         AbacusDisplayState.ones(true, 2)),
 )
 
 private val lesson7LearnSteps = listOf(
-    LearnStep("🤝", "Small Friend −",
-        "If your number is 5, 6, 7 or 8, the heaven bead is already touching the beam! When you need to subtract but there aren't enough earth beads — push heaven UP and move earth beads UP to the beam instead! That's the Small Friend swap! 🤝"),
-    LearnStep("4️⃣", "−1 = +4−5",
-        "Try 5−1. Heaven is DOWN. Can't remove 1 earth! Formula: push heaven UP (−5), add 4 earth UP (+4). 5−5+4 = 4! ✅",
+    LearnStep("🤝", R.string.l2_lesson7_step1_title,
+        R.string.l2_lesson7_step1_body),
+    LearnStep("4️⃣", R.string.l2_lesson7_step2_title,
+        R.string.l2_lesson7_step2_body,
         AbacusDisplayState.ones(false, 4), fromValue = 5),
-    LearnStep("3️⃣", "−2 = +3−5",
-        "Try 5−2. Push heaven UP (−5), add 3 earth UP (+3). 5−5+3 = 3! 🎯",
+    LearnStep("3️⃣", R.string.l2_lesson7_step3_title,
+        R.string.l2_lesson7_step3_body,
         AbacusDisplayState.ones(false, 3), fromValue = 5),
-    LearnStep("3️⃣", "−4 = +1−5 (mid-range)",
-        "Try 7−4. Heaven + 2 earth = 7. Push heaven UP (7→2), add 1 earth UP. 7−5+1 = 3! 🌟",
+    LearnStep("3️⃣", R.string.l2_lesson7_step4_title,
+        R.string.l2_lesson7_step4_body,
         AbacusDisplayState.ones(false, 3), fromValue = 7),
-    LearnStep("🌟", "Small Friend − Pattern",
-        "−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5. Heaven bead swaps with earth beads! The two numbers always add to 5. 🤝",
+    LearnStep("🌟", R.string.l2_lesson7_step5_title,
+        R.string.l2_lesson7_step5_body,
         AbacusDisplayState.ones(false, 3)),
 )
 
 private val lesson8LearnSteps = listOf(
-    LearnStep("🔢", "Big Friend +",
-        "When ones column is full and result goes to 10+, carry a bead to the TENS column! Formula: +N = +10 − (10−N). Watch the tens rod light up!"),
-    LearnStep("🔟", "+1 = −9+10",
-        "Try 9+1. Ones is full (heaven+4earth=9). Carry: add 1 to TENS, remove 9 from ones. 9+1=10 → tens=1, ones=0! 🎉",
+    LearnStep("🔢", R.string.l2_lesson8_step1_title,
+        R.string.l2_lesson8_step1_body),
+    LearnStep("🔟", R.string.l2_lesson8_step2_title,
+        R.string.l2_lesson8_step2_body,
         AbacusDisplayState.tensOnes(false, 1, false, 0), fromValue = 9),
-    LearnStep("1️⃣1️⃣", "+6 = −4+10",
-        "Try 5+6. Ones shows 5 (heaven). Carry: add 1 to TENS, remove 4 from ones. 5+6=11 → tens=1, ones=1! ✨",
+    LearnStep("1️⃣1️⃣", R.string.l2_lesson8_step3_title,
+        R.string.l2_lesson8_step3_body,
         AbacusDisplayState.tensOnes(false, 1, false, 1), fromValue = 5),
-    LearnStep("1️⃣4️⃣", "+9 = −1+10",
-        "Try 5+9. Heaven down (=5). Carry: add 1 to TENS, heaven stays + 4 earth. 5+9=14 → tens=1, ones=4! 🌟",
-        AbacusDisplayState.tensOnes(false, 1, true, 4), fromValue = 5),
-    LearnStep("🏆", "Big Friend + Pattern",
-        "+1=−9+10, +2=−8+10 … +9=−1+10. Always: add 10 to tens, subtract the complement from ones. Pairs add to 10! 🔢",
+    LearnStep("1️⃣4️⃣", R.string.l2_lesson8_step4_title,
+        R.string.l2_lesson8_step4_body,
+        AbacusDisplayState.tensOnes(false, 1, false, 4), fromValue = 5),
+    LearnStep("🏆", R.string.l2_lesson8_step5_title,
+        R.string.l2_lesson8_step5_body,
         AbacusDisplayState.tensOnes(false, 1, true, 4)),
 )
 
 private val lesson9LearnSteps = listOf(
-    LearnStep("🔢", "Big Friend −",
-        "When ones column doesn't have enough beads to subtract, BORROW from the tens column! Formula: −N = −10 + (10−N)."),
-    LearnStep("9️⃣", "−1 = +9−10",
-        "Try 10−1. Ones is 0! Borrow: remove 1 from TENS, add 9 to ones. 10−1=9 → tens=0, ones=9! ✅",
+    LearnStep("🔢", R.string.l2_lesson9_step1_title,
+        R.string.l2_lesson9_step1_body),
+    LearnStep("9️⃣", R.string.l2_lesson9_step2_title,
+        R.string.l2_lesson9_step2_body,
         AbacusDisplayState.ones(true, 4), fromValue = 10),
-    LearnStep("8️⃣", "−2 = +8−10",
-        "Try 10−2. Borrow: remove 1 from TENS, add 8 to ones. 10−2=8! ✨",
+    LearnStep("8️⃣", R.string.l2_lesson9_step3_title,
+        R.string.l2_lesson9_step3_body,
         AbacusDisplayState.ones(true, 3), fromValue = 10),
-    LearnStep("5️⃣", "−6 = +4−10",
-        "Try 11−6. Ones has only 1 bead — can't remove 6! Borrow: −1 from TENS, +4 to ones. 11−6=5! 🎯",
+    LearnStep("5️⃣", R.string.l2_lesson9_step4_title,
+        R.string.l2_lesson9_step4_body,
         AbacusDisplayState.ones(true, 0), fromValue = 11),
-    LearnStep("🏆", "Big Friend − Pattern",
-        "−1=+9−10, −2=+8−10 … −9=+1−10. Always: borrow 10 from tens, add the complement to ones. Pairs add to 10! 🔢",
+    LearnStep("🏆", R.string.l2_lesson9_step5_title,
+        R.string.l2_lesson9_step5_body,
         AbacusDisplayState.ones(true, 0)),
 )
 
 private val lesson10LearnSteps = listOf(
-    LearnStep("👨‍👩‍👧‍👦", "Family Formulas!",
-        "Sometimes you need BOTH a heaven-bead swap AND a tens carry in one step. This 'Family' formula combines Small Friend + Big Friend together!"),
-    LearnStep("1️⃣3️⃣", "+6 = +1−5+10",
-        "Try 7+6. Heaven is down (7=heaven+2earth). Family: heaven UP (7→2), carry to tens, add 1 earth. 7+6=13! ✨",
+    LearnStep("👨‍👩‍👧‍👦", R.string.l2_lesson10_step1_title,
+        R.string.l2_lesson10_step1_body),
+    LearnStep("1️⃣3️⃣", R.string.l2_lesson10_step2_title,
+        R.string.l2_lesson10_step2_body,
         AbacusDisplayState.tensOnes(false, 1, false, 3), fromValue = 7),
-    LearnStep("1️⃣5️⃣", "+9 = +4−5+10",
-        "Try 6+9. Heaven UP (6→1), carry to tens, add 4 earth. 6+9=15! 🎯",
+    LearnStep("1️⃣5️⃣", R.string.l2_lesson10_step3_title,
+        R.string.l2_lesson10_step3_body,
         AbacusDisplayState.tensOnes(false, 1, true, 0), fromValue = 6),
-    LearnStep("5️⃣", "−6 = −1+5−10",
-        "Try 11−6. Tens=1, ones=1. Borrow from tens (−10), push heaven DOWN (+5), remove 1 earth (−1). 11−6=5! 🌟",
+    LearnStep("5️⃣", R.string.l2_lesson10_step4_title,
+        R.string.l2_lesson10_step4_body,
         AbacusDisplayState.ones(true, 0), fromValue = 11),
-    LearnStep("🏆", "Family Complete!",
-        "+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10. Level 2 done! 🎊",
+    LearnStep("🏆", R.string.l2_lesson10_step5_title,
+        R.string.l2_lesson10_step5_body,
         AbacusDisplayState.ones(true, 0)),
 )
 

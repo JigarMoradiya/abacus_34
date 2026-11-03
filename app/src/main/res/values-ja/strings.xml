@@ -168,6 +168,157 @@
     <plurals name="l1_instr_heaven_earth">
         <item quantity="other">上の珠を下げて、下の珠%1$dつを上げよう</item>
     </plurals>
+    <!-- m14_level2 -->
+    <string name="l2_chapter1_title">下の珠のたし算</string>
+    <string name="l2_chapter2_title">上の珠のたし算</string>
+    <string name="l2_chapter3_title">下の珠のひき算</string>
+    <string name="l2_chapter4_title">上の珠のひき算</string>
+    <string name="l2_chapter5_title">公式と出会おう</string>
+    <string name="l2_chapter6_title">小さな友だち +</string>
+    <string name="l2_chapter7_title">小さな友だち −</string>
+    <string name="l2_chapter8_title">大きな友だち +</string>
+    <string name="l2_chapter9_title">大きな友だち −</string>
+    <string name="l2_chapter10_title">家族</string>
+    <string name="l2_lesson1_step1_title">そろばんでたし算!</string>
+    <string name="l2_lesson1_step1_body">たし算のときは、梁に向かって珠を「もっと」上げます。2から始めて 1 をたす → 珠をもう1つ上げて = 3! 珠がふえると、数も大きくなります!</string>
+    <string name="l2_lesson1_step2_title">2から始めよう</string>
+    <string name="l2_lesson1_step2_body">下の珠を2つ、梁まで上げます。そろばんは2を表しています。ここが、はじまりの数です!</string>
+    <string name="l2_lesson1_step3_title">1をたす → 3</string>
+    <string name="l2_lesson1_step3_body">珠の動きを見てね! 2から始めて、下の珠をもう1つ「上」に押すと → 3! 🎊</string>
+    <string name="l2_lesson1_step4_body">2から始めて、珠を3つたします。5になったら、上の珠にチェンジ! ✨</string>
+    <string name="l2_lesson1_step5_title">たす = 上へ押す!</string>
+    <string name="l2_lesson1_step5_body">おぼえよう: たし算は、いつも梁に向かって珠を「もっと」動かすこと。数は大きくなります! やってみよう: 1 + 3 = ? (珠をあと3つ押そう!)</string>
+    <string name="l2_lesson2_step1_title">5をこえるたし算!</string>
+    <string name="l2_lesson2_step1_body">合計が5以上になったら、下の珠5つを「上の珠」1つにチェンジ! 下の珠をぜんぶ下げて + 上の珠を下げると = 5!</string>
+    <string name="l2_lesson2_step2_body">見てね! 4から始めて 2をたす → 上の珠 + 下の珠1つにチェンジ = 6! ✨</string>
+    <string name="l2_lesson2_step3_body">見てね! 3から始めて 4をたす → 上の珠 + 下の珠2つにチェンジ = 7! 🎯</string>
+    <string name="l2_lesson2_step4_body">見てね! 5 (上の珠) から始めて、下の珠を3つ上げる → 上の珠 + 下の珠3つ = 8! 🎈</string>
+    <string name="l2_lesson2_step5_body">見てね! 5 (上の珠) から始めて、下の珠を4つ上げる → 上の珠 + 下の珠4つ = 9! 🏆</string>
+    <string name="l2_lesson3_step1_title">そろばんでひき算!</string>
+    <string name="l2_lesson3_step1_body">ひき算のときは、珠を「下」へ (梁からはなす方へ) 動かします。4から始めて 2をひく → 下の珠を2つ下げて = 2!</string>
+    <string name="l2_lesson3_step2_title">4から始めよう</string>
+    <string name="l2_lesson3_step2_body">下の珠を4つ、梁まで上げます。そろばんは4を表しています! ここが、はじまりの数です。</string>
+    <string name="l2_lesson3_step3_body">見てね! 4から始めて、下の珠を2つ「下」へ → 2! ✅</string>
+    <string name="l2_lesson3_step4_body">見てね! 8 (上の珠 + 下の珠3つ) から始めて、下の珠を3つ「下」へ → 上の珠だけで = 5! 上の珠は、そのまま! 🌟</string>
+    <string name="l2_lesson3_step5_title">ひく = 下へ押す!</string>
+    <string name="l2_lesson3_step5_body">動くのは下の珠だけ。このレッスンでは、上の珠は「ぜったいに」動きません! やってみよう: 9 − 4 = ? と 4 − 1 = ?</string>
+    <string name="l2_lesson4_step1_title">上の珠をはずそう!</string>
+    <string name="l2_lesson4_step1_body">5以上をひくときは、上の珠を梁からはなします (「上」へ = −5)。練習しよう!</string>
+    <string name="l2_lesson4_step2_body">見てね! 上の珠は「下」(= 5)。「上」に押すと → 珠がぜんぶはなれて = 0! かんたんな、上の珠のはずし方です! 🎯</string>
+    <string name="l2_lesson4_step3_body">見てね! 7 (上の珠 + 下の珠2つ) から始めます。上の珠を「上」へ (−5) → 下の珠2つだけで = 2! 下の珠は、そのまま! ✅</string>
+    <string name="l2_lesson4_step4_body">見てね! 9 (上の珠 + 下の珠4つ) から始めます。下の珠を3つ「下」へ、それから上の珠を「上」へ → 下の珠1つで = 1! 🌟</string>
+    <string name="l2_lesson4_step5_title">できたね!</string>
+    <string name="l2_lesson4_step5_body">5をひくときは → 上の珠を「上」へ。もっとひくときは → 先に下の珠をはずして、それから上の珠。公式はいりません! 🚀</string>
+    <string name="l2_lesson5_step1_title">ミックスしよう!</string>
+    <string name="l2_lesson5_step1_body">本当の計算は、たし算「と」ひき算がまざっています! どちらも、もう知っていますね。いっしょに使ってみよう! 🚀</string>
+    <string name="l2_lesson5_step2_title">まずたす: 3 + 5 = 8</string>
+    <string name="l2_lesson5_step2_body">見てね! 3から始めて 5をたす → 上の珠 + 下の珠3つにチェンジ = 8! 🎯</string>
+    <string name="l2_lesson5_step3_title">つぎにひく: 8 − 2 = 6</string>
+    <string name="l2_lesson5_step3_body">見てね! 8から始めて、下の珠を2つ「下」へ → 上の珠 + 下の珠1つ = 6! ✨</string>
+    <string name="l2_lesson5_step4_title">つづけて: 5 − 2 = 3</string>
+    <string name="l2_lesson5_step4_body">見てね! 5 (上の珠) から始めて、上の珠を「上」へ、下の珠を3つ「上」へ → 3! 🌟</string>
+    <string name="l2_lesson5_step5_title">計算マスターだね!</string>
+    <string name="l2_lesson5_step5_body">たし算は、梁に「向かって」珠を動かします。ひき算は、梁から「はなれる」方へ動かします。自由にまぜよう! 🎊 レベル2 クリア! 🏆</string>
+    <string name="l2_lesson6_step1_title">小さな友だち +</string>
+    <string name="l2_lesson6_step1_body">たすと下の珠が足りなくなるけれど、答えが9以下のときは、小さな友だちの公式を使います。下の珠をはずして + 上の珠を下げよう。</string>
+    <string name="l2_lesson6_step2_body">1+4 をやってみよう。下の珠を4つたすのは無理 (あきは3つだけ!)。公式: 下の珠1つを「下」へ、上の珠を下げる。1−1+5 = 5! ✨</string>
+    <string name="l2_lesson6_step3_body">2+3 をやってみよう。公式: 下の珠2つを「下」へ、上の珠を下げる。2−2+5 = 5! 答えは同じです!</string>
+    <string name="l2_lesson6_step4_title">+4 = −1+5 (中くらいの数)</string>
+    <string name="l2_lesson6_step4_body">3+4 をやってみよう。公式: 下の珠1つを「下」へ、上の珠を下げる。3−1+5 = 7! 🎯</string>
+    <string name="l2_lesson6_step5_title">小さな友だち + のパターン</string>
+    <string name="l2_lesson6_step5_body">+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5。2つの数をたすと、いつも5! 🤝 これが5の補数のコツです!</string>
+    <string name="l2_lesson7_step1_title">小さな友だち −</string>
+    <string name="l2_lesson7_step1_body">数が5、6、7、8のとき、上の珠はもう梁にくっついています! ひきたいのに下の珠が足りないときは、上の珠を「上」へはなして、かわりに下の珠を梁まで上げよう! これが小さな友だちのチェンジです! 🤝</string>
+    <string name="l2_lesson7_step2_body">5−1 をやってみよう。上の珠は「下」。下の珠は1つもはずせません! 公式: 上の珠を「上」へ (−5)、下の珠を4つ「上」へ (+4)。5−5+4 = 4! ✅</string>
+    <string name="l2_lesson7_step3_body">5−2 をやってみよう。上の珠を「上」へ (−5)、下の珠を3つ「上」へ (+3)。5−5+3 = 3! 🎯</string>
+    <string name="l2_lesson7_step4_title">−4 = +1−5 (中くらいの数)</string>
+    <string name="l2_lesson7_step4_body">7−4 をやってみよう。上の珠 + 下の珠2つ = 7。上の珠を「上」へ (7→2)、下の珠を1つ「上」へ。7−5+1 = 3! 🌟</string>
+    <string name="l2_lesson7_step5_title">小さな友だち − のパターン</string>
+    <string name="l2_lesson7_step5_body">−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5。上の珠と下の珠がチェンジ! 2つの数をたすと、いつも5です。🤝</string>
+    <string name="l2_lesson8_step1_title">大きな友だち +</string>
+    <string name="l2_lesson8_step1_body">一の位がいっぱいで、答えが10以上になるときは、十の位に珠をくり上げよう! 公式: +N = +10 − (10−N)。十の位の桁が光るのを見てね!</string>
+    <string name="l2_lesson8_step2_body">9+1 をやってみよう。一の位はいっぱい (上の珠+下の珠4つ=9)。くり上げ: 十の位に1をたして、一の位から9をとる。9+1=10 → 十の位=1、一の位=0! 🎉</string>
+    <string name="l2_lesson8_step3_body">5+6 をやってみよう。一の位は5 (上の珠)。くり上げ: 十の位に1をたして、一の位から4をとる。5+6=11 → 十の位=1、一の位=1! ✨</string>
+    <string name="l2_lesson8_step4_body">5+9 をやってみよう。上の珠は「下」(=5)。くり上げ: 十の位に1をたして、一の位から1をひく: 上の珠を「上」へ + 下の珠を4つ「上」へ。5+9=14 → 十の位=1、一の位=4! 🌟</string>
+    <string name="l2_lesson8_step5_title">大きな友だち + のパターン</string>
+    <string name="l2_lesson8_step5_body">+1=−9+10, +2=−8+10 … +9=−1+10。いつも同じ: 十の位に10をたして、一の位から「たして10になる数」をひく。ペアをたすと10! 🔢</string>
+    <string name="l2_lesson9_step1_title">大きな友だち −</string>
+    <string name="l2_lesson9_step1_body">一の位の珠が足りなくて、ひけないときは、十の位から「かり」ましょう! 公式: −N = −10 + (10−N)。</string>
+    <string name="l2_lesson9_step2_body">10−1 をやってみよう。一の位は0! かりる: 十の位から1をとって、一の位に9をたす。10−1=9 → 十の位=0、一の位=9! ✅</string>
+    <string name="l2_lesson9_step3_body">10−2 をやってみよう。かりる: 十の位から1をとって、一の位に8をたす。10−2=8! ✨</string>
+    <string name="l2_lesson9_step4_body">11−6 をやってみよう。一の位は珠が1つだけ。6はとれません! かりる: 十の位から −1、一の位に +4。11−6=5! 🎯</string>
+    <string name="l2_lesson9_step5_title">大きな友だち − のパターン</string>
+    <string name="l2_lesson9_step5_body">−1=+9−10, −2=+8−10 … −9=+1−10。いつも同じ: 十の位から10をかりて、一の位に「たして10になる数」をたす。ペアをたすと10! 🔢</string>
+    <string name="l2_lesson10_step1_title">家族の公式!</string>
+    <string name="l2_lesson10_step1_body">1回の動きで、上の珠のチェンジ「と」十の位へのくり上げが、どちらも必要なときがあります。この「家族」の公式は、小さな友だちと大きな友だちが、いっしょになったものです!</string>
+    <string name="l2_lesson10_step2_body">7+6 をやってみよう。上の珠は「下」(7=上の珠+下の珠2つ)。家族: 上の珠を「上」へ (7→2)、十の位にくり上げ、下の珠を1つたす。7+6=13! ✨</string>
+    <string name="l2_lesson10_step3_body">6+9 をやってみよう。上の珠を「上」へ (6→1)、十の位にくり上げ、下の珠を4つたす。6+9=15! 🎯</string>
+    <string name="l2_lesson10_step4_body">11−6 をやってみよう。十の位=1、一の位=1。十の位からかりて (−10)、上の珠を「下」へ (+5)、下の珠を1つはずす (−1)。11−6=5! 🌟</string>
+    <string name="l2_lesson10_step5_title">家族クリア!</string>
+    <string name="l2_lesson10_step5_body">+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10。レベル2 おわり! 🎊</string>
+    <string name="l2_reference">公式まとめ</string>
+    <string name="l2_two_cols">2列</string>
+    <string name="l2_phase_practice_desc">そろばんで式をといてみよう</string>
+    <string name="l2_phase_quiz_desc">計算の力をためして、星をゲットしよう!</string>
+    <string name="l2_start_zero">スタート: 0</string>
+    <string name="l2_watch_animate">👀 そろばんの動きを見てね!</string>
+    <string name="l2_quiz_what_answer">答えはいくつ? 🤔</string>
+    <string name="l2_quiz_perfect">満点です! きみは計算スター! 🌟</string>
+    <string name="l2_try_on_abacus">そろばんで\nやってみよう! →</string>
+    <string name="l2_solve_instruction">そろばんでといてから、\n答えをたしかめよう:\n%1$s</string>
+    <string name="l2_replay_arrow">もう一度 ▶</string>
+    <string name="l2_practice_done_msg">すばらしい! %1$d個の式を、ぜんぶそろばんでとけました!\nクイズにちょうせんしますか?</string>
+    <string name="l2_group1_why">一の位の桁には、下の珠が4つまでしか入りません! 下の珠をおく場所がないのに、答えがまだ10より小さいときは、上の珠を使った、まほうのチェンジをします! 🪄</string>
+    <string name="l2_group1_when">1、2、3、4をたしたいのに、下の珠をおく場所がないとき!</string>
+    <string name="l2_group1_how">下の珠を下げて、同時に上の珠も下げます。2つの動きで、ひとつの答え! 🤝</string>
+    <string name="l2_group2_why">数が5–8のとき、上の珠はもう下がっています。ひきたいのに下の珠が足りない? 上の珠を元にもどして、かわりに下の珠をもらおう! 🔄</string>
+    <string name="l2_group2_when">1、2、3、4をひきたいのに、とれる下の珠が足りないとき!</string>
+    <string name="l2_group2_how">上の珠を「上」へ、同時に下の珠も「上」へ。2つの動きで、ひとつの答え! 🤝</string>
+    <string name="l2_group3_why">たして合計が10以上になるときは、となりの十の位の桁にくり上げます! 大きな町へお引っこし、というイメージです! 🏘️</string>
+    <string name="l2_group3_when">たして合計が10以上になるとき。くり上げのタイミング!</string>
+    <string name="l2_group3_how">十の位の桁に珠を1つたして (+10)、一の位の桁から珠をとります。ちょうどつりあって、正しい答えに! 🔢</string>
+    <string name="l2_group4_why">一の位の桁がからっぽなのに、まだひきたいときは、となりの十の位の桁から10をかりよう! 友だちからクレヨンをかりるみたいに! 🖍️</string>
+    <string name="l2_group4_when">一の位の桁に、ひく分の珠が足りないとき!</string>
+    <string name="l2_group4_how">十の位の桁から珠を1つとって (−10)、一の位の桁に珠をたします。かりて、かえす。かんたん! 🔢</string>
+    <string name="l2_group5_name">家族 + (−5+10)</string>
+    <string name="l2_group5_why">たし算で、上の珠のチェンジ「と」十の位へのくり上げが、同時に必要なときもあります! 小さな友だちと大きな友だちが、家族になってチームを組みます! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group5_when">6、7、8、9をたすとき。しかも上の珠がもう「下」にあるとき!</string>
+    <string name="l2_group5_how">すばやい3つの動き: 上の珠を「上」へ (−5) → 十の位にくり上げ (+10) → 下の珠を少したす。ぜんぶ一度に! 🤝</string>
+    <string name="l2_group6_name">家族 − (+5−10)</string>
+    <string name="l2_group6_why">ひき算で、十の位からのかり「と」上の珠が、同時に必要なときもあります! 家族みんなで力を合わせます! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group6_when">6、7、8、9をひくとき。しかも下の珠が足りないとき!</string>
+    <string name="l2_group6_how">すばやい3つの動き: 十の位からかりる (−10) → 上の珠を「下」へ (+5) → 下の珠を少しはずす。チームワーク! 🤝</string>
+    <string name="l2_formulas_title">公式 📋</string>
+    <string name="l2_why">💡 なぜ?</string>
+    <string name="l2_when">⏰ いつ?</string>
+    <string name="l2_how">🛠️ どうやって?</string>
+    <string name="l2_phase_start">0からスタート</string>
+    <string name="l2_phase_setup">%1$d をセット</string>
+    <string name="l2_phase_now">いま: %1$d</string>
+    <string name="l2_phase_apply">%1$s を使う</string>
+    <string name="l2_phase_result">答え: %1$d ✅</string>
+    <string name="l2_replay">▶ もう一度</string>
+    <string name="l2_col_formula">公式</string>
+    <string name="l2_col_moves">珠の動き</string>
+    <string name="l2_col_example">例</string>
+    <plurals name="l2_moves_g1">
+        <item quantity="other">下の珠を%1$d個はずす → 上の珠を下げる</item>
+    </plurals>
+    <plurals name="l2_moves_g2">
+        <item quantity="other">上の珠を上げる → 下の珠を%1$d個たす</item>
+    </plurals>
+    <plurals name="l2_moves_g3">
+        <item quantity="other">十の位にくり上げ → 一の位から%1$d個はずす</item>
+    </plurals>
+    <plurals name="l2_moves_g4">
+        <item quantity="other">十の位からかりる → 一の位に%1$d個たす</item>
+    </plurals>
+    <plurals name="l2_moves_g5">
+        <item quantity="other">上の珠を上げる → くり上げ → 下の珠を%1$d個たす</item>
+    </plurals>
+    <plurals name="l2_moves_g6">
+        <item quantity="other">かりる → 上の珠を下げる → 下の珠を%1$d個はずす</item>
+    </plurals>
     <!-- m1_settings -->
     <string name="background_music_volume">BGMの音量</string>
     <string name="change_voice_setting">音声設定を変更</string>

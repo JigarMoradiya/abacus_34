@@ -182,6 +182,169 @@
         <item quantity="many">Cuenta del cielo abajo + empuja %1$d cuentas de la tierra arriba</item>
         <item quantity="other">Cuenta del cielo abajo + empuja %1$d cuentas de la tierra arriba</item>
     </plurals>
+    <!-- m14_level2 -->
+    <string name="l2_chapter1_title">Sumar tierra</string>
+    <string name="l2_chapter2_title">Sumar cielo</string>
+    <string name="l2_chapter3_title">Restar tierra</string>
+    <string name="l2_chapter4_title">Restar cielo</string>
+    <string name="l2_chapter5_title">Conoce las fórmulas</string>
+    <string name="l2_chapter6_title">Pequeño amigo +</string>
+    <string name="l2_chapter7_title">Pequeño amigo −</string>
+    <string name="l2_chapter8_title">Gran amigo +</string>
+    <string name="l2_chapter9_title">Gran amigo −</string>
+    <string name="l2_chapter10_title">Familia</string>
+    <string name="l2_lesson1_step1_title">¡Sumar en el ábaco!</string>
+    <string name="l2_lesson1_step1_body">Cuando SUMAS, empuja MÁS cuentas hacia ARRIBA, hasta la barra central. Empieza en 2, suma 1 → ¡empuja 1 cuenta más hacia arriba = 3! ¡Más cuentas = número más grande!</string>
+    <string name="l2_lesson1_step2_title">Empieza con 2</string>
+    <string name="l2_lesson1_step2_body">Empuja 2 cuentas de la tierra hacia arriba, hasta la barra central. Tu ábaco muestra 2. ¡Este es tu número de partida!</string>
+    <string name="l2_lesson1_step3_title">Suma 1 → Obtienes 3</string>
+    <string name="l2_lesson1_step3_body">¡Mira cómo se mueve la cuenta! Empieza en 2, empuja 1 cuenta más de la tierra hacia ARRIBA → ¡3! 🎊</string>
+    <string name="l2_lesson1_step4_body">Empieza en 2, suma 3 cuentas más. ¡Al llegar a 5 cambias a la cuenta del cielo! ✨</string>
+    <string name="l2_lesson1_step5_title">¡Sumar = empujar ARRIBA!</string>
+    <string name="l2_lesson1_step5_body">Recuerda: sumar siempre es empujar MÁS cuentas hacia la barra central. ¡Tu número SUBE! Prueba: 1 + 3 = ? (¡empuja 3 cuentas más!)</string>
+    <string name="l2_lesson2_step1_title">¡Sumar pasando el 5!</string>
+    <string name="l2_lesson2_step1_body">Cuando tu total llega a 5 o más, ¡cambia 5 cuentas de la tierra por la cuenta del CIELO! ¡Empuja toda la tierra ABAJO + el cielo ABAJO = 5!</string>
+    <string name="l2_lesson2_step2_body">¡Mira! Empieza en 4, suma 2 → ¡cambia a la cuenta del cielo + 1 de la tierra = 6! ✨</string>
+    <string name="l2_lesson2_step3_body">¡Mira! Empieza en 3, suma 4 → ¡cambia a cielo + 2 de la tierra = 7! 🎯</string>
+    <string name="l2_lesson2_step4_body">¡Mira! Empieza en 5 (cielo), sube 3 cuentas de la tierra → ¡cielo + 3 de la tierra = 8! 🎈</string>
+    <string name="l2_lesson2_step5_body">¡Mira! Empieza en 5 (cielo), suma 4 cuentas de la tierra → ¡cielo + 4 de la tierra = 9! 🏆</string>
+    <string name="l2_lesson3_step1_title">¡Restar en el ábaco!</string>
+    <string name="l2_lesson3_step1_body">Cuando RESTAS, empuja las cuentas hacia ABAJO (lejos de la barra central). Empieza en 4, resta 2 → ¡empuja 2 cuentas de la tierra hacia ABAJO = 2!</string>
+    <string name="l2_lesson3_step2_title">Empieza en 4</string>
+    <string name="l2_lesson3_step2_body">Empuja 4 cuentas de la tierra hacia arriba, hasta la barra central. ¡Tu ábaco muestra 4! Este es tu número de partida.</string>
+    <string name="l2_lesson3_step3_body">¡Mira! Empieza en 4, empuja 2 cuentas de la tierra hacia ABAJO → ¡2! ✅</string>
+    <string name="l2_lesson3_step4_body">¡Mira! Empieza en 8 (cielo + 3 de la tierra), empuja 3 cuentas de la tierra hacia ABAJO → ¡solo el cielo = 5! ¡El cielo se queda! 🌟</string>
+    <string name="l2_lesson3_step5_title">¡Restar = empujar ABAJO!</string>
+    <string name="l2_lesson3_step5_body">Solo se mueven las cuentas de la tierra: ¡la cuenta del cielo NUNCA se mueve en esta lección! Prueba: 9 − 4 = ? y 4 − 1 = ?</string>
+    <string name="l2_lesson4_step1_title">¡Quita la cuenta del cielo!</string>
+    <string name="l2_lesson4_step1_body">Cuando restas 5 o más, empuja la cuenta del cielo LEJOS de la barra central (ARRIBA = −5). ¡Vamos a practicar!</string>
+    <string name="l2_lesson4_step2_body">¡Mira! La cuenta del cielo está ABAJO (= 5). Empújala ARRIBA → ¡todas las cuentas lejos = 0! ¡Así de fácil se quita el cielo! 🎯</string>
+    <string name="l2_lesson4_step3_body">¡Mira! Empieza en 7 (cielo + 2 de la tierra). Empuja el cielo ARRIBA (−5) → ¡solo 2 cuentas de la tierra = 2! ¡La tierra se queda! ✅</string>
+    <string name="l2_lesson4_step4_body">¡Mira! Empieza en 9 (cielo + 4 de la tierra). Empuja 3 de la tierra ABAJO y luego el cielo ARRIBA → ¡1 de la tierra = 1! 🌟</string>
+    <string name="l2_lesson4_step5_title">¡Ya lo tienes!</string>
+    <string name="l2_lesson4_step5_body">Resta 5 → empuja el cielo ARRIBA. Resta más → quita primero la tierra y luego el cielo. ¡No necesitas fórmula! 🚀</string>
+    <string name="l2_lesson5_step1_title">¡Mézclalo todo!</string>
+    <string name="l2_lesson5_step1_body">¡Las matemáticas de verdad mezclan sumar Y restar! Ya conoces las dos por separado. ¡Ahora las usamos juntas! 🚀</string>
+    <string name="l2_lesson5_step2_title">Primero suma: 3 + 5 = 8</string>
+    <string name="l2_lesson5_step2_body">¡Mira! Empieza en 3, suma 5 → ¡cambia a cielo + 3 de la tierra = 8! 🎯</string>
+    <string name="l2_lesson5_step3_title">Luego resta: 8 − 2 = 6</string>
+    <string name="l2_lesson5_step3_body">¡Mira! Empieza en 8, empuja 2 cuentas de la tierra hacia ABAJO → ¡cielo + 1 de la tierra = 6! ✨</string>
+    <string name="l2_lesson5_step4_title">En cadena: 5 − 2 = 3</string>
+    <string name="l2_lesson5_step4_body">¡Mira! Empieza en 5 (cielo), empuja el cielo ARRIBA y 3 de la tierra ARRIBA → ¡3! 🌟</string>
+    <string name="l2_lesson5_step5_title">¡Eres un genio de las mates!</string>
+    <string name="l2_lesson5_step5_body">Sumar empuja las cuentas HACIA la barra central. Restar las empuja LEJOS de la barra central. ¡Mézclalas como quieras! 🎊 ¡Nivel 2 completado! 🏆</string>
+    <string name="l2_lesson6_step1_title">Pequeño amigo +</string>
+    <string name="l2_lesson6_step1_body">Cuando ya no caben más cuentas de la tierra pero el resultado sigue siendo ≤ 9, usa la fórmula del Pequeño amigo: quita cuentas de la tierra + empuja el cielo hacia ABAJO.</string>
+    <string name="l2_lesson6_step2_body">Prueba 1+4. No puedes sumar 4 de la tierra, ¡solo hay 3 libres! Fórmula: empuja 1 de la tierra ABAJO y el cielo ABAJO. ¡1−1+5 = 5! ✨</string>
+    <string name="l2_lesson6_step3_body">Prueba 2+3. Fórmula: empuja 2 de la tierra ABAJO y el cielo ABAJO. ¡2−2+5 = 5! ¡El mismo resultado final!</string>
+    <string name="l2_lesson6_step4_title">+4 = −1+5 (rango medio)</string>
+    <string name="l2_lesson6_step4_body">Prueba 3+4. Fórmula: empuja 1 de la tierra ABAJO y el cielo ABAJO. ¡3−1+5 = 7! 🎯</string>
+    <string name="l2_lesson6_step5_title">Patrón del Pequeño amigo +</string>
+    <string name="l2_lesson6_step5_body">+1=−4+5 | +2=−3+5 | +3=−2+5 | +4=−1+5. ¡Los dos números siempre suman 5! 🤝 ¡Es el truco del complemento a 5!</string>
+    <string name="l2_lesson7_step1_title">Pequeño amigo −</string>
+    <string name="l2_lesson7_step1_body">Si tu número es 5, 6, 7 u 8, ¡la cuenta del cielo ya toca la barra central! Cuando tienes que restar pero no hay suficientes cuentas de la tierra, ¡empuja el cielo ARRIBA y sube cuentas de la tierra hasta la barra central! ¡Ese es el cambio del Pequeño amigo! 🤝</string>
+    <string name="l2_lesson7_step2_body">Prueba 5−1. El cielo está ABAJO. ¡No puedes quitar 1 de la tierra! Fórmula: empuja el cielo ARRIBA (−5) y 4 de la tierra ARRIBA (+4). ¡5−5+4 = 4! ✅</string>
+    <string name="l2_lesson7_step3_body">Prueba 5−2. Empuja el cielo ARRIBA (−5) y 3 de la tierra ARRIBA (+3). ¡5−5+3 = 3! 🎯</string>
+    <string name="l2_lesson7_step4_title">−4 = +1−5 (rango medio)</string>
+    <string name="l2_lesson7_step4_body">Prueba 7−4. Cielo + 2 de la tierra = 7. Empuja el cielo ARRIBA (7→2) y 1 de la tierra ARRIBA. ¡7−5+1 = 3! 🌟</string>
+    <string name="l2_lesson7_step5_title">Patrón del Pequeño amigo −</string>
+    <string name="l2_lesson7_step5_body">−1=+4−5 | −2=+3−5 | −3=+2−5 | −4=+1−5. ¡La cuenta del cielo se cambia por cuentas de la tierra! Los dos números siempre suman 5. 🤝</string>
+    <string name="l2_lesson8_step1_title">Gran amigo +</string>
+    <string name="l2_lesson8_step1_body">Cuando la varilla de las unidades está llena y el resultado llega a 10 o más, ¡lleva una cuenta a la varilla de las DECENAS! Fórmula: +N = +10 − (10−N). ¡Mira cómo se ilumina la varilla de las decenas!</string>
+    <string name="l2_lesson8_step2_body">Prueba 9+1. Las unidades están llenas (cielo+4 tierra=9). Lleva: suma 1 a las DECENAS y quita 9 de las unidades. ¡9+1=10 → decenas=1, unidades=0! 🎉</string>
+    <string name="l2_lesson8_step3_body">Prueba 5+6. Las unidades muestran 5 (cielo). Lleva: suma 1 a las DECENAS y quita 4 de las unidades. ¡5+6=11 → decenas=1, unidades=1! ✨</string>
+    <string name="l2_lesson8_step4_body">Prueba 5+9. Cielo abajo (=5). Lleva: suma 1 a las DECENAS, quita 1 de las unidades: cielo ARRIBA + 4 de la tierra ARRIBA. ¡5+9=14 → decenas=1, unidades=4! 🌟</string>
+    <string name="l2_lesson8_step5_title">Patrón del Gran amigo +</string>
+    <string name="l2_lesson8_step5_body">+1=−9+10, +2=−8+10 … +9=−1+10. Siempre: suma 10 a las decenas y resta el complemento a las unidades. ¡Las parejas suman 10! 🔢</string>
+    <string name="l2_lesson9_step1_title">Gran amigo −</string>
+    <string name="l2_lesson9_step1_body">Cuando la varilla de las unidades no tiene suficientes cuentas para restar, ¡PIDE PRESTADO a la varilla de las decenas! Fórmula: −N = −10 + (10−N).</string>
+    <string name="l2_lesson9_step2_body">Prueba 10−1. ¡Las unidades están en 0! Pide prestado: quita 1 de las DECENAS y suma 9 a las unidades. ¡10−1=9 → decenas=0, unidades=9! ✅</string>
+    <string name="l2_lesson9_step3_body">Prueba 10−2. Pide prestado: quita 1 de las DECENAS y suma 8 a las unidades. ¡10−2=8! ✨</string>
+    <string name="l2_lesson9_step4_body">Prueba 11−6. Las unidades solo tienen 1 cuenta, ¡no puedes quitar 6! Pide prestado: −1 a las DECENAS, +4 a las unidades. ¡11−6=5! 🎯</string>
+    <string name="l2_lesson9_step5_title">Patrón del Gran amigo −</string>
+    <string name="l2_lesson9_step5_body">−1=+9−10, −2=+8−10 … −9=+1−10. Siempre: pide prestado 10 a las decenas y suma el complemento a las unidades. ¡Las parejas suman 10! 🔢</string>
+    <string name="l2_lesson10_step1_title">¡Fórmulas de la Familia!</string>
+    <string name="l2_lesson10_step1_body">A veces necesitas AMBAS cosas: cambiar la cuenta del cielo Y llevar a las decenas, todo en un solo paso. ¡Esta fórmula de la «Familia» une al Pequeño amigo y al Gran amigo!</string>
+    <string name="l2_lesson10_step2_body">Prueba 7+6. El cielo está abajo (7=cielo+2 tierra). Familia: cielo ARRIBA (7→2), lleva a las decenas y suma 1 de la tierra. ¡7+6=13! ✨</string>
+    <string name="l2_lesson10_step3_body">Prueba 6+9. Cielo ARRIBA (6→1), lleva a las decenas y suma 4 de la tierra. ¡6+9=15! 🎯</string>
+    <string name="l2_lesson10_step4_body">Prueba 11−6. Decenas=1, unidades=1. Pide prestado a las decenas (−10), empuja el cielo ABAJO (+5) y quita 1 de la tierra (−1). ¡11−6=5! 🌟</string>
+    <string name="l2_lesson10_step5_title">¡Familia completa!</string>
+    <string name="l2_lesson10_step5_body">+6=+1−5+10 … +9=+4−5+10 | −6=−1+5−10 … −9=−4+5−10. ¡Nivel 2 terminado! 🎊</string>
+    <string name="l2_reference">Referencia</string>
+    <string name="l2_two_cols">2 col.</string>
+    <string name="l2_phase_practice_desc">Resuelve operaciones en tu ábaco</string>
+    <string name="l2_phase_quiz_desc">¡Pon a prueba tus mates y gana estrellas!</string>
+    <string name="l2_start_zero">Inicio: 0</string>
+    <string name="l2_watch_animate">👀 ¡Mira cómo se mueve el ábaco!</string>
+    <string name="l2_quiz_what_answer">¿Cuál es la respuesta? 🤔</string>
+    <string name="l2_quiz_perfect">¡Puntuación perfecta! ¡Eres una estrella de las mates! 🌟</string>
+    <string name="l2_try_on_abacus">¡Pruébalo en tu\nábaco! →</string>
+    <string name="l2_solve_instruction">Resuélvelo en tu ábaco y luego\ncomprueba tu respuesta:\n%1$s</string>
+    <string name="l2_replay_arrow">Repetir ▶</string>
+    <string name="l2_practice_done_msg">¡Increíble! ¡Resolviste las %1$d operaciones en el ábaco!\n¿Listo para el cuestionario?</string>
+    <string name="l2_group1_why">¡La varilla de las unidades solo guarda 4 cuentas de la tierra! Cuando ya no caben más pero la respuesta sigue por debajo de 10, ¡hacemos un cambio mágico con la cuenta del cielo! 🪄</string>
+    <string name="l2_group1_when">¡Cuando quieres sumar 1, 2, 3 o 4, pero ya no hay espacio para más cuentas de la tierra!</string>
+    <string name="l2_group1_how">Empuja cuentas de la tierra ABAJO + empuja la cuenta del cielo ABAJO al mismo tiempo. ¡Dos movimientos = una respuesta! 🤝</string>
+    <string name="l2_group2_why">Cuando tu número es 5–8, la cuenta del cielo ya está abajo. ¿Tienes que restar y no hay suficientes cuentas de la tierra? ¡Devuelve la cuenta del cielo y recibe cuentas de la tierra a cambio! 🔄</string>
+    <string name="l2_group2_when">¡Cuando quieres restar 1, 2, 3 o 4, pero no hay suficientes cuentas de la tierra para quitar!</string>
+    <string name="l2_group2_how">Empuja la cuenta del cielo ARRIBA + suma cuentas de la tierra ARRIBA al mismo tiempo. ¡Dos movimientos = una respuesta! 🤝</string>
+    <string name="l2_group3_why">Cuando al sumar el total llega a 10 o más, ¡hay que llevar a la varilla de las DECENAS, la de al lado! ¡Es como mudarse a un barrio más grande! 🏘️</string>
+    <string name="l2_group3_when">Cuando al sumar el total llega a 10 o más: ¡hora de llevar!</string>
+    <string name="l2_group3_how">Suma 1 cuenta a la varilla de las DECENAS (+10) y quita cuentas de la varilla de las UNIDADES. ¡Se compensan y dan la respuesta correcta! 🔢</string>
+    <string name="l2_group4_why">Cuando la varilla de las UNIDADES está vacía y aún tienes que restar, ¡pide prestado 10 a la varilla de las DECENAS, la de al lado! ¡Como pedirle un lápiz de color a un amigo! 🖍️</string>
+    <string name="l2_group4_when">¡Cuando la varilla de las unidades no tiene suficientes cuentas para restar!</string>
+    <string name="l2_group4_how">Quita 1 cuenta de la varilla de las DECENAS (−10) y suma cuentas a la varilla de las UNIDADES. Pides prestado y devuelves: ¡fácil! 🔢</string>
+    <string name="l2_group5_name">Familia + (−5+10)</string>
+    <string name="l2_group5_why">¡A veces sumar necesita AMBAS cosas, un cambio del cielo Y una llevada a las decenas, todo a la vez! ¡El Pequeño amigo y el Gran amigo se unen como una familia! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group5_when">¡Cuando sumas 6, 7, 8 o 9 y la cuenta del cielo ya está ABAJO!</string>
+    <string name="l2_group5_how">3 movimientos rápidos: cielo ARRIBA (−5) → llevar a las DECENAS (+10) → sumar unas cuentas de la tierra. ¡Todo a la vez! 🤝</string>
+    <string name="l2_group6_name">Familia − (+5−10)</string>
+    <string name="l2_group6_why">¡A veces restar necesita pedir prestado a las decenas Y usar la cuenta del cielo, todo a la vez! ¡Toda la familia trabaja en equipo! 👨‍👩‍👧‍👦</string>
+    <string name="l2_group6_when">¡Cuando restas 6, 7, 8 o 9 y no hay suficientes cuentas de la tierra!</string>
+    <string name="l2_group6_how">3 movimientos rápidos: pedir prestado a las DECENAS (−10) → cuenta del cielo ABAJO (+5) → quitar unas cuentas de la tierra. ¡Trabajo en equipo! 🤝</string>
+    <string name="l2_formulas_title">Fórmulas 📋</string>
+    <string name="l2_why">💡 ¿Por qué?</string>
+    <string name="l2_when">⏰ ¿Cuándo?</string>
+    <string name="l2_how">🛠️ ¿Cómo?</string>
+    <string name="l2_phase_start">Empieza en 0</string>
+    <string name="l2_phase_setup">Formando %1$d</string>
+    <string name="l2_phase_now">Ahora: %1$d</string>
+    <string name="l2_phase_apply">Aplicando %1$s</string>
+    <string name="l2_phase_result">Resultado: %1$d ✅</string>
+    <string name="l2_replay">▶ Repetir</string>
+    <string name="l2_col_formula">Fórmula</string>
+    <string name="l2_col_moves">Movimientos</string>
+    <string name="l2_col_example">Ejemplo</string>
+    <plurals name="l2_moves_g1">
+        <item quantity="one">Quita %1$d tierra → baja el cielo</item>
+        <item quantity="many">Quita %1$d tierra → baja el cielo</item>
+        <item quantity="other">Quita %1$d tierra → baja el cielo</item>
+    </plurals>
+    <plurals name="l2_moves_g2">
+        <item quantity="one">Sube el cielo → suma %1$d tierra</item>
+        <item quantity="many">Sube el cielo → suma %1$d tierra</item>
+        <item quantity="other">Sube el cielo → suma %1$d tierra</item>
+    </plurals>
+    <plurals name="l2_moves_g3">
+        <item quantity="one">Lleva a decenas → quita %1$d de unidades</item>
+        <item quantity="many">Lleva a decenas → quita %1$d de unidades</item>
+        <item quantity="other">Lleva a decenas → quita %1$d de unidades</item>
+    </plurals>
+    <plurals name="l2_moves_g4">
+        <item quantity="one">Pide prestado a decenas → suma %1$d a unidades</item>
+        <item quantity="many">Pide prestado a decenas → suma %1$d a unidades</item>
+        <item quantity="other">Pide prestado a decenas → suma %1$d a unidades</item>
+    </plurals>
+    <plurals name="l2_moves_g5">
+        <item quantity="one">Cielo arriba → lleva → suma %1$d tierra</item>
+        <item quantity="many">Cielo arriba → lleva → suma %1$d tierra</item>
+        <item quantity="other">Cielo arriba → lleva → suma %1$d tierra</item>
+    </plurals>
+    <plurals name="l2_moves_g6">
+        <item quantity="one">Pide prestado → cielo abajo → quita %1$d tierra</item>
+        <item quantity="many">Pide prestado → cielo abajo → quita %1$d tierra</item>
+        <item quantity="other">Pide prestado → cielo abajo → quita %1$d tierra</item>
+    </plurals>
     <!-- m1_settings -->
     <string name="background_music_volume">Volumen de la música de fondo</string>
     <string name="change_voice_setting">Cambiar la voz</string>
