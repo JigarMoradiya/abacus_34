@@ -360,8 +360,8 @@
   "ar": "يرجى إدخال رقم هاتف صالح"
  },
  "reset": {
-  "fr": "Réinitialiser",
-  "es": "Restablecer",
+  "fr": "Effacer",
+  "es": "Reiniciar",
   "pt": "Redefinir",
   "tr": "Sıfırla",
   "ru": "Сбросить",

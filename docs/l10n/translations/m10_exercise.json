@@ -1,0 +1,224 @@
+{
+ "leave_exercise_alert": {
+  "fr": "Quitter l'exercice",
+  "es": "Salir del ejercicio",
+  "pt": "Sair do exercício",
+  "tr": "Egzersizden çık",
+  "ru": "Выйти из упражнения",
+  "ja": "トレーニングを終了",
+  "th": "ออกจากแบบฝึกหัด"
+ },
+ "leave_exercise_msg": {
+  "fr": "Veux-tu vraiment quitter l'exercice sans le terminer ?",
+  "es": "¿Seguro que quieres salir del ejercicio sin terminarlo?",
+  "pt": "Tem certeza que quer sair do exercício sem terminar?",
+  "tr": "Egzersizi bitirmeden çıkmak istediğine emin misin?",
+  "ru": "Ты точно хочешь выйти, не закончив упражнение?",
+  "ja": "トレーニングを終わらせずにやめますか？",
+  "th": "แน่ใจไหมว่าจะออกจากแบบฝึกหัดโดยยังไม่เสร็จ"
+ },
+ "or": {
+  "fr": "OU",
+  "es": "O",
+  "pt": "OU",
+  "tr": "VEYA",
+  "ru": "ИЛИ",
+  "ja": "または",
+  "th": "หรือ"
+ },
+ "select_your_exercise": {
+  "fr": "Choisis ton exercice",
+  "es": "Elige tu ejercicio",
+  "pt": "Escolha seu exercício",
+  "tr": "Egzersizini seç",
+  "ru": "Выбери упражнение",
+  "ja": "トレーニングをえらぼう",
+  "th": "เลือกแบบฝึกหัดของคุณ"
+ },
+ "start_exercise": {
+  "fr": "Commencer l'exercice",
+  "es": "Empezar ejercicio",
+  "pt": "Começar exercício",
+  "tr": "Egzersize başla",
+  "ru": "Начать упражнение",
+  "ja": "トレーニング開始",
+  "th": "เริ่มแบบฝึกหัด"
+ },
+ "title_exercises": {
+  "fr": "Exercices de boulier",
+  "es": "Ejercicios de ábaco",
+  "pt": "Exercícios de ábaco",
+  "tr": "Abaküs Egzersizleri",
+  "ru": "Упражнения на абакусе",
+  "ja": "そろばんトレーニング",
+  "th": "แบบฝึกหัดลูกคิด"
+ },
+ "exercise_title_add_sub": {
+  "fr": "Additions et soustractions",
+  "es": "Sumas y restas",
+  "pt": "Somas e subtrações",
+  "tr": "Toplama ve Çıkarma",
+  "ru": "Сложение и вычитание",
+  "ja": "たし算・ひき算",
+  "th": "การบวกและการลบ"
+ },
+ "exercise_label_add": {
+  "fr": "%1$d chiffres, %2$d lignes, %3$d questions",
+  "es": "%1$d dígitos, %2$d líneas, %3$d preguntas",
+  "pt": "%1$d dígitos, %2$d linhas, %3$d perguntas",
+  "tr": "%1$d basamak, %2$d satır, %3$d soru",
+  "ru": "%1$d цифр, %2$d строк, %3$d вопросов",
+  "ja": "%1$d桁、%2$d行、%3$d問",
+  "th": "%1$d หลัก %2$d บรรทัด %3$d ข้อ"
+ },
+ "exercise_label_mul": {
+  "fr": "La réponse a %1$d chiffres, %2$d questions",
+  "es": "La respuesta tiene %1$d dígitos, %2$d preguntas",
+  "pt": "A resposta tem %1$d dígitos, %2$d perguntas",
+  "tr": "Cevap %1$d basamaklı, %2$d soru",
+  "ru": "Ответ — %1$d цифр, %2$d вопросов",
+  "ja": "答えは%1$d桁、%2$d問",
+  "th": "คำตอบมี %1$d หลัก %2$d ข้อ"
+ },
+ "exercise_label_div": {
+  "fr": "Le dividende a au plus %1$d chiffres, %2$d questions",
+  "es": "El dividendo tiene como máximo %1$d dígitos, %2$d preguntas",
+  "pt": "O dividendo tem no máximo %1$d dígitos, %2$d perguntas",
+  "tr": "Bölünen en çok %1$d basamaklı, %2$d soru",
+  "ru": "Делимое — не более %1$d цифр, %2$d вопросов",
+  "ja": "わられる数は最大%1$d桁、%2$d問",
+  "th": "ตัวตั้งมีไม่เกิน %1$d หลัก %2$d ข้อ"
+ },
+ "exercise_q_counter": {
+  "fr": "Q %1$d / %2$d",
+  "es": "P %1$d / %2$d",
+  "pt": "P %1$d / %2$d",
+  "tr": "S %1$d / %2$d",
+  "ru": "В %1$d / %2$d",
+  "ja": "第%1$d問 / %2$d",
+  "th": "ข้อ %1$d / %2$d"
+ },
+ "exercise_answer_label": {
+  "fr": "Réponse :",
+  "es": "Respuesta:",
+  "pt": "Resposta:",
+  "tr": "Cevap:",
+  "ru": "Ответ:",
+  "ja": "答え：",
+  "th": "คำตอบ:"
+ },
+ "exercise_use_keypad_or_abacus": {
+  "fr": "Utilise <b>le clavier</b> ou <b>le boulier</b> pour donner ta réponse !",
+  "es": "¡Usa <b>el teclado</b> o <b>el ábaco</b> para dar tu respuesta!",
+  "pt": "Use <b>o teclado</b> ou <b>o ábaco</b> para dar sua resposta!",
+  "tr": "Cevabını vermek için <b>tuş takımını</b> veya <b>abaküsü</b> kullan!",
+  "ru": "Дай ответ с помощью <b>клавиатуры</b> или <b>абакуса</b>!",
+  "ja": "<b>キーパッド</b>か<b>そろばん</b>で答えてね！",
+  "th": "ตอบด้วย <b>แป้นตัวเลข</b> หรือ <b>ลูกคิด</b> ได้เลย!"
+ },
+ "exercise_desc_add": {
+  "plural": {
+   "fr": {
+    "one": "%1$d chiffres, %2$d lignes,\n%3$d questions en %4$d minute",
+    "many": "%1$d chiffres, %2$d lignes,\n%3$d questions en %4$d minutes",
+    "other": "%1$d chiffres, %2$d lignes,\n%3$d questions en %4$d minutes"
+   },
+   "es": {
+    "one": "%1$d dígitos, %2$d líneas,\n%3$d preguntas en %4$d minuto",
+    "many": "%1$d dígitos, %2$d líneas,\n%3$d preguntas en %4$d minutos",
+    "other": "%1$d dígitos, %2$d líneas,\n%3$d preguntas en %4$d minutos"
+   },
+   "pt": {
+    "one": "%1$d dígitos, %2$d linhas,\n%3$d perguntas em %4$d minuto",
+    "many": "%1$d dígitos, %2$d linhas,\n%3$d perguntas em %4$d minutos",
+    "other": "%1$d dígitos, %2$d linhas,\n%3$d perguntas em %4$d minutos"
+   },
+   "tr": {
+    "one": "%1$d basamak, %2$d satır,\n%4$d dakikada %3$d soru",
+    "other": "%1$d basamak, %2$d satır,\n%4$d dakikada %3$d soru"
+   },
+   "ru": {
+    "one": "%1$d цифр, %2$d строк,\n%3$d вопросов за %4$d мин.",
+    "few": "%1$d цифр, %2$d строк,\n%3$d вопросов за %4$d мин.",
+    "many": "%1$d цифр, %2$d строк,\n%3$d вопросов за %4$d мин.",
+    "other": "%1$d цифр, %2$d строк,\n%3$d вопросов за %4$d мин."
+   },
+   "ja": {
+    "other": "%1$d桁、%2$d行、\n%3$d問を%4$d分で"
+   },
+   "th": {
+    "other": "%1$d หลัก %2$d บรรทัด\n%3$d ข้อ ใน %4$d นาที"
+   }
+  }
+ },
+ "exercise_desc_mul": {
+  "plural": {
+   "fr": {
+    "one": "La réponse a %1$d chiffres,\n%2$d questions en %3$d minute",
+    "many": "La réponse a %1$d chiffres,\n%2$d questions en %3$d minutes",
+    "other": "La réponse a %1$d chiffres,\n%2$d questions en %3$d minutes"
+   },
+   "es": {
+    "one": "La respuesta tiene %1$d dígitos,\n%2$d preguntas en %3$d minuto",
+    "many": "La respuesta tiene %1$d dígitos,\n%2$d preguntas en %3$d minutos",
+    "other": "La respuesta tiene %1$d dígitos,\n%2$d preguntas en %3$d minutos"
+   },
+   "pt": {
+    "one": "A resposta tem %1$d dígitos,\n%2$d perguntas em %3$d minuto",
+    "many": "A resposta tem %1$d dígitos,\n%2$d perguntas em %3$d minutos",
+    "other": "A resposta tem %1$d dígitos,\n%2$d perguntas em %3$d minutos"
+   },
+   "tr": {
+    "one": "Cevap %1$d basamaklı,\n%3$d dakikada %2$d soru",
+    "other": "Cevap %1$d basamaklı,\n%3$d dakikada %2$d soru"
+   },
+   "ru": {
+    "one": "Ответ — %1$d цифр,\n%2$d вопросов за %3$d мин.",
+    "few": "Ответ — %1$d цифр,\n%2$d вопросов за %3$d мин.",
+    "many": "Ответ — %1$d цифр,\n%2$d вопросов за %3$d мин.",
+    "other": "Ответ — %1$d цифр,\n%2$d вопросов за %3$d мин."
+   },
+   "ja": {
+    "other": "答えは%1$d桁、\n%2$d問を%3$d分で"
+   },
+   "th": {
+    "other": "คำตอบมี %1$d หลัก\n%2$d ข้อ ใน %3$d นาที"
+   }
+  }
+ },
+ "exercise_desc_div": {
+  "plural": {
+   "fr": {
+    "one": "Le dividende a au plus %1$d chiffres,\n%2$d questions en %3$d minute",
+    "many": "Le dividende a au plus %1$d chiffres,\n%2$d questions en %3$d minutes",
+    "other": "Le dividende a au plus %1$d chiffres,\n%2$d questions en %3$d minutes"
+   },
+   "es": {
+    "one": "El dividendo tiene como máximo %1$d dígitos,\n%2$d preguntas en %3$d minuto",
+    "many": "El dividendo tiene como máximo %1$d dígitos,\n%2$d preguntas en %3$d minutos",
+    "other": "El dividendo tiene como máximo %1$d dígitos,\n%2$d preguntas en %3$d minutos"
+   },
+   "pt": {
+    "one": "O dividendo tem no máximo %1$d dígitos,\n%2$d perguntas em %3$d minuto",
+    "many": "O dividendo tem no máximo %1$d dígitos,\n%2$d perguntas em %3$d minutos",
+    "other": "O dividendo tem no máximo %1$d dígitos,\n%2$d perguntas em %3$d minutos"
+   },
+   "tr": {
+    "one": "Bölünen en çok %1$d basamaklı,\n%3$d dakikada %2$d soru",
+    "other": "Bölünen en çok %1$d basamaklı,\n%3$d dakikada %2$d soru"
+   },
+   "ru": {
+    "one": "Делимое — не более %1$d цифр,\n%2$d вопросов за %3$d мин.",
+    "few": "Делимое — не более %1$d цифр,\n%2$d вопросов за %3$d мин.",
+    "many": "Делимое — не более %1$d цифр,\n%2$d вопросов за %3$d мин.",
+    "other": "Делимое — не более %1$d цифр,\n%2$d вопросов за %3$d мин."
+   },
+   "ja": {
+    "other": "わられる数は最大%1$d桁、\n%2$d問を%3$d分で"
+   },
+   "th": {
+    "other": "ตัวตั้งมีไม่เกิน %1$d หลัก\n%2$d ข้อ ใน %3$d นาที"
+   }
+  }
+ }
+}

@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- m10_exercise -->
+    <string name="leave_exercise_alert">Quitter l\'exercice</string>
+    <string name="leave_exercise_msg">Veux-tu vraiment quitter l\'exercice sans le terminer ?</string>
+    <string name="or">OU</string>
+    <string name="select_your_exercise">Choisis ton exercice</string>
+    <string name="start_exercise">Commencer l\'exercice</string>
+    <string name="title_exercises">Exercices de boulier</string>
+    <string name="exercise_title_add_sub">Additions et soustractions</string>
+    <string name="exercise_label_add">%1$d chiffres, %2$d lignes, %3$d questions</string>
+    <string name="exercise_label_mul">La réponse a %1$d chiffres, %2$d questions</string>
+    <string name="exercise_label_div">Le dividende a au plus %1$d chiffres, %2$d questions</string>
+    <string name="exercise_q_counter">Q %1$d / %2$d</string>
+    <string name="exercise_answer_label">Réponse :</string>
+    <string name="exercise_use_keypad_or_abacus">Utilise &lt;b>le clavier&lt;/b> ou &lt;b>le boulier&lt;/b> pour donner ta réponse !</string>
+    <plurals name="exercise_desc_add">
+        <item quantity="one">%1$d chiffres, %2$d lignes,\n%3$d questions en %4$d minute</item>
+        <item quantity="many">%1$d chiffres, %2$d lignes,\n%3$d questions en %4$d minutes</item>
+        <item quantity="other">%1$d chiffres, %2$d lignes,\n%3$d questions en %4$d minutes</item>
+    </plurals>
+    <plurals name="exercise_desc_mul">
+        <item quantity="one">La réponse a %1$d chiffres,\n%2$d questions en %3$d minute</item>
+        <item quantity="many">La réponse a %1$d chiffres,\n%2$d questions en %3$d minutes</item>
+        <item quantity="other">La réponse a %1$d chiffres,\n%2$d questions en %3$d minutes</item>
+    </plurals>
+    <plurals name="exercise_desc_div">
+        <item quantity="one">Le dividende a au plus %1$d chiffres,\n%2$d questions en %3$d minute</item>
+        <item quantity="many">Le dividende a au plus %1$d chiffres,\n%2$d questions en %3$d minutes</item>
+        <item quantity="other">Le dividende a au plus %1$d chiffres,\n%2$d questions en %3$d minutes</item>
+    </plurals>
     <!-- m1_settings -->
     <string name="background_music_volume">Volume de la musique de fond</string>
     <string name="change_voice_setting">Modifier la voix</string>
@@ -91,7 +120,7 @@
     <string name="please_enter_password">Veuillez saisir votre mot de passe</string>
     <string name="please_enter_valid_email_id">Veuillez saisir une adresse e-mail valide</string>
     <string name="please_enter_valid_mobile_number">Veuillez saisir un numéro de téléphone valide</string>
-    <string name="reset">Réinitialiser</string>
+    <string name="reset">Effacer</string>
     <string name="retry">Réessayer</string>
     <string name="review_day2_message">Votre note aide d\'autres parents à nous trouver et nous aide à nous améliorer !</string>
     <string name="review_day2_title">Aidez-nous à grandir ! 🌱</string>

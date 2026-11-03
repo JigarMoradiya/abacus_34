@@ -204,8 +204,8 @@ private fun ReportExerciseExamSection(item: AllExamData) {
     Column(verticalArrangement = Arrangement.spacedBy(2.dp * s)) {
         when (item.type) {
             AppConstants.EXAM.type_Exercise -> {
-                ReportLine(stringResource(R.string.type_of_exercise), item.category ?: "")
-                ReportLine(stringResource(R.string.exercise_in), item.label ?: "")
+                ReportLine(stringResource(R.string.type_of_exercise), exerciseCategoryText(item.category))
+                ReportLine(stringResource(R.string.exercise_in), exerciseLabelText(item.label))
             }
             AppConstants.EXAM.type_Exam -> {
                 ReportLine(stringResource(R.string.level_of_exam), examLevelName(item.level))

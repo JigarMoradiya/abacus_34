@@ -1608,4 +1608,25 @@
     <string name="formula_big_friend_sub">Big Friend (-10)</string>
     <string name="formula_family_add">Combination | Family (+)</string>
     <string name="formula_family_sub">Combination | Family (-)</string>
+
+    <!-- Exercise (M10) -->
+    <string name="exercise_title_add_sub">Addition &amp; Subtraction</string>
+    <plurals name="exercise_desc_add">
+        <item quantity="one">%1$d Digits, %2$d Lines,\n%3$d Questions in %4$d Minute</item>
+        <item quantity="other">%1$d Digits, %2$d Lines,\n%3$d Questions in %4$d Minutes</item>
+    </plurals>
+    <plurals name="exercise_desc_mul">
+        <item quantity="one">The answer is %1$d Digits,\n%2$d Questions in %3$d Minute</item>
+        <item quantity="other">The answer is %1$d Digits,\n%2$d Questions in %3$d Minutes</item>
+    </plurals>
+    <plurals name="exercise_desc_div">
+        <item quantity="one">The dividend is MAX %1$d Digits,\n%2$d Questions in %3$d Minute</item>
+        <item quantity="other">The dividend is MAX %1$d Digits,\n%2$d Questions in %3$d Minutes</item>
+    </plurals>
+    <string name="exercise_label_add">%1$d Digits, %2$d Lines, %3$d Questions</string>
+    <string name="exercise_label_mul">The answer is %1$d Digits, %2$d Questions</string>
+    <string name="exercise_label_div">The dividend is MAX %1$d Digits, %2$d Questions</string>
+    <string name="exercise_q_counter">Q %1$d / %2$d</string>
+    <string name="exercise_answer_label">Answer:</string>
+    <string name="exercise_use_keypad_or_abacus">Use &lt;b>the keypad&lt;/b> or &lt;b>the abacus&lt;/b> to give your answer!</string>
 </resources>

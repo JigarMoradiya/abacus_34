@@ -100,7 +100,7 @@ fun ExercisePagerScreen(
                         // TITLE + SUBTITLE
                         Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(Dimens4)) {
                             AbShrinkText(
-                                text = exercise.title,
+                                text = stringResource(exercise.titleRes),
                                 // iOS squeezes this heading to about 0.78 of its size on a phone (the page is short there)
                                 style = AbTypography.title(if (LocalAbScale.current.isTablet) s else s * 0.78f),
                                 color = colors.textPrimary,
@@ -129,7 +129,7 @@ fun ExercisePagerScreen(
 
                         // DESCRIPTION (two full lines)
                         Text(
-                            text = selectedItem?.selectedItemDescription(page) ?: "",
+                            text = selectedItem?.selectedItemDescriptionText(page) ?: "",
                             style = AbTypography.label(s),
                             color = colors.textPrimary,
                             textAlign = TextAlign.Center,

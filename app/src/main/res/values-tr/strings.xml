@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- m10_exercise -->
+    <string name="leave_exercise_alert">Egzersizden çık</string>
+    <string name="leave_exercise_msg">Egzersizi bitirmeden çıkmak istediğine emin misin?</string>
+    <string name="or">VEYA</string>
+    <string name="select_your_exercise">Egzersizini seç</string>
+    <string name="start_exercise">Egzersize başla</string>
+    <string name="title_exercises">Abaküs Egzersizleri</string>
+    <string name="exercise_title_add_sub">Toplama ve Çıkarma</string>
+    <string name="exercise_label_add">%1$d basamak, %2$d satır, %3$d soru</string>
+    <string name="exercise_label_mul">Cevap %1$d basamaklı, %2$d soru</string>
+    <string name="exercise_label_div">Bölünen en çok %1$d basamaklı, %2$d soru</string>
+    <string name="exercise_q_counter">S %1$d / %2$d</string>
+    <string name="exercise_answer_label">Cevap:</string>
+    <string name="exercise_use_keypad_or_abacus">Cevabını vermek için &lt;b>tuş takımını&lt;/b> veya &lt;b>abaküsü&lt;/b> kullan!</string>
+    <plurals name="exercise_desc_add">
+        <item quantity="one">%1$d basamak, %2$d satır,\n%4$d dakikada %3$d soru</item>
+        <item quantity="other">%1$d basamak, %2$d satır,\n%4$d dakikada %3$d soru</item>
+    </plurals>
+    <plurals name="exercise_desc_mul">
+        <item quantity="one">Cevap %1$d basamaklı,\n%3$d dakikada %2$d soru</item>
+        <item quantity="other">Cevap %1$d basamaklı,\n%3$d dakikada %2$d soru</item>
+    </plurals>
+    <plurals name="exercise_desc_div">
+        <item quantity="one">Bölünen en çok %1$d basamaklı,\n%3$d dakikada %2$d soru</item>
+        <item quantity="other">Bölünen en çok %1$d basamaklı,\n%3$d dakikada %2$d soru</item>
+    </plurals>
     <!-- m1_settings -->
     <string name="background_music_volume">Arka plan müziği ses düzeyi</string>
     <string name="change_voice_setting">Ses ayarını değiştir</string>

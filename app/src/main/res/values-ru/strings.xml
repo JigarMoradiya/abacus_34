@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- m10_exercise -->
+    <string name="leave_exercise_alert">Выйти из упражнения</string>
+    <string name="leave_exercise_msg">Ты точно хочешь выйти, не закончив упражнение?</string>
+    <string name="or">ИЛИ</string>
+    <string name="select_your_exercise">Выбери упражнение</string>
+    <string name="start_exercise">Начать упражнение</string>
+    <string name="title_exercises">Упражнения на абакусе</string>
+    <string name="exercise_title_add_sub">Сложение и вычитание</string>
+    <string name="exercise_label_add">%1$d цифр, %2$d строк, %3$d вопросов</string>
+    <string name="exercise_label_mul">Ответ — %1$d цифр, %2$d вопросов</string>
+    <string name="exercise_label_div">Делимое — не более %1$d цифр, %2$d вопросов</string>
+    <string name="exercise_q_counter">В %1$d / %2$d</string>
+    <string name="exercise_answer_label">Ответ:</string>
+    <string name="exercise_use_keypad_or_abacus">Дай ответ с помощью &lt;b>клавиатуры&lt;/b> или &lt;b>абакуса&lt;/b>!</string>
+    <plurals name="exercise_desc_add">
+        <item quantity="one">%1$d цифр, %2$d строк,\n%3$d вопросов за %4$d мин.</item>
+        <item quantity="few">%1$d цифр, %2$d строк,\n%3$d вопросов за %4$d мин.</item>
+        <item quantity="many">%1$d цифр, %2$d строк,\n%3$d вопросов за %4$d мин.</item>
+        <item quantity="other">%1$d цифр, %2$d строк,\n%3$d вопросов за %4$d мин.</item>
+    </plurals>
+    <plurals name="exercise_desc_mul">
+        <item quantity="one">Ответ — %1$d цифр,\n%2$d вопросов за %3$d мин.</item>
+        <item quantity="few">Ответ — %1$d цифр,\n%2$d вопросов за %3$d мин.</item>
+        <item quantity="many">Ответ — %1$d цифр,\n%2$d вопросов за %3$d мин.</item>
+        <item quantity="other">Ответ — %1$d цифр,\n%2$d вопросов за %3$d мин.</item>
+    </plurals>
+    <plurals name="exercise_desc_div">
+        <item quantity="one">Делимое — не более %1$d цифр,\n%2$d вопросов за %3$d мин.</item>
+        <item quantity="few">Делимое — не более %1$d цифр,\n%2$d вопросов за %3$d мин.</item>
+        <item quantity="many">Делимое — не более %1$d цифр,\n%2$d вопросов за %3$d мин.</item>
+        <item quantity="other">Делимое — не более %1$d цифр,\n%2$d вопросов за %3$d мин.</item>
+    </plurals>
     <!-- m1_settings -->
     <string name="background_music_volume">Громкость фоновой музыки</string>
     <string name="change_voice_setting">Настройки голоса</string>

@@ -153,7 +153,7 @@ private fun ExerciseHeader(uiState: ExerciseUiState, onBackClick: () -> Unit) {
                 Modifier.align(Alignment.TopCenter).padding(top = DeviceInfo.screenTopPadding()).height(48.dp * s),
                 contentAlignment = Alignment.Center,
             ) {
-                AbChip(text = "Time : " + uiState.elapsedSeconds.secToCountDown(), tone = AbTone.Purple, icon = Icons.Filled.Schedule)
+                AbChip(text = stringResource(R.string.exam_time_label, uiState.elapsedSeconds.secToCountDown()), tone = AbTone.Purple, icon = Icons.Filled.Schedule)
             }
         }
         ActivityTopBar(title = stringResource(R.string.title_exercises), onBack = onBackClick)

@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- m10_exercise -->
+    <string name="leave_exercise_alert">ออกจากแบบฝึกหัด</string>
+    <string name="leave_exercise_msg">แน่ใจไหมว่าจะออกจากแบบฝึกหัดโดยยังไม่เสร็จ</string>
+    <string name="or">หรือ</string>
+    <string name="select_your_exercise">เลือกแบบฝึกหัดของคุณ</string>
+    <string name="start_exercise">เริ่มแบบฝึกหัด</string>
+    <string name="title_exercises">แบบฝึกหัดลูกคิด</string>
+    <string name="exercise_title_add_sub">การบวกและการลบ</string>
+    <string name="exercise_label_add">%1$d หลัก %2$d บรรทัด %3$d ข้อ</string>
+    <string name="exercise_label_mul">คำตอบมี %1$d หลัก %2$d ข้อ</string>
+    <string name="exercise_label_div">ตัวตั้งมีไม่เกิน %1$d หลัก %2$d ข้อ</string>
+    <string name="exercise_q_counter">ข้อ %1$d / %2$d</string>
+    <string name="exercise_answer_label">คำตอบ:</string>
+    <string name="exercise_use_keypad_or_abacus">ตอบด้วย &lt;b>แป้นตัวเลข&lt;/b> หรือ &lt;b>ลูกคิด&lt;/b> ได้เลย!</string>
+    <plurals name="exercise_desc_add">
+        <item quantity="other">%1$d หลัก %2$d บรรทัด\n%3$d ข้อ ใน %4$d นาที</item>
+    </plurals>
+    <plurals name="exercise_desc_mul">
+        <item quantity="other">คำตอบมี %1$d หลัก\n%2$d ข้อ ใน %3$d นาที</item>
+    </plurals>
+    <plurals name="exercise_desc_div">
+        <item quantity="other">ตัวตั้งมีไม่เกิน %1$d หลัก\n%2$d ข้อ ใน %3$d นาที</item>
+    </plurals>
     <!-- m1_settings -->
     <string name="background_music_volume">ระดับเสียงเพลงพื้นหลัง</string>
     <string name="change_voice_setting">เปลี่ยนการตั้งค่าเสียงพูด</string>

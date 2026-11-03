@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- m10_exercise -->
+    <string name="leave_exercise_alert">Sair do exercício</string>
+    <string name="leave_exercise_msg">Tem certeza que quer sair do exercício sem terminar?</string>
+    <string name="or">OU</string>
+    <string name="select_your_exercise">Escolha seu exercício</string>
+    <string name="start_exercise">Começar exercício</string>
+    <string name="title_exercises">Exercícios de ábaco</string>
+    <string name="exercise_title_add_sub">Somas e subtrações</string>
+    <string name="exercise_label_add">%1$d dígitos, %2$d linhas, %3$d perguntas</string>
+    <string name="exercise_label_mul">A resposta tem %1$d dígitos, %2$d perguntas</string>
+    <string name="exercise_label_div">O dividendo tem no máximo %1$d dígitos, %2$d perguntas</string>
+    <string name="exercise_q_counter">P %1$d / %2$d</string>
+    <string name="exercise_answer_label">Resposta:</string>
+    <string name="exercise_use_keypad_or_abacus">Use &lt;b>o teclado&lt;/b> ou &lt;b>o ábaco&lt;/b> para dar sua resposta!</string>
+    <plurals name="exercise_desc_add">
+        <item quantity="one">%1$d dígitos, %2$d linhas,\n%3$d perguntas em %4$d minuto</item>
+        <item quantity="many">%1$d dígitos, %2$d linhas,\n%3$d perguntas em %4$d minutos</item>
+        <item quantity="other">%1$d dígitos, %2$d linhas,\n%3$d perguntas em %4$d minutos</item>
+    </plurals>
+    <plurals name="exercise_desc_mul">
+        <item quantity="one">A resposta tem %1$d dígitos,\n%2$d perguntas em %3$d minuto</item>
+        <item quantity="many">A resposta tem %1$d dígitos,\n%2$d perguntas em %3$d minutos</item>
+        <item quantity="other">A resposta tem %1$d dígitos,\n%2$d perguntas em %3$d minutos</item>
+    </plurals>
+    <plurals name="exercise_desc_div">
+        <item quantity="one">O dividendo tem no máximo %1$d dígitos,\n%2$d perguntas em %3$d minuto</item>
+        <item quantity="many">O dividendo tem no máximo %1$d dígitos,\n%2$d perguntas em %3$d minutos</item>
+        <item quantity="other">O dividendo tem no máximo %1$d dígitos,\n%2$d perguntas em %3$d minutos</item>
+    </plurals>
     <!-- m1_settings -->
     <string name="background_music_volume">Volume da música de fundo</string>
     <string name="change_voice_setting">Alterar a voz</string>

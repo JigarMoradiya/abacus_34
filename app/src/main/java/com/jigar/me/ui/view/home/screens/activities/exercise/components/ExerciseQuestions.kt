@@ -103,7 +103,7 @@ fun ExerciseQuestions(
             ) {
                 Box(Modifier.padding(top = Dimens10).height(48.dp * s), contentAlignment = Alignment.CenterEnd) {
                     AbChip(
-                        text = "Q ${uiState.currentQueIndex + 1} / ${maxOf(uiState.exerciseQuestionList.size, 1)}",
+                        text = stringResource(R.string.exercise_q_counter, uiState.currentQueIndex + 1, maxOf(uiState.exerciseQuestionList.size, 1)),
                         tone = AbTone.Purple,
                         modifier = Modifier.wrapContentWidth(Alignment.End, unbounded = true),
                         icon = Icons.AutoMirrored.Filled.Help,
@@ -138,7 +138,7 @@ fun ExerciseQuestions(
                     horizontalArrangement = Arrangement.spacedBy(Dimens4),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Text("Answer:", style = AbTypography.fixed(15f * s, FontWeight.Bold), color = colors.textPrimary)
+                    Text(stringResource(R.string.exercise_answer_label), style = AbTypography.fixed(15f * s, FontWeight.Bold), color = colors.textPrimary)
                     Text(
                         text = uiState.answerText.ifEmpty { "0" },
                         style = AbTypography.fixed(20f * s, FontWeight.ExtraBold),
