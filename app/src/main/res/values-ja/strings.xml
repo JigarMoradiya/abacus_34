@@ -386,4 +386,95 @@
     <string name="tour_step_14">&lt;b>たし算のときは&lt;/b>&lt;br/>いつも&lt;font color=\'#D81B60\'>&lt;b>人さし指&lt;/b>&lt;/font>で&lt;br/>&lt;font color=\'#0000EE\'>&lt;b>上の珠を下へ動かします&lt;/b>&lt;/font></string>
     <string name="tour_step_15">&lt;b>ひき算のときは&lt;/b>&lt;br/>いつも&lt;font color=\'#D81B60\'>&lt;b>人さし指&lt;/b>&lt;/font>で&lt;br/>&lt;font color=\'#0000EE\'>&lt;b>下の珠を下へ動かします&lt;/b>&lt;/font></string>
     <string name="tour_step_16">&lt;b>ひき算のときは&lt;/b>&lt;br/>いつも&lt;font color=\'#D81B60\'>&lt;b>親指&lt;/b>&lt;/font>で&lt;br/>&lt;font color=\'#0000EE\'>&lt;b>上の珠を上へ動かします&lt;/b>&lt;/font></string>
+    <!-- m7_onboarding -->
+    <string name="ob_page1_title">そろばんとであおう</string>
+    <string name="ob_page1_body">ひとつの桁がひとつの数字です。</string>
+    <string name="ob_page2_title">下の珠 = 1</string>
+    <string name="ob_page2_body">上にあげて数えよう。</string>
+    <string name="ob_page3_title">上の珠 = 5</string>
+    <string name="ob_page3_body">5と2で7になります。</string>
+    <string name="ob_page4_title">たしてみよう：2 + 1</string>
+    <string name="ob_page4_body">珠をひとつ上にあげよう。</string>
+    <string name="ob_page4_after_body">よくできました！</string>
+    <string name="ob_page5_title">つぎは：4 + 3</string>
+    <string name="ob_page5_body">あと3つ分の場所がありません！</string>
+    <string name="ob_page5_after_body">これが「小さな友だち」です！</string>
+    <string name="ob_continue">続ける</string>
+    <string name="ob_start_learning">学びはじめる</string>
+    <string name="ob_previous">前へ</string>
+    <string name="ob_show_me">見せて</string>
+    <string name="ob_free_label">無料</string>
+    <string name="ob_premium_label">PREMIUM</string>
+    <string name="ob_group_learn">学ぶ・練習する</string>
+    <string name="ob_group_challenge">チャレンジ・ゲーム・成長</string>
+    <string name="ob_feat_free_mode">フリーモード</string>
+    <string name="ob_feat_free_mode_note">本物のそろばんで遊びながら、珠の数え方を見よう</string>
+    <string name="ob_free_everything_always">すべて、ずっと</string>
+    <string name="ob_free_everything">すべて</string>
+    <string name="ob_feat_path">学習コース</string>
+    <string name="ob_feat_path_note">最初の珠からスピード・九九まで、4つのレベル</string>
+    <string name="ob_free_path">レベル1：たまの基本</string>
+    <string name="ob_prem_path">公式、スピード練習、九九</string>
+    <string name="ob_feat_practice">そろばん練習</string>
+    <string name="ob_feat_practice_note">ステップごとのヒントつき、8レベルの計算</string>
+    <string name="ob_free_practice">レベル1とレベル2の最初のページ</string>
+    <string name="ob_prem_practice">8レベルすべて</string>
+    <string name="ob_feat_exercise">トレーニング</string>
+    <string name="ob_feat_exercise_note">スピードを伸ばす時間つきドリル</string>
+    <string name="ob_free_exercise">たし算とひき算の基本</string>
+    <string name="ob_prem_exercise">すべてのドリル（かけ算・わり算つき）</string>
+    <string name="ob_feat_exam">テスト</string>
+    <string name="ob_feat_exam_note">時間つきテスト、結果は保存されます</string>
+    <string name="ob_free_exam">たし算、初級</string>
+    <string name="ob_prem_exam">すべての計算とレベル</string>
+    <string name="ob_feat_ccm">オリジナルチャレンジ（CCM）</string>
+    <string name="ob_feat_ccm_note">数を聞くか見るかして、答えを頭の中で計算します。\n問題数は5〜20問\n1〜6桁</string>
+    <string name="ob_prem_ccm">すべて利用可能</string>
+    <string name="ob_feat_games">算数ゲームゾーン</string>
+    <string name="ob_feat_games_note">スピード・論理・数の感覚を育てる20の頭脳ゲーム</string>
+    <string name="ob_free_games">各ゲームのいちばんやさしいレベル</string>
+    <string name="ob_prem_games">すべてのレベルと盤の大きさ</string>
+    <string name="ob_feat_progress">成長とごほうび</string>
+    <string name="ob_feat_progress_note">保護者向け週間レポート、連続記録、テーマ</string>
+    <string name="ob_free_progress">連続記録、テーマ、直近3回の結果</string>
+    <string name="ob_prem_progress">レポート履歴すべて</string>
+    <string name="ob_number_label">数</string>
+    <string name="ob_why_title">保護者に選ばれる理由</string>
+    <string name="ob_why_subtitle">そろばんを学ぶのに必要なものがすべて</string>
+    <string name="ob_stat_learning_levels">学習レベル</string>
+    <string name="ob_stat_practice_levels">練習レベル</string>
+    <string name="ob_stat_brain_games">頭脳ゲーム</string>
+    <string name="ob_reason_1">どの計算もステップごとにサポート</string>
+    <string name="ob_reason_2">算数とそろばんの本番形式の練習</string>
+    <string name="ob_reason_3">集中力と論理的思考を育てる頭脳ゲーム</string>
+    <string name="ob_reason_4">保護者向けの週間レポート</string>
+    <string name="ob_reason_5">自分のペースで、ごほうびつきで学べる</string>
+    <string name="ob_no_ads">🛡️ 広告なし、子どもも安心</string>
+    <string name="ob_continue_free">いまは無料で続ける</string>
+    <string name="game_name_speed_compare">スピード比べ</string>
+    <string name="game_name_balloon_pop">風船わり</string>
+    <string name="game_name_true_or_false">○か×か</string>
+    <string name="game_name_math_bingo">算数ビンゴ</string>
+    <string name="game_name_missing_sign">ぬけた記号</string>
+    <string name="game_name_equation_match">式合わせ</string>
+    <string name="game_name_cross_math">クロス計算</string>
+    <string name="game_name_target_number">ターゲットナンバー</string>
+    <string name="game_name_number_path">数のみち</string>
+    <string name="game_name_math_pyramid">算数ピラミッド</string>
+    <string name="game_name_magic_square">魔方陣</string>
+    <string name="game_name_number_merge">数字合体</string>
+    <string name="game_name_number_sequence">数列</string>
+    <string name="game_name_place_value">位取り</string>
+    <string name="game_name_clock_master">時計マスター</string>
+    <string name="game_name_number_detective">数のたんてい</string>
+    <string name="game_name_sudoku">数独</string>
+    <string name="game_name_calcudoku">計算数独</string>
+    <string name="game_name_kakuro">カックロ</string>
+    <string name="game_name_number_snake">数字へび</string>
+    <plurals name="ob_free_for_days">
+        <item quantity="other">%1$d日間無料</item>
+    </plurals>
+    <plurals name="ob_free_first_days">
+        <item quantity="other">最初の%1$d日間は無料</item>
+    </plurals>
 </resources>

@@ -390,4 +390,99 @@
     <string name="tour_step_14">&lt;b>Para somar&lt;/b>&lt;br/>use sempre o &lt;font color=\'#D81B60\'>&lt;b>dedo indicador&lt;/b>&lt;/font>&lt;br/>para &lt;font color=\'#0000EE\'>&lt;b>descer a conta superior&lt;/b>&lt;/font></string>
     <string name="tour_step_15">&lt;b>Para subtrair&lt;/b>&lt;br/>use sempre o &lt;font color=\'#D81B60\'>&lt;b>dedo indicador&lt;/b>&lt;/font>&lt;br/>para &lt;font color=\'#0000EE\'>&lt;b>descer as contas inferiores&lt;/b>&lt;/font></string>
     <string name="tour_step_16">&lt;b>Para subtrair&lt;/b>&lt;br/>use sempre o &lt;font color=\'#D81B60\'>&lt;b>polegar&lt;/b>&lt;/font>&lt;br/>para &lt;font color=\'#0000EE\'>&lt;b>subir a conta superior&lt;/b>&lt;/font></string>
+    <!-- m7_onboarding -->
+    <string name="ob_page1_title">Conheça o ábaco</string>
+    <string name="ob_page1_body">Cada haste é um dígito.</string>
+    <string name="ob_page2_title">Contas de baixo = 1</string>
+    <string name="ob_page2_body">Suba-as para contar.</string>
+    <string name="ob_page3_title">Conta de cima = 5</string>
+    <string name="ob_page3_body">5 e mais 2 são 7.</string>
+    <string name="ob_page4_title">Vamos somar: 2 + 1</string>
+    <string name="ob_page4_body">Suba uma conta.</string>
+    <string name="ob_page4_after_body">Muito bem!</string>
+    <string name="ob_page5_title">Agora: 4 + 3</string>
+    <string name="ob_page5_body">Não há espaço para mais 3 contas!</string>
+    <string name="ob_page5_after_body">Foi um Pequeno amigo!</string>
+    <string name="ob_continue">Continuar</string>
+    <string name="ob_start_learning">Começar a aprender</string>
+    <string name="ob_previous">Anterior</string>
+    <string name="ob_show_me">Mostre-me</string>
+    <string name="ob_free_label">GRÁTIS</string>
+    <string name="ob_premium_label">PREMIUM</string>
+    <string name="ob_group_learn">Aprenda e pratique</string>
+    <string name="ob_group_challenge">Desafios, jogos e progresso</string>
+    <string name="ob_feat_free_mode">Modo livre</string>
+    <string name="ob_feat_free_mode_note">Um ábaco de verdade para ver como as contas contam</string>
+    <string name="ob_free_everything_always">Tudo, sempre</string>
+    <string name="ob_free_everything">Tudo</string>
+    <string name="ob_feat_path">Trilha de aprendizado</string>
+    <string name="ob_feat_path_note">4 níveis, das primeiras contas às tabuadas</string>
+    <string name="ob_free_path">Nível 1: básico das contas</string>
+    <string name="ob_prem_path">Fórmulas, velocidade, tabuadas</string>
+    <string name="ob_feat_practice">Prática de ábaco</string>
+    <string name="ob_feat_practice_note">8 níveis com ajuda passo a passo</string>
+    <string name="ob_free_practice">Nível 1 e início do nível 2</string>
+    <string name="ob_prem_practice">Todos os 8 níveis</string>
+    <string name="ob_feat_exercise">Exercícios</string>
+    <string name="ob_feat_exercise_note">Treinos cronometrados para ganhar velocidade</string>
+    <string name="ob_free_exercise">Soma e subtração básicas</string>
+    <string name="ob_prem_exercise">Tudo, com multiplicação e divisão</string>
+    <string name="ob_feat_exam">Prova</string>
+    <string name="ob_feat_exam_note">Testes cronometrados com resultados salvos</string>
+    <string name="ob_free_exam">Soma, nível iniciante</string>
+    <string name="ob_prem_exam">Todas as operações e níveis</string>
+    <string name="ob_feat_ccm">Desafio personalizado (CCM)</string>
+    <string name="ob_feat_ccm_note">Ouça ou veja os números e descubra a resposta de cabeça.\n5 a 20 perguntas\n1 a 6 dígitos</string>
+    <string name="ob_prem_ccm">Acesso completo</string>
+    <string name="ob_feat_games">Zona de jogos de matemática</string>
+    <string name="ob_feat_games_note">20 jogos mentais para velocidade, lógica e senso numérico</string>
+    <string name="ob_free_games">O nível mais fácil de cada jogo</string>
+    <string name="ob_prem_games">Todos os níveis e tamanhos de tabuleiro</string>
+    <string name="ob_feat_progress">Progresso e recompensas</string>
+    <string name="ob_feat_progress_note">Relatório semanal para os pais, sequência e temas</string>
+    <string name="ob_free_progress">Sequência, temas, últimos 3 resultados</string>
+    <string name="ob_prem_progress">Histórico completo de relatórios</string>
+    <string name="ob_number_label">Número</string>
+    <string name="ob_why_title">Por que os pais nos escolhem</string>
+    <string name="ob_why_subtitle">Tudo o que precisa para aprender ábaco</string>
+    <string name="ob_stat_learning_levels">níveis de aprendizado</string>
+    <string name="ob_stat_practice_levels">níveis de prática</string>
+    <string name="ob_stat_brain_games">jogos mentais</string>
+    <string name="ob_reason_1">Ajuda passo a passo em cada conta</string>
+    <string name="ob_reason_2">Prática estilo prova de matemática e ábaco</string>
+    <string name="ob_reason_3">Jogos mentais que desenvolvem foco e lógica</string>
+    <string name="ob_reason_4">Um relatório semanal de progresso para os pais</string>
+    <string name="ob_reason_5">Aprender no próprio ritmo, com recompensas</string>
+    <string name="ob_no_ads">🛡️ Sem anúncios, seguro para crianças</string>
+    <string name="ob_continue_free">Continuar grátis por enquanto</string>
+    <string name="game_name_speed_compare">Comparação veloz</string>
+    <string name="game_name_balloon_pop">Estoura balões</string>
+    <string name="game_name_true_or_false">Verdadeiro ou falso</string>
+    <string name="game_name_math_bingo">Bingo matemático</string>
+    <string name="game_name_missing_sign">Sinal faltando</string>
+    <string name="game_name_equation_match">Ligue as equações</string>
+    <string name="game_name_cross_math">Cruzadinha de contas</string>
+    <string name="game_name_target_number">Alcance o número</string>
+    <string name="game_name_number_path">Caminho dos números</string>
+    <string name="game_name_math_pyramid">Pirâmide matemática</string>
+    <string name="game_name_magic_square">Quadrado mágico</string>
+    <string name="game_name_number_merge">Fusão de números</string>
+    <string name="game_name_number_sequence">Sequência numérica</string>
+    <string name="game_name_place_value">Valor posicional</string>
+    <string name="game_name_clock_master">Mestre do relógio</string>
+    <string name="game_name_number_detective">Detetive de números</string>
+    <string name="game_name_sudoku">Sudoku</string>
+    <string name="game_name_calcudoku">Calcudoku</string>
+    <string name="game_name_kakuro">Kakuro</string>
+    <string name="game_name_number_snake">Cobrinha numérica</string>
+    <plurals name="ob_free_for_days">
+        <item quantity="one">GRÁTIS POR %1$d DIA</item>
+        <item quantity="many">GRÁTIS POR %1$d DE DIAS</item>
+        <item quantity="other">GRÁTIS POR %1$d DIAS</item>
+    </plurals>
+    <plurals name="ob_free_first_days">
+        <item quantity="one">GRÁTIS NOS PRIMEIROS %1$d DIAS</item>
+        <item quantity="many">GRÁTIS NOS PRIMEIROS %1$d DIAS</item>
+        <item quantity="other">GRÁTIS NOS PRIMEIROS %1$d DIAS</item>
+    </plurals>
 </resources>

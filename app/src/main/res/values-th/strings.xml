@@ -386,4 +386,95 @@
     <string name="tour_step_14">&lt;b>การบวก&lt;/b>&lt;br/>ใช้ &lt;font color=\'#D81B60\'>&lt;b>นิ้วชี้&lt;/b>&lt;/font> เสมอ&lt;br/>เพื่อ&lt;font color=\'#0000EE\'>&lt;b>เลื่อนลูกบนลง&lt;/b>&lt;/font></string>
     <string name="tour_step_15">&lt;b>การลบ&lt;/b>&lt;br/>ใช้ &lt;font color=\'#D81B60\'>&lt;b>นิ้วชี้&lt;/b>&lt;/font> เสมอ&lt;br/>เพื่อ&lt;font color=\'#0000EE\'>&lt;b>เลื่อนลูกล่างลง&lt;/b>&lt;/font></string>
     <string name="tour_step_16">&lt;b>การลบ&lt;/b>&lt;br/>ใช้ &lt;font color=\'#D81B60\'>&lt;b>นิ้วโป้ง&lt;/b>&lt;/font> เสมอ&lt;br/>เพื่อ&lt;font color=\'#0000EE\'>&lt;b>เลื่อนลูกบนขึ้น&lt;/b>&lt;/font></string>
+    <!-- m7_onboarding -->
+    <string name="ob_page1_title">ทำความรู้จักลูกคิด</string>
+    <string name="ob_page1_body">แต่ละแกนคือหนึ่งหลัก</string>
+    <string name="ob_page2_title">ลูกล่าง = 1</string>
+    <string name="ob_page2_body">เลื่อนขึ้นเพื่อนับ</string>
+    <string name="ob_page3_title">ลูกบน = 5</string>
+    <string name="ob_page3_body">5 กับอีก 2 เป็น 7</string>
+    <string name="ob_page4_title">มาบวกกัน: 2 + 1</string>
+    <string name="ob_page4_body">เลื่อนลูกหนึ่งลูกขึ้น</string>
+    <string name="ob_page4_after_body">เก่งมาก!</string>
+    <string name="ob_page5_title">ต่อไป: 4 + 3</string>
+    <string name="ob_page5_body">ไม่มีที่ว่างสำหรับอีก 3 ลูก!</string>
+    <string name="ob_page5_after_body">นั่นคือเพื่อนเล็ก!</string>
+    <string name="ob_continue">ต่อไป</string>
+    <string name="ob_start_learning">เริ่มเรียน</string>
+    <string name="ob_previous">ก่อนหน้า</string>
+    <string name="ob_show_me">ดูตัวอย่าง</string>
+    <string name="ob_free_label">ฟรี</string>
+    <string name="ob_premium_label">PREMIUM</string>
+    <string name="ob_group_learn">เรียนรู้และฝึกฝน</string>
+    <string name="ob_group_challenge">ชาเลนจ์ เกม และความก้าวหน้า</string>
+    <string name="ob_feat_free_mode">โหมดอิสระ</string>
+    <string name="ob_feat_free_mode_note">เล่นกับลูกคิดจริงและดูว่าลูกคิดนับอย่างไร</string>
+    <string name="ob_free_everything_always">ทุกอย่าง ตลอดไป</string>
+    <string name="ob_free_everything">ทุกอย่าง</string>
+    <string name="ob_feat_path">เส้นทางการเรียน</string>
+    <string name="ob_feat_path_note">4 ระดับ จากลูกคิดแรกไปถึงความเร็วและสูตรคูณ</string>
+    <string name="ob_free_path">ระดับ 1: พื้นฐานลูกคิด</string>
+    <string name="ob_prem_path">สูตร ฝึกความเร็ว สูตรคูณ</string>
+    <string name="ob_feat_practice">ฝึกลูกคิด</string>
+    <string name="ob_feat_practice_note">โจทย์ 8 ระดับ พร้อมตัวช่วยทีละขั้น</string>
+    <string name="ob_free_practice">ระดับ 1 และหน้าแรกของระดับ 2</string>
+    <string name="ob_prem_practice">ทั้ง 8 ระดับ</string>
+    <string name="ob_feat_exercise">แบบฝึกหัด</string>
+    <string name="ob_feat_exercise_note">ฝึกจับเวลาเพื่อเพิ่มความเร็ว</string>
+    <string name="ob_free_exercise">พื้นฐานการบวกและการลบ</string>
+    <string name="ob_prem_exercise">แบบฝึกทั้งหมด รวมการคูณและการหาร</string>
+    <string name="ob_feat_exam">สอบ</string>
+    <string name="ob_feat_exam_note">ข้อสอบจับเวลาพร้อมบันทึกผล</string>
+    <string name="ob_free_exam">การบวก ระดับผู้เริ่มต้น</string>
+    <string name="ob_prem_exam">ทุกการคำนวณและทุกระดับ</string>
+    <string name="ob_feat_ccm">ชาเลนจ์ที่กำหนดเอง (CCM)</string>
+    <string name="ob_feat_ccm_note">ฟังหรือดูตัวเลข แล้วคิดคำตอบในใจ\n5 ถึง 20 ข้อ\n1 ถึง 6 หลัก</string>
+    <string name="ob_prem_ccm">เข้าถึงได้ทั้งหมด</string>
+    <string name="ob_feat_games">โซนเกมคณิตศาสตร์</string>
+    <string name="ob_feat_games_note">เกมฝึกสมอง 20 เกมเพื่อความเร็ว ตรรกะ และความรู้สึกเรื่องตัวเลข</string>
+    <string name="ob_free_games">ระดับง่ายที่สุดของทุกเกม</string>
+    <string name="ob_prem_games">ทุกระดับและทุกขนาดกระดาน</string>
+    <string name="ob_feat_progress">ความก้าวหน้าและรางวัล</string>
+    <string name="ob_feat_progress_note">รายงานรายสัปดาห์สำหรับผู้ปกครอง ความต่อเนื่อง และธีม</string>
+    <string name="ob_free_progress">ความต่อเนื่อง ธีม ผลล่าสุด 3 ครั้ง</string>
+    <string name="ob_prem_progress">ประวัติรายงานทั้งหมด</string>
+    <string name="ob_number_label">ตัวเลข</string>
+    <string name="ob_why_title">ทำไมผู้ปกครองจึงเลือกเรา</string>
+    <string name="ob_why_subtitle">ทุกอย่างที่ต้องใช้ในการเรียนลูกคิด</string>
+    <string name="ob_stat_learning_levels">ระดับการเรียน</string>
+    <string name="ob_stat_practice_levels">ระดับการฝึก</string>
+    <string name="ob_stat_brain_games">เกมฝึกสมอง</string>
+    <string name="ob_reason_1">ตัวช่วยทีละขั้นในทุกโจทย์</string>
+    <string name="ob_reason_2">ฝึกแบบข้อสอบคณิตศาสตร์และลูกคิด</string>
+    <string name="ob_reason_3">เกมฝึกสมองที่สร้างสมาธิและตรรกะ</string>
+    <string name="ob_reason_4">รายงานความก้าวหน้ารายสัปดาห์สำหรับผู้ปกครอง</string>
+    <string name="ob_reason_5">เรียนตามจังหวะของตัวเอง พร้อมรางวัล</string>
+    <string name="ob_no_ads">🛡️ ไม่มีโฆษณา ปลอดภัยสำหรับเด็ก</string>
+    <string name="ob_continue_free">ใช้ฟรีต่อไปก่อน</string>
+    <string name="game_name_speed_compare">เปรียบเทียบเร็ว</string>
+    <string name="game_name_balloon_pop">ปาลูกโป่ง</string>
+    <string name="game_name_true_or_false">จริงหรือเท็จ</string>
+    <string name="game_name_math_bingo">บิงโกคณิตศาสตร์</string>
+    <string name="game_name_missing_sign">เครื่องหมายหาย</string>
+    <string name="game_name_equation_match">จับคู่สมการ</string>
+    <string name="game_name_cross_math">คณิตศาสตร์ไขว้</string>
+    <string name="game_name_target_number">เล็งเลขเป้าหมาย</string>
+    <string name="game_name_number_path">เส้นทางตัวเลข</string>
+    <string name="game_name_math_pyramid">พีระมิดคณิตศาสตร์</string>
+    <string name="game_name_magic_square">จัตุรัสมหัศจรรย์</string>
+    <string name="game_name_number_merge">รวมตัวเลข</string>
+    <string name="game_name_number_sequence">ลำดับตัวเลข</string>
+    <string name="game_name_place_value">ค่าประจำหลัก</string>
+    <string name="game_name_clock_master">ยอดนักอ่านนาฬิกา</string>
+    <string name="game_name_number_detective">นักสืบตัวเลข</string>
+    <string name="game_name_sudoku">ซูโดกุ</string>
+    <string name="game_name_calcudoku">แคลคูโดกุ</string>
+    <string name="game_name_kakuro">คาคุโระ</string>
+    <string name="game_name_number_snake">งูตัวเลข</string>
+    <plurals name="ob_free_for_days">
+        <item quantity="other">ฟรี %1$d วัน</item>
+    </plurals>
+    <plurals name="ob_free_first_days">
+        <item quantity="other">ฟรีใน %1$d วันแรก</item>
+    </plurals>
 </resources>

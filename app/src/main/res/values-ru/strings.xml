@@ -392,4 +392,101 @@
     <string name="tour_step_14">&lt;b>Для сложения&lt;/b>&lt;br/>всегда используй &lt;font color=\'#D81B60\'>&lt;b>указательный палец&lt;/b>&lt;/font>&lt;br/>чтобы &lt;font color=\'#0000EE\'>&lt;b>опускать верхнюю бусину вниз&lt;/b>&lt;/font></string>
     <string name="tour_step_15">&lt;b>Для вычитания&lt;/b>&lt;br/>всегда используй &lt;font color=\'#D81B60\'>&lt;b>указательный палец&lt;/b>&lt;/font>&lt;br/>чтобы &lt;font color=\'#0000EE\'>&lt;b>опускать нижние бусины вниз&lt;/b>&lt;/font></string>
     <string name="tour_step_16">&lt;b>Для вычитания&lt;/b>&lt;br/>всегда используй &lt;font color=\'#D81B60\'>&lt;b>большой палец&lt;/b>&lt;/font>&lt;br/>чтобы &lt;font color=\'#0000EE\'>&lt;b>поднимать верхнюю бусину вверх&lt;/b>&lt;/font></string>
+    <!-- m7_onboarding -->
+    <string name="ob_page1_title">Знакомься: абакус</string>
+    <string name="ob_page1_body">Каждая спица — это одна цифра.</string>
+    <string name="ob_page2_title">Нижние бусины = 1</string>
+    <string name="ob_page2_body">Двигай их вверх, чтобы считать.</string>
+    <string name="ob_page3_title">Верхняя бусина = 5</string>
+    <string name="ob_page3_body">5 и ещё 2 — это 7.</string>
+    <string name="ob_page4_title">Сложим: 2 + 1</string>
+    <string name="ob_page4_body">Подними одну бусину вверх.</string>
+    <string name="ob_page4_after_body">Отлично!</string>
+    <string name="ob_page5_title">Теперь: 4 + 3</string>
+    <string name="ob_page5_body">Нет места ещё для 3 бусин!</string>
+    <string name="ob_page5_after_body">Это был малый друг!</string>
+    <string name="ob_continue">Продолжить</string>
+    <string name="ob_start_learning">Начать учиться</string>
+    <string name="ob_previous">Назад</string>
+    <string name="ob_show_me">Покажи</string>
+    <string name="ob_free_label">БЕСПЛАТНО</string>
+    <string name="ob_premium_label">PREMIUM</string>
+    <string name="ob_group_learn">Учись и тренируйся</string>
+    <string name="ob_group_challenge">Вызовы, игры и прогресс</string>
+    <string name="ob_feat_free_mode">Свободный режим</string>
+    <string name="ob_feat_free_mode_note">Настоящий абакус: смотрите, как считают бусины</string>
+    <string name="ob_free_everything_always">Всё, всегда</string>
+    <string name="ob_free_everything">Всё</string>
+    <string name="ob_feat_path">Путь обучения</string>
+    <string name="ob_feat_path_note">4 уровня: от первых бусин до таблицы умножения</string>
+    <string name="ob_free_path">Уровень 1: основы бусин</string>
+    <string name="ob_prem_path">Формулы, скорость, таблицы</string>
+    <string name="ob_feat_practice">Практика на абакусе</string>
+    <string name="ob_feat_practice_note">8 уровней примеров с пошаговой помощью</string>
+    <string name="ob_free_practice">Уровень 1 и начало уровня 2</string>
+    <string name="ob_prem_practice">Все 8 уровней</string>
+    <string name="ob_feat_exercise">Упражнения</string>
+    <string name="ob_feat_exercise_note">Тренировки на время для скорости</string>
+    <string name="ob_free_exercise">Основы сложения и вычитания</string>
+    <string name="ob_prem_exercise">Все, включая умножение и деление</string>
+    <string name="ob_feat_exam">Экзамен</string>
+    <string name="ob_feat_exam_note">Тесты на время с сохранением результатов</string>
+    <string name="ob_free_exam">Сложение, начальный уровень</string>
+    <string name="ob_prem_exam">Все действия и уровни</string>
+    <string name="ob_feat_ccm">Свой вызов (CCM)</string>
+    <string name="ob_feat_ccm_note">Слушайте или смотрите числа и находите ответ в уме.\nОт 5 до 20 вопросов\nОт 1 до 6 цифр</string>
+    <string name="ob_prem_ccm">Полный доступ</string>
+    <string name="ob_feat_games">Игровая зона математики</string>
+    <string name="ob_feat_games_note">20 игр для скорости, логики и чувства числа</string>
+    <string name="ob_free_games">Самый лёгкий уровень каждой игры</string>
+    <string name="ob_prem_games">Все уровни и размеры поля</string>
+    <string name="ob_feat_progress">Прогресс и награды</string>
+    <string name="ob_feat_progress_note">Еженедельный отчёт для родителей, серия и темы</string>
+    <string name="ob_free_progress">Серия, темы, 3 последних результата</string>
+    <string name="ob_prem_progress">Вся история отчётов</string>
+    <string name="ob_number_label">Число</string>
+    <string name="ob_why_title">Почему родители выбирают нас</string>
+    <string name="ob_why_subtitle">Всё для изучения абакуса</string>
+    <string name="ob_stat_learning_levels">уровня обучения</string>
+    <string name="ob_stat_practice_levels">уровней практики</string>
+    <string name="ob_stat_brain_games">игр для ума</string>
+    <string name="ob_reason_1">Пошаговая помощь в каждом примере</string>
+    <string name="ob_reason_2">Тренировки в формате экзамена по математике и абакусу</string>
+    <string name="ob_reason_3">Игры, развивающие концентрацию и логику</string>
+    <string name="ob_reason_4">Еженедельный отчёт о прогрессе для родителей</string>
+    <string name="ob_reason_5">Учиться в своём темпе, с наградами</string>
+    <string name="ob_no_ads">🛡️ Без рекламы, безопасно для детей</string>
+    <string name="ob_continue_free">Пока продолжить бесплатно</string>
+    <string name="game_name_speed_compare">Быстрое сравнение</string>
+    <string name="game_name_balloon_pop">Лопни шарик</string>
+    <string name="game_name_true_or_false">Верно или нет</string>
+    <string name="game_name_math_bingo">Числовое бинго</string>
+    <string name="game_name_missing_sign">Пропавший знак</string>
+    <string name="game_name_equation_match">Найди пару</string>
+    <string name="game_name_cross_math">Числовой кроссворд</string>
+    <string name="game_name_target_number">Попади в число</string>
+    <string name="game_name_number_path">Путь чисел</string>
+    <string name="game_name_math_pyramid">Числовая пирамида</string>
+    <string name="game_name_magic_square">Магический квадрат</string>
+    <string name="game_name_number_merge">Слияние чисел</string>
+    <string name="game_name_number_sequence">Числовой ряд</string>
+    <string name="game_name_place_value">Разряды</string>
+    <string name="game_name_clock_master">Мастер часов</string>
+    <string name="game_name_number_detective">Числовой детектив</string>
+    <string name="game_name_sudoku">Судоку</string>
+    <string name="game_name_calcudoku">Калькудоку</string>
+    <string name="game_name_kakuro">Какуро</string>
+    <string name="game_name_number_snake">Числовая змейка</string>
+    <plurals name="ob_free_for_days">
+        <item quantity="one">БЕСПЛАТНО %1$d ДЕНЬ</item>
+        <item quantity="few">БЕСПЛАТНО %1$d ДНЯ</item>
+        <item quantity="many">БЕСПЛАТНО %1$d ДНЕЙ</item>
+        <item quantity="other">БЕСПЛАТНО %1$d ДНЯ</item>
+    </plurals>
+    <plurals name="ob_free_first_days">
+        <item quantity="one">БЕСПЛАТНО В ПЕРВЫЕ %1$d ДЕНЬ</item>
+        <item quantity="few">БЕСПЛАТНО В ПЕРВЫЕ %1$d ДНЯ</item>
+        <item quantity="many">БЕСПЛАТНО В ПЕРВЫЕ %1$d ДНЕЙ</item>
+        <item quantity="other">БЕСПЛАТНО В ПЕРВЫЕ %1$d ДНЯ</item>
+    </plurals>
 </resources>

@@ -388,4 +388,97 @@
     <string name="tour_step_14">&lt;b>Toplama için&lt;/b>&lt;br/>her zaman &lt;font color=\'#D81B60\'>&lt;b>işaret parmağını&lt;/b>&lt;/font> kullan&lt;br/>&lt;font color=\'#0000EE\'>&lt;b>üst boncuğu aşağı indirmek&lt;/b>&lt;/font> için</string>
     <string name="tour_step_15">&lt;b>Çıkarma için&lt;/b>&lt;br/>her zaman &lt;font color=\'#D81B60\'>&lt;b>işaret parmağını&lt;/b>&lt;/font> kullan&lt;br/>&lt;font color=\'#0000EE\'>&lt;b>alt boncukları aşağı indirmek&lt;/b>&lt;/font> için</string>
     <string name="tour_step_16">&lt;b>Çıkarma için&lt;/b>&lt;br/>her zaman &lt;font color=\'#D81B60\'>&lt;b>başparmağını&lt;/b>&lt;/font> kullan&lt;br/>&lt;font color=\'#0000EE\'>&lt;b>üst boncuğu yukarı çıkarmak&lt;/b>&lt;/font> için</string>
+    <!-- m7_onboarding -->
+    <string name="ob_page1_title">Abaküsle tanış</string>
+    <string name="ob_page1_body">Her çubuk bir basamak.</string>
+    <string name="ob_page2_title">Alt boncuklar = 1</string>
+    <string name="ob_page2_body">Saymak için yukarı kaydır.</string>
+    <string name="ob_page3_title">Üst boncuk = 5</string>
+    <string name="ob_page3_body">5 ile 2 daha 7 eder.</string>
+    <string name="ob_page4_title">Toplayalım: 2 + 1</string>
+    <string name="ob_page4_body">Bir boncuğu yukarı kaydır.</string>
+    <string name="ob_page4_after_body">Harika iş!</string>
+    <string name="ob_page5_title">Şimdi: 4 + 3</string>
+    <string name="ob_page5_body">3 boncuk daha için yer yok!</string>
+    <string name="ob_page5_after_body">Bu bir Küçük Arkadaştı!</string>
+    <string name="ob_continue">Devam</string>
+    <string name="ob_start_learning">Öğrenmeye başla</string>
+    <string name="ob_previous">Geri</string>
+    <string name="ob_show_me">Göster</string>
+    <string name="ob_free_label">ÜCRETSİZ</string>
+    <string name="ob_premium_label">PREMIUM</string>
+    <string name="ob_group_learn">Öğren ve alıştır</string>
+    <string name="ob_group_challenge">Meydan okuma, oyunlar ve ilerleme</string>
+    <string name="ob_feat_free_mode">Serbest Mod</string>
+    <string name="ob_feat_free_mode_note">Gerçek abaküsle boncukların nasıl saydığını görün</string>
+    <string name="ob_free_everything_always">Her şey, her zaman</string>
+    <string name="ob_free_everything">Her şey</string>
+    <string name="ob_feat_path">Öğrenme yolu</string>
+    <string name="ob_feat_path_note">İlk boncuklardan tablolara 4 seviye</string>
+    <string name="ob_free_path">Seviye 1: Boncuk Temelleri</string>
+    <string name="ob_prem_path">Formüller, hız, tablolar</string>
+    <string name="ob_feat_practice">Abaküs Alıştırma</string>
+    <string name="ob_feat_practice_note">Adım adım yardımla 8 seviye</string>
+    <string name="ob_free_practice">Seviye 1 ve Seviye 2 başı</string>
+    <string name="ob_prem_practice">8 seviyenin tamamı</string>
+    <string name="ob_feat_exercise">Egzersiz</string>
+    <string name="ob_feat_exercise_note">Hızı artıran süreli çalışmalar</string>
+    <string name="ob_free_exercise">Temel toplama ve çıkarma</string>
+    <string name="ob_prem_exercise">Hepsi, çarpma ve bölme dahil</string>
+    <string name="ob_feat_exam">Sınav</string>
+    <string name="ob_feat_exam_note">Sonuçları kaydedilen süreli testler</string>
+    <string name="ob_free_exam">Toplama, başlangıç seviyesi</string>
+    <string name="ob_prem_exam">Tüm işlemler ve seviyeler</string>
+    <string name="ob_feat_ccm">Özel Meydan Okuma (CCM)</string>
+    <string name="ob_feat_ccm_note">Sayıları duyun veya görün, sonra cevabı kafanızdan bulun.\n5 ile 20 soru\n1 ile 6 basamak</string>
+    <string name="ob_prem_ccm">Tam erişim</string>
+    <string name="ob_feat_games">Matematik Oyun Alanı</string>
+    <string name="ob_feat_games_note">Hız, mantık ve sayı sezgisi için 20 zeka oyunu</string>
+    <string name="ob_free_games">Her oyunun en kolay seviyesi</string>
+    <string name="ob_prem_games">Tüm seviyeler ve tahta boyutları</string>
+    <string name="ob_feat_progress">İlerleme ve ödüller</string>
+    <string name="ob_feat_progress_note">Ebeveynler için haftalık rapor, seri ve temalar</string>
+    <string name="ob_free_progress">Seri, temalar, son 3 sonuç</string>
+    <string name="ob_prem_progress">Tam rapor geçmişi</string>
+    <string name="ob_number_label">Sayı</string>
+    <string name="ob_why_title">Ebeveynler neden bizi seçiyor</string>
+    <string name="ob_why_subtitle">Abaküs öğrenmek için ihtiyacınız olan her şey</string>
+    <string name="ob_stat_learning_levels">öğrenme seviyesi</string>
+    <string name="ob_stat_practice_levels">alıştırma seviyesi</string>
+    <string name="ob_stat_brain_games">zeka oyunu</string>
+    <string name="ob_reason_1">Her işlemde adım adım yardım</string>
+    <string name="ob_reason_2">Matematik ve abaküs için sınav tarzı alıştırma</string>
+    <string name="ob_reason_3">Odaklanmayı ve mantığı geliştiren zeka oyunları</string>
+    <string name="ob_reason_4">Ebeveynler için haftalık ilerleme raporu</string>
+    <string name="ob_reason_5">Kendi hızında öğren, ödüllerle</string>
+    <string name="ob_no_ads">🛡️ Reklamsız, çocuklar için güvenli</string>
+    <string name="ob_continue_free">Şimdilik ücretsiz devam et</string>
+    <string name="game_name_speed_compare">Hızlı Karşılaştırma</string>
+    <string name="game_name_balloon_pop">Balon Patlat</string>
+    <string name="game_name_true_or_false">Doğru mu Yanlış mı</string>
+    <string name="game_name_math_bingo">Matematik Bingosu</string>
+    <string name="game_name_missing_sign">Eksik İşaret</string>
+    <string name="game_name_equation_match">Denklem Eşleştir</string>
+    <string name="game_name_cross_math">Çapraz Matematik</string>
+    <string name="game_name_target_number">Sayıyı Hedefle</string>
+    <string name="game_name_number_path">Sayı Yolu</string>
+    <string name="game_name_math_pyramid">Matematik Piramidi</string>
+    <string name="game_name_magic_square">Sihirli Kare</string>
+    <string name="game_name_number_merge">Sayı Birleştir</string>
+    <string name="game_name_number_sequence">Sayı Dizisi</string>
+    <string name="game_name_place_value">Basamak Değeri</string>
+    <string name="game_name_clock_master">Saat Ustası</string>
+    <string name="game_name_number_detective">Sayı Dedektifi</string>
+    <string name="game_name_sudoku">Sudoku</string>
+    <string name="game_name_calcudoku">Calcudoku</string>
+    <string name="game_name_kakuro">Kakuro</string>
+    <string name="game_name_number_snake">Sayı Yılanı</string>
+    <plurals name="ob_free_for_days">
+        <item quantity="one">%1$d GÜN ÜCRETSİZ</item>
+        <item quantity="other">%1$d GÜN ÜCRETSİZ</item>
+    </plurals>
+    <plurals name="ob_free_first_days">
+        <item quantity="one">İLK %1$d GÜN ÜCRETSİZ</item>
+        <item quantity="other">İLK %1$d GÜN ÜCRETSİZ</item>
+    </plurals>
 </resources>

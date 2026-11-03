@@ -1,0 +1,828 @@
+{
+ "ob_page1_title": {
+  "fr": "Découvre le boulier",
+  "es": "Conoce el ábaco",
+  "pt": "Conheça o ábaco",
+  "tr": "Abaküsle tanış",
+  "ru": "Знакомься: абакус",
+  "ja": "そろばんとであおう",
+  "th": "ทำความรู้จักลูกคิด"
+ },
+ "ob_page1_body": {
+  "fr": "Chaque tige représente un chiffre.",
+  "es": "Cada varilla es un dígito.",
+  "pt": "Cada haste é um dígito.",
+  "tr": "Her çubuk bir basamak.",
+  "ru": "Каждая спица — это одна цифра.",
+  "ja": "ひとつの桁がひとつの数字です。",
+  "th": "แต่ละแกนคือหนึ่งหลัก"
+ },
+ "ob_page2_title": {
+  "fr": "Boules du bas = 1",
+  "es": "Cuentas de abajo = 1",
+  "pt": "Contas de baixo = 1",
+  "tr": "Alt boncuklar = 1",
+  "ru": "Нижние бусины = 1",
+  "ja": "下の珠 = 1",
+  "th": "ลูกล่าง = 1"
+ },
+ "ob_page2_body": {
+  "fr": "Monte-les pour compter.",
+  "es": "Súbelas para contar.",
+  "pt": "Suba-as para contar.",
+  "tr": "Saymak için yukarı kaydır.",
+  "ru": "Двигай их вверх, чтобы считать.",
+  "ja": "上にあげて数えよう。",
+  "th": "เลื่อนขึ้นเพื่อนับ"
+ },
+ "ob_page3_title": {
+  "fr": "Boule du haut = 5",
+  "es": "Cuenta de arriba = 5",
+  "pt": "Conta de cima = 5",
+  "tr": "Üst boncuk = 5",
+  "ru": "Верхняя бусина = 5",
+  "ja": "上の珠 = 5",
+  "th": "ลูกบน = 5"
+ },
+ "ob_page3_body": {
+  "fr": "5 et 2 de plus font 7.",
+  "es": "5 y 2 más son 7.",
+  "pt": "5 e mais 2 são 7.",
+  "tr": "5 ile 2 daha 7 eder.",
+  "ru": "5 и ещё 2 — это 7.",
+  "ja": "5と2で7になります。",
+  "th": "5 กับอีก 2 เป็น 7"
+ },
+ "ob_page4_title": {
+  "fr": "Additionnons : 2 + 1",
+  "es": "Sumemos: 2 + 1",
+  "pt": "Vamos somar: 2 + 1",
+  "tr": "Toplayalım: 2 + 1",
+  "ru": "Сложим: 2 + 1",
+  "ja": "たしてみよう：2 + 1",
+  "th": "มาบวกกัน: 2 + 1"
+ },
+ "ob_page4_body": {
+  "fr": "Monte une boule.",
+  "es": "Sube una cuenta.",
+  "pt": "Suba uma conta.",
+  "tr": "Bir boncuğu yukarı kaydır.",
+  "ru": "Подними одну бусину вверх.",
+  "ja": "珠をひとつ上にあげよう。",
+  "th": "เลื่อนลูกหนึ่งลูกขึ้น"
+ },
+ "ob_page4_after_body": {
+  "fr": "Bravo !",
+  "es": "¡Muy bien!",
+  "pt": "Muito bem!",
+  "tr": "Harika iş!",
+  "ru": "Отлично!",
+  "ja": "よくできました！",
+  "th": "เก่งมาก!"
+ },
+ "ob_page5_title": {
+  "fr": "Maintenant : 4 + 3",
+  "es": "Ahora: 4 + 3",
+  "pt": "Agora: 4 + 3",
+  "tr": "Şimdi: 4 + 3",
+  "ru": "Теперь: 4 + 3",
+  "ja": "つぎは：4 + 3",
+  "th": "ต่อไป: 4 + 3"
+ },
+ "ob_page5_body": {
+  "fr": "Plus de place pour 3 boules de plus !",
+  "es": "¡No hay lugar para 3 cuentas más!",
+  "pt": "Não há espaço para mais 3 contas!",
+  "tr": "3 boncuk daha için yer yok!",
+  "ru": "Нет места ещё для 3 бусин!",
+  "ja": "あと3つ分の場所がありません！",
+  "th": "ไม่มีที่ว่างสำหรับอีก 3 ลูก!"
+ },
+ "ob_page5_after_body": {
+  "fr": "C'était un Petit ami !",
+  "es": "¡Eso fue un Pequeño amigo!",
+  "pt": "Foi um Pequeno amigo!",
+  "tr": "Bu bir Küçük Arkadaştı!",
+  "ru": "Это был малый друг!",
+  "ja": "これが「小さな友だち」です！",
+  "th": "นั่นคือเพื่อนเล็ก!"
+ },
+ "ob_continue": {
+  "fr": "Continuer",
+  "es": "Continuar",
+  "pt": "Continuar",
+  "tr": "Devam",
+  "ru": "Продолжить",
+  "ja": "続ける",
+  "th": "ต่อไป"
+ },
+ "ob_start_learning": {
+  "fr": "Commencer à apprendre",
+  "es": "Empezar a aprender",
+  "pt": "Começar a aprender",
+  "tr": "Öğrenmeye başla",
+  "ru": "Начать учиться",
+  "ja": "学びはじめる",
+  "th": "เริ่มเรียน"
+ },
+ "ob_previous": {
+  "fr": "Précédent",
+  "es": "Anterior",
+  "pt": "Anterior",
+  "tr": "Geri",
+  "ru": "Назад",
+  "ja": "前へ",
+  "th": "ก่อนหน้า"
+ },
+ "ob_show_me": {
+  "fr": "Montre-moi",
+  "es": "Muéstrame",
+  "pt": "Mostre-me",
+  "tr": "Göster",
+  "ru": "Покажи",
+  "ja": "見せて",
+  "th": "ดูตัวอย่าง"
+ },
+ "ob_free_label": {
+  "fr": "GRATUIT",
+  "es": "GRATIS",
+  "pt": "GRÁTIS",
+  "tr": "ÜCRETSİZ",
+  "ru": "БЕСПЛАТНО",
+  "ja": "無料",
+  "th": "ฟรี"
+ },
+ "ob_premium_label": {
+  "fr": "PREMIUM",
+  "es": "PREMIUM",
+  "pt": "PREMIUM",
+  "tr": "PREMIUM",
+  "ru": "PREMIUM",
+  "ja": "PREMIUM",
+  "th": "PREMIUM"
+ },
+ "ob_group_learn": {
+  "fr": "Apprendre et s'entraîner",
+  "es": "Aprende y practica",
+  "pt": "Aprenda e pratique",
+  "tr": "Öğren ve alıştır",
+  "ru": "Учись и тренируйся",
+  "ja": "学ぶ・練習する",
+  "th": "เรียนรู้และฝึกฝน"
+ },
+ "ob_group_challenge": {
+  "fr": "Défis, jeux et progrès",
+  "es": "Retos, juegos y progreso",
+  "pt": "Desafios, jogos e progresso",
+  "tr": "Meydan okuma, oyunlar ve ilerleme",
+  "ru": "Вызовы, игры и прогресс",
+  "ja": "チャレンジ・ゲーム・成長",
+  "th": "ชาเลนจ์ เกม และความก้าวหน้า"
+ },
+ "ob_feat_free_mode": {
+  "fr": "Mode libre",
+  "es": "Modo libre",
+  "pt": "Modo livre",
+  "tr": "Serbest Mod",
+  "ru": "Свободный режим",
+  "ja": "フリーモード",
+  "th": "โหมดอิสระ"
+ },
+ "ob_feat_free_mode_note": {
+  "fr": "Un vrai boulier pour voir comment les boules comptent",
+  "es": "Un ábaco de verdad para ver cómo cuentan las cuentas",
+  "pt": "Um ábaco de verdade para ver como as contas contam",
+  "tr": "Gerçek abaküsle boncukların nasıl saydığını görün",
+  "ru": "Настоящий абакус: смотрите, как считают бусины",
+  "ja": "本物のそろばんで遊びながら、珠の数え方を見よう",
+  "th": "เล่นกับลูกคิดจริงและดูว่าลูกคิดนับอย่างไร"
+ },
+ "ob_free_everything_always": {
+  "fr": "Tout, toujours",
+  "es": "Todo, siempre",
+  "pt": "Tudo, sempre",
+  "tr": "Her şey, her zaman",
+  "ru": "Всё, всегда",
+  "ja": "すべて、ずっと",
+  "th": "ทุกอย่าง ตลอดไป"
+ },
+ "ob_free_everything": {
+  "fr": "Tout",
+  "es": "Todo",
+  "pt": "Tudo",
+  "tr": "Her şey",
+  "ru": "Всё",
+  "ja": "すべて",
+  "th": "ทุกอย่าง"
+ },
+ "ob_feat_path": {
+  "fr": "Parcours d'apprentissage",
+  "es": "Ruta de aprendizaje",
+  "pt": "Trilha de aprendizado",
+  "tr": "Öğrenme yolu",
+  "ru": "Путь обучения",
+  "ja": "学習コース",
+  "th": "เส้นทางการเรียน"
+ },
+ "ob_feat_path_note": {
+  "fr": "4 niveaux, des premières boules aux tables",
+  "es": "4 niveles, de las primeras cuentas a las tablas",
+  "pt": "4 níveis, das primeiras contas às tabuadas",
+  "tr": "İlk boncuklardan tablolara 4 seviye",
+  "ru": "4 уровня: от первых бусин до таблицы умножения",
+  "ja": "最初の珠からスピード・九九まで、4つのレベル",
+  "th": "4 ระดับ จากลูกคิดแรกไปถึงความเร็วและสูตรคูณ"
+ },
+ "ob_free_path": {
+  "fr": "Niveau 1 : bases des boules",
+  "es": "Nivel 1: lo básico",
+  "pt": "Nível 1: básico das contas",
+  "tr": "Seviye 1: Boncuk Temelleri",
+  "ru": "Уровень 1: основы бусин",
+  "ja": "レベル1：たまの基本",
+  "th": "ระดับ 1: พื้นฐานลูกคิด"
+ },
+ "ob_prem_path": {
+  "fr": "Formules, vitesse, tables",
+  "es": "Fórmulas, velocidad, tablas",
+  "pt": "Fórmulas, velocidade, tabuadas",
+  "tr": "Formüller, hız, tablolar",
+  "ru": "Формулы, скорость, таблицы",
+  "ja": "公式、スピード練習、九九",
+  "th": "สูตร ฝึกความเร็ว สูตรคูณ"
+ },
+ "ob_feat_practice": {
+  "fr": "Entraînement au boulier",
+  "es": "Práctica de ábaco",
+  "pt": "Prática de ábaco",
+  "tr": "Abaküs Alıştırma",
+  "ru": "Практика на абакусе",
+  "ja": "そろばん練習",
+  "th": "ฝึกลูกคิด"
+ },
+ "ob_feat_practice_note": {
+  "fr": "8 niveaux avec aide pas à pas",
+  "es": "8 niveles con ayuda paso a paso",
+  "pt": "8 níveis com ajuda passo a passo",
+  "tr": "Adım adım yardımla 8 seviye",
+  "ru": "8 уровней примеров с пошаговой помощью",
+  "ja": "ステップごとのヒントつき、8レベルの計算",
+  "th": "โจทย์ 8 ระดับ พร้อมตัวช่วยทีละขั้น"
+ },
+ "ob_free_practice": {
+  "fr": "Niveau 1 et début du niveau 2",
+  "es": "Nivel 1 y el inicio del nivel 2",
+  "pt": "Nível 1 e início do nível 2",
+  "tr": "Seviye 1 ve Seviye 2 başı",
+  "ru": "Уровень 1 и начало уровня 2",
+  "ja": "レベル1とレベル2の最初のページ",
+  "th": "ระดับ 1 และหน้าแรกของระดับ 2"
+ },
+ "ob_prem_practice": {
+  "fr": "Les 8 niveaux",
+  "es": "Los 8 niveles",
+  "pt": "Todos os 8 níveis",
+  "tr": "8 seviyenin tamamı",
+  "ru": "Все 8 уровней",
+  "ja": "8レベルすべて",
+  "th": "ทั้ง 8 ระดับ"
+ },
+ "ob_feat_exercise": {
+  "fr": "Exercices",
+  "es": "Ejercicios",
+  "pt": "Exercícios",
+  "tr": "Egzersiz",
+  "ru": "Упражнения",
+  "ja": "トレーニング",
+  "th": "แบบฝึกหัด"
+ },
+ "ob_feat_exercise_note": {
+  "fr": "Séries chronométrées pour aller plus vite",
+  "es": "Ejercicios cronometrados para ganar velocidad",
+  "pt": "Treinos cronometrados para ganhar velocidade",
+  "tr": "Hızı artıran süreli çalışmalar",
+  "ru": "Тренировки на время для скорости",
+  "ja": "スピードを伸ばす時間つきドリル",
+  "th": "ฝึกจับเวลาเพื่อเพิ่มความเร็ว"
+ },
+ "ob_free_exercise": {
+  "fr": "Addition et soustraction de base",
+  "es": "Suma y resta básicas",
+  "pt": "Soma e subtração básicas",
+  "tr": "Temel toplama ve çıkarma",
+  "ru": "Основы сложения и вычитания",
+  "ja": "たし算とひき算の基本",
+  "th": "พื้นฐานการบวกและการลบ"
+ },
+ "ob_prem_exercise": {
+  "fr": "Tout, avec multiplication et division",
+  "es": "Todo, con multiplicar y dividir",
+  "pt": "Tudo, com multiplicação e divisão",
+  "tr": "Hepsi, çarpma ve bölme dahil",
+  "ru": "Все, включая умножение и деление",
+  "ja": "すべてのドリル（かけ算・わり算つき）",
+  "th": "แบบฝึกทั้งหมด รวมการคูณและการหาร"
+ },
+ "ob_feat_exam": {
+  "fr": "Examen",
+  "es": "Examen",
+  "pt": "Prova",
+  "tr": "Sınav",
+  "ru": "Экзамен",
+  "ja": "テスト",
+  "th": "สอบ"
+ },
+ "ob_feat_exam_note": {
+  "fr": "Tests chronométrés, résultats enregistrés",
+  "es": "Pruebas cronometradas con resultados guardados",
+  "pt": "Testes cronometrados com resultados salvos",
+  "tr": "Sonuçları kaydedilen süreli testler",
+  "ru": "Тесты на время с сохранением результатов",
+  "ja": "時間つきテスト、結果は保存されます",
+  "th": "ข้อสอบจับเวลาพร้อมบันทึกผล"
+ },
+ "ob_free_exam": {
+  "fr": "Addition, niveau débutant",
+  "es": "Suma, nivel principiante",
+  "pt": "Soma, nível iniciante",
+  "tr": "Toplama, başlangıç seviyesi",
+  "ru": "Сложение, начальный уровень",
+  "ja": "たし算、初級",
+  "th": "การบวก ระดับผู้เริ่มต้น"
+ },
+ "ob_prem_exam": {
+  "fr": "Toutes opérations et niveaux",
+  "es": "Todas las operaciones y niveles",
+  "pt": "Todas as operações e níveis",
+  "tr": "Tüm işlemler ve seviyeler",
+  "ru": "Все действия и уровни",
+  "ja": "すべての計算とレベル",
+  "th": "ทุกการคำนวณและทุกระดับ"
+ },
+ "ob_feat_ccm": {
+  "fr": "Défi personnalisé (CCM)",
+  "es": "Reto personalizado (CCM)",
+  "pt": "Desafio personalizado (CCM)",
+  "tr": "Özel Meydan Okuma (CCM)",
+  "ru": "Свой вызов (CCM)",
+  "ja": "オリジナルチャレンジ（CCM）",
+  "th": "ชาเลนจ์ที่กำหนดเอง (CCM)"
+ },
+ "ob_feat_ccm_note": {
+  "fr": "Écoutez ou regardez des nombres, puis trouvez la réponse de tête.\n5 à 20 questions\n1 à 6 chiffres",
+  "es": "Escucha o mira los números y calcula la respuesta mentalmente.\n5 a 20 preguntas\n1 a 6 dígitos",
+  "pt": "Ouça ou veja os números e descubra a resposta de cabeça.\n5 a 20 perguntas\n1 a 6 dígitos",
+  "tr": "Sayıları duyun veya görün, sonra cevabı kafanızdan bulun.\n5 ile 20 soru\n1 ile 6 basamak",
+  "ru": "Слушайте или смотрите числа и находите ответ в уме.\nОт 5 до 20 вопросов\nОт 1 до 6 цифр",
+  "ja": "数を聞くか見るかして、答えを頭の中で計算します。\n問題数は5〜20問\n1〜6桁",
+  "th": "ฟังหรือดูตัวเลข แล้วคิดคำตอบในใจ\n5 ถึง 20 ข้อ\n1 ถึง 6 หลัก"
+ },
+ "ob_prem_ccm": {
+  "fr": "Accès complet",
+  "es": "Acceso completo",
+  "pt": "Acesso completo",
+  "tr": "Tam erişim",
+  "ru": "Полный доступ",
+  "ja": "すべて利用可能",
+  "th": "เข้าถึงได้ทั้งหมด"
+ },
+ "ob_feat_games": {
+  "fr": "Zone de jeux de maths",
+  "es": "Zona de juegos matemáticos",
+  "pt": "Zona de jogos de matemática",
+  "tr": "Matematik Oyun Alanı",
+  "ru": "Игровая зона математики",
+  "ja": "算数ゲームゾーン",
+  "th": "โซนเกมคณิตศาสตร์"
+ },
+ "ob_feat_games_note": {
+  "fr": "20 jeux de réflexion pour la vitesse, la logique et le sens des nombres",
+  "es": "20 juegos mentales para velocidad, lógica y sentido numérico",
+  "pt": "20 jogos mentais para velocidade, lógica e senso numérico",
+  "tr": "Hız, mantık ve sayı sezgisi için 20 zeka oyunu",
+  "ru": "20 игр для скорости, логики и чувства числа",
+  "ja": "スピード・論理・数の感覚を育てる20の頭脳ゲーム",
+  "th": "เกมฝึกสมอง 20 เกมเพื่อความเร็ว ตรรกะ และความรู้สึกเรื่องตัวเลข"
+ },
+ "ob_free_games": {
+  "fr": "Le niveau le plus facile de chaque jeu",
+  "es": "El nivel más fácil de cada juego",
+  "pt": "O nível mais fácil de cada jogo",
+  "tr": "Her oyunun en kolay seviyesi",
+  "ru": "Самый лёгкий уровень каждой игры",
+  "ja": "各ゲームのいちばんやさしいレベル",
+  "th": "ระดับง่ายที่สุดของทุกเกม"
+ },
+ "ob_prem_games": {
+  "fr": "Tous les niveaux et toutes les tailles de grille",
+  "es": "Todos los niveles y tamaños de tablero",
+  "pt": "Todos os níveis e tamanhos de tabuleiro",
+  "tr": "Tüm seviyeler ve tahta boyutları",
+  "ru": "Все уровни и размеры поля",
+  "ja": "すべてのレベルと盤の大きさ",
+  "th": "ทุกระดับและทุกขนาดกระดาน"
+ },
+ "ob_feat_progress": {
+  "fr": "Progrès et récompenses",
+  "es": "Progreso y recompensas",
+  "pt": "Progresso e recompensas",
+  "tr": "İlerleme ve ödüller",
+  "ru": "Прогресс и награды",
+  "ja": "成長とごほうび",
+  "th": "ความก้าวหน้าและรางวัล"
+ },
+ "ob_feat_progress_note": {
+  "fr": "Rapport hebdomadaire pour les parents, séries et thèmes",
+  "es": "Informe semanal para padres, racha y temas",
+  "pt": "Relatório semanal para os pais, sequência e temas",
+  "tr": "Ebeveynler için haftalık rapor, seri ve temalar",
+  "ru": "Еженедельный отчёт для родителей, серия и темы",
+  "ja": "保護者向け週間レポート、連続記録、テーマ",
+  "th": "รายงานรายสัปดาห์สำหรับผู้ปกครอง ความต่อเนื่อง และธีม"
+ },
+ "ob_free_progress": {
+  "fr": "Séries, thèmes, 3 derniers résultats",
+  "es": "Racha, temas, últimos 3 resultados",
+  "pt": "Sequência, temas, últimos 3 resultados",
+  "tr": "Seri, temalar, son 3 sonuç",
+  "ru": "Серия, темы, 3 последних результата",
+  "ja": "連続記録、テーマ、直近3回の結果",
+  "th": "ความต่อเนื่อง ธีม ผลล่าสุด 3 ครั้ง"
+ },
+ "ob_prem_progress": {
+  "fr": "Historique complet des rapports",
+  "es": "Historial completo de informes",
+  "pt": "Histórico completo de relatórios",
+  "tr": "Tam rapor geçmişi",
+  "ru": "Вся история отчётов",
+  "ja": "レポート履歴すべて",
+  "th": "ประวัติรายงานทั้งหมด"
+ },
+ "ob_number_label": {
+  "fr": "Nombre",
+  "es": "Número",
+  "pt": "Número",
+  "tr": "Sayı",
+  "ru": "Число",
+  "ja": "数",
+  "th": "ตัวเลข"
+ },
+ "ob_why_title": {
+  "fr": "Pourquoi les parents nous choisissent",
+  "es": "Por qué los padres nos eligen",
+  "pt": "Por que os pais nos escolhem",
+  "tr": "Ebeveynler neden bizi seçiyor",
+  "ru": "Почему родители выбирают нас",
+  "ja": "保護者に選ばれる理由",
+  "th": "ทำไมผู้ปกครองจึงเลือกเรา"
+ },
+ "ob_why_subtitle": {
+  "fr": "Tout pour apprendre le boulier",
+  "es": "Todo lo que necesitas para aprender ábaco",
+  "pt": "Tudo o que precisa para aprender ábaco",
+  "tr": "Abaküs öğrenmek için ihtiyacınız olan her şey",
+  "ru": "Всё для изучения абакуса",
+  "ja": "そろばんを学ぶのに必要なものがすべて",
+  "th": "ทุกอย่างที่ต้องใช้ในการเรียนลูกคิด"
+ },
+ "ob_stat_learning_levels": {
+  "fr": "niveaux d'apprentissage",
+  "es": "niveles de aprendizaje",
+  "pt": "níveis de aprendizado",
+  "tr": "öğrenme seviyesi",
+  "ru": "уровня обучения",
+  "ja": "学習レベル",
+  "th": "ระดับการเรียน"
+ },
+ "ob_stat_practice_levels": {
+  "fr": "niveaux d'entraînement",
+  "es": "niveles de práctica",
+  "pt": "níveis de prática",
+  "tr": "alıştırma seviyesi",
+  "ru": "уровней практики",
+  "ja": "練習レベル",
+  "th": "ระดับการฝึก"
+ },
+ "ob_stat_brain_games": {
+  "fr": "jeux de réflexion",
+  "es": "juegos mentales",
+  "pt": "jogos mentais",
+  "tr": "zeka oyunu",
+  "ru": "игр для ума",
+  "ja": "頭脳ゲーム",
+  "th": "เกมฝึกสมอง"
+ },
+ "ob_reason_1": {
+  "fr": "Aide pas à pas pour chaque calcul",
+  "es": "Ayuda paso a paso en cada operación",
+  "pt": "Ajuda passo a passo em cada conta",
+  "tr": "Her işlemde adım adım yardım",
+  "ru": "Пошаговая помощь в каждом примере",
+  "ja": "どの計算もステップごとにサポート",
+  "th": "ตัวช่วยทีละขั้นในทุกโจทย์"
+ },
+ "ob_reason_2": {
+  "fr": "Entraînement type examen en maths et en boulier",
+  "es": "Práctica tipo examen de matemáticas y ábaco",
+  "pt": "Prática estilo prova de matemática e ábaco",
+  "tr": "Matematik ve abaküs için sınav tarzı alıştırma",
+  "ru": "Тренировки в формате экзамена по математике и абакусу",
+  "ja": "算数とそろばんの本番形式の練習",
+  "th": "ฝึกแบบข้อสอบคณิตศาสตร์และลูกคิด"
+ },
+ "ob_reason_3": {
+  "fr": "Des jeux qui développent la concentration et la logique",
+  "es": "Juegos mentales que desarrollan la concentración y la lógica",
+  "pt": "Jogos mentais que desenvolvem foco e lógica",
+  "tr": "Odaklanmayı ve mantığı geliştiren zeka oyunları",
+  "ru": "Игры, развивающие концентрацию и логику",
+  "ja": "集中力と論理的思考を育てる頭脳ゲーム",
+  "th": "เกมฝึกสมองที่สร้างสมาธิและตรรกะ"
+ },
+ "ob_reason_4": {
+  "fr": "Un rapport de progression hebdomadaire pour les parents",
+  "es": "Un informe semanal de progreso para los padres",
+  "pt": "Um relatório semanal de progresso para os pais",
+  "tr": "Ebeveynler için haftalık ilerleme raporu",
+  "ru": "Еженедельный отчёт о прогрессе для родителей",
+  "ja": "保護者向けの週間レポート",
+  "th": "รายงานความก้าวหน้ารายสัปดาห์สำหรับผู้ปกครอง"
+ },
+ "ob_reason_5": {
+  "fr": "Apprendre à son rythme, avec des récompenses",
+  "es": "Aprender a su propio ritmo, con recompensas",
+  "pt": "Aprender no próprio ritmo, com recompensas",
+  "tr": "Kendi hızında öğren, ödüllerle",
+  "ru": "Учиться в своём темпе, с наградами",
+  "ja": "自分のペースで、ごほうびつきで学べる",
+  "th": "เรียนตามจังหวะของตัวเอง พร้อมรางวัล"
+ },
+ "ob_no_ads": {
+  "fr": "🛡️ Sans publicité, sûr pour les enfants",
+  "es": "🛡️ Sin anuncios, seguro para niños",
+  "pt": "🛡️ Sem anúncios, seguro para crianças",
+  "tr": "🛡️ Reklamsız, çocuklar için güvenli",
+  "ru": "🛡️ Без рекламы, безопасно для детей",
+  "ja": "🛡️ 広告なし、子どもも安心",
+  "th": "🛡️ ไม่มีโฆษณา ปลอดภัยสำหรับเด็ก"
+ },
+ "ob_continue_free": {
+  "fr": "Continuer gratuitement pour l'instant",
+  "es": "Seguir gratis por ahora",
+  "pt": "Continuar grátis por enquanto",
+  "tr": "Şimdilik ücretsiz devam et",
+  "ru": "Пока продолжить бесплатно",
+  "ja": "いまは無料で続ける",
+  "th": "ใช้ฟรีต่อไปก่อน"
+ },
+ "game_name_speed_compare": {
+  "fr": "Comparaison express",
+  "es": "Comparación veloz",
+  "pt": "Comparação veloz",
+  "tr": "Hızlı Karşılaştırma",
+  "ru": "Быстрое сравнение",
+  "ja": "スピード比べ",
+  "th": "เปรียบเทียบเร็ว"
+ },
+ "game_name_balloon_pop": {
+  "fr": "Ballons à éclater",
+  "es": "Revienta globos",
+  "pt": "Estoura balões",
+  "tr": "Balon Patlat",
+  "ru": "Лопни шарик",
+  "ja": "風船わり",
+  "th": "ปาลูกโป่ง"
+ },
+ "game_name_true_or_false": {
+  "fr": "Vrai ou faux",
+  "es": "Verdadero o falso",
+  "pt": "Verdadeiro ou falso",
+  "tr": "Doğru mu Yanlış mı",
+  "ru": "Верно или нет",
+  "ja": "○か×か",
+  "th": "จริงหรือเท็จ"
+ },
+ "game_name_math_bingo": {
+  "fr": "Bingo des maths",
+  "es": "Bingo matemático",
+  "pt": "Bingo matemático",
+  "tr": "Matematik Bingosu",
+  "ru": "Числовое бинго",
+  "ja": "算数ビンゴ",
+  "th": "บิงโกคณิตศาสตร์"
+ },
+ "game_name_missing_sign": {
+  "fr": "Signe manquant",
+  "es": "Signo perdido",
+  "pt": "Sinal faltando",
+  "tr": "Eksik İşaret",
+  "ru": "Пропавший знак",
+  "ja": "ぬけた記号",
+  "th": "เครื่องหมายหาย"
+ },
+ "game_name_equation_match": {
+  "fr": "Équations à relier",
+  "es": "Une las ecuaciones",
+  "pt": "Ligue as equações",
+  "tr": "Denklem Eşleştir",
+  "ru": "Найди пару",
+  "ja": "式合わせ",
+  "th": "จับคู่สมการ"
+ },
+ "game_name_cross_math": {
+  "fr": "Maths croisées",
+  "es": "Mates cruzadas",
+  "pt": "Cruzadinha de contas",
+  "tr": "Çapraz Matematik",
+  "ru": "Числовой кроссворд",
+  "ja": "クロス計算",
+  "th": "คณิตศาสตร์ไขว้"
+ },
+ "game_name_target_number": {
+  "fr": "Atteins le nombre",
+  "es": "Alcanza el número",
+  "pt": "Alcance o número",
+  "tr": "Sayıyı Hedefle",
+  "ru": "Попади в число",
+  "ja": "ターゲットナンバー",
+  "th": "เล็งเลขเป้าหมาย"
+ },
+ "game_name_number_path": {
+  "fr": "Chemin des nombres",
+  "es": "Camino de números",
+  "pt": "Caminho dos números",
+  "tr": "Sayı Yolu",
+  "ru": "Путь чисел",
+  "ja": "数のみち",
+  "th": "เส้นทางตัวเลข"
+ },
+ "game_name_math_pyramid": {
+  "fr": "Pyramide des maths",
+  "es": "Pirámide matemática",
+  "pt": "Pirâmide matemática",
+  "tr": "Matematik Piramidi",
+  "ru": "Числовая пирамида",
+  "ja": "算数ピラミッド",
+  "th": "พีระมิดคณิตศาสตร์"
+ },
+ "game_name_magic_square": {
+  "fr": "Carré magique",
+  "es": "Cuadrado mágico",
+  "pt": "Quadrado mágico",
+  "tr": "Sihirli Kare",
+  "ru": "Магический квадрат",
+  "ja": "魔方陣",
+  "th": "จัตุรัสมหัศจรรย์"
+ },
+ "game_name_number_merge": {
+  "fr": "Fusion de nombres",
+  "es": "Fusión de números",
+  "pt": "Fusão de números",
+  "tr": "Sayı Birleştir",
+  "ru": "Слияние чисел",
+  "ja": "数字合体",
+  "th": "รวมตัวเลข"
+ },
+ "game_name_number_sequence": {
+  "fr": "Suite de nombres",
+  "es": "Secuencia numérica",
+  "pt": "Sequência numérica",
+  "tr": "Sayı Dizisi",
+  "ru": "Числовой ряд",
+  "ja": "数列",
+  "th": "ลำดับตัวเลข"
+ },
+ "game_name_place_value": {
+  "fr": "Valeur de position",
+  "es": "Valor posicional",
+  "pt": "Valor posicional",
+  "tr": "Basamak Değeri",
+  "ru": "Разряды",
+  "ja": "位取り",
+  "th": "ค่าประจำหลัก"
+ },
+ "game_name_clock_master": {
+  "fr": "Maître de l'horloge",
+  "es": "Maestro del reloj",
+  "pt": "Mestre do relógio",
+  "tr": "Saat Ustası",
+  "ru": "Мастер часов",
+  "ja": "時計マスター",
+  "th": "ยอดนักอ่านนาฬิกา"
+ },
+ "game_name_number_detective": {
+  "fr": "Détective des nombres",
+  "es": "Detective de números",
+  "pt": "Detetive de números",
+  "tr": "Sayı Dedektifi",
+  "ru": "Числовой детектив",
+  "ja": "数のたんてい",
+  "th": "นักสืบตัวเลข"
+ },
+ "game_name_sudoku": {
+  "fr": "Sudoku",
+  "es": "Sudoku",
+  "pt": "Sudoku",
+  "tr": "Sudoku",
+  "ru": "Судоку",
+  "ja": "数独",
+  "th": "ซูโดกุ"
+ },
+ "game_name_calcudoku": {
+  "fr": "Calcudoku",
+  "es": "Calcudoku",
+  "pt": "Calcudoku",
+  "tr": "Calcudoku",
+  "ru": "Калькудоку",
+  "ja": "計算数独",
+  "th": "แคลคูโดกุ"
+ },
+ "game_name_kakuro": {
+  "fr": "Kakuro",
+  "es": "Kakuro",
+  "pt": "Kakuro",
+  "tr": "Kakuro",
+  "ru": "Какуро",
+  "ja": "カックロ",
+  "th": "คาคุโระ"
+ },
+ "game_name_number_snake": {
+  "fr": "Serpent des nombres",
+  "es": "Serpiente numérica",
+  "pt": "Cobrinha numérica",
+  "tr": "Sayı Yılanı",
+  "ru": "Числовая змейка",
+  "ja": "数字へび",
+  "th": "งูตัวเลข"
+ },
+ "ob_free_for_days": {
+  "plural": {
+   "fr": {
+    "one": "GRATUIT PENDANT %1$d JOUR",
+    "many": "GRATUIT PENDANT %1$d DE JOURS",
+    "other": "GRATUIT PENDANT %1$d JOURS"
+   },
+   "es": {
+    "one": "GRATIS POR %1$d DÍA",
+    "many": "GRATIS POR %1$d DE DÍAS",
+    "other": "GRATIS POR %1$d DÍAS"
+   },
+   "pt": {
+    "one": "GRÁTIS POR %1$d DIA",
+    "many": "GRÁTIS POR %1$d DE DIAS",
+    "other": "GRÁTIS POR %1$d DIAS"
+   },
+   "tr": {
+    "one": "%1$d GÜN ÜCRETSİZ",
+    "other": "%1$d GÜN ÜCRETSİZ"
+   },
+   "ru": {
+    "one": "БЕСПЛАТНО %1$d ДЕНЬ",
+    "few": "БЕСПЛАТНО %1$d ДНЯ",
+    "many": "БЕСПЛАТНО %1$d ДНЕЙ",
+    "other": "БЕСПЛАТНО %1$d ДНЯ"
+   },
+   "ja": {
+    "other": "%1$d日間無料"
+   },
+   "th": {
+    "other": "ฟรี %1$d วัน"
+   }
+  }
+ },
+ "ob_free_first_days": {
+  "plural": {
+   "fr": {
+    "one": "GRATUIT LES %1$d PREMIERS JOURS",
+    "many": "GRATUIT LES %1$d PREMIERS JOURS",
+    "other": "GRATUIT LES %1$d PREMIERS JOURS"
+   },
+   "es": {
+    "one": "GRATIS LOS PRIMEROS %1$d DÍAS",
+    "many": "GRATIS LOS PRIMEROS %1$d DÍAS",
+    "other": "GRATIS LOS PRIMEROS %1$d DÍAS"
+   },
+   "pt": {
+    "one": "GRÁTIS NOS PRIMEIROS %1$d DIAS",
+    "many": "GRÁTIS NOS PRIMEIROS %1$d DIAS",
+    "other": "GRÁTIS NOS PRIMEIROS %1$d DIAS"
+   },
+   "tr": {
+    "one": "İLK %1$d GÜN ÜCRETSİZ",
+    "other": "İLK %1$d GÜN ÜCRETSİZ"
+   },
+   "ru": {
+    "one": "БЕСПЛАТНО В ПЕРВЫЕ %1$d ДЕНЬ",
+    "few": "БЕСПЛАТНО В ПЕРВЫЕ %1$d ДНЯ",
+    "many": "БЕСПЛАТНО В ПЕРВЫЕ %1$d ДНЕЙ",
+    "other": "БЕСПЛАТНО В ПЕРВЫЕ %1$d ДНЯ"
+   },
+   "ja": {
+    "other": "最初の%1$d日間は無料"
+   },
+   "th": {
+    "other": "ฟรีใน %1$d วันแรก"
+   }
+  }
+ }
+}

@@ -1431,4 +1431,100 @@
     <string name="tour_step_14">&lt;b>For Addition&lt;/b>&lt;br/>always use your &lt;font color=\'#D81B60\'>&lt;b>index finger&lt;/b>&lt;/font>&lt;br/>to &lt;font color=\'#0000EE\'>&lt;b>move the upper bead downward&lt;/b>&lt;/font></string>
     <string name="tour_step_15">&lt;b>For Subtraction&lt;/b>&lt;br/>always use your &lt;font color=\'#D81B60\'>&lt;b>index finger&lt;/b>&lt;/font>&lt;br/>to &lt;font color=\'#0000EE\'>&lt;b>move the lower beads downward&lt;/b>&lt;/font></string>
     <string name="tour_step_16">&lt;b>For Subtraction&lt;/b>&lt;br/>always use your &lt;font color=\'#D81B60\'>&lt;b>thumb&lt;/b>&lt;/font>&lt;br/>to &lt;font color=\'#0000EE\'>&lt;b>move the upper bead upward&lt;/b>&lt;/font></string>
+
+    <!-- Onboarding tutorial and game names (M7) -->
+    <string name="ob_page1_title">Meet the abacus</string>
+    <string name="ob_page1_body">Each rod is one digit.</string>
+    <string name="ob_page2_title">Bottom beads = 1</string>
+    <string name="ob_page2_body">Slide them up to count.</string>
+    <string name="ob_page3_title">Top bead = 5</string>
+    <string name="ob_page3_body">5 and 2 more make 7.</string>
+    <string name="ob_page4_title">Let\'s add: 2 + 1</string>
+    <string name="ob_page4_body">Slide one bead up.</string>
+    <string name="ob_page4_after_body">Great job!</string>
+    <string name="ob_page5_title">Now: 4 + 3</string>
+    <string name="ob_page5_body">No room for 3 more beads!</string>
+    <string name="ob_page5_after_body">That was a Small Friend!</string>
+    <string name="ob_continue">Continue</string>
+    <string name="ob_start_learning">Start learning</string>
+    <string name="ob_previous">Previous</string>
+    <string name="ob_show_me">Show me</string>
+    <string name="ob_free_label">FREE</string>
+    <string name="ob_premium_label">PREMIUM</string>
+    <string name="ob_group_learn">Learn and practice</string>
+    <string name="ob_group_challenge">Challenge, games and progress</string>
+    <string name="ob_feat_free_mode">Free Mode</string>
+    <string name="ob_feat_free_mode_note">Play with the real abacus and see how beads count</string>
+    <string name="ob_free_everything_always">Everything, always</string>
+    <string name="ob_free_everything">Everything</string>
+    <string name="ob_feat_path">Learning path</string>
+    <string name="ob_feat_path_note">4 levels, from first beads to speed and tables</string>
+    <string name="ob_free_path">Level 1: Bead Basics</string>
+    <string name="ob_prem_path">Formulas, speed training, tables</string>
+    <string name="ob_feat_practice">Abacus Practice</string>
+    <string name="ob_feat_practice_note">8 levels of sums with step-by-step help</string>
+    <string name="ob_free_practice">Level 1 and the first Level 2 pages</string>
+    <string name="ob_prem_practice">All 8 levels</string>
+    <string name="ob_feat_exercise">Exercise</string>
+    <string name="ob_feat_exercise_note">Timed drills that build speed</string>
+    <string name="ob_free_exercise">Addition and subtraction basics</string>
+    <string name="ob_prem_exercise">All drills, with multiply and divide</string>
+    <string name="ob_feat_exam">Exam</string>
+    <string name="ob_feat_exam_note">Timed tests with saved results</string>
+    <string name="ob_free_exam">Addition, beginner level</string>
+    <string name="ob_prem_exam">All operations and levels</string>
+    <string name="ob_feat_ccm">Custom Challenge (CCM)</string>
+    <string name="ob_feat_ccm_note">Hear or see numbers, then work out the answer in your head.\n5 to 20 questions\n1 to 6 digits</string>
+    <string name="ob_prem_ccm">Full access</string>
+    <string name="ob_feat_games">Math Game Zone</string>
+    <string name="ob_feat_games_note">20 brain games for speed, logic and number sense</string>
+    <string name="ob_free_games">The easiest level of every game</string>
+    <string name="ob_prem_games">All levels and board sizes</string>
+    <string name="ob_feat_progress">Progress and rewards</string>
+    <string name="ob_feat_progress_note">Weekly parent report, streak and themes</string>
+    <string name="ob_free_progress">Streak, themes, last 3 results</string>
+    <string name="ob_prem_progress">Full report history</string>
+    <string name="ob_number_label">Number</string>
+    <string name="ob_why_title">Why parents choose us</string>
+    <string name="ob_why_subtitle">All you need to learn the abacus</string>
+    <string name="ob_stat_learning_levels">learning levels</string>
+    <string name="ob_stat_practice_levels">practice levels</string>
+    <string name="ob_stat_brain_games">brain games</string>
+    <string name="ob_reason_1">Step-by-step help on every sum</string>
+    <string name="ob_reason_2">Exam-style practice for maths and abacus</string>
+    <string name="ob_reason_3">Brain games that build focus and logic</string>
+    <string name="ob_reason_4">A weekly progress report for parents</string>
+    <string name="ob_reason_5">Learn at their own pace, with rewards</string>
+    <string name="ob_no_ads">🛡️ No ads, safe for kids</string>
+    <string name="ob_continue_free">Continue free for now</string>
+    <string name="game_name_speed_compare">Speed Compare</string>
+    <string name="game_name_balloon_pop">Balloon Pop</string>
+    <string name="game_name_true_or_false">True or False</string>
+    <string name="game_name_math_bingo">Math Bingo</string>
+    <string name="game_name_missing_sign">Missing Sign</string>
+    <string name="game_name_equation_match">Equation Match</string>
+    <string name="game_name_cross_math">Cross Math</string>
+    <string name="game_name_target_number">Target the Number</string>
+    <string name="game_name_number_path">Number Path</string>
+    <string name="game_name_math_pyramid">Math Pyramid</string>
+    <string name="game_name_magic_square">Magic Square</string>
+    <string name="game_name_number_merge">Number Merge</string>
+    <string name="game_name_number_sequence">Number Sequence</string>
+    <string name="game_name_place_value">Place Value</string>
+    <string name="game_name_clock_master">Clock Master</string>
+    <string name="game_name_number_detective">Number Detective</string>
+    <string name="game_name_sudoku">Sudoku</string>
+    <string name="game_name_calcudoku">Calcudoku</string>
+    <string name="game_name_kakuro">Kakuro</string>
+    <string name="game_name_number_snake">Number Snake</string>
+    <string name="ob_page4_after_title" translatable="false">2 + 1 = 3</string>
+    <string name="ob_page5_after_title" translatable="false">4 + 3 = 7</string>
+    <plurals name="ob_free_for_days">
+        <item quantity="one">FREE FOR %1$d DAY</item>
+        <item quantity="other">FREE FOR %1$d DAYS</item>
+    </plurals>
+    <plurals name="ob_free_first_days">
+        <item quantity="one">FREE FOR THE FIRST %1$d DAY</item>
+        <item quantity="other">FREE FOR THE FIRST %1$d DAYS</item>
+    </plurals>
 </resources>

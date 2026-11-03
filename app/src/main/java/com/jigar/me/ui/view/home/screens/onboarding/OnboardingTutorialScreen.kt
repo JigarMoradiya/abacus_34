@@ -113,6 +113,9 @@ import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppAnalytics
 import com.jigar.me.utils.AppConstants
 import kotlin.math.min
+import androidx.annotation.StringRes
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.pluralStringResource
 
 /**
  * First launch: a 3-rod abacus, the mascot's speech bubble, step bubbles and two guided sums, then a page for the
@@ -128,22 +131,22 @@ object OnboardingGate {
     fun markSeen(prefs: AppPreferencesHelper) = prefs.setCustomParamBoolean(KEY, true)
 }
 
-private data class Move(val to: Int, val afterTitle: String, val afterBody: String)
+private data class Move(val to: Int, @StringRes val afterTitle: Int, @StringRes val afterBody: Int)
 
 private data class Page(
-    val title: String,
-    val body: String,
+    @StringRes val title: Int,
+    @StringRes val body: Int,
     val valueBefore: Int,
     val move: Move? = null,
     val showFriendCard: Boolean = false,   // the Small Friend hint card, as in Level 2
 )
 
 private val pages = listOf(
-    Page("Meet the abacus", "Each rod is one digit.", 0),
-    Page("Bottom beads = 1", "Slide them up to count.", 3),
-    Page("Top bead = 5", "5 and 2 more make 7.", 7),
-    Page("Let's add: 2 + 1", "Slide one bead up.", 2, Move(3, "2 + 1 = 3", "Great job!")),
-    Page("Now: 4 + 3", "No room for 3 more beads!", 4, Move(7, "4 + 3 = 7", "That was a Small Friend!"), showFriendCard = true),
+    Page(R.string.ob_page1_title, R.string.ob_page1_body, 0),
+    Page(R.string.ob_page2_title, R.string.ob_page2_body, 3),
+    Page(R.string.ob_page3_title, R.string.ob_page3_body, 7),
+    Page(R.string.ob_page4_title, R.string.ob_page4_body, 2, Move(3, R.string.ob_page4_after_title, R.string.ob_page4_after_body)),
+    Page(R.string.ob_page5_title, R.string.ob_page5_body, 4, Move(7, R.string.ob_page5_after_title, R.string.ob_page5_after_body), showFriendCard = true),
 )
 
 /** The iPad multiplier of `responsiveDimenstion`, so type grows the same way on tablets. */
@@ -191,7 +194,7 @@ fun OnboardingTutorialScreen(
             FeaturesPage(
                 index = index,
                 group = featureGroups[(index - pages.size).coerceIn(0, featureGroups.size - 1)],
-                nextText = if (index == parentIndex - 1) { if (showsPlans()) "Continue" else "Start learning" } else "Next",
+                nextText = if (index == parentIndex - 1) { if (showsPlans()) stringResource(R.string.ob_continue) else stringResource(R.string.ob_start_learning) } else stringResource(R.string.next),
                 onPrevious = { index -= 1 },
                 onNext = { if (index == parentIndex - 1 && !showsPlans()) finish(true) else index += 1 },
                 onSkip = {
@@ -202,7 +205,7 @@ fun OnboardingTutorialScreen(
         } else {
             TutorialPage(
                 selectedTheme = selectedTheme, index = index, moved = moved,
-                nextText = "Next",
+                nextText = stringResource(R.string.next),
                 onShowMe = { moved = true },
                 onPrevious = { if (moved) moved = false else if (index > 0) index -= 1 },
                 onNext = { index += 1 },
@@ -225,7 +228,7 @@ fun FeatureListScreen(onClose: () -> Unit) {
         AbBackground(AbWorld.Meadow, Modifier.fillMaxSize())
         Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
             AbTopBar(
-                title = "What's free and Premium", onBack = onClose,
+                title = stringResource(R.string.free_and_premium), onBack = onClose,
                 modifier = Modifier.padding(start = DeviceInfo.screenHorizontalPadding(), end = AppDimens.Dimens16, top = DeviceInfo.screenTopPadding()),
             )
             Box(Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
@@ -265,8 +268,8 @@ private fun TutorialPage(
     val s = LocalAbScale.current.factor
     val k = responsive
     val page = pages[index]
-    val title = (if (moved) page.move?.afterTitle else null) ?: page.title
-    val body = (if (moved) page.move?.afterBody else null) ?: page.body
+    val title = stringResource((if (moved) page.move?.afterTitle else null) ?: page.title)
+    val body = stringResource((if (moved) page.move?.afterBody else null) ?: page.body)
     val hasMoveToShow = page.move != null && !moved
 
     // the abacus shows the page's value; a page with a move also shows the arrows for it until "Show me" is tapped
@@ -299,7 +302,7 @@ private fun TutorialPage(
         Box(Modifier.fillMaxWidth().padding(top = AppDimens.Dimens8), contentAlignment = Alignment.Center) {
             StepBubbles(index, title)
             Text(
-                "Skip",
+                stringResource(R.string.tour_skip),
                 Modifier
                     .align(Alignment.CenterEnd)
                     .clickable(remember { MutableInteractionSource() }, indication = null) { onSkip() }
@@ -372,12 +375,12 @@ private fun TutorialPage(
         ) {
             if (index > 0 || moved) {
                 AbButton(
-                    text = "Previous", tone = AbTone.Purple, size = AbSize.Small, icon = Icons.Rounded.KeyboardArrowLeft,
+                    text = stringResource(R.string.ob_previous), tone = AbTone.Purple, size = AbSize.Small, icon = Icons.Rounded.KeyboardArrowLeft,
                     minHeightOverride = 32f, horizontalPaddingOverride = 11f, onClick = onPrevious,
                 )
             } else Spacer(Modifier)
             AbButton(
-                text = if (hasMoveToShow) "Show me" else nextText,
+                text = if (hasMoveToShow) stringResource(R.string.ob_show_me) else nextText,
                 tone = if (hasMoveToShow) AbTone.Warning else AbTone.Primary,
                 size = AbSize.Small,
                 icon = if (hasMoveToShow) Icons.Rounded.TouchApp else Icons.Rounded.KeyboardArrowRight,
@@ -391,33 +394,36 @@ private fun TutorialPage(
 
 /** One tile of a "What's inside" page: what it is, what is free and what Premium adds. null free = nothing free, null premium = everything free. */
 private data class Feature(
-    val emoji: String, val name: String, val note: String, val free: String?, val premium: String?,
+    val emoji: String, @StringRes val name: Int, @StringRes val note: Int, @StringRes val free: Int?, @StringRes val premium: Int?,
     val span: Int = 1,                  // columns it covers (the Game Zone tile is three wide)
     val limit: Int = 0,                 // after the free week: 0 = its free part stays free, 1 = stays free only while free_core_after_window >= 2, 2 = locks
-    val games: List<String>? = null,    // the Game Zone tile lists its games
+    val games: List<Int>? = null,       // the Game Zone tile lists its games (string ids)
+    @StringRes val freeDuringWindow: Int? = null,   // the text of the FREE box while the free week runs, when it differs ("Everything" instead of "Everything, always")
 )
-private data class FeatureGroup(val title: String, val items: List<Feature>)
+private data class FeatureGroup(@StringRes val title: Int, val items: List<Feature>)
 
-/** The 20 games of the Math Game Zone, in the order of its home screen. */
+/** The 20 games of the Math Game Zone, in the order of its home screen (names as string ids). */
 private val gameNames = listOf(
-    "Speed Compare", "Balloon Pop", "True or False", "Math Bingo", "Missing Sign", "Equation Match", "Cross Math",
-    "Target the Number", "Number Path", "Math Pyramid", "Magic Square", "Number Merge", "Number Sequence", "Place Value",
-    "Clock Master", "Number Detective", "Sudoku", "Calcudoku", "Kakuro", "Number Snake",
+    R.string.game_name_speed_compare, R.string.game_name_balloon_pop, R.string.game_name_true_or_false, R.string.game_name_math_bingo,
+    R.string.game_name_missing_sign, R.string.game_name_equation_match, R.string.game_name_cross_math, R.string.game_name_target_number,
+    R.string.game_name_number_path, R.string.game_name_math_pyramid, R.string.game_name_magic_square, R.string.game_name_number_merge,
+    R.string.game_name_number_sequence, R.string.game_name_place_value, R.string.game_name_clock_master, R.string.game_name_number_detective,
+    R.string.game_name_sudoku, R.string.game_name_calcudoku, R.string.game_name_kakuro, R.string.game_name_number_snake,
 )
 
 /** The app on two pages (kept in line with APP_FEATURES.md and the Game Zone roster). */
 private val featureGroups = listOf(
-    FeatureGroup("Learn and practice", listOf(
-        Feature("🧮", "Free Mode", "Play with the real abacus and see how beads count", "Everything, always", null, limit = 1),
-        Feature("🌱", "Learning path", "4 levels, from first beads to speed and tables", "Level 1: Bead Basics", "Formulas, speed training, tables", limit = 1),
-        Feature("📚", "Abacus Practice", "8 levels of sums with step-by-step help", "Level 1 and the first Level 2 pages", "All 8 levels", limit = 2),
-        Feature("✏️", "Exercise", "Timed drills that build speed", "Addition and subtraction basics", "All drills, with multiply and divide", limit = 2),
-        Feature("📝", "Exam", "Timed tests with saved results", "Addition, beginner level", "All operations and levels", limit = 2),
+    FeatureGroup(R.string.ob_group_learn, listOf(
+        Feature("🧮", R.string.ob_feat_free_mode, R.string.ob_feat_free_mode_note, R.string.ob_free_everything_always, null, limit = 1, freeDuringWindow = R.string.ob_free_everything),
+        Feature("🌱", R.string.ob_feat_path, R.string.ob_feat_path_note, R.string.ob_free_path, R.string.ob_prem_path, limit = 1),
+        Feature("📚", R.string.ob_feat_practice, R.string.ob_feat_practice_note, R.string.ob_free_practice, R.string.ob_prem_practice, limit = 2),
+        Feature("✏️", R.string.ob_feat_exercise, R.string.ob_feat_exercise_note, R.string.ob_free_exercise, R.string.ob_prem_exercise, limit = 2),
+        Feature("📝", R.string.ob_feat_exam, R.string.ob_feat_exam_note, R.string.ob_free_exam, R.string.ob_prem_exam, limit = 2),
     )),
-    FeatureGroup("Challenge, games and progress", listOf(
-        Feature("🎯", "Custom Challenge (CCM)", "Hear or see numbers, then work out the answer in your head.\n5 to 20 questions\n1 to 6 digits", null, "Full access"),
-        Feature("🎮", "Math Game Zone", "20 brain games for speed, logic and number sense", "The easiest level of every game", "All levels and board sizes", span = 3, games = gameNames, limit = 2),
-        Feature("📊", "Progress and rewards", "Weekly parent report, streak and themes", "Streak, themes, last 3 results", "Full report history"),
+    FeatureGroup(R.string.ob_group_challenge, listOf(
+        Feature("🎯", R.string.ob_feat_ccm, R.string.ob_feat_ccm_note, null, R.string.ob_prem_ccm),
+        Feature("🎮", R.string.ob_feat_games, R.string.ob_feat_games_note, R.string.ob_free_games, R.string.ob_prem_games, span = 3, games = gameNames, limit = 2),
+        Feature("📊", R.string.ob_feat_progress, R.string.ob_feat_progress_note, R.string.ob_free_progress, R.string.ob_prem_progress),
     )),
 )
 
@@ -432,9 +438,9 @@ private fun FeaturesPage(index: Int, group: FeatureGroup, nextText: String, onPr
             .padding(horizontal = AppDimens.Dimens16),
     ) {
         Box(Modifier.fillMaxWidth().padding(top = AppDimens.Dimens8), contentAlignment = Alignment.Center) {
-            StepBubbles(index, group.title)
+            StepBubbles(index, stringResource(group.title))
             Text(
-                "Skip",
+                stringResource(R.string.tour_skip),
                 Modifier
                     .align(Alignment.CenterEnd)
                     .clickable(remember { MutableInteractionSource() }, indication = null) { onSkip() }
@@ -443,15 +449,23 @@ private fun FeaturesPage(index: Int, group: FeatureGroup, nextText: String, onPr
             )
         }
         // phone: tiles fill the room. tablet: tiles wrap their content (all as tall as the tallest) and sit centred in the room
+        // The cards fill the room. A language with longer text can need more height than the room: the cards then grow (all as tall as the
+        // tallest) and the area scrolls, so no FREE / PREMIUM box is ever cut off.
         val wrap = AppDimens.isTablet || AppDimens.isLargeTablet
-        Box(Modifier.weight(1f).fillMaxWidth().padding(vertical = AppDimens.Dimens8), contentAlignment = Alignment.Center) {
-            Row(
-                Modifier.fillMaxWidth().then(if (wrap) Modifier.height(IntrinsicSize.Min) else Modifier.fillMaxHeight()),
-                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
+        androidx.compose.foundation.layout.BoxWithConstraints(Modifier.weight(1f).fillMaxWidth().padding(vertical = AppDimens.Dimens8)) {
+            val room = maxHeight
+            Column(
+                Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).heightIn(min = room),
+                verticalArrangement = Arrangement.Center,
             ) {
-                group.items.forEach {
-                    if (it.games != null) GameZoneTile(it, Modifier.weight(it.span.toFloat()).fillMaxHeight())
-                    else FeatureTile(it, Modifier.weight(it.span.toFloat()).fillMaxHeight())
+                Row(
+                    Modifier.fillMaxWidth().then(if (wrap) Modifier else Modifier.heightIn(min = room)).height(IntrinsicSize.Min),
+                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
+                ) {
+                    group.items.forEach {
+                        if (it.games != null) GameZoneTile(it, Modifier.weight(it.span.toFloat()).fillMaxHeight())
+                        else FeatureTile(it, Modifier.weight(it.span.toFloat()).fillMaxHeight())
+                    }
                 }
             }
         }
@@ -460,7 +474,7 @@ private fun FeaturesPage(index: Int, group: FeatureGroup, nextText: String, onPr
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            AbButton(text = "Previous", tone = AbTone.Purple, size = AbSize.Small, icon = Icons.Rounded.KeyboardArrowLeft,
+            AbButton(text = stringResource(R.string.ob_previous), tone = AbTone.Purple, size = AbSize.Small, icon = Icons.Rounded.KeyboardArrowLeft,
                 minHeightOverride = 32f, horizontalPaddingOverride = 11f, onClick = onPrevious)
             AbButton(text = nextText, tone = AbTone.Primary, size = AbSize.Small, icon = Icons.Rounded.KeyboardArrowRight, iconAtEnd = true,
                 minHeightOverride = 32f, horizontalPaddingOverride = 11f, onClick = onNext)
@@ -482,16 +496,16 @@ private fun FeatureTile(f: Feature, modifier: Modifier) {
         verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens4),
     ) {
         Text(f.emoji, fontSize = (30f * k).sp)
-        Text(f.name, style = AbTypography.fixed(15f * k, FontWeight.Black), color = colors.textPrimary, maxLines = 2, textAlign = TextAlign.Center)
+        Text(stringResource(f.name), style = AbTypography.fixed(15f * k, FontWeight.Black), color = colors.textPrimary, maxLines = 2, textAlign = TextAlign.Center)
         Text(
-            f.note, Modifier.heightIn(min = 46.dp * k),
+            stringResource(f.note), Modifier.heightIn(min = 46.dp * k),
             style = AbTypography.fixed(12f * k, FontWeight.SemiBold), color = colors.textSecondary, maxLines = 6, textAlign = TextAlign.Center,
         )
         Spacer(Modifier.weight(1f))
         // the FREE and PREMIUM boxes, with a clear gap between them; a free-only tile keeps its FREE box on the row of its neighbours
         Column(verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
             freeBox(f)?.let { (label, text) -> InfoBox(label, text, colors.accentGreen.abReadable(4.5f)) }
-            if (f.premium != null) InfoBox("PREMIUM", f.premium, colors.accentOrange.abReadable(4.5f))
+            if (f.premium != null) InfoBox(stringResource(R.string.ob_premium_label), stringResource(f.premium), colors.accentOrange.abReadable(4.5f))
             else if (f.free != null) Spacer(Modifier.height(INFO_BOX_MIN * k))
         }
     }
@@ -513,8 +527,8 @@ private fun GameZoneTile(f: Feature, modifier: Modifier) {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
             Text(f.emoji, fontSize = (28f * k).sp)
             Column {
-                Text(f.name, style = AbTypography.fixed(15f * k, FontWeight.Black), color = colors.textPrimary, maxLines = 1)
-                Text(f.note, style = AbTypography.fixed(11f * k, FontWeight.SemiBold), color = colors.textSecondary, maxLines = 2)
+                Text(stringResource(f.name), style = AbTypography.fixed(15f * k, FontWeight.Black), color = colors.textPrimary, maxLines = 1)
+                Text(stringResource(f.note), style = AbTypography.fixed(11f * k, FontWeight.SemiBold), color = colors.textSecondary, maxLines = 2)
             }
         }
         // every game, three to a row
@@ -522,10 +536,11 @@ private fun GameZoneTile(f: Feature, modifier: Modifier) {
             (f.games ?: emptyList()).chunked(4).forEach { row ->
                 Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                     row.forEach { name ->
-                        Text(
-                            name,
-                            Modifier.weight(1f).background(colors.brandPrimary.copy(alpha = 0.12f), CircleShape).padding(horizontal = 4.dp, vertical = 3.dp),
-                            style = AbTypography.fixed(11f * k, FontWeight.Bold), color = colors.textPrimary, maxLines = 1, textAlign = TextAlign.Center,
+                        // a longer name shrinks to fit its chip instead of being cut off
+                        com.jigar.me.ui.view.ab.AbShrinkText(
+                            text = stringResource(name),
+                            modifier = Modifier.weight(1f).background(colors.brandPrimary.copy(alpha = 0.12f), CircleShape).padding(horizontal = 4.dp, vertical = 3.dp),
+                            style = AbTypography.fixed(11f * k, FontWeight.Bold), color = colors.textPrimary, minScale = 0.65f, maxLines = 1, textAlign = TextAlign.Center,
                         )
                     }
                     repeat(4 - row.size) { Spacer(Modifier.weight(1f)) }
@@ -535,7 +550,7 @@ private fun GameZoneTile(f: Feature, modifier: Modifier) {
         Spacer(Modifier.weight(1f))
         Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
             freeBox(f)?.let { (label, text) -> Box(Modifier.weight(1f)) { InfoBox(label, text, colors.accentGreen.abReadable(4.5f)) } }
-            f.premium?.let { Box(Modifier.weight(1f)) { InfoBox("PREMIUM", it, colors.accentOrange.abReadable(4.5f)) } }
+            f.premium?.let { Box(Modifier.weight(1f)) { InfoBox(stringResource(R.string.ob_premium_label), stringResource(it), colors.accentOrange.abReadable(4.5f)) } }
         }
     }
 }
@@ -553,9 +568,9 @@ private fun freeBox(f: Feature): Pair<String, String>? {
     val prefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current
     val days = com.jigar.me.utils.FreemiumWindow.windowDays(prefs)
     val limited = days > 0 && (f.limit == 2 || (f.limit == 1 && com.jigar.me.utils.FreemiumWindow.coreAfterWindow(prefs) < 2))
-    if (!limited) return "FREE" to free
-    val label = if (com.jigar.me.utils.FreemiumWindow.hasEnded) "FREE FOR THE FIRST $days DAYS" else "FREE FOR $days DAYS"
-    return label to free.replace(", always", "")
+    if (!limited) return stringResource(R.string.ob_free_label) to stringResource(free)
+    val label = if (com.jigar.me.utils.FreemiumWindow.hasEnded) pluralStringResource(R.plurals.ob_free_first_days, days, days) else pluralStringResource(R.plurals.ob_free_for_days, days, days)
+    return label to stringResource(f.freeDuringWindow ?: free)
 }
 
 /** A small coloured box: its label (FREE / PREMIUM) over what it covers. */
@@ -588,7 +603,7 @@ private fun NumberPlate(value: Int) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
         ) {
-            Text("Number", style = AbTypography.fixed(12f * k, FontWeight.Bold).copy(lineHeight = (14f * k).sp, lineHeightStyle = PLATE_LINES), color = colors.textSecondary)
+            Text(stringResource(R.string.ob_number_label), style = AbTypography.fixed(12f * k, FontWeight.Bold).copy(lineHeight = (14f * k).sp, lineHeightStyle = PLATE_LINES), color = colors.textSecondary)
             AnimatedContent(
                 targetState = value,
                 transitionSpec = { (scaleIn(initialScale = 0.6f) + fadeIn()) togetherWith (scaleOut(targetScale = 1.4f) + fadeOut()) },
@@ -736,8 +751,8 @@ private fun ParentLeft() {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
             Image(painterResource(R.drawable._mascot_), null, Modifier.height(56.dp * k))
             Column(verticalArrangement = Arrangement.spacedBy((-5).dp * k)) {   // Baloo's line boxes are tall: the subtitle sits close under the title
-                Text("Why parents choose us", style = AbTypography.fixed(22f * k, FontWeight.Black), color = colors.textPrimary)
-                Text("All you need to learn the abacus", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.textSecondary)
+                Text(stringResource(R.string.ob_why_title), style = AbTypography.fixed(22f * k, FontWeight.Black), color = colors.textPrimary)
+                Text(stringResource(R.string.ob_why_subtitle), style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.textSecondary)
             }
         }
         Column(
@@ -745,22 +760,22 @@ private fun ParentLeft() {
             verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
         ) {
             Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
-                StatCard("🌱", "4", "learning levels", Modifier.weight(1f))
-                StatCard("🧮", "8", "practice levels", Modifier.weight(1f))
-                StatCard("🧠", "20", "brain games", Modifier.weight(1f))
+                StatCard("🌱", "4", stringResource(R.string.ob_stat_learning_levels), Modifier.weight(1f))
+                StatCard("🧮", "8", stringResource(R.string.ob_stat_practice_levels), Modifier.weight(1f))
+                StatCard("🧠", "20", stringResource(R.string.ob_stat_brain_games), Modifier.weight(1f))
             }
             // the other parts of the app, so nothing is missing from the picture
             Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
-                AlsoChip("✏️", "Exercise")
-                AlsoChip("📝", "Exam")
-                AlsoChip("🎯", "Custom Challenge (CCM)")
+                AlsoChip("✏️", stringResource(R.string.ob_feat_exercise))
+                AlsoChip("📝", stringResource(R.string.ob_feat_exam))
+                AlsoChip("🎯", stringResource(R.string.ob_feat_ccm))
             }
             Column(verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
-                ReasonRow("Step-by-step help on every sum")
-                ReasonRow("Exam-style practice for maths and abacus")
-                ReasonRow("Brain games that build focus and logic")
-                ReasonRow("A weekly progress report for parents")
-                ReasonRow("Learn at their own pace, with rewards")
+                ReasonRow(stringResource(R.string.ob_reason_1))
+                ReasonRow(stringResource(R.string.ob_reason_2))
+                ReasonRow(stringResource(R.string.ob_reason_3))
+                ReasonRow(stringResource(R.string.ob_reason_4))
+                ReasonRow(stringResource(R.string.ob_reason_5))
             }
             // Removed (owner): the "Free for N days, then ..." line under the reasons.
             // if (windowActive) {
@@ -780,9 +795,9 @@ private fun ParentFooter(onContinueFree: () -> Unit) {
     val colors = LocalAbColors.current
     val k = responsive
     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
-        Text("🛡️ No ads, safe for kids", style = AbTypography.fixed(12f * k, FontWeight.SemiBold), color = colors.textSecondary)
+        Text(stringResource(R.string.ob_no_ads), style = AbTypography.fixed(12f * k, FontWeight.SemiBold), color = colors.textSecondary)
         Spacer(Modifier.weight(1f))
-        AbButton("Continue free for now", tone = AbTone.Ghost, size = AbSize.Small, minHeightOverride = 32f, horizontalPaddingOverride = 11f, onClick = onContinueFree)
+        AbButton(stringResource(R.string.ob_continue_free), tone = AbTone.Ghost, size = AbSize.Small, minHeightOverride = 32f, horizontalPaddingOverride = 11f, onClick = onContinueFree)
     }
 }
 

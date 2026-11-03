@@ -390,4 +390,99 @@
     <string name="tour_step_14">&lt;b>Pour additionner&lt;/b>&lt;br/>utilise toujours ton &lt;font color=\'#D81B60\'>&lt;b>index&lt;/b>&lt;/font>&lt;br/>pour &lt;font color=\'#0000EE\'>&lt;b>descendre la boule du haut&lt;/b>&lt;/font></string>
     <string name="tour_step_15">&lt;b>Pour soustraire&lt;/b>&lt;br/>utilise toujours ton &lt;font color=\'#D81B60\'>&lt;b>index&lt;/b>&lt;/font>&lt;br/>pour &lt;font color=\'#0000EE\'>&lt;b>descendre les boules du bas&lt;/b>&lt;/font></string>
     <string name="tour_step_16">&lt;b>Pour soustraire&lt;/b>&lt;br/>utilise toujours ton &lt;font color=\'#D81B60\'>&lt;b>pouce&lt;/b>&lt;/font>&lt;br/>pour &lt;font color=\'#0000EE\'>&lt;b>monter la boule du haut&lt;/b>&lt;/font></string>
+    <!-- m7_onboarding -->
+    <string name="ob_page1_title">Découvre le boulier</string>
+    <string name="ob_page1_body">Chaque tige représente un chiffre.</string>
+    <string name="ob_page2_title">Boules du bas = 1</string>
+    <string name="ob_page2_body">Monte-les pour compter.</string>
+    <string name="ob_page3_title">Boule du haut = 5</string>
+    <string name="ob_page3_body">5 et 2 de plus font 7.</string>
+    <string name="ob_page4_title">Additionnons : 2 + 1</string>
+    <string name="ob_page4_body">Monte une boule.</string>
+    <string name="ob_page4_after_body">Bravo !</string>
+    <string name="ob_page5_title">Maintenant : 4 + 3</string>
+    <string name="ob_page5_body">Plus de place pour 3 boules de plus !</string>
+    <string name="ob_page5_after_body">C\'était un Petit ami !</string>
+    <string name="ob_continue">Continuer</string>
+    <string name="ob_start_learning">Commencer à apprendre</string>
+    <string name="ob_previous">Précédent</string>
+    <string name="ob_show_me">Montre-moi</string>
+    <string name="ob_free_label">GRATUIT</string>
+    <string name="ob_premium_label">PREMIUM</string>
+    <string name="ob_group_learn">Apprendre et s\'entraîner</string>
+    <string name="ob_group_challenge">Défis, jeux et progrès</string>
+    <string name="ob_feat_free_mode">Mode libre</string>
+    <string name="ob_feat_free_mode_note">Un vrai boulier pour voir comment les boules comptent</string>
+    <string name="ob_free_everything_always">Tout, toujours</string>
+    <string name="ob_free_everything">Tout</string>
+    <string name="ob_feat_path">Parcours d\'apprentissage</string>
+    <string name="ob_feat_path_note">4 niveaux, des premières boules aux tables</string>
+    <string name="ob_free_path">Niveau 1 : bases des boules</string>
+    <string name="ob_prem_path">Formules, vitesse, tables</string>
+    <string name="ob_feat_practice">Entraînement au boulier</string>
+    <string name="ob_feat_practice_note">8 niveaux avec aide pas à pas</string>
+    <string name="ob_free_practice">Niveau 1 et début du niveau 2</string>
+    <string name="ob_prem_practice">Les 8 niveaux</string>
+    <string name="ob_feat_exercise">Exercices</string>
+    <string name="ob_feat_exercise_note">Séries chronométrées pour aller plus vite</string>
+    <string name="ob_free_exercise">Addition et soustraction de base</string>
+    <string name="ob_prem_exercise">Tout, avec multiplication et division</string>
+    <string name="ob_feat_exam">Examen</string>
+    <string name="ob_feat_exam_note">Tests chronométrés, résultats enregistrés</string>
+    <string name="ob_free_exam">Addition, niveau débutant</string>
+    <string name="ob_prem_exam">Toutes opérations et niveaux</string>
+    <string name="ob_feat_ccm">Défi personnalisé (CCM)</string>
+    <string name="ob_feat_ccm_note">Écoutez ou regardez des nombres, puis trouvez la réponse de tête.\n5 à 20 questions\n1 à 6 chiffres</string>
+    <string name="ob_prem_ccm">Accès complet</string>
+    <string name="ob_feat_games">Zone de jeux de maths</string>
+    <string name="ob_feat_games_note">20 jeux de réflexion pour la vitesse, la logique et le sens des nombres</string>
+    <string name="ob_free_games">Le niveau le plus facile de chaque jeu</string>
+    <string name="ob_prem_games">Tous les niveaux et toutes les tailles de grille</string>
+    <string name="ob_feat_progress">Progrès et récompenses</string>
+    <string name="ob_feat_progress_note">Rapport hebdomadaire pour les parents, séries et thèmes</string>
+    <string name="ob_free_progress">Séries, thèmes, 3 derniers résultats</string>
+    <string name="ob_prem_progress">Historique complet des rapports</string>
+    <string name="ob_number_label">Nombre</string>
+    <string name="ob_why_title">Pourquoi les parents nous choisissent</string>
+    <string name="ob_why_subtitle">Tout pour apprendre le boulier</string>
+    <string name="ob_stat_learning_levels">niveaux d\'apprentissage</string>
+    <string name="ob_stat_practice_levels">niveaux d\'entraînement</string>
+    <string name="ob_stat_brain_games">jeux de réflexion</string>
+    <string name="ob_reason_1">Aide pas à pas pour chaque calcul</string>
+    <string name="ob_reason_2">Entraînement type examen en maths et en boulier</string>
+    <string name="ob_reason_3">Des jeux qui développent la concentration et la logique</string>
+    <string name="ob_reason_4">Un rapport de progression hebdomadaire pour les parents</string>
+    <string name="ob_reason_5">Apprendre à son rythme, avec des récompenses</string>
+    <string name="ob_no_ads">🛡️ Sans publicité, sûr pour les enfants</string>
+    <string name="ob_continue_free">Continuer gratuitement pour l\'instant</string>
+    <string name="game_name_speed_compare">Comparaison express</string>
+    <string name="game_name_balloon_pop">Ballons à éclater</string>
+    <string name="game_name_true_or_false">Vrai ou faux</string>
+    <string name="game_name_math_bingo">Bingo des maths</string>
+    <string name="game_name_missing_sign">Signe manquant</string>
+    <string name="game_name_equation_match">Équations à relier</string>
+    <string name="game_name_cross_math">Maths croisées</string>
+    <string name="game_name_target_number">Atteins le nombre</string>
+    <string name="game_name_number_path">Chemin des nombres</string>
+    <string name="game_name_math_pyramid">Pyramide des maths</string>
+    <string name="game_name_magic_square">Carré magique</string>
+    <string name="game_name_number_merge">Fusion de nombres</string>
+    <string name="game_name_number_sequence">Suite de nombres</string>
+    <string name="game_name_place_value">Valeur de position</string>
+    <string name="game_name_clock_master">Maître de l\'horloge</string>
+    <string name="game_name_number_detective">Détective des nombres</string>
+    <string name="game_name_sudoku">Sudoku</string>
+    <string name="game_name_calcudoku">Calcudoku</string>
+    <string name="game_name_kakuro">Kakuro</string>
+    <string name="game_name_number_snake">Serpent des nombres</string>
+    <plurals name="ob_free_for_days">
+        <item quantity="one">GRATUIT PENDANT %1$d JOUR</item>
+        <item quantity="many">GRATUIT PENDANT %1$d DE JOURS</item>
+        <item quantity="other">GRATUIT PENDANT %1$d JOURS</item>
+    </plurals>
+    <plurals name="ob_free_first_days">
+        <item quantity="one">GRATUIT LES %1$d PREMIERS JOURS</item>
+        <item quantity="many">GRATUIT LES %1$d PREMIERS JOURS</item>
+        <item quantity="other">GRATUIT LES %1$d PREMIERS JOURS</item>
+    </plurals>
 </resources>
