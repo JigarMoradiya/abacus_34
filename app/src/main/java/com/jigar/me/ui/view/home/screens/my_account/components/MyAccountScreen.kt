@@ -86,15 +86,15 @@ fun MyAccountScreen(
                         verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
                     ) {
                         StatisticsCard(
-                            title = "Total Exam", count = statistics.EXAM?.count?.toString() ?: "-", time = statistics.EXAM?.last_exam_given_time ?: "",
+                            title = stringResource(R.string.account_total_exam), count = statistics.EXAM?.count?.toString() ?: "-", time = statistics.EXAM?.last_exam_given_time ?: "",
                             tone = if (colors.isDark) Color(0xFFFF453A) else Color(0xFFFF3B30)
                         )
                         StatisticsCard(
-                            title = "Total Exercise", count = statistics.EXERCISE?.count?.toString() ?: "-", time = statistics.EXERCISE?.last_exam_given_time ?: "",
+                            title = stringResource(R.string.account_total_exercise), count = statistics.EXERCISE?.count?.toString() ?: "-", time = statistics.EXERCISE?.last_exam_given_time ?: "",
                             tone = if (colors.isDark) Color(0xFF30D158) else Color(0xFF34C759)
                         )
                         StatisticsCard(
-                            title = "Total CCM", count = statistics.CCM?.count?.toString() ?: "-", time = statistics.CCM?.last_exam_given_time ?: "",
+                            title = stringResource(R.string.account_total_ccm), count = statistics.CCM?.count?.toString() ?: "-", time = statistics.CCM?.last_exam_given_time ?: "",
                             tone = if (colors.isDark) Color(0xFF0A84FF) else Color(0xFF007AFF)
                         )
                     }

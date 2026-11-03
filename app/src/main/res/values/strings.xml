@@ -1333,4 +1333,57 @@
     <string name="menu_store_title">Purchase Store</string>
     <string name="menu_store_subtitle">Unlock new math adventures!</string>
     <string name="menu_video_subtitle">Learn abacus visually</string>
+
+    <!-- Parent area (M5) -->
+    <string name="date_today_at">Today at %1$s</string>
+    <string name="date_yesterday_at">Yesterday at %1$s</string>
+    <string name="date_at">At %1$s</string>
+    <string name="account_last_attend">Last attend at %1$s</string>
+    <string name="account_last_attend_none">Last attend -</string>
+    <string name="account_total_exam">Total Exam</string>
+    <string name="account_total_exercise">Total Exercise</string>
+    <string name="account_total_ccm">Total CCM</string>
+    <string name="report_your_answer">Your answer is : %1$s</string>
+    <string name="report_seconds_value">%1$d sec</string>
+    <string name="reports_upgrade_title">Upgrade to Premium</string>
+    <string name="reports_upgrade_subtitle">See your complete report history</string>
+    <string name="view_plans">View Plans</string>
+
+    <!-- What's learning (M5): the bold parts are HTML kept as text, shown by htmlToAnnotatedString -->
+    <string name="whats_learn_free_mode_title">What Kid\'s Learn in Abacus Free Mode</string>
+    <string name="whats_learn_free_mode_1">• Understanding the &lt;b>structure and part&lt;/b> of the abacus.</string>
+    <string name="whats_learn_free_mode_2">• Easy abacus learning for &lt;b>beginners&lt;/b>.</string>
+    <string name="whats_learn_free_mode_3">• Recognize &lt;b>bead types&lt;/b> and &lt;b>values&lt;/b>.</string>
+    <string name="whats_learn_free_mode_4">• &lt;b>Finger techniques&lt;/b> for moving beads correctly.</string>
+    <string name="whats_learn_free_mode_5">• Learning to &lt;b>read, represent and set numbers&lt;/b> on the abacus.</string>
+    <string name="whats_learn_practice_title">What Kids Learn in Abacus Practice Module</string>
+    <string name="whats_learn_practice_1">• &lt;b>Step-by-Step&lt;/b> problem solving with &lt;b>correct bead directions&lt;/b>.</string>
+    <string name="whats_learn_practice_2">• &lt;b>Visualize abacus formula&lt;/b> at every step (including multiplication &amp; division).</string>
+    <string name="whats_learn_practice_3">• Learn to enter only &lt;b>final answers&lt;/b> support.</string>
+    <string name="whats_learn_practice_4">• &lt;b>Practice formal exam mode&lt;/b> with correct &amp; incorrect answer tracking.</string>
+    <string name="whats_learn_practice_5">• Build speed &amp; accuracy with &lt;b>timed sets&lt;/b>.</string>
+    <string name="whats_learn_practice_6">• Understand &lt;b>wrong bead movement&lt;/b> with direction hints.</string>
+    <string name="whats_learn_practice_7">• &lt;b>Hide/Show&lt;/b> bead direction &amp; formula display from &lt;b>settings&lt;/b>.</string>
+    <string name="whats_learn_practice_8">• &lt;b>Supports left &amp; right hand use&lt;/b> - kids practice comfortably with their natural hand.</string>
+    <string name="whats_learn_exercise_title">What Kid\'s do in Exercise Module</string>
+    <string name="whats_learn_exercise_1">• &lt;b>Start&lt;/b> Addition, Subtraction, Multiplication, and Division challenges &lt;b>based on their learning level&lt;/b>.</string>
+    <string name="whats_learn_exercise_2">• &lt;b>Practice&lt;/b> with different sets of exercises and &lt;b>time limits to improve speed and focus&lt;/b>.</string>
+    <string name="whats_learn_exercise_3">• &lt;b>Build&lt;/b> exam-like stamina with structured question sets and &lt;b>countdown timers&lt;/b>.</string>
+    <string name="whats_learn_exercise_4">• &lt;b>Improve&lt;/b> concentration, memory retention, and mental agility &lt;b>through flow-based drills&lt;/b>.</string>
+    <string name="whats_learn_exam_title">What Kid\'s do in Exam Module</string>
+    <string name="whats_learn_exam_1">• &lt;b>Simulated Test Environment –&lt;/b> Practice under real exam-like conditions to build accuracy and confidence.</string>
+    <string name="whats_learn_exam_2">• &lt;b>Math Types Supported –&lt;/b> Addition, Subtraction, Multiplication, and Division.</string>
+    <string name="whats_learn_exam_3">• &lt;b>Difficulty Levels –&lt;/b> Choose from Easy, Medium, or Hard for progressive learning.</string>
+    <string name="whats_learn_exam_4">• &lt;b>Multiple-Choice Format –&lt;/b> Each question comes with 4 options to develop decision-making skills.</string>
+    <string name="whats_learn_exam_5">• &lt;b>Timer Display –&lt;/b> Track how long you take without strict time pressure.</string>
+    <string name="whats_learn_exam_6">• &lt;b>Competition-Ready –&lt;/b> Perfect for UCMAS exams, school tests, math competitions, and abacus contests.</string>
+    <string name="whats_learn_exam_7">• &lt;b>Focused Training –&lt;/b> Builds exam temperament, speed, and logical thinking.</string>
+    <string name="whats_learn_ccm_title">What Kid\'s do in Custom Challenge Mode Module</string>
+    <string name="whats_learn_ccm_1">• &lt;b>Full Customization –&lt;/b> Control number of questions, question length (min/max digits), and time gap between questions.</string>
+    <string name="whats_learn_ccm_2">• &lt;b>Flexible Presentation –&lt;/b> Choose how questions appear: Numbers, Words, or Voice.</string>
+    <string name="whats_learn_ccm_3">• &lt;b>Timed Practice –&lt;/b> Add intervals between questions to simulate pressure and boost focus.</string>
+    <string name="whats_learn_ccm_4">• &lt;b>Oral &amp; Visual Training –&lt;/b> Perfect for listening-based, visualization-only, or mixed learning styles.</string>
+    <string name="whats_learn_ccm_5">• &lt;b>Versatile Usage –&lt;/b> Suitable for home practice, classroom activities, and custom coaching sessions.</string>
+    <string name="whats_learn_ccm_6">• &lt;b>Skill Development –&lt;/b> Enhances listening, memory power, concentration, visualization, and calculation speed.</string>
+    <string name="whats_learn_ccm_7">• &lt;b>Benefit –&lt;/b> Builds adaptability, improves decision-making, and prepares students for diverse test formats.</string>
 </resources>

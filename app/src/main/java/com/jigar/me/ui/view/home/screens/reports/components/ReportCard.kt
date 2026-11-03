@@ -119,19 +119,14 @@ private fun ReportHeaderRow(
 ) {
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
-    val title = remember(item.type) {
-        when (item.type) {
-            AppConstants.apiParams.answerFormalExam ->
-                "Practice set of Formal Exam"
-            AppConstants.EXAM.type_CCM ->
-                "Custom Challenge Mode"
-            AppConstants.EXAM.type_Exercise ->
-                "Exercise"
-            AppConstants.EXAM.type_Exam ->
-                "Exam"
-            else -> ""
-        }
+    val titleRes = when (item.type) {
+        AppConstants.apiParams.answerFormalExam -> R.string.practice_set
+        AppConstants.EXAM.type_CCM -> R.string.custom_challenge_mode
+        AppConstants.EXAM.type_Exercise -> R.string.exercise
+        AppConstants.EXAM.type_Exam -> R.string.exam
+        else -> null
     }
+    val title = titleRes?.let { stringResource(it) } ?: ""
     val hasResult = item.type == AppConstants.apiParams.answerFormalExam ||
         item.type == AppConstants.EXAM.type_Exercise ||
         item.type == AppConstants.EXAM.type_Exam
@@ -296,7 +291,7 @@ private fun ReportCCMSection(item: AllExamData) {
                     modifier = Modifier.weight(1f)
                 )
                 Text(
-                    text = "Your answer is : $userAnswer",
+                    text = stringResource(R.string.report_your_answer, userAnswer),
                     style = AbTypography.fixed(12f * s, FontWeight.ExtraBold),
                     color = colors.danger
                 )
@@ -318,7 +313,7 @@ private fun ReportCCMSection(item: AllExamData) {
             stringResource(R.string.is_question_show_in_word), AbColors.Light.accentPurple
         )
         ReportStat(
-            Icons.Rounded.Timer, (item.gap_between_two_question ?: 0).toString() + " sec",
+            Icons.Rounded.Timer, stringResource(R.string.report_seconds_value, item.gap_between_two_question ?: 0),
             stringResource(R.string.gap_between_each_question_number), AbColors.Light.accentOrange
         )
         ReportStat(

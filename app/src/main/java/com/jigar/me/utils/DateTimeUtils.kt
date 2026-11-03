@@ -4,6 +4,8 @@ import android.os.Build
 import android.text.TextUtils
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.jigar.me.MyApplication
+import com.jigar.me.R
 import com.jigar.me.ui.view.home.screens.reports.viewmodels.DateFilterType
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -15,7 +17,7 @@ fun String.toDate(
     dateFormat: String = DateTimeUtils.yyyy_MM_dd_T_HH_mm_ss_sssz,
     timeZone: TimeZone = TimeZone.getTimeZone("UTC"),
 ): Date {
-    val parser = SimpleDateFormat(dateFormat, Locale.getDefault())
+    val parser = SimpleDateFormat(dateFormat, Locale.US)   // text from the server: fixed English-US form, whatever the app language
     parser.timeZone = timeZone
     return parser.parse(this)
 }
@@ -25,12 +27,37 @@ fun Date.formatTo(
     timeZone: TimeZone = TimeZone.getDefault(),
 ): String {
     val formatter = SimpleDateFormat(
-        dateFormat, Locale.getDefault()
+        dateFormat, DateTimeUtils.displayLocale()
     )
     formatter.timeZone = timeZone
     return formatter.format(this)
 }
 object DateTimeUtils {
+    /**
+     * The locale for text the child or parent reads: the app language, the Gregorian calendar and the digits 0-9 (a Thai or Arabic
+     * phone would otherwise write Buddhist years such as 2569, or Arabic-Indic digits). Text that is parsed or sent to the server
+     * never uses this, it uses Locale.US.
+     */
+    fun displayLocale(): Locale = Locale.Builder()
+        .setLanguageTag(LanguageManager.currentTag())
+        .setUnicodeLocaleKeyword("nu", "latn")
+        .setUnicodeLocaleKeyword("ca", "gregory")
+        .build()
+
+    private val isEnglish get() = LanguageManager.currentTag() == "en"
+
+    /** English keeps its own patterns; other languages get the usual pattern of their language for the same fields. */
+    private fun localPattern(englishPattern: String, skeleton: String): String =
+        if (isEnglish) englishPattern else android.text.format.DateFormat.getBestDateTimePattern(displayLocale(), skeleton)
+
+    private fun format(date: Date, pattern: String, zone: TimeZone = TimeZone.getDefault()): String {
+        val f = SimpleDateFormat(pattern, displayLocale())
+        f.timeZone = zone
+        return f.format(date)
+    }
+
+    /** "03 Nov-26 10:30 PM" (English) / the same fields in the pattern of the app language. */
+    fun shortDateTime(date: Date): String = format(date, localPattern("dd MMM-yy hh:mm a", "ddMMMyyjmm"))
     var yyyy_MM_dd_T_HH_mm_ss_sssz: String = "yyyy-MM-dd'T'HH:mm:ss.sss'Z'"
     var ddMMMyyyyhhmma: String = "dd MMM yyyy hh:mm a"
     var yyyy_MM_dd_HH_mm: String = "yyyy_MM_dd_hh_mm"
@@ -42,7 +69,7 @@ object DateTimeUtils {
     var at_dd_mmm_yy_hh_mm_a: String = "'At' dd MMM-yy hh:mm a"
 
     fun getDateRange(type: DateFilterType): Pair<String, String> {
-        val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.US)   // sent to the server
         val cal = Calendar.getInstance()
 
         return when (type) {
@@ -104,15 +131,16 @@ object DateTimeUtils {
 
 
     fun String.toDate(dateFormat: String = yyyy_MM_dd_T_HH_mm_ss_sssz, timeZone: TimeZone = TimeZone.getTimeZone("UTC")): Date {
-        val parser = SimpleDateFormat(dateFormat, Locale.getDefault())
+        val parser = SimpleDateFormat(dateFormat, Locale.US)
         parser.timeZone = timeZone
         return parser.parse(this)
     }
 
     fun Date.formatTo(dateFormat: String, timeZone: TimeZone = TimeZone.getDefault()): String {
-        val formatter = SimpleDateFormat(dateFormat, Locale.getDefault())
+        val formatter = SimpleDateFormat(dateFormat, displayLocale())
         formatter.timeZone = timeZone
-        return formatter.format(this).replace("am","AM").replace("pm","PM")
+        val text = formatter.format(this)
+        return if (isEnglish) text.replace("am","AM").replace("pm","PM") else text
     }
     fun displayDurationHourMinSec(totalSecs: Long): String {
         val hours = totalSecs / 3600
@@ -132,8 +160,8 @@ object DateTimeUtils {
     ): String {
         var strNewDate = date
         val newDate: Date
-        val source = SimpleDateFormat(sourceStr, Locale.getDefault())
-        val destination = SimpleDateFormat(destinationStr, Locale.getDefault())
+        val source = SimpleDateFormat(sourceStr, Locale.US)
+        val destination = SimpleDateFormat(destinationStr, displayLocale())
         try {
             if (!TextUtils.isEmpty(date)) {
                 newDate = source.parse(date)
@@ -162,37 +190,32 @@ object DateTimeUtils {
                 now.get(Calendar.DATE) == cdate.get(Calendar.DATE)
     }
 
+    /**
+     * Report-history style date: "Today at 10:30 PM", "Yesterday at 10:30 PM" or "At 03 Nov-26 10:30 PM", the words and the patterns in
+     * the app language. [destinationStr] is used as given only when [isCheckToday] is false.
+     */
     fun convertDateFormatFromUTC(
         date: String?,
         sourceStr: String,
         destinationStr: String, isCheckToday : Boolean = true
     ): String? {
         var strNewDate = date
-        val newDate: Date?
-        val source = SimpleDateFormat(sourceStr, Locale.getDefault())
-
+        val source = SimpleDateFormat(sourceStr, Locale.US)
         source.timeZone = TimeZone.getTimeZone("UTC")
         try {
             if (!TextUtils.isEmpty(date)) {
-                newDate = date?.let { source.parse(it) }
-
-                var prefixText = ""
+                val newDate = date?.let { source.parse(it) }
                 newDate?.let {
-                    val destination = if (isCheckToday){
-                        if (isToday(it.time)){
-                            prefixText = "Today "
-                            SimpleDateFormat(hh_mm_a, Locale.getDefault())
-                        }else if(isYesterday(it.time)){
-                            prefixText = "Yesterday "
-                            SimpleDateFormat(hh_mm_a, Locale.getDefault())
-                        }else{
-                            SimpleDateFormat(destinationStr, Locale.getDefault())
-                        }
-                    }else{
-                        SimpleDateFormat(destinationStr, Locale.getDefault())
+                    val words = MyApplication.getInstance().inAppLanguage()
+                    strNewDate = if (!isCheckToday) {
+                        format(it, destinationStr)
+                    } else if (isToday(it.time)) {
+                        words.getString(R.string.date_today_at, format(it, localPattern("hh:mm a", "jmm")))
+                    } else if (isYesterday(it.time)) {
+                        words.getString(R.string.date_yesterday_at, format(it, localPattern("hh:mm a", "jmm")))
+                    } else {
+                        words.getString(R.string.date_at, shortDateTime(it))
                     }
-                    destination.timeZone = TimeZone.getDefault()
-                    strNewDate = prefixText + destination.format(it)
                 }
             }
         } catch (e: ParseException) {

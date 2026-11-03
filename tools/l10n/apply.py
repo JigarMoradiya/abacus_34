@@ -28,7 +28,9 @@ def raw(t):
     return t.replace("'", "\\'").replace('"', '\\"').replace('\n', '\\n')
 
 def main():
-    source = {el.get('name'): el.tag for el in ET.parse(os.path.join(RES, 'values', 'strings.xml')).getroot() if el.get('name')}
+    root = ET.parse(os.path.join(RES, 'values', 'strings.xml')).getroot()
+    source = {el.get('name'): el.tag for el in root if el.get('name')}
+    styled = {el.get('name') for el in root if el.get('name') and el.tag == 'string' and len(list(el)) > 0}   # English has real <b> tags: write real tags
     data = {lang: [] for lang in LANGS}; problems = 0; seen = {}
     for path in MASTERS:
         module = os.path.basename(path)[:-5]
@@ -50,10 +52,10 @@ def main():
             if module != last: out.append(f'    <!-- {module} -->'); last = module
             if isinstance(val, dict):
                 out.append(f'    <plurals name="{key}">')
-                for q, t in val.items(): out.append(f'        <item quantity="{q}">{raw(t) if "<" in t else esc(t)}</item>')
+                for q, t in val.items(): out.append(f'        <item quantity="{q}">{raw(t) if "<" in t and key in styled else esc(t)}</item>')
                 out.append('    </plurals>')
             else:
-                out.append(f'    <string name="{key}">{raw(val) if re.search(r"</?[bi]>|<font|<br", val) else esc(val)}</string>')
+                out.append(f'    <string name="{key}">{raw(val) if key in styled else esc(val)}</string>')
         out.append('</resources>')
         d = os.path.join(RES, f'values-{lang}'); os.makedirs(d, exist_ok=True)
         open(os.path.join(d, 'strings.xml'), 'w', encoding='utf-8').write('\n'.join(out) + '\n')

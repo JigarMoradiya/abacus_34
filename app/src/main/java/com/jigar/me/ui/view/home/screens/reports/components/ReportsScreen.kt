@@ -45,6 +45,7 @@ import com.jigar.me.ui.view.ab.abDarkened
 import com.jigar.me.ui.view.home.screens.reports.viewmodels.ReportHistoryUiState
 import com.jigar.me.ui.view.home.screens.reports.viewmodels.ReportHistoryViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
+import androidx.compose.ui.res.stringResource
 
 private const val FREE_HISTORY_LIMIT = 3
 
@@ -155,12 +156,12 @@ private fun ReportHistoryUpgradeBanner(onShowPaywall: () -> Unit) {
         }
         Column(modifier = Modifier.weight(1f)) {
             Text(
-                text = "Upgrade to Premium",
+                text = stringResource(R.string.reports_upgrade_title),
                 style = AbTypography.fixed(15f * s, FontWeight.ExtraBold),
                 color = colors.textPrimary
             )
             AbShrinkText(
-                text = "See your complete report history",
+                text = stringResource(R.string.reports_upgrade_subtitle),
                 style = AbTypography.fixed(12f * s, FontWeight.SemiBold),
                 color = colors.textSecondary,
                 minScale = 0.8f,
@@ -168,7 +169,7 @@ private fun ReportHistoryUpgradeBanner(onShowPaywall: () -> Unit) {
             )
         }
         AbButton(
-            text = "View Plans",
+            text = stringResource(R.string.view_plans),
             painterIcon = painterResource(R.drawable.crown),
             tone = AbTone.Warning,
             size = AbSize.Small,

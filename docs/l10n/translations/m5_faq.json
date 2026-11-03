@@ -1,0 +1,252 @@
+{
+ "faq_que_1": {
+  "fr": "Qu'est-ce que l'application Abacus Child Learning ?",
+  "es": "¿Qué es la aplicación Abacus Child Learning?",
+  "pt": "O que é o aplicativo Abacus Child Learning?",
+  "tr": "Abacus Child Learning uygulaması nedir?",
+  "ru": "Что такое приложение Abacus Child Learning?",
+  "ja": "Abacus Child Learningアプリとは？",
+  "th": "แอป Abacus Child Learning คืออะไร",
+  "ar": "ما هو تطبيق Abacus Child Learning؟"
+ },
+ "faq_ans_1": {
+  "fr": "Abacus Child Learning est une application éducative qui aide les enfants à acquérir des compétences en mathématiques grâce à des exercices et activités interactifs avec le boulier.",
+  "es": "Abacus Child Learning es una aplicación educativa que ayuda a los niños a desarrollar habilidades matemáticas con ejercicios y actividades interactivas de ábaco.",
+  "pt": "O Abacus Child Learning é um aplicativo educacional que ajuda as crianças a desenvolver habilidades matemáticas com exercícios e atividades interativas de ábaco.",
+  "tr": "Abacus Child Learning, çocukların etkileşimli abaküs alıştırmaları ve etkinlikleriyle matematik becerileri kazanmasına yardımcı olan bir eğitim uygulamasıdır.",
+  "ru": "Abacus Child Learning — это образовательное приложение, которое помогает детям развивать математические навыки с помощью интерактивных упражнений и заданий на абакусе.",
+  "ja": "Abacus Child Learningは、そろばんを使ったインタラクティブな練習やアクティビティで、お子さまの算数の力を伸ばす学習アプリです。",
+  "th": "Abacus Child Learning เป็นแอปการศึกษาที่ช่วยให้เด็กพัฒนาทักษะคณิตศาสตร์ผ่านแบบฝึกหัดและกิจกรรมลูกคิดแบบโต้ตอบ",
+  "ar": "تطبيق Abacus Child Learning تطبيق تعليمي يساعد الأطفال على تنمية مهارات الرياضيات من خلال تمارين وأنشطة تفاعلية على الأباكوس."
+ },
+ "faq_que_2": {
+  "fr": "Dois-je m'abonner pour utiliser l'application ?",
+  "es": "¿Necesito suscribirme para usar la aplicación?",
+  "pt": "Preciso assinar para usar o aplicativo?",
+  "tr": "Uygulamayı kullanmak için abone olmam gerekiyor mu?",
+  "ru": "Нужна ли подписка, чтобы пользоваться приложением?",
+  "ja": "アプリを使うには購読が必要ですか？",
+  "th": "ต้องสมัครสมาชิกเพื่อใช้แอปหรือไม่",
+  "ar": "هل أحتاج إلى الاشتراك لاستخدام التطبيق؟"
+ },
+ "faq_ans_2": {
+  "fr": "L'application propose du contenu gratuit, mais un abonnement donne accès aux fonctions Premium et à une expérience d'apprentissage plus complète.",
+  "es": "La aplicación ofrece algo de contenido gratuito, pero una suscripción da acceso a las funciones Premium y a una experiencia de aprendizaje más completa.",
+  "pt": "O aplicativo oferece algum conteúdo gratuito, mas a assinatura dá acesso aos recursos Premium e a uma experiência de aprendizado mais completa.",
+  "tr": "Uygulama bazı içerikleri ücretsiz sunar; abonelik ise Premium özelliklere ve daha kapsamlı bir öğrenme deneyimine erişim sağlar.",
+  "ru": "В приложении есть бесплатный контент, но подписка открывает Premium-функции и более полноценное обучение.",
+  "ja": "無料で使える内容もありますが、購読するとPremium機能が使え、より充実した学習ができます。",
+  "th": "แอปมีเนื้อหาให้ใช้ฟรีบางส่วน แต่การสมัครสมาชิกจะเปิดฟีเจอร์ Premium และประสบการณ์การเรียนที่ครบถ้วนยิ่งขึ้น",
+  "ar": "يقدّم التطبيق بعض المحتوى المجاني، لكن الاشتراك يمنحك ميزات Premium وتجربة تعلّم أشمل."
+ },
+ "faq_que_3": {
+  "fr": "Comment m'abonner au forfait Premium ?",
+  "es": "¿Cómo me suscribo al plan Premium?",
+  "pt": "Como assino o plano Premium?",
+  "tr": "Premium plana nasıl abone olurum?",
+  "ru": "Как оформить подписку Premium?",
+  "ja": "Premiumプランに登録するには？",
+  "th": "สมัครแพ็กเกจ Premium ได้อย่างไร",
+  "ar": "كيف أشترك في باقة Premium؟"
+ },
+ "faq_ans_3": {
+  "fr": "Pour vous abonner, ouvrez la section « Abonnement » de l'application, choisissez votre offre et suivez les instructions à l'écran. Les paiements sont traités de façon sécurisée par notre passerelle de paiement intégrée.",
+  "es": "Para suscribirte, entra en la sección «Suscripción» de la aplicación, elige tu plan y sigue las instrucciones en pantalla. Los pagos se procesan de forma segura mediante nuestra pasarela de pago integrada.",
+  "pt": "Para assinar, vá à seção \"Assinatura\" do aplicativo, escolha o plano e siga as instruções na tela. Os pagamentos são processados com segurança pelo nosso gateway de pagamento integrado.",
+  "tr": "Abone olmak için uygulamadaki \"Abonelik\" bölümüne gidin, tercih ettiğiniz planı seçin ve ekrandaki adımları izleyin. Ödemeler, entegre ödeme altyapımız üzerinden güvenle işlenir.",
+  "ru": "Чтобы оформить подписку, откройте в приложении раздел «Подписка», выберите тариф и следуйте инструкциям на экране. Платежи безопасно обрабатываются через встроенную платёжную систему.",
+  "ja": "購読するには、アプリの「購読」画面でプランを選び、画面の案内に従ってください。お支払いは、アプリに組み込まれた決済サービスで安全に処理されます。",
+  "th": "หากต้องการสมัครสมาชิก ให้ไปที่ส่วน “การสมัครสมาชิก” ในแอป เลือกแพ็กเกจที่ต้องการ แล้วทำตามขั้นตอนบนหน้าจอ การชำระเงินดำเนินการอย่างปลอดภัยผ่านระบบชำระเงินในแอปของเรา",
+  "ar": "للاشتراك، افتح قسم «الاشتراك» في التطبيق، واختر الباقة التي تفضّلها، ثم اتبع التعليمات على الشاشة. تتم معالجة المدفوعات بأمان عبر بوابة الدفع المدمجة لدينا."
+ },
+ "faq_que_4": {
+  "fr": "Quels moyens de paiement sont acceptés pour l'abonnement ?",
+  "es": "¿Qué métodos de pago se aceptan para la suscripción?",
+  "pt": "Quais formas de pagamento são aceitas para a assinatura?",
+  "tr": "Abonelik için hangi ödeme yöntemleri kabul edilir?",
+  "ru": "Какие способы оплаты принимаются для подписки?",
+  "ja": "購読ではどの支払い方法が使えますか？",
+  "th": "รับชำระเงินด้วยวิธีใดบ้างสำหรับการสมัครสมาชิก",
+  "ar": "ما طرق الدفع المقبولة للاشتراك؟"
+ },
+ "faq_ans_4": {
+  "fr": "Nous acceptons plusieurs moyens de paiement, dont les cartes de crédit, les cartes de débit et d'autres options sécurisées proposées par notre passerelle de paiement.  Moyens de paiement pris en charge ou non : https://support.google.com/googleplay/topic/3365267",
+  "es": "Aceptamos varios métodos de pago, como tarjetas de crédito, tarjetas de débito y otras opciones seguras disponibles en nuestra pasarela de pago.  Consulta los métodos compatibles y no compatibles: https://support.google.com/googleplay/topic/3365267",
+  "pt": "Aceitamos várias formas de pagamento, incluindo cartões de crédito, cartões de débito e outras opções seguras disponíveis no nosso gateway de pagamento.  Veja as formas de pagamento compatíveis e não compatíveis: https://support.google.com/googleplay/topic/3365267",
+  "tr": "Kredi kartları, banka kartları ve ödeme altyapımızdaki diğer güvenli seçenekler dahil çeşitli ödeme yöntemlerini kabul ediyoruz.  Desteklenen ve desteklenmeyen ödeme yöntemleri: https://support.google.com/googleplay/topic/3365267",
+  "ru": "Мы принимаем разные способы оплаты, включая кредитные и дебетовые карты и другие безопасные варианты, доступные в нашей платёжной системе.  Поддерживаемые и неподдерживаемые способы оплаты: https://support.google.com/googleplay/topic/3365267",
+  "ja": "クレジットカード、デビットカード、決済サービスで利用できるその他の安全な支払い方法に対応しています。  対応・非対応の支払い方法はこちら：https://support.google.com/googleplay/topic/3365267",
+  "th": "เรารับชำระเงินหลายวิธี เช่น บัตรเครดิต บัตรเดบิต และตัวเลือกที่ปลอดภัยอื่น ๆ ในระบบชำระเงินของเรา  ดูวิธีชำระเงินที่รองรับและไม่รองรับ: https://support.google.com/googleplay/topic/3365267",
+  "ar": "نقبل طرق دفع متعددة، منها بطاقات الائتمان وبطاقات الخصم وخيارات آمنة أخرى متاحة عبر بوابة الدفع.  اطّلع على طرق الدفع المدعومة وغير المدعومة: https://support.google.com/googleplay/topic/3365267"
+ },
+ "faq_que_41": {
+  "fr": "Pourquoi mon moyen de paiement n'est-il pas pris en charge pour l'abonnement ?",
+  "es": "¿Por qué mi método de pago no es compatible con la suscripción?",
+  "pt": "Por que minha forma de pagamento não é aceita para a assinatura?",
+  "tr": "Ödeme yöntemim neden abonelik için desteklenmiyor?",
+  "ru": "Почему мой способ оплаты не подходит для подписки?",
+  "ja": "なぜ私の支払い方法は購読に使えないのですか？",
+  "th": "ทำไมวิธีชำระเงินของฉันจึงไม่รองรับการสมัครสมาชิก",
+  "ar": "لماذا لا تدعم الاشتراكَ طريقةُ الدفع التي أستخدمها؟"
+ },
+ "faq_ans_41": {
+  "fr": "Certains moyens de paiement peuvent ne pas être pris en charge en raison des limites du système de traitement des paiements. Nous vous recommandons d'utiliser l'un des moyens disponibles dans l'application. Moyens de paiement pris en charge ou non : https://support.google.com/googleplay/topic/3365267",
+  "es": "Es posible que algunos métodos de pago no sean compatibles por las limitaciones del sistema de procesamiento de pagos. Te recomendamos usar uno de los métodos disponibles en la aplicación. Consulta los métodos compatibles y no compatibles: https://support.google.com/googleplay/topic/3365267",
+  "pt": "Algumas formas de pagamento podem não ser aceitas devido a limitações do sistema de processamento de pagamentos. Recomendamos usar uma das formas disponíveis no aplicativo. Veja as formas de pagamento compatíveis e não compatíveis: https://support.google.com/googleplay/topic/3365267",
+  "tr": "Ödeme işleme sisteminin getirdiği sınırlamalar nedeniyle bazı ödeme yöntemleri desteklenmeyebilir. Uygulamada sunulan yöntemlerden birini kullanmanızı öneririz. Desteklenen ve desteklenmeyen ödeme yöntemleri: https://support.google.com/googleplay/topic/3365267",
+  "ru": "Некоторые способы оплаты могут не поддерживаться из-за ограничений платёжной системы. Рекомендуем выбрать один из способов, доступных в приложении. Поддерживаемые и неподдерживаемые способы оплаты: https://support.google.com/googleplay/topic/3365267",
+  "ja": "決済システムの制限により、一部の支払い方法はご利用いただけない場合があります。アプリで利用できる方法をお選びください。対応・非対応の支払い方法はこちら：https://support.google.com/googleplay/topic/3365267",
+  "th": "วิธีชำระเงินบางอย่างอาจไม่รองรับเนื่องจากข้อจำกัดของระบบประมวลผลการชำระเงิน เราแนะนำให้ใช้วิธีที่มีในแอป ดูวิธีชำระเงินที่รองรับและไม่รองรับ: https://support.google.com/googleplay/topic/3365267",
+  "ar": "قد لا تكون بعض طرق الدفع مدعومة بسبب قيود نظام معالجة المدفوعات. نوصي باستخدام إحدى الطرق المتاحة في التطبيق. اطّلع على طرق الدفع المدعومة وغير المدعومة: https://support.google.com/googleplay/topic/3365267"
+ },
+ "faq_que_42": {
+  "fr": "Puis-je contacter l'assistance pour connaître d'autres moyens de paiement ?",
+  "es": "¿Puedo contactar con soporte para consultar métodos de pago alternativos?",
+  "pt": "Posso falar com o suporte para saber sobre outras formas de pagamento?",
+  "tr": "Alternatif ödeme yöntemlerini öğrenmek için destek ekibiyle iletişime geçebilir miyim?",
+  "ru": "Можно ли обратиться в поддержку по поводу других способов оплаты?",
+  "ja": "他の支払い方法についてサポートに問い合わせできますか？",
+  "th": "ติดต่อฝ่ายสนับสนุนเพื่อสอบถามวิธีชำระเงินอื่นได้หรือไม่",
+  "ar": "هل يمكنني التواصل مع الدعم للاستفسار عن طرق دفع بديلة؟"
+ },
+ "faq_ans_42": {
+  "fr": "Bien sûr. En cas de problème avec les moyens de paiement, contactez notre équipe d'assistance à %1$s. Elle pourra vous guider et étudier des solutions possibles.",
+  "es": "Por supuesto. Si tienes problemas con los métodos de pago, escribe a nuestro equipo de soporte en %1$s. Te orientarán y buscarán posibles soluciones.",
+  "pt": "Claro. Se tiver problemas com as formas de pagamento, fale com nossa equipe de suporte em %1$s. Eles podem orientar e buscar possíveis soluções.",
+  "tr": "Elbette. Ödeme yöntemleriyle ilgili sorun yaşarsanız %1$s adresinden müşteri destek ekibimize ulaşabilirsiniz. Size yol gösterip olası çözümleri değerlendirirler.",
+  "ru": "Конечно. Если возникнут проблемы со способами оплаты, напишите в службу поддержки: %1$s. Там подскажут и помогут найти решение.",
+  "ja": "もちろんです。支払い方法でお困りの場合は、サポートチーム（%1$s）までご連絡ください。ご案内と解決策のご提案をいたします。",
+  "th": "ได้แน่นอน หากพบปัญหาเรื่องวิธีชำระเงิน ติดต่อทีมสนับสนุนลูกค้าได้ที่ %1$s ทีมงานจะให้คำแนะนำและช่วยหาทางแก้ไข",
+  "ar": "بالتأكيد. إذا واجهت مشكلة في طرق الدفع، فتواصل مع فريق دعم العملاء على %1$s، وسيرشدك ويبحث معك عن حلول ممكنة."
+ },
+ "faq_que_5": {
+  "fr": "Mes informations de paiement sont-elles sécurisées ?",
+  "es": "¿Mi información de pago es segura?",
+  "pt": "Minhas informações de pagamento estão seguras?",
+  "tr": "Ödeme bilgilerim güvende mi?",
+  "ru": "Безопасны ли мои платёжные данные?",
+  "ja": "支払い情報は安全ですか？",
+  "th": "ข้อมูลการชำระเงินของฉันปลอดภัยหรือไม่",
+  "ar": "هل معلومات الدفع الخاصة بي آمنة؟"
+ },
+ "faq_ans_5": {
+  "fr": "Oui, la sécurité de vos informations de paiement est notre priorité. Notre passerelle de paiement utilise un chiffrement conforme aux standards du secteur pour garantir des transactions sûres.",
+  "es": "Sí, damos prioridad a la seguridad de tu información de pago. Nuestra pasarela de pago utiliza cifrado estándar de la industria para que las transacciones sean seguras.",
+  "pt": "Sim, a segurança das suas informações de pagamento é prioridade para nós. Nosso gateway de pagamento usa criptografia padrão do setor para garantir transações seguras.",
+  "tr": "Evet, ödeme bilgilerinizin güvenliğine öncelik veriyoruz. Ödeme altyapımız, işlemlerin güvenli olması için sektör standardı şifreleme kullanır.",
+  "ru": "Да, мы уделяем первостепенное внимание безопасности ваших платёжных данных. Платёжная система использует шифрование по отраслевым стандартам, чтобы операции были безопасными.",
+  "ja": "はい、お支払い情報の安全を最優先にしています。決済サービスは業界標準の暗号化を使い、安全な取引を実現しています。",
+  "th": "ใช่ เราให้ความสำคัญกับความปลอดภัยของข้อมูลการชำระเงินของคุณ ระบบชำระเงินของเราใช้การเข้ารหัสตามมาตรฐานอุตสาหกรรมเพื่อให้ธุรกรรมปลอดภัย",
+  "ar": "نعم، نضع أمان معلومات الدفع الخاصة بك في المقام الأول. تستخدم بوابة الدفع لدينا تشفيرًا بمعايير القطاع لضمان معاملات آمنة."
+ },
+ "faq_que_6": {
+  "fr": "Y a-t-il de la publicité dans l'application ?",
+  "es": "¿Hay anuncios en la aplicación?",
+  "pt": "Há anúncios no aplicativo?",
+  "tr": "Uygulamada reklam var mı?",
+  "ru": "Есть ли в приложении реклама?",
+  "ja": "アプリに広告はありますか？",
+  "th": "มีโฆษณาในแอปหรือไม่",
+  "ar": "هل توجد إعلانات في التطبيق؟"
+ },
+ "faq_ans_6": {
+  "fr": "Non, il n'y a aucune publicité dans l'application.",
+  "es": "No, la aplicación no tiene anuncios.",
+  "pt": "Não, o aplicativo não tem anúncios.",
+  "tr": "Hayır, uygulamada reklam yoktur.",
+  "ru": "Нет, в приложении нет рекламы.",
+  "ja": "いいえ、アプリに広告はありません。",
+  "th": "ไม่มี แอปนี้ไม่มีโฆษณา",
+  "ar": "لا، لا توجد إعلانات في التطبيق."
+ },
+ "faq_que_7": {
+  "fr": "Comment me connecter à mon compte ?",
+  "es": "¿Cómo inicio sesión en mi cuenta?",
+  "pt": "Como faço login na minha conta?",
+  "tr": "Hesabıma nasıl giriş yaparım?",
+  "ru": "Как войти в аккаунт?",
+  "ja": "アカウントにログインするには？",
+  "th": "เข้าสู่ระบบบัญชีได้อย่างไร",
+  "ar": "كيف أسجّل الدخول إلى حسابي؟"
+ },
+ "faq_ans_7": {
+  "fr": "Sur la page « Connexion », connectez-vous avec votre compte Google, ou saisissez vos identifiants (nom d'utilisateur et mot de passe) si vous en avez, puis touchez « Envoyer ».",
+  "es": "En la página «Iniciar sesión», entra con tu cuenta de Google o, si tienes credenciales, escribe tu usuario y contraseña y toca «Enviar».",
+  "pt": "Na página \"Login\", entre com sua conta do Google ou, se tiver credenciais, digite seu usuário e senha e toque em \"Enviar\".",
+  "tr": "\"Giriş\" sayfasında Google hesabınızla giriş yapın; kimlik bilgileriniz varsa kullanıcı adınızı ve şifrenizi girip \"Gönder\"e dokunun.",
+  "ru": "На странице «Вход» войдите через аккаунт Google или, если у вас есть логин и пароль, введите их и нажмите «Отправить».",
+  "ja": "「ログイン」画面で、Googleアカウントでログインするか、IDとパスワードをお持ちの場合は入力して「送信」をタップしてください。",
+  "th": "ที่หน้า “เข้าสู่ระบบ” ให้เข้าสู่ระบบด้วยบัญชี Google หรือหากมีชื่อผู้ใช้และรหัสผ่าน ให้กรอกแล้วแตะ “ส่ง”",
+  "ar": "في صفحة «تسجيل الدخول»، سجّل الدخول بحساب Google، أو إن كانت لديك بيانات اعتماد فأدخل اسم المستخدم وكلمة المرور ثم اضغط «إرسال»."
+ },
+ "faq_que_8": {
+  "fr": "De quels avantages profitent les abonnés ?",
+  "es": "¿Qué ventajas tienen los suscriptores?",
+  "pt": "Quais benefícios os assinantes têm?",
+  "tr": "Aboneler hangi avantajlardan yararlanır?",
+  "ru": "Какие преимущества у подписчиков?",
+  "ja": "購読するとどんな特典がありますか？",
+  "th": "สมาชิกได้รับสิทธิประโยชน์อะไรบ้าง",
+  "ar": "ما المزايا التي يحصل عليها المشتركون؟"
+ },
+ "faq_ans_8": {
+  "fr": "Les abonnés profitent d'un accès illimité au contenu Premium, d'une expérience sans publicité, de fonctions d'apprentissage personnalisées et d'exercices plus interactifs.",
+  "es": "Los suscriptores disfrutan de acceso ilimitado al contenido Premium, una experiencia sin anuncios, funciones de aprendizaje personalizadas y más ejercicios interactivos.",
+  "pt": "Os assinantes têm acesso ilimitado ao conteúdo Premium, experiência sem anúncios, recursos de aprendizado personalizados e mais exercícios interativos.",
+  "tr": "Aboneler Premium içeriklere sınırsız erişim, reklamsız deneyim, kişiselleştirilmiş öğrenme özellikleri ve daha etkileşimli alıştırmalar gibi avantajlardan yararlanır.",
+  "ru": "Подписчики получают неограниченный доступ к Premium-контенту, приложение без рекламы, персонализированные возможности обучения и больше интерактивных упражнений.",
+  "ja": "購読すると、Premiumコンテンツが使い放題になり、広告なしで、個別に合わせた学習機能やインタラクティブな練習がさらに増えます。",
+  "th": "สมาชิกจะได้เข้าถึงเนื้อหา Premium ไม่จำกัด ใช้งานแบบไม่มีโฆษณา มีฟีเจอร์การเรียนที่เหมาะกับแต่ละคน และแบบฝึกหัดแบบโต้ตอบมากขึ้น",
+  "ar": "يتمتع المشتركون بوصول غير محدود إلى محتوى Premium وتجربة بلا إعلانات وميزات تعلّم مخصصة وتمارين تفاعلية أكثر."
+ },
+ "faq_que_9": {
+  "fr": "Puis-je résilier mon abonnement à tout moment ?",
+  "es": "¿Puedo cancelar mi suscripción en cualquier momento?",
+  "pt": "Posso cancelar minha assinatura a qualquer momento?",
+  "tr": "Aboneliğimi istediğim zaman iptal edebilir miyim?",
+  "ru": "Можно ли отменить подписку в любой момент?",
+  "ja": "購読はいつでも解約できますか？",
+  "th": "ยกเลิกการสมัครสมาชิกได้ทุกเมื่อหรือไม่",
+  "ar": "هل يمكنني إلغاء اشتراكي في أي وقت؟"
+ },
+ "faq_ans_9": {
+  "fr": "Oui, vous pouvez résilier à tout moment si vous vous êtes abonné depuis l'application uniquement. Rendez-vous sur « https://play.google.com/store/account/subscriptions » puis touchez « Annuler l'abonnement ». Votre abonnement reste actif jusqu'à la fin de la période de facturation en cours.",
+  "es": "Sí, puedes cancelar tu suscripción en cualquier momento si te suscribiste desde la aplicación. Entra en «https://play.google.com/store/account/subscriptions» y pulsa «Cancelar suscripción». Tu suscripción seguirá activa hasta el final del ciclo de facturación actual.",
+  "pt": "Sim, você pode cancelar a qualquer momento se assinou pelo aplicativo. Acesse \"https://play.google.com/store/account/subscriptions\" e toque em \"Cancelar assinatura\". Sua assinatura continuará ativa até o fim do ciclo de cobrança atual.",
+  "tr": "Evet, yalnızca uygulamadan abone olduysanız aboneliğinizi istediğiniz zaman iptal edebilirsiniz. \"https://play.google.com/store/account/subscriptions\" adresine gidip \"Aboneliği iptal et\"e dokunmanız yeterli. Aboneliğiniz mevcut faturalama döneminin sonuna kadar etkin kalır.",
+  "ru": "Да, подписку можно отменить в любой момент, если вы оформили её в приложении. Откройте «https://play.google.com/store/account/subscriptions» и нажмите «Отменить подписку». Подписка будет действовать до конца текущего расчётного периода.",
+  "ja": "はい、アプリから購読した場合はいつでも解約できます。「https://play.google.com/store/account/subscriptions」を開き、「購読を解約」をタップしてください。現在の請求期間が終わるまで、購読は有効です。",
+  "th": "ได้ หากสมัครสมาชิกผ่านแอปเท่านั้น ให้ไปที่ “https://play.google.com/store/account/subscriptions” แล้วแตะ “ยกเลิกการสมัครสมาชิก” การสมัครสมาชิกของคุณจะยังใช้งานได้จนสิ้นสุดรอบการเรียกเก็บเงินปัจจุบัน",
+  "ar": "نعم، يمكنك إلغاء اشتراكك في أي وقت إذا اشتركت من داخل التطبيق فقط. انتقل إلى «https://play.google.com/store/account/subscriptions» ثم اضغط «إلغاء الاشتراك». سيظل اشتراكك فعّالًا حتى نهاية دورة الفوترة الحالية."
+ },
+ "faq_que_10": {
+  "fr": "Existe-t-il une solution si mon moyen de paiement n'est pas pris en charge ?",
+  "es": "¿Hay alguna alternativa si mi método de pago no es compatible?",
+  "pt": "Existe alguma alternativa se minha forma de pagamento não for aceita?",
+  "tr": "Ödeme yöntemim desteklenmiyorsa bir çözüm var mı?",
+  "ru": "Что делать, если мой способ оплаты не поддерживается?",
+  "ja": "支払い方法が使えない場合の対処法はありますか？",
+  "th": "หากวิธีชำระเงินของฉันไม่รองรับ มีทางออกหรือไม่",
+  "ar": "هل هناك حل بديل إذا كانت طريقة الدفع غير مدعومة؟"
+ },
+ "faq_ans_10": {
+  "fr": "Malheureusement, si votre moyen de paiement n'est pas pris en charge, nous vous recommandons d'utiliser l'une des alternatives disponibles. Notre équipe d'assistance peut vous aider à étudier les options et répondre à vos questions.",
+  "es": "Lamentablemente, si tu método de pago no es compatible, te recomendamos usar una de las alternativas disponibles. Nuestro equipo de soporte puede ayudarte a explorar opciones y resolver tus dudas.",
+  "pt": "Infelizmente, se sua forma de pagamento não for aceita, recomendamos usar uma das alternativas disponíveis. Nossa equipe de suporte pode ajudar a explorar opções e esclarecer suas dúvidas.",
+  "tr": "Maalesef ödeme yönteminiz desteklenmiyorsa mevcut alternatiflerden birini kullanmanızı öneririz. Destek ekibimiz seçenekleri değerlendirmenize ve sorularınızı yanıtlamanıza yardımcı olabilir.",
+  "ru": "К сожалению, если ваш способ оплаты не поддерживается, рекомендуем выбрать один из доступных вариантов. Служба поддержки поможет рассмотреть варианты и ответит на ваши вопросы.",
+  "ja": "残念ながら、お使いの支払い方法に対応していない場合は、利用できる別の方法をお選びください。サポートチームが選択肢のご案内やご質問への対応をいたします。",
+  "th": "น่าเสียดายที่หากวิธีชำระเงินของคุณไม่รองรับ เราแนะนำให้ใช้ตัวเลือกอื่นที่มี ทีมสนับสนุนของเราช่วยแนะนำทางเลือกและตอบข้อสงสัยได้",
+  "ar": "للأسف، إذا لم تكن طريقة الدفع مدعومة فنوصي باستخدام أحد البدائل المتاحة. يمكن لفريق الدعم مساعدتك في استكشاف الخيارات والإجابة عن استفساراتك."
+ },
+ "faq_que_support": {
+  "fr": "Pour toute autre question ou préoccupation, contactez notre équipe d'assistance à %1$s.",
+  "es": "Si tienes más preguntas o dudas, escribe a nuestro equipo de soporte en %1$s.",
+  "pt": "Se tiver mais dúvidas ou preocupações, fale com nossa equipe de suporte em %1$s.",
+  "tr": "Başka sorularınız veya endişeleriniz varsa %1$s adresinden müşteri destek ekibimize ulaşın.",
+  "ru": "Если у вас остались вопросы или пожелания, напишите в службу поддержки: %1$s.",
+  "ja": "ほかにご質問やご不明な点があれば、サポートチーム（%1$s）までご連絡ください。",
+  "th": "หากมีคำถามหรือข้อกังวลเพิ่มเติม ติดต่อทีมสนับสนุนลูกค้าได้ที่ %1$s",
+  "ar": "إذا كانت لديك أسئلة أو استفسارات أخرى، يرجى التواصل مع فريق دعم العملاء على %1$s."
+ }
+}

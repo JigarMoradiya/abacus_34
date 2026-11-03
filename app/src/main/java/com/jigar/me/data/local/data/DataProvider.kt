@@ -6,6 +6,7 @@ import com.google.gson.Gson
 import com.jigar.me.R
 import java.util.Random
 import kotlin.random.Random.Default.nextInt
+import com.jigar.me.utils.inAppLanguage
 
 data class DivisionQuestion(
     val dividend: Int,
@@ -15,51 +16,50 @@ data class DivisionQuestion(
 
 object DataProvider {
     fun getVideoPreviewList(context: Context): List<VideoTutorial>{
-        return with(context){
+        // the texts are in strings.xml (HTML kept as text: bold parts are shown by htmlToAnnotatedString); built in the app language
+        return with(context.inAppLanguage()){
             listOf(
-                VideoTutorial("video_free_mode.mp4","What Kid's Learn in Abacus Free Mode",
-                    arrayListOf("• Understanding the <b>structure and part<b> of the abacus.",
-                        "• Easy abacus learning for <b>beginners</b>.",
-                        "• Recognize <b>bead types</b> and <b>values</b>.",
-                        "• <b>Finger techniques</b> for moving beads correctly.",
-                        "• Learning to <b>read, represent and set numbers</b> on the abacus.")),
-                VideoTutorial("video_abacus_practice.mp4","What Kids Learn in Abacus Practice Module",
-                    arrayListOf("• <b>Step-by-Step</b> problem solving with <b>correct bead directions</b>.",
-                        "• <b>Visualize abacus formula</b> at every step (including multiplication & division).",
-                        "• Learn to enter only <b>final answers</b> support.",
-                        "• <b>Practice formal exam mode</b> with correct & incorrect answer tracking.",
-                        "• Build speed & accuracy with <b>timed sets</b>.",
-                        "• Understand <b>wrong bead movement</b> with direction hints.",
-                        "• <b>Hide/Show</b> bead direction & formula display from <b>settings</b>.",
-                        "• <b>Supports left & right hand use</b> - kids practice comfortably with their natural hand.",
-                    )),
-                VideoTutorial("video_exercise.mp4","What Kid's do in Exercise Module",
-                    arrayListOf("• <b>Start</b> Addition, Subtraction, Multiplication, and Division challenges <b>based on their learning level</b>.",
-                        "• <b>Practice</b> with different sets of exercises and <b>time limits to improve speed and focus</b>.",
-                        "• <b>Build</b> exam-like stamina with structured question sets and <b>countdown timers</b>.",
-                        "• <b>Improve</b> concentration, memory retention, and mental agility <b>through flow-based drills</b>.")),
-                VideoTutorial("video_exam.mp4","What Kid's do in Exam Module",
-                    arrayListOf(
-                        "• <b>Simulated Test Environment –</b> Practice under real exam-like conditions to build accuracy and confidence.",
-                        "• <b>Math Types Supported –</b> Addition, Subtraction, Multiplication, and Division.",
-                        "• <b>Difficulty Levels –</b> Choose from Easy, Medium, or Hard for progressive learning.",
-                        "• <b>Multiple-Choice Format –</b> Each question comes with 4 options to develop decision-making skills.",
-                        "• <b>Timer Display –</b> Track how long you take without strict time pressure.",
-                        "• <b>Competition-Ready –</b> Perfect for UCMAS exams, school tests, math competitions, and abacus contests.",
-                        "• <b>Focused Training –</b> Builds exam temperament, speed, and logical thinking.")),
-                VideoTutorial("video_ccm.mp4","What Kid's do in Custom Challenge Mode Module",
-                    arrayListOf("• <b>Full Customization –</b> Control number of questions, question length (min/max digits), and time gap between questions.",
-                        "• <b>Flexible Presentation –</b> Choose how questions appear: Numbers, Words, or Voice.",
-                        "• <b>Timed Practice –</b> Add intervals between questions to simulate pressure and boost focus.",
-                        "• <b>Oral & Visual Training –</b> Perfect for listening-based, visualization-only, or mixed learning styles.",
-                        "• <b>Versatile Usage –</b> Suitable for home practice, classroom activities, and custom coaching sessions.",
-                        "• <b>Skill Development –</b> Enhances listening, memory power, concentration, visualization, and calculation speed.",
-                        "• <b>Benefit –</b> Builds adaptability, improves decision-making, and prepares students for diverse test formats.")),
+                VideoTutorial("video_free_mode.mp4", getString(R.string.whats_learn_free_mode_title),
+                    arrayListOf(getString(R.string.whats_learn_free_mode_1),
+                        getString(R.string.whats_learn_free_mode_2),
+                        getString(R.string.whats_learn_free_mode_3),
+                        getString(R.string.whats_learn_free_mode_4),
+                        getString(R.string.whats_learn_free_mode_5))),
+                VideoTutorial("video_abacus_practice.mp4", getString(R.string.whats_learn_practice_title),
+                    arrayListOf(getString(R.string.whats_learn_practice_1),
+                        getString(R.string.whats_learn_practice_2),
+                        getString(R.string.whats_learn_practice_3),
+                        getString(R.string.whats_learn_practice_4),
+                        getString(R.string.whats_learn_practice_5),
+                        getString(R.string.whats_learn_practice_6),
+                        getString(R.string.whats_learn_practice_7),
+                        getString(R.string.whats_learn_practice_8))),
+                VideoTutorial("video_exercise.mp4", getString(R.string.whats_learn_exercise_title),
+                    arrayListOf(getString(R.string.whats_learn_exercise_1),
+                        getString(R.string.whats_learn_exercise_2),
+                        getString(R.string.whats_learn_exercise_3),
+                        getString(R.string.whats_learn_exercise_4))),
+                VideoTutorial("video_exam.mp4", getString(R.string.whats_learn_exam_title),
+                    arrayListOf(getString(R.string.whats_learn_exam_1),
+                        getString(R.string.whats_learn_exam_2),
+                        getString(R.string.whats_learn_exam_3),
+                        getString(R.string.whats_learn_exam_4),
+                        getString(R.string.whats_learn_exam_5),
+                        getString(R.string.whats_learn_exam_6),
+                        getString(R.string.whats_learn_exam_7))),
+                VideoTutorial("video_ccm.mp4", getString(R.string.whats_learn_ccm_title),
+                    arrayListOf(getString(R.string.whats_learn_ccm_1),
+                        getString(R.string.whats_learn_ccm_2),
+                        getString(R.string.whats_learn_ccm_3),
+                        getString(R.string.whats_learn_ccm_4),
+                        getString(R.string.whats_learn_ccm_5),
+                        getString(R.string.whats_learn_ccm_6),
+                        getString(R.string.whats_learn_ccm_7))),
             )
         }
     }
     fun getFaqsList(context: Context,emailId : String): List<FAQs>{
-        return with(context){
+        return with(context.inAppLanguage()){
             listOf(FAQs(getString(R.string.faq_que_1), getString(R.string.faq_ans_1)),
                 FAQs(getString(R.string.faq_que_2), getString(R.string.faq_ans_2)),
                 FAQs(getString(R.string.faq_que_3), getString(R.string.faq_ans_3)),

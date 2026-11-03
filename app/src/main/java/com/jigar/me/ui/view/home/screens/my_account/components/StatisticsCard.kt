@@ -27,8 +27,10 @@ import com.jigar.me.ui.view.ab.LocalAbScale
 import com.jigar.me.ui.view.ab.abBlended
 import com.jigar.me.ui.view.ab.abChunkyFace
 import com.jigar.me.ui.view.ab.abDarkened
-import com.jigar.me.utils.DateTimeUtils.formatTo
+import com.jigar.me.utils.DateTimeUtils
 import com.jigar.me.utils.DateTimeUtils.toDate
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 /** One count of the account (exams, exercises, custom challenges): the number in a coloured badge, a title and the last time. */
 @Composable
@@ -41,7 +43,7 @@ fun StatisticsCard(
 ) {
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
-    val lastAttend = if (time.isEmpty()) "-" else time.toDate().formatTo("'at' dd MMM-yy hh:mm a")
+    val lastAttend = if (time.isEmpty()) "-" else DateTimeUtils.shortDateTime(time.toDate())
 
     Row(
         modifier
@@ -86,7 +88,7 @@ fun StatisticsCard(
                 )
             }
             AbShrinkText(
-                text = "Last attend $lastAttend",
+                text = if (time.isEmpty()) stringResource(R.string.account_last_attend_none) else stringResource(R.string.account_last_attend, lastAttend),
                 style = AbTypography.fixed(11f * s, FontWeight.SemiBold),
                 color = colors.textSecondary,
                 minScale = 0.8f,
