@@ -1249,6 +1249,18 @@
     <string name="settings_theme_brown">Коричневый</string>
     <string name="settings_theme_black">Чёрный</string>
     <string name="settings_theme_pearl">Жемчужный</string>
+    <!-- m20_coming_soon -->
+    <string name="coming_soon_sign">СКОРО</string>
+    <!-- m20_leftovers -->
+    <string name="gmail_not_found">Приложение Gmail не установлено на этом устройстве.</string>
+    <string name="link_not_support">Нет приложения, которое может открыть эту ссылку.</string>
+    <string name="network_unreachable">Эта страница недоступна без интернета.</string>
+    <string name="no_logged_in_user">Не удалось получить данные пользователя.</string>
+    <string name="unexpected_error">Что-то пошло не так. Попробуйте позже.</string>
+    <string name="you_are_clever">Какая сообразительность!</string>
+    <string name="you_are_glorious">Великолепно!</string>
+    <string name="you_are_so_genius">Ты гений!</string>
+    <string name="you_are_so_intelligent">Какой ум!</string>
     <!-- m2_numbers -->
     <string name="minus">Минус</string>
     <string name="plus">Плюс</string>

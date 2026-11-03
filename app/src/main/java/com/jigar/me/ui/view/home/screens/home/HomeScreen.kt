@@ -136,6 +136,7 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens28
 import com.jigar.me.ui.view.home.theme.PrimaryBlue
 import androidx.compose.ui.res.pluralStringResource
 import androidx.annotation.StringRes
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 
 // ── Pill shape ────────────────────────────────────────────────────────────────
 
@@ -1005,7 +1006,7 @@ private fun LevelMiniCard(info: LevelInfo, onClick: () -> Unit) {
             )
         }
         Icon(
-            imageVector = Icons.Default.ChevronRight,
+            imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
             contentDescription = null,
             tint = Color.White.copy(alpha = 0.8f),
             modifier = Modifier.size((12 * s).dp)
@@ -1055,7 +1056,7 @@ private fun EnglishBanner(context: Context, onUrlClick: () -> Unit) {
                 BannerLine(stringResource(R.string.home_promo_tagline), 9f * s, FontWeight.SemiBold, ink.copy(alpha = 0.55f))
             }
             Icon(
-                imageVector = Icons.Default.ChevronRight,
+                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                 contentDescription = null,
                 tint = chevronTint,
                 modifier = Modifier.size((9 * s).dp)
@@ -1083,7 +1084,7 @@ private fun EnglishBanner(context: Context, onUrlClick: () -> Unit) {
                 BannerLine(stringResource(R.string.home_promo_tagline), 9f * s, FontWeight.SemiBold, ink.copy(alpha = 0.55f))
             }
             Icon(
-                imageVector = Icons.Default.ChevronRight,
+                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                 contentDescription = null,
                 tint = chevronTint,
                 modifier = Modifier.size((9 * s).dp)

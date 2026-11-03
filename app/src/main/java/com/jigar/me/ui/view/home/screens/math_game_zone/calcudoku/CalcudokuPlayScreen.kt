@@ -771,7 +771,7 @@ private fun cageSatisfiedForCell(cages: List<Cage>, grid: List<Int>, i: Int): Bo
 
 @Composable private fun str(id: Int): String = androidx.compose.ui.res.stringResource(id)
 
-private fun timeString(seconds: Int): String = "%d:%02d".format(seconds / 60, seconds % 60)
+private fun timeString(seconds: Int): String = "%d:%02d".format(java.util.Locale.US, seconds / 60, seconds % 60)
 
 /** Star, time and best time as three small pills in the header, so the board and keys keep the whole height. */
 @Composable

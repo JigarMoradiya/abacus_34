@@ -583,7 +583,7 @@ private fun ToolButton(face: Color, enabled: Boolean, size: Dp, onClick: () -> U
 
 // ── side panel (timer / hints) ──────────────────────────────────────────────
 
-private fun timeString(seconds: Int): String = "%d:%02d".format(seconds / 60, seconds % 60)
+private fun timeString(seconds: Int): String = "%d:%02d".format(java.util.Locale.US, seconds / 60, seconds % 60)
 
 @Composable
 private fun CrossMathSidePanel(state: CrossMathUiState, s: Float, modifier: Modifier = Modifier) {

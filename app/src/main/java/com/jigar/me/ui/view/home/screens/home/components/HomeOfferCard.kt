@@ -47,6 +47,7 @@ import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
 import com.jigar.me.ui.view.home.common_ui.rememberCountdownRemainingSeconds
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.DateTimeUtils
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 
 // Clamped to [0, durationMin] so a device clock moved backwards can't make the
 // card advertise more time than the offer could ever have (matches
@@ -127,7 +128,7 @@ fun HomeOfferCard(
         //         .background(if (endingSoon) Color(0xFFE53935) else Color.Black.copy(alpha = 0.2f), CircleShape)
         //         .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
         // )
-        Icon(Icons.Default.ChevronRight, contentDescription = null, tint = Color.White.copy(alpha = 0.9f))
+        Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null, tint = Color.White.copy(alpha = 0.9f))
     }
 }
 
@@ -198,7 +199,7 @@ fun HomeOfferSidebarCard(
         //         .background(if (endingSoon) Color(0xFFE53935) else Color.Black.copy(alpha = 0.2f), CircleShape)
         //         .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
         // )
-        Icon(Icons.Default.ChevronRight, contentDescription = null, tint = Color.White.copy(alpha = 0.9f))
+        Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null, tint = Color.White.copy(alpha = 0.9f))
     }
 }
 

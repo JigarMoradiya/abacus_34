@@ -1,0 +1,92 @@
+{
+ "gmail_not_found": {
+  "fr": "L'application Gmail n'est pas installée sur cet appareil.",
+  "es": "La aplicación Gmail no está instalada en este dispositivo.",
+  "pt": "O app Gmail não está instalado neste dispositivo.",
+  "tr": "Gmail uygulaması bu cihazda yüklü değil.",
+  "ru": "Приложение Gmail не установлено на этом устройстве.",
+  "ja": "このデバイスにGmailアプリがインストールされていません。",
+  "th": "ไม่ได้ติดตั้งแอป Gmail บนอุปกรณ์นี้",
+  "ar": "تطبيق Gmail غير مثبّت على الجهاز."
+ },
+ "link_not_support": {
+  "fr": "Aucune application ne peut ouvrir ce lien.",
+  "es": "Ninguna aplicación puede abrir este enlace.",
+  "pt": "Nenhum app consegue abrir este link.",
+  "tr": "Bu bağlantıyı açabilecek bir uygulama yok.",
+  "ru": "Нет приложения, которое может открыть эту ссылку.",
+  "ja": "このリンクを開けるアプリがありません。",
+  "th": "ไม่มีแอปที่เปิดลิงก์นี้ได้",
+  "ar": "لا يوجد تطبيق يدعم هذا الرابط."
+ },
+ "network_unreachable": {
+  "fr": "Cette page n'est pas disponible sans connexion Internet.",
+  "es": "Esta página no está disponible sin conexión a internet.",
+  "pt": "Esta página não está disponível sem internet.",
+  "tr": "Bu sayfa internet olmadan kullanılamaz.",
+  "ru": "Эта страница недоступна без интернета.",
+  "ja": "このページはインターネットに接続しないと使えません。",
+  "th": "หน้านี้ใช้ไม่ได้หากไม่มีอินเทอร์เน็ต",
+  "ar": "هذه الصفحة غير متاحة دون اتصال بالإنترنت"
+ },
+ "no_logged_in_user": {
+  "fr": "Impossible de récupérer les données de l'utilisateur.",
+  "es": "No se pudieron obtener los datos del usuario.",
+  "pt": "Não foi possível obter os dados do usuário.",
+  "tr": "Kullanıcı verileri alınamadı.",
+  "ru": "Не удалось получить данные пользователя.",
+  "ja": "ユーザー情報を取得できませんでした。",
+  "th": "ดึงข้อมูลผู้ใช้ไม่สำเร็จ",
+  "ar": "حدث خطأ أثناء جلب بيانات المستخدم الحالي"
+ },
+ "unexpected_error": {
+  "fr": "Un problème est survenu. Réessayez plus tard.",
+  "es": "Algo salió mal. Inténtalo de nuevo más tarde.",
+  "pt": "Algo deu errado. Tente novamente mais tarde.",
+  "tr": "Bir şeyler ters gitti, lütfen daha sonra tekrar deneyin.",
+  "ru": "Что-то пошло не так. Попробуйте позже.",
+  "ja": "問題が発生しました。しばらくしてからもう一度お試しください。",
+  "th": "เกิดข้อผิดพลาด โปรดลองอีกครั้งในภายหลัง",
+  "ar": "حدث خطأ ما، يرجى المحاولة مرة أخرى لاحقًا."
+ },
+ "you_are_clever": {
+  "fr": "Tu es malin !",
+  "es": "¡Qué ingenio!",
+  "pt": "Que esperteza!",
+  "tr": "Akıllısın!",
+  "ru": "Какая сообразительность!",
+  "ja": "かしこいね！",
+  "th": "ฉลาดจัง!",
+  "ar": "ما أذكاك"
+ },
+ "you_are_glorious": {
+  "fr": "Tu es magnifique !",
+  "es": "¡Espectacular!",
+  "pt": "Espetacular!",
+  "tr": "Muhteşemsin!",
+  "ru": "Великолепно!",
+  "ja": "すばらしい！",
+  "th": "ยอดเยี่ยมมาก!",
+  "ar": "ما أروعك"
+ },
+ "you_are_so_genius": {
+  "fr": "Tu es un génie !",
+  "es": "¡Eres un genio!",
+  "pt": "Você é um gênio!",
+  "tr": "Tam bir dehasın!",
+  "ru": "Ты гений!",
+  "ja": "天才だね！",
+  "th": "อัจฉริยะมาก!",
+  "ar": "عبقريتك مذهلة"
+ },
+ "you_are_so_intelligent": {
+  "fr": "Quelle intelligence !",
+  "es": "¡Qué inteligencia!",
+  "pt": "Que inteligência!",
+  "tr": "Ne kadar zekisin!",
+  "ru": "Какой ум!",
+  "ja": "とてもかしこいね！",
+  "th": "เก่งมากเลย!",
+  "ar": "ذكاؤك لامع"
+ }
+}

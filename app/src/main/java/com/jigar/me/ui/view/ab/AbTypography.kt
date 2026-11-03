@@ -12,6 +12,7 @@ import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.sp
 import com.jigar.me.R
+import androidx.compose.ui.text.style.TextDirection
 
 /**
  * Baloo 2 type ramp for the Ab kit. The font ships as four static weights (res/font/baloo2_*.ttf, Latin subset of the
@@ -41,6 +42,8 @@ object AbTypography {
         platformStyle = PlatformTextStyle(includeFontPadding = false),
         lineHeightStyle = tightLine,
         fontFeatureSettings = if (tabular) "tnum" else null,
+        // numbers and math have no direction of their own: they read left to right in an Arabic screen, real Arabic words keep right to left
+        textDirection = TextDirection.ContentOrLtr,
     )
 
     private fun scaled(size: Float, weight: FontWeight, s: Float, tabular: Boolean = false) = fixed(size * s, weight, tabular)

@@ -42,6 +42,7 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens12
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens16
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 
 @Composable
 fun ExerciseQuestions(
@@ -152,7 +153,7 @@ fun ExerciseQuestions(
                     text = stringResource(R.string.next),
                     tone = AbTone.Warning,
                     size = AbSize.Small,
-                    icon = Icons.Default.ChevronRight,
+                    icon = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                     iconAtEnd = true,
                     onClick = { viewModel.nextQuestion() },
                 )

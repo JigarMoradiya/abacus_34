@@ -1174,6 +1174,18 @@
     <string name="settings_theme_brown">ちゃいろ</string>
     <string name="settings_theme_black">くろ</string>
     <string name="settings_theme_pearl">パール</string>
+    <!-- m20_coming_soon -->
+    <string name="coming_soon_sign">もうすぐ</string>
+    <!-- m20_leftovers -->
+    <string name="gmail_not_found">このデバイスにGmailアプリがインストールされていません。</string>
+    <string name="link_not_support">このリンクを開けるアプリがありません。</string>
+    <string name="network_unreachable">このページはインターネットに接続しないと使えません。</string>
+    <string name="no_logged_in_user">ユーザー情報を取得できませんでした。</string>
+    <string name="unexpected_error">問題が発生しました。しばらくしてからもう一度お試しください。</string>
+    <string name="you_are_clever">かしこいね！</string>
+    <string name="you_are_glorious">すばらしい！</string>
+    <string name="you_are_so_genius">天才だね！</string>
+    <string name="you_are_so_intelligent">とてもかしこいね！</string>
     <!-- m2_numbers -->
     <string name="minus">マイナス</string>
     <string name="plus">プラス</string>

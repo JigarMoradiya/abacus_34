@@ -24,7 +24,7 @@ object LanguageManager {
 
     /** Arabic is right to left. It is switched on only when the right-to-left pass (module M21) is finished and checked: until then it is
      *  never offered and an Arabic phone gets English. Turn this on together with `apply.py --with-ar`. */
-    const val RTL_READY = false
+    const val RTL_READY = true
     private fun isOffered(tag: String) = tag != "ar" || RTL_READY
 
     val all: List<Language> = listOf(

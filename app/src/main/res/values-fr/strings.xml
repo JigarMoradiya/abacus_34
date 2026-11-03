@@ -1224,6 +1224,18 @@
     <string name="settings_theme_brown">Marron</string>
     <string name="settings_theme_black">Noir</string>
     <string name="settings_theme_pearl">Perle</string>
+    <!-- m20_coming_soon -->
+    <string name="coming_soon_sign">BIENTÔT</string>
+    <!-- m20_leftovers -->
+    <string name="gmail_not_found">L\'application Gmail n\'est pas installée sur cet appareil.</string>
+    <string name="link_not_support">Aucune application ne peut ouvrir ce lien.</string>
+    <string name="network_unreachable">Cette page n\'est pas disponible sans connexion Internet.</string>
+    <string name="no_logged_in_user">Impossible de récupérer les données de l\'utilisateur.</string>
+    <string name="unexpected_error">Un problème est survenu. Réessayez plus tard.</string>
+    <string name="you_are_clever">Tu es malin !</string>
+    <string name="you_are_glorious">Tu es magnifique !</string>
+    <string name="you_are_so_genius">Tu es un génie !</string>
+    <string name="you_are_so_intelligent">Quelle intelligence !</string>
     <!-- m2_numbers -->
     <string name="minus">Moins</string>
     <string name="plus">Plus</string>

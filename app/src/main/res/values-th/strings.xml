@@ -1174,6 +1174,18 @@
     <string name="settings_theme_brown">น้ำตาล</string>
     <string name="settings_theme_black">ดำ</string>
     <string name="settings_theme_pearl">ไข่มุก</string>
+    <!-- m20_coming_soon -->
+    <string name="coming_soon_sign">เร็วๆ นี้</string>
+    <!-- m20_leftovers -->
+    <string name="gmail_not_found">ไม่ได้ติดตั้งแอป Gmail บนอุปกรณ์นี้</string>
+    <string name="link_not_support">ไม่มีแอปที่เปิดลิงก์นี้ได้</string>
+    <string name="network_unreachable">หน้านี้ใช้ไม่ได้หากไม่มีอินเทอร์เน็ต</string>
+    <string name="no_logged_in_user">ดึงข้อมูลผู้ใช้ไม่สำเร็จ</string>
+    <string name="unexpected_error">เกิดข้อผิดพลาด โปรดลองอีกครั้งในภายหลัง</string>
+    <string name="you_are_clever">ฉลาดจัง!</string>
+    <string name="you_are_glorious">ยอดเยี่ยมมาก!</string>
+    <string name="you_are_so_genius">อัจฉริยะมาก!</string>
+    <string name="you_are_so_intelligent">เก่งมากเลย!</string>
     <!-- m2_numbers -->
     <string name="minus">ลบ</string>
     <string name="plus">บวก</string>

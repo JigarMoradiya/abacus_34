@@ -59,6 +59,7 @@ object AbDebugScreens {
                 "parentgate" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); AbParentalGate(onSuccess = {}, onClose = {}) }
                 "review" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateBottomSheet(visible = true, onDismiss = {}, onPositive = {}, onNegative = {}) }
                 "review2" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.common_ui.sheets.Day2ReviewGateBottomSheet(visible = true, onDismiss = {}, onFiveStars = {}, onLowRating = {}) }
+                "comingsoon" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.screens.abacus_practice.set_list.ComingSoonSign(Modifier.fillMaxSize()) }
                 "badges" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); Column(Modifier.padding(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) { com.jigar.me.ui.view.home.common_ui.MadeInIndiaBadge(); com.jigar.me.ui.view.home.common_ui.SafeAdFreeBadge() } }
                 // the first-launch tutorial, page N of 6 (6 = the plans page): `--es ab_screen onboarding6`
                 // the old free-trial popup: `freetrial<trial length 3 or 7>_<days left>`, e.g. freetrial7_6

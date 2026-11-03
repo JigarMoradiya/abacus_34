@@ -41,6 +41,7 @@ import com.jigar.me.ui.view.home.screens.home.WeeklyReportContent
 import com.jigar.me.ui.view.home.screens.my_account.viewmodels.MyAccountUiState
 import com.jigar.me.ui.view.home.screens.my_account.viewmodels.getMenuList
 import com.jigar.me.ui.view.home.theme.AppDimens
+import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
 
 @Composable
 fun MyAccountScreen(
@@ -210,7 +211,7 @@ private fun NotLoggedInBanner(
 
         AbButton(
             text = stringResource(R.string.login_now), tone = AbTone.Primary, size = AbSize.Small,
-            icon = Icons.Rounded.ChevronRight, iconAtEnd = true, onClick = onSignInClick
+            icon = Icons.AutoMirrored.Rounded.KeyboardArrowRight, iconAtEnd = true, onClick = onSignInClick
         )
     }
 }

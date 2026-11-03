@@ -69,7 +69,7 @@ class ClockMasterPlayViewModel @Inject constructor(
     }
     override fun onCleared() { stop() }
 
-    private fun format(hour: Int, minute: Int): String = "%d:%02d".format(hour, minute)
+    private fun format(hour: Int, minute: Int): String = "%d:%02d".format(java.util.Locale.US, hour, minute)
 
     private fun makeQuestion(): ClockQuestion {
         val hour = Random.nextInt(1, 13)

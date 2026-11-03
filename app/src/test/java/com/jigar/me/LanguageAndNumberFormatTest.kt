@@ -58,6 +58,6 @@ class LanguageAndNumberFormatTest {
         assertEquals("pt", LanguageManager.tagForVoice(Locale.forLanguageTag("pt-BR")))
         assertEquals("en", LanguageManager.tagForVoice(Locale.forLanguageTag("en-IN")))
         assertEquals("en", LanguageManager.tagForVoice(Locale.forLanguageTag("hi-IN")))   // a Hindi voice gets English words, as before
-        assertEquals("en", LanguageManager.tagForVoice(Locale.forLanguageTag("ar")))      // Arabic is off until the right-to-left pass
+        assertEquals("ar", LanguageManager.tagForVoice(Locale.forLanguageTag("ar")))      // Arabic words (the right-to-left pass is on)
     }
 }

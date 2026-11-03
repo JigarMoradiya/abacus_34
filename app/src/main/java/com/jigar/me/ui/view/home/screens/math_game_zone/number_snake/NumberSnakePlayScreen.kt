@@ -153,7 +153,7 @@ fun NumberSnakePlayScreen(
                 ) {
                     Text("⏱️", fontSize = (22f * s).sp)
                     Text(
-                        "%d:%02d".format(state.elapsed / 60, state.elapsed % 60),
+                        "%d:%02d".format(java.util.Locale.US, state.elapsed / 60, state.elapsed % 60),
                         color = colors.textPrimary,
                         style = AbTypography.fixed(22f * appScale(), FontWeight.Black)
                     )
@@ -481,8 +481,8 @@ private fun ResultOverlay(
             score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, state.score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
-                    GameStatChip("⏱️", "%d:%02d".format(state.elapsed / 60, state.elapsed % 60), Color(0xFFC2570C))
-                    GameStatChip("🏆", if (bestTime > 0) "%d:%02d".format(bestTime / 60, bestTime % 60) else "—", Color(0xFFB45309))
+                    GameStatChip("⏱️", "%d:%02d".format(java.util.Locale.US, state.elapsed / 60, state.elapsed % 60), Color(0xFFC2570C))
+                    GameStatChip("🏆", if (bestTime > 0) "%d:%02d".format(java.util.Locale.US, bestTime / 60, bestTime % 60) else "—", Color(0xFFB45309))
                 }
             },
             buttons = {

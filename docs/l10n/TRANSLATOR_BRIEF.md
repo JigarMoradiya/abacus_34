@@ -39,6 +39,7 @@ reference files named below.
 | tr | one, other (may be equal) | dotted/dotless I when you capitalise: i -> İ, ı -> I; no plural after a number |
 | ru | one, few, many, other (other = few) | noun in the right case after the number (1 бусина, 2 бусины, 5 бусин); Russian runs long |
 | ja | other | easy kanji or hiragana for 6-10 year olds, no spaces needed, counter words like 個, 問 are fine |
+| ar | zero, one, two, few, many, other | Modern Standard Arabic, simple; right to left: write the text normally, punctuation Arabic (، ؟ ؛); digits stay 0-9 (Western) also inside sentences; brand/game names and emoji as in the English; math expressions stay exactly as written (the screen keeps them left to right); no tashkeel (diacritics) unless needed to avoid a wrong reading; children: friendly masculine/neutral forms (يمكنك), avoid gendered asides |
 | th | other | no spaces between words inside a phrase, spaces between phrases; no zero-width characters; digits 0-9 |
 
 ## Reply

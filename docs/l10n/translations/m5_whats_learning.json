@@ -6,7 +6,8 @@
   "tr": "Çocuklar Abaküs Serbest Modda neler öğrenir",
   "ru": "Чему дети учатся в свободном режиме абакуса",
   "ja": "そろばんフリーモードで学べること",
-  "th": "สิ่งที่เด็ก ๆ เรียนรู้ในโหมดอิสระของลูกคิด"
+  "th": "สิ่งที่เด็ก ๆ เรียนรู้ในโหมดอิสระของลูกคิด",
+  "ar": "ماذا يتعلّم الطفل في وضع الأباكوس الحر"
  },
  "whats_learn_free_mode_1": {
   "fr": "• Comprendre la <b>structure et les parties</b> du boulier.",
@@ -15,7 +16,8 @@
   "tr": "• Abaküsün <b>yapısını ve parçalarını</b> anlama.",
   "ru": "• Понимание <b>строения и частей</b> абакуса.",
   "ja": "• そろばんの<b>しくみと各部分</b>を理解する。",
-  "th": "• เข้าใจ<b>โครงสร้างและส่วนต่าง ๆ</b>ของลูกคิด"
+  "th": "• เข้าใจ<b>โครงสร้างและส่วนต่าง ๆ</b>ของลูกคิด",
+  "ar": "• فهم <b>بنية وأجزاء</b> الأباكوس."
  },
  "whats_learn_free_mode_2": {
   "fr": "• Une prise en main facile du boulier pour les <b>débutants</b>.",
@@ -24,7 +26,8 @@
   "tr": "• <b>Yeni başlayanlar</b> için kolay abaküs öğrenimi.",
   "ru": "• Простое знакомство с абакусом для <b>начинающих</b>.",
   "ja": "• <b>はじめての人</b>でも学びやすいそろばん入門。",
-  "th": "• เรียนลูกคิดง่าย ๆ สำหรับ<b>ผู้เริ่มต้น</b>"
+  "th": "• เรียนลูกคิดง่าย ๆ สำหรับ<b>ผู้เริ่มต้น</b>",
+  "ar": "• تعلّم الأباكوس بسهولة <b>للمبتدئين</b>."
  },
  "whats_learn_free_mode_3": {
   "fr": "• Reconnaître les <b>types de boules</b> et leurs <b>valeurs</b>.",
@@ -33,7 +36,8 @@
   "tr": "• <b>Boncuk türlerini</b> ve <b>değerlerini</b> tanıma.",
   "ru": "• Умение различать <b>виды бусин</b> и их <b>значения</b>.",
   "ja": "• <b>珠の種類</b>とその<b>値</b>を知る。",
-  "th": "• รู้จัก<b>ประเภทของลูกคิด</b>และ<b>ค่า</b>ของแต่ละลูก"
+  "th": "• รู้จัก<b>ประเภทของลูกคิด</b>และ<b>ค่า</b>ของแต่ละลูก",
+  "ar": "• التعرّف على <b>أنواع الخرزات</b> و<b>قيمها</b>."
  },
  "whats_learn_free_mode_4": {
   "fr": "• Les <b>techniques des doigts</b> pour déplacer correctement les boules.",
@@ -42,7 +46,8 @@
   "tr": "• Boncukları doğru hareket ettirmek için <b>parmak teknikleri</b>.",
   "ru": "• <b>Приёмы работы пальцами</b>, чтобы правильно двигать бусины.",
   "ja": "• 珠を正しく動かす<b>指の使い方</b>。",
-  "th": "• <b>เทคนิคการใช้นิ้ว</b>เพื่อเลื่อนลูกคิดให้ถูกต้อง"
+  "th": "• <b>เทคนิคการใช้นิ้ว</b>เพื่อเลื่อนลูกคิดให้ถูกต้อง",
+  "ar": "• <b>تقنيات الأصابع</b> لتحريك الخرزات بالطريقة الصحيحة."
  },
  "whats_learn_free_mode_5": {
   "fr": "• Apprendre à <b>lire, représenter et poser des nombres</b> sur le boulier.",
@@ -51,7 +56,8 @@
   "tr": "• Abaküs üzerinde sayıları <b>okumayı, göstermeyi ve kurmayı</b> öğrenme.",
   "ru": "• Учимся <b>читать, показывать и набирать числа</b> на абакусе.",
   "ja": "• そろばんで<b>数を読む・表す・置く</b>方法を学ぶ。",
-  "th": "• เรียนรู้การ<b>อ่าน แสดง และตั้งตัวเลข</b>บนลูกคิด"
+  "th": "• เรียนรู้การ<b>อ่าน แสดง และตั้งตัวเลข</b>บนลูกคิด",
+  "ar": "• تعلّم <b>قراءة الأرقام وتمثيلها وضبطها</b> على الأباكوس."
  },
  "whats_learn_practice_title": {
   "fr": "Ce que les enfants apprennent dans le module d'entraînement au boulier",
@@ -60,7 +66,8 @@
   "tr": "Çocuklar Abaküs Alıştırma modülünde neler öğrenir",
   "ru": "Чему дети учатся в модуле практики на абакусе",
   "ja": "そろばん練習モジュールで学べること",
-  "th": "สิ่งที่เด็ก ๆ เรียนรู้ในโมดูลฝึกลูกคิด"
+  "th": "สิ่งที่เด็ก ๆ เรียนรู้ในโมดูลฝึกลูกคิด",
+  "ar": "ماذا يتعلّم الأطفال في وحدة تدريب الأباكوس"
  },
  "whats_learn_practice_1": {
   "fr": "• Résolution <b>pas à pas</b> avec les <b>bons sens de déplacement des boules</b>.",
@@ -69,7 +76,8 @@
   "tr": "• <b>Adım adım</b> problem çözme ve <b>doğru boncuk yönleri</b>.",
   "ru": "• <b>Пошаговое</b> решение с <b>правильными направлениями движения бусин</b>.",
   "ja": "• <b>ステップごと</b>に、<b>正しい珠の動かし方</b>で問題を解く。",
-  "th": "• แก้โจทย์<b>ทีละขั้น</b>พร้อม<b>ทิศทางการเลื่อนลูกคิดที่ถูกต้อง</b>"
+  "th": "• แก้โจทย์<b>ทีละขั้น</b>พร้อม<b>ทิศทางการเลื่อนลูกคิดที่ถูกต้อง</b>",
+  "ar": "• حل المسائل <b>خطوة بخطوة</b> مع <b>اتجاهات الخرزات الصحيحة</b>."
  },
  "whats_learn_practice_2": {
   "fr": "• <b>Visualiser la formule du boulier</b> à chaque étape (y compris pour la multiplication et la division).",
@@ -78,7 +86,8 @@
   "tr": "• Her adımda <b>abaküs formülünü görme</b> (çarpma ve bölme dahil).",
   "ru": "• <b>Наглядная формула абакуса</b> на каждом шаге (в том числе для умножения и деления).",
   "ja": "• かけ算・わり算を含め、各ステップで<b>そろばんの公式を目で確認</b>。",
-  "th": "• <b>เห็นสูตรลูกคิด</b>ในทุกขั้นตอน (รวมถึงการคูณและการหาร)"
+  "th": "• <b>เห็นสูตรลูกคิด</b>ในทุกขั้นตอน (รวมถึงการคูณและการหาร)",
+  "ar": "• <b>تصوّر صيغة الأباكوس</b> في كل خطوة (بما في ذلك الضرب والقسمة)."
  },
  "whats_learn_practice_3": {
   "fr": "• Apprendre à saisir seulement les <b>réponses finales</b>.",
@@ -87,7 +96,8 @@
   "tr": "• Yalnızca <b>son cevabı</b> girmeyi öğrenme.",
   "ru": "• Умение вводить только <b>итоговые ответы</b>.",
   "ja": "• <b>最終の答えだけ</b>を入力する練習。",
-  "th": "• ฝึกป้อนเฉพาะ<b>คำตอบสุดท้าย</b>"
+  "th": "• ฝึกป้อนเฉพาะ<b>คำตอบสุดท้าย</b>",
+  "ar": "• دعم إدخال <b>الإجابات النهائية</b> فقط."
  },
  "whats_learn_practice_4": {
   "fr": "• <b>S'entraîner en mode examen officiel</b> avec suivi des bonnes et mauvaises réponses.",
@@ -96,7 +106,8 @@
   "tr": "• Doğru ve yanlış cevap takibiyle <b>resmî sınav modunda alıştırma</b>.",
   "ru": "• <b>Практика в режиме формального экзамена</b> с учётом верных и неверных ответов.",
   "ja": "• 正解・不正解を記録しながら<b>本番テストモードで練習</b>。",
-  "th": "• <b>ฝึกในโหมดข้อสอบทางการ</b>พร้อมบันทึกคำตอบที่ถูกและผิด"
+  "th": "• <b>ฝึกในโหมดข้อสอบทางการ</b>พร้อมบันทึกคำตอบที่ถูกและผิด",
+  "ar": "• <b>التدرّب بأسلوب الامتحان الرسمي</b> مع تتبّع الإجابات الصحيحة والخاطئة."
  },
  "whats_learn_practice_5": {
   "fr": "• Gagner en vitesse et en précision avec des <b>séries chronométrées</b>.",
@@ -105,7 +116,8 @@
   "tr": "• <b>Süreli setlerle</b> hız ve doğruluk kazanma.",
   "ru": "• Скорость и точность с помощью <b>наборов на время</b>.",
   "ja": "• <b>時間つきセット</b>でスピードと正確さを伸ばす。",
-  "th": "• เพิ่มความเร็วและความแม่นยำด้วย<b>ชุดจับเวลา</b>"
+  "th": "• เพิ่มความเร็วและความแม่นยำด้วย<b>ชุดจับเวลา</b>",
+  "ar": "• بناء السرعة والدقة عبر <b>مجموعات موقوتة</b>."
  },
  "whats_learn_practice_6": {
   "fr": "• Comprendre les <b>mauvais mouvements de boules</b> grâce aux indications de direction.",
@@ -114,7 +126,8 @@
   "tr": "• Yön ipuçlarıyla <b>yanlış boncuk hareketlerini</b> anlama.",
   "ru": "• Понимание <b>неверных движений бусин</b> благодаря подсказкам о направлении.",
   "ja": "• 方向ヒントで<b>まちがった珠の動き</b>を理解する。",
-  "th": "• เข้าใจ<b>การเลื่อนลูกคิดที่ผิด</b>ด้วยคำใบ้เรื่องทิศทาง"
+  "th": "• เข้าใจ<b>การเลื่อนลูกคิดที่ผิด</b>ด้วยคำใบ้เรื่องทิศทาง",
+  "ar": "• فهم <b>حركة الخرزات الخاطئة</b> مع تلميحات الاتجاه."
  },
  "whats_learn_practice_7": {
   "fr": "• <b>Masquer/afficher</b> les directions des boules et la formule dans les <b>réglages</b>.",
@@ -123,7 +136,8 @@
   "tr": "• Boncuk yönünü ve formül gösterimini <b>ayarlardan</b> <b>gizleme/gösterme</b>.",
   "ru": "• <b>Скрытие и показ</b> направлений бусин и формулы в <b>настройках</b>.",
   "ja": "• 珠の方向や公式の表示を<b>設定</b>で<b>表示／非表示</b>にできる。",
-  "th": "• <b>ซ่อน/แสดง</b>ทิศทางลูกคิดและสูตรได้ใน<b>การตั้งค่า</b>"
+  "th": "• <b>ซ่อน/แสดง</b>ทิศทางลูกคิดและสูตรได้ใน<b>การตั้งค่า</b>",
+  "ar": "• <b>إخفاء/إظهار</b> اتجاه الخرزات وعرض الصيغة من <b>الإعدادات</b>."
  },
  "whats_learn_practice_8": {
   "fr": "• <b>Utilisable à gauche comme à droite</b> : l'enfant s'entraîne confortablement avec sa main naturelle.",
@@ -132,7 +146,8 @@
   "tr": "• <b>Sol ve sağ el kullanımını destekler</b>: çocuklar doğal elleriyle rahatça alıştırma yapar.",
   "ru": "• <b>Поддержка левой и правой руки</b>: ребёнок занимается удобно, той рукой, к которой привык.",
   "ja": "• <b>左手でも右手でも使えます</b>。いつもの手で楽に練習できます。",
-  "th": "• <b>รองรับทั้งมือซ้ายและมือขวา</b> เด็ก ๆ ฝึกได้สบายด้วยมือที่ถนัด"
+  "th": "• <b>รองรับทั้งมือซ้ายและมือขวา</b> เด็ก ๆ ฝึกได้สบายด้วยมือที่ถนัด",
+  "ar": "• <b>يدعم استخدام اليد اليمنى واليسرى</b>، فيتدرّب الأطفال بارتياح باليد التي اعتادوها."
  },
  "whats_learn_exercise_title": {
   "fr": "Ce que font les enfants dans le module d'exercices",
@@ -141,7 +156,8 @@
   "tr": "Çocuklar Egzersiz modülünde neler yapar",
   "ru": "Что делают дети в модуле упражнений",
   "ja": "トレーニングモジュールでできること",
-  "th": "สิ่งที่เด็ก ๆ ทำในโมดูลแบบฝึกหัด"
+  "th": "สิ่งที่เด็ก ๆ ทำในโมดูลแบบฝึกหัด",
+  "ar": "ماذا يفعل الطفل في وحدة التمارين"
  },
  "whats_learn_exercise_1": {
   "fr": "• <b>Commencer</b> des défis d'addition, de soustraction, de multiplication et de division <b>selon leur niveau</b>.",
@@ -150,7 +166,8 @@
   "tr": "• <b>Öğrenme seviyelerine göre</b> toplama, çıkarma, çarpma ve bölme zorluklarına <b>başlama</b>.",
   "ru": "• <b>Запуск</b> заданий на сложение, вычитание, умножение и деление <b>по уровню подготовки</b>.",
   "ja": "• <b>学習レベルに合わせて</b>、たし算・ひき算・かけ算・わり算の問題に<b>挑戦</b>。",
-  "th": "• <b>เริ่ม</b>ท้าทายการบวก ลบ คูณ และหาร <b>ตามระดับการเรียนรู้</b>"
+  "th": "• <b>เริ่ม</b>ท้าทายการบวก ลบ คูณ และหาร <b>ตามระดับการเรียนรู้</b>",
+  "ar": "• <b>البدء</b> بتحديات الجمع والطرح والضرب والقسمة <b>حسب مستوى تعلّمهم</b>."
  },
  "whats_learn_exercise_2": {
   "fr": "• <b>S'entraîner</b> avec différentes séries d'exercices et des <b>limites de temps pour gagner en vitesse et en concentration</b>.",
@@ -159,7 +176,8 @@
   "tr": "• Farklı alıştırma setleri ve <b>hızı ile odağı artıran süre sınırlarıyla</b> <b>alıştırma yapma</b>.",
   "ru": "• <b>Тренировка</b> на разных наборах упражнений и с <b>лимитом времени для скорости и концентрации</b>.",
   "ja": "• <b>練習</b>：いろいろな練習セットと<b>時間制限でスピードと集中力を高めます</b>。",
-  "th": "• <b>ฝึก</b>กับแบบฝึกหัดหลายชุดและ<b>จำกัดเวลาเพื่อเพิ่มความเร็วและสมาธิ</b>"
+  "th": "• <b>ฝึก</b>กับแบบฝึกหัดหลายชุดและ<b>จำกัดเวลาเพื่อเพิ่มความเร็วและสมาธิ</b>",
+  "ar": "• <b>التدرّب</b> على مجموعات تمارين مختلفة و<b>حدود زمنية لتحسين السرعة والتركيز</b>."
  },
  "whats_learn_exercise_3": {
   "fr": "• <b>Développer</b> l'endurance d'examen avec des séries de questions structurées et des <b>comptes à rebours</b>.",
@@ -168,7 +186,8 @@
   "tr": "• Yapılandırılmış soru setleri ve <b>geri sayım sayaçlarıyla</b> sınav dayanıklılığı <b>geliştirme</b>.",
   "ru": "• <b>Развитие</b> выносливости, как на экзамене, с помощью структурированных наборов вопросов и <b>таймеров обратного отсчёта</b>.",
   "ja": "• 構成された問題セットと<b>カウントダウンタイマー</b>で、テスト本番の体力を<b>養う</b>。",
-  "th": "• <b>สร้าง</b>ความทนทานแบบการสอบด้วยชุดคำถามที่เป็นระบบและ<b>ตัวนับถอยหลัง</b>"
+  "th": "• <b>สร้าง</b>ความทนทานแบบการสอบด้วยชุดคำถามที่เป็นระบบและ<b>ตัวนับถอยหลัง</b>",
+  "ar": "• <b>بناء</b> قدرة تحمّل تشبه الامتحان بمجموعات أسئلة منظمة و<b>مؤقتات تنازلية</b>."
  },
  "whats_learn_exercise_4": {
   "fr": "• <b>Améliorer</b> la concentration, la mémoire et l'agilité mentale <b>grâce à des exercices en continu</b>.",
@@ -177,7 +196,8 @@
   "tr": "• <b>Akış tabanlı çalışmalarla</b> konsantrasyonu, hafızayı ve zihinsel çevikliği <b>geliştirme</b>.",
   "ru": "• <b>Улучшение</b> концентрации, памяти и гибкости ума <b>с помощью непрерывных тренировок</b>.",
   "ja": "• <b>流れるようなドリル</b>で、集中力・記憶力・頭の回転を<b>高める</b>。",
-  "th": "• <b>พัฒนา</b>สมาธิ ความจำ และความคล่องแคล่วทางความคิด<b>ผ่านการฝึกต่อเนื่อง</b>"
+  "th": "• <b>พัฒนา</b>สมาธิ ความจำ และความคล่องแคล่วทางความคิด<b>ผ่านการฝึกต่อเนื่อง</b>",
+  "ar": "• <b>تحسين</b> التركيز وحفظ المعلومات والخفة الذهنية <b>من خلال تدريبات متدفقة</b>."
  },
  "whats_learn_exam_title": {
   "fr": "Ce que font les enfants dans le module d'examen",
@@ -186,7 +206,8 @@
   "tr": "Çocuklar Sınav modülünde neler yapar",
   "ru": "Что делают дети в модуле экзамена",
   "ja": "テストモジュールでできること",
-  "th": "สิ่งที่เด็ก ๆ ทำในโมดูลข้อสอบ"
+  "th": "สิ่งที่เด็ก ๆ ทำในโมดูลข้อสอบ",
+  "ar": "ماذا يفعل الطفل في وحدة الامتحان"
  },
  "whats_learn_exam_1": {
   "fr": "• <b>Environnement d'examen simulé –</b> S'entraîner dans des conditions proches d'un vrai examen pour gagner en précision et en confiance.",
@@ -195,7 +216,8 @@
   "tr": "• <b>Sınav simülasyonu –</b> Doğruluk ve özgüven kazanmak için gerçek sınava benzer koşullarda alıştırma yapın.",
   "ru": "• <b>Имитация экзамена –</b> тренировка в условиях, близких к настоящему экзамену, для точности и уверенности.",
   "ja": "• <b>本番さながらのテスト環境</b>：本番に近い状況で練習して、正確さと自信を育てます。",
-  "th": "• <b>จำลองสภาพแวดล้อมการสอบ –</b> ฝึกในบรรยากาศเหมือนสอบจริงเพื่อสร้างความแม่นยำและความมั่นใจ"
+  "th": "• <b>จำลองสภาพแวดล้อมการสอบ –</b> ฝึกในบรรยากาศเหมือนสอบจริงเพื่อสร้างความแม่นยำและความมั่นใจ",
+  "ar": "• <b>بيئة اختبار محاكية –</b> التدرّب في ظروف تشبه الامتحان الحقيقي لبناء الدقة والثقة."
  },
  "whats_learn_exam_2": {
   "fr": "• <b>Types de calcul pris en charge –</b> addition, soustraction, multiplication et division.",
@@ -204,7 +226,8 @@
   "tr": "• <b>Desteklenen işlemler –</b> toplama, çıkarma, çarpma ve bölme.",
   "ru": "• <b>Поддерживаемые действия –</b> сложение, вычитание, умножение и деление.",
   "ja": "• <b>対応する計算</b>：たし算・ひき算・かけ算・わり算。",
-  "th": "• <b>ประเภทการคำนวณที่รองรับ –</b> บวก ลบ คูณ และหาร"
+  "th": "• <b>ประเภทการคำนวณที่รองรับ –</b> บวก ลบ คูณ และหาร",
+  "ar": "• <b>أنواع الحساب المدعومة –</b> الجمع والطرح والضرب والقسمة."
  },
  "whats_learn_exam_3": {
   "fr": "• <b>Niveaux de difficulté –</b> Facile, moyen ou difficile pour progresser par étapes.",
@@ -213,7 +236,8 @@
   "tr": "• <b>Zorluk seviyeleri –</b> Kademeli öğrenme için Kolay, Orta veya Zor seçin.",
   "ru": "• <b>Уровни сложности –</b> лёгкий, средний или сложный для постепенного обучения.",
   "ja": "• <b>難易度</b>：やさしい・ふつう・むずかしいから選んで、少しずつ上達。",
-  "th": "• <b>ระดับความยาก –</b> เลือกง่าย ปานกลาง หรือยาก เพื่อเรียนรู้ทีละขั้น"
+  "th": "• <b>ระดับความยาก –</b> เลือกง่าย ปานกลาง หรือยาก เพื่อเรียนรู้ทีละขั้น",
+  "ar": "• <b>مستويات الصعوبة –</b> اختر من سهل أو متوسط أو صعب للتعلّم التدريجي."
  },
  "whats_learn_exam_4": {
   "fr": "• <b>Questions à choix multiples –</b> Chaque question propose 4 options pour développer la prise de décision.",
@@ -222,7 +246,8 @@
   "tr": "• <b>Çoktan seçmeli format –</b> Karar verme becerisini geliştirmek için her soruda 4 seçenek vardır.",
   "ru": "• <b>Тесты с выбором ответа –</b> к каждому вопросу 4 варианта, чтобы развивать умение принимать решения.",
   "ja": "• <b>4択形式</b>：どの問題も4つの選択肢があり、判断力を育てます。",
-  "th": "• <b>แบบเลือกตอบ –</b> ทุกข้อมี 4 ตัวเลือกเพื่อฝึกการตัดสินใจ"
+  "th": "• <b>แบบเลือกตอบ –</b> ทุกข้อมี 4 ตัวเลือกเพื่อฝึกการตัดสินใจ",
+  "ar": "• <b>صيغة الاختيار من متعدد –</b> يأتي كل سؤال مع 4 خيارات لتنمية مهارة اتخاذ القرار."
  },
  "whats_learn_exam_5": {
   "fr": "• <b>Affichage du chronomètre –</b> Suivre son temps sans pression stricte.",
@@ -231,7 +256,8 @@
   "tr": "• <b>Süre göstergesi –</b> Sıkı bir zaman baskısı olmadan ne kadar sürdüğünüzü takip edin.",
   "ru": "• <b>Таймер на экране –</b> следите за временем без жёсткого ограничения.",
   "ja": "• <b>タイマー表示</b>：きびしい時間制限なしで、かかった時間を確認できます。",
-  "th": "• <b>แสดงเวลา –</b> ดูว่าใช้เวลานานแค่ไหนโดยไม่ต้องเครียดกับเวลา"
+  "th": "• <b>แสดงเวลา –</b> ดูว่าใช้เวลานานแค่ไหนโดยไม่ต้องเครียดกับเวลา",
+  "ar": "• <b>عرض المؤقت –</b> تابع الوقت الذي تستغرقه دون ضغط زمني صارم."
  },
  "whats_learn_exam_6": {
   "fr": "• <b>Prêt pour la compétition –</b> Idéal pour les examens UCMAS, les contrôles scolaires, les concours de maths et de boulier.",
@@ -240,7 +266,8 @@
   "tr": "• <b>Yarışmaya hazır –</b> UCMAS sınavları, okul sınavları, matematik yarışmaları ve abaküs yarışmaları için ideal.",
   "ru": "• <b>Подготовка к соревнованиям –</b> отлично подходит для экзаменов UCMAS, школьных проверок, математических олимпиад и конкурсов по абакусу.",
   "ja": "• <b>大会にも対応</b>：UCMAS検定、学校のテスト、算数コンテスト、そろばん大会にぴったり。",
-  "th": "• <b>พร้อมสำหรับการแข่งขัน –</b> เหมาะกับการสอบ UCMAS การสอบที่โรงเรียน การแข่งขันคณิตศาสตร์ และการแข่งลูกคิด"
+  "th": "• <b>พร้อมสำหรับการแข่งขัน –</b> เหมาะกับการสอบ UCMAS การสอบที่โรงเรียน การแข่งขันคณิตศาสตร์ และการแข่งลูกคิด",
+  "ar": "• <b>جاهز للمنافسات –</b> مثالي لامتحانات UCMAS والاختبارات المدرسية ومسابقات الرياضيات والأباكوس."
  },
  "whats_learn_exam_7": {
   "fr": "• <b>Entraînement ciblé –</b> Développe le sang-froid, la rapidité et la logique.",
@@ -249,7 +276,8 @@
   "tr": "• <b>Odaklı çalışma –</b> Sınav sakinliğini, hızı ve mantıksal düşünmeyi geliştirir.",
   "ru": "• <b>Целенаправленные тренировки –</b> развивают экзаменационное хладнокровие, скорость и логическое мышление.",
   "ja": "• <b>集中トレーニング</b>：テストでの落ち着き、スピード、論理的な考え方を育てます。",
-  "th": "• <b>ฝึกอย่างมีเป้าหมาย –</b> สร้างความนิ่งในการสอบ ความเร็ว และการคิดเชิงเหตุผล"
+  "th": "• <b>ฝึกอย่างมีเป้าหมาย –</b> สร้างความนิ่งในการสอบ ความเร็ว และการคิดเชิงเหตุผล",
+  "ar": "• <b>تدريب مركّز –</b> يبني الثبات في الامتحان والسرعة والتفكير المنطقي."
  },
  "whats_learn_ccm_title": {
   "fr": "Ce que font les enfants dans le module Défi personnalisé",
@@ -258,7 +286,8 @@
   "tr": "Çocuklar Özel Meydan Okuma modülünde neler yapar",
   "ru": "Что делают дети в модуле «Свой вызов»",
   "ja": "オリジナルチャレンジモジュールでできること",
-  "th": "สิ่งที่เด็ก ๆ ทำในโมดูลชาเลนจ์ที่กำหนดเอง"
+  "th": "สิ่งที่เด็ก ๆ ทำในโมดูลชาเลนจ์ที่กำหนดเอง",
+  "ar": "ماذا يفعل الطفل في وحدة وضع التحدي المخصص"
  },
  "whats_learn_ccm_1": {
   "fr": "• <b>Personnalisation complète –</b> Réglez le nombre de questions, la longueur des questions (chiffres min/max) et la pause entre les questions.",
@@ -267,7 +296,8 @@
   "tr": "• <b>Tam özelleştirme –</b> Soru sayısını, soru uzunluğunu (en az/en çok basamak) ve sorular arasındaki bekleme süresini ayarlayın.",
   "ru": "• <b>Полная настройка –</b> задавайте число вопросов, длину вопроса (мин./макс. число цифр) и паузу между вопросами.",
   "ja": "• <b>自由にカスタマイズ</b>：問題数、問題の桁数（最小・最大）、問題の間隔を調整できます。",
-  "th": "• <b>ปรับแต่งได้เต็มที่ –</b> ควบคุมจำนวนข้อ ความยาวของโจทย์ (หลักน้อยสุด/มากสุด) และช่วงเวลาระหว่างข้อ"
+  "th": "• <b>ปรับแต่งได้เต็มที่ –</b> ควบคุมจำนวนข้อ ความยาวของโจทย์ (หลักน้อยสุด/มากสุด) และช่วงเวลาระหว่างข้อ",
+  "ar": "• <b>تخصيص كامل –</b> تحكّم في عدد الأسئلة وطول السؤال (الحد الأدنى والأقصى لعدد الأرقام) والفاصل الزمني بين الأسئلة."
  },
  "whats_learn_ccm_2": {
   "fr": "• <b>Présentation flexible –</b> Choisissez l'affichage des questions : chiffres, mots ou voix.",
@@ -276,7 +306,8 @@
   "tr": "• <b>Esnek sunum –</b> Soruların nasıl görüneceğini seçin: rakam, kelime veya ses.",
   "ru": "• <b>Гибкая подача –</b> выбирайте, как показывать вопросы: числами, словами или голосом.",
   "ja": "• <b>柔軟な出し方</b>：数字・言葉・音声から問題の見せ方を選べます。",
-  "th": "• <b>รูปแบบการแสดงที่ยืดหยุ่น –</b> เลือกวิธีแสดงโจทย์: ตัวเลข คำ หรือเสียง"
+  "th": "• <b>รูปแบบการแสดงที่ยืดหยุ่น –</b> เลือกวิธีแสดงโจทย์: ตัวเลข คำ หรือเสียง",
+  "ar": "• <b>عرض مرن –</b> اختر طريقة ظهور الأسئلة: أرقام أو كلمات أو صوت."
  },
  "whats_learn_ccm_3": {
   "fr": "• <b>Entraînement chronométré –</b> Ajoutez des intervalles entre les questions pour simuler la pression et renforcer la concentration.",
@@ -285,7 +316,8 @@
   "tr": "• <b>Süreli alıştırma –</b> Baskıyı simüle etmek ve odağı artırmak için sorular arasına aralık ekleyin.",
   "ru": "• <b>Тренировка на время –</b> добавляйте паузы между вопросами, чтобы создать напряжение и усилить концентрацию.",
   "ja": "• <b>時間つき練習</b>：問題の間に間隔を入れて、緊張感と集中力を高めます。",
-  "th": "• <b>ฝึกแบบจับเวลา –</b> เพิ่มช่วงพักระหว่างข้อเพื่อจำลองแรงกดดันและเพิ่มสมาธิ"
+  "th": "• <b>ฝึกแบบจับเวลา –</b> เพิ่มช่วงพักระหว่างข้อเพื่อจำลองแรงกดดันและเพิ่มสมาธิ",
+  "ar": "• <b>تدريب موقوت –</b> أضف فواصل بين الأسئلة لمحاكاة الضغط وتعزيز التركيز."
  },
  "whats_learn_ccm_4": {
   "fr": "• <b>Entraînement oral et visuel –</b> Idéal pour l'écoute, la visualisation seule ou un mélange des deux.",
@@ -294,7 +326,8 @@
   "tr": "• <b>Sözlü ve görsel eğitim –</b> Dinleyerek, yalnızca görselleştirerek veya karma öğrenme stilleri için ideal.",
   "ru": "• <b>Устные и наглядные тренировки –</b> подходят для обучения на слух, только визуально или в смешанном стиле.",
   "ja": "• <b>耳と目のトレーニング</b>：聞く学習、イメージだけの学習、両方を合わせた学習に最適。",
-  "th": "• <b>ฝึกด้วยการฟังและการมองภาพ –</b> เหมาะกับการเรียนด้วยการฟัง การจินตนาการอย่างเดียว หรือผสมกัน"
+  "th": "• <b>ฝึกด้วยการฟังและการมองภาพ –</b> เหมาะกับการเรียนด้วยการฟัง การจินตนาการอย่างเดียว หรือผสมกัน",
+  "ar": "• <b>تدريب شفهي وبصري –</b> مثالي لأساليب التعلّم بالاستماع أو بالتصوّر فقط أو بالمزج بينهما."
  },
  "whats_learn_ccm_5": {
   "fr": "• <b>Usages variés –</b> Convient à l'entraînement à la maison, aux activités en classe et aux séances de coaching sur mesure.",
@@ -303,7 +336,8 @@
   "tr": "• <b>Çok yönlü kullanım –</b> Ev çalışması, sınıf etkinlikleri ve özel ders oturumları için uygundur.",
   "ru": "• <b>Универсальность –</b> подходит для занятий дома, в классе и на индивидуальных уроках.",
   "ja": "• <b>いろいろな使い方</b>：家での練習、教室の活動、個別指導にも使えます。",
-  "th": "• <b>ใช้ได้หลากหลาย –</b> เหมาะกับการฝึกที่บ้าน กิจกรรมในห้องเรียน และการสอนเสริมแบบเฉพาะตัว"
+  "th": "• <b>ใช้ได้หลากหลาย –</b> เหมาะกับการฝึกที่บ้าน กิจกรรมในห้องเรียน และการสอนเสริมแบบเฉพาะตัว",
+  "ar": "• <b>استخدام متنوع –</b> مناسب للتدريب في المنزل وأنشطة الصف وجلسات التدريب المخصصة."
  },
  "whats_learn_ccm_6": {
   "fr": "• <b>Développement des compétences –</b> Renforce l'écoute, la mémoire, la concentration, la visualisation et la vitesse de calcul.",
@@ -312,7 +346,8 @@
   "tr": "• <b>Beceri gelişimi –</b> Dinlemeyi, hafızayı, konsantrasyonu, görselleştirmeyi ve hesaplama hızını artırır.",
   "ru": "• <b>Развитие навыков –</b> улучшает слух, память, концентрацию, визуализацию и скорость счёта.",
   "ja": "• <b>力を伸ばす</b>：聞く力、記憶力、集中力、イメージ力、計算スピードが向上します。",
-  "th": "• <b>พัฒนาทักษะ –</b> เสริมการฟัง ความจำ สมาธิ การจินตนาการ และความเร็วในการคำนวณ"
+  "th": "• <b>พัฒนาทักษะ –</b> เสริมการฟัง ความจำ สมาธิ การจินตนาการ และความเร็วในการคำนวณ",
+  "ar": "• <b>تنمية المهارات –</b> يعزّز الاستماع وقوة الذاكرة والتركيز والتصوّر وسرعة الحساب."
  },
  "whats_learn_ccm_7": {
   "fr": "• <b>Atout –</b> Développe l'adaptabilité, améliore la prise de décision et prépare aux formats de tests variés.",
@@ -321,6 +356,7 @@
   "tr": "• <b>Fayda –</b> Uyum yeteneğini geliştirir, karar vermeyi güçlendirir ve öğrencileri farklı sınav biçimlerine hazırlar.",
   "ru": "• <b>Польза –</b> развивает гибкость, умение принимать решения и готовит к разным форматам тестов.",
   "ja": "• <b>効果</b>：対応力と判断力が育ち、さまざまな形式のテストに備えられます。",
-  "th": "• <b>ประโยชน์ –</b> สร้างความยืดหยุ่น พัฒนาการตัดสินใจ และเตรียมพร้อมสำหรับข้อสอบหลายรูปแบบ"
+  "th": "• <b>ประโยชน์ –</b> สร้างความยืดหยุ่น พัฒนาการตัดสินใจ และเตรียมพร้อมสำหรับข้อสอบหลายรูปแบบ",
+  "ar": "• <b>الفائدة –</b> يبني القدرة على التكيّف ويحسّن اتخاذ القرار ويهيّئ الطلاب لمختلف صيغ الاختبارات."
  }
 }

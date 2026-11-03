@@ -116,6 +116,8 @@ import kotlin.math.min
 import androidx.annotation.StringRes
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
+import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowLeft
 
 /**
  * First launch: a 3-rod abacus, the mascot's speech bubble, step bubbles and two guided sums, then a page for the
@@ -375,7 +377,7 @@ private fun TutorialPage(
         ) {
             if (index > 0 || moved) {
                 AbButton(
-                    text = stringResource(R.string.ob_previous), tone = AbTone.Purple, size = AbSize.Small, icon = Icons.Rounded.KeyboardArrowLeft,
+                    text = stringResource(R.string.ob_previous), tone = AbTone.Purple, size = AbSize.Small, icon = Icons.AutoMirrored.Rounded.KeyboardArrowLeft,
                     minHeightOverride = 32f, horizontalPaddingOverride = 11f, onClick = onPrevious,
                 )
             } else Spacer(Modifier)
@@ -383,7 +385,7 @@ private fun TutorialPage(
                 text = if (hasMoveToShow) stringResource(R.string.ob_show_me) else nextText,
                 tone = if (hasMoveToShow) AbTone.Warning else AbTone.Primary,
                 size = AbSize.Small,
-                icon = if (hasMoveToShow) Icons.Rounded.TouchApp else Icons.Rounded.KeyboardArrowRight,
+                icon = if (hasMoveToShow) Icons.Rounded.TouchApp else Icons.AutoMirrored.Rounded.KeyboardArrowRight,
                 iconAtEnd = !hasMoveToShow,
                 minHeightOverride = 32f, horizontalPaddingOverride = 11f,
                 onClick = { if (hasMoveToShow) onShowMe() else onNext() },
@@ -474,9 +476,9 @@ private fun FeaturesPage(index: Int, group: FeatureGroup, nextText: String, onPr
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            AbButton(text = stringResource(R.string.ob_previous), tone = AbTone.Purple, size = AbSize.Small, icon = Icons.Rounded.KeyboardArrowLeft,
+            AbButton(text = stringResource(R.string.ob_previous), tone = AbTone.Purple, size = AbSize.Small, icon = Icons.AutoMirrored.Rounded.KeyboardArrowLeft,
                 minHeightOverride = 32f, horizontalPaddingOverride = 11f, onClick = onPrevious)
-            AbButton(text = nextText, tone = AbTone.Primary, size = AbSize.Small, icon = Icons.Rounded.KeyboardArrowRight, iconAtEnd = true,
+            AbButton(text = nextText, tone = AbTone.Primary, size = AbSize.Small, icon = Icons.AutoMirrored.Rounded.KeyboardArrowRight, iconAtEnd = true,
                 minHeightOverride = 32f, horizontalPaddingOverride = 11f, onClick = onNext)
         }
     }

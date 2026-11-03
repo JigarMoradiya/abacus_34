@@ -4,7 +4,7 @@ package com.jigar.me.utils
  * A whole number written in words, for the languages whose spelling is known here ([languages]).
  *
  * English is not in this file: it keeps the app's own Indian-style words (lakh, crore) from the resource strings, see
- * `Context.convertNumberToWords`. Arabic is added with the right-to-left pass.
+ * `Context.convertNumberToWords`. Arabic (Modern Standard Arabic, masculine, nominative) is written by hand and has its own small test.
  *
  * Why our own and not Android's `RuleBasedNumberFormat`: that class is not part of the public SDK (it is a hidden class that happens to be
  * on the phone), it differs between phones and Android versions, and it cannot run in unit tests. The words here are checked against
@@ -14,7 +14,7 @@ package com.jigar.me.utils
  */
 object NumberWords {
 
-    val languages = setOf("fr", "es", "pt", "tr", "ru", "ja", "th")
+    val languages = setOf("fr", "es", "pt", "tr", "ru", "ja", "th", "ar")
 
     fun isSupported(tag: String) = tag in languages
 
@@ -29,6 +29,7 @@ object NumberWords {
             "tr" -> tr(abs(n))
             "ru" -> ru(abs(n))
             "ja" -> ja(abs(n))
+            "ar" -> ar(abs(n))
             else -> th(abs(n))
         }
         if (n > 0) return body
@@ -37,10 +38,57 @@ object NumberWords {
 
     private fun abs(n: Long) = if (n < 0) -n else n
 
-    private val ZERO = mapOf("fr" to "zéro", "es" to "cero", "pt" to "zero", "tr" to "sıfır", "ru" to "ноль", "ja" to "〇", "th" to "ศูนย์")
-    private val MINUS = mapOf("fr" to "moins", "es" to "menos", "pt" to "menos", "tr" to "eksi", "ru" to "минус", "ja" to "マイナス", "th" to "ลบ")
+    private val ZERO = mapOf("fr" to "zéro", "es" to "cero", "pt" to "zero", "tr" to "sıfır", "ru" to "ноль", "ja" to "〇", "th" to "ศูนย์", "ar" to "صفر")
+    private val MINUS = mapOf("fr" to "moins", "es" to "menos", "pt" to "menos", "tr" to "eksi", "ru" to "минус", "ja" to "マイナス", "th" to "ลบ", "ar" to "سالب")
 
     private fun join(vararg parts: String) = parts.filter { it.isNotEmpty() }.joinToString(" ")
+
+    // ---------------------------------------------------------------- Arabic (Modern Standard Arabic, masculine, nominative)
+    private val AR_ONES = arrayOf("صفر", "واحد", "اثنان", "ثلاثة", "أربعة", "خمسة", "ستة", "سبعة", "ثمانية", "تسعة", "عشرة",
+        "أحد عشر", "اثنا عشر", "ثلاثة عشر", "أربعة عشر", "خمسة عشر", "ستة عشر", "سبعة عشر", "ثمانية عشر", "تسعة عشر")
+    private val AR_TENS = arrayOf("", "", "عشرون", "ثلاثون", "أربعون", "خمسون", "ستون", "سبعون", "ثمانون", "تسعون")
+    private val AR_HUNDREDS = arrayOf("", "مئة", "مئتان", "ثلاثمئة", "أربعمئة", "خمسمئة", "ستمئة", "سبعمئة", "ثمانمئة", "تسعمئة")
+
+    private fun arBelow100(r: Int): String = when {
+        r < 20 -> AR_ONES[r]
+        r % 10 == 0 -> AR_TENS[r / 10]
+        else -> AR_ONES[r % 10] + " و" + AR_TENS[r / 10]
+    }
+
+    private fun arBelow1000(v: Int): String {
+        val h = v / 100
+        val r = v % 100
+        return when {
+            h == 0 -> arBelow100(r)
+            r == 0 -> AR_HUNDREDS[h]
+            else -> AR_HUNDREDS[h] + " و" + arBelow100(r)
+        }
+    }
+
+    /** "ألف / ألفان / ثلاثة آلاف / أحد عشر ألفًا": the counted noun changes with the count. */
+    private fun arScaled(count: Int, singular: String, dual: String, plural: String, accusative: String): String {
+        if (count == 1) return singular
+        if (count == 2) return dual
+        if (count == 200) return "مئتا $singular"
+        return when (count % 100) {
+            0, 1, 2 -> arBelow1000(count) + " " + singular          // "مئة ألف", "خمسمئة ألف"
+            in 3..10 -> arBelow1000(count) + " " + plural
+            else -> arBelow1000(count) + " " + accusative
+        }
+    }
+
+    private fun ar(n: Long): String {
+        val parts = ArrayList<String>()
+        val billions = (n / 1_000_000_000).toInt()
+        val millions = ((n / 1_000_000) % 1000).toInt()
+        val thousands = ((n / 1000) % 1000).toInt()
+        val rest = (n % 1000).toInt()
+        if (billions > 0) parts += arScaled(billions, "مليار", "ملياران", "مليارات", "مليارًا")
+        if (millions > 0) parts += arScaled(millions, "مليون", "مليونان", "ملايين", "مليونًا")
+        if (thousands > 0) parts += arScaled(thousands, "ألف", "ألفان", "آلاف", "ألفًا")
+        if (rest > 0) parts += arBelow1000(rest)
+        return parts.joinToString(" و")
+    }
 
     // ---------------------------------------------------------------- French
     private val FR_ONES = arrayOf("zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix", "onze", "douze", "treize", "quatorze", "quinze", "seize")

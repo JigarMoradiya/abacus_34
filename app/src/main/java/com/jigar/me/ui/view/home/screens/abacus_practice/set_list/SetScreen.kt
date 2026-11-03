@@ -47,6 +47,12 @@ import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.FreemiumManager
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.height
+import androidx.compose.ui.draw.rotate
+import com.jigar.me.ui.view.ab.abChunkyFace
+import com.jigar.me.ui.view.ab.abDarkened
 
 @Composable
 fun SetScreen(
@@ -87,12 +93,7 @@ fun SetScreen(
                 modifier = Modifier.weight(1f).fillMaxWidth().padding(vertical = AppDimens.Dimens20),
                 contentAlignment = Alignment.Center
             ) {
-                Image(
-                    painter = painterResource(R.drawable.ic_coming_soon),
-                    contentDescription = null,
-                    modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Fit
-                )
+                ComingSoonSign(Modifier.fillMaxSize())
             }
         } else {
             val pageGridState = rememberLazyGridState()
@@ -179,5 +180,40 @@ fun SetScreen(
         )
     }
     }
+    }
+}
+
+/** "COMING SOON" on a tilted sign (drawn in code so the word follows the app language). */
+@Composable
+internal fun ComingSoonSign(modifier: Modifier = Modifier) {
+    androidx.compose.foundation.layout.BoxWithConstraints(modifier, contentAlignment = Alignment.Center) {
+        val signWidth = minOf(maxWidth * 0.8f, maxHeight * 1.05f)
+        val face = androidx.compose.ui.graphics.Color(0xFFF0657A)
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.rotate(-6f)
+        ) {
+            androidx.compose.foundation.layout.Box(
+                modifier = Modifier
+                    .width(signWidth)
+                    .abChunkyFace(face, face.abDarkened(0.3f), null, 22.dp, 4.dp)
+                    .padding(horizontal = signWidth * 0.06f, vertical = signWidth * 0.08f),
+                contentAlignment = Alignment.Center
+            ) {
+                androidx.compose.material3.Text(
+                    text = androidx.compose.ui.res.stringResource(R.string.coming_soon_sign),
+                    style = com.jigar.me.ui.view.ab.AbTypography.fixed(signWidth.value * 0.15f, androidx.compose.ui.text.font.FontWeight.Black),
+                    color = androidx.compose.ui.graphics.Color.White,
+                    textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                    maxLines = 2
+                )
+            }
+            androidx.compose.foundation.layout.Box(
+                Modifier
+                    .width(signWidth * 0.09f)
+                    .height(signWidth * 0.3f)
+                    .background(androidx.compose.ui.graphics.Color(0xFF50506B), androidx.compose.foundation.shape.RoundedCornerShape(4.dp))
+            )
+        }
     }
 }

@@ -72,6 +72,7 @@ fun AbToyAnswerBar(
     onNext: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    com.jigar.me.ui.view.ab.LtrIsland {
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
     val isFormal = abacusType == AppConstants.apiParams.answerFormalExam
@@ -157,6 +158,8 @@ fun AbToyAnswerBar(
                 HandLeftRightIndicator(isVisible = true, modifier = Modifier.align(Alignment.CenterEnd).offset(x = (60 * s).dp))
             }
         }
+    }
+
     }
 }
 

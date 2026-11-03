@@ -42,7 +42,7 @@ class NumberWordsTest {
 
     @Test fun referenceFileIsComplete() {
         assertEquals(7 * 621, rows.size)
-        assertEquals(NumberWords.languages, rows.map { it.lang }.toSet())
+        assertEquals(NumberWords.languages - "ar", rows.map { it.lang }.toSet())   // Arabic has no phone reference: see ArabicNumberWordsTest
     }
 
     @Test fun japaneseInsideBiggerNumbers() {
@@ -55,7 +55,7 @@ class NumberWordsTest {
 
     @Test fun unknownLanguageIsNull() {
         assertNull(NumberWords.spell(5, "en"))
-        assertNull(NumberWords.spell(5, "ar"))
+        assertNull(NumberWords.spell(5, "hi"))
         assertNull(NumberWords.spell(5, "de"))
     }
 

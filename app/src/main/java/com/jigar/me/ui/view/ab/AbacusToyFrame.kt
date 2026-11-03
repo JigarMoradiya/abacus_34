@@ -159,6 +159,7 @@ fun AbacusToyFrameBack(
     /** False while the tour points at the frame itself: the rods, beam and beam markers are left out so the frame stands alone. */
     showInterior: Boolean = true,
 ) {
+    com.jigar.me.ui.view.ab.LtrIsland {
     val colors = LocalAbColors.current
     val isDark = colors.isDark
     Canvas(modifier.width(g.totalWidth).height(g.totalHeight)) {
@@ -271,6 +272,8 @@ fun AbacusToyFrameBack(
             }
         }
     }
+
+    }
 }
 
 /** Text that shrinks (down to [minScale]) instead of wrapping or clipping when it is wider than its box. */
@@ -323,6 +326,7 @@ private fun Modifier.toyTagFace(color: Color, tagH: Dp): Modifier = drawBehind {
  */
 @Composable
 fun AbacusToyHeavenTags(g: AbacusToyGeometry, stripHeight: Dp, modifier: Modifier = Modifier) {
+    com.jigar.me.ui.view.ab.LtrIsland {
     val cw = g.cellWidth
     val rw = maxOf(4.dp, g.beamHeight * 0.62f)
     val tagH = minOf(cw * 0.46f, stripHeight * 1.45f) * 0.86f
@@ -347,6 +351,8 @@ fun AbacusToyHeavenTags(g: AbacusToyGeometry, stripHeight: Dp, modifier: Modifie
                 )
             }
         }
+    }
+
     }
 }
 

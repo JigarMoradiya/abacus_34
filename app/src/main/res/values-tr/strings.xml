@@ -1199,6 +1199,18 @@
     <string name="settings_theme_brown">Kahverengi</string>
     <string name="settings_theme_black">Siyah</string>
     <string name="settings_theme_pearl">İnci</string>
+    <!-- m20_coming_soon -->
+    <string name="coming_soon_sign">YAKINDA</string>
+    <!-- m20_leftovers -->
+    <string name="gmail_not_found">Gmail uygulaması bu cihazda yüklü değil.</string>
+    <string name="link_not_support">Bu bağlantıyı açabilecek bir uygulama yok.</string>
+    <string name="network_unreachable">Bu sayfa internet olmadan kullanılamaz.</string>
+    <string name="no_logged_in_user">Kullanıcı verileri alınamadı.</string>
+    <string name="unexpected_error">Bir şeyler ters gitti, lütfen daha sonra tekrar deneyin.</string>
+    <string name="you_are_clever">Akıllısın!</string>
+    <string name="you_are_glorious">Muhteşemsin!</string>
+    <string name="you_are_so_genius">Tam bir dehasın!</string>
+    <string name="you_are_so_intelligent">Ne kadar zekisin!</string>
     <!-- m2_numbers -->
     <string name="minus">Eksi</string>
     <string name="plus">Artı</string>

@@ -58,7 +58,7 @@ fun NumberSequencePuzzlePlayRoute(
     val viewModel: NumberSequencePuzzleViewModel = hiltViewModel()
     NumberSequencePuzzleJetpackScreen(
         navController = navController,
-        gridSize = gridSize,
+        gridSize = gridSize.coerceIn(3, 5),   // the home offers 3x3, 4x4 and 5x5; a link with another size (0, 1) crashed the generator
         viewModel = viewModel
     )
 }

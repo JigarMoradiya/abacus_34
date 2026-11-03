@@ -77,7 +77,7 @@
   "ru": "Максимально допустимое число: 9 999 999",
   "ja": "入力できる最大の数は9,999,999です",
   "th": "ตัวเลขสูงสุดที่ใช้ได้คือ 9,999,999",
-  "ar": "أكبر رقم مسموح به هو 9,999,999"
+  "ar": "أكبر رقم مسموح به هو ‪9,999,999‬"
  },
  "free_mode_error_order": {
   "fr": "Le nombre d'arrivée doit être supérieur au nombre de départ",
@@ -177,7 +177,7 @@
   "ru": "%1$d / %2$d",
   "ja": "%1$d / %2$d",
   "th": "%1$d / %2$d",
-  "ar": "%1$d / %2$d"
+  "ar": "‪%1$d / %2$d‬"
  },
  "click_here_to_show_abacus_tour": {
   "fr": "Voir la visite du boulier",
@@ -296,7 +296,8 @@
   "tr": "Bu abaküsün <font color='#FF5722'><b>çerçevesi</b></font>",
   "ru": "Это <font color='#FF5722'><b>рамка</b></font> абакуса",
   "ja": "これがそろばんの<font color='#FF5722'><b>わく</b></font>です",
-  "th": "นี่คือ<font color='#FF5722'><b>กรอบ</b></font>ของลูกคิด"
+  "th": "นี่คือ<font color='#FF5722'><b>กรอบ</b></font>ของลูกคิด",
+  "ar": "هذا هو <font color='#FF5722'><b>إطار</b></font> الأباكوس"
  },
  "tour_step_02": {
   "fr": "Ce sont les <font color='#0000EE'><b>tiges</b></font> ou <font color='#0000EE'><b>colonnes</b></font> du boulier",
@@ -305,7 +306,8 @@
   "tr": "Bunlar abaküsün <font color='#0000EE'><b>çubukları</b></font> veya <font color='#0000EE'><b>sütunları</b></font>",
   "ru": "Это <font color='#0000EE'><b>спицы</b></font> или <font color='#0000EE'><b>столбцы</b></font> абакуса",
   "ja": "これがそろばんの<font color='#0000EE'><b>桁</b></font>、つまり<font color='#0000EE'><b>列</b></font>です",
-  "th": "นี่คือ<font color='#0000EE'><b>แกน</b></font>หรือ<font color='#0000EE'><b>คอลัมน์</b></font>ของลูกคิด"
+  "th": "นี่คือ<font color='#0000EE'><b>แกน</b></font>หรือ<font color='#0000EE'><b>คอลัมน์</b></font>ของลูกคิด",
+  "ar": "هذه هي <font color='#0000EE'><b>الأعمدة</b></font> أو <font color='#0000EE'><b>الخانات</b></font> في الأباكوس"
  },
  "tour_step_03": {
   "fr": "Voici la <font color='#6200EA'><b>barre</b></font> ou <font color='#6200EA'><b>traverse</b></font> du boulier",
@@ -314,7 +316,8 @@
   "tr": "Bu abaküsün <font color='#6200EA'><b>orta çubuğu</b></font> ya da <font color='#6200EA'><b>kirişi</b></font>",
   "ru": "Это <font color='#6200EA'><b>перекладина</b></font> или <font color='#6200EA'><b>планка</b></font> абакуса",
   "ja": "これがそろばんの<font color='#6200EA'><b>梁（はり）</b></font>、つまり<font color='#6200EA'><b>真ん中の仕切り</b></font>です",
-  "th": "นี่คือ<font color='#6200EA'><b>คาน</b></font>หรือ<font color='#6200EA'><b>แถบกลาง</b></font>ของลูกคิด"
+  "th": "นี่คือ<font color='#6200EA'><b>คาน</b></font>หรือ<font color='#6200EA'><b>แถบกลาง</b></font>ของลูกคิด",
+  "ar": "هذه هي <font color='#6200EA'><b>العارضة</b></font> أو <font color='#6200EA'><b>الشريط الأوسط</b></font> في الأباكوس"
  },
  "tour_step_04": {
   "fr": "Ce sont les <font color='#E91E63'><b>boules du haut</b></font> du boulier",
@@ -323,7 +326,8 @@
   "tr": "Bunlar abaküsün <font color='#E91E63'><b>üst boncukları</b></font>",
   "ru": "Это <font color='#E91E63'><b>верхние бусины</b></font> абакуса",
   "ja": "これがそろばんの<font color='#E91E63'><b>上の珠</b></font>です",
-  "th": "นี่คือ<font color='#E91E63'><b>ลูกคิดแถวบน</b></font>ของลูกคิด"
+  "th": "นี่คือ<font color='#E91E63'><b>ลูกคิดแถวบน</b></font>ของลูกคิด",
+  "ar": "هذه هي <font color='#E91E63'><b>الخرزات العلوية</b></font> في الأباكوس"
  },
  "tour_step_05": {
   "fr": "Ce sont les <font color='#9C27B0'><b>boules du bas</b></font> du boulier",
@@ -332,7 +336,8 @@
   "tr": "Bunlar abaküsün <font color='#9C27B0'><b>alt boncukları</b></font>",
   "ru": "Это <font color='#9C27B0'><b>нижние бусины</b></font> абакуса",
   "ja": "これがそろばんの<font color='#9C27B0'><b>下の珠</b></font>です",
-  "th": "นี่คือ<font color='#9C27B0'><b>ลูกคิดแถวล่าง</b></font>ของลูกคิด"
+  "th": "นี่คือ<font color='#9C27B0'><b>ลูกคิดแถวล่าง</b></font>ของลูกคิด",
+  "ar": "هذه هي <font color='#9C27B0'><b>الخرزات السفلية</b></font> في الأباكوس"
  },
  "tour_step_06": {
   "fr": "Voici la <font color='#0000EE'><b>place des unités</b></font> <b>(colonne des unités)</b><br/>du boulier",
@@ -341,7 +346,8 @@
   "tr": "Bu, abaküsün<br/><font color='#0000EE'><b>birler basamağı</b></font> <b>(birler sütunu)</b>",
   "ru": "Это <font color='#0000EE'><b>разряд единиц</b></font> <b>(столбец единиц)</b><br/>абакуса",
   "ja": "これがそろばんの<font color='#0000EE'><b>一の位</b></font><b>（1の桁）</b><br/>です",
-  "th": "นี่คือ<font color='#0000EE'><b>หลักหน่วย</b></font> <b>(คอลัมน์หน่วย)</b><br/>ของลูกคิด"
+  "th": "นี่คือ<font color='#0000EE'><b>หลักหน่วย</b></font> <b>(คอลัมน์หน่วย)</b><br/>ของลูกคิด",
+  "ar": "هذه هي <font color='#0000EE'><b>خانة الآحاد</b></font> <b>(عمود الآحاد)</b><br/>في الأباكوس"
  },
  "tour_step_07": {
   "fr": "<b>Sur la 1re TIGE</b> <font color='#0000EE'><b>(colonne des unités)</b></font><br/>chaque boule du bas <font color='#D81B60'><b>vaut 1</b></font><br/>et la boule du haut <font color='#388E3C'><b>vaut 5</b></font>",
@@ -350,7 +356,8 @@
   "tr": "<b>1. ÇUBUKTA</b> <font color='#0000EE'><b>(birler sütunu)</b></font><br/>her alt boncuğun <font color='#D81B60'><b>değeri 1</b></font><br/>üst boncuğun <font color='#388E3C'><b>değeri 5</b></font>",
   "ru": "<b>На 1-й СПИЦЕ</b> <font color='#0000EE'><b>(столбец единиц)</b></font><br/>каждая нижняя бусина <font color='#D81B60'><b>равна 1</b></font><br/>а верхняя бусина <font color='#388E3C'><b>равна 5</b></font>",
   "ja": "<b>1番目の桁</b><font color='#0000EE'><b>（一の位）</b></font><br/>では、下の珠1つが<font color='#D81B60'><b>1</b></font><br/>上の珠1つが<font color='#388E3C'><b>5</b></font>です",
-  "th": "<b>ที่แกนที่ 1</b> <font color='#0000EE'><b>(คอลัมน์หน่วย)</b></font><br/>ลูกล่างแต่ละลูก<font color='#D81B60'><b>มีค่า 1</b></font><br/>และลูกบน<font color='#388E3C'><b>มีค่า 5</b></font>"
+  "th": "<b>ที่แกนที่ 1</b> <font color='#0000EE'><b>(คอลัมน์หน่วย)</b></font><br/>ลูกล่างแต่ละลูก<font color='#D81B60'><b>มีค่า 1</b></font><br/>และลูกบน<font color='#388E3C'><b>มีค่า 5</b></font>",
+  "ar": "<b>على العمود الأول</b> <font color='#0000EE'><b>(عمود الآحاد)</b></font><br/>قيمة كل خرزة سفلية <font color='#D81B60'><b>هي 1</b></font><br/>وقيمة الخرزة العلوية <font color='#388E3C'><b>هي 5</b></font>"
  },
  "tour_step_08": {
   "fr": "<b>Sur la 2e TIGE</b> <font color='#0000EE'><b>(colonne des dizaines)</b></font><br/>chaque boule du bas <font color='#D81B60'><b>vaut 10</b></font><br/>et la boule du haut <font color='#388E3C'><b>vaut 50</b></font>",
@@ -359,7 +366,8 @@
   "tr": "<b>2. ÇUBUKTA</b> <font color='#0000EE'><b>(onlar sütunu)</b></font><br/>her alt boncuğun <font color='#D81B60'><b>değeri 10</b></font><br/>üst boncuğun <font color='#388E3C'><b>değeri 50</b></font>",
   "ru": "<b>На 2-й СПИЦЕ</b> <font color='#0000EE'><b>(столбец десятков)</b></font><br/>каждая нижняя бусина <font color='#D81B60'><b>равна 10</b></font><br/>а верхняя бусина <font color='#388E3C'><b>равна 50</b></font>",
   "ja": "<b>2番目の桁</b><font color='#0000EE'><b>（十の位）</b></font><br/>では、下の珠1つが<font color='#D81B60'><b>10</b></font><br/>上の珠1つが<font color='#388E3C'><b>50</b></font>です",
-  "th": "<b>ที่แกนที่ 2</b> <font color='#0000EE'><b>(คอลัมน์สิบ)</b></font><br/>ลูกล่างแต่ละลูก<font color='#D81B60'><b>มีค่า 10</b></font><br/>และลูกบน<font color='#388E3C'><b>มีค่า 50</b></font>"
+  "th": "<b>ที่แกนที่ 2</b> <font color='#0000EE'><b>(คอลัมน์สิบ)</b></font><br/>ลูกล่างแต่ละลูก<font color='#D81B60'><b>มีค่า 10</b></font><br/>และลูกบน<font color='#388E3C'><b>มีค่า 50</b></font>",
+  "ar": "<b>على العمود الثاني</b> <font color='#0000EE'><b>(عمود العشرات)</b></font><br/>قيمة كل خرزة سفلية <font color='#D81B60'><b>هي 10</b></font><br/>وقيمة الخرزة العلوية <font color='#388E3C'><b>هي 50</b></font>"
  },
  "tour_step_09": {
   "fr": "<b>Sur la 3e TIGE</b> <font color='#0000EE'><b>(colonne des centaines)</b></font><br/>chaque boule du bas <font color='#D81B60'><b>vaut 100</b></font><br/>et la boule du haut <font color='#388E3C'><b>vaut 500</b></font><br/>et ainsi de suite...",
@@ -368,7 +376,8 @@
   "tr": "<b>3. ÇUBUKTA</b> <font color='#0000EE'><b>(yüzler sütunu)</b></font><br/>her alt boncuğun <font color='#D81B60'><b>değeri 100</b></font><br/>üst boncuğun <font color='#388E3C'><b>değeri 500</b></font><br/>ve böyle devam eder...",
   "ru": "<b>На 3-й СПИЦЕ</b> <font color='#0000EE'><b>(столбец сотен)</b></font><br/>каждая нижняя бусина <font color='#D81B60'><b>равна 100</b></font><br/>а верхняя бусина <font color='#388E3C'><b>равна 500</b></font><br/>и так далее...",
   "ja": "<b>3番目の桁</b><font color='#0000EE'><b>（百の位）</b></font><br/>では、下の珠1つが<font color='#D81B60'><b>100</b></font><br/>上の珠1つが<font color='#388E3C'><b>500</b></font><br/>…というふうに続きます",
-  "th": "<b>ที่แกนที่ 3</b> <font color='#0000EE'><b>(คอลัมน์ร้อย)</b></font><br/>ลูกล่างแต่ละลูก<font color='#D81B60'><b>มีค่า 100</b></font><br/>และลูกบน<font color='#388E3C'><b>มีค่า 500</b></font><br/>และเป็นเช่นนี้ต่อไป..."
+  "th": "<b>ที่แกนที่ 3</b> <font color='#0000EE'><b>(คอลัมน์ร้อย)</b></font><br/>ลูกล่างแต่ละลูก<font color='#D81B60'><b>มีค่า 100</b></font><br/>และลูกบน<font color='#388E3C'><b>มีค่า 500</b></font><br/>และเป็นเช่นนี้ต่อไป...",
+  "ar": "<b>على العمود الثالث</b> <font color='#0000EE'><b>(عمود المئات)</b></font><br/>قيمة كل خرزة سفلية <font color='#D81B60'><b>هي 100</b></font><br/>وقيمة الخرزة العلوية <font color='#388E3C'><b>هي 500</b></font><br/>وهكذا..."
  },
  "tour_step_10": {
   "fr": "<b>Une colonne</b><br/>peut montrer tous les nombres de <font color='#EE0000'><b>0 à 9</b></font>",
@@ -377,7 +386,8 @@
   "tr": "<b>Bir sütun</b><br/><font color='#EE0000'><b>0 ile 9</b></font> arasındaki her sayıyı gösterebilir",
   "ru": "<b>Один столбец</b><br/>может показать любое число от <font color='#EE0000'><b>0 до 9</b></font>",
   "ja": "<b>1つの桁</b><br/>で<font color='#EE0000'><b>0から9</b></font>までの数を表せます",
-  "th": "<b>1 คอลัมน์</b><br/>แสดงตัวเลขได้ตั้งแต่ <font color='#EE0000'><b>0 ถึง 9</b></font>"
+  "th": "<b>1 คอลัมน์</b><br/>แสดงตัวเลขได้ตั้งแต่ <font color='#EE0000'><b>0 ถึง 9</b></font>",
+  "ar": "<b>عمود واحد</b><br/>يمكنه عرض أي رقم من <font color='#EE0000'><b>0 إلى 9</b></font>"
  },
  "tour_step_11": {
   "fr": "<b>Deux colonnes</b><br/>peuvent montrer tous les nombres de <font color='#EE0000'><b>0 à 99</b></font>",
@@ -386,7 +396,8 @@
   "tr": "<b>İki sütun</b><br/><font color='#EE0000'><b>0 ile 99</b></font> arasındaki her sayıyı gösterebilir",
   "ru": "<b>Два столбца</b><br/>могут показать любое число от <font color='#EE0000'><b>0 до 99</b></font>",
   "ja": "<b>2つの桁</b><br/>で<font color='#EE0000'><b>0から99</b></font>までの数を表せます",
-  "th": "<b>2 คอลัมน์</b><br/>แสดงตัวเลขได้ตั้งแต่ <font color='#EE0000'><b>0 ถึง 99</b></font>"
+  "th": "<b>2 คอลัมน์</b><br/>แสดงตัวเลขได้ตั้งแต่ <font color='#EE0000'><b>0 ถึง 99</b></font>",
+  "ar": "<b>عمودان</b><br/>يمكنهما عرض أي رقم من <font color='#EE0000'><b>0 إلى 99</b></font>"
  },
  "tour_step_12": {
   "fr": "<b>Trois colonnes</b><br/>peuvent montrer tous les nombres de <font color='#EE0000'><b>0 à 999</b></font>",
@@ -395,7 +406,8 @@
   "tr": "<b>Üç sütun</b><br/><font color='#EE0000'><b>0 ile 999</b></font> arasındaki her sayıyı gösterebilir",
   "ru": "<b>Три столбца</b><br/>могут показать любое число от <font color='#EE0000'><b>0 до 999</b></font>",
   "ja": "<b>3つの桁</b><br/>で<font color='#EE0000'><b>0から999</b></font>までの数を表せます",
-  "th": "<b>3 คอลัมน์</b><br/>แสดงตัวเลขได้ตั้งแต่ <font color='#EE0000'><b>0 ถึง 999</b></font>"
+  "th": "<b>3 คอลัมน์</b><br/>แสดงตัวเลขได้ตั้งแต่ <font color='#EE0000'><b>0 ถึง 999</b></font>",
+  "ar": "<b>ثلاثة أعمدة</b><br/>يمكنها عرض أي رقم من <font color='#EE0000'><b>0 إلى 999</b></font>"
  },
  "tour_step_13": {
   "fr": "<b>Pour additionner</b><br/>utilise toujours ton <font color='#D81B60'><b>pouce</b></font><br/>pour <font color='#0000EE'><b>monter les boules du bas</b></font>",
@@ -404,7 +416,8 @@
   "tr": "<b>Toplama için</b><br/>her zaman <font color='#D81B60'><b>başparmağını</b></font> kullan<br/><font color='#0000EE'><b>alt boncukları yukarı çıkarmak</b></font> için",
   "ru": "<b>Для сложения</b><br/>всегда используй <font color='#D81B60'><b>большой палец</b></font><br/>чтобы <font color='#0000EE'><b>поднимать нижние бусины вверх</b></font>",
   "ja": "<b>たし算のときは</b><br/>いつも<font color='#D81B60'><b>親指</b></font>で<br/><font color='#0000EE'><b>下の珠を上へ動かします</b></font>",
-  "th": "<b>การบวก</b><br/>ใช้ <font color='#D81B60'><b>นิ้วโป้ง</b></font> เสมอ<br/>เพื่อ<font color='#0000EE'><b>เลื่อนลูกล่างขึ้น</b></font>"
+  "th": "<b>การบวก</b><br/>ใช้ <font color='#D81B60'><b>นิ้วโป้ง</b></font> เสมอ<br/>เพื่อ<font color='#0000EE'><b>เลื่อนลูกล่างขึ้น</b></font>",
+  "ar": "<b>في الجمع</b><br/>استخدم دائمًا <font color='#D81B60'><b>إبهامك</b></font><br/>من أجل <font color='#0000EE'><b>تحريك الخرزات السفلية إلى الأعلى</b></font>"
  },
  "tour_step_14": {
   "fr": "<b>Pour additionner</b><br/>utilise toujours ton <font color='#D81B60'><b>index</b></font><br/>pour <font color='#0000EE'><b>descendre la boule du haut</b></font>",
@@ -413,7 +426,8 @@
   "tr": "<b>Toplama için</b><br/>her zaman <font color='#D81B60'><b>işaret parmağını</b></font> kullan<br/><font color='#0000EE'><b>üst boncuğu aşağı indirmek</b></font> için",
   "ru": "<b>Для сложения</b><br/>всегда используй <font color='#D81B60'><b>указательный палец</b></font><br/>чтобы <font color='#0000EE'><b>опускать верхнюю бусину вниз</b></font>",
   "ja": "<b>たし算のときは</b><br/>いつも<font color='#D81B60'><b>人さし指</b></font>で<br/><font color='#0000EE'><b>上の珠を下へ動かします</b></font>",
-  "th": "<b>การบวก</b><br/>ใช้ <font color='#D81B60'><b>นิ้วชี้</b></font> เสมอ<br/>เพื่อ<font color='#0000EE'><b>เลื่อนลูกบนลง</b></font>"
+  "th": "<b>การบวก</b><br/>ใช้ <font color='#D81B60'><b>นิ้วชี้</b></font> เสมอ<br/>เพื่อ<font color='#0000EE'><b>เลื่อนลูกบนลง</b></font>",
+  "ar": "<b>في الجمع</b><br/>استخدم دائمًا <font color='#D81B60'><b>السبّابة</b></font><br/>من أجل <font color='#0000EE'><b>تحريك الخرزة العلوية إلى الأسفل</b></font>"
  },
  "tour_step_15": {
   "fr": "<b>Pour soustraire</b><br/>utilise toujours ton <font color='#D81B60'><b>index</b></font><br/>pour <font color='#0000EE'><b>descendre les boules du bas</b></font>",
@@ -422,7 +436,8 @@
   "tr": "<b>Çıkarma için</b><br/>her zaman <font color='#D81B60'><b>işaret parmağını</b></font> kullan<br/><font color='#0000EE'><b>alt boncukları aşağı indirmek</b></font> için",
   "ru": "<b>Для вычитания</b><br/>всегда используй <font color='#D81B60'><b>указательный палец</b></font><br/>чтобы <font color='#0000EE'><b>опускать нижние бусины вниз</b></font>",
   "ja": "<b>ひき算のときは</b><br/>いつも<font color='#D81B60'><b>人さし指</b></font>で<br/><font color='#0000EE'><b>下の珠を下へ動かします</b></font>",
-  "th": "<b>การลบ</b><br/>ใช้ <font color='#D81B60'><b>นิ้วชี้</b></font> เสมอ<br/>เพื่อ<font color='#0000EE'><b>เลื่อนลูกล่างลง</b></font>"
+  "th": "<b>การลบ</b><br/>ใช้ <font color='#D81B60'><b>นิ้วชี้</b></font> เสมอ<br/>เพื่อ<font color='#0000EE'><b>เลื่อนลูกล่างลง</b></font>",
+  "ar": "<b>في الطرح</b><br/>استخدم دائمًا <font color='#D81B60'><b>السبّابة</b></font><br/>من أجل <font color='#0000EE'><b>تحريك الخرزات السفلية إلى الأسفل</b></font>"
  },
  "tour_step_16": {
   "fr": "<b>Pour soustraire</b><br/>utilise toujours ton <font color='#D81B60'><b>pouce</b></font><br/>pour <font color='#0000EE'><b>monter la boule du haut</b></font>",
@@ -431,6 +446,7 @@
   "tr": "<b>Çıkarma için</b><br/>her zaman <font color='#D81B60'><b>başparmağını</b></font> kullan<br/><font color='#0000EE'><b>üst boncuğu yukarı çıkarmak</b></font> için",
   "ru": "<b>Для вычитания</b><br/>всегда используй <font color='#D81B60'><b>большой палец</b></font><br/>чтобы <font color='#0000EE'><b>поднимать верхнюю бусину вверх</b></font>",
   "ja": "<b>ひき算のときは</b><br/>いつも<font color='#D81B60'><b>親指</b></font>で<br/><font color='#0000EE'><b>上の珠を上へ動かします</b></font>",
-  "th": "<b>การลบ</b><br/>ใช้ <font color='#D81B60'><b>นิ้วโป้ง</b></font> เสมอ<br/>เพื่อ<font color='#0000EE'><b>เลื่อนลูกบนขึ้น</b></font>"
+  "th": "<b>การลบ</b><br/>ใช้ <font color='#D81B60'><b>นิ้วโป้ง</b></font> เสมอ<br/>เพื่อ<font color='#0000EE'><b>เลื่อนลูกบนขึ้น</b></font>",
+  "ar": "<b>في الطرح</b><br/>استخدم دائمًا <font color='#D81B60'><b>الإبهام</b></font><br/>من أجل <font color='#0000EE'><b>تحريك الخرزة العلوية إلى الأعلى</b></font>"
  }
 }

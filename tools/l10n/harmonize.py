@@ -11,8 +11,15 @@ import collections, glob, json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from make_pending import english, BASE
 
+LANGS = ['fr', 'es', 'pt', 'tr', 'ru', 'ja', 'th']
+for _a in sys.argv:
+    if _a.startswith('--lang='): LANGS = _a.split('=')[1].split(',')
+
 def main():
     files = [a for a in sys.argv[1:] if not a.startswith('--')]
+    if not files:
+        import glob as _g
+        files = [f for f in sorted(_g.glob(os.path.join(BASE, 'docs', 'l10n', 'translations', '*.json'))) if not os.path.basename(f).startswith('pending_')]
     files = [f if os.path.isabs(f) else os.path.join(BASE, 'docs', 'l10n', 'translations', f) for f in files]
     eng, _ = english()
     masters = {f: json.load(open(f, encoding='utf-8')) for f in files}
@@ -23,7 +30,7 @@ def main():
     changed = 0
     for text, members in groups.items():
         if len(members) < 2: continue
-        for lang in ('fr', 'es', 'pt', 'tr', 'ru', 'ja', 'th'):
+        for lang in LANGS:
             vals = [masters[f][k].get(lang) for f, k in members if masters[f][k].get(lang)]
             if len(set(vals)) < 2: continue
             best = collections.Counter(vals).most_common(1)[0][0]

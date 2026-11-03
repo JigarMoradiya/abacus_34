@@ -1,462 +1,462 @@
 {
-  "background_music_volume": {
-    "fr": "Volume de la musique de fond",
-    "es": "Volumen de la música de fondo",
-    "pt": "Volume da música de fundo",
-    "tr": "Arka plan müziği ses düzeyi",
-    "ru": "Громкость фоновой музыки",
-    "ja": "BGMの音量",
-    "th": "ระดับเสียงเพลงพื้นหลัง",
-    "ar": "مستوى صوت موسيقى الخلفية"
-  },
-  "change_voice_setting": {
-    "fr": "Modifier la voix",
-    "es": "Cambiar la voz",
-    "pt": "Alterar a voz",
-    "tr": "Ses ayarını değiştir",
-    "ru": "Настройки голоса",
-    "ja": "音声設定を変更",
-    "th": "เปลี่ยนการตั้งค่าเสียงพูด",
-    "ar": "تغيير إعدادات الصوت"
-  },
-  "check_voice": {
-    "fr": "Tester la voix",
-    "es": "Probar la voz",
-    "pt": "Testar a voz",
-    "tr": "Sesi dene",
-    "ru": "Проверить голос",
-    "ja": "音声を確認",
-    "th": "ทดสอบเสียง",
-    "ar": "اختبار الصوت"
-  },
-  "customize_pronunciation_voice": {
-    "fr": "Personnaliser la prononciation (voix)",
-    "es": "Personalizar la pronunciación (voz)",
-    "pt": "Personalizar a pronúncia (voz)",
-    "tr": "Telaffuzu özelleştir (ses)",
-    "ru": "Настроить произношение (голос)",
-    "ja": "発音のカスタマイズ（音声）",
-    "th": "ปรับการออกเสียง (เสียงพูด)",
-    "ar": "تخصيص النطق (الصوت)"
-  },
-  "display_bead_direction": {
-    "fr": "Afficher le sens des boules",
-    "es": "Mostrar la dirección de las cuentas",
-    "pt": "Mostrar a direção das contas",
-    "tr": "Boncuk yönünü göster",
-    "ru": "Показывать направление бусин",
-    "ja": "珠の動く向きを表示",
-    "th": "แสดงทิศทางการขยับลูก",
-    "ar": "عرض اتجاه الخرزات"
-  },
-  "free_abacus_theme": {
-    "fr": "Thèmes du boulier",
-    "es": "Temas del ábaco",
-    "pt": "Temas do ábaco",
-    "tr": "Abaküs temaları",
-    "ru": "Темы абакуса",
-    "ja": "そろばんのテーマ",
-    "th": "ธีมลูกคิด",
-    "ar": "سمات الأباكوس"
-  },
-  "pitch": {
-    "fr": "Hauteur",
-    "es": "Tono",
-    "pt": "Tom",
-    "tr": "Ses perdesi",
-    "ru": "Высота голоса",
-    "ja": "高さ（ピッチ）",
-    "th": "ระดับเสียงสูงต่ำ",
-    "ar": "درجة الصوت"
-  },
-  "preview_of_theme": {
-    "fr": "Aperçu du thème",
-    "es": "Vista previa del tema",
-    "pt": "Prévia do tema",
-    "tr": "Tema önizlemesi",
-    "ru": "Предпросмотр темы",
-    "ja": "テーマのプレビュー",
-    "th": "ตัวอย่างธีม",
-    "ar": "معاينة السمة"
-  },
-  "txtCancel": {
-    "fr": "Annuler",
-    "es": "Cancelar",
-    "pt": "Cancelar",
-    "tr": "İptal",
-    "ru": "Отмена",
-    "ja": "キャンセル",
-    "th": "ยกเลิก",
-    "ar": "إلغاء"
-  },
-  "txt_setting_7_rods_mode": {
-    "fr": "Boulier à 7 tiges",
-    "es": "Ábaco de 7 varillas",
-    "pt": "Ábaco de 7 hastes",
-    "tr": "7 çubuklu abaküs",
-    "ru": "Абакус с 7 спицами",
-    "ja": "7桁のそろばん",
-    "th": "ลูกคิด 7 แกน",
-    "ar": "أباكوس بـ 7 أعمدة"
-  },
-  "txt_setting_display_abacus_number": {
-    "fr": "Afficher le nombre actuel",
-    "es": "Mostrar el número actual",
-    "pt": "Mostrar o número atual",
-    "tr": "Mevcut sayıyı göster",
-    "ru": "Показывать текущее число",
-    "ja": "今の数を表示",
-    "th": "แสดงตัวเลขปัจจุบัน",
-    "ar": "عرض الرقم الحالي"
-  },
-  "txt_setting_display_help_message": {
-    "fr": "Afficher l'indice d'aide",
-    "es": "Mostrar la pista de ayuda",
-    "pt": "Mostrar a dica de ajuda",
-    "tr": "Yardım ipucunu göster",
-    "ru": "Показывать подсказку",
-    "ja": "ヒントを表示",
-    "th": "แสดงคำใบ้",
-    "ar": "عرض تلميح المساعدة"
-  },
-  "txt_setting_hintsound": {
-    "fr": "Lire les additions à voix haute",
-    "es": "Leer las sumas en voz alta",
-    "pt": "Ler as somas em voz alta",
-    "tr": "Toplamları sesli oku",
-    "ru": "Озвучивать примеры",
-    "ja": "計算を読み上げる",
-    "th": "อ่านโจทย์ออกเสียง",
-    "ar": "قراءة المسائل بصوت عالٍ"
-  },
-  "txt_setting_left_hand": {
-    "fr": "Boulier pour gaucher",
-    "es": "Ábaco para zurdos",
-    "pt": "Ábaco para canhotos",
-    "tr": "Solaklar için abaküs",
-    "ru": "Абакус для левшей",
-    "ja": "左利き用そろばん",
-    "th": "ลูกคิดสำหรับคนถนัดซ้าย",
-    "ar": "أباكوس للأعسر"
-  },
-  "txt_setting_sound": {
-    "fr": "Son des boules",
-    "es": "Sonido al mover las cuentas",
-    "pt": "Som ao mover as contas",
-    "tr": "Boncuk hareket sesi",
-    "ru": "Звук движения бусин",
-    "ja": "珠を動かす音",
-    "th": "เสียงขยับลูก",
-    "ar": "صوت تحريك الخرزات"
-  },
-  "txt_setting_title": {
-    "fr": "Réglages de l'application",
-    "es": "Ajustes de la aplicación",
-    "pt": "Configurações do aplicativo",
-    "tr": "Uygulama ayarları",
-    "ru": "Настройки приложения",
-    "ja": "アプリの設定",
-    "th": "การตั้งค่าแอป",
-    "ar": "إعدادات التطبيق"
-  },
-  "update": {
-    "fr": "Mettre à jour",
-    "es": "Actualizar",
-    "pt": "Atualizar",
-    "tr": "Güncelle",
-    "ru": "Обновить",
-    "ja": "更新",
-    "th": "อัปเดต",
-    "ar": "تحديث"
-  },
-  "voice_speed": {
-    "fr": "Vitesse de la voix",
-    "es": "Velocidad de la voz",
-    "pt": "Velocidade da voz",
-    "tr": "Ses hızı",
-    "ru": "Скорость голоса",
-    "ja": "音声の速さ",
-    "th": "ความเร็วเสียงพูด",
-    "ar": "سرعة الصوت"
-  },
-  "settings_dark_mode": {
-    "fr": "Mode sombre",
-    "es": "Modo oscuro",
-    "pt": "Modo escuro",
-    "tr": "Koyu mod",
-    "ru": "Тёмный режим",
-    "ja": "ダークモード",
-    "th": "โหมดมืด",
-    "ar": "الوضع الداكن"
-  },
-  "settings_mode_light": {
-    "fr": "☀️ Clair",
-    "es": "☀️ Claro",
-    "pt": "☀️ Claro",
-    "tr": "☀️ Açık",
-    "ru": "☀️ Светлая",
-    "ja": "☀️ ライト",
-    "th": "☀️ สว่าง",
-    "ar": "☀️ فاتح"
-  },
-  "settings_mode_dark": {
-    "fr": "🌙 Sombre",
-    "es": "🌙 Oscuro",
-    "pt": "🌙 Escuro",
-    "tr": "🌙 Koyu",
-    "ru": "🌙 Тёмная",
-    "ja": "🌙 ダーク",
-    "th": "🌙 มืด",
-    "ar": "🌙 داكن"
-  },
-  "settings_voice_languages_count": {
-    "fr": "Langues (%1$d)",
-    "es": "Idiomas (%1$d)",
-    "pt": "Idiomas (%1$d)",
-    "tr": "Diller (%1$d)",
-    "ru": "Языки (%1$d)",
-    "ja": "言語（%1$d）",
-    "th": "ภาษา (%1$d)",
-    "ar": "اللغات (%1$d)"
-  },
-  "settings_voice_test_sentence": {
-    "fr": "Bienvenue dans le monde du boulier.",
-    "es": "Bienvenido al mundo del ábaco.",
-    "pt": "Bem-vindo ao mundo do ábaco.",
-    "tr": "Abaküs dünyasına hoş geldin.",
-    "ru": "Добро пожаловать в мир абакуса.",
-    "ja": "そろばんの世界へようこそ。",
-    "th": "ยินดีต้อนรับสู่โลกของลูกคิด",
-    "ar": "مرحبًا بك في عالم الأباكوس."
-  },
-  "settings_language_title": {
-    "fr": "Langue de l'application",
-    "es": "Idioma de la aplicación",
-    "pt": "Idioma do aplicativo",
-    "tr": "Uygulama dili",
-    "ru": "Язык приложения",
-    "ja": "アプリの言語",
-    "th": "ภาษาของแอป",
-    "ar": "لغة التطبيق"
-  },
-  "settings_language_phone": {
-    "fr": "Comme le téléphone",
-    "es": "Igual que el teléfono",
-    "pt": "Igual ao telefone",
-    "tr": "Telefonla aynı",
-    "ru": "Как на телефоне",
-    "ja": "端末と同じ",
-    "th": "ตามโทรศัพท์",
-    "ar": "مثل الهاتف"
-  },
-  "settings_theme_rainbow": {
-    "fr": "Arc-en-ciel",
-    "es": "Arcoíris",
-    "pt": "Arco-íris",
-    "tr": "Gökkuşağı",
-    "ru": "Радуга",
-    "ja": "レインボー",
-    "th": "สายรุ้ง",
-    "ar": "قوس قزح"
-  },
-  "settings_theme_duotone": {
-    "fr": "Bicolore",
-    "es": "Dos tonos",
-    "pt": "Dois tons",
-    "tr": "İki tonlu",
-    "ru": "Два цвета",
-    "ja": "ツートーン",
-    "th": "สองสี",
-    "ar": "ثنائي اللون"
-  },
-  "settings_theme_candy": {
-    "fr": "Bonbon",
-    "es": "Caramelo",
-    "pt": "Doce",
-    "tr": "Şeker",
-    "ru": "Конфета",
-    "ja": "キャンディ",
-    "th": "ลูกกวาด",
-    "ar": "حلوى"
-  },
-  "settings_theme_heaven_earth": {
-    "fr": "Ciel et Terre",
-    "es": "Cielo y Tierra",
-    "pt": "Céu e Terra",
-    "tr": "Gök ve Yer",
-    "ru": "Небо и Земля",
-    "ja": "天と地",
-    "th": "ฟ้าและดิน",
-    "ar": "السماء والأرض"
-  },
-  "settings_theme_gemstone": {
-    "fr": "Gemme",
-    "es": "Gema",
-    "pt": "Gema",
-    "tr": "Mücevher",
-    "ru": "Самоцвет",
-    "ja": "宝石",
-    "th": "อัญมณี",
-    "ar": "حجر كريم"
-  },
-  "settings_theme_rectangle": {
-    "fr": "Rectangle",
-    "es": "Rectángulo",
-    "pt": "Retângulo",
-    "tr": "Dikdörtgen",
-    "ru": "Брусок",
-    "ja": "長方形",
-    "th": "สี่เหลี่ยม",
-    "ar": "مستطيل"
-  },
-  "settings_theme_happy_bead": {
-    "fr": "Joyeuse",
-    "es": "Feliz",
-    "pt": "Feliz",
-    "tr": "Mutlu",
-    "ru": "Весёлая",
-    "ja": "ハッピービーズ",
-    "th": "ยิ้ม",
-    "ar": "خرزة سعيدة"
-  },
-  "settings_theme_circle": {
-    "fr": "Cercle",
-    "es": "Círculo",
-    "pt": "Círculo",
-    "tr": "Daire",
-    "ru": "Круг",
-    "ja": "まる",
-    "th": "วงกลม",
-    "ar": "دائرة"
-  },
-  "settings_theme_purple": {
-    "fr": "Violet",
-    "es": "Morado",
-    "pt": "Roxo",
-    "tr": "Mor",
-    "ru": "Лиловый",
-    "ja": "むらさき",
-    "th": "ม่วง",
-    "ar": "بنفسجي"
-  },
-  "settings_theme_blue": {
-    "fr": "Bleu",
-    "es": "Azul",
-    "pt": "Azul",
-    "tr": "Mavi",
-    "ru": "Синий",
-    "ja": "あお",
-    "th": "น้ำเงิน",
-    "ar": "أزرق"
-  },
-  "settings_theme_skyblue": {
-    "fr": "Bleu ciel",
-    "es": "Celeste",
-    "pt": "Azul-claro",
-    "tr": "Gök mavisi",
-    "ru": "Голубой",
-    "ja": "みずいろ",
-    "th": "ฟ้า",
-    "ar": "أزرق سماوي"
-  },
-  "settings_theme_red": {
-    "fr": "Rouge",
-    "es": "Rojo",
-    "pt": "Vermelho",
-    "tr": "Kırmızı",
-    "ru": "Красный",
-    "ja": "あか",
-    "th": "แดง",
-    "ar": "أحمر"
-  },
-  "settings_theme_green": {
-    "fr": "Vert",
-    "es": "Verde",
-    "pt": "Verde",
-    "tr": "Yeşil",
-    "ru": "Зелёный",
-    "ja": "みどり",
-    "th": "เขียว",
-    "ar": "أخضر"
-  },
-  "settings_theme_orange": {
-    "fr": "Orange",
-    "es": "Naranja",
-    "pt": "Laranja",
-    "tr": "Turuncu",
-    "ru": "Оранжевый",
-    "ja": "オレンジ",
-    "th": "ส้ม",
-    "ar": "برتقالي"
-  },
-  "settings_theme_cyan": {
-    "fr": "Cyan",
-    "es": "Cian",
-    "pt": "Ciano",
-    "tr": "Turkuaz",
-    "ru": "Бирюзовый",
-    "ja": "シアン",
-    "th": "ฟ้าอมเขียว",
-    "ar": "سماوي"
-  },
-  "settings_theme_pink": {
-    "fr": "Rose",
-    "es": "Rosa",
-    "pt": "Rosa",
-    "tr": "Pembe",
-    "ru": "Розовый",
-    "ja": "ピンク",
-    "th": "ชมพู",
-    "ar": "وردي"
-  },
-  "settings_theme_yellow": {
-    "fr": "Jaune",
-    "es": "Amarillo",
-    "pt": "Amarelo",
-    "tr": "Sarı",
-    "ru": "Жёлтый",
-    "ja": "きいろ",
-    "th": "เหลือง",
-    "ar": "أصفر"
-  },
-  "settings_theme_silver": {
-    "fr": "Argent",
-    "es": "Plata",
-    "pt": "Prata",
-    "tr": "Gümüş",
-    "ru": "Серебро",
-    "ja": "ぎん",
-    "th": "เงิน",
-    "ar": "فضي"
-  },
-  "settings_theme_brown": {
-    "fr": "Marron",
-    "es": "Marrón",
-    "pt": "Marrom",
-    "tr": "Kahverengi",
-    "ru": "Коричневый",
-    "ja": "ちゃいろ",
-    "th": "น้ำตาล",
-    "ar": "بني"
-  },
-  "settings_theme_black": {
-    "fr": "Noir",
-    "es": "Negro",
-    "pt": "Preto",
-    "tr": "Siyah",
-    "ru": "Чёрный",
-    "ja": "くろ",
-    "th": "ดำ",
-    "ar": "أسود"
-  },
-  "settings_theme_pearl": {
-    "fr": "Perle",
-    "es": "Perla",
-    "pt": "Pérola",
-    "tr": "İnci",
-    "ru": "Жемчужный",
-    "ja": "パール",
-    "th": "ไข่มุก",
-    "ar": "لؤلؤي"
-  }
+ "background_music_volume": {
+  "fr": "Volume de la musique de fond",
+  "es": "Volumen de la música de fondo",
+  "pt": "Volume da música de fundo",
+  "tr": "Arka plan müziği ses düzeyi",
+  "ru": "Громкость фоновой музыки",
+  "ja": "BGMの音量",
+  "th": "ระดับเสียงเพลงพื้นหลัง",
+  "ar": "مستوى صوت موسيقى الخلفية"
+ },
+ "change_voice_setting": {
+  "fr": "Modifier la voix",
+  "es": "Cambiar la voz",
+  "pt": "Alterar a voz",
+  "tr": "Ses ayarını değiştir",
+  "ru": "Настройки голоса",
+  "ja": "音声設定を変更",
+  "th": "เปลี่ยนการตั้งค่าเสียงพูด",
+  "ar": "تغيير إعدادات الصوت"
+ },
+ "check_voice": {
+  "fr": "Tester la voix",
+  "es": "Probar la voz",
+  "pt": "Testar a voz",
+  "tr": "Sesi dene",
+  "ru": "Проверить голос",
+  "ja": "音声を確認",
+  "th": "ทดสอบเสียง",
+  "ar": "اختبار الصوت"
+ },
+ "customize_pronunciation_voice": {
+  "fr": "Personnaliser la prononciation (voix)",
+  "es": "Personalizar la pronunciación (voz)",
+  "pt": "Personalizar a pronúncia (voz)",
+  "tr": "Telaffuzu özelleştir (ses)",
+  "ru": "Настроить произношение (голос)",
+  "ja": "発音のカスタマイズ（音声）",
+  "th": "ปรับการออกเสียง (เสียงพูด)",
+  "ar": "تخصيص النطق (الصوت)"
+ },
+ "display_bead_direction": {
+  "fr": "Afficher le sens des boules",
+  "es": "Mostrar la dirección de las cuentas",
+  "pt": "Mostrar a direção das contas",
+  "tr": "Boncuk yönünü göster",
+  "ru": "Показывать направление бусин",
+  "ja": "珠の動く向きを表示",
+  "th": "แสดงทิศทางการขยับลูก",
+  "ar": "عرض اتجاه الخرزات"
+ },
+ "free_abacus_theme": {
+  "fr": "Thèmes du boulier",
+  "es": "Temas del ábaco",
+  "pt": "Temas do ábaco",
+  "tr": "Abaküs temaları",
+  "ru": "Темы абакуса",
+  "ja": "そろばんのテーマ",
+  "th": "ธีมลูกคิด",
+  "ar": "سمات الأباكوس"
+ },
+ "pitch": {
+  "fr": "Hauteur",
+  "es": "Tono",
+  "pt": "Tom",
+  "tr": "Ses perdesi",
+  "ru": "Высота голоса",
+  "ja": "高さ（ピッチ）",
+  "th": "ระดับเสียงสูงต่ำ",
+  "ar": "درجة الصوت"
+ },
+ "preview_of_theme": {
+  "fr": "Aperçu du thème",
+  "es": "Vista previa del tema",
+  "pt": "Prévia do tema",
+  "tr": "Tema önizlemesi",
+  "ru": "Предпросмотр темы",
+  "ja": "テーマのプレビュー",
+  "th": "ตัวอย่างธีม",
+  "ar": "معاينة السمة"
+ },
+ "txtCancel": {
+  "fr": "Annuler",
+  "es": "Cancelar",
+  "pt": "Cancelar",
+  "tr": "İptal",
+  "ru": "Отмена",
+  "ja": "キャンセル",
+  "th": "ยกเลิก",
+  "ar": "إلغاء"
+ },
+ "txt_setting_7_rods_mode": {
+  "fr": "Boulier à 7 tiges",
+  "es": "Ábaco de 7 varillas",
+  "pt": "Ábaco de 7 hastes",
+  "tr": "7 çubuklu abaküs",
+  "ru": "Абакус с 7 спицами",
+  "ja": "7桁のそろばん",
+  "th": "ลูกคิด 7 แกน",
+  "ar": "أباكوس بـ 7 أعمدة"
+ },
+ "txt_setting_display_abacus_number": {
+  "fr": "Afficher le nombre actuel",
+  "es": "Mostrar el número actual",
+  "pt": "Mostrar o número atual",
+  "tr": "Mevcut sayıyı göster",
+  "ru": "Показывать текущее число",
+  "ja": "今の数を表示",
+  "th": "แสดงตัวเลขปัจจุบัน",
+  "ar": "عرض الرقم الحالي"
+ },
+ "txt_setting_display_help_message": {
+  "fr": "Afficher l'indice d'aide",
+  "es": "Mostrar la pista de ayuda",
+  "pt": "Mostrar a dica de ajuda",
+  "tr": "Yardım ipucunu göster",
+  "ru": "Показывать подсказку",
+  "ja": "ヒントを表示",
+  "th": "แสดงคำใบ้",
+  "ar": "عرض تلميح المساعدة"
+ },
+ "txt_setting_hintsound": {
+  "fr": "Lire les additions à voix haute",
+  "es": "Leer las sumas en voz alta",
+  "pt": "Ler as somas em voz alta",
+  "tr": "Toplamları sesli oku",
+  "ru": "Озвучивать примеры",
+  "ja": "計算を読み上げる",
+  "th": "อ่านโจทย์ออกเสียง",
+  "ar": "قراءة المسائل بصوت عالٍ"
+ },
+ "txt_setting_left_hand": {
+  "fr": "Boulier pour gaucher",
+  "es": "Ábaco para zurdos",
+  "pt": "Ábaco para canhotos",
+  "tr": "Solaklar için abaküs",
+  "ru": "Абакус для левшей",
+  "ja": "左利き用そろばん",
+  "th": "ลูกคิดสำหรับคนถนัดซ้าย",
+  "ar": "أباكوس للأعسر"
+ },
+ "txt_setting_sound": {
+  "fr": "Son des boules",
+  "es": "Sonido al mover las cuentas",
+  "pt": "Som ao mover as contas",
+  "tr": "Boncuk hareket sesi",
+  "ru": "Звук движения бусин",
+  "ja": "珠を動かす音",
+  "th": "เสียงขยับลูก",
+  "ar": "صوت تحريك الخرزات"
+ },
+ "txt_setting_title": {
+  "fr": "Réglages de l'application",
+  "es": "Ajustes de la aplicación",
+  "pt": "Configurações do aplicativo",
+  "tr": "Uygulama ayarları",
+  "ru": "Настройки приложения",
+  "ja": "アプリの設定",
+  "th": "การตั้งค่าแอป",
+  "ar": "إعدادات التطبيق"
+ },
+ "update": {
+  "fr": "Mettre à jour",
+  "es": "Actualizar",
+  "pt": "Atualizar",
+  "tr": "Güncelle",
+  "ru": "Обновить",
+  "ja": "更新",
+  "th": "อัปเดต",
+  "ar": "تحديث"
+ },
+ "voice_speed": {
+  "fr": "Vitesse de la voix",
+  "es": "Velocidad de la voz",
+  "pt": "Velocidade da voz",
+  "tr": "Ses hızı",
+  "ru": "Скорость голоса",
+  "ja": "音声の速さ",
+  "th": "ความเร็วเสียงพูด",
+  "ar": "سرعة الصوت"
+ },
+ "settings_dark_mode": {
+  "fr": "Mode sombre",
+  "es": "Modo oscuro",
+  "pt": "Modo escuro",
+  "tr": "Koyu mod",
+  "ru": "Тёмный режим",
+  "ja": "ダークモード",
+  "th": "โหมดมืด",
+  "ar": "الوضع الداكن"
+ },
+ "settings_mode_light": {
+  "fr": "☀️ Clair",
+  "es": "☀️ Claro",
+  "pt": "☀️ Claro",
+  "tr": "☀️ Açık",
+  "ru": "☀️ Светлая",
+  "ja": "☀️ ライト",
+  "th": "☀️ สว่าง",
+  "ar": "☀️ فاتح"
+ },
+ "settings_mode_dark": {
+  "fr": "🌙 Sombre",
+  "es": "🌙 Oscuro",
+  "pt": "🌙 Escuro",
+  "tr": "🌙 Koyu",
+  "ru": "🌙 Тёмная",
+  "ja": "🌙 ダーク",
+  "th": "🌙 มืด",
+  "ar": "🌙 داكن"
+ },
+ "settings_voice_languages_count": {
+  "fr": "Langues (%1$d)",
+  "es": "Idiomas (%1$d)",
+  "pt": "Idiomas (%1$d)",
+  "tr": "Diller (%1$d)",
+  "ru": "Языки (%1$d)",
+  "ja": "言語（%1$d）",
+  "th": "ภาษา (%1$d)",
+  "ar": "اللغات (%1$d)"
+ },
+ "settings_voice_test_sentence": {
+  "fr": "Bienvenue dans le monde du boulier.",
+  "es": "Bienvenido al mundo del ábaco.",
+  "pt": "Bem-vindo ao mundo do ábaco.",
+  "tr": "Abaküs dünyasına hoş geldin.",
+  "ru": "Добро пожаловать в мир абакуса.",
+  "ja": "そろばんの世界へようこそ。",
+  "th": "ยินดีต้อนรับสู่โลกของลูกคิด",
+  "ar": "مرحبًا بك في عالم الأباكوس."
+ },
+ "settings_language_title": {
+  "fr": "Langue de l'application",
+  "es": "Idioma de la aplicación",
+  "pt": "Idioma do aplicativo",
+  "tr": "Uygulama dili",
+  "ru": "Язык приложения",
+  "ja": "アプリの言語",
+  "th": "ภาษาของแอป",
+  "ar": "لغة التطبيق"
+ },
+ "settings_language_phone": {
+  "fr": "Comme le téléphone",
+  "es": "Igual que el teléfono",
+  "pt": "Igual ao telefone",
+  "tr": "Telefonla aynı",
+  "ru": "Как на телефоне",
+  "ja": "端末と同じ",
+  "th": "ตามโทรศัพท์",
+  "ar": "مثل الهاتف"
+ },
+ "settings_theme_rainbow": {
+  "fr": "Arc-en-ciel",
+  "es": "Arcoíris",
+  "pt": "Arco-íris",
+  "tr": "Gökkuşağı",
+  "ru": "Радуга",
+  "ja": "レインボー",
+  "th": "สายรุ้ง",
+  "ar": "قوس قزح"
+ },
+ "settings_theme_duotone": {
+  "fr": "Bicolore",
+  "es": "Dos tonos",
+  "pt": "Dois tons",
+  "tr": "İki tonlu",
+  "ru": "Два цвета",
+  "ja": "ツートーン",
+  "th": "สองสี",
+  "ar": "ثنائي اللون"
+ },
+ "settings_theme_candy": {
+  "fr": "Bonbon",
+  "es": "Caramelo",
+  "pt": "Doce",
+  "tr": "Şeker",
+  "ru": "Конфета",
+  "ja": "キャンディ",
+  "th": "ลูกกวาด",
+  "ar": "حلوى"
+ },
+ "settings_theme_heaven_earth": {
+  "fr": "Ciel et Terre",
+  "es": "Cielo y Tierra",
+  "pt": "Céu e Terra",
+  "tr": "Gök ve Yer",
+  "ru": "Небо и Земля",
+  "ja": "天と地",
+  "th": "ฟ้าและดิน",
+  "ar": "السماء والأرض"
+ },
+ "settings_theme_gemstone": {
+  "fr": "Gemme",
+  "es": "Gema",
+  "pt": "Gema",
+  "tr": "Mücevher",
+  "ru": "Самоцвет",
+  "ja": "宝石",
+  "th": "อัญมณี",
+  "ar": "حجر كريم"
+ },
+ "settings_theme_rectangle": {
+  "fr": "Rectangle",
+  "es": "Rectángulo",
+  "pt": "Retângulo",
+  "tr": "Dikdörtgen",
+  "ru": "Брусок",
+  "ja": "長方形",
+  "th": "สี่เหลี่ยม",
+  "ar": "مستطيل"
+ },
+ "settings_theme_happy_bead": {
+  "fr": "Joyeuse",
+  "es": "Feliz",
+  "pt": "Feliz",
+  "tr": "Mutlu",
+  "ru": "Весёлая",
+  "ja": "ハッピービーズ",
+  "th": "ยิ้ม",
+  "ar": "خرزة سعيدة"
+ },
+ "settings_theme_circle": {
+  "fr": "Cercle",
+  "es": "Círculo",
+  "pt": "Círculo",
+  "tr": "Daire",
+  "ru": "Круг",
+  "ja": "まる",
+  "th": "วงกลม",
+  "ar": "دائرة"
+ },
+ "settings_theme_purple": {
+  "fr": "Violet",
+  "es": "Morado",
+  "pt": "Roxo",
+  "tr": "Mor",
+  "ru": "Лиловый",
+  "ja": "むらさき",
+  "th": "ม่วง",
+  "ar": "بنفسجي"
+ },
+ "settings_theme_blue": {
+  "fr": "Bleu",
+  "es": "Azul",
+  "pt": "Azul",
+  "tr": "Mavi",
+  "ru": "Синий",
+  "ja": "あお",
+  "th": "น้ำเงิน",
+  "ar": "أزرق"
+ },
+ "settings_theme_skyblue": {
+  "fr": "Bleu ciel",
+  "es": "Celeste",
+  "pt": "Azul-claro",
+  "tr": "Gök mavisi",
+  "ru": "Голубой",
+  "ja": "みずいろ",
+  "th": "ฟ้า",
+  "ar": "أزرق سماوي"
+ },
+ "settings_theme_red": {
+  "fr": "Rouge",
+  "es": "Rojo",
+  "pt": "Vermelho",
+  "tr": "Kırmızı",
+  "ru": "Красный",
+  "ja": "あか",
+  "th": "แดง",
+  "ar": "أحمر"
+ },
+ "settings_theme_green": {
+  "fr": "Vert",
+  "es": "Verde",
+  "pt": "Verde",
+  "tr": "Yeşil",
+  "ru": "Зелёный",
+  "ja": "みどり",
+  "th": "เขียว",
+  "ar": "أخضر"
+ },
+ "settings_theme_orange": {
+  "fr": "Orange",
+  "es": "Naranja",
+  "pt": "Laranja",
+  "tr": "Turuncu",
+  "ru": "Оранжевый",
+  "ja": "オレンジ",
+  "th": "ส้ม",
+  "ar": "برتقالي"
+ },
+ "settings_theme_cyan": {
+  "fr": "Cyan",
+  "es": "Cian",
+  "pt": "Ciano",
+  "tr": "Turkuaz",
+  "ru": "Бирюзовый",
+  "ja": "シアン",
+  "th": "ฟ้าอมเขียว",
+  "ar": "سماوي"
+ },
+ "settings_theme_pink": {
+  "fr": "Rose",
+  "es": "Rosa",
+  "pt": "Rosa",
+  "tr": "Pembe",
+  "ru": "Розовый",
+  "ja": "ピンク",
+  "th": "ชมพู",
+  "ar": "وردي"
+ },
+ "settings_theme_yellow": {
+  "fr": "Jaune",
+  "es": "Amarillo",
+  "pt": "Amarelo",
+  "tr": "Sarı",
+  "ru": "Жёлтый",
+  "ja": "きいろ",
+  "th": "เหลือง",
+  "ar": "أصفر"
+ },
+ "settings_theme_silver": {
+  "fr": "Argent",
+  "es": "Plata",
+  "pt": "Prata",
+  "tr": "Gümüş",
+  "ru": "Серебро",
+  "ja": "ぎん",
+  "th": "เงิน",
+  "ar": "فضي"
+ },
+ "settings_theme_brown": {
+  "fr": "Marron",
+  "es": "Marrón",
+  "pt": "Marrom",
+  "tr": "Kahverengi",
+  "ru": "Коричневый",
+  "ja": "ちゃいろ",
+  "th": "น้ำตาล",
+  "ar": "بني"
+ },
+ "settings_theme_black": {
+  "fr": "Noir",
+  "es": "Negro",
+  "pt": "Preto",
+  "tr": "Siyah",
+  "ru": "Чёрный",
+  "ja": "くろ",
+  "th": "ดำ",
+  "ar": "أسود"
+ },
+ "settings_theme_pearl": {
+  "fr": "Perle",
+  "es": "Perla",
+  "pt": "Pérola",
+  "tr": "İnci",
+  "ru": "Жемчужный",
+  "ja": "パール",
+  "th": "ไข่มุก",
+  "ar": "لؤلؤي"
+ }
 }

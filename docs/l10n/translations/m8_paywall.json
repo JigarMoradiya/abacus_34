@@ -6,7 +6,8 @@
   "tr": "Satın alındı",
   "ru": "Куплено",
   "ja": "購入済み",
-  "th": "ซื้อแล้ว"
+  "th": "ซื้อแล้ว",
+  "ar": "تم الشراء"
  },
  "txt_purchase_Now": {
   "fr": "Acheter",
@@ -15,7 +16,8 @@
   "tr": "Satın al",
   "ru": "Купить",
   "ja": "購入",
-  "th": "ซื้อ"
+  "th": "ซื้อ",
+  "ar": "شراء"
  },
  "txt_subscribed": {
   "fr": "Abonné",
@@ -24,7 +26,8 @@
   "tr": "Abone",
   "ru": "Подписка активна",
   "ja": "購読中",
-  "th": "สมัครแล้ว"
+  "th": "สมัครแล้ว",
+  "ar": "مشترك"
  },
  "txt_subscribe_Now": {
   "fr": "S'abonner",
@@ -33,7 +36,8 @@
   "tr": "Abone ol",
   "ru": "Подписаться",
   "ja": "購読する",
-  "th": "สมัครสมาชิก"
+  "th": "สมัครสมาชิก",
+  "ar": "اشترك"
  },
  "paywall_subscribe": {
   "fr": "S'abonner",
@@ -42,7 +46,8 @@
   "tr": "Abone ol",
   "ru": "Подписаться",
   "ja": "購読する",
-  "th": "สมัครสมาชิก"
+  "th": "สมัครสมาชิก",
+  "ar": "اشترك"
  },
  "assigned": {
   "fr": "Attribué",
@@ -51,7 +56,8 @@
   "tr": "Atandı",
   "ru": "Назначено",
   "ja": "付与済み",
-  "th": "ได้รับสิทธิ์"
+  "th": "ได้รับสิทธิ์",
+  "ar": "تم التعيين"
  },
  "old_purchases": {
   "fr": "Anciens achats",
@@ -60,7 +66,8 @@
   "tr": "Eski satın alımlar",
   "ru": "Прежние покупки",
   "ja": "以前の購入",
-  "th": "การซื้อก่อนหน้า"
+  "th": "การซื้อก่อนหน้า",
+  "ar": "المشتريات القديمة"
  },
  "home_offer_title": {
   "fr": "Offre à durée limitée !",
@@ -69,7 +76,8 @@
   "tr": "Sınırlı süreli teklif!",
   "ru": "Предложение ограничено по времени!",
   "ja": "期間限定オファー！",
-  "th": "ข้อเสนอจำกัดเวลา!"
+  "th": "ข้อเสนอจำกัดเวลา!",
+  "ar": "عرض لفترة محدودة!"
  },
  "home_offer_save_pct": {
   "fr": "Économisez %1$d%% sur l'offre %2$s",
@@ -78,7 +86,8 @@
   "tr": "%2$s planında %%%1$d tasarruf edin",
   "ru": "Скидка %1$d%% на тариф «%2$s»",
   "ja": "%2$sプランが%1$d%%オフ",
-  "th": "ประหยัด %1$d%% กับแพ็กเกจ%2$s"
+  "th": "ประหยัด %1$d%% กับแพ็กเกจ%2$s",
+  "ar": "وفّر %1$d%% على باقة %2$s"
  },
  "home_offer_special_price": {
   "fr": "Prix spécial sur l'offre %1$s",
@@ -87,7 +96,8 @@
   "tr": "%1$s planında özel fiyat",
   "ru": "Специальная цена на тариф «%1$s»",
   "ja": "%1$sプランが特別価格",
-  "th": "ราคาพิเศษสำหรับแพ็กเกจ%1$s"
+  "th": "ราคาพิเศษสำหรับแพ็กเกจ%1$s",
+  "ar": "سعر خاص على باقة %1$s"
  },
  "home_offer_ends_in": {
   "fr": "Se termine dans %1$s",
@@ -96,7 +106,8 @@
   "tr": "Bitmesine %1$s",
   "ru": "Осталось: %1$s",
   "ja": "終了まで%1$s",
-  "th": "สิ้นสุดใน %1$s"
+  "th": "สิ้นสุดใน %1$s",
+  "ar": "ينتهي خلال %1$s"
  },
  "home_offer_product_yearly": {
   "fr": "annuelle",
@@ -105,7 +116,8 @@
   "tr": "Yıllık",
   "ru": "годовой",
   "ja": "年額",
-  "th": "รายปี"
+  "th": "รายปี",
+  "ar": "سنوية"
  },
  "home_offer_product_lifetime": {
   "fr": "à vie",
@@ -114,7 +126,8 @@
   "tr": "Ömür boyu",
   "ru": "пожизненный",
   "ja": "永久",
-  "th": "ตลอดชีพ"
+  "th": "ตลอดชีพ",
+  "ar": "مدى الحياة"
  },
  "order_id": {
   "fr": "N° de commande",
@@ -123,7 +136,8 @@
   "tr": "Sipariş kimliği",
   "ru": "Номер заказа",
   "ja": "注文ID",
-  "th": "รหัสคำสั่งซื้อ"
+  "th": "รหัสคำสั่งซื้อ",
+  "ar": "رقم الطلب"
  },
  "subscription_free_trial_msg": {
   "fr": "Le paiement sera débité après l'essai gratuit.\nAnnulez à tout moment avant la fin de l'essai.",
@@ -132,7 +146,8 @@
   "tr": "Ödeme, ücretsiz denemeden sonra alınır.\nDeneme bitmeden istediğiniz zaman iptal edin.",
   "ru": "Оплата будет списана после бесплатного периода.\nОтменить можно в любой момент до его окончания.",
   "ja": "お支払いは無料体験の終了後に請求されます。\n体験期間中はいつでも解約できます。",
-  "th": "จะเรียกเก็บเงินหลังช่วงทดลองใช้ฟรี\nยกเลิกได้ทุกเมื่อก่อนสิ้นสุดช่วงทดลอง"
+  "th": "จะเรียกเก็บเงินหลังช่วงทดลองใช้ฟรี\nยกเลิกได้ทุกเมื่อก่อนสิ้นสุดช่วงทดลอง",
+  "ar": "سيتم الدفع بعد انتهاء الفترة التجريبية المجانية.\nيمكنك الإلغاء في أي وقت قبل انتهاء التجربة."
  },
  "cancel_subscription_anytime": {
   "fr": "Résiliez à tout moment.",
@@ -141,7 +156,8 @@
   "tr": "Aboneliği istediğiniz zaman iptal edin.",
   "ru": "Подписку можно отменить в любой момент.",
   "ja": "購読はいつでも解約できます。",
-  "th": "ยกเลิกการสมัครสมาชิกได้ทุกเมื่อ"
+  "th": "ยกเลิกการสมัครสมาชิกได้ทุกเมื่อ",
+  "ar": "يمكنك إلغاء الاشتراك في أي وقت."
  },
  "plan_assigned_from_admin": {
   "fr": "Offre attribuée par l'administrateur.",
@@ -150,7 +166,8 @@
   "tr": "Plan yönetici tarafından atandı.",
   "ru": "Тариф назначен администратором.",
   "ja": "管理者から付与されたプランです。",
-  "th": "แพ็กเกจที่ผู้ดูแลระบบมอบให้"
+  "th": "แพ็กเกจที่ผู้ดูแลระบบมอบให้",
+  "ar": "تم تعيين الباقة من المشرف."
  },
  "purchase_pending": {
   "fr": "Votre paiement est en attente d'approbation. Vous aurez accès dès qu'il sera validé.",
@@ -159,7 +176,8 @@
   "tr": "Ödemeniz onay bekliyor. Onaylanır onaylanmaz erişiminiz açılır.",
   "ru": "Платёж ожидает подтверждения. Доступ откроется сразу после его завершения.",
   "ja": "お支払いは承認待ちです。完了しだい、すぐに利用できます。",
-  "th": "การชำระเงินของคุณรอการอนุมัติ คุณจะเข้าใช้ได้ทันทีที่เสร็จสมบูรณ์"
+  "th": "การชำระเงินของคุณรอการอนุมัติ คุณจะเข้าใช้ได้ทันทีที่เสร็จสมบูรณ์",
+  "ar": "دفعتك بانتظار الموافقة. ستحصل على الوصول فور اكتمالها."
  },
  "purchase_not_allowed": {
   "fr": "Les achats sont désactivés sur cet appareil. Un parent peut les autoriser dans les paramètres de Google Play.",
@@ -168,7 +186,8 @@
   "tr": "Bu cihazda satın alma kapalı. Bir ebeveyn bunu Google Play ayarlarından açabilir.",
   "ru": "Покупки отключены на этом устройстве. Родитель может разрешить их в настройках Google Play.",
   "ja": "このデバイスでは購入が無効になっています。保護者の方がGoogle Playの設定で許可できます。",
-  "th": "ปิดการซื้อบนอุปกรณ์นี้อยู่ ผู้ปกครองสามารถอนุญาตได้ในการตั้งค่า Google Play"
+  "th": "ปิดการซื้อบนอุปกรณ์นี้อยู่ ผู้ปกครองสามารถอนุญาตได้ในการตั้งค่า Google Play",
+  "ar": "عمليات الشراء متوقفة على هذا الجهاز. يمكن لأحد الوالدين السماح بها من إعدادات Google Play."
  },
  "purchase_already_owned": {
   "fr": "Vous possédez déjà cette offre. Nous la restaurons.",
@@ -177,7 +196,8 @@
   "tr": "Bu plana zaten sahipsiniz. Şimdi geri yüklüyoruz.",
   "ru": "Этот тариф у вас уже есть. Восстанавливаем его.",
   "ja": "このプランはすでにお持ちです。復元しています。",
-  "th": "คุณมีแพ็กเกจนี้อยู่แล้ว กำลังกู้คืนให้"
+  "th": "คุณมีแพ็กเกจนี้อยู่แล้ว กำลังกู้คืนให้",
+  "ar": "أنت تملك هذه الباقة بالفعل. نقوم باستعادتها الآن."
  },
  "purchase_network": {
   "fr": "Pas de connexion Internet. Vérifiez-la et réessayez.",
@@ -186,7 +206,8 @@
   "tr": "İnternet bağlantısı yok. Kontrol edip tekrar deneyin.",
   "ru": "Нет подключения к интернету. Проверьте его и повторите.",
   "ja": "インターネットに接続されていません。確認してもう一度お試しください。",
-  "th": "ไม่มีอินเทอร์เน็ต โปรดตรวจสอบแล้วลองอีกครั้ง"
+  "th": "ไม่มีอินเทอร์เน็ต โปรดตรวจสอบแล้วลองอีกครั้ง",
+  "ar": "لا يوجد اتصال بالإنترنت. يرجى التحقق منه والمحاولة مرة أخرى."
  },
  "purchase_no_plans": {
   "fr": "Aucune offre n'est disponible pour le moment. Réessayez dans un instant.",
@@ -195,7 +216,8 @@
   "tr": "Şu anda kullanılabilir plan yok. Birazdan tekrar deneyin.",
   "ru": "Сейчас нет доступных тарифов. Попробуйте чуть позже.",
   "ja": "現在利用できるプランがありません。しばらくしてからお試しください。",
-  "th": "ตอนนี้ยังไม่มีแพ็กเกจให้เลือก โปรดลองอีกครั้งในอีกสักครู่"
+  "th": "ตอนนี้ยังไม่มีแพ็กเกจให้เลือก โปรดลองอีกครั้งในอีกสักครู่",
+  "ar": "لا توجد باقات متاحة الآن. يرجى المحاولة بعد قليل."
  },
  "see_benefits": {
   "fr": "Voir les avantages",
@@ -204,7 +226,8 @@
   "tr": "Avantajları gör",
   "ru": "Посмотреть преимущества",
   "ja": "特典を見る",
-  "th": "ดูสิทธิประโยชน์"
+  "th": "ดูสิทธิประโยชน์",
+  "ar": "عرض المزايا"
  },
  "premium_benefits_title": {
   "fr": "Avantages Premium",
@@ -213,7 +236,8 @@
   "tr": "Premium Avantajları",
   "ru": "Преимущества Premium",
   "ja": "Premiumの特典",
-  "th": "สิทธิประโยชน์ Premium"
+  "th": "สิทธิประโยชน์ Premium",
+  "ar": "مزايا Premium"
  },
  "benefit_all_levels": {
   "fr": "Entraînement sur tous les niveaux (1 à 8)",
@@ -222,7 +246,8 @@
   "tr": "Tüm seviyelerde alıştırma (Seviye 1–8)",
   "ru": "Практика на всех уровнях (1–8)",
   "ja": "全レベルの練習（レベル1〜8）",
-  "th": "ฝึกทุกระดับ (ระดับ 1–8)"
+  "th": "ฝึกทุกระดับ (ระดับ 1–8)",
+  "ar": "التدريب على كل المستويات (المستوى ‪1–8)‬"
  },
  "benefit_all_exams": {
   "fr": "Tous les types d'examens",
@@ -231,7 +256,8 @@
   "tr": "Tüm sınav türleri",
   "ru": "Все типы экзаменов",
   "ja": "すべてのテスト",
-  "th": "ข้อสอบทุกประเภท"
+  "th": "ข้อสอบทุกประเภท",
+  "ar": "كل أنواع الامتحانات"
  },
  "benefit_all_exercises": {
   "fr": "Tous les exercices",
@@ -240,7 +266,8 @@
   "tr": "Tüm egzersizler",
   "ru": "Все упражнения",
   "ja": "すべてのトレーニング",
-  "th": "แบบฝึกหัดทั้งหมด"
+  "th": "แบบฝึกหัดทั้งหมด",
+  "ar": "كل التمارين"
  },
  "benefit_ccm": {
   "fr": "Mode défi personnalisé",
@@ -249,7 +276,8 @@
   "tr": "Özel Meydan Okuma Modu",
   "ru": "Режим «Свой вызов»",
   "ja": "オリジナルチャレンジモード",
-  "th": "โหมดชาเลนจ์ที่กำหนดเอง"
+  "th": "โหมดชาเลนจ์ที่กำหนดเอง",
+  "ar": "وضع التحدي المخصص"
  },
  "benefit_all_games": {
   "fr": "Tous les jeux de maths",
@@ -258,7 +286,8 @@
   "tr": "Tüm matematik oyunları",
   "ru": "Все математические игры",
   "ja": "すべての算数ゲーム",
-  "th": "เกมคณิตศาสตร์ทั้งหมด"
+  "th": "เกมคณิตศาสตร์ทั้งหมด",
+  "ar": "كل ألعاب الرياضيات"
  },
  "benefit_report_history": {
   "fr": "Historique complet des rapports",
@@ -267,7 +296,8 @@
   "tr": "Tam rapor geçmişi",
   "ru": "Вся история отчётов",
   "ja": "レポート履歴すべて",
-  "th": "ประวัติรายงานทั้งหมด"
+  "th": "ประวัติรายงานทั้งหมด",
+  "ar": "سجل التقارير الكامل"
  },
  "paywall_headline_generic": {
   "fr": "Passez à Premium !",
@@ -276,7 +306,8 @@
   "tr": "Premium'a Geçin!",
   "ru": "Перейдите на Premium!",
   "ja": "Premiumにしよう！",
-  "th": "อัปเกรดเป็น Premium!"
+  "th": "อัปเกรดเป็น Premium!",
+  "ar": "انتقل إلى Premium!"
  },
  "paywall_subtitle_generic": {
   "fr": "Débloquez TOUS les niveaux\nSans limites\nApprenez sans limites !",
@@ -285,7 +316,8 @@
   "tr": "TÜM seviyelerin kilidini açın\nSınır yok\nSınırsız öğrenin!",
   "ru": "Откройте ВСЕ уровни\nБез ограничений\nУчитесь без границ!",
   "ja": "すべてのレベルが解放\n制限なし\n自由に学べる！",
-  "th": "ปลดล็อกทุกระดับ\nไม่มีข้อจำกัด\nเรียนได้ไม่จำกัด!"
+  "th": "ปลดล็อกทุกระดับ\nไม่มีข้อจำกัด\nเรียนได้ไม่จำกัด!",
+  "ar": "افتح كل المستويات\nبلا حدود\nتعلّم بلا حدود!"
  },
  "paywall_headline_level2": {
   "fr": "Débloquez les formules du boulier !",
@@ -294,7 +326,8 @@
   "tr": "Abaküs formüllerinin kilidini açın!",
   "ru": "Откройте формулы абакуса!",
   "ja": "そろばんの公式を解放しよう！",
-  "th": "ปลดล็อกสูตรลูกคิด!"
+  "th": "ปลดล็อกสูตรลูกคิด!",
+  "ar": "افتح صيغ الأباكوس!"
  },
  "paywall_subtitle_level2": {
   "fr": "Les astuces du petit ami, du grand ami et de la famille",
@@ -303,7 +336,8 @@
   "tr": "Küçük Arkadaş, Büyük Arkadaş ve Aile püf noktaları",
   "ru": "Приёмы «малый друг», «большой друг» и «семья»",
   "ja": "「小さな友だち」「大きな友だち」「家族」のコツ",
-  "th": "เทคนิคเพื่อนเล็ก เพื่อนใหญ่ และครอบครัว"
+  "th": "เทคนิคเพื่อนเล็ก เพื่อนใหญ่ และครอบครัว",
+  "ar": "حيل الصديق الصغير والصديق الكبير والعائلة"
  },
  "paywall_headline_level3": {
   "fr": "Prêt pour l'entraînement à la vitesse ?",
@@ -312,7 +346,8 @@
   "tr": "Hız antrenmanına hazır mısınız?",
   "ru": "Готовы к тренировке скорости?",
   "ja": "スピード練習の準備はいい？",
-  "th": "พร้อมฝึกความเร็วหรือยัง"
+  "th": "พร้อมฝึกความเร็วหรือยัง",
+  "ar": "هل أنت مستعد لتدريب السرعة؟"
  },
  "paywall_subtitle_level3": {
   "fr": "Débloquez le niveau 3 : calcul mental et Anzan",
@@ -321,7 +356,8 @@
   "tr": "Seviye 3'ün kilidini açın: zihinden hesaplama ve Anzan",
   "ru": "Откройте уровень 3: счёт в уме и Анзан",
   "ja": "レベル3を解放：暗算とアンザン",
-  "th": "ปลดล็อกระดับ 3: คิดเลขในใจและอันซัง"
+  "th": "ปลดล็อกระดับ 3: คิดเลขในใจและอันซัง",
+  "ar": "افتح المستوى 3: الحساب الذهني والأنزان"
  },
  "paywall_headline_tables": {
   "fr": "Maîtrisez les tables de multiplication !",
@@ -330,7 +366,8 @@
   "tr": "Çarpım tablolarında ustalaşın!",
   "ru": "Освойте таблицу умножения!",
   "ja": "九九をマスターしよう！",
-  "th": "เก่งสูตรคูณ!"
+  "th": "เก่งสูตรคูณ!",
+  "ar": "أتقن جداول الضرب!"
  },
  "paywall_subtitle_tables": {
   "fr": "Débloquez toutes les tables et l'entraînement mixte",
@@ -339,7 +376,8 @@
   "tr": "Tüm tabloların ve karışık alıştırmanın kilidini açın",
   "ru": "Откройте все таблицы и смешанную практику",
   "ja": "すべての九九とミックス練習を解放",
-  "th": "ปลดล็อกทุกตารางและการฝึกแบบผสม"
+  "th": "ปลดล็อกทุกตารางและการฝึกแบบผสม",
+  "ar": "افتح كل الجداول والتدريب المختلط"
  },
  "paywall_headline_practice": {
   "fr": "Envie de plus d'entraînement ?",
@@ -348,7 +386,8 @@
   "tr": "Daha fazla alıştırma ister misiniz?",
   "ru": "Хотите больше практики?",
   "ja": "もっと練習したい？",
-  "th": "อยากฝึกเพิ่มไหม"
+  "th": "อยากฝึกเพิ่มไหม",
+  "ar": "تريد مزيدًا من التدريب؟"
  },
  "paywall_subtitle_practice": {
   "fr": "Débloquez toutes les pages d'entraînement",
@@ -357,7 +396,8 @@
   "tr": "Tüm alıştırma sayfalarının kilidini açın",
   "ru": "Откройте все страницы практики",
   "ja": "すべての練習ページを解放",
-  "th": "ปลดล็อกทุกหน้าฝึก"
+  "th": "ปลดล็อกทุกหน้าฝึก",
+  "ar": "افتح كل صفحات التدريب"
  },
  "paywall_headline_exercise": {
   "fr": "Continuez à vous entraîner !",
@@ -366,7 +406,8 @@
   "tr": "Alıştırmaya devam edin!",
   "ru": "Продолжайте тренироваться!",
   "ja": "練習を続けよう！",
-  "th": "ฝึกต่อไปเรื่อย ๆ!"
+  "th": "ฝึกต่อไปเรื่อย ๆ!",
+  "ar": "واصل التدريب!"
  },
  "paywall_subtitle_exercise": {
   "fr": "Débloquez tous les exercices",
@@ -375,7 +416,8 @@
   "tr": "Tüm egzersizlerin kilidini açın",
   "ru": "Откройте все упражнения",
   "ja": "すべてのトレーニングを解放",
-  "th": "ปลดล็อกแบบฝึกหัดทั้งหมด"
+  "th": "ปลดล็อกแบบฝึกหัดทั้งหมด",
+  "ar": "افتح كل التمارين"
  },
  "paywall_headline_exam": {
   "fr": "Prêt pour le vrai examen ?",
@@ -384,7 +426,8 @@
   "tr": "Gerçek sınava hazır mısınız?",
   "ru": "Готовы к настоящему экзамену?",
   "ja": "本番のテストに備えよう！",
-  "th": "พร้อมสอบจริงหรือยัง"
+  "th": "พร้อมสอบจริงหรือยัง",
+  "ar": "مستعد للامتحان الحقيقي؟"
  },
  "paywall_subtitle_exam": {
   "fr": "Débloquez tous les types d'examens",
@@ -393,7 +436,8 @@
   "tr": "Tüm sınav türlerinin kilidini açın",
   "ru": "Откройте все типы экзаменов",
   "ja": "すべてのテストを解放",
-  "th": "ปลดล็อกข้อสอบทุกประเภท"
+  "th": "ปลดล็อกข้อสอบทุกประเภท",
+  "ar": "افتح كل أنواع الامتحانات"
  },
  "paywall_headline_ccm": {
   "fr": "Des défis personnalisés vous attendent !",
@@ -402,7 +446,8 @@
   "tr": "Özel meydan okumalar sizi bekliyor!",
   "ru": "Вас ждут свои вызовы!",
   "ja": "オリジナルチャレンジが待っています！",
-  "th": "ชาเลนจ์ที่กำหนดเองรออยู่!"
+  "th": "ชาเลนจ์ที่กำหนดเองรออยู่!",
+  "ar": "التحديات المخصصة بانتظارك!"
  },
  "paywall_subtitle_ccm": {
   "fr": "Débloquez le mode défi personnalisé",
@@ -411,7 +456,8 @@
   "tr": "Özel Meydan Okuma Modu'nun kilidini açın",
   "ru": "Откройте режим «Свой вызов»",
   "ja": "オリジナルチャレンジモードを解放",
-  "th": "ปลดล็อกโหมดชาเลนจ์ที่กำหนดเอง"
+  "th": "ปลดล็อกโหมดชาเลนจ์ที่กำหนดเอง",
+  "ar": "افتح وضع التحدي المخصص"
  },
  "paywall_headline_games": {
   "fr": "Ne vous arrêtez pas de jouer !",
@@ -420,7 +466,8 @@
   "tr": "Oynamaya devam edin!",
   "ru": "Не останавливайтесь!",
   "ja": "遊びをやめないで！",
-  "th": "เล่นต่อไปอย่าหยุด!"
+  "th": "เล่นต่อไปอย่าหยุด!",
+  "ar": "لا تتوقف عن اللعب!"
  },
  "paywall_subtitle_games": {
   "fr": "Débloquez tous les jeux de maths",
@@ -429,7 +476,8 @@
   "tr": "Tüm matematik oyunlarının kilidini açın",
   "ru": "Откройте все математические игры",
   "ja": "すべての算数ゲームを解放",
-  "th": "ปลดล็อกเกมคณิตศาสตร์ทั้งหมด"
+  "th": "ปลดล็อกเกมคณิตศาสตร์ทั้งหมด",
+  "ar": "افتح كل ألعاب الرياضيات"
  },
  "paywall_headline_reports": {
   "fr": "Suivez les progrès de votre enfant !",
@@ -438,7 +486,8 @@
   "tr": "Çocuğunuzun ilerlemesini görün!",
   "ru": "Следите за прогрессом ребёнка!",
   "ja": "お子さまの成長を見よう！",
-  "th": "ดูความก้าวหน้าของลูก!"
+  "th": "ดูความก้าวหน้าของลูก!",
+  "ar": "شاهد تقدّم طفلك!"
  },
  "paywall_subtitle_reports": {
   "fr": "Débloquez tout l'historique des rapports",
@@ -447,7 +496,8 @@
   "tr": "Tüm rapor geçmişinin kilidini açın",
   "ru": "Откройте всю историю отчётов",
   "ja": "レポート履歴をすべて解放",
-  "th": "ปลดล็อกประวัติรายงานทั้งหมด"
+  "th": "ปลดล็อกประวัติรายงานทั้งหมด",
+  "ar": "افتح سجل التقارير الكامل"
  },
  "paywall_badge_best_value": {
   "fr": "Meilleur choix !",
@@ -456,7 +506,8 @@
   "tr": "En iyi değer!",
   "ru": "Лучшая цена!",
   "ja": "いちばんお得！",
-  "th": "คุ้มที่สุด!"
+  "th": "คุ้มที่สุด!",
+  "ar": "أفضل قيمة!"
  },
  "paywall_badge_one_time": {
   "fr": "Paiement unique",
@@ -465,7 +516,8 @@
   "tr": "Tek seferlik",
   "ru": "Разовый платёж",
   "ja": "買い切り",
-  "th": "จ่ายครั้งเดียว"
+  "th": "จ่ายครั้งเดียว",
+  "ar": "مرة واحدة"
  },
  "paywall_save_vs_monthly": {
   "fr": "Économisez ~%1$d %% par rapport au mensuel",
@@ -474,7 +526,8 @@
   "tr": "Aylığa göre ~%%%1$d tasarruf",
   "ru": "Экономия ~%1$d%% по сравнению с месячной",
   "ja": "月額より約%1$d%%お得",
-  "th": "ประหยัด ~%1$d%% เทียบกับรายเดือน"
+  "th": "ประหยัด ~%1$d%% เทียบกับรายเดือน",
+  "ar": "وفّر ~%1$d%% مقارنة بالشهري"
  },
  "paywall_save_vs_weekly": {
   "fr": "Économisez ~%1$d %% par rapport au hebdomadaire",
@@ -483,7 +536,8 @@
   "tr": "Haftalığa göre ~%%%1$d tasarruf",
   "ru": "Экономия ~%1$d%% по сравнению с недельной",
   "ja": "週額より約%1$d%%お得",
-  "th": "ประหยัด ~%1$d%% เทียบกับรายสัปดาห์"
+  "th": "ประหยัด ~%1$d%% เทียบกับรายสัปดาห์",
+  "ar": "وفّر ~%1$d%% مقارنة بالأسبوعي"
  },
  "paywall_percent_off": {
   "fr": "~%1$d %% DE REMISE",
@@ -492,7 +546,8 @@
   "tr": "~%%%1$d İNDİRİM",
   "ru": "СКИДКА ~%1$d%%",
   "ja": "約%1$d%%オフ",
-  "th": "ลด ~%1$d%%"
+  "th": "ลด ~%1$d%%",
+  "ar": "خصم ~%1$d%%"
  },
  "paywall_percent_off_extra": {
   "fr": "(en plus ~%1$d %% de remise)",
@@ -501,7 +556,8 @@
   "tr": "(ek ~%%%1$d indirim)",
   "ru": "(ещё ~%1$d%% скидки)",
   "ja": "（さらに約%1$d%%オフ）",
-  "th": "(ลดเพิ่ม ~%1$d%%)"
+  "th": "(ลดเพิ่ม ~%1$d%%)",
+  "ar": "(خصم إضافي ~%1$d%%)"
  },
  "paywall_percent_off_store": {
   "fr": "-%1$d %%",
@@ -510,7 +566,8 @@
   "tr": "%%%1$d İNDİRİM",
   "ru": "-%1$d%%",
   "ja": "%1$d%%オフ",
-  "th": "ลด %1$d%%"
+  "th": "ลด %1$d%%",
+  "ar": "خصم %1$d%%"
  },
  "paywall_intro_then": {
   "fr": "%1$s, puis %2$s",
@@ -519,7 +576,8 @@
   "tr": "%1$s, sonra %2$s",
   "ru": "%1$s, затем %2$s",
   "ja": "%1$s、その後は%2$s",
-  "th": "%1$s หลังจากนั้น %2$s"
+  "th": "%1$s หลังจากนั้น %2$s",
+  "ar": "%1$s، ثم %2$s"
  },
  "purchase_headline": {
   "fr": "Passez à Premium",
@@ -528,7 +586,8 @@
   "tr": "Premium'a Geçin",
   "ru": "Перейдите на Premium",
   "ja": "Premiumにしよう",
-  "th": "อัปเกรดเป็น Premium"
+  "th": "อัปเกรดเป็น Premium",
+  "ar": "انتقل إلى Premium"
  },
  "purchase_subline": {
   "fr": "Tout débloquer, apprendre sans limites",
@@ -537,7 +596,8 @@
   "tr": "Her şeyi açın, sınırsız öğrenin",
   "ru": "Откройте всё и учитесь без ограничений",
   "ja": "すべて解放して、自由に学ぼう",
-  "th": "ปลดล็อกทุกอย่าง เรียนได้ไม่จำกัด"
+  "th": "ปลดล็อกทุกอย่าง เรียนได้ไม่จำกัด",
+  "ar": "افتح كل شيء وتعلّم بلا حدود"
  },
  "paywall_billing_note": {
   "fr": "Les offres mensuelles et annuelles se renouvellent automatiquement jusqu'à leur résiliation. Résiliez à tout moment dans les paramètres de Google Play.",
@@ -546,7 +606,8 @@
   "tr": "Aylık ve yıllık planlar iptal edilene kadar otomatik yenilenir. İstediğiniz zaman Google Play ayarlarından iptal edebilirsiniz.",
   "ru": "Месячные и годовые тарифы продлеваются автоматически, пока вы их не отмените. Отменить можно в любой момент в настройках Google Play.",
   "ja": "月額・年額プランは、解約するまで自動で更新されます。Google Playの設定からいつでも解約できます。",
-  "th": "แพ็กเกจรายเดือนและรายปีจะต่ออายุอัตโนมัติจนกว่าจะยกเลิก ยกเลิกได้ทุกเมื่อในการตั้งค่า Google Play"
+  "th": "แพ็กเกจรายเดือนและรายปีจะต่ออายุอัตโนมัติจนกว่าจะยกเลิก ยกเลิกได้ทุกเมื่อในการตั้งค่า Google Play",
+  "ar": "تتجدد الباقات الشهرية والسنوية تلقائيًا حتى يتم إلغاؤها. يمكنك الإلغاء في أي وقت من إعدادات Google Play."
  },
  "paywall_billing_note_lifetime": {
   "fr": "L'offre à vie est un achat unique. Elle ne se renouvelle pas.",
@@ -555,7 +616,8 @@
   "tr": "Ömür boyu plan tek seferlik bir satın alımdır. Yenilenmez.",
   "ru": "Пожизненный тариф — разовая покупка. Он не продлевается.",
   "ja": "永久プランは買い切りです。更新はありません。",
-  "th": "แพ็กเกจตลอดชีพเป็นการซื้อครั้งเดียว ไม่มีการต่ออายุ"
+  "th": "แพ็กเกจตลอดชีพเป็นการซื้อครั้งเดียว ไม่มีการต่ออายุ",
+  "ar": "باقة مدى الحياة عملية شراء لمرة واحدة، ولا تتجدد."
  },
  "paywall_privacy_link": {
   "fr": "Politique de confidentialité",
@@ -564,7 +626,8 @@
   "tr": "Gizlilik Politikası",
   "ru": "Политика конфиденциальности",
   "ja": "プライバシーポリシー",
-  "th": "นโยบายความเป็นส่วนตัว"
+  "th": "นโยบายความเป็นส่วนตัว",
+  "ar": "سياسة الخصوصية"
  },
  "paywall_trial_then": {
   "fr": "%1$d jours gratuits, puis",
@@ -573,7 +636,8 @@
   "tr": "%1$d gün ücretsiz, sonra",
   "ru": "%1$d дн. бесплатно, затем",
   "ja": "%1$d日間無料、その後",
-  "th": "ฟรี %1$d วัน หลังจากนั้น"
+  "th": "ฟรี %1$d วัน หลังจากนั้น",
+  "ar": "%1$d أيام مجانًا، ثم"
  },
  "paywall_per_month_approx": {
   "fr": "~%1$s / mois",
@@ -582,7 +646,8 @@
   "tr": "~%1$s / ay",
   "ru": "~%1$s / мес.",
   "ja": "約%1$s / 月",
-  "th": "~%1$s / เดือน"
+  "th": "~%1$s / เดือน",
+  "ar": "~%1$s / شهر"
  },
  "paywall_headline_onboarding": {
   "fr": "Tout débloquer !",
@@ -591,7 +656,8 @@
   "tr": "Her şeyin kilidini açın!",
   "ru": "Откройте всё!",
   "ja": "すべてを解放！",
-  "th": "ปลดล็อกทุกอย่าง!"
+  "th": "ปลดล็อกทุกอย่าง!",
+  "ar": "افتح كل شيء!"
  },
  "paywall_subtitle_onboarding": {
   "fr": "Du débutant à l'expert, avec des rapports de progrès pour vous",
@@ -600,7 +666,8 @@
   "tr": "Başlangıçtan uzmanlığa, sizin için ilerleme raporlarıyla",
   "ru": "От новичка до эксперта, с отчётами о прогрессе для вас",
   "ja": "初級から上級まで。保護者向けレポートつき",
-  "th": "ตั้งแต่มือใหม่ถึงเชี่ยวชาญ พร้อมรายงานความก้าวหน้าสำหรับคุณ"
+  "th": "ตั้งแต่มือใหม่ถึงเชี่ยวชาญ พร้อมรายงานความก้าวหน้าสำหรับคุณ",
+  "ar": "من المبتدئ إلى الخبير، مع تقارير تقدّم لك"
  },
  "paywall_headline_free_ending": {
   "fr": "Vous aimez jusqu'ici ?",
@@ -609,7 +676,8 @@
   "tr": "Şimdiye kadar beğendiniz mi?",
   "ru": "Нравится пока?",
   "ja": "ここまで気に入りましたか？",
-  "th": "ชอบไหมจนถึงตอนนี้"
+  "th": "ชอบไหมจนถึงตอนนี้",
+  "ar": "هل يعجبك التطبيق حتى الآن؟"
  },
  "paywall_subtitle_free_ending": {
   "fr": "Gardez tous les niveaux et jeux avec un abonnement",
@@ -618,7 +686,8 @@
   "tr": "Bir planla tüm seviyeleri ve oyunları koruyun",
   "ru": "Сохраните все уровни и игры с подпиской",
   "ja": "プランで、すべてのレベルとゲームを続けられます",
-  "th": "เก็บทุกระดับและทุกเกมไว้ด้วยแพ็กเกจ"
+  "th": "เก็บทุกระดับและทุกเกมไว้ด้วยแพ็กเกจ",
+  "ar": "احتفظ بكل مستوى ولعبة مع باقة"
  },
  "paywall_headline_free_ended": {
   "fr": "Votre accès gratuit est terminé",
@@ -627,7 +696,8 @@
   "tr": "Ücretsiz erişiminiz sona erdi",
   "ru": "Бесплатный доступ закончился",
   "ja": "無料期間が終了しました",
-  "th": "สิทธิ์ใช้ฟรีสิ้นสุดแล้ว"
+  "th": "สิทธิ์ใช้ฟรีสิ้นสุดแล้ว",
+  "ar": "انتهى الوصول المجاني"
  },
  "paywall_subtitle_free_ended": {
   "fr": "Continuez d'apprendre avec Premium",
@@ -636,7 +706,8 @@
   "tr": "Premium ile öğrenmeye devam edin",
   "ru": "Продолжайте учиться с Premium",
   "ja": "Premiumで学びを続けよう",
-  "th": "เรียนต่อกับ Premium"
+  "th": "เรียนต่อกับ Premium",
+  "ar": "واصل التعلّم مع Premium"
  },
  "paywall_headline_returning": {
   "fr": "Prêt pour le niveau suivant ?",
@@ -645,7 +716,8 @@
   "tr": "Sonraki seviyeye hazır mısınız?",
   "ru": "Готовы к следующему уровню?",
   "ja": "次のレベルに進もう！",
-  "th": "พร้อมสำหรับระดับต่อไปหรือยัง"
+  "th": "พร้อมสำหรับระดับต่อไปหรือยัง",
+  "ar": "مستعد للمستوى التالي؟"
  },
  "paywall_subtitle_returning": {
   "fr": "Débloquez tous les niveaux, jeux et rapports de progrès",
@@ -654,7 +726,8 @@
   "tr": "Tüm seviyelerin, oyunların ve ilerleme raporlarının kilidini açın",
   "ru": "Откройте все уровни, игры и отчёты о прогрессе",
   "ja": "すべてのレベル・ゲーム・成長レポートを解放",
-  "th": "ปลดล็อกทุกระดับ ทุกเกม และรายงานความก้าวหน้า"
+  "th": "ปลดล็อกทุกระดับ ทุกเกม และรายงานความก้าวหน้า",
+  "ar": "افتح كل مستوى ولعبة وتقرير تقدّم"
  },
  "plan_weekly": {
   "fr": "Hebdomadaire",
@@ -663,7 +736,8 @@
   "tr": "Haftalık",
   "ru": "Недельный",
   "ja": "週額",
-  "th": "รายสัปดาห์"
+  "th": "รายสัปดาห์",
+  "ar": "أسبوعية"
  },
  "plan_monthly": {
   "fr": "Mensuel",
@@ -672,7 +746,8 @@
   "tr": "Aylık",
   "ru": "Месячный",
   "ja": "月額",
-  "th": "รายเดือน"
+  "th": "รายเดือน",
+  "ar": "شهرية"
  },
  "plan_3_month": {
   "fr": "3 mois",
@@ -681,7 +756,8 @@
   "tr": "3 Aylık",
   "ru": "3 месяца",
   "ja": "3か月",
-  "th": "3 เดือน"
+  "th": "3 เดือน",
+  "ar": "3 أشهر"
  },
  "plan_6_month": {
   "fr": "6 mois",
@@ -690,7 +766,8 @@
   "tr": "6 Aylık",
   "ru": "6 месяцев",
   "ja": "6か月",
-  "th": "6 เดือน"
+  "th": "6 เดือน",
+  "ar": "6 أشهر"
  },
  "plan_yearly": {
   "fr": "Annuel",
@@ -699,7 +776,8 @@
   "tr": "Yıllık",
   "ru": "Годовой",
   "ja": "年額",
-  "th": "รายปี"
+  "th": "รายปี",
+  "ar": "سنوية"
  },
  "plan_lifetime": {
   "fr": "À vie",
@@ -708,7 +786,8 @@
   "tr": "Ömür boyu",
   "ru": "Пожизненный",
   "ja": "永久",
-  "th": "ตลอดชีพ"
+  "th": "ตลอดชีพ",
+  "ar": "مدى الحياة"
  },
  "plan_name_label": {
   "fr": "%1$s :",
@@ -717,7 +796,8 @@
   "tr": "%1$s Plan:",
   "ru": "Тариф: %1$s",
   "ja": "%1$sプラン：",
-  "th": "แพ็กเกจ%1$s:"
+  "th": "แพ็กเกจ%1$s:",
+  "ar": "باقة %1$s:"
  },
  "plan_per_week": {
   "fr": "/ semaine",
@@ -726,7 +806,8 @@
   "tr": "/ hafta",
   "ru": "/ неделя",
   "ja": "/ 週",
-  "th": "/ สัปดาห์"
+  "th": "/ สัปดาห์",
+  "ar": "/ أسبوع"
  },
  "plan_per_month": {
   "fr": "/ mois",
@@ -735,7 +816,8 @@
   "tr": "/ ay",
   "ru": "/ месяц",
   "ja": "/ 月",
-  "th": "/ เดือน"
+  "th": "/ เดือน",
+  "ar": "/ شهر"
  },
  "plan_per_year": {
   "fr": "/ an",
@@ -744,7 +826,8 @@
   "tr": "/ yıl",
   "ru": "/ год",
   "ja": "/ 年",
-  "th": "/ ปี"
+  "th": "/ ปี",
+  "ar": "/ سنة"
  },
  "plan_one_time": {
   "fr": "paiement unique",
@@ -753,7 +836,8 @@
   "tr": "tek seferlik",
   "ru": "разово",
   "ja": "買い切り",
-  "th": "จ่ายครั้งเดียว"
+  "th": "จ่ายครั้งเดียว",
+  "ar": "مرة واحدة"
  },
  "purchase_assigned_on": {
   "fr": "<strong>Attribué le :</strong> %1$s",
@@ -762,7 +846,8 @@
   "tr": "<strong>Atanma tarihi:</strong> %1$s",
   "ru": "<strong>Назначено:</strong> %1$s",
   "ja": "<strong>付与日：</strong>%1$s",
-  "th": "<strong>ได้รับเมื่อ:</strong> %1$s"
+  "th": "<strong>ได้รับเมื่อ:</strong> %1$s",
+  "ar": "<strong>تم التعيين في : </strong>%1$s"
  },
  "freemium_body_core": {
   "fr": "Le mode libre et le niveau 1 restent gratuits. Premium ouvre tout le reste.",
@@ -771,7 +856,8 @@
   "tr": "Serbest Mod ve Seviye 1 ücretsiz kalır. Premium geri kalan her şeyi açar.",
   "ru": "Свободный режим и уровень 1 остаются бесплатными. Premium открывает всё остальное.",
   "ja": "フリーモードとレベル1は無料のままです。Premiumでそれ以外がすべて使えます。",
-  "th": "โหมดอิสระและระดับ 1 ยังคงใช้ฟรี Premium ปลดล็อกส่วนที่เหลือทั้งหมด"
+  "th": "โหมดอิสระและระดับ 1 ยังคงใช้ฟรี Premium ปลดล็อกส่วนที่เหลือทั้งหมด",
+  "ar": "الوضع الحر والمستوى 1 يبقيان مجانيين. أما Premium فيفتح كل شيء آخر."
  },
  "freemium_body_all": {
   "fr": "Premium ouvre toute l'application.",
@@ -780,7 +866,8 @@
   "tr": "Premium uygulamanın tamamını açar.",
   "ru": "Premium открывает всё приложение.",
   "ja": "Premiumでアプリのすべてが使えます。",
-  "th": "Premium ปลดล็อกทั้งแอป"
+  "th": "Premium ปลดล็อกทั้งแอป",
+  "ar": "يفتح Premium التطبيق كله."
  },
  "freemium_body_pick": {
   "fr": "Choisissez une offre pour garder tous les niveaux, jeux et rapports.",
@@ -789,7 +876,8 @@
   "tr": "Tüm seviyeleri, oyunları ve raporları korumak için bir plan seçin.",
   "ru": "Выберите тариф, чтобы сохранить все уровни, игры и отчёты.",
   "ja": "プランを選んで、すべてのレベル・ゲーム・レポートを続けましょう。",
-  "th": "เลือกแพ็กเกจเพื่อเก็บทุกระดับ เกม และรายงานไว้"
+  "th": "เลือกแพ็กเกจเพื่อเก็บทุกระดับ เกม และรายงานไว้",
+  "ar": "اختر باقة لتحتفظ بكل المستويات والألعاب والتقارير."
  },
  "freemium_see_plans": {
   "fr": "Voir les offres",
@@ -798,7 +886,8 @@
   "tr": "Planları gör",
   "ru": "Смотреть тарифы",
   "ja": "プランを見る",
-  "th": "ดูแพ็กเกจ"
+  "th": "ดูแพ็กเกจ",
+  "ar": "عرض الباقات"
  },
  "ft_title_welcome_3": {
   "fr": "Bienvenue dans votre essai gratuit de 3 jours !",
@@ -807,7 +896,8 @@
   "tr": "3 günlük ücretsiz denemenize hoş geldiniz!",
   "ru": "Добро пожаловать в бесплатный 3-дневный период!",
   "ja": "3日間の無料体験へようこそ！",
-  "th": "ยินดีต้อนรับสู่การทดลองใช้ฟรี 3 วัน!"
+  "th": "ยินดีต้อนรับสู่การทดลองใช้ฟรี 3 วัน!",
+  "ar": "مرحبًا بك في تجربتك المجانية لمدة 3 أيام!"
  },
  "ft_title_2_remaining": {
   "fr": "Il reste 2 jours à votre essai gratuit.",
@@ -816,7 +906,8 @@
   "tr": "Ücretsiz denemenizde 2 gün kaldı.",
   "ru": "До конца бесплатного периода осталось 2 дня.",
   "ja": "無料体験はあと2日です。",
-  "th": "ช่วงทดลองใช้ฟรีเหลืออีก 2 วัน"
+  "th": "ช่วงทดลองใช้ฟรีเหลืออีก 2 วัน",
+  "ar": "بقي يومان في تجربتك المجانية."
  },
  "ft_title_last_day": {
   "fr": "Dernier jour de votre essai gratuit !",
@@ -825,7 +916,8 @@
   "tr": "Ücretsiz denemenizin son günü!",
   "ru": "Последний день бесплатного периода!",
   "ja": "無料体験の最終日です！",
-  "th": "วันสุดท้ายของช่วงทดลองใช้ฟรี!"
+  "th": "วันสุดท้ายของช่วงทดลองใช้ฟรี!",
+  "ar": "اليوم الأخير في تجربتك المجانية!"
  },
  "ft_title_ended": {
   "fr": "Votre essai gratuit est terminé.",
@@ -834,7 +926,8 @@
   "tr": "Ücretsiz deneme süreniz sona erdi.",
   "ru": "Бесплатный период закончился.",
   "ja": "無料体験は終了しました。",
-  "th": "ช่วงทดลองใช้ฟรีสิ้นสุดแล้ว"
+  "th": "ช่วงทดลองใช้ฟรีสิ้นสุดแล้ว",
+  "ar": "انتهت تجربتك المجانية."
  },
  "ft_title_welcome_7": {
   "fr": "Bienvenue dans votre essai gratuit de 7 jours !",
@@ -843,7 +936,8 @@
   "tr": "7 günlük ücretsiz denemenize hoş geldiniz!",
   "ru": "Добро пожаловать в бесплатный 7-дневный период!",
   "ja": "7日間の無料体験へようこそ！",
-  "th": "ยินดีต้อนรับสู่การทดลองใช้ฟรี 7 วัน!"
+  "th": "ยินดีต้อนรับสู่การทดลองใช้ฟรี 7 วัน!",
+  "ar": "مرحبًا بك في تجربتك المجانية لمدة 7 أيام!"
  },
  "ft_title_6_left": {
   "fr": "Il reste 6 jours à votre essai gratuit.",
@@ -852,7 +946,8 @@
   "tr": "Ücretsiz denemenizde 6 gün kaldı.",
   "ru": "До конца бесплатного периода осталось 6 дней.",
   "ja": "無料体験はあと6日です。",
-  "th": "ช่วงทดลองใช้ฟรีเหลืออีก 6 วัน"
+  "th": "ช่วงทดลองใช้ฟรีเหลืออีก 6 วัน",
+  "ar": "بقيت 6 أيام في تجربتك المجانية."
  },
  "ft_title_5_days": {
   "fr": "Votre essai gratuit se termine dans 5 jours.",
@@ -861,7 +956,8 @@
   "tr": "Ücretsiz denemeniz 5 gün sonra bitiyor.",
   "ru": "Бесплатный период закончится через 5 дней.",
   "ja": "無料体験は5日後に終了します。",
-  "th": "ช่วงทดลองใช้ฟรีจะสิ้นสุดใน 5 วัน"
+  "th": "ช่วงทดลองใช้ฟรีจะสิ้นสุดใน 5 วัน",
+  "ar": "تنتهي تجربتك المجانية بعد 5 أيام."
  },
  "ft_title_4_left": {
   "fr": "Plus que 4 jours !",
@@ -870,7 +966,8 @@
   "tr": "Sadece 4 gün kaldı!",
   "ru": "Осталось всего 4 дня!",
   "ja": "あと4日です！",
-  "th": "เหลืออีกแค่ 4 วัน!"
+  "th": "เหลืออีกแค่ 4 วัน!",
+  "ar": "بقيت 4 أيام فقط!"
  },
  "ft_title_3_remaining": {
   "fr": "Il reste 3 jours à votre essai gratuit.",
@@ -879,7 +976,8 @@
   "tr": "Ücretsiz denemenizde 3 gün kaldı.",
   "ru": "До конца бесплатного периода осталось 3 дня.",
   "ja": "無料体験はあと3日です。",
-  "th": "ช่วงทดลองใช้ฟรีเหลืออีก 3 วัน"
+  "th": "ช่วงทดลองใช้ฟรีเหลืออีก 3 วัน",
+  "ar": "بقيت 3 أيام في تجربتك المجانية."
  },
  "ft_title_2_soon": {
   "fr": "Votre essai gratuit se termine bientôt : plus que 2 jours !",
@@ -888,7 +986,8 @@
   "tr": "Ücretsiz denemeniz yakında bitiyor: sadece 2 gün kaldı!",
   "ru": "Бесплатный период скоро закончится — осталось всего 2 дня!",
   "ja": "無料体験がまもなく終了します。あと2日です！",
-  "th": "ช่วงทดลองใช้ฟรีใกล้สิ้นสุดแล้ว เหลืออีกแค่ 2 วัน!"
+  "th": "ช่วงทดลองใช้ฟรีใกล้สิ้นสุดแล้ว เหลืออีกแค่ 2 วัน!",
+  "ar": "تنتهي تجربتك المجانية قريبًا، بقي يومان فقط!"
  },
  "ft_desc_full_access": {
   "fr": "Vous avez maintenant un accès complet : explorez, apprenez et profitez du voyage.",
@@ -897,7 +996,8 @@
   "tr": "Artık tam erişiminiz var: keşfedin, öğrenin ve yolculuğun tadını çıkarın.",
   "ru": "Теперь у вас полный доступ: исследуйте, учитесь и наслаждайтесь.",
   "ja": "すべての機能が使えます。見て、学んで、楽しんでください。",
-  "th": "ตอนนี้คุณเข้าถึงได้ทั้งหมดแล้ว สำรวจ เรียนรู้ และสนุกไปกับการเดินทาง"
+  "th": "ตอนนี้คุณเข้าถึงได้ทั้งหมดแล้ว สำรวจ เรียนรู้ และสนุกไปกับการเดินทาง",
+  "ar": "لديك الآن وصول كامل، استكشف وتعلّم واستمتع برحلتك."
  },
  "ft_desc_keep_safe": {
   "fr": "Gardez vos données d'apprentissage et vos réussites en sécurité en débloquant l'accès complet avant la fin de l'essai.",
@@ -906,7 +1006,8 @@
   "tr": "Deneme bitmeden tam erişimi açarak öğrenme verilerinizi ve başarılarınızı koruyun.",
   "ru": "Сохраните данные об обучении и достижения, открыв полный доступ до конца бесплатного периода.",
   "ja": "体験が終わる前にすべての機能を解放して、学習データと成果を守りましょう。",
-  "th": "เก็บข้อมูลการเรียนและความสำเร็จของคุณให้ปลอดภัย ด้วยการปลดล็อกการเข้าถึงทั้งหมดก่อนช่วงทดลองสิ้นสุด"
+  "th": "เก็บข้อมูลการเรียนและความสำเร็จของคุณให้ปลอดภัย ด้วยการปลดล็อกการเข้าถึงทั้งหมดก่อนช่วงทดลองสิ้นสุด",
+  "ar": "احمِ بيانات تعلّمك وإنجازاتك بفتح الوصول الكامل قبل انتهاء التجربة."
  },
  "ft_desc_stay_on_track": {
   "fr": "Gardez le cap dans votre apprentissage : abonnez-vous dès aujourd'hui.",
@@ -915,7 +1016,8 @@
   "tr": "Öğrenmenizi sürdürün: bugün abone olun.",
   "ru": "Не прерывайте обучение — оформите подписку сегодня.",
   "ja": "学びを止めないために、今日から購読しましょう。",
-  "th": "เรียนต่อเนื่องไปกับเรา สมัครสมาชิกวันนี้"
+  "th": "เรียนต่อเนื่องไปกับเรา สมัครสมาชิกวันนี้",
+  "ar": "واصل تقدّمك في التعلّم، اشترك اليوم."
  },
  "ft_desc_subscribe_continue": {
   "fr": "Abonnez-vous maintenant pour poursuivre votre parcours d'apprentissage.",
@@ -924,7 +1026,8 @@
   "tr": "Öğrenme yolculuğunuza devam etmek için şimdi abone olun.",
   "ru": "Оформите подписку, чтобы продолжить обучение.",
   "ja": "学びを続けるには、今すぐ購読してください。",
-  "th": "สมัครสมาชิกตอนนี้เพื่อเรียนต่อ"
+  "th": "สมัครสมาชิกตอนนี้เพื่อเรียนต่อ",
+  "ar": "اشترك الآن لتواصل رحلة التعلّم."
  },
  "ft_desc_keep_exploring": {
   "fr": "Continuez d'explorer et découvrez toutes les fonctions qui vous attendent !",
@@ -933,7 +1036,8 @@
   "tr": "Keşfetmeye devam edin ve sizi bekleyen tüm özellikleri görün!",
   "ru": "Продолжайте исследовать и открывайте все возможности!",
   "ja": "もっと試して、すべての機能を見つけましょう！",
-  "th": "สำรวจต่อไปและดูฟีเจอร์ทั้งหมดที่รอคุณอยู่!"
+  "th": "สำรวจต่อไปและดูฟีเจอร์ทั้งหมดที่รอคุณอยู่!",
+  "ar": "واصل الاستكشاف وشاهد كل المزايا التي تنتظرك!"
  },
  "ft_desc_enjoy_lessons": {
   "fr": "Profitez de l'accès complet à toutes les leçons pendant votre essai !",
@@ -942,7 +1046,8 @@
   "tr": "Deneme süresince tüm derslere tam erişimin keyfini çıkarın!",
   "ru": "Пользуйтесь всеми уроками без ограничений в бесплатный период!",
   "ja": "体験期間中は、すべてのレッスンを自由に使えます！",
-  "th": "สนุกกับการเข้าถึงทุกบทเรียนได้เต็มที่ตลอดช่วงทดลอง!"
+  "th": "สนุกกับการเข้าถึงทุกบทเรียนได้เต็มที่ตลอดช่วงทดลอง!",
+  "ar": "استمتع بوصول كامل إلى كل الدروس خلال التجربة!"
  },
  "ft_desc_right_track": {
   "fr": "Vous êtes sur la bonne voie : ne vous arrêtez pas, le succès est tout proche !",
@@ -951,7 +1056,8 @@
   "tr": "Doğru yoldasınız: şimdi durmayın, başarı çok yakın!",
   "ru": "Вы на верном пути — не останавливайтесь, успех уже близко!",
   "ja": "いい調子です。ここで止まらず、成功はもうすぐです！",
-  "th": "คุณมาถูกทางแล้ว อย่าหยุดตอนนี้ ความสำเร็จอยู่ไม่ไกล!"
+  "th": "คุณมาถูกทางแล้ว อย่าหยุดตอนนี้ ความสำเร็จอยู่ไม่ไกล!",
+  "ar": "أنت على الطريق الصحيح، لا تتوقف الآن، فالنجاح قريب!"
  },
  "ft_desc_adventure": {
   "fr": "Poursuivez votre aventure d'apprentissage en vous abonnant dès aujourd'hui.",
@@ -960,7 +1066,8 @@
   "tr": "Bugün abone olarak öğrenme maceranıza devam edin.",
   "ru": "Продолжите путешествие в мир знаний — оформите подписку сегодня.",
   "ja": "今日から購読して、学びの冒険を続けましょう。",
-  "th": "เรียนรู้ต่อในการผจญภัยนี้ด้วยการสมัครสมาชิกวันนี้"
+  "th": "เรียนรู้ต่อในการผจญภัยนี้ด้วยการสมัครสมาชิกวันนี้",
+  "ar": "واصل مغامرة التعلّم بالاشتراك اليوم."
  },
  "ft_btn_start_learning": {
   "fr": "Commencer à apprendre",
@@ -969,7 +1076,8 @@
   "tr": "Öğrenmeye başla",
   "ru": "Начать учиться",
   "ja": "学びはじめる",
-  "th": "เริ่มเรียน"
+  "th": "เริ่มเรียน",
+  "ar": "ابدأ التعلّم"
  },
  "ft_btn_subscribe_now": {
   "fr": "S'abonner maintenant",
@@ -978,7 +1086,8 @@
   "tr": "Şimdi abone ol",
   "ru": "Подписаться",
   "ja": "今すぐ購読",
-  "th": "สมัครสมาชิกเลย"
+  "th": "สมัครสมาชิกเลย",
+  "ar": "اشترك الآن"
  },
  "ft_btn_maybe_later": {
   "fr": "Peut-être plus tard",
@@ -987,7 +1096,8 @@
   "tr": "Belki sonra",
   "ru": "Может, позже",
   "ja": "あとで",
-  "th": "ไว้ทีหลัง"
+  "th": "ไว้ทีหลัง",
+  "ar": "ربما لاحقًا"
  },
  "ft_btn_continue_learning": {
   "fr": "Continuer à apprendre",
@@ -996,7 +1106,8 @@
   "tr": "Öğrenmeye devam et",
   "ru": "Продолжить учиться",
   "ja": "学びを続ける",
-  "th": "เรียนต่อ"
+  "th": "เรียนต่อ",
+  "ar": "واصل التعلّم"
  },
  "ft_btn_keep_going": {
   "fr": "Continuer",
@@ -1005,7 +1116,8 @@
   "tr": "Devam et",
   "ru": "Продолжать",
   "ja": "つづける",
-  "th": "ไปต่อ"
+  "th": "ไปต่อ",
+  "ar": "استمر"
  },
  "ft_btn_continue": {
   "fr": "Continuer",
@@ -1014,7 +1126,8 @@
   "tr": "Devam",
   "ru": "Продолжить",
   "ja": "続ける",
-  "th": "ต่อไป"
+  "th": "ต่อไป",
+  "ar": "متابعة"
  },
  "ft_btn_remind_later": {
   "fr": "Me le rappeler plus tard",
@@ -1023,7 +1136,8 @@
   "tr": "Daha sonra hatırlat",
   "ru": "Напомнить позже",
   "ja": "あとで知らせて",
-  "th": "เตือนฉันทีหลัง"
+  "th": "เตือนฉันทีหลัง",
+  "ar": "ذكّرني لاحقًا"
  },
  "ft_no_payment": {
   "fr": "Aucun paiement ni abonnement à configurer pendant votre essai gratuit.",
@@ -1032,7 +1146,8 @@
   "tr": "Ücretsiz deneme sırasında ödeme veya abonelik kurulumu gerekmez.",
   "ru": "В бесплатный период оплата и подписка не нужны.",
   "ja": "無料体験中は、お支払いや購読の設定は不要です。",
-  "th": "ไม่ต้องชำระเงินหรือตั้งค่าการสมัครสมาชิกในช่วงทดลองใช้ฟรี"
+  "th": "ไม่ต้องชำระเงินหรือตั้งค่าการสมัครสมาชิกในช่วงทดลองใช้ฟรี",
+  "ar": "لا حاجة إلى دفع أو إعداد اشتراك خلال تجربتك المجانية."
  },
  "ft_limited_deal": {
   "fr": "<strong>Offre limitée :</strong> débloquez Premium à prix réduit !",
@@ -1041,7 +1156,8 @@
   "tr": "<strong>Sınırlı süreli fırsat:</strong> Premium'u indirimli fiyata açın!",
   "ru": "<strong>Предложение ограничено по времени:</strong> откройте Premium со скидкой!",
   "ja": "<strong>期間限定：</strong>Premiumを割引価格で解放しましょう！",
-  "th": "<strong>ข้อเสนอจำกัดเวลา:</strong> ปลดล็อก Premium ในราคาพิเศษ!"
+  "th": "<strong>ข้อเสนอจำกัดเวลา:</strong> ปลดล็อก Premium ในราคาพิเศษ!",
+  "ar": "<strong>عرض لفترة محدودة: </strong>افتح Premium بسعر مخفّض!"
  },
  "ft_now": {
   "fr": "MAINTENANT",
@@ -1050,7 +1166,8 @@
   "tr": "ŞİMDİ",
   "ru": "СЕЙЧАС",
   "ja": "いま！",
-  "th": "ตอนนี้"
+  "th": "ตอนนี้",
+  "ar": "الآن"
  },
  "paywall_intro_first_days": {
   "plural": {
@@ -1084,6 +1201,14 @@
    },
    "th": {
     "other": "%1$d วันแรก"
+   },
+   "ar": {
+    "zero": "أول %1$d يوم",
+    "one": "أول يوم",
+    "two": "أول يومين",
+    "few": "أول %1$d أيام",
+    "many": "أول %1$d يومًا",
+    "other": "أول %1$d يوم"
    }
   }
  },
@@ -1119,6 +1244,14 @@
    },
    "th": {
     "other": "%1$d สัปดาห์แรก"
+   },
+   "ar": {
+    "zero": "أول %1$d أسابيع",
+    "one": "الأسبوع الأول",
+    "two": "أول أسبوعين",
+    "few": "أول %1$d أسابيع",
+    "many": "أول %1$d أسبوعًا",
+    "other": "أول %1$d أسبوع"
    }
   }
  },
@@ -1154,6 +1287,14 @@
    },
    "th": {
     "other": "%1$d เดือนแรก"
+   },
+   "ar": {
+    "zero": "أول %1$d شهر",
+    "one": "الشهر الأول",
+    "two": "أول شهرين",
+    "few": "أول %1$d أشهر",
+    "many": "أول %1$d شهرًا",
+    "other": "أول %1$d شهر"
    }
   }
  },
@@ -1189,6 +1330,14 @@
    },
    "th": {
     "other": "%1$d ปีแรก"
+   },
+   "ar": {
+    "zero": "أول %1$d سنة",
+    "one": "السنة الأولى",
+    "two": "أول %1$d سنتين",
+    "few": "أول %1$d سنوات",
+    "many": "أول %1$d سنة",
+    "other": "أول %1$d سنة"
    }
   }
  },
@@ -1224,6 +1373,14 @@
    },
    "th": {
     "other": "ใช้ฟรี: เหลืออีก %1$d วัน"
+   },
+   "ar": {
+    "zero": "الاستخدام المجاني: المتبقي %1$d يوم",
+    "one": "الاستخدام المجاني: المتبقي %1$d يوم",
+    "two": "الاستخدام المجاني: المتبقي %1$d يومان",
+    "few": "الاستخدام المجاني: المتبقي %1$d أيام",
+    "many": "الاستخدام المجاني: المتبقي %1$d يومًا",
+    "other": "الاستخدام المجاني: المتبقي %1$d يوم"
    }
   }
  },
@@ -1259,6 +1416,14 @@
    },
    "th": {
     "other": "ฟรี %1$d วัน"
+   },
+   "ar": {
+    "zero": "%1$d يوم مجاني",
+    "one": "يوم واحد مجاني",
+    "two": "يومان مجانيان",
+    "few": "%1$d أيام مجانية",
+    "many": "%1$d يومًا مجانيًا",
+    "other": "%1$d يوم مجاني"
    }
   }
  },
@@ -1294,6 +1459,14 @@
    },
    "th": {
     "other": "วัน\nทดลองใช้ฟรี"
+   },
+   "ar": {
+    "zero": "يوم\nتجربة مجانية",
+    "one": "يوم\nتجربة مجانية",
+    "two": "يومان\nتجربة مجانية",
+    "few": "أيام\nتجربة مجانية",
+    "many": "يومًا\nتجربة مجانية",
+    "other": "يوم\nتجربة مجانية"
    }
   }
  },
@@ -1329,6 +1502,14 @@
    },
    "th": {
     "other": "วันที่เหลือ"
+   },
+   "ar": {
+    "zero": "أيام متبقية",
+    "one": "يوم متبقٍ",
+    "two": "يومان متبقيان",
+    "few": "أيام متبقية",
+    "many": "يومًا متبقيًا",
+    "other": "يوم متبقٍ"
    }
   }
  },
@@ -1339,7 +1520,8 @@
   "tr": "⭐ Tüm abaküs seviyelerine, egzersizlere, sınavlara ve Özel Meydan Okuma Modu'na <strong>sınırsız erişim</strong>.",
   "ru": "⭐ <strong>Неограниченный доступ</strong> ко всем уровням абакуса, упражнениям, экзаменам и режиму «Свой вызов».",
   "ja": "⭐ すべてのそろばんレベル、トレーニング、テスト、オリジナルチャレンジモードが<strong>使い放題</strong>。",
-  "th": "⭐ <strong>เข้าถึงได้ไม่จำกัด</strong> ทุกระดับลูกคิด แบบฝึกหัด ข้อสอบ และโหมดชาเลนจ์ที่กำหนดเอง"
+  "th": "⭐ <strong>เข้าถึงได้ไม่จำกัด</strong> ทุกระดับลูกคิด แบบฝึกหัด ข้อสอบ และโหมดชาเลนจ์ที่กำหนดเอง",
+  "ar": "⭐ <strong>احصل على وصول غير محدود</strong> إلى كل مستويات الأباكوس والتمارين والامتحانات ووحدة وضع التحدي المخصص."
  },
  "purchase_benefit_2": {
   "fr": "🧮 Entraînez-vous à l'addition, la soustraction, la multiplication et la division avec des <strong>indications intelligentes sur les boules</strong> et la <strong>formule à chaque étape.</strong>",
@@ -1348,7 +1530,8 @@
   "tr": "🧮 Toplama, çıkarma, çarpma ve bölmeyi <strong>akıllı boncuk yönleri</strong> ve <strong>her adımda formülle</strong> çalışın.",
   "ru": "🧮 Тренируйте сложение, вычитание, умножение и деление с <strong>умными подсказками по бусинам</strong> и <strong>формулой на каждом шаге.</strong>",
   "ja": "🧮 たし算・ひき算・かけ算・わり算を、<strong>珠の動かし方のヒント</strong>と<strong>各ステップの公式</strong>つきで練習できます。",
-  "th": "🧮 ฝึกการบวก ลบ คูณ หาร พร้อม<strong>คำแนะนำการเลื่อนลูกคิดอัจฉริยะ</strong>และ<strong>สูตรในทุกขั้นตอน</strong>"
+  "th": "🧮 ฝึกการบวก ลบ คูณ หาร พร้อม<strong>คำแนะนำการเลื่อนลูกคิดอัจฉริยะ</strong>และ<strong>สูตรในทุกขั้นตอน</strong>",
+  "ar": "🧮 تدرّب على الجمع والطرح والضرب والقسمة مع <strong>إرشادات ذكية لحركة الخرزات</strong> و<strong>الصيغة في كل خطوة.</strong>"
  },
  "purchase_benefit_3": {
   "fr": "🎯 Préparez les concours de maths, l'UCMAS et les examens de boulier avec un <strong>entraînement au format réel de l'examen.</strong>",
@@ -1357,7 +1540,8 @@
   "tr": "🎯 Matematik yarışmalarına, UCMAS'a ve abaküs sınavlarına <strong>gerçek sınav tarzı alıştırmalarla</strong> hazırlanın.",
   "ru": "🎯 Готовьтесь к математическим конкурсам, UCMAS и экзаменам по абакусу с <strong>тренировками в формате настоящего экзамена.</strong>",
   "ja": "🎯 算数コンテスト、UCMAS、そろばん検定に向けて、<strong>本番形式の練習</strong>ができます。",
-  "th": "🎯 เตรียมตัวสำหรับการแข่งขันคณิตศาสตร์ UCMAS และข้อสอบลูกคิด ด้วย<strong>การฝึกแบบข้อสอบจริง</strong>"
+  "th": "🎯 เตรียมตัวสำหรับการแข่งขันคณิตศาสตร์ UCMAS และข้อสอบลูกคิด ด้วย<strong>การฝึกแบบข้อสอบจริง</strong>",
+  "ar": "🎯 استعد لمسابقات الرياضيات وامتحانات UCMAS والأباكوس مع <strong>تدريب بأسلوب الامتحانات الحقيقية.</strong>"
  },
  "purchase_benefit_4": {
   "fr": "📊 <strong>Suivez les progrès de votre enfant</strong>, sa vitesse et sa précision grâce à des rapports détaillés.",
@@ -1366,6 +1550,7 @@
   "tr": "📊 Ayrıntılı raporlarla <strong>çocuğunuzun ilerlemesini</strong>, hızını ve doğruluğunu takip edin.",
   "ru": "📊 <strong>Следите за прогрессом ребёнка</strong>, его скоростью и точностью с помощью подробных отчётов.",
   "ja": "📊 詳しいレポートで、<strong>お子さまの成長</strong>、スピード、正確さを見守れます。",
-  "th": "📊 <strong>ติดตามความก้าวหน้าของลูก</strong> ความเร็ว และความแม่นยำ ด้วยรายงานโดยละเอียด"
+  "th": "📊 <strong>ติดตามความก้าวหน้าของลูก</strong> ความเร็ว และความแม่นยำ ด้วยรายงานโดยละเอียด",
+  "ar": "📊 <strong>تابع تقدّم طفلك</strong> وسرعته ودقته من خلال تقارير مفصلة."
  }
 }

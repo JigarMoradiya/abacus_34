@@ -547,7 +547,7 @@ private fun ToolButton(face: Color, enabled: Boolean, size: Dp, onClick: () -> U
 
 // ── result overlay ──────────────────────────────────────────────────────────
 
-private fun timeString(seconds: Int): String = "%d:%02d".format(seconds / 60, seconds % 60)
+private fun timeString(seconds: Int): String = "%d:%02d".format(java.util.Locale.US, seconds / 60, seconds % 60)
 
 @Composable
 private fun ResultOverlay(

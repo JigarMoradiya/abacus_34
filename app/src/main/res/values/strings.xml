@@ -2622,4 +2622,5 @@
         <item quantity="one">%1$d free day left</item>
         <item quantity="other">%1$d free days left</item>
     </plurals>
+    <string name="coming_soon_sign">COMING SOON</string>
 </resources>
