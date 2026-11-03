@@ -23,6 +23,20 @@
     <plurals name="exercise_desc_div">
         <item quantity="other">ตัวตั้งมีไม่เกิน %1$d หลัก\n%2$d ข้อ ใน %3$d นาที</item>
     </plurals>
+    <!-- m11_ccm -->
+    <string name="ccm_listen_hint">ฟังตัวเลขแต่ละตัวให้ดี</string>
+    <string name="ccm_number">ตัวเลข</string>
+    <string name="ccm_speak">เสียง</string>
+    <string name="ccm_word">คำ</string>
+    <string name="check_answer">ตรวจคำตอบ</string>
+    <string name="congratulations">ขอแสดงความยินดี…</string>
+    <string name="create_custom_challenge_as_per_your_kid_s_ability">สร้างชาเลนจ์ที่กำหนดเอง\nให้เหมาะกับความสามารถของเด็ก</string>
+    <string name="gap_between_two_question_sec">ช่วงเวลาระหว่างสองข้อ (วินาที)</string>
+    <string name="no_i_want_to_close">ไม่ ฉันต้องการปิด</string>
+    <string name="number_of_questions">จำนวนข้อ</string>
+    <string name="question_display_options">ตัวเลือกการแสดงผล</string>
+    <string name="sorry">เสียใจด้วย!</string>
+    <string name="start_new_challenge">เริ่มชาเลนจ์ใหม่</string>
     <!-- m1_settings -->
     <string name="background_music_volume">ระดับเสียงเพลงพื้นหลัง</string>
     <string name="change_voice_setting">เปลี่ยนการตั้งค่าเสียงพูด</string>

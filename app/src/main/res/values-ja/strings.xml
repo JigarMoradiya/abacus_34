@@ -23,6 +23,20 @@
     <plurals name="exercise_desc_div">
         <item quantity="other">わられる数は最大%1$d桁、\n%2$d問を%3$d分で</item>
     </plurals>
+    <!-- m11_ccm -->
+    <string name="ccm_listen_hint">ひとつひとつの数をよく聞いてね</string>
+    <string name="ccm_number">数</string>
+    <string name="ccm_speak">音声</string>
+    <string name="ccm_word">言葉</string>
+    <string name="check_answer">答え合わせ</string>
+    <string name="congratulations">おめでとう…</string>
+    <string name="create_custom_challenge_as_per_your_kid_s_ability">お子さまの力に合わせて\nオリジナルチャレンジを作りましょう</string>
+    <string name="gap_between_two_question_sec">問題と問題の間隔（秒）</string>
+    <string name="no_i_want_to_close">いいえ、閉じます</string>
+    <string name="number_of_questions">問題の数</string>
+    <string name="question_display_options">表示のオプション</string>
+    <string name="sorry">ざんねん！</string>
+    <string name="start_new_challenge">あたらしいチャレンジをはじめる</string>
     <!-- m1_settings -->
     <string name="background_music_volume">BGMの音量</string>
     <string name="change_voice_setting">音声設定を変更</string>

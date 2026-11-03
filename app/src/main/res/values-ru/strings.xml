@@ -32,6 +32,20 @@
         <item quantity="many">Делимое — не более %1$d цифр,\n%2$d вопросов за %3$d мин.</item>
         <item quantity="other">Делимое — не более %1$d цифр,\n%2$d вопросов за %3$d мин.</item>
     </plurals>
+    <!-- m11_ccm -->
+    <string name="ccm_listen_hint">Внимательно слушай каждое число</string>
+    <string name="ccm_number">Число</string>
+    <string name="ccm_speak">Голос</string>
+    <string name="ccm_word">Слова</string>
+    <string name="check_answer">Проверить ответ</string>
+    <string name="congratulations">Поздравляем…</string>
+    <string name="create_custom_challenge_as_per_your_kid_s_ability">Создайте свой вызов\nпод способности ребёнка</string>
+    <string name="gap_between_two_question_sec">Пауза между вопросами (в сек.)</string>
+    <string name="no_i_want_to_close">Нет, хочу закрыть</string>
+    <string name="number_of_questions">Количество вопросов</string>
+    <string name="question_display_options">Параметры показа</string>
+    <string name="sorry">Увы!</string>
+    <string name="start_new_challenge">Начать новый вызов</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Громкость фоновой музыки</string>
     <string name="change_voice_setting">Настройки голоса</string>

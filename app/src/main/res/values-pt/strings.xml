@@ -29,6 +29,20 @@
         <item quantity="many">O dividendo tem no máximo %1$d dígitos,\n%2$d perguntas em %3$d minutos</item>
         <item quantity="other">O dividendo tem no máximo %1$d dígitos,\n%2$d perguntas em %3$d minutos</item>
     </plurals>
+    <!-- m11_ccm -->
+    <string name="ccm_listen_hint">Ouça com atenção cada número</string>
+    <string name="ccm_number">Número</string>
+    <string name="ccm_speak">Voz</string>
+    <string name="ccm_word">Palavras</string>
+    <string name="check_answer">Verificar resposta</string>
+    <string name="congratulations">Parabéns…</string>
+    <string name="create_custom_challenge_as_per_your_kid_s_ability">Crie um desafio personalizado\nde acordo com a habilidade da criança</string>
+    <string name="gap_between_two_question_sec">Intervalo entre duas perguntas (em s)</string>
+    <string name="no_i_want_to_close">Não, quero fechar</string>
+    <string name="number_of_questions">Número de perguntas</string>
+    <string name="question_display_options">Opções de exibição</string>
+    <string name="sorry">Que pena!</string>
+    <string name="start_new_challenge">Começar um novo desafio</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Volume da música de fundo</string>
     <string name="change_voice_setting">Alterar a voz</string>

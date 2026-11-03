@@ -26,6 +26,20 @@
         <item quantity="one">Bölünen en çok %1$d basamaklı,\n%3$d dakikada %2$d soru</item>
         <item quantity="other">Bölünen en çok %1$d basamaklı,\n%3$d dakikada %2$d soru</item>
     </plurals>
+    <!-- m11_ccm -->
+    <string name="ccm_listen_hint">Her sayıyı dikkatle dinle</string>
+    <string name="ccm_number">Sayı</string>
+    <string name="ccm_speak">Ses</string>
+    <string name="ccm_word">Kelime</string>
+    <string name="check_answer">Cevabı kontrol et</string>
+    <string name="congratulations">Tebrikler…</string>
+    <string name="create_custom_challenge_as_per_your_kid_s_ability">Çocuğun yeteneğine göre\nözel bir meydan okuma oluşturun</string>
+    <string name="gap_between_two_question_sec">İki soru arası bekleme (sn)</string>
+    <string name="no_i_want_to_close">Hayır, kapatmak istiyorum</string>
+    <string name="number_of_questions">Soru sayısı</string>
+    <string name="question_display_options">Görüntüleme seçenekleri</string>
+    <string name="sorry">Üzgünüm!</string>
+    <string name="start_new_challenge">Yeni meydan okumayı başlat</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Arka plan müziği ses düzeyi</string>
     <string name="change_voice_setting">Ses ayarını değiştir</string>

@@ -1,0 +1,119 @@
+{
+ "ccm_listen_hint": {
+  "fr": "Écoute bien chaque nombre",
+  "es": "Escucha con atención cada número",
+  "pt": "Ouça com atenção cada número",
+  "tr": "Her sayıyı dikkatle dinle",
+  "ru": "Внимательно слушай каждое число",
+  "ja": "ひとつひとつの数をよく聞いてね",
+  "th": "ฟังตัวเลขแต่ละตัวให้ดี"
+ },
+ "ccm_number": {
+  "fr": "Nombre",
+  "es": "Número",
+  "pt": "Número",
+  "tr": "Sayı",
+  "ru": "Число",
+  "ja": "数",
+  "th": "ตัวเลข"
+ },
+ "ccm_speak": {
+  "fr": "Voix",
+  "es": "Voz",
+  "pt": "Voz",
+  "tr": "Ses",
+  "ru": "Голос",
+  "ja": "音声",
+  "th": "เสียง"
+ },
+ "ccm_word": {
+  "fr": "Mots",
+  "es": "Palabras",
+  "pt": "Palavras",
+  "tr": "Kelime",
+  "ru": "Слова",
+  "ja": "言葉",
+  "th": "คำ"
+ },
+ "check_answer": {
+  "fr": "Vérifier la réponse",
+  "es": "Comprobar respuesta",
+  "pt": "Verificar resposta",
+  "tr": "Cevabı kontrol et",
+  "ru": "Проверить ответ",
+  "ja": "答え合わせ",
+  "th": "ตรวจคำตอบ"
+ },
+ "congratulations": {
+  "fr": "Félicitations…",
+  "es": "Felicidades…",
+  "pt": "Parabéns…",
+  "tr": "Tebrikler…",
+  "ru": "Поздравляем…",
+  "ja": "おめでとう…",
+  "th": "ขอแสดงความยินดี…"
+ },
+ "create_custom_challenge_as_per_your_kid_s_ability": {
+  "fr": "Créez un défi personnalisé\nselon les capacités de votre enfant",
+  "es": "Crea un reto personalizado\nsegún la capacidad de tu hijo",
+  "pt": "Crie um desafio personalizado\nde acordo com a habilidade da criança",
+  "tr": "Çocuğun yeteneğine göre\nözel bir meydan okuma oluşturun",
+  "ru": "Создайте свой вызов\nпод способности ребёнка",
+  "ja": "お子さまの力に合わせて\nオリジナルチャレンジを作りましょう",
+  "th": "สร้างชาเลนจ์ที่กำหนดเอง\nให้เหมาะกับความสามารถของเด็ก"
+ },
+ "gap_between_two_question_sec": {
+  "fr": "Pause entre deux questions (en s)",
+  "es": "Pausa entre dos preguntas (en s)",
+  "pt": "Intervalo entre duas perguntas (em s)",
+  "tr": "İki soru arası bekleme (sn)",
+  "ru": "Пауза между вопросами (в сек.)",
+  "ja": "問題と問題の間隔（秒）",
+  "th": "ช่วงเวลาระหว่างสองข้อ (วินาที)"
+ },
+ "no_i_want_to_close": {
+  "fr": "Non, je veux fermer",
+  "es": "No, quiero cerrar",
+  "pt": "Não, quero fechar",
+  "tr": "Hayır, kapatmak istiyorum",
+  "ru": "Нет, хочу закрыть",
+  "ja": "いいえ、閉じます",
+  "th": "ไม่ ฉันต้องการปิด"
+ },
+ "number_of_questions": {
+  "fr": "Nombre de questions",
+  "es": "Número de preguntas",
+  "pt": "Número de perguntas",
+  "tr": "Soru sayısı",
+  "ru": "Количество вопросов",
+  "ja": "問題の数",
+  "th": "จำนวนข้อ"
+ },
+ "question_display_options": {
+  "fr": "Options d'affichage",
+  "es": "Opciones de visualización",
+  "pt": "Opções de exibição",
+  "tr": "Görüntüleme seçenekleri",
+  "ru": "Параметры показа",
+  "ja": "表示のオプション",
+  "th": "ตัวเลือกการแสดงผล"
+ },
+ "sorry": {
+  "fr": "Désolé !",
+  "es": "¡Lo siento!",
+  "pt": "Que pena!",
+  "tr": "Üzgünüm!",
+  "ru": "Увы!",
+  "ja": "ざんねん！",
+  "th": "เสียใจด้วย!"
+ },
+ "start_new_challenge": {
+  "fr": "Commencer un nouveau défi",
+  "es": "Empezar un nuevo reto",
+  "pt": "Começar um novo desafio",
+  "tr": "Yeni meydan okumayı başlat",
+  "ru": "Начать новый вызов",
+  "ja": "あたらしいチャレンジをはじめる",
+  "th": "เริ่มชาเลนจ์ใหม่"
+ }
+}
