@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.target_number.viewmodel
 
+import com.jigar.me.utils.enumFromArg
 import android.app.Application
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -30,9 +31,7 @@ class TargetNumberPlayViewModel @Inject constructor(
 
     // LEVEL + DIFFICULTY (if passed via navigation stored in SavedStateHandle)
     val level: Int = savedStateHandle.get(KEY_LEVEL) ?: 1
-    val difficulty: CommonDifficulty4 =
-        savedStateHandle.get<String>(KEY_DIFF)?.let { CommonDifficulty4.valueOf(it) }
-            ?: CommonDifficulty4.medium
+    val difficulty: CommonDifficulty4 = enumFromArg(savedStateHandle.get<String>(KEY_DIFF), CommonDifficulty4.medium)
 
     private val _uiState = MutableStateFlow(TargetUiState())
     val uiState: StateFlow<TargetUiState> = _uiState

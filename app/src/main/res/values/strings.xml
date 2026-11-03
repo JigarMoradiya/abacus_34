@@ -671,6 +671,7 @@
     <string name="subscription">Subscription</string>
     <string name="no_report_available_yet">No Report Found</string>
     <string name="question">Question :</string>
+    <string name="data_not_available">Data not available</string>
     <string name="great_your_answer_is_correct">Great, your answer is correct.</string>
     <string name="sorry_your_answer_is_incorrect">Sorry, your answer is incorrect.</string>
     <string name="is_question_speak">Is question speak?</string>

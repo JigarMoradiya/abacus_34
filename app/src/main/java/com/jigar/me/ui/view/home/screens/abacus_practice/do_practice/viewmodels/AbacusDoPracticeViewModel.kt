@@ -246,7 +246,9 @@ class AbacusDoPracticeViewModel @Inject constructor(
                         ttsManager.speak(questionWord)
                     }
                     AppConstants.extras_Comman.AbacusTypeAdditionSubtraction -> {
-                        val questionWord = context.convertNumberToWords(currentAbacus.operationStepsStringsArray[currentIndexOfOperation].toInt())
+                        // past the last step there is nothing left to read out
+                        val step = currentAbacus.operationStepsStringsArray.getOrNull(currentIndexOfOperation)?.toIntOrNull() ?: return@let
+                        val questionWord = context.convertNumberToWords(step)
                         ttsManager.speak(questionWord)
                     }
                     AppConstants.extras_Comman.AbacusTypeMultiplication -> {
@@ -346,7 +348,11 @@ class AbacusDoPracticeViewModel @Inject constructor(
                                 }
                             }
                             AppConstants.extras_Comman.AbacusTypeAdditionSubtraction -> {
-                                if (leftInt.toString() == currentAbacus.operationNumbersArray[currentOperationIndex].toString()) {
+                                // The last step is never stepped past: when its number is on the rods but the sum is not finished yet
+                                // (a bead is still on a decimal rod) the step stays and the hint shows how to clear the rest.
+                                // Stepping past the end read the list one place too far and crashed.
+                                if (currentOperationIndex < currentAbacus.operationNumbersArray.lastIndex &&
+                                    leftInt.toString() == currentAbacus.operationNumbersArray[currentOperationIndex].toString()) {
                                     currentOperationIndex += 1 // current step completed
                                     updateState_ {
                                         copy(currentIndexOfOperation = currentOperationIndex)
@@ -410,10 +416,11 @@ class AbacusDoPracticeViewModel @Inject constructor(
                                         updateRodMovements(left + right)
                                     }
                                     AppConstants.extras_Comman.AbacusTypeAdditionSubtraction -> {
-                                        val newValue = currentAbacus.operationNumbersArray[currentOperationIndex]
-                                        val rods = max(leftInt.toString().length, newValue.toString().length)
-                                        val left = MathUtils.calculateRodMovements(from = leftInt, to = newValue, rods = rods, isForRightRods = false)
-                                        updateRodMovements(left + right)
+                                        currentAbacus.operationNumbersArray.getOrNull(currentOperationIndex)?.let { newValue ->
+                                            val rods = max(leftInt.toString().length, newValue.toString().length)
+                                            val left = MathUtils.calculateRodMovements(from = leftInt, to = newValue, rods = rods, isForRightRods = false)
+                                            updateRodMovements(left + right)
+                                        }
                                     }
                                     AppConstants.extras_Comman.AbacusTypeMultiplication -> {
                                         val newValue = currentAbacus.eachStepProduct[currentOperationIndex]

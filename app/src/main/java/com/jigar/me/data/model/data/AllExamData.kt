@@ -83,10 +83,20 @@ data class AllExamData(
     fun totalTimeFormat() = (total_time_taken ?: 0).secToTimeFormat()
     fun maxTimeFormat() = (allowed_max_time ?: "0").toInt().secToTimeFormat()
     fun isAnswerCorrect() = correctAns() == userAns()
+    /**
+     * The questions of this report. The stored JSON is missing or empty for some reports; Gson returns null for those (that
+     * crashed the report list: "fromJson(...) must not be null"), and a damaged value throws, so both give an empty list.
+     */
+    private fun parsedQuestions(): List<QuestionDataRequest> = runCatching {
+        Gson().fromJson<List<QuestionDataRequest>>(questions, object : TypeToken<List<QuestionDataRequest>>() {}.type)
+    }.getOrNull() ?: emptyList()
+
+    /** False when the report was saved without its questions (there is nothing to open under "Check result"). */
+    fun hasQuestions(): Boolean = parsedQuestions().isNotEmpty()
+
     fun fullQuestion(): String {
         var question = ""
-        val listType = object : TypeToken<List<QuestionDataRequest>?>() {}.type
-        val list: List<QuestionDataRequest> = Gson().fromJson(questions, listType)
+        val list = parsedQuestions()
         if (list.isNotNullOrEmpty()) {
             list.first().que?.let {
                 question = it
@@ -102,8 +112,7 @@ data class AllExamData(
 
     fun userAns(): String {
         var userAns = ""
-        val listType = object : TypeToken<List<QuestionDataRequest>?>() {}.type
-        val list: List<QuestionDataRequest> = Gson().fromJson(questions, listType)
+        val list = parsedQuestions()
         if (list.isNotNullOrEmpty()) {
             userAns = list.first().user_answer ?: ""
         }
@@ -112,8 +121,7 @@ data class AllExamData(
 
     fun toExerciseResult(): ArrayList<ExerciseList> {
         val exerciseList: ArrayList<ExerciseList> = arrayListOf()
-        val listType = object : TypeToken<List<QuestionDataRequest>?>() {}.type
-        val list: List<QuestionDataRequest> = Gson().fromJson(questions, listType)
+        val list = parsedQuestions()
         if (list.isNotNullOrEmpty()) {
             list.map {
                 with(it) {
@@ -130,8 +138,7 @@ data class AllExamData(
 
     fun toExamResult(): ArrayList<ExamPaper> {
         val examBeginners: ArrayList<ExamPaper> = arrayListOf()
-        val listType = object : TypeToken<List<QuestionDataRequest>?>() {}.type
-        val list: List<QuestionDataRequest> = Gson().fromJson(questions, listType)
+        val list = parsedQuestions()
         if (list.isNotNullOrEmpty()) {
             list.map {
                 with(it) {

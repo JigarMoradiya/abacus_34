@@ -39,9 +39,19 @@ class PostLoginHandler @Inject constructor(
         data class Failure(val message: String?) : Outcome()
     }
 
+    /** True when the lessons are really in the database (the home menu and every lesson list are read from it). */
+    suspend fun hasLessons(): Boolean = dbRepository.countLevels() > 0
+
+    // The saved sync time says "I already have everything up to then", and the server then sends only what changed since. That is only
+    // true while the lessons are in the database: when it is empty (rebuilt, wiped, restored without its data) the server would answer
+    // "nothing new" for ever and the home menu would stay empty. An empty database asks for everything again.
+    private suspend fun syncTimeToAsk(): String =
+        if (hasLessons()) prefs.getCustomParam(Constants.last_sync_time, Constants.last_sync_default_time)
+        else Constants.last_sync_default_time
+
     // Called on splash when user is already logged in — syncs data + progress via auth API
     suspend fun fetchAbacusDataForAuth(): Outcome {
-        val syncTime = prefs.getCustomParam(Constants.last_sync_time, Constants.last_sync_default_time)
+        val syncTime = syncTimeToAsk()
         val request = FetchAbacusDataRequest(
             get_levels = true,
             get_categories = true,
@@ -67,7 +77,7 @@ class PostLoginHandler @Inject constructor(
 
     // Called on splash when user is NOT logged in — syncs public data only
     suspend fun fetchPublicAbacusData(): Outcome {
-        val syncTime = prefs.getCustomParam(Constants.last_sync_time, Constants.last_sync_default_time)
+        val syncTime = syncTimeToAsk()
         val request = FetchAbacusDataRequest(
             get_levels = true,
             get_categories = true,

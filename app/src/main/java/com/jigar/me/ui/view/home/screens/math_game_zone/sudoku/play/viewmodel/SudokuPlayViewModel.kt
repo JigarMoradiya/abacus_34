@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel
 
+import com.jigar.me.utils.enumFromArg
 import android.app.Application
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -27,11 +28,10 @@ class SudokuPlayViewModel @Inject constructor(
 ) : ViewModel() {
 
     // Read args via SavedStateHandle
-    val size: SudokuSize =
-        SudokuSize.valueOf(savedStateHandle["size"] ?: SudokuSize.SIX.name)
+    val size: SudokuSize = enumFromArg(savedStateHandle["size"], SudokuSize.SIX)
 
-    val difficulty: SudokuDifficulty4 =
-        SudokuDifficulty4.valueOf(savedStateHandle["difficulty"] ?: SudokuDifficulty4.EASY.name)
+    // an old or hand-written route can carry "easy" instead of "EASY" (valueOf threw and closed the app)
+    val difficulty: SudokuDifficulty4 = enumFromArg(savedStateHandle["difficulty"], SudokuDifficulty4.EASY)
 
     private val isNewPuzzle: Boolean =
         savedStateHandle["isNewPuzzle"] ?: true

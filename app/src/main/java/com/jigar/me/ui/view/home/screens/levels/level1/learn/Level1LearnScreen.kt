@@ -216,13 +216,15 @@ fun Level1LearnScreen(
                                     horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12),
                                     verticalAlignment     = Alignment.CenterVertically
                                 ) {
+                                    // The step that is fading out stays on screen and tappable for 300 ms, so a quick second tap on Back/Next
+                                    // arrives with the index already moved: keep it inside the list (a double tap on Back gave steps[-1]).
                                     if (idx > 0) {
-                                        AbPanelButton(label = "← Back", accent = lesson.endColor, filled = false) { stepIndex-- }
+                                        AbPanelButton(label = "← Back", accent = lesson.endColor, filled = false) { stepIndex = (stepIndex - 1).coerceAtLeast(0) }
                                     } else {
                                         Spacer(Modifier.weight(1f))
                                     }
                                     if (idx < steps.size - 1) {
-                                        AbPanelButton(label = "Next →", accent = lesson.endColor) { stepIndex++ }
+                                        AbPanelButton(label = "Next →", accent = lesson.endColor) { stepIndex = (stepIndex + 1).coerceAtMost(steps.lastIndex) }
                                     } else {
                                         AbPanelButton(label = "Done! 🎉", accent = lesson.endColor, onClick = onFinished)
                                     }

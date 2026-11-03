@@ -75,26 +75,28 @@ data class SpotlightTooltipCalculation(
     val safeRight: Float,
     val tooltipWidth: Float,
     val tooltipHeight: Float,
+    /** Free space kept between the card and the lit window (room for the card's pointer). */
+    val margin: Float = 16f,
 )
 
 
 data class HighlightStep(val index: Int, val message: String)
 
 val freeModeHighlightSteps = listOf(
-    HighlightStep(0, "This is <font color='#FF5722'><b>Frame</b></font> of Abacus"),
-    HighlightStep(1, "This all are <font color='#0000EE'><b>Rods</b></font> or <font color='#0000EE'><b>Column</b></font> of Abacus"),
-    HighlightStep(2, "This is <font color='#6200EA'><b>Bar</b></font> or <font color='#6200EA'><b>Beam</b></font> of Abacus"),
-    HighlightStep(3, "This all are <font color='#E91E63'><b>Upper Beads</b></font> of Abacus"),
-    HighlightStep(4, "This all are <font color='#E91E63'><b>Lower Beads</b></font> of Abacus"),
-    HighlightStep(5, "<font color='#0000EE'><b>Unit's Place</b></font> <b>(Ones column)</b><br/>of Abacus"),
-    HighlightStep(6, "<b>On 1st ROD</b> <font color='#0000EE'><b>(Ones column)</b></font><br/>each lower bead <font color='#D81B60'><b>value is 1</b></font><br/>and the upper bead <font color='#388E3C'><b>value is 5</b></font>"),
-    HighlightStep(7, "<b>On 2nd ROD</b> <font color='#0000EE'><b>(Tens column)</b></font><br/>each lower bead <font color='#D81B60'><b>value is 10</b></font><br/>and the upper bead <font color='#388E3C'><b>value is 50</b></font>"),
-    HighlightStep(8, "<b>On 3rd ROD</b> <font color='#0000EE'><b>(Hundreds column)</b></font><br/>each lower bead <font color='#D81B60'><b>value is 100</b></font><br/>and the upper bead <font color='#388E3C'><b>value is 500,</b></font><br/>so on.."),
+    HighlightStep(0, "This is the <font color='#FF5722'><b>Frame</b></font> of the Abacus"),
+    HighlightStep(1, "These are the <font color='#0000EE'><b>Rods</b></font> or <font color='#0000EE'><b>Columns</b></font> of the Abacus"),
+    HighlightStep(2, "This is the <font color='#6200EA'><b>Bar</b></font> or <font color='#6200EA'><b>Beam</b></font> of the Abacus"),
+    HighlightStep(3, "These are the <font color='#E91E63'><b>Upper Beads</b></font> of the Abacus"),
+    HighlightStep(4, "These are the <font color='#9C27B0'><b>Lower Beads</b></font> of the Abacus"),
+    HighlightStep(5, "This is the <font color='#0000EE'><b>Unit's Place</b></font> <b>(Ones column)</b><br/>of the Abacus"),
+    HighlightStep(6, "<b>On the 1st ROD</b> <font color='#0000EE'><b>(Ones column)</b></font><br/>each lower bead <font color='#D81B60'><b>value is 1</b></font><br/>and the upper bead <font color='#388E3C'><b>value is 5</b></font>"),
+    HighlightStep(7, "<b>On the 2nd ROD</b> <font color='#0000EE'><b>(Tens column)</b></font><br/>each lower bead <font color='#D81B60'><b>value is 10</b></font><br/>and the upper bead <font color='#388E3C'><b>value is 50</b></font>"),
+    HighlightStep(8, "<b>On the 3rd ROD</b> <font color='#0000EE'><b>(Hundreds column)</b></font><br/>each lower bead <font color='#D81B60'><b>value is 100</b></font><br/>and the upper bead <font color='#388E3C'><b>value is 500</b></font><br/>and so on..."),
     HighlightStep(9, "<b>One Column</b><br/>can show any number from <font color='#EE0000'><b>0 to 9</b></font>"),
-    HighlightStep(10, "<b>Two Column</b><br/>can show any numbers from <font color='#EE0000'><b>0 to 99</b></font>"),
-    HighlightStep(11, "<b>Three Column</b><br/>can show any numbers from <font color='#EE0000'><b>0 to 999</b></font>"),
-    HighlightStep(12, "<b>For Addition</b><br/>always use your <font color='#D81B60'><b>thumb</b></font><br/>to <font color='#0000EE'><b>move lower beads to upward</b></font>"),
-    HighlightStep(13, "<b>For Addition</b><br/>always use your <font color='#D81B60'><b>index finger</b></font><br/>to <font color='#0000EE'><b>move top bead to downward</b></font>"),
-    HighlightStep(14, "<b>For Subtraction</b><br/>always use your <font color='#D81B60'><b>index finger</b></font><br/>to <font color='#0000EE'><b>move lower beads to downward</b></font>"),
-    HighlightStep(15, "<b>For Subtraction</b><br/>always use your <font color='#D81B60'><b>thumb</b></font><br/>to <font color='#0000EE'><b>move upper bead to upward</b></font>")
+    HighlightStep(10, "<b>Two Columns</b><br/>can show any number from <font color='#EE0000'><b>0 to 99</b></font>"),
+    HighlightStep(11, "<b>Three Columns</b><br/>can show any number from <font color='#EE0000'><b>0 to 999</b></font>"),
+    HighlightStep(12, "<b>For Addition</b><br/>always use your <font color='#D81B60'><b>thumb</b></font><br/>to <font color='#0000EE'><b>move the lower beads upward</b></font>"),
+    HighlightStep(13, "<b>For Addition</b><br/>always use your <font color='#D81B60'><b>index finger</b></font><br/>to <font color='#0000EE'><b>move the upper bead downward</b></font>"),
+    HighlightStep(14, "<b>For Subtraction</b><br/>always use your <font color='#D81B60'><b>index finger</b></font><br/>to <font color='#0000EE'><b>move the lower beads downward</b></font>"),
+    HighlightStep(15, "<b>For Subtraction</b><br/>always use your <font color='#D81B60'><b>thumb</b></font><br/>to <font color='#0000EE'><b>move the upper bead upward</b></font>"),
 )

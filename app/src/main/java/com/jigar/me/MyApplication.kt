@@ -5,7 +5,9 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.content.pm.ActivityInfo
+import android.os.Build
 import android.os.Bundle
+import android.os.Looper
 import androidx.annotation.NonNull
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
@@ -76,6 +78,8 @@ class MyApplication : Application(), Configuration.Provider {
 
     override fun onCreate() {
         super.onCreate()
+        installTextToSpeechCrashGuard()
+        stopFinalizerWatchdogOnAndroid7()
         // Initialize RevenueCat
         Purchases.logLevel = if (BuildConfig.DEBUG) com.revenuecat.purchases.LogLevel.DEBUG else com.revenuecat.purchases.LogLevel.WARN
         Purchases.configure(
@@ -111,12 +115,64 @@ class MyApplication : Application(), Configuration.Provider {
         })
     }
 
+    /**
+     * Some phones' own text-to-speech engine fails while Android is connecting to it. The framework does that in an AsyncTask
+     * (`android.speech.tts.TextToSpeech$Connection$SetupConnectionAsyncTask`), so the error is thrown on a background thread where
+     * nothing of ours can catch it, and the app closed at launch ("An error occurred while executing doInBackground()", caused by
+     * "Task was cancelled"). The app works without speech, so that one failure is recorded in Crashlytics and the app goes on.
+     * Every other uncaught exception still reaches the normal handler.
+     */
+    /**
+     * On Android 7 (API 24 and 25) the system closes the whole app when any object's finalize() runs longer than 10 seconds
+     * ("android.graphics.Path.finalize() timed out after 10 seconds"). That happens on slow, overloaded phones that draw a lot,
+     * because every Path has a finalizer on those versions, and it is not a fault of one screen. Stopping that watchdog lets the
+     * slow clean-up finish instead of closing the app. Newer Android versions have no finalizer on Path and block this access, so
+     * it is limited to the two old versions, and any failure of the call is ignored.
+     */
+    private fun stopFinalizerWatchdogOnAndroid7() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N_MR1) return
+        try {
+            val watchdog = Class.forName("java.lang.Daemons\$FinalizerWatchdogDaemon")
+            val instance = watchdog.getDeclaredField("INSTANCE").apply { isAccessible = true }.get(null)
+            watchdog.superclass.getDeclaredMethod("stop").apply { isAccessible = true }.invoke(instance)
+        } catch (_: Throwable) {
+            // not available on this phone: nothing to stop
+        }
+    }
+
+    private fun installTextToSpeechCrashGuard() {
+        val previous = Thread.getDefaultUncaughtExceptionHandler()
+        Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
+            if (thread != Looper.getMainLooper().thread && throwable.isTextToSpeechSetupFailure()) {
+                runCatching { com.google.firebase.crashlytics.FirebaseCrashlytics.getInstance().recordException(throwable) }
+            } else {
+                previous?.uncaughtException(thread, throwable)
+            }
+        }
+    }
+
+    private fun Throwable.isTextToSpeechSetupFailure(): Boolean =
+        message?.contains("doInBackground") == true &&
+            generateSequence(this) { it.cause }.any { t -> t.stackTrace.any { it.className.startsWith("android.speech.tts.TextToSpeech") } }
+
     private fun oneSignal() {
         // Verbose logging only for debug builds; releases stay quiet.
         OneSignal.Debug.logLevel = if (BuildConfig.DEBUG) LogLevel.VERBOSE else LogLevel.WARN
         // OneSignal Initialization
         OneSignal.initWithContext(this, CommonUtils.getOneSignalKey())
 
+        // Every OneSignal object used below (InAppMessages, Notifications, User, Location) waits until OneSignal has finished
+        // starting up. On a slow phone that wait ran out on the main thread and threw from onCreate, which closed the app at
+        // launch ("initWithContext was not called or timed out"). The wait now happens on a background thread, and a failure
+        // only costs the push and in-app message listeners.
+        kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.Default).launch {
+            runCatching { oneSignalListeners() }.onFailure {
+                com.google.firebase.crashlytics.FirebaseCrashlytics.getInstance().recordException(it)
+            }
+        }
+    }
+
+    private fun oneSignalListeners() {
         InAppMessages.addLifecycleListener(object : IInAppMessageLifecycleListener {
             override fun onWillDisplay(event: IInAppMessageWillDisplayEvent) {
             }

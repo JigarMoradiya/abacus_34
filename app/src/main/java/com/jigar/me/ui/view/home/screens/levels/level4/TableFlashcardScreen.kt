@@ -71,6 +71,7 @@ fun TableFlashcardScreen(
     var isFlipped by remember { mutableStateOf(false) }
     var score by remember { mutableIntStateOf(0) }
     var showResult by remember { mutableStateOf(false) }
+    var advancing by remember { mutableStateOf(false) }   // the card is turning to the next one
 
     val rotationAnim = remember { Animatable(0f) }
     val rotation = rotationAnim.value
@@ -86,15 +87,19 @@ fun TableFlashcardScreen(
     }
 
     fun advance(gotIt: Boolean) {
+        // A second tap while the card is still turning (or after the last card) would count the answer twice and skip a card.
+        if (advancing || showResult) return
         if (gotIt) { score++; com.jigar.me.utils.WeeklyActivity.record(weeklyPrefs) }
         else cards.add(cards[currentIndex])
         if (currentIndex < cards.size - 1) {
+            advancing = true
             scope.launch {
                 // Complete the flip (180° → 360°) then snap to 0° for the next card
                 rotationAnim.animateTo(360f, animationSpec = tween(400))
                 rotationAnim.snapTo(0f)
                 isFlipped = false
                 currentIndex++
+                advancing = false
             }
         } else {
             showResult = true

@@ -16,6 +16,7 @@ class DBRepository @Inject constructor(
 
     // abacus all data
     suspend fun countAbacus(): Int = abacusAllDataDB.countAbacus()
+    suspend fun countLevels(): Int = abacusAllDataDB.countLevels()
     suspend fun insertLevel(data : List<Level>) = abacusAllDataDB.insertLevel(data)
     suspend fun insertSetProgress(data : List<SetProgress>) = abacusAllDataDB.insertSetProgress(data)
     suspend fun deleteSetProgress() = abacusAllDataDB.deleteSetProgress()

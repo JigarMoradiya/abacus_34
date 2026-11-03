@@ -150,6 +150,8 @@ fun AbacusToyFrameBack(
     base: Color,
     bottom: Color,
     modifier: Modifier = Modifier,
+    /** False while the tour points at the frame itself: the rods, beam and beam markers are left out so the frame stands alone. */
+    showInterior: Boolean = true,
 ) {
     val colors = LocalAbColors.current
     val isDark = colors.isDark
@@ -194,53 +196,55 @@ fun AbacusToyFrameBack(
         }
         drawPath(panel, base.abDarkened(0.5f).copy(alpha = 0.6f), style = Stroke(width = max(1.5f.dp.toPx(), t * 0.05f)))
 
-        // rods
-        val rw = max(4.dp.toPx(), g.beamHeight.toPx() * 0.62f)
-        val rodTop = inset + 2.dp.toPx()
-        val rodBottom = h - inset - 2.dp.toPx()
-        for (i in 0 until g.numberOfColumns) {
-            val x = g.rodX(i).toPx()
-            val place = g.place(i)
-            val rodColor = place?.let { toyHex(AbacusPlaceValue.colors[it]) } ?: base.abBlended(toyHex(0x9AA3C7), 0.5f)
-            val rect = Rect(x - rw / 2, rodTop, x + rw / 2, rodBottom)
-            drawPath(
-                roundRectPath(rect, rw / 2),
-                Brush.horizontalGradient(listOf(rodColor.abBlended(Color.White, 0.35f), rodColor, rodColor.abDarkened(0.2f)), startX = rect.left, endX = rect.right),
-            )
-            drawPath(
-                roundRectPath(Rect(rect.left + rw * 0.18f, rect.top + 2.dp.toPx(), rect.left + rw * 0.38f, rect.bottom - 2.dp.toPx()), rw * 0.1f),
-                Color.White.copy(alpha = if (place == null) 0.15f else 0.32f),
-            )
-        }
+        if (showInterior) {
+            // rods
+            val rw = max(4.dp.toPx(), g.beamHeight.toPx() * 0.62f)
+            val rodTop = inset + 2.dp.toPx()
+            val rodBottom = h - inset - 2.dp.toPx()
+            for (i in 0 until g.numberOfColumns) {
+                val x = g.rodX(i).toPx()
+                val place = g.place(i)
+                val rodColor = place?.let { toyHex(AbacusPlaceValue.colors[it]) } ?: base.abBlended(toyHex(0x9AA3C7), 0.5f)
+                val rect = Rect(x - rw / 2, rodTop, x + rw / 2, rodBottom)
+                drawPath(
+                    roundRectPath(rect, rw / 2),
+                    Brush.horizontalGradient(listOf(rodColor.abBlended(Color.White, 0.35f), rodColor, rodColor.abDarkened(0.2f)), startX = rect.left, endX = rect.right),
+                )
+                drawPath(
+                    roundRectPath(Rect(rect.left + rw * 0.18f, rect.top + 2.dp.toPx(), rect.left + rw * 0.38f, rect.bottom - 2.dp.toPx()), rw * 0.1f),
+                    Color.White.copy(alpha = if (place == null) 0.15f else 0.32f),
+                )
+            }
 
-        // beam
-        val beamH = g.beamHeight.toPx()
-        val beamInset = inset - t * 0.25f
-        val beamRect = Rect(beamInset, g.beamTop.toPx(), w - beamInset, g.beamTop.toPx() + beamH)
-        val beam = roundRectPath(beamRect, beamH / 2)
-        translate(0f, beamH * 0.14f) { drawPath(beam, base.abDarkened(0.5f)) }
-        drawPath(beam, Brush.verticalGradient(listOf(top.abBlended(Color.White, 0.35f), base, base.abDarkened(0.15f)), startY = beamRect.top, endY = beamRect.bottom))
-        drawPath(beam, base.abDarkened(0.5f), style = Stroke(width = max(1.5f.dp.toPx(), beamH * 0.07f)))
+            // beam
+            val beamH = g.beamHeight.toPx()
+            val beamInset = inset - t * 0.25f
+            val beamRect = Rect(beamInset, g.beamTop.toPx(), w - beamInset, g.beamTop.toPx() + beamH)
+            val beam = roundRectPath(beamRect, beamH / 2)
+            translate(0f, beamH * 0.14f) { drawPath(beam, base.abDarkened(0.5f)) }
+            drawPath(beam, Brush.verticalGradient(listOf(top.abBlended(Color.White, 0.35f), base, base.abDarkened(0.15f)), startY = beamRect.top, endY = beamRect.bottom))
+            drawPath(beam, base.abDarkened(0.5f), style = Stroke(width = max(1.5f.dp.toPx(), beamH * 0.07f)))
 
-        // beam markers: a golden star on the ones rod, white dots every third rod counted from the last one
-        for (i in 0 until g.numberOfColumns) {
-            val x = g.rodX(i).toPx()
-            val y = beamRect.center.y
-            if (g.place(i) == 0) {
-                val sr = beamH * 0.92f
-                val star = Path()
-                for (k in 0 until 10) {
-                    val a = k * PI / 5 - PI / 2
-                    val rr = if (k % 2 == 0) sr else sr * 0.45f
-                    val px = x + rr * cos(a).toFloat()
-                    val py = y + rr * sin(a).toFloat()
-                    if (k == 0) star.moveTo(px, py) else star.lineTo(px, py)
+            // beam markers: a golden star on the ones rod, white dots every third rod counted from the last one
+            for (i in 0 until g.numberOfColumns) {
+                val x = g.rodX(i).toPx()
+                val y = beamRect.center.y
+                if (g.place(i) == 0) {
+                    val sr = beamH * 0.92f
+                    val star = Path()
+                    for (k in 0 until 10) {
+                        val a = k * PI / 5 - PI / 2
+                        val rr = if (k % 2 == 0) sr else sr * 0.45f
+                        val px = x + rr * cos(a).toFloat()
+                        val py = y + rr * sin(a).toFloat()
+                        if (k == 0) star.moveTo(px, py) else star.lineTo(px, py)
+                    }
+                    star.close()
+                    drawPath(star, Brush.verticalGradient(listOf(toyHex(0xFFE680), toyHex(0xFFB800)), startY = y - sr, endY = y + sr))
+                    drawPath(star, toyHex(0xB07A00), style = Stroke(width = max(1.2f.dp.toPx(), sr * 0.1f), join = StrokeJoin.Round))
+                } else if (g.hasBeamDot(i)) {
+                    drawCircle(Color.White.copy(alpha = 0.9f), radius = beamH * 0.2f, center = Offset(x, y))
                 }
-                star.close()
-                drawPath(star, Brush.verticalGradient(listOf(toyHex(0xFFE680), toyHex(0xFFB800)), startY = y - sr, endY = y + sr))
-                drawPath(star, toyHex(0xB07A00), style = Stroke(width = max(1.2f.dp.toPx(), sr * 0.1f), join = StrokeJoin.Round))
-            } else if (g.hasBeamDot(i)) {
-                drawCircle(Color.White.copy(alpha = 0.9f), radius = beamH * 0.2f, center = Offset(x, y))
             }
         }
 

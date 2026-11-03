@@ -1,5 +1,6 @@
 package com.jigar.me.ui.view.home.screens.youtube.components
 
+import com.jigar.me.utils.extensions.openURL
 import android.content.Intent
 import androidx.compose.foundation.border
 import androidx.compose.foundation.background
@@ -74,11 +75,7 @@ fun YoutubeVideoGrid(
                 video = video,
                 onClick = {
                     val action: () -> Unit = {
-                        val intent = Intent(
-                            Intent.ACTION_VIEW,
-                            "https://www.youtube.com/watch?v=${video.id}".toUri()
-                        )
-                        context.startActivity(intent)
+                        context.openURL("https://www.youtube.com/watch?v=${video.id}")
                     }
                     if (gateResolvedThisVisit) action() else onRequestGate(action)
                 }

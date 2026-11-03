@@ -265,7 +265,8 @@ fun AbacusWithDecimalCanvas(
 
         // The toy frame (body, panel, rods, beam, markers) sits behind the beads.
         if (toy) {
-            AbacusToyFrameBack(toyGeometry, toyTop, toyBase, toyBottom, Modifier.align(Alignment.Center))
+            // while the tour shows the frame (step 1) the rods and the beam are left out, so only the frame stands out
+            AbacusToyFrameBack(toyGeometry, toyTop, toyBase, toyBottom, Modifier.align(Alignment.Center), showInterior = !(showHighlighter && currentSpot == 0))
         }
 
         // --- Inner rods & beads on Canvas ---
@@ -502,7 +503,7 @@ fun AbacusWithDecimalCanvas(
             Box(modifier = Modifier.width(colUnit * 6))
             Box(
                 modifier = Modifier
-                    .width(dim.beadWidth)
+                    .width(colUnit)
                     .height(dim.beamHeight)
                     .spotlightTag(5, highlightSteps[5].message)
             )
@@ -511,6 +512,8 @@ fun AbacusWithDecimalCanvas(
         Spacer(modifier = Modifier.weight(1f))
     }
 
+    // The tour boxes below are a full rod cell wide (colUnit), not one bead wide: the beads sit in the middle of their cell,
+    // so a bead-wide box starting at the cell edge lay a little left of the rod and cut the right side of the beads.
     // 6️⃣ First rods — ones place is always column index 6 (the integer part
     // is always the first 7 columns), so it's colUnit*6 from the left and
     // whatever's left (numberOfColumns - 7) from the right.
@@ -518,7 +521,7 @@ fun AbacusWithDecimalCanvas(
         Box(modifier = Modifier.width(colUnit * 6).height(totalBeadsHeight))
         Box(
             modifier = Modifier
-                .width(dim.beadWidth)
+                .width(colUnit)
                 .height(totalBeadsHeight)
                 .spotlightTag(6, highlightSteps[6].message)
         )
@@ -534,7 +537,7 @@ fun AbacusWithDecimalCanvas(
         )
         Box(
             modifier = Modifier
-                .width(dim.beadWidth)
+                .width(colUnit)
                 .height(totalHeight - dim.rectLineWidth - (dim.beamHeight * 2))
                 .spotlightTag(7, highlightSteps[7].message)
         )
@@ -554,7 +557,7 @@ fun AbacusWithDecimalCanvas(
         )
         Box(
             modifier = Modifier
-                .width(dim.beadWidth)
+                .width(colUnit)
                 .height(totalBeadsHeight)
                 .spotlightTag(8, highlightSteps[8].message)
         )
@@ -570,7 +573,7 @@ fun AbacusWithDecimalCanvas(
         Box(modifier = Modifier.width(colUnit * 6).height(totalBeadsHeight))
         Box(
             modifier = Modifier
-                .width(dim.beadWidth)
+                .width(colUnit)
                 .height(totalBeadsHeight)
                 .spotlightTag(9, highlightSteps[9].message)
         )
@@ -623,12 +626,12 @@ fun AbacusWithDecimalCanvas(
         Column {
             Box(
                 modifier = Modifier
-                    .width(dim.beadWidth)
+                    .width(colUnit)
                     .height((dim.beadHeight * 2) + dim.beamHeight + dim.extraSpace)
             )
             Box(
                 modifier = Modifier
-                    .width(dim.beadWidth)
+                    .width(colUnit)
                     .height((dim.beadHeight * 5) + dim.extraSpace)
                     .spotlightTag(12, highlightSteps[12].message)
             )
@@ -644,7 +647,7 @@ fun AbacusWithDecimalCanvas(
         ) {
             Box(
                 modifier = Modifier
-                    .width(dim.beadWidth)
+                    .width(colUnit)
                     .height((dim.beadHeight * 2) + dim.extraSpace)
                     .spotlightTag(13, highlightSteps[13].message)
             )
@@ -661,12 +664,12 @@ fun AbacusWithDecimalCanvas(
         ) {
             Box(
                 modifier = Modifier
-                    .width(dim.beadWidth)
+                    .width(colUnit)
                     .height((dim.beadHeight * 2) + dim.beamHeight + dim.extraSpace)
             )
             Box(
                 modifier = Modifier
-                    .width(dim.beadWidth)
+                    .width(colUnit)
                     .height((dim.beadHeight * 5) + dim.extraSpace)
                     .spotlightTag(14, highlightSteps[14].message)
             )
@@ -682,7 +685,7 @@ fun AbacusWithDecimalCanvas(
         ) {
             Box(
                 modifier = Modifier
-                    .width(dim.beadWidth)
+                    .width(colUnit)
                     .height((dim.beadHeight * 2) + dim.extraSpace)
                     .spotlightTag(15, highlightSteps[15].message)
             )
@@ -699,11 +702,24 @@ fun AbacusWithDecimalCanvas(
         // Overlay with blur + clear hole + tooltip
         SpotlightOverlay(
             currentSpot = currentSpot,
+            total = highlightSteps.size,
+            // Skip ends the tour exactly like the last step does
+            onSkip = {
+                currentSpot = null
+                abacusData.resetAbacusData()
+                onRodMovementChange(emptyList())
+                onShowDirectionHintsChange(false)
+                abacusData.setAbacusValueFromString("0")
+                onShowHighlighterChange(false)
+            },
             onNext = {
-                val nextSpot = if (currentSpot == highlightSteps.lastIndex) {
+                // a second tap on Next / Done after the tour has already ended (the bar is still on screen for a frame) has
+                // nothing left to advance; reading the missing step with !! closed the app
+                val spot = currentSpot ?: return@SpotlightOverlay
+                val nextSpot = if (spot == highlightSteps.lastIndex) {
                     null
                 } else {
-                    currentSpot!! + 1
+                    spot + 1
                 }
                 currentSpot = nextSpot
 

@@ -21,7 +21,7 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -274,10 +274,12 @@ fun ExerciseExamCompleteResultDialog(
                         verticalArrangement = Arrangement.spacedBy(8.dp),
                         contentPadding = PaddingValues(16.dp)
                     ) {
-                        items(
+                        // The same question can be asked twice in one exercise ("3+4" and "3+4" are equal, hash included), so the
+                        // question alone is not a unique key: its place in the list is part of it.
+                        itemsIndexed(
                             items = questionResults,
-                            key = { item -> "${item.que}_${item.hashCode()}" }
-                        ) { item ->
+                            key = { index, item -> "${index}_${item.que}" }
+                        ) { _, item ->
                             QuestionExamColumnItemHorizontal(item,selectedTheme)
                         }
                     }

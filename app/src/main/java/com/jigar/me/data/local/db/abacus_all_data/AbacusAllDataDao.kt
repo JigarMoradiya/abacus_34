@@ -94,6 +94,8 @@ interface AbacusAllDataDao {
     suspend fun deleteSetProgress(setId : String)
     @Query("SELECT COUNT(*) FROM '${AppConstants.DBParam.table_abacus}'")
     suspend fun countAbacus(): Int
+    @Query("SELECT COUNT(*) FROM '${AppConstants.DBParam.table_level}'")
+    suspend fun countLevels(): Int
 
     @Query("DELETE FROM '${AppConstants.DBParam.table_abacus}'")
     suspend fun deleteAllAbacus()

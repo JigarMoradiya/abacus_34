@@ -19,15 +19,21 @@ object SudokuStorage {
     fun load(context: Context): SavedSudokuGame? {
         val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
         val json = prefs.getString(KEY, null) ?: return null
-        return try {
+        val game = try {
             gson.fromJson(json, SavedSudokuGame::class.java)
         } catch (t: Throwable) { null }
+        // Gson leaves a field that is missing from an old save as null, whatever the Kotlin type says. A save without its puzzle
+        // or board can never be resumed (tapping "continue" on it closed the app), so it is dropped.
+        val usable = game != null && runCatching { game.puzzle.size.grid; game.puzzle.difficulty.name; game.board.size }.isSuccess
+        if (!usable) {
+            clear(context)
+            return null
+        }
+        return game
     }
 
-    fun hasSavedGame(context: Context): Boolean {
-        val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-        return prefs.contains(KEY)
-    }
+    /** True only for a save that can really be resumed (an old or damaged one is not offered). */
+    fun hasSavedGame(context: Context): Boolean = load(context) != null
 
     fun clear(context: Context) {
         val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)

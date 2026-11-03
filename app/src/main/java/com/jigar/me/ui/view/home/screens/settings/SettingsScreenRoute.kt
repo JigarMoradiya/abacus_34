@@ -76,8 +76,25 @@ fun SettingsScreenRoute(
                 var tts by remember { mutableStateOf<TextToSpeech?>(null) }
 
                 LaunchedEffect(Unit) {
-                    tts = TextToSpeech(context) {
-                        viewModel.loadVoiceSettings(tts!!)
+                    var engine: TextToSpeech? = null
+                    var initStatus: Int? = null
+                    var loaded = false
+                    engine = TextToSpeech(context) { status ->
+                        initStatus = status
+                        // Android can call this from inside the TextToSpeech constructor itself (when the engine answers at once, or
+                        // there is none), before `engine` holds the new object: reading it then closed the app with a
+                        // NullPointerException. In that case the voice settings are loaded right after the constructor, below.
+                        val ready = engine
+                        if (status == TextToSpeech.SUCCESS && ready != null && !loaded) {
+                            loaded = true
+                            viewModel.loadVoiceSettings(ready)
+                        }
+                    }
+                    tts = engine
+                    val created = engine
+                    if (initStatus == TextToSpeech.SUCCESS && !loaded && created != null) {
+                        loaded = true
+                        viewModel.loadVoiceSettings(created)
                     }
                 }
 

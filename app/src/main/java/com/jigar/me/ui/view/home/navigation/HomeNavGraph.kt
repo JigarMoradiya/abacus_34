@@ -146,7 +146,12 @@ fun HomeNavGraph(
             current != null && current != RouteNavigation.Splash.route && current != RouteNavigation.Onboarding.route
         ) {
             // Deep link — not a user tap; must never be dropped by the RESUMED guard
-            navController.navigate(initialRoute)
+            try {
+                navController.navigate(initialRoute)
+            } catch (e: IllegalArgumentException) {
+                // a route this version does not have (an old notification, another app's intent): navigate() throws for it and
+                // closed the app, so the link is dropped and the app stays on Home
+            }
             onInitialRouteHandled()
         }
     }
@@ -978,14 +983,17 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.CredentialsLoginLandscape.route) {
+            // The My Account screen below shows the new login. It can be missing from the back stack (for example when the screen
+            // is opened again after the app was restored); getBackStackEntry then threw and closed the app, so a missing
+            // My Account just means there is nothing to refresh.
             val myAccountEntry = remember(navController) {
-                navController.getBackStackEntry(RouteNavigation.MyAccount.route)
+                runCatching { navController.getBackStackEntry(RouteNavigation.MyAccount.route) }.getOrNull()
             }
-            val myAccountViewModel: MyAccountViewModel = hiltViewModel(myAccountEntry)
+            val myAccountViewModel: MyAccountViewModel? = myAccountEntry?.let { hiltViewModel(it) }
             LoginWithCredentialsLandscapeScreen(
                 onGoBack = { navController.safePopBackStack() },
                 onLoginSuccess = {
-                    myAccountViewModel.onLoginSuccess()
+                    myAccountViewModel?.onLoginSuccess()
                     navController.safePopBackStack()
                 }
             )

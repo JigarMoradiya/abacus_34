@@ -90,6 +90,9 @@ fun ReportCard(
             AppConstants.EXAM.type_Exercise,
             AppConstants.EXAM.type_Exam,
             AppConstants.apiParams.answerFormalExam -> ReportExerciseExamSection(item)
+
+            // a kind of report this list cannot draw: say so instead of leaving the card empty
+            else -> ReportDataNotAvailable()
         }
     }
 }
@@ -156,7 +159,8 @@ private fun ReportHeaderRow(
             maxLines = 1
         )
 
-        if (hasResult) {
+        // a report saved without its questions has no result to open
+        if (hasResult && remember(item.questions) { item.hasQuestions() }) {
             AbButton(
                 text = stringResource(R.string.checkResult),
                 tone = AbTone.Success,
@@ -218,6 +222,14 @@ private fun ReportExerciseExamSection(item: AllExamData) {
         }
     }
 
+    // no figures were saved: nothing to show, not a row of zeros
+    if (item.no_of_questions == null) {
+        ReportDataNotAvailable()
+        return
+    }
+    // saved without its questions: the figures below are still right, the questions themselves are not available
+    if (!remember(item.questions) { item.hasQuestions() }) ReportDataNotAvailable()
+
     val right = item.no_of_right_answers ?: 0
     val total = item.no_of_questions ?: 0
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp * s), modifier = Modifier.fillMaxWidth()) {
@@ -231,6 +243,18 @@ private fun ReportExerciseExamSection(item: AllExamData) {
     }
 }
 
+/** What a report card says when there is nothing to show for it (its questions were not saved, or it is a kind this list cannot draw). */
+@Composable
+private fun ReportDataNotAvailable() {
+    val colors = LocalAbColors.current
+    val s = LocalAbScale.current.factor
+    Text(
+        text = stringResource(R.string.data_not_available),
+        style = AbTypography.fixed(14f * s, FontWeight.SemiBold),
+        color = colors.textSecondary,
+    )
+}
+
 @Composable
 private fun ReportCCMSection(item: AllExamData) {
     val colors = LocalAbColors.current
@@ -240,7 +264,10 @@ private fun ReportCCMSection(item: AllExamData) {
     val isCorrect = remember(item.questions) { item.isAnswerCorrect() }
     val userAnswer = remember(item.questions) { item.userAns() }
 
-    Column(verticalArrangement = Arrangement.spacedBy(2.dp * s)) {
+    // the questions of this report were not saved: nothing to show for the question itself
+    if (question.isEmpty()) {
+        ReportDataNotAvailable()
+    } else Column(verticalArrangement = Arrangement.spacedBy(2.dp * s)) {
         Row(horizontalArrangement = Arrangement.spacedBy(6.dp * s)) {
             Text(
                 text = stringResource(R.string.question),

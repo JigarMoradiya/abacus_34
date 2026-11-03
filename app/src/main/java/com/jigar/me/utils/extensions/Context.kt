@@ -281,14 +281,20 @@ private fun supportEmailFooter(prefManager: AppPreferencesHelper): String {
     return "\n\n\n---\n" + lines.joinToString("\n")
 }
 fun Context.openURL(url : String) {
+    val i = Intent(Intent.ACTION_VIEW)
+    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    i.data = url.toUri()
     try {
-        val i = Intent(Intent.ACTION_VIEW)
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        i.data = url.toUri()
         startActivity(i)
     } catch (e: Exception) {
-     e.printStackTrace()
-     toastS(getString(R.string.link_not_support))
+        // The phone's default app for a link can refuse it (a video player whose link screen is not open to other apps throws a
+        // SecurityException): the system is asked to offer the choice again before the link is given up.
+        try {
+            startActivity(Intent.createChooser(i, null).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        } catch (e2: Exception) {
+            e2.printStackTrace()
+            toastS(getString(R.string.link_not_support))
+        }
     }
 }
 fun Context.shareIntent() {
@@ -321,12 +327,7 @@ fun Context.shareIntent() {
     startActivity(sharingIntent)
 }
 
- fun Context.openYoutube(url : String = AppConstants.YOUTUBE_URL) {
-     val i = Intent(Intent.ACTION_VIEW)
-     i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-     i.data = Uri.parse(url)
-     startActivity(i)
- }
+ fun Context.openYoutube(url : String = AppConstants.YOUTUBE_URL) = openURL(url)
 
 
 

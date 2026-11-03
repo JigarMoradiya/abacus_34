@@ -102,8 +102,9 @@ object MathUtils{
 
     fun calculateRodMovements(from: Int, to: Int, rods: Int, isForRightRods: Boolean = false): List<RodMovement> {
 
-        val fromStr = from.toString().padStart(rods, '0')
-        val toStr = to.toString().padStart(rods, '0')
+        // The abacus cannot show a negative number; "-5" has a character that is not a digit and used to crash the digit reading below
+        val fromStr = from.coerceAtLeast(0).toString().padStart(rods, '0')
+        val toStr = to.coerceAtLeast(0).toString().padStart(rods, '0')
 
         val fromDigits = fromStr.map { it.digitToInt() }
         val toDigits = toStr.map { it.digitToInt() }

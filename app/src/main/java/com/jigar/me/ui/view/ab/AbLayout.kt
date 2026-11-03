@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.Placeable
 import androidx.compose.ui.layout.layout
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -68,11 +69,18 @@ fun AbFitToSpace(
     var fitScale by remember { mutableFloatStateOf(1f) }
     var laidScale by remember { mutableFloatStateOf(1f) }
     val published = remember { floatArrayOf(1f) }
+    // The width scale the measure pass wants next. Not state: it is applied after layout (see onGloballyPositioned below).
+    val wantedLaid = remember { floatArrayOf(1f) }
 
     CompositionLocalProvider(LocalAbFitScale provides fitScale) {
         Layout(
             content = { Box(contentAlignment = Alignment.TopCenter) { content() } },
-            modifier = modifier,
+            // `laidScale` is read while measuring, so it must never be written while measuring: that asks for a second measure of
+            // the same content within the same pass, and Compose throws "measure() may not be called multiple times on the same
+            // Measurable". The measure pass only notes the scale it wants; it is applied here, once layout is done.
+            modifier = modifier.onGloballyPositioned {
+                if (stretchWidth && abs(laidScale - wantedLaid[0]) > 0.002f) laidScale = wantedLaid[0]
+            },
         ) { measurables, constraints ->
             val child = measurables.first()
 
@@ -106,7 +114,7 @@ fun AbFitToSpace(
                 val laidAt = laidScale
                 val p = measureAt((availW / laidAt).roundToInt())
                 val needed = if (p.height > 0) min(1f, availH.toFloat() / p.height) else 1f
-                if (abs(needed - laidAt) > 0.002f) laidScale = needed
+                wantedLaid[0] = needed
                 // never taller than the space, whatever width this pass was laid out at
                 scale = if (p.height > 0) min(laidAt, availH.toFloat() / p.height) else laidAt
                 placed = p

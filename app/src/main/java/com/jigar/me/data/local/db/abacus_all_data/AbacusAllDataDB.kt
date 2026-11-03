@@ -30,6 +30,8 @@ class AbacusAllDataDB @Inject constructor(private val dao: AbacusAllDataDao) {
 
     suspend fun countAbacus(): Int = withContext(Dispatchers.IO) { dao.countAbacus() }
 
+    suspend fun countLevels(): Int = withContext(Dispatchers.IO) { dao.countLevels() }
+
     suspend fun getParentLevelOfSet(setId: String): String = dao.getParentLevelOfSet(setId)
 
 }

@@ -8,6 +8,7 @@ import androidx.work.workDataOf
 import com.jigar.me.data.pref.PreferencesHelper
 import com.jigar.me.utils.FreemiumWindowLogic.Phase
 import com.jigar.me.utils.workers.FreemiumNotificationWorker
+import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
 /**
@@ -197,14 +198,16 @@ object FreemiumWindow {
     fun syncUserSegments(prefs: PreferencesHelper, isSubscribed: Boolean, now: Long = System.currentTimeMillis()) {
         runCatching {
             val firstSeen = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US).format(java.util.Date(firstSeenMillis(prefs, now)))
-            com.onesignal.OneSignal.User.addTags(
-                mapOf(
-                    "premium" to if (isSubscribed) "1" else "0",
-                    "freemium_phase" to phase(prefs, now).name.lowercase(),
-                    "first_seen" to firstSeen,
-                    "active_days" to prefs.getCustomParamInt(AppConstants.Streak.totalActiveDays, 0).toString(),
-                )
+            val tags = mapOf(
+                "premium" to if (isSubscribed) "1" else "0",
+                "freemium_phase" to phase(prefs, now).name.lowercase(),
+                "first_seen" to firstSeen,
+                "active_days" to prefs.getCustomParamInt(AppConstants.Streak.totalActiveDays, 0).toString(),
             )
+            // OneSignal.User waits until OneSignal has finished starting up: off the main thread, so a slow start cannot freeze the screen
+            kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.Default).launch {
+                runCatching { com.onesignal.OneSignal.User.addTags(tags) }
+            }
             // The same state as RevenueCat subscriber attributes, to split its charts and Experiments results by group
             val days = windowDays(prefs)
             com.revenuecat.purchases.Purchases.sharedInstance.setAttributes(

@@ -924,7 +924,14 @@ private fun LevelsPager(
     LaunchedEffect(pagerState) {
         while (true) {
             delay(3000)
-            pagerState.animateScrollToPage((pagerState.currentPage + 1) % levelInfoList.size)
+            // A pager that has no size yet (still being laid out, or hidden) has no page width to divide by: scrolling it threw
+            // "Cannot round NaN value" from inside Compose and closed the app. It waits for the next round instead.
+            if (pagerState.layoutInfo.viewportSize.width <= 0 || pagerState.layoutInfo.pageSize <= 0) continue
+            try {
+                pagerState.animateScrollToPage((pagerState.currentPage + 1) % levelInfoList.size)
+            } catch (e: IllegalArgumentException) {
+                // the size went away while scrolling: nothing to scroll in, try again later
+            }
         }
     }
 

@@ -126,8 +126,9 @@ class SplashViewModel @Inject constructor(
             updateState_ { copy(isLoading = false, showNoInternetPopup = true) }
             return
         }
-        val hasLocalData = prefs.getCustomParam(Constants.last_sync_time, "").isNotEmpty()
         viewModelScope.launch {
+            // a sync time without the lessons in the database is not "cached data": there is nothing to open Home with
+            val hasLocalData = prefs.getCustomParam(Constants.last_sync_time, "").isNotEmpty() && postLoginHandler.hasLessons()
             val outcome = if (prefs.isUserLoggedIn() && !prefs.getAccessToken().isNullOrEmpty()) {
                 postLoginHandler.fetchAbacusDataForAuth()
             } else {

@@ -47,12 +47,12 @@ class AbacusFreeModeViewModel @Inject constructor(
         private set
 
     var fromNumber by mutableIntStateOf(
-        prefs.getCustomParamInt(AppConstants.AbacusScreen.fromNumber, 1)
+        prefs.getCustomParamInt(AppConstants.AbacusScreen.fromNumber, 1).coerceAtLeast(0)   // a stored negative would make a target the abacus cannot show
     )
         private set
 
     var toNumber by mutableIntStateOf(
-        prefs.getCustomParamInt(AppConstants.AbacusScreen.toNumber, 100)
+        prefs.getCustomParamInt(AppConstants.AbacusScreen.toNumber, 100).coerceAtLeast(fromNumber)
     )
         private set
 

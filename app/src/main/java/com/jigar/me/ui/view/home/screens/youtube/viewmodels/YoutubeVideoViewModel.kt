@@ -20,7 +20,11 @@ class YoutubeVideoViewModel @Inject constructor(
 
     init {
         val type = object : TypeToken<ArrayList<VideoData>>() {}.type
-        val videoList: List<VideoData> = Gson().fromJson(prefs.getCustomParam(AppConstants.RemoteConfig.videoList,""),type)
+        // The list comes from Remote Config and is stored as "" when the app has not received it yet (first launch offline);
+        // Gson returns null for "" (that crashed here), and a damaged value throws, so both give an empty list.
+        val videoList: List<VideoData> = runCatching {
+            Gson().fromJson<List<VideoData>>(prefs.getCustomParam(AppConstants.RemoteConfig.videoList, ""), type)
+        }.getOrNull() ?: emptyList()
         val sortedList = videoList.sortedWith { videoList1, videoList2 -> videoList1.so - videoList2.so }
         updateState_ {
             copy(videoList = sortedList)
