@@ -63,6 +63,111 @@
     <string name="step_by_step">คำตอบทีละขั้น</string>
     <string name="timer_on">จับเวลาเปิดอยู่</string>
     <string name="txt_set_completed_msg">คุณทำชุดลูกคิดนี้เสร็จแล้ว!</string>
+    <!-- m13_level1 -->
+    <string name="l1_lesson1_title">รู้จักลูกคิด</string>
+    <string name="l1_lesson1_subtitle">ลูกคืออะไร และวิธีแตะลูก</string>
+    <string name="l1_lesson2_title">เลข 1 ถึง 4</string>
+    <string name="l1_lesson2_subtitle">เลื่อนลูกล่าง นับให้ถึง 4!</string>
+    <string name="l1_lesson3_title">เลข 5 และต่อไป</string>
+    <string name="l1_lesson3_subtitle">ลูกบน นับ 5 ถึง 9</string>
+    <string name="l1_lesson4_title">ค่าประจำหลัก</string>
+    <string name="l1_lesson4_subtitle">รู้จักแกนหลักสิบและหลักหน่วย</string>
+    <string name="l1_lesson5_title">เลขถึง 99</string>
+    <string name="l1_lesson5_subtitle">อ่านเลขสองหลักได้ทุกจำนวน!</string>
+    <string name="l1_lesson1_step1_title">ลูกคิดคืออะไร?</string>
+    <string name="l1_lesson1_step1_body">ลูกคิดคือกรอบนับเลขที่มีลูกร้อยอยู่บนแกน ผู้คนใช้มานานแล้ว ก่อนจะมีเครื่องคิดเลขเสียอีก!</string>
+    <string name="l1_lesson1_step2_title">กรอบและคานกลาง</string>
+    <string name="l1_lesson1_step2_body">กรอบด้านนอกช่วยยึดทุกอย่างไว้ด้วยกัน แท่งแนวนอนตรงกลางนี้แหละคือคานกลาง แบ่งบนกับล่างออกจากกัน!</string>
+    <string name="l1_lesson1_step3_title">ลูกบน</string>
+    <string name="l1_lesson1_step3_body">เหนือคานกลางมีลูกพิเศษอยู่ 1 ลูก ดันลงมาแตะคานกลาง จะนับเป็นห้าเลย! ✋</string>
+    <string name="l1_lesson1_step4_title">ลูกล่าง</string>
+    <string name="l1_lesson1_step4_body">ใต้คานกลางมีลูก 4 ลูก ดันขึ้นไปแตะคานกลางทีละลูก แต่ละลูกนับเป็นหนึ่ง! 1️⃣</string>
+    <string name="l1_lesson1_step5_title">อ่านลูกคิดกัน!</string>
+    <string name="l1_lesson1_step5_body">ลูกบนลงมา = 5 นับลูกล่างที่แตะคานกลาง แล้วบวกกัน! ตรงนี้: ลูกบน (5) + ลูกล่าง 3 ลูก = 8! 🌟</string>
+    <string name="l1_lesson2_step1_title">ศูนย์</string>
+    <string name="l1_lesson2_step1_body">ลูกทุกลูกอยู่ห่างคานกลาง = ศูนย์ ไม่มีลูกแตะคานกลาง คือไม่มีอะไรให้นับ!</string>
+    <string name="l1_lesson2_step2_title">หนึ่ง</string>
+    <string name="l1_lesson2_step2_body">ดันลูกล่างขึ้นไปแตะคานกลางแค่ 1 ลูกพอดี ตอนนี้แกนแสดงเลข 1!</string>
+    <string name="l1_lesson2_step3_title">สอง</string>
+    <string name="l1_lesson2_step3_body">ดันลูกล่างขึ้น 2 ลูก ลองนับดู: หนึ่ง... สอง! แกนแสดงเลข 2! 🎊</string>
+    <string name="l1_lesson2_step4_title">สาม</string>
+    <string name="l1_lesson2_step4_body">ลูกล่าง 3 ลูกแตะคานกลาง นับด้วยกัน: 1, 2, 3! แกนแสดงเลข 3! 🌈</string>
+    <string name="l1_lesson2_step5_title">สี่</string>
+    <string name="l1_lesson2_step5_body">ดันลูกล่างทั้ง 4 ลูกขึ้นไปแตะคานกลางเลย! นับ: 1, 2, 3, 4! มากที่สุดที่ใช้ลูกล่างอย่างเดียวได้!</string>
+    <string name="l1_lesson3_step1_title">ห้า!</string>
+    <string name="l1_lesson3_step1_body">ดันลูกบนลงมาแตะคานกลาง แค่ลูกเดียวก็เท่ากับห้าแล้ว! เป็นทางลัดสุดเจ๋ง! 🌟</string>
+    <string name="l1_lesson3_step2_title">หก</string>
+    <string name="l1_lesson3_step2_body">ลูกบนลง (=5) บวกลูกล่างขึ้น 1 ลูก (=1) 5 + 1 = หก! เวทมนตร์ของการบวก! ✨</string>
+    <string name="l1_lesson3_step3_title">เจ็ด</string>
+    <string name="l1_lesson3_step3_body">ลูกบนลง (=5) + ลูกล่างขึ้น 2 ลูก (=2) 5 + 2 = เจ็ด! 🎯</string>
+    <string name="l1_lesson3_step4_title">แปด</string>
+    <string name="l1_lesson3_step4_body">ลูกบนลง (=5) + ลูกล่างขึ้น 3 ลูก (=3) 5 + 3 = แปด! ใกล้ถึงแล้ว! 🎈</string>
+    <string name="l1_lesson3_step5_title">เก้า — มากที่สุด!</string>
+    <string name="l1_lesson3_step5_body">ลูกบนลง (=5) + ลูกล่างขึ้น 4 ลูก (=4) 5 + 4 = เก้า! นี่คือเลขมากที่สุดที่ 1 แกนแสดงได้! 🏆</string>
+    <string name="l1_lesson4_step1_title">สองแกน!</string>
+    <string name="l1_lesson4_step1_body">ลูกคิดมีหลายแกน! แกนขวาแสดงหลักหน่วย (1–9) แกนซ้ายแสดงหลักสิบ (10, 20, ...)! 🎯</string>
+    <string name="l1_lesson4_step2_title">เลข 10</string>
+    <string name="l1_lesson4_step2_body">ดันลูกล่างขึ้น 1 ลูกที่แกนซ้าย (หลักสิบ) แกนขวายังเป็นศูนย์ ลูก 1 ลูกบนแกนหลักสิบ = สิบ!</string>
+    <string name="l1_lesson4_step3_title">เลข 23</string>
+    <string name="l1_lesson4_step3_body">ซ้าย: ลูกล่างขึ้น 2 ลูก = 2 สิบ = 20 ขวา: ลูกล่างขึ้น 3 ลูก = 3 หน่วย 20 + 3 = 23! 🌟</string>
+    <string name="l1_lesson4_step4_title">เลข 56</string>
+    <string name="l1_lesson4_step4_body">ซ้าย: ลูกบนลง = 5 สิบ = 50 ขวา: ลูกบน + ลูกล่าง 1 ลูก = 5+1 = 6 หน่วย 50 + 6 = 56! 🎊</string>
+    <string name="l1_lesson4_step5_title">อ่านเลขสองหลักได้ทุกจำนวน!</string>
+    <string name="l1_lesson4_step5_body">อ่านแกนซ้ายก่อน (หลักสิบ × 10) แล้วบวกแกนขวา (หลักหน่วย) ตรงนี้: 4 สิบ + 7 หน่วย = 47! 🏆</string>
+    <string name="l1_lesson5_step1_title">เลขอะไรก็ได้ 0–99!</string>
+    <string name="l1_lesson5_step1_body">แค่ 2 แกนก็แสดงเลขได้ทุกจำนวนตั้งแต่ 0 ถึง 99! อ่านได้ถึง 100 เลขที่ไม่ซ้ำกันเลย! 🎉</string>
+    <string name="l1_lesson5_step2_title">เลข 67</string>
+    <string name="l1_lesson5_step2_body">แกนหลักสิบ: ลูกบน (5) + ลูกล่าง 1 ลูก (1) = 6 สิบ = 60 แกนหลักหน่วย: ลูกบน (5) + ลูกล่าง 2 ลูก (2) = 7 60 + 7 = 67! 🎯</string>
+    <string name="l1_lesson5_step3_title">เลข 50</string>
+    <string name="l1_lesson5_step3_body">แกนหลักสิบ: มีแค่ลูกบนลง = 5 สิบ = 50 แกนหลักหน่วย: ไม่มีอะไร = 0 แค่ลูกบนลูกเดียว = 50! 🌟</string>
+    <string name="l1_lesson5_step4_title">เลข 99 — มากที่สุด!</string>
+    <string name="l1_lesson5_step4_body">หลักสิบ: ลูกบน (5) + ลูกล่าง 4 ลูก = 9 สิบ = 90 หลักหน่วย: ลูกบน (5) + ลูกล่าง 4 ลูก = 9 หน่วย 90 + 9 = 99! มากที่สุดแล้ว! 🌈</string>
+    <string name="l1_lesson5_step5_title">เก่งสุดยอดไปเลย!</string>
+    <string name="l1_lesson5_step5_body">อ่านแกนซ้าย (×10) แล้วบวกแกนขวา ข้างล่างคือเลขอะไร? ซ้าย=3 ขวา=8 → 38! ทำได้แล้ว! 🌈</string>
+    <string name="l1_lesson_label">บทเรียนที่ %1$d</string>
+    <string name="l1_phase_learn">เรียนรู้</string>
+    <string name="l1_phase_learn_desc">ทำความเข้าใจทีละขั้น</string>
+    <string name="l1_phase_practice">ฝึกฝน</string>
+    <string name="l1_phase_practice_desc">ลองเลื่อนลูกคิดด้วยตัวเอง</string>
+    <string name="l1_phase_quiz">แบบทดสอบ</string>
+    <string name="l1_phase_quiz_desc">ทดสอบฝีมือและรับดาว!</string>
+    <string name="l1_step_counter">ขั้นที่ %1$d จาก %2$d</string>
+    <string name="l1_back">← กลับ</string>
+    <string name="l1_done">เสร็จแล้ว! 🎉</string>
+    <string name="l1_question_counter">ข้อที่ %1$d จาก %2$d</string>
+    <string name="l1_quiz_what_number">นี่คือเลขอะไร? 🤔</string>
+    <string name="l1_quiz_perfect">เต็มคะแนน! เก่งเป็นดาวเลย! 🌟</string>
+    <string name="l1_quiz_great">เก่งมาก! ฝึกต่ออีกนะ! 💪</string>
+    <string name="l1_quiz_good">พยายามได้ดี! ฝึกอีกหน่อยนะ! 🎯</string>
+    <string name="l1_quiz_score">ถูก %1$d / %2$d ข้อ</string>
+    <string name="l1_try_again">ลองอีกครั้ง 🔄</string>
+    <string name="l1_continue">ไปต่อ →</string>
+    <string name="l1_unlock_formulas">🔓 ปลดล็อกสูตรลูกคิด</string>
+    <string name="l1_set_this_number">ตั้งเลขนี้:</string>
+    <string name="l1_set_on_abacus">ตั้งเลขนี้\nบนลูกคิดเลย!</string>
+    <string name="l1_got_it">เข้าใจแล้ว! ✓</string>
+    <string name="l1_show_me_how">ดูวิธีทำ 👀</string>
+    <string name="l1_i_did_it">ทำเสร็จแล้ว! ✅</string>
+    <string name="l1_practice_complete">ฝึกฝนเสร็จแล้ว!</string>
+    <string name="l1_practice_done_msg">เยี่ยมมาก! ตั้งเลขบนลูกคิดครบทั้ง %1$d เลขแล้ว\nพร้อมทำแบบทดสอบหรือยัง?</string>
+    <string name="l1_lesson_heading">บทเรียนที่ %1$d · %2$s</string>
+    <string name="l1_rod_zero">%1$s: ลูกทุกลูกห่างคานกลาง</string>
+    <string name="l1_rod_heaven">%1$s: ลูกบนลงมาอย่างเดียว</string>
+    <string name="l1_instr_zero">ให้ลูกทุกลูกอยู่ห่างจากคานกลาง</string>
+    <string name="l1_instr_heaven">ดันเฉพาะลูกบนลงมาแตะคานกลาง</string>
+    <string name="l1_instr_two_digits">%1$s · %2$s</string>
+    <plurals name="l1_rod_earth">
+        <item quantity="other">%1$s: ลูกล่างขึ้น %2$d ลูก</item>
+    </plurals>
+    <plurals name="l1_rod_heaven_earth">
+        <item quantity="other">%1$s: ลูกบน + ลูกล่างขึ้น %2$d ลูก</item>
+    </plurals>
+    <plurals name="l1_instr_earth">
+        <item quantity="other">ดันลูกล่างขึ้นแตะคานกลาง %1$d ลูก</item>
+    </plurals>
+    <plurals name="l1_instr_heaven_earth">
+        <item quantity="other">ลูกบนลง + ดันลูกล่างขึ้น %1$d ลูก</item>
+    </plurals>
     <!-- m1_settings -->
     <string name="background_music_volume">ระดับเสียงเพลงพื้นหลัง</string>
     <string name="change_voice_setting">เปลี่ยนการตั้งค่าเสียงพูด</string>

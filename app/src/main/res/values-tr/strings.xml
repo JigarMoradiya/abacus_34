@@ -66,6 +66,115 @@
     <string name="step_by_step">Adım adım cevap</string>
     <string name="timer_on">Zamanlayıcı açık</string>
     <string name="txt_set_completed_msg">Bu abaküs setini tamamladın!</string>
+    <!-- m13_level1 -->
+    <string name="l1_lesson1_title">Abaküsle Tanış</string>
+    <string name="l1_lesson1_subtitle">Boncuklar nedir, nasıl dokunulur</string>
+    <string name="l1_lesson2_title">1\'den 4\'e Sayılar</string>
+    <string name="l1_lesson2_subtitle">Alt boncukları oynat, 4\'e kadar say!</string>
+    <string name="l1_lesson3_title">5 ve Ötesi</string>
+    <string name="l1_lesson3_subtitle">Üst boncuk, 5\'ten 9\'a kadar say</string>
+    <string name="l1_lesson4_title">Basamak Değeri</string>
+    <string name="l1_lesson4_subtitle">Onlar ve birler basamaklarını keşfet</string>
+    <string name="l1_lesson5_title">99\'a Kadar Sayılar</string>
+    <string name="l1_lesson5_subtitle">İki basamaklı her sayıyı oku!</string>
+    <string name="l1_lesson1_step1_title">Abaküs Nedir?</string>
+    <string name="l1_lesson1_step1_body">Abaküs, çubuklara dizilmiş boncuklardan oluşan bir sayma çerçevesidir. İnsanlar hesap makinelerinden çok önce onu kullanırdı!</string>
+    <string name="l1_lesson1_step2_title">Çerçeve ve Orta Çubuk</string>
+    <string name="l1_lesson1_step2_body">Dış çerçeve her şeyi bir arada tutar. Ortadaki yatay çubuğa ORTA ÇUBUK denir. Üstü alttan ayırır!</string>
+    <string name="l1_lesson1_step3_title">Gök Boncuğu</string>
+    <string name="l1_lesson1_step3_body">Orta çubuğun üstünde 1 özel boncuk var. Onu orta çubuğa değene kadar AŞAĞI it, BEŞ sayılır! ✋</string>
+    <string name="l1_lesson1_step4_title">Yer Boncukları</string>
+    <string name="l1_lesson1_step4_body">Orta çubuğun altında 4 boncuk var. Orta çubuğa değene kadar YUKARI ittiğin her biri BİR sayılır! 1️⃣</string>
+    <string name="l1_lesson1_step5_title">Abaküsü Okuyalım!</string>
+    <string name="l1_lesson1_step5_body">Gök boncuğu aşağıda = 5. Orta çubuğa değen yer boncuklarını say. Hepsini topla! Burada: gök(5) + 3 yer = 8! 🌟</string>
+    <string name="l1_lesson2_step1_title">Sıfır</string>
+    <string name="l1_lesson2_step1_body">Hiçbir boncuk orta çubuğa değmiyorsa = SIFIR. Orta çubuğa hiçbir şey değmiyor, sayacak bir şey yok!</string>
+    <string name="l1_lesson2_step2_title">Bir</string>
+    <string name="l1_lesson2_step2_body">Orta çubuğa değene kadar tam 1 yer boncuğunu YUKARI it. Çubuk artık 1 sayısını gösteriyor!</string>
+    <string name="l1_lesson2_step3_title">İki</string>
+    <string name="l1_lesson2_step3_body">2 yer boncuğunu YUKARI it. Say: bir... iki! Çubuk 2\'yi gösteriyor! 🎊</string>
+    <string name="l1_lesson2_step4_title">Üç</string>
+    <string name="l1_lesson2_step4_body">Üç yer boncuğu orta çubuğa değiyor. Say: 1, 2, 3! Çubuk 3\'ü gösteriyor! 🌈</string>
+    <string name="l1_lesson2_step5_title">Dört</string>
+    <string name="l1_lesson2_step5_body">4 yer boncuğunun HEPSİNİ orta çubuğa kadar yukarı it! Say: 1, 2, 3, 4! Yalnızca yer boncuklarıyla en büyük sayı bu!</string>
+    <string name="l1_lesson3_step1_title">Beş!</string>
+    <string name="l1_lesson3_step1_body">GÖK boncuğunu orta çubuğa değene kadar AŞAĞI it. Sadece bu TEK boncuk = BEŞ! Süper bir kısayol! 🌟</string>
+    <string name="l1_lesson3_step2_title">Altı</string>
+    <string name="l1_lesson3_step2_body">Gök boncuğu aşağıda (=5) ARTI 1 yer boncuğu yukarıda (=1). 5 + 1 = ALTI! Toplama sihri! ✨</string>
+    <string name="l1_lesson3_step3_title">Yedi</string>
+    <string name="l1_lesson3_step3_body">Gök boncuğu aşağıda (=5) + 2 yer boncuğu yukarıda (=2). 5 + 2 = YEDİ! 🎯</string>
+    <string name="l1_lesson3_step4_title">Sekiz</string>
+    <string name="l1_lesson3_step4_body">Gök boncuğu aşağıda (=5) + 3 yer boncuğu yukarıda (=3). 5 + 3 = SEKİZ! Az kaldı! 🎈</string>
+    <string name="l1_lesson3_step5_title">Dokuz — En Büyük!</string>
+    <string name="l1_lesson3_step5_body">Gök boncuğu aşağıda (=5) + 4 yer boncuğu yukarıda (=4). 5 + 4 = DOKUZ! Bir çubuğun gösterebileceği en büyük sayı bu! 🏆</string>
+    <string name="l1_lesson4_step1_title">İki Çubuk!</string>
+    <string name="l1_lesson4_step1_body">Abaküste çok çubuk var! SAĞ çubuk BİRLERİ (1–9) gösterir. SOL çubuk ONLARI (10, 20, ...) gösterir! 🎯</string>
+    <string name="l1_lesson4_step2_title">10 Sayısı</string>
+    <string name="l1_lesson4_step2_body">SOL (onlar) çubuğunda 1 yer boncuğunu yukarı it. Sağ çubuk sıfırda kalır. Onlar çubuğundaki bir boncuk = ON!</string>
+    <string name="l1_lesson4_step3_title">23 Sayısı</string>
+    <string name="l1_lesson4_step3_body">SOL: 2 yer boncuğu yukarıda = 2 onluk = 20. SAĞ: 3 yer boncuğu yukarıda = 3 birlik. 20 + 3 = 23! 🌟</string>
+    <string name="l1_lesson4_step4_title">56 Sayısı</string>
+    <string name="l1_lesson4_step4_body">SOL: gök boncuğu aşağıda = 5 onluk = 50. SAĞ: gök + 1 yer = 5+1 = 6 birlik. 50 + 6 = 56! 🎊</string>
+    <string name="l1_lesson4_step5_title">İki Basamaklı Her Sayıyı Oku!</string>
+    <string name="l1_lesson4_step5_body">Önce SOL çubuğu oku (onlar × 10), sonra SAĞ çubuğu (birler) ekle. Burada: 4 onluk + 7 birlik = 47! 🏆</string>
+    <string name="l1_lesson5_step1_title">0–99 Arası Her Sayı!</string>
+    <string name="l1_lesson5_step1_body">2 çubukla 0\'dan 99\'a kadar HER sayıyı gösterebilirsin! Okuyabileceğin 100 farklı sayı var! 🎉</string>
+    <string name="l1_lesson5_step2_title">67 Sayısı</string>
+    <string name="l1_lesson5_step2_body">ONLAR çubuğu: gök(5) + 1 yer(1) = 6 onluk = 60. BİRLER çubuğu: gök(5) + 2 yer(2) = 7. 60 + 7 = 67! 🎯</string>
+    <string name="l1_lesson5_step3_title">50 Sayısı</string>
+    <string name="l1_lesson5_step3_body">ONLAR çubuğu: yalnızca gök boncuğu aşağıda = 5 onluk = 50. BİRLER çubuğu: hiçbir şey = 0. Tek bir gök boncuğu = 50! 🌟</string>
+    <string name="l1_lesson5_step4_title">99 Sayısı — En Büyük!</string>
+    <string name="l1_lesson5_step4_body">ONLAR: gök(5)+4 yer = 9 onluk = 90. BİRLER: gök(5)+4 yer = 9 birlik. 90+9 = 99! En büyüğü! 🌈</string>
+    <string name="l1_lesson5_step5_title">Sen Bir Ustasın!</string>
+    <string name="l1_lesson5_step5_body">SOL çubuğu oku (×10), sonra SAĞ çubuğu ekle. Aşağıda ne var? Sol=3, Sağ=8 → 38! Başardın! 🌈</string>
+    <string name="l1_lesson_label">Ders %1$d</string>
+    <string name="l1_phase_learn">Öğren</string>
+    <string name="l1_phase_learn_desc">Konuyu adım adım anla</string>
+    <string name="l1_phase_practice">Alıştırma</string>
+    <string name="l1_phase_practice_desc">Abaküs boncuklarını kendin oynat</string>
+    <string name="l1_phase_quiz">Test</string>
+    <string name="l1_phase_quiz_desc">Becerilerini sına, yıldız kazan!</string>
+    <string name="l1_step_counter">Adım %1$d / %2$d</string>
+    <string name="l1_back">← Geri</string>
+    <string name="l1_done">Bitti! 🎉</string>
+    <string name="l1_question_counter">Soru %1$d / %2$d</string>
+    <string name="l1_quiz_what_number">Bu hangi sayı? 🤔</string>
+    <string name="l1_quiz_perfect">Tam Puan! Sen Bir Yıldızsın! 🌟</string>
+    <string name="l1_quiz_great">Harika İş! Çalışmaya Devam! 💪</string>
+    <string name="l1_quiz_good">İyi Deneme! Biraz Daha Çalışalım! 🎯</string>
+    <string name="l1_quiz_score">%1$d / %2$d Doğru</string>
+    <string name="l1_try_again">Tekrar Dene 🔄</string>
+    <string name="l1_continue">Devam →</string>
+    <string name="l1_unlock_formulas">🔓 Abaküs formüllerinin kilidini aç</string>
+    <string name="l1_set_this_number">Bu sayıyı göster:</string>
+    <string name="l1_set_on_abacus">Bu sayıyı\nabaküste göster!</string>
+    <string name="l1_got_it">Anladım! ✓</string>
+    <string name="l1_show_me_how">Göster Bana 👀</string>
+    <string name="l1_i_did_it">Yaptım! ✅</string>
+    <string name="l1_practice_complete">Alıştırma Tamam!</string>
+    <string name="l1_practice_done_msg">Harika iş! %1$d sayının hepsini abaküste gösterdin.\nTeste hazır mısın?</string>
+    <string name="l1_lesson_heading">Ders %1$d · %2$s</string>
+    <string name="l1_rod_zero">%1$s: tüm boncuklar aşağıda</string>
+    <string name="l1_rod_heaven">%1$s: yalnızca gök boncuğu aşağıda</string>
+    <string name="l1_instr_zero">TÜM boncukları orta çubuktan uzak tut</string>
+    <string name="l1_instr_heaven">YALNIZCA gök boncuğunu orta çubuğa AŞAĞI it</string>
+    <string name="l1_instr_two_digits">%1$s · %2$s</string>
+    <plurals name="l1_rod_earth">
+        <item quantity="one">%1$s: %2$d yer boncuğu yukarıda</item>
+        <item quantity="other">%1$s: %2$d yer boncuğu yukarıda</item>
+    </plurals>
+    <plurals name="l1_rod_heaven_earth">
+        <item quantity="one">%1$s: gök + %2$d yer boncuğu yukarıda</item>
+        <item quantity="other">%1$s: gök + %2$d yer boncuğu yukarıda</item>
+    </plurals>
+    <plurals name="l1_instr_earth">
+        <item quantity="one">%1$d yer boncuğunu orta çubuğa YUKARI it</item>
+        <item quantity="other">%1$d yer boncuğunu orta çubuğa YUKARI it</item>
+    </plurals>
+    <plurals name="l1_instr_heaven_earth">
+        <item quantity="one">Gök boncuğu aşağıda + %1$d yer boncuğunu yukarı it</item>
+        <item quantity="other">Gök boncuğu aşağıda + %1$d yer boncuğunu yukarı it</item>
+    </plurals>
     <!-- m1_settings -->
     <string name="background_music_volume">Arka plan müziği ses düzeyi</string>
     <string name="change_voice_setting">Ses ayarını değiştir</string>

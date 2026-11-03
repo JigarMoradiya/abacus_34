@@ -63,6 +63,111 @@
     <string name="step_by_step">ステップごとの答え</string>
     <string name="timer_on">タイマーON</string>
     <string name="txt_set_completed_msg">このセットをクリアしたよ！</string>
+    <!-- m13_level1 -->
+    <string name="l1_lesson1_title">そろばんと出会おう</string>
+    <string name="l1_lesson1_subtitle">珠ってなに? 動かし方を知ろう</string>
+    <string name="l1_lesson2_title">1から4の数</string>
+    <string name="l1_lesson2_subtitle">下の珠を動かして、4まで数えよう!</string>
+    <string name="l1_lesson3_title">5から先の数</string>
+    <string name="l1_lesson3_subtitle">上の珠で、5から9まで数えよう</string>
+    <string name="l1_lesson4_title">位取り</string>
+    <string name="l1_lesson4_subtitle">十の位と一の位を見つけよう</string>
+    <string name="l1_lesson5_title">99までの数</string>
+    <string name="l1_lesson5_subtitle">2桁の数を読んでみよう!</string>
+    <string name="l1_lesson1_step1_title">そろばんってなに?</string>
+    <string name="l1_lesson1_step1_body">そろばんは、桁に珠がならんだ数える道具です。電卓ができるずっと前から、みんなが使っていました!</string>
+    <string name="l1_lesson1_step2_title">枠と梁</string>
+    <string name="l1_lesson1_step2_body">外の枠が、ぜんぶをささえています。まん中の横の棒は「梁」といって、上と下を分けています!</string>
+    <string name="l1_lesson1_step3_title">上の珠 (五珠)</string>
+    <string name="l1_lesson1_step3_body">梁の上には、特別な珠が1つあります。「下」におろして梁にくっつけると、5になります! ✋</string>
+    <string name="l1_lesson1_step4_title">下の珠 (一珠)</string>
+    <string name="l1_lesson1_step4_body">梁の下には、珠が4つあります。「上」に押して梁にくっつけた珠は、1つが「1」になります! 1️⃣</string>
+    <string name="l1_lesson1_step5_title">そろばんを読もう!</string>
+    <string name="l1_lesson1_step5_body">上の珠が下がっていたら5。梁にくっついた下の珠を数えて、たします! ここでは 上の珠(5) + 下の珠3つ = 8! 🌟</string>
+    <string name="l1_lesson2_step1_title">0 (ゼロ)</string>
+    <string name="l1_lesson2_step1_body">すべての珠が梁からはなれていると「0」です。梁にさわる珠がなければ、数えるものはありません!</string>
+    <string name="l1_lesson2_step2_title">1 (いち)</string>
+    <string name="l1_lesson2_step2_body">下の珠を1つだけ「上」に押して、梁にくっつけます。この桁は1を表しています!</string>
+    <string name="l1_lesson2_step3_title">2 (に)</string>
+    <string name="l1_lesson2_step3_body">下の珠を2つ「上」に押します。数えてみよう。1、2! この桁は2を表しています! 🎊</string>
+    <string name="l1_lesson2_step4_title">3 (さん)</string>
+    <string name="l1_lesson2_step4_body">梁にくっついた下の珠が3つ。数えよう、1、2、3! この桁は3を表しています! 🌈</string>
+    <string name="l1_lesson2_step5_title">4 (よん)</string>
+    <string name="l1_lesson2_step5_body">下の珠を「4つ全部」、梁まで上げよう! 1、2、3、4! 下の珠だけで表せる、いちばん大きい数です!</string>
+    <string name="l1_lesson3_step1_title">5 (ご)!</string>
+    <string name="l1_lesson3_step1_body">「上の珠」を「下」に押して、梁にくっつけます。この珠1つだけで5です! すごい近道です! 🌟</string>
+    <string name="l1_lesson3_step2_title">6 (ろく)</string>
+    <string name="l1_lesson3_step2_body">上の珠を下げて(=5)、さらに下の珠を1つ上げます(=1)。5 + 1 = 6! たし算のまほうです! ✨</string>
+    <string name="l1_lesson3_step3_title">7 (なな)</string>
+    <string name="l1_lesson3_step3_body">上の珠を下げて(=5) + 下の珠を2つ上げます(=2)。5 + 2 = 7! 🎯</string>
+    <string name="l1_lesson3_step4_title">8 (はち)</string>
+    <string name="l1_lesson3_step4_body">上の珠を下げて(=5) + 下の珠を3つ上げます(=3)。5 + 3 = 8! あと少し! 🎈</string>
+    <string name="l1_lesson3_step5_title">9 (きゅう) いちばん大きい数!</string>
+    <string name="l1_lesson3_step5_body">上の珠を下げて(=5) + 下の珠を4つ上げます(=4)。5 + 4 = 9! 1つの桁で表せる、いちばん大きい数です! 🏆</string>
+    <string name="l1_lesson4_step1_title">2つの桁!</string>
+    <string name="l1_lesson4_step1_body">そろばんには、桁がたくさんあります! 「右」の桁は一の位(1–9)、「左」の桁は十の位(10、20、...)を表します! 🎯</string>
+    <string name="l1_lesson4_step2_title">10という数</string>
+    <string name="l1_lesson4_step2_body">左(十の位)の桁で、下の珠を1つ上げます。右の桁は0のままです。十の位の珠1つで10です!</string>
+    <string name="l1_lesson4_step3_title">23という数</string>
+    <string name="l1_lesson4_step3_body">左: 下の珠2つ上げる = 十が2つ = 20。右: 下の珠3つ上げる = 一が3つ。20 + 3 = 23! 🌟</string>
+    <string name="l1_lesson4_step4_title">56という数</string>
+    <string name="l1_lesson4_step4_body">左: 上の珠を下げる = 十が5つ = 50。右: 上の珠 + 下の珠1つ = 5 + 1 = 6。50 + 6 = 56! 🎊</string>
+    <string name="l1_lesson4_step5_title">2桁の数を読もう!</string>
+    <string name="l1_lesson4_step5_body">まず「左」の桁を読んで(十の位 × 10)、次に「右」の桁(一の位)をたします。ここでは 十が4つ + 一が7つ = 47! 🏆</string>
+    <string name="l1_lesson5_step1_title">0–99のどんな数も!</string>
+    <string name="l1_lesson5_step1_body">2つの桁があれば、0から99までどんな数でも表せます! 読める数は、100通りもあるんです! 🎉</string>
+    <string name="l1_lesson5_step2_title">67という数</string>
+    <string name="l1_lesson5_step2_body">十の位: 上の珠(5) + 下の珠1つ(1) = 十が6つ = 60。一の位: 上の珠(5) + 下の珠2つ(2) = 7。60 + 7 = 67! 🎯</string>
+    <string name="l1_lesson5_step3_title">50という数</string>
+    <string name="l1_lesson5_step3_body">十の位: 上の珠を下げただけ = 十が5つ = 50。一の位: 何もなし = 0。上の珠1つだけで50! 🌟</string>
+    <string name="l1_lesson5_step4_title">99 いちばん大きい数!</string>
+    <string name="l1_lesson5_step4_body">十の位: 上の珠(5) + 下の珠4つ = 十が9つ = 90。一の位: 上の珠(5) + 下の珠4つ = 一が9つ。90 + 9 = 99! いちばん大きい数です! 🌈</string>
+    <string name="l1_lesson5_step5_title">もう名人です!</string>
+    <string name="l1_lesson5_step5_body">「左」の桁(×10)を読んで、「右」の桁をたします。下の図は? 左=3、右=8 → 38! できました! 🌈</string>
+    <string name="l1_lesson_label">レッスン %1$d</string>
+    <string name="l1_phase_learn">まなぶ</string>
+    <string name="l1_phase_learn_desc">ひとつずつ、しくみをわかろう</string>
+    <string name="l1_phase_practice">練習</string>
+    <string name="l1_phase_practice_desc">自分で珠を動かしてみよう</string>
+    <string name="l1_phase_quiz">クイズ</string>
+    <string name="l1_phase_quiz_desc">力をためして、星をゲットしよう!</string>
+    <string name="l1_step_counter">ステップ %1$d / %2$d</string>
+    <string name="l1_back">← もどる</string>
+    <string name="l1_done">できた! 🎉</string>
+    <string name="l1_question_counter">%2$d問中 %1$d問目</string>
+    <string name="l1_quiz_what_number">この数はいくつ? 🤔</string>
+    <string name="l1_quiz_perfect">満点です! きみはスター! 🌟</string>
+    <string name="l1_quiz_great">よくできました! 練習をつづけよう! 💪</string>
+    <string name="l1_quiz_good">おしい! もっと練習しよう! 🎯</string>
+    <string name="l1_quiz_score">%1$d / %2$d 正解</string>
+    <string name="l1_try_again">もう一度 🔄</string>
+    <string name="l1_continue">つづける →</string>
+    <string name="l1_unlock_formulas">🔓 そろばんの公式をひらこう</string>
+    <string name="l1_set_this_number">この数をセットしよう:</string>
+    <string name="l1_set_on_abacus">この数を\nそろばんにセットしよう!</string>
+    <string name="l1_got_it">わかった! ✓</string>
+    <string name="l1_show_me_how">やり方を見る 👀</string>
+    <string name="l1_i_did_it">できた! ✅</string>
+    <string name="l1_practice_complete">練習おわり!</string>
+    <string name="l1_practice_done_msg">すばらしい! %1$d個の数を、ぜんぶそろばんにセットできました。\nクイズにちょうせんしますか?</string>
+    <string name="l1_lesson_heading">レッスン %1$d · %2$s</string>
+    <string name="l1_rod_zero">%1$s: 珠は全部、梁からはなれている</string>
+    <string name="l1_rod_heaven">%1$s: 上の珠だけ下がっている</string>
+    <string name="l1_instr_zero">珠を「ぜんぶ」梁からはなそう</string>
+    <string name="l1_instr_heaven">上の珠だけを「下」におろして梁につけよう</string>
+    <string name="l1_instr_two_digits">%1$s · %2$s</string>
+    <plurals name="l1_rod_earth">
+        <item quantity="other">%1$s: 下の珠が%2$dつ上がっている</item>
+    </plurals>
+    <plurals name="l1_rod_heaven_earth">
+        <item quantity="other">%1$s: 上の珠 + 下の珠%2$dつが上がっている</item>
+    </plurals>
+    <plurals name="l1_instr_earth">
+        <item quantity="other">下の珠%1$dつを「上」に押して梁につけよう</item>
+    </plurals>
+    <plurals name="l1_instr_heaven_earth">
+        <item quantity="other">上の珠を下げて、下の珠%1$dつを上げよう</item>
+    </plurals>
     <!-- m1_settings -->
     <string name="background_music_volume">BGMの音量</string>
     <string name="change_voice_setting">音声設定を変更</string>

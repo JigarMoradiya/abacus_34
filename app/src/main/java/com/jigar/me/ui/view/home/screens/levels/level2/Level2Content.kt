@@ -2,9 +2,21 @@ package com.jigar.me.ui.view.home.screens.levels.level2
 
 import com.jigar.me.data.local.data.Movement
 import com.jigar.me.data.local.data.RodMovement
-import com.jigar.me.ui.view.home.screens.levels.level1.LearnStep
-import com.jigar.me.ui.view.home.screens.levels.level1.LessonFullContent
 import com.jigar.me.ui.view.home.screens.levels.level1.AbacusDisplayState
+
+// Level 2 lesson text (moves to strings.xml in M14); Level 1's own step type now holds string ids.
+internal data class LearnStep(
+    val emoji: String,
+    val title: String,
+    val body: String,
+    val abacusState: AbacusDisplayState? = null,
+    val showFrameOnly: Boolean = false,
+    val fromValue: Int? = null,
+)
+
+internal data class LessonFullContent(
+    val learnSteps: List<LearnStep>,
+)
 
 // ─── Shared animation helpers ─────────────────────────────────────────────────
 

@@ -19,6 +19,8 @@ import com.jigar.me.ui.view.home.screens.levels.LevelScreenRoot
 import com.jigar.me.ui.view.home.screens.levels.levelForeground
 import com.jigar.me.ui.view.home.screens.levels.levelTopBarPadding
 import com.jigar.me.ui.view.home.theme.AppDimens
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 @Composable
 fun Level1HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit) {
@@ -30,7 +32,7 @@ fun Level1HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit)
         val accents = listOf(colors.brandSecondary, colors.accentOrange, colors.accentGreen, colors.accentPurple, colors.accentPink)
 
         Column(modifier = Modifier.levelForeground()) {
-            AbTopBar(title = "Bead Basics", onBack = onBackClick, modifier = Modifier.levelTopBarPadding())
+            AbTopBar(title = stringResource(R.string.level_name_bead_basics), onBack = onBackClick, modifier = Modifier.levelTopBarPadding())
 
             BoxWithConstraints(modifier = Modifier.fillMaxWidth().weight(1f)) {
                 val cols    = 3
@@ -46,8 +48,8 @@ fun Level1HomeScreen(onBackClick: () -> Unit, onNavigateToLesson: (Int) -> Unit)
                 fun lessonCard(lesson: Level1LessonData) {
                     AbLevelCard(
                         emoji   = lesson.emoji,
-                        title   = lesson.title,
-                        label   = "Lesson ${lesson.id}",
+                        title   = stringResource(lesson.titleRes),
+                        label   = stringResource(R.string.l1_lesson_label, lesson.id),
                         number  = lesson.id,
                         accent  = accents[(lesson.id - 1) % accents.size],
                         width   = cellW,

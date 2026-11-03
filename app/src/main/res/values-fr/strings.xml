@@ -69,6 +69,119 @@
     <string name="step_by_step">Réponse pas à pas</string>
     <string name="timer_on">Chrono activé</string>
     <string name="txt_set_completed_msg">Tu as terminé cette série de boulier !</string>
+    <!-- m13_level1 -->
+    <string name="l1_lesson1_title">Découvre le boulier</string>
+    <string name="l1_lesson1_subtitle">Les boules et comment les toucher</string>
+    <string name="l1_lesson2_title">Les nombres de 1 à 4</string>
+    <string name="l1_lesson2_subtitle">Bouge les boules du bas — compte jusqu\'à 4 !</string>
+    <string name="l1_lesson3_title">Le nombre 5 et la suite</string>
+    <string name="l1_lesson3_subtitle">Boule du haut, compter de 5 à 9</string>
+    <string name="l1_lesson4_title">Valeur de position</string>
+    <string name="l1_lesson4_subtitle">Découvre les dizaines et les unités</string>
+    <string name="l1_lesson5_title">Les nombres jusqu\'à 99</string>
+    <string name="l1_lesson5_subtitle">Lis n\'importe quel nombre à deux chiffres !</string>
+    <string name="l1_lesson1_step1_title">C\'est quoi, un boulier ?</string>
+    <string name="l1_lesson1_step1_body">Un boulier est un cadre pour compter, avec des boules sur des tiges. On l\'utilisait bien avant les calculatrices !</string>
+    <string name="l1_lesson1_step2_title">Le cadre et la barre centrale</string>
+    <string name="l1_lesson1_step2_body">Le cadre extérieur tient tout ensemble. La barre horizontale du milieu s\'appelle la BARRE CENTRALE : elle sépare le haut du bas !</string>
+    <string name="l1_lesson1_step3_title">La boule du ciel</string>
+    <string name="l1_lesson1_step3_body">Au-dessus de la barre centrale, il y a 1 boule spéciale. Pousse-la vers le BAS jusqu\'à la barre et elle vaut CINQ ! ✋</string>
+    <string name="l1_lesson1_step4_title">Les boules de la terre</string>
+    <string name="l1_lesson1_step4_body">Sous la barre centrale, il y a 4 boules. Chacune que tu pousses vers le HAUT jusqu\'à la barre vaut UN ! 1️⃣</string>
+    <string name="l1_lesson1_step5_title">Lire le boulier !</string>
+    <string name="l1_lesson1_step5_body">Boule du ciel en bas = 5. Compte les boules de la terre qui touchent la barre. Additionne ! Ici : ciel (5) + 3 terre = 8 ! 🌟</string>
+    <string name="l1_lesson2_step1_title">Zéro</string>
+    <string name="l1_lesson2_step1_body">Toutes les boules loin de la barre centrale = ZÉRO. Rien ne touche la barre = rien à compter !</string>
+    <string name="l1_lesson2_step2_title">Un</string>
+    <string name="l1_lesson2_step2_body">Pousse exactement 1 boule de la terre vers le HAUT jusqu\'à la barre. La tige montre maintenant le nombre 1 !</string>
+    <string name="l1_lesson2_step3_title">Deux</string>
+    <string name="l1_lesson2_step3_body">Pousse 2 boules de la terre vers le HAUT. Compte-les : un... deux ! La tige montre 2 ! 🎊</string>
+    <string name="l1_lesson2_step4_title">Trois</string>
+    <string name="l1_lesson2_step4_body">Trois boules de la terre touchent la barre. Compte : 1, 2, 3 ! La tige montre 3 ! 🌈</string>
+    <string name="l1_lesson2_step5_title">Quatre</string>
+    <string name="l1_lesson2_step5_body">Pousse TOUTES les 4 boules de la terre jusqu\'à la barre ! Compte : 1, 2, 3, 4 ! C\'est le maximum avec les seules boules de la terre !</string>
+    <string name="l1_lesson3_step1_title">Cinq !</string>
+    <string name="l1_lesson3_step1_body">Pousse la boule du CIEL vers le BAS jusqu\'à la barre. Cette UNIQUE boule = CINQ ! Quel super raccourci ! 🌟</string>
+    <string name="l1_lesson3_step2_title">Six</string>
+    <string name="l1_lesson3_step2_body">Boule du ciel en bas (=5) PLUS 1 boule de la terre en haut (=1). 5 + 1 = SIX ! La magie de l\'addition ! ✨</string>
+    <string name="l1_lesson3_step3_title">Sept</string>
+    <string name="l1_lesson3_step3_body">Boule du ciel en bas (=5) + 2 boules de la terre en haut (=2). 5 + 2 = SEPT ! 🎯</string>
+    <string name="l1_lesson3_step4_title">Huit</string>
+    <string name="l1_lesson3_step4_body">Boule du ciel en bas (=5) + 3 boules de la terre en haut (=3). 5 + 3 = HUIT ! On y est presque ! 🎈</string>
+    <string name="l1_lesson3_step5_title">Neuf — le maximum !</string>
+    <string name="l1_lesson3_step5_body">Boule du ciel en bas (=5) + 4 boules de la terre en haut (=4). 5 + 4 = NEUF ! C\'est le maximum qu\'une tige peut montrer ! 🏆</string>
+    <string name="l1_lesson4_step1_title">Deux tiges !</string>
+    <string name="l1_lesson4_step1_body">Un boulier a plein de tiges ! La tige de DROITE montre les UNITÉS (1–9). La tige de GAUCHE montre les DIZAINES (10, 20, ...) ! 🎯</string>
+    <string name="l1_lesson4_step2_title">Le nombre 10</string>
+    <string name="l1_lesson4_step2_body">Pousse 1 boule de la terre vers le haut sur la tige de GAUCHE (dizaines). La tige de droite reste à zéro. Une boule sur la tige des dizaines = DIX !</string>
+    <string name="l1_lesson4_step3_title">Le nombre 23</string>
+    <string name="l1_lesson4_step3_body">GAUCHE : 2 boules de la terre en haut = 2 dizaines = 20. DROITE : 3 boules de la terre en haut = 3 unités. 20 + 3 = 23 ! 🌟</string>
+    <string name="l1_lesson4_step4_title">Le nombre 56</string>
+    <string name="l1_lesson4_step4_body">GAUCHE : boule du ciel en bas = 5 dizaines = 50. DROITE : ciel + 1 terre = 5+1 = 6 unités. 50 + 6 = 56 ! 🎊</string>
+    <string name="l1_lesson4_step5_title">Lis n\'importe quel nombre à 2 chiffres !</string>
+    <string name="l1_lesson4_step5_body">Lis d\'abord la tige de GAUCHE (dizaines × 10), puis ajoute la tige de DROITE (unités). Ici : 4 dizaines + 7 unités = 47 ! 🏆</string>
+    <string name="l1_lesson5_step1_title">N\'importe quel nombre de 0 à 99 !</string>
+    <string name="l1_lesson5_step1_body">Avec 2 tiges, tu peux montrer N\'IMPORTE QUEL nombre de 0 à 99 ! Cela fait 100 nombres différents à lire ! 🎉</string>
+    <string name="l1_lesson5_step2_title">Le nombre 67</string>
+    <string name="l1_lesson5_step2_body">Tige des DIZAINES : ciel (5) + 1 terre (1) = 6 dizaines = 60. Tige des UNITÉS : ciel (5) + 2 terre (2) = 7. 60 + 7 = 67 ! 🎯</string>
+    <string name="l1_lesson5_step3_title">Le nombre 50</string>
+    <string name="l1_lesson5_step3_body">Tige des DIZAINES : seule la boule du ciel en bas = 5 dizaines = 50. Tige des UNITÉS : rien = 0. Une seule boule du ciel = 50 ! 🌟</string>
+    <string name="l1_lesson5_step4_title">Le nombre 99 — le maximum !</string>
+    <string name="l1_lesson5_step4_body">DIZAINES : ciel (5) + 4 terre = 9 dizaines = 90. UNITÉS : ciel (5) + 4 terre = 9 unités. 90 + 9 = 99 ! Le max ! 🌈</string>
+    <string name="l1_lesson5_step5_title">Tu es un as !</string>
+    <string name="l1_lesson5_step5_body">Lis la tige de GAUCHE (×10), puis ajoute la tige de DROITE. Et en dessous ? Gauche = 3, droite = 8 → 38 ! Tu as réussi ! 🌈</string>
+    <string name="l1_lesson_label">Leçon %1$d</string>
+    <string name="l1_phase_learn">Apprendre</string>
+    <string name="l1_phase_learn_desc">Comprends l\'idée pas à pas</string>
+    <string name="l1_phase_practice">Entraînement</string>
+    <string name="l1_phase_practice_desc">Bouge toi-même les boules du boulier</string>
+    <string name="l1_phase_quiz">Quiz</string>
+    <string name="l1_phase_quiz_desc">Teste-toi et gagne des étoiles !</string>
+    <string name="l1_step_counter">Étape %1$d sur %2$d</string>
+    <string name="l1_back">← Retour</string>
+    <string name="l1_done">Terminé ! 🎉</string>
+    <string name="l1_question_counter">Question %1$d sur %2$d</string>
+    <string name="l1_quiz_what_number">Quel est ce nombre ? 🤔</string>
+    <string name="l1_quiz_perfect">Score parfait ! Tu es une star ! 🌟</string>
+    <string name="l1_quiz_great">Bravo ! Continue de t\'entraîner ! 💪</string>
+    <string name="l1_quiz_good">Bien essayé ! Entraînons-nous encore ! 🎯</string>
+    <string name="l1_quiz_score">%1$d / %2$d bonnes réponses</string>
+    <string name="l1_try_again">Réessayer 🔄</string>
+    <string name="l1_continue">Continuer →</string>
+    <string name="l1_unlock_formulas">🔓 Débloque les formules du boulier</string>
+    <string name="l1_set_this_number">Affiche ce nombre :</string>
+    <string name="l1_set_on_abacus">Affiche ce nombre sur\nton boulier !</string>
+    <string name="l1_got_it">Compris ! ✓</string>
+    <string name="l1_show_me_how">Montre-moi comment 👀</string>
+    <string name="l1_i_did_it">J\'ai réussi ! ✅</string>
+    <string name="l1_practice_complete">Entraînement terminé !</string>
+    <string name="l1_practice_done_msg">Super travail ! Tu as affiché les %1$d nombres sur le boulier.\nOn passe au quiz ?</string>
+    <string name="l1_lesson_heading">Leçon %1$d · %2$s</string>
+    <string name="l1_rod_zero">%1$s : toutes les boules en bas</string>
+    <string name="l1_rod_heaven">%1$s : seulement la boule du ciel en bas</string>
+    <string name="l1_instr_zero">Garde TOUTES les boules loin de la barre centrale</string>
+    <string name="l1_instr_heaven">Pousse SEULEMENT la boule du ciel vers le BAS jusqu\'à la barre centrale</string>
+    <string name="l1_instr_two_digits">%1$s · %2$s</string>
+    <plurals name="l1_rod_earth">
+        <item quantity="one">%1$s : %2$d boule de la terre en haut</item>
+        <item quantity="many">%1$s : %2$d boules de la terre en haut</item>
+        <item quantity="other">%1$s : %2$d boules de la terre en haut</item>
+    </plurals>
+    <plurals name="l1_rod_heaven_earth">
+        <item quantity="one">%1$s : ciel + %2$d boule de la terre en haut</item>
+        <item quantity="many">%1$s : ciel + %2$d boules de la terre en haut</item>
+        <item quantity="other">%1$s : ciel + %2$d boules de la terre en haut</item>
+    </plurals>
+    <plurals name="l1_instr_earth">
+        <item quantity="one">Pousse %1$d boule de la terre vers le HAUT jusqu\'à la barre centrale</item>
+        <item quantity="many">Pousse %1$d boules de la terre vers le HAUT jusqu\'à la barre centrale</item>
+        <item quantity="other">Pousse %1$d boules de la terre vers le HAUT jusqu\'à la barre centrale</item>
+    </plurals>
+    <plurals name="l1_instr_heaven_earth">
+        <item quantity="one">Boule du ciel en bas + pousse %1$d boule de la terre en haut</item>
+        <item quantity="many">Boule du ciel en bas + pousse %1$d boules de la terre en haut</item>
+        <item quantity="other">Boule du ciel en bas + pousse %1$d boules de la terre en haut</item>
+    </plurals>
     <!-- m1_settings -->
     <string name="background_music_volume">Volume de la musique de fond</string>
     <string name="change_voice_setting">Modifier la voix</string>

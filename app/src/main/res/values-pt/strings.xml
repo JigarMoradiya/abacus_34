@@ -69,6 +69,119 @@
     <string name="step_by_step">Resposta passo a passo</string>
     <string name="timer_on">Cronômetro ligado</string>
     <string name="txt_set_completed_msg">Você completou este conjunto de ábaco!</string>
+    <!-- m13_level1 -->
+    <string name="l1_lesson1_title">Conheça o Ábaco</string>
+    <string name="l1_lesson1_subtitle">O que são as contas e como tocá-las</string>
+    <string name="l1_lesson2_title">Números de 1 a 4</string>
+    <string name="l1_lesson2_subtitle">Mova as contas de baixo e conte até 4!</string>
+    <string name="l1_lesson3_title">O Número 5 e Além</string>
+    <string name="l1_lesson3_subtitle">A conta de cima, contando de 5 a 9</string>
+    <string name="l1_lesson4_title">Valor Posicional</string>
+    <string name="l1_lesson4_subtitle">Descubra dezenas e unidades</string>
+    <string name="l1_lesson5_title">Números até 99</string>
+    <string name="l1_lesson5_subtitle">Leia números de 2 dígitos!</string>
+    <string name="l1_lesson1_step1_title">O que é um Ábaco?</string>
+    <string name="l1_lesson1_step1_body">O ábaco é uma moldura de contar com contas em hastes. As pessoas o usavam muito antes de existirem calculadoras!</string>
+    <string name="l1_lesson1_step2_title">Moldura e Barra</string>
+    <string name="l1_lesson1_step2_body">A moldura por fora segura tudo junto. A barra horizontal do meio se chama BARRA CENTRAL. Ela separa o de cima do de baixo!</string>
+    <string name="l1_lesson1_step3_title">A Conta do Céu</string>
+    <string name="l1_lesson1_step3_body">Acima da barra central fica 1 conta especial. Empurre ela para BAIXO até tocar a barra e ela vale CINCO! ✋</string>
+    <string name="l1_lesson1_step4_title">As Contas da Terra</string>
+    <string name="l1_lesson1_step4_body">Abaixo da barra central ficam 4 contas. Cada uma que você empurra para CIMA até tocar a barra vale UM! 1️⃣</string>
+    <string name="l1_lesson1_step5_title">Lendo o Ábaco!</string>
+    <string name="l1_lesson1_step5_body">Conta do céu para baixo = 5. Conte as contas da terra que tocam a barra. Some tudo! Aqui: céu(5) + 3 da terra = 8! 🌟</string>
+    <string name="l1_lesson2_step1_title">Zero</string>
+    <string name="l1_lesson2_step1_body">Todas as contas longe da barra = ZERO. Nada tocando a barra = nada para contar!</string>
+    <string name="l1_lesson2_step2_title">Um</string>
+    <string name="l1_lesson2_step2_body">Empurre exatamente 1 conta da terra para CIMA até tocar a barra. Agora a haste mostra o número 1!</string>
+    <string name="l1_lesson2_step3_title">Dois</string>
+    <string name="l1_lesson2_step3_body">Empurre 2 contas da terra para CIMA. Conte: um... dois! A haste mostra 2! 🎊</string>
+    <string name="l1_lesson2_step4_title">Três</string>
+    <string name="l1_lesson2_step4_body">Três contas da terra tocando a barra. Conte: 1, 2, 3! A haste mostra 3! 🌈</string>
+    <string name="l1_lesson2_step5_title">Quatro</string>
+    <string name="l1_lesson2_step5_body">Empurre TODAS as 4 contas da terra até a barra! Conte: 1, 2, 3, 4! É o máximo usando só contas da terra!</string>
+    <string name="l1_lesson3_step1_title">Cinco!</string>
+    <string name="l1_lesson3_step1_body">Empurre a conta do CÉU para BAIXO até tocar a barra. Só essa UMA conta = CINCO! É um superatalho! 🌟</string>
+    <string name="l1_lesson3_step2_title">Seis</string>
+    <string name="l1_lesson3_step2_body">Céu para baixo (=5) MAIS 1 conta da terra para cima (=1). 5 + 1 = SEIS! Mágica de somar! ✨</string>
+    <string name="l1_lesson3_step3_title">Sete</string>
+    <string name="l1_lesson3_step3_body">Céu para baixo (=5) + 2 contas da terra para cima (=2). 5 + 2 = SETE! 🎯</string>
+    <string name="l1_lesson3_step4_title">Oito</string>
+    <string name="l1_lesson3_step4_body">Céu para baixo (=5) + 3 contas da terra para cima (=3). 5 + 3 = OITO! Quase lá! 🎈</string>
+    <string name="l1_lesson3_step5_title">Nove — o Máximo!</string>
+    <string name="l1_lesson3_step5_body">Céu para baixo (=5) + 4 contas da terra para cima (=4). 5 + 4 = NOVE! É o máximo que 1 haste mostra! 🏆</string>
+    <string name="l1_lesson4_step1_title">Duas Hastes!</string>
+    <string name="l1_lesson4_step1_body">Um ábaco tem várias hastes! A da DIREITA mostra as UNIDADES (1–9). A da ESQUERDA mostra as DEZENAS (10, 20, ...)! 🎯</string>
+    <string name="l1_lesson4_step2_title">O Número 10</string>
+    <string name="l1_lesson4_step2_body">Empurre 1 conta da terra para cima na haste da ESQUERDA (dezenas). A da direita fica em zero. Uma conta nas dezenas = DEZ!</string>
+    <string name="l1_lesson4_step3_title">O Número 23</string>
+    <string name="l1_lesson4_step3_body">ESQUERDA: 2 contas da terra = 2 dezenas = 20. DIREITA: 3 contas da terra = 3 unidades. 20 + 3 = 23! 🌟</string>
+    <string name="l1_lesson4_step4_title">O Número 56</string>
+    <string name="l1_lesson4_step4_body">ESQUERDA: conta do céu para baixo = 5 dezenas = 50. DIREITA: céu + 1 da terra = 5+1 = 6 unidades. 50 + 6 = 56! 🎊</string>
+    <string name="l1_lesson4_step5_title">Leia Números de 2 Dígitos!</string>
+    <string name="l1_lesson4_step5_body">Leia a haste da ESQUERDA (dezenas × 10) e some a da DIREITA (unidades). Aqui: 4 dezenas + 7 unidades = 47! 🏆</string>
+    <string name="l1_lesson5_step1_title">Qualquer Número 0–99!</string>
+    <string name="l1_lesson5_step1_body">Com 2 hastes você mostra QUALQUER número de 0 a 99! São 100 números diferentes que você pode ler! 🎉</string>
+    <string name="l1_lesson5_step2_title">O Número 67</string>
+    <string name="l1_lesson5_step2_body">Haste das DEZENAS: céu(5) + 1 da terra(1) = 6 dezenas = 60. Haste das UNIDADES: céu(5) + 2 da terra(2) = 7. 60 + 7 = 67! 🎯</string>
+    <string name="l1_lesson5_step3_title">O Número 50</string>
+    <string name="l1_lesson5_step3_body">Haste das DEZENAS: só a conta do céu para baixo = 5 dezenas = 50. Haste das UNIDADES: nada = 0. Só uma conta do céu = 50! 🌟</string>
+    <string name="l1_lesson5_step4_title">O Número 99 — o Máximo!</string>
+    <string name="l1_lesson5_step4_body">DEZENAS: céu(5)+4 da terra = 9 dezenas = 90. UNIDADES: céu(5)+4 da terra = 9 unidades. 90+9 = 99! O máximo! 🌈</string>
+    <string name="l1_lesson5_step5_title">Você é Demais!</string>
+    <string name="l1_lesson5_step5_body">Leia a haste ESQUERDA (×10) e some a DIREITA. O que está abaixo? Esquerda=3, Direita=8 → 38! Você conseguiu! 🌈</string>
+    <string name="l1_lesson_label">Lição %1$d</string>
+    <string name="l1_phase_learn">Aprender</string>
+    <string name="l1_phase_learn_desc">Entenda a ideia passo a passo</string>
+    <string name="l1_phase_practice">Prática</string>
+    <string name="l1_phase_practice_desc">Mova você mesmo as contas do ábaco</string>
+    <string name="l1_phase_quiz">Questionário</string>
+    <string name="l1_phase_quiz_desc">Teste-se e ganhe estrelas!</string>
+    <string name="l1_step_counter">Passo %1$d de %2$d</string>
+    <string name="l1_back">← Voltar</string>
+    <string name="l1_done">Pronto! 🎉</string>
+    <string name="l1_question_counter">Pergunta %1$d de %2$d</string>
+    <string name="l1_quiz_what_number">Que número é este? 🤔</string>
+    <string name="l1_quiz_perfect">Acertou Tudo! Você é uma Estrela! 🌟</string>
+    <string name="l1_quiz_great">Ótimo! Continue Praticando! 💪</string>
+    <string name="l1_quiz_good">Boa Tentativa! Vamos Praticar Mais! 🎯</string>
+    <string name="l1_quiz_score">%1$d / %2$d Certas</string>
+    <string name="l1_try_again">Tentar de Novo 🔄</string>
+    <string name="l1_continue">Continuar →</string>
+    <string name="l1_unlock_formulas">🔓 Desbloqueie as fórmulas do ábaco</string>
+    <string name="l1_set_this_number">Forme este número:</string>
+    <string name="l1_set_on_abacus">Forme este número no\nseu ábaco!</string>
+    <string name="l1_got_it">Entendi! ✓</string>
+    <string name="l1_show_me_how">Mostrar Como 👀</string>
+    <string name="l1_i_did_it">Consegui! ✅</string>
+    <string name="l1_practice_complete">Prática Concluída!</string>
+    <string name="l1_practice_done_msg">Que trabalho incrível! Você formou todos os %1$d números no ábaco.\nVamos fazer o questionário?</string>
+    <string name="l1_lesson_heading">Lição %1$d · %2$s</string>
+    <string name="l1_rod_zero">%1$s: todas as contas para baixo</string>
+    <string name="l1_rod_heaven">%1$s: só a conta do céu para baixo</string>
+    <string name="l1_instr_zero">Deixe TODAS as contas longe da barra</string>
+    <string name="l1_instr_heaven">Empurre SÓ a conta do céu para BAIXO até a barra</string>
+    <string name="l1_instr_two_digits">%1$s · %2$s</string>
+    <plurals name="l1_rod_earth">
+        <item quantity="one">%1$s: %2$d conta da terra para cima</item>
+        <item quantity="many">%1$s: %2$d contas da terra para cima</item>
+        <item quantity="other">%1$s: %2$d contas da terra para cima</item>
+    </plurals>
+    <plurals name="l1_rod_heaven_earth">
+        <item quantity="one">%1$s: céu + %2$d conta da terra para cima</item>
+        <item quantity="many">%1$s: céu + %2$d contas da terra para cima</item>
+        <item quantity="other">%1$s: céu + %2$d contas da terra para cima</item>
+    </plurals>
+    <plurals name="l1_instr_earth">
+        <item quantity="one">Empurre %1$d conta da terra para CIMA até a barra</item>
+        <item quantity="many">Empurre %1$d contas da terra para CIMA até a barra</item>
+        <item quantity="other">Empurre %1$d contas da terra para CIMA até a barra</item>
+    </plurals>
+    <plurals name="l1_instr_heaven_earth">
+        <item quantity="one">Conta do céu para baixo + empurre %1$d conta da terra para cima</item>
+        <item quantity="many">Conta do céu para baixo + empurre %1$d contas da terra para cima</item>
+        <item quantity="other">Conta do céu para baixo + empurre %1$d contas da terra para cima</item>
+    </plurals>
     <!-- m1_settings -->
     <string name="background_music_volume">Volume da música de fundo</string>
     <string name="change_voice_setting">Alterar a voz</string>

@@ -1648,4 +1648,114 @@
     <string name="critter_lion">Lion</string>
     <string name="critter_unicorn">Unicorn</string>
     <string name="critter_dragon">Dragon</string>
+
+    <!-- Level 1: Bead Basics (M13) -->
+    <string name="l1_lesson1_title">Meet the Abacus</string>
+    <string name="l1_lesson1_subtitle">What beads are &amp; how to tap them</string>
+    <string name="l1_lesson2_title">Numbers 1 to 4</string>
+    <string name="l1_lesson2_subtitle">Move lower beads — count up to 4!</string>
+    <string name="l1_lesson3_title">Number 5 &amp; Beyond</string>
+    <string name="l1_lesson3_subtitle">Upper bead, counting 5 through 9</string>
+    <string name="l1_lesson4_title">Place Value</string>
+    <string name="l1_lesson4_subtitle">Discover tens and ones columns</string>
+    <string name="l1_lesson5_title">Numbers to 99</string>
+    <string name="l1_lesson5_subtitle">Read any two-digit number!</string>
+    <string name="l1_lesson1_step1_title">What is an Abacus?</string>
+    <string name="l1_lesson1_step1_body">An abacus is a counting frame with beads on rods. People used it long before calculators existed!</string>
+    <string name="l1_lesson1_step2_title">The Frame &amp; Beam</string>
+    <string name="l1_lesson1_step2_body">The outer frame holds everything together. The horizontal bar in the middle is called the BEAM — it divides top from bottom!</string>
+    <string name="l1_lesson1_step3_title">The Heaven Bead</string>
+    <string name="l1_lesson1_step3_body">Above the beam sits 1 special bead. Push it DOWN to touch the beam and it counts as FIVE! ✋</string>
+    <string name="l1_lesson1_step4_title">The Earth Beads</string>
+    <string name="l1_lesson1_step4_body">Below the beam are 4 beads. Each one you push UP to touch the beam counts as ONE! 1️⃣</string>
+    <string name="l1_lesson1_step5_title">Reading the Abacus!</string>
+    <string name="l1_lesson1_step5_body">Heaven bead down = 5. Count earth beads touching the beam. Add them! Here: heaven(5) + 3 earth = 8! 🌟</string>
+    <string name="l1_lesson2_step1_title">Zero</string>
+    <string name="l1_lesson2_step1_body">All beads away from the beam = ZERO. Nothing touching the beam = nothing to count!</string>
+    <string name="l1_lesson2_step2_title">One</string>
+    <string name="l1_lesson2_step2_body">Push exactly 1 earth bead UP to touch the beam. The rod now shows the number 1!</string>
+    <string name="l1_lesson2_step3_title">Two</string>
+    <string name="l1_lesson2_step3_body">Push 2 earth beads UP. Count them: one... two! The rod shows 2! 🎊</string>
+    <string name="l1_lesson2_step4_title">Three</string>
+    <string name="l1_lesson2_step4_body">Three earth beads touching the beam. Count: 1, 2, 3! The rod shows 3! 🌈</string>
+    <string name="l1_lesson2_step5_title">Four</string>
+    <string name="l1_lesson2_step5_body">Push ALL 4 earth beads up to the beam! Count: 1, 2, 3, 4! Maximum using only earth beads!</string>
+    <string name="l1_lesson3_step1_title">Five!</string>
+    <string name="l1_lesson3_step1_body">Push the HEAVEN bead DOWN to touch the beam. Just that ONE bead = FIVE! It\'s a super shortcut! 🌟</string>
+    <string name="l1_lesson3_step2_title">Six</string>
+    <string name="l1_lesson3_step2_body">Heaven bead down (=5) PLUS 1 earth bead up (=1). 5 + 1 = SIX! Adding magic! ✨</string>
+    <string name="l1_lesson3_step3_title">Seven</string>
+    <string name="l1_lesson3_step3_body">Heaven bead down (=5) + 2 earth beads up (=2). 5 + 2 = SEVEN! 🎯</string>
+    <string name="l1_lesson3_step4_title">Eight</string>
+    <string name="l1_lesson3_step4_body">Heaven bead down (=5) + 3 earth beads up (=3). 5 + 3 = EIGHT! Almost there! 🎈</string>
+    <string name="l1_lesson3_step5_title">Nine — the Maximum!</string>
+    <string name="l1_lesson3_step5_body">Heaven bead down (=5) + 4 earth beads up (=4). 5 + 4 = NINE! That\'s the most 1 rod can show! 🏆</string>
+    <string name="l1_lesson4_step1_title">Two Rods!</string>
+    <string name="l1_lesson4_step1_body">An abacus has many rods! The RIGHT rod shows ONES (1–9). The LEFT rod shows TENS (10, 20, ...)! 🎯</string>
+    <string name="l1_lesson4_step2_title">The Number 10</string>
+    <string name="l1_lesson4_step2_body">Push 1 earth bead up on the LEFT (tens) rod. The right rod stays at zero. One bead on the tens rod = TEN!</string>
+    <string name="l1_lesson4_step3_title">The Number 23</string>
+    <string name="l1_lesson4_step3_body">LEFT: 2 earth beads up = 2 tens = 20. RIGHT: 3 earth beads up = 3 ones. 20 + 3 = 23! 🌟</string>
+    <string name="l1_lesson4_step4_title">The Number 56</string>
+    <string name="l1_lesson4_step4_body">LEFT: heaven bead down = 5 tens = 50. RIGHT: heaven + 1 earth = 5+1 = 6 ones. 50 + 6 = 56! 🎊</string>
+    <string name="l1_lesson4_step5_title">Read Any 2-Digit Number!</string>
+    <string name="l1_lesson4_step5_body">Read LEFT rod first (tens × 10), then add RIGHT rod (ones). Here: 4 tens + 7 ones = 47! 🏆</string>
+    <string name="l1_lesson5_step1_title">Any Number 0–99!</string>
+    <string name="l1_lesson5_step1_body">With 2 rods you can show ANY number from 0 to 99! That\'s 100 different numbers you can read! 🎉</string>
+    <string name="l1_lesson5_step2_title">The Number 67</string>
+    <string name="l1_lesson5_step2_body">TENS rod: heaven(5) + 1 earth(1) = 6 tens = 60. ONES rod: heaven(5) + 2 earth(2) = 7. 60 + 7 = 67! 🎯</string>
+    <string name="l1_lesson5_step3_title">The Number 50</string>
+    <string name="l1_lesson5_step3_body">TENS rod: only the heaven bead down = 5 tens = 50. ONES rod: nothing = 0. Just one heaven bead = 50! 🌟</string>
+    <string name="l1_lesson5_step4_title">The Number 99 — Maximum!</string>
+    <string name="l1_lesson5_step4_body">TENS: heaven(5)+4 earth = 9 tens = 90. ONES: heaven(5)+4 earth = 9 ones. 90+9 = 99! The max! 🌈</string>
+    <string name="l1_lesson5_step5_title">You\'re a Master!</string>
+    <string name="l1_lesson5_step5_body">Read the LEFT rod (×10) then add the RIGHT rod. What\'s below? Left=3, Right=8 → 38! You did it! 🌈</string>
+    <string name="l1_lesson_label">Lesson %1$d</string>
+    <string name="l1_phase_learn">Learn</string>
+    <string name="l1_phase_learn_desc">Understand the concept step by step</string>
+    <string name="l1_phase_practice">Practice</string>
+    <string name="l1_phase_practice_desc">Move the abacus beads yourself</string>
+    <string name="l1_phase_quiz">Quiz</string>
+    <string name="l1_phase_quiz_desc">Test your skills &amp; earn stars!</string>
+    <string name="l1_step_counter">Step %1$d of %2$d</string>
+    <string name="l1_back">← Back</string>
+    <string name="l1_done">Done! 🎉</string>
+    <string name="l1_question_counter">Question %1$d of %2$d</string>
+    <string name="l1_quiz_what_number">What number is this? 🤔</string>
+    <string name="l1_quiz_perfect">Perfect Score! You\'re a Star! 🌟</string>
+    <string name="l1_quiz_great">Great Job! Keep Practicing! 💪</string>
+    <string name="l1_quiz_good">Good Try! Let\'s Practice More! 🎯</string>
+    <string name="l1_quiz_score">%1$d / %2$d Correct</string>
+    <string name="l1_try_again">Try Again 🔄</string>
+    <string name="l1_continue">Continue →</string>
+    <string name="l1_unlock_formulas">🔓 Unlock the abacus formulas</string>
+    <string name="l1_set_this_number">Set this number:</string>
+    <string name="l1_set_on_abacus">Set this number on\nyour abacus!</string>
+    <string name="l1_got_it">Got it! ✓</string>
+    <string name="l1_show_me_how">Show Me How 👀</string>
+    <string name="l1_i_did_it">I Did It! ✅</string>
+    <string name="l1_practice_complete">Practice Complete!</string>
+    <string name="l1_practice_done_msg">Amazing work! You set all %1$d numbers on the abacus.\nReady to take the quiz?</string>
+    <string name="l1_lesson_heading">"Lesson %1$d  ·  %2$s"</string>
+    <string name="l1_rod_zero">%1$s: all beads down</string>
+    <string name="l1_rod_heaven">%1$s: heaven bead down only</string>
+    <string name="l1_instr_zero">Keep ALL beads away from the beam</string>
+    <string name="l1_instr_heaven">Push ONLY the heaven bead DOWN to the beam</string>
+    <string name="l1_instr_two_digits">%1$s · %2$s</string>
+    <plurals name="l1_rod_earth">
+        <item quantity="one">%1$s: %2$d earth bead up</item>
+        <item quantity="other">%1$s: %2$d earth beads up</item>
+    </plurals>
+    <plurals name="l1_rod_heaven_earth">
+        <item quantity="one">%1$s: heaven + %2$d earth bead up</item>
+        <item quantity="other">%1$s: heaven + %2$d earth beads up</item>
+    </plurals>
+    <plurals name="l1_instr_earth">
+        <item quantity="one">Push %1$d earth bead UP to the beam</item>
+        <item quantity="other">Push %1$d earth beads UP to the beam</item>
+    </plurals>
+    <plurals name="l1_instr_heaven_earth">
+        <item quantity="one">Heaven bead down + push %1$d earth bead up</item>
+        <item quantity="other">Heaven bead down + push %1$d earth beads up</item>
+    </plurals>
 </resources>

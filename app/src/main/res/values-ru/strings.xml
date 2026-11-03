@@ -72,6 +72,123 @@
     <string name="step_by_step">Ответ по шагам</string>
     <string name="timer_on">Таймер включён</string>
     <string name="txt_set_completed_msg">Ты выполнил этот набор!</string>
+    <!-- m13_level1 -->
+    <string name="l1_lesson1_title">Знакомство с абакусом</string>
+    <string name="l1_lesson1_subtitle">Что такое бусины и как их двигать</string>
+    <string name="l1_lesson2_title">Числа от 1 до 4</string>
+    <string name="l1_lesson2_subtitle">Двигай нижние бусины — считай до 4!</string>
+    <string name="l1_lesson3_title">Число 5 и дальше</string>
+    <string name="l1_lesson3_subtitle">Верхняя бусина, счёт от 5 до 9</string>
+    <string name="l1_lesson4_title">Разряды</string>
+    <string name="l1_lesson4_subtitle">Узнай про десятки и единицы</string>
+    <string name="l1_lesson5_title">Числа до 99</string>
+    <string name="l1_lesson5_subtitle">Читай любое двузначное число!</string>
+    <string name="l1_lesson1_step1_title">Что такое абакус?</string>
+    <string name="l1_lesson1_step1_body">Абакус — это счётная рамка с бусинами на спицах. Им считали задолго до калькуляторов!</string>
+    <string name="l1_lesson1_step2_title">Рамка и планка</string>
+    <string name="l1_lesson1_step2_body">Внешняя рамка держит всё вместе. Полоса посередине — это ЦЕНТРАЛЬНАЯ ПЛАНКА. Она делит верх и низ!</string>
+    <string name="l1_lesson1_step3_title">Небесная бусина</string>
+    <string name="l1_lesson1_step3_body">Над планкой сидит 1 особая бусина. Сдвинь её ВНИЗ до планки, и она считается как ПЯТЬ! ✋</string>
+    <string name="l1_lesson1_step4_title">Земные бусины</string>
+    <string name="l1_lesson1_step4_body">Под планкой 4 бусины. Каждая, которую сдвинешь ВВЕРХ до планки, считается как ОДИН! 1️⃣</string>
+    <string name="l1_lesson1_step5_title">Как читать абакус!</string>
+    <string name="l1_lesson1_step5_body">Небесная бусина внизу = 5. Посчитай земные бусины у планки. Сложи! Тут: небесная (5) + 3 земные = 8! 🌟</string>
+    <string name="l1_lesson2_step1_title">Ноль</string>
+    <string name="l1_lesson2_step1_body">Все бусины далеко от планки = НОЛЬ. Ни одна не касается планки — считать нечего!</string>
+    <string name="l1_lesson2_step2_title">Один</string>
+    <string name="l1_lesson2_step2_body">Сдвинь ровно 1 земную бусину ВВЕРХ до планки. Теперь на спице число 1!</string>
+    <string name="l1_lesson2_step3_title">Два</string>
+    <string name="l1_lesson2_step3_body">Сдвинь 2 земные бусины ВВЕРХ. Посчитай: раз... два! На спице 2! 🎊</string>
+    <string name="l1_lesson2_step4_title">Три</string>
+    <string name="l1_lesson2_step4_body">Три земные бусины у планки. Считай: 1, 2, 3! На спице 3! 🌈</string>
+    <string name="l1_lesson2_step5_title">Четыре</string>
+    <string name="l1_lesson2_step5_body">Сдвинь ВСЕ 4 земные бусины к планке! Считай: 1, 2, 3, 4! Это максимум для одних земных бусин!</string>
+    <string name="l1_lesson3_step1_title">Пять!</string>
+    <string name="l1_lesson3_step1_body">Сдвинь НЕБЕСНУЮ бусину ВНИЗ до планки. Всего ОДНА бусина = ПЯТЬ! Вот это быстрый путь! 🌟</string>
+    <string name="l1_lesson3_step2_title">Шесть</string>
+    <string name="l1_lesson3_step2_body">Небесная бусина внизу (=5) ПЛЮС 1 земная вверху (=1). 5 + 1 = ШЕСТЬ! Волшебное сложение! ✨</string>
+    <string name="l1_lesson3_step3_title">Семь</string>
+    <string name="l1_lesson3_step3_body">Небесная бусина внизу (=5) + 2 земные вверху (=2). 5 + 2 = СЕМЬ! 🎯</string>
+    <string name="l1_lesson3_step4_title">Восемь</string>
+    <string name="l1_lesson3_step4_body">Небесная бусина внизу (=5) + 3 земные вверху (=3). 5 + 3 = ВОСЕМЬ! Почти у цели! 🎈</string>
+    <string name="l1_lesson3_step5_title">Девять — максимум!</string>
+    <string name="l1_lesson3_step5_body">Небесная бусина внизу (=5) + 4 земные вверху (=4). 5 + 4 = ДЕВЯТЬ! Больше одна спица не покажет! 🏆</string>
+    <string name="l1_lesson4_step1_title">Две спицы!</string>
+    <string name="l1_lesson4_step1_body">На абакусе много спиц! ПРАВАЯ спица показывает ЕДИНИЦЫ (1–9). ЛЕВАЯ — ДЕСЯТКИ (10, 20, ...)! 🎯</string>
+    <string name="l1_lesson4_step2_title">Число 10</string>
+    <string name="l1_lesson4_step2_body">Сдвинь 1 земную бусину вверх на ЛЕВОЙ спице (десятки). Правая спица остаётся на нуле. Одна бусина на спице десятков = ДЕСЯТЬ!</string>
+    <string name="l1_lesson4_step3_title">Число 23</string>
+    <string name="l1_lesson4_step3_body">СЛЕВА: 2 земные бусины вверх = 2 десятка = 20. СПРАВА: 3 земные бусины вверх = 3 единицы. 20 + 3 = 23! 🌟</string>
+    <string name="l1_lesson4_step4_title">Число 56</string>
+    <string name="l1_lesson4_step4_body">СЛЕВА: небесная бусина внизу = 5 десятков = 50. СПРАВА: небесная + 1 земная = 5+1 = 6 единиц. 50 + 6 = 56! 🎊</string>
+    <string name="l1_lesson4_step5_title">Читай любое двузначное число!</string>
+    <string name="l1_lesson4_step5_body">Сначала читай ЛЕВУЮ спицу (десятки × 10), потом прибавь ПРАВУЮ (единицы). Тут: 4 десятка + 7 единиц = 47! 🏆</string>
+    <string name="l1_lesson5_step1_title">Любое число 0–99!</string>
+    <string name="l1_lesson5_step1_body">С двумя спицами можно показать ЛЮБОЕ число от 0 до 99! Целых 100 разных чисел ты уже умеешь читать! 🎉</string>
+    <string name="l1_lesson5_step2_title">Число 67</string>
+    <string name="l1_lesson5_step2_body">Спица ДЕСЯТКОВ: небесная (5) + 1 земная (1) = 6 десятков = 60. Спица ЕДИНИЦ: небесная (5) + 2 земные (2) = 7. 60 + 7 = 67! 🎯</string>
+    <string name="l1_lesson5_step3_title">Число 50</string>
+    <string name="l1_lesson5_step3_body">Спица ДЕСЯТКОВ: только небесная бусина внизу = 5 десятков = 50. Спица ЕДИНИЦ: пусто = 0. Одна небесная бусина = 50! 🌟</string>
+    <string name="l1_lesson5_step4_title">Число 99 — максимум!</string>
+    <string name="l1_lesson5_step4_body">ДЕСЯТКИ: небесная (5) + 4 земные = 9 десятков = 90. ЕДИНИЦЫ: небесная (5) + 4 земные = 9 единиц. 90+9 = 99! Это максимум! 🌈</string>
+    <string name="l1_lesson5_step5_title">Ты мастер!</string>
+    <string name="l1_lesson5_step5_body">Читай ЛЕВУЮ спицу (×10), потом прибавь ПРАВУЮ. А что на абакусе ниже? Слева=3, справа=8 → 38! У тебя получилось! 🌈</string>
+    <string name="l1_lesson_label">Урок %1$d</string>
+    <string name="l1_phase_learn">Учимся</string>
+    <string name="l1_phase_learn_desc">Разберись шаг за шагом</string>
+    <string name="l1_phase_practice">Практика</string>
+    <string name="l1_phase_practice_desc">Двигай бусины абакуса сам</string>
+    <string name="l1_phase_quiz">Викторина</string>
+    <string name="l1_phase_quiz_desc">Проверь себя и получи звёзды!</string>
+    <string name="l1_step_counter">Шаг %1$d из %2$d</string>
+    <string name="l1_back">← Назад</string>
+    <string name="l1_done">Готово! 🎉</string>
+    <string name="l1_question_counter">Вопрос %1$d из %2$d</string>
+    <string name="l1_quiz_what_number">Какое это число? 🤔</string>
+    <string name="l1_quiz_perfect">Все верно! Ты звезда! 🌟</string>
+    <string name="l1_quiz_great">Отличная работа! Тренируйся дальше! 💪</string>
+    <string name="l1_quiz_good">Неплохо! Потренируемся ещё! 🎯</string>
+    <string name="l1_quiz_score">Верно: %1$d из %2$d</string>
+    <string name="l1_try_again">Ещё раз 🔄</string>
+    <string name="l1_continue">Дальше →</string>
+    <string name="l1_unlock_formulas">🔓 Открой формулы абакуса</string>
+    <string name="l1_set_this_number">Набери это число:</string>
+    <string name="l1_set_on_abacus">Набери это число на\nсвоём абакусе!</string>
+    <string name="l1_got_it">Понятно! ✓</string>
+    <string name="l1_show_me_how">Покажи, как 👀</string>
+    <string name="l1_i_did_it">Получилось! ✅</string>
+    <string name="l1_practice_complete">Практика пройдена!</string>
+    <string name="l1_practice_done_msg">Отличная работа! Все числа (%1$d) набраны на абакусе.\nПройдём викторину?</string>
+    <string name="l1_lesson_heading">Урок %1$d · %2$s</string>
+    <string name="l1_rod_zero">%1$s: все бусины отодвинуты</string>
+    <string name="l1_rod_heaven">%1$s: только небесная бусина вниз</string>
+    <string name="l1_instr_zero">Держи ВСЕ бусины подальше от планки</string>
+    <string name="l1_instr_heaven">Сдвинь ТОЛЬКО небесную бусину ВНИЗ к планке</string>
+    <string name="l1_instr_two_digits">%1$s · %2$s</string>
+    <plurals name="l1_rod_earth">
+        <item quantity="one">%1$s: %2$d земная бусина вверх</item>
+        <item quantity="few">%1$s: %2$d земные бусины вверх</item>
+        <item quantity="many">%1$s: %2$d земных бусин вверх</item>
+        <item quantity="other">%1$s: %2$d земные бусины вверх</item>
+    </plurals>
+    <plurals name="l1_rod_heaven_earth">
+        <item quantity="one">%1$s: небесная + %2$d земная бусина вверх</item>
+        <item quantity="few">%1$s: небесная + %2$d земные бусины вверх</item>
+        <item quantity="many">%1$s: небесная + %2$d земных бусин вверх</item>
+        <item quantity="other">%1$s: небесная + %2$d земные бусины вверх</item>
+    </plurals>
+    <plurals name="l1_instr_earth">
+        <item quantity="one">Сдвинь %1$d земную бусину ВВЕРХ к планке</item>
+        <item quantity="few">Сдвинь %1$d земные бусины ВВЕРХ к планке</item>
+        <item quantity="many">Сдвинь %1$d земных бусин ВВЕРХ к планке</item>
+        <item quantity="other">Сдвинь %1$d земные бусины ВВЕРХ к планке</item>
+    </plurals>
+    <plurals name="l1_instr_heaven_earth">
+        <item quantity="one">Небесную бусину вниз + сдвинь %1$d земную вверх</item>
+        <item quantity="few">Небесную бусину вниз + сдвинь %1$d земные вверх</item>
+        <item quantity="many">Небесную бусину вниз + сдвинь %1$d земных вверх</item>
+        <item quantity="other">Небесную бусину вниз + сдвинь %1$d земные вверх</item>
+    </plurals>
     <!-- m1_settings -->
     <string name="background_music_volume">Громкость фоновой музыки</string>
     <string name="change_voice_setting">Настройки голоса</string>

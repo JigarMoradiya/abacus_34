@@ -53,6 +53,7 @@ import com.jigar.me.ui.view.home.screens.levels.LevelResultPopup
 import com.jigar.me.ui.view.home.screens.levels.LevelFitToBox
 import com.jigar.me.ui.view.home.screens.levels.LevelScreenRoot
 import com.jigar.me.ui.view.home.screens.levels.level1.generatePracticeProblems
+import com.jigar.me.ui.view.home.screens.levels.level1.practiceInstruction
 import com.jigar.me.ui.view.home.screens.levels.level1.level1Lessons
 import com.jigar.me.ui.view.home.screens.levels.levelForeground
 import com.jigar.me.ui.view.home.screens.levels.levelMainTitleSize
@@ -60,6 +61,8 @@ import com.jigar.me.ui.view.home.screens.levels.levelParagraph
 import com.jigar.me.ui.view.home.screens.levels.levelText
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 @Composable
 fun Level1PracticeScreen(
@@ -87,7 +90,7 @@ fun Level1PracticeScreen(
 
             // ── Header: back button + progress ─────────────────────────
             LevelProgressTopBar(
-                title  = "Lesson ${lesson.id}  ·  Practice",
+                title  = stringResource(R.string.l1_lesson_heading, lesson.id, stringResource(R.string.l1_phase_practice)),
                 filled = problemIndex + 1,
                 total  = problems.size,
                 onBack = onBackClick,
@@ -151,7 +154,7 @@ fun Level1PracticeScreen(
                                 ) {
                                     // the caption is a chunky pill in the lesson colour, big enough to read next to the number
                                     Text(
-                                        "Set this number:",
+                                        stringResource(R.string.l1_set_this_number),
                                         style = levelText(20f, FontWeight.ExtraBold),
                                         color = Color.White,
                                         modifier = Modifier
@@ -183,7 +186,7 @@ fun Level1PracticeScreen(
                                 Text("🎯", fontSize = levelSp(44f))
 
                                 Text(
-                                    text      = "Set this number on\nyour abacus!",
+                                    text      = stringResource(R.string.l1_set_on_abacus),
                                     style     = AbTypography.fixed(levelMainTitleSize, FontWeight.Black),
                                     color     = Color.White,
                                     textAlign = TextAlign.Center
@@ -191,7 +194,7 @@ fun Level1PracticeScreen(
 
                                 AbInsetBox {
                                     Text(
-                                        text      = problem.instruction,
+                                        text      = practiceInstruction(problem.targetNumber),
                                         style     = levelParagraph(15f, FontWeight.Medium),
                                         color     = Color.White.copy(alpha = 0.90f),
                                         textAlign = TextAlign.Center
@@ -203,7 +206,7 @@ fun Level1PracticeScreen(
                                     verticalAlignment     = Alignment.CenterVertically
                                 ) {
                                     AbPanelButton(
-                                        label   = if (showHint) "Got it! ✓" else "Show Me How 👀",
+                                        label   = if (showHint) stringResource(R.string.l1_got_it) else stringResource(R.string.l1_show_me_how),
                                         accent  = lesson.endColor,
                                         filled  = false,
                                         onClick = {
@@ -212,7 +215,7 @@ fun Level1PracticeScreen(
                                         }
                                     )
                                     AbPanelButton(
-                                        label   = "I Did It! ✅",
+                                        label   = stringResource(R.string.l1_i_did_it),
                                         accent  = lesson.endColor,
                                         onClick = {
                                             com.jigar.me.utils.WeeklyActivity.record(weeklyPrefs)
@@ -233,13 +236,13 @@ fun Level1PracticeScreen(
             LevelResultPopup(accent = lesson.endColor) {
                 Text("🌟🌟🌟", fontSize = levelSp(52f))
                 Text(
-                    "Practice Complete!",
+                    stringResource(R.string.l1_practice_complete),
                     style     = AbTypography.fixed(levelMainTitleSize, FontWeight.Black),
                     color     = Color.White,
                     textAlign = TextAlign.Center
                 )
                 Text(
-                    "Amazing work! You set all ${problems.size} numbers on the abacus.\nReady to take the quiz?",
+                    stringResource(R.string.l1_practice_done_msg, problems.size),
                     style     = levelParagraph(15f, FontWeight.Medium),
                     color     = Color.White.copy(alpha = 0.90f),
                     textAlign = TextAlign.Center,
@@ -250,13 +253,13 @@ fun Level1PracticeScreen(
                 )
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
                     AbPanelButton(
-                        label   = "Try Again 🔄",
+                        label   = stringResource(R.string.l1_try_again),
                         accent  = lesson.endColor,
                         filled  = false,
                         onClick = { problemIndex = 0; showDone = false }
                     )
                     AbPanelButton(
-                        label   = "Continue →",
+                        label   = stringResource(R.string.l1_continue),
                         accent  = lesson.endColor,
                         onClick = { onFinished() }
                     )

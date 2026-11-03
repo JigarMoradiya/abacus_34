@@ -1,0 +1,970 @@
+{
+ "l1_lesson1_title": {
+  "fr": "Découvre le boulier",
+  "es": "Conoce el ábaco",
+  "pt": "Conheça o Ábaco",
+  "tr": "Abaküsle Tanış",
+  "ru": "Знакомство с абакусом",
+  "ja": "そろばんと出会おう",
+  "th": "รู้จักลูกคิด"
+ },
+ "l1_lesson1_subtitle": {
+  "fr": "Les boules et comment les toucher",
+  "es": "Qué son las cuentas y cómo tocarlas",
+  "pt": "O que são as contas e como tocá-las",
+  "tr": "Boncuklar nedir, nasıl dokunulur",
+  "ru": "Что такое бусины и как их двигать",
+  "ja": "珠ってなに? 動かし方を知ろう",
+  "th": "ลูกคืออะไร และวิธีแตะลูก"
+ },
+ "l1_lesson2_title": {
+  "fr": "Les nombres de 1 à 4",
+  "es": "Números del 1 al 4",
+  "pt": "Números de 1 a 4",
+  "tr": "1'den 4'e Sayılar",
+  "ru": "Числа от 1 до 4",
+  "ja": "1から4の数",
+  "th": "เลข 1 ถึง 4"
+ },
+ "l1_lesson2_subtitle": {
+  "fr": "Bouge les boules du bas — compte jusqu'à 4 !",
+  "es": "Mueve las cuentas de abajo: ¡cuenta hasta 4!",
+  "pt": "Mova as contas de baixo e conte até 4!",
+  "tr": "Alt boncukları oynat, 4'e kadar say!",
+  "ru": "Двигай нижние бусины — считай до 4!",
+  "ja": "下の珠を動かして、4まで数えよう!",
+  "th": "เลื่อนลูกล่าง นับให้ถึง 4!"
+ },
+ "l1_lesson3_title": {
+  "fr": "Le nombre 5 et la suite",
+  "es": "El número 5 y más",
+  "pt": "O Número 5 e Além",
+  "tr": "5 ve Ötesi",
+  "ru": "Число 5 и дальше",
+  "ja": "5から先の数",
+  "th": "เลข 5 และต่อไป"
+ },
+ "l1_lesson3_subtitle": {
+  "fr": "Boule du haut, compter de 5 à 9",
+  "es": "La cuenta de arriba, del 5 al 9",
+  "pt": "A conta de cima, contando de 5 a 9",
+  "tr": "Üst boncuk, 5'ten 9'a kadar say",
+  "ru": "Верхняя бусина, счёт от 5 до 9",
+  "ja": "上の珠で、5から9まで数えよう",
+  "th": "ลูกบน นับ 5 ถึง 9"
+ },
+ "l1_lesson4_title": {
+  "fr": "Valeur de position",
+  "es": "Valor posicional",
+  "pt": "Valor Posicional",
+  "tr": "Basamak Değeri",
+  "ru": "Разряды",
+  "ja": "位取り",
+  "th": "ค่าประจำหลัก"
+ },
+ "l1_lesson4_subtitle": {
+  "fr": "Découvre les dizaines et les unités",
+  "es": "Descubre las decenas y las unidades",
+  "pt": "Descubra dezenas e unidades",
+  "tr": "Onlar ve birler basamaklarını keşfet",
+  "ru": "Узнай про десятки и единицы",
+  "ja": "十の位と一の位を見つけよう",
+  "th": "รู้จักแกนหลักสิบและหลักหน่วย"
+ },
+ "l1_lesson5_title": {
+  "fr": "Les nombres jusqu'à 99",
+  "es": "Números hasta el 99",
+  "pt": "Números até 99",
+  "tr": "99'a Kadar Sayılar",
+  "ru": "Числа до 99",
+  "ja": "99までの数",
+  "th": "เลขถึง 99"
+ },
+ "l1_lesson5_subtitle": {
+  "fr": "Lis n'importe quel nombre à deux chiffres !",
+  "es": "¡Lee cualquier número de dos cifras!",
+  "pt": "Leia números de 2 dígitos!",
+  "tr": "İki basamaklı her sayıyı oku!",
+  "ru": "Читай любое двузначное число!",
+  "ja": "2桁の数を読んでみよう!",
+  "th": "อ่านเลขสองหลักได้ทุกจำนวน!"
+ },
+ "l1_lesson1_step1_title": {
+  "fr": "C'est quoi, un boulier ?",
+  "es": "¿Qué es un ábaco?",
+  "pt": "O que é um Ábaco?",
+  "tr": "Abaküs Nedir?",
+  "ru": "Что такое абакус?",
+  "ja": "そろばんってなに?",
+  "th": "ลูกคิดคืออะไร?"
+ },
+ "l1_lesson1_step1_body": {
+  "fr": "Un boulier est un cadre pour compter, avec des boules sur des tiges. On l'utilisait bien avant les calculatrices !",
+  "es": "Un ábaco es un marco para contar, con cuentas en varillas. ¡La gente lo usaba mucho antes de que existieran las calculadoras!",
+  "pt": "O ábaco é uma moldura de contar com contas em hastes. As pessoas o usavam muito antes de existirem calculadoras!",
+  "tr": "Abaküs, çubuklara dizilmiş boncuklardan oluşan bir sayma çerçevesidir. İnsanlar hesap makinelerinden çok önce onu kullanırdı!",
+  "ru": "Абакус — это счётная рамка с бусинами на спицах. Им считали задолго до калькуляторов!",
+  "ja": "そろばんは、桁に珠がならんだ数える道具です。電卓ができるずっと前から、みんなが使っていました!",
+  "th": "ลูกคิดคือกรอบนับเลขที่มีลูกร้อยอยู่บนแกน ผู้คนใช้มานานแล้ว ก่อนจะมีเครื่องคิดเลขเสียอีก!"
+ },
+ "l1_lesson1_step2_title": {
+  "fr": "Le cadre et la barre centrale",
+  "es": "El marco y la barra central",
+  "pt": "Moldura e Barra",
+  "tr": "Çerçeve ve Orta Çubuk",
+  "ru": "Рамка и планка",
+  "ja": "枠と梁",
+  "th": "กรอบและคานกลาง"
+ },
+ "l1_lesson1_step2_body": {
+  "fr": "Le cadre extérieur tient tout ensemble. La barre horizontale du milieu s'appelle la BARRE CENTRALE : elle sépare le haut du bas !",
+  "es": "El marco sujeta todo. La barra horizontal del medio se llama BARRA CENTRAL: ¡separa la parte de arriba de la de abajo!",
+  "pt": "A moldura por fora segura tudo junto. A barra horizontal do meio se chama BARRA CENTRAL. Ela separa o de cima do de baixo!",
+  "tr": "Dış çerçeve her şeyi bir arada tutar. Ortadaki yatay çubuğa ORTA ÇUBUK denir. Üstü alttan ayırır!",
+  "ru": "Внешняя рамка держит всё вместе. Полоса посередине — это ЦЕНТРАЛЬНАЯ ПЛАНКА. Она делит верх и низ!",
+  "ja": "外の枠が、ぜんぶをささえています。まん中の横の棒は「梁」といって、上と下を分けています!",
+  "th": "กรอบด้านนอกช่วยยึดทุกอย่างไว้ด้วยกัน แท่งแนวนอนตรงกลางนี้แหละคือคานกลาง แบ่งบนกับล่างออกจากกัน!"
+ },
+ "l1_lesson1_step3_title": {
+  "fr": "La boule du ciel",
+  "es": "La cuenta del cielo",
+  "pt": "A Conta do Céu",
+  "tr": "Gök Boncuğu",
+  "ru": "Небесная бусина",
+  "ja": "上の珠 (五珠)",
+  "th": "ลูกบน"
+ },
+ "l1_lesson1_step3_body": {
+  "fr": "Au-dessus de la barre centrale, il y a 1 boule spéciale. Pousse-la vers le BAS jusqu'à la barre et elle vaut CINQ ! ✋",
+  "es": "Arriba de la barra central hay 1 cuenta especial. Si la empujas hacia ABAJO hasta tocar la barra, ¡vale CINCO! ✋",
+  "pt": "Acima da barra central fica 1 conta especial. Empurre ela para BAIXO até tocar a barra e ela vale CINCO! ✋",
+  "tr": "Orta çubuğun üstünde 1 özel boncuk var. Onu orta çubuğa değene kadar AŞAĞI it, BEŞ sayılır! ✋",
+  "ru": "Над планкой сидит 1 особая бусина. Сдвинь её ВНИЗ до планки, и она считается как ПЯТЬ! ✋",
+  "ja": "梁の上には、特別な珠が1つあります。「下」におろして梁にくっつけると、5になります! ✋",
+  "th": "เหนือคานกลางมีลูกพิเศษอยู่ 1 ลูก ดันลงมาแตะคานกลาง จะนับเป็นห้าเลย! ✋"
+ },
+ "l1_lesson1_step4_title": {
+  "fr": "Les boules de la terre",
+  "es": "Las cuentas de la tierra",
+  "pt": "As Contas da Terra",
+  "tr": "Yer Boncukları",
+  "ru": "Земные бусины",
+  "ja": "下の珠 (一珠)",
+  "th": "ลูกล่าง"
+ },
+ "l1_lesson1_step4_body": {
+  "fr": "Sous la barre centrale, il y a 4 boules. Chacune que tu pousses vers le HAUT jusqu'à la barre vaut UN ! 1️⃣",
+  "es": "Debajo de la barra central hay 4 cuentas. ¡Cada una que empujes hacia ARRIBA hasta tocar la barra vale UNO! 1️⃣",
+  "pt": "Abaixo da barra central ficam 4 contas. Cada uma que você empurra para CIMA até tocar a barra vale UM! 1️⃣",
+  "tr": "Orta çubuğun altında 4 boncuk var. Orta çubuğa değene kadar YUKARI ittiğin her biri BİR sayılır! 1️⃣",
+  "ru": "Под планкой 4 бусины. Каждая, которую сдвинешь ВВЕРХ до планки, считается как ОДИН! 1️⃣",
+  "ja": "梁の下には、珠が4つあります。「上」に押して梁にくっつけた珠は、1つが「1」になります! 1️⃣",
+  "th": "ใต้คานกลางมีลูก 4 ลูก ดันขึ้นไปแตะคานกลางทีละลูก แต่ละลูกนับเป็นหนึ่ง! 1️⃣"
+ },
+ "l1_lesson1_step5_title": {
+  "fr": "Lire le boulier !",
+  "es": "¡Lee el ábaco!",
+  "pt": "Lendo o Ábaco!",
+  "tr": "Abaküsü Okuyalım!",
+  "ru": "Как читать абакус!",
+  "ja": "そろばんを読もう!",
+  "th": "อ่านลูกคิดกัน!"
+ },
+ "l1_lesson1_step5_body": {
+  "fr": "Boule du ciel en bas = 5. Compte les boules de la terre qui touchent la barre. Additionne ! Ici : ciel (5) + 3 terre = 8 ! 🌟",
+  "es": "Cuenta del cielo abajo = 5. Cuenta las cuentas de la tierra que tocan la barra central. ¡Súmalas! Aquí: cielo (5) + 3 de la tierra = 8. 🌟",
+  "pt": "Conta do céu para baixo = 5. Conte as contas da terra que tocam a barra. Some tudo! Aqui: céu(5) + 3 da terra = 8! 🌟",
+  "tr": "Gök boncuğu aşağıda = 5. Orta çubuğa değen yer boncuklarını say. Hepsini topla! Burada: gök(5) + 3 yer = 8! 🌟",
+  "ru": "Небесная бусина внизу = 5. Посчитай земные бусины у планки. Сложи! Тут: небесная (5) + 3 земные = 8! 🌟",
+  "ja": "上の珠が下がっていたら5。梁にくっついた下の珠を数えて、たします! ここでは 上の珠(5) + 下の珠3つ = 8! 🌟",
+  "th": "ลูกบนลงมา = 5 นับลูกล่างที่แตะคานกลาง แล้วบวกกัน! ตรงนี้: ลูกบน (5) + ลูกล่าง 3 ลูก = 8! 🌟"
+ },
+ "l1_lesson2_step1_title": {
+  "fr": "Zéro",
+  "es": "Cero",
+  "pt": "Zero",
+  "tr": "Sıfır",
+  "ru": "Ноль",
+  "ja": "0 (ゼロ)",
+  "th": "ศูนย์"
+ },
+ "l1_lesson2_step1_body": {
+  "fr": "Toutes les boules loin de la barre centrale = ZÉRO. Rien ne touche la barre = rien à compter !",
+  "es": "Todas las cuentas lejos de la barra central = CERO. ¡Si nada toca la barra, no hay nada que contar!",
+  "pt": "Todas as contas longe da barra = ZERO. Nada tocando a barra = nada para contar!",
+  "tr": "Hiçbir boncuk orta çubuğa değmiyorsa = SIFIR. Orta çubuğa hiçbir şey değmiyor, sayacak bir şey yok!",
+  "ru": "Все бусины далеко от планки = НОЛЬ. Ни одна не касается планки — считать нечего!",
+  "ja": "すべての珠が梁からはなれていると「0」です。梁にさわる珠がなければ、数えるものはありません!",
+  "th": "ลูกทุกลูกอยู่ห่างคานกลาง = ศูนย์ ไม่มีลูกแตะคานกลาง คือไม่มีอะไรให้นับ!"
+ },
+ "l1_lesson2_step2_title": {
+  "fr": "Un",
+  "es": "Uno",
+  "pt": "Um",
+  "tr": "Bir",
+  "ru": "Один",
+  "ja": "1 (いち)",
+  "th": "หนึ่ง"
+ },
+ "l1_lesson2_step2_body": {
+  "fr": "Pousse exactement 1 boule de la terre vers le HAUT jusqu'à la barre. La tige montre maintenant le nombre 1 !",
+  "es": "Empuja exactamente 1 cuenta de la tierra hacia ARRIBA hasta tocar la barra central. ¡Ahora la varilla muestra el número 1!",
+  "pt": "Empurre exatamente 1 conta da terra para CIMA até tocar a barra. Agora a haste mostra o número 1!",
+  "tr": "Orta çubuğa değene kadar tam 1 yer boncuğunu YUKARI it. Çubuk artık 1 sayısını gösteriyor!",
+  "ru": "Сдвинь ровно 1 земную бусину ВВЕРХ до планки. Теперь на спице число 1!",
+  "ja": "下の珠を1つだけ「上」に押して、梁にくっつけます。この桁は1を表しています!",
+  "th": "ดันลูกล่างขึ้นไปแตะคานกลางแค่ 1 ลูกพอดี ตอนนี้แกนแสดงเลข 1!"
+ },
+ "l1_lesson2_step3_title": {
+  "fr": "Deux",
+  "es": "Dos",
+  "pt": "Dois",
+  "tr": "İki",
+  "ru": "Два",
+  "ja": "2 (に)",
+  "th": "สอง"
+ },
+ "l1_lesson2_step3_body": {
+  "fr": "Pousse 2 boules de la terre vers le HAUT. Compte-les : un... deux ! La tige montre 2 ! 🎊",
+  "es": "Empuja 2 cuentas de la tierra hacia ARRIBA. Cuéntalas: uno... dos. ¡La varilla muestra 2! 🎊",
+  "pt": "Empurre 2 contas da terra para CIMA. Conte: um... dois! A haste mostra 2! 🎊",
+  "tr": "2 yer boncuğunu YUKARI it. Say: bir... iki! Çubuk 2'yi gösteriyor! 🎊",
+  "ru": "Сдвинь 2 земные бусины ВВЕРХ. Посчитай: раз... два! На спице 2! 🎊",
+  "ja": "下の珠を2つ「上」に押します。数えてみよう。1、2! この桁は2を表しています! 🎊",
+  "th": "ดันลูกล่างขึ้น 2 ลูก ลองนับดู: หนึ่ง... สอง! แกนแสดงเลข 2! 🎊"
+ },
+ "l1_lesson2_step4_title": {
+  "fr": "Trois",
+  "es": "Tres",
+  "pt": "Três",
+  "tr": "Üç",
+  "ru": "Три",
+  "ja": "3 (さん)",
+  "th": "สาม"
+ },
+ "l1_lesson2_step4_body": {
+  "fr": "Trois boules de la terre touchent la barre. Compte : 1, 2, 3 ! La tige montre 3 ! 🌈",
+  "es": "Tres cuentas de la tierra tocan la barra central. ¡Cuenta: 1, 2, 3! ¡La varilla muestra 3! 🌈",
+  "pt": "Três contas da terra tocando a barra. Conte: 1, 2, 3! A haste mostra 3! 🌈",
+  "tr": "Üç yer boncuğu orta çubuğa değiyor. Say: 1, 2, 3! Çubuk 3'ü gösteriyor! 🌈",
+  "ru": "Три земные бусины у планки. Считай: 1, 2, 3! На спице 3! 🌈",
+  "ja": "梁にくっついた下の珠が3つ。数えよう、1、2、3! この桁は3を表しています! 🌈",
+  "th": "ลูกล่าง 3 ลูกแตะคานกลาง นับด้วยกัน: 1, 2, 3! แกนแสดงเลข 3! 🌈"
+ },
+ "l1_lesson2_step5_title": {
+  "fr": "Quatre",
+  "es": "Cuatro",
+  "pt": "Quatro",
+  "tr": "Dört",
+  "ru": "Четыре",
+  "ja": "4 (よん)",
+  "th": "สี่"
+ },
+ "l1_lesson2_step5_body": {
+  "fr": "Pousse TOUTES les 4 boules de la terre jusqu'à la barre ! Compte : 1, 2, 3, 4 ! C'est le maximum avec les seules boules de la terre !",
+  "es": "¡Empuja TODAS las 4 cuentas de la tierra hasta la barra central! ¡Cuenta: 1, 2, 3, 4! ¡Es el máximo usando solo cuentas de la tierra!",
+  "pt": "Empurre TODAS as 4 contas da terra até a barra! Conte: 1, 2, 3, 4! É o máximo usando só contas da terra!",
+  "tr": "4 yer boncuğunun HEPSİNİ orta çubuğa kadar yukarı it! Say: 1, 2, 3, 4! Yalnızca yer boncuklarıyla en büyük sayı bu!",
+  "ru": "Сдвинь ВСЕ 4 земные бусины к планке! Считай: 1, 2, 3, 4! Это максимум для одних земных бусин!",
+  "ja": "下の珠を「4つ全部」、梁まで上げよう! 1、2、3、4! 下の珠だけで表せる、いちばん大きい数です!",
+  "th": "ดันลูกล่างทั้ง 4 ลูกขึ้นไปแตะคานกลางเลย! นับ: 1, 2, 3, 4! มากที่สุดที่ใช้ลูกล่างอย่างเดียวได้!"
+ },
+ "l1_lesson3_step1_title": {
+  "fr": "Cinq !",
+  "es": "¡Cinco!",
+  "pt": "Cinco!",
+  "tr": "Beş!",
+  "ru": "Пять!",
+  "ja": "5 (ご)!",
+  "th": "ห้า!"
+ },
+ "l1_lesson3_step1_body": {
+  "fr": "Pousse la boule du CIEL vers le BAS jusqu'à la barre. Cette UNIQUE boule = CINQ ! Quel super raccourci ! 🌟",
+  "es": "Empuja la cuenta del CIELO hacia ABAJO hasta tocar la barra central. ¡UNA sola cuenta = CINCO! ¡Es un atajo genial! 🌟",
+  "pt": "Empurre a conta do CÉU para BAIXO até tocar a barra. Só essa UMA conta = CINCO! É um superatalho! 🌟",
+  "tr": "GÖK boncuğunu orta çubuğa değene kadar AŞAĞI it. Sadece bu TEK boncuk = BEŞ! Süper bir kısayol! 🌟",
+  "ru": "Сдвинь НЕБЕСНУЮ бусину ВНИЗ до планки. Всего ОДНА бусина = ПЯТЬ! Вот это быстрый путь! 🌟",
+  "ja": "「上の珠」を「下」に押して、梁にくっつけます。この珠1つだけで5です! すごい近道です! 🌟",
+  "th": "ดันลูกบนลงมาแตะคานกลาง แค่ลูกเดียวก็เท่ากับห้าแล้ว! เป็นทางลัดสุดเจ๋ง! 🌟"
+ },
+ "l1_lesson3_step2_title": {
+  "fr": "Six",
+  "es": "Seis",
+  "pt": "Seis",
+  "tr": "Altı",
+  "ru": "Шесть",
+  "ja": "6 (ろく)",
+  "th": "หก"
+ },
+ "l1_lesson3_step2_body": {
+  "fr": "Boule du ciel en bas (=5) PLUS 1 boule de la terre en haut (=1). 5 + 1 = SIX ! La magie de l'addition ! ✨",
+  "es": "Cuenta del cielo abajo (=5) MÁS 1 cuenta de la tierra arriba (=1). ¡5 + 1 = SEIS! ¡Magia de sumar! ✨",
+  "pt": "Céu para baixo (=5) MAIS 1 conta da terra para cima (=1). 5 + 1 = SEIS! Mágica de somar! ✨",
+  "tr": "Gök boncuğu aşağıda (=5) ARTI 1 yer boncuğu yukarıda (=1). 5 + 1 = ALTI! Toplama sihri! ✨",
+  "ru": "Небесная бусина внизу (=5) ПЛЮС 1 земная вверху (=1). 5 + 1 = ШЕСТЬ! Волшебное сложение! ✨",
+  "ja": "上の珠を下げて(=5)、さらに下の珠を1つ上げます(=1)。5 + 1 = 6! たし算のまほうです! ✨",
+  "th": "ลูกบนลง (=5) บวกลูกล่างขึ้น 1 ลูก (=1) 5 + 1 = หก! เวทมนตร์ของการบวก! ✨"
+ },
+ "l1_lesson3_step3_title": {
+  "fr": "Sept",
+  "es": "Siete",
+  "pt": "Sete",
+  "tr": "Yedi",
+  "ru": "Семь",
+  "ja": "7 (なな)",
+  "th": "เจ็ด"
+ },
+ "l1_lesson3_step3_body": {
+  "fr": "Boule du ciel en bas (=5) + 2 boules de la terre en haut (=2). 5 + 2 = SEPT ! 🎯",
+  "es": "Cuenta del cielo abajo (=5) + 2 cuentas de la tierra arriba (=2). ¡5 + 2 = SIETE! 🎯",
+  "pt": "Céu para baixo (=5) + 2 contas da terra para cima (=2). 5 + 2 = SETE! 🎯",
+  "tr": "Gök boncuğu aşağıda (=5) + 2 yer boncuğu yukarıda (=2). 5 + 2 = YEDİ! 🎯",
+  "ru": "Небесная бусина внизу (=5) + 2 земные вверху (=2). 5 + 2 = СЕМЬ! 🎯",
+  "ja": "上の珠を下げて(=5) + 下の珠を2つ上げます(=2)。5 + 2 = 7! 🎯",
+  "th": "ลูกบนลง (=5) + ลูกล่างขึ้น 2 ลูก (=2) 5 + 2 = เจ็ด! 🎯"
+ },
+ "l1_lesson3_step4_title": {
+  "fr": "Huit",
+  "es": "Ocho",
+  "pt": "Oito",
+  "tr": "Sekiz",
+  "ru": "Восемь",
+  "ja": "8 (はち)",
+  "th": "แปด"
+ },
+ "l1_lesson3_step4_body": {
+  "fr": "Boule du ciel en bas (=5) + 3 boules de la terre en haut (=3). 5 + 3 = HUIT ! On y est presque ! 🎈",
+  "es": "Cuenta del cielo abajo (=5) + 3 cuentas de la tierra arriba (=3). ¡5 + 3 = OCHO! ¡Ya casi llegas! 🎈",
+  "pt": "Céu para baixo (=5) + 3 contas da terra para cima (=3). 5 + 3 = OITO! Quase lá! 🎈",
+  "tr": "Gök boncuğu aşağıda (=5) + 3 yer boncuğu yukarıda (=3). 5 + 3 = SEKİZ! Az kaldı! 🎈",
+  "ru": "Небесная бусина внизу (=5) + 3 земные вверху (=3). 5 + 3 = ВОСЕМЬ! Почти у цели! 🎈",
+  "ja": "上の珠を下げて(=5) + 下の珠を3つ上げます(=3)。5 + 3 = 8! あと少し! 🎈",
+  "th": "ลูกบนลง (=5) + ลูกล่างขึ้น 3 ลูก (=3) 5 + 3 = แปด! ใกล้ถึงแล้ว! 🎈"
+ },
+ "l1_lesson3_step5_title": {
+  "fr": "Neuf — le maximum !",
+  "es": "Nueve — ¡el máximo!",
+  "pt": "Nove — o Máximo!",
+  "tr": "Dokuz — En Büyük!",
+  "ru": "Девять — максимум!",
+  "ja": "9 (きゅう) いちばん大きい数!",
+  "th": "เก้า — มากที่สุด!"
+ },
+ "l1_lesson3_step5_body": {
+  "fr": "Boule du ciel en bas (=5) + 4 boules de la terre en haut (=4). 5 + 4 = NEUF ! C'est le maximum qu'une tige peut montrer ! 🏆",
+  "es": "Cuenta del cielo abajo (=5) + 4 cuentas de la tierra arriba (=4). ¡5 + 4 = NUEVE! ¡Es lo máximo que puede mostrar 1 varilla! 🏆",
+  "pt": "Céu para baixo (=5) + 4 contas da terra para cima (=4). 5 + 4 = NOVE! É o máximo que 1 haste mostra! 🏆",
+  "tr": "Gök boncuğu aşağıda (=5) + 4 yer boncuğu yukarıda (=4). 5 + 4 = DOKUZ! Bir çubuğun gösterebileceği en büyük sayı bu! 🏆",
+  "ru": "Небесная бусина внизу (=5) + 4 земные вверху (=4). 5 + 4 = ДЕВЯТЬ! Больше одна спица не покажет! 🏆",
+  "ja": "上の珠を下げて(=5) + 下の珠を4つ上げます(=4)。5 + 4 = 9! 1つの桁で表せる、いちばん大きい数です! 🏆",
+  "th": "ลูกบนลง (=5) + ลูกล่างขึ้น 4 ลูก (=4) 5 + 4 = เก้า! นี่คือเลขมากที่สุดที่ 1 แกนแสดงได้! 🏆"
+ },
+ "l1_lesson4_step1_title": {
+  "fr": "Deux tiges !",
+  "es": "¡Dos varillas!",
+  "pt": "Duas Hastes!",
+  "tr": "İki Çubuk!",
+  "ru": "Две спицы!",
+  "ja": "2つの桁!",
+  "th": "สองแกน!"
+ },
+ "l1_lesson4_step1_body": {
+  "fr": "Un boulier a plein de tiges ! La tige de DROITE montre les UNITÉS (1–9). La tige de GAUCHE montre les DIZAINES (10, 20, ...) ! 🎯",
+  "es": "¡Un ábaco tiene muchas varillas! La varilla de la DERECHA muestra las UNIDADES (1–9). ¡La de la IZQUIERDA muestra las DECENAS (10, 20, ...)! 🎯",
+  "pt": "Um ábaco tem várias hastes! A da DIREITA mostra as UNIDADES (1–9). A da ESQUERDA mostra as DEZENAS (10, 20, ...)! 🎯",
+  "tr": "Abaküste çok çubuk var! SAĞ çubuk BİRLERİ (1–9) gösterir. SOL çubuk ONLARI (10, 20, ...) gösterir! 🎯",
+  "ru": "На абакусе много спиц! ПРАВАЯ спица показывает ЕДИНИЦЫ (1–9). ЛЕВАЯ — ДЕСЯТКИ (10, 20, ...)! 🎯",
+  "ja": "そろばんには、桁がたくさんあります! 「右」の桁は一の位(1–9)、「左」の桁は十の位(10、20、...)を表します! 🎯",
+  "th": "ลูกคิดมีหลายแกน! แกนขวาแสดงหลักหน่วย (1–9) แกนซ้ายแสดงหลักสิบ (10, 20, ...)! 🎯"
+ },
+ "l1_lesson4_step2_title": {
+  "fr": "Le nombre 10",
+  "es": "El número 10",
+  "pt": "O Número 10",
+  "tr": "10 Sayısı",
+  "ru": "Число 10",
+  "ja": "10という数",
+  "th": "เลข 10"
+ },
+ "l1_lesson4_step2_body": {
+  "fr": "Pousse 1 boule de la terre vers le haut sur la tige de GAUCHE (dizaines). La tige de droite reste à zéro. Une boule sur la tige des dizaines = DIX !",
+  "es": "Empuja 1 cuenta de la tierra hacia arriba en la varilla de la IZQUIERDA (decenas). La varilla de la derecha sigue en cero. ¡Una cuenta en la varilla de las decenas = DIEZ!",
+  "pt": "Empurre 1 conta da terra para cima na haste da ESQUERDA (dezenas). A da direita fica em zero. Uma conta nas dezenas = DEZ!",
+  "tr": "SOL (onlar) çubuğunda 1 yer boncuğunu yukarı it. Sağ çubuk sıfırda kalır. Onlar çubuğundaki bir boncuk = ON!",
+  "ru": "Сдвинь 1 земную бусину вверх на ЛЕВОЙ спице (десятки). Правая спица остаётся на нуле. Одна бусина на спице десятков = ДЕСЯТЬ!",
+  "ja": "左(十の位)の桁で、下の珠を1つ上げます。右の桁は0のままです。十の位の珠1つで10です!",
+  "th": "ดันลูกล่างขึ้น 1 ลูกที่แกนซ้าย (หลักสิบ) แกนขวายังเป็นศูนย์ ลูก 1 ลูกบนแกนหลักสิบ = สิบ!"
+ },
+ "l1_lesson4_step3_title": {
+  "fr": "Le nombre 23",
+  "es": "El número 23",
+  "pt": "O Número 23",
+  "tr": "23 Sayısı",
+  "ru": "Число 23",
+  "ja": "23という数",
+  "th": "เลข 23"
+ },
+ "l1_lesson4_step3_body": {
+  "fr": "GAUCHE : 2 boules de la terre en haut = 2 dizaines = 20. DROITE : 3 boules de la terre en haut = 3 unités. 20 + 3 = 23 ! 🌟",
+  "es": "IZQUIERDA: 2 cuentas de la tierra arriba = 2 decenas = 20. DERECHA: 3 cuentas de la tierra arriba = 3 unidades. ¡20 + 3 = 23! 🌟",
+  "pt": "ESQUERDA: 2 contas da terra = 2 dezenas = 20. DIREITA: 3 contas da terra = 3 unidades. 20 + 3 = 23! 🌟",
+  "tr": "SOL: 2 yer boncuğu yukarıda = 2 onluk = 20. SAĞ: 3 yer boncuğu yukarıda = 3 birlik. 20 + 3 = 23! 🌟",
+  "ru": "СЛЕВА: 2 земные бусины вверх = 2 десятка = 20. СПРАВА: 3 земные бусины вверх = 3 единицы. 20 + 3 = 23! 🌟",
+  "ja": "左: 下の珠2つ上げる = 十が2つ = 20。右: 下の珠3つ上げる = 一が3つ。20 + 3 = 23! 🌟",
+  "th": "ซ้าย: ลูกล่างขึ้น 2 ลูก = 2 สิบ = 20 ขวา: ลูกล่างขึ้น 3 ลูก = 3 หน่วย 20 + 3 = 23! 🌟"
+ },
+ "l1_lesson4_step4_title": {
+  "fr": "Le nombre 56",
+  "es": "El número 56",
+  "pt": "O Número 56",
+  "tr": "56 Sayısı",
+  "ru": "Число 56",
+  "ja": "56という数",
+  "th": "เลข 56"
+ },
+ "l1_lesson4_step4_body": {
+  "fr": "GAUCHE : boule du ciel en bas = 5 dizaines = 50. DROITE : ciel + 1 terre = 5+1 = 6 unités. 50 + 6 = 56 ! 🎊",
+  "es": "IZQUIERDA: cuenta del cielo abajo = 5 decenas = 50. DERECHA: cielo + 1 de la tierra = 5+1 = 6 unidades. ¡50 + 6 = 56! 🎊",
+  "pt": "ESQUERDA: conta do céu para baixo = 5 dezenas = 50. DIREITA: céu + 1 da terra = 5+1 = 6 unidades. 50 + 6 = 56! 🎊",
+  "tr": "SOL: gök boncuğu aşağıda = 5 onluk = 50. SAĞ: gök + 1 yer = 5+1 = 6 birlik. 50 + 6 = 56! 🎊",
+  "ru": "СЛЕВА: небесная бусина внизу = 5 десятков = 50. СПРАВА: небесная + 1 земная = 5+1 = 6 единиц. 50 + 6 = 56! 🎊",
+  "ja": "左: 上の珠を下げる = 十が5つ = 50。右: 上の珠 + 下の珠1つ = 5 + 1 = 6。50 + 6 = 56! 🎊",
+  "th": "ซ้าย: ลูกบนลง = 5 สิบ = 50 ขวา: ลูกบน + ลูกล่าง 1 ลูก = 5+1 = 6 หน่วย 50 + 6 = 56! 🎊"
+ },
+ "l1_lesson4_step5_title": {
+  "fr": "Lis n'importe quel nombre à 2 chiffres !",
+  "es": "¡Lee cualquier número de 2 cifras!",
+  "pt": "Leia Números de 2 Dígitos!",
+  "tr": "İki Basamaklı Her Sayıyı Oku!",
+  "ru": "Читай любое двузначное число!",
+  "ja": "2桁の数を読もう!",
+  "th": "อ่านเลขสองหลักได้ทุกจำนวน!"
+ },
+ "l1_lesson4_step5_body": {
+  "fr": "Lis d'abord la tige de GAUCHE (dizaines × 10), puis ajoute la tige de DROITE (unités). Ici : 4 dizaines + 7 unités = 47 ! 🏆",
+  "es": "Lee primero la varilla de la IZQUIERDA (decenas × 10) y luego suma la de la DERECHA (unidades). ¡Aquí: 4 decenas + 7 unidades = 47! 🏆",
+  "pt": "Leia a haste da ESQUERDA (dezenas × 10) e some a da DIREITA (unidades). Aqui: 4 dezenas + 7 unidades = 47! 🏆",
+  "tr": "Önce SOL çubuğu oku (onlar × 10), sonra SAĞ çubuğu (birler) ekle. Burada: 4 onluk + 7 birlik = 47! 🏆",
+  "ru": "Сначала читай ЛЕВУЮ спицу (десятки × 10), потом прибавь ПРАВУЮ (единицы). Тут: 4 десятка + 7 единиц = 47! 🏆",
+  "ja": "まず「左」の桁を読んで(十の位 × 10)、次に「右」の桁(一の位)をたします。ここでは 十が4つ + 一が7つ = 47! 🏆",
+  "th": "อ่านแกนซ้ายก่อน (หลักสิบ × 10) แล้วบวกแกนขวา (หลักหน่วย) ตรงนี้: 4 สิบ + 7 หน่วย = 47! 🏆"
+ },
+ "l1_lesson5_step1_title": {
+  "fr": "N'importe quel nombre de 0 à 99 !",
+  "es": "¡Cualquier número del 0 al 99!",
+  "pt": "Qualquer Número 0–99!",
+  "tr": "0–99 Arası Her Sayı!",
+  "ru": "Любое число 0–99!",
+  "ja": "0–99のどんな数も!",
+  "th": "เลขอะไรก็ได้ 0–99!"
+ },
+ "l1_lesson5_step1_body": {
+  "fr": "Avec 2 tiges, tu peux montrer N'IMPORTE QUEL nombre de 0 à 99 ! Cela fait 100 nombres différents à lire ! 🎉",
+  "es": "¡Con 2 varillas puedes mostrar CUALQUIER número del 0 al 99! ¡Son 100 números distintos que puedes leer! 🎉",
+  "pt": "Com 2 hastes você mostra QUALQUER número de 0 a 99! São 100 números diferentes que você pode ler! 🎉",
+  "tr": "2 çubukla 0'dan 99'a kadar HER sayıyı gösterebilirsin! Okuyabileceğin 100 farklı sayı var! 🎉",
+  "ru": "С двумя спицами можно показать ЛЮБОЕ число от 0 до 99! Целых 100 разных чисел ты уже умеешь читать! 🎉",
+  "ja": "2つの桁があれば、0から99までどんな数でも表せます! 読める数は、100通りもあるんです! 🎉",
+  "th": "แค่ 2 แกนก็แสดงเลขได้ทุกจำนวนตั้งแต่ 0 ถึง 99! อ่านได้ถึง 100 เลขที่ไม่ซ้ำกันเลย! 🎉"
+ },
+ "l1_lesson5_step2_title": {
+  "fr": "Le nombre 67",
+  "es": "El número 67",
+  "pt": "O Número 67",
+  "tr": "67 Sayısı",
+  "ru": "Число 67",
+  "ja": "67という数",
+  "th": "เลข 67"
+ },
+ "l1_lesson5_step2_body": {
+  "fr": "Tige des DIZAINES : ciel (5) + 1 terre (1) = 6 dizaines = 60. Tige des UNITÉS : ciel (5) + 2 terre (2) = 7. 60 + 7 = 67 ! 🎯",
+  "es": "Varilla de DECENAS: cielo (5) + 1 de la tierra (1) = 6 decenas = 60. Varilla de UNIDADES: cielo (5) + 2 de la tierra (2) = 7. ¡60 + 7 = 67! 🎯",
+  "pt": "Haste das DEZENAS: céu(5) + 1 da terra(1) = 6 dezenas = 60. Haste das UNIDADES: céu(5) + 2 da terra(2) = 7. 60 + 7 = 67! 🎯",
+  "tr": "ONLAR çubuğu: gök(5) + 1 yer(1) = 6 onluk = 60. BİRLER çubuğu: gök(5) + 2 yer(2) = 7. 60 + 7 = 67! 🎯",
+  "ru": "Спица ДЕСЯТКОВ: небесная (5) + 1 земная (1) = 6 десятков = 60. Спица ЕДИНИЦ: небесная (5) + 2 земные (2) = 7. 60 + 7 = 67! 🎯",
+  "ja": "十の位: 上の珠(5) + 下の珠1つ(1) = 十が6つ = 60。一の位: 上の珠(5) + 下の珠2つ(2) = 7。60 + 7 = 67! 🎯",
+  "th": "แกนหลักสิบ: ลูกบน (5) + ลูกล่าง 1 ลูก (1) = 6 สิบ = 60 แกนหลักหน่วย: ลูกบน (5) + ลูกล่าง 2 ลูก (2) = 7 60 + 7 = 67! 🎯"
+ },
+ "l1_lesson5_step3_title": {
+  "fr": "Le nombre 50",
+  "es": "El número 50",
+  "pt": "O Número 50",
+  "tr": "50 Sayısı",
+  "ru": "Число 50",
+  "ja": "50という数",
+  "th": "เลข 50"
+ },
+ "l1_lesson5_step3_body": {
+  "fr": "Tige des DIZAINES : seule la boule du ciel en bas = 5 dizaines = 50. Tige des UNITÉS : rien = 0. Une seule boule du ciel = 50 ! 🌟",
+  "es": "Varilla de DECENAS: solo la cuenta del cielo abajo = 5 decenas = 50. Varilla de UNIDADES: nada = 0. ¡Solo una cuenta del cielo = 50! 🌟",
+  "pt": "Haste das DEZENAS: só a conta do céu para baixo = 5 dezenas = 50. Haste das UNIDADES: nada = 0. Só uma conta do céu = 50! 🌟",
+  "tr": "ONLAR çubuğu: yalnızca gök boncuğu aşağıda = 5 onluk = 50. BİRLER çubuğu: hiçbir şey = 0. Tek bir gök boncuğu = 50! 🌟",
+  "ru": "Спица ДЕСЯТКОВ: только небесная бусина внизу = 5 десятков = 50. Спица ЕДИНИЦ: пусто = 0. Одна небесная бусина = 50! 🌟",
+  "ja": "十の位: 上の珠を下げただけ = 十が5つ = 50。一の位: 何もなし = 0。上の珠1つだけで50! 🌟",
+  "th": "แกนหลักสิบ: มีแค่ลูกบนลง = 5 สิบ = 50 แกนหลักหน่วย: ไม่มีอะไร = 0 แค่ลูกบนลูกเดียว = 50! 🌟"
+ },
+ "l1_lesson5_step4_title": {
+  "fr": "Le nombre 99 — le maximum !",
+  "es": "El número 99 — ¡el máximo!",
+  "pt": "O Número 99 — o Máximo!",
+  "tr": "99 Sayısı — En Büyük!",
+  "ru": "Число 99 — максимум!",
+  "ja": "99 いちばん大きい数!",
+  "th": "เลข 99 — มากที่สุด!"
+ },
+ "l1_lesson5_step4_body": {
+  "fr": "DIZAINES : ciel (5) + 4 terre = 9 dizaines = 90. UNITÉS : ciel (5) + 4 terre = 9 unités. 90 + 9 = 99 ! Le max ! 🌈",
+  "es": "DECENAS: cielo (5) + 4 de la tierra = 9 decenas = 90. UNIDADES: cielo (5) + 4 de la tierra = 9 unidades. ¡90 + 9 = 99! ¡El máximo! 🌈",
+  "pt": "DEZENAS: céu(5)+4 da terra = 9 dezenas = 90. UNIDADES: céu(5)+4 da terra = 9 unidades. 90+9 = 99! O máximo! 🌈",
+  "tr": "ONLAR: gök(5)+4 yer = 9 onluk = 90. BİRLER: gök(5)+4 yer = 9 birlik. 90+9 = 99! En büyüğü! 🌈",
+  "ru": "ДЕСЯТКИ: небесная (5) + 4 земные = 9 десятков = 90. ЕДИНИЦЫ: небесная (5) + 4 земные = 9 единиц. 90+9 = 99! Это максимум! 🌈",
+  "ja": "十の位: 上の珠(5) + 下の珠4つ = 十が9つ = 90。一の位: 上の珠(5) + 下の珠4つ = 一が9つ。90 + 9 = 99! いちばん大きい数です! 🌈",
+  "th": "หลักสิบ: ลูกบน (5) + ลูกล่าง 4 ลูก = 9 สิบ = 90 หลักหน่วย: ลูกบน (5) + ลูกล่าง 4 ลูก = 9 หน่วย 90 + 9 = 99! มากที่สุดแล้ว! 🌈"
+ },
+ "l1_lesson5_step5_title": {
+  "fr": "Tu es un as !",
+  "es": "¡Eres un genio!",
+  "pt": "Você é Demais!",
+  "tr": "Sen Bir Ustasın!",
+  "ru": "Ты мастер!",
+  "ja": "もう名人です!",
+  "th": "เก่งสุดยอดไปเลย!"
+ },
+ "l1_lesson5_step5_body": {
+  "fr": "Lis la tige de GAUCHE (×10), puis ajoute la tige de DROITE. Et en dessous ? Gauche = 3, droite = 8 → 38 ! Tu as réussi ! 🌈",
+  "es": "Lee la varilla de la IZQUIERDA (×10) y luego suma la de la DERECHA. ¿Qué hay abajo? Izquierda=3, Derecha=8 → 38. ¡Lo lograste! 🌈",
+  "pt": "Leia a haste ESQUERDA (×10) e some a DIREITA. O que está abaixo? Esquerda=3, Direita=8 → 38! Você conseguiu! 🌈",
+  "tr": "SOL çubuğu oku (×10), sonra SAĞ çubuğu ekle. Aşağıda ne var? Sol=3, Sağ=8 → 38! Başardın! 🌈",
+  "ru": "Читай ЛЕВУЮ спицу (×10), потом прибавь ПРАВУЮ. А что на абакусе ниже? Слева=3, справа=8 → 38! У тебя получилось! 🌈",
+  "ja": "「左」の桁(×10)を読んで、「右」の桁をたします。下の図は? 左=3、右=8 → 38! できました! 🌈",
+  "th": "อ่านแกนซ้าย (×10) แล้วบวกแกนขวา ข้างล่างคือเลขอะไร? ซ้าย=3 ขวา=8 → 38! ทำได้แล้ว! 🌈"
+ },
+ "l1_lesson_label": {
+  "fr": "Leçon %1$d",
+  "es": "Lección %1$d",
+  "pt": "Lição %1$d",
+  "tr": "Ders %1$d",
+  "ru": "Урок %1$d",
+  "ja": "レッスン %1$d",
+  "th": "บทเรียนที่ %1$d"
+ },
+ "l1_phase_learn": {
+  "fr": "Apprendre",
+  "es": "Aprender",
+  "pt": "Aprender",
+  "tr": "Öğren",
+  "ru": "Учимся",
+  "ja": "まなぶ",
+  "th": "เรียนรู้"
+ },
+ "l1_phase_learn_desc": {
+  "fr": "Comprends l'idée pas à pas",
+  "es": "Entiende el concepto paso a paso",
+  "pt": "Entenda a ideia passo a passo",
+  "tr": "Konuyu adım adım anla",
+  "ru": "Разберись шаг за шагом",
+  "ja": "ひとつずつ、しくみをわかろう",
+  "th": "ทำความเข้าใจทีละขั้น"
+ },
+ "l1_phase_practice": {
+  "fr": "Entraînement",
+  "es": "Práctica",
+  "pt": "Prática",
+  "tr": "Alıştırma",
+  "ru": "Практика",
+  "ja": "練習",
+  "th": "ฝึกฝน"
+ },
+ "l1_phase_practice_desc": {
+  "fr": "Bouge toi-même les boules du boulier",
+  "es": "Mueve tú mismo las cuentas del ábaco",
+  "pt": "Mova você mesmo as contas do ábaco",
+  "tr": "Abaküs boncuklarını kendin oynat",
+  "ru": "Двигай бусины абакуса сам",
+  "ja": "自分で珠を動かしてみよう",
+  "th": "ลองเลื่อนลูกคิดด้วยตัวเอง"
+ },
+ "l1_phase_quiz": {
+  "fr": "Quiz",
+  "es": "Cuestionario",
+  "pt": "Questionário",
+  "tr": "Test",
+  "ru": "Викторина",
+  "ja": "クイズ",
+  "th": "แบบทดสอบ"
+ },
+ "l1_phase_quiz_desc": {
+  "fr": "Teste-toi et gagne des étoiles !",
+  "es": "¡Pon a prueba tus habilidades y gana estrellas!",
+  "pt": "Teste-se e ganhe estrelas!",
+  "tr": "Becerilerini sına, yıldız kazan!",
+  "ru": "Проверь себя и получи звёзды!",
+  "ja": "力をためして、星をゲットしよう!",
+  "th": "ทดสอบฝีมือและรับดาว!"
+ },
+ "l1_step_counter": {
+  "fr": "Étape %1$d sur %2$d",
+  "es": "Paso %1$d de %2$d",
+  "pt": "Passo %1$d de %2$d",
+  "tr": "Adım %1$d / %2$d",
+  "ru": "Шаг %1$d из %2$d",
+  "ja": "ステップ %1$d / %2$d",
+  "th": "ขั้นที่ %1$d จาก %2$d"
+ },
+ "l1_back": {
+  "fr": "← Retour",
+  "es": "← Atrás",
+  "pt": "← Voltar",
+  "tr": "← Geri",
+  "ru": "← Назад",
+  "ja": "← もどる",
+  "th": "← กลับ"
+ },
+ "l1_done": {
+  "fr": "Terminé ! 🎉",
+  "es": "¡Listo! 🎉",
+  "pt": "Pronto! 🎉",
+  "tr": "Bitti! 🎉",
+  "ru": "Готово! 🎉",
+  "ja": "できた! 🎉",
+  "th": "เสร็จแล้ว! 🎉"
+ },
+ "l1_question_counter": {
+  "fr": "Question %1$d sur %2$d",
+  "es": "Pregunta %1$d de %2$d",
+  "pt": "Pergunta %1$d de %2$d",
+  "tr": "Soru %1$d / %2$d",
+  "ru": "Вопрос %1$d из %2$d",
+  "ja": "%2$d問中 %1$d問目",
+  "th": "ข้อที่ %1$d จาก %2$d"
+ },
+ "l1_quiz_what_number": {
+  "fr": "Quel est ce nombre ? 🤔",
+  "es": "¿Qué número es este? 🤔",
+  "pt": "Que número é este? 🤔",
+  "tr": "Bu hangi sayı? 🤔",
+  "ru": "Какое это число? 🤔",
+  "ja": "この数はいくつ? 🤔",
+  "th": "นี่คือเลขอะไร? 🤔"
+ },
+ "l1_quiz_perfect": {
+  "fr": "Score parfait ! Tu es une star ! 🌟",
+  "es": "¡Puntuación perfecta! ¡Eres una estrella! 🌟",
+  "pt": "Acertou Tudo! Você é uma Estrela! 🌟",
+  "tr": "Tam Puan! Sen Bir Yıldızsın! 🌟",
+  "ru": "Все верно! Ты звезда! 🌟",
+  "ja": "満点です! きみはスター! 🌟",
+  "th": "เต็มคะแนน! เก่งเป็นดาวเลย! 🌟"
+ },
+ "l1_quiz_great": {
+  "fr": "Bravo ! Continue de t'entraîner ! 💪",
+  "es": "¡Buen trabajo! ¡Sigue practicando! 💪",
+  "pt": "Ótimo! Continue Praticando! 💪",
+  "tr": "Harika İş! Çalışmaya Devam! 💪",
+  "ru": "Отличная работа! Тренируйся дальше! 💪",
+  "ja": "よくできました! 練習をつづけよう! 💪",
+  "th": "เก่งมาก! ฝึกต่ออีกนะ! 💪"
+ },
+ "l1_quiz_good": {
+  "fr": "Bien essayé ! Entraînons-nous encore ! 🎯",
+  "es": "¡Buen intento! ¡Practiquemos más! 🎯",
+  "pt": "Boa Tentativa! Vamos Praticar Mais! 🎯",
+  "tr": "İyi Deneme! Biraz Daha Çalışalım! 🎯",
+  "ru": "Неплохо! Потренируемся ещё! 🎯",
+  "ja": "おしい! もっと練習しよう! 🎯",
+  "th": "พยายามได้ดี! ฝึกอีกหน่อยนะ! 🎯"
+ },
+ "l1_quiz_score": {
+  "fr": "%1$d / %2$d bonnes réponses",
+  "es": "%1$d / %2$d correctas",
+  "pt": "%1$d / %2$d Certas",
+  "tr": "%1$d / %2$d Doğru",
+  "ru": "Верно: %1$d из %2$d",
+  "ja": "%1$d / %2$d 正解",
+  "th": "ถูก %1$d / %2$d ข้อ"
+ },
+ "l1_try_again": {
+  "fr": "Réessayer 🔄",
+  "es": "Inténtalo otra vez 🔄",
+  "pt": "Tentar de Novo 🔄",
+  "tr": "Tekrar Dene 🔄",
+  "ru": "Ещё раз 🔄",
+  "ja": "もう一度 🔄",
+  "th": "ลองอีกครั้ง 🔄"
+ },
+ "l1_continue": {
+  "fr": "Continuer →",
+  "es": "Continuar →",
+  "pt": "Continuar →",
+  "tr": "Devam →",
+  "ru": "Дальше →",
+  "ja": "つづける →",
+  "th": "ไปต่อ →"
+ },
+ "l1_unlock_formulas": {
+  "fr": "🔓 Débloque les formules du boulier",
+  "es": "🔓 Desbloquea las fórmulas del ábaco",
+  "pt": "🔓 Desbloqueie as fórmulas do ábaco",
+  "tr": "🔓 Abaküs formüllerinin kilidini aç",
+  "ru": "🔓 Открой формулы абакуса",
+  "ja": "🔓 そろばんの公式をひらこう",
+  "th": "🔓 ปลดล็อกสูตรลูกคิด"
+ },
+ "l1_set_this_number": {
+  "fr": "Affiche ce nombre :",
+  "es": "Forma este número:",
+  "pt": "Forme este número:",
+  "tr": "Bu sayıyı göster:",
+  "ru": "Набери это число:",
+  "ja": "この数をセットしよう:",
+  "th": "ตั้งเลขนี้:"
+ },
+ "l1_set_on_abacus": {
+  "fr": "Affiche ce nombre sur\nton boulier !",
+  "es": "¡Forma este número\nen tu ábaco!",
+  "pt": "Forme este número no\nseu ábaco!",
+  "tr": "Bu sayıyı\nabaküste göster!",
+  "ru": "Набери это число на\nсвоём абакусе!",
+  "ja": "この数を\nそろばんにセットしよう!",
+  "th": "ตั้งเลขนี้\nบนลูกคิดเลย!"
+ },
+ "l1_got_it": {
+  "fr": "Compris ! ✓",
+  "es": "¡Entendido! ✓",
+  "pt": "Entendi! ✓",
+  "tr": "Anladım! ✓",
+  "ru": "Понятно! ✓",
+  "ja": "わかった! ✓",
+  "th": "เข้าใจแล้ว! ✓"
+ },
+ "l1_show_me_how": {
+  "fr": "Montre-moi comment 👀",
+  "es": "Muéstrame cómo 👀",
+  "pt": "Mostrar Como 👀",
+  "tr": "Göster Bana 👀",
+  "ru": "Покажи, как 👀",
+  "ja": "やり方を見る 👀",
+  "th": "ดูวิธีทำ 👀"
+ },
+ "l1_i_did_it": {
+  "fr": "J'ai réussi ! ✅",
+  "es": "¡Lo hice! ✅",
+  "pt": "Consegui! ✅",
+  "tr": "Yaptım! ✅",
+  "ru": "Получилось! ✅",
+  "ja": "できた! ✅",
+  "th": "ทำเสร็จแล้ว! ✅"
+ },
+ "l1_practice_complete": {
+  "fr": "Entraînement terminé !",
+  "es": "¡Práctica completada!",
+  "pt": "Prática Concluída!",
+  "tr": "Alıştırma Tamam!",
+  "ru": "Практика пройдена!",
+  "ja": "練習おわり!",
+  "th": "ฝึกฝนเสร็จแล้ว!"
+ },
+ "l1_practice_done_msg": {
+  "fr": "Super travail ! Tu as affiché les %1$d nombres sur le boulier.\nOn passe au quiz ?",
+  "es": "¡Qué buen trabajo! Formaste los %1$d números en el ábaco.\n¿Listo para el cuestionario?",
+  "pt": "Que trabalho incrível! Você formou todos os %1$d números no ábaco.\nVamos fazer o questionário?",
+  "tr": "Harika iş! %1$d sayının hepsini abaküste gösterdin.\nTeste hazır mısın?",
+  "ru": "Отличная работа! Все числа (%1$d) набраны на абакусе.\nПройдём викторину?",
+  "ja": "すばらしい! %1$d個の数を、ぜんぶそろばんにセットできました。\nクイズにちょうせんしますか?",
+  "th": "เยี่ยมมาก! ตั้งเลขบนลูกคิดครบทั้ง %1$d เลขแล้ว\nพร้อมทำแบบทดสอบหรือยัง?"
+ },
+ "l1_lesson_heading": {
+  "fr": "Leçon %1$d · %2$s",
+  "es": "Lección %1$d · %2$s",
+  "pt": "Lição %1$d · %2$s",
+  "tr": "Ders %1$d · %2$s",
+  "ru": "Урок %1$d · %2$s",
+  "ja": "レッスン %1$d · %2$s",
+  "th": "บทเรียนที่ %1$d · %2$s"
+ },
+ "l1_rod_zero": {
+  "fr": "%1$s : toutes les boules en bas",
+  "es": "%1$s: todas las cuentas abajo",
+  "pt": "%1$s: todas as contas para baixo",
+  "tr": "%1$s: tüm boncuklar aşağıda",
+  "ru": "%1$s: все бусины отодвинуты",
+  "ja": "%1$s: 珠は全部、梁からはなれている",
+  "th": "%1$s: ลูกทุกลูกห่างคานกลาง"
+ },
+ "l1_rod_heaven": {
+  "fr": "%1$s : seulement la boule du ciel en bas",
+  "es": "%1$s: solo la cuenta del cielo abajo",
+  "pt": "%1$s: só a conta do céu para baixo",
+  "tr": "%1$s: yalnızca gök boncuğu aşağıda",
+  "ru": "%1$s: только небесная бусина вниз",
+  "ja": "%1$s: 上の珠だけ下がっている",
+  "th": "%1$s: ลูกบนลงมาอย่างเดียว"
+ },
+ "l1_instr_zero": {
+  "fr": "Garde TOUTES les boules loin de la barre centrale",
+  "es": "Aleja TODAS las cuentas de la barra central",
+  "pt": "Deixe TODAS as contas longe da barra",
+  "tr": "TÜM boncukları orta çubuktan uzak tut",
+  "ru": "Держи ВСЕ бусины подальше от планки",
+  "ja": "珠を「ぜんぶ」梁からはなそう",
+  "th": "ให้ลูกทุกลูกอยู่ห่างจากคานกลาง"
+ },
+ "l1_instr_heaven": {
+  "fr": "Pousse SEULEMENT la boule du ciel vers le BAS jusqu'à la barre centrale",
+  "es": "Empuja SOLO la cuenta del cielo hacia ABAJO, hasta la barra central",
+  "pt": "Empurre SÓ a conta do céu para BAIXO até a barra",
+  "tr": "YALNIZCA gök boncuğunu orta çubuğa AŞAĞI it",
+  "ru": "Сдвинь ТОЛЬКО небесную бусину ВНИЗ к планке",
+  "ja": "上の珠だけを「下」におろして梁につけよう",
+  "th": "ดันเฉพาะลูกบนลงมาแตะคานกลาง"
+ },
+ "l1_instr_two_digits": {
+  "fr": "%1$s · %2$s",
+  "es": "%1$s · %2$s",
+  "pt": "%1$s · %2$s",
+  "tr": "%1$s · %2$s",
+  "ru": "%1$s · %2$s",
+  "ja": "%1$s · %2$s",
+  "th": "%1$s · %2$s"
+ },
+ "l1_rod_earth": {
+  "plural": {
+   "fr": {
+    "one": "%1$s : %2$d boule de la terre en haut",
+    "many": "%1$s : %2$d boules de la terre en haut",
+    "other": "%1$s : %2$d boules de la terre en haut"
+   },
+   "es": {
+    "one": "%1$s: %2$d cuenta de la tierra arriba",
+    "many": "%1$s: %2$d cuentas de la tierra arriba",
+    "other": "%1$s: %2$d cuentas de la tierra arriba"
+   },
+   "pt": {
+    "one": "%1$s: %2$d conta da terra para cima",
+    "many": "%1$s: %2$d contas da terra para cima",
+    "other": "%1$s: %2$d contas da terra para cima"
+   },
+   "tr": {
+    "one": "%1$s: %2$d yer boncuğu yukarıda",
+    "other": "%1$s: %2$d yer boncuğu yukarıda"
+   },
+   "ru": {
+    "one": "%1$s: %2$d земная бусина вверх",
+    "few": "%1$s: %2$d земные бусины вверх",
+    "many": "%1$s: %2$d земных бусин вверх",
+    "other": "%1$s: %2$d земные бусины вверх"
+   },
+   "ja": {
+    "other": "%1$s: 下の珠が%2$dつ上がっている"
+   },
+   "th": {
+    "other": "%1$s: ลูกล่างขึ้น %2$d ลูก"
+   }
+  }
+ },
+ "l1_rod_heaven_earth": {
+  "plural": {
+   "fr": {
+    "one": "%1$s : ciel + %2$d boule de la terre en haut",
+    "many": "%1$s : ciel + %2$d boules de la terre en haut",
+    "other": "%1$s : ciel + %2$d boules de la terre en haut"
+   },
+   "es": {
+    "one": "%1$s: cielo + %2$d cuenta de la tierra arriba",
+    "many": "%1$s: cielo + %2$d cuentas de la tierra arriba",
+    "other": "%1$s: cielo + %2$d cuentas de la tierra arriba"
+   },
+   "pt": {
+    "one": "%1$s: céu + %2$d conta da terra para cima",
+    "many": "%1$s: céu + %2$d contas da terra para cima",
+    "other": "%1$s: céu + %2$d contas da terra para cima"
+   },
+   "tr": {
+    "one": "%1$s: gök + %2$d yer boncuğu yukarıda",
+    "other": "%1$s: gök + %2$d yer boncuğu yukarıda"
+   },
+   "ru": {
+    "one": "%1$s: небесная + %2$d земная бусина вверх",
+    "few": "%1$s: небесная + %2$d земные бусины вверх",
+    "many": "%1$s: небесная + %2$d земных бусин вверх",
+    "other": "%1$s: небесная + %2$d земные бусины вверх"
+   },
+   "ja": {
+    "other": "%1$s: 上の珠 + 下の珠%2$dつが上がっている"
+   },
+   "th": {
+    "other": "%1$s: ลูกบน + ลูกล่างขึ้น %2$d ลูก"
+   }
+  }
+ },
+ "l1_instr_earth": {
+  "plural": {
+   "fr": {
+    "one": "Pousse %1$d boule de la terre vers le HAUT jusqu'à la barre centrale",
+    "many": "Pousse %1$d boules de la terre vers le HAUT jusqu'à la barre centrale",
+    "other": "Pousse %1$d boules de la terre vers le HAUT jusqu'à la barre centrale"
+   },
+   "es": {
+    "one": "Empuja %1$d cuenta de la tierra hacia ARRIBA, hasta la barra central",
+    "many": "Empuja %1$d cuentas de la tierra hacia ARRIBA, hasta la barra central",
+    "other": "Empuja %1$d cuentas de la tierra hacia ARRIBA, hasta la barra central"
+   },
+   "pt": {
+    "one": "Empurre %1$d conta da terra para CIMA até a barra",
+    "many": "Empurre %1$d contas da terra para CIMA até a barra",
+    "other": "Empurre %1$d contas da terra para CIMA até a barra"
+   },
+   "tr": {
+    "one": "%1$d yer boncuğunu orta çubuğa YUKARI it",
+    "other": "%1$d yer boncuğunu orta çubuğa YUKARI it"
+   },
+   "ru": {
+    "one": "Сдвинь %1$d земную бусину ВВЕРХ к планке",
+    "few": "Сдвинь %1$d земные бусины ВВЕРХ к планке",
+    "many": "Сдвинь %1$d земных бусин ВВЕРХ к планке",
+    "other": "Сдвинь %1$d земные бусины ВВЕРХ к планке"
+   },
+   "ja": {
+    "other": "下の珠%1$dつを「上」に押して梁につけよう"
+   },
+   "th": {
+    "other": "ดันลูกล่างขึ้นแตะคานกลาง %1$d ลูก"
+   }
+  }
+ },
+ "l1_instr_heaven_earth": {
+  "plural": {
+   "fr": {
+    "one": "Boule du ciel en bas + pousse %1$d boule de la terre en haut",
+    "many": "Boule du ciel en bas + pousse %1$d boules de la terre en haut",
+    "other": "Boule du ciel en bas + pousse %1$d boules de la terre en haut"
+   },
+   "es": {
+    "one": "Cuenta del cielo abajo + empuja %1$d cuenta de la tierra arriba",
+    "many": "Cuenta del cielo abajo + empuja %1$d cuentas de la tierra arriba",
+    "other": "Cuenta del cielo abajo + empuja %1$d cuentas de la tierra arriba"
+   },
+   "pt": {
+    "one": "Conta do céu para baixo + empurre %1$d conta da terra para cima",
+    "many": "Conta do céu para baixo + empurre %1$d contas da terra para cima",
+    "other": "Conta do céu para baixo + empurre %1$d contas da terra para cima"
+   },
+   "tr": {
+    "one": "Gök boncuğu aşağıda + %1$d yer boncuğunu yukarı it",
+    "other": "Gök boncuğu aşağıda + %1$d yer boncuğunu yukarı it"
+   },
+   "ru": {
+    "one": "Небесную бусину вниз + сдвинь %1$d земную вверх",
+    "few": "Небесную бусину вниз + сдвинь %1$d земные вверх",
+    "many": "Небесную бусину вниз + сдвинь %1$d земных вверх",
+    "other": "Небесную бусину вниз + сдвинь %1$d земные вверх"
+   },
+   "ja": {
+    "other": "上の珠を下げて、下の珠%1$dつを上げよう"
+   },
+   "th": {
+    "other": "ลูกบนลง + ดันลูกล่างขึ้น %1$d ลูก"
+   }
+  }
+ }
+}
