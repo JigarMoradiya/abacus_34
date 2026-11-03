@@ -21,33 +21,9 @@ class SetViewModel @Inject constructor(
     override fun getInitialState() = SetUiState()
     val levelCategoryId: String? = savedStateHandle["levelCategoryId"]
     val name: String? = savedStateHandle["name"]
-    init {
-        levelCategoryId?.let {
-            load(it)
-        }
-    }
 
-    fun load(levelCategoryId: String)  = viewModelScope.launch {
-        abacusDataRepository.getPages(levelCategoryId).catch { onFailure(it) }.collect { pages ->
-            updateState_ {
-                copy(
-                    levelName = name?:"",
-                    pageTitle = title,
-                    pages = pages,
-                    showNoData = pages.isEmpty(),
-                    isLoading = false
-                )
-            }
-        }
-    }
-
-
-    override fun onFailure(throwable: Throwable) {
-        updateState_ {
-            copy(error = localizeCommonFailure(throwable))
-        }
-    }
-
+    // Declared BEFORE init: init starts load(), and when the database answers at once the result is delivered inside the constructor,
+    // before a property declared further down has its value (title was null then: "Parameter specified as non-null is null: pageTitle").
     val title : String = when (name) {
         "level1" -> {
             "Pages of Level 1"
@@ -81,6 +57,33 @@ class SetViewModel @Inject constructor(
         }
         else -> {
             "Pages of Level"
+        }
+    }
+
+    init {
+        levelCategoryId?.let {
+            load(it)
+        }
+    }
+
+    fun load(levelCategoryId: String)  = viewModelScope.launch {
+        abacusDataRepository.getPages(levelCategoryId).catch { onFailure(it) }.collect { pages ->
+            updateState_ {
+                copy(
+                    levelName = name?:"",
+                    pageTitle = title,
+                    pages = pages,
+                    showNoData = pages.isEmpty(),
+                    isLoading = false
+                )
+            }
+        }
+    }
+
+
+    override fun onFailure(throwable: Throwable) {
+        updateState_ {
+            copy(error = localizeCommonFailure(throwable))
         }
     }
 }
