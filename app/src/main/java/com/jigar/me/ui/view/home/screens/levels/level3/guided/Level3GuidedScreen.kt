@@ -34,6 +34,8 @@ import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateHost
 import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 private sealed class L3GuidedPhase {
     data class Step(val index: Int) : L3GuidedPhase()
@@ -85,7 +87,7 @@ fun Level3GuidedScreen(
                         .weight(0.44f).fillMaxHeight()
                         .padding(bottom = AppDimens.Dimens12, end = AppDimens.Dimens6)
                 ) {
-                    ScreenTopBar(title = mode.title, onBack = onBackClick)
+                    ScreenTopBar(title = stringResource(mode.titleRes), onBack = onBackClick)
                     Spacer(Modifier.height(AppDimens.Dimens8))
 
                     AbGlassPanel(
@@ -118,7 +120,7 @@ fun Level3GuidedScreen(
                                 ) {
                                     Text("🧮", style = abEmojiStyle(abResponsive(40f)))
                                     Text(
-                                        "All ${session.terms.size} steps done!\nEnter your total →",
+                                        stringResource(R.string.l3_guided_all_done, session.terms.size),
                                         style      = abFont(15f, FontWeight.Black),
                                         color      = mode.startColor,
                                         textAlign  = TextAlign.Center
@@ -148,8 +150,8 @@ fun Level3GuidedScreen(
                 L3ModeCard(
                     accent   = mode.endColor,
                     emoji    = mode.emoji,
-                    title    = mode.title,
-                    subtitle = mode.subtitle,
+                    title    = stringResource(mode.titleRes),
+                    subtitle = stringResource(mode.subtitleRes),
                     modifier = Modifier
                         .weight(0.56f).fillMaxHeight()
                         .padding(start = AppDimens.Dimens6, end = AppDimens.Dimens12, top = AppDimens.Dimens8, bottom = AppDimens.Dimens12)
@@ -190,7 +192,7 @@ fun Level3GuidedScreen(
                                 }
                             )
                             is L3GuidedPhase.Answering -> L3AnswerPhase(
-                                title      = "What's your total? 🤔",
+                                title      = stringResource(R.string.l3_whats_your_total),
                                 typedValue = typedValue,
                                 onDigit    = { typedValue = (typedValue + it.toString()).take(3) },
                                 onDelete   = { if (typedValue.isNotEmpty()) typedValue = typedValue.dropLast(1) },
@@ -218,9 +220,9 @@ fun Level3GuidedScreen(
                     accent     = mode.endColor,
                     correct    = rp.correct,
                     emoji      = if (rp.correct) "🌟🌟🌟" else "💪",
-                    message    = if (rp.correct) "Amazing work! Your abacus skills are growing! 🚀"
-                                 else "Keep practicing! You're getting better every time! 💫",
-                    retryLabel = "Try Again 🔄",
+                    message    = if (rp.correct) stringResource(R.string.l3_guided_win)
+                                 else stringResource(R.string.l3_guided_lose),
+                    retryLabel = stringResource(R.string.l1_try_again),
                     onRetry    = {
                         phase      = L3GuidedPhase.Step(0)
                         typedValue = ""
@@ -230,7 +232,7 @@ fun Level3GuidedScreen(
                         if (rp.correct) reviewGate.attempt(prefs) { onFinished() } else onFinished()
                     },
                 ) {
-                    L3AnswerTitle(rp.correct, rp.expected, rp.userAnswer, correctText = "Correct! ${rp.expected}")
+                    L3AnswerTitle(rp.correct, rp.expected, rp.userAnswer, correctText = stringResource(R.string.l3_correct, rp.expected))
                 }
             }
 
@@ -252,17 +254,17 @@ private fun GuidedStepPanel(
     val isLast    = stepIndex == session.terms.size - 1
 
     val instruction = when {
-        autoAbacus && term.sign.isEmpty() -> "Watch the abacus start at ${term.value}!"
-        autoAbacus                        -> "See how the abacus updates!"
-        term.sign.isEmpty()               -> "Set your abacus to ${term.value}"
-        term.sign == "+"                  -> "Add ${term.value} on your abacus"
-        else                              -> "Subtract ${term.value} from your abacus"
+        autoAbacus && term.sign.isEmpty() -> stringResource(R.string.l3_g_watch_start, term.value)
+        autoAbacus                        -> stringResource(R.string.l3_g_see_updates)
+        term.sign.isEmpty()               -> stringResource(R.string.l3_g_set_to, term.value)
+        term.sign == "+"                  -> stringResource(R.string.l3_g_add, term.value)
+        else                              -> stringResource(R.string.l3_g_subtract, term.value)
     }
 
     val btnLabel = when {
-        isLast && autoAbacus -> "See Result! 🎉"
-        isLast               -> "Enter My Answer! →"
-        else                 -> "Next Step →"
+        isLast && autoAbacus -> stringResource(R.string.l3_g_see_result)
+        isLast               -> stringResource(R.string.l3_g_enter_answer)
+        else                 -> stringResource(R.string.l3_g_next_step)
     }
 
     // on a phone the content is laid out at its natural height and shrunk to the card, so no row is squeezed away
@@ -274,7 +276,7 @@ private fun GuidedStepPanel(
                               else Arrangement.spacedBy(AppDimens.Dimens12)
     ) {
         AbCountPill(
-            text = "Step ${stepIndex + 1} of ${session.terms.size}",
+            text = stringResource(R.string.l1_step_counter, stepIndex + 1, session.terms.size),
             icon = Icons.Rounded.FormatListNumbered,
         )
         Box(

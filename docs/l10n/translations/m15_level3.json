@@ -1,0 +1,683 @@
+{
+ "l3_mode_guided_title": {
+  "fr": "Série guidée",
+  "es": "Serie guiada",
+  "pt": "Série Guiada",
+  "tr": "Rehberli Seri",
+  "ru": "Серия по шагам",
+  "ja": "ガイドシリーズ",
+  "th": "ชุดนำทาง"
+ },
+ "l3_mode_guided_sub": {
+  "fr": "Boulier pas à pas",
+  "es": "Ábaco paso a paso",
+  "pt": "Ábaco passo a passo",
+  "tr": "Adım adım abaküs",
+  "ru": "Абакус шаг за шагом",
+  "ja": "そろばんで1つずつ",
+  "th": "ลูกคิดทีละขั้น"
+ },
+ "l3_mode_semi_title": {
+  "fr": "Semi-Anzan",
+  "es": "Semi-Anzan",
+  "pt": "Semi-Anzan",
+  "tr": "Yarı Anzan",
+  "ru": "Полу-Анзан",
+  "ja": "セミ暗算",
+  "th": "กึ่งอันซัง"
+ },
+ "l3_mode_semi_sub": {
+  "fr": "Regarde le boulier",
+  "es": "Mira el ábaco",
+  "pt": "Veja o ábaco",
+  "tr": "Abaküsü izle",
+  "ru": "Смотри на абакус",
+  "ja": "そろばんを見よう",
+  "th": "ดูลูกคิด"
+ },
+ "l3_mode_full_title": {
+  "fr": "Anzan complet",
+  "es": "Anzan completo",
+  "pt": "Anzan Completo",
+  "tr": "Tam Anzan",
+  "ru": "Полный Анзан",
+  "ja": "フル暗算",
+  "th": "อันซังเต็มรูปแบบ"
+ },
+ "l3_mode_full_sub": {
+  "fr": "Calcul mental pur",
+  "es": "Cálculo mental puro",
+  "pt": "Só cálculo mental",
+  "tr": "Saf zihin hesabı",
+  "ru": "Счёт только в уме",
+  "ja": "頭の中だけで計算",
+  "th": "คิดเลขในใจล้วน ๆ"
+ },
+ "l3_mode_speed_title": {
+  "fr": "Sprint de calcul",
+  "es": "Práctica veloz",
+  "pt": "Treino Veloz",
+  "tr": "Hız Antrenmanı",
+  "ru": "Скоростной счёт",
+  "ja": "スピードドリル",
+  "th": "ฝึกความเร็ว"
+ },
+ "l3_mode_speed_sub": {
+  "fr": "Défie le chrono",
+  "es": "Contra el reloj",
+  "pt": "Contra o relógio",
+  "tr": "Zamanla yarış",
+  "ru": "Гонка со временем",
+  "ja": "時間ときょうそう",
+  "th": "แข่งกับเวลา"
+ },
+ "l3_mode_flash_title": {
+  "fr": "Défi Flash",
+  "es": "Reto Flash",
+  "pt": "Desafio Flash",
+  "tr": "Flaş Meydan Okuma",
+  "ru": "Флеш-вызов",
+  "ja": "フラッシュチャレンジ",
+  "th": "ชาเลนจ์แฟลช"
+ },
+ "l3_mode_flash_sub": {
+  "fr": "Nombres en rafale",
+  "es": "Números relámpago",
+  "pt": "Números em rajada",
+  "tr": "Hızlı sayılar",
+  "ru": "Числа-вспышки",
+  "ja": "どんどん出る数",
+  "th": "เลขแฟลชรัว ๆ"
+ },
+ "l3_diff_starter": {
+  "fr": "Débutant",
+  "es": "Principiante",
+  "pt": "Iniciante",
+  "tr": "Başlangıç",
+  "ru": "Новичок",
+  "ja": "入門",
+  "th": "เริ่มต้น"
+ },
+ "l3_diff_explorer": {
+  "fr": "Explorateur",
+  "es": "Explorador",
+  "pt": "Explorador",
+  "tr": "Kaşif",
+  "ru": "Исследователь",
+  "ja": "たんけんか",
+  "th": "นักสำรวจ"
+ },
+ "l3_diff_expert": {
+  "fr": "Expert",
+  "es": "Experto",
+  "pt": "Especialista",
+  "tr": "Uzman",
+  "ru": "Эксперт",
+  "ja": "上級",
+  "th": "ผู้เชี่ยวชาญ"
+ },
+ "l3_diff_master": {
+  "fr": "Maître",
+  "es": "Maestro",
+  "pt": "Mestre",
+  "tr": "Usta",
+  "ru": "Мастер",
+  "ja": "名人",
+  "th": "ปรมาจารย์"
+ },
+ "l3_speed_slow": {
+  "fr": "Lent",
+  "es": "Lenta",
+  "pt": "Devagar",
+  "tr": "Yavaş",
+  "ru": "Медленно",
+  "ja": "ゆっくり",
+  "th": "ช้า"
+ },
+ "l3_speed_normal": {
+  "fr": "Normal",
+  "es": "Normal",
+  "pt": "Normal",
+  "tr": "Normal",
+  "ru": "Обычно",
+  "ja": "ふつう",
+  "th": "ปกติ"
+ },
+ "l3_speed_fast": {
+  "fr": "Rapide",
+  "es": "Rápida",
+  "pt": "Rápido",
+  "tr": "Hızlı",
+  "ru": "Быстро",
+  "ja": "はやい",
+  "th": "เร็ว"
+ },
+ "l3_speed_blazing": {
+  "fr": "Éclair",
+  "es": "Turbo",
+  "pt": "Turbo",
+  "tr": "Çok Hızlı",
+  "ru": "Молния",
+  "ja": "超はやい",
+  "th": "เร็วจี๋"
+ },
+ "l3_flash_desc": {
+  "fr": "%1$s · %2$s · %3$s",
+  "es": "%1$s · %2$s · %3$s",
+  "pt": "%1$s · %2$s · %3$s",
+  "tr": "%1$s · %2$s · %3$s",
+  "ru": "%1$s · %2$s · %3$s",
+  "ja": "%1$s · %2$s · %3$s",
+  "th": "%1$s · %2$s · %3$s"
+ },
+ "l3_n_digit": {
+  "plural": {
+   "fr": {
+    "one": "%1$d chiffre",
+    "many": "%1$d chiffres",
+    "other": "%1$d chiffres"
+   },
+   "es": {
+    "one": "%1$d dígito",
+    "many": "%1$d dígitos",
+    "other": "%1$d dígitos"
+   },
+   "pt": {
+    "one": "%1$d dígito",
+    "many": "%1$d dígitos",
+    "other": "%1$d dígitos"
+   },
+   "tr": {
+    "one": "%1$d basamaklı",
+    "other": "%1$d basamaklı"
+   },
+   "ru": {
+    "one": "%1$d цифра",
+    "few": "%1$d цифры",
+    "many": "%1$d цифр",
+    "other": "%1$d цифры"
+   },
+   "ja": {
+    "other": "%1$d桁"
+   },
+   "th": {
+    "other": "%1$d หลัก"
+   }
+  }
+ },
+ "l3_play_again": {
+  "fr": "Rejouer 🔄",
+  "es": "Jugar otra vez 🔄",
+  "pt": "Jogar de Novo 🔄",
+  "tr": "Tekrar Oyna 🔄",
+  "ru": "Играть снова 🔄",
+  "ja": "もう一度あそぶ 🔄",
+  "th": "เล่นอีกครั้ง 🔄"
+ },
+ "l3_cfg_terms": {
+  "fr": "📊 Nombres",
+  "es": "📊 Números",
+  "pt": "📊 Termos",
+  "tr": "📊 Sayılar",
+  "ru": "📊 Числа",
+  "ja": "📊 個数",
+  "th": "📊 จำนวนเลข"
+ },
+ "l3_cfg_digits": {
+  "fr": "🔢 Chiffres",
+  "es": "🔢 Dígitos",
+  "pt": "🔢 Dígitos",
+  "tr": "🔢 Basamak",
+  "ru": "🔢 Цифры",
+  "ja": "🔢 桁数",
+  "th": "🔢 หลัก"
+ },
+ "l3_cfg_speed": {
+  "fr": "⚡ Vitesse",
+  "es": "⚡ Velocidad",
+  "pt": "⚡ Velocidade",
+  "tr": "⚡ Hız",
+  "ru": "⚡ Скорость",
+  "ja": "⚡ 速さ",
+  "th": "⚡ ความเร็ว"
+ },
+ "l3_cfg_time": {
+  "fr": "⏱ Temps",
+  "es": "⏱ Tiempo",
+  "pt": "⏱ Tempo",
+  "tr": "⏱ Süre",
+  "ru": "⏱ Время",
+  "ja": "⏱ 時間",
+  "th": "⏱ เวลา"
+ },
+ "l3_cfg_auto": {
+  "fr": "🧮 Boulier auto",
+  "es": "🧮 Ábaco automático",
+  "pt": "🧮 Ábaco Automático",
+  "tr": "🧮 Otomatik Abaküs",
+  "ru": "🧮 Авто-абакус",
+  "ja": "🧮 自動そろばん",
+  "th": "🧮 ลูกคิดอัตโนมัติ"
+ },
+ "l3_cfg_auto_on": {
+  "fr": "Le boulier bouge tout seul",
+  "es": "El ábaco se mueve solo",
+  "pt": "O ábaco muda sozinho",
+  "tr": "Abaküs kendiliğinden değişir",
+  "ru": "Абакус двигается сам",
+  "ja": "そろばんが自動で動くよ",
+  "th": "ลูกคิดเลื่อนให้เอง"
+ },
+ "l3_cfg_auto_off": {
+  "fr": "Tu bouges les boules toi-même",
+  "es": "Mueves las cuentas tú",
+  "pt": "Você mexe nas contas",
+  "tr": "Boncukları sen oynatırsın",
+  "ru": "Бусины двигаешь ты сам",
+  "ja": "自分で珠を動かすよ",
+  "th": "เลื่อนลูกด้วยตัวเอง"
+ },
+ "l3_start": {
+  "fr": "C'est parti ! 🚀",
+  "es": "¡Empezar! 🚀",
+  "pt": "Começar! 🚀",
+  "tr": "Başla! 🚀",
+  "ru": "Старт! 🚀",
+  "ja": "スタート! 🚀",
+  "th": "เริ่มเลย! 🚀"
+ },
+ "l3_secs": {
+  "fr": "%1$d s",
+  "es": "%1$d s",
+  "pt": "%1$d s",
+  "tr": "%1$d sn",
+  "ru": "%1$d с",
+  "ja": "%1$d秒",
+  "th": "%1$d วิ"
+ },
+ "l3_desc_guided": {
+  "fr": "Chaque nombre apparaît un par un.\nSuis-le sur le boulier !",
+  "es": "Cada número aparece uno por uno.\n¡Síguelo en el ábaco!",
+  "pt": "Cada número aparece um por vez.\nAcompanhe no ábaco!",
+  "tr": "Sayılar tek tek gelir.\nAbaküste sen de yap!",
+  "ru": "Числа появляются по одному.\nСчитай на абакусе!",
+  "ja": "数が1つずつ出るよ。\nそろばんで動かしてみよう!",
+  "th": "เลขจะมาทีละตัว\nทำตามบนลูกคิดเลย!"
+ },
+ "l3_desc_semi": {
+  "fr": "Regarde le boulier bouger tout seul.\nCalcule le total dans ta tête !",
+  "es": "Mira cómo el ábaco se mueve solo.\n¡Calcula el total en tu mente!",
+  "pt": "Veja o ábaco mudar sozinho.\nCalcule o total de cabeça!",
+  "tr": "Abaküsün kendiliğinden değişmesini izle.\nToplamı aklından hesapla!",
+  "ru": "Абакус двигается сам.\nСчитай сумму в уме!",
+  "ja": "そろばんが自動で動くよ。\n合計を頭の中で計算しよう!",
+  "th": "ดูลูกคิดเลื่อนเอง\nแล้วคิดผลรวมในใจ!"
+ },
+ "l3_desc_full": {
+  "fr": "Les nombres clignotent à l'écran.\nPas de boulier — calcul mental pur !",
+  "es": "Los números destellan en pantalla.\nSin ábaco: ¡cálculo mental puro!",
+  "pt": "Os números piscam na tela.\nSem ábaco, só cálculo mental!",
+  "tr": "Sayılar ekranda çakar.\nAbaküs yok, saf zihin hesabı!",
+  "ru": "Числа мелькают на экране.\nБез абакуса — только в уме!",
+  "ja": "画面に数がパッと出るよ。\nそろばんなし。暗算だけ!",
+  "th": "เลขแฟลชขึ้นบนหน้าจอ\nไม่มีลูกคิด คิดในใจล้วน ๆ!"
+ },
+ "l3_desc_speed": {
+  "fr": "Les calculs apparaissent un par un.\nRéponds le plus vite possible !",
+  "es": "Las operaciones aparecen una a una.\n¡Responde lo más rápido que puedas!",
+  "pt": "Os cálculos aparecem um por vez.\nResponda o mais rápido que puder!",
+  "tr": "İşlemler tek tek gelir.\nOlabildiğince hızlı cevapla!",
+  "ru": "Примеры появляются по одному.\nОтвечай как можно быстрее!",
+  "ja": "式が1つずつ出るよ。\nできるだけ速く答えよう!",
+  "th": "โจทย์มาทีละข้อ\nตอบให้เร็วที่สุดเลย!"
+ },
+ "l3_desc_flash": {
+  "fr": "Des nombres éclair en rafale.\nConcentre-toi et compte !",
+  "es": "Números que destellan a toda velocidad.\n¡Concéntrate y cuenta!",
+  "pt": "Números piscando bem rápido.\nConcentre-se e conte!",
+  "tr": "Sayılar hızla çakar.\nOdaklan ve say!",
+  "ru": "Числа вспыхивают одно за другим.\nСосредоточься и считай!",
+  "ja": "数がつぎつぎパッと出るよ。\n集中して数えよう!",
+  "th": "เลขแฟลชรัว ๆ\nตั้งใจแล้วนับให้ดี!"
+ },
+ "l3_guided_all_done": {
+  "fr": "%1$d étapes terminées !\nEntre ton total →",
+  "es": "¡Los %1$d pasos listos!\nEscribe tu total →",
+  "pt": "Todos os %1$d passos feitos!\nDigite seu total →",
+  "tr": "%1$d adımın hepsi bitti!\nToplamı yaz →",
+  "ru": "Шагов пройдено: %1$d!\nВведи итог →",
+  "ja": "%1$dステップ、ぜんぶできた!\n合計を入れてね →",
+  "th": "ครบทั้ง %1$d ขั้นแล้ว!\nกรอกผลรวมเลย →"
+ },
+ "l3_whats_your_total": {
+  "fr": "Quel est ton total ? 🤔",
+  "es": "¿Cuál es tu total? 🤔",
+  "pt": "Qual é o seu total? 🤔",
+  "tr": "Toplamın kaç? 🤔",
+  "ru": "Сколько получилось? 🤔",
+  "ja": "合計はいくつ? 🤔",
+  "th": "ผลรวมเท่าไร? 🤔"
+ },
+ "l3_guided_win": {
+  "fr": "Super travail ! Tu progresses au boulier ! 🚀",
+  "es": "¡Qué buen trabajo! ¡Tu habilidad con el ábaco crece! 🚀",
+  "pt": "Incrível! Você está cada vez melhor no ábaco! 🚀",
+  "tr": "Harika iş! Abaküs becerilerin gelişiyor! 🚀",
+  "ru": "Отличная работа! Ты всё лучше владеешь абакусом! 🚀",
+  "ja": "すばらしい! そろばんの力がぐんぐん伸びているよ! 🚀",
+  "th": "เก่งมาก! ฝีมือลูกคิดพัฒนาขึ้นเรื่อย ๆ! 🚀"
+ },
+ "l3_guided_lose": {
+  "fr": "Continue de t'entraîner ! Tu progresses à chaque fois ! 💫",
+  "es": "¡Sigue practicando! ¡Mejoras cada vez! 💫",
+  "pt": "Continue praticando! Você melhora a cada vez! 💫",
+  "tr": "Çalışmaya devam! Her seferinde daha iyi oluyorsun! 💫",
+  "ru": "Тренируйся дальше! С каждым разом выходит лучше! 💫",
+  "ja": "練習をつづけよう! 毎回うまくなっているよ! 💫",
+  "th": "ฝึกต่อไปนะ! เก่งขึ้นทุกครั้งเลย! 💫"
+ },
+ "l3_correct": {
+  "fr": "Correct ! %1$d",
+  "es": "¡Correcto! %1$d",
+  "pt": "Certo! %1$d",
+  "tr": "Doğru! %1$d",
+  "ru": "Верно! %1$d",
+  "ja": "正解! %1$d",
+  "th": "ถูกต้อง! %1$d"
+ },
+ "l3_correct_flash": {
+  "fr": "Correct ! %1$d 🔥",
+  "es": "¡Correcto! %1$d 🔥",
+  "pt": "Certo! %1$d 🔥",
+  "tr": "Doğru! %1$d 🔥",
+  "ru": "Верно! %1$d 🔥",
+  "ja": "正解! %1$d 🔥",
+  "th": "ถูกต้อง! %1$d 🔥"
+ },
+ "l3_g_watch_start": {
+  "fr": "Regarde le boulier partir de %1$d !",
+  "es": "¡Mira cómo el ábaco empieza en %1$d!",
+  "pt": "Veja o ábaco começar em %1$d!",
+  "tr": "Abaküsün %1$d ile başlamasını izle!",
+  "ru": "Смотри: абакус начинает с %1$d!",
+  "ja": "%1$dからスタート! そろばんを見てね!",
+  "th": "ดูลูกคิดเริ่มที่ %1$d!"
+ },
+ "l3_g_see_updates": {
+  "fr": "Regarde le boulier bouger !",
+  "es": "¡Mira cómo cambia el ábaco!",
+  "pt": "Veja como o ábaco muda!",
+  "tr": "Abaküsün nasıl değiştiğine bak!",
+  "ru": "Смотри, как меняется абакус!",
+  "ja": "そろばんの動きを見てね!",
+  "th": "ดูลูกคิดเลื่อนสิ!"
+ },
+ "l3_g_set_to": {
+  "fr": "Affiche %1$d sur ton boulier",
+  "es": "Pon tu ábaco en %1$d",
+  "pt": "Forme %1$d no seu ábaco",
+  "tr": "Abaküsünü %1$d yap",
+  "ru": "Набери на абакусе %1$d",
+  "ja": "そろばんを%1$dにセットしよう",
+  "th": "ตั้งลูกคิดเป็น %1$d"
+ },
+ "l3_g_add": {
+  "fr": "Ajoute %1$d sur ton boulier",
+  "es": "Suma %1$d en tu ábaco",
+  "pt": "Some %1$d no seu ábaco",
+  "tr": "Abaküste %1$d ekle",
+  "ru": "Прибавь %1$d на абакусе",
+  "ja": "そろばんで%1$dをたそう",
+  "th": "บวก %1$d บนลูกคิด"
+ },
+ "l3_g_subtract": {
+  "fr": "Soustrais %1$d sur ton boulier",
+  "es": "Resta %1$d en tu ábaco",
+  "pt": "Subtraia %1$d do seu ábaco",
+  "tr": "Abaküsten %1$d çıkar",
+  "ru": "Вычти %1$d на абакусе",
+  "ja": "そろばんから%1$dをひこう",
+  "th": "ลบ %1$d ออกจากลูกคิด"
+ },
+ "l3_g_see_result": {
+  "fr": "Voir le résultat ! 🎉",
+  "es": "¡Ver resultado! 🎉",
+  "pt": "Ver Resultado! 🎉",
+  "tr": "Sonucu Gör! 🎉",
+  "ru": "Результат! 🎉",
+  "ja": "結果を見る! 🎉",
+  "th": "ดูผลลัพธ์! 🎉"
+ },
+ "l3_g_enter_answer": {
+  "fr": "Je réponds ! →",
+  "es": "¡Escribir mi respuesta! →",
+  "pt": "Digitar Resposta! →",
+  "tr": "Cevabımı Yaz! →",
+  "ru": "Ввести ответ! →",
+  "ja": "答えを入れる! →",
+  "th": "กรอกคำตอบ! →"
+ },
+ "l3_g_next_step": {
+  "fr": "Étape suivante →",
+  "es": "Siguiente paso →",
+  "pt": "Próximo Passo →",
+  "tr": "Sonraki Adım →",
+  "ru": "Следующий шаг →",
+  "ja": "次のステップ →",
+  "th": "ขั้นถัดไป →"
+ },
+ "l3_whats_total": {
+  "fr": "Quel est le total ? 🤔",
+  "es": "¿Cuál es el total? 🤔",
+  "pt": "Qual é o total? 🤔",
+  "tr": "Toplam kaç? 🤔",
+  "ru": "Какой итог? 🤔",
+  "ja": "合計はいくつ? 🤔",
+  "th": "ผลรวมเท่าไร? 🤔"
+ },
+ "l3_anzan_win": {
+  "fr": "Calcul mental brillant ! Continue comme ça ! 🧠✨",
+  "es": "¡Qué cálculo mental tan genial! ¡Sigue así! 🧠✨",
+  "pt": "Cálculo mental brilhante! Continue assim! 🧠✨",
+  "tr": "Muhteşem zihin hesabı! Böyle devam! 🧠✨",
+  "ru": "Блестящий счёт в уме! Так держать! 🧠✨",
+  "ja": "すごい暗算だね! その調子! 🧠✨",
+  "th": "คิดในใจเก่งมาก! เยี่ยมเลย! 🧠✨"
+ },
+ "l3_anzan_lose": {
+  "fr": "Bel essai ! Le calcul mental demande de l'entraînement — tu vas y arriver ! 💪",
+  "es": "¡Buen intento! El cálculo mental se practica, ¡y tú lo lograrás! 💪",
+  "pt": "Boa tentativa! Cálculo mental pede prática, você consegue! 💪",
+  "tr": "Güzel deneme! Zihin hesabı pratik ister, başaracaksın! 💪",
+  "ru": "Хорошая попытка! Счёт в уме требует практики — всё получится! 💪",
+  "ja": "よくがんばったね! 暗算は練習すればできるよ! 💪",
+  "th": "พยายามดีมาก! คิดในใจต้องฝึก เดี๋ยวก็ทำได้! 💪"
+ },
+ "l3_tap_to_play": {
+  "fr": "Touche pour jouer !",
+  "es": "¡Toca para jugar!",
+  "pt": "Toque para Jogar!",
+  "tr": "Oynamak için dokun!",
+  "ru": "Нажми, чтобы играть!",
+  "ja": "タップしてスタート!",
+  "th": "แตะเพื่อเล่น!"
+ },
+ "l3_flash_title": {
+  "fr": "Flash %1$s",
+  "es": "Flash %1$s",
+  "pt": "Flash %1$s",
+  "tr": "%1$s Flaşı",
+  "ru": "Флеш: %1$s",
+  "ja": "%1$sフラッシュ",
+  "th": "แฟลช %1$s"
+ },
+ "l3_whats_total_flash": {
+  "fr": "Quel est le total ? 🔥",
+  "es": "¿Cuál es el total? 🔥",
+  "pt": "Qual é o total? 🔥",
+  "tr": "Toplam kaç? 🔥",
+  "ru": "Какой итог? 🔥",
+  "ja": "合計はいくつ? 🔥",
+  "th": "ผลรวมเท่าไร? 🔥"
+ },
+ "l3_flash_win": {
+  "fr": "Incroyable ! Tu maîtrises le Flash ! 🚀",
+  "es": "¡Increíble! ¡Dominas el flash! 🚀",
+  "pt": "Incrível! Você dominou o Flash! 🚀",
+  "tr": "İnanılmaz! Flaş ustalığının kilidi açıldı! 🚀",
+  "ru": "Невероятно! Флеш покорён! 🚀",
+  "ja": "すごい! フラッシュの達人になったね! 🚀",
+  "th": "สุดยอด! เก่งแฟลชแล้ว! 🚀"
+ },
+ "l3_flash_lose": {
+  "fr": "Presque ! Continue — tu vas de plus en plus vite ! ⚡",
+  "es": "¡Casi! Sigue así: ¡cada vez eres más rápido! ⚡",
+  "pt": "Quase! Continue no Flash, você está mais rápido! ⚡",
+  "tr": "Ramak kaldı! Flaşa devam, hızlanıyorsun! ⚡",
+  "ru": "Почти! Играй дальше — ты становишься быстрее! ⚡",
+  "ja": "おしい! どんどん速くなっているよ! ⚡",
+  "th": "เกือบถูกแล้ว! เล่นแฟลชต่อ เร็วขึ้นทุกครั้ง! ⚡"
+ },
+ "l3_drill_correct": {
+  "fr": "Bonnes réponses : %1$d",
+  "es": "¡%1$d correctas!",
+  "pt": "%1$d Certas!",
+  "tr": "%1$d Doğru!",
+  "ru": "Верно: %1$d!",
+  "ja": "%1$d問正解!",
+  "th": "ถูก %1$d ข้อ!"
+ },
+ "l3_get_ready": {
+  "fr": "Prépare-toi !",
+  "es": "¡Prepárate!",
+  "pt": "Prepare-se!",
+  "tr": "Hazır ol!",
+  "ru": "Приготовься!",
+  "ja": "じゅんびしてね!",
+  "th": "เตรียมตัวให้พร้อม!"
+ },
+ "l3_done": {
+  "fr": "Terminé ✓",
+  "es": "Listo ✓",
+  "pt": "Pronto ✓",
+  "tr": "Bitti ✓",
+  "ru": "Готово ✓",
+  "ja": "できた ✓",
+  "th": "เสร็จแล้ว ✓"
+ },
+ "l3_your_answer": {
+  "fr": "Ta réponse",
+  "es": "Tu respuesta",
+  "pt": "Sua Resposta",
+  "tr": "Cevabın",
+  "ru": "Твой ответ",
+  "ja": "きみの答え",
+  "th": "คำตอบของคุณ"
+ },
+ "l3_correct_answer": {
+  "fr": "Bonne réponse",
+  "es": "Respuesta correcta",
+  "pt": "Resposta Certa",
+  "tr": "Doğru Cevap",
+  "ru": "Верный ответ",
+  "ja": "正しい答え",
+  "th": "คำตอบที่ถูก"
+ },
+ "l3_n_numbers": {
+  "plural": {
+   "fr": {
+    "one": "%1$d nombre",
+    "many": "%1$d nombres",
+    "other": "%1$d nombres"
+   },
+   "es": {
+    "one": "%1$d número",
+    "many": "%1$d números",
+    "other": "%1$d números"
+   },
+   "pt": {
+    "one": "%1$d número",
+    "many": "%1$d números",
+    "other": "%1$d números"
+   },
+   "tr": {
+    "one": "%1$d sayı",
+    "other": "%1$d sayı"
+   },
+   "ru": {
+    "one": "%1$d число",
+    "few": "%1$d числа",
+    "many": "%1$d чисел",
+    "other": "%1$d числа"
+   },
+   "ja": {
+    "other": "%1$d個の数"
+   },
+   "th": {
+    "other": "%1$d เลข"
+   }
+  }
+ },
+ "l3_drill_solved": {
+  "plural": {
+   "fr": {
+    "one": "En %1$d s, tu as résolu %2$d calcul ! ⚡",
+    "many": "En %1$d s, tu as résolu %2$d calculs ! ⚡",
+    "other": "En %1$d s, tu as résolu %2$d calculs ! ⚡"
+   },
+   "es": {
+    "one": "¡En %1$d s resolviste %2$d problema! ⚡",
+    "many": "¡En %1$d s resolviste %2$d problemas! ⚡",
+    "other": "¡En %1$d s resolviste %2$d problemas! ⚡"
+   },
+   "pt": {
+    "one": "Em %1$d s você resolveu %2$d cálculo! ⚡",
+    "many": "Em %1$d s você resolveu %2$d cálculos! ⚡",
+    "other": "Em %1$d s você resolveu %2$d cálculos! ⚡"
+   },
+   "tr": {
+    "one": "%1$d sn içinde %2$d işlem çözdün! ⚡",
+    "other": "%1$d sn içinde %2$d işlem çözdün! ⚡"
+   },
+   "ru": {
+    "one": "За %1$d с решён %2$d пример! ⚡",
+    "few": "За %1$d с решено %2$d примера! ⚡",
+    "many": "За %1$d с решено %2$d примеров! ⚡",
+    "other": "За %1$d с решено %2$d примера! ⚡"
+   },
+   "ja": {
+    "other": "%1$d秒で%2$d問とけたよ! ⚡"
+   },
+   "th": {
+    "other": "ใน %1$d วิ ทำได้ %2$d ข้อ! ⚡"
+   }
+  }
+ },
+ "l3_unit_sec": {
+  "fr": "s",
+  "es": "seg",
+  "pt": "seg",
+  "tr": "sn",
+  "ru": "сек",
+  "ja": "秒",
+  "th": "วินาที"
+ },
+ "l3_unit_pts": {
+  "fr": "pts",
+  "es": "pts",
+  "pt": "pts",
+  "tr": "puan",
+  "ru": "очк.",
+  "ja": "点",
+  "th": "คะแนน"
+ },
+ "purchase_then": {
+  "fr": "puis",
+  "es": "luego",
+  "pt": "depois",
+  "tr": "ardından",
+  "ru": "затем",
+  "ja": "その後",
+  "th": "จากนั้น"
+ }
+}

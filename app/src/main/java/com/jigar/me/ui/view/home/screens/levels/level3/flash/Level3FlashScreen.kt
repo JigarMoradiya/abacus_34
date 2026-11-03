@@ -19,6 +19,9 @@ import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
 import com.jigar.me.ui.view.home.screens.levels.level3.*
 import com.jigar.me.ui.view.home.screens.levels.level3.components.*
 import com.jigar.me.ui.view.home.theme.AppDimens
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
+import com.jigar.me.ui.view.home.screens.levels.level3.l3FlashDesc
 
 // ─────────────────────────────── Picker Screen ──────────────────────────────
 
@@ -34,7 +37,7 @@ fun Level3FlashPickerScreen(
             Column(
                 modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).screenLeftEdge()
             ) {
-                ScreenTopBar(title = "Flash Challenge", onBack = onBackClick)
+                ScreenTopBar(title = stringResource(R.string.l3_mode_flash_title), onBack = onBackClick)
 
                 BoxWithConstraints(modifier = Modifier.fillMaxWidth().weight(1f)) {
                     val spacing = AppDimens.Dimens12
@@ -50,14 +53,14 @@ fun Level3FlashPickerScreen(
                         l3FlashDifficulties.forEachIndexed { idx, diff ->
                             AbLevelCard(
                                 emoji     = diff.emoji,
-                                title     = diff.label,
-                                label     = diff.label,
+                                title     = stringResource(diff.labelRes),
+                                label     = stringResource(diff.labelRes),
                                 accent    = diff.endColor,
                                 width     = cardW,
                                 height    = cardH,
                                 showStars = false,
-                                subtitle  = diff.desc,
-                                cta       = "Tap to Play!",
+                                subtitle  = l3FlashDesc(diff),
+                                cta       = stringResource(R.string.l3_tap_to_play),
                                 onClick   = { onSelectDifficulty(idx) },
                             )
                         }
@@ -118,15 +121,15 @@ fun Level3FlashPlayScreen(
             Column(
                 modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).screenLeftEdge()
             ) {
-                ScreenTopBar(title = "${diff.label} Flash", onBack = onBackClick)
+                ScreenTopBar(title = stringResource(R.string.l3_flash_title, stringResource(diff.labelRes)), onBack = onBackClick)
                 Spacer(Modifier.height(AppDimens.Dimens8))
 
                 // Content card — fills the room below the header
                 L3ModeCard(
                     accent   = diff.endColor,
                     emoji    = diff.emoji,
-                    title    = diff.label,
-                    subtitle = diff.desc,
+                    title    = stringResource(diff.labelRes),
+                    subtitle = l3FlashDesc(diff),
                     modifier = Modifier.weight(1f).fillMaxWidth().padding(horizontal = AppDimens.Dimens12)
                 ) {
                     AnimatedContent(
@@ -156,7 +159,7 @@ fun Level3FlashPlayScreen(
                                 )
                             }
                             is L3FlashPhase.Answering -> L3AnswerPhase(
-                                title      = "What's the total? 🔥",
+                                title      = stringResource(R.string.l3_whats_total_flash),
                                 typedValue = typedValue,
                                 onDigit    = { typedValue = (typedValue + it.toString()).take(3) },
                                 onDelete   = { if (typedValue.isNotEmpty()) typedValue = typedValue.dropLast(1) },
@@ -179,9 +182,9 @@ fun Level3FlashPlayScreen(
                     accent     = diff.endColor,
                     correct    = rp.correct,
                     emoji      = if (rp.correct) "🌟🌟🌟" else "💪",
-                    message    = if (rp.correct) "Incredible! Flash mastery unlocked! 🚀"
-                                 else "So close! Keep flashing — you're getting faster! ⚡",
-                    retryLabel = "Try Again 🔄",
+                    message    = if (rp.correct) stringResource(R.string.l3_flash_win)
+                                 else stringResource(R.string.l3_flash_lose),
+                    retryLabel = stringResource(R.string.l1_try_again),
                     onRetry    = {
                         typedValue    = ""
                         numberVisible = true
@@ -193,7 +196,7 @@ fun Level3FlashPlayScreen(
                         if (rp.correct) reviewGate.attempt(prefs) { onFinished() } else onFinished()
                     },
                 ) {
-                    L3AnswerTitle(rp.correct, rp.expected, rp.userAnswer, correctText = "Correct! ${rp.expected} 🔥")
+                    L3AnswerTitle(rp.correct, rp.expected, rp.userAnswer, correctText = stringResource(R.string.l3_correct_flash, rp.expected))
                 }
             }
 

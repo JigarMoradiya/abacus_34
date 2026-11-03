@@ -51,6 +51,10 @@ def classify(text):
             continue
         code = re.sub(r'//.*$', '', line)
         strs = [m.group(1) for m in STR.finditer(code) if visible(m.group(1))]
+        # short lowercase words ("sec", "pts") given straight to a text slot are visible too
+        for m in SLOT.finditer(code):
+            v = m.group(1)
+            if re.search(r'[A-Za-z]{2,}', v) and not re.match(r'^(https?:|#?[0-9A-Fa-f]{6,8}$|[a-z]+\.[A-Za-z.]+$)', v) and v not in strs and '${' not in v and not (m.group(0).lstrip().startswith('label') and re.match(r'^[a-z][A-Za-z0-9_-]*$', v)): strs.append(v)
         # decide the scope this line belongs to
         top = stack[-1] if stack else 'file'
         if open_static > 0:
@@ -96,6 +100,7 @@ def classify(text):
             if stack: stack.pop()
     return out
 
+SLOT = re.compile(r'(?:\bText\(|\b(?:text|label|title|subtitle|message|placeholder|contentDescription|description|cta|retryLabel|correctText)\s*=\s*)\s*"((?:[^"\\\n]|\\.)*)"')
 DEBUG_FILE = re.compile(r'(Preview|Gallery|AbDebug)')
 
 def module_files(rel, mods):

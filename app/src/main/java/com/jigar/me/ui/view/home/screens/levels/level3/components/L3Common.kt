@@ -48,6 +48,8 @@ import com.jigar.me.ui.view.ab.abFixedStyle
 import com.jigar.me.ui.view.ab.abPt
 import com.jigar.me.ui.view.ab.abScreenLeftEdge
 import com.jigar.me.ui.view.home.theme.AppDimens
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 // Shared pieces of the restyled Level 3 and Level 4 screens (the iOS `DimensionsUtils` / `abFont` helpers, the screen header,
 // the hero-panel card and the result popup). The Level 4 screens import these as well.
@@ -208,7 +210,7 @@ internal fun L3Countdown(n: Int, digitSize: Float) {
             color = Color.White,
             textAlign = TextAlign.Center,
         )
-        Text("Get ready!", style = abFont(20f, FontWeight.Medium).abOnPanel(), color = Color.White)
+        Text(stringResource(R.string.l3_get_ready), style = abFont(20f, FontWeight.Medium).abOnPanel(), color = Color.White)
     }
 }
 
@@ -336,7 +338,7 @@ internal fun L3ResultPopup(
                     Spacer(Modifier.height(AppDimens.Dimens4))
                     Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
                         L3ResultBtn(retryLabel, filled = false, onClick = onRetry)
-                        L3ResultBtn("Done ✓", filled = true, onClick = onDone)
+                        L3ResultBtn(stringResource(R.string.l3_done), filled = true, onClick = onDone)
                     }
                 }
             }
@@ -356,9 +358,9 @@ internal fun L3AnswerTitle(correct: Boolean, expected: Int, userAnswer: Int, cor
         )
     } else {
         Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12), verticalAlignment = Alignment.CenterVertically) {
-            L3AnswerBox("Your Answer", "$userAnswer", Color(0xFFFFCDD2))
+            L3AnswerBox(stringResource(R.string.l3_your_answer), "$userAnswer", Color(0xFFFFCDD2))
             Text("→", style = abFont(24f, FontWeight.Black).abOnPanel(), color = Color.White)
-            L3AnswerBox("Correct Answer", "$expected", Color(0xFFB9F6CA))
+            L3AnswerBox(stringResource(R.string.l3_correct_answer), "$expected", Color(0xFFB9F6CA))
         }
     }
 }

@@ -470,7 +470,7 @@ private fun PurchaseKitPlanCard(
                         if (trialDays > 0) {
                             // a store free trial: what it costs once the trial is over
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                Text("then", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = ink)
+                                Text(stringResource(R.string.purchase_then), style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = ink)
                                 Text(
                                     plan.price ?: "", Modifier.padding(start = AppDimens.Dimens4),
                                     style = AbTypography.fixed(16f * k, FontWeight.ExtraBold), color = colors.brandPrimary,

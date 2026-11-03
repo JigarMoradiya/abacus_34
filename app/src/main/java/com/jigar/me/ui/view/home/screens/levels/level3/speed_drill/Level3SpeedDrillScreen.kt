@@ -36,6 +36,9 @@ import com.jigar.me.ui.view.home.common_ui.sheets.rememberReviewGateController
 import com.jigar.me.ui.view.home.screens.levels.level3.*
 import com.jigar.me.ui.view.home.screens.levels.level3.components.*
 import com.jigar.me.ui.view.home.theme.AppDimens
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.pluralStringResource
+import com.jigar.me.R
 
 private sealed class L3DrillPhase {
     data class Countdown(val n: Int)     : L3DrillPhase()
@@ -112,7 +115,7 @@ fun Level3SpeedDrillScreen(
                         .weight(0.44f)
                         .padding(bottom = AppDimens.Dimens12, end = AppDimens.Dimens6)
                 ) {
-                    ScreenTopBar(title = mode.title, onBack = onBackClick)
+                    ScreenTopBar(title = stringResource(mode.titleRes), onBack = onBackClick)
                     Spacer(Modifier.height(AppDimens.Dimens8))
 
                     Box(
@@ -131,11 +134,11 @@ fun Level3SpeedDrillScreen(
                                     horizontalAlignment = Alignment.CenterHorizontally,
                                     verticalArrangement = Arrangement.spacedBy((-6).dp)
                                 ) {
-                                    Text(mode.title,
+                                    Text(stringResource(mode.titleRes),
                                         style     = abFont(13f, FontWeight.Black),
                                         color     = Color.White,
                                         textAlign = TextAlign.Center)
-                                    Text(mode.subtitle,
+                                    Text(stringResource(mode.subtitleRes),
                                         style     = abFont(11f),
                                         color     = Color.White.copy(alpha = 0.95f),
                                         textAlign = TextAlign.Center)
@@ -168,7 +171,7 @@ fun Level3SpeedDrillScreen(
                                         Text("$timeLeft",
                                             style = abFont(24f, FontWeight.Black),
                                             color = Color.White)
-                                        Text("sec",
+                                        Text(stringResource(R.string.l3_unit_sec),
                                             style = abFont(10f),
                                             color = Color.White.copy(alpha = 0.90f))
                                     }
@@ -181,7 +184,7 @@ fun Level3SpeedDrillScreen(
                                     Text("$score",
                                         style = abFont(30f, FontWeight.Black),
                                         color = Color.White)
-                                    Text("pts",
+                                    Text(stringResource(R.string.l3_unit_pts),
                                         style = abFont(11f),
                                         color = Color.White.copy(alpha = 0.90f))
                                 }
@@ -275,8 +278,8 @@ fun Level3SpeedDrillScreen(
                         rp.score >= 1  -> "🌟"
                         else           -> "💪"
                     },
-                    message    = "In ${config.timeLimitSecs}s you solved ${rp.score} problems! ⚡",
-                    retryLabel = "Play Again 🔄",
+                    message    = pluralStringResource(R.plurals.l3_drill_solved, rp.score, config.timeLimitSecs, rp.score),
+                    retryLabel = stringResource(R.string.l3_play_again),
                     onRetry    = {
                         score          = 0
                         timeLeft       = config.timeLimitSecs
@@ -290,7 +293,7 @@ fun Level3SpeedDrillScreen(
                         if (rp.score >= 10) reviewGate.attempt(prefs) { onFinished() } else onFinished()
                     },
                 ) {
-                    Text("${rp.score} Correct!",
+                    Text(stringResource(R.string.l3_drill_correct, rp.score),
                         style     = abFixedStyle(abMainTitleSize(), FontWeight.Black),
                         color     = Color.White,
                         textAlign = TextAlign.Center)

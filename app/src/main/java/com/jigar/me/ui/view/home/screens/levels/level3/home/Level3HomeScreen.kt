@@ -21,6 +21,8 @@ import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeActivityViewModel
 import com.jigar.me.ui.view.home.screens.levels.level3.components.ScreenTopBar
 import com.jigar.me.ui.view.home.screens.levels.level3.components.screenLeftEdge
 import com.jigar.me.ui.view.home.theme.AppDimens
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 @Composable
 fun Level3HomeScreen(
@@ -36,7 +38,7 @@ fun Level3HomeScreen(
         Box(modifier = Modifier.fillMaxSize()) {
             AbBackground(AbWorld.Lagoon)
             Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).screenLeftEdge()) {
-                ScreenTopBar(title = "Speed & Anzan", onBack = onBackClick)
+                ScreenTopBar(title = stringResource(R.string.level_name_speed_anzan), onBack = onBackClick)
 
                 BoxWithConstraints(modifier = Modifier.fillMaxWidth().weight(1f)) {
                     val spacing = AppDimens.Dimens10
@@ -87,14 +89,14 @@ fun Level3HomeScreen(
 private fun ModeCard(mode: L3Mode, width: Dp, height: Dp, isSubscribed: Boolean, onClick: () -> Unit) {
     AbLevelCard(
         emoji     = mode.emoji,
-        title     = mode.title,
-        label     = mode.subtitle,
+        title     = stringResource(mode.titleRes),
+        label     = stringResource(mode.subtitleRes),
         accent    = mode.endColor,
         width     = width,
         height    = height,
         isLocked  = !isSubscribed,
         showStars = false,
-        subtitle  = mode.subtitle,
+        subtitle  = stringResource(mode.subtitleRes),
         onClick   = onClick,
     )
 }
