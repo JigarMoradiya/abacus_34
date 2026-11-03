@@ -647,4 +647,35 @@
     <string name="purchase_benefit_2">🧮 Practica suma, resta, multiplicación y división con &lt;strong>indicaciones inteligentes de las cuentas&lt;/strong> y la &lt;strong>fórmula en cada paso.&lt;/strong></string>
     <string name="purchase_benefit_3">🎯 Prepárate para concursos de matemáticas, UCMAS y exámenes de ábaco con &lt;strong>práctica al estilo del examen real.&lt;/strong></string>
     <string name="purchase_benefit_4">📊 &lt;strong>Sigue el progreso de tu hijo&lt;/strong>, su velocidad y su precisión con informes detallados.</string>
+    <!-- m9_exam -->
+    <string name="Addition">Suma</string>
+    <string name="Subtraction">Resta</string>
+    <string name="Multiplication">Multiplicación</string>
+    <string name="Division">División</string>
+    <string name="leave_exam_alert">Salir del examen</string>
+    <string name="leave_exam_msg">¿Seguro que quieres salir del examen sin terminarlo?</string>
+    <string name="continue_working_internet">Ya hay internet, puedes continuar</string>
+    <string name="no_working_internet">Vale, lo revisaré, cerrar</string>
+    <string name="no_please_continue">No, continuar</string>
+    <string name="child_level">Elige el nivel del examen según la capacidad del niño</string>
+    <string name="TapCorrectAns">Toca la respuesta correcta</string>
+    <string name="let_s_start">¡Empecemos!</string>
+    <string name="please_select_at_least_one_checkbox">Elige al menos una opción</string>
+    <string name="exercise_login_subtitle">Inicia sesión para guardar tus resultados y revisarlos cuando quieras</string>
+    <string name="select_exam_difficulty">Elige la dificultad</string>
+    <string name="select_exam_types">Elige los tipos de cálculo</string>
+    <string name="no_internet_close_notes">Si cierras esta pantalla ahora, tu resultado no se guardará y no podrás verlo después en el historial.</string>
+    <string name="still_no_internet">Todavía no hay conexión a internet.</string>
+    <string name="exam_time_label">Tiempo: %1$s</string>
+    <string name="exam_question_number">Pregunta %1$d</string>
+    <string name="time_hms">%1$02d h : %2$02d min : %3$02d s</string>
+    <string name="time_ms">%1$02d min %2$02d s</string>
+    <string name="time_m">%1$02d min</string>
+    <string name="time_s">%1$02d s</string>
+    <string name="formula_small_friend_add">Pequeño amigo (+5)</string>
+    <string name="formula_small_friend_sub">Pequeño amigo (-5)</string>
+    <string name="formula_big_friend_add">Gran amigo (+10)</string>
+    <string name="formula_big_friend_sub">Gran amigo (-10)</string>
+    <string name="formula_family_add">Combinación | Familia (+)</string>
+    <string name="formula_family_sub">Combinación | Familia (-)</string>
 </resources>

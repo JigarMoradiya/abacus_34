@@ -635,4 +635,35 @@
     <string name="purchase_benefit_2">🧮 Toplama, çıkarma, çarpma ve bölmeyi &lt;strong>akıllı boncuk yönleri&lt;/strong> ve &lt;strong>her adımda formülle&lt;/strong> çalışın.</string>
     <string name="purchase_benefit_3">🎯 Matematik yarışmalarına, UCMAS\'a ve abaküs sınavlarına &lt;strong>gerçek sınav tarzı alıştırmalarla&lt;/strong> hazırlanın.</string>
     <string name="purchase_benefit_4">📊 Ayrıntılı raporlarla &lt;strong>çocuğunuzun ilerlemesini&lt;/strong>, hızını ve doğruluğunu takip edin.</string>
+    <!-- m9_exam -->
+    <string name="Addition">Toplama</string>
+    <string name="Subtraction">Çıkarma</string>
+    <string name="Multiplication">Çarpma</string>
+    <string name="Division">Bölme</string>
+    <string name="leave_exam_alert">Sınavdan çık</string>
+    <string name="leave_exam_msg">Sınavı bitirmeden çıkmak istediğine emin misin?</string>
+    <string name="continue_working_internet">İnternet çalışıyor, devam edebilirsin</string>
+    <string name="no_working_internet">Tamam, kontrol edeceğim, kapat</string>
+    <string name="no_please_continue">Hayır, devam et</string>
+    <string name="child_level">Sınav seviyesini çocuğun yeteneğine göre seçin</string>
+    <string name="TapCorrectAns">Doğru cevaba dokun</string>
+    <string name="let_s_start">Haydi başlayalım</string>
+    <string name="please_select_at_least_one_checkbox">Lütfen en az bir seçenek seçin</string>
+    <string name="exercise_login_subtitle">Sonuçlarınızı kaydetmek ve istediğiniz zaman incelemek için giriş yapın</string>
+    <string name="select_exam_difficulty">Zorluk seviyesini seç</string>
+    <string name="select_exam_types">İşlem türlerini seç</string>
+    <string name="no_internet_close_notes">Bu ekranı şimdi kapatırsan sonucun kaydedilmez ve daha sonra geçmişte göremezsin.</string>
+    <string name="still_no_internet">İnternet hâlâ çalışmıyor.</string>
+    <string name="exam_time_label">Süre: %1$s</string>
+    <string name="exam_question_number">Soru %1$d</string>
+    <string name="time_hms">%1$02d sa : %2$02d dk : %3$02d sn</string>
+    <string name="time_ms">%1$02d dk %2$02d sn</string>
+    <string name="time_m">%1$02d dk</string>
+    <string name="time_s">%1$02d sn</string>
+    <string name="formula_small_friend_add">Küçük Arkadaş (+5)</string>
+    <string name="formula_small_friend_sub">Küçük Arkadaş (-5)</string>
+    <string name="formula_big_friend_add">Büyük Arkadaş (+10)</string>
+    <string name="formula_big_friend_sub">Büyük Arkadaş (-10)</string>
+    <string name="formula_family_add">Birleşik | Aile (+)</string>
+    <string name="formula_family_sub">Birleşik | Aile (-)</string>
 </resources>

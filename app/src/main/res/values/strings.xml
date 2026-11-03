@@ -1594,4 +1594,18 @@
     <string name="purchase_benefit_2">🧮 Practice Addition, Subtraction, Multiplication, Division, with &lt;strong>smart bead directions&lt;/strong> and &lt;strong>formula on every steps.&lt;/strong></string>
     <string name="purchase_benefit_3">🎯 Prepare for math competitions, UCMAS and abacus exams with &lt;strong>real exam-style practice.&lt;/strong></string>
     <string name="purchase_benefit_4">📊 &lt;strong>Track your child\'s&lt;/strong> progress, speed and accuracy with detailed reports.</string>
+
+    <!-- Exam (M9) and shared time / formula texts -->
+    <string name="exam_time_label">Time : %1$s</string>
+    <string name="exam_question_number">Question %1$d</string>
+    <string name="time_hms">%1$02d h : %2$02d m : %3$02d s</string>
+    <string name="time_ms">%1$02d m %2$02d s</string>
+    <string name="time_m">%1$02d m</string>
+    <string name="time_s">%1$02d s</string>
+    <string name="formula_small_friend_add">Small Friend (+5)</string>
+    <string name="formula_small_friend_sub">Small Friend (-5)</string>
+    <string name="formula_big_friend_add">Big Friend (+10)</string>
+    <string name="formula_big_friend_sub">Big Friend (-10)</string>
+    <string name="formula_family_add">Combination | Family (+)</string>
+    <string name="formula_family_sub">Combination | Family (-)</string>
 </resources>

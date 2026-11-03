@@ -623,4 +623,35 @@
     <string name="purchase_benefit_2">🧮 ฝึกการบวก ลบ คูณ หาร พร้อม&lt;strong>คำแนะนำการเลื่อนลูกคิดอัจฉริยะ&lt;/strong>และ&lt;strong>สูตรในทุกขั้นตอน&lt;/strong></string>
     <string name="purchase_benefit_3">🎯 เตรียมตัวสำหรับการแข่งขันคณิตศาสตร์ UCMAS และข้อสอบลูกคิด ด้วย&lt;strong>การฝึกแบบข้อสอบจริง&lt;/strong></string>
     <string name="purchase_benefit_4">📊 &lt;strong>ติดตามความก้าวหน้าของลูก&lt;/strong> ความเร็ว และความแม่นยำ ด้วยรายงานโดยละเอียด</string>
+    <!-- m9_exam -->
+    <string name="Addition">การบวก</string>
+    <string name="Subtraction">การลบ</string>
+    <string name="Multiplication">การคูณ</string>
+    <string name="Division">การหาร</string>
+    <string name="leave_exam_alert">ออกจากการสอบ</string>
+    <string name="leave_exam_msg">แน่ใจไหมว่าจะออกจากข้อสอบโดยยังไม่เสร็จ</string>
+    <string name="continue_working_internet">อินเทอร์เน็ตกลับมาแล้ว ไปต่อได้เลย</string>
+    <string name="no_working_internet">ตกลง ฉันจะตรวจสอบ ปิดเลย</string>
+    <string name="no_please_continue">ไม่ ไปต่อ</string>
+    <string name="child_level">เลือกระดับข้อสอบให้เหมาะกับความสามารถของเด็ก</string>
+    <string name="TapCorrectAns">แตะคำตอบที่ถูกต้อง</string>
+    <string name="let_s_start">เริ่มกันเลย</string>
+    <string name="please_select_at_least_one_checkbox">โปรดเลือกอย่างน้อยหนึ่งตัวเลือก</string>
+    <string name="exercise_login_subtitle">เข้าสู่ระบบเพื่อบันทึกผลและย้อนดูได้ทุกเมื่อ</string>
+    <string name="select_exam_difficulty">เลือกระดับความยาก</string>
+    <string name="select_exam_types">เลือกประเภทการคำนวณ</string>
+    <string name="no_internet_close_notes">หากปิดหน้าจอนี้ตอนนี้ ผลของคุณจะไม่ถูกบันทึกและจะดูย้อนหลังในประวัติไม่ได้</string>
+    <string name="still_no_internet">อินเทอร์เน็ตยังใช้งานไม่ได้</string>
+    <string name="exam_time_label">เวลา: %1$s</string>
+    <string name="exam_question_number">ข้อที่ %1$d</string>
+    <string name="time_hms">%1$02d ชม. : %2$02d นาที : %3$02d วิ</string>
+    <string name="time_ms">%1$02d นาที %2$02d วิ</string>
+    <string name="time_m">%1$02d นาที</string>
+    <string name="time_s">%1$02d วิ</string>
+    <string name="formula_small_friend_add">เพื่อนเล็ก (+5)</string>
+    <string name="formula_small_friend_sub">เพื่อนเล็ก (-5)</string>
+    <string name="formula_big_friend_add">เพื่อนใหญ่ (+10)</string>
+    <string name="formula_big_friend_sub">เพื่อนใหญ่ (-10)</string>
+    <string name="formula_family_add">ผสม | ครอบครัว (+)</string>
+    <string name="formula_family_sub">ผสม | ครอบครัว (-)</string>
 </resources>

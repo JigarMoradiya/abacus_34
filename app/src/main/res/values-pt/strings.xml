@@ -647,4 +647,35 @@
     <string name="purchase_benefit_2">🧮 Pratique soma, subtração, multiplicação e divisão com &lt;strong>direções inteligentes das contas&lt;/strong> e a &lt;strong>fórmula em cada passo.&lt;/strong></string>
     <string name="purchase_benefit_3">🎯 Prepare-se para competições de matemática, UCMAS e provas de ábaco com &lt;strong>prática no estilo da prova real.&lt;/strong></string>
     <string name="purchase_benefit_4">📊 &lt;strong>Acompanhe o progresso do seu filho&lt;/strong>, a velocidade e a precisão com relatórios detalhados.</string>
+    <!-- m9_exam -->
+    <string name="Addition">Soma</string>
+    <string name="Subtraction">Subtração</string>
+    <string name="Multiplication">Multiplicação</string>
+    <string name="Division">Divisão</string>
+    <string name="leave_exam_alert">Sair da prova</string>
+    <string name="leave_exam_msg">Tem certeza que quer sair da prova sem terminar?</string>
+    <string name="continue_working_internet">A internet voltou, pode continuar</string>
+    <string name="no_working_internet">Ok, vou verificar, fechar</string>
+    <string name="no_please_continue">Não, continuar</string>
+    <string name="child_level">Escolha o nível da prova de acordo com a habilidade da criança</string>
+    <string name="TapCorrectAns">Toque na resposta certa</string>
+    <string name="let_s_start">Vamos começar!</string>
+    <string name="please_select_at_least_one_checkbox">Escolha pelo menos uma opção</string>
+    <string name="exercise_login_subtitle">Faça login para salvar seus resultados e revisá-los quando quiser</string>
+    <string name="select_exam_difficulty">Escolha a dificuldade</string>
+    <string name="select_exam_types">Escolha os tipos de conta</string>
+    <string name="no_internet_close_notes">Se você fechar esta tela agora, seu resultado não será salvo e você não poderá vê-lo depois no histórico.</string>
+    <string name="still_no_internet">A internet ainda não está funcionando.</string>
+    <string name="exam_time_label">Tempo: %1$s</string>
+    <string name="exam_question_number">Questão %1$d</string>
+    <string name="time_hms">%1$02d h : %2$02d min : %3$02d s</string>
+    <string name="time_ms">%1$02d min %2$02d s</string>
+    <string name="time_m">%1$02d min</string>
+    <string name="time_s">%1$02d s</string>
+    <string name="formula_small_friend_add">Pequeno amigo (+5)</string>
+    <string name="formula_small_friend_sub">Pequeno amigo (-5)</string>
+    <string name="formula_big_friend_add">Grande amigo (+10)</string>
+    <string name="formula_big_friend_sub">Grande amigo (-10)</string>
+    <string name="formula_family_add">Combinação | Família (+)</string>
+    <string name="formula_family_sub">Combinação | Família (-)</string>
 </resources>

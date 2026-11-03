@@ -647,4 +647,35 @@
     <string name="purchase_benefit_2">🧮 Entraînez-vous à l\'addition, la soustraction, la multiplication et la division avec des &lt;strong>indications intelligentes sur les boules&lt;/strong> et la &lt;strong>formule à chaque étape.&lt;/strong></string>
     <string name="purchase_benefit_3">🎯 Préparez les concours de maths, l\'UCMAS et les examens de boulier avec un &lt;strong>entraînement au format réel de l\'examen.&lt;/strong></string>
     <string name="purchase_benefit_4">📊 &lt;strong>Suivez les progrès de votre enfant&lt;/strong>, sa vitesse et sa précision grâce à des rapports détaillés.</string>
+    <!-- m9_exam -->
+    <string name="Addition">Addition</string>
+    <string name="Subtraction">Soustraction</string>
+    <string name="Multiplication">Multiplication</string>
+    <string name="Division">Division</string>
+    <string name="leave_exam_alert">Quitter l\'examen</string>
+    <string name="leave_exam_msg">Veux-tu vraiment quitter l\'examen sans le terminer ?</string>
+    <string name="continue_working_internet">Internet fonctionne, tu peux continuer</string>
+    <string name="no_working_internet">D\'accord, je vais vérifier, fermer</string>
+    <string name="no_please_continue">Non, continuer</string>
+    <string name="child_level">Choisissez le niveau d\'examen adapté à l\'enfant</string>
+    <string name="TapCorrectAns">Touche la bonne réponse</string>
+    <string name="let_s_start">C\'est parti !</string>
+    <string name="please_select_at_least_one_checkbox">Choisis au moins une option</string>
+    <string name="exercise_login_subtitle">Connectez-vous pour enregistrer vos résultats et les revoir à tout moment</string>
+    <string name="select_exam_difficulty">Choisir la difficulté</string>
+    <string name="select_exam_types">Choisir les types de calcul</string>
+    <string name="no_internet_close_notes">Si tu fermes cet écran maintenant, ton résultat ne sera pas enregistré et tu ne pourras pas le revoir dans l\'historique.</string>
+    <string name="still_no_internet">Internet ne fonctionne toujours pas.</string>
+    <string name="exam_time_label">Temps : %1$s</string>
+    <string name="exam_question_number">Question %1$d</string>
+    <string name="time_hms">%1$02d h : %2$02d min : %3$02d s</string>
+    <string name="time_ms">%1$02d min %2$02d s</string>
+    <string name="time_m">%1$02d min</string>
+    <string name="time_s">%1$02d s</string>
+    <string name="formula_small_friend_add">Petit ami (+5)</string>
+    <string name="formula_small_friend_sub">Petit ami (-5)</string>
+    <string name="formula_big_friend_add">Grand ami (+10)</string>
+    <string name="formula_big_friend_sub">Grand ami (-10)</string>
+    <string name="formula_family_add">Combinaison | Famille (+)</string>
+    <string name="formula_family_sub">Combinaison | Famille (-)</string>
 </resources>

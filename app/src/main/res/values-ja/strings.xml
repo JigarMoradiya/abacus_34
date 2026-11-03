@@ -623,4 +623,35 @@
     <string name="purchase_benefit_2">🧮 たし算・ひき算・かけ算・わり算を、&lt;strong>珠の動かし方のヒント&lt;/strong>と&lt;strong>各ステップの公式&lt;/strong>つきで練習できます。</string>
     <string name="purchase_benefit_3">🎯 算数コンテスト、UCMAS、そろばん検定に向けて、&lt;strong>本番形式の練習&lt;/strong>ができます。</string>
     <string name="purchase_benefit_4">📊 詳しいレポートで、&lt;strong>お子さまの成長&lt;/strong>、スピード、正確さを見守れます。</string>
+    <!-- m9_exam -->
+    <string name="Addition">たし算</string>
+    <string name="Subtraction">ひき算</string>
+    <string name="Multiplication">かけ算</string>
+    <string name="Division">わり算</string>
+    <string name="leave_exam_alert">テストを終了</string>
+    <string name="leave_exam_msg">テストを終わらせずにやめますか？</string>
+    <string name="continue_working_internet">インターネットにつながりました。つづけてね</string>
+    <string name="no_working_internet">わかった、確認する（閉じる）</string>
+    <string name="no_please_continue">いいえ、つづける</string>
+    <string name="child_level">お子さまの力に合わせて、テストのレベルを選んでください</string>
+    <string name="TapCorrectAns">正しい答えをタップしてね</string>
+    <string name="let_s_start">はじめよう</string>
+    <string name="please_select_at_least_one_checkbox">1つ以上えらんでください</string>
+    <string name="exercise_login_subtitle">ログインすると、結果を保存していつでも見直せます</string>
+    <string name="select_exam_difficulty">むずかしさをえらぶ</string>
+    <string name="select_exam_types">計算の種類をえらぶ</string>
+    <string name="no_internet_close_notes">いま画面を閉じると、結果は保存されず、あとで履歴で見ることもできません。</string>
+    <string name="still_no_internet">まだインターネットにつながっていません。</string>
+    <string name="exam_time_label">時間：%1$s</string>
+    <string name="exam_question_number">第%1$d問</string>
+    <string name="time_hms">%1$02d時間%2$02d分%3$02d秒</string>
+    <string name="time_ms">%1$02d分%2$02d秒</string>
+    <string name="time_m">%1$02d分</string>
+    <string name="time_s">%1$02d秒</string>
+    <string name="formula_small_friend_add">小さな友だち (+5)</string>
+    <string name="formula_small_friend_sub">小さな友だち (-5)</string>
+    <string name="formula_big_friend_add">大きな友だち (+10)</string>
+    <string name="formula_big_friend_sub">大きな友だち (-10)</string>
+    <string name="formula_family_add">組み合わせ | 家族 (+)</string>
+    <string name="formula_family_sub">組み合わせ | 家族 (-)</string>
 </resources>

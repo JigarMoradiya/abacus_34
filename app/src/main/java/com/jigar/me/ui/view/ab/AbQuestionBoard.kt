@@ -440,7 +440,7 @@ fun AbHintTag(title: String, kind: AbHintKind, modifier: Modifier = Modifier) {
     val t = abQuestionMetrics().formulaTitleTextSize
     val color = kind.color
     AbMinScaleText(
-        text = title,
+        text = com.jigar.me.data.local.data.ExamProvider.formulaTypeLabel(title),   // a known formula shows its words in the app language
         style = abFixedStyle(t * 1.2f, FontWeight.ExtraBold).copy(shadow = abShadow(dens, Color.Black.copy(alpha = 0.25f), dy = 1f)),
         color = Color.White,
         modifier = modifier

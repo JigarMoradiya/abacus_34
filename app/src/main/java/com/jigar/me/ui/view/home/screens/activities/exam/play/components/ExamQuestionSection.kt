@@ -143,7 +143,7 @@ private fun ExamQuestion(uiState: ExamPlayUiState, viewModel: ExamPlayViewModel)
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
         AbChip(
-            text = "Question ${uiState.currentIndex + 1}",
+            text = stringResource(R.string.exam_question_number, uiState.currentIndex + 1),
             tone = AbTone.Purple,
             modifier = Modifier.padding(bottom = AppDimens.Dimens8),
             icon = Icons.AutoMirrored.Filled.Help,

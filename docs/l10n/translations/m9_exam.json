@@ -1,0 +1,272 @@
+{
+ "Addition": {
+  "fr": "Addition",
+  "es": "Suma",
+  "pt": "Soma",
+  "tr": "Toplama",
+  "ru": "Сложение",
+  "ja": "たし算",
+  "th": "การบวก"
+ },
+ "Subtraction": {
+  "fr": "Soustraction",
+  "es": "Resta",
+  "pt": "Subtração",
+  "tr": "Çıkarma",
+  "ru": "Вычитание",
+  "ja": "ひき算",
+  "th": "การลบ"
+ },
+ "Multiplication": {
+  "fr": "Multiplication",
+  "es": "Multiplicación",
+  "pt": "Multiplicação",
+  "tr": "Çarpma",
+  "ru": "Умножение",
+  "ja": "かけ算",
+  "th": "การคูณ"
+ },
+ "Division": {
+  "fr": "Division",
+  "es": "División",
+  "pt": "Divisão",
+  "tr": "Bölme",
+  "ru": "Деление",
+  "ja": "わり算",
+  "th": "การหาร"
+ },
+ "leave_exam_alert": {
+  "fr": "Quitter l'examen",
+  "es": "Salir del examen",
+  "pt": "Sair da prova",
+  "tr": "Sınavdan çık",
+  "ru": "Выйти из экзамена",
+  "ja": "テストを終了",
+  "th": "ออกจากการสอบ"
+ },
+ "leave_exam_msg": {
+  "fr": "Veux-tu vraiment quitter l'examen sans le terminer ?",
+  "es": "¿Seguro que quieres salir del examen sin terminarlo?",
+  "pt": "Tem certeza que quer sair da prova sem terminar?",
+  "tr": "Sınavı bitirmeden çıkmak istediğine emin misin?",
+  "ru": "Ты точно хочешь выйти, не закончив экзамен?",
+  "ja": "テストを終わらせずにやめますか？",
+  "th": "แน่ใจไหมว่าจะออกจากข้อสอบโดยยังไม่เสร็จ"
+ },
+ "continue_working_internet": {
+  "fr": "Internet fonctionne, tu peux continuer",
+  "es": "Ya hay internet, puedes continuar",
+  "pt": "A internet voltou, pode continuar",
+  "tr": "İnternet çalışıyor, devam edebilirsin",
+  "ru": "Интернет работает, продолжай",
+  "ja": "インターネットにつながりました。つづけてね",
+  "th": "อินเทอร์เน็ตกลับมาแล้ว ไปต่อได้เลย"
+ },
+ "no_working_internet": {
+  "fr": "D'accord, je vais vérifier, fermer",
+  "es": "Vale, lo revisaré, cerrar",
+  "pt": "Ok, vou verificar, fechar",
+  "tr": "Tamam, kontrol edeceğim, kapat",
+  "ru": "Хорошо, проверю, закрыть",
+  "ja": "わかった、確認する（閉じる）",
+  "th": "ตกลง ฉันจะตรวจสอบ ปิดเลย"
+ },
+ "no_please_continue": {
+  "fr": "Non, continuer",
+  "es": "No, continuar",
+  "pt": "Não, continuar",
+  "tr": "Hayır, devam et",
+  "ru": "Нет, продолжить",
+  "ja": "いいえ、つづける",
+  "th": "ไม่ ไปต่อ"
+ },
+ "child_level": {
+  "fr": "Choisissez le niveau d'examen adapté à l'enfant",
+  "es": "Elige el nivel del examen según la capacidad del niño",
+  "pt": "Escolha o nível da prova de acordo com a habilidade da criança",
+  "tr": "Sınav seviyesini çocuğun yeteneğine göre seçin",
+  "ru": "Выберите уровень экзамена по способностям ребёнка",
+  "ja": "お子さまの力に合わせて、テストのレベルを選んでください",
+  "th": "เลือกระดับข้อสอบให้เหมาะกับความสามารถของเด็ก"
+ },
+ "TapCorrectAns": {
+  "fr": "Touche la bonne réponse",
+  "es": "Toca la respuesta correcta",
+  "pt": "Toque na resposta certa",
+  "tr": "Doğru cevaba dokun",
+  "ru": "Нажми на правильный ответ",
+  "ja": "正しい答えをタップしてね",
+  "th": "แตะคำตอบที่ถูกต้อง"
+ },
+ "let_s_start": {
+  "fr": "C'est parti !",
+  "es": "¡Empecemos!",
+  "pt": "Vamos começar!",
+  "tr": "Haydi başlayalım",
+  "ru": "Начнём!",
+  "ja": "はじめよう",
+  "th": "เริ่มกันเลย"
+ },
+ "please_select_at_least_one_checkbox": {
+  "fr": "Choisis au moins une option",
+  "es": "Elige al menos una opción",
+  "pt": "Escolha pelo menos uma opção",
+  "tr": "Lütfen en az bir seçenek seçin",
+  "ru": "Выберите хотя бы один вариант",
+  "ja": "1つ以上えらんでください",
+  "th": "โปรดเลือกอย่างน้อยหนึ่งตัวเลือก"
+ },
+ "exercise_login_subtitle": {
+  "fr": "Connectez-vous pour enregistrer vos résultats et les revoir à tout moment",
+  "es": "Inicia sesión para guardar tus resultados y revisarlos cuando quieras",
+  "pt": "Faça login para salvar seus resultados e revisá-los quando quiser",
+  "tr": "Sonuçlarınızı kaydetmek ve istediğiniz zaman incelemek için giriş yapın",
+  "ru": "Войдите, чтобы сохранять результаты и просматривать их в любое время",
+  "ja": "ログインすると、結果を保存していつでも見直せます",
+  "th": "เข้าสู่ระบบเพื่อบันทึกผลและย้อนดูได้ทุกเมื่อ"
+ },
+ "select_exam_difficulty": {
+  "fr": "Choisir la difficulté",
+  "es": "Elige la dificultad",
+  "pt": "Escolha a dificuldade",
+  "tr": "Zorluk seviyesini seç",
+  "ru": "Выберите сложность",
+  "ja": "むずかしさをえらぶ",
+  "th": "เลือกระดับความยาก"
+ },
+ "select_exam_types": {
+  "fr": "Choisir les types de calcul",
+  "es": "Elige los tipos de cálculo",
+  "pt": "Escolha os tipos de conta",
+  "tr": "İşlem türlerini seç",
+  "ru": "Выберите виды действий",
+  "ja": "計算の種類をえらぶ",
+  "th": "เลือกประเภทการคำนวณ"
+ },
+ "no_internet_close_notes": {
+  "fr": "Si tu fermes cet écran maintenant, ton résultat ne sera pas enregistré et tu ne pourras pas le revoir dans l'historique.",
+  "es": "Si cierras esta pantalla ahora, tu resultado no se guardará y no podrás verlo después en el historial.",
+  "pt": "Se você fechar esta tela agora, seu resultado não será salvo e você não poderá vê-lo depois no histórico.",
+  "tr": "Bu ekranı şimdi kapatırsan sonucun kaydedilmez ve daha sonra geçmişte göremezsin.",
+  "ru": "Если закрыть этот экран сейчас, результат не сохранится, и позже его не будет в истории.",
+  "ja": "いま画面を閉じると、結果は保存されず、あとで履歴で見ることもできません。",
+  "th": "หากปิดหน้าจอนี้ตอนนี้ ผลของคุณจะไม่ถูกบันทึกและจะดูย้อนหลังในประวัติไม่ได้"
+ },
+ "still_no_internet": {
+  "fr": "Internet ne fonctionne toujours pas.",
+  "es": "Todavía no hay conexión a internet.",
+  "pt": "A internet ainda não está funcionando.",
+  "tr": "İnternet hâlâ çalışmıyor.",
+  "ru": "Интернет по-прежнему не работает.",
+  "ja": "まだインターネットにつながっていません。",
+  "th": "อินเทอร์เน็ตยังใช้งานไม่ได้"
+ },
+ "exam_time_label": {
+  "fr": "Temps : %1$s",
+  "es": "Tiempo: %1$s",
+  "pt": "Tempo: %1$s",
+  "tr": "Süre: %1$s",
+  "ru": "Время: %1$s",
+  "ja": "時間：%1$s",
+  "th": "เวลา: %1$s"
+ },
+ "exam_question_number": {
+  "fr": "Question %1$d",
+  "es": "Pregunta %1$d",
+  "pt": "Questão %1$d",
+  "tr": "Soru %1$d",
+  "ru": "Вопрос %1$d",
+  "ja": "第%1$d問",
+  "th": "ข้อที่ %1$d"
+ },
+ "time_hms": {
+  "fr": "%1$02d h : %2$02d min : %3$02d s",
+  "es": "%1$02d h : %2$02d min : %3$02d s",
+  "pt": "%1$02d h : %2$02d min : %3$02d s",
+  "tr": "%1$02d sa : %2$02d dk : %3$02d sn",
+  "ru": "%1$02d ч : %2$02d мин : %3$02d с",
+  "ja": "%1$02d時間%2$02d分%3$02d秒",
+  "th": "%1$02d ชม. : %2$02d นาที : %3$02d วิ"
+ },
+ "time_ms": {
+  "fr": "%1$02d min %2$02d s",
+  "es": "%1$02d min %2$02d s",
+  "pt": "%1$02d min %2$02d s",
+  "tr": "%1$02d dk %2$02d sn",
+  "ru": "%1$02d мин %2$02d с",
+  "ja": "%1$02d分%2$02d秒",
+  "th": "%1$02d นาที %2$02d วิ"
+ },
+ "time_m": {
+  "fr": "%1$02d min",
+  "es": "%1$02d min",
+  "pt": "%1$02d min",
+  "tr": "%1$02d dk",
+  "ru": "%1$02d мин",
+  "ja": "%1$02d分",
+  "th": "%1$02d นาที"
+ },
+ "time_s": {
+  "fr": "%1$02d s",
+  "es": "%1$02d s",
+  "pt": "%1$02d s",
+  "tr": "%1$02d sn",
+  "ru": "%1$02d с",
+  "ja": "%1$02d秒",
+  "th": "%1$02d วิ"
+ },
+ "formula_small_friend_add": {
+  "fr": "Petit ami (+5)",
+  "es": "Pequeño amigo (+5)",
+  "pt": "Pequeno amigo (+5)",
+  "tr": "Küçük Arkadaş (+5)",
+  "ru": "Малый друг (+5)",
+  "ja": "小さな友だち (+5)",
+  "th": "เพื่อนเล็ก (+5)"
+ },
+ "formula_small_friend_sub": {
+  "fr": "Petit ami (-5)",
+  "es": "Pequeño amigo (-5)",
+  "pt": "Pequeno amigo (-5)",
+  "tr": "Küçük Arkadaş (-5)",
+  "ru": "Малый друг (-5)",
+  "ja": "小さな友だち (-5)",
+  "th": "เพื่อนเล็ก (-5)"
+ },
+ "formula_big_friend_add": {
+  "fr": "Grand ami (+10)",
+  "es": "Gran amigo (+10)",
+  "pt": "Grande amigo (+10)",
+  "tr": "Büyük Arkadaş (+10)",
+  "ru": "Большой друг (+10)",
+  "ja": "大きな友だち (+10)",
+  "th": "เพื่อนใหญ่ (+10)"
+ },
+ "formula_big_friend_sub": {
+  "fr": "Grand ami (-10)",
+  "es": "Gran amigo (-10)",
+  "pt": "Grande amigo (-10)",
+  "tr": "Büyük Arkadaş (-10)",
+  "ru": "Большой друг (-10)",
+  "ja": "大きな友だち (-10)",
+  "th": "เพื่อนใหญ่ (-10)"
+ },
+ "formula_family_add": {
+  "fr": "Combinaison | Famille (+)",
+  "es": "Combinación | Familia (+)",
+  "pt": "Combinação | Família (+)",
+  "tr": "Birleşik | Aile (+)",
+  "ru": "Комбинация | Семья (+)",
+  "ja": "組み合わせ | 家族 (+)",
+  "th": "ผสม | ครอบครัว (+)"
+ },
+ "formula_family_sub": {
+  "fr": "Combinaison | Famille (-)",
+  "es": "Combinación | Familia (-)",
+  "pt": "Combinação | Família (-)",
+  "tr": "Birleşik | Aile (-)",
+  "ru": "Комбинация | Семья (-)",
+  "ja": "組み合わせ | 家族 (-)",
+  "th": "ผสม | ครอบครัว (-)"
+ }
+}

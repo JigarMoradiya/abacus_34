@@ -659,4 +659,35 @@
     <string name="purchase_benefit_2">🧮 Тренируйте сложение, вычитание, умножение и деление с &lt;strong>умными подсказками по бусинам&lt;/strong> и &lt;strong>формулой на каждом шаге.&lt;/strong></string>
     <string name="purchase_benefit_3">🎯 Готовьтесь к математическим конкурсам, UCMAS и экзаменам по абакусу с &lt;strong>тренировками в формате настоящего экзамена.&lt;/strong></string>
     <string name="purchase_benefit_4">📊 &lt;strong>Следите за прогрессом ребёнка&lt;/strong>, его скоростью и точностью с помощью подробных отчётов.</string>
+    <!-- m9_exam -->
+    <string name="Addition">Сложение</string>
+    <string name="Subtraction">Вычитание</string>
+    <string name="Multiplication">Умножение</string>
+    <string name="Division">Деление</string>
+    <string name="leave_exam_alert">Выйти из экзамена</string>
+    <string name="leave_exam_msg">Ты точно хочешь выйти, не закончив экзамен?</string>
+    <string name="continue_working_internet">Интернет работает, продолжай</string>
+    <string name="no_working_internet">Хорошо, проверю, закрыть</string>
+    <string name="no_please_continue">Нет, продолжить</string>
+    <string name="child_level">Выберите уровень экзамена по способностям ребёнка</string>
+    <string name="TapCorrectAns">Нажми на правильный ответ</string>
+    <string name="let_s_start">Начнём!</string>
+    <string name="please_select_at_least_one_checkbox">Выберите хотя бы один вариант</string>
+    <string name="exercise_login_subtitle">Войдите, чтобы сохранять результаты и просматривать их в любое время</string>
+    <string name="select_exam_difficulty">Выберите сложность</string>
+    <string name="select_exam_types">Выберите виды действий</string>
+    <string name="no_internet_close_notes">Если закрыть этот экран сейчас, результат не сохранится, и позже его не будет в истории.</string>
+    <string name="still_no_internet">Интернет по-прежнему не работает.</string>
+    <string name="exam_time_label">Время: %1$s</string>
+    <string name="exam_question_number">Вопрос %1$d</string>
+    <string name="time_hms">%1$02d ч : %2$02d мин : %3$02d с</string>
+    <string name="time_ms">%1$02d мин %2$02d с</string>
+    <string name="time_m">%1$02d мин</string>
+    <string name="time_s">%1$02d с</string>
+    <string name="formula_small_friend_add">Малый друг (+5)</string>
+    <string name="formula_small_friend_sub">Малый друг (-5)</string>
+    <string name="formula_big_friend_add">Большой друг (+10)</string>
+    <string name="formula_big_friend_sub">Большой друг (-10)</string>
+    <string name="formula_family_add">Комбинация | Семья (+)</string>
+    <string name="formula_family_sub">Комбинация | Семья (-)</string>
 </resources>
