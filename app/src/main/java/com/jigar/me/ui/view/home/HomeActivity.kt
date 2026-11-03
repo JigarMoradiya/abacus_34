@@ -130,6 +130,13 @@ class HomeActivity : AppCompatActivity() {   // AppCompat so the chosen app lang
             }
             com.jigar.me.utils.FreemiumWindow.refresh(preferences)
             if (BuildConfig.DEBUG && intent.getBooleanExtra("ab_freemium_notify_now", false)) com.jigar.me.utils.FreemiumWindow.debugNotifyNow(this)
+            if (BuildConfig.DEBUG && intent.getBooleanExtra("ab_notify_now", false)) {
+                // the streak reminder and the weekly summary right now, to read them in the notification shade
+                com.jigar.me.utils.StreakManager.debugShowNow = true
+                val work = androidx.work.WorkManager.getInstance(this)
+                work.enqueue(androidx.work.OneTimeWorkRequestBuilder<com.jigar.me.utils.workers.StreakNotificationWorker>().build())
+                work.enqueue(androidx.work.OneTimeWorkRequestBuilder<com.jigar.me.utils.workers.WeeklySummaryWorker>().build())
+            }
             val abScreen = if (BuildConfig.DEBUG) intent.getStringExtra("ab_screen") else null
             if (abScreen != null) {
                 // Debug-only preview of one restyled screen (see AbKitGallery.kt), skipping the normal app shell.

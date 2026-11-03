@@ -1,0 +1,781 @@
+{
+ "notif_streak_title_1": {
+  "fr": "🔥 Jour %1$d : gardez la flamme allumée !",
+  "es": "🔥 Día %1$d: ¡que no se apague el fuego!",
+  "pt": "🔥 Dia %1$d: mantenha o fogo aceso!",
+  "tr": "🔥 %1$d. gün, ateş sönmesin!",
+  "ru": "🔥 День %1$d — огонь не гаснет!",
+  "ja": "🔥 %1$d日目、炎を絶やさずに！",
+  "th": "🔥 วันที่ %1$d รักษาไฟให้ลุกโชนต่อไป!"
+ },
+ "notif_streak_body_1": {
+  "fr": "La concentration de votre enfant se renforce un peu plus chaque jour. Un peu d'entraînement aujourd'hui protège tout le chemin déjà parcouru.",
+  "es": "La concentración de tu hijo o hija se fortalece cada día. Un poco de práctica hoy protege todo lo que ha logrado.",
+  "pt": "O foco do seu filho cresce a cada dia. Um pouquinho de prática hoje protege tudo o que ele já construiu.",
+  "tr": "Çocuğunuzun odaklanması her gün güçleniyor. Bugünkü küçük bir alıştırma, şimdiye kadar kazandığı her şeyi korur.",
+  "ru": "Внимание вашего ребёнка крепнет с каждым днём. Немного практики сегодня сохранит всё, чего он уже достиг.",
+  "ja": "お子さまの集中力は、日ごとに育っています。今日少し練習するだけで、これまでの積み重ねを守れます。",
+  "th": "สมาธิของลูกแข็งแรงขึ้นทุกวัน การฝึกเล็กน้อยในวันนี้ช่วยรักษาทุกสิ่งที่ลูกสร้างมาไว้ได้"
+ },
+ "notif_streak_title_2": {
+  "fr": "%1$d jours d'affilée : bravo ! ⭐",
+  "es": "¡%1$d días seguidos, qué gran aprendiz! ⭐",
+  "pt": "%1$d dias seguidos, que aprendiz! ⭐",
+  "tr": "%1$d gün üst üste, harika bir öğrenci! ⭐",
+  "ru": "Серия: %1$d — вот это ученик! ⭐",
+  "ja": "%1$d日連続、がんばり屋さんですね！⭐",
+  "th": "%1$d วันติดต่อกัน เก่งจริง ๆ! ⭐"
+ },
+ "notif_streak_body_2": {
+  "fr": "Une telle régularité est rare, à tout âge. Vous élevez un enfant qui va au bout de ce qu'il entreprend.",
+  "es": "Una constancia así es poco común a cualquier edad. Estás criando a alguien que de verdad termina lo que empieza.",
+  "pt": "Essa constância é rara em qualquer idade. Você está criando alguém que termina o que começa.",
+  "tr": "Böyle bir istikrar her yaşta nadirdir. Başladığı işi gerçekten bitiren birini yetiştiriyorsunuz.",
+  "ru": "Такая последовательность редка в любом возрасте. Вы растите человека, который доводит начатое до конца.",
+  "ja": "これだけ続けるのは、大人でもなかなか難しいことです。お子さまは、始めたことをやり遂げる力を育てています。",
+  "th": "ความสม่ำเสมอแบบนี้หาได้ยากในทุกวัย คุณกำลังเลี้ยงเด็กที่ทำสิ่งที่เริ่มไว้ให้สำเร็จได้จริง ๆ"
+ },
+ "notif_streak_title_3": {
+  "fr": "Ne brisez pas la chaîne de %1$d jours ! 🔗",
+  "es": "¡No rompas la cadena de %1$d días! 🔗",
+  "pt": "Não quebre a corrente de %1$d dias! 🔗",
+  "tr": "%1$d günlük zinciri kırmayın! 🔗",
+  "ru": "Не прерывайте цепочку дней: %1$d! 🔗",
+  "ja": "%1$d日つないだ鎖を切らさないで！🔗",
+  "th": "อย่าให้โซ่ %1$d วันขาดตอน! 🔗"
+ },
+ "notif_streak_body_3": {
+  "fr": "Chaque maillon de cette chaîne est un vrai progrès. Votre enfant a déjà parcouru un long chemin : une séance aujourd'hui la garde intacte.",
+  "es": "Cada eslabón de esa cadena es un crecimiento real. Tu hijo o hija ha llegado muy lejos: la práctica de hoy la mantiene intacta.",
+  "pt": "Cada elo dessa corrente representa um crescimento real. Seu filho já chegou longe, e hoje ela segue inteira.",
+  "tr": "Zincirdeki her halka gerçek bir gelişim demek. Çocuğunuz çok yol kat etti, bugünkü alıştırma zinciri kopmadan sürdürür.",
+  "ru": "Каждое звено этой цепочки — настоящий рост. Ваш ребёнок прошёл уже большой путь, и сегодняшнее занятие сохранит цепочку целой.",
+  "ja": "鎖のひとつひとつが、確かな成長のしるしです。ここまで来たお子さま、今日もつなげば途切れません。",
+  "th": "ทุกห่วงในโซ่นี้คือการเติบโตที่แท้จริง ลูกมาไกลมากแล้ว การฝึกวันนี้ช่วยให้โซ่ไม่ขาดตอน"
+ },
+ "notif_streak_title_4": {
+  "fr": "🧠 %1$d jours d'entraînement du cerveau !",
+  "es": "🧠 ¡%1$d días de entrenamiento mental!",
+  "pt": "🧠 %1$d dias de treino mental!",
+  "tr": "🧠 %1$d gün zihin antrenmanı!",
+  "ru": "🧠 Тренировка мозга. Серия: %1$d!",
+  "ja": "🧠 %1$d日間の脳トレ！",
+  "th": "🧠 ฝึกสมองมา %1$d วันแล้ว!"
+ },
+ "notif_streak_body_4": {
+  "fr": "La force mentale que votre enfant construit grâce à l'entraînement quotidien l'accompagnera à l'école et bien au-delà.",
+  "es": "La fortaleza mental que tu hijo o hija desarrolla con la práctica diaria le servirá en la escuela y mucho más allá.",
+  "pt": "A força mental que seu filho constrói com a prática diária vai acompanhá-lo na escola e além.",
+  "tr": "Çocuğunuzun günlük alıştırmayla kazandığı zihinsel güç, okulda ve sonrasında da ona yol gösterecek.",
+  "ru": "Сила ума, которую ваш ребёнок развивает ежедневной практикой, пригодится ему в школе и дальше в жизни.",
+  "ja": "毎日の練習で身につく心の強さは、学校でも、その先でも、お子さまを支えてくれます。",
+  "th": "ความแข็งแกร่งทางความคิดที่ลูกสร้างจากการฝึกทุกวัน จะพาลูกไปได้ไกลทั้งในโรงเรียนและในอนาคต"
+ },
+ "notif_streak_title_5": {
+  "fr": "%1$d jours : un cap approche ! 🏆",
+  "es": "¡%1$d días: se acerca una gran meta! 🏆",
+  "pt": "%1$d dias: uma conquista vem aí! 🏆",
+  "tr": "%1$d gün, kilometre taşı yakın! 🏆",
+  "ru": "Серия: %1$d — новая веха близко! 🏆",
+  "ja": "%1$d日、大きな節目がもうすぐ！🏆",
+  "th": "%1$d วัน ใกล้ถึงหมุดหมายแล้ว! 🏆"
+ },
+ "notif_streak_body_5": {
+  "fr": "Votre enfant est sur une belle lancée. Quelques minutes d'entraînement aujourd'hui font vivre ce parcours.",
+  "es": "Tu hijo o hija va en una racha extraordinaria. Unos minutos de práctica hoy mantienen vivo ese camino.",
+  "pt": "Seu filho está em uma sequência notável. Alguns minutos de prática hoje mantêm essa jornada viva.",
+  "tr": "Çocuğunuz harika bir seri yakaladı. Bugün birkaç dakikalık alıştırma bu yolculuğu canlı tutar.",
+  "ru": "У вашего ребёнка замечательная полоса успехов. Несколько минут практики сегодня помогут продолжить этот путь.",
+  "ja": "お子さまは今、すばらしい調子で進んでいます。今日も数分練習して、この道のりをつなげましょう。",
+  "th": "ลูกกำลังทำได้ยอดเยี่ยมมาก การฝึกเพียงไม่กี่นาทีวันนี้ช่วยให้การเดินทางนี้ไปต่อได้"
+ },
+ "notif_streak_title_6": {
+  "fr": "Le jour %1$d vous attend ✨",
+  "es": "El día %1$d está esperando ✨",
+  "pt": "O dia %1$d está esperando ✨",
+  "tr": "%1$d. gün bekliyor ✨",
+  "ru": "День %1$d уже ждёт ✨",
+  "ja": "%1$d日目が待っています ✨",
+  "th": "วันที่ %1$d กำลังรออยู่ ✨"
+ },
+ "notif_streak_body_6": {
+  "fr": "De petites habitudes quotidiennes façonnent l'avenir d'un enfant, parfois sans qu'on le voie. La séance d'aujourd'hui compte plus que vous ne le pensez.",
+  "es": "Los pequeños hábitos diarios moldean el futuro de un niño o niña de formas que no siempre vemos. La sesión de hoy importa más de lo que imaginas.",
+  "pt": "Pequenos hábitos diários moldam o futuro de uma criança de formas que nem sempre vemos. A sessão de hoje importa mais do que você imagina.",
+  "tr": "Küçük günlük alışkanlıklar, bir çocuğun geleceğini her zaman göremediğimiz şekillerde biçimlendirir. Bugünkü alıştırma sandığınızdan daha önemli.",
+  "ru": "Маленькие ежедневные привычки формируют будущее ребёнка так, как мы не всегда замечаем. Сегодняшнее занятие важнее, чем кажется.",
+  "ja": "毎日の小さな習慣は、目に見えないところでお子さまの未来をつくります。今日の練習は、思っている以上に大切です。",
+  "th": "นิสัยเล็ก ๆ ที่ทำทุกวันช่วยหล่อหลอมอนาคตของเด็กในแบบที่เรามองไม่เห็นเสมอไป การฝึกวันนี้สำคัญกว่าที่คิด"
+ },
+ "notif_streak_title_7": {
+  "fr": "🔥 %1$d jours : un champion en devenir !",
+  "es": "🔥 %1$d días: ¡hay madera de campeón!",
+  "pt": "🔥 %1$d dias: criando um campeão!",
+  "tr": "🔥 %1$d gün, bir şampiyon yetişiyor!",
+  "ru": "🔥 Серия: %1$d — растёт чемпион!",
+  "ja": "🔥 %1$d日連続、チャンピオンへの道！",
+  "th": "🔥 ครบ %1$d วัน กำลังสร้างแชมป์!"
+ },
+ "notif_streak_body_7": {
+  "fr": "Très peu d'enfants acquièrent une telle discipline. Il y a de quoi être fier, et cet élan mérite de continuer aujourd'hui.",
+  "es": "Muy pocos niños desarrollan este tipo de disciplina. Siente orgullo y mantén vivo ese impulso hoy.",
+  "pt": "Poucas crianças constroem essa disciplina. É motivo de orgulho! Vamos manter esse ritmo hoje também.",
+  "tr": "Çok az çocuk bu kadar disiplin kazanabiliyor. Gurur duyun ve bugün de bu ivmeyi canlı tutun.",
+  "ru": "Лишь немногие дети вырабатывают такую дисциплину. Гордитесь и сохраните этот настрой сегодня.",
+  "ja": "これほどの根気を身につけるお子さまは、そう多くありません。誇りに思って、今日もこの勢いを続けましょう。",
+  "th": "มีเด็กน้อยมากที่สร้างวินัยแบบนี้ได้ ภูมิใจในตัวลูกได้เลย และช่วยรักษาแรงส่งนี้ไว้ในวันนี้ด้วย"
+ },
+ "notif_streak_title_8": {
+  "fr": "Une habitude de %1$d jours se forme ! 💡",
+  "es": "¡Un hábito de %1$d días toma forma! 💡",
+  "pt": "Hábito de %1$d dias a caminho! 💡",
+  "tr": "%1$d günlük alışkanlık oluşuyor! 💡",
+  "ru": "Привычка формируется — серия: %1$d! 💡",
+  "ja": "%1$d日の習慣が育っています！💡",
+  "th": "กำลังสร้างนิสัย %1$d วัน! 💡"
+ },
+ "notif_streak_body_8": {
+  "fr": "Les recherches montrent qu'une pratique quotidienne régulière transforme durablement le cerveau. Votre enfant est sur la bonne voie.",
+  "es": "Las investigaciones muestran que la práctica diaria constante transforma el cerebro para toda la vida. Tu hijo o hija va por muy buen camino.",
+  "pt": "Pesquisas mostram que a prática diária e constante molda o cérebro para a vida toda. Seu filho está no caminho certo.",
+  "tr": "Araştırmalar, düzenli günlük alıştırmanın beyni ömür boyu şekillendirdiğini gösteriyor. Çocuğunuz bu yolda çok iyi gidiyor.",
+  "ru": "Исследования показывают, что регулярная ежедневная практика перестраивает мозг на всю жизнь. Ваш ребёнок уже на верном пути.",
+  "ja": "毎日続ける練習は、一生の力になる脳を育てるといわれています。お子さまは着実にその道を進んでいます。",
+  "th": "งานวิจัยบอกว่าการฝึกสม่ำเสมอทุกวันช่วยปรับสมองให้พัฒนาไปตลอดชีวิต ลูกกำลังมาถูกทางแล้ว"
+ },
+ "notif_streak_title_9": {
+  "fr": "Jour %1$d : presque un réflexe ! 🎯",
+  "es": "Día %1$d: ¡casi automático! 🎯",
+  "pt": "Dia %1$d: quase automático! 🎯",
+  "tr": "%1$d. gün, neredeyse otomatik! 🎯",
+  "ru": "День %1$d — почти на автомате! 🎯",
+  "ja": "%1$d日目、もう習慣になりかけています！🎯",
+  "th": "วันที่ %1$d เกือบเป็นอัตโนมัติแล้ว! 🎯"
+ },
+ "notif_streak_body_9": {
+  "fr": "Les meilleurs apprenants font de l'entraînement une part de leur quotidien. Votre enfant en prend déjà le chemin.",
+  "es": "Quienes mejor aprenden hacen de la práctica parte de su vida diaria. Tu hijo o hija ya está en ese camino.",
+  "pt": "Os melhores alunos fazem da prática parte do dia a dia. Seu filho já está se tornando um deles.",
+  "tr": "En iyi öğrenenler alıştırmayı günlük hayatlarının bir parçası yapar. Çocuğunuz şimdiden onlardan biri olmaya başladı.",
+  "ru": "Лучшие ученики делают практику частью повседневной жизни. Ваш ребёнок уже становится одним из них.",
+  "ja": "伸びる子は、練習を毎日の暮らしの一部にしています。お子さまもすでに、その仲間入りをしています。",
+  "th": "นักเรียนที่เก่งที่สุดทำให้การฝึกเป็นส่วนหนึ่งของชีวิตประจำวัน ลูกกำลังเป็นหนึ่งในนั้นแล้ว"
+ },
+ "notif_streak_title_10": {
+  "fr": "🌟 %1$d jours de belle persévérance !",
+  "es": "🌟 ¡%1$d días de pura dedicación!",
+  "pt": "🌟 %1$d dias de pura dedicação!",
+  "tr": "🌟 %1$d gün boyunca azim!",
+  "ru": "🌟 Серия: %1$d — вот это упорство!",
+  "ja": "🌟 %1$d日間、ひたむきな努力！",
+  "th": "🌟 ทุ่มเท %1$d วันเต็ม ๆ!"
+ },
+ "notif_streak_body_10": {
+  "fr": "Un tel engagement à cet âge est extraordinaire. Une courte séance aujourd'hui s'ajoute à quelque chose de vraiment spécial.",
+  "es": "Tanta dedicación a esta edad es extraordinaria. Una sesión corta hoy suma a algo verdaderamente especial.",
+  "pt": "Dedicação nessa idade é extraordinária. Uma sessão curta hoje soma a algo realmente especial.",
+  "tr": "Bu yaşta azim olağanüstü bir şey. Bugünkü kısa bir alıştırma gerçekten özel bir şeye katkı sağlar.",
+  "ru": "Такое упорство в этом возрасте — большая редкость. Короткое занятие сегодня добавит ещё один шаг к чему-то по-настоящему особенному.",
+  "ja": "この年齢でこれだけ打ち込めるのは、並外れたことです。今日の短い練習が、特別な積み重ねをさらに育てます。",
+  "th": "ความทุ่มเทในวัยนี้ไม่ธรรมดาเลย การฝึกสั้น ๆ วันนี้ช่วยต่อยอดสิ่งที่พิเศษจริง ๆ"
+ },
+ "notif_streak_title_11": {
+  "fr": "Jour %1$d : la série continue ! 🔥",
+  "es": "Día %1$d: ¡la racha sigue viva! 🔥",
+  "pt": "Dia %1$d: a sequência continua! 🔥",
+  "tr": "%1$d. gün, seri sürüyor! 🔥",
+  "ru": "День %1$d — серия продолжается! 🔥",
+  "ja": "%1$d日目、連続記録は続いています！🔥",
+  "th": "วันที่ %1$d ยังต่อเนื่องอยู่! 🔥"
+ },
+ "notif_streak_body_11": {
+  "fr": "Chaque jour d'entraînement fait grandir la confiance en soi et la rapidité mentale de votre enfant. Aujourd'hui est un jour précieux, à ne pas laisser passer.",
+  "es": "Cada día que tu hijo o hija practica, crecen su confianza y su agilidad mental. Hoy es demasiado importante para dejarlo pasar.",
+  "pt": "A cada dia de prática, a confiança e a agilidade mental do seu filho crescem. Hoje é importante demais para deixar passar.",
+  "tr": "Çocuğunuz her gün alıştırma yaptıkça özgüveni ve zihinsel hızı artıyor. Bugün kaçırılmayacak kadar önemli.",
+  "ru": "С каждым днём практики растут уверенность и скорость счёта у вашего ребёнка. Сегодняшний день слишком важен, чтобы его пропускать.",
+  "ja": "練習した日ごとに、お子さまの自信と計算の速さが育ちます。今日もぜひ、いつもの練習を楽しみましょう。",
+  "th": "ทุกวันที่ลูกฝึก ความมั่นใจและความเร็วในการคิดก็เติบโตขึ้น วันนี้เป็นอีกวันที่ไม่อยากให้พลาด"
+ },
+ "notif_streak_title_12": {
+  "fr": "%1$d jours : votre enfant est imparable ! 💪",
+  "es": "¡%1$d días: tu hijo o hija es imparable! 💪",
+  "pt": "%1$d dias: seu filho é imparável! 💪",
+  "tr": "%1$d gün, çocuğunuz durdurulamaz! 💪",
+  "ru": "Серия: %1$d — ребёнка не остановить! 💪",
+  "ja": "%1$d日、お子さまは止まりません！💪",
+  "th": "%1$d วัน ลูกหยุดไม่อยู่แล้ว! 💪"
+ },
+ "notif_streak_body_12": {
+  "fr": "Le meilleur investissement, c'est l'apprentissage au quotidien. Quelques minutes aujourd'hui, c'est déjà beaucoup.",
+  "es": "La mejor inversión es el aprendizaje diario. Unos minutos hoy rinden mucho.",
+  "pt": "O melhor investimento que você pode fazer é no aprendizado diário. Alguns minutos hoje já fazem muita diferença.",
+  "tr": "Yapabileceğiniz en iyi yatırım, günlük öğrenmeye yaptığınız yatırımdır. Bugün birkaç dakika çok işe yarar.",
+  "ru": "Лучшее вложение — это ежедневное обучение. Несколько минут сегодня дадут очень многое.",
+  "ja": "いちばん確かな投資は、毎日の学びです。今日の数分が、きっと大きな力になります。",
+  "th": "การลงทุนที่ดีที่สุดคือการเรียนรู้ทุกวัน เพียงไม่กี่นาทีวันนี้ก็ไปได้ไกล"
+ },
+ "notif_streak_title_13": {
+  "fr": "🎯 %1$d jours : la précision progresse !",
+  "es": "🎯 %1$d días: ¡la precisión avanza!",
+  "pt": "🎯 %1$d dias: a precisão evolui!",
+  "tr": "🎯 %1$d gün, hedefe tam isabet!",
+  "ru": "🎯 Серия: %1$d — точность растёт!",
+  "ja": "🎯 %1$d日、正確さが磨かれています！",
+  "th": "🎯 %1$d วัน แม่นยำขึ้นเรื่อย ๆ!"
+ },
+ "notif_streak_body_13": {
+  "fr": "Le boulier développe en même temps la rapidité, la concentration et la confiance. Votre enfant progresse sur les trois : continuez ainsi.",
+  "es": "El ábaco desarrolla velocidad, concentración y confianza a la vez. Tu hijo o hija está creciendo en las tres: ¡que no pare!",
+  "pt": "O ábaco desenvolve rapidez, foco e confiança ao mesmo tempo. Seu filho está crescendo nos três. Continuem assim!",
+  "tr": "Abaküs hız, odaklanma ve özgüveni bir arada geliştirir. Çocuğunuz üçünde de ilerliyor, böyle devam edin.",
+  "ru": "Абакус развивает скорость, внимание и уверенность одновременно. Ваш ребёнок растёт во всех трёх, так держать.",
+  "ja": "そろばんは、スピード・集中力・自信を一度に育てます。お子さまはその3つとも伸びています。この調子で続けましょう。",
+  "th": "การฝึกลูกคิดช่วยสร้างความเร็ว สมาธิ และความมั่นใจไปพร้อมกัน ลูกกำลังพัฒนาทั้งสามอย่าง ไปต่อกันเลย"
+ },
+ "notif_streak_title_14": {
+  "fr": "Jour %1$d : doucement mais sûrement ! 🐢",
+  "es": "Día %1$d: ¡la constancia gana la carrera! 🐢",
+  "pt": "Dia %1$d: devagar e sempre! 🐢",
+  "tr": "%1$d. gün, istikrar kazanır! 🐢",
+  "ru": "День %1$d — тише едешь, дальше будешь! 🐢",
+  "ja": "%1$d日目、コツコツ続ける人が勝つ！🐢",
+  "th": "วันที่ %1$d สม่ำเสมอคือผู้ชนะ! 🐢"
+ },
+ "notif_streak_body_14": {
+  "fr": "Ce n'est pas un grand effort qui compte : c'est d'être au rendez-vous chaque jour. Votre enfant le sait déjà.",
+  "es": "No se trata de un gran esfuerzo, sino de presentarse todos los días. Tu hijo o hija ya lo sabe.",
+  "pt": "O segredo não é um grande esforço, e sim aparecer todos os dias. Seu filho já sabe disso.",
+  "tr": "Mesele tek bir büyük çaba değil, her gün yerinde olmak. Çocuğunuz bunu zaten biliyor.",
+  "ru": "Дело не в одном большом усилии, а в том, чтобы заниматься каждый день. Ваш ребёнок это уже знает.",
+  "ja": "大切なのは一度の大きな頑張りではなく、毎日取り組むことです。お子さまはもう、それを知っています。",
+  "th": "ไม่ได้อยู่ที่ความพยายามครั้งใหญ่ครั้งเดียว แต่อยู่ที่การมาฝึกทุกวัน ลูกของคุณรู้เรื่องนี้ดีอยู่แล้ว"
+ },
+ "notif_streak_title_15": {
+  "fr": "🌙 Bien finir la journée : %1$d jours de suite !",
+  "es": "🌙 Cierra bien el día: ¡%1$d días seguidos!",
+  "pt": "🌙 Feche o dia bem: %1$d dias seguidos!",
+  "tr": "🌙 Günü güzel bitirin, %1$d gündür devam!",
+  "ru": "🌙 Завершим день правильно — серия: %1$d!",
+  "ja": "🌙 一日の締めくくりに、%1$d日連続！",
+  "th": "🌙 ปิดวันให้ดี ครบ %1$d วันแล้ว!"
+ },
+ "notif_streak_body_15": {
+  "fr": "Un peu d'entraînement avant le coucher est une belle façon de clore la journée. Votre enfant sera fier d'avoir tenu son rendez-vous.",
+  "es": "Una práctica rápida antes de dormir es una excelente forma de cerrar el día. Tu hijo o hija sentirá orgullo por haber cumplido.",
+  "pt": "Uma prática rápida antes de dormir é uma ótima forma de encerrar o dia. Seu filho vai se orgulhar de ter praticado.",
+  "tr": "Yatmadan önce kısa bir alıştırma, günü kapatmanın güçlü bir yoludur. Çocuğunuz yerini aldığı için kendisiyle gurur duyacak.",
+  "ru": "Короткая практика перед сном — отличный способ завершить день. Ваш ребёнок будет гордиться тем, что позанимался.",
+  "ja": "寝る前のひと練習は、一日を気持ちよく終えるのにぴったりです。取り組めたお子さまは、きっと誇らしい気持ちになります。",
+  "th": "การฝึกสั้น ๆ ก่อนนอนเป็นวิธีปิดวันที่ดีมาก ลูกจะภูมิใจที่ได้มาฝึก"
+ },
+ "notif_streak_title_16": {
+  "fr": "%1$d jours : l'habitude s'installe ! 🏅",
+  "es": "¡%1$d días: el hábito ya es real! 🏅",
+  "pt": "%1$d dias: o hábito é real! 🏅",
+  "tr": "%1$d gün, bu alışkanlık gerçek! 🏅",
+  "ru": "Серия: %1$d — привычка уже настоящая! 🏅",
+  "ja": "%1$d日、この習慣は本物です！🏅",
+  "th": "%1$d วัน นิสัยนี้เกิดขึ้นจริงแล้ว! 🏅"
+ },
+ "notif_streak_body_16": {
+  "fr": "L'entraînement devient une part de ce qu'est votre enfant. C'est précieux, et aujourd'hui est le bon moment pour le préserver.",
+  "es": "La práctica se está volviendo parte de quién es tu hijo o hija. Vale la pena protegerla hoy.",
+  "pt": "A prática está se tornando parte de quem seu filho é. Vale a pena proteger isso hoje.",
+  "tr": "Alıştırma, çocuğunuzun kim olduğunun bir parçası haline geliyor. Bugün korumaya değer bir şey bu.",
+  "ru": "Практика становится частью характера вашего ребёнка. Это стоит сберечь именно сегодня.",
+  "ja": "練習が、お子さまの日常の一部になりつつあります。今日も大切に守りたい習慣です。",
+  "th": "การฝึกกำลังกลายเป็นส่วนหนึ่งของตัวตนของลูก สิ่งนี้ควรค่าแก่การรักษาไว้ในวันนี้"
+ },
+ "notif_streak_title_17": {
+  "fr": "🔥 Rendez-vous du jour %1$d !",
+  "es": "🔥 ¡Pase de lista del día %1$d!",
+  "pt": "🔥 Check-in do dia %1$d!",
+  "tr": "🔥 %1$d. gün, bir uğrayın!",
+  "ru": "🔥 Отметимся? День %1$d!",
+  "ja": "🔥 %1$d日目のチェックインです！",
+  "th": "🔥 เช็กอินวันที่ %1$d!"
+ },
+ "notif_streak_body_17": {
+  "fr": "Les champions répondent présents chaque jour, même quand la vie est bien remplie. Votre enfant peut le faire aujourd'hui.",
+  "es": "Los campeones se presentan todos los días, incluso cuando la vida se complica. Tu hijo o hija puede lograrlo hoy.",
+  "pt": "Campeões aparecem todos os dias, mesmo quando a vida fica corrida. Seu filho consegue fazer isso hoje.",
+  "tr": "Şampiyonlar hayat yoğunlaşsa bile her gün yerini alır. Çocuğunuz bunu bugün de yapabilir.",
+  "ru": "Чемпионы занимаются каждый день, даже когда много дел. Ваш ребёнок может сделать это и сегодня.",
+  "ja": "チャンピオンは、忙しい日でも毎日取り組みます。お子さまなら、今日もきっとできます。",
+  "th": "แชมป์มาทุกวัน แม้ชีวิตจะยุ่งแค่ไหน วันนี้ลูกของคุณทำได้"
+ },
+ "notif_streak_title_18": {
+  "fr": "Jour %1$d : un as des maths en herbe ! 🧮",
+  "es": "Día %1$d: ¡futura mente matemática! 🧮",
+  "pt": "Dia %1$d: um futuro matemático em treino! 🧮",
+  "tr": "%1$d. gün, geleceğin matematikçisi yetişiyor! 🧮",
+  "ru": "День %1$d — будущий математик в деле! 🧮",
+  "ja": "%1$d日目、未来の数学者のたまご！🧮",
+  "th": "วันที่ %1$d นักคณิตศาสตร์ในอนาคต! 🧮"
+ },
+ "notif_streak_body_18": {
+  "fr": "Chaque séance affûte un peu plus l'esprit de votre enfant. Ce qui paraît petit aujourd'hui finit par devenir quelque chose d'extraordinaire.",
+  "es": "Cada sesión agudiza un poco más su mente. Lo que hoy parece pequeño se suma a algo extraordinario.",
+  "pt": "Cada sessão deixa a mente do seu filho um pouco mais afiada. O que parece pequeno hoje se soma a algo extraordinário.",
+  "tr": "Her alıştırma zihnini biraz daha keskinleştirir. Bugün küçük görünen şey, birikerek olağanüstü bir şeye dönüşür.",
+  "ru": "Каждое занятие чуть больше оттачивает ум. То, что сегодня кажется малым, складывается в нечто необыкновенное.",
+  "ja": "練習のたびに、お子さまの頭は少しずつ鋭くなります。今日の小さな一歩が、やがて大きな力になります。",
+  "th": "การฝึกแต่ละครั้งทำให้สมองเฉียบคมขึ้นอีกนิด สิ่งที่ดูเล็กน้อยวันนี้จะสะสมเป็นสิ่งที่ยอดเยี่ยม"
+ },
+ "notif_streak_title_19": {
+  "fr": "%1$d jours, et ça continue ! ✨",
+  "es": "¡%1$d días y contando! ✨",
+  "pt": "%1$d dias e contando! ✨",
+  "tr": "%1$d gün ve hâlâ devam! ✨",
+  "ru": "Серия: %1$d — и это не предел! ✨",
+  "ja": "%1$d日、まだまだ続いています！✨",
+  "th": "%1$d วันแล้ว และยังไปต่อ! ✨"
+ },
+ "notif_streak_body_19": {
+  "fr": "Votre enfant fait partie d'un petit groupe d'apprenants réguliers. C'est précieux et cela vaut la peine d'être préservé, surtout aujourd'hui.",
+  "es": "Tu hijo o hija forma parte de un grupo reducido de aprendices constantes. Vale la pena protegerlo, sobre todo hoy.",
+  "pt": "Seu filho faz parte de um grupo raro de alunos constantes. Vale a pena proteger isso, principalmente hoje.",
+  "tr": "Çocuğunuz, istikrarlı öğrenenlerden oluşan nadir bir grubun içinde. Bu, özellikle bugün korumaya değer.",
+  "ru": "Ваш ребёнок среди редких учеников, которые занимаются регулярно. Это стоит беречь, особенно сегодня.",
+  "ja": "コツコツ続けられるお子さまは、決して多くありません。今日もその習慣を大切に守りましょう。",
+  "th": "ลูกของคุณอยู่ในกลุ่มเล็ก ๆ ของผู้เรียนที่สม่ำเสมอ สิ่งนี้ควรค่าแก่การรักษาไว้ โดยเฉพาะวันนี้"
+ },
+ "notif_streak_title_20": {
+  "fr": "🌟 Jour %1$d : ne lâchez rien !",
+  "es": "🌟 Día %1$d: ¡no pares ahora!",
+  "pt": "🌟 Dia %1$d: não pare agora!",
+  "tr": "🌟 %1$d. gün, şimdi durmak yok!",
+  "ru": "🌟 День %1$d — не останавливаемся!",
+  "ja": "🌟 %1$d日目、止まらずに進もう！",
+  "th": "🌟 วันที่ %1$d อย่าเพิ่งหยุด!"
+ },
+ "notif_streak_body_20": {
+  "fr": "Vous avez tant investi dans l'apprentissage de votre enfant. La séance d'aujourd'hui est la manière la plus simple d'honorer cet effort.",
+  "es": "Has invertido mucho en el aprendizaje de tu hijo o hija. La práctica de hoy es la forma más sencilla de honrar ese esfuerzo.",
+  "pt": "Você investiu muito no aprendizado do seu filho. A prática de hoje é a forma mais simples de valorizar isso.",
+  "tr": "Çocuğunuzun öğrenmesine çok emek verdiniz. Bugünkü alıştırma, bu emeğe değer vermenin en kolay yolu.",
+  "ru": "Вы так много вложили в обучение своего ребёнка. Сегодняшняя практика — простой способ поддержать ваши усилия.",
+  "ja": "お子さまの学びのために、これまでたくさん力を注いでこられましたね。今日の練習は、その思いを形にするいちばん簡単な方法です。",
+  "th": "คุณทุ่มเทให้การเรียนของลูกมามาก การฝึกวันนี้คือวิธีง่ายที่สุดที่จะต่อยอดความตั้งใจนั้น"
+ },
+ "notif_weekly_title_1": {
+  "fr": "📊 Le rapport de la semaine de votre enfant",
+  "es": "📊 Informe semanal de tu hijo o hija",
+  "pt": "📊 Relatório semanal do seu filho",
+  "tr": "📊 Çocuğunuzun haftalık raporu",
+  "ru": "📊 Недельный отчёт вашего ребёнка",
+  "ja": "📊 お子さまの週間レポート",
+  "th": "📊 รายงานประจำสัปดาห์ของลูก"
+ },
+ "notif_weekly_title_2": {
+  "fr": "🌟 Une semaine d'apprentissage !",
+  "es": "🌟 ¡Una semana de aprendizaje!",
+  "pt": "🌟 Uma semana de aprendizado!",
+  "tr": "🌟 Dolu dolu bir öğrenme haftası!",
+  "ru": "🌟 Целая неделя занятий!",
+  "ja": "🌟 学びの1週間！",
+  "th": "🌟 หนึ่งสัปดาห์แห่งการเรียนรู้!"
+ },
+ "notif_weekly_title_3": {
+  "fr": "🎉 Les progrès de la semaine sont arrivés !",
+  "es": "🎉 ¡Ya está el progreso de la semana!",
+  "pt": "🎉 O progresso da semana chegou!",
+  "tr": "🎉 Bu haftanın gelişimi hazır!",
+  "ru": "🎉 Итоги недели готовы!",
+  "ja": "🎉 今週の成果が届きました！",
+  "th": "🎉 ความก้าวหน้าสัปดาห์นี้มาแล้ว!"
+ },
+ "notif_weekly_title_4": {
+  "fr": "📈 La semaine de votre enfant en un coup d'œil",
+  "es": "📈 La semana de tu hijo o hija en resumen",
+  "pt": "📈 A semana do seu filho em resumo",
+  "tr": "📈 Çocuğunuzun haftası bir bakışta",
+  "ru": "📈 Неделя вашего ребёнка: итоги",
+  "ja": "📈 お子さまの1週間のふり返り",
+  "th": "📈 สรุปสัปดาห์ของลูก"
+ },
+ "notif_weekly_title_5": {
+  "fr": "💪 Encore une belle semaine d'entraînement !",
+  "es": "💪 ¡Otra gran semana de práctica!",
+  "pt": "💪 Mais uma ótima semana de prática!",
+  "tr": "💪 Harika bir alıştırma haftası daha!",
+  "ru": "💪 Ещё одна отличная неделя практики!",
+  "ja": "💪 今週もよく練習できました！",
+  "th": "💪 อีกสัปดาห์ที่ฝึกได้ยอดเยี่ยม!"
+ },
+ "notif_weekly_body_1": {
+  "fr": "Cette semaine, votre enfant a résolu %1$s sur %2$s.",
+  "es": "Esta semana tu hijo o hija resolvió %1$s en %2$s.",
+  "pt": "Nesta semana, seu filho resolveu %1$s em %2$s.",
+  "tr": "Çocuğunuz bu hafta %2$s içinde %1$s çözdü.",
+  "ru": "На этой неделе ваш ребёнок решил %1$s за %2$s.",
+  "ja": "今週、お子さまは%2$sで%1$sを解きました。",
+  "th": "สัปดาห์นี้ลูกของคุณแก้%1$s ได้ในช่วง %2$s"
+ },
+ "notif_weekly_body_2": {
+  "fr": "Cette semaine, votre enfant s'est attaqué à %1$s sur %2$s : un bel effort !",
+  "es": "Con %1$s en %2$s esta semana, ¡qué esfuerzo tan maravilloso!",
+  "pt": "Nesta semana, seu filho enfrentou %1$s em %2$s. Que ótimo esforço!",
+  "tr": "Bu hafta %2$s boyunca %1$s çözüldü, harika bir emek!",
+  "ru": "%1$s за %2$s на этой неделе — прекрасная работа!",
+  "ja": "今週は%2$sで%1$sに挑戦しました。すばらしい頑張りです！",
+  "th": "สัปดาห์นี้ลูกลุย%1$s ตลอด %2$s ความพยายามยอดเยี่ยมมาก!"
+ },
+ "notif_weekly_body_3": {
+  "fr": "Une semaine bien remplie : %1$s sur %2$s d'entraînement.",
+  "es": "Una semana movida: %1$s en %2$s de práctica.",
+  "pt": "Semana cheia: %1$s em %2$s de prática.",
+  "tr": "Yoğun bir hafta oldu: %2$s boyunca %1$s çözüldü.",
+  "ru": "Насыщенная неделя: %1$s за %2$s практики.",
+  "ja": "充実した1週間でした。%2$sの練習で%1$sを解きました。",
+  "th": "สัปดาห์ที่คึกคัก ลูกฝึก %2$s และทำ%1$s"
+ },
+ "notif_weekly_body_4": {
+  "fr": "Cette semaine, votre enfant a traité %1$s sur %2$s.",
+  "es": "Tu hijo o hija completó %1$s en %2$s esta semana.",
+  "pt": "Seu filho fez %1$s ao longo de %2$s nesta semana.",
+  "tr": "Çocuğunuz bu hafta %2$s çalışarak %1$s çözdü.",
+  "ru": "На этой неделе ваш ребёнок занимался %2$s и разобрал %1$s.",
+  "ja": "今週、お子さまは%2$sにわたって%1$sを解き進めました。",
+  "th": "สัปดาห์นี้ลูกของคุณทำ%1$s ใน %2$s"
+ },
+ "notif_weekly_body_5": {
+  "fr": "Cette semaine : %2$s d'entraînement et %1$s au compteur !",
+  "es": "¡Tu hijo o hija practicó %2$s esta semana y resolvió %1$s!",
+  "pt": "%2$s de prática com %1$s nesta semana!",
+  "tr": "Bu hafta %2$s alıştırma yapıldı ve %1$s çözüldü!",
+  "ru": "%2$s практики на этой неделе — и %1$s позади!",
+  "ja": "今週は%2$s練習して、%1$sを解きました！",
+  "th": "สัปดาห์นี้ฝึก %2$s และแก้%1$s ได้เลย!"
+ },
+ "notif_weekly_closer_1": {
+  "fr": "Un peu d'entraînement cette semaine permet de garder l'élan.",
+  "es": "Un poco de práctica la semana que viene mantendrá el buen ritmo.",
+  "pt": "Um pouco de prática nesta semana mantém o embalo.",
+  "tr": "Bu hafta yapılacak küçük bir alıştırma ivmeyi sürdürür.",
+  "ru": "Немного практики каждый день поможет сохранить набранный темп.",
+  "ja": "今週も少し練習すれば、このよい流れを保てます。",
+  "th": "การฝึกอีกนิดในสัปดาห์นี้จะช่วยรักษาแรงส่งไว้ได้"
+ },
+ "notif_weekly_closer_2": {
+  "fr": "Continuez ainsi : chaque séance compte !",
+  "es": "¡Sigue así: cada sesión cuenta!",
+  "pt": "Continue assim: cada sessão conta!",
+  "tr": "Böyle devam edin, her alıştırma değerli!",
+  "ru": "Так держать, важно каждое занятие!",
+  "ja": "この調子で続けましょう。一回一回が力になります！",
+  "th": "รักษาจังหวะดี ๆ นี้ไว้ ทุกครั้งที่ฝึกมีความหมาย!"
+ },
+ "notif_weekly_closer_3": {
+  "fr": "Encouragez votre enfant pour une nouvelle belle semaine !",
+  "es": "¡Anima a tu hijo o hija a tener otra gran semana!",
+  "pt": "Incentive seu filho a ter mais uma ótima semana!",
+  "tr": "Bir harika hafta daha için ona destek olun!",
+  "ru": "Поддержите ребёнка, впереди ещё одна отличная неделя!",
+  "ja": "来週もすてきな1週間になるよう、応援してあげてください！",
+  "th": "มาเป็นกำลังใจให้ลูกมีอีกสัปดาห์ที่ยอดเยี่ยมกันเถอะ!"
+ },
+ "notif_weekly_closer_4": {
+  "fr": "De petits pas chaque jour mènent à de grands progrès.",
+  "es": "Pequeños pasos cada día suman un gran progreso.",
+  "pt": "Pequenos passos a cada dia levam a grandes progressos.",
+  "tr": "Her gün atılan küçük adımlar büyük bir gelişime dönüşür.",
+  "ru": "Маленькие шаги каждый день складываются в большой успех.",
+  "ja": "毎日の小さな一歩が、大きな成長につながります。",
+  "th": "ก้าวเล็ก ๆ ทุกวันสะสมเป็นความก้าวหน้าที่ยิ่งใหญ่"
+ },
+ "notif_weekly_generic_title_1": {
+  "fr": "📊 Rapport de progression hebdomadaire",
+  "es": "📊 Informe semanal de progreso",
+  "pt": "📊 Relatório semanal de progresso",
+  "tr": "📊 Haftalık gelişim raporu",
+  "ru": "📊 Недельный отчёт о прогрессе",
+  "ja": "📊 週間の学習レポート",
+  "th": "📊 รายงานความก้าวหน้าประจำสัปดาห์"
+ },
+ "notif_weekly_generic_body_1": {
+  "fr": "Voyez où en est votre enfant : ouvrez Abacus pour consulter son rapport de la semaine et poursuivez l'apprentissage ! 🌟",
+  "es": "¡Mira cómo le va a tu hijo o hija! Abre Abacus para ver su informe semanal y seguir aprendiendo. 🌟",
+  "pt": "Veja como seu filho está indo: abra o Abacus para ver o relatório semanal e manter o aprendizado em dia! 🌟",
+  "tr": "Çocuğunuzun nasıl gittiğini görün: haftalık raporu için Abacus'u açın ve öğrenmeyi sürdürün! 🌟",
+  "ru": "Узнайте, как дела у вашего ребёнка: откройте Abacus и посмотрите недельный отчёт. Продолжайте учиться вместе! 🌟",
+  "ja": "お子さまの様子を見てみませんか。Abacusを開いて週間レポートを確認し、学びを続けましょう！🌟",
+  "th": "มาดูกันว่าลูกเป็นอย่างไรบ้าง เปิด Abacus เพื่อดูรายงานประจำสัปดาห์ แล้วเรียนต่อไปด้วยกัน! 🌟"
+ },
+ "notif_weekly_generic_title_2": {
+  "fr": "🌟 Une nouvelle semaine commence !",
+  "es": "🌟 ¡Llega una semana nueva!",
+  "pt": "🌟 Uma nova semana começa!",
+  "tr": "🌟 Yepyeni bir hafta sizi bekliyor!",
+  "ru": "🌟 Новая неделя уже ждёт!",
+  "ja": "🌟 新しい1週間のはじまりです！",
+  "th": "🌟 สัปดาห์ใหม่กำลังรออยู่!"
+ },
+ "notif_weekly_generic_body_2": {
+  "fr": "Ouvrez Abacus avec votre enfant et construisez ensemble les progrès de cette semaine.",
+  "es": "Abre Abacus con tu hijo o hija y construyan juntos el progreso de esta semana.",
+  "pt": "Abra o Abacus com seu filho e comecem a construir juntos o progresso desta semana.",
+  "tr": "Çocuğunuzla birlikte Abacus'u açın ve bu haftanın gelişimini birlikte oluşturmaya başlayın.",
+  "ru": "Откройте Abacus вместе с ребёнком и начните копить успехи этой недели.",
+  "ja": "お子さまと一緒にAbacusを開いて、今週の成長を積み重ねていきましょう。",
+  "th": "เปิด Abacus กับลูก แล้วสร้างความก้าวหน้าของสัปดาห์นี้ไปด้วยกัน"
+ },
+ "notif_weekly_generic_title_3": {
+  "fr": "📈 C'est l'heure du rapport de la semaine",
+  "es": "📈 Es hora del informe semanal",
+  "pt": "📈 Hora do relatório da semana",
+  "tr": "📈 Bu haftanın raporu zamanı",
+  "ru": "📈 Пора взглянуть на отчёт за неделю",
+  "ja": "📈 今週のレポートをチェック",
+  "th": "📈 ถึงเวลารายงานของสัปดาห์นี้"
+ },
+ "notif_weekly_generic_body_3": {
+  "fr": "Touchez pour ouvrir Abacus et voir où en est l'apprentissage de votre enfant cette semaine.",
+  "es": "Toca para abrir Abacus y ver cómo va el aprendizaje de tu hijo o hija esta semana.",
+  "pt": "Toque para abrir o Abacus e ver como está o aprendizado do seu filho nesta semana.",
+  "tr": "Abacus'u açmak için dokunun ve çocuğunuzun bu haftaki öğrenmesinin nasıl gittiğini görün.",
+  "ru": "Нажмите, чтобы открыть Abacus и узнать, как ваш ребёнок учится на этой неделе.",
+  "ja": "タップしてAbacusを開き、今週のお子さまの学習の様子を見てみましょう。",
+  "th": "แตะเพื่อเปิด Abacus และดูว่าสัปดาห์นี้ลูกเรียนเป็นอย่างไรบ้าง"
+ },
+ "notif_channel_streak_name": {
+  "fr": "Rappel de série quotidienne",
+  "es": "Recordatorio de racha diaria",
+  "pt": "Lembrete da sequência diária",
+  "tr": "Günlük seri hatırlatıcısı",
+  "ru": "Напоминание о серии",
+  "ja": "毎日の連続学習リマインダー",
+  "th": "เตือนการเรียนต่อเนื่องรายวัน"
+ },
+ "notif_channel_streak_desc": {
+  "fr": "Vous aide à garder votre série d'apprentissage en cours",
+  "es": "Te recuerda mantener la racha de aprendizaje",
+  "pt": "Lembra você de manter a sequência de aprendizado",
+  "tr": "Öğrenme serisini sürdürmeyi hatırlatır",
+  "ru": "Напоминает продолжить серию занятий",
+  "ja": "学習の連続日数を続けられるようにお知らせします",
+  "th": "เตือนให้รักษาความต่อเนื่องในการเรียนไว้"
+ },
+ "notif_channel_weekly_name": {
+  "fr": "Rapport de progression hebdomadaire",
+  "es": "Informe semanal de progreso",
+  "pt": "Relatório semanal de progresso",
+  "tr": "Haftalık gelişim raporu",
+  "ru": "Недельный отчёт о прогрессе",
+  "ja": "週間学習レポート",
+  "th": "รายงานความก้าวหน้าประจำสัปดาห์"
+ },
+ "notif_channel_weekly_desc": {
+  "fr": "Un résumé hebdomadaire des progrès de votre enfant",
+  "es": "Un resumen semanal del progreso de aprendizaje de tu hijo o hija",
+  "pt": "Um resumo semanal do progresso de aprendizado do seu filho",
+  "tr": "Çocuğunuzun öğrenme gelişiminin haftalık özeti",
+  "ru": "Сводка за неделю об успехах вашего ребёнка",
+  "ja": "お子さまの学習の進み具合を、週ごとにまとめてお知らせします",
+  "th": "สรุปความก้าวหน้าในการเรียนของลูกทุกสัปดาห์"
+ },
+ "notif_channel_free_name": {
+  "fr": "Rappels d'accès gratuit",
+  "es": "Recordatorios de acceso gratuito",
+  "pt": "Lembretes do acesso grátis",
+  "tr": "Ücretsiz erişim hatırlatıcıları",
+  "ru": "Напоминания о бесплатном доступе",
+  "ja": "無料期間のお知らせ",
+  "th": "เตือนสิทธิ์ใช้ฟรี"
+ },
+ "notif_channel_free_desc": {
+  "fr": "Vous prévient quand la semaine gratuite d'une nouvelle installation touche à sa fin",
+  "es": "Te avisa cuando está por terminar la semana gratis de una instalación nueva",
+  "pt": "Avisa pai ou mãe quando a semana grátis de uma nova instalação está acabando",
+  "tr": "Yeni kurulumun ücretsiz haftası bitmeden önce ebeveyne haber verir",
+  "ru": "Сообщает родителю, что бесплатная неделя после установки скоро закончится",
+  "ja": "インストール後の無料の1週間がもうすぐ終わるときに、保護者の方にお知らせします",
+  "th": "แจ้งผู้ปกครองเมื่อสัปดาห์ฟรีหลังติดตั้งแอปใกล้สิ้นสุด"
+ },
+ "notif_free_last_day": {
+  "fr": "Dernier jour gratuit",
+  "es": "Último día gratis",
+  "pt": "Último dia grátis",
+  "tr": "Son ücretsiz gün",
+  "ru": "Последний бесплатный день",
+  "ja": "無料期間の最終日",
+  "th": "วันฟรีวันสุดท้าย"
+ },
+ "notif_free_body": {
+  "fr": "Gardez tous les niveaux, jeux et rapports de progression. Découvrez les offres et choisissez-en une.",
+  "es": "Conserva todos los niveles, juegos e informes de progreso. Mira los planes y elige uno.",
+  "pt": "Mantenha todos os níveis, jogos e relatórios de progresso. Veja os planos e escolha um.",
+  "tr": "Tüm seviyeleri, oyunları ve ilerleme raporlarını koruyun. Planlara göz atın ve birini seçin.",
+  "ru": "Сохраните все уровни, игры и отчёты о прогрессе. Посмотрите тарифы и выберите подходящий.",
+  "ja": "すべてのレベル・ゲーム・レポートを使い続けるために、プランを見て選びましょう。",
+  "th": "เก็บทุกระดับ ทุกเกม และรายงานความก้าวหน้าไว้ ดูแพ็กเกจแล้วเลือกได้เลย"
+ },
+ "share_app_message": {
+  "fr": "🔢🧮 Développez les compétences en maths avec « Abacus Child Learning App » : là où les maths rencontrent la magie ! 📱✨\n\nRévélez le génie des maths de votre enfant avec notre application d'apprentissage du boulier. Découvrez la magie du calcul au boulier et regardez votre enfant progresser en s'amusant ! 🧮🌈\n\n🔗 Téléchargez l'application dès maintenant sur Google Play : %1$s\n\n🎉 Que votre enfant débute ou souhaite renforcer son niveau en maths, « Abacus Child Learning Application » propose :\n\n- Les notions de base des maths, apprises facilement\n- De solides compétences de résolution de problèmes\n- Plus de concentration et d'agilité mentale\n- Des leçons de boulier captivantes pour maîtriser le calcul mental\n- Des jeux et défis de maths amusants et interactifs\n- Un apprentissage personnalisé, adapté au rythme de chaque enfant\n- Des activités de maths qui donnent confiance\n\n🧙‍♂️ Faites des maths une belle aventure avec « Abacus Child Learning Application ». Rejoignez-nous pour donner aux enfants le goût des nombres et préparer leur réussite scolaire.\n\nNe manquez pas cette belle aventure : partagez-la avec d'autres parents et enseignants. Faisons grandir ensemble la prochaine génération de petits as des maths !",
+  "es": "🔢🧮 Potencia las habilidades matemáticas con «Abacus Child Learning App»: ¡donde las matemáticas se vuelven magia! 📱✨\n\nDescubre el talento matemático de tu hijo o hija con nuestra aplicación inmersiva Abacus Child Learning App. Vive la magia de las matemáticas con el ábaco y mira cómo tu hijo o hija mejora en los cálculos mientras se divierte muchísimo. 🧮🌈\n\n🔗 Descarga la app ahora en Google Play Store: %1$s\n\n🎉 Ya sea que tu hijo o hija esté empezando o quiera mejorar sus habilidades matemáticas, «Abacus Child Learning Application» ofrece:\n\n- Aprender los conceptos matemáticos básicos con facilidad\n- Desarrollar sólidas habilidades para resolver problemas\n- Mejorar la concentración y la agilidad mental\n- Lecciones de ábaco atractivas para dominar el cálculo mental\n- Juegos y retos de matemáticas divertidos e interactivos\n- Aprendizaje personalizado que se adapta al ritmo de cada niño o niña\n- Actividades matemáticas que fortalecen la confianza\n\n🧙‍♂️ Convierte las matemáticas en una aventura emocionante con «Abacus Child Learning Application». Únete a nosotros para fomentar el amor por los números y preparar el camino hacia el éxito académico.\n\nNo te pierdas esta extraordinaria aventura matemática: compártela con otros padres y educadores. ¡Juntos impulsemos a la próxima generación de genios de las matemáticas!",
+  "pt": "🔢🧮 Desenvolva as habilidades matemáticas com o \"Abacus Child Learning App\" – onde a matemática encontra a magia! 📱✨\n\nDescubra todo o potencial matemático do seu filho com nosso aplicativo de ábaco imersivo. Viva o encanto da matemática com ábaco e veja seu filho se destacar nas contas enquanto se diverte muito! 🧮🌈\n\n🔗 Baixe o app agora na Google Play Store: %1$s\n\n🎉 Seu filho está começando ou quer aprimorar a matemática? O \"Abacus Child Learning Application\" oferece:\n\n- Conceitos básicos de matemática aprendidos com facilidade\n- Fortes habilidades de resolução de problemas\n- Mais concentração e agilidade mental\n- Aulas de ábaco envolventes para dominar o cálculo mental\n- Jogos e desafios de matemática divertidos e interativos\n- Aprendizado personalizado, no ritmo de cada criança\n- Atividades de matemática que fortalecem a confiança\n\n🧙‍♂️ Transforme a matemática em uma aventura emocionante com o \"Abacus Child Learning Application\". Junte-se a nós para despertar o amor pelos números e preparar o caminho para o sucesso escolar.\n\nNão perca: compartilhe essa incrível jornada matemática com outros pais e educadores. Juntos, vamos fortalecer a próxima geração de mágicos da matemática!",
+  "tr": "🔢🧮 \"Abacus Child Learning App\" ile matematik becerilerini geliştirin: matematik ile büyü burada buluşuyor! 📱✨\n\nÇocuğunuzun matematik dehasını sürükleyici abaküs öğrenme uygulamamızla ortaya çıkarın. Abaküs matematiğinin büyüsünü yaşayın ve çocuğunuzun eğlenirken hesaplamalarda nasıl parladığını izleyin! 🧮🌈\n\n🔗 Uygulamayı şimdi Google Play Store'dan indirin: %1$s\n\n🎉 Çocuğunuz yeni başlıyor da olsa matematik gücünü artırmak istiyor da olsa, \"Abacus Child Learning Application\" size şunları sunuyor:\n\n- Temel matematik kavramlarını kolayca öğrenme\n- Güçlü problem çözme becerileri geliştirme\n- Dikkati ve zihinsel çevikliği artırma\n- Zihinden hesapta ustalaşmak için ilgi çekici abaküs dersleri\n- Eğlenceli ve etkileşimli matematik oyunları ve meydan okumalar\n- Her çocuğun hızına uyan kişiselleştirilmiş öğrenme\n- Özgüven kazandıran matematik etkinlikleri\n\n🧙‍♂️ \"Abacus Child Learning Application\" ile matematiği heyecan dolu bir maceraya dönüştürün. Sayıları sevmeyi birlikte besleyelim ve akademik başarının temelini atalım.\n\nKaçırmayın: bu harika matematik yolculuğunu diğer ebeveynler ve eğitimcilerle paylaşın. Yeni nesil matematik sihirbazlarını birlikte güçlendirelim!",
+  "ru": "🔢🧮 Развивайте математику с «Abacus Child Learning App» — там, где математика встречается с волшебством! 📱✨\n\nРаскройте математический талант вашего ребёнка с нашим увлекательным приложением Abacus Child Learning App. Почувствуйте магию абакуса и наблюдайте, как ваш ребёнок с азартом осваивает вычисления! 🧮🌈\n\n🔗 Скачайте приложение прямо сейчас в Google Play: %1$s\n\n🎉 Неважно, новичок ваш ребёнок или хочет улучшить свои навыки, «Abacus Child Learning Application» предлагает:\n\n- Лёгкое освоение основных понятий математики\n- Сильные навыки решения задач\n- Больше внимания и гибкости ума\n- Увлекательные уроки на абакусе для мастерства в устном счёте\n- Весёлые интерактивные математические игры и задания\n- Обучение в индивидуальном темпе каждого ребёнка\n- Занятия, которые укрепляют уверенность в себе\n\n🧙‍♂️ Сделайте математику увлекательным приключением с «Abacus Child Learning Application». Вместе мы воспитаем любовь к числам и заложим основу успешной учёбы.\n\nНе упустите возможность: поделитесь этим удивительным математическим путешествием с другими родителями и педагогами. Вместе мы поддержим новое поколение юных математиков!",
+  "ja": "🔢🧮 \"Abacus Child Learning App\"で算数力アップ！算数が魔法のように楽しくなります！📱✨\n\nお子さまの算数の才能を、夢中になれるそろばんアプリで引き出しませんか。そろばん算数のワクワクを体験して、楽しみながら計算が得意になっていくお子さまを見守りましょう！🧮🌈\n\n🔗 Google Playストアで今すぐダウンロード：%1$s\n\n🎉 はじめての子も、もっと算数を伸ばしたい子も。\"Abacus Child Learning App\"でできること：\n\n- 算数の基本をやさしく学べる\n- 問題を解く力が身につく\n- 集中力と頭の回転が高まる\n- 暗算が身につく、楽しいそろばんレッスン\n- 楽しく遊べる算数ゲームとチャレンジ\n- 一人ひとりのペースに合わせた学習\n- 自信がつく算数アクティビティ\n\n🧙‍♂️ \"Abacus Child Learning App\"で、算数をワクワクの冒険に変えましょう。数を好きになる気持ちを育て、将来の学びの土台をつくります。\n\nぜひ、ほかの保護者の方や先生にも、この算数の旅を教えてあげてください。次世代の算数の魔法使いを、みんなで応援しましょう！",
+  "th": "🔢🧮 พัฒนาทักษะคณิตศาสตร์ด้วย \"Abacus Child Learning App\" – เมื่อคณิตศาสตร์พบกับเวทมนตร์! 📱✨\n\nปลุกพรสวรรค์ด้านคณิตศาสตร์ของลูกด้วยแอปเรียนลูกคิดสำหรับเด็กที่สนุกและน่าตื่นเต้น สัมผัสเสน่ห์ของลูกคิด แล้วดูลูกคิดเลขเก่งขึ้นไปพร้อมกับความสนุก! 🧮🌈\n\n🔗 ดาวน์โหลดแอปได้เลยที่ Google Play Store: %1$s\n\n🎉 ไม่ว่าลูกจะเป็นมือใหม่หรืออยากเก่งคณิตศาสตร์ยิ่งขึ้น \"Abacus Child Learning Application\" มีให้ครบ:\n\n- เรียนแนวคิดคณิตศาสตร์พื้นฐานได้ง่าย ๆ\n- พัฒนาทักษะการแก้โจทย์ปัญหา\n- เสริมสมาธิและความคล่องแคล่วทางความคิด\n- บทเรียนลูกคิดสนุก ๆ ช่วยให้คิดเลขในใจเก่ง\n- เกมและความท้าทายคณิตศาสตร์ที่สนุกและโต้ตอบได้\n- การเรียนที่ปรับตามจังหวะของเด็กแต่ละคน\n- กิจกรรมคณิตศาสตร์ที่สร้างความมั่นใจ\n\n🧙‍♂️ ทำให้คณิตศาสตร์เป็นการผจญภัยที่น่าตื่นเต้นไปกับ \"Abacus Child Learning Application\" มาร่วมปลูกฝังความรักในตัวเลข และปูทางสู่ความสำเร็จทางการเรียนกันเถอะ\n\nอย่าพลาด ร่วมแบ่งปันการเดินทางคณิตศาสตร์สุดวิเศษนี้ให้ผู้ปกครองและคุณครูท่านอื่น มาช่วยกันสร้างพ่อมดคณิตศาสตร์รุ่นใหม่ไปด้วยกัน!"
+ },
+ "purchase_dates_subscribed": {
+  "fr": "<b>Abonné le : </b>%1$s<br/><b>Expire le : </b>%2$s",
+  "es": "<b>Suscrito el: </b>%1$s<br/><b>Vence el: </b>%2$s",
+  "pt": "<b>Assinado em: </b>%1$s<br/><b>Expira em: </b>%2$s",
+  "tr": "<b>Abonelik başlangıcı: </b>%1$s<br/><b>Bitiş tarihi: </b>%2$s",
+  "ru": "<b>Оформлена: </b>%1$s<br/><b>Действует до: </b>%2$s",
+  "ja": "<b>購読開始日：</b>%1$s<br/><b>有効期限：</b>%2$s",
+  "th": "<b>สมัครเมื่อ : </b>%1$s<br/><b>หมดอายุเมื่อ : </b>%2$s"
+ },
+ "purchase_dates_purchased": {
+  "fr": "<b>Acheté le : </b>%1$s",
+  "es": "<b>Comprado el: </b>%1$s",
+  "pt": "<b>Comprado em: </b>%1$s",
+  "tr": "<b>Satın alma tarihi: </b>%1$s",
+  "ru": "<b>Куплено: </b>%1$s",
+  "ja": "<b>購入日：</b>%1$s",
+  "th": "<b>ซื้อเมื่อ : </b>%1$s"
+ },
+ "notif_weekly_problems": {
+  "plural": {
+   "fr": {
+    "one": "%1$d problème",
+    "many": "%1$d problèmes",
+    "other": "%1$d problèmes"
+   },
+   "es": {
+    "one": "%1$d problema",
+    "many": "%1$d problemas",
+    "other": "%1$d problemas"
+   },
+   "pt": {
+    "one": "%1$d problema",
+    "many": "%1$d problemas",
+    "other": "%1$d problemas"
+   },
+   "tr": {
+    "one": "%1$d problem",
+    "other": "%1$d problem"
+   },
+   "ru": {
+    "one": "%1$d пример",
+    "few": "%1$d примера",
+    "many": "%1$d примеров",
+    "other": "%1$d примера"
+   },
+   "ja": {
+    "other": "%1$d問"
+   },
+   "th": {
+    "other": "โจทย์ %1$d ข้อ"
+   }
+  }
+ },
+ "notif_weekly_days": {
+  "plural": {
+   "fr": {
+    "one": "%1$d jour",
+    "many": "%1$d jours",
+    "other": "%1$d jours"
+   },
+   "es": {
+    "one": "%1$d día",
+    "many": "%1$d días",
+    "other": "%1$d días"
+   },
+   "pt": {
+    "one": "%1$d dia",
+    "many": "%1$d dias",
+    "other": "%1$d dias"
+   },
+   "tr": {
+    "one": "%1$d gün",
+    "other": "%1$d gün"
+   },
+   "ru": {
+    "one": "%1$d день",
+    "few": "%1$d дня",
+    "many": "%1$d дней",
+    "other": "%1$d дня"
+   },
+   "ja": {
+    "other": "%1$d日間"
+   },
+   "th": {
+    "other": "%1$d วัน"
+   }
+  }
+ },
+ "notif_weekly_streak": {
+  "plural": {
+   "fr": {
+    "one": "Votre enfant est sur une série de %1$d jour ! 🔥",
+    "many": "Votre enfant est sur une série de %1$d jours ! 🔥",
+    "other": "Votre enfant est sur une série de %1$d jours ! 🔥"
+   },
+   "es": {
+    "one": "¡Su racha ya es de %1$d día! 🔥",
+    "many": "¡Su racha ya es de %1$d días! 🔥",
+    "other": "¡Su racha ya es de %1$d días! 🔥"
+   },
+   "pt": {
+    "one": "Sequência de %1$d dia! 🔥",
+    "many": "Sequência de %1$d dias! 🔥",
+    "other": "Sequência de %1$d dias! 🔥"
+   },
+   "tr": {
+    "one": "%1$d günlük seri devam ediyor! 🔥",
+    "other": "%1$d günlük seri devam ediyor! 🔥"
+   },
+   "ru": {
+    "one": "Серия: %1$d день подряд! 🔥",
+    "few": "Серия: %1$d дня подряд! 🔥",
+    "many": "Серия: %1$d дней подряд! 🔥",
+    "other": "Серия: %1$d дня подряд! 🔥"
+   },
+   "ja": {
+    "other": "いま%1$d日連続中です！🔥"
+   },
+   "th": {
+    "other": "ฝึกต่อเนื่องกัน %1$d วันแล้ว! 🔥"
+   }
+  }
+ },
+ "notif_free_days_left": {
+  "plural": {
+   "fr": {
+    "one": "%1$d jour gratuit restant",
+    "many": "%1$d jours gratuits restants",
+    "other": "%1$d jours gratuits restants"
+   },
+   "es": {
+    "one": "Queda %1$d día gratis",
+    "many": "Quedan %1$d días gratis",
+    "other": "Quedan %1$d días gratis"
+   },
+   "pt": {
+    "one": "Resta %1$d dia grátis",
+    "many": "Restam %1$d dias grátis",
+    "other": "Restam %1$d dias grátis"
+   },
+   "tr": {
+    "one": "%1$d ücretsiz gün kaldı",
+    "other": "%1$d ücretsiz gün kaldı"
+   },
+   "ru": {
+    "one": "Остался %1$d бесплатный день",
+    "few": "Осталось %1$d бесплатных дня",
+    "many": "Осталось %1$d бесплатных дней",
+    "other": "Осталось %1$d бесплатных дня"
+   },
+   "ja": {
+    "other": "無料期間はあと%1$d日"
+   },
+   "th": {
+    "other": "เหลือใช้ฟรีอีก %1$d วัน"
+   }
+  }
+ }
+}

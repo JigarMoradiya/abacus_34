@@ -16,6 +16,7 @@ import com.jigar.me.ui.view.home.HomeActivity
 import com.jigar.me.utils.WeeklySummaryManager
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import com.jigar.me.utils.inAppLanguage
 
 @HiltWorker
 class WeeklySummaryWorker @AssistedInject constructor(
@@ -37,9 +38,9 @@ class WeeklySummaryWorker @AssistedInject constructor(
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 CHANNEL_ID,
-                "Weekly Progress Report",
+                appContext.inAppLanguage().getString(R.string.notif_channel_weekly_name),
                 NotificationManager.IMPORTANCE_DEFAULT
-            ).apply { description = "A weekly summary of your child's learning progress" }
+            ).apply { description = appContext.inAppLanguage().getString(R.string.notif_channel_weekly_desc) }
             manager.createNotificationChannel(channel)
         }
 
@@ -51,7 +52,7 @@ class WeeklySummaryWorker @AssistedInject constructor(
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        val (title, message) = WeeklySummaryManager.notificationContent(prefs)
+        val (title, message) = WeeklySummaryManager.notificationContent(appContext, prefs)
 
         val notification = NotificationCompat.Builder(appContext, CHANNEL_ID)
             .setSmallIcon(R.drawable.logo_small)

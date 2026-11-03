@@ -462,7 +462,7 @@ private fun PurchaseKitPlanCard(
                     }
                     isPurchased -> {
                         Text(
-                            CommonUtils.htmlToAnnotatedString(CommonUtils.getPurchaseTime(plan.type, plan.purchaseTime, plan.billingPeriod) ?: ""),
+                            CommonUtils.htmlToAnnotatedString(CommonUtils.getPurchaseTime(androidx.compose.ui.platform.LocalContext.current, plan.type, plan.purchaseTime, plan.billingPeriod) ?: ""),
                             style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = ink,
                         )
                     }

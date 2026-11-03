@@ -32,6 +32,7 @@ import com.revenuecat.purchases.models.StoreTransaction
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.jigar.me.utils.RemoteText
 
 @HiltViewModel
 class PurchaseViewModel @Inject constructor(
@@ -79,7 +80,7 @@ class PurchaseViewModel @Inject constructor(
                 planListAssignFromAdmin = adminPlanList,
                 yearPlanAssignFromAdmin = yearPlanFromAdmin,
                 allPlanAssignFromAdmin = allPlanFromAdmin,
-                socialProofText = prefManager.getCustomParam(AppConstants.RemoteConfig.paywallSocialProof, ""),
+                socialProofText = RemoteText.read(prefManager, AppConstants.RemoteConfig.paywallSocialProof),
                 isLoading = true,
                 error = null,
             )

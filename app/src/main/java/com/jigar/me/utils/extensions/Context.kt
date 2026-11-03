@@ -302,25 +302,7 @@ fun Context.openURL(url : String) {
 fun Context.shareIntent() {
 //    val txt = getString(R.string.share_text_msg)
 //    val msg = txt + "\nhttps://play.google.com/store/apps/details?id=${packageName}"
-    val msg = "\uD83D\uDD22\uD83E\uDDEE Elevate Math Skills with \"Abacus Child Learning App\" – Where Math Meets Magic! \uD83D\uDCF1✨" +
-            "\n\n" +
-            "Unlock the potential of your child's math genius with our immersive Abacus Child Learning App. Experience the enchantment of abacus math and watch your child excel in calculations while having a blast! \uD83E\uDDEE\uD83C\uDF08" +
-            "\n\n" +
-            "\uD83D\uDD17 Download the App Now on the Google Play Store: https://play.google.com/store/apps/details?id=${packageName}" +
-            "\n\n" +
-            "\uD83C\uDF89 Whether your child is a beginner or looking to enhance their math prowess, \"Abacus Child Learning Application\" offers:\n" +
-            "\n" +
-            "- Learn fundamental math concepts with ease\n" +
-            "- Develop strong problem-solving skills\n" +
-            "- Boost concentration and mental agility\n" +
-            "- Engaging abacus lessons for mental math mastery\n" +
-            "- Fun and interactive math games and challenges\n" +
-            "- Personalized learning to cater to each child's pace\n" +
-            "- Confidence-building math activities\n" +
-            "\n" +
-            "\uD83E\uDDD9\u200D♂️ Make math an exciting adventure with the \"Abacus Child Learning Application.\" Join us in nurturing a love for numbers and setting the stage for academic success.\n" +
-            "\n" +
-            "Don't miss out – share this remarkable math journey with fellow parents and educators. Let's empower the next generation of math wizards together!"
+    val msg = getString(R.string.share_app_message, "https://play.google.com/store/apps/details?id=$packageName")
     val sharingIntent = Intent(Intent.ACTION_SEND)
     sharingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     sharingIntent.type = "text/plain"

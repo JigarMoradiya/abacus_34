@@ -19,6 +19,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
+import com.jigar.me.utils.RemoteText
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
@@ -107,6 +108,8 @@ class SplashViewModel @Inject constructor(
             setCustomParam(AppConstants.RemoteConfig.displayPlanList, displayPlan)
             setCustomParam(AppConstants.RemoteConfig.displayMenuList, displayMenu)
             setCustomParam(AppConstants.RemoteConfig.paywallSocialProof, paywallSocialProof)
+            // the same texts in the other languages: key_fr, key_es ... (empty when the console has none, the English text is shown then)
+            RemoteText.translatedKeys.flatMap { RemoteText.languageKeys(it) }.forEach { setCustomParam(it, remoteConfig.getString(it)) }
             setCustomParam(AppConstants.RemoteConfig.homeOffer, homeOffer)
             setCustomParamInt(AppConstants.RemoteConfig.freemiumDays, freemiumDays.toInt())
             setCustomParamInt(AppConstants.RemoteConfig.freeCoreAfterWindow, freeCore.toInt())

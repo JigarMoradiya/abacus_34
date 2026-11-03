@@ -16,6 +16,7 @@ import com.jigar.me.ui.view.home.HomeActivity
 import com.jigar.me.utils.StreakManager
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import com.jigar.me.utils.inAppLanguage
 
 @HiltWorker
 class StreakNotificationWorker @AssistedInject constructor(
@@ -28,7 +29,7 @@ class StreakNotificationWorker @AssistedInject constructor(
         val data = StreakManager.read(prefs)
 
         // In test mode always show; in production only if user hasn't opened the app today
-        if (StreakManager.TEST_NOTIFICATION || data.lastActivityDate != StreakManager.today()) {
+        if (StreakManager.TEST_NOTIFICATION || StreakManager.debugShowNow || data.lastActivityDate != StreakManager.today()) {
             showNotification(data.currentStreak)
         }
 
@@ -43,9 +44,9 @@ class StreakNotificationWorker @AssistedInject constructor(
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 CHANNEL_ID,
-                "Daily Streak Reminder",
+                appContext.inAppLanguage().getString(R.string.notif_channel_streak_name),
                 NotificationManager.IMPORTANCE_DEFAULT
-            ).apply { description = "Reminds you to keep your learning streak going" }
+            ).apply { description = appContext.inAppLanguage().getString(R.string.notif_channel_streak_desc) }
             manager.createNotificationChannel(channel)
         }
 
@@ -57,7 +58,7 @@ class StreakNotificationWorker @AssistedInject constructor(
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        val (title, message) = StreakManager.notificationContent(currentStreak)
+        val (title, message) = StreakManager.notificationContent(appContext, currentStreak)
 
         val notification = NotificationCompat.Builder(appContext, CHANNEL_ID)
             .setSmallIcon(R.drawable.logo_small)

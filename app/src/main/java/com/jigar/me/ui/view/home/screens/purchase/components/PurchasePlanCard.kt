@@ -197,7 +197,7 @@ fun PurchasePlanCard(
                     Spacer(Modifier.height(AppDimens.Dimens4))
                     Text(
                         text = CommonUtils.htmlToAnnotatedString(
-                            CommonUtils.getPurchaseTime(plan.type, plan.purchaseTime, plan.billingPeriod) ?: ""
+                            CommonUtils.getPurchaseTime(androidx.compose.ui.platform.LocalContext.current, plan.type, plan.purchaseTime, plan.billingPeriod) ?: ""
                         ),
                         style = MaterialTheme.typography.labelMedium.copy(
                             color = Color.Black, fontWeight = FontWeight.Normal,

@@ -15,6 +15,7 @@ import com.jigar.me.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.jigar.me.utils.RemoteText
 
 @HiltViewModel
 class LoginHomeViewModel @Inject constructor(
@@ -37,8 +38,8 @@ class LoginHomeViewModel @Inject constructor(
     private fun loadRemoteContent() {
         updateState_ {
             copy(
-                notesHtml = prefs.getCustomParam(AppConstants.RemoteConfig.newVersionNotes, ""),
-                bulkLoginHtml = prefs.getCustomParam(AppConstants.RemoteConfig.bulkLogin, ""),
+                notesHtml = RemoteText.read(prefs, AppConstants.RemoteConfig.newVersionNotes),
+                bulkLoginHtml = RemoteText.read(prefs, AppConstants.RemoteConfig.bulkLogin),
                 privacyPolicyUrl = prefs.getCustomParam(AppConstants.RemoteConfig.privacyPolicyUrl, ""),
             )
         }
