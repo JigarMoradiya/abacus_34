@@ -52,6 +52,9 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.pluralStringResource
+import com.jigar.me.R
 
 // One-time emotional review ask shown on day 2 of usage. Same "Candy Pop"
 // visual system as ReviewGateBottomSheet, but swaps the smiley + Yes/No
@@ -185,7 +188,7 @@ fun Day2ReviewGateBottomSheet(
         Spacer(modifier = Modifier.height(Dimens12))
 
         Text(
-            text = "Help Us Grow! 🌱",
+            text = stringResource(R.string.review_day2_title),
             style = MaterialTheme.typography.titleMedium.scaled().copy(
                 shadow = Shadow(
                     color = accentBase.copy(alpha = 0.85f),
@@ -201,7 +204,7 @@ fun Day2ReviewGateBottomSheet(
         Spacer(modifier = Modifier.height(Dimens8))
 
         Text(
-            text = "Your rating helps other parents find us and helps us keep improving!",
+            text = stringResource(R.string.review_day2_message),
             style = MaterialTheme.typography.bodyMedium.scaled(),
             color = Color.White.copy(alpha = 0.92f),
             textAlign = TextAlign.Center,
@@ -226,7 +229,7 @@ fun Day2ReviewGateBottomSheet(
                 )
                 Icon(
                     imageVector = if (filled) Icons.Filled.Star else Icons.Outlined.StarBorder,
-                    contentDescription = "$star star",
+                    contentDescription = pluralStringResource(R.plurals.review_stars, star, star),
                     tint = Color.White,
                     modifier = Modifier
                         .size(32.dp)

@@ -1,0 +1,565 @@
+{
+ "alert": {
+  "fr": "Alerte",
+  "es": "Alerta",
+  "pt": "Alerta",
+  "tr": "Uyarı",
+  "ru": "Внимание",
+  "ja": "お知らせ",
+  "th": "แจ้งเตือน",
+  "ar": "تنبيه"
+ },
+ "app_update": {
+  "fr": "Nouvelle mise à jour !",
+  "es": "¡Nueva actualización!",
+  "pt": "Nova atualização!",
+  "tr": "Yeni güncelleme!",
+  "ru": "Новое обновление!",
+  "ja": "新しいアップデート！",
+  "th": "มีอัปเดตใหม่!",
+  "ar": "تحديث جديد!"
+ },
+ "badge_made_in_india": {
+  "fr": "Fabriqué en Inde",
+  "es": "Hecho en la India",
+  "pt": "Feito na Índia",
+  "tr": "Hindistan'da yapıldı",
+  "ru": "Сделано в Индии",
+  "ja": "インド製",
+  "th": "ผลิตในอินเดีย",
+  "ar": "صُنع في الهند"
+ },
+ "badge_safe_ad_free": {
+  "fr": "Sûr et sans pub",
+  "es": "Seguro y sin anuncios",
+  "pt": "Seguro e sem anúncios",
+  "tr": "Güvenli ve reklamsız",
+  "ru": "Безопасно и без рекламы",
+  "ja": "安心・広告なし",
+  "th": "ปลอดภัย ไม่มีโฆษณา",
+  "ar": "آمن وبدون إعلانات"
+ },
+ "cancel": {
+  "fr": "Annuler",
+  "es": "Cancelar",
+  "pt": "Cancelar",
+  "tr": "İptal",
+  "ru": "Отмена",
+  "ja": "キャンセル",
+  "th": "ยกเลิก",
+  "ar": "إلغاء"
+ },
+ "check_answer_": {
+  "fr": "Vérifier\nla réponse",
+  "es": "Comprobar\nrespuesta",
+  "pt": "Verificar\nresposta",
+  "tr": "Cevabı\nkontrol et",
+  "ru": "Проверить\nответ",
+  "ja": "答えを\n確かめる",
+  "th": "ตรวจ\nคำตอบ",
+  "ar": "تحقق من\nالإجابة"
+ },
+ "contact_us": {
+  "fr": "Nous contacter",
+  "es": "Contáctanos",
+  "pt": "Fale conosco",
+  "tr": "Bize ulaşın",
+  "ru": "Связаться с нами",
+  "ja": "お問い合わせ",
+  "th": "ติดต่อเรา",
+  "ar": "اتصل بنا"
+ },
+ "contact_us_fill_detail": {
+  "fr": "Saisissez les informations suivantes pour nous contacter.\nVérifiez que toutes les informations sont correctes.",
+  "es": "Introduce los siguientes datos para contactarnos.\nAsegúrate de que todos los datos sean correctos.",
+  "pt": "Preencha os dados abaixo para falar conosco.\nConfira se todos os dados estão corretos.",
+  "tr": "Bize ulaşmak için aşağıdaki bilgileri girin.\nTüm bilgilerin doğru olduğundan emin olun.",
+  "ru": "Введите следующие данные, чтобы связаться с нами.\nУбедитесь, что все данные указаны верно.",
+  "ja": "お問い合わせには、以下の内容を入力してください。\nすべての内容が正しいか確認してください。",
+  "th": "กรอกข้อมูลต่อไปนี้เพื่อติดต่อเรา\nโปรดตรวจสอบว่าข้อมูลทั้งหมดถูกต้อง",
+  "ar": "أدخل البيانات التالية للتواصل معنا.\nتأكد من صحة جميع البيانات."
+ },
+ "continue_without_saving": {
+  "fr": "Continuer sans enregistrer",
+  "es": "Continuar sin guardar",
+  "pt": "Continuar sem salvar",
+  "tr": "Kaydetmeden devam et",
+  "ru": "Продолжить без сохранения",
+  "ja": "保存せずに続ける",
+  "th": "ดำเนินการต่อโดยไม่บันทึก",
+  "ar": "المتابعة دون حفظ"
+ },
+ "current_input": {
+  "fr": "Saisie actuelle",
+  "es": "Entrada actual",
+  "pt": "Entrada atual",
+  "tr": "Geçerli giriş",
+  "ru": "Текущий ввод",
+  "ja": "現在の入力",
+  "th": "ข้อมูลที่ป้อนอยู่",
+  "ar": "المدخل الحالي"
+ },
+ "description": {
+  "fr": "Description",
+  "es": "Descripción",
+  "pt": "Descrição",
+  "tr": "Açıklama",
+  "ru": "Описание",
+  "ja": "説明",
+  "th": "รายละเอียด",
+  "ar": "الوصف"
+ },
+ "email_id": {
+  "fr": "Adresse e-mail",
+  "es": "Correo electrónico",
+  "pt": "E-mail",
+  "tr": "E-posta",
+  "ru": "Электронная почта",
+  "ja": "メールアドレス",
+  "th": "อีเมล",
+  "ar": "البريد الإلكتروني"
+ },
+ "hide_from_setting": {
+  "fr": "Masquer dans les réglages",
+  "es": "Ocultar en ajustes",
+  "pt": "Ocultar nas configurações",
+  "tr": "Ayarlardan gizle",
+  "ru": "Скрыть в настройках",
+  "ja": "設定から非表示",
+  "th": "ซ่อนจากการตั้งค่า",
+  "ar": "إخفاء من الإعدادات"
+ },
+ "login_credentials_old_user_note": {
+  "fr": "Pour les utilisateurs inscrits dans une version précédente de l'application",
+  "es": "Para usuarios registrados en una versión anterior de la app",
+  "pt": "Para usuários cadastrados em uma versão anterior do app",
+  "tr": "Uygulamanın önceki bir sürümünde kayıt olan kullanıcılar için",
+  "ru": "Для пользователей, зарегистрированных в более ранней версии приложения",
+  "ja": "以前のバージョンのアプリで登録したユーザー向け",
+  "th": "สำหรับผู้ใช้ที่ลงทะเบียนไว้ในแอปเวอร์ชันก่อนหน้า",
+  "ar": "للمستخدمين المسجلين في إصدار سابق من التطبيق"
+ },
+ "login_is_required_to_access_this_feature": {
+  "fr": "Il faut se connecter pour utiliser cette fonction.",
+  "es": "Debes iniciar sesión para usar esta función.",
+  "pt": "É preciso fazer login para usar este recurso.",
+  "tr": "Bu özelliği kullanmak için giriş yapmanız gerekir.",
+  "ru": "Чтобы использовать эту функцию, нужно войти в аккаунт.",
+  "ja": "この機能を使うにはログインが必要です。",
+  "th": "ต้องเข้าสู่ระบบเพื่อใช้ฟีเจอร์นี้",
+  "ar": "يلزم تسجيل الدخول لاستخدام هذه الميزة."
+ },
+ "login_required": {
+  "fr": "Connexion requise",
+  "es": "Inicio de sesión necesario",
+  "pt": "Login necessário",
+  "tr": "Giriş gerekli",
+  "ru": "Нужен вход",
+  "ja": "ログインが必要です",
+  "th": "ต้องเข้าสู่ระบบ",
+  "ar": "تسجيل الدخول مطلوب"
+ },
+ "login_to_save_results": {
+  "fr": "Connectez-vous pour enregistrer les résultats et suivre les progrès !",
+  "es": "¡Inicia sesión para guardar tus resultados y seguir tu progreso!",
+  "pt": "Faça login para salvar seus resultados e acompanhar seu progresso!",
+  "tr": "Sonuçlarınızı kaydetmek ve ilerlemenizi takip etmek için giriş yapın!",
+  "ru": "Войдите, чтобы сохранять результаты и следить за прогрессом!",
+  "ja": "ログインすると、結果を保存して進み具合を確認できます！",
+  "th": "เข้าสู่ระบบเพื่อบันทึกผลและติดตามความก้าวหน้า!",
+  "ar": "سجّل الدخول لحفظ نتائجك ومتابعة تقدمك!"
+ },
+ "login_with_credentials": {
+  "fr": "Se connecter avec identifiant",
+  "es": "Iniciar sesión con credenciales",
+  "pt": "Entrar com usuário e senha",
+  "tr": "Kimlik bilgileriyle giriş yap",
+  "ru": "Войти по логину и паролю",
+  "ja": "ID・パスワードでログイン",
+  "th": "เข้าสู่ระบบด้วยบัญชีผู้ใช้",
+  "ar": "تسجيل الدخول ببيانات الاعتماد"
+ },
+ "mobile_number": {
+  "fr": "Numéro de mobile",
+  "es": "Número de móvil",
+  "pt": "Número de celular",
+  "tr": "Cep telefonu numarası",
+  "ru": "Номер телефона",
+  "ja": "携帯電話番号",
+  "th": "หมายเลขโทรศัพท์มือถือ",
+  "ar": "رقم الجوال"
+ },
+ "new_version_msg": {
+  "fr": "Une nouvelle version est disponible sur le Play Store.\nPour continuer, veuillez mettre à jour l'application.",
+  "es": "Hay una nueva versión disponible en Play Store.\nPara continuar, actualiza la aplicación.",
+  "pt": "Há uma nova versão disponível na Play Store.\nPara continuar, atualize o aplicativo.",
+  "tr": "Play Store'da yeni bir sürüm var.\nDevam etmek için lütfen uygulamayı güncelleyin.",
+  "ru": "В Play Маркете доступна новая версия.\nЧтобы продолжить, обновите приложение.",
+  "ja": "Google Playに新しいバージョンがあります。\n続けるには、アプリを更新してください。",
+  "th": "มีเวอร์ชันใหม่ใน Play Store\nโปรดอัปเดตแอปเพื่อใช้งานต่อ",
+  "ar": "يتوفر إصدار جديد على متجر Play.\nللمتابعة، يرجى تحديث التطبيق."
+ },
+ "next": {
+  "fr": "Suivant",
+  "es": "Siguiente",
+  "pt": "Próximo",
+  "tr": "İleri",
+  "ru": "Далее",
+  "ja": "次へ",
+  "th": "ถัดไป",
+  "ar": "التالي"
+ },
+ "no_internet": {
+  "fr": "Vérifiez votre connexion Wi-Fi ou vos données mobiles.",
+  "es": "Revisa tu conexión Wi-Fi o de datos móviles.",
+  "pt": "Verifique sua conexão Wi-Fi ou de dados móveis.",
+  "tr": "Lütfen Wi-Fi veya mobil veri bağlantınızı kontrol edin.",
+  "ru": "Проверьте подключение к Wi-Fi или мобильному интернету.",
+  "ja": "Wi-Fiまたはモバイルデータの接続を確認してください。",
+  "th": "โปรดตรวจสอบการเชื่อมต่อ Wi-Fi หรืออินเทอร์เน็ตมือถือ",
+  "ar": "يرجى التحقق من اتصال Wi-Fi أو بيانات الجوال."
+ },
+ "no_internet_working": {
+  "fr": "Pas de connexion Internet",
+  "es": "Sin conexión a Internet",
+  "pt": "Sem conexão com a internet",
+  "tr": "İnternet bağlantısı yok",
+  "ru": "Нет подключения к интернету",
+  "ja": "インターネットに接続されていません",
+  "th": "ไม่มีการเชื่อมต่ออินเทอร์เน็ต",
+  "ar": "لا يوجد اتصال بالإنترنت"
+ },
+ "no_thanks": {
+  "fr": "Non, merci",
+  "es": "No, gracias",
+  "pt": "Não, obrigado",
+  "tr": "Hayır, teşekkürler",
+  "ru": "Нет, спасибо",
+  "ja": "いいえ、けっこうです",
+  "th": "ไม่ ขอบคุณ",
+  "ar": "لا، شكرًا"
+ },
+ "ok_thanks": {
+  "fr": "OK, merci",
+  "es": "Vale, gracias",
+  "pt": "Ok, obrigado",
+  "tr": "Tamam, teşekkürler",
+  "ru": "Хорошо, спасибо",
+  "ja": "OK、ありがとう",
+  "th": "ตกลง ขอบคุณ",
+  "ar": "حسنًا، شكرًا"
+ },
+ "parental_gate_subtitle": {
+  "fr": "Résolvez ceci pour continuer",
+  "es": "Resuelve esto para continuar",
+  "pt": "Resolva isto para continuar",
+  "tr": "Devam etmek için bunu çözün",
+  "ru": "Решите пример, чтобы продолжить",
+  "ja": "続けるには、この問題を解いてください",
+  "th": "แก้โจทย์นี้เพื่อไปต่อ",
+  "ar": "حلّ هذه المسألة للمتابعة"
+ },
+ "parental_gate_title": {
+  "fr": "Pour les parents",
+  "es": "Para padres",
+  "pt": "Para os pais",
+  "tr": "Ebeveynler için",
+  "ru": "Для родителей",
+  "ja": "保護者の方へ",
+  "th": "สำหรับผู้ปกครอง",
+  "ar": "للوالدين"
+ },
+ "password": {
+  "fr": "Mot de passe",
+  "es": "Contraseña",
+  "pt": "Senha",
+  "tr": "Şifre",
+  "ru": "Пароль",
+  "ja": "パスワード",
+  "th": "รหัสผ่าน",
+  "ar": "كلمة المرور"
+ },
+ "please_enter_descritpion": {
+  "fr": "Veuillez saisir une description",
+  "es": "Escribe una descripción",
+  "pt": "Digite uma descrição",
+  "tr": "Lütfen bir açıklama girin",
+  "ru": "Введите описание",
+  "ja": "説明を入力してください",
+  "th": "โปรดกรอกรายละเอียด",
+  "ar": "يرجى إدخال الوصف"
+ },
+ "please_enter_descritpion_minimum_50": {
+  "fr": "Veuillez saisir une description d'au moins 50 caractères",
+  "es": "Escribe una descripción de al menos 50 caracteres",
+  "pt": "Digite uma descrição com no mínimo 50 caracteres",
+  "tr": "Lütfen en az 50 karakterlik bir açıklama girin",
+  "ru": "Введите описание не короче 50 символов",
+  "ja": "説明は50文字以上で入力してください",
+  "th": "โปรดกรอกรายละเอียดอย่างน้อย 50 ตัวอักษร",
+  "ar": "يرجى إدخال وصف لا يقل عن 50 حرفًا"
+ },
+ "please_enter_email_id": {
+  "fr": "Veuillez saisir votre adresse e-mail",
+  "es": "Escribe tu correo electrónico",
+  "pt": "Digite seu e-mail",
+  "tr": "Lütfen e-posta adresinizi girin",
+  "ru": "Введите адрес электронной почты",
+  "ja": "メールアドレスを入力してください",
+  "th": "โปรดกรอกอีเมล",
+  "ar": "يرجى إدخال البريد الإلكتروني"
+ },
+ "please_enter_kid_name": {
+  "fr": "Veuillez saisir le prénom de l'enfant",
+  "es": "Escribe el nombre del niño o la niña",
+  "pt": "Digite o nome da criança",
+  "tr": "Lütfen çocuğun adını girin",
+  "ru": "Введите имя ребёнка",
+  "ja": "お子さまの名前を入力してください",
+  "th": "โปรดกรอกชื่อของเด็ก",
+  "ar": "يرجى إدخال اسم الطفل"
+ },
+ "please_enter_mobile_number": {
+  "fr": "Veuillez saisir votre numéro de téléphone",
+  "es": "Escribe tu número de teléfono",
+  "pt": "Digite seu número de telefone",
+  "tr": "Lütfen telefon numaranızı girin",
+  "ru": "Введите номер телефона",
+  "ja": "電話番号を入力してください",
+  "th": "โปรดกรอกหมายเลขโทรศัพท์",
+  "ar": "يرجى إدخال رقم الهاتف"
+ },
+ "please_enter_password": {
+  "fr": "Veuillez saisir votre mot de passe",
+  "es": "Escribe tu contraseña",
+  "pt": "Digite sua senha",
+  "tr": "Lütfen şifrenizi girin",
+  "ru": "Введите пароль",
+  "ja": "パスワードを入力してください",
+  "th": "โปรดกรอกรหัสผ่าน",
+  "ar": "يرجى إدخال كلمة المرور"
+ },
+ "please_enter_valid_email_id": {
+  "fr": "Veuillez saisir une adresse e-mail valide",
+  "es": "Escribe un correo electrónico válido",
+  "pt": "Digite um e-mail válido",
+  "tr": "Lütfen geçerli bir e-posta adresi girin",
+  "ru": "Введите корректный адрес электронной почты",
+  "ja": "正しいメールアドレスを入力してください",
+  "th": "โปรดกรอกอีเมลที่ถูกต้อง",
+  "ar": "يرجى إدخال بريد إلكتروني صالح"
+ },
+ "please_enter_valid_mobile_number": {
+  "fr": "Veuillez saisir un numéro de téléphone valide",
+  "es": "Escribe un número de teléfono válido",
+  "pt": "Digite um número de telefone válido",
+  "tr": "Lütfen geçerli bir telefon numarası girin",
+  "ru": "Введите корректный номер телефона",
+  "ja": "正しい電話番号を入力してください",
+  "th": "โปรดกรอกหมายเลขโทรศัพท์ที่ถูกต้อง",
+  "ar": "يرجى إدخال رقم هاتف صالح"
+ },
+ "reset": {
+  "fr": "Réinitialiser",
+  "es": "Restablecer",
+  "pt": "Redefinir",
+  "tr": "Sıfırla",
+  "ru": "Сбросить",
+  "ja": "リセット",
+  "th": "รีเซ็ต",
+  "ar": "إعادة تعيين"
+ },
+ "retry": {
+  "fr": "Réessayer",
+  "es": "Reintentar",
+  "pt": "Tentar de novo",
+  "tr": "Tekrar dene",
+  "ru": "Повторить",
+  "ja": "もう一度",
+  "th": "ลองอีกครั้ง",
+  "ar": "أعد المحاولة"
+ },
+ "review_day2_message": {
+  "fr": "Votre note aide d'autres parents à nous trouver et nous aide à nous améliorer !",
+  "es": "¡Tu valoración ayuda a otros padres a encontrarnos y a que sigamos mejorando!",
+  "pt": "Sua avaliação ajuda outros pais a nos encontrar e nos ajuda a continuar melhorando!",
+  "tr": "Puanınız diğer ebeveynlerin bizi bulmasına ve gelişmeye devam etmemize yardımcı olur!",
+  "ru": "Ваша оценка помогает другим родителям найти нас, а нам — становиться лучше!",
+  "ja": "あなたの評価は、ほかの保護者が私たちを見つけるのに役立ち、改善の励みにもなります！",
+  "th": "คะแนนของคุณช่วยให้ผู้ปกครองท่านอื่นพบเรา และช่วยให้เราพัฒนาต่อไป!",
+  "ar": "تقييمك يساعد الآباء الآخرين على اكتشافنا ويساعدنا على التحسّن!"
+ },
+ "review_day2_title": {
+  "fr": "Aidez-nous à grandir ! 🌱",
+  "es": "¡Ayúdanos a crecer! 🌱",
+  "pt": "Ajude a gente a crescer! 🌱",
+  "tr": "Büyümemize yardım edin! 🌱",
+  "ru": "Помогите нам расти! 🌱",
+  "ja": "応援してください！🌱",
+  "th": "ช่วยเราเติบโตหน่อยนะ! 🌱",
+  "ar": "ساعدنا على النمو! 🌱"
+ },
+ "review_gate_enjoying": {
+  "fr": "Oui, on adore ! 😄",
+  "es": "¡Sí, me encanta! 😄",
+  "pt": "Sim, estou gostando! 😄",
+  "tr": "Evet, çok seviyoruz! 😄",
+  "ru": "Да, нравится! 😄",
+  "ja": "はい、楽しいです！😄",
+  "th": "ใช่ ชอบมาก! 😄",
+  "ar": "نعم، نستمتع به! 😄"
+ },
+ "review_gate_message": {
+  "fr": "Dites-nous comment ça se passe jusqu'ici !",
+  "es": "¡Nos encantaría saber cómo te va hasta ahora!",
+  "pt": "Adoraríamos saber como está sendo até agora!",
+  "tr": "Şu ana kadar nasıl gittiğini çok merak ediyoruz!",
+  "ru": "Нам очень интересно, как у вас дела!",
+  "ja": "ここまでいかがですか？ ぜひ教えてください！",
+  "th": "อยากรู้ว่าตอนนี้เป็นอย่างไรบ้าง!",
+  "ar": "يسعدنا أن نعرف كيف تسير الأمور حتى الآن!"
+ },
+ "review_gate_not_much": {
+  "fr": "Pas trop 😐",
+  "es": "No mucho 😐",
+  "pt": "Nem tanto 😐",
+  "tr": "Pek değil 😐",
+  "ru": "Не очень 😐",
+  "ja": "あまり… 😐",
+  "th": "ไม่ค่อยเท่าไหร่ 😐",
+  "ar": "ليس كثيرًا 😐"
+ },
+ "review_gate_title": {
+  "fr": "Vous aimez l'appli ?",
+  "es": "¿Te gusta la app?",
+  "pt": "Está gostando do app?",
+  "tr": "Uygulamayı beğeniyor musunuz?",
+  "ru": "Нравится приложение?",
+  "ja": "アプリは楽しんでいますか？",
+  "th": "ชอบแอปนี้ไหม",
+  "ar": "هل يعجبك التطبيق؟"
+ },
+ "sign_in_with_google": {
+  "fr": "Se connecter avec Google",
+  "es": "Iniciar sesión con Google",
+  "pt": "Entrar com o Google",
+  "tr": "Google ile giriş yap",
+  "ru": "Войти через Google",
+  "ja": "Googleでログイン",
+  "th": "ลงชื่อเข้าใช้ด้วย Google",
+  "ar": "تسجيل الدخول باستخدام Google"
+ },
+ "something_went_wrong": {
+  "fr": "Un problème est survenu. Veuillez réessayer.",
+  "es": "Algo salió mal. Inténtalo de nuevo.",
+  "pt": "Algo deu errado. Tente novamente.",
+  "tr": "Bir şeyler ters gitti. Lütfen tekrar deneyin.",
+  "ru": "Что-то пошло не так. Попробуйте ещё раз.",
+  "ja": "問題が発生しました。もう一度お試しください。",
+  "th": "เกิดข้อผิดพลาด โปรดลองอีกครั้ง",
+  "ar": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+ },
+ "submit": {
+  "fr": "Envoyer",
+  "es": "Enviar",
+  "pt": "Enviar",
+  "tr": "Gönder",
+  "ru": "Отправить",
+  "ja": "送信",
+  "th": "ส่ง",
+  "ar": "إرسال"
+ },
+ "submit_answer": {
+  "fr": "Valider\nla réponse",
+  "es": "Enviar\nrespuesta",
+  "pt": "Enviar\nresposta",
+  "tr": "Cevabı\ngönder",
+  "ru": "Отправить\nответ",
+  "ja": "答えを\n送る",
+  "th": "ส่ง\nคำตอบ",
+  "ar": "أرسل\nالإجابة"
+ },
+ "thank_you_for_reaching_out": {
+  "fr": "Merci de nous avoir contactés !",
+  "es": "¡Gracias por contactarnos!",
+  "pt": "Obrigado por entrar em contato!",
+  "tr": "Bize ulaştığınız için teşekkürler!",
+  "ru": "Спасибо, что обратились к нам!",
+  "ja": "お問い合わせありがとうございます！",
+  "th": "ขอบคุณที่ติดต่อเรา!",
+  "ar": "شكرًا لتواصلك معنا!"
+ },
+ "thank_you_for_reaching_out1": {
+  "fr": "Votre demande a bien été reçue et notre équipe vous répondra dans les plus brefs délais.",
+  "es": "Hemos recibido tu solicitud y nuestro equipo se pondrá en contacto contigo lo antes posible.",
+  "pt": "Recebemos sua solicitação e nossa equipe entrará em contato o mais rápido possível.",
+  "tr": "Talebiniz alındı, ekibimiz en kısa sürede sizinle iletişime geçecek.",
+  "ru": "Ваше обращение получено, наша команда свяжется с вами как можно скорее.",
+  "ja": "お問い合わせを受け付けました。担当者より、できるだけ早くご連絡いたします。",
+  "th": "เราได้รับคำขอของคุณแล้ว ทีมงานจะติดต่อกลับโดยเร็วที่สุด",
+  "ar": "تم استلام طلبك، وسيتواصل معك فريقنا في أقرب وقت ممكن."
+ },
+ "yes_i_want_to_update": {
+  "fr": "Oui, mettre à jour",
+  "es": "Sí, quiero actualizar",
+  "pt": "Sim, quero atualizar",
+  "tr": "Evet, güncellemek istiyorum",
+  "ru": "Да, обновить",
+  "ja": "はい、更新します",
+  "th": "ใช่ ฉันต้องการอัปเดต",
+  "ar": "نعم، أريد التحديث"
+ },
+ "your_name": {
+  "fr": "Votre nom",
+  "es": "Tu nombre",
+  "pt": "Seu nome",
+  "tr": "Adınız",
+  "ru": "Ваше имя",
+  "ja": "お名前",
+  "th": "ชื่อของคุณ",
+  "ar": "اسمك"
+ },
+ "review_stars": {
+  "plural": {
+   "fr": {
+    "one": "%1$d étoile",
+    "many": "%1$d d'étoiles",
+    "other": "%1$d étoiles"
+   },
+   "es": {
+    "one": "%1$d estrella",
+    "many": "%1$d de estrellas",
+    "other": "%1$d estrellas"
+   },
+   "pt": {
+    "one": "%1$d estrela",
+    "many": "%1$d de estrelas",
+    "other": "%1$d estrelas"
+   },
+   "tr": {
+    "one": "%1$d yıldız",
+    "other": "%1$d yıldız"
+   },
+   "ru": {
+    "one": "%1$d звезда",
+    "few": "%1$d звезды",
+    "many": "%1$d звёзд",
+    "other": "%1$d звезды"
+   },
+   "ja": {
+    "other": "星%1$d個"
+   },
+   "th": {
+    "other": "%1$d ดาว"
+   },
+   "ar": {
+    "zero": "%1$d نجوم",
+    "one": "نجمة واحدة",
+    "two": "نجمتان",
+    "few": "%1$d نجوم",
+    "many": "%1$d نجمة",
+    "other": "%1$d نجمة"
+   }
+  }
+ }
+}

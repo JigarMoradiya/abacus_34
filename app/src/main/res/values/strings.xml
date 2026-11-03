@@ -1,6 +1,6 @@
 <resources>
     <!--    <string name="app_name">Abacus child learning application</string>-->
-    <string name="web_client_id">884602254815-fscadb7gdq4g4gfvk9cts4sh02j194hb.apps.googleusercontent.com</string>
+    <string name="web_client_id" translatable="false">884602254815-fscadb7gdq4g4gfvk9cts4sh02j194hb.apps.googleusercontent.com</string>
     <string name="download_folder">Abacus Downloads</string>
     <string name="share_text_msg">Abacus child learning application!\nAbacus will help your children learn about Abacus, Numbers, Addition, Subtraction, Multiplication, Division.\n\nDownload Abacus App from Google Play Store \uD83D\uDC47\uD83D\uDC47\uD83D\uDC47\uD83D\uDE0D\uD83D\uDE07\n</string>
     <string name="material_customization">If you want any customization on material like change to Logo, add watermark, etc.. you can contact us on %1$s</string>
@@ -1245,4 +1245,20 @@
 
     <!-- Numbers and speech (M2) -->
     <string name="speak_times_equals">%1$s times %2$s equals %3$s</string>
+
+    <!-- Common UI (M3) -->
+    <string name="parental_gate_title">For Parents</string>
+    <string name="parental_gate_subtitle">Solve this to continue</string>
+    <string name="review_day2_title">Help Us Grow! 🌱</string>
+    <string name="review_day2_message">Your rating helps other parents find us and helps us keep improving!</string>
+    <plurals name="review_stars">
+        <item quantity="one">%1$d star</item>
+        <item quantity="other">%1$d stars</item>
+    </plurals>
+    <string name="review_gate_title">Enjoying the App?</string>
+    <string name="review_gate_message">We\'d love to know how it\'s going so far!</string>
+    <string name="review_gate_not_much">Not too much 😐</string>
+    <string name="review_gate_enjoying">Yes, Enjoying! 😄</string>
+    <string name="badge_made_in_india">Made in India</string>
+    <string name="badge_safe_ad_free">Safe &amp; Ad-Free</string>
 </resources>

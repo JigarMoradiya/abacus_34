@@ -19,13 +19,13 @@ MASTERS = sorted(glob.glob(os.path.join(BASE, 'docs', 'l10n', 'translations', '*
 LANGS = ['fr', 'es', 'pt', 'tr', 'ru', 'ja', 'th'] + (['ar'] if '--with-ar' in sys.argv else [])   # Arabic (right to left) waits for the RTL pass, M21
 
 def esc(t):
-    t = t.replace('\\', '\\\\').replace('&', '&amp;').replace('<', '&lt;').replace("'", "\\'").replace('"', '\\"')
+    t = t.replace('\\', '\\\\').replace('&', '&amp;').replace('<', '&lt;').replace("'", "\\'").replace('"', '\\"').replace('\n', '\\n')
     if t.startswith('@') or t.startswith('?'): t = '\\' + t
     return t
 
 def raw(t):
     """Texts that already contain markup (<b>..</b>) are written as given, only apostrophes and quotes are escaped."""
-    return t.replace("'", "\\'").replace('"', '\\"')
+    return t.replace("'", "\\'").replace('"', '\\"').replace('\n', '\\n')
 
 def main():
     source = {el.get('name'): el.tag for el in ET.parse(os.path.join(RES, 'values', 'strings.xml')).getroot() if el.get('name')}

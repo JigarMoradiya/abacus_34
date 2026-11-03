@@ -27,6 +27,8 @@ import com.jigar.me.ui.view.ab.AbTypography
 import com.jigar.me.ui.view.ab.LocalAbColors
 import com.jigar.me.ui.view.home.theme.AppDimens
 import java.util.Locale
+import androidx.compose.ui.res.stringResource
+import com.jigar.me.R
 
 // "Underline Chip" on the kit surface: an icon + label over a thick gradient bar flush along the bottom edge, matching
 // the Home screen's other small chips (This Week, Vedaavi English). Only Home shows it, so it always wears the kit look.
@@ -74,7 +76,7 @@ fun UnderlineChip(
 fun MadeInIndiaBadge() {
     UnderlineChip(
         icon = "🇮🇳",
-        label = "Made in India",
+        label = stringResource(R.string.badge_made_in_india),
         barColors = listOf(Color(0xFFFF9933), Color.White, Color(0xFF138808)),
         backgroundColor = Color(0xFFFFE0B2),
         borderColor = Color(0xFFFF9933).copy(alpha = 0.35f)
@@ -87,7 +89,7 @@ fun MadeInIndiaBadge() {
 fun SafeAdFreeBadge() {
     UnderlineChip(
         icon = "🛡️",
-        label = "Safe & Ad-Free",
+        label = stringResource(R.string.badge_safe_ad_free),
         barColors = listOf(Color(0xFF42A5F5), Color(0xFF26A69A)),
         backgroundColor = Color(0xFFB2DFDB),
         borderColor = Color(0xFF26A69A).copy(alpha = 0.35f)

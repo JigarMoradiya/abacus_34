@@ -37,3 +37,9 @@ Use these words for the same thing everywhere. When a language has more than one
 | plan: weekly / monthly / yearly / lifetime | | hebdomadaire / mensuel / annuel / à vie | semanal / mensual / anual / de por vida | semanal / mensal / anual / vitalício | haftalık / aylık / yıllık / ömür boyu | недельный / месячный / годовой / навсегда | 週間 / 月間 / 年間 / 買い切り | รายสัปดาห์ / รายเดือน / รายปี / ตลอดชีพ | أسبوعي / شهري / سنوي / مدى الحياة |
 | parent | the adult who looks after the account | parent | padre o madre | pai ou mãe | ebeveyn | родитель | 保護者 | ผู้ปกครอง | ولي الأمر |
 | premium | paid access | premium | premium | premium | premium | премиум | プレミアム | พรีเมียม | بريميوم |
+
+## Tone (owner rule 2026-11-03: kind, simple, never childish for parents)
+- Text a CHILD reads (games, lessons, hints, results): short, warm, informal "you": fr tu, es tú, pt você, tr sen, ru ты, ja friendly です/ます (easy words), th simple friendly, ar أنت.
+- Text a PARENT reads (account, login, contact, paywall, reports, review prompts, parental gate): polite "you": fr vous, es tú (apps in Spanish use tú), pt você, tr siz, ru вы, ja です/ます, th polite (คุณ), ar polite.
+- French: a no-break space (U+00A0) before ! ? : ; and « ». Never write the English app words ("level", "game") when the language has its own.
+- Keep line breaks (\n) where English has them; keep placeholders (%1$s, %1$d) and markup (<b>) exactly.

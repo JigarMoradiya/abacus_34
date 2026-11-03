@@ -6,14 +6,16 @@ when it is drawn. Static values are fixed when the class loads and would not fol
 
   scan_static.py                      -> static texts (const val, object/companion/top-level val, enum args, defaults)
   scan_static.py --kind literal       -> hard-coded visible literals inside functions / composables
-  scan_static.py --module home        -> only one module (see MODULES)
+  scan_static.py --module home        -> only one module (see MODULES), or a folder path under app/src/main/java/com/jigar/me
+  scan_static.py --rest               -> the Kotlin files that no module covers (to see what the module list misses)
+  Skipped: debug-only design previews (file names with Preview / Gallery / AbDebug) and, inside a module, folders that are their own module.
   scan_static.py --summary            -> counts per module only
 Exit code 1 when something is found for the chosen filter (so a module can be "done" = scanner clean).
 Texts that are identifiers or sent to the server are skipped by the heuristics; review the output, it is a finder, not a judge.
 """
 import argparse, os, re, sys
 
-ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'app', 'src', 'main', 'java', 'com', 'jigar', 'me')
+ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'app', 'src', 'main', 'java', 'com', 'jigar', 'me'))
 MODULES = {
     'home': 'ui/view/home/screens/home', 'settings': 'ui/view/home/screens/settings', 'my_account': 'ui/view/home/screens/my_account',
     'reports': 'ui/view/home/screens/reports', 'faqs': 'ui/view/home/screens/faqs', 'whats_learning': 'ui/view/home/screens/whats_learning',
@@ -76,24 +78,40 @@ def classify(text):
             if stack: stack.pop()
     return out
 
+DEBUG_FILE = re.compile(r'(Preview|Gallery|AbDebug)')
+
+def module_files(rel, mods):
+    """The .kt files of one module folder, without debug previews and without folders that belong to another module."""
+    base = os.path.normpath(os.path.join(ROOT, rel))
+    others = [os.path.normpath(os.path.join(ROOT, r)) for r in mods.values() if os.path.normpath(os.path.join(ROOT, r)) != base]
+    for r, _, fs in os.walk(base):
+        if any(r == o or r.startswith(o + os.sep) for o in others if o.startswith(base + os.sep)): continue
+        for f in sorted(fs):
+            if f.endswith('.kt') and not DEBUG_FILE.search(f): yield os.path.join(r, f)
+
+def uncovered_files():
+    roots = [os.path.normpath(os.path.join(ROOT, r)) for r in MODULES.values()]
+    for r, _, fs in os.walk(ROOT):
+        if any(r == o or r.startswith(o + os.sep) for o in roots): continue
+        for f in sorted(fs):
+            if f.endswith('.kt') and not DEBUG_FILE.search(f): yield os.path.join(r, f)
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--kind', choices=['static', 'literal'], default='static')
-    ap.add_argument('--module'); ap.add_argument('--summary', action='store_true')
+    ap.add_argument('--module'); ap.add_argument('--summary', action='store_true'); ap.add_argument('--rest', action='store_true')
     a = ap.parse_args()
-    mods = {a.module: MODULES[a.module]} if a.module else MODULES
+    if a.rest: mods = {'(uncovered)': None}
+    elif a.module: mods = {a.module: MODULES.get(a.module, a.module)}
+    else: mods = MODULES
     found_total, rows = 0, []
     for name, rel in mods.items():
-        base = os.path.normpath(os.path.join(ROOT, rel))
         n = 0
-        for r, _, fs in os.walk(base):
-            for f in sorted(fs):
-                if not f.endswith('.kt'): continue
-                p = os.path.join(r, f)
-                for ln, kind, snip in classify(open(p, encoding='utf-8', errors='ignore').read()):
-                    if (a.kind == 'static') == kind.startswith('static'):
-                        n += 1
-                        if not a.summary: print(f'{name:12} {os.path.relpath(p, ROOT)}:{ln} [{kind}] {snip}')
+        for p in (uncovered_files() if rel is None else module_files(rel, MODULES)):
+            for ln, kind, snip in classify(open(p, encoding='utf-8', errors='ignore').read()):
+                if (a.kind == 'static') == kind.startswith('static'):
+                    n += 1
+                    if not a.summary: print(f'{name:12} {os.path.relpath(p, ROOT)}:{ln} [{kind}] {snip}')
         rows.append((name, n)); found_total += n
     print('\nsummary (%s texts per module):' % a.kind)
     for name, n in rows: print(f'  {name:14} {n}')

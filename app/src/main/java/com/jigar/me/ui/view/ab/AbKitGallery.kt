@@ -55,6 +55,11 @@ object AbDebugScreens {
                 "reports" -> AbReportsPreview()
                 "ccmresult" -> AbCcmResultPreview(true)
                 "ccmwrong" -> AbCcmResultPreview(false)
+                // dialogs and sheets that are otherwise reached through several taps (checked per language)
+                "parentgate" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); AbParentalGate(onSuccess = {}, onClose = {}) }
+                "review" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateBottomSheet(visible = true, onDismiss = {}, onPositive = {}, onNegative = {}) }
+                "review2" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); com.jigar.me.ui.view.home.common_ui.sheets.Day2ReviewGateBottomSheet(visible = true, onDismiss = {}, onFiveStars = {}, onLowRating = {}) }
+                "badges" -> Box(Modifier.fillMaxSize()) { AbBackground(AbWorld.Meadow); Column(Modifier.padding(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) { com.jigar.me.ui.view.home.common_ui.MadeInIndiaBadge(); com.jigar.me.ui.view.home.common_ui.SafeAdFreeBadge() } }
                 // the first-launch tutorial, page N of 6 (6 = the plans page): `--es ab_screen onboarding6`
                 else -> if (name.startsWith("onboarding")) AbOnboardingPreview(name.removePrefix("onboarding").toIntOrNull() ?: 1) else AbKitGallery()
             }
