@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- m1_settings -->
+    <string name="background_music_volume">ระดับเสียงเพลงพื้นหลัง</string>
+    <string name="change_voice_setting">เปลี่ยนการตั้งค่าเสียงพูด</string>
+    <string name="check_voice">ทดสอบเสียง</string>
+    <string name="customize_pronunciation_voice">ปรับการออกเสียง (เสียงพูด)</string>
+    <string name="display_bead_direction">แสดงทิศทางการขยับลูก</string>
+    <string name="free_abacus_theme">ธีมลูกคิด</string>
+    <string name="pitch">ระดับเสียงสูงต่ำ</string>
+    <string name="preview_of_theme">ตัวอย่างธีม</string>
+    <string name="txtCancel">ยกเลิก</string>
+    <string name="txt_setting_7_rods_mode">ลูกคิด 7 แกน</string>
+    <string name="txt_setting_display_abacus_number">แสดงตัวเลขปัจจุบัน</string>
+    <string name="txt_setting_display_help_message">แสดงคำใบ้</string>
+    <string name="txt_setting_hintsound">อ่านโจทย์ออกเสียง</string>
+    <string name="txt_setting_left_hand">ลูกคิดสำหรับคนถนัดซ้าย</string>
+    <string name="txt_setting_sound">เสียงขยับลูก</string>
+    <string name="txt_setting_title">การตั้งค่าแอป</string>
+    <string name="update">อัปเดต</string>
+    <string name="voice_speed">ความเร็วเสียงพูด</string>
+    <string name="settings_dark_mode">โหมดมืด</string>
+    <string name="settings_mode_light">☀️ สว่าง</string>
+    <string name="settings_mode_dark">🌙 มืด</string>
+    <string name="settings_voice_languages_count">ภาษา (%1$d)</string>
+    <string name="settings_voice_test_sentence">ยินดีต้อนรับสู่โลกของลูกคิด</string>
+    <string name="settings_language_title">ภาษาของแอป</string>
+    <string name="settings_language_phone">ตามโทรศัพท์</string>
+    <string name="settings_theme_rainbow">สายรุ้ง</string>
+    <string name="settings_theme_duotone">สองสี</string>
+    <string name="settings_theme_candy">ลูกกวาด</string>
+    <string name="settings_theme_heaven_earth">ฟ้าและดิน</string>
+    <string name="settings_theme_gemstone">อัญมณี</string>
+    <string name="settings_theme_rectangle">สี่เหลี่ยม</string>
+    <string name="settings_theme_happy_bead">ยิ้ม</string>
+    <string name="settings_theme_circle">วงกลม</string>
+    <string name="settings_theme_purple">ม่วง</string>
+    <string name="settings_theme_blue">น้ำเงิน</string>
+    <string name="settings_theme_skyblue">ฟ้า</string>
+    <string name="settings_theme_red">แดง</string>
+    <string name="settings_theme_green">เขียว</string>
+    <string name="settings_theme_orange">ส้ม</string>
+    <string name="settings_theme_cyan">ฟ้าอมเขียว</string>
+    <string name="settings_theme_pink">ชมพู</string>
+    <string name="settings_theme_yellow">เหลือง</string>
+    <string name="settings_theme_silver">เงิน</string>
+    <string name="settings_theme_brown">น้ำตาล</string>
+    <string name="settings_theme_black">ดำ</string>
+    <string name="settings_theme_pearl">ไข่มุก</string>
+</resources>

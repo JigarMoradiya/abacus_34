@@ -5,6 +5,7 @@ import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
 import android.graphics.RectF
 import android.graphics.Shader
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -76,29 +77,30 @@ import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.extensions.mixWith
 
-// Display label shown under each swatch in the theme picker.
-fun themeDisplayName(id: String): String = when (id) {
-    "poligon_rainbow" -> "Rainbow"
-    "poligon_duotone" -> "Duo-Tone"
-    "poligon_candy" -> "Candy"
-    "poligon_heaven_earth" -> "Heaven & Earth"
-    "poligon_hex_horizontal" -> "Gemstone"
-    "poligon_rectangle" -> "Rectangle"
-    "poligon_real_bead" -> "Happy Bead"
-    "poligon_circle" -> "Circle"
-    "poligon_purple" -> "Purple"
-    "poligon_blue" -> "Blue"
-    "poligon_skyblue" -> "Sky Blue"
-    "poligon_red" -> "Red"
-    "poligon_green" -> "Green"
-    "poligon_orange" -> "Orange"
-    "poligon_cyan" -> "Cyan"
-    "poligon_pink" -> "Pink"
-    "poligon_yellow" -> "Yellow"
-    "poligon_silver" -> "Silver"
-    "poligon_brown" -> "Brown"
-    "poligon_black" -> "Black"
-    else -> id.removePrefix("poligon_").replaceFirstChar { it.uppercase() }
+/** The text id of the label shown under each swatch in the theme picker (the id of a theme is a key, never shown). */
+@StringRes
+fun themeNameRes(id: String): Int? = when (id) {
+    "poligon_rainbow" -> R.string.settings_theme_rainbow
+    "poligon_duotone" -> R.string.settings_theme_duotone
+    "poligon_candy" -> R.string.settings_theme_candy
+    "poligon_heaven_earth" -> R.string.settings_theme_heaven_earth
+    "poligon_hex_horizontal" -> R.string.settings_theme_gemstone
+    "poligon_rectangle" -> R.string.settings_theme_rectangle
+    "poligon_real_bead" -> R.string.settings_theme_happy_bead
+    "poligon_circle" -> R.string.settings_theme_circle
+    "poligon_purple" -> R.string.settings_theme_purple
+    "poligon_blue" -> R.string.settings_theme_blue
+    "poligon_skyblue" -> R.string.settings_theme_skyblue
+    "poligon_red" -> R.string.settings_theme_red
+    "poligon_green" -> R.string.settings_theme_green
+    "poligon_orange" -> R.string.settings_theme_orange
+    "poligon_cyan" -> R.string.settings_theme_cyan
+    "poligon_pink" -> R.string.settings_theme_pink
+    "poligon_yellow" -> R.string.settings_theme_yellow
+    "poligon_silver" -> R.string.settings_theme_silver
+    "poligon_brown" -> R.string.settings_theme_brown
+    "poligon_black" -> R.string.settings_theme_black
+    else -> null
 }
 
 /** Solid-colour beads, in the same order in Light and in Dark mode. */
@@ -162,8 +164,8 @@ private fun ThemePickerCard(
                     color = colors.textPrimary,
                     modifier = Modifier.weight(1f)
                 )
-                ModeChip(AbThemeMode.Light, "☀️ Light")
-                ModeChip(AbThemeMode.Dark, "🌙 Dark")
+                ModeChip(AbThemeMode.Light, stringResource(R.string.settings_mode_light))
+                ModeChip(AbThemeMode.Dark, stringResource(R.string.settings_mode_dark))
             }
 
             Box(
@@ -322,8 +324,11 @@ private fun ThemeRow(
 }
 
 /** The name under a swatch: the black beads are called Pearl while Dark mode is on. */
-private fun themeLabelName(theme: String): String =
-    (if (AbThemeController.mode == AbThemeMode.Dark) ColorPresets.darkDisplayName(theme) else null) ?: themeDisplayName(theme)
+@Composable
+private fun themeLabelName(theme: String): String {
+    val res = (if (AbThemeController.mode == AbThemeMode.Dark) ColorPresets.darkDisplayNameRes(theme) else null) ?: themeNameRes(theme)
+    return if (res != null) stringResource(res) else theme.removePrefix("poligon_").replaceFirstChar { it.uppercase() }   // an unknown new theme still shows something
+}
 
 @Composable
 private fun ThemeLabel(theme: String, isSelected: Boolean) {

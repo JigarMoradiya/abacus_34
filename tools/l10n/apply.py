@@ -7,7 +7,7 @@ The English text stays in res/values/strings.xml (the source). This script write
 at least one text, adding Android's escaping (apostrophes, ampersands, angle brackets, leading @ or ?). Re-running is safe: the files
 are rebuilt from the masters, so change the master, never the generated file.
 
-  apply.py            write all languages
+  apply.py            write all left-to-right languages (fr es pt tr ru ja th); Arabic is added only with --with-ar (RTL pass, M21)
   apply.py --check    only report keys that are missing in res/values/strings.xml (no files written)
 """
 import glob, json, os, re, sys
@@ -16,7 +16,7 @@ import xml.etree.ElementTree as ET
 BASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..')
 RES = os.path.join(BASE, 'app', 'src', 'main', 'res')
 MASTERS = sorted(glob.glob(os.path.join(BASE, 'docs', 'l10n', 'translations', '*.json')))
-LANGS = ['fr', 'es', 'pt', 'tr', 'ru', 'ja', 'th', 'ar']
+LANGS = ['fr', 'es', 'pt', 'tr', 'ru', 'ja', 'th'] + (['ar'] if '--with-ar' in sys.argv else [])   # Arabic (right to left) waits for the RTL pass, M21
 
 def esc(t):
     t = t.replace('\\', '\\\\').replace('&', '&amp;').replace('<', '&lt;').replace("'", "\\'").replace('"', '\\"')

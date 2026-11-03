@@ -1211,4 +1211,34 @@
     <string name="paywall_subtitle_returning">Unlock every level, game and progress report</string>
     <string name="share_with_friend">Share with a friend</string>
     <string name="share_with_friend_text">My child is learning abacus and mental maths with Vedaavi Abacus: step by step lessons, games and a weekly progress report for parents. Free to start: %1$s</string>
+
+    <!-- Settings (M1) -->
+    <string name="settings_dark_mode">Dark Mode</string>
+    <string name="settings_mode_light">☀️ Light</string>
+    <string name="settings_mode_dark">🌙 Dark</string>
+    <string name="settings_voice_languages_count">Languages (%1$d)</string>
+    <string name="settings_voice_test_sentence">Welcome to the world of Abacus.</string>
+    <string name="settings_language_title">App Language</string>
+    <string name="settings_language_phone">Same as phone</string>
+    <string name="settings_theme_rainbow">Rainbow</string>
+    <string name="settings_theme_duotone">Duo-Tone</string>
+    <string name="settings_theme_candy">Candy</string>
+    <string name="settings_theme_heaven_earth">Heaven &amp; Earth</string>
+    <string name="settings_theme_gemstone">Gemstone</string>
+    <string name="settings_theme_rectangle">Rectangle</string>
+    <string name="settings_theme_happy_bead">Happy Bead</string>
+    <string name="settings_theme_circle">Circle</string>
+    <string name="settings_theme_purple">Purple</string>
+    <string name="settings_theme_blue">Blue</string>
+    <string name="settings_theme_skyblue">Sky Blue</string>
+    <string name="settings_theme_red">Red</string>
+    <string name="settings_theme_green">Green</string>
+    <string name="settings_theme_orange">Orange</string>
+    <string name="settings_theme_cyan">Cyan</string>
+    <string name="settings_theme_pink">Pink</string>
+    <string name="settings_theme_yellow">Yellow</string>
+    <string name="settings_theme_silver">Silver</string>
+    <string name="settings_theme_brown">Brown</string>
+    <string name="settings_theme_black">Black</string>
+    <string name="settings_theme_pearl">Pearl</string>
 </resources>

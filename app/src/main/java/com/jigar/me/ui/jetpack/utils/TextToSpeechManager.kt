@@ -6,10 +6,10 @@ import android.os.Looper
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
 import android.util.Log
-import com.google.gson.Gson
 import com.jigar.me.data.pref.AppPreferencesHelper
+import com.jigar.me.utils.LanguageManager
+import com.jigar.me.utils.TtsLocale
 import dagger.hilt.android.qualifiers.ApplicationContext
-import java.util.Locale
 import javax.inject.Inject
 
 class TextToSpeechManager @Inject constructor(
@@ -72,13 +72,11 @@ class TextToSpeechManager @Inject constructor(
 
 
     fun applySettings() {
-        val currentLanguageJson = prefs.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_LANGUAGE, "")
+        if (!ready) return   // the engine is still starting: its start-up callback applies the settings
 
-        val locale = if (currentLanguageJson.isEmpty()) {
-            Locale.forLanguageTag(AppPreferencesHelper.DEFAULT_TTS_LANGUAGE_VALUE)
-        } else {
-            Gson().fromJson(currentLanguageJson, Locale::class.java)
-        }
+
+        // the voice the user picked (read in every form it was ever saved), else the usual voice of the app language
+        val locale = TtsLocale.current(prefs.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_LANGUAGE, ""), LanguageManager.currentTag())
         val speed = prefs.getDefaultTTSSpeed()
         val pitch = prefs.getDefaultTTSPitch()
 
@@ -89,7 +87,7 @@ class TextToSpeechManager @Inject constructor(
             langResult == TextToSpeech.LANG_NOT_SUPPORTED
         ) {
             Log.e("TTS", "Language not supported: $locale")
-            tts?.language = Locale.forLanguageTag(AppPreferencesHelper.DEFAULT_TTS_LANGUAGE_VALUE)
+            tts?.language = TtsLocale.defaultFor("en")
             return
         }
 

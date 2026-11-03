@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- m1_settings -->
+    <string name="background_music_volume">BGMの音量</string>
+    <string name="change_voice_setting">音声設定を変更</string>
+    <string name="check_voice">音声を確認</string>
+    <string name="customize_pronunciation_voice">発音のカスタマイズ（音声）</string>
+    <string name="display_bead_direction">珠の動く向きを表示</string>
+    <string name="free_abacus_theme">そろばんのテーマ</string>
+    <string name="pitch">高さ（ピッチ）</string>
+    <string name="preview_of_theme">テーマのプレビュー</string>
+    <string name="txtCancel">キャンセル</string>
+    <string name="txt_setting_7_rods_mode">7桁のそろばん</string>
+    <string name="txt_setting_display_abacus_number">今の数を表示</string>
+    <string name="txt_setting_display_help_message">ヒントを表示</string>
+    <string name="txt_setting_hintsound">計算を読み上げる</string>
+    <string name="txt_setting_left_hand">左利き用そろばん</string>
+    <string name="txt_setting_sound">珠を動かす音</string>
+    <string name="txt_setting_title">アプリの設定</string>
+    <string name="update">更新</string>
+    <string name="voice_speed">音声の速さ</string>
+    <string name="settings_dark_mode">ダークモード</string>
+    <string name="settings_mode_light">☀️ ライト</string>
+    <string name="settings_mode_dark">🌙 ダーク</string>
+    <string name="settings_voice_languages_count">言語（%1$d）</string>
+    <string name="settings_voice_test_sentence">そろばんの世界へようこそ。</string>
+    <string name="settings_language_title">アプリの言語</string>
+    <string name="settings_language_phone">端末と同じ</string>
+    <string name="settings_theme_rainbow">レインボー</string>
+    <string name="settings_theme_duotone">ツートーン</string>
+    <string name="settings_theme_candy">キャンディ</string>
+    <string name="settings_theme_heaven_earth">天と地</string>
+    <string name="settings_theme_gemstone">宝石</string>
+    <string name="settings_theme_rectangle">長方形</string>
+    <string name="settings_theme_happy_bead">ハッピービーズ</string>
+    <string name="settings_theme_circle">まる</string>
+    <string name="settings_theme_purple">むらさき</string>
+    <string name="settings_theme_blue">あお</string>
+    <string name="settings_theme_skyblue">みずいろ</string>
+    <string name="settings_theme_red">あか</string>
+    <string name="settings_theme_green">みどり</string>
+    <string name="settings_theme_orange">オレンジ</string>
+    <string name="settings_theme_cyan">シアン</string>
+    <string name="settings_theme_pink">ピンク</string>
+    <string name="settings_theme_yellow">きいろ</string>
+    <string name="settings_theme_silver">ぎん</string>
+    <string name="settings_theme_brown">ちゃいろ</string>
+    <string name="settings_theme_black">くろ</string>
+    <string name="settings_theme_pearl">パール</string>
+</resources>

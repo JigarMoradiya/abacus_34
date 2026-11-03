@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- m1_settings -->
+    <string name="background_music_volume">Volumen de la música de fondo</string>
+    <string name="change_voice_setting">Cambiar la voz</string>
+    <string name="check_voice">Probar la voz</string>
+    <string name="customize_pronunciation_voice">Personalizar la pronunciación (voz)</string>
+    <string name="display_bead_direction">Mostrar la dirección de las cuentas</string>
+    <string name="free_abacus_theme">Temas del ábaco</string>
+    <string name="pitch">Tono</string>
+    <string name="preview_of_theme">Vista previa del tema</string>
+    <string name="txtCancel">Cancelar</string>
+    <string name="txt_setting_7_rods_mode">Ábaco de 7 varillas</string>
+    <string name="txt_setting_display_abacus_number">Mostrar el número actual</string>
+    <string name="txt_setting_display_help_message">Mostrar la pista de ayuda</string>
+    <string name="txt_setting_hintsound">Leer las sumas en voz alta</string>
+    <string name="txt_setting_left_hand">Ábaco para zurdos</string>
+    <string name="txt_setting_sound">Sonido al mover las cuentas</string>
+    <string name="txt_setting_title">Ajustes de la aplicación</string>
+    <string name="update">Actualizar</string>
+    <string name="voice_speed">Velocidad de la voz</string>
+    <string name="settings_dark_mode">Modo oscuro</string>
+    <string name="settings_mode_light">☀️ Claro</string>
+    <string name="settings_mode_dark">🌙 Oscuro</string>
+    <string name="settings_voice_languages_count">Idiomas (%1$d)</string>
+    <string name="settings_voice_test_sentence">Bienvenido al mundo del ábaco.</string>
+    <string name="settings_language_title">Idioma de la aplicación</string>
+    <string name="settings_language_phone">Igual que el teléfono</string>
+    <string name="settings_theme_rainbow">Arcoíris</string>
+    <string name="settings_theme_duotone">Dos tonos</string>
+    <string name="settings_theme_candy">Caramelo</string>
+    <string name="settings_theme_heaven_earth">Cielo y Tierra</string>
+    <string name="settings_theme_gemstone">Gema</string>
+    <string name="settings_theme_rectangle">Rectángulo</string>
+    <string name="settings_theme_happy_bead">Feliz</string>
+    <string name="settings_theme_circle">Círculo</string>
+    <string name="settings_theme_purple">Morado</string>
+    <string name="settings_theme_blue">Azul</string>
+    <string name="settings_theme_skyblue">Celeste</string>
+    <string name="settings_theme_red">Rojo</string>
+    <string name="settings_theme_green">Verde</string>
+    <string name="settings_theme_orange">Naranja</string>
+    <string name="settings_theme_cyan">Cian</string>
+    <string name="settings_theme_pink">Rosa</string>
+    <string name="settings_theme_yellow">Amarillo</string>
+    <string name="settings_theme_silver">Plata</string>
+    <string name="settings_theme_brown">Marrón</string>
+    <string name="settings_theme_black">Negro</string>
+    <string name="settings_theme_pearl">Perla</string>
+</resources>

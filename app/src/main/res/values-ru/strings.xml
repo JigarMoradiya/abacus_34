@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- m1_settings -->
+    <string name="background_music_volume">Громкость фоновой музыки</string>
+    <string name="change_voice_setting">Настройки голоса</string>
+    <string name="check_voice">Проверить голос</string>
+    <string name="customize_pronunciation_voice">Настроить произношение (голос)</string>
+    <string name="display_bead_direction">Показывать направление бусин</string>
+    <string name="free_abacus_theme">Темы абакуса</string>
+    <string name="pitch">Высота голоса</string>
+    <string name="preview_of_theme">Предпросмотр темы</string>
+    <string name="txtCancel">Отмена</string>
+    <string name="txt_setting_7_rods_mode">Абакус с 7 спицами</string>
+    <string name="txt_setting_display_abacus_number">Показывать текущее число</string>
+    <string name="txt_setting_display_help_message">Показывать подсказку</string>
+    <string name="txt_setting_hintsound">Озвучивать примеры</string>
+    <string name="txt_setting_left_hand">Абакус для левшей</string>
+    <string name="txt_setting_sound">Звук движения бусин</string>
+    <string name="txt_setting_title">Настройки приложения</string>
+    <string name="update">Обновить</string>
+    <string name="voice_speed">Скорость голоса</string>
+    <string name="settings_dark_mode">Тёмный режим</string>
+    <string name="settings_mode_light">☀️ Светлая</string>
+    <string name="settings_mode_dark">🌙 Тёмная</string>
+    <string name="settings_voice_languages_count">Языки (%1$d)</string>
+    <string name="settings_voice_test_sentence">Добро пожаловать в мир абакуса.</string>
+    <string name="settings_language_title">Язык приложения</string>
+    <string name="settings_language_phone">Как на телефоне</string>
+    <string name="settings_theme_rainbow">Радуга</string>
+    <string name="settings_theme_duotone">Два цвета</string>
+    <string name="settings_theme_candy">Конфета</string>
+    <string name="settings_theme_heaven_earth">Небо и Земля</string>
+    <string name="settings_theme_gemstone">Самоцвет</string>
+    <string name="settings_theme_rectangle">Брусок</string>
+    <string name="settings_theme_happy_bead">Весёлая</string>
+    <string name="settings_theme_circle">Круг</string>
+    <string name="settings_theme_purple">Лиловый</string>
+    <string name="settings_theme_blue">Синий</string>
+    <string name="settings_theme_skyblue">Голубой</string>
+    <string name="settings_theme_red">Красный</string>
+    <string name="settings_theme_green">Зелёный</string>
+    <string name="settings_theme_orange">Оранжевый</string>
+    <string name="settings_theme_cyan">Бирюзовый</string>
+    <string name="settings_theme_pink">Розовый</string>
+    <string name="settings_theme_yellow">Жёлтый</string>
+    <string name="settings_theme_silver">Серебро</string>
+    <string name="settings_theme_brown">Коричневый</string>
+    <string name="settings_theme_black">Чёрный</string>
+    <string name="settings_theme_pearl">Жемчужный</string>
+</resources>

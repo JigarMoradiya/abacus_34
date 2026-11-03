@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- m1_settings -->
+    <string name="background_music_volume">Arka plan müziği ses düzeyi</string>
+    <string name="change_voice_setting">Ses ayarını değiştir</string>
+    <string name="check_voice">Sesi dene</string>
+    <string name="customize_pronunciation_voice">Telaffuzu özelleştir (ses)</string>
+    <string name="display_bead_direction">Boncuk yönünü göster</string>
+    <string name="free_abacus_theme">Abaküs temaları</string>
+    <string name="pitch">Ses perdesi</string>
+    <string name="preview_of_theme">Tema önizlemesi</string>
+    <string name="txtCancel">İptal</string>
+    <string name="txt_setting_7_rods_mode">7 çubuklu abaküs</string>
+    <string name="txt_setting_display_abacus_number">Mevcut sayıyı göster</string>
+    <string name="txt_setting_display_help_message">Yardım ipucunu göster</string>
+    <string name="txt_setting_hintsound">Toplamları sesli oku</string>
+    <string name="txt_setting_left_hand">Solaklar için abaküs</string>
+    <string name="txt_setting_sound">Boncuk hareket sesi</string>
+    <string name="txt_setting_title">Uygulama ayarları</string>
+    <string name="update">Güncelle</string>
+    <string name="voice_speed">Ses hızı</string>
+    <string name="settings_dark_mode">Koyu mod</string>
+    <string name="settings_mode_light">☀️ Açık</string>
+    <string name="settings_mode_dark">🌙 Koyu</string>
+    <string name="settings_voice_languages_count">Diller (%1$d)</string>
+    <string name="settings_voice_test_sentence">Abaküs dünyasına hoş geldin.</string>
+    <string name="settings_language_title">Uygulama dili</string>
+    <string name="settings_language_phone">Telefonla aynı</string>
+    <string name="settings_theme_rainbow">Gökkuşağı</string>
+    <string name="settings_theme_duotone">İki tonlu</string>
+    <string name="settings_theme_candy">Şeker</string>
+    <string name="settings_theme_heaven_earth">Gök ve Yer</string>
+    <string name="settings_theme_gemstone">Mücevher</string>
+    <string name="settings_theme_rectangle">Dikdörtgen</string>
+    <string name="settings_theme_happy_bead">Mutlu</string>
+    <string name="settings_theme_circle">Daire</string>
+    <string name="settings_theme_purple">Mor</string>
+    <string name="settings_theme_blue">Mavi</string>
+    <string name="settings_theme_skyblue">Gök mavisi</string>
+    <string name="settings_theme_red">Kırmızı</string>
+    <string name="settings_theme_green">Yeşil</string>
+    <string name="settings_theme_orange">Turuncu</string>
+    <string name="settings_theme_cyan">Turkuaz</string>
+    <string name="settings_theme_pink">Pembe</string>
+    <string name="settings_theme_yellow">Sarı</string>
+    <string name="settings_theme_silver">Gümüş</string>
+    <string name="settings_theme_brown">Kahverengi</string>
+    <string name="settings_theme_black">Siyah</string>
+    <string name="settings_theme_pearl">İnci</string>
+</resources>

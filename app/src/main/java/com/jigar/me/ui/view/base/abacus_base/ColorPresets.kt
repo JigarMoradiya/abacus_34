@@ -1,7 +1,9 @@
 package com.jigar.me.ui.view.base.abacus_base
 
+import androidx.annotation.StringRes
 import androidx.compose.ui.graphics.Color
 import androidx.core.graphics.toColorInt
+import com.jigar.me.R
 
 object ColorPresets {
 
@@ -32,8 +34,9 @@ object ColorPresets {
 
     fun isKnownTheme(id: String?): Boolean = id != null && id in knownThemeIds
 
-    /** What a theme is called in the picker while Dark mode is on (null = the usual name). */
-    fun darkDisplayName(id: String): String? = if (id == "poligon_black") "Pearl" else null
+    /** The text id of what a theme is called in the picker while Dark mode is on (null = the usual name). */
+    @StringRes
+    fun darkDisplayNameRes(id: String): Int? = if (id == "poligon_black") R.string.settings_theme_pearl else null
 
     fun getMixColorListOfPoligon(): List<Color> {
         fun hex(h: String) = Color("#$h".toColorInt())

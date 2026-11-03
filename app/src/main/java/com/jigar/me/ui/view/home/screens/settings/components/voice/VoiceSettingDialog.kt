@@ -57,7 +57,7 @@ fun VoiceSettingDialog(
     ) {
         Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp * s)) {
             // ─────────────────── Languages ───────────────────
-            AbSettingRow(label = "Languages (${uiState.languages.size})", icon = Icons.Rounded.Language) {
+            AbSettingRow(label = stringResource(R.string.settings_voice_languages_count, uiState.languages.size), icon = Icons.Rounded.Language) {
                 AbMenuPicker(
                     items = uiState.languages,
                     selectedTitle = uiState.selectedLanguage?.displayName ?: "",

@@ -20,6 +20,11 @@ object LanguageManager {
     /** @param tag language tag, also the resource folder (values-fr); @param nameRes the language written in itself; @param wave 0 = source, 1 / 2 = release wave. */
     data class Language(val tag: String, @StringRes val nameRes: Int, val wave: Int)
 
+    /** Arabic is right to left. It is switched on only when the right-to-left pass (module M21) is finished and checked: until then it is
+     *  never offered and an Arabic phone gets English. Turn this on together with `apply.py --with-ar`. */
+    const val RTL_READY = false
+    private fun isOffered(tag: String) = tag != "ar" || RTL_READY
+
     val all: List<Language> = listOf(
         Language("en", R.string.language_name_en, 0),
         Language("fr", R.string.language_name_fr, 1),
@@ -42,14 +47,14 @@ object LanguageManager {
     /** The languages the picker offers right now. Debug builds offer all of them (for testing without Remote Config). */
     fun enabled(rawRemoteConfig: String?): List<Language> {
         val tags = parseEnabled(rawRemoteConfig, includeAll = BuildConfig.DEBUG).toSet()
-        return all.filter { it.tag in tags }
+        return all.filter { it.tag in tags && isOffered(it.tag) }
     }
 
     /** The tag of the language the UI uses now: the chosen app language, else the phone's when we have it, else English. */
     fun currentTag(): String {
         val chosen = AppCompatDelegate.getApplicationLocales()
         val language = if (!chosen.isEmpty) chosen[0]?.language else Locale.getDefault().language
-        return all.firstOrNull { it.tag == language }?.tag ?: "en"
+        return all.firstOrNull { it.tag == language && isOffered(it.tag) }?.tag ?: "en"
     }
 
     /** True when the user has not picked a language in the app (the phone's language is followed). */

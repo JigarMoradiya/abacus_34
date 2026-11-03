@@ -7,4 +7,5 @@ How to check on the phone: build the side-by-side copy `./gradlew assembleDev1De
 
 | Module | Status | Notes |
 |---|---|---|
-| M0 Foundation | code done, compiles, 48 unit tests pass; phone check running | |
+| M0 Foundation | done, committed `adbd1fdf`; 36 routes walked on the phone, 0 crashes, English identical | |
+| M1 Settings + language picker + voice | done on the phone (picker switches the language and recreates the screen, theme names, toggles, voice card checked in fr es pt tr ru ja th) | 46 keys x 7 languages; long theme names shortened so the labels do not shrink to tiny text; hours: tracked from M2 on |

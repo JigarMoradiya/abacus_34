@@ -8,6 +8,8 @@ import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.jetpack.core.StatefulViewModelAbacus
 import com.jigar.me.ui.jetpack.utils.TextToSpeechManager
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.LanguageManager
+import com.jigar.me.utils.TtsLocale
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Locale
 import javax.inject.Inject
@@ -19,6 +21,10 @@ class SettingViewModel @Inject constructor(
 ) : StatefulViewModelAbacus<SettingUiState>(prefs = prefs,numberOfColumns = 3) {
 
     override val TAG = "SettingViewModel"
+
+    /** The languages the picker offers (English plus what Remote Config `enabled_languages` lists; every language in debug builds). */
+    val enabledLanguages: List<LanguageManager.Language>
+        get() = LanguageManager.enabled(prefs.getCustomParam(AppConstants.RemoteConfig.enabledLanguages, ""))
 
     override fun getInitialState() = SettingUiState(
         displayNumber = prefs.getCustomParamBoolean(
@@ -51,11 +57,12 @@ class SettingViewModel @Inject constructor(
 
         val languages = tts.availableLanguages?.toList()?.sortedBy { it.displayName } ?: emptyList()
 
-        val savedLangTag = prefs.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_LANGUAGE, AppPreferencesHelper.DEFAULT_TTS_LANGUAGE_VALUE)
+        // the saved voice language, or the usual voice of the app language (French app -> French voice) when none was picked
+        val wanted = TtsLocale.current(prefs.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_LANGUAGE, ""), LanguageManager.currentTag())
 
-        val selectedLang = languages.firstOrNull {
-            it.toLanguageTag().equals(savedLangTag, true)
-        } ?: languages.firstOrNull()
+        val selectedLang = languages.firstOrNull { it.toLanguageTag().equals(wanted.toLanguageTag(), true) }
+            ?: languages.firstOrNull { it.language == wanted.language }     // the engine has fr-CA but not fr-FR: same language is fine
+            ?: languages.firstOrNull()
 
 //        val voices = tts.voices
 //            ?.filter { it.locale == selectedLang }
@@ -99,18 +106,19 @@ class SettingViewModel @Inject constructor(
 //        }
     }
 
-    fun testVoice(tts: TextToSpeech) {
+    /** @param sentence the text to speak, from the translation file (the caller resolves it in the app language). */
+    fun testVoice(tts: TextToSpeech, sentence: String) {
         val state = state()
         val langResult = tts.setLanguage(state.selectedLanguage)
         if (langResult == TextToSpeech.LANG_MISSING_DATA ||
             langResult == TextToSpeech.LANG_NOT_SUPPORTED
         ) {
-            tts.language = Locale.forLanguageTag(AppPreferencesHelper.DEFAULT_TTS_LANGUAGE_VALUE)
+            tts.language = TtsLocale.defaultFor("en")
         }
 //        tts.voice = state.selectedVoice
         tts.setPitch(state.pitch / 10f)
         tts.setSpeechRate(state.speed / 10f)
-        tts.speak("Welcome to the world of Abacus.", TextToSpeech.QUEUE_FLUSH, null, null)
+        tts.speak(sentence, TextToSpeech.QUEUE_FLUSH, null, null)
     }
 
     fun saveVoiceSettings() {

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- m1_settings -->
+    <string name="background_music_volume">Volume de la musique de fond</string>
+    <string name="change_voice_setting">Modifier la voix</string>
+    <string name="check_voice">Tester la voix</string>
+    <string name="customize_pronunciation_voice">Personnaliser la prononciation (voix)</string>
+    <string name="display_bead_direction">Afficher le sens des boules</string>
+    <string name="free_abacus_theme">Thèmes du boulier</string>
+    <string name="pitch">Hauteur</string>
+    <string name="preview_of_theme">Aperçu du thème</string>
+    <string name="txtCancel">Annuler</string>
+    <string name="txt_setting_7_rods_mode">Boulier à 7 tiges</string>
+    <string name="txt_setting_display_abacus_number">Afficher le nombre actuel</string>
+    <string name="txt_setting_display_help_message">Afficher l\'indice d\'aide</string>
+    <string name="txt_setting_hintsound">Lire les additions à voix haute</string>
+    <string name="txt_setting_left_hand">Boulier pour gaucher</string>
+    <string name="txt_setting_sound">Son des boules</string>
+    <string name="txt_setting_title">Réglages de l\'application</string>
+    <string name="update">Mettre à jour</string>
+    <string name="voice_speed">Vitesse de la voix</string>
+    <string name="settings_dark_mode">Mode sombre</string>
+    <string name="settings_mode_light">☀️ Clair</string>
+    <string name="settings_mode_dark">🌙 Sombre</string>
+    <string name="settings_voice_languages_count">Langues (%1$d)</string>
+    <string name="settings_voice_test_sentence">Bienvenue dans le monde du boulier.</string>
+    <string name="settings_language_title">Langue de l\'application</string>
+    <string name="settings_language_phone">Comme le téléphone</string>
+    <string name="settings_theme_rainbow">Arc-en-ciel</string>
+    <string name="settings_theme_duotone">Bicolore</string>
+    <string name="settings_theme_candy">Bonbon</string>
+    <string name="settings_theme_heaven_earth">Ciel et Terre</string>
+    <string name="settings_theme_gemstone">Gemme</string>
+    <string name="settings_theme_rectangle">Rectangle</string>
+    <string name="settings_theme_happy_bead">Joyeuse</string>
+    <string name="settings_theme_circle">Cercle</string>
+    <string name="settings_theme_purple">Violet</string>
+    <string name="settings_theme_blue">Bleu</string>
+    <string name="settings_theme_skyblue">Bleu ciel</string>
+    <string name="settings_theme_red">Rouge</string>
+    <string name="settings_theme_green">Vert</string>
+    <string name="settings_theme_orange">Orange</string>
+    <string name="settings_theme_cyan">Cyan</string>
+    <string name="settings_theme_pink">Rose</string>
+    <string name="settings_theme_yellow">Jaune</string>
+    <string name="settings_theme_silver">Argent</string>
+    <string name="settings_theme_brown">Marron</string>
+    <string name="settings_theme_black">Noir</string>
+    <string name="settings_theme_pearl">Perle</string>
+</resources>
