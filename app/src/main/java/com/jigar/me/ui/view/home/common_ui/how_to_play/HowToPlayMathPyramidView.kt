@@ -108,14 +108,14 @@ fun HowToPlayMathPyramidView(
                 ) {
 
                     // FIRST BULLETS
-                    item { Bullet("Math Pyramid is a fun number-building game where every number helps create the number above it!") }
+                    item { Bullet(stringResource(R.string.htp_math_pyramid_b_1)) }
 
-                    item { Bullet("You will see a pyramid made of rows of boxes. Depending on the level, the pyramid can have 2 to 6 layers.") }
+                    item { Bullet(stringResource(R.string.htp_math_pyramid_b_2)) }
 
                     // SECTION TITLE
                     item {
                         Text(
-                            text = "👉 How it works:",
+                            text = stringResource(R.string.htp_math_pyramid_1),
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = AbTypography.Baloo,
@@ -123,14 +123,14 @@ fun HowToPlayMathPyramidView(
                         )
                     }
 
-                    item { Bullet("Look at the two numbers at the bottom.") }
-                    item { Bullet("Add them together.") }
-                    item { Bullet("Their sum goes in the box above.") }
+                    item { Bullet(stringResource(R.string.htp_math_pyramid_b_3)) }
+                    item { Bullet(stringResource(R.string.htp_math_pyramid_b_4)) }
+                    item { Bullet(stringResource(R.string.htp_math_pyramid_b_5)) }
 
                     // Example Title
                     item {
                         Text(
-                            text = "Example:",
+                            text = stringResource(R.string.htp_math_pyramid_2),
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = AbTypography.Baloo,
@@ -147,14 +147,14 @@ fun HowToPlayMathPyramidView(
                         ) {
                             Text("    [ ? ]", fontFamily = AbTypography.Baloo)
                             Text("[ 4 ] [ 6 ]", fontFamily = AbTypography.Baloo)
-                            Text("Because 4 + 6 = 10, the top box should be 10.", fontFamily = AbTypography.Baloo)
+                            Text(stringResource(R.string.htp_math_pyramid_3), fontFamily = AbTypography.Baloo)
                         }
                     }
 
                     // Your Job
                     item {
                         Text(
-                            text = "👉 Your job:",
+                            text = stringResource(R.string.htp_math_pyramid_4),
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = AbTypography.Baloo,
@@ -162,12 +162,12 @@ fun HowToPlayMathPyramidView(
                         )
                     }
 
-                    item { Bullet("Fill in all the empty boxes by adding the numbers below.") }
-                    item { Bullet("Complete the puzzle when all boxes are filled correctly from bottom to top.") }
+                    item { Bullet(stringResource(R.string.htp_math_pyramid_b_6)) }
+                    item { Bullet(stringResource(R.string.htp_math_pyramid_b_7)) }
 
                     item {
                         Text(
-                            text = "It’s like building a number tower — each block supports the block above!",
+                            text = stringResource(R.string.htp_math_pyramid_5),
                             fontSize = 16.sp,
                             modifier = Modifier.padding(top = AppDimens.Dimens4),
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
@@ -178,7 +178,7 @@ fun HowToPlayMathPyramidView(
                     // PARENT-FRIENDLY SECTION
                     item {
                         Text(
-                            text = "👨‍👩‍👧 How It Helps:",
+                            text = stringResource(R.string.htp_math_pyramid_6),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = AbTypography.Baloo,
@@ -186,25 +186,25 @@ fun HowToPlayMathPyramidView(
                         )
                     }
 
-                    item { Check("Strengthens mental addition") }
-                    item { Detail("Kids repeatedly add small and medium numbers — building fluency.") }
+                    item { Check(stringResource(R.string.htp_math_pyramid_b_8)) }
+                    item { Detail(stringResource(R.string.htp_math_pyramid_b_9)) }
 
-                    item { Check("Develops step-by-step reasoning") }
-                    item { Detail("Kids see how lower numbers create upper numbers.") }
+                    item { Check(stringResource(R.string.htp_math_pyramid_b_10)) }
+                    item { Detail(stringResource(R.string.htp_math_pyramid_b_11)) }
 
-                    item { Check("Builds problem-solving confidence") }
-                    item { Detail("Each correct box gives instant feedback — encouraging independence.") }
+                    item { Check(stringResource(R.string.htp_math_pyramid_b_12)) }
+                    item { Detail(stringResource(R.string.htp_math_pyramid_b_13)) }
 
-                    item { Check("Enhances concentration") }
-                    item { Detail("Kids stay focused to complete all layers accurately.") }
+                    item { Check(stringResource(R.string.htp_math_pyramid_b_14)) }
+                    item { Detail(stringResource(R.string.htp_math_pyramid_b_15)) }
 
-                    item { Check("Supports number relationships") }
-                    item { Detail("Children understand how numbers combine and grow — essential for algebra.") }
+                    item { Check(stringResource(R.string.htp_math_pyramid_b_16)) }
+                    item { Detail(stringResource(R.string.htp_math_pyramid_b_17)) }
 
                     // MATH-FRIENDLY SECTION
                     item {
                         Text(
-                            text = "❤️ Why This Game Matters:",
+                            text = stringResource(R.string.htp_math_pyramid_7),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = AbTypography.Baloo,
@@ -212,14 +212,14 @@ fun HowToPlayMathPyramidView(
                         )
                     }
 
-                    item { Bullet("Children see how two values combine to create a new value") }
-                    item { Bullet("They practice addition & subtraction patterns, not random sums") }
-                    item { Bullet("They understand hierarchy — base numbers build higher numbers") }
-                    item { Bullet("The pyramid format helps visualize how parts create a whole") }
+                    item { Bullet(stringResource(R.string.htp_math_pyramid_b_18)) }
+                    item { Bullet(stringResource(R.string.htp_math_pyramid_b_19)) }
+                    item { Bullet(stringResource(R.string.htp_math_pyramid_b_20)) }
+                    item { Bullet(stringResource(R.string.htp_math_pyramid_b_21)) }
 
                     item {
                         Text(
-                            text = "This prepares them for concepts like Pascal’s Triangle, number bonds, and arithmetic patterns.",
+                            text = stringResource(R.string.htp_math_pyramid_8),
                             fontSize = 16.sp,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
                             modifier = Modifier.padding(top = AppDimens.Dimens4)
@@ -228,7 +228,7 @@ fun HowToPlayMathPyramidView(
 
                     item {
                         Text(
-                            text = "It’s a great way to build strong early math skills while solving a fun and satisfying pyramid puzzle.",
+                            text = stringResource(R.string.htp_math_pyramid_9),
                             fontSize = 16.sp,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
                             modifier = Modifier.padding(top = AppDimens.Dimens4)

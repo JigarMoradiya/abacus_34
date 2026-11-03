@@ -93,6 +93,7 @@ import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sin
+import androidx.compose.ui.res.stringResource
 
 private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
@@ -143,8 +144,8 @@ fun MagicSquarePlayScreen(
             ) {
                 GameMascotPanel(
                     cheer = when {
-                        state.justSolved -> "Awesome! 🎉"
-                        state.streak >= 3 -> "On fire! 🔥"
+                        state.justSolved -> stringResource(R.string.g_magic_square_1)
+                        state.streak >= 3 -> stringResource(R.string.g_magic_square_2)
                         else -> baseCheer
                     },
                     celebrate = state.justSolved, s = s,
@@ -441,7 +442,7 @@ private fun ResultOverlay(score: Int, puzzlesSolved: Int, bestScore: Int, onPlay
             emoji = "🧩",
             accent = ButtonType.PURPLE,
             stars = starCount,
-            score = str(R.string.balloon_final_score) + ": $score",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
                     GameStatChip(emoji = "🧩", value = "$puzzlesSolved", color = GREEN)

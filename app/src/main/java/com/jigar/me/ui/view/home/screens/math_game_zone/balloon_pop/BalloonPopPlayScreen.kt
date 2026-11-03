@@ -269,7 +269,7 @@ private fun ResultOverlay(
             emoji = "🎈",
             accent = ButtonType.PINK,
             stars = starCount,
-            score = stringResource(R.string.balloon_final_score) + ": $score",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
                     GameStatChip("🎯", "$correctCount", GREEN)

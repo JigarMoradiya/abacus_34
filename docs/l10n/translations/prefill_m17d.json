@@ -1,0 +1,47 @@
+{
+ "missing_operator_game": {
+  "fr": "Signe manquant",
+  "es": "Signo perdido",
+  "pt": "Sinal faltando",
+  "tr": "Eksik İşaret",
+  "ru": "Пропавший знак",
+  "ja": "ぬけた記号",
+  "th": "เครื่องหมายหาย"
+ },
+ "number_detective_game": {
+  "fr": "Détective des nombres",
+  "es": "Detective de números",
+  "pt": "Detetive de números",
+  "tr": "Sayı Dedektifi",
+  "ru": "Числовой детектив",
+  "ja": "数のたんてい",
+  "th": "นักสืบตัวเลข"
+ },
+ "number_detective_tagline": {
+  "fr": "Perce le nombre secret !",
+  "es": "¡Descubre el número secreto!",
+  "pt": "Descubra o número secreto!",
+  "tr": "Gizli sayıyı çöz!",
+  "ru": "Разгадай секретное число!",
+  "ja": "ひみつの数をつきとめよう！",
+  "th": "ถอดรหัสเลขลับ!"
+ },
+ "number_path_game": {
+  "fr": "Chemin des nombres",
+  "es": "Camino de números",
+  "pt": "Caminho dos números",
+  "tr": "Sayı Yolu",
+  "ru": "Путь чисел",
+  "ja": "数のみち",
+  "th": "เส้นทางตัวเลข"
+ },
+ "number_snake_game": {
+  "fr": "Serpent des nombres",
+  "es": "Serpiente numérica",
+  "pt": "Cobrinha numérica",
+  "tr": "Sayı Yılanı",
+  "ru": "Числовая змейка",
+  "ja": "数字へび",
+  "th": "งูตัวเลข"
+ }
+}

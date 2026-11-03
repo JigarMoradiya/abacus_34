@@ -407,7 +407,7 @@ internal fun TargetNumberMedalArt(level: Int, time: State<Float>, modifier: Modi
             // The LEVEL ribbon above the disc.
             val ribbon = Color(0xFFE11D48)
             Text(
-                "LEVEL $level",
+                stringResource(R.string.g_target_number_level, level),
                 style = AbTypography.fixed(g * 0.1f / fontScale, FontWeight.Black).copy(shadow = Shadow(Color.Black.copy(alpha = 0.25f), Offset(0f, 3f), 0f)),
                 color = Color.White,
                 maxLines = 1,

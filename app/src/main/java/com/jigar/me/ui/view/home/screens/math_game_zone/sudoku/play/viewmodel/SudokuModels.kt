@@ -2,6 +2,8 @@ package com.jigar.me.ui.view.home.screens.math_game_zone.sudoku.play.viewmodel
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import androidx.annotation.StringRes
+import com.jigar.me.R
 
 
 @Parcelize
@@ -17,11 +19,11 @@ data class SudokuHomeUiState(
 
 // ---------- Models & Enums ----------
 @Parcelize
-enum class SudokuDifficulty4(val displayName: String) : Parcelable {
-    EASY("Easy"),
-    MEDIUM("Medium"),
-    HARD("Hard"),
-    VERY_HARD("Very Hard")
+enum class SudokuDifficulty4(@StringRes val nameRes: Int) : Parcelable {
+    EASY(R.string.g_diff_easy),
+    MEDIUM(R.string.g_diff_medium),
+    HARD(R.string.g_diff_hard),
+    VERY_HARD(R.string.g_diff_very_hard)
 }
 @Parcelize
 enum class SudokuSize(val grid: Int) : Parcelable {

@@ -57,6 +57,7 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.missing_operator.compone
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
 import kotlin.math.sin
+import androidx.compose.ui.res.stringResource
 
 private val ORANGE = Color(0xFFE65100)
 private val GREEN = Color(0xFF2E7D32)
@@ -156,7 +157,7 @@ fun MissingOperatorHomeScreen(
 
             if (bestScore > 0) {
                 Spacer(Modifier.height(AppDimens.Dimens6))
-                Text("🏆 " + androidx.compose.ui.res.stringResource(R.string.balloon_best_score) + ": $bestScore",
+                Text(androidx.compose.ui.res.stringResource(R.string.g_best_score_line, bestScore),
                     style = AbTypography.fixed(18f * appScale(), FontWeight.Bold),
                     color = GREEN,
                     modifier = Modifier.abGamePill()

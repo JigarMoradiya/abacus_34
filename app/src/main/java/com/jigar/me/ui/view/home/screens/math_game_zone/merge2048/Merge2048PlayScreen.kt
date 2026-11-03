@@ -93,6 +93,7 @@ import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.ButtonType
 import kotlinx.coroutines.delay
 import kotlin.math.abs
+import androidx.compose.ui.res.stringResource
 
 private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
@@ -154,7 +155,7 @@ fun Merge2048PlayScreen(viewModel: Merge2048PlayViewModel, onBackClick: () -> Un
             Row(modifier = Modifier.fillMaxWidth().weight(1f), verticalAlignment = Alignment.CenterVertically) {
                 GameMascotPanel(
                     cheer = when {
-                        viewModel.highestTile >= viewModel.target -> "On fire! 🔥"
+                        viewModel.highestTile >= viewModel.target -> stringResource(R.string.g_merge2048_1)
                         else -> baseCheer
                     },
                     celebrate = state.milestoneValue != null, s = s,
@@ -419,7 +420,7 @@ private fun ResultOverlay(score: Int, didWin: Boolean, highest: Int, goal: Int, 
             emoji = "🔢",
             accent = ButtonType.PINK,
             stars = starCount,
-            score = str(R.string.balloon_final_score) + ": $score",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
                     GameStatChip("🔝", "$highest", GREEN)

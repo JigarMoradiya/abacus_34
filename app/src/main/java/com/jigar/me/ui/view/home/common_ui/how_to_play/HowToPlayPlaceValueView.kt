@@ -73,21 +73,21 @@ fun HowToPlayPlaceValueView(
                 }
                 Spacer(Modifier.height(AppDimens.Dimens8))
                 LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(bottom = AppDimens.Dimens16)) {
-                    item { PvBullet("Build the number from its pieces! 🏗️") }
-                    item { PvHeading("👉 How it works:") }
-                    item { PvBullet("Purple chips show a number in pieces — like 400 + 70 + 2.") }
-                    item { PvBullet("Type the whole number on the keypad: 472!") }
-                    item { PvBullet("Each slot shows its place: O = ones, T = tens, H = hundreds, Th = thousands.") }
-                    item { PvBullet("Watch out for missing pieces! 400 + 2 is 402 — don't forget the ZERO in the tens place!") }
-                    item { PvBullet("Keep answering until the timer runs out.") }
-                    item { PvHeading("🧒 Example:") }
-                    item { PvBullet("300 + 50 + 9 → type 3, 5, 9 → 359 ✔") }
-                    item { PvBullet("500 + 6 → type 5, 0, 6 → 506 ✔ (zero saves the day!)") }
-                    item { PvBullet("Answer right in a row for a bigger score (🔥 ×2, ×3).") }
-                    item { PvHeading("👨‍👩‍👧 How It Helps:") }
-                    item { PvBullet("Place value is the foundation of ALL abacus math.") }
-                    item { PvBullet("Zero-trap numbers build real understanding, not just counting.") }
-                    item { PvBullet("Higher levels grow to 4 and 5 digit numbers.") }
+                    item { PvBullet(stringResource(R.string.htp_place_value_1)) }
+                    item { PvHeading(stringResource(R.string.htp_place_value_2)) }
+                    item { PvBullet(stringResource(R.string.htp_place_value_3)) }
+                    item { PvBullet(stringResource(R.string.htp_place_value_4)) }
+                    item { PvBullet(stringResource(R.string.htp_place_value_5)) }
+                    item { PvBullet(stringResource(R.string.htp_place_value_6)) }
+                    item { PvBullet(stringResource(R.string.htp_place_value_7)) }
+                    item { PvHeading(stringResource(R.string.htp_place_value_8)) }
+                    item { PvBullet(stringResource(R.string.htp_place_value_9)) }
+                    item { PvBullet(stringResource(R.string.htp_place_value_10)) }
+                    item { PvBullet(stringResource(R.string.htp_place_value_11)) }
+                    item { PvHeading(stringResource(R.string.htp_place_value_12)) }
+                    item { PvBullet(stringResource(R.string.htp_place_value_13)) }
+                    item { PvBullet(stringResource(R.string.htp_place_value_14)) }
+                    item { PvBullet(stringResource(R.string.htp_place_value_15)) }
                 }
             }
         }

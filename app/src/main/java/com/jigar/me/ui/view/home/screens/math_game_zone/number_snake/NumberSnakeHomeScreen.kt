@@ -130,7 +130,7 @@ fun NumberSnakeHomeScreen(
 
             if (bestTime > 0) {
                 Spacer(Modifier.height(AppDimens.Dimens6))
-                Text("🏆 " + stringResource(R.string.best_time) + ": " + "%d:%02d".format(bestTime / 60, bestTime % 60),
+                Text(androidx.compose.ui.res.stringResource(R.string.g_best_time_line, "%d:%02d".format(bestTime / 60, bestTime % 60)),
                     color = BEST_GOLD, style = AbTypography.fixed(16f * appScale(), FontWeight.Bold),
                     modifier = Modifier.abGamePill()
                         .padding(horizontal = AppDimens.Dimens12, vertical = AppDimens.Dimens4))

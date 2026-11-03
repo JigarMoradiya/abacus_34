@@ -91,7 +91,7 @@ fun HowToPlayCalcudokuView(
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             MiniGrid()
                             Spacer(Modifier.height(AppDimens.Dimens8))
-                            Text("A finished 3×3 puzzle", fontSize = 12.sp, color = Color.Gray,
+                            Text(stringResource(R.string.htp_calcudoku_1), fontSize = 12.sp, color = Color.Gray,
                                 fontFamily = AbTypography.Baloo)
                         }
 
@@ -99,30 +99,30 @@ fun HowToPlayCalcudokuView(
                             modifier = Modifier.weight(1f),
                             verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
                         ) {
-                            CdBullet("Use the numbers 1 to 3. No number repeats in a row or column.")
-                            CdBullet("Bold outlines are cages. The small clue shows the target + sign.")
+                            CdBullet(stringResource(R.string.htp_calcudoku_2))
+                            CdBullet(stringResource(R.string.htp_calcudoku_3))
 
                             Column(
                                 verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens4),
                                 modifier = Modifier.clip(RoundedCornerShape(AppDimens.Dimens10))
                                     .background(HIGHLIGHT).padding(AppDimens.Dimens10)
                             ) {
-                                Text("Look at the yellow 6× cage:", fontSize = 15.sp, color = Color(0xFF3B2A00),
+                                Text(stringResource(R.string.htp_calcudoku_4), fontSize = 15.sp, color = Color(0xFF3B2A00),
                                     fontFamily = AbTypography.Baloo)
-                                Text("2 and 3 go in it, because 2 × 3 = 6  ✔", fontSize = 15.sp, color = Color(0xFF3B2A00),
+                                Text(stringResource(R.string.htp_calcudoku_5), fontSize = 15.sp, color = Color(0xFF3B2A00),
                                     fontFamily = AbTypography.Baloo)
-                                Text("3+ means the boxes add to 3  (1 + 2).", fontSize = 15.sp, color = Color(0xFF3B2A00),
+                                Text(stringResource(R.string.htp_calcudoku_6), fontSize = 15.sp, color = Color(0xFF3B2A00),
                                     fontFamily = AbTypography.Baloo)
-                                Text("2− means the boxes differ by 2  (3 − 1).", fontSize = 15.sp, color = Color(0xFF3B2A00),
+                                Text(stringResource(R.string.htp_calcudoku_7), fontSize = 15.sp, color = Color(0xFF3B2A00),
                                     fontFamily = AbTypography.Baloo)
                             }
 
-                            CdBullet("Tap a box, then tap a number below. Tap ⌫ to clear.")
-                            CdBullet("Stuck? Tap a box — the bear tells you that cage's goal!")
+                            CdBullet(stringResource(R.string.htp_calcudoku_8))
+                            CdBullet(stringResource(R.string.htp_calcudoku_9))
                         }
                     }
                     Spacer(Modifier.height(AppDimens.Dimens16))
-                    Text("A clever number puzzle that blends arithmetic with logic.",
+                    Text(stringResource(R.string.htp_calcudoku_10),
                         fontSize = 16.sp, color = LocalAbColors.current.textPrimary, fontFamily = AbTypography.Baloo)
                 }
             }

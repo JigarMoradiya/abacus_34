@@ -152,10 +152,10 @@ fun NumberDetectivePlayScreen(
             ) {
                 GameMascotPanel(
                     cheer = when {
-                        state.lastAnswerRight -> "You cracked it! 🕵️"
-                        state.lastAnswerWrong -> "Missed it — new number! 🔍"
-                        state.feedbackDirection > 0 -> "Higher! ⬆️"
-                        state.feedbackDirection < 0 -> "Lower! ⬇️"
+                        state.lastAnswerRight -> stringResource(R.string.g_number_detective_1)
+                        state.lastAnswerWrong -> stringResource(R.string.g_number_detective_2)
+                        state.feedbackDirection > 0 -> stringResource(R.string.g_number_detective_3)
+                        state.feedbackDirection < 0 -> stringResource(R.string.g_number_detective_4)
                         else -> baseCheer
                     },
                     celebrate = state.lastAnswerRight, s = s,
@@ -505,7 +505,7 @@ private fun ResultOverlay(state: NumberDetectiveUiState, best: Int, onPlayAgain:
             emoji = "🕵️",
             accent = ButtonType.GREEN,
             stars = stars,
-            score = stringResource(R.string.balloon_final_score) + ": ${state.score}",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, state.score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
                     GameStatChip("✅", "${state.correctCount}", Color(0xFF2E7D32))

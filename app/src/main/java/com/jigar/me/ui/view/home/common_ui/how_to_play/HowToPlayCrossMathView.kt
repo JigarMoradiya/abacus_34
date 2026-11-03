@@ -73,25 +73,25 @@ fun HowToPlayCrossMathView(
                 }
                 Spacer(Modifier.height(AppDimens.Dimens8))
                 LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(bottom = AppDimens.Dimens16)) {
-                    item { CmBullet("Cross Math is a number crossword — equations go across and down, crossing each other!") }
-                    item { CmHeading("👉 How it works:") }
-                    item { CmBullet("Some boxes already show numbers; the empty boxes are missing ones.") }
-                    item { CmBullet("Tap an empty box, then tap a green number tile to place it there.") }
-                    item { CmBullet("Each number tile can be used only once.") }
-                    item { CmBullet("On Hard and Very Hard some SIGNS are missing too — pick + − × ÷ from the purple palette!") }
-                    item { CmBullet("On Very Hard, watch out — a few extra numbers are tricksters that fit nowhere!") }
-                    item { CmBullet("Each line must be a true equation, like 3 + 5 = 8, across AND down.") }
-                    item { CmBullet("If a finished line is wrong it shakes red — tap the box to take the number back.") }
-                    item { CmHeading("🧒 Example:") }
-                    item { CmBullet("You see 3 + ▢ = 8 … place the 5 there → the line turns green! ✔") }
-                    item { CmBullet("Stuck? Use a 💡 hint — it fills one correct box (you get 3 per level).") }
-                    item { CmHeading("⭐ Levels & stars:") }
-                    item { CmBullet("Follow the road map — finish a level to unlock the next one.") }
-                    item { CmBullet("Solve fast with no hints to earn all 3 stars!") }
-                    item { CmHeading("👨‍👩‍👧 How It Helps:") }
-                    item { CmBullet("Builds addition, subtraction, multiplication and division fluency.") }
-                    item { CmBullet("Crossing equations teach that one number can be part of two facts.") }
-                    item { CmBullet("Planning which tile goes where strengthens logical thinking.") }
+                    item { CmBullet(stringResource(R.string.htp_cross_math_1)) }
+                    item { CmHeading(stringResource(R.string.htp_cross_math_2)) }
+                    item { CmBullet(stringResource(R.string.htp_cross_math_3)) }
+                    item { CmBullet(stringResource(R.string.htp_cross_math_4)) }
+                    item { CmBullet(stringResource(R.string.htp_cross_math_5)) }
+                    item { CmBullet(stringResource(R.string.htp_cross_math_6)) }
+                    item { CmBullet(stringResource(R.string.htp_cross_math_7)) }
+                    item { CmBullet(stringResource(R.string.htp_cross_math_8)) }
+                    item { CmBullet(stringResource(R.string.htp_cross_math_9)) }
+                    item { CmHeading(stringResource(R.string.htp_cross_math_10)) }
+                    item { CmBullet(stringResource(R.string.htp_cross_math_11)) }
+                    item { CmBullet(stringResource(R.string.htp_cross_math_12)) }
+                    item { CmHeading(stringResource(R.string.htp_cross_math_13)) }
+                    item { CmBullet(stringResource(R.string.htp_cross_math_14)) }
+                    item { CmBullet(stringResource(R.string.htp_cross_math_15)) }
+                    item { CmHeading(stringResource(R.string.htp_cross_math_16)) }
+                    item { CmBullet(stringResource(R.string.htp_cross_math_17)) }
+                    item { CmBullet(stringResource(R.string.htp_cross_math_18)) }
+                    item { CmBullet(stringResource(R.string.htp_cross_math_19)) }
                 }
             }
         }

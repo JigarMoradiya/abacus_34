@@ -1,0 +1,990 @@
+{
+ "balloon_great_job": {
+  "fr": "Bravo !",
+  "es": "¡Gran trabajo!",
+  "pt": "Ótimo trabalho!",
+  "tr": "Harika İş!",
+  "ru": "Отличная работа!",
+  "ja": "よくできました！",
+  "th": "เก่งมาก!"
+ },
+ "balloon_make_target": {
+  "fr": "Fais %1$d avec %2$d !",
+  "es": "¡Completa %1$d con %2$d!",
+  "pt": "Complete %1$d com %2$d!",
+  "tr": "%2$d ile %1$d yap!",
+  "ru": "Дополни %2$d до %1$d!",
+  "ja": "%2$dと合わせて%1$dにしよう！",
+  "th": "ทำให้ได้ %1$d กับ %2$d!"
+ },
+ "balloon_new_target": {
+  "fr": "Nouvelle cible !",
+  "es": "¡Nueva meta!",
+  "pt": "Novo alvo!",
+  "tr": "Yeni Hedef!",
+  "ru": "Новая цель!",
+  "ja": "あたらしいもくひょう！",
+  "th": "เป้าหมายใหม่!"
+ },
+ "balloon_play_again": {
+  "fr": "Rejouer",
+  "es": "Jugar otra vez",
+  "pt": "Jogar de novo",
+  "tr": "Tekrar Oyna",
+  "ru": "Играть снова",
+  "ja": "もう一度あそぶ",
+  "th": "เล่นอีกครั้ง"
+ },
+ "balloon_pop_tagline": {
+  "fr": "Éclate le nombre qui complète la somme !",
+  "es": "¡Revienta el número que completa la suma!",
+  "pt": "Estoure o número que completa a soma!",
+  "tr": "Toplamı tamamlayan sayıyı patlat!",
+  "ru": "Лопни число, которое дополняет пример!",
+  "ja": "式を完成させる数をわろう！",
+  "th": "ปาลูกโป่งเลขที่ทำให้ผลรวมครบ!"
+ },
+ "calcudoku_prompt": {
+  "fr": "Résous chaque bloc !",
+  "es": "¡Resuelve cada jaula!",
+  "pt": "Resolva todos os blocos!",
+  "tr": "Her kafesi çöz!",
+  "ru": "Реши все блоки!",
+  "ja": "計算ブロックをぜんぶとこう！",
+  "th": "ไขให้ครบทุกกรง!"
+ },
+ "calcudoku_tagline": {
+  "fr": "Remplis la grille pour que chaque bloc soit juste !",
+  "es": "¡Llena la cuadrícula para que cada jaula cuadre!",
+  "pt": "Preencha a grade e acerte todos os blocos!",
+  "tr": "Izgarayı doldur, her kafes tutsun!",
+  "ru": "Заполни сетку так, чтобы все блоки сошлись!",
+  "ja": "どの計算ブロックも合うように、マスをうめよう！",
+  "th": "เติมตารางให้ทุกกรงถูกต้อง!"
+ },
+ "clock_master_prompt": {
+  "fr": "Quelle heure est-il ?",
+  "es": "¿Qué hora es?",
+  "pt": "Que horas são?",
+  "tr": "Saat kaç?",
+  "ru": "Который час?",
+  "ja": "今、何時かな？",
+  "th": "กี่โมงแล้ว?"
+ },
+ "cross_math_level": {
+  "fr": "Niveau %1$d",
+  "es": "Nivel %1$d",
+  "pt": "Nível %1$d",
+  "tr": "Seviye %1$d",
+  "ru": "Уровень %1$d",
+  "ja": "レベル%1$d",
+  "th": "ด่าน %1$d"
+ },
+ "cross_math_next_level": {
+  "fr": "Niveau suivant",
+  "es": "Siguiente nivel",
+  "pt": "Próximo nível",
+  "tr": "Sonraki Seviye",
+  "ru": "Следующий уровень",
+  "ja": "次のレベル",
+  "th": "ด่านถัดไป"
+ },
+ "cross_math_tagline": {
+  "fr": "Complète les équations qui se croisent !",
+  "es": "¡Completa las ecuaciones que se cruzan!",
+  "pt": "Complete as equações que se cruzam!",
+  "tr": "Kesişen denklemleri tamamla!",
+  "ru": "Заполни пересекающиеся уравнения!",
+  "ja": "交差する式を完成させよう！",
+  "th": "เติมสมการไขว้ให้ครบ!"
+ },
+ "equation_match_prompt": {
+  "fr": "Associe les paires !",
+  "es": "¡Une las parejas!",
+  "pt": "Ligue os pares!",
+  "tr": "Çiftleri eşleştir!",
+  "ru": "Найди пары!",
+  "ja": "ペアをそろえよう！",
+  "th": "จับคู่ให้ถูก!"
+ },
+ "g_best_score_line": {
+  "fr": "🏆 Meilleur score : %1$s",
+  "es": "🏆 Mejor puntuación: %1$s",
+  "pt": "🏆 Melhor pontuação: %1$s",
+  "tr": "🏆 En İyi Puan: %1$s",
+  "ru": "🏆 Лучший счёт: %1$s",
+  "ja": "🏆 ベストスコア：%1$s",
+  "th": "🏆 คะแนนสูงสุด: %1$s"
+ },
+ "g_best_time_line": {
+  "fr": "🏆 Meilleur temps : %1$s",
+  "es": "🏆 Mejor tiempo: %1$s",
+  "pt": "🏆 Melhor tempo: %1$s",
+  "tr": "🏆 En İyi Süre: %1$s",
+  "ru": "🏆 Лучшее время: %1$s",
+  "ja": "🏆 ベストタイム：%1$s",
+  "th": "🏆 เวลาดีที่สุด: %1$s"
+ },
+ "g_calcudoku_1": {
+  "fr": "Génial ! 🎉",
+  "es": "¡Genial! 🎉",
+  "pt": "Incrível! 🎉",
+  "tr": "Harika! 🎉",
+  "ru": "Супер! 🎉",
+  "ja": "すごい！ 🎉",
+  "th": "สุดยอด! 🎉"
+ },
+ "g_calcudoku_2": {
+  "fr": "En feu ! 🔥",
+  "es": "¡En llamas! 🔥",
+  "pt": "Pegando fogo! 🔥",
+  "tr": "Ateş gibisin! 🔥",
+  "ru": "Ты в ударе! 🔥",
+  "ja": "もえてるね！ 🔥",
+  "th": "ไฟลุกเลย! 🔥"
+ },
+ "g_calcudoku_3": {
+  "fr": "Touche une case pour avoir un indice",
+  "es": "Toca una casilla para ver una pista",
+  "pt": "Toque em uma casa para ver uma dica",
+  "tr": "İpucu için bir kutuya dokun",
+  "ru": "Нажми на клетку — получишь подсказку",
+  "ja": "マスをタップするとヒントが出るよ",
+  "th": "แตะช่องเพื่อดูคำใบ้"
+ },
+ "g_calcudoku_4": {
+  "fr": "Cette case vaut %1$s.",
+  "es": "Esta casilla es %1$s.",
+  "pt": "Esta casa é %1$s.",
+  "tr": "Bu kutu %1$s olmalı.",
+  "ru": "В этой клетке — %1$s.",
+  "ja": "このマスは%1$sだよ。",
+  "th": "ช่องนี้คือ %1$s"
+ },
+ "g_calcudoku_6": {
+  "fr": "Ces 2 cases ont %1$s d'écart.",
+  "es": "Estas 2 casillas tienen una diferencia de %1$s.",
+  "pt": "Estas 2 casas têm diferença de %1$s.",
+  "tr": "Bu 2 kutunun farkı %1$s.",
+  "ru": "Эти 2 клетки отличаются на %1$s.",
+  "ja": "この2マスは%1$sだけちがうよ。",
+  "th": "ช่องทั้ง 2 นี้ต่างกัน %1$s"
+ },
+ "g_calcudoku_8": {
+  "fr": "Une case ÷ l'autre donne %1$s.",
+  "es": "Una casilla ÷ la otra da %1$s.",
+  "pt": "Uma casa ÷ a outra dá %1$s.",
+  "tr": "Bir kutu ÷ diğeri %1$s eder.",
+  "ru": "Одна клетка ÷ другая даёт %1$s.",
+  "ja": "1つのマス ÷ もう1つのマスで%1$sになるよ。",
+  "th": "ช่องหนึ่ง ÷ อีกช่องหนึ่ง ได้ %1$s"
+ },
+ "g_clock_master_1": {
+  "fr": "En feu ! 🔥",
+  "es": "¡En llamas! 🔥",
+  "pt": "Pegando fogo! 🔥",
+  "tr": "Ateş gibisin! 🔥",
+  "ru": "Ты в ударе! 🔥",
+  "ja": "もえてるね！ 🔥",
+  "th": "ไฟลุกเลย! 🔥"
+ },
+ "g_clock_master_2": {
+  "fr": "Regarde bien les deux aiguilles ! 🕐",
+  "es": "¡Mira las dos manecillas! 🕐",
+  "pt": "Olhe os dois ponteiros! 🕐",
+  "tr": "Akrebe ve yelkovana bak! 🕐",
+  "ru": "Смотри на обе стрелки! 🕐",
+  "ja": "2本のはりを見よう！ 🕐",
+  "th": "ดูเข็มทั้งสองเล่มนะ! 🕐"
+ },
+ "g_equation_match_1": {
+  "fr": "En feu ! 🔥",
+  "es": "¡En llamas! 🔥",
+  "pt": "Pegando fogo! 🔥",
+  "tr": "Ateş gibisin! 🔥",
+  "ru": "Ты в ударе! 🔥",
+  "ja": "もえてるね！ 🔥",
+  "th": "ไฟลุกเลย! 🔥"
+ },
+ "g_equation_match_2": {
+  "fr": "Belle paire ! 🎉",
+  "es": "¡Buena pareja! 🎉",
+  "pt": "Ótimo par! 🎉",
+  "tr": "Güzel eşleşme! 🎉",
+  "ru": "Отличная пара! 🎉",
+  "ja": "ぴったり合ったね！ 🎉",
+  "th": "จับคู่ได้เยี่ยม! 🎉"
+ },
+ "g_final_score_line": {
+  "fr": "Score final : %1$s",
+  "es": "Puntuación final: %1$s",
+  "pt": "Pontuação final: %1$s",
+  "tr": "Son Puan: %1$s",
+  "ru": "Итоговый счёт: %1$s",
+  "ja": "最終スコア：%1$s",
+  "th": "คะแนนรวม: %1$s"
+ },
+ "good_try": {
+  "fr": "Bien essayé !",
+  "es": "¡Buen intento!",
+  "pt": "Boa tentativa!",
+  "tr": "Güzel Deneme!",
+  "ru": "Хорошая попытка!",
+  "ja": "よくがんばったね！",
+  "th": "พยายามได้ดี!"
+ },
+ "how_to_play": {
+  "fr": "Comment jouer ?",
+  "es": "¿Cómo se juega?",
+  "pt": "Como jogar?",
+  "tr": "Nasıl Oynanır?",
+  "ru": "Как играть?",
+  "ja": "あそびかたは？",
+  "th": "วิธีเล่น?"
+ },
+ "htp_balloon_pop_1": {
+  "fr": "Des ballons montent avec des nombres dessus. Éclate le bon !",
+  "es": "Los globos suben flotando con números: ¡revienta el correcto!",
+  "pt": "Balões sobem com números. Estoure o certo!",
+  "tr": "Üzerinde sayılar olan balonlar yukarı uçuyor, doğru olanı patlat!",
+  "ru": "Шарики с числами летят вверх — лопни нужный!",
+  "ja": "数の書かれた風船がふわふわ上がってくるよ。正しい風船をわろう！",
+  "th": "ลูกโป่งมีตัวเลขลอยขึ้นมา ปาลูกที่ถูกต้องเลย!"
+ },
+ "htp_balloon_pop_10": {
+  "fr": "Ballons : 2, 4, 7, 4, 9",
+  "es": "Globos: 2, 4, 7, 4, 9",
+  "pt": "Balões: 2, 4, 7, 4, 9",
+  "tr": "Balonlar: 2, 4, 7, 4, 9",
+  "ru": "Шарики: 2, 4, 7, 4, 9",
+  "ja": "風船：2, 4, 7, 4, 9",
+  "th": "ลูกโป่ง: 2, 4, 7, 4, 9"
+ },
+ "htp_balloon_pop_11": {
+  "fr": "6 + 4 = 10 ✔ : éclate le 4 !",
+  "es": "6 + 4 = 10 ✔ ¡Revienta el 4!",
+  "pt": "6 + 4 = 10 ✔ Estoure o 4!",
+  "tr": "6 + 4 = 10 ✔ 4'ü patlat!",
+  "ru": "6 + 4 = 10 ✔ — лопни 4!",
+  "ja": "6 + 4 = 10 ✔ だから、4をわろう！",
+  "th": "6 + 4 = 10 ✔ ปาเลข 4 เลย!"
+ },
+ "htp_balloon_pop_12": {
+  "fr": "👨‍👩‍👧 Ce que ça apporte :",
+  "es": "👨‍👩‍👧 Cómo ayuda:",
+  "pt": "👨‍👩‍👧 Como isso ajuda:",
+  "tr": "👨‍👩‍👧 Nasıl Yardımcı Olur:",
+  "ru": "👨‍👩‍👧 Чем это полезно:",
+  "ja": "👨‍👩‍👧 身につく力：",
+  "th": "👨‍👩‍👧 ช่วยอะไรได้บ้าง:"
+ },
+ "htp_balloon_pop_13": {
+  "fr": "Développe l'aisance avec les compléments : les paires qui font 5, 10 et 20.",
+  "es": "Desarrolla la soltura con los pares de números que forman 5, 10 y 20.",
+  "pt": "Desenvolve a fluência com os pares que somam 5, 10 e 20.",
+  "tr": "5, 10 ve 20 yapan sayı çiftlerinde akıcılık kazandırır.",
+  "ru": "Тренирует состав числа — пары, которые дают 5, 10 и 20.",
+  "ja": "5、10、20になる数の組み合わせを、すばやく思い出せるようになります。",
+  "th": "ฝึกคู่ตัวเลขที่รวมกันได้ 5, 10 และ 20 ให้คล่อง"
+ },
+ "htp_balloon_pop_14": {
+  "fr": "Prépare aux formules du boulier : les paires du Petit ami et du Grand ami.",
+  "es": "Prepara para las fórmulas del ábaco: los pares del Pequeño amigo y del Gran amigo.",
+  "pt": "Prepara para as fórmulas do ábaco: os pares do Pequeno Amigo e do Grande Amigo.",
+  "tr": "Abaküs formüllerine hazırlar: Küçük Arkadaş ve Büyük Arkadaş çiftleri.",
+  "ru": "Готовит к формулам абакуса — парам «Малый друг» и «Большой друг».",
+  "ja": "そろばんの公式、小さな友だちと大きな友だちの準備になります。",
+  "th": "เตรียมพร้อมสำหรับสูตรลูกคิด คือคู่เพื่อนเล็กและเพื่อนใหญ่"
+ },
+ "htp_balloon_pop_15": {
+  "fr": "Entraîne la reconnaissance rapide, avec des mouvements doux.",
+  "es": "Entrena el reconocimiento rápido con un movimiento suave.",
+  "pt": "Treina o reconhecimento rápido com movimentos suaves.",
+  "tr": "Yumuşak bir hareketle hızlı fark etmeyi geliştirir.",
+  "ru": "Учит быстро узнавать числа в плавном движении.",
+  "ja": "ゆったりした動きの中で、数をすばやく見分ける力が育ちます。",
+  "th": "ฝึกจำตัวเลขได้เร็วด้วยการเคลื่อนไหวที่นุ่มนวล"
+ },
+ "htp_balloon_pop_16": {
+  "fr": "Aucune punition en cas d'erreur : un mauvais ballon remue, c'est tout.",
+  "es": "Sin castigo por los errores: el globo equivocado solo se menea.",
+  "pt": "Errar não tem castigo: o toque errado só faz o balão balançar.",
+  "tr": "Hata için ceza yok, yanlış dokunuşta balon sadece sallanır.",
+  "ru": "За ошибки не наказывают — неверный шарик просто покачивается.",
+  "ja": "まちがえてもペナルティはありません。ちがう風船はゆれるだけです。",
+  "th": "ไม่มีการลงโทษเมื่อทำผิด แตะผิดลูกโป่งแค่ส่ายไปมา"
+ },
+ "htp_balloon_pop_2": {
+  "fr": "👉 Comment ça marche :",
+  "es": "👉 Cómo funciona:",
+  "pt": "👉 Como funciona:",
+  "tr": "👉 Nasıl çalışır:",
+  "ru": "👉 Как это работает:",
+  "ja": "👉 こんなふうにあそぶよ：",
+  "th": "👉 เล่นยังไง:"
+ },
+ "htp_balloon_pop_3": {
+  "fr": "Une cible s'affiche en haut, par exemple : Fais 10 avec 7.",
+  "es": "Arriba aparece una meta, por ejemplo: Completa 10 con 7.",
+  "pt": "Um alvo aparece no alto, por exemplo: Complete 10 com 7.",
+  "tr": "Üstte bir hedef görünür, örneğin: 7 ile 10 yap.",
+  "ru": "Вверху показана цель, например: Дополни 7 до 10.",
+  "ja": "上にもくひょうが出るよ。たとえば「7と合わせて10にしよう」。",
+  "th": "เป้าหมายจะแสดงด้านบน เช่น ทำให้ได้ 10 กับ 7"
+ },
+ "htp_balloon_pop_4": {
+  "fr": "Trouve le ballon qui complète la somme : 7 a besoin de 3 !",
+  "es": "Busca el globo que completa la suma: ¡el 7 necesita un 3!",
+  "pt": "Ache o balão que completa a soma: o 7 precisa do 3!",
+  "tr": "Toplamı tamamlayan balonu bul: 7 için 3 lazım!",
+  "ru": "Найди шарик, который дополнит пример — к 7 нужно 3!",
+  "ja": "式を完成させる風船をさがそう。7には3だね！",
+  "th": "หาลูกโป่งที่ทำให้ผลรวมครบ: 7 ต้องใช้ 3!"
+ },
+ "htp_balloon_pop_5": {
+  "fr": "Touche-le pour l'ÉCLATER et gagner des points.",
+  "es": "Tócalo para REVENTARLO y ganar puntos.",
+  "pt": "Toque nele para ESTOURAR e ganhar pontos.",
+  "tr": "PATLATMAK için dokun ve puan kazan.",
+  "ru": "Нажми на него, чтобы ЛОПНУТЬ шарик и получить очки.",
+  "ja": "タップしてわると、ポイントがもらえるよ。",
+  "th": "แตะลูกโป่งให้แตกแล้วรับคะแนน"
+ },
+ "htp_balloon_pop_6": {
+  "fr": "Éclate 5 ballons d'affilée et la cible prend un nouveau nombre.",
+  "es": "Revienta 5 seguidos y la meta cambia a un número nuevo.",
+  "pt": "Estoure 5 seguidos e o alvo muda para um número novo.",
+  "tr": "Üst üste 5 doğru patlat, hedef yeni bir sayıya döner.",
+  "ru": "Лопни 5 шариков подряд, и цель сменится на новое число.",
+  "ja": "5こつづけてわると、もくひょうが新しい数にかわるよ。",
+  "th": "ปา 5 ลูกติดกัน เป้าหมายจะเปลี่ยนเป็นเลขใหม่"
+ },
+ "htp_balloon_pop_7": {
+  "fr": "Mauvais ballon ? Il remue juste un peu. Réessaie !",
+  "es": "¿Globo equivocado? Solo se menea: ¡inténtalo otra vez!",
+  "pt": "Balão errado? Ele só balança. Tente de novo!",
+  "tr": "Yanlış balon mu? Sadece sallanır, tekrar dene!",
+  "ru": "Не тот шарик? Он просто покачается — попробуй ещё раз!",
+  "ja": "ちがう風船だとゆれるだけ。もう一度やってみよう！",
+  "th": "ผิดลูก? ลูกโป่งแค่ส่ายไปมา ลองอีกครั้ง!"
+ },
+ "htp_balloon_pop_8": {
+  "fr": "🧒 Exemple :",
+  "es": "🧒 Ejemplo:",
+  "pt": "🧒 Exemplo:",
+  "tr": "🧒 Örnek:",
+  "ru": "🧒 Пример:",
+  "ja": "🧒 れい：",
+  "th": "🧒 ตัวอย่าง:"
+ },
+ "htp_balloon_pop_9": {
+  "fr": "Cible : Fais 10 avec 6",
+  "es": "Meta: Completa 10 con 6",
+  "pt": "Alvo: Complete 10 com 6",
+  "tr": "Hedef: 6 ile 10 yap",
+  "ru": "Цель: Дополни 6 до 10",
+  "ja": "もくひょう：6と合わせて10にしよう",
+  "th": "เป้าหมาย: ทำให้ได้ 10 กับ 6"
+ },
+ "htp_calcudoku_1": {
+  "fr": "Un puzzle 3×3 terminé",
+  "es": "Un rompecabezas de 3×3 resuelto",
+  "pt": "Um quebra-cabeça 3×3 resolvido",
+  "tr": "Tamamlanmış 3×3 bulmaca",
+  "ru": "Готовая головоломка 3×3",
+  "ja": "できあがった3×3のパズル",
+  "th": "ปริศนา 3×3 ที่เสร็จแล้ว"
+ },
+ "htp_calcudoku_10": {
+  "fr": "Un casse-tête de nombres malin qui mêle calcul et logique.",
+  "es": "Un ingenioso rompecabezas de números que mezcla aritmética y lógica.",
+  "pt": "Um quebra-cabeça numérico inteligente que une aritmética e lógica.",
+  "tr": "Hesaplamayı mantıkla birleştiren akıllı bir sayı bulmacası.",
+  "ru": "Умная числовая головоломка, где арифметика встречается с логикой.",
+  "ja": "計算と論理的な考え方をあわせて使う、頭をきたえる数のパズルです。",
+  "th": "ปริศนาตัวเลขแสนฉลาดที่ผสมการคำนวณเข้ากับตรรกะ"
+ },
+ "htp_calcudoku_2": {
+  "fr": "Utilise les nombres de 1 à 3. Aucun nombre ne se répète dans une ligne ou une colonne.",
+  "es": "Usa los números del 1 al 3. Ningún número se repite en una fila ni en una columna.",
+  "pt": "Use os números de 1 a 3. Nenhum número se repete na mesma linha ou coluna.",
+  "tr": "1'den 3'e kadar olan sayıları kullan. Hiçbir sayı bir satırda ya da sütunda tekrar etmez.",
+  "ru": "Используй числа от 1 до 3. В строке и в столбце числа не повторяются.",
+  "ja": "1から3までの数を使うよ。よこのならびにも、たてのならびにも、同じ数は2回使えないよ。",
+  "th": "ใช้เลข 1 ถึง 3 ห้ามมีเลขซ้ำในแถวนอนหรือแถวตั้ง"
+ },
+ "htp_calcudoku_3": {
+  "fr": "Les contours épais sont des blocs. Le petit indice montre la cible et le signe.",
+  "es": "Los contornos gruesos son jaulas. La pista pequeña muestra la meta y el signo.",
+  "pt": "Os contornos grossos são blocos. A pista pequena mostra o alvo e o sinal.",
+  "tr": "Kalın çizgili bölgeler kafestir. Küçük ipucu hedef sayıyı ve işareti gösterir.",
+  "ru": "Жирные линии обводят блоки. Маленькая подсказка показывает цель и знак.",
+  "ja": "太い線でかこまれた部分が計算ブロックだよ。すみの小さな数と記号が、そのブロックの目標だよ。",
+  "th": "เส้นขอบหนาคือกรง เลขตัวเล็กบอกเป้าหมายและเครื่องหมาย"
+ },
+ "htp_calcudoku_4": {
+  "fr": "Regarde le bloc jaune 6× :",
+  "es": "Mira la jaula amarilla de 6×:",
+  "pt": "Veja o bloco amarelo 6×:",
+  "tr": "Sarı 6× kafesine bak:",
+  "ru": "Посмотри на жёлтый блок 6×:",
+  "ja": "黄色い6×の計算ブロックを見てみよう：",
+  "th": "ดูกรง 6× สีเหลือง:"
+ },
+ "htp_calcudoku_5": {
+  "fr": "Il contient 2 et 3, car 2 × 3 = 6  ✔",
+  "es": "Van el 2 y el 3, porque 2 × 3 = 6  ✔",
+  "pt": "O 2 e o 3 entram nele, porque 2 × 3 = 6  ✔",
+  "tr": "İçine 2 ve 3 girer, çünkü 2 × 3 = 6  ✔",
+  "ru": "В него идут 2 и 3, ведь 2 × 3 = 6  ✔",
+  "ja": "2と3が入るよ。だって 2 × 3 = 6  ✔",
+  "th": "ใส่เลข 2 กับ 3 ได้ เพราะ 2 × 3 = 6  ✔"
+ },
+ "htp_calcudoku_6": {
+  "fr": "3+ veut dire que les cases additionnées font 3  (1 + 2).",
+  "es": "3+ significa que las casillas suman 3  (1 + 2).",
+  "pt": "3+ quer dizer que as casas somam 3  (1 + 2).",
+  "tr": "3+ demek, kutuların toplamı 3 olur  (1 + 2).",
+  "ru": "3+ значит, что клетки в сумме дают 3  (1 + 2).",
+  "ja": "3+は、マスをたして3になる、という意味だよ  (1 + 2)。",
+  "th": "3+ หมายถึงช่องรวมกันได้ 3  (1 + 2)"
+ },
+ "htp_calcudoku_7": {
+  "fr": "2− veut dire que les cases ont 2 d'écart  (3 − 1).",
+  "es": "2− significa que las casillas tienen una diferencia de 2  (3 − 1).",
+  "pt": "2− quer dizer que as casas têm diferença de 2  (3 − 1).",
+  "tr": "2− demek, kutuların farkı 2 olur  (3 − 1).",
+  "ru": "2− значит, что клетки отличаются на 2  (3 − 1).",
+  "ja": "2−は、2つのマスが2だけちがう、という意味だよ  (3 − 1)。",
+  "th": "2− หมายถึงช่องต่างกัน 2  (3 − 1)"
+ },
+ "htp_calcudoku_8": {
+  "fr": "Touche une case, puis un nombre en dessous. Touche ⌫ pour effacer.",
+  "es": "Toca una casilla y luego un número de abajo. Toca ⌫ para borrar.",
+  "pt": "Toque em uma casa e depois em um número abaixo. Toque em ⌫ para apagar.",
+  "tr": "Bir kutuya dokun, sonra aşağıdan bir sayıya dokun. Silmek için ⌫ tuşuna dokun.",
+  "ru": "Нажми на клетку, потом на число внизу. Нажми ⌫, чтобы стереть.",
+  "ja": "マスをタップして、下の数をタップしてね。⌫をタップすると消せるよ。",
+  "th": "แตะช่อง แล้วแตะตัวเลขด้านล่าง แตะ ⌫ เพื่อลบ"
+ },
+ "htp_calcudoku_9": {
+  "fr": "Besoin d'aide ? Touche une case : l'ours te dit l'objectif de ce bloc !",
+  "es": "¿No puedes seguir? Toca una casilla: ¡el oso te dice la meta de esa jaula!",
+  "pt": "Travou? Toque em uma casa e o urso diz a meta desse bloco!",
+  "tr": "Takıldın mı? Bir kutuya dokun, ayı o kafesin hedefini söyler!",
+  "ru": "Не получается? Нажми на клетку — медведь подскажет цель этого блока!",
+  "ja": "こまったら、マスをタップしてね。クマがそのブロックの目標を教えてくれるよ！",
+  "th": "ติดอยู่? แตะช่อง แล้วหมีจะบอกเป้าหมายของกรงนั้น!"
+ },
+ "htp_clock_master_1": {
+  "fr": "Lis l'horloge comme un vrai maître du temps ! 🕐",
+  "es": "¡Lee el reloj como todo un maestro del tiempo! 🕐",
+  "pt": "Leia o relógio como um verdadeiro mestre do tempo! 🕐",
+  "tr": "Saati gerçek bir saat ustası gibi oku! 🕐",
+  "ru": "Читай часы, как настоящий мастер времени! 🕐",
+  "ja": "時計マスターになって、時計を読もう！ 🕐",
+  "th": "อ่านนาฬิกาให้เก่งเหมือนมือโปร! 🕐"
+ },
+ "htp_clock_master_10": {
+  "fr": "Petite aiguille après le 6, grande aiguille sur le 6 → 6:30 ✔",
+  "es": "Manecilla corta pasando el 6, manecilla larga en el 6 → 6:30 ✔",
+  "pt": "Ponteiro curto passou do 6, ponteiro longo no 6 → 6:30 ✔",
+  "tr": "Akrep 6'yı geçti, yelkovan 6'da → 6:30 ✔",
+  "ru": "Короткая стрелка после 6, длинная на 6 → 6:30 ✔",
+  "ja": "短いはりは6をすぎたところ、長いはりは6 → 6:30 ✔",
+  "th": "เข็มสั้นเลย 6 ไปแล้ว เข็มยาวที่ 6 → 6:30 ✔"
+ },
+ "htp_clock_master_11": {
+  "fr": "Enchaîne les bonnes réponses pour un meilleur score (🔥 ×2, ×3).",
+  "es": "Acierta varias seguidas para ganar más puntos (🔥 ×2, ×3).",
+  "pt": "Acerte em sequência para ganhar mais pontos (🔥 ×2, ×3).",
+  "tr": "Üst üste doğru bilirsen puanın katlanır (🔥 ×2, ×3).",
+  "ru": "Отвечай правильно подряд — получишь больше очков (🔥 ×2, ×3).",
+  "ja": "つづけて正解すると、もらえるスコアが大きくなるよ (🔥 ×2, ×3)。",
+  "th": "ตอบถูกติดกันจะได้คะแนนมากขึ้น (🔥 ×2, ×3)"
+ },
+ "htp_clock_master_12": {
+  "fr": "⏰ Niveaux :",
+  "es": "⏰ Niveles:",
+  "pt": "⏰ Níveis:",
+  "tr": "⏰ Seviyeler:",
+  "ru": "⏰ Уровни:",
+  "ja": "⏰ レベル：",
+  "th": "⏰ ระดับความยาก:"
+ },
+ "htp_clock_master_13": {
+  "fr": "Facile : heures pile · Moyen : demi-heures · Difficile : quarts d'heure · Très difficile : heures de 5 en 5 minutes !",
+  "es": "Fácil: horas en punto · Medio: medias horas · Difícil: cuartos de hora · Muy difícil: ¡horas de 5 en 5 minutos!",
+  "pt": "Fácil: horas cheias · Médio: meias horas · Difícil: quartos de hora · Muito difícil: a cada 5 minutos!",
+  "tr": "Kolay: tam saatler · Orta: buçuk saatler · Zor: çeyrek saatler · Çok zor: 5 dakikalık saatler!",
+  "ru": "Лёгкий: ровные часы · Средний: половины часа · Сложный: четверти часа · Очень сложный: время с шагом 5 минут!",
+  "ja": "やさしい：ちょうどの時刻 · ふつう：30分ごと · むずかしい：15分ごと · とてもむずかしい：5分ごと！",
+  "th": "ง่าย: เวลาตรงชั่วโมง · ปานกลาง: ครึ่งชั่วโมง · ยาก: ทุก 15 นาที · ยากมาก: ทุก 5 นาที!"
+ },
+ "htp_clock_master_14": {
+  "fr": "👨‍👩‍👧 Ce que ça apporte :",
+  "es": "👨‍👩‍👧 Cómo ayuda:",
+  "pt": "👨‍👩‍👧 Como isso ajuda:",
+  "tr": "👨‍👩‍👧 Nasıl Yardımcı Olur:",
+  "ru": "👨‍👩‍👧 Чем это полезно:",
+  "ja": "👨‍👩‍👧 身につく力：",
+  "th": "👨‍👩‍👧 ช่วยอะไรได้บ้าง:"
+ },
+ "htp_clock_master_15": {
+  "fr": "Lire l'heure est une compétence utile au quotidien, vérifiée tôt à l'école.",
+  "es": "Saber la hora es una habilidad para la vida que las escuelas evalúan desde temprano.",
+  "pt": "Saber ver as horas é uma habilidade para a vida, cobrada cedo na escola.",
+  "tr": "Saat okumak, okulların erkenden ölçtüğü bir yaşam becerisidir.",
+  "ru": "Умение определять время — жизненный навык, который в школе проверяют уже в первых классах.",
+  "ja": "時計を読むことは、学校でも早くから学ぶ大切な生活のスキルです。",
+  "th": "การดูเวลาเป็นทักษะชีวิตที่โรงเรียนมักทดสอบตั้งแต่ช่วงแรก"
+ },
+ "htp_clock_master_16": {
+  "fr": "Les mauvaises réponses piégeuses (aiguilles inversées !) entraînent à lire avec soin.",
+  "es": "Las opciones engañosas (¡con las manecillas cambiadas!) entrenan la lectura atenta.",
+  "pt": "Opções erradas traiçoeiras (ponteiros trocados!) treinam a leitura atenta.",
+  "tr": "Sinsi yanlış seçenekler (yer değiştirmiş akrep ve yelkovan!) dikkatli okumayı öğretir.",
+  "ru": "Хитрые неверные варианты (стрелки поменяли местами!) учат читать внимательно.",
+  "ja": "まぎらわしい選択肢（はりを入れかえたもの！）が、ていねいに読む力を育てます。",
+  "th": "ตัวเลือกผิดที่ชวนให้หลงกล (สลับเข็ม!) ช่วยฝึกให้อ่านอย่างรอบคอบ"
+ },
+ "htp_clock_master_2": {
+  "fr": "👉 Comment ça marche :",
+  "es": "👉 Cómo funciona:",
+  "pt": "👉 Como funciona:",
+  "tr": "👉 Nasıl çalışır:",
+  "ru": "👉 Как это работает:",
+  "ja": "👉 こんなふうにあそぶよ：",
+  "th": "👉 เล่นยังไง:"
+ },
+ "htp_clock_master_3": {
+  "fr": "Les aiguilles de l'horloge se déplacent vers une nouvelle heure.",
+  "es": "Las manecillas del reloj se mueven a una hora nueva.",
+  "pt": "Os ponteiros do relógio giram até uma nova hora.",
+  "tr": "Saatin akrebi ve yelkovanı yeni bir saate döner.",
+  "ru": "Стрелки часов переходят на новое время.",
+  "ja": "時計のはりが動いて、新しい時刻をさすよ。",
+  "th": "เข็มนาฬิกาจะหมุนไปที่เวลาใหม่"
+ },
+ "htp_clock_master_4": {
+  "fr": "La PETITE aiguille foncée montre l'heure, la GRANDE aiguille bleue montre les minutes.",
+  "es": "La manecilla CORTA y oscura marca la hora, la manecilla LARGA y azul marca los minutos.",
+  "pt": "O ponteiro CURTO e escuro mostra a hora, o ponteiro LONGO e azul mostra os minutos.",
+  "tr": "KISA koyu akrep saati, UZUN mavi yelkovan dakikayı gösterir.",
+  "ru": "КОРОТКАЯ тёмная стрелка показывает часы, ДЛИННАЯ синяя — минуты.",
+  "ja": "こい色の短いはりが「時」、青い長いはりが「分」を表すよ。",
+  "th": "เข็มสั้นสีเข้มบอกชั่วโมง เข็มยาวสีน้ำเงินบอกนาที"
+ },
+ "htp_clock_master_5": {
+  "fr": "Choisis l'heure numérique qui correspond parmi les quatre cartes.",
+  "es": "Elige entre las cuatro tarjetas la hora digital que coincide.",
+  "pt": "Escolha o horário digital certo entre os quatro cartões.",
+  "tr": "Dört karttan uyan dijital saati seç.",
+  "ru": "Выбери подходящее цифровое время из четырёх карточек.",
+  "ja": "4まいのカードから、同じ時刻のデジタル表示をえらんでね。",
+  "th": "เลือกเวลาแบบดิจิทัลที่ตรงกันจากการ์ดทั้ง 4 ใบ"
+ },
+ "htp_clock_master_6": {
+  "fr": "Si tu te trompes, la bonne réponse brille un instant : apprends et continue !",
+  "es": "Si te equivocas, la respuesta correcta brilla un momento: ¡aprende y sigue!",
+  "pt": "Se errar, a resposta certa brilha por um instante. Aprenda e siga em frente!",
+  "tr": "Yanlış seçince doğru cevap bir an parlar, öğren ve devam et!",
+  "ru": "Ошибся? Правильный ответ на миг засветится — запомни и вперёд!",
+  "ja": "まちがえると、正しい答えが少しだけ光るよ。見て、おぼえて、つぎへ！",
+  "th": "เลือกผิด คำตอบที่ถูกจะเรืองแสงให้ดูครู่หนึ่ง เรียนรู้แล้วไปต่อ!"
+ },
+ "htp_clock_master_7": {
+  "fr": "Réponds à un maximum de questions avant la fin du chrono.",
+  "es": "Responde todas las que puedas antes de que se acabe el tiempo.",
+  "pt": "Responda quantas puder antes de o tempo acabar.",
+  "tr": "Süre bitmeden olabildiğince çok soruyu cevapla.",
+  "ru": "Ответь на как можно больше вопросов, пока не кончилось время.",
+  "ja": "タイマーが切れるまでに、できるだけたくさん答えよう。",
+  "th": "ตอบให้ได้มากที่สุดก่อนเวลาจะหมด"
+ },
+ "htp_clock_master_8": {
+  "fr": "🧒 Exemple :",
+  "es": "🧒 Ejemplo:",
+  "pt": "🧒 Exemplo:",
+  "tr": "🧒 Örnek:",
+  "ru": "🧒 Пример:",
+  "ja": "🧒 れい：",
+  "th": "🧒 ตัวอย่าง:"
+ },
+ "htp_clock_master_9": {
+  "fr": "Petite aiguille sur le 3, grande aiguille sur le 12 → 3:00 ✔",
+  "es": "Manecilla corta en el 3, manecilla larga en el 12 → 3:00 ✔",
+  "pt": "Ponteiro curto no 3, ponteiro longo no 12 → 3:00 ✔",
+  "tr": "Akrep 3'te, yelkovan 12'de → 3:00 ✔",
+  "ru": "Короткая стрелка на 3, длинная на 12 → 3:00 ✔",
+  "ja": "短いはりは3、長いはりは12 → 3:00 ✔",
+  "th": "เข็มสั้นที่ 3 เข็มยาวที่ 12 → 3:00 ✔"
+ },
+ "htp_cross_math_1": {
+  "fr": "Maths croisées, ce sont des mots croisés de nombres : les équations vont de gauche à droite et de haut en bas, et se croisent !",
+  "es": "¡Mates cruzadas es un crucigrama de números! Las ecuaciones van en horizontal y en vertical, y se cruzan entre sí.",
+  "pt": "A Cruzadinha de contas é uma cruzadinha de números: as equações vão na horizontal e na vertical e se cruzam!",
+  "tr": "Çapraz Matematik bir sayı bulmacasıdır: denklemler yatay ve dikey uzanır, birbirini keser!",
+  "ru": "Числовой кроссворд — это кроссворд из уравнений: они идут вправо и вниз и пересекаются!",
+  "ja": "クロス計算は、数のクロスワードだよ。式がよことたてにならんで、たがいに交差するよ！",
+  "th": "คณิตศาสตร์ไขว้คือปริศนาตัวเลขไขว้ สมการเรียงทั้งแนวนอนและแนวตั้งมาตัดกัน!"
+ },
+ "htp_cross_math_10": {
+  "fr": "🧒 Exemple :",
+  "es": "🧒 Ejemplo:",
+  "pt": "🧒 Exemplo:",
+  "tr": "🧒 Örnek:",
+  "ru": "🧒 Пример:",
+  "ja": "🧒 れい：",
+  "th": "🧒 ตัวอย่าง:"
+ },
+ "htp_cross_math_11": {
+  "fr": "Tu vois 3 + ▢ = 8 … place le 5 ici → la ligne devient verte ! ✔",
+  "es": "Ves 3 + ▢ = 8 … pon ahí el 5 → ¡la línea se pone verde! ✔",
+  "pt": "Você vê 3 + ▢ = 8 … coloque o 5 ali → a linha fica verde! ✔",
+  "tr": "3 + ▢ = 8 görüyorsun … oraya 5'i koy → denklem yeşile döner! ✔",
+  "ru": "Ты видишь 3 + ▢ = 8 … поставь туда 5 → линия станет зелёной! ✔",
+  "ja": "3 + ▢ = 8 と出ているよ … そこに5を入れると → 線が緑になるよ！ ✔",
+  "th": "เห็น 3 + ▢ = 8 … วางเลข 5 ลงไป → เส้นจะเป็นสีเขียว! ✔"
+ },
+ "htp_cross_math_12": {
+  "fr": "Besoin d'aide ? Utilise un indice 💡 : il remplit une bonne case (tu en as 3 par niveau).",
+  "es": "¿No puedes seguir? Usa una pista 💡: llena una casilla correcta (tienes 3 por nivel).",
+  "pt": "Travou? Use uma dica 💡: ela preenche uma casa certa (você tem 3 por nível).",
+  "tr": "Takıldın mı? 💡 ipucu kullan, doğru bir kutuyu doldurur (her seviyede 3 hakkın var).",
+  "ru": "Не получается? Возьми 💡 подсказку — она заполнит одну клетку верно (на каждом уровне их 3).",
+  "ja": "こまったら 💡 ヒントを使おう。正しい数を1マスうめてくれるよ（1レベルに3回）。",
+  "th": "ติดอยู่? ใช้คำใบ้ 💡 ได้ ช่วยเติมช่องที่ถูกให้ 1 ช่อง (ได้ 3 ครั้งต่อด่าน)"
+ },
+ "htp_cross_math_13": {
+  "fr": "⭐ Niveaux et étoiles :",
+  "es": "⭐ Niveles y estrellas:",
+  "pt": "⭐ Níveis e estrelas:",
+  "tr": "⭐ Seviyeler ve yıldızlar:",
+  "ru": "⭐ Уровни и звёзды:",
+  "ja": "⭐ レベルと星：",
+  "th": "⭐ ด่านและดาว:"
+ },
+ "htp_cross_math_14": {
+  "fr": "Suis la carte du chemin : termine un niveau pour débloquer le suivant.",
+  "es": "Sigue el mapa del camino: termina un nivel para desbloquear el siguiente.",
+  "pt": "Siga o mapa do caminho. Termine um nível para liberar o próximo.",
+  "tr": "Yol haritasını izle: bir seviyeyi bitirince sonrakinin kilidi açılır.",
+  "ru": "Двигайся по дороге на карте — пройди уровень, и откроется следующий.",
+  "ja": "道のマップを進もう。レベルをクリアすると、次のレベルが開くよ。",
+  "th": "ไปตามแผนที่เส้นทาง ผ่านด่านหนึ่งเพื่อปลดล็อกด่านถัดไป"
+ },
+ "htp_cross_math_15": {
+  "fr": "Résous vite et sans indice pour gagner les 3 étoiles !",
+  "es": "¡Resuelve rápido y sin pistas para ganar las 3 estrellas!",
+  "pt": "Resolva rápido e sem dicas para ganhar as 3 estrelas!",
+  "tr": "Hızlı çöz, ipucu kullanma, 3 yıldızın hepsini kazan!",
+  "ru": "Решай быстро и без подсказок — и получишь все 3 звезды!",
+  "ja": "ヒントなしで、はやくとけば、星3つゲット！",
+  "th": "เล่นให้เร็วโดยไม่ใช้คำใบ้ เพื่อรับครบ 3 ดาว!"
+ },
+ "htp_cross_math_16": {
+  "fr": "👨‍👩‍👧 Ce que ça apporte :",
+  "es": "👨‍👩‍👧 Cómo ayuda:",
+  "pt": "👨‍👩‍👧 Como isso ajuda:",
+  "tr": "👨‍👩‍👧 Nasıl Yardımcı Olur:",
+  "ru": "👨‍👩‍👧 Чем это полезно:",
+  "ja": "👨‍👩‍👧 身につく力：",
+  "th": "👨‍👩‍👧 ช่วยอะไรได้บ้าง:"
+ },
+ "htp_cross_math_17": {
+  "fr": "Développe l'aisance en addition, soustraction, multiplication et division.",
+  "es": "Desarrolla la soltura en suma, resta, multiplicación y división.",
+  "pt": "Desenvolve a fluência em adição, subtração, multiplicação e divisão.",
+  "tr": "Toplama, çıkarma, çarpma ve bölme akıcılığını geliştirir.",
+  "ru": "Развивает быстрый счёт в сложении, вычитании, умножении и делении.",
+  "ja": "たし算・ひき算・かけ算・わり算を、すばやく正確に計算する力が育ちます。",
+  "th": "ฝึกการบวก ลบ คูณ และหารให้คล่อง"
+ },
+ "htp_cross_math_18": {
+  "fr": "Les équations qui se croisent montrent qu'un même nombre peut faire partie de deux calculs.",
+  "es": "Las ecuaciones cruzadas enseñan que un número puede formar parte de dos operaciones.",
+  "pt": "Equações que se cruzam mostram que um número pode fazer parte de duas contas.",
+  "tr": "Kesişen denklemler, bir sayının iki işlemin parçası olabileceğini öğretir.",
+  "ru": "Пересекающиеся уравнения учат, что одно число может быть частью сразу двух равенств.",
+  "ja": "交差する式を通して、1つの数が2つの式の一部になることを学べます。",
+  "th": "สมการที่ไขว้กันสอนให้รู้ว่าเลขตัวเดียวอยู่ในสมการได้ 2 สมการพร้อมกัน"
+ },
+ "htp_cross_math_19": {
+  "fr": "Prévoir quelle tuile va où renforce la pensée logique.",
+  "es": "Planear qué ficha va en cada lugar fortalece el pensamiento lógico.",
+  "pt": "Planejar qual peça vai onde fortalece o raciocínio lógico.",
+  "tr": "Hangi karonun nereye gideceğini planlamak mantıksal düşünmeyi güçlendirir.",
+  "ru": "Планирование, какая плитка куда встанет, развивает логическое мышление.",
+  "ja": "どのタイルをどこに置くか考えることで、論理的に考える力が強くなります。",
+  "th": "การวางแผนว่าแผ่นไหนควรอยู่ตรงไหนช่วยเสริมการคิดเชิงตรรกะ"
+ },
+ "htp_cross_math_2": {
+  "fr": "👉 Comment ça marche :",
+  "es": "👉 Cómo funciona:",
+  "pt": "👉 Como funciona:",
+  "tr": "👉 Nasıl çalışır:",
+  "ru": "👉 Как это работает:",
+  "ja": "👉 こんなふうにあそぶよ：",
+  "th": "👉 เล่นยังไง:"
+ },
+ "htp_cross_math_3": {
+  "fr": "Certaines cases affichent déjà des nombres. Les cases vides attendent les nombres manquants.",
+  "es": "Algunas casillas ya muestran números. Las vacías necesitan los que faltan.",
+  "pt": "Algumas casas já têm número. As casas vazias esperam os que faltam.",
+  "tr": "Bazı kutularda sayılar hazır, boş kutuların sayıları eksik.",
+  "ru": "В одних клетках числа уже стоят, а пустые ждут недостающих.",
+  "ja": "数が入っているマスと、空のマスがあるよ。空のマスにぬけている数を入れよう。",
+  "th": "บางช่องมีตัวเลขอยู่แล้ว ช่องว่างคือเลขที่หายไป"
+ },
+ "htp_cross_math_4": {
+  "fr": "Touche une case vide, puis une tuile verte avec un nombre pour l'y placer.",
+  "es": "Toca una casilla vacía y luego una ficha verde con un número para ponerla ahí.",
+  "pt": "Toque em uma casa vazia e depois em uma peça verde com número para colocá-la ali.",
+  "tr": "Boş bir kutuya dokun, sonra yeşil bir sayı karosuna dokunup oraya yerleştir.",
+  "ru": "Нажми на пустую клетку, потом на зелёную плитку с числом, чтобы поставить его туда.",
+  "ja": "空のマスをタップして、緑の数字タイルをタップすると、そこに入るよ。",
+  "th": "แตะช่องว่าง แล้วแตะแผ่นตัวเลขสีเขียวเพื่อวางลงไป"
+ },
+ "htp_cross_math_5": {
+  "fr": "Chaque tuile ne s'utilise qu'une seule fois.",
+  "es": "Cada ficha numérica se puede usar solo una vez.",
+  "pt": "Cada peça de número só pode ser usada uma vez.",
+  "tr": "Her sayı karosu yalnızca bir kez kullanılabilir.",
+  "ru": "Каждую плитку можно использовать только один раз.",
+  "ja": "数字タイルは1回しか使えないよ。",
+  "th": "แผ่นตัวเลขแต่ละแผ่นใช้ได้ครั้งเดียว"
+ },
+ "htp_cross_math_6": {
+  "fr": "Aux niveaux Difficile et Très difficile, certains SIGNES manquent aussi : choisis + − × ÷ dans la palette violette !",
+  "es": "En Difícil y Muy difícil también faltan algunos SIGNOS: ¡elige + − × ÷ en la paleta morada!",
+  "pt": "Nos níveis Difícil e Muito difícil também faltam alguns SINAIS: escolha + − × ÷ na paleta roxa!",
+  "tr": "Zor ve Çok zor seviyelerde bazı İŞARETLER de eksik, mor paletten + − × ÷ seç!",
+  "ru": "На уровнях «Сложный» и «Очень сложный» пропущены ещё и ЗНАКИ — выбери + − × ÷ в фиолетовой палитре!",
+  "ja": "「むずかしい」と「とてもむずかしい」では、記号もぬけているよ。むらさきのパレットから + − × ÷ をえらぼう！",
+  "th": "ในด่านยากและด่านยากมาก บางเครื่องหมายก็หายไปด้วย เลือก + − × ÷ จากแถบสีม่วง!"
+ },
+ "htp_cross_math_7": {
+  "fr": "Au niveau Très difficile, attention : quelques nombres en trop sont des farceurs qui ne vont nulle part !",
+  "es": "En Muy difícil, ¡cuidado! Algunos números de más son tramposos y no encajan en ningún lado.",
+  "pt": "No nível Muito difícil, cuidado: alguns números extras são enganadores e não servem em lugar nenhum!",
+  "tr": "Çok zor seviyede dikkat et, birkaç fazla sayı hilecidir ve hiçbir yere uymaz!",
+  "ru": "На уровне «Очень сложный» осторожно: несколько лишних чисел — хитрецы, они никуда не подходят!",
+  "ja": "「とてもむずかしい」では気をつけて！ どこにも入らない、ひっかけの数がいくつかあるよ！",
+  "th": "ในด่านยากมาก ระวังให้ดี มีตัวเลขเกินมาบางตัวที่เป็นตัวหลอก ไม่ลงช่องไหนเลย!"
+ },
+ "htp_cross_math_8": {
+  "fr": "Chaque ligne doit être une équation vraie, comme 3 + 5 = 8, de gauche à droite ET de haut en bas.",
+  "es": "Cada línea debe ser una ecuación verdadera, como 3 + 5 = 8, en horizontal Y en vertical.",
+  "pt": "Cada linha precisa ser uma equação verdadeira, como 3 + 5 = 8, na horizontal E na vertical.",
+  "tr": "Denklemlerin hepsi 3 + 5 = 8 gibi doğru olmalı, hem yatay HEM dikey.",
+  "ru": "Каждая линия должна быть верным равенством, например 3 + 5 = 8, и по горизонтали, И по вертикали.",
+  "ja": "よこもたても、どの線も正しい式にしよう。たとえば 3 + 5 = 8。",
+  "th": "ทุกเส้นต้องเป็นสมการที่ถูกต้อง เช่น 3 + 5 = 8 ทั้งแนวนอนและแนวตั้ง"
+ },
+ "htp_cross_math_9": {
+  "fr": "Si une ligne terminée est fausse, elle tremble en rouge. Touche la case pour reprendre le nombre.",
+  "es": "Si una línea terminada está mal, se sacude en rojo: toca la casilla para recuperar el número.",
+  "pt": "Se uma linha completa estiver errada, ela treme em vermelho. Toque na casa para tirar o número.",
+  "tr": "Tamamlanan denklem yanlışsa kırmızı olup sallanır, sayıyı geri almak için kutuya dokun.",
+  "ru": "Если готовая линия неверна, она трясётся и краснеет — нажми на клетку, чтобы забрать число обратно.",
+  "ja": "うまった線がまちがっていると、赤くゆれるよ。マスをタップすると数をもどせるよ。",
+  "th": "ถ้าเส้นที่เติมครบแล้วผิด จะสั่นเป็นสีแดง แตะช่องเพื่อเอาตัวเลขกลับคืน"
+ },
+ "htp_equation_match_1": {
+  "fr": "Touche une carte pour la retourner et voir ce qu'elle cache.",
+  "es": "Toca una tarjeta para voltearla y ver qué hay escondido.",
+  "pt": "Toque em uma carta para virá-la e ver o que está escondido.",
+  "tr": "Bir karta dokun, çevir ve saklı olanı gör.",
+  "ru": "Нажми на карточку, чтобы перевернуть её и увидеть, что спрятано.",
+  "ja": "カードをタップしてめくると、かくれているものが見えるよ。",
+  "th": "แตะการ์ดเพื่อพลิกดูว่าซ่อนอะไรอยู่"
+ },
+ "htp_equation_match_10": {
+  "fr": "Enchaîne les paires pour un meilleur score (🔥 ×2, ×3, ×4).",
+  "es": "Une parejas seguidas para ganar más puntos (🔥 ×2, ×3, ×4).",
+  "pt": "Ligue pares em sequência para ganhar mais pontos (🔥 ×2, ×3, ×4).",
+  "tr": "Üst üste eşleştirirsen puanın katlanır (🔥 ×2, ×3, ×4).",
+  "ru": "Находи пары подряд — получишь больше очков (🔥 ×2, ×3, ×4).",
+  "ja": "つづけてペアをそろえると、スコアが大きくなるよ (🔥 ×2, ×3, ×4)。",
+  "th": "จับคู่ติดกันจะได้คะแนนมากขึ้น (🔥 ×2, ×3, ×4)"
+ },
+ "htp_equation_match_11": {
+  "fr": "👨‍👩‍👧 Ce que ça apporte :",
+  "es": "👨‍👩‍👧 Cómo ayuda:",
+  "pt": "👨‍👩‍👧 Como isso ajuda:",
+  "tr": "👨‍👩‍👧 Nasıl Yardımcı Olur:",
+  "ru": "👨‍👩‍👧 Чем это полезно:",
+  "ja": "👨‍👩‍👧 身につく力：",
+  "th": "👨‍👩‍👧 ช่วยอะไรได้บ้าง:"
+ },
+ "htp_equation_match_12": {
+  "fr": "Développe le sens des nombres : une équation et sa réponse ont la même valeur.",
+  "es": "Desarrolla el sentido numérico: una ecuación y su respuesta tienen el mismo valor.",
+  "pt": "Desenvolve o senso numérico: uma equação e sua resposta têm o mesmo valor.",
+  "tr": "Sayı duygusunu geliştirir: bir denklem ve cevabı aynı değerdir.",
+  "ru": "Развивает чувство числа — пример и его ответ равны одному и тому же значению.",
+  "ja": "式とその答えが同じ値だと気づくことで、数の感覚が育ちます。",
+  "th": "เสริมความเข้าใจเรื่องจำนวน สมการกับคำตอบคือค่าเดียวกัน"
+ },
+ "htp_equation_match_13": {
+  "fr": "Aiguise le calcul rapide avec +, −, × et ÷.",
+  "es": "Agiliza el cálculo rápido con +, −, × y ÷.",
+  "pt": "Afia o cálculo rápido com +, −, × e ÷.",
+  "tr": "+, −, × ve ÷ ile hızlı hesaplamayı keskinleştirir.",
+  "ru": "Тренирует быстрый счёт с +, −, × и ÷.",
+  "ja": "+, −, ×, ÷ の計算をすばやくする力がみがかれます。",
+  "th": "ฝึกคิดเลขเร็วด้วย +, −, × และ ÷"
+ },
+ "htp_equation_match_14": {
+  "fr": "Entraîne la mémoire : retenir où sont les cartes renforce la concentration.",
+  "es": "Entrena la memoria: recordar dónde están las tarjetas fortalece la concentración.",
+  "pt": "Treina a memória: lembrar onde estão as cartas fortalece o foco.",
+  "tr": "Hafızayı çalıştırır: kartların yerini hatırlamak odaklanmayı güçlendirir.",
+  "ru": "Тренирует память — запоминая, где лежат карточки, ребёнок учится сосредоточиваться.",
+  "ja": "カードの場所をおぼえることで、記憶力と集中力が鍛えられます。",
+  "th": "ฝึกความจำ การจำว่าการ์ดอยู่ตรงไหนช่วยเสริมสมาธิ"
+ },
+ "htp_equation_match_2": {
+  "fr": "👉 Comment ça marche :",
+  "es": "👉 Cómo funciona:",
+  "pt": "👉 Como funciona:",
+  "tr": "👉 Nasıl çalışır:",
+  "ru": "👉 Как это работает:",
+  "ja": "👉 こんなふうにあそぶよ：",
+  "th": "👉 เล่นยังไง:"
+ },
+ "htp_equation_match_3": {
+  "fr": "Retourne deux cartes. Si elles forment une paire, elles restent visibles !",
+  "es": "Voltea dos tarjetas. ¡Si forman una pareja, se quedan boca arriba!",
+  "pt": "Vire duas cartas. Se formarem um par, elas ficam viradas para cima!",
+  "tr": "İki kartı çevir. Eşleşen bir çift olurlarsa açık kalırlar!",
+  "ru": "Переверни две карточки. Если это пара, они остаются открытыми!",
+  "ja": "カードを2まいめくろう。ペアになっていれば、表のままのこるよ！",
+  "th": "พลิกการ์ด 2 ใบ ถ้าเป็นคู่ที่ตรงกัน การ์ดจะเปิดค้างไว้!"
+ },
+ "htp_equation_match_4": {
+  "fr": "Une paire peut être une équation et sa réponse, comme 3×4 et 12.",
+  "es": "Una pareja puede ser una ecuación y su respuesta, como 3×4 y 12.",
+  "pt": "Um par pode ser uma equação e sua resposta, como 3×4 e 12.",
+  "tr": "Bir çift, bir denklem ve cevabı olabilir: 3×4 ve 12 gibi.",
+  "ru": "Пара — это пример и его ответ, например 3×4 и 12.",
+  "ja": "ペアは、式とその答えのこともあるよ。たとえば 3×4 と 12。",
+  "th": "คู่หนึ่งอาจเป็นสมการกับคำตอบ เช่น 3×4 กับ 12"
+ },
+ "htp_equation_match_5": {
+  "fr": "Parfois, ce sont deux équations qui donnent le même nombre, comme 3×4 et 6+6.",
+  "es": "A veces son dos ecuaciones que dan el mismo número, como 3×4 y 6+6.",
+  "pt": "Às vezes são duas equações com o mesmo resultado, como 3×4 e 6+6.",
+  "tr": "Bazen aynı sayıya eşit iki denklem olur: 3×4 ve 6+6 gibi.",
+  "ru": "Иногда это два примера с одинаковым ответом, например 3×4 и 6+6.",
+  "ja": "同じ数になる2つの式のこともあるよ。たとえば 3×4 と 6+6。",
+  "th": "บางครั้งก็เป็นสมการ 2 สมการที่ได้ค่าเท่ากัน เช่น 3×4 กับ 6+6"
+ },
+ "htp_equation_match_6": {
+  "fr": "Si les cartes ne vont pas ensemble, elles se retournent. Retiens où elles étaient !",
+  "es": "Si no coinciden, se voltean otra vez: ¡recuerda dónde estaban!",
+  "pt": "Se as cartas não combinarem, elas desviram. Lembre onde estavam!",
+  "tr": "Kartlar eşleşmezse geri döner, yerlerini aklında tut!",
+  "ru": "Если карточки не подходят, они переворачиваются обратно — запомни, где они лежали!",
+  "ja": "ペアじゃないと、カードはもどるよ。どこにあったかおぼえておこう！",
+  "th": "ถ้าการ์ดไม่ตรงกัน จะพลิกกลับไป จำไว้ว่าอยู่ตรงไหน!"
+ },
+ "htp_equation_match_7": {
+  "fr": "Associe toutes les paires pour terminer le plateau.",
+  "es": "Une todas las parejas para terminar el tablero.",
+  "pt": "Ligue todos os pares para completar o tabuleiro.",
+  "tr": "Tahtayı bitirmek için bütün çiftleri eşleştir.",
+  "ru": "Найди все пары на поле, чтобы завершить раунд.",
+  "ja": "ぜんぶのペアをそろえたらクリア！",
+  "th": "จับคู่ให้ครบทุกคู่เพื่อจบกระดาน"
+ },
+ "htp_equation_match_8": {
+  "fr": "🧒 Exemple :",
+  "es": "🧒 Ejemplo:",
+  "pt": "🧒 Exemplo:",
+  "tr": "🧒 Örnek:",
+  "ru": "🧒 Пример:",
+  "ja": "🧒 れい：",
+  "th": "🧒 ตัวอย่าง:"
+ },
+ "htp_equation_match_9": {
+  "fr": "Tu retournes 3×4 … puis tu retournes 12 → c'est une paire ! ✔ (3×4 = 12)",
+  "es": "Volteas 3×4 … y luego 12 → ¡son pareja! ✔ (3×4 = 12)",
+  "pt": "Você vira 3×4 … depois vira 12 → combinam! ✔ (3×4 = 12)",
+  "tr": "3×4'ü çeviriyorsun … sonra 12'yi çeviriyorsun → eşleşirler! ✔ (3×4 = 12)",
+  "ru": "Ты открываешь 3×4 … потом открываешь 12 → это пара! ✔ (3×4 = 12)",
+  "ja": "3×4 をめくって … 次に 12 をめくると → ペアになった！ ✔ (3×4 = 12)",
+  "th": "พลิก 3×4 … แล้วพลิก 12 → ตรงกัน! ✔ (3×4 = 12)"
+ },
+ "g_calcudoku_plus": {
+  "plural": {
+   "fr": {
+    "one": "La somme de %1$d case donne %2$s.",
+    "many": "La somme de ces %1$d cases donne %2$s.",
+    "other": "La somme de ces %1$d cases donne %2$s."
+   },
+   "es": {
+    "one": "Esta %1$d casilla suma %2$s.",
+    "many": "Estas %1$d casillas suman %2$s.",
+    "other": "Estas %1$d casillas suman %2$s."
+   },
+   "pt": {
+    "one": "Esta %1$d casa soma %2$s.",
+    "many": "Estas %1$d casas somam %2$s.",
+    "other": "Estas %1$d casas somam %2$s."
+   },
+   "tr": {
+    "one": "Bu %1$d kutunun toplamı %2$s.",
+    "other": "Bu %1$d kutunun toplamı %2$s."
+   },
+   "ru": {
+    "one": "Эта %1$d клетка в сумме даёт %2$s.",
+    "few": "Эти %1$d клетки в сумме дают %2$s.",
+    "many": "Эти %1$d клеток в сумме дают %2$s.",
+    "other": "Эти %1$d клетки в сумме дают %2$s."
+   },
+   "ja": {
+    "other": "この%1$dマスをたすと%2$sになるよ。"
+   },
+   "th": {
+    "other": "%1$d ช่องนี้รวมกันได้ %2$s"
+   }
+  }
+ },
+ "g_calcudoku_times": {
+  "plural": {
+   "fr": {
+    "one": "Le produit de %1$d case donne %2$s.",
+    "many": "Le produit de ces %1$d cases donne %2$s.",
+    "other": "Le produit de ces %1$d cases donne %2$s."
+   },
+   "es": {
+    "one": "Esta %1$d casilla multiplicada da %2$s.",
+    "many": "Estas %1$d casillas multiplicadas dan %2$s.",
+    "other": "Estas %1$d casillas multiplicadas dan %2$s."
+   },
+   "pt": {
+    "one": "Esta %1$d casa multiplica e dá %2$s.",
+    "many": "Estas %1$d casas se multiplicam e dão %2$s.",
+    "other": "Estas %1$d casas se multiplicam e dão %2$s."
+   },
+   "tr": {
+    "one": "Bu %1$d kutunun çarpımı %2$s.",
+    "other": "Bu %1$d kutunun çarpımı %2$s."
+   },
+   "ru": {
+    "one": "Эта %1$d клетка при умножении даёт %2$s.",
+    "few": "Эти %1$d клетки при умножении дают %2$s.",
+    "many": "Эти %1$d клеток при умножении дают %2$s.",
+    "other": "Эти %1$d клетки при умножении дают %2$s."
+   },
+   "ja": {
+    "other": "この%1$dマスをかけると%2$sになるよ。"
+   },
+   "th": {
+    "other": "%1$d ช่องนี้คูณกันได้ %2$s"
+   }
+  }
+ }
+}

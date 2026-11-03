@@ -82,6 +82,7 @@ import com.jigar.me.ui.view.home.theme.AppDimens.Dimens8
 import com.jigar.me.ui.view.home.theme.ButtonType
 import com.jigar.me.ui.view.home.theme.getButtonColors
 import kotlinx.coroutines.delay
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.asString
 
 @Composable
 fun SudokuPlayScreen(
@@ -103,7 +104,7 @@ fun SudokuPlayScreen(
         Row(modifier = Modifier.fillMaxSize()) {
             Column(modifier = Modifier.wrapContentWidth()) {
                 BackButtonWithText(
-                    title = "${size.displayName} • ${difficulty.displayName}",
+                    title = "${size.displayName} • ${stringResource(difficulty.nameRes)}",
                     onBackClick = { navController.safePopBackStack() },
                     modifier = Modifier.wrapContentWidth()
                 )
@@ -137,7 +138,7 @@ fun SudokuPlayScreen(
                 val colors = LocalAbColors.current
                 val s = LocalAbScale.current.factor
                 val messageColor: Color = if (colors.isDark) colors.danger else colors.danger.abReadable(4.5f)
-                if (vm.message.isNullOrEmpty()) {
+                if (vm.message == null) {
                     Text(
                         "",
                         color = messageColor,
@@ -145,7 +146,7 @@ fun SudokuPlayScreen(
                     )
                 } else {
                     Text(
-                        vm.message ?: "",
+                        vm.message?.asString() ?: "",
                         color = messageColor,
                         style = AbTypography.fixed(15f * s, FontWeight.ExtraBold)
                     )
@@ -165,7 +166,7 @@ fun SudokuPlayScreen(
                     Spacer(Modifier.width(Dimens8))
 
                     GameButton(
-                        text = "Hint ${vm.hintUsed}/${vm.hintLimit}",
+                        text = stringResource(R.string.g_sudoku_1, vm.hintUsed, vm.hintLimit),
                         icon = Icons.Filled.Lightbulb,
                         type = ButtonType.ORANGE,
                         isSmall = true,
@@ -252,7 +253,7 @@ private fun SudokuResultOverlay(
                         ),
                         textAlign = TextAlign.Center
                     )
-                    GameStatChip(emoji = "💡", value = "Hints used: $hintUsed/$hintLimit", color = Color(0xFFB45309))
+                    GameStatChip(emoji = "💡", value = stringResource(R.string.g_sudoku_hints_used, hintUsed, hintLimit), color = Color(0xFFB45309))
                 }
             },
             buttons = {

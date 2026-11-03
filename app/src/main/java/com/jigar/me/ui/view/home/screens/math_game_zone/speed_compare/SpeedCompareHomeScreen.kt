@@ -142,7 +142,7 @@ fun SpeedCompareHomeScreen(
 
             if (bestScore > 0) {
                 Spacer(Modifier.height(AppDimens.Dimens6))
-                SpeedCompareBestPill(text = "🏆 " + stringResource(R.string.balloon_best_score) + ": $bestScore")
+                SpeedCompareBestPill(text = androidx.compose.ui.res.stringResource(R.string.g_best_score_line, bestScore))
             }
 
             }

@@ -202,7 +202,7 @@ fun MathPyramidHomeJetpackScreen(
                         ) {
                             // Kids style: chunky rounded label, orange when picked.
                             Text(
-                                text = "Level $level",
+                                text = stringResource(R.string.g_math_pyramid_1, level),
                                 color = if (selected) Color(0xFFE65100) else Color(0xFF5D4037),
                                 style = AbTypography.fixed((if (selected) 26f else 18f) * kitScale, FontWeight.Black),
                                 modifier = Modifier.abBounce(selected, 1.12f)

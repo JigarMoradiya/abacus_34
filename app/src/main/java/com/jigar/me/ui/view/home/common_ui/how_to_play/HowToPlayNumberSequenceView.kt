@@ -105,12 +105,12 @@ fun HowToPlayNumberSequenceView(
                 ) {
 
                     item {
-                        Bullet("You get a puzzle grid with one empty box and lots of number tiles.")
+                        Bullet(stringResource(R.string.htp_number_sequence_puzzle_1))
                     }
 
                     item {
                         Text(
-                            text = "Depending on the level, the grid size can be:",
+                            text = stringResource(R.string.htp_number_sequence_puzzle_2),
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = AbTypography.Baloo,
@@ -118,13 +118,13 @@ fun HowToPlayNumberSequenceView(
                         )
                     }
 
-                    item { SubBullet("3×3 → numbers 1 to 8") }
-                    item { SubBullet("4×4 → numbers 1 to 15") }
-                    item { SubBullet("5×5 → numbers 1 to 24") }
+                    item { SubBullet(stringResource(R.string.htp_number_sequence_puzzle_3)) }
+                    item { SubBullet(stringResource(R.string.htp_number_sequence_puzzle_4)) }
+                    item { SubBullet(stringResource(R.string.htp_number_sequence_puzzle_5)) }
 
                     item {
                         Text(
-                            text = "👉 How you play:",
+                            text = stringResource(R.string.htp_number_sequence_puzzle_6),
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = AbTypography.Baloo,
@@ -132,13 +132,13 @@ fun HowToPlayNumberSequenceView(
                         )
                     }
 
-                    item { Bullet("Tap a number only if it is next to the empty box (up, down, left, or right).") }
-                    item { Bullet("That number will slide into the empty space.") }
-                    item { Bullet("Keep sliding numbers until they are in order from 1 upwards.") }
+                    item { Bullet(stringResource(R.string.htp_number_sequence_puzzle_7)) }
+                    item { Bullet(stringResource(R.string.htp_number_sequence_puzzle_8)) }
+                    item { Bullet(stringResource(R.string.htp_number_sequence_puzzle_9)) }
 
                     item {
                         Text(
-                            text = "It’s like a fun sliding puzzle where every move brings you closer to the correct sequence!",
+                            text = stringResource(R.string.htp_number_sequence_puzzle_10),
                             fontSize = 16.sp,
                             modifier = Modifier.padding(top = AppDimens.Dimens4),
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
@@ -149,7 +149,7 @@ fun HowToPlayNumberSequenceView(
                     // ----------- Parent Friendly -----------
                     item {
                         Text(
-                            text = "👨‍👩‍👧 How It Helps:",
+                            text = stringResource(R.string.htp_number_sequence_puzzle_11),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = AbTypography.Baloo,
@@ -157,25 +157,25 @@ fun HowToPlayNumberSequenceView(
                         )
                     }
 
-                    item { Check("Builds strong number sense") }
-                    item { Detail("Kids naturally understand before/after in number order.") }
+                    item { Check(stringResource(R.string.htp_number_sequence_puzzle_12)) }
+                    item { Detail(stringResource(R.string.htp_number_sequence_puzzle_13)) }
 
-                    item { Check("Develops logical and step-by-step thinking") }
-                    item { Detail("Each move must be planned — early coding mindset.") }
+                    item { Check(stringResource(R.string.htp_number_sequence_puzzle_14)) }
+                    item { Detail(stringResource(R.string.htp_number_sequence_puzzle_15)) }
 
-                    item { Check("Improves focus and memory") }
-                    item { Detail("Kids track sliding tiles and recall positions.") }
+                    item { Check(stringResource(R.string.htp_number_sequence_puzzle_16)) }
+                    item { Detail(stringResource(R.string.htp_number_sequence_puzzle_17)) }
 
-                    item { Check("Enhances problem-solving") }
-                    item { Detail("Requires strategy, not guessing.") }
+                    item { Check(stringResource(R.string.htp_number_sequence_puzzle_18)) }
+                    item { Detail(stringResource(R.string.htp_number_sequence_puzzle_19)) }
 
-                    item { Check("Boosts spatial awareness") }
-                    item { Detail("Kids visualize movement on a grid.") }
+                    item { Check(stringResource(R.string.htp_number_sequence_puzzle_20)) }
+                    item { Detail(stringResource(R.string.htp_number_sequence_puzzle_21)) }
 
                     // ----------- Math Explanation -----------
                     item {
                         Text(
-                            text = "❤️ Why This Game Matters:",
+                            text = stringResource(R.string.htp_number_sequence_puzzle_22),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = AbTypography.Baloo,
@@ -183,14 +183,14 @@ fun HowToPlayNumberSequenceView(
                         )
                     }
 
-                    item { Bullet("Numbers follow a sequence") }
-                    item { Bullet("Patterns help solve problems") }
-                    item { Bullet("Good solutions come from planning") }
-                    item { Bullet("Mistakes are part of the fun learning journey") }
+                    item { Bullet(stringResource(R.string.htp_number_sequence_puzzle_23)) }
+                    item { Bullet(stringResource(R.string.htp_number_sequence_puzzle_24)) }
+                    item { Bullet(stringResource(R.string.htp_number_sequence_puzzle_25)) }
+                    item { Bullet(stringResource(R.string.htp_number_sequence_puzzle_26)) }
 
                     item {
                         Text(
-                            text = "It is one of the best early-math brain games for developing strong thinking skills without feeling like homework.",
+                            text = stringResource(R.string.htp_number_sequence_puzzle_27),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.SemiBold,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),

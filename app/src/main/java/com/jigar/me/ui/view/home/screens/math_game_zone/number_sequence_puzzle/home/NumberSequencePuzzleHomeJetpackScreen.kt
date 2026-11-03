@@ -234,7 +234,7 @@ fun PuzzleOptionView(
         }
 
         Text(
-            text = "$gridSize x $gridSize Puzzle",
+            text = stringResource(R.string.g_number_sequence_puzzle_1, gridSize),
             style = AbTypography.fixed(16f * appScale(), FontWeight.ExtraBold),
             color = displayColor,
             modifier = Modifier.padding(top = AppDimens.Dimens8)

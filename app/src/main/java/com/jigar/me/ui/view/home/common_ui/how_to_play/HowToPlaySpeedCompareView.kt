@@ -75,20 +75,20 @@ fun HowToPlaySpeedCompareView(
                 }
                 Spacer(Modifier.height(AppDimens.Dimens8))
                 LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(bottom = AppDimens.Dimens16)) {
-                    item { SpeedBullet("Two cards appear on a balance scale — which side is bigger?") }
-                    item { SpeedHeading("👉 How it works:") }
-                    item { SpeedBullet("Look at the left and right values.") }
-                    item { SpeedBullet("Tap  <  if left is smaller,  >  if left is bigger,  =  if they match.") }
-                    item { SpeedBullet("The scale tips toward the heavier side to show the answer!") }
-                    item { SpeedBullet("Answer fast and keep a streak for bonus points.") }
-                    item { SpeedHeading("🧒 Example:") }
-                    item { SpeedBullet("Left: 7 + 5  (= 12)") }
-                    item { SpeedBullet("Right: 13") }
-                    item { SpeedBullet("12 < 13  →  tap  <  ✔") }
-                    item { SpeedHeading("👨‍👩‍👧 How It Helps:") }
-                    item { SpeedBullet("Builds number sense — comparing quantities and sums at a glance.") }
-                    item { SpeedBullet("Strengthens mental addition to compare fast.") }
-                    item { SpeedBullet("Teaches the <, = and > symbols with a tipping scale.") }
+                    item { SpeedBullet(stringResource(R.string.htp_speed_compare_1)) }
+                    item { SpeedHeading(stringResource(R.string.htp_speed_compare_2)) }
+                    item { SpeedBullet(stringResource(R.string.htp_speed_compare_3)) }
+                    item { SpeedBullet(stringResource(R.string.htp_speed_compare_4)) }
+                    item { SpeedBullet(stringResource(R.string.htp_speed_compare_5)) }
+                    item { SpeedBullet(stringResource(R.string.htp_speed_compare_6)) }
+                    item { SpeedHeading(stringResource(R.string.htp_speed_compare_7)) }
+                    item { SpeedBullet(stringResource(R.string.htp_speed_compare_8)) }
+                    item { SpeedBullet(stringResource(R.string.htp_speed_compare_9)) }
+                    item { SpeedBullet(stringResource(R.string.htp_speed_compare_10)) }
+                    item { SpeedHeading(stringResource(R.string.htp_speed_compare_11)) }
+                    item { SpeedBullet(stringResource(R.string.htp_speed_compare_12)) }
+                    item { SpeedBullet(stringResource(R.string.htp_speed_compare_13)) }
+                    item { SpeedBullet(stringResource(R.string.htp_speed_compare_14)) }
                 }
             }
         }

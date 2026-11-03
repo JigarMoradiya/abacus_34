@@ -91,6 +91,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalConfiguration
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameHomeButton
 import com.jigar.me.ui.view.home.screens.math_game_zone.common.drawConfetti
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.asString
 
 // Target Number has no result screen by design: a solved puzzle shows its green banner, a burst of stars, confetti over the board and "New target" + "Home" buttons.
 @Composable
@@ -138,7 +139,7 @@ fun TargetNumberPlayScreen(
                         state.message?.let {
                             Spacer(Modifier.height(Dimens8))
                             Text(
-                                it,
+                                it.asString(),
                                 style = AbTypography.fixed(22f * s, FontWeight.ExtraBold),
                                 color = colors.accentGreenInk
                             )
@@ -219,7 +220,7 @@ fun TargetNumberPlayScreen(
                 if (state.isSolvedCorrect != true){
                     state.message?.let {
                         Text(
-                            text = it,
+                            text = it.asString(),
                             style = AbTypography.fixed(16f * s, FontWeight.Bold),
                             color = if (colors.isDark) colors.danger else colors.danger.abReadable(4.5f),
                             textAlign = TextAlign.Center,

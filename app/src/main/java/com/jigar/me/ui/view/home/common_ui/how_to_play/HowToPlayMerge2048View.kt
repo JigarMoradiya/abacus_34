@@ -73,19 +73,19 @@ fun HowToPlayMerge2048View(
                 }
                 Spacer(Modifier.height(AppDimens.Dimens8))
                 LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(bottom = AppDimens.Dimens16)) {
-                    item { MgBullet("Swipe up, down, left or right to slide all the tiles.") }
-                    item { MgHeading("👉 How it works:") }
-                    item { MgBullet("When two tiles with the SAME number touch, they join into one — and the number doubles!") }
-                    item { MgBullet("2 + 2 makes 4, 4 + 4 makes 8, 8 + 8 makes 16 …") }
-                    item { MgBullet("Every swipe adds a new little tile, so keep making room.") }
-                    item { MgBullet("Reach the target number to win!") }
-                    item { MgHeading("🧒 Example:") }
-                    item { MgBullet("Two 2 tiles slide together → they become a 4 ✔") }
-                    item { MgBullet("Keep merging: 4 + 4 = 8, 8 + 8 = 16 …") }
-                    item { MgHeading("👨‍👩‍👧 How It Helps:") }
-                    item { MgBullet("Teaches doubling — 2, 4, 8, 16 … the powers of two.") }
-                    item { MgBullet("Builds planning ahead — think about where each tile should go.") }
-                    item { MgBullet("Sharpens quick addition while the board fills up.") }
+                    item { MgBullet(stringResource(R.string.htp_merge2048_1)) }
+                    item { MgHeading(stringResource(R.string.htp_merge2048_2)) }
+                    item { MgBullet(stringResource(R.string.htp_merge2048_3)) }
+                    item { MgBullet(stringResource(R.string.htp_merge2048_4)) }
+                    item { MgBullet(stringResource(R.string.htp_merge2048_5)) }
+                    item { MgBullet(stringResource(R.string.htp_merge2048_6)) }
+                    item { MgHeading(stringResource(R.string.htp_merge2048_7)) }
+                    item { MgBullet(stringResource(R.string.htp_merge2048_8)) }
+                    item { MgBullet(stringResource(R.string.htp_merge2048_9)) }
+                    item { MgHeading(stringResource(R.string.htp_merge2048_10)) }
+                    item { MgBullet(stringResource(R.string.htp_merge2048_11)) }
+                    item { MgBullet(stringResource(R.string.htp_merge2048_12)) }
+                    item { MgBullet(stringResource(R.string.htp_merge2048_13)) }
                 }
             }
         }

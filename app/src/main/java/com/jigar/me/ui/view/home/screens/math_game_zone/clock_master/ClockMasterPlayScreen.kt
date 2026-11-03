@@ -141,8 +141,8 @@ fun ClockMasterPlayScreen(
             ) {
                 GameMascotPanel(
                     cheer = when {
-                        state.lastAnswerRight && state.streak >= 3 -> "On fire! 🔥"
-                        state.lastAnswerWrong -> "Look at both hands! 🕐"
+                        state.lastAnswerRight && state.streak >= 3 -> stringResource(R.string.g_clock_master_1)
+                        state.lastAnswerWrong -> stringResource(R.string.g_clock_master_2)
                         else -> baseCheer
                     },
                     celebrate = state.lastAnswerRight, s = s,
@@ -297,7 +297,7 @@ private fun ResultOverlay(state: ClockMasterUiState, best: Int, onPlayAgain: () 
             emoji = "🕐",
             accent = ButtonType.GREEN,
             stars = stars,
-            score = stringResource(R.string.balloon_final_score) + ": ${state.score}",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, state.score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                     GameStatChip("✅", "${state.correctCount}", Color(0xFF2E7D32))

@@ -1,0 +1,668 @@
+{
+ "htp_math_pyramid_b_1": {
+  "fr": "Pyramide des maths est un jeu où chaque nombre aide à former celui du dessus !",
+  "es": "Pirámide matemática es un divertido juego de construir con números: ¡cada número ayuda a crear el de arriba!",
+  "pt": "A Pirâmide matemática é um jogo divertido de montar números, em que cada número ajuda a formar o de cima!",
+  "tr": "Matematik Piramidi eğlenceli bir sayı kurma oyunu: her sayı, üstündeki sayıyı oluşturmaya yardım eder!",
+  "ru": "«Числовая пирамида» — весёлая игра, где каждое число помогает построить число над собой!",
+  "ja": "算数ピラミッドは、ひとつの数が上の数を作る、たのしい数のつみ上げゲームだよ！",
+  "th": "พีระมิดคณิตศาสตร์คือเกมสร้างตัวเลขสุดสนุก ที่ตัวเลขทุกตัวช่วยสร้างตัวเลขที่อยู่ด้านบน!"
+ },
+ "htp_math_pyramid_b_2": {
+  "fr": "Tu vois une pyramide faite de rangées de cases. Selon le niveau, elle compte de 2 à 6 étages.",
+  "es": "Verás una pirámide hecha de filas de bloques. Según el nivel, puede tener de 2 a 6 pisos.",
+  "pt": "Você verá uma pirâmide feita de fileiras de blocos. Dependendo do nível, ela pode ter de 2 a 6 camadas.",
+  "tr": "Kutu sıralarından oluşan bir piramit göreceksin. Seviyeye göre piramit 2 ile 6 katman arasında olur.",
+  "ru": "Ты увидишь пирамиду из рядов клеток. В зависимости от уровня в ней от 2 до 6 слоёв.",
+  "ja": "マスがならんだ段でできたピラミッドが出るよ。レベルによって、2〜6だんになるよ。",
+  "th": "คุณจะเห็นพีระมิดที่ทำจากช่องเรียงเป็นแถว แต่ละด่านพีระมิดอาจมี 2 ถึง 6 ชั้น"
+ },
+ "htp_math_pyramid_b_3": {
+  "fr": "Regarde les deux nombres du bas.",
+  "es": "Mira los dos números de abajo.",
+  "pt": "Olhe os dois números de baixo.",
+  "tr": "En alttaki iki sayıya bak.",
+  "ru": "Посмотри на два числа внизу.",
+  "ja": "いちばん下の2つの数を見よう。",
+  "th": "ดูเลขสองตัวที่อยู่ล่างสุด"
+ },
+ "htp_math_pyramid_b_4": {
+  "fr": "Additionne-les.",
+  "es": "Súmalos.",
+  "pt": "Some os dois.",
+  "tr": "Onları topla.",
+  "ru": "Сложи их.",
+  "ja": "その2つの数をたそう。",
+  "th": "เอามาบวกกัน"
+ },
+ "htp_math_pyramid_b_5": {
+  "fr": "Leur somme va dans la case du dessus.",
+  "es": "El resultado va en el bloque de arriba.",
+  "pt": "A soma vai no bloco de cima.",
+  "tr": "Toplam, üstteki kutuya yazılır.",
+  "ru": "Сумма записывается в клетку выше.",
+  "ja": "たした答えは、上のマスに入れるよ。",
+  "th": "ผลบวกใส่ในช่องด้านบน"
+ },
+ "htp_math_pyramid_b_6": {
+  "fr": "Remplis toutes les cases vides en additionnant les nombres du dessous.",
+  "es": "Llena todos los bloques vacíos sumando los números de abajo.",
+  "pt": "Preencha todos os blocos vazios somando os números de baixo.",
+  "tr": "Alttaki sayıları toplayarak boş kutuların hepsini doldur.",
+  "ru": "Заполни все пустые клетки, складывая числа снизу.",
+  "ja": "下の数をたして、からのマスをぜんぶうめよう。",
+  "th": "เติมช่องว่างทุกช่องโดยบวกเลขด้านล่าง"
+ },
+ "htp_math_pyramid_b_7": {
+  "fr": "Termine le puzzle quand toutes les cases sont bien remplies, du bas vers le haut.",
+  "es": "Completas el rompecabezas cuando todos los bloques están bien llenos, de abajo hacia arriba.",
+  "pt": "Termine o quebra-cabeça quando todos os blocos estiverem certos, de baixo para cima.",
+  "tr": "Bütün kutuları alttan üste doğru, hatasız doldurunca bulmacayı tamamlarsın.",
+  "ru": "Правильно заполни все клетки снизу вверх, и головоломка решена!",
+  "ja": "下から上まで、ぜんぶのマスが正しくうまったらクリア！",
+  "th": "ผ่านด่านเมื่อเติมทุกช่องถูกต้องจากล่างขึ้นบน"
+ },
+ "htp_math_pyramid_b_8": {
+  "fr": "Renforce l'addition mentale",
+  "es": "Refuerza la suma mental",
+  "pt": "Fortalece a soma mental",
+  "tr": "Zihinden toplamayı güçlendirir",
+  "ru": "Укрепляет устное сложение",
+  "ja": "暗算でたす力がつく",
+  "th": "เสริมการบวกในใจ"
+ },
+ "htp_math_pyramid_b_9": {
+  "fr": "Les enfants additionnent sans cesse des nombres petits et moyens, et gagnent en aisance.",
+  "es": "Los niños suman una y otra vez números pequeños y medianos, y así ganan fluidez.",
+  "pt": "As crianças somam números pequenos e médios várias vezes e ganham fluência.",
+  "tr": "Çocuklar küçük ve orta büyüklükteki sayıları tekrar tekrar toplar, akıcılık kazanır.",
+  "ru": "Ребёнок снова и снова складывает небольшие и средние числа, и счёт становится беглым.",
+  "ja": "小さな数や中くらいの数を何度もたして、計算がすらすらできるようになります。",
+  "th": "เด็กๆ ได้บวกเลขน้อยและเลขกลางซ้ำๆ ช่วยให้คิดคล่องขึ้น"
+ },
+ "htp_math_pyramid_b_10": {
+  "fr": "Développe le raisonnement pas à pas",
+  "es": "Desarrolla el razonamiento paso a paso",
+  "pt": "Desenvolve o raciocínio passo a passo",
+  "tr": "Adım adım düşünmeyi geliştirir",
+  "ru": "Развивает пошаговое мышление",
+  "ja": "じゅんばんに考える力がのびる",
+  "th": "พัฒนาการคิดทีละขั้น"
+ },
+ "htp_math_pyramid_b_11": {
+  "fr": "Les enfants voient comment les nombres du bas forment ceux du haut.",
+  "es": "Los niños ven cómo los números de abajo crean los de arriba.",
+  "pt": "As crianças veem como os números de baixo formam os de cima.",
+  "tr": "Çocuklar alttaki sayıların üsttekileri nasıl oluşturduğunu görür.",
+  "ru": "Ребёнок видит, как нижние числа создают верхние.",
+  "ja": "下の数から上の数ができるようすが見えてきます。",
+  "th": "เด็กๆ เห็นว่าเลขด้านล่างสร้างเลขด้านบนได้อย่างไร"
+ },
+ "htp_math_pyramid_b_12": {
+  "fr": "Donne confiance pour résoudre des problèmes",
+  "es": "Da confianza para resolver problemas",
+  "pt": "Cria confiança para resolver problemas",
+  "tr": "Problem çözme özgüvenini artırır",
+  "ru": "Придаёт уверенность в решении задач",
+  "ja": "問題をとく自信がつく",
+  "th": "สร้างความมั่นใจในการแก้ปัญหา"
+ },
+ "htp_math_pyramid_b_13": {
+  "fr": "Chaque case juste donne un retour immédiat, ce qui encourage l'autonomie.",
+  "es": "Cada bloque correcto da una respuesta al instante, lo que fomenta la autonomía.",
+  "pt": "Cada bloco certo dá resposta na hora, o que estimula a autonomia.",
+  "tr": "Doğru her kutu anında geri bildirim verir, bu da bağımsız çalışmayı teşvik eder.",
+  "ru": "Каждая верная клетка сразу даёт обратную связь, и это учит самостоятельности.",
+  "ja": "マスが合うたびにすぐ結果がわかるので、自分の力で進める気持ちが育ちます。",
+  "th": "ทุกช่องที่ถูกจะรู้ผลทันที ช่วยให้เด็กๆ พึ่งตัวเองได้"
+ },
+ "htp_math_pyramid_b_14": {
+  "fr": "Améliore la concentration",
+  "es": "Mejora la concentración",
+  "pt": "Melhora a concentração",
+  "tr": "Odaklanmayı güçlendirir",
+  "ru": "Развивает концентрацию",
+  "ja": "集中力が高まる",
+  "th": "เพิ่มสมาธิ"
+ },
+ "htp_math_pyramid_b_15": {
+  "fr": "Les enfants restent concentrés pour remplir tous les étages sans erreur.",
+  "es": "Los niños se mantienen enfocados para completar todos los pisos sin errores.",
+  "pt": "As crianças ficam focadas para completar todas as camadas sem errar.",
+  "tr": "Çocuklar bütün katmanları doğru tamamlamak için dikkatlerini toplar.",
+  "ru": "Ребёнок сосредоточен, чтобы точно заполнить все слои.",
+  "ja": "すべての段を正しくしあげるために、さいごまで集中がつづきます。",
+  "th": "เด็กๆ ตั้งใจจดจ่อเพื่อเติมทุกชั้นให้ถูกต้อง"
+ },
+ "htp_math_pyramid_b_16": {
+  "fr": "Aide à comprendre les liens entre les nombres",
+  "es": "Apoya las relaciones entre números",
+  "pt": "Apoia as relações entre números",
+  "tr": "Sayılar arasındaki ilişkileri destekler",
+  "ru": "Помогает понять связи между числами",
+  "ja": "数のつながりがわかる",
+  "th": "ช่วยให้เข้าใจความสัมพันธ์ของตัวเลข"
+ },
+ "htp_math_pyramid_b_17": {
+  "fr": "Les enfants comprennent comment les nombres se combinent et grandissent, une base essentielle pour l'algèbre.",
+  "es": "Los niños entienden cómo los números se combinan y crecen, algo esencial para el álgebra.",
+  "pt": "As crianças entendem como os números se combinam e crescem, algo essencial para a álgebra.",
+  "tr": "Çocuklar sayıların nasıl birleşip büyüdüğünü anlar, bu cebir için çok önemlidir.",
+  "ru": "Дети понимают, как числа соединяются и растут, а это важно для алгебры.",
+  "ja": "数が合わさって大きくなるしくみがわかります。代数の大切な土台です。",
+  "th": "เด็กๆ เข้าใจว่าตัวเลขรวมกันและเพิ่มขึ้นอย่างไร ซึ่งสำคัญมากต่อพีชคณิต"
+ },
+ "htp_math_pyramid_b_18": {
+  "fr": "Les enfants voient comment deux valeurs s'unissent pour en créer une nouvelle",
+  "es": "Los niños ven cómo dos valores se combinan para crear uno nuevo",
+  "pt": "As crianças veem como dois valores se juntam e formam um valor novo",
+  "tr": "Çocuklar iki değerin birleşip yeni bir değer oluşturduğunu görür",
+  "ru": "Дети видят, как два значения вместе дают новое значение",
+  "ja": "2つの数が合わさって、新しい数ができるようすがわかる",
+  "th": "เด็กๆ เห็นว่าค่าสองค่ารวมกันเป็นค่าใหม่ได้อย่างไร"
+ },
+ "htp_math_pyramid_b_19": {
+  "fr": "Ils s'exercent sur des régularités d'addition et de soustraction, pas sur des sommes au hasard",
+  "es": "Practican patrones de suma y resta, no sumas al azar",
+  "pt": "Praticam padrões de soma e subtração, não contas aleatórias",
+  "tr": "Rastgele toplamlar değil, toplama ve çıkarma örüntülerini alıştırırlar",
+  "ru": "Они тренируют закономерности сложения и вычитания, а не случайные суммы",
+  "ja": "でたらめなたし算ではなく、たし算とひき算のパターンを練習できる",
+  "th": "ได้ฝึกแบบรูปการบวกและการลบ ไม่ใช่การบวกสุ่มๆ"
+ },
+ "htp_math_pyramid_b_20": {
+  "fr": "Ils comprennent la hiérarchie : les nombres de la base construisent ceux du haut",
+  "es": "Entienden la jerarquía: los números de la base forman los de arriba",
+  "pt": "Entendem a hierarquia: os números da base formam os de cima",
+  "tr": "Yapıyı kavrarlar: alttaki sayılar üsttekileri oluşturur",
+  "ru": "Они понимают иерархию: нижние числа строят верхние",
+  "ja": "土台の数が上の数を作るという、つみ上がりのしくみがわかる",
+  "th": "เข้าใจลำดับชั้น เลขฐานล่างสร้างเลขที่อยู่สูงขึ้น"
+ },
+ "htp_math_pyramid_b_21": {
+  "fr": "La forme en pyramide aide à voir comment des parties forment un tout",
+  "es": "La forma de pirámide ayuda a ver cómo las partes forman un todo",
+  "pt": "O formato de pirâmide ajuda a ver como as partes formam o todo",
+  "tr": "Piramit biçimi, parçaların bütünü nasıl oluşturduğunu gözünde canlandırmaya yardım eder",
+  "ru": "Пирамида наглядно показывает, как из частей получается целое",
+  "ja": "ピラミッドの形で、部分が集まって全体になるようすが目で見てわかる",
+  "th": "รูปแบบพีระมิดช่วยให้เห็นภาพว่าส่วนย่อยรวมกันเป็นส่วนรวมได้อย่างไร"
+ },
+ "htp_sudoku_b_1": {
+  "fr": "Le Sudoku est un jeu de nombres où tu remplis les cases vides en réfléchissant !",
+  "es": "¡El Sudoku es un divertido rompecabezas de números en el que llenas las casillas vacías usando tu ingenio!",
+  "pt": "O Sudoku é um quebra-cabeça de números divertido: você preenche as casas vazias usando o raciocínio!",
+  "tr": "Sudoku, düşünme becerini kullanarak boş kutuları doldurduğun eğlenceli bir sayı bulmacasıdır!",
+  "ru": "Судоку — весёлая числовая головоломка: заполни пустые клетки, включив смекалку!",
+  "ja": "数独は、考える力をつかって、からのマスをうめていく、たのしい数字パズルだよ！",
+  "th": "ซูโดกุคือปริศนาตัวเลขสุดสนุก ที่ให้คุณใช้ความคิดเติมช่องว่าง!"
+ },
+ "htp_sudoku_b_2": {
+  "fr": "4×4 (Débutant)",
+  "es": "4×4 (Principiante)",
+  "pt": "4×4 (Iniciante)",
+  "tr": "4×4 (Başlangıç)",
+  "ru": "4×4 (Начинающий)",
+  "ja": "4×4（初級）",
+  "th": "4×4 (ผู้เริ่มต้น)"
+ },
+ "htp_sudoku_b_3": {
+  "fr": "6×6 (Intermédiaire)",
+  "es": "6×6 (Intermedio)",
+  "pt": "6×6 (Intermediário)",
+  "tr": "6×6 (Orta)",
+  "ru": "6×6 (Средний)",
+  "ja": "6×6（中級）",
+  "th": "6×6 (ระดับกลาง)"
+ },
+ "htp_sudoku_b_4": {
+  "fr": "9×9 (Expert)",
+  "es": "9×9 (Experto)",
+  "pt": "9×9 (Especialista)",
+  "tr": "9×9 (Uzman)",
+  "ru": "9×9 (Эксперт)",
+  "ja": "9×9（上級）",
+  "th": "9×9 (ผู้เชี่ยวชาญ)"
+ },
+ "htp_sudoku_b_5": {
+  "fr": "Chaque ligne doit avoir des nombres tous différents.",
+  "es": "Cada fila debe tener todos los números distintos.",
+  "pt": "Cada linha deve ter números todos diferentes.",
+  "tr": "Her satırda bütün sayılar farklı olmalı.",
+  "ru": "В каждой строке все числа должны быть разными.",
+  "ja": "どのよこの列も、ぜんぶちがう数にするよ。",
+  "th": "ทุกแถวนอนต้องมีตัวเลขไม่ซ้ำกันเลย"
+ },
+ "htp_sudoku_b_6": {
+  "fr": "Chaque colonne doit avoir des nombres tous différents.",
+  "es": "Cada columna debe tener todos los números distintos.",
+  "pt": "Cada coluna deve ter números todos diferentes.",
+  "tr": "Her sütunda bütün sayılar farklı olmalı.",
+  "ru": "В каждом столбце все числа должны быть разными.",
+  "ja": "どのたての列も、ぜんぶちがう数にするよ。",
+  "th": "ทุกแถวตั้งต้องมีตัวเลขไม่ซ้ำกันเลย"
+ },
+ "htp_sudoku_b_7": {
+  "fr": "Chaque petit bloc doit aussi avoir des nombres tous différents.",
+  "es": "Cada bloque pequeño también debe tener todos los números distintos.",
+  "pt": "Cada bloco pequeno também deve ter números todos diferentes.",
+  "tr": "Her küçük blokta da bütün sayılar farklı olmalı.",
+  "ru": "В каждом маленьком блоке числа тоже должны быть разными.",
+  "ja": "小さなブロックの中も、ぜんぶちがう数にするよ。",
+  "th": "ทุกบล็อกเล็กก็ต้องมีตัวเลขไม่ซ้ำกันเหมือนกัน"
+ },
+ "htp_sudoku_b_8": {
+  "fr": "Touche une case vide et choisis un nombre qui ne se répète pas.",
+  "es": "Toca una casilla vacía y elige un número que no se repita.",
+  "pt": "Toque em uma casa vazia e escolha um número que não se repita.",
+  "tr": "Boş bir kutuya dokun ve tekrar etmeyen bir sayı seç.",
+  "ru": "Нажми на пустую клетку и выбери число, которое ещё не встречалось.",
+  "ja": "からのマスをタップして、同じ数がかぶらないように数をえらぼう。",
+  "th": "แตะช่องว่าง แล้วเลือกตัวเลขที่ไม่ซ้ำ"
+ },
+ "htp_sudoku_b_9": {
+  "fr": "Tu gagnes quand toute la grille respecte les règles du Sudoku !",
+  "es": "¡Ganas cuando toda la cuadrícula cumple las reglas del Sudoku!",
+  "pt": "Você vence quando a grade toda segue as regras do Sudoku!",
+  "tr": "Bütün ızgara Sudoku kurallarına uyunca kazanırsın!",
+  "ru": "Ты побеждаешь, когда вся сетка подчиняется правилам Судоку!",
+  "ja": "ぜんぶのマスが数独のルールどおりになったらクリア！",
+  "th": "คุณชนะเมื่อทั้งตารางเป็นไปตามกติกาซูโดกุ!"
+ },
+ "htp_sudoku_b_10": {
+  "fr": "Raisonnement logique",
+  "es": "Razonamiento lógico",
+  "pt": "Raciocínio lógico",
+  "tr": "Mantıksal düşünme",
+  "ru": "Логическое мышление",
+  "ja": "筋道を立てて考える力",
+  "th": "การคิดอย่างมีเหตุผล"
+ },
+ "htp_sudoku_b_11": {
+  "fr": "Les enfants analysent les nombres donnés et trouvent où les autres peuvent ou ne peuvent pas aller.",
+  "es": "Los niños analizan las pistas y descubren dónde pueden o no pueden ir los números.",
+  "pt": "As crianças analisam as pistas e descobrem onde os números podem ou não ficar.",
+  "tr": "Çocuklar ipuçlarını inceler ve sayıların nereye girip giremeyeceğini bulur.",
+  "ru": "Ребёнок разбирает подсказки и понимает, куда числа можно поставить, а куда нельзя.",
+  "ja": "手がかりをよく見て、数が入る場所と入らない場所を見つけます。",
+  "th": "เด็กๆ วิเคราะห์เบาะแสและหาว่าตัวเลขใส่ตรงไหนได้หรือไม่ได้"
+ },
+ "htp_sudoku_b_12": {
+  "fr": "Sens de la décision",
+  "es": "Toma de decisiones",
+  "pt": "Tomada de decisões",
+  "tr": "Karar verme becerileri",
+  "ru": "Умение принимать решения",
+  "ja": "えらんで決める力",
+  "th": "ทักษะการตัดสินใจ"
+ },
+ "htp_sudoku_b_13": {
+  "fr": "Ils testent des possibilités et choisissent la bonne d'après les règles.",
+  "es": "Prueban posibilidades y eligen la correcta según las reglas.",
+  "pt": "Testam possibilidades e escolhem a certa com base nas regras.",
+  "tr": "Olasılıkları dener ve kurallara göre doğru olanı seçerler.",
+  "ru": "Он проверяет варианты и выбирает верный по правилам.",
+  "ja": "いろいろな可能性をためして、ルールに合う正しい数をえらびます。",
+  "th": "ได้ลองความเป็นไปได้ต่างๆ แล้วเลือกคำตอบที่ถูกตามกติกา"
+ },
+ "htp_sudoku_b_14": {
+  "fr": "Patience et concentration",
+  "es": "Paciencia y concentración",
+  "pt": "Paciência e foco",
+  "tr": "Sabır ve odaklanma",
+  "ru": "Терпение и внимание",
+  "ja": "がまん強さと集中力",
+  "th": "ความอดทนและสมาธิ"
+ },
+ "htp_sudoku_b_15": {
+  "fr": "Finir un Sudoku demande de réfléchir au calme, idéal pour développer l'attention.",
+  "es": "Completar un Sudoku requiere pensar con calma, ideal para desarrollar la capacidad de atención.",
+  "pt": "Completar um Sudoku pede calma para pensar, ótimo para desenvolver a atenção.",
+  "tr": "Sudoku'yu tamamlamak sakin düşünmeyi gerektirir, dikkat süresini geliştirmek için harikadır.",
+  "ru": "Чтобы решить Судоку, нужно думать спокойно, а это отлично развивает внимание.",
+  "ja": "数独をとくには落ち着いて考える必要があるので、集中力を育てるのにぴったりです。",
+  "th": "การเล่นซูโดกุให้จบต้องคิดอย่างใจเย็น ช่วยพัฒนาการจดจ่อได้ดีมาก"
+ },
+ "htp_sudoku_b_16": {
+  "fr": "Reconnaissance visuelle et des motifs",
+  "es": "Reconocimiento visual y de patrones",
+  "pt": "Visão e reconhecimento de padrões",
+  "tr": "Görsel algı ve örüntü tanıma",
+  "ru": "Зрительное восприятие и поиск закономерностей",
+  "ja": "見る力とパターンを見つける力",
+  "th": "การมองเห็นและจดจำแบบรูป"
+ },
+ "htp_sudoku_b_17": {
+  "fr": "Les enfants commencent à repérer des motifs dans les lignes et les grilles.",
+  "es": "Los niños empiezan a notar patrones entre filas y cuadrículas.",
+  "pt": "As crianças começam a notar padrões nas linhas e nas grades.",
+  "tr": "Çocuklar satırlarda ve ızgaralarda örüntüleri fark etmeye başlar.",
+  "ru": "Дети начинают замечать закономерности в строках и сетках.",
+  "ja": "列やマスにならぶパターンに、少しずつ気づけるようになります。",
+  "th": "เด็กๆ เริ่มสังเกตเห็นแบบรูปตามแถวและตาราง"
+ },
+ "htp_sudoku_b_18": {
+  "fr": "Confiance en soi",
+  "es": "Más confianza",
+  "pt": "Cria confiança",
+  "tr": "Özgüven kazandırır",
+  "ru": "Уверенность в себе",
+  "ja": "自信がつく",
+  "th": "สร้างความมั่นใจ"
+ },
+ "htp_sudoku_b_19": {
+  "fr": "Résoudre des puzzles difficiles donne confiance et persévérance.",
+  "es": "Resolver rompecabezas difíciles fortalece la confianza y la perseverancia.",
+  "pt": "Resolver quebra-cabeças difíceis cria confiança e perseverança.",
+  "tr": "Zor bulmacaları çözmek özgüven ve azim kazandırır.",
+  "ru": "Сложные головоломки укрепляют уверенность и упорство.",
+  "ja": "むずかしいパズルをとくことで、自信とやりぬく力が育ちます。",
+  "th": "การไขปริศนายากๆ สร้างความมั่นใจและความเพียร"
+ },
+ "htp_sudoku_b_20": {
+  "fr": "Apprendre à penser de façon structurée",
+  "es": "Aprender a pensar de forma ordenada",
+  "pt": "Aprender a pensar com organização",
+  "tr": "Düzenli düşünmeyi öğren",
+  "ru": "Учиться мыслить по порядку",
+  "ja": "筋道を立てた考え方をまなぶ",
+  "th": "เรียนรู้การคิดอย่างเป็นระบบ"
+ },
+ "htp_sudoku_b_21": {
+  "fr": "Comprendre les règles et les contraintes",
+  "es": "Entender las reglas y las restricciones",
+  "pt": "Entender regras e limites",
+  "tr": "Kuralları ve sınırlamaları anla",
+  "ru": "Понимать правила и ограничения",
+  "ja": "ルールと条件を理解する",
+  "th": "เข้าใจกติกาและข้อจำกัด"
+ },
+ "htp_sudoku_b_22": {
+  "fr": "Renforcer la mémoire de travail",
+  "es": "Fortalecer la memoria de trabajo",
+  "pt": "Fortalecer a memória de trabalho",
+  "tr": "Çalışma belleğini güçlendir",
+  "ru": "Укреплять рабочую память",
+  "ja": "ワーキングメモリ（覚えておく力）をきたえる",
+  "th": "เสริมความจำขณะทำงาน"
+ },
+ "htp_sudoku_b_23": {
+  "fr": "Développer le raisonnement déductif (si ce nombre ne peut pas aller ici, il doit aller là !)",
+  "es": "Desarrollar el razonamiento deductivo (¡Si este número no puede ir aquí, tiene que ir allá!)",
+  "pt": "Desenvolver o raciocínio dedutivo (Se este número não cabe aqui, ele tem que ir ali!)",
+  "tr": "Çıkarımla düşünmeyi geliştir (Bu sayı buraya giremiyorsa, oraya girmeli!)",
+  "ru": "Развивать дедукцию (Если это число сюда не подходит, оно должно встать вот сюда!)",
+  "ja": "推理する力をのばす（この数がここに入らないなら、あっちに入るはず！）",
+  "th": "พัฒนาการหาคำตอบด้วยเหตุผล (ถ้าเลขนี้ใส่ตรงนี้ไม่ได้ ก็ต้องใส่ตรงนั้น!)"
+ },
+ "htp_target_number_b_1": {
+  "fr": "Dans ce jeu, tu deviens un petit explorateur des maths !",
+  "es": "¡En este juego te conviertes en un pequeño explorador de las mates!",
+  "pt": "Neste jogo, você vira um pequeno explorador da matemática!",
+  "tr": "Bu oyunda küçük bir matematik kâşifi olursun!",
+  "ru": "В этой игре ты становишься маленьким исследователем математики!",
+  "ja": "このゲームでは、きみは小さな算数たんけん家になるよ！",
+  "th": "ในเกมนี้ คุณจะเป็นนักสำรวจคณิตศาสตร์ตัวน้อย!"
+ },
+ "htp_target_number_b_2": {
+  "fr": "Tu reçois un nombre cible et une série de nombres plus petits.",
+  "es": "Recibes un número objetivo y un grupo de números más pequeños.",
+  "pt": "Você recebe um número alvo e alguns números menores.",
+  "tr": "Sana bir hedef sayı ve bir grup küçük sayı verilir.",
+  "ru": "Тебе дают число-цель и набор чисел поменьше.",
+  "ja": "もくひょうの数と、小さな数がいくつかわたされるよ。",
+  "th": "คุณจะได้เลขเป้าหมายหนึ่งตัว กับตัวเลขที่เล็กกว่าอีกชุดหนึ่ง"
+ },
+ "htp_target_number_b_3": {
+  "fr": "Ta mission : utiliser des opérations pour atteindre le nombre cible.",
+  "es": "Tu misión es usar operaciones para llegar al número objetivo.",
+  "pt": "Sua missão é usar operações para chegar ao número alvo.",
+  "tr": "Görevin, matematik işlemlerini kullanarak hedef sayıya ulaşmak.",
+  "ru": "Твоя миссия: получить число-цель с помощью математических действий.",
+  "ja": "きみのミッションは、計算をつかってもくひょうの数にすることだよ。",
+  "th": "ภารกิจของคุณคือใช้การคำนวณเพื่อให้ได้เลขเป้าหมาย"
+ },
+ "htp_target_number_b_4": {
+  "fr": "Tu vois un nombre cible (par exemple : 25).",
+  "es": "Verás un número objetivo (por ejemplo: 25).",
+  "pt": "Você verá um número alvo (por exemplo: 25).",
+  "tr": "Bir hedef sayı göreceksin (örneğin: 25).",
+  "ru": "Ты увидишь число-цель (например: 25).",
+  "ja": "もくひょうの数が出るよ（れい：25）。",
+  "th": "คุณจะเห็นเลขเป้าหมาย (เช่น 25)"
+ },
+ "htp_target_number_b_5": {
+  "fr": "Tu vois aussi des nombres à utiliser, comme : 5, 5, 6.",
+  "es": "También verás algunos números que puedes usar, como: 5, 5, 6.",
+  "pt": "Também verá alguns números para usar, como: 5, 5, 6.",
+  "tr": "Kullanabileceğin sayıları da göreceksin, örneğin: 5, 5, 6.",
+  "ru": "Ещё ты увидишь числа, которые можно использовать, например: 5, 5, 6.",
+  "ja": "つかえる数も出るよ。たとえば 5, 5, 6。",
+  "th": "จะมีตัวเลขที่ใช้ได้ให้ด้วย เช่น 5, 5, 6"
+ },
+ "htp_target_number_b_6": {
+  "fr": "Tu peux utiliser des opérations comme :",
+  "es": "Puedes usar operaciones como estas:",
+  "pt": "Você pode usar operações como:",
+  "tr": "Şu gibi matematik işlemlerini kullanabilirsin:",
+  "ru": "Можно использовать такие действия, как:",
+  "ja": "つかえる計算はこれだよ：",
+  "th": "คุณใช้เครื่องหมายคำนวณได้ เช่น:"
+ },
+ "htp_target_number_b_7": {
+  "fr": "Essaie différentes combinaisons jusqu'à atteindre la cible.",
+  "es": "Prueba distintas combinaciones hasta llegar al objetivo.",
+  "pt": "Teste combinações diferentes até chegar ao alvo.",
+  "tr": "Hedefe ulaşana kadar farklı birleşimler dene.",
+  "ru": "Пробуй разные сочетания, пока не получишь цель.",
+  "ja": "いろいろな組み合わせをためして、もくひょうをめざそう。",
+  "th": "ลองรวมตัวเลขหลายแบบจนได้เลขเป้าหมาย"
+ },
+ "htp_target_number_b_8": {
+  "fr": "Quand tu touches la cible, tu gagnes !",
+  "es": "¡Cuando aciertas el objetivo, ganas!",
+  "pt": "Quando acertar o alvo, você vence!",
+  "tr": "Hedefi tam tutturunca kazanırsın!",
+  "ru": "Точно попадёшь в цель, и победа твоя!",
+  "ja": "ぴったりもくひょうの数になったらクリア！",
+  "th": "ถ้าได้เลขเป้าหมายพอดีเป๊ะ คุณชนะ!"
+ },
+ "htp_target_number_b_9": {
+  "fr": "Renforce l'aisance en calcul",
+  "es": "Refuerza la fluidez con las operaciones",
+  "pt": "Fortalece a fluência nas contas",
+  "tr": "Aritmetikte akıcılığı güçlendirir",
+  "ru": "Укрепляет беглость вычислений",
+  "ja": "計算がすらすらになる",
+  "th": "เสริมความคล่องในการคำนวณ"
+ },
+ "htp_target_number_b_10": {
+  "fr": "Les enfants s'exercent aux quatre opérations de façon concrète.",
+  "es": "Los niños practican las cuatro operaciones de forma práctica.",
+  "pt": "As crianças praticam as quatro operações de um jeito prático.",
+  "tr": "Çocuklar dört işlemi de uygulayarak alıştırır.",
+  "ru": "Ребёнок на практике упражняется во всех четырёх действиях.",
+  "ja": "4つの計算を、手を動かしながら練習できます。",
+  "th": "เด็กๆ ฝึกบวก ลบ คูณ หารครบทั้งสี่แบบด้วยการลงมือทำ"
+ },
+ "htp_target_number_b_11": {
+  "fr": "Encourage la souplesse de pensée",
+  "es": "Fomenta el pensamiento flexible",
+  "pt": "Estimula o pensamento flexível",
+  "tr": "Esnek düşünmeyi teşvik eder",
+  "ru": "Развивает гибкое мышление",
+  "ja": "やわらかい考え方がのびる",
+  "th": "ส่งเสริมการคิดยืดหยุ่น"
+ },
+ "htp_target_number_b_12": {
+  "fr": "Les enfants voient qu'il existe plusieurs façons d'arriver à une réponse.",
+  "es": "Los niños descubren que hay varias formas de llegar a una respuesta.",
+  "pt": "As crianças veem que há várias formas de chegar a uma resposta.",
+  "tr": "Çocuklar bir cevaba ulaşmanın birden fazla yolu olduğunu görür.",
+  "ru": "Ребёнок видит, что к ответу ведёт несколько путей.",
+  "ja": "答えにたどりつく方法がいくつもあるとわかります。",
+  "th": "เด็กๆ เห็นว่าหาคำตอบได้หลายวิธี"
+ },
+ "htp_target_number_b_13": {
+  "fr": "Soutient la résolution créative de problèmes",
+  "es": "Apoya la resolución creativa de problemas",
+  "pt": "Apoia a solução criativa de problemas",
+  "tr": "Yaratıcı problem çözmeyi destekler",
+  "ru": "Помогает творчески решать задачи",
+  "ja": "工夫して問題をとく力がつく",
+  "th": "ส่งเสริมการแก้ปัญหาอย่างสร้างสรรค์"
+ },
+ "htp_target_number_b_14": {
+  "fr": "En essayant, ils apprennent à penser en stratège.",
+  "es": "Experimentar lleva al pensamiento estratégico.",
+  "pt": "Experimentar leva ao pensamento estratégico.",
+  "tr": "Denemeler stratejik düşünmeye götürür.",
+  "ru": "Пробы и эксперименты ведут к стратегическому мышлению.",
+  "ja": "いろいろためすうちに、作戦を立てて考える力が育ちます。",
+  "th": "การลองหลายๆ แบบช่วยให้คิดวางแผนเป็น"
+ },
+ "htp_target_number_b_15": {
+  "fr": "Aide à comprendre le comportement des nombres",
+  "es": "Mejora la comprensión de cómo se comportan los números",
+  "pt": "Melhora a compreensão de como os números se comportam",
+  "tr": "Sayıların davranışını anlamayı geliştirir",
+  "ru": "Помогает понять, как ведут себя числа",
+  "ja": "数のはたらきがわかる",
+  "th": "ช่วยให้เข้าใจพฤติกรรมของตัวเลข"
+ },
+ "htp_target_number_b_16": {
+  "fr": "Les enfants voient comment les opérations changent les valeurs.",
+  "es": "Los niños ven cómo las operaciones cambian los valores.",
+  "pt": "As crianças veem como as operações mudam os valores.",
+  "tr": "Çocuklar işlemlerin değerleri nasıl değiştirdiğini görür.",
+  "ru": "Дети видят, как действия меняют значения.",
+  "ja": "計算で数がどう変わるかがわかります。",
+  "th": "เด็กๆ เห็นว่าการคำนวณทำให้ค่าเปลี่ยนไปอย่างไร"
+ },
+ "htp_target_number_b_17": {
+  "fr": "Donne confiance",
+  "es": "Genera confianza",
+  "pt": "Cria confiança",
+  "tr": "Özgüven kazandırır",
+  "ru": "Придаёт уверенность",
+  "ja": "自信がつく",
+  "th": "สร้างความมั่นใจ"
+ },
+ "htp_target_number_b_18": {
+  "fr": "Atteindre la cible donne un sentiment de réussite.",
+  "es": "Llegar al objetivo da una sensación de logro.",
+  "pt": "Chegar ao alvo dá uma sensação de conquista.",
+  "tr": "Hedefe ulaşmak başarı hissi verir.",
+  "ru": "Достигнутая цель дарит чувство успеха.",
+  "ja": "もくひょうにとどくと、やりとげた気持ちが味わえます。",
+  "th": "การได้เลขเป้าหมายให้ความรู้สึกภูมิใจที่ทำสำเร็จ"
+ },
+ "htp_target_number_b_19": {
+  "fr": "Comprendre l'effet des opérations (comment les nombres interagissent).",
+  "es": "Entender el efecto de las operaciones (cómo interactúan los números).",
+  "pt": "Entender o efeito das operações (como os números interagem).",
+  "tr": "İşlemlerin etkisini anlamak (sayılar birbirini nasıl etkiler).",
+  "ru": "Понимание того, как действия влияют на числа (как числа связаны друг с другом).",
+  "ja": "計算のはたらき（数どうしの関係）を理解する。",
+  "th": "เข้าใจผลของการคำนวณ (ตัวเลขมีผลต่อกันอย่างไร)"
+ },
+ "htp_target_number_b_20": {
+  "fr": "S'entraîner au calcul mental dans des situations concrètes.",
+  "es": "Practicar cálculo mental en situaciones reales.",
+  "pt": "Praticar o cálculo mental em situações reais.",
+  "tr": "Zihinden hesabı gerçek durumlarda alıştırmak.",
+  "ru": "Устный счёт в жизненных ситуациях.",
+  "ja": "ふだんの場面で暗算を練習する。",
+  "th": "ฝึกคิดเลขในใจในสถานการณ์จริง"
+ },
+ "htp_target_number_b_21": {
+  "fr": "Repérer des motifs et des liens entre les nombres.",
+  "es": "Reconocer patrones y relaciones entre números.",
+  "pt": "Reconhecer padrões e relações entre números.",
+  "tr": "Sayı örüntülerini ve ilişkilerini fark etmek.",
+  "ru": "Умение замечать закономерности и связи между числами.",
+  "ja": "数のパターンや関係に気づく。",
+  "th": "สังเกตแบบรูปและความสัมพันธ์ของตัวเลข"
+ },
+ "htp_target_number_b_22": {
+  "fr": "Découper un but en étapes plus petites.",
+  "es": "Dividir una meta en pasos más pequeños.",
+  "pt": "Dividir um objetivo em passos menores.",
+  "tr": "Bir hedefi daha küçük adımlara bölmek.",
+  "ru": "Умение разбивать цель на маленькие шаги.",
+  "ja": "大きな目標を、小さなステップに分ける。",
+  "th": "แบ่งเป้าหมายใหญ่เป็นขั้นเล็กๆ"
+ },
+ "htp_target_number_b_23": {
+  "fr": "Développer un raisonnement stratégique, comme dans de vrais problèmes.",
+  "es": "Desarrollar un razonamiento estratégico, como en los problemas de la vida real.",
+  "pt": "Desenvolver o raciocínio estratégico, como nos problemas do dia a dia.",
+  "tr": "Gerçek problemler gibi stratejik düşünmeyi geliştirmek.",
+  "ru": "Стратегическое мышление, как в настоящих текстовых задачах.",
+  "ja": "文章題のように、作戦を立てて考える力をのばす。",
+  "th": "พัฒนาการคิดวางแผนเหมือนโจทย์ปัญหาในชีวิตจริง"
+ },
+ "htp_target_number_b_24": {
+  "fr": "« Quelle opération dois-je utiliser ? »",
+  "es": "“¿Qué operación debo usar?”",
+  "pt": "“Qual operação devo usar?”",
+  "tr": "“Hangi işlemi kullanmalıyım?”",
+  "ru": "«Какое действие выбрать?»",
+  "ja": "「どの計算をつかおうかな？」",
+  "th": "“ควรใช้เครื่องหมายไหนดี?”"
+ },
+ "htp_target_number_b_25": {
+  "fr": "« Quelle combinaison fonctionne ? »",
+  "es": "“¿Qué combinación funciona?”",
+  "pt": "“Qual combinação funciona?”",
+  "tr": "“Hangi birleşim işe yarar?”",
+  "ru": "«Какое сочетание подойдёт?»",
+  "ja": "「どんな組み合わせならできるかな？」",
+  "th": "“รวมกันแบบไหนถึงจะได้?”"
+ },
+ "htp_target_number_b_26": {
+  "fr": "« Comment atteindre la cible avec logique ? »",
+  "es": "“¿Cómo llego al objetivo con lógica?”",
+  "pt": "“Como chego ao alvo com lógica?”",
+  "tr": "“Hedefe mantıklı bir şekilde nasıl ulaşırım?”",
+  "ru": "«Как логично дойти до цели?»",
+  "ja": "「どうすれば筋道を立ててもくひょうにとどくかな？」",
+  "th": "“จะไปถึงเป้าหมายอย่างมีเหตุผลยังไงดี?”"
+ },
+ "htp_number_path_b_1": {
+  "fr": "Si tu arrives avec le mauvais nombre, l'arrivée te renvoie en arrière : repense ton chemin !",
+  "es": "Si llegas con un número equivocado, la meta te hace rebotar: ¡piensa otra ruta!",
+  "pt": "Chegou com o número errado? A casa final te manda de volta. Pense em outro caminho!",
+  "tr": "Hedef karoya yanlış sayıyla varırsan geri sekersin, rotanı yeniden düşün!",
+  "ru": "Придёшь к цели с неверным числом, и она отбросит тебя назад. Придумай другой путь!",
+  "ja": "ちがう数でゴールにつくと、はじき返されるよ。道を考え直そう！",
+  "th": "ไปถึงด้วยเลขที่ผิด เป้าหมายจะเด้งคุณกลับ ลองคิดเส้นทางใหม่!"
+ },
+ "g_target_number_level": {
+  "fr": "NIVEAU %1$s",
+  "es": "NIVEL %1$s",
+  "pt": "NÍVEL %1$s",
+  "tr": "SEVİYE %1$s",
+  "ru": "УРОВЕНЬ %1$s",
+  "ja": "レベル%1$s",
+  "th": "ด่าน %1$s"
+ },
+ "g_math_bingo_banner": {
+  "fr": "🎉 BINGO ! 🎉",
+  "es": "🎉 ¡BINGO! 🎉",
+  "pt": "🎉 BINGO! 🎉",
+  "tr": "🎉 BİNGO! 🎉",
+  "ru": "🎉 БИНГО! 🎉",
+  "ja": "🎉 ビンゴ！ 🎉",
+  "th": "🎉 บิงโก! 🎉"
+ },
+ "g_sudoku_hints_used": {
+  "fr": "Indices utilisés : %1$s/%2$s",
+  "es": "Pistas usadas: %1$s/%2$s",
+  "pt": "Dicas usadas: %1$s/%2$s",
+  "tr": "Kullanılan ipucu: %1$s/%2$s",
+  "ru": "Использовано подсказок: %1$s/%2$s",
+  "ja": "つかったヒント：%1$s/%2$s",
+  "th": "ใช้คำใบ้แล้ว: %1$s/%2$s"
+ }
+}

@@ -1,0 +1,65 @@
+{
+ "balloon_pop_game": {
+  "fr": "Ballons à éclater",
+  "es": "Revienta globos",
+  "pt": "Estoura balões",
+  "tr": "Balon Patlat",
+  "ru": "Лопни шарик",
+  "ja": "風船わり",
+  "th": "ปาลูกโป่ง"
+ },
+ "calcudoku_game": {
+  "fr": "Calcudoku",
+  "es": "Calcudoku",
+  "pt": "Calcudoku",
+  "tr": "Calcudoku",
+  "ru": "Калькудоку",
+  "ja": "計算数独",
+  "th": "แคลคูโดกุ"
+ },
+ "clock_master_game": {
+  "fr": "Maître de l'horloge",
+  "es": "Maestro del reloj",
+  "pt": "Mestre do relógio",
+  "tr": "Saat Ustası",
+  "ru": "Мастер часов",
+  "ja": "時計マスター",
+  "th": "ยอดนักอ่านนาฬิกา"
+ },
+ "clock_master_tagline": {
+  "fr": "Lis l'heure, bats l'horloge !",
+  "es": "¡Lee el reloj, vence al reloj!",
+  "pt": "Leia o relógio, vença o tempo!",
+  "tr": "Saati oku, saati yen!",
+  "ru": "Читай часы и обгоняй время!",
+  "ja": "時計を読んで、タイムにかとう！",
+  "th": "อ่านนาฬิกา เอาชนะเวลา!"
+ },
+ "cross_math_game": {
+  "fr": "Maths croisées",
+  "es": "Mates cruzadas",
+  "pt": "Cruzadinha de contas",
+  "tr": "Çapraz Matematik",
+  "ru": "Числовой кроссворд",
+  "ja": "クロス計算",
+  "th": "คณิตศาสตร์ไขว้"
+ },
+ "equation_match_tagline": {
+  "fr": "Retourne et associe les paires !",
+  "es": "¡Voltea y une las parejas!",
+  "pt": "Vire e ligue os pares!",
+  "tr": "Kartları çevir, çiftleri eşleştir!",
+  "ru": "Открывай и находи пары!",
+  "ja": "めくって、ペアをそろえよう！",
+  "th": "พลิกการ์ดแล้วจับคู่!"
+ },
+ "lets_start": {
+  "fr": "C'est parti !",
+  "es": "¡Empecemos!",
+  "pt": "Vamos começar!",
+  "tr": "Haydi başlayalım",
+  "ru": "Начнём!",
+  "ja": "はじめよう",
+  "th": "เริ่มกันเลย"
+ }
+}

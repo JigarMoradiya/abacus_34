@@ -108,13 +108,13 @@ fun HowToPlaySudokuView(
 
                     // Intro
                     item {
-                        Bullet("Sudoku is a fun number puzzle where you fill in the empty boxes using your thinking skills!")
+                        Bullet(stringResource(R.string.htp_sudoku_b_1))
                     }
 
                     // Grid sizes
                     item {
                         Text(
-                            text = "We have different grid sizes:",
+                            text = stringResource(R.string.htp_sudoku_1),
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = AbTypography.Baloo,
@@ -122,14 +122,14 @@ fun HowToPlaySudokuView(
                         )
                     }
 
-                    item { SubBullet("4×4 (Beginner)") }
-                    item { SubBullet("6×6 (Intermediate)") }
-                    item { SubBullet("9×9 (Expert)") }
+                    item { SubBullet(stringResource(R.string.htp_sudoku_b_2)) }
+                    item { SubBullet(stringResource(R.string.htp_sudoku_b_3)) }
+                    item { SubBullet(stringResource(R.string.htp_sudoku_b_4)) }
 
                     // How to play
                     item {
                         Text(
-                            text = "👉 How you play:",
+                            text = stringResource(R.string.htp_sudoku_2),
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = AbTypography.Baloo,
@@ -137,15 +137,15 @@ fun HowToPlaySudokuView(
                         )
                     }
 
-                    item { Bullet("Each row must have all different numbers.") }
-                    item { Bullet("Each column must have all different numbers.") }
-                    item { Bullet("Each small block must also have all different numbers.") }
-                    item { Bullet("Tap an empty box and choose a number that does not repeat.") }
-                    item { Bullet("You win when the entire grid follows Sudoku rules!") }
+                    item { Bullet(stringResource(R.string.htp_sudoku_b_5)) }
+                    item { Bullet(stringResource(R.string.htp_sudoku_b_6)) }
+                    item { Bullet(stringResource(R.string.htp_sudoku_b_7)) }
+                    item { Bullet(stringResource(R.string.htp_sudoku_b_8)) }
+                    item { Bullet(stringResource(R.string.htp_sudoku_b_9)) }
 
                     item {
                         Text(
-                            text = "Sudoku is like a secret number pattern game where you become a little detective 🕵️‍♂️.",
+                            text = stringResource(R.string.htp_sudoku_3),
                             fontSize = 16.sp,
                             modifier = Modifier.padding(top = AppDimens.Dimens4),
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
@@ -156,7 +156,7 @@ fun HowToPlaySudokuView(
                     // Parent friendly
                     item {
                         Text(
-                            text = "👨‍👩‍👧 How It Helps:",
+                            text = stringResource(R.string.htp_sudoku_4),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = AbTypography.Baloo,
@@ -164,24 +164,24 @@ fun HowToPlaySudokuView(
                         )
                     }
 
-                    item { Check("Logical reasoning") }
-                    item { Detail("Kids analyze clues and figure out where numbers can or cannot go.") }
+                    item { Check(stringResource(R.string.htp_sudoku_b_10)) }
+                    item { Detail(stringResource(R.string.htp_sudoku_b_11)) }
 
-                    item { Check("Decision-making skills") }
-                    item { Detail("They test possibilities and choose the correct one based on rules.") }
+                    item { Check(stringResource(R.string.htp_sudoku_b_12)) }
+                    item { Detail(stringResource(R.string.htp_sudoku_b_13)) }
 
-                    item { Check("Patience and focus") }
-                    item { Detail("Completing a Sudoku needs calm thinking — great for attention span development.") }
+                    item { Check(stringResource(R.string.htp_sudoku_b_14)) }
+                    item { Detail(stringResource(R.string.htp_sudoku_b_15)) }
 
-                    item { Check("Visual and pattern recognition") }
-                    item { Detail("Children begin to notice patterns across rows and grids.") }
+                    item { Check(stringResource(R.string.htp_sudoku_b_16)) }
+                    item { Detail(stringResource(R.string.htp_sudoku_b_17)) }
 
-                    item { Check("Confidence building") }
-                    item { Detail("Solving tough puzzles builds confidence and perseverance.") }
+                    item { Check(stringResource(R.string.htp_sudoku_b_18)) }
+                    item { Detail(stringResource(R.string.htp_sudoku_b_19)) }
 
                     item {
                         Text(
-                            text = "Sudoku teaches how to think, not just how to calculate.",
+                            text = stringResource(R.string.htp_sudoku_5),
                             fontSize = 18.sp,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
                             modifier = Modifier.padding(top = AppDimens.Dimens4)
@@ -191,7 +191,7 @@ fun HowToPlaySudokuView(
                     // Math friendly
                     item {
                         Text(
-                            text = "❤️ Why This Game Matters:",
+                            text = stringResource(R.string.htp_sudoku_6),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = AbTypography.Baloo,
@@ -199,14 +199,14 @@ fun HowToPlaySudokuView(
                         )
                     }
 
-                    item { Bullet("Learn structured thinking") }
-                    item { Bullet("Understand rules and constraints") }
-                    item { Bullet("Strengthen working memory") }
-                    item { Bullet("Develop deductive reasoning (If this number cannot go here, it must go there!)") }
+                    item { Bullet(stringResource(R.string.htp_sudoku_b_20)) }
+                    item { Bullet(stringResource(R.string.htp_sudoku_b_21)) }
+                    item { Bullet(stringResource(R.string.htp_sudoku_b_22)) }
+                    item { Bullet(stringResource(R.string.htp_sudoku_b_23)) }
 
                     item {
                         Text(
-                            text = "It supports higher-level math learning because it trains the brain to organize information, spot patterns, and solve problems logically.",
+                            text = stringResource(R.string.htp_sudoku_7),
                             fontSize = 16.sp,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
                             modifier = Modifier.padding(top = AppDimens.Dimens4)
@@ -215,7 +215,7 @@ fun HowToPlaySudokuView(
 
                     item {
                         Text(
-                            text = "Sudoku is not about speed — it's about smart thinking. It turns kids into little mathematicians!",
+                            text = stringResource(R.string.htp_sudoku_8),
                             fontSize = 16.sp,
                             fontFamily = FontFamily(Font(R.font.font_semibold)),
                             modifier = Modifier.padding(top = AppDimens.Dimens4)

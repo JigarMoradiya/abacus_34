@@ -89,6 +89,7 @@ import kotlinx.coroutines.delay
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
+import androidx.compose.ui.res.stringResource
 
 private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
@@ -137,8 +138,8 @@ fun EquationMatchPlayScreen(viewModel: EquationMatchPlayViewModel, onBackClick: 
             Row(modifier = Modifier.fillMaxWidth().weight(1f), verticalAlignment = Alignment.CenterVertically) {
                 GameMascotPanel(
                     cheer = when {
-                        state.multiplier >= 3 -> "On fire! 🔥"
-                        state.multiplier == 2 -> "Nice match! 🎉"
+                        state.multiplier >= 3 -> stringResource(R.string.g_equation_match_1)
+                        state.multiplier == 2 -> stringResource(R.string.g_equation_match_2)
                         else -> baseCheer
                     },
                     celebrate = state.pulse, s = s,
@@ -358,7 +359,7 @@ private fun ResultOverlay(score: Int, starCount: Int, matches: Int, best: Int, o
             emoji = "🟰",
             accent = ButtonType.RED,
             stars = starCount,
-            score = str(R.string.balloon_final_score) + ": $score",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
                     GameStatChip("✅", "$matches", GREEN)

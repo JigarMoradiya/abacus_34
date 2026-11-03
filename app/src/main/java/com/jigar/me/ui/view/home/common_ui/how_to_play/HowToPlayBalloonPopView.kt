@@ -88,24 +88,24 @@ fun HowToPlayBalloonPopView(
                     modifier = Modifier.fillMaxSize(),
                     contentPadding = PaddingValues(bottom = AppDimens.Dimens16)
                 ) {
-                    item { HowToBullet("Balloons float up with numbers on them — pop the right one!") }
-                    item { HowToHeading("👉 How it works:") }
-                    item { HowToBullet("A target shows at the top, like: Make 10 with 7.") }
-                    item { HowToBullet("Find the balloon that completes the sum — 7 needs 3!") }
-                    item { HowToBullet("Tap it to POP it and earn points.") }
-                    item { HowToBullet("Pop 5 in a row and the target changes to a new number.") }
-                    item { HowToBullet("Wrong balloon? It just wiggles — try again!") }
+                    item { HowToBullet(stringResource(R.string.htp_balloon_pop_1)) }
+                    item { HowToHeading(stringResource(R.string.htp_balloon_pop_2)) }
+                    item { HowToBullet(stringResource(R.string.htp_balloon_pop_3)) }
+                    item { HowToBullet(stringResource(R.string.htp_balloon_pop_4)) }
+                    item { HowToBullet(stringResource(R.string.htp_balloon_pop_5)) }
+                    item { HowToBullet(stringResource(R.string.htp_balloon_pop_6)) }
+                    item { HowToBullet(stringResource(R.string.htp_balloon_pop_7)) }
 
-                    item { HowToHeading("🧒 Example:") }
-                    item { HowToBullet("Target: Make 10 with 6") }
-                    item { HowToBullet("Balloons: 2, 4, 7, 4, 9") }
-                    item { HowToBullet("6 + 4 = 10 ✔ — pop the 4!") }
+                    item { HowToHeading(stringResource(R.string.htp_balloon_pop_8)) }
+                    item { HowToBullet(stringResource(R.string.htp_balloon_pop_9)) }
+                    item { HowToBullet(stringResource(R.string.htp_balloon_pop_10)) }
+                    item { HowToBullet(stringResource(R.string.htp_balloon_pop_11)) }
 
-                    item { HowToHeading("👨‍👩‍👧 How It Helps:") }
-                    item { HowToBullet("Builds number bond fluency — pairs that make 5, 10 and 20.") }
-                    item { HowToBullet("Prepares for abacus formulas — the Small Friend & Big Friend pairs.") }
-                    item { HowToBullet("Trains quick recognition with gentle motion.") }
-                    item { HowToBullet("No punishment for mistakes — wrong taps just wiggle.") }
+                    item { HowToHeading(stringResource(R.string.htp_balloon_pop_12)) }
+                    item { HowToBullet(stringResource(R.string.htp_balloon_pop_13)) }
+                    item { HowToBullet(stringResource(R.string.htp_balloon_pop_14)) }
+                    item { HowToBullet(stringResource(R.string.htp_balloon_pop_15)) }
+                    item { HowToBullet(stringResource(R.string.htp_balloon_pop_16)) }
                 }
             }
         }

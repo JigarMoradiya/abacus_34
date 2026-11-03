@@ -161,8 +161,8 @@ fun TrueFalsePlayScreen(
             ) {
                 GameMascotPanel(
                     cheer = when {
-                        state.lastAnswerRight && state.streak >= 3 -> "On fire! 🔥"
-                        state.lastAnswerWrong -> "Oops! Look close 👀"
+                        state.lastAnswerRight && state.streak >= 3 -> stringResource(R.string.g_true_false_1)
+                        state.lastAnswerWrong -> stringResource(R.string.g_true_false_2)
                         else -> baseCheer
                     },
                     celebrate = state.lastAnswerRight, s = s,
@@ -409,7 +409,7 @@ private fun ResultOverlay(state: TrueFalseUiState, best: Int, onPlayAgain: () ->
             emoji = "⚖️",
             accent = ButtonType.GREEN,
             stars = stars,
-            score = stringResource(R.string.balloon_final_score) + ": ${state.score}",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, state.score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
                     GameStatChip("✅", "${state.correctCount}", TRUE_GREEN_DARK)

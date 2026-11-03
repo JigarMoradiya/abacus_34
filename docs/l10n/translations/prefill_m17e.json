@@ -1,0 +1,229 @@
+{
+ "duel_blue": {
+  "fr": "Bleu",
+  "es": "Azul",
+  "pt": "Azul",
+  "tr": "Mavi",
+  "ru": "Синий",
+  "ja": "あお",
+  "th": "น้ำเงิน",
+  "ar": "أزرق"
+ },
+ "duel_pink": {
+  "fr": "Rose",
+  "es": "Rosa",
+  "pt": "Rosa",
+  "tr": "Pembe",
+  "ru": "Розовый",
+  "ja": "ピンク",
+  "th": "ชมพู",
+  "ar": "وردي"
+ },
+ "g_place_value_1": {
+  "fr": "En feu ! 🔥",
+  "es": "¡En llamas! 🔥",
+  "pt": "Pegando fogo! 🔥",
+  "tr": "Ateş gibisin! 🔥",
+  "ru": "Ты в ударе! 🔥",
+  "ja": "もえてるね！ 🔥",
+  "th": "ไฟลุกเลย! 🔥"
+ },
+ "g_speed_compare_1": {
+  "fr": "Génial ! 🎉",
+  "es": "¡Genial! 🎉",
+  "pt": "Incrível! 🎉",
+  "tr": "Harika! 🎉",
+  "ru": "Супер! 🎉",
+  "ja": "すごい！ 🎉",
+  "th": "สุดยอด! 🎉"
+ },
+ "g_speed_compare_3": {
+  "fr": "En feu ! 🔥",
+  "es": "¡En llamas! 🔥",
+  "pt": "Pegando fogo! 🔥",
+  "tr": "Ateş gibisin! 🔥",
+  "ru": "Ты в ударе! 🔥",
+  "ja": "もえてるね！ 🔥",
+  "th": "ไฟลุกเลย! 🔥"
+ },
+ "g_true_false_1": {
+  "fr": "En feu ! 🔥",
+  "es": "¡En llamas! 🔥",
+  "pt": "Pegando fogo! 🔥",
+  "tr": "Ateş gibisin! 🔥",
+  "ru": "Ты в ударе! 🔥",
+  "ja": "もえてるね！ 🔥",
+  "th": "ไฟลุกเลย! 🔥"
+ },
+ "htp_place_value_11": {
+  "fr": "Enchaîne les bonnes réponses pour un meilleur score (🔥 ×2, ×3).",
+  "es": "Acierta varias seguidas para ganar más puntos (🔥 ×2, ×3).",
+  "pt": "Acerte em sequência para ganhar mais pontos (🔥 ×2, ×3).",
+  "tr": "Üst üste doğru bilirsen puanın katlanır (🔥 ×2, ×3).",
+  "ru": "Отвечай правильно подряд — получишь больше очков (🔥 ×2, ×3).",
+  "ja": "つづけて正解すると、もらえるスコアが大きくなるよ (🔥 ×2, ×3)。",
+  "th": "ตอบถูกติดกันจะได้คะแนนมากขึ้น (🔥 ×2, ×3)"
+ },
+ "htp_place_value_12": {
+  "fr": "👨‍👩‍👧 Ce que ça apporte :",
+  "es": "👨‍👩‍👧 Cómo ayuda:",
+  "pt": "👨‍👩‍👧 Como isso ajuda:",
+  "tr": "👨‍👩‍👧 Nasıl Yardımcı Olur:",
+  "ru": "👨‍👩‍👧 Чем это полезно:",
+  "ja": "👨‍👩‍👧 身につく力：",
+  "th": "👨‍👩‍👧 ช่วยอะไรได้บ้าง:"
+ },
+ "htp_place_value_2": {
+  "fr": "👉 Comment ça marche :",
+  "es": "👉 Cómo funciona:",
+  "pt": "👉 Como funciona:",
+  "tr": "👉 Nasıl çalışır:",
+  "ru": "👉 Как это работает:",
+  "ja": "👉 こんなふうにあそぶよ：",
+  "th": "👉 เล่นยังไง:"
+ },
+ "htp_place_value_8": {
+  "fr": "🧒 Exemple :",
+  "es": "🧒 Ejemplo:",
+  "pt": "🧒 Exemplo:",
+  "tr": "🧒 Örnek:",
+  "ru": "🧒 Пример:",
+  "ja": "🧒 れい：",
+  "th": "🧒 ตัวอย่าง:"
+ },
+ "htp_speed_compare_11": {
+  "fr": "👨‍👩‍👧 Ce que ça apporte :",
+  "es": "👨‍👩‍👧 Cómo ayuda:",
+  "pt": "👨‍👩‍👧 Como isso ajuda:",
+  "tr": "👨‍👩‍👧 Nasıl Yardımcı Olur:",
+  "ru": "👨‍👩‍👧 Чем это полезно:",
+  "ja": "👨‍👩‍👧 身につく力：",
+  "th": "👨‍👩‍👧 ช่วยอะไรได้บ้าง:"
+ },
+ "htp_speed_compare_2": {
+  "fr": "👉 Comment ça marche :",
+  "es": "👉 Cómo funciona:",
+  "pt": "👉 Como funciona:",
+  "tr": "👉 Nasıl çalışır:",
+  "ru": "👉 Как это работает:",
+  "ja": "👉 こんなふうにあそぶよ：",
+  "th": "👉 เล่นยังไง:"
+ },
+ "htp_speed_compare_7": {
+  "fr": "🧒 Exemple :",
+  "es": "🧒 Ejemplo:",
+  "pt": "🧒 Exemplo:",
+  "tr": "🧒 Örnek:",
+  "ru": "🧒 Пример:",
+  "ja": "🧒 れい：",
+  "th": "🧒 ตัวอย่าง:"
+ },
+ "htp_sudoku_4": {
+  "fr": "👨‍👩‍👧 Ce que ça apporte :",
+  "es": "👨‍👩‍👧 Cómo ayuda:",
+  "pt": "👨‍👩‍👧 Como isso ajuda:",
+  "tr": "👨‍👩‍👧 Nasıl Yardımcı Olur:",
+  "ru": "👨‍👩‍👧 Чем это полезно:",
+  "ja": "👨‍👩‍👧 身につく力：",
+  "th": "👨‍👩‍👧 ช่วยอะไรได้บ้าง:"
+ },
+ "htp_target_number_1": {
+  "fr": "👉 Comment ça marche :",
+  "es": "👉 Cómo funciona:",
+  "pt": "👉 Como funciona:",
+  "tr": "👉 Nasıl çalışır:",
+  "ru": "👉 Как это работает:",
+  "ja": "👉 こんなふうにあそぶよ：",
+  "th": "👉 เล่นยังไง:"
+ },
+ "htp_target_number_4": {
+  "fr": "🧒 Exemple :",
+  "es": "🧒 Ejemplo:",
+  "pt": "🧒 Exemplo:",
+  "tr": "🧒 Örnek:",
+  "ru": "🧒 Пример:",
+  "ja": "🧒 れい：",
+  "th": "🧒 ตัวอย่าง:"
+ },
+ "htp_target_number_9": {
+  "fr": "👨‍👩‍👧 Ce que ça apporte :",
+  "es": "👨‍👩‍👧 Cómo ayuda:",
+  "pt": "👨‍👩‍👧 Como isso ajuda:",
+  "tr": "👨‍👩‍👧 Nasıl Yardımcı Olur:",
+  "ru": "👨‍👩‍👧 Чем это полезно:",
+  "ja": "👨‍👩‍👧 身につく力：",
+  "th": "👨‍👩‍👧 ช่วยอะไรได้บ้าง:"
+ },
+ "htp_true_false_10": {
+  "fr": "Enchaîne les bonnes réponses pour un meilleur score (🔥 ×2, ×3).",
+  "es": "Acierta varias seguidas para ganar más puntos (🔥 ×2, ×3).",
+  "pt": "Acerte em sequência para ganhar mais pontos (🔥 ×2, ×3).",
+  "tr": "Üst üste doğru bilirsen puanın katlanır (🔥 ×2, ×3).",
+  "ru": "Отвечай правильно подряд — получишь больше очков (🔥 ×2, ×3).",
+  "ja": "つづけて正解すると、もらえるスコアが大きくなるよ (🔥 ×2, ×3)。",
+  "th": "ตอบถูกติดกันจะได้คะแนนมากขึ้น (🔥 ×2, ×3)"
+ },
+ "htp_true_false_11": {
+  "fr": "👨‍👩‍👧 Ce que ça apporte :",
+  "es": "👨‍👩‍👧 Cómo ayuda:",
+  "pt": "👨‍👩‍👧 Como isso ajuda:",
+  "tr": "👨‍👩‍👧 Nasıl Yardımcı Olur:",
+  "ru": "👨‍👩‍👧 Чем это полезно:",
+  "ja": "👨‍👩‍👧 身につく力：",
+  "th": "👨‍👩‍👧 ช่วยอะไรได้บ้าง:"
+ },
+ "htp_true_false_2": {
+  "fr": "👉 Comment ça marche :",
+  "es": "👉 Cómo funciona:",
+  "pt": "👉 Como funciona:",
+  "tr": "👉 Nasıl çalışır:",
+  "ru": "👉 Как это работает:",
+  "ja": "👉 こんなふうにあそぶよ：",
+  "th": "👉 เล่นยังไง:"
+ },
+ "htp_true_false_8": {
+  "fr": "🧒 Exemple :",
+  "es": "🧒 Ejemplo:",
+  "pt": "🧒 Exemplo:",
+  "tr": "🧒 Örnek:",
+  "ru": "🧒 Пример:",
+  "ja": "🧒 れい：",
+  "th": "🧒 ตัวอย่าง:"
+ },
+ "place_value_game": {
+  "fr": "Valeur de position",
+  "es": "Valor posicional",
+  "pt": "Valor Posicional",
+  "tr": "Basamak Değeri",
+  "ru": "Разряды",
+  "ja": "位取り",
+  "th": "ค่าประจำหลัก"
+ },
+ "play_again": {
+  "fr": "Rejouer",
+  "es": "Jugar otra vez",
+  "pt": "Jogar de novo",
+  "tr": "Tekrar Oyna",
+  "ru": "Играть снова",
+  "ja": "もう一度あそぶ",
+  "th": "เล่นอีกครั้ง"
+ },
+ "speed_compare_game": {
+  "fr": "Comparaison express",
+  "es": "Comparación veloz",
+  "pt": "Comparação veloz",
+  "tr": "Hızlı Karşılaştırma",
+  "ru": "Быстрое сравнение",
+  "ja": "スピード比べ",
+  "th": "เปรียบเทียบเร็ว"
+ },
+ "true_false_game": {
+  "fr": "Vrai ou faux ?",
+  "es": "¿Verdadero o falso?",
+  "pt": "Verdadeiro ou falso?",
+  "tr": "Doğru mu Yanlış mı?",
+  "ru": "Верно или нет?",
+  "ja": "○か×か？",
+  "th": "จริงหรือเท็จ?"
+ }
+}

@@ -64,20 +64,20 @@ fun HowToPlayTrueFalseView(
                 }
                 Spacer(Modifier.height(AppDimens.Dimens8))
                 LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(bottom = AppDimens.Dimens16)) {
-                    item { TfBullet("Be the math judge! An equation flashes — is it TRUE or FALSE? ⚖️") }
-                    item { TfHeading("👉 How it works:") }
-                    item { TfBullet("A statement appears, like 7 × 8 = 54.") }
-                    item { TfBullet("Smash ✓ TRUE if the math is right, ✗ FALSE if it's a sneaky lie.") }
-                    item { TfBullet("You have 60 seconds — answer as many as you can!") }
-                    item { TfBullet("Wrong taps show the real answer for a moment, then the next one flies in.") }
-                    item { TfBullet("Careful: lies are only off by a little (54 instead of 56)!") }
-                    item { TfHeading("🧒 Example:") }
-                    item { TfBullet("3 + 4 = 7 → TRUE ✓ … 6 × 2 = 13 → FALSE ✗ (it's 12!)") }
-                    item { TfBullet("Answer right in a row for a bigger score (🔥 ×2, ×3).") }
-                    item { TfHeading("👨‍👩‍👧 How It Helps:") }
-                    item { TfBullet("Builds instant fact recall — no counting, just knowing.") }
-                    item { TfBullet("Near-miss lies train careful checking, not guessing.") }
-                    item { TfBullet("The timer builds confident, quick thinking.") }
+                    item { TfBullet(stringResource(R.string.htp_true_false_1)) }
+                    item { TfHeading(stringResource(R.string.htp_true_false_2)) }
+                    item { TfBullet(stringResource(R.string.htp_true_false_3)) }
+                    item { TfBullet(stringResource(R.string.htp_true_false_4)) }
+                    item { TfBullet(stringResource(R.string.htp_true_false_5)) }
+                    item { TfBullet(stringResource(R.string.htp_true_false_6)) }
+                    item { TfBullet(stringResource(R.string.htp_true_false_7)) }
+                    item { TfHeading(stringResource(R.string.htp_true_false_8)) }
+                    item { TfBullet(stringResource(R.string.htp_true_false_9)) }
+                    item { TfBullet(stringResource(R.string.htp_true_false_10)) }
+                    item { TfHeading(stringResource(R.string.htp_true_false_11)) }
+                    item { TfBullet(stringResource(R.string.htp_true_false_12)) }
+                    item { TfBullet(stringResource(R.string.htp_true_false_13)) }
+                    item { TfBullet(stringResource(R.string.htp_true_false_14)) }
                 }
             }
         }

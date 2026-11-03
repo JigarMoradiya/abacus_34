@@ -73,19 +73,19 @@ fun HowToPlayMissingOperatorView(
                 }
                 Spacer(Modifier.height(AppDimens.Dimens8))
                 LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(bottom = AppDimens.Dimens16)) {
-                    item { MoBullet("An equation appears with a missing sign — which one makes it true?") }
-                    item { MoHeading("👉 How it works:") }
-                    item { MoBullet("You see something like  12  ?  3  =  4.") }
-                    item { MoBullet("Tap the sign  +  −  ×  ÷  that makes both sides equal.") }
-                    item { MoBullet("The sign snaps into the gap — get it right and it glows green!") }
-                    item { MoBullet("Answer fast and keep a streak for bonus points.") }
-                    item { MoHeading("🧒 Example:") }
+                    item { MoBullet(stringResource(R.string.htp_missing_operator_1)) }
+                    item { MoHeading(stringResource(R.string.htp_missing_operator_2)) }
+                    item { MoBullet(stringResource(R.string.htp_missing_operator_3)) }
+                    item { MoBullet(stringResource(R.string.htp_missing_operator_4)) }
+                    item { MoBullet(stringResource(R.string.htp_missing_operator_5)) }
+                    item { MoBullet(stringResource(R.string.htp_missing_operator_6)) }
+                    item { MoHeading(stringResource(R.string.htp_missing_operator_7)) }
                     item { MoBullet("12  ?  3  =  4") }
-                    item { MoBullet("12 ÷ 3 = 4  →  tap  ÷  ✔") }
-                    item { MoHeading("👨‍👩‍👧 How It Helps:") }
-                    item { MoBullet("Builds operation sense — how +, −, × and ÷ change numbers.") }
-                    item { MoBullet("Strengthens mental math by trying each sign.") }
-                    item { MoBullet("Prepares for algebra — finding the missing piece.") }
+                    item { MoBullet(stringResource(R.string.htp_missing_operator_8)) }
+                    item { MoHeading(stringResource(R.string.htp_missing_operator_9)) }
+                    item { MoBullet(stringResource(R.string.htp_missing_operator_10)) }
+                    item { MoBullet(stringResource(R.string.htp_missing_operator_11)) }
+                    item { MoBullet(stringResource(R.string.htp_missing_operator_12)) }
                 }
             }
         }

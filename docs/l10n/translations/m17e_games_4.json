@@ -1,0 +1,866 @@
+{
+ "all_steps": {
+  "fr": "Toutes les étapes",
+  "es": "Todos los pasos",
+  "pt": "Todos os passos",
+  "tr": "Tüm Adımlar",
+  "ru": "Все шаги",
+  "ja": "すべてのステップ",
+  "th": "ทุกขั้นตอน"
+ },
+ "complete_the_target": {
+  "fr": "Atteins la cible",
+  "es": "Completa el objetivo",
+  "pt": "Alcance o alvo",
+  "tr": "Hedefi Tamamla",
+  "ru": "Достигни цели",
+  "ja": "もくひょうを作ろう",
+  "th": "ทำให้ถึงเป้าหมาย"
+ },
+ "continue_previous_game": {
+  "fr": "Continuer la partie précédente ?",
+  "es": "¿Continuar el juego anterior?",
+  "pt": "Continuar o jogo anterior?",
+  "tr": "Önceki Oyuna Devam Edelim mi?",
+  "ru": "Продолжить прошлую игру?",
+  "ja": "前のゲームをつづける？",
+  "th": "เล่นเกมก่อนหน้าต่อไหม?"
+ },
+ "duel_tie": {
+  "fr": "Égalité !",
+  "es": "¡Empate!",
+  "pt": "Deu empate!",
+  "tr": "Berabere!",
+  "ru": "Ничья!",
+  "ja": "引き分けだよ！",
+  "th": "เสมอกัน!"
+ },
+ "duel_two_players": {
+  "fr": "👫 2 joueurs",
+  "es": "👫 2 jugadores",
+  "pt": "👫 2 jogadores",
+  "tr": "👫 2 Oyuncu",
+  "ru": "👫 2 игрока",
+  "ja": "👫 2人であそぶ",
+  "th": "👫 ผู้เล่น 2 คน"
+ },
+ "duel_wins": {
+  "fr": "%1$s gagne !",
+  "es": "¡%1$s gana!",
+  "pt": "%1$s venceu!",
+  "tr": "%1$s kazandı!",
+  "ru": "%1$s побеждает!",
+  "ja": "%1$sのかち！",
+  "th": "%1$s ชนะ!"
+ },
+ "g_place_value_2": {
+  "fr": "Vérifie les positions ! 🧐",
+  "es": "¡Revisa cada posición! 🧐",
+  "pt": "Confira as posições! 🧐",
+  "tr": "Basamakları kontrol et! 🧐",
+  "ru": "Проверь разряды! 🧐",
+  "ja": "位をたしかめよう！ 🧐",
+  "th": "ตรวจหลักดูอีกที! 🧐"
+ },
+ "g_speed_compare_2": {
+  "fr": "Oups ! Réessaie 💪",
+  "es": "¡Ups! Inténtalo otra vez 💪",
+  "pt": "Ops! Tente de novo 💪",
+  "tr": "Hay aksi! Tekrar dene 💪",
+  "ru": "Ой! Ещё раз 💪",
+  "ja": "おしい！ もう一度 💪",
+  "th": "อุ๊ปส์! ลองอีกครั้ง 💪"
+ },
+ "g_sudoku_1": {
+  "fr": "Indice %1$s/%2$s",
+  "es": "Pista %1$s/%2$s",
+  "pt": "Dica %1$s/%2$s",
+  "tr": "İpucu %1$s/%2$s",
+  "ru": "Подсказка %1$s/%2$s",
+  "ja": "ヒント %1$s/%2$s",
+  "th": "คำใบ้ %1$s/%2$s"
+ },
+ "g_sudoku_2": {
+  "fr": "Choisis d'abord une case",
+  "es": "Primero elige una casilla",
+  "pt": "Escolha uma casa primeiro",
+  "tr": "Önce bir kutu seç",
+  "ru": "Сначала выбери клетку",
+  "ja": "先にマスをえらんでね",
+  "th": "เลือกช่องก่อนนะ"
+ },
+ "g_sudoku_3": {
+  "fr": "Choisis d'abord une case",
+  "es": "Primero elige una casilla",
+  "pt": "Escolha uma casa primeiro",
+  "tr": "Önce bir kutu seç",
+  "ru": "Сначала выбери клетку",
+  "ja": "先にマスをえらんでね",
+  "th": "เลือกช่องก่อนนะ"
+ },
+ "g_sudoku_4": {
+  "fr": "Plus d'indices disponibles",
+  "es": "No quedan más pistas",
+  "pt": "Não há mais dicas",
+  "tr": "Başka ipucu kalmadı",
+  "ru": "Подсказки закончились",
+  "ja": "もうヒントはないよ",
+  "th": "ไม่มีคำใบ้เหลือแล้ว"
+ },
+ "g_sudoku_5": {
+  "fr": "Vérifie tous les chiffres, quelque chose cloche 🤔",
+  "es": "Revisa todos los números, algo no está bien 🤔",
+  "pt": "Confira todos os números, tem algo errado 🤔",
+  "tr": "Bütün sayıları kontrol et, bir yanlışlık var 🤔",
+  "ru": "Проверь все числа: где-то ошибка 🤔",
+  "ja": "ぜんぶの数を見なおしてね。どこかがまちがっているよ 🤔",
+  "th": "ลองตรวจตัวเลขทั้งหมดดูนะ มีบางอย่างผิดอยู่ 🤔"
+ },
+ "g_target_number_1": {
+  "fr": "Tu as déjà choisi ce nombre. Prends-en un autre.",
+  "es": "Ya elegiste este número. Elige otro.",
+  "pt": "Você já escolheu este número. Escolha outro.",
+  "tr": "Bu sayıyı zaten seçtin. Başka bir sayı seç.",
+  "ru": "Это число уже выбрано. Выбери другое.",
+  "ja": "この数はもうえらんでいるよ。ほかの数をえらんでね。",
+  "th": "เลือกเลขนี้ไปแล้ว เลือกตัวอื่นนะ"
+ },
+ "g_target_number_2": {
+  "fr": "Choisis d'abord une opération !",
+  "es": "¡Primero elige una operación!",
+  "pt": "Escolha uma operação primeiro!",
+  "tr": "Önce bir işlem seç!",
+  "ru": "Сначала выбери действие!",
+  "ja": "先に記号をえらんでね！",
+  "th": "เลือกเครื่องหมายก่อนนะ!"
+ },
+ "g_target_number_3": {
+  "fr": "Choisis d'abord un nombre !",
+  "es": "¡Primero elige un número!",
+  "pt": "Escolha um número primeiro!",
+  "tr": "Önce bir sayı seç!",
+  "ru": "Сначала выбери число!",
+  "ja": "先に数をえらんでね！",
+  "th": "เลือกตัวเลขก่อนนะ!"
+ },
+ "g_target_number_4": {
+  "fr": "Plus d'indices disponibles.",
+  "es": "No quedan más pistas.",
+  "pt": "Não há mais dicas.",
+  "tr": "Başka ipucu kalmadı.",
+  "ru": "Подсказки закончились.",
+  "ja": "もうヒントはないよ。",
+  "th": "ไม่มีคำใบ้เหลือแล้ว"
+ },
+ "g_target_number_5": {
+  "fr": "Indice : %1$s",
+  "es": "Pista: %1$s",
+  "pt": "Dica: %1$s",
+  "tr": "İpucu: %1$s",
+  "ru": "Подсказка: %1$s",
+  "ja": "ヒント：%1$s",
+  "th": "คำใบ้: %1$s"
+ },
+ "g_target_number_6": {
+  "fr": "Tous les indices sont déjà affichés",
+  "es": "Ya viste todas las pistas",
+  "pt": "Todas as dicas já foram mostradas",
+  "tr": "Bütün ipuçları gösterildi",
+  "ru": "Все подсказки уже показаны",
+  "ja": "ヒントはぜんぶ出したよ",
+  "th": "แสดงคำใบ้ครบแล้ว"
+ },
+ "g_target_number_7": {
+  "fr": "Indice : %1$s",
+  "es": "Pista: %1$s",
+  "pt": "Dica: %1$s",
+  "tr": "İpucu: %1$s",
+  "ru": "Подсказка: %1$s",
+  "ja": "ヒント：%1$s",
+  "th": "คำใบ้: %1$s"
+ },
+ "g_target_number_8": {
+  "fr": "🎉 Parfait ! Tu as atteint %1$s",
+  "es": "🎉 ¡Perfecto! Llegaste a %1$s",
+  "pt": "🎉 Perfeito! Você chegou a %1$s",
+  "tr": "🎉 Mükemmel! %1$s sayısına ulaştın",
+  "ru": "🎉 Идеально! Получилось %1$s",
+  "ja": "🎉 かんぺき！ %1$sになったよ",
+  "th": "🎉 เป๊ะเลย! คุณได้ %1$s แล้ว"
+ },
+ "g_target_number_9": {
+  "fr": "❌ Résultat final : %1$s, la cible était %2$s",
+  "es": "❌ Resultado final %1$s, el objetivo era %2$s",
+  "pt": "❌ Resultado final %1$s, o alvo era %2$s",
+  "tr": "❌ Son sonuç %1$s, hedef %2$s idi",
+  "ru": "❌ Итог: %1$s, а цель была %2$s",
+  "ja": "❌ 結果は%1$s、もくひょうは%2$sだったよ",
+  "th": "❌ ผลลัพธ์สุดท้าย %1$s เป้าหมายคือ %2$s"
+ },
+ "g_true_false_2": {
+  "fr": "Oups ! Regarde bien 👀",
+  "es": "¡Ups! Mira bien 👀",
+  "pt": "Ops! Olhe bem 👀",
+  "tr": "Hay aksi! Dikkatli bak 👀",
+  "ru": "Ой! Смотри внимательно 👀",
+  "ja": "おっと！ よく見てね 👀",
+  "th": "อุ๊ปส์! ดูให้ดีๆ 👀"
+ },
+ "hide_options": {
+  "fr": "Masquer les options",
+  "es": "Ocultar opciones",
+  "pt": "Ocultar opções",
+  "tr": "Seçenekleri gizle",
+  "ru": "Скрыть параметры",
+  "ja": "入る数をかくす",
+  "th": "ซ่อนตัวเลือก"
+ },
+ "hint_count": {
+  "fr": "Indice %1$d/%2$d",
+  "es": "Pista %1$d/%2$d",
+  "pt": "Dica %1$d/%2$d",
+  "tr": "İpucu %1$d/%2$d",
+  "ru": "Подсказка %1$d/%2$d",
+  "ja": "ヒント %1$d/%2$d",
+  "th": "คำใบ้ %1$d/%2$d"
+ },
+ "htp_place_value_1": {
+  "fr": "Construis le nombre avec ses morceaux ! 🏗️",
+  "es": "¡Arma el número con sus piezas! 🏗️",
+  "pt": "Monte o número com as peças! 🏗️",
+  "tr": "Sayıyı parçalarından oluştur! 🏗️",
+  "ru": "Собери число из частей! 🏗️",
+  "ja": "パーツから数を作ろう！ 🏗️",
+  "th": "ประกอบตัวเลขจากชิ้นส่วน! 🏗️"
+ },
+ "htp_place_value_10": {
+  "fr": "500 + 6 → tape 5, 0, 6 → 506 ✔ (le zéro vient à la rescousse !)",
+  "es": "500 + 6 → escribe 5, 0, 6 → 506 ✔ (¡el cero salva el día!)",
+  "pt": "500 + 6 → digite 5, 0, 6 → 506 ✔ (o zero salva o dia!)",
+  "tr": "500 + 6 → 5, 0, 6 yaz → 506 ✔ (sıfır günü kurtarır!)",
+  "ru": "500 + 6 → набери 5, 0, 6 → 506 ✔ (ноль выручает!)",
+  "ja": "500 + 6 → 5, 0, 6と入力 → 506 ✔ (0が大かつやく！)",
+  "th": "500 + 6 → พิมพ์ 5, 0, 6 → 506 ✔ (เลขศูนย์ช่วยไว้ได้!)"
+ },
+ "htp_place_value_13": {
+  "fr": "La valeur de position est la base de TOUS les calculs au boulier.",
+  "es": "El valor posicional es la base de TODAS las mates con ábaco.",
+  "pt": "O valor posicional é a base de TODA a matemática do ábaco.",
+  "tr": "Basamak değeri, abaküsle yapılan TÜM matematiğin temelidir.",
+  "ru": "Знание разрядов — основа ВСЕЙ математики на абакусе.",
+  "ja": "位取りは、そろばんの計算すべての土台です。",
+  "th": "ค่าประจำหลักคือพื้นฐานของการคิดเลขลูกคิดทุกอย่าง"
+ },
+ "htp_place_value_14": {
+  "fr": "Les nombres avec un zéro piège développent une vraie compréhension, pas seulement le comptage.",
+  "es": "Los números con trampa de cero desarrollan una comprensión real, no solo contar.",
+  "pt": "As pegadinhas do zero criam compreensão de verdade, não só contagem.",
+  "tr": "Sıfır tuzaklı sayılar, sadece saymayı değil gerçek anlamayı geliştirir.",
+  "ru": "Числа с «ловушкой-нулём» учат понимать, а не просто считать.",
+  "ja": "0がひそむ数の問題が、ただ数えるだけでなく、本当の理解を育てます。",
+  "th": "เลขที่มีกับดักเลขศูนย์ช่วยสร้างความเข้าใจจริงๆ ไม่ใช่แค่นับ"
+ },
+ "htp_place_value_15": {
+  "fr": "Aux niveaux supérieurs, les nombres montent à 4 et 5 chiffres.",
+  "es": "En los niveles altos llegas a números de 4 y 5 cifras.",
+  "pt": "Nos níveis mais altos, os números chegam a 4 e 5 algarismos.",
+  "tr": "Üst seviyelerde sayılar 4 ve 5 basamağa kadar büyür.",
+  "ru": "На высоких уровнях появляются 4- и 5-значные числа.",
+  "ja": "上のレベルでは、4けた、5けたの数も登場します。",
+  "th": "ด่านที่ยากขึ้นจะมีเลข 4 และ 5 หลัก"
+ },
+ "htp_place_value_3": {
+  "fr": "Les pastilles violettes montrent un nombre en morceaux, comme 400 + 70 + 2.",
+  "es": "Las fichas moradas muestran un número en piezas, como 400 + 70 + 2.",
+  "pt": "As fichas roxas mostram um número em peças, como 400 + 70 + 2.",
+  "tr": "Mor karolar bir sayıyı parçalar halinde gösterir, örneğin 400 + 70 + 2.",
+  "ru": "Фиолетовые фишки показывают число по частям, например 400 + 70 + 2.",
+  "ja": "むらさきのチップに、数がパーツに分かれて出るよ。たとえば 400 + 70 + 2。",
+  "th": "แผ่นสีม่วงแสดงตัวเลขที่แยกเป็นชิ้นส่วน เช่น 400 + 70 + 2"
+ },
+ "htp_place_value_4": {
+  "fr": "Tape le nombre entier sur le clavier : 472 !",
+  "es": "¡Escribe el número completo en el teclado: 472!",
+  "pt": "Digite o número inteiro no teclado: 472!",
+  "tr": "Sayının tamamını tuş takımıyla yaz: 472!",
+  "ru": "Набери всё число на клавиатуре: 472!",
+  "ja": "キーパッドで、数をまるごと入れてね：472！",
+  "th": "พิมพ์เลขทั้งหมดบนแป้นตัวเลข: 472!"
+ },
+ "htp_place_value_5": {
+  "fr": "Chaque case indique sa position : U = unités, D = dizaines, C = centaines, M = milliers.",
+  "es": "Cada espacio muestra su posición: U = unidades, D = decenas, C = centenas, UM = millares.",
+  "pt": "Cada espaço mostra sua posição: U = unidades, D = dezenas, C = centenas, M = milhares.",
+  "tr": "Her kutu kendi basamağını gösterir: B = birler, O = onlar, Y = yüzler, Bn = binler.",
+  "ru": "Каждая ячейка показывает свой разряд: Е = единицы, Д = десятки, С = сотни, Т = тысячи.",
+  "ja": "それぞれの枠に位が出るよ：一 = 一の位、十 = 十の位、百 = 百の位、千 = 千の位。",
+  "th": "แต่ละช่องบอกหลักของมัน: หน่วย, สิบ, ร้อย, พัน"
+ },
+ "htp_place_value_6": {
+  "fr": "Attention aux morceaux manquants ! 400 + 2 fait 402 : n'oublie pas le ZÉRO aux dizaines !",
+  "es": "¡Ojo con las piezas que faltan! 400 + 2 es 402: ¡no olvides el CERO en las decenas!",
+  "pt": "Atenção às peças que faltam! 400 + 2 é 402. Não esqueça o ZERO nas dezenas!",
+  "tr": "Eksik parçalara dikkat! 400 + 2, 402 eder. Onlar basamağındaki SIFIRI unutma!",
+  "ru": "Следи за пропущенными частями! 400 + 2 — это 402. Не забудь НОЛЬ в разряде десятков!",
+  "ja": "ぬけているパーツに気をつけて！ 400 + 2 は 402 だよ。十の位の0をわすれずに！",
+  "th": "ระวังชิ้นส่วนที่หายไป! 400 + 2 คือ 402 อย่าลืมเลขศูนย์ในหลักสิบนะ!"
+ },
+ "htp_place_value_7": {
+  "fr": "Continue jusqu'à la fin du chrono.",
+  "es": "Sigue respondiendo hasta que se acabe el tiempo.",
+  "pt": "Continue respondendo até o tempo acabar.",
+  "tr": "Süre bitene kadar cevaplamaya devam et.",
+  "ru": "Отвечай, пока не закончится время.",
+  "ja": "タイマーが切れるまで、どんどん答えよう。",
+  "th": "ตอบต่อไปเรื่อยๆ จนกว่าเวลาจะหมด"
+ },
+ "htp_place_value_9": {
+  "fr": "300 + 50 + 9 → tape 3, 5, 9 → 359 ✔",
+  "es": "300 + 50 + 9 → escribe 3, 5, 9 → 359 ✔",
+  "pt": "300 + 50 + 9 → digite 3, 5, 9 → 359 ✔",
+  "tr": "300 + 50 + 9 → 3, 5, 9 yaz → 359 ✔",
+  "ru": "300 + 50 + 9 → набери 3, 5, 9 → 359 ✔",
+  "ja": "300 + 50 + 9 → 3, 5, 9と入力 → 359 ✔",
+  "th": "300 + 50 + 9 → พิมพ์ 3, 5, 9 → 359 ✔"
+ },
+ "htp_speed_compare_1": {
+  "fr": "Deux cartes apparaissent sur une balance : quel côté est le plus grand ?",
+  "es": "Aparecen dos tarjetas en una balanza: ¿qué lado es mayor?",
+  "pt": "Dois cartões aparecem numa balança: qual lado é maior?",
+  "tr": "Terazide iki kart belirir, hangi taraf daha büyük?",
+  "ru": "На весах появляются две карточки: какая сторона больше?",
+  "ja": "てんびんに2まいのカードがのるよ。どっちが大きい？",
+  "th": "การ์ด 2 ใบวางบนตาชั่ง ฝั่งไหนมากกว่ากัน?"
+ },
+ "htp_speed_compare_10": {
+  "fr": "12 < 13  →  touche  <  ✔",
+  "es": "12 < 13  →  toca  <  ✔",
+  "pt": "12 < 13  →  toque em  <  ✔",
+  "tr": "12 < 13  →  <  işaretine dokun  ✔",
+  "ru": "12 < 13  →  нажми  <  ✔",
+  "ja": "12 < 13  →  <  をタップ  ✔",
+  "th": "12 < 13  →  แตะ  <  ✔"
+ },
+ "htp_speed_compare_12": {
+  "fr": "Développe le sens du nombre : comparer des quantités et des sommes d'un coup d'œil.",
+  "es": "Desarrolla el sentido numérico: comparar cantidades y sumas de un vistazo.",
+  "pt": "Desenvolve o senso numérico: comparar quantidades e somas num relance.",
+  "tr": "Sayı duygusunu geliştirir: miktarları ve toplamları tek bakışta karşılaştırmak.",
+  "ru": "Развивает чувство числа: учит сравнивать количества и суммы с первого взгляда.",
+  "ja": "数の感覚が育ちます。数の大きさや合計を、ひと目でくらべられるようになります。",
+  "th": "สร้างความเข้าใจเรื่องจำนวน มองปราดเดียวก็เปรียบเทียบจำนวนและผลรวมได้"
+ },
+ "htp_speed_compare_13": {
+  "fr": "Renforce l'addition mentale pour comparer vite.",
+  "es": "Fortalece la suma mental para comparar rápido.",
+  "pt": "Fortalece a soma mental para comparar rápido.",
+  "tr": "Hızlı karşılaştırmak için zihinden toplamayı güçlendirir.",
+  "ru": "Укрепляет сложение в уме, чтобы сравнивать быстро.",
+  "ja": "暗算のたし算の力が強くなり、すばやくくらべられるようになります。",
+  "th": "ฝึกบวกเลขในใจให้คล่อง เพื่อเปรียบเทียบได้เร็ว"
+ },
+ "htp_speed_compare_14": {
+  "fr": "Apprend les signes <, = et > grâce à une balance qui penche.",
+  "es": "Enseña los símbolos <, = y > con una balanza que se inclina.",
+  "pt": "Ensina os símbolos <, = e > com uma balança que pende.",
+  "tr": "Eğilen bir terazi ile <, = ve > işaretlerini öğretir.",
+  "ru": "Учит знакам <, = и > с помощью качающихся весов.",
+  "ja": "かたむくてんびんで、<、=、> の記号が自然に身につきます。",
+  "th": "สอนเครื่องหมาย <, = และ > ผ่านตาชั่งที่เอียงไปมา"
+ },
+ "htp_speed_compare_3": {
+  "fr": "Regarde les valeurs à gauche et à droite.",
+  "es": "Mira los valores de la izquierda y de la derecha.",
+  "pt": "Olhe os valores da esquerda e da direita.",
+  "tr": "Sol ve sağdaki değerlere bak.",
+  "ru": "Посмотри на значения слева и справа.",
+  "ja": "左と右の数を見よう。",
+  "th": "ดูค่าทางซ้ายและทางขวา"
+ },
+ "htp_speed_compare_4": {
+  "fr": "Touche  <  si la gauche est plus petite,  >  si elle est plus grande,  =  si elles sont égales.",
+  "es": "Toca  <  si la izquierda es menor,  >  si la izquierda es mayor,  =  si son iguales.",
+  "pt": "Toque em  <  se o da esquerda for menor,  >  se for maior,  =  se forem iguais.",
+  "tr": "Sol taraf küçükse  <  büyükse  >  eşitse  =  işaretine dokun.",
+  "ru": "Нажми  <  — слева меньше,  >  — слева больше,  =  — поровну.",
+  "ja": "左が小さいなら  <  を、大きいなら  >  を、同じなら  =  をタップしてね。",
+  "th": "แตะ  <  ถ้าซ้ายน้อยกว่า  >  ถ้าซ้ายมากกว่า  =  ถ้าเท่ากัน"
+ },
+ "htp_speed_compare_5": {
+  "fr": "La balance penche du côté le plus lourd pour montrer la réponse !",
+  "es": "¡La balanza se inclina hacia el lado más pesado para mostrar la respuesta!",
+  "pt": "A balança pende para o lado mais pesado e mostra a resposta!",
+  "tr": "Terazi, cevabı göstermek için ağır olan tarafa eğilir!",
+  "ru": "Весы наклонятся в сторону тяжёлой чаши — это и есть ответ!",
+  "ja": "答えは、てんびんが重いほうにかたむいて教えてくれるよ！",
+  "th": "ตาชั่งจะเอียงไปทางฝั่งที่หนักกว่าเพื่อบอกคำตอบ!"
+ },
+ "htp_speed_compare_6": {
+  "fr": "Réponds vite et enchaîne les bonnes réponses pour gagner des points bonus.",
+  "es": "Responde rápido y mantén una racha para ganar puntos extra.",
+  "pt": "Responda rápido e acerte em sequência para ganhar pontos extras.",
+  "tr": "Hızlı cevap ver, seriyi sürdür, bonus puan kazan.",
+  "ru": "Отвечай быстро и правильно подряд, и получишь бонусные очки.",
+  "ja": "はやく答えて、つづけて正解すると、ボーナスポイントがもらえるよ。",
+  "th": "ตอบให้เร็วและตอบถูกติดกัน รับคะแนนโบนัส"
+ },
+ "htp_speed_compare_8": {
+  "fr": "Gauche : 7 + 5  (= 12)",
+  "es": "Izquierda: 7 + 5  (= 12)",
+  "pt": "Esquerda: 7 + 5  (= 12)",
+  "tr": "Sol: 7 + 5  (= 12)",
+  "ru": "Слева: 7 + 5  (= 12)",
+  "ja": "左：7 + 5  (= 12)",
+  "th": "ซ้าย: 7 + 5  (= 12)"
+ },
+ "htp_speed_compare_9": {
+  "fr": "Droite : 13",
+  "es": "Derecha: 13",
+  "pt": "Direita: 13",
+  "tr": "Sağ: 13",
+  "ru": "Справа: 13",
+  "ja": "右：13",
+  "th": "ขวา: 13"
+ },
+ "htp_sudoku_1": {
+  "fr": "Il y a plusieurs tailles de grille :",
+  "es": "Hay distintos tamaños de cuadrícula:",
+  "pt": "Temos grades de vários tamanhos:",
+  "tr": "Farklı ızgara boyutları var:",
+  "ru": "Есть сетки разных размеров:",
+  "ja": "いろいろな大きさのパズルがあるよ：",
+  "th": "มีตารางให้เล่นหลายขนาด:"
+ },
+ "htp_sudoku_2": {
+  "fr": "👉 Comment on joue :",
+  "es": "👉 Cómo jugar:",
+  "pt": "👉 Como você joga:",
+  "tr": "👉 Nasıl oynanır:",
+  "ru": "👉 Как играть:",
+  "ja": "👉 こんなふうにあそぶよ：",
+  "th": "👉 เล่นยังไง:"
+ },
+ "htp_sudoku_3": {
+  "fr": "Le Sudoku est un jeu de motifs secrets avec des nombres, où tu deviens un petit détective 🕵️‍♂️.",
+  "es": "El Sudoku es como un juego secreto de patrones numéricos en el que te conviertes en un pequeño detective 🕵️‍♂️.",
+  "pt": "O Sudoku é um jogo secreto de padrões numéricos em que você vira um pequeno detetive 🕵️‍♂️.",
+  "tr": "Sudoku, küçük bir dedektif olduğun gizli bir sayı örüntüsü oyunu gibidir 🕵️‍♂️.",
+  "ru": "Судоку — как игра с тайным узором из чисел, в которой ты становишься маленьким детективом 🕵️‍♂️.",
+  "ja": "数独は、ひみつの数のならびをさがすゲーム。きみは小さなたんていになるよ 🕵️‍♂️。",
+  "th": "ซูโดกุคือเกมไขความลับของตัวเลข ที่จะทำให้คุณเป็นนักสืบตัวน้อย 🕵️‍♂️"
+ },
+ "htp_sudoku_5": {
+  "fr": "Le Sudoku apprend à réfléchir, pas seulement à calculer.",
+  "es": "El Sudoku enseña a pensar, no solo a calcular.",
+  "pt": "O Sudoku ensina a pensar, não só a calcular.",
+  "tr": "Sudoku sadece hesaplamayı değil, nasıl düşüneceğini de öğretir.",
+  "ru": "Судоку учит думать, а не только считать.",
+  "ja": "数独は、計算のしかただけでなく、考えかたも教えてくれます。",
+  "th": "ซูโดกุสอนให้รู้จักคิด ไม่ใช่แค่คำนวณ"
+ },
+ "htp_sudoku_6": {
+  "fr": "❤️ Pourquoi ce jeu est important :",
+  "es": "❤️ Por qué importa este juego:",
+  "pt": "❤️ Por que este jogo é importante:",
+  "tr": "❤️ Bu Oyun Neden Önemli:",
+  "ru": "❤️ Почему эта игра важна:",
+  "ja": "❤️ このゲームが大切な理由：",
+  "th": "❤️ ทำไมเกมนี้สำคัญ:"
+ },
+ "htp_sudoku_7": {
+  "fr": "Il soutient l'apprentissage des maths à un niveau plus avancé, car il entraîne le cerveau à organiser l'information, repérer des motifs et résoudre des problèmes avec logique.",
+  "es": "Apoya el aprendizaje de mates de nivel más alto, porque entrena al cerebro para organizar información, detectar patrones y resolver problemas con lógica.",
+  "pt": "Ajuda no aprendizado de matemática mais avançada, pois treina o cérebro a organizar informações, perceber padrões e resolver problemas com lógica.",
+  "tr": "Beyni bilgileri düzenlemeye, örüntüleri fark etmeye ve problemleri mantıkla çözmeye alıştırdığı için üst düzey matematik öğrenmeyi destekler.",
+  "ru": "Игра помогает изучать более сложную математику: мозг учится упорядочивать информацию, замечать закономерности и логично решать задачи.",
+  "ja": "情報を整理し、パターンを見つけ、筋道を立てて問題を解く力がきたえられるので、より高度な算数の学びを支えます。",
+  "th": "ช่วยหนุนการเรียนคณิตศาสตร์ระดับสูงขึ้น เพราะฝึกสมองให้จัดระเบียบข้อมูล มองเห็นแบบรูป และแก้ปัญหาอย่างมีเหตุผล"
+ },
+ "htp_sudoku_8": {
+  "fr": "Le Sudoku n'est pas une question de vitesse : c'est de la réflexion intelligente. Il transforme les enfants en petits mathématiciens !",
+  "es": "El Sudoku no va de velocidad, sino de pensar con inteligencia. ¡Convierte a los niños en pequeños matemáticos!",
+  "pt": "No Sudoku, o importante não é a velocidade, é pensar bem. Ele transforma as crianças em pequenos matemáticos!",
+  "tr": "Sudoku hızla değil, akıllıca düşünmekle ilgilidir. Çocukları küçük birer matematikçiye dönüştürür!",
+  "ru": "Судоку — не про скорость, а про умное мышление. Оно превращает детей в маленьких математиков!",
+  "ja": "数独は、速さではなく、かしこく考えるゲームです。子どもたちを小さな数学者にしてくれます！",
+  "th": "ซูโดกุไม่ได้วัดกันที่ความเร็ว แต่วัดกันที่การคิดอย่างชาญฉลาด เปลี่ยนเด็กๆ ให้เป็นนักคณิตศาสตร์ตัวน้อย!"
+ },
+ "htp_target_number_10": {
+  "fr": "Ce jeu donne du sens aux opérations, au lieu de les apprendre par cœur.",
+  "es": "Este juego da sentido a las operaciones, no solo las memoriza.",
+  "pt": "Este jogo dá sentido às operações, em vez de só decorá-las.",
+  "tr": "Bu oyun, matematik işlemlerini ezberletmek yerine anlamlı hale getirir.",
+  "ru": "В этой игре действия с числами обретают смысл, а не просто заучиваются.",
+  "ja": "計算を、ただ暗記するのではなく、意味を考えながら使えるようになります。",
+  "th": "เกมนี้ทำให้การคำนวณมีความหมาย ไม่ใช่แค่ท่องจำ"
+ },
+ "htp_target_number_11": {
+  "fr": "❤️ Pourquoi ce jeu est important :",
+  "es": "❤️ Por qué importa este juego:",
+  "pt": "❤️ Por que este jogo é importante:",
+  "tr": "❤️ Bu Oyun Neden Önemli:",
+  "ru": "❤️ Почему эта игра важна:",
+  "ja": "❤️ このゲームが大切な理由：",
+  "th": "❤️ ทำไมเกมนี้สำคัญ:"
+ },
+ "htp_target_number_12": {
+  "fr": "Il entraîne le cerveau à réfléchir :",
+  "es": "Entrena al cerebro para pensar:",
+  "pt": "Treina o cérebro a pensar:",
+  "tr": "Beyni şöyle düşünmeye alıştırır:",
+  "ru": "Игра учит мозг думать:",
+  "ja": "こんなふうに考える力がつきます：",
+  "th": "ฝึกให้สมองคิด:"
+ },
+ "htp_target_number_13": {
+  "fr": "C'est un premier pas essentiel vers l'algèbre et la résolution de problèmes.",
+  "es": "Es un camino temprano esencial hacia el álgebra y el dominio de la resolución de problemas.",
+  "pt": "É um caminho inicial essencial rumo à álgebra e à habilidade de resolver problemas.",
+  "tr": "Bu, cebire ve problem çözmede ustalığa giden önemli bir ilk adımdır.",
+  "ru": "Это важный первый шаг к алгебре и умению решать задачи.",
+  "ja": "代数や問題解決力につながる、大切な最初の一歩です。",
+  "th": "นี่คือก้าวแรกที่สำคัญสู่พีชคณิตและความเชี่ยวชาญในการแก้ปัญหา"
+ },
+ "htp_target_number_2": {
+  "fr": "➕ Addition, ➖ Soustraction, ✖️ Multiplication, ➗ Division",
+  "es": "➕ Suma, ➖ Resta, ✖️ Multiplicación, ➗ División",
+  "pt": "➕ Adição, ➖ Subtração, ✖️ Multiplicação, ➗ Divisão",
+  "tr": "➕ Toplama, ➖ Çıkarma, ✖️ Çarpma, ➗ Bölme",
+  "ru": "➕ Сложение, ➖ Вычитание, ✖️ Умножение, ➗ Деление",
+  "ja": "➕ たし算、➖ ひき算、✖️ かけ算、➗ わり算",
+  "th": "➕ บวก, ➖ ลบ, ✖️ คูณ, ➗ หาร"
+ },
+ "htp_target_number_3": {
+  "fr": "Combine les nombres donnés avec ces opérations pour obtenir exactement la cible.",
+  "es": "Combina los números dados con estas operaciones para lograr el objetivo exacto.",
+  "pt": "Combine os números dados com essas operações para chegar exatamente ao alvo.",
+  "tr": "Hedef sayıyı tam olarak bulmak için verilen sayıları bu işlemlerle birleştir.",
+  "ru": "Соединяй данные числа этими действиями, чтобы получить ровно число-цель.",
+  "ja": "出てきた数をこれらの計算でつなげて、ぴったりもくひょうの数にしよう。",
+  "th": "ใช้เครื่องหมายเหล่านี้รวมตัวเลขที่ให้มา เพื่อให้ได้เลขเป้าหมายพอดีเป๊ะ"
+ },
+ "htp_target_number_5": {
+  "fr": "Cible : 26",
+  "es": "Objetivo: 26",
+  "pt": "Alvo: 26",
+  "tr": "Hedef: 26",
+  "ru": "Цель: 26",
+  "ja": "もくひょう：26",
+  "th": "เป้าหมาย: 26"
+ },
+ "htp_target_number_6": {
+  "fr": "Nombres : 4, 2 et 6",
+  "es": "Números: 4, 2 y 6",
+  "pt": "Números: 4, 2 e 6",
+  "tr": "Sayılar: 4, 2 ve 6",
+  "ru": "Числа: 4, 2 и 6",
+  "ja": "数：4, 2, 6",
+  "th": "ตัวเลข: 4, 2 และ 6"
+ },
+ "htp_target_number_7": {
+  "fr": "Opérations : +  -  ×",
+  "es": "Operaciones: +  -  ×",
+  "pt": "Operações: +  -  ×",
+  "tr": "İşlemler: +  -  ×",
+  "ru": "Действия: +  -  ×",
+  "ja": "つかう記号：+  -  ×",
+  "th": "เครื่องหมาย : +  -  ×"
+ },
+ "htp_target_number_8": {
+  "fr": "Tu peux faire :",
+  "es": "Puedes hacer:",
+  "pt": "Você pode fazer:",
+  "tr": "Şunu yapabilirsin:",
+  "ru": "Можно сделать так:",
+  "ja": "こんなふうにできるよ：",
+  "th": "ทำได้แบบนี้:"
+ },
+ "htp_true_false_1": {
+  "fr": "Deviens le juge des maths ! Une équation s'affiche : est-elle VRAIE ou FAUSSE ? ⚖️",
+  "es": "¡Sé el juez de las mates! Aparece una ecuación: ¿es VERDADERA o FALSA? ⚖️",
+  "pt": "Seja o juiz da matemática! Uma equação aparece: ela é VERDADEIRA ou FALSA? ⚖️",
+  "tr": "Matematik hakemi sen ol! Bir denklem parlar: DOĞRU mu YANLIŞ mı? ⚖️",
+  "ru": "Стань математическим судьёй! Вспыхивает равенство: оно ВЕРНО или НЕВЕРНО? ⚖️",
+  "ja": "算数のさいばんかんになろう！ 式がパッと出るよ。ほんとう？ それともウソ？ ⚖️",
+  "th": "มาเป็นผู้พิพากษาเลข! สมการแวบขึ้นมา จริงหรือเท็จ? ⚖️"
+ },
+ "htp_true_false_12": {
+  "fr": "Développe le rappel instantané des résultats : on ne compte pas, on sait.",
+  "es": "Desarrolla el recuerdo inmediato de datos: sin contar, solo sabiendo.",
+  "pt": "Desenvolve a memória das contas na hora: sem contar, só saber.",
+  "tr": "Bilgiyi anında hatırlamayı geliştirir: saymak yok, sadece bilmek.",
+  "ru": "Развивает мгновенное знание фактов: не считать, а просто знать.",
+  "ja": "計算の答えをすぐ思い出す力が育ちます。数えずに、わかる力です。",
+  "th": "ฝึกให้นึกคำตอบได้ทันที ไม่ต้องนับ แค่รู้เลย"
+ },
+ "htp_true_false_13": {
+  "fr": "Les faux presque justes entraînent à vérifier avec soin, pas à deviner.",
+  "es": "Las mentiras casi correctas entrenan a revisar con cuidado, no a adivinar.",
+  "pt": "As mentirinhas quase certas treinam a conferência atenta, e não o chute.",
+  "tr": "Doğruya yakın yalanlar, tahmin etmeyi değil dikkatle kontrol etmeyi öğretir.",
+  "ru": "Почти верные обманки учат внимательно проверять, а не угадывать.",
+  "ja": "おしいウソが、あてずっぽうではなく、ていねいに確かめる力を育てます。",
+  "th": "คำโกหกที่ผิดไปนิดเดียวช่วยฝึกให้ตรวจอย่างรอบคอบ ไม่ใช่เดา"
+ },
+ "htp_true_false_14": {
+  "fr": "Le chrono apprend à réfléchir vite, avec confiance.",
+  "es": "El cronómetro desarrolla un pensamiento rápido y seguro.",
+  "pt": "O cronômetro desenvolve um raciocínio rápido e confiante.",
+  "tr": "Süre, kendinden emin ve hızlı düşünmeyi geliştirir.",
+  "ru": "Таймер развивает уверенное и быстрое мышление.",
+  "ja": "タイマーが、自信をもってすばやく考える力を育てます。",
+  "th": "การจับเวลาช่วยสร้างการคิดเร็วอย่างมั่นใจ"
+ },
+ "htp_true_false_3": {
+  "fr": "Une affirmation apparaît, comme 7 × 8 = 54.",
+  "es": "Aparece una afirmación, como 7 × 8 = 54.",
+  "pt": "Aparece uma afirmação, como 7 × 8 = 54.",
+  "tr": "Bir ifade belirir, örneğin 7 × 8 = 54.",
+  "ru": "Появляется равенство, например 7 × 8 = 54.",
+  "ja": "7 × 8 = 54 のような式が出るよ。",
+  "th": "สมการจะขึ้นมา เช่น 7 × 8 = 54"
+ },
+ "htp_true_false_4": {
+  "fr": "Appuie sur ✓ VRAI si le calcul est juste, sur ✗ FAUX si c'est un mensonge sournois.",
+  "es": "Toca ✓ VERDADERO si la cuenta está bien, ✗ FALSO si es una mentira astuta.",
+  "pt": "Aperte ✓ VERDADEIRO se a conta estiver certa, ✗ FALSO se for uma mentirinha disfarçada.",
+  "tr": "İşlem doğruysa ✓ DOĞRU, sinsi bir yalansa ✗ YANLIŞ düğmesine bas.",
+  "ru": "Жми ✓ ВЕРНО, если пример решён правильно, и ✗ НЕВЕРНО, если это хитрый обман.",
+  "ja": "計算が合っていれば ✓ ほんとう、ずるいウソなら ✗ ウソ をタップ！",
+  "th": "แตะ ✓ จริง ถ้าคำนวณถูก หรือ ✗ เท็จ ถ้าเป็นคำโกหกแสนแสบ"
+ },
+ "htp_true_false_5": {
+  "fr": "Tu as 60 secondes : réponds à un maximum de questions !",
+  "es": "Tienes 60 segundos: ¡responde todas las que puedas!",
+  "pt": "Você tem 60 segundos: responda quantas puder!",
+  "tr": "60 saniyen var, olabildiğince çok soruyu cevapla!",
+  "ru": "У тебя 60 секунд: решай как можно больше примеров!",
+  "ja": "時間は60秒。できるだけたくさん答えよう！",
+  "th": "มีเวลา 60 วินาที ตอบให้ได้มากที่สุด!"
+ },
+ "htp_true_false_6": {
+  "fr": "Si tu te trompes, la vraie réponse s'affiche un instant, puis la suivante arrive à toute vitesse.",
+  "es": "Si te equivocas, se muestra la respuesta real un momento y luego llega la siguiente.",
+  "pt": "Se errar, a resposta certa aparece por um instante e logo chega a próxima.",
+  "tr": "Yanlış dokunursan gerçek cevap bir an görünür, sonra sıradaki uçarak gelir.",
+  "ru": "При ошибке на миг покажется верный ответ, а затем прилетит следующий пример.",
+  "ja": "まちがえると、正しい答えが少し出て、つぎの問題がとんでくるよ。",
+  "th": "แตะผิดจะเห็นคำตอบจริงครู่หนึ่ง แล้วข้อต่อไปก็บินเข้ามา"
+ },
+ "htp_true_false_7": {
+  "fr": "Attention : les mensonges ne sont faux que de très peu (54 au lieu de 56) !",
+  "es": "¡Cuidado: las mentiras se equivocan solo por poquito (54 en vez de 56)!",
+  "pt": "Cuidado: as mentiras erram só por um pouquinho (54 em vez de 56)!",
+  "tr": "Dikkat: yalan sonuçlar doğrusundan azıcık farklıdır (56 yerine 54)!",
+  "ru": "Осторожно: обман отличается совсем чуть-чуть (54 вместо 56)!",
+  "ja": "気をつけて！ ウソは、ほんの少しだけずれているよ (56のかわりに54)！",
+  "th": "ระวังนะ คำโกหกผิดไปนิดเดียว (54 แทนที่จะเป็น 56)!"
+ },
+ "htp_true_false_9": {
+  "fr": "3 + 4 = 7 → VRAI ✓ … 6 × 2 = 13 → FAUX ✗ (c'est 12 !)",
+  "es": "3 + 4 = 7 → VERDADERO ✓ … 6 × 2 = 13 → FALSO ✗ (¡es 12!)",
+  "pt": "3 + 4 = 7 → VERDADEIRO ✓ … 6 × 2 = 13 → FALSO ✗ (é 12!)",
+  "tr": "3 + 4 = 7 → DOĞRU ✓ … 6 × 2 = 13 → YANLIŞ ✗ (doğrusu 12!)",
+  "ru": "3 + 4 = 7 → ВЕРНО ✓ … 6 × 2 = 13 → НЕВЕРНО ✗ (на самом деле 12!)",
+  "ja": "3 + 4 = 7 → ほんとう ✓ … 6 × 2 = 13 → ウソ ✗ (正しくは12!)",
+  "th": "3 + 4 = 7 → จริง ✓ … 6 × 2 = 13 → เท็จ ✗ (ที่ถูกคือ 12!)"
+ },
+ "making_your_sudoku_ready": {
+  "fr": "On prépare ton Sudoku !",
+  "es": "¡Preparando tu Sudoku!",
+  "pt": "Preparando seu Sudoku!",
+  "tr": "Sudoku'n hazırlanıyor!",
+  "ru": "Готовим твоё Судоку!",
+  "ja": "数独を準備しているよ！",
+  "th": "กำลังเตรียมซูโดกุให้คุณ!"
+ },
+ "new_target": {
+  "fr": "Nouvelle cible",
+  "es": "Objetivo nuevo",
+  "pt": "Novo alvo",
+  "tr": "Yeni Hedef",
+  "ru": "Новая цель",
+  "ja": "あたらしいもくひょう",
+  "th": "เป้าหมายใหม่"
+ },
+ "place_value_answer_was": {
+  "fr": "C'était %1$d !",
+  "es": "¡Era %1$d!",
+  "pt": "Era %1$d!",
+  "tr": "Cevap %1$d idi!",
+  "ru": "Ответ был %1$d!",
+  "ja": "答えは%1$dだよ！",
+  "th": "คำตอบคือ %1$d!"
+ },
+ "place_value_prompt": {
+  "fr": "Construis le nombre !",
+  "es": "¡Arma el número!",
+  "pt": "Monte o número!",
+  "tr": "Sayıyı oluştur!",
+  "ru": "Собери число!",
+  "ja": "数を作ろう！",
+  "th": "ประกอบตัวเลข!"
+ },
+ "place_value_tagline": {
+  "fr": "Construis le nombre avec ses morceaux !",
+  "es": "¡Arma el número con sus piezas!",
+  "pt": "Monte o número com as peças!",
+  "tr": "Sayıyı parçalarından oluştur!",
+  "ru": "Собери число из частей!",
+  "ja": "パーツから数を作ろう！",
+  "th": "ประกอบตัวเลขจากชิ้นส่วน!"
+ },
+ "please_wait": {
+  "fr": "Un instant…",
+  "es": "Espera un momento…",
+  "pt": "Aguarde…",
+  "tr": "Lütfen bekle…",
+  "ru": "Подожди немного…",
+  "ja": "ちょっと待ってね…",
+  "th": "รอสักครู่…"
+ },
+ "restart": {
+  "fr": "Recommencer",
+  "es": "Reiniciar",
+  "pt": "Reiniciar",
+  "tr": "Yeniden Başla",
+  "ru": "Заново",
+  "ja": "やりなおす",
+  "th": "เริ่มใหม่"
+ },
+ "show_options": {
+  "fr": "Afficher les options",
+  "es": "Mostrar opciones",
+  "pt": "Mostrar opções",
+  "tr": "Seçenekleri göster",
+  "ru": "Показать параметры",
+  "ja": "入る数を見る",
+  "th": "แสดงตัวเลือก"
+ },
+ "speed_compare_tagline": {
+  "fr": "Quel côté est le plus grand ? Touche <, = ou > !",
+  "es": "¿Qué lado es mayor? ¡Toca <, = o >!",
+  "pt": "Qual lado é maior? Toque em <, = ou >!",
+  "tr": "Hangi taraf daha büyük? <, = ya da > işaretine dokun!",
+  "ru": "Какая сторона больше? Нажми <, = или >!",
+  "ja": "どっちが大きい？ <、=、> をタップ！",
+  "th": "ฝั่งไหนมากกว่า แตะ <, = หรือ >!"
+ },
+ "speed_which_bigger": {
+  "fr": "Lequel est le plus grand ?",
+  "es": "¿Cuál es mayor?",
+  "pt": "Qual é maior?",
+  "tr": "Hangisi daha büyük?",
+  "ru": "Что больше?",
+  "ja": "どっちが大きい？",
+  "th": "อันไหนมากกว่า?"
+ },
+ "start_this_new_sudoku": {
+  "fr": "Commencer ce nouveau Sudoku",
+  "es": "Empezar este Sudoku nuevo",
+  "pt": "Começar este novo Sudoku",
+  "tr": "Bu yeni Sudoku'yu başlat",
+  "ru": "Начать новое Судоку",
+  "ja": "新しい数独をはじめる",
+  "th": "เริ่มซูโดกุใหม่นี้"
+ },
+ "target_banner": {
+  "fr": "🎯 Cible : %1$s",
+  "es": "🎯 Objetivo: %1$s",
+  "pt": "🎯 Alvo: %1$s",
+  "tr": "🎯 Hedef: %1$s",
+  "ru": "🎯 Цель: %1$s",
+  "ja": "🎯 もくひょう：%1$s",
+  "th": "🎯 เป้าหมาย: %1$s"
+ },
+ "target_number_game": {
+  "fr": "Atteins le nombre",
+  "es": "Alcanza el número",
+  "pt": "Alcance o número",
+  "tr": "Sayıyı Hedefle",
+  "ru": "Игра «Попади в число»",
+  "ja": "ターゲットナンバー",
+  "th": "เกมเล็งเลขเป้าหมาย"
+ },
+ "true_false_answer_was": {
+  "fr": "C'était %1$d !",
+  "es": "¡Era %1$d!",
+  "pt": "Era %1$d!",
+  "tr": "Cevap %1$d idi!",
+  "ru": "Ответ был %1$d!",
+  "ja": "答えは%1$dだよ！",
+  "th": "คำตอบคือ %1$d!"
+ },
+ "true_false_btn_false": {
+  "fr": "FAUX",
+  "es": "FALSO",
+  "pt": "FALSO",
+  "tr": "YANLIŞ",
+  "ru": "НЕВЕРНО",
+  "ja": "ウソ",
+  "th": "เท็จ"
+ },
+ "true_false_btn_true": {
+  "fr": "VRAI",
+  "es": "VERDADERO",
+  "pt": "VERDADEIRO",
+  "tr": "DOĞRU",
+  "ru": "ВЕРНО",
+  "ja": "ほんとう",
+  "th": "จริง"
+ },
+ "true_false_prompt": {
+  "fr": "Vrai ou faux ?",
+  "es": "¿Verdadero o falso?",
+  "pt": "Verdadeiro ou falso?",
+  "tr": "Doğru mu yanlış mı?",
+  "ru": "Верно или нет?",
+  "ja": "ほんとう？ ウソ？",
+  "th": "จริงหรือเท็จ?"
+ },
+ "true_false_tagline": {
+  "fr": "Deviens le juge des maths : repère les mensonges !",
+  "es": "¡Sé el juez de las mates y descubre las mentiras!",
+  "pt": "Seja o juiz da matemática: ache as mentirinhas!",
+  "tr": "Matematik hakemi ol, yalanları yakala!",
+  "ru": "Стань математическим судьёй — лови обман!",
+  "ja": "算数のさいばんかんになって、ウソを見やぶろう！",
+  "th": "มาเป็นผู้พิพากษาเลข จับผิดคำโกหก!"
+ },
+ "yes_please_continue": {
+  "fr": "Oui, je continue",
+  "es": "Sí, continuar",
+  "pt": "Sim, continuar",
+  "tr": "Evet, devam et",
+  "ru": "Да, продолжить",
+  "ja": "はい、つづける",
+  "th": "ใช่ เล่นต่อเลย"
+ },
+ "you_are_a_genius": {
+  "fr": "Tu es un génie !",
+  "es": "¡Eres un genio!",
+  "pt": "Você é um gênio!",
+  "tr": "Sen bir dahisin!",
+  "ru": "Ты гений!",
+  "ja": "きみは天才！",
+  "th": "คุณเป็นอัจฉริยะเลย!"
+ },
+ "you_completed_this_sudoku": {
+  "fr": "🎉 Tu as terminé ce Sudoku. 🎉",
+  "es": "🎉 ¡Completaste este Sudoku! 🎉",
+  "pt": "🎉 Você completou este Sudoku. 🎉",
+  "tr": "🎉 Bu Sudoku'yu tamamladın. 🎉",
+  "ru": "🎉 Это судоку решено! 🎉",
+  "ja": "🎉 この数独をクリアしたよ！ 🎉",
+  "th": "🎉 คุณไขซูโดกุนี้สำเร็จแล้ว 🎉"
+ },
+ "you_have_an_unfinished_sudoku": {
+  "fr": "Tu as un Sudoku inachevé.",
+  "es": "Tienes un Sudoku sin terminar.",
+  "pt": "Você tem um Sudoku em andamento.",
+  "tr": "Bitmemiş bir Sudoku'n var.",
+  "ru": "У тебя есть незаконченное Судоку.",
+  "ja": "とちゅうの数独があるよ。",
+  "th": "คุณมีซูโดกุที่ยังเล่นไม่จบ"
+ }
+}

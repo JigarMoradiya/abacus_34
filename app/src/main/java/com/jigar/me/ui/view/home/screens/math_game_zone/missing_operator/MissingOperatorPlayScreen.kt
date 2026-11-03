@@ -100,6 +100,7 @@ import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.min
 import kotlin.math.sin
+import androidx.compose.ui.res.stringResource
 
 private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
@@ -147,9 +148,9 @@ fun MissingOperatorPlayScreen(
             ) {
                 GameMascotPanel(
                     cheer = when {
-                        state.revealed && state.lastCorrect -> "Awesome! 🎉"
-                        state.revealed -> "Oops! Try again 💪"
-                        viewModel.multiplier > 1 -> "On fire! 🔥"
+                        state.revealed && state.lastCorrect -> stringResource(R.string.g_missing_operator_1)
+                        state.revealed -> stringResource(R.string.g_missing_operator_2)
+                        viewModel.multiplier > 1 -> stringResource(R.string.g_missing_operator_3)
                         else -> baseCheer
                     },
                     celebrate = state.revealed && state.lastCorrect, s = s,
@@ -503,7 +504,7 @@ private fun ResultOverlay(score: Int, correctCount: Int, wrongCount: Int, bestSc
             emoji = "➗",
             accent = ButtonType.ORANGE,
             stars = starCount,
-            score = str(R.string.balloon_final_score) + ": $score",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
                     GameStatChip("🎯", "$correctCount", GREEN)

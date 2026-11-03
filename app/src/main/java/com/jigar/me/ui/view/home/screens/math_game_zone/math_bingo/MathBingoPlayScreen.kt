@@ -143,8 +143,8 @@ fun MathBingoPlayScreen(
             ) {
                 GameMascotPanel(
                     cheer = when {
-                        state.justBingo -> "BINGO! 🎉"
-                        state.wrongTapIndex != null -> "Find ${state.call?.text}! 🔍"
+                        state.justBingo -> stringResource(R.string.g_math_bingo_1)
+                        state.wrongTapIndex != null -> stringResource(R.string.g_math_bingo_2, state.call?.text ?: "")
                         else -> baseCheer
                     },
                     celebrate = state.justBingo, s = s,
@@ -396,7 +396,7 @@ private fun MathBingoBanner(s: Float) {
             .abBreathe(0.04f, 900)
     ) {
         Text(
-            "🎉 BINGO! 🎉",
+            stringResource(R.string.g_math_bingo_banner),
             style = AbTypography.fixed(44f * s, FontWeight.Black).copy(
                 shadow = Shadow(face.abDarkened(0.45f), Offset(0f, 6f), 0f)
             ),
@@ -438,7 +438,7 @@ private fun ResultOverlay(state: MathBingoUiState, best: Int, onPlayAgain: () ->
             emoji = "🎱",
             accent = ButtonType.PINK,
             stars = stars,
-            score = stringResource(R.string.balloon_final_score) + ": ${state.score}",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, state.score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
                     GameStatChip("🎱", "${state.bingoCount}", Color(0xFF7B1FA2))

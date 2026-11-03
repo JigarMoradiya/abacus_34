@@ -73,20 +73,20 @@ fun HowToPlayMathBingoView(
                 }
                 Spacer(Modifier.height(AppDimens.Dimens8))
                 LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(bottom = AppDimens.Dimens16)) {
-                    item { MbBullet("Classic bingo — but the caller shouts MATH! 🎱") }
-                    item { MbHeading("👉 How it works:") }
-                    item { MbBullet("Your card has 16 answer numbers.") }
-                    item { MbBullet("The caller announces an equation, like 7 × 8.") }
-                    item { MbBullet("Work it out and tap the answer (56!) on your card — it gets a ⭐ stamp.") }
-                    item { MbBullet("Fill a whole row, column, or diagonal → BINGO! Big bonus + a fresh card.") }
-                    item { MbBullet("Score as much as you can before the timer runs out.") }
-                    item { MbHeading("🧒 Example:") }
-                    item { MbBullet("Caller says 6 + 7 … you tap 13 → ⭐") }
-                    item { MbBullet("That completes your row → 🎉 BINGO! +50 points!") }
-                    item { MbHeading("👨‍👩‍👧 How It Helps:") }
-                    item { MbBullet("Scanning the card for answers strengthens number recognition.") }
-                    item { MbBullet("Every call is a fresh mental-math problem under friendly pressure.") }
-                    item { MbBullet("The bingo hunt keeps kids playing — and calculating — longer.") }
+                    item { MbBullet(stringResource(R.string.htp_math_bingo_1)) }
+                    item { MbHeading(stringResource(R.string.htp_math_bingo_2)) }
+                    item { MbBullet(stringResource(R.string.htp_math_bingo_3)) }
+                    item { MbBullet(stringResource(R.string.htp_math_bingo_4)) }
+                    item { MbBullet(stringResource(R.string.htp_math_bingo_5)) }
+                    item { MbBullet(stringResource(R.string.htp_math_bingo_6)) }
+                    item { MbBullet(stringResource(R.string.htp_math_bingo_7)) }
+                    item { MbHeading(stringResource(R.string.htp_math_bingo_8)) }
+                    item { MbBullet(stringResource(R.string.htp_math_bingo_9)) }
+                    item { MbBullet(stringResource(R.string.htp_math_bingo_10)) }
+                    item { MbHeading(stringResource(R.string.htp_math_bingo_11)) }
+                    item { MbBullet(stringResource(R.string.htp_math_bingo_12)) }
+                    item { MbBullet(stringResource(R.string.htp_math_bingo_13)) }
+                    item { MbBullet(stringResource(R.string.htp_math_bingo_14)) }
                 }
             }
         }

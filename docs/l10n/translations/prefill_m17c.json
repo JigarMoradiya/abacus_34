@@ -1,0 +1,38 @@
+{
+ "continue_game": {
+  "fr": "Continuer",
+  "es": "Continuar",
+  "pt": "Continuar",
+  "tr": "Devam",
+  "ru": "Продолжить",
+  "ja": "続ける",
+  "th": "ต่อไป"
+ },
+ "kakuro_game": {
+  "fr": "Kakuro",
+  "es": "Kakuro",
+  "pt": "Kakuro",
+  "tr": "Kakuro",
+  "ru": "Какуро",
+  "ja": "カックロ",
+  "th": "คาคุโระ"
+ },
+ "magic_square_game": {
+  "fr": "Carré magique",
+  "es": "Cuadrado mágico",
+  "pt": "Quadrado mágico",
+  "tr": "Sihirli Kare",
+  "ru": "Магический квадрат",
+  "ja": "魔方陣",
+  "th": "จัตุรัสมหัศจรรย์"
+ },
+ "math_bingo_game": {
+  "fr": "Bingo des maths",
+  "es": "Bingo matemático",
+  "pt": "Bingo matemático",
+  "tr": "Matematik Bingosu",
+  "ru": "Числовое бинго",
+  "ja": "算数ビンゴ",
+  "th": "บิงโกคณิตศาสตร์"
+ }
+}

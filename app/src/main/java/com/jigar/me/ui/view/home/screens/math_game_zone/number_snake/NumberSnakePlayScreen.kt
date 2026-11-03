@@ -478,7 +478,7 @@ private fun ResultOverlay(
             emoji = "🐍",
             accent = ButtonType.TEAL,
             stars = stars,
-            score = stringResource(R.string.balloon_final_score) + ": ${state.score}",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, state.score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
                     GameStatChip("⏱️", "%d:%02d".format(state.elapsed / 60, state.elapsed % 60), Color(0xFFC2570C))

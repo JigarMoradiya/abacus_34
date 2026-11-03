@@ -99,7 +99,7 @@ private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
 
 // Place labels under the slots, right to left: Ones, Tens, Hundreds...
-private val PLACE_LABELS = listOf("O", "T", "H", "Th", "TTh")
+private val PLACE_LABELS = listOf(R.string.g_place_o, R.string.g_place_t, R.string.g_place_h, R.string.g_place_th, R.string.g_place_tth)
 
 /**
  * A dashed toy socket in its place colour: a pale well, a tint of [face] and a dashed rim. Draws inside the box it is put on.
@@ -176,8 +176,8 @@ fun PlaceValuePlayScreen(
             ) {
                 GameMascotPanel(
                     cheer = when {
-                        state.lastAnswerRight && state.streak >= 3 -> "On fire! 🔥"
-                        state.lastAnswerWrong -> "Check the places! 🧐"
+                        state.lastAnswerRight && state.streak >= 3 -> stringResource(R.string.g_place_value_1)
+                        state.lastAnswerWrong -> stringResource(R.string.g_place_value_2)
                         else -> baseCheer
                     },
                     celebrate = state.lastAnswerRight, s = s,
@@ -289,7 +289,7 @@ private fun DigitSlots(state: PlaceValueUiState, s: Float, onTap: (Int) -> Unit)
                         onTap = { onTap(i) }
                     )
                     Text(
-                        PLACE_LABELS.getOrElse(place) { "" },
+                        PLACE_LABELS.getOrNull(place)?.let { stringResource(it) } ?: "",
                         color = colors.toyColor(place).abDarkened(0.15f),
                         style = AbTypography.fixed(14f * s, FontWeight.Black)
                     )
@@ -457,7 +457,7 @@ private fun ResultOverlay(state: PlaceValueUiState, best: Int, onPlayAgain: () -
             emoji = "🏗️",
             accent = ButtonType.GREEN,
             stars = stars,
-            score = stringResource(R.string.balloon_final_score) + ": ${state.score}",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, state.score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                     GameStatChip("✅", "${state.correctCount}", Color(0xFF2E7D32))

@@ -1,0 +1,839 @@
+{
+ "continue_to_play": {
+  "fr": "Continuer à jouer",
+  "es": "Seguir jugando",
+  "pt": "Continuar jogando",
+  "tr": "Oynamaya Devam Et",
+  "ru": "Играть дальше",
+  "ja": "続けてあそぶ",
+  "th": "เล่นต่อ"
+ },
+ "g_magic_square_1": {
+  "fr": "Génial ! 🎉",
+  "es": "¡Genial! 🎉",
+  "pt": "Incrível! 🎉",
+  "tr": "Harika! 🎉",
+  "ru": "Супер! 🎉",
+  "ja": "すごい！ 🎉",
+  "th": "สุดยอด! 🎉"
+ },
+ "g_magic_square_2": {
+  "fr": "En feu ! 🔥",
+  "es": "¡En llamas! 🔥",
+  "pt": "Pegando fogo! 🔥",
+  "tr": "Ateş gibisin! 🔥",
+  "ru": "Ты в ударе! 🔥",
+  "ja": "もえてるね！ 🔥",
+  "th": "ไฟลุกเลย! 🔥"
+ },
+ "g_math_bingo_1": {
+  "fr": "BINGO ! 🎉",
+  "es": "¡BINGO! 🎉",
+  "pt": "BINGO! 🎉",
+  "tr": "BİNGO! 🎉",
+  "ru": "БИНГО! 🎉",
+  "ja": "ビンゴ！ 🎉",
+  "th": "บิงโก! 🎉"
+ },
+ "g_math_bingo_2": {
+  "fr": "Trouve %1$s ! 🔍",
+  "es": "¡Encuentra %1$s! 🔍",
+  "pt": "Ache %1$s! 🔍",
+  "tr": "Bul: %1$s! 🔍",
+  "ru": "Найди %1$s! 🔍",
+  "ja": "%1$sをさがそう！ 🔍",
+  "th": "หา %1$s! 🔍"
+ },
+ "g_math_pyramid_1": {
+  "fr": "Niveau %1$s",
+  "es": "Nivel %1$s",
+  "pt": "Nível %1$s",
+  "tr": "Seviye %1$s",
+  "ru": "Уровень %1$s",
+  "ja": "レベル%1$s",
+  "th": "ด่าน %1$s"
+ },
+ "g_math_pyramid_2": {
+  "fr": "Niveau %1$s • %2$s",
+  "es": "Nivel %1$s • %2$s",
+  "pt": "Nível %1$s • %2$s",
+  "tr": "Seviye %1$s • %2$s",
+  "ru": "Уровень %1$s • %2$s",
+  "ja": "レベル%1$s • %2$s",
+  "th": "ด่าน %1$s • %2$s"
+ },
+ "g_merge2048_1": {
+  "fr": "En feu ! 🔥",
+  "es": "¡En llamas! 🔥",
+  "pt": "Pegando fogo! 🔥",
+  "tr": "Ateş gibisin! 🔥",
+  "ru": "Ты в ударе! 🔥",
+  "ja": "もえてるね！ 🔥",
+  "th": "ไฟลุกเลย! 🔥"
+ },
+ "htp_kakuro_1": {
+  "fr": "Le Kakuro, ce sont des mots croisés de SOMMES ! 🧮",
+  "es": "¡Kakuro es un crucigrama de SUMAS! 🧮",
+  "pt": "Kakuro é uma cruzadinha de SOMAS! 🧮",
+  "tr": "Kakuro, TOPLAMLARIN bulmacası! 🧮",
+  "ru": "Какуро — это кроссворд из СУММ! 🧮",
+  "ja": "カックロは、たし算のクロスワードだよ！ 🧮",
+  "th": "คาคุโระคือปริศนาไขว้แห่งผลรวม! 🧮"
+ },
+ "htp_kakuro_10": {
+  "fr": "Tu bloques ? Un indice 💡 remplit une bonne case (3 par niveau).",
+  "es": "¿Te atascaste? Una pista 💡 llena una casilla correcta (3 por nivel).",
+  "pt": "Travou? Uma dica 💡 preenche um quadradinho certo (3 por nível).",
+  "tr": "Takıldın mı? 💡 ipucu doğru bir kutuyu doldurur (seviye başına 3).",
+  "ru": "Не получается? Подсказка 💡 заполнит одну клетку правильной цифрой (3 на уровень).",
+  "ja": "こまったら 💡 ヒントを使おう。正しいマスが1つうまるよ (1レベルに3回まで)。",
+  "th": "ติดแล้วเหรอ? คำใบ้ 💡 จะเติมช่องที่ถูกต้องให้ 1 ช่อง (ด่านละ 3 ครั้ง)"
+ },
+ "htp_kakuro_11": {
+  "fr": "⭐ Niveaux et étoiles :",
+  "es": "⭐ Niveles y estrellas:",
+  "pt": "⭐ Níveis e estrelas:",
+  "tr": "⭐ Seviyeler ve yıldızlar:",
+  "ru": "⭐ Уровни и звёзды:",
+  "ja": "⭐ レベルと星：",
+  "th": "⭐ ด่านและดาว:"
+ },
+ "htp_kakuro_12": {
+  "fr": "Suis la carte du chemin : termine un niveau pour débloquer le suivant.",
+  "es": "Sigue el mapa del camino: termina un nivel para desbloquear el siguiente.",
+  "pt": "Siga o mapa do caminho. Termine um nível para liberar o próximo.",
+  "tr": "Yol haritasını izle: bir seviyeyi bitirince sonrakinin kilidi açılır.",
+  "ru": "Двигайся по дороге на карте — пройди уровень, и откроется следующий.",
+  "ja": "道のマップを進もう。レベルをクリアすると、次のレベルが開くよ。",
+  "th": "ไปตามแผนที่เส้นทาง ผ่านด่านหนึ่งเพื่อปลดล็อกด่านถัดไป"
+ },
+ "htp_kakuro_13": {
+  "fr": "Résous vite et sans indice pour gagner les 3 étoiles !",
+  "es": "¡Resuelve rápido y sin pistas para ganar las 3 estrellas!",
+  "pt": "Resolva rápido e sem dicas para ganhar as 3 estrelas!",
+  "tr": "Hızlı çöz, ipucu kullanma, 3 yıldızın hepsini kazan!",
+  "ru": "Решай быстро и без подсказок — и получишь все 3 звезды!",
+  "ja": "ヒントなしで、はやくとけば、星3つゲット！",
+  "th": "เล่นให้เร็วโดยไม่ใช้คำใบ้ เพื่อรับครบ 3 ดาว!"
+ },
+ "htp_kakuro_14": {
+  "fr": "👨‍👩‍👧 Ce que ça apporte :",
+  "es": "👨‍👩‍👧 Cómo ayuda:",
+  "pt": "👨‍👩‍👧 Como isso ajuda:",
+  "tr": "👨‍👩‍👧 Nasıl Yardımcı Olur:",
+  "ru": "👨‍👩‍👧 Чем это полезно:",
+  "ja": "👨‍👩‍👧 身につく力：",
+  "th": "👨‍👩‍👧 ช่วยอะไรได้บ้าง:"
+ },
+ "htp_kakuro_15": {
+  "fr": "Les additions sont vraiment travaillées : chaque ligne est un casse-tête de sommes.",
+  "es": "Las sumas se entrenan de verdad: cada línea es un rompecabezas de sumas.",
+  "pt": "Treina de verdade as contas de somar: cada linha é um quebra-cabeça de soma.",
+  "tr": "Toplama işlemleri iyice pekişir: her sıra bir toplam bulmacasıdır.",
+  "ru": "Сложение хорошо тренируется: каждая линия — это задача на сумму.",
+  "ja": "たし算の力がしっかり育ちます。どのならびも、合計を求めるパズルだからです。",
+  "th": "ได้ฝึกการบวกเต็มที่ เพราะทุกแนวคือปริศนาผลรวม"
+ },
+ "htp_kakuro_16": {
+  "fr": "La règle du « sans répétition » développe la déduction logique, comme un Sudoku avec des maths.",
+  "es": "La regla de no repetir desarrolla la eliminación lógica, como un Sudoku con matemáticas.",
+  "pt": "A regra de não repetir desenvolve o raciocínio por eliminação, como um Sudoku com contas.",
+  "tr": "Tekrar etmeme kuralı mantıkla eleme yapmayı öğretir: matematikli Sudoku gibi.",
+  "ru": "Правило «без повторов» развивает логику исключения, как в судоку, только с числами.",
+  "ja": "同じ数を使えないルールで、ありえない数を消していく論理的な考え方が育ちます。計算入りの数独のようなパズルです。",
+  "th": "กฎห้ามเลขซ้ำช่วยฝึกคิดตัดตัวเลือกอย่างมีเหตุผล เหมือนซูโดกุที่ผสมคณิตศาสตร์"
+ },
+ "htp_kakuro_17": {
+  "fr": "Les lignes qui se croisent montrent qu'un même chiffre doit respecter deux sommes à la fois.",
+  "es": "Las líneas que se cruzan enseñan que un dígito debe cumplir dos sumas a la vez.",
+  "pt": "Linhas que se cruzam mostram que um dígito precisa servir a duas somas ao mesmo tempo.",
+  "tr": "Kesişen sıralar, tek bir rakamın aynı anda iki toplama uyması gerektiğini öğretir.",
+  "ru": "Пересекающиеся линии учат: одна цифра должна подходить сразу к двум суммам.",
+  "ja": "ならびが交わる場所では、1つの数が2つの合計に同時に合う必要があることを学べます。",
+  "th": "แนวที่ไขว้กันสอนให้รู้ว่าตัวเลขหนึ่งตัวต้องใช้ได้กับผลรวมสองแนวพร้อมกัน"
+ },
+ "htp_kakuro_2": {
+  "fr": "👉 Comment ça marche :",
+  "es": "👉 Cómo funciona:",
+  "pt": "👉 Como funciona:",
+  "tr": "👉 Nasıl çalışır:",
+  "ru": "👉 Как это работает:",
+  "ja": "👉 こんなふうにあそぶよ：",
+  "th": "👉 เล่นยังไง:"
+ },
+ "htp_kakuro_3": {
+  "fr": "Les cases sombres donnent des totaux : le nombre en haut à droite est la somme vers la DROITE, celui en bas à gauche est la somme vers le BAS.",
+  "es": "Las casillas oscuras muestran números clave: el de arriba a la derecha es la suma hacia la DERECHA y el de abajo a la izquierda es la suma hacia ABAJO.",
+  "pt": "Os quadradinhos escuros mostram as pistas: o número de cima, à direita, é a soma para a DIREITA e o de baixo, à esquerda, é a soma para BAIXO.",
+  "tr": "Koyu kutularda hedef sayılar var: sağ üstteki sayı SAĞA doğru olan toplam, sol alttaki AŞAĞI doğru olan toplam.",
+  "ru": "Тёмные клетки с числами показывают суммы: число справа вверху — сумма ВПРАВО, число слева внизу — сумма ВНИЗ.",
+  "ja": "黒いマスにヒントの数が出ているよ。右上の数は右にならぶマスの合計、左下の数は下にならぶマスの合計だよ。",
+  "th": "ช่องสีเข้มมีเลขใบ้ เลขมุมขวาบนคือผลรวมที่ไปทางขวา เลขมุมซ้ายล่างคือผลรวมที่ลงไปข้างล่าง"
+ },
+ "htp_kakuro_4": {
+  "fr": "Remplis les cases blanches avec les chiffres de 1 à 9 pour que chaque ligne fasse son total.",
+  "es": "Llena las casillas blancas con dígitos del 1 al 9 para que cada línea sume su clave.",
+  "pt": "Preencha os quadradinhos brancos com os dígitos 1–9 para cada linha somar o valor da pista.",
+  "tr": "Beyaz kutuları 1–9 arası rakamlarla doldur, her sıranın toplamı hedef sayıya eşit olsun.",
+  "ru": "Впиши в белые клетки цифры 1–9 так, чтобы каждая линия давала нужную сумму.",
+  "ja": "白いマスに1–9の数を入れて、どのならびもヒントの合計にしよう。",
+  "th": "เติมเลข 1–9 ลงในช่องสีขาว ให้แต่ละแนวรวมกันได้ตามเลขใบ้"
+ },
+ "htp_kakuro_5": {
+  "fr": "Règle secrète : un chiffre ne peut pas se répéter dans la même ligne !",
+  "es": "Regla secreta: ¡un dígito no se puede repetir en la misma línea!",
+  "pt": "Regra secreta: um dígito não pode se repetir na mesma linha!",
+  "tr": "Gizli kural: bir rakam aynı sırada iki kez kullanılamaz!",
+  "ru": "Секретное правило: цифра не может повторяться в одной линии!",
+  "ja": "ひみつのルール：同じならびに、同じ数は2回使えないよ！",
+  "th": "กฎลับ: ในแนวเดียวกันห้ามมีเลขซ้ำกัน!"
+ },
+ "htp_kakuro_6": {
+  "fr": "Une ligne terminée devient verte si elle est juste, rouge si elle est fausse.",
+  "es": "Una línea terminada se pone verde si está bien y roja si está mal.",
+  "pt": "Uma linha completa fica verde se estiver certa e vermelha se estiver errada.",
+  "tr": "Biten sıra doğruysa yeşil, yanlışsa kırmızı olur.",
+  "ru": "Готовая линия становится зелёной, если всё верно, и красной, если есть ошибка.",
+  "ja": "ならびが全部うまると、合っていれば緑、まちがっていれば赤になるよ。",
+  "th": "เมื่อเติมครบแนวแล้ว ถ้าถูกจะเป็นสีเขียว ถ้าผิดจะเป็นสีแดง"
+ },
+ "htp_kakuro_7": {
+  "fr": "🧒 Exemple :",
+  "es": "🧒 Ejemplo:",
+  "pt": "🧒 Exemplo:",
+  "tr": "🧒 Örnek:",
+  "ru": "🧒 Пример:",
+  "ja": "🧒 れい：",
+  "th": "🧒 ตัวอย่าง:"
+ },
+ "htp_kakuro_8": {
+  "fr": "Total 4 sur deux cases → seul 1+3 marche (2+2 répète le même chiffre !)",
+  "es": "Clave 4 en dos casillas → solo sirve 1+3 (¡2+2 se repite!)",
+  "pt": "Pista 4 em dois quadradinhos → só 1+3 serve (2+2 repete!)",
+  "tr": "İki kutu için hedef 4 → sadece 1+3 olur (2+2 tekrar eder!)",
+  "ru": "Сумма 4 в две клетки → подходит только 1+3 (2+2 повторяется!)",
+  "ja": "ヒント4で2マス → 使えるのは1+3だけ (2+2は同じ数になっちゃう！)",
+  "th": "เลขใบ้ 4 ใน 2 ช่อง → ใช้ได้แค่ 1+3 (2+2 เลขซ้ำ!)"
+ },
+ "htp_kakuro_9": {
+  "fr": "Total 16 sur deux cases → 7+9. Total 3 → 1+2. Les petits totaux sont tes amis !",
+  "es": "Clave 16 en dos casillas → 7+9. Clave 3 → 1+2. ¡Las claves pequeñas son tus amigas!",
+  "pt": "Pista 16 em dois quadradinhos → 7+9. Pista 3 → 1+2. Pistas pequenas são suas amigas!",
+  "tr": "İki kutu için hedef 16 → 7+9. Hedef 3 → 1+2. Küçük hedefler senin dostun!",
+  "ru": "Сумма 16 в две клетки → 7+9. Сумма 3 → 1+2. Маленькие суммы — твои друзья!",
+  "ja": "ヒント16で2マス → 7+9。ヒント3 → 1+2。小さいヒントはたよれる味方だよ！",
+  "th": "เลขใบ้ 16 ใน 2 ช่อง → 7+9 ส่วนเลขใบ้ 3 → 1+2 เลขใบ้ตัวน้อยคือเพื่อนของคุณ!"
+ },
+ "htp_magic_square_1": {
+  "fr": "Remplis la grille pour que chaque ligne et chaque colonne fasse le nombre magique !",
+  "es": "¡Llena la cuadrícula para que cada fila y columna sume el número mágico!",
+  "pt": "Preencha a grade para que toda linha e coluna some o número mágico!",
+  "tr": "Izgarayı doldur, her satırın ve sütunun toplamı sihirli sayı olsun!",
+  "ru": "Заполни сетку так, чтобы каждая строка и каждый столбец давали магическое число!",
+  "ja": "マスをうめて、よこもたてもぜんぶ、魔法の数になるようにしよう！",
+  "th": "เติมตารางให้ทุกแถวและทุกคอลัมน์รวมกันได้เลขมหัศจรรย์!"
+ },
+ "htp_magic_square_10": {
+  "fr": "2 + 7 + 6 = 15 ✔ : chaque ligne et chaque colonne doit faire 15.",
+  "es": "2 + 7 + 6 = 15  ✔  — cada fila y columna debe sumar 15.",
+  "pt": "2 + 7 + 6 = 15  ✔  — toda linha e coluna precisa dar 15.",
+  "tr": "2 + 7 + 6 = 15  ✔  Her satır ve sütunun toplamı 15 olmalı.",
+  "ru": "2 + 7 + 6 = 15  ✔  — каждая строка и каждый столбец должны давать 15.",
+  "ja": "2 + 7 + 6 = 15  ✔  よこもたても、ぜんぶ15にしよう。",
+  "th": "2 + 7 + 6 = 15  ✔  ทุกแถวและทุกคอลัมน์ต้องรวมได้ 15"
+ },
+ "htp_magic_square_11": {
+  "fr": "👨‍👩‍👧 Ce que ça apporte :",
+  "es": "👨‍👩‍👧 Cómo ayuda:",
+  "pt": "👨‍👩‍👧 Como isso ajuda:",
+  "tr": "👨‍👩‍👧 Nasıl Yardımcı Olur:",
+  "ru": "👨‍👩‍👧 Чем это полезно:",
+  "ja": "👨‍👩‍👧 身につく力：",
+  "th": "👨‍👩‍👧 ช่วยอะไรได้บ้าง:"
+ },
+ "htp_magic_square_12": {
+  "fr": "Développe l'aisance en addition : les enfants additionnent et réadditionnent pour atteindre la cible.",
+  "es": "Mejora la fluidez al sumar: los niños suman y vuelven a sumar hasta llegar al objetivo.",
+  "pt": "Desenvolve a facilidade na soma: as crianças somam e refazem as contas até chegar ao alvo.",
+  "tr": "Toplama akıcılığını geliştirir: çocuklar hedefi tutturmak için tekrar tekrar toplar.",
+  "ru": "Развивает беглость сложения: дети считают и пересчитывают, чтобы попасть в цель.",
+  "ja": "たし算にすばやく慣れます。もくひょうの数になるまで、何度もたして確かめます。",
+  "th": "ฝึกการบวกให้คล่อง เด็กๆ จะบวกแล้วบวกอีกเพื่อให้ได้ตามเป้าหมาย"
+ },
+ "htp_magic_square_13": {
+  "fr": "Développe la pensée logique : ils planifient où va chaque nombre.",
+  "es": "Desarrolla el pensamiento lógico: planean dónde va cada número.",
+  "pt": "Desenvolve o raciocínio lógico: elas planejam onde cada número vai.",
+  "tr": "Mantıksal düşünmeyi geliştirir: her sayının nereye gideceğini planlarlar.",
+  "ru": "Развивает логику: ребёнок продумывает, куда поставить каждое число.",
+  "ja": "論理的に考える力が育ちます。どの数をどこに置くか、計画を立てます。",
+  "th": "พัฒนาการคิดอย่างมีเหตุผล เพราะต้องวางแผนว่าจะใส่เลขแต่ละตัวตรงไหน"
+ },
+ "htp_magic_square_14": {
+  "fr": "Fait découvrir les motifs : le carré magique est un magnifique motif de nombres.",
+  "es": "Presenta los patrones: el cuadrado mágico es un hermoso patrón de números.",
+  "pt": "Apresenta padrões: o quadrado mágico é um lindo padrão de números.",
+  "tr": "Örüntüleri tanıtır: sihirli kare güzel bir sayı örüntüsüdür.",
+  "ru": "Знакомит с закономерностями: магический квадрат — красивая числовая закономерность.",
+  "ja": "パターンにふれられます。魔方陣は、美しい数のパターンです。",
+  "th": "แนะนำให้รู้จักแบบรูป จัตุรัสมหัศจรรย์คือแบบรูปของตัวเลขที่สวยงาม"
+ },
+ "htp_magic_square_2": {
+  "fr": "👉 Comment ça marche :",
+  "es": "👉 Cómo funciona:",
+  "pt": "👉 Como funciona:",
+  "tr": "👉 Nasıl çalışır:",
+  "ru": "👉 Как это работает:",
+  "ja": "👉 こんなふうにあそぶよ：",
+  "th": "👉 เล่นยังไง:"
+ },
+ "htp_magic_square_3": {
+  "fr": "Certains nombres sont déjà placés. Touche une case vide pour la choisir.",
+  "es": "Algunos números ya están puestos. Toca una casilla vacía para elegirla.",
+  "pt": "Alguns números já estão no lugar. Toque em um quadradinho vazio para escolhê-lo.",
+  "tr": "Bazı sayılar zaten yerinde. Seçmek için boş bir kutuya dokun.",
+  "ru": "Часть чисел уже стоит на местах. Нажми на пустую клетку, чтобы выбрать её.",
+  "ja": "はじめから入っている数もあるよ。からのマスをタップして選ぼう。",
+  "th": "มีตัวเลขวางไว้ให้บางส่วนแล้ว แตะช่องว่างเพื่อเลือก"
+ },
+ "htp_magic_square_4": {
+  "fr": "Touche un nombre en bas pour le poser dans la case.",
+  "es": "Toca un número de abajo para ponerlo en la casilla.",
+  "pt": "Toque em um número abaixo para colocá-lo no quadradinho.",
+  "tr": "Kutuya koymak için aşağıdan bir sayıya dokun.",
+  "ru": "Нажми на число внизу, и оно встанет в клетку.",
+  "ja": "下の数をタップすると、そのマスに入るよ。",
+  "th": "แตะตัวเลขด้านล่างเพื่อใส่ลงในช่อง"
+ },
+ "htp_magic_square_5": {
+  "fr": "Chaque petite somme devient verte quand une ligne atteint la cible.",
+  "es": "Cada suma pequeña se pone verde cuando una línea llega al objetivo.",
+  "pt": "Cada sominha fica verde quando a linha chega ao alvo.",
+  "tr": "Bir satır ya da sütun hedefi tutturunca küçük toplam yeşil olur.",
+  "ru": "Сумма рядом с линией зеленеет, когда линия даёт нужное число.",
+  "ja": "ならびがもくひょうの数になると、その小さな合計が緑になるよ。",
+  "th": "ผลรวมเล็กๆ แต่ละอันจะเป็นสีเขียวเมื่อแนวนั้นรวมได้ตามเป้าหมาย"
+ },
+ "htp_magic_square_6": {
+  "fr": "Remplis toutes les cases correctement pour résoudre le carré, et un nouveau apparaît !",
+  "es": "¡Llena bien todas las casillas para resolver el cuadrado y aparecerá uno nuevo!",
+  "pt": "Preencha todos os quadradinhos certinho para resolver o quadrado, e aparece um novo!",
+  "tr": "Her kutuyu doğru doldurunca kare çözülür ve yenisi gelir!",
+  "ru": "Правильно заполни все клетки, и квадрат решён, а потом появится новый!",
+  "ja": "ぜんぶのマスを正しくうめると完成！ すると、新しい魔方陣が出てくるよ。",
+  "th": "เติมทุกช่องให้ถูกต้องเพื่อไขจัตุรัสให้สำเร็จ แล้วจัตุรัสใหม่จะมาให้เล่นต่อ!"
+ },
+ "htp_magic_square_7": {
+  "fr": "Aux niveaux Difficile et Très difficile, les deux diagonales doivent aussi correspondre.",
+  "es": "En Difícil y Muy difícil, las dos diagonales también deben coincidir.",
+  "pt": "No Difícil e no Muito difícil, as duas diagonais também precisam fechar a soma.",
+  "tr": "Zor ve Çok zor seviyelerde iki köşegenin toplamı da aynı olmalı.",
+  "ru": "На уровнях «Сложный» и «Очень сложный» обе диагонали тоже должны давать эту сумму.",
+  "ja": "「むずかしい」と「とてもむずかしい」では、ななめの2本も同じ合計にしよう。",
+  "th": "เมื่อเล่นแบบยากและยากมาก เส้นทแยงมุมทั้งสองเส้นต้องรวมได้เท่ากันด้วย"
+ },
+ "htp_magic_square_8": {
+  "fr": "🧒 Exemple :",
+  "es": "🧒 Ejemplo:",
+  "pt": "🧒 Exemplo:",
+  "tr": "🧒 Örnek:",
+  "ru": "🧒 Пример:",
+  "ja": "🧒 れい：",
+  "th": "🧒 ตัวอย่าง:"
+ },
+ "htp_magic_square_9": {
+  "fr": "Nombre magique : 15",
+  "es": "Número mágico: 15",
+  "pt": "Número mágico: 15",
+  "tr": "Sihirli sayı: 15",
+  "ru": "Магическое число: 15",
+  "ja": "魔法の数：15",
+  "th": "เลขมหัศจรรย์: 15"
+ },
+ "htp_math_bingo_1": {
+  "fr": "Du bingo classique, mais l'annonceur crie des CALCULS ! 🎱",
+  "es": "¡Bingo clásico, pero quien canta grita MATES! 🎱",
+  "pt": "Bingo clássico, mas o locutor canta CONTAS! 🎱",
+  "tr": "Klasik bingo, ama sunucu MATEMATİK soruları okuyor! 🎱",
+  "ru": "Классическое бинго, только ведущий выкрикивает ПРИМЕРЫ! 🎱",
+  "ja": "いつものビンゴ。でも、よび出しは算数の問題だよ！ 🎱",
+  "th": "บิงโกแบบดั้งเดิม แต่ผู้ขานจะตะโกนเป็นโจทย์เลข! 🎱"
+ },
+ "htp_math_bingo_10": {
+  "fr": "Ta ligne est complète → 🎉 BINGO ! +50 points !",
+  "es": "Eso completa tu fila → 🎉 ¡BINGO! ¡+50 puntos!",
+  "pt": "Isso completa sua linha → 🎉 BINGO! +50 pontos!",
+  "tr": "Satırın tamamlandı → 🎉 BİNGO! +50 puan!",
+  "ru": "Строка готова → 🎉 БИНГО! +50 очков!",
+  "ja": "これで1列そろった → 🎉 ビンゴ！ +50点！",
+  "th": "แถวของคุณครบแล้ว → 🎉 บิงโก! +50 คะแนน!"
+ },
+ "htp_math_bingo_11": {
+  "fr": "👨‍👩‍👧 Ce que ça apporte :",
+  "es": "👨‍👩‍👧 Cómo ayuda:",
+  "pt": "👨‍👩‍👧 Como isso ajuda:",
+  "tr": "👨‍👩‍👧 Nasıl Yardımcı Olur:",
+  "ru": "👨‍👩‍👧 Чем это полезно:",
+  "ja": "👨‍👩‍👧 身につく力：",
+  "th": "👨‍👩‍👧 ช่วยอะไรได้บ้าง:"
+ },
+ "htp_math_bingo_12": {
+  "fr": "Chercher les réponses sur la carte renforce la reconnaissance des nombres.",
+  "es": "Buscar las respuestas en el cartón fortalece el reconocimiento de números.",
+  "pt": "Procurar as respostas na cartela fortalece o reconhecimento dos números.",
+  "tr": "Kartta cevabı aramak sayıları tanımayı güçlendirir.",
+  "ru": "Поиск ответов на карточке тренирует узнавание чисел.",
+  "ja": "カードから答えをさがすことで、数を見分ける力が伸びます。",
+  "th": "การกวาดสายตาหาคำตอบบนการ์ดช่วยให้จำตัวเลขได้ไวขึ้น"
+ },
+ "htp_math_bingo_13": {
+  "fr": "Chaque annonce est un nouveau calcul mental, sous une pression amicale.",
+  "es": "Cada número cantado es un problema nuevo de cálculo mental, con una presión divertida.",
+  "pt": "Cada chamada é uma nova conta de cabeça, com uma pressãozinha amigável.",
+  "tr": "Her çağrı, tatlı bir heyecanla çözülen yeni bir zihinden hesap sorusudur.",
+  "ru": "Каждое задание ведущего — новый пример на устный счёт в лёгком азарте.",
+  "ja": "毎回のよび出しが、新しい暗算の問題です。楽しい緊張感の中で挑戦できます。",
+  "th": "ทุกครั้งที่ขานคือโจทย์คิดเลขในใจข้อใหม่ ภายใต้แรงกดดันเบาๆ แบบสนุกๆ"
+ },
+ "htp_math_bingo_14": {
+  "fr": "La chasse au bingo donne envie aux enfants de jouer, et de calculer, plus longtemps.",
+  "es": "La caza del bingo mantiene a los niños jugando, y calculando, por más tiempo.",
+  "pt": "A caça ao bingo faz as crianças jogarem, e calcularem, por mais tempo.",
+  "tr": "Bingo avı çocukların daha uzun oynamasını, yani daha çok hesap yapmasını sağlar.",
+  "ru": "Охота за бинго помогает детям играть и считать подольше.",
+  "ja": "ビンゴさがしが楽しいので、子どもが長くあそび、その分たくさん計算します。",
+  "th": "การตามล่าบิงโกทำให้เด็กๆ เล่นและคิดเลขได้นานขึ้น"
+ },
+ "htp_math_bingo_2": {
+  "fr": "👉 Comment ça marche :",
+  "es": "👉 Cómo funciona:",
+  "pt": "👉 Como funciona:",
+  "tr": "👉 Nasıl çalışır:",
+  "ru": "👉 Как это работает:",
+  "ja": "👉 こんなふうにあそぶよ：",
+  "th": "👉 เล่นยังไง:"
+ },
+ "htp_math_bingo_3": {
+  "fr": "Ta carte contient 16 nombres-réponses.",
+  "es": "Tu cartón tiene 16 números de respuesta.",
+  "pt": "Sua cartela tem 16 números de resposta.",
+  "tr": "Kartında 16 cevap sayısı var.",
+  "ru": "На твоей карточке 16 чисел-ответов.",
+  "ja": "カードには、答えの数が16こあるよ。",
+  "th": "การ์ดของคุณมีเลขคำตอบ 16 ตัว"
+ },
+ "htp_math_bingo_4": {
+  "fr": "L'annonceur énonce un calcul, comme 7 × 8.",
+  "es": "Quien canta anuncia una ecuación, como 7 × 8.",
+  "pt": "O locutor anuncia uma conta, como 7 × 8.",
+  "tr": "Sunucu bir işlem söyler, örneğin 7 × 8.",
+  "ru": "Ведущий называет пример, например 7 × 8.",
+  "ja": "よび出し役が、7 × 8 のような式を言うよ。",
+  "th": "ผู้ขานจะประกาศสมการ เช่น 7 × 8"
+ },
+ "htp_math_bingo_5": {
+  "fr": "Calcule et touche la réponse (56 !) sur ta carte : elle reçoit un tampon ⭐.",
+  "es": "Resuélvela y toca la respuesta (¡56!) en tu cartón: se marca con un sello ⭐.",
+  "pt": "Resolva e toque na resposta (56!) na sua cartela: ela ganha um carimbo de ⭐.",
+  "tr": "Çöz ve kartındaki cevaba (56!) dokun. Üstüne ⭐ damgası basılır.",
+  "ru": "Реши и нажми на ответ (56!) на карточке, и он получит штамп ⭐.",
+  "ja": "計算して、カードの答え (56!) をタップしよう。⭐のスタンプがおされるよ。",
+  "th": "คิดคำตอบแล้วแตะเลขคำตอบ (56!) บนการ์ด แล้วจะได้ตราประทับ ⭐"
+ },
+ "htp_math_bingo_6": {
+  "fr": "Remplis toute une ligne, colonne ou diagonale → BINGO ! Gros bonus + une nouvelle carte.",
+  "es": "Llena una fila, columna o diagonal entera → ¡BINGO! Gran bono + un cartón nuevo.",
+  "pt": "Complete uma linha, coluna ou diagonal inteira → BINGO! Bônus gigante + uma cartela nova.",
+  "tr": "Bir satırı, sütunu ya da köşegeni doldur → BİNGO! Büyük bonus + yeni bir kart.",
+  "ru": "Закрой целую строку, столбец или диагональ → БИНГО! Большой бонус + новая карточка.",
+  "ja": "よこ・たて・ななめのどれか1列をそろえると → ビンゴ！ 大きなボーナス + 新しいカード。",
+  "th": "ได้ตราครบทั้งแถว คอลัมน์ หรือเส้นทแยงมุม → บิงโก! รับโบนัสก้อนใหญ่ + การ์ดใบใหม่"
+ },
+ "htp_math_bingo_7": {
+  "fr": "Marque le plus de points possible avant la fin du chrono.",
+  "es": "Suma todos los puntos que puedas antes de que se acabe el tiempo.",
+  "pt": "Faça o máximo de pontos antes de o tempo acabar.",
+  "tr": "Süre bitmeden önce olabildiğince çok puan topla.",
+  "ru": "Набери как можно больше очков, пока не кончилось время.",
+  "ja": "時間切れまでに、できるだけ点をとろう。",
+  "th": "ทำคะแนนให้ได้มากที่สุดก่อนเวลาหมด"
+ },
+ "htp_math_bingo_8": {
+  "fr": "🧒 Exemple :",
+  "es": "🧒 Ejemplo:",
+  "pt": "🧒 Exemplo:",
+  "tr": "🧒 Örnek:",
+  "ru": "🧒 Пример:",
+  "ja": "🧒 れい：",
+  "th": "🧒 ตัวอย่าง:"
+ },
+ "htp_math_bingo_9": {
+  "fr": "L'annonceur dit 6 + 7 … tu touches 13 → ⭐",
+  "es": "Quien canta dice 6 + 7 … tú tocas 13 → ⭐",
+  "pt": "O locutor diz 6 + 7 … você toca no 13 → ⭐",
+  "tr": "Sunucu 6 + 7 der … sen 13 sayısına dokunursun → ⭐",
+  "ru": "Ведущий говорит 6 + 7 … ты нажимаешь 13 → ⭐",
+  "ja": "よび出しが 6 + 7 … きみは13をタップ → ⭐",
+  "th": "ผู้ขานบอก 6 + 7 … คุณแตะ 13 → ⭐"
+ },
+ "htp_math_pyramid_1": {
+  "fr": "👉 Comment ça marche :",
+  "es": "👉 Cómo funciona:",
+  "pt": "👉 Como funciona:",
+  "tr": "👉 Nasıl çalışır:",
+  "ru": "👉 Как это работает:",
+  "ja": "👉 こんなふうにあそぶよ：",
+  "th": "👉 เล่นยังไง:"
+ },
+ "htp_math_pyramid_2": {
+  "fr": "Exemple :",
+  "es": "Ejemplo:",
+  "pt": "Exemplo:",
+  "tr": "Örnek:",
+  "ru": "Пример:",
+  "ja": "れい：",
+  "th": "ตัวอย่าง:"
+ },
+ "htp_math_pyramid_3": {
+  "fr": "Comme 4 + 6 = 10, la case du haut doit être 10.",
+  "es": "Como 4 + 6 = 10, el bloque de arriba debe ser 10.",
+  "pt": "Como 4 + 6 = 10, o bloco de cima deve ser 10.",
+  "tr": "4 + 6 = 10 olduğu için üstteki kutu 10 olmalı.",
+  "ru": "Так как 4 + 6 = 10, в верхней клетке должно быть 10.",
+  "ja": "4 + 6 = 10 だから、いちばん上のマスは10になるよ。",
+  "th": "เพราะ 4 + 6 = 10 ช่องบนสุดจึงต้องเป็น 10"
+ },
+ "htp_math_pyramid_4": {
+  "fr": "👉 Ta mission :",
+  "es": "👉 Tu misión:",
+  "pt": "👉 Sua missão:",
+  "tr": "👉 Görevin:",
+  "ru": "👉 Твоя задача:",
+  "ja": "👉 きみのやること：",
+  "th": "👉 ภารกิจของคุณ:"
+ },
+ "htp_math_pyramid_5": {
+  "fr": "C'est comme bâtir une tour de nombres : chaque bloc porte le bloc au-dessus !",
+  "es": "¡Es como construir una torre de números: cada bloque sostiene al bloque de arriba!",
+  "pt": "É como construir uma torre de números: cada bloco sustenta o bloco de cima!",
+  "tr": "Sayılardan bir kule yapmak gibi: her blok üstündeki bloğu taşır!",
+  "ru": "Это как строить башню из чисел: каждый блок держит блок над собой!",
+  "ja": "数のタワーを作るみたいだね。どのブロックも、上のブロックをささえているよ！",
+  "th": "เหมือนการสร้างหอคอยตัวเลข บล็อกแต่ละก้อนต้องรองรับบล็อกที่อยู่ด้านบน!"
+ },
+ "htp_math_pyramid_6": {
+  "fr": "👨‍👩‍👧 Ce que ça apporte :",
+  "es": "👨‍👩‍👧 Cómo ayuda:",
+  "pt": "👨‍👩‍👧 Como isso ajuda:",
+  "tr": "👨‍👩‍👧 Nasıl Yardımcı Olur:",
+  "ru": "👨‍👩‍👧 Чем это полезно:",
+  "ja": "👨‍👩‍👧 身につく力：",
+  "th": "👨‍👩‍👧 ช่วยอะไรได้บ้าง:"
+ },
+ "htp_math_pyramid_7": {
+  "fr": "❤️ Pourquoi ce jeu est important :",
+  "es": "❤️ Por qué importa este juego:",
+  "pt": "❤️ Por que este jogo é importante:",
+  "tr": "❤️ Bu Oyun Neden Önemli:",
+  "ru": "❤️ Почему эта игра важна:",
+  "ja": "❤️ このゲームが大切な理由：",
+  "th": "❤️ ทำไมเกมนี้สำคัญ:"
+ },
+ "htp_math_pyramid_8": {
+  "fr": "Cela les prépare à des notions comme le triangle de Pascal, les décompositions de nombres et les régularités en calcul.",
+  "es": "Los prepara para conceptos como el triángulo de Pascal, la descomposición de números y los patrones aritméticos.",
+  "pt": "Isso prepara as crianças para conceitos como o Triângulo de Pascal, a composição de números e os padrões da aritmética.",
+  "tr": "Çocukları Pascal Üçgeni, sayı bağları ve aritmetik örüntüler gibi konulara hazırlar.",
+  "ru": "Так ребёнок готовится к таким темам, как треугольник Паскаля, состав числа и числовые закономерности.",
+  "ja": "パスカルの三角形、数の合成・分解、計算のパターンなどを学ぶための準備になります。",
+  "th": "ช่วยเตรียมลูกให้พร้อมกับแนวคิดอย่างสามเหลี่ยมปาสคาล คู่ตัวเลขที่รวมกันได้ และแบบรูปทางเลขคณิต"
+ },
+ "htp_math_pyramid_9": {
+  "fr": "C'est une excellente façon de construire de solides bases en maths tout en résolvant un casse-tête de pyramide amusant et satisfaisant.",
+  "es": "Es una gran manera de desarrollar buenas bases de matemáticas mientras resuelven un rompecabezas de pirámide divertido y satisfactorio.",
+  "pt": "É um ótimo jeito de criar uma base forte em matemática resolvendo um quebra-cabeça de pirâmide divertido e satisfatório.",
+  "tr": "Eğlenceli ve tatmin edici bir piramit bulmacası çözerken güçlü temel matematik becerileri kazanmanın harika bir yoludur.",
+  "ru": "Это отличный способ развить первые математические навыки, решая весёлую и увлекательную головоломку-пирамиду.",
+  "ja": "楽しくてやりがいのあるピラミッドパズルを解きながら、算数のしっかりした土台を作れます。",
+  "th": "เป็นวิธีที่ยอดเยี่ยมในการสร้างพื้นฐานคณิตศาสตร์ที่แข็งแรงตั้งแต่เด็ก ผ่านปริศนาพีระมิดที่สนุกและน่าพอใจ"
+ },
+ "htp_merge2048_1": {
+  "fr": "Glisse vers le haut, le bas, la gauche ou la droite pour déplacer toutes les tuiles.",
+  "es": "Desliza hacia arriba, abajo, izquierda o derecha para mover todas las fichas.",
+  "pt": "Deslize para cima, para baixo, para a esquerda ou para a direita para mover todas as peças.",
+  "tr": "Tüm karoları kaydırmak için parmağını yukarı, aşağı, sola veya sağa kaydır.",
+  "ru": "Проведи пальцем вверх, вниз, влево или вправо, и все плитки сдвинутся.",
+  "ja": "上・下・左・右にスワイプして、タイルをぜんぶ動かそう。",
+  "th": "ปัดขึ้น ลง ซ้าย หรือขวา เพื่อเลื่อนแผ่นตัวเลขทั้งหมด"
+ },
+ "htp_merge2048_10": {
+  "fr": "👨‍👩‍👧 Ce que ça apporte :",
+  "es": "👨‍👩‍👧 Cómo ayuda:",
+  "pt": "👨‍👩‍👧 Como isso ajuda:",
+  "tr": "👨‍👩‍👧 Nasıl Yardımcı Olur:",
+  "ru": "👨‍👩‍👧 Чем это полезно:",
+  "ja": "👨‍👩‍👧 身につく力：",
+  "th": "👨‍👩‍👧 ช่วยอะไรได้บ้าง:"
+ },
+ "htp_merge2048_11": {
+  "fr": "Apprend à doubler : 2, 4, 8, 16 … les puissances de deux.",
+  "es": "Enseña a duplicar: 2, 4, 8, 16 … las potencias de dos.",
+  "pt": "Ensina a dobrar: 2, 4, 8, 16 … as potências de dois.",
+  "tr": "İkiye katlamayı öğretir: 2, 4, 8, 16 … ikinin kuvvetleri.",
+  "ru": "Учит удвоению: 2, 4, 8, 16 … степени двойки.",
+  "ja": "2倍にしていく考え方が身につきます。2、4、8、16 … と、2のべき乗がならびます。",
+  "th": "สอนเรื่องการเพิ่มเป็นสองเท่า 2, 4, 8, 16 … ซึ่งก็คือเลขยกกำลังของสอง"
+ },
+ "htp_merge2048_12": {
+  "fr": "Développe l'anticipation : réfléchir à l'endroit où placer chaque tuile.",
+  "es": "Desarrolla la planificación: hay que pensar dónde debe ir cada ficha.",
+  "pt": "Desenvolve o planejamento: é preciso pensar onde cada peça deve ir.",
+  "tr": "İleriyi planlamayı geliştirir: her karonun nereye gideceğini düşünmek gerekir.",
+  "ru": "Развивает умение планировать: нужно думать, куда поставить каждую плитку.",
+  "ja": "先を見て計画する力が育ちます。タイルをどこに動かすか考えます。",
+  "th": "ฝึกวางแผนล่วงหน้า ต้องคิดว่าแต่ละแผ่นควรไปอยู่ตรงไหน"
+ },
+ "htp_merge2048_13": {
+  "fr": "Aiguise l'addition rapide pendant que la grille se remplit.",
+  "es": "Agiliza la suma rápida mientras el tablero se llena.",
+  "pt": "Afia a soma rápida enquanto o tabuleiro vai enchendo.",
+  "tr": "Tahta dolarken hızlı toplamayı keskinleştirir.",
+  "ru": "Тренирует быстрое сложение, пока поле заполняется.",
+  "ja": "盤面がうまっていく中で、すばやいたし算の力がみがかれます。",
+  "th": "ฝึกการบวกเร็วๆ ขณะที่กระดานเริ่มเต็ม"
+ },
+ "htp_merge2048_2": {
+  "fr": "👉 Comment ça marche :",
+  "es": "👉 Cómo funciona:",
+  "pt": "👉 Como funciona:",
+  "tr": "👉 Nasıl çalışır:",
+  "ru": "👉 Как это работает:",
+  "ja": "👉 こんなふうにあそぶよ：",
+  "th": "👉 เล่นยังไง:"
+ },
+ "htp_merge2048_3": {
+  "fr": "Quand deux tuiles avec le MÊME nombre se touchent, elles fusionnent en une seule, et le nombre double !",
+  "es": "Cuando dos fichas con el MISMO número se tocan, se unen en una, ¡y el número se duplica!",
+  "pt": "Quando duas peças com o MESMO número se encostam, elas viram uma só, e o número dobra!",
+  "tr": "AYNI sayıya sahip iki karo birbirine değince tek karo olur ve sayı ikiye katlanır!",
+  "ru": "Когда две плитки с ОДИНАКОВЫМ числом встречаются, они сливаются в одну, и число удваивается!",
+  "ja": "同じ数のタイルがとなり合うと、くっついて1つになり、数が2倍になるよ！",
+  "th": "เมื่อแผ่นที่มีเลขเหมือนกันสองแผ่นชนกัน จะรวมเป็นแผ่นเดียวและตัวเลขจะเพิ่มเป็นสองเท่า!"
+ },
+ "htp_merge2048_4": {
+  "fr": "2 + 2 font 4, 4 + 4 font 8, 8 + 8 font 16 …",
+  "es": "2 + 2 da 4, 4 + 4 da 8, 8 + 8 da 16 …",
+  "pt": "2 + 2 dá 4, 4 + 4 dá 8, 8 + 8 dá 16 …",
+  "tr": "2 + 2 = 4, 4 + 4 = 8, 8 + 8 = 16 …",
+  "ru": "2 + 2 даёт 4, 4 + 4 даёт 8, 8 + 8 даёт 16 …",
+  "ja": "2 + 2 で 4、4 + 4 で 8、8 + 8 で 16 …",
+  "th": "2 + 2 ได้ 4, 4 + 4 ได้ 8, 8 + 8 ได้ 16 …"
+ },
+ "htp_merge2048_5": {
+  "fr": "Chaque glissement ajoute une nouvelle petite tuile, alors fais toujours de la place.",
+  "es": "Cada deslizamiento agrega una ficha nueva, así que sigue haciendo espacio.",
+  "pt": "A cada deslize surge uma pecinha nova, então vá abrindo espaço.",
+  "tr": "Her kaydırmada yeni küçük bir karo gelir, o yüzden yer açmaya devam et.",
+  "ru": "После каждого хода появляется новая маленькая плитка, так что освобождай место.",
+  "ja": "スワイプするたびに小さなタイルがふえるから、場所をあけておこう。",
+  "th": "ทุกครั้งที่ปัดจะมีแผ่นเล็กๆ แผ่นใหม่โผล่มา ต้องเว้นที่ว่างไว้เสมอ"
+ },
+ "htp_merge2048_6": {
+  "fr": "Atteins le nombre cible pour gagner !",
+  "es": "¡Llega al número objetivo para ganar!",
+  "pt": "Chegue ao número alvo para vencer!",
+  "tr": "Kazanmak için hedef sayıya ulaş!",
+  "ru": "Собери нужное число, и ты выиграешь!",
+  "ja": "もくひょうの数に着いたらクリア！",
+  "th": "ทำให้ถึงเลขเป้าหมายเพื่อชนะ!"
+ },
+ "htp_merge2048_7": {
+  "fr": "🧒 Exemple :",
+  "es": "🧒 Ejemplo:",
+  "pt": "🧒 Exemplo:",
+  "tr": "🧒 Örnek:",
+  "ru": "🧒 Пример:",
+  "ja": "🧒 れい：",
+  "th": "🧒 ตัวอย่าง:"
+ },
+ "htp_merge2048_8": {
+  "fr": "Deux tuiles 2 se rejoignent → elles deviennent un 4 ✔",
+  "es": "Dos fichas de 2 se deslizan juntas → se convierten en un 4 ✔",
+  "pt": "Duas peças 2 deslizam juntas → viram um 4 ✔",
+  "tr": "İki 2 karosu kayıp birleşir → 4 olur ✔",
+  "ru": "Две плитки 2 сдвигаются вместе → получается 4 ✔",
+  "ja": "2のタイルが2まい、くっつく → 4になる ✔",
+  "th": "แผ่นเลข 2 สองแผ่นเลื่อนมาชนกัน → กลายเป็น 4 ✔"
+ },
+ "htp_merge2048_9": {
+  "fr": "Continue de fusionner : 4 + 4 = 8, 8 + 8 = 16 …",
+  "es": "Sigue fusionando: 4 + 4 = 8, 8 + 8 = 16 …",
+  "pt": "Continue juntando: 4 + 4 = 8, 8 + 8 = 16 …",
+  "tr": "Birleştirmeye devam: 4 + 4 = 8, 8 + 8 = 16 …",
+  "ru": "Сливай дальше: 4 + 4 = 8, 8 + 8 = 16 …",
+  "ja": "どんどん合体：4 + 4 = 8、8 + 8 = 16 …",
+  "th": "รวมต่อไปเรื่อยๆ: 4 + 4 = 8, 8 + 8 = 16 …"
+ },
+ "kakuro_tagline": {
+  "fr": "Fais que chaque ligne atteigne son total !",
+  "es": "¡Haz que cada línea sume su clave!",
+  "pt": "Faça cada linha somar o valor da pista!",
+  "tr": "Her sıranın toplamı hedefi tutsun!",
+  "ru": "Пусть каждая линия даст нужную сумму!",
+  "ja": "どのならびも、ヒントの合計にしよう！",
+  "th": "ทำให้ทุกแนวรวมได้ตามเลขใบ้!"
+ },
+ "keep_going": {
+  "fr": "Continue !",
+  "es": "¡Sigue adelante!",
+  "pt": "Continue!",
+  "tr": "Devam Et!",
+  "ru": "Продолжай!",
+  "ja": "つづけよう！",
+  "th": "สู้ต่อไป!"
+ },
+ "magic_square_make_target": {
+  "fr": "Chaque ligne = %1$d !",
+  "es": "¡Haz que cada línea sume %1$d!",
+  "pt": "Faça cada linha dar %1$d!",
+  "tr": "Her sıra = %1$d olsun!",
+  "ru": "Сумма каждой линии = %1$d!",
+  "ja": "どのならびも = %1$d にしよう！",
+  "th": "ทำให้ทุกแนว = %1$d!"
+ },
+ "magic_square_tagline": {
+  "fr": "Fais le bon total sur chaque ligne et colonne !",
+  "es": "¡Haz que cada fila y columna sumen igual!",
+  "pt": "Faça cada linha e coluna fechar a soma!",
+  "tr": "Her satır ve sütunun toplamı tutsun!",
+  "ru": "Пусть все строки и столбцы дадут одну сумму!",
+  "ja": "よこもたても合計をそろえよう！",
+  "th": "ทำให้ทุกแถวและทุกคอลัมน์รวมได้เท่ากัน!"
+ },
+ "math_bingo_tagline": {
+  "fr": "Résous l'annonce, tamponne ta carte !",
+  "es": "¡Resuelve lo que cantan y marca tu cartón!",
+  "pt": "Resolva a conta e carimbe a cartela!",
+  "tr": "Çağrıyı çöz, kartına damga bas!",
+  "ru": "Реши пример — отметь карточку!",
+  "ja": "よび出しを解いて、カードにスタンプ！",
+  "th": "แก้โจทย์ที่ขาน ปั๊มตราบนการ์ดของคุณ!"
+ },
+ "merge2048_next": {
+  "fr": "Suivant : %1$d",
+  "es": "Siguiente: %1$d",
+  "pt": "Próximo: %1$d",
+  "tr": "Sıradaki: %1$d",
+  "ru": "Дальше: %1$d",
+  "ja": "次：%1$d",
+  "th": "ต่อไป: %1$d"
+ },
+ "merge2048_prompt": {
+  "fr": "Atteins %1$d !",
+  "es": "¡Llega a %1$d!",
+  "pt": "Chegue a %1$d!",
+  "tr": "%1$d sayısına ulaş!",
+  "ru": "Собери %1$d!",
+  "ja": "%1$dまで行こう！",
+  "th": "ไปให้ถึง %1$d!"
+ },
+ "merge2048_reached": {
+  "fr": "%1$d atteint !",
+  "es": "¡Llegaste a %1$d!",
+  "pt": "%1$d alcançado!",
+  "tr": "%1$d sayısına ulaştın!",
+  "ru": "Собрано %1$d!",
+  "ja": "%1$dにとどいた！",
+  "th": "ถึง %1$d แล้ว!"
+ },
+ "merge2048_tagline": {
+  "fr": "Glisse, additionne, atteins la cible !",
+  "es": "¡Desliza para sumar y llegar al objetivo!",
+  "pt": "Deslize, some e chegue ao alvo!",
+  "tr": "Kaydır, topla, hedefe ulaş!",
+  "ru": "Двигай, складывай и достигай цели!",
+  "ja": "スワイプして、たして、もくひょうの数へ！",
+  "th": "ปัดเพื่อรวมเลขให้ถึงเป้าหมาย!"
+ },
+ "merge2048_target_hint": {
+  "fr": "Les plus petites tuiles disparaissent : continue de fusionner jusqu'à la prochaine cible !",
+  "es": "Las fichas más pequeñas se quitan: ¡sigue fusionando hasta el siguiente objetivo!",
+  "pt": "As peças menores saem do tabuleiro: continue juntando até o próximo alvo!",
+  "tr": "En küçük karolar kaldırıldı. Sıradaki hedef için birleştirmeye devam et!",
+  "ru": "Самые маленькие плитки убраны — продолжай сливать, чтобы дойти до следующей цели!",
+  "ja": "いちばん小さいタイルは消えるよ。合体をつづけて、次のもくひょうをめざそう！",
+  "th": "แผ่นที่เล็กที่สุดถูกเคลียร์ออกไปแล้ว รวมต่อไปเพื่อไปยังเป้าหมายถัดไป!"
+ },
+ "merge2048_target_title": {
+  "fr": "Cible atteinte !",
+  "es": "¡Objetivo logrado!",
+  "pt": "Alvo alcançado!",
+  "tr": "Hedefe Ulaştın!",
+  "ru": "Цель достигнута!",
+  "ja": "もくひょうクリア！",
+  "th": "ถึงเป้าหมายแล้ว!"
+ },
+ "new_game": {
+  "fr": "Nouvelle partie",
+  "es": "Juego nuevo",
+  "pt": "Novo jogo",
+  "tr": "Yeni Oyun",
+  "ru": "Новая игра",
+  "ja": "新しいゲーム",
+  "th": "เกมใหม่"
+ },
+ "resume_message": {
+  "fr": "Reprendre ta partie enregistrée ?",
+  "es": "¿Quieres continuar tu juego guardado?",
+  "pt": "Continuar seu jogo salvo?",
+  "tr": "Kayıtlı oyununa devam edelim mi?",
+  "ru": "Продолжить сохранённую игру?",
+  "ja": "とちゅうのゲームを続けますか？",
+  "th": "เล่นเกมที่บันทึกไว้ต่อไหม?"
+ },
+ "resume_title": {
+  "fr": "Content de te revoir !",
+  "es": "¡Qué bueno verte de nuevo!",
+  "pt": "Que bom ter você de volta!",
+  "tr": "Tekrar hoş geldin!",
+  "ru": "С возвращением!",
+  "ja": "おかえりなさい！",
+  "th": "ยินดีต้อนรับกลับมา!"
+ },
+ "start_new": {
+  "fr": "Recommencer",
+  "es": "Empezar de nuevo",
+  "pt": "Começar de novo",
+  "tr": "Yeniden Başla",
+  "ru": "Начать заново",
+  "ja": "はじめから",
+  "th": "เริ่มใหม่"
+ },
+ "you_built_the_pyramid": {
+  "fr": "Tu as bâti la pyramide…",
+  "es": "Construiste la pirámide…",
+  "pt": "Você montou a pirâmide…",
+  "tr": "Piramidi kurdun…",
+  "ru": "Пирамида построена…",
+  "ja": "ピラミッドができたよ…",
+  "th": "คุณสร้างพีระมิดได้แล้ว…"
+ },
+ "you_did_it": {
+  "fr": "🎉 Tu as réussi ! 🎉",
+  "es": "🎉 ¡Lo lograste! 🎉",
+  "pt": "🎉 Você conseguiu! 🎉",
+  "tr": "🎉 Başardın! 🎉",
+  "ru": "🎉 У тебя получилось! 🎉",
+  "ja": "🎉 やったね！ 🎉",
+  "th": "🎉 ทำได้แล้ว! 🎉"
+ },
+ "zone_solved_count": {
+  "fr": "Résolus : %1$d",
+  "es": "Resueltos: %1$d",
+  "pt": "Resolvidos: %1$d",
+  "tr": "Çözülen: %1$d",
+  "ru": "Решено: %1$d",
+  "ja": "解いた数：%1$d",
+  "th": "แก้ได้แล้ว: %1$d"
+ }
+}

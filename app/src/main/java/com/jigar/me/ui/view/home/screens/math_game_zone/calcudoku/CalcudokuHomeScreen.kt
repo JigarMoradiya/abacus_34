@@ -163,7 +163,7 @@ fun CalcudokuHomeScreen(
             if (bestTime > 0) {
                 Spacer(Modifier.height(AppDimens.Dimens6))
                 Text(
-                    "🏆 " + stringResource(R.string.best_time) + ": " + "%d:%02d".format(bestTime / 60, bestTime % 60),
+                    androidx.compose.ui.res.stringResource(R.string.g_best_time_line, "%d:%02d".format(bestTime / 60, bestTime % 60)),
                     color = GREEN,
                     style = AbTypography.fixed(17f * kitScale, FontWeight.Bold),
                     modifier = Modifier.abGamePill()

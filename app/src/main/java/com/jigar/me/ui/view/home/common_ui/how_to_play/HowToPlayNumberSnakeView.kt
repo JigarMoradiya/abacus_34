@@ -73,19 +73,19 @@ fun HowToPlayNumberSnakeView(
                 }
                 Spacer(Modifier.height(AppDimens.Dimens8))
                 LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(bottom = AppDimens.Dimens16)) {
-                    item { NsBullet("Connect the number trail from start to finish! 🐍") }
-                    item { NsHeading("👉 How it works:") }
-                    item { NsBullet("Green cells already show a number — those are your clues.") }
-                    item { NsBullet("Tap an empty cell, then tap a number from the tray below to place it.") }
-                    item { NsBullet("Every number must sit right next to the one before it and the one after it — up, down, left, or right.") }
-                    item { NsBullet("Fill every cell so the whole trail from 1 to the last number connects.") }
-                    item { NsBullet("Stuck? Tap the 💡 hint to reveal one cell.") }
-                    item { NsHeading("🧒 Example:") }
-                    item { NsBullet("1 is next to 2, 2 is next to 3, and so on — like a snake winding through the grid!") }
-                    item { NsBullet("No hints and a fast solve earns 3 stars ⭐⭐⭐.") }
-                    item { NsHeading("👨‍👩‍👧 How It Helps:") }
-                    item { NsBullet("Builds number-order sense and forward planning.") }
-                    item { NsBullet("Bigger grids on harder levels mean longer trails to plan out!") }
+                    item { NsBullet(stringResource(R.string.htp_number_snake_1)) }
+                    item { NsHeading(stringResource(R.string.htp_number_snake_2)) }
+                    item { NsBullet(stringResource(R.string.htp_number_snake_3)) }
+                    item { NsBullet(stringResource(R.string.htp_number_snake_4)) }
+                    item { NsBullet(stringResource(R.string.htp_number_snake_5)) }
+                    item { NsBullet(stringResource(R.string.htp_number_snake_6)) }
+                    item { NsBullet(stringResource(R.string.htp_number_snake_7)) }
+                    item { NsHeading(stringResource(R.string.htp_number_snake_8)) }
+                    item { NsBullet(stringResource(R.string.htp_number_snake_9)) }
+                    item { NsBullet(stringResource(R.string.htp_number_snake_10)) }
+                    item { NsHeading(stringResource(R.string.htp_number_snake_11)) }
+                    item { NsBullet(stringResource(R.string.htp_number_snake_12)) }
+                    item { NsBullet(stringResource(R.string.htp_number_snake_13)) }
                 }
             }
         }

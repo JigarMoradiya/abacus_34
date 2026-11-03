@@ -1,5 +1,7 @@
 package com.jigar.me.ui.view.home.screens.math_game_zone.target_number.components
 
+import com.jigar.me.ui.view.home.screens.math_game_zone.common.GameText
+
 enum class TargetOperation(val symbol: String) {
     ADD("+"), SUBTRACT("−"), MULTIPLY("×"), DIVIDE("÷")
 }
@@ -26,7 +28,7 @@ data class TargetUiState(
     val steps: List<String> = emptyList(),
     val isSolved: Boolean = false,
     val isSolvedCorrect: Boolean? = null,
-    val message: String? = null,
+    val message: GameText? = null,
     val solutionSteps: List<String> = emptyList(),
     val shownHintIndex: Int = 0,
     val hintUsed: Int = 0,

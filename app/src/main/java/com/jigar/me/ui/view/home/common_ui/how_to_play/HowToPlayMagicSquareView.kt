@@ -73,20 +73,20 @@ fun HowToPlayMagicSquareView(
                 }
                 Spacer(Modifier.height(AppDimens.Dimens8))
                 LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(bottom = AppDimens.Dimens16)) {
-                    item { MsBullet("Fill the grid so every row and column adds up to the magic number!") }
-                    item { MsHeading("👉 How it works:") }
-                    item { MsBullet("Some numbers are already placed. Tap an empty box to pick it.") }
-                    item { MsBullet("Tap a number below to drop it into the box.") }
-                    item { MsBullet("Each little sum turns green when a line hits the target.") }
-                    item { MsBullet("Fill every box correctly to solve the square — then a new one appears!") }
-                    item { MsBullet("On Hard and Very Hard, the two diagonals must match too.") }
-                    item { MsHeading("🧒 Example:") }
-                    item { MsBullet("Magic number: 15") }
-                    item { MsBullet("2 + 7 + 6 = 15  ✔  — every row and column must equal 15.") }
-                    item { MsHeading("👨‍👩‍👧 How It Helps:") }
-                    item { MsBullet("Builds addition fluency — kids add and re-add to hit the target.") }
-                    item { MsBullet("Develops logical thinking — they plan where each number goes.") }
-                    item { MsBullet("Introduces patterns — the magic square is a beautiful number pattern.") }
+                    item { MsBullet(stringResource(R.string.htp_magic_square_1)) }
+                    item { MsHeading(stringResource(R.string.htp_magic_square_2)) }
+                    item { MsBullet(stringResource(R.string.htp_magic_square_3)) }
+                    item { MsBullet(stringResource(R.string.htp_magic_square_4)) }
+                    item { MsBullet(stringResource(R.string.htp_magic_square_5)) }
+                    item { MsBullet(stringResource(R.string.htp_magic_square_6)) }
+                    item { MsBullet(stringResource(R.string.htp_magic_square_7)) }
+                    item { MsHeading(stringResource(R.string.htp_magic_square_8)) }
+                    item { MsBullet(stringResource(R.string.htp_magic_square_9)) }
+                    item { MsBullet(stringResource(R.string.htp_magic_square_10)) }
+                    item { MsHeading(stringResource(R.string.htp_magic_square_11)) }
+                    item { MsBullet(stringResource(R.string.htp_magic_square_12)) }
+                    item { MsBullet(stringResource(R.string.htp_magic_square_13)) }
+                    item { MsBullet(stringResource(R.string.htp_magic_square_14)) }
                 }
             }
         }

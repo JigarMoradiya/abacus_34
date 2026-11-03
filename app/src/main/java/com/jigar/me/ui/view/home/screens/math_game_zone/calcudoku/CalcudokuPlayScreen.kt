@@ -109,6 +109,8 @@ import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sin
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 
 private val ORANGE = Color(0xFFE65100)
 private val ORANGE_BORDER = Color(0xFFFF8400)
@@ -184,8 +186,8 @@ fun CalcudokuPlayScreen(
             ) {
                 GameMascotPanel(
                     cheer = when {
-                        state.justSolved -> "Awesome! 🎉"
-                        state.streak >= 3 -> "On fire! 🔥"
+                        state.justSolved -> stringResource(R.string.g_calcudoku_1)
+                        state.streak >= 3 -> stringResource(R.string.g_calcudoku_2)
                         else -> baseCheer
                     },
                     celebrate = state.justSolved, s = s,
@@ -719,7 +721,7 @@ private fun HintBar(state: CalcudokuUiState, s: Float) {
             modifier = Modifier.abBreathe(if (hasHint) 0.16f else 0.07f, if (hasHint) 900 else 1800)
         )
         Text(
-            hint ?: "Tap a box for a hint",
+            hint ?: stringResource(R.string.g_calcudoku_3),
             color = if (hasHint) Color(0xFF5D4037) else colors.textSecondary,
             style = AbTypography.fixed(15f * s, FontWeight.ExtraBold),
             maxLines = 1
@@ -728,16 +730,17 @@ private fun HintBar(state: CalcudokuUiState, s: Float) {
 }
 
 // Plain-English explanation of the selected cell's cage (for the hint pill).
+@Composable
 private fun cageHint(state: CalcudokuUiState): String? {
     val i = state.selectedIndex ?: return null
     val cage = state.cages.firstOrNull { it.cells.contains(i) } ?: return null
     val count = cage.cells.size
     return when (cage.op) {
-        CageOp.GIVEN -> "This box is ${cage.target}."
-        CageOp.PLUS -> "These $count boxes add up to ${cage.target}."
-        CageOp.MINUS -> "These 2 boxes differ by ${cage.target}."
-        CageOp.TIMES -> "These $count boxes multiply to make ${cage.target}."
-        CageOp.DIVIDE -> "One box ÷ the other makes ${cage.target}."
+        CageOp.GIVEN -> stringResource(R.string.g_calcudoku_4, cage.target)
+        CageOp.PLUS -> pluralStringResource(R.plurals.g_calcudoku_plus, count, count, cage.target)
+        CageOp.MINUS -> stringResource(R.string.g_calcudoku_6, cage.target)
+        CageOp.TIMES -> pluralStringResource(R.plurals.g_calcudoku_times, count, count, cage.target)
+        CageOp.DIVIDE -> stringResource(R.string.g_calcudoku_8, cage.target)
     }
 }
 
@@ -816,7 +819,7 @@ private fun ResultOverlay(score: Int, elapsed: Int, bestTime: Int, speedBonus: I
             emoji = "✖️",
             accent = ButtonType.BLUE,
             stars = starCount,
-            score = str(R.string.balloon_final_score) + ": $score",
+            score = androidx.compose.ui.res.stringResource(R.string.g_final_score_line, score),
             stats = {
                 Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
                     GameStatChip(emoji = "⏱️", value = timeString(elapsed), color = Color(0xFF5D4037))

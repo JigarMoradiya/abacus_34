@@ -122,7 +122,7 @@ fun MathPyramidPlayJetpackScreen(
     Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
         Column(modifier = Modifier.fillMaxSize()) {
             // 🔹 Header Bar
-            BackButtonWithText(title = "Level $levels • ${stringResource(difficulty.nameRes)}", onBackClick = onBackClick)
+            BackButtonWithText(title = stringResource(R.string.g_math_pyramid_2, levels, stringResource(difficulty.nameRes)), onBackClick = onBackClick)
 
             Spacer(Modifier.weight(1f))
 
@@ -261,7 +261,7 @@ private fun PyramidResultOverlay(
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis
                     )
-                    GameStatChip(emoji = "🔺", value = "Level $levels • $difficultyName", color = Color(0xFFE65100))
+                    GameStatChip(emoji = "🔺", value = stringResource(R.string.g_math_pyramid_2, levels, difficultyName), color = Color(0xFFE65100))
                 }
             },
             buttons = {
