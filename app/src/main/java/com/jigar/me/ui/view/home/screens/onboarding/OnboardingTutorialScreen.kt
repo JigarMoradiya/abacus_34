@@ -30,6 +30,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.horizontalScroll
@@ -358,7 +359,9 @@ private fun TutorialPage(
             horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Column(Modifier.weight(0.45f)) {
+            // The Previous button floats over the bottom-left corner: this column ends above it (the room above the bubble is used), so a longer
+            // bubble in another language moves the group up instead of pushing the mascot onto the button.
+            Column(Modifier.weight(0.45f).padding(bottom = 36.dp * k)) {
                 // "Show me" hangs just below the instruction bubble (an offset overlay, so nothing moves when it appears)
                 Box {
                     SpeechBubble(body)
@@ -372,9 +375,9 @@ private fun TutorialPage(
                     }
                 }
                 Spacer(Modifier.height(AppDimens.Dimens12))
-                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Bottom) {
-                    Mascot(116.dp * k)
-                    Spacer(Modifier.weight(1f))
+                // the mascot takes the room that is left (never more than its own size): very long text shrinks it, it never overlaps the buttons
+                BoxWithConstraints(Modifier.fillMaxWidth().weight(1f, fill = false)) {
+                    Mascot(minOf(116.dp * k, maxHeight))
                 }
             }
             Row(
