@@ -1162,7 +1162,7 @@
     <string name="paywall_save_vs_monthly">Save ~%1$d%% vs monthly</string>
     <string name="paywall_save_vs_weekly">Save ~%1$d%% vs weekly</string>
     <string name="paywall_percent_off">~%1$d%% OFF</string>
-    <string name="paywall_percent_off_extra">(extra ~%1$d%% OFF)</string>
+    <string name="paywall_percent_off_extra">(~%1$d%% OFF)</string>
     <!-- a paid intro price the store offers (a Google Play offer): "30% OFF", then "first year, then ₹1,200 / year" -->
     <string name="paywall_percent_off_store">%1$d%% OFF</string>
     <string name="paywall_amount_off_store">%1$s OFF</string>
