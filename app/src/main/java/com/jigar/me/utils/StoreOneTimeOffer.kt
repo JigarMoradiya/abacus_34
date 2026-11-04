@@ -31,8 +31,8 @@ data class StoreOneTimeOffer(
         else -> ""
     }
 
-    /** When the offer ends, only if that is within a day (a live countdown for a long offer would only be noise). */
-    fun countdownEnd(now: Long = System.currentTimeMillis()): Long? = endMillis?.takeIf { it - now in 1L..86_400_000L }
+    /** When the offer ends, if the Play Console offer has an end date and time (an offer that "runs indefinitely" has no countdown). */
+    fun countdownEnd(now: Long = System.currentTimeMillis()): Long? = endMillis?.takeIf { it > now }
 }
 
 /**

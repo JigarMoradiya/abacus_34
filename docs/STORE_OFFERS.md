@@ -12,12 +12,13 @@ Nothing to set in Firebase.
 Play Console > Monetize > One-time products > `com.abacus.all` > Purchase options and offers > **Add offer > Discount**:
 - **Percentage**: the card shows the regular price struck through, the offer price and "**N% OFF**" (the percentage you typed).
 - **Absolute discount**: the card shows the regular price struck through, the offer price and "**₹500 OFF**" (the amount you typed, in the user's currency).
-- A time window (start and end) works: the offer shows only inside it; when it ends within a day the card also shows a live "Ends in" countdown.
+- A time window (start and end) works: the offer shows only inside it, and while it has an end date the card also shows a live "Ends in" countdown
+  ("02:59:57", or "3d 04:12:09" when more than a day is left). An offer that "runs indefinitely" has no countdown.
 - Country / region eligibility, purchase limits and offer tags are Play's: the app shows the offer only when Play lists it for that person.
 - No offer in the console: the lifetime plan looks and is bought exactly as before (through RevenueCat).
 
 **Home page:** while such an offer is on, the same banner as the timed Home offer shows at the bottom of Home ("Special price!" and "30% OFF on the
-Lifetime plan" or "₹500 OFF on the Lifetime plan", with an "Ends in" countdown only when it ends within a day). Tapping it opens the plans. It is never
+Lifetime plan" or "₹500 OFF on the Lifetime plan", with an "Ends in" countdown when the console offer has an end date). Tapping it opens the plans. It is never
 shown together with the timed Home offer (`home_offer`): while that one runs it has the banner. Premium users do not see it.
 
 Why the app buys it itself: RevenueCat's Android SDK (10.21) reads only the normal price of a one-time product and never sets the offer token,
