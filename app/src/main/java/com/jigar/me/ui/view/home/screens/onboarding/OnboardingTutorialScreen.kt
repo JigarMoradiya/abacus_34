@@ -296,7 +296,7 @@ private fun TutorialPage(
             .padding(horizontal = AppDimens.Dimens16),
     ) {
     Column(Modifier.fillMaxSize()) {
-        Box(Modifier.fillMaxWidth().padding(top = AppDimens.Dimens8), contentAlignment = Alignment.Center) {
+        Box(Modifier.fillMaxWidth().padding(top = AppDimens.Dimens8 + 6.dp), contentAlignment = Alignment.Center) {   // a little air above the step row (as on iOS)
             StepBubbles(index, title)
             Text(
                 "Skip",
@@ -431,7 +431,7 @@ private fun FeaturesPage(index: Int, group: FeatureGroup, nextText: String, onPr
             .windowInsetsPadding(WindowInsets.safeDrawing)
             .padding(horizontal = AppDimens.Dimens16),
     ) {
-        Box(Modifier.fillMaxWidth().padding(top = AppDimens.Dimens8), contentAlignment = Alignment.Center) {
+        Box(Modifier.fillMaxWidth().padding(top = AppDimens.Dimens8 + 6.dp), contentAlignment = Alignment.Center) {   // a little air above the step row (as on iOS)
             StepBubbles(index, group.title)
             Text(
                 "Skip",
