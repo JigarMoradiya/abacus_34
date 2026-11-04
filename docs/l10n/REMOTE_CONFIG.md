@@ -23,4 +23,4 @@ a per-language video is possible too). Texts are translated by you or by the tra
 at the moment the screen opens, so a language change shows the new text after the screen is opened again.
 
 ## 3. Not translated here
-Practice page titles and descriptions come from the server database, not Remote Config: that is module M22 (to be discussed before it starts).
+Practice page titles and descriptions come from the server database, not Remote Config. They are translated inside the app (module M22, pattern map, English fallback), so there is nothing to set in the console. When the server database gets a new kind of title, run `tools/l10n/practice_patterns.py <synced db> --check` (see DECISIONS 22): a title with no pattern shows in English until it is translated.

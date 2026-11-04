@@ -32,7 +32,8 @@ fun AbChip(text: String, face: Color, modifier: Modifier = Modifier, icon: Image
         verticalAlignment = Alignment.CenterVertically,
     ) {
         if (icon != null) { Icon(icon, null, Modifier.size(13.dp * s), tint = Color.White); Spacer(Modifier.width(4.dp * s)) }
-        Text(text, style = AbTypography.fixed(13f * s, FontWeight.ExtraBold), color = Color.White, maxLines = 1)
+        // a chip that is squeezed by its row (a long translation) shrinks its text instead of cutting it
+        AbShrinkText(text, style = AbTypography.fixed(13f * s, FontWeight.ExtraBold), color = Color.White, minScale = 0.6f, maxLines = 1)
     }
 }
 

@@ -1,0 +1,134 @@
+# digit	3 Digit
+# line (+-)	5 Line (+-)
+# to #	1 to 100
+#d x #d	2D x 2D
+abacus calculation #	Abacus Calculation 3
+abacus calculation # (level #)	Abacus Calculation 3 (Level 4)
+add-sub, multiplication & division	Add-Sub, Multiplication & Division
+addition and subtraction of top bead	Addition and Subtraction of Top Bead
+addition and subtraction with #,#	Addition and Subtraction with 8,9
+addition and subtraction with top bead (+-#)	Addition and Subtraction with Top Bead (+-5)
+addition of #	Addition of 6
+addition of #,#	Addition of 6,7
+addition of lower bead (+#)	Addition of Lower Bead (+1234)
+addition of lower beads	Addition of Lower Beads
+addition of top bead	Addition of Top Bead
+all big friend of +#	All Big Friend of +10
+all big friend of -#	All Big Friend of -10
+all big friend(+)	All Big Friend(+)
+all big friend(-)	All Big Friend(-)
+all combination (family) formula (+)	All Combination (Family) Formula (+)
+all combination (family) formula (-)	All Combination (Family) Formula (-)
+all formula	All Formula
+all formula - # digit	All Formula - 3 Digit
+all formula of -#	All Formula of -10
+all formula of -#,+#	All Formula of -10,+10
+all formula of -#,-#	All Formula of -10,-5
+all little friend	All Little Friend
+basic addition and subtraction	Basic Addition and Subtraction
+big friend (+#)	Big Friend (+9)
+big friend (+#,+#) of +#	Big Friend (+6,+5) of +10
+big friend (+#,+#,+#)	Big Friend (+3,+2,+1)
+big friend (+#,+#,+#) of +#	Big Friend (+9,+8,+7) of +10
+big friend (-#)	Big Friend (-8)
+big friend (-#,-#) of -#	Big Friend (-6,-5) of -10
+big friend (-#,-#,-#)	Big Friend (-3,-2,-1)
+big friend (-#,-#,-#) of -#	Big Friend (-9,-8,-7) of -10
+big friend (-#,-#,-#-#) of -#	Big Friend (-4,-3,-2-1) of -10
+big friend of +#	Big Friend of +10
+big friend of -#	Big Friend of -10
+calculation #	Calculation 10
+calculation # (level #)	Calculation 2 (Level 2)
+calculation with #	Calculation with 100
+combination (family) formula	Combination (Family) Formula
+combination (family) formula (+#)	Combination (Family) Formula (+6)
+combination (family) formula (-#)	Combination (Family) Formula (-7)
+combination formula of +#	Combination Formula of +10
+combination formula of -#	Combination Formula of -10
+divide by #,#,#	Divide By 2,3,4
+divide by single digit	Divide By Single Digit
+divide by two digit	Divide by Two Digit
+division #	Division 1
+division # (level #)	Division 1 (Level 6)
+formula of +#,-#,+#	Formula of +5,-5,+10
+formula with +#	Formula with +10
+four digit & # line (+)	Four Digit & 2 Line (+)
+four digit & # line (+-)	Four Digit & 4 Line (+-)
+four digit (+-)	Four Digit (+-)
+level #	Level 1
+little friend (+#)	Little Friend (+3)
+little friend (+#,+#) of +#	Little Friend (+2,+1) of +5
+little friend (-#)	Little Friend (-3)
+little friend (-#,-#) of -#	Little Friend (-4,-3) of -5
+little friend +#,+#	Little Friend +4,+3
+little friend +#,+#,+#,+#	Little Friend +4,+3,+2,+1
+little friend -#,-#	Little Friend -2,-1
+little friend -#,-#,-#,-#	Little Friend -4,-3,-2,-1
+little friend of +#	Little Friend of +5
+little friend of +#,-#	Little Friend of +5,-5
+little friends and big friend of +#	Little Friends and Big Friend of +10
+mental arithmetic #	Mental Arithmetic 14
+mental arithmetic # (level #)	Mental Arithmetic 2 (Level 5)
+mental calculation #	Mental Calculation 1
+mental calculation of big friend	Mental Calculation of Big Friend
+mix of add-sub, multiplication & division	Mix of Add-Sub, Multiplication & Division
+mix of multiplication & division	Mix of Multiplication & Division
+mixed formulas up to all big friend	Mixed Formulas up to All Big Friend
+mixed formulas up to big friend +#	Mixed Formulas up to Big Friend +9
+mixed formulas up to big friend -#	Mixed Formulas up to Big Friend -3
+mixed formulas up to big friend -#,-#	Mixed Formulas up to Big Friend -6,-5
+mixed formulas up to combination (family) formula +#	Mixed Formulas up to Combination (Family) Formula +7
+mixed formulas up to combination (family) formula -#	Mixed Formulas up to Combination (Family) Formula -8
+multiplication #	Multiplication 7
+multiplication # (#d x #d)	Multiplication 1 (1D x 1D)
+multiplication # (#d x #d) (level #)	Multiplication 2 (2D x 1D) (Level 5)
+multiplication # (level #)	Multiplication 1 (Level 5)
+multiplication (#d x #d)	Multiplication (3D x 2D)
+multiplication (x #d)	Multiplication (x 2D)
+multiply with #	Multiply with 4
+multiply with #,#	Multiply with 8,9
+multiply with #,#,#	Multiply with 2,3,4
+multiply with #,#,#,#	Multiply with 2,3,4,5
+multiply with end of #,#,#	Multiply with end of 8,9,0
+multiply with end of #,#,#,#	Multiply with end of 1,2,3,4
+multiply with single digit	Multiply with Single Digit
+number	Number
+number #	Number 1
+random	Random
+random number	Random Number
+random number #	Random Number 2
+reverse number	Reverse Number
+reverse number #	Reverse Number 2
+revision #	Revision 2
+revision # (big friend of +#)	Revision 5 (Big Friend of +10)
+revision # (big friend of -#)	Revision 3 (Big Friend of -10)
+revision # (little friend of +#)	Revision 2 (Little Friend of +5)
+revision # (little friend of -#)	Revision 3 (Little Friend of -5)
+revision # of level #	Revision 4 of Level 2
+revision of combination (family) formula	Revision of Combination (Family) Formula
+revision of level	Revision of Level
+revision of level #	Revision of Level 2
+revision of level (+-#)	Revision of Level (+-123456789)
+single digit	Single Digit
+single digit & # line (+-)	Single Digit & 6 Line (+-)
+single digit (+)	Single Digit (+)
+single digit (+-)	Single Digit (+-)
+single-two digit & # line (+-)	Single-Two Digit & 6 Line (+-)
+single-two digit (+-)	Single-Two Digit (+-)
+subtraction of #	Subtraction of 7
+subtraction of lower beads	Subtraction of Lower Beads
+subtraction of lower beads (-#)	Subtraction of Lower Beads (-1234)
+subtraction of top bead	Subtraction of Top Bead
+three digit	Three Digit
+three digit & # line (+)	Three Digit & 3 Line (+)
+three digit & # line (+-)	Three Digit & 3 Line (+-)
+three digit (+)	Three Digit (+)
+three digit (+-)	Three Digit (+-)
+three, four digit & # line (+-)	Three, Four Digit & 4 Line (+-)
+two digit	Two Digit
+two digit & # line (+)	Two Digit & 4 Line (+)
+two digit & # line (+-)	Two Digit & 5 Line (+-)
+two digit & # lines (+)	Two Digit & 3 Lines (+)
+two digit (+)	Two Digit (+)
+two digit (+-)	Two Digit (+-)
+vedaavi calculation #	Vedaavi Calculation 4

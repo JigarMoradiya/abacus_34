@@ -50,6 +50,7 @@ import com.jigar.me.R
 import com.jigar.me.data.model.dbtable.abacus_all_data.DisplayPages
 import com.jigar.me.data.model.dbtable.abacus_all_data.Set
 import com.jigar.me.ui.view.ab.AbCritterView
+import com.jigar.me.ui.view.home.screens.abacus_practice.practiceText
 import com.jigar.me.ui.view.ab.AbLevelLook
 import com.jigar.me.ui.view.ab.AbShrinkText
 import com.jigar.me.ui.view.ab.AbTypography
@@ -168,7 +169,7 @@ private fun PageHeader(
         Column(Modifier.weight(1f)) {
             Box(Modifier.fillMaxWidth().height(18.dp * s * 1.1f), contentAlignment = Alignment.CenterStart) {
                 AbShrinkText(
-                    text = page.name,
+                    text = practiceText(page.name),
                     style = AbTypography.fixed(18f * s, FontWeight.ExtraBold),
                     color = if (isLocked) colors.textSecondary else colors.textPrimary,
                     modifier = Modifier.wrapContentHeight(unbounded = true),
@@ -178,7 +179,7 @@ private fun PageHeader(
             }
             if (!page.description.isNullOrEmpty()) {
                 AbShrinkText(
-                    text = page.description,
+                    text = practiceText(page.description),
                     style = AbTypography.fixed(12.5f * s, FontWeight.SemiBold),
                     color = colors.textSecondary,
                     modifier = Modifier.fillMaxWidth().offset(y = -(2.dp * s)),

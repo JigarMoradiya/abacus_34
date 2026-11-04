@@ -9,7 +9,7 @@ Done and committed: M0-M17 (see PROGRESS.md; M18 notifications and M19 server te
 Next: M20 leftovers (find them with `scan_static.py --rest`, `--kind literal`, `module_keys.py <module>` for every module, and a full route walk with
 `walk_routes.py`) -> M21 Arabic / right-to-left pass (`LanguageManager.RTL_READY`, `apply.py --with-ar`, LtrIsland for abacus/math, mirrored arrows,
 Arabic texts for the strings that skipped it).
-**STOP before M22 (Practice page titles from the server): the owner wants to discuss it first.** M23 = release prep (owner).
+M22 (Practice page titles and descriptions) is done (pattern map, see DECISIONS 22). M23 = release prep (owner).
 
 ## Fast pipeline for a module (used for M13-M19)
 1. An edit script (see `tools/l10n/lit_convert.py`, `games_batch.py`, or a one-off script) moves the literals into `strings.xml` and writes `docs/l10n/translations/pending_<batch>_en.json`.
