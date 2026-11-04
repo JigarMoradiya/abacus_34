@@ -81,6 +81,9 @@ object AbDebugFlags {
     val showResultEnabled: Boolean get() = BuildConfig.DEBUG && showResult
     /** Debug builds only (`--ei ab_paywall_trial 7`): shows a free-trial line on the paywall plan cards for renders. */
     @Volatile var paywallTrialDays: Int = 0
+    /** Debug builds only (`--ez ab_home_offer true`): a 10-minute yearly offer card on Home without the store's ".offer" product, for renders. */
+    @Volatile var homeOfferPreview: Boolean = false
+    val homeOfferPreviewEnabled: Boolean get() = BuildConfig.DEBUG && homeOfferPreview
 }
 
 @Composable

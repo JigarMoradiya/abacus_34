@@ -1,8 +1,5 @@
 package com.jigar.me.ui.view.home.screens.home.components
 
-// Removed: the store provides the discount. HomeOfferCard / HomeOfferSidebarCard / HomeOfferBadge below are no longer shown
-// anywhere (HomeScreen does not call them; HomeFragmentViewModel.initHomeOffer is commented out). Kept for reference only.
-
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -118,15 +115,14 @@ fun HomeOfferCard(
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
         }
-        // Countdown removed from the child-facing Home (no timer pressure on kids). The offer still runs and shows its countdown on the Purchase screen.
-        // Text(
-        //     text = stringResource(R.string.home_offer_ends_in, DateTimeUtils.displayDurationHourMinSec(remainingSec)),
-        //     color = Color.White,
-        //     style = AbTypography.fixed(11f * abS, FontWeight.ExtraBold, tabular = true),
-        //     modifier = Modifier
-        //         .background(if (endingSoon) Color(0xFFE53935) else Color.Black.copy(alpha = 0.2f), CircleShape)
-        //         .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
-        // )
+        Text(
+            text = stringResource(R.string.home_offer_ends_in, DateTimeUtils.displayDurationHourMinSec(remainingSec)),
+            color = Color.White,
+            style = AbTypography.fixed(11f * abS, FontWeight.ExtraBold, tabular = true),
+            modifier = Modifier
+                .background(if (endingSoon) Color(0xFFE53935) else Color.Black.copy(alpha = 0.2f), CircleShape)
+                .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
+        )
         Icon(Icons.Default.ChevronRight, contentDescription = null, tint = Color.White.copy(alpha = 0.9f))
     }
 }
@@ -188,16 +184,15 @@ fun HomeOfferSidebarCard(
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
         }
-        // Countdown removed from the child-facing Home (no timer pressure on kids). The offer still runs and shows its countdown on the Purchase screen.
-        // Text(
-        //     text = stringResource(R.string.home_offer_ends_in, DateTimeUtils.displayDurationHourMinSec(remainingSec)),
-        //     color = Color.White,
-        //     style = AbTypography.fixed(11f * abS, FontWeight.ExtraBold, tabular = true),
-        //     maxLines = 1,
-        //     modifier = Modifier
-        //         .background(if (endingSoon) Color(0xFFE53935) else Color.Black.copy(alpha = 0.2f), CircleShape)
-        //         .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
-        // )
+        Text(
+            text = stringResource(R.string.home_offer_ends_in, DateTimeUtils.displayDurationHourMinSec(remainingSec)),
+            color = Color.White,
+            style = AbTypography.fixed(11f * abS, FontWeight.ExtraBold, tabular = true),
+            maxLines = 1,
+            modifier = Modifier
+                .background(if (endingSoon) Color(0xFFE53935) else Color.Black.copy(alpha = 0.2f), CircleShape)
+                .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
+        )
         Icon(Icons.Default.ChevronRight, contentDescription = null, tint = Color.White.copy(alpha = 0.9f))
     }
 }
@@ -262,15 +257,14 @@ fun HomeOfferBadge(
         }
         // Countdown gets its own highlighted pill -- distinct from the surrounding
         // text so it draws the eye, matching the full HomeOfferCard's treatment.
-        // Countdown removed from the child-facing Home (no timer pressure on kids). The offer still runs and shows its countdown on the Purchase screen.
-        // Text(
-        //     text = DateTimeUtils.displayDurationHourMinSec(remainingSec),
-        //     color = Color.White,
-        //     style = AbTypography.fixed(10f * abS, FontWeight.ExtraBold, tabular = true),
-        //     maxLines = 1,
-        //     modifier = Modifier
-        //         .background(if (endingSoon) Color(0xFFE53935) else Color(0xFFFF7043), RoundedCornerShape(percent = 50))
-        //         .padding(horizontal = AppDimens.Dimens8, vertical = 2.dp)
-        // )
+        Text(
+            text = DateTimeUtils.displayDurationHourMinSec(remainingSec),
+            color = Color.White,
+            style = AbTypography.fixed(10f * abS, FontWeight.ExtraBold, tabular = true),
+            maxLines = 1,
+            modifier = Modifier
+                .background(if (endingSoon) Color(0xFFE53935) else Color(0xFFFF7043), RoundedCornerShape(percent = 50))
+                .padding(horizontal = AppDimens.Dimens8, vertical = 2.dp)
+        )
     }
 }

@@ -125,6 +125,10 @@ class HomeActivity : ComponentActivity() {
             if (BuildConfig.DEBUG) {
                 com.jigar.me.utils.FreemiumWindow.debugBillingIssue = intent.getBooleanExtra("ab_billing_issue", false)
                 com.jigar.me.utils.FreemiumWindow.debugReturningDay = if (intent.hasExtra("ab_returning_day")) intent.getIntExtra("ab_returning_day", 0) else null
+                if (intent.getBooleanExtra("ab_home_offer", false)) {
+                    preferences.setCustomParam(AppConstants.RemoteConfig.homeOffer, "{\"enabled\":true,\"duration_min\":10,\"name\":\"Special offer\",\"product\":\"yearly\"}")
+                    com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags.homeOfferPreview = true
+                }
             }
             com.jigar.me.utils.FreemiumWindow.refresh(preferences)
             if (BuildConfig.DEBUG && intent.getBooleanExtra("ab_freemium_notify_now", false)) com.jigar.me.utils.FreemiumWindow.debugNotifyNow(this)

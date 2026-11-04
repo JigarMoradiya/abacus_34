@@ -81,7 +81,8 @@ import com.jigar.me.ui.view.ab.LocalAbScale
 import com.jigar.me.ui.view.ab.abDarkened
 import com.jigar.me.ui.view.ab.abSquash
 // Removed: the store provides the discount (no countdown pill on the paywall)
-// import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
+import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
+import com.jigar.me.utils.AppConstants
 import com.jigar.me.ui.view.home.screens.purchase.components.getDurationTxt
 import com.jigar.me.ui.view.home.screens.purchase.components.getPriceSuffix
 import com.jigar.me.ui.view.home.screens.purchase.components.isYearly
@@ -361,11 +362,8 @@ private fun PaywallKitPlanCard(
     val tone = if (isHighlighted) colors.accentOrange else colors.outline
     val shape = RoundedCornerShape(AbShapes.md * s)
     val edge = if (isHighlighted) colors.accentOrange.abDarkened(0.2f) else colors.outline
-    // Removed: the store provides the discount (no Remote Config %, no struck-through ".offer" anchor, no countdown):
-    // val originalPrice = originalPriceText(uiState.discountPer, plan, uiState.original1YearData, uiState.discountPerLifetime, uiState.originalLifetimeData)
-    // val showYearOff = plan.isYearly() && uiState.discountPer > 0
-    // val showLifetimeOff = !plan.isYearly() && plan.isLifeTimeOffer() && plan.sku.contains("offer") && uiState.discountPerLifetime > 0
-    // val countdownEnd = if (showYearOff) uiState.homeOfferYearlyEndMillis else if (showLifetimeOff) uiState.homeOfferLifetimeEndMillis else null
+    // the timed Home offer: this plan is the ".offer" product shown INSTEAD of the regular one (original price struck through, % off, countdown)
+    val timed = plan.timedOffer(uiState)
     val savingsText = paywallSavingsText(plan, uiState)
     val trialDays = plan.freeTrialDays()
     val trialPrefix = if (trialDays > 0) stringResource(R.string.paywall_trial_then, trialDays) + " " else ""
@@ -397,7 +395,18 @@ private fun PaywallKitPlanCard(
                     color = if (isHighlighted) colors.accentOrange.abDarkened(if (colors.isDark) 0f else 0.2f) else colors.textPrimary,
                 )
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp * s)) {
-                    if (intro != null) {
+                    if (timed != null) {
+                        timed.originalPrice?.let {
+                            Text(
+                                it, style = AbTypography.fixed(12f * k, FontWeight.SemiBold),
+                                color = colors.textSecondary, textDecoration = TextDecoration.LineThrough, maxLines = 1,
+                            )
+                        }
+                        Text(
+                            "${plan.price ?: ""} ${plan.getPriceSuffix().trim()}".trim(),
+                            style = AbTypography.fixed(13f * k, FontWeight.ExtraBold), color = colors.brandPrimary, maxLines = 1,
+                        )
+                    } else if (intro != null) {
                         Text(
                             intro.regularPrice, style = AbTypography.fixed(12f * k, FontWeight.SemiBold),
                             color = colors.textSecondary, textDecoration = TextDecoration.LineThrough, maxLines = 1,
@@ -425,17 +434,18 @@ private fun PaywallKitPlanCard(
                 if (infoLine.isNotEmpty()) {
                     Text(infoLine, style = AbTypography.fixed(11f * k, FontWeight.Bold), color = colors.textSecondary, maxLines = 1)
                 }
-                // Removed: the store provides the discount ("(extra ~N% OFF)" / "~N% OFF" rows and the countdown pill)
-                // if (showYearOff || showLifetimeOff) {
-                //     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp * s)) {
-                //         Text(
-                //             if (showYearOff) stringResource(R.string.paywall_percent_off_extra, uiState.discountPer)
-                //             else stringResource(R.string.paywall_percent_off, uiState.discountPerLifetime),
-                //             style = AbTypography.fixed(11f * k, FontWeight.ExtraBold), color = colors.accentGreenInk,
-                //         )
-                //         // countdownEnd?.let { InlineCountdownPill(it, onOfferExpired) }
-                //     }
-                // }
+                if (timed != null && (timed.percentOff > 0 || timed.endMillis != null)) {
+                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp * s)) {
+                        if (timed.percentOff > 0) {
+                            Text(
+                                if (timed.isYearly) stringResource(R.string.paywall_percent_off_extra, timed.percentOff)
+                                else stringResource(R.string.paywall_percent_off, timed.percentOff),
+                                style = AbTypography.fixed(11f * k, FontWeight.ExtraBold), color = colors.accentGreenInk,
+                            )
+                        }
+                        timed.endMillis?.let { InlineCountdownPill(it, {}) }   // the plans reload when the window ends (PurchaseViewModel)
+                    }
+                }
             }
             AbButton(
                 if (plan.isLifeTimeOffer()) stringResource(R.string.txt_purchase_Now) else stringResource(R.string.paywall_subscribe),
@@ -474,6 +484,32 @@ internal fun RcPlanItem.freeTrialDays(): Int {
         Period.Unit.YEAR -> period.value * 365
         else -> 0
     }
+}
+
+/** What the timed Home offer (Remote Config `home_offer`) adds to a plan card: this plan is the ".offer" product shown INSTEAD of the regular one. */
+internal data class TimedOfferInfo(
+    /** % off worked out from the two store prices, 0 = unknown */
+    val percentOff: Int,
+    /** the regular plan's price, struck through; null when it is not higher than this price */
+    val originalPrice: String?,
+    /** when the window ends, for the live countdown */
+    val endMillis: Long?,
+    val isYearly: Boolean,
+)
+
+/** The timed Home offer on this plan, or null when this plan is not the ".offer" product of a running offer. */
+internal fun RcPlanItem.timedOffer(uiState: PurchaseUiState): TimedOfferInfo? {
+    val yearly = AppConstants.Products.matches(sku, AppConstants.Products.yearOffer)
+    val lifetime = sku == AppConstants.Products.lifetimeOffer
+    if (!yearly && !lifetime) return null
+    val original = (if (yearly) uiState.original1YearData else uiState.originalLifetimeData)
+        ?.takeIf { (it.price_amount_micros ?: 0L) > (price_amount_micros ?: 0L) }?.price
+    return TimedOfferInfo(
+        percentOff = if (yearly) uiState.discountPer else uiState.discountPerLifetime,
+        originalPrice = original,
+        endMillis = if (yearly) uiState.homeOfferYearlyEndMillis else uiState.homeOfferLifetimeEndMillis,
+        isYearly = yearly,
+    )
 }
 
 /**

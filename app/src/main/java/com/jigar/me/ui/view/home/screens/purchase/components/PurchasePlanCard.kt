@@ -38,7 +38,9 @@ import com.jigar.me.ui.jetpack.core.presentation.theme.ColorGreen
 // Removed: the store provides the discount (no countdown pill)
 // import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
+import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
 import com.jigar.me.ui.view.home.common_ui.dialogs.storeIntroOffer
+import com.jigar.me.ui.view.home.common_ui.dialogs.timedOffer
 import com.jigar.me.ui.view.home.common_ui.dialogs.thenLine
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.RcPlanItem
@@ -123,7 +125,7 @@ fun PurchasePlanCard(
                                 fontFamily = FontFamily(Font(R.font.font_bold))
                             )
                         )
-                        PriceUi(plan)
+                        PriceUi(plan, plan.timedOffer(uiState)?.originalPrice)
                     }
                 }
 
@@ -225,24 +227,26 @@ fun PurchasePlanCard(
                                 )
                             }
                         }
-                        // Removed: the store provides the discount ("(extra ~N% OFF)" / "~N% OFF" rows and the countdown pill)
-                        // if (plan.isYearly()) {
-                        //     if (original1MonthData != null) {
-                        //         val yearlyMicros = (originalYearly?.price_amount_micros ?: plan.price_amount_micros) ?: 0L
-                        //         // "save ~N% vs monthly" was removed from the plan card earlier (too much data)
-                        //         if (discountPer > 0) {
-                        //             Row {
-                        //                 Text(text = "(extra ~$discountPer% OFF)", ...)
-                        //                 uiState.homeOfferYearlyEndMillis?.let { endMillis -> InlineCountdownPill(endMillis, onOfferExpired) }
-                        //             }
-                        //         }
-                        //     }
-                        // } else if (plan.isLifeTimeOffer() && discountPerLifetime > 0) {
-                        //     Row {
-                        //         Text(text = "~ ${discountPerLifetime}% OFF", ...)
-                        //         uiState.homeOfferLifetimeEndMillis?.let { endMillis -> InlineCountdownPill(endMillis, onOfferExpired) }
-                        //     }
-                        // }
+                        // the timed Home offer: "(extra ~N% OFF)" / "~N% OFF" and the live countdown of the ".offer" plan
+                        val timed = plan.timedOffer(uiState)
+                        if (timed != null && (timed.percentOff > 0 || timed.endMillis != null)) {
+                            Row {
+                                if (timed.percentOff > 0) {
+                                    Text(
+                                        text = if (timed.isYearly) stringResource(R.string.paywall_percent_off_extra, timed.percentOff)
+                                               else stringResource(R.string.paywall_percent_off, timed.percentOff),
+                                        style = MaterialTheme.typography.labelMedium.copy(
+                                            color = ColorGreen, fontWeight = FontWeight.Bold,
+                                            fontFamily = FontFamily(Font(R.font.font_bold))
+                                        )
+                                    )
+                                }
+                                timed.endMillis?.let { endMillis ->
+                                    Spacer(Modifier.width(AppDimens.Dimens6))
+                                    InlineCountdownPill(endMillis, {})   // the plans reload when the window ends (PurchaseViewModel)
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -250,17 +254,22 @@ fun PurchasePlanCard(
     }
 }
 
-// Removed: the store provides the discount. The struck-through ".offer" anchor (and the price worked back from the Remote
-// Config lifetime %) is gone; the struck-through regular price now comes from the store's own intro offer, see PriceUi.
-// fun originalPriceText(
-//     discountPer: Int, plan: RcPlanItem,
-//     originalYearly: RcPlanItem?, discountPerLifetime: Int, originalLifetime: RcPlanItem?
-// ): String? { ... }
-
-/** The price line of a plan: the regular price, or (a paid intro offer from the store) the intro price with the regular one struck through. */
+/**
+ * The price line of a plan: the regular price, or (a paid intro offer from the store) the intro price with the regular one struck
+ * through. [timedOriginalPrice] is the regular plan's price while the timed Home offer shows this ".offer" plan instead of it.
+ */
 @Composable
-fun PriceUi(plan: RcPlanItem) {
-    val intro = plan.storeIntroOffer()
+fun PriceUi(plan: RcPlanItem, timedOriginalPrice: String? = null) {
+    val intro = if (timedOriginalPrice == null) plan.storeIntroOffer() else null
+    if (timedOriginalPrice != null) {
+        Text(
+            text = timedOriginalPrice,
+            style = MaterialTheme.typography.bodySmall.copy(
+                textDecoration = TextDecoration.LineThrough, color = ColorAccent,
+                fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))
+            )
+        )
+    }
     if (intro != null) {
         Text(
             text = intro.regularPrice,

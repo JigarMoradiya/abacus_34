@@ -45,6 +45,18 @@ private fun samplePlan(
     )
 }
 
+/** The timed Home offer (`ab_screen=paywalloffer` / `purchaseoffer`): the ".offer" yearly plan is shown INSTEAD of the regular one, 10 minutes left. */
+private fun sampleOfferState(): PurchaseUiState {
+    val base = sampleState(withIntro = false)
+    val yearOffer = samplePlan("com.abacus.puzzle.1year.offer", "₹840", 840_000_000, PackageType.ANNUAL)
+    return base.copy(
+        sortedPlanList = listOf(base.sortedPlanList[0], yearOffer, base.sortedPlanList[2]),
+        selectedIndex = 1,
+        discountPer = 30,
+        homeOfferYearlyEndMillis = System.currentTimeMillis() + 10 * 60_000L,
+    )
+}
+
 private fun sampleState(selected: Int = 0, withIntro: Boolean = true): PurchaseUiState {
     // the India store numbers of the plan page: monthly, the regular yearly (1,200; with a store intro price of 840 for the
     // first year = 30% off) and lifetime
@@ -69,8 +81,8 @@ private fun sampleState(selected: Int = 0, withIntro: Boolean = true): PurchaseU
 }
 
 @Composable
-fun AbPaywallPreview() {
-    val state = sampleState()
+fun AbPaywallPreview(timedOffer: Boolean = false) {
+    val state = if (timedOffer) sampleOfferState() else sampleState()
     Box(Modifier.fillMaxSize()) {
         AbBackground(AbWorld.Meadow, Modifier.fillMaxSize())
         KidsBottomSheet(visible = true, onDismiss = {}, widthFraction = 0.85f, showHandle = false) {
@@ -84,13 +96,13 @@ fun AbPaywallPreview() {
 }
 
 @Composable
-fun AbPurchasePreview() {
+fun AbPurchasePreview(timedOffer: Boolean = false) {
     Box(Modifier.fillMaxSize()) {
         AbBackground(AbWorld.Sunset, Modifier.fillMaxSize())
         // inside the safe area, like the real route (PurchaseScreenRoute)
         Box(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
             PurchaseScreen(
-                uiState = sampleState(), onPlanSelected = {}, onShowOldSubClick = {}, oldSubPopupCloseClick = {},
+                uiState = if (timedOffer) sampleOfferState() else sampleState(), onPlanSelected = {}, onShowOldSubClick = {}, oldSubPopupCloseClick = {},
                 onSubscribe = {}, onClose = {}, privacyUrl = "https://example.com/privacy",
             )
         }

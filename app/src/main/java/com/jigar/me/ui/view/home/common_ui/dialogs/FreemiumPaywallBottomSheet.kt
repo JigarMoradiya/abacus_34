@@ -1,8 +1,7 @@
 package com.jigar.me.ui.view.home.common_ui.dialogs
 
 import com.jigar.me.utils.AppConstants
-// Removed: the store provides the discount (no timed Home offer to start on dismiss)
-// import com.jigar.me.utils.HomeOfferManager
+import com.jigar.me.utils.HomeOfferManager
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.FreemiumWindow
 import androidx.compose.ui.platform.LocalUriHandler
@@ -58,7 +57,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jigar.me.R
 import com.jigar.me.ui.jetpack.core.presentation.theme.ColorAccent
 import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
-// import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
+import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.screens.purchase.components.getDurationTxt
 import com.jigar.me.ui.view.home.screens.purchase.components.isYearly
@@ -150,8 +149,8 @@ fun FreemiumPaywallBottomSheet(
     }
     DisposableEffect(Unit) {
         onDispose {
-            // Removed: the store provides the discount (a one-time home_offer used to start here when a parent who saw the prices closed the sheet)
-            // if (parentalGatePassed && !CommonUtils.checkPurchaseForExerciseExamCCM(prefs)) HomeOfferManager.startOnDismissIfNeeded(prefs)
+            // a one-time home_offer ("trigger": "dismiss") starts here, when a parent who saw the prices closes the sheet without buying
+            if (parentalGatePassed && !CommonUtils.checkPurchaseForExerciseExamCCM(prefs)) HomeOfferManager.startOnDismissIfNeeded(prefs)
             AppAnalytics.log(AppAnalytics.PAYWALL_DISMISSED, "surface" to "sheet", "context" to ctx, "gate_passed" to parentalGatePassed) }
     }
     fun planSku(index: Int) = uiState.sortedPlanList.getOrNull(index)?.sku ?: ""
@@ -561,7 +560,7 @@ private fun PaywallPlanCard(
                     fontFamily = FontFamily(Font(R.font.font_bold))
                 )
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    PriceUi(plan)
+                    PriceUi(plan, plan.timedOffer(uiState)?.originalPrice)
                 }
                 // a paid intro price the store offers: "first year, then ₹1,200 / year" and the green N% OFF
                 val intro = plan.storeIntroOffer()
@@ -582,17 +581,22 @@ private fun PaywallPlanCard(
                         )
                     }
                 }
-                // Removed: the store provides the discount ("(extra ~N% OFF)" / "~N% OFF" rows and the countdown pill)
-                // if (plan.isYearly()) {
-                //     // "save ~N% vs monthly" was removed from the plan card earlier (too much data): paywallSavingsText(plan, uiState)
-                //     if (uiState.discountPer > 0) {
-                //         Text(text = stringResource(R.string.paywall_percent_off_extra, uiState.discountPer), ...)
-                //         // uiState.homeOfferYearlyEndMillis?.let { endMillis -> InlineCountdownPill(endMillis, onOfferExpired) }
-                //     }
-                // } else if (plan.isLifeTimeOffer() && plan.sku.contains("offer") && uiState.discountPerLifetime > 0) {
-                //     Text(text = stringResource(R.string.paywall_percent_off, uiState.discountPerLifetime), ...)
-                //     // uiState.homeOfferLifetimeEndMillis?.let { endMillis -> InlineCountdownPill(endMillis, onOfferExpired) }
-                // }
+                // the timed Home offer: "(extra ~N% OFF)" / "~N% OFF" and the live countdown of the ".offer" plan
+                val timed = plan.timedOffer(uiState)
+                if (timed != null && (timed.percentOff > 0 || timed.endMillis != null)) {
+                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)) {
+                        if (timed.percentOff > 0) {
+                            Text(
+                                text = if (timed.isYearly) stringResource(R.string.paywall_percent_off_extra, timed.percentOff)
+                                       else stringResource(R.string.paywall_percent_off, timed.percentOff),
+                                color = Color(0xFF2E7D32),
+                                style = MaterialTheme.typography.labelSmall.scaled(),
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
+                        timed.endMillis?.let { InlineCountdownPill(it, {}) }   // the plans reload when the window ends (PurchaseViewModel)
+                    }
+                }
             }
 
             KidsActionButton(

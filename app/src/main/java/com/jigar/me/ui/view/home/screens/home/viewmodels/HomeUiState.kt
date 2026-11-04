@@ -31,8 +31,8 @@ data class HomeUiState(
     // One-time emotional review ask on day 2 — takes priority over showReviewGate above
     val showDay2Review: Boolean = false,
 
-    // Removed: the store provides the discount (the time-limited offer card on Home is gone)
-    // val homeOffer: HomeOfferUi? = null,
+    // the time-limited offer card on Home (Remote Config `home_offer`), null = none running
+    val homeOffer: HomeOfferUi? = null,
     val isPremium: Boolean = false,
 
     // Freemium time limit: the day 3 / day 7 parent reminder is due (the grown-up question comes first, then the plans)
@@ -44,7 +44,7 @@ data class HomeUiState(
     val billingIssueUrl: String? = null,
 )
 
-// Removed: the store provides the discount (no longer shown; kept so the old HomeOfferCard code still reads)
+// The time-limited Home offer card (Remote Config `home_offer`)
 data class HomeOfferUi(
     val title: String?,          // campaign name from Remote Config, null -> generic title
     val startedAtMillis: Long,
