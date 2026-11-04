@@ -146,9 +146,18 @@ fun AbPurchaseBoughtPreview() {
 /** Debug preview of the first-launch tutorial with sample plans on its last page: `ab_screen=onboarding1..6`. */
 @Composable
 fun AbOnboardingPreview(page: Int) {
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val prefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current
     com.jigar.me.ui.view.home.screens.onboarding.OnboardingTutorialScreen(
         selectedTheme = com.jigar.me.utils.AppConstants.Settings.theam_Default,
-        onFinish = {},
+        // finishing (Continue free for now, a skip on the last page) opens the real app, like the first launch does; it used to do nothing here
+        onFinish = {
+            com.jigar.me.ui.view.home.screens.onboarding.OnboardingGate.markSeen(prefs)
+            context.startActivity(
+                android.content.Intent(context, com.jigar.me.ui.view.home.HomeActivity::class.java)
+                    .addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK or android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            )
+        },
         startPage = page - 1,
     ) { left, footer, _ ->
         com.jigar.me.ui.view.home.common_ui.dialogs.PaywallKitEmbeddedLayout(left = left, footer = footer) {

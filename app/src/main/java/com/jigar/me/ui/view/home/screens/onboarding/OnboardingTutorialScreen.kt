@@ -640,7 +640,7 @@ private fun NumberPlate(value: Int) {
             Modifier
                 .background(colors.bgSecondary, CircleShape)
                 .border(2.dp, colors.outline, CircleShape)
-                .padding(horizontal = 20.dp * k, vertical = 1.dp * k),   // a low plate: the text keeps its size, only the card is shorter
+                .padding(horizontal = 20.dp * k, vertical = 0.dp),   // a low plate: the text keeps its size, only the card is shorter
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
         ) {
@@ -650,7 +650,7 @@ private fun NumberPlate(value: Int) {
                 transitionSpec = { (scaleIn(initialScale = 0.6f) + fadeIn()) togetherWith (scaleOut(targetScale = 1.4f) + fadeOut()) },
                 label = "abacusNumber",
             ) { v ->
-                Text(v.toString(), style = AbTypography.fixed(30f * k, FontWeight.Black).copy(lineHeight = (25f * k).sp, lineHeightStyle = PLATE_LINES), color = colors.brandPrimary)
+                Text(v.toString(), style = AbTypography.fixed(30f * k, FontWeight.Black).copy(lineHeight = (21f * k).sp, lineHeightStyle = PLATE_LINES), color = colors.brandPrimary)
             }
         }
     }
