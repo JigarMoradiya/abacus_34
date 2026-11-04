@@ -30,6 +30,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
@@ -142,7 +143,7 @@ fun AbacusWithDecimalCanvas(
     val handProgress: State<Float> = if (hintHand) {
         rememberInfiniteTransition(label = "hintHand").animateFloat(
             initialValue = 0f, targetValue = 1f,
-            animationSpec = infiniteRepeatable(tween(1100, easing = FastOutSlowInEasing), RepeatMode.Restart),
+            animationSpec = infiniteRepeatable(tween(1500, easing = LinearEasing), RepeatMode.Restart),   // one swipe + a pause
             label = "hintHandGlide",
         )
     } else remember { mutableFloatStateOf(0f) }
@@ -373,8 +374,6 @@ fun AbacusWithDecimalCanvas(
                     arrowDownBitmap = arrowDown,
                     toyFrame = toy,
                     arrowPulse = arrowPulse.value,
-                    handPainter = handPainter,
-                    handProgress = handProgress.value,
                 )
             }
         }
@@ -419,6 +418,27 @@ fun AbacusWithDecimalCanvas(
 
                     .spotlightTag(0, highlightSteps[0].message)
             )
+        }
+
+        // The tutorial's swipe hand is the TOP layer: above the beads, the toy frame and the answer bar. (Drawn inside the bead canvas, the
+        // neighbouring beads and the frame covered or cut it.) Same size and position as the bead canvas, so the geometry matches.
+        if (hintHand && showDirectionHint && handPainter != null) {
+            Canvas(
+                modifier = Modifier
+                    .height(totalHeight)
+                    .width(totalWidth)
+                    .padding(vertical = dim.rectLineWidth, horizontal = dim.rectLineWidth)
+                    .align(Alignment.Center)
+                    .zIndex(3f)
+            ) {
+                for (col in 0 until numberOfColumns) {
+                    val movement = rodMovementByRod[col]?.movement ?: continue
+                    drawSwipeHandForBead(
+                        colCenterX = geometry.columnCentersX[col], movement = movement, geometry = geometry,
+                        painter = handPainter, progress = handProgress.value,
+                    )
+                }
+            }
         }
 
         // Display number at top inside the frame (free-mode only)
