@@ -34,6 +34,8 @@ data class HomeUiState(
     // the time-limited offer card on Home (Remote Config `home_offer`), null = none running
     val homeOffer: HomeOfferUi? = null,
     val isPremium: Boolean = false,
+    /** owns the lifetime plan: the only people a lifetime offer is hidden from (a yearly or monthly subscriber still sees it) */
+    val ownsLifetime: Boolean = false,
 
     // Freemium time limit: the day 3 / day 7 parent reminder is due (the grown-up question comes first, then the plans)
     val showParentReminder: Boolean = false,

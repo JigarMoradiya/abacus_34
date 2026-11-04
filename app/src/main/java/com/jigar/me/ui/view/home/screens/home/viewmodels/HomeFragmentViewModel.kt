@@ -129,11 +129,12 @@ class HomeFragmentViewModel @Inject constructor(
         }
     }
 
-    // Hide "Upgrade" and the Home offer card for premium users, reacting to RC updates (login, restore, purchase).
+    // Hide "Upgrade" for premium users and the Home offer card where it has nothing to sell (a yearly offer: any premium user; a lifetime offer:
+    // only someone who owns lifetime), reacting to RC updates (login, restore, purchase).
     private fun observePremium() {
         viewModelScope.launch {
             RevenueCatHelper.customerInfoFlow.collect {
-                updateState_ { copy(isPremium = CommonUtils.checkPurchaseForExerciseExamCCM(prefs)) }
+                updateState_ { copy(isPremium = CommonUtils.checkPurchaseForExerciseExamCCM(prefs), ownsLifetime = CommonUtils.ownsLifetimePlan(prefs)) }
             }
         }
     }

@@ -287,7 +287,7 @@ fun HomeScreen(
         // Time-limited offer (Remote Config `home_offer`) -- hidden for premium users. While it runs the offer card
         // takes the slot of "This Week" (on a phone the compact chip, on a tablet the full card); "This Week" moves
         // next to the level pager instead.
-        val activeOffer = uiState.homeOffer?.takeIf { !uiState.isPremium }
+        val activeOffer = uiState.homeOffer?.takeIf { if (it.targetsLifetime) !uiState.ownsLifetime else !uiState.isPremium }
 
         Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
 
