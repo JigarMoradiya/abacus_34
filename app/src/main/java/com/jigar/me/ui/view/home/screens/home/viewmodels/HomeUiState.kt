@@ -54,6 +54,7 @@ data class HomeOfferUi(
     // a Google Play offer on the lifetime plan (set in the Play Console) instead of the timed Home offer: its "30% OFF" / "₹500 OFF" text,
     // and whether a countdown is shown (never for a store offer: it runs for days)
     val storeBadge: String? = null,
+    val storeOriginalPrice: String? = null,
     val endMillis: Long? = null,
     val hasTimer: Boolean = true,
 )

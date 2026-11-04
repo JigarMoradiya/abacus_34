@@ -28,7 +28,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
 import com.jigar.me.ui.view.ab.AbTypography
 import com.jigar.me.ui.view.ab.LocalAbScale
@@ -57,15 +62,26 @@ private fun rememberOfferRemainingSeconds(startedAtMillis: Long, durationMin: In
     return if (endMillis == null) remainingSec.coerceAtMost(durationMin * 60L) else remainingSec
 }
 
-/** The second line of the card: "Save 30% on the Lifetime plan" for the timed offer, "30% OFF on the Lifetime plan" / "₹500 OFF ..." for a store offer. */
+/**
+ * The second line of the card: "Save 30% on the Lifetime plan" for the timed offer; for a Google Play offer the regular price struck through,
+ * then the offer price and the "30% OFF" / "₹500 OFF" ("₹4,750 ₹3,325 · 30% OFF": the plan is already in the title).
+ */
 @Composable
-private fun offerLine(storeBadge: String?, discountPercent: Int, targetsLifetime: Boolean): String {
-    val productLabel = stringResource(if (targetsLifetime) R.string.home_offer_product_lifetime else R.string.home_offer_product_yearly)
-    return when {
-        storeBadge != null -> stringResource(R.string.home_offer_store_line, storeBadge, productLabel)
-        discountPercent > 0 -> stringResource(R.string.home_offer_save_pct, discountPercent, productLabel)
-        else -> stringResource(R.string.home_offer_special_price, productLabel)
+private fun offerLine(storeBadge: String?, storeOriginalPrice: String?, discountPercent: Int, targetsLifetime: Boolean): AnnotatedString {
+    if (storeBadge != null) {
+        return buildAnnotatedString {
+            if (storeOriginalPrice != null) {
+                withStyle(SpanStyle(textDecoration = TextDecoration.LineThrough)) { append(storeOriginalPrice) }
+                append(" ")
+            }
+            append(storeBadge)
+        }
     }
+    val productLabel = stringResource(if (targetsLifetime) R.string.home_offer_product_lifetime else R.string.home_offer_product_yearly)
+    return AnnotatedString(
+        if (discountPercent > 0) stringResource(R.string.home_offer_save_pct, discountPercent, productLabel)
+        else stringResource(R.string.home_offer_special_price, productLabel)
+    )
 }
 
 /** The chunky 3D edge under a full offer card (the iOS card's hard `D8572B` shadow, 3pt down). */
@@ -85,7 +101,8 @@ fun HomeOfferCard(
     onClick: () -> Unit,
     onExpired: () -> Unit,
     modifier: Modifier = Modifier,
-    storeBadge: String? = null,   // set for a Google Play offer: "30% OFF" / "₹500 OFF" (as set in the Play Console)
+    storeBadge: String? = null,   // set for a Google Play offer: "₹3,325 · 30% OFF" / "₹4,250 · ₹500 OFF" (as set in the Play Console)
+    storeOriginalPrice: String? = null,   // ... and the regular price, struck through before it
     endMillis: Long? = null,      // a store offer's end time
     hasTimer: Boolean = true,
 ) {
@@ -120,7 +137,7 @@ fun HomeOfferCard(
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
             Text(
-                text = offerLine(storeBadge, discountPercent, targetsLifetime),
+                text = offerLine(storeBadge, storeOriginalPrice, discountPercent, targetsLifetime),
                 color = Color.White.copy(alpha = 0.9f),
                 style = AbTypography.fixed(10f * abS, FontWeight.Bold),
                 maxLines = 1,
@@ -155,7 +172,8 @@ fun HomeOfferSidebarCard(
     onClick: () -> Unit,
     onExpired: () -> Unit,
     modifier: Modifier = Modifier,
-    storeBadge: String? = null,   // set for a Google Play offer: "30% OFF" / "₹500 OFF" (as set in the Play Console)
+    storeBadge: String? = null,   // set for a Google Play offer: "₹3,325 · 30% OFF" / "₹4,250 · ₹500 OFF" (as set in the Play Console)
+    storeOriginalPrice: String? = null,   // ... and the regular price, struck through before it
     endMillis: Long? = null,      // a store offer's end time
     hasTimer: Boolean = true,
 ) {
@@ -190,7 +208,7 @@ fun HomeOfferSidebarCard(
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
             Text(
-                text = offerLine(storeBadge, discountPercent, targetsLifetime),
+                text = offerLine(storeBadge, storeOriginalPrice, discountPercent, targetsLifetime),
                 color = Color.White.copy(alpha = 0.9f),
                 style = AbTypography.fixed(10f * abS, FontWeight.Bold),
                 maxLines = 1,
@@ -225,7 +243,8 @@ fun HomeOfferBadge(
     onClick: () -> Unit,
     onExpired: () -> Unit,
     modifier: Modifier = Modifier,
-    storeBadge: String? = null,   // set for a Google Play offer: "30% OFF" / "₹500 OFF" (as set in the Play Console)
+    storeBadge: String? = null,   // set for a Google Play offer: "₹3,325 · 30% OFF" / "₹4,250 · ₹500 OFF" (as set in the Play Console)
+    storeOriginalPrice: String? = null,   // ... and the regular price, struck through before it
     endMillis: Long? = null,      // a store offer's end time
     hasTimer: Boolean = true,
 ) {
@@ -260,7 +279,7 @@ fun HomeOfferBadge(
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
-            val pctText = offerLine(storeBadge, discountPercent, targetsLifetime)
+            val pctText = offerLine(storeBadge, storeOriginalPrice, discountPercent, targetsLifetime)
             Text(
                 text = pctText,
                 color = Color(0xFFE65100).copy(alpha = 0.7f),

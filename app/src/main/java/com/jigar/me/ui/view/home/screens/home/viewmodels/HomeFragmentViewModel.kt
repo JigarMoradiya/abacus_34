@@ -121,6 +121,7 @@ class HomeFragmentViewModel @Inject constructor(
                         discountPercent = offer.percentOff, targetsLifetime = true,
                         // "₹3,325 · 30% OFF"
                         storeBadge = listOf(offer.offerPriceText, offer.badgeText(context)).filter { it.isNotEmpty() }.joinToString(" · "),
+                        storeOriginalPrice = offer.fullPriceText,
                         endMillis = null, hasTimer = false,   // a store offer runs for days: no countdown
                     )
                 )
