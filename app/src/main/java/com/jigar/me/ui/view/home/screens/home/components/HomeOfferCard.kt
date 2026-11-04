@@ -198,7 +198,7 @@ fun HomeOfferSidebarCard(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
     ) {
-        Text("🏷️", style = MaterialTheme.typography.titleMedium.scaled())
+        Text("🏷️", style = MaterialTheme.typography.titleLarge.scaled())
         Column(verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens2)) {
             Text(
                 text = title?.takeIf { it.isNotBlank() } ?: stringResource(R.string.home_offer_title),
@@ -267,7 +267,7 @@ fun HomeOfferBadge(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)
     ) {
-        Text("🏷️", style = MaterialTheme.typography.labelSmall.scaled())
+        Text("🏷️", style = MaterialTheme.typography.titleMedium.scaled())
         Column(
             modifier = Modifier.weight(1f, fill = false),
             verticalArrangement = Arrangement.spacedBy(0.dp)
