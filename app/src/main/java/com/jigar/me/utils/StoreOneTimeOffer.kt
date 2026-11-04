@@ -104,6 +104,11 @@ object StoreOneTimeOffers {
             )
         }
 
-    fun read(details: ProductDetails?, now: Long = System.currentTimeMillis()): StoreOneTimeOffer? =
-        choose(factsOf(details), now)?.let(::toOffer)
+    fun read(details: ProductDetails?, now: Long = System.currentTimeMillis()): StoreOneTimeOffer? {
+        val facts = factsOf(details)
+        val chosen = choose(facts, now)
+        // debug builds only: what Google Play listed for the product, to find out why an offer does not show (adb logcat -s StoreOffer)
+        if (com.jigar.me.BuildConfig.DEBUG) android.util.Log.d("StoreOffer", "product=${details?.productId} offers=${facts.size} chosen=${chosen?.offerId} all=$facts")
+        return chosen?.let(::toOffer)
+    }
 }
