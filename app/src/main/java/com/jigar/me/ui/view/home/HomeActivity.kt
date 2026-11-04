@@ -129,6 +129,7 @@ class HomeActivity : ComponentActivity() {
                     preferences.setCustomParam(AppConstants.RemoteConfig.homeOffer, "{\"enabled\":true,\"duration_min\":10,\"name\":\"Special offer\",\"product\":\"yearly\"}")
                     com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags.homeOfferPreview = true
                 }
+                if (intent.getBooleanExtra("ab_home_store_offer", false)) com.jigar.me.ui.view.home.screens.math_game_zone.common.AbDebugFlags.homeStoreOfferPreview = true
             }
             com.jigar.me.utils.FreemiumWindow.refresh(preferences)
             if (BuildConfig.DEBUG && intent.getBooleanExtra("ab_freemium_notify_now", false)) com.jigar.me.utils.FreemiumWindow.debugNotifyNow(this)

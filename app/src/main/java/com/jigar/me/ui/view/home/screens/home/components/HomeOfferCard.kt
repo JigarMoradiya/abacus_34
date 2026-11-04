@@ -49,10 +49,23 @@ import com.jigar.me.utils.DateTimeUtils
 // card advertise more time than the offer could ever have (matches
 // HomeOfferManager.remainingMillis's clamp).
 @Composable
-private fun rememberOfferRemainingSeconds(startedAtMillis: Long, durationMin: Int, onExpired: () -> Unit): Long {
-    val endMillis = startedAtMillis + durationMin * 60_000L
-    val remainingSec = rememberCountdownRemainingSeconds(endMillis, onExpired)
-    return remainingSec.coerceAtMost(durationMin * 60L)
+private fun rememberOfferRemainingSeconds(startedAtMillis: Long, durationMin: Int, endMillis: Long?, hasTimer: Boolean, onExpired: () -> Unit): Long? {
+    if (!hasTimer) return null   // a store offer with no end (or one ending in more than a day) has no countdown
+    // the timed Home offer counts down from its own start; a store offer to the end time Google Play gives
+    val end = endMillis ?: (startedAtMillis + durationMin * 60_000L)
+    val remainingSec = rememberCountdownRemainingSeconds(end, onExpired)
+    return if (endMillis == null) remainingSec.coerceAtMost(durationMin * 60L) else remainingSec
+}
+
+/** The second line of the card: "Save 30% on the Lifetime plan" for the timed offer, "30% OFF on the Lifetime plan" / "₹500 OFF ..." for a store offer. */
+@Composable
+private fun offerLine(storeBadge: String?, discountPercent: Int, targetsLifetime: Boolean): String {
+    val productLabel = stringResource(if (targetsLifetime) R.string.home_offer_product_lifetime else R.string.home_offer_product_yearly)
+    return when {
+        storeBadge != null -> stringResource(R.string.home_offer_store_line, storeBadge, productLabel)
+        discountPercent > 0 -> stringResource(R.string.home_offer_save_pct, discountPercent, productLabel)
+        else -> stringResource(R.string.home_offer_special_price, productLabel)
+    }
 }
 
 /** The chunky 3D edge under a full offer card (the iOS card's hard `D8572B` shadow, 3pt down). */
@@ -72,9 +85,12 @@ fun HomeOfferCard(
     onClick: () -> Unit,
     onExpired: () -> Unit,
     modifier: Modifier = Modifier,
+    storeBadge: String? = null,   // set for a Google Play offer: "30% OFF" / "₹500 OFF" (as set in the Play Console)
+    endMillis: Long? = null,      // a store offer's end time
+    hasTimer: Boolean = true,
 ) {
-    val remainingSec = rememberOfferRemainingSeconds(startedAtMillis, durationMin, onExpired)
-    val endingSoon = remainingSec <= 60L
+    val remainingSec = rememberOfferRemainingSeconds(startedAtMillis, durationMin, endMillis, hasTimer, onExpired)
+    val endingSoon = (remainingSec ?: Long.MAX_VALUE) <= 60L
     val abS = LocalAbScale.current.factor
 
     val interaction = remember { MutableInteractionSource() }
@@ -103,26 +119,24 @@ fun HomeOfferCard(
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
-            val productLabel = stringResource(
-                if (targetsLifetime) R.string.home_offer_product_lifetime else R.string.home_offer_product_yearly
-            )
             Text(
-                text = if (discountPercent > 0) stringResource(R.string.home_offer_save_pct, discountPercent, productLabel)
-                       else stringResource(R.string.home_offer_special_price, productLabel),
+                text = offerLine(storeBadge, discountPercent, targetsLifetime),
                 color = Color.White.copy(alpha = 0.9f),
                 style = AbTypography.fixed(10f * abS, FontWeight.Bold),
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
         }
-        Text(
-            text = stringResource(R.string.home_offer_ends_in, DateTimeUtils.displayDurationHourMinSec(remainingSec)),
-            color = Color.White,
-            style = AbTypography.fixed(11f * abS, FontWeight.ExtraBold, tabular = true),
-            modifier = Modifier
-                .background(if (endingSoon) Color(0xFFE53935) else Color.Black.copy(alpha = 0.2f), CircleShape)
-                .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
-        )
+        remainingSec?.let {
+            Text(
+                text = stringResource(R.string.home_offer_ends_in, DateTimeUtils.displayDurationHourMinSec(it)),
+                color = Color.White,
+                style = AbTypography.fixed(11f * abS, FontWeight.ExtraBold, tabular = true),
+                modifier = Modifier
+                    .background(if (endingSoon) Color(0xFFE53935) else Color.Black.copy(alpha = 0.2f), CircleShape)
+                    .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
+            )
+        }
         Icon(Icons.Default.ChevronRight, contentDescription = null, tint = Color.White.copy(alpha = 0.9f))
     }
 }
@@ -141,9 +155,12 @@ fun HomeOfferSidebarCard(
     onClick: () -> Unit,
     onExpired: () -> Unit,
     modifier: Modifier = Modifier,
+    storeBadge: String? = null,   // set for a Google Play offer: "30% OFF" / "₹500 OFF" (as set in the Play Console)
+    endMillis: Long? = null,      // a store offer's end time
+    hasTimer: Boolean = true,
 ) {
-    val remainingSec = rememberOfferRemainingSeconds(startedAtMillis, durationMin, onExpired)
-    val endingSoon = remainingSec <= 60L
+    val remainingSec = rememberOfferRemainingSeconds(startedAtMillis, durationMin, endMillis, hasTimer, onExpired)
+    val endingSoon = (remainingSec ?: Long.MAX_VALUE) <= 60L
     val abS = LocalAbScale.current.factor
 
     val interaction = remember { MutableInteractionSource() }
@@ -172,27 +189,25 @@ fun HomeOfferSidebarCard(
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
-            val productLabel = stringResource(
-                if (targetsLifetime) R.string.home_offer_product_lifetime else R.string.home_offer_product_yearly
-            )
             Text(
-                text = if (discountPercent > 0) stringResource(R.string.home_offer_save_pct, discountPercent, productLabel)
-                       else stringResource(R.string.home_offer_special_price, productLabel),
+                text = offerLine(storeBadge, discountPercent, targetsLifetime),
                 color = Color.White.copy(alpha = 0.9f),
                 style = AbTypography.fixed(10f * abS, FontWeight.Bold),
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
         }
-        Text(
-            text = stringResource(R.string.home_offer_ends_in, DateTimeUtils.displayDurationHourMinSec(remainingSec)),
-            color = Color.White,
-            style = AbTypography.fixed(11f * abS, FontWeight.ExtraBold, tabular = true),
-            maxLines = 1,
-            modifier = Modifier
-                .background(if (endingSoon) Color(0xFFE53935) else Color.Black.copy(alpha = 0.2f), CircleShape)
-                .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
-        )
+        remainingSec?.let {
+            Text(
+                text = stringResource(R.string.home_offer_ends_in, DateTimeUtils.displayDurationHourMinSec(it)),
+                color = Color.White,
+                style = AbTypography.fixed(11f * abS, FontWeight.ExtraBold, tabular = true),
+                maxLines = 1,
+                modifier = Modifier
+                    .background(if (endingSoon) Color(0xFFE53935) else Color.Black.copy(alpha = 0.2f), CircleShape)
+                    .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
+            )
+        }
         Icon(Icons.Default.ChevronRight, contentDescription = null, tint = Color.White.copy(alpha = 0.9f))
     }
 }
@@ -210,9 +225,12 @@ fun HomeOfferBadge(
     onClick: () -> Unit,
     onExpired: () -> Unit,
     modifier: Modifier = Modifier,
+    storeBadge: String? = null,   // set for a Google Play offer: "30% OFF" / "₹500 OFF" (as set in the Play Console)
+    endMillis: Long? = null,      // a store offer's end time
+    hasTimer: Boolean = true,
 ) {
-    val remainingSec = rememberOfferRemainingSeconds(startedAtMillis, durationMin, onExpired)
-    val endingSoon = remainingSec <= 60L
+    val remainingSec = rememberOfferRemainingSeconds(startedAtMillis, durationMin, endMillis, hasTimer, onExpired)
+    val endingSoon = (remainingSec ?: Long.MAX_VALUE) <= 60L
     val abS = LocalAbScale.current.factor
     val shape = RoundedCornerShape(percent = 50)
 
@@ -242,11 +260,7 @@ fun HomeOfferBadge(
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
-            val productLabel = stringResource(
-                if (targetsLifetime) R.string.home_offer_product_lifetime else R.string.home_offer_product_yearly
-            )
-            val pctText = if (discountPercent > 0) stringResource(R.string.home_offer_save_pct, discountPercent, productLabel)
-                          else stringResource(R.string.home_offer_special_price, productLabel)
+            val pctText = offerLine(storeBadge, discountPercent, targetsLifetime)
             Text(
                 text = pctText,
                 color = Color(0xFFE65100).copy(alpha = 0.7f),
@@ -257,14 +271,16 @@ fun HomeOfferBadge(
         }
         // Countdown gets its own highlighted pill -- distinct from the surrounding
         // text so it draws the eye, matching the full HomeOfferCard's treatment.
-        Text(
-            text = DateTimeUtils.displayDurationHourMinSec(remainingSec),
-            color = Color.White,
-            style = AbTypography.fixed(10f * abS, FontWeight.ExtraBold, tabular = true),
-            maxLines = 1,
-            modifier = Modifier
-                .background(if (endingSoon) Color(0xFFE53935) else Color(0xFFFF7043), RoundedCornerShape(percent = 50))
-                .padding(horizontal = AppDimens.Dimens8, vertical = 2.dp)
-        )
+        remainingSec?.let {
+            Text(
+                text = DateTimeUtils.displayDurationHourMinSec(it),
+                color = Color.White,
+                style = AbTypography.fixed(10f * abS, FontWeight.ExtraBold, tabular = true),
+                maxLines = 1,
+                modifier = Modifier
+                    .background(if (endingSoon) Color(0xFFE53935) else Color(0xFFFF7043), RoundedCornerShape(percent = 50))
+                    .padding(horizontal = AppDimens.Dimens8, vertical = 2.dp)
+            )
+        }
     }
 }

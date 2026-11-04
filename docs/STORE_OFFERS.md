@@ -16,6 +16,10 @@ Play Console > Monetize > One-time products > `com.abacus.all` > Purchase option
 - Country / region eligibility, purchase limits and offer tags are Play's: the app shows the offer only when Play lists it for that person.
 - No offer in the console: the lifetime plan looks and is bought exactly as before (through RevenueCat).
 
+**Home page:** while such an offer is on, the same banner as the timed Home offer shows at the bottom of Home ("Special price!" and "30% OFF on the
+Lifetime plan" or "₹500 OFF on the Lifetime plan", with an "Ends in" countdown only when it ends within a day). Tapping it opens the plans. It is never
+shown together with the timed Home offer (`home_offer`): while that one runs it has the banner. Premium users do not see it.
+
 Why the app buys it itself: RevenueCat's Android SDK (10.21) reads only the normal price of a one-time product and never sets the offer token,
 so a purchase through it would charge the FULL price while the card shows the offer. While an offer exists the app therefore buys through Google Play
 directly (`StoreOfferPurchaser`, with the offer token), acknowledges the purchase, then calls RevenueCat `syncPurchases` so premium access is granted

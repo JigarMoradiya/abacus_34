@@ -21,6 +21,9 @@ import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.AppReviewManager
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.HomeOfferManager
+import com.jigar.me.utils.StoreOneTimeOffers
+import com.revenuecat.purchases.models.GoogleStoreProduct
+import com.jigar.me.R
 import com.jigar.me.utils.RevenueCatHelper
 import com.jigar.me.utils.StreakManager
 import com.jigar.me.utils.WeeklySummaryManager
@@ -49,6 +52,7 @@ class HomeFragmentViewModel @Inject constructor(
         viewModelScope.launch { checkStreak() }
         handleNotificationPermission()
         initHomeOffer()
+        initStoreOffer()
         observePremium()
         checkBillingIssue()
     }
@@ -97,6 +101,31 @@ class HomeFragmentViewModel @Inject constructor(
     }
 
     fun onHomeOfferExpired() = updateState_ { copy(homeOffer = null) }
+
+    // A Google Play discount offer on the lifetime plan (set in the Play Console) also shows on Home, as the same banner, with its
+    // "30% OFF" or "₹500 OFF" (whichever the console offer is) and a countdown only when it ends within a day. Never together with the
+    // timed Home offer (`home_offer`): while that one runs, it has the banner.
+    private fun initStoreOffer() {
+        if (HomeOfferManager.isTimedOfferActive(prefs)) return
+        if (!StoreOneTimeOffers.enabled(prefs.getCustomParam(AppConstants.RemoteConfig.storeOneTimeOffers, ""))) return
+        viewModelScope.launch {
+            val offer = if (AbDebugFlags.homeStoreOfferPreviewEnabled) AbDebugFlags.sampleStoreOffer() else {
+                val packages = runCatching { Purchases.sharedInstance.awaitOfferings().current?.availablePackages }.getOrNull() ?: return@launch
+                val lifetime = packages.firstOrNull { it.product.id == AppConstants.Products.lifetime } ?: return@launch
+                StoreOneTimeOffers.read((lifetime.product as? GoogleStoreProduct)?.productDetails) ?: return@launch
+            }
+            val end = offer.countdownEnd()
+            updateState_ {
+                copy(
+                    homeOffer = HomeOfferUi(
+                        title = context.getString(R.string.home_offer_store_title), startedAtMillis = 0L, durationMin = 0,
+                        discountPercent = offer.percentOff, targetsLifetime = true,
+                        storeBadge = offer.badgeText(context), endMillis = end, hasTimer = end != null,
+                    )
+                )
+            }
+        }
+    }
 
     // Hide "Upgrade" and the Home offer card for premium users, reacting to RC updates (login, restore, purchase).
     private fun observePremium() {

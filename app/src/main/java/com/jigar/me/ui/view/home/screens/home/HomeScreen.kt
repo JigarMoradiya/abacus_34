@@ -418,6 +418,7 @@ fun HomeScreen(
                                     durationMin = activeOffer.durationMin,
                                     discountPercent = activeOffer.discountPercent,
                                     targetsLifetime = activeOffer.targetsLifetime,
+                                    storeBadge = activeOffer.storeBadge, endMillis = activeOffer.endMillis, hasTimer = activeOffer.hasTimer,
                                     onClick = { AudioPlayerManager.playSoundBtnClick(); onNavigateToPurchase() },
                                     onExpired = viewModel::onHomeOfferExpired,
                                 )
@@ -463,6 +464,7 @@ fun HomeScreen(
                                     durationMin = activeOffer.durationMin,
                                     discountPercent = activeOffer.discountPercent,
                                     targetsLifetime = activeOffer.targetsLifetime,
+                                    storeBadge = activeOffer.storeBadge, endMillis = activeOffer.endMillis, hasTimer = activeOffer.hasTimer,
                                     onClick = { AudioPlayerManager.playSoundBtnClick(); onNavigateToPurchase() },
                                     onExpired = viewModel::onHomeOfferExpired
                                 )

@@ -516,9 +516,6 @@ internal fun StoreOneTimeOffer.badgeText(): String = when {
     else -> ""
 }
 
-/** When the offer ends, only if that is within a day (a live countdown for a long offer would only be noise). */
-internal fun StoreOneTimeOffer.countdownEnd(now: Long = System.currentTimeMillis()): Long? = endMillis?.takeIf { it - now in 1L..86_400_000L }
-
 /** What the timed Home offer (Remote Config `home_offer`) adds to a plan card: this plan is the ".offer" product shown INSTEAD of the regular one. */
 internal data class TimedOfferInfo(
     /** % off worked out from the two store prices, 0 = unknown */

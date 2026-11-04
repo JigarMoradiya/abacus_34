@@ -23,7 +23,17 @@ data class StoreOneTimeOffer(
     val endMillis: Long?,
     val priceMicros: Long,
     val currencyCode: String,
-)
+) {
+    /** "30% OFF" for a percentage offer, "₹500 OFF" for an absolute one, whichever the Play Console offer is; "" when neither can be said. */
+    fun badgeText(context: android.content.Context): String = when {
+        amountOffText != null -> context.getString(com.jigar.me.R.string.paywall_amount_off_store, amountOffText)
+        percentOff > 0 -> context.getString(com.jigar.me.R.string.paywall_percent_off_store, percentOff)
+        else -> ""
+    }
+
+    /** When the offer ends, only if that is within a day (a live countdown for a long offer would only be noise). */
+    fun countdownEnd(now: Long = System.currentTimeMillis()): Long? = endMillis?.takeIf { it - now in 1L..86_400_000L }
+}
 
 /**
  * Reads the discount offers of the lifetime product from Google Play. RevenueCat (10.21) only sees the normal price of a one-time product
