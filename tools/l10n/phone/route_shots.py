@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """route_shots.py <outdir> <route> lang [lang ...]  -> raw frames outdir/<route>_<lang>.raw plus the screen text per language."""
 import os, subprocess, sys, time, xml.etree.ElementTree as ET
-D = '1d04811b'; PKG = os.environ.get('PKG', 'com.abacus.puzzle.l10n'); ACT = f'{PKG}/com.jigar.me.ui.view.home.HomeActivity'
+D = os.environ.get('PHONE', '1d04811b'); PKG = os.environ.get('PKG', 'com.abacus.puzzle.l10n'); ACT = f'{PKG}/com.jigar.me.ui.view.home.HomeActivity'
 WAIT = float(os.environ.get('WAIT', '7'))
 def adb(*a, raw=False, t=60):
     r = subprocess.run(['adb', '-s', D, *a], capture_output=True, timeout=t); return r.stdout if raw else r.stdout.decode('utf-8', 'ignore')

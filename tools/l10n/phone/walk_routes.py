@@ -9,7 +9,7 @@ No taps and no images: numbers and one text snippet per route only.
 """
 import os, re, subprocess, sys, time, xml.etree.ElementTree as ET
 
-D = '1d04811b'
+D = os.environ.get('PHONE', '1d04811b')
 PKG = os.environ.get('PKG', 'com.abacus.puzzle.l10n')   # the test copy that sits next to the Play app
 ACT = f'{PKG}/com.jigar.me.ui.view.home.HomeActivity'
 WAIT = float(sys.argv[2]) if len(sys.argv) > 2 else 5.0

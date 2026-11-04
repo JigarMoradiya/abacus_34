@@ -1340,7 +1340,6 @@
     <string name="settings_voice_languages_count">اللغات (%1$d)</string>
     <string name="settings_voice_test_sentence">مرحبًا بك في عالم الأباكوس.</string>
     <string name="settings_language_title">لغة التطبيق</string>
-    <string name="settings_language_phone">مثل الهاتف</string>
     <string name="settings_theme_rainbow">قوس قزح</string>
     <string name="settings_theme_duotone">ثنائي اللون</string>
     <string name="settings_theme_candy">حلوى</string>

@@ -1170,7 +1170,6 @@
     <string name="settings_voice_languages_count">言語（%1$d）</string>
     <string name="settings_voice_test_sentence">そろばんの世界へようこそ。</string>
     <string name="settings_language_title">アプリの言語</string>
-    <string name="settings_language_phone">端末と同じ</string>
     <string name="settings_theme_rainbow">レインボー</string>
     <string name="settings_theme_duotone">ツートーン</string>
     <string name="settings_theme_candy">キャンディ</string>

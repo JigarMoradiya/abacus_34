@@ -74,25 +74,22 @@ fun LanguageSection(modifier: Modifier = Modifier, onLanguageClick: () -> Unit) 
     }
 }
 
-/** "Same as phone" while the phone's language is followed, otherwise the chosen language written in itself. */
+/** The chosen language written in itself. */
 @Composable
 private fun currentLanguageLabel(): String {
-    if (LanguageManager.isFollowingPhone()) return stringResource(R.string.settings_language_phone)
     val tag = LanguageManager.currentTag()
-    val language = LanguageManager.all.firstOrNull { it.tag == tag } ?: return stringResource(R.string.settings_language_phone)
-    return stringResource(language.nameRes)
+    return stringResource((LanguageManager.all.firstOrNull { it.tag == tag } ?: LanguageManager.all.first()).nameRes)
 }
 
-/** One entry of the picker: a language, or null for "same as the phone". */
-private data class LanguageChoice(val tag: String?, val title: String)
+/** One entry of the picker. */
+private data class LanguageChoice(val tag: String, val title: String)
 
 /** The language picker. Choosing a language applies it at once (the screen is redrawn in that language). */
 @Composable
 fun LanguageDialog(languages: List<LanguageManager.Language>, onDismiss: () -> Unit) {
     val s = LocalAbScale.current.factor
-    val phoneTitle = stringResource(R.string.settings_language_phone)
-    val choices = listOf(LanguageChoice(null, phoneTitle)) + languages.map { LanguageChoice(it.tag, stringResource(it.nameRes)) }
-    val selected = if (LanguageManager.isFollowingPhone()) choices.first() else choices.firstOrNull { it.tag == LanguageManager.currentTag() } ?: choices.first()
+    val choices = languages.map { LanguageChoice(it.tag, stringResource(it.nameRes)) }
+    val selected = choices.firstOrNull { it.tag == LanguageManager.currentTag() } ?: choices.first()
     AbDialog(
         title = stringResource(R.string.settings_language_title),
         icon = Icons.Rounded.Language,

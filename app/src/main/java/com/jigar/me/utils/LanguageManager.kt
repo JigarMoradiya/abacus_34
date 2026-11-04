@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.res.Configuration
 import androidx.core.os.LocaleListCompat
 import com.jigar.me.BuildConfig
+import com.jigar.me.MyApplication
 import com.jigar.me.R
 import java.util.Locale
 
@@ -15,7 +16,7 @@ import java.util.Locale
  * - The choice is stored by AppCompat (`autoStoreLocales` in the manifest) and applied to every activity, also on Android 7-12.
  * - Which languages are offered besides English comes from the Remote Config key `enabled_languages` (see [parseEnabled]), so a
  *   language can be turned on or off without a new release. Debug builds offer all of them.
- * - "Follow the phone" means no app locale is set: the phone's language is used when we have it, otherwise English.
+ * - English is the default whatever the phone's language is ([useEnglishUntilChosen]); another language only after the person picks it.
  */
 object LanguageManager {
 
@@ -52,24 +53,43 @@ object LanguageManager {
         return all.filter { it.tag in tags && isOffered(it.tag) }
     }
 
-    /** The tag of the language the UI uses now: the chosen app language, else the phone's when we have it, else English. */
+    /** The tag of the language [chosenLanguage] (what the person picked, null = nothing picked) gives: the phone's language is NOT used,
+     *  English is the default. A tag the app does not offer (yet) is English too. */
+    fun tagFor(chosenLanguage: String?): String = all.firstOrNull { it.tag == chosenLanguage && isOffered(it.tag) }?.tag ?: "en"
+
+    /** The tag of the language the UI uses now: the language picked in the app (or in the phone's per-app language setting), else English.
+     *  AppCompat can only tell the picked language while an activity exists (on Android 13+ it asks the system through the activity), so the
+     *  pick is also kept in our own preference file: background work (notifications) reads it from there. */
     fun currentTag(): String {
         val chosen = AppCompatDelegate.getApplicationLocales()
-        val language = if (!chosen.isEmpty) chosen[0]?.language else Locale.getDefault().language
-        return all.firstOrNull { it.tag == language && isOffered(it.tag) }?.tag ?: "en"
+        return tagFor(if (!chosen.isEmpty) chosen[0]?.language else savedTag())
+    }
+
+    private const val PREFS = "app_language"
+    private const val KEY_TAG = "tag"
+    private fun savedTag(): String? = runCatching {
+        MyApplication.getInstance().getSharedPreferences(PREFS, Context.MODE_PRIVATE).getString(KEY_TAG, null)
+    }.getOrNull()
+    private fun saveTag(tag: String) {
+        runCatching { MyApplication.getInstance().getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putString(KEY_TAG, tag).apply() }
+    }
+
+    /** English is the default language, whatever the phone's language is: until a language is picked the app is set to English.
+     *  Call from an activity right after `super.onCreate`; a language picked later (in the app or in the phone's per-app language
+     *  setting) is kept and remembered for background work. */
+    fun startUp() {
+        val chosen = AppCompatDelegate.getApplicationLocales()
+        if (chosen.isEmpty) set(savedTag() ?: "en") else chosen[0]?.language?.let { saveTag(it) }
     }
 
     /** The app language whose words a voice of [voice] speaks: the voice's own language when the app has it, else English
      *  (an Indian English or Hindi voice gets English words, as before). */
     fun tagForVoice(voice: Locale): String = all.firstOrNull { it.tag == voice.language && isOffered(it.tag) }?.tag ?: "en"
 
-    /** True when the user has not picked a language in the app (the phone's language is followed). */
-    fun isFollowingPhone(): Boolean = AppCompatDelegate.getApplicationLocales().isEmpty
-
-    /** Applies a language, or null to follow the phone again. Recreates the activity, so call it from the main thread. */
-    fun set(tag: String?) {
-        val list = if (tag == null) LocaleListCompat.getEmptyLocaleList() else LocaleListCompat.forLanguageTags(tag)
-        AppCompatDelegate.setApplicationLocales(list)
+    /** Applies a language. Recreates the activity, so call it from the main thread. */
+    fun set(tag: String) {
+        saveTag(tag)
+        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(tag))
     }
 }
 
@@ -84,5 +104,5 @@ fun Context.withLanguage(tag: String): Context {
     return createConfigurationContext(config)
 }
 
-/** This context in the language the app shows now (the chosen language, else the phone's when we have it, else English). */
+/** This context in the language the app shows now (the chosen language, else English). */
 fun Context.inAppLanguage(): Context = withLanguage(LanguageManager.currentTag())

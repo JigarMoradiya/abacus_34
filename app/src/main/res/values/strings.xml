@@ -694,7 +694,6 @@
     <string name="settings_voice_languages_count">Languages (%1$d)</string>
     <string name="settings_voice_test_sentence">Welcome to the world of Abacus.</string>
     <string name="settings_language_title">App Language</string>
-    <string name="settings_language_phone">Same as phone</string>
     <string name="settings_theme_rainbow">Rainbow</string>
     <string name="settings_theme_duotone">Duo-Tone</string>
     <string name="settings_theme_candy">Candy</string>

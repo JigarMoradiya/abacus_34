@@ -53,6 +53,21 @@ class LanguageAndNumberFormatTest {
         assertEquals("3", LocalizedNumberFormat.format(3.0, locale = Locale.forLanguageTag("ja")))
     }
 
+    @Test fun englishIsTheDefaultWhateverThePhoneSpeaks() {
+        val before = Locale.getDefault()
+        try {
+            Locale.setDefault(Locale.forLanguageTag("fr-FR"))
+            assertEquals("en", LanguageManager.tagFor(null))   // nothing picked: English, not the phone's French
+        } finally { Locale.setDefault(before) }
+    }
+
+    @Test fun aPickedLanguageIsUsedAndAnUnknownOneIsEnglish() {
+        assertEquals("fr", LanguageManager.tagFor("fr"))
+        assertEquals("ar", LanguageManager.tagFor("ar"))
+        assertEquals("en", LanguageManager.tagFor("hi"))
+        assertEquals("en", LanguageManager.tagFor("en"))
+    }
+
     @Test fun voiceLanguageDecidesTheSpokenWords() {
         assertEquals("fr", LanguageManager.tagForVoice(Locale.forLanguageTag("fr-CA")))
         assertEquals("pt", LanguageManager.tagForVoice(Locale.forLanguageTag("pt-BR")))

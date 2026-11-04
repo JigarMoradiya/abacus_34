@@ -88,6 +88,8 @@ class HomeActivity : AppCompatActivity() {   // AppCompat so the chosen app lang
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // English is the default language, not the phone's (needs an activity: AppCompat reaches the system setting through it)
+        com.jigar.me.utils.LanguageManager.startUp()
 
         deepLinkRoute = allowedDeepLink(intent.getStringExtra(EXTRA_DEEP_LINK_ROUTE))
         logDeviceQualifiers(this)

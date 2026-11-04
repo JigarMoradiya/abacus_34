@@ -239,16 +239,6 @@
   "th": "ภาษาของแอป",
   "ar": "لغة التطبيق"
  },
- "settings_language_phone": {
-  "fr": "Comme le téléphone",
-  "es": "Igual que el teléfono",
-  "pt": "Igual ao telefone",
-  "tr": "Telefonla aynı",
-  "ru": "Как на телефоне",
-  "ja": "端末と同じ",
-  "th": "ตามโทรศัพท์",
-  "ar": "مثل الهاتف"
- },
  "settings_theme_rainbow": {
   "fr": "Arc-en-ciel",
   "es": "Arcoíris",

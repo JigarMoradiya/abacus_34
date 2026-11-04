@@ -1204,7 +1204,6 @@
     <string name="settings_voice_languages_count">Diller (%1$d)</string>
     <string name="settings_voice_test_sentence">Abaküs dünyasına hoş geldin.</string>
     <string name="settings_language_title">Uygulama dili</string>
-    <string name="settings_language_phone">Telefonla aynı</string>
     <string name="settings_theme_rainbow">Gökkuşağı</string>
     <string name="settings_theme_duotone">İki tonlu</string>
     <string name="settings_theme_candy">Şeker</string>

@@ -1238,7 +1238,6 @@
     <string name="settings_voice_languages_count">Langues (%1$d)</string>
     <string name="settings_voice_test_sentence">Bienvenue dans le monde du boulier.</string>
     <string name="settings_language_title">Langue de l\'application</string>
-    <string name="settings_language_phone">Comme le téléphone</string>
     <string name="settings_theme_rainbow">Arc-en-ciel</string>
     <string name="settings_theme_duotone">Bicolore</string>
     <string name="settings_theme_candy">Bonbon</string>

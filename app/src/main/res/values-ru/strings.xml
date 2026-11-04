@@ -1272,7 +1272,6 @@
     <string name="settings_voice_languages_count">Языки (%1$d)</string>
     <string name="settings_voice_test_sentence">Добро пожаловать в мир абакуса.</string>
     <string name="settings_language_title">Язык приложения</string>
-    <string name="settings_language_phone">Как на телефоне</string>
     <string name="settings_theme_rainbow">Радуга</string>
     <string name="settings_theme_duotone">Два цвета</string>
     <string name="settings_theme_candy">Конфета</string>

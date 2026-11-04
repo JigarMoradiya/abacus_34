@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """tour_shots.py <outdir> lang [lang...] : Free Mode, then the tour (step 1 and step 7) -> raw frames + texts."""
 import os, re, subprocess, sys, time, xml.etree.ElementTree as ET
-D='1d04811b'; PKG='com.abacus.puzzle.l10n'; ACT=PKG+'/com.jigar.me.ui.view.home.HomeActivity'
+D=__import__('os').environ.get('PHONE','1d04811b'); PKG='com.abacus.puzzle.l10n'; ACT=PKG+'/com.jigar.me.ui.view.home.HomeActivity'
 def adb(*a, raw=False, t=60):
     r=subprocess.run(['adb','-s',D,*a],capture_output=True,timeout=t); return r.stdout if raw else r.stdout.decode('utf-8','ignore')
 def nodes():

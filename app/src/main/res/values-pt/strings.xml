@@ -1238,7 +1238,6 @@
     <string name="settings_voice_languages_count">Idiomas (%1$d)</string>
     <string name="settings_voice_test_sentence">Bem-vindo ao mundo do ábaco.</string>
     <string name="settings_language_title">Idioma do aplicativo</string>
-    <string name="settings_language_phone">Igual ao telefone</string>
     <string name="settings_theme_rainbow">Arco-íris</string>
     <string name="settings_theme_duotone">Dois tons</string>
     <string name="settings_theme_candy">Doce</string>

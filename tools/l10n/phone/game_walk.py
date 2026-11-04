@@ -8,7 +8,7 @@ top right and dumps the dialog text too), then prints the lines that are still E
 Needs the l10n test copy installed (com.abacus.puzzle.l10n) and the phone 1d04811b. Saves every dump to <out.json>.
 """
 import json, os, re, subprocess, sys, time, xml.etree.ElementTree as ET
-D = '1d04811b'; PKG = os.environ.get('PKG', 'com.abacus.puzzle.l10n'); ACT = f'{PKG}/com.jigar.me.ui.view.home.HomeActivity'
+D = os.environ.get('PHONE', '1d04811b'); PKG = os.environ.get('PKG', 'com.abacus.puzzle.l10n'); ACT = f'{PKG}/com.jigar.me.ui.view.home.HomeActivity'
 WAIT = float(os.environ.get('WAIT', '7'))
 KNOWN = re.compile(r'\b(Sudoku|Kakuro|Calcudoku|Anzan|BINGO|Bingo|Abacus|Flash|Pop|Mix|Merge|Cross|Math|FREE|Vedaavi|OK|Anzan)\b')
 

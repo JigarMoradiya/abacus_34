@@ -1170,7 +1170,6 @@
     <string name="settings_voice_languages_count">ภาษา (%1$d)</string>
     <string name="settings_voice_test_sentence">ยินดีต้อนรับสู่โลกของลูกคิด</string>
     <string name="settings_language_title">ภาษาของแอป</string>
-    <string name="settings_language_phone">ตามโทรศัพท์</string>
     <string name="settings_theme_rainbow">สายรุ้ง</string>
     <string name="settings_theme_duotone">สองสี</string>
     <string name="settings_theme_candy">ลูกกวาด</string>
