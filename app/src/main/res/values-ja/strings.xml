@@ -1355,6 +1355,21 @@
     <string name="err_plan_problem">プランのお手続きを完了できませんでした。サポートまでご連絡ください。</string>
     <string name="err_image_type">PNGまたはJPGの画像を選んでください。</string>
     <string name="err_sign_in_failed">ログインできませんでした。もう一度お試しください。</string>
+    <!-- m24_monetization -->
+    <string name="home_offer_store_title">永久プラン特価</string>
+    <string name="store_offer_caption">期間限定の特別価格</string>
+    <string name="paywall_amount_off_store">%1$sオフ</string>
+    <string name="paywall_offer_ended">このオファーは、いま終了しました。価格が新しくなりました。料金はかかっていません。</string>
+    <string name="ob_play1_body">ひとつの桁がひとつの数字です。\n珠を上にスワイプしよう！</string>
+    <string name="ob_play1_done_title">これで1！</string>
+    <string name="ob_play1_done_body">動かした珠は、ぜんぶ数になります。</string>
+    <string name="ob_play2_body">珠を3つ上にスワイプして、3まで数えよう。</string>
+    <string name="ob_play2_done_title">珠3つ = 3</string>
+    <string name="ob_play2_done_body">3まで数えられたね！</string>
+    <string name="ob_play3_body">上の珠を下にスワイプして、つぎに珠を2つ上にスワイプしよう。</string>
+    <string name="ob_play3_done_body">上の珠の5と、あと2で7になります！</string>
+    <string name="ob_play4_body">珠をもうひとつ上にスワイプしよう。</string>
+    <string name="ob_play5_body">あと3つ分の場所がありません！\n矢印のとおりに動かそう。</string>
     <!-- m2_numbers -->
     <string name="minus">マイナス</string>
     <string name="plus">プラス</string>

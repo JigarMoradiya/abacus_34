@@ -1457,6 +1457,21 @@
     <string name="err_plan_problem">Не удалось оформить этот план. Пожалуйста, обратитесь в поддержку.</string>
     <string name="err_image_type">Выберите картинку в формате PNG или JPG.</string>
     <string name="err_sign_in_failed">Войти не получилось. Попробуйте ещё раз.</string>
+    <!-- m24_monetization -->
+    <string name="home_offer_store_title">Скидка на пожизненный тариф</string>
+    <string name="store_offer_caption">Цена на ограниченное время</string>
+    <string name="paywall_amount_off_store">СКИДКА %1$s</string>
+    <string name="paywall_offer_ended">Это предложение только что закончилось. Цена обновилась, деньги не списывались.</string>
+    <string name="ob_play1_body">Каждая спица — это одна цифра.\nСдвинь бусину вверх!</string>
+    <string name="ob_play1_done_title">Это 1!</string>
+    <string name="ob_play1_done_body">Каждая бусина на счету.</string>
+    <string name="ob_play2_body">Сдвинь вверх 3 бусины, чтобы досчитать до 3.</string>
+    <string name="ob_play2_done_title">3 бусины = 3</string>
+    <string name="ob_play2_done_body">Получилось досчитать до 3!</string>
+    <string name="ob_play3_body">Сдвинь верхнюю бусину вниз, потом 2 бусины вверх.</string>
+    <string name="ob_play3_done_body">Верхняя бусина 5 и ещё 2 — это 7!</string>
+    <string name="ob_play4_body">Сдвинь вверх ещё одну бусину.</string>
+    <string name="ob_play5_body">Нет места ещё для 3 бусин!\nСледуй за стрелками.</string>
     <!-- m2_numbers -->
     <string name="minus">Минус</string>
     <string name="plus">Плюс</string>

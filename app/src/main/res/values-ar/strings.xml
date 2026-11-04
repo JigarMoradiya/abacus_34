@@ -1525,6 +1525,21 @@
     <string name="err_plan_problem">تعذّر إكمال طلب الخطة هذا. يرجى التواصل مع الدعم.</string>
     <string name="err_image_type">يرجى اختيار صورة بصيغة PNG أو JPG.</string>
     <string name="err_sign_in_failed">لم ينجح تسجيل الدخول. يرجى المحاولة مرة أخرى.</string>
+    <!-- m24_monetization -->
+    <string name="home_offer_store_title">عرض باقة مدى الحياة</string>
+    <string name="store_offer_caption">سعر لفترة محدودة</string>
+    <string name="paywall_amount_off_store">خصم %1$s</string>
+    <string name="paywall_offer_ended">انتهى هذا العرض للتو. تم تحديث السعر، ولم نخصم أي مبلغ.</string>
+    <string name="ob_play1_body">كل عمود هو رقم واحد.\nحرّك الخرزة إلى الأعلى!</string>
+    <string name="ob_play1_done_title">هذا هو 1!</string>
+    <string name="ob_play1_done_body">كل خرزة تحرّكها لها قيمة.</string>
+    <string name="ob_play2_body">حرّك 3 خرزات إلى الأعلى لتعدّ حتى 3.</string>
+    <string name="ob_play2_done_title">3 خرزات = 3</string>
+    <string name="ob_play2_done_body">لقد عددت حتى 3!</string>
+    <string name="ob_play3_body">حرّك الخرزة العلوية إلى الأسفل، ثم خرزتين إلى الأعلى.</string>
+    <string name="ob_play3_done_body">الخرزة العلوية 5 و2 أخرى تساوي 7!</string>
+    <string name="ob_play4_body">حرّك خرزة واحدة أخرى إلى الأعلى.</string>
+    <string name="ob_play5_body">لا مكان لـ 3 خرزات أخرى!\nاتبع الأسهم.</string>
     <!-- m2_numbers -->
     <string name="minus">ناقص</string>
     <string name="plus">زائد</string>

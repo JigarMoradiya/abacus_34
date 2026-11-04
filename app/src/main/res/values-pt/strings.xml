@@ -1423,6 +1423,21 @@
     <string name="err_plan_problem">Não conseguimos concluir este pedido de plano. Fale com o suporte.</string>
     <string name="err_image_type">Escolha uma imagem PNG ou JPG.</string>
     <string name="err_sign_in_failed">Não foi possível entrar. Tente de novo.</string>
+    <!-- m24_monetization -->
+    <string name="home_offer_store_title">Oferta vitalícia</string>
+    <string name="store_offer_caption">Oferta por tempo limitado</string>
+    <string name="paywall_amount_off_store">%1$s de desconto</string>
+    <string name="paywall_offer_ended">Esta oferta acabou de terminar. O preço foi atualizado e nada foi cobrado.</string>
+    <string name="ob_play1_body">Cada haste é um dígito.\nSuba a conta!</string>
+    <string name="ob_play1_done_title">Isso é 1!</string>
+    <string name="ob_play1_done_body">Cada conta que você move é contada!</string>
+    <string name="ob_play2_body">Suba 3 contas para contar até 3.</string>
+    <string name="ob_play2_done_title">3 contas = 3</string>
+    <string name="ob_play2_done_body">Você contou até 3!</string>
+    <string name="ob_play3_body">Desça a conta de cima e suba 2 contas.</string>
+    <string name="ob_play3_done_body">Conta de cima 5 e mais 2 são 7!</string>
+    <string name="ob_play4_body">Suba mais uma conta.</string>
+    <string name="ob_play5_body">Não há espaço para mais 3 contas!\nSiga as setas.</string>
     <!-- m2_numbers -->
     <string name="minus">Menos</string>
     <string name="plus">Mais</string>

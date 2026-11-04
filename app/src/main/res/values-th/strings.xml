@@ -1355,6 +1355,21 @@
     <string name="err_plan_problem">เราไม่สามารถดำเนินการตามคำขอแพ็กเกจนี้ได้ โปรดติดต่อฝ่ายสนับสนุน</string>
     <string name="err_image_type">โปรดเลือกรูปภาพ PNG หรือ JPG</string>
     <string name="err_sign_in_failed">เข้าสู่ระบบไม่สำเร็จ โปรดลองอีกครั้ง</string>
+    <!-- m24_monetization -->
+    <string name="home_offer_store_title">ข้อเสนอราคาตลอดชีพ</string>
+    <string name="store_offer_caption">ราคาพิเศษช่วงเวลาจำกัด</string>
+    <string name="paywall_amount_off_store">ลด %1$s</string>
+    <string name="paywall_offer_ended">ข้อเสนอนี้เพิ่งสิ้นสุดลง ราคาได้รับการอัปเดตแล้ว และไม่มีการเรียกเก็บเงิน</string>
+    <string name="ob_play1_body">แต่ละแกนคือหนึ่งหลัก\nเลื่อนลูกขึ้นเลย!</string>
+    <string name="ob_play1_done_title">นี่คือ 1!</string>
+    <string name="ob_play1_done_body">ทุกลูกที่เลื่อนมีความหมายนะ</string>
+    <string name="ob_play2_body">เลื่อนลูกขึ้น 3 ลูกเพื่อนับถึง 3</string>
+    <string name="ob_play2_done_title">3 ลูก = 3</string>
+    <string name="ob_play2_done_body">นับถึง 3 ได้แล้ว!</string>
+    <string name="ob_play3_body">เลื่อนลูกบนลง แล้วเลื่อนลูกล่างขึ้น 2 ลูก</string>
+    <string name="ob_play3_done_body">ลูกบน 5 กับอีก 2 เป็น 7!</string>
+    <string name="ob_play4_body">เลื่อนอีกหนึ่งลูกขึ้น</string>
+    <string name="ob_play5_body">ไม่มีที่ว่างสำหรับอีก 3 ลูก!\nทำตามลูกศรนะ</string>
     <!-- m2_numbers -->
     <string name="minus">ลบ</string>
     <string name="plus">บวก</string>

@@ -1423,6 +1423,21 @@
     <string name="err_plan_problem">Nous n\'avons pas pu traiter cette demande d\'abonnement. Veuillez contacter l\'assistance.</string>
     <string name="err_image_type">Veuillez choisir une image au format PNG ou JPG.</string>
     <string name="err_sign_in_failed">La connexion n\'a pas fonctionné. Veuillez réessayer.</string>
+    <!-- m24_monetization -->
+    <string name="home_offer_store_title">Prix à vie réduit</string>
+    <string name="store_offer_caption">Prix à durée limitée</string>
+    <string name="paywall_amount_off_store">%1$s DE REMISE</string>
+    <string name="paywall_offer_ended">Cette offre vient de se terminer. Le prix a été mis à jour, rien n\'a été débité.</string>
+    <string name="ob_play1_body">Chaque tige représente un chiffre.\nGlisse la boule vers le haut !</string>
+    <string name="ob_play1_done_title">Ça fait 1 !</string>
+    <string name="ob_play1_done_body">Chaque boule que tu bouges compte.</string>
+    <string name="ob_play2_body">Glisse 3 boules vers le haut pour compter jusqu\'à 3.</string>
+    <string name="ob_play2_done_title">3 boules = 3</string>
+    <string name="ob_play2_done_body">Tu as compté jusqu\'à 3 !</string>
+    <string name="ob_play3_body">Glisse la boule du haut vers le bas, puis 2 boules vers le haut.</string>
+    <string name="ob_play3_done_body">La boule du haut (5) et 2 de plus font 7 !</string>
+    <string name="ob_play4_body">Glisse encore une boule vers le haut.</string>
+    <string name="ob_play5_body">Plus de place pour 3 boules de plus !\nSuis les flèches.</string>
     <!-- m2_numbers -->
     <string name="minus">Moins</string>
     <string name="plus">Plus</string>

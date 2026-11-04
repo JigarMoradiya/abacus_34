@@ -1423,6 +1423,21 @@
     <string name="err_plan_problem">No pudimos completar esta solicitud del plan. Contacta con soporte.</string>
     <string name="err_image_type">Elige una imagen PNG o JPG.</string>
     <string name="err_sign_in_failed">No se pudo iniciar sesión. Inténtalo de nuevo.</string>
+    <!-- m24_monetization -->
+    <string name="home_offer_store_title">Oferta de por vida</string>
+    <string name="store_offer_caption">Precio por tiempo limitado</string>
+    <string name="paywall_amount_off_store">AHORRA %1$s</string>
+    <string name="paywall_offer_ended">Esta oferta acaba de terminar. El precio se actualizó y no se cobró nada.</string>
+    <string name="ob_play1_body">Cada varilla es un dígito.\n¡Desliza la cuenta hacia arriba!</string>
+    <string name="ob_play1_done_title">¡Eso es 1!</string>
+    <string name="ob_play1_done_body">Cada cuenta que mueves suma.</string>
+    <string name="ob_play2_body">Desliza 3 cuentas hacia arriba para contar hasta 3.</string>
+    <string name="ob_play2_done_title">3 cuentas = 3</string>
+    <string name="ob_play2_done_body">¡Contaste hasta 3!</string>
+    <string name="ob_play3_body">Desliza la cuenta de arriba hacia abajo y luego 2 cuentas hacia arriba.</string>
+    <string name="ob_play3_done_body">¡La cuenta de arriba vale 5 y 2 más son 7!</string>
+    <string name="ob_play4_body">Desliza una cuenta más hacia arriba.</string>
+    <string name="ob_play5_body">¡No hay lugar para 3 cuentas más!\nSigue las flechas.</string>
     <!-- m2_numbers -->
     <string name="minus">Menos</string>
     <string name="plus">Más</string>

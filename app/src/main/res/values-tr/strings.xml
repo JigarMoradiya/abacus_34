@@ -1389,6 +1389,21 @@
     <string name="err_plan_problem">Bu plan isteğini tamamlayamadık. Lütfen destek ekibimizle iletişime geçin.</string>
     <string name="err_image_type">Lütfen PNG veya JPG türünde bir resim seçin.</string>
     <string name="err_sign_in_failed">Giriş yapılamadı. Lütfen tekrar deneyin.</string>
+    <!-- m24_monetization -->
+    <string name="home_offer_store_title">Ömür boyu fiyat teklifi</string>
+    <string name="store_offer_caption">Sınırlı süreli fiyat teklifi</string>
+    <string name="paywall_amount_off_store">%1$s İNDİRİM</string>
+    <string name="paywall_offer_ended">Bu teklif az önce sona erdi. Fiyat güncellendi, hesabınızdan ücret alınmadı.</string>
+    <string name="ob_play1_body">Her çubuk bir basamak.\nBoncuğu yukarı kaydır!</string>
+    <string name="ob_play1_done_title">İşte 1!</string>
+    <string name="ob_play1_done_body">Oynattığın her boncuk sayılır.</string>
+    <string name="ob_play2_body">3\'e kadar saymak için 3 boncuğu yukarı kaydır.</string>
+    <string name="ob_play2_done_title">3 boncuk = 3</string>
+    <string name="ob_play2_done_body">3\'e kadar saydın!</string>
+    <string name="ob_play3_body">Üst boncuğu aşağı, sonra 2 boncuğu yukarı kaydır.</string>
+    <string name="ob_play3_done_body">Üst boncuk 5 ve 2 daha 7 eder!</string>
+    <string name="ob_play4_body">Bir boncuğu daha yukarı kaydır.</string>
+    <string name="ob_play5_body">3 boncuk daha için yer yok!\nOkları takip et.</string>
     <!-- m2_numbers -->
     <string name="minus">Eksi</string>
     <string name="plus">Artı</string>
