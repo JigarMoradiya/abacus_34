@@ -56,6 +56,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -524,6 +525,11 @@ private fun PurchaseKitPlanCard(
                         if (storeOffer != null && storeOffer.badgeText().isNotEmpty()) {
                             Row(Modifier.padding(top = (if (trialDays > 0) 2.dp else 6.dp) * s), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
                                 Text(storeOffer.badgeText(), style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.accentGreenInk)
+                                Text(
+                                    stringResource(R.string.store_offer_caption), Modifier.weight(1f, fill = false),
+                                    style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = colors.textSecondary,
+                                    maxLines = 1, overflow = TextOverflow.Ellipsis,
+                                )
                             }
                         }
                         if (timed != null && (timed.percentOff > 0 || timed.endMillis != null)) {

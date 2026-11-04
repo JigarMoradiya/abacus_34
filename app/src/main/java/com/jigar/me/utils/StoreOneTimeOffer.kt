@@ -60,8 +60,8 @@ object StoreOneTimeOffers {
     private fun isDiscount(f: Facts, now: Long): Boolean {
         val full = f.fullPriceMicros ?: return false
         if (f.isPreorder || f.isRental || f.priceMicros <= 0L || f.priceMicros >= full) return false
-        if (f.startMillis != null && now < f.startMillis) return false
-        if (f.endMillis != null && now >= f.endMillis) return false
+        if (f.startMillis != null && f.startMillis > 0L && now < f.startMillis) return false
+        if (f.endMillis != null && f.endMillis > 0L && now >= f.endMillis) return false
         return true
     }
 
@@ -79,7 +79,7 @@ object StoreOneTimeOffers {
             amountOffText = f.amountMicros?.takeIf { f.percentage == null && it > 0L }?.let { formatPlanPrice(it, f.currency) },
             offerToken = f.token,
             offerId = f.offerId,
-            endMillis = f.endMillis,
+            endMillis = f.endMillis?.takeIf { it > 0L },
             priceMicros = f.priceMicros,
             currencyCode = f.currency,
         )
@@ -97,8 +97,9 @@ object StoreOneTimeOffers {
                 currency = o.priceCurrencyCode,
                 offerId = o.offerId,
                 token = token,
-                startMillis = o.validTimeWindow?.startTimeMillis,
-                endMillis = o.validTimeWindow?.endTimeMillis,
+                // Play's ValidTimeWindow holds primitive longs: a window with only a start (no end set in the console) reports end = 0
+                startMillis = o.validTimeWindow?.startTimeMillis?.takeIf { it > 0L },
+                endMillis = o.validTimeWindow?.endTimeMillis?.takeIf { it > 0L },
                 isPreorder = o.preorderDetails != null,
                 isRental = o.rentalDetails != null,
             )
