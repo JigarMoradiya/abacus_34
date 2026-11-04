@@ -103,6 +103,10 @@ fun AbacusWithDecimalCanvas(
     hintPulse: Boolean = false,
     /** A hand glides over the first bead to move (the first-launch tutorial, after a few idle seconds). */
     hintHand: Boolean = false,
+    /** The rod names (Ones, Tens ...) under the frame, which the small Level screens hide (the first-launch tutorial shows them). */
+    showRodNames: Boolean = false,
+    /** Below 1 the whole abacus (beads, rods, frame) is proportionally smaller (the first-launch tutorial). */
+    beadScale: Float = 1f,
     onRodMovementChange: (List<RodMovement>) -> Unit,
     onShowDirectionHintsChange: (Boolean) -> Unit,
     onShowHighlighterChange: (Boolean) -> Unit,
@@ -149,7 +153,12 @@ fun AbacusWithDecimalCanvas(
     } else remember { mutableFloatStateOf(0f) }
 
 
-    val dim = AbacusTheme.dimensionPreset(context,screenType = screenType,abacusType = abacusType,questionType = questionType, isFreeModeOn = isFreeModeOn)
+    val baseDim = AbacusTheme.dimensionPreset(context,screenType = screenType,abacusType = abacusType,questionType = questionType, isFreeModeOn = isFreeModeOn)
+    val dim = if (beadScale == 1f) baseDim else baseDim.copy(
+        beadWidth = baseDim.beadWidth * beadScale, beadHeight = baseDim.beadHeight * beadScale, beamHeight = baseDim.beamHeight * beadScale,
+        extraSpace = baseDim.extraSpace * beadScale, rectLineWidth = baseDim.rectLineWidth * beadScale, rectLineCorner = baseDim.rectLineCorner * beadScale,
+        stripHeight = baseDim.stripHeight * beadScale, columnSpaces = baseDim.columnSpaces * beadScale, decimalSeparatorGap = baseDim.decimalSeparatorGap * beadScale,
+    )
     val totalWidth = (dim.beadWidth * numberOfColumns) + (dim.rectLineWidth * 2) + (dim.columnSpaces * (numberOfColumns) * 2) + (if (numberOfColumns > 7) dim.decimalSeparatorGap else 0.dp)
     val totalHeight = (dim.beadHeight * 7) + (dim.rectLineWidth * 2) + (dim.extraSpace * 2) + dim.beamHeight
 
@@ -187,12 +196,12 @@ fun AbacusWithDecimalCanvas(
         toyTop = toyPreset.abacusTopGradient; toyBase = toyPreset.buttonColor; toyBottom = toyPreset.abacusBottomGradient
     }
     // Small abaci (Level screens, the Settings preview) show just the frame and beads, no tags under it.
-    val isMiniScreen = screenType == AppConstants.AbacusScreen.screenTypeLevel1Learn ||
+    val isMiniScreen = !showRodNames && (screenType == AppConstants.AbacusScreen.screenTypeLevel1Learn ||
         screenType == AppConstants.AbacusScreen.screenTypeLevel1Practice ||
         screenType == AppConstants.AbacusScreen.screenTypeLevel2Learn ||
         screenType == AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula ||
         screenType == AppConstants.AbacusScreen.screenTypeLevel2Practice ||
-        screenType == AppConstants.AbacusScreen.screenTypeSettingPreview
+        screenType == AppConstants.AbacusScreen.screenTypeSettingPreview)
     val toyStripHeight = dim.stripHeight * 0.8f
     val toyShowsValues = screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn
 

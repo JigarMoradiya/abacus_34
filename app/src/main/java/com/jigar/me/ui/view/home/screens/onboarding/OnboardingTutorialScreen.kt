@@ -75,6 +75,7 @@ import androidx.compose.ui.Modifier
 import kotlinx.coroutines.delay
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Rect
@@ -143,6 +144,7 @@ private data class Page(
     val afterTitle: String,
     val afterBody: String,
     val showFriendCard: Boolean = false,   // the Small Friend hint card, as in Level 2
+    val via: Int? = null,                  // a stop on the way: the arrows (and the hand) first lead to this number, then to the goal
 )
 
 private val pages = listOf(
@@ -150,7 +152,8 @@ private val pages = listOf(
     Page("Bottom beads = 1", "Swipe 3 beads up to count to 3.", 0, 3, "3 beads = 3", "You counted to 3!"),
     Page("Top bead = 5", "Swipe the top bead down, then 2 beads up.", 0, 7, "5 + 2 = 7", "Top bead 5 and 2 more make 7!"),
     Page("Let's add: 2 + 1", "Swipe one more bead up.", 2, 3, "2 + 1 = 3", "Great job!"),
-    Page("Now: 4 + 3", "No room for 3 more beads!\nFollow the arrows.", 4, 7, "4 + 3 = 7", "That was a Small Friend!", showFriendCard = true),
+    Page("Now: 4 + 3", "No room for 3 more beads!\nFollow the arrows.", 4, 7, "4 + 3 = 7", "That was a Small Friend!", showFriendCard = true,
+        via = 2),   // +3 = -2 +5: the lower beads go first (4 - 2 = 2), then the top bead comes down (2 + 5 = 7)
 )
 
 /** The iPad multiplier of `responsiveDimenstion`, so type grows the same way on tablets. */
@@ -270,6 +273,7 @@ private fun TutorialPage(
     val page = pages[index]
     var done by remember(index) { mutableStateOf(false) }          // the goal is made (by the child, or by "Show me")
     var handReady by remember(index) { mutableStateOf(false) }     // a few seconds without a move: a hand shows the swipe
+    var nextNudge by remember(index) { mutableStateOf(false) }     // the step is done but Next was not tapped for a few seconds: Next pulses
     var showMeReady by remember(index) { mutableStateOf(false) }   // a while without a move: the "Show me" fallback appears
     val title = if (done) page.afterTitle else page.title
     val body = if (done) page.afterBody else page.body
@@ -285,6 +289,19 @@ private fun TutorialPage(
         abCalc.resetAbacusData()
         if (page.valueBefore > 0) abCalc.setAbacusValueFromString(page.valueBefore.toString())
     }
+    // the step is done: if Next is not tapped within a few seconds it starts to pulse (on every step)
+    LaunchedEffect(index, done) {
+        nextNudge = false
+        if (done) {
+            delay(3500)
+            nextNudge = true
+        }
+    }
+    val nudge by rememberInfiniteTransition(label = "nextNudge").animateFloat(
+        initialValue = 1f, targetValue = 1.16f,
+        animationSpec = infiniteRepeatable(tween(550, easing = FastOutSlowInEasing), RepeatMode.Reverse), label = "nextNudgeScale",
+    )
+    val nextScale = if (nextNudge && done) nudge else 1f
     // after every move: the goal is made -> celebrate and unlock Next; otherwise point at the next swipe and wait for "Show me"
     LaunchedEffect(index, shown) {
         if (done) return@LaunchedEffect
@@ -298,7 +315,9 @@ private fun TutorialPage(
             haptic.performHapticFeedback(HapticFeedbackType.LongPress)
         } else {
             // 3 rods: the ones rod is the last one (index 2)
-            rodMovement = listOf(RodMovement(2, l2ComputeMovement(value, page.goal)))
+            // where the arrows lead next: a step with a stop on the way (4 + 3: first 4 - 2 = 2, then + 5) goes there first, from the start
+            val target = if (page.via != null && value == page.valueBefore) page.via else page.goal
+            rodMovement = listOf(RodMovement(2, l2ComputeMovement(value, target)))
             showArrows = true
             handReady = false
             showMeReady = false
@@ -373,6 +392,8 @@ private fun TutorialPage(
                         forceTouch = !done,
                         hintPulse = true,
                         hintHand = handReady && !done,
+                        showRodNames = true,    // Hundreds / Tens / Ones under the rods, like the other abaci
+                        beadScale = 0.88f,      // a little smaller so the abacus, its names and the number plate fit
                         onRodMovementChange = {},
                         onShowDirectionHintsChange = {},
                         onShowHighlighterChange = {},
@@ -417,6 +438,7 @@ private fun TutorialPage(
                     text = nextText, tone = AbTone.Primary, size = AbSize.Small, enabled = done,
                     icon = Icons.Rounded.KeyboardArrowRight, iconAtEnd = true,
                     minHeightOverride = 32f, horizontalPaddingOverride = 11f, onClick = { if (done) onNext() },
+                    modifier = Modifier.graphicsLayer { scaleX = nextScale; scaleY = nextScale },
                 )
             }
         }
