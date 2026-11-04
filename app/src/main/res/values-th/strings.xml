@@ -1339,6 +1339,23 @@
     <string name="practice_two_digit_plus">สองหลัก (+)</string>
     <string name="practice_two_digit_plus_minus">สองหลัก (+-)</string>
     <string name="practice_vedaavi_calculation_n">การคำนวณ Vedaavi %1$s</string>
+    <!-- m24_errors -->
+    <string name="err_generic">เกิดข้อผิดพลาดบางอย่าง โปรดลองอีกครั้ง</string>
+    <string name="err_server">ขณะนี้เซิร์ฟเวอร์ของเรามีผู้ใช้งานจำนวนมาก โปรดลองอีกครั้งในอีกสักครู่</string>
+    <string name="err_session_expired">การเข้าสู่ระบบของคุณสิ้นสุดลงแล้ว โปรดเข้าสู่ระบบอีกครั้ง</string>
+    <string name="err_wrong_credentials">อีเมลหรือรหัสผ่านไม่ถูกต้อง โปรดตรวจสอบแล้วลองอีกครั้ง</string>
+    <string name="err_enter_email_password">โปรดกรอกอีเมลและรหัสผ่านของคุณ</string>
+    <string name="err_account_not_found">เราไม่พบบัญชีที่ตรงกับข้อมูลนี้</string>
+    <string name="err_not_verified">บัญชีของคุณยังไม่ได้รับการยืนยัน โปรดยืนยันอีเมลก่อน</string>
+    <string name="err_otp_wrong">รหัสนี้ไม่ถูกต้อง โปรดตรวจสอบแล้วลองอีกครั้ง</string>
+    <string name="err_otp_expired">รหัสนี้หมดอายุแล้ว โปรดขอรหัสใหม่</string>
+    <string name="err_email_exists">มีบัญชีที่ใช้อีเมลนี้อยู่แล้ว</string>
+    <string name="err_already_verified">บัญชีนี้ได้รับการยืนยันแล้ว</string>
+    <string name="err_no_access">คุณไม่มีสิทธิ์ทำรายการนี้</string>
+    <string name="err_account_inactive">บัญชีนี้ยังไม่เปิดใช้งาน โปรดติดต่อฝ่ายสนับสนุน</string>
+    <string name="err_plan_problem">เราไม่สามารถดำเนินการตามคำขอแพ็กเกจนี้ได้ โปรดติดต่อฝ่ายสนับสนุน</string>
+    <string name="err_image_type">โปรดเลือกรูปภาพ PNG หรือ JPG</string>
+    <string name="err_sign_in_failed">เข้าสู่ระบบไม่สำเร็จ โปรดลองอีกครั้ง</string>
     <!-- m2_numbers -->
     <string name="minus">ลบ</string>
     <string name="plus">บวก</string>
@@ -1578,7 +1595,6 @@
     <string name="type_of_exercise">ประเภทแบบฝึกหัด:</string>
     <string name="type_of_questions">ประเภทโจทย์:</string>
     <string name="unstoppable_great_job">หยุดไม่อยู่เลย! เก่งมาก</string>
-    <string name="what_s_learn_in_application">สิ่งที่เรียนรู้ในแอป</string>
     <string name="yes_i_m_sure">ใช่ ฉันแน่ใจ</string>
     <string name="you_are_brilliant">เก่งสุด ๆ เลย</string>
     <string name="you_are_on_the_right_track">มาถูกทางแล้ว</string>
@@ -1595,43 +1611,6 @@
     <string name="reports_upgrade_title">อัปเกรดเป็น Premium</string>
     <string name="reports_upgrade_subtitle">ดูประวัติรายงานทั้งหมด</string>
     <string name="view_plans">ดูแพ็กเกจ</string>
-    <!-- m5_whats_learning -->
-    <string name="whats_learn_free_mode_title">สิ่งที่เด็ก ๆ เรียนรู้ในโหมดอิสระของลูกคิด</string>
-    <string name="whats_learn_free_mode_1">• เข้าใจ&lt;b>โครงสร้างและส่วนต่าง ๆ&lt;/b>ของลูกคิด</string>
-    <string name="whats_learn_free_mode_2">• เรียนลูกคิดง่าย ๆ สำหรับ&lt;b>ผู้เริ่มต้น&lt;/b></string>
-    <string name="whats_learn_free_mode_3">• รู้จัก&lt;b>ประเภทของลูกคิด&lt;/b>และ&lt;b>ค่า&lt;/b>ของแต่ละลูก</string>
-    <string name="whats_learn_free_mode_4">• &lt;b>เทคนิคการใช้นิ้ว&lt;/b>เพื่อเลื่อนลูกคิดให้ถูกต้อง</string>
-    <string name="whats_learn_free_mode_5">• เรียนรู้การ&lt;b>อ่าน แสดง และตั้งตัวเลข&lt;/b>บนลูกคิด</string>
-    <string name="whats_learn_practice_title">สิ่งที่เด็ก ๆ เรียนรู้ในโมดูลฝึกลูกคิด</string>
-    <string name="whats_learn_practice_1">• แก้โจทย์&lt;b>ทีละขั้น&lt;/b>พร้อม&lt;b>ทิศทางการเลื่อนลูกคิดที่ถูกต้อง&lt;/b></string>
-    <string name="whats_learn_practice_2">• &lt;b>เห็นสูตรลูกคิด&lt;/b>ในทุกขั้นตอน (รวมถึงการคูณและการหาร)</string>
-    <string name="whats_learn_practice_3">• ฝึกป้อนเฉพาะ&lt;b>คำตอบสุดท้าย&lt;/b></string>
-    <string name="whats_learn_practice_4">• &lt;b>ฝึกในโหมดข้อสอบทางการ&lt;/b>พร้อมบันทึกคำตอบที่ถูกและผิด</string>
-    <string name="whats_learn_practice_5">• เพิ่มความเร็วและความแม่นยำด้วย&lt;b>ชุดจับเวลา&lt;/b></string>
-    <string name="whats_learn_practice_6">• เข้าใจ&lt;b>การเลื่อนลูกคิดที่ผิด&lt;/b>ด้วยคำใบ้เรื่องทิศทาง</string>
-    <string name="whats_learn_practice_7">• &lt;b>ซ่อน/แสดง&lt;/b>ทิศทางลูกคิดและสูตรได้ใน&lt;b>การตั้งค่า&lt;/b></string>
-    <string name="whats_learn_practice_8">• &lt;b>รองรับทั้งมือซ้ายและมือขวา&lt;/b> เด็ก ๆ ฝึกได้สบายด้วยมือที่ถนัด</string>
-    <string name="whats_learn_exercise_title">สิ่งที่เด็ก ๆ ทำในโมดูลแบบฝึกหัด</string>
-    <string name="whats_learn_exercise_1">• &lt;b>เริ่ม&lt;/b>ท้าทายการบวก ลบ คูณ และหาร &lt;b>ตามระดับการเรียนรู้&lt;/b></string>
-    <string name="whats_learn_exercise_2">• &lt;b>ฝึก&lt;/b>กับแบบฝึกหัดหลายชุดและ&lt;b>จำกัดเวลาเพื่อเพิ่มความเร็วและสมาธิ&lt;/b></string>
-    <string name="whats_learn_exercise_3">• &lt;b>สร้าง&lt;/b>ความทนทานแบบการสอบด้วยชุดคำถามที่เป็นระบบและ&lt;b>ตัวนับถอยหลัง&lt;/b></string>
-    <string name="whats_learn_exercise_4">• &lt;b>พัฒนา&lt;/b>สมาธิ ความจำ และความคล่องแคล่วทางความคิด&lt;b>ผ่านการฝึกต่อเนื่อง&lt;/b></string>
-    <string name="whats_learn_exam_title">สิ่งที่เด็ก ๆ ทำในโมดูลข้อสอบ</string>
-    <string name="whats_learn_exam_1">• &lt;b>จำลองสภาพแวดล้อมการสอบ –&lt;/b> ฝึกในบรรยากาศเหมือนสอบจริงเพื่อสร้างความแม่นยำและความมั่นใจ</string>
-    <string name="whats_learn_exam_2">• &lt;b>ประเภทการคำนวณที่รองรับ –&lt;/b> บวก ลบ คูณ และหาร</string>
-    <string name="whats_learn_exam_3">• &lt;b>ระดับความยาก –&lt;/b> เลือกง่าย ปานกลาง หรือยาก เพื่อเรียนรู้ทีละขั้น</string>
-    <string name="whats_learn_exam_4">• &lt;b>แบบเลือกตอบ –&lt;/b> ทุกข้อมี 4 ตัวเลือกเพื่อฝึกการตัดสินใจ</string>
-    <string name="whats_learn_exam_5">• &lt;b>แสดงเวลา –&lt;/b> ดูว่าใช้เวลานานแค่ไหนโดยไม่ต้องเครียดกับเวลา</string>
-    <string name="whats_learn_exam_6">• &lt;b>พร้อมสำหรับการแข่งขัน –&lt;/b> เหมาะกับการสอบ UCMAS การสอบที่โรงเรียน การแข่งขันคณิตศาสตร์ และการแข่งลูกคิด</string>
-    <string name="whats_learn_exam_7">• &lt;b>ฝึกอย่างมีเป้าหมาย –&lt;/b> สร้างความนิ่งในการสอบ ความเร็ว และการคิดเชิงเหตุผล</string>
-    <string name="whats_learn_ccm_title">สิ่งที่เด็ก ๆ ทำในโมดูลชาเลนจ์ที่กำหนดเอง</string>
-    <string name="whats_learn_ccm_1">• &lt;b>ปรับแต่งได้เต็มที่ –&lt;/b> ควบคุมจำนวนข้อ ความยาวของโจทย์ (หลักน้อยสุด/มากสุด) และช่วงเวลาระหว่างข้อ</string>
-    <string name="whats_learn_ccm_2">• &lt;b>รูปแบบการแสดงที่ยืดหยุ่น –&lt;/b> เลือกวิธีแสดงโจทย์: ตัวเลข คำ หรือเสียง</string>
-    <string name="whats_learn_ccm_3">• &lt;b>ฝึกแบบจับเวลา –&lt;/b> เพิ่มช่วงพักระหว่างข้อเพื่อจำลองแรงกดดันและเพิ่มสมาธิ</string>
-    <string name="whats_learn_ccm_4">• &lt;b>ฝึกด้วยการฟังและการมองภาพ –&lt;/b> เหมาะกับการเรียนด้วยการฟัง การจินตนาการอย่างเดียว หรือผสมกัน</string>
-    <string name="whats_learn_ccm_5">• &lt;b>ใช้ได้หลากหลาย –&lt;/b> เหมาะกับการฝึกที่บ้าน กิจกรรมในห้องเรียน และการสอนเสริมแบบเฉพาะตัว</string>
-    <string name="whats_learn_ccm_6">• &lt;b>พัฒนาทักษะ –&lt;/b> เสริมการฟัง ความจำ สมาธิ การจินตนาการ และความเร็วในการคำนวณ</string>
-    <string name="whats_learn_ccm_7">• &lt;b>ประโยชน์ –&lt;/b> สร้างความยืดหยุ่น พัฒนาการตัดสินใจ และเตรียมพร้อมสำหรับข้อสอบหลายรูปแบบ</string>
     <!-- m6_free_mode -->
     <string name="free_mode_set_label">ชุด:</string>
     <string name="free_mode_range">%1$d ถึง %2$d</string>
@@ -1784,7 +1763,6 @@
     <string name="home_offer_product_yearly">รายปี</string>
     <string name="home_offer_product_lifetime">ตลอดชีพ</string>
     <string name="order_id">รหัสคำสั่งซื้อ</string>
-    <string name="subscription_free_trial_msg">จะเรียกเก็บเงินหลังช่วงทดลองใช้ฟรี\nยกเลิกได้ทุกเมื่อก่อนสิ้นสุดช่วงทดลอง</string>
     <string name="cancel_subscription_anytime">ยกเลิกการสมัครสมาชิกได้ทุกเมื่อ</string>
     <string name="plan_assigned_from_admin">แพ็กเกจที่ผู้ดูแลระบบมอบให้</string>
     <string name="purchase_pending">การชำระเงินของคุณรอการอนุมัติ คุณจะเข้าใช้ได้ทันทีที่เสร็จสมบูรณ์</string>

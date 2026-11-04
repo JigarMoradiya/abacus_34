@@ -15,49 +15,6 @@ data class DivisionQuestion(
 )
 
 object DataProvider {
-    fun getVideoPreviewList(context: Context): List<VideoTutorial>{
-        // the texts are in strings.xml (HTML kept as text: bold parts are shown by htmlToAnnotatedString); built in the app language
-        return with(context.inAppLanguage()){
-            listOf(
-                VideoTutorial("video_free_mode.mp4", getString(R.string.whats_learn_free_mode_title),
-                    arrayListOf(getString(R.string.whats_learn_free_mode_1),
-                        getString(R.string.whats_learn_free_mode_2),
-                        getString(R.string.whats_learn_free_mode_3),
-                        getString(R.string.whats_learn_free_mode_4),
-                        getString(R.string.whats_learn_free_mode_5))),
-                VideoTutorial("video_abacus_practice.mp4", getString(R.string.whats_learn_practice_title),
-                    arrayListOf(getString(R.string.whats_learn_practice_1),
-                        getString(R.string.whats_learn_practice_2),
-                        getString(R.string.whats_learn_practice_3),
-                        getString(R.string.whats_learn_practice_4),
-                        getString(R.string.whats_learn_practice_5),
-                        getString(R.string.whats_learn_practice_6),
-                        getString(R.string.whats_learn_practice_7),
-                        getString(R.string.whats_learn_practice_8))),
-                VideoTutorial("video_exercise.mp4", getString(R.string.whats_learn_exercise_title),
-                    arrayListOf(getString(R.string.whats_learn_exercise_1),
-                        getString(R.string.whats_learn_exercise_2),
-                        getString(R.string.whats_learn_exercise_3),
-                        getString(R.string.whats_learn_exercise_4))),
-                VideoTutorial("video_exam.mp4", getString(R.string.whats_learn_exam_title),
-                    arrayListOf(getString(R.string.whats_learn_exam_1),
-                        getString(R.string.whats_learn_exam_2),
-                        getString(R.string.whats_learn_exam_3),
-                        getString(R.string.whats_learn_exam_4),
-                        getString(R.string.whats_learn_exam_5),
-                        getString(R.string.whats_learn_exam_6),
-                        getString(R.string.whats_learn_exam_7))),
-                VideoTutorial("video_ccm.mp4", getString(R.string.whats_learn_ccm_title),
-                    arrayListOf(getString(R.string.whats_learn_ccm_1),
-                        getString(R.string.whats_learn_ccm_2),
-                        getString(R.string.whats_learn_ccm_3),
-                        getString(R.string.whats_learn_ccm_4),
-                        getString(R.string.whats_learn_ccm_5),
-                        getString(R.string.whats_learn_ccm_6),
-                        getString(R.string.whats_learn_ccm_7))),
-            )
-        }
-    }
     fun getFaqsList(context: Context,emailId : String): List<FAQs>{
         return with(context.inAppLanguage()){
             listOf(FAQs(getString(R.string.faq_que_1), getString(R.string.faq_ans_1)),

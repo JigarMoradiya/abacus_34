@@ -11,6 +11,7 @@ import com.jigar.me.ui.jetpack.core.StatefulViewModel
 import com.jigar.me.ui.jetpack.core.domain.ConsumableCommand
 import com.jigar.me.ui.view.login.data.PostLoginHandler
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.ApiErrors
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.HomeOfferManager
 import com.jigar.me.utils.extensions.isNetworkAvailable
@@ -149,7 +150,7 @@ class SplashViewModel @Inject constructor(
                         updateState_ { copy(isLoading = false, navigateToHome = ConsumableCommand(Unit)) }
                     } else {
                         // No cached data — must show error, user needs to retry
-                        updateState_ { copy(isLoading = false, showErrorPopup = true, errorPopupMessage = outcome.message) }
+                        updateState_ { copy(isLoading = false, showErrorPopup = true, errorPopupMessage = outcome.message ?: ApiErrors.text(null, null, null)) }
                     }
                 }
             }
@@ -174,6 +175,6 @@ class SplashViewModel @Inject constructor(
     }
 
     override fun onFailure(throwable: Throwable) {
-        updateState_ { copy(errorMessage = throwable.localizedMessage) }
+        updateState_ { copy(errorMessage = ApiErrors.text(throwable)) }
     }
 }

@@ -24,3 +24,6 @@ at the moment the screen opens, so a language change shows the new text after th
 
 ## 3. Not translated here
 Practice page titles and descriptions come from the server database, not Remote Config. They are translated inside the app (module M22, pattern map, English fallback), so there is nothing to set in the console. When the server database gets a new kind of title, run `tools/l10n/practice_patterns.py <synced db> --check` (see DECISIONS 22): a title with no pattern shows in English until it is translated.
+
+## 4. YouTube tutorial list (the `video` key)
+The tutorial screen with the YouTube videos reads the JSON list from Remote Config. For a language the app first reads `video_<tag>` (for example `video_fr`) and falls back to `video`. In `video_<tag>` keep the same JSON shape; you can translate only `txt` (same `id`) or point to a different `id` (a video with narration in that language). The bundled mp4 tutorials (the old What's Learning screen) were removed from the app.

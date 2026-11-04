@@ -11,6 +11,7 @@ import com.jigar.me.ui.jetpack.core.StatefulViewModel
 import com.jigar.me.ui.jetpack.core.domain.ConsumableCommand
 import com.jigar.me.ui.view.login.data.PostLoginHandler
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.ApiErrors
 import com.jigar.me.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -64,7 +65,7 @@ class LoginViewModel @Inject constructor(
                     if (response.value.status == AppConstants.APIStatus.SUCCESS) {
                         handlePostLogin(response.value.data)
                     } else {
-                        updateState_ { copy(isLoading = false, errorMessage = response.value.error?.message) }
+                        updateState_ { copy(isLoading = false, errorMessage = ApiErrors.text(response.value)) }
                     }
                 }
                 is Resource.Failure -> {
@@ -83,7 +84,7 @@ class LoginViewModel @Inject constructor(
                 updateState_ { copy(isLoading = false, navigateToHome = ConsumableCommand(Unit)) }
             }
             is PostLoginHandler.Outcome.Failure -> {
-                updateState_ { copy(isLoading = false, errorMessage = progressOutcome.message) }
+                updateState_ { copy(isLoading = false, errorMessage = progressOutcome.message ?: ApiErrors.text(null, null, null)) }
             }
         }
     }
@@ -93,6 +94,6 @@ class LoginViewModel @Inject constructor(
     }
 
     override fun onFailure(throwable: Throwable) {
-        updateState_ { copy(isLoading = false, errorMessage = throwable.localizedMessage) }
+        updateState_ { copy(isLoading = false, errorMessage = ApiErrors.text(throwable)) }
     }
 }

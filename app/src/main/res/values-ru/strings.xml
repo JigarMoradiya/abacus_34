@@ -1441,6 +1441,23 @@
     <string name="practice_two_digit_plus">Двузначные (+)</string>
     <string name="practice_two_digit_plus_minus">Двузначные (+-)</string>
     <string name="practice_vedaavi_calculation_n">Вычисления Vedaavi %1$s</string>
+    <!-- m24_errors -->
+    <string name="err_generic">Что-то пошло не так. Попробуйте ещё раз.</string>
+    <string name="err_server">Наш сервер сейчас перегружен. Попробуйте ещё раз чуть позже.</string>
+    <string name="err_session_expired">Сеанс завершён. Пожалуйста, войдите в аккаунт снова.</string>
+    <string name="err_wrong_credentials">Адрес электронной почты или пароль указаны неверно. Проверьте их и попробуйте ещё раз.</string>
+    <string name="err_enter_email_password">Введите адрес электронной почты и пароль.</string>
+    <string name="err_account_not_found">Мы не нашли аккаунт с такими данными.</string>
+    <string name="err_not_verified">Ваш аккаунт ещё не подтверждён. Сначала подтвердите адрес электронной почты.</string>
+    <string name="err_otp_wrong">Код введён неверно. Проверьте его и попробуйте ещё раз.</string>
+    <string name="err_otp_expired">Срок действия кода истёк. Пожалуйста, запросите новый код.</string>
+    <string name="err_email_exists">Аккаунт с этим адресом электронной почты уже есть.</string>
+    <string name="err_already_verified">Этот аккаунт уже подтверждён.</string>
+    <string name="err_no_access">У вас нет доступа к этому действию.</string>
+    <string name="err_account_inactive">Этот аккаунт сейчас не активен. Пожалуйста, обратитесь в поддержку.</string>
+    <string name="err_plan_problem">Не удалось оформить этот план. Пожалуйста, обратитесь в поддержку.</string>
+    <string name="err_image_type">Выберите картинку в формате PNG или JPG.</string>
+    <string name="err_sign_in_failed">Войти не получилось. Попробуйте ещё раз.</string>
     <!-- m2_numbers -->
     <string name="minus">Минус</string>
     <string name="plus">Плюс</string>
@@ -1686,7 +1703,6 @@
     <string name="type_of_exercise">Тип упражнения:</string>
     <string name="type_of_questions">Тип вопросов:</string>
     <string name="unstoppable_great_job">Тебя не остановить! Отличная работа</string>
-    <string name="what_s_learn_in_application">Чему учит приложение</string>
     <string name="yes_i_m_sure">Да, уверен</string>
     <string name="you_are_brilliant">Ты великолепен</string>
     <string name="you_are_on_the_right_track">Ты на верном пути</string>
@@ -1703,43 +1719,6 @@
     <string name="reports_upgrade_title">Перейдите на Premium</string>
     <string name="reports_upgrade_subtitle">Вся история отчётов</string>
     <string name="view_plans">Посмотреть тарифы</string>
-    <!-- m5_whats_learning -->
-    <string name="whats_learn_free_mode_title">Чему дети учатся в свободном режиме абакуса</string>
-    <string name="whats_learn_free_mode_1">• Понимание &lt;b>строения и частей&lt;/b> абакуса.</string>
-    <string name="whats_learn_free_mode_2">• Простое знакомство с абакусом для &lt;b>начинающих&lt;/b>.</string>
-    <string name="whats_learn_free_mode_3">• Умение различать &lt;b>виды бусин&lt;/b> и их &lt;b>значения&lt;/b>.</string>
-    <string name="whats_learn_free_mode_4">• &lt;b>Приёмы работы пальцами&lt;/b>, чтобы правильно двигать бусины.</string>
-    <string name="whats_learn_free_mode_5">• Учимся &lt;b>читать, показывать и набирать числа&lt;/b> на абакусе.</string>
-    <string name="whats_learn_practice_title">Чему дети учатся в модуле практики на абакусе</string>
-    <string name="whats_learn_practice_1">• &lt;b>Пошаговое&lt;/b> решение с &lt;b>правильными направлениями движения бусин&lt;/b>.</string>
-    <string name="whats_learn_practice_2">• &lt;b>Наглядная формула абакуса&lt;/b> на каждом шаге (в том числе для умножения и деления).</string>
-    <string name="whats_learn_practice_3">• Умение вводить только &lt;b>итоговые ответы&lt;/b>.</string>
-    <string name="whats_learn_practice_4">• &lt;b>Практика в режиме формального экзамена&lt;/b> с учётом верных и неверных ответов.</string>
-    <string name="whats_learn_practice_5">• Скорость и точность с помощью &lt;b>наборов на время&lt;/b>.</string>
-    <string name="whats_learn_practice_6">• Понимание &lt;b>неверных движений бусин&lt;/b> благодаря подсказкам о направлении.</string>
-    <string name="whats_learn_practice_7">• &lt;b>Скрытие и показ&lt;/b> направлений бусин и формулы в &lt;b>настройках&lt;/b>.</string>
-    <string name="whats_learn_practice_8">• &lt;b>Поддержка левой и правой руки&lt;/b>: ребёнок занимается удобно, той рукой, к которой привык.</string>
-    <string name="whats_learn_exercise_title">Что делают дети в модуле упражнений</string>
-    <string name="whats_learn_exercise_1">• &lt;b>Запуск&lt;/b> заданий на сложение, вычитание, умножение и деление &lt;b>по уровню подготовки&lt;/b>.</string>
-    <string name="whats_learn_exercise_2">• &lt;b>Тренировка&lt;/b> на разных наборах упражнений и с &lt;b>лимитом времени для скорости и концентрации&lt;/b>.</string>
-    <string name="whats_learn_exercise_3">• &lt;b>Развитие&lt;/b> выносливости, как на экзамене, с помощью структурированных наборов вопросов и &lt;b>таймеров обратного отсчёта&lt;/b>.</string>
-    <string name="whats_learn_exercise_4">• &lt;b>Улучшение&lt;/b> концентрации, памяти и гибкости ума &lt;b>с помощью непрерывных тренировок&lt;/b>.</string>
-    <string name="whats_learn_exam_title">Что делают дети в модуле экзамена</string>
-    <string name="whats_learn_exam_1">• &lt;b>Имитация экзамена –&lt;/b> тренировка в условиях, близких к настоящему экзамену, для точности и уверенности.</string>
-    <string name="whats_learn_exam_2">• &lt;b>Поддерживаемые действия –&lt;/b> сложение, вычитание, умножение и деление.</string>
-    <string name="whats_learn_exam_3">• &lt;b>Уровни сложности –&lt;/b> лёгкий, средний или сложный для постепенного обучения.</string>
-    <string name="whats_learn_exam_4">• &lt;b>Тесты с выбором ответа –&lt;/b> к каждому вопросу 4 варианта, чтобы развивать умение принимать решения.</string>
-    <string name="whats_learn_exam_5">• &lt;b>Таймер на экране –&lt;/b> следите за временем без жёсткого ограничения.</string>
-    <string name="whats_learn_exam_6">• &lt;b>Подготовка к соревнованиям –&lt;/b> отлично подходит для экзаменов UCMAS, школьных проверок, математических олимпиад и конкурсов по абакусу.</string>
-    <string name="whats_learn_exam_7">• &lt;b>Целенаправленные тренировки –&lt;/b> развивают экзаменационное хладнокровие, скорость и логическое мышление.</string>
-    <string name="whats_learn_ccm_title">Что делают дети в модуле «Свой вызов»</string>
-    <string name="whats_learn_ccm_1">• &lt;b>Полная настройка –&lt;/b> задавайте число вопросов, длину вопроса (мин./макс. число цифр) и паузу между вопросами.</string>
-    <string name="whats_learn_ccm_2">• &lt;b>Гибкая подача –&lt;/b> выбирайте, как показывать вопросы: числами, словами или голосом.</string>
-    <string name="whats_learn_ccm_3">• &lt;b>Тренировка на время –&lt;/b> добавляйте паузы между вопросами, чтобы создать напряжение и усилить концентрацию.</string>
-    <string name="whats_learn_ccm_4">• &lt;b>Устные и наглядные тренировки –&lt;/b> подходят для обучения на слух, только визуально или в смешанном стиле.</string>
-    <string name="whats_learn_ccm_5">• &lt;b>Универсальность –&lt;/b> подходит для занятий дома, в классе и на индивидуальных уроках.</string>
-    <string name="whats_learn_ccm_6">• &lt;b>Развитие навыков –&lt;/b> улучшает слух, память, концентрацию, визуализацию и скорость счёта.</string>
-    <string name="whats_learn_ccm_7">• &lt;b>Польза –&lt;/b> развивает гибкость, умение принимать решения и готовит к разным форматам тестов.</string>
     <!-- m6_free_mode -->
     <string name="free_mode_set_label">Набор:</string>
     <string name="free_mode_range">от %1$d до %2$d</string>
@@ -1898,7 +1877,6 @@
     <string name="home_offer_product_yearly">годовой</string>
     <string name="home_offer_product_lifetime">пожизненный</string>
     <string name="order_id">Номер заказа</string>
-    <string name="subscription_free_trial_msg">Оплата будет списана после бесплатного периода.\nОтменить можно в любой момент до его окончания.</string>
     <string name="cancel_subscription_anytime">Подписку можно отменить в любой момент.</string>
     <string name="plan_assigned_from_admin">Тариф назначен администратором.</string>
     <string name="purchase_pending">Платёж ожидает подтверждения. Доступ откроется сразу после его завершения.</string>

@@ -139,16 +139,6 @@
   "th": "รหัสคำสั่งซื้อ",
   "ar": "رقم الطلب"
  },
- "subscription_free_trial_msg": {
-  "fr": "Le paiement sera débité après l'essai gratuit.\nAnnulez à tout moment avant la fin de l'essai.",
-  "es": "El pago se cobrará después de la prueba gratuita.\nCancela cuando quieras antes de que termine.",
-  "pt": "A cobrança será feita após o teste grátis.\nCancele quando quiser antes do fim do teste.",
-  "tr": "Ödeme, ücretsiz denemeden sonra alınır.\nDeneme bitmeden istediğiniz zaman iptal edin.",
-  "ru": "Оплата будет списана после бесплатного периода.\nОтменить можно в любой момент до его окончания.",
-  "ja": "お支払いは無料体験の終了後に請求されます。\n体験期間中はいつでも解約できます。",
-  "th": "จะเรียกเก็บเงินหลังช่วงทดลองใช้ฟรี\nยกเลิกได้ทุกเมื่อก่อนสิ้นสุดช่วงทดลอง",
-  "ar": "سيتم الدفع بعد انتهاء الفترة التجريبية المجانية.\nيمكنك الإلغاء في أي وقت قبل انتهاء التجربة."
- },
  "cancel_subscription_anytime": {
   "fr": "Résiliez à tout moment.",
   "es": "Cancela la suscripción cuando quieras.",

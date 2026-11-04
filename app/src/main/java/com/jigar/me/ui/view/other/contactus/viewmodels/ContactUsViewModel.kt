@@ -12,6 +12,7 @@ import com.jigar.me.data.repositories.UserApiRepository
 import com.jigar.me.ui.jetpack.core.StatefulViewModel
 import com.jigar.me.ui.jetpack.core.domain.ConsumableCommand
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.ApiErrors
 import com.jigar.me.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -109,7 +110,7 @@ class ContactUsViewModel @Inject constructor(
                         updateState_ { copy(isLoading = false, showSuccessDialog = true) }
                     } else {
                         updateState_ {
-                            copy(isLoading = false, errorMessage = response.value.error?.message)
+                            copy(isLoading = false, errorMessage = ApiErrors.text(response.value))
                         }
                     }
                 }
@@ -130,6 +131,6 @@ class ContactUsViewModel @Inject constructor(
     fun onBack() = updateState_ { copy(finishActivity = ConsumableCommand(Unit)) }
 
     override fun onFailure(throwable: Throwable) {
-        updateState_ { copy(isLoading = false, errorMessage = throwable.localizedMessage) }
+        updateState_ { copy(isLoading = false, errorMessage = ApiErrors.text(throwable)) }
     }
 }

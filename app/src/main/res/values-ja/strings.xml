@@ -1339,6 +1339,23 @@
     <string name="practice_two_digit_plus">2桁 (+)</string>
     <string name="practice_two_digit_plus_minus">2桁 (+-)</string>
     <string name="practice_vedaavi_calculation_n">Vedaavi計算%1$s</string>
+    <!-- m24_errors -->
+    <string name="err_generic">うまくいきませんでした。もう一度お試しください。</string>
+    <string name="err_server">ただいまサーバーが混み合っています。しばらくしてから、もう一度お試しください。</string>
+    <string name="err_session_expired">ログインの有効期限が切れました。もう一度ログインしてください。</string>
+    <string name="err_wrong_credentials">メールアドレスかパスワードが違うようです。ご確認のうえ、もう一度お試しください。</string>
+    <string name="err_enter_email_password">メールアドレスとパスワードを入力してください。</string>
+    <string name="err_account_not_found">この情報に合うアカウントが見つかりませんでした。</string>
+    <string name="err_not_verified">アカウントの確認がまだ終わっていません。先にメールアドレスを確認してください。</string>
+    <string name="err_otp_wrong">コードが違うようです。ご確認のうえ、もう一度お試しください。</string>
+    <string name="err_otp_expired">このコードは有効期限が切れています。新しいコードを送ってもらってください。</string>
+    <string name="err_email_exists">このメールアドレスのアカウントは、すでにあります。</string>
+    <string name="err_already_verified">このアカウントは、すでに確認が終わっています。</string>
+    <string name="err_no_access">この操作を行う権限がありません。</string>
+    <string name="err_account_inactive">このアカウントは現在ご利用いただけません。サポートまでご連絡ください。</string>
+    <string name="err_plan_problem">プランのお手続きを完了できませんでした。サポートまでご連絡ください。</string>
+    <string name="err_image_type">PNGまたはJPGの画像を選んでください。</string>
+    <string name="err_sign_in_failed">ログインできませんでした。もう一度お試しください。</string>
     <!-- m2_numbers -->
     <string name="minus">マイナス</string>
     <string name="plus">プラス</string>
@@ -1578,7 +1595,6 @@
     <string name="type_of_exercise">トレーニングの種類：</string>
     <string name="type_of_questions">問題の種類：</string>
     <string name="unstoppable_great_job">止まらないね！ すばらしい</string>
-    <string name="what_s_learn_in_application">アプリで学べること</string>
     <string name="yes_i_m_sure">はい、大丈夫です</string>
     <string name="you_are_brilliant">さすがだね</string>
     <string name="you_are_on_the_right_track">いいちょうし！</string>
@@ -1595,43 +1611,6 @@
     <string name="reports_upgrade_title">Premiumにアップグレード</string>
     <string name="reports_upgrade_subtitle">レポート履歴をすべて見る</string>
     <string name="view_plans">プランを見る</string>
-    <!-- m5_whats_learning -->
-    <string name="whats_learn_free_mode_title">そろばんフリーモードで学べること</string>
-    <string name="whats_learn_free_mode_1">• そろばんの&lt;b>しくみと各部分&lt;/b>を理解する。</string>
-    <string name="whats_learn_free_mode_2">• &lt;b>はじめての人&lt;/b>でも学びやすいそろばん入門。</string>
-    <string name="whats_learn_free_mode_3">• &lt;b>珠の種類&lt;/b>とその&lt;b>値&lt;/b>を知る。</string>
-    <string name="whats_learn_free_mode_4">• 珠を正しく動かす&lt;b>指の使い方&lt;/b>。</string>
-    <string name="whats_learn_free_mode_5">• そろばんで&lt;b>数を読む・表す・置く&lt;/b>方法を学ぶ。</string>
-    <string name="whats_learn_practice_title">そろばん練習モジュールで学べること</string>
-    <string name="whats_learn_practice_1">• &lt;b>ステップごと&lt;/b>に、&lt;b>正しい珠の動かし方&lt;/b>で問題を解く。</string>
-    <string name="whats_learn_practice_2">• かけ算・わり算を含め、各ステップで&lt;b>そろばんの公式を目で確認&lt;/b>。</string>
-    <string name="whats_learn_practice_3">• &lt;b>最終の答えだけ&lt;/b>を入力する練習。</string>
-    <string name="whats_learn_practice_4">• 正解・不正解を記録しながら&lt;b>本番テストモードで練習&lt;/b>。</string>
-    <string name="whats_learn_practice_5">• &lt;b>時間つきセット&lt;/b>でスピードと正確さを伸ばす。</string>
-    <string name="whats_learn_practice_6">• 方向ヒントで&lt;b>まちがった珠の動き&lt;/b>を理解する。</string>
-    <string name="whats_learn_practice_7">• 珠の方向や公式の表示を&lt;b>設定&lt;/b>で&lt;b>表示／非表示&lt;/b>にできる。</string>
-    <string name="whats_learn_practice_8">• &lt;b>左手でも右手でも使えます&lt;/b>。いつもの手で楽に練習できます。</string>
-    <string name="whats_learn_exercise_title">トレーニングモジュールでできること</string>
-    <string name="whats_learn_exercise_1">• &lt;b>学習レベルに合わせて&lt;/b>、たし算・ひき算・かけ算・わり算の問題に&lt;b>挑戦&lt;/b>。</string>
-    <string name="whats_learn_exercise_2">• &lt;b>練習&lt;/b>：いろいろな練習セットと&lt;b>時間制限でスピードと集中力を高めます&lt;/b>。</string>
-    <string name="whats_learn_exercise_3">• 構成された問題セットと&lt;b>カウントダウンタイマー&lt;/b>で、テスト本番の体力を&lt;b>養う&lt;/b>。</string>
-    <string name="whats_learn_exercise_4">• &lt;b>流れるようなドリル&lt;/b>で、集中力・記憶力・頭の回転を&lt;b>高める&lt;/b>。</string>
-    <string name="whats_learn_exam_title">テストモジュールでできること</string>
-    <string name="whats_learn_exam_1">• &lt;b>本番さながらのテスト環境&lt;/b>：本番に近い状況で練習して、正確さと自信を育てます。</string>
-    <string name="whats_learn_exam_2">• &lt;b>対応する計算&lt;/b>：たし算・ひき算・かけ算・わり算。</string>
-    <string name="whats_learn_exam_3">• &lt;b>難易度&lt;/b>：やさしい・ふつう・むずかしいから選んで、少しずつ上達。</string>
-    <string name="whats_learn_exam_4">• &lt;b>4択形式&lt;/b>：どの問題も4つの選択肢があり、判断力を育てます。</string>
-    <string name="whats_learn_exam_5">• &lt;b>タイマー表示&lt;/b>：きびしい時間制限なしで、かかった時間を確認できます。</string>
-    <string name="whats_learn_exam_6">• &lt;b>大会にも対応&lt;/b>：UCMAS検定、学校のテスト、算数コンテスト、そろばん大会にぴったり。</string>
-    <string name="whats_learn_exam_7">• &lt;b>集中トレーニング&lt;/b>：テストでの落ち着き、スピード、論理的な考え方を育てます。</string>
-    <string name="whats_learn_ccm_title">オリジナルチャレンジモジュールでできること</string>
-    <string name="whats_learn_ccm_1">• &lt;b>自由にカスタマイズ&lt;/b>：問題数、問題の桁数（最小・最大）、問題の間隔を調整できます。</string>
-    <string name="whats_learn_ccm_2">• &lt;b>柔軟な出し方&lt;/b>：数字・言葉・音声から問題の見せ方を選べます。</string>
-    <string name="whats_learn_ccm_3">• &lt;b>時間つき練習&lt;/b>：問題の間に間隔を入れて、緊張感と集中力を高めます。</string>
-    <string name="whats_learn_ccm_4">• &lt;b>耳と目のトレーニング&lt;/b>：聞く学習、イメージだけの学習、両方を合わせた学習に最適。</string>
-    <string name="whats_learn_ccm_5">• &lt;b>いろいろな使い方&lt;/b>：家での練習、教室の活動、個別指導にも使えます。</string>
-    <string name="whats_learn_ccm_6">• &lt;b>力を伸ばす&lt;/b>：聞く力、記憶力、集中力、イメージ力、計算スピードが向上します。</string>
-    <string name="whats_learn_ccm_7">• &lt;b>効果&lt;/b>：対応力と判断力が育ち、さまざまな形式のテストに備えられます。</string>
     <!-- m6_free_mode -->
     <string name="free_mode_set_label">セット：</string>
     <string name="free_mode_range">%1$d〜%2$d</string>
@@ -1784,7 +1763,6 @@
     <string name="home_offer_product_yearly">年額</string>
     <string name="home_offer_product_lifetime">永久</string>
     <string name="order_id">注文ID</string>
-    <string name="subscription_free_trial_msg">お支払いは無料体験の終了後に請求されます。\n体験期間中はいつでも解約できます。</string>
     <string name="cancel_subscription_anytime">購読はいつでも解約できます。</string>
     <string name="plan_assigned_from_admin">管理者から付与されたプランです。</string>
     <string name="purchase_pending">お支払いは承認待ちです。完了しだい、すぐに利用できます。</string>

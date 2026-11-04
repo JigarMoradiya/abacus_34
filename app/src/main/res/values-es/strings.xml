@@ -1407,6 +1407,23 @@
     <string name="practice_two_digit_plus">Dos dígitos (+)</string>
     <string name="practice_two_digit_plus_minus">Dos dígitos (+-)</string>
     <string name="practice_vedaavi_calculation_n">Cálculo Vedaavi %1$s</string>
+    <!-- m24_errors -->
+    <string name="err_generic">Algo salió mal. Inténtalo de nuevo.</string>
+    <string name="err_server">Nuestro servidor está ocupado en este momento. Inténtalo de nuevo en unos minutos.</string>
+    <string name="err_session_expired">Tu sesión ha terminado. Inicia sesión de nuevo.</string>
+    <string name="err_wrong_credentials">El correo electrónico o la contraseña no son correctos. Revísalos e inténtalo de nuevo.</string>
+    <string name="err_enter_email_password">Escribe tu correo electrónico y tu contraseña.</string>
+    <string name="err_account_not_found">No encontramos una cuenta con estos datos. Revísalos e inténtalo de nuevo.</string>
+    <string name="err_not_verified">Tu cuenta aún no está verificada. Verifica primero tu correo electrónico.</string>
+    <string name="err_otp_wrong">Ese código no es correcto. Revísalo e inténtalo de nuevo.</string>
+    <string name="err_otp_expired">Este código ha caducado. Solicita uno nuevo.</string>
+    <string name="err_email_exists">Ya existe una cuenta con este correo electrónico. Prueba a iniciar sesión.</string>
+    <string name="err_already_verified">Esta cuenta ya está verificada. Puedes iniciar sesión.</string>
+    <string name="err_no_access">No tienes acceso para hacer esto.</string>
+    <string name="err_account_inactive">Esta cuenta no está activa. Contacta con soporte.</string>
+    <string name="err_plan_problem">No pudimos completar esta solicitud del plan. Contacta con soporte.</string>
+    <string name="err_image_type">Elige una imagen PNG o JPG.</string>
+    <string name="err_sign_in_failed">No se pudo iniciar sesión. Inténtalo de nuevo.</string>
     <!-- m2_numbers -->
     <string name="minus">Menos</string>
     <string name="plus">Más</string>
@@ -1650,7 +1667,6 @@
     <string name="type_of_exercise">Tipo de ejercicio:</string>
     <string name="type_of_questions">Tipo de preguntas:</string>
     <string name="unstoppable_great_job">¡Imparable! Gran trabajo</string>
-    <string name="what_s_learn_in_application">Qué se aprende en la aplicación</string>
     <string name="yes_i_m_sure">Sí, estoy seguro</string>
     <string name="you_are_brilliant">Eres brillante</string>
     <string name="you_are_on_the_right_track">Vas por buen camino</string>
@@ -1667,43 +1683,6 @@
     <string name="reports_upgrade_title">Pasa a Premium</string>
     <string name="reports_upgrade_subtitle">Ver todo el historial de informes</string>
     <string name="view_plans">Ver planes</string>
-    <!-- m5_whats_learning -->
-    <string name="whats_learn_free_mode_title">Qué aprenden los niños en el modo libre del ábaco</string>
-    <string name="whats_learn_free_mode_1">• Comprender la &lt;b>estructura y las partes&lt;/b> del ábaco.</string>
-    <string name="whats_learn_free_mode_2">• Aprendizaje fácil del ábaco para &lt;b>principiantes&lt;/b>.</string>
-    <string name="whats_learn_free_mode_3">• Reconocer los &lt;b>tipos de cuentas&lt;/b> y sus &lt;b>valores&lt;/b>.</string>
-    <string name="whats_learn_free_mode_4">• &lt;b>Técnicas con los dedos&lt;/b> para mover las cuentas correctamente.</string>
-    <string name="whats_learn_free_mode_5">• Aprender a &lt;b>leer, representar y colocar números&lt;/b> en el ábaco.</string>
-    <string name="whats_learn_practice_title">Qué aprenden los niños en el módulo de práctica del ábaco</string>
-    <string name="whats_learn_practice_1">• Resolución &lt;b>paso a paso&lt;/b> con las &lt;b>direcciones correctas de las cuentas&lt;/b>.</string>
-    <string name="whats_learn_practice_2">• &lt;b>Visualizar la fórmula del ábaco&lt;/b> en cada paso (también en multiplicación y división).</string>
-    <string name="whats_learn_practice_3">• Aprender a introducir solo las &lt;b>respuestas finales&lt;/b>.</string>
-    <string name="whats_learn_practice_4">• &lt;b>Practicar en modo examen formal&lt;/b> con seguimiento de respuestas correctas e incorrectas.</string>
-    <string name="whats_learn_practice_5">• Ganar velocidad y precisión con &lt;b>sets cronometrados&lt;/b>.</string>
-    <string name="whats_learn_practice_6">• Entender los &lt;b>movimientos incorrectos de cuentas&lt;/b> con pistas de dirección.</string>
-    <string name="whats_learn_practice_7">• &lt;b>Ocultar o mostrar&lt;/b> la dirección de las cuentas y la fórmula desde &lt;b>ajustes&lt;/b>.</string>
-    <string name="whats_learn_practice_8">• &lt;b>Admite uso con mano izquierda y derecha&lt;/b>: los niños practican con comodidad con su mano natural.</string>
-    <string name="whats_learn_exercise_title">Qué hacen los niños en el módulo de ejercicios</string>
-    <string name="whats_learn_exercise_1">• &lt;b>Empezar&lt;/b> retos de suma, resta, multiplicación y división &lt;b>según su nivel de aprendizaje&lt;/b>.</string>
-    <string name="whats_learn_exercise_2">• &lt;b>Practicar&lt;/b> con distintos sets de ejercicios y &lt;b>límites de tiempo para mejorar la velocidad y la concentración&lt;/b>.</string>
-    <string name="whats_learn_exercise_3">• &lt;b>Desarrollar&lt;/b> resistencia de examen con sets de preguntas estructurados y &lt;b>cuentas atrás&lt;/b>.</string>
-    <string name="whats_learn_exercise_4">• &lt;b>Mejorar&lt;/b> la concentración, la memoria y la agilidad mental &lt;b>con ejercicios de ritmo continuo&lt;/b>.</string>
-    <string name="whats_learn_exam_title">Qué hacen los niños en el módulo de examen</string>
-    <string name="whats_learn_exam_1">• &lt;b>Entorno de examen simulado –&lt;/b> Practica en condiciones similares a un examen real para ganar precisión y confianza.</string>
-    <string name="whats_learn_exam_2">• &lt;b>Tipos de cálculo compatibles –&lt;/b> suma, resta, multiplicación y división.</string>
-    <string name="whats_learn_exam_3">• &lt;b>Niveles de dificultad –&lt;/b> Elige fácil, medio o difícil para avanzar poco a poco.</string>
-    <string name="whats_learn_exam_4">• &lt;b>Formato de opción múltiple –&lt;/b> Cada pregunta tiene 4 opciones para desarrollar la toma de decisiones.</string>
-    <string name="whats_learn_exam_5">• &lt;b>Cronómetro visible –&lt;/b> Mide cuánto tardas sin presión de tiempo estricta.</string>
-    <string name="whats_learn_exam_6">• &lt;b>Listo para competir –&lt;/b> Perfecto para exámenes UCMAS, pruebas escolares, concursos de matemáticas y de ábaco.</string>
-    <string name="whats_learn_exam_7">• &lt;b>Entrenamiento enfocado –&lt;/b> Desarrolla temple en los exámenes, velocidad y pensamiento lógico.</string>
-    <string name="whats_learn_ccm_title">Qué hacen los niños en el módulo de reto personalizado</string>
-    <string name="whats_learn_ccm_1">• &lt;b>Personalización total –&lt;/b> Controla el número de preguntas, su longitud (mín./máx. de dígitos) y la pausa entre preguntas.</string>
-    <string name="whats_learn_ccm_2">• &lt;b>Presentación flexible –&lt;/b> Elige cómo aparecen las preguntas: números, palabras o voz.</string>
-    <string name="whats_learn_ccm_3">• &lt;b>Práctica cronometrada –&lt;/b> Añade pausas entre preguntas para simular presión y mejorar la concentración.</string>
-    <string name="whats_learn_ccm_4">• &lt;b>Entrenamiento oral y visual –&lt;/b> Perfecto para aprender escuchando, solo con visualización o combinando ambos.</string>
-    <string name="whats_learn_ccm_5">• &lt;b>Uso versátil –&lt;/b> Ideal para practicar en casa, en clase o en sesiones de tutoría personalizadas.</string>
-    <string name="whats_learn_ccm_6">• &lt;b>Desarrollo de habilidades –&lt;/b> Mejora la escucha, la memoria, la concentración, la visualización y la velocidad de cálculo.</string>
-    <string name="whats_learn_ccm_7">• &lt;b>Beneficio –&lt;/b> Fomenta la adaptabilidad, mejora la toma de decisiones y prepara para distintos formatos de prueba.</string>
     <!-- m6_free_mode -->
     <string name="free_mode_set_label">Set:</string>
     <string name="free_mode_range">de %1$d a %2$d</string>
@@ -1860,7 +1839,6 @@
     <string name="home_offer_product_yearly">anual</string>
     <string name="home_offer_product_lifetime">de por vida</string>
     <string name="order_id">ID de pedido</string>
-    <string name="subscription_free_trial_msg">El pago se cobrará después de la prueba gratuita.\nCancela cuando quieras antes de que termine.</string>
     <string name="cancel_subscription_anytime">Cancela la suscripción cuando quieras.</string>
     <string name="plan_assigned_from_admin">Plan asignado por el administrador.</string>
     <string name="purchase_pending">Tu pago está pendiente de aprobación. Tendrás acceso en cuanto se complete.</string>

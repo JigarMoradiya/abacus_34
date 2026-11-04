@@ -63,7 +63,6 @@ fun MyAccountRoute(
     onNavigateToPurchase: () -> Unit,
     onNavigateToSettings: () -> Unit,
     onNavigateToReportHistory: () -> Unit,
-    onNavigateToWhatsLearning: () -> Unit,
     onNavigateToCredentials: () -> Unit,
 ) {
     val viewModel: MyAccountViewModel = hiltViewModel()
@@ -118,7 +117,6 @@ fun MyAccountRoute(
                         if (uiState.isLoggedIn) onNavigateToReportHistory()
                         else showLoginSheetForHistory = true
                     }
-                    "about_app" -> onNavigateToWhatsLearning()
                     "free_premium" -> showFeatures = true
                     "rate_us_on_the_play_store" -> openWithGate { showRateUsSheet = true }
                     "share_app" -> openWithGate {

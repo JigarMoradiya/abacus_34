@@ -98,7 +98,9 @@ android {
         }
     }
 
-    assetPacks += listOf(":asset_install_time")
+    // The install-time asset pack (the 5 bundled tutorial videos, about 40 MB) is NOT linked any more: the screen that played them is gone.
+    // The module folder `asset_install_time` is kept as it was. To link it again: uncomment this line and the include in settings.gradle.kts.
+    // assetPacks += listOf(":asset_install_time")
 
     packaging {
         resources {

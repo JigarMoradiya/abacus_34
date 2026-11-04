@@ -1509,6 +1509,23 @@
     <string name="practice_two_digit_plus">خانتان (‪+‬)</string>
     <string name="practice_two_digit_plus_minus">خانتان (‪+-‬)</string>
     <string name="practice_vedaavi_calculation_n">حساب Vedaavi %1$s</string>
+    <!-- m24_errors -->
+    <string name="err_generic">حدث خطأ ما. يرجى المحاولة مرة أخرى.</string>
+    <string name="err_server">الخادم مشغول حاليًا. يرجى المحاولة بعد قليل.</string>
+    <string name="err_session_expired">انتهت جلستك. يرجى تسجيل الدخول مرة أخرى.</string>
+    <string name="err_wrong_credentials">البريد الإلكتروني أو كلمة المرور غير صحيحة. يرجى التحقق والمحاولة مرة أخرى.</string>
+    <string name="err_enter_email_password">يرجى إدخال بريدك الإلكتروني وكلمة المرور.</string>
+    <string name="err_account_not_found">لم نعثر على حساب بهذه البيانات.</string>
+    <string name="err_not_verified">لم يتم تأكيد حسابك بعد. يرجى تأكيد بريدك الإلكتروني أولًا.</string>
+    <string name="err_otp_wrong">هذا الرمز غير صحيح. يرجى التحقق منه والمحاولة مرة أخرى.</string>
+    <string name="err_otp_expired">انتهت صلاحية هذا الرمز. يرجى طلب رمز جديد.</string>
+    <string name="err_email_exists">يوجد حساب بهذا البريد الإلكتروني بالفعل.</string>
+    <string name="err_already_verified">تم تأكيد هذا الحساب بالفعل.</string>
+    <string name="err_no_access">ليست لديك صلاحية للقيام بذلك.</string>
+    <string name="err_account_inactive">هذا الحساب غير نشط. يرجى التواصل مع الدعم.</string>
+    <string name="err_plan_problem">تعذّر إكمال طلب الخطة هذا. يرجى التواصل مع الدعم.</string>
+    <string name="err_image_type">يرجى اختيار صورة بصيغة PNG أو JPG.</string>
+    <string name="err_sign_in_failed">لم ينجح تسجيل الدخول. يرجى المحاولة مرة أخرى.</string>
     <!-- m2_numbers -->
     <string name="minus">ناقص</string>
     <string name="plus">زائد</string>
@@ -1758,7 +1775,6 @@
     <string name="type_of_exercise">نوع التمرين:</string>
     <string name="type_of_questions">نوع الأسئلة:</string>
     <string name="unstoppable_great_job">لا أحد يوقفك! عمل رائع</string>
-    <string name="what_s_learn_in_application">ماذا يتعلّم الطفل في التطبيق</string>
     <string name="yes_i_m_sure">نعم، أنا متأكد</string>
     <string name="you_are_brilliant">أنت رائع</string>
     <string name="you_are_on_the_right_track">أنت على الطريق الصحيح</string>
@@ -1775,43 +1791,6 @@
     <string name="reports_upgrade_title">الترقية إلى Premium</string>
     <string name="reports_upgrade_subtitle">اطّلع على سجل التقارير الكامل</string>
     <string name="view_plans">عرض الباقات</string>
-    <!-- m5_whats_learning -->
-    <string name="whats_learn_free_mode_title">ماذا يتعلّم الطفل في وضع الأباكوس الحر</string>
-    <string name="whats_learn_free_mode_1">• فهم &lt;b>بنية وأجزاء&lt;/b> الأباكوس.</string>
-    <string name="whats_learn_free_mode_2">• تعلّم الأباكوس بسهولة &lt;b>للمبتدئين&lt;/b>.</string>
-    <string name="whats_learn_free_mode_3">• التعرّف على &lt;b>أنواع الخرزات&lt;/b> و&lt;b>قيمها&lt;/b>.</string>
-    <string name="whats_learn_free_mode_4">• &lt;b>تقنيات الأصابع&lt;/b> لتحريك الخرزات بالطريقة الصحيحة.</string>
-    <string name="whats_learn_free_mode_5">• تعلّم &lt;b>قراءة الأرقام وتمثيلها وضبطها&lt;/b> على الأباكوس.</string>
-    <string name="whats_learn_practice_title">ماذا يتعلّم الأطفال في وحدة تدريب الأباكوس</string>
-    <string name="whats_learn_practice_1">• حل المسائل &lt;b>خطوة بخطوة&lt;/b> مع &lt;b>اتجاهات الخرزات الصحيحة&lt;/b>.</string>
-    <string name="whats_learn_practice_2">• &lt;b>تصوّر صيغة الأباكوس&lt;/b> في كل خطوة (بما في ذلك الضرب والقسمة).</string>
-    <string name="whats_learn_practice_3">• دعم إدخال &lt;b>الإجابات النهائية&lt;/b> فقط.</string>
-    <string name="whats_learn_practice_4">• &lt;b>التدرّب بأسلوب الامتحان الرسمي&lt;/b> مع تتبّع الإجابات الصحيحة والخاطئة.</string>
-    <string name="whats_learn_practice_5">• بناء السرعة والدقة عبر &lt;b>مجموعات موقوتة&lt;/b>.</string>
-    <string name="whats_learn_practice_6">• فهم &lt;b>حركة الخرزات الخاطئة&lt;/b> مع تلميحات الاتجاه.</string>
-    <string name="whats_learn_practice_7">• &lt;b>إخفاء/إظهار&lt;/b> اتجاه الخرزات وعرض الصيغة من &lt;b>الإعدادات&lt;/b>.</string>
-    <string name="whats_learn_practice_8">• &lt;b>يدعم استخدام اليد اليمنى واليسرى&lt;/b>، فيتدرّب الأطفال بارتياح باليد التي اعتادوها.</string>
-    <string name="whats_learn_exercise_title">ماذا يفعل الطفل في وحدة التمارين</string>
-    <string name="whats_learn_exercise_1">• &lt;b>البدء&lt;/b> بتحديات الجمع والطرح والضرب والقسمة &lt;b>حسب مستوى تعلّمهم&lt;/b>.</string>
-    <string name="whats_learn_exercise_2">• &lt;b>التدرّب&lt;/b> على مجموعات تمارين مختلفة و&lt;b>حدود زمنية لتحسين السرعة والتركيز&lt;/b>.</string>
-    <string name="whats_learn_exercise_3">• &lt;b>بناء&lt;/b> قدرة تحمّل تشبه الامتحان بمجموعات أسئلة منظمة و&lt;b>مؤقتات تنازلية&lt;/b>.</string>
-    <string name="whats_learn_exercise_4">• &lt;b>تحسين&lt;/b> التركيز وحفظ المعلومات والخفة الذهنية &lt;b>من خلال تدريبات متدفقة&lt;/b>.</string>
-    <string name="whats_learn_exam_title">ماذا يفعل الطفل في وحدة الامتحان</string>
-    <string name="whats_learn_exam_1">• &lt;b>بيئة اختبار محاكية –&lt;/b> التدرّب في ظروف تشبه الامتحان الحقيقي لبناء الدقة والثقة.</string>
-    <string name="whats_learn_exam_2">• &lt;b>أنواع الحساب المدعومة –&lt;/b> الجمع والطرح والضرب والقسمة.</string>
-    <string name="whats_learn_exam_3">• &lt;b>مستويات الصعوبة –&lt;/b> اختر من سهل أو متوسط أو صعب للتعلّم التدريجي.</string>
-    <string name="whats_learn_exam_4">• &lt;b>صيغة الاختيار من متعدد –&lt;/b> يأتي كل سؤال مع 4 خيارات لتنمية مهارة اتخاذ القرار.</string>
-    <string name="whats_learn_exam_5">• &lt;b>عرض المؤقت –&lt;/b> تابع الوقت الذي تستغرقه دون ضغط زمني صارم.</string>
-    <string name="whats_learn_exam_6">• &lt;b>جاهز للمنافسات –&lt;/b> مثالي لامتحانات UCMAS والاختبارات المدرسية ومسابقات الرياضيات والأباكوس.</string>
-    <string name="whats_learn_exam_7">• &lt;b>تدريب مركّز –&lt;/b> يبني الثبات في الامتحان والسرعة والتفكير المنطقي.</string>
-    <string name="whats_learn_ccm_title">ماذا يفعل الطفل في وحدة وضع التحدي المخصص</string>
-    <string name="whats_learn_ccm_1">• &lt;b>تخصيص كامل –&lt;/b> تحكّم في عدد الأسئلة وطول السؤال (الحد الأدنى والأقصى لعدد الأرقام) والفاصل الزمني بين الأسئلة.</string>
-    <string name="whats_learn_ccm_2">• &lt;b>عرض مرن –&lt;/b> اختر طريقة ظهور الأسئلة: أرقام أو كلمات أو صوت.</string>
-    <string name="whats_learn_ccm_3">• &lt;b>تدريب موقوت –&lt;/b> أضف فواصل بين الأسئلة لمحاكاة الضغط وتعزيز التركيز.</string>
-    <string name="whats_learn_ccm_4">• &lt;b>تدريب شفهي وبصري –&lt;/b> مثالي لأساليب التعلّم بالاستماع أو بالتصوّر فقط أو بالمزج بينهما.</string>
-    <string name="whats_learn_ccm_5">• &lt;b>استخدام متنوع –&lt;/b> مناسب للتدريب في المنزل وأنشطة الصف وجلسات التدريب المخصصة.</string>
-    <string name="whats_learn_ccm_6">• &lt;b>تنمية المهارات –&lt;/b> يعزّز الاستماع وقوة الذاكرة والتركيز والتصوّر وسرعة الحساب.</string>
-    <string name="whats_learn_ccm_7">• &lt;b>الفائدة –&lt;/b> يبني القدرة على التكيّف ويحسّن اتخاذ القرار ويهيّئ الطلاب لمختلف صيغ الاختبارات.</string>
     <!-- m6_free_mode -->
     <string name="free_mode_set_label">المجموعة:</string>
     <string name="free_mode_range">من %1$d إلى %2$d</string>
@@ -1974,7 +1953,6 @@
     <string name="home_offer_product_yearly">سنوية</string>
     <string name="home_offer_product_lifetime">مدى الحياة</string>
     <string name="order_id">رقم الطلب</string>
-    <string name="subscription_free_trial_msg">سيتم الدفع بعد انتهاء الفترة التجريبية المجانية.\nيمكنك الإلغاء في أي وقت قبل انتهاء التجربة.</string>
     <string name="cancel_subscription_anytime">يمكنك إلغاء الاشتراك في أي وقت.</string>
     <string name="plan_assigned_from_admin">تم تعيين الباقة من المشرف.</string>
     <string name="purchase_pending">دفعتك بانتظار الموافقة. ستحصل على الوصول فور اكتمالها.</string>

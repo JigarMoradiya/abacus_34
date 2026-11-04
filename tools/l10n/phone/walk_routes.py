@@ -36,7 +36,7 @@ def screen_text():
 
 D4 = ['easy', 'veryHard']
 routes = ['Home', 'Onboarding', 'AbacusFreeMode', 'MathGameZone', 'TrophyRoom', 'Settings', 'Purchase', 'YoutubeVideo',
-          'WhatsLearning', 'MyAccount', 'ReportHistory', 'FAQs', 'Exercise', 'ExamHome', 'ExamPlay/false', 'CCMHome', 'CCMPlay',
+          'MyAccount', 'ReportHistory', 'FAQs', 'Exercise', 'ExamHome', 'ExamPlay/false', 'CCMHome', 'CCMPlay',
           'CredentialsLoginLandscape']
 routes += [f'LevelCategory/{i}' for i in (1, 2, 99)]
 routes += ['AbacusSet/1/Test', 'AbacusList/1', 'AbacusDoPractice/1/false', 'AbacusDoPractice/99999/false']

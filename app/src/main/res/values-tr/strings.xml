@@ -1373,6 +1373,23 @@
     <string name="practice_two_digit_plus">İki Basamaklı (+)</string>
     <string name="practice_two_digit_plus_minus">İki Basamaklı (+-)</string>
     <string name="practice_vedaavi_calculation_n">Vedaavi Hesaplama %1$s</string>
+    <!-- m24_errors -->
+    <string name="err_generic">Bir şeyler ters gitti. Lütfen tekrar deneyin.</string>
+    <string name="err_server">Sunucumuz şu anda yoğun. Lütfen biraz sonra tekrar deneyin.</string>
+    <string name="err_session_expired">Oturumunuz sona erdi. Lütfen yeniden giriş yapın.</string>
+    <string name="err_wrong_credentials">E-posta veya şifre doğru değil. Lütfen kontrol edip tekrar deneyin.</string>
+    <string name="err_enter_email_password">Lütfen e-posta adresinizi ve şifrenizi girin.</string>
+    <string name="err_account_not_found">Bu bilgilerle bir hesap bulamadık.</string>
+    <string name="err_not_verified">Hesabınız henüz doğrulanmadı. Lütfen önce e-postanızı doğrulayın.</string>
+    <string name="err_otp_wrong">Bu kod doğru değil. Lütfen kontrol edip tekrar deneyin.</string>
+    <string name="err_otp_expired">Bu kodun süresi doldu. Lütfen yeni bir kod isteyin.</string>
+    <string name="err_email_exists">Bu e-posta adresiyle zaten bir hesap var.</string>
+    <string name="err_already_verified">Bu hesap zaten doğrulandı.</string>
+    <string name="err_no_access">Bu işlemi yapma yetkiniz yok.</string>
+    <string name="err_account_inactive">Bu hesap etkin değil. Lütfen destek ekibimizle iletişime geçin.</string>
+    <string name="err_plan_problem">Bu plan isteğini tamamlayamadık. Lütfen destek ekibimizle iletişime geçin.</string>
+    <string name="err_image_type">Lütfen PNG veya JPG türünde bir resim seçin.</string>
+    <string name="err_sign_in_failed">Giriş yapılamadı. Lütfen tekrar deneyin.</string>
     <!-- m2_numbers -->
     <string name="minus">Eksi</string>
     <string name="plus">Artı</string>
@@ -1614,7 +1631,6 @@
     <string name="type_of_exercise">Egzersiz türü:</string>
     <string name="type_of_questions">Soru türü:</string>
     <string name="unstoppable_great_job">Durdurulamazsın! Harika iş</string>
-    <string name="what_s_learn_in_application">Uygulamada neler öğrenilir</string>
     <string name="yes_i_m_sure">Evet, eminim</string>
     <string name="you_are_brilliant">Harikasın</string>
     <string name="you_are_on_the_right_track">Doğru yoldasın</string>
@@ -1631,43 +1647,6 @@
     <string name="reports_upgrade_title">Premium\'a geçin</string>
     <string name="reports_upgrade_subtitle">Tüm rapor geçmişinizi görün</string>
     <string name="view_plans">Planları gör</string>
-    <!-- m5_whats_learning -->
-    <string name="whats_learn_free_mode_title">Çocuklar Abaküs Serbest Modda neler öğrenir</string>
-    <string name="whats_learn_free_mode_1">• Abaküsün &lt;b>yapısını ve parçalarını&lt;/b> anlama.</string>
-    <string name="whats_learn_free_mode_2">• &lt;b>Yeni başlayanlar&lt;/b> için kolay abaküs öğrenimi.</string>
-    <string name="whats_learn_free_mode_3">• &lt;b>Boncuk türlerini&lt;/b> ve &lt;b>değerlerini&lt;/b> tanıma.</string>
-    <string name="whats_learn_free_mode_4">• Boncukları doğru hareket ettirmek için &lt;b>parmak teknikleri&lt;/b>.</string>
-    <string name="whats_learn_free_mode_5">• Abaküs üzerinde sayıları &lt;b>okumayı, göstermeyi ve kurmayı&lt;/b> öğrenme.</string>
-    <string name="whats_learn_practice_title">Çocuklar Abaküs Alıştırma modülünde neler öğrenir</string>
-    <string name="whats_learn_practice_1">• &lt;b>Adım adım&lt;/b> problem çözme ve &lt;b>doğru boncuk yönleri&lt;/b>.</string>
-    <string name="whats_learn_practice_2">• Her adımda &lt;b>abaküs formülünü görme&lt;/b> (çarpma ve bölme dahil).</string>
-    <string name="whats_learn_practice_3">• Yalnızca &lt;b>son cevabı&lt;/b> girmeyi öğrenme.</string>
-    <string name="whats_learn_practice_4">• Doğru ve yanlış cevap takibiyle &lt;b>resmî sınav modunda alıştırma&lt;/b>.</string>
-    <string name="whats_learn_practice_5">• &lt;b>Süreli setlerle&lt;/b> hız ve doğruluk kazanma.</string>
-    <string name="whats_learn_practice_6">• Yön ipuçlarıyla &lt;b>yanlış boncuk hareketlerini&lt;/b> anlama.</string>
-    <string name="whats_learn_practice_7">• Boncuk yönünü ve formül gösterimini &lt;b>ayarlardan&lt;/b> &lt;b>gizleme/gösterme&lt;/b>.</string>
-    <string name="whats_learn_practice_8">• &lt;b>Sol ve sağ el kullanımını destekler&lt;/b>: çocuklar doğal elleriyle rahatça alıştırma yapar.</string>
-    <string name="whats_learn_exercise_title">Çocuklar Egzersiz modülünde neler yapar</string>
-    <string name="whats_learn_exercise_1">• &lt;b>Öğrenme seviyelerine göre&lt;/b> toplama, çıkarma, çarpma ve bölme zorluklarına &lt;b>başlama&lt;/b>.</string>
-    <string name="whats_learn_exercise_2">• Farklı alıştırma setleri ve &lt;b>hızı ile odağı artıran süre sınırlarıyla&lt;/b> &lt;b>alıştırma yapma&lt;/b>.</string>
-    <string name="whats_learn_exercise_3">• Yapılandırılmış soru setleri ve &lt;b>geri sayım sayaçlarıyla&lt;/b> sınav dayanıklılığı &lt;b>geliştirme&lt;/b>.</string>
-    <string name="whats_learn_exercise_4">• &lt;b>Akış tabanlı çalışmalarla&lt;/b> konsantrasyonu, hafızayı ve zihinsel çevikliği &lt;b>geliştirme&lt;/b>.</string>
-    <string name="whats_learn_exam_title">Çocuklar Sınav modülünde neler yapar</string>
-    <string name="whats_learn_exam_1">• &lt;b>Sınav simülasyonu –&lt;/b> Doğruluk ve özgüven kazanmak için gerçek sınava benzer koşullarda alıştırma yapın.</string>
-    <string name="whats_learn_exam_2">• &lt;b>Desteklenen işlemler –&lt;/b> toplama, çıkarma, çarpma ve bölme.</string>
-    <string name="whats_learn_exam_3">• &lt;b>Zorluk seviyeleri –&lt;/b> Kademeli öğrenme için Kolay, Orta veya Zor seçin.</string>
-    <string name="whats_learn_exam_4">• &lt;b>Çoktan seçmeli format –&lt;/b> Karar verme becerisini geliştirmek için her soruda 4 seçenek vardır.</string>
-    <string name="whats_learn_exam_5">• &lt;b>Süre göstergesi –&lt;/b> Sıkı bir zaman baskısı olmadan ne kadar sürdüğünüzü takip edin.</string>
-    <string name="whats_learn_exam_6">• &lt;b>Yarışmaya hazır –&lt;/b> UCMAS sınavları, okul sınavları, matematik yarışmaları ve abaküs yarışmaları için ideal.</string>
-    <string name="whats_learn_exam_7">• &lt;b>Odaklı çalışma –&lt;/b> Sınav sakinliğini, hızı ve mantıksal düşünmeyi geliştirir.</string>
-    <string name="whats_learn_ccm_title">Çocuklar Özel Meydan Okuma modülünde neler yapar</string>
-    <string name="whats_learn_ccm_1">• &lt;b>Tam özelleştirme –&lt;/b> Soru sayısını, soru uzunluğunu (en az/en çok basamak) ve sorular arasındaki bekleme süresini ayarlayın.</string>
-    <string name="whats_learn_ccm_2">• &lt;b>Esnek sunum –&lt;/b> Soruların nasıl görüneceğini seçin: rakam, kelime veya ses.</string>
-    <string name="whats_learn_ccm_3">• &lt;b>Süreli alıştırma –&lt;/b> Baskıyı simüle etmek ve odağı artırmak için sorular arasına aralık ekleyin.</string>
-    <string name="whats_learn_ccm_4">• &lt;b>Sözlü ve görsel eğitim –&lt;/b> Dinleyerek, yalnızca görselleştirerek veya karma öğrenme stilleri için ideal.</string>
-    <string name="whats_learn_ccm_5">• &lt;b>Çok yönlü kullanım –&lt;/b> Ev çalışması, sınıf etkinlikleri ve özel ders oturumları için uygundur.</string>
-    <string name="whats_learn_ccm_6">• &lt;b>Beceri gelişimi –&lt;/b> Dinlemeyi, hafızayı, konsantrasyonu, görselleştirmeyi ve hesaplama hızını artırır.</string>
-    <string name="whats_learn_ccm_7">• &lt;b>Fayda –&lt;/b> Uyum yeteneğini geliştirir, karar vermeyi güçlendirir ve öğrencileri farklı sınav biçimlerine hazırlar.</string>
     <!-- m6_free_mode -->
     <string name="free_mode_set_label">Set:</string>
     <string name="free_mode_range">%1$d – %2$d</string>
@@ -1822,7 +1801,6 @@
     <string name="home_offer_product_yearly">Yıllık</string>
     <string name="home_offer_product_lifetime">Ömür boyu</string>
     <string name="order_id">Sipariş kimliği</string>
-    <string name="subscription_free_trial_msg">Ödeme, ücretsiz denemeden sonra alınır.\nDeneme bitmeden istediğiniz zaman iptal edin.</string>
     <string name="cancel_subscription_anytime">Aboneliği istediğiniz zaman iptal edin.</string>
     <string name="plan_assigned_from_admin">Plan yönetici tarafından atandı.</string>
     <string name="purchase_pending">Ödemeniz onay bekliyor. Onaylanır onaylanmaz erişiminiz açılır.</string>

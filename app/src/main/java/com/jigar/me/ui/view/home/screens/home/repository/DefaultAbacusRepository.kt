@@ -17,6 +17,8 @@ import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.jetpack.core.miscs.emitFlow
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Constants
+import com.jigar.me.utils.ApiErrors
+import com.jigar.me.utils.ApiException
 import com.jigar.me.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import java.io.IOException
@@ -44,14 +46,14 @@ class DefaultAbacusRepository @Inject constructor(
                     getAbacusDataSuccess(response.data)
                     return@emitFlow
                 } else {
-                    throw Exception(response.error?.message ?: response.message ?: "Unknown server response")
+                    throw ApiException(ApiErrors.text(response))
                 }
             }
             is Resource.Failure -> throw when {
-                result.isNetworkError -> IOException("Network error occurred")
-                else -> Exception("API error: ${result.errorBody ?: "Unknown error"}, code: ${result.errorCode}")
+                result.isNetworkError -> IOException(result.errorBody)
+                else -> ApiException(result.errorBody ?: ApiErrors.text(null, null, null))
             }
-            else -> throw Exception("Unexpected response type")
+            else -> throw ApiException(ApiErrors.text(null, null, null))
         }
     }
 
@@ -63,14 +65,14 @@ class DefaultAbacusRepository @Inject constructor(
                     getAbacusDataSuccess(response.data)
                     return@emitFlow
                 } else {
-                    throw Exception(response.error?.message ?: response.message ?: "Unknown server response")
+                    throw ApiException(ApiErrors.text(response))
                 }
             }
             is Resource.Failure -> throw when {
-                result.isNetworkError -> IOException("Network error occurred")
-                else -> Exception("API error: ${result.errorBody ?: "Unknown error"}, code: ${result.errorCode}")
+                result.isNetworkError -> IOException(result.errorBody)
+                else -> ApiException(result.errorBody ?: ApiErrors.text(null, null, null))
             }
-            else -> throw Exception("Unexpected response type")
+            else -> throw ApiException(ApiErrors.text(null, null, null))
         }
     }
     private suspend fun getAbacusDataSuccess(content: JsonObject?) {

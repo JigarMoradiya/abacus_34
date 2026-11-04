@@ -1407,6 +1407,23 @@
     <string name="practice_two_digit_plus">2 chiffres (+)</string>
     <string name="practice_two_digit_plus_minus">2 chiffres (+-)</string>
     <string name="practice_vedaavi_calculation_n">Calcul Vedaavi %1$s</string>
+    <!-- m24_errors -->
+    <string name="err_generic">Un problème est survenu. Veuillez réessayer.</string>
+    <string name="err_server">Notre serveur est très sollicité en ce moment. Veuillez réessayer dans quelques instants.</string>
+    <string name="err_session_expired">Votre session est terminée. Veuillez vous reconnecter.</string>
+    <string name="err_wrong_credentials">L\'adresse e-mail ou le mot de passe est incorrect. Veuillez vérifier et réessayer.</string>
+    <string name="err_enter_email_password">Veuillez saisir votre adresse e-mail et votre mot de passe.</string>
+    <string name="err_account_not_found">Nous n\'avons trouvé aucun compte avec ces informations.</string>
+    <string name="err_not_verified">Votre compte n\'est pas encore vérifié. Veuillez d\'abord vérifier votre adresse e-mail.</string>
+    <string name="err_otp_wrong">Ce code n\'est pas correct. Veuillez le vérifier et réessayer.</string>
+    <string name="err_otp_expired">Ce code a expiré. Veuillez en demander un nouveau.</string>
+    <string name="err_email_exists">Un compte existe déjà avec cette adresse e-mail.</string>
+    <string name="err_already_verified">Ce compte est déjà vérifié.</string>
+    <string name="err_no_access">Vous n\'avez pas l\'autorisation d\'effectuer cette action.</string>
+    <string name="err_account_inactive">Ce compte n\'est pas actif. Veuillez contacter l\'assistance.</string>
+    <string name="err_plan_problem">Nous n\'avons pas pu traiter cette demande d\'abonnement. Veuillez contacter l\'assistance.</string>
+    <string name="err_image_type">Veuillez choisir une image au format PNG ou JPG.</string>
+    <string name="err_sign_in_failed">La connexion n\'a pas fonctionné. Veuillez réessayer.</string>
     <!-- m2_numbers -->
     <string name="minus">Moins</string>
     <string name="plus">Plus</string>
@@ -1650,7 +1667,6 @@
     <string name="type_of_exercise">Type d\'exercice :</string>
     <string name="type_of_questions">Type de questions :</string>
     <string name="unstoppable_great_job">Inarrêtable ! Bravo</string>
-    <string name="what_s_learn_in_application">Ce qu\'on apprend dans l\'application</string>
     <string name="yes_i_m_sure">Oui, j\'en suis sûr</string>
     <string name="you_are_brilliant">Tu es brillant</string>
     <string name="you_are_on_the_right_track">Tu es sur la bonne voie</string>
@@ -1667,43 +1683,6 @@
     <string name="reports_upgrade_title">Passez à Premium</string>
     <string name="reports_upgrade_subtitle">Voir tout l\'historique des rapports</string>
     <string name="view_plans">Voir les offres</string>
-    <!-- m5_whats_learning -->
-    <string name="whats_learn_free_mode_title">Ce que les enfants apprennent en mode libre du boulier</string>
-    <string name="whats_learn_free_mode_1">• Comprendre la &lt;b>structure et les parties&lt;/b> du boulier.</string>
-    <string name="whats_learn_free_mode_2">• Une prise en main facile du boulier pour les &lt;b>débutants&lt;/b>.</string>
-    <string name="whats_learn_free_mode_3">• Reconnaître les &lt;b>types de boules&lt;/b> et leurs &lt;b>valeurs&lt;/b>.</string>
-    <string name="whats_learn_free_mode_4">• Les &lt;b>techniques des doigts&lt;/b> pour déplacer correctement les boules.</string>
-    <string name="whats_learn_free_mode_5">• Apprendre à &lt;b>lire, représenter et poser des nombres&lt;/b> sur le boulier.</string>
-    <string name="whats_learn_practice_title">Ce que les enfants apprennent dans le module d\'entraînement au boulier</string>
-    <string name="whats_learn_practice_1">• Résolution &lt;b>pas à pas&lt;/b> avec les &lt;b>bons sens de déplacement des boules&lt;/b>.</string>
-    <string name="whats_learn_practice_2">• &lt;b>Visualiser la formule du boulier&lt;/b> à chaque étape (y compris pour la multiplication et la division).</string>
-    <string name="whats_learn_practice_3">• Apprendre à saisir seulement les &lt;b>réponses finales&lt;/b>.</string>
-    <string name="whats_learn_practice_4">• &lt;b>S\'entraîner en mode examen officiel&lt;/b> avec suivi des bonnes et mauvaises réponses.</string>
-    <string name="whats_learn_practice_5">• Gagner en vitesse et en précision avec des &lt;b>séries chronométrées&lt;/b>.</string>
-    <string name="whats_learn_practice_6">• Comprendre les &lt;b>mauvais mouvements de boules&lt;/b> grâce aux indications de direction.</string>
-    <string name="whats_learn_practice_7">• &lt;b>Masquer/afficher&lt;/b> les directions des boules et la formule dans les &lt;b>réglages&lt;/b>.</string>
-    <string name="whats_learn_practice_8">• &lt;b>Utilisable à gauche comme à droite&lt;/b> : l\'enfant s\'entraîne confortablement avec sa main naturelle.</string>
-    <string name="whats_learn_exercise_title">Ce que font les enfants dans le module d\'exercices</string>
-    <string name="whats_learn_exercise_1">• &lt;b>Commencer&lt;/b> des défis d\'addition, de soustraction, de multiplication et de division &lt;b>selon leur niveau&lt;/b>.</string>
-    <string name="whats_learn_exercise_2">• &lt;b>S\'entraîner&lt;/b> avec différentes séries d\'exercices et des &lt;b>limites de temps pour gagner en vitesse et en concentration&lt;/b>.</string>
-    <string name="whats_learn_exercise_3">• &lt;b>Développer&lt;/b> l\'endurance d\'examen avec des séries de questions structurées et des &lt;b>comptes à rebours&lt;/b>.</string>
-    <string name="whats_learn_exercise_4">• &lt;b>Améliorer&lt;/b> la concentration, la mémoire et l\'agilité mentale &lt;b>grâce à des exercices en continu&lt;/b>.</string>
-    <string name="whats_learn_exam_title">Ce que font les enfants dans le module d\'examen</string>
-    <string name="whats_learn_exam_1">• &lt;b>Environnement d\'examen simulé –&lt;/b> S\'entraîner dans des conditions proches d\'un vrai examen pour gagner en précision et en confiance.</string>
-    <string name="whats_learn_exam_2">• &lt;b>Types de calcul pris en charge –&lt;/b> addition, soustraction, multiplication et division.</string>
-    <string name="whats_learn_exam_3">• &lt;b>Niveaux de difficulté –&lt;/b> Facile, moyen ou difficile pour progresser par étapes.</string>
-    <string name="whats_learn_exam_4">• &lt;b>Questions à choix multiples –&lt;/b> Chaque question propose 4 options pour développer la prise de décision.</string>
-    <string name="whats_learn_exam_5">• &lt;b>Affichage du chronomètre –&lt;/b> Suivre son temps sans pression stricte.</string>
-    <string name="whats_learn_exam_6">• &lt;b>Prêt pour la compétition –&lt;/b> Idéal pour les examens UCMAS, les contrôles scolaires, les concours de maths et de boulier.</string>
-    <string name="whats_learn_exam_7">• &lt;b>Entraînement ciblé –&lt;/b> Développe le sang-froid, la rapidité et la logique.</string>
-    <string name="whats_learn_ccm_title">Ce que font les enfants dans le module Défi personnalisé</string>
-    <string name="whats_learn_ccm_1">• &lt;b>Personnalisation complète –&lt;/b> Réglez le nombre de questions, la longueur des questions (chiffres min/max) et la pause entre les questions.</string>
-    <string name="whats_learn_ccm_2">• &lt;b>Présentation flexible –&lt;/b> Choisissez l\'affichage des questions : chiffres, mots ou voix.</string>
-    <string name="whats_learn_ccm_3">• &lt;b>Entraînement chronométré –&lt;/b> Ajoutez des intervalles entre les questions pour simuler la pression et renforcer la concentration.</string>
-    <string name="whats_learn_ccm_4">• &lt;b>Entraînement oral et visuel –&lt;/b> Idéal pour l\'écoute, la visualisation seule ou un mélange des deux.</string>
-    <string name="whats_learn_ccm_5">• &lt;b>Usages variés –&lt;/b> Convient à l\'entraînement à la maison, aux activités en classe et aux séances de coaching sur mesure.</string>
-    <string name="whats_learn_ccm_6">• &lt;b>Développement des compétences –&lt;/b> Renforce l\'écoute, la mémoire, la concentration, la visualisation et la vitesse de calcul.</string>
-    <string name="whats_learn_ccm_7">• &lt;b>Atout –&lt;/b> Développe l\'adaptabilité, améliore la prise de décision et prépare aux formats de tests variés.</string>
     <!-- m6_free_mode -->
     <string name="free_mode_set_label">Série :</string>
     <string name="free_mode_range">de %1$d à %2$d</string>
@@ -1860,7 +1839,6 @@
     <string name="home_offer_product_yearly">annuelle</string>
     <string name="home_offer_product_lifetime">à vie</string>
     <string name="order_id">N° de commande</string>
-    <string name="subscription_free_trial_msg">Le paiement sera débité après l\'essai gratuit.\nAnnulez à tout moment avant la fin de l\'essai.</string>
     <string name="cancel_subscription_anytime">Résiliez à tout moment.</string>
     <string name="plan_assigned_from_admin">Offre attribuée par l\'administrateur.</string>
     <string name="purchase_pending">Votre paiement est en attente d\'approbation. Vous aurez accès dès qu\'il sera validé.</string>

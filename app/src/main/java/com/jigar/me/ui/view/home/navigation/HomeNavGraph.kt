@@ -81,7 +81,6 @@ import com.jigar.me.ui.view.home.screens.math_game_zone.number_snake.NumberSnake
 import com.jigar.me.ui.view.home.screens.math_game_zone.trophy_room.TrophyRoomScreen
 import com.jigar.me.ui.view.home.screens.purchase.PurchaseScreenRoute
 import com.jigar.me.ui.view.home.screens.settings.SettingsScreenRoute
-import com.jigar.me.ui.view.home.screens.whats_learning.WhatsLearningScreenRoute
 import com.jigar.me.ui.view.home.screens.youtube.YoutubeVideoScreenRoute
 import com.jigar.me.ui.view.home.screens.abacus_free_mode.components.AbacusFreeModeScreen
 import com.jigar.me.ui.view.home.screens.abacus_free_mode.viewmodel.AbacusFreeModeViewModel
@@ -235,9 +234,6 @@ fun HomeNavGraph(
                 },
                 onNavigateToYoutubeVideo = {
                     navController.safeNavigate(RouteNavigation.YoutubeVideo.route)
-                },
-                onNavigateToWhatsLearning = {
-                    navController.safeNavigate(RouteNavigation.WhatsLearning.route)
                 },
                 onNavigateToLevel1 = {
                     navController.safeNavigate(RouteNavigation.Level1Home.route)
@@ -964,12 +960,6 @@ fun HomeNavGraph(
             )
         }
 
-        composable(route = RouteNavigation.WhatsLearning.route) {
-            WhatsLearningScreenRoute(
-                onClose = { navController.safePopBackStack() }
-            )
-        }
-
         composable(route = RouteNavigation.MyAccount.route) {
             MyAccountRoute(
                 onBackClick = { navController.safePopBackStack() },
@@ -977,7 +967,6 @@ fun HomeNavGraph(
                 onNavigateToPurchase = { navController.safeNavigate(RouteNavigation.Purchase.route) },
                 onNavigateToSettings = { navController.safeNavigate(RouteNavigation.Settings.route) },
                 onNavigateToReportHistory = { navController.safeNavigate(RouteNavigation.ReportHistory.route) },
-                onNavigateToWhatsLearning = { navController.safeNavigate(RouteNavigation.WhatsLearning.route) },
                 onNavigateToCredentials = { navController.safeNavigate(RouteNavigation.CredentialsLoginLandscape.route) },
             )
         }

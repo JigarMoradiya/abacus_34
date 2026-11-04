@@ -300,8 +300,6 @@ fun Context.openURL(url : String) {
     }
 }
 fun Context.shareIntent() {
-//    val txt = getString(R.string.share_text_msg)
-//    val msg = txt + "\nhttps://play.google.com/store/apps/details?id=${packageName}"
     val msg = getString(R.string.share_app_message, "https://play.google.com/store/apps/details?id=$packageName")
     val sharingIntent = Intent(Intent.ACTION_SEND)
     sharingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
