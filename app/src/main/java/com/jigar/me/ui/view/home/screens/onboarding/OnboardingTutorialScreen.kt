@@ -269,6 +269,7 @@ private fun TutorialPage(
     val haptic = LocalHapticFeedback.current
     val page = pages[index]
     var done by remember(index) { mutableStateOf(false) }          // the goal is made (by the child, or by "Show me")
+    var handReady by remember(index) { mutableStateOf(false) }     // a few seconds without a move: a hand shows the swipe
     var showMeReady by remember(index) { mutableStateOf(false) }   // a while without a move: the "Show me" fallback appears
     val title = if (done) page.afterTitle else page.title
     val body = if (done) page.afterBody else page.body
@@ -292,15 +293,19 @@ private fun TutorialPage(
             done = true
             showArrows = false
             rodMovement = emptyList()
+            handReady = false
             showMeReady = false
             haptic.performHapticFeedback(HapticFeedbackType.LongPress)
         } else {
             // 3 rods: the ones rod is the last one (index 2)
             rodMovement = listOf(RodMovement(2, l2ComputeMovement(value, page.goal)))
             showArrows = true
+            handReady = false
             showMeReady = false
-            delay(8000)
-            showMeReady = true
+            delay(5000)
+            handReady = true      // a hand demonstrates the swipe on the first bead to move
+            delay(4000)
+            showMeReady = true    // and "Show me": the abacus makes the number itself
         }
     }
 
@@ -356,6 +361,7 @@ private fun TutorialPage(
                         frameStyle = AbacusFrameStyle.Toy,
                         forceTouch = !done,
                         hintPulse = true,
+                        hintHand = handReady && !done,
                         onRodMovementChange = {},
                         onShowDirectionHintsChange = {},
                         onShowHighlighterChange = {},
@@ -394,17 +400,20 @@ private fun TutorialPage(
                     minHeightOverride = 32f, horizontalPaddingOverride = 11f, onClick = onPrevious,
                 )
             } else Spacer(Modifier)
-            when {
-                done -> AbButton(
-                    text = nextText, tone = AbTone.Primary, size = AbSize.Small, icon = Icons.Rounded.KeyboardArrowRight, iconAtEnd = true,
-                    minHeightOverride = 32f, horizontalPaddingOverride = 11f, onClick = onNext,
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
+                if (showMeReady && !done) {
+                    AbButton(
+                        text = "Show me", tone = AbTone.Warning, size = AbSize.Small, icon = Icons.Rounded.TouchApp,
+                        minHeightOverride = 32f, horizontalPaddingOverride = 11f,
+                        onClick = { abCalc.setAbacusValueFromString(page.goal.toString()) },   // the change then unlocks Next like a real swipe
+                    )
+                }
+                // Next is always there so it is clear a button comes: dimmed until the number is made, then it lights up
+                AbButton(
+                    text = nextText, tone = AbTone.Primary, size = AbSize.Small, enabled = done,
+                    icon = Icons.Rounded.KeyboardArrowRight, iconAtEnd = true,
+                    minHeightOverride = 32f, horizontalPaddingOverride = 11f, onClick = { if (done) onNext() },
                 )
-                showMeReady -> AbButton(
-                    text = "Show me", tone = AbTone.Warning, size = AbSize.Small, icon = Icons.Rounded.TouchApp,
-                    minHeightOverride = 32f, horizontalPaddingOverride = 11f,
-                    onClick = { abCalc.setAbacusValueFromString(page.goal.toString()) },   // the change then unlocks Next like a real swipe
-                )
-                else -> Spacer(Modifier)
             }
         }
     }

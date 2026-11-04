@@ -37,6 +37,9 @@ import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.TouchApp
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -97,6 +100,8 @@ fun AbacusWithDecimalCanvas(
     forceTouch: Boolean = false,
     /** The direction arrows pulse (the first-launch tutorial). */
     hintPulse: Boolean = false,
+    /** A hand glides over the first bead to move (the first-launch tutorial, after a few idle seconds). */
+    hintHand: Boolean = false,
     onRodMovementChange: (List<RodMovement>) -> Unit,
     onShowDirectionHintsChange: (Boolean) -> Unit,
     onShowHighlighterChange: (Boolean) -> Unit,
@@ -133,6 +138,14 @@ fun AbacusWithDecimalCanvas(
             label = "hintPulseScale",
         )
     } else remember { mutableFloatStateOf(1f) }
+    val handPainter = if (hintHand) rememberVectorPainter(Icons.Rounded.TouchApp) else null
+    val handProgress: State<Float> = if (hintHand) {
+        rememberInfiniteTransition(label = "hintHand").animateFloat(
+            initialValue = 0f, targetValue = 1f,
+            animationSpec = infiniteRepeatable(tween(1100, easing = FastOutSlowInEasing), RepeatMode.Restart),
+            label = "hintHandGlide",
+        )
+    } else remember { mutableFloatStateOf(0f) }
 
 
     val dim = AbacusTheme.dimensionPreset(context,screenType = screenType,abacusType = abacusType,questionType = questionType, isFreeModeOn = isFreeModeOn)
@@ -360,6 +373,8 @@ fun AbacusWithDecimalCanvas(
                     arrowDownBitmap = arrowDown,
                     toyFrame = toy,
                     arrowPulse = arrowPulse.value,
+                    handPainter = handPainter,
+                    handProgress = handProgress.value,
                 )
             }
         }

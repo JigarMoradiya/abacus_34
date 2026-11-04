@@ -18,6 +18,8 @@ import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
@@ -66,6 +68,9 @@ fun DrawScope.drawAbacusColumns(
     toyFrame: Boolean = false,
     // 1 = the arrows keep their size; the first-launch tutorial animates it so the arrow on the next bead to swipe pulses
     arrowPulse: Float = 1f,
+    // the first-launch tutorial, after a few idle seconds: a hand that glides over the first bead to move (progress 0..1, repeating)
+    handPainter: Painter? = null,
+    handProgress: Float = 0f,
 ) {
     val preset = AbacusTheme.colorPreset(selectedTheme)
     val isPolygonTheme = selectedTheme.contains("poligon", ignoreCase = true)
@@ -381,6 +386,13 @@ fun DrawScope.drawAbacusColumns(
                             centerShiftPx = if (isRealBead) -geometry.beadWidthPx * 0.90f / 2f * 0.60f else 0f,
                             sizeScale = (if (isRealBead) 0.78f else 1f) * arrowPulse,
                         )
+                        if (handPainter != null) {
+                            drawSwipeHandForBead(
+                                colCenterX = xCenter, rowIndex = idx, movement = movement, geometry = geometry,
+                                painter = handPainter, progress = handProgress,
+                                centerShiftPx = if (isRealBead) -geometry.beadWidthPx * 0.90f / 2f * 0.60f else 0f,
+                            )
+                        }
                     }
                 }
             }
@@ -668,6 +680,45 @@ fun drawableToImageBitmap(context: Context, resId: Int): ImageBitmap {
     return bmp.asImageBitmap()
 }
 
+
+// ----------------------------------------------------------------------
+// The tutorial's swipe hand: glides over the FIRST bead that has to move, in the swipe direction, then starts again
+// ----------------------------------------------------------------------
+fun DrawScope.drawSwipeHandForBead(
+    colCenterX: Float,
+    rowIndex: Int,
+    movement: Movement,
+    geometry: AbacusCanvasGeometry,
+    painter: Painter,
+    progress: Float,
+    centerShiftPx: Float = 0f,
+) {
+    // the bead the hand points at: the upper bead if it has to move, else the first lower bead of the move (same placement as the arrows)
+    val anchor: Int
+    val up: Boolean
+    when {
+        movement.upperDown -> { anchor = 0; up = false }
+        movement.upperUp -> { anchor = 1; up = true }
+        movement.lowerDown > 0 -> { anchor = movement.lowerOldValue - movement.lowerDown + 2; up = false }
+        movement.lowerUp > 0 -> { anchor = movement.lowerOldValue + 3; up = true }
+        else -> return
+    }
+    if (rowIndex != anchor) return
+
+    val size = geometry.beadHeightPx * 0.9f
+    val centerY = geometry.rowTop[rowIndex] + geometry.beadHeightPx / 2f
+    val dy = (if (up) -1f else 1f) * size * 1.2f * progress
+    val alpha = 1f - ((progress - 0.55f) / 0.45f).coerceIn(0f, 1f)   // opaque for most of the glide, fades near the end
+    val left = colCenterX + centerShiftPx + size * 0.45f - size / 2f
+    val top = centerY + size * 0.5f + dy - size / 2f
+    // a dark copy a little larger underneath is the outline, so the white hand reads on light beads too
+    translate(left - size * 0.09f, top - size * 0.09f) {
+        with(painter) { draw(size = Size(size * 1.18f, size * 1.18f), alpha = alpha * 0.8f, colorFilter = ColorFilter.tint(Color.Black)) }
+    }
+    translate(left, top) {
+        with(painter) { draw(size = Size(size, size), alpha = alpha, colorFilter = ColorFilter.tint(Color.White)) }
+    }
+}
 
 // ----------------------------------------------------------------------
 // Draw arrows on Canvas (equivalent of ArrowForBeadFull, but for Canvas)
