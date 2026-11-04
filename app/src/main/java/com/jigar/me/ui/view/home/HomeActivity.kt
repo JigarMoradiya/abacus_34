@@ -133,6 +133,8 @@ class HomeActivity : AppCompatActivity() {   // AppCompat so the chosen app lang
             if (BuildConfig.DEBUG && intent.getBooleanExtra("ab_notify_now", false)) {
                 // the streak reminder and the weekly summary right now, to read them in the notification shade
                 com.jigar.me.utils.StreakManager.debugShowNow = true
+                com.jigar.me.utils.StreakManager.debugTitleIndex = if (intent.hasExtra("ab_streak_title")) intent.getIntExtra("ab_streak_title", 0) else null
+                com.jigar.me.utils.StreakManager.debugStreak = if (intent.hasExtra("ab_streak_value")) intent.getIntExtra("ab_streak_value", 1) else null
                 val work = androidx.work.WorkManager.getInstance(this)
                 work.enqueue(androidx.work.OneTimeWorkRequestBuilder<com.jigar.me.utils.workers.StreakNotificationWorker>().build())
                 work.enqueue(androidx.work.OneTimeWorkRequestBuilder<com.jigar.me.utils.workers.WeeklySummaryWorker>().build())

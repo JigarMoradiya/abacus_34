@@ -2537,41 +2537,68 @@
     <!-- Notifications, share message, purchase dates (M18) -->
     <string name="notif_streak_title_1">🔥 Day %1$d — keep the fire burning!</string>
     <string name="notif_streak_body_1">Your child\'s focus is growing stronger every day. A little practice today protects everything they\'ve built.</string>
-    <string name="notif_streak_title_2">%1$d days straight — what a learner! ⭐</string>
+    <plurals name="notif_streak_title_2">
+        <item quantity="one">%1$d day straight — what a learner! ⭐</item>
+        <item quantity="other">%1$d days straight — what a learner! ⭐</item>
+    </plurals>
     <string name="notif_streak_body_2">Consistency like this is rare at any age. You\'re raising someone who truly finishes what they start.</string>
     <string name="notif_streak_title_3">Don\'t break the %1$d-day chain! 🔗</string>
     <string name="notif_streak_body_3">Every link in that chain represents real growth. Your child has come so far — today keeps it unbroken.</string>
-    <string name="notif_streak_title_4">🧠 %1$d days of brain training!</string>
+    <plurals name="notif_streak_title_4">
+        <item quantity="one">🧠 %1$d day of brain training!</item>
+        <item quantity="other">🧠 %1$d days of brain training!</item>
+    </plurals>
     <string name="notif_streak_body_4">The mental strength your child builds through daily practice will carry them through school and beyond.</string>
-    <string name="notif_streak_title_5">%1$d days — a milestone is near! 🏆</string>
+    <plurals name="notif_streak_title_5">
+        <item quantity="one">%1$d day — a milestone is near! 🏆</item>
+        <item quantity="other">%1$d days — a milestone is near! 🏆</item>
+    </plurals>
     <string name="notif_streak_body_5">Your child is on a remarkable run. A few minutes of practice today keeps that journey alive.</string>
     <string name="notif_streak_title_6">Day %1$d is waiting ✨</string>
     <string name="notif_streak_body_6">Small daily habits shape a child\'s future in ways we can\'t always see. Today\'s session matters more than you know.</string>
-    <string name="notif_streak_title_7">🔥 %1$d days in — raising a champion!</string>
+    <plurals name="notif_streak_title_7">
+        <item quantity="one">🔥 %1$d day in — raising a champion!</item>
+        <item quantity="other">🔥 %1$d days in — raising a champion!</item>
+    </plurals>
     <string name="notif_streak_body_7">Very few children build this kind of discipline. Be proud — and keep that momentum alive today.</string>
     <string name="notif_streak_title_8">%1$d-day habit in the making! 💡</string>
     <string name="notif_streak_body_8">Research shows consistent daily practice reshapes the brain for life. Your child is well on their way.</string>
     <string name="notif_streak_title_9">Day %1$d — almost automatic! 🎯</string>
     <string name="notif_streak_body_9">The best learners make practice a part of their daily life. Your child is already becoming one of them.</string>
-    <string name="notif_streak_title_10">🌟 %1$d days of pure dedication!</string>
+    <plurals name="notif_streak_title_10">
+        <item quantity="one">🌟 %1$d day of pure dedication!</item>
+        <item quantity="other">🌟 %1$d days of pure dedication!</item>
+    </plurals>
     <string name="notif_streak_body_10">Dedication at this age is extraordinary. A short session today adds to something truly special.</string>
     <string name="notif_streak_title_11">Day %1$d — the streak lives on! 🔥</string>
     <string name="notif_streak_body_11">Every day your child practices, their confidence and mental speed grow. Today is too important to miss.</string>
-    <string name="notif_streak_title_12">%1$d days — your child is unstoppable! 💪</string>
+    <plurals name="notif_streak_title_12">
+        <item quantity="one">%1$d day — your child is unstoppable! 💪</item>
+        <item quantity="other">%1$d days — your child is unstoppable! 💪</item>
+    </plurals>
     <string name="notif_streak_body_12">The best investment you can make is in daily learning. A few minutes today goes a long way.</string>
-    <string name="notif_streak_title_13">🎯 %1$d days — precision in progress!</string>
+    <plurals name="notif_streak_title_13">
+        <item quantity="one">🎯 %1$d day — precision in progress!</item>
+        <item quantity="other">🎯 %1$d days — precision in progress!</item>
+    </plurals>
     <string name="notif_streak_body_13">Abacus builds speed, focus, and confidence all at once. Your child is growing all three — keep it going.</string>
     <string name="notif_streak_title_14">Day %1$d — steady wins the race! 🐢</string>
     <string name="notif_streak_body_14">It\'s not about one big effort — it\'s about showing up every day. Your child already knows that.</string>
     <string name="notif_streak_title_15">🌙 End the day right — %1$d days strong!</string>
     <string name="notif_streak_body_15">A quick practice before bed is a powerful way to close the day. Your child will feel proud they showed up.</string>
-    <string name="notif_streak_title_16">%1$d days — this habit is real! 🏅</string>
+    <plurals name="notif_streak_title_16">
+        <item quantity="one">%1$d day — this habit is real! 🏅</item>
+        <item quantity="other">%1$d days — this habit is real! 🏅</item>
+    </plurals>
     <string name="notif_streak_body_16">Practice is becoming a part of who your child is. That\'s something worth protecting today.</string>
     <string name="notif_streak_title_17">🔥 Day %1$d check-in!</string>
     <string name="notif_streak_body_17">Champions show up every single day — even when life gets busy. Your child can do that today.</string>
     <string name="notif_streak_title_18">Day %1$d — future mathematician in training! 🧮</string>
     <string name="notif_streak_body_18">Every session sharpens their mind a little more. What feels small today adds up to something extraordinary.</string>
-    <string name="notif_streak_title_19">%1$d days and still counting! ✨</string>
+    <plurals name="notif_streak_title_19">
+        <item quantity="one">%1$d day and still counting! ✨</item>
+        <item quantity="other">%1$d days and still counting! ✨</item>
+    </plurals>
     <string name="notif_streak_body_19">Your child is among a rare group of consistent learners. That\'s something worth protecting — especially today.</string>
     <string name="notif_streak_title_20">🌟 Day %1$d — don\'t stop now!</string>
     <string name="notif_streak_body_20">You\'ve invested so much in your child\'s learning. Today\'s practice is the simplest way to honor that.</string>

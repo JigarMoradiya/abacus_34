@@ -1151,41 +1151,104 @@
     <!-- m18_notifications -->
     <string name="notif_streak_title_1">🔥 اليوم %1$d — حافظ على اشتعال النار!</string>
     <string name="notif_streak_body_1">تركيز طفلك يزداد قوة يومًا بعد يوم. قليل من التدريب اليوم يحافظ على كل ما أنجزه.</string>
-    <string name="notif_streak_title_2">أيام متتالية: %1$d — يا له من متعلم! ⭐</string>
+    <plurals name="notif_streak_title_2">
+        <item quantity="zero">أيام متتالية: %1$d — يا له من متعلم! ⭐</item>
+        <item quantity="one">أيام متتالية: %1$d — يا له من متعلم! ⭐</item>
+        <item quantity="two">أيام متتالية: %1$d — يا له من متعلم! ⭐</item>
+        <item quantity="few">أيام متتالية: %1$d — يا له من متعلم! ⭐</item>
+        <item quantity="many">أيام متتالية: %1$d — يا له من متعلم! ⭐</item>
+        <item quantity="other">أيام متتالية: %1$d — يا له من متعلم! ⭐</item>
+    </plurals>
     <string name="notif_streak_body_2">هذا الثبات نادر في أي عمر. أنت تربّي شخصًا ينهي ما يبدأه فعلًا.</string>
     <string name="notif_streak_title_3">لا تكسر سلسلة الأيام: %1$d! 🔗</string>
     <string name="notif_streak_body_3">كل حلقة في هذه السلسلة تعني نموًا حقيقيًا. لقد قطع طفلك شوطًا كبيرًا، وتدريب اليوم يُبقيها متصلة.</string>
-    <string name="notif_streak_title_4">🧠 أيام تدريب الدماغ: %1$d!</string>
+    <plurals name="notif_streak_title_4">
+        <item quantity="zero">🧠 أيام تدريب الدماغ: %1$d!</item>
+        <item quantity="one">🧠 أيام تدريب الدماغ: %1$d!</item>
+        <item quantity="two">🧠 أيام تدريب الدماغ: %1$d!</item>
+        <item quantity="few">🧠 أيام تدريب الدماغ: %1$d!</item>
+        <item quantity="many">🧠 أيام تدريب الدماغ: %1$d!</item>
+        <item quantity="other">🧠 أيام تدريب الدماغ: %1$d!</item>
+    </plurals>
     <string name="notif_streak_body_4">القوة الذهنية التي يبنيها طفلك بالتدريب اليومي سترافقه في المدرسة وما بعدها.</string>
-    <string name="notif_streak_title_5">اليوم %1$d — اقتربت من محطة مهمة! 🏆</string>
+    <plurals name="notif_streak_title_5">
+        <item quantity="zero">اليوم %1$d — اقتربت من محطة مهمة! 🏆</item>
+        <item quantity="one">اليوم %1$d — اقتربت من محطة مهمة! 🏆</item>
+        <item quantity="two">اليوم %1$d — اقتربت من محطة مهمة! 🏆</item>
+        <item quantity="few">اليوم %1$d — اقتربت من محطة مهمة! 🏆</item>
+        <item quantity="many">اليوم %1$d — اقتربت من محطة مهمة! 🏆</item>
+        <item quantity="other">اليوم %1$d — اقتربت من محطة مهمة! 🏆</item>
+    </plurals>
     <string name="notif_streak_body_5">طفلك يمر بسلسلة رائعة. بضع دقائق من التدريب اليوم تُبقي الرحلة مستمرة.</string>
     <string name="notif_streak_title_6">اليوم %1$d ينتظرك ✨</string>
     <string name="notif_streak_body_6">العادات اليومية الصغيرة تصنع مستقبل الطفل بطرق لا نراها دائمًا. جلسة اليوم أهم مما تتخيل.</string>
-    <string name="notif_streak_title_7">🔥 اليوم %1$d — أنت تربّي بطلًا!</string>
+    <plurals name="notif_streak_title_7">
+        <item quantity="zero">🔥 اليوم %1$d — أنت تربّي بطلًا!</item>
+        <item quantity="one">🔥 اليوم %1$d — أنت تربّي بطلًا!</item>
+        <item quantity="two">🔥 اليوم %1$d — أنت تربّي بطلًا!</item>
+        <item quantity="few">🔥 اليوم %1$d — أنت تربّي بطلًا!</item>
+        <item quantity="many">🔥 اليوم %1$d — أنت تربّي بطلًا!</item>
+        <item quantity="other">🔥 اليوم %1$d — أنت تربّي بطلًا!</item>
+    </plurals>
     <string name="notif_streak_body_7">قليل من الأطفال يبنون هذا القدر من الانضباط. افخر بطفلك، وحافظ على هذا الزخم اليوم.</string>
     <string name="notif_streak_title_8">عادة تتشكّل: اليوم %1$d! 💡</string>
     <string name="notif_streak_body_8">تُظهر الأبحاث أن التدريب اليومي المنتظم يعيد تشكيل الدماغ مدى الحياة. طفلك في الطريق الصحيح.</string>
     <string name="notif_streak_title_9">اليوم %1$d — العادة تكاد تصبح تلقائية! 🎯</string>
     <string name="notif_streak_body_9">أفضل المتعلمين يجعلون التدريب جزءًا من حياتهم اليومية. وطفلك يصبح واحدًا منهم بالفعل.</string>
-    <string name="notif_streak_title_10">🌟 اليوم %1$d من التفاني الخالص!</string>
+    <plurals name="notif_streak_title_10">
+        <item quantity="zero">🌟 اليوم %1$d من التفاني الخالص!</item>
+        <item quantity="one">🌟 اليوم %1$d من التفاني الخالص!</item>
+        <item quantity="two">🌟 اليوم %1$d من التفاني الخالص!</item>
+        <item quantity="few">🌟 اليوم %1$d من التفاني الخالص!</item>
+        <item quantity="many">🌟 اليوم %1$d من التفاني الخالص!</item>
+        <item quantity="other">🌟 اليوم %1$d من التفاني الخالص!</item>
+    </plurals>
     <string name="notif_streak_body_10">التفاني في هذا العمر أمر استثنائي. جلسة قصيرة اليوم تضيف إلى شيء مميز حقًا.</string>
     <string name="notif_streak_title_11">اليوم %1$d — التتابع مستمر! 🔥</string>
     <string name="notif_streak_body_11">في كل يوم يتدرّب فيه طفلك تزداد ثقته وسرعته الذهنية. اليوم مهم جدًا ولا يجب أن يفوتك.</string>
-    <string name="notif_streak_title_12">اليوم %1$d — طفلك لا يمكن إيقافه! 💪</string>
+    <plurals name="notif_streak_title_12">
+        <item quantity="zero">اليوم %1$d — طفلك لا يمكن إيقافه! 💪</item>
+        <item quantity="one">اليوم %1$d — طفلك لا يمكن إيقافه! 💪</item>
+        <item quantity="two">اليوم %1$d — طفلك لا يمكن إيقافه! 💪</item>
+        <item quantity="few">اليوم %1$d — طفلك لا يمكن إيقافه! 💪</item>
+        <item quantity="many">اليوم %1$d — طفلك لا يمكن إيقافه! 💪</item>
+        <item quantity="other">اليوم %1$d — طفلك لا يمكن إيقافه! 💪</item>
+    </plurals>
     <string name="notif_streak_body_12">أفضل استثمار يمكنك القيام به هو التعلّم اليومي. بضع دقائق اليوم تصنع فرقًا كبيرًا.</string>
-    <string name="notif_streak_title_13">🎯 اليوم %1$d — الدقة تتحسّن!</string>
+    <plurals name="notif_streak_title_13">
+        <item quantity="zero">🎯 اليوم %1$d — الدقة تتحسّن!</item>
+        <item quantity="one">🎯 اليوم %1$d — الدقة تتحسّن!</item>
+        <item quantity="two">🎯 اليوم %1$d — الدقة تتحسّن!</item>
+        <item quantity="few">🎯 اليوم %1$d — الدقة تتحسّن!</item>
+        <item quantity="many">🎯 اليوم %1$d — الدقة تتحسّن!</item>
+        <item quantity="other">🎯 اليوم %1$d — الدقة تتحسّن!</item>
+    </plurals>
     <string name="notif_streak_body_13">الأباكوس ينمّي السرعة والتركيز والثقة في آنٍ واحد. وطفلك ينمّي الثلاثة، فواصل التقدّم.</string>
     <string name="notif_streak_title_14">اليوم %1$d — الثبات يكسب السباق! 🐢</string>
     <string name="notif_streak_body_14">المهم ليس جهدًا كبيرًا واحدًا، بل الحضور كل يوم. وطفلك يعرف ذلك بالفعل.</string>
     <string name="notif_streak_title_15">🌙 اختم يومك جيدًا — اليوم %1$d من الالتزام!</string>
     <string name="notif_streak_body_15">تدريب سريع قبل النوم طريقة رائعة لختام اليوم. سيفخر طفلك لأنه التزم.</string>
-    <string name="notif_streak_title_16">اليوم %1$d — العادة أصبحت حقيقية! 🏅</string>
+    <plurals name="notif_streak_title_16">
+        <item quantity="zero">اليوم %1$d — العادة أصبحت حقيقية! 🏅</item>
+        <item quantity="one">اليوم %1$d — العادة أصبحت حقيقية! 🏅</item>
+        <item quantity="two">اليوم %1$d — العادة أصبحت حقيقية! 🏅</item>
+        <item quantity="few">اليوم %1$d — العادة أصبحت حقيقية! 🏅</item>
+        <item quantity="many">اليوم %1$d — العادة أصبحت حقيقية! 🏅</item>
+        <item quantity="other">اليوم %1$d — العادة أصبحت حقيقية! 🏅</item>
+    </plurals>
     <string name="notif_streak_body_16">أصبح التدريب جزءًا من شخصية طفلك. وهذا يستحق أن نحميه اليوم.</string>
     <string name="notif_streak_title_17">🔥 تسجيل حضور اليوم %1$d!</string>
     <string name="notif_streak_body_17">الأبطال يحضرون كل يوم، حتى عندما تنشغل الحياة. وطفلك يستطيع فعل ذلك اليوم.</string>
     <string name="notif_streak_title_18">اليوم %1$d — رياضيّ المستقبل يتدرّب! 🧮</string>
     <string name="notif_streak_body_18">كل جلسة تشحذ عقله أكثر قليلًا. وما يبدو صغيرًا اليوم يتراكم ليصبح شيئًا استثنائيًا.</string>
-    <string name="notif_streak_title_19">أيام التتابع: %1$d والعدّ مستمر! ✨</string>
+    <plurals name="notif_streak_title_19">
+        <item quantity="zero">أيام التتابع: %1$d والعدّ مستمر! ✨</item>
+        <item quantity="one">أيام التتابع: %1$d والعدّ مستمر! ✨</item>
+        <item quantity="two">أيام التتابع: %1$d والعدّ مستمر! ✨</item>
+        <item quantity="few">أيام التتابع: %1$d والعدّ مستمر! ✨</item>
+        <item quantity="many">أيام التتابع: %1$d والعدّ مستمر! ✨</item>
+        <item quantity="other">أيام التتابع: %1$d والعدّ مستمر! ✨</item>
+    </plurals>
     <string name="notif_streak_body_19">طفلك ضمن مجموعة نادرة من المتعلمين المواظبين. وهذا يستحق أن نحميه، خاصةً اليوم.</string>
     <string name="notif_streak_title_20">🌟 اليوم %1$d — لا تتوقف الآن!</string>
     <string name="notif_streak_body_20">لقد استثمرت الكثير في تعلّم طفلك. وتدريب اليوم أبسط طريقة لتقدير ذلك.</string>

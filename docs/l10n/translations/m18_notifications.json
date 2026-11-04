@@ -20,14 +20,47 @@
   "ar": "تركيز طفلك يزداد قوة يومًا بعد يوم. قليل من التدريب اليوم يحافظ على كل ما أنجزه."
  },
  "notif_streak_title_2": {
-  "fr": "%1$d jours d'affilée : bravo ! ⭐",
-  "es": "¡%1$d días seguidos, qué gran aprendiz! ⭐",
-  "pt": "%1$d dias seguidos, que aprendiz! ⭐",
-  "tr": "%1$d gün üst üste, harika bir öğrenci! ⭐",
-  "ru": "Серия: %1$d — вот это ученик! ⭐",
-  "ja": "%1$d日連続、がんばり屋さんですね！⭐",
-  "th": "%1$d วันติดต่อกัน เก่งจริง ๆ! ⭐",
-  "ar": "أيام متتالية: %1$d — يا له من متعلم! ⭐"
+  "plural": {
+   "fr": {
+    "one": "%1$d jour d'affilée : bravo ! ⭐",
+    "many": "%1$d jours d'affilée : bravo ! ⭐",
+    "other": "%1$d jours d'affilée : bravo ! ⭐"
+   },
+   "es": {
+    "one": "¡%1$d día seguido, qué gran aprendiz! ⭐",
+    "many": "¡%1$d días seguidos, qué gran aprendiz! ⭐",
+    "other": "¡%1$d días seguidos, qué gran aprendiz! ⭐"
+   },
+   "pt": {
+    "one": "%1$d dia seguido, que aprendiz! ⭐",
+    "many": "%1$d dias seguidos, que aprendiz! ⭐",
+    "other": "%1$d dias seguidos, que aprendiz! ⭐"
+   },
+   "tr": {
+    "one": "%1$d gün üst üste, harika bir öğrenci! ⭐",
+    "other": "%1$d gün üst üste, harika bir öğrenci! ⭐"
+   },
+   "ru": {
+    "one": "Серия: %1$d — вот это ученик! ⭐",
+    "few": "Серия: %1$d — вот это ученик! ⭐",
+    "many": "Серия: %1$d — вот это ученик! ⭐",
+    "other": "Серия: %1$d — вот это ученик! ⭐"
+   },
+   "ja": {
+    "other": "%1$d日連続、がんばり屋さんですね！⭐"
+   },
+   "th": {
+    "other": "%1$d วันติดต่อกัน เก่งจริง ๆ! ⭐"
+   },
+   "ar": {
+    "zero": "أيام متتالية: %1$d — يا له من متعلم! ⭐",
+    "one": "أيام متتالية: %1$d — يا له من متعلم! ⭐",
+    "two": "أيام متتالية: %1$d — يا له من متعلم! ⭐",
+    "few": "أيام متتالية: %1$d — يا له من متعلم! ⭐",
+    "many": "أيام متتالية: %1$d — يا له من متعلم! ⭐",
+    "other": "أيام متتالية: %1$d — يا له من متعلم! ⭐"
+   }
+  }
  },
  "notif_streak_body_2": {
   "fr": "Une telle régularité est rare, à tout âge. Vous élevez un enfant qui va au bout de ce qu'il entreprend.",
@@ -60,14 +93,47 @@
   "ar": "كل حلقة في هذه السلسلة تعني نموًا حقيقيًا. لقد قطع طفلك شوطًا كبيرًا، وتدريب اليوم يُبقيها متصلة."
  },
  "notif_streak_title_4": {
-  "fr": "🧠 %1$d jours d'entraînement du cerveau !",
-  "es": "🧠 ¡%1$d días de entrenamiento mental!",
-  "pt": "🧠 %1$d dias de treino mental!",
-  "tr": "🧠 %1$d gün zihin antrenmanı!",
-  "ru": "🧠 Тренировка мозга. Серия: %1$d!",
-  "ja": "🧠 %1$d日間の脳トレ！",
-  "th": "🧠 ฝึกสมองมา %1$d วันแล้ว!",
-  "ar": "🧠 أيام تدريب الدماغ: %1$d!"
+  "plural": {
+   "fr": {
+    "one": "🧠 %1$d jour d'entraînement du cerveau !",
+    "many": "🧠 %1$d jours d'entraînement du cerveau !",
+    "other": "🧠 %1$d jours d'entraînement du cerveau !"
+   },
+   "es": {
+    "one": "🧠 ¡%1$d día de entrenamiento mental!",
+    "many": "🧠 ¡%1$d días de entrenamiento mental!",
+    "other": "🧠 ¡%1$d días de entrenamiento mental!"
+   },
+   "pt": {
+    "one": "🧠 %1$d dia de treino mental!",
+    "many": "🧠 %1$d dias de treino mental!",
+    "other": "🧠 %1$d dias de treino mental!"
+   },
+   "tr": {
+    "one": "🧠 %1$d gün zihin antrenmanı!",
+    "other": "🧠 %1$d gün zihin antrenmanı!"
+   },
+   "ru": {
+    "one": "🧠 Тренировка мозга. Серия: %1$d!",
+    "few": "🧠 Тренировка мозга. Серия: %1$d!",
+    "many": "🧠 Тренировка мозга. Серия: %1$d!",
+    "other": "🧠 Тренировка мозга. Серия: %1$d!"
+   },
+   "ja": {
+    "other": "🧠 %1$d日間の脳トレ！"
+   },
+   "th": {
+    "other": "🧠 ฝึกสมองมา %1$d วันแล้ว!"
+   },
+   "ar": {
+    "zero": "🧠 أيام تدريب الدماغ: %1$d!",
+    "one": "🧠 أيام تدريب الدماغ: %1$d!",
+    "two": "🧠 أيام تدريب الدماغ: %1$d!",
+    "few": "🧠 أيام تدريب الدماغ: %1$d!",
+    "many": "🧠 أيام تدريب الدماغ: %1$d!",
+    "other": "🧠 أيام تدريب الدماغ: %1$d!"
+   }
+  }
  },
  "notif_streak_body_4": {
   "fr": "La force mentale que votre enfant construit grâce à l'entraînement quotidien l'accompagnera à l'école et bien au-delà.",
@@ -80,14 +146,47 @@
   "ar": "القوة الذهنية التي يبنيها طفلك بالتدريب اليومي سترافقه في المدرسة وما بعدها."
  },
  "notif_streak_title_5": {
-  "fr": "%1$d jours : un cap approche ! 🏆",
-  "es": "¡%1$d días: se acerca una gran meta! 🏆",
-  "pt": "%1$d dias: uma conquista vem aí! 🏆",
-  "tr": "%1$d gün, kilometre taşı yakın! 🏆",
-  "ru": "Серия: %1$d — новая веха близко! 🏆",
-  "ja": "%1$d日、大きな節目がもうすぐ！🏆",
-  "th": "%1$d วัน ใกล้ถึงหมุดหมายแล้ว! 🏆",
-  "ar": "اليوم %1$d — اقتربت من محطة مهمة! 🏆"
+  "plural": {
+   "fr": {
+    "one": "%1$d jour : un cap approche ! 🏆",
+    "many": "%1$d jours : un cap approche ! 🏆",
+    "other": "%1$d jours : un cap approche ! 🏆"
+   },
+   "es": {
+    "one": "¡%1$d día: se acerca una gran meta! 🏆",
+    "many": "¡%1$d días: se acerca una gran meta! 🏆",
+    "other": "¡%1$d días: se acerca una gran meta! 🏆"
+   },
+   "pt": {
+    "one": "%1$d dia: uma conquista vem aí! 🏆",
+    "many": "%1$d dias: uma conquista vem aí! 🏆",
+    "other": "%1$d dias: uma conquista vem aí! 🏆"
+   },
+   "tr": {
+    "one": "%1$d gün, kilometre taşı yakın! 🏆",
+    "other": "%1$d gün, kilometre taşı yakın! 🏆"
+   },
+   "ru": {
+    "one": "Серия: %1$d — новая веха близко! 🏆",
+    "few": "Серия: %1$d — новая веха близко! 🏆",
+    "many": "Серия: %1$d — новая веха близко! 🏆",
+    "other": "Серия: %1$d — новая веха близко! 🏆"
+   },
+   "ja": {
+    "other": "%1$d日、大きな節目がもうすぐ！🏆"
+   },
+   "th": {
+    "other": "%1$d วัน ใกล้ถึงหมุดหมายแล้ว! 🏆"
+   },
+   "ar": {
+    "zero": "اليوم %1$d — اقتربت من محطة مهمة! 🏆",
+    "one": "اليوم %1$d — اقتربت من محطة مهمة! 🏆",
+    "two": "اليوم %1$d — اقتربت من محطة مهمة! 🏆",
+    "few": "اليوم %1$d — اقتربت من محطة مهمة! 🏆",
+    "many": "اليوم %1$d — اقتربت من محطة مهمة! 🏆",
+    "other": "اليوم %1$d — اقتربت من محطة مهمة! 🏆"
+   }
+  }
  },
  "notif_streak_body_5": {
   "fr": "Votre enfant est sur une belle lancée. Quelques minutes d'entraînement aujourd'hui font vivre ce parcours.",
@@ -120,14 +219,47 @@
   "ar": "العادات اليومية الصغيرة تصنع مستقبل الطفل بطرق لا نراها دائمًا. جلسة اليوم أهم مما تتخيل."
  },
  "notif_streak_title_7": {
-  "fr": "🔥 %1$d jours : un champion en devenir !",
-  "es": "🔥 %1$d días: ¡hay madera de campeón!",
-  "pt": "🔥 %1$d dias: criando um campeão!",
-  "tr": "🔥 %1$d gün, bir şampiyon yetişiyor!",
-  "ru": "🔥 Серия: %1$d — растёт чемпион!",
-  "ja": "🔥 %1$d日連続、チャンピオンへの道！",
-  "th": "🔥 ครบ %1$d วัน กำลังสร้างแชมป์!",
-  "ar": "🔥 اليوم %1$d — أنت تربّي بطلًا!"
+  "plural": {
+   "fr": {
+    "one": "🔥 %1$d jour : un champion en devenir !",
+    "many": "🔥 %1$d jours : un champion en devenir !",
+    "other": "🔥 %1$d jours : un champion en devenir !"
+   },
+   "es": {
+    "one": "🔥 %1$d día: ¡hay madera de campeón!",
+    "many": "🔥 %1$d días: ¡hay madera de campeón!",
+    "other": "🔥 %1$d días: ¡hay madera de campeón!"
+   },
+   "pt": {
+    "one": "🔥 %1$d dia: criando um campeão!",
+    "many": "🔥 %1$d dias: criando um campeão!",
+    "other": "🔥 %1$d dias: criando um campeão!"
+   },
+   "tr": {
+    "one": "🔥 %1$d gün, bir şampiyon yetişiyor!",
+    "other": "🔥 %1$d gün, bir şampiyon yetişiyor!"
+   },
+   "ru": {
+    "one": "🔥 Серия: %1$d — растёт чемпион!",
+    "few": "🔥 Серия: %1$d — растёт чемпион!",
+    "many": "🔥 Серия: %1$d — растёт чемпион!",
+    "other": "🔥 Серия: %1$d — растёт чемпион!"
+   },
+   "ja": {
+    "other": "🔥 %1$d日連続、チャンピオンへの道！"
+   },
+   "th": {
+    "other": "🔥 ครบ %1$d วัน กำลังสร้างแชมป์!"
+   },
+   "ar": {
+    "zero": "🔥 اليوم %1$d — أنت تربّي بطلًا!",
+    "one": "🔥 اليوم %1$d — أنت تربّي بطلًا!",
+    "two": "🔥 اليوم %1$d — أنت تربّي بطلًا!",
+    "few": "🔥 اليوم %1$d — أنت تربّي بطلًا!",
+    "many": "🔥 اليوم %1$d — أنت تربّي بطلًا!",
+    "other": "🔥 اليوم %1$d — أنت تربّي بطلًا!"
+   }
+  }
  },
  "notif_streak_body_7": {
   "fr": "Très peu d'enfants acquièrent une telle discipline. Il y a de quoi être fier, et cet élan mérite de continuer aujourd'hui.",
@@ -180,14 +312,47 @@
   "ar": "أفضل المتعلمين يجعلون التدريب جزءًا من حياتهم اليومية. وطفلك يصبح واحدًا منهم بالفعل."
  },
  "notif_streak_title_10": {
-  "fr": "🌟 %1$d jours de belle persévérance !",
-  "es": "🌟 ¡%1$d días de pura dedicación!",
-  "pt": "🌟 %1$d dias de pura dedicação!",
-  "tr": "🌟 %1$d gün boyunca azim!",
-  "ru": "🌟 Серия: %1$d — вот это упорство!",
-  "ja": "🌟 %1$d日間、ひたむきな努力！",
-  "th": "🌟 ทุ่มเท %1$d วันเต็ม ๆ!",
-  "ar": "🌟 اليوم %1$d من التفاني الخالص!"
+  "plural": {
+   "fr": {
+    "one": "🌟 %1$d jour de belle persévérance !",
+    "many": "🌟 %1$d jours de belle persévérance !",
+    "other": "🌟 %1$d jours de belle persévérance !"
+   },
+   "es": {
+    "one": "🌟 ¡%1$d día de pura dedicación!",
+    "many": "🌟 ¡%1$d días de pura dedicación!",
+    "other": "🌟 ¡%1$d días de pura dedicación!"
+   },
+   "pt": {
+    "one": "🌟 %1$d dia de pura dedicação!",
+    "many": "🌟 %1$d dias de pura dedicação!",
+    "other": "🌟 %1$d dias de pura dedicação!"
+   },
+   "tr": {
+    "one": "🌟 %1$d gün boyunca azim!",
+    "other": "🌟 %1$d gün boyunca azim!"
+   },
+   "ru": {
+    "one": "🌟 Серия: %1$d — вот это упорство!",
+    "few": "🌟 Серия: %1$d — вот это упорство!",
+    "many": "🌟 Серия: %1$d — вот это упорство!",
+    "other": "🌟 Серия: %1$d — вот это упорство!"
+   },
+   "ja": {
+    "other": "🌟 %1$d日間、ひたむきな努力！"
+   },
+   "th": {
+    "other": "🌟 ทุ่มเท %1$d วันเต็ม ๆ!"
+   },
+   "ar": {
+    "zero": "🌟 اليوم %1$d من التفاني الخالص!",
+    "one": "🌟 اليوم %1$d من التفاني الخالص!",
+    "two": "🌟 اليوم %1$d من التفاني الخالص!",
+    "few": "🌟 اليوم %1$d من التفاني الخالص!",
+    "many": "🌟 اليوم %1$d من التفاني الخالص!",
+    "other": "🌟 اليوم %1$d من التفاني الخالص!"
+   }
+  }
  },
  "notif_streak_body_10": {
   "fr": "Un tel engagement à cet âge est extraordinaire. Une courte séance aujourd'hui s'ajoute à quelque chose de vraiment spécial.",
@@ -220,14 +385,47 @@
   "ar": "في كل يوم يتدرّب فيه طفلك تزداد ثقته وسرعته الذهنية. اليوم مهم جدًا ولا يجب أن يفوتك."
  },
  "notif_streak_title_12": {
-  "fr": "%1$d jours : votre enfant est imparable ! 💪",
-  "es": "¡%1$d días: tu hijo o hija es imparable! 💪",
-  "pt": "%1$d dias: seu filho é imparável! 💪",
-  "tr": "%1$d gün, çocuğunuz durdurulamaz! 💪",
-  "ru": "Серия: %1$d — ребёнка не остановить! 💪",
-  "ja": "%1$d日、お子さまは止まりません！💪",
-  "th": "%1$d วัน ลูกหยุดไม่อยู่แล้ว! 💪",
-  "ar": "اليوم %1$d — طفلك لا يمكن إيقافه! 💪"
+  "plural": {
+   "fr": {
+    "one": "%1$d jour : votre enfant est imparable ! 💪",
+    "many": "%1$d jours : votre enfant est imparable ! 💪",
+    "other": "%1$d jours : votre enfant est imparable ! 💪"
+   },
+   "es": {
+    "one": "¡%1$d día: tu hijo o hija es imparable! 💪",
+    "many": "¡%1$d días: tu hijo o hija es imparable! 💪",
+    "other": "¡%1$d días: tu hijo o hija es imparable! 💪"
+   },
+   "pt": {
+    "one": "%1$d dia: seu filho é imparável! 💪",
+    "many": "%1$d dias: seu filho é imparável! 💪",
+    "other": "%1$d dias: seu filho é imparável! 💪"
+   },
+   "tr": {
+    "one": "%1$d gün, çocuğunuz durdurulamaz! 💪",
+    "other": "%1$d gün, çocuğunuz durdurulamaz! 💪"
+   },
+   "ru": {
+    "one": "Серия: %1$d — ребёнка не остановить! 💪",
+    "few": "Серия: %1$d — ребёнка не остановить! 💪",
+    "many": "Серия: %1$d — ребёнка не остановить! 💪",
+    "other": "Серия: %1$d — ребёнка не остановить! 💪"
+   },
+   "ja": {
+    "other": "%1$d日、お子さまは止まりません！💪"
+   },
+   "th": {
+    "other": "%1$d วัน ลูกหยุดไม่อยู่แล้ว! 💪"
+   },
+   "ar": {
+    "zero": "اليوم %1$d — طفلك لا يمكن إيقافه! 💪",
+    "one": "اليوم %1$d — طفلك لا يمكن إيقافه! 💪",
+    "two": "اليوم %1$d — طفلك لا يمكن إيقافه! 💪",
+    "few": "اليوم %1$d — طفلك لا يمكن إيقافه! 💪",
+    "many": "اليوم %1$d — طفلك لا يمكن إيقافه! 💪",
+    "other": "اليوم %1$d — طفلك لا يمكن إيقافه! 💪"
+   }
+  }
  },
  "notif_streak_body_12": {
   "fr": "Le meilleur investissement, c'est l'apprentissage au quotidien. Quelques minutes aujourd'hui, c'est déjà beaucoup.",
@@ -240,14 +438,47 @@
   "ar": "أفضل استثمار يمكنك القيام به هو التعلّم اليومي. بضع دقائق اليوم تصنع فرقًا كبيرًا."
  },
  "notif_streak_title_13": {
-  "fr": "🎯 %1$d jours : la précision progresse !",
-  "es": "🎯 %1$d días: ¡la precisión avanza!",
-  "pt": "🎯 %1$d dias: a precisão evolui!",
-  "tr": "🎯 %1$d gün, hedefe tam isabet!",
-  "ru": "🎯 Серия: %1$d — точность растёт!",
-  "ja": "🎯 %1$d日、正確さが磨かれています！",
-  "th": "🎯 %1$d วัน แม่นยำขึ้นเรื่อย ๆ!",
-  "ar": "🎯 اليوم %1$d — الدقة تتحسّن!"
+  "plural": {
+   "fr": {
+    "one": "🎯 %1$d jour : la précision progresse !",
+    "many": "🎯 %1$d jours : la précision progresse !",
+    "other": "🎯 %1$d jours : la précision progresse !"
+   },
+   "es": {
+    "one": "🎯 %1$d día: ¡la precisión avanza!",
+    "many": "🎯 %1$d días: ¡la precisión avanza!",
+    "other": "🎯 %1$d días: ¡la precisión avanza!"
+   },
+   "pt": {
+    "one": "🎯 %1$d dia: a precisão evolui!",
+    "many": "🎯 %1$d dias: a precisão evolui!",
+    "other": "🎯 %1$d dias: a precisão evolui!"
+   },
+   "tr": {
+    "one": "🎯 %1$d gün, hedefe tam isabet!",
+    "other": "🎯 %1$d gün, hedefe tam isabet!"
+   },
+   "ru": {
+    "one": "🎯 Серия: %1$d — точность растёт!",
+    "few": "🎯 Серия: %1$d — точность растёт!",
+    "many": "🎯 Серия: %1$d — точность растёт!",
+    "other": "🎯 Серия: %1$d — точность растёт!"
+   },
+   "ja": {
+    "other": "🎯 %1$d日、正確さが磨かれています！"
+   },
+   "th": {
+    "other": "🎯 %1$d วัน แม่นยำขึ้นเรื่อย ๆ!"
+   },
+   "ar": {
+    "zero": "🎯 اليوم %1$d — الدقة تتحسّن!",
+    "one": "🎯 اليوم %1$d — الدقة تتحسّن!",
+    "two": "🎯 اليوم %1$d — الدقة تتحسّن!",
+    "few": "🎯 اليوم %1$d — الدقة تتحسّن!",
+    "many": "🎯 اليوم %1$d — الدقة تتحسّن!",
+    "other": "🎯 اليوم %1$d — الدقة تتحسّن!"
+   }
+  }
  },
  "notif_streak_body_13": {
   "fr": "Le boulier développe en même temps la rapidité, la concentration et la confiance. Votre enfant progresse sur les trois : continuez ainsi.",
@@ -300,14 +531,47 @@
   "ar": "تدريب سريع قبل النوم طريقة رائعة لختام اليوم. سيفخر طفلك لأنه التزم."
  },
  "notif_streak_title_16": {
-  "fr": "%1$d jours : l'habitude s'installe ! 🏅",
-  "es": "¡%1$d días: el hábito ya es real! 🏅",
-  "pt": "%1$d dias: o hábito é real! 🏅",
-  "tr": "%1$d gün, bu alışkanlık gerçek! 🏅",
-  "ru": "Серия: %1$d — привычка уже настоящая! 🏅",
-  "ja": "%1$d日、この習慣は本物です！🏅",
-  "th": "%1$d วัน นิสัยนี้เกิดขึ้นจริงแล้ว! 🏅",
-  "ar": "اليوم %1$d — العادة أصبحت حقيقية! 🏅"
+  "plural": {
+   "fr": {
+    "one": "%1$d jour : l'habitude s'installe ! 🏅",
+    "many": "%1$d jours : l'habitude s'installe ! 🏅",
+    "other": "%1$d jours : l'habitude s'installe ! 🏅"
+   },
+   "es": {
+    "one": "¡%1$d día: el hábito ya es real! 🏅",
+    "many": "¡%1$d días: el hábito ya es real! 🏅",
+    "other": "¡%1$d días: el hábito ya es real! 🏅"
+   },
+   "pt": {
+    "one": "%1$d dia: o hábito é real! 🏅",
+    "many": "%1$d dias: o hábito é real! 🏅",
+    "other": "%1$d dias: o hábito é real! 🏅"
+   },
+   "tr": {
+    "one": "%1$d gün, bu alışkanlık gerçek! 🏅",
+    "other": "%1$d gün, bu alışkanlık gerçek! 🏅"
+   },
+   "ru": {
+    "one": "Серия: %1$d — привычка уже настоящая! 🏅",
+    "few": "Серия: %1$d — привычка уже настоящая! 🏅",
+    "many": "Серия: %1$d — привычка уже настоящая! 🏅",
+    "other": "Серия: %1$d — привычка уже настоящая! 🏅"
+   },
+   "ja": {
+    "other": "%1$d日、この習慣は本物です！🏅"
+   },
+   "th": {
+    "other": "%1$d วัน นิสัยนี้เกิดขึ้นจริงแล้ว! 🏅"
+   },
+   "ar": {
+    "zero": "اليوم %1$d — العادة أصبحت حقيقية! 🏅",
+    "one": "اليوم %1$d — العادة أصبحت حقيقية! 🏅",
+    "two": "اليوم %1$d — العادة أصبحت حقيقية! 🏅",
+    "few": "اليوم %1$d — العادة أصبحت حقيقية! 🏅",
+    "many": "اليوم %1$d — العادة أصبحت حقيقية! 🏅",
+    "other": "اليوم %1$d — العادة أصبحت حقيقية! 🏅"
+   }
+  }
  },
  "notif_streak_body_16": {
   "fr": "L'entraînement devient une part de ce qu'est votre enfant. C'est précieux, et aujourd'hui est le bon moment pour le préserver.",
@@ -360,14 +624,47 @@
   "ar": "كل جلسة تشحذ عقله أكثر قليلًا. وما يبدو صغيرًا اليوم يتراكم ليصبح شيئًا استثنائيًا."
  },
  "notif_streak_title_19": {
-  "fr": "%1$d jours, et ça continue ! ✨",
-  "es": "¡%1$d días y contando! ✨",
-  "pt": "%1$d dias e contando! ✨",
-  "tr": "%1$d gün ve hâlâ devam! ✨",
-  "ru": "Серия: %1$d — и это не предел! ✨",
-  "ja": "%1$d日、まだまだ続いています！✨",
-  "th": "%1$d วันแล้ว และยังไปต่อ! ✨",
-  "ar": "أيام التتابع: %1$d والعدّ مستمر! ✨"
+  "plural": {
+   "fr": {
+    "one": "%1$d jour, et ça continue ! ✨",
+    "many": "%1$d jours, et ça continue ! ✨",
+    "other": "%1$d jours, et ça continue ! ✨"
+   },
+   "es": {
+    "one": "¡%1$d día y contando! ✨",
+    "many": "¡%1$d días y contando! ✨",
+    "other": "¡%1$d días y contando! ✨"
+   },
+   "pt": {
+    "one": "%1$d dia e contando! ✨",
+    "many": "%1$d dias e contando! ✨",
+    "other": "%1$d dias e contando! ✨"
+   },
+   "tr": {
+    "one": "%1$d gün ve hâlâ devam! ✨",
+    "other": "%1$d gün ve hâlâ devam! ✨"
+   },
+   "ru": {
+    "one": "Серия: %1$d — и это не предел! ✨",
+    "few": "Серия: %1$d — и это не предел! ✨",
+    "many": "Серия: %1$d — и это не предел! ✨",
+    "other": "Серия: %1$d — и это не предел! ✨"
+   },
+   "ja": {
+    "other": "%1$d日、まだまだ続いています！✨"
+   },
+   "th": {
+    "other": "%1$d วันแล้ว และยังไปต่อ! ✨"
+   },
+   "ar": {
+    "zero": "أيام التتابع: %1$d والعدّ مستمر! ✨",
+    "one": "أيام التتابع: %1$d والعدّ مستمر! ✨",
+    "two": "أيام التتابع: %1$d والعدّ مستمر! ✨",
+    "few": "أيام التتابع: %1$d والعدّ مستمر! ✨",
+    "many": "أيام التتابع: %1$d والعدّ مستمر! ✨",
+    "other": "أيام التتابع: %1$d والعدّ مستمر! ✨"
+   }
+  }
  },
  "notif_streak_body_19": {
   "fr": "Votre enfant fait partie d'un petit groupe d'apprenants réguliers. C'est précieux et cela vaut la peine d'être préservé, surtout aujourd'hui.",

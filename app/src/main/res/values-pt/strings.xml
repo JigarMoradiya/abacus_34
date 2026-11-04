@@ -1088,41 +1088,77 @@
     <!-- m18_notifications -->
     <string name="notif_streak_title_1">🔥 Dia %1$d: mantenha o fogo aceso!</string>
     <string name="notif_streak_body_1">O foco do seu filho cresce a cada dia. Um pouquinho de prática hoje protege tudo o que ele já construiu.</string>
-    <string name="notif_streak_title_2">%1$d dias seguidos, que aprendiz! ⭐</string>
+    <plurals name="notif_streak_title_2">
+        <item quantity="one">%1$d dia seguido, que aprendiz! ⭐</item>
+        <item quantity="many">%1$d dias seguidos, que aprendiz! ⭐</item>
+        <item quantity="other">%1$d dias seguidos, que aprendiz! ⭐</item>
+    </plurals>
     <string name="notif_streak_body_2">Essa constância é rara em qualquer idade. Você está criando alguém que termina o que começa.</string>
     <string name="notif_streak_title_3">Não quebre a corrente de %1$d dias! 🔗</string>
     <string name="notif_streak_body_3">Cada elo dessa corrente representa um crescimento real. Seu filho já chegou longe, e hoje ela segue inteira.</string>
-    <string name="notif_streak_title_4">🧠 %1$d dias de treino mental!</string>
+    <plurals name="notif_streak_title_4">
+        <item quantity="one">🧠 %1$d dia de treino mental!</item>
+        <item quantity="many">🧠 %1$d dias de treino mental!</item>
+        <item quantity="other">🧠 %1$d dias de treino mental!</item>
+    </plurals>
     <string name="notif_streak_body_4">A força mental que seu filho constrói com a prática diária vai acompanhá-lo na escola e além.</string>
-    <string name="notif_streak_title_5">%1$d dias: uma conquista vem aí! 🏆</string>
+    <plurals name="notif_streak_title_5">
+        <item quantity="one">%1$d dia: uma conquista vem aí! 🏆</item>
+        <item quantity="many">%1$d dias: uma conquista vem aí! 🏆</item>
+        <item quantity="other">%1$d dias: uma conquista vem aí! 🏆</item>
+    </plurals>
     <string name="notif_streak_body_5">Seu filho está em uma sequência notável. Alguns minutos de prática hoje mantêm essa jornada viva.</string>
     <string name="notif_streak_title_6">O dia %1$d está esperando ✨</string>
     <string name="notif_streak_body_6">Pequenos hábitos diários moldam o futuro de uma criança de formas que nem sempre vemos. A sessão de hoje importa mais do que você imagina.</string>
-    <string name="notif_streak_title_7">🔥 %1$d dias: criando um campeão!</string>
+    <plurals name="notif_streak_title_7">
+        <item quantity="one">🔥 %1$d dia: criando um campeão!</item>
+        <item quantity="many">🔥 %1$d dias: criando um campeão!</item>
+        <item quantity="other">🔥 %1$d dias: criando um campeão!</item>
+    </plurals>
     <string name="notif_streak_body_7">Poucas crianças constroem essa disciplina. É motivo de orgulho! Vamos manter esse ritmo hoje também.</string>
     <string name="notif_streak_title_8">Hábito de %1$d dias a caminho! 💡</string>
     <string name="notif_streak_body_8">Pesquisas mostram que a prática diária e constante molda o cérebro para a vida toda. Seu filho está no caminho certo.</string>
     <string name="notif_streak_title_9">Dia %1$d: quase automático! 🎯</string>
     <string name="notif_streak_body_9">Os melhores alunos fazem da prática parte do dia a dia. Seu filho já está se tornando um deles.</string>
-    <string name="notif_streak_title_10">🌟 %1$d dias de pura dedicação!</string>
+    <plurals name="notif_streak_title_10">
+        <item quantity="one">🌟 %1$d dia de pura dedicação!</item>
+        <item quantity="many">🌟 %1$d dias de pura dedicação!</item>
+        <item quantity="other">🌟 %1$d dias de pura dedicação!</item>
+    </plurals>
     <string name="notif_streak_body_10">Dedicação nessa idade é extraordinária. Uma sessão curta hoje soma a algo realmente especial.</string>
     <string name="notif_streak_title_11">Dia %1$d: a sequência continua! 🔥</string>
     <string name="notif_streak_body_11">A cada dia de prática, a confiança e a agilidade mental do seu filho crescem. Hoje é importante demais para deixar passar.</string>
-    <string name="notif_streak_title_12">%1$d dias: seu filho é imparável! 💪</string>
+    <plurals name="notif_streak_title_12">
+        <item quantity="one">%1$d dia: seu filho é imparável! 💪</item>
+        <item quantity="many">%1$d dias: seu filho é imparável! 💪</item>
+        <item quantity="other">%1$d dias: seu filho é imparável! 💪</item>
+    </plurals>
     <string name="notif_streak_body_12">O melhor investimento que você pode fazer é no aprendizado diário. Alguns minutos hoje já fazem muita diferença.</string>
-    <string name="notif_streak_title_13">🎯 %1$d dias: a precisão evolui!</string>
+    <plurals name="notif_streak_title_13">
+        <item quantity="one">🎯 %1$d dia: a precisão evolui!</item>
+        <item quantity="many">🎯 %1$d dias: a precisão evolui!</item>
+        <item quantity="other">🎯 %1$d dias: a precisão evolui!</item>
+    </plurals>
     <string name="notif_streak_body_13">O ábaco desenvolve rapidez, foco e confiança ao mesmo tempo. Seu filho está crescendo nos três. Continuem assim!</string>
     <string name="notif_streak_title_14">Dia %1$d: devagar e sempre! 🐢</string>
     <string name="notif_streak_body_14">O segredo não é um grande esforço, e sim aparecer todos os dias. Seu filho já sabe disso.</string>
     <string name="notif_streak_title_15">🌙 Feche o dia bem: %1$d dias seguidos!</string>
     <string name="notif_streak_body_15">Uma prática rápida antes de dormir é uma ótima forma de encerrar o dia. Seu filho vai se orgulhar de ter praticado.</string>
-    <string name="notif_streak_title_16">%1$d dias: o hábito é real! 🏅</string>
+    <plurals name="notif_streak_title_16">
+        <item quantity="one">%1$d dia: o hábito é real! 🏅</item>
+        <item quantity="many">%1$d dias: o hábito é real! 🏅</item>
+        <item quantity="other">%1$d dias: o hábito é real! 🏅</item>
+    </plurals>
     <string name="notif_streak_body_16">A prática está se tornando parte de quem seu filho é. Vale a pena proteger isso hoje.</string>
     <string name="notif_streak_title_17">🔥 Check-in do dia %1$d!</string>
     <string name="notif_streak_body_17">Campeões aparecem todos os dias, mesmo quando a vida fica corrida. Seu filho consegue fazer isso hoje.</string>
     <string name="notif_streak_title_18">Dia %1$d: um futuro matemático em treino! 🧮</string>
     <string name="notif_streak_body_18">Cada sessão deixa a mente do seu filho um pouco mais afiada. O que parece pequeno hoje se soma a algo extraordinário.</string>
-    <string name="notif_streak_title_19">%1$d dias e contando! ✨</string>
+    <plurals name="notif_streak_title_19">
+        <item quantity="one">%1$d dia e contando! ✨</item>
+        <item quantity="many">%1$d dias e contando! ✨</item>
+        <item quantity="other">%1$d dias e contando! ✨</item>
+    </plurals>
     <string name="notif_streak_body_19">Seu filho faz parte de um grupo raro de alunos constantes. Vale a pena proteger isso, principalmente hoje.</string>
     <string name="notif_streak_title_20">🌟 Dia %1$d: não pare agora!</string>
     <string name="notif_streak_body_20">Você investiu muito no aprendizado do seu filho. A prática de hoje é a forma mais simples de valorizar isso.</string>

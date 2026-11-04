@@ -1046,41 +1046,59 @@
     <!-- m18_notifications -->
     <string name="notif_streak_title_1">🔥 วันที่ %1$d รักษาไฟให้ลุกโชนต่อไป!</string>
     <string name="notif_streak_body_1">สมาธิของลูกแข็งแรงขึ้นทุกวัน การฝึกเล็กน้อยในวันนี้ช่วยรักษาทุกสิ่งที่ลูกสร้างมาไว้ได้</string>
-    <string name="notif_streak_title_2">%1$d วันติดต่อกัน เก่งจริง ๆ! ⭐</string>
+    <plurals name="notif_streak_title_2">
+        <item quantity="other">%1$d วันติดต่อกัน เก่งจริง ๆ! ⭐</item>
+    </plurals>
     <string name="notif_streak_body_2">ความสม่ำเสมอแบบนี้หาได้ยากในทุกวัย คุณกำลังเลี้ยงเด็กที่ทำสิ่งที่เริ่มไว้ให้สำเร็จได้จริง ๆ</string>
     <string name="notif_streak_title_3">อย่าให้โซ่ %1$d วันขาดตอน! 🔗</string>
     <string name="notif_streak_body_3">ทุกห่วงในโซ่นี้คือการเติบโตที่แท้จริง ลูกมาไกลมากแล้ว การฝึกวันนี้ช่วยให้โซ่ไม่ขาดตอน</string>
-    <string name="notif_streak_title_4">🧠 ฝึกสมองมา %1$d วันแล้ว!</string>
+    <plurals name="notif_streak_title_4">
+        <item quantity="other">🧠 ฝึกสมองมา %1$d วันแล้ว!</item>
+    </plurals>
     <string name="notif_streak_body_4">ความแข็งแกร่งทางความคิดที่ลูกสร้างจากการฝึกทุกวัน จะพาลูกไปได้ไกลทั้งในโรงเรียนและในอนาคต</string>
-    <string name="notif_streak_title_5">%1$d วัน ใกล้ถึงหมุดหมายแล้ว! 🏆</string>
+    <plurals name="notif_streak_title_5">
+        <item quantity="other">%1$d วัน ใกล้ถึงหมุดหมายแล้ว! 🏆</item>
+    </plurals>
     <string name="notif_streak_body_5">ลูกกำลังทำได้ยอดเยี่ยมมาก การฝึกเพียงไม่กี่นาทีวันนี้ช่วยให้การเดินทางนี้ไปต่อได้</string>
     <string name="notif_streak_title_6">วันที่ %1$d กำลังรออยู่ ✨</string>
     <string name="notif_streak_body_6">นิสัยเล็ก ๆ ที่ทำทุกวันช่วยหล่อหลอมอนาคตของเด็กในแบบที่เรามองไม่เห็นเสมอไป การฝึกวันนี้สำคัญกว่าที่คิด</string>
-    <string name="notif_streak_title_7">🔥 ครบ %1$d วัน กำลังสร้างแชมป์!</string>
+    <plurals name="notif_streak_title_7">
+        <item quantity="other">🔥 ครบ %1$d วัน กำลังสร้างแชมป์!</item>
+    </plurals>
     <string name="notif_streak_body_7">มีเด็กน้อยมากที่สร้างวินัยแบบนี้ได้ ภูมิใจในตัวลูกได้เลย และช่วยรักษาแรงส่งนี้ไว้ในวันนี้ด้วย</string>
     <string name="notif_streak_title_8">กำลังสร้างนิสัย %1$d วัน! 💡</string>
     <string name="notif_streak_body_8">งานวิจัยบอกว่าการฝึกสม่ำเสมอทุกวันช่วยปรับสมองให้พัฒนาไปตลอดชีวิต ลูกกำลังมาถูกทางแล้ว</string>
     <string name="notif_streak_title_9">วันที่ %1$d เกือบเป็นอัตโนมัติแล้ว! 🎯</string>
     <string name="notif_streak_body_9">นักเรียนที่เก่งที่สุดทำให้การฝึกเป็นส่วนหนึ่งของชีวิตประจำวัน ลูกกำลังเป็นหนึ่งในนั้นแล้ว</string>
-    <string name="notif_streak_title_10">🌟 ทุ่มเท %1$d วันเต็ม ๆ!</string>
+    <plurals name="notif_streak_title_10">
+        <item quantity="other">🌟 ทุ่มเท %1$d วันเต็ม ๆ!</item>
+    </plurals>
     <string name="notif_streak_body_10">ความทุ่มเทในวัยนี้ไม่ธรรมดาเลย การฝึกสั้น ๆ วันนี้ช่วยต่อยอดสิ่งที่พิเศษจริง ๆ</string>
     <string name="notif_streak_title_11">วันที่ %1$d ยังต่อเนื่องอยู่! 🔥</string>
     <string name="notif_streak_body_11">ทุกวันที่ลูกฝึก ความมั่นใจและความเร็วในการคิดก็เติบโตขึ้น วันนี้เป็นอีกวันที่ไม่อยากให้พลาด</string>
-    <string name="notif_streak_title_12">%1$d วัน ลูกหยุดไม่อยู่แล้ว! 💪</string>
+    <plurals name="notif_streak_title_12">
+        <item quantity="other">%1$d วัน ลูกหยุดไม่อยู่แล้ว! 💪</item>
+    </plurals>
     <string name="notif_streak_body_12">การลงทุนที่ดีที่สุดคือการเรียนรู้ทุกวัน เพียงไม่กี่นาทีวันนี้ก็ไปได้ไกล</string>
-    <string name="notif_streak_title_13">🎯 %1$d วัน แม่นยำขึ้นเรื่อย ๆ!</string>
+    <plurals name="notif_streak_title_13">
+        <item quantity="other">🎯 %1$d วัน แม่นยำขึ้นเรื่อย ๆ!</item>
+    </plurals>
     <string name="notif_streak_body_13">การฝึกลูกคิดช่วยสร้างความเร็ว สมาธิ และความมั่นใจไปพร้อมกัน ลูกกำลังพัฒนาทั้งสามอย่าง ไปต่อกันเลย</string>
     <string name="notif_streak_title_14">วันที่ %1$d สม่ำเสมอคือผู้ชนะ! 🐢</string>
     <string name="notif_streak_body_14">ไม่ได้อยู่ที่ความพยายามครั้งใหญ่ครั้งเดียว แต่อยู่ที่การมาฝึกทุกวัน ลูกของคุณรู้เรื่องนี้ดีอยู่แล้ว</string>
     <string name="notif_streak_title_15">🌙 ปิดวันให้ดี ครบ %1$d วันแล้ว!</string>
     <string name="notif_streak_body_15">การฝึกสั้น ๆ ก่อนนอนเป็นวิธีปิดวันที่ดีมาก ลูกจะภูมิใจที่ได้มาฝึก</string>
-    <string name="notif_streak_title_16">%1$d วัน นิสัยนี้เกิดขึ้นจริงแล้ว! 🏅</string>
+    <plurals name="notif_streak_title_16">
+        <item quantity="other">%1$d วัน นิสัยนี้เกิดขึ้นจริงแล้ว! 🏅</item>
+    </plurals>
     <string name="notif_streak_body_16">การฝึกกำลังกลายเป็นส่วนหนึ่งของตัวตนของลูก สิ่งนี้ควรค่าแก่การรักษาไว้ในวันนี้</string>
     <string name="notif_streak_title_17">🔥 เช็กอินวันที่ %1$d!</string>
     <string name="notif_streak_body_17">แชมป์มาทุกวัน แม้ชีวิตจะยุ่งแค่ไหน วันนี้ลูกของคุณทำได้</string>
     <string name="notif_streak_title_18">วันที่ %1$d นักคณิตศาสตร์ในอนาคต! 🧮</string>
     <string name="notif_streak_body_18">การฝึกแต่ละครั้งทำให้สมองเฉียบคมขึ้นอีกนิด สิ่งที่ดูเล็กน้อยวันนี้จะสะสมเป็นสิ่งที่ยอดเยี่ยม</string>
-    <string name="notif_streak_title_19">%1$d วันแล้ว และยังไปต่อ! ✨</string>
+    <plurals name="notif_streak_title_19">
+        <item quantity="other">%1$d วันแล้ว และยังไปต่อ! ✨</item>
+    </plurals>
     <string name="notif_streak_body_19">ลูกของคุณอยู่ในกลุ่มเล็ก ๆ ของผู้เรียนที่สม่ำเสมอ สิ่งนี้ควรค่าแก่การรักษาไว้ โดยเฉพาะวันนี้</string>
     <string name="notif_streak_title_20">🌟 วันที่ %1$d อย่าเพิ่งหยุด!</string>
     <string name="notif_streak_body_20">คุณทุ่มเทให้การเรียนของลูกมามาก การฝึกวันนี้คือวิธีง่ายที่สุดที่จะต่อยอดความตั้งใจนั้น</string>

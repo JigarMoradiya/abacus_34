@@ -114,6 +114,9 @@ object StreakManager {
 
     /** Debug builds only (`--ez ab_notify_now true`): the reminder is shown even if the child already practised today. */
     @Volatile internal var debugShowNow = false
+    /** Debug builds only (`--ei ab_streak_title 0..19 --ei ab_streak_value N`): pick the reminder text and the streak shown, to read every plural form. */
+    @Volatile internal var debugTitleIndex: Int? = null
+    @Volatile internal var debugStreak: Int? = null
 
     fun scheduleNotification(context: Context) {
         val delayMs: Long = if (TEST_NOTIFICATION) {
@@ -146,31 +149,46 @@ object StreakManager {
     /** The streak reminder in the app language (the worker has no screen, so the language is looked up here). */
     fun notificationContent(context: Context, currentStreak: Int): Pair<String, String> {
         val dayOfYear = Calendar.getInstance().get(Calendar.DAY_OF_YEAR)
-        val (titleRes, bodyRes) = streakMessages[dayOfYear % streakMessages.size]
+        val (titleRes, bodyRes) = streakMessages[(debugTitleIndex ?: dayOfYear) % streakMessages.size]
+        val streak = debugStreak ?: currentStreak
         val text = context.inAppLanguage()
-        return text.getString(titleRes, currentStreak) to text.getString(bodyRes)
+        // titles that put the number before "days" are plurals ("1 day"), the others are plain strings ("Day 1")
+        val title = if (titleRes in pluralTitles) text.resources.getQuantityString(titleRes, streak, streak) else text.getString(titleRes, streak)
+        return title to text.getString(bodyRes)
     }
+
+    private val pluralTitles = setOf(
+        R.plurals.notif_streak_title_2,
+        R.plurals.notif_streak_title_4,
+        R.plurals.notif_streak_title_5,
+        R.plurals.notif_streak_title_7,
+        R.plurals.notif_streak_title_10,
+        R.plurals.notif_streak_title_12,
+        R.plurals.notif_streak_title_13,
+        R.plurals.notif_streak_title_16,
+        R.plurals.notif_streak_title_19
+    )
 
     private val streakMessages = listOf(
         R.string.notif_streak_title_1 to R.string.notif_streak_body_1,
-        R.string.notif_streak_title_2 to R.string.notif_streak_body_2,
+        R.plurals.notif_streak_title_2 to R.string.notif_streak_body_2,
         R.string.notif_streak_title_3 to R.string.notif_streak_body_3,
-        R.string.notif_streak_title_4 to R.string.notif_streak_body_4,
-        R.string.notif_streak_title_5 to R.string.notif_streak_body_5,
+        R.plurals.notif_streak_title_4 to R.string.notif_streak_body_4,
+        R.plurals.notif_streak_title_5 to R.string.notif_streak_body_5,
         R.string.notif_streak_title_6 to R.string.notif_streak_body_6,
-        R.string.notif_streak_title_7 to R.string.notif_streak_body_7,
+        R.plurals.notif_streak_title_7 to R.string.notif_streak_body_7,
         R.string.notif_streak_title_8 to R.string.notif_streak_body_8,
         R.string.notif_streak_title_9 to R.string.notif_streak_body_9,
-        R.string.notif_streak_title_10 to R.string.notif_streak_body_10,
+        R.plurals.notif_streak_title_10 to R.string.notif_streak_body_10,
         R.string.notif_streak_title_11 to R.string.notif_streak_body_11,
-        R.string.notif_streak_title_12 to R.string.notif_streak_body_12,
-        R.string.notif_streak_title_13 to R.string.notif_streak_body_13,
+        R.plurals.notif_streak_title_12 to R.string.notif_streak_body_12,
+        R.plurals.notif_streak_title_13 to R.string.notif_streak_body_13,
         R.string.notif_streak_title_14 to R.string.notif_streak_body_14,
         R.string.notif_streak_title_15 to R.string.notif_streak_body_15,
-        R.string.notif_streak_title_16 to R.string.notif_streak_body_16,
+        R.plurals.notif_streak_title_16 to R.string.notif_streak_body_16,
         R.string.notif_streak_title_17 to R.string.notif_streak_body_17,
         R.string.notif_streak_title_18 to R.string.notif_streak_body_18,
-        R.string.notif_streak_title_19 to R.string.notif_streak_body_19,
+        R.plurals.notif_streak_title_19 to R.string.notif_streak_body_19,
         R.string.notif_streak_title_20 to R.string.notif_streak_body_20
     )
 
