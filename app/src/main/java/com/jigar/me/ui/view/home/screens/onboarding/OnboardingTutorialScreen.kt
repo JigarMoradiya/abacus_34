@@ -334,7 +334,18 @@ private fun TutorialPage(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Column(Modifier.weight(0.45f)) {
-                SpeechBubble(body)
+                // "Show me" hangs just below the instruction bubble (an offset overlay, so nothing moves when it appears)
+                Box {
+                    SpeechBubble(body)
+                    if (showMeReady && !done) {
+                        AbButton(
+                            text = "Show me", tone = AbTone.Warning, size = AbSize.Small, icon = Icons.Rounded.TouchApp,
+                            minHeightOverride = 32f, horizontalPaddingOverride = 11f,
+                            modifier = Modifier.align(Alignment.BottomEnd).offset(y = 40.dp),
+                            onClick = { abCalc.setAbacusValueFromString(page.goal.toString()) },   // the change then unlocks Next like a real swipe
+                        )
+                    }
+                }
                 Spacer(Modifier.height(AppDimens.Dimens12))
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Bottom) {
                     Mascot(116.dp * k)
@@ -401,13 +412,6 @@ private fun TutorialPage(
                 )
             } else Spacer(Modifier)
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
-                if (showMeReady && !done) {
-                    AbButton(
-                        text = "Show me", tone = AbTone.Warning, size = AbSize.Small, icon = Icons.Rounded.TouchApp,
-                        minHeightOverride = 32f, horizontalPaddingOverride = 11f,
-                        onClick = { abCalc.setAbacusValueFromString(page.goal.toString()) },   // the change then unlocks Next like a real swipe
-                    )
-                }
                 // Next is always there so it is clear a button comes: dimmed until the number is made, then it lights up
                 AbButton(
                     text = nextText, tone = AbTone.Primary, size = AbSize.Small, enabled = done,
