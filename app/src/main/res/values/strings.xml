@@ -853,8 +853,8 @@
     <string name="home_offer_save_pct">Save %1$d%% on the %2$s plan</string>
     <string name="home_offer_special_price">Special price on the %1$s plan</string>
     <string name="home_offer_ends_in">Ends in %1$s</string>
-    <string name="home_offer_store_title">Special price!</string>
-    <string name="home_offer_store_line">%1$s on the %2$s plan</string>
+    <string name="home_offer_store_title">Limited time price offer</string>
+    <string name="home_offer_store_line">%2$s plan: %1$s</string>
     <string name="home_offer_product_yearly">Yearly</string>
     <string name="home_offer_product_lifetime">Lifetime</string>
     <string name="target_the_number">Target the Number</string>

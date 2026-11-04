@@ -106,7 +106,7 @@ class HomeFragmentViewModel @Inject constructor(
     // "30% OFF" or "₹500 OFF" (whichever the console offer is) and no countdown (store offers run for days). Never together with the
     // timed Home offer (`home_offer`): while that one runs, it has the banner.
     private fun initStoreOffer() {
-        if (HomeOfferManager.isTimedOfferActive(prefs)) return
+        if (HomeOfferManager.isTimedOfferActive(prefs) && !AbDebugFlags.homeStoreOfferPreviewEnabled) return   // (the debug preview ignores it)
         if (!StoreOneTimeOffers.enabled(prefs.getCustomParam(AppConstants.RemoteConfig.storeOneTimeOffers, ""))) return
         viewModelScope.launch {
             val offer = if (AbDebugFlags.homeStoreOfferPreviewEnabled) AbDebugFlags.sampleStoreOffer() else {
@@ -119,7 +119,9 @@ class HomeFragmentViewModel @Inject constructor(
                     homeOffer = HomeOfferUi(
                         title = context.getString(R.string.home_offer_store_title), startedAtMillis = 0L, durationMin = 0,
                         discountPercent = offer.percentOff, targetsLifetime = true,
-                        storeBadge = offer.badgeText(context), endMillis = null, hasTimer = false,   // a store offer runs for days: no countdown
+                        // "₹3,325 · 30% OFF"
+                        storeBadge = listOf(offer.offerPriceText, offer.badgeText(context)).filter { it.isNotEmpty() }.joinToString(" · "),
+                        endMillis = null, hasTimer = false,   // a store offer runs for days: no countdown
                     )
                 )
             }
