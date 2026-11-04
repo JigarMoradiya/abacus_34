@@ -583,7 +583,7 @@ private fun PaywallPlanCard(
                 }
                 // the lifetime plan's Google Play discount offer: "30% OFF" or "₹500 OFF" (as set in the Play Console)
                 val storeOffer = plan.storeOffer(uiState)
-                if (storeOffer != null && (storeOffer.badgeText().isNotEmpty() || storeOffer.countdownEnd() != null)) {
+                if (storeOffer != null && storeOffer.badgeText().isNotEmpty()) {
                     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)) {
                         Text(
                             text = storeOffer.badgeText(),
@@ -591,7 +591,6 @@ private fun PaywallPlanCard(
                             style = MaterialTheme.typography.labelSmall.scaled(),
                             fontWeight = FontWeight.Bold
                         )
-                        storeOffer.countdownEnd()?.let { InlineCountdownPill(it, {}) }
                     }
                 }
                 // the timed Home offer: "(extra ~N% OFF)" / "~N% OFF" and the live countdown of the ".offer" plan

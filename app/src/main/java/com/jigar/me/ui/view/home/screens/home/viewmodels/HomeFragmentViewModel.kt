@@ -103,7 +103,7 @@ class HomeFragmentViewModel @Inject constructor(
     fun onHomeOfferExpired() = updateState_ { copy(homeOffer = null) }
 
     // A Google Play discount offer on the lifetime plan (set in the Play Console) also shows on Home, as the same banner, with its
-    // "30% OFF" or "₹500 OFF" (whichever the console offer is) and a countdown when the console offer has an end date. Never together with the
+    // "30% OFF" or "₹500 OFF" (whichever the console offer is) and no countdown (store offers run for days). Never together with the
     // timed Home offer (`home_offer`): while that one runs, it has the banner.
     private fun initStoreOffer() {
         if (HomeOfferManager.isTimedOfferActive(prefs)) return
@@ -114,13 +114,12 @@ class HomeFragmentViewModel @Inject constructor(
                 val lifetime = packages.firstOrNull { it.product.id == AppConstants.Products.lifetime } ?: return@launch
                 StoreOneTimeOffers.read((lifetime.product as? GoogleStoreProduct)?.productDetails) ?: return@launch
             }
-            val end = offer.countdownEnd()
             updateState_ {
                 copy(
                     homeOffer = HomeOfferUi(
                         title = context.getString(R.string.home_offer_store_title), startedAtMillis = 0L, durationMin = 0,
                         discountPercent = offer.percentOff, targetsLifetime = true,
-                        storeBadge = offer.badgeText(context), endMillis = end, hasTimer = end != null,
+                        storeBadge = offer.badgeText(context), endMillis = null, hasTimer = false,   // a store offer runs for days: no countdown
                     )
                 )
             }

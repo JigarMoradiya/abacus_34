@@ -446,10 +446,9 @@ private fun PaywallKitPlanCard(
                 if (infoLine.isNotEmpty()) {
                     Text(infoLine, style = AbTypography.fixed(11f * k, FontWeight.Bold), color = colors.textSecondary, maxLines = 1)
                 }
-                if (storeOffer != null && (storeOffer.badgeText().isNotEmpty() || storeOffer.countdownEnd() != null)) {
+                if (storeOffer != null && storeOffer.badgeText().isNotEmpty()) {
                     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp * s)) {
                         Text(storeOffer.badgeText(), style = AbTypography.fixed(11f * k, FontWeight.ExtraBold), color = colors.accentGreenInk)
-                        storeOffer.countdownEnd()?.let { InlineCountdownPill(it, {}) }
                     }
                 }
                 if (timed != null && (timed.percentOff > 0 || timed.endMillis != null)) {

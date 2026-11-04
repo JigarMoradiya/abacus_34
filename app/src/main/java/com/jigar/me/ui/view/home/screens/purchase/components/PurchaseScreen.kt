@@ -521,10 +521,9 @@ private fun PurchaseKitPlanCard(
                                 )
                             }
                         }
-                        if (storeOffer != null && (storeOffer.badgeText().isNotEmpty() || storeOffer.countdownEnd() != null)) {
+                        if (storeOffer != null && storeOffer.badgeText().isNotEmpty()) {
                             Row(Modifier.padding(top = (if (trialDays > 0) 2.dp else 6.dp) * s), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
                                 Text(storeOffer.badgeText(), style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.accentGreenInk)
-                                storeOffer.countdownEnd()?.let { InlineCountdownPill(it, {}) }
                             }
                         }
                         if (timed != null && (timed.percentOff > 0 || timed.endMillis != null)) {

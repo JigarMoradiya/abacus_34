@@ -84,7 +84,7 @@ object AbDebugFlags {
     /** Debug builds only (`--ez ab_home_offer true`): a 10-minute yearly offer card on Home without the store's ".offer" product, for renders. */
     @Volatile var homeOfferPreview: Boolean = false
     val homeOfferPreviewEnabled: Boolean get() = BuildConfig.DEBUG && homeOfferPreview
-    /** Debug builds only (`--ez ab_home_store_offer true`): a Google Play lifetime offer (30% off, ending in 3 hours) on the Home banner, for renders. */
+    /** Debug builds only (`--ez ab_home_store_offer true`): a Google Play lifetime offer (30% off) on the Home banner, for renders. */
     @Volatile var homeStoreOfferPreview: Boolean = false
     val homeStoreOfferPreviewEnabled: Boolean get() = BuildConfig.DEBUG && homeStoreOfferPreview
     fun sampleStoreOffer() = com.jigar.me.utils.StoreOneTimeOffer(

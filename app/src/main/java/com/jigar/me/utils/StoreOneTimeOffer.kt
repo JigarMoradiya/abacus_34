@@ -19,7 +19,7 @@ data class StoreOneTimeOffer(
     val amountOffText: String?,
     val offerToken: String,
     val offerId: String?,
-    /** when the offer ends (epoch millis), null = it runs indefinitely */
+    /** when the offer ends (epoch millis), null = it runs indefinitely; no countdown is shown for a store offer (they run for days) */
     val endMillis: Long?,
     val priceMicros: Long,
     val currencyCode: String,
@@ -30,9 +30,6 @@ data class StoreOneTimeOffer(
         percentOff > 0 -> context.getString(com.jigar.me.R.string.paywall_percent_off_store, percentOff)
         else -> ""
     }
-
-    /** When the offer ends, if the Play Console offer has an end date and time (an offer that "runs indefinitely" has no countdown). */
-    fun countdownEnd(now: Long = System.currentTimeMillis()): Long? = endMillis?.takeIf { it > now }
 }
 
 /**

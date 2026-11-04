@@ -232,7 +232,7 @@ fun PurchasePlanCard(
                         }
                         // the lifetime plan's Google Play discount offer: "30% OFF" or "₹500 OFF" (as set in the Play Console)
                         val storeOffer = plan.storeOffer(uiState)
-                        if (storeOffer != null && (storeOffer.badgeText().isNotEmpty() || storeOffer.countdownEnd() != null)) {
+                        if (storeOffer != null && storeOffer.badgeText().isNotEmpty()) {
                             Row {
                                 Text(
                                     text = storeOffer.badgeText(),
@@ -240,10 +240,6 @@ fun PurchasePlanCard(
                                         color = ColorGreen, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))
                                     )
                                 )
-                                storeOffer.countdownEnd()?.let { endMillis ->
-                                    Spacer(Modifier.width(AppDimens.Dimens6))
-                                    InlineCountdownPill(endMillis, {})
-                                }
                             }
                         }
                         // the timed Home offer: "(extra ~N% OFF)" / "~N% OFF" and the live countdown of the ".offer" plan
