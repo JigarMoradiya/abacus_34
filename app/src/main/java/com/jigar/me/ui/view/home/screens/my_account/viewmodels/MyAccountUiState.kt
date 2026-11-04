@@ -39,7 +39,6 @@ fun getMenuList(context: Context, isLoggedIn: Boolean): List<MyAccountMenu> {
     return listOf(
         MyAccountMenu("my_account", context.getString(R.string.my_account),
             subMenu = listOf(
-//                MyAccountMenu("about_app", context.getString(R.string.what_s_learn_in_application), Icons.Outlined.Info),   // hidden: replaced by the free / premium overview
                 MyAccountMenu("free_premium", context.getString(R.string.free_and_premium), Icons.Outlined.StarBorder),
                 MyAccountMenu("subscription", context.getString(R.string.subscription), Icons.Outlined.Subscriptions),
                 MyAccountMenu("report_history", context.getString(R.string.report_history_cards), Icons.Outlined.Assessment),

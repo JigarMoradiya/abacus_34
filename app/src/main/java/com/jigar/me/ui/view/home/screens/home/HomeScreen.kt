@@ -205,7 +205,6 @@ fun HomeScreen(
     onNavigateToCCMHome: () -> Unit,
     onNavigateToPurchase: () -> Unit,
     onNavigateToYoutubeVideo: () -> Unit,
-    onNavigateToWhatsLearning: () -> Unit,
     onNavigateToLevel1: () -> Unit,
     onNavigateToLevel2: () -> Unit,
     onNavigateToLevel3: () -> Unit,
@@ -544,8 +543,8 @@ fun HomeScreen(
                     manualFreeTrialDays = freeTrialParam.manualFreeTrialDays,
                     onYes = {
                         viewModel.hideFreeTrialPopup()
-                        if (freeTrialParam.remainingDays >= 7) onNavigateToWhatsLearning()
-                        else onNavigateToPurchase()
+                        // the welcome popup (7 free days left) just closes: "Start learning" means start learning
+                        if (freeTrialParam.remainingDays < 7) onNavigateToPurchase()
                     },
                     onNo = { viewModel.hideFreeTrialPopup() },
                     onDismiss = { viewModel.hideFreeTrialPopup() }

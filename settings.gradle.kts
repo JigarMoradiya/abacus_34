@@ -17,4 +17,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Abacus Main"
 include(":app")
-include(":asset_install_time")
+// include(":asset_install_time")   // unlinked (see app/build.gradle.kts): the folder is kept, uncomment this and assetPacks there to use it again

@@ -140,8 +140,6 @@ sealed class RouteNavigation(val route: String) {
 
     object YoutubeVideo : RouteNavigation("YoutubeVideo")
 
-    object WhatsLearning : RouteNavigation("WhatsLearning")
-
     object MyAccount : RouteNavigation("MyAccount")
 
     object ReportHistory : RouteNavigation("ReportHistory")
