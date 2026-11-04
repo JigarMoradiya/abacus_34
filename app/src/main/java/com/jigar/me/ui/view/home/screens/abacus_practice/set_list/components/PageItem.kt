@@ -136,6 +136,7 @@ private fun PageHeader(
 ) {
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
+    Box(Modifier.fillMaxWidth()) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -190,14 +191,8 @@ private fun PageHeader(
         }
 
         if (isLocked) {
-            Box(
-                Modifier
-                    .size(38.dp * s)
-                    .background(PremiumGold.copy(alpha = 0.18f), CircleShape),
-                contentAlignment = Alignment.Center
-            ) {
-                Crown(Modifier.size(20.dp * s, 16.dp * s))
-            }
+            // room for the crown, which is pinned to the corner below (not centred in the row)
+            Spacer(Modifier.size(38.dp * s))
         } else if (!page.is_active) {
             Image(
                 painter = painterResource(R.drawable.ic_disable),
@@ -205,6 +200,21 @@ private fun PageHeader(
                 modifier = Modifier.size(AppDimens.Dimens14)
             )
         }
+    }
+    // The premium crown sits in the top-right corner with the SAME gap above and to the right (centred in the header row its top gap
+    // changed with the height of the row, and was bigger than the right one)
+    if (isLocked) {
+        Box(
+            Modifier
+                .align(Alignment.TopEnd)
+                .padding(top = 9.dp * s, end = 9.dp * s)
+                .size(38.dp * s)
+                .background(PremiumGold.copy(alpha = 0.18f), CircleShape),
+            contentAlignment = Alignment.Center
+        ) {
+            Crown(Modifier.size(20.dp * s, 16.dp * s))
+        }
+    }
     }
 }
 

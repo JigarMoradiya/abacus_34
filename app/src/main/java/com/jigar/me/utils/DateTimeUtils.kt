@@ -143,10 +143,14 @@ object DateTimeUtils {
         return if (isEnglish) text.replace("am","AM").replace("pm","PM") else text
     }
     fun displayDurationHourMinSec(totalSecs: Long): String {
+        val days = totalSecs / 86_400
         val hours = totalSecs / 3600
         val minutes = (totalSecs % 3600) / 60
         val seconds = totalSecs % 60
-        val outputStr = if (hours > 0) {
+        val outputStr = if (days > 0) {
+            // a store offer can run for days: "3d 04:12:09" instead of "76:12:09"
+            String.format("%dd %02d:%02d:%02d", days, hours % 24, minutes, seconds)
+        } else if (hours > 0) {
             String.format("%02d:%02d:%02d", hours, minutes, seconds)
         } else {
             String.format("%02d:%02d", minutes, seconds)

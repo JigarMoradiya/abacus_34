@@ -1,7 +1,11 @@
 package com.jigar.me.ui.view.home.screens.purchase.components
 
 import com.jigar.me.ui.view.home.common_ui.dialogs.freeTrialDays
+import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
 import com.jigar.me.ui.view.home.common_ui.dialogs.storeIntroOffer
+import com.jigar.me.ui.view.home.common_ui.dialogs.badgeText
+import com.jigar.me.ui.view.home.common_ui.dialogs.storeOffer
+import com.jigar.me.ui.view.home.common_ui.dialogs.timedOffer
 import com.jigar.me.ui.view.home.common_ui.dialogs.thenLine
 import com.jigar.me.ui.view.home.common_ui.dialogs.PaywallKitLegal
 import androidx.compose.animation.AnimatedVisibility
@@ -52,6 +56,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -353,8 +358,10 @@ private fun PurchaseKitPlanCard(
     val intro = if (!isPurchased && !isAssigned) plan.storeIntroOffer() else null
     // a store free trial: the card reads "Monthly Plan : 3 Days Free" and, under it, "then ₹199 / month" (same as iOS)
     val trialDays = if (!isPurchased && !isAssigned) plan.freeTrialDays() else 0
-    // Removed: the store provides the discount (no struck-through ".offer" anchor from Remote Config)
-    // val original = originalPriceText(discountPer, plan, originalYearly, discountPerLifetime, uiState.originalLifetimeData)
+    // the timed Home offer: this plan is the ".offer" product shown INSTEAD of the regular one (original price struck through, % off, countdown)
+    val timed = if (!isPurchased && !isAssigned) plan.timedOffer(uiState) else null
+    // the lifetime plan's Google Play discount offer (never together with the timed one)
+    val storeOffer = if (!isPurchased && !isAssigned && timed == null) plan.storeOffer(uiState) else null
 
     Box(Modifier.padding(AppDimens.Dimens4).padding(top = if (showsBestValue) 8.dp * s else 0.dp)) {
         Column(
@@ -381,6 +388,22 @@ private fun PurchaseKitPlanCard(
                             pluralStringResource(R.plurals.purchase_days_free, trialDays, trialDays), style = AbTypography.fixed(20f * k, FontWeight.ExtraBold), color = ink,
                             modifier = Modifier.padding(start = AppDimens.Dimens4),
                         )
+                    } else if (storeOffer != null) {
+                        Text(storeOffer.fullPriceText, style = AbTypography.fixed(15f * k, FontWeight.SemiBold), color = colors.brandPrimary, textDecoration = TextDecoration.LineThrough)
+                        Text(
+                            storeOffer.offerPriceText, style = AbTypography.fixed(20f * k, FontWeight.ExtraBold), color = colors.brandPrimary,
+                            modifier = Modifier.padding(start = AppDimens.Dimens4),
+                        )
+                        Text(plan.getPriceSuffix(), style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.brandPrimary)
+                    } else if (timed != null) {
+                        timed.originalPrice?.let {
+                            Text(it, style = AbTypography.fixed(15f * k, FontWeight.SemiBold), color = colors.brandPrimary, textDecoration = TextDecoration.LineThrough)
+                        }
+                        Text(
+                            plan.price ?: "", style = AbTypography.fixed(20f * k, FontWeight.ExtraBold), color = colors.brandPrimary,
+                            modifier = Modifier.padding(start = AppDimens.Dimens4),
+                        )
+                        Text(plan.getPriceSuffix(), style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.brandPrimary)
                     } else if (intro != null) {
                         Text(
                             intro.regularPrice, style = AbTypography.fixed(15f * k, FontWeight.SemiBold), color = colors.brandPrimary,
@@ -501,18 +524,28 @@ private fun PurchaseKitPlanCard(
                                 )
                             }
                         }
-                        // Removed: the store provides the discount ("(extra ~N% OFF)" / "~N% OFF" rows and the countdown pill)
-                        // if (plan.isYearly() && monthly != null && discountPer > 0) {
-                        //     Row(Modifier.padding(top = (if (trialDays > 0) 2.dp else 6.dp) * s), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens2), verticalAlignment = Alignment.CenterVertically) {
-                        //         Text("(extra ~$discountPer% OFF)", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.accentGreenInk)
-                        //         uiState.homeOfferYearlyEndMillis?.let { InlineCountdownPill(it, onOfferExpired) }
-                        //     }
-                        // } else if (plan.isLifeTimeOffer() && discountPerLifetime > 0) {
-                        //     Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens2), verticalAlignment = Alignment.CenterVertically) {
-                        //         Text("~$discountPerLifetime% OFF", style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.accentGreenInk)
-                        //         uiState.homeOfferLifetimeEndMillis?.let { InlineCountdownPill(it, onOfferExpired) }
-                        //     }
-                        // }
+                        if (storeOffer != null && storeOffer.badgeText().isNotEmpty()) {
+                            Row(Modifier.padding(top = (if (trialDays > 0) 2.dp else 6.dp) * s), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
+                                Text(storeOffer.badgeText(), style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.accentGreenInk)
+                                Text(
+                                    stringResource(R.string.store_offer_caption), Modifier.weight(1f, fill = false),
+                                    style = AbTypography.fixed(10f * k, FontWeight.SemiBold), color = colors.textSecondary,
+                                    maxLines = 1, overflow = TextOverflow.Ellipsis,
+                                )
+                            }
+                        }
+                        if (timed != null && (timed.percentOff > 0 || timed.endMillis != null)) {
+                            Row(Modifier.padding(top = (if (trialDays > 0) 2.dp else 6.dp) * s), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
+                                if (timed.percentOff > 0) {
+                                    Text(
+                                        if (timed.isYearly) stringResource(R.string.paywall_percent_off_extra, timed.percentOff)
+                                        else stringResource(R.string.paywall_percent_off, timed.percentOff),
+                                        style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.accentGreenInk,
+                                    )
+                                }
+                                timed.endMillis?.let { InlineCountdownPill(it, {}) }   // the plans reload when the window ends (PurchaseViewModel)
+                            }
+                        }
                     }
                 }
             }

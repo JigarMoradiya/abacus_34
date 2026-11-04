@@ -14,8 +14,12 @@ import com.jigar.me.ui.view.home.screens.home.repository.AbacusRepository
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
-// Removed: the store provides the discount (no timed Home offer any more)
-// import com.jigar.me.utils.HomeOfferManager
+import com.jigar.me.utils.HomeOfferManager
+import com.jigar.me.utils.StoreOfferPurchaser
+import com.jigar.me.utils.StoreOneTimeOffer
+import com.jigar.me.utils.StoreOneTimeOffers
+import com.revenuecat.purchases.awaitSyncPurchases
+import com.revenuecat.purchases.models.GoogleStoreProduct
 import com.jigar.me.utils.RevenueCatHelper
 import com.jigar.me.utils.AppAnalytics
 import com.revenuecat.purchases.PurchasesErrorCode
@@ -47,18 +51,31 @@ class PurchaseViewModel @Inject constructor(
     )
 
     private var lastOfferingId = ""
+    private var offerExpiryJob: kotlinx.coroutines.Job? = null
+
+    /** When the timed offer's window ends, load the plans again so the regular plan comes back (the countdown pills tick on their own). */
+    private fun scheduleOfferExpiry(now: Long) {
+        offerExpiryJob?.cancel()
+        val end = HomeOfferManager.endMillis(prefManager, now) ?: return
+        offerExpiryJob = viewModelScope.launch {
+            kotlinx.coroutines.delay((end - System.currentTimeMillis()).coerceAtLeast(0L) + 500L)
+            loadData()
+        }
+    }
     fun isUserLoggedIn(): Boolean = prefManager.isUserLoggedIn()
     fun privacyPolicyUrl(): String = prefManager.getCustomParam(com.jigar.me.utils.AppConstants.RemoteConfig.privacyPolicyUrl, "")
     fun isUserSubscribed(): Boolean = CommonUtils.checkPurchaseForExerciseExamCCM(prefManager)
 
     fun loadData() {
-        // Removed: the store provides the discount. No Remote Config discount_per / discount_per_lifetime and no timed
-        // Home offer here any more; the plans below are the REGULAR products only and any discount comes from the store
-        // (a Google Play offer on the base plan, read through RevenueCat: see storeIntroOffer()).
-        // val discountLifetime = prefManager.getCustomParamInt(AppConstants.RemoteConfig.discountPerLifeTime, 0)
-        // val decisionNow = System.currentTimeMillis()
-        // val yearlyDiscountActive = HomeOfferManager.isYearlyDiscountActive(prefManager, decisionNow)
-        // val lifetimeDiscountActive = HomeOfferManager.isLifetimeDiscountActive(prefManager, decisionNow)
+        // Normal times: only the REGULAR products are shown and any discount comes from the store (a Google Play offer on
+        // the base plan, read through RevenueCat: see storeIntroOffer()). The one exception is the timed Home offer
+        // (Remote Config `home_offer`, enabled + a duration): while it runs, the ".offer" product of the plan it targets is
+        // shown INSTEAD of the regular one, with its % off, the original price and a countdown.
+        // Pinned to one instant so the plan choice and the % cannot disagree if the window ends while the plans load.
+        val decisionNow = System.currentTimeMillis()
+        val timedOfferRunning = HomeOfferManager.isTimedOfferActive(prefManager, decisionNow)
+        val yearlyDiscountActive = timedOfferRunning && !HomeOfferManager.config(prefManager).targetsLifetime
+        val lifetimeDiscountActive = timedOfferRunning && HomeOfferManager.config(prefManager).targetsLifetime
 
         val adminPlanList = prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, "")
             .takeIf { it.isNotEmpty() }
@@ -100,17 +117,38 @@ class PurchaseViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val offerings = Purchases.sharedInstance.awaitOfferings()
-                // Only the REGULAR products are ever shown or selected: a legacy ".offer" product is dropped even if the
-                // RevenueCat offering still contains it.
+                // Only the REGULAR products are shown, except the ".offer" product of the timed Home offer while it runs: any
+                // other legacy ".offer" product is dropped even if the RevenueCat offering still contains it.
+                // The timed offer is self-contained (enabled + product decide everything): its base / .offer pair is shown
+                // whatever display_plan says, so the Home card never promises a plan the paywall then hides.
+                val timedOfferIds = HomeOfferManager.targetProductIds(prefManager, decisionNow)
+                fun isTimedOfferId(productId: String) = timedOfferIds.any { id -> AppConstants.Products.matches(productId, id) }
                 val allPackages = (offerings.current?.availablePackages ?: emptyList())
-                    .filter { !AppConstants.Products.isOffer(it.product.id) }
+                    .filter { !AppConstants.Products.isOffer(it.product.id) || isTimedOfferId(it.product.id) }
                 lastOfferingId = offerings.current?.identifier ?: ""
                 var packages = if (displayPlanIds.isEmpty()) allPackages
                                else allPackages.filter { pkg ->
-                                   displayPlanIds.any { id -> pkg.product.id == id || pkg.product.id.startsWith("$id:") }
+                                   displayPlanIds.any { id -> pkg.product.id == id || pkg.product.id.startsWith("$id:") } ||
+                                       isTimedOfferId(pkg.product.id)
                                }
-                // Removed: the store provides the discount (the timed-offer product pair, the effective discount % and
-                // the countdown end are no longer computed)
+                // The % off while the timed offer runs comes from the real base vs .offer store prices, so it is what the store
+                // charges (also per country); 0 when it does not run for that plan.
+                fun micros(id: String) = allPackages.firstOrNull { AppConstants.Products.matches(it.product.id, id) }?.product?.price?.amountMicros
+                updateState_ {
+                    copy(
+                        discountPer = if (yearlyDiscountActive) HomeOfferManager.discountPercent(micros(AppConstants.Products.year), micros(AppConstants.Products.yearOffer)) else 0,
+                        discountPerLifetime = if (lifetimeDiscountActive) HomeOfferManager.discountPercent(micros(AppConstants.Products.lifetime), micros(AppConstants.Products.lifetimeOffer)) else 0,
+                        homeOfferYearlyEndMillis = HomeOfferManager.yearlyEndMillis(prefManager, decisionNow),
+                        homeOfferLifetimeEndMillis = HomeOfferManager.lifetimeEndMillis(prefManager, decisionNow),
+                    )
+                }
+                scheduleOfferExpiry(decisionNow)
+                // A Google Play discount offer on the regular lifetime plan (Play Console: Purchase options and offers > Add offer > Discount).
+                // Never together with the timed ".offer" plan: while that one replaces the lifetime plan there is nothing to read here.
+                val lifetimePackage = allPackages.firstOrNull { it.product.id == AppConstants.Products.lifetime }
+                val storeOffer = if (!lifetimeDiscountActive && StoreOneTimeOffers.enabled(prefManager.getCustomParam(AppConstants.RemoteConfig.storeOneTimeOffers, "")))
+                    StoreOneTimeOffers.read((lifetimePackage?.product as? GoogleStoreProduct)?.productDetails) else null
+                updateState_ { copy(lifetimeStoreOffer = storeOffer) }
                 val customerInfo = Purchases.sharedInstance.awaitCustomerInfo()
                 RevenueCatHelper.update(customerInfo)
                 val premiumEntitlement = customerInfo.entitlements["premium"]
@@ -211,7 +249,7 @@ class PurchaseViewModel @Inject constructor(
                 }
                 val allPlans = packages.map { toPlanItem(it) }.sortedBy { it.price_amount_micros }
 
-                arrangeData(allPlans, yearPlanFromAdmin, allPlanFromAdmin)
+                arrangeData(allPlans, yearlyDiscountActive, lifetimeDiscountActive, yearPlanFromAdmin, allPlanFromAdmin)
                 updateState_ { copy(isLoading = false) }
 
             } catch (e: Exception) {
@@ -227,6 +265,12 @@ class PurchaseViewModel @Inject constructor(
             updateState_ { copy(isPurchasing = true) }
             val analytics = arrayOf("surface" to surface, "context" to context, "product_id" to selected.sku)
             AppAnalytics.log(AppAnalytics.PURCHASE_STARTED, *analytics)
+            // the lifetime plan WITH a Play discount offer: RevenueCat would charge the full price, so Google Play is called directly
+            val storeOffer = state().lifetimeStoreOffer?.takeIf { selected.sku == AppConstants.Products.lifetime }
+            if (storeOffer != null) {
+                buyWithStoreOffer(activity, selected, storeOffer, analytics)
+                return@launch
+            }
             try {
                 val result = Purchases.sharedInstance.awaitPurchase(
                     PurchaseParams.Builder(activity, selected.rcPackage).build()
@@ -273,19 +317,71 @@ class PurchaseViewModel @Inject constructor(
 
     fun clearMessage() = updateState_ { copy(message = null) }
 
-    private fun submitToServer(transaction: StoreTransaction?, plan: RcPlanItem) {
+    /** Buys the lifetime plan at its Google Play offer price, then lets RevenueCat grant the access (`syncPurchases`). */
+    private suspend fun buyWithStoreOffer(
+        activity: Activity, selected: RcPlanItem, offer: StoreOneTimeOffer, analytics: Array<Pair<String, String>>,
+    ) {
+        val extra = arrayOf(*analytics, "store_offer" to (offer.offerId ?: "yes"))
+        when (val result = StoreOfferPurchaser(activity).purchase(activity, selected.sku)) {
+            is StoreOfferPurchaser.Result.Purchased -> {
+                val info = runCatching { Purchases.sharedInstance.awaitSyncPurchases() }.getOrNull()
+                    ?: runCatching { Purchases.sharedInstance.awaitCustomerInfo() }.getOrNull()
+                if (info != null) RevenueCatHelper.update(info)
+                if (info?.entitlements["premium"]?.isActive == true) {
+                    AppAnalytics.log(AppAnalytics.PURCHASE_COMPLETED, *extra, "price" to offer.priceMicros / 1_000_000.0, "currency" to offer.currencyCode)
+                    submitToServer(result.purchase.orderId, result.purchase.purchaseTime, selected, offer.priceMicros / 1_000_000.0, offer.currencyCode)
+                    updateState_ { copy(isPurchasing = false, purchaseSuccess = true) }
+                    loadData()
+                } else {
+                    AppAnalytics.log(AppAnalytics.PURCHASE_NOT_ACTIVE, *extra)
+                    updateState_ { copy(isPurchasing = false, message = R.string.purchase_pending) }
+                }
+            }
+            StoreOfferPurchaser.Result.Pending -> {
+                AppAnalytics.log(AppAnalytics.PURCHASE_NOT_ACTIVE, *extra)
+                updateState_ { copy(isPurchasing = false, message = R.string.purchase_pending) }
+            }
+            StoreOfferPurchaser.Result.Cancelled -> {
+                AppAnalytics.log(AppAnalytics.PURCHASE_CANCELLED, *extra)
+                updateState_ { copy(isPurchasing = false) }
+            }
+            StoreOfferPurchaser.Result.AlreadyOwned -> {
+                updateState_ { copy(isPurchasing = false, message = R.string.purchase_already_owned) }
+                runCatching { RevenueCatHelper.update(Purchases.sharedInstance.awaitRestore()) }
+                loadData()
+            }
+            StoreOfferPurchaser.Result.OfferGone -> {
+                // nothing was charged: the card is drawn again without the offer
+                AppAnalytics.log(AppAnalytics.PURCHASE_FAILED, *extra, "error_code" to "offer_gone")
+                updateState_ { copy(isPurchasing = false, message = R.string.paywall_offer_ended) }
+                loadData()
+            }
+            is StoreOfferPurchaser.Result.Failed -> {
+                AppAnalytics.log(AppAnalytics.PURCHASE_FAILED, *extra, "error_code" to result.code)
+                updateState_ { copy(isPurchasing = false, message = if (result.code == 2 || result.code == -1) R.string.purchase_network else R.string.something_went_wrong) }
+            }
+        }
+    }
+
+    private fun submitToServer(transaction: StoreTransaction?, plan: RcPlanItem) =
+        submitToServer(
+            transaction?.orderId, transaction?.purchaseTime, plan,
+            plan.price_amount_micros?.div(1_000_000.0) ?: 0.0, plan.rcPackage.product.price.currencyCode ?: ""
+        )
+
+    private fun submitToServer(orderId: String?, purchaseTime: Long?, plan: RcPlanItem, price: Double, currency: String) {
         viewModelScope.launch {
             val request = PurchasedPlanCheckRequest(
                 arrayListOf(
                     GooglePurchasedPlanRequest(
                         google_plan_id = plan.sku,
-                        google_order_id = transaction?.orderId ?: "",
+                        google_order_id = orderId ?: "",
                         is_lifetime_plan = plan.sku.contains("all"),
                         is_all_feature = true,
-                        start_date = transaction?.purchaseTime ?: 0L,
+                        start_date = purchaseTime ?: 0L,
                         end_date = 0L,
-                        purchase_price = plan.price_amount_micros?.div(1_000_000.0) ?: 0.0,
-                        purchase_currency = plan.rcPackage.product.price.currencyCode ?: "",
+                        purchase_price = price,
+                        purchase_currency = currency,
                         no_of_renewals = 0
                     )
                 )
@@ -297,6 +393,8 @@ class PurchaseViewModel @Inject constructor(
 
     private fun arrangeData(
         plans: List<RcPlanItem>,
+        yearlyDiscountActive: Boolean,
+        lifetimeDiscountActive: Boolean,
         yearAdmin: PlanAssignFromAdminData?,
         allAdmin: PlanAssignFromAdminData?
     ) {
@@ -329,18 +427,27 @@ class PurchaseViewModel @Inject constructor(
             val weeklyPurchased = plans.any { it.sku.contains("week") && it.isPurchase }
             if (weeklyPurchased) { remove("1month"); remove("1year") }
 
-            // Removed: the store provides the discount. There is only ONE yearly and ONE lifetime product now (the
-            // regular ones), so the old "keep the base or the .offer variant" removal is gone:
-            // if (yearlyDiscountActive && hasYearOffer) removeExact(AppConstants.Products.year) else removeExact(AppConstants.Products.yearOffer)
-            // if (lifetimeDiscountActive && hasLifetimeOffer) removeExact(AppConstants.Products.lifetime) else removeExact(AppConstants.Products.lifetimeOffer)
+            // Yearly: while the timed Home offer targets yearly the ".offer" plan REPLACES the regular one; otherwise the
+            // regular one stays and the ".offer" one is dropped. A buyer sees the regular plan as bought.
             val yearPurchased = plans.find { it.sku.contains("1year") && it.isPurchase }
             if (yearPurchased != null) {
+                removeExact(AppConstants.Products.yearOffer)
                 remove("week"); remove("1month"); showSubmit = false
+            } else {
+                val hasYearOffer = skuList.any { AppConstants.Products.matches(it.sku, AppConstants.Products.yearOffer) }
+                if (yearlyDiscountActive && hasYearOffer) removeExact(AppConstants.Products.year)
+                else removeExact(AppConstants.Products.yearOffer)
             }
 
+            // Lifetime: the same for the timed offer that targets lifetime.
             val lifetimePurchased = plans.find { it.sku.contains("all") && it.isPurchase }
             if (lifetimePurchased != null) {
+                removeExact(AppConstants.Products.lifetimeOffer)
                 remove("week"); remove("1month"); remove("1year"); showSubmit = false
+            } else {
+                val hasLifetimeOffer = skuList.any { it.sku == AppConstants.Products.lifetimeOffer }
+                if (lifetimeDiscountActive && hasLifetimeOffer) removeExact(AppConstants.Products.lifetime)
+                else removeExact(AppConstants.Products.lifetimeOffer)
             }
         }
 

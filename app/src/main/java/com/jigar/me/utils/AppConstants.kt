@@ -85,6 +85,8 @@ object AppConstants {
             var lifetimeMinPaywalls = "lifetime_min_paywalls"
             /** Languages shown in the language picker besides English, comma-separated language tags ("fr,es,pt,tr,ru"). Missing = English only. */
             var enabledLanguages = "enabled_languages"
+            /** Show and sell the Google Play discount offer of the lifetime product (set in the Play Console): on unless this says off / false. */
+            var storeOneTimeOffers = "store_one_time_offers"
         }
     }
 

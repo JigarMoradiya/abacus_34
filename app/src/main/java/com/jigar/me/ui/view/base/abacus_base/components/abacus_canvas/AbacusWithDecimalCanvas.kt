@@ -29,6 +29,18 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.TouchApp
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -86,6 +98,16 @@ fun AbacusWithDecimalCanvas(
     /** `Toy` = the Ab kit's toy frame (its own answer bar, rods, beam and tags); `Classic` = the original frame. */
     frameStyle: AbacusFrameStyle = AbacusFrameStyle.Classic,
     isNextButtonEnable: Boolean = false,
+    /** The beads take swipes on a screen type that normally only watches (the first-launch tutorial, whose child moves them). */
+    forceTouch: Boolean = false,
+    /** The direction arrows pulse (the first-launch tutorial). */
+    hintPulse: Boolean = false,
+    /** A hand glides over the first bead to move (the first-launch tutorial, after a few idle seconds). */
+    hintHand: Boolean = false,
+    /** The rod names (Ones, Tens ...) under the frame, which the small Level screens hide (the first-launch tutorial shows them). */
+    showRodNames: Boolean = false,
+    /** Below 1 the whole abacus (beads, rods, frame) is proportionally smaller (the first-launch tutorial). */
+    beadScale: Float = 1f,
     onRodMovementChange: (List<RodMovement>) -> Unit,
     onShowDirectionHintsChange: (Boolean) -> Unit,
     onShowHighlighterChange: (Boolean) -> Unit,
@@ -114,9 +136,30 @@ fun AbacusWithDecimalCanvas(
     val arrowDown = remember {
         drawableToImageBitmap(context, R.drawable.ic_abacus_arrow_down)
     }
+    // read only while drawing, so a pulsing arrow redraws the canvas and nothing else
+    val arrowPulse: State<Float> = if (hintPulse) {
+        rememberInfiniteTransition(label = "hintPulse").animateFloat(
+            initialValue = 1f, targetValue = 1.3f,
+            animationSpec = infiniteRepeatable(tween(550, easing = FastOutSlowInEasing), RepeatMode.Reverse),
+            label = "hintPulseScale",
+        )
+    } else remember { mutableFloatStateOf(1f) }
+    val handPainter = if (hintHand) rememberVectorPainter(Icons.Rounded.TouchApp) else null
+    val handProgress: State<Float> = if (hintHand) {
+        rememberInfiniteTransition(label = "hintHand").animateFloat(
+            initialValue = 0f, targetValue = 1f,
+            animationSpec = infiniteRepeatable(tween(1500, easing = LinearEasing), RepeatMode.Restart),   // one swipe + a pause
+            label = "hintHandGlide",
+        )
+    } else remember { mutableFloatStateOf(0f) }
 
 
-    val dim = AbacusTheme.dimensionPreset(context,screenType = screenType,abacusType = abacusType,questionType = questionType, isFreeModeOn = isFreeModeOn)
+    val baseDim = AbacusTheme.dimensionPreset(context,screenType = screenType,abacusType = abacusType,questionType = questionType, isFreeModeOn = isFreeModeOn)
+    val dim = if (beadScale == 1f) baseDim else baseDim.copy(
+        beadWidth = baseDim.beadWidth * beadScale, beadHeight = baseDim.beadHeight * beadScale, beamHeight = baseDim.beamHeight * beadScale,
+        extraSpace = baseDim.extraSpace * beadScale, rectLineWidth = baseDim.rectLineWidth * beadScale, rectLineCorner = baseDim.rectLineCorner * beadScale,
+        stripHeight = baseDim.stripHeight * beadScale, columnSpaces = baseDim.columnSpaces * beadScale, decimalSeparatorGap = baseDim.decimalSeparatorGap * beadScale,
+    )
     val totalWidth = (dim.beadWidth * numberOfColumns) + (dim.rectLineWidth * 2) + (dim.columnSpaces * (numberOfColumns) * 2) + (if (numberOfColumns > 7) dim.decimalSeparatorGap else 0.dp)
     val totalHeight = (dim.beadHeight * 7) + (dim.rectLineWidth * 2) + (dim.extraSpace * 2) + dim.beamHeight
 
@@ -154,12 +197,12 @@ fun AbacusWithDecimalCanvas(
         toyTop = toyPreset.abacusTopGradient; toyBase = toyPreset.buttonColor; toyBottom = toyPreset.abacusBottomGradient
     }
     // Small abaci (Level screens, the Settings preview) show just the frame and beads, no tags under it.
-    val isMiniScreen = screenType == AppConstants.AbacusScreen.screenTypeLevel1Learn ||
+    val isMiniScreen = !showRodNames && (screenType == AppConstants.AbacusScreen.screenTypeLevel1Learn ||
         screenType == AppConstants.AbacusScreen.screenTypeLevel1Practice ||
         screenType == AppConstants.AbacusScreen.screenTypeLevel2Learn ||
         screenType == AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula ||
         screenType == AppConstants.AbacusScreen.screenTypeLevel2Practice ||
-        screenType == AppConstants.AbacusScreen.screenTypeSettingPreview
+        screenType == AppConstants.AbacusScreen.screenTypeSettingPreview)
     val toyStripHeight = dim.stripHeight * 0.8f
     val toyShowsValues = screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn
 
@@ -273,7 +316,7 @@ fun AbacusWithDecimalCanvas(
         // --- Inner rods & beads on Canvas ---
 
         if (!showHighlighter || currentSpot != 0) { // hide all things when frame highlighter show
-            val isTouchEnabled = screenType != AppConstants.AbacusScreen.screenTypeLevel1Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel1Practice && screenType != AppConstants.AbacusScreen.screenTypeLevel2Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula && screenType != AppConstants.AbacusScreen.screenTypeLevel2Practice && screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult && screenType != AppConstants.AbacusScreen.screenTypeSettingPreview
+            val isTouchEnabled = forceTouch || (screenType != AppConstants.AbacusScreen.screenTypeLevel1Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel1Practice && screenType != AppConstants.AbacusScreen.screenTypeLevel2Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula && screenType != AppConstants.AbacusScreen.screenTypeLevel2Practice && screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult && screenType != AppConstants.AbacusScreen.screenTypeSettingPreview)
             val gestureModifier = if (isTouchEnabled) {
                 Modifier.pointerInput(Unit) {
                     val thresholdPx = with(density) { Dimens2.toPx() }
@@ -339,7 +382,8 @@ fun AbacusWithDecimalCanvas(
                     beadPolygonGray = beadPolygonGray,
                     arrowUPBitmap = arrowUp,
                     arrowDownBitmap = arrowDown,
-                    toyFrame = toy
+                    toyFrame = toy,
+                    arrowPulse = arrowPulse.value,
                 )
             }
         }
@@ -384,6 +428,27 @@ fun AbacusWithDecimalCanvas(
 
                     .spotlightTag(0, highlightSteps[0])
             )
+        }
+
+        // The tutorial's swipe hand is the TOP layer: above the beads, the toy frame and the answer bar. (Drawn inside the bead canvas, the
+        // neighbouring beads and the frame covered or cut it.) Same size and position as the bead canvas, so the geometry matches.
+        if (hintHand && showDirectionHint && handPainter != null) {
+            Canvas(
+                modifier = Modifier
+                    .height(totalHeight)
+                    .width(totalWidth)
+                    .padding(vertical = dim.rectLineWidth, horizontal = dim.rectLineWidth)
+                    .align(Alignment.Center)
+                    .zIndex(3f)
+            ) {
+                for (col in 0 until numberOfColumns) {
+                    val movement = rodMovementByRod[col]?.movement ?: continue
+                    drawSwipeHandForBead(
+                        colCenterX = geometry.columnCentersX[col], movement = movement, geometry = geometry,
+                        painter = handPainter, progress = handProgress.value,
+                    )
+                }
+            }
         }
 
         // Display number at top inside the frame (free-mode only)

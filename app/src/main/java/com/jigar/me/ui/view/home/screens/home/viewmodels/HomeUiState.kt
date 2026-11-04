@@ -32,9 +32,11 @@ data class HomeUiState(
     // One-time emotional review ask on day 2 — takes priority over showReviewGate above
     val showDay2Review: Boolean = false,
 
-    // Removed: the store provides the discount (the time-limited offer card on Home is gone)
-    // val homeOffer: HomeOfferUi? = null,
+    // the time-limited offer card on Home (Remote Config `home_offer`), null = none running
+    val homeOffer: HomeOfferUi? = null,
     val isPremium: Boolean = false,
+    /** owns the lifetime plan: the only people a lifetime offer is hidden from (a yearly or monthly subscriber still sees it) */
+    val ownsLifetime: Boolean = false,
 
     // Freemium time limit: the day 3 / day 7 parent reminder is due (the grown-up question comes first, then the plans)
     val showParentReminder: Boolean = false,
@@ -45,13 +47,19 @@ data class HomeUiState(
     val billingIssueUrl: String? = null,
 )
 
-// Removed: the store provides the discount (no longer shown; kept so the old HomeOfferCard code still reads)
+// The time-limited Home offer card (Remote Config `home_offer`)
 data class HomeOfferUi(
     val title: String?,          // campaign name from Remote Config, null -> generic title
     val startedAtMillis: Long,
     val durationMin: Int,
     val discountPercent: Int,
     val targetsLifetime: Boolean = false,   // which plan this campaign discounts
+    // a Google Play offer on the lifetime plan (set in the Play Console) instead of the timed Home offer: its "30% OFF" / "₹500 OFF" text,
+    // and whether a countdown is shown (never for a store offer: it runs for days)
+    val storeBadge: String? = null,
+    val storeOriginalPrice: String? = null,
+    val endMillis: Long? = null,
+    val hasTimer: Boolean = true,
 )
 
 data class FreeTrialParam(

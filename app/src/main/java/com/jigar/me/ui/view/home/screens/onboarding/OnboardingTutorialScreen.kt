@@ -34,6 +34,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import com.jigar.me.ui.view.ab.AbTopBar
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -72,6 +73,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import kotlinx.coroutines.delay
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Rect
@@ -133,22 +138,28 @@ object OnboardingGate {
     fun markSeen(prefs: AppPreferencesHelper) = prefs.setCustomParamBoolean(KEY, true)
 }
 
-private data class Move(val to: Int, @StringRes val afterTitle: Int, @StringRes val afterBody: Int)
-
+/**
+ * One guided step. The child makes `goal` on the abacus by swiping the beads (the arrows on the beads show the next swipe);
+ * `afterTitle` / `afterBody` appear when it is made, and only then does Next unlock. Mirrors the iOS tutorial.
+ */
 private data class Page(
     @StringRes val title: Int,
     @StringRes val body: Int,
     val valueBefore: Int,
-    val move: Move? = null,
+    val goal: Int,
+    @StringRes val afterTitle: Int,
+    @StringRes val afterBody: Int,
     val showFriendCard: Boolean = false,   // the Small Friend hint card, as in Level 2
+    val via: Int? = null,                  // a stop on the way: the arrows (and the hand) first lead to this number, then to the goal
 )
 
 private val pages = listOf(
-    Page(R.string.ob_page1_title, R.string.ob_page1_body, 0),
-    Page(R.string.ob_page2_title, R.string.ob_page2_body, 3),
-    Page(R.string.ob_page3_title, R.string.ob_page3_body, 7),
-    Page(R.string.ob_page4_title, R.string.ob_page4_body, 2, Move(3, R.string.ob_page4_after_title, R.string.ob_page4_after_body)),
-    Page(R.string.ob_page5_title, R.string.ob_page5_body, 4, Move(7, R.string.ob_page5_after_title, R.string.ob_page5_after_body), showFriendCard = true),
+    Page(R.string.ob_page1_title, R.string.ob_play1_body, 0, 1, R.string.ob_play1_done_title, R.string.ob_play1_done_body),
+    Page(R.string.ob_page2_title, R.string.ob_play2_body, 0, 3, R.string.ob_play2_done_title, R.string.ob_play2_done_body),
+    Page(R.string.ob_page3_title, R.string.ob_play3_body, 0, 7, R.string.ob_play3_done_title, R.string.ob_play3_done_body),
+    Page(R.string.ob_page4_title, R.string.ob_play4_body, 2, 3, R.string.ob_page4_after_title, R.string.ob_page4_after_body),
+    Page(R.string.ob_page5_title, R.string.ob_play5_body, 4, 7, R.string.ob_page5_after_title, R.string.ob_page5_after_body, showFriendCard = true,
+        via = 2),   // +3 = -2 +5: the lower beads go first (4 - 2 = 2), then the top bead comes down (2 + 5 = 7)
 )
 
 /** The iPad multiplier of `responsiveDimenstion`, so type grows the same way on tablets. */
@@ -168,13 +179,11 @@ fun OnboardingTutorialScreen(
     parentPage: @Composable (left: @Composable () -> Unit, footer: @Composable () -> Unit, finish: (Boolean) -> Unit) -> Unit,
 ) {
     var index by remember { mutableIntStateOf(startPage.coerceIn(0, pages.size + featureGroups.size)) }
-    var moved by remember { mutableStateOf(false) }
     val parentIndex = pages.size + featureGroups.size
     val onFeaturesPage = index >= pages.size && index < parentIndex     // after the guided steps: what is inside the app
     val onParentPage = index >= parentIndex                              // last: the plans
 
     LaunchedEffect(index) {
-        moved = false
         AppAnalytics.log(
             AppAnalytics.TUTORIAL_STEP,
             "step" to (index + 1).coerceAtMost(parentIndex + 1), "total" to parentIndex + 1,
@@ -206,10 +215,9 @@ fun OnboardingTutorialScreen(
             )
         } else {
             TutorialPage(
-                selectedTheme = selectedTheme, index = index, moved = moved,
+                selectedTheme = selectedTheme, index = index,
                 nextText = stringResource(R.string.next),
-                onShowMe = { moved = true },
-                onPrevious = { if (moved) moved = false else if (index > 0) index -= 1 },
+                onPrevious = { if (index > 0) index -= 1 },
                 onNext = { index += 1 },
                 onSkip = {
                     AppAnalytics.log(AppAnalytics.TUTORIAL_SKIPPED, "step" to index + 1)
@@ -259,9 +267,7 @@ fun FeatureListScreen(onClose: () -> Unit) {
 private fun TutorialPage(
     selectedTheme: String,
     index: Int,
-    moved: Boolean,
     nextText: String,
-    onShowMe: () -> Unit,
     onPrevious: () -> Unit,
     onNext: () -> Unit,
     onSkip: () -> Unit,
@@ -269,27 +275,62 @@ private fun TutorialPage(
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
     val k = responsive
+    val haptic = LocalHapticFeedback.current
     val page = pages[index]
-    val title = stringResource((if (moved) page.move?.afterTitle else null) ?: page.title)
-    val body = stringResource((if (moved) page.move?.afterBody else null) ?: page.body)
-    val hasMoveToShow = page.move != null && !moved
+    var done by remember(index) { mutableStateOf(false) }          // the goal is made (by the child, or by "Show me")
+    var handReady by remember(index) { mutableStateOf(false) }     // a few seconds without a move: a hand shows the swipe
+    var nextNudge by remember(index) { mutableStateOf(false) }     // the step is done but Next was not tapped for a few seconds: Next pulses
+    var showMeReady by remember(index) { mutableStateOf(false) }   // a while without a move: the "Show me" fallback appears
+    val title = stringResource(if (done) page.afterTitle else page.title)
+    val body = stringResource(if (done) page.afterBody else page.body)
 
-    // the abacus shows the page's value; a page with a move also shows the arrows for it until "Show me" is tapped
     val abCalc = remember { AbacusCalculations(3) }
     var rodMovement by remember { mutableStateOf<List<RodMovement>>(emptyList()) }
     var showArrows by remember { mutableStateOf(false) }
-    LaunchedEffect(index, moved) {
-        val value = if (moved && page.move != null) page.move.to else page.valueBefore
+    // the number the beads show now, read from the beads so it follows every swipe
+    val shown = abCalc.displayValue.toIntOrNull() ?: 0
+
+    // a page starts from its own number whatever the child did on the page before
+    LaunchedEffect(index) {
         abCalc.resetAbacusData()
-        if (value > 0) abCalc.setAbacusValueFromString(value.toString())
-        val move = page.move
-        if (move != null && !moved) {
-            // 3 rods: the ones rod is the last one (index 2)
-            rodMovement = listOf(RodMovement(2, l2ComputeMovement(page.valueBefore, move.to)))
-            showArrows = true
-        } else {
-            rodMovement = emptyList()
+        if (page.valueBefore > 0) abCalc.setAbacusValueFromString(page.valueBefore.toString())
+    }
+    // the step is done: if Next is not tapped within a few seconds it starts to pulse (on every step)
+    LaunchedEffect(index, done) {
+        nextNudge = false
+        if (done) {
+            delay(3500)
+            nextNudge = true
+        }
+    }
+    val nudge by rememberInfiniteTransition(label = "nextNudge").animateFloat(
+        initialValue = 1f, targetValue = 1.16f,
+        animationSpec = infiniteRepeatable(tween(550, easing = FastOutSlowInEasing), RepeatMode.Reverse), label = "nextNudgeScale",
+    )
+    val nextScale = if (nextNudge && done) nudge else 1f
+    // after every move: the goal is made -> celebrate and unlock Next; otherwise point at the next swipe and wait for "Show me"
+    LaunchedEffect(index, shown) {
+        if (done) return@LaunchedEffect
+        val value = abCalc.displayValue.toIntOrNull() ?: 0
+        if (value == page.goal) {
+            done = true
             showArrows = false
+            rodMovement = emptyList()
+            handReady = false
+            showMeReady = false
+            haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+        } else {
+            // 3 rods: the ones rod is the last one (index 2)
+            // where the arrows lead next: a step with a stop on the way (4 + 3: first 4 - 2 = 2, then + 5) goes there first, from the start
+            val target = if (page.via != null && value == page.valueBefore) page.via else page.goal
+            rodMovement = listOf(RodMovement(2, l2ComputeMovement(value, target)))
+            showArrows = true
+            handReady = false
+            showMeReady = false
+            delay(5000)
+            handReady = true      // a hand demonstrates the swipe on the first bead to move
+            delay(4000)
+            showMeReady = true    // and "Show me": the abacus makes the number itself
         }
     }
 
@@ -301,7 +342,7 @@ private fun TutorialPage(
             .padding(horizontal = AppDimens.Dimens16),
     ) {
     Column(Modifier.fillMaxSize()) {
-        Box(Modifier.fillMaxWidth().padding(top = AppDimens.Dimens8), contentAlignment = Alignment.Center) {
+        Box(Modifier.fillMaxWidth().padding(top = AppDimens.Dimens8 + 6.dp), contentAlignment = Alignment.Center) {   // a little air above the step row (as on iOS)
             StepBubbles(index, title)
             Text(
                 stringResource(R.string.tour_skip),
@@ -318,7 +359,18 @@ private fun TutorialPage(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Column(Modifier.weight(0.45f)) {
-                SpeechBubble(body)
+                // "Show me" hangs just below the instruction bubble (an offset overlay, so nothing moves when it appears)
+                Box {
+                    SpeechBubble(body)
+                    if (showMeReady && !done) {
+                        AbButton(
+                            text = stringResource(R.string.ob_show_me), tone = AbTone.Warning, size = AbSize.Small, icon = Icons.Rounded.TouchApp,
+                            minHeightOverride = 32f, horizontalPaddingOverride = 11f,
+                            modifier = Modifier.align(Alignment.BottomEnd).offset(y = 40.dp),
+                            onClick = { abCalc.setAbacusValueFromString(page.goal.toString()) },   // the change then unlocks Next like a real swipe
+                        )
+                    }
+                }
                 Spacer(Modifier.height(AppDimens.Dimens12))
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Bottom) {
                     Mascot(116.dp * k)
@@ -330,9 +382,12 @@ private fun TutorialPage(
                 horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16, Alignment.CenterHorizontally),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                // the abacus is for watching: a transparent layer on top takes the touches; the number it shows sits under it
+                // the child moves the beads (swipes); once the number is made they stay put
                 Column(Modifier.fillMaxHeight().offset(x = (-24).dp * k), horizontalAlignment = Alignment.CenterHorizontally) {   // a little to the left
-                Box(Modifier.weight(1f).aspectRatio(0.8f)) {
+                NumberPlate(shown)   // above the abacus: the number the beads make
+                Spacer(Modifier.height(AppDimens.Dimens8))   // a little air between the plate and the abacus
+                // the abacus is narrower than its box (smaller beads): centred in it, so the number plate above sits over its middle
+                Box(Modifier.weight(1f).aspectRatio(0.8f), contentAlignment = Alignment.TopCenter) {
                     AbacusWithDecimalCanvas(
                         selectedTheme = selectedTheme,
                         screenType = AppConstants.AbacusScreen.screenTypeLevel2Learn,   // no Reset / Next answer bar
@@ -343,15 +398,18 @@ private fun TutorialPage(
                         rodMovement = rodMovement,
                         showDirectionHint = showArrows,
                         frameStyle = AbacusFrameStyle.Toy,
+                        forceTouch = !done,
+                        hintPulse = true,
+                        hintHand = handReady && !done,
+                        showRodNames = true,    // Hundreds / Tens / Ones under the rods, like the other abaci
+                        beadScale = 0.88f,      // a little smaller so the number plate, the abacus and its names fit
                         onRodMovementChange = {},
                         onShowDirectionHintsChange = {},
                         onShowHighlighterChange = {},
                         onReset = {},
                         onNext = {},
                     )
-                    Box(Modifier.matchParentSize().clickable(remember { MutableInteractionSource() }, indication = null) {})
                 }
-                NumberPlate(if (moved && page.move != null) page.move.to else page.valueBefore)
                 }
                 AnimatedVisibility(
                     visible = page.showFriendCard,
@@ -369,27 +427,28 @@ private fun TutorialPage(
             }
         }
     }
-        // Previous bottom-left, Next / Show me bottom-right (the corners a thumb reaches)
+        // Previous bottom-left, Next bottom-right (the corners a thumb reaches). Next unlocks only when the child has made the number;
+        // a while without a move brings "Show me" (the abacus does it) so nobody gets stuck.
         Row(
             Modifier.align(Alignment.BottomCenter).fillMaxWidth().padding(bottom = AppDimens.Dimens8),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            if (index > 0 || moved) {
+            if (index > 0) {
                 AbButton(
                     text = stringResource(R.string.ob_previous), tone = AbTone.Purple, size = AbSize.Small, icon = Icons.AutoMirrored.Rounded.KeyboardArrowLeft,
                     minHeightOverride = 32f, horizontalPaddingOverride = 11f, onClick = onPrevious,
                 )
             } else Spacer(Modifier)
-            AbButton(
-                text = if (hasMoveToShow) stringResource(R.string.ob_show_me) else nextText,
-                tone = if (hasMoveToShow) AbTone.Warning else AbTone.Primary,
-                size = AbSize.Small,
-                icon = if (hasMoveToShow) Icons.Rounded.TouchApp else Icons.AutoMirrored.Rounded.KeyboardArrowRight,
-                iconAtEnd = !hasMoveToShow,
-                minHeightOverride = 32f, horizontalPaddingOverride = 11f,
-                onClick = { if (hasMoveToShow) onShowMe() else onNext() },
-            )
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
+                // Next is always there so it is clear a button comes: dimmed until the number is made, then it lights up
+                AbButton(
+                    text = nextText, tone = AbTone.Primary, size = AbSize.Small, enabled = done,
+                    icon = Icons.AutoMirrored.Rounded.KeyboardArrowRight, iconAtEnd = true,
+                    minHeightOverride = 32f, horizontalPaddingOverride = 11f, onClick = { if (done) onNext() },
+                    modifier = Modifier.graphicsLayer { scaleX = nextScale; scaleY = nextScale },
+                )
+            }
         }
     }
 }
@@ -439,7 +498,7 @@ private fun FeaturesPage(index: Int, group: FeatureGroup, nextText: String, onPr
             .windowInsetsPadding(WindowInsets.safeDrawing)
             .padding(horizontal = AppDimens.Dimens16),
     ) {
-        Box(Modifier.fillMaxWidth().padding(top = AppDimens.Dimens8), contentAlignment = Alignment.Center) {
+        Box(Modifier.fillMaxWidth().padding(top = AppDimens.Dimens8 + 6.dp), contentAlignment = Alignment.Center) {   // a little air above the step row (as on iOS)
             StepBubbles(index, stringResource(group.title))
             Text(
                 stringResource(R.string.tour_skip),
@@ -597,21 +656,28 @@ private fun NumberPlate(value: Int) {
     val k = responsive
     Box(Modifier.padding(top = AppDimens.Dimens4, bottom = 3.dp)) {
         Box(Modifier.matchParentSize().offset(y = 3.dp).background(colors.outline, CircleShape))   // the 3D edge
-        Row(
+        // a fixed low plate, as tall as the iOS one (32): the text keeps its size and is centred, its line boxes may be taller than the card
+        Box(
             Modifier
+                .height(32.dp * k)
                 .background(colors.bgSecondary, CircleShape)
                 .border(2.dp, colors.outline, CircleShape)
-                .padding(horizontal = 20.dp * k, vertical = 2.dp * k),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
+                .padding(horizontal = 20.dp * k),
+            contentAlignment = Alignment.Center,
         ) {
-            Text(stringResource(R.string.ob_number_label), style = AbTypography.fixed(12f * k, FontWeight.Bold).copy(lineHeight = (14f * k).sp, lineHeightStyle = PLATE_LINES), color = colors.textSecondary)
-            AnimatedContent(
-                targetState = value,
-                transitionSpec = { (scaleIn(initialScale = 0.6f) + fadeIn()) togetherWith (scaleOut(targetScale = 1.4f) + fadeOut()) },
-                label = "abacusNumber",
-            ) { v ->
-                Text(v.toString(), style = AbTypography.fixed(30f * k, FontWeight.Black).copy(lineHeight = (32f * k).sp, lineHeightStyle = PLATE_LINES), color = colors.brandPrimary)
+            Row(
+                Modifier.wrapContentHeight(align = Alignment.CenterVertically, unbounded = true),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
+            ) {
+                Text(stringResource(R.string.ob_number_label), style = AbTypography.fixed(12f * k, FontWeight.Bold).copy(lineHeight = (14f * k).sp, lineHeightStyle = PLATE_LINES), color = colors.textSecondary)
+                AnimatedContent(
+                    targetState = value,
+                    transitionSpec = { (scaleIn(initialScale = 0.6f) + fadeIn()) togetherWith (scaleOut(targetScale = 1.4f) + fadeOut()) },
+                    label = "abacusNumber",
+                ) { v ->
+                    Text(v.toString(), style = AbTypography.fixed(30f * k, FontWeight.Black).copy(lineHeight = (21f * k).sp, lineHeightStyle = PLATE_LINES), color = colors.brandPrimary)
+                }
             }
         }
     }

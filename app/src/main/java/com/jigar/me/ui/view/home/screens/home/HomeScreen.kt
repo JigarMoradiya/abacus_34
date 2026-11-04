@@ -106,10 +106,9 @@ import com.jigar.me.ui.view.home.common_ui.dialogs.FreeTrialDialog
 import com.jigar.me.ui.view.home.common_ui.sheets.Day2ReviewGateBottomSheet
 import com.jigar.me.ui.view.home.common_ui.sheets.ReviewGateBottomSheet
 import com.jigar.me.ui.view.home.screens.home.components.HomeMenuScreen
-// Removed: the store provides the discount (no timed Home offer card)
-// import com.jigar.me.ui.view.home.screens.home.components.HomeOfferBadge
-// import com.jigar.me.ui.view.home.screens.home.components.HomeOfferCard
-// import com.jigar.me.ui.view.home.screens.home.components.HomeOfferSidebarCard
+import com.jigar.me.ui.view.home.screens.home.components.HomeOfferBadge
+import com.jigar.me.ui.view.home.screens.home.components.HomeOfferCard
+import com.jigar.me.ui.view.home.screens.home.components.HomeOfferSidebarCard
 import com.jigar.me.ui.view.home.screens.home.viewmodels.HomeFragmentViewModel
 import com.jigar.me.ui.view.home.theme.AppDimens
 import com.jigar.me.ui.view.home.theme.AppDimens.Dimens4
@@ -287,9 +286,10 @@ fun HomeScreen(
         val totalH = maxHeight
         val isTablet = DeviceInfo.isTablet
         val mascotMaxH = min(totalH.value * 0.55f, 240f).dp
-        // Removed: the store provides the discount. The time-limited offer (Remote Config `home_offer`) is gone, so
-        // "This Week" always has its own slot below the mascot / in the bottom row (it no longer moves for an offer card):
-        // val activeOffer = uiState.homeOffer?.takeIf { !uiState.isPremium }
+        // Time-limited offer (Remote Config `home_offer`) -- hidden for premium users. While it runs the offer card
+        // takes the slot of "This Week" (on a phone the compact chip, on a tablet the full card); "This Week" moves
+        // next to the level pager instead.
+        val activeOffer = uiState.homeOffer?.takeIf { if (it.targetsLifetime) !uiState.ownsLifetime else !uiState.isPremium }
 
         Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
 
@@ -384,10 +384,9 @@ fun HomeScreen(
                             onLevel3 = onNavigateToLevel3,
                             onLevel4 = onNavigateToLevel4,
                         )
-                        // Removed: the store provides the discount ("This Week" moved up here while the offer card was on)
-                        // if (activeOffer != null && !isTablet) {
-                        //     WeeklyReportCard(viewModel.weeklyStats()) { showWeeklyReport = true }
-                        // }
+                        if (activeOffer != null && !isTablet) {
+                            WeeklyReportCard(viewModel.weeklyStats()) { showWeeklyReport = true }
+                        }
                     }
 
                     // "Choose your activity" divider: rods fading out to the sides and a coloured pill with the sentence
@@ -403,8 +402,8 @@ fun HomeScreen(
                         modifier = Modifier.weight(1f)
                     )
 
-                    // Weekly report + Made in India/Safe badge + English cross-promo — phone only.
-                    // (The compact timed-offer chip that used to take the first slot is removed: the store provides the discount.)
+                    // Offer badge (or weekly report) + Made in India/Safe badge + English cross-promo — phone only.
+                    // While the timed offer is active the chip takes the first slot and "This Week" moves up beside the pager.
                     if (!isTablet) {
                         Row(
                             modifier = Modifier
@@ -414,20 +413,20 @@ fun HomeScreen(
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            // Removed: the store provides the discount (the compact offer chip took this slot while an offer ran)
-                            // if (activeOffer != null) {
-                            //     HomeOfferBadge(
-                            //         title = activeOffer.title,
-                            //         startedAtMillis = activeOffer.startedAtMillis,
-                            //         durationMin = activeOffer.durationMin,
-                            //         discountPercent = activeOffer.discountPercent,
-                            //         targetsLifetime = activeOffer.targetsLifetime,
-                            //         onClick = { AudioPlayerManager.playSoundBtnClick(); onNavigateToPurchase() },
-                            //         onExpired = viewModel::onHomeOfferExpired,
-                            //     )
-                            // } else {
-                            WeeklyReportCard(viewModel.weeklyStats()) { showWeeklyReport = true }
-                            // }
+                            if (activeOffer != null) {
+                                HomeOfferBadge(
+                                    title = activeOffer.title,
+                                    startedAtMillis = activeOffer.startedAtMillis,
+                                    durationMin = activeOffer.durationMin,
+                                    discountPercent = activeOffer.discountPercent,
+                                    targetsLifetime = activeOffer.targetsLifetime,
+                                    storeBadge = activeOffer.storeBadge, storeOriginalPrice = activeOffer.storeOriginalPrice, endMillis = activeOffer.endMillis, hasTimer = activeOffer.hasTimer,
+                                    onClick = { AudioPlayerManager.playSoundBtnClick(); onNavigateToPurchase() },
+                                    onExpired = viewModel::onHomeOfferExpired,
+                                )
+                            } else {
+                                WeeklyReportCard(viewModel.weeklyStats()) { showWeeklyReport = true }
+                            }
                             if (isIndianUser(context)) {
                                 MadeInIndiaBadge()
                             } else {
@@ -457,21 +456,21 @@ fun HomeScreen(
                                 .padding(horizontal = Dimens16)
                                 .padding(bottom = Dimens12)
                                 .padding(top = Dimens8),
-                            horizontalArrangement = Arrangement.End, // was SpaceBetween while the timed offer card was shown
+                            horizontalArrangement = if (activeOffer != null) Arrangement.SpaceBetween else Arrangement.End,
                             verticalAlignment = Alignment.Bottom
                         ) {
-                            // Removed: the store provides the discount
-                            // if (activeOffer != null) {
-                            //     HomeOfferSidebarCard(
-                            //         title = activeOffer.title,
-                            //         startedAtMillis = activeOffer.startedAtMillis,
-                            //         durationMin = activeOffer.durationMin,
-                            //         discountPercent = activeOffer.discountPercent,
-                            //         targetsLifetime = activeOffer.targetsLifetime,
-                            //         onClick = { AudioPlayerManager.playSoundBtnClick(); onNavigateToPurchase() },
-                            //         onExpired = viewModel::onHomeOfferExpired
-                            //     )
-                            // }
+                            if (activeOffer != null) {
+                                HomeOfferSidebarCard(
+                                    title = activeOffer.title,
+                                    startedAtMillis = activeOffer.startedAtMillis,
+                                    durationMin = activeOffer.durationMin,
+                                    discountPercent = activeOffer.discountPercent,
+                                    targetsLifetime = activeOffer.targetsLifetime,
+                                    storeBadge = activeOffer.storeBadge, storeOriginalPrice = activeOffer.storeOriginalPrice, endMillis = activeOffer.endMillis, hasTimer = activeOffer.hasTimer,
+                                    onClick = { AudioPlayerManager.playSoundBtnClick(); onNavigateToPurchase() },
+                                    onExpired = viewModel::onHomeOfferExpired
+                                )
+                            }
                             EnglishBanner(context = context, onUrlClick = {
                                 openURLWithGate {
                                     runCatching {

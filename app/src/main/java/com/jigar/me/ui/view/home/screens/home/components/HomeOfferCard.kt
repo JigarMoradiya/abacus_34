@@ -1,8 +1,5 @@
 package com.jigar.me.ui.view.home.screens.home.components
 
-// Removed: the store provides the discount. HomeOfferCard / HomeOfferSidebarCard / HomeOfferBadge below are no longer shown
-// anywhere (HomeScreen does not call them; HomeFragmentViewModel.initHomeOffer is commented out). Kept for reference only.
-
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -31,7 +28,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
 import com.jigar.me.ui.view.ab.AbTypography
 import com.jigar.me.ui.view.ab.LocalAbScale
@@ -53,10 +55,34 @@ import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 // card advertise more time than the offer could ever have (matches
 // HomeOfferManager.remainingMillis's clamp).
 @Composable
-private fun rememberOfferRemainingSeconds(startedAtMillis: Long, durationMin: Int, onExpired: () -> Unit): Long {
-    val endMillis = startedAtMillis + durationMin * 60_000L
-    val remainingSec = rememberCountdownRemainingSeconds(endMillis, onExpired)
-    return remainingSec.coerceAtMost(durationMin * 60L)
+private fun rememberOfferRemainingSeconds(startedAtMillis: Long, durationMin: Int, endMillis: Long?, hasTimer: Boolean, onExpired: () -> Unit): Long? {
+    if (!hasTimer) return null   // a store offer with no end (or one ending in more than a day) has no countdown
+    // the timed Home offer counts down from its own start; a store offer to the end time Google Play gives
+    val end = endMillis ?: (startedAtMillis + durationMin * 60_000L)
+    val remainingSec = rememberCountdownRemainingSeconds(end, onExpired)
+    return if (endMillis == null) remainingSec.coerceAtMost(durationMin * 60L) else remainingSec
+}
+
+/**
+ * The second line of the card: "Save 30% on the Lifetime plan" for the timed offer; for a Google Play offer the regular price struck through,
+ * then the offer price and the "30% OFF" / "₹500 OFF" ("₹4,750 ₹3,325 · 30% OFF": the plan is already in the title).
+ */
+@Composable
+private fun offerLine(storeBadge: String?, storeOriginalPrice: String?, discountPercent: Int, targetsLifetime: Boolean): AnnotatedString {
+    if (storeBadge != null) {
+        return buildAnnotatedString {
+            if (storeOriginalPrice != null) {
+                withStyle(SpanStyle(textDecoration = TextDecoration.LineThrough)) { append(storeOriginalPrice) }
+                append(" ")
+            }
+            append(storeBadge)
+        }
+    }
+    val productLabel = stringResource(if (targetsLifetime) R.string.home_offer_product_lifetime else R.string.home_offer_product_yearly)
+    return AnnotatedString(
+        if (discountPercent > 0) stringResource(R.string.home_offer_save_pct, discountPercent, productLabel)
+        else stringResource(R.string.home_offer_special_price, productLabel)
+    )
 }
 
 /** The chunky 3D edge under a full offer card (the iOS card's hard `D8572B` shadow, 3pt down). */
@@ -76,9 +102,13 @@ fun HomeOfferCard(
     onClick: () -> Unit,
     onExpired: () -> Unit,
     modifier: Modifier = Modifier,
+    storeBadge: String? = null,   // set for a Google Play offer: "₹3,325 · 30% OFF" / "₹4,250 · ₹500 OFF" (as set in the Play Console)
+    storeOriginalPrice: String? = null,   // ... and the regular price, struck through before it
+    endMillis: Long? = null,      // a store offer's end time
+    hasTimer: Boolean = true,
 ) {
-    val remainingSec = rememberOfferRemainingSeconds(startedAtMillis, durationMin, onExpired)
-    val endingSoon = remainingSec <= 60L
+    val remainingSec = rememberOfferRemainingSeconds(startedAtMillis, durationMin, endMillis, hasTimer, onExpired)
+    val endingSoon = (remainingSec ?: Long.MAX_VALUE) <= 60L
     val abS = LocalAbScale.current.factor
 
     val interaction = remember { MutableInteractionSource() }
@@ -107,27 +137,24 @@ fun HomeOfferCard(
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
-            val productLabel = stringResource(
-                if (targetsLifetime) R.string.home_offer_product_lifetime else R.string.home_offer_product_yearly
-            )
             Text(
-                text = if (discountPercent > 0) stringResource(R.string.home_offer_save_pct, discountPercent, productLabel)
-                       else stringResource(R.string.home_offer_special_price, productLabel),
+                text = offerLine(storeBadge, storeOriginalPrice, discountPercent, targetsLifetime),
                 color = Color.White.copy(alpha = 0.9f),
                 style = AbTypography.fixed(10f * abS, FontWeight.Bold),
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
         }
-        // Countdown removed from the child-facing Home (no timer pressure on kids). The offer still runs and shows its countdown on the Purchase screen.
-        // Text(
-        //     text = stringResource(R.string.home_offer_ends_in, DateTimeUtils.displayDurationHourMinSec(remainingSec)),
-        //     color = Color.White,
-        //     style = AbTypography.fixed(11f * abS, FontWeight.ExtraBold, tabular = true),
-        //     modifier = Modifier
-        //         .background(if (endingSoon) Color(0xFFE53935) else Color.Black.copy(alpha = 0.2f), CircleShape)
-        //         .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
-        // )
+        remainingSec?.let {
+            Text(
+                text = stringResource(R.string.home_offer_ends_in, DateTimeUtils.displayDurationHourMinSec(it)),
+                color = Color.White,
+                style = AbTypography.fixed(11f * abS, FontWeight.ExtraBold, tabular = true),
+                modifier = Modifier
+                    .background(if (endingSoon) Color(0xFFE53935) else Color.Black.copy(alpha = 0.2f), CircleShape)
+                    .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
+            )
+        }
         Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null, tint = Color.White.copy(alpha = 0.9f))
     }
 }
@@ -146,9 +173,13 @@ fun HomeOfferSidebarCard(
     onClick: () -> Unit,
     onExpired: () -> Unit,
     modifier: Modifier = Modifier,
+    storeBadge: String? = null,   // set for a Google Play offer: "₹3,325 · 30% OFF" / "₹4,250 · ₹500 OFF" (as set in the Play Console)
+    storeOriginalPrice: String? = null,   // ... and the regular price, struck through before it
+    endMillis: Long? = null,      // a store offer's end time
+    hasTimer: Boolean = true,
 ) {
-    val remainingSec = rememberOfferRemainingSeconds(startedAtMillis, durationMin, onExpired)
-    val endingSoon = remainingSec <= 60L
+    val remainingSec = rememberOfferRemainingSeconds(startedAtMillis, durationMin, endMillis, hasTimer, onExpired)
+    val endingSoon = (remainingSec ?: Long.MAX_VALUE) <= 60L
     val abS = LocalAbScale.current.factor
 
     val interaction = remember { MutableInteractionSource() }
@@ -168,7 +199,7 @@ fun HomeOfferSidebarCard(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens10)
     ) {
-        Text("🏷️", style = MaterialTheme.typography.titleMedium.scaled())
+        Text("🏷️", style = MaterialTheme.typography.titleLarge.scaled())
         Column(verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens2)) {
             Text(
                 text = title?.takeIf { it.isNotBlank() } ?: stringResource(R.string.home_offer_title),
@@ -177,28 +208,25 @@ fun HomeOfferSidebarCard(
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
-            val productLabel = stringResource(
-                if (targetsLifetime) R.string.home_offer_product_lifetime else R.string.home_offer_product_yearly
-            )
             Text(
-                text = if (discountPercent > 0) stringResource(R.string.home_offer_save_pct, discountPercent, productLabel)
-                       else stringResource(R.string.home_offer_special_price, productLabel),
+                text = offerLine(storeBadge, storeOriginalPrice, discountPercent, targetsLifetime),
                 color = Color.White.copy(alpha = 0.9f),
                 style = AbTypography.fixed(10f * abS, FontWeight.Bold),
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
         }
-        // Countdown removed from the child-facing Home (no timer pressure on kids). The offer still runs and shows its countdown on the Purchase screen.
-        // Text(
-        //     text = stringResource(R.string.home_offer_ends_in, DateTimeUtils.displayDurationHourMinSec(remainingSec)),
-        //     color = Color.White,
-        //     style = AbTypography.fixed(11f * abS, FontWeight.ExtraBold, tabular = true),
-        //     maxLines = 1,
-        //     modifier = Modifier
-        //         .background(if (endingSoon) Color(0xFFE53935) else Color.Black.copy(alpha = 0.2f), CircleShape)
-        //         .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
-        // )
+        remainingSec?.let {
+            Text(
+                text = stringResource(R.string.home_offer_ends_in, DateTimeUtils.displayDurationHourMinSec(it)),
+                color = Color.White,
+                style = AbTypography.fixed(11f * abS, FontWeight.ExtraBold, tabular = true),
+                maxLines = 1,
+                modifier = Modifier
+                    .background(if (endingSoon) Color(0xFFE53935) else Color.Black.copy(alpha = 0.2f), CircleShape)
+                    .padding(horizontal = AppDimens.Dimens10, vertical = AppDimens.Dimens4)
+            )
+        }
         Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null, tint = Color.White.copy(alpha = 0.9f))
     }
 }
@@ -216,11 +244,18 @@ fun HomeOfferBadge(
     onClick: () -> Unit,
     onExpired: () -> Unit,
     modifier: Modifier = Modifier,
+    storeBadge: String? = null,   // set for a Google Play offer: "₹3,325 · 30% OFF" / "₹4,250 · ₹500 OFF" (as set in the Play Console)
+    storeOriginalPrice: String? = null,   // ... and the regular price, struck through before it
+    endMillis: Long? = null,      // a store offer's end time
+    hasTimer: Boolean = true,
 ) {
-    val remainingSec = rememberOfferRemainingSeconds(startedAtMillis, durationMin, onExpired)
-    val endingSoon = remainingSec <= 60L
+    val remainingSec = rememberOfferRemainingSeconds(startedAtMillis, durationMin, endMillis, hasTimer, onExpired)
+    val endingSoon = (remainingSec ?: Long.MAX_VALUE) <= 60L
     val abS = LocalAbScale.current.factor
     val shape = RoundedCornerShape(percent = 50)
+    // the dark orange (E65100) is unreadable on the dark background: a light orange there, and a stronger tint and outline
+    val isDark = com.jigar.me.ui.view.ab.LocalAbColors.current.isDark
+    val tint = if (isDark) 0.24f else 0.16f
 
     val interaction = remember { MutableInteractionSource() }
     val pressed by interaction.collectIsPressedAsState()
@@ -229,33 +264,29 @@ fun HomeOfferBadge(
     Row(
         modifier = modifier
             .graphicsLayer { scaleX = scale; scaleY = scale }
-            .background(Brush.horizontalGradient(listOf(Color(0xFFFFB300).copy(alpha = 0.16f), Color(0xFFFF7043).copy(alpha = 0.16f))), shape)
-            .border(1.dp, Color(0xFFFF7043).copy(alpha = 0.4f), shape)
+            .background(Brush.horizontalGradient(listOf(Color(0xFFFFB300).copy(alpha = tint), Color(0xFFFF7043).copy(alpha = tint))), shape)
+            .border(1.dp, Color(0xFFFF7043).copy(alpha = if (isDark) 0.7f else 0.4f), shape)
             .clickable(interactionSource = interaction, indication = null) { onClick() }
             .padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens4),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)
     ) {
-        Text("🏷️", style = MaterialTheme.typography.labelSmall.scaled())
+        Text("🏷️", style = MaterialTheme.typography.titleMedium.scaled())
         Column(
             modifier = Modifier.weight(1f, fill = false),
             verticalArrangement = Arrangement.spacedBy(0.dp)
         ) {
             Text(
                 text = title?.takeIf { it.isNotBlank() } ?: stringResource(R.string.home_offer_title),
-                color = Color(0xFFE65100),
+                color = if (isDark) Color(0xFFFFB74D) else Color(0xFFE65100),
                 style = AbTypography.fixed(11f * abS, FontWeight.Bold),
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
-            val productLabel = stringResource(
-                if (targetsLifetime) R.string.home_offer_product_lifetime else R.string.home_offer_product_yearly
-            )
-            val pctText = if (discountPercent > 0) stringResource(R.string.home_offer_save_pct, discountPercent, productLabel)
-                          else stringResource(R.string.home_offer_special_price, productLabel)
+            val pctText = offerLine(storeBadge, storeOriginalPrice, discountPercent, targetsLifetime)
             Text(
                 text = pctText,
-                color = Color(0xFFE65100).copy(alpha = 0.7f),
+                color = if (isDark) Color(0xFFFFCC80).copy(alpha = 0.9f) else Color(0xFFE65100).copy(alpha = 0.7f),
                 style = AbTypography.fixed(10f * abS, FontWeight.SemiBold),
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
@@ -263,15 +294,16 @@ fun HomeOfferBadge(
         }
         // Countdown gets its own highlighted pill -- distinct from the surrounding
         // text so it draws the eye, matching the full HomeOfferCard's treatment.
-        // Countdown removed from the child-facing Home (no timer pressure on kids). The offer still runs and shows its countdown on the Purchase screen.
-        // Text(
-        //     text = DateTimeUtils.displayDurationHourMinSec(remainingSec),
-        //     color = Color.White,
-        //     style = AbTypography.fixed(10f * abS, FontWeight.ExtraBold, tabular = true),
-        //     maxLines = 1,
-        //     modifier = Modifier
-        //         .background(if (endingSoon) Color(0xFFE53935) else Color(0xFFFF7043), RoundedCornerShape(percent = 50))
-        //         .padding(horizontal = AppDimens.Dimens8, vertical = 2.dp)
-        // )
+        remainingSec?.let {
+            Text(
+                text = DateTimeUtils.displayDurationHourMinSec(it),
+                color = Color.White,
+                style = AbTypography.fixed(10f * abS, FontWeight.ExtraBold, tabular = true),
+                maxLines = 1,
+                modifier = Modifier
+                    .background(if (endingSoon) Color(0xFFE53935) else Color(0xFFFF7043), RoundedCornerShape(percent = 50))
+                    .padding(horizontal = AppDimens.Dimens8, vertical = 2.dp)
+            )
+        }
     }
 }

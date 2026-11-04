@@ -18,7 +18,9 @@ import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.asAndroidBitmap
@@ -63,7 +65,9 @@ fun DrawScope.drawAbacusColumns(
     arrowUPBitmap: ImageBitmap,
     arrowDownBitmap: ImageBitmap,
     // The toy frame draws its own rods, beam and markers behind the beads, so the classic ones are skipped.
-    toyFrame: Boolean = false
+    toyFrame: Boolean = false,
+    // 1 = the arrows keep their size; the first-launch tutorial animates it so the arrow on the next bead to swipe pulses
+    arrowPulse: Float = 1f,
 ) {
     val preset = AbacusTheme.colorPreset(selectedTheme)
     val isPolygonTheme = selectedTheme.contains("poligon", ignoreCase = true)
@@ -377,7 +381,7 @@ fun DrawScope.drawAbacusColumns(
                             arrowDown = arrowDownBitmap,
                             // the Happy Bead has its face in the middle: the arrow goes to the left of it, with a little room before the tip
                             centerShiftPx = if (isRealBead) -geometry.beadWidthPx * 0.90f / 2f * 0.60f else 0f,
-                            sizeScale = if (isRealBead) 0.78f else 1f,
+                            sizeScale = (if (isRealBead) 0.78f else 1f) * arrowPulse,
                         )
                     }
                 }
@@ -666,6 +670,59 @@ fun drawableToImageBitmap(context: Context, resId: Int): ImageBitmap {
     return bmp.asImageBitmap()
 }
 
+
+// ----------------------------------------------------------------------
+// The tutorial's swipe hand: touches down below the FIRST bead that has to move, sweeps across it in the swipe direction, lifts off,
+// rests, repeats. Drawn by its own top-layer canvas (see AbacusWithDecimalCanvas), so no bead or frame covers it.
+// ----------------------------------------------------------------------
+fun DrawScope.drawSwipeHandForBead(
+    colCenterX: Float,
+    movement: Movement,
+    geometry: AbacusCanvasGeometry,
+    painter: Painter,
+    progress: Float,
+) {
+    // The swipe the hand shows. Several beads that move together are dragged by the one at the end of the group, so the hand swipes THAT bead:
+    // up = the lowest bead of the group, down = the highest. `count` is how many beads move (and so how many rows the swipe covers).
+    val startRow: Int
+    val up: Boolean
+    val count: Int
+    when {
+        movement.upperDown -> { startRow = 0; up = false; count = 1 }
+        movement.upperUp -> { startRow = 1; up = true; count = 1 }
+        movement.lowerDown > 0 -> { startRow = movement.lowerOldValue - movement.lowerDown + 2; up = false; count = movement.lowerDown }
+        movement.lowerUp > 0 -> { startRow = movement.lowerOldValue + 2 + movement.lowerUp; up = true; count = movement.lowerUp }
+        else -> return
+    }
+    val endRow = if (up) startRow - count else startRow + count
+
+    val beadH = geometry.beadHeightPx
+    val size = beadH * 0.9f
+    // progress runs 0..1 through one swipe + the pause: touch down on one side of the bead, sweep across it to the other side, lift off, rest
+    val move = ((progress - 0.14f) / 0.58f).coerceIn(0f, 1f)           // the sweep: 14% to 72% of the cycle
+    val eased = move * move * (3f - 2f * move)                          // smooth start and end
+    val fadeIn = (progress / 0.1f).coerceAtMost(1f)
+    val fadeOut = 1f - ((progress - 0.82f) / 0.18f).coerceIn(0f, 1f)
+    val press = 0.88f + 0.12f * (move * 6f).coerceAtMost(1f)           // pressed on the bead at first, then it moves
+    // The fingertip starts on the bead's far edge (the bottom for an up swipe, a little inside it so the finger is on the bead) and ends at the far
+    // edge of the row the swipe reaches: an up swipe of 3 beads runs from the bottom of the 3rd bead to the top of the 1st bead's new row.
+    val startY = if (up) geometry.rowTop[startRow] + beadH * 0.95f else geometry.rowTop[startRow] + beadH * 0.05f
+    val endY = if (up) geometry.rowTop[endRow] + beadH * 0.05f else geometry.rowTop[endRow] + beadH * 0.95f
+    val handSize = size * 1.1f * press
+    // the hand's body sits right of and below the fingertip, as before; the fingertip is the point that travels
+    val tipX = colCenterX + size * 0.04f
+    val tipY = startY + (endY - startY) * eased
+    val left = tipX + size * 0.3f - handSize / 2f
+    val top = tipY + size * 0.4f - handSize / 2f
+    val alpha = fadeIn * fadeOut
+    // a dark copy a little larger underneath is the outline, so the white hand reads on light beads too
+    translate(left - handSize * 0.09f, top - handSize * 0.09f) {
+        with(painter) { draw(size = Size(handSize * 1.18f, handSize * 1.18f), alpha = alpha * 0.8f, colorFilter = ColorFilter.tint(Color.Black)) }
+    }
+    translate(left, top) {
+        with(painter) { draw(size = Size(handSize, handSize), alpha = alpha, colorFilter = ColorFilter.tint(Color.White)) }
+    }
+}
 
 // ----------------------------------------------------------------------
 // Draw arrows on Canvas (equivalent of ArrowForBeadFull, but for Canvas)

@@ -42,7 +42,13 @@ object AbDebugScreens {
                 "art" -> AbArtPreview()
                 "board" -> AbBoardPreview()
                 "paywall" -> AbPaywallPreview()
+                "paywalloffer" -> AbPaywallPreview(timedOffer = true)
                 "purchase" -> AbPurchasePreview()
+                "purchaseoffer" -> AbPurchasePreview(timedOffer = true)
+                "paywallstore" -> AbPaywallPreview(storeOffer = 1)       // a Play Console discount offer on the lifetime plan (percentage)
+                "paywallstore2" -> AbPaywallPreview(storeOffer = 2)      // ... an absolute amount off
+                "purchasestore" -> AbPurchasePreview(storeOffer = 1)
+                "purchasestore2" -> AbPurchasePreview(storeOffer = 2)
                 "purchasebought" -> AbPurchaseBoughtPreview()
                 "featurelist" -> com.jigar.me.ui.view.home.screens.onboarding.FeatureListScreen(onClose = {})
                 "weekly" -> AbWeeklyPreview(true)

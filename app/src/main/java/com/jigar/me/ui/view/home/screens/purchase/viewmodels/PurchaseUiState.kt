@@ -1,6 +1,7 @@
 package com.jigar.me.ui.view.home.screens.purchase.viewmodels
 
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
+import com.jigar.me.utils.StoreOneTimeOffer
 import com.revenuecat.purchases.Package
 
 data class RcPlanItem(
@@ -56,16 +57,17 @@ data class PurchaseUiState(
     val original1MonthData: RcPlanItem? = null,
     val original1WeekData: RcPlanItem? = null,
 
-    // Removed: the store provides the discount (Google Play offers read through RevenueCat, see storeIntroOffer()).
-    // // Discounts
-    // val discountPer: Int = 0,
-    // val discountPerLifetime: Int = 0,
-    //
-    // // Timed Home offer (Remote Config `home_offer`): when it ends, so the Purchase
-    // // page can show the same live countdown as the Home card. Null = not active for
-    // // that specific plan.
-    // val homeOfferYearlyEndMillis: Long? = null,
-    // val homeOfferLifetimeEndMillis: Long? = null,
+    // The timed Home offer (Remote Config `home_offer`), only while it runs: the % off of the ".offer" plan that is shown
+    // INSTEAD of the regular one (worked out from the two store prices), and when the window ends so the plan card can show
+    // the same live countdown as the Home card. 0 / null = no timed offer for that plan (store offers are in storeIntroOffer()).
+    val discountPer: Int = 0,
+    val discountPerLifetime: Int = 0,
+    val homeOfferYearlyEndMillis: Long? = null,
+    val homeOfferLifetimeEndMillis: Long? = null,
+
+    // A Google Play discount offer on the regular lifetime plan, set in the Play Console (percentage or absolute amount); null = none.
+    // Never together with the timed ".offer" plan above.
+    val lifetimeStoreOffer: StoreOneTimeOffer? = null,
 
     // UI flags
     val showSubmitButton: Boolean = false,
