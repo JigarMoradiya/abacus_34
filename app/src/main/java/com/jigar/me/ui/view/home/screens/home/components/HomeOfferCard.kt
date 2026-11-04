@@ -252,6 +252,9 @@ fun HomeOfferBadge(
     val endingSoon = (remainingSec ?: Long.MAX_VALUE) <= 60L
     val abS = LocalAbScale.current.factor
     val shape = RoundedCornerShape(percent = 50)
+    // the dark orange (E65100) is unreadable on the dark background: a light orange there, and a stronger tint and outline
+    val isDark = com.jigar.me.ui.view.ab.LocalAbColors.current.isDark
+    val tint = if (isDark) 0.24f else 0.16f
 
     val interaction = remember { MutableInteractionSource() }
     val pressed by interaction.collectIsPressedAsState()
@@ -260,8 +263,8 @@ fun HomeOfferBadge(
     Row(
         modifier = modifier
             .graphicsLayer { scaleX = scale; scaleY = scale }
-            .background(Brush.horizontalGradient(listOf(Color(0xFFFFB300).copy(alpha = 0.16f), Color(0xFFFF7043).copy(alpha = 0.16f))), shape)
-            .border(1.dp, Color(0xFFFF7043).copy(alpha = 0.4f), shape)
+            .background(Brush.horizontalGradient(listOf(Color(0xFFFFB300).copy(alpha = tint), Color(0xFFFF7043).copy(alpha = tint))), shape)
+            .border(1.dp, Color(0xFFFF7043).copy(alpha = if (isDark) 0.7f else 0.4f), shape)
             .clickable(interactionSource = interaction, indication = null) { onClick() }
             .padding(horizontal = AppDimens.Dimens8, vertical = AppDimens.Dimens4),
         verticalAlignment = Alignment.CenterVertically,
@@ -274,7 +277,7 @@ fun HomeOfferBadge(
         ) {
             Text(
                 text = title?.takeIf { it.isNotBlank() } ?: stringResource(R.string.home_offer_title),
-                color = Color(0xFFE65100),
+                color = if (isDark) Color(0xFFFFB74D) else Color(0xFFE65100),
                 style = AbTypography.fixed(11f * abS, FontWeight.Bold),
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
@@ -282,7 +285,7 @@ fun HomeOfferBadge(
             val pctText = offerLine(storeBadge, storeOriginalPrice, discountPercent, targetsLifetime)
             Text(
                 text = pctText,
-                color = Color(0xFFE65100).copy(alpha = 0.7f),
+                color = if (isDark) Color(0xFFFFCC80).copy(alpha = 0.9f) else Color(0xFFE65100).copy(alpha = 0.7f),
                 style = AbTypography.fixed(10f * abS, FontWeight.SemiBold),
                 maxLines = 1,
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
