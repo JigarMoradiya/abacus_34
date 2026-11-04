@@ -83,6 +83,7 @@ import com.jigar.me.ui.view.ab.abSquash
 // Removed: the store provides the discount (no countdown pill on the paywall)
 import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
 import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.StoreOneTimeOffer
 import com.jigar.me.ui.view.home.screens.purchase.components.getDurationTxt
 import com.jigar.me.ui.view.home.screens.purchase.components.getPriceSuffix
 import com.jigar.me.ui.view.home.screens.purchase.components.isYearly
@@ -364,6 +365,8 @@ private fun PaywallKitPlanCard(
     val edge = if (isHighlighted) colors.accentOrange.abDarkened(0.2f) else colors.outline
     // the timed Home offer: this plan is the ".offer" product shown INSTEAD of the regular one (original price struck through, % off, countdown)
     val timed = plan.timedOffer(uiState)
+    // the lifetime plan's Google Play discount offer (never together with the timed one: that one replaces this plan)
+    val storeOffer = if (timed == null) plan.storeOffer(uiState) else null
     val savingsText = paywallSavingsText(plan, uiState)
     val trialDays = plan.freeTrialDays()
     val trialPrefix = if (trialDays > 0) stringResource(R.string.paywall_trial_then, trialDays) + " " else ""
@@ -406,6 +409,15 @@ private fun PaywallKitPlanCard(
                             "${plan.price ?: ""} ${plan.getPriceSuffix().trim()}".trim(),
                             style = AbTypography.fixed(13f * k, FontWeight.ExtraBold), color = colors.brandPrimary, maxLines = 1,
                         )
+                    } else if (storeOffer != null) {
+                        Text(
+                            storeOffer.fullPriceText, style = AbTypography.fixed(12f * k, FontWeight.SemiBold),
+                            color = colors.textSecondary, textDecoration = TextDecoration.LineThrough, maxLines = 1,
+                        )
+                        Text(
+                            "${storeOffer.offerPriceText} ${plan.getPriceSuffix().trim()}".trim(),
+                            style = AbTypography.fixed(13f * k, FontWeight.ExtraBold), color = colors.brandPrimary, maxLines = 1,
+                        )
                     } else if (intro != null) {
                         Text(
                             intro.regularPrice, style = AbTypography.fixed(12f * k, FontWeight.SemiBold),
@@ -433,6 +445,12 @@ private fun PaywallKitPlanCard(
                 val infoLine = if (intro != null) intro.thenLine(plan) else listOfNotNull(perMonthText).joinToString(" · ")
                 if (infoLine.isNotEmpty()) {
                     Text(infoLine, style = AbTypography.fixed(11f * k, FontWeight.Bold), color = colors.textSecondary, maxLines = 1)
+                }
+                if (storeOffer != null && (storeOffer.badgeText().isNotEmpty() || storeOffer.countdownEnd() != null)) {
+                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp * s)) {
+                        Text(storeOffer.badgeText(), style = AbTypography.fixed(11f * k, FontWeight.ExtraBold), color = colors.accentGreenInk)
+                        storeOffer.countdownEnd()?.let { InlineCountdownPill(it, {}) }
+                    }
                 }
                 if (timed != null && (timed.percentOff > 0 || timed.endMillis != null)) {
                     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp * s)) {
@@ -485,6 +503,21 @@ internal fun RcPlanItem.freeTrialDays(): Int {
         else -> 0
     }
 }
+
+/** The Google Play discount offer of the lifetime plan (Play Console), or null: not for any other plan. */
+internal fun RcPlanItem.storeOffer(uiState: PurchaseUiState): StoreOneTimeOffer? =
+    uiState.lifetimeStoreOffer?.takeIf { sku == AppConstants.Products.lifetime }
+
+/** "30% OFF" for a percentage offer, "₹500 OFF" for an absolute one, whichever the Play Console offer is; "" when neither can be said. */
+@Composable
+internal fun StoreOneTimeOffer.badgeText(): String = when {
+    amountOffText != null -> stringResource(R.string.paywall_amount_off_store, amountOffText)
+    percentOff > 0 -> stringResource(R.string.paywall_percent_off_store, percentOff)
+    else -> ""
+}
+
+/** When the offer ends, only if that is within a day (a live countdown for a long offer would only be noise). */
+internal fun StoreOneTimeOffer.countdownEnd(now: Long = System.currentTimeMillis()): Long? = endMillis?.takeIf { it - now in 1L..86_400_000L }
 
 /** What the timed Home offer (Remote Config `home_offer`) adds to a plan card: this plan is the ".offer" product shown INSTEAD of the regular one. */
 internal data class TimedOfferInfo(

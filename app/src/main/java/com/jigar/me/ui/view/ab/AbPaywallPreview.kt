@@ -12,6 +12,7 @@ import com.jigar.me.ui.view.home.common_ui.dialogs.PaywallKitContent
 import com.jigar.me.ui.view.home.common_ui.sheets.KidsBottomSheet
 import com.jigar.me.ui.view.home.screens.purchase.components.PurchaseScreen
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
+import com.jigar.me.utils.StoreOneTimeOffer
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.RcPlanItem
 import com.revenuecat.purchases.Package
 import com.revenuecat.purchases.PackageType
@@ -57,6 +58,18 @@ private fun sampleOfferState(): PurchaseUiState {
     )
 }
 
+/** A Google Play discount offer on the lifetime plan (`ab_screen=paywallstore` / `purchasestore`; `:2` = an absolute amount off). */
+private fun sampleStoreOfferState(absolute: Boolean): PurchaseUiState {
+    val base = sampleState(withIntro = false)
+    return base.copy(
+        lifetimeStoreOffer = StoreOneTimeOffer(
+            offerPriceText = if (absolute) "₹4,250" else "₹3,325", fullPriceText = "₹4,750",
+            percentOff = if (absolute) 11 else 30, amountOffText = if (absolute) "₹500" else null,
+            offerToken = "sample", offerId = "sample", endMillis = null, priceMicros = if (absolute) 4_250_000_000 else 3_325_000_000, currencyCode = "INR",
+        ),
+    )
+}
+
 private fun sampleState(selected: Int = 0, withIntro: Boolean = true): PurchaseUiState {
     // the India store numbers of the plan page: monthly, the regular yearly (1,200; with a store intro price of 840 for the
     // first year = 30% off) and lifetime
@@ -81,8 +94,8 @@ private fun sampleState(selected: Int = 0, withIntro: Boolean = true): PurchaseU
 }
 
 @Composable
-fun AbPaywallPreview(timedOffer: Boolean = false) {
-    val state = if (timedOffer) sampleOfferState() else sampleState()
+fun AbPaywallPreview(timedOffer: Boolean = false, storeOffer: Int = 0) {
+    val state = if (timedOffer) sampleOfferState() else if (storeOffer > 0) sampleStoreOfferState(storeOffer == 2) else sampleState()
     Box(Modifier.fillMaxSize()) {
         AbBackground(AbWorld.Meadow, Modifier.fillMaxSize())
         KidsBottomSheet(visible = true, onDismiss = {}, widthFraction = 0.85f, showHandle = false) {
@@ -96,13 +109,13 @@ fun AbPaywallPreview(timedOffer: Boolean = false) {
 }
 
 @Composable
-fun AbPurchasePreview(timedOffer: Boolean = false) {
+fun AbPurchasePreview(timedOffer: Boolean = false, storeOffer: Int = 0) {
     Box(Modifier.fillMaxSize()) {
         AbBackground(AbWorld.Sunset, Modifier.fillMaxSize())
         // inside the safe area, like the real route (PurchaseScreenRoute)
         Box(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
             PurchaseScreen(
-                uiState = if (timedOffer) sampleOfferState() else sampleState(), onPlanSelected = {}, onShowOldSubClick = {}, oldSubPopupCloseClick = {},
+                uiState = if (timedOffer) sampleOfferState() else if (storeOffer > 0) sampleStoreOfferState(storeOffer == 2) else sampleState(), onPlanSelected = {}, onShowOldSubClick = {}, oldSubPopupCloseClick = {},
                 onSubscribe = {}, onClose = {}, privacyUrl = "https://example.com/privacy",
             )
         }

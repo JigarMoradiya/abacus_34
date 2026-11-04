@@ -81,6 +81,8 @@ object AppConstants {
             var returningPaywallDays = "returning_paywall_days"
             /** Lifetime plan stays off the first N paywall sheets a device opens (0 or missing = shown from the first one, as before). */
             var lifetimeMinPaywalls = "lifetime_min_paywalls"
+            /** Show and sell the Google Play discount offer of the lifetime product (set in the Play Console): on unless this says off / false. */
+            var storeOneTimeOffers = "store_one_time_offers"
         }
     }
 

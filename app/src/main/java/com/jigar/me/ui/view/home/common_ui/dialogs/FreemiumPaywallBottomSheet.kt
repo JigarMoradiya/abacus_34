@@ -560,7 +560,7 @@ private fun PaywallPlanCard(
                     fontFamily = FontFamily(Font(R.font.font_bold))
                 )
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    PriceUi(plan, plan.timedOffer(uiState)?.originalPrice)
+                    PriceUi(plan, plan.timedOffer(uiState)?.originalPrice, plan.storeOffer(uiState))
                 }
                 // a paid intro price the store offers: "first year, then ₹1,200 / year" and the green N% OFF
                 val intro = plan.storeIntroOffer()
@@ -579,6 +579,19 @@ private fun PaywallPlanCard(
                             style = MaterialTheme.typography.labelSmall.scaled(),
                             fontWeight = FontWeight.Bold
                         )
+                    }
+                }
+                // the lifetime plan's Google Play discount offer: "30% OFF" or "₹500 OFF" (as set in the Play Console)
+                val storeOffer = plan.storeOffer(uiState)
+                if (storeOffer != null && (storeOffer.badgeText().isNotEmpty() || storeOffer.countdownEnd() != null)) {
+                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6)) {
+                        Text(
+                            text = storeOffer.badgeText(),
+                            color = Color(0xFF2E7D32),
+                            style = MaterialTheme.typography.labelSmall.scaled(),
+                            fontWeight = FontWeight.Bold
+                        )
+                        storeOffer.countdownEnd()?.let { InlineCountdownPill(it, {}) }
                     }
                 }
                 // the timed Home offer: "(extra ~N% OFF)" / "~N% OFF" and the live countdown of the ".offer" plan

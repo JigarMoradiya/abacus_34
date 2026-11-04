@@ -1163,6 +1163,8 @@
     <string name="paywall_percent_off_extra">(extra ~%1$d%% OFF)</string>
     <!-- a paid intro price the store offers (a Google Play offer): "30% OFF", then "first year, then ₹1,200 / year" -->
     <string name="paywall_percent_off_store">%1$d%% OFF</string>
+    <string name="paywall_amount_off_store">%1$s OFF</string>
+    <string name="paywall_offer_ended">This offer has just ended. The price is updated, nothing was charged.</string>
     <string name="paywall_intro_then">%1$s, then %2$s</string>
     <plurals name="paywall_intro_first_days">
         <item quantity="one">first day</item>

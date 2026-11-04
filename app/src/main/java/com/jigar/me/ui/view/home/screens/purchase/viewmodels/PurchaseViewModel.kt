@@ -15,6 +15,11 @@ import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.HomeOfferManager
+import com.jigar.me.utils.StoreOfferPurchaser
+import com.jigar.me.utils.StoreOneTimeOffer
+import com.jigar.me.utils.StoreOneTimeOffers
+import com.revenuecat.purchases.awaitSyncPurchases
+import com.revenuecat.purchases.models.GoogleStoreProduct
 import com.jigar.me.utils.RevenueCatHelper
 import com.jigar.me.utils.AppAnalytics
 import com.revenuecat.purchases.PurchasesErrorCode
@@ -142,6 +147,12 @@ class PurchaseViewModel @Inject constructor(
                     )
                 }
                 scheduleOfferExpiry(decisionNow)
+                // A Google Play discount offer on the regular lifetime plan (Play Console: Purchase options and offers > Add offer > Discount).
+                // Never together with the timed ".offer" plan: while that one replaces the lifetime plan there is nothing to read here.
+                val lifetimePackage = allPackages.firstOrNull { it.product.id == AppConstants.Products.lifetime }
+                val storeOffer = if (!lifetimeDiscountActive && StoreOneTimeOffers.enabled(prefManager.getCustomParam(AppConstants.RemoteConfig.storeOneTimeOffers, "")))
+                    StoreOneTimeOffers.read((lifetimePackage?.product as? GoogleStoreProduct)?.productDetails) else null
+                updateState_ { copy(lifetimeStoreOffer = storeOffer) }
                 val customerInfo = Purchases.sharedInstance.awaitCustomerInfo()
                 RevenueCatHelper.update(customerInfo)
                 val premiumEntitlement = customerInfo.entitlements["premium"]
@@ -258,6 +269,12 @@ class PurchaseViewModel @Inject constructor(
             updateState_ { copy(isPurchasing = true) }
             val analytics = arrayOf("surface" to surface, "context" to context, "product_id" to selected.sku)
             AppAnalytics.log(AppAnalytics.PURCHASE_STARTED, *analytics)
+            // the lifetime plan WITH a Play discount offer: RevenueCat would charge the full price, so Google Play is called directly
+            val storeOffer = state().lifetimeStoreOffer?.takeIf { selected.sku == AppConstants.Products.lifetime }
+            if (storeOffer != null) {
+                buyWithStoreOffer(activity, selected, storeOffer, analytics)
+                return@launch
+            }
             try {
                 val result = Purchases.sharedInstance.awaitPurchase(
                     PurchaseParams.Builder(activity, selected.rcPackage).build()
@@ -304,19 +321,71 @@ class PurchaseViewModel @Inject constructor(
 
     fun clearMessage() = updateState_ { copy(message = null) }
 
-    private fun submitToServer(transaction: StoreTransaction?, plan: RcPlanItem) {
+    /** Buys the lifetime plan at its Google Play offer price, then lets RevenueCat grant the access (`syncPurchases`). */
+    private suspend fun buyWithStoreOffer(
+        activity: Activity, selected: RcPlanItem, offer: StoreOneTimeOffer, analytics: Array<Pair<String, String>>,
+    ) {
+        val extra = arrayOf(*analytics, "store_offer" to (offer.offerId ?: "yes"))
+        when (val result = StoreOfferPurchaser(activity).purchase(activity, selected.sku)) {
+            is StoreOfferPurchaser.Result.Purchased -> {
+                val info = runCatching { Purchases.sharedInstance.awaitSyncPurchases() }.getOrNull()
+                    ?: runCatching { Purchases.sharedInstance.awaitCustomerInfo() }.getOrNull()
+                if (info != null) RevenueCatHelper.update(info)
+                if (info?.entitlements["premium"]?.isActive == true) {
+                    AppAnalytics.log(AppAnalytics.PURCHASE_COMPLETED, *extra, "price" to offer.priceMicros / 1_000_000.0, "currency" to offer.currencyCode)
+                    submitToServer(result.purchase.orderId, result.purchase.purchaseTime, selected, offer.priceMicros / 1_000_000.0, offer.currencyCode)
+                    updateState_ { copy(isPurchasing = false, purchaseSuccess = true) }
+                    loadData()
+                } else {
+                    AppAnalytics.log(AppAnalytics.PURCHASE_NOT_ACTIVE, *extra)
+                    updateState_ { copy(isPurchasing = false, message = R.string.purchase_pending) }
+                }
+            }
+            StoreOfferPurchaser.Result.Pending -> {
+                AppAnalytics.log(AppAnalytics.PURCHASE_NOT_ACTIVE, *extra)
+                updateState_ { copy(isPurchasing = false, message = R.string.purchase_pending) }
+            }
+            StoreOfferPurchaser.Result.Cancelled -> {
+                AppAnalytics.log(AppAnalytics.PURCHASE_CANCELLED, *extra)
+                updateState_ { copy(isPurchasing = false) }
+            }
+            StoreOfferPurchaser.Result.AlreadyOwned -> {
+                updateState_ { copy(isPurchasing = false, message = R.string.purchase_already_owned) }
+                runCatching { RevenueCatHelper.update(Purchases.sharedInstance.awaitRestore()) }
+                loadData()
+            }
+            StoreOfferPurchaser.Result.OfferGone -> {
+                // nothing was charged: the card is drawn again without the offer
+                AppAnalytics.log(AppAnalytics.PURCHASE_FAILED, *extra, "error_code" to "offer_gone")
+                updateState_ { copy(isPurchasing = false, message = R.string.paywall_offer_ended) }
+                loadData()
+            }
+            is StoreOfferPurchaser.Result.Failed -> {
+                AppAnalytics.log(AppAnalytics.PURCHASE_FAILED, *extra, "error_code" to result.code)
+                updateState_ { copy(isPurchasing = false, message = if (result.code == 2 || result.code == -1) R.string.purchase_network else R.string.something_went_wrong) }
+            }
+        }
+    }
+
+    private fun submitToServer(transaction: StoreTransaction?, plan: RcPlanItem) =
+        submitToServer(
+            transaction?.orderId, transaction?.purchaseTime, plan,
+            plan.price_amount_micros?.div(1_000_000.0) ?: 0.0, plan.rcPackage.product.price.currencyCode ?: ""
+        )
+
+    private fun submitToServer(orderId: String?, purchaseTime: Long?, plan: RcPlanItem, price: Double, currency: String) {
         viewModelScope.launch {
             val request = PurchasedPlanCheckRequest(
                 arrayListOf(
                     GooglePurchasedPlanRequest(
                         google_plan_id = plan.sku,
-                        google_order_id = transaction?.orderId ?: "",
+                        google_order_id = orderId ?: "",
                         is_lifetime_plan = plan.sku.contains("all"),
                         is_all_feature = true,
-                        start_date = transaction?.purchaseTime ?: 0L,
+                        start_date = purchaseTime ?: 0L,
                         end_date = 0L,
-                        purchase_price = plan.price_amount_micros?.div(1_000_000.0) ?: 0.0,
-                        purchase_currency = plan.rcPackage.product.price.currencyCode ?: "",
+                        purchase_price = price,
+                        purchase_currency = currency,
                         no_of_renewals = 0
                     )
                 )

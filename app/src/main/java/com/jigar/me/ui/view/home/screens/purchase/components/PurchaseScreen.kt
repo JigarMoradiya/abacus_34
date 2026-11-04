@@ -3,6 +3,9 @@ package com.jigar.me.ui.view.home.screens.purchase.components
 import com.jigar.me.ui.view.home.common_ui.dialogs.freeTrialDays
 import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
 import com.jigar.me.ui.view.home.common_ui.dialogs.storeIntroOffer
+import com.jigar.me.ui.view.home.common_ui.dialogs.badgeText
+import com.jigar.me.ui.view.home.common_ui.dialogs.countdownEnd
+import com.jigar.me.ui.view.home.common_ui.dialogs.storeOffer
 import com.jigar.me.ui.view.home.common_ui.dialogs.timedOffer
 import com.jigar.me.ui.view.home.common_ui.dialogs.thenLine
 import com.jigar.me.ui.view.home.common_ui.dialogs.PaywallKitLegal
@@ -355,6 +358,8 @@ private fun PurchaseKitPlanCard(
     val trialDays = if (!isPurchased && !isAssigned) plan.freeTrialDays() else 0
     // the timed Home offer: this plan is the ".offer" product shown INSTEAD of the regular one (original price struck through, % off, countdown)
     val timed = if (!isPurchased && !isAssigned) plan.timedOffer(uiState) else null
+    // the lifetime plan's Google Play discount offer (never together with the timed one)
+    val storeOffer = if (!isPurchased && !isAssigned && timed == null) plan.storeOffer(uiState) else null
 
     Box(Modifier.padding(AppDimens.Dimens4).padding(top = if (showsBestValue) 8.dp * s else 0.dp)) {
         Column(
@@ -381,6 +386,13 @@ private fun PurchaseKitPlanCard(
                             "$trialDays Days Free", style = AbTypography.fixed(20f * k, FontWeight.ExtraBold), color = ink,
                             modifier = Modifier.padding(start = AppDimens.Dimens4),
                         )
+                    } else if (storeOffer != null) {
+                        Text(storeOffer.fullPriceText, style = AbTypography.fixed(15f * k, FontWeight.SemiBold), color = colors.brandPrimary, textDecoration = TextDecoration.LineThrough)
+                        Text(
+                            storeOffer.offerPriceText, style = AbTypography.fixed(20f * k, FontWeight.ExtraBold), color = colors.brandPrimary,
+                            modifier = Modifier.padding(start = AppDimens.Dimens4),
+                        )
+                        Text(plan.getPriceSuffix(), style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.brandPrimary)
                     } else if (timed != null) {
                         timed.originalPrice?.let {
                             Text(it, style = AbTypography.fixed(15f * k, FontWeight.SemiBold), color = colors.brandPrimary, textDecoration = TextDecoration.LineThrough)
@@ -508,6 +520,12 @@ private fun PurchaseKitPlanCard(
                                     stringResource(R.string.paywall_percent_off_store, intro.percentOff),
                                     style = AbTypography.fixed(14f * k, FontWeight.ExtraBold), color = colors.accentGreenInk,
                                 )
+                            }
+                        }
+                        if (storeOffer != null && (storeOffer.badgeText().isNotEmpty() || storeOffer.countdownEnd() != null)) {
+                            Row(Modifier.padding(top = (if (trialDays > 0) 2.dp else 6.dp) * s), horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6), verticalAlignment = Alignment.CenterVertically) {
+                                Text(storeOffer.badgeText(), style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.accentGreenInk)
+                                storeOffer.countdownEnd()?.let { InlineCountdownPill(it, {}) }
                             }
                         }
                         if (timed != null && (timed.percentOff > 0 || timed.endMillis != null)) {

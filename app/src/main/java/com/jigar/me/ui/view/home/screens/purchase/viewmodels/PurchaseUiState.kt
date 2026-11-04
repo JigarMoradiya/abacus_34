@@ -1,6 +1,7 @@
 package com.jigar.me.ui.view.home.screens.purchase.viewmodels
 
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
+import com.jigar.me.utils.StoreOneTimeOffer
 import com.revenuecat.purchases.Package
 
 data class RcPlanItem(
@@ -63,6 +64,10 @@ data class PurchaseUiState(
     val discountPerLifetime: Int = 0,
     val homeOfferYearlyEndMillis: Long? = null,
     val homeOfferLifetimeEndMillis: Long? = null,
+
+    // A Google Play discount offer on the regular lifetime plan, set in the Play Console (percentage or absolute amount); null = none.
+    // Never together with the timed ".offer" plan above.
+    val lifetimeStoreOffer: StoreOneTimeOffer? = null,
 
     // UI flags
     val showSubmitButton: Boolean = false,

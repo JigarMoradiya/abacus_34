@@ -112,6 +112,7 @@ class SplashViewModel @Inject constructor(
             setCustomParamInt(AppConstants.RemoteConfig.freeCoreAfterWindow, freeCore.toInt())
             setCustomParam(AppConstants.RemoteConfig.returningPaywallDays, returningDays)
             setCustomParamInt(AppConstants.RemoteConfig.lifetimeMinPaywalls, lifetimeMin.toInt())
+            setCustomParam(AppConstants.RemoteConfig.storeOneTimeOffers, remoteConfig.getString(AppConstants.RemoteConfig.storeOneTimeOffers))
         }
         // Freemium time limit: look at this install once (an existing or limit-off install is grandfathered, any other gets
         // its window started), then cache the state the gates read

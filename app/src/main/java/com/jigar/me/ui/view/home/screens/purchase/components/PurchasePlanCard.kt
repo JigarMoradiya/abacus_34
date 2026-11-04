@@ -40,7 +40,11 @@ import com.jigar.me.ui.jetpack.core.presentation.theme.ColorGreen
 import com.jigar.me.ui.view.home.common_ui.buttons.KidsActionButton
 import com.jigar.me.ui.view.home.common_ui.InlineCountdownPill
 import com.jigar.me.ui.view.home.common_ui.dialogs.storeIntroOffer
+import com.jigar.me.ui.view.home.common_ui.dialogs.badgeText
+import com.jigar.me.ui.view.home.common_ui.dialogs.countdownEnd
+import com.jigar.me.ui.view.home.common_ui.dialogs.storeOffer
 import com.jigar.me.ui.view.home.common_ui.dialogs.timedOffer
+import com.jigar.me.utils.StoreOneTimeOffer
 import com.jigar.me.ui.view.home.common_ui.dialogs.thenLine
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.PurchaseUiState
 import com.jigar.me.ui.view.home.screens.purchase.viewmodels.RcPlanItem
@@ -125,7 +129,7 @@ fun PurchasePlanCard(
                                 fontFamily = FontFamily(Font(R.font.font_bold))
                             )
                         )
-                        PriceUi(plan, plan.timedOffer(uiState)?.originalPrice)
+                        PriceUi(plan, plan.timedOffer(uiState)?.originalPrice, plan.storeOffer(uiState))
                     }
                 }
 
@@ -227,6 +231,22 @@ fun PurchasePlanCard(
                                 )
                             }
                         }
+                        // the lifetime plan's Google Play discount offer: "30% OFF" or "₹500 OFF" (as set in the Play Console)
+                        val storeOffer = plan.storeOffer(uiState)
+                        if (storeOffer != null && (storeOffer.badgeText().isNotEmpty() || storeOffer.countdownEnd() != null)) {
+                            Row {
+                                Text(
+                                    text = storeOffer.badgeText(),
+                                    style = MaterialTheme.typography.labelMedium.copy(
+                                        color = ColorGreen, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))
+                                    )
+                                )
+                                storeOffer.countdownEnd()?.let { endMillis ->
+                                    Spacer(Modifier.width(AppDimens.Dimens6))
+                                    InlineCountdownPill(endMillis, {})
+                                }
+                            }
+                        }
                         // the timed Home offer: "(extra ~N% OFF)" / "~N% OFF" and the live countdown of the ".offer" plan
                         val timed = plan.timedOffer(uiState)
                         if (timed != null && (timed.percentOff > 0 || timed.endMillis != null)) {
@@ -259,7 +279,34 @@ fun PurchasePlanCard(
  * through. [timedOriginalPrice] is the regular plan's price while the timed Home offer shows this ".offer" plan instead of it.
  */
 @Composable
-fun PriceUi(plan: RcPlanItem, timedOriginalPrice: String? = null) {
+fun PriceUi(plan: RcPlanItem, timedOriginalPrice: String? = null, storeOffer: StoreOneTimeOffer? = null) {
+    // the lifetime plan's Google Play discount offer: the regular price struck through, the offer price in its place
+    if (storeOffer != null) {
+        Text(
+            text = storeOffer.fullPriceText,
+            style = MaterialTheme.typography.bodySmall.copy(
+                textDecoration = TextDecoration.LineThrough, color = ColorAccent,
+                fontWeight = FontWeight.SemiBold, fontFamily = FontFamily(Font(R.font.font_semibold))
+            )
+        )
+        Spacer(Modifier.width(AppDimens.Dimens4))
+        Text(
+            text = storeOffer.offerPriceText,
+            style = MaterialTheme.typography.bodyMedium.copy(
+                color = ColorAccent, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.font_bold))
+            )
+        )
+        val storeSuffix = plan.getPriceSuffix()
+        if (storeSuffix.isNotEmpty()) {
+            Text(
+                text = storeSuffix,
+                style = MaterialTheme.typography.labelSmall.copy(
+                    color = ColorAccent, fontWeight = FontWeight.Medium, fontFamily = FontFamily(Font(R.font.font_medium))
+                )
+            )
+        }
+        return
+    }
     val intro = if (timedOriginalPrice == null) plan.storeIntroOffer() else null
     if (timedOriginalPrice != null) {
         Text(
