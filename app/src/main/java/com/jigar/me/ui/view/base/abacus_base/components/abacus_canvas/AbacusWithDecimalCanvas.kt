@@ -29,6 +29,14 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -85,6 +93,10 @@ fun AbacusWithDecimalCanvas(
     /** `Toy` = the Ab kit's toy frame (its own answer bar, rods, beam and tags); `Classic` = the original frame. */
     frameStyle: AbacusFrameStyle = AbacusFrameStyle.Classic,
     isNextButtonEnable: Boolean = false,
+    /** The beads take swipes on a screen type that normally only watches (the first-launch tutorial, whose child moves them). */
+    forceTouch: Boolean = false,
+    /** The direction arrows pulse (the first-launch tutorial). */
+    hintPulse: Boolean = false,
     onRodMovementChange: (List<RodMovement>) -> Unit,
     onShowDirectionHintsChange: (Boolean) -> Unit,
     onShowHighlighterChange: (Boolean) -> Unit,
@@ -113,6 +125,14 @@ fun AbacusWithDecimalCanvas(
     val arrowDown = remember {
         drawableToImageBitmap(context, R.drawable.ic_abacus_arrow_down)
     }
+    // read only while drawing, so a pulsing arrow redraws the canvas and nothing else
+    val arrowPulse: State<Float> = if (hintPulse) {
+        rememberInfiniteTransition(label = "hintPulse").animateFloat(
+            initialValue = 1f, targetValue = 1.3f,
+            animationSpec = infiniteRepeatable(tween(550, easing = FastOutSlowInEasing), RepeatMode.Reverse),
+            label = "hintPulseScale",
+        )
+    } else remember { mutableFloatStateOf(1f) }
 
 
     val dim = AbacusTheme.dimensionPreset(context,screenType = screenType,abacusType = abacusType,questionType = questionType, isFreeModeOn = isFreeModeOn)
@@ -272,7 +292,7 @@ fun AbacusWithDecimalCanvas(
         // --- Inner rods & beads on Canvas ---
 
         if (!showHighlighter || currentSpot != 0) { // hide all things when frame highlighter show
-            val isTouchEnabled = screenType != AppConstants.AbacusScreen.screenTypeLevel1Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel1Practice && screenType != AppConstants.AbacusScreen.screenTypeLevel2Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula && screenType != AppConstants.AbacusScreen.screenTypeLevel2Practice && screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult && screenType != AppConstants.AbacusScreen.screenTypeSettingPreview
+            val isTouchEnabled = forceTouch || (screenType != AppConstants.AbacusScreen.screenTypeLevel1Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel1Practice && screenType != AppConstants.AbacusScreen.screenTypeLevel2Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula && screenType != AppConstants.AbacusScreen.screenTypeLevel2Practice && screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult && screenType != AppConstants.AbacusScreen.screenTypeSettingPreview)
             val gestureModifier = if (isTouchEnabled) {
                 Modifier.pointerInput(Unit) {
                     val thresholdPx = with(density) { Dimens2.toPx() }
@@ -338,7 +358,8 @@ fun AbacusWithDecimalCanvas(
                     beadPolygonGray = beadPolygonGray,
                     arrowUPBitmap = arrowUp,
                     arrowDownBitmap = arrowDown,
-                    toyFrame = toy
+                    toyFrame = toy,
+                    arrowPulse = arrowPulse.value,
                 )
             }
         }

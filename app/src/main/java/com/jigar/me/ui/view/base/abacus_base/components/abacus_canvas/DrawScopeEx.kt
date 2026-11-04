@@ -63,7 +63,9 @@ fun DrawScope.drawAbacusColumns(
     arrowUPBitmap: ImageBitmap,
     arrowDownBitmap: ImageBitmap,
     // The toy frame draws its own rods, beam and markers behind the beads, so the classic ones are skipped.
-    toyFrame: Boolean = false
+    toyFrame: Boolean = false,
+    // 1 = the arrows keep their size; the first-launch tutorial animates it so the arrow on the next bead to swipe pulses
+    arrowPulse: Float = 1f,
 ) {
     val preset = AbacusTheme.colorPreset(selectedTheme)
     val isPolygonTheme = selectedTheme.contains("poligon", ignoreCase = true)
@@ -377,7 +379,7 @@ fun DrawScope.drawAbacusColumns(
                             arrowDown = arrowDownBitmap,
                             // the Happy Bead has its face in the middle: the arrow goes to the left of it, with a little room before the tip
                             centerShiftPx = if (isRealBead) -geometry.beadWidthPx * 0.90f / 2f * 0.60f else 0f,
-                            sizeScale = if (isRealBead) 0.78f else 1f,
+                            sizeScale = (if (isRealBead) 0.78f else 1f) * arrowPulse,
                         )
                     }
                 }

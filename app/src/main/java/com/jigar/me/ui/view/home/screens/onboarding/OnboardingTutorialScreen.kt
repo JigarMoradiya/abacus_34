@@ -72,6 +72,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import kotlinx.coroutines.delay
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Rect
@@ -128,22 +131,26 @@ object OnboardingGate {
     fun markSeen(prefs: AppPreferencesHelper) = prefs.setCustomParamBoolean(KEY, true)
 }
 
-private data class Move(val to: Int, val afterTitle: String, val afterBody: String)
-
+/**
+ * One guided step. The child makes `goal` on the abacus by swiping the beads (the arrows on the beads show the next swipe);
+ * `afterTitle` / `afterBody` appear when it is made, and only then does Next unlock. Mirrors the iOS tutorial.
+ */
 private data class Page(
     val title: String,
     val body: String,
     val valueBefore: Int,
-    val move: Move? = null,
+    val goal: Int,
+    val afterTitle: String,
+    val afterBody: String,
     val showFriendCard: Boolean = false,   // the Small Friend hint card, as in Level 2
 )
 
 private val pages = listOf(
-    Page("Meet the abacus", "Each rod is one digit.", 0),
-    Page("Bottom beads = 1", "Slide them up to count.", 3),
-    Page("Top bead = 5", "5 and 2 more make 7.", 7),
-    Page("Let's add: 2 + 1", "Slide one bead up.", 2, Move(3, "2 + 1 = 3", "Great job!")),
-    Page("Now: 4 + 3", "No room for 3 more beads!", 4, Move(7, "4 + 3 = 7", "That was a Small Friend!"), showFriendCard = true),
+    Page("Meet the abacus", "Each rod is one digit.\nSwipe the bead up!", 0, 1, "That's 1!", "Every bead you move counts."),
+    Page("Bottom beads = 1", "Swipe 3 beads up to count to 3.", 0, 3, "3 beads = 3", "You counted to 3!"),
+    Page("Top bead = 5", "Swipe the top bead down, then 2 beads up.", 0, 7, "5 + 2 = 7", "Top bead 5 and 2 more make 7!"),
+    Page("Let's add: 2 + 1", "Swipe one more bead up.", 2, 3, "2 + 1 = 3", "Great job!"),
+    Page("Now: 4 + 3", "No room for 3 more beads!\nFollow the arrows.", 4, 7, "4 + 3 = 7", "That was a Small Friend!", showFriendCard = true),
 )
 
 /** The iPad multiplier of `responsiveDimenstion`, so type grows the same way on tablets. */
@@ -163,13 +170,11 @@ fun OnboardingTutorialScreen(
     parentPage: @Composable (left: @Composable () -> Unit, footer: @Composable () -> Unit, finish: (Boolean) -> Unit) -> Unit,
 ) {
     var index by remember { mutableIntStateOf(startPage.coerceIn(0, pages.size + featureGroups.size)) }
-    var moved by remember { mutableStateOf(false) }
     val parentIndex = pages.size + featureGroups.size
     val onFeaturesPage = index >= pages.size && index < parentIndex     // after the guided steps: what is inside the app
     val onParentPage = index >= parentIndex                              // last: the plans
 
     LaunchedEffect(index) {
-        moved = false
         AppAnalytics.log(
             AppAnalytics.TUTORIAL_STEP,
             "step" to (index + 1).coerceAtMost(parentIndex + 1), "total" to parentIndex + 1,
@@ -201,10 +206,9 @@ fun OnboardingTutorialScreen(
             )
         } else {
             TutorialPage(
-                selectedTheme = selectedTheme, index = index, moved = moved,
+                selectedTheme = selectedTheme, index = index,
                 nextText = "Next",
-                onShowMe = { moved = true },
-                onPrevious = { if (moved) moved = false else if (index > 0) index -= 1 },
+                onPrevious = { if (index > 0) index -= 1 },
                 onNext = { index += 1 },
                 onSkip = {
                     AppAnalytics.log(AppAnalytics.TUTORIAL_SKIPPED, "step" to index + 1)
@@ -254,9 +258,7 @@ fun FeatureListScreen(onClose: () -> Unit) {
 private fun TutorialPage(
     selectedTheme: String,
     index: Int,
-    moved: Boolean,
     nextText: String,
-    onShowMe: () -> Unit,
     onPrevious: () -> Unit,
     onNext: () -> Unit,
     onSkip: () -> Unit,
@@ -264,27 +266,41 @@ private fun TutorialPage(
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
     val k = responsive
+    val haptic = LocalHapticFeedback.current
     val page = pages[index]
-    val title = (if (moved) page.move?.afterTitle else null) ?: page.title
-    val body = (if (moved) page.move?.afterBody else null) ?: page.body
-    val hasMoveToShow = page.move != null && !moved
+    var done by remember(index) { mutableStateOf(false) }          // the goal is made (by the child, or by "Show me")
+    var showMeReady by remember(index) { mutableStateOf(false) }   // a while without a move: the "Show me" fallback appears
+    val title = if (done) page.afterTitle else page.title
+    val body = if (done) page.afterBody else page.body
 
-    // the abacus shows the page's value; a page with a move also shows the arrows for it until "Show me" is tapped
     val abCalc = remember { AbacusCalculations(3) }
     var rodMovement by remember { mutableStateOf<List<RodMovement>>(emptyList()) }
     var showArrows by remember { mutableStateOf(false) }
-    LaunchedEffect(index, moved) {
-        val value = if (moved && page.move != null) page.move.to else page.valueBefore
+    // the number the beads show now, read from the beads so it follows every swipe
+    val shown = abCalc.displayValue.toIntOrNull() ?: 0
+
+    // a page starts from its own number whatever the child did on the page before
+    LaunchedEffect(index) {
         abCalc.resetAbacusData()
-        if (value > 0) abCalc.setAbacusValueFromString(value.toString())
-        val move = page.move
-        if (move != null && !moved) {
-            // 3 rods: the ones rod is the last one (index 2)
-            rodMovement = listOf(RodMovement(2, l2ComputeMovement(page.valueBefore, move.to)))
-            showArrows = true
-        } else {
-            rodMovement = emptyList()
+        if (page.valueBefore > 0) abCalc.setAbacusValueFromString(page.valueBefore.toString())
+    }
+    // after every move: the goal is made -> celebrate and unlock Next; otherwise point at the next swipe and wait for "Show me"
+    LaunchedEffect(index, shown) {
+        if (done) return@LaunchedEffect
+        val value = abCalc.displayValue.toIntOrNull() ?: 0
+        if (value == page.goal) {
+            done = true
             showArrows = false
+            rodMovement = emptyList()
+            showMeReady = false
+            haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+        } else {
+            // 3 rods: the ones rod is the last one (index 2)
+            rodMovement = listOf(RodMovement(2, l2ComputeMovement(value, page.goal)))
+            showArrows = true
+            showMeReady = false
+            delay(8000)
+            showMeReady = true
         }
     }
 
@@ -325,7 +341,7 @@ private fun TutorialPage(
                 horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16, Alignment.CenterHorizontally),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                // the abacus is for watching: a transparent layer on top takes the touches; the number it shows sits under it
+                // the child moves the beads (swipes); once the number is made they stay put
                 Column(Modifier.fillMaxHeight().offset(x = (-24).dp * k), horizontalAlignment = Alignment.CenterHorizontally) {   // a little to the left
                 Box(Modifier.weight(1f).aspectRatio(0.8f)) {
                     AbacusWithDecimalCanvas(
@@ -338,15 +354,16 @@ private fun TutorialPage(
                         rodMovement = rodMovement,
                         showDirectionHint = showArrows,
                         frameStyle = AbacusFrameStyle.Toy,
+                        forceTouch = !done,
+                        hintPulse = true,
                         onRodMovementChange = {},
                         onShowDirectionHintsChange = {},
                         onShowHighlighterChange = {},
                         onReset = {},
                         onNext = {},
                     )
-                    Box(Modifier.matchParentSize().clickable(remember { MutableInteractionSource() }, indication = null) {})
                 }
-                NumberPlate(if (moved && page.move != null) page.move.to else page.valueBefore)
+                NumberPlate(shown)
                 }
                 AnimatedVisibility(
                     visible = page.showFriendCard,
@@ -364,27 +381,31 @@ private fun TutorialPage(
             }
         }
     }
-        // Previous bottom-left, Next / Show me bottom-right (the corners a thumb reaches)
+        // Previous bottom-left, Next bottom-right (the corners a thumb reaches). Next unlocks only when the child has made the number;
+        // a while without a move brings "Show me" (the abacus does it) so nobody gets stuck.
         Row(
             Modifier.align(Alignment.BottomCenter).fillMaxWidth().padding(bottom = AppDimens.Dimens8),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            if (index > 0 || moved) {
+            if (index > 0) {
                 AbButton(
                     text = "Previous", tone = AbTone.Purple, size = AbSize.Small, icon = Icons.Rounded.KeyboardArrowLeft,
                     minHeightOverride = 32f, horizontalPaddingOverride = 11f, onClick = onPrevious,
                 )
             } else Spacer(Modifier)
-            AbButton(
-                text = if (hasMoveToShow) "Show me" else nextText,
-                tone = if (hasMoveToShow) AbTone.Warning else AbTone.Primary,
-                size = AbSize.Small,
-                icon = if (hasMoveToShow) Icons.Rounded.TouchApp else Icons.Rounded.KeyboardArrowRight,
-                iconAtEnd = !hasMoveToShow,
-                minHeightOverride = 32f, horizontalPaddingOverride = 11f,
-                onClick = { if (hasMoveToShow) onShowMe() else onNext() },
-            )
+            when {
+                done -> AbButton(
+                    text = nextText, tone = AbTone.Primary, size = AbSize.Small, icon = Icons.Rounded.KeyboardArrowRight, iconAtEnd = true,
+                    minHeightOverride = 32f, horizontalPaddingOverride = 11f, onClick = onNext,
+                )
+                showMeReady -> AbButton(
+                    text = "Show me", tone = AbTone.Warning, size = AbSize.Small, icon = Icons.Rounded.TouchApp,
+                    minHeightOverride = 32f, horizontalPaddingOverride = 11f,
+                    onClick = { abCalc.setAbacusValueFromString(page.goal.toString()) },   // the change then unlocks Next like a real swipe
+                )
+                else -> Spacer(Modifier)
+            }
         }
     }
 }
