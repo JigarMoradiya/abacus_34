@@ -34,6 +34,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import com.jigar.me.ui.view.ab.AbTopBar
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -378,7 +379,10 @@ private fun TutorialPage(
             ) {
                 // the child moves the beads (swipes); once the number is made they stay put
                 Column(Modifier.fillMaxHeight().offset(x = (-24).dp * k), horizontalAlignment = Alignment.CenterHorizontally) {   // a little to the left
-                Box(Modifier.weight(1f).aspectRatio(0.8f)) {
+                NumberPlate(shown)   // above the abacus: the number the beads make
+                Spacer(Modifier.height(AppDimens.Dimens8))   // a little air between the plate and the abacus
+                // the abacus is narrower than its box (smaller beads): centred in it, so the number plate above sits over its middle
+                Box(Modifier.weight(1f).aspectRatio(0.8f), contentAlignment = Alignment.TopCenter) {
                     AbacusWithDecimalCanvas(
                         selectedTheme = selectedTheme,
                         screenType = AppConstants.AbacusScreen.screenTypeLevel2Learn,   // no Reset / Next answer bar
@@ -393,7 +397,7 @@ private fun TutorialPage(
                         hintPulse = true,
                         hintHand = handReady && !done,
                         showRodNames = true,    // Hundreds / Tens / Ones under the rods, like the other abaci
-                        beadScale = 0.88f,      // a little smaller so the abacus, its names and the number plate fit
+                        beadScale = 0.88f,      // a little smaller so the number plate, the abacus and its names fit
                         onRodMovementChange = {},
                         onShowDirectionHintsChange = {},
                         onShowHighlighterChange = {},
@@ -401,7 +405,6 @@ private fun TutorialPage(
                         onNext = {},
                     )
                 }
-                NumberPlate(shown)
                 }
                 AnimatedVisibility(
                     visible = page.showFriendCard,
@@ -636,21 +639,28 @@ private fun NumberPlate(value: Int) {
     val k = responsive
     Box(Modifier.padding(top = AppDimens.Dimens4, bottom = 3.dp)) {
         Box(Modifier.matchParentSize().offset(y = 3.dp).background(colors.outline, CircleShape))   // the 3D edge
-        Row(
+        // a fixed low plate, as tall as the iOS one (32): the text keeps its size and is centred, its line boxes may be taller than the card
+        Box(
             Modifier
+                .height(32.dp * k)
                 .background(colors.bgSecondary, CircleShape)
                 .border(2.dp, colors.outline, CircleShape)
-                .padding(horizontal = 20.dp * k, vertical = 0.dp),   // a low plate: the text keeps its size, only the card is shorter
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
+                .padding(horizontal = 20.dp * k),
+            contentAlignment = Alignment.Center,
         ) {
-            Text("Number", style = AbTypography.fixed(12f * k, FontWeight.Bold).copy(lineHeight = (14f * k).sp, lineHeightStyle = PLATE_LINES), color = colors.textSecondary)
-            AnimatedContent(
-                targetState = value,
-                transitionSpec = { (scaleIn(initialScale = 0.6f) + fadeIn()) togetherWith (scaleOut(targetScale = 1.4f) + fadeOut()) },
-                label = "abacusNumber",
-            ) { v ->
-                Text(v.toString(), style = AbTypography.fixed(30f * k, FontWeight.Black).copy(lineHeight = (21f * k).sp, lineHeightStyle = PLATE_LINES), color = colors.brandPrimary)
+            Row(
+                Modifier.wrapContentHeight(align = Alignment.CenterVertically, unbounded = true),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
+            ) {
+                Text("Number", style = AbTypography.fixed(12f * k, FontWeight.Bold).copy(lineHeight = (14f * k).sp, lineHeightStyle = PLATE_LINES), color = colors.textSecondary)
+                AnimatedContent(
+                    targetState = value,
+                    transitionSpec = { (scaleIn(initialScale = 0.6f) + fadeIn()) togetherWith (scaleOut(targetScale = 1.4f) + fadeOut()) },
+                    label = "abacusNumber",
+                ) { v ->
+                    Text(v.toString(), style = AbTypography.fixed(30f * k, FontWeight.Black).copy(lineHeight = (21f * k).sp, lineHeightStyle = PLATE_LINES), color = colors.brandPrimary)
+                }
             }
         }
     }
