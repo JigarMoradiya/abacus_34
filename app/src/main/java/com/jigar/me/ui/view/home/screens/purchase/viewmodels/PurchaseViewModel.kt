@@ -284,7 +284,8 @@ class PurchaseViewModel @Inject constructor(
                     AppAnalytics.log(
                         AppAnalytics.PURCHASE_COMPLETED, *analytics,
                         "price" to (selected.price_amount_micros?.div(1_000_000.0) ?: 0.0),
-                        "currency" to selected.rcPackage.product.price.currencyCode
+                        "currency" to selected.rcPackage.product.price.currencyCode,
+                        "trial" to (result.customerInfo.entitlements["premium"]?.periodType == com.revenuecat.purchases.PeriodType.TRIAL)
                     )
                     submitToServer(result.storeTransaction, selected)
                     updateState_ { copy(isPurchasing = false, purchaseSuccess = true) }

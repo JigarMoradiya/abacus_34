@@ -124,6 +124,9 @@ import kotlin.math.min
  * parent (what the child will master) with the plans (free trial) on the same page. Shown once per install.
  * Mirrors the iOS `OnboardingTutorialView`.
  */
+/** `tutorial_complete` is logged once per install. */
+private const val TUTORIAL_COMPLETE_LOGGED = "ab_tutorial_complete_logged"
+
 object OnboardingGate {
     const val KEY = "ab_onboarding_seen"
 
@@ -272,6 +275,7 @@ private fun TutorialPage(
     val k = responsive
     val haptic = LocalHapticFeedback.current
     val page = pages[index]
+    val prefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current
     var done by remember(index) { mutableStateOf(false) }          // the goal is made (by the child, or by "Show me")
     var handReady by remember(index) { mutableStateOf(false) }     // a few seconds without a move: a hand shows the swipe
     var nextNudge by remember(index) { mutableStateOf(false) }     // the step is done but Next was not tapped for a few seconds: Next pulses
@@ -309,6 +313,10 @@ private fun TutorialPage(
         val value = abCalc.displayValue.toIntOrNull() ?: 0
         if (value == page.goal) {
             done = true
+            if (index == pages.size - 1 && !prefs.getCustomParamBoolean(TUTORIAL_COMPLETE_LOGGED, false)) {
+                prefs.setCustomParamBoolean(TUTORIAL_COMPLETE_LOGGED, true)
+                AppAnalytics.log(AppAnalytics.TUTORIAL_COMPLETE)
+            }
             showArrows = false
             rodMovement = emptyList()
             handReady = false

@@ -15,6 +15,10 @@ object AppAnalytics {
     const val TUTORIAL_STEP = "tutorial_step"
     const val TUTORIAL_SKIPPED = "tutorial_skipped"
     const val TUTORIAL_FINISHED = "tutorial_finished"
+    /** Firebase standard event, once per install: the child made the goal number of the last guided step (Skip never logs it). Ad conversion. */
+    const val TUTORIAL_COMPLETE = "tutorial_complete"
+    /** A purchase that started a FREE trial: no money yet, so it is never sent as `purchase`. */
+    const val TRIAL_STARTED = "trial_started"
     const val GATE_SHOWN = "paywall_gate_shown"
     const val GATE_PASSED = "paywall_gate_passed"
     const val PLAN_SELECTED = "plan_selected"
@@ -61,6 +65,28 @@ object AppAnalytics {
                 }
             }
             Firebase.analytics.logEvent(event, bundle)
+        }
+        if (event == PURCHASE_COMPLETED) logPurchase(params.toMap())
+    }
+
+    /** The same sale as the Firebase standard `purchase` event (`value` + `currency`), the form Google Ads imports as a conversion with revenue.
+     *  A free-trial start sends `trial_started` instead. */
+    private fun logPurchase(params: Map<String, Any>) {
+        // a free-trial start: no money counted before the store charges any
+        if (params["trial"] == true) {
+            log(TRIAL_STARTED, "item_id" to params["product_id"]?.toString().orEmpty())
+            return
+        }
+        val value = (params["price"] as? Number)?.toDouble() ?: return
+        val currency = params["currency"]?.toString().orEmpty()
+        if (value <= 0.0 || currency.isEmpty()) return
+        if (com.jigar.me.BuildConfig.DEBUG) android.util.Log.d("AppAnalytics", "purchase value=$value currency=$currency")
+        runCatching {
+            Firebase.analytics.logEvent("purchase", Bundle().apply {
+                putDouble("value", value)
+                putString("currency", currency)
+                putString("item_id", params["product_id"]?.toString().orEmpty().take(100))
+            })
         }
     }
 }

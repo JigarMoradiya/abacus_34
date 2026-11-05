@@ -86,6 +86,12 @@ class MyApplication : Application(), Configuration.Provider {
             PurchasesConfiguration.Builder(this, "goog_GZMHOoRwGnscKzjqLIghpwwUzYh").build()
         )
         Purchases.sharedInstance.updatedCustomerInfoListener = UpdatedCustomerInfoListener { RevenueCatHelper.update(it) }
+        // RevenueCat's Firebase integration sends renewals and other store events to this Analytics instance (needs the id)
+        runCatching {
+            com.google.firebase.analytics.FirebaseAnalytics.getInstance(this@MyApplication).appInstanceId.addOnSuccessListener { id ->
+                if (!id.isNullOrEmpty()) Purchases.sharedInstance.setFirebaseAppInstanceID(id)
+            }
+        }
         kotlinx.coroutines.MainScope().launch {
             // Seed RC cache from disk immediately — eliminates the cold-launch null window
             // where cachedInfo is null for ~1s before the listener fires.
