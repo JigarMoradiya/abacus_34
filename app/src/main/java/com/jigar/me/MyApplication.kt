@@ -1,22 +1,28 @@
 package com.jigar.me
 
+//import com.facebook.drawee.backends.pipeline.Fresco
 import android.app.Activity
 import android.app.Application
-import android.app.PendingIntent
 import android.content.Context
+import android.content.pm.ActivityInfo
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
+import android.os.Looper
 import androidx.annotation.NonNull
 import androidx.hilt.work.HiltWorkerFactory
-import androidx.navigation.NavDeepLinkBuilder
 import androidx.work.Configuration
-//import com.facebook.drawee.backends.pipeline.Fresco
-import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.jigar.me.data.model.NotificationData
-import com.jigar.me.ui.view.base.inapp.BillingRepository
-import com.jigar.me.ui.view.dashboard.MainDashboardActivity
-import com.jigar.me.utils.AppConstants
+import com.jigar.me.utils.RevenueCatHelper
+import com.revenuecat.purchases.CacheFetchPolicy
+import com.revenuecat.purchases.Purchases
+import com.revenuecat.purchases.PurchasesConfiguration
+import com.revenuecat.purchases.awaitCustomerInfo
+import com.revenuecat.purchases.awaitOfferings
+import com.revenuecat.purchases.interfaces.UpdatedCustomerInfoListener
+import kotlinx.coroutines.launch
+import com.jigar.me.ui.view.home.HomeActivity
+import com.jigar.me.ui.view.home.navigation.RouteNavigation
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.VersionUpdation
@@ -43,10 +49,6 @@ import com.onesignal.notifications.INotificationWillDisplayEvent
 import com.onesignal.user.state.IUserStateObserver
 import com.onesignal.user.state.UserChangedState
 import dagger.hilt.android.HiltAndroidApp
-import io.reactivex.exceptions.UndeliverableException
-import io.reactivex.plugins.RxJavaPlugins
-import java.io.IOException
-import java.net.SocketException
 import javax.inject.Inject
 
 
@@ -54,13 +56,9 @@ import javax.inject.Inject
 class MyApplication : Application(), Configuration.Provider {
     init {
         instance = this
-        alreadyCalledversionCheck = false
         System.loadLibrary("native-lib")
         System.loadLibrary("sqlcipher")
     }
-
-    @Inject
-    lateinit var billingRepository: BillingRepository
 
     @Inject
     lateinit var workerFactory: HiltWorkerFactory
@@ -72,74 +70,130 @@ class MyApplication : Application(), Configuration.Provider {
 
     companion object {
         var instance: MyApplication? = null
-        var alreadyCalledversionCheck: Boolean? = false
-
-        var analytics: FirebaseAnalytics? = null
-
-        fun logEvent(event:String,data: Bundle?){
-            analytics?.logEvent(event,data)
-        }
 
         fun getInstance(): Context {
             return instance!!.applicationContext
         }
     }
 
-    override fun onTerminate() {
-        super.onTerminate()
-        billingRepository.endDataSourceConnections()
-    }
-
     override fun onCreate() {
         super.onCreate()
-        // Initialize billing once at app start
-        billingRepository.startDataSourceConnections()
+        installTextToSpeechCrashGuard()
+        stopFinalizerWatchdogOnAndroid7()
+        // Initialize RevenueCat
+        Purchases.logLevel = if (BuildConfig.DEBUG) com.revenuecat.purchases.LogLevel.DEBUG else com.revenuecat.purchases.LogLevel.WARN
+        Purchases.configure(
+            PurchasesConfiguration.Builder(this, "goog_GZMHOoRwGnscKzjqLIghpwwUzYh").build()
+        )
+        Purchases.sharedInstance.updatedCustomerInfoListener = UpdatedCustomerInfoListener { RevenueCatHelper.update(it) }
+        kotlinx.coroutines.MainScope().launch {
+            // Seed RC cache from disk immediately — eliminates the cold-launch null window
+            // where cachedInfo is null for ~1s before the listener fires.
+            try { RevenueCatHelper.update(Purchases.sharedInstance.awaitCustomerInfo(CacheFetchPolicy.CACHE_ONLY)) } catch (_: Exception) {}
+            try { Purchases.sharedInstance.awaitOfferings() } catch (_: Exception) {}
+        }
 
         // app version update if any code logic change
         VersionUpdation.init(this)
 
-//        Fresco.initialize(this)
-        analytics = FirebaseAnalytics.getInstance(this@MyApplication)
         oneSignal()
+
+        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
+            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+                if (activity is HomeActivity){
+                    activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_USER_LANDSCAPE
+                }else{
+                    activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_USER_PORTRAIT
+                }
+            }
+            override fun onActivityStarted(activity: Activity) {}
+            override fun onActivityResumed(activity: Activity) {}
+            override fun onActivityPaused(activity: Activity) {}
+            override fun onActivityStopped(activity: Activity) {}
+            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
+            override fun onActivityDestroyed(activity: Activity) {}
+        })
     }
 
+    /**
+     * Some phones' own text-to-speech engine fails while Android is connecting to it. The framework does that in an AsyncTask
+     * (`android.speech.tts.TextToSpeech$Connection$SetupConnectionAsyncTask`), so the error is thrown on a background thread where
+     * nothing of ours can catch it, and the app closed at launch ("An error occurred while executing doInBackground()", caused by
+     * "Task was cancelled"). The app works without speech, so that one failure is recorded in Crashlytics and the app goes on.
+     * Every other uncaught exception still reaches the normal handler.
+     */
+    /**
+     * On Android 7 (API 24 and 25) the system closes the whole app when any object's finalize() runs longer than 10 seconds
+     * ("android.graphics.Path.finalize() timed out after 10 seconds"). That happens on slow, overloaded phones that draw a lot,
+     * because every Path has a finalizer on those versions, and it is not a fault of one screen. Stopping that watchdog lets the
+     * slow clean-up finish instead of closing the app. Newer Android versions have no finalizer on Path and block this access, so
+     * it is limited to the two old versions, and any failure of the call is ignored.
+     */
+    private fun stopFinalizerWatchdogOnAndroid7() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N_MR1) return
+        try {
+            val watchdog = Class.forName("java.lang.Daemons\$FinalizerWatchdogDaemon")
+            val instance = watchdog.getDeclaredField("INSTANCE").apply { isAccessible = true }.get(null)
+            watchdog.superclass.getDeclaredMethod("stop").apply { isAccessible = true }.invoke(instance)
+        } catch (_: Throwable) {
+            // not available on this phone: nothing to stop
+        }
+    }
+
+    private fun installTextToSpeechCrashGuard() {
+        val previous = Thread.getDefaultUncaughtExceptionHandler()
+        Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
+            if (thread != Looper.getMainLooper().thread && throwable.isTextToSpeechSetupFailure()) {
+                runCatching { com.google.firebase.crashlytics.FirebaseCrashlytics.getInstance().recordException(throwable) }
+            } else {
+                previous?.uncaughtException(thread, throwable)
+            }
+        }
+    }
+
+    private fun Throwable.isTextToSpeechSetupFailure(): Boolean =
+        message?.contains("doInBackground") == true &&
+            generateSequence(this) { it.cause }.any { t -> t.stackTrace.any { it.className.startsWith("android.speech.tts.TextToSpeech") } }
+
     private fun oneSignal() {
-        // Enable verbose OneSignal logging to debug issues if needed.
-        OneSignal.Debug.logLevel = LogLevel.VERBOSE
+        // Verbose logging only for debug builds; releases stay quiet.
+        OneSignal.Debug.logLevel = if (BuildConfig.DEBUG) LogLevel.VERBOSE else LogLevel.WARN
         // OneSignal Initialization
         OneSignal.initWithContext(this, CommonUtils.getOneSignalKey())
 
+        // Every OneSignal object used below (InAppMessages, Notifications, User, Location) waits until OneSignal has finished
+        // starting up. On a slow phone that wait ran out on the main thread and threw from onCreate, which closed the app at
+        // launch ("initWithContext was not called or timed out"). The wait now happens on a background thread, and a failure
+        // only costs the push and in-app message listeners.
+        kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.Default).launch {
+            runCatching { oneSignalListeners() }.onFailure {
+                com.google.firebase.crashlytics.FirebaseCrashlytics.getInstance().recordException(it)
+            }
+        }
+    }
+
+    private fun oneSignalListeners() {
         InAppMessages.addLifecycleListener(object : IInAppMessageLifecycleListener {
-            override fun onWillDisplay(@NonNull event: IInAppMessageWillDisplayEvent) {
-                Log.e("jigarOneSignal", "onWillDisplayInAppMessage")
+            override fun onWillDisplay(event: IInAppMessageWillDisplayEvent) {
             }
 
-            override fun onDidDisplay(@NonNull event: IInAppMessageDidDisplayEvent) {
-                Log.e("jigarOneSignal", "onDidDisplayInAppMessage")
+            override fun onDidDisplay(event: IInAppMessageDidDisplayEvent) {
             }
 
-            override fun onWillDismiss(@NonNull event: IInAppMessageWillDismissEvent) {
-                Log.e("jigarOneSignal", "onWillDismissInAppMessage")
+            override fun onWillDismiss(event: IInAppMessageWillDismissEvent) {
             }
 
-            override fun onDidDismiss(@NonNull event: IInAppMessageDidDismissEvent) {
-                Log.e("jigarOneSignal", "onDidDismissInAppMessage")
+            override fun onDidDismiss(event: IInAppMessageDidDismissEvent) {
             }
         })
 
         InAppMessages.addClickListener(object : IInAppMessageClickListener {
             override fun onClick(event: IInAppMessageClickEvent) {
-                Log.e("jigarOneSignal", "INotificationClickListener.inAppMessageClicked")
             }
         })
 
         Notifications.addClickListener(object : INotificationClickListener {
             override fun onClick(event: INotificationClickEvent) {
-                Log.e(
-                    "jigarOneSignal", "INotificationClickListener.onClick fired" +
-                            " with event: " + event.notification.additionalData
-                )
-
                 val additional_data = event.notification.additionalData.toString()
                 if (additional_data.isNotEmpty()) {
                     val notification = Gson().fromJson(additional_data, NotificationData::class.java)
@@ -147,25 +201,94 @@ class MyApplication : Application(), Configuration.Provider {
                     if (notification != null) {
                         when (notification.type) {
                             Constants.notificationTypeStarter -> {
-                                moveToDestination(R.id.fullAbacusFragment)
+                                moveToDestination(RouteNavigation.AbacusFreeMode.route)
                             }
                             Constants.notificationTypeExercise -> {
-                                moveToDestination(R.id.exerciseHomeFragment)
+                                moveToDestination(RouteNavigation.Exercise.route)
                             }
                             Constants.notificationTypeCCM -> {
-                                moveToDestination(R.id.customChallengeHomeFragment)
+                                moveToDestination(RouteNavigation.CCMHome.route)
                             }
                             Constants.notificationTypeExam -> {
-                                moveToDestination(R.id.examHomeFragment)
+                                moveToDestination(RouteNavigation.ExamHome.route)
                             }
                             Constants.notificationTypeNumberSequence -> {
-                                moveToDestination(R.id.puzzleNumberHomeFragment)
+                                moveToDestination(RouteNavigation.NumberSequencePuzzleHome.route)
                             }
                             Constants.notificationTypeSetting -> {
-                                moveToDestination(R.id.settingsFragment)
+                                moveToDestination(RouteNavigation.Settings.route)
                             }
                             Constants.notificationTypePurchase -> {
-                                moveToDestination(R.id.purchaseFragment)
+                                moveToDestination(RouteNavigation.Purchase.route)
+                            }
+                            Constants.notificationTypeMathGame -> {
+                                moveToDestination(RouteNavigation.MathGameZone.route)
+                            }
+                            Constants.notificationTypeCrossMath -> {
+                                moveToDestination(RouteNavigation.CrossMathHome.route)
+                            }
+                            Constants.notificationTypeNumberPath -> {
+                                moveToDestination(RouteNavigation.NumberPathHome.route)
+                            }
+                            Constants.notificationTypeTrueFalse -> {
+                                moveToDestination(RouteNavigation.TrueFalseHome.route)
+                            }
+                            Constants.notificationTypePlaceValue -> {
+                                moveToDestination(RouteNavigation.PlaceValueHome.route)
+                            }
+                            Constants.notificationTypeClockMaster -> {
+                                moveToDestination(RouteNavigation.ClockMasterHome.route)
+                            }
+                            Constants.notificationTypeMathBingo -> {
+                                moveToDestination(RouteNavigation.MathBingoHome.route)
+                            }
+                            Constants.notificationTypeKakuro -> {
+                                moveToDestination(RouteNavigation.KakuroHome.route)
+                            }
+                            Constants.notificationTypeSudoku -> {
+                                moveToDestination(RouteNavigation.SudokuHome.route)
+                            }
+                            Constants.notificationTypeMathPyramid -> {
+                                moveToDestination(RouteNavigation.MathPyramidHome.route)
+                            }
+                            Constants.notificationTypeTargetNumber -> {
+                                moveToDestination(RouteNavigation.TargetNumberHome.route)
+                            }
+                            Constants.notificationTypeBalloonPop -> {
+                                moveToDestination(RouteNavigation.BalloonPopHome.route)
+                            }
+                            Constants.notificationTypeSpeedCompare -> {
+                                moveToDestination(RouteNavigation.SpeedCompareHome.route)
+                            }
+                            Constants.notificationTypeMissingOperator -> {
+                                moveToDestination(RouteNavigation.MissingOperatorHome.route)
+                            }
+                            Constants.notificationTypeMagicSquare -> {
+                                moveToDestination(RouteNavigation.MagicSquareHome.route)
+                            }
+                            Constants.notificationTypeCalcudoku -> {
+                                moveToDestination(RouteNavigation.CalcudokuHome.route)
+                            }
+                            Constants.notificationTypeMerge2048 -> {
+                                moveToDestination(RouteNavigation.Merge2048Home.route)
+                            }
+                            Constants.notificationTypeEquationMatch -> {
+                                moveToDestination(RouteNavigation.EquationMatchHome.route)
+                            }
+                            Constants.notificationTypePractice -> {
+                                moveToDestination(RouteNavigation.LevelCategory.levelCategory("1"))
+                            }
+                            Constants.notificationTypeLevel1 -> {
+                                moveToDestination(RouteNavigation.Level1Home.route)
+                            }
+                            Constants.notificationTypeLevel2 -> {
+                                moveToDestination(RouteNavigation.Level2Home.route)
+                            }
+                            Constants.notificationTypeLevel3 -> {
+                                moveToDestination(RouteNavigation.Level3Home.route)
+                            }
+                            Constants.notificationTypeLevel4 -> {
+                                moveToDestination(RouteNavigation.Level4TablePicker.route)
                             }
                             Constants.notificationTypeYoutubeHome -> {
                                 getInstance().openYoutube()
@@ -180,157 +303,35 @@ class MyApplication : Application(), Configuration.Provider {
                                 getInstance().shareIntent()
                             }
                             else -> {
-                                moveToDestination(R.id.homeNewFragment)
+                                moveToDestination(RouteNavigation.Home.route)
                             }
                         }
                     }else{
-                        moveToDestination(R.id.homeNewFragment)
+                        moveToDestination(RouteNavigation.Home.route)
                     }
 
                 }else{
-                    moveToDestination(R.id.homeNewFragment)
+                    moveToDestination(RouteNavigation.Home.route)
                 }
             }
         })
 
-        Notifications.addForegroundLifecycleListener(object : INotificationLifecycleListener {
-            override fun onWillDisplay(@NonNull event: INotificationWillDisplayEvent) {
-                Log.e("jigarOneSignal", "INotificationLifecycleListener.onWillDisplay fired" +
-                            " with event: " + event
-                )
-                val notification = event.notification
-                val data = notification.additionalData
-
-                //Prevent OneSignal from displaying the notification immediately on return. Spin
-                //up a new thread to mimic some asynchronous behavior, when the async behavior (which
-                //takes 2 seconds) completes, then the notification can be displayed.
-                event.preventDefault()
-                val r = Runnable {
-                    try {
-                        Thread.sleep(2000)
-                    } catch (ignored: InterruptedException) {
-                    }
-                    notification.display()
-                }
-                val t = Thread(r)
-                t.start()
-            }
-        })
+        // Foreground pushes display immediately with OneSignal's default
+        // behavior — the old sample-code listener added a 2s delay thread.
 
         User.addObserver(object : IUserStateObserver {
             override fun onUserStateChange(@NonNull state: UserChangedState) {
                 val currentUserState = state.current
-                Log.e("jigarOneSignal", "onUserStateChange fired " + currentUserState.toJSONObject())
             }
         })
 
         InAppMessages.paused = true
         Location.isShared = false
 
-
-//        OneSignal.setNotificationOpenedHandler { result ->
-//            Log.d("notification_data", result.toString())
-//            val additional_data = result.notification.additionalData.toString()
-//            if (additional_data.isNotEmpty()) {
-//                val notification = Gson().fromJson(additional_data, NotificationData::class.java)
-//
-//                if (notification != null) {
-//                    when (notification.type) {
-//                        Constants.notificationTypeStarter -> {
-//                            moveToDestination(R.id.fullAbacusFragment)
-//                        }
-//                        Constants.notificationTypeNumber -> {
-//                            moveToPages(AppConstants.HomeClicks.Menu_Number,getString(R.string.page_title_Number))
-//                        }
-//                        Constants.notificationTypeAddition -> {
-//                            moveToPages(AppConstants.HomeClicks.Menu_Addition_Subtraction,getString(R.string.page_title_AdditionSubtraction))
-//                        }
-//                        Constants.notificationTypeSubtraction -> {
-//                            moveToPages(AppConstants.HomeClicks.Menu_Formulas,getString(R.string.page_title_Formulas))
-//                        }
-//                        Constants.notificationTypeMultiplication -> {
-//                            moveToPages(AppConstants.HomeClicks.Menu_Multiplication,getString(R.string.page_title_Multiplication))
-//                        }
-//                        Constants.notificationTypeDivision -> {
-//                            moveToPages(AppConstants.HomeClicks.Menu_Division,getString(R.string.page_title_Division))
-//                        }
-//                        Constants.notificationTypeMaterial -> {
-//                            moveToDestination(R.id.materialHomeFragment)
-//                        }
-//                        Constants.notificationTypeExercise -> {
-//                            moveToDestination(R.id.exerciseHomeFragment)
-//                        }
-//                        Constants.notificationTypeCCM -> {
-//                            moveToDestination(R.id.customChallengeHomeFragment)
-//                        }
-//                        Constants.notificationTypeMaterialMath -> {
-//                            moveToPractiseMaterialType(AppConstants.extras_Comman.DownloadType_Maths)
-//                        }
-//                        Constants.notificationTypeMaterialNursery -> {
-//                            moveToPractiseMaterialType(AppConstants.extras_Comman.DownloadType_Nursery)
-//                        }
-//                        Constants.notificationTypeExam -> {
-//                            moveToDestination(R.id.examHomeFragment)
-//                        }
-//                        Constants.notificationTypeNumberSequence -> {
-//                            moveToDestination(R.id.puzzleNumberHomeFragment)
-//                        }
-//                        Constants.notificationTypeSetting -> {
-//                            moveToDestination(R.id.settingsFragment)
-//                        }
-//                        Constants.notificationTypePurchase -> {
-//                            moveToDestination(R.id.purchaseFragment)
-//                        }
-//                        Constants.notificationTypeYoutubeHome -> {
-//                            this.openYoutube()
-//                        }
-//                        Constants.notificationTypeYoutube -> {
-//                            this.openYoutube(notification.youtube_url)
-//                        }
-//                        Constants.notificationTypeRate -> {
-//                            this.openURL("https://play.google.com/store/apps/details?id=${this.packageName}")
-//                        }
-//                        Constants.notificationTypeShare -> {
-//                            this.shareIntent()
-//                        }
-//                        else -> {
-//                            moveToDestination(R.id.homeFragment)
-//                        }
-//                    }
-//                }else{
-//                    moveToDestination(R.id.homeFragment)
-//                }
-//
-//            }else{
-//                moveToDestination(R.id.homeFragment)
-//            }
-//        }
-//        OneSignal.setNotificationWillShowInForegroundHandler {
-//
-//        }
     }
 
-    private fun moveToPages(from : Int, title : String) {
-        val args = Bundle()
-        args.putInt("from", from)
-        args.putString("title", title)
-
-        NavDeepLinkBuilder(this)
-            .setGraph(R.navigation.main_navigation_graph)
-            .setDestination(R.id.pageFragment)
-            .setArguments(args)
-            .setComponentName(MainDashboardActivity::class.java)
-            .createTaskStackBuilder().getPendingIntent(1,PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)!!
-            .send()
-    }
-
-    private fun moveToDestination(id : Int) {
-        NavDeepLinkBuilder(this)
-            .setGraph(R.navigation.main_navigation_graph)
-            .setDestination(id)
-            .setComponentName(MainDashboardActivity::class.java)
-            .createTaskStackBuilder().getPendingIntent(1,PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)!!
-            .send()
+    private fun moveToDestination(route: String) {
+        HomeActivity.getInstance(this, route)
     }
 
 }

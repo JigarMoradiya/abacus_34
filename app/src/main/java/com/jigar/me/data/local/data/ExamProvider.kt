@@ -1,8 +1,6 @@
 package com.jigar.me.data.local.data
 
 import android.content.Context
-import android.util.Log
-import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
@@ -98,12 +96,10 @@ object ExamProvider {
         return result
     }
 
-
     private fun getFormulaFromDigitContext(from: Int, delta: Int): FormulaStep? {
         if (delta == 0) return null
         val fromDigit = from % 10
         val bottomBeads = fromDigit % 5
-//        val topBead = if (fromDigit >= 5) 1 else 0
 
         // --- Small Friend Addition ---
         if (delta in 1..4 && fromDigit + delta >= 5 && fromDigit < 5) {
@@ -114,7 +110,7 @@ object ExamProvider {
         // --- Small Friend Subtraction ---
         if ((delta in (-4..-1)) && ((fromDigit-5) < -delta) && (fromDigit >= 5) && (from >= 5)) {
             val friend = 5+delta
-            return FormulaStep(delta, "$delta=-5+$friend", AbacusFormulaType.SMALL_FRIEND_SUB.description)
+            return FormulaStep(delta, "$delta=+$friend-5", AbacusFormulaType.SMALL_FRIEND_SUB.description)
         }
 
 
@@ -135,16 +131,16 @@ object ExamProvider {
 
             return when (delta) {
                 6 -> if (bottomBeads >= 4) FormulaStep(delta, "+6=-4+10", AbacusFormulaType.BIG_FRIEND.description)
-                else FormulaStep(delta, "+6=-5+1+10", AbacusFormulaType.COMBINATION.description)
+                else FormulaStep(delta, "+6=+1-5+10", AbacusFormulaType.COMBINATION.description)
 
                 7 -> if (bottomBeads >= 3) FormulaStep(delta, "+7=-3+10", AbacusFormulaType.BIG_FRIEND.description)
-                else FormulaStep(delta, "+7=-5+2+10", AbacusFormulaType.COMBINATION.description)
+                else FormulaStep(delta, "+7=+2-5+10", AbacusFormulaType.COMBINATION.description)
 
                 8 -> if (bottomBeads >= 2) FormulaStep(delta, "+8=-2+10", AbacusFormulaType.BIG_FRIEND.description)
-                else FormulaStep(delta, "+8=-5+3+10", AbacusFormulaType.COMBINATION.description)
+                else FormulaStep(delta, "+8=+3-5+10", AbacusFormulaType.COMBINATION.description)
 
                 9 -> if (bottomBeads >= 1) FormulaStep(delta, "+9=-1+10", AbacusFormulaType.BIG_FRIEND.description)
-                else FormulaStep(delta, "+9=-5+4+10", AbacusFormulaType.COMBINATION.description)
+                else FormulaStep(delta, "+9=+4-5+10", AbacusFormulaType.COMBINATION.description)
 
                 else -> null
             }
@@ -154,19 +150,19 @@ object ExamProvider {
         // --- Big Friend Subtraction or Combination Subtraction ---
         if (delta in -9..-1 && fromDigit + delta < 0) {
             return when (delta) {
-                -1 -> if (bottomBeads <= 0) FormulaStep(delta, "-1=-10+9", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
-                -2 -> if (bottomBeads <= 1) FormulaStep(delta, "-2=-10+8", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
-                -3 -> if (bottomBeads <= 2) FormulaStep(delta, "-3=-10+7", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
-                -4 -> if (bottomBeads <= 3) FormulaStep(delta, "-4=-10+6", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
-                -5 -> if (bottomBeads <= 4) FormulaStep(delta, "-5=-10+5", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
-                -6 -> if (bottomBeads <= 0) FormulaStep(delta, "-6=-10+4", AbacusFormulaType.BIG_FRIEND_SUB.description)
-                else FormulaStep(delta, "-6=-10+5-1", AbacusFormulaType.COMBINATION_SUB.description)
-                -7 -> if (bottomBeads <= 1) FormulaStep(delta, "-7=-10+3", AbacusFormulaType.BIG_FRIEND_SUB.description)
-                else FormulaStep(delta, "-7=-10+5-2", AbacusFormulaType.COMBINATION_SUB.description)
-                -8 -> if (bottomBeads <= 2) FormulaStep(delta, "-8=-10+2", AbacusFormulaType.BIG_FRIEND_SUB.description)
-                else FormulaStep(delta, "-8=-10+5-3", AbacusFormulaType.COMBINATION_SUB.description)
-                -9 -> if (bottomBeads <= 3) FormulaStep(delta, "-9=-10+1", AbacusFormulaType.BIG_FRIEND_SUB.description)
-                else FormulaStep(delta, "-9=-10+5-4", AbacusFormulaType.COMBINATION_SUB.description)
+                -1 -> if (bottomBeads <= 0) FormulaStep(delta, "-1=+9-10", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -2 -> if (bottomBeads <= 1) FormulaStep(delta, "-2=+8-10", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -3 -> if (bottomBeads <= 2) FormulaStep(delta, "-3=+7-10", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -4 -> if (bottomBeads <= 3) FormulaStep(delta, "-4=+6-10", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -5 -> if (bottomBeads <= 4) FormulaStep(delta, "-5=+5-10", AbacusFormulaType.BIG_FRIEND_SUB.description) else null
+                -6 -> if (bottomBeads <= 0) FormulaStep(delta, "-6=+4-10", AbacusFormulaType.BIG_FRIEND_SUB.description)
+                else FormulaStep(delta, "-6=-1+5-10", AbacusFormulaType.COMBINATION_SUB.description)
+                -7 -> if (bottomBeads <= 1) FormulaStep(delta, "-7=+3-10", AbacusFormulaType.BIG_FRIEND_SUB.description)
+                else FormulaStep(delta, "-7=-2+5-10", AbacusFormulaType.COMBINATION_SUB.description)
+                -8 -> if (bottomBeads <= 2) FormulaStep(delta, "-8=+2-10", AbacusFormulaType.BIG_FRIEND_SUB.description)
+                else FormulaStep(delta, "-8=-3+5-10", AbacusFormulaType.COMBINATION_SUB.description)
+                -9 -> if (bottomBeads <= 3) FormulaStep(delta, "-9=+1-10", AbacusFormulaType.BIG_FRIEND_SUB.description)
+                else FormulaStep(delta, "-9=-4+5-10", AbacusFormulaType.COMBINATION_SUB.description)
                 else -> null
             }
         }
@@ -174,58 +170,32 @@ object ExamProvider {
         return null
     }
 
-    fun calculateRodMovements(context: Context,from: Int,to: Int,rods: Int): List<RodMovement> {
-        val fromDigits = from.toString().padStart(rods, '0').map { it - '0' }
-        val toDigits = to.toString().padStart(rods, '0').map { it - '0' }
-
-        val result = mutableListOf<RodMovement>()
-
-        for (i in 0 until rods) {
-            // Index from right (unit digit = rodIndex 0)
-            val rodIndex = rods - 1 - i
-
-            val fromDigit = fromDigits[rodIndex]
-            val toDigit = toDigits[rodIndex]
-
-            val movement = Movement(
-                upperDown = toDigit >= 5 && fromDigit < 5,
-                upperUp = toDigit < 5 && fromDigit >= 5,
-                lowerUp = if (toDigit % 5 > fromDigit % 5) toDigit % 5 - fromDigit % 5 else 0,
-                lowerDown = if (toDigit % 5 < fromDigit % 5) fromDigit % 5 - toDigit % 5 else 0,
-                lowerOldValue = if (fromDigit >= 5) fromDigit % 5 else fromDigit,
-            )
-
-            result.add(RodMovement(rodIndex = i,movement = movement))
-        }
-        return result
-    }
-
-    fun generateExamPaperNew(examLevel : String,list : ArrayList<String>) : List<BeginnerExamPaper>{
-        var totalQuestion = 10
-        val paperList : ArrayList<BeginnerExamPaper> = arrayListOf()
-        when (list.size) {
-            3 -> {
-                totalQuestion = 15
-            }
-            4 -> {
-                totalQuestion = 20
-            }
-            5 -> {
-                totalQuestion = 25
-            }
-        }
+    fun generateExamPaperNew(examLevel : String,list : ArrayList<String>) : List<ExamPaper>{
+        var totalQuestion = 5
+        val paperList : ArrayList<ExamPaper> = arrayListOf()
+//        when (list.size) {
+//            3 -> {
+//                totalQuestion = 15
+//            }
+//            4 -> {
+//                totalQuestion = 20
+//            }
+//            5 -> {
+//                totalQuestion = 25
+//            }
+//        }
         for (ii in 0 until totalQuestion) {
             if (list.isNotEmpty()){
                 list.shuffle()
-                if (list.first().equals(AppConstants.ExamType.exam_Type_Number,true)){
+                if (list.first().equals(AppConstants.EXAM.isNumberSelected,true)){
                     paperList.add(generateExamNumber(examLevel))
-                }else if (list.first().equals(AppConstants.ExamType.exam_Type_Addition,true)){
+                }else if (list.first().equals(AppConstants.EXAM.isAdditionSelected,true)){
                     paperList.add(generateExamAddition(examLevel))
-                }else if (list.first().equals(AppConstants.ExamType.exam_Type_Subtraction,true)){
+                }else if (list.first().equals(AppConstants.EXAM.isSubtractionSelected,true)){
                     paperList.add(generateExamSubtraction(examLevel))
-                }else if (list.first().equals(AppConstants.ExamType.exam_Type_Multiplication,true)){
+                }else if (list.first().equals(AppConstants.EXAM.isMultiplicationSelected,true)){
                     paperList.add(generateExamMultiplicationDivision(examLevel))
-                }else if (list.first().equals(AppConstants.ExamType.exam_Type_Division,true)){
+                }else if (list.first().equals(AppConstants.EXAM.isDivisionSelected,true)){
                     paperList.add(generateExamMultiplicationDivision(examLevel,true))
                 }
             }else{
@@ -235,7 +205,7 @@ object ExamProvider {
         }
         return paperList
     }
-    private fun generateExamNumber(examLevel : String) : BeginnerExamPaper{
+    private fun generateExamNumber(examLevel : String) : ExamPaper{
         var min = 1
         var max = 16
 //        when (examLevel) {
@@ -257,7 +227,7 @@ object ExamProvider {
         val number = DataProvider.generateSingleDigit(min, max)
         // TODO comment abacus question
         val listDataObjects = getDataObjectsList()
-        return BeginnerExamPaper(BeginnerExamQuestionType.Count,number.toString(),"",listDataObjects.first())
+        return ExamPaper(BeginnerExamQuestionType.Count,number.toString(),"",listDataObjects.first())
 //        return if (number < 15){
 //            val listDataObjects = getDataObjectsList()
 //            BeginnerExamPaper(BeginnerExamQuestionType.Count,number.toString(),"",listDataObjects.first())
@@ -265,12 +235,12 @@ object ExamProvider {
 //            BeginnerExamPaper(BeginnerExamQuestionType.Count,number.toString(),"",null, isAbacusQuestion = true)
 //        }
     }
-    private fun generateExamAddition(examLevel : String) : BeginnerExamPaper{
+    private fun generateExamAddition(examLevel : String) : ExamPaper{
         var min = 1
         var max = 9
         var totalQuestion = 1
         var maxLength = 1
-        if (examLevel == AppConstants.ExamType.exam_Level_Expert){
+        if (examLevel == AppConstants.EXAM.examDifficultyExpert){
             min = 9
             max = 10000
             totalQuestion = DataProvider.generateSingleDigit(1, 4)
@@ -278,16 +248,16 @@ object ExamProvider {
             for (ii in 0 until totalQuestion) {
                 mainQuestion += "+" + DataProvider.generateSingleDigit(min, max).toString()
             }
-            return BeginnerExamPaper(BeginnerExamQuestionType.Additions,mainQuestion,"",null, isAbacusQuestion = false)
+            return ExamPaper(BeginnerExamQuestionType.Additions,mainQuestion,"",null, isAbacusQuestion = false)
         }else{
             when (examLevel) {
-                AppConstants.ExamType.exam_Level_Beginner -> {
+                AppConstants.EXAM.examDifficultyBeginner -> {
                     min = 1
                     max = 9
                     totalQuestion = 1
                     maxLength = 1
                 }
-                AppConstants.ExamType.exam_Level_Intermediate -> {
+                AppConstants.EXAM.examDifficultyIntermediate -> {
                     min = 11
                     max = 1000
                     totalQuestion = DataProvider.generateSingleDigit(1, 3)
@@ -306,10 +276,10 @@ object ExamProvider {
                     }
                 }
                 val questionLength =when (examLevel) {
-                    AppConstants.ExamType.exam_Level_Beginner -> {
+                    AppConstants.EXAM.examDifficultyBeginner -> {
                         DataProvider.generateSingleDigit(1, 1)
                     }
-                    AppConstants.ExamType.exam_Level_Intermediate -> {
+                    AppConstants.EXAM.examDifficultyIntermediate -> {
                         DataProvider.generateSingleDigit(2, 3)
                     }
                     else -> {
@@ -339,13 +309,13 @@ object ExamProvider {
             }
 
             return if (firstQue == answer){
-                BeginnerExamPaper(BeginnerExamQuestionType.Additions,mainQuestion,"",null, isAbacusQuestion = false)
+                ExamPaper(BeginnerExamQuestionType.Additions,mainQuestion,"",null, isAbacusQuestion = false)
             }else if (questionList.size == 2){
-                if (examLevel == AppConstants.ExamType.exam_Level_Beginner){
+                if (examLevel == AppConstants.EXAM.examDifficultyBeginner){
                     if (mainQuestion.contains("+")){
                         val listDataObjects = getDataObjectsList()
                         val list = mainQuestion.split("+")
-                        BeginnerExamPaper(BeginnerExamQuestionType.Additions,list[0],list[1],listDataObjects.first(), isAbacusQuestion = false)
+                        ExamPaper(BeginnerExamQuestionType.Additions,list[0],list[1],listDataObjects.first(), isAbacusQuestion = false)
                         // TODO comment abacus question
 //                        if (DataProvider.generateSingleDigit(0, 1) == 1){
 //                            BeginnerExamPaper(BeginnerExamQuestionType.Additions,list[0],list[1],listDataObjects.first(), isAbacusQuestion = false)
@@ -353,25 +323,25 @@ object ExamProvider {
 //                            BeginnerExamPaper(BeginnerExamQuestionType.Additions,list[0],list[1],null, isAbacusQuestion = true)
 //                        }
                     }else{
-                        BeginnerExamPaper(BeginnerExamQuestionType.Additions,mainQuestion,"",null, isAbacusQuestion = false)
+                        ExamPaper(BeginnerExamQuestionType.Additions,mainQuestion,"",null, isAbacusQuestion = false)
                     }
 
                 }else{
-                    BeginnerExamPaper(BeginnerExamQuestionType.Additions,mainQuestion,"",null, isAbacusQuestion = false)
+                    ExamPaper(BeginnerExamQuestionType.Additions,mainQuestion,"",null, isAbacusQuestion = false)
                 }
             }else{
-                BeginnerExamPaper(BeginnerExamQuestionType.Additions,mainQuestion,"",null, isAbacusQuestion = false)
+                ExamPaper(BeginnerExamQuestionType.Additions,mainQuestion,"",null, isAbacusQuestion = false)
             }
         }
 
 
     }
-    private fun generateExamSubtraction(examLevel : String) : BeginnerExamPaper{
+    private fun generateExamSubtraction(examLevel : String) : ExamPaper{
         var min = 1
         var max = 9
         var totalQuestion = 1
         var maxLength = 1
-        if (examLevel == AppConstants.ExamType.exam_Level_Expert){
+        if (examLevel == AppConstants.EXAM.examDifficultyExpert){
             min = 9
             max = 10000
             totalQuestion = DataProvider.generateSingleDigit(1, 4)
@@ -401,16 +371,16 @@ object ExamProvider {
                 }
 
             }
-            return BeginnerExamPaper(BeginnerExamQuestionType.Subtractions,mainQuestion,"",null, isAbacusQuestion = false)
+            return ExamPaper(BeginnerExamQuestionType.Subtractions,mainQuestion,"",null, isAbacusQuestion = false)
         }else{
             when (examLevel) {
-                AppConstants.ExamType.exam_Level_Beginner -> {
+                AppConstants.EXAM.examDifficultyBeginner -> {
                     min = 1
                     max = 49
                     totalQuestion = 1
                     maxLength = 2
                 }
-                AppConstants.ExamType.exam_Level_Intermediate -> {
+                AppConstants.EXAM.examDifficultyIntermediate -> {
                     min = 11
                     max = 1000
                     totalQuestion = DataProvider.generateSingleDigit(1, 2)
@@ -429,10 +399,10 @@ object ExamProvider {
                     }
                 }
                 val questionLength = when (examLevel) {
-                    AppConstants.ExamType.exam_Level_Beginner -> {
+                    AppConstants.EXAM.examDifficultyBeginner -> {
                         DataProvider.generateSingleDigit(1, maxLength)
                     }
-                    AppConstants.ExamType.exam_Level_Intermediate -> {
+                    AppConstants.EXAM.examDifficultyIntermediate -> {
                         DataProvider.generateSingleDigit(2, maxLength)
                     }
                     else -> {
@@ -504,37 +474,37 @@ object ExamProvider {
             val resultObject = Calculator().getResult(mainQuestion,mainQuestion)
             val correctAns = CommonUtils.removeTrailingZero(resultObject)
             return if (firstQue == correctAns){
-                BeginnerExamPaper(BeginnerExamQuestionType.Subtractions,mainQuestion,"",null, isAbacusQuestion = false)
-            }else if (examLevel == AppConstants.ExamType.exam_Level_Beginner) {
+                ExamPaper(BeginnerExamQuestionType.Subtractions,mainQuestion,"",null, isAbacusQuestion = false)
+            }else if (examLevel == AppConstants.EXAM.examDifficultyBeginner) {
                 val listDataObjects = getDataObjectsList()
                 if (mainQuestion.contains("-")){
                     val list = mainQuestion.split("-")
                     if (list[0].toInt() < 10 && list[1].toInt() < 10){
-                        BeginnerExamPaper(BeginnerExamQuestionType.Subtractions,list[0],list[1],listDataObjects.first(), isAbacusQuestion = false)
+                        ExamPaper(BeginnerExamQuestionType.Subtractions,list[0],list[1],listDataObjects.first(), isAbacusQuestion = false)
                     }
                     // TODO comment abacus question
 //                    else if (DataProvider.generateSingleDigit(0, 1) == 1){
 //                        BeginnerExamPaper(BeginnerExamQuestionType.Subtractions,list[0],list[1],null, isAbacusQuestion = true)
 //                    }
                     else{
-                        BeginnerExamPaper(BeginnerExamQuestionType.Subtractions,mainQuestion,"",null, isAbacusQuestion = false)
+                        ExamPaper(BeginnerExamQuestionType.Subtractions,mainQuestion,"",null, isAbacusQuestion = false)
                     }
                 }else if (DataProvider.generateSingleDigit(0, 1) == 1){
-                    BeginnerExamPaper(BeginnerExamQuestionType.Subtractions,mainQuestion,"",null, isAbacusQuestion = false)
+                    ExamPaper(BeginnerExamQuestionType.Subtractions,mainQuestion,"",null, isAbacusQuestion = false)
                 }else{
-                    BeginnerExamPaper(BeginnerExamQuestionType.Subtractions,mainQuestion,"",null, isAbacusQuestion = false)
+                    ExamPaper(BeginnerExamQuestionType.Subtractions,mainQuestion,"",null, isAbacusQuestion = false)
                 }
             }else{
-                BeginnerExamPaper(BeginnerExamQuestionType.Subtractions,mainQuestion,"",null, isAbacusQuestion = false)
+                ExamPaper(BeginnerExamQuestionType.Subtractions,mainQuestion,"",null, isAbacusQuestion = false)
             }
         }
 
     }
-    private fun generateExamMultiplicationDivision(examLevel : String, isDivision : Boolean = false) : BeginnerExamPaper{
+    private fun generateExamMultiplicationDivision(examLevel : String, isDivision : Boolean = false) : ExamPaper{
         var que1 : Long = 1
         var que2 : Long = 9
         when (examLevel) {
-            AppConstants.ExamType.exam_Level_Beginner -> {
+            AppConstants.EXAM.examDifficultyBeginner -> {
                 if (isDivision){
                     que1 = DataProvider.generateSingleDigit(2, 9).toLong()
                     que2 = DataProvider.generateSingleDigit(2, 9).toLong()
@@ -543,7 +513,7 @@ object ExamProvider {
                     que2 = DataProvider.generateSingleDigit(1, 9).toLong()
                 }
             }
-            AppConstants.ExamType.exam_Level_Intermediate -> {
+            AppConstants.EXAM.examDifficultyIntermediate -> {
                 if (DataProvider.generateSingleDigit(0, 1) == 1){
                     que1 = DataProvider.generateSingleDigit(11, 999).toLong()
                     que2 = DataProvider.generateSingleDigit(2, 9).toLong()
@@ -563,7 +533,7 @@ object ExamProvider {
 
                 }
             }
-            AppConstants.ExamType.exam_Level_Expert -> {
+            AppConstants.EXAM.examDifficultyExpert -> {
                 if (isDivision){
                     que1 = DataProvider.generateSingleDigit(11, 9999).toLong()
                     que2 = DataProvider.generateSingleDigit(2, 99).toLong()
@@ -588,11 +558,11 @@ object ExamProvider {
             val answer : Long = que1 * que2
             if (que1 > que2){"$answer/${que2}"}else{"${answer}/${que1}"}
         }else{if (que1 > que2){"${que1}x${que2}"}else{"${que2}x${que1}"}}
-        return BeginnerExamPaper(type,que,"",null, isAbacusQuestion = false)
+        return ExamPaper(type,que,"",null, isAbacusQuestion = false)
     }
 
-    fun generateBeginnerExamPaper(context: Context, examLevel : String) : List<BeginnerExamPaper>{
-        val examList: MutableList<BeginnerExamPaper> = arrayListOf()
+    fun generateBeginnerExamPaper(context: Context, examLevel : String) : List<ExamPaper>{
+        val examList: MutableList<ExamPaper> = arrayListOf()
         var listDataObjects = getDataObjectsList()
         val pref = AppPreferencesHelper(context, AppConstants.PREF_NAME)
         // exam completed count level wise
@@ -637,7 +607,7 @@ object ExamProvider {
             if (listDataObjects.isEmpty()){
                 listDataObjects = getDataObjectsList()
             }
-            examList.add(BeginnerExamPaper(BeginnerExamQuestionType.Count,listCounter.first().toString(),"",listDataObjects.first()))
+            examList.add(ExamPaper(BeginnerExamQuestionType.Count,listCounter.first().toString(),"",listDataObjects.first()))
             listDataObjects.removeAt(0)
         }
 
@@ -692,7 +662,7 @@ object ExamProvider {
             if (listDataObjects.isEmpty()){
                 listDataObjects = getDataObjectsList()
             }
-            examList.add(BeginnerExamPaper(BeginnerExamQuestionType.Additions,number1.toString(),number2.toString(),listDataObjects.first()))
+            examList.add(ExamPaper(BeginnerExamQuestionType.Additions,number1.toString(),number2.toString(),listDataObjects.first()))
             listDataObjects.removeAt(0)
         }
         // subtraction questions
@@ -731,13 +701,13 @@ object ExamProvider {
             if (listDataObjects.isEmpty()){
                 listDataObjects = getDataObjectsList()
             }
-            examList.add(BeginnerExamPaper(BeginnerExamQuestionType.Subtractions,number1.toString(),number2.toString(),listDataObjects.first()))
+            examList.add(ExamPaper(BeginnerExamQuestionType.Subtractions,number1.toString(),number2.toString(),listDataObjects.first()))
             listDataObjects.removeAt(0)
         }
 
 
         if (previousTotalExamCount > 6){
-            (examList as ArrayList<BeginnerExamPaper>).shuffle()
+            (examList as ArrayList<ExamPaper>).shuffle()
         }
         // TODO comment abacus question
 //        examList.map {

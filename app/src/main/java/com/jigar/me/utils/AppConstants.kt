@@ -6,31 +6,27 @@ object AppConstants {
     internal const val PREF_NAME = "kotlin_basic_pref"
     internal const val YOUTUBE_URL = "https://www.youtube.com/channel/UC9MSzIbLkuzffqepgOqBLhw"
 
-    const val BLINK_ICON_ANIMATION_DURATION: Long = 600
-    const val BLINK_ICON_ANIMATION_ALPHA: Float = 0.1F
-
     const val screenWidthDp = "screenWidthDp"
-    const val HAS_NOTCH = "has_notch"
     const val NOTCH_HEIGHT = "notch_height"
-    const val BOTTOM_NAV_HEIGHT = "bottom_nav_height"
+    const val STATISTICS_DATA = "statisticsData"
+    const val IS_CREDENTIAL_LOGIN = "is_credential_login"
 
-    const val NUMBER_PUZZLE_SAVE = "number_puzzle_save"
-    const val NUMBER_PUZZLE_CURRENT_SCORE = "number_puzzle_current_score"
-    const val NUMBER_PUZZLE_BEST_SCORE = "number_puzzle_best_score"
     const val PAGINATION_RECORDS = 20
 
     const val PREF_KEY_APP_VERSION_CODE = "pref_previous_version_code"
-    annotation class ExamType {
-        companion object {
-            var exam_Type_Number = "Number"
-            var exam_Type_Addition = "Addition"
-            var exam_Type_Subtraction = "Subtraction"
-            var exam_Type_Multiplication = "Multiplication"
-            var exam_Type_Division = "Division"
 
-            val exam_Level_Beginner = "Beginner"
-            val exam_Level_Intermediate = "Intermediate"
-            val exam_Level_Expert = "Expert"
+    annotation class EXAM {
+        companion object Companion {
+            var isNumberSelected = "Number"
+            var isAdditionSelected = "Addition"
+            var isSubtractionSelected = "Subtraction"
+            var isMultiplicationSelected = "Multiplication"
+            var isDivisionSelected = "Division"
+
+            val examDifficulty = "examDifficulty"
+            val examDifficultyBeginner = "Beginner"
+            val examDifficultyIntermediate = "Intermediate"
+            val examDifficultyExpert = "Expert"
 
             val exam_Que_type_question = "question"
             val exam_Que_type_object = "object"
@@ -43,30 +39,10 @@ object AppConstants {
             val type_Practice_Set = "Practice Set of Formal Exam" // user only display name // formal_answer
         }
     }
-    annotation class LoginData {
-        companion object {
-            var LoginTypesStudent = "student"
-            var LoginCompleteStep2 = "STEP_2"
-            var LoginCompleteStep1 = "STEP_1"
-            var LoginCountry_IN = "IN"
-        }
-    }
-    annotation class OTPScreen {
-        companion object {
-            var forgotPassword = "FORGOT_PASSWORD"
-            var signupStep = "SIGN_UP"
-        }
-    }
     annotation class APP_PLAN_DATA {
         companion object {
-            var Currency_INR = "INR"
-            var Currency_USD = "USD"
             var Symbol_INR = "₹"
             var Symbol_USD = "$"
-            var PLAN_TERM_MONTH_1 = "1_month"
-            var PLAN_TERM_MONTH_3 = "3_month"
-            var PLAN_TERM_MONTH_6 = "6_month"
-            var PLAN_TERM_MONTH_12 = "12_month"
         }
     }
     annotation class CCM {
@@ -81,40 +57,12 @@ object AppConstants {
         }
     }
 
-    annotation class FirebaseEvents {
-        companion object {
-            var MaterialDownloaded = "abacus_material_download"
-
-            var appInstallFrom = "app_install_from"
-            var InAppPurchase = "abacus_purchase"
-            var InAppPurchaseSKU = "abacus_sku"
-            var InAppPurchaseOrderId = "abacus_order_id"
-
-            var DailyExam = "abacus_daily_exam"
-            var DailyExamLevel = "exam_level"
-
-            var NumberPuzzleSequence = "number_puzzle_squence"
-
-            var deviceId = "deviceId"
-        }
-    }
-    annotation class Purchase {
-        companion object {
-            var Purchase_limit_free = 20
-            var Purchase_All = "Purchase_All"
-            var Purchase_Toddler_Single_digit_level1 = "Purchase_Toddler_Single_digit_level1"
-            var Purchase_Add_Sub_level2 = "Purchase_Add_Sub_level2"
-            var Purchase_Mul_Div_level3 = "Purchase_Mul_Div_level3"
-            var Purchase_Material_Maths = "Purchase_Material_Maths"
-            var Purchase_Material_Nursery = "Purchase_Material_Nursery"
-
-        }
-    }
-
     annotation class RemoteConfig {
         companion object {
             var videoList = "video"
             var displayPlanList = "display_plan"
+            var displayMenuList = "display_menu"
+            var manualFreeTrialDays = "manualFreeTrialDays"
             var supportEmail = "supportEmail"
             var newVersionNotes = "newVersionNotes"
             var bulkLogin = "bulkLogin"
@@ -122,9 +70,48 @@ object AppConstants {
             var versionCode = "versionCode"
             var discountPer = "discount_per"
             var discountPerLifeTime = "discount_per_lifetime"
+            var paywallSocialProof = "paywall_social_proof"
+            // JSON: {"enabled": bool, "duration_min": number, "name": string} -- see HomeOfferManager
+            var homeOffer = "home_offer"
+            /** Freemium time limit: days of free-tier access for a NEW install (<= 0 or missing = no limit, the default). */
+            var freemiumDays = "freemium_days"
+            /** What stays free once the window is over: 2 = Free Mode + Level 1 (default), 0 = nothing free. */
+            var freeCoreAfterWindow = "free_core_after_window"
+            /** Returning-user paywall: comma-separated days of use that get a parent prompt ("3,10,21,45" by default; "off" = none). */
+            var returningPaywallDays = "returning_paywall_days"
+            /** Lifetime plan stays off the first N paywall sheets a device opens (0 or missing = shown from the first one, as before). */
+            var lifetimeMinPaywalls = "lifetime_min_paywalls"
+            /** Show and sell the Google Play discount offer of the lifetime product (set in the Play Console): on unless this says off / false. */
+            var storeOneTimeOffers = "store_one_time_offers"
         }
     }
 
+    annotation class AbacusScreen {
+        companion object {
+            const val screenTypeFreeMode = "FreeMode"
+            const val screenTypeAbacusPractice = "AbacusPractice"
+            const val screenTypeSettingPreview = "SettingPreview"
+            const val screenTypeExam = "exam"
+            const val screenTypeExamResult = "examResult"
+            const val screenTypeCCM = "CCM"
+            const val screenTypeExercise = "Exercise"
+            const val screenTypeLevel1Learn = "Level1Learn"
+            const val screenTypeLevel1Practice = "Level1Practice"
+            const val screenTypeLevel2Learn           = "Level2Learn"
+            const val screenTypeLevel2LearnMeetFormula = "Level2LearnMeetFormula"
+            const val screenTypeLevel2Practice         = "Level2Practice"
+            const val screenTypeLevel3                 = "Level3"
+
+
+
+            const val isFreeMode = "isFreeMode"
+            const val isResetEveryTime = "isResetEveryTime"
+            const val isRandomNumber = "isRandomNumber"
+            const val fromNumber = "fromNumber"
+            const val toNumber = "toNumber"
+            const val currentReachNumber = "currentReachNumber"
+        }
+    }
     annotation class Settings {
         companion object {
             const val Setting_direction = "Setting_direction"
@@ -133,19 +120,15 @@ object AppConstants {
             const val Setting__hint_sound = "Setting_hint_sound"
             const val Setting_display_abacus_number = "Setting_display_abacus_number"
             const val Setting_display_help_message = "Setting_display_help_message"
-            const val Setting_hide_table = "Setting_hide_table"
             const val Setting_left_hand = "Setting_left_hand"
+            const val Setting_7_rods_mode = "Setting_7_rods_mode"
             const val Setting_bg_music_volume = "Setting_bg_music_volume"
             const val Setting_bg_music_volume_default = 5
 
-
-            var isSetTheam = "isSetTheam"
-            var isHomeTourWatch = "isHomeTourWatch"
-            var appOpenCount = "appOpenCount"
-            var isFreeModeTourWatch = "isFreeModeTourWatch"
             var Theam = "Theam"
             var TheamTempView = "TheamTempView"
             const val theam_Poligon_default = "Poligon" // black
+            const val theam_Poligon_Rainbow = "poligon_rainbow"
             const val theam_Poligon_Blue = "poligon_blue"
             const val theam_Poligon_Blue_Sky = "poligon_blue_sky"
             const val theam_Poligon_Orange = "poligon_orange"
@@ -157,67 +140,23 @@ object AppConstants {
             const val theam_Poligon_Tint = "poligon_tint"
             const val theam_Poligon_Silver = "poligon_silver"
             const val theam_Poligon_Brown = "poligon_brown"
-            const val theam_Default = theam_Poligon_default
-            const val theam_face = "Eyes"
-            const val theam_diamond = "diamond"
-            const val theam_garnet = "garnet"
-            const val theam_Egg = "Egg"
-            const val theam_shape = "Shape"
-            const val theam_Star = "Star"
-
-            var Free_Mode_Beads_Move_Count = "free_mode_beads_move_count"
-            var Free_Mode_Beads_Move_Count_Limit = 70
-            var SW_FreeMode = "SW_FreeMode"
-            var SW_DecimalMode = "SW_DecimalMode"
-            var SW_Random = "SW_Random"
-            var SW_Reset = "SW_Reset"
-
-            var Toddler_No = "Toddler_Number_New"
-            var Toddler_No_Count = "Toddler_Number_Count"
-            var SW_Range_min = "Range_min_values_new"
-            var SW_Range_max = "Range_max_values_new"
-            var AbacusMaxColumn = "AbacusMaxColumn"
+            const val theam_Default = theam_Poligon_Rainbow
         }
 
     }
 
     annotation class HomeClicks {
         companion object {
+            const val Menu_Math_Game = "math_game"
             const val Menu_Abacus_Free_Mode = "abacus_free_mode"
             const val Menu_Practice_Abacus = "practice_abacus"
             const val Menu_My_Account = "my_account"
             const val Menu_Abacus_Exercise = "abacus_exercise"
             const val Menu_Exam = "exam"
             const val Menu_CCM = "ccm"
-            const val Menu_Number_Sequence_Puzzle = "number_sequence_puzzle"
             const val Menu_Video_Tutorial = "video_tutorial"
             const val Menu_Purchase_Store = "purchase_store"
             const val Menu_Settings = "setting"
-
-            const val Menu_My_Profile = 1
-            const val Menu_Addition_Subtraction = 2
-            const val Menu_Formulas = 3
-            const val Menu_Starter = 4
-            const val Menu_Number = 5
-            const val Menu_AboutUs = 6
-            const val Menu_Multiplication = 7
-            const val Menu_Division = 8
-            const val Menu_Exercise = 9
-            const val Menu_Subscribe = 10
-            const val Menu_DailyExam = 11
-            const val Menu_CustomChallengeMode = 12
-            const val Menu_PractiseMaterial = 13
-            const val Menu_Setting = 14
-
-            const val Menu_Click_Youtube = 16
-            const val Menu_Share = 18
-
-            const val Menu_Number_Puzzle = 20
-
-            const val OtherApp_Abacus = 101
-            const val OtherApp_Number = 102
-            const val OtherApp_Sudoku = 103
-
         }
     }
 
@@ -225,31 +164,18 @@ object AppConstants {
         companion object {
             var FROM = "from"
             var Title = "Title"
-            var AbacusType = "AbacusType"
             val data = "data"
-            val previousAbacusData = "previousAbacusData"
             var AbacusTypeNumber = "Number"
             var AbacusTypeAdditionSubtraction = "AdditionSubtraction"
             var AbacusTypeMultiplication = "Multiplication"
             var AbacusTypeDivision = "Division"
 
-            var Que2_str = "Que2_str"
-            var Que2_type = "Que2_type"
-            var Que1_digit_type = "Que1_digit_type"
-
             var From = "From"
-            var To = "To"
-            var isType_random = "isType_random"
 
             var examGivenCount = "examGivenCount"
 
-            var examLevelLable = "examLevelLable"
             var examResult = "ExamResult"
             var examAbacusType = "ExamAbacusType"
-
-            var DownloadType_Maths = "maths"
-            var DownloadType_Nursery = "nursery"
-            var DownloadType = "downloadType"
 
             var type = "type"
             var order = "order"
@@ -271,33 +197,22 @@ object AppConstants {
             var ERROR_CODE_USER_NOT_VERIFIED = "USER_NOT_VERIFIED"
             var ERROR_CODE_OTHER_STUDENT_IS_ASSOCIATED_WITH_THIS_ORDER = "OTHER_STUDENT_IS_ASSOCIATED_WITH_THIS_ORDER"
             var ERROR_CODE_THIS_STUDENT_IS_ASSOCIATED_WITH_OTHER_ORDER = "THIS_STUDENT_IS_ASSOCIATED_WITH_OTHER_ORDER"
-            var PURCHASE_ERROR_CODE = "PURCHASE_ERROR_CODE"
         }
     }
 
 
     // TODO api param
-    interface apiHeader {
-        companion object {
-            const val consumer_key = "consumer-key"
-            const val consumer_secret = "consumer-secret"
-            const val consumer_nonce = "consumer-nonce"
-        }
-    }
+
 
     interface apiParams {
         companion object {
-            const val levelId = "level_id"
-            const val pageId = "page_id"
-            const val limit = "limit"
-            const val total = "total"
             const val hint = "hint"
             const val file = "file"
             const val level = "level"
             const val type = "type"
-            const val answerSettingStepByStep = "step_by_step_answer"
+            const val answerStepByStep = "step_by_step_answer"
             const val answerFinalAnswer = "final_answer"
-            const val answerFormalAnswer = "formal_answer"
+            const val answerFormalExam = "formal_answer"
 
 
         }
@@ -313,5 +228,105 @@ object AppConstants {
         }
     }
 
+    annotation class Notifications {
+        companion object {
+            const val permissionAsked    = "notification_permission_asked"
+            const val sheetLastShownDate = "notification_sheet_last_shown"
+        }
+    }
+
+    annotation class Streak {
+        companion object {
+            const val currentStreak    = "streak_current"
+            const val longestStreak    = "streak_longest"
+            const val lastActivityDate = "streak_last_date"
+            const val totalActiveDays  = "streak_total_days"
+            const val streakShields    = "streak_shields"
+            const val claimedRewards   = "streak_claimed_rewards"
+            val milestones       = intArrayOf(3, 7, 14, 21, 30, 50, 100)
+            val shieldMilestones = intArrayOf(7, 21)
+            val milestoneNames   = mapOf(
+                3   to "Explorer",
+                7   to "Weekly Warrior",
+                14  to "Dedicated Learner",
+                21  to "Math Champion",
+                30  to "Monthly Master",
+                50  to "Super Star",
+                100 to "Legend"
+            )
+        }
+    }
+
+    annotation class WeeklySummary {
+        companion object {
+            const val weekStartDate     = "weekly_start_date"
+            const val weeklyProblems    = "weekly_problems"
+            const val weeklyActiveDates = "weekly_active_dates"
+        }
+    }
+
+    annotation class Review {
+        companion object {
+            const val nextMilestoneDay = "review_next_milestone_day"
+            const val lastAskDate      = "review_last_ask_date"
+            const val exhausted        = -1
+            val milestones = intArrayOf(3, 7, 15, 30, 50, 75, 100)
+            // One-time emotional review ask on day 2 -- separate from the milestone gate above.
+            const val day2ReviewShown  = "day2_review_shown"
+        }
+    }
+
+    // Freemium time limit -- per-install window; device-level, preserved across logout (see FreemiumWindow)
+    annotation class Freemium {
+        companion object {
+            const val startAt        = "freemium_start_at"        // epoch millis as String (prefs have no Long)
+            const val grandfathered  = "freemium_grandfathered"   // an install the limit never applies to
+            const val registered     = "freemium_registered"      // this install was looked at once
+            const val remindersShown = "freemium_reminders_shown" // bit 1 = day 3, bit 2 = day 7
+            const val endedLogged    = "freemium_ended_logged"
+            const val firstSeenAt    = "freemium_first_seen_at"   // epoch millis as String: day 1 of the returning-user prompts
+            const val returningShown = "returning_shown"          // scheduled days that already got a prompt ("3,10")
+            const val lastPromptDay  = "last_prompt_day"          // yyyy-MM-dd of the last parent prompt
+            const val lastPaywallDay = "last_paywall_day"         // yyyy-MM-dd of the last paywall sheet of any kind
+            const val paywallOpenCount = "paywall_open_count"     // paywall sheets this device has opened
+            const val billingIssueDay = "billing_issue_day"       // yyyy-MM-dd the "payment problem" prompt was last shown
+        }
+    }
+
+    // Timed Home offer -- per-device window; device-level, preserved across logout
+    annotation class HomeOffer {
+        companion object {
+            const val startedAt   = "home_offer_started_at"   // epoch millis as String (prefs have no Long)
+            const val startedName = "home_offer_started_name" // campaign `name` the window belongs to
+        }
+    }
+
+    // Store product ids (mirrors iOS SubscriptionProduct.SubscriptionProductID)
+    annotation class Products {
+        companion object {
+            const val year          = "com.abacus.puzzle.1year"
+            const val lifetime      = "com.abacus.all"
+            // Legacy ".offer" products: never shown or selected any more -- the store (Google Play offers on the
+            // regular base plan, read through RevenueCat) provides the discount. Kept only so old code and tests compile.
+            const val yearOffer     = "com.abacus.puzzle.1year.offer"
+            const val lifetimeOffer = "com.abacus.all.offer"
+
+            /** True for a legacy ".offer" product id (with or without the ":<basePlanId>" suffix). */
+            fun isOffer(productId: String): Boolean = productId.contains("offer", ignoreCase = true)
+
+            /** The regular product id behind a legacy ".offer" id ("com.abacus.all.offer" -> "com.abacus.all"). */
+            // Anything after ".offer" (a ":<basePlanId>" suffix) goes too, so "com.abacus.puzzle.1year.offer:1year-offer"
+            // still lands on the regular "com.abacus.puzzle.1year" and matches "com.abacus.puzzle.1year:<basePlan>".
+            fun withoutOffer(productId: String): String = productId.substringBefore(".offer")
+
+            // Google Play subscriptions (year/yearOffer) require a base plan, so
+            // RevenueCat reports their Package.product.id as "<productId>:<basePlanId>"
+            // (e.g. "com.abacus.puzzle.1year:1year") -- lifetime (INAPP) ids stay bare.
+            // Every lookup against a bare id above must go through this, or it silently
+            // never matches for the yearly plans.
+            fun matches(packageProductId: String, targetId: String): Boolean =
+                packageProductId == targetId || packageProductId.startsWith("$targetId:")
+        }
+    }
 
 }

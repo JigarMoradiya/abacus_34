@@ -2,7 +2,7 @@ package com.jigar.me.data.model.data
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.jigar.me.data.local.data.BeginnerExamPaper
+import com.jigar.me.data.local.data.ExamPaper
 import com.jigar.me.data.local.data.BeginnerExamQuestionType
 import com.jigar.me.data.local.data.ExamProvider
 import com.jigar.me.data.local.data.ExerciseList
@@ -25,7 +25,20 @@ data class Statistics(
 data class StatisticsData(
     var count: Any? = null,
     var last_exam_given_time: String? = null,
-    var can_give_exam: Boolean = true,
+    var can_give_exam: Boolean = true
+)
+
+data class FetchReportHistoryRequest(
+    var type: String? = null,
+    var from_date: String? = null,
+    var to_date: String? = null,
+    var from: Int = 0,
+    var rows: Int = AppConstants.PAGINATION_RECORDS
+)
+
+data class FetchReportHistoryResponse(
+    var totalRecord: Int = 0,
+    var list: List<AllExamData> = arrayListOf()
 )
 
 data class AllExamData(
@@ -70,10 +83,20 @@ data class AllExamData(
     fun totalTimeFormat() = (total_time_taken ?: 0).secToTimeFormat()
     fun maxTimeFormat() = (allowed_max_time ?: "0").toInt().secToTimeFormat()
     fun isAnswerCorrect() = correctAns() == userAns()
+    /**
+     * The questions of this report. The stored JSON is missing or empty for some reports; Gson returns null for those (that
+     * crashed the report list: "fromJson(...) must not be null"), and a damaged value throws, so both give an empty list.
+     */
+    private fun parsedQuestions(): List<QuestionDataRequest> = runCatching {
+        Gson().fromJson<List<QuestionDataRequest>>(questions, object : TypeToken<List<QuestionDataRequest>>() {}.type)
+    }.getOrNull() ?: emptyList()
+
+    /** False when the report was saved without its questions (there is nothing to open under "Check result"). */
+    fun hasQuestions(): Boolean = parsedQuestions().isNotEmpty()
+
     fun fullQuestion(): String {
         var question = ""
-        val listType = object : TypeToken<List<QuestionDataRequest>?>() {}.type
-        val list: List<QuestionDataRequest> = Gson().fromJson(questions, listType)
+        val list = parsedQuestions()
         if (list.isNotNullOrEmpty()) {
             list.first().que?.let {
                 question = it
@@ -89,8 +112,7 @@ data class AllExamData(
 
     fun userAns(): String {
         var userAns = ""
-        val listType = object : TypeToken<List<QuestionDataRequest>?>() {}.type
-        val list: List<QuestionDataRequest> = Gson().fromJson(questions, listType)
+        val list = parsedQuestions()
         if (list.isNotNullOrEmpty()) {
             userAns = list.first().user_answer ?: ""
         }
@@ -99,15 +121,14 @@ data class AllExamData(
 
     fun toExerciseResult(): ArrayList<ExerciseList> {
         val exerciseList: ArrayList<ExerciseList> = arrayListOf()
-        val listType = object : TypeToken<List<QuestionDataRequest>?>() {}.type
-        val list: List<QuestionDataRequest> = Gson().fromJson(questions, listType)
+        val list = parsedQuestions()
         if (list.isNotNullOrEmpty()) {
             list.map {
                 with(it) {
                     val question = que ?: "0"
                     val resultObject = Calculator().getResult(question, question)
                     val correctAns = CommonUtils.removeTrailingZero(resultObject)
-                    val userAnswer = if (user_answer.isNullOrEmpty()){"0"}else{user_answer?:"0"}
+                    val userAnswer = user_answer
                     exerciseList.add(ExerciseList(question,correctAns,userAnswer))
                 }
             }
@@ -115,10 +136,9 @@ data class AllExamData(
         return exerciseList
     }
 
-    fun toExamResult(): ArrayList<BeginnerExamPaper> {
-        val examBeginners: ArrayList<BeginnerExamPaper> = arrayListOf()
-        val listType = object : TypeToken<List<QuestionDataRequest>?>() {}.type
-        val list: List<QuestionDataRequest> = Gson().fromJson(questions, listType)
+    fun toExamResult(): ArrayList<ExamPaper> {
+        val examBeginners: ArrayList<ExamPaper> = arrayListOf()
+        val list = parsedQuestions()
         if (list.isNotNullOrEmpty()) {
             list.map {
                 with(it) {
@@ -137,7 +157,7 @@ data class AllExamData(
                     var value2 = ""
                     var imageData: ImagesDataObjects? = null
                     val isAbacusQuestion =
-                        if (que_type == AppConstants.ExamType.exam_Que_type_abacus) {
+                        if (que_type == AppConstants.EXAM.exam_Que_type_abacus) {
                             que?.let {
                                 if (it.contains("-")) {
                                     val queList = it.split("-")
@@ -152,7 +172,7 @@ data class AllExamData(
                                 }
                             }
                             true
-                        } else if (que_type == AppConstants.ExamType.exam_Que_type_object) {
+                        } else if (que_type == AppConstants.EXAM.exam_Que_type_object) {
                             imageData = ExamProvider.findDataObjects(image)
                             que?.let {
                                 if (it.contains("-")) {
@@ -173,7 +193,7 @@ data class AllExamData(
                             false
                         }
                     examBeginners.add(
-                        BeginnerExamPaper(
+                        ExamPaper(
                             questionType,
                             value = value,
                             value2 = value2,
@@ -187,4 +207,51 @@ data class AllExamData(
         }
         return examBeginners
     }
+}
+
+fun AllExamData.toSubmitRequest(): SubmitAllExamDataRequest {
+    return SubmitAllExamDataRequest(
+        // Exam
+        type = type,
+        level = level,
+        sub_type = sub_type,
+        total_time_taken = total_time_taken,
+        no_of_questions = no_of_questions,
+        no_of_right_answers = no_of_right_answers,
+        theme = theme,
+
+        // Convert JSON → List<QuestionDataRequest>
+        questions = questions?.let { json ->
+            try {
+                val listType = object : TypeToken<ArrayList<QuestionDataRequest>>() {}.type
+                Gson().fromJson(json, listType)
+            } catch (e: Exception) {
+                arrayListOf()
+            }
+        },
+
+        // Exercise
+        category = category,
+        label = label,
+        allowed_max_time = allowed_max_time?.toIntOrNull(),
+
+        // Practise
+        answer_type = answer_type,
+        is_left_end = is_left_end,
+        is_display_abacus_number = is_display_abacus_number,
+        is_abacus_hint_sount_enable = is_abacus_hint_sount_enable,
+
+        // CCM
+        total_set_of_question = total_set_of_question,
+        total_numbers_in_set = total_numbers_in_set,
+        gap_between_two_question = gap_between_two_question,
+        question_min_length = question_min_length,
+        question_max_length = question_max_length,
+        is_question_speak = is_question_speak,
+        is_question_show_in_number = is_question_show_in_number,
+        is_question_show_in_word = is_question_show_in_word,
+
+        // Set
+        set_id = set_id
+    )
 }

@@ -1,11 +1,13 @@
  package com.jigar.me.utils.extensions
 
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.app.DownloadManager
 import android.app.NotificationManager
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
+import android.content.ContextWrapper
 import android.content.Intent
 import android.content.res.Configuration
 import android.content.res.Resources
@@ -19,27 +21,28 @@ import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.annotation.NonNull
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.gson.Gson
 import com.jigar.me.R
 import com.jigar.me.data.local.data.DataProvider
+import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.Constants
-import java.io.File
+import com.revenuecat.purchases.Purchases
 import java.io.IOException
 import java.util.*
+import androidx.core.net.toUri
 
 
  @Suppress("UNCHECKED_CAST")
@@ -63,6 +66,12 @@ import java.util.*
 
  fun Context.toastL(message: String) {
      Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+ }
+
+ fun Context.findActivity(): Activity? = when (this) {
+     is Activity -> this
+     is ContextWrapper -> baseContext.findActivity()
+     else -> null
  }
 
  fun Context.setLocale(lan: String) {
@@ -218,43 +227,74 @@ import java.util.*
      }
  }
 
-val Context.isNetworkAvailable: Boolean
-    get() {
-        val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val n = cm.activeNetwork
-        if (n != null) {
-            val nc = cm.getNetworkCapabilities(n)
-            return nc?.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) == true ||
-                    nc?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) == true
-        }
-        return false
-    }
+ val Context.isNetworkAvailable: Boolean
+     get() {
+         val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+         val network = cm.activeNetwork ?: return false
+         val nc = cm.getNetworkCapabilities(network) ?: return false
+
+         return nc.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) &&
+                 nc.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)
+     }
 
 fun Context.openMail(prefManager: AppPreferencesHelper) {
     val emailId = prefManager.getCustomParam(AppConstants.RemoteConfig.supportEmail,"")
-    val email = Intent(Intent.ACTION_SENDTO,Uri.fromParts(
-        "mailto",emailId, null))
-//    email.type = "message/rfc822"
-    email.putExtra(Intent.EXTRA_EMAIL,arrayOf(emailId.toString()))
-    email.putExtra(Intent.EXTRA_SUBJECT, resources.getText(R.string.app_name))
-    email.putExtra(Intent.EXTRA_TEXT, "")
-//    email.setPackage("com.google.android.gm")
-//    if (email.resolveActivity(packageManager)!=null){
-        startActivity(Intent.createChooser(email, resources.getString(R.string.app_name)))
-//    }else{
-//        toastS(getString(R.string.gmail_not_found))
-//    }
+    val subject = resources.getString(R.string.app_name)
+    val body = supportEmailFooter(prefManager)
 
+    // Some mail apps (Gmail included, depending on version) only read subject/body
+    // from the mailto: URI's own query string, not from the Intent extras alone --
+    // so both are set, redundantly, to make sure the body actually shows up.
+    // Uri.encode()'s default safe-chars set does NOT include '@' -- passing it
+    // as `allow` keeps the address itself valid instead of becoming
+    // "name%40host", which mail apps may fail to parse as a recipient at all.
+    val mailUri = ("mailto:" + Uri.encode(emailId, "@") + "?subject=" + Uri.encode(subject) + "&body=" + Uri.encode(body)).toUri()
+    fun mailIntent() = Intent(Intent.ACTION_SENDTO, mailUri).apply {
+        putExtra(Intent.EXTRA_EMAIL, arrayOf(emailId))
+        putExtra(Intent.EXTRA_SUBJECT, subject)
+        putExtra(Intent.EXTRA_TEXT, body)
+    }
+
+    try {
+        // Go straight to Gmail -- no chooser -- when it's installed.
+        startActivity(mailIntent().setPackage("com.google.android.gm"))
+    } catch (e: ActivityNotFoundException) {
+        try {
+            startActivity(mailIntent())
+        } catch (e2: ActivityNotFoundException) {
+            toastS(getString(R.string.gmail_not_found))
+        }
+    }
+}
+
+// So support can look the user up (and assign a paid plan from the RevenueCat
+// dashboard if needed), pre-fill a footer with whatever identifiers we have --
+// left blank per field when the user isn't logged in / an id isn't available.
+private fun supportEmailFooter(prefManager: AppPreferencesHelper): String {
+    val lines = mutableListOf<String>()
+    val loginData = runCatching { Gson().fromJson(prefManager.getLoginData(), LoginData::class.java) }.getOrNull()
+    loginData?.name?.takeIf { it.isNotBlank() }?.let { lines.add("Name: $it") }
+    runCatching { Purchases.sharedInstance.appUserID }.getOrNull()?.takeIf { it.isNotBlank() }?.let {
+        lines.add("User ID: $it")
+    }
+    if (lines.isEmpty()) return ""
+    return "\n\n\n---\n" + lines.joinToString("\n")
 }
 fun Context.openURL(url : String) {
+    val i = Intent(Intent.ACTION_VIEW)
+    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    i.data = url.toUri()
     try {
-        val i = Intent(Intent.ACTION_VIEW)
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        i.data = Uri.parse(url)
         startActivity(i)
     } catch (e: Exception) {
-     e.printStackTrace()
-     toastS(getString(R.string.link_not_support))
+        // The phone's default app for a link can refuse it (a video player whose link screen is not open to other apps throws a
+        // SecurityException): the system is asked to offer the choice again before the link is given up.
+        try {
+            startActivity(Intent.createChooser(i, null).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        } catch (e2: Exception) {
+            e2.printStackTrace()
+            toastS(getString(R.string.link_not_support))
+        }
     }
 }
 fun Context.shareIntent() {
@@ -287,12 +327,7 @@ fun Context.shareIntent() {
     startActivity(sharingIntent)
 }
 
- fun Context.openYoutube(url : String = AppConstants.YOUTUBE_URL) {
-     val i = Intent(Intent.ACTION_VIEW)
-     i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-     i.data = Uri.parse(url)
-     startActivity(i)
- }
+ fun Context.openYoutube(url : String = AppConstants.YOUTUBE_URL) = openURL(url)
 
 
 
@@ -321,32 +356,105 @@ fun Context.downloadFilePath() : String?{
     }else{""}
 }
 
- fun Context.convert(n: Int): String {
-     val tens = DataProvider.getTensList(this)
+// fun Context.convertNumberToWords(n: Int): String {
+//     val tens = DataProvider.getTensList(this)
+//     val units = DataProvider.getUnitsList(this)
+//     if (n < 0) {
+//         return resources.getString(R.string.Minus) + " " + convertNumberToWords(-n)
+//     }
+//     if (n < 20) {
+//         return units[n]
+//     }
+//     if (n < 100) {
+//         return tens[n / 10] + (if (n % 10 != 0) " " else "") + units[n % 10]
+//     }
+//     if (n < 1000) {
+//         return units[n / 100] + " " + resources
+//             .getString(R.string.Hundred) + (if (n % 100 != 0) " " else "") + convertNumberToWords(n % 100)
+//     }
+//     if (n < 100000) {
+//         return convertNumberToWords(n / 1000) + " " + resources
+//             .getString(R.string.Thousand) + (if (n % 10000 != 0) " " else "") + convertNumberToWords(n % 1000)
+//     }
+//     return if (n < 10000000) {
+//         convertNumberToWords(n / 100000) + " " + resources
+//             .getString(R.string.Lakh) + (if (n % 100000 != 0) " " else "") + convertNumberToWords(n % 100000)
+//     } else convertNumberToWords(n / 10000000) + " " + resources
+//         .getString(R.string.Crore) + (if (n % 10000000 != 0) " " else "") + convertNumberToWords(n % 10000000)
+// }
+
+ fun Context.convertNumberToWords(n: Int): String {
+     if (n == 0) return DataProvider.getUnitsList(this)[0]
+
      val units = DataProvider.getUnitsList(this)
-     if (n < 0) {
-         return resources.getString(R.string.Minus) + " " + convert(-n)
+     val tens = DataProvider.getTensList(this)
+
+     fun words(num: Int): String {
+         return when {
+             num < 0 ->
+                 "${getString(R.string.Minus)} ${words(-num)}"
+
+             num < 20 ->
+                 units[num]
+
+             num < 100 ->
+                 buildString {
+                     append(tens[num / 10])
+                     if (num % 10 != 0) {
+                         append(" ")
+                         append(units[num % 10])
+                     }
+                 }
+
+             num < 1_000 ->
+                 buildString {
+                     append(units[num / 100])
+                     append(" ")
+                     append(getString(R.string.Hundred))
+                     if (num % 100 != 0) {
+                         append(" ")
+                         append(words(num % 100))
+                     }
+                 }
+
+             num < 100_000 ->
+                 buildString {
+                     append(words(num / 1_000))
+                     append(" ")
+                     append(getString(R.string.Thousand))
+                     if (num % 1_000 != 0) {
+                         append(" ")
+                         append(words(num % 1_000))
+                     }
+                 }
+
+             num < 10_000_000 ->
+                 buildString {
+                     append(words(num / 100_000))
+                     append(" ")
+                     append(getString(R.string.Lakh))
+                     if (num % 100_000 != 0) {
+                         append(" ")
+                         append(words(num % 100_000))
+                     }
+                 }
+
+             else ->
+                 buildString {
+                     append(words(num / 10_000_000))
+                     append(" ")
+                     append(getString(R.string.Crore))
+                     if (num % 10_000_000 != 0) {
+                         append(" ")
+                         append(words(num % 10_000_000))
+                     }
+                 }
+         }
      }
-     if (n < 20) {
-         return units[n]
-     }
-     if (n < 100) {
-         return tens[n / 10] + (if (n % 10 != 0) " " else "") + units[n % 10]
-     }
-     if (n < 1000) {
-         return units[n / 100] + " " + resources
-             .getString(R.string.Hundred) + (if (n % 100 != 0) " " else "") + convert(n % 100)
-     }
-     if (n < 100000) {
-         return convert(n / 1000) + " " + resources
-             .getString(R.string.Thousand) + (if (n % 10000 != 0) " " else "") + convert(n % 1000)
-     }
-     return if (n < 10000000) {
-         convert(n / 100000) + " " + resources
-             .getString(R.string.Lakh) + (if (n % 100000 != 0) " " else "") + convert(n % 100000)
-     } else convert(n / 10000000) + " " + resources
-         .getString(R.string.Crore) + (if (n % 10000000 != 0) " " else "") + convert(n % 10000000)
+
+     return words(n).trim()
  }
+
 
  fun Activity.setDialogAttr(dialog: AlertDialog, gravity : Int = Gravity.CENTER, dimClear : Boolean = false) {
 //     this.window?.statusBarColor = statusBar

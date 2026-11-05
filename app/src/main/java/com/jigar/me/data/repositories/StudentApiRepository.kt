@@ -3,17 +3,10 @@ package com.jigar.me.data.repositories
 import androidx.annotation.Keep
 import com.jigar.me.data.api.StudentApi
 import com.jigar.me.data.api.connections.SafeApiCall
-import com.jigar.me.data.model.data.ChangePasswordRequest
-import com.jigar.me.data.model.data.ContactUsRequest
 import com.jigar.me.data.model.data.FetchAbacusDataRequest
-import com.jigar.me.data.model.data.ForgotPasswordRequest
 import com.jigar.me.data.model.data.LoginRequest
-import com.jigar.me.data.model.data.PurchasedPlanCheckRequest
-import com.jigar.me.data.model.data.ResendOTPRequest
-import com.jigar.me.data.model.data.ResetPasswordRequest
 import com.jigar.me.data.model.data.SignupV2Request
 import com.jigar.me.data.model.data.SocialLoginRequest
-import com.jigar.me.data.model.data.UpdateProfileRequest
 import com.jigar.me.data.model.data.VerifyEmailRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -38,33 +31,18 @@ class StudentApiRepository @Inject constructor(
     suspend fun getAbacusData(request : FetchAbacusDataRequest) = safeApiCall {
         api.getAbacusData(request)
     }
-    suspend fun handleExistingPurchase(request : PurchasedPlanCheckRequest) = safeApiCall {
-        api.handleExistingPurchase(request)
+    suspend fun getAbacusDataPublic(request : FetchAbacusDataRequest) = safeApiCall {
+        api.getAbacusDataPublic(request)
     }
     suspend fun appReviewsList() = safeApiCall {
         api.appReviewsList()
     }
-    suspend fun changePlan(request : PurchasedPlanCheckRequest) = safeApiCall {
-        api.changePlan(request)
-    }
-    suspend fun forgotPassword(request : ForgotPasswordRequest) = safeApiCall {
-        api.forgotPassword(request)
-    }
-    suspend fun resendOTP(request : ResendOTPRequest) = safeApiCall {
-        api.resendOTP(request)
-    }
-    
-    suspend fun resetPassword(request : ResetPasswordRequest) = safeApiCall {
-        api.resetPassword(request)
-    }
-    suspend fun changePassword(request : ChangePasswordRequest) = safeApiCall {
-        api.changePassword(request)
-    }
-    suspend fun updateProfile(request : UpdateProfileRequest) = safeApiCall {
-        api.updateProfile(request)
-    }
-    suspend fun submitReview(plan_id: RequestBody,description: RequestBody, image_1: MultipartBody.Part?) = safeApiCall {
-        api.submitReview(plan_id,description,image_1)
+    suspend fun submitReview(
+        planId: RequestBody,
+        description: RequestBody,
+        image1: MultipartBody.Part?,
+    ) = safeApiCall {
+        api.submitReview(planId, description, image1)
     }
 }
 

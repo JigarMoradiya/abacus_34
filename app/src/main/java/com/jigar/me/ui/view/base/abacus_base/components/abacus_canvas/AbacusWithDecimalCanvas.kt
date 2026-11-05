@@ -1,0 +1,851 @@
+package com.jigar.me.ui.view.base.abacus_base.components.abacus_canvas
+
+import android.annotation.SuppressLint
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.border
+import androidx.compose.foundation.gestures.awaitFirstDown
+import androidx.compose.foundation.gestures.drag
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.TouchApp
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
+import androidx.compose.ui.unit.sp
+import com.jigar.me.R
+import com.jigar.me.data.local.data.DeviceInfo
+import com.jigar.me.data.local.data.RodMovement
+import com.jigar.me.ui.jetpack.core.presentation.theme.ColorCoffee
+import com.jigar.me.ui.jetpack.utils.AudioPlayerManager
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import androidx.compose.foundation.layout.fillMaxSize
+import com.jigar.me.ui.view.ab.AbToyAnswerBar
+import com.jigar.me.ui.view.ab.AbToyAnswerBarMetrics
+import com.jigar.me.ui.view.ab.AbacusFrameStyle
+import com.jigar.me.ui.view.ab.AbacusToyFrameBack
+import com.jigar.me.ui.view.ab.AbacusToyGeometry
+import com.jigar.me.ui.view.ab.AbacusToyHeavenTags
+import com.jigar.me.ui.view.ab.AbacusToyLabels
+import com.jigar.me.ui.view.ab.LocalAbScale
+import com.jigar.me.ui.view.ab.abReadableInk
+import com.jigar.me.ui.view.base.abacus_base.AbacusCalculations
+import com.jigar.me.ui.view.base.abacus_base.AbacusTheme
+import com.jigar.me.ui.view.base.abacus_base.components.AbacusAnswerBarCompose
+import com.jigar.me.ui.view.base.abacus_base.components.NumberStripBar
+import com.jigar.me.ui.view.base.abacus_base.components.OnlyWordStripBar
+import com.jigar.me.ui.view.base.abacus_base.components.SpotlightOverlay
+import com.jigar.me.ui.view.base.abacus_base.components.spotlightTag
+import com.jigar.me.ui.view.base.abacus_base.freeModeHighlightSteps
+import com.jigar.me.ui.view.base.abacus_base.utils.MathUtils
+import com.jigar.me.ui.view.home.theme.AppDimens.Dimens2
+import com.jigar.me.utils.AppConstants
+import kotlin.math.abs
+
+@SuppressLint("LocalContextResourcesRead")
+@Composable
+fun AbacusWithDecimalCanvas(
+    selectedTheme: String,
+    screenType: String,
+    isFreeModeOn: Boolean = false,
+    isBeadSoundOn: Boolean,
+    isDisplayCurrentAbacusInput: Boolean,
+    abacusData: AbacusCalculations,
+    numberOfColumns: Int,
+    rodMovement: List<RodMovement>,      // kept for future arrow-on-canvas if needed
+    showDirectionHint: Boolean,
+    showHighlighter: Boolean = false,
+    abacusType: String? = null,
+    questionType: String? = null,
+    /** `Toy` = the Ab kit's toy frame (its own answer bar, rods, beam and tags); `Classic` = the original frame. */
+    frameStyle: AbacusFrameStyle = AbacusFrameStyle.Classic,
+    isNextButtonEnable: Boolean = false,
+    /** The beads take swipes on a screen type that normally only watches (the first-launch tutorial, whose child moves them). */
+    forceTouch: Boolean = false,
+    /** The direction arrows pulse (the first-launch tutorial). */
+    hintPulse: Boolean = false,
+    /** A hand glides over the first bead to move (the first-launch tutorial, after a few idle seconds). */
+    hintHand: Boolean = false,
+    /** The rod names (Ones, Tens ...) under the frame, which the small Level screens hide (the first-launch tutorial shows them). */
+    showRodNames: Boolean = false,
+    /** Below 1 the whole abacus (beads, rods, frame) is proportionally smaller (the first-launch tutorial). */
+    beadScale: Float = 1f,
+    onRodMovementChange: (List<RodMovement>) -> Unit,
+    onShowDirectionHintsChange: (Boolean) -> Unit,
+    onShowHighlighterChange: (Boolean) -> Unit,
+    @SuppressLint("ModifierParameter") modifier: Modifier = Modifier,
+    onReset: () -> Unit,
+    onNext: () -> Unit,
+) {
+
+    val context = LocalContext.current
+
+    LaunchedEffect(screenType,selectedTheme) {
+        if (screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) {
+            val randomNumber = (101..999).random()
+            abacusData.setAbacusValueFromString(randomNumber.toString())
+        }
+    }
+
+    var currentSpot by remember { mutableStateOf<Int?>(null) }
+    LaunchedEffect(showHighlighter) {
+        currentSpot = if (showHighlighter) 0 else null
+    }
+
+    val arrowUp = remember {
+        drawableToImageBitmap(context, R.drawable.ic_abacus_arrow_up)
+    }
+    val arrowDown = remember {
+        drawableToImageBitmap(context, R.drawable.ic_abacus_arrow_down)
+    }
+    // read only while drawing, so a pulsing arrow redraws the canvas and nothing else
+    val arrowPulse: State<Float> = if (hintPulse) {
+        rememberInfiniteTransition(label = "hintPulse").animateFloat(
+            initialValue = 1f, targetValue = 1.3f,
+            animationSpec = infiniteRepeatable(tween(550, easing = FastOutSlowInEasing), RepeatMode.Reverse),
+            label = "hintPulseScale",
+        )
+    } else remember { mutableFloatStateOf(1f) }
+    val handPainter = if (hintHand) rememberVectorPainter(Icons.Rounded.TouchApp) else null
+    val handProgress: State<Float> = if (hintHand) {
+        rememberInfiniteTransition(label = "hintHand").animateFloat(
+            initialValue = 0f, targetValue = 1f,
+            animationSpec = infiniteRepeatable(tween(1500, easing = LinearEasing), RepeatMode.Restart),   // one swipe + a pause
+            label = "hintHandGlide",
+        )
+    } else remember { mutableFloatStateOf(0f) }
+
+
+    val baseDim = AbacusTheme.dimensionPreset(context,screenType = screenType,abacusType = abacusType,questionType = questionType, isFreeModeOn = isFreeModeOn)
+    val dim = if (beadScale == 1f) baseDim else baseDim.copy(
+        beadWidth = baseDim.beadWidth * beadScale, beadHeight = baseDim.beadHeight * beadScale, beamHeight = baseDim.beamHeight * beadScale,
+        extraSpace = baseDim.extraSpace * beadScale, rectLineWidth = baseDim.rectLineWidth * beadScale, rectLineCorner = baseDim.rectLineCorner * beadScale,
+        stripHeight = baseDim.stripHeight * beadScale, columnSpaces = baseDim.columnSpaces * beadScale, decimalSeparatorGap = baseDim.decimalSeparatorGap * beadScale,
+    )
+    val totalWidth = (dim.beadWidth * numberOfColumns) + (dim.rectLineWidth * 2) + (dim.columnSpaces * (numberOfColumns) * 2) + (if (numberOfColumns > 7) dim.decimalSeparatorGap else 0.dp)
+    val totalHeight = (dim.beadHeight * 7) + (dim.rectLineWidth * 2) + (dim.extraSpace * 2) + dim.beamHeight
+
+    val highlightSteps = freeModeHighlightSteps
+
+    val strokeBrush = if (selectedTheme == "poligon_rainbow") {
+        Brush.verticalGradient(listOf(Color(0xFFD7CCC8), Color(0xFFE0E0E0), Color(0xFFCFD8DC)))
+    } else {
+        val preset = AbacusTheme.colorPreset(selectedTheme)
+        Brush.verticalGradient(listOf(preset.abacusTopGradient, preset.abacusCenterGradient, preset.abacusBottomGradient))
+    }
+
+    val textColor = if (selectedTheme == "poligon_rainbow") {
+        ColorCoffee
+    } else {
+        Color.White
+    }
+
+    val toy = frameStyle == AbacusFrameStyle.Toy
+    val abScale = LocalAbScale.current.factor
+    val toyGeometry = AbacusToyGeometry(
+        numberOfColumns = numberOfColumns, totalWidth = totalWidth, totalHeight = totalHeight, lineWidth = dim.rectLineWidth,
+        beadWidth = dim.beadWidth, beadHeight = dim.beadHeight, beamHeight = dim.beamHeight, extraSpace = dim.extraSpace,
+        columnSpaces = dim.columnSpaces, decimalGap = if (numberOfColumns > 7) dim.decimalSeparatorGap else 0.dp,
+        corner = dim.rectLineCorner,
+    )
+    // The bead theme's frame colours, reused by the toy frame so the theme picker still recolours the abacus.
+    val toyTop: Color
+    val toyBase: Color
+    val toyBottom: Color
+    if (selectedTheme == "poligon_rainbow") {
+        toyTop = Color(0xFFD7CCC8); toyBase = Color(0xFFBCAAA4); toyBottom = Color(0xFFA1887F)
+    } else {
+        val toyPreset = AbacusTheme.colorPreset(selectedTheme)
+        toyTop = toyPreset.abacusTopGradient; toyBase = toyPreset.buttonColor; toyBottom = toyPreset.abacusBottomGradient
+    }
+    // Small abaci (Level screens, the Settings preview) show just the frame and beads, no tags under it.
+    val isMiniScreen = !showRodNames && (screenType == AppConstants.AbacusScreen.screenTypeLevel1Learn ||
+        screenType == AppConstants.AbacusScreen.screenTypeLevel1Practice ||
+        screenType == AppConstants.AbacusScreen.screenTypeLevel2Learn ||
+        screenType == AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula ||
+        screenType == AppConstants.AbacusScreen.screenTypeLevel2Practice ||
+        screenType == AppConstants.AbacusScreen.screenTypeSettingPreview)
+    val toyStripHeight = dim.stripHeight * 0.8f
+    val toyShowsValues = screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn
+
+    // ─────────────────────────────────────────────
+    // Geometry for hit-testing and drawing
+    // ─────────────────────────────────────────────
+    val density = LocalDensity.current
+    val geometry = remember(dim, numberOfColumns, density) {
+        AbacusCanvasGeometry.build(dim, numberOfColumns, density)
+    }
+
+    // Pre-map rod movement by rod index (for future arrows on canvas)
+    val rodMovementByRod = remember(rodMovement) {
+        rodMovement.associateBy { it.rodIndex }
+    }
+
+    // ==========================
+    //  Main Abacus Box
+    // ==========================
+    Box(modifier = modifier, contentAlignment = Alignment.TopCenter) {
+
+        // Top Answer Bar (hidden in free mode, same as your old logic)
+        if (!(screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn) && screenType != AppConstants.AbacusScreen.screenTypeSettingPreview && screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult
+            && screenType != AppConstants.AbacusScreen.screenTypeLevel1Learn
+            && screenType != AppConstants.AbacusScreen.screenTypeLevel1Practice
+            && screenType != AppConstants.AbacusScreen.screenTypeLevel2Learn
+            && screenType != AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula
+            && screenType != AppConstants.AbacusScreen.screenTypeLevel2Practice
+            && screenType != AppConstants.AbacusScreen.screenTypeLevel3
+            ) {
+            val isSmallAnswerBar = screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise
+            val answerBarScale = when {
+                DeviceInfo.isLargeTablet -> if (isSmallAnswerBar) 1.35 else 1.5
+                DeviceInfo.isTablet -> if (isSmallAnswerBar) 1.2 else 1.3
+                else -> 1.0
+            }
+            val offsetY = ((if (isSmallAnswerBar) -36 else -48) * answerBarScale).dp
+
+            if (toy) {
+                // The toy bar's lower edge lands on the frame's top rail (it overlaps the rail by 0.4 of its width), never on the beads.
+                AbToyAnswerBar(
+                    answer = abacusData.displayValue,
+                    abacusType = abacusType,
+                    screenType = screenType,
+                    isNextButtonEnable = isNextButtonEnable,
+                    isDisplayAbacusNumber = isDisplayCurrentAbacusInput,
+                    frameTop = toyTop,
+                    frameBase = toyBase,
+                    onReset = {
+                        abacusData.resetAbacusData()
+                        onReset()
+                        if (isBeadSoundOn) AudioPlayerManager.playAbacusReset()
+                    },
+                    onNext = {
+                        onNext()
+                        if (isBeadSoundOn && screenType != AppConstants.AbacusScreen.screenTypeCCM && screenType != AppConstants.AbacusScreen.screenTypeExercise) {
+                            AudioPlayerManager.playAbacusReset()
+                        } else {
+                            AudioPlayerManager.playSoundBtnClick()
+                        }
+                    },
+                    modifier = Modifier
+                        .align(Alignment.TopCenter)
+                        .offset(y = -((70 * abScale).dp - dim.rectLineWidth * 0.4f))
+                        // the bar sits on the frame's top rail (iOS draws it over the frame), so it is stacked above the frame
+                        .zIndex(1f),
+                )
+            } else AbacusAnswerBarCompose(
+                answer = abacusData.displayValue,
+                theme = selectedTheme,
+                screenType = screenType,
+                abacusType = abacusType,
+                isNextButtonEnable = isNextButtonEnable,
+                isDisplayAbacusNumber = isDisplayCurrentAbacusInput,
+                onReset = {
+                    abacusData.resetAbacusData()
+                    onReset()
+                    // reset abacus sound
+                    if (isBeadSoundOn){
+                        AudioPlayerManager.playAbacusReset()
+                    }
+                },
+                onNext = {
+                    onNext()
+                    // abacus change sound same as reset
+                    if (isBeadSoundOn && screenType != AppConstants.AbacusScreen.screenTypeCCM && screenType != AppConstants.AbacusScreen.screenTypeExercise){
+                        AudioPlayerManager.playAbacusReset()
+                    }else{
+                        AudioPlayerManager.playSoundBtnClick()
+                    }
+                },
+                modifier = Modifier
+                    .align(Alignment.TopCenter)
+                    .offset(y = offsetY)
+            )
+        }
+
+        val context = LocalContext.current
+
+        // Preload polygon bead image
+        val beadPolygonGray = remember {
+            ImageBitmap.imageResource(context.resources, R.drawable.poligon_gray_light)
+        }
+
+        // The toy frame (body, panel, rods, beam, markers) sits behind the beads.
+        if (toy) {
+            // while the tour shows the frame (step 1) the rods and the beam are left out, so only the frame stands out
+            AbacusToyFrameBack(toyGeometry, toyTop, toyBase, toyBottom, Modifier.align(Alignment.Center), showInterior = !(showHighlighter && currentSpot == 0))
+        }
+
+        // --- Inner rods & beads on Canvas ---
+
+        if (!showHighlighter || currentSpot != 0) { // hide all things when frame highlighter show
+            val isTouchEnabled = forceTouch || (screenType != AppConstants.AbacusScreen.screenTypeLevel1Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel1Practice && screenType != AppConstants.AbacusScreen.screenTypeLevel2Learn && screenType != AppConstants.AbacusScreen.screenTypeLevel2LearnMeetFormula && screenType != AppConstants.AbacusScreen.screenTypeLevel2Practice && screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult && screenType != AppConstants.AbacusScreen.screenTypeSettingPreview)
+            val gestureModifier = if (isTouchEnabled) {
+                Modifier.pointerInput(Unit) {
+                    val thresholdPx = with(density) { Dimens2.toPx() }
+
+                    awaitPointerEventScope {
+                        while (true) {
+                            val down = awaitFirstDown(requireUnconsumed = false)
+                            val pointerId = down.id
+
+                            val startCol = geometry.findColumn(down.position.x)
+                            val startIndex = geometry.findRow(down.position.y)
+
+                            var totalDy = 0f
+
+                            drag(pointerId) { change ->
+                                val deltaY = change.position.y - change.previousPosition.y
+                                totalDy += deltaY
+                                change.consume()
+                            }
+
+                            if (startCol != null && startIndex != null &&
+                                abs(totalDy) > thresholdPx
+                            ) {
+                                if (totalDy < 0) {
+                                    if (abacusData.canMoveUp(startIndex, startCol)) {
+                                        abacusData.moveBeadUp(startIndex, startCol)
+                                        if (isBeadSoundOn) AudioPlayerManager.playAbacusMove()
+                                    }
+                                } else {
+                                    if (abacusData.canMoveDown(startIndex, startCol)) {
+                                        abacusData.moveBeadDown(startIndex, startCol)
+                                        if (isBeadSoundOn) AudioPlayerManager.playAbacusMove()
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                Modifier // 🚫 no touch
+            }
+            Canvas(
+                modifier = Modifier
+                    .height(totalHeight)
+                    .width(totalWidth)
+                    .padding(vertical = dim.rectLineWidth, horizontal = dim.rectLineWidth)
+                    .align(Alignment.Center)
+                    .then(gestureModifier)
+                    .spotlightTag(1, highlightSteps[1].message, if (toy) toyGeometry.panelCorner else null) // rods highlight
+            ) {
+                // Draw all columns inside Canvas
+                drawAbacusColumns(
+                    screenType = screenType,
+                    selectedTheme = selectedTheme,
+                    abacusData = abacusData,
+                    numberOfColumns = numberOfColumns,
+                    dim = dim,
+                    geometry = geometry,
+                    showHighlighter = showHighlighter,
+                    currentSpot = currentSpot,
+                    rodMovementByRod = rodMovementByRod,
+                    showDirectionHint = showDirectionHint,
+                    beadPolygonGray = beadPolygonGray,
+                    arrowUPBitmap = arrowUp,
+                    arrowDownBitmap = arrowDown,
+                    toyFrame = toy,
+                    arrowPulse = arrowPulse.value,
+                )
+            }
+        }
+
+        // --- Outer frame ---
+        if (toy) {
+            // The toy frame is drawn above; this transparent box only marks the frame for the tour.
+            Box(
+                modifier = Modifier
+                    .width(totalWidth)
+                    .height(totalHeight)
+                    .align(Alignment.Center)
+                    .spotlightTag(0, highlightSteps[0].message, toyGeometry.frameCorner)
+            )
+        } else if (screenType != AppConstants.AbacusScreen.screenTypeExam && screenType != AppConstants.AbacusScreen.screenTypeExamResult){
+            val shape = RoundedCornerShape(dim.rectLineCorner)
+
+            Box(
+                modifier = Modifier
+                    .width(totalWidth - (dim.columnSpaces * 2))
+                    .height(totalHeight)
+
+                    .drawBehind {
+                        // 🔥 Shadow / glow (draw bigger + transparent)
+                        drawRoundRect(
+                            color = Color.Black.copy(alpha = 0.20f), // shadow color
+                            size = size,
+                            cornerRadius = CornerRadius(
+                                dim.rectLineCorner.toPx(),
+                                dim.rectLineCorner.toPx()
+                            ),
+                            style = Stroke(width = Dimens2.toPx()) // 👈 bigger than border
+                        )
+                    }
+
+                    // ✅ Actual border on top
+                    .border(
+                        width = dim.rectLineWidth,
+                        brush = strokeBrush,
+                        shape = shape
+                    )
+
+                    .spotlightTag(0, highlightSteps[0].message)
+            )
+        }
+
+        // The tutorial's swipe hand is the TOP layer: above the beads, the toy frame and the answer bar. (Drawn inside the bead canvas, the
+        // neighbouring beads and the frame covered or cut it.) Same size and position as the bead canvas, so the geometry matches.
+        if (hintHand && showDirectionHint && handPainter != null) {
+            Canvas(
+                modifier = Modifier
+                    .height(totalHeight)
+                    .width(totalWidth)
+                    .padding(vertical = dim.rectLineWidth, horizontal = dim.rectLineWidth)
+                    .align(Alignment.Center)
+                    .zIndex(3f)
+            ) {
+                for (col in 0 until numberOfColumns) {
+                    val movement = rodMovementByRod[col]?.movement ?: continue
+                    drawSwipeHandForBead(
+                        colCenterX = geometry.columnCentersX[col], movement = movement, geometry = geometry,
+                        painter = handPainter, progress = handProgress.value,
+                    )
+                }
+            }
+        }
+
+        // Display number at top inside the frame (free-mode only)
+        if ((screenType == AppConstants.AbacusScreen.screenTypeFreeMode && isFreeModeOn) || screenType == AppConstants.AbacusScreen.screenTypeSettingPreview) {
+            Box(
+                modifier = Modifier
+                    .height(totalHeight)
+                    .align(Alignment.TopCenter)
+            ) {
+                Text(
+                    modifier = Modifier.height(dim.rectLineWidth),
+                    text = abacusData.displayValue,
+                    // white on a deep toy frame, a dark shade of the frame colour on a bright one
+                    color = if (toy && selectedTheme != "poligon_rainbow") toyTop.abReadableInk else textColor,
+                    fontSize = dim.textSizeSp.sp.scaled(),
+                    lineHeight = dim.textSizeSp.sp.scaled(),
+                    fontFamily = FontFamily(Font(R.font.font_extra_bold))
+                )
+            }
+        }
+    }
+
+    if (toy) {
+        // Tags hang from the frame: the place names (or, in Free Mode, the values and the names) under it, and in Free Mode
+        // the heaven-bead values on its top rail.
+        if (!isMiniScreen) {
+            Column(Modifier.width(totalWidth)) {
+                Spacer(Modifier.height(totalHeight))
+                AbacusToyLabels(toyGeometry, toyStripHeight, showsValues = toyShowsValues)
+            }
+        }
+        if (toyShowsValues) {
+            val tagsHeight = minOf(toyGeometry.cellWidth * 0.46f, toyStripHeight * 1.45f) * 0.86f + 4.dp
+            Box(Modifier.width(totalWidth).offset(y = -tagsHeight)) {
+                AbacusToyHeavenTags(toyGeometry, toyStripHeight)
+            }
+        }
+    } else
+    // Number strip below abacus (same as before)
+    if (screenType == AppConstants.AbacusScreen.screenTypeFreeMode) {
+        if (isFreeModeOn){
+            NumberStripBar(dim = dim, totalWidth = totalWidth, totalHeight = totalHeight)
+        }
+    }else if (screenType == AppConstants.AbacusScreen.screenTypeAbacusPractice || screenType == AppConstants.AbacusScreen.screenTypeCCM || screenType == AppConstants.AbacusScreen.screenTypeExercise) {
+        OnlyWordStripBar(dim = dim, totalWidth = totalWidth, totalHeight = totalHeight)
+    }
+
+    // If highlighter is off, skip step rectangles
+    if (!showHighlighter) return
+
+    val totalBeadsHeight = totalHeight - (dim.rectLineWidth * 2)
+    // width of one abacus column — used to position tour highlights by exact
+    // rod index instead of hardcoded 13-column pixel offsets, so the tour
+    // still points at the right rod when numberOfColumns is 7.
+    val colUnit = dim.beadWidth + (dim.columnSpaces * 2)
+    // The decimal separator sits between rod 6 and rod 7, i.e. to the RIGHT of every
+    // rod the tour points at (ones/tens/hundreds). These overlay rows are centered,
+    // so their trailing filler must include this gap or every highlight lands gap/2
+    // to the right of its rod. 0 when there are 7 rods.
+    val gap = if (numberOfColumns > 7) dim.decimalSeparatorGap else 0.dp
+
+    // 2️⃣ Beam (bar)
+    Column(
+        modifier = Modifier
+            .height(totalHeight)
+            .padding(dim.rectLineWidth)
+    ) {
+        Spacer(modifier = Modifier.height((dim.beadHeight * 2) + dim.extraSpace))
+        Box(
+            modifier = Modifier
+                .width(totalWidth - (dim.rectLineWidth * 2))
+                .height(dim.beamHeight)
+                .spotlightTag(2, highlightSteps[2].message)
+        )
+        Spacer(modifier = Modifier.weight(1f))
+    }
+
+    // 3️⃣ Upper beads area
+    Column(
+        modifier = Modifier
+            .height(totalHeight)
+            .padding(dim.rectLineWidth)
+    ) {
+        Box(
+            modifier = Modifier
+                .width(totalWidth - (dim.rectLineWidth * 2))
+                .height(dim.beadHeight + (dim.extraSpace * 2))
+                .spotlightTag(3, highlightSteps[3].message, if (toy) toyGeometry.panelCorner else null)
+        )
+        Spacer(modifier = Modifier.weight(1f))
+    }
+
+    // 4️⃣ Lower beads area
+    Column(
+        modifier = Modifier
+            .height(totalHeight)
+            .padding(dim.rectLineWidth)
+    ) {
+        Spacer(modifier = Modifier.weight(1f))
+        Box(
+            modifier = Modifier
+                .width(totalWidth - (dim.rectLineWidth * 2))
+                .height((dim.beadHeight * 4) + (dim.extraSpace * 2))
+                .spotlightTag(4, highlightSteps[4].message, if (toy) toyGeometry.panelCorner else null)
+        )
+    }
+
+    // 5️⃣ Unit place — ones place is always column index 6
+    Column(
+        modifier = Modifier
+            .height(totalHeight)
+            .padding(dim.rectLineWidth)
+    ) {
+        Row(
+            modifier = Modifier
+                .padding(top = (dim.beadHeight * 2) + dim.extraSpace)
+        ) {
+            Box(modifier = Modifier.width(colUnit * 6))
+            Box(
+                modifier = Modifier
+                    .width(colUnit)
+                    .height(dim.beamHeight)
+                    .spotlightTag(5, highlightSteps[5].message)
+            )
+            Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7) + gap))
+        }
+        Spacer(modifier = Modifier.weight(1f))
+    }
+
+    // The tour boxes below are a full rod cell wide (colUnit), not one bead wide: the beads sit in the middle of their cell,
+    // so a bead-wide box starting at the cell edge lay a little left of the rod and cut the right side of the beads.
+    // 6️⃣ First rods — ones place is always column index 6 (the integer part
+    // is always the first 7 columns), so it's colUnit*6 from the left and
+    // whatever's left (numberOfColumns - 7) from the right.
+    Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+        Box(modifier = Modifier.width(colUnit * 6).height(totalBeadsHeight))
+        Box(
+            modifier = Modifier
+                .width(colUnit)
+                .height(totalBeadsHeight)
+                .spotlightTag(6, highlightSteps[6].message)
+        )
+        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7) + gap).height(totalBeadsHeight))
+    }
+
+    // 7️⃣ Second rods — tens place is always column index 5
+    Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+        Box(
+            modifier = Modifier
+                .width(colUnit * 5)
+                .height(totalBeadsHeight)
+        )
+        Box(
+            modifier = Modifier
+                .width(colUnit)
+                .height(totalHeight - dim.rectLineWidth - (dim.beamHeight * 2))
+                .spotlightTag(7, highlightSteps[7].message)
+        )
+        Box(
+            modifier = Modifier
+                .width(colUnit * (numberOfColumns - 6) + gap)
+                .height(totalBeadsHeight)
+        )
+    }
+
+    // 8️⃣ Third rods — hundreds place is always column index 4
+    Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+        Box(
+            modifier = Modifier
+                .width(colUnit * 4)
+                .height(totalBeadsHeight)
+        )
+        Box(
+            modifier = Modifier
+                .width(colUnit)
+                .height(totalBeadsHeight)
+                .spotlightTag(8, highlightSteps[8].message)
+        )
+        Box(
+            modifier = Modifier
+                .width(colUnit * (numberOfColumns - 5) + gap)
+                .height(totalBeadsHeight)
+        )
+    }
+
+    // 9️⃣ 1 rod = 0–9 — same position as step 6 (ones, column index 6)
+    Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+        Box(modifier = Modifier.width(colUnit * 6).height(totalBeadsHeight))
+        Box(
+            modifier = Modifier
+                .width(colUnit)
+                .height(totalBeadsHeight)
+                .spotlightTag(9, highlightSteps[9].message)
+        )
+        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7) + gap).height(totalBeadsHeight))
+    }
+
+    // 🔟 2 rods = 0–99 — tens + ones, column indices 5-6
+    Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+        Box(
+            modifier = Modifier
+                .width(colUnit * 5)
+                .height(totalBeadsHeight)
+        )
+        Box(
+            modifier = Modifier
+                .width(colUnit * 2)
+                .height(totalBeadsHeight)
+                .spotlightTag(10, highlightSteps[10].message)
+        )
+        Box(
+            modifier = Modifier
+                .width(colUnit * (numberOfColumns - 7) + gap)
+                .height(totalBeadsHeight)
+        )
+    }
+
+    // 1️⃣1️⃣ 3 rods = 0–999 — hundreds + tens + ones, column indices 4-6
+    Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+        Box(
+            modifier = Modifier
+                .width(colUnit * 4)
+                .height(totalBeadsHeight)
+        )
+        Box(
+            modifier = Modifier
+                .width(colUnit * 3)
+                .height(totalBeadsHeight)
+                .spotlightTag(11, highlightSteps[11].message)
+        )
+        Box(
+            modifier = Modifier
+                .width(colUnit * (numberOfColumns - 7) + gap)
+                .height(totalBeadsHeight)
+        )
+    }
+
+    // 1️⃣2️⃣ Addition bottom bead — ones place, column index 6
+    Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+        Box(modifier = Modifier.width(colUnit * 6))
+        Column {
+            Box(
+                modifier = Modifier
+                    .width(colUnit)
+                    .height((dim.beadHeight * 2) + dim.beamHeight + dim.extraSpace)
+            )
+            Box(
+                modifier = Modifier
+                    .width(colUnit)
+                    .height((dim.beadHeight * 5) + dim.extraSpace)
+                    .spotlightTag(12, highlightSteps[12].message)
+            )
+        }
+        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7) + gap))
+    }
+
+    // 1️⃣3️⃣ Addition top bead — ones place, column index 6
+    Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+        Box(modifier = Modifier.width(colUnit * 6))
+        Column(
+            modifier = Modifier.height(totalHeight - (dim.rectLineWidth * 2))
+        ) {
+            Box(
+                modifier = Modifier
+                    .width(colUnit)
+                    .height((dim.beadHeight * 2) + dim.extraSpace)
+                    .spotlightTag(13, highlightSteps[13].message)
+            )
+            Spacer(modifier = Modifier.weight(1f))
+        }
+        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7) + gap))
+    }
+
+    // 1️⃣4️⃣ Subtraction bottom bead — ones place, column index 6
+    Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+        Box(modifier = Modifier.width(colUnit * 6))
+        Column(
+            modifier = Modifier.height(totalHeight - (dim.rectLineWidth * 2))
+        ) {
+            Box(
+                modifier = Modifier
+                    .width(colUnit)
+                    .height((dim.beadHeight * 2) + dim.beamHeight + dim.extraSpace)
+            )
+            Box(
+                modifier = Modifier
+                    .width(colUnit)
+                    .height((dim.beadHeight * 5) + dim.extraSpace)
+                    .spotlightTag(14, highlightSteps[14].message)
+            )
+        }
+        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7) + gap))
+    }
+
+    // 1️⃣5️⃣ Subtraction top bead — ones place, column index 6
+    Row(modifier = Modifier.padding(dim.rectLineWidth)) {
+        Box(modifier = Modifier.width(colUnit * 6))
+        Column(
+            modifier = Modifier.height(totalHeight - (dim.rectLineWidth * 2))
+        ) {
+            Box(
+                modifier = Modifier
+                    .width(colUnit)
+                    .height((dim.beadHeight * 2) + dim.extraSpace)
+                    .spotlightTag(15, highlightSteps[15].message)
+            )
+            Spacer(modifier = Modifier.weight(1f))
+        }
+        Box(modifier = Modifier.width(colUnit * (numberOfColumns - 7) + gap))
+    }
+
+    // ==========================
+    //  Spotlight Overlay & Steps
+    //  (kept same as your original)
+    // ==========================
+    if (currentSpot != null && currentSpot!! >= 0) {
+        // Overlay with blur + clear hole + tooltip
+        SpotlightOverlay(
+            currentSpot = currentSpot,
+            total = highlightSteps.size,
+            // Skip ends the tour exactly like the last step does
+            onSkip = {
+                currentSpot = null
+                abacusData.resetAbacusData()
+                onRodMovementChange(emptyList())
+                onShowDirectionHintsChange(false)
+                abacusData.setAbacusValueFromString("0")
+                onShowHighlighterChange(false)
+            },
+            onNext = {
+                // a second tap on Next / Done after the tour has already ended (the bar is still on screen for a frame) has
+                // nothing left to advance; reading the missing step with !! closed the app
+                val spot = currentSpot ?: return@SpotlightOverlay
+                val nextSpot = if (spot == highlightSteps.lastIndex) {
+                    null
+                } else {
+                    spot + 1
+                }
+                currentSpot = nextSpot
+
+                // reset abacus + remove arrows first
+                abacusData.resetAbacusData()
+                onRodMovementChange(emptyList())
+                onShowDirectionHintsChange(false)
+
+                if (nextSpot == null) {
+                    // tour finished
+                    abacusData.setAbacusValueFromString("0")
+                    onShowHighlighterChange(false)
+                    return@SpotlightOverlay
+                }
+
+                // demo values below are built as "<leading digits>" + trailing
+                // zeros so they land on the correct rod (ones/tens/hundreds are
+                // always columns 6/5/4) regardless of numberOfColumns, instead
+                // of fixed 7-9 digit literals that only lined up at 13 columns.
+                val trailingZerosFromOnes = "0".repeat(numberOfColumns - 7)
+                when (nextSpot) {
+                    6, 9 -> abacusData.setAbacusValueFromString("9$trailingZerosFromOnes")
+                    7 -> abacusData.setAbacusValueFromString("9" + "0".repeat(numberOfColumns - 6))
+                    8 -> abacusData.setAbacusValueFromString("9" + "0".repeat(numberOfColumns - 5))
+                    10 -> abacusData.setAbacusValueFromString("99$trailingZerosFromOnes")
+                    11 -> abacusData.setAbacusValueFromString("999$trailingZerosFromOnes")
+
+                    12 -> {
+                        val list = MathUtils.calculateRodMovements(from = 0, to = 4, rods = 1, isForRightRods = false)
+                        onRodMovementChange(list)
+                        onShowDirectionHintsChange(true)
+                    }
+
+                    13 -> {
+                        val list = MathUtils.calculateRodMovements(from = 0, to = 5, rods = 1, isForRightRods = false)
+                        onRodMovementChange(list)
+                        onShowDirectionHintsChange(true)
+                    }
+
+                    14 -> {
+                        abacusData.setAbacusValueFromString("4$trailingZerosFromOnes")
+                        val list = MathUtils.calculateRodMovements(from = 4, to = 0, rods = 1, isForRightRods = false)
+                        onRodMovementChange(list)
+                        onShowDirectionHintsChange(true)
+                    }
+
+                    15 -> {
+                        abacusData.setAbacusValueFromString("5$trailingZerosFromOnes")
+                        val list = MathUtils.calculateRodMovements(from = 5, to = 0, rods = 1, isForRightRods = false)
+                        onRodMovementChange(list)
+                        onShowDirectionHintsChange(true)
+                    }
+
+                    else -> {
+                        abacusData.setAbacusValueFromString("0")
+                    }
+                }
+            }
+        )
+    }
+}
+
+
+

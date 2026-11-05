@@ -9,6 +9,7 @@ data class FetchAbacusDataRequest(
     var last_sync_time: String? = null,
     var get_set_progress_report: Boolean = false,
     var get_all_data: Boolean = false,
+    var public_key: String? = null,
 )
 data class SignupV2Request(
     var name: String? = null,
@@ -28,37 +29,14 @@ data class LoginRequest(
 )
 data class SocialLoginRequest(
     var email: String? = null,
-    var token: String? = null
+    var token: String? = null,
+    var apple_user_id: String? = null,
 )
 
 data class PurchasedPlanCheckRequest(
     var purchased_plan: ArrayList<GooglePurchasedPlanRequest>? = null
 )
 
-data class ForgotPasswordRequest(
-    var email: String? = null
-)
-
-data class ResetPasswordRequest(
-    var email: String? = null,
-    var otp: String? = null,
-    var password: String? = null
-)
-
-data class ChangePasswordRequest(
-    var current_password: String? = null,
-    var new_password: String? = null
-)
-
-data class UpdateProfileRequest(
-    var name: String? = null,
-    var email: String? = null,
-    var country_code: String? = null,
-    var phone: String? = null,
-    var city: String? = null,
-    var state: String? = null,
-    var country: String? = null
-)
 data class ContactUsRequest(
     var type: String? = null,
     var name: String? = null,
@@ -69,9 +47,6 @@ data class ContactUsRequest(
     var city: String? = null,
 )
 
-data class ResendOTPRequest(
-    var email: String? = null,
-)
 data class SubmitAllExamDataRequest(
     // Exam submit
     var type: String? = null,
@@ -81,7 +56,7 @@ data class SubmitAllExamDataRequest(
     var no_of_questions: Int? = null,
     var no_of_right_answers: Int? = null,
     var theme: String? = null,
-    var questions: ArrayList<Any>? = null,
+    var questions: ArrayList<QuestionDataRequest>? = null,
 
     // Exercise
     var category: String? = null,
@@ -116,7 +91,8 @@ data class QuestionDataRequest(
     var user_answer: String? = null,
     var is_correct: Boolean? = null,
     var que_type: String? = null,
-    var image: String? = null
+    var image: String? = null,
+    var index: Int? = null
 )
 
 data class GooglePurchasedPlanRequest(
@@ -129,18 +105,4 @@ data class GooglePurchasedPlanRequest(
     var purchase_price: Double = 0.0,
     var purchase_currency: String? = null,
     var no_of_renewals: Int = 0
-)
-
-data class PurchasePlanCreateRequest(
-    var plan_id: String? = null,
-    var currency: String? = null
-)
-data class PurchaseSuccessRequest(
-    var payment_intent_id: String? = null,
-)
-
-data class CancelReactivePlanRequest(
-    var is_cancelled : Boolean? = null,
-    var cancellation_reason : String? = null,
-    var cancellation_description : String? = null,
 )

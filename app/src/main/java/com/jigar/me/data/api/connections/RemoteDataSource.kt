@@ -10,7 +10,7 @@ import com.jigar.me.data.model.ErrorData
 import com.jigar.me.data.model.MainAPIResponse
 import com.jigar.me.data.model.MainAPIResponseArray
 import com.jigar.me.data.pref.AppPreferencesHelper
-import com.jigar.me.ui.view.login.LoginDashboardActivity
+import com.jigar.me.ui.view.home.HomeActivity
 import com.jigar.me.utils.AppConstants
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
@@ -39,10 +39,10 @@ class RemoteDataSource @Inject constructor() {
 
     private fun getClient(context: Context,baseUrl: String): Retrofit? {
         client = OkHttpClient.Builder()
+            .addInterceptor(AuthHeaderInterceptor(prefManager))
             .addInterceptor(Interceptor { chain ->
                 forwardNext(context, chain)
             })
-            .addInterceptor(AuthHeaderInterceptor(prefManager))
             .readTimeout(1, TimeUnit.MINUTES)
             .connectTimeout(1, TimeUnit.MINUTES)
             .build()
@@ -70,6 +70,7 @@ class RemoteDataSource @Inject constructor() {
 
         val strNewBody = buffer.readUtf8()
         Log.e("post_request_new_body", "Without encryption enabled body $strNewBody")
+        Log.e("post_request_new_body", "headers ${request.headers}")
         try {
             val response: Response = chain.proceed(request) // get the API response
 
@@ -113,7 +114,7 @@ class RemoteDataSource @Inject constructor() {
 
     private fun handleForbiddenResponse(context: Context) {
         prefManager.clearPref()
-        LoginDashboardActivity.getInstance(context)
+        HomeActivity.getInstance(context)
     }
 
 

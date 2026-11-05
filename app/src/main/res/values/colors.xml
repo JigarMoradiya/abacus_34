@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary">#3949AB</color>
+    <color name="colorPrimaryDark">#283593</color>
+    <color name="colorAccent">#8E24AA</color>
+
     <color name="white70">#70FFFFFF</color>
     <color name="gray_de">#DEDEDE</color>
     <color name="gray_c7">#C7C7C7</color>
@@ -9,11 +13,16 @@
     <color name="brand_alert">#ff0000</color>
     <color name="brand_alert11">#D9000000</color>
 
+<!--    <color name="back_icon_text_bg">#F3DFF8</color>-->
+<!--    <color name="back_icon_bg">#9C27B0</color>-->
+
+    <color name="back_icon_text_bg">#EBEEFB</color>
+    <color name="back_icon_bg">#3949AB</color>
+    <color name="back_icon_bg_light">#6E7DD5</color>
+
     <color name="colorSwitch1">#AB47BC</color>
     <color name="colorPurpleDark">#6C197A</color>
-    <color name="colorPrimary">#246AF1</color>
-    <color name="colorPrimaryDark">#1656D3</color>
-    <color name="colorAccent">#F17624</color>
+
 
     <color name="tag_bg">#242424</color>
     <color name="white">#ffffff</color>

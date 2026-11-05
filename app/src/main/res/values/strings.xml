@@ -45,21 +45,11 @@
     <string name="interstitial_ad_unit_id_number_puzzle_complete">ca-app-pub-5759468493922763/8865980504</string>
     <string name="interstitial_ad_unit_id_exercise">ca-app-pub-5759468493922763/3939794135</string>
 
-    <integer-array name="bead_top">
-        <item>@drawable/egg0</item>
-
-    </integer-array>
-    <integer-array name="big_bottom">
-        <item>@drawable/egg1</item>
-        <item>@drawable/egg4</item>
-        <item>@drawable/egg2</item>
-        <item>@drawable/egg3</item>
-    </integer-array>
-
     <!--Error messages-->
-    <string name="no_internet">Please check your network connection.</string>
+    <string name="no_internet_close_notes">If you close this screen now, your result will not be saved and you won’t be able to see it later in history.</string>
+    <string name="no_internet">Please check your Wi-Fi or mobile data connection.</string>
     <string name="still_no_internet">Still your internet is not working.</string>
-    <string name="no_internet_working">Your internet is not working</string>
+    <string name="no_internet_working">No Internet Connection</string>
     <string name="some_thing_wrong">Some thing went wrong, Please try again after sometime.</string>
 
     <!--  Tour page  -->
@@ -115,9 +105,9 @@
     <string name="txt_reset_now">START AGAIN</string>
     <string name="txt_purchase">Purchase</string>
     <string name="txt_purchased">Purchased</string>
-    <string name="txt_purchase_Now">Purchase Now</string>
+    <string name="txt_purchase_Now">Purchase</string>
     <string name="txt_subscribed">Subscribed</string>
-    <string name="txt_subscribe_Now">Subscribe Now</string>
+    <string name="txt_subscribe_Now">Subscribe</string>
 
     <string name="txt_page_full_abacus_not_purchased">We apologize, but access to this feature requires a subscription to our paid plan. To unlock and enjoy the benefits of this feature, please consider subscribing to our premium plan.\nThank you for your understanding!</string>
     <string name="txt_page_practise_material_not_purchased">We regret to inform you that downloading this material is restricted to subscribers of our paid plan. To access and download this content, please consider upgrading to our premium plan.\nThank you for your understanding!</string>
@@ -154,7 +144,6 @@
     <string name="continue_working_internet">Internet working, please continue</string>
     <string name="no_working_internet">Okay, I will check, please close</string>
     <string name="yes_i_want_to_purchase">Yes, I want to Subscribe Now</string>
-    <string name="maybe_later">May be Subscribe Later</string>
     <string name="yes_i_want_to_update">Yes, I want to Update</string>
     <string name="no_purchase_later">No, I will Subscribe later</string>
     <string name="no_thanks">No, thanks</string>
@@ -163,12 +152,13 @@
     <!--  Settings  -->
     <string name="txt_setting_title">Application Setting</string>
     <string name="txt_setting_display_abacus_number">Display Current Number</string>
-    <string name="txt_setting_display_help_message">Display Hint Message</string>
+    <string name="txt_setting_display_help_message">Display Help Hint</string>
     <string name="display_bead_direction">Display Bead Direction</string>
     <string name="txt_setting_hide_table">Hide table</string>
-    <string name="txt_setting_left_hand">Left handed</string>
-    <string name="txt_setting_sound">Abacus Bead Sound</string>
-    <string name="txt_setting_hintsound">Abacus Sums Sound</string>
+    <string name="txt_setting_left_hand">Abacus for Left Handed</string>
+    <string name="txt_setting_sound">Bead Move Sound</string>
+    <string name="txt_setting_hintsound">Sums Speak Sound</string>
+    <string name="txt_setting_7_rods_mode">7 Rods Abacus</string>
 
     <!--  Daily Exam  -->
     <string name="testResult">Exam\'s Result</string>
@@ -179,6 +169,7 @@
     <string name="TotalTakeTime">Total Take Time</string>
     <string name="checkResult">Check Result</string>
     <string name="give_exam_again">Give Exam Again</string>
+    <string name="do_exercise_again">Do Exercise Again</string>
     <string name="YourAnswer">Your Answer</string>
     <string name="correctAnswer">Correct Answer</string>
     <string name="SKipped">Skipped</string>
@@ -242,7 +233,7 @@
     <string name="wrong_answer">Wrong Answer</string>
     <string name="start_again">Start Again</string>
     <string name="result">Results of Exam</string>
-    <string name="let_s_start_exam">It"'"s Exam Time</string>
+    <string name="math_exam">Math Exam</string>
     <string name="let_s_start">Let\'s Start</string>
     <string name="let_s_play">Let\'s Play</string>
     <string name="exam_history">Exam History</string>
@@ -291,9 +282,10 @@
     <string name="arrange_all_the_numbers_of_puzzle_in_ascending_order">Arrange all the numbers of puzzle in ascending order</string>
     <string name="current_moves">Current Moves</string>
     <string name="best_moves">Best Moves</string>
-    <string name="start_new">Start New Game</string>
+    <string name="start_new">Start New</string>
     <string name="volume_on">Volume ON</string>
     <string name="volume_off">Volume OFF</string>
+    <string name="start_new_game">Start New Game</string>
     <string name="number_sequences_puzzle_volume">Number sequence puzzle volume</string>
 
     <string name="continue_to_play_game">Continue to Play</string>
@@ -311,9 +303,12 @@
     <string name="select_your_exercise">Select your Exercise</string>
     <string name="clear_each_exercise_to_get_80_of_3_times_in_a_row">To clear each exercise, get 80% of 3 times in a row.</string>
     <string name="start_exercise">Start Exercise</string>
+    <string name="title_exercises">Abacus Exercises</string>
     <string name="next">Next</string>
     <string name="answer">Answer :</string>
     <string name="result_of_exercise">Result of Exercise</string>
+    <string name="result_of_exam">Result of Exam</string>
+    <string name="result_of_formal_exam_set">Result of Formal Exam Practice Set</string>
     <string name="fail_to_got_80">Fail to got 80% for clear this exercise.</string>
     <string name="better_luck_for_next_time">Better luck for next time..</string>
     <string name="congratulations">Congratulations…</string>
@@ -326,7 +321,7 @@
     <string name="you_are_clever">You are clever</string>
     <string name="you_are_on_the_right_track">You are on the right track</string>
     <string name="good_job">Good job</string>
-    <string name="not_bad">Not bad, you can do batter from this</string>
+    <string name="not_bad">Not bad, you can do batter then this</string>
 
     <string name="other_app_s_by_brainapptech_team">Other App\'s by BrainAppTech Team</string>
     <string name="offline_not_supported">Offline is not supported</string>
@@ -335,10 +330,11 @@
 
     <string name="notification_permission_msg">Notification permission is required to get alert related to Abacus!</string>
     <string name="permission_alert">Permission Alert!</string>
+    <string name="abacus_free_mode">Abacus Free Mode</string>
     <string name="free_abacus_theme">Abacus Themes</string>
     <string name="paid_abacus_themes">Advance Abacus Themes</string>
-    <string name="preview_of_theme">Preview of Theme</string>
-    <string name="welcome_to_abacus_application">Welcome to the Abacus Application</string>
+    <string name="preview_of_theme">Preview Of Theme</string>
+    <string name="welcome_to_abacus_application">Welcome to the Vedaavi Learning</string>
     <string name="please_choose_your_anonymous_name_and_avatar">Please choose child\'s anonymous\nname and avatar</string>
     <string name="choose_child_avatar">Choose child\'s avatar</string>
     <string name="please_select_avatar">Please select avatar</string>
@@ -348,9 +344,9 @@
     <string name="okay_let_s_start">Okay, let\'s start</string>
     <string name="will_select_later_from_settings">Will change later from settings</string>
     <string name="free_mode">Free Mode?</string>
-    <string name="video_tutorials">Video Tutorials</string>
-    <string name="use_left_hand_to_move_beads">Use your <b><font color='#00FF00'>Left Hand</font></b> to move beads</string>
-    <string name="use_right_hand_to_move_beads">Use your <b><font color='#00FF00'>Right Hand</font></b> to move beads</string>
+    <string name="video_tutorials">Video Tutorial</string>
+    <string name="use_left_hand_to_move_beads">Use your <b>Left Hand</b> to move beads</string>
+    <string name="use_right_hand_to_move_beads">Use your <b>Right Hand</b> to move beads</string>
 
     <string name="ten_crores">Ten Crores</string>
     <string name="crores">Crores</string>
@@ -540,7 +536,7 @@
     <string name="kindly_support_us_by_sharing_an_application"><![CDATA[Kindly support us by <font color="#62C8FF">sharing an application</font> with your Friends and Family.]]></string>
 
     <string name="speak_divide_by">%1$s divide by %2$s</string>
-    <string name="speak_multiply_by">%1$s multiply %2$s</string>
+    <string name="speak_multiply_by">%1$s multiplied by %2$s</string>
 
     <string name="need_paid_plan_msg">Sorry, to access this feature, a paid plan is required.\nUpgrade your plan today to enjoy the full benefits and unlock this premium feature.\nThank you for your understanding!</string>
     <string name="txt_setting_step_by_step">Give answer <font color='#0000ff'>Step by Step</font></string>
@@ -553,12 +549,12 @@
 
     <string name="beginner">Beginner</string>
     <string name="nursery_class_and_maths_npractice_material"><font color='#00B64B'>Nursery Class and Maths</font>\nPractice Material</string>
-    <string name="create_custom_challenge_as_per_your_kid_s_ability">Create custom challenge as per your Kid\'s Ability</string>
+    <string name="create_custom_challenge_as_per_your_kid_s_ability">Create custom challenge as per\nKid\'s Ability</string>
     <string name="custom_challenge_mode">Custom Challenge Mode</string>
     <string name="result_of_practice_set">Result of Practice Set</string>
-    <string name="number_of_questions">Number of Questions :</string>
-    <string name="gap_between_two_question_sec">Gap between Two Question (In Sec) :</string>
-    <string name="question_min_max_length">Question Min Max Length :</string>
+    <string name="number_of_questions">Number of Questions</string>
+    <string name="gap_between_two_question_sec">Gap between Two Question (In Sec)</string>
+    <string name="question_min_max_length">Question Min Max Length</string>
     <string name="question_speak_voice">Question Speak Voice</string>
     <string name="question_show_in_number">Question show in Number</string>
     <string name="question_show_in_word">Question show in Word</string>
@@ -577,8 +573,10 @@
     <string name="check_voice">Check Voice</string>
     <string name="speak_test">Welcome to Abacus Child Learning Application. Abacus is help your children to learn about number, addition, subtraction, multiplication and division.</string>
     <string name="check_answer">Check Answer</string>
-    <string name="set_your_answer">Set your answer</string>
+    <string name="check_answer_">Check\nAnswer</string>
+    <string name="set_your_answer">Set Your Answer</string>
     <string name="sorry">Sorry!</string>
+    <string name="or">OR</string>
     <string name="start_new_challenge">Start new challenge</string>
     <string name="change_voice_setting">Change Voice Setting</string>
     <string name="ccm_msg">Help to increase <font color='#D81B60'>Concentration Power,\n</font> <font color='#7B1FA2'>Listening Skill,</font> <font color='#303F9F'>Calculation Speed,</font>\n<font color='#0097A7'>Visualization</font> and <font color='#388E3C'>Memory Power</font></string>
@@ -604,6 +602,13 @@
     <string name="kid_s_name">Kid\'s Name</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="login">Login</string>
+    <string name="login_now">Sign In</string>
+    <string name="login_to_view_your_account">Sign in to view your account</string>
+    <string name="login_to_view_account_description">Sign in to access your profile, track your progress, and manage your subscription.</string>
+    <string name="login_credentials_old_user_note">For users registered in an earlier version of the app</string>
+    <string name="login_to_save_results">Login to save your results and track your progress!</string>
+    <string name="login_to_track_progress">Login to track your progress!</string>
+    <string name="exercise_login_subtitle">Sign in to save your results and review them anytime</string>
     <string name="register">Register</string>
     <string name="otp_verification">OTP Verification</string>
     <string name="verify">Verify</string>
@@ -664,8 +669,9 @@
     <string name="report_card">Report History Cards</string>
     <string name="about_app_label">What"'"s Learn in Application</string>
     <string name="subscription">Subscription</string>
-    <string name="no_report_available_yet">No Report Available Yet</string>
+    <string name="no_report_available_yet">No Report Found</string>
     <string name="question">Question :</string>
+    <string name="data_not_available">Data not available</string>
     <string name="great_your_answer_is_correct">Great, your answer is correct.</string>
     <string name="sorry_your_answer_is_incorrect">Sorry, your answer is incorrect.</string>
     <string name="is_question_speak">Is question speak?</string>
@@ -692,6 +698,7 @@
     <string name="please_enter_name">Please enter Name</string>
     <string name="please_enter_valid_date">Please enter valid date</string>
     <string name="my_account">My Account</string>
+    <string name="parent">Parent</string>
     <string name="more_">More</string>
     <string name="rate_us_on_the_play_store">Rate us on the Play store</string>
     <string name="logout">Logout</string>
@@ -704,6 +711,12 @@
     <string name="select_report_type">Select Report Type</string>
     <string name="select_level__">-- Select Level --</string>
     <string name="last_30_days">Last 30 days</string>
+    <string name="this_month">This Month</string>
+    <string name="last_month">Last Month</string>
+    <string name="last_3_month">Last 3 Month</string>
+    <string name="last_6_month">Last 6 Month</string>
+    <string name="last_1_year">Last 1 Year</string>
+    <string name="select_date">Select Date</string>
     <string name="change_your_details">Change your details</string>
     <string name="update">Update</string>
     <string name="paid_feature">Paid Feature</string>
@@ -775,8 +788,10 @@
     <string name="your_login_is_associated_with_other_purchases">This login is already associated with other purchases!</string>
     <string name="want_to_move_purchase_with_this_login">Want to move purchase with this login?</string>
     <string name="yes_i_want_to_move">Yes, I want to move</string>
-    <string name="no_move_later"><![CDATA[No, move later<br/><font color="#EF9A9A">Notes : Can\'t access purchase features in this login</font>]]></string>
-    <string name="login_with_google">Login with Google</string>
+    <string name="no_move_later">No, move later</string>
+    <string name="no_move_later_msg">Can\'t access purchase features in this login.</string>
+    <string name="login_with_google">Continue with Google</string>
+    <string name="login_with_apple">Continue with Apple</string>
     <string name="to_start_your_journey">to start your journey</string>
     <string name="one_step_away">One step away!</string>
     <string name="login_with_credentials">Login with Credentials</string>
@@ -786,9 +801,11 @@
     <string name="description">Description</string>
     <string name="mobile_number">Mobile Number</string>
     <string name="ok_thanks">Ok, Thank you</string>
+    <string name="ok_please_close">Ok, Please Close</string>
     <string name="thank_you_for_reaching_out">Thank you for reaching out!</string>
     <string name="thank_you_for_reaching_out1">Your ticket has been received, and our team will be in touch with you as soon as possible.</string>
     <string name="practice_of_abacus">Practice of Abacus</string>
+    <string name="list_of_abacus">List of Abacus</string>
     <string name="step_by_step">Step By Step Answer</string>
     <string name="final_answer">Final Answer</string>
     <string name="formal_exam">Formal Exam</string>
@@ -818,12 +835,384 @@
     <string name="your_answer">Your Answer :</string>
     <string name="time">Time :</string>
     <string name="current_input">Current Input</string>
-    <string name="reset">Reset</string>
     <string name="start_free_trial">Start Free Trial</string>
     <string name="cancel_anytime_during_the_trial_without_being_charged">Cancel anytime during the trial\nwithout being charged.</string>
     <string name="go_premium_all_levels_all_features">Go Premium - All Levels, All Features</string>
-    <string name="old_subscription">Old Purchases</string>
-    <string name="limited_time_discount"><b>Limited-time deal -</b> unlock premium at a discounted price!</string>
+    <string name="old_purchases">Old Purchases</string>
+    <string name="limited_time_discount">Limited time deal - unlock premium at a discounted price!</string>
 
+    <string name="number_sequence_puzzle">Number Sequences Puzzle</string>
+    <string name="math_pyramid">Math Pyramid</string>
+    <string name="lets_start">Let\'s Start</string>
+    <string name="lets_play">Let\'s Play</string>
+    <string name="continue_to_play">Continue to Play</string>
+    <string name="completed_in_b_moves_b"><![CDATA[You completed this puzzle in <b>%1$d moves</b>.]]></string>
+    <string name="you_did_it">🎉 You Did It! 🎉</string>
+    <string name="you_built_the_pyramid">You built the pyramid…</string>
+    <string name="home_offer_title">Limited-time offer!</string>
+    <string name="home_offer_save_pct">Save %1$d%% on the %2$s plan</string>
+    <string name="home_offer_special_price">Special price on the %1$s plan</string>
+    <string name="home_offer_ends_in">Ends in %1$s</string>
+    <string name="home_offer_store_title">Lifetime price offer</string>
+    <string name="store_offer_caption">Limited Time Price Offer</string>
+    <string name="home_offer_product_yearly">Yearly</string>
+    <string name="home_offer_product_lifetime">Lifetime</string>
+    <string name="target_the_number">Target the Number</string>
+    <string name="sudoku">Sudoku</string>
+    <string name="math_game_zone">Math Game Zone</string>
+    <string name="pick_a_game_have_fun">Pick a game &amp; have fun!</string>
+    <string name="game_cat_recent">Jump Back In</string>
+    <string name="trophy_room">Trophy Room</string>
+    <string name="trophy_buddies">My Buddies</string>
+    <string name="ready_for_next">You\'re ready for %1$s!</string>
+    <string name="daily_challenge">Today\'s Challenge</string>
+    <string name="daily_play">Play!</string>
+    <string name="daily_done">Done ✓</string>
+    <string name="duel_two_players">👫 2 Players</string>
+    <string name="duel_blue">Blue</string>
+    <string name="duel_pink">Pink</string>
+    <string name="duel_wins">%1$s wins!</string>
+    <string name="duel_tie">It\'s a tie!</string>
+    <string name="trophy_first_game">First Steps</string>
+    <string name="trophy_first_game_desc">Play your first game</string>
+    <string name="trophy_explorer">Explorer</string>
+    <string name="trophy_explorer_desc">Play 6 different games</string>
+    <string name="trophy_all_rounder">All-Rounder</string>
+    <string name="trophy_all_rounder_desc">Play all 18 games</string>
+    <string name="trophy_star_10">Star Starter</string>
+    <string name="trophy_star_10_desc">Collect 10 stars</string>
+    <string name="trophy_star_50">Star Collector</string>
+    <string name="trophy_star_50_desc">Collect 50 stars</string>
+    <string name="trophy_star_150">Star King</string>
+    <string name="trophy_star_150_desc">Collect 150 stars</string>
+    <string name="trophy_star_300">Galaxy Star</string>
+    <string name="trophy_star_300_desc">Collect 300 stars</string>
+    <string name="trophy_levels_10">Adventurer</string>
+    <string name="trophy_levels_10_desc">Beat 10 levels</string>
+    <string name="trophy_levels_50">Trailblazer</string>
+    <string name="trophy_levels_50_desc">Beat 50 levels</string>
+    <string name="trophy_levels_150">Path Master</string>
+    <string name="trophy_levels_150_desc">Beat 150 levels</string>
+    <string name="trophy_perfect_5">Perfect Five</string>
+    <string name="trophy_perfect_5_desc">3-star 5 levels</string>
+    <string name="trophy_perfect_20">Perfectionist</string>
+    <string name="trophy_perfect_20_desc">3-star 20 levels</string>
+    <string name="trophy_medium_climber">Climbing Up</string>
+    <string name="trophy_medium_climber_desc">Beat 5 Medium levels</string>
+    <string name="trophy_medium_mountain">Mountain Master</string>
+    <string name="trophy_medium_mountain_desc">Beat 20 Medium levels</string>
+    <string name="trophy_hard_tough">Tough Cookie</string>
+    <string name="trophy_hard_tough_desc">Beat 5 Hard levels</string>
+    <string name="trophy_hard_iron">Iron Will</string>
+    <string name="trophy_hard_iron_desc">Beat 15 Hard levels</string>
+    <string name="trophy_veryhard_fearless">Fearless</string>
+    <string name="trophy_veryhard_fearless_desc">Beat 3 Very Hard levels</string>
+    <string name="trophy_veryhard_unstoppable">Unstoppable</string>
+    <string name="trophy_veryhard_unstoppable_desc">Beat 8 Very Hard levels</string>
+    <string name="trophy_hard_hero">Hard Hero</string>
+    <string name="trophy_hard_hero_desc">3-star a Hard level</string>
+    <string name="trophy_hard_master">Hard Master</string>
+    <string name="trophy_hard_master_desc">3-star 10 Hard levels</string>
+    <string name="trophy_speed_200">Speed Star</string>
+    <string name="trophy_speed_200_desc">Score 200 in any game</string>
+    <string name="trophy_speed_500">Speed Legend</string>
+    <string name="trophy_speed_500_desc">Score 500 in any game</string>
+    <string name="trophy_champion">Champion</string>
+    <string name="trophy_champion_desc">Earn 12 trophies</string>
+    <string name="trophy_legend">Legend</string>
+    <string name="trophy_legend_desc">Earn every trophy!</string>
+    <string name="zone_solved_count">Solved: %1$d</string>
+    <string name="game_cat_speedy">Speedy Games</string>
+    <string name="game_cat_equations">Equation Fun</string>
+    <string name="game_cat_adventures">Number Adventures</string>
+    <string name="game_cat_builders">Number Builders</string>
+    <string name="game_cat_puzzles">Brain Puzzles</string>
+    <string name="_3_3_puzzle">3×3 Puzzle</string>
+    <string name="_4_4_puzzle">4×4 Puzzle</string>
+    <string name="_5_5_puzzle">5×5 Puzzle</string>
+    <string name="hide_options">Hide options</string>
+    <string name="restart">Restart</string>
+    <string name="reset">Reset</string>
+    <string name="show_options">Show options</string>
+    <string name="hints">Hint</string>
+    <string name="you_completed_this_sudoku">🎉 You completed this sudoku. 🎉</string>
+    <string name="you_are_a_genius">You are a genius!</string>
+    <string name="play_again">Play Again</string>
+    <string name="no_i_will_play_letter">No, I will play letter</string>
+    <string name="continue_previous_game">Continue Previous Game?</string>
+    <string name="you_have_an_unfinished_sudoku">You have an unfinished Sudoku.</string>
+    <string name="yes_please_continue">Yes, please continue</string>
+    <string name="start_this_new_sudoku">Start this new Sudoku</string>
+    <string name="making_your_sudoku_ready">Making your Sudoku ready!</string>
+    <string name="please_wait">Please wait…</string>
+    <string name="target_number_game">Target Number Game</string>
+    <string name="complete_the_target">Complete the Target</string>
+    <string name="new_target">New Target</string>
+    <string name="target_banner">🎯 Target: %1$s</string>
+    <string name="hint_count">Hint %1$d/%2$d</string>
+    <string name="all_steps">All Steps</string>
+    <string name="target_number_desc">Use operations to reach the target!</string>
+    <string name="math_pyramid_desc">Add numbers to build the pyramid!</string>
+    <string name="sudoku_desc">Fill the grid with logic!</string>
 
+    <!-- Balloon Pop game -->
+    <string name="balloon_pop">Balloon Pop</string>
+    <string name="balloon_pop_desc">Pop the number that makes 10!</string>
+    <string name="balloon_pop_game">Balloon Pop</string>
+    <string name="balloon_pop_tagline">Pop the number that completes the sum!</string>
+    <string name="balloon_make_target">Make %1$d with %2$d!</string>
+    <string name="balloon_new_target">New Target!</string>
+    <string name="balloon_great_job">Great Job!</string>
+    <string name="balloon_final_score">Final Score</string>
+    <string name="balloon_best_score">Best Score</string>
+    <string name="balloon_play_again">Play Again</string>
+    <string name="balloon_back">No, I want to close</string>
+
+    <!-- Speed Compare game -->
+    <string name="speed_compare">Speed Compare</string>
+    <string name="speed_compare_desc">Which side is bigger?</string>
+    <string name="speed_compare_game">Speed Compare</string>
+    <string name="speed_compare_tagline">Which side is bigger — tap &lt;, = or &gt;!</string>
+    <string name="speed_which_bigger">Which is bigger?</string>
+
+    <!-- Missing Operator game -->
+    <string name="missing_operator">Missing Sign</string>
+    <string name="missing_operator_desc">Find the missing + − × ÷!</string>
+    <string name="missing_operator_game">Missing Sign</string>
+    <string name="missing_operator_tagline">Find the sign that makes it true!</string>
+    <string name="missing_op_which_sign">Which sign?</string>
+
+    <!-- Magic Square game -->
+    <string name="magic_square">Magic Square</string>
+    <string name="magic_square_desc">Make every line add up!</string>
+    <string name="magic_square_game">Magic Square</string>
+    <string name="magic_square_tagline">Make every row and column add up!</string>
+    <string name="magic_square_make_target">Make every line = %1$d!</string>
+
+    <!-- Calcudoku game -->
+    <string name="calcudoku">Calcudoku</string>
+    <string name="calcudoku_desc">Solve every math cage!</string>
+    <string name="calcudoku_game">Calcudoku</string>
+    <string name="calcudoku_tagline">Fill the grid so every cage works!</string>
+    <string name="calcudoku_prompt">Solve every cage!</string>
+    <string name="best_time">Best Time</string>
+
+    <!-- Number Merge (2048) game -->
+    <string name="equation_match">Equation Match</string>
+    <string name="equation_match_desc">Flip &amp; match the pairs!</string>
+    <string name="equation_match_tagline">Flip &amp; match the pairs!</string>
+    <string name="equation_match_prompt">Match the pairs!</string>
+    <string name="merge2048_game">Number Merge</string>
+    <string name="merge2048_desc">Swipe &amp; merge the numbers!</string>
+    <string name="merge2048_tagline">Swipe to add up and reach the target!</string>
+    <string name="merge2048_prompt">Reach %1$d!</string>
+    <string name="good_try">Good Try!</string>
+    <string name="merge2048_reached">Reached %1$d!</string>
+    <string name="merge2048_next">Next: %1$d</string>
+    <string name="resume_title">Welcome back!</string>
+    <string name="resume_message">Continue your saved game?</string>
+    <string name="continue_game">Continue</string>
+    <string name="new_game">New Game</string>
+    <string name="merge2048_target_title">Target Reached!</string>
+    <string name="merge2048_target_hint">The smallest tiles are cleared away — keep merging to the next target!</string>
+    <string name="keep_going">Keep Going!</string>
+
+    <!-- Cross Math game -->
+    <string name="cross_math">Cross Math</string>
+    <string name="cross_math_desc">Solve the number crossword!</string>
+    <string name="cross_math_game">Cross Math</string>
+    <string name="cross_math_tagline">Complete the crossing equations!</string>
+    <string name="cross_math_prompt">Fill the missing numbers!</string>
+    <string name="cross_math_level">Level %1$d</string>
+    <string name="cross_math_next_level">Next Level</string>
+
+    <!-- Number Path game -->
+    <string name="number_path">Number Path</string>
+    <string name="number_path_desc">Hop the maze to the target!</string>
+    <string name="number_path_game">Number Path</string>
+    <string name="number_path_tagline">Hop the math maze to the target!</string>
+
+    <!-- True or False game -->
+    <string name="true_false">True or False?</string>
+    <string name="true_false_desc">Spot the sneaky lies!</string>
+    <string name="true_false_game">True or False?</string>
+    <string name="true_false_tagline">Be the math judge — spot the lies!</string>
+    <string name="true_false_prompt">True or false?</string>
+    <string name="true_false_btn_true">TRUE</string>
+    <string name="true_false_btn_false">FALSE</string>
+    <string name="true_false_answer_was">It was %1$d!</string>
+
+    <!-- Place Value game -->
+    <string name="place_value">Place Value</string>
+    <string name="place_value_desc">Build numbers from pieces!</string>
+    <string name="place_value_game">Place Value</string>
+    <string name="place_value_tagline">Build the number from its pieces!</string>
+    <string name="place_value_prompt">Build the number!</string>
+    <string name="place_value_answer_was">It was %1$d!</string>
+
+    <!-- Clock Master game -->
+    <string name="clock_master">Clock Master</string>
+    <string name="clock_master_desc">Read the clock, beat the clock!</string>
+    <string name="clock_master_game">Clock Master</string>
+    <string name="clock_master_tagline">Read the clock, beat the clock!</string>
+    <string name="clock_master_prompt">What time is it?</string>
+
+    <!-- Math Bingo game -->
+    <string name="math_bingo">Math Bingo</string>
+    <string name="math_bingo_desc">Solve, stamp, BINGO!</string>
+    <string name="math_bingo_game">Math Bingo</string>
+    <string name="math_bingo_tagline">Solve the call, stamp your card!</string>
+
+    <!-- Kakuro game -->
+    <string name="kakuro">Kakuro</string>
+    <string name="kakuro_desc">The crossword of sums!</string>
+    <string name="kakuro_game">Kakuro</string>
+    <string name="kakuro_tagline">Make every line add up to its clue!</string>
+
+    <!-- Number Detective game -->
+    <string name="number_detective">Number Detective</string>
+    <string name="number_detective_desc">Crack the secret number!</string>
+    <string name="number_detective_game">Number Detective</string>
+    <string name="number_detective_tagline">Crack the secret number!</string>
+    <string name="number_detective_prompt">Range: %1$d–%2$d</string>
+    <string name="number_detective_correct">Correct!</string>
+    <string name="number_detective_answer_was">It was %1$d</string>
+    <string name="number_detective_too_low">Too low</string>
+    <string name="number_detective_too_high">Too high</string>
+    <string name="number_detective_tries_left">Tries left: %1$d</string>
+    <string name="number_detective_guess">Guess</string>
+
+    <!-- Number Snake game -->
+    <string name="number_snake">Number Snake</string>
+    <string name="number_snake_desc">Connect the number trail!</string>
+    <string name="number_snake_game">Number Snake</string>
+    <string name="number_snake_tagline">Connect 1 to the end, one step at a time!</string>
+    <string name="number_snake_level">Level %1$d</string>
+
+    <string name="order_id">Order ID</string>
+    <string name="number_sequence_desc"><![CDATA[Slide & order the numbers!]]></string>
+    <string name="free_mode_settings">Free Mode Settings</string>
+    <string name="click_here_to_show_abacus_tour">Show Abacus Tour</string>
+    <string name="numbers_generate_between">Numbers generate between</string>
+    <string name="how_to_play">How to Play?</string>
+
+    <string name="network_unreachable">This page isn\'t available without internet</string>
+    <string name="unexpected_error">Something went wrong, please try again later.</string>
+    <string name="no_logged_in_user">Error fetching current user data</string>
+    <string name="customize_pronunciation_voice">Customize Pronunciation (Voice)</string>
+    <string name="submit_answer">Submit\nAnswer</string>
+    <string name="hide_from_setting">Hide From Setting</string>
+    <string name="select_exam_difficulty">Select Exam Difficulty</string>
+    <string name="select_exam_types">Select Exam Types</string>
+    <string name="what_s_learn_in_application">What\'s Learn in Application</string>
+    <string name="free_and_premium">What\'s free and Premium</string>
+    <string name="report_history_cards">Report History Cards</string>
+    <string name="settings">Settings</string>
+    <string name="more">More</string>
+    <string name="exam">Exam</string>
+    <string name="exercise">Exercise</string>
+    <string name="practice_set">Practice set of Formal Exam</string>
+    <string name="subscription_free_trial_msg">Payment will be charged after the free trial.\nCancel anytime before trial ends.</string>
+    <string name="cancel_subscription_anytime">Cancel subscription anytime.</string>
+    <string name="plan_assigned_from_admin">Plan assigned from Admin.</string>
+    <string name="unlock_premium">Unlock Premium</string>
+    <string name="maybe_later">Maybe later</string>
+    <string name="retry">Retry</string>
+    <string name="cancel">Cancel</string>
+    <string name="alert">Alert</string>
+    <string name="something_went_wrong">Something went wrong. Please try again.</string>
+    <string name="purchase_pending">Your payment is waiting for approval. You get access as soon as it goes through.</string>
+    <string name="purchase_not_allowed">Purchases are turned off on this device. A parent can allow them in the Google Play settings.</string>
+    <string name="purchase_already_owned">You already own this plan. We are restoring it now.</string>
+    <string name="purchase_network">No internet connection. Please check it and try again.</string>
+    <string name="purchase_no_plans">No plans are available right now. Please try again in a moment.</string>
+    <string name="see_benefits">See Benefits</string>
+    <string name="premium_benefits_title">Premium Benefits</string>
+    <string name="benefit_all_levels">All levels practice (Level 1–8)</string>
+    <string name="benefit_all_exams">All exam types</string>
+    <string name="benefit_all_exercises">All exercises</string>
+    <string name="benefit_ccm">Custom Challenge Mode</string>
+    <string name="benefit_all_games">All math games</string>
+    <string name="benefit_report_history">Full report history</string>
+
+    <!-- Paywall sheet (FreemiumPaywallBottomSheet) -->
+    <string name="paywall_headline_generic">Go Premium!</string>
+    <string name="paywall_subtitle_generic">Unlock ALL levels\nNo limits\nLearn without limits!</string>
+    <string name="paywall_headline_level2">Unlock the abacus formulas!</string>
+    <string name="paywall_subtitle_level2">Small Friend, Big Friend and Family tricks</string>
+    <string name="paywall_headline_level3">Ready for speed training?</string>
+    <string name="paywall_subtitle_level3">Unlock Level 3: mental math and Anzan</string>
+    <string name="paywall_headline_tables">Master the times tables!</string>
+    <string name="paywall_subtitle_tables">Unlock every table and mixed practice</string>
+    <string name="paywall_headline_practice">Want more practice?</string>
+    <string name="paywall_subtitle_practice">Unlock every practice page</string>
+    <string name="paywall_headline_exercise">Keep the practice going!</string>
+    <string name="paywall_subtitle_exercise">Unlock all exercises</string>
+    <string name="paywall_headline_exam">Ready for the real exam?</string>
+    <string name="paywall_subtitle_exam">Unlock all exam types</string>
+    <string name="paywall_headline_ccm">Custom challenges await!</string>
+    <string name="paywall_subtitle_ccm">Unlock Custom Challenge Mode</string>
+    <string name="paywall_headline_games">Don\'t stop playing!</string>
+    <string name="paywall_subtitle_games">Unlock all math games</string>
+    <string name="paywall_headline_reports">See your child\'s progress!</string>
+    <string name="paywall_subtitle_reports">Unlock full report history</string>
+    <string name="paywall_badge_best_value">Best Value!</string>
+    <string name="paywall_badge_one_time">One Time</string>
+    <string name="paywall_subscribe">Subscribe</string>
+    <string name="paywall_save_vs_monthly">Save ~%1$d%% vs monthly</string>
+    <string name="paywall_save_vs_weekly">Save ~%1$d%% vs weekly</string>
+    <string name="paywall_percent_off">~%1$d%% OFF</string>
+    <string name="paywall_percent_off_extra">(~%1$d%% OFF)</string>
+    <!-- a paid intro price the store offers (a Google Play offer): "30% OFF", then "first year, then ₹1,200 / year" -->
+    <string name="paywall_percent_off_store">%1$d%% OFF</string>
+    <string name="paywall_amount_off_store">%1$s OFF</string>
+    <string name="paywall_offer_ended">This offer has just ended. The price is updated, nothing was charged.</string>
+    <string name="paywall_intro_then">%1$s, then %2$s</string>
+    <plurals name="paywall_intro_first_days">
+        <item quantity="one">first day</item>
+        <item quantity="other">first %1$d days</item>
+    </plurals>
+    <plurals name="paywall_intro_first_weeks">
+        <item quantity="one">first week</item>
+        <item quantity="other">first %1$d weeks</item>
+    </plurals>
+    <plurals name="paywall_intro_first_months">
+        <item quantity="one">first month</item>
+        <item quantity="other">first %1$d months</item>
+    </plurals>
+    <plurals name="paywall_intro_first_years">
+        <item quantity="one">first year</item>
+        <item quantity="other">first %1$d years</item>
+    </plurals>
+    <string name="login_required">Login Required</string>
+    <string name="login_is_required_to_access_this_feature">Login is required to access this feature.</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="continue_without_saving">Continue without saving</string>
+    <string name="results_not_saved_to_account">Your results are not saved yet. Sign in to keep your progress!</string>
+    <string name="question_display_options">Display Options</string>
+    <string name="ccm_speak">Speak</string>
+    <string name="ccm_number">Number</string>
+    <string name="ccm_word">Word</string>
+    <string name="ccm_listen_hint">Listen carefully to each number</string>
+    <string name="got_it">Got it!</string>
+    <string name="try_again">Try Again</string>
+
+    <string name="loading">Loading</string>
+    <string name="purchase_headline">Go Premium</string>
+    <string name="purchase_subline">Unlock everything, learn without limits</string>
+    <string name="paywall_billing_note">Monthly and yearly plans renew automatically until cancelled. Cancel anytime in your Google Play settings.</string>
+    <string name="paywall_billing_note_lifetime">Lifetime is a one-time purchase. It does not renew.</string>
+    <string name="paywall_privacy_link">Privacy Policy</string>
+    <string name="paywall_trial_then">%1$d Days Free, then </string>
+    <string name="paywall_per_month_approx">~%1$s / month</string>
+    <string name="paywall_headline_onboarding">Unlock everything!</string>
+    <string name="paywall_subtitle_onboarding">Beginner to expert, with progress reports for you</string>
+    <string name="paywall_headline_free_ending">Loving it so far?</string>
+    <string name="paywall_subtitle_free_ending">Keep every level and game with a plan</string>
+    <string name="paywall_headline_free_ended">Your freemium access is over</string>
+    <string name="paywall_subtitle_free_ended">Keep learning with Premium</string>
+    <string name="paywall_headline_returning">Ready for the next level?</string>
+    <string name="paywall_subtitle_returning">Unlock every level, game and progress report</string>
+    <string name="share_with_friend">Share with a friend</string>
+    <string name="share_with_friend_text">My child is learning abacus and mental maths with Vedaavi Abacus: step by step lessons, games and a weekly progress report for parents. Free to start: %1$s</string>
 </resources>

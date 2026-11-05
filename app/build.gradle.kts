@@ -1,15 +1,15 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
-    id("kotlin-kapt")
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-parcelize")
-
-    id("androidx.navigation.safeargs")
-
-    id("com.google.dagger.hilt.android")
-
-    id("com.google.gms.google-services")
-    id("com.google.firebase.crashlytics")
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.navigation.safeargs)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.firebase.crashlytics)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -27,168 +27,204 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-            )
-
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+    signingConfigs {
+        create("release") {
+            storeFile = file("keystore_live/abacus.jks")
+            storePassword = "android"
+            keyAlias = "android"
+            keyPassword = "android"
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+
+    buildTypes {
+        release {
+            isDebuggable = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName("release")
+        }
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
+        }
     }
     buildFeatures {
         viewBinding = true
         buildConfig = true
         dataBinding = true
+        compose = true
     }
+
     flavorDimensions += listOf("variant1")
     productFlavors {
         create("dev1") {
-            buildConfigField("String","USERS_MODULE", properties["users_module"].toString())
-            buildConfigField("String","NEW_MODULE", properties["new_module"].toString())
-            buildConfigField("String","LOCATION_MODULE", properties["location_module"].toString())
-            buildConfigField("String","EXAM_MODULE", properties["exam_module"].toString())
-            resValue("string","app_name", "Abacus Child Leaning App")
+            buildConfigField("String", "USERS_MODULE", properties["users_module"].toString())
+            buildConfigField("String", "NEW_MODULE", properties["new_module"].toString())
+            buildConfigField("String", "LOCATION_MODULE", properties["location_module"].toString())
+            buildConfigField("String", "EXAM_MODULE", properties["exam_module"].toString())
+            resValue("string", "app_name", "Abacus")
 
             dimension = "variant1"
             applicationId = "com.abacus.puzzle"
-            versionCode = 151
-            versionName = "15.0.0"
+            versionCode = 179
+            versionName = "16.0.5"
         }
     }
+
     externalNativeBuild {
-        cmake { 
+        cmake {
             path("cpp/CMakeLists.txt")
             version = "4.0.2"
         }
     }
 
-    assetPacks += listOf(":asset_install_time")
+    // The install-time asset pack (the 5 bundled tutorial videos, about 40 MB) is NOT linked any more: the screen that played them is gone.
+    // The module folder `asset_install_time` is kept as it was. To link it again: uncomment this line and the include in settings.gradle.kts.
+    // assetPacks += listOf(":asset_install_time")
+
+    packaging {
+        resources {
+            pickFirsts += "META-INF/versions/9/OSGI-INF/MANIFEST.MF"
+        }
+    }
 }
 
 dependencies {
-    implementation("androidx.appcompat:appcompat:1.7.1")
-    implementation("com.google.android.material:material:1.13.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.9.4")
-    implementation("androidx.navigation:navigation-ui-ktx:2.9.4")
-    implementation("com.google.android.play:asset-delivery-ktx:2.3.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.3.0")
-    androidTestImplementation ("androidx.test.espresso:espresso-core:3.7.0")
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.material)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.play.asset.delivery.ktx)
+    implementation(libs.play.review.ktx)
 
-    // install referrer
-    implementation("com.android.installreferrer:installreferrer:2.2")
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.junit)
+    androidTestImplementation(libs.androidx.test.espresso)
 
-    // Circular Progress Drawable
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    // Install referrer
+    implementation(libs.install.referrer)
 
-    // dagger hilt
-    implementation("com.google.dagger:hilt-android:2.57.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.57.1")
-    kapt("androidx.hilt:hilt-compiler:1.3.0")
+    // Swipe refresh
+    implementation(libs.androidx.swiperefreshlayout)
 
-    //  Manager
-    implementation("androidx.work:work-runtime-ktx:2.10.4")
-    implementation("androidx.hilt:hilt-work:1.3.0")
+    // Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+    kapt(libs.androidx.hilt.compiler)
 
-    // firebase
-    implementation("com.google.firebase:firebase-analytics")
-    implementation("com.google.firebase:firebase-crashlytics-ndk")
-    implementation(platform("com.google.firebase:firebase-bom:34.2.0"))
-    implementation("com.google.firebase:firebase-database-ktx:21.0.0")
-    implementation("com.google.firebase:firebase-config-ktx:22.1.2")
-    implementation("com.google.firebase:firebase-messaging-ktx:24.1.2")
-    implementation("com.google.firebase:firebase-auth-ktx:23.2.1")
-    implementation("com.google.firebase:firebase-core:21.1.1")
+    // Work Manager
+    implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.androidx.hilt.work)
 
-    // google
-    implementation("com.google.android.gms:play-services-auth:21.4.0")
+    // Firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.crashlytics.ndk)
+    implementation(libs.firebase.database.ktx)
+    implementation(libs.firebase.config.ktx)
+    implementation(libs.firebase.messaging.ktx)
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.core)
 
-    // push notification
-    implementation("com.onesignal:OneSignal:5.1.37")
+    // Google
+    implementation(libs.play.services.auth)
 
-    // api
-    implementation("com.squareup.retrofit2:retrofit:3.0.0")
-    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
-    implementation("io.reactivex.rxjava2:rxjava:2.2.21")
-    implementation("com.squareup.retrofit2:adapter-rxjava2:3.0.0")
-    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-    implementation("com.squareup.okhttp3:logging-interceptor:5.1.0")
-    implementation("com.jakewharton.rxbinding3:rxbinding-material:3.1.0")
+    // Credential Manager
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.googleid)
+
+    // Push notifications
+    implementation(libs.onesignal)
+
+    // Networking
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.rxjava2)
+    implementation(libs.retrofit.adapter.rxjava2)
+    implementation(libs.rxandroid)
+    implementation(libs.okhttp.logging.interceptor)
+    implementation(libs.rxbinding.material)
 
     // Glide
-    implementation("com.github.bumptech.glide:glide:5.0.5")
-    annotationProcessor("com.github.bumptech.glide:compiler:5.0.5")
+    implementation(libs.glide)
+    annotationProcessor(libs.glide.compiler)
 
-    // coroutine
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.3")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.3")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.9.3")
+    // Lifecycle
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.common.java8)
 
-    // life components
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-//    kapt("androidx.lifecycle:lifecycle-compiler:2.9.3")
-    implementation("androidx.lifecycle:lifecycle-common-java8:2.9.4")
+    // Room
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
 
-    // database
-    implementation("androidx.room:room-ktx:2.8.0")
-    implementation("androidx.room:room-runtime:2.8.0")
-    kapt("androidx.room:room-compiler:2.8.0")
-    implementation("android.arch.persistence.room:rxjava2:1.1.1")
+    // SQLCipher + SQLite
+    implementation(libs.sqlcipher.android)
+    implementation(libs.androidx.sqlite)
+    implementation(libs.androidx.sqlite.framework)
 
-    implementation("net.zetetic:sqlcipher-android:4.10.0@aar")
-    implementation("androidx.sqlite:sqlite:2.6.0")
+    // RevenueCat
+    implementation(libs.revenuecat)
+    implementation(libs.revenuecat.ui)
 
-//    implementation("net.zetetic:android-database-sqlcipher:4.5.4@aar")
-//    implementation("androidx.sqlite:sqlite-ktx:2.6.0")
-    implementation("androidx.sqlite:sqlite-framework:2.6.0")
+    // Data
+    implementation(libs.gson)
+    implementation(libs.javaluator)
 
-    // In App Purchase
-    implementation("com.android.billingclient:billing-ktx:8.0.0")
+    // UI components
+    implementation(libs.scrolling.pager.indicator)
+    implementation(libs.viewpager.transformers)
+    implementation(libs.commons.text)
+    implementation(libs.range.seekbar)
+    implementation(libs.ccp)
+    implementation(libs.simple.rating.bar)
+    implementation(libs.eventbus)
+    implementation(libs.imagepicker)
 
-    // gson data
-    implementation("com.google.code.gson:gson:2.13.2")
+    // Media
+    implementation(libs.media3.exoplayer)
+    implementation(libs.media3.ui)
 
-    // Calculator
-    implementation("com.fathzer:javaluator:3.0.6")
+    // Jetpack Compose
+    implementation(platform(libs.compose.bom))
+    implementation(libs.androidx.compose.runtime.livedata)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.animation)
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.coil.compose)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.compose.material.icons.core)
+    implementation(libs.androidx.compose.material.icons.extended)
 
-    // Recyceler view pager indicator
-    implementation("ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:1.2.5")
+    debugImplementation(libs.androidx.compose.ui.tooling)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
 
-    // view pager anim
-    implementation("com.eftimoff:android-viewpager-transformers:1.0.1@aar")
+    // Kotlin
+    implementation(libs.kotlin.parcelize.runtime)
 
-    implementation("org.apache.commons:commons-text:1.14.0")
+    // Accompanist
+    implementation(libs.accompanist.flowlayout)
 
-    // seekbar
-    implementation("com.github.MohammedAlaaMorsi:RangeSeekBar:1.0.6")
-
-    // Country code picker
-    implementation("com.hbb20:ccp:2.7.3")
-
-    // rating bar
-    implementation("com.github.ome450901:SimpleRatingBar:1.5.1")
-
-    // event bus broadcaster
-    implementation("org.greenrobot:eventbus:3.3.1")
-
-    implementation("com.github.dhaval2404:imagepicker:2.1")
-
-    implementation("androidx.media3:media3-exoplayer:1.8.0")
-    implementation("androidx.media3:media3-ui:1.8.0")
+    configurations.all {
+        exclude(group = "org.jetbrains.kotlin", module = "kotlin-android-extensions-runtime")
+    }
 }
 
-// Allow references to generated code
 kapt {
     correctErrorTypes = true
 }

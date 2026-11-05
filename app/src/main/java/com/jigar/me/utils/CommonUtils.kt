@@ -1,122 +1,135 @@
 package com.jigar.me.utils
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.speech.tts.TextToSpeech
-import android.speech.tts.Voice
-import android.view.View
-import android.view.animation.AlphaAnimation
-import android.view.animation.Animation
-import android.view.animation.LinearInterpolator
-import androidx.core.content.ContextCompat
+import android.graphics.Typeface
+import android.text.Html
+import android.util.Log
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.jigar.me.BuildConfig
 import com.jigar.me.R
-import com.jigar.me.data.local.data.AbacusContent
 import com.jigar.me.data.model.data.LoginData
 import com.jigar.me.data.model.data.PlanAssignFromAdminData
 import com.jigar.me.data.model.dbtable.abacus_all_data.Category
-import com.jigar.me.data.model.dbtable.inapp.InAppSkuDetails
 import com.jigar.me.data.pref.AppPreferencesHelper
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_1Month
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_1Year
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_3Month
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_All_lifetime_old
-import com.jigar.me.ui.view.base.inapp.BillingRepository.AbacusSku.PRODUCT_ID_Week
-import com.jigar.me.utils.extensions.show
-import org.json.JSONException
-import org.json.JSONObject
-import java.math.RoundingMode
-import java.text.DecimalFormat
+import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Locale
+import java.util.concurrent.TimeUnit
 
 
 object CommonUtils {
     external fun getOneSignalKey() : String
     external fun getOrganizerId() : String
+    external fun getPublicKey() : String
     external fun getDatabaseKey() : String
     external fun getApiBaseUrl() : String
 
-    fun getCurrentCurrency(isCurrencyINR: Boolean) = if (isCurrencyINR){ AppConstants.APP_PLAN_DATA.Currency_INR }else{ AppConstants.APP_PLAN_DATA.Currency_USD }
-    fun getCurrentCurrencySymbol(isCurrencyINR: Boolean) = if (isCurrencyINR){ AppConstants.APP_PLAN_DATA.Symbol_INR }else{ AppConstants.APP_PLAN_DATA.Symbol_USD }
-    @SuppressLint("RestrictedApi")
-    fun setErrorToEditText(textInputLayout: TextInputLayout, validation_message: String?) {
-        textInputLayout.error = validation_message
-        textInputLayout.requestFocus()
-    }
-    fun removeError(textInputLayout: TextInputLayout) {
-        textInputLayout.error = null
-        textInputLayout.isErrorEnabled = false
-    }
-    fun applySpeechSettings(prefManager : AppPreferencesHelper,tts: TextToSpeech){
-        // Update the Setting to latest.
-        val currentLanguage = prefManager.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_LANGUAGE, "")
-        val localLanguage = if (currentLanguage.isEmpty()){
-            Locale(AppPreferencesHelper.DEFAULT_TTS_LANGUAGE_VALUE)
-        }else{
-            Gson().fromJson(currentLanguage, Locale::class.java)
-        }
-        val currentVoice = prefManager.getCustomParam(AppPreferencesHelper.KEY_DEFAULT_TTS_VOICE, AppPreferencesHelper.DEFAULT_TTS_VOICE_VALUE)
-        val currentSpeed = prefManager.getDefaultTTSSpeed()
-        val currentPitch = prefManager.getDefaultTTSPitch()
-        tts.voice = Voice(currentVoice, localLanguage, Voice.QUALITY_VERY_HIGH, Voice.LATENCY_VERY_HIGH, false, setOf(""))
-//        tts.language = localLanguage
-        tts.setPitch(currentPitch)
-        tts.setSpeechRate(currentSpeed)
-    }
-    fun getCurrentTimeMessage(context: Context):String{
-        val calendar = Calendar.getInstance()
-        val timeOfDay = calendar.get(Calendar.HOUR_OF_DAY)
-        //        6 AM - 12 PM Morning slots
-//        12 PM - 5 PM Afternoon slots
-//        5 PM - 9 PM Evening Slots
-//        9 PM - 6 AM Night Slots
-        return when (timeOfDay) {
-            in 6..11 -> context.getString(R.string.good_morning)
-            in 12..16 -> context.getString(R.string.good_afternoon)
-//                in 17..20 -> "Good Evening"
-            else -> context.getString(R.string.good_evening)
+    fun logMultilineString(tag: String, data: String) {
+        for (line in data.split("\n".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()) {
+            logLargeString(tag, line)
         }
     }
-    fun calculateNoOfColumns(columnWidthDp: Float, parentWidth : Float): Int {
-        // For example columnWidthdp=180
-//        val displayMetrics = context.resources.displayMetrics
-//        val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
-        return (parentWidth / columnWidthDp + 0.5).toInt() // +0.5 for correct rounding to int.
+
+    fun logLargeString(tag: String, data: String) {
+        val CHUNK_SIZE = 4076 // Typical max logcat payload.
+        var offset = 0
+        while (offset + CHUNK_SIZE <= data.length) {
+            Log.e(tag, data.substring(offset, CHUNK_SIZE.let { offset += it; offset }))
+        }
+        if (offset < data.length) {
+            Log.e(tag, data.substring(offset))
+        }
     }
-    fun getQuestionHighLighterColor(context: Context,abacusType : AbacusContent?): Int {
-        return if (abacusType != null){
-            if (abacusType.equals(AppConstants.Settings.theam_Poligon_Silver) || abacusType.equals(AppConstants.Settings.theam_Poligon_Brown)){
-                ContextCompat.getColor(context,R.color.black)
-            }else{
-//                mixTwoColors(ContextCompat.getColor(context,abacusType.dividerColor1), ContextCompat.getColor(context,abacusType.resetBtnColor8), 0.40f)
-                ContextCompat.getColor(context,abacusType.resetBtnColor8)
+    fun htmlToAnnotatedString(html: String): AnnotatedString {
+        val spanned = Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY)
+
+        return buildAnnotatedString {
+            var start = 0
+
+            spanned.getSpans(0, spanned.length, Any::class.java).forEach { span ->
+                val spanStart = spanned.getSpanStart(span)
+                val spanEnd = spanned.getSpanEnd(span)
+
+                if (start < spanStart) {
+                    append(spanned.substring(start, spanStart))
+                }
+
+                when (span) {
+                    is android.text.style.StyleSpan -> {
+                        withStyle(
+                            SpanStyle(
+                                fontWeight = if (span.style == Typeface.BOLD) FontWeight.Bold else FontWeight.Normal,
+                                fontFamily =  if (span.style == Typeface.BOLD) FontFamily(Font(R.font.font_bold)) else FontFamily(Font(R.font.font_regular))
+                            )
+                        ) {
+                            append(spanned.substring(spanStart, spanEnd))
+                        }
+                    }
+
+                    else -> append(spanned.substring(spanStart, spanEnd))
+                }
+
+                start = spanEnd
             }
-        }else{
-            ContextCompat.getColor(context, R.color.red)
+
+            if (start < spanned.length) {
+                append(spanned.substring(start))
+            }
         }
     }
-    fun getQuestionBorderColor(context: Context,abacusType : AbacusContent?): Int {
-        return if (abacusType != null){
-            mixTwoColors(ContextCompat.getColor(context,R.color.white), ContextCompat.getColor(context,abacusType.resetBtnColor8), 0.75f)
-        }else{
-            ContextCompat.getColor(context, R.color.red_600)
+    fun getPurchaseTime(productType : String?, purchaseTime: Long,billingPeriod : String? = null) : String?{
+        if (purchaseTime > 0) {
+            val formatter = SimpleDateFormat(DateTimeUtils.dd_MMMM_yyyy)
+            val calendar = Calendar.getInstance()
+            calendar.timeInMillis = purchaseTime
+            return if (productType == "subs"){
+                val calendarEnd = Calendar.getInstance()
+                calendarEnd.timeInMillis = purchaseTime
+
+                val dateDiff = System.currentTimeMillis() - calendar.timeInMillis
+                val day: Long = TimeUnit.MILLISECONDS.toDays(dateDiff)
+
+                if (billingPeriod.equals("p1w",true)){
+                    var weeks = day/7
+                    weeks += 1
+                    calendarEnd.add(Calendar.WEEK_OF_MONTH,weeks.toInt())
+                }else if (billingPeriod.equals("p1y",true)){
+                    var year = day/365
+                    year += 1
+                    calendarEnd.add(Calendar.YEAR,year.toInt())
+                }else{
+                    val months = if (billingPeriod.equals("p1m",true)){
+                        var months = day/30
+                        months += 1
+                        months
+                    }else if (billingPeriod.equals("p3m",true)){
+                        var months = day/90
+                        months += 3
+                        months
+                    }else{ // if (billingPeriod.equals("p6m",true))
+                        var months = day/180
+                        months += 6
+                        months
+                    }
+
+                    calendarEnd.add(Calendar.MONTH,months.toInt())
+                }
+                "<b>Subscribed ON : </b>${formatter.format(calendar.time)}<br/><b>Expire ON : </b>${formatter.format(calendarEnd.time)}"
+            }else{
+                "<b>Purchased ON : </b>${formatter.format(calendar.time)}"
+            }
         }
+        return null
     }
-    fun mixTwoColors(color1: Int, color2: Int, amount: Float): Int {
-        val ALPHA_CHANNEL: Byte = 24
-        val RED_CHANNEL: Byte = 16
-        val GREEN_CHANNEL: Byte = 8
-        //final byte BLUE_CHANNEL = 0;
-        val inverseAmount = 1.0f - amount
-        val r = ((color1 shr RED_CHANNEL.toInt() and 0xff).toFloat() * amount + (color2 shr RED_CHANNEL.toInt() and 0xff).toFloat() * inverseAmount).toInt() and 0xff
-        val g = ((color1 shr GREEN_CHANNEL.toInt() and 0xff).toFloat() * amount + (color2 shr GREEN_CHANNEL.toInt() and 0xff).toFloat() * inverseAmount).toInt() and 0xff
-        val b = ((color1 and 0xff).toFloat() * amount + (color2 and 0xff).toFloat() * inverseAmount).toInt() and 0xff
-        return 0xff shl ALPHA_CHANNEL.toInt() or (r shl RED_CHANNEL.toInt()) or (g shl GREEN_CHANNEL.toInt()) or b
-    }
+
     fun removeTrailingZero(formattingInput: String): String {
         if (!formattingInput.contains(".")) {
             return formattingInput
@@ -127,136 +140,84 @@ object CommonUtils {
             formattingInput.substring(0, dotPosition)
         } else formattingInput
     }
-    fun blinkView(view: View, repeatCount : Int? = null){
-        view.show()
-        val animation: Animation = AlphaAnimation(1F, AppConstants.BLINK_ICON_ANIMATION_ALPHA) //to change visibility from visible to invisible
-        animation.duration = AppConstants.BLINK_ICON_ANIMATION_DURATION //duration for each animation cycle
-        animation.interpolator = LinearInterpolator()
-        if (repeatCount == null){
-            animation.repeatCount = Animation.INFINITE //repeating indefinitely
-        }else{
-            animation.repeatCount = repeatCount
-        }
-        animation.repeatMode = Animation.REVERSE //animation will start from end point once ended.
-        view.startAnimation(animation) //to start animation
-    }
 
-
-    fun checkLevelIsPurchase(
-        purchasedSKU: List<InAppSkuDetails>,
-        data: Category,
-        prefManager: AppPreferencesHelper
-    ): Boolean {
+    // Checks RC entitlement + admin-assigned plans. Used for level-specific access.
+    fun checkLevelIsPurchase(name: String, prefManager: AppPreferencesHelper): Boolean {
         val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
-        var isPurchased = false
-        if (loginData?.email.equals("abacus@yopmail.com") || prefManager.isUserInFreeTrial()){
-            isPurchased = true
-        }else{
-            if (data.name.contains("free",true)){
-                isPurchased = true
-            }else{
-                purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
-                        || it.sku == PRODUCT_ID_All_lifetime_old
-                        || it.sku.contains(PRODUCT_ID_1Year)
-                        || it.sku.contains(PRODUCT_ID_Week)
-                        || it.sku.contains(PRODUCT_ID_1Month)
-                        || it.sku.contains(PRODUCT_ID_3Month)
-                        || (it.sku.contains(data.name)) }.also {
-                    isPurchased = it != null
-                }
-                if (!isPurchased){
-                    if (prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"").isNotEmpty()) {
-                        val planListData : List<PlanAssignFromAdminData> = Gson().fromJson(
-                            prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
-                            object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
-                        )
-                        planListData.find { it.google_order_id == null &&
-                                (it.google_plan_id?.contains(data.name) == true
-                                || it.google_plan_id?.contains(PRODUCT_ID_1Year) == true
-                                || it.google_plan_id?.contains(PRODUCT_ID_Week) == true
-                                || it.google_plan_id?.contains(PRODUCT_ID_1Month) == true
-                                || it.google_plan_id?.contains(PRODUCT_ID_3Month) == true
-                                        )
-                        }.also {
-                            isPurchased = it != null
-                        }
-                    }
-                }
-            }
-        }
-        return isPurchased
-    }
+        if (loginData?.email == "abacus@yopmail.com") return true
 
-    fun checkPurchaseForExerciseExamCCM(prefManager: AppPreferencesHelper,purchasedSKU: List<InAppSkuDetails>): Boolean {
-        val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
-        var isPurchased = false
-        if (loginData?.email.equals("abacus@yopmail.com") || prefManager.isUserInFreeTrial()){
-            isPurchased = true
-        }else{
-            purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
-                    || it.sku == PRODUCT_ID_All_lifetime_old
-                    || it.sku.contains(PRODUCT_ID_1Year)
-                    || it.sku.contains(PRODUCT_ID_Week)
-                    || it.sku.contains(PRODUCT_ID_1Month)
-                    || it.sku.contains(PRODUCT_ID_3Month)
-                    || (it.sku.contains("level3")) || (it.sku.contains("level4"))
-                    || (it.sku.contains("level5")) || (it.sku.contains("level6"))
-                    || (it.sku.contains("level7")) || (it.sku.contains("level8"))}.also {
-                isPurchased = it != null
-            }
-            if (!isPurchased){
-                if (prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"").isNotEmpty()) {
-                    val planListData : List<PlanAssignFromAdminData> = Gson().fromJson(
-                        prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
-                        object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
-                    )
-                    planListData.find { it.google_order_id == null && (
-                            (it.google_plan_id?.contains("level3") == true) ||
-                            (it.google_plan_id?.contains("level4") == true) ||
-                            (it.google_plan_id?.contains("level5") == true) ||
-                            (it.google_plan_id?.contains("level6") == true) ||
-                            (it.google_plan_id?.contains("level7") == true) ||
-                            (it.google_plan_id?.contains("level8") == true) ||
-                            (it.google_plan_id?.contains(PRODUCT_ID_1Year) == true) ||
-                            (it.google_plan_id?.contains(PRODUCT_ID_Week) == true) ||
-                            (it.google_plan_id?.contains(PRODUCT_ID_1Month) == true) ||
-                            (it.google_plan_id?.contains(PRODUCT_ID_3Month) == true)
-                            ) }.also {
-                        isPurchased = it != null
-                    }
-                }
-            }
-        }
+        // RevenueCat entitlement
+        if (RevenueCatHelper.isSubscribed) return true
 
-        return isPurchased
-    }
-    fun checkPurchaseForAllLevel(prefManager: AppPreferencesHelper,purchasedSKU: List<InAppSkuDetails>): Boolean {
-        var isPurchased = false
-        purchasedSKU.find { it.sku == PRODUCT_ID_All_lifetime
-                || it.sku == PRODUCT_ID_All_lifetime_old
-                || it.sku.contains(PRODUCT_ID_1Year)
-                || it.sku.contains(PRODUCT_ID_Week)
-                || it.sku.contains(PRODUCT_ID_1Month)
-                || it.sku.contains(PRODUCT_ID_3Month)
-        }.also {
-            isPurchased = it != null
-        }
-        if (!isPurchased){
-            if (prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA,"").isNotEmpty()) {
-                val planListData : List<PlanAssignFromAdminData> = Gson().fromJson(
-                    prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, ""),
-                    object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
+        // Lifetime plan purchased before RC migration — still grants full access
+        if (RevenueCatHelper.isLifetimePurchased) return true
+
+        // Admin-assigned plans
+        val adminData = prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, "")
+        if (adminData.isNotEmpty()) {
+            val plans = Gson().fromJson<List<PlanAssignFromAdminData>>(
+                adminData, object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
+            )
+            val found = plans.find { plan ->
+                plan.google_order_id == null && (
+                    plan.google_plan_id?.contains(name) == true
+                    || plan.google_plan_id?.contains("all") == true
+                    || plan.google_plan_id?.contains("1year") == true
+                    || plan.google_plan_id?.contains("week") == true
+                    || plan.google_plan_id?.contains("1month") == true
+                    || plan.google_plan_id?.contains("3month") == true
                 )
-                planListData.find { it.google_order_id == null && (
-                        it.google_plan_id?.contains(PRODUCT_ID_Week) == true ||
-                        it.google_plan_id?.contains(PRODUCT_ID_1Year) == true ||
-                        it.google_plan_id?.contains(PRODUCT_ID_1Month) == true ||
-                        it.google_plan_id?.contains(PRODUCT_ID_3Month) == true
-                        ) }.also {
-                    isPurchased = it != null
-                }
             }
+            if (found != null) return true
         }
-        return isPurchased
+        return false
+    }
+
+    // Checks RC entitlement + admin-assigned plans. Used for exercise/exam/CCM/games access.
+    fun checkPurchaseForExerciseExamCCM(prefManager: AppPreferencesHelper): Boolean {
+        val loginData = Gson().fromJson(prefManager.getLoginData(), LoginData::class.java)
+        if (loginData?.email == "abacus@yopmail.com") return true
+
+        // RevenueCat entitlement
+        if (RevenueCatHelper.isSubscribed) return true
+
+        // Lifetime plan purchased before RC migration — still grants full access
+        if (RevenueCatHelper.isLifetimePurchased) return true
+
+        // Admin-assigned plans
+        val adminData = prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, "")
+        if (adminData.isNotEmpty()) {
+            val plans = Gson().fromJson<List<PlanAssignFromAdminData>>(
+                adminData, object : TypeToken<List<PlanAssignFromAdminData>>() {}.type
+            )
+            val found = plans.find { plan ->
+                plan.google_order_id == null && (
+                    plan.google_plan_id?.contains("all") == true
+                    || plan.google_plan_id?.contains("1year") == true
+                    || plan.google_plan_id?.contains("week") == true
+                    || plan.google_plan_id?.contains("1month") == true
+                    || plan.google_plan_id?.contains("3month") == true
+                    || plan.google_plan_id?.contains("level3") == true
+                    || plan.google_plan_id?.contains("level4") == true
+                    || plan.google_plan_id?.contains("level5") == true
+                    || plan.google_plan_id?.contains("level6") == true
+                    || plan.google_plan_id?.contains("level7") == true
+                    || plan.google_plan_id?.contains("level8") == true
+                )
+            }
+            if (found != null) return true
+        }
+        return false
+    }
+
+    /** Lifetime owned (RevenueCat history incl. the pre-RC "onetime" plan, or an admin-assigned lifetime plan): a lifetime offer has nothing to sell to them. */
+    fun ownsLifetimePlan(prefManager: AppPreferencesHelper): Boolean {
+        if (RevenueCatHelper.isLifetimePurchased) return true
+        val adminData = prefManager.getCustomParam(Constants.PLAN_ASSIGN_FROM_ADMIN_DATA, "")
+        if (adminData.isEmpty()) return false
+        val plans = runCatching {
+            Gson().fromJson<List<PlanAssignFromAdminData>>(adminData, object : TypeToken<List<PlanAssignFromAdminData>>() {}.type)
+        }.getOrNull().orEmpty()
+        return plans.any { it.google_order_id == null && it.google_plan_id?.contains("all") == true }
     }
 }

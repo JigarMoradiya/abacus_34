@@ -1,0 +1,206 @@
+package com.jigar.me.ui.view.home.common_ui.dialogs
+
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import com.jigar.me.ui.jetpack.utils.ui.extensions.scaled
+import com.jigar.me.ui.view.ab.AbParentalGate
+import com.jigar.me.ui.view.ab.LocalAbThemed
+import com.jigar.me.ui.view.home.theme.AppDimens
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlin.random.Random
+
+/**
+ * Parental gate overlay — required before login, purchase, or external URL.
+ * Apple Kids category guideline: must present a math challenge an adult can solve.
+ * Uses 2-digit numbers so kids cannot easily guess the answer.
+ *
+ * Correct answer → [onPassed]. Cancel → [onCancelled]. Wrong → shake + regenerate.
+ */
+@Composable
+fun ParentalGateDialog(
+    onPassed: () -> Unit,
+    onCancelled: () -> Unit,
+) {
+    // Restyled screens get the kit's gate (same sum, same rules); the Game Zone keeps the original card below.
+    if (LocalAbThemed.current) {
+        AbParentalGate(onSuccess = onPassed, onClose = onCancelled)
+        return
+    }
+    // A times-sum (two digits x one digit), so a young child cannot just add: 12..29 x 6..9
+    var num1 by remember { mutableStateOf(Random.nextInt(12, 30)) }
+    var num2 by remember { mutableStateOf(Random.nextInt(6, 10)) }
+    var options by remember { mutableStateOf(generateOptions(num1 * num2)) }
+    var wrongTries by remember { mutableStateOf(0) }
+    val shakeOffset = remember { Animatable(0f) }
+    val scope = rememberCoroutineScope()
+
+    fun regenerate() {
+        num1 = Random.nextInt(12, 30)
+        num2 = Random.nextInt(6, 10)
+        options = generateOptions(num1 * num2)
+    }
+
+    fun handleAnswer(selected: Int) {
+        if (selected == num1 * num2) {
+            onPassed()
+        } else {
+            wrongTries += 1
+            val closeAfter = wrongTries >= 2   // two wrong answers close the gate: guessing does not get through
+            scope.launch {
+                repeat(4) { i ->
+                    shakeOffset.animateTo(
+                        targetValue = if (i % 2 == 0) 14f else -14f,
+                        animationSpec = tween(durationMillis = 80)
+                    )
+                }
+                shakeOffset.animateTo(0f, animationSpec = tween(80))
+                delay(150)
+                if (closeAfter) onCancelled() else regenerate()
+            }
+        }
+    }
+
+    val accent = Brush.horizontalGradient(listOf(Color(0xFF9374EF), Color(0xFF6446CC)))
+    val accentSolid = Color(0xFF6446CC)
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black.copy(alpha = 0.55f)),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            modifier = Modifier
+                .widthIn(max = 380.dp)
+                .padding(horizontal = AppDimens.Dimens24)
+                .shadow(elevation = 16.dp, shape = RoundedCornerShape(AppDimens.Dimens24))
+                .clip(RoundedCornerShape(AppDimens.Dimens24))
+                .background(Color.White)
+        ) {
+            // Colored header band -- "Sticker Book" treatment. Height is derived from
+            // the icon circle's own (tablet-scaled) size, not a flat 76dp -- a fixed
+            // height let the circle outgrow its box and poke out top/bottom on tablet,
+            // where Dimens56 scales up to 80/110dp.
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(AppDimens.Dimens56 + AppDimens.Dimens20)
+                    .background(accent),
+                contentAlignment = Alignment.Center
+            ) {
+                Box(
+                    modifier = Modifier
+                        .size(AppDimens.Dimens56)
+                        .clip(CircleShape)
+                        .background(Color.White),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(text = "🔒", style = MaterialTheme.typography.headlineSmall.scaled())
+                }
+            }
+
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = AppDimens.Dimens24)
+                    .padding(top = AppDimens.Dimens24, bottom = AppDimens.Dimens16),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
+            ) {
+                Text(
+                    text = "For Parents",
+                    style = MaterialTheme.typography.titleLarge.scaled(),
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFF1C1C1C)
+                )
+
+                Text(
+                    text = "Solve this to continue",
+                    style = MaterialTheme.typography.bodyMedium.scaled(),
+                    color = Color(0xFF666666)
+                )
+
+                // Question with shake animation
+                Text(
+                    text = "$num1 × $num2 = ?",
+                    style = MaterialTheme.typography.headlineMedium.scaled(),
+                    fontWeight = FontWeight.Bold,
+                    color = accentSolid,
+                    modifier = Modifier.graphicsLayer { translationX = shakeOffset.value }
+                )
+
+                // 3 answer buttons -- each gets an equal share of the row's width via
+                // weight(1f) so all three are always identical, by construction, rather
+                // than relying on 3 independently-fixed .size() boxes to happen to match.
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)
+                ) {
+                    options.forEach { option ->
+                        Box(
+                            modifier = Modifier
+                                .weight(1f)
+                                .aspectRatio(1f)
+                                .shadow(elevation = 6.dp, shape = RoundedCornerShape(AppDimens.Dimens12), ambientColor = accentSolid, spotColor = accentSolid)
+                                .clip(RoundedCornerShape(AppDimens.Dimens12))
+                                .background(accent)
+                                .clickable(
+                                    indication = null,
+                                    interactionSource = remember { MutableInteractionSource() }
+                                ) { handleAnswer(option) },
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = "$option",
+                                style = MaterialTheme.typography.titleMedium.scaled(),
+                                fontWeight = FontWeight.Bold,
+                                color = Color.White
+                            )
+                        }
+                    }
+                }
+
+                Text(
+                    text = "Cancel",
+                    style = MaterialTheme.typography.bodyMedium.scaled(),
+                    color = Color(0xFF999999),
+                    modifier = Modifier
+                        .clickable(
+                            indication = null,
+                            interactionSource = remember { MutableInteractionSource() }
+                        ) { onCancelled() }
+                        .padding(AppDimens.Dimens8)
+                )
+            }
+        }
+    }
+}
+
+private fun generateOptions(correct: Int): List<Int> {
+    val set = mutableSetOf(correct)
+    while (set.size < 3) {
+        val delta = listOf(1, 2, 10).random() * if (Math.random() > 0.5) 1 else -1
+        val wrong = correct + delta
+        if (wrong > 0 && wrong != correct) set.add(wrong)
+    }
+    return set.shuffled()
+}

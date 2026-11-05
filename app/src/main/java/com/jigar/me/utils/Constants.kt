@@ -35,26 +35,41 @@ object Constants {
     const val notificationTypeYoutubeHome = "youtubeHome"
     const val notificationTypeRate = "rate"
     const val notificationTypeShare = "share"
+    const val notificationTypeMathGame = "math_game"
+    const val notificationTypeCrossMath = "cross_math"
+    const val notificationTypeSudoku = "sudoku"
+    const val notificationTypeMathPyramid = "math_pyramid"
+    const val notificationTypeTargetNumber = "target_number"
+    const val notificationTypeBalloonPop = "balloon_pop"
+    const val notificationTypeSpeedCompare = "speed_compare"
+    const val notificationTypeMissingOperator = "missing_operator"
+    const val notificationTypeMagicSquare = "magic_square"
+    const val notificationTypeCalcudoku = "calcudoku"
+    const val notificationTypeMerge2048 = "merge2048"
+    const val notificationTypeEquationMatch = "equation_match"
+    const val notificationTypeNumberPath = "number_path"
+    const val notificationTypeTrueFalse = "true_false"
+    const val notificationTypePlaceValue = "place_value"
+    const val notificationTypeClockMaster = "clock_master"
+    const val notificationTypeMathBingo = "math_bingo"
+    const val notificationTypeKakuro = "kakuro"
+    const val notificationTypePractice = "practice"
+    const val notificationTypeLevel1 = "level_1"
+    const val notificationTypeLevel2 = "level_2"
+    const val notificationTypeLevel3 = "level_3"
+    const val notificationTypeLevel4 = "level_4"
 
-    const val bottomSheetWidthBaseOnRatio7 = 7
     const val bottomSheetWidthBaseOnRatio5 = 5
-    const val bottomSheetWidthBaseOnRatio4 = 4
 
     const val examLevelMaxRecordHistory = 50
-    const val homePageShowIntroMaxAppOpen = 25
-    const val homePageShowOffer = 6
 
     const val EXAM_CLICK_ON_CORRECT_ANSWER_ANIMATION_DURATION: Long = 700
     const val EXAM_CLICK_ON_CORRECT_ANSWER_ANIMATION_ALPHA: Float = 0.2F
 
-    const val DELAY_DIRECTION = 500L
 
     var Que = "Que"
     var Sign = "Sign"
-    var Hint = "Hint"
 
-    var free_trial_remaining_days = "free_trial_remaining_days"
-    var free_trial_remaining_days_last_checked = "free_trial_remaining_days_last_checked"
     var last_sync_time = "last_sync_time_new"
     var last_sync_default_time = "2023-07-01T12:00:00.000Z"
 }

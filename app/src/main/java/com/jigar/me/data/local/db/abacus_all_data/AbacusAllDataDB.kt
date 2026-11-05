@@ -20,18 +20,18 @@ class AbacusAllDataDB @Inject constructor(private val dao: AbacusAllDataDao) {
         dao.insertSet(dataSet)
         dao.insertAbacus(dataAbacus)
     }
-    fun getLevel() = dao.getLevel()
-    fun getLevel(list : List<String>) = dao.getLevel(list)
-    suspend fun getCategory(id : String) = dao.getCategory(id)
-    suspend fun getPages(id: String, isGetAllData: Boolean) = if (isGetAllData){dao.getPages(id)}else{dao.getPagesOnlyActive(id)}
-    suspend fun getSetDetail(setId : String) = dao.getSetDetail(setId)
-    suspend fun getSetProgress(setId : String) = dao.getSetProgress(setId)
-    suspend fun getAllSet() = dao.getAllSet()
-    suspend fun getAbacus(id : String) = dao.getAbacus(id)
     suspend fun insertSetProgress(data : List<SetProgress>) = withContext(Dispatchers.IO){
         dao.insertSetProgress(data)
     }
-    suspend fun updateUserAnswer(abacusId : String,userAnswer : String) = dao.updateUserAnswer(abacusId,userAnswer)
+    suspend fun deleteSetProgress() = withContext(Dispatchers.IO) {
+        dao.deleteSetProgress()
+    }
     suspend fun removeUserAnswer(setId : String) = dao.removeUserAnswer(setId)
+
+    suspend fun countAbacus(): Int = withContext(Dispatchers.IO) { dao.countAbacus() }
+
+    suspend fun countLevels(): Int = withContext(Dispatchers.IO) { dao.countLevels() }
+
+    suspend fun getParentLevelOfSet(setId: String): String = dao.getParentLevelOfSet(setId)
 
 }

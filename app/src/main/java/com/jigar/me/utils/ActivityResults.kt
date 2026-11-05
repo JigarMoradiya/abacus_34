@@ -34,10 +34,6 @@ import java.util.*
 
 
 // permission
-
-fun hasPermission(context: Context, permission:String): Boolean {
-    return (ActivityCompat.checkSelfPermission(context,permission)== PackageManager.PERMISSION_GRANTED)
-}
 fun Context.checkPermissions(type: String,launcherPermission: ActivityResultLauncher<Array<String>>) : Boolean {
         var permission = true
         val listPermissionsNeeded = ArrayList<String>()

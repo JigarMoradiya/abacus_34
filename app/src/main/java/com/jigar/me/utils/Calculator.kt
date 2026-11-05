@@ -44,17 +44,11 @@ class Calculator {
         var currentDisplay = currentDisplay
         var expressionUsedForParsing = expressionUsedForParsing
         try {
-//            println("Displayed Output $expressionUsedForParsing")
             expressionUsedForParsing = expressionUsedForParsing.replace("%", "/100")
-            expressionUsedForParsing = expressionUsedForParsing.replace("x", "*")
-//            println("Displayed Output ==$expressionUsedForParsing")
-//            println("fixExpression " + fixExpression(expressionUsedForParsing))
+            expressionUsedForParsing = expressionUsedForParsing.replace("x", "*").replace("X", "*").replace("÷", "/")
             currentSum = evaluator.evaluate(fixExpression(expressionUsedForParsing))
-//            println("currentSum $currentSum")
             currentSum = convertToRadians(currentSum)
-//            println("convertToRadians $currentSum")
             currentDisplay = currentSum.toString()
-            //previousSum = currentSum;
         } catch (e: Exception) {
             currentDisplay = ""
         }
