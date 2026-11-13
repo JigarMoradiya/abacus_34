@@ -100,6 +100,7 @@ import com.jigar.me.data.local.data.RodMovement
 import com.jigar.me.data.pref.AppPreferencesHelper
 import com.jigar.me.ui.view.ab.AbBackground
 import com.jigar.me.ui.view.ab.AbButton
+import com.jigar.me.ui.view.ab.AbFitToSpace
 import com.jigar.me.ui.view.ab.AbHintCard
 import com.jigar.me.ui.view.ab.AbHintKind
 import com.jigar.me.ui.view.ab.AbHintTag
@@ -359,25 +360,25 @@ private fun TutorialPage(
             horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens16),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            // The Previous button floats over the bottom-left corner: this column ends above it (the room above the bubble is used), so a longer
-            // bubble in another language moves the group up instead of pushing the mascot onto the button.
-            Column(Modifier.weight(0.45f).padding(bottom = 36.dp * k)) {
-                // "Show me" hangs just below the instruction bubble (an offset overlay, so nothing moves when it appears)
-                Box {
-                    SpeechBubble(body)
-                    if (showMeReady && !done) {
-                        AbButton(
-                            text = stringResource(R.string.ob_show_me), tone = AbTone.Warning, size = AbSize.Small, icon = Icons.Rounded.TouchApp,
-                            minHeightOverride = 32f, horizontalPaddingOverride = 11f,
-                            modifier = Modifier.align(Alignment.BottomEnd).offset(y = 40.dp),
-                            onClick = { abCalc.setAbacusValueFromString(page.goal.toString()) },   // the change then unlocks Next like a real swipe
-                        )
+            // The Previous button floats over the bottom-left corner: this group ends well above it (a clear gap, the mascot bobs a little). If the
+            // bubble, "Show me" and the mascot are taller than the room (a short phone, a longer text in another language, a big system font)
+            // the whole group shrinks to fit (AbFitToSpace), so the mascot never ends up behind the button.
+            AbFitToSpace(Modifier.weight(0.45f).fillMaxHeight().padding(bottom = 52.dp * k), stretchWidth = true) {
+                Column {
+                    // "Show me" hangs just below the instruction bubble (an offset overlay, so nothing moves when it appears)
+                    Box {
+                        SpeechBubble(body)
+                        if (showMeReady && !done) {
+                            AbButton(
+                                text = stringResource(R.string.ob_show_me), tone = AbTone.Warning, size = AbSize.Small, icon = Icons.Rounded.TouchApp,
+                                minHeightOverride = 32f, horizontalPaddingOverride = 11f,
+                                modifier = Modifier.align(Alignment.BottomEnd).offset(y = 40.dp),
+                                onClick = { abCalc.setAbacusValueFromString(page.goal.toString()) },   // the change then unlocks Next like a real swipe
+                            )
+                        }
                     }
-                }
-                Spacer(Modifier.height(AppDimens.Dimens12))
-                // the mascot takes the room that is left (never more than its own size): very long text shrinks it, it never overlaps the buttons
-                BoxWithConstraints(Modifier.fillMaxWidth().weight(1f, fill = false)) {
-                    Mascot(minOf(116.dp * k, maxHeight))
+                    Spacer(Modifier.height(AppDimens.Dimens12))
+                    Mascot(116.dp * k)
                 }
             }
             Row(
@@ -512,18 +513,12 @@ private fun FeaturesPage(index: Int, group: FeatureGroup, nextText: String, onPr
                 style = AbTypography.fixed(14f * k, FontWeight.Bold), color = colors.textSecondary,
             )
         }
-        // phone: tiles fill the room. tablet: tiles wrap their content (all as tall as the tallest) and sit centred in the room
-        // The cards fill the room. A language with longer text can need more height than the room: the cards then grow (all as tall as the
-        // tallest) and the area scrolls, so no FREE / PREMIUM box is ever cut off.
-        val wrap = AppDimens.isTablet || AppDimens.isLargeTablet
-        androidx.compose.foundation.layout.BoxWithConstraints(Modifier.weight(1f).fillMaxWidth().padding(vertical = AppDimens.Dimens8)) {
-            val room = maxHeight
-            Column(
-                Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).heightIn(min = room),
-                verticalArrangement = Arrangement.Center,
-            ) {
+        // The cards (all as tall as the tallest) sit centred in the room. A short screen, or a language with longer text, needs more
+        // height than the room: the whole row then shrinks to fit it (AbFitToSpace), so every FREE / PREMIUM box stays on screen.
+        Box(Modifier.weight(1f).fillMaxWidth().padding(vertical = AppDimens.Dimens8)) {
+            AbFitToSpace(Modifier.fillMaxSize(), stretchWidth = true) {
                 Row(
-                    Modifier.fillMaxWidth().then(if (wrap) Modifier else Modifier.heightIn(min = room)).height(IntrinsicSize.Min),
+                    Modifier.fillMaxWidth().height(IntrinsicSize.Min),
                     horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
                 ) {
                     group.items.forEach {
@@ -817,45 +812,44 @@ private fun ParentLeft() {
     val prefs = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current
     val days = com.jigar.me.utils.FreemiumWindow.windowDays(prefs)
     val windowActive = days > 0 && com.jigar.me.utils.FreemiumWindow.phase(prefs) == com.jigar.me.utils.FreemiumWindowLogic.Phase.ACTIVE   // an install with a free week
-    // in the vertical middle; if it is ever too tall for the screen, the header stays and the rest scrolls
-    Column(Modifier.fillMaxHeight(), verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8, Alignment.CenterVertically)) {
-        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
-            Image(painterResource(R.drawable._mascot_), null, Modifier.height(56.dp * k))
-            Column(verticalArrangement = Arrangement.spacedBy((-5).dp * k)) {   // Baloo's line boxes are tall: the subtitle sits close under the title
-                Text(stringResource(R.string.ob_why_title), style = AbTypography.fixed(22f * k, FontWeight.Black), color = colors.textPrimary)
-                Text(stringResource(R.string.ob_why_subtitle), style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.textSecondary)
-            }
-        }
-        Column(
-            Modifier.weight(1f, fill = false).verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
-        ) {
-            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
-                StatCard("🌱", "4", stringResource(R.string.ob_stat_learning_levels), Modifier.weight(1f))
-                StatCard("🧮", "8", stringResource(R.string.ob_stat_practice_levels), Modifier.weight(1f))
-                StatCard("🧠", "20", stringResource(R.string.ob_stat_brain_games), Modifier.weight(1f))
-            }
-            // the other parts of the app, so nothing is missing from the picture
-            Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
-                AlsoChip("✏️", stringResource(R.string.ob_feat_exercise))
-                AlsoChip("📝", stringResource(R.string.ob_feat_exam))
-                AlsoChip("🎯", stringResource(R.string.ob_feat_ccm))
+    // in the vertical middle; if it is too tall for the screen (a short phone, longer text) the whole column shrinks to fit, so no reason is left out
+    AbFitToSpace(Modifier.fillMaxSize(), stretchWidth = true) {
+        Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens12)) {
+                Image(painterResource(R.drawable._mascot_), null, Modifier.height(56.dp * k))
+                Column(verticalArrangement = Arrangement.spacedBy((-5).dp * k)) {   // Baloo's line boxes are tall: the subtitle sits close under the title
+                    Text(stringResource(R.string.ob_why_title), style = AbTypography.fixed(22f * k, FontWeight.Black), color = colors.textPrimary)
+                    Text(stringResource(R.string.ob_why_subtitle), style = AbTypography.fixed(14f * k, FontWeight.SemiBold), color = colors.textSecondary)
+                }
             }
             Column(verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
-                ReasonRow(stringResource(R.string.ob_reason_1))
-                ReasonRow(stringResource(R.string.ob_reason_2))
-                ReasonRow(stringResource(R.string.ob_reason_3))
-                ReasonRow(stringResource(R.string.ob_reason_4))
-                ReasonRow(stringResource(R.string.ob_reason_5))
+                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
+                    StatCard("🌱", "4", stringResource(R.string.ob_stat_learning_levels), Modifier.weight(1f))
+                    StatCard("🧮", "8", stringResource(R.string.ob_stat_practice_levels), Modifier.weight(1f))
+                    StatCard("🧠", "20", stringResource(R.string.ob_stat_brain_games), Modifier.weight(1f))
+                }
+                // the other parts of the app, so nothing is missing from the picture
+                Row(horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
+                    AlsoChip("✏️", stringResource(R.string.ob_feat_exercise))
+                    AlsoChip("📝", stringResource(R.string.ob_feat_exam))
+                    AlsoChip("🎯", stringResource(R.string.ob_feat_ccm))
+                }
+                Column(verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens8)) {
+                    ReasonRow(stringResource(R.string.ob_reason_1))
+                    ReasonRow(stringResource(R.string.ob_reason_2))
+                    ReasonRow(stringResource(R.string.ob_reason_3))
+                    ReasonRow(stringResource(R.string.ob_reason_4))
+                    ReasonRow(stringResource(R.string.ob_reason_5))
+                }
+                // Removed (owner): the "Free for N days, then ..." line under the reasons.
+                // if (windowActive) {
+                //     Text(
+                //         if (com.jigar.me.utils.FreemiumWindow.coreAfterWindow(prefs) >= 2) "Free for $days days, then Free Mode and Level 1 stay free."
+                //         else "Free for $days days, then pick a plan to keep going.",
+                //         style = AbTypography.fixed(12f * k, FontWeight.SemiBold), color = colors.textSecondary,
+                //     )
+                // }
             }
-            // Removed (owner): the "Free for N days, then ..." line under the reasons.
-            // if (windowActive) {
-            //     Text(
-            //         if (com.jigar.me.utils.FreemiumWindow.coreAfterWindow(prefs) >= 2) "Free for $days days, then Free Mode and Level 1 stay free."
-            //         else "Free for $days days, then pick a plan to keep going.",
-            //         style = AbTypography.fixed(12f * k, FontWeight.SemiBold), color = colors.textSecondary,
-            //     )
-            // }
         }
     }
 }

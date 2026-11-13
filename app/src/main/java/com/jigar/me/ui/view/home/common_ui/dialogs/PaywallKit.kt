@@ -67,6 +67,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.layout.Layout
+import com.jigar.me.ui.view.ab.AbFitToSpace
 import com.jigar.me.R
 import com.jigar.me.ui.view.ab.AbButton
 import com.jigar.me.ui.view.ab.AbHeroBadge
@@ -225,10 +228,35 @@ fun PaywallKitEmbeddedLayout(left: @Composable () -> Unit, footer: (@Composable 
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Box(Modifier.weight(0.44f).fillMaxHeight(), contentAlignment = Alignment.CenterStart) { left() }
-        // the plans stay centred as before; a footer row (the tutorial's "Continue free for now") sits at the very bottom of the right side
-        Box(Modifier.weight(0.56f).fillMaxHeight()) {
-            Box(Modifier.align(Alignment.Center)) { plans() }
-            footer?.let { Box(Modifier.align(Alignment.BottomCenter).fillMaxWidth()) { it() } }
+        PlansWithFooter(Modifier.weight(0.56f).fillMaxHeight(), footer, plans)
+    }
+}
+
+/**
+ * The right side of the first-launch page: the plans stay centred as before and a footer row (the tutorial's "Continue free for now")
+ * sits at the very bottom. On a short screen (or with a big font) the plans are taller than the room: they then shrink to fit it
+ * (AbFitToSpace), so the last card and its button are never cut off or hidden under the footer.
+ */
+@Composable
+private fun PlansWithFooter(modifier: Modifier, footer: (@Composable () -> Unit)?, plans: @Composable () -> Unit) {
+    Layout(
+        content = {
+            AbFitToSpace(Modifier.fillMaxSize(), stretchWidth = true) { plans() }
+            if (footer != null) Box(Modifier.fillMaxWidth()) { footer() }
+        },
+        modifier = modifier,
+    ) { measurables, constraints ->
+        val width = constraints.maxWidth
+        val height = constraints.maxHeight
+        val footerPlaceable = measurables.getOrNull(1)?.measure(Constraints(minWidth = width, maxWidth = width))
+        val footerHeight = footerPlaceable?.height ?: 0
+        // the plans get the room that is left when the footer's height is kept free above AND below them: centred in the whole
+        // room as before, and never under the footer
+        val room = (height - 2 * footerHeight).coerceAtLeast(0)
+        val plansPlaceable = measurables[0].measure(Constraints.fixed(width, room))
+        layout(width, height) {
+            plansPlaceable.placeRelative(0, footerHeight)
+            footerPlaceable?.placeRelative(0, height - footerHeight)
         }
     }
 }
