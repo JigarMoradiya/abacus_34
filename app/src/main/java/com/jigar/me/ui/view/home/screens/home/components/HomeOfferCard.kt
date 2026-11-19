@@ -85,6 +85,15 @@ private fun offerLine(storeBadge: String?, storeOriginalPrice: String?, discount
     )
 }
 
+/**
+ * The card's title. The campaign name typed in Remote Config ("Special Offer") is one English text, so only English shows it (the
+ * name is the campaign's own wording); every other language shows the translated generic title, whatever the console holds.
+ */
+@Composable
+private fun offerTitle(campaignName: String?): String =
+    campaignName?.takeIf { it.isNotBlank() && com.jigar.me.utils.LanguageManager.currentTag() == "en" }
+        ?: stringResource(R.string.home_offer_title)
+
 /** The chunky 3D edge under a full offer card (the iOS card's hard `D8572B` shadow, 3pt down). */
 private fun Modifier.offerEdge(corner: Dp): Modifier = drawBehind {
     drawRoundRect(Color(0xFFD8572B), topLeft = Offset(0f, 3.dp.toPx()), size = size, cornerRadius = CornerRadius(corner.toPx()))
@@ -131,7 +140,7 @@ fun HomeOfferCard(
         Text("🏷️", style = MaterialTheme.typography.titleLarge.scaled())
         Column(modifier = Modifier.weight(1f)) {
             Text(
-                text = title?.takeIf { it.isNotBlank() } ?: stringResource(R.string.home_offer_title),
+                text = offerTitle(title),
                 color = Color.White,
                 style = AbTypography.fixed(13f * abS, FontWeight.ExtraBold),
                 maxLines = 1,
@@ -202,7 +211,7 @@ fun HomeOfferSidebarCard(
         Text("🏷️", style = MaterialTheme.typography.titleLarge.scaled())
         Column(verticalArrangement = Arrangement.spacedBy(AppDimens.Dimens2)) {
             Text(
-                text = title?.takeIf { it.isNotBlank() } ?: stringResource(R.string.home_offer_title),
+                text = offerTitle(title),
                 color = Color.White,
                 style = AbTypography.fixed(13f * abS, FontWeight.ExtraBold),
                 maxLines = 1,
@@ -277,7 +286,7 @@ fun HomeOfferBadge(
             verticalArrangement = Arrangement.spacedBy(0.dp)
         ) {
             Text(
-                text = title?.takeIf { it.isNotBlank() } ?: stringResource(R.string.home_offer_title),
+                text = offerTitle(title),
                 color = if (isDark) Color(0xFFFFB74D) else Color(0xFFE65100),
                 style = AbTypography.fixed(11f * abS, FontWeight.Bold),
                 maxLines = 1,
