@@ -1438,6 +1438,8 @@
     <string name="ob_play3_done_body">La boule du haut (5) et 2 de plus font 7 !</string>
     <string name="ob_play4_body">Glisse encore une boule vers le haut.</string>
     <string name="ob_play5_body">Plus de place pour 3 boules de plus !\nSuis les flèches.</string>
+    <!-- m25_home_title -->
+    <string name="home_app_title">Vedaavi Boulier</string>
     <!-- m2_numbers -->
     <string name="minus">Moins</string>
     <string name="plus">Plus</string>

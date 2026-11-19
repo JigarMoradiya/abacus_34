@@ -1438,6 +1438,8 @@
     <string name="ob_play3_done_body">Conta de cima 5 e mais 2 são 7!</string>
     <string name="ob_play4_body">Suba mais uma conta.</string>
     <string name="ob_play5_body">Não há espaço para mais 3 contas!\nSiga as setas.</string>
+    <!-- m25_home_title -->
+    <string name="home_app_title">Vedaavi Ábaco</string>
     <!-- m2_numbers -->
     <string name="minus">Menos</string>
     <string name="plus">Mais</string>

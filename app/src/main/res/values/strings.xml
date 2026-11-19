@@ -745,7 +745,7 @@
     <string name="billing_issue_message">Your Premium renewal did not go through. Update your payment method so your child keeps every level, game and report.</string>
     <string name="billing_issue_fix">Fix payment</string>
     <string name="billing_issue_later">Later</string>
-    <string name="home_app_title" translatable="false">Vedaavi Abacus</string>
+    <string name="home_app_title">Vedaavi Abacus</string>
     <string name="home_tagline">Count • Calculate • Conquer</string>
     <plurals name="home_streak_days">
         <item quantity="one">%1$d Day</item>

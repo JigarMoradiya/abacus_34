@@ -1370,6 +1370,8 @@
     <string name="ob_play3_done_body">上の珠の5と、あと2で7になります！</string>
     <string name="ob_play4_body">珠をもうひとつ上にスワイプしよう。</string>
     <string name="ob_play5_body">あと3つ分の場所がありません！\n矢印のとおりに動かそう。</string>
+    <!-- m25_home_title -->
+    <string name="home_app_title">Vedaavi そろばん</string>
     <!-- m2_numbers -->
     <string name="minus">マイナス</string>
     <string name="plus">プラス</string>

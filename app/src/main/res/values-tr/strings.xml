@@ -1404,6 +1404,8 @@
     <string name="ob_play3_done_body">Üst boncuk 5 ve 2 daha 7 eder!</string>
     <string name="ob_play4_body">Bir boncuğu daha yukarı kaydır.</string>
     <string name="ob_play5_body">3 boncuk daha için yer yok!\nOkları takip et.</string>
+    <!-- m25_home_title -->
+    <string name="home_app_title">Vedaavi Abaküs</string>
     <!-- m2_numbers -->
     <string name="minus">Eksi</string>
     <string name="plus">Artı</string>

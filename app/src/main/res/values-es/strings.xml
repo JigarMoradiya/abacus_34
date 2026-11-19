@@ -1438,6 +1438,8 @@
     <string name="ob_play3_done_body">¡La cuenta de arriba vale 5 y 2 más son 7!</string>
     <string name="ob_play4_body">Desliza una cuenta más hacia arriba.</string>
     <string name="ob_play5_body">¡No hay lugar para 3 cuentas más!\nSigue las flechas.</string>
+    <!-- m25_home_title -->
+    <string name="home_app_title">Vedaavi Ábaco</string>
     <!-- m2_numbers -->
     <string name="minus">Menos</string>
     <string name="plus">Más</string>
