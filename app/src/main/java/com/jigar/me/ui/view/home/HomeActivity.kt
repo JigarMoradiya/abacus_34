@@ -3,6 +3,7 @@ package com.jigar.me.ui.view.home
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
+import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +19,8 @@ import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -32,7 +35,11 @@ import com.jigar.me.ui.view.home.navigation.HomeNavGraph
 import com.jigar.me.ui.view.home.navigation.RouteNavigation
 import com.jigar.me.ui.view.home.theme.MyApplicationTheme
 import com.jigar.me.ui.view.ab.AbDebugScreens
+import com.jigar.me.ui.view.ab.AbColors
 import com.jigar.me.ui.view.ab.AbThemeController
+import com.jigar.me.ui.view.ab.AbThemeMode
+import com.jigar.me.ui.view.ab.AbWorld
+import com.jigar.me.ui.view.ab.windowSky
 import com.jigar.me.BuildConfig
 import com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper
 import com.jigar.me.ui.view.home.common_ui.LocalTextToSpeechManager
@@ -89,11 +96,15 @@ class HomeActivity : AppCompatActivity() {   // AppCompat so the chosen app lang
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // English is the default language, not the phone's (needs an activity: AppCompat reaches the system setting through it)
-        com.jigar.me.utils.LanguageManager.startUp()
+        com.jigar.me.utils.LanguageManager.startUp(preferences.getCustomParam(AppConstants.RemoteConfig.enabledLanguages, ""))
 
         deepLinkRoute = allowedDeepLink(intent.getStringExtra(EXTRA_DEEP_LINK_ROUTE))
         logDeviceQualifiers(this)
         AbThemeController.init(preferences)
+        // A language change creates this screen again. Until its first frame is drawn the window shows its own background, which was the
+        // theme's near-white (a white flash): paint it with the sky the screens draw instead, in the mode the person chose.
+        val sky = AbWorld.Meadow.windowSky(if (AbThemeController.mode == AbThemeMode.Dark) AbColors.Dark else AbColors.Light)
+        window.setBackgroundDrawable(GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, intArrayOf(sky.first.toArgb(), sky.second.toArgb())))
         // the voice follows the app language: after a language change this screen is created again, so the voice is set again too
         ttsManager.applySettings()
         // debug builds only: `--ez ab_dark_app true` forces dark mode for screenshot runs
@@ -162,7 +173,8 @@ class HomeActivity : AppCompatActivity() {   // AppCompat so the chosen app lang
                 MyApplicationTheme {
                     CompositionLocalProvider(
                         LocalPreferencesHelper provides preferences,
-                        LocalTextToSpeechManager provides ttsManager
+                        LocalTextToSpeechManager provides ttsManager,
+                        LocalConfiguration provides (uiConfiguration ?: LocalConfiguration.current),
                     ) {
                         // The app is full screen: if the status or navigation bar is showing (it can come back after a dialog,
                         // the shade, or on a tablet), the screens must not move down to make room for it. Their windowInsetsPadding
@@ -187,6 +199,20 @@ class HomeActivity : AppCompatActivity() {   // AppCompat so the chosen app lang
         super.onWindowFocusChanged(hasFocus)
         // Back from a dialog / the shade / another app, the system bars can stay visible: hide them again.
         if (hasFocus) WindowInsetsControllerCompat(window, window.decorView).hide(WindowInsetsCompat.Type.systemBars())
+    }
+
+    // The configuration the screens read (null until the first change: Compose's own is used). On Android 13+ the system tells Compose about
+    // a language change; on Android 7-12 AppCompat only updates the resources and calls onConfigurationChanged, so the screens get a new
+    // configuration from here to draw their strings again.
+    private var uiConfiguration by mutableStateOf<Configuration?>(null)
+
+    // A language change is handled here and the screen is NOT created again (that showed black and blank frames for a moment): the screens
+    // draw their strings again in the new language, the layout flips for a right-to-left language, and the voice follows the language.
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        window.decorView.layoutDirection = newConfig.layoutDirection
+        uiConfiguration = Configuration(resources.configuration)
+        ttsManager.applySettings()
     }
 
     override fun onNewIntent(intent: Intent) {

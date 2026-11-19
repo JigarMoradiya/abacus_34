@@ -15,6 +15,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -152,7 +153,7 @@ fun TargetNumberHomeScreen(
                 levelRange.forEach { level ->
                     val isSelected = state.selectedLevel == level
 
-                    Box(
+                    BoxWithConstraints(
                         modifier = Modifier
                             .weight(1f)
                             .fillMaxHeight()
@@ -165,7 +166,8 @@ fun TargetNumberHomeScreen(
                             },
                         contentAlignment = Alignment.Center
                     ) {
-                        TargetNumberMedal(level = level, selected = isSelected, time = time, modifier = Modifier.fillMaxHeight(0.84f).aspectRatio(1f))
+                        // a little taller than the row: the medals looked very small on a phone (the row is the gap between the header and the difficulty bar)
+                        TargetNumberMedal(level = level, selected = isSelected, time = time, modifier = Modifier.requiredSize(maxHeight * 1.14f))
                     }
 
                 }
@@ -193,7 +195,7 @@ fun TargetNumberHomeScreen(
 private fun TargetNumberMedal(level: Int, selected: Boolean, time: State<Float>, modifier: Modifier = Modifier) {
     val colors = LocalAbColors.current
     val scale by animateFloatAsState(
-        targetValue = if (selected) 1.12f else 0.9f,
+        targetValue = if (selected) 1.06f else 0.9f,
         animationSpec = spring(dampingRatio = 0.7f, stiffness = 400f),
         label = "medalScale"
     )
@@ -375,11 +377,12 @@ internal fun TargetNumberMedalArt(level: Int, time: State<Float>, modifier: Modi
                 }
             }
 
-            // The signs this level allows, each pulsing in turn.
-            val signW = d * 0.1f
+            // The signs this level allows, each pulsing in turn. The row sits high enough for its outer circles to stay inside the
+            // medal's inner ring (it used to hang over the gold edge, where the pale circles and the white signs were cut off).
+            val signW = d * 0.09f
             Row(
-                Modifier.align(Alignment.Center).offset(y = (d * 0.34f + shift).dp),
-                horizontalArrangement = Arrangement.spacedBy((d * 0.03f).dp)
+                Modifier.align(Alignment.Center).offset(y = (d * 0.305f + shift).dp),
+                horizontalArrangement = Arrangement.spacedBy((d * 0.02f).dp)
             ) {
                 signs.forEachIndexed { i, sign ->
                     Box(

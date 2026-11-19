@@ -50,6 +50,7 @@ import com.jigar.me.ui.view.home.theme.AppDimens
 @Composable
 fun YoutubeVideoGrid(
     videos: List<VideoData>,
+    showTitles: Boolean = true,
     columns: Int = 3,
     gateResolvedThisVisit: Boolean,
     onRequestGate: (action: () -> Unit) -> Unit
@@ -73,6 +74,7 @@ fun YoutubeVideoGrid(
         ) { video ->
             VideoGridItem(
                 video = video,
+                showTitle = showTitles,
                 onClick = {
                     val action: () -> Unit = {
                         context.openURL("https://www.youtube.com/watch?v=${video.id}")
@@ -88,6 +90,7 @@ fun YoutubeVideoGrid(
 @Composable
 fun VideoGridItem(
     video: VideoData,
+    showTitle: Boolean = true,
     onClick: () -> Unit
 ) {
     val colors = LocalAbColors.current
@@ -110,7 +113,7 @@ fun VideoGridItem(
         // Thumbnail (16:9) with a play button, so it reads as a video
         Box(
             Modifier
-                .padding(start = 6.dp * s, end = 6.dp * s, top = 6.dp * s)
+                .padding(start = 6.dp * s, end = 6.dp * s, top = 6.dp * s, bottom = if (showTitle) 0.dp else 6.dp * s)
                 .fillMaxWidth()
                 .aspectRatio(16f / 9f)
                 .clip(RoundedCornerShape(AbShapes.sm * s)),
@@ -133,17 +136,19 @@ fun VideoGridItem(
             }
         }
 
-        // Title
-        AbShrinkText(
-            text = video.txt,
-            style = AbTypography.fixed(12f * s, FontWeight.ExtraBold),
-            color = colors.textPrimary,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 8.dp * s, end = 8.dp * s, bottom = 8.dp * s),
-            minScale = 0.8f,
-            maxLines = 2,
-            textAlign = TextAlign.Center
-        )
+        // Title (hidden when the app is not in English: every video is in English)
+        if (showTitle) {
+            AbShrinkText(
+                text = video.txt,
+                style = AbTypography.fixed(12f * s, FontWeight.ExtraBold),
+                color = colors.textPrimary,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 8.dp * s, end = 8.dp * s, bottom = 8.dp * s),
+                minScale = 0.8f,
+                maxLines = 2,
+                textAlign = TextAlign.Center
+            )
+        }
     }
 }

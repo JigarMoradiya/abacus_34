@@ -14,13 +14,13 @@ import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.ApiErrors
 import com.jigar.me.utils.Constants
 import com.jigar.me.utils.HomeOfferManager
+import com.jigar.me.utils.LanguageManager
 import com.jigar.me.utils.extensions.isNetworkAvailable
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
-import com.jigar.me.utils.RemoteText
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
@@ -87,6 +87,7 @@ class SplashViewModel @Inject constructor(
         val discountPerLifeTime = remoteConfig.getLong(AppConstants.RemoteConfig.discountPerLifeTime)
         val manualFreeTrialDays = remoteConfig.getLong(AppConstants.RemoteConfig.manualFreeTrialDays)
         val paywallSocialProof = remoteConfig.getString(AppConstants.RemoteConfig.paywallSocialProof)
+        val paywallSocialProofLanguages = remoteConfig.getString(AppConstants.RemoteConfig.paywallSocialProofLanguages)
         val homeOffer = remoteConfig.getString(AppConstants.RemoteConfig.homeOffer)
         // Freemium time limit: <= 0 or missing = off; the core value defaults to 2 (Free Mode + Level 1 stay free)
         val freemiumDays = remoteConfig.getLong(AppConstants.RemoteConfig.freemiumDays)
@@ -109,8 +110,7 @@ class SplashViewModel @Inject constructor(
             setCustomParam(AppConstants.RemoteConfig.displayPlanList, displayPlan)
             setCustomParam(AppConstants.RemoteConfig.displayMenuList, displayMenu)
             setCustomParam(AppConstants.RemoteConfig.paywallSocialProof, paywallSocialProof)
-            // the same texts in the other languages: key_fr, key_es ... (empty when the console has none, the English text is shown then)
-            RemoteText.translatedKeys.flatMap { RemoteText.languageKeys(it) }.forEach { setCustomParam(it, remoteConfig.getString(it)) }
+            setCustomParam(AppConstants.RemoteConfig.paywallSocialProofLanguages, paywallSocialProofLanguages)
             setCustomParam(AppConstants.RemoteConfig.homeOffer, homeOffer)
             setCustomParamInt(AppConstants.RemoteConfig.freemiumDays, freemiumDays.toInt())
             setCustomParamInt(AppConstants.RemoteConfig.freeCoreAfterWindow, freeCore.toInt())
@@ -120,6 +120,8 @@ class SplashViewModel @Inject constructor(
             setCustomParam(AppConstants.RemoteConfig.enabledLanguages, remoteConfig.getString(AppConstants.RemoteConfig.enabledLanguages))
             setCustomParam(AppConstants.RemoteConfig.storeOneTimeOffers, remoteConfig.getString(AppConstants.RemoteConfig.storeOneTimeOffers))
         }
+        // a language that is no longer in `enabled_languages` (its tag removed, or the list cleared) goes back to English now, not at the next launch
+        LanguageManager.resetIfNotEnabled(remoteConfig.getString(AppConstants.RemoteConfig.enabledLanguages))
         // Freemium time limit: look at this install once (an existing or limit-off install is grandfathered, any other gets
         // its window started), then cache the state the gates read
         com.jigar.me.utils.FreemiumWindow.registerIfNeeded(prefs)

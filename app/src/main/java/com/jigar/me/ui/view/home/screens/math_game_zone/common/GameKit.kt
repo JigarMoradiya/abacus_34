@@ -98,7 +98,8 @@ fun GameFrame(world: AbWorld, content: @Composable () -> Unit) {
         ) {
             Box(Modifier.fillMaxSize()) {
                 AbBackground(world, Modifier.fillMaxSize())
-                content()
+                // the games are left to right in Arabic too (as on iOS): equations, boards, number pads and level rows keep their order
+                com.jigar.me.ui.view.ab.LtrIsland { content() }
             }
         }
     }

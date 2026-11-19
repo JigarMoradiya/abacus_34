@@ -73,6 +73,8 @@ object AppConstants {
             var discountPer = "discount_per"
             var discountPerLifeTime = "discount_per_lifetime"
             var paywallSocialProof = "paywall_social_proof"
+            // JSON object keyed by language tag, {"en":"...","fr":"..."}; the plain text above stays for the apps already live (RemoteText)
+            var paywallSocialProofLanguages = "paywall_social_proof_languages"
             // JSON: {"enabled": bool, "duration_min": number, "name": string} -- see HomeOfferManager
             var homeOffer = "home_offer"
             /** Freemium time limit: days of free-tier access for a NEW install (<= 0 or missing = no limit, the default). */

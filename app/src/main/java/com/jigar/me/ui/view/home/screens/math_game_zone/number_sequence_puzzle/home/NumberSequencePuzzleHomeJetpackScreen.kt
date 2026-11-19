@@ -130,7 +130,7 @@ fun NumberSequencePuzzleHomeJetpackScreen(
                     color = Color(0xFF2196F3),
                     multicolor = true,
                     modifier = Modifier
-                        .size((androidx.compose.ui.platform.LocalConfiguration.current.screenHeightDp * (if (DeviceInfo.isTablet) 0.4f else 0.34f)).dp)
+                        .size((androidx.compose.ui.platform.LocalConfiguration.current.screenHeightDp * (if (DeviceInfo.isTablet) 0.4f else 0.25f)).dp)
                 )
 
                 Text(
@@ -196,7 +196,9 @@ fun PuzzleOptionView(
     solved: Int = 0,
     onClick: () -> Unit
 ) {
-    val boxSize = if (DeviceInfo.isLargeTablet) 190.dp else if (DeviceInfo.isTablet) 140.dp else 100.dp
+    // a phone: a share of the screen height (a fixed 100.dp looked very small), so a short screen still fits the hero, the title and the labels
+    val boxSize = if (DeviceInfo.isLargeTablet) 190.dp else if (DeviceInfo.isTablet) 140.dp
+        else (androidx.compose.ui.platform.LocalConfiguration.current.screenHeightDp * 0.5f).coerceIn(100f, 190f).dp
     val displayColor = if (isLocked) Color.Gray.copy(alpha = 0.4f) else color
 
     Column(

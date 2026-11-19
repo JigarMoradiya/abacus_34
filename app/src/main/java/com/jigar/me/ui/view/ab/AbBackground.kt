@@ -12,6 +12,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.drawscope.translate
@@ -36,6 +37,20 @@ enum class AbWorld {
     }
 
     private fun hex(v: Long) = Color(((v shr 16) and 0xFF) / 255f, ((v shr 8) and 0xFF) / 255f, (v and 0xFF) / 255f)
+}
+
+/**
+ * The sky of [world] as two plain colours (top, bottom), washed the way [AbBackground] washes it. The window shows these until the
+ * first frame of a screen is drawn, so a screen that is created again (after a language change) does not flash the theme's near-white.
+ */
+fun AbWorld.windowSky(colors: AbColors): Pair<Color, Color> {
+    val dark = colors.isDark
+    val raw = palette(dark)
+    val soften = if (dark) 0.45f else 0.62f
+    val base = colors.bgPrimary
+    val wash = (if (dark) Color.Black else Color.White).copy(alpha = if (dark) 0.12f else 0.22f)   // the final wash of AbBackground
+    return raw.skyTop.abBlended(base, soften).let { wash.compositeOver(it) } to
+        raw.skyBottom.abBlended(base, soften * 0.7f).let { wash.compositeOver(it) }
 }
 
 /**

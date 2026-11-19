@@ -72,6 +72,7 @@ fun ExerciseQuestions(
             ) {
                 // show question for multiplication and division
                 if (page != 0 && currentQuestion != null) {
+                    com.jigar.me.ui.view.ab.LtrIsland {   // the sum keeps its order in Arabic
                     AbShrinkText(
                         text = currentQuestion.que + " = ?",
                         style = AbTypography.fixed(28f * s, FontWeight.ExtraBold),
@@ -80,6 +81,7 @@ fun ExerciseQuestions(
                         minScale = 0.6f,
                         maxLines = 1,
                     )
+                    }
                 }
                 val onKey: (String) -> Unit = {
                     when (it) {

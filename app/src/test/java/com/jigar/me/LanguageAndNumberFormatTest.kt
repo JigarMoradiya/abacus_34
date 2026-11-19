@@ -3,6 +3,7 @@ package com.jigar.me
 import com.jigar.me.utils.LanguageManager
 import com.jigar.me.utils.LocalizedNumberFormat
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.util.Locale
@@ -26,6 +27,17 @@ class LanguageAndNumberFormatTest {
     @Test fun includeAllGivesEveryLanguage() {
         assertEquals(9, LanguageManager.parseEnabled("fr", includeAll = true).size)
     }
+
+    @Test fun aLanguageStaysOnlyWhileItIsListed() {
+        assertTrue(LanguageManager.isStillEnabled("en", "", includeAll = false))
+        assertTrue(LanguageManager.isStillEnabled("fr", "fr,es", includeAll = false))
+        assertTrue(LanguageManager.isStillEnabled("fr", " ES ; FR", includeAll = false))
+        assertFalse(LanguageManager.isStillEnabled("fr", "es,ru", includeAll = false))
+        assertFalse(LanguageManager.isStillEnabled("fr", "", includeAll = false))
+        assertFalse(LanguageManager.isStillEnabled("fr", null, includeAll = false))
+    }
+
+    @Test fun debugBuildsNeverResetALanguage() = assertTrue(LanguageManager.isStillEnabled("fr", "", includeAll = true))
 
     @Test fun decimalMarkFollowsTheLanguage() {
         for (tag in listOf("fr", "es", "pt", "ru", "tr")) assertEquals("$tag", ',', LocalizedNumberFormat.decimalSeparator(Locale.forLanguageTag(tag)))

@@ -202,6 +202,8 @@ private fun FillBlankContent(
                     style = abEmojiStyle(abResponsive(28f)),
                     modifier = Modifier.padding(top = Dimens8)
                 )
+                // the equation keeps its order in Arabic (right to left): "2 × 8 = ?" never reads "? = 8 × 2"
+                com.jigar.me.ui.view.ab.LtrIsland {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(Dimens4),
@@ -218,6 +220,7 @@ private fun FillBlankContent(
                             EquationText(" = ${question.multiplier * question.multiplicand}")
                         }
                     }
+                }
                 }
                 Text(
                     text = stringResource(R.string.l4_fill_hint),

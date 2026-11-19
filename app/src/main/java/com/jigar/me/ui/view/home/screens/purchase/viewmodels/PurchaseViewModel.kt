@@ -97,7 +97,7 @@ class PurchaseViewModel @Inject constructor(
                 planListAssignFromAdmin = adminPlanList,
                 yearPlanAssignFromAdmin = yearPlanFromAdmin,
                 allPlanAssignFromAdmin = allPlanFromAdmin,
-                socialProofText = RemoteText.read(prefManager, AppConstants.RemoteConfig.paywallSocialProof),
+                socialProofText = RemoteText.read(prefManager, AppConstants.RemoteConfig.paywallSocialProofLanguages, AppConstants.RemoteConfig.paywallSocialProof),
                 isLoading = true,
                 error = null,
             )

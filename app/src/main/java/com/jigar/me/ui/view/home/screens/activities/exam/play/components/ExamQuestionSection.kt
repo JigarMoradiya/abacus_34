@@ -150,6 +150,8 @@ private fun ExamQuestion(uiState: ExamPlayUiState, viewModel: ExamPlayViewModel)
         )
 
         AbGlassPanel(padding = 14.dp) {
+            // the sum keeps its order in Arabic (right to left): "13 + 14 = ?" never reads "= ? + 14 + 13"
+            com.jigar.me.ui.view.ab.LtrIsland {
             // ---------- Question ----------
             if (question.queType == MainQuestionType.question.name) {
                 Text(
@@ -222,6 +224,7 @@ private fun ExamQuestion(uiState: ExamPlayUiState, viewModel: ExamPlayViewModel)
                         modifier = Modifier.padding(horizontal = AppDimens.Dimens12),
                     )
                 }
+            }
             }
         }
 

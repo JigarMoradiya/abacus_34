@@ -80,6 +80,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -994,14 +995,20 @@ private fun LevelMiniCard(info: LevelInfo, onClick: () -> Unit) {
                 style = AbTypography.fixed(11.5f * s, FontWeight.Bold).copy(letterSpacing = 1.sp),
                 color = Color.White.copy(alpha = 0.85f)
             )
-            // shrinks a little instead of cutting the name ("Add & Subtra...") on a narrow screen
-            com.jigar.me.ui.view.ab.AbShrinkText(
-                text = stringResource(info.titleRes),
-                style = AbTypography.fixed(17f * s, FontWeight.Black),
-                color = Color.White,
-                minScale = 0.7f,
-                maxLines = 1
-            )
+            // shrinks a little instead of cutting the name ("Add & Subtra...") on a narrow screen. A shrunk line is also a shorter line, and
+            // the pager (and the icons under it) would change height from page to page: the slot keeps the height of the full-size line.
+            val titleStyle = AbTypography.fixed(17f * s, FontWeight.Black)
+            val titleHeight = with(LocalDensity.current) { rememberTextMeasurer().measure("Ag", titleStyle).size.height.toDp() }
+            Box(Modifier.height(titleHeight), contentAlignment = Alignment.CenterStart) {
+                com.jigar.me.ui.view.ab.AbShrinkText(
+                    text = stringResource(info.titleRes),
+                    style = titleStyle,
+                    color = Color.White,
+                    modifier = Modifier.wrapContentHeight(unbounded = true),
+                    minScale = 0.7f,
+                    maxLines = 1
+                )
+            }
         }
         Icon(
             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,

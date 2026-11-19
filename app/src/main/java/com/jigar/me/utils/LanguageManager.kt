@@ -76,17 +76,30 @@ object LanguageManager {
 
     /** English is the default language, whatever the phone's language is: until a language is picked the app is set to English.
      *  Call from an activity right after `super.onCreate`; a language picked later (in the app or in the phone's per-app language
-     *  setting) is kept and remembered for background work. */
-    fun startUp() {
+     *  setting) is kept and remembered for background work. [rawEnabled] is the saved Remote Config `enabled_languages`: a language
+     *  that is not in it any more (removed, or the list cleared) goes back to English. */
+    fun startUp(rawEnabled: String?) {
         val chosen = AppCompatDelegate.getApplicationLocales()
         if (chosen.isEmpty) set(savedTag() ?: "en") else chosen[0]?.language?.let { saveTag(it) }
+        resetIfNotEnabled(rawEnabled)
+    }
+
+    /** True when [tag] may stay the language of the app: English always, another language while `enabled_languages` lists it (and always in debug builds). */
+    fun isStillEnabled(tag: String, rawEnabled: String?, includeAll: Boolean = BuildConfig.DEBUG): Boolean =
+        tag == "en" || (isOffered(tag) && tag in parseEnabled(rawEnabled, includeAll))
+
+    /** English again when the language in use is no longer enabled: the console removed its tag or cleared `enabled_languages`.
+     *  From the main thread (it applies a language); the picker, notifications and the voice words follow. */
+    fun resetIfNotEnabled(rawEnabled: String?) {
+        if (!isStillEnabled(currentTag(), rawEnabled)) set("en")
     }
 
     /** The app language whose words a voice of [voice] speaks: the voice's own language when the app has it, else English
      *  (an Indian English or Hindi voice gets English words, as before). */
     fun tagForVoice(voice: Locale): String = all.firstOrNull { it.tag == voice.language && isOffered(it.tag) }?.tag ?: "en"
 
-    /** Applies a language. Recreates the activity, so call it from the main thread. */
+    /** Applies a language, from the main thread. HomeActivity handles the change itself (its configChanges include locale and layoutDirection),
+     *  so the screen is not created again; the screens read their strings again. */
     fun set(tag: String) {
         saveTag(tag)
         AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(tag))
