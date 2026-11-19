@@ -138,18 +138,20 @@ fun Merge2048PlayScreen(viewModel: Merge2048PlayViewModel, onBackClick: () -> Un
             modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = str(R.string.merge2048_game), onBackClick = onBackClick)
-                    Spacer(Modifier.weight(1f))
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side, the play field stays left to right
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        BackButtonWithText(title = str(R.string.merge2048_game), onBackClick = onBackClick)
+                        Spacer(Modifier.weight(1f))
+                    }
+                    Text(
+                        text = str(R.string.merge2048_prompt, state.target),
+                        color = ORANGE, style = AbTypography.fixed(22f * s, FontWeight.ExtraBold),
+                        modifier = Modifier.align(Alignment.Center)
+                            .abGamePill(outline = ORANGE_BORDER)
+                            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
+                    )
                 }
-                Text(
-                    text = str(R.string.merge2048_prompt, state.target),
-                    color = ORANGE, style = AbTypography.fixed(22f * s, FontWeight.ExtraBold),
-                    modifier = Modifier.align(Alignment.Center)
-                        .abGamePill(outline = ORANGE_BORDER)
-                        .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
-                )
             }
 
             Row(modifier = Modifier.fillMaxWidth().weight(1f), verticalAlignment = Alignment.CenterVertically) {

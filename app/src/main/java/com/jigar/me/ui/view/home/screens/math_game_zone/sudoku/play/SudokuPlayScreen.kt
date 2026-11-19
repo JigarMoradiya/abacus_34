@@ -101,88 +101,90 @@ fun SudokuPlayScreen(
     val size = vm.size
     val difficulty = vm.difficulty
     Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-        Row(modifier = Modifier.fillMaxSize()) {
-            Column(modifier = Modifier.wrapContentWidth()) {
-                BackButtonWithText(
-                    title = "${size.displayName} • ${stringResource(difficulty.nameRes)}",
-                    onBackClick = { navController.safePopBackStack() },
-                    modifier = Modifier.wrapContentWidth()
-                )
-
-                Box(
+        com.jigar.me.ui.view.ab.AppDirection {   // the split screen follows the language's direction (header, then the board); the board and the number pad stay left to right
+                    Row(modifier = Modifier.fillMaxSize()) {
+                Column(modifier = Modifier.wrapContentWidth()) {
+                    BackButtonWithText(
+                        title = "${size.displayName} • ${stringResource(difficulty.nameRes)}",
+                        onBackClick = { navController.safePopBackStack() },
+                        modifier = Modifier.wrapContentWidth()
+                    )
+    
+                    Box(
+                        modifier = Modifier
+                            // the room UNDER the header (fillMaxHeight() was the whole column, so the board ran past the bottom edge)
+                            .weight(1f)
+                            .aspectRatio(1f, matchHeightConstraintsFirst = true)
+                            .padding(bottom = Dimens12),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        com.jigar.me.ui.view.ab.LtrIsland { SudokuBoard(vm = vm, modifier = Modifier.fillMaxSize()) }
+                    }
+                }
+    
+    
+                Column(
                     modifier = Modifier
-                        // the room UNDER the header (fillMaxHeight() was the whole column, so the board ran past the bottom edge)
-                        .weight(1f)
-                        .aspectRatio(1f, matchHeightConstraintsFirst = true)
-                        .padding(bottom = Dimens12),
-                    contentAlignment = Alignment.Center
+                        .fillMaxHeight()
+                        .weight(1f),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    SudokuBoard(vm = vm, modifier = Modifier.fillMaxSize())
-                }
-            }
-
-
-            Column(
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .weight(1f),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-
-                SudokuNumberPad(vm = vm)
-
-                Spacer(Modifier.height(Dimens12))
-
-                // the line under the keypad keeps its height even when empty, so nothing jumps
-                val colors = LocalAbColors.current
-                val s = LocalAbScale.current.factor
-                val messageColor: Color = if (colors.isDark) colors.danger else colors.danger.abReadable(4.5f)
-                if (vm.message == null) {
-                    Text(
-                        "",
-                        color = messageColor,
-                        style = AbTypography.fixed(15f * s, FontWeight.ExtraBold)
-                    )
-                } else {
-                    Text(
-                        vm.message?.asString() ?: "",
-                        color = messageColor,
-                        style = AbTypography.fixed(15f * s, FontWeight.ExtraBold)
-                    )
-                }
-
-                Spacer(Modifier.height(Dimens4))
-
-                Row {
-                    GameButton(
-                        text = if (vm.showCandidates) stringResource(R.string.hide_options) else stringResource(R.string.show_options),
-                        icon = if (vm.showCandidates) Icons.Filled.VisibilityOff else Icons.Filled.Visibility,
-                        type = ButtonType.TEAL,
-                        isSmall = true,
-                        onClick = { vm.toggleCandidates() }
-                    )
-
-                    Spacer(Modifier.width(Dimens8))
-
-                    GameButton(
-                        text = stringResource(R.string.g_sudoku_1, vm.hintUsed, vm.hintLimit),
-                        icon = Icons.Filled.Lightbulb,
-                        type = ButtonType.ORANGE,
-                        isSmall = true,
-                        onClick = { vm.revealOneNumber() }
-                    )
-
-                    Spacer(Modifier.width(Dimens8))
-
-                    GameButton(
-                        text = stringResource(R.string.restart),
-                        icon = Icons.Filled.Refresh,
-                        type = ButtonType.PINK,
-                        isSmall = true,
-                        onClick = { vm.resetPuzzle() }
-                    )
-
+    
+                    com.jigar.me.ui.view.ab.LtrIsland { SudokuNumberPad(vm = vm) }
+    
+                    Spacer(Modifier.height(Dimens12))
+    
+                    // the line under the keypad keeps its height even when empty, so nothing jumps
+                    val colors = LocalAbColors.current
+                    val s = LocalAbScale.current.factor
+                    val messageColor: Color = if (colors.isDark) colors.danger else colors.danger.abReadable(4.5f)
+                    if (vm.message == null) {
+                        Text(
+                            "",
+                            color = messageColor,
+                            style = AbTypography.fixed(15f * s, FontWeight.ExtraBold)
+                        )
+                    } else {
+                        Text(
+                            vm.message?.asString() ?: "",
+                            color = messageColor,
+                            style = AbTypography.fixed(15f * s, FontWeight.ExtraBold)
+                        )
+                    }
+    
+                    Spacer(Modifier.height(Dimens4))
+    
+                    Row {
+                        GameButton(
+                            text = if (vm.showCandidates) stringResource(R.string.hide_options) else stringResource(R.string.show_options),
+                            icon = if (vm.showCandidates) Icons.Filled.VisibilityOff else Icons.Filled.Visibility,
+                            type = ButtonType.TEAL,
+                            isSmall = true,
+                            onClick = { vm.toggleCandidates() }
+                        )
+    
+                        Spacer(Modifier.width(Dimens8))
+    
+                        GameButton(
+                            text = stringResource(R.string.g_sudoku_1, vm.hintUsed, vm.hintLimit),
+                            icon = Icons.Filled.Lightbulb,
+                            type = ButtonType.ORANGE,
+                            isSmall = true,
+                            onClick = { vm.revealOneNumber() }
+                        )
+    
+                        Spacer(Modifier.width(Dimens8))
+    
+                        GameButton(
+                            text = stringResource(R.string.restart),
+                            icon = Icons.Filled.Refresh,
+                            type = ButtonType.PINK,
+                            isSmall = true,
+                            onClick = { vm.resetPuzzle() }
+                        )
+    
+                    }
                 }
             }
         }

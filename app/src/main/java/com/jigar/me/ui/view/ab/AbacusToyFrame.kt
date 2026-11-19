@@ -380,6 +380,9 @@ fun AbacusToyLabels(g: AbacusToyGeometry, stripHeight: Dp, modifier: Modifier = 
 
     // The widest line of any name ("Thousands" in English) sets the size of every name, so they all read alike.
     val placeNames = AbacusPlaceValue.nameRes.map { stringResource(it) }
+    // Arabic glyphs are taller than the line box the Latin names fit in: its two-line names ("عشرات / الآلاف") overlap unless set a little smaller
+    val tallScript = com.jigar.me.utils.LanguageManager.currentTag() == "ar"
+    fun lineScale(name: String) = if (tallScript && name.contains("\n")) 0.72f else 1f
     val widestLine = remember(placeNames) { placeNames.flatMap { it.split("\n") }.maxByOrNull { it.length } ?: "Thousands" }
     val measurer = rememberTextMeasurer()
     val density = LocalDensity.current
@@ -390,6 +393,8 @@ fun AbacusToyLabels(g: AbacusToyGeometry, stripHeight: Dp, modifier: Modifier = 
     val cardFontShown = remember(nameFont, cw) { sizeForLongestWord(nameFont, FontWeight.ExtraBold, cw * 0.84f, 0.55f) }
     val nameSizeShown = remember(nameSize, cw) { sizeForLongestWord(nameSize, FontWeight.Bold, cw * 0.96f, 0.7f) }
 
+    // the tags hang under their rods: the rods never mirror, so neither does this row (Ones stayed under the left rod in Arabic)
+    com.jigar.me.ui.view.ab.LtrIsland {
     Box(modifier.width(g.totalWidth).height(stemH + rowH)) {
         for (i in 0 until g.numberOfColumns) {
             val p = g.place(i)
@@ -430,7 +435,7 @@ fun AbacusToyLabels(g: AbacusToyGeometry, stripHeight: Dp, modifier: Modifier = 
                         for (line in name.split("\n")) {
                             Box(Modifier.height((nameSize * 0.68f).dp), contentAlignment = Alignment.Center) {
                                 ToyFitText(
-                                    line, AbTypography.fixed(nameSizeShown, FontWeight.Bold),
+                                    line, AbTypography.fixed(nameSizeShown * lineScale(name), FontWeight.Bold),
                                     if (colors.isDark) color.abBlended(Color.White, 0.45f) else color.abDarkened(0.15f), minScale = 0.7f,
                                 )
                             }
@@ -445,13 +450,14 @@ fun AbacusToyLabels(g: AbacusToyGeometry, stripHeight: Dp, modifier: Modifier = 
                     ) {
                         for (line in placeNames[p].split("\n")) {
                             Box(Modifier.height((nameFont * 0.66f).dp), contentAlignment = Alignment.Center) {
-                                ToyFitText(line, AbTypography.fixed(cardFontShown, FontWeight.ExtraBold), Color.White, minScale = 0.55f, shadow = true)
+                                ToyFitText(line, AbTypography.fixed(cardFontShown * lineScale(placeNames[p]), FontWeight.ExtraBold), Color.White, minScale = 0.55f, shadow = true)
                             }
                         }
                     }
                 }
             }
         }
+    }
     }
 }
 

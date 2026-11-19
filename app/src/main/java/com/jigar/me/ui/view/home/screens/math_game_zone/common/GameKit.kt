@@ -87,9 +87,12 @@ fun GameHomeButton(modifier: Modifier = Modifier, isSmall: Boolean = false, onCl
 /**
  * Every Game Zone route sits in this frame: the light kit theme (the Game Zone has no dark design yet) over the kit's quiet
  * sky and hills in the game's own [world], instead of the old global bokeh.
+ *
+ * [ltr] keeps the content left to right in Arabic: true for the play screens (equations, boards, number pads), false for the
+ * Game Zone home, Trophy Room and each game's home, which mirror like every other menu (iOS does the same: `AppRoute.keepsLeftToRight`).
  */
 @Composable
-fun GameFrame(world: AbWorld, content: @Composable () -> Unit) {
+fun GameFrame(world: AbWorld, ltr: Boolean = true, content: @Composable () -> Unit) {
     // follows the app's Light/Dark toggle (it used to be pinned to light)
     AbTheme {
         // plain Text with no colour follows the theme (it used to fall back to black, invisible on the dark page)
@@ -99,7 +102,7 @@ fun GameFrame(world: AbWorld, content: @Composable () -> Unit) {
             Box(Modifier.fillMaxSize()) {
                 AbBackground(world, Modifier.fillMaxSize())
                 // the games are left to right in Arabic too (as on iOS): equations, boards, number pads and level rows keep their order
-                com.jigar.me.ui.view.ab.LtrIsland { content() }
+                if (ltr) com.jigar.me.ui.view.ab.LtrIsland { content() } else content()
             }
         }
     }
@@ -184,7 +187,11 @@ fun GameHomeLayout(
 ) {
     androidx.compose.ui.layout.Layout(
         content = {
-            androidx.compose.foundation.layout.Column(horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally, content = content)
+            // the sample art in the middle (a sum, a balance, a board, a pyramid) reads left to right in Arabic too: only the header
+            // (back, title, how to play) and the bottom row (difficulty, start) mirror
+            com.jigar.me.ui.view.ab.LtrIsland {
+                androidx.compose.foundation.layout.Column(horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally, content = content)
+            }
             Box { header() }
             Box { bottom() }
         },

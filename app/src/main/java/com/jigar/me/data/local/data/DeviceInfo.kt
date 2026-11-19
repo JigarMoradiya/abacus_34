@@ -10,8 +10,13 @@ object DeviceInfo {
     var isTablet: Boolean = false
     var isLargeTablet: Boolean = false
 
+    /**
+     * The extra margin on the screen's START edge. A phone with a camera notch already gets its margin on the notch side from the
+     * system insets (the notch is on the left in landscape), so there it is 0. In Arabic the start edge is the RIGHT edge, where
+     * no inset exists: a header's back button would touch the screen edge, so it gets the normal margin.
+     */
     fun screenHorizontalPadding() : Dp {
-        return if (hasNotch) {
+        return if (hasNotch && com.jigar.me.utils.LanguageManager.currentTag() != "ar") {
             0.dp
         } else {
             Dimens16

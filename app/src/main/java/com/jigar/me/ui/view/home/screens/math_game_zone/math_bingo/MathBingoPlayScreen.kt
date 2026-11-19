@@ -113,27 +113,29 @@ fun MathBingoPlayScreen(
             modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = stringResource(R.string.math_bingo_game), onBackClick = onBackClick)
-                    Spacer(Modifier.weight(1f))
-                }
-                // The called equation IS the header prompt — it pops per call.
-                CallBanner(state, s, Modifier.align(Alignment.Center))
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
-                    modifier = Modifier.align(Alignment.CenterEnd)
-                        .padding(end = AppDimens.Dimens16)
-                        .abGamePill()
-                        .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
-                ) {
-                    Text("⏱️", fontSize = (24f * s).sp)
-                    Text(
-                        "${state.timeLeft}",
-                        color = if (state.timeLeft <= 10) WRONG_RED else colors.textPrimary,
-                        style = AbTypography.fixed(26f * s, FontWeight.Black)
-                    )
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side, the play field stays left to right
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        BackButtonWithText(title = stringResource(R.string.math_bingo_game), onBackClick = onBackClick)
+                        Spacer(Modifier.weight(1f))
+                    }
+                    // The called equation IS the header prompt — it pops per call.
+                    CallBanner(state, s, Modifier.align(Alignment.Center))
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
+                        modifier = Modifier.align(Alignment.CenterEnd)
+                            .padding(end = AppDimens.Dimens16)
+                            .abGamePill()
+                            .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
+                    ) {
+                        Text("⏱️", fontSize = (24f * s).sp)
+                        Text(
+                            "${state.timeLeft}",
+                            color = if (state.timeLeft <= 10) WRONG_RED else colors.textPrimary,
+                            style = AbTypography.fixed(26f * s, FontWeight.Black)
+                        )
+                    }
                 }
             }
 
@@ -189,28 +191,30 @@ private fun CallBanner(state: MathBingoUiState, s: Float, modifier: Modifier = M
         pop.snapTo(1.25f)
         pop.animateTo(1f, spring(dampingRatio = 0.5f))
     }
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
-        modifier = modifier
-            .graphicsLayer { scaleX = pop.value; scaleY = pop.value }
-            .abGamePill(outline = ORANGE_BORDER)
-            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
-    ) {
-        Text("📢", fontSize = (20f * s).sp, modifier = Modifier.abBreathe(0.14f, 1100))
-        Text(
-            state.call?.text ?: "",
-            color = ORANGE, style = AbTypography.fixed(24f * s, FontWeight.ExtraBold),
-            maxLines = 1, softWrap = false
-        )
-        Text(
-            "= ?", color = Color.White,
-            style = AbTypography.fixed(24f * s, FontWeight.ExtraBold),
-            modifier = Modifier
-                .abBreathe(0.05f, 1300)
-                .background(colors.brandPrimary.abReadable(3f), RoundedCornerShape(percent = 50))
-                .padding(horizontal = AppDimens.Dimens10)
-        )
+    com.jigar.me.ui.view.ab.LtrIsland {   // the called sum reads left to right
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens8),
+            modifier = modifier
+                .graphicsLayer { scaleX = pop.value; scaleY = pop.value }
+                .abGamePill(outline = ORANGE_BORDER)
+                .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
+        ) {
+            Text("📢", fontSize = (20f * s).sp, modifier = Modifier.abBreathe(0.14f, 1100))
+            Text(
+                state.call?.text ?: "",
+                color = ORANGE, style = AbTypography.fixed(24f * s, FontWeight.ExtraBold),
+                maxLines = 1, softWrap = false
+            )
+            Text(
+                "= ?", color = Color.White,
+                style = AbTypography.fixed(24f * s, FontWeight.ExtraBold),
+                modifier = Modifier
+                    .abBreathe(0.05f, 1300)
+                    .background(colors.brandPrimary.abReadable(3f), RoundedCornerShape(percent = 50))
+                    .padding(horizontal = AppDimens.Dimens10)
+            )
+        }
     }
 }
 

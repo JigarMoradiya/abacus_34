@@ -136,32 +136,34 @@ fun NumberPathPlayScreen(
             modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = stringResource(R.string.number_path_game), onBackClick = onBackClick)
-                    Spacer(Modifier.weight(1f))
-                }
-                Text(
-                    text = stringResource(viewModel.difficulty.nameRes) + " · " +
-                        stringResource(R.string.cross_math_level, viewModel.level),
-                    color = ORANGE, style = AbTypography.fixed(20f * appScale(), FontWeight.ExtraBold),
-                    modifier = Modifier.align(Alignment.Center)
-                        .abGamePill(outline = ORANGE_BORDER)
-                        .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
-                )
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
-                    modifier = Modifier.align(Alignment.CenterEnd)
-                        .padding(end = AppDimens.Dimens16)
-                        .abGamePill()
-                        .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
-                ) {
-                    Text("⏱️", fontSize = (24f * s).sp)
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side, the play field stays left to right
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        BackButtonWithText(title = stringResource(R.string.number_path_game), onBackClick = onBackClick)
+                        Spacer(Modifier.weight(1f))
+                    }
                     Text(
-                        timeString(state.elapsed), color = colors.textPrimary,
-                        style = AbTypography.fixed(26f * appScale(), FontWeight.ExtraBold)
+                        text = stringResource(viewModel.difficulty.nameRes) + " · " +
+                            stringResource(R.string.cross_math_level, viewModel.level),
+                        color = ORANGE, style = AbTypography.fixed(20f * appScale(), FontWeight.ExtraBold),
+                        modifier = Modifier.align(Alignment.Center)
+                            .abGamePill(outline = ORANGE_BORDER)
+                            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
                     )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
+                        modifier = Modifier.align(Alignment.CenterEnd)
+                            .padding(end = AppDimens.Dimens16)
+                            .abGamePill()
+                            .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
+                    ) {
+                        Text("⏱️", fontSize = (24f * s).sp)
+                        Text(
+                            timeString(state.elapsed), color = colors.textPrimary,
+                            style = AbTypography.fixed(26f * appScale(), FontWeight.ExtraBold)
+                        )
+                    }
                 }
             }
 

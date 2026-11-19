@@ -35,7 +35,7 @@ fun AbAccountPreview() {
     Box(Modifier.fillMaxSize()) {
         AbBackground(AbWorld.Lagoon, Modifier.fillMaxSize())
         Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-            AbTopBar(title = "Parent", onBack = {}, modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
+            AbTopBar(title = androidx.compose.ui.res.stringResource(com.jigar.me.R.string.parent), onBack = {}, modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
             MyAccountScreen(
                 uiState = MyAccountUiState(
                     isLoggedIn = true,
@@ -72,7 +72,7 @@ fun AbReportsPreview() {
     Box(Modifier.fillMaxSize()) {
         AbBackground(AbWorld.Lagoon, Modifier.fillMaxSize())
         Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-            AbTopBar(title = "Report History Cards", onBack = {}, modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
+            AbTopBar(title = androidx.compose.ui.res.stringResource(com.jigar.me.R.string.report_history_cards), onBack = {}, modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
             LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(12.dp)) {
                 items(items) { ReportCard(item = it, onCheckResultTapped = {}) }
             }

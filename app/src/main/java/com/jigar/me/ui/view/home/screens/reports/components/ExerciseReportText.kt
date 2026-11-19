@@ -18,6 +18,19 @@ fun exerciseCategoryText(category: String?): String = when (category) {
     else -> category ?: ""
 }
 
+/** The question types of a saved exam ("Addition,Subtraction"), kept in English with the record, shown in the app language. */
+@Composable
+fun questionTypesText(subType: String?): String =
+    (subType ?: "").split(",").map { it.trim() }.filter { it.isNotEmpty() }.map {
+        when (it) {
+            "Addition" -> stringResource(R.string.Addition)
+            "Subtraction" -> stringResource(R.string.Subtraction)
+            "Multiplication" -> stringResource(R.string.Multiplication)
+            "Division" -> stringResource(R.string.Division)
+            else -> it
+        }
+    }.joinToString(", ")
+
 private val ADD_LABEL = Regex("""^(\d+) Digits, (\d+) Lines, (\d+) Questions\s*$""")
 private val MUL_LABEL = Regex("""^The answer is (\d+) Digits, (\d+) Questions\s*$""")
 private val DIV_LABEL = Regex("""^The dividend is MAX (\d+) Digits, (\d+) Questions\s*$""")

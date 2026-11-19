@@ -157,27 +157,29 @@ fun CalcudokuPlayScreen(
             modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                BackButtonWithText(title = str(R.string.calcudoku_game), onBackClick = onBackClick)
-                Spacer(Modifier.weight(1f))
-                Text(
-                    text = str(R.string.calcudoku_prompt),
-                    color = ORANGE,
-                    style = AbTypography.fixed(22f * kitScale, FontWeight.ExtraBold),
-                    maxLines = 1,
-                    softWrap = false,
-                    modifier = Modifier
-                        .abGamePill(ORANGE_BORDER)
-                        .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
-                )
-                Spacer(Modifier.weight(1f))
-                CalcudokuStatChips(
-                    state.score, state.elapsed, viewModel.bestTime, kitScale,
-                    Modifier.padding(end = AppDimens.Dimens16)
-                )
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    BackButtonWithText(title = str(R.string.calcudoku_game), onBackClick = onBackClick)
+                    Spacer(Modifier.weight(1f))
+                    Text(
+                        text = str(R.string.calcudoku_prompt),
+                        color = ORANGE,
+                        style = AbTypography.fixed(22f * kitScale, FontWeight.ExtraBold),
+                        maxLines = 1,
+                        softWrap = false,
+                        modifier = Modifier
+                            .abGamePill(ORANGE_BORDER)
+                            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
+                    )
+                    Spacer(Modifier.weight(1f))
+                    CalcudokuStatChips(
+                        state.score, state.elapsed, viewModel.bestTime, kitScale,
+                        Modifier.padding(end = AppDimens.Dimens16)
+                    )
+                }
             }
 
             Row(

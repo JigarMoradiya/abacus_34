@@ -26,6 +26,7 @@ fun AbTopBar(
 ) {
     val colors = LocalAbColors.current
     val s = LocalAbScale.current.factor
+    AppDirection {   // the header follows the app language also inside an LtrIsland (game / lesson screens)
     Row(modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp * s), verticalAlignment = Alignment.CenterVertically) {
         AbBackButton(onClick = onBack)
         Box(
@@ -39,5 +40,6 @@ fun AbTopBar(
         }
         Spacer(Modifier.weight(1f))
         trailing()
+    }
     }
 }

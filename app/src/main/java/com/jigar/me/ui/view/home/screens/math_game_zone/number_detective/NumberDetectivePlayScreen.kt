@@ -112,37 +112,39 @@ fun NumberDetectivePlayScreen(
             modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = stringResource(R.string.number_detective_game), onBackClick = onBackClick)
-                    Spacer(Modifier.weight(1f))
-                }
-                // The range of the secret number, on a pill with a blue rim.
-                Text(
-                    text = stringResource(R.string.number_detective_prompt, state.question?.minRange ?: 1, state.question?.maxRange ?: 20),
-                    style = AbTypography.fixed(22f * s, FontWeight.Black),
-                    color = if (colors.isDark) colors.brandPrimary else colors.brandPrimary.abReadable(4.5f),
-                    modifier = Modifier.align(Alignment.Center)
-                        .abGamePill(outline = colors.brandPrimary)
-                        .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
-                )
-                // The clock: the pill turns red and the number pops while the last ten seconds run.
-                val low = state.timeLeft <= 10
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
-                    modifier = Modifier.align(Alignment.CenterEnd)
-                        .padding(end = AppDimens.Dimens16)
-                        .abGamePill(outline = if (low) colors.danger else null)
-                        .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
-                ) {
-                    Text("⏱️", fontSize = (24f * s).sp)
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side, the play field stays left to right
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        BackButtonWithText(title = stringResource(R.string.number_detective_game), onBackClick = onBackClick)
+                        Spacer(Modifier.weight(1f))
+                    }
+                    // The range of the secret number, on a pill with a blue rim.
                     Text(
-                        "${state.timeLeft}",
-                        style = AbTypography.fixed(26f * s, FontWeight.Black),
-                        color = if (low) numberDetectiveInk(colors.danger, colors.isDark) else colors.textPrimary,
-                        modifier = Modifier.abBounce(low, 1.2f)
+                        text = stringResource(R.string.number_detective_prompt, state.question?.minRange ?: 1, state.question?.maxRange ?: 20),
+                        style = AbTypography.fixed(22f * s, FontWeight.Black),
+                        color = if (colors.isDark) colors.brandPrimary else colors.brandPrimary.abReadable(4.5f),
+                        modifier = Modifier.align(Alignment.Center)
+                            .abGamePill(outline = colors.brandPrimary)
+                            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
                     )
+                    // The clock: the pill turns red and the number pops while the last ten seconds run.
+                    val low = state.timeLeft <= 10
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(AppDimens.Dimens6),
+                        modifier = Modifier.align(Alignment.CenterEnd)
+                            .padding(end = AppDimens.Dimens16)
+                            .abGamePill(outline = if (low) colors.danger else null)
+                            .padding(horizontal = AppDimens.Dimens16, vertical = AppDimens.Dimens8)
+                    ) {
+                        Text("⏱️", fontSize = (24f * s).sp)
+                        Text(
+                            "${state.timeLeft}",
+                            style = AbTypography.fixed(26f * s, FontWeight.Black),
+                            color = if (low) numberDetectiveInk(colors.danger, colors.isDark) else colors.textPrimary,
+                            modifier = Modifier.abBounce(low, 1.2f)
+                        )
+                    }
                 }
             }
 

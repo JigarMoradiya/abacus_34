@@ -125,21 +125,23 @@ fun MissingOperatorPlayScreen(
             modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = str(R.string.missing_operator_game), onBackClick = onBackClick)
-                    Spacer(Modifier.weight(1f))
-                    Hud(viewModel.config.timerSeconds, viewModel.config.roundsGoal, state.timeLeft, state.roundsPlayed)
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side, the play field stays left to right
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        BackButtonWithText(title = str(R.string.missing_operator_game), onBackClick = onBackClick)
+                        Spacer(Modifier.weight(1f))
+                        Hud(viewModel.config.timerSeconds, viewModel.config.roundsGoal, state.timeLeft, state.roundsPlayed)
+                    }
+                    // The question, on a pill with an orange rim.
+                    Text(
+                        text = str(R.string.missing_op_which_sign),
+                        style = AbTypography.fixed(20f * appScale(), FontWeight.ExtraBold),
+                        color = ORANGE,
+                        modifier = Modifier.align(Alignment.Center)
+                            .abGamePill(outline = ORANGE_BORDER)
+                            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
+                    )
                 }
-                // The question, on a pill with an orange rim.
-                Text(
-                    text = str(R.string.missing_op_which_sign),
-                    style = AbTypography.fixed(20f * appScale(), FontWeight.ExtraBold),
-                    color = ORANGE,
-                    modifier = Modifier.align(Alignment.Center)
-                        .abGamePill(outline = ORANGE_BORDER)
-                        .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
-                )
             }
 
             Row(

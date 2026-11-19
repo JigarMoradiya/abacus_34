@@ -316,7 +316,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.MathGameZone.route) {
-            GameFrame(AbWorld.Meadow) {
+            GameFrame(AbWorld.Meadow, ltr = false) {
             MathGameZoneScreenRoute(
                 onBackClick = { navController.safePopBackStack() },
                 onNavigateToNumberSequencePuzzle = {
@@ -387,13 +387,13 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.TrophyRoom.route) {
-            GameFrame(AbWorld.Meadow) {
+            GameFrame(AbWorld.Meadow, ltr = false) {
             TrophyRoomScreen(onBackClick = { navController.safePopBackStack() })
         }
         }
 
         composable(route = RouteNavigation.NumberSequencePuzzleHome.route) {
-            GameFrame(AbWorld.Twilight) {
+            GameFrame(AbWorld.Twilight, ltr = false) {
             NumberSequencePuzzleHomeRoute(
                 navController = navController,
                 homeActivityViewModel = homeActivityViewModel,
@@ -421,7 +421,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.SudokuHome.route) {
-            GameFrame(AbWorld.Lagoon) {
+            GameFrame(AbWorld.Lagoon, ltr = false) {
             SudokuHomeRoute(
                 navController = navController,
                 homeActivityViewModel = homeActivityViewModel,
@@ -448,7 +448,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.MathPyramidHome.route) {
-            GameFrame(AbWorld.Meadow) {
+            GameFrame(AbWorld.Meadow, ltr = false) {
             MathPyramidHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { levels, difficulty ->
@@ -478,7 +478,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.TargetNumberHome.route) {
-            GameFrame(AbWorld.Lagoon) {
+            GameFrame(AbWorld.Lagoon, ltr = false) {
             TargetNumberHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { level, diff ->
@@ -504,7 +504,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.BalloonPopHome.route) {
-            GameFrame(AbWorld.Sunset) {
+            GameFrame(AbWorld.Sunset, ltr = false) {
             BalloonPopHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -529,7 +529,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.SpeedCompareHome.route) {
-            GameFrame(AbWorld.Sunset) {
+            GameFrame(AbWorld.Sunset, ltr = false) {
             SpeedCompareHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -570,7 +570,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.MissingOperatorHome.route) {
-            GameFrame(AbWorld.Lagoon) {
+            GameFrame(AbWorld.Lagoon, ltr = false) {
             MissingOperatorHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -595,7 +595,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.MagicSquareHome.route) {
-            GameFrame(AbWorld.Meadow) {
+            GameFrame(AbWorld.Meadow, ltr = false) {
             MagicSquareHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -620,7 +620,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.CalcudokuHome.route) {
-            GameFrame(AbWorld.Lagoon) {
+            GameFrame(AbWorld.Lagoon, ltr = false) {
             CalcudokuHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -645,7 +645,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.Merge2048Home.route) {
-            GameFrame(AbWorld.Meadow) {
+            GameFrame(AbWorld.Meadow, ltr = false) {
             Merge2048HomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -670,7 +670,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.EquationMatchHome.route) {
-            GameFrame(AbWorld.Lagoon) {
+            GameFrame(AbWorld.Lagoon, ltr = false) {
             EquationMatchHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -695,7 +695,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.CrossMathHome.route) {
-            GameFrame(AbWorld.Lagoon) {
+            GameFrame(AbWorld.Lagoon, ltr = false) {
             CrossMathHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff, level ->
@@ -727,7 +727,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.NumberPathHome.route) {
-            GameFrame(AbWorld.Meadow) {
+            GameFrame(AbWorld.Meadow, ltr = false) {
             NumberPathHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff, level ->
@@ -759,7 +759,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.TrueFalseHome.route) {
-            GameFrame(AbWorld.Sunset) {
+            GameFrame(AbWorld.Sunset, ltr = false) {
             TrueFalseHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -784,7 +784,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.PlaceValueHome.route) {
-            GameFrame(AbWorld.Twilight) {
+            GameFrame(AbWorld.Twilight, ltr = false) {
             PlaceValueHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -809,7 +809,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.ClockMasterHome.route) {
-            GameFrame(AbWorld.Twilight) {
+            GameFrame(AbWorld.Twilight, ltr = false) {
             ClockMasterHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -834,7 +834,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.MathBingoHome.route) {
-            GameFrame(AbWorld.Sunset) {
+            GameFrame(AbWorld.Sunset, ltr = false) {
             MathBingoHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -859,7 +859,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.KakuroHome.route) {
-            GameFrame(AbWorld.Lagoon) {
+            GameFrame(AbWorld.Lagoon, ltr = false) {
             KakuroHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff, level ->
@@ -891,7 +891,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.NumberDetectiveHome.route) {
-            GameFrame(AbWorld.Twilight) {
+            GameFrame(AbWorld.Twilight, ltr = false) {
             NumberDetectiveHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->
@@ -916,7 +916,7 @@ fun HomeNavGraph(
         }
 
         composable(route = RouteNavigation.NumberSnakeHome.route) {
-            GameFrame(AbWorld.Lagoon) {
+            GameFrame(AbWorld.Lagoon, ltr = false) {
             NumberSnakeHomeRoute(
                 homeActivityViewModel = homeActivityViewModel,
                 onStartPlay = { diff ->

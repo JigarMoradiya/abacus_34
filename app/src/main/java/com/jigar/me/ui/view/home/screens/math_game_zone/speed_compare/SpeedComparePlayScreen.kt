@@ -102,26 +102,28 @@ fun SpeedComparePlayScreen(
         ) {
 
             // Header: back left, prompt dead-center, HUD right
-            Box(modifier = Modifier.fillMaxWidth()) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    BackButtonWithText(title = stringRes(R.string.speed_compare_game), onBackClick = onBackClick)
-                    Spacer(Modifier.weight(1f))
-                    Hud(
-                        timerSeconds = viewModel.config.timerSeconds,
-                        roundsGoal = viewModel.config.roundsGoal,
-                        timeLeft = state.timeLeft,
-                        roundsPlayed = state.roundsPlayed
+            com.jigar.me.ui.view.ab.AppDirection {   // header: back button + title on the language's side, the play field stays left to right
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        BackButtonWithText(title = stringRes(R.string.speed_compare_game), onBackClick = onBackClick)
+                        Spacer(Modifier.weight(1f))
+                        Hud(
+                            timerSeconds = viewModel.config.timerSeconds,
+                            roundsGoal = viewModel.config.roundsGoal,
+                            timeLeft = state.timeLeft,
+                            roundsPlayed = state.roundsPlayed
+                        )
+                    }
+                    Text(
+                        text = stringRes(R.string.speed_which_bigger),
+                        color = ORANGE,
+                        style = AbTypography.fixed(20f, FontWeight.ExtraBold).scaled(),
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                            .abGamePill(outline = ORANGE_BORDER)
+                            .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
                     )
                 }
-                Text(
-                    text = stringRes(R.string.speed_which_bigger),
-                    color = ORANGE,
-                    style = AbTypography.fixed(20f, FontWeight.ExtraBold).scaled(),
-                    modifier = Modifier
-                        .align(Alignment.Center)
-                        .abGamePill(outline = ORANGE_BORDER)
-                        .padding(horizontal = AppDimens.Dimens20, vertical = AppDimens.Dimens8)
-                )
             }
 
             Row(

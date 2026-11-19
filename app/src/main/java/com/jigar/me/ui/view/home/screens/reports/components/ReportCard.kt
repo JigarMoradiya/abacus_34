@@ -209,7 +209,7 @@ private fun ReportExerciseExamSection(item: AllExamData) {
             }
             AppConstants.EXAM.type_Exam -> {
                 ReportLine(stringResource(R.string.level_of_exam), examLevelName(item.level))
-                ReportLine(stringResource(R.string.type_of_questions), item.sub_type?.replace(",", ", ") ?: "")
+                ReportLine(stringResource(R.string.type_of_questions), questionTypesText(item.sub_type))
             }
             AppConstants.apiParams.answerFormalExam -> {
                 ReportLine(stringResource(R.string.level_of_set), item.level ?: "")

@@ -350,6 +350,8 @@ fun TableDisplayCard(tableNumber: Int) {
                     Spacer(Modifier.height(backIconSize * 0.55f))
                     (1..10).forEach { i ->
                         val highlighted = speakingRow == i
+                        // "2 × 1 = 2" reads left to right in Arabic too
+                        com.jigar.me.ui.view.ab.LtrIsland {
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -388,6 +390,7 @@ fun TableDisplayCard(tableNumber: Int) {
                                     modifier = Modifier.size((10f * AB_SF_TO_VECTOR).dp)
                                 )
                             }
+                        }
                         }
                     }
                 }

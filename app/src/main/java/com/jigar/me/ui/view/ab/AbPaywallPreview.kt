@@ -96,7 +96,7 @@ fun AbPaywallPreview(timedOffer: Boolean = false, storeOffer: Int = 0) {
         AbBackground(AbWorld.Meadow, Modifier.fillMaxSize())
         KidsBottomSheet(visible = true, onDismiss = {}, widthFraction = 0.85f, showHandle = false) {
             PaywallKitContent(
-                headline = "You've reached Level 3!", subtitle = "Upgrade to keep learning", socialProof = state.socialProofText,
+                headline = androidx.compose.ui.res.stringResource(com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext.LEVEL3.headlineRes), subtitle = androidx.compose.ui.res.stringResource(com.jigar.me.ui.view.home.common_ui.dialogs.PaywallContext.LEVEL3.subtitleRes), socialProof = state.socialProofText,
                 uiState = state, onClose = {}, onSeeBenefits = {}, onRetry = {}, onSubscribe = {},
                 privacyUrl = "https://example.com/privacy",
             )
