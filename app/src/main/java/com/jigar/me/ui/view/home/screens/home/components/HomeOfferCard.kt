@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -78,10 +79,9 @@ private fun offerLine(storeBadge: String?, storeOriginalPrice: String?, discount
             append(storeBadge)
         }
     }
-    val productLabel = stringResource(if (targetsLifetime) R.string.home_offer_product_lifetime else R.string.home_offer_product_yearly)
     return AnnotatedString(
-        if (discountPercent > 0) stringResource(R.string.home_offer_save_pct, discountPercent, productLabel)
-        else stringResource(R.string.home_offer_special_price, productLabel)
+        if (discountPercent > 0) stringResource(R.string.home_offer_save_pct, discountPercent)   // just "Save 25%": the plan is on the plans page
+        else stringResource(R.string.home_offer_special_price)
     )
 }
 
@@ -274,8 +274,12 @@ fun HomeOfferBadge(
     val pressed by interaction.collectIsPressedAsState()
     val scale by animateFloatAsState(if (pressed) 0.94f else 1f, label = "offerBadgeScale")
 
+    // the chip never takes more than about a third of the row: a long translation ("Скидка 25% на тариф «пожизненный»") shortens with "..."
+    // instead of squeezing the badges beside it (the countdown pill keeps its room)
+    val maxChipWidth = (androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp * 0.31f).dp
     Row(
         modifier = modifier
+            .widthIn(max = maxChipWidth)
             .graphicsLayer { scaleX = scale; scaleY = scale }
             .background(Brush.horizontalGradient(listOf(Color(0xFFFFB300).copy(alpha = tint), Color(0xFFFF7043).copy(alpha = tint))), shape)
             .border(1.dp, Color(0xFFFF7043).copy(alpha = if (isDark) 0.7f else 0.4f), shape)
@@ -308,8 +312,10 @@ fun HomeOfferBadge(
         // Countdown gets its own highlighted pill -- distinct from the surrounding
         // text so it draws the eye, matching the full HomeOfferCard's treatment.
         remainingSec?.let {
+            // days away: "25d 06:38" (the seconds say nothing there and cost width); the last day counts down to the second
+            val pillText = DateTimeUtils.displayDurationHourMinSec(it).let { full -> if (it >= 86_400L) full.substringBeforeLast(':') else full }
             Text(
-                text = DateTimeUtils.displayDurationHourMinSec(it),
+                text = pillText,
                 color = Color.White,
                 style = AbTypography.fixed(10f * abS, FontWeight.ExtraBold, tabular = true),
                 maxLines = 1,

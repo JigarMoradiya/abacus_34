@@ -1179,6 +1179,9 @@
         <item quantity="one">%1$d ücretsiz gün kaldı</item>
         <item quantity="other">%1$d ücretsiz gün kaldı</item>
     </plurals>
+    <string name="notif_channel_offer_name">Teklifler</string>
+    <string name="notif_channel_offer_desc">Henüz bir plan seçmemiş ebeveyn için planlarda sınırlı süreli teklifler</string>
+    <string name="notif_offer_ends_soon">Yakında bitiyor! %1$s</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Arka plan müziği ses düzeyi</string>
     <string name="change_voice_setting">Ses ayarını değiştir</string>
@@ -1503,8 +1506,9 @@
     <string name="level_name_speed_anzan">Hız ve Anzan</string>
     <string name="level_name_times_tables">Çarpım Tabloları</string>
     <string name="home_promo_also_try">Bunu da deneyin</string>
-    <string name="home_promo_tagline">Çocuklar için eğlenceli öğrenme</string>
-    <string name="home_promo_also_try_english">Bunu da deneyin: Vedaavi English!</string>
+    <string name="home_promo_tagline">Fonetikle okumaya yardım edin</string>
+    <string name="home_promo_english">İngilizce Öğrenme</string>
+    <string name="home_promo_also_try_english">Bunu da deneyin: İngilizce!</string>
     <string name="home_week_title">Bu hafta</string>
     <string name="home_week_summary">%1$d çözüldü · %2$d g</string>
     <string name="home_week_tap">Görmek için dokunun</string>
@@ -1812,8 +1816,8 @@
     <string name="old_purchases">Eski satın alımlar</string>
     <string name="home_offer_title">Sınırlı süreli teklif!</string>
     <string name="home_offer_title_biggest">En büyük fırsat</string>
-    <string name="home_offer_save_pct">%2$s planında %%%1$d tasarruf edin</string>
-    <string name="home_offer_special_price">%1$s planında özel fiyat</string>
+    <string name="home_offer_save_pct">%%%1$d tasarruf edin</string>
+    <string name="home_offer_special_price">Özel fiyat</string>
     <string name="home_offer_ends_in">Bitmesine %1$s</string>
     <string name="home_offer_product_yearly">Yıllık</string>
     <string name="home_offer_product_lifetime">Ömür boyu</string>

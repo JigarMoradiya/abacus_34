@@ -1145,6 +1145,9 @@
     <plurals name="notif_free_days_left">
         <item quantity="other">เหลือใช้ฟรีอีก %1$d วัน</item>
     </plurals>
+    <string name="notif_channel_offer_name">ข้อเสนอ</string>
+    <string name="notif_channel_offer_desc">ข้อเสนอแพ็กเกจแบบจำกัดเวลา สำหรับผู้ปกครองที่ยังไม่ได้เลือกแพ็กเกจ</string>
+    <string name="notif_offer_ends_soon">ใกล้หมดเวลาแล้ว! %1$s</string>
     <!-- m1_settings -->
     <string name="background_music_volume">ระดับเสียงเพลงพื้นหลัง</string>
     <string name="change_voice_setting">เปลี่ยนการตั้งค่าเสียงพูด</string>
@@ -1468,8 +1471,9 @@
     <string name="level_name_speed_anzan">ความเร็วและอันซัง</string>
     <string name="level_name_times_tables">สูตรคูณ</string>
     <string name="home_promo_also_try">ลองด้วย</string>
-    <string name="home_promo_tagline">เรียนสนุกสำหรับเด็ก</string>
-    <string name="home_promo_also_try_english">ลองด้วย: Vedaavi English!</string>
+    <string name="home_promo_tagline">ช่วยลูกอ่านออกด้วยโฟนิกส์</string>
+    <string name="home_promo_english">เรียนภาษาอังกฤษ</string>
+    <string name="home_promo_also_try_english">ลองด้วย: เรียนภาษาอังกฤษ!</string>
     <string name="home_week_title">สัปดาห์นี้</string>
     <string name="home_week_summary">แก้ได้ %1$d · %2$d วัน</string>
     <string name="home_week_tap">แตะเพื่อดู</string>
@@ -1774,8 +1778,8 @@
     <string name="old_purchases">การซื้อก่อนหน้า</string>
     <string name="home_offer_title">ข้อเสนอจำกัดเวลา!</string>
     <string name="home_offer_title_biggest">ข้อเสนอสุดคุ้ม</string>
-    <string name="home_offer_save_pct">ประหยัด %1$d%% กับแพ็กเกจ%2$s</string>
-    <string name="home_offer_special_price">ราคาพิเศษสำหรับแพ็กเกจ%1$s</string>
+    <string name="home_offer_save_pct">ประหยัด %1$d%%</string>
+    <string name="home_offer_special_price">ราคาพิเศษ</string>
     <string name="home_offer_ends_in">สิ้นสุดใน %1$s</string>
     <string name="home_offer_product_yearly">รายปี</string>
     <string name="home_offer_product_lifetime">ตลอดชีพ</string>

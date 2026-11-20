@@ -1177,5 +1177,35 @@
     "other": "بقي %1$d يوم مجاني"
    }
   }
+ },
+ "notif_channel_offer_name": {
+  "fr": "Offres",
+  "es": "Ofertas",
+  "pt": "Ofertas",
+  "tr": "Teklifler",
+  "ru": "Предложения",
+  "ja": "オファー",
+  "th": "ข้อเสนอ",
+  "ar": "العروض"
+ },
+ "notif_channel_offer_desc": {
+  "fr": "Offres à durée limitée sur les abonnements, pour un parent qui n'a pas encore choisi de formule",
+  "es": "Ofertas por tiempo limitado en los planes, para un padre que aún no ha elegido un plan",
+  "pt": "Ofertas por tempo limitado nos planos, para um responsável que ainda não escolheu um plano",
+  "tr": "Henüz bir plan seçmemiş ebeveyn için planlarda sınırlı süreli teklifler",
+  "ru": "Предложения по тарифам, ограниченные по времени, для родителя, который ещё не выбрал тариф",
+  "ja": "まだプランを選んでいない保護者向けの、プランの期間限定オファー",
+  "th": "ข้อเสนอแพ็กเกจแบบจำกัดเวลา สำหรับผู้ปกครองที่ยังไม่ได้เลือกแพ็กเกจ",
+  "ar": "عروض لفترة محدودة على الباقات لوليّ أمر لم يختر باقة بعد"
+ },
+ "notif_offer_ends_soon": {
+  "fr": "Bientôt terminé ! %1$s",
+  "es": "¡Termina pronto! %1$s",
+  "pt": "Termina em breve! %1$s",
+  "tr": "Yakında bitiyor! %1$s",
+  "ru": "Скоро закончится! %1$s",
+  "ja": "まもなく終了！%1$s",
+  "th": "ใกล้หมดเวลาแล้ว! %1$s",
+  "ar": "ينتهي قريبًا! %1$s"
  }
 }

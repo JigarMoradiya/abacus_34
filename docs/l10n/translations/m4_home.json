@@ -320,24 +320,34 @@
   "ar": "جرّب أيضًا"
  },
  "home_promo_tagline": {
-  "fr": "Apprendre en s'amusant",
-  "es": "Aprender jugando",
-  "pt": "Aprender se divertindo",
-  "tr": "Çocuklar için eğlenceli öğrenme",
-  "ru": "Весёлое обучение для детей",
-  "ja": "楽しく学べる子ども向けアプリ",
-  "th": "เรียนสนุกสำหรับเด็ก",
-  "ar": "تعلّم ممتع للأطفال"
+  "fr": "Votre enfant lit grâce aux sons",
+  "es": "Ayuda a tu hijo a leer con fonética",
+  "pt": "Ajude seu filho a ler com fônica",
+  "tr": "Fonetikle okumaya yardım edin",
+  "ru": "Помогаем читать по звукам",
+  "ja": "フォニックスで読む力を育てよう",
+  "th": "ช่วยลูกอ่านออกด้วยโฟนิกส์",
+  "ar": "ساعد طفلك على القراءة بالفونيكس"
+ },
+ "home_promo_english": {
+  "fr": "Apprendre l'anglais",
+  "es": "Aprende inglés",
+  "pt": "Aprender inglês",
+  "tr": "İngilizce Öğrenme",
+  "ru": "Изучение английского",
+  "ja": "英語学習",
+  "th": "เรียนภาษาอังกฤษ",
+  "ar": "تعلّم الإنجليزية"
  },
  "home_promo_also_try_english": {
-  "fr": "Essayez aussi : Vedaavi English !",
-  "es": "Prueba también: ¡Vedaavi English!",
-  "pt": "Experimente também: Vedaavi English!",
-  "tr": "Bunu da deneyin: Vedaavi English!",
-  "ru": "Попробуйте также: Vedaavi English!",
-  "ja": "こちらもどうぞ：Vedaavi English！",
-  "th": "ลองด้วย: Vedaavi English!",
-  "ar": "جرّب أيضًا: Vedaavi English!"
+  "fr": "Essayez aussi : l'anglais !",
+  "es": "Prueba también: ¡Inglés!",
+  "pt": "Experimente também: Inglês!",
+  "tr": "Bunu da deneyin: İngilizce!",
+  "ru": "Попробуйте: Английский!",
+  "ja": "こちらもどうぞ：英語学習！",
+  "th": "ลองด้วย: เรียนภาษาอังกฤษ!",
+  "ar": "جرّب أيضًا: تعلّم الإنجليزية!"
  },
  "home_week_title": {
   "fr": "Cette semaine",

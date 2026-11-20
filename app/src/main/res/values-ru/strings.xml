@@ -1247,6 +1247,9 @@
         <item quantity="many">Осталось %1$d бесплатных дней</item>
         <item quantity="other">Осталось %1$d бесплатных дня</item>
     </plurals>
+    <string name="notif_channel_offer_name">Предложения</string>
+    <string name="notif_channel_offer_desc">Предложения по тарифам, ограниченные по времени, для родителя, который ещё не выбрал тариф</string>
+    <string name="notif_offer_ends_soon">Скоро закончится! %1$s</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Громкость фоновой музыки</string>
     <string name="change_voice_setting">Настройки голоса</string>
@@ -1573,8 +1576,9 @@
     <string name="level_name_speed_anzan">Скорость и Анзан</string>
     <string name="level_name_times_tables">Таблица умножения</string>
     <string name="home_promo_also_try">Попробуйте также</string>
-    <string name="home_promo_tagline">Весёлое обучение для детей</string>
-    <string name="home_promo_also_try_english">Попробуйте также: Vedaavi English!</string>
+    <string name="home_promo_tagline">Помогаем читать по звукам</string>
+    <string name="home_promo_english">Изучение английского</string>
+    <string name="home_promo_also_try_english">Попробуйте: Английский!</string>
     <string name="home_week_title">На этой неделе</string>
     <string name="home_week_summary">решено: %1$d · %2$d дн.</string>
     <string name="home_week_tap">Нажмите, чтобы открыть</string>
@@ -1888,8 +1892,8 @@
     <string name="old_purchases">Прежние покупки</string>
     <string name="home_offer_title">Предложение ограничено по времени!</string>
     <string name="home_offer_title_biggest">Лучшее предложение</string>
-    <string name="home_offer_save_pct">Скидка %1$d%% на тариф «%2$s»</string>
-    <string name="home_offer_special_price">Специальная цена на тариф «%1$s»</string>
+    <string name="home_offer_save_pct">Скидка %1$d%%</string>
+    <string name="home_offer_special_price">Особая цена</string>
     <string name="home_offer_ends_in">Осталось: %1$s</string>
     <string name="home_offer_product_yearly">годовой</string>
     <string name="home_offer_product_lifetime">пожизненный</string>

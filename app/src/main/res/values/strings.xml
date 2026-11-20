@@ -339,8 +339,8 @@
     <string name="you_built_the_pyramid">You built the pyramid…</string>
     <string name="home_offer_title">Limited-time offer!</string>
     <string name="home_offer_title_biggest">Biggest Offer</string>
-    <string name="home_offer_save_pct">Save %1$d%% on the %2$s plan</string>
-    <string name="home_offer_special_price">Special price on the %1$s plan</string>
+    <string name="home_offer_save_pct">Save %1$d%%</string>
+    <string name="home_offer_special_price">Special price</string>
     <string name="home_offer_ends_in">Ends in %1$s</string>
     <string name="home_offer_store_title">Lifetime price offer</string>
     <string name="store_offer_caption">Limited Time Price Offer</string>
@@ -779,9 +779,9 @@
     <string name="level_name_speed_anzan">Speed &amp; Anzan</string>
     <string name="level_name_times_tables">Times Tables</string>
     <string name="home_promo_also_try">Also try</string>
-    <string name="home_promo_english" translatable="false">Vedaavi English</string>
-    <string name="home_promo_tagline">Fun learning for kids</string>
-    <string name="home_promo_also_try_english">Also try: Vedaavi English!</string>
+    <string name="home_promo_english">English Learning</string>
+    <string name="home_promo_tagline">Help your child read with phonics</string>
+    <string name="home_promo_also_try_english">Also try: English Learning!</string>
     <string name="home_week_title">This Week</string>
     <string name="home_week_summary">%1$d solved · %2$dd</string>
     <string name="home_week_tap">Tap to view</string>
@@ -2085,6 +2085,9 @@
     <string name="notif_channel_free_desc">Tells a parent when the free week of a new install is about to end</string>
     <string name="notif_free_last_day">Last free day</string>
     <string name="notif_free_body">Keep every level, game and progress report. See the plans and pick one.</string>
+    <string name="notif_channel_offer_name">Offers</string>
+    <string name="notif_channel_offer_desc">Time-limited offers on the plans, for a parent who has not picked a plan yet</string>
+    <string name="notif_offer_ends_soon">Ends soon! %1$s</string>
     <string name="share_app_message">🔢🧮 Elevate Math Skills with \"Abacus Child Learning App\" – Where Math Meets Magic! 📱✨\n\nUnlock the potential of your child\'s math genius with our immersive Abacus Child Learning App. Experience the enchantment of abacus math and watch your child excel in calculations while having a blast! 🧮🌈\n\n🔗 Download the App Now on the Google Play Store: %1$s\n\n🎉 Whether your child is a beginner or looking to enhance their math prowess, \"Abacus Child Learning Application\" offers:\n\n- Learn fundamental math concepts with ease\n- Develop strong problem-solving skills\n- Boost concentration and mental agility\n- Engaging abacus lessons for mental math mastery\n- Fun and interactive math games and challenges\n- Personalized learning to cater to each child\'s pace\n- Confidence-building math activities\n\n🧙‍♂️ Make math an exciting adventure with the \"Abacus Child Learning Application.\" Join us in nurturing a love for numbers and setting the stage for academic success.\n\nDon\'t miss out – share this remarkable math journey with fellow parents and educators. Let\'s empower the next generation of math wizards together!</string>
     <string name="purchase_dates_subscribed">&lt;b>Subscribed ON : &lt;/b>%1$s&lt;br/>&lt;b>Expire ON : &lt;/b>%2$s</string>
     <string name="purchase_dates_purchased">&lt;b>Purchased ON : &lt;/b>%1$s</string>

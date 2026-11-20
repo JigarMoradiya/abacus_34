@@ -148,6 +148,7 @@ class HomeActivity : AppCompatActivity() {   // AppCompat so the chosen app lang
             }
             com.jigar.me.utils.FreemiumWindow.refresh(preferences)
             if (BuildConfig.DEBUG && intent.getBooleanExtra("ab_freemium_notify_now", false)) com.jigar.me.utils.FreemiumWindow.debugNotifyNow(this)
+            if (BuildConfig.DEBUG) intent.getStringExtra("ab_offer_notify_now")?.let { com.jigar.me.utils.OfferNotifications.debugNotifyNow(this, it) }
             if (BuildConfig.DEBUG && intent.getBooleanExtra("ab_notify_now", false)) {
                 // the streak reminder and the weekly summary right now, to read them in the notification shade
                 com.jigar.me.utils.StreakManager.debugShowNow = true

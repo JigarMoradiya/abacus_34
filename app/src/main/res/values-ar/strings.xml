@@ -1315,6 +1315,9 @@
         <item quantity="many">بقي %1$d يومًا مجانيًا</item>
         <item quantity="other">بقي %1$d يوم مجاني</item>
     </plurals>
+    <string name="notif_channel_offer_name">العروض</string>
+    <string name="notif_channel_offer_desc">عروض لفترة محدودة على الباقات لوليّ أمر لم يختر باقة بعد</string>
+    <string name="notif_offer_ends_soon">ينتهي قريبًا! %1$s</string>
     <!-- m1_settings -->
     <string name="background_music_volume">مستوى صوت موسيقى الخلفية</string>
     <string name="change_voice_setting">تغيير إعدادات الصوت</string>
@@ -1643,8 +1646,9 @@
     <string name="level_name_speed_anzan">السرعة والأنزان</string>
     <string name="level_name_times_tables">جداول الضرب</string>
     <string name="home_promo_also_try">جرّب أيضًا</string>
-    <string name="home_promo_tagline">تعلّم ممتع للأطفال</string>
-    <string name="home_promo_also_try_english">جرّب أيضًا: Vedaavi English!</string>
+    <string name="home_promo_tagline">ساعد طفلك على القراءة بالفونيكس</string>
+    <string name="home_promo_english">تعلّم الإنجليزية</string>
+    <string name="home_promo_also_try_english">جرّب أيضًا: تعلّم الإنجليزية!</string>
     <string name="home_week_title">هذا الأسبوع</string>
     <string name="home_week_summary">تم حل %1$d · %2$d يوم</string>
     <string name="home_week_tap">اضغط للعرض</string>
@@ -1964,8 +1968,8 @@
     <string name="old_purchases">المشتريات القديمة</string>
     <string name="home_offer_title">عرض لفترة محدودة!</string>
     <string name="home_offer_title_biggest">أكبر عرض</string>
-    <string name="home_offer_save_pct">وفّر %1$d%% على باقة %2$s</string>
-    <string name="home_offer_special_price">سعر خاص على باقة %1$s</string>
+    <string name="home_offer_save_pct">وفّر %1$d%%</string>
+    <string name="home_offer_special_price">سعر خاص</string>
     <string name="home_offer_ends_in">ينتهي خلال %1$s</string>
     <string name="home_offer_product_yearly">سنوية</string>
     <string name="home_offer_product_lifetime">مدى الحياة</string>

@@ -21,6 +21,7 @@ import com.jigar.me.utils.AppConstants
 import com.jigar.me.utils.AppReviewManager
 import com.jigar.me.utils.CommonUtils
 import com.jigar.me.utils.HomeOfferManager
+import com.jigar.me.utils.OfferNotifications
 import com.jigar.me.utils.StoreOneTimeOffers
 import com.revenuecat.purchases.models.GoogleStoreProduct
 import com.jigar.me.R
@@ -65,7 +66,7 @@ class HomeFragmentViewModel @Inject constructor(
         val targetsLifetime = cfg.targetsLifetime
         // (a campaign with "trigger": "dismiss" starts when a parent closes a paywall instead)
         if (!cfg.startsOnDismiss) HomeOfferManager.startIfNeeded(prefs, forceRestart = BuildConfig.DEBUG)
-        if (!HomeOfferManager.isTimedOfferActive(prefs)) return
+        if (!HomeOfferManager.isTimedOfferActive(prefs)) { OfferNotifications.cancelAll(context); return }   // no offer: no notifications either
 
         // (the card is hidden for premium users by observePremium() below)
         viewModelScope.launch {
@@ -78,7 +79,7 @@ class HomeFragmentViewModel @Inject constructor(
             // The .offer package must actually exist in the store offering -- can't
             // show a discount for a product that isn't real. This card only lives on Home: the paywall and the
             // subscription page are not changed by it (they show the regular products and the store's own offers).
-            if (offer == null && !AbDebugFlags.homeOfferPreviewEnabled) return@launch
+            if (offer == null && !AbDebugFlags.homeOfferPreviewEnabled) { OfferNotifications.cancelAll(context); return@launch }
             // Re-validate the window is still running now that offerings have loaded --
             // it may have expired during the await -- so an already-expired offer is
             // never published (HomeOfferCard would self-correct within a frame anyway,
@@ -98,6 +99,8 @@ class HomeFragmentViewModel @Inject constructor(
                 hasTimer = !cfg.isOpenEnded,       // an offer with no end has no countdown
             )
             updateState_ { copy(homeOffer = offerUi) }
+            // the local notifications of the running offer, for a phone that owns nothing and has no plan assigned by the admin
+            OfferNotifications.sync(context, prefs, eligible = !CommonUtils.checkPurchaseForExerciseExamCCM(prefs), discountPercent = discountPercent)
         }
     }
 
@@ -136,6 +139,8 @@ class HomeFragmentViewModel @Inject constructor(
         viewModelScope.launch {
             RevenueCatHelper.customerInfoFlow.collect {
                 updateState_ { copy(isPremium = CommonUtils.checkPurchaseForExerciseExamCCM(prefs), ownsLifetime = CommonUtils.ownsLifetimePlan(prefs)) }
+                // a purchase, a restore or an assigned plan ends the offer's notifications right away
+                if (CommonUtils.checkPurchaseForExerciseExamCCM(prefs)) OfferNotifications.cancelAll(context)
             }
         }
     }

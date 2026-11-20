@@ -90,24 +90,24 @@
   "ar": "أكبر عرض"
  },
  "home_offer_save_pct": {
-  "fr": "Économisez %1$d%% sur l'offre %2$s",
-  "es": "Ahorra un %1$d%% en el plan %2$s",
-  "pt": "Economize %1$d%% no plano %2$s",
-  "tr": "%2$s planında %%%1$d tasarruf edin",
-  "ru": "Скидка %1$d%% на тариф «%2$s»",
-  "ja": "%2$sプランが%1$d%%オフ",
-  "th": "ประหยัด %1$d%% กับแพ็กเกจ%2$s",
-  "ar": "وفّر %1$d%% على باقة %2$s"
+  "fr": "Économisez %1$d%%",
+  "es": "Ahorra un %1$d%%",
+  "pt": "Economize %1$d%%",
+  "tr": "%%%1$d tasarruf edin",
+  "ru": "Скидка %1$d%%",
+  "ja": "%1$d%%オフ",
+  "th": "ประหยัด %1$d%%",
+  "ar": "وفّر %1$d%%"
  },
  "home_offer_special_price": {
-  "fr": "Prix spécial sur l'offre %1$s",
-  "es": "Precio especial en el plan %1$s",
-  "pt": "Preço especial no plano %1$s",
-  "tr": "%1$s planında özel fiyat",
-  "ru": "Специальная цена на тариф «%1$s»",
-  "ja": "%1$sプランが特別価格",
-  "th": "ราคาพิเศษสำหรับแพ็กเกจ%1$s",
-  "ar": "سعر خاص على باقة %1$s"
+  "fr": "Prix spécial",
+  "es": "Precio especial",
+  "pt": "Preço especial",
+  "tr": "Özel fiyat",
+  "ru": "Особая цена",
+  "ja": "特別価格",
+  "th": "ราคาพิเศษ",
+  "ar": "سعر خاص"
  },
  "home_offer_ends_in": {
   "fr": "Se termine dans %1$s",

@@ -1145,6 +1145,9 @@
     <plurals name="notif_free_days_left">
         <item quantity="other">無料期間はあと%1$d日</item>
     </plurals>
+    <string name="notif_channel_offer_name">オファー</string>
+    <string name="notif_channel_offer_desc">まだプランを選んでいない保護者向けの、プランの期間限定オファー</string>
+    <string name="notif_offer_ends_soon">まもなく終了！%1$s</string>
     <!-- m1_settings -->
     <string name="background_music_volume">BGMの音量</string>
     <string name="change_voice_setting">音声設定を変更</string>
@@ -1468,8 +1471,9 @@
     <string name="level_name_speed_anzan">スピードとアンザン</string>
     <string name="level_name_times_tables">九九</string>
     <string name="home_promo_also_try">こちらもどうぞ</string>
-    <string name="home_promo_tagline">楽しく学べる子ども向けアプリ</string>
-    <string name="home_promo_also_try_english">こちらもどうぞ：Vedaavi English！</string>
+    <string name="home_promo_tagline">フォニックスで読む力を育てよう</string>
+    <string name="home_promo_english">英語学習</string>
+    <string name="home_promo_also_try_english">こちらもどうぞ：英語学習！</string>
     <string name="home_week_title">今週</string>
     <string name="home_week_summary">%1$d問 · %2$d日</string>
     <string name="home_week_tap">タップして表示</string>
@@ -1774,8 +1778,8 @@
     <string name="old_purchases">以前の購入</string>
     <string name="home_offer_title">期間限定オファー！</string>
     <string name="home_offer_title_biggest">最大のお得</string>
-    <string name="home_offer_save_pct">%2$sプランが%1$d%%オフ</string>
-    <string name="home_offer_special_price">%1$sプランが特別価格</string>
+    <string name="home_offer_save_pct">%1$d%%オフ</string>
+    <string name="home_offer_special_price">特別価格</string>
     <string name="home_offer_ends_in">終了まで%1$s</string>
     <string name="home_offer_product_yearly">年額</string>
     <string name="home_offer_product_lifetime">永久</string>

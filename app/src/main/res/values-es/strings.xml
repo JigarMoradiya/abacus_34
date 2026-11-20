@@ -1213,6 +1213,9 @@
         <item quantity="many">Quedan %1$d días gratis</item>
         <item quantity="other">Quedan %1$d días gratis</item>
     </plurals>
+    <string name="notif_channel_offer_name">Ofertas</string>
+    <string name="notif_channel_offer_desc">Ofertas por tiempo limitado en los planes, para un padre que aún no ha elegido un plan</string>
+    <string name="notif_offer_ends_soon">¡Termina pronto! %1$s</string>
     <!-- m1_settings -->
     <string name="background_music_volume">Volumen de la música de fondo</string>
     <string name="change_voice_setting">Cambiar la voz</string>
@@ -1538,8 +1541,9 @@
     <string name="level_name_speed_anzan">Velocidad y Anzan</string>
     <string name="level_name_times_tables">Tablas de multiplicar</string>
     <string name="home_promo_also_try">Prueba también</string>
-    <string name="home_promo_tagline">Aprender jugando</string>
-    <string name="home_promo_also_try_english">Prueba también: ¡Vedaavi English!</string>
+    <string name="home_promo_tagline">Ayuda a tu hijo a leer con fonética</string>
+    <string name="home_promo_english">Aprende inglés</string>
+    <string name="home_promo_also_try_english">Prueba también: ¡Inglés!</string>
     <string name="home_week_title">Esta semana</string>
     <string name="home_week_summary">%1$d resueltos · %2$d d</string>
     <string name="home_week_tap">Toca para ver</string>
@@ -1850,8 +1854,8 @@
     <string name="old_purchases">Compras anteriores</string>
     <string name="home_offer_title">¡Oferta por tiempo limitado!</string>
     <string name="home_offer_title_biggest">La mayor oferta</string>
-    <string name="home_offer_save_pct">Ahorra un %1$d%% en el plan %2$s</string>
-    <string name="home_offer_special_price">Precio especial en el plan %1$s</string>
+    <string name="home_offer_save_pct">Ahorra un %1$d%%</string>
+    <string name="home_offer_special_price">Precio especial</string>
     <string name="home_offer_ends_in">Termina en %1$s</string>
     <string name="home_offer_product_yearly">anual</string>
     <string name="home_offer_product_lifetime">de por vida</string>

@@ -91,3 +91,19 @@ introductory offers). Never use "Remove from sale" on the `.offer` product: Appl
 1. `end_at` in this JSON (the app stops the offer on its own and the regular plans come back);
 2. optionally, a Remote Config **Date/Time condition** that serves `{"enabled": false}` after the date (evaluated when the app fetches, at the next app start);
 3. optionally, a RevenueCat Targeting rule with an end time that removes the `.offer` packages from the `default` offering (times are UTC).
+
+### Local notifications of a running offer
+While an offer runs (the timed offer, the "Biggest offer" campaign or an offer with `no_end`) a phone that **owns no plan and has none assigned by the admin**
+gets a few local notifications. They are scheduled by the app on the phone (nothing is sent from a server), so they only start once the user has opened
+the app after the offer was published, and they follow the `home_offer` values the phone holds:
+
+| Notification | When | Wording |
+|---|---|---|
+| Nudge | the first 6 PM after this phone first saw the offer (an offer with no end gets a second one a week later, then nothing) | title as on the Home card, then "Save 25% on the Lifetime plan" |
+| Ends soon | 24 hours, 3 hours and 30 minutes before the end (`end_at`, or the per-device window). A 2 hour window only gets the 30 minute one. | "Ends soon! Save 25% on the Lifetime plan" |
+
+Rules: nothing is shown before 08:00 or from 21:00 phone time (a reminder that falls at night moves into the daytime), two notifications of one offer are never
+closer than 4 hours, and at most about four per offer. The title is the Home card's: English shows the `name`, every other language the translated static
+"Biggest Offer" (campaign) or "Limited-time offer!". Tapping a notification opens the plans. A purchase, a restore or an assigned plan cancels them at once
+(Android also checks again at the moment one is due). Changing `end_at` moves the reminders the next time the phone opens the app. The % off comes from the
+two store prices; with no price it says "Special price on the Lifetime plan".
