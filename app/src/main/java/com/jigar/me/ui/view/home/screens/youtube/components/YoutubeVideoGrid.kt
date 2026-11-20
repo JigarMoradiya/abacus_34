@@ -20,6 +20,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material3.Icon
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -119,10 +123,14 @@ fun VideoGridItem(
                 .clip(RoundedCornerShape(AbShapes.sm * s)),
             contentAlignment = Alignment.Center
         ) {
+            // The full 1280x720 picture (sharp at the size of the card on a phone); a video that has none (YouTube answers 404) falls back to the
+            // 480x360 one, which the old code always used and which looked soft when it was stretched over the card.
+            var sharpFailed by remember(video.id) { mutableStateOf(false) }
             AsyncImage(
-                model = "https://img.youtube.com/vi/${video.id}/hqdefault.jpg",
+                model = "https://img.youtube.com/vi/${video.id}/${if (sharpFailed) "hqdefault" else "maxresdefault"}.jpg",
                 contentDescription = video.txt,
                 contentScale = ContentScale.Crop,
+                onError = { sharpFailed = true },
                 modifier = Modifier.matchParentSize()
             )
             Box(
