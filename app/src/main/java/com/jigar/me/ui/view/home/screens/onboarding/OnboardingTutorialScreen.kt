@@ -395,7 +395,8 @@ private fun TutorialPage(
                     AbacusWithDecimalCanvas(
                         selectedTheme = selectedTheme,
                         screenType = AppConstants.AbacusScreen.screenTypeLevel2Learn,   // no Reset / Next answer bar
-                        isBeadSoundOn = false,
+                        // the bead-move sound follows the same Settings switch as every other abacus (default on); it was hard-coded off here
+                        isBeadSoundOn = com.jigar.me.ui.view.home.common_ui.LocalPreferencesHelper.current.getCustomParamBoolean(AppConstants.Settings.Setting_sound, true),
                         isDisplayCurrentAbacusInput = false,
                         abacusData = abCalc,
                         numberOfColumns = 3,
